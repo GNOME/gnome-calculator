@@ -22,6 +22,7 @@
 #include "financial.h"
 #include "currency.h"
 #include "mp-serializer.h"
+#include "units.h"
 
 enum {
     PROP_0,
@@ -56,7 +57,7 @@ struct MathButtonsPrivate
 
     GtkWidget *convert_from_combo;
     GtkWidget *convert_to_combo;
-    gchar *previous_ans;
+    GtkWidget *convert_result_label;
 
     GtkWidget *base_combo;
     GtkWidget *base_label;
@@ -313,12 +314,12 @@ static char *finc_dialog_fields[][5] = {
 
 #define MAX_UNITS 20
 struct Unit {
-    char* ui_name;
-    char* internal_name;
+    char *ui_name;
+    char *internal_name;
 };
 
 struct UnitCategory {
-    char* name;
+    char *name;
     struct Unit units[MAX_UNITS];
 };
 
@@ -337,7 +338,7 @@ static struct UnitCategory categories[] = {
                           /* Length unit */
                           {N_("Light Years"), "lightyears"},
                           /* Length unit */
-                          {N_("Astronomical Unit"), "au"},
+                          {N_("Astronomical Units"), "au"},
                           /* Length unit */
                           {N_("Nautical Miles"), "nm"},
                           /* Length unit */
@@ -617,10 +618,47 @@ update_currency_label(MathButtons *buttons)
 
 
 static void
+update_conversion_bar(MathButtons *buttons)
+{
+    MPNumber x, z;
+    gboolean enabled;
+    gchar *label;
+    const gchar *source_units, *target_units;
+    char *source_value, *target_value;
+
+    if (!buttons->priv->convert_result_label)
+        return;
+
+    enabled = math_equation_get_number(buttons->priv->equation, &x);
+
+    source_units = math_equation_get_source_units(buttons->priv->equation);
+    target_units = math_equation_get_target_units(buttons->priv->equation);
+    if (!source_units || !target_units)
+        enabled = FALSE;
+    else if (!units_convert(&x, source_units, target_units, &z))
+        enabled = FALSE;
+
+    gtk_widget_set_sensitive(buttons->priv->convert_result_label, enabled);
+    if (!enabled)
+        return;
+  
+    mp_serializer_to_specific_string(&x, 10, 2, TRUE, TRUE, &source_value);
+    mp_serializer_to_specific_string(&z, 10, 2, TRUE, TRUE, &target_value);
+
+    label = g_strdup_printf("%s %s = %s %s", source_value, source_units, target_value, target_units);
+    gtk_label_set_text(GTK_LABEL(buttons->priv->convert_result_label), label);
+    g_free(source_value);
+    g_free(target_value);
+    g_free(label);
+}
+
+
+static void
 display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
 {
     update_currency_label(buttons);
     update_bit_panel(buttons);
+    update_conversion_bar(buttons);
 }
 
 
@@ -628,23 +666,57 @@ static void
 convert_from_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
 {
     GtkTreeModel *model;
-    GtkTreeIter iter, unittype;
-    int typeindex, i;
+    GtkTreeIter iter;
+    int typeindex, unitindex, i;
 
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
+    gtk_tree_model_get(model, &iter, 1, &typeindex, 2, &unitindex, -1);
 
-    if (!gtk_tree_model_iter_parent(model, &unittype, &iter))
-        return;
-
-    gtk_tree_model_get(model, &unittype, 1, &typeindex, -1);
-
-    model = GTK_TREE_MODEL(gtk_list_store_new(2, G_TYPE_STRING, G_TYPE_INT));
+    model = GTK_TREE_MODEL(gtk_list_store_new(3, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT));
     for (i = 0; categories[typeindex].units[i].ui_name != NULL; i++) {
+        if (i == unitindex)
+            continue;
         gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, categories[typeindex].units[i].ui_name, 1, i, -1);
+        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, categories[typeindex].units[i].ui_name, 1, typeindex, 2, i, -1);
     }
     gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->convert_to_combo), model);
+
+    math_equation_set_source_units(buttons->priv->equation, categories[typeindex].units[unitindex].internal_name);
+
+    gtk_combo_box_set_active(GTK_COMBO_BOX(buttons->priv->convert_to_combo), 0);
+}
+
+
+static void
+source_units_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
+{
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->convert_from_combo));
+    if (!gtk_tree_model_get_iter_first(model, &iter))
+        return;
+    do
+    {
+        GtkTreeIter child_iter;
+
+        if (gtk_tree_model_iter_children(model, &child_iter, &iter))
+        {
+            do
+            {
+                gint i, j;
+
+                gtk_tree_model_get(model, &child_iter, 1, &i, 2, &j, -1);
+                if (strcmp(categories[i].units[j].internal_name, math_equation_get_source_units(equation)) == 0)
+                {
+                    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->convert_from_combo), &child_iter);
+                    update_conversion_bar(buttons);
+                    return;
+                }             
+            } while (gtk_tree_model_iter_next(model, &child_iter));
+        }
+    } while (gtk_tree_model_iter_next(model, &iter));
 }
 
 
@@ -652,51 +724,39 @@ static void
 convert_to_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
 {
     GtkTreeModel *model;
-    GtkTreeIter iter, catiter;
-    gchar *from, *to, *display;
-    int category, fromindex, toindex;
+    GtkTreeIter iter;
+    int category, toindex;
 
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
-    gtk_tree_model_get(model, &iter, 1, &toindex, -1);
-
-    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->convert_from_combo));
-    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(buttons->priv->convert_from_combo), &iter);
-    if (!gtk_tree_model_iter_parent(model, &catiter, &iter))
-        return;
-
-    gtk_tree_model_get(model, &catiter, 1, &category, -1);
-    gtk_tree_model_get(model, &iter, 1, &fromindex, -1);
-
-    from = categories[category].units[fromindex].internal_name;
-    to = categories[category].units[toindex].internal_name;
-
-    if (buttons->priv->previous_ans == NULL) {
-        display = math_equation_get_display(buttons->priv->equation);
-        buttons->priv->previous_ans = display;
-    }
-    else {
-        display = buttons->priv->previous_ans;
-    }
-    math_equation_set(buttons->priv->equation, g_strdup_printf("%s %s in %s", display, from, to));
+    gtk_tree_model_get(model, &iter, 1, &category, 2, &toindex, -1);
+    math_equation_set_target_units(buttons->priv->equation, categories[category].units[toindex].internal_name);
 }
 
+
 static void
-update_conversion_combos(MathEquation *equation, MathButtons *buttons)
+target_units_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
 {
     GtkTreeModel *model;
     GtkTreeIter iter;
 
-    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->convert_from_combo));
-    gtk_tree_model_get_iter_first(model, &iter);
-    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->convert_from_combo), &iter);
+    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->convert_to_combo));
+    if (!gtk_tree_model_get_iter_first(model, &iter))
+        return;
+    do
+    {
+        gint i, j;
 
-    model = GTK_TREE_MODEL(gtk_list_store_new(1, G_TYPE_STRING));
-    gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->convert_to_combo), model);
-
-    g_free(buttons->priv->previous_ans);
-    buttons->priv->previous_ans = NULL;
+        gtk_tree_model_get(model, &iter, 1, &i, 2, &j, -1);
+        if (strcmp(categories[i].units[j].internal_name, math_equation_get_target_units(equation)) == 0)
+        {
+            gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->convert_to_combo), &iter);
+            update_conversion_bar(buttons);
+            return;
+        }
+    } while (gtk_tree_model_iter_next(model, &iter));
 }
+
 
 static void
 base_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
@@ -992,10 +1052,10 @@ load_mode(MathButtons *buttons, ButtonMode mode)
         GtkCellRenderer *renderer;
         int i, j;
 
-//        buttons->priv->angle_label = GET_WIDGET(builder, "angle_label");
+        buttons->priv->convert_result_label = GET_WIDGET(builder, "convert_result_label");
 
         buttons->priv->convert_from_combo = GET_WIDGET(builder, "convert_from_combo");
-        from_model = gtk_tree_store_new(2, G_TYPE_STRING, G_TYPE_INT);
+        from_model = gtk_tree_store_new(3, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT);
         gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->convert_from_combo), GTK_TREE_MODEL(from_model));
 
         for (i = 0; i < sizeof(categories) / sizeof(categories[0]); i++) {
@@ -1003,7 +1063,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
             gtk_tree_store_set(from_model, &parent, 0, categories[i].name, 1, i, -1);
             for (j = 0; categories[i].units[j].ui_name != NULL; j++) {
                 gtk_tree_store_append(from_model, &iter, &parent);
-                gtk_tree_store_set(from_model, &iter, 0, categories[i].units[j].ui_name, 1, j, -1);
+                gtk_tree_store_set(from_model, &iter, 0, categories[i].units[j].ui_name, 1, i, 2, j, -1);
             }
         }
         renderer = gtk_cell_renderer_text_new();
@@ -1021,7 +1081,10 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
         g_signal_connect(buttons->priv->convert_from_combo, "changed", G_CALLBACK(convert_from_combobox_changed_cb), buttons);
         g_signal_connect(buttons->priv->convert_to_combo, "changed", G_CALLBACK(convert_to_combobox_changed_cb), buttons);
-        g_signal_connect(buttons->priv->equation, "answer-changed", G_CALLBACK(update_conversion_combos), buttons);
+        g_signal_connect(buttons->priv->equation, "notify::source-units", G_CALLBACK(source_units_changed_cb), buttons);
+        g_signal_connect(buttons->priv->equation, "notify::target-units", G_CALLBACK(target_units_changed_cb), buttons);
+        source_units_changed_cb(buttons->priv->equation, NULL, buttons);
+        target_units_changed_cb(buttons->priv->equation, NULL, buttons);
     }
 
     if (mode == PROGRAMMING) {

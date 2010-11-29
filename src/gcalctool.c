@@ -195,6 +195,8 @@ quit_cb(MathWindow *window)
     g_settings_set_enum(settings, "button-mode", math_buttons_get_mode(buttons));
     g_settings_set_string(settings, "source-currency", math_equation_get_source_currency(equation));
     g_settings_set_string(settings, "target-currency", math_equation_get_target_currency(equation));
+    g_settings_set_string(settings, "source-units", math_equation_get_source_units(equation));
+    g_settings_set_string(settings, "target-units", math_equation_get_target_units(equation));
     g_settings_sync();
 
     currency_free_resources();
@@ -212,6 +214,7 @@ main(int argc, char **argv)
     MPAngleUnit angle_units;
     ButtonMode button_mode;
     gchar *source_currency, *target_currency;
+    gchar *source_units, *target_units;
 
     g_type_init();
 
@@ -236,6 +239,8 @@ main(int argc, char **argv)
     button_mode = g_settings_get_enum(settings, "button-mode");
     source_currency = g_settings_get_string(settings, "source-currency");
     target_currency = g_settings_get_string(settings, "target-currency");
+    source_units = g_settings_get_string(settings, "source-units");
+    target_units = g_settings_get_string(settings, "target-units");
 
     equation = math_equation_new();
     math_equation_set_accuracy(equation, accuracy);
@@ -246,8 +251,12 @@ main(int argc, char **argv)
     math_equation_set_angle_units(equation, angle_units);
     math_equation_set_source_currency(equation, source_currency);
     math_equation_set_target_currency(equation, target_currency);
+    math_equation_set_source_units(equation, source_units);
+    math_equation_set_target_units(equation, target_units);
     g_free(source_currency);
     g_free(target_currency);
+    g_free(source_units);
+    g_free(target_units);
 
     gtk_init(&argc, &argv);
 

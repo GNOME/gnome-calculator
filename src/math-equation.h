@@ -97,6 +97,12 @@ const gchar *math_equation_get_source_currency(MathEquation *equation);
 void math_equation_set_target_currency(MathEquation *equation, const gchar *currency);
 const gchar *math_equation_get_target_currency(MathEquation *equation);
 
+void math_equation_set_source_units(MathEquation *equation, const gchar *units);
+const gchar *math_equation_get_source_units(MathEquation *equation);
+
+void math_equation_set_target_units(MathEquation *equation, const gchar *units);
+const gchar *math_equation_get_target_units(MathEquation *equation);
+
 gboolean math_equation_in_solve(MathEquation *equation);
 
 const MPNumber *math_equation_get_answer(MathEquation *equation);

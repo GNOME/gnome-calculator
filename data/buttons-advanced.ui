@@ -12,9 +12,38 @@
             <property name="visible">True</property>
             <property name="spacing">6</property>
             <child>
-              <object class="GtkComboBox" id="convert_from_combo">
+              <object class="GtkHBox" id="hbox3">
                 <property name="visible">True</property>
-                <property name="focus_on_click">False</property>
+                <child>
+                  <object class="GtkComboBox" id="convert_from_combo">
+                    <property name="visible">True</property>
+                    <property name="focus_on_click">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label7">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes" comments="This is between the unit selector dropdowns, for example: meters in kilometers"> in </property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBox" id="convert_to_combo">
+                    <property name="visible">True</property>
+                    <property name="focus_on_click">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -22,23 +51,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="label7">
+              <object class="GtkLabel" id="convert_result_label">
                 <property name="visible">True</property>
-                <property name="label" translatable="yes" comments="This is between the unit selector dropdowns, for example: meters in kilometers"> in </property>
+                <property name="xalign">1</property>
+                <property name="label">1m = 100cm</property>
               </object>
               <packing>
-                <property name="expand">False</property>
                 <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBox" id="convert_to_combo">
-                <property name="visible">True</property>
-                <property name="focus_on_click">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="position">2</property>
               </packing>
             </child>
           </object>

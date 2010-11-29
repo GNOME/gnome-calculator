@@ -43,6 +43,8 @@ gcalctool_SOURCES = \
 	mp-serializer.h \
 	financial.c \
 	financial.h \
+	units.c \
+	units.h \
 	unittest.c \
 	unittest.h
 
@@ -61,7 +63,9 @@ gcalccmd_SOURCES = \
 	mp-serializer.c \
 	mp-serializer.h\
 	math-enums.c \
-	math-enums.h
+	math-enums.h \
+	units.c \
+	units.h
 
 gcalccmd_LDADD = \
 	$(GCALCCMD_LIBS) \

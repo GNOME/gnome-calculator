@@ -49,6 +49,8 @@ enum {
     PROP_ANGLE_UNITS,
     PROP_SOURCE_CURRENCY,
     PROP_TARGET_CURRENCY,
+    PROP_SOURCE_UNITS,
+    PROP_TARGET_UNITS,  
     PROP_SERIALIZER
 };
 
@@ -76,6 +78,8 @@ struct MathEquationPrivate
     MPAngleUnit angle_units;  /* Units for trigonometric functions */
     char *source_currency;
     char *target_currency;
+    char *source_units;
+    char *target_units;
     NumberMode number_mode;   /* ??? */
     gboolean can_super_minus; /* TRUE if entering minus can generate a superscript minus */
 
@@ -292,8 +296,6 @@ reformat_display(MathEquation *equation, gint old_base)
 
     /* Add/remove thousands separators */
     reformat_separators(equation);
-
-    g_signal_emit_by_name(equation, "answer-changed");
 }
 
 
@@ -649,6 +651,7 @@ math_equation_set_source_currency(MathEquation *equation, const gchar *currency)
     g_object_notify(G_OBJECT(equation), "source-currency");
 }
 
+
 const gchar *
 math_equation_get_source_currency(MathEquation *equation)
 {
@@ -675,6 +678,41 @@ const gchar *
 math_equation_get_target_currency(MathEquation *equation)
 {
     return equation->priv->target_currency;
+}
+
+
+void
+math_equation_set_source_units(MathEquation *equation, const gchar *units)
+{
+    if (strcmp(equation->priv->source_units, units) == 0)
+        return;
+    g_free(equation->priv->source_units);
+    equation->priv->source_units = g_strdup(units);
+    g_object_notify(G_OBJECT(equation), "source-units");
+}
+
+const gchar *
+math_equation_get_source_units(MathEquation *equation)
+{
+    return equation->priv->source_units;
+}
+
+
+void
+math_equation_set_target_units(MathEquation *equation, const gchar *units)
+{
+    if (strcmp(equation->priv->target_units, units) == 0)
+        return;
+    g_free(equation->priv->target_units);
+    equation->priv->target_units = g_strdup(units);
+    g_object_notify(G_OBJECT(equation), "target-units");
+}
+
+
+const gchar *
+math_equation_get_target_units(MathEquation *equation)
+{
+    return equation->priv->target_units;
 }
 
 
@@ -1177,7 +1215,6 @@ math_equation_look_for_answer(gpointer data)
     }
     g_slice_free(SolveData, result);
 
-    g_signal_emit_by_name(equation, "answer-changed");
     return false;
 }
 
@@ -1419,6 +1456,12 @@ math_equation_set_property(GObject      *object,
     case PROP_TARGET_CURRENCY:
         math_equation_set_target_currency(self, g_value_get_string(value));
         break;
+    case PROP_SOURCE_UNITS:
+        math_equation_set_source_units(self, g_value_get_string(value));
+        break;
+    case PROP_TARGET_UNITS:
+        math_equation_set_target_units(self, g_value_get_string(value));
+        break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -1480,6 +1523,12 @@ math_equation_get_property(GObject    *object,
         break;
     case PROP_TARGET_CURRENCY:
         g_value_set_string(value, self->priv->target_currency);
+        break;
+    case PROP_SOURCE_UNITS:
+        g_value_set_string(value, self->priv->source_units);
+        break;
+    case PROP_TARGET_UNITS:
+        g_value_set_string(value, self->priv->target_units);
         break;
     case PROP_SERIALIZER:
         g_value_set_object(value, self->priv->serializer);
@@ -1627,22 +1676,26 @@ math_equation_class_init(MathEquationClass *klass)
                                                         "",
                                                         G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
+                                    PROP_SOURCE_UNITS,
+                                    g_param_spec_string("source-units",
+                                                        "source-units",
+                                                        "Source Units",
+                                                        "",
+                                                        G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_TARGET_UNITS,
+                                    g_param_spec_string("target-units",
+                                                        "target-units",
+                                                        "target Units",
+                                                        "",
+                                                        G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
                                     PROP_SERIALIZER,
                                     g_param_spec_object("serializer",
                                                         "serializer",
                                                         "Serializer",
                                                         MP_TYPE_SERIALIZER,
                                                         G_PARAM_READABLE));
-
-    g_signal_new("answer-changed",
-                 G_TYPE_FROM_CLASS(object_class),
-                 G_SIGNAL_RUN_FIRST,
-                 0,
-                 NULL,
-                 NULL,
-                 g_cclosure_marshal_VOID__VOID,
-                 G_TYPE_NONE,
-                 0);
 }
 
 
@@ -1798,6 +1851,8 @@ math_equation_init(MathEquation *equation)
     // FIXME: Pick based on locale
     equation->priv->source_currency = g_strdup(currency_names[0].short_name);
     equation->priv->target_currency = g_strdup(currency_names[0].short_name);
+    equation->priv->source_units = g_strdup("");
+    equation->priv->target_units = g_strdup("");
     equation->priv->serializer = mp_serializer_new();
     equation->priv->queue = g_async_queue_new();
 
