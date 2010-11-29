@@ -39,7 +39,7 @@ static GType number_format_type;
 struct MpSerializerPrivate
 {
     gint accuracy;            /* Number of digits to show */
-    DisplayFormat format;     /* Number display mode. */
+    MpDisplayFormat format;   /* Number display mode. */
     gint show_tsep;           /* Set if the thousands separator should be shown. */
     gint show_zeroes;         /* Set if trailing zeroes should be shown. */
 
@@ -295,11 +295,11 @@ mp_serializer_to_string(MpSerializer *serializer, const MPNumber *x)
 {
     switch(serializer->priv->format) {
     default:
-    case FIX:
+    case MP_DISPLAY_FORMAT_FIXED:
         return mp_cast_to_string(serializer, x);
-    case SCI:
+    case MP_DISPLAY_FORMAT_SCIENTIFIC:
         return mp_cast_to_exponential_string(serializer, x, FALSE);
-    case ENG:
+    case MP_DISPLAY_FORMAT_ENGINEERING:
         return mp_cast_to_exponential_string(serializer, x, TRUE);
     }
 }
@@ -403,7 +403,7 @@ mp_serializer_set_accuracy(MpSerializer *serializer, int accuracy)
 }
 
 
-DisplayFormat
+MpDisplayFormat
 mp_serializer_get_number_format(MpSerializer *serializer)
 {
     return serializer->priv->format;
@@ -411,7 +411,7 @@ mp_serializer_get_number_format(MpSerializer *serializer)
 
 
 void
-mp_serializer_set_number_format(MpSerializer *serializer, DisplayFormat format)
+mp_serializer_set_number_format(MpSerializer *serializer, MpDisplayFormat format)
 {
     serializer->priv->format = format;
 }
@@ -505,7 +505,7 @@ mp_serializer_class_init(MpSerializerClass *klass)
                                                       "number-format",
                                                       "Display format",
                                                       number_format_type,
-                                                      FIX,
+                                                      MP_DISPLAY_FORMAT_FIXED,
                                                       G_PARAM_READWRITE));
 }
 
@@ -529,5 +529,5 @@ mp_serializer_init(MpSerializer *serializer)
     serializer->priv->accuracy = 9;
     serializer->priv->show_zeroes = FALSE;
     serializer->priv->show_tsep = FALSE;
-    serializer->priv->format = FIX;
+    serializer->priv->format = MP_DISPLAY_FORMAT_FIXED;
 }

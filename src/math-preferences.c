@@ -66,7 +66,7 @@ G_MODULE_EXPORT
 void
 number_format_combobox_changed_cb(GtkWidget *combo, MathPreferencesDialog *dialog)
 {
-    DisplayFormat value;
+    MpDisplayFormat value;
     GtkTreeModel *model;
     GtkTreeIter iter;
 
@@ -269,15 +269,15 @@ create_gui(MathPreferencesDialog *dialog)
     gtk_list_store_append(GTK_LIST_STORE(model), &iter);
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
                        /* Number display mode combo: Fixed, e.g. 1234 */
-                       _("Fixed"), 1, FIX, -1);
+                       _("Fixed"), 1, MP_DISPLAY_FORMAT_FIXED, -1);
     gtk_list_store_append(GTK_LIST_STORE(model), &iter);
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
                        /* Number display mode combo: Scientific, e.g. 1.234×10^3 */
-                       _("Scientific"), 1, SCI, -1);
+                       _("Scientific"), 1, MP_DISPLAY_FORMAT_SCIENTIFIC, -1);
     gtk_list_store_append(GTK_LIST_STORE(model), &iter);
     gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0,
                        /* Number display mode combo: Engineering, e.g. 1.234k */
-                       _("Engineering"), 1, ENG, -1);
+                       _("Engineering"), 1, MP_DISPLAY_FORMAT_ENGINEERING, -1);
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(widget), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(widget), renderer, "text", 0);

@@ -79,8 +79,8 @@ gboolean math_equation_get_show_thousands_separators(MathEquation *equation);
 void math_equation_set_show_trailing_zeroes(MathEquation *equation, gboolean visible);
 gboolean math_equation_get_show_trailing_zeroes(MathEquation *equation);
 
-void math_equation_set_number_format(MathEquation *equation, DisplayFormat format);
-DisplayFormat math_equation_get_number_format(MathEquation *equation);
+void math_equation_set_number_format(MathEquation *equation, MpDisplayFormat format);
+MpDisplayFormat math_equation_get_number_format(MathEquation *equation);
 
 void math_equation_set_base(MathEquation *equation, gint base);
 gint math_equation_get_base(MathEquation *equation);

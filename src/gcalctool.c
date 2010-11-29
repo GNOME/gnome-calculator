@@ -209,7 +209,7 @@ main(int argc, char **argv)
     MathEquation *equation;
     int accuracy = 9, word_size = 64, base = 10;
     gboolean show_tsep = FALSE, show_zeroes = FALSE;
-    DisplayFormat number_format;
+    MpDisplayFormat number_format;
     MPAngleUnit angle_units;
     ButtonMode button_mode;
     gchar *source_currency, *target_currency;

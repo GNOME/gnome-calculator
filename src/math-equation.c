@@ -563,9 +563,9 @@ math_equation_get_show_trailing_zeroes(MathEquation *equation)
 
 
 void
-math_equation_set_number_format(MathEquation *equation, DisplayFormat format)
+math_equation_set_number_format(MathEquation *equation, MpDisplayFormat format)
 {
-    DisplayFormat old_format = mp_serializer_get_number_format(equation->priv->serializer);
+    MpDisplayFormat old_format = mp_serializer_get_number_format(equation->priv->serializer);
     if (old_format == format)
         return;
 
@@ -575,7 +575,7 @@ math_equation_set_number_format(MathEquation *equation, DisplayFormat format)
 }
 
 
-DisplayFormat
+MpDisplayFormat
 math_equation_get_number_format(MathEquation *equation)
 {
     return mp_serializer_get_number_format(equation->priv->serializer);
@@ -1637,7 +1637,7 @@ math_equation_class_init(MathEquationClass *klass)
                                                       "number-format",
                                                       "Display format",
                                                       number_format_type,
-                                                      FIX,
+                                                      MP_DISPLAY_FORMAT_FIXED,
                                                       G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
                                     PROP_BASE,

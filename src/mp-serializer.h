@@ -42,10 +42,10 @@ typedef struct {
 
 /* Number display mode. */
 typedef enum {
-  FIX,
-  SCI,
-  ENG
-} DisplayFormat;
+    MP_DISPLAY_FORMAT_FIXED,
+    MP_DISPLAY_FORMAT_SCIENTIFIC,
+    MP_DISPLAY_FORMAT_ENGINEERING
+} MpDisplayFormat;
 
 GType mp_serializer_get_type(void);
 
@@ -60,8 +60,8 @@ int mp_serializer_get_base(MpSerializer *serializer);
 void mp_serializer_set_accuracy(MpSerializer *serializer, int accuracy);
 int mp_serializer_get_accuracy(MpSerializer *serializer);
 
-void mp_serializer_set_number_format(MpSerializer *serializer, DisplayFormat format);
-DisplayFormat mp_serializer_get_number_format(MpSerializer *serializer);
+void mp_serializer_set_number_format(MpSerializer *serializer, MpDisplayFormat format);
+MpDisplayFormat mp_serializer_get_number_format(MpSerializer *serializer);
 
 void mp_serializer_set_radix(MpSerializer *serializer, gunichar radix);
 gunichar mp_serializer_get_radix(MpSerializer *serializer);
