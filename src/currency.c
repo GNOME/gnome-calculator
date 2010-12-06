@@ -13,9 +13,9 @@
 typedef struct {
     char *short_name;
     MPNumber value;
-} currency;
+} Currency;
 
-static currency *currencies = NULL;
+static Currency *currencies = NULL;
 static int currency_count = 0;
 
 static gboolean downloading_rates = FALSE;
@@ -113,7 +113,7 @@ currency_download_rates()
 
 
 static void
-set_rate (xmlNodePtr node, currency *cur)
+set_rate (xmlNodePtr node, Currency *cur)
 {
     xmlAttrPtr attribute;
     for (attribute = node->properties; attribute; attribute = attribute->next) {
@@ -168,7 +168,7 @@ currency_load_rates()
 
     len = (xpath_obj->nodesetval) ? xpath_obj->nodesetval->nodeNr : 0;
     currency_count = len + 1;
-    currencies = g_slice_alloc0(sizeof(currency) * currency_count);
+    currencies = g_slice_alloc0(sizeof(Currency) * currency_count);
     for (i = 0; i < len; i++) {
         if (xpath_obj->nodesetval->nodeTab[i]->type == XML_ELEMENT_NODE) {
             set_rate(xpath_obj->nodesetval->nodeTab[i], &currencies[i]);
@@ -238,7 +238,7 @@ currency_free_resources()
         if (currencies[i].short_name != NULL)
             xmlFree(currencies[i].short_name);
     }
-    g_slice_free1(currency_count * sizeof(currency), currencies);
+    g_slice_free1(currency_count * sizeof(Currency), currencies);
     currencies = NULL;
     currency_count = 0;
 }
