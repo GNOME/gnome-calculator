@@ -642,7 +642,7 @@ math_equation_set_source_currency(MathEquation *equation, const gchar *currency)
 {
     // FIXME: Pick based on locale  
     if (!currency || currency[0] == '\0')
-        currency = currency_names[0].short_name;
+        currency = currency_info[0].short_name;
 
     if (strcmp(equation->priv->source_currency, currency) == 0)
         return;
@@ -664,7 +664,7 @@ math_equation_set_target_currency(MathEquation *equation, const gchar *currency)
 {
     // FIXME: Pick based on locale  
     if (!currency || currency[0] == '\0')
-        currency = currency_names[0].short_name;
+        currency = currency_info[0].short_name;
 
     if (strcmp(equation->priv->target_currency, currency) == 0)
         return;
@@ -1849,8 +1849,8 @@ math_equation_init(MathEquation *equation)
     equation->priv->word_size = 32;
     equation->priv->angle_units = MP_DEGREES;
     // FIXME: Pick based on locale
-    equation->priv->source_currency = g_strdup(currency_names[0].short_name);
-    equation->priv->target_currency = g_strdup(currency_names[0].short_name);
+    equation->priv->source_currency = g_strdup(currency_info[0].short_name);
+    equation->priv->target_currency = g_strdup(currency_info[0].short_name);
     equation->priv->source_units = g_strdup("");
     equation->priv->target_units = g_strdup("");
     equation->priv->serializer = mp_serializer_new(MP_DISPLAY_FORMAT_AUTOMATIC, 10, 9);

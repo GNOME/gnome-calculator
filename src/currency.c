@@ -13,6 +13,7 @@
 typedef struct {
     char *short_name;
     MPNumber value;
+    const CurrencyInfo *info;
 } Currency;
 
 static Currency *currencies = NULL;
@@ -118,7 +119,19 @@ set_rate (xmlNodePtr node, Currency *cur)
     xmlAttrPtr attribute;
     for (attribute = node->properties; attribute; attribute = attribute->next) {
         if (strcmp((char *)attribute->name, "currency") == 0) {
+            int i;
+
             cur->short_name = (char *)xmlNodeGetContent((xmlNodePtr) attribute);
+            for (i = 0; currency_info[i].short_name; i++)
+            {
+                if (strcmp(cur->short_name, currency_info[i].short_name) == 0)
+                {
+                    cur->info = &currency_info[i];
+                    break;
+                }
+            }
+            if (!cur->info)
+                g_warning("Currency %s is not in the currency table", cur->short_name);
         } else if (strcmp ((char *)attribute->name, "rate") == 0) {
             char *val = (char *)xmlNodeGetContent ((xmlNodePtr) attribute);
             mp_set_from_string(val, 10, &(cur->value));
@@ -183,14 +196,40 @@ currency_load_rates()
     MPNumber foo;
     mp_set_from_integer(1, &foo);
     currencies[len].value = foo;
+    currencies[len].info = currency_get_info("EUR");
 
     xmlXPathFreeObject(xpath_obj);
     xmlXPathFreeContext(xpath_ctx);
     xmlFreeDoc(document);
     xmlCleanupParser();
 
+    for (i = 0; currency_info[i].short_name; i++)
+    {
+       int j;
+       for (j = 0; j < currency_count; j++)
+       {
+           if (currencies[j].info == &currency_info[i])
+              break;
+       }
+       if (j == currency_count)
+           g_warning("Currency %s is not provided by server", currency_info[i].short_name);
+    }
+
     g_debug("Rates loaded");
     loaded_rates = TRUE;
+}
+
+
+const CurrencyInfo *
+currency_get_info(const gchar *name)
+{
+    int i = 0;
+    while (currency_info[i].short_name && strcmp(name, currency_info[i].short_name) != 0)
+        i++;
+    if (currency_info[i].short_name)
+        return &currency_info[i];
+    else
+        return NULL;
 }
 
 

@@ -594,15 +594,12 @@ update_currency_label(MathButtons *buttons)
                          &value)) {
         char *input_text, *output_text;
         const char *source_symbol, *target_symbol;
-        int i;
 
         input_text = mp_serializer_to_string(buttons->priv->currency_serializer, &x);
         output_text = mp_serializer_to_string(buttons->priv->currency_serializer, &value);
 
-        for (i = 0; strcmp(math_equation_get_source_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
-        source_symbol = currency_names[i].symbol;
-        for (i = 0; strcmp(math_equation_get_target_currency(buttons->priv->equation), currency_names[i].short_name) != 0; i++);
-        target_symbol = currency_names[i].symbol;
+        source_symbol = currency_get_info(math_equation_get_source_currency(buttons->priv->equation))->symbol;
+        target_symbol = currency_get_info(math_equation_get_target_currency(buttons->priv->equation))->symbol;
 
         /* Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100 */
         label = g_strdup_printf(_("%s%s = %s%s"),
@@ -1151,11 +1148,11 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
         model = gtk_list_store_new(1, G_TYPE_STRING);
 
-        for (i = 0; currency_names[i].short_name != NULL; i++) {
+        for (i = 0; currency_info[i].short_name != NULL; i++) {
             GtkTreeIter iter;
 
             gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-            gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, currency_names[i].short_name, -1);
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, currency_info[i].short_name, -1);
         }
 
         gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->source_currency_combo), GTK_TREE_MODEL(model));

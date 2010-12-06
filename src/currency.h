@@ -5,17 +5,17 @@
 
 #include "mp.h"
 
-struct currency_name {
+typedef struct {
     char *short_name;
     char *symbol;
     char *long_name;
-};
+} CurrencyInfo;
 
 /*
  * List taken from http://www.ecb.int/press/pr/date/2008/html/pr081205.en.html
  * with euro added.
  */
-static const struct currency_name currency_names[] = {
+static const CurrencyInfo currency_info[] = {
     {"AUD", "$",  N_("Australian dollar")},
     {"BGN", "лв", N_("Bulgarian lev")},
     {"BRL", "R$", N_("Brazilian real")},
@@ -32,7 +32,7 @@ static const struct currency_name currency_names[] = {
     {"HUF", "Ft", N_("Hungarian forint")},
     {"IDR", "Rp", N_("Indonesian rupiah")},
     {"INR", "₹",  N_("Indian rupee")},
-    {"ISK", "kr", N_("Icelandic krona")},
+//    {"ISK", "kr", N_("Icelandic krona")}, // NOTE: Used to be provided by the ECB
     {"JPY", "¥",  N_("Japanese yen")},
     {"KRW", "₩",  N_("South Korean won")},
     {"LTL", "Lt", N_("Lithuanian litas")},
@@ -55,6 +55,8 @@ static const struct currency_name currency_names[] = {
 };
 
 // FIXME: Should indicate when rates are updated to UI
+
+const CurrencyInfo *currency_get_info(const gchar *name);
 
 /* Converts an amount of money from one currency to another */
 gboolean currency_convert(const MPNumber *from_amount,
