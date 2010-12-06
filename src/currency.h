@@ -31,7 +31,7 @@ static const struct currency_name currency_names[] = {
     {"HRK", "kn", N_("Croatian kuna")},
     {"HUF", "Ft", N_("Hungarian forint")},
     {"IDR", "Rp", N_("Indonesian rupiah")},
-    {"INR", "Rs", N_("Indian rupee")},
+    {"INR", "₹",  N_("Indian rupee")},
     {"ISK", "kr", N_("Icelandic krona")},
     {"JPY", "¥",  N_("Japanese yen")},
     {"KRW", "₩",  N_("South Korean won")},
