@@ -978,7 +978,7 @@ math_equation_insert_numeric_point(MathEquation *equation)
 {
     gchar buffer[7];
     gint len;
-    len = g_unichar_to_utf8( mp_serializer_get_radix(equation->priv->serializer), buffer);
+    len = g_unichar_to_utf8(mp_serializer_get_radix(equation->priv->serializer), buffer);
     buffer[len] = '\0';
     math_equation_insert(equation, buffer);
 }
