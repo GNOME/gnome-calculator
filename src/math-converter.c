@@ -21,6 +21,7 @@
 #include "math-converter.h"
 #include "mp-serializer.h"
 #include "units.h"
+#include "currency.h"
 
 enum {
     PROP_0,
@@ -50,7 +51,7 @@ struct UnitCategory {
 };
 
 static struct UnitCategory categories[] = {
-    {N_("Angles"),  {
+    {N_("Angle"),  {
                           /* Angle unit */
                           {N_("Degrees"), "degrees"},
                           /* Angle unit */
@@ -58,7 +59,7 @@ static struct UnitCategory categories[] = {
                           /* Angle unit */
                           {N_("Gradians"), "gradians"},
                           {NULL, NULL}}},
-    {N_("Lengths"), {
+    {N_("Length"), {
                           /* Length unit */
                           {N_("Parsecs"), "parsecs"},
                           /* Length unit */
@@ -92,7 +93,7 @@ static struct UnitCategory categories[] = {
                           /* Length unit */
                           {N_("Nanometers"), "nanometers"},
                           {NULL, NULL}}},
-    {N_("Areas"),   {
+    {N_("Area"),   {
                           /* Area unit */
                           {N_("Hectares"), "hectares"},
                           /* Area unit */
@@ -104,7 +105,7 @@ static struct UnitCategory categories[] = {
                           /* Area unit */
                           {N_("mm²"), "mm²"},
                           {NULL, NULL}}},
-    {N_("Volumes"), {
+    {N_("Volume"), {
                           /* Volume unit */
                           {N_("m³"), "m³"},
                           /* Volume unit */
@@ -122,7 +123,7 @@ static struct UnitCategory categories[] = {
                           /* Volume unit */
                           {N_("mm³"), "mm³"},
                           {NULL, NULL}}},
-    {N_("Weights"), {
+    {N_("Weight"), {
                           /* Weight unit */
                           {N_("Tonnes"), "tonnes"},
                           /* Weight unit */
@@ -134,7 +135,7 @@ static struct UnitCategory categories[] = {
                           /* Weight unit */
                           {N_("Grams"), "grams"},
                           {NULL, NULL}}},
-    {N_("Times"),   {
+    {N_("Duration"),   {
                           /* Time unit */
                           {N_("Years"), "years"},
                           /* Time unit */
@@ -193,8 +194,10 @@ update_result_label(MathConverter *converter)
     target_units = math_equation_get_target_units(converter->priv->equation);
     if (!source_units || !target_units)
         enabled = FALSE;
-    else if (!units_convert(&x, source_units, target_units, &z))
-        enabled = FALSE;
+    else if (!units_convert(&x, source_units, target_units, &z)) {
+        if (!currency_convert(&x, source_units, target_units, &z))
+            enabled = FALSE;
+    }
 
     gtk_widget_set_sensitive(converter->priv->result_label, enabled);
     if (!enabled)
@@ -203,6 +206,7 @@ update_result_label(MathConverter *converter)
     source_value = mp_serializer_to_string(converter->priv->serializer, &x);
     target_value = mp_serializer_to_string(converter->priv->serializer, &z);
 
+    // FIXME: Use currency symbols for currency
     label = g_strdup_printf("%s %s = %s %s", source_value, source_units, target_value, target_units);
     gtk_label_set_text(GTK_LABEL(converter->priv->result_label), label);
     g_free(source_value);
@@ -228,11 +232,12 @@ source_units_changed_cb(MathEquation *equation, GParamSpec *spec, MathConverter 
                 gint i, j;
 
                 gtk_tree_model_get(model, &child_iter, 1, &i, 2, &j, -1);
-                if (strcmp(categories[i].units[j].internal_name, math_equation_get_source_units(equation)) == 0) {
+                if ((i == -1 && strcmp(currency_info[j].short_name, math_equation_get_source_units(equation)) == 0) ||
+                    (i >= 0 && strcmp(categories[i].units[j].internal_name, math_equation_get_source_units(equation)) == 0)) {
                     gtk_combo_box_set_active_iter(GTK_COMBO_BOX(converter->priv->from_combo), &child_iter);
                     update_result_label(converter);
                     return;
-                }             
+                }
             } while (gtk_tree_model_iter_next(model, &child_iter));
         }
     } while (gtk_tree_model_iter_next(model, &iter));
@@ -252,7 +257,8 @@ target_units_changed_cb(MathEquation *equation, GParamSpec *spec, MathConverter 
         gint i, j;
 
         gtk_tree_model_get(model, &iter, 1, &i, 2, &j, -1);
-        if (strcmp(categories[i].units[j].internal_name, math_equation_get_target_units(equation)) == 0) {
+        if ((i == -1 && strcmp(currency_info[j].short_name, math_equation_get_source_units(equation)) == 0) ||
+            (i >= 0 && strcmp(categories[i].units[j].internal_name, math_equation_get_source_units(equation)) == 0)) {
             gtk_combo_box_set_active_iter(GTK_COMBO_BOX(converter->priv->to_combo), &iter);
             update_result_label(converter);
             return;
@@ -341,22 +347,39 @@ from_combobox_changed_cb(GtkWidget *combo, MathConverter *converter)
 {
     GtkTreeModel *model;
     GtkTreeIter iter;
-    int typeindex, unitindex, i;
+    int category_index, unit_index;
+    const gchar *unit_name;
 
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
-    gtk_tree_model_get(model, &iter, 1, &typeindex, 2, &unitindex, -1);
+    gtk_tree_model_get(model, &iter, 1, &category_index, 2, &unit_index, -1);
 
     model = GTK_TREE_MODEL(gtk_list_store_new(3, G_TYPE_STRING, G_TYPE_INT, G_TYPE_INT));
-    for (i = 0; categories[typeindex].units[i].ui_name != NULL; i++) {
-        if (i == unitindex)
-            continue;
-        gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-        gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, categories[typeindex].units[i].ui_name, 1, typeindex, 2, i, -1);
+  
+    if (category_index == -1) {
+        int i;
+        for (i = 0; currency_info[i].short_name != NULL; i++) {
+            if (i == unit_index)
+                continue;
+            gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, currency_info[i].short_name, 1, -1, 2, i, -1);
+        }
+        unit_name = currency_info[unit_index].short_name;
     }
+    else {
+        int i;
+        for (i = 0; categories[category_index].units[i].ui_name != NULL; i++) {
+            if (i == unit_index)
+                continue;
+            gtk_list_store_append(GTK_LIST_STORE(model), &iter);
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, categories[category_index].units[i].ui_name, 1, category_index, 2, i, -1);
+        }
+        unit_name = categories[category_index].units[unit_index].internal_name;
+    }
+
     gtk_combo_box_set_model(GTK_COMBO_BOX(converter->priv->to_combo), model);
 
-    math_equation_set_source_units(converter->priv->equation, categories[typeindex].units[unitindex].internal_name);
+    math_equation_set_source_units(converter->priv->equation, unit_name);
 
     gtk_combo_box_set_active(GTK_COMBO_BOX(converter->priv->to_combo), 0);
 }
@@ -367,12 +390,15 @@ to_combobox_changed_cb(GtkWidget *combo, MathConverter *converter)
 {
     GtkTreeModel *model;
     GtkTreeIter iter;
-    int category, toindex;
+    int category_index, unit_index;
 
     model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
-    gtk_tree_model_get(model, &iter, 1, &category, 2, &toindex, -1);
-    math_equation_set_target_units(converter->priv->equation, categories[category].units[toindex].internal_name);
+    gtk_tree_model_get(model, &iter, 1, &category_index, 2, &unit_index, -1);
+    if (category_index == -1)
+        math_equation_set_target_units(converter->priv->equation, currency_info[unit_index].short_name);
+    else
+        math_equation_set_target_units(converter->priv->equation, categories[category_index].units[unit_index].internal_name);
 }
 
 
@@ -392,7 +418,7 @@ math_converter_init(MathConverter *converter)
 {
     GtkWidget *hbox, *label;
     GtkTreeStore *from_model;
-    GtkTreeIter iter, parent;
+    GtkTreeIter parent;
     GtkCellRenderer *renderer;
     int i, j;
 
@@ -412,10 +438,22 @@ math_converter_init(MathConverter *converter)
         gtk_tree_store_append(from_model, &parent, NULL);
         gtk_tree_store_set(from_model, &parent, 0, categories[i].name, 1, i, -1);
         for (j = 0; categories[i].units[j].ui_name != NULL; j++) {
+            GtkTreeIter iter;
+
             gtk_tree_store_append(from_model, &iter, &parent);
             gtk_tree_store_set(from_model, &iter, 0, categories[i].units[j].ui_name, 1, i, 2, j, -1);
         }
     }
+
+    gtk_tree_store_append(from_model, &parent, NULL);
+    gtk_tree_store_set(from_model, &parent, 0, _("Currency"), 1, i, -1);
+    for (i = 0; currency_info[i].short_name != NULL; i++) {
+        GtkTreeIter iter;
+
+        gtk_tree_store_append(from_model, &iter, &parent);
+        gtk_tree_store_set(from_model, &iter, 0, currency_info[i].short_name, 1, -1, 2, i, -1);
+    }
+
     renderer = gtk_cell_renderer_text_new();
     gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(converter->priv->from_combo), renderer, TRUE);
     gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(converter->priv->from_combo), renderer, "text", 0);
