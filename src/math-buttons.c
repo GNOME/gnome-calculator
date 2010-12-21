@@ -41,7 +41,9 @@ struct MathButtonsPrivate
 
     ButtonMode mode;
     gint programming_base;
-  
+
+    MathConverter *converter;
+
     GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
 
     GdkColor color_numbers, color_action, color_operator, color_function, color_memory, color_group;
@@ -782,14 +784,6 @@ load_mode(MathButtons *buttons, ButtonMode mode)
             gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(widget), TRUE);
     }
 
-    if (mode == ADVANCED) {
-        GtkWidget *converter;
-
-        converter = GTK_WIDGET(math_converter_new(buttons->priv->equation));
-        gtk_widget_show(converter);
-        gtk_box_pack_start(GTK_BOX(*panel), converter, FALSE, TRUE, 0);
-    }
-
     if (mode == PROGRAMMING) {
         GtkListStore *model;
         GtkTreeIter iter;
@@ -904,6 +898,11 @@ load_buttons(MathButtons *buttons)
     if (!gtk_widget_get_visible(GTK_WIDGET(buttons)))
         return;
 
+    if (!buttons->priv->converter) {
+        buttons->priv->converter = math_converter_new(buttons->priv->equation);
+        gtk_box_pack_start(GTK_BOX(buttons), GTK_WIDGET(buttons->priv->converter), FALSE, TRUE, 0);      
+    }
+
     panel = load_mode(buttons, buttons->priv->mode);
     if (buttons->priv->active_panel == panel)
         return;
@@ -936,6 +935,8 @@ math_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
         math_equation_set_base(buttons->priv->equation, 10);
 
     load_buttons(buttons);
+
+    gtk_widget_set_visible(GTK_WIDGET(buttons->priv->converter), mode == ADVANCED);
 
     g_object_notify(G_OBJECT(buttons), "mode");
 }
@@ -1689,6 +1690,7 @@ static void
 math_buttons_init(MathButtons *buttons)
 {
     buttons->priv = G_TYPE_INSTANCE_GET_PRIVATE(buttons, math_buttons_get_type(), MathButtonsPrivate);
+    gtk_box_set_spacing(GTK_BOX(buttons), 6);
     buttons->priv->programming_base = 10;
     gdk_color_parse("#0000FF", &buttons->priv->color_numbers);
     gdk_color_parse("#00FF00", &buttons->priv->color_action);
