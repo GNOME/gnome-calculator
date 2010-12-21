@@ -14,6 +14,8 @@ gcalctool_SOURCES = \
 	gcalctool.c \
 	math-buttons.c \
 	math-buttons.h \
+	math-converter.c \
+	math-converter.h \
 	math-display.c \
 	math-display.h \
 	math-equation.c \
