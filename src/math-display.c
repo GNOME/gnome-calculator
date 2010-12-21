@@ -90,6 +90,12 @@ display_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathDisplay *display
         return TRUE;
     }
 
+    /* Numeric keypad will often insert '.' regardless of locale */
+    if (event->keyval == GDK_KEY_KP_Decimal) {
+        math_equation_insert_numeric_point(display->priv->equation);
+        return TRUE;
+    }
+
     /* Substitute */
     if (state == 0) {
         if (c == '*') {
