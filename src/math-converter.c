@@ -50,7 +50,7 @@ struct UnitCategory {
 };
 
 static struct UnitCategory categories[] = {
-    {N_("Angle Units"),  {
+    {N_("Angles"),  {
                           /* Angle unit */
                           {N_("Degrees"), "degrees"},
                           /* Angle unit */
@@ -58,7 +58,7 @@ static struct UnitCategory categories[] = {
                           /* Angle unit */
                           {N_("Gradians"), "gradians"},
                           {NULL, NULL}}},
-    {N_("Length Units"), {
+    {N_("Lengths"), {
                           /* Length unit */
                           {N_("Parsecs"), "parsecs"},
                           /* Length unit */
@@ -92,7 +92,7 @@ static struct UnitCategory categories[] = {
                           /* Length unit */
                           {N_("Nanometers"), "nanometers"},
                           {NULL, NULL}}},
-    {N_("Area Units"),   {
+    {N_("Areas"),   {
                           /* Area unit */
                           {N_("Hectares"), "hectares"},
                           /* Area unit */
@@ -104,7 +104,7 @@ static struct UnitCategory categories[] = {
                           /* Area unit */
                           {N_("mm²"), "mm²"},
                           {NULL, NULL}}},
-    {N_("Volume Units"), {
+    {N_("Volumes"), {
                           /* Volume unit */
                           {N_("m³"), "m³"},
                           /* Volume unit */
@@ -122,7 +122,7 @@ static struct UnitCategory categories[] = {
                           /* Volume unit */
                           {N_("mm³"), "mm³"},
                           {NULL, NULL}}},
-    {N_("Weight Units"), {
+    {N_("Weights"), {
                           /* Weight unit */
                           {N_("Tonnes"), "tonnes"},
                           /* Weight unit */
@@ -134,7 +134,7 @@ static struct UnitCategory categories[] = {
                           /* Weight unit */
                           {N_("Grams"), "grams"},
                           {NULL, NULL}}},
-    {N_("Time Units"),   {
+    {N_("Times"),   {
                           /* Time unit */
                           {N_("Years"), "years"},
                           /* Time unit */
