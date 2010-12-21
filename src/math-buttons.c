@@ -498,9 +498,7 @@ load_finc_dialogs(MathButtons *buttons)
     for (i = 0; finc_dialog_fields[i][0] != NULL; i++) {
         for (j = 0; finc_dialog_fields[i][j]; j++) {
             GObject *o;
-            o = gtk_builder_get_object(buttons->priv->financial_ui, finc_dialog_fields[i][j]);
-          if(!o)
-            printf("missing '%s'\n", finc_dialog_fields[i][j]);
+            o = gtk_builder_get_object (buttons->priv->financial_ui, finc_dialog_fields[i][j]);
             g_object_set_data(o, "finc_field", GINT_TO_POINTER(j));
             g_object_set_data(o, "finc_dialog", GINT_TO_POINTER(i));
         }
