@@ -16,41 +16,33 @@
  *  02111-1307, USA.
  */
 
-#ifndef MATH_VARIABLES_H
-#define MATH_VARIABLES_H
+#ifndef MATH_VARIABLE_POPUP_H
+#define MATH_VARIABLE_POPUP_H
 
-#include <glib-object.h>
-#include "mp.h"
+#include <gtk/gtk.h>
+#include "math-equation.h"
 
 G_BEGIN_DECLS
 
-#define MATH_VARIABLES(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), math_equation_get_type(), MathVariables))
+#define MATH_VARIABLE_POPUP(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), math_variable_popup_get_type(), MathVariablePopup))
 
-typedef struct MathVariablesPrivate MathVariablesPrivate;
-
-typedef struct
-{
-    GObject parent_instance;
-    MathVariablesPrivate *priv;
-} MathVariables;
+typedef struct MathVariablePopupPrivate MathVariablePopupPrivate;
 
 typedef struct
 {
-    GObjectClass parent_class;
-} MathVariablesClass;
+    GtkWindow parent_instance;
+    MathVariablePopupPrivate *priv;
+} MathVariablePopup;
 
-GType math_variables_get_type(void);
+typedef struct
+{
+    GtkWindowClass parent_class;
+} MathVariablePopupClass;
 
-MathVariables *math_variables_new(void);
+GType math_variable_popup_get_type(void);
 
-gchar **math_variables_get_names(MathVariables *variables);
-
-void math_variables_set(MathVariables *variables, const char *name, const MPNumber *value);
-
-MPNumber *math_variables_get(MathVariables *variables, const char *name);
-
-void math_variables_delete(MathVariables *variables, const char *name);
+MathVariablePopup *math_variable_popup_new(MathEquation *equation);
 
 G_END_DECLS
 
-#endif /* MATH_VARIABLES_H */
+#endif /* MATH_VARIABLE_POPUP_H */

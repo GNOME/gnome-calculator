@@ -20,6 +20,7 @@
 
 #include "math-buttons.h"
 #include "math-converter.h"
+#include "math-variable-popup.h"
 #include "financial.h"
 #include "currency.h"
 #include "mp-serializer.h"
@@ -231,12 +232,9 @@ static ButtonData button_data[] = {
     {"end_group",          ")", GROUP,
       /* Tooltip for the end group button */
       N_("End Group [)]")},
-    {"store", NULL, MEMORY,
-      /* Tooltip for the assign variable button */
-      N_("Assign Variable")},
-    {"recall", NULL, MEMORY,
-      /* Tooltip for the insert variable button */
-      N_("Insert Variable")},
+    {"memory", NULL, MEMORY,
+      /* Tooltip for the memory button */
+      N_("Memory")},
     {"character", NULL, MEMORY,
       /* Tooltip for the insert character code button */
       N_("Insert Character Code")},
@@ -1057,163 +1055,22 @@ popup_button_menu(GtkWidget *widget, GtkMenu *menu)
 }
 
 
-static void
-save_variable_cb(GtkWidget *widget, MathButtons *buttons)
-{
-  printf("save\n");
-}
-
-
-static void
-delete_variable_cb(GtkWidget *widget, MathButtons *buttons)
-{
-  printf("delete\n");
-}
-
-
-static GtkWidget *
-make_register_menu_item(MathButtons *buttons, const gchar *name, const MPNumber *value, gboolean can_modify, GCallback callback)
-{
-    gchar *text, *mstr;
-    GtkWidget *item, *label;
-
-    if (value) {
-        MpSerializer *serializer = math_equation_get_serializer(buttons->priv->equation);
-        text = mp_serializer_to_string(serializer, value);
-        mstr = g_strdup_printf("<span weight=\"bold\">%s</span> = %s", name, text);
-        g_free(text);
-    }
-    else
-        mstr = g_strdup_printf("<span weight=\"bold\">%s</span>", name);
-    label = gtk_label_new(mstr);
-    gtk_label_set_use_markup(GTK_LABEL(label), TRUE);
-    gtk_misc_set_alignment(GTK_MISC(label), 0.0, 0.5);
-    g_free(mstr);
-
-    item = gtk_menu_item_new();
-
-    // FIXME: Buttons don't work inside menus...
-    if (0) {//can_modify) {
-        GtkWidget *hbox, *button;
-
-        hbox = gtk_hbox_new(FALSE, 6);
-        gtk_container_add(GTK_CONTAINER(item), hbox);
-
-        gtk_box_pack_start(GTK_BOX(hbox), label, TRUE, TRUE, 0);
-
-        button = gtk_button_new();
-        gtk_button_set_image(GTK_BUTTON(button), gtk_image_new_from_stock(GTK_STOCK_DELETE, GTK_ICON_SIZE_MENU));
-        gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
-        gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, TRUE, 0);
-        g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(delete_variable_cb), buttons);
-
-        button = gtk_button_new();
-        gtk_button_set_image(GTK_BUTTON(button), gtk_image_new_from_stock(GTK_STOCK_SAVE, GTK_ICON_SIZE_MENU));
-        gtk_button_set_relief(GTK_BUTTON(button), GTK_RELIEF_NONE);
-        gtk_box_pack_end(GTK_BOX(hbox), button, FALSE, TRUE, 0);
-        g_signal_connect(G_OBJECT(button), "clicked", G_CALLBACK(save_variable_cb), buttons);
-    }
-    else
-        gtk_container_add(GTK_CONTAINER(item), label);
-
-    g_object_set_data(G_OBJECT(item), "register_id", g_strdup(name)); // FIXME: Memory leak
-    g_signal_connect(item, "activate", callback, buttons);
-  
-    return item;
-}
-
-
-static void
-store_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
-{
-    math_equation_store(buttons->priv->equation, g_object_get_data(G_OBJECT(menu), "register_id"));
-}
-
-
-void store_cb(GtkWidget *widget, MathButtons *buttons);
+void memory_cb(GtkWidget *widget, MathButtons *buttons);
 G_MODULE_EXPORT
 void
-store_cb(GtkWidget *widget, MathButtons *buttons)
+memory_cb(GtkWidget *widget, MathButtons *buttons)
 {
-    int i;
-    GtkWidget *menu;
-    GtkWidget *item;
-    gchar **names;
+    MathVariablePopup *popup;
+    GtkAllocation allocation;
+    gint x, y;
 
-    menu = gtk_menu_new();
-    gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-    set_tint(menu, &buttons->priv->color_memory, 1);
+    popup = math_variable_popup_new(buttons->priv->equation);
+    set_tint(GTK_WIDGET(popup), &buttons->priv->color_memory, 1);
 
-    names = math_variables_get_names(math_equation_get_variables(buttons->priv->equation));
-    if (names[0] == NULL) {
-        item = gtk_menu_item_new_with_label(/* Text shown in store menu when no variables defined */
-                                            _("No variables defined"));
-        gtk_widget_set_sensitive(item, FALSE);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-    }  
-    for (i = 0; names[i]; i++) {
-        MPNumber *value;
-        value = math_variables_get_value(math_equation_get_variables(buttons->priv->equation), names[i]);
-        item = make_register_menu_item(buttons, names[i], value, TRUE, G_CALLBACK(store_menu_cb));
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-    }
-
-    g_strfreev(names);
-
-    // FIXME
-    //item = gtk_menu_item_new_with_label(_("Add variable"));
-    //gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-
-    gtk_widget_show_all(menu);
-    popup_button_menu(widget, GTK_MENU(menu));
-}
-
-
-static void
-recall_menu_cb(GtkMenuItem *menu, MathButtons *buttons)
-{
-    math_equation_recall(buttons->priv->equation, g_object_get_data(G_OBJECT(menu), "register_id"));  
-}
-
-
-void recall_cb(GtkWidget *widget, MathButtons *buttons);
-G_MODULE_EXPORT
-void
-recall_cb(GtkWidget *widget, MathButtons *buttons)
-{
-    int i;
-    GtkWidget *menu;
-    GtkWidget *item;
-    gchar **names;
-
-    menu = gtk_menu_new();
-    gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-    set_tint(menu, &buttons->priv->color_memory, 1);
-
-    names = math_variables_get_names(math_equation_get_variables(buttons->priv->equation));
-    if (names[0] == NULL) {
-        item = gtk_menu_item_new_with_label(/* Text shown in recall menu when no variables defined */
-                                            _("No variables defined"));
-        gtk_widget_set_sensitive(item, FALSE);
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-    }  
-    for (i = 0; names[i]; i++) {
-        MPNumber *value;
-        value = math_variables_get_value(math_equation_get_variables(buttons->priv->equation), names[i]);
-        item = make_register_menu_item(buttons, names[i], value, TRUE, G_CALLBACK(recall_menu_cb));
-        gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-    }
-
-    g_strfreev(names);
-
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), gtk_separator_menu_item_new());
-    item = make_register_menu_item(buttons, "ans", math_equation_get_answer(buttons->priv->equation), FALSE, G_CALLBACK(recall_menu_cb));
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-    item = make_register_menu_item(buttons, "rand", NULL, FALSE, G_CALLBACK(recall_menu_cb));
-    gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
-
-    gtk_widget_show_all(menu);
-    popup_button_menu(widget, GTK_MENU(menu));
+    gtk_widget_get_allocation(widget, &allocation); 
+    gdk_window_get_root_coords(gtk_widget_get_window(widget), allocation.x, allocation.y, &x, &y);
+    gtk_window_move(GTK_WINDOW(popup), x, y);
+    gtk_widget_show(GTK_WIDGET(popup));
 }
 
 

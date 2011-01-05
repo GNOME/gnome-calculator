@@ -24,6 +24,8 @@ gcalctool_SOURCES = \
 	math-preferences.h \
 	math-variables.c \
 	math-variables.h \
+	math-variable-popup.c \
+	math-variable-popup.h \
 	math-window.c \
 	math-window.h \
 	math-enums.c \

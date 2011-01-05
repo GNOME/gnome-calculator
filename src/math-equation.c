@@ -881,7 +881,7 @@ math_equation_store(MathEquation *equation, const gchar *name)
     if (!math_equation_get_number(equation, &t))
         math_equation_set_status(equation, _("No sane value to store"));
     else
-        math_variables_set_value(equation->priv->variables, name, &t);
+        math_variables_set(equation->priv->variables, name, &t);
 }
 
 
@@ -1033,7 +1033,7 @@ variable_is_defined(const char *name, void *data)
     }
     g_free(lower_name);
 
-    return math_variables_get_value(equation->priv->variables, name) != NULL;
+    return math_variables_get(equation->priv->variables, name) != NULL;
 }
 
 
@@ -1054,7 +1054,7 @@ get_variable(const char *name, MPNumber *z, void *data)
     else if (strcmp(lower_name, "ans") == 0)
         mp_set_from_mp(&equation->priv->state.ans, z);
     else {
-        t = math_variables_get_value(equation->priv->variables, name);
+        t = math_variables_get(equation->priv->variables, name);
         if (t)
             mp_set_from_mp(t, z);
         else
@@ -1072,7 +1072,7 @@ set_variable(const char *name, const MPNumber *x, void *data)
 {
     MathEquation *equation = data;
     /* FIXME: Don't allow writing to built-in variables, e.g. ans, rand, sin, ... */
-    math_variables_set_value(equation->priv->variables, name, x);
+    math_variables_set(equation->priv->variables, name, x);
 }
 
 

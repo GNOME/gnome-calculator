@@ -2458,42 +2458,14 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="calc_recall_button">
+              <object class="GtkButton" id="calc_numeric_point_button">
+                <property name="label" comments="Label is set in gtk.c to comply with LC flags">.</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="use_underline">True</property>
                 <property name="focus_on_click">False</property>
-                <child internal-child="accessible">
-                  <object class="AtkObject" id="calc_recall_button-atkobject">
-                    <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the recall value button">Recall</property>
-                  </object>
-                </child>
-                <signal name="clicked" handler="recall_cb"/>
-                <child>
-                  <object class="GtkHBox" id="hbox19">
-                    <property name="visible">True</property>
-                    <property name="spacing">3</property>
-                    <child>
-                      <object class="GtkLabel" id="label22">
-                        <property name="visible">True</property>
-                        <property name="label" translatable="yes" comments="The label on the memory recall button">← R</property>
-                      </object>
-                      <packing>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkArrow" id="arrow13">
-                        <property name="visible">True</property>
-                        <property name="arrow_type">down</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                </child>
+                <signal name="clicked" handler="numeric_point_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -2503,7 +2475,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkButton" id="calc_store_button">
+              <object class="GtkButton" id="calc_memory_button">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -2513,7 +2485,7 @@
                     <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the store value button">Store</property>
                   </object>
                 </child>
-                <signal name="clicked" handler="store_cb"/>
+                <signal name="clicked" handler="memory_cb"/>
                 <child>
                   <object class="GtkHBox" id="hbox20">
                     <property name="visible">True</property>
@@ -2521,7 +2493,7 @@
                     <child>
                       <object class="GtkLabel" id="label23">
                         <property name="visible">True</property>
-                        <property name="label" translatable="yes" comments="The label on the memory store button">→ R</property>
+                        <property name="label" translatable="yes" comments="The label on the memory button">x</property>
                       </object>
                       <packing>
                         <property name="position">0</property>

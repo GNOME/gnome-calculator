@@ -132,9 +132,10 @@ math_variables_get_names(MathVariables *variables)
 
 
 void
-math_variables_set_value(MathVariables *variables, const char *name, const MPNumber *value)
+math_variables_set(MathVariables *variables, const char *name, const MPNumber *value)
 {
     MPNumber *t;
+
     t = g_malloc(sizeof(MPNumber));
     mp_set_from_mp(value, t);
     g_hash_table_insert(variables->priv->registers, g_strdup(name), t);
@@ -143,9 +144,17 @@ math_variables_set_value(MathVariables *variables, const char *name, const MPNum
 
 
 MPNumber *
-math_variables_get_value(MathVariables *variables, const char *name)
+math_variables_get(MathVariables *variables, const char *name)
 {
     return g_hash_table_lookup(variables->priv->registers, name);
+}
+
+
+void
+math_variables_delete(MathVariables *variables, const char *name)
+{
+    g_hash_table_remove(variables->priv->registers, name);
+    registers_save(variables);
 }
 
 
