@@ -39,10 +39,10 @@ G_DEFINE_TYPE (MathVariablePopup, math_variable_popup, GTK_TYPE_WINDOW);
 MathVariablePopup *
 math_variable_popup_new(MathEquation *equation)
 {
-    return g_object_new(math_variable_popup_get_type(), "type", GTK_WINDOW_POPUP, "equation", equation, NULL);
+    return g_object_new(math_variable_popup_get_type(), "equation", equation, NULL);
 }
 
-//FIXME
+
 static void
 variable_focus_out_event_cb(GtkWidget *widget, GdkEventFocus *event, MathVariablePopup *popup)
 {
@@ -61,6 +61,14 @@ insert_variable_cb(GtkWidget *widget, MathVariablePopup *popup)
     gtk_widget_destroy(gtk_widget_get_toplevel(widget));
 }
 
+
+static void
+variable_name_changed_cb(GtkWidget *widget, MathVariablePopup *popup)
+{
+    const gchar *text = gtk_entry_get_text(GTK_ENTRY(popup->priv->variable_name_entry));
+    gtk_widget_set_sensitive(popup->priv->add_variable_button, text[0] != '\0');
+}
+                         
 
 static void
 add_variable_cb(GtkWidget *widget, MathVariablePopup *popup)
@@ -202,10 +210,10 @@ math_variable_popup_set_property(GObject      *object,
         entry = gtk_hbox_new(FALSE, 6);
         gtk_widget_show(entry);
 
-        // FIXME: Set add button sensitivity based on text being present
-        // FIXME: Show greyed "variable name" text to give user a hint how to use
-        // FIXME: Activate on enter
+        // TODO: Show greyed "variable name" text to give user a hint how to use
         self->priv->variable_name_entry = gtk_entry_new();
+        g_signal_connect(G_OBJECT(self->priv->variable_name_entry), "changed", G_CALLBACK(variable_name_changed_cb), self);
+        g_signal_connect(G_OBJECT(self->priv->variable_name_entry), "activate", G_CALLBACK(add_variable_cb), self);
         gtk_box_pack_start(GTK_BOX(entry), self->priv->variable_name_entry, TRUE, TRUE, 0);
         gtk_widget_show(self->priv->variable_name_entry);
 
@@ -280,8 +288,13 @@ math_variable_popup_init(MathVariablePopup *popup)
 {
     popup->priv = G_TYPE_INSTANCE_GET_PRIVATE(popup, math_variable_popup_get_type(), MathVariablePopupPrivate);
 
+    gtk_window_set_decorated(GTK_WINDOW(popup), FALSE);
+    gtk_window_set_skip_taskbar_hint(GTK_WINDOW(popup), TRUE);
+
     gtk_container_set_border_width(GTK_CONTAINER(popup), 6);
-    g_signal_connect(G_OBJECT(popup), "focus-out-event", G_CALLBACK(variable_focus_out_event_cb), popup); // FIXME
+
+    /* Destroy this window when it loses focus */
+    g_signal_connect(G_OBJECT(popup), "focus-out-event", G_CALLBACK(variable_focus_out_event_cb), popup);
 
     popup->priv->vbox = gtk_vbox_new(TRUE, 6);
     gtk_container_add(GTK_CONTAINER(popup), popup->priv->vbox);

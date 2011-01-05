@@ -1066,6 +1066,7 @@ memory_cb(GtkWidget *widget, MathButtons *buttons)
 
     popup = math_variable_popup_new(buttons->priv->equation);
     set_tint(GTK_WIDGET(popup), &buttons->priv->color_memory, 1);
+    gtk_window_set_transient_for(GTK_WINDOW(popup), GTK_WINDOW(gtk_widget_get_toplevel(widget)));
 
     gtk_widget_get_allocation(widget, &allocation); 
     gdk_window_get_root_coords(gtk_widget_get_window(widget), allocation.x, allocation.y, &x, &y);
