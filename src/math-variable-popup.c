@@ -211,6 +211,7 @@ math_variable_popup_set_property(GObject      *object,
         gtk_widget_show(entry);
 
         // TODO: Show greyed "variable name" text to give user a hint how to use
+        // TODO: Replace whitespace with underscores automatically
         self->priv->variable_name_entry = gtk_entry_new();
         g_signal_connect(G_OBJECT(self->priv->variable_name_entry), "changed", G_CALLBACK(variable_name_changed_cb), self);
         g_signal_connect(G_OBJECT(self->priv->variable_name_entry), "activate", G_CALLBACK(add_variable_cb), self);
