@@ -17,6 +17,7 @@
  */
 
 #include <glib/gi18n.h>
+#include <gdk/gdkkeysyms.h>
 
 #include "math-variable-popup.h"
 
@@ -59,6 +60,17 @@ insert_variable_cb(GtkWidget *widget, MathVariablePopup *popup)
     math_equation_insert(popup->priv->equation, name);
 
     gtk_widget_destroy(gtk_widget_get_toplevel(widget));
+}
+
+
+static gboolean
+variable_name_key_press_cb(GtkWidget *widget, GdkEventKey *event, MathVariablePopup *popup)
+{
+    /* Can't have whitespace in names, so replace with underscores */
+    if (event->keyval == GDK_KEY_space || event->keyval == GDK_KEY_KP_Space)
+        event->keyval = GDK_KEY_underscore;
+
+    return FALSE;
 }
 
 
@@ -211,8 +223,8 @@ math_variable_popup_set_property(GObject      *object,
         gtk_widget_show(entry);
 
         // TODO: Show greyed "variable name" text to give user a hint how to use
-        // TODO: Replace whitespace with underscores automatically
         self->priv->variable_name_entry = gtk_entry_new();
+        g_signal_connect(G_OBJECT(self->priv->variable_name_entry), "key-press-event", G_CALLBACK(variable_name_key_press_cb), self);
         g_signal_connect(G_OBJECT(self->priv->variable_name_entry), "changed", G_CALLBACK(variable_name_changed_cb), self);
         g_signal_connect(G_OBJECT(self->priv->variable_name_entry), "activate", G_CALLBACK(add_variable_cb), self);
         gtk_box_pack_start(GTK_BOX(entry), self->priv->variable_name_entry, TRUE, TRUE, 0);
