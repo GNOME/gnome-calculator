@@ -13,20 +13,19 @@ msgstr ""
 "Project-Id-Version: Gcalctool MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-12-12 11:39+0000\n"
-"PO-Revision-Date: 2011-01-05 17:10+0200\n"
+"POT-Creation-Date: 2011-01-05 16:14+0000\n"
+"PO-Revision-Date: 2011-01-07 10:26+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
-"Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. This is between the unit selector dropdowns, for example: meters in kilometers
-#. This is between the currency selector dropdowns, for example: [USD] in [EUR]
-msgid " in "
-msgstr " → "
+#. The label on the memory button
+msgid "<i>x</i>"
+msgstr "<i>x</i>"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 msgid "="
@@ -52,9 +51,11 @@ msgstr "Tegurdamine"
 msgid "Inverse"
 msgstr "Pöördväärtus"
 
-#. Accessible name for the recall value button
-msgid "Recall"
-msgstr "Võta mälust"
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+msgid "Memory"
+msgstr "Mälu"
 
 #. Accessible name for the scientific exponent button
 msgid "Scientific Exponent"
@@ -72,19 +73,15 @@ msgstr "Alaindeks"
 msgid "Superscript"
 msgstr "Ülaindeks"
 
-#. The label on the memory recall button
-msgid "← R"
-msgstr "← R"
+#. This is between the currency selector dropdowns, for example: [USD] in [EUR]
+msgid " in "
+msgstr " → "
 
-#. The label on the memory store button
-msgid "→ R"
-msgstr "→ R"
-
-#. Payment Period Dialog: Button to calculate result
+#. Compounding Term Dialog: Calculate button
 msgid "C_alculate"
 msgstr "_Arvuta"
 
-#. Gross Profit Margin Dialog: Label before cost input
+#. Double-Declining Depreciation Dialog: Label before cost input
 msgid "C_ost:"
 msgstr "_Maksumus:"
 
@@ -230,7 +227,7 @@ msgstr "Makseperiood"
 msgid "Periodic Interest Rate"
 msgstr "Perioodiline intressimäär"
 
-#. Payment Period Dialog: Label before periodic interest rate input
+#. Compounding Term Dialog: Label before periodic interest rate input
 msgid "Periodic Interest _Rate:"
 msgstr "Perioodi _intressimäär:"
 
@@ -248,7 +245,7 @@ msgstr "Makse"
 msgid "Present Value"
 msgstr "Nüüdisväärtus"
 
-#. Periodic Interest Rate Dialog: Label before present value input
+#. Compounding Term Dialog: Label before present value input
 msgid "Present _Value:"
 msgstr "_Nüüdisväärtus:"
 
@@ -280,15 +277,15 @@ msgstr "LAm"
 msgid "Term"
 msgstr "Mp"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#. Straight-Line Depreciation Dialog: Label before cost input
 msgid "_Cost:"
 msgstr "_Hind:"
 
-#. Periodic Interest Rate Dialog: Label before future value input
+#. Compounding Term Dialog: Label before future value input
 msgid "_Future Value:"
 msgstr "_Tulevikuväärtus:"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#. Double-Declining Depreciation Dialog: Label before life input
 msgid "_Life:"
 msgstr "_Eluiga:"
 
@@ -296,15 +293,15 @@ msgstr "_Eluiga:"
 msgid "_Margin:"
 msgstr "_Marginaal:"
 
-#. Present Value Dialog: Label before number of periods input
+#. Future Value Dialog: Label before number of periods input
 msgid "_Number of Periods:"
 msgstr "_Perioodide arv:"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#. Double-Declining Depreciation Dialog: Label before period input
 msgid "_Period:"
 msgstr "_Periood:"
 
-#. Payment Period Dialog: Label before periodic payment input
+#. Future Value Dialog: Label before periodic payment input
 msgid "_Periodic Payment:"
 msgstr "_Perioodiline makse:"
 
@@ -312,11 +309,11 @@ msgstr "_Perioodiline makse:"
 msgid "_Principal:"
 msgstr "_Põhiosa:"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#. Straight-Line Depreciation Dialog: Label before salvage input
 msgid "_Salvage:"
 msgstr "_Jääkväärtus:"
 
-#. Periodic Interest Rate Dialog: Label before term input
+#. Periodic Payment Dialog: Label before term input
 msgid "_Term:"
 msgstr "_Tähtaeg:"
 
@@ -346,6 +343,10 @@ msgstr "Nihutamine paremale"
 #. Insert ASCII dialog: Button to insert selected character
 msgid "_Insert"
 msgstr "_Sisesta"
+
+#. The label on the memory button
+msgid "x"
+msgstr "x"
 
 #. Word size combo: 16 bits
 msgid "16-bit"
@@ -880,14 +881,6 @@ msgstr "Grupi alustamine [(]"
 msgid "End Group [)]"
 msgstr "Grupi lõpetamine [)]"
 
-#. Tooltip for the assign variable button
-msgid "Assign Variable"
-msgstr "Muutujale väärtuse omistamine"
-
-#. Tooltip for the insert variable button
-msgid "Insert Variable"
-msgstr "Muutuja väärtuse sisestamine"
-
 #. Tooltip for the solve button
 msgid "Calculate Result"
 msgstr "Tulemuse arvutamine"
@@ -920,203 +913,6 @@ msgstr "Lineaarne amortisatsioon"
 msgid "Straight Line Depreciation"
 msgstr "Lineaarne amortisatsioon"
 
-msgid "Angle Units"
-msgstr "Nurgaühikud"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-msgid "Degrees"
-msgstr "Kraadid"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-msgid "Radians"
-msgstr "Radiaanid"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-msgid "Gradians"
-msgstr "Goonid"
-
-msgid "Length Units"
-msgstr "Pikkusühikud"
-
-#. Length unit
-msgid "Parsecs"
-msgstr "Parsekid"
-
-#. Length unit
-msgid "Light Years"
-msgstr "Valgusaastad"
-
-#. Length unit
-msgid "Astronomical Units"
-msgstr "Astronoomilised ühikud"
-
-#. Length unit
-msgid "Nautical Miles"
-msgstr "Meremiilid"
-
-#. Length unit
-msgid "Miles"
-msgstr "Miilid"
-
-#. Length unit
-msgid "Kilometers"
-msgstr "Kilomeetrid"
-
-#. Length unit
-msgid "Cables"
-msgstr "Kaabeltaud"
-
-#. Length unit
-msgid "Fathoms"
-msgstr "Süllad"
-
-#. Length unit
-msgid "Meters"
-msgstr "Meetrid"
-
-#. Length unit
-msgid "Yards"
-msgstr "Jardid"
-
-#. Length unit
-msgid "Feet"
-msgstr "Jalg"
-
-#. Length unit
-msgid "Inches"
-msgstr "Tollid"
-
-#. Length unit
-msgid "Centimeters"
-msgstr "Sentimeetrid"
-
-#. Length unit
-msgid "Millimeters"
-msgstr "Millimeetrid"
-
-#. Length unit
-msgid "Micrometers"
-msgstr "Mikromeetrid"
-
-#. Length unit
-msgid "Nanometers"
-msgstr "Nanomeetrid"
-
-msgid "Area Units"
-msgstr "Pindalaühikud"
-
-#. Area unit
-msgid "Hectares"
-msgstr "Hektarid"
-
-#. Area unit
-msgid "Acres"
-msgstr "Aakrid"
-
-#. Area unit
-msgid "m²"
-msgstr "m²"
-
-#. Area unit
-msgid "cm²"
-msgstr "cm²"
-
-#. Area unit
-msgid "mm²"
-msgstr "mm²"
-
-msgid "Volume Units"
-msgstr "Mahuühikud"
-
-#. Volume unit
-msgid "m³"
-msgstr "m³"
-
-#. Volume unit
-msgid "Gallons"
-msgstr "Gallonid"
-
-#. Volume unit
-msgid "Liters"
-msgstr "Liitrid"
-
-#. Volume unit
-msgid "Quarts"
-msgstr "Kvardid"
-
-#. Volume unit
-msgid "Pints"
-msgstr "Pindid"
-
-#. Volume unit
-msgid "Milliliters"
-msgstr "Millimeetrid"
-
-#. Volume unit
-msgid "cm³"
-msgstr "cm³"
-
-#. Volume unit
-msgid "mm³"
-msgstr "mm³"
-
-msgid "Weight Units"
-msgstr "Massiühikud"
-
-#. Weight unit
-msgid "Tonnes"
-msgstr "Tonnid"
-
-#. Weight unit
-msgid "Kilograms"
-msgstr "Kilogrammid"
-
-#. Weight unit
-msgid "Pounds"
-msgstr "Naelad"
-
-#. Weight unit
-msgid "Ounces"
-msgstr "Untsid"
-
-#. Weight unit
-msgid "Grams"
-msgstr "Grammid"
-
-msgid "Time Units"
-msgstr "Ajaühikud"
-
-#. Time unit
-msgid "Years"
-msgstr "Aastad"
-
-#. Time unit
-msgid "Days"
-msgstr "Päevad"
-
-#. Time unit
-msgid "Hours"
-msgstr "Tunnid"
-
-#. Time unit
-msgid "Minutes"
-msgstr "Minutid"
-
-#. Time unit
-msgid "Seconds"
-msgstr "Sekundid"
-
-#. Time unit
-msgid "Milliseconds"
-msgstr "Millisekundid"
-
-#. Time unit
-msgid "Microseconds"
-msgstr "Mikrosekundid"
-
 #. Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100
 #, c-format
 msgid "%s%s = %s%s"
@@ -1137,11 +933,6 @@ msgstr "Kümnendsüsteem"
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
 msgid "Hexadecimal"
 msgstr "Kuueteistkümnendsüsteem"
-
-#. Text shown in store menu when no variables defined
-#. Text shown in recall menu when no variables defined
-msgid "No variables defined"
-msgstr "Muutujaid pole kirjeldatud"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
@@ -1229,6 +1020,18 @@ msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 #. Label on close button in preferences dialog
 msgid "_Close"
 msgstr "Sul_ge"
+
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+msgid "Degrees"
+msgstr "Kraadid"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+msgid "Radians"
+msgstr "Radiaanid"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+msgid "Gradians"
+msgstr "Goonid"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
 msgid "Automatic"
@@ -1420,6 +1223,165 @@ msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Hüperboolset arkustangensit pole võimalik võtta arvudest väljaspool lõiku "
 "[-1, 1]"
+
+#~ msgid "Recall"
+#~ msgstr "Võta mälust"
+
+#~ msgid "← R"
+#~ msgstr "← R"
+
+#~ msgid "→ R"
+#~ msgstr "→ R"
+
+#~ msgid "Assign Variable"
+#~ msgstr "Muutujale väärtuse omistamine"
+
+#~ msgid "Insert Variable"
+#~ msgstr "Muutuja väärtuse sisestamine"
+
+#~ msgid "Angle Units"
+#~ msgstr "Nurgaühikud"
+
+#~ msgid "Length Units"
+#~ msgstr "Pikkusühikud"
+
+#~ msgid "Parsecs"
+#~ msgstr "Parsekid"
+
+#~ msgid "Light Years"
+#~ msgstr "Valgusaastad"
+
+#~ msgid "Astronomical Units"
+#~ msgstr "Astronoomilised ühikud"
+
+#~ msgid "Nautical Miles"
+#~ msgstr "Meremiilid"
+
+#~ msgid "Miles"
+#~ msgstr "Miilid"
+
+#~ msgid "Kilometers"
+#~ msgstr "Kilomeetrid"
+
+#~ msgid "Cables"
+#~ msgstr "Kaabeltaud"
+
+#~ msgid "Fathoms"
+#~ msgstr "Süllad"
+
+#~ msgid "Meters"
+#~ msgstr "Meetrid"
+
+#~ msgid "Yards"
+#~ msgstr "Jardid"
+
+#~ msgid "Feet"
+#~ msgstr "Jalg"
+
+#~ msgid "Inches"
+#~ msgstr "Tollid"
+
+#~ msgid "Centimeters"
+#~ msgstr "Sentimeetrid"
+
+#~ msgid "Millimeters"
+#~ msgstr "Millimeetrid"
+
+#~ msgid "Micrometers"
+#~ msgstr "Mikromeetrid"
+
+#~ msgid "Nanometers"
+#~ msgstr "Nanomeetrid"
+
+#~ msgid "Area Units"
+#~ msgstr "Pindalaühikud"
+
+#~ msgid "Hectares"
+#~ msgstr "Hektarid"
+
+#~ msgid "Acres"
+#~ msgstr "Aakrid"
+
+#~ msgid "m²"
+#~ msgstr "m²"
+
+#~ msgid "cm²"
+#~ msgstr "cm²"
+
+#~ msgid "mm²"
+#~ msgstr "mm²"
+
+#~ msgid "Volume Units"
+#~ msgstr "Mahuühikud"
+
+#~ msgid "m³"
+#~ msgstr "m³"
+
+#~ msgid "Gallons"
+#~ msgstr "Gallonid"
+
+#~ msgid "Liters"
+#~ msgstr "Liitrid"
+
+#~ msgid "Quarts"
+#~ msgstr "Kvardid"
+
+#~ msgid "Pints"
+#~ msgstr "Pindid"
+
+#~ msgid "Milliliters"
+#~ msgstr "Millimeetrid"
+
+#~ msgid "cm³"
+#~ msgstr "cm³"
+
+#~ msgid "mm³"
+#~ msgstr "mm³"
+
+#~ msgid "Weight Units"
+#~ msgstr "Massiühikud"
+
+#~ msgid "Tonnes"
+#~ msgstr "Tonnid"
+
+#~ msgid "Kilograms"
+#~ msgstr "Kilogrammid"
+
+#~ msgid "Pounds"
+#~ msgstr "Naelad"
+
+#~ msgid "Ounces"
+#~ msgstr "Untsid"
+
+#~ msgid "Grams"
+#~ msgstr "Grammid"
+
+#~ msgid "Time Units"
+#~ msgstr "Ajaühikud"
+
+#~ msgid "Years"
+#~ msgstr "Aastad"
+
+#~ msgid "Days"
+#~ msgstr "Päevad"
+
+#~ msgid "Hours"
+#~ msgstr "Tunnid"
+
+#~ msgid "Minutes"
+#~ msgstr "Minutid"
+
+#~ msgid "Seconds"
+#~ msgstr "Sekundid"
+
+#~ msgid "Milliseconds"
+#~ msgstr "Millisekundid"
+
+#~ msgid "Microseconds"
+#~ msgstr "Mikrosekundid"
+
+#~ msgid "No variables defined"
+#~ msgstr "Muutujaid pole kirjeldatud"
 
 #~ msgid "Clear"
 #~ msgstr "Nulli"
