@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2011-01-05 03:34+0000\n"
-"PO-Revision-Date: 2011-01-05 12:35+0100\n"
+"POT-Creation-Date: 2011-01-13 14:04+0000\n"
+"PO-Revision-Date: 2011-01-13 17:47+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,6 @@ msgstr ""
 
 #. The label on the memory button
 #: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:4
-#| msgid "<i>x</i>!"
 msgid "<i>x</i>"
 msgstr "<i>x</i>"
 
@@ -419,7 +418,6 @@ msgstr "_Introducir"
 
 #. The label on the memory button
 #: ../data/buttons-programming.ui.h:32
-#| msgid "x2"
 msgid "x"
 msgstr "x"
 
@@ -1060,12 +1058,12 @@ msgid "Boolean NOT"
 msgstr "NOT booleano"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:210 ../src/math-buttons.c:1186
+#: ../src/math-buttons.c:210 ../src/math-buttons.c:1187
 msgid "Integer Component"
 msgstr "Porción entera"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:213 ../src/math-buttons.c:1188
+#: ../src/math-buttons.c:213 ../src/math-buttons.c:1189
 msgid "Fractional Component"
 msgstr "Porción fraccional"
 
@@ -1172,7 +1170,7 @@ msgstr "Hexadecimal"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1096 ../src/math-buttons.c:1140
+#: ../src/math-buttons.c:1097 ../src/math-buttons.c:1141
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1181,7 +1179,7 @@ msgstr[1] "_%d decimales"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1100 ../src/math-buttons.c:1144
+#: ../src/math-buttons.c:1101 ../src/math-buttons.c:1145
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1189,24 +1187,281 @@ msgstr[0] "%d decimal"
 msgstr[1] "%d decimales"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1190
+#: ../src/math-buttons.c:1191
 msgid "Round"
 msgstr "Redondear"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1192
+#: ../src/math-buttons.c:1193
 msgid "Floor"
 msgstr "Piso"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1194
+#: ../src/math-buttons.c:1195
 msgid "Ceiling"
 msgstr "Techo"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1196
+#: ../src/math-buttons.c:1197
 msgid "Sign"
 msgstr "Signo"
+
+#: ../src/math-converter.c:54
+#| msgid "Angle units"
+msgid "Angle"
+msgstr "Ángulo"
+
+#. Angle unit
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#: ../src/math-converter.c:56 ../src/math-preferences.c:254
+msgid "Degrees"
+msgstr "Grados"
+
+#. Angle unit
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-converter.c:58 ../src/math-preferences.c:258
+msgid "Radians"
+msgstr "Radianes"
+
+#. Angle unit
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-converter.c:60 ../src/math-preferences.c:262
+msgid "Gradians"
+msgstr "Gradianes"
+
+#: ../src/math-converter.c:62
+#| msgid "Length Units"
+msgid "Length"
+msgstr "Longitud"
+
+#. Length unit
+#: ../src/math-converter.c:64
+msgid "Parsecs"
+msgstr "Pársecs"
+
+#. Length unit
+#: ../src/math-converter.c:66
+msgid "Light Years"
+msgstr "Años luz"
+
+#. Length unit
+#: ../src/math-converter.c:68
+msgid "Astronomical Units"
+msgstr "Unidades astronómicas"
+
+#. Length unit
+#: ../src/math-converter.c:70
+msgid "Nautical Miles"
+msgstr "Millas náuticas"
+
+#. Length unit
+#: ../src/math-converter.c:72
+msgid "Miles"
+msgstr "Millas"
+
+#. Length unit
+#: ../src/math-converter.c:74
+msgid "Kilometers"
+msgstr "Kilómetros"
+
+#. Length unit
+#: ../src/math-converter.c:76
+msgid "Cables"
+msgstr "Cables"
+
+#. Length unit
+#: ../src/math-converter.c:78
+msgid "Fathoms"
+msgstr "Brazas"
+
+#. Length unit
+#: ../src/math-converter.c:80
+msgid "Meters"
+msgstr "Metros"
+
+#. Length unit
+#: ../src/math-converter.c:82
+msgid "Yards"
+msgstr "Yardas"
+
+#. Length unit
+#: ../src/math-converter.c:84
+msgid "Feet"
+msgstr "Pies"
+
+#. Length unit
+#: ../src/math-converter.c:86
+msgid "Inches"
+msgstr "Inverso0"
+
+#. Length unit
+#: ../src/math-converter.c:88
+msgid "Centimeters"
+msgstr "Centímetros"
+
+#. Length unit
+#: ../src/math-converter.c:90
+msgid "Millimeters"
+msgstr "Milímetros"
+
+#. Length unit
+#: ../src/math-converter.c:92
+msgid "Micrometers"
+msgstr "Micrómetros"
+
+#. Length unit
+#: ../src/math-converter.c:94
+msgid "Nanometers"
+msgstr "Nanómetros"
+
+#: ../src/math-converter.c:96
+#| msgid "Acres"
+msgid "Area"
+msgstr "Área"
+
+#. Area unit
+#: ../src/math-converter.c:98
+msgid "Hectares"
+msgstr "Hectáreas"
+
+#. Area unit
+#: ../src/math-converter.c:100
+msgid "Acres"
+msgstr "Acres"
+
+#. Area unit
+#: ../src/math-converter.c:102
+msgid "m²"
+msgstr "m²"
+
+#. Area unit
+#: ../src/math-converter.c:104
+msgid "cm²"
+msgstr "cm²"
+
+#. Area unit
+#: ../src/math-converter.c:106
+msgid "mm²"
+msgstr "mm²"
+
+#: ../src/math-converter.c:108
+#| msgid "Value"
+msgid "Volume"
+msgstr "Volumen"
+
+#. Volume unit
+#: ../src/math-converter.c:110
+msgid "m³"
+msgstr "m³"
+
+#. Volume unit
+#: ../src/math-converter.c:112
+msgid "Gallons"
+msgstr "Galones"
+
+#. Volume unit
+#: ../src/math-converter.c:114
+msgid "Liters"
+msgstr "Litros"
+
+#. Volume unit
+#: ../src/math-converter.c:116
+msgid "Quarts"
+msgstr "Cuartos"
+
+#. Volume unit
+#: ../src/math-converter.c:118
+msgid "Pints"
+msgstr "Pintas"
+
+#. Volume unit
+#: ../src/math-converter.c:120
+msgid "Milliliters"
+msgstr "Mililitros"
+
+#. Volume unit
+#: ../src/math-converter.c:122
+msgid "cm³"
+msgstr "cm³"
+
+#. Volume unit
+#: ../src/math-converter.c:124
+msgid "mm³"
+msgstr "mm³"
+
+#: ../src/math-converter.c:126
+#| msgid "Weight Units"
+msgid "Weight"
+msgstr "Peso"
+
+#. Weight unit
+#: ../src/math-converter.c:128
+msgid "Tonnes"
+msgstr "Toneladas"
+
+#. Weight unit
+#: ../src/math-converter.c:130
+msgid "Kilograms"
+msgstr "Kilogramos"
+
+#. Weight unit
+#: ../src/math-converter.c:132
+msgid "Pounds"
+msgstr "Libras"
+
+#. Weight unit
+#: ../src/math-converter.c:134
+msgid "Ounces"
+msgstr "Onzas"
+
+#. Weight unit
+#: ../src/math-converter.c:136
+msgid "Grams"
+msgstr "Gramos"
+
+#: ../src/math-converter.c:138
+msgid "Duration"
+msgstr "Duración"
+
+#. Time unit
+#: ../src/math-converter.c:140
+msgid "Years"
+msgstr "Años"
+
+#. Time unit
+#: ../src/math-converter.c:142
+msgid "Days"
+msgstr "Días"
+
+#. Time unit
+#: ../src/math-converter.c:144
+msgid "Hours"
+msgstr "Horas"
+
+#. Time unit
+#: ../src/math-converter.c:146
+msgid "Minutes"
+msgstr "Minutos"
+
+#. Time unit
+#: ../src/math-converter.c:148
+msgid "Seconds"
+msgstr "Segundos"
+
+#. Time unit
+#: ../src/math-converter.c:150
+msgid "Milliseconds"
+msgstr "Milisegundos"
+
+#. Time unit
+#: ../src/math-converter.c:152
+msgid "Microseconds"
+msgstr "Microsegundos"
+
+#: ../src/math-converter.c:449
+#| msgid "Currency Converter"
+msgid "Currency"
+msgstr "Divisa"
 
 #. Error shown when trying to undo with no undo history
 #: ../src/math-equation.c:460
@@ -1274,21 +1529,6 @@ msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 #: ../src/math-preferences.c:244
 msgid "_Close"
 msgstr "_Cerrar"
-
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-preferences.c:254
-msgid "Degrees"
-msgstr "Grados"
-
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:258
-msgid "Radians"
-msgstr "Radianes"
-
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:262
-msgid "Gradians"
-msgstr "Gradianes"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
 #: ../src/math-preferences.c:272
@@ -1542,143 +1782,14 @@ msgstr ""
 #~ msgid "Angle Units"
 #~ msgstr "Unidades de ángulo"
 
-#~ msgid "Length Units"
-#~ msgstr "Unidades de longitud"
-
-#~ msgid "Parsecs"
-#~ msgstr "Pársecs"
-
-#~ msgid "Light Years"
-#~ msgstr "Años luz"
-
-#~ msgid "Astronomical Units"
-#~ msgstr "Unidades astronómicas"
-
-#~ msgid "Nautical Miles"
-#~ msgstr "Millas náuticas"
-
-#~ msgid "Miles"
-#~ msgstr "Millas"
-
-#~ msgid "Kilometers"
-#~ msgstr "Kilómetros"
-
-#~ msgid "Cables"
-#~ msgstr "Cables"
-
-#~ msgid "Fathoms"
-#~ msgstr "Brazas"
-
-#~ msgid "Meters"
-#~ msgstr "Metros"
-
-#~ msgid "Yards"
-#~ msgstr "Yardas"
-
-#~ msgid "Feet"
-#~ msgstr "Pies"
-
-#~ msgid "Inches"
-#~ msgstr "Inverso0"
-
-#~ msgid "Centimeters"
-#~ msgstr "Centímetros"
-
-#~ msgid "Millimeters"
-#~ msgstr "Milímetros"
-
-#~ msgid "Micrometers"
-#~ msgstr "Micrómetros"
-
-#~ msgid "Nanometers"
-#~ msgstr "Nanómetros"
-
 #~ msgid "Area Units"
 #~ msgstr "Unidades de área"
-
-#~ msgid "Hectares"
-#~ msgstr "Hectáreas"
-
-#~ msgid "Acres"
-#~ msgstr "Acres"
-
-#~ msgid "m²"
-#~ msgstr "m²"
-
-#~ msgid "cm²"
-#~ msgstr "cm²"
-
-#~ msgid "mm²"
-#~ msgstr "mm²"
 
 #~ msgid "Volume Units"
 #~ msgstr "Unidades de volumen"
 
-#~ msgid "m³"
-#~ msgstr "m³"
-
-#~ msgid "Gallons"
-#~ msgstr "Galones"
-
-#~ msgid "Liters"
-#~ msgstr "Litros"
-
-#~ msgid "Quarts"
-#~ msgstr "Cuartos"
-
-#~ msgid "Pints"
-#~ msgstr "Pintas"
-
-#~ msgid "Milliliters"
-#~ msgstr "Mililitros"
-
-#~ msgid "cm³"
-#~ msgstr "cm³"
-
-#~ msgid "mm³"
-#~ msgstr "mm³"
-
-#~ msgid "Weight Units"
-#~ msgstr "Unidades de peso"
-
-#~ msgid "Tonnes"
-#~ msgstr "Toneladas"
-
-#~ msgid "Kilograms"
-#~ msgstr "Kilogramos"
-
-#~ msgid "Pounds"
-#~ msgstr "Libras"
-
-#~ msgid "Ounces"
-#~ msgstr "Onzas"
-
-#~ msgid "Grams"
-#~ msgstr "Gramos"
-
 #~ msgid "Time Units"
 #~ msgstr "Unidades de tiempo"
-
-#~ msgid "Years"
-#~ msgstr "Años"
-
-#~ msgid "Days"
-#~ msgstr "Días"
-
-#~ msgid "Hours"
-#~ msgstr "Horas"
-
-#~ msgid "Minutes"
-#~ msgstr "Minutos"
-
-#~ msgid "Seconds"
-#~ msgstr "Segundos"
-
-#~ msgid "Milliseconds"
-#~ msgstr "Milisegundos"
-
-#~ msgid "Microseconds"
-#~ msgstr "Microsegundos"
 
 #~ msgid "No variables defined"
 #~ msgstr "No existen variables definidas"
@@ -1781,9 +1892,6 @@ msgstr ""
 #~ "fila inferior."
 
 #~ msgid "Currency Conversion"
-#~ msgstr "Conversión de divisa"
-
-#~ msgid "Currency Converter"
 #~ msgstr "Conversión de divisa"
 
 #~ msgid ""
@@ -2717,9 +2825,6 @@ msgstr ""
 
 #~ msgid "No."
 #~ msgstr "No."
-
-#~ msgid "Value"
-#~ msgstr "Valor"
 
 #~ msgid "Reset to _Default (%d)"
 #~ msgstr "Restablecer a _predeterminada (%d)"
