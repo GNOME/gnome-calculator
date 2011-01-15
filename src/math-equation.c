@@ -266,7 +266,7 @@ reformat_separators(MathEquation *equation)
         }
         else if (c == mp_serializer_get_thousands_separator(equation->priv->serializer)) {
             /* Didn't expect thousands separator - delete it */
-            if (!expect_tsep) {
+            if (!expect_tsep && in_number) {
                 GtkTextIter start, end;
                 gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &start, offset);
                 gtk_text_buffer_get_iter_at_offset(GTK_TEXT_BUFFER(equation), &end, offset + 1);
