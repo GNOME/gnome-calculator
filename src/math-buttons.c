@@ -435,19 +435,19 @@ update_bit_panel(MathButtons *buttons)
     if (base != 8) {
         if (label->len != 0)
             g_string_append(label, " = ");
-        g_string_append_printf(label, "%lo", bits);
+        g_string_append_printf(label, "%" G_GINT64_MODIFIER "o", bits);
         g_string_append(label, "₈");
     }
     if (base != 10) {
         if (label->len != 0)
             g_string_append(label, " = ");
-        g_string_append_printf(label, "%lu", bits);
+        g_string_append_printf(label, "%" G_GINT64_MODIFIER "u", bits);
         g_string_append(label, "₁₀");
     }
     if (base != 16) {
         if (label->len != 0)
             g_string_append(label, " = ");
-        g_string_append_printf(label, "%lX", bits);
+        g_string_append_printf(label, "%" G_GINT64_MODIFIER "X", bits);
         g_string_append(label, "₁₆");
     }
 
