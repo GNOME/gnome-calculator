@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
+#include <locale.h>
 
 #include "unittest.h"
 #include "mp-equation.h"
@@ -28,6 +29,7 @@
 static MPEquationOptions options;
 
 static int fails = 0;
+static int passes = 0;
 
 /* If we're not using GNU C, elide __attribute__ */
 #ifndef __GNUC__
@@ -37,15 +39,18 @@ static int fails = 0;
 static void pass(const char *format, ...) __attribute__((format(printf, 1, 2)));
 static void fail(const char *format, ...) __attribute__((format(printf, 1, 2)));
 
+
 static void pass(const char *format, ...)
 {
-    va_list args;
+/*    va_list args;
 
     printf(" PASS: ");
     va_start(args, format);
     vprintf(format, args);
     va_end(args);
     printf("\n");
+*/
+    passes += 1;
 }
 
 static void fail(const char *format, ...)
@@ -762,10 +767,13 @@ test_mp()
 
 void
 unittest()
-{    
+{
+    setlocale(LC_ALL, "C");
     test_mp();
     test_numbers();
     test_conversions();
     test_equations();
+    if (fails == 0)
+        printf("Passed all %i tests\n", passes);
     exit(fails > 0 ? 1 : 0);
 }
