@@ -465,7 +465,8 @@ math_converter_init(MathConverter *converter)
     gtk_widget_show(converter->priv->from_combo);
     gtk_box_pack_start(GTK_BOX(hbox), converter->priv->from_combo, FALSE, TRUE, 0);
 
-    label = gtk_label_new(_(" in "));
+    label = gtk_label_new(/* Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]" */
+                          _(" in "));
     gtk_widget_show(label);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 0);
 
