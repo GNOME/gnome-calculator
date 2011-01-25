@@ -372,7 +372,7 @@ from_combobox_changed_cb(GtkWidget *combo, MathConverter *converter)
             if (i == unit_index)
                 continue;
             gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-            gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, categories[category_index].units[i].ui_name, 1, category_index, 2, i, -1);
+            gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, _(categories[category_index].units[i].ui_name), 1, category_index, 2, i, -1);
         }
         unit_name = categories[category_index].units[unit_index].internal_name;
     }
@@ -436,12 +436,12 @@ math_converter_init(MathConverter *converter)
 
     for (i = 0; i < sizeof(categories) / sizeof(categories[0]); i++) {
         gtk_tree_store_append(from_model, &parent, NULL);
-        gtk_tree_store_set(from_model, &parent, 0, categories[i].name, 1, i, -1);
+        gtk_tree_store_set(from_model, &parent, 0, _(categories[i].name), 1, i, -1);
         for (j = 0; categories[i].units[j].ui_name != NULL; j++) {
             GtkTreeIter iter;
 
             gtk_tree_store_append(from_model, &iter, &parent);
-            gtk_tree_store_set(from_model, &iter, 0, categories[i].units[j].ui_name, 1, i, 2, j, -1);
+            gtk_tree_store_set(from_model, &iter, 0, _(categories[i].units[j].ui_name), 1, i, 2, j, -1);
         }
     }
 
@@ -465,7 +465,7 @@ math_converter_init(MathConverter *converter)
     gtk_widget_show(converter->priv->from_combo);
     gtk_box_pack_start(GTK_BOX(hbox), converter->priv->from_combo, FALSE, TRUE, 0);
 
-    label = gtk_label_new(" in ");
+    label = gtk_label_new(_(" in "));
     gtk_widget_show(label);
     gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 0);
 
