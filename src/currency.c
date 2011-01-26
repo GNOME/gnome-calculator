@@ -319,6 +319,20 @@ set_ecb_rate(xmlNodePtr node, Currency *eur_rate)
 
 
 static void
+set_ecb_fixed_rate(const gchar *name, const gchar *value, Currency *eur_rate)
+{
+    Currency *c;
+    MPNumber r;
+
+    g_debug ("Using ECB fixed rate of %s for %s", value, name);
+    c = add_currency(name);
+    mp_set_from_string(value, 10, &r);
+    mp_set_from_mp(&eur_rate->value, &c->value);
+    mp_divide(&c->value, &r, &c->value);
+}
+
+
+static void
 load_ecb_rates()
 {
     Currency *eur_rate;
@@ -334,6 +348,9 @@ load_ecb_rates()
         g_warning("Cannot use ECB rates as don't have EUR rate");
         return;
     }
+
+    /* Set some fixed rates */
+    set_ecb_fixed_rate("EEK", "15.6466", eur_rate);
 
     xmlInitParser();
     document = xmlReadFile(filename, NULL, 0);
@@ -374,7 +391,7 @@ load_ecb_rates()
     xmlXPathFreeObject(xpath_obj);
     xmlXPathFreeContext(xpath_ctx);
     xmlFreeDoc(document);
-    xmlCleanupParser();  
+    xmlCleanupParser();
 }
 
 
