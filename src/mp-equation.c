@@ -22,7 +22,6 @@
 #include "mp-equation-private.h"
 #include "mp-equation-parser.h"
 #include "mp-equation-lexer.h"
-#include "units.h"
 
 extern int _mp_equation_parse(yyscan_t yyscanner);
 
@@ -249,10 +248,10 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
 static int
 convert(MPEquationParserState *state, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
 {
-    if (!units_convert(x, x_units, z_units, z))
+    if (state->options->convert)
+        return state->options->convert(x, x_units, z_units, z, state->options->callback_data);
+    else
         return 0;
-
-    return 1;
 }
 
 

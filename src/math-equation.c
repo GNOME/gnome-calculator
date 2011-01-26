@@ -99,6 +99,7 @@ struct MathEquationPrivate
     gboolean in_solve;
 
     MathVariables *variables;
+    UnitManager *unit_manager;
     MpSerializer *serializer;
 
     GAsyncQueue *queue;
@@ -124,6 +125,13 @@ MathVariables *
 math_equation_get_variables(MathEquation *equation)
 {
     return equation->priv->variables;
+}
+
+
+UnitManager *
+math_equation_get_unit_manager(MathEquation *equation)
+{
+    return equation->priv->unit_manager;
 }
 
 
@@ -1844,6 +1852,7 @@ math_equation_init(MathEquation *equation)
     g_strfreev(digits);
 
     equation->priv->variables = math_variables_new();
+    equation->priv->unit_manager = unit_manager_get_default();
 
     equation->priv->state.status = g_strdup("");
     equation->priv->word_size = 32;

@@ -20,7 +20,7 @@
 
 #include "math-converter.h"
 #include "mp-serializer.h"
-#include "units.h"
+#include "unit-manager.h"
 #include "currency.h"
 
 enum {
@@ -194,7 +194,7 @@ update_result_label(MathConverter *converter)
     target_units = math_equation_get_target_units(converter->priv->equation);
     if (!source_units || !target_units)
         enabled = FALSE;
-    else if (!units_convert(&x, source_units, target_units, &z)) {
+    else if (!unit_manager_convert(math_equation_get_unit_manager(converter->priv->equation), &x, source_units, target_units, &z)) {
         if (!currency_convert(&x, source_units, target_units, &z))
             enabled = FALSE;
     }

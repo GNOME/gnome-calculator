@@ -24,6 +24,7 @@
 #include <gtk/gtk.h>
 #include "mp.h"
 #include "math-variables.h"
+#include "unit-manager.h"
 #include "mp-serializer.h"
 
 G_BEGIN_DECLS
@@ -55,6 +56,8 @@ GType math_equation_get_type(void);
 MathEquation *math_equation_new(void);
 
 MathVariables *math_equation_get_variables(MathEquation *equation);
+
+UnitManager *math_equation_get_unit_manager(MathEquation *equation);
 
 gunichar math_equation_get_digit_text(MathEquation *equation, guint digit);
 

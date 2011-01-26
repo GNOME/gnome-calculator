@@ -39,6 +39,13 @@ version(const gchar *progname)
 }
 
 
+static int
+do_convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z, void *data)
+{
+    return unit_manager_convert(unit_manager_get_default(), x, x_units, z_units, z);
+}
+
+
 static void
 solve(const char *equation)
 {
@@ -51,6 +58,7 @@ solve(const char *equation)
     options.base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
+    options.convert = do_convert;
 
     error = mp_equation_parse(equation, &options, &result, NULL);
     if(error == PARSER_ERR_MP) {
