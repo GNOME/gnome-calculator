@@ -49,7 +49,8 @@ PKG_CHECK_MODULES(GCALCTOOL, [
 
 PKG_CHECK_MODULES(GCALCCMD, [
     glib-2.0
-    gobject-2.0
+    gio-2.0 >= $GIO_REQUIRED
+    libxml-2.0
 ])
 
 GLIB_MKENUMS=`$PKG_CONFIG --variable=glib_mkenums glib-2.0`

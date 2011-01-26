@@ -47,6 +47,10 @@ gcalctool_SOURCES = \
 	mp-serializer.h \
 	financial.c \
 	financial.h \
+  	unit.c \
+	unit.h \
+	unit-category.c \
+	unit-category.h \
 	unit-manager.c \
 	unit-manager.h \
 	unittest.c \
@@ -57,6 +61,8 @@ gcalctool_LDADD = \
 
 gcalccmd_SOURCES = \
 	gcalccmd.c \
+	currency.c \
+	currency.h \
 	mp.c \
 	mp-convert.c \
 	mp-binary.c \
@@ -68,6 +74,10 @@ gcalccmd_SOURCES = \
 	mp-serializer.h\
 	math-enums.c \
 	math-enums.h \
+	unit.c \
+	unit.h \
+	unit-category.c \
+	unit-category.h \
 	unit-manager.c \
 	unit-manager.h
 

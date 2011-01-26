@@ -433,13 +433,11 @@ currency_get_info(const gchar *name)
 }
 
 
-gboolean
-currency_convert(const MPNumber *from_amount,
-                 const char *source_currency, const char *target_currency,
-                 MPNumber *to_amount)
+MPNumber *
+currency_get_value(const gchar *currency)
 {
     gchar *path;
-    Currency *from_info, *to_info;
+    Currency *info;
 
     /* Update rates if necessary */
     path = get_imf_rate_filepath();
@@ -458,38 +456,11 @@ currency_convert(const MPNumber *from_amount,
     g_free(path);
 
     if (downloading_imf_rates || downloading_ecb_rates)
-        return FALSE;
+        return NULL;
 
     if (!loaded_rates)
         load_rates();
   
-    from_info = get_currency(source_currency);
-    to_info = get_currency(target_currency);
-    if (!from_info || !to_info)
-        return FALSE;
-
-    if (mp_is_zero(&from_info->value) ||
-        mp_is_zero(&to_info->value)) {
-        mp_set_from_integer(0, to_amount);
-        return FALSE;
-    }
-
-    mp_divide(from_amount, &to_info->value, to_amount);
-    mp_multiply(to_amount, &from_info->value, to_amount);
-
-    return TRUE;
-}
-
-void
-currency_free_resources()
-{
-    GList *link;
-
-    for (link = currencies; link; link = link->next) {
-        Currency *c = link->data;
-        g_free(c->short_name);
-        g_free(c);
-    }
-    g_list_free(currencies);
-    currencies = NULL;
+    info = get_currency(currency);
+    return &info->value;
 }

@@ -38,15 +38,21 @@ typedef struct
 typedef struct
 {
     GtkHBoxClass parent_class;
+
+    void (*changed)(MathConverter *converter);
 } MathConverterClass;
 
 GType math_converter_get_type(void);
 
 MathConverter *math_converter_new(MathEquation *equation);
 
-void math_converter_set_category(MathEquation *equation, const gchar *category);
+void math_converter_set_category(MathConverter *converter, const gchar *category);
 
-const gchar *math_converter_get_category(MathEquation *equation);
+const gchar *math_converter_get_category(MathConverter *converter);
+
+void math_converter_set_conversion(MathConverter *converter, /*const gchar *category,*/ const gchar *unit_a, const gchar *unit_b);
+
+void math_converter_get_conversion(MathConverter *converter, Unit **from_unit, Unit **to_unit);
 
 G_END_DECLS
 

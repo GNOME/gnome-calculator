@@ -77,12 +77,6 @@ static const CurrencyInfo currency_info[] = {
 
 const CurrencyInfo *currency_get_info(const gchar *name);
 
-/* Converts an amount of money from one currency to another */
-gboolean currency_convert(const MPNumber *from_amount,
-                          const char *source_currency, const char *target_currency,
-                          MPNumber *to_amount);
-
-/* Frees up all allocated resources */
-void currency_free_resources(void);
+MPNumber *currency_get_value(const gchar *currency);
 
 #endif /* CURRENCY_H */

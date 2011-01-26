@@ -63,11 +63,6 @@ struct MathButtonsPrivate
     GtkWidget *bit_panel;
     GtkWidget *bit_labels[MAXBITS];
 
-    GtkWidget *source_currency_combo;
-    GtkWidget *target_currency_combo;
-    MpSerializer *currency_serializer;
-    GtkWidget *currency_label;
-
     GtkWidget *character_code_dialog;
     GtkWidget *character_code_entry;
 };
@@ -289,11 +284,6 @@ static ButtonData button_data[] = {
     {NULL, NULL, 0, NULL}
 };
 
-typedef enum {
-    CURRENCY_TARGET_UPPER,
-    CURRENCY_TARGET_LOWER
-} CurrencyTargetRow;
-
 /* The names of each field in the dialogs for the financial functions */
 static char *finc_dialog_fields[][5] = {
     {"ctrm_pint", "ctrm_fv",     "ctrm_pv",    NULL,         NULL},
@@ -457,49 +447,8 @@ update_bit_panel(MathButtons *buttons)
 
 
 static void
-update_currency_label(MathButtons *buttons)
-{
-    MPNumber x, value;
-    char *label;
-
-    if (!buttons->priv->currency_label)
-        return;
-
-    if (!math_equation_get_number(buttons->priv->equation, &x))
-        return;
-  
-    if (currency_convert(&x,
-                         math_equation_get_source_currency(buttons->priv->equation),
-                         math_equation_get_target_currency(buttons->priv->equation),
-                         &value)) {
-        char *input_text, *output_text;
-        const char *source_symbol, *target_symbol;
-
-        input_text = mp_serializer_to_string(buttons->priv->currency_serializer, &x);
-        output_text = mp_serializer_to_string(buttons->priv->currency_serializer, &value);
-
-        source_symbol = currency_get_info(math_equation_get_source_currency(buttons->priv->equation))->symbol;
-        target_symbol = currency_get_info(math_equation_get_target_currency(buttons->priv->equation))->symbol;
-
-        /* Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100 */
-        label = g_strdup_printf(_("%s%s = %s%s"),
-                                source_symbol, input_text,
-                                target_symbol, output_text);
-        g_free(input_text);
-        g_free(output_text);
-    }
-    else
-        label = g_strdup("");
-
-    gtk_label_set_text(GTK_LABEL(buttons->priv->currency_label), label);
-    g_free(label);
-}
-
-
-static void
 display_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
 {
-    update_currency_label(buttons);
     update_bit_panel(buttons);
 }
 
@@ -545,102 +494,6 @@ base_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
         valid = gtk_tree_model_get_iter_first(model, &iter);
 
     gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->base_combo), &iter);
-}
-
-
-static void
-source_currency_combo_changed_cb(GtkWidget *combo, MathButtons *buttons)
-{
-    gchar *value;
-    GtkTreeModel *model;
-    GtkTreeIter iter;
-
-    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
-    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
-    gtk_tree_model_get(model, &iter, 0, &value, -1);
-
-    math_equation_set_source_currency(buttons->priv->equation, value);
-    g_free(value);
-}
-
-
-static void
-source_currency_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
-{
-    GtkTreeModel *model;
-    GtkTreeIter iter;
-    gboolean valid;
-  
-    if (buttons->priv->mode != FINANCIAL)
-        return;
-
-    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->source_currency_combo));
-    valid = gtk_tree_model_get_iter_first(model, &iter);
-
-    while (valid) {
-        gchar *v;
-        gboolean matched;
-
-        gtk_tree_model_get(model, &iter, 0, &v, -1);
-        matched = strcmp(math_equation_get_source_currency(buttons->priv->equation), v) == 0;
-        g_free(v);
-        if (matched)
-            break;
-        valid = gtk_tree_model_iter_next(model, &iter);
-    }
-    if (!valid)
-        valid = gtk_tree_model_get_iter_first(model, &iter);
-
-    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->source_currency_combo), &iter);
-    update_currency_label(buttons);
-}
-
-
-static void
-target_currency_combo_changed_cb(GtkWidget *combo, MathButtons *buttons)
-{
-    gchar *value;
-    GtkTreeModel *model;
-    GtkTreeIter iter;
-
-    model = gtk_combo_box_get_model(GTK_COMBO_BOX(combo));
-    gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
-    gtk_tree_model_get(model, &iter, 0, &value, -1);
-
-    math_equation_set_target_currency(buttons->priv->equation, value);
-    g_free(value);
-}
-
-
-static void
-target_currency_changed_cb(MathEquation *equation, GParamSpec *spec, MathButtons *buttons)
-{
-    GtkTreeModel *model;
-    GtkTreeIter iter;
-    gboolean valid;
-  
-    if (buttons->priv->mode != FINANCIAL)
-        return;
-
-    model = gtk_combo_box_get_model(GTK_COMBO_BOX(buttons->priv->target_currency_combo));
-    valid = gtk_tree_model_get_iter_first(model, &iter);
-
-    while (valid) {
-        gchar *v;
-        gboolean matched;
-
-        gtk_tree_model_get(model, &iter, 0, &v, -1);
-        matched = strcmp(math_equation_get_target_currency(buttons->priv->equation), v) == 0;
-        g_free(v);
-        if (matched)
-            break;
-        valid = gtk_tree_model_iter_next(model, &iter);
-    }
-    if (!valid)
-        valid = gtk_tree_model_get_iter_first(model, &iter);
-
-    gtk_combo_box_set_active_iter(GTK_COMBO_BOX(buttons->priv->target_currency_combo), &iter);
-    update_currency_label(buttons);
 }
 
 
@@ -829,42 +682,7 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 
     /* Setup financial functions */
     if (mode == FINANCIAL) {
-        GtkListStore *model;
-        GtkCellRenderer *renderer;
-
         load_finc_dialogs(buttons);
-
-        buttons->priv->source_currency_combo = GET_WIDGET(builder, "source_currency_combo");
-        buttons->priv->target_currency_combo = GET_WIDGET(builder, "target_currency_combo");
-        buttons->priv->currency_label = GET_WIDGET(builder, "currency_label");
-
-        buttons->priv->currency_serializer = mp_serializer_new(MP_DISPLAY_FORMAT_AUTOMATIC, 10, 2);
-
-        model = gtk_list_store_new(1, G_TYPE_STRING);
-
-        for (i = 0; currency_info[i].short_name != NULL; i++) {
-            GtkTreeIter iter;
-
-            gtk_list_store_append(GTK_LIST_STORE(model), &iter);
-            gtk_list_store_set(GTK_LIST_STORE(model), &iter, 0, currency_info[i].short_name, -1);
-        }
-
-        gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->source_currency_combo), GTK_TREE_MODEL(model));
-        gtk_combo_box_set_model(GTK_COMBO_BOX(buttons->priv->target_currency_combo), GTK_TREE_MODEL(model));
-
-        renderer = gtk_cell_renderer_text_new();
-        gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->source_currency_combo), renderer, TRUE);
-        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->source_currency_combo), renderer, "text", 0);
-        renderer = gtk_cell_renderer_text_new();
-        gtk_cell_layout_pack_start(GTK_CELL_LAYOUT(buttons->priv->target_currency_combo), renderer, TRUE);
-        gtk_cell_layout_add_attribute(GTK_CELL_LAYOUT(buttons->priv->target_currency_combo), renderer, "text", 0);
-
-        g_signal_connect(buttons->priv->source_currency_combo, "changed", G_CALLBACK(source_currency_combo_changed_cb), buttons);
-        g_signal_connect(buttons->priv->target_currency_combo, "changed", G_CALLBACK(target_currency_combo_changed_cb), buttons);
-        g_signal_connect(buttons->priv->equation, "notify::source-currency", G_CALLBACK(source_currency_changed_cb), buttons);
-        g_signal_connect(buttons->priv->equation, "notify::target-currency", G_CALLBACK(target_currency_changed_cb), buttons);
-        source_currency_changed_cb(buttons->priv->equation, NULL, buttons);
-        target_currency_changed_cb(buttons->priv->equation, NULL, buttons);
 
         set_data(builder, "calc_finc_compounding_term_button", "finc_dialog", "ctrm_dialog");
         set_data(builder, "calc_finc_double_declining_depreciation_button", "finc_dialog", "ddb_dialog");
@@ -886,6 +704,25 @@ load_mode(MathButtons *buttons, ButtonMode mode)
 }
 
 
+static void
+converter_changed_cb(MathConverter *converter, MathButtons *buttons)
+{
+    Unit *from_unit, *to_unit;
+
+    math_converter_get_conversion(converter, &from_unit, &to_unit);
+    if (buttons->priv->mode == FINANCIAL) {
+        math_equation_set_source_currency(buttons->priv->equation, unit_get_name(from_unit));
+        math_equation_set_target_currency(buttons->priv->equation, unit_get_name(to_unit));
+    }
+    else {
+        math_equation_set_source_units(buttons->priv->equation, unit_get_name(from_unit));
+        math_equation_set_target_units(buttons->priv->equation, unit_get_name(to_unit));      
+    }
+
+    g_object_unref(from_unit);
+    g_object_unref(to_unit);
+}
+
 
 static void
 load_buttons(MathButtons *buttons)
@@ -897,6 +734,7 @@ load_buttons(MathButtons *buttons)
 
     if (!buttons->priv->converter) {
         buttons->priv->converter = math_converter_new(buttons->priv->equation);
+        g_signal_connect(buttons->priv->converter, "changed", G_CALLBACK(converter_changed_cb), buttons);
         gtk_box_pack_start(GTK_BOX(buttons), GTK_WIDGET(buttons->priv->converter), FALSE, TRUE, 0);      
     }
 
@@ -933,7 +771,19 @@ math_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
 
     load_buttons(buttons);
 
-    gtk_widget_set_visible(GTK_WIDGET(buttons->priv->converter), mode == ADVANCED);
+    gtk_widget_set_visible(GTK_WIDGET(buttons->priv->converter), mode == ADVANCED || mode == FINANCIAL);
+    if (mode == ADVANCED) {
+        math_converter_set_category(buttons->priv->converter, NULL);
+        math_converter_set_conversion(buttons->priv->converter,
+                                      math_equation_get_source_units(buttons->priv->equation),
+                                      math_equation_get_target_units(buttons->priv->equation));
+    }
+    else if (mode == FINANCIAL) {
+        math_converter_set_category(buttons->priv->converter, "currency");
+        math_converter_set_conversion(buttons->priv->converter,
+                                      math_equation_get_source_currency(buttons->priv->equation),
+                                      math_equation_get_target_currency(buttons->priv->equation));
+    }
 
     g_object_notify(G_OBJECT(buttons), "mode");
 }

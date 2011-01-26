@@ -2,6 +2,7 @@
 #define UNIT_MANAGER_H
 
 #include <glib-object.h>
+#include "unit-category.h"
 #include "mp.h"
 
 G_BEGIN_DECLS
@@ -23,11 +24,17 @@ typedef struct
 
 GType unit_manager_get_type(void);
 
-UnitManager *unit_manager_new();
+UnitManager *unit_manager_new(void);
 
-UnitManager *unit_manager_get_default();
+UnitManager *unit_manager_get_default(void);
 
-void unit_manager_add(UnitManager *manager, const gchar *category, const gchar *name, MPNumber *value);
+UnitCategory *unit_manager_add_category(UnitManager *manager, const gchar *name, const gchar *display_name);
+
+const GList *unit_manager_get_categories(UnitManager *manager);
+
+UnitCategory *unit_manager_get_category(UnitManager *manager, const gchar *category);
+
+Unit *unit_manager_get_unit(UnitManager *manager, const gchar *unit);
 
 gboolean unit_manager_convert(UnitManager *manager, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z);
 

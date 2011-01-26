@@ -21,8 +21,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <locale.h>
+#include <glib/gi18n.h>
 
-#include "currency.h"
 #include "unittest.h"
 #include "math-window.h"
 #include "mp-equation.h"
@@ -206,7 +206,6 @@ quit_cb(MathWindow *window)
     g_settings_set_string(settings, "target-units", math_equation_get_target_units(equation));
     g_settings_sync();
 
-    currency_free_resources();
     gtk_main_quit();
 }
 
