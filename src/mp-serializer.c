@@ -223,17 +223,13 @@ mp_cast_to_string(MpSerializer *serializer, const MPNumber *x)
 }
 
 
-static gchar *
-mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gboolean eng_format)
+static void
+mp_cast_to_exponential_string_real(MpSerializer *serializer, const MPNumber *x, GString *string, gboolean eng_format)
 {
     gchar *fixed, *c;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
     int exponent = 0;
-    GString *string;
-    gchar *result;
     const gchar *super_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
-
-    string = g_string_sized_new(1024);
 
     mp_abs(x, &z);
     if (mp_is_negative(x))
@@ -286,6 +282,56 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
         for (c = super_value; *c; c++)
             g_string_append(string, super_digits[*c - '0']);
         g_free (super_value);
+    }
+}
+
+
+static gchar *
+mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gboolean eng_format)
+{
+    GString *string;
+    MPNumber x_real;
+    gchar *result;
+
+    string = g_string_sized_new(1024);
+
+    mp_real_component(x, &x_real);
+    mp_cast_to_exponential_string_real(serializer, &x_real, string, eng_format);
+    if (mp_is_complex(x)) {
+        GString *s;
+        gboolean force_sign = TRUE;
+        MPNumber x_im;
+
+        mp_imaginary_component(x, &x_im);
+
+        if (strcmp(string->str, "0") == 0) {
+            g_string_assign(string, "");
+            force_sign = FALSE;
+        }
+
+        s = g_string_sized_new(1024);
+        mp_cast_to_exponential_string_real(serializer, &x_im, s, eng_format);
+        if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
+            /* Ignore */
+        }
+        else if (strcmp(s->str, "1") == 0) {
+            g_string_append(string, "i");
+        }
+        else if (strcmp(s->str, "+1") == 0) {
+            g_string_append(string, "+i");
+        }
+        else if (strcmp(s->str, "−1") == 0) {
+            g_string_append(string, "−i");
+        }
+        else {
+            if (strcmp(s->str, "+0") == 0)
+                g_string_append(string, "+");
+            else if (strcmp(s->str, "0") != 0)
+                g_string_append(string, s->str);
+
+            g_string_append(string, "i"); // FIXME: Insert before the *10^
+        }
+        g_string_free(s, TRUE);
     }
 
     result = g_strndup(string->str, string->len + 1);
