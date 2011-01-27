@@ -120,7 +120,7 @@ update_from_model(MathConverter *converter)
     if (converter->priv->category == NULL) {
         const GList *categories, *iter;
 
-        categories = unit_manager_get_categories(math_equation_get_unit_manager(converter->priv->equation));
+        categories = unit_manager_get_categories(unit_manager_get_default());
         for (iter = categories; iter; iter = iter->next) {
             UnitCategory *category = iter->data;
             GtkTreeIter parent;
@@ -142,7 +142,7 @@ update_from_model(MathConverter *converter)
         UnitCategory *category;
         const GList *unit_iter;
 
-        category = unit_manager_get_category(math_equation_get_unit_manager(converter->priv->equation), converter->priv->category);
+        category = unit_manager_get_category(unit_manager_get_default(), converter->priv->category);
         for (unit_iter = unit_category_get_units(category); unit_iter; unit_iter = unit_iter->next) {
             Unit *unit = unit_iter->data;
             GtkTreeIter iter;
@@ -227,8 +227,8 @@ math_converter_set_conversion(MathConverter *converter, /*const gchar *category,
     Unit *ua;
     Unit *ub;
 
-    ua = unit_manager_get_unit(math_equation_get_unit_manager(converter->priv->equation), unit_a);
-    ub = unit_manager_get_unit(math_equation_get_unit_manager(converter->priv->equation), unit_b);
+    ua = unit_manager_get_unit(unit_manager_get_default(), unit_a);
+    ub = unit_manager_get_unit(unit_manager_get_default(), unit_b);
     if (!ua || !ub)
         return;
 

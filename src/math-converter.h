@@ -21,7 +21,9 @@
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
+
 #include "math-equation.h"
+#include "unit.h"
 
 G_BEGIN_DECLS
 

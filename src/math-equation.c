@@ -32,6 +32,7 @@
 #include "mp-equation.h"
 #include "mp-serializer.h"
 #include "math-enums.h"
+#include "unit-manager.h"
 
 
 enum {
@@ -99,7 +100,6 @@ struct MathEquationPrivate
     gboolean in_solve;
 
     MathVariables *variables;
-    UnitManager *unit_manager;
     MpSerializer *serializer;
 
     GAsyncQueue *queue;
@@ -125,13 +125,6 @@ MathVariables *
 math_equation_get_variables(MathEquation *equation)
 {
     return equation->priv->variables;
-}
-
-
-UnitManager *
-math_equation_get_unit_manager(MathEquation *equation)
-{
-    return equation->priv->unit_manager;
 }
 
 
@@ -1079,8 +1072,7 @@ set_variable(const char *name, const MPNumber *x, void *data)
 static int
 convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z, void *data)
 {
-    MathEquation *equation = data;
-    return unit_manager_convert(equation->priv->unit_manager, x, x_units, z_units, z);
+    return unit_manager_convert(unit_manager_get_default(), x, x_units, z_units, z);
 }
 
 
@@ -1845,7 +1837,6 @@ math_equation_init(MathEquation *equation)
     g_strfreev(digits);
 
     equation->priv->variables = math_variables_new();
-    equation->priv->unit_manager = unit_manager_get_default();
 
     equation->priv->state.status = g_strdup("");
     equation->priv->word_size = 32;

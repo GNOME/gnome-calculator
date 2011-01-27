@@ -26,6 +26,7 @@
 #include "unittest.h"
 #include "math-window.h"
 #include "mp-equation.h"
+#include "unit-manager.h"
 
 static GSettings *settings = NULL;
 

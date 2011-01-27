@@ -15,13 +15,6 @@ G_DEFINE_TYPE (UnitManager, unit_manager, G_TYPE_OBJECT);
 static UnitManager *default_unit_manager = NULL;
 
 
-UnitManager *
-unit_manager_new(void)
-{
-    return g_object_new(unit_manager_get_type(), NULL);
-}
-
-
 static MPNumber *
 get_value(const gchar *value, MPNumber *t)
 {
@@ -40,7 +33,7 @@ unit_manager_get_default(void)
     if (default_unit_manager)
         return default_unit_manager;
 
-    default_unit_manager = unit_manager_new();
+    default_unit_manager = g_object_new(unit_manager_get_type(), NULL);
 
     /* FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads */
     category = unit_manager_add_category(default_unit_manager, "angle", _("Angle"));

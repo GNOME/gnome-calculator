@@ -24,8 +24,6 @@ typedef struct
 
 GType unit_manager_get_type(void);
 
-UnitManager *unit_manager_new(void);
-
 UnitManager *unit_manager_get_default(void);
 
 UnitCategory *unit_manager_add_category(UnitManager *manager, const gchar *name, const gchar *display_name);
