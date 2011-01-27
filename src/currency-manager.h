@@ -1,0 +1,37 @@
+#ifndef CURRENCY_MANAGER_H
+#define CURRENCY_MANAGER_H
+
+#include "currency.h"
+#include "mp.h"
+ 
+G_BEGIN_DECLS
+
+#define CURRENCY_MANAGER(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), currency_manager_get_type(), CurrencyManager))
+
+typedef struct CurrencyManagerPrivate CurrencyManagerPrivate;
+
+typedef struct
+{
+    GObject parent_instance;
+    CurrencyManagerPrivate *priv;
+} CurrencyManager;
+
+typedef struct
+{
+    GObjectClass parent_class;
+    // FIXME: Should indicate when rates are updated to UI
+} CurrencyManagerClass;
+
+GType currency_manager_get_type(void);
+
+CurrencyManager *currency_manager_get_default(void);
+
+const GList *currency_manager_get_currencies(CurrencyManager *manager);
+
+Currency *currency_manager_get_currency(CurrencyManager *manager, const gchar *name);
+
+const MPNumber *currency_manager_get_value(CurrencyManager *manager, const gchar *currency);
+
+G_END_DECLS
+
+#endif /* CURRENCY_MANAGER_H */

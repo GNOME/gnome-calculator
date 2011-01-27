@@ -22,7 +22,6 @@
 #include "math-converter.h"
 #include "math-variable-popup.h"
 #include "financial.h"
-#include "currency.h"
 #include "mp-serializer.h"
 
 enum {

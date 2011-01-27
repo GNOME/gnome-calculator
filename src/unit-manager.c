@@ -2,7 +2,7 @@
 #include <glib/gi18n.h> // FIXME: Move out of here
 
 #include "unit-manager.h"
-#include "currency.h" // FIXME: Move out of here
+#include "currency-manager.h" // FIXME: Move out of here
 
 struct UnitManagerPrivate
 {
@@ -35,7 +35,7 @@ unit_manager_get_default(void)
 {
     UnitCategory *category;
     MPNumber t;
-    int i;
+    const GList *iter;
 
     if (default_unit_manager)
         return default_unit_manager;
@@ -105,13 +105,14 @@ unit_manager_get_default(void)
     //unit_category_add_unit(category, unit_new("kelvin", _("Kelvin"), "%s days", get_value("86400", &t), "days", "day", NULL));
 
     category = unit_manager_add_category(default_unit_manager, "currency", _("Currency"));
-    for (i = 0; currency_info[i].short_name != NULL; i++)
+    for (iter = currency_manager_get_currencies(currency_manager_get_default()); iter; iter = iter->next)
     {
+        Currency *currency = iter->data;
         gchar *format;
         Unit *unit;
 
-        format = g_strdup_printf("%s%%s", currency_info[i].symbol);
-        unit = unit_new(currency_info[i].short_name, currency_info[i].short_name, format, NULL, currency_info[i].short_name, NULL);
+        format = g_strdup_printf("%s%%s", currency_get_symbol(currency));
+        unit = unit_new(currency_get_name(currency), currency_get_name(currency), format, NULL, currency_get_name(currency), NULL);
         g_free(format);
 
         unit_category_add_unit(category, unit);

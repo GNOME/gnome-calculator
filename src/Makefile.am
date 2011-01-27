@@ -11,6 +11,8 @@ INCLUDES = \
 gcalctool_SOURCES = \
 	currency.c \
 	currency.h \
+	currency-manager.c \
+	currency-manager.h \
 	gcalctool.c \
 	math-buttons.c \
 	math-buttons.h \
@@ -63,6 +65,8 @@ gcalccmd_SOURCES = \
 	gcalccmd.c \
 	currency.c \
 	currency.h \
+	currency-manager.c \
+	currency-manager.h \
 	mp.c \
 	mp-convert.c \
 	mp-binary.c \

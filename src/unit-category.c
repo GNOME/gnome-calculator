@@ -1,7 +1,6 @@
 #include <string.h>
 
 #include "unit-category.h"
-#include "currency.h" // FIXME: TEMP
 
 struct UnitCategoryPrivate
 {

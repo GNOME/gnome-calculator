@@ -3,7 +3,7 @@
 
 #include "unit.h"
 #include "mp-serializer.h"
-#include "currency.h" // FIXME: Move out of here
+#include "currency-manager.h" // FIXME: Move out of here
 
 struct UnitPrivate
 {
@@ -92,7 +92,7 @@ unit_get_value(Unit *unit)
     if (unit->priv->has_value)
         return &unit->priv->value;
     else
-        return currency_get_value(unit->priv->name); // FIXME: Hack to make currency work
+        return currency_manager_get_value(currency_manager_get_default(), unit->priv->name); // FIXME: Hack to make currency work
 }
 
 

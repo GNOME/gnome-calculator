@@ -20,7 +20,6 @@
 
 #include "math-converter.h"
 #include "unit-manager.h"
-#include "currency.h"
 
 enum {
     CHANGED,

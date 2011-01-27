@@ -24,13 +24,13 @@
 #include <math.h>
 #include <errno.h>
 #include <glib.h>
+#include <glib/gi18n.h>
 
 #include "math-equation.h"
 
 #include "mp.h"
 #include "mp-equation.h"
 #include "mp-serializer.h"
-#include "currency.h"
 #include "math-enums.h"
 
 
@@ -648,10 +648,6 @@ math_equation_get_angle_units(MathEquation *equation)
 void
 math_equation_set_source_currency(MathEquation *equation, const gchar *currency)
 {
-    // FIXME: Pick based on locale  
-    if (!currency || currency[0] == '\0')
-        currency = currency_info[0].short_name;
-
     if (strcmp(equation->priv->source_currency, currency) == 0)
         return;
     g_free(equation->priv->source_currency);
@@ -670,10 +666,6 @@ math_equation_get_source_currency(MathEquation *equation)
 void
 math_equation_set_target_currency(MathEquation *equation, const gchar *currency)
 {
-    // FIXME: Pick based on locale  
-    if (!currency || currency[0] == '\0')
-        currency = currency_info[0].short_name;
-
     if (strcmp(equation->priv->target_currency, currency) == 0)
         return;
     g_free(equation->priv->target_currency);
@@ -1859,8 +1851,8 @@ math_equation_init(MathEquation *equation)
     equation->priv->word_size = 32;
     equation->priv->angle_units = MP_DEGREES;
     // FIXME: Pick based on locale
-    equation->priv->source_currency = g_strdup(currency_info[0].short_name);
-    equation->priv->target_currency = g_strdup(currency_info[0].short_name);
+    equation->priv->source_currency = g_strdup("");
+    equation->priv->target_currency = g_strdup("");
     equation->priv->source_units = g_strdup("");
     equation->priv->target_units = g_strdup("");
     equation->priv->serializer = mp_serializer_new(MP_DISPLAY_FORMAT_AUTOMATIC, 10, 9);
