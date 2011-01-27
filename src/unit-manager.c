@@ -98,6 +98,12 @@ unit_manager_get_default(void)
     unit_category_add_unit(category, unit_new("millisecond", _("Milliseconds"), "%s milliseconds", get_value("0.001", &t), "milliseconds", "millisecond", "ms", NULL));
     unit_category_add_unit(category, unit_new("microsecond", _("Microseconds"), "%s microseconds", get_value("0.000001", &t), "microseconds", "microsecond", "us", NULL));
 
+    // FIXME: Need offset
+    //category = unit_manager_add_category(default_unit_manager, "temperature", _("Temperature"));
+    //unit_category_add_unit(category, unit_new("celcius", _("Celcius"), "%s˚C", get_value("1", &t), "˚C", NULL));
+    //unit_category_add_unit(category, unit_new("farenheit", _("Farenheit"), "%s˚F", get_value("", &t), "˚F", NULL));
+    //unit_category_add_unit(category, unit_new("kelvin", _("Kelvin"), "%s days", get_value("86400", &t), "days", "day", NULL));
+
     category = unit_manager_add_category(default_unit_manager, "currency", _("Currency"));
     for (i = 0; currency_info[i].short_name != NULL; i++)
     {
