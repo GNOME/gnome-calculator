@@ -25,6 +25,7 @@
 #include "unittest.h"
 #include "mp-equation.h"
 #include "mp-serializer.h"
+#include "unit-manager.h"
 
 static MPEquationOptions options;
 
@@ -116,6 +117,13 @@ test(char *expression, char *expected, int expected_error)
 }
 
 
+static int
+do_convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z, void *data)
+{
+    return unit_manager_convert(unit_manager_get_default(), x, x_units, z_units, z);
+}
+
+
 static void
 test_conversions()
 {
@@ -123,6 +131,7 @@ test_conversions()
     options.base = 10;
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
+    options.convert = do_convert;
 
     /* Length */
     test("1 meter in mm", "1000", 0);  

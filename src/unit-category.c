@@ -88,9 +88,7 @@ unit_category_convert(UnitCategory *category, const MPNumber *x, const char *x_u
 
     unit_x = get_unit(category, x_units);
     unit_z = get_unit(category, z_units);
-    g_return_val_if_fail(unit_x != NULL, FALSE);
-    g_return_val_if_fail(unit_z != NULL, FALSE);
-    if (unit_get_value(unit_x) && unit_get_value(unit_z)) {
+    if (unit_x && unit_z && unit_get_value(unit_x) && unit_get_value(unit_z)) {
         mp_multiply(x, unit_get_value(unit_x), z);
         mp_divide(z, unit_get_value(unit_z), z);
         return TRUE;
