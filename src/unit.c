@@ -2,6 +2,7 @@
 
 #include "unit.h"
 #include "mp-serializer.h"
+#include "mp-equation.h"
 #include "currency-manager.h" // FIXME: Move out of here
 
 struct UnitPrivate
@@ -10,8 +11,8 @@ struct UnitPrivate
     gchar *display_name;
     gchar *format;
     GList *symbols;
-    MPNumber value;
-    gboolean has_value;
+    gchar *from_function;
+    gchar *to_function;
     MpSerializer *serializer;
 };
 
@@ -19,7 +20,12 @@ G_DEFINE_TYPE (Unit, unit, G_TYPE_OBJECT);
 
 
 Unit *
-unit_new(const gchar *name, const gchar *display_name, const gchar *format, MPNumber *value, const gchar *symbols)
+unit_new(const gchar *name,
+         const gchar *display_name,
+         const gchar *format,
+         const gchar *from_function,
+         const gchar *to_function,
+         const gchar *symbols)
 {
     Unit *unit = g_object_new(unit_get_type(), NULL);
     gchar **symbol_names;
@@ -28,14 +34,8 @@ unit_new(const gchar *name, const gchar *display_name, const gchar *format, MPNu
     unit->priv->name = g_strdup(name);
     unit->priv->display_name = g_strdup(display_name);
     unit->priv->format = g_strdup(format);
-    if (value)
-    {
-        unit->priv->has_value = TRUE;
-        mp_set_from_mp(value, &unit->priv->value);
-    }
-    else
-        unit->priv->has_value = FALSE;
-
+    unit->priv->from_function = g_strdup(from_function);
+    unit->priv->to_function = g_strdup(to_function);
     symbol_names = g_strsplit(symbols, ",", 0);
     for (i = 0; symbol_names[i]; i++)
         unit->priv->symbols = g_list_append(unit->priv->symbols, g_strdup(symbol_names[i]));
@@ -81,13 +81,65 @@ unit_get_symbols(Unit *unit)
 }
 
 
-const MPNumber *
-unit_get_value(Unit *unit)
+static int
+variable_is_defined(const char *name, void *data)
 {
-    if (unit->priv->has_value)
-        return &unit->priv->value;
-    else
-        return currency_manager_get_value(currency_manager_get_default(), unit->priv->name); // FIXME: Hack to make currency work
+    return TRUE;
+}
+
+
+static int
+get_variable(const char *name, MPNumber *z, void *data)
+{
+    MPNumber *x = data;
+    mp_set_from_mp(x, z);
+    return TRUE;
+}
+
+
+static void
+solve_function(const gchar *function, const MPNumber *x, MPNumber *z)
+{
+    MPEquationOptions options;
+    int ret;
+
+    memset(&options, 0, sizeof(options));
+    options.base = 10;
+    options.wordlen = 32;
+    options.variable_is_defined = variable_is_defined;
+    options.get_variable = get_variable;
+    options.callback_data = (void *)x;
+    ret = mp_equation_parse(function, &options, z, NULL);
+    if (ret)
+        g_warning("Failed to convert value: %s", function);
+}
+
+
+void
+unit_convert_from(Unit *unit, const MPNumber *x, MPNumber *z)
+{
+    if (unit->priv->from_function)
+        solve_function(unit->priv->from_function, x, z);
+    else {
+        // FIXME: Hack to make currency work
+        const MPNumber *r;
+        r = currency_manager_get_value(currency_manager_get_default(), unit->priv->name);
+        mp_divide(x, r, z);
+    }
+}
+
+
+void
+unit_convert_to(Unit *unit, const MPNumber *x, MPNumber *z)
+{
+    if (unit->priv->from_function)
+        solve_function(unit->priv->to_function, x, z);
+    else {
+        // FIXME: Hack to make currency work
+        const MPNumber *r;
+        r = currency_manager_get_value(currency_manager_get_default(), unit->priv->name);
+        mp_multiply(x, r, z);
+    }
 }
 
 
@@ -99,7 +151,7 @@ unit_format(Unit *unit, MPNumber *x)
     number_text = mp_serializer_to_string(unit->priv->serializer, x);
     text = g_strdup_printf(unit->priv->format, number_text);
     g_free(number_text);
-  
+
     return text;
 }
 

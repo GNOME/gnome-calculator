@@ -132,6 +132,10 @@ test_conversions()
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
     options.convert = do_convert;
+  
+    /* Angle units */
+    //test("π radians in degrees", "180", 0);
+    test("100 gradians in degrees", "90", 0);
 
     /* Length */
     test("1 meter in mm", "1000", 0);  
@@ -147,8 +151,17 @@ test_conversions()
     /* Weight */
     test("1 kg in pounds", "2.204622622", 0);
   
-    /* Time */
+    /* Duration */
     test("1 minute in seconds", "60", 0);
+    test("1s in ms", "1000", 0);
+
+    /* Temperature */
+    //test("100˚C in ˚F", "", 0);
+    //test("0˚C in ˚F", "32", 0);
+    //test("0˚K in ˚C", "−273.15", 0);
+    test("100degC in degF", "212", 0);
+    test("0degC in degF", "32", 0);
+    test("0degK in degC", "−273.15", 0);
 }
 
 

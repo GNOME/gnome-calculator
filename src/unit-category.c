@@ -85,16 +85,17 @@ gboolean
 unit_category_convert(UnitCategory *category, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
 {
     Unit *unit_x, *unit_z;
+    MPNumber t;
 
     unit_x = get_unit(category, x_units);
     unit_z = get_unit(category, z_units);
-    if (unit_x && unit_z && unit_get_value(unit_x) && unit_get_value(unit_z)) {
-        mp_multiply(x, unit_get_value(unit_x), z);
-        mp_divide(z, unit_get_value(unit_z), z);
-        return TRUE;
-    }
+    if (!unit_x || !unit_z)
+        return FALSE;
+  
+    unit_convert_from(unit_x, x, &t);
+    unit_convert_to(unit_z, &t, z);
 
-    return FALSE;
+    return TRUE;
 }
 
 

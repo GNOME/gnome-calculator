@@ -23,7 +23,12 @@ typedef struct
 
 GType unit_get_type(void);
 
-Unit *unit_new(const gchar *name, const gchar *display_name, const gchar *format, MPNumber *value, const gchar *symbols);
+Unit *unit_new(const gchar *name,
+               const gchar *display_name,
+               const gchar *format,
+               const gchar *from_function,
+               const gchar *to_function,
+               const gchar *symbols);
 
 const gchar *unit_get_name(Unit *unit);
 
@@ -33,7 +38,9 @@ gboolean unit_matches_symbol(Unit *unit, const gchar *symbol);
 
 const GList *unit_get_symbols(Unit *unit);
 
-const MPNumber *unit_get_value(Unit *unit);
+void unit_convert_from(Unit *unit, const MPNumber *x, MPNumber *z);
+
+void unit_convert_to(Unit *unit, const MPNumber *x, MPNumber *z);
 
 gchar *unit_format(Unit *unit, MPNumber *x);
 
