@@ -25,6 +25,9 @@
 #include "mp.h"
 #include "mp-private.h"
 
+static MPNumber pi;
+static gboolean have_pi = FALSE;
+
 static int
 mp_compare_mp_to_int(const MPNumber *x, int i)
 {
@@ -64,7 +67,11 @@ convert_to_radians(const MPNumber *x, MPAngleUnit unit, MPNumber *z)
 void
 mp_get_pi(MPNumber *z)
 {
-    mp_set_from_string("3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679", 10, z);
+    if (mp_is_zero(&pi)) {
+        mp_set_from_string("3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679", 10, &pi);
+        have_pi = TRUE;
+    }
+    mp_set_from_mp(&pi, z);
 }
 
 

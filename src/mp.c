@@ -25,6 +25,9 @@
 #include "mp.h"
 #include "mp-private.h"
 
+static MPNumber eulers_number;
+static gboolean have_eulers_number = FALSE;
+
 // FIXME: Re-add overflow and underflow detection
 
 char *mp_error = NULL;
@@ -101,9 +104,13 @@ mp_ext(int i, int j, MPNumber *x)
 void
 mp_get_eulers(MPNumber *z)
 {
-    MPNumber t;
-    mp_set_from_integer(1, &t);
-    mp_epowy(&t, z);
+    if (!have_eulers_number) {
+        MPNumber t;
+        mp_set_from_integer(1, &t);
+        mp_epowy(&t, &eulers_number);
+        have_eulers_number = TRUE;
+    }
+    mp_set_from_mp(&eulers_number, z);
 }
 
 
