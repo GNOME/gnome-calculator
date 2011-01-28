@@ -31,6 +31,7 @@ unit_manager_get_default(void)
         gchar *symbols;
     } units[] =
     {
+        /* FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads */
         {"angle",    "degree",              N_("Degrees"),           NC_("unit-format", "%s degrees"),  "0.002777778",       NC_("unit-symbols", "degree,degrees,deg")},
         {NULL,       "radian",              N_("Radians"),           NC_("unit-format", "%s radians"),  "0.159154943",       NC_("unit-symbols", "radian,radians,rad")},
         {NULL,       "gradian",             N_("Gradians"),          NC_("unit-format", "%s gradians"), "0.0025",            NC_("unit-symbols", "gradian,gradians,grad")},
@@ -63,7 +64,7 @@ unit_manager_get_default(void)
         {NULL,       "millilitre",          N_("Millilitres"),       NC_("unit-format", "%s mL"),       "0.001",             NC_("unit-symbols", "millilitre,millilitres,milliliter,milliliters,mL,cm³")},
         {NULL,       "microlitre",          N_("Microlitre"),        NC_("unit-format", "%s μL"),       "0.000001",          NC_("unit-symbols", "mm³,μL,uL")},
         {"weight",   "tonne",               N_("Tonnes"),            NC_("unit-format", "%s T"),        "1000",              NC_("unit-symbols", "tonne,tonnes")},
-        {NULL,       "kilograms",           N_("Kilograms"),         NC_("unit-format", "%s kg"),       "1s",                NC_("unit-symbols", "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs")},
+        {NULL,       "kilograms",           N_("Kilograms"),         NC_("unit-format", "%s kg"),       "1",                 NC_("unit-symbols", "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs")},
         {NULL,       "pound",               N_("Pounds"),            NC_("unit-format", "%s lb"),       "0.45359237",        NC_("unit-symbols", "pound,pounds,lb")},
         {NULL,       "ounce",               N_("Ounces"),            NC_("unit-format", "%s oz"),       "0.02834952",        NC_("unit-symbols", "ounce,ounces,oz")},
         {NULL,       "gram",                N_("Grams"),             NC_("unit-format", "%s g"),        "0.001",             NC_("unit-symbols", "gram,grams,gramme,grammes,g")},
@@ -86,7 +87,6 @@ unit_manager_get_default(void)
 
     default_unit_manager = g_object_new(unit_manager_get_type(), NULL);
 
-    /* FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads */
     unit_manager_add_category(default_unit_manager, "angle",    _("Angle"));
     unit_manager_add_category(default_unit_manager, "length",   _("Length"));
     unit_manager_add_category(default_unit_manager, "area",     _("Area"));
