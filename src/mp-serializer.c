@@ -221,13 +221,12 @@ mp_cast_to_string(MpSerializer *serializer, const MPNumber *x)
 }
 
 
-static void
+static int
 mp_cast_to_exponential_string_real(MpSerializer *serializer, const MPNumber *x, GString *string, gboolean eng_format)
 {
-    gchar *fixed, *c;
+    gchar *fixed;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
     int exponent = 0;
-    const gchar *super_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
 
     mp_abs(x, &z);
     if (mp_is_negative(x))
@@ -267,20 +266,30 @@ mp_cast_to_exponential_string_real(MpSerializer *serializer, const MPNumber *x, 
     fixed = mp_cast_to_string(serializer, &mantissa);
     g_string_append(string, fixed);
     g_free(fixed);
-    if (exponent != 0) {
-        gchar *super_value;
+  
+    return exponent;
+}
 
-        g_string_append_printf(string, "×10"); // FIXME: Use the current base
-        if (exponent < 0) {
-            exponent = -exponent;
-            g_string_append(string, "⁻");
-        }
 
-        super_value = g_strdup_printf("%d", exponent);
-        for (c = super_value; *c; c++)
-            g_string_append(string, super_digits[*c - '0']);
-        g_free (super_value);
+static void
+append_exponent(GString *string, int exponent)
+{
+    const gchar *super_digits[] = {"⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"};
+    gchar *super_value, *c;
+  
+    if (exponent == 0)
+        return;
+
+    g_string_append_printf(string, "×10"); // FIXME: Use the current base
+    if (exponent < 0) {
+        exponent = -exponent;
+        g_string_append(string, "⁻");
     }
+
+    super_value = g_strdup_printf("%d", exponent);
+    for (c = super_value; *c; c++)
+        g_string_append(string, super_digits[*c - '0']);
+    g_free (super_value);
 }
 
 
@@ -290,11 +299,14 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
     GString *string;
     MPNumber x_real;
     gchar *result;
+    int exponent;
 
     string = g_string_sized_new(1024);
 
     mp_real_component(x, &x_real);
-    mp_cast_to_exponential_string_real(serializer, &x_real, string, eng_format);
+    exponent = mp_cast_to_exponential_string_real(serializer, &x_real, string, eng_format);
+    append_exponent(string, exponent);
+
     if (mp_is_complex(x)) {
         GString *s;
         gboolean force_sign = TRUE;
@@ -308,7 +320,7 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
         }
 
         s = g_string_sized_new(1024);
-        mp_cast_to_exponential_string_real(serializer, &x_im, s, eng_format);
+        exponent = mp_cast_to_exponential_string_real(serializer, &x_im, s, eng_format);
         if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
             /* Ignore */
         }
@@ -327,9 +339,10 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
             else if (strcmp(s->str, "0") != 0)
                 g_string_append(string, s->str);
 
-            g_string_append(string, "i"); // FIXME: Insert before the *10^
+            g_string_append(string, "i");
         }
         g_string_free(s, TRUE);
+        append_exponent(string, exponent);
     }
 
     result = g_strndup(string->str, string->len + 1);
@@ -358,7 +371,7 @@ mp_serializer_to_string(MpSerializer *serializer, const MPNumber *x)
             g_free(s0);
             return s1;
         }
-      break;
+        break;
     case MP_DISPLAY_FORMAT_FIXED:
         return mp_cast_to_string(serializer, x);
     case MP_DISPLAY_FORMAT_SCIENTIFIC:
