@@ -37,15 +37,15 @@ unit_manager_get_default(void)
 
     /* FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads */
     category = unit_manager_add_category(default_unit_manager, "angle", _("Angle"));
-    unit_category_add_unit(category, unit_new("degrees", _("Degrees"), "%s degrees", get_value("0.002777778", &t), "degrees", "degree", "deg", NULL));
-    unit_category_add_unit(category, unit_new("radians", _("Radians"), "%s radians", get_value("0.159154943", &t), "radians", "radian", "rad", NULL));
-    unit_category_add_unit(category, unit_new("gradians", _("Gradians"), "%s gradians", get_value("0.0025", &t), "gradians", "gradian", "grad", NULL));
+    unit_category_add_unit(category, unit_new("degree", _("Degrees"), "%s degrees", get_value("0.002777778", &t), "degrees", "degree", "deg", NULL));
+    unit_category_add_unit(category, unit_new("radian", _("Radians"), "%s radians", get_value("0.159154943", &t), "radians", "radian", "rad", NULL));
+    unit_category_add_unit(category, unit_new("gradian", _("Gradians"), "%s gradians", get_value("0.0025", &t), "gradians", "gradian", "grad", NULL));
 
     category = unit_manager_add_category(default_unit_manager, "length", _("Length"));
     unit_category_add_unit(category, unit_new("parsec", _("Parsecs"), "%s pc", get_value("30857000000000000", &t), "parsecs", "parsec", "pc", NULL));
     unit_category_add_unit(category, unit_new("lightyear", _("Light Years"), "%s ly", get_value("9460730472580800", &t), "lightyears", "lightyear", "ly", NULL));
-    unit_category_add_unit(category, unit_new("au", _("Austronomical Units"), "%s au", get_value("149597870691", &t), "au", NULL));
-    unit_category_add_unit(category, unit_new("nm", _("Nautical Miles"), "%s nm", get_value("1852000", &t), "nm", NULL));
+    unit_category_add_unit(category, unit_new("astronomical-unit", _("Austronomical Units"), "%s au", get_value("149597870691", &t), "au", NULL));
+    unit_category_add_unit(category, unit_new("nautical-mile", _("Nautical Miles"), "%s nm", get_value("1852000", &t), "nm", NULL));
     unit_category_add_unit(category, unit_new("mile", _("Miles"), "%s mi", get_value("1609.344", &t), "miles", "mile", "mi", NULL));
     unit_category_add_unit(category, unit_new("kilometer", _("Kilometers"), "%s km", get_value("1000", &t), "kilometers", "kilometer", "km", "kms", NULL));
     unit_category_add_unit(category, unit_new("cable", _("Cables"), "%s cable", get_value("219.456", &t), "cables", "cable", "cb", NULL));
@@ -62,18 +62,18 @@ unit_manager_get_default(void)
     category = unit_manager_add_category(default_unit_manager, "area", _("Area"));
     unit_category_add_unit(category, unit_new("hectare", _("Hectares"), "%s ha", get_value("10000", &t), "hectares", "hectare", "ha", NULL));
     unit_category_add_unit(category, unit_new("acre", _("Acres"), "%s acres", get_value("4046.8564224", &t), "acres", "acre", NULL));
-    unit_category_add_unit(category, unit_new("m²", _("Square Meter"), "%s m²", get_value("1", &t), "m²", NULL));
-    unit_category_add_unit(category, unit_new("cm²", _("Square Centimeter"), "%s cm²", get_value("0.001", &t), "cm²", NULL));
-    unit_category_add_unit(category, unit_new("mm²", _("Square Millimeter"), "%s mm²", get_value("0.000001", &t), "mm²", NULL));
+    unit_category_add_unit(category, unit_new("square-meter", _("Square Meter"), "%s m²", get_value("1", &t), "m²", NULL));
+    unit_category_add_unit(category, unit_new("square-centimeter", _("Square Centimeter"), "%s cm²", get_value("0.001", &t), "cm²", NULL));
+    unit_category_add_unit(category, unit_new("square-millimeter", _("Square Millimeter"), "%s mm²", get_value("0.000001", &t), "mm²", NULL));
 
     category = unit_manager_add_category(default_unit_manager, "volume", _("Volume"));
-    unit_category_add_unit(category, unit_new("m³", _("Cubic Meters"), "%s m³", get_value("1000", &t), "m³", NULL));
+    unit_category_add_unit(category, unit_new("cubic-meter", _("Cubic Meters"), "%s m³", get_value("1000", &t), "m³", NULL));
     unit_category_add_unit(category, unit_new("gallon", _("Gallons"), "%s gallons", get_value("3.785412", &t), "gallons", "gallon", "gal", NULL));
     unit_category_add_unit(category, unit_new("litre", _("Litres"), "%s L", get_value("1", &t), "litres", "litre", "liter", "liters", "L", NULL));
     unit_category_add_unit(category, unit_new("quart", _("Quarts"), "%s quarts", get_value("0.9463529", &t), "quarts", "quart", "qt", NULL));
     unit_category_add_unit(category, unit_new("pint", _("Pints"), "%s pt", get_value("0.4731765", &t), "pints", "pint", "pt", NULL));
     unit_category_add_unit(category, unit_new("millilitre", _("Millilitres"), "%s mL", get_value("0.001", &t), "millilitres", "millilitre", "milliliter", "milliliters", "mL", "cm³", NULL));
-    unit_category_add_unit(category, unit_new("mm³", _("Microlitre"), "%s μL", get_value("0.000001", &t), "", "mm³", "μL", "uL", NULL));
+    unit_category_add_unit(category, unit_new("microlitre", _("Microlitre"), "%s μL", get_value("0.000001", &t), "", "mm³", "μL", "uL", NULL));
 
     category = unit_manager_add_category(default_unit_manager, "weight", _("Weight"));
     unit_category_add_unit(category, unit_new("tonne", _("Tonnes"), "%s T", get_value("1000", &t), "tonnes", "tonne", NULL));
@@ -93,9 +93,9 @@ unit_manager_get_default(void)
 
     // FIXME: Need offset
     //category = unit_manager_add_category(default_unit_manager, "temperature", _("Temperature"));
-    //unit_category_add_unit(category, unit_new("celcius", _("Celcius"), "%s˚C", get_value("1", &t), "˚C", NULL));
-    //unit_category_add_unit(category, unit_new("farenheit", _("Farenheit"), "%s˚F", get_value("", &t), "˚F", NULL));
-    //unit_category_add_unit(category, unit_new("kelvin", _("Kelvin"), "%s days", get_value("86400", &t), "days", "day", NULL));
+    //unit_category_add_unit(category, unit_new("degree-celcius", _("Celcius"), "%s˚C", get_value("1", &t), "˚C", NULL));
+    //unit_category_add_unit(category, unit_new("degree-farenheit", _("Farenheit"), "%s˚F", get_value("", &t), "˚F", NULL));
+    //unit_category_add_unit(category, unit_new("degree-kelvin", _("Kelvin"), "%s days", get_value("86400", &t), "days", "day", NULL));
 
     category = unit_manager_add_category(default_unit_manager, "currency", _("Currency"));
     for (iter = currency_manager_get_currencies(currency_manager_get_default()); iter; iter = iter->next)
