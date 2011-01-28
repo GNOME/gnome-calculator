@@ -34,8 +34,6 @@ enum {
     PROP_BASE,
 };
 
-static GType number_format_type;
-
 struct MpSerializerPrivate
 {
     gint accuracy;            /* Number of digits to show */
@@ -542,8 +540,6 @@ mp_serializer_class_init(MpSerializerClass *klass)
 
     g_type_class_add_private(klass, sizeof(MpSerializerPrivate));
 
-    number_format_type = math_mp_display_format_get_type();
-
     g_object_class_install_property(object_class,
                                     PROP_SHOW_THOUSANDS_SEPARATORS,
                                     g_param_spec_boolean("show-thousands-separators",
@@ -563,7 +559,7 @@ mp_serializer_class_init(MpSerializerClass *klass)
                                     g_param_spec_enum("number-format",
                                                       "number-format",
                                                       "Display format",
-                                                      number_format_type,
+                                                      math_mp_display_format_get_type(),
                                                       MP_DISPLAY_FORMAT_AUTOMATIC,
                                                       G_PARAM_READWRITE));
     g_object_class_install_property(object_class,
