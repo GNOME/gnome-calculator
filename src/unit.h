@@ -23,7 +23,7 @@ typedef struct
 
 GType unit_get_type(void);
 
-Unit *unit_new(const gchar *name, const gchar *display_name, const gchar *format, MPNumber *value, const gchar *symbol, ...);
+Unit *unit_new(const gchar *name, const gchar *display_name, const gchar *format, MPNumber *value, const gchar *symbols);
 
 const gchar *unit_get_name(Unit *unit);
 

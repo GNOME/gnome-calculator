@@ -1,5 +1,4 @@
 #include <string.h>
-#include <stdarg.h>
 
 #include "unit.h"
 #include "mp-serializer.h"
@@ -20,10 +19,11 @@ G_DEFINE_TYPE (Unit, unit, G_TYPE_OBJECT);
 
 
 Unit *
-unit_new(const gchar *name, const gchar *display_name, const gchar *format, MPNumber *value, const gchar *symbol, ...)
+unit_new(const gchar *name, const gchar *display_name, const gchar *format, MPNumber *value, const gchar *symbols)
 {
     Unit *unit = g_object_new(unit_get_type(), NULL);
-    va_list ap;
+    gchar **symbol_names;
+    int i;
 
     unit->priv->name = g_strdup(name);
     unit->priv->display_name = g_strdup(display_name);
@@ -36,15 +36,10 @@ unit_new(const gchar *name, const gchar *display_name, const gchar *format, MPNu
     else
         unit->priv->has_value = FALSE;
 
-    unit->priv->symbols = g_list_append(unit->priv->symbols, g_strdup(symbol));
-    va_start(ap, symbol);
-    while(TRUE) {
-        const gchar *s = va_arg(ap, char *);
-        if (s == NULL)
-            break;
-        unit->priv->symbols = g_list_append(unit->priv->symbols, g_strdup(s));        
-    }
-    va_end(ap);
+    symbol_names = g_strsplit(symbols, ",", 0);
+    for (i = 0; symbol_names[i]; i++)
+        unit->priv->symbols = g_list_append(unit->priv->symbols, g_strdup(symbol_names[i]));
+    g_free(symbol_names);
 
     return unit;
 }
