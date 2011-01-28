@@ -88,7 +88,7 @@ test(char *expression, char *expected, int expected_error)
 
     error = mp_equation_parse(expression, &options, &result, NULL);
 
-    if(error == 0) {
+    if (error == 0) {
         char *result_str;
         MpSerializer *serializer;
 
