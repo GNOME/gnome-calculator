@@ -15,11 +15,18 @@ G_DEFINE_TYPE (UnitManager, unit_manager, G_TYPE_OBJECT);
 static UnitManager *default_unit_manager = NULL;
 
 
+static gint
+compare_currencies(gconstpointer a, gconstpointer b)
+{
+    return strcmp(currency_get_display_name((Currency *)a), currency_get_display_name((Currency *)b));
+}
+
+
 UnitManager *
 unit_manager_get_default(void)
 {
     UnitCategory *category = NULL;
-    const GList *iter;
+    GList *currencies, *iter;
     int i;
     const struct
     {
@@ -107,7 +114,9 @@ unit_manager_get_default(void)
     }
 
     category = unit_manager_add_category(default_unit_manager, "currency", _("Currency"));
-    for (iter = currency_manager_get_currencies(currency_manager_get_default()); iter; iter = iter->next)
+    currencies = g_list_copy(currency_manager_get_currencies(currency_manager_get_default()));
+    currencies = g_list_sort(currencies, compare_currencies);
+    for (iter = currencies; iter; iter = iter->next)
     {
         Currency *currency = iter->data;
         gchar *format;
@@ -118,7 +127,8 @@ unit_manager_get_default(void)
         g_free(format);
 
         unit_category_add_unit(category, unit);
-    }  
+    }
+    g_list_free(currencies);
 
     return default_unit_manager;
 }

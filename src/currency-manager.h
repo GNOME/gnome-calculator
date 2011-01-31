@@ -26,7 +26,7 @@ GType currency_manager_get_type(void);
 
 CurrencyManager *currency_manager_get_default(void);
 
-const GList *currency_manager_get_currencies(CurrencyManager *manager);
+GList *currency_manager_get_currencies(CurrencyManager *manager);
 
 Currency *currency_manager_get_currency(CurrencyManager *manager, const gchar *name);
 

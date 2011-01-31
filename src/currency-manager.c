@@ -121,7 +121,7 @@ currency_manager_get_default(void)
 }
 
 
-const GList *
+GList *
 currency_manager_get_currencies(CurrencyManager *manager)
 {
      return manager->priv->currencies;
