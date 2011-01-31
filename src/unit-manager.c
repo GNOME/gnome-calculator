@@ -114,7 +114,7 @@ unit_manager_get_default(void)
         Unit *unit;
 
         format = g_strdup_printf("%s%%s", currency_get_symbol(currency));
-        unit = unit_new(currency_get_name(currency), currency_get_name(currency), format, NULL, NULL, currency_get_name(currency));
+        unit = unit_new(currency_get_name(currency), currency_get_short_display_name(currency), format, NULL, NULL, currency_get_name(currency));
         g_free(format);
 
         unit_category_add_unit(category, unit);
