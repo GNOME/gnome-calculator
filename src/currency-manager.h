@@ -19,7 +19,7 @@ typedef struct
 typedef struct
 {
     GObjectClass parent_class;
-    // FIXME: Should indicate when rates are updated to UI
+    void (*updated)(CurrencyManager *manager);
 } CurrencyManagerClass;
 
 GType currency_manager_get_type(void);

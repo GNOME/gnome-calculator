@@ -20,6 +20,7 @@
 
 #include "math-converter.h"
 #include "unit-manager.h"
+#include "currency-manager.h"
 
 enum {
     CHANGED,
@@ -321,6 +322,13 @@ from_cell_data_func(GtkCellLayout   *cell_layout,
 
 
 static void
+currency_updated_cb(CurrencyManager *manager, MathConverter *converter)
+{
+    update_result_label(converter);
+}
+
+
+static void
 math_converter_init(MathConverter *converter)
 {
     GtkWidget *hbox, *label;
@@ -365,4 +373,6 @@ math_converter_init(MathConverter *converter)
     gtk_widget_set_sensitive(converter->priv->result_label, FALSE);
     gtk_widget_show(converter->priv->result_label);
     gtk_box_pack_start(GTK_BOX(converter), converter->priv->result_label, TRUE, TRUE, 0);
+
+    g_signal_connect(currency_manager_get_default(), "updated", G_CALLBACK(currency_updated_cb), converter);
 }

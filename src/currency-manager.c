@@ -81,6 +81,7 @@ static const CurrencyInfo currency_info[] = {
 
 static gboolean downloading_imf_rates = FALSE, downloading_ecb_rates = FALSE;
 static gboolean loaded_rates = FALSE;
+static gboolean load_rates(CurrencyManager *manager);
 
 struct CurrencyManagerPrivate
 {
@@ -89,6 +90,12 @@ struct CurrencyManagerPrivate
 
 G_DEFINE_TYPE (CurrencyManager, currency_manager, G_TYPE_OBJECT);
 
+
+enum {
+    UPDATED,
+    LAST_SIGNAL
+};
+static guint signals[LAST_SIGNAL] = { 0, };
 
 static CurrencyManager *default_currency_manager = NULL;
 
@@ -208,6 +215,7 @@ file_needs_update(gchar *filename, double max_age)
 static void
 download_imf_cb(GObject *object, GAsyncResult *result, gpointer user_data)
 {
+    CurrencyManager *manager = user_data;
     GError *error = NULL;
 
     if (g_file_copy_finish(G_FILE(object), result, &error))
@@ -216,12 +224,14 @@ download_imf_cb(GObject *object, GAsyncResult *result, gpointer user_data)
         g_warning("Couldn't download IMF currency rate file: %s", error->message);
     g_clear_error(&error);
     downloading_imf_rates = FALSE;
+    load_rates(manager);
 }
 
 
 static void
 download_ecb_cb(GObject *object, GAsyncResult *result, gpointer user_data)
 {
+    CurrencyManager *manager = user_data;
     GError *error = NULL;
 
     if (g_file_copy_finish(G_FILE(object), result, &error))
@@ -230,11 +240,12 @@ download_ecb_cb(GObject *object, GAsyncResult *result, gpointer user_data)
         g_warning("Couldn't download ECB currency rate file: %s", error->message);
     g_clear_error(&error);
     downloading_ecb_rates = FALSE;
+    load_rates(manager);
 }
 
 
 static void
-download_file(gchar *uri, gchar *filename, GAsyncReadyCallback callback)
+download_file(CurrencyManager *manager, gchar *uri, gchar *filename, GAsyncReadyCallback callback)
 {
     gchar *directory;
     GFile *source, *dest;
@@ -246,7 +257,7 @@ download_file(gchar *uri, gchar *filename, GAsyncReadyCallback callback)
     source = g_file_new_for_uri(uri);
     dest = g_file_new_for_path(filename);
 
-    g_file_copy_async(source, dest, G_FILE_COPY_OVERWRITE, G_PRIORITY_DEFAULT, NULL, NULL, NULL, callback, NULL);
+    g_file_copy_async(source, dest, G_FILE_COPY_OVERWRITE, G_PRIORITY_DEFAULT, NULL, NULL, NULL, callback, manager);
     g_object_unref(source);
     g_object_unref(dest); 
 }
@@ -501,10 +512,18 @@ load_ecb_rates(CurrencyManager *manager)
 }
 
 
-static void
+static gboolean
 load_rates(CurrencyManager *manager)
 {
     int i;
+
+    /* Already loaded */
+    if (loaded_rates)
+        return TRUE;
+
+    /* In process */
+    if (downloading_imf_rates || downloading_ecb_rates)
+        return FALSE;
 
     /* Use the IMF provided values and top up with currencies tracked by the ECB and not the IMF */
     load_imf_rates(manager);
@@ -522,7 +541,11 @@ load_rates(CurrencyManager *manager)
     }
 
     g_debug("Rates loaded");
-    loaded_rates = TRUE;  
+    loaded_rates = TRUE;
+
+    g_signal_emit(manager, signals[UPDATED], 0);
+  
+    return TRUE;
 }
 
 
@@ -537,22 +560,19 @@ currency_manager_get_value(CurrencyManager *manager, const gchar *currency)
     if (!downloading_imf_rates && file_needs_update(path, 60 * 60 * 24 * 7)) {
         downloading_imf_rates = TRUE;
         g_debug("Downloading rates from the IMF...");
-        download_file("http://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, download_imf_cb);
+        download_file(manager, "http://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, download_imf_cb);
     }
     g_free(path);
     path = get_ecb_rate_filepath();
     if (!downloading_ecb_rates && file_needs_update(path, 60 * 60 * 24 * 7)) {
         downloading_ecb_rates = TRUE;
         g_debug("Downloading rates from the ECB...");
-        download_file("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, download_ecb_cb);
+        download_file(manager, "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, download_ecb_cb);
     }
     g_free(path);
 
-    if (downloading_imf_rates || downloading_ecb_rates)
+    if (!load_rates(manager))
         return NULL;
-
-    if (!loaded_rates)
-        load_rates(manager);
   
     c = currency_manager_get_currency(manager, currency);
     return currency_get_value(c);
@@ -563,6 +583,15 @@ static void
 currency_manager_class_init(CurrencyManagerClass *klass)
 {
     g_type_class_add_private(klass, sizeof(CurrencyManagerPrivate));
+
+    signals[UPDATED] =
+        g_signal_new("updated",
+                     G_TYPE_FROM_CLASS (klass),
+                     G_SIGNAL_RUN_LAST,
+                     G_STRUCT_OFFSET (CurrencyManagerClass, updated),
+                     NULL, NULL,
+                     g_cclosure_marshal_VOID__VOID,
+                     G_TYPE_NONE, 0);
 }
 
 
