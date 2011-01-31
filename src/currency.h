@@ -24,7 +24,6 @@ typedef struct
 GType currency_get_type(void);
 
 Currency *currency_new(const gchar *name,
-                       const gchar *short_display_name,
                        const gchar *display_name,
                        const gchar *symbol);
 
