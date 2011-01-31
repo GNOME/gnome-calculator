@@ -97,7 +97,7 @@ get_variable(const char *name, MPNumber *z, void *data)
 }
 
 
-static void
+static gboolean
 solve_function(const gchar *function, const MPNumber *x, MPNumber *z)
 {
     MPEquationOptions options;
@@ -110,35 +110,47 @@ solve_function(const gchar *function, const MPNumber *x, MPNumber *z)
     options.get_variable = get_variable;
     options.callback_data = (void *)x;
     ret = mp_equation_parse(function, &options, z, NULL);
-    if (ret)
+    if (ret) {
         g_warning("Failed to convert value: %s", function);
+        return FALSE;
+    }
+
+    return TRUE;
 }
 
 
-void
+gboolean
 unit_convert_from(Unit *unit, const MPNumber *x, MPNumber *z)
 {
     if (unit->priv->from_function)
-        solve_function(unit->priv->from_function, x, z);
+        return solve_function(unit->priv->from_function, x, z);
     else {
         // FIXME: Hack to make currency work
         const MPNumber *r;
         r = currency_manager_get_value(currency_manager_get_default(), unit->priv->name);
+        if (!r)
+            return FALSE;
         mp_divide(x, r, z);
+
+        return TRUE;
     }
 }
 
 
-void
+gboolean
 unit_convert_to(Unit *unit, const MPNumber *x, MPNumber *z)
 {
     if (unit->priv->from_function)
-        solve_function(unit->priv->to_function, x, z);
+        return solve_function(unit->priv->to_function, x, z);
     else {
         // FIXME: Hack to make currency work
         const MPNumber *r;
         r = currency_manager_get_value(currency_manager_get_default(), unit->priv->name);
+        if (!r)
+            return FALSE;
         mp_multiply(x, r, z);
+
+        return TRUE;
     }
 }
 

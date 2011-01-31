@@ -91,9 +91,11 @@ unit_category_convert(UnitCategory *category, const MPNumber *x, const char *x_u
     unit_z = get_unit(category, z_units);
     if (!unit_x || !unit_z)
         return FALSE;
-  
-    unit_convert_from(unit_x, x, &t);
-    unit_convert_to(unit_z, &t, z);
+
+    if (!unit_convert_from(unit_x, x, &t))
+        return FALSE;
+    if (!unit_convert_to(unit_z, &t, z))
+        return FALSE;
 
     return TRUE;
 }

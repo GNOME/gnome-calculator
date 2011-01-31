@@ -38,9 +38,9 @@ gboolean unit_matches_symbol(Unit *unit, const gchar *symbol);
 
 const GList *unit_get_symbols(Unit *unit);
 
-void unit_convert_from(Unit *unit, const MPNumber *x, MPNumber *z);
+gboolean unit_convert_from(Unit *unit, const MPNumber *x, MPNumber *z);
 
-void unit_convert_to(Unit *unit, const MPNumber *x, MPNumber *z);
+gboolean unit_convert_to(Unit *unit, const MPNumber *x, MPNumber *z);
 
 gchar *unit_format(Unit *unit, MPNumber *x);
 
