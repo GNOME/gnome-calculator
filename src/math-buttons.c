@@ -212,11 +212,11 @@ static ButtonData button_data[] = {
       /* Tooltip for the imaginary component button */
       N_("Imaginary Component")},
     {"ones_complement",    "ones ", FUNCTION,
-      /* Tooltip for the ones complement button */
-      N_("Ones Complement")},
+      /* Tooltip for the ones' complement button */
+      N_("Ones' Complement")},
     {"twos_complement",    "twos ", FUNCTION,
-      /* Tooltip for the twos complement button */
-      N_("Twos Complement")},
+      /* Tooltip for the two's complement button */
+      N_("Two's Complement")},
     {"trunc",              "trunc ", FUNCTION,
       /* Tooltip for the truncate button */
       N_("Truncate")},
