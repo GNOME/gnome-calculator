@@ -112,7 +112,7 @@ currency_manager_get_default(void)
 
     for (i = 0; currency_info[i].short_name; i++) {
         Currency *c = currency_new(currency_info[i].short_name,
-                                   currency_info[i].long_name,
+                                   _(currency_info[i].long_name),
                                    currency_info[i].symbol);
         default_currency_manager->priv->currencies = g_list_append(default_currency_manager->priv->currencies, c);
     }
