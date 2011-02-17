@@ -30,13 +30,15 @@ const gchar *unit_category_get_name(UnitCategory *category);
 
 const gchar *unit_category_get_display_name(UnitCategory *category);
 
-Unit *unit_category_get_unit(UnitCategory *category, const gchar *name);
+Unit *unit_category_get_unit_by_name(UnitCategory *category, const gchar *name);
+
+Unit *unit_category_get_unit_by_symbol(UnitCategory *category, const gchar *symbol);
 
 void unit_category_add_unit(UnitCategory *category, Unit *unit);
 
 const GList *unit_category_get_units(UnitCategory *category);
 
-gboolean unit_category_convert(UnitCategory *category, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z);
+gboolean unit_category_convert(UnitCategory *category, const MPNumber *x, Unit *x_units, Unit *z_units, MPNumber *z);
 
 G_END_DECLS
 

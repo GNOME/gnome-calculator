@@ -77,7 +77,7 @@ update_result_label(MathConverter *converter)
         gtk_combo_box_get_active_iter(GTK_COMBO_BOX(converter->priv->to_combo), &to_iter)) {
         gtk_tree_model_get(gtk_combo_box_get_model(GTK_COMBO_BOX(converter->priv->from_combo)), &from_iter, 1, &category, 2, &source_unit, -1);
         gtk_tree_model_get(gtk_combo_box_get_model(GTK_COMBO_BOX(converter->priv->to_combo)), &to_iter, 2, &target_unit, -1);
-        if (!unit_category_convert(category, &x, unit_get_name(source_unit), unit_get_name(target_unit), &z))
+        if (!unit_category_convert(category, &x, source_unit, target_unit, &z))
             enabled = FALSE;
     }
     else
@@ -228,8 +228,8 @@ math_converter_set_conversion(MathConverter *converter, /*const gchar *category,
     Unit *ua;
     Unit *ub;
 
-    ua = unit_manager_get_unit(unit_manager_get_default(), unit_a);
-    ub = unit_manager_get_unit(unit_manager_get_default(), unit_b);
+    ua = unit_manager_get_unit_by_name(unit_manager_get_default(), unit_a);
+    ub = unit_manager_get_unit_by_name(unit_manager_get_default(), unit_b);
     if (!ua || !ub)
         return;
 

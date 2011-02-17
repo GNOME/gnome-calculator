@@ -44,7 +44,7 @@ unit_category_add_unit(UnitCategory *category, Unit *unit)
 
 
 Unit *
-unit_category_get_unit(UnitCategory *category, const gchar *name)
+unit_category_get_unit_by_name(UnitCategory *category, const gchar *name)
 {
     GList *iter;
 
@@ -59,15 +59,8 @@ unit_category_get_unit(UnitCategory *category, const gchar *name)
 }
 
 
-const GList *
-unit_category_get_units(UnitCategory *category)
-{
-    return category->priv->units;
-}
-
-
-static Unit *
-get_unit(UnitCategory *category, const gchar *symbol)
+Unit *
+unit_category_get_unit_by_symbol(UnitCategory *category, const gchar *symbol)
 {
     GList *iter;
 
@@ -81,20 +74,21 @@ get_unit(UnitCategory *category, const gchar *symbol)
 }
 
 
-gboolean
-unit_category_convert(UnitCategory *category, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
+const GList *
+unit_category_get_units(UnitCategory *category)
 {
-    Unit *unit_x, *unit_z;
+    return category->priv->units;
+}
+
+
+gboolean
+unit_category_convert(UnitCategory *category, const MPNumber *x, Unit *x_units, Unit *z_units, MPNumber *z)
+{
     MPNumber t;
 
-    unit_x = get_unit(category, x_units);
-    unit_z = get_unit(category, z_units);
-    if (!unit_x || !unit_z)
+    if (!unit_convert_from(x_units, x, &t))
         return FALSE;
-
-    if (!unit_convert_from(unit_x, x, &t))
-        return FALSE;
-    if (!unit_convert_to(unit_z, &t, z))
+    if (!unit_convert_to(z_units, &t, z))
         return FALSE;
 
     return TRUE;

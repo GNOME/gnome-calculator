@@ -120,7 +120,7 @@ test(char *expression, char *expected, int expected_error)
 static int
 do_convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z, void *data)
 {
-    return unit_manager_convert(unit_manager_get_default(), x, x_units, z_units, z);
+    return unit_manager_convert_by_symbol(unit_manager_get_default(), x, x_units, z_units, z);
 }
 
 

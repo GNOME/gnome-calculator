@@ -32,9 +32,11 @@ const GList *unit_manager_get_categories(UnitManager *manager);
 
 UnitCategory *unit_manager_get_category(UnitManager *manager, const gchar *category);
 
-Unit *unit_manager_get_unit(UnitManager *manager, const gchar *unit);
+Unit *unit_manager_get_unit_by_name(UnitManager *manager, const gchar *name);
 
-gboolean unit_manager_convert(UnitManager *manager, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z);
+Unit *unit_manager_get_unit_by_symbol(UnitManager *manager, const gchar *symbol);
+
+gboolean unit_manager_convert_by_symbol(UnitManager *manager, const MPNumber *x, const char *x_symbol, const char *z_symbol, MPNumber *z);
 
 G_END_DECLS
 

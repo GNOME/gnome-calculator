@@ -170,14 +170,31 @@ unit_manager_get_category(UnitManager *manager, const gchar *category)
 
 
 Unit *
-unit_manager_get_unit(UnitManager *manager, const gchar *unit)
+unit_manager_get_unit_by_name(UnitManager *manager, const gchar *name)
 {
     GList *iter;
     Unit *u;
 
     for (iter = manager->priv->categories; iter; iter = iter->next) {
         UnitCategory *c = iter->data;
-        u = unit_category_get_unit (c, unit);
+        u = unit_category_get_unit_by_name(c, name);
+        if (u)
+            return u;
+    }
+
+    return NULL; 
+}
+
+
+Unit *
+unit_manager_get_unit_by_symbol(UnitManager *manager, const gchar *symbol)
+{
+    GList *iter;
+    Unit *u;
+
+    for (iter = manager->priv->categories; iter; iter = iter->next) {
+        UnitCategory *c = iter->data;
+        u = unit_category_get_unit_by_symbol(c, symbol);
         if (u)
             return u;
     }
@@ -187,13 +204,17 @@ unit_manager_get_unit(UnitManager *manager, const gchar *unit)
 
 
 gboolean
-unit_manager_convert(UnitManager *manager, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
+unit_manager_convert_by_symbol(UnitManager *manager, const MPNumber *x, const char *x_symbol, const char *z_symbol, MPNumber *z)
 {
     GList *iter;
 
     for (iter = manager->priv->categories; iter; iter = iter->next) {
         UnitCategory *c = iter->data;
-        if (unit_category_convert(c, x, x_units, z_units, z))
+        Unit *x_units, *z_units;
+
+        x_units = unit_category_get_unit_by_symbol(c, x_symbol);
+        z_units = unit_category_get_unit_by_symbol(c, z_symbol);
+        if (x_units && z_units && unit_category_convert(c, x, x_units, z_units, z))
             return TRUE;
     }
   
