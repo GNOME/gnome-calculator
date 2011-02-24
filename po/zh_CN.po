@@ -10,26 +10,28 @@
 # vicwjb <vicwjb@gmail.com>, 2010.
 # Tao Wang <dancefire@gmail.com>, 2010.
 # 朱涛 <bill_zt@sina.com>, 2010.
+# Lele Long <schemacs@gmail.com>, 2011.
+# YunQiang Su <wzssyqa@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-10-21 03:48+0000\n"
-"PO-Revision-Date: 2010-10-25 15:03+0800\n"
-"Last-Translator: 朱涛 <bill_zt@sina.com>\n"
-"Language-Team: Chinese Simplified <i18n-zh@googlegroups.com>\n"
+"POT-Creation-Date: 2011-02-21 23:26+0000\n"
+"PO-Revision-Date: 2011-02-24 22:02+0800\n"
+"Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
+"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. This is between the unit selector dropdowns, for example: meters in kilometers
-#. This is between the currency selector dropdowns, for example: [USD] in [EUR]
+#. The label on the memory button
 #: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
-msgid " in "
-msgstr ""
+msgid "<i>x</i>"
+msgstr "<i>x</i>"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 #: ../data/buttons-advanced.ui.h:4 ../data/buttons-basic.ui.h:2
@@ -61,46 +63,35 @@ msgstr "质因数分解"
 #. Accessible name for the inverse button
 #: ../data/buttons-advanced.ui.h:14 ../data/buttons-programming.ui.h:18
 msgid "Inverse"
-msgstr "反三角函数"
+msgstr "倒数或反函数"
 
-#. Accessible name for the recall value button
-#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:68
-#: ../data/buttons-programming.ui.h:20
-msgid "Recall"
-msgstr "召回"
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:50
+#: ../src/math-buttons.c:231
+msgid "Memory"
+msgstr "记忆"
 
 #. Accessible name for the scientific exponent button
 #: ../data/buttons-advanced.ui.h:18
 msgid "Scientific Exponent"
-msgstr "科学"
+msgstr "科学计数法"
 
 #. Accessible name for the store value button
-#: ../data/buttons-advanced.ui.h:20 ../data/buttons-financial.ui.h:72
-#: ../data/buttons-programming.ui.h:26
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:24
 msgid "Store"
-msgstr "记忆"
+msgstr "存储"
 
 #. Accessible name for the subscript mode button
-#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:28
+#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:26
 msgid "Subscript"
 msgstr "下标"
 
 #. Accessible name for the superscript mode button
-#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:30
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:28
 msgid "Superscript"
 msgstr "上标"
-
-#. The label on the memory recall button
-#: ../data/buttons-advanced.ui.h:26 ../data/buttons-financial.ui.h:102
-#: ../data/buttons-programming.ui.h:34
-msgid "← R"
-msgstr "← R"
-
-#. The label on the memory store button
-#: ../data/buttons-advanced.ui.h:28 ../data/buttons-financial.ui.h:104
-#: ../data/buttons-programming.ui.h:36
-msgid "→ R"
-msgstr "→ R"
 
 #. Payment Period Dialog: Button to calculate result
 #: ../data/buttons-financial.ui.h:6
@@ -152,7 +143,7 @@ msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
 "compounding period."
-msgstr "计算某投资的现值需要到某一未来值需要的复合期，按每复合期固定利息率。"
+msgstr "计算某投资的现值到一期待值需要的投资周期数，每个投资周期利息率固定。"
 
 #. Payment Period Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:20
@@ -197,14 +188,14 @@ msgstr ""
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:263
+#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:255
 msgid "Compounding Term"
-msgstr "复合期限"
+msgstr "复利期数"
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
 #: ../data/buttons-financial.ui.h:32
 msgid "Ctrm"
-msgstr "Ctrm"
+msgstr "复利"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/buttons-financial.ui.h:34
@@ -218,7 +209,7 @@ msgstr "双倍余额递减折旧"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:269
+#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:261
 msgid "Future Value"
 msgstr "未来值"
 
@@ -239,55 +230,55 @@ msgstr "Gpm"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:290
+#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:282
 msgid "Gross Profit Margin"
 msgstr "毛利率"
 
 #. Title of Payment Period dialog
-#: ../data/buttons-financial.ui.h:50
+#: ../data/buttons-financial.ui.h:52
 msgid "Payment Period"
 msgstr "付款期"
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:52 ../src/math-buttons.c:281
+#: ../data/buttons-financial.ui.h:54 ../src/math-buttons.c:273
 msgid "Periodic Interest Rate"
 msgstr "每期利率"
 
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/buttons-financial.ui.h:54
+#: ../data/buttons-financial.ui.h:56
 msgid "Periodic Interest _Rate:"
 msgstr "每期利率(_R)："
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:56 ../src/math-buttons.c:287
+#: ../data/buttons-financial.ui.h:58 ../src/math-buttons.c:279
 msgid "Periodic Payment"
-msgstr "定期付款"
+msgstr "每期付款额"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/buttons-financial.ui.h:58
+#: ../data/buttons-financial.ui.h:60
 msgid "Pmt"
 msgstr "Pmt"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:60 ../src/math-buttons.c:284
+#: ../data/buttons-financial.ui.h:62 ../src/math-buttons.c:276
 msgid "Present Value"
 msgstr "现值"
 
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/buttons-financial.ui.h:62
+#: ../data/buttons-financial.ui.h:64
 msgid "Present _Value:"
 msgstr "现值(_V)："
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/buttons-financial.ui.h:64
+#: ../data/buttons-financial.ui.h:66
 msgid "Pv"
 msgstr "Pv"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/buttons-financial.ui.h:66
+#: ../data/buttons-financial.ui.h:68
 msgid "Rate"
 msgstr "利率"
 
@@ -297,72 +288,72 @@ msgid "Sln"
 msgstr "Sln"
 
 #. Title of Straight-Line Depreciation dialog
-#: ../data/buttons-financial.ui.h:74
+#: ../data/buttons-financial.ui.h:72
 msgid "Straight-Line Depreciation"
 msgstr "直线折旧"
 
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
-#: ../data/buttons-financial.ui.h:76
+#: ../data/buttons-financial.ui.h:74
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "年数总和法折旧"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:78
+#: ../data/buttons-financial.ui.h:76
 msgid "Syd"
 msgstr "Syd"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/buttons-financial.ui.h:80
+#: ../data/buttons-financial.ui.h:78
 msgid "Term"
-msgstr "Term"
+msgstr "期数"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/buttons-financial.ui.h:82
+#: ../data/buttons-financial.ui.h:80
 msgid "_Cost:"
 msgstr "成本(_C)："
 
 #. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/buttons-financial.ui.h:84
+#: ../data/buttons-financial.ui.h:82
 msgid "_Future Value:"
 msgstr "未来值(_F)："
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/buttons-financial.ui.h:86
+#: ../data/buttons-financial.ui.h:84
 msgid "_Life:"
 msgstr "年限(_L)："
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: ../data/buttons-financial.ui.h:88
+#: ../data/buttons-financial.ui.h:86
 msgid "_Margin:"
-msgstr "利润(_M)："
+msgstr "利率(_M)："
 
 #. Present Value Dialog: Label before number of periods input
-#: ../data/buttons-financial.ui.h:90
+#: ../data/buttons-financial.ui.h:88
 msgid "_Number of Periods:"
 msgstr "期数(_N)："
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/buttons-financial.ui.h:92
+#: ../data/buttons-financial.ui.h:90
 msgid "_Period:"
 msgstr "期(_P)："
 
 #. Payment Period Dialog: Label before periodic payment input
-#: ../data/buttons-financial.ui.h:94
+#: ../data/buttons-financial.ui.h:92
 msgid "_Periodic Payment:"
 msgstr "定期付款(_P)："
 
 #. Periodic Payment Dialog: Label before principal input
-#: ../data/buttons-financial.ui.h:96
+#: ../data/buttons-financial.ui.h:94
 msgid "_Principal:"
 msgstr "本金(_P)："
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/buttons-financial.ui.h:98
+#: ../data/buttons-financial.ui.h:96
 msgid "_Salvage:"
 msgstr "残值(_S)："
 
 #. Periodic Interest Rate Dialog: Label before term input
-#: ../data/buttons-financial.ui.h:100
+#: ../data/buttons-financial.ui.h:98
 msgid "_Term:"
 msgstr "期限(_T)："
 
@@ -378,26 +369,31 @@ msgstr "插入字符"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:242
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:234
 msgid "Insert Character Code"
 msgstr "插入字符编码"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:257
+#: ../data/buttons-programming.ui.h:20 ../src/math-buttons.c:249
 msgid "Shift Left"
 msgstr "左移"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:24 ../src/math-buttons.c:260
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:252
 msgid "Shift Right"
 msgstr "右移"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/buttons-programming.ui.h:32
+#: ../data/buttons-programming.ui.h:30
 msgid "_Insert"
 msgstr "插入(_I)"
+
+#. The label on the memory button
+#: ../data/buttons-programming.ui.h:32
+msgid "x"
+msgstr "记忆"
 
 #. Word size combo: 16 bits
 #: ../data/preferences.ui.h:2
@@ -472,11 +468,11 @@ msgstr "按钮模式"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
 msgid "Currency of the current calculation"
-msgstr "通用计算的货币"
+msgstr "当前计算的货币"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
 msgid "Currency to convert the current calculation into"
-msgstr "转换为通用计算货币"
+msgstr "转换到的货币单位"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
 msgid ""
@@ -509,179 +505,294 @@ msgid "Source currency"
 msgstr "起始货币"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Source units"
+msgstr "起始单位"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
 msgid "Target currency"
 msgstr "目标货币"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "Target units"
+msgstr "目标单位"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
 msgid "The angle units to use"
 msgstr "使用角度单位"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
 msgid "The button mode"
 msgstr "按钮模式"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
-msgid "The format to display numbers in"
-msgstr "格式化数字显示"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
-msgid "The number of digits displayed after the numeric point"
-msgstr "小数点后显示的数字位数。"
-
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The format to display numbers in"
+msgstr "显示数字使用的格式"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+msgid "The number of digits displayed after the numeric point"
+msgstr "小数点后显示的数字位数"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
 msgid "The numeric base"
 msgstr "进位制"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
 msgid "The size of the words used in bitwise operations"
-msgstr "位运算所用字长。"
+msgstr "位运算所用字长"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+msgid "Units of the current calculation"
+msgstr "当前计量的单位"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+msgid "Units to convert the current calculation into"
+msgstr "转换到的计量单位"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
 msgid "Word size"
 msgstr "字长"
 
-#: ../src/currency.h:19
-msgid "Australian dollar"
+#: ../src/currency-manager.c:20
+msgid "UAE Dirham"
+msgstr "阿联酋迪拉姆"
+
+#: ../src/currency-manager.c:21
+msgid "Australian Dollar"
 msgstr "澳大利亚元"
 
-#: ../src/currency.h:20
-msgid "Bulgarian lev"
+#: ../src/currency-manager.c:22
+msgid "Bulgarian Lev"
 msgstr "保加利亚列弗"
 
-#: ../src/currency.h:21
-msgid "Brazilian real"
+#: ../src/currency-manager.c:23
+msgid "Bahraini Dinar"
+msgstr "巴林第纳尔"
+
+#: ../src/currency-manager.c:24
+msgid "Brunei Dollar"
+msgstr "文莱元"
+
+#: ../src/currency-manager.c:25
+msgid "Brazilian Real"
 msgstr "巴西雷亚尔"
 
-#: ../src/currency.h:22
-msgid "Canadian dollar"
+#: ../src/currency-manager.c:26
+msgid "Botswana Pula"
+msgstr "博茨瓦纳普拉"
+
+#: ../src/currency-manager.c:27
+msgid "Canadian Dollar"
 msgstr "加拿大元"
 
-#: ../src/currency.h:23
-msgid "Swiss franc"
+#: ../src/currency-manager.c:28
+msgid "Swiss Franc"
 msgstr "瑞士法郎"
 
-#: ../src/currency.h:24
-msgid "Chinese yuan renminbi"
+#: ../src/currency-manager.c:29
+msgid "Chilean Peso"
+msgstr "智利比索"
+
+#: ../src/currency-manager.c:30
+msgid "Chinese Yuan"
 msgstr "人民币"
 
-#: ../src/currency.h:25
-msgid "Czech koruna"
+#: ../src/currency-manager.c:31
+msgid "Colombian Peso"
+msgstr "哥伦比亚比索"
+
+#: ../src/currency-manager.c:32
+msgid "Czech Koruna"
 msgstr "捷克克朗"
 
-#: ../src/currency.h:26
-msgid "Danish krone"
+#: ../src/currency-manager.c:33
+msgid "Danish Krone"
 msgstr "丹麦克朗"
 
-#: ../src/currency.h:27
-msgid "Estonian kroon"
+#: ../src/currency-manager.c:34
+msgid "Algerian Dinar"
+msgstr "阿尔及利亚第纳尔"
+
+#: ../src/currency-manager.c:35
+msgid "Estonian Kroon"
 msgstr "爱沙尼亚克朗"
 
-#: ../src/currency.h:28
+#: ../src/currency-manager.c:36
 msgid "Euro"
 msgstr "欧元"
 
-#: ../src/currency.h:29
-msgid "Pound sterling"
+#: ../src/currency-manager.c:37
+msgid "Pound Sterling"
 msgstr "英镑"
 
-#: ../src/currency.h:30
-msgid "Hong Kong dollar"
-msgstr "港元"
+#: ../src/currency-manager.c:38
+msgid "Hong Kong Dollar"
+msgstr "港币"
 
-#: ../src/currency.h:31
-msgid "Croatian kuna"
+#: ../src/currency-manager.c:39
+msgid "Croatian Kuna"
 msgstr "克罗地亚库纳"
 
-#: ../src/currency.h:32
-msgid "Hungarian forint"
+#: ../src/currency-manager.c:40
+msgid "Hungarian Forint"
 msgstr "匈牙利福林"
 
-#: ../src/currency.h:33
-msgid "Indonesian rupiah"
+#: ../src/currency-manager.c:41
+msgid "Indonesian Rupiah"
 msgstr "印度尼西亚卢比"
 
-#: ../src/currency.h:34
-msgid "Indian rupee"
+#: ../src/currency-manager.c:42
+msgid "Israeli New Shekel"
+msgstr "以色列新谢克尔"
+
+#: ../src/currency-manager.c:43
+msgid "Indian Rupee"
 msgstr "印度卢比"
 
-#: ../src/currency.h:35
-msgid "Icelandic krona"
+#: ../src/currency-manager.c:44
+msgid "Iranian Rial"
+msgstr "伊朗里亚尔"
+
+#: ../src/currency-manager.c:45
+msgid "Icelandic Krona"
 msgstr "冰岛克朗"
 
-#: ../src/currency.h:36
-msgid "Japanese yen"
+#: ../src/currency-manager.c:46
+msgid "Japanese Yen"
 msgstr "日元"
 
-#: ../src/currency.h:37
-msgid "South Korean won"
+#: ../src/currency-manager.c:47
+msgid "South Korean Won"
 msgstr "韩元"
 
-#: ../src/currency.h:38
-msgid "Lithuanian litas"
-msgstr "立陶宛拉特"
+#: ../src/currency-manager.c:48
+msgid "Kuwaiti Dinar"
+msgstr "科威特第纳尔"
 
-#: ../src/currency.h:39
-msgid "Latvian lats"
+#: ../src/currency-manager.c:49
+msgid "Kazakhstani Tenge"
+msgstr "哈萨克斯坦腾格"
+
+#: ../src/currency-manager.c:50
+msgid "Sri Lankan Rupee"
+msgstr "斯里兰卡卢比"
+
+#: ../src/currency-manager.c:51
+msgid "Lithuanian Litas"
+msgstr "立陶宛立特"
+
+#: ../src/currency-manager.c:52
+msgid "Latvian Lats"
 msgstr "拉脱维亚拉特"
 
-#: ../src/currency.h:40
-msgid "Mexican peso"
+#: ../src/currency-manager.c:53
+msgid "Libyan Dinar"
+msgstr "利比亚第纳尔"
+
+#: ../src/currency-manager.c:54
+msgid "Mauritian Rupee"
+msgstr "毛里求斯卢比"
+
+#: ../src/currency-manager.c:55
+msgid "Mexican Peso"
 msgstr "墨西哥比索"
 
-#: ../src/currency.h:41
-msgid "Malaysian ringgit"
+#: ../src/currency-manager.c:56
+msgid "Malaysian Ringgit"
 msgstr "马来西亚林吉特"
 
-#: ../src/currency.h:42
-msgid "Norwegian krone"
+#: ../src/currency-manager.c:57
+msgid "Norwegian Krone"
 msgstr "挪威克朗"
 
-#: ../src/currency.h:43
-msgid "New Zealand dollar"
+#: ../src/currency-manager.c:58
+msgid "Nepalese Rupee"
+msgstr "尼泊尔卢比"
+
+#: ../src/currency-manager.c:59
+msgid "New Zealand Dollar"
 msgstr "新西兰元"
 
-#: ../src/currency.h:44
-msgid "Philippine peso"
+#: ../src/currency-manager.c:60
+msgid "Omani Rial"
+msgstr "阿曼里亚尔"
+
+#: ../src/currency-manager.c:61
+msgid "Peruvian Nuevo Sol"
+msgstr "秘鲁新索尔"
+
+#: ../src/currency-manager.c:62
+msgid "Philippine Peso"
 msgstr "菲律宾比索"
 
-#: ../src/currency.h:45
-msgid "Polish zloty"
+#: ../src/currency-manager.c:63
+msgid "Pakistani Rupee"
+msgstr "巴基斯坦卢比"
+
+#: ../src/currency-manager.c:64
+msgid "Polish Zloty"
 msgstr "波兰兹罗提"
 
-#: ../src/currency.h:46
-msgid "New Romanian leu"
+#: ../src/currency-manager.c:65
+msgid "Qatari Riyal"
+msgstr "卡塔尔里亚尔"
+
+#: ../src/currency-manager.c:66
+msgid "New Romanian Leu"
 msgstr "新罗马尼亚列伊"
 
-#: ../src/currency.h:47
-msgid "Russian rouble"
+#: ../src/currency-manager.c:67
+msgid "Russian Rouble"
 msgstr "俄罗斯卢布"
 
-#: ../src/currency.h:48
-msgid "Swedish krona"
+#: ../src/currency-manager.c:68
+msgid "Saudi Riyal"
+msgstr "沙特里亚尔"
+
+# 瑞典克郎
+#: ../src/currency-manager.c:69
+msgid "Swedish Krona"
 msgstr "瑞典克朗"
 
-#: ../src/currency.h:49
-msgid "Singapore dollar"
+#: ../src/currency-manager.c:70
+msgid "Singapore Dollar"
 msgstr "新加坡元"
 
-#: ../src/currency.h:50
-msgid "Thai baht"
-msgstr "泰国铢"
+#: ../src/currency-manager.c:71
+msgid "Thai Baht"
+msgstr "泰铢"
 
-#: ../src/currency.h:51
-msgid "New Turkish lira"
+#: ../src/currency-manager.c:72
+msgid "Tunisian Dinar"
+msgstr "突尼斯第纳尔"
+
+# 土耳其新里拉
+#: ../src/currency-manager.c:73
+msgid "New Turkish Lira"
 msgstr "新土尔其里拉"
 
-#: ../src/currency.h:52
-msgid "US dollar"
+# Trinidad and Tobago Dollar
+#: ../src/currency-manager.c:74
+msgid "T&T Dollar (TTD)"
+msgstr "特立尼达和多巴哥元"
+
+#: ../src/currency-manager.c:75
+msgid "US Dollar"
 msgstr "美元"
 
-#: ../src/currency.h:53
-msgid "South African rand"
+#: ../src/currency-manager.c:76
+msgid "Uruguayan Peso"
+msgstr "乌拉圭比索"
+
+#: ../src/currency-manager.c:77
+msgid "Venezuelan Bolívar"
+msgstr "委内瑞拉玻利瓦尔"
+
+#: ../src/currency-manager.c:78
+msgid "South African Rand"
 msgstr "南非兰特"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:78
+#: ../src/gcalctool.c:86
 #, c-format
 msgid ""
 "Usage:\n"
@@ -691,7 +802,7 @@ msgstr ""
 "  %s - 执行数学计算"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:86
+#: ../src/gcalctool.c:94
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -707,7 +818,7 @@ msgstr ""
 "  -help-gtk\t\t显示 GTK+ 选项"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:97
+#: ../src/gcalctool.c:105
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -729,7 +840,7 @@ msgstr ""
 "  --g-fatal-warnings             给出所有重要警告"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:111
+#: ../src/gcalctool.c:119
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -741,559 +852,290 @@ msgstr ""
 "  -s，--solve <方程>              求解给出的方程"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:156
+#: ../src/gcalctool.c:164
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "参数 --solve 需要一个方程以便求解"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:170
+#: ../src/gcalctool.c:178
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "未知参数“%s”"
 
 #. Tooltip for the Pi button
-#: ../src/math-buttons.c:108
+#: ../src/math-buttons.c:103
 msgid "Pi [Ctrl+P]"
 msgstr "圆周率 [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.c:111
+#: ../src/math-buttons.c:106
 msgid "Euler’s Number"
 msgstr "欧拉数"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.c:116
+#: ../src/math-buttons.c:111
 msgid "Subscript mode [Alt]"
-msgstr "下标数字模式 [Alt]"
+msgstr "下标模式 [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.c:119
+#: ../src/math-buttons.c:114
 msgid "Superscript mode [Ctrl]"
-msgstr "上标数字模式 [Ctrl]"
+msgstr "上标模式 [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.c:122
+#: ../src/math-buttons.c:117
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "科学记数法 [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.c:125
+#: ../src/math-buttons.c:120
 msgid "Add [+]"
 msgstr "加法 [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.c:128
+#: ../src/math-buttons.c:123
 msgid "Subtract [-]"
 msgstr "减法 [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.c:131
+#: ../src/math-buttons.c:126
 msgid "Multiply [*]"
 msgstr "乘法 [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.c:134
+#: ../src/math-buttons.c:129
 msgid "Divide [/]"
 msgstr "除法 [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.c:137
+#: ../src/math-buttons.c:132
 msgid "Modulus divide"
 msgstr "求余数"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.c:140
+#: ../src/math-buttons.c:135
 msgid "Additional Functions"
 msgstr "附加函数"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.c:143
+#: ../src/math-buttons.c:138
 msgid "Exponent [^ or **]"
 msgstr "乘方 [^ 或 **]"
 
 #. Tooltip for the square button
-#: ../src/math-buttons.c:146
+#: ../src/math-buttons.c:141
 msgid "Square [Ctrl+2]"
 msgstr "平方 [Ctrl+2]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.c:149
+#: ../src/math-buttons.c:144
 msgid "Percentage [%]"
 msgstr "百分数 [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.c:152
+#: ../src/math-buttons.c:147
 msgid "Factorial [!]"
 msgstr "阶乘 [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.c:155
+#: ../src/math-buttons.c:150
 msgid "Absolute value [|]"
 msgstr "绝对值 [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.c:158
+#: ../src/math-buttons.c:153
 msgid "Complex argument"
 msgstr "复变量"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.c:161
+#: ../src/math-buttons.c:156
 msgid "Complex conjugate"
 msgstr "复共轭"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.c:164
+#: ../src/math-buttons.c:159
 msgid "Root [Ctrl+R]"
 msgstr "根 [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.c:167
+#: ../src/math-buttons.c:162
 msgid "Square root [Ctrl+R]"
 msgstr "平方根 [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.c:170
+#: ../src/math-buttons.c:165
 msgid "Logarithm"
 msgstr "常用对数(以 10 为底)"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.c:173
+#: ../src/math-buttons.c:168
 msgid "Natural Logarithm"
 msgstr "自然对数(以 e 为底)"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.c:176
+#: ../src/math-buttons.c:171
 msgid "Sine"
 msgstr "正弦"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.c:179
+#: ../src/math-buttons.c:174
 msgid "Cosine"
 msgstr "余弦"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.c:182
+#: ../src/math-buttons.c:177
 msgid "Tangent"
 msgstr "正切"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.c:185
+#: ../src/math-buttons.c:180
 msgid "Hyperbolic Sine"
 msgstr "双曲正弦"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.c:188
+#: ../src/math-buttons.c:183
 msgid "Hyperbolic Cosine"
 msgstr "双曲余弦"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.c:191
+#: ../src/math-buttons.c:186
 msgid "Hyperbolic Tangent"
 msgstr "双曲正切"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.c:194
+#: ../src/math-buttons.c:189
 msgid "Inverse [Ctrl+I]"
-msgstr "反函数 [Ctrl+I]"
+msgstr "反函数或倒数 [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.c:197
+#: ../src/math-buttons.c:192
 msgid "Boolean AND"
 msgstr "逻辑与"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.c:200
+#: ../src/math-buttons.c:195
 msgid "Boolean OR"
 msgstr "逻辑或"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.c:203
+#: ../src/math-buttons.c:198
 msgid "Boolean Exclusive OR"
 msgstr "逻辑异或"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.c:206
+#: ../src/math-buttons.c:201
 msgid "Boolean NOT"
 msgstr "逻辑非"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:209 ../src/math-buttons.c:1545
+#: ../src/math-buttons.c:204 ../src/math-buttons.c:1036
 msgid "Integer Component"
-msgstr "取整数部分"
+msgstr "整数部分"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:212 ../src/math-buttons.c:1547
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1038
 msgid "Fractional Component"
 msgstr "小数部分"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.c:215
+#: ../src/math-buttons.c:210
 msgid "Real Component"
 msgstr "实数部分"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.c:218
+#: ../src/math-buttons.c:213
 msgid "Imaginary Component"
 msgstr "虚数部分"
 
-#. Tooltip for the ones complement button
-#: ../src/math-buttons.c:221
+#. Tooltip for the ones' complement button
+#: ../src/math-buttons.c:216
 msgid "Ones' Complement"
-msgstr "1 的补数"
+msgstr "反码"
 
-#. Tooltip for the twos complement button
-#: ../src/math-buttons.c:224
+#. Tooltip for the two's complement button
+#: ../src/math-buttons.c:219
 msgid "Two's Complement"
-msgstr "2 的补数"
+msgstr "补码"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.c:227
+#: ../src/math-buttons.c:222
 msgid "Truncate"
 msgstr "截断"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.c:230
+#: ../src/math-buttons.c:225
 msgid "Start Group [(]"
-msgstr "起始组 [(]"
+msgstr "开始组 [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.c:233
+#: ../src/math-buttons.c:228
 msgid "End Group [)]"
 msgstr "结束组 [)]"
 
-#. Tooltip for the assign variable button
-#: ../src/math-buttons.c:236
-msgid "Assign Variable"
-msgstr "指定变量"
-
-#. Tooltip for the insert variable button
-#: ../src/math-buttons.c:239
-msgid "Insert Variable"
-msgstr "插入变量"
-
 #. Tooltip for the solve button
-#: ../src/math-buttons.c:245
+#: ../src/math-buttons.c:237
 msgid "Calculate Result"
 msgstr "计算结果"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.c:248
+#: ../src/math-buttons.c:240
 msgid "Factorize [Ctrl+F]"
 msgstr "质因数分解 [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.c:251
+#: ../src/math-buttons.c:243
 msgid "Clear Display [Escape]"
 msgstr "清除显示 [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.c:254
+#: ../src/math-buttons.c:246
 msgid "Undo [Ctrl+Z]"
 msgstr "撤销 [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.c:266
+#: ../src/math-buttons.c:258
 msgid "Double Declining Depreciation"
 msgstr "双倍余额递减折旧"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.c:272
+#: ../src/math-buttons.c:264
 msgid "Financial Term"
 msgstr "财务"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.c:275
+#: ../src/math-buttons.c:267
 msgid "Sum of the Years Digits Depreciation"
 msgstr "年数总和法折旧"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.c:278
+#: ../src/math-buttons.c:270
 msgid "Straight Line Depreciation"
 msgstr "直线折旧"
 
-#: ../src/math-buttons.c:326
-msgid "Angle Units"
-msgstr "角度单位"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-buttons.c:328 ../src/math-preferences.c:254
-msgid "Degrees"
-msgstr "角度(_G)"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-buttons.c:330 ../src/math-preferences.c:258
-msgid "Radians"
-msgstr "弧度"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-buttons.c:332 ../src/math-preferences.c:262
-msgid "Gradians"
-msgstr "百分度"
-
-#: ../src/math-buttons.c:334
-msgid "Length Units"
-msgstr "长度单位"
-
-#. Length unit
-#: ../src/math-buttons.c:336
-msgid "Parsecs"
-msgstr "秒差距"
-
-#. Length unit
-#: ../src/math-buttons.c:338
-msgid "Light Years"
-msgstr "光年"
-
-#. Length unit
-#: ../src/math-buttons.c:340
-msgid "Astronomical Unit"
-msgstr "天文单位"
-
-#. Length unit
-#: ../src/math-buttons.c:342
-msgid "Nautical Miles"
-msgstr "海里"
-
-#. Length unit
-#: ../src/math-buttons.c:344
-msgid "Miles"
-msgstr "英里"
-
-#. Length unit
-#: ../src/math-buttons.c:346
-msgid "Kilometers"
-msgstr "千米"
-
-#. Length unit
-#: ../src/math-buttons.c:348
-msgid "Cables"
-msgstr "链长"
-
-#. Length unit
-#: ../src/math-buttons.c:350
-msgid "Fathoms"
-msgstr "英寻"
-
-#. Length unit
-#: ../src/math-buttons.c:352
-msgid "Meters"
-msgstr "米"
-
-#. Length unit
-#: ../src/math-buttons.c:354
-msgid "Yards"
-msgstr "码"
-
-#. Length unit
-#: ../src/math-buttons.c:356
-msgid "Feet"
-msgstr "尺"
-
-#. Length unit
-#: ../src/math-buttons.c:358
-msgid "Inches"
-msgstr "英寸"
-
-#. Length unit
-#: ../src/math-buttons.c:360
-msgid "Centimeters"
-msgstr "厘米"
-
-#. Length unit
-#: ../src/math-buttons.c:362
-msgid "Millimeters"
-msgstr "毫米"
-
-#. Length unit
-#: ../src/math-buttons.c:364
-msgid "Micrometers"
-msgstr "微米"
-
-#. Length unit
-#: ../src/math-buttons.c:366
-msgid "Nanometers"
-msgstr "纳米"
-
-#: ../src/math-buttons.c:368
-msgid "Area Units"
-msgstr "面积单位"
-
-#. Area unit
-#: ../src/math-buttons.c:370
-msgid "Hectares"
-msgstr "公顷"
-
-#. Area unit
-#: ../src/math-buttons.c:372
-msgid "Acres"
-msgstr "英亩"
-
-#. Area unit
-#: ../src/math-buttons.c:374
-msgid "m²"
-msgstr "平方米"
-
-#. Area unit
-#: ../src/math-buttons.c:376
-msgid "cm²"
-msgstr "平方厘米"
-
-#. Area unit
-#: ../src/math-buttons.c:378
-msgid "mm²"
-msgstr "平方毫米"
-
-#: ../src/math-buttons.c:380
-msgid "Volume Units"
-msgstr "体积单位"
-
-#. Volume unit
-#: ../src/math-buttons.c:382
-msgid "m³"
-msgstr "立方米"
-
-#. Volume unit
-#: ../src/math-buttons.c:384
-msgid "Gallons"
-msgstr "加仑"
-
-#. Volume unit
-#: ../src/math-buttons.c:386
-msgid "Liters"
-msgstr "升"
-
-#. Volume unit
-#: ../src/math-buttons.c:388
-msgid "Quarts"
-msgstr "夸脱"
-
-#. Volume unit
-#: ../src/math-buttons.c:390
-msgid "Pints"
-msgstr "品脱"
-
-#. Volume unit
-#: ../src/math-buttons.c:392
-msgid "Milliliters"
-msgstr "毫升"
-
-#. Volume unit
-#: ../src/math-buttons.c:394
-msgid "cm³"
-msgstr "立方厘米"
-
-#. Volume unit
-#: ../src/math-buttons.c:396
-msgid "mm³"
-msgstr "立方毫米"
-
-#: ../src/math-buttons.c:398
-msgid "Weight Units"
-msgstr "质量单位"
-
-#. Weight unit
-#: ../src/math-buttons.c:400
-msgid "Tonnes"
-msgstr "吨"
-
-#. Weight unit
-#: ../src/math-buttons.c:402
-msgid "Kilograms"
-msgstr "千克"
-
-#. Weight unit
-#: ../src/math-buttons.c:404
-msgid "Pounds"
-msgstr "磅"
-
-#. Weight unit
-#: ../src/math-buttons.c:406
-msgid "Ounces"
-msgstr "盎司"
-
-#. Weight unit
-#: ../src/math-buttons.c:408
-msgid "Grams"
-msgstr "克"
-
-#: ../src/math-buttons.c:410
-msgid "Time Units"
-msgstr "时间单位"
-
-#. Time unit
-#: ../src/math-buttons.c:412
-msgid "Years"
-msgstr "年份"
-
-#. Time unit
-#: ../src/math-buttons.c:414
-msgid "Days"
-msgstr "天"
-
-#. Time unit
-#: ../src/math-buttons.c:416
-msgid "Hours"
-msgstr "时"
-
-#. Time unit
-#: ../src/math-buttons.c:418
-msgid "Minutes"
-msgstr "分"
-
-#. Time unit
-#: ../src/math-buttons.c:420
-msgid "Seconds"
-msgstr "秒"
-
-#. Time unit
-#: ../src/math-buttons.c:422
-msgid "Milliseconds"
-msgstr "毫秒"
-
-#. Time unit
-#: ../src/math-buttons.c:424
-msgid "Microseconds"
-msgstr "微秒"
-
-#. Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100
-#: ../src/math-buttons.c:605
-#, c-format
-msgid "%s%s = %s%s"
-msgstr "%s%s = %s%s"
-
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:1035
+#: ../src/math-buttons.c:660
 msgid "Binary"
 msgstr "二进制"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:1039
+#: ../src/math-buttons.c:664
 msgid "Octal"
 msgstr "八进制"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:1043
+#: ../src/math-buttons.c:668
 msgid "Decimal"
 msgstr "十进制"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:1047
+#: ../src/math-buttons.c:672
 msgid "Hexadecimal"
 msgstr "十六进制"
 
-#. Text shown in store menu when no variables defined
-#. Text shown in recall menu when no variables defined
-#: ../src/math-buttons.c:1366 ../src/math-buttons.c:1412
-msgid "No variables defined"
-msgstr "未定义变量"
-
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1455 ../src/math-buttons.c:1499
+#: ../src/math-buttons.c:946 ../src/math-buttons.c:990
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1301,116 +1143,142 @@ msgstr[0] "_%d 位"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1459 ../src/math-buttons.c:1503
+#: ../src/math-buttons.c:950 ../src/math-buttons.c:994
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "%d 位"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1549
+#: ../src/math-buttons.c:1040
 msgid "Round"
-msgstr "抹零"
+msgstr "舍入"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1551
+#: ../src/math-buttons.c:1042
 msgid "Floor"
 msgstr "下限"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1553
+#: ../src/math-buttons.c:1044
 msgid "Ceiling"
 msgstr "上限"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1555
+#: ../src/math-buttons.c:1046
 msgid "Sign"
 msgstr "符号"
 
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.c:359
+msgid " in "
+msgstr " in "
+
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:458
+#: ../src/math-equation.c:461
 msgid "No undo history"
 msgstr "无撤销记录"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:483
+#: ../src/math-equation.c:486
 msgid "No redo history"
 msgstr "无重做记录"
 
-#: ../src/math-equation.c:844
+#: ../src/math-equation.c:875
 msgid "No sane value to store"
 msgstr "没有要存储的标准值"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1109
+#: ../src/math-equation.c:1140
 msgid "Overflow. Try a bigger word size"
 msgstr "溢出。请尝试一个更大的字长"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1114
+#: ../src/math-equation.c:1145
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "未知变量“%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1119
+#: ../src/math-equation.c:1150
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "函数“%s”未定义"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1124
+#: ../src/math-equation.c:1155
 msgid "Unknown conversion"
 msgstr "未知转换"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1133
+#: ../src/math-equation.c:1164
 msgid "Malformed expression"
-msgstr "格式错误的表达式"
+msgstr "表达式格式错误"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1266
+#: ../src/math-equation.c:1296
 msgid "Need an integer to factorize"
 msgstr "分解因式运算需要一个整数"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1333
+#: ../src/math-equation.c:1363
 msgid "No sane value to bitwise shift"
 msgstr "没有正常数值可用于移位"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1362
+#: ../src/math-equation.c:1392
 msgid "Displayed value not an integer"
 msgstr "显示的值不是整数"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1769
+#: ../src/math-equation.c:1815
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "零,一,二,三,四,五,六,七,八,九,十,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
 #: ../src/math-preferences.c:244
 msgid "_Close"
 msgstr "关闭(_C)："
 
-#. Number display mode combo: Fixed, e.g. 1234
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.c:254 ../src/unit-manager.c:43
+msgid "Degrees"
+msgstr "角度(_G)"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.c:258 ../src/unit-manager.c:44
+msgid "Radians"
+msgstr "弧度"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.c:262 ../src/unit-manager.c:45
+msgid "Gradians"
+msgstr "百分度"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
 #: ../src/math-preferences.c:272
+msgid "Automatic"
+msgstr "自动"
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:276
 msgid "Fixed"
 msgstr "定点数"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:280
 msgid "Scientific"
 msgstr "科学"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:280
+#: ../src/math-preferences.c:284
 msgid "Engineering"
 msgstr "工程"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:291
+#: ../src/math-preferences.c:295
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "显示 %d 个十进制位(_P)"
@@ -1521,110 +1389,862 @@ msgid "_Contents"
 msgstr "内容(_C)"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/mp-binary.c:108
+#: ../src/mp-binary.c:122
 msgid "Boolean AND is only defined for positive integers"
-msgstr "逻辑与运算只对正整数定义"
+msgstr "逻辑与运算只对正整数有定义"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/mp-binary.c:121
+#: ../src/mp-binary.c:135
 msgid "Boolean OR is only defined for positive integers"
 msgstr "逻辑或运算只对正整数定义"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:134
+#: ../src/mp-binary.c:148
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "逻辑异或运算只对正整数定义"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:149
+#: ../src/mp-binary.c:163
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "逻辑非运算只对正整数定义"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/mp-binary.c:180
+#: ../src/mp-binary.c:194
 msgid "Shift is only possible on integer values"
 msgstr "只能对整数值进行移位运算"
 
 #. Translators: Error display when attempting to take argument of zero
-#: ../src/mp.c:149
+#: ../src/mp.c:156
 msgid "Argument not defined for zero"
 msgstr "参数值不能为零"
 
-#: ../src/mp.c:300
+#: ../src/mp.c:307
 msgid "Overflow: the result couldn't be calculated"
 msgstr "溢出：该结果无法计算"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:645 ../src/mp.c:677 ../src/mp.c:1611
+#: ../src/mp.c:652 ../src/mp.c:684 ../src/mp.c:1618
 msgid "Division by zero is undefined"
 msgstr "被零除未定义"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1282 ../src/mp.c:1319
+#: ../src/mp.c:1289 ../src/mp.c:1326
 msgid "Logarithm of zero is undefined"
 msgstr "零的对数未定义"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1684 ../src/mp.c:1999
+#: ../src/mp.c:1691 ../src/mp.c:2006
 msgid "The power of zero is undefined for a negative exponent"
-msgstr "对零进行求幂运算，当指数为负时无意义"
+msgstr "负数的零次幂未定义"
 
-#: ../src/mp.c:1709
+#: ../src/mp.c:1716
 msgid "Reciprocal of zero is undefined"
 msgstr "对零求倒数无意义"
 
-#: ../src/mp.c:1794
+#: ../src/mp.c:1801
 msgid "Root must be non-zero"
 msgstr "根次方数必需为非零值"
 
-#: ../src/mp.c:1812
+#: ../src/mp.c:1819
 msgid "Negative root of zero is undefined"
 msgstr "零的负数次方根无意义"
 
-#: ../src/mp.c:1818
+#: ../src/mp.c:1825
 msgid "nth root of negative number is undefined for even n"
 msgstr "对负数求偶次方根无意义"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1939
+#: ../src/mp.c:1946
 msgid "Factorial is only defined for natural numbers"
 msgstr "阶乘运算仅对自然数有定义"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1959
+#: ../src/mp.c:1966
 msgid "Modulus division is only defined for integers"
 msgstr "取模运算仅对整数有意义"
 
 # fuzzy
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:311
+#: ../src/mp-trigonometric.c:318
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "正切函数对 (n+1/2)*π (90°，270° ...) 无意义"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:356
+#: ../src/mp-trigonometric.c:363
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "反正弦函数在 [-1，1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:373
+#: ../src/mp-trigonometric.c:380
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "反余弦函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:591
-#, fuzzy
-#| msgid ""
-#| "Inverse hyperbolic cosine is undefined for values less than or equal to "
-#| "one"
+#: ../src/mp-trigonometric.c:599
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
-msgstr "反双曲余弦函数在小于等于 1 时无意义"
+msgstr "对小于 1 的数求反双曲余弦函数无意义"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:615
+#: ../src/mp-trigonometric.c:623
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "反双曲正切函数在 [-1,1] 范围之外无意义"
+
+#: ../src/unit-manager.c:43
+#, c-format
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s 度"
+
+#: ../src/unit-manager.c:43
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "degree,degrees,deg"
+
+#: ../src/unit-manager.c:44
+#, c-format
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s 弧度"
+
+#: ../src/unit-manager.c:44
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "radian,radians,rad"
+
+#: ../src/unit-manager.c:45
+#, c-format
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s梯度"
+
+#: ../src/unit-manager.c:45
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "gradian,gradians,grad"
+
+#: ../src/unit-manager.c:46
+msgid "Parsecs"
+msgstr "秒差距"
+
+#: ../src/unit-manager.c:46
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s秒差距"
+
+#: ../src/unit-manager.c:46
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "parsec,parsecs,pc"
+
+#: ../src/unit-manager.c:47
+msgid "Light Years"
+msgstr "光年"
+
+#: ../src/unit-manager.c:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s 光年"
+
+#: ../src/unit-manager.c:47
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "lightyear,lightyears,ly"
+
+#: ../src/unit-manager.c:48
+msgid "Astronomical Units"
+msgstr "天文单位"
+
+#: ../src/unit-manager.c:48
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s 天文单位"
+
+#: ../src/unit-manager.c:48
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "au"
+
+#: ../src/unit-manager.c:49
+msgid "Nautical Miles"
+msgstr "海里"
+
+#: ../src/unit-manager.c:49 ../src/unit-manager.c:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s 海里"
+
+#: ../src/unit-manager.c:49
+msgctxt "unit-symbols"
+msgid "nm"
+msgstr "nm"
+
+#: ../src/unit-manager.c:50
+msgid "Miles"
+msgstr "英里"
+
+#: ../src/unit-manager.c:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s 英里"
+
+#: ../src/unit-manager.c:50
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "mile,miles,mi"
+
+#: ../src/unit-manager.c:51
+msgid "Kilometers"
+msgstr "千米"
+
+#: ../src/unit-manager.c:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s 千米"
+
+#: ../src/unit-manager.c:51
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "kilometer,kilometers,km,kms"
+
+#: ../src/unit-manager.c:52
+msgid "Cables"
+msgstr "链长"
+
+#: ../src/unit-manager.c:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s 链"
+
+#: ../src/unit-manager.c:52
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "cable,cables,cb"
+
+#: ../src/unit-manager.c:53
+msgid "Fathoms"
+msgstr "英寻"
+
+#: ../src/unit-manager.c:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s 英寻"
+
+#: ../src/unit-manager.c:53
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "fathom,fathoms,ftm"
+
+#: ../src/unit-manager.c:54
+msgid "Meters"
+msgstr "米"
+
+#: ../src/unit-manager.c:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s 米"
+
+#: ../src/unit-manager.c:54
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "meter,meters,m"
+
+#: ../src/unit-manager.c:55
+msgid "Yards"
+msgstr "码"
+
+#: ../src/unit-manager.c:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s 码"
+
+#: ../src/unit-manager.c:55
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "yard,yards,yd"
+
+#: ../src/unit-manager.c:56
+msgid "Feet"
+msgstr "英尺"
+
+#: ../src/unit-manager.c:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s 英尺"
+
+#: ../src/unit-manager.c:56
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "foot,feet,ft"
+
+#: ../src/unit-manager.c:57
+msgid "Inches"
+msgstr "英寸"
+
+#: ../src/unit-manager.c:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s 英寸"
+
+#: ../src/unit-manager.c:57
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "inch,inches,in"
+
+#: ../src/unit-manager.c:58
+msgid "Centimeters"
+msgstr "厘米"
+
+#: ../src/unit-manager.c:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s 厘米"
+
+#: ../src/unit-manager.c:58
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "centimeter,centimeters,cm,cms"
+
+#: ../src/unit-manager.c:59
+msgid "Millimeters"
+msgstr "毫米"
+
+#: ../src/unit-manager.c:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s 毫米"
+
+#: ../src/unit-manager.c:59
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "millimeter,millimeters,mm"
+
+#: ../src/unit-manager.c:60
+msgid "Micrometers"
+msgstr "微米"
+
+#: ../src/unit-manager.c:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s 微米"
+
+#: ../src/unit-manager.c:60
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "micrometer,micrometers,um"
+
+#: ../src/unit-manager.c:61
+msgid "Nanometers"
+msgstr "纳米"
+
+#: ../src/unit-manager.c:61
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers"
+msgstr "nanometer,nanometers"
+
+#: ../src/unit-manager.c:62
+msgid "Hectares"
+msgstr "公顷"
+
+#: ../src/unit-manager.c:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s 公顷"
+
+#: ../src/unit-manager.c:62
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "hectare,hectares,ha"
+
+#: ../src/unit-manager.c:63
+msgid "Acres"
+msgstr "英亩"
+
+#: ../src/unit-manager.c:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s 英亩"
+
+#: ../src/unit-manager.c:63
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "acre,acres"
+
+#: ../src/unit-manager.c:64
+msgid "Square Meter"
+msgstr "平方米"
+
+#: ../src/unit-manager.c:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s 平方米"
+
+#: ../src/unit-manager.c:64
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
+
+#: ../src/unit-manager.c:65
+msgid "Square Centimeter"
+msgstr "平方厘米"
+
+#: ../src/unit-manager.c:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s 平方厘米"
+
+#: ../src/unit-manager.c:65
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
+#: ../src/unit-manager.c:66
+msgid "Square Millimeter"
+msgstr "平方毫米"
+
+#: ../src/unit-manager.c:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s 平方毫米"
+
+#: ../src/unit-manager.c:66
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
+
+#: ../src/unit-manager.c:67
+msgid "Cubic Meters"
+msgstr "立方米"
+
+#: ../src/unit-manager.c:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s 立方米"
+
+#: ../src/unit-manager.c:67
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
+#: ../src/unit-manager.c:68
+msgid "Gallons"
+msgstr "加仑"
+
+#: ../src/unit-manager.c:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s 加仑"
+
+#: ../src/unit-manager.c:68
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "加仑"
+
+#: ../src/unit-manager.c:69
+msgid "Litres"
+msgstr "公升"
+
+#: ../src/unit-manager.c:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s 公升"
+
+#: ../src/unit-manager.c:69
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "litre,litres,liter,liters,L"
+
+#: ../src/unit-manager.c:70
+msgid "Quarts"
+msgstr "夸脱"
+
+#: ../src/unit-manager.c:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s 夸脱"
+
+#: ../src/unit-manager.c:70
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "quart,quarts,qt"
+
+#: ../src/unit-manager.c:71
+msgid "Pints"
+msgstr "品脱"
+
+#: ../src/unit-manager.c:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s 品脱"
+
+#: ../src/unit-manager.c:71
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "pint,pints,pt"
+
+#: ../src/unit-manager.c:72
+msgid "Millilitres"
+msgstr "毫升"
+
+#: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s 毫升"
+
+#: ../src/unit-manager.c:72
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+
+#: ../src/unit-manager.c:73
+msgid "Microlitre"
+msgstr "微升"
+
+#: ../src/unit-manager.c:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s 微升"
+
+#: ../src/unit-manager.c:73
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μL,uL"
+
+#: ../src/unit-manager.c:74
+msgid "Tonnes"
+msgstr "吨"
+
+#: ../src/unit-manager.c:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s 特(斯拉)"
+
+#: ../src/unit-manager.c:74
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "tonne,tonnes"
+
+#: ../src/unit-manager.c:75
+msgid "Kilograms"
+msgstr "千克"
+
+#: ../src/unit-manager.c:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s 千克"
+
+#: ../src/unit-manager.c:75
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+
+#: ../src/unit-manager.c:76
+msgid "Pounds"
+msgstr "磅"
+
+#: ../src/unit-manager.c:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s 磅"
+
+#: ../src/unit-manager.c:76
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "pound,pounds,lb"
+
+#: ../src/unit-manager.c:77
+msgid "Ounces"
+msgstr "盎司"
+
+#: ../src/unit-manager.c:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s 盎司"
+
+#: ../src/unit-manager.c:77
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "ounce,ounces,oz"
+
+#: ../src/unit-manager.c:78
+msgid "Grams"
+msgstr "克"
+
+#: ../src/unit-manager.c:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s 克"
+
+#: ../src/unit-manager.c:78
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "gram,grams,gramme,grammes,g"
+
+#: ../src/unit-manager.c:79
+msgid "Years"
+msgstr "年份"
+
+#: ../src/unit-manager.c:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s 年"
+
+#: ../src/unit-manager.c:79
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "year,years"
+
+#: ../src/unit-manager.c:80
+msgid "Days"
+msgstr "天"
+
+#: ../src/unit-manager.c:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s 天"
+
+#: ../src/unit-manager.c:80
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "day,days"
+
+#: ../src/unit-manager.c:81
+msgid "Hours"
+msgstr "时"
+
+#: ../src/unit-manager.c:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s 小时"
+
+#: ../src/unit-manager.c:81
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "hour,hours"
+
+#: ../src/unit-manager.c:82
+msgid "Minutes"
+msgstr "分"
+
+#: ../src/unit-manager.c:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s 分钟"
+
+#: ../src/unit-manager.c:82
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "minute,minutes"
+
+#: ../src/unit-manager.c:83
+msgid "Seconds"
+msgstr "秒"
+
+#: ../src/unit-manager.c:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s 秒"
+
+#: ../src/unit-manager.c:83
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "second,seconds,s"
+
+#: ../src/unit-manager.c:84
+msgid "Milliseconds"
+msgstr "毫秒"
+
+#: ../src/unit-manager.c:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s 毫秒"
+
+#: ../src/unit-manager.c:84
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "millisecond,milliseconds,ms"
+
+#: ../src/unit-manager.c:85
+msgid "Microseconds"
+msgstr "微秒"
+
+#: ../src/unit-manager.c:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s 微秒"
+
+#: ../src/unit-manager.c:85
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us"
+msgstr "microsecond,microseconds,us"
+
+#: ../src/unit-manager.c:86
+msgid "Celcius"
+msgstr "摄氏度"
+
+#: ../src/unit-manager.c:86
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚C"
+msgstr "%s摄氏度"
+
+#: ../src/unit-manager.c:86
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "degC,˚C"
+
+# should be Fahrenheit?
+#: ../src/unit-manager.c:87
+msgid "Farenheit"
+msgstr "华氏度"
+
+#: ../src/unit-manager.c:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚F"
+msgstr "%s华氏度"
+
+#: ../src/unit-manager.c:87
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "degF,˚F"
+
+#: ../src/unit-manager.c:88
+msgid "Kelvin"
+msgstr "开尔文"
+
+#: ../src/unit-manager.c:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚K"
+msgstr "%s开尔文"
+
+#: ../src/unit-manager.c:88
+msgctxt "unit-symbols"
+msgid "degK,˚K"
+msgstr "degK,˚K"
+
+#: ../src/unit-manager.c:89
+msgid "Rankine"
+msgstr "兰金"
+
+#: ../src/unit-manager.c:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚R"
+msgstr "%s兰金"
+
+#: ../src/unit-manager.c:89
+msgctxt "unit-symbols"
+msgid "degR,˚R"
+msgstr "degR,˚R"
+
+#: ../src/unit-manager.c:98
+msgid "Angle"
+msgstr "角度"
+
+#: ../src/unit-manager.c:99
+msgid "Length"
+msgstr "长度"
+
+#: ../src/unit-manager.c:100
+msgid "Area"
+msgstr "面积"
+
+#: ../src/unit-manager.c:101
+msgid "Volume"
+msgstr "体积"
+
+#: ../src/unit-manager.c:102
+msgid "Weight"
+msgstr "重量"
+
+#: ../src/unit-manager.c:103
+msgid "Duration"
+msgstr "时长"
+
+#: ../src/unit-manager.c:104
+msgid "Temperature"
+msgstr "温度"
+
+#: ../src/unit-manager.c:116
+msgid "Currency"
+msgstr "货币"
+
+#~ msgid "Recall"
+#~ msgstr "召回"
+
+#~ msgid "← R"
+#~ msgstr "← R"
+
+#~ msgid "→ R"
+#~ msgstr "→ R"
+
+#~ msgid "Assign Variable"
+#~ msgstr "指定变量"
+
+#~ msgid "Insert Variable"
+#~ msgstr "插入变量"
+
+#~ msgid "Angle Units"
+#~ msgstr "角度单位"
+
+#~ msgid "Area Units"
+#~ msgstr "面积单位"
+
+#~ msgid "cm³"
+#~ msgstr "立方厘米"
+
+#~ msgid "mm³"
+#~ msgstr "立方毫米"
+
+#~ msgid "Time Units"
+#~ msgstr "时间单位"
+
+#~ msgid "%s%s = %s%s"
+#~ msgstr "%s%s = %s%s"
+
+#~ msgid "No variables defined"
+#~ msgstr "未定义变量"
 
 #~ msgid "Clear"
 #~ msgstr "清屏"
