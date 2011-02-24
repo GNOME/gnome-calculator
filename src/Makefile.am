@@ -12,11 +12,11 @@ INCLUDES = \
 	$(GCALCTOOL_CFLAGS)
 
 gcalctool_SOURCES = \
+	gcalctool.c \
 	currency.c \
 	currency.h \
 	currency-manager.c \
 	currency-manager.h \
-	gcalctool.c \
 	math-buttons.c \
 	math-buttons.h \
 	math-converter.c \
@@ -33,14 +33,12 @@ gcalctool_SOURCES = \
 	math-variable-popup.h \
 	math-window.c \
 	math-window.h \
-	math-enums.c \
-	math-enums.h \
 	mp.c \
 	mp.h \
 	mp-binary.c \
 	mp-convert.c \
-	mp-private.h \
-	mp-trigonometric.c \
+	mp-enums.c \
+	mp-enums.h \
 	mp-equation.c \
 	mp-equation.h \
 	mp-equation-private.h \
@@ -48,8 +46,10 @@ gcalctool_SOURCES = \
 	mp-equation-lexer.h \
 	mp-equation-parser.c \
 	mp-equation-parser.h \
+	mp-private.h \
 	mp-serializer.c \
 	mp-serializer.h \
+	mp-trigonometric.c \
 	financial.c \
 	financial.h \
   	unit.c \
@@ -68,17 +68,17 @@ gcalccmd_SOURCES = \
 	currency.h \
 	currency-manager.c \
 	currency-manager.h \
-	math-enums.c \
-	math-enums.h \
 	mp.c \
-	mp-convert.c \
 	mp-binary.c \
-	mp-trigonometric.c \
+	mp-convert.c \
+	mp-enums.c \
+	mp-enums.h \
 	mp-equation.c \
 	mp-equation-parser.c \
 	mp-equation-lexer.c \
 	mp-serializer.c \
 	mp-serializer.h\
+	mp-trigonometric.c \
 	unit.c \
 	unit.h \
 	unit-category.c \
@@ -91,37 +91,37 @@ gcalccmd_LDADD = \
 	-lm
 
 test_mp_SOURCES = \
+	test-mp.c \
 	mp.c \
-	mp-convert.c \
 	mp-binary.c \
-	math-enums.c \
-	math-enums.h \
+	mp-convert.c \
+	mp-enums.c \
+	mp-enums.h \
 	mp-serializer.c \
 	mp-serializer.h \
-	mp-trigonometric.c \
-	test-mp.c
+	mp-trigonometric.c
 
 test_mp_LDADD = \
 	$(GCALCCMD_LIBS) \
 	-lm
 
 test_mp_serializer_SOURCES = \
+	test-mp-serializer.c \
 	currency.c \
 	currency.h \
 	currency-manager.c \
 	currency-manager.h \
-	math-enums.c \
-	math-enums.h \
 	mp.c \
 	mp-convert.c \
 	mp-binary.c \
-	mp-trigonometric.c \
+	mp-enums.c \
+	mp-enums.h \
 	mp-equation.c \
 	mp-equation-parser.c \
 	mp-equation-lexer.c \
 	mp-serializer.c \
 	mp-serializer.h \
-	test-mp-serializer.c \
+	mp-trigonometric.c \
 	unit.c \
 	unit.h \
 	unit-category.c \
@@ -134,12 +134,12 @@ test_mp_serializer_LDADD = \
 	-lm
 
 CLEANFILES = \
+	mp-enums.c \
+	mp-enums.h \
 	mp-equation-parser.h \
 	mp-equation-parser.c \
 	mp-equation-lexer.c \
-	mp-equation-lexer.h \
-	math-enums.c \
-	math-enums.h
+	mp-equation-lexer.h
 
 # Generate parser files
 mp-equation-parser.c mp-equation-parser.h: mp-equation-parser.y mp-equation-lexer.h
@@ -155,15 +155,15 @@ mp-equation-lexer.o: mp-equation-parser.h
 mp-equation.c: mp-equation-lexer.h mp-equation-parser.h
 
 # Generate enum types
-math-enums.h: math-enums.h.template mp-serializer.h
-	$(AM_V_GEN)$(GLIB_MKENUMS) --template $(srcdir)/math-enums.h.template $(srcdir)/mp-serializer.h > math-enums.h
+mp-enums.h: mp-enums.h.template mp-serializer.h
+	$(AM_V_GEN)$(GLIB_MKENUMS) --template $(srcdir)/mp-enums.h.template $(srcdir)/mp-serializer.h > mp-enums.h
 
-math-enums.c: math-enums.c.template math-enums.h mp-serializer.h
-	$(AM_V_GEN)$(GLIB_MKENUMS) --template $(srcdir)/math-enums.c.template $(srcdir)/mp-serializer.h > math-enums.c
+mp-enums.c: mp-enums.c.template mp-enums.h mp-serializer.h
+	$(AM_V_GEN)$(GLIB_MKENUMS) --template $(srcdir)/mp-enums.c.template $(srcdir)/mp-serializer.h > mp-enums.c
 
 # Fix dependencies
-math-serializer.c: math-enums.h
-math-equation.c: math-enums.h
+math-serializer.c: mp-enums.h
+math-equation.c: mp-enums.h
 
 # Install a symlink between gcalctool and gnome-calculator
 install-exec-hook:
@@ -178,8 +178,8 @@ uninstall-local:
 EXTRA_DIST = \
 	mp-equation-parser.y \
 	mp-equation-lexer.l \
-	math-enums.c.template \
-	math-enums.h.template
+	mp-enums.c.template \
+	mp-enums.h.template
 
 DISTCLEANFILES = \
 	Makefile.in

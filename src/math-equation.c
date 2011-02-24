@@ -31,7 +31,7 @@
 #include "mp.h"
 #include "mp-equation.h"
 #include "mp-serializer.h"
-#include "math-enums.h"
+#include "mp-enums.h"
 #include "unit-manager.h"
 
 

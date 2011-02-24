@@ -23,8 +23,7 @@
 #include <stdio.h>
 
 #include "mp-serializer.h"
-
-#include "math-enums.h"
+#include "mp-enums.h"
 
 enum {
     PROP_0,
