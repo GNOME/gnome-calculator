@@ -1,4 +1,7 @@
 bin_PROGRAMS = gcalctool gcalccmd
+noinst_PROGRAMS = test-mp test-mp-serializer
+
+TESTS = test-mp test-mp-serializer
 
 INCLUDES = \
 	-DUI_DIR=\""$(datadir)/gcalctool"\" \
@@ -54,12 +57,10 @@ gcalctool_SOURCES = \
 	unit-category.c \
 	unit-category.h \
 	unit-manager.c \
-	unit-manager.h \
-	unittest.c \
-	unittest.h
+	unit-manager.h
 
 gcalctool_LDADD = \
-	$(GCALCTOOL_LIBS)
+	$(GCALCTOOL_LIBS)        
 
 gcalccmd_SOURCES = \
 	gcalccmd.c \
@@ -67,6 +68,8 @@ gcalccmd_SOURCES = \
 	currency.h \
 	currency-manager.c \
 	currency-manager.h \
+	math-enums.c \
+	math-enums.h \
 	mp.c \
 	mp-convert.c \
 	mp-binary.c \
@@ -76,8 +79,6 @@ gcalccmd_SOURCES = \
 	mp-equation-lexer.c \
 	mp-serializer.c \
 	mp-serializer.h\
-	math-enums.c \
-	math-enums.h \
 	unit.c \
 	unit.h \
 	unit-category.c \
@@ -86,6 +87,49 @@ gcalccmd_SOURCES = \
 	unit-manager.h
 
 gcalccmd_LDADD = \
+	$(GCALCCMD_LIBS) \
+	-lm
+
+test_mp_SOURCES = \
+	mp.c \
+	mp-convert.c \
+	mp-binary.c \
+	math-enums.c \
+	math-enums.h \
+	mp-serializer.c \
+	mp-serializer.h \
+	mp-trigonometric.c \
+	test-mp.c
+
+test_mp_LDADD = \
+	$(GCALCCMD_LIBS) \
+	-lm
+
+test_mp_serializer_SOURCES = \
+	currency.c \
+	currency.h \
+	currency-manager.c \
+	currency-manager.h \
+	math-enums.c \
+	math-enums.h \
+	mp.c \
+	mp-convert.c \
+	mp-binary.c \
+	mp-trigonometric.c \
+	mp-equation.c \
+	mp-equation-parser.c \
+	mp-equation-lexer.c \
+	mp-serializer.c \
+	mp-serializer.h \
+	test-mp-serializer.c \
+	unit.c \
+	unit.h \
+	unit-category.c \
+	unit-category.h \
+	unit-manager.c \
+	unit-manager.h
+
+test_mp_serializer_LDADD = \
 	$(GCALCCMD_LIBS) \
 	-lm
 

@@ -23,7 +23,6 @@
 #include <locale.h>
 #include <glib/gi18n.h>
 
-#include "unittest.h"
 #include "math-window.h"
 #include "mp-equation.h"
 #include "unit-manager.h"
@@ -117,7 +116,6 @@ usage(const gchar *progname, gboolean show_application, gboolean show_gtk)
         fprintf(stderr,
                 /* Description on gcalctool application options displayed on command-line */
                 _("Application Options:\n"
-                  "  -u, --unittest                  Perform unit tests\n"
                   "  -s, --solve <equation>          Solve the given equation"));
         fprintf(stderr,
                 "\n\n");
@@ -167,10 +165,6 @@ get_options(int argc, char *argv[])
             }
             else
                 solve(argv[i]);
-        }
-        else if (strcmp(arg, "-u") == 0 ||
-            strcmp(arg, "--unittest") == 0) {
-            unittest();
         }
         else {
             fprintf(stderr,
