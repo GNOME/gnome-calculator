@@ -71,7 +71,7 @@ unit_manager_get_default(void)
         {NULL,       "pint",                N_("Pints"),             NC_("unit-format", "%s pt"),       "0.4731765x",         "x/0.4731765",    NC_("unit-symbols", "pint,pints,pt")},
         {NULL,       "millilitre",          N_("Millilitres"),       NC_("unit-format", "%s mL"),       "0.001x",             "1000x",          NC_("unit-symbols", "millilitre,millilitres,milliliter,milliliters,mL,cm³")},
         {NULL,       "microlitre",          N_("Microlitre"),        NC_("unit-format", "%s μL"),       "0.000001x",          "1000000x",       NC_("unit-symbols", "mm³,μL,uL")},
-        {"weight",   "tonne",               N_("Tonnes"),            NC_("unit-format", "%s T"),        "x/1000",             "1000x",          NC_("unit-symbols", "tonne,tonnes")},
+        {"weight",   "tonne",               N_("Tonnes"),            NC_("unit-format", "%s T"),        "1000x",             "x/1000",          NC_("unit-symbols", "tonne,tonnes")},
         {NULL,       "kilograms",           N_("Kilograms"),         NC_("unit-format", "%s kg"),       "x",                  "x",              NC_("unit-symbols", "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs")},
         {NULL,       "pound",               N_("Pounds"),            NC_("unit-format", "%s lb"),       "0.45359237x",        "x/0.45359237",   NC_("unit-symbols", "pound,pounds,lb")},
         {NULL,       "ounce",               N_("Ounces"),            NC_("unit-format", "%s oz"),       "0.02834952x",        "x/0.02834952",   NC_("unit-symbols", "ounce,ounces,oz")},
