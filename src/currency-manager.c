@@ -384,6 +384,7 @@ load_imf_rates(CurrencyManager *manager)
                         c = add_currency(manager, name_map[name_index].symbol);
                     }
                     mp_set_from_string(tokens[value_index], 10, &value);
+                    mp_reciprocal(&value, &value);
                     currency_set_value(c, &value);
                 }
                 else
@@ -423,7 +424,7 @@ set_ecb_rate(CurrencyManager *manager, xmlNodePtr node, Currency *eur_rate)
         c = add_currency(manager, name);
         mp_set_from_string(value, 10, &r);
         mp_set_from_mp(currency_get_value(eur_rate), &v);
-        mp_divide(&v, &r, &v);
+        mp_multiply(&v, &r, &v);
         currency_set_value(c, &v);
     }
 
