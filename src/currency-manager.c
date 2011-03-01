@@ -468,7 +468,7 @@ load_ecb_rates(CurrencyManager *manager)
     }
 
     /* Set some fixed rates */
-    set_ecb_fixed_rate(manager, "EEK", "15.6466", eur_rate);
+    set_ecb_fixed_rate(manager, "EEK", "0.06391", eur_rate);
 
     xmlInitParser();
     document = xmlReadFile(filename, NULL, 0);
