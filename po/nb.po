@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: gcalctool 5.29.x\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-02-17 13:13+0100\n"
-"PO-Revision-Date: 2011-02-17 13:34+0100\n"
+"PO-Revision-Date: 2011-03-02 18:28+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -282,7 +282,6 @@ msgstr "Lineær avskrivning"
 
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
 #: ../data/buttons-financial.ui.h:74
-#, fuzzy
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "Avskriving av summen av årenes sifre"
 
@@ -333,19 +332,18 @@ msgstr "_Periodisk betaling:"
 
 #. Periodic Payment Dialog: Label before principal input
 #: ../data/buttons-financial.ui.h:94
-#, fuzzy
 msgid "_Principal:"
-msgstr "_Finansiell"
+msgstr "_Avdrag:"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
 #: ../data/buttons-financial.ui.h:96
 msgid "_Salvage:"
-msgstr ""
+msgstr "Re_stverdi:"
 
 #. Periodic Interest Rate Dialog: Label before term input
 #: ../data/buttons-financial.ui.h:98
 msgid "_Term:"
-msgstr "_Term:"
+msgstr "_Periode:"
 
 #. Insert ASCII dialog: Label before character entry
 #: ../data/buttons-programming.ui.h:6
@@ -468,11 +466,11 @@ msgstr "Valuta aktiv utregning skal konverteres til"
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
-msgstr ""
+msgstr "Indikerer om etterfølgende nulltall etter komma skal vises."
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
 msgid "Indicates whether thousands separators are shown in large numbers."
-msgstr ""
+msgstr "Indikerer om tusenskilletegn skal vises i store tall."
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
 msgid "Number format"
@@ -520,7 +518,7 @@ msgstr "Format for visning av tall"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
 msgid "The number of digits displayed after the numeric point"
-msgstr ""
+msgstr "Antall tall vist etter komma"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
 msgid "The numeric base"
@@ -528,7 +526,7 @@ msgstr "Tallbase"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
 msgid "The size of the words used in bitwise operations"
-msgstr ""
+msgstr "Størrelse på ord som brukes i bitvise operasjoner"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
 msgid "Units of the current calculation"
@@ -544,7 +542,7 @@ msgstr "Størrelse på ord"
 
 #: ../src/currency-manager.c:20
 msgid "UAE Dirham"
-msgstr ""
+msgstr "UAE dirham"
 
 #: ../src/currency-manager.c:21
 msgid "Australian Dollar"
@@ -832,7 +830,7 @@ msgstr ""
 #: ../src/gcalctool.c:164
 #, c-format
 msgid "Argument --solve requires an equation to solve"
-msgstr ""
+msgstr "Argumentet --solve krever en likning å løse"
 
 #. Error printed to stderr when user provides an unknown command-line argument
 #: ../src/gcalctool.c:178
@@ -1018,7 +1016,7 @@ msgstr "Brøkkomponent"
 #. Tooltip for the real component button
 #: ../src/math-buttons.c:210
 msgid "Real Component"
-msgstr ""
+msgstr "Heltallskomponent"
 
 #. Tooltip for the imaginary component button
 #: ../src/math-buttons.c:213
@@ -1082,7 +1080,6 @@ msgstr "Finansielt begrep"
 
 #. Tooltip for the sum of the years digits depreciation button
 #: ../src/math-buttons.c:267
-#, fuzzy
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Avskriving av summen av årenes sifre"
 
@@ -1395,9 +1392,8 @@ msgstr "Logaritmen for null er ikke definert"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
 #: ../src/mp.c:1691 ../src/mp.c:2006
-#, fuzzy
 msgid "The power of zero is undefined for a negative exponent"
-msgstr "Kvadratrot er ikke definert for negative verdier"
+msgstr "Kvadratet av null er ikke definert for en negativ eksponent"
 
 #: ../src/mp.c:1716
 msgid "Reciprocal of zero is undefined"
@@ -1427,12 +1423,9 @@ msgstr "Modulus divisjon er kun definert for heltall"
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:318
-#, fuzzy
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
-msgstr ""
-"Tangent er ikke definert for vinkler som er multipler av pi (180°) fra pi/2 "
-"(90°)"
+msgstr "Tangent er ikke definert for vinkler som er multipler av π (180°) fra π/2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: ../src/mp-trigonometric.c:363
@@ -1705,7 +1698,7 @@ msgstr "Mikrometer"
 #, c-format
 msgctxt "unit-format"
 msgid "%s μm"
-msgstr ""
+msgstr "%s μm"
 
 #: ../src/unit-manager.c:60
 msgctxt "unit-symbols"
@@ -1891,15 +1884,15 @@ msgid "Microlitre"
 msgstr "Mikroliter"
 
 #: ../src/unit-manager.c:73
-#, c-format, fuzzy
+#, c-format
 msgctxt "unit-format"
 msgid "%s μL"
-msgstr "mm³,"
+msgstr "%s μL"
 
 #: ../src/unit-manager.c:73
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
-msgstr ""
+msgstr "mm³,μL,uL"
 
 #: ../src/unit-manager.c:74
 msgid "Tonnes"
@@ -2074,7 +2067,7 @@ msgstr "Mikrosekunder"
 #, c-format
 msgctxt "unit-format"
 msgid "%s μs"
-msgstr ""
+msgstr "%s μs"
 
 #: ../src/unit-manager.c:85
 msgctxt "unit-symbols"
