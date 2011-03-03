@@ -1,33 +1,20 @@
+#
+# YunQiang Su <wzssyqa@gmail.com>, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool-help\n"
-"POT-Creation-Date: 2010-07-16 07:12+0000\n"
-"PO-Revision-Date: 2010-07-16 18:25+0800\n"
+"POT-Creation-Date: 2011-02-21 23:26+0000\n"
+"PO-Revision-Date: 2011-02-24 21:54+0800\n"
 "Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Country: CHINA\n"
-
-#: C/legal.xml:3(p)
-msgid ""
-"This work is licensed under a <link href=\"http://creativecommons.org/"
-"licenses/by-sa/3.0/\">Creative Commons Attribution-Share Alike 3.0 Unported "
-"License</link>."
-msgstr ""
-"本文采用 <link href=\"http://creativecommons.org/licenses/by-sa/3.0/\">知识共"
-"享署名-相同方式共享 3.0 Unported 许可协议</link>。"
-
-#: C/legal.xml:6(p)
-msgid ""
-"As a special exception, the copyright holders give you permission to copy, "
-"modify, and distribute the example code contained in this document under the "
-"terms of your choosing, without restriction."
-msgstr ""
-"作为一个特殊的例外，著作权人允许您使用自己的许可协议复制、修改和分发包含在本"
-"文档中的范例代码，不受约束。"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: C/variables.page:9(title)
 msgid "Variables"
@@ -36,11 +23,11 @@ msgstr "变量"
 #: C/variables.page:11(p)
 msgid ""
 "To assign a value to a variable use the = symbol or choose the variable to "
-"assign to with the <gui>→R</gui> button in <link xref=\"mouse\">advanced "
+"assign to with the <gui>x</gui> button in <link xref=\"mouse\">advanced "
 "mode</link>. A variable name must only contain upper or lower characters."
 msgstr ""
 "要赋值给一个变量，请使用 = 或在 <link xref=\"mouse\">高级模式</link> 中，选择"
-"一个变量用 <gui>→R</gui> 按钮赋值。变量名只能用大小写字母。"
+"一个变量用 <gui>x</gui> 按钮赋值。变量名只能包含大小写字母。"
 
 #: C/variables.page:16(p)
 msgid "x=5"
@@ -53,8 +40,9 @@ msgstr "value=82"
 #: C/variables.page:23(p)
 msgid ""
 "Variables can be used in any equation and are substituted for their assigned "
-"value. Variables can be inserted using the <gui>←R</gui> button."
-msgstr "变量可以用在等式中替代数值，变量可以用 <gui>←R</gui> 按钮插入。"
+"value. Variables can be inserted using the <gui>x</gui> button."
+msgstr ""
+"变量可以用在任何等式中，用来替代所赋数值。变量可以用 <gui>x</gui> 按钮插入。"
 
 #: C/variables.page:28(p)
 msgid "6x+3"
@@ -90,7 +78,7 @@ msgstr "π"
 
 #: C/variables.page:49(link)
 msgid "Pi"
-msgstr "Pi"
+msgstr "Pi(圆周率)"
 
 #: C/variables.page:52(p)
 msgid "rand"
@@ -121,12 +109,12 @@ msgid ""
 "when in <link xref=\"mouse\">scientific mode</link>."
 msgstr ""
 "角度单位可以在 <guiseq><gui>计算器</gui><gui>首选项</gui></guiseq> 菜单中更"
-"改。当进入 <link xref=\"mouse\">科学模式</link> 时，三角函数按钮可见。"
+"改。当进入 <link xref=\"mouse\">科学模式</link> 时，可以看到三角函数按钮。"
 
 #: C/trigonometry.page:23(p)
 msgid ""
 "Hyperbolic functions are available by adding \"h\" to the end of a function."
-msgstr "在函数的最后添加“h”，则双曲线函数可用。"
+msgstr "在函数的最后添加“h”，则为双曲线函数。"
 
 #: C/trigonometry.page:27(p)
 msgid "sinh 0.34"
@@ -138,8 +126,8 @@ msgid ""
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>) or the \"a\" form of the "
 "function. The following two equations are equivalent."
 msgstr ""
-"反函数是将输入使用反函数符号 ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></"
-"keyseq>) 或在一个函数前面加“a”。下面两个式子是等价的。"
+"反函数是既可以输入使用反函数符号 ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></"
+"keyseq>) 也可以在一个函数前面加“a”。下面两个式子是等价的。"
 
 #: C/trigonometry.page:36(p)
 msgid "sin⁻¹ 0.5"
@@ -708,10 +696,12 @@ msgstr "逻辑非"
 msgid "ones"
 msgstr "ones"
 
+# 　　一的补码(one's complement) 指的是正数=原码,负数=反码
+# 　　而二的补码(two's complement) 指的就是通常所指的补码。 
+# 具体计算见http://www.tomzap.com/notes/DigitalSystemsEngEE316/1sAnd2sComplement.pdf
 #: C/functions.page:61(p)
-#, fuzzy
 msgid "Ones complement"
-msgstr "Ones complement"
+msgstr "反码"
 
 #: C/functions.page:64(p)
 msgid "sin"
@@ -758,9 +748,8 @@ msgid "twos"
 msgstr "twos"
 
 #: C/functions.page:85(p)
-#, fuzzy
 msgid "Twos complement"
-msgstr "Twos complement"
+msgstr "补码"
 
 #: C/functions.page:88(p)
 msgid "<app>GCalctool</app> does not support user-defined functions."
@@ -771,22 +760,19 @@ msgid "Financial Functions"
 msgstr "财务函数"
 
 #: C/financial.page:10(p)
-msgid ""
-"When in <link xref=\"superscript\">financial mode</link> the following "
-"buttons are available."
-msgstr "在 <link xref=\"superscript\">财务</link> 模式中，下列按钮可用："
+msgid "When in financial mode the following buttons are available."
+msgstr "在财务模式中下列按钮可用。"
 
 #: C/financial.page:15(p)
 msgid "Ctrm"
-msgstr "Ctrm"
+msgstr "复利"
 
 #: C/financial.page:16(p)
 msgid ""
 "Calculate the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
 "compounding period."
-msgstr ""
-"计算复利周期需要增加投资将现值投资从当前值到将来值，在每个复利期的固定利率。"
+msgstr "计算投资增值一定量需要的复利周期数，每个复利期的利率固定。"
 
 #: C/financial.page:19(p)
 msgid "Ddb"
@@ -796,7 +782,7 @@ msgstr "Ddb"
 msgid ""
 "Calculate the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
-msgstr "使用双倍余额递减法计算资产在指定时间期间内的折旧额。"
+msgstr "使用双倍余额递减法计算资产在指定时间内的折旧额。"
 
 #: C/financial.page:23(p)
 msgid "Fv"
@@ -817,7 +803,7 @@ msgstr "Gpm"
 msgid ""
 "Calculate the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
-msgstr "计算某产品的转售价格，按产品成本及期望的毛利润。"
+msgstr "按产品成本及期望的毛利润率，计算某产品的转售价格。"
 
 #: C/financial.page:31(p)
 msgid "Pmt"
@@ -881,7 +867,7 @@ msgstr ""
 
 #: C/financial.page:51(p)
 msgid "Term"
-msgstr "Term"
+msgstr "期数"
 
 #: C/financial.page:52(p)
 msgid ""
@@ -952,7 +938,8 @@ msgid ""
 "division are performed before addition and subtraction. The following "
 "equation solves to 1 (3×2 = 6, 7−6 = 1)."
 msgstr ""
-"计算按数学运算法则 - 先乘除后加减。下面的式子结果为 1 (3×2 = 6，7−6 = 1)。"
+"计算顺序遵守数学运算法则 - 先乘除后加减。下面的式子结果为 1 (3×2 = 6，7−6 = "
+"1)。"
 
 #: C/equation.page:30(p)
 msgid "7−3×2"
@@ -1037,11 +1024,11 @@ msgstr "货币"
 
 #: C/conv-currency.page:11(p)
 msgid ""
-"To convert currencies press the <gui>¤$€</gui> button in <link xref="
-"\"superscript\">financial mode</link>."
+"To convert currencies, enter the <link xref=\"financial\">financial mode</"
+"link>, and use the currency controls."
 msgstr ""
-"要转换货币，请在  <link xref=\"superscript\">财务模式</link> 中点 <gui>¤$€</"
-"gui> 按钮。"
+"要转换货币，请在  <link xref=\"superscript\">财务模式</link> 中使用货币相关控"
+"件。"
 
 #: C/conv-currency.page:14(p)
 msgid ""
@@ -1200,6 +1187,22 @@ msgstr "abs (−1)"
 #: C/index.page:0(None)
 msgid "translator-credits"
 msgstr "TeliuTe <teliute@163.com>, 2010"
+
+#~ msgid ""
+#~ "This work is licensed under a <link href=\"http://creativecommons.org/"
+#~ "licenses/by-sa/3.0/\">Creative Commons Attribution-Share Alike 3.0 "
+#~ "Unported License</link>."
+#~ msgstr ""
+#~ "本文采用 <link href=\"http://creativecommons.org/licenses/by-sa/3.0/\">知"
+#~ "识共享署名-相同方式共享 3.0 Unported 许可协议</link>。"
+
+#~ msgid ""
+#~ "As a special exception, the copyright holders give you permission to "
+#~ "copy, modify, and distribute the example code contained in this document "
+#~ "under the terms of your choosing, without restriction."
+#~ msgstr ""
+#~ "作为一个特殊的例外，著作权人允许您使用自己的许可协议复制、修改和分发包含在"
+#~ "本文档中的范例代码，不受约束。"
 
 #~ msgid "<application>gcalctool</application> Manual V2.5"
 #~ msgstr "<application>Calculator</application> 手册 V2.5"
