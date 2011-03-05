@@ -4,43 +4,109 @@
 #
 # Linux localization project <viesturs.zarins@mii.lu.lv>, 2006.
 # Raivis Dejus <orvils@gmail.com>, 2006, 2009.
-# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2010.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-03-31 22:38+0000\n"
-"PO-Revision-Date: 2010-06-16 23:17+0300\n"
+"POT-Creation-Date: 2011-01-27 02:06+0000\n"
+"PO-Revision-Date: 2011-02-08 18:47+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
-"Language-Team: Latviešu <lata-l10n@googlegroups.com>\n"
+"Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
 "X-Launchpad-Export-Date: 2009-02-19 16:52+0000\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
+
+#. The label on the memory button
+#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
+#| msgid "<i>x</i>!"
+msgid "<i>x</i>"
+msgstr "<i>x</i>"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:4 ../data/buttons-basic.ui.h:2
+#: ../data/buttons-financial.ui.h:4 ../data/buttons-programming.ui.h:2
+msgid "="
+msgstr "="
+
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:6 ../data/buttons-programming.ui.h:4
+msgid "Absolute Value"
+msgstr "Absolūtā vērtība"
+
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:8 ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:38 ../data/buttons-programming.ui.h:8
+msgid "Exponent"
+msgstr "Kāpinātājs"
+
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:10 ../data/buttons-programming.ui.h:10
+msgid "Factorial"
+msgstr "Faktoriāls"
+
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:12 ../data/buttons-programming.ui.h:12
+msgid "Factorize"
+msgstr "Sadalīt reizinātājos"
+
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:14 ../data/buttons-programming.ui.h:18
+msgid "Inverse"
+msgstr "Pretējs"
+
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:50
+#: ../src/math-buttons.c:231
+msgid "Memory"
+msgstr "Atmiņa"
+
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:18
+msgid "Scientific Exponent"
+msgstr "Zinātniskā kāpināšana"
+
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:24
+msgid "Store"
+msgstr "Krātuve"
+
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:26
+msgid "Subscript"
+msgstr "Apakšraksts"
+
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:28
+msgid "Superscript"
+msgstr "Augšraksts"
 
 #. Payment Period Dialog: Button to calculate result
-#: ../data/financial.ui.h:2
+#: ../data/buttons-financial.ui.h:6
 msgid "C_alculate"
 msgstr "_Aprēķināt"
 
 #. Gross Profit Margin Dialog: Label before cost input
-#: ../data/financial.ui.h:4
+#: ../data/buttons-financial.ui.h:8
 msgid "C_ost:"
 msgstr "I_zmaksas:"
 
 #. Periodic Payment Dialog: Description of calculation
-#: ../data/financial.ui.h:6
+#: ../data/buttons-financial.ui.h:10
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
 msgstr ""
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:8
+#: ../data/buttons-financial.ui.h:12
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
@@ -50,14 +116,14 @@ msgid ""
 msgstr ""
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:10
+#: ../data/buttons-financial.ui.h:14
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
 msgstr ""
 
 #. Future Value Dialog: Description of calculation
-#: ../data/financial.ui.h:12
+#: ../data/buttons-financial.ui.h:16
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -65,7 +131,7 @@ msgid ""
 msgstr ""
 
 #. Compounding Term Dialog: Description of calculation
-#: ../data/financial.ui.h:14
+#: ../data/buttons-financial.ui.h:18
 msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
@@ -73,7 +139,7 @@ msgid ""
 msgstr ""
 
 #. Payment Period Dialog: Description of calculation
-#: ../data/financial.ui.h:16
+#: ../data/buttons-financial.ui.h:20
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -81,14 +147,14 @@ msgid ""
 msgstr ""
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: ../data/financial.ui.h:18
+#: ../data/buttons-financial.ui.h:22
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
 msgstr ""
 
 #. Present Value Dialog: Description of calculation
-#: ../data/financial.ui.h:20
+#: ../data/buttons-financial.ui.h:24
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -96,14 +162,14 @@ msgid ""
 msgstr ""
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: ../data/financial.ui.h:22
+#: ../data/buttons-financial.ui.h:26
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
 msgstr ""
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:24
+#: ../data/buttons-financial.ui.h:28
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -112,749 +178,271 @@ msgid ""
 msgstr ""
 
 #. Title of Compounding Term dialog
-#: ../data/financial.ui.h:26
+#. Tooltip for the compounding term button
+#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:255
 msgid "Compounding Term"
 msgstr ""
 
-#: ../data/financial.ui.h:27
-msgid ""
-"Converts between different currencies. Enter the amount and the currency you "
-"want to convert from on the upper row, and the currency you want to convert "
-"to on the lower row, and the amount will be displayed on the lower row."
-msgstr ""
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/buttons-financial.ui.h:32
+msgid "Ctrm"
+msgstr "Ctrm"
 
-#: ../data/financial.ui.h:28
-msgid "Currency Conversion"
-msgstr ""
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:34
+msgid "Ddb"
+msgstr "Ddb"
 
 #. Title of Double-Declining Depreciation dialog
-#: ../data/financial.ui.h:30
+#: ../data/buttons-financial.ui.h:36
 msgid "Double-Declining Depreciation"
 msgstr ""
 
 #. Title of Future Value dialog
-#: ../data/financial.ui.h:32
+#. Tooltip for the future value button
+#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:261
 msgid "Future Value"
 msgstr ""
 
 #. Payment Period Dialog: Label before future value input
-#: ../data/financial.ui.h:34
+#: ../data/buttons-financial.ui.h:42
 msgid "Future _Value:"
 msgstr ""
 
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/buttons-financial.ui.h:44
+msgid "Fv"
+msgstr "Fv"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/buttons-financial.ui.h:46
+msgid "Gpm"
+msgstr "Gpm"
+
 #. Title of Gross Profit Margin dialog
-#: ../data/financial.ui.h:36
+#. Tooltip for the gross profit margin button
+#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:282
 msgid "Gross Profit Margin"
 msgstr ""
 
 #. Title of Payment Period dialog
-#: ../data/financial.ui.h:38
+#: ../data/buttons-financial.ui.h:52
 msgid "Payment Period"
 msgstr ""
 
 #. Title of Periodic Interest Rate dialog
-#: ../data/financial.ui.h:40
+#. Tooltip for the periodic interest rate button
+#: ../data/buttons-financial.ui.h:54 ../src/math-buttons.c:273
 msgid "Periodic Interest Rate"
 msgstr ""
 
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/financial.ui.h:42
+#: ../data/buttons-financial.ui.h:56
 msgid "Periodic Interest _Rate:"
 msgstr ""
 
 #. Title of Periodic Payment dialog
-#: ../data/financial.ui.h:44
+#. Tooltip for the periodic payment button
+#: ../data/buttons-financial.ui.h:58 ../src/math-buttons.c:279
 msgid "Periodic Payment"
 msgstr ""
 
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/buttons-financial.ui.h:60
+msgid "Pmt"
+msgstr "Pmt"
+
 #. Title of Present Value dialog
-#: ../data/financial.ui.h:46
+#. Tooltip for the present value button
+#: ../data/buttons-financial.ui.h:62 ../src/math-buttons.c:276
 msgid "Present Value"
 msgstr ""
 
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/financial.ui.h:48
+#: ../data/buttons-financial.ui.h:64
 msgid "Present _Value:"
 msgstr ""
 
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/buttons-financial.ui.h:66
+msgid "Pv"
+msgstr "Pv"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/buttons-financial.ui.h:68
+msgid "Rate"
+msgstr "Likme"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:70
+msgid "Sln"
+msgstr "Sln"
+
 #. Title of Straight-Line Depreciation dialog
-#: ../data/financial.ui.h:50
+#: ../data/buttons-financial.ui.h:72
 msgid "Straight-Line Depreciation"
 msgstr ""
 
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
-#: ../data/financial.ui.h:52
+#: ../data/buttons-financial.ui.h:74
 #, fuzzy
 #| msgid "Sum-of-the years'-digits depreciation"
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "Gada skaitļu summas amortizācija"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/financial.ui.h:54
-msgid "_Cost:"
-msgstr ""
-
-#. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/financial.ui.h:56
-msgid "_Future Value:"
-msgstr ""
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/financial.ui.h:58
-msgid "_Life:"
-msgstr ""
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: ../data/financial.ui.h:60
-msgid "_Margin:"
-msgstr ""
-
-#. Present Value Dialog: Label before number of periods input
-#: ../data/financial.ui.h:62
-msgid "_Number of Periods:"
-msgstr ""
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/financial.ui.h:64
-msgid "_Period:"
-msgstr "_Periods:"
-
-#. Payment Period Dialog: Label before periodic payment input
-#: ../data/financial.ui.h:66
-msgid "_Periodic Payment:"
-msgstr ""
-
-#. Periodic Payment Dialog: Label before principal input
-#: ../data/financial.ui.h:68
-msgid "_Principal:"
-msgstr ""
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/financial.ui.h:70
-msgid "_Salvage:"
-msgstr ""
-
-#. Periodic Interest Rate Dialog: Label before term input
-#: ../data/financial.ui.h:72
-msgid "_Term:"
-msgstr ""
-
-#. The label on the memory recall button
-#: ../data/gcalctool.ui.h:2
-msgid "&#x2190; R"
-msgstr "&#x2190; R"
-
-#. The label on the memory store button
-#: ../data/gcalctool.ui.h:4
-msgid "&#x2192; R"
-msgstr "&#x2192; R"
-
-#. The label on the currency button
-#: ../data/gcalctool.ui.h:6
-msgid "&#xA4;$&#x20AC;"
-msgstr "&#xA4;$&#x20AC;"
-
-#. Right Shift Popup: Menu item to shift right by 10 bits
-#: ../data/gcalctool.ui.h:8
-msgid "10 places"
-msgstr "10 cipari"
-
-#. Right Shift Popup: Menu item to shift right by 11 bits
-#: ../data/gcalctool.ui.h:10
-msgid "11 places"
-msgstr "11 cipari"
-
-#. Right Shift Popup: Menu item to shift right by 12 bits
-#: ../data/gcalctool.ui.h:12
-msgid "12 places"
-msgstr "12 cipari"
-
-#. Right Shift Popup: Menu item to shift right by 13 bits
-#: ../data/gcalctool.ui.h:14
-msgid "13 places"
-msgstr "13 cipari"
-
-#. Right Shift Popup: Menu item to shift right by 14 bits
-#: ../data/gcalctool.ui.h:16
-msgid "14 places"
-msgstr "14 cipari"
-
-#. Right Shift Popup: Menu item to shift right by 15 bits
-#: ../data/gcalctool.ui.h:18
-msgid "15 places"
-msgstr "15 cipari"
-
-#. Word size combo: 16 bits
-#: ../data/gcalctool.ui.h:20
-msgid "16-bit"
-msgstr "16-biti"
-
-#. Word size combo: 32 bits
-#: ../data/gcalctool.ui.h:22
-msgid "32-bit"
-msgstr "32-biti"
-
-#. Word size combo: 64 bits
-#: ../data/gcalctool.ui.h:24
-msgid "64-bit"
-msgstr "64-biti"
-
-#. Word size combo: 8 bits
-#: ../data/gcalctool.ui.h:26
-msgid "8-bit"
-msgstr "8-biti"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: ../data/gcalctool.ui.h:28
-msgid "="
-msgstr "="
-
-#. Accessible name for the absolute value button
-#: ../data/gcalctool.ui.h:30
-#| msgid "Absolute value"
-msgid "Absolute Value"
-msgstr "Absolūtā vērtība"
-
-#. Tooltip for the absolute value button
-#: ../data/gcalctool.ui.h:32
-#| msgid "Absolute value [u]"
-msgid "Absolute value [|]"
-msgstr "Absolūtā vērtība [|]"
-
-#. Tooltip for the addition button
-#: ../data/gcalctool.ui.h:34
-msgid "Add [+]"
-msgstr "Pieskaitīt [+]"
-
-#. Tooltip for the answer variable button
-#: ../data/gcalctool.ui.h:36
-msgid "Answer variable"
-msgstr "Atbildes mainīgais"
-
-#. Tooltip for the base 10 logarithm button
-#: ../data/gcalctool.ui.h:38
-msgid "Base 10 logarithm"
-msgstr "Logaritms ar bāzi 10"
-
-#. Accessible name for the base 16 button
-#: ../data/gcalctool.ui.h:40
-msgid "Base 16"
-msgstr "Bāze 16"
-
-#. Accessible name for the base 2 button
-#: ../data/gcalctool.ui.h:42
-msgid "Base 2"
-msgstr "Bāze 2"
-
-#. Accessible name for the base 8 button
-#: ../data/gcalctool.ui.h:44
-msgid "Base 8"
-msgstr "Bāze 8"
-
-#. Number display mode combo: Binary, e.g. 10011010010&#x2082;
-#: ../data/gcalctool.ui.h:46
-#| msgid "_Bin"
-msgid "Binary"
-msgstr "Binārs"
-
-#. Tooltip for the boolean AND button
-#: ../data/gcalctool.ui.h:48
-msgid "Boolean AND"
-msgstr "Loģiskais UN"
-
-#. Tooltip for the boolean NOT button
-#: ../data/gcalctool.ui.h:50
-msgid "Boolean NOT"
-msgstr "Loģiskais NE"
-
-#. Tooltip for the boolean OR button
-#: ../data/gcalctool.ui.h:52
-msgid "Boolean OR"
-msgstr "Loģiskais VAI"
-
-#. Tooltip for the boolean exclusive OR button
-#: ../data/gcalctool.ui.h:54
-msgid "Boolean exclusive OR"
-msgstr "Loģiskais izslēdzošais VAI"
-
-#. Tooltip for the solve button
-#: ../data/gcalctool.ui.h:56
-msgid "Calculate result [=]"
-msgstr "Aprēķināt rezultātu [=]"
-
-#. Insert ASCII dialog: Label before character entry
-#: ../data/gcalctool.ui.h:58
-msgid "Ch_aracter:"
-msgstr "R_akstzīme:"
-
-#. Tooltop for the clear display button
-#: ../data/gcalctool.ui.h:60
-#| msgid "Clear displayed value [Escape]"
-msgid "Clear display [Escape]"
-msgstr "Nodzēst vērtību [Escape]"
-
-#. Label on the clear display button. Clr is short for Clear
-#: ../data/gcalctool.ui.h:62
-msgid "Clr"
-msgstr "Clr"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: ../data/gcalctool.ui.h:64
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:66
-msgid "Ddb"
-msgstr "Ddb"
-
-#. Number display mode combo: Decimal, e.g. 1234
-#: ../data/gcalctool.ui.h:68
-msgid "Decimal"
-msgstr "Decimāls"
-
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../data/gcalctool.ui.h:70
-#| msgid "De_grees"
-msgid "Degrees"
-msgstr "Grādi"
-
-#. Preferences dialog: Label for display format combo box
-#: ../data/gcalctool.ui.h:72
-msgid "Display _Format:"
-msgstr "Attēlošanas _formāts:"
-
-#. Tooltip for the division button
-#: ../data/gcalctool.ui.h:74
-msgid "Divide [/]"
-msgstr "Dalīšana [/]"
-
-#. Tooltip for the end block button
-#: ../data/gcalctool.ui.h:76
-msgid "End block [)]"
-msgstr "Bloka beigas [)]"
-
-#. Number display mode combo: Engineering, e.g. 1.234k
-#: ../data/gcalctool.ui.h:78
-msgid "Engineering"
-msgstr "Inženierija"
-
-#. Tooltip for the Euler's number button
-#: ../data/gcalctool.ui.h:80
-#| msgid "Euler's Number (e)"
-msgid "Euler's number"
-msgstr "Eilera skaitlis (e)"
-
-#. Accessible name for the exponentiation (x to the power of y) button
-#: ../data/gcalctool.ui.h:82
-msgid "Exponent"
-msgstr "Kāpinātājs"
-
-#. Tooltip for the exponentiation (x to the power of y) button
-#: ../data/gcalctool.ui.h:84
-msgid "Exponent [^ or **]"
-msgstr "Kāpinātājs [^ vai **]"
-
-#. Accessible name for the factorial button
-#: ../data/gcalctool.ui.h:86
-#| msgid "Financial"
-msgid "Factorial"
-msgstr "Faktoriāls"
-
-#. Tooltip for the factorial button
-#: ../data/gcalctool.ui.h:88
-msgid "Factorial [!]"
-msgstr "Faktoriāls [!]"
-
-#. Accessible name for the factorize button
-#: ../data/gcalctool.ui.h:90
-msgid "Factorize"
-msgstr "Sadalīt reizinātājos"
-
-#. Tooltip for the factorize button
-#: ../data/gcalctool.ui.h:92
-msgid "Factorize into prime numbers (Ctrl+F)"
-msgstr "Sadalīt pirmreizinātājos (Ctrl+F)"
-
-#. Tooltip for the fractional portion button
-#: ../data/gcalctool.ui.h:94
-msgid "Fractional portion"
-msgstr "Daļveida daļa"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: ../data/gcalctool.ui.h:96
-msgid "Fv"
-msgstr "Fv"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../data/gcalctool.ui.h:98
-msgid "Gpm"
-msgstr "Gpm"
-
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../data/gcalctool.ui.h:100
-#| msgid "Gr_adians"
-msgid "Gradians"
-msgstr "Gradiāni"
-
-#. Number display mode combo: Hexadecimal, e.g. 4D2&#x2081;&#x2086;
-#: ../data/gcalctool.ui.h:102
-#| msgid "Hexadecimal digit A [a]"
-msgid "Hexadecimal"
-msgstr "Heksadecimāls"
-
-#. Title of insert ASCII dialog
-#: ../data/gcalctool.ui.h:104
-msgid "Insert ASCII Value"
-msgstr "Ievietot ASCII vērtību"
-
-#. Accessible name for the insert character button
-#: ../data/gcalctool.ui.h:106
-#| msgid "Ch_aracter:"
-msgid "Insert Character"
-msgstr "Ievietot rakstzīmi"
-
-#. Tooltip for the insert character button
-#: ../data/gcalctool.ui.h:108
-msgid "Insert character"
-msgstr "Ievietot rakstzīmi"
-
-#. Tooltip for the integer portion button
-#: ../data/gcalctool.ui.h:110
-msgid "Integer portion"
-msgstr "Veselā daļa"
-
-#. Accessible name for the inverse button
-#: ../data/gcalctool.ui.h:112
-msgid "Inverse"
-msgstr "Pretējs"
-
-#. Tooltip for the inverse button
-#: ../data/gcalctool.ui.h:114
-msgid "Inverse [Ctrl+I]"
-msgstr "Pretējs [Ctrl+I]"
-
-#. Tooltip for the modulus division button
-#: ../data/gcalctool.ui.h:116
-#| msgid "Modulus Division [M]"
-msgid "Modulus divide"
-msgstr "Modulārā dalīšana"
-
-#. Tooltip for the multiplication button
-#: ../data/gcalctool.ui.h:118
-msgid "Multiply [*]"
-msgstr "Reizināšana [*]"
-
-#. Tooltip for the natural logarithm button
-#: ../data/gcalctool.ui.h:120
-msgid "Natural logarithm"
-msgstr "Naturālais logaritms"
-
-#. Tooltip for the numeric point button
-#: ../data/gcalctool.ui.h:122
-#| msgid "Numeric point"
-msgid "Numeric point [. or ,]"
-msgstr "Daļskaitļa atdalītājs [. vai ,]"
-
-#. Number display mode combo: Octal, e.g. 2322&#x2088;
-#: ../data/gcalctool.ui.h:124
-#| msgid "_Oct"
-msgid "Octal"
-msgstr "Octal"
-
-#. Tooltip for the ones' complement button
-#: ../data/gcalctool.ui.h:126
-msgid "Ones'' complement"
-msgstr ""
-
-#. Tooltip on the percentage button
-#: ../data/gcalctool.ui.h:129
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "Procenti [%]"
-
-#. Tooltip for the Pi button
-#: ../data/gcalctool.ui.h:131
-msgid "Pi [Ctrl+P]"
-msgstr "Pī [Ctrl+P]"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/gcalctool.ui.h:133
-msgid "Pmt"
-msgstr "Pmt"
-
-#: ../data/gcalctool.ui.h:134
-msgid "Preferences"
-msgstr "Iestatījumi"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/gcalctool.ui.h:136
-msgid "Pv"
-msgstr "Pv"
-
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../data/gcalctool.ui.h:138
-#| msgid "_Radians"
-msgid "Radians"
-msgstr "Radiāni"
-
-#. Tooltip for the random number button
-#: ../data/gcalctool.ui.h:140
-msgid "Random number"
-msgstr "Nejaušs skaitlis"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/gcalctool.ui.h:142
-msgid "Rate"
-msgstr "Likme"
-
-#. Accessible name for the recall value button
-#: ../data/gcalctool.ui.h:144
-#, fuzzy
-#| msgid "Rcl"
-msgid "Recall"
-msgstr "Rcl"
-
-#. Tooltip for the recall value button
-#: ../data/gcalctool.ui.h:146
-msgid "Recall value"
-msgstr ""
-
-#. Accessible description for the area in which results are displayed
-#: ../data/gcalctool.ui.h:148
-msgid "Result Region"
-msgstr "Rezultāta reģions"
-
-#. Tooltip for the root button
-#: ../data/gcalctool.ui.h:150
-msgid "Root [Ctrl+S]"
-msgstr "Sakne [Ctrl+S]"
-
-#. Number display mode combo: Scientific, e.g. 1.234&#xD7;10^3
-#: ../data/gcalctool.ui.h:152
-msgid "Scientific"
-msgstr "Zinātniskais"
-
-#. Accessible name for the scientific exponent button
-#: ../data/gcalctool.ui.h:154
-#| msgid "Scientific"
-msgid "Scientific Exponent"
-msgstr "Zinātniskā kāpināšana"
-
-#. Tooltip for the scientific exponent button
-#: ../data/gcalctool.ui.h:156
-msgid "Scientific exponent [Ctrl+E]"
-msgstr "Zinātniskā kāpināšana [Ctrl+E]"
-
-#. Accessible name for the shift left button
-#: ../data/gcalctool.ui.h:158
-msgid "Shift Left"
-msgstr "Bīdīt pa kreisi"
-
-#. Accessible name for the shift right button
-#: ../data/gcalctool.ui.h:160
-msgid "Shift Right"
-msgstr "Bīdīt pa labi"
-
-#. Tooltip for the shift left button
-#: ../data/gcalctool.ui.h:162
-msgid "Shift left [<]"
-msgstr "Bīdīt pa kreisi [<]"
-
-#. Tooltip for the shift right button
-#: ../data/gcalctool.ui.h:164
-msgid "Shift right [>]"
-msgstr "Bīdīt pa labi [>]"
-
-#. Preferences dialog: label for show thousands separator check button
-#: ../data/gcalctool.ui.h:166
-#| msgid "Show thousands separator"
-msgid "Show _thousands separators"
-msgstr "Rādīt _tūkstošu atdalītāju"
-
-#. Preferences dialog: label for show trailing zeroes check button
-#: ../data/gcalctool.ui.h:168
-#| msgid "Show trailing zeroes"
-msgid "Show trailing _zeroes"
-msgstr "Radīt _beigu nulles"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:170
-msgid "Sln"
-msgstr "Sln"
-
-#. Tooltip for the start block button
-#: ../data/gcalctool.ui.h:172
-msgid "Start block [(]"
-msgstr "Bloka sākums [(]"
-
-#. Accessible name for the store value button
-#: ../data/gcalctool.ui.h:174
-#| msgid "Sto"
-msgid "Store"
-msgstr "Krātuve"
-
-#. Tooltip for the store value button
-#: ../data/gcalctool.ui.h:176
-#| msgid "Future value"
-msgid "Store value"
-msgstr "Krātuves vērtība"
-
-#. Accessible name for the subscript mode button
-#: ../data/gcalctool.ui.h:178
-#| msgid "Description"
-msgid "Subscript"
-msgstr "Apakšraksts"
-
-#. Tooltip for the subscript mode button
-#: ../data/gcalctool.ui.h:180
-msgid "Subscript number mode [Alt+number]"
-msgstr "Apakšraksta skaitļa režīms [Alt+skaitlis]"
-
-#. Tooltip for the subtraction button
-#: ../data/gcalctool.ui.h:182
-msgid "Subtract [-]"
-msgstr "Atņemšana [-]"
-
-#. Accessible name for the superscript mode button
-#: ../data/gcalctool.ui.h:184
-#| msgid "Description"
-msgid "Superscript"
-msgstr "Augšraksts"
-
-#. Tooltip for the superscript mode button
-#: ../data/gcalctool.ui.h:186
-msgid "Superscript number mode [Ctrl+number]"
-msgstr "Augšraksta skaitļa režīms [Ctrl+skaitlis]"
-
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:188
+#: ../data/buttons-financial.ui.h:76
 msgid "Syd"
 msgstr "Syd"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/gcalctool.ui.h:190
+#: ../data/buttons-financial.ui.h:78
 msgid "Term"
 msgstr "Term"
 
-#. Tooltip for the truncate button
-#: ../data/gcalctool.ui.h:192
-#| msgid "Future value"
-msgid "Truncate value"
-msgstr "Apraušanas vērtība"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:80
+msgid "_Cost:"
+msgstr ""
 
-#. Tooltip for the two's complement button
-#: ../data/gcalctool.ui.h:194
-msgid "Two's complement"
-msgstr "Papildinošais kods"
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:82
+msgid "_Future Value:"
+msgstr ""
 
-#. Preferences dialog: label for word size combo box
-#: ../data/gcalctool.ui.h:196
-msgid "Word _size:"
-msgstr "Vārda izmēr_s:"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:84
+msgid "_Life:"
+msgstr ""
 
-#. Right Shift Popup: Menu item to shift right by 1 bit
-#: ../data/gcalctool.ui.h:198
-msgid "_1 place"
-msgstr "_1 cipars"
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/buttons-financial.ui.h:86
+msgid "_Margin:"
+msgstr ""
 
-#. Right Shift Popup: Menu item to shift right by 2 bits
-#: ../data/gcalctool.ui.h:200
-msgid "_2 places"
-msgstr "_2 cipari"
+#. Present Value Dialog: Label before number of periods input
+#: ../data/buttons-financial.ui.h:88
+msgid "_Number of Periods:"
+msgstr ""
 
-#. Right Shift Popup: Menu item to shift right by 3 bits
-#: ../data/gcalctool.ui.h:202
-msgid "_3 places"
-msgstr "_3 cipari"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:90
+msgid "_Period:"
+msgstr "_Periods:"
 
-#. Right Shift Popup: Menu item to shift right by 4 bits
-#: ../data/gcalctool.ui.h:204
-msgid "_4 places"
-msgstr "_4 cipari"
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/buttons-financial.ui.h:92
+msgid "_Periodic Payment:"
+msgstr ""
 
-#. Right Shift Popup: Menu item to shift right by 5 bits
-#: ../data/gcalctool.ui.h:206
-msgid "_5 places"
-msgstr "_5 cipari"
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/buttons-financial.ui.h:94
+msgid "_Principal:"
+msgstr ""
 
-#. Right Shift Popup: Menu item to shift right by 6 bits
-#: ../data/gcalctool.ui.h:208
-msgid "_6 places"
-msgstr "_6 cipari"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:96
+msgid "_Salvage:"
+msgstr ""
 
-#. Right Shift Popup: Menu item to shift right by 7 bits
-#: ../data/gcalctool.ui.h:210
-msgid "_7 places"
-msgstr "_7 cipari"
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/buttons-financial.ui.h:98
+#, fuzzy
+msgid "_Term:"
+msgstr "_Termins:"
 
-#. Right Shift Popup: Menu item to shift right by 8 bits
-#: ../data/gcalctool.ui.h:212
-msgid "_8 places"
-msgstr "_8 cipari"
+#. Insert ASCII dialog: Label before character entry
+#: ../data/buttons-programming.ui.h:6
+msgid "Ch_aracter:"
+msgstr "R_akstzīme:"
 
-#. Right Shift Popup: Menu item to shift right by 9 bits
-#: ../data/gcalctool.ui.h:214
-msgid "_9 places"
-msgstr "_9 cipari"
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:14
+msgid "Insert Character"
+msgstr "Ievietot rakstzīmi"
 
-#. View|Advanced menu item
-#: ../data/gcalctool.ui.h:216
-msgid "_Advanced"
-msgstr "P_aplašinātais"
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:234
+#| msgid "Insert Character"
+msgid "Insert Character Code"
+msgstr "Ievietot rakstzīmes kodu"
 
-#. Preferences dialog: Label for angle unit combo box
-#: ../data/gcalctool.ui.h:218
-msgid "_Angle units:"
-msgstr "Leņķi_a mērvienības:"
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+#: ../data/buttons-programming.ui.h:20 ../src/math-buttons.c:249
+msgid "Shift Left"
+msgstr "Bīdīt pa kreisi"
 
-#. View|Basic menu item
-#: ../data/gcalctool.ui.h:220
-msgid "_Basic"
-msgstr "_Vienkāršais"
-
-#. Calculator menu
-#: ../data/gcalctool.ui.h:222
-msgid "_Calculator"
-msgstr "_Kalkulators"
-
-#. Help|Contents menu
-#: ../data/gcalctool.ui.h:224
-msgid "_Contents"
-msgstr "_Saturs"
-
-#. View|Financial menu item
-#: ../data/gcalctool.ui.h:226
-msgid "_Financial"
-msgstr "_Finansiālais"
-
-#. Help menu
-#: ../data/gcalctool.ui.h:228
-msgid "_Help"
-msgstr "_Palīdzība"
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:252
+msgid "Shift Right"
+msgstr "Bīdīt pa labi"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:230
+#: ../data/buttons-programming.ui.h:30
 msgid "_Insert"
 msgstr "_Ievietot"
 
-#. View|Programming menu item
-#: ../data/gcalctool.ui.h:232
-msgid "_Programming"
-msgstr "_Programmēšanas"
+#. The label on the memory button
+#: ../data/buttons-programming.ui.h:32
+#| msgid "x2"
+msgid "x"
+msgstr "x"
 
-#. View|Scientific menu item
-#: ../data/gcalctool.ui.h:234
-msgid "_Scientific"
-msgstr "_Zinātniskais"
+#. Word size combo: 16 bits
+#: ../data/preferences.ui.h:2
+msgid "16-bit"
+msgstr "16-biti"
 
-#. View menu
-#: ../data/gcalctool.ui.h:236
-msgid "_View"
-msgstr "_Skats"
+#. Word size combo: 32 bits
+#: ../data/preferences.ui.h:4
+msgid "32-bit"
+msgstr "32-biti"
 
-#. Translators: The window title when in basic mode
-#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:96
+#. Word size combo: 64 bits
+#: ../data/preferences.ui.h:6
+msgid "64-bit"
+msgstr "64-biti"
+
+#. Word size combo: 8 bits
+#: ../data/preferences.ui.h:8
+msgid "8-bit"
+msgstr "8-biti"
+
+#. Preferences dialog: Label for display format combo box
+#: ../data/preferences.ui.h:10
+msgid "Number _Format:"
+msgstr "Skaitļu _formāts:"
+
+#. Title of preferences dialog
+#: ../data/preferences.ui.h:11 ../src/math-preferences.c:239
+msgid "Preferences"
+msgstr "Iestatījumi"
+
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/preferences.ui.h:13
+msgid "Show _thousands separators"
+msgstr "Rādīt _tūkstošu atdalītāju"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/preferences.ui.h:15
+msgid "Show trailing _zeroes"
+msgstr "Radīt _beigu nulles"
+
+#. Preferences dialog: label for word size combo box
+#: ../data/preferences.ui.h:17
+msgid "Word _size:"
+msgstr "Vārda izmēr_s:"
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/preferences.ui.h:19
+msgid "_Angle units:"
+msgstr "Leņķi_a mērvienības:"
+
+#. Title of main window
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:522
 msgid "Calculator"
 msgstr "Kalkulators"
 
@@ -862,123 +450,116 @@ msgstr "Kalkulators"
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Veikt aritmētiskus, zinātniskus vai finansiālus aprēķinus"
 
-#: ../data/gcalctool.schemas.in.h:1
-#| msgid "Future value"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "Precizitātes vērtība"
 
-#: ../data/gcalctool.schemas.in.h:2
-msgid "Display Mode"
-msgstr "Attēlošanas režīms"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+#| msgid "_Angle units:"
+msgid "Angle units"
+msgstr "Leņķa mērvienības"
 
-#: ../data/gcalctool.schemas.in.h:3
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr "Pogu režīms"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+msgid "Currency of the current calculation"
+msgstr "Pašreizējā aprēķina valūta"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+msgid "Currency to convert the current calculation into"
+msgstr "Valūta, uz kuru pārveidot pašreizējo aprēķinu"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr "Norāda, vai attēlotajā rezultātā būtu jārāda beigu nulles pēc komata."
 
-#: ../data/gcalctool.schemas.in.h:4
-msgid "Indicates whether the memory register window is initially displayed."
-msgstr "Norāda, vai jau no sākuma būtu jārāda atmiņas reģistru logs."
-
-#: ../data/gcalctool.schemas.in.h:5
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Norāda, vai lieliem skaitļiem būtu jārāda tūkstošu atdalītājs."
 
-#: ../data/gcalctool.schemas.in.h:6
-#| msgid "Mod"
-msgid "Mode"
-msgstr "Režīms"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+msgid "Number format"
+msgstr "Skaitļu formāts"
 
-#: ../data/gcalctool.schemas.in.h:7
-#| msgid "Numeric 0"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
 msgid "Numeric Base"
 msgstr "Ciparu bāze"
 
-#: ../data/gcalctool.schemas.in.h:8
-#| msgid "Show memory registers"
-msgid "Show Registers"
-msgstr "Rādīt atmiņas reģistrus"
-
-#: ../data/gcalctool.schemas.in.h:9
-#| msgid "Show T_housands Separator"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
 msgid "Show Thousands Separators"
 msgstr "Rādīt tūkstošu atdalītāju"
 
-#: ../data/gcalctool.schemas.in.h:10
-#| msgid "Show _Trailing Zeroes"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
 msgid "Show Trailing Zeroes"
 msgstr "Rādīt beigu _nulles"
 
-#: ../data/gcalctool.schemas.in.h:11
-msgid ""
-"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-msgstr ""
-"Sākotnējais kalkulatora režīms. Derīgās vērtības ir \"BASIC\", "
-"\"FINANCIAL\", "
-"\"LOGICAL\", \"SCIENTIFIC\" un \"PROGRAMMING\""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+msgid "Source currency"
+msgstr "Avota valūta"
 
-#: ../data/gcalctool.schemas.in.h:12
-msgid ""
-"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
-"\" (fixed-point) and \"SCI\" (scientific)"
-msgstr ""
-"Sākotnējais attēlošanas režīms. Derīgās vērtības ir \"ENG\" (inženierija), "
-"\"FIX\" (fiksēta komata) un \"SCI\" (zinātniskais)"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Source units"
+msgstr "Avota vienības"
 
-#: ../data/gcalctool.schemas.in.h:13
-msgid ""
-"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-"\" (gradians) and \"RAD\" (radians)."
-msgstr ""
-"Sākotnējais trigonometriskais tips. Derīgās vērtības ir \"DEG\" (grādi), "
-"\"GRAD\" (gradiāni) and \"RAD\" (radiāni)."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "Target currency"
+msgstr "Mērķa valūta"
 
-#: ../data/gcalctool.schemas.in.h:14
-msgid "The initial x-coordinate for the window"
-msgstr "Loga sākotnējā x koordināta"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+#| msgid "_Angle units:"
+msgid "Target units"
+msgstr "Mērķa mērvienības"
 
-#: ../data/gcalctool.schemas.in.h:15
-msgid "The initial y-coordinate for the window"
-msgstr "Loga sākotnējā y koordināta"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The angle units to use"
+msgstr "Leņķa mērvienības, ko izmantot"
 
-#: ../data/gcalctool.schemas.in.h:16
-msgid ""
-"The number of digits displayed after the numeric point. This value must be "
-"in the range 0 to 9."
-msgstr "Ciparu skaits, ko rāda pēc komata. Vērtībai ir jābūt no 0 līdz 9."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+msgid "The button mode"
+msgstr "Pogu režīms"
 
-#: ../data/gcalctool.schemas.in.h:17
-msgid "The number of pixels to place the window from the left of the screen."
-msgstr "Pikseļu skaits, par cik novietot logu no kreisās ekrāna puses."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The format to display numbers in"
+msgstr "Formāts, kādā attēlot skaitļus"
 
-#: ../data/gcalctool.schemas.in.h:18
-msgid "The number of pixels to place the window from the top of the screen."
-msgstr "Pikseļu skaits, par cik novietot logu no ekrāna augšpuses."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+#| msgid ""
+#| "The number of digits displayed after the numeric point. This value must "
+#| "be in the range 0 to 9."
+msgid "The number of digits displayed after the numeric point"
+msgstr "Ciparu skaits, ko rāda pēc komata"
 
-#: ../data/gcalctool.schemas.in.h:19
-msgid "The numeric base for input and display."
-msgstr "Skaitļa bāze ievadīšanai un attēlošanai."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+#| msgid "Numeric Base"
+msgid "The numeric base"
+msgstr "Ciparu bāze"
 
-#: ../data/gcalctool.schemas.in.h:20
-msgid ""
-"The size of the words used in bitwise operations. Valid values are 16, 32 "
-"and 64."
-msgstr ""
-"Vārda garums, ko izmantot bitu darbībās. Derīgās vērtības ir 16, 32 un 64."
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
+#| msgid ""
+#| "The size of the words used in bitwise operations. Valid values are 16, 32 "
+#| "and 64."
+msgid "The size of the words used in bitwise operations"
+msgstr "Vārda garums, ko izmantot bitu darbībās"
 
-#: ../data/gcalctool.schemas.in.h:21
-#| msgid "Set trigonometric type to degrees"
-msgid "Trigonometric type"
-msgstr "Trigonometriskais tips"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+#| msgid "Quit the calculator"
+msgid "Units of the current calculation"
+msgstr "Esošā aprēķina mērvienības"
 
-#: ../data/gcalctool.schemas.in.h:22
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+msgid "Units to convert the current calculation into"
+msgstr "Mērvienības, kurās pārveidot esošo aprēķinu"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
 msgid "Word size"
 msgstr "Vārda garums"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/calctool.c:79
+#: ../src/gcalctool.c:86
 #, c-format
 msgid ""
 "Usage:\n"
@@ -988,7 +569,7 @@ msgstr ""
 "  %s — Veikt matemātiskus aprēķinus"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/calctool.c:87
+#: ../src/gcalctool.c:94
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -1004,7 +585,7 @@ msgstr ""
 "  --help-gtk                      Rādīt GTK+ opcijas"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/calctool.c:98
+#: ../src/gcalctool.c:105
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -1028,7 +609,7 @@ msgstr ""
 "  --g-fatal-warnings              Padarīt visus brīdinājumus fatālus"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/calctool.c:111
+#: ../src/gcalctool.c:119
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -1040,272 +621,500 @@ msgstr ""
 "  -s, --solve <equation>          Atrisināt doto vienādojumu"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:148
+#: ../src/gcalctool.c:164
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Parametram --solve vajag izteiksmi, ko atrisināt"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:162
+#: ../src/gcalctool.c:178
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Nezināms parametrs '%s'"
 
-#. Translators: Digits localized for the given language
-#: ../src/calctool.c:175
-msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+#. Tooltip for the Pi button
+#: ../src/math-buttons.c:103
+msgid "Pi [Ctrl+P]"
+msgstr "Pī [Ctrl+P]"
 
-#: ../src/currency.h:18
-msgid "Australian dollar"
-msgstr "Austrālijas dolārs"
+#. Tooltip for the Euler's Number button
+#: ../src/math-buttons.c:106
+#| msgid "Euler's number"
+msgid "Euler’s Number"
+msgstr "Eilera skaitlis"
 
-#: ../src/currency.h:19
-msgid "Bulgarian lev"
-msgstr "Bulgārijas leva"
+#. Tooltip for the subscript button
+#: ../src/math-buttons.c:111
+#| msgid "Subscript number mode [Alt+number]"
+msgid "Subscript mode [Alt]"
+msgstr "Apakšraksta skaitļa režīms [Alt]"
 
-#: ../src/currency.h:20
-msgid "Brazilian real"
-msgstr "Brazīlijas reāls"
+#. Tooltip for the superscript button
+#: ../src/math-buttons.c:114
+#| msgid "Superscript number mode [Ctrl+number]"
+msgid "Superscript mode [Ctrl]"
+msgstr "Augšraksta skaitļa režīms [Ctrl]"
 
-#: ../src/currency.h:21
-msgid "Canadian dollar"
-msgstr "Kanādas dolārs"
+#. Tooltip for the scientific exponent button
+#: ../src/math-buttons.c:117
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "Zinātniskā kāpināšana [Ctrl+E]"
 
-#: ../src/currency.h:22
-msgid "Swiss franc"
-msgstr "Šveices franču"
+#. Tooltip for the add button
+#: ../src/math-buttons.c:120
+msgid "Add [+]"
+msgstr "Pieskaitīt [+]"
 
-#: ../src/currency.h:23
-msgid "Chinese yuan renminbi"
-msgstr "Ķīnas juaņs"
+#. Tooltip for the subtract button
+#: ../src/math-buttons.c:123
+msgid "Subtract [-]"
+msgstr "Atņemšana [-]"
 
-#: ../src/currency.h:24
-msgid "Czech koruna"
-msgstr "Čehijas krona"
+#. Tooltip for the multiply button
+#: ../src/math-buttons.c:126
+msgid "Multiply [*]"
+msgstr "Reizināšana [*]"
 
-#: ../src/currency.h:25
-msgid "Danish krone"
-msgstr "Dānijas krona"
+#. Tooltip for the divide button
+#: ../src/math-buttons.c:129
+msgid "Divide [/]"
+msgstr "Dalīšana [/]"
 
-#: ../src/currency.h:26
-msgid "Estonian kroon"
-msgstr "Igaunijas krona"
+#. Tooltip for the modulus divide button
+#: ../src/math-buttons.c:132
+msgid "Modulus divide"
+msgstr "Modulārā dalīšana"
 
-#: ../src/currency.h:27
-#| msgid "Error"
-msgid "Euro"
-msgstr "Eiro"
+#. Tooltip for the additional functions button
+#: ../src/math-buttons.c:135
+#| msgid "Edit Functions"
+msgid "Additional Functions"
+msgstr "Papildu funkcijas"
 
-#: ../src/currency.h:28
-msgid "Pound sterling"
-msgstr "Sterliņu mārciņā"
+#. Tooltip for the exponent button
+#: ../src/math-buttons.c:138
+msgid "Exponent [^ or **]"
+msgstr "Kāpinātājs [^ vai **]"
 
-#: ../src/currency.h:29
-msgid "Hong Kong dollar"
-msgstr "Honkongas dolārs"
+#. Tooltip for the square button
+#: ../src/math-buttons.c:141
+#| msgid "Square [@]"
+msgid "Square [Ctrl+2]"
+msgstr "Sakne [Ctrl+2]"
 
-#: ../src/currency.h:30
-msgid "Croatian kuna"
-msgstr "Horvātijas kuna"
+#. Tooltip for the percentage button
+#: ../src/math-buttons.c:144
+msgid "Percentage [%]"
+msgstr "Procenti [%]"
 
-#: ../src/currency.h:31
-msgid "Hungarian forint"
-msgstr "Ungārijas forints"
+#. Tooltip for the factorial button
+#: ../src/math-buttons.c:147
+msgid "Factorial [!]"
+msgstr "Faktoriāls [!]"
 
-#: ../src/currency.h:32
-msgid "Indonesian rupiah"
-msgstr "Indonēzijas rūpija"
+#. Tooltip for the absolute value button
+#: ../src/math-buttons.c:150
+msgid "Absolute value [|]"
+msgstr "Absolūtā vērtība [|]"
 
-#: ../src/currency.h:33
-msgid "Indian rupee"
-msgstr "Indijas rūpija"
+#. Tooltip for the complex argument component button
+#: ../src/math-buttons.c:153
+msgid "Complex argument"
+msgstr ""
 
-#: ../src/currency.h:34
-msgid "Icelandic krona"
-msgstr "Īslandes krona"
+#. Tooltip for the complex conjugate button
+#: ../src/math-buttons.c:156
+msgid "Complex conjugate"
+msgstr ""
 
-#: ../src/currency.h:35
-msgid "Japanese yen"
-msgstr "Japānas jēna"
+#. Tooltip for the root button
+#: ../src/math-buttons.c:159
+#| msgid "Root [Ctrl+S]"
+msgid "Root [Ctrl+R]"
+msgstr "Sakne [Ctrl+R]"
 
-#: ../src/currency.h:36
-msgid "South Korean won"
-msgstr "Dienvidkorejas vons"
+#. Tooltip for the square root button
+#: ../src/math-buttons.c:162
+#| msgid "Square root [s]"
+msgid "Square root [Ctrl+R]"
+msgstr "Kvadrātsakne [Ctrl+R]"
 
-#: ../src/currency.h:37
-msgid "Lithuanian litas"
-msgstr "Lietuvas lits"
+#. Tooltip for the logarithm button
+#: ../src/math-buttons.c:165
+#| msgid "Base 10 logarithm"
+msgid "Logarithm"
+msgstr "Logaritms"
 
-#: ../src/currency.h:38
-msgid "Latvian lats"
-msgstr "Latvijas lats"
+#. Tooltip for the natural logarithm button
+#: ../src/math-buttons.c:168
+#| msgid "Natural logarithm"
+msgid "Natural Logarithm"
+msgstr "Naturālais logaritms"
 
-#: ../src/currency.h:39
-msgid "Mexican peso"
-msgstr "Meksikas peso"
+#. Tooltip for the sine button
+#: ../src/math-buttons.c:171
+#| msgid "Sin"
+msgid "Sine"
+msgstr "Sinuss"
 
-#: ../src/currency.h:40
-msgid "Malaysian ringgit"
-msgstr "Malaizijas ringits"
+#. Tooltip for the cosine button
+#: ../src/math-buttons.c:174
+#| msgid "Cos"
+msgid "Cosine"
+msgstr "Kosinuss"
 
-#: ../src/currency.h:41
-msgid "Norwegian krone"
-msgstr "Norvēģijas krona"
+#. Tooltip for the tangent button
+#: ../src/math-buttons.c:177
+#| msgid "Tan"
+msgid "Tangent"
+msgstr "Tangenss"
 
-#: ../src/currency.h:42
-msgid "New Zealand dollar"
-msgstr "Jaunzēlandes dolārs"
+#. Tooltip for the hyperbolic sine button
+#: ../src/math-buttons.c:180
+msgid "Hyperbolic Sine"
+msgstr "Hiperboliskais sinuss"
 
-#: ../src/currency.h:43
-msgid "Philippine peso"
-msgstr "Filipīnas peso"
+#. Tooltip for the hyperbolic cosine button
+#: ../src/math-buttons.c:183
+msgid "Hyperbolic Cosine"
+msgstr "Hiperboliskais kosinuss"
 
-#: ../src/currency.h:44
-msgid "Polish zloty"
-msgstr "Polijas zlots"
+#. Tooltip for the hyperbolic tangent button
+#: ../src/math-buttons.c:186
+msgid "Hyperbolic Tangent"
+msgstr "Hiperboliskais tangenss"
 
-#: ../src/currency.h:45
-msgid "New Romanian leu"
-msgstr "Jaunā Rumānijas leja"
+#. Tooltip for the inverse button
+#: ../src/math-buttons.c:189
+msgid "Inverse [Ctrl+I]"
+msgstr "Pretējs [Ctrl+I]"
 
-#: ../src/currency.h:46
-msgid "Russian rouble"
-msgstr "Krievijas rublis"
+#. Tooltip for the boolean AND button
+#: ../src/math-buttons.c:192
+msgid "Boolean AND"
+msgstr "Loģiskais UN"
 
-#: ../src/currency.h:47
-msgid "Swedish krona"
-msgstr "Zviedru krona"
+#. Tooltip for the boolean OR button
+#: ../src/math-buttons.c:195
+msgid "Boolean OR"
+msgstr "Loģiskais VAI"
 
-#: ../src/currency.h:48
-msgid "Singapore dollar"
-msgstr "Singapūras dolārs"
+#. Tooltip for the exclusive OR button
+#: ../src/math-buttons.c:198
+#| msgid "Boolean exclusive OR"
+msgid "Boolean Exclusive OR"
+msgstr "Loģiskais izslēdzošais VAI"
 
-#: ../src/currency.h:49
-msgid "Thai baht"
-msgstr "Taizemes bahts"
+#. Tooltip for the boolean NOT button
+#: ../src/math-buttons.c:201
+msgid "Boolean NOT"
+msgstr "Loģiskais NE"
 
-#: ../src/currency.h:50
-msgid "New Turkish lira"
-msgstr "Jaunā Turcijas lira"
+#. Tooltip for the integer component button
+#: ../src/math-buttons.c:204 ../src/math-buttons.c:1036
+#| msgid "Integer portion"
+msgid "Integer Component"
+msgstr "Veselā daļa"
 
-#: ../src/currency.h:51
-msgid "US dollar"
-msgstr "ASV dolārs"
+#. Tooltip for the fractional component button
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1038
+#| msgid "Fractional portion"
+msgid "Fractional Component"
+msgstr "Daļveida daļa"
 
-#: ../src/currency.h:52
-msgid "South African rand"
-msgstr "Dienvidāfrikas rands"
+#. Tooltip for the real component button
+#: ../src/math-buttons.c:210
+msgid "Real Component"
+msgstr "Reālā daļa"
 
-#: ../src/display.c:390
+#. Tooltip for the imaginary component button
+#: ../src/math-buttons.c:213
+msgid "Imaginary Component"
+msgstr "Imaginārā daļa"
+
+#. Tooltip for the ones complement button
+#: ../src/math-buttons.c:216
+#, fuzzy
+#| msgid "Two's complement"
+msgid "Ones Complement"
+msgstr "Papildinošais kods"
+
+#. Tooltip for the twos complement button
+#: ../src/math-buttons.c:219
+#, fuzzy
+#| msgid "Two's complement"
+msgid "Twos Complement"
+msgstr "Papildinošais kods"
+
+#. Tooltip for the truncate button
+#: ../src/math-buttons.c:222
+#| msgid "Truncate value"
+msgid "Truncate"
+msgstr "Apraut"
+
+#. Tooltip for the start group button
+#: ../src/math-buttons.c:225
+#| msgid "Start block [(]"
+msgid "Start Group [(]"
+msgstr "Bloka sākums [(]"
+
+#. Tooltip for the end group button
+#: ../src/math-buttons.c:228
+#| msgid "End block [)]"
+msgid "End Group [)]"
+msgstr "Bloka beigas [)]"
+
+#. Tooltip for the solve button
+#: ../src/math-buttons.c:237
+#| msgid "Calculate result"
+msgid "Calculate Result"
+msgstr "Aprēķināt rezultātu"
+
+#. Tooltip for the factor button
+#: ../src/math-buttons.c:240
+#| msgid "Factorize"
+msgid "Factorize [Ctrl+F]"
+msgstr "Sadalīt reizinātājos [Ctrl+F]"
+
+#. Tooltip for the clear button
+#: ../src/math-buttons.c:243
+#| msgid "Clear display [Escape]"
+msgid "Clear Display [Escape]"
+msgstr "Nodzēst vērtību [Escape]"
+
+#. Tooltip for the undo button
+#: ../src/math-buttons.c:246
+#| msgid "Root [Ctrl+S]"
+msgid "Undo [Ctrl+Z]"
+msgstr "Atsaukt [Ctrl+Z]"
+
+#. Tooltip for the double declining depreciation button
+#: ../src/math-buttons.c:258
+#, fuzzy
+#| msgid "Double-declining depreciation"
+msgid "Double Declining Depreciation"
+msgstr "Dubultnolietojuma amortizācija"
+
+#. Tooltip for the financial term button
+#: ../src/math-buttons.c:264
+#, fuzzy
+#| msgid "_Financial"
+msgid "Financial Term"
+msgstr "_Finansiālais"
+
+#. Tooltip for the sum of the years digits depreciation button
+#: ../src/math-buttons.c:267
+#, fuzzy
+#| msgid "Sum-of-the years'-digits depreciation"
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Gada skaitļu summas amortizācija"
+
+#. Tooltip for the straight line depreciation button
+#: ../src/math-buttons.c:270
+#, fuzzy
+#| msgid "Straight-line depreciation"
+msgid "Straight Line Depreciation"
+msgstr "Lineārā amortizācija"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+#: ../src/math-buttons.c:660
+msgid "Binary"
+msgstr "Binārs"
+
+#. Number display mode combo: Octal, e.g. 2322₈
+#: ../src/math-buttons.c:664
+msgid "Octal"
+msgstr "Octal"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../src/math-buttons.c:668
+msgid "Decimal"
+msgstr "Decimāls"
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#: ../src/math-buttons.c:672
+msgid "Hexadecimal"
+msgstr "Heksadecimāls"
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#: ../src/math-buttons.c:946 ../src/math-buttons.c:990
+#, c-format
+#| msgid "_1 place"
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "_%d cipars"
+msgstr[1] "_%d cipari"
+msgstr[2] "_%d cipari"
+
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#: ../src/math-buttons.c:950 ../src/math-buttons.c:994
+#, c-format
+#| msgid "_1 place"
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d cipars"
+msgstr[1] "%d cipari"
+msgstr[2] "%d cipari"
+
+#. Tooltip for the round button
+#: ../src/math-buttons.c:1040
+#| msgid "Rand"
+msgid "Round"
+msgstr "Apaļot"
+
+#. Tooltip for the floor button
+#: ../src/math-buttons.c:1042
+msgid "Floor"
+msgstr "Grīda"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1044
+msgid "Ceiling"
+msgstr "Griesti"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1046
+#, fuzzy
+#| msgid "Sin"
+msgid "Sign"
+msgstr "Sin"
+
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.c:351
+msgid " in "
+msgstr " izteikts "
+
+#. Error shown when trying to undo with no undo history
+#: ../src/math-equation.c:461
 msgid "No undo history"
 msgstr "Nav darbību, ko atsaukt"
 
-#: ../src/display.c:405
-msgid "No redo steps"
-msgstr "Nav darbību, ko vēlreiz veikt"
+#. Error shown when trying to redo with no redo history
+#: ../src/math-equation.c:486
+#| msgid "No undo history"
+msgid "No redo history"
+msgstr "Nav atkārtošanas vēstures"
 
-#. Translators: This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-#: ../src/display.c:936
-#| msgid "No sane value to do bitwise shift"
-msgid "No sane value to bitwise shift"
-msgstr "Nav saprātīgas vērtības bitu bīdīšanai"
-
-#. Translators: Error displayed when trying to factorize a non-integer value
-#: ../src/display.c:952
-msgid "Need an integer to factorize"
-msgstr "Vajag veselu skaitli, lai dalītu reizinātājos"
-
-#: ../src/display.c:978
+#: ../src/math-equation.c:875
 msgid "No sane value to store"
 msgstr "Nav saprātīgas vērtības, ko saglabāt"
 
-#. Translators: Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/display.c:1099
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/math-equation.c:1140
 msgid "Overflow. Try a bigger word size"
 msgstr "Pārpilde. Mēģiniet ar lielāku vārda garumu"
 
-#. Translators: Error displayed to user when they an unknown variable is entered
-#: ../src/display.c:1104
+#. Error displayed to user when they an unknown variable is entered
+#: ../src/math-equation.c:1145
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Nezināms mainīgais '%s'"
 
-#. Translators: Error displayed to user when an unknown function is entered
-#: ../src/display.c:1110
+#. Error displayed to user when an unknown function is entered
+#: ../src/math-equation.c:1150
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkcija '%s' nav definēta"
 
-#. Translators: Error displayed to user when an conversion with unknown units is attempted
-#: ../src/display.c:1116
-#, c-format
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../src/math-equation.c:1155
 msgid "Unknown conversion"
 msgstr "Nezināms pārveidojums"
 
-#. Translators: Error displayed to user when they enter an invalid calculation
-#: ../src/display.c:1125
+#. Error displayed to user when they enter an invalid calculation
+#: ../src/math-equation.c:1164
 msgid "Malformed expression"
 msgstr "Slikti formēta izteiksme"
 
-#. Translators: The window title when in advanced mode
-#: ../src/gtk.c:98
-#| msgid "Calculator - Advanced"
-msgid "Calculator — Advanced"
-msgstr "Paplašinātais kalkulators"
+#. Error displayed when trying to factorize a non-integer value
+#: ../src/math-equation.c:1296
+msgid "Need an integer to factorize"
+msgstr "Vajag veselu skaitli, lai dalītu reizinātājos"
 
-#. Translators: The window title when in financial mode
-#: ../src/gtk.c:100
-#| msgid "Calculator - Financial"
-msgid "Calculator — Financial"
-msgstr "Finansiālais kalkulators"
+#. This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/math-equation.c:1363
+msgid "No sane value to bitwise shift"
+msgstr "Nav saprātīgas vērtības bitu bīdīšanai"
 
-#. Translators: The window title when in scientific mode
-#: ../src/gtk.c:102
-#| msgid "Calculator - Scientific"
-msgid "Calculator — Scientific"
-msgstr "Zinātniskais kalkulators"
+#. Message displayed when cannot toggle bit in display
+#: ../src/math-equation.c:1392
+msgid "Displayed value not an integer"
+msgstr "Attēlotā vērtība nav vesels skaitlis"
 
-#. Translators: The window title when in programming mode
-#: ../src/gtk.c:104
-msgid "Calculator — Programming"
-msgstr "Programmēšanas kalkulators"
+#. Digits localized for the given language
+#: ../src/math-equation.c:1815
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:235
-msgid "Error loading user interface"
-msgstr "Kļūda, ielādējot lietotāja saskarni"
+#. Label on close button in preferences dialog
+#: ../src/math-preferences.c:244
+#| msgid "Cos"
+msgid "_Close"
+msgstr "_Aizvērt"
 
-#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:238
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#: ../src/math-preferences.c:254
+msgid "Degrees"
+msgstr "Grādi"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.c:258
+msgid "Radians"
+msgstr "Radiāni"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.c:262
+msgid "Gradians"
+msgstr "Gradiāni"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
+#: ../src/math-preferences.c:272
+msgid "Automatic"
+msgstr "Automātisks"
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:276
+#| msgid "_Fix"
+msgid "Fixed"
+msgstr "Fiksēts"
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.c:280
+msgid "Scientific"
+msgstr "Zinātniskais"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.c:284
+msgid "Engineering"
+msgstr "Inženierija"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/math-preferences.c:295
 #, c-format
-#| msgid ""
-#| "The user interface file %s is missing or unable to be loaded. Please "
-#| "check your installation."
-msgid ""
-"A required file is missing or damaged. Please check your installation.\n"
-"\n"
-"%s"
-msgstr ""
-"Nepieciešamais fails ir pazudis vai bojāts. Lūdzu, pārbaudiet programmas instalāciju.\n"
-"\n"
-"%s"
+msgid "Show %d decimal _places"
+msgstr "Rādīt %d ci_parus aiz komata"
 
-#. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:557
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/math-window.c:171
+msgid "Unable to open help file"
+msgstr "Nevar atvērt palīdzības failu"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/math-window.c:203
 msgid "translator-credits"
 msgstr ""
 "Viesturs Zariņš <viesturs.zarins@mii.lu.lv>\n"
-"Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>"
-"\n"
+"Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Launchpad Contributions:\n"
 "  Peteris Krisjanis https://launchpad.net/~pecisk-gmail\n"
 "  Pēteris Caune https://launchpad.net/~cuu508\n"
 "  Raivis Dejus https://launchpad.net/~orvils"
 
-#. Translators: The license this software is under (GPL2+)
-#: ../src/gtk.c:560
+#. The license this software is under (GPL2+)
+#: ../src/math-window.c:206
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1322,135 +1131,140 @@ msgid ""
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 msgstr ""
 
-#. Translators: Program name in the about dialog
-#: ../src/gtk.c:576
+#. Program name in the about dialog
+#: ../src/math-window.c:223
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:579
-#| msgid "© 1986-2008 The Gcalctool authors"
-msgid "© 1986–2008 The Gcalctool authors"
-msgstr "© 1986-2008 Gcalctool autori"
+#. Copyright notice in the about dialog
+#: ../src/math-window.c:227
+#| msgid "© 1986–2008 The Gcalctool authors"
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986-2010 Gcalctool autori"
 
-#. Translators: Short description in the about dialog
-#: ../src/gtk.c:582
+#. Short description in the about dialog
+#: ../src/math-window.c:231
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulators ar finansiālo un zinātnisko režīmu."
 
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/gtk.c:636
-msgid "Unable to open help file"
-msgstr "Nevar atvērt palīdzības failu"
+#. Calculator menu
+#: ../src/math-window.c:357
+msgid "_Calculator"
+msgstr "_Kalkulators"
 
-#. Translators: Title of the error dialog when prompting to download currency rates
-#: ../src/gtk.c:1010
-msgid ""
-"You don't have any recent currency rates. Should some be downloaded now?"
-msgstr ""
-"Jums nav jaunāko valūtas maiņas kursu. Vai tos vajadzētu lejupielādēt tagad?"
+#. Mode menu
+#: ../src/math-window.c:359
+#| msgid "Mode"
+msgid "_Mode"
+msgstr "_Režīms"
 
-#. Translators: Title of the error dialog when unable to download currency rates
-#: ../src/gtk.c:1020
-msgid ""
-"Currency rates could not be downloaded. You may receive inaccurate results, "
-"or you may not receive any results at all."
-msgstr ""
-"Nevarēja lejupielādēt valūtas maiņas kursu. Saņemtie rezultāti var būt "
-"neprecīzi, vai arī nebūs rezultātu vispār."
+#. Help menu label
+#: ../src/math-window.c:361
+msgid "_Help"
+msgstr "_Palīdzība"
 
-#: ../src/gtk.c:1543
-msgid "Paste"
-msgstr "Ielīmēt"
+#. Basic menu label
+#: ../src/math-window.c:363
+msgid "_Basic"
+msgstr "_Vienkāršais"
 
-#. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/gtk.c:1773
-#, c-format
-msgid "Show %d decimal _places"
-msgstr "Rādīt %d ci_parus aiz komata"
+#. Advanced menu label
+#: ../src/math-window.c:365
+msgid "_Advanced"
+msgstr "P_aplašinātais"
 
-#. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:529 ../src/mp.c:562 ../src/mp.c:1487
-msgid "Division by zero is undefined"
-msgstr "Dalīšana ar nulli ir nedefinēta"
+#. Financial menu label
+#: ../src/math-window.c:367
+msgid "_Financial"
+msgstr "_Finansiālais"
 
-#. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1169 ../src/mp.c:1206
-msgid "Logarithm of zero is undefined"
-msgstr "Logaritms no nulles ir nedefinēts"
+#. Programming menu label
+#: ../src/math-window.c:369
+msgid "_Programming"
+msgstr "_Programmēšanas"
 
-#. Translators: Error displayed attempted to take logarithm of negative value
-#: ../src/mp.c:1178
-msgid "Logarithm of negative values is undefined"
-msgstr "Logaritms no negatīva skaitļa ir nedefinēts"
-
-#: ../src/mp.c:1552
-msgid "The power of negative numbers is only defined for integer exponents"
-msgstr ""
-"Negatīvu skaitļu pakāpes ir definētas tikai veselu skaitļu kāpinātājiem"
-
-#. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1559 ../src/mp.c:1852
-msgid "The power of zero is undefined for a negative exponent"
-msgstr "Nulles pakāpe nav definēta negatīviem kāpinātājiem"
-
-#: ../src/mp.c:1584
-msgid "Reciprocal of zero is undefined"
-msgstr "Nulles apgrieztais skaitlis ir nedefinēts"
-
-#: ../src/mp.c:1669
-msgid "Root must be non-zero"
-msgstr "Saknei nevar būt nulle"
-
-#: ../src/mp.c:1687
-msgid "Negative root of zero is undefined"
-msgstr "Negatīva nulles sakne ir nedefinēta"
-
-#: ../src/mp.c:1693
-msgid "nth root of negative number is undefined for even n"
-msgstr "n-tā sakne no negatīva skaitļa ir nedefinēta nepāra n"
-
-#: ../src/mp.c:1763
-msgid "Square root is undefined for negative values"
-msgstr "Kvadrātsakne ir nedefinēta negatīvām vērtībām"
-
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1792
-msgid "Factorial is only defined for natural numbers"
-msgstr "Faktoriāls ir definēts tikai naturāliem skaitļiem"
-
-#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1812
-msgid "Modulus division is only defined for integers"
-msgstr "Moduļu dalīšana ir definēta tikai veseliem skaitļiem"
+#. Help>Contents menu label
+#: ../src/math-window.c:371
+msgid "_Contents"
+msgstr "_Saturs"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/mp-binary.c:103
+#: ../src/mp-binary.c:122
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Bula UN ir definēts tikai pozitīviem veseliem skaitļiem"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/mp-binary.c:116
+#: ../src/mp-binary.c:135
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Bula VAI ir definēts tikai pozitīviem veseliem skaitļiem"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:129
+#: ../src/mp-binary.c:148
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Bula izslēdzošais VAI ir definēts tikai pozitīviem veseliem skaitļiem"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:144
+#: ../src/mp-binary.c:163
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Bula NE ir definēts tikai pozitīviem veseliem skaitļiem"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/mp-binary.c:174
+#: ../src/mp-binary.c:194
 msgid "Shift is only possible on integer values"
 msgstr "Bīdīšana ir iespējama tikai ar veseliem skaitļiem"
 
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/mp.c:149
+msgid "Argument not defined for zero"
+msgstr "Parametrs nullei nav definēts"
+
+#: ../src/mp.c:300
+msgid "Overflow: the result couldn't be calculated"
+msgstr "Pārpilde: nevarēja izrēķināt rezultātu "
+
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:645 ../src/mp.c:677 ../src/mp.c:1611
+msgid "Division by zero is undefined"
+msgstr "Dalīšana ar nulli ir nedefinēta"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1282 ../src/mp.c:1319
+msgid "Logarithm of zero is undefined"
+msgstr "Logaritms no nulles ir nedefinēts"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1684 ../src/mp.c:1999
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Nulles pakāpe nav definēta negatīviem kāpinātājiem"
+
+#: ../src/mp.c:1709
+msgid "Reciprocal of zero is undefined"
+msgstr "Nulles apgrieztais skaitlis ir nedefinēts"
+
+#: ../src/mp.c:1794
+msgid "Root must be non-zero"
+msgstr "Saknei nevar būt nulle"
+
+#: ../src/mp.c:1812
+msgid "Negative root of zero is undefined"
+msgstr "Negatīva nulles sakne ir nedefinēta"
+
+#: ../src/mp.c:1818
+msgid "nth root of negative number is undefined for even n"
+msgstr "n-tā sakne no negatīva skaitļa ir nedefinēta nepāra n"
+
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1939
+msgid "Factorial is only defined for natural numbers"
+msgstr "Faktoriāls ir definēts tikai naturāliem skaitļiem"
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1959
+msgid "Modulus division is only defined for integers"
+msgstr "Moduļu dalīšana ir definēta tikai veseliem skaitļiem"
+
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:278
+#: ../src/mp-trigonometric.c:311
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1458,28 +1272,358 @@ msgstr ""
 "reizinājumu – π∕2 + kπ, kur k ir vesels skaitlis."
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:323
+#: ../src/mp-trigonometric.c:356
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Apgrieztais sinus nav definēts ārpus intervāla [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:340
+#: ../src/mp-trigonometric.c:373
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Apgrieztais kosinus nav definēts ārpus intervāla [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:558
-msgid ""
-"Inverse hyperbolic cosine is undefined for values less than or equal to one"
+#: ../src/mp-trigonometric.c:592
+#| msgid ""
+#| "Inverse hyperbolic cosine is undefined for values less than or equal to "
+#| "one"
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
-"Apgrieztais hiperboliskais kosinus ir nedefinēts vērtībām mazākām vai "
-"vienādām ar viens"
+"Apgrieztais hiperboliskais kosinus ir nedefinēts vērtībām mazākām par viens"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:582
+#: ../src/mp-trigonometric.c:616
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Apgrieztais hiperboliskais tangens nav definēts ārpus intervāla [-1, 1]"
+
+#~ msgid "&#x2190; R"
+#~ msgstr "&#x2190; R"
+
+#~ msgid "&#x2192; R"
+#~ msgstr "&#x2192; R"
+
+#~ msgid "&#xA4;$&#x20AC;"
+#~ msgstr "&#xA4;$&#x20AC;"
+
+#~ msgid "10 places"
+#~ msgstr "10 cipari"
+
+#~ msgid "11 places"
+#~ msgstr "11 cipari"
+
+#~ msgid "12 places"
+#~ msgstr "12 cipari"
+
+#~ msgid "13 places"
+#~ msgstr "13 cipari"
+
+#~ msgid "14 places"
+#~ msgstr "14 cipari"
+
+#~ msgid "15 places"
+#~ msgstr "15 cipari"
+
+#~ msgid "Answer variable"
+#~ msgstr "Atbildes mainīgais"
+
+#~ msgid "Base 16"
+#~ msgstr "Bāze 16"
+
+#~ msgid "Base 2"
+#~ msgstr "Bāze 2"
+
+#~ msgid "Base 8"
+#~ msgstr "Bāze 8"
+
+#~ msgid "Calculate result [=]"
+#~ msgstr "Aprēķināt rezultātu [=]"
+
+#~ msgid "Clr"
+#~ msgstr "Clr"
+
+#~ msgid "Display _Format:"
+#~ msgstr "Attēlošanas _formāts:"
+
+#~ msgid "Factorize into prime numbers (Ctrl+F)"
+#~ msgstr "Sadalīt pirmreizinātājos (Ctrl+F)"
+
+#~ msgid "Insert ASCII Value"
+#~ msgstr "Ievietot ASCII vērtību"
+
+#~ msgid "Insert character"
+#~ msgstr "Ievietot rakstzīmi"
+
+#~| msgid "Numeric point"
+#~ msgid "Numeric point [. or ,]"
+#~ msgstr "Daļskaitļa atdalītājs [. vai ,]"
+
+#~ msgid "Random number"
+#~ msgstr "Nejaušs skaitlis"
+
+#, fuzzy
+#~| msgid "Rcl"
+#~ msgid "Recall"
+#~ msgstr "Rcl"
+
+#~ msgid "Result Region"
+#~ msgstr "Rezultāta reģions"
+
+#~ msgid "Shift left [<]"
+#~ msgstr "Bīdīt pa kreisi [<]"
+
+#~ msgid "Shift right [>]"
+#~ msgstr "Bīdīt pa labi [>]"
+
+#~| msgid "Future value"
+#~ msgid "Store value"
+#~ msgstr "Krātuves vērtība"
+
+#~ msgid "_2 places"
+#~ msgstr "_2 cipari"
+
+#~ msgid "_3 places"
+#~ msgstr "_3 cipari"
+
+#~ msgid "_4 places"
+#~ msgstr "_4 cipari"
+
+#~ msgid "_5 places"
+#~ msgstr "_5 cipari"
+
+#~ msgid "_6 places"
+#~ msgstr "_6 cipari"
+
+#~ msgid "_7 places"
+#~ msgstr "_7 cipari"
+
+#~ msgid "_8 places"
+#~ msgstr "_8 cipari"
+
+#~ msgid "_9 places"
+#~ msgstr "_9 cipari"
+
+#~ msgid "_Scientific"
+#~ msgstr "_Zinātniskais"
+
+#~ msgid "_View"
+#~ msgstr "_Skats"
+
+#~ msgid "Display Mode"
+#~ msgstr "Attēlošanas režīms"
+
+#~ msgid "Indicates whether the memory register window is initially displayed."
+#~ msgstr "Norāda, vai jau no sākuma būtu jārāda atmiņas reģistru logs."
+
+#~| msgid "Show memory registers"
+#~ msgid "Show Registers"
+#~ msgstr "Rādīt atmiņas reģistrus"
+
+#~ msgid ""
+#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+#~ msgstr ""
+#~ "Sākotnējais kalkulatora režīms. Derīgās vērtības ir \"BASIC\", \"FINANCIAL"
+#~ "\", \"LOGICAL\", \"SCIENTIFIC\" un \"PROGRAMMING\""
+
+#~ msgid ""
+#~ "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+#~ "\" (fixed-point) and \"SCI\" (scientific)"
+#~ msgstr ""
+#~ "Sākotnējais attēlošanas režīms. Derīgās vērtības ir \"ENG"
+#~ "\" (inženierija), \"FIX\" (fiksēta komata) un \"SCI\" (zinātniskais)"
+
+#~ msgid ""
+#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+#~ "\" (gradians) and \"RAD\" (radians)."
+#~ msgstr ""
+#~ "Sākotnējais trigonometriskais tips. Derīgās vērtības ir \"DEG\" (grādi), "
+#~ "\"GRAD\" (gradiāni) and \"RAD\" (radiāni)."
+
+#~ msgid "The initial x-coordinate for the window"
+#~ msgstr "Loga sākotnējā x koordināta"
+
+#~ msgid "The initial y-coordinate for the window"
+#~ msgstr "Loga sākotnējā y koordināta"
+
+#~ msgid ""
+#~ "The number of pixels to place the window from the left of the screen."
+#~ msgstr "Pikseļu skaits, par cik novietot logu no kreisās ekrāna puses."
+
+#~ msgid "The number of pixels to place the window from the top of the screen."
+#~ msgstr "Pikseļu skaits, par cik novietot logu no ekrāna augšpuses."
+
+#~ msgid "The numeric base for input and display."
+#~ msgstr "Skaitļa bāze ievadīšanai un attēlošanai."
+
+#~| msgid "Set trigonometric type to degrees"
+#~ msgid "Trigonometric type"
+#~ msgstr "Trigonometriskais tips"
+
+#~ msgid "Australian dollar"
+#~ msgstr "Austrālijas dolārs"
+
+#~ msgid "Bulgarian lev"
+#~ msgstr "Bulgārijas leva"
+
+#~ msgid "Brazilian real"
+#~ msgstr "Brazīlijas reāls"
+
+#~ msgid "Canadian dollar"
+#~ msgstr "Kanādas dolārs"
+
+#~ msgid "Swiss franc"
+#~ msgstr "Šveices franču"
+
+#~ msgid "Chinese yuan renminbi"
+#~ msgstr "Ķīnas juaņs"
+
+#~ msgid "Czech koruna"
+#~ msgstr "Čehijas krona"
+
+#~ msgid "Danish krone"
+#~ msgstr "Dānijas krona"
+
+#~ msgid "Estonian kroon"
+#~ msgstr "Igaunijas krona"
+
+#~| msgid "Error"
+#~ msgid "Euro"
+#~ msgstr "Eiro"
+
+#~ msgid "Pound sterling"
+#~ msgstr "Sterliņu mārciņā"
+
+#~ msgid "Hong Kong dollar"
+#~ msgstr "Honkongas dolārs"
+
+#~ msgid "Croatian kuna"
+#~ msgstr "Horvātijas kuna"
+
+#~ msgid "Hungarian forint"
+#~ msgstr "Ungārijas forints"
+
+#~ msgid "Indonesian rupiah"
+#~ msgstr "Indonēzijas rūpija"
+
+#~ msgid "Indian rupee"
+#~ msgstr "Indijas rūpija"
+
+#~ msgid "Icelandic krona"
+#~ msgstr "Īslandes krona"
+
+#~ msgid "Japanese yen"
+#~ msgstr "Japānas jēna"
+
+#~ msgid "South Korean won"
+#~ msgstr "Dienvidkorejas vons"
+
+#~ msgid "Lithuanian litas"
+#~ msgstr "Lietuvas lits"
+
+#~ msgid "Latvian lats"
+#~ msgstr "Latvijas lats"
+
+#~ msgid "Mexican peso"
+#~ msgstr "Meksikas peso"
+
+#~ msgid "Malaysian ringgit"
+#~ msgstr "Malaizijas ringits"
+
+#~ msgid "Norwegian krone"
+#~ msgstr "Norvēģijas krona"
+
+#~ msgid "New Zealand dollar"
+#~ msgstr "Jaunzēlandes dolārs"
+
+#~ msgid "Philippine peso"
+#~ msgstr "Filipīnas peso"
+
+#~ msgid "Polish zloty"
+#~ msgstr "Polijas zlots"
+
+#~ msgid "New Romanian leu"
+#~ msgstr "Jaunā Rumānijas leja"
+
+#~ msgid "Russian rouble"
+#~ msgstr "Krievijas rublis"
+
+#~ msgid "Swedish krona"
+#~ msgstr "Zviedru krona"
+
+#~ msgid "Singapore dollar"
+#~ msgstr "Singapūras dolārs"
+
+#~ msgid "Thai baht"
+#~ msgstr "Taizemes bahts"
+
+#~ msgid "New Turkish lira"
+#~ msgstr "Jaunā Turcijas lira"
+
+#~ msgid "US dollar"
+#~ msgstr "ASV dolārs"
+
+#~ msgid "South African rand"
+#~ msgstr "Dienvidāfrikas rands"
+
+#~ msgid "No redo steps"
+#~ msgstr "Nav darbību, ko vēlreiz veikt"
+
+#~| msgid "Calculator - Advanced"
+#~ msgid "Calculator — Advanced"
+#~ msgstr "Paplašinātais kalkulators"
+
+#~| msgid "Calculator - Financial"
+#~ msgid "Calculator — Financial"
+#~ msgstr "Finansiālais kalkulators"
+
+#~| msgid "Calculator - Scientific"
+#~ msgid "Calculator — Scientific"
+#~ msgstr "Zinātniskais kalkulators"
+
+#~ msgid "Calculator — Programming"
+#~ msgstr "Programmēšanas kalkulators"
+
+#~ msgid "Error loading user interface"
+#~ msgstr "Kļūda, ielādējot lietotāja saskarni"
+
+#~| msgid ""
+#~| "The user interface file %s is missing or unable to be loaded. Please "
+#~| "check your installation."
+#~ msgid ""
+#~ "A required file is missing or damaged. Please check your installation.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Nepieciešamais fails ir pazudis vai bojāts. Lūdzu, pārbaudiet programmas "
+#~ "instalāciju.\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid ""
+#~ "You don't have any recent currency rates. Should some be downloaded now?"
+#~ msgstr ""
+#~ "Jums nav jaunāko valūtas maiņas kursu. Vai tos vajadzētu lejupielādēt "
+#~ "tagad?"
+
+#~ msgid ""
+#~ "Currency rates could not be downloaded. You may receive inaccurate "
+#~ "results, or you may not receive any results at all."
+#~ msgstr ""
+#~ "Nevarēja lejupielādēt valūtas maiņas kursu. Saņemtie rezultāti var būt "
+#~ "neprecīzi, vai arī nebūs rezultātu vispār."
+
+#~ msgid "Paste"
+#~ msgstr "Ielīmēt"
+
+#~ msgid "Logarithm of negative values is undefined"
+#~ msgstr "Logaritms no negatīva skaitļa ir nedefinēts"
+
+#~ msgid "The power of negative numbers is only defined for integer exponents"
+#~ msgstr ""
+#~ "Negatīvu skaitļu pakāpes ir definētas tikai veselu skaitļu kāpinātājiem"
+
+#~ msgid "Square root is undefined for negative values"
+#~ msgstr "Kvadrātsakne ir nedefinēta negatīvām vērtībām"
 
 #~ msgid "%s: accuracy should be in the range 0-%d\n"
 #~ msgstr "%s: precizitātei jābūt intervālā 0-%d\n"
@@ -1520,9 +1664,6 @@ msgstr ""
 #~ msgid "_Other (%d) ..."
 #~ msgstr "_Cits (%d) ..."
 
-#~ msgid "Sin"
-#~ msgstr "Sin"
-
 #~ msgid "Sin<sup>-1</sup>"
 #~ msgstr "Sin<sup>-1</sup>"
 
@@ -1532,9 +1673,6 @@ msgstr ""
 #~ msgid "Sinh<sup>-1</sup>"
 #~ msgstr "Sinh<sup>-1</sup>"
 
-#~ msgid "Cos"
-#~ msgstr "Cos"
-
 #~ msgid "Cos<sup>-1</sup>"
 #~ msgstr "Cos<sup>-1</sup>"
 
@@ -1543,9 +1681,6 @@ msgstr ""
 
 #~ msgid "Cosh<sup>-1</sup>"
 #~ msgstr "Cosh<sup>-1</sup>"
-
-#~ msgid "Tan"
-#~ msgstr "Tan"
 
 #~ msgid "Tan<sup>-1</sup>"
 #~ msgstr "Tan<sup>-1</sup>"
@@ -1710,9 +1845,6 @@ msgstr ""
 #~ msgid "<"
 #~ msgstr "<"
 
-#~ msgid "<i>x</i>!"
-#~ msgstr "<i>x</i>!"
-
 #~ msgid "<i>x</i><sup>2</sup>"
 #~ msgstr "<i>x</i><sup>2</sup>"
 
@@ -1801,9 +1933,6 @@ msgstr ""
 #~ msgid "CE"
 #~ msgstr "CE"
 
-#~ msgid "Calculate result"
-#~ msgstr "Aprēķināt rezultātu"
-
 #~ msgid "Change Sign [C]"
 #~ msgstr "Mainīt zīmi [C]"
 
@@ -1843,9 +1972,6 @@ msgstr ""
 #~ msgid "Divide"
 #~ msgstr "Dalīt"
 
-#~ msgid "Double-declining depreciation"
-#~ msgstr "Dubultnolietojuma amortizācija"
-
 #~ msgid "Double-declining depreciation [D]"
 #~ msgstr "Dubultnolietojuma amortizācija [D]"
 
@@ -1860,9 +1986,6 @@ msgstr ""
 
 #~ msgid "Edit Constants..."
 #~ msgstr "Rediģēt konstantes..."
-
-#~ msgid "Edit Functions"
-#~ msgstr "Rediģēt funkcijas"
 
 #~ msgid "Edit Functions..."
 #~ msgstr "Rediģēt funkcijas..."
@@ -2005,12 +2128,6 @@ msgstr ""
 #~ msgid "Programming"
 #~ msgstr "Programmēšanas"
 
-#~ msgid "Quit the calculator"
-#~ msgstr "Aizvērt kalkulatoru"
-
-#~ msgid "Rand"
-#~ msgstr "Rand"
-
 #~ msgid "Random number in the range 0.0 to 1.0 [?]"
 #~ msgstr "Gadījumskaitlis intervālā no 0,0 līdz 1,0 [?]"
 
@@ -2089,14 +2206,8 @@ msgstr ""
 #~ msgid "Square"
 #~ msgstr "Kāpināt kvadrātā"
 
-#~ msgid "Square [@]"
-#~ msgstr "Kāpināt kvadrātā [@]"
-
 #~ msgid "Square root"
 #~ msgstr "Kvadrātsakne"
-
-#~ msgid "Square root [s]"
-#~ msgstr "Kvadrātsakne [s]"
 
 #~ msgid "Start group of calculations [(]"
 #~ msgstr "Sākt kalkulāciju grupu [(]"
@@ -2106,9 +2217,6 @@ msgstr ""
 
 #~ msgid "Store to register"
 #~ msgstr "Saglabāt reģistrā"
-
-#~ msgid "Straight-line depreciation"
-#~ msgstr "Lineārā amortizācija"
 
 #~ msgid "Straight-line depreciation [l]"
 #~ msgstr "Lineārā amortizācija [l]"
@@ -2170,9 +2278,6 @@ msgstr ""
 #~ msgid "_Edit"
 #~ msgstr "R_ediģēt"
 
-#~ msgid "_Fix"
-#~ msgstr "_Labojums"
-
 #~ msgid "_Insert ASCII value..."
 #~ msgstr "_Ievietot ASCII vērtību..."
 
@@ -2223,9 +2328,6 @@ msgstr ""
 
 #~ msgid "register 9"
 #~ msgstr "reģistrs 9"
-
-#~ msgid "x2"
-#~ msgstr "x2"
 
 #~ msgid "±"
 #~ msgstr "±"
