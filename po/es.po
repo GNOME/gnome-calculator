@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2011-03-01 20:16+0000\n"
-"PO-Revision-Date: 2011-03-01 22:29+0100\n"
+"POT-Creation-Date: 2011-03-10 01:08+0000\n"
+"PO-Revision-Date: 2011-03-10 15:05+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -813,7 +813,7 @@ msgid "South African Rand"
 msgstr "Rand sudafricano"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:86
+#: ../src/gcalctool.c:85
 #, c-format
 msgid ""
 "Usage:\n"
@@ -823,7 +823,7 @@ msgstr ""
 "  %s — Realizar cálculos matemáticos"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:94
+#: ../src/gcalctool.c:93
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -839,7 +839,7 @@ msgstr ""
 "  -help-gtk                       Mostrar las opciones de GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:105
+#: ../src/gcalctool.c:104
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -864,25 +864,27 @@ msgstr ""
 "  --g-fatal-warnings              Hacer que todos los avisos sean fatales"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:119
+#: ../src/gcalctool.c:118
 #, c-format
+#| msgid ""
+#| "Application Options:\n"
+#| "  -u, --unittest                  Perform unit tests\n"
+#| "  -s, --solve <equation>          Solve the given equation"
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 "Opciones de la aplicación:\n"
-"  -u, --unittest                  Realizar pruebas de unidades\n"
 "  -s, --solve <ecuación>          Resolver la ecuación proporcionada"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:162
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Parámetro --resolver requiere una ecuación para resolver"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:178
+#: ../src/gcalctool.c:172
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Parámetro «%s» desconocido"
@@ -2239,8 +2241,6 @@ msgstr "Divisa"
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
 #: ../src/unit-manager.c:126
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s s"
 msgid "%s%%s"
 msgstr "%s%%s"
 
