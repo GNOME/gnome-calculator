@@ -1,48 +1,48 @@
 # German gcalctool translation.
 # Copyright (C) 1990-2005 Rich Burridge
 # This file is distributed under the same license as the gcalctool package.
-# Christian Neumair chrisatgnome-de.org, 2003, 2004.
-# Hendrik Richter <hendrikr@gnome.org>, 2005, 2006, 2007.
-# Frank Arnold <frank@scirocco-5v-turbo.de>, 2005.
-# Jochen Skulj <jochen@jochenskulj.de>
-# Andre Klapper <ak-47@gmx.net>, 2008.
-# Mario Blättermann <mariobl@gnome.org>, 2010.
-# Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009, 2010.
-# Jakob Kramer <jakob.kramer@gmx.de>, 2010.
 #
 # #Vereinbarungen / Conventions:
-# Basic = Standard
-# Financial = Finanztechnisch
-# Programming = Programmierung
-# Display mode = Arbeitsmodus
-# Periodic Interest Rate = Periodischer Zinssatz
-# Gross Profit Margin = Bruttogewinnspanne
+# Basic          = Standard
+# Financial      = Finanztechnisch
+# Programming    = Programmierung
+# Display mode   = Arbeitsmodus
+# Periodic Interest Rate     = Periodischer Zinssatz
+# Gross Profit Margin        = Bruttogewinnspanne
 # Straight-Line Depreciation = Lineare Abschreibung
 #
 #
 # Ich bin nicht sicher, in welchem Umfang man Knopfnamen bedenkenlos
 # übersetzen darf. Bitte CHECKen.
 #
+# Christian Neumair chrisatgnome-de.org, 2003, 2004.
+# Hendrik Richter <hendrikr@gnome.org>, 2005, 2006, 2007.
+# Frank Arnold <frank@scirocco-5v-turbo.de>, 2005.
+# Jochen Skulj <jochen@jochenskulj.de>
+# Andre Klapper <ak-47@gmx.net>, 2008.
+# Mario Blättermann <mariobl@gnome.org>, 2010.
+# Jakob Kramer <jakob.kramer@gmx.de>, 2010.
+# Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2011.
+# Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009, 2010, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-10-26 11:17+0000\n"
-"PO-Revision-Date: 2010-10-31 10:44+0100\n"
-"Last-Translator: Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-03-13 15:17+0100\n"
+"PO-Revision-Date: 2011-03-13 15:10+0100\n"
+"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#. This is between the unit selector dropdowns, for example: meters in kilometers
-#. This is between the currency selector dropdowns, for example: [USD] in [EUR]
+#. The label on the memory button
 #: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
-msgid " in "
-msgstr " in "
+msgid "<i>x</i>"
+msgstr "<i>x</i>"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 #: ../data/buttons-advanced.ui.h:4 ../data/buttons-basic.ui.h:2
@@ -76,11 +76,13 @@ msgstr "Faktorisieren"
 msgid "Inverse"
 msgstr "Kehrwert"
 
-#. Accessible name for the recall value button
-#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:68
-#: ../data/buttons-programming.ui.h:20
-msgid "Recall"
-msgstr "Abrufen"
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:50
+#: ../src/math-buttons.c:231
+msgid "Memory"
+msgstr "Speicher"
 
 #. Accessible name for the scientific exponent button
 #: ../data/buttons-advanced.ui.h:18
@@ -88,32 +90,19 @@ msgid "Scientific Exponent"
 msgstr "Wissenschaftlicher Exponent"
 
 #. Accessible name for the store value button
-#: ../data/buttons-advanced.ui.h:20 ../data/buttons-financial.ui.h:72
-#: ../data/buttons-programming.ui.h:26
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:24
 msgid "Store"
 msgstr "Speichern"
 
 #. Accessible name for the subscript mode button
-#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:28
+#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:26
 msgid "Subscript"
 msgstr "Tiefstellung"
 
 #. Accessible name for the superscript mode button
-#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:30
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:28
 msgid "Superscript"
 msgstr "Hochstellung"
-
-#. The label on the memory recall button
-#: ../data/buttons-advanced.ui.h:26 ../data/buttons-financial.ui.h:102
-#: ../data/buttons-programming.ui.h:34
-msgid "← R"
-msgstr "← R"
-
-#. The label on the memory store button
-#: ../data/buttons-advanced.ui.h:28 ../data/buttons-financial.ui.h:104
-#: ../data/buttons-programming.ui.h:36
-msgid "→ R"
-msgstr "→ R"
 
 #. Payment Period Dialog: Button to calculate result
 #: ../data/buttons-financial.ui.h:6
@@ -238,7 +227,7 @@ msgstr ""
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:263
+#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:255
 msgid "Compounding Term"
 msgstr "Wachstumsdauer"
 
@@ -259,7 +248,7 @@ msgstr "Geometrisch-degressive Abschreibung"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:269
+#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:261
 msgid "Future Value"
 msgstr "Zukünftiger Wert"
 
@@ -280,55 +269,55 @@ msgstr "Bgs"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:290
+#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:282
 msgid "Gross Profit Margin"
 msgstr "Bruttogewinnspanne"
 
 #. Title of Payment Period dialog
-#: ../data/buttons-financial.ui.h:50
+#: ../data/buttons-financial.ui.h:52
 msgid "Payment Period"
 msgstr "Zahlungsperiode"
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:52 ../src/math-buttons.c:281
+#: ../data/buttons-financial.ui.h:54 ../src/math-buttons.c:273
 msgid "Periodic Interest Rate"
 msgstr "Periodischer Zinssatz"
 
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/buttons-financial.ui.h:54
+#: ../data/buttons-financial.ui.h:56
 msgid "Periodic Interest _Rate:"
 msgstr "Periodischer _Zinssatz:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:56 ../src/math-buttons.c:287
+#: ../data/buttons-financial.ui.h:58 ../src/math-buttons.c:279
 msgid "Periodic Payment"
 msgstr "Periodische Zahlung"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/buttons-financial.ui.h:58
+#: ../data/buttons-financial.ui.h:60
 msgid "Pmt"
 msgstr "Zhlg"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:60 ../src/math-buttons.c:284
+#: ../data/buttons-financial.ui.h:62 ../src/math-buttons.c:276
 msgid "Present Value"
 msgstr "Barwert"
 
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/buttons-financial.ui.h:62
+#: ../data/buttons-financial.ui.h:64
 msgid "Present _Value:"
 msgstr "_Barwert:"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/buttons-financial.ui.h:64
+#: ../data/buttons-financial.ui.h:66
 msgid "Pv"
 msgstr "Bw"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/buttons-financial.ui.h:66
+#: ../data/buttons-financial.ui.h:68
 msgid "Rate"
 msgstr "Zins"
 
@@ -338,73 +327,73 @@ msgid "Sln"
 msgstr "Sln"
 
 #. Title of Straight-Line Depreciation dialog
-#: ../data/buttons-financial.ui.h:74
+#: ../data/buttons-financial.ui.h:72
 msgid "Straight-Line Depreciation"
 msgstr "Lineare Abschreibung"
 
 # CHECK
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
-#: ../data/buttons-financial.ui.h:76
+#: ../data/buttons-financial.ui.h:74
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "Sum-of-the-Years-Digits-Abschreibung"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:78
+#: ../data/buttons-financial.ui.h:76
 msgid "Syd"
 msgstr "Syd"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/buttons-financial.ui.h:80
+#: ../data/buttons-financial.ui.h:78
 msgid "Term"
 msgstr "Term"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/buttons-financial.ui.h:82
+#: ../data/buttons-financial.ui.h:80
 msgid "_Cost:"
 msgstr "_Kosten:"
 
 #. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/buttons-financial.ui.h:84
+#: ../data/buttons-financial.ui.h:82
 msgid "_Future Value:"
 msgstr "Zukünftiger _Wert:"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/buttons-financial.ui.h:86
+#: ../data/buttons-financial.ui.h:84
 msgid "_Life:"
 msgstr "_Lebensdauer:"
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: ../data/buttons-financial.ui.h:88
+#: ../data/buttons-financial.ui.h:86
 msgid "_Margin:"
 msgstr "_Gewinnspanne:"
 
 #. Present Value Dialog: Label before number of periods input
-#: ../data/buttons-financial.ui.h:90
+#: ../data/buttons-financial.ui.h:88
 msgid "_Number of Periods:"
 msgstr "_Anzahl der Zahlungsperioden:"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/buttons-financial.ui.h:92
+#: ../data/buttons-financial.ui.h:90
 msgid "_Period:"
 msgstr "Zahlungs_periode:"
 
 #. Payment Period Dialog: Label before periodic payment input
-#: ../data/buttons-financial.ui.h:94
+#: ../data/buttons-financial.ui.h:92
 msgid "_Periodic Payment:"
 msgstr "_Periodische Zahlung"
 
 #. Periodic Payment Dialog: Label before principal input
-#: ../data/buttons-financial.ui.h:96
+#: ../data/buttons-financial.ui.h:94
 msgid "_Principal:"
 msgstr "_Grundkapital:"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/buttons-financial.ui.h:98
+#: ../data/buttons-financial.ui.h:96
 msgid "_Salvage:"
 msgstr "_Restwert:"
 
 #. Periodic Interest Rate Dialog: Label before term input
-#: ../data/buttons-financial.ui.h:100
+#: ../data/buttons-financial.ui.h:98
 msgid "_Term:"
 msgstr "_Laufzeit:"
 
@@ -420,26 +409,31 @@ msgstr "Zeichen einfügen"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:242
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:234
 msgid "Insert Character Code"
 msgstr "Zeichen einfügen"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:257
+#: ../data/buttons-programming.ui.h:20 ../src/math-buttons.c:249
 msgid "Shift Left"
 msgstr "Nach links verschieben"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:24 ../src/math-buttons.c:260
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:252
 msgid "Shift Right"
 msgstr "Nach rechts verschieben"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/buttons-programming.ui.h:32
+#: ../data/buttons-programming.ui.h:30
 msgid "_Insert"
 msgstr "E_infügen"
+
+#. The label on the memory button
+#: ../data/buttons-programming.ui.h:32
+msgid "x"
+msgstr "x"
 
 #. Word size combo: 16 bits
 #: ../data/preferences.ui.h:2
@@ -520,7 +514,7 @@ msgstr "Währung der aktuellen Berechnung"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
 msgid "Currency to convert the current calculation into"
-msgstr "Währung, in die aktuelle Berechnung umgerechnet werden soll"
+msgstr "Währung, in welche die aktuelle Berechnung umgewandelt werden soll"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
 msgid ""
@@ -555,179 +549,292 @@ msgid "Source currency"
 msgstr "Ursprungswährung"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Source units"
+msgstr "Ursprungseinheiten"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
 msgid "Target currency"
 msgstr "Zielwährung"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "Target units"
+msgstr "Zieleinheiten"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
 msgid "The angle units to use"
 msgstr "Die zu verwendenden Winkeleinheiten"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
 msgid "The button mode"
 msgstr "Der Knopfmodus"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
 msgid "The format to display numbers in"
 msgstr "Das Format für die Anzeige von Zahlen"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
 msgid "The number of digits displayed after the numeric point"
 msgstr "Die Anzahl der Ziffern nach dem numerischen Punkt"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
 msgid "The numeric base"
 msgstr "Die numerische Basis"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
 msgid "The size of the words used in bitwise operations"
 msgstr "Die Wortgröße bei bitweisen Operationen"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+msgid "Units of the current calculation"
+msgstr "Einheit der aktuellen Berechnung"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+msgid "Units to convert the current calculation into"
+msgstr "Einheit, in welche die aktuelle Berechnung umgewandelt werden soll"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
 msgid "Word size"
 msgstr "Wortlänge"
 
-#: ../src/currency.h:19
-msgid "Australian dollar"
+# laut Wikipedia VAE-Dirham
+#: ../src/currency-manager.c:20
+msgid "UAE Dirham"
+msgstr "VAE-Dirham"
+
+#: ../src/currency-manager.c:21
+msgid "Australian Dollar"
 msgstr "Australische Dollar"
 
-#: ../src/currency.h:20
-msgid "Bulgarian lev"
+#: ../src/currency-manager.c:22
+msgid "Bulgarian Lev"
 msgstr "Bulgarische Lewa"
 
-#: ../src/currency.h:21
-msgid "Brazilian real"
+#: ../src/currency-manager.c:23
+msgid "Bahraini Dinar"
+msgstr "Bahrain-Dinar"
+
+#: ../src/currency-manager.c:24
+msgid "Brunei Dollar"
+msgstr "Brunei-Dollar"
+
+#: ../src/currency-manager.c:25
+msgid "Brazilian Real"
 msgstr "Brasilianische Real"
 
-#: ../src/currency.h:22
-msgid "Canadian dollar"
+#: ../src/currency-manager.c:26
+msgid "Botswana Pula"
+msgstr "Botswana-Pula"
+
+#: ../src/currency-manager.c:27
+msgid "Canadian Dollar"
 msgstr "Kanadische Dollar"
 
-#: ../src/currency.h:23
-msgid "Swiss franc"
+#: ../src/currency-manager.c:28
+msgid "Swiss Franc"
 msgstr "Schweizer Franken"
 
-#: ../src/currency.h:24
-msgid "Chinese yuan renminbi"
-msgstr "Chinesische Renminbi (Yuan)"
+#: ../src/currency-manager.c:29
+msgid "Chilean Peso"
+msgstr "Chilenischer Peso"
 
-#: ../src/currency.h:25
-msgid "Czech koruna"
+#: ../src/currency-manager.c:30
+msgid "Chinese Yuan"
+msgstr "Chinesische Yuan"
+
+#: ../src/currency-manager.c:31
+msgid "Colombian Peso"
+msgstr "Kolumbianischer Peso"
+
+#: ../src/currency-manager.c:32
+msgid "Czech Koruna"
 msgstr "Tschechische Krone"
 
-#: ../src/currency.h:26
-msgid "Danish krone"
+#: ../src/currency-manager.c:33
+msgid "Danish Krone"
 msgstr "Dänische Krone"
 
-#: ../src/currency.h:27
-msgid "Estonian kroon"
+#: ../src/currency-manager.c:34
+msgid "Algerian Dinar"
+msgstr "Algerische Dinar"
+
+#: ../src/currency-manager.c:35
+msgid "Estonian Kroon"
 msgstr "Estnische Krone"
 
-#: ../src/currency.h:28
+#: ../src/currency-manager.c:36
 msgid "Euro"
 msgstr "Euro"
 
-#: ../src/currency.h:29
-msgid "Pound sterling"
+#: ../src/currency-manager.c:37
+msgid "Pound Sterling"
 msgstr "Britische Pfund Sterling"
 
-#: ../src/currency.h:30
-msgid "Hong Kong dollar"
+#: ../src/currency-manager.c:38
+msgid "Hong Kong Dollar"
 msgstr "Hong-Kong-Dollar"
 
-#: ../src/currency.h:31
-msgid "Croatian kuna"
+#: ../src/currency-manager.c:39
+msgid "Croatian Kuna"
 msgstr "Kroatische Kuna"
 
-#: ../src/currency.h:32
-msgid "Hungarian forint"
+#: ../src/currency-manager.c:40
+msgid "Hungarian Forint"
 msgstr "Ungarische Forint"
 
-#: ../src/currency.h:33
-msgid "Indonesian rupiah"
+#: ../src/currency-manager.c:41
+msgid "Indonesian Rupiah"
 msgstr "Indonesische Rupiah"
 
-#: ../src/currency.h:34
-msgid "Indian rupee"
+#: ../src/currency-manager.c:42
+msgid "Israeli New Shekel"
+msgstr "Neuer israelischer Shekel"
+
+#: ../src/currency-manager.c:43
+msgid "Indian Rupee"
 msgstr "Indische Rupie"
 
-#: ../src/currency.h:35
-msgid "Icelandic krona"
+#: ../src/currency-manager.c:44
+msgid "Iranian Rial"
+msgstr "Iranischer Rial"
+
+#: ../src/currency-manager.c:45
+msgid "Icelandic Krona"
 msgstr "Isländische Krone"
 
-#: ../src/currency.h:36
-msgid "Japanese yen"
+#: ../src/currency-manager.c:46
+msgid "Japanese Yen"
 msgstr "Japanische Yen"
 
-#: ../src/currency.h:37
-msgid "South Korean won"
+#: ../src/currency-manager.c:47
+msgid "South Korean Won"
 msgstr "Südkoreanische Won"
 
-#: ../src/currency.h:38
-msgid "Lithuanian litas"
+#: ../src/currency-manager.c:48
+msgid "Kuwaiti Dinar"
+msgstr "Kuwaitischer Dinar"
+
+#: ../src/currency-manager.c:49
+msgid "Kazakhstani Tenge"
+msgstr "Kasachischer Tenge"
+
+#: ../src/currency-manager.c:50
+msgid "Sri Lankan Rupee"
+msgstr "Sri-Lanka-Rupie"
+
+#: ../src/currency-manager.c:51
+msgid "Lithuanian Litas"
 msgstr "Litauische Litas"
 
-#: ../src/currency.h:39
-msgid "Latvian lats"
+#: ../src/currency-manager.c:52
+msgid "Latvian Lats"
 msgstr "Lettische Lats"
 
-#: ../src/currency.h:40
-msgid "Mexican peso"
+#: ../src/currency-manager.c:53
+msgid "Libyan Dinar"
+msgstr "Libyscher Dinar"
+
+#: ../src/currency-manager.c:54
+msgid "Mauritian Rupee"
+msgstr "Mauritius-Rupie"
+
+#: ../src/currency-manager.c:55
+msgid "Mexican Peso"
 msgstr "Mexikanischer Peso"
 
-#: ../src/currency.h:41
-msgid "Malaysian ringgit"
+#: ../src/currency-manager.c:56
+msgid "Malaysian Ringgit"
 msgstr "Malaysische Ringgit"
 
-#: ../src/currency.h:42
-msgid "Norwegian krone"
+#: ../src/currency-manager.c:57
+msgid "Norwegian Krone"
 msgstr "Norwegische Krone"
 
-#: ../src/currency.h:43
-msgid "New Zealand dollar"
+#: ../src/currency-manager.c:58
+msgid "Nepalese Rupee"
+msgstr "Nepalesische Rupie"
+
+#: ../src/currency-manager.c:59
+msgid "New Zealand Dollar"
 msgstr "Neuseeländischer Dollar"
 
-#: ../src/currency.h:44
-msgid "Philippine peso"
+#: ../src/currency-manager.c:60
+msgid "Omani Rial"
+msgstr "Oman-Rial"
+
+#: ../src/currency-manager.c:61
+msgid "Peruvian Nuevo Sol"
+msgstr "Peruanischer Neuer Sol"
+
+#: ../src/currency-manager.c:62
+msgid "Philippine Peso"
 msgstr "Philippinischer Peso"
 
-#: ../src/currency.h:45
-msgid "Polish zloty"
+#: ../src/currency-manager.c:63
+msgid "Pakistani Rupee"
+msgstr "Pakistanische Rupie"
+
+#: ../src/currency-manager.c:64
+msgid "Polish Zloty"
 msgstr "Polnischer Złoty"
 
-#: ../src/currency.h:46
-msgid "New Romanian leu"
+#: ../src/currency-manager.c:65
+msgid "Qatari Riyal"
+msgstr "Katar-Riyal"
+
+#: ../src/currency-manager.c:66
+msgid "New Romanian Leu"
 msgstr "Neuer rumänischer Leu"
 
-#: ../src/currency.h:47
-msgid "Russian rouble"
+#: ../src/currency-manager.c:67
+msgid "Russian Rouble"
 msgstr "Russischer Rubel"
 
-#: ../src/currency.h:48
-msgid "Swedish krona"
+#: ../src/currency-manager.c:68
+msgid "Saudi Riyal"
+msgstr "Saudi-Rial"
+
+#: ../src/currency-manager.c:69
+msgid "Swedish Krona"
 msgstr "Schwedische Krone"
 
-#: ../src/currency.h:49
-msgid "Singapore dollar"
+#: ../src/currency-manager.c:70
+msgid "Singapore Dollar"
 msgstr "Singapur-Dollar"
 
-#: ../src/currency.h:50
-msgid "Thai baht"
+#: ../src/currency-manager.c:71
+msgid "Thai Baht"
 msgstr "Thailändischer Baht"
 
-#: ../src/currency.h:51
-msgid "New Turkish lira"
+#: ../src/currency-manager.c:72
+msgid "Tunisian Dinar"
+msgstr "Tunesischer Dinar"
+
+#: ../src/currency-manager.c:73
+msgid "New Turkish Lira"
 msgstr "Neue türkische Lira"
 
-#: ../src/currency.h:52
-msgid "US dollar"
+#: ../src/currency-manager.c:74
+msgid "T&T Dollar (TTD)"
+msgstr "Trinidad-und-Tobago-Dollar (TTD)"
+
+#: ../src/currency-manager.c:75
+msgid "US Dollar"
 msgstr "Amerikanische Dollar"
 
-#: ../src/currency.h:53
-msgid "South African rand"
+#: ../src/currency-manager.c:76
+msgid "Uruguayan Peso"
+msgstr "Uruguayischer Peso"
+
+#: ../src/currency-manager.c:77
+msgid "Venezuelan Bolívar"
+msgstr "Venezolanischer Bolívar"
+
+#: ../src/currency-manager.c:78
+msgid "South African Rand"
 msgstr "Südafrikanische Rand"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:78
+#: ../src/gcalctool.c:85
 #, c-format
 msgid ""
 "Usage:\n"
@@ -737,7 +844,7 @@ msgstr ""
 "  %s — Mathematische Berechnungen ausführen"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:86
+#: ../src/gcalctool.c:93
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -753,7 +860,7 @@ msgstr ""
 "  --help-gtk                      GTK+ Optionen anzeigen"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:97
+#: ../src/gcalctool.c:104
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -777,572 +884,301 @@ msgstr ""
 "  --g-fatal-warnings              All Warnungen werden zu fatalen"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:111
+#: ../src/gcalctool.c:118
 #, c-format
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 "Anwendungsoptionen:\n"
-"  -u, --unittest                  Einen Unit-Test durchführen\n"
 "  -s, --solve <Gleichung>          Die gegebene Gleichung lösen"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:156
+#: ../src/gcalctool.c:162
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Das Argument »--solve« erfordert eine zu lösende Gleichung"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:170
+#: ../src/gcalctool.c:172
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Unbekanntes Argument »%s«"
 
 #. Tooltip for the Pi button
-#: ../src/math-buttons.c:108
+#: ../src/math-buttons.c:103
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Strg+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.c:111
+#: ../src/math-buttons.c:106
 msgid "Euler’s Number"
 msgstr "Eulersche Zahl"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.c:116
+#: ../src/math-buttons.c:111
 msgid "Subscript mode [Alt]"
 msgstr "Modus für Tiefstellung [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.c:119
+#: ../src/math-buttons.c:114
 msgid "Superscript mode [Ctrl]"
 msgstr "Modus für Hochstellung [Strg]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.c:122
+#: ../src/math-buttons.c:117
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Wissenschaftlicher Exponent [Strg+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.c:125
+#: ../src/math-buttons.c:120
 msgid "Add [+]"
 msgstr "Addieren [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.c:128
+#: ../src/math-buttons.c:123
 msgid "Subtract [-]"
 msgstr "Subtrahieren [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.c:131
+#: ../src/math-buttons.c:126
 msgid "Multiply [*]"
 msgstr "Multiplizieren [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.c:134
+#: ../src/math-buttons.c:129
 msgid "Divide [/]"
 msgstr "Dividieren [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.c:137
+#: ../src/math-buttons.c:132
 msgid "Modulus divide"
 msgstr "Modulo-Division"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.c:140
+#: ../src/math-buttons.c:135
 msgid "Additional Functions"
 msgstr "Zusätzliche Funktionen"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.c:143
+#: ../src/math-buttons.c:138
 msgid "Exponent [^ or **]"
 msgstr "Exponent [^ oder **]"
 
 #. Tooltip for the square button
-#: ../src/math-buttons.c:146
+#: ../src/math-buttons.c:141
 msgid "Square [Ctrl+2]"
 msgstr "Quadrat [Strg+2]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.c:149
+#: ../src/math-buttons.c:144
 msgid "Percentage [%]"
 msgstr "Prozentsatz [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.c:152
+#: ../src/math-buttons.c:147
 msgid "Factorial [!]"
 msgstr "Fakultät [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.c:155
+#: ../src/math-buttons.c:150
 msgid "Absolute value [|]"
 msgstr "Absoluter Wert [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.c:158
+#: ../src/math-buttons.c:153
 msgid "Complex argument"
 msgstr "komplexes Argument"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.c:161
+#: ../src/math-buttons.c:156
 msgid "Complex conjugate"
 msgstr "Komplexe Konjugation"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.c:164
+#: ../src/math-buttons.c:159
 msgid "Root [Ctrl+R]"
 msgstr "Wurzel [Strg+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.c:167
+#: ../src/math-buttons.c:162
 msgid "Square root [Ctrl+R]"
 msgstr "Quadratwurzel [Strg+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.c:170
+#: ../src/math-buttons.c:165
 msgid "Logarithm"
 msgstr "Logarithmus"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.c:173
+#: ../src/math-buttons.c:168
 msgid "Natural Logarithm"
 msgstr "Natürlicher Logarithmus"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.c:176
+#: ../src/math-buttons.c:171
 msgid "Sine"
 msgstr "Sinus"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.c:179
+#: ../src/math-buttons.c:174
 msgid "Cosine"
 msgstr "Kosinus"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.c:182
+#: ../src/math-buttons.c:177
 msgid "Tangent"
 msgstr "Tangens"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.c:185
+#: ../src/math-buttons.c:180
 msgid "Hyperbolic Sine"
 msgstr "Hyperbolischer Sinus"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.c:188
+#: ../src/math-buttons.c:183
 msgid "Hyperbolic Cosine"
 msgstr "Hyperbolischer Cosinus"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.c:191
+#: ../src/math-buttons.c:186
 msgid "Hyperbolic Tangent"
 msgstr "Hyperbolischer Tangens"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.c:194
+#: ../src/math-buttons.c:189
 msgid "Inverse [Ctrl+I]"
 msgstr "Kehrwert [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.c:197
+#: ../src/math-buttons.c:192
 msgid "Boolean AND"
 msgstr "Boolesches UND"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.c:200
+#: ../src/math-buttons.c:195
 msgid "Boolean OR"
 msgstr "Boolesches ODER"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.c:203
+#: ../src/math-buttons.c:198
 msgid "Boolean Exclusive OR"
 msgstr "Boolesches exklusives ODER"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.c:206
+#: ../src/math-buttons.c:201
 msgid "Boolean NOT"
 msgstr "Boolesches NICHT"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:209 ../src/math-buttons.c:1545
+#: ../src/math-buttons.c:204 ../src/math-buttons.c:1036
 msgid "Integer Component"
 msgstr "Ganzzahliger Anteil"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:212 ../src/math-buttons.c:1547
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1038
 msgid "Fractional Component"
 msgstr "Gebrochener Anteil"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.c:215
+#: ../src/math-buttons.c:210
 msgid "Real Component"
 msgstr "Reeller Teil"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.c:218
+#: ../src/math-buttons.c:213
 msgid "Imaginary Component"
 msgstr "Imaginärer Teil"
 
-#. Tooltip for the ones complement button
-#: ../src/math-buttons.c:221
+#. Tooltip for the ones' complement button
+#: ../src/math-buttons.c:216
 msgid "Ones' Complement"
 msgstr "Einerkomplement"
 
-#. Tooltip for the twos complement button
-#: ../src/math-buttons.c:224
+#. Tooltip for the two's complement button
+#: ../src/math-buttons.c:219
 msgid "Two's Complement"
 msgstr "Zweierkomplement"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.c:227
+#: ../src/math-buttons.c:222
 msgid "Truncate"
 msgstr "Wert abschneiden"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.c:230
+#: ../src/math-buttons.c:225
 msgid "Start Group [(]"
 msgstr "Block öffnen [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.c:233
+#: ../src/math-buttons.c:228
 msgid "End Group [)]"
 msgstr "Block schließen [)]"
 
-#. Tooltip for the assign variable button
-#: ../src/math-buttons.c:236
-msgid "Assign Variable"
-msgstr "Variable zuweisen"
-
-#. Tooltip for the insert variable button
-#: ../src/math-buttons.c:239
-msgid "Insert Variable"
-msgstr "Variable einfügen"
-
 #. Tooltip for the solve button
-#: ../src/math-buttons.c:245
+#: ../src/math-buttons.c:237
 msgid "Calculate Result"
 msgstr "Ergebnis berechnen"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.c:248
+#: ../src/math-buttons.c:240
 msgid "Factorize [Ctrl+F]"
 msgstr "Faktorisieren [Strg+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.c:251
+#: ../src/math-buttons.c:243
 msgid "Clear Display [Escape]"
 msgstr "Die Anzeige löschen [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.c:254
+#: ../src/math-buttons.c:246
 msgid "Undo [Ctrl+Z]"
 msgstr "Rückgängig [Strg+R]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.c:266
+#: ../src/math-buttons.c:258
 msgid "Double Declining Depreciation"
 msgstr "Degressive Doppelratenabschreibung"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.c:272
+#: ../src/math-buttons.c:264
 msgid "Financial Term"
 msgstr "Finanztechnischer Begriff"
 
 # CHECK
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.c:275
+#: ../src/math-buttons.c:267
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Sum-of-the-Years-Digits-Abschreibung"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.c:278
+#: ../src/math-buttons.c:270
 msgid "Straight Line Depreciation"
 msgstr "Lineare Abschreibung"
 
-#: ../src/math-buttons.c:326
-msgid "Angle Units"
-msgstr "Winkeleinheiten"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-buttons.c:328 ../src/math-preferences.c:254
-msgid "Degrees"
-msgstr "Grad"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-buttons.c:330 ../src/math-preferences.c:258
-msgid "Radians"
-msgstr "Radiant"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-buttons.c:332 ../src/math-preferences.c:262
-msgid "Gradians"
-msgstr "Neugrad"
-
-#: ../src/math-buttons.c:334
-msgid "Length Units"
-msgstr "Längenmaßeinheiten"
-
-#. Length unit
-#: ../src/math-buttons.c:336
-msgid "Parsecs"
-msgstr "Parsecs"
-
-#. Length unit
-#: ../src/math-buttons.c:338
-msgid "Light Years"
-msgstr "Lichtjahre"
-
-#. Length unit
-#: ../src/math-buttons.c:340
-msgid "Astronomical Unit"
-msgstr "Astronomische Einheit"
-
-#. Length unit
-#: ../src/math-buttons.c:342
-msgid "Nautical Miles"
-msgstr "Seemeilen"
-
-#. Length unit
-#: ../src/math-buttons.c:344
-msgid "Miles"
-msgstr "Meilen"
-
-#. Length unit
-#: ../src/math-buttons.c:346
-msgid "Kilometers"
-msgstr "Kilometer"
-
-#. Length unit
-#: ../src/math-buttons.c:348
-msgid "Cables"
-msgstr "Kabel"
-
-#. Length unit
-#: ../src/math-buttons.c:350
-msgid "Fathoms"
-msgstr "Klafter"
-
-#. Length unit
-#: ../src/math-buttons.c:352
-msgid "Meters"
-msgstr "Meter"
-
-#. Length unit
-#: ../src/math-buttons.c:354
-msgid "Yards"
-msgstr "Yard"
-
-#. Length unit
-#: ../src/math-buttons.c:356
-msgid "Feet"
-msgstr "Fuß"
-
-#. Length unit
-#: ../src/math-buttons.c:358
-msgid "Inches"
-msgstr "Zoll"
-
-#. Length unit
-#: ../src/math-buttons.c:360
-msgid "Centimeters"
-msgstr "Zentimeter"
-
-#. Length unit
-#: ../src/math-buttons.c:362
-msgid "Millimeters"
-msgstr "Millimeter"
-
-#. Length unit
-#: ../src/math-buttons.c:364
-msgid "Micrometers"
-msgstr "Mikrometer"
-
-#. Length unit
-#: ../src/math-buttons.c:366
-msgid "Nanometers"
-msgstr "Nanometer"
-
-#: ../src/math-buttons.c:368
-msgid "Area Units"
-msgstr "Flächeneinheiten"
-
-#. Area unit
-#: ../src/math-buttons.c:370
-msgid "Hectares"
-msgstr "Hektar"
-
-#. Area unit
-#: ../src/math-buttons.c:372
-msgid "Acres"
-msgstr "Acres"
-
-#. Area unit
-#: ../src/math-buttons.c:374
-msgid "m²"
-msgstr "m²"
-
-#. Area unit
-#: ../src/math-buttons.c:376
-msgid "cm²"
-msgstr "cm²"
-
-#. Area unit
-#: ../src/math-buttons.c:378
-msgid "mm²"
-msgstr "mm²"
-
-#: ../src/math-buttons.c:380
-msgid "Volume Units"
-msgstr "Raumeinheit"
-
-#. Volume unit
-#: ../src/math-buttons.c:382
-msgid "m³"
-msgstr "m³"
-
-#. Volume unit
-#: ../src/math-buttons.c:384
-msgid "Gallons"
-msgstr "Gallonen"
-
-#. Volume unit
-#: ../src/math-buttons.c:386
-msgid "Liters"
-msgstr "Liter"
-
-#. Volume unit
-#: ../src/math-buttons.c:388
-msgid "Quarts"
-msgstr "Quarts"
-
-#. Volume unit
-#: ../src/math-buttons.c:390
-msgid "Pints"
-msgstr "Pinten"
-
-#. Volume unit
-#: ../src/math-buttons.c:392
-msgid "Milliliters"
-msgstr "Milliliter"
-
-#. Volume unit
-#: ../src/math-buttons.c:394
-msgid "cm³"
-msgstr "cm³"
-
-#. Volume unit
-#: ../src/math-buttons.c:396
-msgid "mm³"
-msgstr "mm³"
-
-#: ../src/math-buttons.c:398
-msgid "Weight Units"
-msgstr "Gewichtseinheiten"
-
-#. Weight unit
-#: ../src/math-buttons.c:400
-msgid "Tonnes"
-msgstr "Tonnen"
-
-#. Weight unit
-#: ../src/math-buttons.c:402
-msgid "Kilograms"
-msgstr "Kilogramm"
-
-#. Weight unit
-#: ../src/math-buttons.c:404
-msgid "Pounds"
-msgstr "Pfund"
-
-#. Weight unit
-#: ../src/math-buttons.c:406
-msgid "Ounces"
-msgstr "Unzen"
-
-#. Weight unit
-#: ../src/math-buttons.c:408
-msgid "Grams"
-msgstr "Gramm"
-
-#: ../src/math-buttons.c:410
-msgid "Time Units"
-msgstr "Zeiteinheiten"
-
-#. Time unit
-#: ../src/math-buttons.c:412
-msgid "Years"
-msgstr "Jahre"
-
-#. Time unit
-#: ../src/math-buttons.c:414
-msgid "Days"
-msgstr "Tage"
-
-#. Time unit
-#: ../src/math-buttons.c:416
-msgid "Hours"
-msgstr "Stunden"
-
-#. Time unit
-#: ../src/math-buttons.c:418
-msgid "Minutes"
-msgstr "Minuten"
-
-#. Time unit
-#: ../src/math-buttons.c:420
-msgid "Seconds"
-msgstr "Sekunden"
-
-#. Time unit
-#: ../src/math-buttons.c:422
-msgid "Milliseconds"
-msgstr "Millisekunden"
-
-#. Time unit
-#: ../src/math-buttons.c:424
-msgid "Microseconds"
-msgstr "Mikrosekunden"
-
-#. Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100
-#: ../src/math-buttons.c:605
-#, c-format
-msgid "%s%s = %s%s"
-msgstr "%s%s = %s%s"
-
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:1035
+#: ../src/math-buttons.c:660
 msgid "Binary"
 msgstr "Binär"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:1039
+#: ../src/math-buttons.c:664
 msgid "Octal"
 msgstr "Oktal"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:1043
+#: ../src/math-buttons.c:668
 msgid "Decimal"
 msgstr "Dezimal"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:1047
+#: ../src/math-buttons.c:672
 msgid "Hexadecimal"
 msgstr "Hexadezimal"
 
-#. Text shown in store menu when no variables defined
-#. Text shown in recall menu when no variables defined
-#: ../src/math-buttons.c:1366 ../src/math-buttons.c:1412
-msgid "No variables defined"
-msgstr "Keine Variablen definiert"
-
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1455 ../src/math-buttons.c:1499
+#: ../src/math-buttons.c:946 ../src/math-buttons.c:990
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1351,7 +1187,7 @@ msgstr[1] "_%d Stellen"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1459 ../src/math-buttons.c:1503
+#: ../src/math-buttons.c:950 ../src/math-buttons.c:994
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1359,84 +1195,89 @@ msgstr[0] "_%d Stelle"
 msgstr[1] "_%d Stellen"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1549
+#: ../src/math-buttons.c:1040
 msgid "Round"
 msgstr "Runden"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1551
+#: ../src/math-buttons.c:1042
 msgid "Floor"
 msgstr "Abrunden"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1553
+#: ../src/math-buttons.c:1044
 msgid "Ceiling"
 msgstr "Aufrunden"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1555
+#: ../src/math-buttons.c:1046
 msgid "Sign"
 msgstr "Vorzeichen"
 
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.c:359
+msgid " in "
+msgstr " in "
+
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:458
+#: ../src/math-equation.c:461
 msgid "No undo history"
 msgstr "Keine Rückgängig-Chronik"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:483
+#: ../src/math-equation.c:486
 msgid "No redo history"
 msgstr "Keine Rückgängig-Chronik"
 
-#: ../src/math-equation.c:844
+#: ../src/math-equation.c:875
 msgid "No sane value to store"
 msgstr "Kein vernünftiger Wert zum Speichern"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1109
+#: ../src/math-equation.c:1140
 msgid "Overflow. Try a bigger word size"
 msgstr "Überlauf. Versuchen Sie eine höhere Wortlänge zu verwenden"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1114
+#: ../src/math-equation.c:1145
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Unbekannte Variable »%s«"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1119
+#: ../src/math-equation.c:1150
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Die Funktion »%s« ist nicht definiert"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1124
+#: ../src/math-equation.c:1155
 msgid "Unknown conversion"
 msgstr "Unbekannte Umrechnung"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1133
+#: ../src/math-equation.c:1164
 msgid "Malformed expression"
 msgstr "Fehlerhafter Ausdruck"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1266
+#: ../src/math-equation.c:1296
 msgid "Need an integer to factorize"
 msgstr "Es können nur Ganzzahlen faktorisiert werden"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1333
+#: ../src/math-equation.c:1363
 msgid "No sane value to bitwise shift"
 msgstr "Kein vernünftiger Wert zum bitweisen Verschieben"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1362
+#: ../src/math-equation.c:1392
 msgid "Displayed value not an integer"
 msgstr "Angezeigter Wert ist keine Ganzzahl"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1769
+#: ../src/math-equation.c:1815
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1445,23 +1286,44 @@ msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgid "_Close"
 msgstr "S_chließen"
 
-#. Number display mode combo: Fixed, e.g. 1234
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.c:254 ../src/unit-manager.c:43
+msgid "Degrees"
+msgstr "Grad"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.c:258 ../src/unit-manager.c:44
+msgid "Radians"
+msgstr "Radiant"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.c:262 ../src/unit-manager.c:45
+msgid "Gradians"
+msgstr "Neugrad"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
 #: ../src/math-preferences.c:272
+msgid "Automatic"
+msgstr "Automatisch"
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:276
 msgid "Fixed"
 msgstr "Fest"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:280
 msgid "Scientific"
 msgstr "Wissenschaftlich"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:280
+#: ../src/math-preferences.c:284
 msgid "Engineering"
 msgstr "Ingenieurwissenschaftlich"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:291
+#: ../src/math-preferences.c:295
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "%d _Nachkommastellen anzeigen"
@@ -1570,83 +1432,83 @@ msgid "_Contents"
 msgstr "_Inhalt"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/mp-binary.c:108
+#: ../src/mp-binary.c:122
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Boolesches UND ist nur für positive Ganzzahlen definiert"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/mp-binary.c:121
+#: ../src/mp-binary.c:135
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Boolesches ODER ist nur für positive Ganzzahlen definiert"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:134
+#: ../src/mp-binary.c:148
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Boolesches exklusives ODER ist nur für positive Ganzzahlen definiert"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:149
+#: ../src/mp-binary.c:163
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Boolesches NICHT ist nur für positive Ganzzahlen definiert"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/mp-binary.c:180
+#: ../src/mp-binary.c:194
 msgid "Shift is only possible on integer values"
 msgstr "Verschiebung ist nur mit Ganzzahlen möglich"
 
 #. Translators: Error display when attempting to take argument of zero
-#: ../src/mp.c:149
+#: ../src/mp.c:156
 msgid "Argument not defined for zero"
 msgstr "Das Argument ist nicht definiert für Null"
 
-#: ../src/mp.c:300
+#: ../src/mp.c:307
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Überlauf: Das Ergebnis konnte nicht berechnet werden"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:645 ../src/mp.c:677 ../src/mp.c:1611
+#: ../src/mp.c:652 ../src/mp.c:684 ../src/mp.c:1618
 msgid "Division by zero is undefined"
 msgstr "Division durch Null ist nicht definiert"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1282 ../src/mp.c:1319
+#: ../src/mp.c:1289 ../src/mp.c:1326
 msgid "Logarithm of zero is undefined"
 msgstr "Der Logarithmus von Null ist nicht definiert"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1684 ../src/mp.c:1999
+#: ../src/mp.c:1691 ../src/mp.c:2006
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Die Potenz von Null ist nicht für einen negativen Exponenten definiert"
 
-#: ../src/mp.c:1709
+#: ../src/mp.c:1716
 msgid "Reciprocal of zero is undefined"
 msgstr "Der Kehrwert von Null ist nicht definiert"
 
-#: ../src/mp.c:1794
+#: ../src/mp.c:1801
 msgid "Root must be non-zero"
 msgstr "Quadratwurzel muss von Null verschieden sein"
 
-#: ../src/mp.c:1812
+#: ../src/mp.c:1819
 msgid "Negative root of zero is undefined"
 msgstr "Die negative Quadratwurzel von Null ist nicht definiert"
 
-#: ../src/mp.c:1818
+#: ../src/mp.c:1825
 msgid "nth root of negative number is undefined for even n"
 msgstr ""
 "Die n-te Quadratwurzel von negativen Zahlen ist nicht für gerade n definiert"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1939
+#: ../src/mp.c:1946
 msgid "Factorial is only defined for natural numbers"
 msgstr "Fakultäten sind nur für natürliche Zahlen definiert"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1959
+#: ../src/mp.c:1966
 msgid "Modulus division is only defined for integers"
 msgstr "Modulo-Divisionen sind nur für Ganzzahlen definiert"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:311
+#: ../src/mp-trigonometric.c:318
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1654,31 +1516,796 @@ msgstr ""
 "π∕2 (90°) sind"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:356
+#: ../src/mp-trigonometric.c:363
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverser Sinus ist nicht für Werte außerhalb des Intervalls [-1, 1] definiert"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:373
+#: ../src/mp-trigonometric.c:380
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverser Kosinus ist nicht für Werte außerhalb des Intervalls [-1, 1] "
 "definiert"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:591
+#: ../src/mp-trigonometric.c:599
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Inverser hyperbolischer Kosinus ist nicht für Werte kleiner als eins "
 "definiert"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:615
+#: ../src/mp-trigonometric.c:623
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverser hyperbolischer Tangens ist nicht für Werte außerhalb des Intervalls "
 "[-1, 1] definiert"
+
+#: ../src/unit-manager.c:43
+#, c-format
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s Grad"
+
+#: ../src/unit-manager.c:43
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "Grad,Grad,Grad"
+
+#: ../src/unit-manager.c:44
+#, c-format
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s Neugrad"
+
+#: ../src/unit-manager.c:44
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "Radiant,Radiant,rad"
+
+#: ../src/unit-manager.c:45
+#, c-format
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s Neugrad"
+
+#: ../src/unit-manager.c:45
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "Grad,Grad,Grad"
+
+#: ../src/unit-manager.c:46
+msgid "Parsecs"
+msgstr "Parsecs"
+
+#: ../src/unit-manager.c:46
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
+
+#: ../src/unit-manager.c:46
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "Parsec,Parsecs,pc"
+
+#: ../src/unit-manager.c:47
+msgid "Light Years"
+msgstr "Lichtjahre"
+
+#: ../src/unit-manager.c:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s Lj"
+
+#: ../src/unit-manager.c:47
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "Lichtjahr,Lichtjahre,Lj"
+
+#: ../src/unit-manager.c:48
+msgid "Astronomical Units"
+msgstr "Astronomische Einheiten"
+
+#: ../src/unit-manager.c:48
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s au"
+
+#: ../src/unit-manager.c:48
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "au"
+
+#: ../src/unit-manager.c:49
+msgid "Nautical Miles"
+msgstr "Seemeilen"
+
+#: ../src/unit-manager.c:49 ../src/unit-manager.c:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
+
+#: ../src/unit-manager.c:49
+msgctxt "unit-symbols"
+msgid "nm"
+msgstr "nm"
+
+#: ../src/unit-manager.c:50
+msgid "Miles"
+msgstr "Meilen"
+
+#: ../src/unit-manager.c:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s mi"
+
+#: ../src/unit-manager.c:50
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "Meile,Meilen,mi"
+
+#: ../src/unit-manager.c:51
+msgid "Kilometers"
+msgstr "Kilometer"
+
+#: ../src/unit-manager.c:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
+
+#: ../src/unit-manager.c:51
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "Kilometer,Kilometer,km,km"
+
+#: ../src/unit-manager.c:52
+msgid "Cables"
+msgstr "Kabel"
+
+#: ../src/unit-manager.c:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cb"
+
+#: ../src/unit-manager.c:52
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "Kabel,Kabel,cb"
+
+#: ../src/unit-manager.c:53
+msgid "Fathoms"
+msgstr "Klafter"
+
+#: ../src/unit-manager.c:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s ftm"
+
+#: ../src/unit-manager.c:53
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "Fathom,Fathoms,ftm"
+
+#: ../src/unit-manager.c:54
+msgid "Meters"
+msgstr "Meter"
+
+#: ../src/unit-manager.c:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
+
+#: ../src/unit-manager.c:54
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "Meter,Meter,m"
+
+#: ../src/unit-manager.c:55
+msgid "Yards"
+msgstr "Yard"
+
+#: ../src/unit-manager.c:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
+
+#: ../src/unit-manager.c:55
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "Yard,Yard,yd"
+
+#: ../src/unit-manager.c:56
+msgid "Feet"
+msgstr "Fuß"
+
+#: ../src/unit-manager.c:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ft"
+
+#: ../src/unit-manager.c:56
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "Fuß,Fuß,ft"
+
+#: ../src/unit-manager.c:57
+msgid "Inches"
+msgstr "Zoll"
+
+#: ../src/unit-manager.c:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s in"
+
+#: ../src/unit-manager.c:57
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "Zoll,Zoll,in"
+
+#: ../src/unit-manager.c:58
+msgid "Centimeters"
+msgstr "Zentimeter"
+
+#: ../src/unit-manager.c:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
+
+#: ../src/unit-manager.c:58
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "Zentimeter,Zentimeter,cm,cm"
+
+#: ../src/unit-manager.c:59
+msgid "Millimeters"
+msgstr "Millimeter"
+
+#: ../src/unit-manager.c:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
+
+#: ../src/unit-manager.c:59
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "Millimeter,Millimeter,mm"
+
+#: ../src/unit-manager.c:60
+msgid "Micrometers"
+msgstr "Mikrometer"
+
+#: ../src/unit-manager.c:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
+
+#: ../src/unit-manager.c:60
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "Mikrometer,Mikrometer,um"
+
+#: ../src/unit-manager.c:61
+msgid "Nanometers"
+msgstr "Nanometer"
+
+#: ../src/unit-manager.c:61
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers"
+msgstr "Nanometer,Nanometer"
+
+#: ../src/unit-manager.c:62
+msgid "Hectares"
+msgstr "Hektar"
+
+#: ../src/unit-manager.c:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../src/unit-manager.c:62
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "Hektar,Hektar,ha"
+
+#: ../src/unit-manager.c:63
+msgid "Acres"
+msgstr "Acres"
+
+#: ../src/unit-manager.c:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s Ar"
+
+#: ../src/unit-manager.c:63
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "Acre,Acre"
+
+#: ../src/unit-manager.c:64
+msgid "Square Meter"
+msgstr "Quadratmeter"
+
+#: ../src/unit-manager.c:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../src/unit-manager.c:64
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
+
+#: ../src/unit-manager.c:65
+msgid "Square Centimeter"
+msgstr "Quadratzentimeter"
+
+#: ../src/unit-manager.c:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit-manager.c:65
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
+#: ../src/unit-manager.c:66
+msgid "Square Millimeter"
+msgstr "Quadratmillimeter"
+
+#: ../src/unit-manager.c:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit-manager.c:66
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
+
+#: ../src/unit-manager.c:67
+msgid "Cubic Meters"
+msgstr "Kubikmeter"
+
+#: ../src/unit-manager.c:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit-manager.c:67
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
+#: ../src/unit-manager.c:68
+msgid "Gallons"
+msgstr "Gallonen"
+
+#: ../src/unit-manager.c:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../src/unit-manager.c:68
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "Gallone,Gallonen,gal"
+
+#: ../src/unit-manager.c:69
+msgid "Litres"
+msgstr "Liter"
+
+#: ../src/unit-manager.c:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s l"
+
+#: ../src/unit-manager.c:69
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "Liter,Liter,Liter,Liter,l"
+
+#: ../src/unit-manager.c:70
+msgid "Quarts"
+msgstr "Quarts"
+
+#: ../src/unit-manager.c:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s qt"
+
+#: ../src/unit-manager.c:70
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "Quart,Quarten,qt"
+
+#: ../src/unit-manager.c:71
+msgid "Pints"
+msgstr "Pinten"
+
+# wie immer hats bei den Amis ein etwas anderes Maß
+#: ../src/unit-manager.c:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
+
+#: ../src/unit-manager.c:71
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "Pinte,Pinten,pt"
+
+#: ../src/unit-manager.c:72
+msgid "Millilitres"
+msgstr "Milliliter"
+
+#: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s ml"
+
+#: ../src/unit-manager.c:72
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "Milliliter,Milliliter,Milliliter,Milliliter,ml,cm³"
+
+#: ../src/unit-manager.c:73
+msgid "Microlitre"
+msgstr "Mikroliter"
+
+#: ../src/unit-manager.c:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μl"
+
+#: ../src/unit-manager.c:73
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μl,ul"
+
+#: ../src/unit-manager.c:74
+msgid "Tonnes"
+msgstr "Tonnen"
+
+#: ../src/unit-manager.c:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s t"
+
+#: ../src/unit-manager.c:74
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "Tonne,Tonnen"
+
+#: ../src/unit-manager.c:75
+msgid "Kilograms"
+msgstr "Kilogramm"
+
+#: ../src/unit-manager.c:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
+
+#: ../src/unit-manager.c:75
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "Kilogramm,Kilogramm,Kilogramm,Kilogramm,kg,kg"
+
+#: ../src/unit-manager.c:76
+msgid "Pounds"
+msgstr "Pfund"
+
+#: ../src/unit-manager.c:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../src/unit-manager.c:76
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "Pfund,Pfund,lb"
+
+#: ../src/unit-manager.c:77
+msgid "Ounces"
+msgstr "Unzen"
+
+#: ../src/unit-manager.c:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz"
+
+#: ../src/unit-manager.c:77
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "Unze,Unzen,oz"
+
+#: ../src/unit-manager.c:78
+msgid "Grams"
+msgstr "Gramm"
+
+#: ../src/unit-manager.c:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit-manager.c:78
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "Gramm,Gramm,Gramm,Gramm,g"
+
+#: ../src/unit-manager.c:79
+msgid "Years"
+msgstr "Jahre"
+
+#: ../src/unit-manager.c:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s Jahre"
+
+#: ../src/unit-manager.c:79
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "Jahr,Jahre"
+
+#: ../src/unit-manager.c:80
+msgid "Days"
+msgstr "Tage"
+
+#: ../src/unit-manager.c:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s Tage"
+
+#: ../src/unit-manager.c:80
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "Tag,Tage"
+
+#: ../src/unit-manager.c:81
+msgid "Hours"
+msgstr "Stunden"
+
+#: ../src/unit-manager.c:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s Stunden"
+
+#: ../src/unit-manager.c:81
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "Stunde,Stunden"
+
+#: ../src/unit-manager.c:82
+msgid "Minutes"
+msgstr "Minuten"
+
+#: ../src/unit-manager.c:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s Minuten"
+
+#: ../src/unit-manager.c:82
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "Minute,Minuten"
+
+#: ../src/unit-manager.c:83
+msgid "Seconds"
+msgstr "Sekunden"
+
+#: ../src/unit-manager.c:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit-manager.c:83
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "Sekunde,Sekunden,s"
+
+#: ../src/unit-manager.c:84
+msgid "Milliseconds"
+msgstr "Millisekunden"
+
+#: ../src/unit-manager.c:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit-manager.c:84
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "Millisekunde,Millisekunden,ms"
+
+#: ../src/unit-manager.c:85
+msgid "Microseconds"
+msgstr "Mikrosekunden"
+
+#: ../src/unit-manager.c:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit-manager.c:85
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us"
+msgstr "Mikrosekunde,Mikrosekunden,us"
+
+#: ../src/unit-manager.c:86
+msgid "Celcius"
+msgstr "Celcius"
+
+#: ../src/unit-manager.c:86
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚C"
+msgstr "%s˚C"
+
+#: ../src/unit-manager.c:86
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "Grad Celsius,˚C"
+
+#: ../src/unit-manager.c:87
+msgid "Farenheit"
+msgstr "Farenheit"
+
+#: ../src/unit-manager.c:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚F"
+msgstr "%s˚F"
+
+#: ../src/unit-manager.c:87
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "Grad Fahrenheit,˚F"
+
+#: ../src/unit-manager.c:88
+msgid "Kelvin"
+msgstr "Kelvin"
+
+#: ../src/unit-manager.c:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚K"
+msgstr "%s˚K"
+
+# Ist eigentlich Quatsch, Kelvin wird schon lange nicht mehr als »Grad Kelvin« bezeichnet, weil es ja eine absolute und keine relative Temperatureinheit ist.
+#: ../src/unit-manager.c:88
+msgctxt "unit-symbols"
+msgid "degK,˚K"
+msgstr "Grad Kelvin,˚K"
+
+#: ../src/unit-manager.c:89
+msgid "Rankine"
+msgstr "Rankine"
+
+#: ../src/unit-manager.c:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚R"
+msgstr "%s˚R"
+
+# Hier ist irgenwas faul: Mit °R wird meiner Meinung nach die uralte Einheit »Grad Reaumur« bezeichnet. Hier erscheint es aber im Zusammenhang mit »Rankin«. Jemand eine Ahnung, was das ist?
+#: ../src/unit-manager.c:89
+#, fuzzy
+msgctxt "unit-symbols"
+msgid "degR,˚R"
+msgstr "Grad Reaumur,˚R"
+
+#: ../src/unit-manager.c:98
+msgid "Angle"
+msgstr "Winkel"
+
+#: ../src/unit-manager.c:99
+msgid "Length"
+msgstr "Länge"
+
+#: ../src/unit-manager.c:100
+msgid "Area"
+msgstr "Fläche"
+
+#: ../src/unit-manager.c:101
+msgid "Volume"
+msgstr "Volumen"
+
+#: ../src/unit-manager.c:102
+msgid "Weight"
+msgstr "Gewicht"
+
+#: ../src/unit-manager.c:103
+msgid "Duration"
+msgstr "Dauer"
+
+#: ../src/unit-manager.c:104
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: ../src/unit-manager.c:116
+msgid "Currency"
+msgstr "Währung"
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../src/unit-manager.c:126
+#, c-format
+msgid "%s%%s"
+msgstr "%s%%s"
+
+#~ msgid "Recall"
+#~ msgstr "Abrufen"
+
+#~ msgid "← R"
+#~ msgstr "← R"
+
+#~ msgid "→ R"
+#~ msgstr "→ R"
+
+#~ msgid "Assign Variable"
+#~ msgstr "Variable zuweisen"
+
+#~ msgid "Insert Variable"
+#~ msgstr "Variable einfügen"
+
+#~ msgid "Angle Units"
+#~ msgstr "Winkeleinheiten"
+
+#~ msgid "Area Units"
+#~ msgstr "Flächeneinheiten"
+
+#~ msgid "cm³"
+#~ msgstr "cm³"
+
+#~ msgid "mm³"
+#~ msgstr "mm³"
+
+#~ msgid "Time Units"
+#~ msgstr "Zeiteinheiten"
+
+#~ msgid "%s%s = %s%s"
+#~ msgstr "%s%s = %s%s"
+
+#~ msgid "No variables defined"
+#~ msgstr "Keine Variablen definiert"
 
 #~ msgid "Clear"
 #~ msgstr "Löschen"
