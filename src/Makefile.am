@@ -1,7 +1,7 @@
 bin_PROGRAMS = gcalctool gcalccmd
-noinst_PROGRAMS = test-mp test-mp-serializer
+noinst_PROGRAMS = test-mp test-mp-equation
 
-TESTS = test-mp test-mp-serializer
+TESTS = test-mp test-mp-equation
 
 INCLUDES = \
 	-DUI_DIR=\""$(datadir)/gcalctool"\" \
@@ -105,8 +105,8 @@ test_mp_LDADD = \
 	$(GCALCCMD_LIBS) \
 	-lm
 
-test_mp_serializer_SOURCES = \
-	test-mp-serializer.c \
+test_mp_equation_SOURCES = \
+	test-mp-equation.c \
 	currency.c \
 	currency.h \
 	currency-manager.c \
@@ -129,7 +129,7 @@ test_mp_serializer_SOURCES = \
 	unit-manager.c \
 	unit-manager.h
 
-test_mp_serializer_LDADD = \
+test_mp_equation_LDADD = \
 	$(GCALCCMD_LIBS) \
 	-lm
 
