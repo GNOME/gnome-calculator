@@ -1815,7 +1815,9 @@ math_equation_init(MathEquation *equation)
     const char *digit_values = _("0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F");
     const char *default_digits[] = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
     gchar **digits;
-    gboolean use_default_digits = FALSE;
+    /* Default to using untranslated digits, this is because it doesn't make sense in most languages and we need to make this optional.
+     * See https://bugzilla.gnome.org/show_bug.cgi?id=632661 */
+    gboolean use_default_digits = TRUE;
     int i;
 
     equation->priv = G_TYPE_INSTANCE_GET_PRIVATE(equation, math_equation_get_type(), MathEquationPrivate);
