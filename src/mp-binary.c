@@ -69,9 +69,10 @@ mp_bitwise(const MPNumber *x, const MPNumber *y, int (*bitwise_operator)(int, in
         offset_out = offset1 > offset2 ? offset1 : offset2;
     }
     if (offset_out > 0 && (offset_out < offset1 || offset_out < offset2)) {
-        mperr("Overflow. Try a bigger word size");
         g_free(text1);
         g_free(text2);
+        mp_set_from_integer(0, z);
+        mperr("Overflow. Try a bigger word size");
         return;
     }
 
