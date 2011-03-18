@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT(configure.ac)
-AM_INIT_AUTOMAKE(gcalctool, 5.91.90)
+AM_INIT_AUTOMAKE(gcalctool, 5.91.91)
 AM_CONFIG_HEADER(config.h)
 AM_MAINTAINER_MODE
 GNOME_MAINTAINER_MODE_DEFINES
