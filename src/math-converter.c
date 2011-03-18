@@ -223,7 +223,10 @@ math_converter_set_conversion(MathConverter *converter, /*const gchar *category,
     ua = unit_manager_get_unit_by_name(unit_manager_get_default(), unit_a);
     ub = unit_manager_get_unit_by_name(unit_manager_get_default(), unit_b);
     if (!ua || !ub)
+    {
+        gtk_combo_box_set_active(GTK_COMBO_BOX(converter->priv->from_combo), 0);
         return;
+    }
 
     set_active_unit(GTK_COMBO_BOX(converter->priv->from_combo), NULL, ua);
     set_active_unit(GTK_COMBO_BOX(converter->priv->to_combo), NULL, ub);
