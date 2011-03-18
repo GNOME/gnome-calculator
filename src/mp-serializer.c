@@ -360,7 +360,7 @@ mp_serializer_to_string(MpSerializer *serializer, const MPNumber *x)
     case MP_DISPLAY_FORMAT_AUTOMATIC:
         s0 = mp_cast_to_string(serializer, x);
         s1 = mp_cast_to_exponential_string(serializer, x, FALSE);
-        if (g_utf8_strlen(s0, -1) < g_utf8_strlen(s1, -1))
+        if (serializer->priv->base != 10 || g_utf8_strlen(s0, -1) < g_utf8_strlen(s1, -1))
         {
             g_free(s1);
             return s0;
