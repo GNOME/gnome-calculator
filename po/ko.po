@@ -16,15 +16,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2011-02-26 23:59+0900\n"
-"PO-Revision-Date: 2011-02-27 00:14+0900\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gcalctool&component=general\n"
+"POT-Creation-Date: 2011-03-10 01:08+0000\n"
+"PO-Revision-Date: 2011-03-19 22:30+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
-"Language: Korean\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: Korean\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. The label on the memory button
@@ -806,7 +807,7 @@ msgid "South African Rand"
 msgstr "남아프리카공화국 랜드"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:86
+#: ../src/gcalctool.c:85
 #, c-format
 msgid ""
 "Usage:\n"
@@ -816,7 +817,7 @@ msgstr ""
 "  %s — 수학 계산을 합니다"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:94
+#: ../src/gcalctool.c:93
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -832,7 +833,7 @@ msgstr ""
 "  --help-gtk                      GTK+ 옵션을 표시합니다"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:105
+#: ../src/gcalctool.c:104
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -854,25 +855,23 @@ msgstr ""
 "  --g-fatal-warnings              모든 경고를 치명적으로 취급"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:119
+#: ../src/gcalctool.c:118
 #, c-format
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 "프로그램 옵션\n"
-"  -u, --unittest                  유닛 테스트를 수행합니다\n"
 "  -s, --solve <equation>          주어진 식을 풉니다"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:162
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "--solve 옵션에는 풀 식이 필요합니다"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:178
+#: ../src/gcalctool.c:172
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "알 수 없는 인수 '%s'"
@@ -2217,3 +2216,9 @@ msgstr "온도"
 #: ../src/unit-manager.c:116
 msgid "Currency"
 msgstr "통화"
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../src/unit-manager.c:126
+#, c-format
+msgid "%s%%s"
+msgstr "%s%%s"
