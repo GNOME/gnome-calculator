@@ -3,20 +3,20 @@
 # Copyright (C) 2003, 2004, 2005, 2006 Miloslav Trmac <mitr@volny.cz>.
 # This file is distributed under the same license as the gcalctool package.
 #
-# Miloslav Trmac <mitr@volny.cz>, 2003 - 2006.
+# Miloslav Trmac <mitr@volny.cz>, 2003, 2004, 2005, 2006.
 # Michal Bukovjan <bukm@centrum.cz>, 2003.
 # Jakub Friedl <jfriedl@suse.cz>, 2006.
 # Petr Pulc <petrpulc@gmail.com>, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2009.
-# Marek Černocký <marek@manet.cz>, 2009 – 2011.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2011-01-13 14:04+0000\n"
-"PO-Revision-Date: 2011-01-26 15:03+0100\n"
+"POT-Creation-Date: 2011-03-10 01:08+0000\n"
+"PO-Revision-Date: 2011-03-19 11:33+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,13 +27,13 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 
 #. The label on the memory button
-#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:4
+#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
 msgid "<i>x</i>"
 msgstr "<i>x</i>"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 #: ../data/buttons-advanced.ui.h:4 ../data/buttons-basic.ui.h:2
-#: ../data/buttons-financial.ui.h:6 ../data/buttons-programming.ui.h:2
+#: ../data/buttons-financial.ui.h:4 ../data/buttons-programming.ui.h:2
 msgid "="
 msgstr "="
 
@@ -44,7 +44,7 @@ msgstr "Absolutní hodnota"
 
 #. Accessible name for the exponentiation (x to the power of y) button
 #: ../data/buttons-advanced.ui.h:8 ../data/buttons-basic.ui.h:4
-#: ../data/buttons-financial.ui.h:40 ../data/buttons-programming.ui.h:8
+#: ../data/buttons-financial.ui.h:38 ../data/buttons-programming.ui.h:8
 msgid "Exponent"
 msgstr "Mocnina"
 
@@ -66,8 +66,8 @@ msgstr "Převrácená hodnota"
 #. Accessible name for the memory button
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
-#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:52
-#: ../src/math-buttons.c:237
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:50
+#: ../src/math-buttons.c:231
 msgid "Memory"
 msgstr "Paměť"
 
@@ -91,23 +91,18 @@ msgstr "Dolní index"
 msgid "Superscript"
 msgstr "Horní index"
 
-#. This is between the currency selector dropdowns, for example: [USD] in [EUR]
-#: ../data/buttons-financial.ui.h:2
-msgid " in "
-msgstr " na "
-
-#. Compounding Term Dialog: Calculate button
-#: ../data/buttons-financial.ui.h:8
+#. Payment Period Dialog: Button to calculate result
+#: ../data/buttons-financial.ui.h:6
 msgid "C_alculate"
 msgstr "Spočít_at"
 
-#. Double-Declining Depreciation Dialog: Label before cost input
-#: ../data/buttons-financial.ui.h:10
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:8
 msgid "C_ost:"
 msgstr "Ná_klady:"
 
 #. Periodic Payment Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:12
+#: ../data/buttons-financial.ui.h:10
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -116,7 +111,7 @@ msgstr ""
 "každého platebního období. "
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:14
+#: ../data/buttons-financial.ui.h:12
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
@@ -130,7 +125,7 @@ msgstr ""
 "typicky v letech, po které je majetek odepisován."
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:16
+#: ../data/buttons-financial.ui.h:14
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -139,7 +134,7 @@ msgstr ""
 "degresivní metody odpisu."
 
 #. Future Value Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:18
+#: ../data/buttons-financial.ui.h:16
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -149,7 +144,7 @@ msgstr ""
 "pravidelnou úrokovou sazbou po zadaný počet platebních období v dané lhůtě."
 
 #. Compounding Term Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:20
+#: ../data/buttons-financial.ui.h:18
 msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
@@ -159,7 +154,7 @@ msgstr ""
 "hodnoty na budoucí hodnotu při fixní úrokové sazbě po celé úročené období."
 
 #. Payment Period Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:22
+#: ../data/buttons-financial.ui.h:20
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -169,7 +164,7 @@ msgstr ""
 "budoucí hodnoty za dané pravidelné úrokové sazby."
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:24
+#: ../data/buttons-financial.ui.h:22
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
@@ -178,7 +173,7 @@ msgstr ""
 "budoucí hodnotu po zadaný počet úročných období."
 
 #. Present Value Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:26
+#: ../data/buttons-financial.ui.h:24
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -189,7 +184,7 @@ msgstr ""
 "dané lhůtě."
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:28
+#: ../data/buttons-financial.ui.h:26
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -198,7 +193,7 @@ msgstr ""
 "požadované hrubé marži."
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:30
+#: ../data/buttons-financial.ui.h:28
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -212,172 +207,172 @@ msgstr ""
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.c:261
+#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:255
 msgid "Compounding Term"
 msgstr "Doba úročení"
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: ../data/buttons-financial.ui.h:34
+#: ../data/buttons-financial.ui.h:32
 msgid "Ctrm"
 msgstr "Ctrm"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:36
+#: ../data/buttons-financial.ui.h:34
 msgid "Ddb"
 msgstr "Ddb"
 
 #. Title of Double-Declining Depreciation dialog
-#: ../data/buttons-financial.ui.h:38
+#: ../data/buttons-financial.ui.h:36
 msgid "Double-Declining Depreciation"
 msgstr "Dvojitě degresivní odpis"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:42 ../src/math-buttons.c:267
+#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:261
 msgid "Future Value"
 msgstr "Budoucí hodnota"
 
 #. Payment Period Dialog: Label before future value input
-#: ../data/buttons-financial.ui.h:44
+#: ../data/buttons-financial.ui.h:42
 msgid "Future _Value:"
 msgstr "Budoucí _hodnota:"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: ../data/buttons-financial.ui.h:46
+#: ../data/buttons-financial.ui.h:44
 msgid "Fv"
 msgstr "Fv"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../data/buttons-financial.ui.h:48
+#: ../data/buttons-financial.ui.h:46
 msgid "Gpm"
 msgstr "Gpm"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.c:288
+#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:282
 msgid "Gross Profit Margin"
 msgstr "Hrubá marže"
 
 #. Title of Payment Period dialog
-#: ../data/buttons-financial.ui.h:54
+#: ../data/buttons-financial.ui.h:52
 msgid "Payment Period"
 msgstr "Platební období"
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:56 ../src/math-buttons.c:279
+#: ../data/buttons-financial.ui.h:54 ../src/math-buttons.c:273
 msgid "Periodic Interest Rate"
 msgstr "Úroková sazba za období"
 
-#. Compounding Term Dialog: Label before periodic interest rate input
-#: ../data/buttons-financial.ui.h:58
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/buttons-financial.ui.h:56
 msgid "Periodic Interest _Rate:"
 msgstr "Ú_roková sazba za období:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:60 ../src/math-buttons.c:285
+#: ../data/buttons-financial.ui.h:58 ../src/math-buttons.c:279
 msgid "Periodic Payment"
 msgstr "Pravidelná splátka"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/buttons-financial.ui.h:62
+#: ../data/buttons-financial.ui.h:60
 msgid "Pmt"
 msgstr "Pmt"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:64 ../src/math-buttons.c:282
+#: ../data/buttons-financial.ui.h:62 ../src/math-buttons.c:276
 msgid "Present Value"
 msgstr "Současná hodnota"
 
-#. Compounding Term Dialog: Label before present value input
-#: ../data/buttons-financial.ui.h:66
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/buttons-financial.ui.h:64
 msgid "Present _Value:"
 msgstr "Současná _hodnota:"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/buttons-financial.ui.h:68
+#: ../data/buttons-financial.ui.h:66
 msgid "Pv"
 msgstr "Pv"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/buttons-financial.ui.h:70
+#: ../data/buttons-financial.ui.h:68
 msgid "Rate"
 msgstr "Rate"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:72
+#: ../data/buttons-financial.ui.h:70
 msgid "Sln"
 msgstr "Sln"
 
 #. Title of Straight-Line Depreciation dialog
-#: ../data/buttons-financial.ui.h:74
+#: ../data/buttons-financial.ui.h:72
 msgid "Straight-Line Depreciation"
 msgstr "Lineární odpisy"
 
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
-#: ../data/buttons-financial.ui.h:76
+#: ../data/buttons-financial.ui.h:74
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "Hodnota degresivního odpisu pro období"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:78
+#: ../data/buttons-financial.ui.h:76
 msgid "Syd"
 msgstr "Syd"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/buttons-financial.ui.h:80
+#: ../data/buttons-financial.ui.h:78
 msgid "Term"
 msgstr "Term"
 
-#. Straight-Line Depreciation Dialog: Label before cost input
-#: ../data/buttons-financial.ui.h:82
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:80
 msgid "_Cost:"
 msgstr "_Náklady:"
 
-#. Compounding Term Dialog: Label before future value input
-#: ../data/buttons-financial.ui.h:84
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:82
 msgid "_Future Value:"
 msgstr "_Budoucí hodnota:"
 
-#. Double-Declining Depreciation Dialog: Label before life input
-#: ../data/buttons-financial.ui.h:86
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:84
 msgid "_Life:"
 msgstr "Ži_votnost:"
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: ../data/buttons-financial.ui.h:88
+#: ../data/buttons-financial.ui.h:86
 msgid "_Margin:"
 msgstr "_Marže:"
 
-#. Future Value Dialog: Label before number of periods input
-#: ../data/buttons-financial.ui.h:90
+#. Present Value Dialog: Label before number of periods input
+#: ../data/buttons-financial.ui.h:88
 msgid "_Number of Periods:"
 msgstr "_Počet období:"
 
-#. Double-Declining Depreciation Dialog: Label before period input
-#: ../data/buttons-financial.ui.h:92
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:90
 msgid "_Period:"
 msgstr "_Období:"
 
-#. Future Value Dialog: Label before periodic payment input
-#: ../data/buttons-financial.ui.h:94
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/buttons-financial.ui.h:92
 msgid "_Periodic Payment:"
 msgstr "_Pravidelná splátka:"
 
 #. Periodic Payment Dialog: Label before principal input
-#: ../data/buttons-financial.ui.h:96
+#: ../data/buttons-financial.ui.h:94
 msgid "_Principal:"
 msgstr "Pů_jčka:"
 
-#. Straight-Line Depreciation Dialog: Label before salvage input
-#: ../data/buttons-financial.ui.h:98
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:96
 msgid "_Salvage:"
 msgstr "_Zůstatek:"
 
-#. Periodic Payment Dialog: Label before term input
-#: ../data/buttons-financial.ui.h:100
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/buttons-financial.ui.h:98
 msgid "_Term:"
 msgstr "_Doba:"
 
@@ -393,19 +388,19 @@ msgstr "Vložit znak"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:240
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:234
 msgid "Insert Character Code"
 msgstr "Vložit kód znaku"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:20 ../src/math-buttons.c:255
+#: ../data/buttons-programming.ui.h:20 ../src/math-buttons.c:249
 msgid "Shift Left"
 msgstr "Posun vlevo"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:258
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:252
 msgid "Shift Right"
 msgstr "Posun vpravo"
 
@@ -578,244 +573,300 @@ msgstr "Jednotky, na které se má současný výpočet převést"
 msgid "Word size"
 msgstr "Velikost slova"
 
-#: ../src/currency.h:14
-msgid "United Arab Emirates dirham"
-msgstr "Dirham Spojených arabských emirátů"
+#: ../src/currency-manager.c:20
+msgid "UAE Dirham"
+msgstr "Dirham SAE"
 
-#: ../src/currency.h:15
-msgid "Australian dollar"
+#: ../src/currency-manager.c:21
+#| msgid "Australian dollar"
+msgid "Australian Dollar"
 msgstr "Australský dolar"
 
-#: ../src/currency.h:16
-msgid "Bulgarian lev"
+#: ../src/currency-manager.c:22
+#| msgid "Bulgarian lev"
+msgid "Bulgarian Lev"
 msgstr "Bulharská leva"
 
-#: ../src/currency.h:17
-msgid "Bahraini dinar"
+#: ../src/currency-manager.c:23
+#| msgid "Bahraini dinar"
+msgid "Bahraini Dinar"
 msgstr "Bahrajnský dinár"
 
-#: ../src/currency.h:18
-msgid "Brunei dollar"
+#: ../src/currency-manager.c:24
+#| msgid "Brunei dollar"
+msgid "Brunei Dollar"
 msgstr "Brunejský dolar"
 
-#: ../src/currency.h:19
-msgid "Brazilian real"
+#: ../src/currency-manager.c:25
+#| msgid "Brazilian real"
+msgid "Brazilian Real"
 msgstr "Brazilský reál"
 
-#: ../src/currency.h:20
-msgid "Botswana pula"
+#: ../src/currency-manager.c:26
+#| msgid "Botswana pula"
+msgid "Botswana Pula"
 msgstr "Botswanská pula"
 
-#: ../src/currency.h:21
-msgid "Canadian dollar"
+#: ../src/currency-manager.c:27
+#| msgid "Canadian dollar"
+msgid "Canadian Dollar"
 msgstr "Kanadský dolar"
 
-#: ../src/currency.h:22
-msgid "Swiss franc"
+#: ../src/currency-manager.c:28
+#| msgid "Swiss franc"
+msgid "Swiss Franc"
 msgstr "Švýcarský frank"
 
-#: ../src/currency.h:23
-msgid "Chilean peso"
+#: ../src/currency-manager.c:29
+#| msgid "Chilean peso"
+msgid "Chilean Peso"
 msgstr "Chilské peso"
 
-#: ../src/currency.h:24
-msgid "Chinese yuan renminbi"
+#: ../src/currency-manager.c:30
+#| msgid "Chinese yuan renminbi"
+msgid "Chinese Yuan"
 msgstr "Čínský jüan"
 
-#: ../src/currency.h:25
-msgid "Colombian peso"
+#: ../src/currency-manager.c:31
+#| msgid "Colombian peso"
+msgid "Colombian Peso"
 msgstr "Kolumbijské peso"
 
-#: ../src/currency.h:26
-msgid "Czech koruna"
+#: ../src/currency-manager.c:32
+#| msgid "Czech koruna"
+msgid "Czech Koruna"
 msgstr "Česká koruna"
 
-#: ../src/currency.h:27
-msgid "Danish krone"
+#: ../src/currency-manager.c:33
+#| msgid "Danish krone"
+msgid "Danish Krone"
 msgstr "Dánská koruna"
 
-#: ../src/currency.h:28
-msgid "Algerian dinar"
+#: ../src/currency-manager.c:34
+#| msgid "Algerian dinar"
+msgid "Algerian Dinar"
 msgstr "Alžírský dinár"
 
-#: ../src/currency.h:29
-msgid "Estonian kroon"
+#: ../src/currency-manager.c:35
+#| msgid "Estonian kroon"
+msgid "Estonian Kroon"
 msgstr "Estonská koruna"
 
-#: ../src/currency.h:30
+#: ../src/currency-manager.c:36
 msgid "Euro"
 msgstr "Euro"
 
-#: ../src/currency.h:31
-msgid "Pound sterling"
+#: ../src/currency-manager.c:37
+#| msgid "Pound sterling"
+msgid "Pound Sterling"
 msgstr "Britská libra"
 
-#: ../src/currency.h:32
-msgid "Hong Kong dollar"
+#: ../src/currency-manager.c:38
+#| msgid "Hong Kong dollar"
+msgid "Hong Kong Dollar"
 msgstr "Honkongský dolar"
 
-#: ../src/currency.h:33
-msgid "Croatian kuna"
+#: ../src/currency-manager.c:39
+#| msgid "Croatian kuna"
+msgid "Croatian Kuna"
 msgstr "Chorvatská kuna"
 
-#: ../src/currency.h:34
-msgid "Hungarian forint"
+#: ../src/currency-manager.c:40
+#| msgid "Hungarian forint"
+msgid "Hungarian Forint"
 msgstr "Maďarský forint"
 
-#: ../src/currency.h:35
-msgid "Indonesian rupiah"
+#: ../src/currency-manager.c:41
+#| msgid "Indonesian rupiah"
+msgid "Indonesian Rupiah"
 msgstr "Indonéská rupie"
 
-#: ../src/currency.h:36
-msgid "Israeli new shekel"
+#: ../src/currency-manager.c:42
+#| msgid "Israeli new shekel"
+msgid "Israeli New Shekel"
 msgstr "Izraelský nový šekel"
 
-#: ../src/currency.h:37
-msgid "Indian rupee"
+#: ../src/currency-manager.c:43
+#| msgid "Indian rupee"
+msgid "Indian Rupee"
 msgstr "Indická rupie"
 
-#: ../src/currency.h:38
-msgid "Iranian rial"
+#: ../src/currency-manager.c:44
+#| msgid "Iranian rial"
+msgid "Iranian Rial"
 msgstr "Iránský reál"
 
-#: ../src/currency.h:39
-msgid "Icelandic krona"
+#: ../src/currency-manager.c:45
+#| msgid "Icelandic krona"
+msgid "Icelandic Krona"
 msgstr "Islandská koruna"
 
-#: ../src/currency.h:40
-msgid "Japanese yen"
+#: ../src/currency-manager.c:46
+#| msgid "Japanese yen"
+msgid "Japanese Yen"
 msgstr "Japonský jen"
 
-#: ../src/currency.h:41
-msgid "South Korean won"
+#: ../src/currency-manager.c:47
+#| msgid "South Korean won"
+msgid "South Korean Won"
 msgstr "Jihokorejský won"
 
-#: ../src/currency.h:42
-msgid "Kuwaiti dinar"
+#: ../src/currency-manager.c:48
+#| msgid "Kuwaiti dinar"
+msgid "Kuwaiti Dinar"
 msgstr "Kuvajtský dinár"
 
-#: ../src/currency.h:43
-msgid "Kazakhstani tenge"
+#: ../src/currency-manager.c:49
+#| msgid "Kazakhstani tenge"
+msgid "Kazakhstani Tenge"
 msgstr "Kazachstánské tenge"
 
-#: ../src/currency.h:44
-msgid "Sri Lankan rupee"
+#: ../src/currency-manager.c:50
+#| msgid "Sri Lankan rupee"
+msgid "Sri Lankan Rupee"
 msgstr "Srílanská rupie"
 
-#: ../src/currency.h:45
-msgid "Lithuanian litas"
+#: ../src/currency-manager.c:51
+#| msgid "Lithuanian litas"
+msgid "Lithuanian Litas"
 msgstr "Litevský litas"
 
-#: ../src/currency.h:46
-msgid "Latvian lats"
+#: ../src/currency-manager.c:52
+#| msgid "Latvian lats"
+msgid "Latvian Lats"
 msgstr "Lotyšský lat"
 
-#: ../src/currency.h:47
-msgid "Libyan dinar"
+#: ../src/currency-manager.c:53
+#| msgid "Libyan dinar"
+msgid "Libyan Dinar"
 msgstr "Libyjský dinár"
 
-#: ../src/currency.h:48
-msgid "Mauritian rupee"
+#: ../src/currency-manager.c:54
+#| msgid "Mauritian rupee"
+msgid "Mauritian Rupee"
 msgstr "Mauricijská rupie"
 
-#: ../src/currency.h:49
-msgid "Mexican peso"
+#: ../src/currency-manager.c:55
+#| msgid "Mexican peso"
+msgid "Mexican Peso"
 msgstr "Mexické peso"
 
-#: ../src/currency.h:50
-msgid "Malaysian ringgit"
+#: ../src/currency-manager.c:56
+#| msgid "Malaysian ringgit"
+msgid "Malaysian Ringgit"
 msgstr "Malajsijský ringgit"
 
-#: ../src/currency.h:51
-msgid "Norwegian krone"
+#: ../src/currency-manager.c:57
+#| msgid "Norwegian krone"
+msgid "Norwegian Krone"
 msgstr "Norská koruna"
 
-#: ../src/currency.h:52
-msgid "Nepalese rupee"
+#: ../src/currency-manager.c:58
+#| msgid "Nepalese rupee"
+msgid "Nepalese Rupee"
 msgstr "Nepálská rupie"
 
-#: ../src/currency.h:53
-msgid "New Zealand dollar"
+#: ../src/currency-manager.c:59
+#| msgid "New Zealand dollar"
+msgid "New Zealand Dollar"
 msgstr "Novozélandský dolar"
 
-#: ../src/currency.h:54
-msgid "Omani rial"
+#: ../src/currency-manager.c:60
+#| msgid "Omani rial"
+msgid "Omani Rial"
 msgstr "Ománský rial"
 
-#: ../src/currency.h:55
-msgid "Peruvian nuevo sol"
+#: ../src/currency-manager.c:61
+#| msgid "Peruvian nuevo sol"
+msgid "Peruvian Nuevo Sol"
 msgstr "Peruánské nuevo sol"
 
-#: ../src/currency.h:56
-msgid "Philippine peso"
+#: ../src/currency-manager.c:62
+#| msgid "Philippine peso"
+msgid "Philippine Peso"
 msgstr "Filipínské peso"
 
-#: ../src/currency.h:57
-msgid "Pakistani rupee"
+#: ../src/currency-manager.c:63
+#| msgid "Pakistani rupee"
+msgid "Pakistani Rupee"
 msgstr "Pakistánská rupie"
 
-#: ../src/currency.h:58
-msgid "Polish zloty"
+#: ../src/currency-manager.c:64
+#| msgid "Polish zloty"
+msgid "Polish Zloty"
 msgstr "Polský złoty"
 
-#: ../src/currency.h:59
-msgid "Qatari riyal"
+#: ../src/currency-manager.c:65
+#| msgid "Qatari riyal"
+msgid "Qatari Riyal"
 msgstr "Katarský rial"
 
-#: ../src/currency.h:60
-msgid "New Romanian leu"
+#: ../src/currency-manager.c:66
+#| msgid "New Romanian leu"
+msgid "New Romanian Leu"
 msgstr "Nové rumunské leu"
 
-#: ../src/currency.h:61
-msgid "Russian rouble"
+#: ../src/currency-manager.c:67
+#| msgid "Russian rouble"
+msgid "Russian Rouble"
 msgstr "Ruský rubl"
 
-#: ../src/currency.h:62
-msgid "Saudi riyal"
+#: ../src/currency-manager.c:68
+#| msgid "Saudi riyal"
+msgid "Saudi Riyal"
 msgstr "Saúdskoarabský rial"
 
-#: ../src/currency.h:63
-msgid "Swedish krona"
+#: ../src/currency-manager.c:69
+#| msgid "Swedish krona"
+msgid "Swedish Krona"
 msgstr "Švédská koruna"
 
-#: ../src/currency.h:64
-msgid "Singapore dollar"
+#: ../src/currency-manager.c:70
+#| msgid "Singapore dollar"
+msgid "Singapore Dollar"
 msgstr "Singapurský dolar"
 
-#: ../src/currency.h:65
-msgid "Thai baht"
+#: ../src/currency-manager.c:71
+#| msgid "Thai baht"
+msgid "Thai Baht"
 msgstr "Thajský baht"
 
-#: ../src/currency.h:66
-msgid "Tunisian dinar"
+#: ../src/currency-manager.c:72
+#| msgid "Tunisian dinar"
+msgid "Tunisian Dinar"
 msgstr "Tuniský dinár"
 
-#: ../src/currency.h:67
-msgid "New Turkish lira"
+#: ../src/currency-manager.c:73
+#| msgid "New Turkish lira"
+msgid "New Turkish Lira"
 msgstr "Nová turecká lira"
 
-#: ../src/currency.h:68
-msgid "Trinidad and Tobago dollar"
-msgstr "Trinidžský a Tobagžský dolar"
+#: ../src/currency-manager.c:74
+msgid "T&T Dollar (TTD)"
+msgstr "Dolar Trinidadu a Tobaga"
 
-#: ../src/currency.h:69
-msgid "US dollar"
+#: ../src/currency-manager.c:75
+#| msgid "US dollar"
+msgid "US Dollar"
 msgstr "Americký dolar"
 
-#: ../src/currency.h:70
-msgid "Uruguayan peso"
+#: ../src/currency-manager.c:76
+#| msgid "Uruguayan peso"
+msgid "Uruguayan Peso"
 msgstr "Uruguayské peso"
 
-#: ../src/currency.h:71
-msgid "Venezuelan bolívar"
+#: ../src/currency-manager.c:77
+#| msgid "Venezuelan bolívar"
+msgid "Venezuelan Bolívar"
 msgstr "Venezuelský bolívar"
 
-#: ../src/currency.h:72
-msgid "South African rand"
+#: ../src/currency-manager.c:78
+#| msgid "South African rand"
+msgid "South African Rand"
 msgstr "Jihoafrický rand"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:85
 #, c-format
 msgid ""
 "Usage:\n"
@@ -825,7 +876,7 @@ msgstr ""
 "  %s — Provést matematické výpočty"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:93
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -841,7 +892,7 @@ msgstr ""
 "  --help-gtk                      Zobrazí přepínače GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:104
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -865,308 +916,304 @@ msgstr ""
 "  --g-fatal-warnings              Všechna varování budou kritická"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:118
 #, c-format
+#| msgid ""
+#| "Application Options:\n"
+#| "  -u, --unittest                  Perform unit tests\n"
+#| "  -s, --solve <equation>          Solve the given equation"
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 "Přepínače aplikace:\n"
-"  -u, --unittest                  Provést testy jednotky\n"
 "  -s, --solve <rovnice>         Vyřešit zadanou rovnici"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:155
+#: ../src/gcalctool.c:162
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Přepínač --solve vyžaduje rovnici, která se má vyřešit"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:169
+#: ../src/gcalctool.c:172
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Neznámý přepínač „%s“"
 
 #. Tooltip for the Pi button
-#: ../src/math-buttons.c:109
+#: ../src/math-buttons.c:103
 msgid "Pi [Ctrl+P]"
 msgstr "Ludolfovo číslo Pí [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.c:112
+#: ../src/math-buttons.c:106
 msgid "Euler’s Number"
 msgstr "Eulerovo číslo"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.c:117
+#: ../src/math-buttons.c:111
 msgid "Subscript mode [Alt]"
 msgstr "Režim dolního indexu [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.c:120
+#: ../src/math-buttons.c:114
 msgid "Superscript mode [Ctrl]"
 msgstr "Režim horního indexu [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.c:123
+#: ../src/math-buttons.c:117
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Vědecký exponent [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.c:126
+#: ../src/math-buttons.c:120
 msgid "Add [+]"
 msgstr "Sčítání [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.c:129
+#: ../src/math-buttons.c:123
 msgid "Subtract [-]"
 msgstr "Odčítání [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.c:132
+#: ../src/math-buttons.c:126
 msgid "Multiply [*]"
 msgstr "Násobení [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.c:135
+#: ../src/math-buttons.c:129
 msgid "Divide [/]"
 msgstr "Dělení [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.c:138
+#: ../src/math-buttons.c:132
 msgid "Modulus divide"
 msgstr "Zbytek po dělení"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.c:141
+#: ../src/math-buttons.c:135
 msgid "Additional Functions"
 msgstr "Doplňující funkce"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.c:144
+#: ../src/math-buttons.c:138
 msgid "Exponent [^ or **]"
 msgstr "Mocnina [^ nebo **]"
 
 #. Tooltip for the square button
-#: ../src/math-buttons.c:147
+#: ../src/math-buttons.c:141
 msgid "Square [Ctrl+2]"
 msgstr "Druhá mocnina [Ctrl+2]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.c:150
+#: ../src/math-buttons.c:144
 msgid "Percentage [%]"
 msgstr "Procenta [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.c:153
+#: ../src/math-buttons.c:147
 msgid "Factorial [!]"
 msgstr "Faktoriál [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.c:156
+#: ../src/math-buttons.c:150
 msgid "Absolute value [|]"
 msgstr "Absolutní hodnota [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.c:159
+#: ../src/math-buttons.c:153
 msgid "Complex argument"
 msgstr "Argument komplexního čísla"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.c:162
+#: ../src/math-buttons.c:156
 msgid "Complex conjugate"
 msgstr "Komplexně sdružené číslo"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.c:165
+#: ../src/math-buttons.c:159
 msgid "Root [Ctrl+R]"
 msgstr "Odmocnina [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.c:168
+#: ../src/math-buttons.c:162
 msgid "Square root [Ctrl+R]"
 msgstr "Druhá odmocnina [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.c:171
+#: ../src/math-buttons.c:165
 msgid "Logarithm"
 msgstr "Logaritmus"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.c:174
+#: ../src/math-buttons.c:168
 msgid "Natural Logarithm"
 msgstr "Přirozený logaritmus"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.c:177
+#: ../src/math-buttons.c:171
 msgid "Sine"
 msgstr "Sinus"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.c:180
+#: ../src/math-buttons.c:174
 msgid "Cosine"
 msgstr "Kosinus"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.c:183
+#: ../src/math-buttons.c:177
 msgid "Tangent"
 msgstr "Tangent"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.c:186
+#: ../src/math-buttons.c:180
 msgid "Hyperbolic Sine"
 msgstr "Hyperbolický sinus"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.c:189
+#: ../src/math-buttons.c:183
 msgid "Hyperbolic Cosine"
 msgstr "Hyperbolický kosinus"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.c:192
+#: ../src/math-buttons.c:186
 msgid "Hyperbolic Tangent"
 msgstr "Hyperbolický tangent"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.c:195
+#: ../src/math-buttons.c:189
 msgid "Inverse [Ctrl+I]"
 msgstr "Převrácená hodnota"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.c:198
+#: ../src/math-buttons.c:192
 msgid "Boolean AND"
 msgstr "Logická konjunkce AND"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.c:201
+#: ../src/math-buttons.c:195
 msgid "Boolean OR"
 msgstr "Logická disjunkce OR"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.c:204
+#: ../src/math-buttons.c:198
 msgid "Boolean Exclusive OR"
 msgstr "Logická exkluzivní disjunkce XOR"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.c:207
+#: ../src/math-buttons.c:201
 msgid "Boolean NOT"
 msgstr "Logická negace NOT"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:210 ../src/math-buttons.c:1187
+#: ../src/math-buttons.c:204 ../src/math-buttons.c:1036
 msgid "Integer Component"
 msgstr "Celá část"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:213 ../src/math-buttons.c:1189
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1038
 msgid "Fractional Component"
 msgstr "Desetinná část"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.c:216
+#: ../src/math-buttons.c:210
 msgid "Real Component"
 msgstr "Reálná část"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.c:219
+#: ../src/math-buttons.c:213
 msgid "Imaginary Component"
 msgstr "Imaginární část"
 
-#. Tooltip for the ones complement button
-#: ../src/math-buttons.c:222
+#. Tooltip for the ones' complement button
+#: ../src/math-buttons.c:216
 msgid "Ones' Complement"
 msgstr "Jedničkový doplněk"
 
-#. Tooltip for the twos complement button
-#: ../src/math-buttons.c:225
+#. Tooltip for the two's complement button
+#: ../src/math-buttons.c:219
 msgid "Two's Complement"
 msgstr "Dvojkový doplněk"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.c:228
+#: ../src/math-buttons.c:222
 msgid "Truncate"
 msgstr "Oříznout hodnotu"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.c:231
+#: ../src/math-buttons.c:225
 msgid "Start Group [(]"
 msgstr "Začátek bloku [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.c:234
+#: ../src/math-buttons.c:228
 msgid "End Group [)]"
 msgstr "Konec bloku [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.c:243
+#: ../src/math-buttons.c:237
 msgid "Calculate Result"
 msgstr "Spočítat výsledek"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.c:246
+#: ../src/math-buttons.c:240
 msgid "Factorize [Ctrl+F]"
 msgstr "Faktorizovat [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.c:249
+#: ../src/math-buttons.c:243
 msgid "Clear Display [Escape]"
 msgstr "Smazat displej [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.c:252
+#: ../src/math-buttons.c:246
 msgid "Undo [Ctrl+Z]"
 msgstr "Zpět [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.c:264
+#: ../src/math-buttons.c:258
 msgid "Double Declining Depreciation"
 msgstr "Dvojitě degresivní odpis"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.c:270
+#: ../src/math-buttons.c:264
 msgid "Financial Term"
 msgstr "Platební období"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.c:273
+#: ../src/math-buttons.c:267
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Hodnota degresivního odpisu pro období"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.c:276
+#: ../src/math-buttons.c:270
 msgid "Straight Line Depreciation"
 msgstr "Lineární odpisy"
 
-#. Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100
-#: ../src/math-buttons.c:485
-#, c-format
-msgid "%s%s = %s%s"
-msgstr "%2$s %1$s = %4$s %3$s"
-
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:808
+#: ../src/math-buttons.c:660
 msgid "Binary"
 msgstr "Dvojkový"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:812
+#: ../src/math-buttons.c:664
 msgid "Octal"
 msgstr "Osmičkový"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:816
+#: ../src/math-buttons.c:668
 msgid "Decimal"
 msgstr "Desítkový"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:820
+#: ../src/math-buttons.c:672
 msgid "Hexadecimal"
 msgstr "Šestnáctkový"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1097 ../src/math-buttons.c:1141
+#: ../src/math-buttons.c:946 ../src/math-buttons.c:990
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1176,7 +1223,7 @@ msgstr[2] "_%d míst"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1101 ../src/math-buttons.c:1145
+#: ../src/math-buttons.c:950 ../src/math-buttons.c:994
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1185,343 +1232,89 @@ msgstr[1] "%d místa"
 msgstr[2] "%d míst"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1191
+#: ../src/math-buttons.c:1040
 msgid "Round"
 msgstr "Zaokrouhlit"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1193
+#: ../src/math-buttons.c:1042
 msgid "Floor"
 msgstr "Zaokrouhlit dolů"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1195
+#: ../src/math-buttons.c:1044
 msgid "Ceiling"
 msgstr "Zaokrouhlit nahoru"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1197
+#: ../src/math-buttons.c:1046
 msgid "Sign"
 msgstr "Znaménko"
 
-#: ../src/math-converter.c:54
-#| msgid "Angle units"
-msgid "Angle"
-msgstr "Úhel"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-converter.c:56 ../src/math-preferences.c:254
-msgid "Degrees"
-msgstr "Stupně"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-converter.c:58 ../src/math-preferences.c:258
-msgid "Radians"
-msgstr "Radiány"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-converter.c:60 ../src/math-preferences.c:262
-msgid "Gradians"
-msgstr "Grady"
-
-#: ../src/math-converter.c:62
-msgid "Length"
-msgstr "Délka"
-
-#. Length unit
-#: ../src/math-converter.c:64
-#| msgid "Paste"
-msgid "Parsecs"
-msgstr "Parseky"
-
-#. Length unit
-#: ../src/math-converter.c:66
-msgid "Light Years"
-msgstr "Světelné roky"
-
-#. Length unit
-#: ../src/math-converter.c:68
-msgid "Astronomical Units"
-msgstr "Astronomické jednotky"
-
-#. Length unit
-#: ../src/math-converter.c:70
-msgid "Nautical Miles"
-msgstr "Námořní míle"
-
-#. Length unit
-#: ../src/math-converter.c:72
-msgid "Miles"
-msgstr "Míle"
-
-#. Length unit
-#: ../src/math-converter.c:74
-msgid "Kilometers"
-msgstr "Kilometry"
-
-#. Length unit
-#: ../src/math-converter.c:76
-msgid "Cables"
-msgstr "Kabely"
-
-#. Length unit
-#: ../src/math-converter.c:78
-msgid "Fathoms"
-msgstr "Sáhy"
-
-#. Length unit
-#: ../src/math-converter.c:80
-msgid "Meters"
-msgstr "Metry"
-
-#. Length unit
-#: ../src/math-converter.c:82
-msgid "Yards"
-msgstr "Yardy"
-
-#. Length unit
-#: ../src/math-converter.c:84
-msgid "Feet"
-msgstr "Stopy"
-
-#. Length unit
-#: ../src/math-converter.c:86
-#| msgid "Inverse"
-msgid "Inches"
-msgstr "Palce"
-
-#. Length unit
-#: ../src/math-converter.c:88
-#| msgid "_Contents"
-msgid "Centimeters"
-msgstr "Centimetry"
-
-#. Length unit
-#: ../src/math-converter.c:90
-msgid "Millimeters"
-msgstr "Milimetry"
-
-#. Length unit
-#: ../src/math-converter.c:92
-msgid "Micrometers"
-msgstr "Mikrometry"
-
-#. Length unit
-#: ../src/math-converter.c:94
-msgid "Nanometers"
-msgstr "Nanometry"
-
-#: ../src/math-converter.c:96
-msgid "Area"
-msgstr "Plocha"
-
-#. Area unit
-#: ../src/math-converter.c:98
-msgid "Hectares"
-msgstr "Hektary"
-
-#. Area unit
-#: ../src/math-converter.c:100
-msgid "Acres"
-msgstr "Akry"
-
-#. Area unit
-#: ../src/math-converter.c:102
-msgid "m²"
-msgstr "m²"
-
-#. Area unit
-#: ../src/math-converter.c:104
-msgid "cm²"
-msgstr "cm²"
-
-#. Area unit
-#: ../src/math-converter.c:106
-msgid "mm²"
-msgstr "mm²"
-
-#: ../src/math-converter.c:108
-msgid "Volume"
-msgstr "Objem"
-
-#. Volume unit
-#: ../src/math-converter.c:110
-msgid "m³"
-msgstr "m³"
-
-#. Volume unit
-#: ../src/math-converter.c:112
-msgid "Gallons"
-msgstr "Galony"
-
-#. Volume unit
-#: ../src/math-converter.c:114
-msgid "Liters"
-msgstr "Litry"
-
-#. Volume unit
-#: ../src/math-converter.c:116
-msgid "Quarts"
-msgstr "Kvarty"
-
-#. Volume unit
-#: ../src/math-converter.c:118
-msgid "Pints"
-msgstr "Pinty"
-
-#. Volume unit
-#: ../src/math-converter.c:120
-msgid "Milliliters"
-msgstr "Mililitry"
-
-#. Volume unit
-#: ../src/math-converter.c:122
-msgid "cm³"
-msgstr "cm³"
-
-#. Volume unit
-#: ../src/math-converter.c:124
-msgid "mm³"
-msgstr "mm³"
-
-#: ../src/math-converter.c:126
-msgid "Weight"
-msgstr "Hmotnost"
-
-#. Weight unit
-#: ../src/math-converter.c:128
-msgid "Tonnes"
-msgstr "Tuny"
-
-#. Weight unit
-#: ../src/math-converter.c:130
-msgid "Kilograms"
-msgstr "Kilogramy"
-
-#. Weight unit
-#: ../src/math-converter.c:132
-#| msgid "Round"
-msgid "Pounds"
-msgstr "Libry"
-
-#. Weight unit
-#: ../src/math-converter.c:134
-msgid "Ounces"
-msgstr "Unce"
-
-#. Weight unit
-#: ../src/math-converter.c:136
-#| msgid "Gradians"
-msgid "Grams"
-msgstr "Gramy"
-
-#: ../src/math-converter.c:138
-msgid "Duration"
-msgstr "Čas"
-
-#. Time unit
-#: ../src/math-converter.c:140
-#| msgid "Clear"
-msgid "Years"
-msgstr "Roky"
-
-#. Time unit
-#: ../src/math-converter.c:142
-msgid "Days"
-msgstr "Dny"
-
-#. Time unit
-#: ../src/math-converter.c:144
-msgid "Hours"
-msgstr "Hodiny"
-
-#. Time unit
-#: ../src/math-converter.c:146
-msgid "Minutes"
-msgstr "Minuty"
-
-#. Time unit
-#: ../src/math-converter.c:148
-msgid "Seconds"
-msgstr "Sekundy"
-
-#. Time unit
-#: ../src/math-converter.c:150
-msgid "Milliseconds"
-msgstr "Milisekundy"
-
-#. Time unit
-#: ../src/math-converter.c:152
-msgid "Microseconds"
-msgstr "Mikrosekundy"
-
-#: ../src/math-converter.c:449
-#| msgid "Currency Converter"
-msgid "Currency"
-msgstr "Měna"
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.c:359
+msgid " in "
+msgstr " na "
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:460
+#: ../src/math-equation.c:461
 msgid "No undo history"
 msgstr "Žádná položka v historii změn"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:485
+#: ../src/math-equation.c:486
 msgid "No redo history"
 msgstr "Žádná položka v historii opakování změn"
 
-#: ../src/math-equation.c:882
+#: ../src/math-equation.c:875
 msgid "No sane value to store"
 msgstr "Nesmyslná hodnota pro uložení"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1147
+#: ../src/math-equation.c:1140
 msgid "Overflow. Try a bigger word size"
 msgstr "Došlo k přetečení. Zkuste větší velikost slova."
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1152
+#: ../src/math-equation.c:1145
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Neznámá proměnná „%s“"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1157
+#: ../src/math-equation.c:1150
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkce „%s“ není definovaná"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1162
+#: ../src/math-equation.c:1155
 msgid "Unknown conversion"
 msgstr "Neznámý převod"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1171
+#: ../src/math-equation.c:1164
 msgid "Malformed expression"
 msgstr "Nesprávný výraz"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1303
+#: ../src/math-equation.c:1296
 msgid "Need an integer to factorize"
 msgstr "Pro rozklad na součin prvočísel je zapotřebí celé číslo"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1370
+#: ../src/math-equation.c:1363
 msgid "No sane value to bitwise shift"
 msgstr "Nesmyslná hodnota pro bitový posun"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1399
+#: ../src/math-equation.c:1392
 msgid "Displayed value not an integer"
 msgstr "Zobrazená hodnota není celé číslo"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1822
+#: ../src/math-equation.c:1815
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1529,6 +1322,22 @@ msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 #: ../src/math-preferences.c:244
 msgid "_Close"
 msgstr "_Zavřít"
+
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.c:254 ../src/unit-manager.c:43
+msgid "Degrees"
+msgstr "Stupně"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.c:258 ../src/unit-manager.c:44
+msgid "Radians"
+msgstr "Radiány"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.c:262 ../src/unit-manager.c:45
+msgid "Gradians"
+msgstr "Grady"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
 #: ../src/math-preferences.c:272
@@ -1649,7 +1458,7 @@ msgstr "_Finanční"
 #. Programming menu label
 #: ../src/math-window.c:369
 msgid "_Programming"
-msgstr "_Programátorský"
+msgstr "_Programátorská"
 
 #. Help>Contents menu label
 #: ../src/math-window.c:371
@@ -1683,57 +1492,57 @@ msgid "Shift is only possible on integer values"
 msgstr "Posun je možný pouze u celočíselných hodnot"
 
 #. Translators: Error display when attempting to take argument of zero
-#: ../src/mp.c:149
+#: ../src/mp.c:156
 msgid "Argument not defined for zero"
 msgstr "Argument není definován pro nulu"
 
-#: ../src/mp.c:300
+#: ../src/mp.c:307
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Přetečení: výsledek nelze vypočítat"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:645 ../src/mp.c:677 ../src/mp.c:1611
+#: ../src/mp.c:652 ../src/mp.c:684 ../src/mp.c:1618
 msgid "Division by zero is undefined"
 msgstr "Dělení nulou není definováné"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1282 ../src/mp.c:1319
+#: ../src/mp.c:1289 ../src/mp.c:1326
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritmus nuly je nedefinovaný"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1684 ../src/mp.c:1999
+#: ../src/mp.c:1691 ../src/mp.c:2006
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Mocnina nuly není definovaná pro záporný exponent"
 
-#: ../src/mp.c:1709
+#: ../src/mp.c:1716
 msgid "Reciprocal of zero is undefined"
 msgstr "Převrácená hodnota nuly není definovaná"
 
-#: ../src/mp.c:1794
+#: ../src/mp.c:1801
 msgid "Root must be non-zero"
 msgstr "Odmocnitel musí být nenulový"
 
-#: ../src/mp.c:1812
+#: ../src/mp.c:1819
 msgid "Negative root of zero is undefined"
 msgstr "Záporná odmocnina z nuly je nedefinovaná"
 
-#: ../src/mp.c:1818
+#: ../src/mp.c:1825
 msgid "nth root of negative number is undefined for even n"
 msgstr "n-tá odmocnina záporného čísla není definovaná pro sudé n"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1939
+#: ../src/mp.c:1946
 msgid "Factorial is only defined for natural numbers"
 msgstr "Faktoriál je definovaný pouze pro přirozená čísla"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1959
+#: ../src/mp.c:1966
 msgid "Modulus division is only defined for integers"
 msgstr "Zbytek po dělení je definován pouze pro celá čísla"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:311
+#: ../src/mp-trigonometric.c:318
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1741,259 +1550,787 @@ msgstr ""
 "(90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:356
+#: ../src/mp-trigonometric.c:363
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Inverzní sinus není definován pro hodnoty mimo interval [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:373
+#: ../src/mp-trigonometric.c:380
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Inverzní kosinus není definován pro hodnoty mimo interval [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:592
+#: ../src/mp-trigonometric.c:599
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Inverzní hyperbolický kosinus není definován pro hodnoty menší než jedna"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:616
+#: ../src/mp-trigonometric.c:623
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverzní hyperbolický tangens není definován pro hodnoty mimo interval [-1, "
 "1]"
 
-#~ msgid "Recall"
-#~ msgstr "Vyvolat"
+#: ../src/unit-manager.c:43
+#, c-format
+#| msgid "Degrees"
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s °"
+
+#: ../src/unit-manager.c:43
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "°,stupeň,stupně,stupňů"
+
+#: ../src/unit-manager.c:44
+#, c-format
+#| msgid "Gradians"
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s rad"
+
+#: ../src/unit-manager.c:44
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "rad,radián,radiány,radiánů"
+
+#: ../src/unit-manager.c:45
+#, c-format
+#| msgid "Gradians"
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s grad"
+
+#: ../src/unit-manager.c:45
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "grad,gradián,gradiány,gradiánů"
+
+#: ../src/unit-manager.c:46
+msgid "Parsecs"
+msgstr "Parseky"
+
+#: ../src/unit-manager.c:46
+#, c-format
+#| msgid "%d place"
+#| msgid_plural "%d places"
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
+
+#: ../src/unit-manager.c:46
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "pc,parsek,parseky,parseků"
+
+#: ../src/unit-manager.c:47
+msgid "Light Years"
+msgstr "Světelné roky"
+
+#: ../src/unit-manager.c:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s ly"
+
+#: ../src/unit-manager.c:47
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "ly,světelný rok,světelné roky,světelných roků,světelných let"
+
+#: ../src/unit-manager.c:48
+msgid "Astronomical Units"
+msgstr "Astronomické jednotky"
+
+#: ../src/unit-manager.c:48
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s AU"
+
+#: ../src/unit-manager.c:48
+msgctxt "unit-symbols"
+msgid "au"
+msgstr ""
+"AU,au,astronomická jednotka,astronomické jednotky,astronomických jednotek"
+
+#: ../src/unit-manager.c:49
+msgid "Nautical Miles"
+msgstr "Námořní míle"
+
+#: ../src/unit-manager.c:49 ../src/unit-manager.c:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s NM"
+
+#: ../src/unit-manager.c:49
+msgctxt "unit-symbols"
+msgid "nm"
+msgstr "NM,Nm,nmi,námořní míle,námořních mil"
+
+#: ../src/unit-manager.c:50
+msgid "Miles"
+msgstr "Míle"
+
+#: ../src/unit-manager.c:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s M"
+
+#: ../src/unit-manager.c:50
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "M,mi,míle,mil"
+
+#: ../src/unit-manager.c:51
+msgid "Kilometers"
+msgstr "Kilometry"
+
+#: ../src/unit-manager.c:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
+
+#: ../src/unit-manager.c:51
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "km,kilometr,kilometry,kilometrů"
+
+#: ../src/unit-manager.c:52
+msgid "Cables"
+msgstr "Kabely"
+
+#: ../src/unit-manager.c:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cbl"
+
+#: ../src/unit-manager.c:52
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "cbl,cb,kabel,kabely,kabelů"
+
+#: ../src/unit-manager.c:53
+msgid "Fathoms"
+msgstr "Sáhy"
+
+#: ../src/unit-manager.c:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s fth"
+
+#: ../src/unit-manager.c:53
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "fth,ftm,fm,sáh,sáhy,sáhů,fathom,fathomy,fathomů"
+
+#: ../src/unit-manager.c:54
+msgid "Meters"
+msgstr "Metry"
+
+#: ../src/unit-manager.c:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
+
+#: ../src/unit-manager.c:54
+#| msgid "Centimeters"
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "m,metr,metry,metrů"
+
+#: ../src/unit-manager.c:55
+msgid "Yards"
+msgstr "Yardy"
+
+#: ../src/unit-manager.c:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
+
+#: ../src/unit-manager.c:55
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "yd,yard,yardy,yardů"
+
+#: ../src/unit-manager.c:56
+msgid "Feet"
+msgstr "Stopy"
+
+#: ../src/unit-manager.c:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ′"
+
+#: ../src/unit-manager.c:56
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "′,',ft,stopa,stopy,stop"
+
+#: ../src/unit-manager.c:57
+msgid "Inches"
+msgstr "Palce"
+
+#: ../src/unit-manager.c:57
+#, c-format
+#| msgid " in "
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s ″"
+
+#: ../src/unit-manager.c:57
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "″,\",in,palec,palce,palců,coul,couly,coulů"
+
+#: ../src/unit-manager.c:58
+msgid "Centimeters"
+msgstr "Centimetry"
+
+#: ../src/unit-manager.c:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
+
+#: ../src/unit-manager.c:58
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "cm,centimetr,centimetry,centimetrů"
+
+#: ../src/unit-manager.c:59
+msgid "Millimeters"
+msgstr "Milimetry"
+
+#: ../src/unit-manager.c:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
+
+#: ../src/unit-manager.c:59
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "mm,milimetr,milimetry,milimetrů"
+
+#: ../src/unit-manager.c:60
+msgid "Micrometers"
+msgstr "Mikrometry"
+
+#: ../src/unit-manager.c:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
+
+#: ../src/unit-manager.c:60
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "μm,um,mikrometr,mikrometry,mikrometrů"
+
+#: ../src/unit-manager.c:61
+msgid "Nanometers"
+msgstr "Nanometry"
+
+#: ../src/unit-manager.c:61
+#| msgid "Nanometers"
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers"
+msgstr "nm,nanometr,nanometry,nanometrů"
+
+#: ../src/unit-manager.c:62
+msgid "Hectares"
+msgstr "Hektary"
+
+#: ../src/unit-manager.c:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../src/unit-manager.c:62
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "ha,hektar,hektary,hektarů"
+
+#: ../src/unit-manager.c:63
+msgid "Acres"
+msgstr "Akry"
+
+#: ../src/unit-manager.c:63
+#, c-format
+#| msgid "%d place"
+#| msgid_plural "%d places"
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s ac"
+
+#: ../src/unit-manager.c:63
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "ac,akr,akry,akrů,acre"
+
+#: ../src/unit-manager.c:64
+#| msgid "Square [Ctrl+2]"
+msgid "Square Meter"
+msgstr "Metry čtverečné"
+
+#: ../src/unit-manager.c:64
+#, c-format
+#| msgid "m²"
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../src/unit-manager.c:64
+#| msgid "m²"
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²,m2,metr čtvereční,metry čtvereční,metrů čtverečních"
+
+#: ../src/unit-manager.c:65
+#| msgid "Centimeters"
+msgid "Square Centimeter"
+msgstr "Centimetry čtverečné"
+
+#: ../src/unit-manager.c:65
+#, c-format
+#| msgid "cm²"
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit-manager.c:65
+#| msgid "cm²"
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr ""
+"cm²,cm2,centimetr čtvereční,centimetry čtvereční,centimetrů čtverečních"
+
+#: ../src/unit-manager.c:66
+#| msgid "Millimeters"
+msgid "Square Millimeter"
+msgstr "Milimetry čtverečné"
+
+#: ../src/unit-manager.c:66
+#, c-format
+#| msgid "mm²"
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit-manager.c:66
+#| msgid "mm²"
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²,mm2,milimetr čtvereční,milimetry čtvereční,milimetrů čtverečních"
+
+#: ../src/unit-manager.c:67
+#| msgid "Meters"
+msgid "Cubic Meters"
+msgstr "Metry krychlové"
+
+#: ../src/unit-manager.c:67
+#, c-format
+#| msgid "m³"
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit-manager.c:67
+#| msgid "m³"
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr ""
+"m³,m3,metr krychlový,metry krychlové,metrů krychlových,metr kubický,metry "
+"kubické,metrů kubických"
+
+#: ../src/unit-manager.c:68
+msgid "Gallons"
+msgstr "Galony"
+
+#: ../src/unit-manager.c:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../src/unit-manager.c:68
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "gal,galon,galony,galonů"
+
+#: ../src/unit-manager.c:69
+#| msgid "Liters"
+msgid "Litres"
+msgstr "Litry"
+
+#: ../src/unit-manager.c:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s l"
+
+#: ../src/unit-manager.c:69
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "l,litr,litry,litrů"
+
+#: ../src/unit-manager.c:70
+msgid "Quarts"
+msgstr "Kvarty"
+
+#: ../src/unit-manager.c:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s qt"
+
+#: ../src/unit-manager.c:70
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "gt,kvarta,kvarty,kvart"
+
+#: ../src/unit-manager.c:71
+msgid "Pints"
+msgstr "Pinty"
+
+#: ../src/unit-manager.c:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
+
+#: ../src/unit-manager.c:71
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "pt,pinta,pinty,pint"
+
+#: ../src/unit-manager.c:72
+#| msgid "Milliliters"
+msgid "Millilitres"
+msgstr "Mililitry"
+
+#: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s ml"
+
+#: ../src/unit-manager.c:72
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "ml,cm³,mililitr,mililitry,mililitrů"
+
+#: ../src/unit-manager.c:73
+#| msgid "Micrometers"
+msgid "Microlitre"
+msgstr "Mikrolitry"
+
+#: ../src/unit-manager.c:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μl"
+
+#: ../src/unit-manager.c:73
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μl,ul,mikrolitr,mikrolitry,mikrolitrů"
+
+#: ../src/unit-manager.c:74
+msgid "Tonnes"
+msgstr "Tuny"
+
+#: ../src/unit-manager.c:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s t"
+
+#: ../src/unit-manager.c:74
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "t,tuna,tuny,tun"
+
+#: ../src/unit-manager.c:75
+msgid "Kilograms"
+msgstr "Kilogramy"
+
+#: ../src/unit-manager.c:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
+
+#: ../src/unit-manager.c:75
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "kg,kilogram,kilogramy,kilogramů,kilo,kila,kil"
+
+#: ../src/unit-manager.c:76
+msgid "Pounds"
+msgstr "Libry"
+
+#: ../src/unit-manager.c:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../src/unit-manager.c:76
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "lb,libra,libry,liber"
+
+#: ../src/unit-manager.c:77
+msgid "Ounces"
+msgstr "Unce"
+
+#: ../src/unit-manager.c:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz"
+
+#: ../src/unit-manager.c:77
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "oz,unce,uncí"
+
+#: ../src/unit-manager.c:78
+msgid "Grams"
+msgstr "Gramy"
+
+#: ../src/unit-manager.c:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit-manager.c:78
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "g,gram,gramy,gramů"
+
+#: ../src/unit-manager.c:79
+msgid "Years"
+msgstr "Roky"
+
+#: ../src/unit-manager.c:79
+#, c-format
+#| msgid "Years"
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s r"
+
+#: ../src/unit-manager.c:79
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "r,rok,roky,roků,let"
+
+#: ../src/unit-manager.c:80
+msgid "Days"
+msgstr "Dny"
+
+#: ../src/unit-manager.c:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s d"
+
+#: ../src/unit-manager.c:80
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "d,den,dny,dnů,dní"
+
+#: ../src/unit-manager.c:81
+msgid "Hours"
+msgstr "Hodiny"
+
+#: ../src/unit-manager.c:81
+#, c-format
+#| msgid "Hours"
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s h"
+
+#: ../src/unit-manager.c:81
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "h,hod,hodina,hodiny,hodin"
+
+#: ../src/unit-manager.c:82
+msgid "Minutes"
+msgstr "Minuty"
+
+#: ../src/unit-manager.c:82
+#, c-format
+#| msgid "Minutes"
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s min"
+
+#: ../src/unit-manager.c:82
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "min,minuta,minuty,minut"
+
+#: ../src/unit-manager.c:83
+msgid "Seconds"
+msgstr "Sekundy"
+
+#: ../src/unit-manager.c:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit-manager.c:83
+#| msgid "Microseconds"
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "s,sekunda,sekundy,sekund,vteřina,vteřiny,vteřin"
+
+#: ../src/unit-manager.c:84
+msgid "Milliseconds"
+msgstr "Milisekundy"
+
+#: ../src/unit-manager.c:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit-manager.c:84
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "ms,milisekunda,milisekundy,milisekund"
+
+#: ../src/unit-manager.c:85
+msgid "Microseconds"
+msgstr "Mikrosekundy"
+
+#: ../src/unit-manager.c:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit-manager.c:85
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us"
+msgstr "μs,us,mikrosekunda,mikrosekundy,mikrosekund"
+
+#: ../src/unit-manager.c:86
+msgid "Celcius"
+msgstr "Stupně Celsia"
+
+#: ../src/unit-manager.c:86
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚C"
+msgstr "%s ℃"
+
+#: ../src/unit-manager.c:86
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "℃,°C,stupeň Celsia,stupně Celsia,stupňů Celsia"
+
+#: ../src/unit-manager.c:87
+#| msgid "Feet"
+msgid "Farenheit"
+msgstr "Stupně Farenheita"
+
+#: ../src/unit-manager.c:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚F"
+msgstr "%s ℉"
+
+#: ../src/unit-manager.c:87
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "℉,°F,stupeň Farenheita,stupně Farenheita,stupňů Farenheita"
+
+#: ../src/unit-manager.c:88
+#| msgid "Ceiling"
+msgid "Kelvin"
+msgstr "Stupně Kelvina"
+
+#: ../src/unit-manager.c:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚K"
+msgstr "%s K"
+
+#: ../src/unit-manager.c:88
+msgctxt "unit-symbols"
+msgid "degK,˚K"
+msgstr ""
+"K,°K,Kelvin,Kelviny,Kelvinů,stupeň Kelvina,stupně Kelvina,stupňů Kelvina"
+
+#: ../src/unit-manager.c:89
+msgid "Rankine"
+msgstr "Stupeň Rankina"
+
+#: ../src/unit-manager.c:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚R"
+msgstr "%s ˚R"
+
+#: ../src/unit-manager.c:89
+msgctxt "unit-symbols"
+msgid "degR,˚R"
+msgstr "°R,stupeň Rankina,stupně Rankina,stupňů Rankina"
+
+#: ../src/unit-manager.c:98
+msgid "Angle"
+msgstr "Úhel"
+
+#: ../src/unit-manager.c:99
+msgid "Length"
+msgstr "Délka"
+
+#: ../src/unit-manager.c:100
+msgid "Area"
+msgstr "Plocha"
+
+#: ../src/unit-manager.c:101
+msgid "Volume"
+msgstr "Objem"
+
+#: ../src/unit-manager.c:102
+msgid "Weight"
+msgstr "Hmotnost"
+
+#: ../src/unit-manager.c:103
+msgid "Duration"
+msgstr "Čas"
+
+#: ../src/unit-manager.c:104
+msgid "Temperature"
+msgstr "Teplota"
+
+#: ../src/unit-manager.c:116
+msgid "Currency"
+msgstr "Měna"
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../src/unit-manager.c:126
+#, c-format
+#| msgid "%s%s = %s%s"
+msgid "%s%%s"
+msgstr "%%2$s %1$s"
 
-#~ msgid "← R"
-#~ msgstr "← R"
-
-#~ msgid "→ R"
-#~ msgstr "→ R"
-
-#~ msgid "Assign Variable"
-#~ msgstr "Přiřadit proměnnou"
-
-#~ msgid "Insert Variable"
-#~ msgstr "Vložit proměnnou"
-
-#~ msgid "No variables defined"
-#~ msgstr "Není definovaná žádná proměnná"
-
-#~ msgid "&#x2190; R"
-#~ msgstr "&#x2190; R"
-
-#~ msgid "&#x2192; R"
-#~ msgstr "&#x2192; R"
-
-#~ msgid "Undo"
-#~ msgstr "Zpět"
-
-#~ msgid "&#xA4;$&#x20AC;"
-#~ msgstr "&#xA4;$&#x20AC;"
-
-#~ msgid ""
-#~ "Converts between different currencies. Enter the amount and the currency "
-#~ "you want to convert from on the upper row, and the currency you want to "
-#~ "convert to on the lower row, and the amount will be displayed on the "
-#~ "lower row."
-#~ msgstr ""
-#~ "Přepočet mezi různými měnami. Zadejte částku a měnu, kterou chcete "
-#~ "přepočítat, do horního řádku a měnu, na kterou chcete přepočítat, do "
-#~ "dolního řádku a přepočítaná částka se zobrazí v dolním řádku."
-
-#~ msgid "Currency Conversion"
-#~ msgstr "Přepočet měn"
-
-#~ msgid "Display Mode"
-#~ msgstr "Typ zobrazení"
-
-#~ msgid "Indicates whether the memory register window is initially displayed."
-#~ msgstr "Udává, zda se při spuštění zobrazí okno s paměťovými registry."
-
-#~ msgid "Mode"
-#~ msgstr "Řežim"
-
-#~ msgid "Show Registers"
-#~ msgstr "Zobrazit paměťové registry"
-
-#~ msgid ""
-#~ "The display format used in advanced mode. One of: \"ENG\" (engineering), "
-#~ "\"FIX\" (fixed-point) and \"SCI\" (scientific)"
-#~ msgstr ""
-#~ "Formát zobrazení použitý v pokročilém režimu. Platné hodnoty jsou "
-#~ "„ENG“ (inženýrský), „FIX“ (s pevnou čárkou) a „SCI“ (vědecký)."
-
-#~ msgid ""
-#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-#~ msgstr ""
-#~ "Počáteční režim kalkulačky. Platné hodnoty jsou „BASIC“ (základní), "
-#~ "„FINANCIAL“ (finanční), „LOGICAL“ (pokročilý), „SCIENTIFIC“ (vědecký) a "
-#~ "„PROGRAMMING“ (programátorský)."
-
-#~ msgid ""
-#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-#~ "\" (gradians) and \"RAD\" (radians)."
-#~ msgstr ""
-#~ "Počáteční trigonometrické jednotky. Platné hodnoty jsou „DEG“ (stupně), "
-#~ "„GRAD“ (grady) a „RAD“ (radiány)."
-
-#~ msgid "The initial x-coordinate for the window"
-#~ msgstr "Počáteční pozice x pro okno"
-
-#~ msgid "The initial y-coordinate for the window"
-#~ msgstr "Počáteční pozice y pro okno"
-
-#~ msgid ""
-#~ "The number of pixels to place the window from the left of the screen."
-#~ msgstr "Počet pixelů na umístění okna od levého okraje obrazovky."
-
-#~ msgid "The number of pixels to place the window from the top of the screen."
-#~ msgstr "Počet pixelů na umístění okna od horního okraje obrazovky."
-
-#~ msgid "The numeric base (used in programming mode)"
-#~ msgstr "Číselná soustava (použitá v programátorském režimu)"
-
-#~ msgid "Trigonometric type"
-#~ msgstr "Trigonometrické jednotky"
-
-#~ msgid ""
-#~ "You don't have any recent currency rates. Should some be downloaded now?"
-#~ msgstr "Nemáte tabulku aktuálních měnových kurzů. Má se nějaká stáhnout?"
-
-#~ msgid ""
-#~ "Currency rates could not be downloaded. You may receive inaccurate "
-#~ "results, or you may not receive any results at all."
-#~ msgstr ""
-#~ "Nelze stáhnout tabulku měnových kurzů. Kvůli tomu můžete získat nesprávné "
-#~ "výsledky nebo dokonce nemusíte získat vůbec žádné."
-
-#~ msgid "Logarithm of negative values is undefined"
-#~ msgstr "Logaritmus záporného čísla je nedefinovaný"
-
-#~ msgid "The power of negative numbers is only defined for integer exponents"
-#~ msgstr ""
-#~ "Mocnina záporných čísel je definovaná pouze pro celočíselné exponenty"
-
-#~ msgid "Square root is undefined for negative values"
-#~ msgstr "Druhá mocnina není definovaná pro záporná čísla"
-
-#~ msgid "10 places"
-#~ msgstr "o 10 míst"
-
-#~ msgid "11 places"
-#~ msgstr "o 11 míst"
-
-#~ msgid "12 places"
-#~ msgstr "o 12 míst"
-
-#~ msgid "13 places"
-#~ msgstr "o 13 míst"
-
-#~ msgid "14 places"
-#~ msgstr "o 14 míst"
-
-#~ msgid "15 places"
-#~ msgstr "o 15 míst"
-
-#~ msgid "Base 16"
-#~ msgstr "Základ 16"
-
-#~ msgid "Base 2"
-#~ msgstr "Základ 2"
-
-#~ msgid "Base 8"
-#~ msgstr "Základ 8"
-
-#~ msgid "Display _Format:"
-#~ msgstr "_Formát zobrazení:"
-
-#~ msgid "Factorize into prime numbers (Ctrl+F)"
-#~ msgstr "Rozložit na součin prvočísel (Ctrl+F)"
-
-#~ msgid "Insert ASCII Value"
-#~ msgstr "Vložit hodnotu ASCII"
-
-#~ msgid "Insert character"
-#~ msgstr "Vložit znak"
-
-#~ msgid "Numeric point [. or ,]"
-#~ msgstr "Desetinná čárka [, nebo .]"
-
-#~ msgid "Random number"
-#~ msgstr "Náhodné číslo"
-
-#~ msgid "Recall value"
-#~ msgstr "Vyvolat hodnotu"
-
-#~ msgid "Result Region"
-#~ msgstr "Oblast výsledku"
-
-#~ msgid "Shift left [<]"
-#~ msgstr "Posun vlevo [<]"
-
-#~ msgid "Shift right [>]"
-#~ msgstr "Posun vpravo [>]"
-
-#~ msgid "Store value"
-#~ msgstr "Zapamatovat hodnotu"
-
-#~ msgid "_2 places"
-#~ msgstr "o _2 místa"
-
-#~ msgid "_3 places"
-#~ msgstr "o _3 místa"
-
-#~ msgid "_4 places"
-#~ msgstr "o _4 místa"
-
-#~ msgid "_5 places"
-#~ msgstr "o _5 míst"
-
-#~ msgid "_6 places"
-#~ msgstr "o _6 míst"
-
-#~ msgid "_7 places"
-#~ msgstr "o _7 míst"
-
-#~ msgid "_8 places"
-#~ msgstr "o _8 míst"
-
-#~ msgid "_9 places"
-#~ msgstr "o _9 míst"
-
-#~ msgid "_Scientific"
-#~ msgstr "_Vědecká"
-
-#~ msgid "_View"
-#~ msgstr "_Zobrazit"
-
-#~ msgid "No redo steps"
-#~ msgstr "Žádné kroky opakování"
-
-#~ msgid "Calculator — Advanced"
-#~ msgstr "Kalkulačka - pokročilá"
-
-#~ msgid "Calculator — Financial"
-#~ msgstr "Kalkulačka - finanční"
-
-#~ msgid "Calculator — Scientific"
-#~ msgstr "Kalkulačka - vědecká"
-
-#~ msgid "Calculator — Programming"
-#~ msgstr "Kalkulačka - programátorská"
-
-#~ msgid "Error loading user interface"
-#~ msgstr "Chyba načítání uživatelského rozhraní"
-
-#~ msgid ""
-#~ "A required file is missing or damaged. Please check your installation.\n"
-#~ "\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Požadovaný soubor chybí nebo je poškozený. Zkontrolujte prosím svoji "
-#~ "instalaci.\n"
-#~ "\n"
-#~ "%s"
