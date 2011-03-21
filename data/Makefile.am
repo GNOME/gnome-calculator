@@ -15,7 +15,7 @@ Utilities_in_files = gcalctool.desktop.in
 Utilities_DATA = $(Utilities_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
-man1_MANS = gcalctool.1
+man1_MANS = gcalctool.1 gcalccmd.1
 
 EXTRA_DIST = $(ui_DATA) org.gnome.gcalctool.gschema.xml.in gcalctool.desktop.in $(man1_MANS)
 
