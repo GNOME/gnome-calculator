@@ -1,1852 +1,2439 @@
 # Afrikaans translation of gcalctool.
+# Copyright (C)
 # This file is distributed under the same license as the gcalctool package.
-# F Wolff <friedel@translate.org.za>, 2008
+# F Wolff <friedel@translate.org.za>, 2008,2011.
+# Hermien Bos <hermienbos@gmail.com>, 2010.
+# Petrus Potgieter <petrus@potgieter.org>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: svn trunk (for GNOME 2.22)\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-22 00:20+0200\n"
-"PO-Revision-Date: 2008-09-15 21:23+0200\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalct"
+"ool&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-03-11 20:47+0000\n"
+"PO-Revision-Date: 2011-03-24 23:48+0200\n"
 "Last-Translator: F Wolff <friedel@translate.org.za>\n"
 "Language-Team: translate-discuss-af@lists.sourceforge.net\n"
+"Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: VirTaal 0.1\n"
+"X-Generator: Virtaal 0.7.0-beta4\n"
 
-#: ../gcalctool/calctool.c:492
-msgid "Kilometer-to-mile conversion factor"
-msgstr "Omskakelingsfaktor vir kilometer-na-myl"
+#. The label on the memory button
+#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
+msgid "<i>x</i>"
+msgstr ""
 
-#: ../gcalctool/calctool.c:494
-msgid "square root of 2"
-msgstr "vierkantswortel van 2"
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:4 ../data/buttons-basic.ui.h:2
+#: ../data/buttons-financial.ui.h:4 ../data/buttons-programming.ui.h:2
+msgid "="
+msgstr "="
 
-#: ../gcalctool/calctool.c:495
-msgid "Euler's Number (e)"
-msgstr "Euler se getal (e)"
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:6 ../data/buttons-programming.ui.h:4
+msgid "Absolute Value"
+msgstr "Absolute waarde"
 
-#: ../gcalctool/calctool.c:496
-msgid "pi"
-msgstr "pi"
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:8 ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:38 ../data/buttons-programming.ui.h:8
+msgid "Exponent"
+msgstr "Eksponent"
 
-#: ../gcalctool/calctool.c:497
-msgid "Centimeter-to-inch conversion factor"
-msgstr "Omskakelingsfaktor vir sentimeter-na-duim"
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:10 ../data/buttons-programming.ui.h:10
+msgid "Factorial"
+msgstr "Fakulteit"
 
-#: ../gcalctool/calctool.c:499
-msgid "degrees in a radian"
-msgstr "grade in 'n radiaal"
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:12 ../data/buttons-programming.ui.h:12
+msgid "Factorize"
+msgstr "Faktoriseer"
 
-#: ../gcalctool/calctool.c:500
-msgid "2 ^ 20"
-msgstr "2 ^ 20"
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:14 ../data/buttons-programming.ui.h:18
+msgid "Inverse"
+msgstr "Inverse"
 
-#: ../gcalctool/calctool.c:501
-msgid "Gram-to-ounce conversion factor"
-msgstr "Omskakelingsfaktor vir gram-na-ons"
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:50
+#: ../src/math-buttons.c:231
+msgid "Memory"
+msgstr "Geheue"
 
-#: ../gcalctool/calctool.c:503
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "Omskakelingsfaktor vir kilojoule-na-Britse-temperatuur-eenheid"
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:18
+msgid "Scientific Exponent"
+msgstr "Wetenskaplike eksponent"
 
-#: ../gcalctool/calctool.c:506
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Omskakelingsfaktor vir kubieke-sentimeter-na-kubieke-duim"
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:24
+msgid "Store"
+msgstr "Stoor"
 
-#. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
-#.
-#: ../gcalctool/calctool.c:517 ../gcalctool/mp.c:1633
-#: ../gcalctool/mpmath.c:347 ../gcalctool/mpmath.c:384
-#: ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:998
-msgid "Error"
-msgstr "Fout"
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:26
+msgid "Subscript"
+msgstr "Onderskrif"
 
-# Sien http://bugzilla.gnome.org/show_bug.cgi?id=519979 vir 'n verklaring van 
-# wat hierdie beteken. Dit kombineer met iets soos "-a needs accuracy value"
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is an error message (see the last parameter in the
-#. * getparam() call in the get_options() routine below.
-#.
-#: ../gcalctool/calctool.c:534
-#, c-format
-msgid "%s: %s as next argument.\n"
-msgstr "%s: %s as daaropvolgende argument.\n"
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:28
+msgid "Superscript"
+msgstr "Boskrif"
 
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is the program version number.
-#.
-#: ../gcalctool/calctool.c:547
-#, c-format
+#. Payment Period Dialog: Button to calculate result
+#: ../data/buttons-financial.ui.h:6
+msgid "C_alculate"
+msgstr "B_ereken"
+
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:8
+msgid "C_ost:"
+msgstr "K_oste:"
+
+#. Periodic Payment Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:10
 msgid ""
-"%s version %s\n"
-"\n"
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
 msgstr ""
-"%s weergawe %s\n"
-"\n"
+"Bereken die bedrag vir die periodieke betaling van 'n lening, waar betalings "
+"aan die einde van elke betaaltydperk gemaak word."
 
-#: ../gcalctool/calctool.c:548
-#, c-format
-msgid "Usage: %s: [-E] [-u] [-a accuracy] "
-msgstr "Gebruik: %s: [-E] [-u] [-a akkuraatheid] "
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:12
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
+msgstr ""
+"Bereken die waardeverminderingstoelaag op 'n bate vir 'n spesifieke tydperk, "
+"deur die som-van-die-jare-se-syfers-metode te gebruik. Dié metode van "
+"waardevermindering versnel die tempo van waardevermindering, sodat meer "
+"waardeverminderingskoste aan die begin van die tydperk voorkom as aan die "
+"einde. Die nuttige lewensduur is die aantal tydperke, tipies jare, waaroor "
+"die bate waarde verminder."
 
-#: ../gcalctool/calctool.c:549
-msgid "\t\t [-?] [-v] [-h]\n"
-msgstr "\t\t [-?] [-v] [-h]\n"
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:14
+#, fuzzy
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"Bereken die waardeverminderingstoelaag vir 'n bate vir 'n spesifieke "
+"tydperk, deur die dubbel-dalingsbalans metode te gebruik."
 
-#: ../gcalctool/calctool.c:570
-msgid "-a needs accuracy value"
-msgstr "-a benodig akkuraatheid"
+#. Future Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:16
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Bereken die toekomstige waarde van 'n belegging gebaseer op 'n reeks van "
+"gelyke betalings teen 'n periodieke rentekoers oor die hoeveelheid "
+"betaaltydperke in die termyn."
 
-#: ../gcalctool/calctool.c:574 ../gcalctool/get.c:242
-#, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: akkuraatheid moet in die omvang 0-%d wees\n"
+#. Compounding Term Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:18
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Bereken die aantal saamgestelde tydperke wat nodig is om 'n belegging van 'n "
+"huidige waarde te vergroot na 'n toekomstige waarde, teen 'n vaste "
+"rentekoers per saamgestelde tydperk."
 
-#: ../gcalctool/display.c:326
-msgid "No undo history"
-msgstr "Geen ontdoen-register"
+#. Payment Period Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:20
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Bereken die aantal betaaltydperke wat nodig is gedurende die termyn van 'n "
+"gewone annuïteit om 'n toekomstige waarde te bereik, teen 'n periodieke "
+"rentekoers."
 
-#: ../gcalctool/display.c:340
-msgid "No redo steps"
-msgstr "Geen herdoenstappe"
+#. Periodic Interest Rate Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:22
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
+"Bereken die periodieke rente wat nodig is om 'n belegging te vermeerder tot "
+"'n toekomstige waarde oor die aantal saamgestelde tydperke."
 
-#: ../gcalctool/functions.c:77
-msgid "Malformed function"
-msgstr "Wangevormde funksie"
+#. Present Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:24
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
+"Bereken die huidige waarde van 'n belegging gebaseer op 'n reeks van gelyke "
+"betalings met afslag teen 'n periodieke rentekoers oor die aantal betaaltyd "
+"in die termyn."
 
-#: ../gcalctool/functions.c:87
-msgid "No sane value to do bitwise shift"
+#. Gross Profit Margin Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:26
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Bereken die verkoopprys van 'n produk, gebaseer op die produkkoste en die "
+"verwagte bruto winsgrens."
+
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:28
+#, fuzzy
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+"Bereken die waardevermindering van 'n bate volgens die reguitlynmetode vir "
+"'n tydperk. Hierdie metode van waardevermindering verdeel die slytasiekoste "
+"eweredig oor die nuttige lewensduur van 'n bate. Die nuttige lewensduur is "
+"die aantal tydperke, tipies jare, waaroor 'n bate waarde verminder."
+
+#. Title of Compounding Term dialog
+#. Tooltip for the compounding term button
+#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:255
+#, fuzzy
+msgid "Compounding Term"
+msgstr "Saamgestelde termyn"
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/buttons-financial.ui.h:32
+msgid "Ctrm"
 msgstr ""
 
-#: ../gcalctool/functions.c:109 ../gcalctool/functions.c:160
-msgid "No sane value to convert"
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:34
+msgid "Ddb"
 msgstr ""
 
-#: ../gcalctool/functions.c:134 ../gcalctool/functions.c:178
-msgid "No sane value to store"
+#. Title of Double-Declining Depreciation dialog
+#: ../data/buttons-financial.ui.h:36
+msgid "Double-Declining Depreciation"
+msgstr "Dubbel-dalende waardevermindering"
+
+#. Title of Future Value dialog
+#. Tooltip for the future value button
+#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:261
+msgid "Future Value"
+msgstr "Toekomstige waarde"
+
+#. Payment Period Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:42
+msgid "Future _Value:"
+msgstr "Toekomstige _waarde:"
+
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/buttons-financial.ui.h:44
+msgid "Fv"
+msgstr "Tw"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/buttons-financial.ui.h:46
+msgid "Gpm"
+msgstr "Bwg"
+
+#. Title of Gross Profit Margin dialog
+#. Tooltip for the gross profit margin button
+#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:282
+msgid "Gross Profit Margin"
+msgstr "Bruto winsgrens"
+
+#. Title of Payment Period dialog
+#: ../data/buttons-financial.ui.h:52
+#, fuzzy
+msgid "Payment Period"
+msgstr "Betalingstermyn"
+
+#. Title of Periodic Interest Rate dialog
+#. Tooltip for the periodic interest rate button
+#: ../data/buttons-financial.ui.h:54 ../src/math-buttons.c:273
+msgid "Periodic Interest Rate"
+msgstr "Periodieke rentekoers"
+
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/buttons-financial.ui.h:56
+msgid "Periodic Interest _Rate:"
+msgstr "Periodieke _rentekoers:"
+
+#. Title of Periodic Payment dialog
+#. Tooltip for the periodic payment button
+#: ../data/buttons-financial.ui.h:58 ../src/math-buttons.c:279
+msgid "Periodic Payment"
+msgstr "Periodieke betalings"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/buttons-financial.ui.h:60
+msgid "Pmt"
 msgstr ""
 
-#: ../gcalctool/functions.c:311
-msgid "Invalid number for the current base"
-msgstr "Ongeldige getal vir die huidige basis"
+#. Title of Present Value dialog
+#. Tooltip for the present value button
+#: ../data/buttons-financial.ui.h:62 ../src/math-buttons.c:276
+msgid "Present Value"
+msgstr "Huidige waarde"
 
-#: ../gcalctool/functions.c:315
-msgid "Too long number"
-msgstr "Te lang getal"
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/buttons-financial.ui.h:64
+msgid "Present _Value:"
+msgstr "Huidige _waarde:"
 
-#: ../gcalctool/functions.c:319
-msgid "Invalid bitwise operation parameter(s)"
-msgstr "Ongeldige parameter(s) vir bisbewerking"
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/buttons-financial.ui.h:66
+msgid "Pv"
+msgstr "Hw"
 
-#: ../gcalctool/functions.c:323
-msgid "Invalid modulus operation parameter(s)"
-msgstr "Ongeldige parameter(s) vir modulusbewerking"
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/buttons-financial.ui.h:68
+msgid "Rate"
+msgstr "Koers"
 
-#: ../gcalctool/functions.c:327
-msgid "Math operation error"
-msgstr "Wiskundebewerkingsfout"
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:70
+msgid "Sln"
+msgstr "Rln"
 
-#: ../gcalctool/functions.c:331
-msgid "Malformed expression"
-msgstr "Wangevormde uitdrukking"
+#. Title of Straight-Line Depreciation dialog
+#: ../data/buttons-financial.ui.h:72
+msgid "Straight-Line Depreciation"
+msgstr "Reguitlyn-waardevermindering"
 
-#: ../gcalctool/get.c:263
-#, c-format
-msgid "%s: base should be 2, 8, 10 or 16\n"
-msgstr "%s: basis behoort 2, 8, 10 of 16 te wees\n"
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
+#: ../data/buttons-financial.ui.h:74
+msgid "Sum-of-the-Years'-Digits Depreciation"
+msgstr "Som-van-die-jare-se-syfers-waardevermindering"
 
-#: ../gcalctool/get.c:278
-#, c-format
-msgid "%s: invalid display mode [%s]\n"
-msgstr "%s: ongeldige vertoonmodus [%s]\n"
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:76
+msgid "Syd"
+msgstr "Sjs"
 
-#: ../gcalctool/get.c:293
-#, c-format
-msgid "%s: invalid mode [%s]\n"
-msgstr "%s: ongeldige modus [%s]\n"
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/buttons-financial.ui.h:78
+msgid "Term"
+msgstr "Termyn"
 
-#: ../gcalctool/get.c:307
-#, c-format
-msgid "%s: invalid trigonometric mode [%s]\n"
-msgstr "%s: ongeldige trigonometriese modus [%s]\n"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:80
+msgid "_Cost:"
+msgstr "_Koste:"
 
-#: ../gcalctool/gtk.c:55 ../gcalctool.desktop.in.h:1
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:82
+msgid "_Future Value:"
+msgstr "_Toekomstige waarde:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:84
+#, fuzzy
+msgid "_Life:"
+msgstr "_Lewensduur:"
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/buttons-financial.ui.h:86
+msgid "_Margin:"
+msgstr "_Grens:"
+
+#. Present Value Dialog: Label before number of periods input
+#: ../data/buttons-financial.ui.h:88
+msgid "_Number of Periods:"
+msgstr "_Aantal tydperke:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:90
+msgid "_Period:"
+msgstr "Tyd_perk:"
+
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/buttons-financial.ui.h:92
+msgid "_Periodic Payment:"
+msgstr "_Periodieke betalings:"
+
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/buttons-financial.ui.h:94
+msgid "_Principal:"
+msgstr "_Hoofsom:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:96
+msgid "_Salvage:"
+msgstr "_Herwinning:"
+
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/buttons-financial.ui.h:98
+msgid "_Term:"
+msgstr "_Termyn:"
+
+#. Insert ASCII dialog: Label before character entry
+#: ../data/buttons-programming.ui.h:6
+msgid "Ch_aracter:"
+msgstr "K_arakter:"
+
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:14
+msgid "Insert Character"
+msgstr "Voeg karakter in"
+
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:234
+msgid "Insert Character Code"
+msgstr "Voeg karakterkode in"
+
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+#: ../data/buttons-programming.ui.h:20 ../src/math-buttons.c:249
+msgid "Shift Left"
+msgstr "Skuif links"
+
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:252
+msgid "Shift Right"
+msgstr "Skuif regs"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: ../data/buttons-programming.ui.h:30
+msgid "_Insert"
+msgstr "_Voeg in"
+
+#. The label on the memory button
+#: ../data/buttons-programming.ui.h:32
+msgid "x"
+msgstr ""
+
+#. Word size combo: 16 bits
+#: ../data/preferences.ui.h:2
+msgid "16-bit"
+msgstr "16-bis"
+
+#. Word size combo: 32 bits
+#: ../data/preferences.ui.h:4
+msgid "32-bit"
+msgstr "32-bis"
+
+#. Word size combo: 64 bits
+#: ../data/preferences.ui.h:6
+msgid "64-bit"
+msgstr "64-bis"
+
+#. Word size combo: 8 bits
+#: ../data/preferences.ui.h:8
+msgid "8-bit"
+msgstr "8-bis"
+
+#. Preferences dialog: Label for display format combo box
+#: ../data/preferences.ui.h:10
+msgid "Number _Format:"
+msgstr "Getal_formaat:"
+
+#. Title of preferences dialog
+#: ../data/preferences.ui.h:11 ../src/math-preferences.c:239
+msgid "Preferences"
+msgstr "Voorkeure"
+
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/preferences.ui.h:13
+msgid "Show _thousands separators"
+msgstr "Wys _duisendeskeiers"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/preferences.ui.h:15
+msgid "Show trailing _zeroes"
+msgstr "Wys afsluitings_nulle"
+
+#. Preferences dialog: label for word size combo box
+#: ../data/preferences.ui.h:17
+msgid "Word _size:"
+msgstr "Woordg_rootte:"
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/preferences.ui.h:19
+msgid "_Angle units:"
+msgstr "_Hoekeenhede:"
+
+#. Title of main window
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:522
 msgid "Calculator"
 msgstr "Sakrekenaar"
 
-#: ../gcalctool/gtk.c:55
-msgid "Calculator - Advanced"
-msgstr "Sakrekenaar - Gevorderd"
+#: ../data/gcalctool.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Voer rekenkundige, wetenskaplike of finansiële berekeninge uit"
 
-#: ../gcalctool/gtk.c:55
-msgid "Calculator - Financial"
-msgstr "Sakrekenaar - Finansieel"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
+msgid "Accuracy value"
+msgstr "Akkuraatheidswaarde"
 
-#: ../gcalctool/gtk.c:56
-msgid "Calculator - Scientific"
-msgstr "Sakrekenaar - Wetenskaplik"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+#| msgid "_Angle units:"
+msgid "Angle units"
+msgstr "Hoekeenhede"
 
-#: ../gcalctool/gtk.c:61
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr "Knoppiemodus"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+msgid "Currency of the current calculation"
+msgstr "Geldeenheid van die huidige berekening"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+msgid "Currency to convert the current calculation into"
+msgstr "Geldeenheid waarin die huidige berekening omgeskakel moet word"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
+#, fuzzy
+msgid ""
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
+msgstr ""
+"Dui aan of 'n afsluitende nul na die desimale skeier vertoon moet word in "
+"die vertoonwaarde."
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "Dui aan of duisendeskeiers in groot getalle gewys word."
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+#| msgid "Number _Format:"
+msgid "Number format"
+msgstr "Getalformaat"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
+msgid "Numeric Base"
+msgstr "Getalbasis"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
+msgid "Show Thousands Separators"
+msgstr "Wys duisendeskeiers"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
+#, fuzzy
+msgid "Show Trailing Zeroes"
+msgstr "Wys afsluitingsnulle"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+msgid "Source currency"
+msgstr "Brongeldeenheid"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Source units"
+msgstr "Broneenheid"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "Target currency"
+msgstr "Teikengeldeenheid"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+#| msgid "_Angle units:"
+msgid "Target units"
+msgstr "Teikeneenhede"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The angle units to use"
+msgstr "Hoekeenhede om te gebruik"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+msgid "The button mode"
+msgstr "Die knoppiemodus"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The format to display numbers in"
+msgstr "Formaat vir die vertoon van getalle"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+#| msgid ""
+#| "The number of digits displayed after the numeric point. This value must "
+#| "be in the range 0 to 9."
+msgid "The number of digits displayed after the numeric point"
+msgstr "Die aantal syfers wat na die desimale skeier verskyn"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+#| msgid "Numeric Base"
+msgid "The numeric base"
+msgstr "Die getalbasis"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
+#| msgid ""
+#| "The size of the words used in bitwise operations. Valid values are 16, 32 "
+#| "and 64."
+msgid "The size of the words used in bitwise operations"
+msgstr "Die grootte van die woorde wat gebruik word in bisgewyse berekeninge"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+msgid "Units of the current calculation"
+msgstr "Eenhede vir die huidige berekening"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+msgid "Units to convert the current calculation into"
+msgstr "Eenhede waarin die huidige berekening omgeskakel moet word"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
+msgid "Word size"
+msgstr "Woordgrootte"
+
+#: ../src/currency-manager.c:20
+msgid "UAE Dirham"
+msgstr "VAE-dirham"
+
+#: ../src/currency-manager.c:21
+#| msgid "Australian dollar"
+msgid "Australian Dollar"
+msgstr "Australiese dollar"
+
+#: ../src/currency-manager.c:22
+#| msgid "Bulgarian lev"
+msgid "Bulgarian Lev"
+msgstr "Bulgaarse lev"
+
+#: ../src/currency-manager.c:23
+msgid "Bahraini Dinar"
+msgstr "Bahreinse dinar"
+
+#: ../src/currency-manager.c:24
+msgid "Brunei Dollar"
+msgstr "Bruneise dollar"
+
+#: ../src/currency-manager.c:25
+#| msgid "Brazilian real"
+msgid "Brazilian Real"
+msgstr "Brasiliaanse real"
+
+#: ../src/currency-manager.c:26
+msgid "Botswana Pula"
+msgstr "Botswana-pula"
+
+#: ../src/currency-manager.c:27
+#| msgid "Canadian dollar"
+msgid "Canadian Dollar"
+msgstr "Kanadese dollar"
+
+#: ../src/currency-manager.c:28
+#| msgid "Swiss franc"
+msgid "Swiss Franc"
+msgstr "Switserse frank"
+
+#: ../src/currency-manager.c:29
+msgid "Chilean Peso"
+msgstr "Chileense peso"
+
+#: ../src/currency-manager.c:30
+#, fuzzy
+#| msgid "Chinese yuan renminbi"
+msgid "Chinese Yuan"
+msgstr "Sjinese yuan renminbi"
+
+#: ../src/currency-manager.c:31
+#, fuzzy
+msgid "Colombian Peso"
+msgstr "Kolombi peso"
+
+#: ../src/currency-manager.c:32
+#| msgid "Czech koruna"
+msgid "Czech Koruna"
+msgstr "Tsjeggiese kroon"
+
+#: ../src/currency-manager.c:33
+#| msgid "Danish krone"
+msgid "Danish Krone"
+msgstr "Deense kroon"
+
+#: ../src/currency-manager.c:34
+#, fuzzy
+msgid "Algerian Dinar"
+msgstr "Algeriese dinar"
+
+#: ../src/currency-manager.c:35
+#| msgid "Estonian kroon"
+msgid "Estonian Kroon"
+msgstr "Estlandse kroon"
+
+#: ../src/currency-manager.c:36
+msgid "Euro"
+msgstr "Euro"
+
+#: ../src/currency-manager.c:37
+#| msgid "Pound sterling"
+msgid "Pound Sterling"
+msgstr "Pond sterling"
+
+#: ../src/currency-manager.c:38
+#| msgid "Hong Kong dollar"
+msgid "Hong Kong Dollar"
+msgstr "Hongkong dollar"
+
+#: ../src/currency-manager.c:39
+#, fuzzy
+#| msgid "Croatian kuna"
+msgid "Croatian Kuna"
+msgstr "Kroatiese kuna"
+
+#: ../src/currency-manager.c:40
+#, fuzzy
+#| msgid "Hungarian forint"
+msgid "Hungarian Forint"
+msgstr "Hongaarse forint"
+
+#: ../src/currency-manager.c:41
+#, fuzzy
+#| msgid "Indonesian rupiah"
+msgid "Indonesian Rupiah"
+msgstr "Indonesiese rupee"
+
+#: ../src/currency-manager.c:42
+msgid "Israeli New Shekel"
+msgstr "Israel se nuwe sjekel"
+
+#: ../src/currency-manager.c:43
+#, fuzzy
+#| msgid "Indian rupee"
+msgid "Indian Rupee"
+msgstr "Indiese rupee"
+
+#: ../src/currency-manager.c:44
+#, fuzzy
+#| msgid "Brazilian real"
+msgid "Iranian Rial"
+msgstr "Brasiliaanse real"
+
+#: ../src/currency-manager.c:45
+#, fuzzy
+#| msgid "Icelandic krona"
+msgid "Icelandic Krona"
+msgstr "Yslandse kroon"
+
+#: ../src/currency-manager.c:46
+#, fuzzy
+#| msgid "Japanese yen"
+msgid "Japanese Yen"
+msgstr "Japannese jen"
+
+#: ../src/currency-manager.c:47
+#, fuzzy
+#| msgid "South Korean won"
+msgid "South Korean Won"
+msgstr "Suid-Koreaanse won"
+
+#: ../src/currency-manager.c:48
+msgid "Kuwaiti Dinar"
+msgstr "Kuweit-dinar"
+
+#: ../src/currency-manager.c:49
+msgid "Kazakhstani Tenge"
+msgstr "Kazakhstan-tenge"
+
+#: ../src/currency-manager.c:50
+msgid "Sri Lankan Rupee"
+msgstr ""
+
+#: ../src/currency-manager.c:51
+#, fuzzy
+#| msgid "Lithuanian litas"
+msgid "Lithuanian Litas"
+msgstr "Lituaneese litas"
+
+#: ../src/currency-manager.c:52
+msgid "Latvian Lats"
+msgstr ""
+
+#: ../src/currency-manager.c:53
+msgid "Libyan Dinar"
+msgstr ""
+
+#: ../src/currency-manager.c:54
+msgid "Mauritian Rupee"
+msgstr ""
+
+#: ../src/currency-manager.c:55
+#, fuzzy
+#| msgid "Mexican peso"
+msgid "Mexican Peso"
+msgstr "Mexikaanse peso"
+
+#: ../src/currency-manager.c:56
+#, fuzzy
+#| msgid "Malaysian ringgit"
+msgid "Malaysian Ringgit"
+msgstr "Maleisiese ringgit"
+
+#: ../src/currency-manager.c:57
+#, fuzzy
+#| msgid "Norwegian krone"
+msgid "Norwegian Krone"
+msgstr "Noorse kroon"
+
+#: ../src/currency-manager.c:58
+msgid "Nepalese Rupee"
+msgstr ""
+
+#: ../src/currency-manager.c:59
+#, fuzzy
+#| msgid "New Zealand dollar"
+msgid "New Zealand Dollar"
+msgstr "Nieu-Seelandse dollar"
+
+#: ../src/currency-manager.c:60
+msgid "Omani Rial"
+msgstr ""
+
+#: ../src/currency-manager.c:61
+msgid "Peruvian Nuevo Sol"
+msgstr ""
+
+#: ../src/currency-manager.c:62
+#, fuzzy
+#| msgid "Philippine peso"
+msgid "Philippine Peso"
+msgstr "Filippynse peso"
+
+#: ../src/currency-manager.c:63
+msgid "Pakistani Rupee"
+msgstr ""
+
+#: ../src/currency-manager.c:64
+#, fuzzy
+#| msgid "Polish zloty"
+msgid "Polish Zloty"
+msgstr "Poolse zloty"
+
+#: ../src/currency-manager.c:65
+msgid "Qatari Riyal"
+msgstr ""
+
+#: ../src/currency-manager.c:66
+#, fuzzy
+msgid "New Romanian Leu"
+msgstr "Nieu Romaanse leu"
+
+#: ../src/currency-manager.c:67
+#| msgid "Russian rouble"
+msgid "Russian Rouble"
+msgstr "Russiese roebel"
+
+#: ../src/currency-manager.c:68
+msgid "Saudi Riyal"
+msgstr ""
+
+#: ../src/currency-manager.c:69
+#| msgid "Swedish krona"
+msgid "Swedish Krona"
+msgstr "Sweedse kroon"
+
+#: ../src/currency-manager.c:70
+#| msgid "Singapore dollar"
+msgid "Singapore Dollar"
+msgstr "Singapoer-dollar"
+
+#: ../src/currency-manager.c:71
+#, fuzzy
+#| msgid "Thai baht"
+msgid "Thai Baht"
+msgstr "Thai baht"
+
+#: ../src/currency-manager.c:72
+#, fuzzy
+msgid "Tunisian Dinar"
+msgstr "Tunisiese dinar"
+
+#: ../src/currency-manager.c:73
+#, fuzzy
+#| msgid "New Turkish lira"
+msgid "New Turkish Lira"
+msgstr "Nuwe Turkse lira"
+
+#: ../src/currency-manager.c:74
+msgid "T&T Dollar (TTD)"
+msgstr ""
+
+#: ../src/currency-manager.c:75
+#, fuzzy
+#| msgid "US dollar"
+msgid "US Dollar"
+msgstr "Amerikaanse dollar"
+
+#: ../src/currency-manager.c:76
+msgid "Uruguayan Peso"
+msgstr ""
+
+#: ../src/currency-manager.c:77
+msgid "Venezuelan Bolívar"
+msgstr ""
+
+#: ../src/currency-manager.c:78
+#| msgid "South African rand"
+msgid "South African Rand"
+msgstr "Suid-Afrikaanse rand"
+
+#. Description on how to use gcalctool displayed on command-line
+#: ../src/gcalctool.c:85
 #, c-format
-msgid "Calculator [%s]"
-msgstr "Sakrekenaar [%s]"
+msgid ""
+"Usage:\n"
+"  %s — Perform mathematical calculations"
+msgstr ""
+"Gebruik:\n"
+"  %s — Voer wiskundige berekeninge uit"
 
-#: ../gcalctool/gtk.c:61
+#. Description on gcalctool command-line help options displayed on command-line
+#: ../src/gcalctool.c:93
 #, c-format
-msgid "Calculator [%s] - Advanced"
-msgstr "Sakrekenaar [%s] - Gevorderd"
+msgid ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+msgstr ""
+"Hulpkeuses:\n"
+"  -v, --version                   Wys vrystellingsweergawe\n"
+"  -h, -? --help                   Wys hulpkeuses\n"
+"  --help-all                      Wys al die hulpkeuses\n"
+"  --help-gtk                      Wys GTK+-keuses"
 
-#: ../gcalctool/gtk.c:61
+#. Description on gcalctool command-line GTK+ options displayed on command-line
+#: ../src/gcalctool.c:104
 #, c-format
-msgid "Calculator [%s] - Financial"
-msgstr "Sakrekenaar [%s] - Finansieel"
+msgid ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window "
+"manager\n"
+"  --name=NAME                     Program name as used by the window "
+"manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+msgstr ""
+"GTK+ Opsies:\n"
+"--class=KLAS                      Programklas soos gebruik deur die "
+"vensterbestuurder\n"
+"--name=NAAM                       Programnaam soos gebruik deur die "
+"vensterbestuurder\n"
+"--screen=SKERM                    X-skerm om te gebruik\n"
+"--sync                            Doen X-roepe sinkronies\n"
+"--gtk-module=MODULES              Laai addisionele GTK+-modules\n"
+"--g-fatal-warnings                Maak alle waarskuwings fataal"
 
-#: ../gcalctool/gtk.c:62
+#. Description on gcalctool application options displayed on command-line
+#: ../src/gcalctool.c:118
 #, c-format
-msgid "Calculator [%s] - Scientific"
-msgstr "Sakrekenaar [%s] - Wetenskaplik"
+#| msgid ""
+#| "Application Options:\n"
+#| "  -u, --unittest                  Perform unit tests\n"
+#| "  -s, --solve <equation>          Solve the given equation"
+msgid ""
+"Application Options:\n"
+"  -s, --solve <equation>          Solve the given equation"
+msgstr ""
+"Toepassingskeuses:\n"
+"-s, --solve <vergelyking>         Los die gegewe vergelyking op"
 
-#: ../gcalctool/gtk.c:494 ../glade/gcalctool.glade.h:385
-#, no-c-format
-msgid "_Other (%d) ..."
-msgstr "_Ander (%d) ..."
-
-#: ../gcalctool/gtk.c:498
+#. Error printed to stderr when user uses --solve argument without an equation
+#: ../src/gcalctool.c:162
 #, c-format
-msgid "Set accuracy from 0 to %d numeric place."
-msgid_plural "Set accuracy from 0 to %d numeric places."
-msgstr[0] "Stel akkuraatheid vanaf 0 na %d syfer."
-msgstr[1] "Stel akkuraatheid vanaf 0 na %d syfers."
+msgid "Argument --solve requires an equation to solve"
+msgstr "Argument --solve vereis 'n vergelyking om op te los"
 
-#. Translators: This refers to the current accuracy setting
-#: ../gcalctool/gtk.c:504
+#. Error printed to stderr when user provides an unknown command-line argument
+#: ../src/gcalctool.c:172
 #, c-format
-msgid "Currently set to %d place."
-msgid_plural "Currently set to %d places."
-msgstr[0] "Tans gestel op %d plek."
-msgstr[1] "Tans gestel op %d plekke."
+msgid "Unknown argument '%s'"
+msgstr "Onbekende argument '%s'"
 
-#. Factorial
-#: ../gcalctool/gtk.c:537 ../glade/gcalctool.glade.h:313
-msgid "Sin"
-msgstr "Sin"
+#. Tooltip for the Pi button
+#: ../src/math-buttons.c:103
+msgid "Pi [Ctrl+P]"
+msgstr "Pi [Ctrl+P]"
 
-#: ../gcalctool/gtk.c:537
-msgid "Sinh"
-msgstr "Sinh"
+#. Tooltip for the Euler's Number button
+#: ../src/math-buttons.c:106
+#| msgid "Eulers Number"
+msgid "Euler’s Number"
+msgstr "Euler se getal"
 
-#: ../gcalctool/gtk.c:538
-msgid "Sin<sup>-1</sup>"
-msgstr "Sin<sup>-1</sup>"
+#. Tooltip for the subscript button
+#: ../src/math-buttons.c:111
+msgid "Subscript mode [Alt]"
+msgstr "Onderskrifmodus [Alt]"
 
-#: ../gcalctool/gtk.c:539
-msgid "Sinh<sup>-1</sup>"
-msgstr "Sinh<sup>-1</sup>"
+#. Tooltip for the superscript button
+#: ../src/math-buttons.c:114
+#| msgid "Supercript mode [Ctrl]"
+msgid "Superscript mode [Ctrl]"
+msgstr "Boskrifmodus [Ctrl]"
 
-#. Factorial
-#: ../gcalctool/gtk.c:541 ../glade/gcalctool.glade.h:139
-msgid "Cos"
-msgstr "Cos"
+#. Tooltip for the scientific exponent button
+#: ../src/math-buttons.c:117
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "Wetenskaplike eksponent [Ctrl+E]"
 
-#: ../gcalctool/gtk.c:541
-msgid "Cosh"
-msgstr "Cosh"
+#. Tooltip for the add button
+#: ../src/math-buttons.c:120
+msgid "Add [+]"
+msgstr "Optel [+]"
 
-#: ../gcalctool/gtk.c:542
-msgid "Cos<sup>-1</sup>"
-msgstr "Cos<sup>-1</sup>"
+#. Tooltip for the subtract button
+#: ../src/math-buttons.c:123
+msgid "Subtract [-]"
+msgstr "Aftrek [-]"
 
-#: ../gcalctool/gtk.c:543
-msgid "Cosh<sup>-1</sup>"
-msgstr "Cosh<sup>-1</sup>"
+#. Tooltip for the multiply button
+#: ../src/math-buttons.c:126
+msgid "Multiply [*]"
+msgstr "Vermenigvuldig [*]"
 
-#. Factorial
-#: ../gcalctool/gtk.c:545 ../glade/gcalctool.glade.h:338
-msgid "Tan"
-msgstr "Tan"
+#. Tooltip for the divide button
+#: ../src/math-buttons.c:129
+msgid "Divide [/]"
+msgstr "Deel [/]"
 
-#: ../gcalctool/gtk.c:545
-msgid "Tanh"
-msgstr "Tanh"
+#. Tooltip for the modulus divide button
+#: ../src/math-buttons.c:132
+#, fuzzy
+msgid "Modulus divide"
+msgstr "Modulo-deling"
 
-#: ../gcalctool/gtk.c:546
-msgid "Tan<sup>-1</sup>"
-msgstr "Tan<sup>-1</sup>"
+#. Tooltip for the additional functions button
+#: ../src/math-buttons.c:135
+msgid "Additional Functions"
+msgstr "Bykomende funksies"
 
-#: ../gcalctool/gtk.c:547
-msgid "Tanh<sup>-1</sup>"
-msgstr "Tanh<sup>-1</sup>"
+#. Tooltip for the exponent button
+#: ../src/math-buttons.c:138
+msgid "Exponent [^ or **]"
+msgstr "Eksponent [^ of **]"
 
-#. Translators: When the bit editor is visible, there will be two
-#. * rows of ones and zeroes shown. When the number being displayed in
-#. * in the calculator is an integer value, these ones and zeroes will
-#. * be sensitive, and they will correspond to the value of each of
-#. * the bits in the displayed integer number. By clicking on any of
-#. * the labels for these ones and zeroes, their value can be toggled
-#. * (a one becomes a zero and a zero becomes a one), causing the
-#. * displayed integer value to be adjusted accordingly.
-#.
-#: ../gcalctool/gtk.c:645
-msgid "Bit editor activated. Click on bit values to toggle them."
-msgstr "Bisredigeerder geaktiveer. Klik op biswaardes om hulle om te swaai."
+#. Tooltip for the square button
+#: ../src/math-buttons.c:141
+msgid "Square [Ctrl+2]"
+msgstr "Kwadraat [Ctrl+2]"
 
-#: ../gcalctool/gtk.c:1082
+#. Tooltip for the percentage button
+#: ../src/math-buttons.c:144
+msgid "Percentage [%]"
+msgstr "Persentasie [%]"
+
+#. Tooltip for the factorial button
+#: ../src/math-buttons.c:147
+msgid "Factorial [!]"
+msgstr "Fakulteit [!]"
+
+#. Tooltip for the absolute value button
+#: ../src/math-buttons.c:150
+msgid "Absolute value [|]"
+msgstr "Absolute waarde [|]"
+
+#. Tooltip for the complex argument component button
+#: ../src/math-buttons.c:153
+#, fuzzy
+msgid "Complex argument"
+msgstr "Komplekse argument"
+
+#. Tooltip for the complex conjugate button
+#: ../src/math-buttons.c:156
+msgid "Complex conjugate"
+msgstr "Komplekse konjugasie"
+
+#. Tooltip for the root button
+#: ../src/math-buttons.c:159
+msgid "Root [Ctrl+R]"
+msgstr "Wortel [Ctrl+R]"
+
+#. Tooltip for the square root button
+#: ../src/math-buttons.c:162
+msgid "Square root [Ctrl+R]"
+msgstr "Vierkantswortel [Ctrl+R]"
+
+#. Tooltip for the logarithm button
+#: ../src/math-buttons.c:165
+msgid "Logarithm"
+msgstr "Logaritme"
+
+#. Tooltip for the natural logarithm button
+#: ../src/math-buttons.c:168
+msgid "Natural Logarithm"
+msgstr "Natuurlike logaritme"
+
+#. Tooltip for the sine button
+#: ../src/math-buttons.c:171
+msgid "Sine"
+msgstr "Sinus"
+
+#. Tooltip for the cosine button
+#: ../src/math-buttons.c:174
+msgid "Cosine"
+msgstr "Kosinus"
+
+#. Tooltip for the tangent button
+#: ../src/math-buttons.c:177
+msgid "Tangent"
+msgstr "Tangens"
+
+#. Tooltip for the hyperbolic sine button
+#: ../src/math-buttons.c:180
+msgid "Hyperbolic Sine"
+msgstr "Hiperboliese sinus"
+
+#. Tooltip for the hyperbolic cosine button
+#: ../src/math-buttons.c:183
+msgid "Hyperbolic Cosine"
+msgstr "Hiperboliese kosinus"
+
+#. Tooltip for the hyperbolic tangent button
+#: ../src/math-buttons.c:186
+msgid "Hyperbolic Tangent"
+msgstr "Hiperboliese tangens"
+
+#. Tooltip for the inverse button
+#: ../src/math-buttons.c:189
+msgid "Inverse [Ctrl+I]"
+msgstr "Inverse [Ctrl+I]"
+
+#. Tooltip for the boolean AND button
+#: ../src/math-buttons.c:192
+msgid "Boolean AND"
+msgstr "Boolese EN"
+
+#. Tooltip for the boolean OR button
+#: ../src/math-buttons.c:195
+msgid "Boolean OR"
+msgstr "Boolese OF"
+
+#. Tooltip for the exclusive OR button
+#: ../src/math-buttons.c:198
+msgid "Boolean Exclusive OR"
+msgstr "Boolese eksklusiewe OF"
+
+#. Tooltip for the boolean NOT button
+#: ../src/math-buttons.c:201
+msgid "Boolean NOT"
+msgstr "Boolese NIE"
+
+#. Tooltip for the integer component button
+#: ../src/math-buttons.c:204 ../src/math-buttons.c:1036
+msgid "Integer Component"
+msgstr "Heelgetaldeel"
+
+#. Tooltip for the fractional component button
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1038
+msgid "Fractional Component"
+msgstr "Breukdeel"
+
+#. Tooltip for the real component button
+#: ../src/math-buttons.c:210
+msgid "Real Component"
+msgstr "Reële deel"
+
+#. Tooltip for the imaginary component button
+#: ../src/math-buttons.c:213
+msgid "Imaginary Component"
+msgstr "Imaginêre deel"
+
+#. Tooltip for the ones' complement button
+#: ../src/math-buttons.c:216
+msgid "Ones' Complement"
+msgstr "Eenkompliment"
+
+#. Tooltip for the two's complement button
+#: ../src/math-buttons.c:219
+msgid "Two's Complement"
+msgstr "Tweekompliment"
+
+#. Tooltip for the truncate button
+#: ../src/math-buttons.c:222
+msgid "Truncate"
+msgstr "Afkap"
+
+#. Tooltip for the start group button
+#: ../src/math-buttons.c:225
+msgid "Start Group [(]"
+msgstr "Begin groep [(]"
+
+#. Tooltip for the end group button
+#: ../src/math-buttons.c:228
+msgid "End Group [)]"
+msgstr "Eindig groep [)]"
+
+#. Tooltip for the solve button
+#: ../src/math-buttons.c:237
+msgid "Calculate Result"
+msgstr "Bereken resultaat"
+
+#. Tooltip for the factor button
+#: ../src/math-buttons.c:240
+msgid "Factorize [Ctrl+F]"
+msgstr "Faktoriseer [Ctrl+F]"
+
+#. Tooltip for the clear button
+#: ../src/math-buttons.c:243
+msgid "Clear Display [Escape]"
+msgstr "Maak vertoonvenster skoon [Esc]"
+
+#. Tooltip for the undo button
+#: ../src/math-buttons.c:246
+#| msgid "Root [Ctrl+R]"
+msgid "Undo [Ctrl+Z]"
+msgstr "Ontdoen [Ctrl+Z]"
+
+#. Tooltip for the double declining depreciation button
+#: ../src/math-buttons.c:258
+msgid "Double Declining Depreciation"
+msgstr "Dubbel-dalende waardevermindering"
+
+#. Tooltip for the financial term button
+#: ../src/math-buttons.c:264
+msgid "Financial Term"
+msgstr "Finansiële termyn"
+
+#. Tooltip for the sum of the years digits depreciation button
+#: ../src/math-buttons.c:267
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Som-van-die-jare-se-syfers waardevermindering"
+
+#. Tooltip for the straight line depreciation button
+#: ../src/math-buttons.c:270
+msgid "Straight Line Depreciation"
+msgstr "Reguitlynwaardevermindering"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+#: ../src/math-buttons.c:660
+msgid "Binary"
+msgstr "Binêr"
+
+#. Number display mode combo: Octal, e.g. 2322₈
+#: ../src/math-buttons.c:664
+msgid "Octal"
+msgstr "Oktaal"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../src/math-buttons.c:668
+msgid "Decimal"
+msgstr "Desimaal"
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#: ../src/math-buttons.c:672
+msgid "Hexadecimal"
+msgstr "Heksadesimaal"
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#: ../src/math-buttons.c:946 ../src/math-buttons.c:990
+#, c-format
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "_%d plek"
+msgstr[1] "_%d plekke"
+
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#: ../src/math-buttons.c:950 ../src/math-buttons.c:994
+#, c-format
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d plek"
+msgstr[1] "%d plekke"
+
+#. Tooltip for the round button
+#: ../src/math-buttons.c:1040
+msgid "Round"
+msgstr "Afrond"
+
+#. Tooltip for the floor button
+#: ../src/math-buttons.c:1042
+msgid "Floor"
+msgstr "Vloer"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1044
+msgid "Ceiling"
+msgstr "Plafon"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1046
+#| msgid "Sine"
+msgid "Sign"
+msgstr "Teken"
+
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.c:359
+msgid " in "
+msgstr " in "
+
+#. Error shown when trying to undo with no undo history
+#: ../src/math-equation.c:461
+msgid "No undo history"
+msgstr "Geen geskiedenis vir ontdoen nie"
+
+#. Error shown when trying to redo with no redo history
+#: ../src/math-equation.c:486
+msgid "No redo history"
+msgstr "Geen geskiedenis vir herdoen nie"
+
+#: ../src/math-equation.c:875
+msgid "No sane value to store"
+msgstr "Geen sinvolle waarde om te stoor nie"
+
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/math-equation.c:1140
+msgid "Overflow. Try a bigger word size"
+msgstr "Oorloop. Probeer 'n groter woordgrootte"
+
+#. Error displayed to user when they an unknown variable is entered
+#: ../src/math-equation.c:1145
+#, c-format
+msgid "Unknown variable '%s'"
+msgstr "Onbekende veranderlike '%s'"
+
+#. Error displayed to user when an unknown function is entered
+#: ../src/math-equation.c:1150
+#, c-format
+msgid "Function '%s' is not defined"
+msgstr "Funksie '%s' is nie gedefinieer nie"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../src/math-equation.c:1155
+msgid "Unknown conversion"
+msgstr "Onbekende omskakeling"
+
+#. Error displayed to user when they enter an invalid calculation
+#: ../src/math-equation.c:1164
+msgid "Malformed expression"
+msgstr "Ongeldige uitdrukking"
+
+#. Error displayed when trying to factorize a non-integer value
+#: ../src/math-equation.c:1296
+msgid "Need an integer to factorize"
+msgstr "Moet 'n heelgetal hê om in faktore te ontbind"
+
+#. This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/math-equation.c:1363
+msgid "No sane value to bitwise shift"
+msgstr "Geen sinvolle waarde vir bisgewyse skuif"
+
+#. Message displayed when cannot toggle bit in display
+#: ../src/math-equation.c:1392
+msgid "Displayed value not an integer"
+msgstr "Vertoonde waarde nie 'n heelgetal nie"
+
+#. Digits localized for the given language
+#: ../src/math-equation.c:1815
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+
+#. Label on close button in preferences dialog
+#: ../src/math-preferences.c:244
+msgid "_Close"
+msgstr "_Sluit"
+
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.c:254 ../src/unit-manager.c:43
+msgid "Degrees"
+msgstr "Grade"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.c:258 ../src/unit-manager.c:44
+msgid "Radians"
+msgstr "Radiale"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.c:262 ../src/unit-manager.c:45
+msgid "Gradians"
+msgstr "Gradiane"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
+#: ../src/math-preferences.c:272
+msgid "Automatic"
+msgstr "Outomaties"
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:276
+msgid "Fixed"
+msgstr "Vas"
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.c:280
+msgid "Scientific"
+msgstr "Wetenskaplik"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.c:284
+msgid "Engineering"
+msgstr "Ingenieurs"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/math-preferences.c:295
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Wys %d desimale _plekke"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/math-window.c:171
+msgid "Unable to open help file"
+msgstr "Kan nie hulplêer oopmaak nie"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/math-window.c:203
 msgid "translator-credits"
-msgstr "Friedel Wolff"
+msgstr ""
+"Hermien Bos\n"
+"Friedel Wolff\n"
+"Petrus Potgieter"
 
-#: ../gcalctool/gtk.c:1085
+#. The license this software is under (GPL2+)
+#: ../src/math-window.c:206
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
 "the Free Software Foundation; either version 2 of the License, or\n"
 "(at your option) any later version.\n"
-msgstr ""
-"Gcalctool is Vry Sagteware; u kan dit herversprei en/of wysig onderhewig\n"
-"aan die voorwaardes vna die GNU Algemene Publieke Lisensie soos\n"
-"gepubliseer deur die Stigting vir Vry Sagteware; óf weergawe 2 van die\n"
-"Lisensie, óf (indien u verkies) enige latere weergawe.\n"
-
-#: ../gcalctool/gtk.c:1089
-msgid ""
+"\n"
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details.\n"
-msgstr ""
-"Gcalctool word versprei in die hoop dat dit nuttig sal wees, maar\n"
-"SONDER ENIGE WAARBORG; sonder selfs die geïmpliseerde waarborg\n"
-"van VERHANDELBAARHEID of GESKIKTHEID VIR 'N SPESIFIEKE DOEL.\n"
-"Sien die GNU Algemene Publieke Lisensie vir meer detail.\n"
-
-#: ../gcalctool/gtk.c:1093
-msgid ""
+"\n"
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 msgstr ""
-"U moes 'n kopie van die GNU Algemene Publieke Lisensie ontvang het\n"
-"saam met Gcalctool; indiennie, skryf aan Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 
-#: ../gcalctool/gtk.c:1104
+#. Program name in the about dialog
+#: ../src/math-window.c:223
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#: ../gcalctool/gtk.c:1106
-msgid "© 1986-2008 The Gcalctool authors"
-msgstr "© 1986-2008 Die outeurs van Gcalctool"
+#. Copyright notice in the about dialog
+#: ../src/math-window.c:227
+#| msgid "© 1986–2008 The Gcalctool authors"
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 Die Gcalctool-skrywers"
 
-#: ../gcalctool/gtk.c:1108
+#. Short description in the about dialog
+#: ../src/math-window.c:231
 msgid "Calculator with financial and scientific modes."
 msgstr "Sakrekenaar met finansiële en wetenskaplike modusse."
 
-#: ../gcalctool/gtk.c:1381 ../glade/gcalctool.glade.h:118
-msgid "C"
-msgstr "C"
-
-#: ../gcalctool/gtk.c:1399 ../glade/gcalctool.glade.h:169
-msgid "F"
-msgstr "F"
-
-#: ../gcalctool/gtk.c:1580
-msgid "Changing Modes Clears Calculation"
-msgstr "Oorskakling van modus vee die bewerking uit"
-
-#: ../gcalctool/gtk.c:1583
-msgid ""
-"When you change modes, the current calculation will be cleared, and the base "
-"will be reset to decimal."
-msgstr ""
-"Wanneer mens oorskakel tussen modusse word die huidige bewerking uitgevee, "
-"en die basis word teruggestel na desimaal."
-
-#: ../gcalctool/gtk.c:1587
-msgid "_Do not warn me again"
-msgstr "_Moenie my weer waarsku nie"
-
-#: ../gcalctool/gtk.c:1592
-msgid "C_hange Mode"
-msgstr "Ver_ander modus"
-
-#. translators: R is the short form of register used inter alia
-#. in popup menus
-#: ../gcalctool/gtk.c:1708
-msgid "R"
-msgstr "R"
-
-#: ../gcalctool/gtk.c:2137
-msgid "Paste"
-msgstr "Plak"
-
-#: ../gcalctool/gtk.c:2391
-msgid "Error loading user interface"
-msgstr "Fout met laai van gebruikerkoppelvlak"
-
-#: ../gcalctool/gtk.c:2393
-#, c-format
-msgid ""
-"The user interface file %s is missing or unable to be loaded. Please check "
-"your installation."
-msgstr ""
-"Die gebruikerkoppelvlaklêer %s is weg of kon nie gelaai word nie. Gaan asb. "
-"u installasie na."
-
-#: ../gcalctool/gtk.c:2617 ../gcalctool/gtk.c:2635
-msgid "No."
-msgstr "No."
-
-#: ../gcalctool/gtk.c:2619 ../gcalctool/gtk.c:2637
-msgid "Value"
-msgstr "Waarde"
-
-#: ../gcalctool/gtk.c:2621 ../gcalctool/gtk.c:2639
-msgid "Description"
-msgstr "Beskrywing"
-
-#. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2785 ../glade/gcalctool.glade.h:268
-#, no-c-format
-msgid "Reset to _Default (%d)"
-msgstr "Stel terug na _verstek (%d)"
-
-#: ../gcalctool/mp.c:2894
-msgid "Negative X and non-integer Y not supported"
-msgstr "Geen ondersteuning vir X negatief en Y nie 'n heelgetal nie"
-
-#: ../gcalctool/mpmath.c:255
-msgid "Error, cannot calculate cosine"
-msgstr "Fout, kan nie cosinus bereken nie"
-
-#: ../gcalctool.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Doen rekenkundige, wetenskaplike of finansiële bewerkings"
-
-#. This is a percentage sign
-#: ../glade/gcalctool.glade.h:3
-#, no-c-format
-msgid "%"
-msgstr "%"
-
-#. 16 bit unsigned integer
-#: ../glade/gcalctool.glade.h:5
-msgid "&16"
-msgstr "&16"
-
-#. 32 bit unsigned integer
-#: ../glade/gcalctool.glade.h:7
-msgid "&32"
-msgstr "&32"
-
-#. Left bracket
-#: ../glade/gcalctool.glade.h:9
-msgid "("
-msgstr "("
-
-#. Right bracket
-#: ../glade/gcalctool.glade.h:11
-msgid ")"
-msgstr ")"
-
-#: ../glade/gcalctool.glade.h:12
-msgid "+"
-msgstr "+"
-
-#. Numeric point
-#: ../glade/gcalctool.glade.h:14
-msgid "."
-msgstr "."
-
-#. Numeric 0
-#: ../glade/gcalctool.glade.h:16
-msgid "0"
-msgstr "0"
-
-#. Numeric 1
-#: ../glade/gcalctool.glade.h:18
-msgid "1"
-msgstr "1"
-
-#: ../glade/gcalctool.glade.h:19
-msgid "1/<i>x</i>"
-msgstr "1/<i>x</i>"
-
-#: ../glade/gcalctool.glade.h:20
-msgid "1/x"
-msgstr "1/x"
-
-#: ../glade/gcalctool.glade.h:21
-msgid "10 places"
-msgstr "10 plekke"
-
-#: ../glade/gcalctool.glade.h:22
-msgid "10 to the power of displayed value [}]"
-msgstr "10 tot die mag van die vertoonwaarde [}]"
-
-#: ../glade/gcalctool.glade.h:23
-msgid "10 to the x"
-msgstr "10 tot die mag x"
-
-#. 10 to thepower of  x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:25
-msgid "10<sup><i>x</i></sup>"
-msgstr "10<sup><i>x</i></sup>"
-
-#: ../glade/gcalctool.glade.h:26
-msgid "10x"
-msgstr "10x"
-
-#: ../glade/gcalctool.glade.h:27
-msgid "11 places"
-msgstr "11 plekke"
-
-#: ../glade/gcalctool.glade.h:28
-msgid "12 places"
-msgstr "12 plekke"
-
-#: ../glade/gcalctool.glade.h:29
-msgid "13 places"
-msgstr "13 plekke"
-
-#: ../glade/gcalctool.glade.h:30
-msgid "14 places"
-msgstr "14 plekke"
-
-#: ../glade/gcalctool.glade.h:31
-msgid "15"
-msgstr "15"
-
-#: ../glade/gcalctool.glade.h:32
-msgid "15 places"
-msgstr "15 plekke"
-
-#: ../glade/gcalctool.glade.h:33
-msgid "16 bit unsigned integer"
-msgstr "16-bis-heelgetal sonder tekenbis"
-
-#: ../glade/gcalctool.glade.h:34
-msgid "16-bit unsigned integer value of display (])"
-msgstr "vertoonwaarde as 16-bis-heelgetal sonder tekenbis (])"
-
-#. Numeric 2
-#: ../glade/gcalctool.glade.h:36
-msgid "2"
-msgstr "2"
-
-#. Numeric 3
-#: ../glade/gcalctool.glade.h:38
-msgid "3"
-msgstr "3"
-
-#: ../glade/gcalctool.glade.h:39
-msgid "31"
-msgstr "31"
-
-#: ../glade/gcalctool.glade.h:40
-msgid "32"
-msgstr "32"
-
-#: ../glade/gcalctool.glade.h:41
-msgid "32-bit unsigned integer value of display ([)"
-msgstr "vertoonwaarde as 32-bis-heelgetal sonder tekenbis ([)"
-
-#. Numeric 4
-#: ../glade/gcalctool.glade.h:43
-msgid "4"
-msgstr "4"
-
-#: ../glade/gcalctool.glade.h:44
-msgid "47"
-msgstr "47"
-
-#. Numeric 5
-#: ../glade/gcalctool.glade.h:46
-msgid "5"
-msgstr "5"
-
-#. Numeric 6
-#: ../glade/gcalctool.glade.h:48
-msgid "6"
-msgstr "6"
-
-#: ../glade/gcalctool.glade.h:49
-msgid "63"
-msgstr "63"
-
-#. Numeric 7
-#: ../glade/gcalctool.glade.h:51
-msgid "7"
-msgstr "7"
-
-#. Numeric 8
-#: ../glade/gcalctool.glade.h:53
-msgid "8"
-msgstr "8"
-
-#. Numeric 9
-#: ../glade/gcalctool.glade.h:55
-msgid "9"
-msgstr "9"
-
-#. Shift left
-#: ../glade/gcalctool.glade.h:57
-msgid "<"
-msgstr "<"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:59
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#. x squared. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:61
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>2</sup>"
-
-#. X to the power of y. Note that this label uses mark up and the "y" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:63
-msgid "<i>x</i><sup><i>y</i></sup>"
-msgstr "<i>x</i><sup><i>y</i></sup>"
-
-#: ../glade/gcalctool.glade.h:64
-msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
-msgstr ""
-"<small><i><b>Let wel:</b> Alle konstantes word gespesifiseer met desimale "
-"basis.</i></small>"
-
-#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:66
-msgid "<span weight=\"bold\">R0</span>"
-msgstr "<span weight=\"bold\">R0</span>"
-
-#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:68
-msgid "<span weight=\"bold\">R1</span>"
-msgstr "<span weight=\"bold\">R1</span>"
-
-#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:70
-msgid "<span weight=\"bold\">R2</span>"
-msgstr "<span weight=\"bold\">R2</span>"
-
-#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:72
-msgid "<span weight=\"bold\">R3</span>"
-msgstr "<span weight=\"bold\">R3</span>"
-
-#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:74
-msgid "<span weight=\"bold\">R4</span>"
-msgstr "<span weight=\"bold\">R4</span>"
-
-#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:76
-msgid "<span weight=\"bold\">R5</span>"
-msgstr "<span weight=\"bold\">R5</span>"
-
-#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:78
-msgid "<span weight=\"bold\">R6</span>"
-msgstr "<span weight=\"bold\">R6</span>"
-
-#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:80
-msgid "<span weight=\"bold\">R7</span>"
-msgstr "<span weight=\"bold\">R7</span>"
-
-#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:82
-msgid "<span weight=\"bold\">R8</span>"
-msgstr "<span weight=\"bold\">R8</span>"
-
-#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:84
-msgid "<span weight=\"bold\">R9</span>"
-msgstr "<span weight=\"bold\">R9</span>"
-
-#. This is the calculate result button (=)
-#: ../glade/gcalctool.glade.h:86
-msgid "="
-msgstr "="
-
-#. Shift right
-#: ../glade/gcalctool.glade.h:88
-msgid ">"
-msgstr ">"
-
-#: ../glade/gcalctool.glade.h:89
-msgid "A"
-msgstr "A"
-
-#: ../glade/gcalctool.glade.h:90
-msgid "AND"
-msgstr "EN"
-
-#. Abs is short for Absolute
-#: ../glade/gcalctool.glade.h:92
-msgid "Abs"
-msgstr "Abs"
-
-#: ../glade/gcalctool.glade.h:93
-msgid "Absolute value"
-msgstr "Absolute waarde"
-
-#: ../glade/gcalctool.glade.h:94
-msgid "Absolute value [u]"
-msgstr "Absolute waarde [u]"
-
-#. Accuracy
-#: ../glade/gcalctool.glade.h:96
-msgid "Acc"
-msgstr "Akk"
-
-#: ../glade/gcalctool.glade.h:97
-msgid "Accuracy"
-msgstr "Akkuraatheid"
-
-#: ../glade/gcalctool.glade.h:98
-msgid "Add"
-msgstr "Plus"
-
-#: ../glade/gcalctool.glade.h:99
-msgid "Add [+]"
-msgstr "Plus [+]"
-
-#: ../glade/gcalctool.glade.h:100
-msgid "Advanced"
-msgstr "Gevorderd"
-
-#: ../glade/gcalctool.glade.h:101
-msgid "B"
-msgstr "B"
-
-#: ../glade/gcalctool.glade.h:102
-msgid "Backspace"
-msgstr "Backspace"
-
-#: ../glade/gcalctool.glade.h:103
-msgid "Base 10 log [G]"
-msgstr "Basis 10 logaritme [G]"
-
-#: ../glade/gcalctool.glade.h:104
-msgid "Base 2 log [H]"
-msgstr "Basis 2 logaritme [H]"
-
-#: ../glade/gcalctool.glade.h:105
-msgid "Basic"
-msgstr "Basies"
-
-#: ../glade/gcalctool.glade.h:106
-msgid "Bitwise AND"
-msgstr "Bisgewyse EN"
-
-#: ../glade/gcalctool.glade.h:107
-msgid "Bitwise AND [&]"
-msgstr "Bisgewyse EN [&]"
-
-#: ../glade/gcalctool.glade.h:108
-msgid "Bitwise NOT"
-msgstr "Bisgewyse NIE"
-
-#: ../glade/gcalctool.glade.h:109
-msgid "Bitwise NOT [~]"
-msgstr "Bisgewyse NIE [~]"
-
-#: ../glade/gcalctool.glade.h:110
-msgid "Bitwise OR"
-msgstr "Bisgewyse OF"
-
-#: ../glade/gcalctool.glade.h:111
-msgid "Bitwise OR [|]"
-msgstr "Bisgewyse OF [|]"
-
-#: ../glade/gcalctool.glade.h:112
-msgid "Bitwise XNOR"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:113
-msgid "Bitwise XNOR [n]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:114
-msgid "Bitwise XOR"
-msgstr "Bisgewyse XOF"
-
-#: ../glade/gcalctool.glade.h:115
-msgid "Bitwise XOR [x]"
-msgstr "Bisgewyse XOF [x]"
-
-#. Bksp is short for Backspace
-#: ../glade/gcalctool.glade.h:117
-msgid "Bksp"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:119
-msgid "CE"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:120
-msgid "Calculate result"
-msgstr "Bereken resultaat"
-
-#: ../glade/gcalctool.glade.h:121
-msgid "Calculate result [=]"
-msgstr "Bereken resultaat [=]"
-
-#: ../glade/gcalctool.glade.h:122
-msgid "Ch_aracter:"
-msgstr "K_arakter:"
-
-#: ../glade/gcalctool.glade.h:123
-msgid "Change Sign [C]"
-msgstr "Verander teken [C]"
-
-#: ../glade/gcalctool.glade.h:124
-msgid "Change sign"
-msgstr "Verander teken"
-
-#: ../glade/gcalctool.glade.h:125
-msgid "Clear"
-msgstr "Maak skoon"
-
-#: ../glade/gcalctool.glade.h:126
-msgid "Clear displayed value [Escape]"
-msgstr "Maak vertoonarea skoon [Escape]"
-
-#: ../glade/gcalctool.glade.h:127
-msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr ""
-"Maak vertoonarea skoon en verwyder enige gedeeltelike bewerking [Shift "
-"Delete]"
-
-#: ../glade/gcalctool.glade.h:128
-msgid "Clear entry"
-msgstr "Maak inskrywing skoon"
-
-#: ../glade/gcalctool.glade.h:129
-msgid "Click a _value or description to edit it:"
-msgstr "Klik op 'n _waarde of beskrywing om dit te wysig:"
-
-#. Clr is short for Clear
-#: ../glade/gcalctool.glade.h:131
-msgid "Clr"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:132
-msgid "Compounding term"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:133
-msgid "Compounding term [m]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:134
-#, fuzzy
-msgid "Con"
-msgstr "Keël"
-
-#: ../glade/gcalctool.glade.h:135
-msgid "Constants"
-msgstr "Konstantes"
-
-#: ../glade/gcalctool.glade.h:136
-msgid "Constants [#]"
-msgstr "Konstantes [#]"
-
-#: ../glade/gcalctool.glade.h:137
-msgid "Copy selection"
-msgstr "Kopieer seleksie"
-
-#: ../glade/gcalctool.glade.h:140
-msgid "Cosine [J]"
-msgstr "Cosinus [J]"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
-#. See also:
-#. http://en.wikipedia.org/wiki/Compound_interest
-#: ../glade/gcalctool.glade.h:144
-#, fuzzy
-msgid "Ctrm"
-msgstr "Ctrl"
-
-#: ../glade/gcalctool.glade.h:145
-msgid "D"
-msgstr "D"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:148
-msgid "Ddb"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:149
-msgid "De_grees"
-msgstr "_Grade"
-
-#: ../glade/gcalctool.glade.h:150
-msgid "Divide"
-msgstr "Deel"
-
-#: ../glade/gcalctool.glade.h:151
-msgid "Divide [/]"
-msgstr "Deel [/]"
-
-#: ../glade/gcalctool.glade.h:152
-msgid "Double-declining depreciation"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:153
-msgid "Double-declining depreciation [D]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:154
-msgid "E"
-msgstr "E"
-
-#: ../glade/gcalctool.glade.h:155
-msgid "E to the x"
-msgstr "E tot die mag x"
-
-#: ../glade/gcalctool.glade.h:156
-msgid "E_ng"
-msgstr "E_ng"
-
-#: ../glade/gcalctool.glade.h:157
-msgid "Edit Constants"
-msgstr "Redigeer konstantes"
-
-#: ../glade/gcalctool.glade.h:158
-msgid "Edit Constants..."
-msgstr "Redigeer konstantes..."
-
-#: ../glade/gcalctool.glade.h:159
-msgid "Edit Functions"
-msgstr "Redigeer funksies"
-
-#: ../glade/gcalctool.glade.h:160
-msgid "Edit Functions..."
-msgstr "Redigeer funksies..."
-
-#: ../glade/gcalctool.glade.h:161
-msgid "End group of calculations [)]"
-msgstr "Beëindig 'n groep berekeninge [)]"
-
-#: ../glade/gcalctool.glade.h:162
-msgid "Enter an exponential number [E]"
-msgstr "Tik 'n eksponensiële getal [E]"
-
-#. Exchange with register
-#: ../glade/gcalctool.glade.h:164
-msgid "Exch"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:165
-msgid "Exchange displayed value with memory register [X]"
-msgstr "Ruil die vertoonwaarde met die geheueregister [X]"
-
-#: ../glade/gcalctool.glade.h:166
-msgid "Exchange with register"
-msgstr "Ruil met register"
-
-#. Exponential
-#: ../glade/gcalctool.glade.h:168
-msgid "Exp"
-msgstr "Eksp"
-
-#: ../glade/gcalctool.glade.h:170
-msgid "Factorial"
-msgstr "Faktoriaal"
-
-#: ../glade/gcalctool.glade.h:171
-msgid "Factorial of displayed value [!]"
-msgstr "Faktoriaal vir die vertoonwaarde [!]"
-
-#: ../glade/gcalctool.glade.h:172
-msgid "Financial"
-msgstr "Finansieel"
-
-#. Fractional portion
-#: ../glade/gcalctool.glade.h:174
-msgid "Frac"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:175
-msgid "Fractional portion"
-msgstr "Breukdeel"
-
-#: ../glade/gcalctool.glade.h:176
-msgid "Fractional portion of displayed value [:]"
-msgstr "Breukdeel van die vertoonwaarde [:]"
-
-#: ../glade/gcalctool.glade.h:177
-msgid "Fun"
-msgstr "Fun"
-
-#: ../glade/gcalctool.glade.h:178
-msgid "Future value"
-msgstr "Toekomstige waarde"
-
-#: ../glade/gcalctool.glade.h:179
-msgid "Future value [v]"
-msgstr "Toekomstige waarde [v]"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Future_value
-#: ../glade/gcalctool.glade.h:182
-msgid "Fv"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:183
-#, fuzzy
-msgid "Gr_adians"
-msgstr "Gr_adiane (gon / desimale grade)"
-
-#: ../glade/gcalctool.glade.h:184
-msgid "H_yp"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:185
-msgid "He_x"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:186
-msgid "Hexadecimal digit A"
-msgstr "Heksadesimale syfer A"
-
-#: ../glade/gcalctool.glade.h:187
-msgid "Hexadecimal digit A [a]"
-msgstr "Heksadesimale syfer A [a]"
-
-#: ../glade/gcalctool.glade.h:188
-msgid "Hexadecimal digit B"
-msgstr "Heksadesimale syfer B"
-
-#: ../glade/gcalctool.glade.h:189
-msgid "Hexadecimal digit B [b]"
-msgstr "Heksadesimale syfer B [b]"
-
-#: ../glade/gcalctool.glade.h:190
-msgid "Hexadecimal digit C"
-msgstr "Heksadesimale syfer C"
-
-#: ../glade/gcalctool.glade.h:191
-msgid "Hexadecimal digit C [c]"
-msgstr "Heksadesimale syfer C [c]"
-
-#: ../glade/gcalctool.glade.h:192
-msgid "Hexadecimal digit D"
-msgstr "Heksadesimale syfer D"
-
-#: ../glade/gcalctool.glade.h:193
-msgid "Hexadecimal digit D [d]"
-msgstr "Heksadesimale syfer D [d]"
-
-#: ../glade/gcalctool.glade.h:194
-msgid "Hexadecimal digit E"
-msgstr "Heksadesimale syfer E"
-
-#: ../glade/gcalctool.glade.h:195
-msgid "Hexadecimal digit E [e]"
-msgstr "Heksadesimale syfer E [e]"
-
-#: ../glade/gcalctool.glade.h:196
-msgid "Hexadecimal digit F"
-msgstr "Heksadesimale syfer F"
-
-#: ../glade/gcalctool.glade.h:197
-msgid "Hexadecimal digit F [f]"
-msgstr "Heksadesimale syfer F [f]"
-
-#: ../glade/gcalctool.glade.h:198
-msgid "Insert ASCII Value"
-msgstr "Voeg ASCII-waarde in"
-
-#: ../glade/gcalctool.glade.h:199
-msgid "Insert ASCII value"
-msgstr "Voeg ASCII-waarde in"
-
-#. Integer portion
-#: ../glade/gcalctool.glade.h:201
-msgid "Int"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:202
-msgid "Integer portion"
-msgstr "Heelgetaldeel"
-
-#: ../glade/gcalctool.glade.h:203
-msgid "Integer portion of displayed value [i]"
-msgstr "Heelgetaldeel van die vertoonwaarde [i]"
-
-#: ../glade/gcalctool.glade.h:204
-msgid "Left bracket"
-msgstr "Linkerhakie"
-
-#. Natural logarithm
-#: ../glade/gcalctool.glade.h:206
-msgid "Ln"
-msgstr "Ln"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:208
-msgid "Log<sub>10</sub>"
-msgstr "Log<sub>10</sub>"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:210
-msgid "Log<sub>2</sub>"
-msgstr "Log<sub>2</sub>"
-
-#: ../glade/gcalctool.glade.h:211
-msgid "Memory Registers"
-msgstr "Geheueregisters"
-
-#: ../glade/gcalctool.glade.h:212
-msgid "Mod"
-msgstr "Mod"
-
-#: ../glade/gcalctool.glade.h:213
-msgid "Modulus Division [M]"
-msgstr "Modulusdeling [M]"
-
-#: ../glade/gcalctool.glade.h:214
-msgid "Multiply"
-msgstr "Vermenigvuldig"
-
-#: ../glade/gcalctool.glade.h:215
-msgid "Multiply [*]"
-msgstr "Vermenigvuldig [*]"
-
-#: ../glade/gcalctool.glade.h:216
-msgid "NOT"
-msgstr "NIE"
-
-#: ../glade/gcalctool.glade.h:217
-msgid "Natural log [N]"
-msgstr "Natuurlike logaritme [N]"
-
-#: ../glade/gcalctool.glade.h:218
-msgid "Numeric 0"
-msgstr "Numeries 0"
-
-#: ../glade/gcalctool.glade.h:219
-msgid "Numeric 1"
-msgstr "Numeries 1"
-
-#: ../glade/gcalctool.glade.h:220
-msgid "Numeric 2"
-msgstr "Numeries 2"
-
-#: ../glade/gcalctool.glade.h:221
-msgid "Numeric 3"
-msgstr "Numeries 3"
-
-#: ../glade/gcalctool.glade.h:222
-msgid "Numeric 4"
-msgstr "Numeries 4"
-
-#: ../glade/gcalctool.glade.h:223
-msgid "Numeric 5"
-msgstr "Numeries 5"
-
-#: ../glade/gcalctool.glade.h:224
-msgid "Numeric 6"
-msgstr "Numeries 6"
-
-#: ../glade/gcalctool.glade.h:225
-msgid "Numeric 7"
-msgstr "Numeries 7"
-
-#: ../glade/gcalctool.glade.h:226
-msgid "Numeric 8"
-msgstr "Numeries 8"
-
-#: ../glade/gcalctool.glade.h:227
-msgid "Numeric 9"
-msgstr "Numeries 9"
-
-#: ../glade/gcalctool.glade.h:228
-msgid "Numeric point"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:229
-msgid "OR"
-msgstr "OF"
-
-#: ../glade/gcalctool.glade.h:230
-msgid "Paste selection"
-msgstr "Plak seleksie"
-
-#: ../glade/gcalctool.glade.h:231
-msgid "Payment period"
-msgstr "Betaaltydperk"
-
-#: ../glade/gcalctool.glade.h:232
-msgid "Payment period [t]"
-msgstr "Betaaltydperk [t]"
-
-#: ../glade/gcalctool.glade.h:233
-msgid "Percentage"
-msgstr "Persentasie"
-
-#: ../glade/gcalctool.glade.h:235
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "Persentasie [%]"
-
-#: ../glade/gcalctool.glade.h:236
-msgid "Periodic interest rate"
-msgstr "Periodieke rentekoers"
-
-#: ../glade/gcalctool.glade.h:237
-msgid "Periodic interest rate [T]"
-msgstr "Periodieke rentekoers [T]"
-
-#: ../glade/gcalctool.glade.h:238
-msgid "Periodic payment"
-msgstr "Periodieke betaling"
-
-#: ../glade/gcalctool.glade.h:239
-msgid "Periodic payment [P]"
-msgstr "Periodieke betaling [P]"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
-#. http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../glade/gcalctool.glade.h:242
-msgid "Pmt"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:243
-msgid "Present value"
-msgstr "Huidige waarde"
-
-#: ../glade/gcalctool.glade.h:244
-msgid "Present value [p]"
-msgstr "Huidige waarde [p]"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Present_value
-#: ../glade/gcalctool.glade.h:247
-msgid "Pv"
-msgstr "Pv"
-
-#: ../glade/gcalctool.glade.h:248
-msgid "Quit the calculator"
-msgstr "Sluit sakrekenaar af"
-
-#: ../glade/gcalctool.glade.h:249
-msgid "Raise displayed value to the power of y [^]"
-msgstr "Verhef die vertoonwaarde tot die mag y [^]"
-
-#. Random number
-#: ../glade/gcalctool.glade.h:251
-msgid "Rand"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:252
-msgid "Random number"
-msgstr "Ewekansige getal"
-
-#: ../glade/gcalctool.glade.h:253
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "Ewekansige getal in die omvang 0.0 tot 1.0 [?]"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
-#. http://en.wikipedia.org/wiki/Interest
-#.
-#.
-#.
-#.
-#: ../glade/gcalctool.glade.h:260
-msgid "Rate"
-msgstr "Koers"
-
-#. Retrieve from register
-#: ../glade/gcalctool.glade.h:262
-msgid "Rcl"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:263
-msgid "Reciprocal"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:264
-msgid "Reciprocal [r]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:265
-msgid "Redo"
-msgstr "Herdoen"
-
-#: ../glade/gcalctool.glade.h:266
-msgid "Remove rightmost character from displayed value [Backspace]"
-msgstr ""
-"Verwyder die heel regterkantste karakter van die vertoonwaarde [Backspace]"
-
-#: ../glade/gcalctool.glade.h:269
-msgid "Result Region"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:270
-msgid "Retrieve from register"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:271
-msgid "Retrieve memory register to display [R]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:272
-msgid "Right bracket"
-msgstr "Regterhakie"
-
-#: ../glade/gcalctool.glade.h:273
-msgid "Scientific"
-msgstr "Wetenskaplik"
-
-#: ../glade/gcalctool.glade.h:274
-msgid "Set Precision"
-msgstr "Stel akkuraatheid"
-
-#: ../glade/gcalctool.glade.h:275
-msgid "Set accuracy from 0 to 9 numeric places [A]"
-msgstr "Stel akkuraatheid van 0 tot 9 syfers [A]"
-
-#: ../glade/gcalctool.glade.h:276
-msgid "Set display type to engineering format"
-msgstr "Stel notasie na ingenieursformaat"
-
-#: ../glade/gcalctool.glade.h:277
-msgid "Set display type to fixed-point format"
-msgstr "Stel notasie na fastepuntformaat"
-
-#: ../glade/gcalctool.glade.h:278
-msgid "Set display type to scientific format"
-msgstr "Stel notasie na wetenskaplike formaat"
-
-#: ../glade/gcalctool.glade.h:279
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "Stel trigonometriese funksies op hiperboliese instelling"
-
-#: ../glade/gcalctool.glade.h:280
-msgid "Set inverse option for trigonometric functions"
-msgstr "Stel trigonometriese funksies op inverse instelling"
-
-#: ../glade/gcalctool.glade.h:281
-msgid "Set numeric base to binary (base 2)"
-msgstr "Stel numeriese basis na binêr (basis 2)"
-
-#: ../glade/gcalctool.glade.h:282
-msgid "Set numeric base to decimal (base 10)"
-msgstr "Stel numeriese basis na desimaal (basis 10)"
-
-#: ../glade/gcalctool.glade.h:283
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "Stel numeriese basis na heksadesimaal (basis 16)"
-
-#: ../glade/gcalctool.glade.h:284
-msgid "Set numeric base to octal (base 8)"
-msgstr "Stel numeriese basis na oktaal (basis 8)"
-
-#: ../glade/gcalctool.glade.h:285
-msgid "Set trigonometric type to degrees"
-msgstr "Stel trigonometriese maat op grade"
-
-#: ../glade/gcalctool.glade.h:286
-#, fuzzy
-msgid "Set trigonometric type to gradians"
-msgstr "Stel trigonometriese maat op gon (gradiane/desimale grade)"
-
-#: ../glade/gcalctool.glade.h:287
-msgid "Set trigonometric type to radians"
-msgstr "Stel trigonometriese maat op radiale"
-
-#: ../glade/gcalctool.glade.h:288
-msgid "Shift displayed value 1-15 places to the left [<]"
-msgstr "Skuif vertoonwaarde 1-15 plekke na links [<]"
-
-#: ../glade/gcalctool.glade.h:289
-msgid "Shift displayed value 1-15 places to the right [>]"
-msgstr "Skuif vertoonwaarde 1-15 plekke na regs [>]"
-
-#: ../glade/gcalctool.glade.h:290
-msgid "Shift left"
-msgstr "Skuif na links"
-
-#: ../glade/gcalctool.glade.h:291
-msgid "Shift right"
-msgstr "Skuif na regs"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:295
-msgid "Show Bit Editor"
-msgstr "Wys bisredigeerder"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:299
-msgid "Show Bit _Editor"
-msgstr "Wys bisr_edigeerder"
-
-#: ../glade/gcalctool.glade.h:300
-msgid "Show T_housands Separator"
-msgstr "Wys _duisende-skeier"
-
-#: ../glade/gcalctool.glade.h:301
-msgid "Show _Trailing Zeroes"
-msgstr ""
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:305
-msgid "Show bit editor"
-msgstr "Wys bisredigeerder"
-
-#: ../glade/gcalctool.glade.h:306
-msgid "Show help contents"
-msgstr "Wys hulpinhoud"
-
-#: ../glade/gcalctool.glade.h:307
-msgid "Show memory registers"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:308
-msgid "Show the About Gcalctool dialog"
-msgstr "Wys die dialoog Aangaande Gcalctool"
-
-#: ../glade/gcalctool.glade.h:309
-msgid "Show thousands separator"
-msgstr "Wys duisende-skeier"
-
-#: ../glade/gcalctool.glade.h:310
-msgid "Show trailing zeroes"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:311
-msgid "Significant _places:"
-msgstr "Beduidende _plekke:"
-
-#: ../glade/gcalctool.glade.h:314
-msgid "Sine [K]"
-msgstr "Sinus [K]"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:317
-msgid "Sln"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:318
-msgid "Square"
-msgstr "Kwadraat"
-
-#: ../glade/gcalctool.glade.h:319
-msgid "Square [@]"
-msgstr "Kwadraat [@]"
-
-#: ../glade/gcalctool.glade.h:320
-msgid "Square root"
-msgstr "Vierkantswortel"
-
-#: ../glade/gcalctool.glade.h:321
-msgid "Square root [s]"
-msgstr "Vierkantswortel [s]"
-
-#: ../glade/gcalctool.glade.h:322
-msgid "Start group of calculations [(]"
-msgstr "Begin 'n groep berekeninge [(]"
-
-#. Store to register
-#: ../glade/gcalctool.glade.h:324
-msgid "Sto"
-msgstr "Sto"
-
-#: ../glade/gcalctool.glade.h:325
-msgid "Store displayed value in memory register [S]"
-msgstr "Stoor vertoonwaarde in geheueregister [S]"
-
-#: ../glade/gcalctool.glade.h:326
-msgid "Store to register"
-msgstr "Stoor na register"
-
-#: ../glade/gcalctool.glade.h:327
-msgid "Straight-line depreciation"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:328
-msgid "Straight-line depreciation [l]"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:329
-msgid "Subtract"
-msgstr "Minus"
-
-#: ../glade/gcalctool.glade.h:330
-msgid "Subtract [-]"
-msgstr "Minus [-]"
-
-#: ../glade/gcalctool.glade.h:331
-msgid "Sum-of-the years'-digits depreciation"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:332
-msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr ""
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
-#. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:336
-msgid "Syd"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:339
-msgid "Tangent [L]"
-msgstr "Tangens [L]"
-
-#: ../glade/gcalctool.glade.h:340
-msgid "Ten to the x"
-msgstr "Tien tot die mag x"
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
-#. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../glade/gcalctool.glade.h:343
-msgid "Term"
-msgstr "Termyn"
-
-#: ../glade/gcalctool.glade.h:344
-msgid "Undo"
-msgstr "Ontdoen"
-
-#: ../glade/gcalctool.glade.h:345
-msgid "User-defined functions"
-msgstr "Gebruikergedefinieerde funksies"
-
-#: ../glade/gcalctool.glade.h:346
-msgid "User-defined functions [F]"
-msgstr "Gebruikergedefinieerde funksies [F]"
-
-#: ../glade/gcalctool.glade.h:347
-msgid "X to the y"
-msgstr "X tot die mag y"
-
-#: ../glade/gcalctool.glade.h:348
-msgid "XNOR"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:349
-msgid "XOR"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:350
-msgid "_0 significant places"
-msgstr "_0 beduidende plekke"
-
-#: ../glade/gcalctool.glade.h:351
-msgid "_1 place"
-msgstr "_1 plek"
-
-#: ../glade/gcalctool.glade.h:352
-msgid "_1 significant place"
-msgstr "_1 beduidende plek"
-
-#: ../glade/gcalctool.glade.h:353
-msgid "_2 places"
-msgstr "_2 plekke"
-
-#: ../glade/gcalctool.glade.h:354
-msgid "_2 significant places"
-msgstr "_2 beduidende plekke"
-
-#: ../glade/gcalctool.glade.h:355
-msgid "_3 places"
-msgstr "_3 plekke"
-
-#: ../glade/gcalctool.glade.h:356
-msgid "_3 significant places"
-msgstr "_3 beduidende plekke"
-
-#: ../glade/gcalctool.glade.h:357
-msgid "_4 places"
-msgstr "_4 plekke"
-
-#: ../glade/gcalctool.glade.h:358
-msgid "_4 significant places"
-msgstr "_4 beduidende plekke"
-
-#: ../glade/gcalctool.glade.h:359
-msgid "_5 places"
-msgstr "_5 plekke"
-
-#: ../glade/gcalctool.glade.h:360
-msgid "_5 significant places"
-msgstr "_5 beduidende plekke"
-
-#: ../glade/gcalctool.glade.h:361
-msgid "_6 places"
-msgstr "_6 plekke"
-
-#: ../glade/gcalctool.glade.h:362
-msgid "_6 significant places"
-msgstr "_6 beduidende plekke"
-
-#: ../glade/gcalctool.glade.h:363
-msgid "_7 places"
-msgstr "_7 plekke"
-
-#: ../glade/gcalctool.glade.h:364
-msgid "_7 significant places"
-msgstr "_7 beduidende plekke"
-
-#: ../glade/gcalctool.glade.h:365
-msgid "_8 places"
-msgstr "_8 plekke"
-
-#: ../glade/gcalctool.glade.h:366
-msgid "_8 significant places"
-msgstr "_8 beduidende plekke"
-
-#: ../glade/gcalctool.glade.h:367
-msgid "_9 places"
-msgstr "_9 plekke"
-
-#: ../glade/gcalctool.glade.h:368
-msgid "_9 significant places"
-msgstr "_9 beduidende plekke"
-
-#: ../glade/gcalctool.glade.h:369
-msgid "_Advanced"
-msgstr "_Gevorderd"
-
-#: ../glade/gcalctool.glade.h:370
-msgid "_Basic"
-msgstr "_Eenvoudig"
-
-#: ../glade/gcalctool.glade.h:371
-msgid "_Bin"
-msgstr "_Bin"
-
-#: ../glade/gcalctool.glade.h:372
+#. Calculator menu
+#: ../src/math-window.c:357
 msgid "_Calculator"
 msgstr "_Sakrekenaar"
 
-#: ../glade/gcalctool.glade.h:373
-msgid "_Contents"
-msgstr "_Inhoud"
+#. Mode menu
+#: ../src/math-window.c:359
+msgid "_Mode"
+msgstr "_Modus"
 
-#: ../glade/gcalctool.glade.h:374
-msgid "_Dec"
-msgstr "_Des"
-
-#: ../glade/gcalctool.glade.h:375
-msgid "_Edit"
-msgstr "_Redigeer"
-
-#: ../glade/gcalctool.glade.h:376
-msgid "_Financial"
-msgstr "_Finansieel"
-
-#: ../glade/gcalctool.glade.h:377
-msgid "_Fix"
-msgstr ""
-
-#: ../glade/gcalctool.glade.h:378
+#. Help menu label
+#: ../src/math-window.c:361
 msgid "_Help"
 msgstr "_Hulp"
 
-#: ../glade/gcalctool.glade.h:379
-msgid "_Insert"
-msgstr "_Voeg in"
+#. Basic menu label
+#: ../src/math-window.c:363
+msgid "_Basic"
+msgstr "_Basies"
 
-#: ../glade/gcalctool.glade.h:380
-msgid "_Insert ASCII value..."
-msgstr "Voeg ASCII-waarde _in..."
+#. Advanced menu label
+#: ../src/math-window.c:365
+msgid "_Advanced"
+msgstr "_Gevorderd"
 
-#: ../glade/gcalctool.glade.h:381
-msgid "_Inv"
-msgstr "_Inv"
+#. Financial menu label
+#: ../src/math-window.c:367
+msgid "_Financial"
+msgstr "_Finansieel"
 
-#: ../glade/gcalctool.glade.h:382
-msgid "_Memory Registers"
-msgstr "_Geheueregisters"
+#. Programming menu label
+#: ../src/math-window.c:369
+msgid "_Programming"
+msgstr "_Programmering"
 
-#: ../glade/gcalctool.glade.h:383
-msgid "_Oct"
-msgstr "_Okt"
+#. Help>Contents menu label
+#: ../src/math-window.c:371
+msgid "_Contents"
+msgstr "_Inhoud"
 
-#: ../glade/gcalctool.glade.h:386
-msgid "_Radians"
-msgstr "_Radiale"
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/mp-binary.c:122
+msgid "Boolean AND is only defined for positive integers"
+msgstr "Boolese EN is slegs vir positiewe heelgetalle gedefinieer"
 
-#: ../glade/gcalctool.glade.h:387
-msgid "_Redo"
-msgstr "_Herdoen"
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/mp-binary.c:135
+msgid "Boolean OR is only defined for positive integers"
+msgstr "Boolese OF is slegs vir positiewe heelgetalle gedefinieer"
 
-#: ../glade/gcalctool.glade.h:388
-msgid "_Sci"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:148
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "Boolese XOF is slegs vir positiewe heelgetalle gedefinieer"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:163
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "Boolese NIE is slegs vir positiewe heelgetalle gedefinieer"
+
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/mp-binary.c:194
+msgid "Shift is only possible on integer values"
+msgstr "Shift is slegs moontlik op heelgetalwaardes"
+
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/mp.c:156
+msgid "Argument not defined for zero"
+msgstr "Argument nie gedefinieer vir nul nie"
+
+#: ../src/mp.c:307
+msgid "Overflow: the result couldn't be calculated"
+msgstr "Oorloop: die antwoord kon nie bereken word nie"
+
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:652 ../src/mp.c:684 ../src/mp.c:1618
+msgid "Division by zero is undefined"
+msgstr "Deling deur nul is ongedefinieerd"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1289 ../src/mp.c:1326
+msgid "Logarithm of zero is undefined"
+msgstr "Logaritme van nul is ongedefinieerd"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1691 ../src/mp.c:2006
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Die mag van nul is ongedefinieerd vir 'n negatiewe eksponent"
+
+#: ../src/mp.c:1716
+msgid "Reciprocal of zero is undefined"
+msgstr "Resiprook van nul is ongedefinieerd"
+
+#: ../src/mp.c:1801
+msgid "Root must be non-zero"
+msgstr "Wortel moet nie-nul wees"
+
+#: ../src/mp.c:1819
+msgid "Negative root of zero is undefined"
+msgstr "Negatiewe wortel van nul is ongedefinieerd"
+
+#: ../src/mp.c:1825
+msgid "nth root of negative number is undefined for even n"
+msgstr "n-de wortel van negatiewe getal is ongedefinieerd vir ewe n"
+
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1946
+msgid "Factorial is only defined for natural numbers"
+msgstr "Fakulteit is slegs gedefinieer vir natuurlike getalle"
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1966
+#, fuzzy
+msgid "Modulus division is only defined for integers"
+msgstr "Modulo-deling is slegs gedefinieer vir heelgetalle"
+
+#. Translators: Error displayed when tangent value is undefined
+#: ../src/mp-trigonometric.c:318
+msgid ""
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr ""
+"Tangens is ongedefinieer vir hoeke wat veelvoude is van π (180°) van π/2 "
+"(90°)"
+
+#. Translators: Error displayed when inverse sine value is undefined
+#: ../src/mp-trigonometric.c:363
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr "Inverse sinus is ongedefinieer vir waardes buite [-1, 1]"
+
+#. Translators: Error displayed when inverse cosine value is undefined
+#: ../src/mp-trigonometric.c:380
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr "Inverse kosinus is ongedefinieer vir waardes buite [-1, 1]"
+
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: ../src/mp-trigonometric.c:599
+#, fuzzy
+#| msgid ""
+#| "Inverse hyperbolic cosine is undefined for values less than or equal to "
+#| "one"
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
+msgstr ""
+"Inverse hiperboliese kosinus is ongedefinieer vir waardes kleiner of gelyk "
+"aan een"
+
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: ../src/mp-trigonometric.c:623
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr "Inverse hiperboliese tangens is ongedefinieer vir waardes buite [-1, 1]"
+
+#: ../src/unit-manager.c:43
+#, c-format
+#| msgid "Degrees"
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s grade"
+
+#: ../src/unit-manager.c:43
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "graad,grade"
+
+#: ../src/unit-manager.c:44
+#, c-format
+#| msgid "Gradians"
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s radiale"
+
+#: ../src/unit-manager.c:44
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "radiaal,radiale,rad"
+
+#: ../src/unit-manager.c:45
+#, c-format
+#| msgid "Gradians"
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s gradiane"
+
+#: ../src/unit-manager.c:45
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "gradiaan,gradiane,grad"
+
+#: ../src/unit-manager.c:46
+msgid "Parsecs"
+msgstr "parsek"
+
+#: ../src/unit-manager.c:46
+#, c-format
+#| msgid "%d place"
+#| msgid_plural "%d places"
+msgctxt "unit-format"
+msgid "%s pc"
 msgstr ""
 
-#: ../glade/gcalctool.glade.h:389
-msgid "_Scientific"
-msgstr "_Wetenskaplik"
+#: ../src/unit-manager.c:46
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "parsek,parseks,pc"
 
-#: ../glade/gcalctool.glade.h:390
-msgid "_Set"
-msgstr "_Stel"
+#: ../src/unit-manager.c:47
+msgid "Light Years"
+msgstr "Ligjare"
 
-#: ../glade/gcalctool.glade.h:391
-msgid "_Undo"
-msgstr "_Ontdoen"
+#: ../src/unit-manager.c:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s lj"
 
-#: ../glade/gcalctool.glade.h:392
-msgid "_View"
-msgstr "_Bekyk"
+#: ../src/unit-manager.c:47
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "ligjaar,ligjare,lj,lig jaar,lig jare"
 
-#: ../glade/gcalctool.glade.h:393
-msgid "e to the power of displayed value [{]"
-msgstr "e tot die mag van die vertoonwaarde [{]"
+#: ../src/unit-manager.c:48
+msgid "Astronomical Units"
+msgstr "Astronomiese eenhede"
 
-#. E to the power of x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:395
-msgid "e<sup>x</sup>"
-msgstr "e<sup>x</sup>"
-
-#: ../glade/gcalctool.glade.h:396
-msgid "ex"
+#: ../src/unit-manager.c:48
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
 msgstr ""
 
-#. This is accessible name for memory register 0.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:400
-msgid "register 0"
-msgstr "register 0"
+#: ../src/unit-manager.c:48
+msgctxt "unit-symbols"
+msgid "au"
+msgstr ""
 
-#. This is accessible name for memory register 1.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:404
-msgid "register 1"
-msgstr "register 1"
+#: ../src/unit-manager.c:49
+msgid "Nautical Miles"
+msgstr "Seemyl"
 
-#. This is accessible name for memory register 2.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:408
-msgid "register 2"
-msgstr "register 2"
+#: ../src/unit-manager.c:49 ../src/unit-manager.c:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s sm."
 
-#. This is accessible name for memory register 3.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:412
-msgid "register 3"
-msgstr "register 3"
+#: ../src/unit-manager.c:49
+msgctxt "unit-symbols"
+msgid "nm"
+msgstr ""
 
-#. This is accessible name for memory register 4.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:416
-msgid "register 4"
-msgstr "register 4"
+#: ../src/unit-manager.c:50
+msgid "Miles"
+msgstr "Myl"
 
-#. This is accessible name for memory register 5.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:420
-msgid "register 5"
-msgstr "register 5"
+#: ../src/unit-manager.c:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr ""
 
-#. This is accessible name for memory register 6.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:424
-msgid "register 6"
-msgstr "register 6"
+#: ../src/unit-manager.c:50
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "myl,myle,myl"
 
-#. This is accessible name for memory register 7.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:428
-msgid "register 7"
-msgstr "register 7"
+#: ../src/unit-manager.c:51
+msgid "Kilometers"
+msgstr "Kilometer"
 
-#. This is accessible name for memory register 8.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:432
-msgid "register 8"
-msgstr "register 8"
+#: ../src/unit-manager.c:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
 
-#. This is accessible name for memory register 9.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:436
-msgid "register 9"
-msgstr "register 9"
+#: ../src/unit-manager.c:51
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "kilometer,kilometers,km,kms"
 
-#: ../glade/gcalctool.glade.h:437
-msgid "x2"
-msgstr "x2"
+#: ../src/unit-manager.c:52
+msgid "Cables"
+msgstr ""
 
-#: ../glade/gcalctool.glade.h:438
-msgid "xy"
-msgstr "xy"
+#: ../src/unit-manager.c:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr ""
 
-#. This is a plus-minus sign (+/-)
-#: ../glade/gcalctool.glade.h:440
-msgid "±"
-msgstr "±"
+#: ../src/unit-manager.c:52
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr ""
 
-#. This is a multiplication sign (*)
-#: ../glade/gcalctool.glade.h:442
-msgid "×"
-msgstr "×"
+#: ../src/unit-manager.c:53
+msgid "Fathoms"
+msgstr "Vadem"
 
-#. this is a division sign (÷)
-#: ../glade/gcalctool.glade.h:444
-msgid "÷"
-msgstr "÷"
+#: ../src/unit-manager.c:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr ""
 
-#. This is a minus sign (-)
-#: ../glade/gcalctool.glade.h:446
-msgid "−"
-msgstr "−"
+#: ../src/unit-manager.c:53
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "vadem,vadems"
 
-#. This is a square root sign
-#: ../glade/gcalctool.glade.h:448
-msgid "√"
-msgstr "√"
+#: ../src/unit-manager.c:54
+msgid "Meters"
+msgstr "Meter"
 
-#~ msgid "Error, operands must be integers"
-#~ msgstr "Fout, operande moet heeltalle wees"
+#: ../src/unit-manager.c:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
 
-#~ msgid "Malformed parenthesis expression"
-#~ msgstr "Wangevormde hakkie-uitdrukking"
+#: ../src/unit-manager.c:54
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "meter,meters,m"
 
-#~ msgid "%s: invalid syntax mode [%s]\n"
-#~ msgstr "%s: ongeldige sintaksmodus [%s]\n"
+#: ../src/unit-manager.c:55
+msgid "Yards"
+msgstr "Jaart"
 
-#~ msgid "Clipboard contained malformed calculation"
-#~ msgstr "Knipbord het wangevormde bewerking bevat"
+#: ../src/unit-manager.c:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s jt."
 
-#~ msgid "A_rithmetic Precedence"
-#~ msgstr "_Rekenindige volgorde van bewerking"
+#: ../src/unit-manager.c:55
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "jaart,jaarts,jt"
 
-#~ msgid "Use Arithmetic Precedence"
-#~ msgstr "Gebruik rekenkundige volgorde van bewerking"
+#: ../src/unit-manager.c:56
+msgid "Feet"
+msgstr "Voet"
 
-#~ msgid "Use Left-right Precedence"
-#~ msgstr "Gebruik links-na-regs volgorde van bewerking"
+#: ../src/unit-manager.c:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s vt."
 
-#~ msgid "_Left-to-right Precedence"
-#~ msgstr "_Links-na-regs volgorde van bewerking"
+#: ../src/unit-manager.c:56
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "voet,voet,vt"
+
+#: ../src/unit-manager.c:57
+#, fuzzy
+#| msgid "Inverse"
+msgid "Inches"
+msgstr "Duim"
+
+#: ../src/unit-manager.c:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s duim"
+
+#: ../src/unit-manager.c:57
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "duim,duime,in"
+
+#: ../src/unit-manager.c:58
+#, fuzzy
+#| msgid "_Contents"
+msgid "Centimeters"
+msgstr "Sentimeter"
+
+#: ../src/unit-manager.c:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr ""
+
+#: ../src/unit-manager.c:58
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "sentimeter,sentimeters,cm,cms"
+
+#: ../src/unit-manager.c:59
+msgid "Millimeters"
+msgstr ""
+
+#: ../src/unit-manager.c:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr ""
+
+#: ../src/unit-manager.c:59
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr ""
+
+#: ../src/unit-manager.c:60
+msgid "Micrometers"
+msgstr "Mikrometers"
+
+#: ../src/unit-manager.c:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr ""
+
+#: ../src/unit-manager.c:60
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "mikrometer,mikrometers,um,μm"
+
+#: ../src/unit-manager.c:61
+msgid "Nanometers"
+msgstr "Nanometer"
+
+#: ../src/unit-manager.c:61
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers"
+msgstr "nanometer,nanometers"
+
+#: ../src/unit-manager.c:62
+msgid "Hectares"
+msgstr "Hektaar"
+
+#: ../src/unit-manager.c:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../src/unit-manager.c:62
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "hektaar,hektare,ha"
+
+#: ../src/unit-manager.c:63
+msgid "Acres"
+msgstr "Akkers"
+
+#: ../src/unit-manager.c:63
+#, c-format
+#| msgid "%d place"
+#| msgid_plural "%d places"
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s akker"
+
+#: ../src/unit-manager.c:63
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "akker,akkers"
+
+#: ../src/unit-manager.c:64
+#| msgid "Square [Ctrl+2]"
+msgid "Square Meter"
+msgstr "Vierkante meter"
+
+#: ../src/unit-manager.c:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../src/unit-manager.c:64
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
+
+#: ../src/unit-manager.c:65
+#| msgid "Square [Ctrl+2]"
+msgid "Square Centimeter"
+msgstr "Vierkante sentimeter"
+
+#: ../src/unit-manager.c:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit-manager.c:65
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
+#: ../src/unit-manager.c:66
+msgid "Square Millimeter"
+msgstr "Vierkante millimeter"
+
+#: ../src/unit-manager.c:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit-manager.c:66
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
+
+#: ../src/unit-manager.c:67
+msgid "Cubic Meters"
+msgstr "Kubieke meter"
+
+#: ../src/unit-manager.c:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit-manager.c:67
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
+#: ../src/unit-manager.c:68
+msgid "Gallons"
+msgstr "Gelling"
+
+#: ../src/unit-manager.c:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gell."
+
+#: ../src/unit-manager.c:68
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "gelling,gellings,gal,galon,galonne,gell,gall"
+
+#: ../src/unit-manager.c:69
+msgid "Litres"
+msgstr "Liter"
+
+#: ../src/unit-manager.c:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s l"
+
+#: ../src/unit-manager.c:69
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "liter,liters,l"
+
+#: ../src/unit-manager.c:70
+#, fuzzy
+msgid "Quarts"
+msgstr "Kwarte"
+
+#: ../src/unit-manager.c:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr ""
+
+#: ../src/unit-manager.c:70
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "kwart,kwarte,qt"
+
+#: ../src/unit-manager.c:71
+msgid "Pints"
+msgstr ""
+
+#: ../src/unit-manager.c:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr ""
+
+#: ../src/unit-manager.c:71
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr ""
+
+#: ../src/unit-manager.c:72
+msgid "Millilitres"
+msgstr "Milliliters"
+
+#: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s ml"
+
+#: ../src/unit-manager.c:72
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "milliliter,milliliters,ml,cm³"
+
+#: ../src/unit-manager.c:73
+msgid "Microlitre"
+msgstr "Mikroliter"
+
+#: ../src/unit-manager.c:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μl"
+
+#: ../src/unit-manager.c:73
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μl,ul"
+
+#: ../src/unit-manager.c:74
+msgid "Tonnes"
+msgstr "Ton"
+
+#: ../src/unit-manager.c:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s t"
+
+#: ../src/unit-manager.c:74
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "ton,tonne,t"
+
+#: ../src/unit-manager.c:75
+msgid "Kilograms"
+msgstr "Kilogram"
+
+#: ../src/unit-manager.c:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
+
+#: ../src/unit-manager.c:75
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "kilogram,kilogramme,kg,kgs"
+
+#: ../src/unit-manager.c:76
+#| msgid "Pound sterling"
+msgid "Pounds"
+msgstr "Pond"
+
+#: ../src/unit-manager.c:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb."
+
+#: ../src/unit-manager.c:76
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "pond,ponde,lb"
+
+#: ../src/unit-manager.c:77
+msgid "Ounces"
+msgstr "Ons"
+
+#: ../src/unit-manager.c:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz."
+
+#: ../src/unit-manager.c:77
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "ons,onse,oz"
+
+#: ../src/unit-manager.c:78
+#| msgid "Gradians"
+msgid "Grams"
+msgstr "Gram"
+
+#: ../src/unit-manager.c:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit-manager.c:78
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "gram,gramme,g"
+
+#: ../src/unit-manager.c:79
+msgid "Years"
+msgstr "Jare"
+
+#: ../src/unit-manager.c:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s jaar"
+
+#: ../src/unit-manager.c:79
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "jaar,jare"
+
+#: ../src/unit-manager.c:80
+msgid "Days"
+msgstr "Dae"
+
+#: ../src/unit-manager.c:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s dae"
+
+#: ../src/unit-manager.c:80
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "dag,dae"
+
+#: ../src/unit-manager.c:81
+msgid "Hours"
+msgstr "Ure"
+
+#: ../src/unit-manager.c:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s ure"
+
+#: ../src/unit-manager.c:81
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "uur,ure"
+
+#: ../src/unit-manager.c:82
+msgid "Minutes"
+msgstr "Minute"
+
+#: ../src/unit-manager.c:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s minute"
+
+#: ../src/unit-manager.c:82
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "minuut,minute"
+
+#: ../src/unit-manager.c:83
+msgid "Seconds"
+msgstr "Sekondes"
+
+#: ../src/unit-manager.c:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit-manager.c:83
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "sekonde,sekondes,s"
+
+#: ../src/unit-manager.c:84
+msgid "Milliseconds"
+msgstr "Millisekondes"
+
+#: ../src/unit-manager.c:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit-manager.c:84
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "millisekonde,millisekondes"
+
+#: ../src/unit-manager.c:85
+msgid "Microseconds"
+msgstr "Mikrosekonde"
+
+#: ../src/unit-manager.c:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit-manager.c:85
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us"
+msgstr "mikrosekonde,mikrosekondes,us"
+
+#: ../src/unit-manager.c:86
+msgid "Celcius"
+msgstr "Celsius"
+
+#: ../src/unit-manager.c:86
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚C"
+msgstr "%s ˚C"
+
+#: ../src/unit-manager.c:86
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "degC,˚C"
+
+#: ../src/unit-manager.c:87
+msgid "Farenheit"
+msgstr "Fahrenheit"
+
+#: ../src/unit-manager.c:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚F"
+msgstr "%s ˚F"
+
+#: ../src/unit-manager.c:87
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "degF,˚F"
+
+#: ../src/unit-manager.c:88
+msgid "Kelvin"
+msgstr "Kelvin"
+
+#: ../src/unit-manager.c:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚K"
+msgstr "%s K"
+
+#: ../src/unit-manager.c:88
+msgctxt "unit-symbols"
+msgid "degK,˚K"
+msgstr "degK,K,˚K"
+
+#: ../src/unit-manager.c:89
+msgid "Rankine"
+msgstr ""
+
+#: ../src/unit-manager.c:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚R"
+msgstr ""
+
+#: ../src/unit-manager.c:89
+msgctxt "unit-symbols"
+msgid "degR,˚R"
+msgstr ""
+
+#: ../src/unit-manager.c:98
+msgid "Angle"
+msgstr "Hoek"
+
+#: ../src/unit-manager.c:99
+msgid "Length"
+msgstr "Lengte"
+
+#: ../src/unit-manager.c:100
+msgid "Area"
+msgstr "Oppervlakte"
+
+#: ../src/unit-manager.c:101
+msgid "Volume"
+msgstr "Volume"
+
+#: ../src/unit-manager.c:102
+msgid "Weight"
+msgstr "Gewig"
+
+#: ../src/unit-manager.c:103
+msgid "Duration"
+msgstr "Tydsduur"
+
+#: ../src/unit-manager.c:104
+msgid "Temperature"
+msgstr "Temperatuur"
+
+#: ../src/unit-manager.c:116
+msgid "Currency"
+msgstr "Geldeenheid"
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../src/unit-manager.c:126
+#, c-format
+msgid "%s%%s"
+msgstr ""
+
+#, fuzzy
+#~ msgid "&#x2190; R"
+#~ msgstr "&#x2190; R"
+
+#~ msgid "&#x2192; R"
+#~ msgstr "&#x2192; R"
+
+#, fuzzy
+#~ msgid "BS"
+#~ msgstr "BS"
+
+#~ msgid "Recall"
+#~ msgstr "Herroep"
+
+#~ msgid "&#xA4;$&#x20AC;"
+#~ msgstr "&#xA4;$&#x20AC;"
+
+#~ msgid ""
+#~ "Converts between different currencies. Enter the amount and the currency "
+#~ "you want to convert from on the upper row, and the currency you want to "
+#~ "convert to on the lower row, and the amount will be displayed on the "
+#~ "lower row."
+#~ msgstr ""
+#~ "Omskakeling tussen verskillende geldeenhede. Sleutel in die boonste ry "
+#~ "die bedrag en eenheid wat omgeskakel moet word, in en in die onderste ry "
+#~ "die eenheid waarnatoe dit omgeskakel moet word. Die bedrag sal in die "
+#~ "onderste ry vertoon word."
+
+#~ msgid "Currency Conversion"
+#~ msgstr "Geldeenheid omskakeling"
+
+#~ msgid "Display Mode"
+#~ msgstr "Skerm Modus"
+
+#~ msgid "Indicates whether the memory register window is initially displayed."
+#~ msgstr "Dui aan of die geheueregister venster aanvanklik vertoon is."
+
+#~ msgid "Mode"
+#~ msgstr "Modus"
+
+#~ msgid "Show Registers"
+#~ msgstr "Wys registers"
+
+#~ msgid ""
+#~ "The display format used in advanced mode. One of: \"ENG\" (engineering), "
+#~ "\"FIX\" (fixed-point) and \"SCI\" (scientific)"
+#~ msgstr ""
+#~ "Die vertoning formaat wat gebruik word in gevorderde modus. Een van: \"ENG"
+#~ "\" (ingenieurswese), \"FIX\" (vaste punt) en \"SCI\" (wetenskaplik)"
+
+#~ msgid ""
+#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
+#~ msgstr ""
+#~ "Die aanvanklike sakrekenaar modus. Geldige waardes is ¨BASIC¨, ¨FINANCIAL¨"
+
+#~ msgid "The initial x-coordinate for the window"
+#~ msgstr "Die aanvanklike x-koördinaat vir die venster"
+
+#~ msgid "The initial y-coordinate for the window"
+#~ msgstr "Die aanvanklike y-koördinaat vir die venster"
+
+#~ msgid ""
+#~ "The number of pixels to place the window from the left of the screen."
+#~ msgstr ""
+#~ "Die aantal pixels nodig om die venster van die linkerkant van die skerm "
+#~ "af te plaas."
+
+#~ msgid "The number of pixels to place the window from the top of the screen."
+#~ msgstr ""
+#~ "Die aantal pixels nodig om die venster van die bokant van die skerm af te "
+#~ "plaas."
+
+#~ msgid "The numeric base (used in programming mode)"
+#~ msgstr "Die numeriese basis (word gebruik in programmeringsmodus)"
+
+#~ msgid "Trigonometric type"
+#~ msgstr "Trigonometriese tipe"
+
+#~ msgid "Assign Variable"
+#~ msgstr "Ken veranderlike toe"
+
+#~ msgid "Insert Variable"
+#~ msgstr "Voeg veranderlike in"
+
+#~ msgid "Backspace"
+#~ msgstr "Verwyder die heel regterkantste karakter van die vertoonwaarde "
+
+#~ msgid "No variables defined"
+#~ msgstr "Geen veranderlikes bepaal"
+
+#~ msgid ""
+#~ "You don't have any recent currency rates. Should some be downloaded now?"
+#~ msgstr ""
+#~ "Daar is tans geen huidige geldeenheidkoerse nie. Moet sommige nou "
+#~ "afgelaai word?"
+
+#~ msgid ""
+#~ "Currency rates could not be downloaded. You may receive inaccurate "
+#~ "results, or you may not receive any results at all."
+#~ msgstr ""
+#~ "Geldeenheidkoerse kan nie afgelaae word nie. Onakkurate resultate of geen "
+#~ "resultate kan verkry word."
+
+#~ msgid "Logarithm of negative values is undefined"
+#~ msgstr "Logaritme van negatiewe waardes is ongedefinieerd"
+
+#~ msgid "The power of negative numbers is only defined for integer exponents"
+#~ msgstr ""
+#~ "Die krag van negatiewe nommers is slegs vir heelgetal eksponente "
+#~ "gedefinieer"
+
+#~ msgid "Square root is undefined for negative values"
+#~ msgstr "Vierkantswortel is ongedefinieerd vir negatiewe waardes"
