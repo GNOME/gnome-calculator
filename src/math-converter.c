@@ -224,7 +224,17 @@ math_converter_set_conversion(MathConverter *converter, /*const gchar *category,
     ub = unit_manager_get_unit_by_name(unit_manager_get_default(), unit_b);
     if (!ua || !ub)
     {
-        gtk_combo_box_set_active(GTK_COMBO_BOX(converter->priv->from_combo), 0);
+        GtkTreeModel *model;
+        GtkTreeIter iter;
+
+        /* Select the first unit */
+        model = gtk_combo_box_get_model(GTK_COMBO_BOX(converter->priv->from_combo));
+        if (gtk_tree_model_get_iter_first(model, &iter)) {
+            GtkTreeIter child_iter;
+            while (gtk_tree_model_iter_children(model, &child_iter, &iter))
+                iter = child_iter;
+            gtk_combo_box_set_active_iter(GTK_COMBO_BOX(converter->priv->from_combo), &iter);
+        }
         return;
     }
 
