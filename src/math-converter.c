@@ -225,12 +225,16 @@ math_converter_set_conversion(MathConverter *converter, /*const gchar *category,
     if (!ua || !ub)
     {
         GtkTreeModel *model;
-        GtkTreeIter iter, child_iter;
+        GtkTreeIter iter;
 
         /* Select the first unit */
         model = gtk_combo_box_get_model(GTK_COMBO_BOX(converter->priv->from_combo));
-        if (gtk_tree_model_get_iter_first(model, &iter) && gtk_tree_model_iter_children(model, &child_iter, &iter))
-            gtk_combo_box_set_active_iter(GTK_COMBO_BOX(converter->priv->from_combo), &child_iter);
+        if (gtk_tree_model_get_iter_first(model, &iter)) {
+            GtkTreeIter child_iter;
+            while (gtk_tree_model_iter_children(model, &child_iter, &iter))
+                iter = child_iter;
+            gtk_combo_box_set_active_iter(GTK_COMBO_BOX(converter->priv->from_combo), &iter);
+        }
         return;
     }
 
