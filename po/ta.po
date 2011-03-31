@@ -12,30 +12,29 @@
 # I. Felix <ifelix@redhat.com>, 2009.
 # Dr.T.vasudevan <agnihot3@gmail.com>, 2009.
 # Dr.T.Vasudevan <agnihot3@gmail.com>, 2009, 2010.
-# Dr,T,Vasudevan <agnihot3@gmail.com>, 2010.
+# Dr,T,Vasudevan <agnihot3@gmail.com>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-21 12:05+0530\n"
-"PO-Revision-Date: 2010-11-21 12:16+0530\n"
-"Last-Translator: Dr.T.Vasudevan <agnihot3@gmail.com>\n"
-"Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
-"Language: ta\n"
+"POT-Creation-Date: 2011-03-31 21:39+0530\n"
+"PO-Revision-Date: 2011-03-31 21:42+0530\n"
+"Last-Translator: \n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ta\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\\n"
 "\n"
 "\n"
 "\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.0\n"
 
-#. This is between the unit selector dropdowns, for example: meters in kilometers
-#. This is between the currency selector dropdowns, for example: [USD] in [EUR]
+#. The label on the memory button
 #: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
-msgid " in "
-msgstr " உள்ளே "
+msgid "<i>x</i>"
+msgstr "<i>x</i>"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 #: ../data/buttons-advanced.ui.h:4 ../data/buttons-basic.ui.h:2
@@ -69,11 +68,13 @@ msgstr "காரணிப்படுத்து"
 msgid "Inverse"
 msgstr "தலைகீழ்"
 
-#. Accessible name for the recall value button
-#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:68
-#: ../data/buttons-programming.ui.h:20
-msgid "Recall"
-msgstr "திருப்பி அழைக்கப்படல்"
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:50
+#: ../src/math-buttons.c:223
+msgid "Memory"
+msgstr "நினைவகம்"
 
 #. Accessible name for the scientific exponent button
 #: ../data/buttons-advanced.ui.h:18
@@ -81,32 +82,19 @@ msgid "Scientific Exponent"
 msgstr "அறிவியல் அடுக்குக்குறி "
 
 #. Accessible name for the store value button
-#: ../data/buttons-advanced.ui.h:20 ../data/buttons-financial.ui.h:72
-#: ../data/buttons-programming.ui.h:26
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:24
 msgid "Store"
 msgstr "சேமி"
 
 #. Accessible name for the subscript mode button
-#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:28
+#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:26
 msgid "Subscript"
 msgstr "கீழொட்டு"
 
 #. Accessible name for the superscript mode button
-#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:30
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:28
 msgid "Superscript"
 msgstr "மேலொட்டு"
-
-#. The label on the memory recall button
-#: ../data/buttons-advanced.ui.h:26 ../data/buttons-financial.ui.h:102
-#: ../data/buttons-programming.ui.h:34
-msgid "← R"
-msgstr "← ஆர்(R)"
-
-#. The label on the memory store button
-#: ../data/buttons-advanced.ui.h:28 ../data/buttons-financial.ui.h:104
-#: ../data/buttons-programming.ui.h:36
-msgid "→ R"
-msgstr "→ஆர்(R)"
 
 #. Payment Period Dialog: Button to calculate result
 #: ../data/buttons-financial.ui.h:6
@@ -222,7 +210,7 @@ msgstr ""
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:263
+#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:247
 msgid "Compounding Term"
 msgstr "கூட்டு சொல்"
 
@@ -243,7 +231,7 @@ msgstr "இரட்டை-குறைவு குறைமானம்"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:269
+#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:253
 msgid "Future Value"
 msgstr "எதிர்கால மதிப்பு "
 
@@ -264,55 +252,55 @@ msgstr "Gpm"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:290
+#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:274
 msgid "Gross Profit Margin"
 msgstr "மொத்த லாப வரம்பு"
 
 #. Title of Payment Period dialog
-#: ../data/buttons-financial.ui.h:50
+#: ../data/buttons-financial.ui.h:52
 msgid "Payment Period"
 msgstr "கட்டண காலம்"
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:52 ../src/math-buttons.c:281
+#: ../data/buttons-financial.ui.h:54 ../src/math-buttons.c:265
 msgid "Periodic Interest Rate"
 msgstr "காலமுறை வட்டி வீதம் "
 
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/buttons-financial.ui.h:54
+#: ../data/buttons-financial.ui.h:56
 msgid "Periodic Interest _Rate:"
 msgstr "காலமுறை வட்டி வீதம் (_R):"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:56 ../src/math-buttons.c:287
+#: ../data/buttons-financial.ui.h:58 ../src/math-buttons.c:271
 msgid "Periodic Payment"
 msgstr "காலமுறை செலுத்தல் "
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/buttons-financial.ui.h:58
+#: ../data/buttons-financial.ui.h:60
 msgid "Pmt"
 msgstr "தவணை"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:60 ../src/math-buttons.c:284
+#: ../data/buttons-financial.ui.h:62 ../src/math-buttons.c:268
 msgid "Present Value"
 msgstr "நடப்பு மதிப்பு "
 
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/buttons-financial.ui.h:62
+#: ../data/buttons-financial.ui.h:64
 msgid "Present _Value:"
 msgstr "நடப்பு மதிப்பு (_V):"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/buttons-financial.ui.h:64
+#: ../data/buttons-financial.ui.h:66
 msgid "Pv"
 msgstr "Pv"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/buttons-financial.ui.h:66
+#: ../data/buttons-financial.ui.h:68
 msgid "Rate"
 msgstr "விகிதம்"
 
@@ -322,72 +310,72 @@ msgid "Sln"
 msgstr "Sln"
 
 #. Title of Straight-Line Depreciation dialog
-#: ../data/buttons-financial.ui.h:74
+#: ../data/buttons-financial.ui.h:72
 msgid "Straight-Line Depreciation"
 msgstr "நேர்-கோடு குறைமானம்"
 
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
-#: ../data/buttons-financial.ui.h:76
+#: ../data/buttons-financial.ui.h:74
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "மொத்த-வருட-இலக்கம் குறைமானம் "
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:78
+#: ../data/buttons-financial.ui.h:76
 msgid "Syd"
 msgstr "Syd"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/buttons-financial.ui.h:80
+#: ../data/buttons-financial.ui.h:78
 msgid "Term"
 msgstr "உறுப்பு"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/buttons-financial.ui.h:82
+#: ../data/buttons-financial.ui.h:80
 msgid "_Cost:"
 msgstr "செலவு (_C):"
 
 #. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/buttons-financial.ui.h:84
+#: ../data/buttons-financial.ui.h:82
 msgid "_Future Value:"
 msgstr "எதிர்கால மதிப்பு (_F):"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/buttons-financial.ui.h:86
+#: ../data/buttons-financial.ui.h:84
 msgid "_Life:"
 msgstr "வாழ்வு (_L):"
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: ../data/buttons-financial.ui.h:88
+#: ../data/buttons-financial.ui.h:86
 msgid "_Margin:"
 msgstr "வரம்பு (_M):"
 
 #. Present Value Dialog: Label before number of periods input
-#: ../data/buttons-financial.ui.h:90
+#: ../data/buttons-financial.ui.h:88
 msgid "_Number of Periods:"
 msgstr "காலங்களின் எண்ணிக்கை (_N):"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/buttons-financial.ui.h:92
+#: ../data/buttons-financial.ui.h:90
 msgid "_Period:"
 msgstr "காலம் (_P):"
 
 #. Payment Period Dialog: Label before periodic payment input
-#: ../data/buttons-financial.ui.h:94
+#: ../data/buttons-financial.ui.h:92
 msgid "_Periodic Payment:"
 msgstr "காலமுறை செலுத்தல் (_P):"
 
 #. Periodic Payment Dialog: Label before principal input
-#: ../data/buttons-financial.ui.h:96
+#: ../data/buttons-financial.ui.h:94
 msgid "_Principal:"
 msgstr "அசல் தொகை (_P):"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/buttons-financial.ui.h:98
+#: ../data/buttons-financial.ui.h:96
 msgid "_Salvage:"
 msgstr "_S காத்தல்:"
 
 #. Periodic Interest Rate Dialog: Label before term input
-#: ../data/buttons-financial.ui.h:100
+#: ../data/buttons-financial.ui.h:98
 msgid "_Term:"
 msgstr "காலம் (_T):"
 
@@ -403,26 +391,31 @@ msgstr "எழுத்துரு சொருகு"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:242
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:226
 msgid "Insert Character Code"
 msgstr "எழுத்துரு குறியீட்டைசொருகு"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:257
+#: ../data/buttons-programming.ui.h:20 ../src/math-buttons.c:241
 msgid "Shift Left"
 msgstr "இடது பக்கம் நகர்த்துக."
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:24 ../src/math-buttons.c:260
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:244
 msgid "Shift Right"
 msgstr "வலது பக்கம் நகர்த்துக"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/buttons-programming.ui.h:32
+#: ../data/buttons-programming.ui.h:30
 msgid "_Insert"
 msgstr "_I சொருகு"
+
+#. The label on the memory button
+#: ../data/buttons-programming.ui.h:32
+msgid "x"
+msgstr "X"
 
 #. Word size combo: 16 bits
 #: ../data/preferences.ui.h:2
@@ -450,7 +443,7 @@ msgid "Number _Format:"
 msgstr "_F எண் ஒழுங்கு:"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:11 ../src/math-preferences.c:239
+#: ../data/preferences.ui.h:11 ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "விருப்பங்கள்"
 
@@ -475,7 +468,7 @@ msgid "_Angle units:"
 msgstr "_A கோண அலகுகள்:"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:522
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:514
 msgid "Calculator"
 msgstr "கணிப்பான்"
 
@@ -535,179 +528,291 @@ msgid "Source currency"
 msgstr "மூல பணம்"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Source units"
+msgstr "மூல அலகுகள்"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
 msgid "Target currency"
 msgstr "இலக்கு பணம்"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "Target units"
+msgstr "இலக்கு அலகுகள்:"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
 msgid "The angle units to use"
 msgstr "பயன்படுத்த வேண்டிய கோண அலகுகள்"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
 msgid "The button mode"
 msgstr "பொத்தான் பாங்கு"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
 msgid "The format to display numbers in"
 msgstr "எண்களை காட்ட ஒழுங்கு "
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
 msgid "The number of digits displayed after the numeric point"
 msgstr "புள்ளிக்கு பிறகு காட்ட வேண்டிய எண்களின் எண்ணிக்கை."
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
 msgid "The numeric base"
 msgstr "எண்வகை அடித்தளம் "
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
 msgid "The size of the words used in bitwise operations"
 msgstr "பிட்வைஸ் செயல்பாடுகளில் பயன்படுத்த சொல் அளவு. "
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+msgid "Units of the current calculation"
+msgstr "நடப்பு கணக்கீட்டின் அலகுகள் "
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+msgid "Units to convert the current calculation into"
+msgstr "நடப்பு கணக்கீட்டின் மாற்ற வேண்டிய அலகுகள் "
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
 msgid "Word size"
 msgstr "சொல் அளவு"
 
-#: ../src/currency.h:19
-msgid "Australian dollar"
+#: ../src/currency-manager.c:30
+msgid "UAE Dirham"
+msgstr "யூஏஈ திர்ஹாம் "
+
+#: ../src/currency-manager.c:31
+msgid "Australian Dollar"
 msgstr "ஆஸ்திரேலிய டாலர்"
 
-#: ../src/currency.h:20
-msgid "Bulgarian lev"
+#: ../src/currency-manager.c:32
+msgid "Bulgarian Lev"
 msgstr "பல்கேரிய லெவ்"
 
-#: ../src/currency.h:21
-msgid "Brazilian real"
+#: ../src/currency-manager.c:33
+msgid "Bahraini Dinar"
+msgstr "பஹ்ரைன் தினார்"
+
+#: ../src/currency-manager.c:34
+msgid "Brunei Dollar"
+msgstr "ப்ரூனே டாலர்"
+
+#: ../src/currency-manager.c:35
+msgid "Brazilian Real"
 msgstr "பிரேசிலிய ரீல் "
 
-#: ../src/currency.h:22
-msgid "Canadian dollar"
+#: ../src/currency-manager.c:36
+msgid "Botswana Pula"
+msgstr "போட்ஸ்வானா புலா "
+
+#: ../src/currency-manager.c:37
+msgid "Canadian Dollar"
 msgstr "கனடியன் டாலர் "
 
-#: ../src/currency.h:23
-msgid "Swiss franc"
+#: ../src/currency-manager.c:38
+msgid "Swiss Franc"
 msgstr "சுவிஸ் பிரான்க்"
 
-#: ../src/currency.h:24
-msgid "Chinese yuan renminbi"
-msgstr "சைனீஸ் யுவான் ரென்மினிபி"
+#: ../src/currency-manager.c:39
+msgid "Chilean Peso"
+msgstr "சிலியன் பெஸோ"
 
-#: ../src/currency.h:25
-msgid "Czech koruna"
+#: ../src/currency-manager.c:40
+msgid "Chinese Yuan"
+msgstr "சைனீஸ் யுவான் "
+
+#: ../src/currency-manager.c:41
+msgid "Colombian Peso"
+msgstr "கொலம்பிய பெஸோ"
+
+#: ../src/currency-manager.c:42
+msgid "Czech Koruna"
 msgstr "செக் கொருனா"
 
-#: ../src/currency.h:26
-msgid "Danish krone"
+#: ../src/currency-manager.c:43
+msgid "Danish Krone"
 msgstr "டேனிஷ் க்ரோன்"
 
-#: ../src/currency.h:27
-msgid "Estonian kroon"
+#: ../src/currency-manager.c:44
+msgid "Algerian Dinar"
+msgstr "அல்ஜீரிய தினார்"
+
+#: ../src/currency-manager.c:45
+msgid "Estonian Kroon"
 msgstr "எச்தோனியன் க்ரூன்"
 
-#: ../src/currency.h:28
+#: ../src/currency-manager.c:46
 msgid "Euro"
 msgstr "யூரோ"
 
-#: ../src/currency.h:29
-msgid "Pound sterling"
+#: ../src/currency-manager.c:47
+msgid "Pound Sterling"
 msgstr "பவுண்ட் ஸ்டெர்லிங்"
 
-#: ../src/currency.h:30
-msgid "Hong Kong dollar"
+#: ../src/currency-manager.c:48
+msgid "Hong Kong Dollar"
 msgstr "ஹாங்காங் டாலர்"
 
-#: ../src/currency.h:31
-msgid "Croatian kuna"
+#: ../src/currency-manager.c:49
+msgid "Croatian Kuna"
 msgstr "குரேஷியன் குனா "
 
-#: ../src/currency.h:32
-msgid "Hungarian forint"
+#: ../src/currency-manager.c:50
+msgid "Hungarian Forint"
 msgstr "ஹங்கேரியன் ப்லோரின்"
 
-#: ../src/currency.h:33
-msgid "Indonesian rupiah"
+#: ../src/currency-manager.c:51
+msgid "Indonesian Rupiah"
 msgstr "இந்தோனீஷிய ருபயா"
 
-#: ../src/currency.h:34
-msgid "Indian rupee"
+#: ../src/currency-manager.c:52
+msgid "Israeli New Shekel"
+msgstr "இஸ்ரேலிய புதிய ஷெகல் "
+
+#: ../src/currency-manager.c:53
+msgid "Indian Rupee"
 msgstr "இந்திய ரூபாய்"
 
-#: ../src/currency.h:35
-msgid "Icelandic krona"
+#: ../src/currency-manager.c:54
+msgid "Iranian Rial"
+msgstr "பிரேசிலிய ரீல் "
+
+#: ../src/currency-manager.c:55
+msgid "Icelandic Krona"
 msgstr "ஐஸ்லாந்து குரோனா"
 
-#: ../src/currency.h:36
-msgid "Japanese yen"
+#: ../src/currency-manager.c:56
+msgid "Japanese Yen"
 msgstr "ஜப்பானிய யென்"
 
-#: ../src/currency.h:37
-msgid "South Korean won"
+#: ../src/currency-manager.c:57
+msgid "South Korean Won"
 msgstr "தென் கொரிய வொன்"
 
-#: ../src/currency.h:38
-msgid "Lithuanian litas"
+#: ../src/currency-manager.c:58
+msgid "Kuwaiti Dinar"
+msgstr "குவைத் தினார்"
+
+#: ../src/currency-manager.c:59
+msgid "Kazakhstani Tenge"
+msgstr "கஜகஸ்தானிய டெங் "
+
+#: ../src/currency-manager.c:60
+msgid "Sri Lankan Rupee"
+msgstr "இலங்கை ரூபாய்"
+
+#: ../src/currency-manager.c:61
+msgid "Lithuanian Litas"
 msgstr "லிதுவேனிய லிட்டாஸ்"
 
-#: ../src/currency.h:39
-msgid "Latvian lats"
+#: ../src/currency-manager.c:62
+msgid "Latvian Lats"
 msgstr "லட்வேனிய லாட்ஸ்"
 
-#: ../src/currency.h:40
-msgid "Mexican peso"
-msgstr "மெஇக பெஸோ"
+#: ../src/currency-manager.c:63
+msgid "Libyan Dinar"
+msgstr "லிபியன் தினார்"
 
-#: ../src/currency.h:41
-msgid "Malaysian ringgit"
+#: ../src/currency-manager.c:64
+msgid "Mauritian Rupee"
+msgstr "மொரீஷியன் ரூபாய்"
+
+#: ../src/currency-manager.c:65
+msgid "Mexican Peso"
+msgstr "மெக்ஸிக பெஸோ"
+
+#: ../src/currency-manager.c:66
+msgid "Malaysian Ringgit"
 msgstr "மலேசிய ரிங்கெட் "
 
-#: ../src/currency.h:42
-msgid "Norwegian krone"
+#: ../src/currency-manager.c:67
+msgid "Norwegian Krone"
 msgstr "நார்வேஜிய க்ரோன்"
 
-#: ../src/currency.h:43
-msgid "New Zealand dollar"
+#: ../src/currency-manager.c:68
+msgid "Nepalese Rupee"
+msgstr "நேபாளி ரூபாய்"
+
+#: ../src/currency-manager.c:69
+msgid "New Zealand Dollar"
 msgstr "நியூசிலாந்து டாலர்"
 
-#: ../src/currency.h:44
-msgid "Philippine peso"
+#: ../src/currency-manager.c:70
+msgid "Omani Rial"
+msgstr "ஒமானி ரியால்"
+
+#: ../src/currency-manager.c:71
+msgid "Peruvian Nuevo Sol"
+msgstr "பெருவியன் நுவோ சோல்"
+
+#: ../src/currency-manager.c:72
+msgid "Philippine Peso"
 msgstr "பிலிபென் பெஸோ"
 
-#: ../src/currency.h:45
-msgid "Polish zloty"
+#: ../src/currency-manager.c:73
+msgid "Pakistani Rupee"
+msgstr "பாக்கிஸ்தானி ரூபாய்"
+
+#: ../src/currency-manager.c:74
+msgid "Polish Zloty"
 msgstr "போலிஷ் லோடி"
 
-#: ../src/currency.h:46
-msgid "New Romanian leu"
+#: ../src/currency-manager.c:75
+msgid "Qatari Riyal"
+msgstr "கத்தார் ரியால் "
+
+#: ../src/currency-manager.c:76
+msgid "New Romanian Leu"
 msgstr "புதிய ரொமானியன் ல்யூ"
 
-#: ../src/currency.h:47
-msgid "Russian rouble"
+#: ../src/currency-manager.c:77
+msgid "Russian Rouble"
 msgstr "ரஷ்ய ரூபிள்"
 
-#: ../src/currency.h:48
-msgid "Swedish krona"
+#: ../src/currency-manager.c:78
+msgid "Saudi Riyal"
+msgstr "சௌதி ரியால்"
+
+#: ../src/currency-manager.c:79
+msgid "Swedish Krona"
 msgstr "ஸ்வீடிஷ் க்ரோனா"
 
-#: ../src/currency.h:49
-msgid "Singapore dollar"
+#: ../src/currency-manager.c:80
+msgid "Singapore Dollar"
 msgstr "சிங்கப்பூர் டாலர் "
 
-#: ../src/currency.h:50
-msgid "Thai baht"
+#: ../src/currency-manager.c:81
+msgid "Thai Baht"
 msgstr "தாய் பாட் "
 
-#: ../src/currency.h:51
-msgid "New Turkish lira"
+#: ../src/currency-manager.c:82
+msgid "Tunisian Dinar"
+msgstr "துனிசியன் தினார்"
+
+#: ../src/currency-manager.c:83
+msgid "New Turkish Lira"
 msgstr "புதிய டர்க்கி லிரா"
 
-#: ../src/currency.h:52
-msgid "US dollar"
+#: ../src/currency-manager.c:84
+msgid "T&T Dollar (TTD)"
+msgstr "ட்ரினிடாட் டாலர் (TTD)"
+
+#: ../src/currency-manager.c:85
+msgid "US Dollar"
 msgstr "யூஎஸ் டாலர் "
 
-#: ../src/currency.h:53
-msgid "South African rand"
+#: ../src/currency-manager.c:86
+msgid "Uruguayan Peso"
+msgstr "உருகுவே பெஸோ"
+
+#: ../src/currency-manager.c:87
+msgid "Venezuelan Bolívar"
+msgstr "வெனிசுலா பொலிவார்"
+
+#: ../src/currency-manager.c:88
+msgid "South African Rand"
 msgstr "தென் ஆப்பிரிக்க ரான்ட்"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:78
+#: ../src/gcalctool.c:77
 #, c-format
 msgid ""
 "Usage:\n"
@@ -717,7 +822,7 @@ msgstr ""
 "  %s —கணித கணக்கீடுகளை செய்"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:86
+#: ../src/gcalctool.c:85
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -733,7 +838,7 @@ msgstr ""
 "  --help-gtk                      ஜிடிகே+ தேர்வை காட்டுக"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:97
+#: ../src/gcalctool.c:96
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -755,571 +860,300 @@ msgstr ""
 "  --g-fatal-warnings              எல்லா எச்சரிக்கைகளையும் ஆபத்தாக்கு"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:111
+#: ../src/gcalctool.c:110
 #, c-format
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unit tests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
 "பயன்பாடு தேர்வுகள்:\n"
-"  -u, --unittest                  அலகு சோதனைகள்  செய்கிறது\n"
-"  -s, --solve <equation>          கொடுத்த சமன்பாட்டை தீர்க்கிறது"
+"    -s, --solve <equation>          கொடுத்த சமன்பாட்டை தீர்க்கிறது"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:156
+#: ../src/gcalctool.c:154
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "--solve துணையலகுக்கு தீர்க்க ஒரு சமன்பாடு தேவை"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:170
+#: ../src/gcalctool.c:164
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "தெரியாத துணை அலகு '%s'"
 
 #. Tooltip for the Pi button
-#: ../src/math-buttons.c:108
+#: ../src/math-buttons.c:95
 msgid "Pi [Ctrl+P]"
 msgstr "பை [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.c:111
+#: ../src/math-buttons.c:98
 msgid "Euler’s Number"
 msgstr "யூலரின் எண்"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.c:116
+#: ../src/math-buttons.c:103
 msgid "Subscript mode [Alt]"
 msgstr "கீழொட்டு எண் பாங்கு [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.c:119
+#: ../src/math-buttons.c:106
 msgid "Superscript mode [Ctrl]"
 msgstr "மேலொட்டு எண் பாங்கு [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.c:122
+#: ../src/math-buttons.c:109
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "லிஞ்ஞான அடுக்குக்குறி [Ctrl+E] "
 
 #. Tooltip for the add button
-#: ../src/math-buttons.c:125
+#: ../src/math-buttons.c:112
 msgid "Add [+]"
 msgstr "கூட்டு [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.c:128
+#: ../src/math-buttons.c:115
 msgid "Subtract [-]"
 msgstr "கழி [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.c:131
+#: ../src/math-buttons.c:118
 msgid "Multiply [*]"
 msgstr "பெருக்கு [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.c:134
+#: ../src/math-buttons.c:121
 msgid "Divide [/]"
 msgstr "வகு [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.c:137
+#: ../src/math-buttons.c:124
 msgid "Modulus divide"
 msgstr "மட்டு வகுத்தல்"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.c:140
+#: ../src/math-buttons.c:127
 msgid "Additional Functions"
 msgstr "தொகு செயல்கூறுகள்"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.c:143
+#: ../src/math-buttons.c:130
 msgid "Exponent [^ or **]"
 msgstr "அடுக்குக்குறி [^ அல்லது  **]"
 
 #. Tooltip for the square button
-#: ../src/math-buttons.c:146
+#: ../src/math-buttons.c:133
 msgid "Square [Ctrl+2]"
 msgstr "வர்க்கம் [Ctrl+2]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.c:149
+#: ../src/math-buttons.c:136
 msgid "Percentage [%]"
 msgstr "சதவிகிதம் [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.c:152
+#: ../src/math-buttons.c:139
 msgid "Factorial [!]"
 msgstr "தொடர் பெருக்கம் [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.c:155
+#: ../src/math-buttons.c:142
 msgid "Absolute value [|]"
 msgstr "முழுமையான மதிப்பு [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.c:158
+#: ../src/math-buttons.c:145
 msgid "Complex argument"
 msgstr "சிக்கலான தரு மதிப்பு"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.c:161
+#: ../src/math-buttons.c:148
 msgid "Complex conjugate"
 msgstr "சிக்கல் கூட்டு எண்"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.c:164
+#: ../src/math-buttons.c:151
 msgid "Root [Ctrl+R]"
 msgstr "ரூட்  [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.c:167
+#: ../src/math-buttons.c:154
 msgid "Square root [Ctrl+R]"
 msgstr "வர்க்க மூலம் [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.c:170
+#: ../src/math-buttons.c:157
 msgid "Logarithm"
 msgstr "லாக்ருதம்"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.c:173
+#: ../src/math-buttons.c:160
 msgid "Natural Logarithm"
 msgstr "இயல் லாக்ருதம்"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.c:176
+#: ../src/math-buttons.c:163
 msgid "Sine"
 msgstr "Sine"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.c:179
+#: ../src/math-buttons.c:166
 msgid "Cosine"
 msgstr "Cosine"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.c:182
+#: ../src/math-buttons.c:169
 msgid "Tangent"
 msgstr "டான்ஜென்ட்"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.c:185
+#: ../src/math-buttons.c:172
 msgid "Hyperbolic Sine"
 msgstr "ஹைபர்போலிக் சைன்"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.c:188
+#: ../src/math-buttons.c:175
 msgid "Hyperbolic Cosine"
 msgstr "ஹைபர்போலிக் கோசைன்"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.c:191
+#: ../src/math-buttons.c:178
 msgid "Hyperbolic Tangent"
 msgstr "ஹைபர்போலிக் டான்ஜென்ட்"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.c:194
+#: ../src/math-buttons.c:181
 msgid "Inverse [Ctrl+I]"
 msgstr "தலைகீழ் [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.c:197
+#: ../src/math-buttons.c:184
 msgid "Boolean AND"
 msgstr "பூலியன் அண்ட்  "
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.c:200
+#: ../src/math-buttons.c:187
 msgid "Boolean OR"
 msgstr "பூலியன் ஆர் "
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.c:203
+#: ../src/math-buttons.c:190
 msgid "Boolean Exclusive OR"
 msgstr "பூலியன் தவிர்த்த ஆர் "
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.c:206
+#: ../src/math-buttons.c:193
 msgid "Boolean NOT"
 msgstr "பூலியன் நாட் "
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:209 ../src/math-buttons.c:1545
+#: ../src/math-buttons.c:196 ../src/math-buttons.c:1028
 msgid "Integer Component"
 msgstr "முழு எண் கூறு"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:212 ../src/math-buttons.c:1547
+#: ../src/math-buttons.c:199 ../src/math-buttons.c:1030
 msgid "Fractional Component"
 msgstr "பின்னம் பகுதி"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.c:215
+#: ../src/math-buttons.c:202
 msgid "Real Component"
 msgstr "உண்மை கூறு"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.c:218
+#: ../src/math-buttons.c:205
 msgid "Imaginary Component"
 msgstr "கற்பனைக் கூறு"
 
-#. Tooltip for the ones complement button
-#: ../src/math-buttons.c:221
+#. Tooltip for the ones' complement button
+#: ../src/math-buttons.c:208
 msgid "Ones' Complement"
 msgstr "ஒன்றின் நிரப்பி "
 
-#. Tooltip for the twos complement button
-#: ../src/math-buttons.c:224
+#. Tooltip for the two's complement button
+#: ../src/math-buttons.c:211
 msgid "Two's Complement"
 msgstr "இரண்டின் நிரப்பி "
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.c:227
+#: ../src/math-buttons.c:214
 msgid "Truncate"
 msgstr "டிரங்கேட்"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.c:230
+#: ../src/math-buttons.c:217
 msgid "Start Group [(]"
 msgstr "தொகுதி துவக்கம் [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.c:233
+#: ../src/math-buttons.c:220
 msgid "End Group [)]"
 msgstr "தொகுதியை முடி [)]"
 
-#. Tooltip for the assign variable button
-#: ../src/math-buttons.c:236
-msgid "Assign Variable"
-msgstr "மாறியை அளி"
-
-#. Tooltip for the insert variable button
-#: ../src/math-buttons.c:239
-msgid "Insert Variable"
-msgstr "மாறியை சொருகு"
-
 #. Tooltip for the solve button
-#: ../src/math-buttons.c:245
+#: ../src/math-buttons.c:229
 msgid "Calculate Result"
 msgstr "முடிவை கணக்கிடு "
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.c:248
+#: ../src/math-buttons.c:232
 msgid "Factorize [Ctrl+F]"
 msgstr "காரணிப்படுத்து [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.c:251
+#: ../src/math-buttons.c:235
 msgid "Clear Display [Escape]"
 msgstr "காட்சியை துடை [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.c:254
+#: ../src/math-buttons.c:238
 msgid "Undo [Ctrl+Z]"
 msgstr "செயல் தவிர்  [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.c:266
+#: ../src/math-buttons.c:250
 msgid "Double Declining Depreciation"
 msgstr "இரட்டை குறைவு குறைமானம்"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.c:272
+#: ../src/math-buttons.c:256
 msgid "Financial Term"
 msgstr "நிதி காலம்"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.c:275
+#: ../src/math-buttons.c:259
 msgid "Sum of the Years Digits Depreciation"
 msgstr "மொத்த வருட இலக்கம் குறைமானம் "
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.c:278
+#: ../src/math-buttons.c:262
 msgid "Straight Line Depreciation"
 msgstr "நேர் கோடு குறைமானம்"
 
-#: ../src/math-buttons.c:326
-msgid "Angle Units"
-msgstr "கோண அலகுகள்"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-buttons.c:328 ../src/math-preferences.c:254
-msgid "Degrees"
-msgstr "பாகைகள்"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-buttons.c:330 ../src/math-preferences.c:258
-msgid "Radians"
-msgstr "ரேடியன்கள்"
-
-#. Angle unit
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-buttons.c:332 ../src/math-preferences.c:262
-msgid "Gradians"
-msgstr "கிரேடியன்கள்"
-
-#: ../src/math-buttons.c:334
-msgid "Length Units"
-msgstr "நீள அலகுகள்"
-
-#. Length unit
-#: ../src/math-buttons.c:336
-msgid "Parsecs"
-msgstr "பார்செக்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:338
-msgid "Light Years"
-msgstr "ஒளி வருடங்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:340
-msgid "Astronomical Unit"
-msgstr "வானசாஸ்திர அலகுகள்"
-
-#. Length unit
-#: ../src/math-buttons.c:342
-msgid "Nautical Miles"
-msgstr "கடல்மைல்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:344
-msgid "Miles"
-msgstr "மைல்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:346
-msgid "Kilometers"
-msgstr "கிலோமீட்டர்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:348
-msgid "Cables"
-msgstr "கேபிள்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:350
-msgid "Fathoms"
-msgstr "ஃபேதம்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:352
-msgid "Meters"
-msgstr "மீட்டர்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:354
-msgid "Yards"
-msgstr "கஜங்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:356
-msgid "Feet"
-msgstr "அடிகள்"
-
-#. Length unit
-#: ../src/math-buttons.c:358
-msgid "Inches"
-msgstr "இஞ்ச்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:360
-msgid "Centimeters"
-msgstr "சென்டிமீட்டர்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:362
-msgid "Millimeters"
-msgstr "மில்லிமீட்டர்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:364
-msgid "Micrometers"
-msgstr "மைக்ரோமீட்டர்கள்"
-
-#. Length unit
-#: ../src/math-buttons.c:366
-msgid "Nanometers"
-msgstr "நானோமீட்டர்கள்"
-
-#: ../src/math-buttons.c:368
-msgid "Area Units"
-msgstr "  பரப்பு அலகுகள்"
-
-#. Area unit
-#: ../src/math-buttons.c:370
-msgid "Hectares"
-msgstr "ஹெக்டேர்கள்"
-
-#. Area unit
-#: ../src/math-buttons.c:372
-msgid "Acres"
-msgstr "ஏக்கர்கள்"
-
-#. Area unit
-#: ../src/math-buttons.c:374
-msgid "m²"
-msgstr "மீ²"
-
-#. Area unit
-#: ../src/math-buttons.c:376
-msgid "cm²"
-msgstr "செமீ²"
-
-#. Area unit
-#: ../src/math-buttons.c:378
-msgid "mm²"
-msgstr "மிமீ²"
-
-#: ../src/math-buttons.c:380
-msgid "Volume Units"
-msgstr "கொள்ளளவு அலகுகள்"
-
-#. Volume unit
-#: ../src/math-buttons.c:382
-msgid "m³"
-msgstr "மீ³"
-
-#. Volume unit
-#: ../src/math-buttons.c:384
-msgid "Gallons"
-msgstr "காலன்கள்"
-
-#. Volume unit
-#: ../src/math-buttons.c:386
-msgid "Liters"
-msgstr "லிட்டர்கள்"
-
-#. Volume unit
-#: ../src/math-buttons.c:388
-msgid "Quarts"
-msgstr "க்வார்ட்கள்"
-
-#. Volume unit
-#: ../src/math-buttons.c:390
-msgid "Pints"
-msgstr "பைன்டுகள்"
-
-#. Volume unit
-#: ../src/math-buttons.c:392
-msgid "Milliliters"
-msgstr "மில்லிலிட்டர்கள்"
-
-#. Volume unit
-#: ../src/math-buttons.c:394
-msgid "cm³"
-msgstr "செமீ³"
-
-#. Volume unit
-#: ../src/math-buttons.c:396
-msgid "mm³"
-msgstr "மிமீ³"
-
-#: ../src/math-buttons.c:398
-msgid "Weight Units"
-msgstr "கன அலகுகள் "
-
-#. Weight unit
-#: ../src/math-buttons.c:400
-msgid "Tonnes"
-msgstr "டன்கள்"
-
-#. Weight unit
-#: ../src/math-buttons.c:402
-msgid "Kilograms"
-msgstr "கிலோகிராம்கள்"
-
-#. Weight unit
-#: ../src/math-buttons.c:404
-msgid "Pounds"
-msgstr "பவுண்டுகள்"
-
-#. Weight unit
-#: ../src/math-buttons.c:406
-msgid "Ounces"
-msgstr "அவுன்ஸ்கள் "
-
-#. Weight unit
-#: ../src/math-buttons.c:408
-msgid "Grams"
-msgstr "கிராம்கள்"
-
-#: ../src/math-buttons.c:410
-msgid "Time Units"
-msgstr "நேர அலகுகள் "
-
-#. Time unit
-#: ../src/math-buttons.c:412
-msgid "Years"
-msgstr "வருடங்கள்"
-
-#. Time unit
-#: ../src/math-buttons.c:414
-msgid "Days"
-msgstr "நாட்கள்"
-
-#. Time unit
-#: ../src/math-buttons.c:416
-msgid "Hours"
-msgstr "மணிகள்"
-
-#. Time unit
-#: ../src/math-buttons.c:418
-msgid "Minutes"
-msgstr "நிமிடங்கள்"
-
-#. Time unit
-#: ../src/math-buttons.c:420
-msgid "Seconds"
-msgstr "விநாடிகள்"
-
-#. Time unit
-#: ../src/math-buttons.c:422
-msgid "Milliseconds"
-msgstr "மில்லி வினாடிகள்"
-
-#. Time unit
-#: ../src/math-buttons.c:424
-msgid "Microseconds"
-msgstr "மைக்ரோவினாடிகள் "
-
-#. Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100
-#: ../src/math-buttons.c:605
-#, c-format
-msgid "%s%s = %s%s"
-msgstr "%s%s = %s%s"
-
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:1035
+#: ../src/math-buttons.c:652
 msgid "Binary"
 msgstr "இருமம்"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:1039
+#: ../src/math-buttons.c:656
 msgid "Octal"
 msgstr "எண்ம"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:1043
+#: ../src/math-buttons.c:660
 msgid "Decimal"
 msgstr "தசம"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:1047
+#: ../src/math-buttons.c:664
 msgid "Hexadecimal"
 msgstr "பதினறும இலக்கம்"
 
-#. Text shown in store menu when no variables defined
-#. Text shown in recall menu when no variables defined
-#: ../src/math-buttons.c:1366 ../src/math-buttons.c:1412
-msgid "No variables defined"
-msgstr "மாறிகளை வரையறுக்கப்படவில்லை "
-
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1455 ../src/math-buttons.c:1499
+#: ../src/math-buttons.c:938 ../src/math-buttons.c:982
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1328,7 +1162,7 @@ msgstr[1] "_%d இடங்கள்"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1459 ../src/math-buttons.c:1503
+#: ../src/math-buttons.c:942 ../src/math-buttons.c:986
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1336,125 +1170,151 @@ msgstr[0] "%d இடம்"
 msgstr[1] "%d இடங்கள்"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1549
+#: ../src/math-buttons.c:1032
 msgid "Round"
 msgstr "சுற்று"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1551
+#: ../src/math-buttons.c:1034
 msgid "Floor"
 msgstr "தளம்"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1553
+#: ../src/math-buttons.c:1036
 msgid "Ceiling"
 msgstr "உச்ச வரம்பு"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1555
+#: ../src/math-buttons.c:1038
 msgid "Sign"
 msgstr "கையொப்பம்"
 
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.c:364
+msgid " in "
+msgstr " உள்ளே "
+
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:458
+#: ../src/math-equation.c:453
 msgid "No undo history"
 msgstr "மீட்டமை வரலாறு இல்லலை"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:483
+#: ../src/math-equation.c:478
 msgid "No redo history"
 msgstr "மீட்டமை வரலாறு இல்லை"
 
-#: ../src/math-equation.c:844
+#: ../src/math-equation.c:867
 msgid "No sane value to store"
 msgstr "சேமிக்க சேன் (sane) மதிப்பு இல்லை"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1109
+#: ../src/math-equation.c:1132
 msgid "Overflow. Try a bigger word size"
 msgstr "நிரம்பிவிட்டது. இன்னும் பெரிய சொல் அளவை முயற்சி செய்க"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1114
+#: ../src/math-equation.c:1137
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "தெரியாத மாறி  '%s'"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1119
+#: ../src/math-equation.c:1142
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "செயல்கூறு '%s' ஐ வரையறுக்கவில்லை"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1124
+#: ../src/math-equation.c:1147
 msgid "Unknown conversion"
 msgstr "தெரியாத மதிப்பு மாற்றம்"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1133
+#: ../src/math-equation.c:1156
 msgid "Malformed expression"
 msgstr "தவறான கோவை"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1266
+#: ../src/math-equation.c:1288
 msgid "Need an integer to factorize"
 msgstr "காரணிப்படுத்த பகாவெண் தேவை"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1333
+#: ../src/math-equation.c:1355
 msgid "No sane value to bitwise shift"
 msgstr "பிட் வைஸ் மாற்றலுக்கு சேன் (sane) மதிப்பு இல்லை"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1362
+#: ../src/math-equation.c:1384
 msgid "Displayed value not an integer"
 msgstr "காட்டப்பட்ட மதிப்பு முழு எண் இல்லை."
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1769
+#: ../src/math-equation.c:1807
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:244
+#: ../src/math-preferences.c:236
 msgid "_Close"
 msgstr "மூடு (_C)"
 
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.c:246 ../src/unit-manager.c:54
+msgid "Degrees"
+msgstr "பாகைகள்"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.c:250 ../src/unit-manager.c:55
+msgid "Radians"
+msgstr "ரேடியன்கள்"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.c:254 ../src/unit-manager.c:56
+msgid "Gradians"
+msgstr "கிரேடியன்கள்"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
+#: ../src/math-preferences.c:264
+msgid "Automatic"
+msgstr "தானியங்கி"
+
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:268
 msgid "Fixed"
 msgstr "நிலையான"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:272
 msgid "Scientific"
 msgstr "அறிவியல் "
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:280
+#: ../src/math-preferences.c:276
 msgid "Engineering"
 msgstr "பொறியியல்"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:291
+#: ../src/math-preferences.c:287
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "_p %d தசம இடங்களை காட்டு"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
+#: ../src/math-window.c:163
 msgid "Unable to open help file"
 msgstr "உதவி கோப்பினை திறக்க முடியவில்லை"
 
 #. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:203
+#: ../src/math-window.c:195
 msgid "translator-credits"
 msgstr "மொழிபெயர்ப்பாளர் சன்மானம்"
 
 #. The license this software is under (GPL2+)
-#: ../src/math-window.c:206
+#: ../src/math-window.c:198
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1485,147 +1345,147 @@ msgstr ""
 "Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
 #. Program name in the about dialog
-#: ../src/math-window.c:223
+#: ../src/math-window.c:215
 msgid "Gcalctool"
 msgstr "ஜி கால்கடூல்"
 
 #. Copyright notice in the about dialog
-#: ../src/math-window.c:227
+#: ../src/math-window.c:219
 msgid "© 1986–2010 The Gcalctool authors"
 msgstr "© 1986–2010 ஜி கால்கடூல் ஆசிரியர்கள்"
 
 #. Short description in the about dialog
-#: ../src/math-window.c:231
+#: ../src/math-window.c:223
 msgid "Calculator with financial and scientific modes."
 msgstr "கணிப்பானுடன் நிதி தொடர்பான மற்றும் அறிவியல் பாங்குகள்."
 
 #. Calculator menu
-#: ../src/math-window.c:357
+#: ../src/math-window.c:349
 msgid "_Calculator"
 msgstr "கணிப்பி (_C)"
 
 #. Mode menu
-#: ../src/math-window.c:359
+#: ../src/math-window.c:351
 msgid "_Mode"
 msgstr "_M மோட்"
 
 #. Help menu label
-#: ../src/math-window.c:361
+#: ../src/math-window.c:353
 msgid "_Help"
 msgstr "உதவி (_H)"
 
 #. Basic menu label
-#: ../src/math-window.c:363
+#: ../src/math-window.c:355
 msgid "_Basic"
 msgstr "அடிப்படை (_B)"
 
 #. Advanced menu label
-#: ../src/math-window.c:365
+#: ../src/math-window.c:357
 msgid "_Advanced"
 msgstr "மேம்பட்ட  (_A)"
 
 #. Financial menu label
-#: ../src/math-window.c:367
+#: ../src/math-window.c:359
 msgid "_Financial"
 msgstr "நிதிநிலை (_F)"
 
 #. Programming menu label
-#: ../src/math-window.c:369
+#: ../src/math-window.c:361
 msgid "_Programming"
 msgstr "நிரலாக்கம் (_P)"
 
 #. Help>Contents menu label
-#: ../src/math-window.c:371
+#: ../src/math-window.c:363
 msgid "_Contents"
 msgstr "உள்ளடக்கங்கள் (_C)"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/mp-binary.c:108
+#: ../src/mp-binary.c:115
 msgid "Boolean AND is only defined for positive integers"
 msgstr "நேர்நிலை  முழு எண்களுக்கு மட்டுமே பூலியன் அண்ட்"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/mp-binary.c:121
+#: ../src/mp-binary.c:128
 msgid "Boolean OR is only defined for positive integers"
 msgstr "நேர்நிலை முழு எண்களுக்கு மட்டுமே பூலியன் ஆர்"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:134
+#: ../src/mp-binary.c:141
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "நேர்நிலை முழு எண்களுக்கு மட்டுமே பூலியன் எக்ஸ்ஆர்"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:149
+#: ../src/mp-binary.c:156
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "நேர்நிலை முழு எண்களுக்கு மட்டுமே பூலியன் நாட்"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/mp-binary.c:180
+#: ../src/mp-binary.c:187
 msgid "Shift is only possible on integer values"
 msgstr "பகா எண்களுக்கு மட்டுமே ஷிப்ட் "
 
 #. Translators: Error display when attempting to take argument of zero
-#: ../src/mp.c:149
+#: ../src/mp.c:148
 msgid "Argument not defined for zero"
 msgstr "பூஜ்யத்துக்கு தரு மதிப்பு குறிப்பிடப்படவில்லை"
 
-#: ../src/mp.c:300
+#: ../src/mp.c:299
 msgid "Overflow: the result couldn't be calculated"
 msgstr "நிரம்பிவிட்டது: விடையை கணக்கிட முடியவில்லை."
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:645 ../src/mp.c:677 ../src/mp.c:1611
+#: ../src/mp.c:644 ../src/mp.c:676 ../src/mp.c:1610
 msgid "Division by zero is undefined"
 msgstr "பூஜ்யத்தால் வகுப்பது வரையறுக்கப்படவில்லை."
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1282 ../src/mp.c:1319
+#: ../src/mp.c:1281 ../src/mp.c:1318
 msgid "Logarithm of zero is undefined"
 msgstr "பூஜ்யத்தின் லாக்ருதம்  வரையறுக்கப்படவில்லை"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1684 ../src/mp.c:1999
+#: ../src/mp.c:1683 ../src/mp.c:1998
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "பூஜ்யத்தின் பவர் எதிர் அடுக்குக்கு  வரையறுக்கப்படவில்லை. "
 
-#: ../src/mp.c:1709
+#: ../src/mp.c:1708
 msgid "Reciprocal of zero is undefined"
 msgstr "பூஜ்யத்தின் ஏற்றெதிர் வரையறுக்கப்படவில்லை"
 
-#: ../src/mp.c:1794
+#: ../src/mp.c:1793
 msgid "Root must be non-zero"
 msgstr "மூலம் பூஜ்யமாக இல்லாது இருக்க வேண்டும்"
 
-#: ../src/mp.c:1812
+#: ../src/mp.c:1811
 msgid "Negative root of zero is undefined"
 msgstr "பூஜ்யத்தின் எதிர் மூலம்  வரையறுக்கப்படவில்லை"
 
-#: ../src/mp.c:1818
+#: ../src/mp.c:1817
 msgid "nth root of negative number is undefined for even n"
 msgstr "எதிர் எண்களின்  nஆவது வர்க்கம் n க்கு கூட வரையறுக்கப்படவில்லை "
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1939
+#: ../src/mp.c:1938
 msgid "Factorial is only defined for natural numbers"
 msgstr "காரணிகள் இயல் எண்களுக்கு மட்டுமே வரையறுக்கப்பட்டது"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1959
+#: ../src/mp.c:1958
 msgid "Modulus division is only defined for integers"
 msgstr "மட்டு வகுத்தல் பகா எண்களுக்கு மட்டுமே வரையறுக்கப்பட்டது"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:311
+#: ../src/mp-trigonometric.c:310
 msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr " π∕2 (90°) முதல் π (180°) இன் மடங்குகளான கோணங்களுக்கு டேன்ஜன்ட் வரையறுக்கப்படவில்லை"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:356
+#: ../src/mp-trigonometric.c:355
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "தலைகீழ் சைன் [-1, 1] க்கு வெளியே உள்ள மதிப்புக்களுக்கு வரையறுக்கப்படவில்லை"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:373
+#: ../src/mp-trigonometric.c:372
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "தலைகீழ் கோசைன் [-1, 1] க்கு வெளியே உள்ள மதிப்புக்களுக்கு வரையறுக்கப்படவில்லை"
 
@@ -1639,6 +1499,764 @@ msgstr "தலைகீழ் அதிபரவளைய கோசைன்  1 
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "தலைகீழ் அதிபரவளைய டான்ஜென்ட் [-1, 1] க்கு வெளியே உள்ள மதிப்புக்களுக்கு வரையறுக்கப்படவில்லை"
+
+#: ../src/unit-manager.c:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s பாகைகள்"
+
+#: ../src/unit-manager.c:54
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "பாகை, பாகைகள், பாகை."
+
+#: ../src/unit-manager.c:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s கிரேடியன்கள்"
+
+#: ../src/unit-manager.c:55
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "ரேடியன், ரேடியன்கள், ரேடி"
+
+#: ../src/unit-manager.c:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s கிரேடியன்கள்"
+
+#: ../src/unit-manager.c:56
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "கிரேடியன், கிரேடியன்கள், கிரேடி."
+
+#: ../src/unit-manager.c:57
+msgid "Parsecs"
+msgstr "பார்செக்கள்"
+
+#: ../src/unit-manager.c:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s இடம்"
+
+#: ../src/unit-manager.c:57
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "பார்செக், பார்செக்கள், பா.செ."
+
+#: ../src/unit-manager.c:58
+msgid "Light Years"
+msgstr "ஒளி வருடங்கள்"
+
+#: ../src/unit-manager.c:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s ஒ.வ."
+
+#: ../src/unit-manager.c:58
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "ஒளிவருடம், ஒளிவருடங்கள்,ஒ.வ."
+
+#: ../src/unit-manager.c:59
+msgid "Astronomical Units"
+msgstr "வானசாஸ்திர அலகுகள்"
+
+#: ../src/unit-manager.c:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s வா.அ."
+
+#: ../src/unit-manager.c:59
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "வா.அ."
+
+#: ../src/unit-manager.c:60
+msgid "Nautical Miles"
+msgstr "கடல்மைல்கள்"
+
+#: ../src/unit-manager.c:60 ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s நா.மீ."
+
+#: ../src/unit-manager.c:60
+msgctxt "unit-symbols"
+msgid "nm"
+msgstr "நா.மீ."
+
+#: ../src/unit-manager.c:61
+msgid "Miles"
+msgstr "மைல்கள்"
+
+#: ../src/unit-manager.c:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s மைல்."
+
+#: ../src/unit-manager.c:61
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "மைல், மைல்கள். மைல்."
+
+#: ../src/unit-manager.c:62
+msgid "Kilometers"
+msgstr "கிலோமீட்டர்கள்"
+
+#: ../src/unit-manager.c:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s கி.மீ."
+
+#: ../src/unit-manager.c:62
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "கிலோ மீட்டர், கிலோ மீட்டர்கள், கி.மீ, கி.மீ."
+
+#: ../src/unit-manager.c:63
+msgid "Cables"
+msgstr "கேபிள்கள்"
+
+#: ../src/unit-manager.c:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s கே."
+
+#: ../src/unit-manager.c:63
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "கேபிள், கேபிள்கள், கே."
+
+#: ../src/unit-manager.c:64
+msgid "Fathoms"
+msgstr "ஃபேதம்கள்"
+
+#: ../src/unit-manager.c:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s ஃபா."
+
+#: ../src/unit-manager.c:64
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "ஃபாதம், ஃபாதங்கள், ஃபா."
+
+#: ../src/unit-manager.c:65
+msgid "Meters"
+msgstr "மீட்டர்கள்"
+
+#: ../src/unit-manager.c:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s மீ"
+
+#: ../src/unit-manager.c:65
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "மீட்டர், மீட்டர்கள், மீ"
+
+#: ../src/unit-manager.c:66
+msgid "Yards"
+msgstr "கஜங்கள்"
+
+#: ../src/unit-manager.c:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s க."
+
+#: ../src/unit-manager.c:66
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "கஜம், கஜங்கள், க."
+
+#: ../src/unit-manager.c:67
+msgid "Feet"
+msgstr "அடிகள்"
+
+#: ../src/unit-manager.c:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s அடி."
+
+#: ../src/unit-manager.c:67
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "அடி, அடிகள், அடி."
+
+#: ../src/unit-manager.c:68
+msgid "Inches"
+msgstr "இஞ்ச்கள்"
+
+#: ../src/unit-manager.c:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s இன்ச் "
+
+#: ../src/unit-manager.c:68
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "அங்குலம், அங்குலங்கள், அங்"
+
+#: ../src/unit-manager.c:69
+msgid "Centimeters"
+msgstr "சென்டிமீட்டர்கள்"
+
+#: ../src/unit-manager.c:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s செமீ"
+
+#: ../src/unit-manager.c:69
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "சென்டிமீட்டர், சென்டிமீட்டர்கள், செமீ, செமீ"
+
+#: ../src/unit-manager.c:70
+msgid "Millimeters"
+msgstr "மில்லிமீட்டர்கள்"
+
+#: ../src/unit-manager.c:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s மி.மீ"
+
+#: ../src/unit-manager.c:70
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "மில்லிமீட்டர்கள்,மில்லிமீட்டர்கள்,மி.மீ."
+
+#: ../src/unit-manager.c:71
+msgid "Micrometers"
+msgstr "மைக்ரோமீட்டர்கள்"
+
+#: ../src/unit-manager.c:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μமீ"
+
+#: ../src/unit-manager.c:71
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "மைக்ரோமீட்டர், மைக்ரோமீட்டர்கள், மை.மீ"
+
+#: ../src/unit-manager.c:72
+msgid "Nanometers"
+msgstr "நானோமீட்டர்கள்"
+
+#: ../src/unit-manager.c:72
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers"
+msgstr "நானோமீட்டர், நானோமீட்டர்கள்"
+
+#: ../src/unit-manager.c:73
+msgid "Hectares"
+msgstr "ஹெக்டேர்கள்"
+
+#: ../src/unit-manager.c:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ஹெக்"
+
+#: ../src/unit-manager.c:73
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "ஹெக்டேர்,ஹெக்டேர்,ஹெக்."
+
+#: ../src/unit-manager.c:74
+msgid "Acres"
+msgstr "ஏக்கர்கள்"
+
+#: ../src/unit-manager.c:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s ஏக்கர்கள்"
+
+#: ../src/unit-manager.c:74
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "ஏக்கர், ஏக்கர்கள்"
+
+#: ../src/unit-manager.c:75
+msgid "Square Meter"
+msgstr "சதுர மீட்டர்"
+
+#: ../src/unit-manager.c:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s மீ²"
+
+#: ../src/unit-manager.c:75
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "மீ²"
+
+#: ../src/unit-manager.c:76
+msgid "Square Centimeter"
+msgstr "சதுர சென்டிமீட்டர்"
+
+#: ../src/unit-manager.c:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s செமீ²"
+
+#: ../src/unit-manager.c:76
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "செமீ²"
+
+#: ../src/unit-manager.c:77
+msgid "Square Millimeter"
+msgstr "சதுர மில்லிமீட்டர்"
+
+#: ../src/unit-manager.c:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s மிமீ²"
+
+#: ../src/unit-manager.c:77
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "மிமீ²"
+
+#: ../src/unit-manager.c:78
+msgid "Cubic Meters"
+msgstr "கன மீட்டர்கள்"
+
+#: ../src/unit-manager.c:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s மீ³"
+
+#: ../src/unit-manager.c:78
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "மீ³"
+
+#: ../src/unit-manager.c:79
+msgid "Gallons"
+msgstr "காலன்கள்"
+
+#: ../src/unit-manager.c:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s கே"
+
+#: ../src/unit-manager.c:79
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "கேலன், கேலன்கள், கே"
+
+#: ../src/unit-manager.c:80
+msgid "Litres"
+msgstr "லிட்டர்கள்"
+
+#: ../src/unit-manager.c:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s லிட்"
+
+#: ../src/unit-manager.c:80
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "லிட்டர், லிட்டர்கள், லிட்டர், லிட்டர்கள்,லிட்"
+
+#: ../src/unit-manager.c:81
+msgid "Quarts"
+msgstr "க்வார்ட்கள்"
+
+#: ../src/unit-manager.c:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s க்வா"
+
+#: ../src/unit-manager.c:81
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "க்வார்ட், க்வார்ட்கள், க்வா"
+
+#: ../src/unit-manager.c:82
+msgid "Pints"
+msgstr "பைன்டுகள்"
+
+#: ../src/unit-manager.c:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s பைன்"
+
+#: ../src/unit-manager.c:82
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "பைன்ட், பைன்ட்கள், பை"
+
+#: ../src/unit-manager.c:83
+msgid "Millilitres"
+msgstr "மில்லிலிட்டர்கள்"
+
+#: ../src/unit-manager.c:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s மி.லி"
+
+#: ../src/unit-manager.c:83
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "மில்லி லிட்டர், மில்லி லிட்டர்கள், மில்லி லிட்டர், மில்லி லிட்டர்கள்,மி.லி.செ.மீ³"
+
+#: ../src/unit-manager.c:84
+msgid "Microlitre"
+msgstr "மைக்ரோ லிட்டர்கள்"
+
+#: ../src/unit-manager.c:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μலி"
+
+#: ../src/unit-manager.c:84
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "மிமீ³, μலி, μலி"
+
+#: ../src/unit-manager.c:85
+msgid "Tonnes"
+msgstr "டன்கள்"
+
+#: ../src/unit-manager.c:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s டன்"
+
+#: ../src/unit-manager.c:85
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "டன், டன்கள்"
+
+#: ../src/unit-manager.c:86
+msgid "Kilograms"
+msgstr "கிலோகிராம்கள்"
+
+#: ../src/unit-manager.c:86
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s கி.கி"
+
+#: ../src/unit-manager.c:86
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "கிலோகிராம், கிலோ கிராம்கள், கிலோகிராம், கிலோ கிராம்கள், கி.கி"
+
+#: ../src/unit-manager.c:87
+msgid "Pounds"
+msgstr "பவுண்டுகள்"
+
+#: ../src/unit-manager.c:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s பவு"
+
+#: ../src/unit-manager.c:87
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "பவுண்ட், பவுண்டுகள், பவு"
+
+#: ../src/unit-manager.c:88
+msgid "Ounces"
+msgstr "அவுன்ஸ்கள் "
+
+#: ../src/unit-manager.c:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s அவு."
+
+#: ../src/unit-manager.c:88
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "அவுன்ஸ்,அவுன்ஸ்,அவு."
+
+#: ../src/unit-manager.c:89
+msgid "Grams"
+msgstr "கிராம்கள்"
+
+#: ../src/unit-manager.c:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s கி"
+
+#: ../src/unit-manager.c:89
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "க்ராம், க்ராம்கள், க்ராம், க்ராம்கள், கி"
+
+#: ../src/unit-manager.c:90
+msgid "Years"
+msgstr "வருடங்கள்"
+
+#: ../src/unit-manager.c:90
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s வருடங்கள்"
+
+#: ../src/unit-manager.c:90
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "வருடம், வருடங்கள்"
+
+#: ../src/unit-manager.c:91
+msgid "Days"
+msgstr "நாட்கள்"
+
+#: ../src/unit-manager.c:91
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s நாட்கள்"
+
+#: ../src/unit-manager.c:91
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "நாள், நாட்கள்"
+
+#: ../src/unit-manager.c:92
+msgid "Hours"
+msgstr "மணிகள்"
+
+#: ../src/unit-manager.c:92
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s மணிகள்"
+
+#: ../src/unit-manager.c:92
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "மணி, மணிகள்"
+
+#: ../src/unit-manager.c:93
+msgid "Minutes"
+msgstr "நிமிடங்கள்"
+
+#: ../src/unit-manager.c:93
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s நிமிடங்கள்"
+
+#: ../src/unit-manager.c:93
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "நிமிடம், நிமிடங்கள்"
+
+#: ../src/unit-manager.c:94
+msgid "Seconds"
+msgstr "விநாடிகள்"
+
+#: ../src/unit-manager.c:94
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit-manager.c:94
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "வினாடி, வினாடிகள் , வி"
+
+#: ../src/unit-manager.c:95
+msgid "Milliseconds"
+msgstr "மில்லி வினாடிகள்"
+
+#: ../src/unit-manager.c:95
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit-manager.c:95
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "மில்லிவினாடி, மில்லிவினாடிகள், மை.வி."
+
+#: ../src/unit-manager.c:96
+msgid "Microseconds"
+msgstr "மைக்ரோவினாடிகள் "
+
+#: ../src/unit-manager.c:96
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit-manager.c:96
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us"
+msgstr "மைக்ரோ வினாடி, மைக்ரோ வினாடிகள், மை.வி."
+
+#: ../src/unit-manager.c:97
+msgid "Celcius"
+msgstr "செல்சியஸ்"
+
+#: ../src/unit-manager.c:97
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚C"
+msgstr "%s˚C"
+
+#: ../src/unit-manager.c:97
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "டிகிரிC,˚C"
+
+#: ../src/unit-manager.c:98
+msgid "Farenheit"
+msgstr "பாரன்ஹீட்"
+
+#: ../src/unit-manager.c:98
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚F"
+msgstr "%s˚F"
+
+#: ../src/unit-manager.c:98
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "டிகிரிF,˚F"
+
+#: ../src/unit-manager.c:99
+msgid "Kelvin"
+msgstr "கெல்வின்"
+
+#: ../src/unit-manager.c:99
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚K"
+msgstr "%s˚K"
+
+#: ../src/unit-manager.c:99
+msgctxt "unit-symbols"
+msgid "degK,˚K"
+msgstr "டிகிரிK,˚K"
+
+#: ../src/unit-manager.c:100
+msgid "Rankine"
+msgstr "ரேன்கின்"
+
+#: ../src/unit-manager.c:100
+#, c-format
+msgctxt "unit-format"
+msgid "%s˚R"
+msgstr "%s˚R"
+
+#: ../src/unit-manager.c:100
+msgctxt "unit-symbols"
+msgid "degR,˚R"
+msgstr "டிகிரிR,˚R"
+
+#: ../src/unit-manager.c:109
+msgid "Angle"
+msgstr "கோணம்"
+
+#: ../src/unit-manager.c:110
+msgid "Length"
+msgstr "நீளம்"
+
+#: ../src/unit-manager.c:111
+msgid "Area"
+msgstr "பரப்பு"
+
+#: ../src/unit-manager.c:112
+msgid "Volume"
+msgstr "கொள்ளளவு"
+
+#: ../src/unit-manager.c:113
+msgid "Weight"
+msgstr "கனம்"
+
+#: ../src/unit-manager.c:114
+msgid "Duration"
+msgstr "காலஅளவு"
+
+#: ../src/unit-manager.c:115
+msgid "Temperature"
+msgstr "வெப்பநிலை"
+
+#: ../src/unit-manager.c:127
+msgid "Currency"
+msgstr "பணம்"
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../src/unit-manager.c:137
+#, c-format
+msgid "%s%%s"
+msgstr "%s%%s"
+
+#~ msgid "Recall"
+#~ msgstr "திருப்பி அழைக்கப்படல்"
+
+#~ msgid "← R"
+#~ msgstr "← ஆர்(R)"
+
+#~ msgid "→ R"
+#~ msgstr "→ஆர்(R)"
+
+#~ msgid "Assign Variable"
+#~ msgstr "மாறியை அளி"
+
+#~ msgid "Insert Variable"
+#~ msgstr "மாறியை சொருகு"
+
+#~ msgid "Angle Units"
+#~ msgstr "கோண அலகுகள்"
+
+#~ msgid "Area Units"
+#~ msgstr "  பரப்பு அலகுகள்"
+
+#~ msgid "cm³"
+#~ msgstr "செமீ³"
+
+#~ msgid "mm³"
+#~ msgstr "மிமீ³"
+
+#~ msgid "Time Units"
+#~ msgstr "நேர அலகுகள் "
+
+#~ msgid "No variables defined"
+#~ msgstr "மாறிகளை வரையறுக்கப்படவில்லை "
 
 #~ msgid "&#x2190; R"
 #~ msgstr "#x2190; R"
