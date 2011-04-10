@@ -15,9 +15,9 @@ msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&component=general\n"
-"POT-Creation-Date: 2010-09-30 16:12+0000\n"
-"PO-Revision-Date: 2010-08-11 21:03+0800\n"
-"Last-Translator: Eleanor Chen <chenyueg@gmail.com>\n"
+"POT-Creation-Date: 2011-02-15 16:32+0000\n"
+"PO-Revision-Date: 2011-03-21 18:23+0800\n"
+"Last-Translator: Yinghua Wang <wantinghard@gmail.com>\n"
 "Language-Team: Chinese Simplified <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,8 +110,9 @@ msgstr "撤销"
 
 #. This is between the currency selector dropdowns, for example: [USD] in [EUR]
 #: ../data/buttons-financial.ui.h:2
+#, fuzzy
 msgid " in "
-msgstr ""
+msgstr " 换算为 "
 
 #. Payment Period Dialog: Button to calculate result
 #: ../data/buttons-financial.ui.h:10
@@ -929,12 +930,12 @@ msgid "Boolean NOT"
 msgstr "逻辑非"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:207 ../src/math-buttons.c:1443
+#: ../src/math-buttons.c:207 ../src/math-buttons.c:1453
 msgid "Integer Component"
 msgstr "取整数部分"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:210 ../src/math-buttons.c:1445
+#: ../src/math-buttons.c:210 ../src/math-buttons.c:1455
 msgid "Fractional Component"
 msgstr "小数部分"
 
@@ -1026,66 +1027,66 @@ msgstr "直线折旧"
 #: ../src/math-buttons.c:429
 #, c-format
 msgid "%s radians = %s degrees"
-msgstr ""
+msgstr "%s 弧度 = %s 度"
 
 #: ../src/math-buttons.c:449
 #, c-format
 msgid "%s gradians = %s degrees"
-msgstr ""
+msgstr "%s 弧度 = %s 度"
 
 #. Translators: first and third %s are currency symbols, second and fourth are amounts in these currencies, you may want to change the order of these, example: $100 = €100
 #: ../src/math-buttons.c:555
 #, c-format
 msgid "%s%s = %s%s"
-msgstr ""
+msgstr "%2$s%1$s = %4$s%3$s"
 
 #. Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-buttons.c:893 ../src/math-preferences.c:255
+#: ../src/math-buttons.c:903 ../src/math-preferences.c:255
 msgid "Degrees"
 msgstr "角度(_G)"
 
 #. Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-buttons.c:897 ../src/math-preferences.c:259
+#: ../src/math-buttons.c:907 ../src/math-preferences.c:259
 msgid "Radians"
 msgstr "弧度"
 
 #. Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-buttons.c:901 ../src/math-preferences.c:263
+#: ../src/math-buttons.c:911 ../src/math-preferences.c:263
 msgid "Gradians"
 msgstr "百分度"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:935
+#: ../src/math-buttons.c:945
 msgid "Binary"
 msgstr "二进制"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:939
+#: ../src/math-buttons.c:949
 msgid "Octal"
 msgstr "八进制"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:943
+#: ../src/math-buttons.c:953
 msgid "Decimal"
 msgstr "十进制"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:947
+#: ../src/math-buttons.c:957
 msgid "Hexadecimal"
 msgstr "十六进制"
 
 #. Text shown in store menu when no variables defined
 #. Text shown in recall menu when no variables defined
-#: ../src/math-buttons.c:1264 ../src/math-buttons.c:1310
+#: ../src/math-buttons.c:1274 ../src/math-buttons.c:1320
 msgid "No variables defined"
 msgstr "未定义变量"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1353 ../src/math-buttons.c:1397
+#: ../src/math-buttons.c:1363 ../src/math-buttons.c:1407
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1093,93 +1094,88 @@ msgstr[0] "_%d 位"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1357 ../src/math-buttons.c:1401
+#: ../src/math-buttons.c:1367 ../src/math-buttons.c:1411
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "%d 位"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1447
+#: ../src/math-buttons.c:1457
 msgid "Round"
 msgstr "抹零"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1449
+#: ../src/math-buttons.c:1459
 msgid "Floor"
 msgstr "下限"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1451
+#: ../src/math-buttons.c:1461
 msgid "Ceiling"
 msgstr "上限"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1453
+#: ../src/math-buttons.c:1463
 msgid "Sign"
 msgstr "符号"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:497
+#: ../src/math-equation.c:576
 msgid "No undo history"
 msgstr "无撤销记录"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:522
+#: ../src/math-equation.c:601
 msgid "No redo history"
 msgstr "无重做记录"
 
-#: ../src/math-equation.c:846
+#: ../src/math-equation.c:959
 msgid "No sane value to store"
 msgstr "没有要存储的标准值"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1106
+#: ../src/math-equation.c:1226
 msgid "Overflow. Try a bigger word size"
 msgstr "溢出。请尝试一个更大的字长"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1111
+#: ../src/math-equation.c:1231
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "未知变量“%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1116
+#: ../src/math-equation.c:1236
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "函数“%s”未定义"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1121
+#: ../src/math-equation.c:1241
 msgid "Unknown conversion"
 msgstr "未知转换"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1130
+#: ../src/math-equation.c:1250
 msgid "Malformed expression"
 msgstr "格式错误的表达式"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1153
+#: ../src/math-equation.c:1273
 msgid "Need an integer to factorize"
 msgstr "分解因式运算需要一个整数"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1230
+#: ../src/math-equation.c:1350
 msgid "No sane value to bitwise shift"
 msgstr "没有正常数值可用于移位"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1259
+#: ../src/math-equation.c:1379
 msgid "Displayed value not an integer"
 msgstr "显示的值不是整数"
-
-#. Digits localized for the given language
-#: ../src/math-equation.c:1649
-msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
 #: ../src/math-preferences.c:245
@@ -1400,15 +1396,18 @@ msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "反余弦函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:591
+#: ../src/mp-trigonometric.c:592
 msgid ""
 "Inverse hyperbolic cosine is undefined for values less than or equal to one"
 msgstr "反双曲余弦函数在小于等于 1 时无意义"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:615
+#: ../src/mp-trigonometric.c:616
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "反双曲正切函数在 [-1,1] 范围之外无意义"
+
+#~ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+#~ msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #~ msgid "&#xA4;$&#x20AC;"
 #~ msgstr "&#xA4;$&#x20AC;"
