@@ -57,7 +57,7 @@ unit_manager_get_default(void)
         {"length",   "parsec",              N_("Parsecs"),           NC_("unit-format", "%s pc"),       "30857000000000000x", "x/30857000000000000", NC_("unit-symbols", "parsec,parsecs,pc")},
         {NULL,       "lightyear",           N_("Light Years"),       NC_("unit-format", "%s ly"),       "9460730472580800x",  "x/9460730472580800",  NC_("unit-symbols", "lightyear,lightyears,ly")},
         {NULL,       "astronomical-unit",   N_("Astronomical Units"), NC_("unit-format", "%s au"),      "149597870691x",      "x/149597870691", NC_("unit-symbols", "au")},
-        {NULL,       "nautical-mile",       N_("Nautical Miles"),    NC_("unit-format", "%s nm"),       "1852000x",           "x/1852000",      NC_("unit-symbols", "nm")},
+        {NULL,       "nautical-mile",       N_("Nautical Miles"),    NC_("unit-format", "%s nm"),       "1852x",              "x/1852",         NC_("unit-symbols", "nm")},
         {NULL,       "mile",                N_("Miles"),             NC_("unit-format", "%s mi"),       "1609.344x",          "x/1609.344",     NC_("unit-symbols", "mile,miles,mi")},
         {NULL,       "kilometer",           N_("Kilometers"),        NC_("unit-format", "%s km"),       "1000x",              "x/1000",         NC_("unit-symbols", "kilometer,kilometers,km,kms")},
         {NULL,       "cable",               N_("Cables"),            NC_("unit-format", "%s cb"),       "219.456x",           "x/219.456",      NC_("unit-symbols", "cable,cables,cb")},

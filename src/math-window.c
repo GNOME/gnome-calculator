@@ -34,12 +34,6 @@ struct MathWindowPrivate
 
 G_DEFINE_TYPE (MathWindow, math_window, GTK_TYPE_WINDOW);
 
-enum {
-    QUIT,
-    LAST_SIGNAL
-};
-static guint signals[LAST_SIGNAL] = { 0, };
-
 
 MathWindow *
 math_window_new(MathEquation *equation)
@@ -91,7 +85,7 @@ math_window_critical_error(MathWindow *window, const gchar *title, const gchar *
 
     gtk_dialog_run(GTK_DIALOG(dialog));
 
-    g_signal_emit(window, signals[QUIT], 0);
+    gtk_widget_destroy(GTK_WIDGET(window));
 }
 
 
@@ -232,7 +226,7 @@ about_cb(GtkWidget *widget, MathWindow *window)
 static void
 quit_cb(GtkWidget *widget, MathWindow *window)
 {
-    g_signal_emit(window, signals[QUIT], 0);
+    gtk_widget_destroy(GTK_WIDGET(window));
 }
 
 
@@ -242,13 +236,6 @@ key_press_cb(MathWindow *window, GdkEventKey *event)
     gboolean result;
     g_signal_emit_by_name(window->priv->display, "key-press-event", event, &result);
     return result;
-}
-
-
-static void
-delete_cb(MathWindow *window, GdkEvent *event)
-{
-    g_signal_emit(window, signals[QUIT], 0);
 }
 
 
@@ -493,15 +480,6 @@ math_window_class_init(MathWindowClass *klass)
                                                         "Equation being calculated",
                                                         math_equation_get_type(),
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-
-    signals[QUIT] =
-        g_signal_new("quit",
-                     G_TYPE_FROM_CLASS (klass),
-                     G_SIGNAL_RUN_LAST,
-                     G_STRUCT_OFFSET (MathWindowClass, quit),
-                     NULL, NULL,
-                     g_cclosure_marshal_VOID__VOID,
-                     G_TYPE_NONE, 0);
 }
 
 
@@ -516,5 +494,4 @@ math_window_init(MathWindow *window)
     gtk_window_set_role(GTK_WINDOW(window), "gcalctool");
     gtk_window_set_resizable(GTK_WINDOW(window), FALSE);
     g_signal_connect_after(G_OBJECT(window), "key-press-event", G_CALLBACK(key_press_cb), NULL);
-    g_signal_connect(G_OBJECT(window), "delete-event", G_CALLBACK(delete_cb), NULL);
 }
