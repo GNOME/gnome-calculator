@@ -1167,7 +1167,7 @@ math_equation_show_in_progress(gpointer data)
 {
     MathEquation *equation = MATH_EQUATION(data);
     if (equation->priv->in_solve)
-        math_equation_set_status(equation, "Calculating");
+        math_equation_set_status(equation, _("Calculating"));
     return false;
 }
 
