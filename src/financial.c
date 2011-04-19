@@ -67,7 +67,7 @@ calc_ddb(MathEquation *equation, MPNumber *t, MPNumber *cost, MPNumber *life, MP
     }
 
     if (len >= 0) {
-        math_equation_set_status (equation, ("Error: the number of periods must be positive"));
+        math_equation_set_status (equation, _("Error: the number of periods must be positive"));
         mp_set_from_integer(0, t);
     }
 }
