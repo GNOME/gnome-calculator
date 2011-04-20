@@ -96,7 +96,7 @@ unit_manager_get_default(void)
         {NULL,       "microsecond",         N_("Microseconds"),      NC_("unit-format", "%s μs"),       "0.000001x",          "1000000x",       NC_("unit-symbols", "microsecond,microseconds,us")},
         {"temperature", "degree-celcius",   N_("Celcius"),           NC_("unit-format", "%s˚C"),        "x+273.15",           "x-273.15",       NC_("unit-symbols", "degC,˚C")},
         {NULL,          "degree-farenheit", N_("Farenheit"),         NC_("unit-format", "%s˚F"),        "(x+459.67)*5/9",     "x*9/5-459.67",   NC_("unit-symbols", "degF,˚F")},
-        {NULL,          "degree-kelvin",    N_("Kelvin"),            NC_("unit-format", "%s˚K"),        "x",                  "x",              NC_("unit-symbols", "degK,˚K")},
+        {NULL,          "degree-kelvin",    N_("Kelvin"),            NC_("unit-format", "%s K"),        "x",                  "x",              NC_("unit-symbols", "K")},
         {NULL,          "degree-rankine",   N_("Rankine"),           NC_("unit-format", "%s˚R"),        "x*5/9",              "x*9/5",          NC_("unit-symbols", "degR,˚R")},
         { NULL, NULL, NULL, NULL, NULL, NULL }
     };
