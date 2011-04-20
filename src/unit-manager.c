@@ -151,7 +151,11 @@ unit_manager_add_category(UnitManager *manager, const gchar *name, const gchar *
 {
     UnitCategory *category;
 
+    g_return_val_if_fail(manager != NULL, NULL);
+    g_return_val_if_fail(name != NULL, NULL);
+    g_return_val_if_fail(display_name != NULL, NULL);
     g_return_val_if_fail(unit_manager_get_category(manager, name) == NULL, NULL);
+
     category = unit_category_new(name, display_name);
     manager->priv->categories = g_list_append(manager->priv->categories, category);
 
@@ -162,6 +166,7 @@ unit_manager_add_category(UnitManager *manager, const gchar *name, const gchar *
 const GList *
 unit_manager_get_categories(UnitManager *manager)
 {
+    g_return_val_if_fail(manager != NULL, NULL);
     return manager->priv->categories;
 }
 
@@ -170,6 +175,9 @@ UnitCategory *
 unit_manager_get_category(UnitManager *manager, const gchar *category)
 {
     GList *iter;
+  
+    g_return_val_if_fail(manager != NULL, NULL);
+    g_return_val_if_fail(category != NULL, NULL);
 
     for (iter = manager->priv->categories; iter; iter = iter->next) {
         UnitCategory *c = iter->data;
@@ -186,6 +194,9 @@ unit_manager_get_unit_by_name(UnitManager *manager, const gchar *name)
 {
     GList *iter;
     Unit *u;
+
+    g_return_val_if_fail(manager != NULL, NULL);
+    g_return_val_if_fail(name != NULL, NULL);
 
     for (iter = manager->priv->categories; iter; iter = iter->next) {
         UnitCategory *c = iter->data;
@@ -204,6 +215,9 @@ unit_manager_get_unit_by_symbol(UnitManager *manager, const gchar *symbol)
     GList *iter;
     Unit *u;
 
+    g_return_val_if_fail(manager != NULL, NULL);
+    g_return_val_if_fail(symbol != NULL, NULL);  
+
     for (iter = manager->priv->categories; iter; iter = iter->next) {
         UnitCategory *c = iter->data;
         u = unit_category_get_unit_by_symbol(c, symbol);
@@ -219,6 +233,12 @@ gboolean
 unit_manager_convert_by_symbol(UnitManager *manager, const MPNumber *x, const char *x_symbol, const char *z_symbol, MPNumber *z)
 {
     GList *iter;
+
+    g_return_val_if_fail(manager != NULL, FALSE);
+    g_return_val_if_fail(x != NULL, FALSE);
+    g_return_val_if_fail(x_symbol != NULL, FALSE);
+    g_return_val_if_fail(z_symbol != NULL, FALSE);
+    g_return_val_if_fail(z != NULL, FALSE);
 
     for (iter = manager->priv->categories; iter; iter = iter->next) {
         UnitCategory *c = iter->data;

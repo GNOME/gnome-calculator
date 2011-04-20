@@ -59,6 +59,7 @@ unit_new(const gchar *name,
 const gchar *
 unit_get_name(Unit *unit)
 {
+    g_return_val_if_fail (unit != NULL, NULL);
     return unit->priv->name;
 }
 
@@ -66,6 +67,7 @@ unit_get_name(Unit *unit)
 const gchar *
 unit_get_display_name(Unit *unit)
 {
+    g_return_val_if_fail (unit != NULL, NULL);
     return unit->priv->display_name;
 }
 
@@ -74,6 +76,9 @@ gboolean
 unit_matches_symbol(Unit *unit, const gchar *symbol)
 {
     GList *iter;
+
+    g_return_val_if_fail (unit != NULL, FALSE);
+    g_return_val_if_fail (symbol != NULL, FALSE);
 
     for (iter = unit->priv->symbols; iter; iter = iter->next) {
         gchar *s = iter->data;
@@ -88,6 +93,7 @@ unit_matches_symbol(Unit *unit, const gchar *symbol)
 const GList *
 unit_get_symbols(Unit *unit)
 {
+    g_return_val_if_fail (unit != NULL, NULL);
     return unit->priv->symbols;
 }
 
@@ -133,6 +139,10 @@ solve_function(const gchar *function, const MPNumber *x, MPNumber *z)
 gboolean
 unit_convert_from(Unit *unit, const MPNumber *x, MPNumber *z)
 {
+    g_return_val_if_fail(unit != NULL, FALSE);
+    g_return_val_if_fail(x != NULL, FALSE);
+    g_return_val_if_fail(x != NULL, FALSE);
+
     if (unit->priv->from_function)
         return solve_function(unit->priv->from_function, x, z);
     else {
@@ -151,6 +161,10 @@ unit_convert_from(Unit *unit, const MPNumber *x, MPNumber *z)
 gboolean
 unit_convert_to(Unit *unit, const MPNumber *x, MPNumber *z)
 {
+    g_return_val_if_fail(unit != NULL, FALSE);
+    g_return_val_if_fail(x != NULL, FALSE);
+    g_return_val_if_fail(x != NULL, FALSE);
+
     if (unit->priv->from_function)
         return solve_function(unit->priv->to_function, x, z);
     else {
@@ -170,6 +184,9 @@ gchar *
 unit_format(Unit *unit, MPNumber *x)
 {
     gchar *number_text, *text;
+
+    g_return_val_if_fail(unit != NULL, FALSE);
+    g_return_val_if_fail(x != NULL, FALSE);
 
     number_text = mp_serializer_to_string(unit->priv->serializer, x);
     text = g_strdup_printf(unit->priv->format, number_text);

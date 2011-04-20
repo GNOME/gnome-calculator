@@ -36,6 +36,7 @@ unit_category_new(const gchar *name, const gchar *display_name)
 const gchar *
 unit_category_get_name(UnitCategory *category)
 {
+    g_return_val_if_fail (category != NULL, NULL);
     return category->priv->name;
 }
 
@@ -43,6 +44,7 @@ unit_category_get_name(UnitCategory *category)
 const gchar *
 unit_category_get_display_name(UnitCategory *category)
 {
+    g_return_val_if_fail (category != NULL, NULL);
     return category->priv->display_name;
 }
 
@@ -50,6 +52,8 @@ unit_category_get_display_name(UnitCategory *category)
 void
 unit_category_add_unit(UnitCategory *category, Unit *unit)
 {
+    g_return_if_fail (category != NULL);
+    g_return_if_fail (unit != NULL);
     category->priv->units = g_list_append(category->priv->units, g_object_ref(unit));
 }
 
@@ -58,6 +62,9 @@ Unit *
 unit_category_get_unit_by_name(UnitCategory *category, const gchar *name)
 {
     GList *iter;
+
+    g_return_val_if_fail (category != NULL, NULL);
+    g_return_val_if_fail (name != NULL, NULL);
 
     for (iter = category->priv->units; iter; iter = iter->next)
     {
@@ -75,6 +82,9 @@ unit_category_get_unit_by_symbol(UnitCategory *category, const gchar *symbol)
 {
     GList *iter;
 
+    g_return_val_if_fail (category != NULL, NULL);
+    g_return_val_if_fail (symbol != NULL, NULL);
+
     for (iter = category->priv->units; iter; iter = iter->next) {
         Unit *unit = iter->data;
         if (unit_matches_symbol(unit, symbol))
@@ -88,6 +98,7 @@ unit_category_get_unit_by_symbol(UnitCategory *category, const gchar *symbol)
 const GList *
 unit_category_get_units(UnitCategory *category)
 {
+    g_return_val_if_fail (category != NULL, NULL);
     return category->priv->units;
 }
 
@@ -96,6 +107,11 @@ gboolean
 unit_category_convert(UnitCategory *category, const MPNumber *x, Unit *x_units, Unit *z_units, MPNumber *z)
 {
     MPNumber t;
+
+    g_return_val_if_fail (category != NULL, FALSE);
+    g_return_val_if_fail (x_units != NULL, FALSE);
+    g_return_val_if_fail (z_units != NULL, FALSE);
+    g_return_val_if_fail (z != NULL, FALSE);
 
     if (!unit_convert_from(x_units, x, &t))
         return FALSE;

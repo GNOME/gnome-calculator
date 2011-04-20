@@ -34,7 +34,8 @@ struct MathWindowPrivate
 
 G_DEFINE_TYPE (MathWindow, math_window, GTK_TYPE_WINDOW);
 
-enum {
+enum
+{
     QUIT,
     LAST_SIGNAL
 };
@@ -51,13 +52,15 @@ math_window_new(MathEquation *equation)
 GtkWidget *
 math_window_get_menu_bar(MathWindow *window)
 {
-   return window->priv->menu_bar;
+    g_return_val_if_fail(window != NULL, NULL);
+    return window->priv->menu_bar;
 }
 
 
 MathEquation *
 math_window_get_equation(MathWindow *window)
 {
+    g_return_val_if_fail(window != NULL, NULL);
     return window->priv->equation;
 }
 
@@ -65,6 +68,7 @@ math_window_get_equation(MathWindow *window)
 MathDisplay *
 math_window_get_display(MathWindow *window)
 {
+    g_return_val_if_fail(window != NULL, NULL);
     return window->priv->display;
 }
 
@@ -72,6 +76,7 @@ math_window_get_display(MathWindow *window)
 MathButtons *
 math_window_get_buttons(MathWindow *window)
 {
+    g_return_val_if_fail(window != NULL, NULL);
     return window->priv->buttons;
 }
 
@@ -80,6 +85,10 @@ void
 math_window_critical_error(MathWindow *window, const gchar *title, const gchar *contents)
 {
     GtkWidget *dialog;
+
+    g_return_if_fail(window != NULL);
+    g_return_if_fail(title != NULL);
+    g_return_if_fail(contents != NULL);
 
     dialog = gtk_message_dialog_new(NULL, 0,
                                     GTK_MESSAGE_ERROR,
