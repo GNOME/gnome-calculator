@@ -1678,10 +1678,11 @@ mp_pwr(const MPNumber *x, const MPNumber *y, MPNumber *z)
         return;
     }*/
 
-    /* 0^-y illegal */
-    if (mp_is_zero(x) && y->sign < 0) {
-        mperr(_("The power of zero is undefined for a negative exponent"));
+    /* 0^y = 0, 0^-y undefined */  
+    if (mp_is_zero(x)) {
         mp_set_from_integer(0, z);
+        if (y->sign < 0)
+            mperr(_("The power of zero is undefined for a negative exponent"));
         return;
     }
 
