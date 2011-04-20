@@ -108,6 +108,8 @@ math_variables_get_names(MathVariables *variables)
     gint i = 0;
     gchar **names;
   
+    g_return_val_if_fail(variables != NULL, NULL);
+
     names = g_malloc0(sizeof(gchar *) * (g_hash_table_size(variables->priv->registers) + 1));
 
     g_hash_table_iter_init(&iter, variables->priv->registers);
@@ -128,6 +130,10 @@ math_variables_set(MathVariables *variables, const char *name, const MPNumber *v
 {
     MPNumber *t;
 
+    g_return_if_fail(variables != NULL);
+    g_return_if_fail(name != NULL);
+    g_return_if_fail(value != NULL);
+
     t = g_malloc(sizeof(MPNumber));
     mp_set_from_mp(value, t);
     g_hash_table_insert(variables->priv->registers, g_strdup(name), t);
@@ -138,6 +144,8 @@ math_variables_set(MathVariables *variables, const char *name, const MPNumber *v
 MPNumber *
 math_variables_get(MathVariables *variables, const char *name)
 {
+    g_return_val_if_fail(variables != NULL, NULL);
+    g_return_val_if_fail(name != NULL, NULL);
     return g_hash_table_lookup(variables->priv->registers, name);
 }
 
@@ -145,6 +153,8 @@ math_variables_get(MathVariables *variables, const char *name)
 void
 math_variables_delete(MathVariables *variables, const char *name)
 {
+    g_return_if_fail(variables != NULL);
+    g_return_if_fail(name != NULL);
     g_hash_table_remove(variables->priv->registers, name);
     registers_save(variables);
 }

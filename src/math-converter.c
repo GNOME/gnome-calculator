@@ -152,6 +152,8 @@ update_from_model(MathConverter *converter)
 void
 math_converter_set_category(MathConverter *converter, const gchar *category)
 {
+    g_return_if_fail (converter != NULL);
+
     if (category == NULL && converter->priv->category == NULL)
         return;
     if (category != NULL && converter->priv->category != NULL && strcmp(category, converter->priv->category) == 0)
@@ -167,6 +169,7 @@ math_converter_set_category(MathConverter *converter, const gchar *category)
 const gchar *
 math_converter_get_category(MathConverter *converter)
 {
+    g_return_val_if_fail (converter != NULL, NULL);
     return converter->priv->category;
 }
 
@@ -220,6 +223,10 @@ math_converter_set_conversion(MathConverter *converter, /*const gchar *category,
     Unit *ua;
     Unit *ub;
 
+    g_return_if_fail (converter != NULL);
+    g_return_if_fail (unit_a != NULL);
+    g_return_if_fail (unit_b != NULL);
+
     ua = unit_manager_get_unit_by_name(unit_manager_get_default(), unit_a);
     ub = unit_manager_get_unit_by_name(unit_manager_get_default(), unit_b);
     if (!ua || !ub)
@@ -247,6 +254,10 @@ void
 math_converter_get_conversion(MathConverter *converter, Unit **from_unit, Unit **to_unit)
 {
     GtkTreeIter from_iter, to_iter;
+
+    g_return_if_fail (converter != NULL);
+    g_return_if_fail (from_unit != NULL);
+    g_return_if_fail (to_unit != NULL);
 
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(converter->priv->from_combo), &from_iter);
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(converter->priv->to_combo), &to_iter);

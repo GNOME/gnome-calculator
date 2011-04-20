@@ -134,13 +134,17 @@ currency_manager_get_default(void)
 GList *
 currency_manager_get_currencies(CurrencyManager *manager)
 {
-     return manager->priv->currencies;
+    g_return_val_if_fail(manager != NULL, NULL);
+    return manager->priv->currencies;
 }
 
 
 Currency *
 currency_manager_get_currency(CurrencyManager *manager, const gchar *name)
 {
+    g_return_val_if_fail(manager != NULL, NULL);
+    g_return_val_if_fail(name != NULL, NULL);
+
     GList *link;
     for (link = manager->priv->currencies; link; link = link->next) {
         Currency *c = link->data;
@@ -565,6 +569,9 @@ currency_manager_get_value(CurrencyManager *manager, const gchar *currency)
 {
     gchar *path;
     Currency *c;
+
+    g_return_val_if_fail(manager != NULL, NULL);
+    g_return_val_if_fail(currency != NULL, NULL);
 
     /* Update rates if necessary */
     path = get_imf_rate_filepath();

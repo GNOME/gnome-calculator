@@ -749,6 +749,8 @@ void
 math_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
 {
     ButtonMode old_mode;
+
+    g_return_if_fail(buttons != NULL);
  
     if (buttons->priv->mode == mode)
         return;
@@ -791,6 +793,8 @@ math_buttons_get_mode(MathButtons *buttons)
 void
 math_buttons_set_programming_base(MathButtons *buttons, gint base)
 {
+    g_return_if_fail(buttons != NULL);
+
     if (base == buttons->priv->programming_base)
         return;
 
@@ -805,6 +809,7 @@ math_buttons_set_programming_base(MathButtons *buttons, gint base)
 gint
 math_buttons_get_programming_base(MathButtons *buttons)
 {
+    g_return_val_if_fail(buttons != NULL, 10);
     return buttons->priv->programming_base;
 }
 
