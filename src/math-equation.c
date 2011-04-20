@@ -871,11 +871,16 @@ math_equation_get_number(MathEquation *equation, MPNumber *z)
     g_return_val_if_fail(equation != NULL, FALSE);
     g_return_val_if_fail(z != NULL, FALSE);
 
-    text = math_equation_get_equation(equation);
-    result = !mp_serializer_from_string(equation->priv->serializer, text, z);
-    g_free(text);
-
-    return result;
+    if (math_equation_is_result(equation)) {
+        mp_set_from_mp(math_equation_get_answer(equation), z);
+        return TRUE;
+    }
+    else {
+        text = math_equation_get_equation(equation);
+        result = !mp_serializer_from_string(equation->priv->serializer, text, z);
+        g_free(text);
+        return result;
+    }
 }
 
 
