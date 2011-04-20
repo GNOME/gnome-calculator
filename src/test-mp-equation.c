@@ -152,7 +152,7 @@ test_conversions()
     //test("0˚K in ˚C", "−273.15", 0);
     test("100degC in degF", "212", 0);
     test("0degC in degF", "32", 0);
-    test("0degK in degC", "−273.15", 0);
+    test("0 K in degC", "−273.15", 0);
 }
 
 
