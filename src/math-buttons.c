@@ -19,7 +19,8 @@
 enum {
     PROP_0,
     PROP_EQUATION,
-    PROP_MODE
+    PROP_MODE,
+    PROP_PROGRAMMING_BASE
 };
 
 static GType button_mode_type;
@@ -455,7 +456,7 @@ base_combobox_changed_cb(GtkWidget *combo, MathButtons *buttons)
     gtk_combo_box_get_active_iter(GTK_COMBO_BOX(combo), &iter);
     gtk_tree_model_get(model, &iter, 1, &value, -1);
 
-    math_equation_set_base(buttons->priv->equation, value);
+    math_buttons_set_programming_base(buttons, value);
 }
 
 
@@ -790,7 +791,14 @@ math_buttons_get_mode(MathButtons *buttons)
 void
 math_buttons_set_programming_base(MathButtons *buttons, gint base)
 {
+    if (base == buttons->priv->programming_base)
+        return;
+
     buttons->priv->programming_base = base;
+    g_object_notify(G_OBJECT(buttons), "programming-base");
+
+    if (buttons->priv->mode == PROGRAMMING)
+        math_equation_set_base(buttons->priv->equation, base);
 }
 
 
@@ -1315,6 +1323,9 @@ math_buttons_set_property(GObject      *object,
     case PROP_MODE:
         math_buttons_set_mode(self, g_value_get_int(value));
         break;
+    case PROP_PROGRAMMING_BASE:
+        math_buttons_set_programming_base(self, g_value_get_int(value));
+        break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -1338,6 +1349,9 @@ math_buttons_get_property(GObject    *object,
         break;
     case PROP_MODE:
         g_value_set_int(value, self->priv->mode);
+        break;
+    case PROP_PROGRAMMING_BASE:
+        g_value_set_int(value, math_buttons_get_programming_base(self));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -1381,6 +1395,13 @@ math_buttons_class_init(MathButtonsClass *klass)
                                                       button_mode_type,
                                                       BASIC,
                                                       G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_PROGRAMMING_BASE,
+                                    g_param_spec_int("programming-base",
+                                                     "programming-base",
+                                                     "Base to use in programming mode",
+                                                     2, 16, 10,
+                                                     G_PARAM_READWRITE));
 }
 
 

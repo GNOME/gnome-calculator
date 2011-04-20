@@ -171,28 +171,92 @@ get_options(int argc, char *argv[])
 
 
 static void
+accuracy_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_int(settings, "accuracy", math_equation_get_accuracy(equation));
+}
+
+
+static void
+word_size_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_int(settings, "word-size", math_equation_get_word_size(equation));
+}
+
+
+static void
+show_thousands_separators_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_boolean(settings, "show-thousands", math_equation_get_show_thousands_separators(equation));
+}
+
+
+static void
+show_trailing_zeroes_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_boolean(settings, "show-zeroes", math_equation_get_show_trailing_zeroes(equation));
+}
+
+
+static void
+number_format_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_enum(settings, "number-format", math_equation_get_number_format(equation));
+}
+
+
+static void
+angle_unit_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_enum(settings, "angle-units", math_equation_get_angle_units(equation));
+}
+
+
+static void
+source_currency_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_string(settings, "source-currency", math_equation_get_source_currency(equation));
+}
+
+
+static void
+target_currency_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_string(settings, "target-currency", math_equation_get_target_currency(equation));
+}
+
+
+static void
+source_units_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_string(settings, "source-units", math_equation_get_source_units(equation));
+}
+
+
+static void
+target_units_cb(MathEquation *equation, GParamSpec *spec)
+{
+    g_settings_set_string(settings, "target-units", math_equation_get_target_units(equation));
+}
+
+
+static void
+programming_base_cb(MathButtons *buttons, GParamSpec *spec)
+{
+    g_settings_set_int(settings, "base", math_buttons_get_programming_base(buttons));
+}
+
+
+static void
+mode_cb(MathButtons *buttons, GParamSpec *spec)
+{
+    g_settings_set_enum(settings, "button-mode", math_buttons_get_mode(buttons));
+}
+
+
+static void
 quit_cb(MathWindow *window)
 {
-    MathEquation *equation;
-    MathButtons *buttons;
-
-    equation = math_window_get_equation(window);
-    buttons = math_window_get_buttons(window);
-
-    g_settings_set_int(settings, "accuracy", math_equation_get_accuracy(equation));
-    g_settings_set_int(settings, "word-size", math_equation_get_word_size(equation));
-    g_settings_set_int(settings, "base", math_buttons_get_programming_base(buttons));
-    g_settings_set_boolean(settings, "show-thousands", math_equation_get_show_thousands_separators(equation));
-    g_settings_set_boolean(settings, "show-zeroes", math_equation_get_show_trailing_zeroes(equation));
-    g_settings_set_enum(settings, "number-format", math_equation_get_number_format(equation));
-    g_settings_set_enum(settings, "angle-units", math_equation_get_angle_units(equation));
-    g_settings_set_enum(settings, "button-mode", math_buttons_get_mode(buttons));
-    g_settings_set_string(settings, "source-currency", math_equation_get_source_currency(equation));
-    g_settings_set_string(settings, "target-currency", math_equation_get_target_currency(equation));
-    g_settings_set_string(settings, "source-units", math_equation_get_source_units(equation));
-    g_settings_set_string(settings, "target-units", math_equation_get_target_units(equation));
-    g_settings_sync();
-
     gtk_main_quit();
 }
 
@@ -201,6 +265,7 @@ int
 main(int argc, char **argv)
 {
     MathEquation *equation;
+    MathButtons *buttons;
     int accuracy = 9, word_size = 64, base = 10;
     gboolean show_tsep = FALSE, show_zeroes = FALSE;
     MpDisplayFormat number_format;
@@ -251,12 +316,26 @@ main(int argc, char **argv)
     g_free(source_units);
     g_free(target_units);
 
+    g_signal_connect(equation, "notify::accuracy", G_CALLBACK(accuracy_cb), NULL);
+    g_signal_connect(equation, "notify::word-size", G_CALLBACK(word_size_cb), NULL);
+    g_signal_connect(equation, "notify::show-thousands-separators", G_CALLBACK(show_thousands_separators_cb), NULL);
+    g_signal_connect(equation, "notify::show-trailing-zeroes", G_CALLBACK(show_trailing_zeroes_cb), NULL);
+    g_signal_connect(equation, "notify::number-format", G_CALLBACK(number_format_cb), NULL);
+    g_signal_connect(equation, "notify::angle-units", G_CALLBACK(angle_unit_cb), NULL);
+    g_signal_connect(equation, "notify::source-currency", G_CALLBACK(source_currency_cb), NULL);
+    g_signal_connect(equation, "notify::target-currency", G_CALLBACK(target_currency_cb), NULL);
+    g_signal_connect(equation, "notify::source-units", G_CALLBACK(source_units_cb), NULL);
+    g_signal_connect(equation, "notify::target-units", G_CALLBACK(target_units_cb), NULL);
+
     gtk_init(&argc, &argv);
 
     window = math_window_new(equation);
+    buttons = math_window_get_buttons(window);
     g_signal_connect(G_OBJECT(window), "quit", G_CALLBACK(quit_cb), NULL);
-    math_buttons_set_programming_base(math_window_get_buttons(window), base);
-    math_buttons_set_mode(math_window_get_buttons(window), button_mode); // FIXME: We load the basic buttons even if we immediately switch to the next type
+    math_buttons_set_programming_base(buttons, base);
+    math_buttons_set_mode(buttons, button_mode); // FIXME: We load the basic buttons even if we immediately switch to the next type
+    g_signal_connect(buttons, "notify::programming-base", G_CALLBACK(programming_base_cb), NULL);
+    g_signal_connect(buttons, "notify::mode", G_CALLBACK(mode_cb), NULL);
 
     gtk_widget_show(GTK_WIDGET(window));
     gtk_main();
