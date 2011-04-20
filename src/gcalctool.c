@@ -170,13 +170,11 @@ get_options(int argc, char *argv[])
 }
 
 
-static gboolean
+static void
 quit_cb(MathWindow *window)
 {
     MathEquation *equation;
     MathButtons *buttons;
-  
-  g_debug ("!");
 
     equation = math_window_get_equation(window);
     buttons = math_window_get_buttons(window);
@@ -196,8 +194,6 @@ quit_cb(MathWindow *window)
     g_settings_sync();
 
     gtk_main_quit();
-
-    return FALSE;
 }
 
 
@@ -258,7 +254,7 @@ main(int argc, char **argv)
     gtk_init(&argc, &argv);
 
     window = math_window_new(equation);
-    g_signal_connect_after(G_OBJECT(window), "destroy-event", G_CALLBACK(quit_cb), NULL);
+    g_signal_connect(G_OBJECT(window), "quit", G_CALLBACK(quit_cb), NULL);
     math_buttons_set_programming_base(math_window_get_buttons(window), base);
     math_buttons_set_mode(math_window_get_buttons(window), button_mode); // FIXME: We load the basic buttons even if we immediately switch to the next type
 
