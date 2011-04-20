@@ -591,9 +591,12 @@ currency_manager_get_value(CurrencyManager *manager, const gchar *currency)
 
     if (!load_rates(manager))
         return NULL;
-  
+
     c = currency_manager_get_currency(manager, currency);
-    return currency_get_value(c);
+    if (c)
+        return currency_get_value(c);
+    else
+        return NULL;
 }
 
 
