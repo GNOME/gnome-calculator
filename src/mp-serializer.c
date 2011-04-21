@@ -55,11 +55,11 @@ mp_serializer_new(MpDisplayFormat format, int base, int accuracy)
 
 
 static void
-mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gboolean force_sign, GString *string)
+mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gboolean force_sign, int *n_digits, GString *string)
 {
     static gchar digits[] = "0123456789ABCDEF";
     MPNumber number, integer_component, fractional_component, temp;
-    int i, last_non_zero;
+    int i, last_non_zero, last_n_digits;
 
     if (mp_is_negative(x))
         mp_abs(x, &number);
@@ -96,6 +96,7 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gb
 
         d = mp_cast_to_int(&t3);
         g_string_prepend_c(string, d < 16 ? digits[d] : '?');
+        (*n_digits)++;
 
         i++;
         if (serializer->priv->base == 10 && serializer->priv->show_tsep && i == serializer->priv->tsep_count) {
@@ -107,6 +108,7 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gb
     } while (!mp_is_zero(&temp));
 
     last_non_zero = string->len;
+    last_n_digits = *n_digits;
 
     g_string_append_unichar(string, serializer->priv->radix);
 
@@ -121,15 +123,20 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gb
         d = mp_cast_to_int(&digit);
 
         g_string_append_c(string, digits[d]);
+        (*n_digits)++;
 
-        if(d != 0)
+        if(d != 0) {          
             last_non_zero = string->len;
+            last_n_digits = *n_digits;
+        }
         mp_subtract(&temp, &digit, &temp);
     }
 
     /* Strip trailing zeroes */
-    if (!serializer->priv->show_zeroes || serializer->priv->accuracy == 0)
+    if (!serializer->priv->show_zeroes || serializer->priv->accuracy == 0) {
         g_string_truncate(string, last_non_zero);
+        *n_digits = last_n_digits;
+    }
 
     /* Add sign on non-zero values */
     if (strcmp(string->str, "0") != 0 || force_sign) {
@@ -159,7 +166,7 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gb
 
 
 static gchar *
-mp_cast_to_string(MpSerializer *serializer, const MPNumber *x)
+mp_cast_to_string(MpSerializer *serializer, const MPNumber *x, int *n_digits)
 {
     GString *string;
     MPNumber x_real;
@@ -168,7 +175,7 @@ mp_cast_to_string(MpSerializer *serializer, const MPNumber *x)
     string = g_string_sized_new(1024);
 
     mp_real_component(x, &x_real);
-    mp_cast_to_string_real(serializer, &x_real, serializer->priv->base, FALSE, string);
+    mp_cast_to_string_real(serializer, &x_real, serializer->priv->base, FALSE, n_digits, string);
     if (mp_is_complex(x)) {
         GString *s;
         gboolean force_sign = TRUE;
@@ -182,7 +189,7 @@ mp_cast_to_string(MpSerializer *serializer, const MPNumber *x)
         }
 
         s = g_string_sized_new(1024);
-        mp_cast_to_string_real(serializer, &x_im, 10, force_sign, s);
+        mp_cast_to_string_real(serializer, &x_im, 10, force_sign, n_digits, s);
         if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
             /* Ignore */
         }
@@ -214,7 +221,7 @@ mp_cast_to_string(MpSerializer *serializer, const MPNumber *x)
 
 
 static int
-mp_cast_to_exponential_string_real(MpSerializer *serializer, const MPNumber *x, GString *string, gboolean eng_format)
+mp_cast_to_exponential_string_real(MpSerializer *serializer, const MPNumber *x, GString *string, gboolean eng_format, int *n_digits)
 {
     gchar *fixed;
     MPNumber t, z, base, base3, base10, base10inv, mantissa;
@@ -255,7 +262,7 @@ mp_cast_to_exponential_string_real(MpSerializer *serializer, const MPNumber *x, 
         }
     }
 
-    fixed = mp_cast_to_string(serializer, &mantissa);
+    fixed = mp_cast_to_string(serializer, &mantissa, n_digits);
     g_string_append(string, fixed);
     g_free(fixed);
   
@@ -286,7 +293,7 @@ append_exponent(GString *string, int exponent)
 
 
 static gchar *
-mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gboolean eng_format)
+mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gboolean eng_format, int *n_digits)
 {
     GString *string;
     MPNumber x_real;
@@ -296,7 +303,7 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
     string = g_string_sized_new(1024);
 
     mp_real_component(x, &x_real);
-    exponent = mp_cast_to_exponential_string_real(serializer, &x_real, string, eng_format);
+    exponent = mp_cast_to_exponential_string_real(serializer, &x_real, string, eng_format, n_digits);
     append_exponent(string, exponent);
 
     if (mp_is_complex(x)) {
@@ -312,7 +319,7 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
         }
 
         s = g_string_sized_new(1024);
-        exponent = mp_cast_to_exponential_string_real(serializer, &x_im, s, eng_format);
+        exponent = mp_cast_to_exponential_string_real(serializer, &x_im, s, eng_format, n_digits);
         if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
             /* Ignore */
         }
@@ -347,29 +354,26 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
 gchar *
 mp_serializer_to_string(MpSerializer *serializer, const MPNumber *x)
 {
-    gchar *s0, *s1;
+    gchar *s0;
+    int n_digits = 0;
+
     switch(serializer->priv->format) {
     default:
     case MP_DISPLAY_FORMAT_AUTOMATIC:
-        s0 = mp_cast_to_string(serializer, x);
-        s1 = mp_cast_to_exponential_string(serializer, x, FALSE);
-        if (serializer->priv->base != 10 || g_utf8_strlen(s0, -1) < g_utf8_strlen(s1, -1))
-        {
-            g_free(s1);
+        s0 = mp_cast_to_string(serializer, x, &n_digits);
+        if (n_digits < serializer->priv->accuracy * 2)
             return s0;
-        }
-        else
-        {
-            g_free(s0);
-            return s1;
+        else {
+            g_free (s0);
+            return mp_cast_to_exponential_string(serializer, x, FALSE, &n_digits);
         }
         break;
     case MP_DISPLAY_FORMAT_FIXED:
-        return mp_cast_to_string(serializer, x);
+        return mp_cast_to_string(serializer, x, &n_digits);
     case MP_DISPLAY_FORMAT_SCIENTIFIC:
-        return mp_cast_to_exponential_string(serializer, x, FALSE);
+        return mp_cast_to_exponential_string(serializer, x, FALSE, &n_digits);
     case MP_DISPLAY_FORMAT_ENGINEERING:
-        return mp_cast_to_exponential_string(serializer, x, TRUE);
+        return mp_cast_to_exponential_string(serializer, x, TRUE, &n_digits);
     }
 }
 
