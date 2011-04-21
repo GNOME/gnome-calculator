@@ -208,4 +208,5 @@ unit_init(Unit *unit)
 {
     unit->priv = G_TYPE_INSTANCE_GET_PRIVATE(unit, unit_get_type(), UnitPrivate);
     unit->priv->serializer = mp_serializer_new(MP_DISPLAY_FORMAT_AUTOMATIC, 10, 2);
+    mp_serializer_set_leading_digits(unit->priv->serializer, 6);
 }
