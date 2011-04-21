@@ -1006,10 +1006,6 @@ math_equation_insert(MathEquation *equation, const gchar *text)
         return;
     }
 
-    /* Start new equation when entering digits after existing result */
-    if(math_equation_is_result(equation) && g_unichar_isdigit(g_utf8_get_char(text)))
-        gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), "", -1);
-
     /* Can't enter superscript minus after entering digits */
     if (strstr("⁰¹²³⁴⁵⁶⁷⁸⁹", text) != NULL || strcmp("⁻", text) == 0)
         equation->priv->can_super_minus = FALSE;
@@ -1803,6 +1799,7 @@ pre_insert_text_cb(MathEquation  *equation,
                    gpointer       user_data)
 {
     gunichar c;
+    gint cursor;
   
     if (equation->priv->in_reformat)
         return;
@@ -1813,10 +1810,11 @@ pre_insert_text_cb(MathEquation  *equation,
         math_equation_push_undo_stack(equation);
 
     /* Clear result on next digit entered if cursor at end of line */
-    // FIXME Cursor
     c = g_utf8_get_char(text);
+    g_object_get(G_OBJECT(equation), "cursor-position", &cursor, NULL);
     if ((g_unichar_isdigit(c) || c == mp_serializer_get_radix(equation->priv->serializer)) &&
-         math_equation_is_result(equation)) {
+         math_equation_is_result(equation) &&
+         cursor >= gtk_text_buffer_get_char_count(GTK_TEXT_BUFFER(equation))) {
         gtk_text_buffer_set_text(GTK_TEXT_BUFFER(equation), "", -1);
         clear_ans(equation, FALSE);
         gtk_text_buffer_get_end_iter(GTK_TEXT_BUFFER(equation), location);
