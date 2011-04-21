@@ -174,7 +174,8 @@ static void do_conversion(yyscan_t yyscanner, const MPNumber *x, const char *x_u
 %left UNARY_PLUS
 %left tADD tSUBTRACT
 %left tAND tOR tXOR tXNOR
-%left tMULTIPLY tDIVIDE tMOD MULTIPLICATION
+%left tMULTIPLY MULTIPLICATION
+%left tDIVIDE tMOD
 %left tNOT
 %left tROOT tROOT3 tROOT4
 %left <name> tVARIABLE tFUNCTION
@@ -207,6 +208,8 @@ unit:
 
 exp:
   '(' exp ')' {mp_set_from_mp(&$2, &$$);}
+| exp tDIVIDE exp '(' exp ')' {mp_divide(&$1, &$3, &$$); mp_multiply(&$5, &$$, &$$);}
+| exp tMOD exp '(' exp ')' {mp_modulus_divide(&$1, &$3, &$$); mp_multiply(&$5, &$$, &$$);}
 | exp '(' exp ')' {mp_multiply(&$1, &$3, &$$);}
 | tLFLOOR exp tRFLOOR {mp_floor(&$2, &$$);}
 | tLCEILING exp tRCEILING {mp_ceiling(&$2, &$$);}
