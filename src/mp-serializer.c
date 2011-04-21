@@ -28,7 +28,8 @@ enum {
 
 struct MpSerializerPrivate
 {
-    gint accuracy;            /* Number of digits to show */
+    gint leading_digits;      /* Number of digits to show before radix */
+    gint trailing_digits;     /* Number of digits to show after radix */
     MpDisplayFormat format;   /* Number display mode. */
     gint show_tsep;           /* Set if the thousands separator should be shown. */
     gint show_zeroes;         /* Set if trailing zeroes should be shown. */
@@ -44,12 +45,12 @@ struct MpSerializerPrivate
 G_DEFINE_TYPE(MpSerializer, mp_serializer, G_TYPE_OBJECT);
 
 MpSerializer *
-mp_serializer_new(MpDisplayFormat format, int base, int accuracy)
+mp_serializer_new(MpDisplayFormat format, int base, int trailing_digits)
 {
     MpSerializer *serializer = g_object_new(mp_serializer_get_type(), /*"number-format", format,*/ NULL);
     mp_serializer_set_number_format(serializer, format);
     mp_serializer_set_base(serializer, base);
-    mp_serializer_set_accuracy(serializer, accuracy);
+    mp_serializer_set_trailing_digits(serializer, trailing_digits);
     return serializer;
 }
 
@@ -59,7 +60,7 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gb
 {
     static gchar digits[] = "0123456789ABCDEF";
     MPNumber number, integer_component, fractional_component, temp;
-    int i, last_non_zero, last_n_digits;
+    int i, last_non_zero;
 
     if (mp_is_negative(x))
         mp_abs(x, &number);
@@ -68,7 +69,7 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gb
 
     /* Add rounding factor */
     mp_set_from_integer(base, &temp);
-    mp_xpowy_integer(&temp, -(serializer->priv->accuracy+1), &temp);
+    mp_xpowy_integer(&temp, -(serializer->priv->trailing_digits+1), &temp);
     mp_multiply_integer(&temp, base, &temp);
     mp_divide_integer(&temp, 2, &temp);
     mp_add(&number, &temp, &temp);
@@ -108,13 +109,12 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gb
     } while (!mp_is_zero(&temp));
 
     last_non_zero = string->len;
-    last_n_digits = *n_digits;
 
     g_string_append_unichar(string, serializer->priv->radix);
 
     /* Write out the fractional component */
     mp_set_from_mp(&fractional_component, &temp);
-    for (i = serializer->priv->accuracy; i > 0 && !mp_is_zero(&temp); i--) {
+    for (i = serializer->priv->trailing_digits; i > 0 && !mp_is_zero(&temp); i--) {
         int d;
         MPNumber digit;
 
@@ -123,20 +123,15 @@ mp_cast_to_string_real(MpSerializer *serializer, const MPNumber *x, int base, gb
         d = mp_cast_to_int(&digit);
 
         g_string_append_c(string, digits[d]);
-        (*n_digits)++;
 
-        if(d != 0) {          
+        if(d != 0)
             last_non_zero = string->len;
-            last_n_digits = *n_digits;
-        }
         mp_subtract(&temp, &digit, &temp);
     }
 
     /* Strip trailing zeroes */
-    if (!serializer->priv->show_zeroes || serializer->priv->accuracy == 0) {
+    if (!serializer->priv->show_zeroes || serializer->priv->trailing_digits == 0)
         g_string_truncate(string, last_non_zero);
-        *n_digits = last_n_digits;
-    }
 
     /* Add sign on non-zero values */
     if (strcmp(string->str, "0") != 0 || force_sign) {
@@ -180,6 +175,7 @@ mp_cast_to_string(MpSerializer *serializer, const MPNumber *x, int *n_digits)
         GString *s;
         gboolean force_sign = TRUE;
         MPNumber x_im;
+        int n_complex_digits;
 
         mp_imaginary_component(x, &x_im);
 
@@ -189,7 +185,9 @@ mp_cast_to_string(MpSerializer *serializer, const MPNumber *x, int *n_digits)
         }
 
         s = g_string_sized_new(1024);
-        mp_cast_to_string_real(serializer, &x_im, 10, force_sign, n_digits, s);
+        mp_cast_to_string_real(serializer, &x_im, 10, force_sign, &n_complex_digits, s);
+        if (n_complex_digits > *n_digits)
+            *n_digits = n_complex_digits;
         if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
             /* Ignore */
         }
@@ -310,6 +308,7 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
         GString *s;
         gboolean force_sign = TRUE;
         MPNumber x_im;
+        int n_complex_digits = 0;
 
         mp_imaginary_component(x, &x_im);
 
@@ -319,7 +318,9 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
         }
 
         s = g_string_sized_new(1024);
-        exponent = mp_cast_to_exponential_string_real(serializer, &x_im, s, eng_format, n_digits);
+        exponent = mp_cast_to_exponential_string_real(serializer, &x_im, s, eng_format, &n_complex_digits);
+        if (n_complex_digits > *n_digits)
+            *n_digits = n_complex_digits;
         if (strcmp(s->str, "0") == 0 || strcmp(s->str, "+0") == 0 || strcmp(s->str, "−0") == 0) {
             /* Ignore */
         }
@@ -361,7 +362,7 @@ mp_serializer_to_string(MpSerializer *serializer, const MPNumber *x)
     default:
     case MP_DISPLAY_FORMAT_AUTOMATIC:
         s0 = mp_cast_to_string(serializer, x, &n_digits);
-        if (n_digits < serializer->priv->accuracy * 2)
+        if (n_digits <= serializer->priv->leading_digits)
             return s0;
         else {
             g_free (s0);
@@ -463,16 +464,30 @@ mp_serializer_get_show_trailing_zeroes(MpSerializer *serializer)
 
 
 int
-mp_serializer_get_accuracy(MpSerializer *serializer)
+mp_serializer_get_leading_digits(MpSerializer *serializer)
 {
-    return serializer->priv->accuracy;
+    return serializer->priv->leading_digits;
 }
 
 
 void
-mp_serializer_set_accuracy(MpSerializer *serializer, int accuracy)
+mp_serializer_set_leading_digits(MpSerializer *serializer, int leading_digits)
 {
-    serializer->priv->accuracy = accuracy;
+    serializer->priv->leading_digits = leading_digits;
+}
+
+
+int
+mp_serializer_get_trailing_digits(MpSerializer *serializer)
+{
+    return serializer->priv->trailing_digits;
+}
+
+
+void
+mp_serializer_set_trailing_digits(MpSerializer *serializer, int trailing_digits)
+{
+    serializer->priv->trailing_digits = trailing_digits;
 }
 
 
@@ -597,7 +612,8 @@ mp_serializer_init(MpSerializer *serializer)
     serializer->priv->tsep_count = 3;
 
     serializer->priv->base = 10;
-    serializer->priv->accuracy = 9;
+    serializer->priv->leading_digits = 12;
+    serializer->priv->trailing_digits = 9;
     serializer->priv->show_zeroes = FALSE;
     serializer->priv->show_tsep = FALSE;
     serializer->priv->format = MP_DISPLAY_FORMAT_AUTOMATIC;

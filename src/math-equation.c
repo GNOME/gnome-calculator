@@ -513,9 +513,9 @@ math_equation_set_accuracy(MathEquation *equation, gint accuracy)
 {
     g_return_if_fail(equation != NULL);
 
-    if (mp_serializer_get_accuracy(equation->priv->serializer) == accuracy)
+    if (mp_serializer_get_trailing_digits(equation->priv->serializer) == accuracy)
         return;
-    mp_serializer_set_accuracy(equation->priv->serializer, accuracy);
+    mp_serializer_set_trailing_digits(equation->priv->serializer, accuracy);
     reformat_display(equation);
     g_object_notify(G_OBJECT(equation), "accuracy");
 }
@@ -526,7 +526,7 @@ math_equation_get_accuracy(MathEquation *equation)
 {
     g_return_val_if_fail(equation != NULL, 0);
 
-    return mp_serializer_get_accuracy(equation->priv->serializer);
+    return mp_serializer_get_trailing_digits(equation->priv->serializer);
 }
 
 
@@ -1590,7 +1590,7 @@ math_equation_get_property(GObject    *object,
         g_value_set_enum(value, self->priv->number_mode);
         break;
     case PROP_ACCURACY:
-        g_value_set_int(value, mp_serializer_get_accuracy(self->priv->serializer));
+        g_value_set_int(value, mp_serializer_get_trailing_digits(self->priv->serializer));
         break;
     case PROP_SHOW_THOUSANDS_SEPARATORS:
         g_value_set_boolean(value, mp_serializer_get_show_thousands_separators(self->priv->serializer));
