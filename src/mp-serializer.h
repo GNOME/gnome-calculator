@@ -43,7 +43,7 @@ typedef enum {
 
 GType mp_serializer_get_type(void);
 
-MpSerializer *mp_serializer_new(MpDisplayFormat format, int base, int accuracy);
+MpSerializer *mp_serializer_new(MpDisplayFormat format, int base, int trailing_digits);
 
 gchar *mp_serializer_to_string(MpSerializer *serializer, const MPNumber *z);
 gboolean mp_serializer_from_string(MpSerializer *serializer, const gchar *str, MPNumber *z);
@@ -54,8 +54,11 @@ MpDisplayFormat mp_serializer_get_number_format(MpSerializer *serializer);
 void mp_serializer_set_base(MpSerializer *serializer, int base);
 int mp_serializer_get_base(MpSerializer *serializer);
 
-void mp_serializer_set_accuracy(MpSerializer *serializer, int accuracy);
-int mp_serializer_get_accuracy(MpSerializer *serializer);
+void mp_serializer_set_leading_digits(MpSerializer *serializer, int leading_digits);
+int mp_serializer_get_leading_digits(MpSerializer *serializer);
+
+void mp_serializer_set_trailing_digits(MpSerializer *serializer, int trailing_digits);
+int mp_serializer_get_trailing_digits(MpSerializer *serializer);
 
 void mp_serializer_set_radix(MpSerializer *serializer, gunichar radix);
 gunichar mp_serializer_get_radix(MpSerializer *serializer);
