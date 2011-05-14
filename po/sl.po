@@ -10,14 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-03-11 07:13+0000\n"
-"PO-Revision-Date: 2011-03-15 13:46+0100\n"
-"Last-Translator: Andrej Žnidaršič <andrej.znidarsic@gmail.com>\n"
+"POT-Creation-Date: 2011-05-04 09:59+0000\n"
+"PO-Revision-Date: 2011-05-14 10:53+0100\n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -77,7 +77,7 @@ msgstr "Inverzno"
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16
 #: ../data/buttons-financial.ui.h:50
-#: ../src/math-buttons.c:231
+#: ../src/math-buttons.c:224
 msgid "Memory"
 msgstr "Pomnilnik"
 
@@ -170,7 +170,7 @@ msgstr "Izračuna metodo enakomernega časovnega amortiziranja v določenem obdo
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
 #: ../data/buttons-financial.ui.h:30
-#: ../src/math-buttons.c:255
+#: ../src/math-buttons.c:248
 msgid "Compounding Term"
 msgstr "Sestavljanje izraza"
 
@@ -194,7 +194,7 @@ msgstr "Dvojno znižanje vrednosti"
 #. Title of Future Value dialog
 #. Tooltip for the future value button
 #: ../data/buttons-financial.ui.h:40
-#: ../src/math-buttons.c:261
+#: ../src/math-buttons.c:254
 msgid "Future Value"
 msgstr "Prihodnja vrednost"
 
@@ -217,7 +217,7 @@ msgstr "Dobičkonosnost"
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
 #: ../data/buttons-financial.ui.h:48
-#: ../src/math-buttons.c:282
+#: ../src/math-buttons.c:275
 msgid "Gross Profit Margin"
 msgstr "Dobičkonosnost prodaje"
 
@@ -231,7 +231,7 @@ msgstr "Obdobje plačila"
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
 #: ../data/buttons-financial.ui.h:54
-#: ../src/math-buttons.c:273
+#: ../src/math-buttons.c:266
 msgid "Periodic Interest Rate"
 msgstr "Obročna obrestna mera"
 
@@ -245,7 +245,7 @@ msgstr "Obročna obrestna _mera:"
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
 #: ../data/buttons-financial.ui.h:58
-#: ../src/math-buttons.c:279
+#: ../src/math-buttons.c:272
 msgid "Periodic Payment"
 msgstr "Obročno plačevanje"
 
@@ -259,7 +259,7 @@ msgstr "Pmt"
 #. Title of Present Value dialog
 #. Tooltip for the present value button
 #: ../data/buttons-financial.ui.h:62
-#: ../src/math-buttons.c:276
+#: ../src/math-buttons.c:269
 msgid "Present Value"
 msgstr "Sedanja vrednost"
 
@@ -373,21 +373,21 @@ msgstr "Vstavi znak"
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
 #: ../data/buttons-programming.ui.h:16
-#: ../src/math-buttons.c:234
+#: ../src/math-buttons.c:227
 msgid "Insert Character Code"
 msgstr "Vstavi znakovno kodo"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:20
-#: ../src/math-buttons.c:249
+#: ../src/math-buttons.c:242
 msgid "Shift Left"
 msgstr "Premakni levo"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
 #: ../data/buttons-programming.ui.h:22
-#: ../src/math-buttons.c:252
+#: ../src/math-buttons.c:245
 msgid "Shift Right"
 msgstr "Premakni desno"
 
@@ -429,7 +429,7 @@ msgstr "Zapis _števil:"
 
 #. Title of preferences dialog
 #: ../data/preferences.ui.h:11
-#: ../src/math-preferences.c:239
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Možnosti"
 
@@ -457,7 +457,7 @@ msgstr "_Enote kotov:"
 # G:1 K:0 O:0
 #. Title of main window
 #: ../data/gcalctool.desktop.in.h:1
-#: ../src/math-window.c:522
+#: ../src/math-window.c:523
 msgid "Calculator"
 msgstr "Računalo"
 
@@ -563,244 +563,248 @@ msgstr "Vrednost želene enote"
 msgid "Word size"
 msgstr "Velikost besede"
 
-#: ../src/currency-manager.c:20
+#: ../src/currency-manager.c:30
 msgid "UAE Dirham"
 msgstr "emiratski dirham"
 
-#: ../src/currency-manager.c:21
+#: ../src/currency-manager.c:31
 msgid "Australian Dollar"
 msgstr "avstralski dolar"
 
-#: ../src/currency-manager.c:22
+#: ../src/currency-manager.c:32
 msgid "Bulgarian Lev"
 msgstr "bolgarski lev"
 
-#: ../src/currency-manager.c:23
+#: ../src/currency-manager.c:33
 msgid "Bahraini Dinar"
 msgstr "bahrajnski dinar"
 
-#: ../src/currency-manager.c:24
+#: ../src/currency-manager.c:34
 msgid "Brunei Dollar"
 msgstr "brunejski dolar"
 
-#: ../src/currency-manager.c:25
+#: ../src/currency-manager.c:35
 msgid "Brazilian Real"
 msgstr "brazilski real"
 
-#: ../src/currency-manager.c:26
+#: ../src/currency-manager.c:36
 msgid "Botswana Pula"
 msgstr "bocvanska pula"
 
-#: ../src/currency-manager.c:27
+#: ../src/currency-manager.c:37
 msgid "Canadian Dollar"
 msgstr "kanadski dolar"
 
-#: ../src/currency-manager.c:28
+#: ../src/currency-manager.c:38
 msgid "Swiss Franc"
 msgstr "švicarski frank"
 
-#: ../src/currency-manager.c:29
+#: ../src/currency-manager.c:39
 msgid "Chilean Peso"
 msgstr "čilski peso"
 
-#: ../src/currency-manager.c:30
+#: ../src/currency-manager.c:40
 msgid "Chinese Yuan"
 msgstr "kitajski juan renmimbi"
 
-#: ../src/currency-manager.c:31
+#: ../src/currency-manager.c:41
 msgid "Colombian Peso"
 msgstr "kolumbijski peso"
 
-#: ../src/currency-manager.c:32
+#: ../src/currency-manager.c:42
 msgid "Czech Koruna"
 msgstr "češka krona"
 
-#: ../src/currency-manager.c:33
+#: ../src/currency-manager.c:43
 msgid "Danish Krone"
 msgstr "danska krona"
 
-#: ../src/currency-manager.c:34
+#: ../src/currency-manager.c:44
 msgid "Algerian Dinar"
 msgstr "alžirski dinar"
 
-#: ../src/currency-manager.c:35
+#: ../src/currency-manager.c:45
 msgid "Estonian Kroon"
 msgstr "estonska krona"
 
-#: ../src/currency-manager.c:36
+#: ../src/currency-manager.c:46
 msgid "Euro"
 msgstr "evro"
 
-#: ../src/currency-manager.c:37
+#: ../src/currency-manager.c:47
 msgid "Pound Sterling"
 msgstr "britanski funt"
 
-#: ../src/currency-manager.c:38
+#: ../src/currency-manager.c:48
 msgid "Hong Kong Dollar"
 msgstr "hongkonški dolar"
 
-#: ../src/currency-manager.c:39
+#: ../src/currency-manager.c:49
 msgid "Croatian Kuna"
 msgstr "hrvaška kuna"
 
-#: ../src/currency-manager.c:40
+#: ../src/currency-manager.c:50
 msgid "Hungarian Forint"
 msgstr "madžarski forint"
 
-#: ../src/currency-manager.c:41
+#: ../src/currency-manager.c:51
 msgid "Indonesian Rupiah"
 msgstr "indonezijska rupija"
 
-#: ../src/currency-manager.c:42
+#: ../src/currency-manager.c:52
 msgid "Israeli New Shekel"
 msgstr "izraelski novi šekel"
 
-#: ../src/currency-manager.c:43
+#: ../src/currency-manager.c:53
 msgid "Indian Rupee"
 msgstr "indijska rupija"
 
-#: ../src/currency-manager.c:44
+#: ../src/currency-manager.c:54
 msgid "Iranian Rial"
 msgstr "iranski rial"
 
-#: ../src/currency-manager.c:45
+#: ../src/currency-manager.c:55
 msgid "Icelandic Krona"
 msgstr "islandska krona"
 
-#: ../src/currency-manager.c:46
+#: ../src/currency-manager.c:56
 msgid "Japanese Yen"
 msgstr "japonski jen"
 
-#: ../src/currency-manager.c:47
+#: ../src/currency-manager.c:57
 msgid "South Korean Won"
 msgstr "južnokorejski von"
 
-#: ../src/currency-manager.c:48
+#: ../src/currency-manager.c:58
 msgid "Kuwaiti Dinar"
 msgstr "kuvajtski dinar"
 
-#: ../src/currency-manager.c:49
+#: ../src/currency-manager.c:59
 msgid "Kazakhstani Tenge"
 msgstr "kazahstanski tenge"
 
-#: ../src/currency-manager.c:50
+#: ../src/currency-manager.c:60
 msgid "Sri Lankan Rupee"
 msgstr "šrilanška rupija"
 
-#: ../src/currency-manager.c:51
+#: ../src/currency-manager.c:61
 msgid "Lithuanian Litas"
 msgstr "litvanska lita"
 
-#: ../src/currency-manager.c:52
+#: ../src/currency-manager.c:62
 msgid "Latvian Lats"
 msgstr "latvijski lat"
 
-#: ../src/currency-manager.c:53
+#: ../src/currency-manager.c:63
 msgid "Libyan Dinar"
 msgstr "libijski dinar"
 
-#: ../src/currency-manager.c:54
+#: ../src/currency-manager.c:64
 msgid "Mauritian Rupee"
 msgstr "mauricijska rupija"
 
-#: ../src/currency-manager.c:55
+#: ../src/currency-manager.c:65
 msgid "Mexican Peso"
 msgstr "mehiški peso"
 
-#: ../src/currency-manager.c:56
+#: ../src/currency-manager.c:66
 msgid "Malaysian Ringgit"
 msgstr "malezijski ringit"
 
-#: ../src/currency-manager.c:57
+#: ../src/currency-manager.c:67
 msgid "Norwegian Krone"
 msgstr "norveška krona"
 
-#: ../src/currency-manager.c:58
+#: ../src/currency-manager.c:68
 msgid "Nepalese Rupee"
 msgstr "nepalska rupija"
 
-#: ../src/currency-manager.c:59
+#: ../src/currency-manager.c:69
 msgid "New Zealand Dollar"
 msgstr "novozelandski dolar"
 
-#: ../src/currency-manager.c:60
+#: ../src/currency-manager.c:70
 msgid "Omani Rial"
 msgstr "omanski rial"
 
-#: ../src/currency-manager.c:61
+#: ../src/currency-manager.c:71
 msgid "Peruvian Nuevo Sol"
 msgstr "perujski novi sol"
 
-#: ../src/currency-manager.c:62
+#: ../src/currency-manager.c:72
 msgid "Philippine Peso"
 msgstr "filipinski peso"
 
-#: ../src/currency-manager.c:63
+#: ../src/currency-manager.c:73
 msgid "Pakistani Rupee"
 msgstr "pakistanska rupija"
 
-#: ../src/currency-manager.c:64
+#: ../src/currency-manager.c:74
 msgid "Polish Zloty"
 msgstr "polski zlot"
 
-#: ../src/currency-manager.c:65
+#: ../src/currency-manager.c:75
 msgid "Qatari Riyal"
 msgstr "katarski rijal"
 
-#: ../src/currency-manager.c:66
+#: ../src/currency-manager.c:76
 msgid "New Romanian Leu"
 msgstr "romunski novi lev"
 
-#: ../src/currency-manager.c:67
+#: ../src/currency-manager.c:77
 msgid "Russian Rouble"
 msgstr "ruski rubelj"
 
-#: ../src/currency-manager.c:68
+#: ../src/currency-manager.c:78
 msgid "Saudi Riyal"
 msgstr "saudski rijal"
 
-#: ../src/currency-manager.c:69
+#: ../src/currency-manager.c:79
 msgid "Swedish Krona"
 msgstr "švedska krona"
 
-#: ../src/currency-manager.c:70
+#: ../src/currency-manager.c:80
 msgid "Singapore Dollar"
 msgstr "singapurski dolar"
 
-#: ../src/currency-manager.c:71
+#: ../src/currency-manager.c:81
 msgid "Thai Baht"
 msgstr "tajski baht"
 
-#: ../src/currency-manager.c:72
+#: ../src/currency-manager.c:82
 msgid "Tunisian Dinar"
 msgstr "tunizijski dinar"
 
-#: ../src/currency-manager.c:73
+#: ../src/currency-manager.c:83
 msgid "New Turkish Lira"
 msgstr "turška nova lira"
 
-#: ../src/currency-manager.c:74
+#: ../src/currency-manager.c:84
 msgid "T&T Dollar (TTD)"
 msgstr "dolar trinidada in tobaga"
 
-#: ../src/currency-manager.c:75
+#: ../src/currency-manager.c:85
 msgid "US Dollar"
 msgstr "ameriški dolar"
 
-#: ../src/currency-manager.c:76
+#: ../src/currency-manager.c:86
 msgid "Uruguayan Peso"
 msgstr "urogvajski peso"
 
-#: ../src/currency-manager.c:77
+#: ../src/currency-manager.c:87
 msgid "Venezuelan Bolívar"
 msgstr "venezuelski bolívar"
 
-#: ../src/currency-manager.c:78
+#: ../src/currency-manager.c:88
 msgid "South African Rand"
 msgstr "južnoafriški rand"
 
+#: ../src/financial.c:70
+msgid "Error: the number of periods must be positive"
+msgstr "Napaka: število obdobij mora biti določeno s pozitivno vrednostjo"
+
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:77
 #, c-format
 msgid ""
 "Usage:\n"
@@ -810,7 +814,7 @@ msgstr ""
 "  %s - matematični izračun"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:93
+#: ../src/gcalctool.c:85
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -826,7 +830,7 @@ msgstr ""
 "  --help-gtk                      Pokaži GTK+ možnosti"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:104
+#: ../src/gcalctool.c:96
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -846,7 +850,7 @@ msgstr ""
 "  --g-fatal-warnings              Določi vsa opozorila ključna"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:118
+#: ../src/gcalctool.c:110
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -856,306 +860,306 @@ msgstr ""
 "  -s, --solve <equation>          Reši podano enačbo"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:162
+#: ../src/gcalctool.c:154
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Argument --solve zahteva tudi zapis enačbe"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:172
+#: ../src/gcalctool.c:164
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Neznan argument '%s'"
 
 #. Tooltip for the Pi button
-#: ../src/math-buttons.c:103
+#: ../src/math-buttons.c:96
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.c:106
+#: ../src/math-buttons.c:99
 msgid "Euler’s Number"
 msgstr "Eulerjevo število"
 
 # G:12 K:31 O:8
 #. Tooltip for the subscript button
-#: ../src/math-buttons.c:111
+#: ../src/math-buttons.c:104
 msgid "Subscript mode [Alt]"
 msgstr "Podpisani način števil [Alt+številka]"
 
 # G:12 K:31 O:8
 #. Tooltip for the superscript button
-#: ../src/math-buttons.c:114
+#: ../src/math-buttons.c:107
 msgid "Superscript mode [Ctrl]"
 msgstr "Nadpisani način števil [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.c:117
+#: ../src/math-buttons.c:110
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Znanstvena potenca [Ctrl+E]"
 
 # G:1 K:4 O:2
 #. Tooltip for the add button
-#: ../src/math-buttons.c:120
+#: ../src/math-buttons.c:113
 msgid "Add [+]"
 msgstr "Prištej [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.c:123
+#: ../src/math-buttons.c:116
 msgid "Subtract [-]"
 msgstr "Odštej [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.c:126
+#: ../src/math-buttons.c:119
 msgid "Multiply [*]"
 msgstr "Pomnoži [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.c:129
+#: ../src/math-buttons.c:122
 msgid "Divide [/]"
 msgstr "Deli [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.c:132
+#: ../src/math-buttons.c:125
 msgid "Modulus divide"
 msgstr "Ostanek pri deljenju"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.c:135
+#: ../src/math-buttons.c:128
 msgid "Additional Functions"
 msgstr "Dodatne funkcije"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.c:138
+#: ../src/math-buttons.c:131
 msgid "Exponent [^ or **]"
 msgstr "Potenca [^ ali **]"
 
 #. Tooltip for the square button
-#: ../src/math-buttons.c:141
+#: ../src/math-buttons.c:134
 msgid "Square [Ctrl+2]"
 msgstr "Kvadrat [Ctrl+2]"
 
 # G:5 K:12 O:5
 #. Tooltip for the percentage button
-#: ../src/math-buttons.c:144
+#: ../src/math-buttons.c:137
 msgid "Percentage [%]"
 msgstr "Odstotek [%]"
 
 # G:0 K:1 O:0
 #. Tooltip for the factorial button
-#: ../src/math-buttons.c:147
+#: ../src/math-buttons.c:140
 msgid "Factorial [!]"
 msgstr "Fakulteta [!]"
 
 # G:0 K:0 O:2
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.c:150
+#: ../src/math-buttons.c:143
 msgid "Absolute value [|]"
 msgstr "Absolutna vrednost [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.c:153
+#: ../src/math-buttons.c:146
 msgid "Complex argument"
 msgstr "Argument kompleksnega števila"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.c:156
+#: ../src/math-buttons.c:149
 msgid "Complex conjugate"
 msgstr "Kompleksni konjugat"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.c:159
+#: ../src/math-buttons.c:152
 msgid "Root [Ctrl+R]"
 msgstr "Koren [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.c:162
+#: ../src/math-buttons.c:155
 msgid "Square root [Ctrl+R]"
 msgstr "Kvadratni koren [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.c:165
+#: ../src/math-buttons.c:158
 msgid "Logarithm"
 msgstr "Logaritem"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.c:168
+#: ../src/math-buttons.c:161
 msgid "Natural Logarithm"
 msgstr "Naravni logaritem"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.c:171
+#: ../src/math-buttons.c:164
 msgid "Sine"
 msgstr "Sinus"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.c:174
+#: ../src/math-buttons.c:167
 msgid "Cosine"
 msgstr "Kosinus"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.c:177
+#: ../src/math-buttons.c:170
 msgid "Tangent"
 msgstr "Tangens"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.c:180
+#: ../src/math-buttons.c:173
 msgid "Hyperbolic Sine"
 msgstr "Hiperbolični sinus"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.c:183
+#: ../src/math-buttons.c:176
 msgid "Hyperbolic Cosine"
 msgstr "Hiperbolični kosinus"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.c:186
+#: ../src/math-buttons.c:179
 msgid "Hyperbolic Tangent"
 msgstr "Hiperbolični tangens"
 
 # G:1 K:0 O:1
 #. Tooltip for the inverse button
-#: ../src/math-buttons.c:189
+#: ../src/math-buttons.c:182
 msgid "Inverse [Ctrl+I]"
 msgstr "Preobrni [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.c:192
+#: ../src/math-buttons.c:185
 msgid "Boolean AND"
 msgstr "Logični AND"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.c:195
+#: ../src/math-buttons.c:188
 msgid "Boolean OR"
 msgstr "Logični OR"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.c:198
+#: ../src/math-buttons.c:191
 msgid "Boolean Exclusive OR"
 msgstr "Posebni logični OR"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.c:201
+#: ../src/math-buttons.c:194
 msgid "Boolean NOT"
 msgstr "Logični NOT"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:204
-#: ../src/math-buttons.c:1036
+#: ../src/math-buttons.c:197
+#: ../src/math-buttons.c:1041
 msgid "Integer Component"
 msgstr "Celoštevilčna enota"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:207
-#: ../src/math-buttons.c:1038
+#: ../src/math-buttons.c:200
+#: ../src/math-buttons.c:1043
 msgid "Fractional Component"
 msgstr "Enota ulomka"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.c:210
+#: ../src/math-buttons.c:203
 msgid "Real Component"
 msgstr "Realna enota"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.c:213
+#: ../src/math-buttons.c:206
 msgid "Imaginary Component"
 msgstr "Navidezna enota"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.c:216
+#: ../src/math-buttons.c:209
 msgid "Ones' Complement"
 msgstr "Eniški komplement"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.c:219
+#: ../src/math-buttons.c:212
 msgid "Two's Complement"
 msgstr "Dvojiški komplement"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.c:222
+#: ../src/math-buttons.c:215
 msgid "Truncate"
 msgstr "Razdeli"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.c:225
+#: ../src/math-buttons.c:218
 msgid "Start Group [(]"
 msgstr "Začetek skupine [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.c:228
+#: ../src/math-buttons.c:221
 msgid "End Group [)]"
 msgstr "Konec skupine [)]"
 
 # G:1 K:0 O:6
 #. Tooltip for the solve button
-#: ../src/math-buttons.c:237
+#: ../src/math-buttons.c:230
 msgid "Calculate Result"
 msgstr "Izračunaj rezultat"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.c:240
+#: ../src/math-buttons.c:233
 msgid "Factorize [Ctrl+F]"
 msgstr "Fakulteta [Ctrl+I]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.c:243
+#: ../src/math-buttons.c:236
 msgid "Clear Display [Escape]"
 msgstr "Počisti zaslon [Esc]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.c:246
+#: ../src/math-buttons.c:239
 msgid "Undo [Ctrl+Z]"
 msgstr "Povrni [Ctrl+I]"
 
 # G:0 K:0 O:1
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.c:258
+#: ../src/math-buttons.c:251
 msgid "Double Declining Depreciation"
 msgstr "Dvojno znižanje vrednosti"
 
 # G:0 K:1 O:0
 #. Tooltip for the financial term button
-#: ../src/math-buttons.c:264
+#: ../src/math-buttons.c:257
 msgid "Financial Term"
 msgstr "Finančni izraz"
 
 # G:0 K:0 O:1
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.c:267
+#: ../src/math-buttons.c:260
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Znižanje vsote vseh letnic"
 
 # G:0 K:0 O:1
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.c:270
+#: ../src/math-buttons.c:263
 msgid "Straight Line Depreciation"
 msgstr "Znižanje ocene ravne črte"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:660
+#: ../src/math-buttons.c:653
 msgid "Binary"
 msgstr "Dvojiško"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:664
+#: ../src/math-buttons.c:657
 msgid "Octal"
 msgstr "Osmiško"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:668
+#: ../src/math-buttons.c:661
 msgid "Decimal"
 msgstr "Desetiško"
 
 # G:0 K:2 O:1
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:672
+#: ../src/math-buttons.c:665
 msgid "Hexadecimal"
 msgstr "Šestnajstiško"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:946
-#: ../src/math-buttons.c:990
+#: ../src/math-buttons.c:951
+#: ../src/math-buttons.c:995
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1166,8 +1170,8 @@ msgstr[3] "_%d mesta"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:950
-#: ../src/math-buttons.c:994
+#: ../src/math-buttons.c:955
+#: ../src/math-buttons.c:999
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1177,149 +1181,154 @@ msgstr[2] "%d mesti"
 msgstr[3] "%d mesta"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1040
+#: ../src/math-buttons.c:1045
 msgid "Round"
 msgstr "Najbližje celo število števila x"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1042
+#: ../src/math-buttons.c:1047
 msgid "Floor"
 msgstr "Največje celo število, ki je manjše od števila x"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1044
+#: ../src/math-buttons.c:1049
 msgid "Ceiling"
 msgstr "Najmanjše celo število, ki ni manjše od števila x"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1046
+#: ../src/math-buttons.c:1051
 msgid "Sign"
 msgstr "Predznak števila x"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
-#: ../src/math-converter.c:359
+#: ../src/math-converter.c:375
 msgid " in "
 msgstr " v "
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:461
+#: ../src/math-equation.c:458
 msgid "No undo history"
 msgstr "Ni zgodovine razveljavitev"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:486
+#: ../src/math-equation.c:485
 msgid "No redo history"
 msgstr "Ni zgodovine razveljavitve"
 
-#: ../src/math-equation.c:875
+#: ../src/math-equation.c:943
 msgid "No sane value to store"
 msgstr "Ni razumne vrednosti za shranjevanje"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1140
+#: ../src/math-equation.c:1225
 msgid "Overflow. Try a bigger word size"
 msgstr "Prekoračitev. Poskusite z večjo besedo"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1145
+#: ../src/math-equation.c:1230
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Neznana spremenljivka '%s'"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1150
+#: ../src/math-equation.c:1235
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkcija '%s' ni določena"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1155
+#: ../src/math-equation.c:1240
 msgid "Unknown conversion"
 msgstr "Neznana pretvorba"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1164
+#: ../src/math-equation.c:1249
 msgid "Malformed expression"
 msgstr "Napačen izraz"
 
+# G:1 K:0 O:0
+#: ../src/math-equation.c:1263
+msgid "Calculating"
+msgstr "Preračunavanje"
+
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1296
+#: ../src/math-equation.c:1385
 msgid "Need an integer to factorize"
 msgstr "Za faktorizacijo je zahtevana celoštevilčna vrednost"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1363
+#: ../src/math-equation.c:1460
 msgid "No sane value to bitwise shift"
 msgstr "Ni razumne vrednosti za premestitev bitov"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1392
+#: ../src/math-equation.c:1491
 msgid "Displayed value not an integer"
 msgstr "Prikazana vrednost ni celoštevilska vrednost"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1815
+#: ../src/math-equation.c:1916
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:244
+#: ../src/math-preferences.c:236
 msgid "_Close"
 msgstr "_Zapri"
 
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:254
-#: ../src/unit-manager.c:43
+#: ../src/math-preferences.c:246
+#: ../src/unit-manager.c:54
 msgid "Degrees"
 msgstr "Stopinje"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:258
-#: ../src/unit-manager.c:44
+#: ../src/math-preferences.c:250
+#: ../src/unit-manager.c:55
 msgid "Radians"
 msgstr "Radiani"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:262
-#: ../src/unit-manager.c:45
+#: ../src/math-preferences.c:254
+#: ../src/unit-manager.c:56
 msgid "Gradians"
 msgstr "Gradiani"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:264
 msgid "Automatic"
 msgstr "Samodejno"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:268
 msgid "Fixed"
 msgstr "Določeno"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:280
+#: ../src/math-preferences.c:272
 msgid "Scientific"
 msgstr "Znanstveni"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:284
+#: ../src/math-preferences.c:276
 msgid "Engineering"
 msgstr "Inženirstvo"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:295
+#: ../src/math-preferences.c:287
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "Pokaži %d decimalnih _mest"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
+#: ../src/math-window.c:172
 msgid "Unable to open help file"
 msgstr "Ni mogoče odpreti datoteke pomoči"
 
 #. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:203
+#: ../src/math-window.c:204
 msgid "translator-credits"
 msgstr ""
 "Andraž Tori <andraz.tori1@guest.arnes.si>\n"
@@ -1327,7 +1336,7 @@ msgstr ""
 "Matej Urbančič <mateju@svn.gnome.org>"
 
 #. The license this software is under (GPL2+)
-#: ../src/math-window.c:206
+#: ../src/math-window.c:207
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1357,893 +1366,907 @@ msgstr ""
 
 # G:8 K:0 O:0
 #. Program name in the about dialog
-#: ../src/math-window.c:223
+#: ../src/math-window.c:224
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
 #. Copyright notice in the about dialog
-#: ../src/math-window.c:227
+#: ../src/math-window.c:228
 msgid "© 1986–2010 The Gcalctool authors"
 msgstr "© 1986-2010 Avtorji programa Gcalctool"
 
 #. Short description in the about dialog
-#: ../src/math-window.c:231
+#: ../src/math-window.c:232
 msgid "Calculator with financial and scientific modes."
 msgstr "Računalo z različnimi načini delovanja."
 
 # G:0 K:4 O:1
 #. Calculator menu
-#: ../src/math-window.c:357
+#: ../src/math-window.c:358
 msgid "_Calculator"
 msgstr "_Računalo"
 
 #. Mode menu
-#: ../src/math-window.c:359
+#: ../src/math-window.c:360
 msgid "_Mode"
 msgstr "_Način"
 
 #. Help menu label
-#: ../src/math-window.c:361
+#: ../src/math-window.c:362
 msgid "_Help"
 msgstr "Pomo_č"
 
 # G:0 K:1 O:0
 #. Basic menu label
-#: ../src/math-window.c:363
+#: ../src/math-window.c:364
 msgid "_Basic"
 msgstr "_Osnovno"
 
 # G:0 K:1 O:0
 #. Advanced menu label
-#: ../src/math-window.c:365
+#: ../src/math-window.c:366
 msgid "_Advanced"
 msgstr "_Napredno"
 
 # G:0 K:1 O:0
 #. Financial menu label
-#: ../src/math-window.c:367
+#: ../src/math-window.c:368
 msgid "_Financial"
 msgstr "_Finančni"
 
 #. Programming menu label
-#: ../src/math-window.c:369
+#: ../src/math-window.c:370
 msgid "_Programming"
 msgstr "_Programiranje"
 
 #. Help>Contents menu label
-#: ../src/math-window.c:371
+#: ../src/math-window.c:372
 msgid "_Contents"
 msgstr "_Vsebina"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/mp-binary.c:122
+#: ../src/mp-binary.c:115
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Logični AND je določen le za pozitivna cela števila"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/mp-binary.c:135
+#: ../src/mp-binary.c:128
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Logični OR je določen le za pozitivna cela števila"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:148
+#: ../src/mp-binary.c:141
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Logični XOR je določen le za pozitivna cela števila"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:163
+#: ../src/mp-binary.c:156
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Logični NOT je določen le za pozitivna cela števila"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/mp-binary.c:194
+#: ../src/mp-binary.c:187
 msgid "Shift is only possible on integer values"
 msgstr "Zamik je mogoč le pri celoštevilčnih vrednostih"
 
 #. Translators: Error display when attempting to take argument of zero
-#: ../src/mp.c:156
+#: ../src/mp.c:148
 msgid "Argument not defined for zero"
 msgstr "Argument števila nič ni določen"
 
-#: ../src/mp.c:307
+#: ../src/mp.c:299
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Prekoračitev: rezultata ni mogoče izračunati"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:652
-#: ../src/mp.c:684
-#: ../src/mp.c:1618
+#: ../src/mp.c:644
+#: ../src/mp.c:676
+#: ../src/mp.c:1610
 msgid "Division by zero is undefined"
 msgstr "Deljenje z nič ni določeno"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1289
-#: ../src/mp.c:1326
+#: ../src/mp.c:1281
+#: ../src/mp.c:1318
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritem vrednosti nič ni določen"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1691
-#: ../src/mp.c:2006
+#: ../src/mp.c:1685
+#: ../src/mp.c:1999
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Potenciranje vrednosti nič ni določeno za negativne potence"
 
-#: ../src/mp.c:1716
+#: ../src/mp.c:1709
 msgid "Reciprocal of zero is undefined"
 msgstr "Obratna vrednost števila nič ni določena"
 
-#: ../src/mp.c:1801
+#: ../src/mp.c:1794
 msgid "Root must be non-zero"
 msgstr "Koren ne sme biti vrednosti nič"
 
-#: ../src/mp.c:1819
+#: ../src/mp.c:1812
 msgid "Negative root of zero is undefined"
 msgstr "Negativni koren vrednosti nič ni določen"
 
-#: ../src/mp.c:1825
+#: ../src/mp.c:1818
 msgid "nth root of negative number is undefined for even n"
 msgstr "n-ti koren negativnega števila ni določen za sode vrednosti n"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1946
+#: ../src/mp.c:1939
 msgid "Factorial is only defined for natural numbers"
 msgstr "Fakulteta je določena le za naravna števila"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1966
+#: ../src/mp.c:1959
 msgid "Modulus division is only defined for integers"
 msgstr "Deljenje z ostankom je določeno le za cela števila"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:318
+#: ../src/mp-trigonometric.c:310
 msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "Tangenta ni določena za kote, ki so večkratniki n (180°) od π∕2 (90°) naprej"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:363
+#: ../src/mp-trigonometric.c:355
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Inverzni sinus ni določen za vrednosti izven območja [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:380
+#: ../src/mp-trigonometric.c:372
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Inverzni kosinus ni določen za vrednosti izven območja [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:599
+#: ../src/mp-trigonometric.c:591
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "Inverzni hiperbolični kosinus ni določen za vrednosti manjše od ena"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:623
+#: ../src/mp-trigonometric.c:615
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "Inverzna hiperbolična tangenta ni določena za vrednosti izven območja [-1, 1]"
 
-#: ../src/unit-manager.c:43
+#: ../src/unit-manager.c:54
 #, c-format
 msgctxt "unit-format"
 msgid "%s degrees"
 msgstr "%s stopinj"
 
-#: ../src/unit-manager.c:43
+#: ../src/unit-manager.c:54
 msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "stopinja,stopinj,˚"
 
-#: ../src/unit-manager.c:44
+#: ../src/unit-manager.c:55
 #, c-format
 msgctxt "unit-format"
 msgid "%s radians"
 msgstr "%s radianov"
 
-#: ../src/unit-manager.c:44
+#: ../src/unit-manager.c:55
 msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radian,radiani,rad"
 
-#: ../src/unit-manager.c:45
+#: ../src/unit-manager.c:56
 #, c-format
 msgctxt "unit-format"
 msgid "%s gradians"
 msgstr "%s gradianov"
 
-#: ../src/unit-manager.c:45
+#: ../src/unit-manager.c:56
 msgctxt "unit-symbols"
 msgid "gradian,gradians,grad"
 msgstr "gradian,gradiani grad"
 
-#: ../src/unit-manager.c:46
+#: ../src/unit-manager.c:57
 msgid "Parsecs"
 msgstr "parseki"
 
-#: ../src/unit-manager.c:46
+#: ../src/unit-manager.c:57
 #, c-format
 msgctxt "unit-format"
 msgid "%s pc"
 msgstr "%s pc"
 
-#: ../src/unit-manager.c:46
+#: ../src/unit-manager.c:57
 msgctxt "unit-symbols"
 msgid "parsec,parsecs,pc"
 msgstr "parsek,parseki,pc"
 
-#: ../src/unit-manager.c:47
+#: ../src/unit-manager.c:58
 msgid "Light Years"
 msgstr "svetlobna leta"
 
-#: ../src/unit-manager.c:47
+#: ../src/unit-manager.c:58
 #, c-format
 msgctxt "unit-format"
 msgid "%s ly"
 msgstr "%s slet"
 
-#: ../src/unit-manager.c:47
+#: ../src/unit-manager.c:58
 msgctxt "unit-symbols"
 msgid "lightyear,lightyears,ly"
 msgstr "svetlobno leto, svetlobnih let,sl"
 
-#: ../src/unit-manager.c:48
+#: ../src/unit-manager.c:59
 msgid "Astronomical Units"
 msgstr "Astronomske enote"
 
-#: ../src/unit-manager.c:48
+#: ../src/unit-manager.c:59
 #, c-format
 msgctxt "unit-format"
 msgid "%s au"
 msgstr "%s ae"
 
-#: ../src/unit-manager.c:48
+#: ../src/unit-manager.c:59
 msgctxt "unit-symbols"
 msgid "au"
 msgstr "ae"
 
-#: ../src/unit-manager.c:49
+#: ../src/unit-manager.c:60
 msgid "Nautical Miles"
 msgstr "pomorska milje"
 
-#: ../src/unit-manager.c:49
-#: ../src/unit-manager.c:61
+#: ../src/unit-manager.c:60
 #, c-format
 msgctxt "unit-format"
-msgid "%s nm"
+msgid "%s nmi"
 msgstr "%s nm"
 
-#: ../src/unit-manager.c:49
+#: ../src/unit-manager.c:60
 msgctxt "unit-symbols"
-msgid "nm"
+msgid "nmi"
 msgstr "nm"
 
-#: ../src/unit-manager.c:50
+#: ../src/unit-manager.c:61
 msgid "Miles"
 msgstr "milje"
 
-#: ../src/unit-manager.c:50
+#: ../src/unit-manager.c:61
 #, c-format
 msgctxt "unit-format"
 msgid "%s mi"
 msgstr "%s mi"
 
-#: ../src/unit-manager.c:50
+#: ../src/unit-manager.c:61
 msgctxt "unit-symbols"
 msgid "mile,miles,mi"
 msgstr "milja,milje,mi"
 
-#: ../src/unit-manager.c:51
+#: ../src/unit-manager.c:62
 msgid "Kilometers"
 msgstr "kilometri"
 
-#: ../src/unit-manager.c:51
+#: ../src/unit-manager.c:62
 #, c-format
 msgctxt "unit-format"
 msgid "%s km"
 msgstr "%s km"
 
-#: ../src/unit-manager.c:51
+#: ../src/unit-manager.c:62
 msgctxt "unit-symbols"
 msgid "kilometer,kilometers,km,kms"
 msgstr "kilometer,kilometri, km"
 
-#: ../src/unit-manager.c:52
+#: ../src/unit-manager.c:63
 msgid "Cables"
 msgstr "kabli"
 
-#: ../src/unit-manager.c:52
+#: ../src/unit-manager.c:63
 #, c-format
 msgctxt "unit-format"
 msgid "%s cb"
 msgstr "%s cb"
 
-#: ../src/unit-manager.c:52
+#: ../src/unit-manager.c:63
 msgctxt "unit-symbols"
 msgid "cable,cables,cb"
 msgstr "kabel,kabla,kb,cb"
 
-#: ../src/unit-manager.c:53
+#: ../src/unit-manager.c:64
 msgid "Fathoms"
 msgstr "seženj"
 
-#: ../src/unit-manager.c:53
+#: ../src/unit-manager.c:64
 #, c-format
 msgctxt "unit-format"
 msgid "%s ftm"
 msgstr "%s sžn"
 
-#: ../src/unit-manager.c:53
+#: ../src/unit-manager.c:64
 msgctxt "unit-symbols"
 msgid "fathom,fathoms,ftm"
 msgstr "seženj,sežnji,sžn"
 
-#: ../src/unit-manager.c:54
+#: ../src/unit-manager.c:65
 msgid "Meters"
 msgstr "metri"
 
-#: ../src/unit-manager.c:54
+#: ../src/unit-manager.c:65
 #, c-format
 msgctxt "unit-format"
 msgid "%s m"
 msgstr "%s m"
 
-#: ../src/unit-manager.c:54
+#: ../src/unit-manager.c:65
 msgctxt "unit-symbols"
 msgid "meter,meters,m"
 msgstr "meter,metri,m"
 
-#: ../src/unit-manager.c:55
+#: ../src/unit-manager.c:66
 msgid "Yards"
 msgstr "jardi"
 
-#: ../src/unit-manager.c:55
+#: ../src/unit-manager.c:66
 #, c-format
 msgctxt "unit-format"
 msgid "%s yd"
 msgstr "%s yd"
 
-#: ../src/unit-manager.c:55
+#: ../src/unit-manager.c:66
 msgctxt "unit-symbols"
 msgid "yard,yards,yd"
 msgstr "jard,jardi,yd"
 
-#: ../src/unit-manager.c:56
+#: ../src/unit-manager.c:67
 msgid "Feet"
 msgstr "čevlji"
 
-#: ../src/unit-manager.c:56
+#: ../src/unit-manager.c:67
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft"
 msgstr "%s ft"
 
-#: ../src/unit-manager.c:56
+#: ../src/unit-manager.c:67
 msgctxt "unit-symbols"
 msgid "foot,feet,ft"
 msgstr "čevelj,čevlji,ft"
 
-#: ../src/unit-manager.c:57
+#: ../src/unit-manager.c:68
 msgid "Inches"
 msgstr "cole"
 
-#: ../src/unit-manager.c:57
+#: ../src/unit-manager.c:68
 #, c-format
 msgctxt "unit-format"
 msgid "%s in"
 msgstr "%s \""
 
-#: ../src/unit-manager.c:57
+#: ../src/unit-manager.c:68
 msgctxt "unit-symbols"
 msgid "inch,inches,in"
 msgstr "palec, palcev, cola, col, \""
 
-#: ../src/unit-manager.c:58
+#: ../src/unit-manager.c:69
 msgid "Centimeters"
 msgstr "centimetri"
 
-#: ../src/unit-manager.c:58
+#: ../src/unit-manager.c:69
 #, c-format
 msgctxt "unit-format"
 msgid "%s cm"
 msgstr "%s cm"
 
-#: ../src/unit-manager.c:58
+#: ../src/unit-manager.c:69
 msgctxt "unit-symbols"
 msgid "centimeter,centimeters,cm,cms"
 msgstr "centimeter,centimetri,cm"
 
-#: ../src/unit-manager.c:59
+#: ../src/unit-manager.c:70
 msgid "Millimeters"
 msgstr "milimetri"
 
-#: ../src/unit-manager.c:59
+#: ../src/unit-manager.c:70
 #, c-format
 msgctxt "unit-format"
 msgid "%s mm"
 msgstr "%s mm"
 
-#: ../src/unit-manager.c:59
+#: ../src/unit-manager.c:70
 msgctxt "unit-symbols"
 msgid "millimeter,millimeters,mm"
 msgstr "milimeter,milimetri,mm"
 
-#: ../src/unit-manager.c:60
+#: ../src/unit-manager.c:71
 msgid "Micrometers"
 msgstr "mikrometri"
 
-#: ../src/unit-manager.c:60
+#: ../src/unit-manager.c:71
 #, c-format
 msgctxt "unit-format"
 msgid "%s μm"
 msgstr "%s μm"
 
-#: ../src/unit-manager.c:60
+#: ../src/unit-manager.c:71
 msgctxt "unit-symbols"
 msgid "micrometer,micrometers,um"
 msgstr "mikrometer,mikrometri,um"
 
-#: ../src/unit-manager.c:61
+#: ../src/unit-manager.c:72
 msgid "Nanometers"
 msgstr "nanometri"
 
-#: ../src/unit-manager.c:61
-msgctxt "unit-symbols"
-msgid "nanometer,nanometers"
-msgstr "nanometer,nanometri"
+#: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
 
-#: ../src/unit-manager.c:62
+#: ../src/unit-manager.c:72
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "nanometer,nanometri,nm"
+
+#: ../src/unit-manager.c:73
 msgid "Hectares"
 msgstr "hektari"
 
-#: ../src/unit-manager.c:62
+#: ../src/unit-manager.c:73
 #, c-format
 msgctxt "unit-format"
 msgid "%s ha"
 msgstr "%s ha"
 
-#: ../src/unit-manager.c:62
+#: ../src/unit-manager.c:73
 msgctxt "unit-symbols"
 msgid "hectare,hectares,ha"
 msgstr "hektar,hektarji,ha"
 
-#: ../src/unit-manager.c:63
+#: ../src/unit-manager.c:74
 msgid "Acres"
 msgstr "akri"
 
-#: ../src/unit-manager.c:63
+#: ../src/unit-manager.c:74
 #, c-format
 msgctxt "unit-format"
 msgid "%s acres"
 msgstr "%s akrov"
 
-#: ../src/unit-manager.c:63
+#: ../src/unit-manager.c:74
 msgctxt "unit-symbols"
 msgid "acre,acres"
 msgstr "aker,akri"
 
-#: ../src/unit-manager.c:64
-msgid "Square Meter"
-msgstr "kvadratni meter"
+#: ../src/unit-manager.c:75
+msgid "Square Meters"
+msgstr "kvadratni metri"
 
-#: ../src/unit-manager.c:64
+#: ../src/unit-manager.c:75
 #, c-format
 msgctxt "unit-format"
 msgid "%s m²"
 msgstr "%s m²"
 
-#: ../src/unit-manager.c:64
+#: ../src/unit-manager.c:75
 msgctxt "unit-symbols"
 msgid "m²"
 msgstr "m²"
 
-#: ../src/unit-manager.c:65
-msgid "Square Centimeter"
-msgstr "kvadratni centimeter"
+#: ../src/unit-manager.c:76
+msgid "Square Centimeters"
+msgstr "kvadratni centimetri"
 
-#: ../src/unit-manager.c:65
+#: ../src/unit-manager.c:76
 #, c-format
 msgctxt "unit-format"
 msgid "%s cm²"
 msgstr "%s cm²"
 
-#: ../src/unit-manager.c:65
+#: ../src/unit-manager.c:76
 msgctxt "unit-symbols"
 msgid "cm²"
 msgstr "cm²"
 
-#: ../src/unit-manager.c:66
-msgid "Square Millimeter"
-msgstr "kvadratni milimeter"
+#: ../src/unit-manager.c:77
+msgid "Square Millimeters"
+msgstr "kvadratni milimetri"
 
-#: ../src/unit-manager.c:66
+#: ../src/unit-manager.c:77
 #, c-format
 msgctxt "unit-format"
 msgid "%s mm²"
 msgstr "%s mm²"
 
-#: ../src/unit-manager.c:66
+#: ../src/unit-manager.c:77
 msgctxt "unit-symbols"
 msgid "mm²"
 msgstr "mm²"
 
-#: ../src/unit-manager.c:67
+#: ../src/unit-manager.c:78
 msgid "Cubic Meters"
 msgstr "kubični meter"
 
-#: ../src/unit-manager.c:67
+#: ../src/unit-manager.c:78
 #, c-format
 msgctxt "unit-format"
 msgid "%s m³"
 msgstr "%s m³"
 
-#: ../src/unit-manager.c:67
+#: ../src/unit-manager.c:78
 msgctxt "unit-symbols"
 msgid "m³"
 msgstr "m³"
 
-#: ../src/unit-manager.c:68
+#: ../src/unit-manager.c:79
 msgid "Gallons"
 msgstr "galona"
 
-#: ../src/unit-manager.c:68
+#: ../src/unit-manager.c:79
 #, c-format
 msgctxt "unit-format"
 msgid "%s gal"
 msgstr "%s gal"
 
-#: ../src/unit-manager.c:68
+#: ../src/unit-manager.c:79
 msgctxt "unit-symbols"
 msgid "gallon,gallons,gal"
 msgstr "galona,galone,gal"
 
-#: ../src/unit-manager.c:69
+#: ../src/unit-manager.c:80
 msgid "Litres"
 msgstr "Litri"
 
-#: ../src/unit-manager.c:69
+#: ../src/unit-manager.c:80
 #, c-format
 msgctxt "unit-format"
 msgid "%s L"
 msgstr "%s L"
 
-#: ../src/unit-manager.c:69
+#: ../src/unit-manager.c:80
 msgctxt "unit-symbols"
 msgid "litre,litres,liter,liters,L"
 msgstr "liter,litri,L"
 
-#: ../src/unit-manager.c:70
+#: ../src/unit-manager.c:81
 msgid "Quarts"
 msgstr "kvart"
 
-#: ../src/unit-manager.c:70
+#: ../src/unit-manager.c:81
 #, c-format
 msgctxt "unit-format"
 msgid "%s qt"
 msgstr "%s qt"
 
-#: ../src/unit-manager.c:70
+#: ../src/unit-manager.c:81
 msgctxt "unit-symbols"
 msgid "quart,quarts,qt"
 msgstr "kvart,kvarti,qt"
 
-#: ../src/unit-manager.c:71
+#: ../src/unit-manager.c:82
 msgid "Pints"
 msgstr "pinte"
 
-#: ../src/unit-manager.c:71
+#: ../src/unit-manager.c:82
 #, c-format
 msgctxt "unit-format"
 msgid "%s pt"
 msgstr "%s pt"
 
-#: ../src/unit-manager.c:71
+#: ../src/unit-manager.c:82
 msgctxt "unit-symbols"
 msgid "pint,pints,pt"
 msgstr "pinta,pinte,pt"
 
-#: ../src/unit-manager.c:72
+#: ../src/unit-manager.c:83
 msgid "Millilitres"
 msgstr "mililitri"
 
-#: ../src/unit-manager.c:72
+#: ../src/unit-manager.c:83
 #, c-format
 msgctxt "unit-format"
 msgid "%s mL"
 msgstr "%s mL"
 
-#: ../src/unit-manager.c:72
+#: ../src/unit-manager.c:83
 msgctxt "unit-symbols"
 msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "milliliter,millilitri,mL,cm³"
 
-#: ../src/unit-manager.c:73
-msgid "Microlitre"
+#: ../src/unit-manager.c:84
+msgid "Microlitres"
 msgstr "mikrolitri"
 
-#: ../src/unit-manager.c:73
+#: ../src/unit-manager.c:84
 #, c-format
 msgctxt "unit-format"
 msgid "%s μL"
 msgstr "%s μL"
 
-#: ../src/unit-manager.c:73
+#: ../src/unit-manager.c:84
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
 msgstr "mm³, μL"
 
-#: ../src/unit-manager.c:74
+#: ../src/unit-manager.c:85
 msgid "Tonnes"
 msgstr "tone"
 
-#: ../src/unit-manager.c:74
+#: ../src/unit-manager.c:85
 #, c-format
 msgctxt "unit-format"
 msgid "%s T"
 msgstr "%s T"
 
-#: ../src/unit-manager.c:74
+#: ../src/unit-manager.c:85
 msgctxt "unit-symbols"
 msgid "tonne,tonnes"
 msgstr "tona,tone"
 
-#: ../src/unit-manager.c:75
+#: ../src/unit-manager.c:86
 msgid "Kilograms"
 msgstr "kilogrami"
 
-#: ../src/unit-manager.c:75
+#: ../src/unit-manager.c:86
 #, c-format
 msgctxt "unit-format"
 msgid "%s kg"
 msgstr "%s kg"
 
-#: ../src/unit-manager.c:75
+#: ../src/unit-manager.c:86
 msgctxt "unit-symbols"
 msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgstr "kilogram, kilogrami,kg"
 
-#: ../src/unit-manager.c:76
+#: ../src/unit-manager.c:87
 msgid "Pounds"
 msgstr "funti"
 
-#: ../src/unit-manager.c:76
+#: ../src/unit-manager.c:87
 #, c-format
 msgctxt "unit-format"
 msgid "%s lb"
 msgstr "%s lb"
 
-#: ../src/unit-manager.c:76
+#: ../src/unit-manager.c:87
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb"
 msgstr "funt,funti,lb"
 
-#: ../src/unit-manager.c:77
+#: ../src/unit-manager.c:88
 msgid "Ounces"
 msgstr "unče"
 
-#: ../src/unit-manager.c:77
+#: ../src/unit-manager.c:88
 #, c-format
 msgctxt "unit-format"
 msgid "%s oz"
 msgstr "%s unč"
 
-#: ../src/unit-manager.c:77
+#: ../src/unit-manager.c:88
 msgctxt "unit-symbols"
 msgid "ounce,ounces,oz"
 msgstr "unča,unče,oz"
 
-#: ../src/unit-manager.c:78
+#: ../src/unit-manager.c:89
 msgid "Grams"
 msgstr "grami"
 
-#: ../src/unit-manager.c:78
+#: ../src/unit-manager.c:89
 #, c-format
 msgctxt "unit-format"
 msgid "%s g"
 msgstr "%s g"
 
-#: ../src/unit-manager.c:78
+#: ../src/unit-manager.c:89
 msgctxt "unit-symbols"
 msgid "gram,grams,gramme,grammes,g"
 msgstr "gram,grami,g"
 
-#: ../src/unit-manager.c:79
+#: ../src/unit-manager.c:90
 msgid "Years"
 msgstr "leta"
 
-#: ../src/unit-manager.c:79
+#: ../src/unit-manager.c:90
 #, c-format
 msgctxt "unit-format"
 msgid "%s years"
 msgstr "%s let"
 
-#: ../src/unit-manager.c:79
+#: ../src/unit-manager.c:90
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "leto,leta"
 
-#: ../src/unit-manager.c:80
+#: ../src/unit-manager.c:91
 msgid "Days"
 msgstr "dnevi"
 
-#: ../src/unit-manager.c:80
+#: ../src/unit-manager.c:91
 #, c-format
 msgctxt "unit-format"
 msgid "%s days"
 msgstr "%s dni"
 
-#: ../src/unit-manager.c:80
+#: ../src/unit-manager.c:91
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "dan,dnevi"
 
-#: ../src/unit-manager.c:81
+#: ../src/unit-manager.c:92
 msgid "Hours"
 msgstr "ure"
 
-#: ../src/unit-manager.c:81
+#: ../src/unit-manager.c:92
 #, c-format
 msgctxt "unit-format"
 msgid "%s hours"
 msgstr "%s ur"
 
-#: ../src/unit-manager.c:81
+#: ../src/unit-manager.c:92
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "ura,ure"
 
-#: ../src/unit-manager.c:82
+#: ../src/unit-manager.c:93
 msgid "Minutes"
 msgstr "minute"
 
-#: ../src/unit-manager.c:82
+#: ../src/unit-manager.c:93
 #, c-format
 msgctxt "unit-format"
 msgid "%s minutes"
 msgstr "%s minut"
 
-#: ../src/unit-manager.c:82
+#: ../src/unit-manager.c:93
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "minuta, minute"
 
-#: ../src/unit-manager.c:83
+#: ../src/unit-manager.c:94
 msgid "Seconds"
 msgstr "sekunde"
 
-#: ../src/unit-manager.c:83
+#: ../src/unit-manager.c:94
 #, c-format
 msgctxt "unit-format"
 msgid "%s s"
 msgstr "%s s"
 
-#: ../src/unit-manager.c:83
+#: ../src/unit-manager.c:94
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "sekunda, sekunde, s"
 
-#: ../src/unit-manager.c:84
+#: ../src/unit-manager.c:95
 msgid "Milliseconds"
 msgstr "milisekunde"
 
-#: ../src/unit-manager.c:84
+#: ../src/unit-manager.c:95
 #, c-format
 msgctxt "unit-format"
 msgid "%s ms"
 msgstr "%s ms"
 
-#: ../src/unit-manager.c:84
+#: ../src/unit-manager.c:95
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "milisekunda, milisekunde, ms"
 
-#: ../src/unit-manager.c:85
+#: ../src/unit-manager.c:96
 msgid "Microseconds"
 msgstr "mikrosekunde"
 
-#: ../src/unit-manager.c:85
+#: ../src/unit-manager.c:96
 #, c-format
 msgctxt "unit-format"
 msgid "%s μs"
 msgstr "%s μs"
 
-#: ../src/unit-manager.c:85
+#: ../src/unit-manager.c:96
 msgctxt "unit-symbols"
-msgid "microsecond,microseconds,us"
-msgstr "mikrosekunda, mikrosekunde, us"
+msgid "microsecond,microseconds,us,μs"
+msgstr "mikrosekunda, mikrosekunde, μs"
 
-#: ../src/unit-manager.c:86
+#: ../src/unit-manager.c:97
 msgid "Celcius"
 msgstr "Celzijeva lestvica"
 
-#: ../src/unit-manager.c:86
+#: ../src/unit-manager.c:97
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚C"
+msgid "%s ˚C"
 msgstr "%s ˚C"
 
-#: ../src/unit-manager.c:86
+#: ../src/unit-manager.c:97
 msgctxt "unit-symbols"
 msgid "degC,˚C"
 msgstr "stopinj C, ˚C"
 
-#: ../src/unit-manager.c:87
+#: ../src/unit-manager.c:98
 msgid "Farenheit"
 msgstr "Farenheitova lestvica"
 
-#: ../src/unit-manager.c:87
+#: ../src/unit-manager.c:98
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚F"
+msgid "%s ˚F"
 msgstr "%s ˚F"
 
-#: ../src/unit-manager.c:87
+#: ../src/unit-manager.c:98
 msgctxt "unit-symbols"
 msgid "degF,˚F"
 msgstr "stopinj F, ˚F"
 
-#: ../src/unit-manager.c:88
+#: ../src/unit-manager.c:99
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: ../src/unit-manager.c:88
+#: ../src/unit-manager.c:99
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚K"
+msgid "%s K"
 msgstr "%s K"
 
-#: ../src/unit-manager.c:88
+#: ../src/unit-manager.c:99
 msgctxt "unit-symbols"
-msgid "degK,˚K"
-msgstr "stopinj K, °K"
+msgid "K"
+msgstr "K"
 
-#: ../src/unit-manager.c:89
+#: ../src/unit-manager.c:100
 msgid "Rankine"
 msgstr "Rankinova lestvica"
 
-#: ../src/unit-manager.c:89
+#: ../src/unit-manager.c:100
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚R"
+msgid "%s ˚R"
 msgstr "%s ˚R"
 
-#: ../src/unit-manager.c:89
+#: ../src/unit-manager.c:100
 msgctxt "unit-symbols"
-msgid "degR,˚R"
+msgid "degR,˚R,˚Ra"
 msgstr "stopinj R, ˚R"
 
-#: ../src/unit-manager.c:98
+#: ../src/unit-manager.c:109
 msgid "Angle"
 msgstr "Kot"
 
-#: ../src/unit-manager.c:99
+#: ../src/unit-manager.c:110
 msgid "Length"
 msgstr "Dolžina"
 
-#: ../src/unit-manager.c:100
+#: ../src/unit-manager.c:111
 msgid "Area"
 msgstr "Območje"
 
-#: ../src/unit-manager.c:101
+#: ../src/unit-manager.c:112
 msgid "Volume"
 msgstr "Prostornina"
 
-#: ../src/unit-manager.c:102
+#: ../src/unit-manager.c:113
 msgid "Weight"
 msgstr "Teža"
 
-#: ../src/unit-manager.c:103
+#: ../src/unit-manager.c:114
 msgid "Duration"
 msgstr "Trajanje"
 
-#: ../src/unit-manager.c:104
+#: ../src/unit-manager.c:115
 msgid "Temperature"
 msgstr "Temperatura"
 
-#: ../src/unit-manager.c:116
+#: ../src/unit-manager.c:127
 msgid "Currency"
 msgstr "Valuta"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: ../src/unit-manager.c:126
+#: ../src/unit-manager.c:137
 #, c-format
 msgid "%s%%s"
 msgstr "%%s %s"
+
+#~ msgctxt "unit-format"
+
+#~ msgid "%s˚K"
+#~ msgstr "%s K"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "degK,˚K"
+#~ msgstr "stopinj K, °K"
 
 #~ msgid "Recall"
 #~ msgstr "Ponovni priklic"
