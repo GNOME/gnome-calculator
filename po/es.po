@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-23 15:24+0000\n"
-"PO-Revision-Date: 2011-04-28 12:24+0200\n"
+"POT-Creation-Date: 2011-05-25 00:15+0000\n"
+"PO-Revision-Date: 2011-05-25 10:31+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -813,7 +813,6 @@ msgid "South African Rand"
 msgstr "Rand sudafricano"
 
 #: ../src/financial.c:70
-#| msgid "Error, operands must be integers"
 msgid "Error: the number of periods must be positive"
 msgstr "Error: el número de períodos debe ser positivo"
 
@@ -1199,9 +1198,14 @@ msgid "Sign"
 msgstr "Signo"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
-#: ../src/math-converter.c:375
+#: ../src/math-converter.c:412
 msgid " in "
 msgstr " en "
+
+#. Tooltip for swap conversion button
+#: ../src/math-converter.c:427
+msgid "Switch conversion units"
+msgstr "Cambiar unidades de conversión"
 
 #. Error shown when trying to undo with no undo history
 #: ../src/math-equation.c:458
@@ -1245,7 +1249,6 @@ msgid "Malformed expression"
 msgstr "Expresión malformada"
 
 #: ../src/math-equation.c:1263
-#| msgid "C_alculate"
 msgid "Calculating"
 msgstr "Calculando"
 
@@ -1609,15 +1612,11 @@ msgstr "Millas náuticas"
 
 #: ../src/unit-manager.c:60
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s nm"
 msgctxt "unit-format"
 msgid "%s nmi"
 msgstr "%s mn"
 
 #: ../src/unit-manager.c:60
-#| msgctxt "unit-symbols"
-#| msgid "nm"
 msgctxt "unit-symbols"
 msgid "nmi"
 msgstr "mn"
@@ -1798,8 +1797,6 @@ msgid "%s nm"
 msgstr "%s mn"
 
 #: ../src/unit-manager.c:72
-#| msgctxt "unit-symbols"
-#| msgid "nanometer,nanometers"
 msgctxt "unit-symbols"
 msgid "nanometer,nanometers,nm"
 msgstr "nanómetro,nanómetros,nm"
@@ -1835,7 +1832,6 @@ msgid "acre,acres"
 msgstr "acre,acres"
 
 #: ../src/unit-manager.c:75
-#| msgid "Square Meter"
 msgid "Square Meters"
 msgstr "Metros cuadrados"
 
@@ -1851,7 +1847,6 @@ msgid "m²"
 msgstr "m²"
 
 #: ../src/unit-manager.c:76
-#| msgid "Square Centimeter"
 msgid "Square Centimeters"
 msgstr "Centímetros cuadrados"
 
@@ -1867,7 +1862,6 @@ msgid "cm²"
 msgstr "cm²"
 
 #: ../src/unit-manager.c:77
-#| msgid "Square Millimeter"
 msgid "Square Millimeters"
 msgstr "Milímetros cuadrados"
 
@@ -1973,7 +1967,6 @@ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "mililitro,mililitros,mL,cm³"
 
 #: ../src/unit-manager.c:84
-#| msgid "Microlitre"
 msgid "Microlitres"
 msgstr "Microlitros"
 
@@ -2164,8 +2157,6 @@ msgid "%s μs"
 msgstr "%s μs"
 
 #: ../src/unit-manager.c:96
-#| msgctxt "unit-symbols"
-#| msgid "microsecond,microseconds,us"
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "microsegundo,microsegundos,us,μs"
@@ -2176,8 +2167,6 @@ msgstr "Celsius"
 
 #: ../src/unit-manager.c:97
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s˚C"
 msgctxt "unit-format"
 msgid "%s ˚C"
 msgstr "%s˚C"
@@ -2193,8 +2182,6 @@ msgstr "Farenheit"
 
 #: ../src/unit-manager.c:98
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s˚F"
 msgctxt "unit-format"
 msgid "%s ˚F"
 msgstr "%s˚F"
@@ -2210,8 +2197,6 @@ msgstr "Kelvin"
 
 #: ../src/unit-manager.c:99
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s m"
 msgctxt "unit-format"
 msgid "%s K"
 msgstr "%s K"
@@ -2227,15 +2212,11 @@ msgstr "Rankine"
 
 #: ../src/unit-manager.c:100
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s˚R"
 msgctxt "unit-format"
 msgid "%s ˚R"
 msgstr "%s ˚R"
 
 #: ../src/unit-manager.c:100
-#| msgctxt "unit-symbols"
-#| msgid "degR,˚R"
 msgctxt "unit-symbols"
 msgid "degR,˚R,˚Ra"
 msgstr "gradR,˚R,˚Ra"
