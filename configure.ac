@@ -20,28 +20,10 @@ dnl Dependencies
 dnl ###########################################################################
 
 GIO_REQUIRED=2.25.10
-
-AC_MSG_CHECKING([which gtk+ version to compile against])
-AC_ARG_WITH([gtk],
-  [AS_HELP_STRING([--with-gtk=2.0|3.0],[which gtk+ version to compile against (default: 3.0)])],
-  [case "$with_gtk" in
-     2.0|3.0) ;;
-     *) AC_MSG_ERROR([invalid gtk version specified]) ;;
-   esac],
-  [with_gtk=3.0])
-AC_MSG_RESULT([$with_gtk])
-
-case "$with_gtk" in
-  2.0) GTK_API_VERSION=2.0
-       GTK_REQUIRED=2.21.8
-       ;;
-  3.0) GTK_API_VERSION=3.0
-       GTK_REQUIRED=2.90.7
-       ;;
-esac
+GTK_REQUIRED=2.90.7
 
 PKG_CHECK_MODULES(GCALCTOOL, [
-    gtk+-$GTK_API_VERSION >= $GTK_REQUIRED
+    gtk+-3.0 $GTK_REQUIRED
     gio-2.0 >= $GIO_REQUIRED
     libxml-2.0
     gmodule-export-2.0
