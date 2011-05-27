@@ -1,1701 +1,2967 @@
 # Persian translation of gcalctool.
+# Copyright (C) 2011 Iranian Free Software Users Group (IFSUG.org)translation team.
 # Copyright (C) 2003, 2004, 2005, 2006 Sharif FarsiWeb, Inc.
 # This file is distributed under the same license as gcalctool package.
 # Roozbeh Pournader <roozbeh@farsiweb.info>, 2003, 2006.
 # Meelad Zakaria <meelad@farsiweb.info>, 2004, 2005, 2006.
+# Arash Mousavi <mousavi.arash@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool HEAD\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-03 08:29+0200\n"
-"PO-Revision-Date: 2005-03-02 15:25+0330\n"
-"Last-Translator: Roozbeh Pournader <roozbeh@farsiweb.info>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-05-26 05:59+0000\n"
+"PO-Revision-Date: 2011-05-27 06:10+0330\n"
+"Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
 "Language-Team: Persian\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#. Strings for each base value.
-#: ../gcalctool/calctool.c:41
-msgid "_Bin"
-msgstr "_دودویی"
-
-#: ../gcalctool/calctool.c:41
-msgid "_Oct"
-msgstr "هش_ت‌هشتی"
-
-#: ../gcalctool/calctool.c:41
-msgid "_Dec"
-msgstr "د_هدهی"
-
-#: ../gcalctool/calctool.c:41
-msgid "He_x"
-msgstr "_شانزده‌شانزدهی"
-
-#. Tooltips for each base value.
-#: ../gcalctool/calctool.c:45
-msgid "Set numeric base to binary (base 2)"
-msgstr "تنظیم مبنای عددی به دودویی (مبنای دو)"
-
-#: ../gcalctool/calctool.c:46
-msgid "Set numeric base to octal (base 8)"
-msgstr "تنظیم مبنای عددی به هشت‌هشتی (مبنای هشت)"
-
-#: ../gcalctool/calctool.c:47
-msgid "Set numeric base to decimal (base 10)"
-msgstr "تنظیم مبنای عددی به ده‌دهی (مبنای ده)"
-
-#: ../gcalctool/calctool.c:48
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "تنظیم مبنای عددی به شانزده‌شانزدهی (مبنای شانزده)"
-
-#. Strings for each display mode value.
-#: ../gcalctool/calctool.c:59
-msgid "E_ng"
-msgstr "_مهندسی"
-
-#: ../gcalctool/calctool.c:59
-msgid "_Fix"
-msgstr "_ثابت"
-
-#: ../gcalctool/calctool.c:59
-msgid "_Sci"
-msgstr "ع_لمی"
-
-#. Tooltips for each display mode value.
-#: ../gcalctool/calctool.c:63
-msgid "Set display type to engineering format"
-msgstr "تنظیم نوع نمایش به قالب مهندسی"
-
-#: ../gcalctool/calctool.c:64
-msgid "Set display type to fixed-point format"
-msgstr "تنظیم نوع نمایش به قالب ممیز ثابت"
-
-#: ../gcalctool/calctool.c:65
-msgid "Set display type to scientific format"
-msgstr "تنظیم نوع نمایش به قالب علمی"
-
-#: ../gcalctool/calctool.c:68
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "تنظیم گزینهٔ هذلولوی برای توابع مثلثاتی"
-
-#: ../gcalctool/calctool.c:69
-msgid "Set inverse option for trigonometric functions"
-msgstr "تنظیم گزینهٔ معکوس برای توابع مثلثاتی"
-
-#. Mode titles to be added to the titlebar.
-#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:369
-msgid "Basic"
-msgstr "ساده"
-
-#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:371
-msgid "Advanced"
-msgstr "پیشرفته"
-
-#: ../gcalctool/calctool.c:72 ../gcalctool/gtk.c:373
-msgid "Financial"
-msgstr "مالی"
-
-#: ../gcalctool/calctool.c:73 ../gcalctool/gtk.c:375
-msgid "Scientific"
-msgstr "علمی"
-
-#: ../gcalctool/calctool.c:73
-msgid "Expression"
-msgstr "عبارت"
-
-#. Strings for each trig type value.
-#: ../gcalctool/calctool.c:77
-msgid "De_grees"
-msgstr "در_جه"
-
-#: ../gcalctool/calctool.c:77
-msgid "Gr_adians"
-msgstr "_گرادیان"
-
-#: ../gcalctool/calctool.c:77
-msgid "_Radians"
-msgstr "_رادیان"
-
-#. Tooltips for each trig type value.
-#: ../gcalctool/calctool.c:81
-msgid "Set trigonometric type to degrees"
-msgstr "تنظیم نوع زوایای مثلثاتی به درجه"
-
-#: ../gcalctool/calctool.c:82
-msgid "Set trigonometric type to gradians"
-msgstr "تنظیم نوع زوایای مثلثاتی به گرادیان"
-
-#: ../gcalctool/calctool.c:83
-msgid "Set trigonometric type to radians"
-msgstr "تنظیم نوع زوایای مثلثاتی به رادیان"
-
-#: ../gcalctool/calctool.c:134
-msgid "7"
-msgstr "۷"
-
-#: ../gcalctool/calctool.c:136
-msgid "Numeric 7"
-msgstr "عدد ۷"
-
-#: ../gcalctool/calctool.c:146
-msgid "8"
-msgstr "۸"
-
-#: ../gcalctool/calctool.c:148
-msgid "Numeric 8"
-msgstr "عدد ۸"
-
-#: ../gcalctool/calctool.c:158
-msgid "9"
-msgstr "۹"
-
-#: ../gcalctool/calctool.c:160
-msgid "Numeric 9"
-msgstr "عدد ۹"
-
-#. Note to translators: this is a division sign (÷)
-#: ../gcalctool/calctool.c:171
-msgid "÷"
-msgstr ""
-
-#: ../gcalctool/calctool.c:172
-msgid "Divide"
-msgstr "تقسیم"
-
-#: ../gcalctool/calctool.c:179
-msgid "/"
-msgstr "÷"
-
-#: ../gcalctool/calctool.c:183
-msgid "("
-msgstr "("
-
-#: ../gcalctool/calctool.c:184
-msgid "Start group of calculations"
-msgstr "آغاز دسته محاسبات"
-
-#: ../gcalctool/calctool.c:185
-msgid "Left bracket"
-msgstr "پرانتز چپ"
-
-#. Note to translators: Bksp is short for Backspace.
-#: ../gcalctool/calctool.c:196
-msgid "Bksp"
-msgstr "Bksp"
-
-#: ../gcalctool/calctool.c:197
-msgid "Remove rightmost character from displayed value"
-msgstr "حذف آخرین نویسهٔ سمت راست از مقدار نمایش داده شده"
-
-#: ../gcalctool/calctool.c:198
-msgid "Backspace"
-msgstr "پس‌بر"
-
-#: ../gcalctool/calctool.c:208
-msgid "CE"
-msgstr "CE"
-
-#: ../gcalctool/calctool.c:209
-msgid "Clear displayed value"
-msgstr "پاک کردن مقدار نمایش داده شده"
-
-#: ../gcalctool/calctool.c:210
-msgid "Clear entry"
-msgstr "پاک کردن ورودی"
-
-#. Note to translators: Clr is short for Clear.
-#: ../gcalctool/calctool.c:221
-msgid "Clr"
-msgstr "Clr"
-
-#: ../gcalctool/calctool.c:222
-msgid "Clear displayed value and any partial calculation"
-msgstr "پاک کردن مقدار نمایش داده شده و تمام محاسبات نیمه‌کاره"
-
-#: ../gcalctool/calctool.c:223
-msgid "Clear"
-msgstr "پاک کردن"
-
-#: ../gcalctool/calctool.c:235
-msgid "4"
-msgstr "۴"
-
-#: ../gcalctool/calctool.c:237
-msgid "Numeric 4"
-msgstr "عدد ۴"
-
-#: ../gcalctool/calctool.c:247
-msgid "5"
-msgstr "۵"
-
-#: ../gcalctool/calctool.c:249
-msgid "Numeric 5"
-msgstr "عدد ۵"
-
-#: ../gcalctool/calctool.c:259
-msgid "6"
-msgstr "۶"
-
-#: ../gcalctool/calctool.c:261
-msgid "Numeric 6"
-msgstr "عدد ۶"
-
-#. Note to translators: this is a multiplication sign (*)
-#: ../gcalctool/calctool.c:272
-msgid "×"
-msgstr "×"
-
-#: ../gcalctool/calctool.c:273
-msgid "Multiply"
-msgstr "ضرب"
-
-#: ../gcalctool/calctool.c:280
-msgid "*"
-msgstr "×"
-
-#: ../gcalctool/calctool.c:284
-msgid ")"
-msgstr ")"
-
-#: ../gcalctool/calctool.c:285
-msgid "End group of calculations"
-msgstr "پایان دسته محاسبات"
-
-#: ../gcalctool/calctool.c:286
-msgid "Right bracket"
-msgstr "پرانتز راست"
-
-#. Note to translators: this is a plus-minus sign (+/-)
-#: ../gcalctool/calctool.c:297
-msgid "±"
-msgstr "±"
-
-#: ../gcalctool/calctool.c:298
-msgid "Change sign [c]"
-msgstr "تغییر علامت [c]"
-
-#: ../gcalctool/calctool.c:305
-msgid "Chs"
-msgstr "Chs"
-
-#: ../gcalctool/calctool.c:309
-msgid "Int"
-msgstr "Int"
-
-#: ../gcalctool/calctool.c:310
-msgid "Integer portion of displayed value [i]"
-msgstr "جزء صحیح مقدار نمایش داده شدهٔ [i]"
-
-#: ../gcalctool/calctool.c:311
-msgid "Integer portion"
-msgstr "جزء صحیح"
-
-#: ../gcalctool/calctool.c:321
-msgid "Sto"
-msgstr "Sto"
-
-#: ../gcalctool/calctool.c:322
-msgid "Store displayed value in memory register [S]"
-msgstr "ذخیرهٔ مقدار نمایش داده شده در ثبات حافظه"
-
-#: ../gcalctool/calctool.c:323
-msgid "Store to register"
-msgstr "ذخیره در ثبات"
-
-#: ../gcalctool/calctool.c:335
-msgid "1"
-msgstr "۱"
-
-#: ../gcalctool/calctool.c:337
-msgid "Numeric 1"
-msgstr "عدد ۱"
-
-#: ../gcalctool/calctool.c:347
-msgid "2"
-msgstr "۲"
-
-#: ../gcalctool/calctool.c:349
-msgid "Numeric 2"
-msgstr "عدد ۲"
-
-#: ../gcalctool/calctool.c:359
-msgid "3"
-msgstr "۳"
-
-#: ../gcalctool/calctool.c:361
-msgid "Numeric 3"
-msgstr "عدد ۳"
-
-#. Note to translators: this is a minus sign (-)
-#: ../gcalctool/calctool.c:372
-msgid "−"
-msgstr "−"
-
-#: ../gcalctool/calctool.c:373
-msgid "Subtract"
-msgstr "تفریق"
-
-#: ../gcalctool/calctool.c:380
-msgid "-"
-msgstr "-"
-
-#: ../gcalctool/calctool.c:384
-msgid "%"
-msgstr "٪"
-
-#: ../gcalctool/calctool.c:385
-msgid "Percentage"
-msgstr "درصد"
-
-#. Note to translators: this is a square root sign
-#: ../gcalctool/calctool.c:397
-msgid "√"
-msgstr "√"
-
-#: ../gcalctool/calctool.c:398
-msgid "Square root [s]"
-msgstr "ریشهٔ دوم [s]"
-
-#: ../gcalctool/calctool.c:405
-msgid "Sqrt"
-msgstr "Sqrt"
-
-#: ../gcalctool/calctool.c:409
-msgid "Frac"
-msgstr "Frac"
-
-#: ../gcalctool/calctool.c:410
-msgid "Fractional portion of displayed value [:]"
-msgstr "جزء کسری مقدار نمایش داده شده [:]"
-
-#: ../gcalctool/calctool.c:411
-msgid "Fractional portion"
-msgstr "جزء کسری"
-
-#: ../gcalctool/calctool.c:421
-msgid "Rcl"
-msgstr "Rcl"
-
-#: ../gcalctool/calctool.c:422
-msgid "Retrieve memory register to display [R]"
-msgstr "برگشت ثبات حافظه به صفحهٔ نمایش [R]"
-
-#: ../gcalctool/calctool.c:423
-msgid "Retrieve from register"
-msgstr "برگشت از ثبات"
-
-#: ../gcalctool/calctool.c:435
-msgid "0"
-msgstr "۰"
-
-#: ../gcalctool/calctool.c:437
-msgid "Numeric 0"
-msgstr "عدد ۰"
-
-#: ../gcalctool/calctool.c:447
-msgid "."
-msgstr "٫"
-
-#: ../gcalctool/calctool.c:448
-msgid "Numeric point"
-msgstr "ممیز"
-
-#: ../gcalctool/calctool.c:459
+"X-DamnedLies-Scope: partial\n"
+"X-Generator: Translate Toolkit 1.8.0\n"
+
+#. The label on the memory button
+#: ../data/buttons-advanced.ui.h:2
+#: ../data/buttons-financial.ui.h:2
+msgid "<i>x</i>"
+msgstr "<i>x</i>"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:4
+#: ../data/buttons-basic.ui.h:2
+#: ../data/buttons-financial.ui.h:4
+#: ../data/buttons-programming.ui.h:2
 msgid "="
 msgstr "="
 
-#: ../gcalctool/calctool.c:460
-msgid "Calculate result"
-msgstr "محاسبهٔ نتیجه"
-
-#: ../gcalctool/calctool.c:471
-msgid "+"
-msgstr "+"
-
-#: ../gcalctool/calctool.c:472
-msgid "Add"
-msgstr "جمع"
-
-#: ../gcalctool/calctool.c:483
-msgid "1/<i>x</i>"
-msgstr "۱/<i>x</i>"
-
-#: ../gcalctool/calctool.c:484
-msgid "Reciprocal [r]"
-msgstr "معکوس [r]"
-
-#: ../gcalctool/calctool.c:491
-msgid "Recip"
-msgstr "معکوس"
-
-#: ../gcalctool/calctool.c:495
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>۲</sup>"
-
-#: ../gcalctool/calctool.c:496
-msgid "Square [@]"
-msgstr "مربع [@]"
-
-#: ../gcalctool/calctool.c:503
-msgid "^2"
-msgstr "^۲"
-
-#. Note to translators: Abs is short for Absolute.
-#: ../gcalctool/calctool.c:508
-msgid "Abs"
-msgstr "Abs"
-
-#: ../gcalctool/calctool.c:509
-msgid "Absolute value [u]"
-msgstr "قدر مطلق [u]"
-
-#: ../gcalctool/calctool.c:520
-msgid "Exch"
-msgstr "Exch"
-
-#: ../gcalctool/calctool.c:521
-msgid "Exchange displayed value with memory register [X]"
-msgstr "جابه‌جایی مقدار نمایش داده شده با ثبات [X]"
-
-#: ../gcalctool/calctool.c:522
-msgid "Exchange with register"
-msgstr "جابه‌جایی با ثبات"
-
-#: ../gcalctool/calctool.c:548
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#: ../gcalctool/calctool.c:549
-msgid "Compounding term [m]"
-msgstr "عبارت ترکیبی [m]"
-
-#: ../gcalctool/calctool.c:560
-msgid "Ddb"
-msgstr "Dbd"
-
-#: ../gcalctool/calctool.c:561
-msgid "Double-declining depreciation [d]"
-msgstr "استهلاک با شیب مضاعف [d]"
-
-#: ../gcalctool/calctool.c:572
-msgid "Fv"
-msgstr "Fv"
-
-#: ../gcalctool/calctool.c:573
-msgid "Future value [v]"
-msgstr "مقدار آینده [v]"
-
-#: ../gcalctool/calctool.c:584
-msgid "Pmt"
-msgstr "Pmt"
-
-#: ../gcalctool/calctool.c:585
-msgid "Periodic payment [P]"
-msgstr "پرداخت دوره‌ای [P]"
-
-#: ../gcalctool/calctool.c:596
-msgid "Pv"
-msgstr "Pv"
-
-#: ../gcalctool/calctool.c:597
-msgid "Present value [p]"
-msgstr "مقدار فعلی [p]"
-
-#: ../gcalctool/calctool.c:608
-msgid "Rate"
-msgstr "Rate"
-
-#: ../gcalctool/calctool.c:609
-msgid "Periodic interest rate [T]"
-msgstr "نرخ سود دوره‌ای [T]"
-
-#: ../gcalctool/calctool.c:620
-msgid "Sln"
-msgstr "Sln"
-
-#: ../gcalctool/calctool.c:621
-msgid "Straight-line depreciation [l]"
-msgstr "استهلاک خط مستقیم [l]"
-
-#: ../gcalctool/calctool.c:632
-msgid "Syd"
-msgstr "Syd"
-
-#: ../gcalctool/calctool.c:633
-msgid "Sum-of-the years'-digits depreciation [Y]"
-msgstr "استهلاک مجموع سنوات [Y]"
-
-#: ../gcalctool/calctool.c:646
-msgid "Term"
-msgstr "Term"
-
-#: ../gcalctool/calctool.c:647
-msgid "Payment period [T]"
-msgstr "دورهٔ پرداخت [T]"
-
-#: ../gcalctool/calctool.c:758
-msgid "<"
-msgstr "<"
-
-#: ../gcalctool/calctool.c:759
-msgid "Shift displayed value 1-15 places to the left"
-msgstr "جابه‌جایی مقدار نمایش داده شده ۱۵-۱ رقم به چپ"
-
-#: ../gcalctool/calctool.c:760
-msgid "Shift left"
-msgstr "جابه‌جایی به چپ"
-
-#: ../gcalctool/calctool.c:770
-msgid ">"
-msgstr ">"
-
-#: ../gcalctool/calctool.c:771
-msgid "Shift displayed value 1-15 places to the right"
-msgstr "جابه‌جایی مقدار نمایش داده شده ۱۵-۱ رقم به راست"
-
-#: ../gcalctool/calctool.c:772
-msgid "Shift right"
-msgstr "جابه‌جایی به راست"
-
-#: ../gcalctool/calctool.c:782
-msgid "&amp;16"
-msgstr "&amp;16"
-
-#: ../gcalctool/calctool.c:783
-msgid "16-bit unsigned integer value of display (])"
-msgstr "مقدار صحیح بدون علامت ۱۶ بیتی عدد نمایش داده شده (])"
-
-#: ../gcalctool/calctool.c:784
-msgid "16 bit unsigned integer"
-msgstr "عدد صحیح بدون علامت ۱۶ بیتی"
-
-#: ../gcalctool/calctool.c:790
-msgid "u16"
-msgstr "u16"
-
-#: ../gcalctool/calctool.c:794
-msgid "&amp;32"
-msgstr "&amp;32"
-
-#: ../gcalctool/calctool.c:795
-msgid "32-bit unsigned integer value of display ([)"
-msgstr "مقدار صحیح بدون علامت ۳۲ بیتی عدد نمایش داده شده ([)"
-
-#: ../gcalctool/calctool.c:796
-msgid "32 bit unsigned integer"
-msgstr "عدد صحیح بدون علامت ۳۲ بیتی"
-
-#: ../gcalctool/calctool.c:802
-msgid "u32"
-msgstr "u32"
-
-#: ../gcalctool/calctool.c:830
-msgid "Mod"
-msgstr "Mod"
-
-#: ../gcalctool/calctool.c:831
-msgid "Modulus Division"
-msgstr "باقیماندهٔ تقسیم"
-
-#: ../gcalctool/calctool.c:838
-msgid " Mod "
-msgstr " Mod "
-
-#: ../gcalctool/calctool.c:842
-msgid "Acc"
-msgstr "Acc"
-
-#: ../gcalctool/calctool.c:843
-msgid "Set accuracy from 0 to 9 numeric places [a]"
-msgstr "تنظیم دقت از ۰ تا ۹ رقم [a]"
-
-#: ../gcalctool/calctool.c:844
-msgid "Accuracy"
-msgstr "دقت"
-
-#: ../gcalctool/calctool.c:856
-msgid "Con"
-msgstr "Con"
-
-#: ../gcalctool/calctool.c:857
-msgid "Constants [#]"
-msgstr "ثابت‌ها [#]"
-
-#: ../gcalctool/calctool.c:868
-msgid "Fun"
-msgstr "Fun"
-
-#: ../gcalctool/calctool.c:869
-msgid "User-defined functions [f]"
-msgstr "توابع تعریفی کاربر [f]"
-
-#: ../gcalctool/calctool.c:880
-msgid "Exp"
-msgstr "Exp"
-
-#: ../gcalctool/calctool.c:881
-msgid "Enter an exponential number [e]"
-msgstr "یک عدد نمایی وارد کنید [e]"
-
-#: ../gcalctool/calctool.c:882
-msgid "Exponential"
-msgstr "نمایی"
-
-#: ../gcalctool/calctool.c:888 ../gcalctool/calctool.c:1265
-msgid "e"
-msgstr "e"
-
-#: ../gcalctool/calctool.c:892
-msgid "e<sup><i>x</i></sup>"
-msgstr "e<sup><i>x</i></sup>"
-
-#: ../gcalctool/calctool.c:893
-msgid "e to the power of displayed value [{]"
-msgstr "‏e به توان مقدار نمایش داده شده [{]"
-
-#: ../gcalctool/calctool.c:894
-msgid "E to the x"
-msgstr "E به توان x"
-
-#: ../gcalctool/calctool.c:900
-msgid "e^"
-msgstr "e^"
-
-#: ../gcalctool/calctool.c:904
-msgid "10<sup><i>x</i></sup>"
-msgstr "۱۰<sup><i>x</i></sup>"
-
-#: ../gcalctool/calctool.c:905
-msgid "10 to the power of displayed value [}]"
-msgstr "۱۰ به توان مقدار نمایش داده شده [}]"
-
-#: ../gcalctool/calctool.c:906
-msgid "Ten to the x"
-msgstr "ده به توان‏ x"
-
-#: ../gcalctool/calctool.c:912
-msgid "10^"
-msgstr "۱۰^"
-
-#: ../gcalctool/calctool.c:916
-msgid "<i>x</i><sup><i>y</i></sup>"
-msgstr "<i>x</i><sup><i>y</i></sup>"
-
-#: ../gcalctool/calctool.c:917
-msgid "Raise displayed value to the power of y [^]"
-msgstr "رساندن مقدار نمایش داده شده به توان y [^]"
-
-#: ../gcalctool/calctool.c:918
-msgid "X to the y"
-msgstr "‏X به توان y"
-
-#: ../gcalctool/calctool.c:924
-msgid "^"
-msgstr "^"
-
-#: ../gcalctool/calctool.c:928
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#: ../gcalctool/calctool.c:929
-msgid "Factorial of displayed value [!]"
-msgstr "فاکتوریل مقدار نمایش‌ داده شده [!]"
-
-#: ../gcalctool/calctool.c:930
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:6
+#: ../data/buttons-programming.ui.h:4
+msgid "Absolute Value"
+msgstr "قدر مطلق"
+
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:8
+#: ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:38
+#: ../data/buttons-programming.ui.h:8
+msgid "Exponent"
+msgstr "توان"
+
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:10
+#: ../data/buttons-programming.ui.h:10
 msgid "Factorial"
 msgstr "فاکتوریل"
 
-#: ../gcalctool/calctool.c:936
-msgid "!"
-msgstr "!"
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:12
+#: ../data/buttons-programming.ui.h:12
+msgid "Factorize"
+msgstr "فاکتور"
 
-#: ../gcalctool/calctool.c:940
-msgid "Rand"
-msgstr "Rand"
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:14
+#: ../data/buttons-programming.ui.h:18
+msgid "Inverse"
+msgstr "معکوس"
 
-#: ../gcalctool/calctool.c:941
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "عدد تصادفی در محدودهٔ ۰٫۰ تا ۱٫۰ [?]"
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+#: ../data/buttons-advanced.ui.h:16
+#: ../data/buttons-financial.ui.h:50
+#: ../src/math-buttons.c:224
+msgid "Memory"
+msgstr "حافظه"
 
-#: ../gcalctool/calctool.c:942
-msgid "Random number"
-msgstr "عدد تصادفی"
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:18
+msgid "Scientific Exponent"
+msgstr "نماد علمی"
 
-#: ../gcalctool/calctool.c:954
-msgid "D"
-msgstr "D"
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:20
+#: ../data/buttons-programming.ui.h:24
+msgid "Store"
+msgstr "ذخیره"
 
-#: ../gcalctool/calctool.c:955
-msgid "Hexadecimal digit D"
-msgstr "رقم شانزده‌شانزدهی‏ D"
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:22
+#: ../data/buttons-programming.ui.h:26
+msgid "Subscript"
+msgstr "زیرنویس"
 
-#: ../gcalctool/calctool.c:966
-msgid "E"
-msgstr "E"
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:24
+#: ../data/buttons-programming.ui.h:28
+msgid "Superscript"
+msgstr "بالانویس"
 
-#: ../gcalctool/calctool.c:967
-msgid "Hexadecimal digit E"
-msgstr "رقم شانزده‌شانزدهی‏ E"
+#. Payment Period Dialog: Button to calculate result
+#: ../data/buttons-financial.ui.h:6
+msgid "C_alculate"
+msgstr "_محاسبه"
 
-#: ../gcalctool/calctool.c:978 ../gcalctool/gtk.c:1916
-msgid "F"
-msgstr "F"
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:8
+msgid "C_ost:"
+msgstr "_هزینه:"
 
-#: ../gcalctool/calctool.c:979
-msgid "Hexadecimal digit F"
-msgstr "رقم شانزده‌شانزدهی‏ F"
+#. Periodic Payment Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:10
+msgid "Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. "
+msgstr ""
 
-#: ../gcalctool/calctool.c:990
-msgid "Cos"
-msgstr "Cos"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:12
+msgid "Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-of-the-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The useful life is the number of periods, typically years, over which an asset is depreciated. "
+msgstr ""
 
-#: ../gcalctool/calctool.c:991
-msgid "Cosine [J]"
-msgstr "کسینوس [J]"
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:14
+msgid "Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method."
+msgstr ""
 
-#: ../gcalctool/calctool.c:1002
-msgid "Sin"
-msgstr "Sin"
+#. Future Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:16
+msgid "Calculates the future value of an investment based on a series of equal payments at a periodic interest rate over the number of payment periods in the term."
+msgstr ""
 
-#: ../gcalctool/calctool.c:1003
-msgid "Sine [K]"
-msgstr "سینوس [K]"
+#. Compounding Term Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:18
+msgid "Calculates the number of compounding periods necessary to increase an investment of present value to a future value, at a fixed interest rate per compounding period."
+msgstr ""
 
-#: ../gcalctool/calctool.c:1014
-msgid "Tan"
-msgstr "Tan"
+#. Payment Period Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:20
+msgid "Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value, at a periodic interest rate."
+msgstr ""
 
-#: ../gcalctool/calctool.c:1015
-msgid "Tangent [L]"
-msgstr "تانژانت [L]"
+#. Periodic Interest Rate Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:22
+msgid "Calculates the periodic interest necessary to increase an investment to a future value, over the number of compounding periods. "
+msgstr ""
 
-#: ../gcalctool/calctool.c:1026
-msgid "Ln"
-msgstr "Ln"
+#. Present Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:24
+msgid "Calculates the present value of an investment based on a series of equal payments discounted at a periodic interest rate over the number of payment periods in the term. "
+msgstr ""
 
-#: ../gcalctool/calctool.c:1027
-msgid "Natural log [N]"
-msgstr "لگاریتم طبیعی [N]"
+#. Gross Profit Margin Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:26
+msgid "Calculates the resale price of a product, based on the product cost and the wanted gross profit margin."
+msgstr ""
 
-#: ../gcalctool/calctool.c:1038
-msgid "Log"
-msgstr "Log"
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:28
+msgid "Calculates the straight-line depreciation of an asset for one period. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. "
+msgstr ""
 
-#: ../gcalctool/calctool.c:1039
-msgid "Base 10 log [G]"
-msgstr "لگاریتم مبنای ۱۰ [G]"
+#. Title of Compounding Term dialog
+#. Tooltip for the compounding term button
+#: ../data/buttons-financial.ui.h:30
+#: ../src/math-buttons.c:248
+msgid "Compounding Term"
+msgstr "عبارت ترکیبی"
 
-#: ../gcalctool/calctool.c:1052
-msgid "A"
-msgstr "A"
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/buttons-financial.ui.h:32
+msgid "Ctrm"
+msgstr "Ctrm"
 
-#: ../gcalctool/calctool.c:1053
-msgid "Hexadecimal digit A"
-msgstr "‏رقم شانزده‌شانزدهی A"
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:34
+msgid "Ddb"
+msgstr "Dbd"
 
-#: ../gcalctool/calctool.c:1064
-msgid "B"
-msgstr "B"
+#. Title of Double-Declining Depreciation dialog
+#: ../data/buttons-financial.ui.h:36
+msgid "Double-Declining Depreciation"
+msgstr "استهلاک با شیب مضاعف"
 
-#: ../gcalctool/calctool.c:1065
-msgid "Hexadecimal digit B"
-msgstr "رقم شانزده‌شانزدهی‏ B"
+#. Title of Future Value dialog
+#. Tooltip for the future value button
+#: ../data/buttons-financial.ui.h:40
+#: ../src/math-buttons.c:254
+msgid "Future Value"
+msgstr "مقدار آینده"
 
-#: ../gcalctool/calctool.c:1076 ../gcalctool/gtk.c:1908
-msgid "C"
-msgstr "C"
+#. Payment Period Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:42
+msgid "Future _Value:"
+msgstr "مقدار آ_ینده:"
 
-#: ../gcalctool/calctool.c:1077
-msgid "Hexadecimal digit C"
-msgstr "‏رقم شانزده‌شانزدهی C"
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/buttons-financial.ui.h:44
+msgid "Fv"
+msgstr "Fv"
 
-#: ../gcalctool/calctool.c:1088
-msgid "Or"
-msgstr "Or"
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/buttons-financial.ui.h:46
+msgid "Gpm"
+msgstr "Gpm"
 
-#: ../gcalctool/calctool.c:1089
-msgid "Bitwise OR"
-msgstr "‏«یا»ی بیتی"
+#. Title of Gross Profit Margin dialog
+#. Tooltip for the gross profit margin button
+#: ../data/buttons-financial.ui.h:48
+#: ../src/math-buttons.c:275
+msgid "Gross Profit Margin"
+msgstr "حاشیه سود ناخالص"
 
-#: ../gcalctool/calctool.c:1096
-msgid " Or "
-msgstr " Or "
+#. Title of Payment Period dialog
+#: ../data/buttons-financial.ui.h:52
+msgid "Payment Period"
+msgstr "دوره‌ی پرداخت"
 
-#: ../gcalctool/calctool.c:1100
-msgid "And"
-msgstr "And"
+#. Title of Periodic Interest Rate dialog
+#. Tooltip for the periodic interest rate button
+#: ../data/buttons-financial.ui.h:54
+#: ../src/math-buttons.c:266
+msgid "Periodic Interest Rate"
+msgstr "نرخ بهره دوره‌ای"
 
-#: ../gcalctool/calctool.c:1101
-msgid "Bitwise AND [&]"
-msgstr "‏«و» بیتی‏ [&]"
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/buttons-financial.ui.h:56
+msgid "Periodic Interest _Rate:"
+msgstr "نرخ _بهره‌ای دوره‌ای:"
 
-#: ../gcalctool/calctool.c:1108
-msgid " And "
-msgstr " And "
+#. Title of Periodic Payment dialog
+#. Tooltip for the periodic payment button
+#: ../data/buttons-financial.ui.h:58
+#: ../src/math-buttons.c:272
+msgid "Periodic Payment"
+msgstr "پرداخت دوره‌ای"
 
-#: ../gcalctool/calctool.c:1112
-msgid "Not"
-msgstr "Not"
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/buttons-financial.ui.h:60
+msgid "Pmt"
+msgstr "Pmt"
 
-#: ../gcalctool/calctool.c:1113
-msgid "Bitwise NOT [~]"
-msgstr "‏«نا»ی بیتی [~]"
+#. Title of Present Value dialog
+#. Tooltip for the present value button
+#: ../data/buttons-financial.ui.h:62
+#: ../src/math-buttons.c:269
+msgid "Present Value"
+msgstr "مقدار فعلی"
 
-#: ../gcalctool/calctool.c:1120
-msgid "~"
-msgstr "~"
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/buttons-financial.ui.h:64
+msgid "Present _Value:"
+msgstr "مقدار _فعلی:"
 
-#: ../gcalctool/calctool.c:1124
-msgid "Xor"
-msgstr "Xor"
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/buttons-financial.ui.h:66
+msgid "Pv"
+msgstr "Pv"
 
-#: ../gcalctool/calctool.c:1125
-msgid "Bitwise XOR [x]"
-msgstr "‏«یای انحصاری» بیتی [x]"
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/buttons-financial.ui.h:68
+msgid "Rate"
+msgstr "Rate"
 
-#: ../gcalctool/calctool.c:1132
-msgid " Xor "
-msgstr " Xor "
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:70
+msgid "Sln"
+msgstr "Sln"
 
-#: ../gcalctool/calctool.c:1136
-msgid "Xnor"
-msgstr "Xnor"
+#. Title of Straight-Line Depreciation dialog
+#: ../data/buttons-financial.ui.h:72
+msgid "Straight-Line Depreciation"
+msgstr "استهلاک خط مستقیم"
 
-#: ../gcalctool/calctool.c:1137
-msgid "Bitwise XNOR [n]"
-msgstr "‏«نایای انحصاری» بیتی [n]"
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
+#: ../data/buttons-financial.ui.h:74
+msgid "Sum-of-the-Years'-Digits Depreciation"
+msgstr "استهلاک مجموع سنوات"
 
-#: ../gcalctool/calctool.c:1144
-msgid " Xnor "
-msgstr " Xnor "
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:76
+msgid "Syd"
+msgstr "Syd"
 
-#: ../gcalctool/calctool.c:1263
-msgid "Kilometer-to-mile conversion factor"
-msgstr "ضریب تبدیل کیلومتر به مایل"
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/buttons-financial.ui.h:78
+msgid "Term"
+msgstr "Term"
 
-#: ../gcalctool/calctool.c:1264
-msgid "square root of 2"
-msgstr "ریشهٔ دوم ۲"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:80
+msgid "_Cost:"
+msgstr "_هزینه:"
 
-#: ../gcalctool/calctool.c:1266
-msgid "pi"
-msgstr "پی"
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:82
+msgid "_Future Value:"
+msgstr "مقدار آ_ینده:"
 
-#: ../gcalctool/calctool.c:1267
-msgid "Centimeter-to-inch conversion factor"
-msgstr "ضریب تبدیل سانتیمتر به اینچ"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:84
+msgid "_Life:"
+msgstr "_عمر:"
 
-#: ../gcalctool/calctool.c:1268
-msgid "degrees in a radian"
-msgstr "درجه در یک رادیان"
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/buttons-financial.ui.h:86
+msgid "_Margin:"
+msgstr "_حاشیه:"
 
-#: ../gcalctool/calctool.c:1269
-msgid "2 ^ 20"
-msgstr "۲ ^ ۲۰"
+#. Present Value Dialog: Label before number of periods input
+#: ../data/buttons-financial.ui.h:88
+msgid "_Number of Periods:"
+msgstr "_تعداد دوره‌ها:"
 
-#: ../gcalctool/calctool.c:1270
-msgid "Gram-to-ounce conversion factor"
-msgstr "ضریب تبدیل گرم به اونس"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:90
+msgid "_Period:"
+msgstr "_دوره:"
 
-#: ../gcalctool/calctool.c:1272
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "ضریب تبدیل کیلو ژول به واحد گرمایی انگلیسی"
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/buttons-financial.ui.h:92
+msgid "_Periodic Payment:"
+msgstr "_پرداخت دوره‌ای:"
 
-#: ../gcalctool/calctool.c:1274
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "ضریب تبدیل سانتیمتر مکعب به اینچ مکعب"
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/buttons-financial.ui.h:94
+#, fuzzy
+msgid "_Principal:"
+msgstr "_مالی"
 
-#. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
-#.
-#: ../gcalctool/calctool.c:1285 ../gcalctool/display.c:271
-#: ../gcalctool/mp.c:1973 ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:471
-#: ../gcalctool/mpmath.c:526
-msgid "Error"
-msgstr "خطا"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:96
+msgid "_Salvage:"
+msgstr ""
 
-#: ../gcalctool/functions.c:521
-msgid "Invalid number for the current base"
-msgstr "این عدد در مبنای فعلی معتبر نیست"
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/buttons-financial.ui.h:98
+msgid "_Term:"
+msgstr "_Term:"
 
-#: ../gcalctool/functions.c:524
-msgid "Too long number"
-msgstr "عدد خیلی بلند است"
+#. Insert ASCII dialog: Label before character entry
+#: ../data/buttons-programming.ui.h:6
+msgid "Ch_aracter:"
+msgstr "نوی_سه:"
 
-#: ../gcalctool/functions.c:527
-msgid "Invalid bitwise operation parameter(s)"
-msgstr "پارامتر(های) نامعتبر برای عملیات بیتی "
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:14
+msgid "Insert Character"
+msgstr "درج نویسه"
 
-#: ../gcalctool/functions.c:530
-msgid "Malformed expression"
-msgstr "عبارت معیوب"
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+#: ../data/buttons-programming.ui.h:16
+#: ../src/math-buttons.c:227
+msgid "Insert Character Code"
+msgstr "درج کد نویسه"
 
-#: ../gcalctool/functions.c:599
-msgid "Error, operands must be integers"
-msgstr "خطا، عملوندها باید عدد صحیح باشند"
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+#: ../data/buttons-programming.ui.h:20
+#: ../src/math-buttons.c:242
+msgid "Shift Left"
+msgstr "تبدیل به چپ"
 
-#: ../gcalctool/functions.c:756 ../gcalctool/functions.c:1137
-msgid "No sane value to convert"
-msgstr "مقدار معقولی برای تبدیل موجود نیست"
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+#: ../data/buttons-programming.ui.h:22
+#: ../src/math-buttons.c:245
+msgid "Shift Right"
+msgstr "تبدیل به راست"
 
-#: ../gcalctool/functions.c:857 ../gcalctool/functions.c:1214
-#: ../gcalctool/functions.c:1445
+#. Insert ASCII dialog: Button to insert selected character
+#: ../data/buttons-programming.ui.h:30
+msgid "_Insert"
+msgstr "_درج"
+
+#. The label on the memory button
+#: ../data/buttons-programming.ui.h:32
+msgid "x"
+msgstr "x"
+
+#. Word size combo: 16 bits
+#: ../data/preferences.ui.h:2
+msgid "16-bit"
+msgstr "۱۶ بیت"
+
+#. Word size combo: 32 bits
+#: ../data/preferences.ui.h:4
+msgid "32-bit"
+msgstr "۳۲ بیت"
+
+#. Word size combo: 64 bits
+#: ../data/preferences.ui.h:6
+msgid "64-bit"
+msgstr "۶۴ بیت"
+
+#. Word size combo: 8 bits
+#: ../data/preferences.ui.h:8
+msgid "8-bit"
+msgstr "۸ بیت"
+
+#. Preferences dialog: Label for display format combo box
+#: ../data/preferences.ui.h:10
+msgid "Number _Format:"
+msgstr "_قالب‌بندی عدد:"
+
+#. Title of preferences dialog
+#: ../data/preferences.ui.h:11
+#: ../src/math-preferences.c:231
+msgid "Preferences"
+msgstr "ترجیحات"
+
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/preferences.ui.h:13
+msgid "Show _thousands separators"
+msgstr "نمایش جداساز _هزارها"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/preferences.ui.h:15
+msgid "Show trailing _zeroes"
+msgstr "نمایش _صفرهای انتهایی"
+
+#. Preferences dialog: label for word size combo box
+#: ../data/preferences.ui.h:17
+msgid "Word _size:"
+msgstr "اندازه _کلمه:"
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/preferences.ui.h:19
+msgid "_Angle units:"
+msgstr "واحدهای _زاویه:"
+
+#. Title of main window
+#: ../data/gcalctool.desktop.in.h:1
+#: ../src/math-window.c:523
+msgid "Calculator"
+msgstr "ماشین‌حساب"
+
+#: ../data/gcalctool.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "انجام محاسبات ریاضی، علمی و مالی"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
+msgid "Accuracy value"
+msgstr "مقدار دقت"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+msgid "Angle units"
+msgstr "واحدهای زاویه"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr "جالت دکمه‌ای"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+msgid "Currency of the current calculation"
+msgstr "ارز مربوط به محاسبه فعلی"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+msgid "Currency to convert the current calculation into"
+msgstr "ارز جهت تبدیل محاسبه فعلی به آن"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
+msgid "Indicates whether any trailing zeroes after the numeric point should be shown in the display value."
+msgstr "اینکه آیا صفرهای انتهایی بعد از اعشار باید در مقدار نمایش داده شده نشان داده شود یا خیر."
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "اینکه آیا جداساز هزارها باید در اعداد بزرگ نشان داده شود یا خیر"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+msgid "Number format"
+msgstr "قالب عدد"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
+msgid "Numeric Base"
+msgstr "پایه عددی"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
+msgid "Show Thousands Separators"
+msgstr "نمایش جداساز هزارها"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
+msgid "Show Trailing Zeroes"
+msgstr "نمایش صفرهای انتهایی"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+msgid "Source currency"
+msgstr "ارز منبع"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Source units"
+msgstr "واحدهای منبع"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "Target currency"
+msgstr "ارز هدف"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "Target units"
+msgstr "واحدهای هدف"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The angle units to use"
+msgstr "واحدهای زاویه حهت استفاده"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+msgid "The button mode"
+msgstr "حالت دکمه‌ای"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The format to display numbers in"
+msgstr "قالبی که اعداد به شکل آن نمایش داده می‌شوند"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+msgid "The number of digits displayed after the numeric point"
+msgstr "تعداد ارقام جهت نمایش پس از اعشار"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+msgid "The numeric base"
+msgstr "پایه عددی"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
+msgid "The size of the words used in bitwise operations"
+msgstr "اندازه کلمات جهت استفاده در اعمال مربوط به علمگر بیتی"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+msgid "Units of the current calculation"
+msgstr "واحدهای محاسبه‌ی فعلی"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+msgid "Units to convert the current calculation into"
+msgstr "واحدها جهت تبدیل محاسبه فعلی به آن"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
+msgid "Word size"
+msgstr "اندازه کلمه"
+
+#: ../src/currency-manager.c:30
+msgid "UAE Dirham"
+msgstr "درهم امارات متحده عربی"
+
+#: ../src/currency-manager.c:31
+msgid "Australian Dollar"
+msgstr "دلار استرالیایی"
+
+#: ../src/currency-manager.c:32
+msgid "Bulgarian Lev"
+msgstr "لف بلغارستان"
+
+#: ../src/currency-manager.c:33
+msgid "Bahraini Dinar"
+msgstr "دینار بحرینی"
+
+#: ../src/currency-manager.c:34
+msgid "Brunei Dollar"
+msgstr "دلار برونئی"
+
+#: ../src/currency-manager.c:35
+msgid "Brazilian Real"
+msgstr "رئال برزیلی"
+
+#: ../src/currency-manager.c:36
+msgid "Botswana Pula"
+msgstr "پولا بوتسوانا"
+
+#: ../src/currency-manager.c:37
+msgid "Canadian Dollar"
+msgstr "دلار کانادایی"
+
+#: ../src/currency-manager.c:38
+msgid "Swiss Franc"
+msgstr "فرانک سوئیس"
+
+#: ../src/currency-manager.c:39
+msgid "Chilean Peso"
+msgstr "پزو شیلی"
+
+#: ../src/currency-manager.c:40
+msgid "Chinese Yuan"
+msgstr "یوآن چینی"
+
+#: ../src/currency-manager.c:41
+msgid "Colombian Peso"
+msgstr "پزو کلمبیایی"
+
+#: ../src/currency-manager.c:42
+msgid "Czech Koruna"
+msgstr "کرون چک"
+
+#: ../src/currency-manager.c:43
+msgid "Danish Krone"
+msgstr "کرون دانمارک"
+
+#: ../src/currency-manager.c:44
+msgid "Algerian Dinar"
+msgstr "دینار الجزیره"
+
+#: ../src/currency-manager.c:45
+msgid "Estonian Kroon"
+msgstr "کرون استونی"
+
+#: ../src/currency-manager.c:46
+msgid "Euro"
+msgstr "یورو"
+
+#: ../src/currency-manager.c:47
+msgid "Pound Sterling"
+msgstr "پوند استرلینگ"
+
+#: ../src/currency-manager.c:48
+msgid "Hong Kong Dollar"
+msgstr "دلار هنگ کونگ"
+
+#: ../src/currency-manager.c:49
+msgid "Croatian Kuna"
+msgstr "کونا کروواسی"
+
+#: ../src/currency-manager.c:50
+msgid "Hungarian Forint"
+msgstr "فورینت مجارستان"
+
+#: ../src/currency-manager.c:51
+msgid "Indonesian Rupiah"
+msgstr "روپیه اندونزی"
+
+#: ../src/currency-manager.c:52
+msgid "Israeli New Shekel"
+msgstr "نیو شکل اسرائیل"
+
+#: ../src/currency-manager.c:53
+msgid "Indian Rupee"
+msgstr "روپیه هند"
+
+#: ../src/currency-manager.c:54
+msgid "Iranian Rial"
+msgstr "ریال ایرانی"
+
+#: ../src/currency-manager.c:55
+msgid "Icelandic Krona"
+msgstr "کرون ایسلند"
+
+#: ../src/currency-manager.c:56
+msgid "Japanese Yen"
+msgstr "ین ژاپنی"
+
+#: ../src/currency-manager.c:57
+msgid "South Korean Won"
+msgstr "وون کره‌جنوبی"
+
+#: ../src/currency-manager.c:58
+msgid "Kuwaiti Dinar"
+msgstr "دینار کویتی"
+
+#: ../src/currency-manager.c:59
+msgid "Kazakhstani Tenge"
+msgstr "تنگه قزاقستان"
+
+#: ../src/currency-manager.c:60
+msgid "Sri Lankan Rupee"
+msgstr "روپیه سریلانکا"
+
+#: ../src/currency-manager.c:61
+msgid "Lithuanian Litas"
+msgstr "لیتاس لیتوانی"
+
+#: ../src/currency-manager.c:62
+msgid "Latvian Lats"
+msgstr "لاتس لتونی"
+
+#: ../src/currency-manager.c:63
+msgid "Libyan Dinar"
+msgstr "دینار لیبیایی"
+
+#: ../src/currency-manager.c:64
+msgid "Mauritian Rupee"
+msgstr "روپیه موریس"
+
+#: ../src/currency-manager.c:65
+msgid "Mexican Peso"
+msgstr "پزو مکزیکی"
+
+#: ../src/currency-manager.c:66
+msgid "Malaysian Ringgit"
+msgstr "رینگیت مالزی"
+
+#: ../src/currency-manager.c:67
+msgid "Norwegian Krone"
+msgstr "کرون نروژ"
+
+#: ../src/currency-manager.c:68
+msgid "Nepalese Rupee"
+msgstr "روپیه نپال"
+
+#: ../src/currency-manager.c:69
+msgid "New Zealand Dollar"
+msgstr "دلار نیوزیلند"
+
+#: ../src/currency-manager.c:70
+msgid "Omani Rial"
+msgstr "ریال عمان"
+
+#: ../src/currency-manager.c:71
+msgid "Peruvian Nuevo Sol"
+msgstr "نوئو سول پرو"
+
+#: ../src/currency-manager.c:72
+msgid "Philippine Peso"
+msgstr "پزو فیلیپین"
+
+#: ../src/currency-manager.c:73
+msgid "Pakistani Rupee"
+msgstr "روپیه پاکستان"
+
+#: ../src/currency-manager.c:74
+msgid "Polish Zloty"
+msgstr "زلاتی هلند"
+
+#: ../src/currency-manager.c:75
+msgid "Qatari Riyal"
+msgstr "ریال قطر"
+
+#: ../src/currency-manager.c:76
+msgid "New Romanian Leu"
+msgstr "لئو رومانی جدید"
+
+#: ../src/currency-manager.c:77
+msgid "Russian Rouble"
+msgstr "روبل روسی"
+
+#: ../src/currency-manager.c:78
+msgid "Saudi Riyal"
+msgstr "ریال صعودی"
+
+#: ../src/currency-manager.c:79
+msgid "Swedish Krona"
+msgstr "کرون اتریش"
+
+#: ../src/currency-manager.c:80
+msgid "Singapore Dollar"
+msgstr "دلار سنگاپور"
+
+#: ../src/currency-manager.c:81
+msgid "Thai Baht"
+msgstr "بات تایلند"
+
+#: ../src/currency-manager.c:82
+msgid "Tunisian Dinar"
+msgstr "دینار ترکیه"
+
+#: ../src/currency-manager.c:83
+msgid "New Turkish Lira"
+msgstr "لیره جدید ترکیه"
+
+#: ../src/currency-manager.c:84
+msgid "T&T Dollar (TTD)"
+msgstr "دلار T&T (TTD)"
+
+#: ../src/currency-manager.c:85
+msgid "US Dollar"
+msgstr "دلار آمریکا"
+
+#: ../src/currency-manager.c:86
+msgid "Uruguayan Peso"
+msgstr "پزو اروگوئه"
+
+#: ../src/currency-manager.c:87
+msgid "Venezuelan Bolívar"
+msgstr "بولیوار ونزوئلا"
+
+#: ../src/currency-manager.c:88
+msgid "South African Rand"
+msgstr "رند آفریقا جنوبی"
+
+#: ../src/financial.c:70
+msgid "Error: the number of periods must be positive"
+msgstr "خطا: تعداد دوره‌ها باید مثبت باشند"
+
+#. Description on how to use gcalctool displayed on command-line
+#: ../src/gcalctool.c:77
+#, c-format
+msgid ""
+"Usage:\n"
+"  %s — Perform mathematical calculations"
+msgstr ""
+"Usage:\n"
+"  %s — Perform mathematical calculations"
+
+#. Description on gcalctool command-line help options displayed on command-line
+#: ../src/gcalctool.c:85
+#, c-format
+msgid ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+msgstr ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+
+#. Description on gcalctool command-line GTK+ options displayed on command-line
+#: ../src/gcalctool.c:96
+#, c-format
+msgid ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window manager\n"
+"  --name=NAME                     Program name as used by the window manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+msgstr ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window manager\n"
+"  --name=NAME                     Program name as used by the window manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+
+#. Description on gcalctool application options displayed on command-line
+#: ../src/gcalctool.c:110
+#, c-format
+msgid ""
+"Application Options:\n"
+"  -s, --solve <equation>          Solve the given equation"
+msgstr ""
+"Application Options:\n"
+"  -s, --solve <equation>          Solve the given equation"
+
+#. Error printed to stderr when user uses --solve argument without an equation
+#: ../src/gcalctool.c:154
+#, c-format
+msgid "Argument --solve requires an equation to solve"
+msgstr "Argument --solve requires an equation to solve"
+
+#. Error printed to stderr when user provides an unknown command-line argument
+#: ../src/gcalctool.c:164
+#, c-format
+msgid "Unknown argument '%s'"
+msgstr "آرگومان ناشناس «%s»"
+
+#. Tooltip for the Pi button
+#: ../src/math-buttons.c:96
+msgid "Pi [Ctrl+P]"
+msgstr "پی [Ctrl+P]"
+
+#. Tooltip for the Euler's Number button
+#: ../src/math-buttons.c:99
+msgid "Euler’s Number"
+msgstr "عدد اولر"
+
+#. Tooltip for the subscript button
+#: ../src/math-buttons.c:104
+msgid "Subscript mode [Alt]"
+msgstr "حالت زیرنویس [Alt]"
+
+#. Tooltip for the superscript button
+#: ../src/math-buttons.c:107
+msgid "Superscript mode [Ctrl]"
+msgstr "حالت بالانویس [Ctrl]"
+
+#. Tooltip for the scientific exponent button
+#: ../src/math-buttons.c:110
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "توان علمی [Ctrl+E]"
+
+#. Tooltip for the add button
+#: ../src/math-buttons.c:113
+msgid "Add [+]"
+msgstr "جمع [+]"
+
+#. Tooltip for the subtract button
+#: ../src/math-buttons.c:116
+msgid "Subtract [-]"
+msgstr "تفریق [-]"
+
+#. Tooltip for the multiply button
+#: ../src/math-buttons.c:119
+msgid "Multiply [*]"
+msgstr "ضرب [*]"
+
+#. Tooltip for the divide button
+#: ../src/math-buttons.c:122
+msgid "Divide [/]"
+msgstr "تقسیم [/]"
+
+#. Tooltip for the modulus divide button
+#: ../src/math-buttons.c:125
+msgid "Modulus divide"
+msgstr "باقیمانده تقسیم"
+
+#. Tooltip for the additional functions button
+#: ../src/math-buttons.c:128
+msgid "Additional Functions"
+msgstr "توابع اضافی"
+
+#. Tooltip for the exponent button
+#: ../src/math-buttons.c:131
+msgid "Exponent [^ or **]"
+msgstr "توان [^ یا **]"
+
+#. Tooltip for the square button
+#: ../src/math-buttons.c:134
+msgid "Square [Ctrl+2]"
+msgstr "مربع [Ctrl+2]"
+
+#. Tooltip for the percentage button
+#: ../src/math-buttons.c:137
+msgid "Percentage [%]"
+msgstr "درصد [%]"
+
+#. Tooltip for the factorial button
+#: ../src/math-buttons.c:140
+msgid "Factorial [!]"
+msgstr "فاکتوریل [!]"
+
+#. Tooltip for the absolute value button
+#: ../src/math-buttons.c:143
+msgid "Absolute value [|]"
+msgstr "قدر مطلق [|]"
+
+#. Tooltip for the complex argument component button
+#: ../src/math-buttons.c:146
+msgid "Complex argument"
+msgstr "آرگومان پیچیده"
+
+#. Tooltip for the complex conjugate button
+#: ../src/math-buttons.c:149
+msgid "Complex conjugate"
+msgstr ""
+
+#. Tooltip for the root button
+#: ../src/math-buttons.c:152
+msgid "Root [Ctrl+R]"
+msgstr "ریشه [Ctrl+R]"
+
+#. Tooltip for the square root button
+#: ../src/math-buttons.c:155
+msgid "Square root [Ctrl+R]"
+msgstr "ریشه‌ی دوم [Ctrl+R]"
+
+#. Tooltip for the logarithm button
+#: ../src/math-buttons.c:158
+msgid "Logarithm"
+msgstr "لوگاریتم"
+
+#. Tooltip for the natural logarithm button
+#: ../src/math-buttons.c:161
+msgid "Natural Logarithm"
+msgstr "لگاریتم طبیعی"
+
+#. Tooltip for the sine button
+#: ../src/math-buttons.c:164
+msgid "Sine"
+msgstr "سینوس"
+
+#. Tooltip for the cosine button
+#: ../src/math-buttons.c:167
+msgid "Cosine"
+msgstr "کسینوس"
+
+#. Tooltip for the tangent button
+#: ../src/math-buttons.c:170
+msgid "Tangent"
+msgstr "تانژانت"
+
+#. Tooltip for the hyperbolic sine button
+#: ../src/math-buttons.c:173
+msgid "Hyperbolic Sine"
+msgstr "سینوس شبه هذلولی"
+
+#. Tooltip for the hyperbolic cosine button
+#: ../src/math-buttons.c:176
+msgid "Hyperbolic Cosine"
+msgstr "کسینوس شبه هذلولی"
+
+#. Tooltip for the hyperbolic tangent button
+#: ../src/math-buttons.c:179
+msgid "Hyperbolic Tangent"
+msgstr "تانژانت شبه هذلولی"
+
+#. Tooltip for the inverse button
+#: ../src/math-buttons.c:182
+msgid "Inverse [Ctrl+I]"
+msgstr "معکوس [Ctrl+I]"
+
+#. Tooltip for the boolean AND button
+#: ../src/math-buttons.c:185
+msgid "Boolean AND"
+msgstr "مقدار بولی AND"
+
+#. Tooltip for the boolean OR button
+#: ../src/math-buttons.c:188
+msgid "Boolean OR"
+msgstr "مقدار بولی OR"
+
+#. Tooltip for the exclusive OR button
+#: ../src/math-buttons.c:191
+msgid "Boolean Exclusive OR"
+msgstr "مقدار بولی Exclusive OR"
+
+#. Tooltip for the boolean NOT button
+#: ../src/math-buttons.c:194
+msgid "Boolean NOT"
+msgstr "مقدار بولی NOT"
+
+#. Tooltip for the integer component button
+#: ../src/math-buttons.c:197
+#: ../src/math-buttons.c:1041
+msgid "Integer Component"
+msgstr "جزء صحیح"
+
+#. Tooltip for the fractional component button
+#: ../src/math-buttons.c:200
+#: ../src/math-buttons.c:1043
+msgid "Fractional Component"
+msgstr "جزء کسری"
+
+#. Tooltip for the real component button
+#: ../src/math-buttons.c:203
+msgid "Real Component"
+msgstr "جزء واقعی"
+
+#. Tooltip for the imaginary component button
+#: ../src/math-buttons.c:206
+msgid "Imaginary Component"
+msgstr "جزء مجازی"
+
+#. Tooltip for the ones' complement button
+#: ../src/math-buttons.c:209
+msgid "Ones' Complement"
+msgstr ""
+
+#. Tooltip for the two's complement button
+#: ../src/math-buttons.c:212
+msgid "Two's Complement"
+msgstr ""
+
+#. Tooltip for the truncate button
+#: ../src/math-buttons.c:215
+msgid "Truncate"
+msgstr "Truncate"
+
+#. Tooltip for the start group button
+#: ../src/math-buttons.c:218
+msgid "Start Group [(]"
+msgstr "شروع گروه [(]"
+
+#. Tooltip for the end group button
+#: ../src/math-buttons.c:221
+msgid "End Group [)]"
+msgstr "انتها گروه [)]"
+
+#. Tooltip for the solve button
+#: ../src/math-buttons.c:230
+msgid "Calculate Result"
+msgstr "محاسبه‌ی نتیجه"
+
+#. Tooltip for the factor button
+#: ../src/math-buttons.c:233
+msgid "Factorize [Ctrl+F]"
+msgstr "فاکتور [Ctrl+F]"
+
+#. Tooltip for the clear button
+#: ../src/math-buttons.c:236
+msgid "Clear Display [Escape]"
+msgstr "پاک کردن نمایشگر [Escape]"
+
+#. Tooltip for the undo button
+#: ../src/math-buttons.c:239
+msgid "Undo [Ctrl+Z]"
+msgstr "برگردان [Ctrl+Z]"
+
+#. Tooltip for the double declining depreciation button
+#: ../src/math-buttons.c:251
+msgid "Double Declining Depreciation"
+msgstr "استهلاک با شیب مضاعف"
+
+#. Tooltip for the financial term button
+#: ../src/math-buttons.c:257
+msgid "Financial Term"
+msgstr "دوره مالی"
+
+#. Tooltip for the sum of the years digits depreciation button
+#: ../src/math-buttons.c:260
+msgid "Sum of the Years Digits Depreciation"
+msgstr "استهلاک مجموع سنوات"
+
+#. Tooltip for the straight line depreciation button
+#: ../src/math-buttons.c:263
+msgid "Straight Line Depreciation"
+msgstr "استهلاک خط مستقیم"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+#: ../src/math-buttons.c:653
+msgid "Binary"
+msgstr "دودویی"
+
+#. Number display mode combo: Octal, e.g. 2322₈
+#: ../src/math-buttons.c:657
+msgid "Octal"
+msgstr "هشت‌هشتی"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../src/math-buttons.c:661
+msgid "Decimal"
+msgstr "اعشاری"
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#: ../src/math-buttons.c:665
+msgid "Hexadecimal"
+msgstr "شانزده‌شانزدهی‏"
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#: ../src/math-buttons.c:951
+#: ../src/math-buttons.c:995
+#, c-format
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "_‏%Id رقم"
+
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#: ../src/math-buttons.c:955
+#: ../src/math-buttons.c:999
+#, c-format
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%Id رقم"
+
+#. Tooltip for the round button
+#: ../src/math-buttons.c:1045
+msgid "Round"
+msgstr "گرد کردن"
+
+#. Tooltip for the floor button
+#: ../src/math-buttons.c:1047
+msgid "Floor"
+msgstr "کف"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1049
+msgid "Ceiling"
+msgstr "سقف"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1051
+msgid "Sign"
+msgstr "Sign"
+
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.c:412
+msgid " in "
+msgstr " in "
+
+#. Tooltip for swap conversion button
+#: ../src/math-converter.c:427
+msgid "Switch conversion units"
+msgstr "تعویض واحدهای تبدیل"
+
+#. Error shown when trying to undo with no undo history
+#: ../src/math-equation.c:458
+msgid "No undo history"
+msgstr "بدون تاریخچه برگردان"
+
+#. Error shown when trying to redo with no redo history
+#: ../src/math-equation.c:485
+msgid "No redo history"
+msgstr "بدون تاریخچه انجام دوباره"
+
+#: ../src/math-equation.c:943
 msgid "No sane value to store"
 msgstr "مقدار معقولی برای ذخیره کردن موجود نیست"
 
-#: ../gcalctool/functions.c:988
-msgid "Malformed function"
-msgstr "تابع معیوب"
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/math-equation.c:1225
+msgid "Overflow. Try a bigger word size"
+msgstr "اضافی. یک کلمه با اندازه بزرگتر امتحان کنید"
 
-#: ../gcalctool/functions.c:1167
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "با نمایش پاک شده، پیشوند بدون عملگر مجاز نیست"
-
-#: ../gcalctool/functions.c:1191
-msgid "Malformed parenthesis expression"
-msgstr "عبارت پرانتزدار معیوب"
-
-#: ../gcalctool/functions.c:1492
-msgid "Numeric stack error"
-msgstr "خطای پشتهٔ عددی"
-
-#: ../gcalctool/functions.c:1513
-msgid "Operand stack error"
-msgstr "خطای پشتهٔ عملگر"
-
-#: ../gcalctool/get.c:153
-msgid "-a needs accuracy value"
-msgstr "-a مقدار دقیق لازم دارد"
-
-#: ../gcalctool/get.c:157 ../gcalctool/get.c:311
+#. Error displayed to user when they an unknown variable is entered
+#: ../src/math-equation.c:1230
 #, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: دقت باید در دامنهٔ ۰-%Id باشد\n"
+msgid "Unknown variable '%s'"
+msgstr "متغیر ناشناس «%s»"
 
-#: ../gcalctool/get.c:182
+#. Error displayed to user when an unknown function is entered
+#: ../src/math-equation.c:1235
 #, c-format
-msgid "%s: %s as next argument.\n"
-msgstr "%s: %s به عنوان آرگومان بعدی.\n"
+msgid "Function '%s' is not defined"
+msgstr "تابع «%s» تعریف نشد است"
 
-#. No calculator error initially.
-#. Not entering an exponent number.
-#. No pending arithmetic operation.
-#. No User supplied title line.
-#: ../gcalctool/get.c:269
-msgid "calculator"
-msgstr "ماشین‌حساب"
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../src/math-equation.c:1240
+msgid "Unknown conversion"
+msgstr "تبدیل ناشناس"
 
-#: ../gcalctool/get.c:331
-#, c-format
-msgid "%s: base should be 2, 8, 10 or 16\n"
-msgstr "%s: مبنا باید ۲،۸،۱۰ یا ۱۶ باشد\n"
+#. Error displayed to user when they enter an invalid calculation
+#: ../src/math-equation.c:1249
+msgid "Malformed expression"
+msgstr "عبارت معیوب"
 
-#: ../gcalctool/get.c:346
-#, c-format
-msgid "%s: invalid display mode [%s]\n"
-msgstr "%s: حالت نمایش نامعتبر [%s]\n"
+#: ../src/math-equation.c:1263
+msgid "Calculating"
+msgstr "درحال محاسبه"
 
-#: ../gcalctool/get.c:361
-#, c-format
-msgid "%s: invalid mode [%s]\n"
-msgstr "%s: حالت نامعتبر [%s]\n"
+#. Error displayed when trying to factorize a non-integer value
+#: ../src/math-equation.c:1385
+msgid "Need an integer to factorize"
+msgstr "یک عدد صحیح جهت فاکتور کردن لازم است"
 
-#: ../gcalctool/get.c:375
-#, c-format
-msgid "%s: invalid trigonometric mode [%s]\n"
-msgstr "%s: حالت مثلثاتی نامعتبر [%s]\n"
+#. This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/math-equation.c:1460
+msgid "No sane value to bitwise shift"
+msgstr "مقدار معقولی برای تبدیل عملگر بیای نیست"
 
-#: ../gcalctool/get.c:393
-#, c-format
-msgid "%s: invalid syntax mode [%s]\n"
-msgstr "%s: حالت نحوی نامعتبر [%s]\n"
-
-#: ../gcalctool/get.c:440
-#, c-format
-msgid ""
-"%s version %s\n"
-"\n"
+#. Message displayed when cannot toggle bit in display
+#: ../src/math-equation.c:1491
+msgid "Displayed value not an integer"
 msgstr ""
-"%s نسخهٔ %s\n"
-"\n"
 
-#: ../gcalctool/get.c:441
+#. Digits localized for the given language
+#: ../src/math-equation.c:1916
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "۰,۱,۲,۳,۴,۵,۶,۷,۸,۹,A,B,C,D,E,F"
+
+#. Label on close button in preferences dialog
+#: ../src/math-preferences.c:236
+msgid "_Close"
+msgstr "_خروج"
+
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.c:246
+#: ../src/unit-manager.c:54
+msgid "Degrees"
+msgstr "درجه"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.c:250
+#: ../src/unit-manager.c:55
+msgid "Radians"
+msgstr "رادیان"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.c:254
+#: ../src/unit-manager.c:56
+msgid "Gradians"
+msgstr "گرادیان"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
+#: ../src/math-preferences.c:264
+msgid "Automatic"
+msgstr "خودکار"
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:268
+msgid "Fixed"
+msgstr "ثابت"
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.c:272
+msgid "Scientific"
+msgstr "علمی"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.c:276
+msgid "Engineering"
+msgstr "مهندسی"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/math-preferences.c:287
 #, c-format
-msgid "Usage: %s: [-D] [-E] [-a accuracy] "
-msgstr "طرز استفاده:  %s: [-D] [-E] [-a دقت] "
-
-#: ../gcalctool/get.c:442
-msgid "\t\t [-?] [-v] [-?]\n"
-msgstr "\t\t [-?] [-v] [-?]\n"
-
-#: ../gcalctool/gtk.c:239
-msgid "_Calculator"
-msgstr "_ماشین‌حساب"
-
-#: ../gcalctool/gtk.c:240
-msgid "_Edit"
-msgstr "_ویرایش"
-
-#: ../gcalctool/gtk.c:241
-msgid "_View"
-msgstr "_نما"
-
-#: ../gcalctool/gtk.c:242
-msgid "_Help"
-msgstr "_راهنما"
-
-#: ../gcalctool/gtk.c:245
-msgid "Quit the calculator"
-msgstr "ترک ماشین‌حساب"
-
-#: ../gcalctool/gtk.c:248
-msgid "Copy selection"
-msgstr "نسخه برداری از انتخاب‌شده‌ها"
-
-#: ../gcalctool/gtk.c:250
-msgid "Paste selection"
-msgstr "چسباندن انتخاب‌شده‌ها"
-
-#: ../gcalctool/gtk.c:251
-msgid "_Insert ASCII Value..."
-msgstr "_درج مقدار‏ ASCII..."
-
-#: ../gcalctool/gtk.c:252
-msgid "Insert ASCII value"
-msgstr "درج مقدار ASCII"
-
-#: ../gcalctool/gtk.c:253
-msgid "_Undo"
-msgstr "_برگردان"
-
-#: ../gcalctool/gtk.c:254
-msgid "Undo"
-msgstr "برگردان کنش"
-
-#: ../gcalctool/gtk.c:255
-msgid "_Redo"
-msgstr "_دوباره"
-
-#: ../gcalctool/gtk.c:256
-msgid "Redo"
-msgstr "انجام دوبارهٔ کنش"
-
-#: ../gcalctool/gtk.c:261
-msgid "Show help contents"
-msgstr "نمایش محتویات راهنما"
-
-#: ../gcalctool/gtk.c:264
-msgid "Show the About Gcalctool dialog"
-msgstr "نشان دادن محاورهٔ دربارهٔ ماشین‌حساب گنوم"
-
-#: ../gcalctool/gtk.c:266 ../gcalctool/gtk.c:297
-msgid "_1 place"
-msgstr "_‏۱ رقم"
-
-#: ../gcalctool/gtk.c:267 ../gcalctool/gtk.c:298
-msgid "1 place"
-msgstr "‏۱ رقم"
-
-#: ../gcalctool/gtk.c:268 ../gcalctool/gtk.c:299
-msgid "_2 places"
-msgstr "_‏۲ رقم"
-
-#: ../gcalctool/gtk.c:269 ../gcalctool/gtk.c:300
-msgid "2 places"
-msgstr "‏۲ رقم"
-
-#: ../gcalctool/gtk.c:270 ../gcalctool/gtk.c:301
-msgid "_3 places"
-msgstr "_‏۳ رقم"
-
-#: ../gcalctool/gtk.c:271 ../gcalctool/gtk.c:302
-msgid "3 places"
-msgstr "‏۳ رقم"
-
-#: ../gcalctool/gtk.c:272 ../gcalctool/gtk.c:303
-msgid "_4 places"
-msgstr "_‏۴ رقم"
-
-#: ../gcalctool/gtk.c:273 ../gcalctool/gtk.c:304
-msgid "4 places"
-msgstr "‏۴ رقم"
-
-#: ../gcalctool/gtk.c:274 ../gcalctool/gtk.c:305
-msgid "_5 places"
-msgstr "_‏۵ رقم"
-
-#: ../gcalctool/gtk.c:275 ../gcalctool/gtk.c:306
-msgid "5 places"
-msgstr "‏۵ رقم"
-
-#: ../gcalctool/gtk.c:276 ../gcalctool/gtk.c:307
-msgid "_6 places"
-msgstr "_‏۶ رقم"
-
-#: ../gcalctool/gtk.c:277 ../gcalctool/gtk.c:308
-msgid "6 places"
-msgstr "‏۶ رقم"
-
-#: ../gcalctool/gtk.c:278 ../gcalctool/gtk.c:309
-msgid "_7 places"
-msgstr "_‏۷ رقم"
-
-#: ../gcalctool/gtk.c:279 ../gcalctool/gtk.c:310
-msgid "7 places"
-msgstr "‏۷ رقم"
-
-#: ../gcalctool/gtk.c:280 ../gcalctool/gtk.c:311
-msgid "_8 places"
-msgstr "_‏۸ رقم"
-
-#: ../gcalctool/gtk.c:281 ../gcalctool/gtk.c:312
-msgid "8 places"
-msgstr "‏۸ رقم"
-
-#: ../gcalctool/gtk.c:282 ../gcalctool/gtk.c:313
-msgid "_9 places"
-msgstr "_‏۹ رقم"
-
-#: ../gcalctool/gtk.c:283 ../gcalctool/gtk.c:314
-msgid "9 places"
-msgstr "‏۹ رقم"
-
-#: ../gcalctool/gtk.c:284 ../gcalctool/gtk.c:285 ../gcalctool/gtk.c:315
-#: ../gcalctool/gtk.c:316
-msgid "10 places"
-msgstr "‏۱۰ رقم"
-
-#: ../gcalctool/gtk.c:286 ../gcalctool/gtk.c:287 ../gcalctool/gtk.c:317
-#: ../gcalctool/gtk.c:318
-msgid "11 places"
-msgstr "‏۱۱ رقم"
-
-#: ../gcalctool/gtk.c:288 ../gcalctool/gtk.c:289 ../gcalctool/gtk.c:319
-#: ../gcalctool/gtk.c:320
-msgid "12 places"
-msgstr "‏۱۲ رقم"
-
-#: ../gcalctool/gtk.c:290 ../gcalctool/gtk.c:291 ../gcalctool/gtk.c:321
-#: ../gcalctool/gtk.c:322
-msgid "13 places"
-msgstr "‏۱۳ رقم"
-
-#: ../gcalctool/gtk.c:292 ../gcalctool/gtk.c:293 ../gcalctool/gtk.c:323
-#: ../gcalctool/gtk.c:324
-msgid "14 places"
-msgstr "‏۱۴ رقم"
-
-#: ../gcalctool/gtk.c:294 ../gcalctool/gtk.c:295 ../gcalctool/gtk.c:325
-#: ../gcalctool/gtk.c:326
-msgid "15 places"
-msgstr "‏۱۵ رقم"
-
-#: ../gcalctool/gtk.c:330 ../gcalctool/gtk.c:336
-msgid "Show _Trailing Zeroes"
-msgstr "نمایش _صفرهای انتهایی"
-
-#: ../gcalctool/gtk.c:331 ../gcalctool/gtk.c:337
-msgid "Show trailing zeroes"
-msgstr "نمایش صفرهای انتهایی"
-
-#: ../gcalctool/gtk.c:332
-msgid "Show T_housands Separator"
-msgstr "نمایش _جداساز هزارها"
-
-#: ../gcalctool/gtk.c:333
-msgid "Show thousands separator"
-msgstr "نمایش جداساز هزارها"
-
-#: ../gcalctool/gtk.c:334
-msgid "_Memory Registers"
-msgstr "ثبات‌های _حافظه"
-
-#: ../gcalctool/gtk.c:335
-msgid "Show memory registers"
-msgstr "نمایش ثبات‌های حافظه"
-
-#: ../gcalctool/gtk.c:338
-msgid "_Use Arithmetic Precedence"
-msgstr "_استفاده از تقدم محاسباتی"
-
-#: ../gcalctool/gtk.c:339
-msgid "Use Arithmetic Precedence"
-msgstr "استفاده از تقدم محاسباتی"
-
-#: ../gcalctool/gtk.c:343
-msgid "_0 significant places"
-msgstr "_‏۰ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:344
-msgid "0 significant places"
-msgstr "‏۰ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:345
-msgid "_1 significant place"
-msgstr "_‏۱ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:346
-msgid "1 significant place"
-msgstr "‏۱ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:347
-msgid "_2 significant places"
-msgstr "_‏۲ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:348
-msgid "2 significant places"
-msgstr "‏۲ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:349
-msgid "_3 significant places"
-msgstr "_‏۳ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:350
-msgid "3 significant places"
-msgstr "‏۳ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:351
-msgid "_4 significant places"
-msgstr "_‏۴ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:352
-msgid "4 significant places"
-msgstr "‏۴ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:353
-msgid "_5 significant places"
-msgstr "_‏۵ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:354
-msgid "5 significant places"
-msgstr "‏۵ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:355
-msgid "_6 significant places"
-msgstr "_‏۶ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:356
-msgid "6 significant places"
-msgstr "‏۶ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:357
-msgid "_7 significant places"
-msgstr "_‏۷ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:358
-msgid "7 significant places"
-msgstr "‏۷ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:359
-msgid "_8 significant places"
-msgstr "_‏۸ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:360
-msgid "8 significant places"
-msgstr "‏۸ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:361
-msgid "_9 significant places"
-msgstr "_‏۹ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:362
-msgid "9 significant places"
-msgstr "‏۹ رقم معنی‌دار"
-
-#: ../gcalctool/gtk.c:363
-msgid "_Other (10) ..."
-msgstr "_غیره )۱۰("
-
-#: ../gcalctool/gtk.c:364
-msgid "Set other precision"
-msgstr "تنظیم ارقام اعشار دقت به مقدار دیگر"
-
-#: ../gcalctool/gtk.c:368
-msgid "_Basic"
-msgstr "ا_بتدایی"
-
-#: ../gcalctool/gtk.c:370
-msgid "_Advanced"
-msgstr "_پیشرفته"
-
-#: ../gcalctool/gtk.c:372
-msgid "_Financial"
-msgstr "_مالی"
-
-#: ../gcalctool/gtk.c:374
-msgid "_Scientific"
-msgstr "_علمی"
-
-#: ../gcalctool/gtk.c:536
+msgid "Show %d decimal _places"
+msgstr "نمایش %Id رقم _اعشاری"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/math-window.c:172
+msgid "Unable to open help file"
+msgstr "نمی‌توان پرونده‌ی راهنما را باز کرد"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/math-window.c:204
 msgid "translator-credits"
 msgstr ""
-" روزبه پورنادر <roozbeh@farsiweb.info> \n"
+"آرش موسوی <mousavi.arash@gmail.com>\n"
+"روزبه پورنادر <roozbeh@farsiweb.info> \n"
 "میلاد زکریا <meelad@farsiweb.info>"
 
-#: ../gcalctool/gtk.c:539
+#. The license this software is under (GPL2+)
+#: ../src/math-window.c:207
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
 "the Free Software Foundation; either version 2 of the License, or\n"
 "(at your option) any later version.\n"
-msgstr ""
-
-#: ../gcalctool/gtk.c:543
-msgid ""
+"\n"
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details.\n"
-msgstr ""
-
-#: ../gcalctool/gtk.c:547
-msgid ""
+"\n"
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 msgstr ""
+"برنامه Gcalctool نرم‌افزار آزاد است؛ شما می‌توانید آن را تحت شرایط اجازه‌نامه‌ی\n"
+"همگانی عمومی گنو که بنیاد نرم‌افزارهای آزاد منتشر کرده است،‌ تغییر دهید یا دوباره توزیع کنید.\n"
+"یا نسخه‌ی 2 اجازه‌نامه یا (به اختیار خودتان) هر نسخه‌ی بالاتر دیگری.\n"
+"\n"
+"برنامه gcalctool با این امید توزیع شده است که به درد بخور باشد، اما بدون هر گونه\n"
+"ضمانتی؛ حتی بدون ضمانت ضمنی قابل فروش بودن یا مناسب بودن برای یک هدف\n"
+"مشخص. برای جزئیات بیشتر به اجازه‌نامه‌ی همگانی عمومی گنو را ببینید.\n"
+"\n"
+"شما باید به همراه Gcalctool نسخه‌ای از اجازه‌نامه‌ی همگانی عمومی گنو\n"
+"دریافت کرده باشد؛ اگر این طور نیست برای شرکت بنیاد نرم افزارهای آزاد\n"
+"به آدرس زیر بنویسید:Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA"
 
-#: ../gcalctool/gtk.c:558
+#. Program name in the about dialog
+#: ../src/math-window.c:224
 msgid "Gcalctool"
 msgstr "ابزار ماشین‌حساب گنوم"
 
-#: ../gcalctool/gtk.c:560
-msgid "© 1987-2006 The Gcalctool authors"
-msgstr ""
+#. Copyright notice in the about dialog
+#: ../src/math-window.c:228
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© ۱۹۸۶-۲۰۱۰ نویسندگان ماشین‌حساب"
 
-#: ../gcalctool/gtk.c:562
+#. Short description in the about dialog
+#: ../src/math-window.c:232
 msgid "Calculator with financial and scientific modes."
-msgstr "ماشین‌حساب با حالت‌های مالی و علمی"
+msgstr "ماشین‌حساب با حالت‌های مالی و علمی."
 
-#: ../gcalctool/gtk.c:820
-msgid "Insert ASCII Value"
-msgstr "‏درج مقدار ASCII"
+#. Calculator menu
+#: ../src/math-window.c:358
+msgid "_Calculator"
+msgstr "_ماشین‌حساب"
 
-#: ../gcalctool/gtk.c:835
-msgid "Ch_aracter:"
-msgstr "نوی_سه:"
+#. Mode menu
+#: ../src/math-window.c:360
+msgid "_Mode"
+msgstr "_حالت"
 
-#: ../gcalctool/gtk.c:860
-msgid "_Insert"
-msgstr "_درج"
+#. Help menu label
+#: ../src/math-window.c:362
+msgid "_Help"
+msgstr "_راهنما"
 
-#: ../gcalctool/gtk.c:939
-msgid "Edit Constants"
-msgstr "ویرایش ثابت‌ها"
+#. Basic menu label
+#: ../src/math-window.c:364
+msgid "_Basic"
+msgstr "ا_بتدایی"
 
-#: ../gcalctool/gtk.c:939
-msgid "Edit Functions"
-msgstr "ویرایش تابع‌ها"
+#. Advanced menu label
+#: ../src/math-window.c:366
+msgid "_Advanced"
+msgstr "_پیشرفته"
 
-#: ../gcalctool/gtk.c:963
-msgid "Note:"
-msgstr "یادداشت:"
+#. Financial menu label
+#: ../src/math-window.c:368
+msgid "_Financial"
+msgstr "_مالی"
 
-#: ../gcalctool/gtk.c:964
-msgid "All constant values are specified in the decimal numeric base."
-msgstr "همهٔ مقادیر ثابت در مبنای عددی ده‌دهی مشخص شده اند."
+#. Programming menu label
+#: ../src/math-window.c:370
+msgid "_Programming"
+msgstr "_برنامه‌نویسی"
 
-#: ../gcalctool/gtk.c:974
-msgid "Click a _value or description to edit it:"
-msgstr "روی یک مقدار یا توضیح کلیک کنید تا آن را ویرایش کنید:"
+#. Help>Contents menu label
+#: ../src/math-window.c:372
+msgid "_Contents"
+msgstr "_محتویات"
 
-#: ../gcalctool/gtk.c:997
-msgid "No."
-msgstr "شمارهٔ "
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/mp-binary.c:115
+msgid "Boolean AND is only defined for positive integers"
+msgstr "مقدار بولی AND تنها برای اعداد صحیح مثبت تعریف شده است"
 
-#: ../gcalctool/gtk.c:999
-msgid "Value"
-msgstr "مقدار"
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/mp-binary.c:128
+msgid "Boolean OR is only defined for positive integers"
+msgstr "مقدار بولی OR تنها برای اعداد صحیح مثبت تعریف شده است"
 
-#: ../gcalctool/gtk.c:1001
-msgid "Description"
-msgstr "توصیف"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:141
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "مقدار بولی XOR تنها برای اعداد صحیح مثبت تعریف شده است"
 
-#: ../gcalctool/gtk.c:1111
-msgid "_Do not warn me again"
-msgstr "_دیگر اخطار داده نشود"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:156
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "مقدار بولی NOT تنها برای اعداد صحیح مثبت تعریف شده است"
 
-#: ../gcalctool/gtk.c:1117
-msgid ""
-"<big><b>Changing Modes Clears Calculation</b></big>\n"
-"\n"
-"When you change modes, the current calculation will be cleared, and the base "
-"will be reset to decimal."
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/mp-binary.c:187
+msgid "Shift is only possible on integer values"
+msgstr "تبدیل فقط برای مقادیر صحیح امکان‌پذیر است"
+
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/mp.c:148
+msgid "Argument not defined for zero"
+msgstr "آرگومان برای صفر تعریف نشده است"
+
+#: ../src/mp.c:299
+msgid "Overflow: the result couldn't be calculated"
+msgstr "اضافی: نتیجه نمی‌تواند محاسبه شود."
+
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:644
+#: ../src/mp.c:676
+#: ../src/mp.c:1610
+msgid "Division by zero is undefined"
+msgstr "تقسیم بر صفر تعریف نشده است"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1281
+#: ../src/mp.c:1318
+msgid "Logarithm of zero is undefined"
+msgstr "لوگاریتم صفر تعریف نشده است"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1685
+#: ../src/mp.c:1999
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "توان صفر برای برای توان‌های منفی تعریف نشده است"
+
+#: ../src/mp.c:1709
+msgid "Reciprocal of zero is undefined"
 msgstr ""
 
-#: ../gcalctool/gtk.c:1156
-msgid "C_hange Mode"
-msgstr "ت_غییر حالت"
+#: ../src/mp.c:1794
+msgid "Root must be non-zero"
+msgstr "ریشه باید غیر صفر باشد"
 
-#: ../gcalctool/gtk.c:1193
-msgid "Set Precision"
-msgstr "تنظیم دقت"
+#: ../src/mp.c:1812
+msgid "Negative root of zero is undefined"
+msgstr "ریشه منفی صفر تعریف نشده است"
 
-#: ../gcalctool/gtk.c:1208
-msgid "Significant _places:"
-msgstr "_:رقم‌های معنی‌دار"
+#: ../src/mp.c:1818
+msgid "nth root of negative number is undefined for even n"
+msgstr "ان‌امین ریشه از عدد منفی برای n زوج تعریف نشده است"
 
-#: ../gcalctool/gtk.c:1234
-msgid "_Set"
-msgstr "_تنظیم"
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1939
+msgid "Factorial is only defined for natural numbers"
+msgstr "فاکتوریل تنها برای اعداد طبیعی تعریف شده است"
 
-#: ../gcalctool/gtk.c:1458 ../gcalctool/gtk.c:1460 ../gcalctool.desktop.in.h:1
-msgid "Calculator"
-msgstr "ماشین‌حساب"
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1959
+msgid "Modulus division is only defined for integers"
+msgstr "باقیمانده تقسیم تنها برای اعداد صحیح تعریف شده است"
 
-#. translators: R is the short form of register used inter alia
-#. in popup menus
-#: ../gcalctool/gtk.c:1659 ../gcalctool/gtk.c:1803
-msgid "R"
-msgstr "R"
+#. Translators: Error displayed when tangent value is undefined
+#: ../src/mp-trigonometric.c:310
+msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr "تانژانت برای زاویه‌هایی که ضریبی از n ر(180°) از طریق π∕2 ر(90°) هستند تعریف نشده است"
 
-#. Make Hyp and Inv trigonometric check boxes.
-#: ../gcalctool/gtk.c:1727
-msgid "_Inv"
-msgstr "_Inv"
+#. Translators: Error displayed when inverse sine value is undefined
+#: ../src/mp-trigonometric.c:355
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr "سینوس معکوس برای مقادیر خارج از [1, 1-] تعریف نشده است"
 
-#: ../gcalctool/gtk.c:1735
-msgid "H_yp"
-msgstr "H_yp"
+#. Translators: Error displayed when inverse cosine value is undefined
+#: ../src/mp-trigonometric.c:372
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr "کسینوس معکوس برای مقادیر خارج از [1, 1-] تعریف نشده است"
 
-#: ../gcalctool/gtk.c:1794
-msgid "Memory Registers"
-msgstr "ثبات‌های حافظه"
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: ../src/mp-trigonometric.c:591
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
+msgstr "سینوس شبه هذلولی معکوس برای مقادیر کمتر از یک تعریف نشده است"
 
-#: ../gcalctool/gtk.c:1897
-msgid "Edit Constants..."
-msgstr "ویرایش ثابت‌ها..."
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: ../src/mp-trigonometric.c:615
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr "تانژانت شبه هذلولی معکوس برای مقادیر خارج از [1, 1-] تعریف نشده است"
 
-#: ../gcalctool/gtk.c:1897
-msgid "Edit Functions..."
-msgstr "ویرایش تابع‌ها"
-
-#: ../gcalctool/gtk.c:2066
-msgid "Clipboard contained malformed calculation"
-msgstr "تخته‌گیره حاوی محاسبات معیوب است"
-
-#: ../gcalctool/gtk.c:2345
+#: ../src/unit-manager.c:54
 #, c-format
-msgid "Other (%d) ..."
-msgstr "غیره (%Id) ..."
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s درجه"
 
-#: ../gcalctool/gtk.c:2356
+#: ../src/unit-manager.c:54
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "درجه,درجه,deg"
+
+#: ../src/unit-manager.c:55
 #, c-format
-msgid ""
-"Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
-msgstr "تنظیم دقت از ۰ تا %Id رقم. در حال حاضر روی %Id رقم تنظیم شده است. [a]"
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s گرادیان"
 
-#: ../gcalctool/gtk.c:2588
-msgid "Activated no operator precedence mode"
-msgstr "حالت بدون اولویت عملگر فعال شد"
+#: ../src/unit-manager.c:55
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "رادیان,رادیان,rad"
 
-#: ../gcalctool/gtk.c:2598
-msgid "Activated expression mode with operator precedence"
-msgstr "حالت عبارت با اولویت عملگر فعال شد"
+#: ../src/unit-manager.c:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s گرادیان"
 
-#: ../gcalctool/gtk.c:2905
-msgid "Accuracy value out of range"
-msgstr "مقدار دقت خارج از محدوده است"
+#: ../src/unit-manager.c:56
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "گرادیان,گرادیان,grad"
 
-#: ../gcalctool/mp.c:3356
-msgid "Negative X and non-integer Y not supported"
-msgstr "X منفی و Y ناصحیح پشتیبانی نمی‌شوند"
+#: ../src/unit-manager.c:57
+msgid "Parsecs"
+msgstr "پارسِک"
 
-#: ../gcalctool/mpmath.c:268
-msgid "Error, cannot calculate cosine"
-msgstr "خطا، محاسبهٔ کسینوس ممکن نیست"
+#: ../src/unit-manager.c:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
 
-#: ../gcalctool.desktop.in.h:2
-msgid "Perform calculations"
-msgstr "اجرای محاسبات"
+#: ../src/unit-manager.c:57
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "پارسِک,پارسِک,pc"
 
-#~ msgid "+/-"
-#~ msgstr "+/-"
+#: ../src/unit-manager.c:58
+msgid "Light Years"
+msgstr "سال نوری"
 
-#~ msgid "*10^"
-#~ msgstr "×۱۰^"
+#: ../src/unit-manager.c:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s ly"
 
-#~ msgid "Previous expression"
-#~ msgstr "عبارت قبلی"
+#: ../src/unit-manager.c:58
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "سال‌نوری,سال‌نوری,ly"
 
-#~ msgid "abs"
-#~ msgstr "abs"
+#: ../src/unit-manager.c:59
+msgid "Astronomical Units"
+msgstr "واحدهای نجومی"
 
-#~ msgid "acosh"
-#~ msgstr "acosh"
+#: ../src/unit-manager.c:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s au"
 
-#~ msgid "acos"
-#~ msgstr "acos"
+#: ../src/unit-manager.c:59
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "au"
 
-#~ msgid "and"
-#~ msgstr "and"
+#: ../src/unit-manager.c:60
+msgid "Nautical Miles"
+msgstr "مایل دریایی"
 
-#~ msgid "asinh"
-#~ msgstr "asinh"
+#: ../src/unit-manager.c:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr "%s nmi"
 
-#~ msgid "asin"
-#~ msgstr "asin"
+#: ../src/unit-manager.c:60
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "nmi"
 
-#~ msgid "atanh"
-#~ msgstr "atanh"
+#: ../src/unit-manager.c:61
+msgid "Miles"
+msgstr "مایل"
 
-#~ msgid "atan"
-#~ msgstr "atan"
+#: ../src/unit-manager.c:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s mi"
 
-#~ msgid "cbrt"
-#~ msgstr "cbrt"
+#: ../src/unit-manager.c:61
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "مایل,مایل,mi"
 
-#~ msgid "chs"
-#~ msgstr "chs"
+#: ../src/unit-manager.c:62
+msgid "Kilometers"
+msgstr "کیلومتر"
 
-#~ msgid "clr"
-#~ msgstr "clr"
+#: ../src/unit-manager.c:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
 
-#~ msgid "cosh"
-#~ msgstr "cosh"
+#: ../src/unit-manager.c:62
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "کیلومتر,کیلومتر,km,kms"
 
-#~ msgid "cos"
-#~ msgstr "cos"
+#: ../src/unit-manager.c:63
+msgid "Cables"
+msgstr "Cables"
 
-#~ msgid "ddb"
-#~ msgstr "ddb"
+#: ../src/unit-manager.c:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cb"
 
-#~ msgid "exp"
-#~ msgstr "exp"
+#: ../src/unit-manager.c:63
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "cable,cables,cb"
 
-#~ msgid "frac"
-#~ msgstr "frac"
+#: ../src/unit-manager.c:64
+msgid "Fathoms"
+msgstr "فَتوم"
 
-#~ msgid "fv"
-#~ msgstr "fv"
+#: ../src/unit-manager.c:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s ftm"
 
-#~ msgid "int"
-#~ msgstr "int"
+#: ../src/unit-manager.c:64
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "فَتوم,فَتوم,ftm"
 
-#~ msgid "ln"
-#~ msgstr "ln"
+#: ../src/unit-manager.c:65
+msgid "Meters"
+msgstr "متر"
 
-#~ msgid "log"
-#~ msgstr "log"
+#: ../src/unit-manager.c:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
 
-#~ msgid "not"
-#~ msgstr "not"
+#: ../src/unit-manager.c:65
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "متر,متر,m"
 
-#~ msgid "or"
-#~ msgstr "or"
+#: ../src/unit-manager.c:66
+msgid "Yards"
+msgstr "یارد"
 
-#~ msgid "pmt"
-#~ msgstr "pmt"
+#: ../src/unit-manager.c:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
 
-#~ msgid "pv"
-#~ msgstr "pv"
+#: ../src/unit-manager.c:66
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "یارد,یارد,yd"
 
-#~ msgid "rand"
-#~ msgstr "rand"
+#: ../src/unit-manager.c:67
+msgid "Feet"
+msgstr "فوت"
 
-#~ msgid "rate"
-#~ msgstr "rate"
+#: ../src/unit-manager.c:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ft"
 
-#~ msgid "rcl"
-#~ msgstr "rcl"
+#: ../src/unit-manager.c:67
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "فوت,فوت,ft"
 
-#~ msgid "sinh"
-#~ msgstr "sinh"
+#: ../src/unit-manager.c:68
+msgid "Inches"
+msgstr "اینچ"
 
-#~ msgid "sin"
-#~ msgstr "sin"
+#: ../src/unit-manager.c:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s in"
 
-#~ msgid "sln"
-#~ msgstr "sln"
+#: ../src/unit-manager.c:68
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "اینچ,اینچ,in"
 
-#~ msgid "sqrt"
-#~ msgstr "sqrt"
+#: ../src/unit-manager.c:69
+msgid "Centimeters"
+msgstr "سانتی‌متر"
 
-#~ msgid "sto"
-#~ msgstr "sto"
+#: ../src/unit-manager.c:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
 
-#~ msgid "syd"
-#~ msgstr "syd"
+#: ../src/unit-manager.c:69
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "سانتی‌متر,سانتی‌متر,cm,cms"
 
-#~ msgid "tanh"
-#~ msgstr "tanh"
+#: ../src/unit-manager.c:70
+msgid "Millimeters"
+msgstr "میلی‌متر"
 
-#~ msgid "tan"
-#~ msgstr "tan"
+#: ../src/unit-manager.c:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
 
-#~ msgid "term"
-#~ msgstr "term"
+#: ../src/unit-manager.c:70
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "میلی‌متر,میلی‌متر,mm"
 
-#~ msgid "xnor"
-#~ msgstr "xnor"
+#: ../src/unit-manager.c:71
+msgid "Micrometers"
+msgstr "میکرومتر"
 
-#~ msgid "xor"
-#~ msgstr "xor"
+#: ../src/unit-manager.c:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
 
-#~ msgid "_Quit"
-#~ msgstr "تر_ک"
+#: ../src/unit-manager.c:71
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "میکرومتر,میکرومتر,um"
 
-#~ msgid "_Copy"
-#~ msgstr "_نسخه برداری"
+#: ../src/unit-manager.c:72
+msgid "Nanometers"
+msgstr "نانومتر"
 
-#~ msgid "_Paste"
-#~ msgstr "_چسباندن"
+#: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
 
-#~ msgid "_Contents"
-#~ msgstr "محتویات"
+#: ../src/unit-manager.c:72
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "نانومتر,نانومتر,nm"
 
-#~ msgid "_About"
-#~ msgstr "در_باره"
+#: ../src/unit-manager.c:73
+msgid "Hectares"
+msgstr "هکتار"
 
-#~ msgid "ans"
-#~ msgstr "ans"
+#: ../src/unit-manager.c:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
 
-#~ msgid "Basic mode"
-#~ msgstr "حالت ابتدایی"
+#: ../src/unit-manager.c:73
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "هکتار,هکتار,ha"
 
-#~ msgid "Advanced mode"
-#~ msgstr "حالت پیشرفته"
+#: ../src/unit-manager.c:74
+msgid "Acres"
+msgstr "جریب"
 
-#~ msgid "Financial mode"
-#~ msgstr "حالت مالی"
+#: ../src/unit-manager.c:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s acres"
 
-#~ msgid "Scientific mode"
-#~ msgstr "حالت علمی"
+#: ../src/unit-manager.c:74
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "جریب,جریب"
 
-#~ msgid "Show about help"
-#~ msgstr "نمایش راهنما دربارهٔ برنامه"
+#: ../src/unit-manager.c:75
+msgid "Square Meters"
+msgstr "متر مربع"
 
-#~ msgid "BASIC"
-#~ msgstr "ابتدایی"
+#: ../src/unit-manager.c:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
 
-#~ msgid "FINANCIAL"
+#: ../src/unit-manager.c:75
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
+
+#: ../src/unit-manager.c:76
+msgid "Square Centimeters"
+msgstr "سانتی‌متر مربع"
+
+#: ../src/unit-manager.c:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit-manager.c:76
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
+#: ../src/unit-manager.c:77
+msgid "Square Millimeters"
+msgstr "میلی‌متر مربع"
+
+#: ../src/unit-manager.c:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit-manager.c:77
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
+
+#: ../src/unit-manager.c:78
+msgid "Cubic Meters"
+msgstr "متر مکعب"
+
+#: ../src/unit-manager.c:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit-manager.c:78
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
+#: ../src/unit-manager.c:79
+msgid "Gallons"
+msgstr "گالون"
+
+#: ../src/unit-manager.c:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../src/unit-manager.c:79
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "گالون,گالون,gal"
+
+#: ../src/unit-manager.c:80
+msgid "Litres"
+msgstr "لیتر"
+
+#: ../src/unit-manager.c:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s L"
+
+#: ../src/unit-manager.c:80
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "لیتر,لیتر,لیتر,لیتر,L"
+
+#: ../src/unit-manager.c:81
+msgid "Quarts"
+msgstr "کورات"
+
+#: ../src/unit-manager.c:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s qt"
+
+#: ../src/unit-manager.c:81
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "کوارت,کوارت,qt"
+
+#: ../src/unit-manager.c:82
+msgid "Pints"
+msgstr "پاینت"
+
+#: ../src/unit-manager.c:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
+
+#: ../src/unit-manager.c:82
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "پاینت,پاینت,pt"
+
+#: ../src/unit-manager.c:83
+msgid "Millilitres"
+msgstr "میلی‌لیتر"
+
+#: ../src/unit-manager.c:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s mL"
+
+#: ../src/unit-manager.c:83
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "میلی‌متر,میلی‌متر,میلی‌متر,میلی‌متر,mL,cm³"
+
+#: ../src/unit-manager.c:84
+msgid "Microlitres"
+msgstr "میکرومتر"
+
+#: ../src/unit-manager.c:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μL"
+
+#: ../src/unit-manager.c:84
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μL,uL"
+
+#: ../src/unit-manager.c:85
+msgid "Tonnes"
+msgstr "تُن"
+
+#: ../src/unit-manager.c:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s T"
+
+#: ../src/unit-manager.c:85
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "تُن,تُن"
+
+#: ../src/unit-manager.c:86
+msgid "Kilograms"
+msgstr "کیلوگرم"
+
+#: ../src/unit-manager.c:86
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
+
+#: ../src/unit-manager.c:86
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "کیلومتر,کیلوگرم,کیلوگرم,کیلوگرم,kg,kgs"
+
+#: ../src/unit-manager.c:87
+msgid "Pounds"
+msgstr "پوند"
+
+#: ../src/unit-manager.c:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../src/unit-manager.c:87
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "پوند,پوند,lb"
+
+#: ../src/unit-manager.c:88
+msgid "Ounces"
+msgstr "اونس"
+
+#: ../src/unit-manager.c:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz"
+
+#: ../src/unit-manager.c:88
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "اونس,اونس,oz"
+
+#: ../src/unit-manager.c:89
+msgid "Grams"
+msgstr "گرم"
+
+#: ../src/unit-manager.c:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit-manager.c:89
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "گرم,گرم,گرم,گرم,g"
+
+#: ../src/unit-manager.c:90
+msgid "Years"
+msgstr "سال"
+
+#: ../src/unit-manager.c:90
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s سال"
+
+#: ../src/unit-manager.c:90
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "سال,سال"
+
+#: ../src/unit-manager.c:91
+msgid "Days"
+msgstr "روز"
+
+#: ../src/unit-manager.c:91
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s روز"
+
+#: ../src/unit-manager.c:91
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "روز,روز"
+
+#: ../src/unit-manager.c:92
+msgid "Hours"
+msgstr "ساعت"
+
+#: ../src/unit-manager.c:92
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s ساعت"
+
+#: ../src/unit-manager.c:92
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "ساعت,ساعت"
+
+#: ../src/unit-manager.c:93
+msgid "Minutes"
+msgstr "دقیقه"
+
+#: ../src/unit-manager.c:93
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s دقیقه"
+
+#: ../src/unit-manager.c:93
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "دقیقه,دقیقه"
+
+#: ../src/unit-manager.c:94
+msgid "Seconds"
+msgstr "ثانیه"
+
+#: ../src/unit-manager.c:94
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit-manager.c:94
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "ثانیه,ثانیه,s"
+
+#: ../src/unit-manager.c:95
+msgid "Milliseconds"
+msgstr "میلی‌ثانیه"
+
+#: ../src/unit-manager.c:95
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit-manager.c:95
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "میلی‌ثانیه,میلی‌ثانیه,ms"
+
+#: ../src/unit-manager.c:96
+msgid "Microseconds"
+msgstr "میکروثانیه"
+
+#: ../src/unit-manager.c:96
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit-manager.c:96
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "میکروثانیه,میکروثانیه,us,μs"
+
+#: ../src/unit-manager.c:97
+msgid "Celcius"
+msgstr "سانتیگراد"
+
+#: ../src/unit-manager.c:97
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr "%s ˚C"
+
+#: ../src/unit-manager.c:97
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "degC,˚C"
+
+#: ../src/unit-manager.c:98
+msgid "Farenheit"
+msgstr "فارنهایت"
+
+#: ../src/unit-manager.c:98
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr "%s ˚F"
+
+#: ../src/unit-manager.c:98
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "degF,˚F"
+
+#: ../src/unit-manager.c:99
+msgid "Kelvin"
+msgstr "کلوین"
+
+#: ../src/unit-manager.c:99
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr "%s K"
+
+#: ../src/unit-manager.c:99
+msgctxt "unit-symbols"
+msgid "K"
+msgstr "K"
+
+#: ../src/unit-manager.c:100
+msgid "Rankine"
+msgstr "رنکین"
+
+#: ../src/unit-manager.c:100
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr "%s ˚R"
+
+#: ../src/unit-manager.c:100
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra"
+msgstr "degR,˚R,˚Ra"
+
+#: ../src/unit-manager.c:109
+msgid "Angle"
+msgstr "زاویه"
+
+#: ../src/unit-manager.c:110
+msgid "Length"
+msgstr "طول"
+
+#: ../src/unit-manager.c:111
+msgid "Area"
+msgstr "محیط"
+
+#: ../src/unit-manager.c:112
+msgid "Volume"
+msgstr "حجم"
+
+#: ../src/unit-manager.c:113
+msgid "Weight"
+msgstr "وزن"
+
+#: ../src/unit-manager.c:114
+msgid "Duration"
+msgstr "مدت"
+
+#: ../src/unit-manager.c:115
+msgid "Temperature"
+msgstr "دما"
+
+#: ../src/unit-manager.c:127
+msgid "Currency"
+msgstr "ارز"
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../src/unit-manager.c:137
+#, c-format
+msgid "%s%%s"
+msgstr "%s%%s"
+
+#~ msgid "_Dec"
+#~ msgstr "د_هدهی"
+
+#~ msgid "He_x"
+#~ msgstr "_شانزده‌شانزدهی"
+
+#~ msgid "Set numeric base to binary (base 2)"
+#~ msgstr "تنظیم مبنای عددی به دودویی (مبنای دو)"
+
+#~ msgid "Set numeric base to octal (base 8)"
+#~ msgstr "تنظیم مبنای عددی به هشت‌هشتی (مبنای هشت)"
+
+#~ msgid "Set numeric base to decimal (base 10)"
+#~ msgstr "تنظیم مبنای عددی به ده‌دهی (مبنای ده)"
+
+#~ msgid "Set numeric base to hexadecimal (base 16)"
+#~ msgstr "تنظیم مبنای عددی به شانزده‌شانزدهی (مبنای شانزده)"
+
+#~ msgid "E_ng"
+#~ msgstr "_مهندسی"
+
+#~ msgid "_Sci"
+#~ msgstr "ع_لمی"
+
+#~ msgid "Set display type to engineering format"
+#~ msgstr "تنظیم نوع نمایش به قالب مهندسی"
+
+#~ msgid "Set display type to fixed-point format"
+#~ msgstr "تنظیم نوع نمایش به قالب ممیز ثابت"
+
+#~ msgid "Set display type to scientific format"
+#~ msgstr "تنظیم نوع نمایش به قالب علمی"
+
+#~ msgid "Set hyperbolic option for trigonometric functions"
+#~ msgstr "تنظیم گزینهٔ هذلولوی برای توابع مثلثاتی"
+
+#~ msgid "Set inverse option for trigonometric functions"
+#~ msgstr "تنظیم گزینهٔ معکوس برای توابع مثلثاتی"
+
+#~ msgid "Basic"
+#~ msgstr "ساده"
+
+#~ msgid "Advanced"
+#~ msgstr "پیشرفته"
+
+#~ msgid "Financial"
 #~ msgstr "مالی"
 
-#~ msgid "SCIENTIFIC"
-#~ msgstr "علمی"
+#~ msgid "Expression"
+#~ msgstr "عبارت"
 
-#~ msgid "Logical OR"
-#~ msgstr "یای منطقی"
+#~ msgid "Set trigonometric type to degrees"
+#~ msgstr "تنظیم نوع زوایای مثلثاتی به درجه"
 
-#~ msgid "Logical AND"
-#~ msgstr "وی منطقی"
+#~ msgid "Set trigonometric type to gradians"
+#~ msgstr "تنظیم نوع زوایای مثلثاتی به گرادیان"
 
-#~ msgid "Logical NOT"
-#~ msgstr "نای منطقی"
+#~ msgid "Set trigonometric type to radians"
+#~ msgstr "تنظیم نوع زوایای مثلثاتی به رادیان"
 
-#~ msgid "Logical XOR"
-#~ msgstr "یای انحصاری منطقی"
+#~ msgid "7"
+#~ msgstr "۷"
 
-#, fuzzy
-#~ msgid "x<sup><i>2</i></sup>"
-#~ msgstr "x<sup>۲</sup>"
+#~ msgid "8"
+#~ msgstr "۸"
 
-#, fuzzy
-#~ msgid "y<sup><i>x</i></sup>"
-#~ msgstr "y<sup>x</sup>"
+#~ msgid "Numeric 8"
+#~ msgstr "عدد ۸"
 
-#~ msgid "1/x"
-#~ msgstr "۱/x"
+#~ msgid "9"
+#~ msgstr "۹"
+
+#~ msgid "Numeric 9"
+#~ msgstr "عدد ۹"
+
+#~ msgid "/"
+#~ msgstr "÷"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~ msgid "Start group of calculations"
+#~ msgstr "آغاز دسته محاسبات"
+
+#~ msgid "Left bracket"
+#~ msgstr "پرانتز چپ"
+
+#~ msgid "Bksp"
+#~ msgstr "Bksp"
+
+#~ msgid "Remove rightmost character from displayed value"
+#~ msgstr "حذف آخرین نویسهٔ سمت راست از مقدار نمایش داده شده"
+
+#~ msgid "Backspace"
+#~ msgstr "پس‌بر"
+
+#~ msgid "CE"
+#~ msgstr "CE"
+
+#~ msgid "Clear entry"
+#~ msgstr "پاک کردن ورودی"
+
+#~ msgid "Clr"
+#~ msgstr "Clr"
+
+#~ msgid "Clear displayed value and any partial calculation"
+#~ msgstr "پاک کردن مقدار نمایش داده شده و تمام محاسبات نیمه‌کاره"
+
+#~ msgid "4"
+#~ msgstr "۴"
+
+#~ msgid "Numeric 4"
+#~ msgstr "عدد ۴"
+
+#~ msgid "5"
+#~ msgstr "۵"
+
+#~ msgid "Numeric 5"
+#~ msgstr "عدد ۵"
+
+#~ msgid "6"
+#~ msgstr "۶"
+
+#~ msgid "Numeric 6"
+#~ msgstr "عدد ۶"
+
+#~ msgid "×"
+#~ msgstr "×"
+
+#~ msgid "*"
+#~ msgstr "×"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "End group of calculations"
+#~ msgstr "پایان دسته محاسبات"
+
+#~ msgid "Right bracket"
+#~ msgstr "پرانتز راست"
+
+#~ msgid "±"
+#~ msgstr "±"
+
+#~ msgid "Change sign [c]"
+#~ msgstr "تغییر علامت [c]"
+
+#~ msgid "Chs"
+#~ msgstr "Chs"
+
+#~ msgid "Int"
+#~ msgstr "Int"
+
+#~ msgid "Integer portion of displayed value [i]"
+#~ msgstr "جزء صحیح مقدار نمایش داده شدهٔ [i]"
+
+#~ msgid "Store displayed value in memory register [S]"
+#~ msgstr "ذخیرهٔ مقدار نمایش داده شده در ثبات حافظه"
+
+#~ msgid "Store to register"
+#~ msgstr "ذخیره در ثبات"
+
+#~ msgid "1"
+#~ msgstr "۱"
+
+#~ msgid "Numeric 1"
+#~ msgstr "عدد ۱"
+
+#~ msgid "2"
+#~ msgstr "۲"
+
+#~ msgid "Numeric 2"
+#~ msgstr "عدد ۲"
+
+#~ msgid "3"
+#~ msgstr "۳"
+
+#~ msgid "Numeric 3"
+#~ msgstr "عدد ۳"
+
+#~ msgid "−"
+#~ msgstr "−"
+
+#~ msgid "-"
+#~ msgstr "-"
+
+#~ msgid "%"
+#~ msgstr "٪"
+
+#~ msgid "√"
+#~ msgstr "√"
+
+#~ msgid "Sqrt"
+#~ msgstr "Sqrt"
+
+#~ msgid "Frac"
+#~ msgstr "Frac"
+
+#~ msgid "Fractional portion of displayed value [:]"
+#~ msgstr "جزء کسری مقدار نمایش داده شده [:]"
+
+#~ msgid "Rcl"
+#~ msgstr "Rcl"
+
+#~ msgid "Retrieve memory register to display [R]"
+#~ msgstr "برگشت ثبات حافظه به صفحهٔ نمایش [R]"
+
+#~ msgid "Retrieve from register"
+#~ msgstr "برگشت از ثبات"
+
+#~ msgid "0"
+#~ msgstr "۰"
+
+#~ msgid "Numeric 0"
+#~ msgstr "عدد ۰"
+
+#~ msgid "."
+#~ msgstr "٫"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgid "1/<i>x</i>"
+#~ msgstr "۱/<i>x</i>"
+
+#~ msgid "Reciprocal [r]"
+#~ msgstr "معکوس [r]"
+
+#~ msgid "Recip"
+#~ msgstr "معکوس"
+
+#~ msgid "<i>x</i><sup>2</sup>"
+#~ msgstr "<i>x</i><sup>۲</sup>"
+
+#~ msgid "^2"
+#~ msgstr "^۲"
+
+#~ msgid "Abs"
+#~ msgstr "Abs"
+
+#~ msgid "Exch"
+#~ msgstr "Exch"
+
+#~ msgid "Exchange displayed value with memory register [X]"
+#~ msgstr "جابه‌جایی مقدار نمایش داده شده با ثبات [X]"
+
+#~ msgid "Exchange with register"
+#~ msgstr "جابه‌جایی با ثبات"
+
+#~ msgid "<"
+#~ msgstr "<"
+
+#~ msgid "Shift displayed value 1-15 places to the left"
+#~ msgstr "جابه‌جایی مقدار نمایش داده شده ۱۵-۱ رقم به چپ"
+
+#~ msgid ">"
+#~ msgstr ">"
+
+#~ msgid "Shift displayed value 1-15 places to the right"
+#~ msgstr "جابه‌جایی مقدار نمایش داده شده ۱۵-۱ رقم به راست"
+
+#~ msgid "&amp;16"
+#~ msgstr "&amp;16"
+
+#~ msgid "16-bit unsigned integer value of display (])"
+#~ msgstr "مقدار صحیح بدون علامت ۱۶ بیتی عدد نمایش داده شده (])"
+
+#~ msgid "16 bit unsigned integer"
+#~ msgstr "عدد صحیح بدون علامت ۱۶ بیتی"
+
+#~ msgid "u16"
+#~ msgstr "u16"
+
+#~ msgid "&amp;32"
+#~ msgstr "&amp;32"
+
+#~ msgid "32-bit unsigned integer value of display ([)"
+#~ msgstr "مقدار صحیح بدون علامت ۳۲ بیتی عدد نمایش داده شده ([)"
+
+#~ msgid "32 bit unsigned integer"
+#~ msgstr "عدد صحیح بدون علامت ۳۲ بیتی"
+
+#~ msgid "u32"
+#~ msgstr "u32"
+
+#~ msgid " Mod "
+#~ msgstr " Mod "
+
+#~ msgid "Acc"
+#~ msgstr "Acc"
+
+#~ msgid "Set accuracy from 0 to 9 numeric places [a]"
+#~ msgstr "تنظیم دقت از ۰ تا ۹ رقم [a]"
+
+#~ msgid "Con"
+#~ msgstr "Con"
+
+#~ msgid "Constants [#]"
+#~ msgstr "ثابت‌ها [#]"
+
+#~ msgid "Fun"
+#~ msgstr "Fun"
+
+#~ msgid "User-defined functions [f]"
+#~ msgstr "توابع تعریفی کاربر [f]"
+
+#~ msgid "Exp"
+#~ msgstr "Exp"
+
+#~ msgid "Enter an exponential number [e]"
+#~ msgstr "یک عدد نمایی وارد کنید [e]"
+
+#~ msgid "e"
+#~ msgstr "e"
+
+#~ msgid "e<sup><i>x</i></sup>"
+#~ msgstr "e<sup><i>x</i></sup>"
+
+#~ msgid "e to the power of displayed value [{]"
+#~ msgstr "‏e به توان مقدار نمایش داده شده [{]"
+
+#~ msgid "E to the x"
+#~ msgstr "E به توان x"
+
+#~ msgid "e^"
+#~ msgstr "e^"
+
+#~ msgid "10<sup><i>x</i></sup>"
+#~ msgstr "۱۰<sup><i>x</i></sup>"
+
+#~ msgid "10 to the power of displayed value [}]"
+#~ msgstr "۱۰ به توان مقدار نمایش داده شده [}]"
+
+#~ msgid "Ten to the x"
+#~ msgstr "ده به توان‏ x"
+
+#~ msgid "10^"
+#~ msgstr "۱۰^"
+
+#~ msgid "<i>x</i><sup><i>y</i></sup>"
+#~ msgstr "<i>x</i><sup><i>y</i></sup>"
+
+#~ msgid "Raise displayed value to the power of y [^]"
+#~ msgstr "رساندن مقدار نمایش داده شده به توان y [^]"
+
+#~ msgid "X to the y"
+#~ msgstr "‏X به توان y"
+
+#~ msgid "^"
+#~ msgstr "^"
+
+#~ msgid "Factorial of displayed value [!]"
+#~ msgstr "فاکتوریل مقدار نمایش‌ داده شده [!]"
+
+#~ msgid "!"
+#~ msgstr "!"
+
+#~ msgid "Random number in the range 0.0 to 1.0 [?]"
+#~ msgstr "عدد تصادفی در محدودهٔ ۰٫۰ تا ۱٫۰ [?]"
+
+#~ msgid "Random number"
+#~ msgstr "عدد تصادفی"
+
+#~ msgid "D"
+#~ msgstr "D"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "Hexadecimal digit E"
+#~ msgstr "رقم شانزده‌شانزدهی‏ E"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "Hexadecimal digit F"
+#~ msgstr "رقم شانزده‌شانزدهی‏ F"
+
+#~ msgid "Sine [K]"
+#~ msgstr "سینوس [K]"
+
+#~ msgid "Tan"
+#~ msgstr "Tan"
+
+#~ msgid "Ln"
+#~ msgstr "Ln"
+
+#~ msgid "Log"
+#~ msgstr "Log"
+
+#~ msgid "Base 10 log [G]"
+#~ msgstr "لگاریتم مبنای ۱۰ [G]"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "Hexadecimal digit A"
+#~ msgstr "‏رقم شانزده‌شانزدهی A"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~ msgid "Hexadecimal digit B"
+#~ msgstr "رقم شانزده‌شانزدهی‏ B"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "Hexadecimal digit C"
+#~ msgstr "‏رقم شانزده‌شانزدهی C"
+
+#~ msgid "Or"
+#~ msgstr "Or"
+
+#~ msgid "Bitwise OR"
+#~ msgstr "‏«یا»ی بیتی"
+
+#~ msgid " Or "
+#~ msgstr " Or "
+
+#~ msgid "And"
+#~ msgstr "And"
+
+#~ msgid "Bitwise AND [&]"
+#~ msgstr "‏«و» بیتی‏ [&]"
+
+#~ msgid "Not"
+#~ msgstr "Not"
+
+#~ msgid "Bitwise NOT [~]"
+#~ msgstr "‏«نا»ی بیتی [~]"
+
+#~ msgid "~"
+#~ msgstr "~"
+
+#~ msgid "Xor"
+#~ msgstr "Xor"
+
+#~ msgid "Bitwise XOR [x]"
+#~ msgstr "‏«یای انحصاری» بیتی [x]"
+
+#~ msgid " Xor "
+#~ msgstr " Xor "
+
+#~ msgid "Xnor"
+#~ msgstr "Xnor"
+
+#~ msgid "Bitwise XNOR [n]"
+#~ msgstr "‏«نایای انحصاری» بیتی [n]"
+
+#~ msgid " Xnor "
+#~ msgstr " Xnor "
+
+#~ msgid "Kilometer-to-mile conversion factor"
+#~ msgstr "ضریب تبدیل کیلومتر به مایل"
+
+#~ msgid "square root of 2"
+#~ msgstr "ریشهٔ دوم ۲"
+
+#~ msgid "pi"
+#~ msgstr "پی"
+
+#~ msgid "Centimeter-to-inch conversion factor"
+#~ msgstr "ضریب تبدیل سانتیمتر به اینچ"
+
+#~ msgid "degrees in a radian"
+#~ msgstr "درجه در یک رادیان"
+
+#~ msgid "2 ^ 20"
+#~ msgstr "۲ ^ ۲۰"
+
+#~ msgid "Gram-to-ounce conversion factor"
+#~ msgstr "ضریب تبدیل گرم به اونس"
+
+#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
+#~ msgstr "ضریب تبدیل کیلو ژول به واحد گرمایی انگلیسی"
+
+#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+#~ msgstr "ضریب تبدیل سانتیمتر مکعب به اینچ مکعب"
+
+#~ msgid "Invalid number for the current base"
+#~ msgstr "این عدد در مبنای فعلی معتبر نیست"
+
+#~ msgid "Too long number"
+#~ msgstr "عدد خیلی بلند است"
+
+#~ msgid "Invalid bitwise operation parameter(s)"
+#~ msgstr "پارامتر(های) نامعتبر برای عملیات بیتی "
+
+#~ msgid "No sane value to convert"
+#~ msgstr "مقدار معقولی برای تبدیل موجود نیست"
+
+#~ msgid "Malformed function"
+#~ msgstr "تابع معیوب"
+
+#~ msgid "Cleared display, prefix without an operator is not allowed"
+#~ msgstr "با نمایش پاک شده، پیشوند بدون عملگر مجاز نیست"
+
+#~ msgid "Malformed parenthesis expression"
+#~ msgstr "عبارت پرانتزدار معیوب"
+
+#~ msgid "Numeric stack error"
+#~ msgstr "خطای پشتهٔ عددی"
+
+#~ msgid "Operand stack error"
+#~ msgstr "خطای پشتهٔ عملگر"
+
+#~ msgid "-a needs accuracy value"
+#~ msgstr "-a مقدار دقیق لازم دارد"
+
+#~ msgid "%s: accuracy should be in the range 0-%d\n"
+#~ msgstr "%s: دقت باید در دامنهٔ ۰-%Id باشد\n"
+
+#~ msgid "%s: %s as next argument.\n"
+#~ msgstr "%s: %s به عنوان آرگومان بعدی.\n"
+
+#~ msgid "calculator"
+#~ msgstr "ماشین‌حساب"
+
+#~ msgid "%s: base should be 2, 8, 10 or 16\n"
+#~ msgstr "%s: مبنا باید ۲،۸،۱۰ یا ۱۶ باشد\n"
+
+#~ msgid "%s: invalid display mode [%s]\n"
+#~ msgstr "%s: حالت نمایش نامعتبر [%s]\n"
+
+#~ msgid "%s: invalid mode [%s]\n"
+#~ msgstr "%s: حالت نامعتبر [%s]\n"
+
+#~ msgid "%s: invalid trigonometric mode [%s]\n"
+#~ msgstr "%s: حالت مثلثاتی نامعتبر [%s]\n"
+
+#~ msgid "%s: invalid syntax mode [%s]\n"
+#~ msgstr "%s: حالت نحوی نامعتبر [%s]\n"
+
+#~ msgid ""
+#~ "%s version %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "%s نسخهٔ %s\n"
+#~ "\n"
+
+#~ msgid "Usage: %s: [-D] [-E] [-a accuracy] "
+#~ msgstr "طرز استفاده:  %s: [-D] [-E] [-a دقت] "
+
+#~ msgid "\t\t [-?] [-v] [-?]\n"
+#~ msgstr "\t\t [-?] [-v] [-?]\n"
+
+#~ msgid "_Edit"
+#~ msgstr "_ویرایش"
+
+#~ msgid "_View"
+#~ msgstr "_نما"
+
+#~ msgid "Copy selection"
+#~ msgstr "نسخه برداری از انتخاب‌شده‌ها"
+
+#~ msgid "Paste selection"
+#~ msgstr "چسباندن انتخاب‌شده‌ها"
+
+#~ msgid "_Insert ASCII Value..."
+#~ msgstr "_درج مقدار‏ ASCII..."
+
+#~ msgid "Insert ASCII value"
+#~ msgstr "درج مقدار ASCII"
+
+#~ msgid "_Undo"
+#~ msgstr "_برگردان"
+
+#~ msgid "Undo"
+#~ msgstr "برگردان کنش"
+
+#~ msgid "_Redo"
+#~ msgstr "_دوباره"
+
+#~ msgid "Redo"
+#~ msgstr "انجام دوبارهٔ کنش"
+
+#~ msgid "Show help contents"
+#~ msgstr "نمایش محتویات راهنما"
+
+#~ msgid "Show the About Gcalctool dialog"
+#~ msgstr "نشان دادن محاورهٔ دربارهٔ ماشین‌حساب گنوم"
+
+#~ msgid "_2 places"
+#~ msgstr "_‏۲ رقم"
+
+#~ msgid "_3 places"
+#~ msgstr "_‏۳ رقم"
+
+#~ msgid "3 places"
+#~ msgstr "‏۳ رقم"
+
+#~ msgid "_4 places"
+#~ msgstr "_‏۴ رقم"
+
+#~ msgid "4 places"
+#~ msgstr "‏۴ رقم"
+
+#~ msgid "_5 places"
+#~ msgstr "_‏۵ رقم"
+
+#~ msgid "5 places"
+#~ msgstr "‏۵ رقم"
+
+#~ msgid "_6 places"
+#~ msgstr "_‏۶ رقم"
+
+#~ msgid "6 places"
+#~ msgstr "‏۶ رقم"
+
+#~ msgid "_7 places"
+#~ msgstr "_‏۷ رقم"
+
+#~ msgid "7 places"
+#~ msgstr "‏۷ رقم"
+
+#~ msgid "_8 places"
+#~ msgstr "_‏۸ رقم"
+
+#~ msgid "8 places"
+#~ msgstr "‏۸ رقم"
+
+#~ msgid "_9 places"
+#~ msgstr "_‏۹ رقم"
+
+#~ msgid "9 places"
+#~ msgstr "‏۹ رقم"
+
+#~ msgid "10 places"
+#~ msgstr "‏۱۰ رقم"
+
+#~ msgid "11 places"
+#~ msgstr "‏۱۱ رقم"
+
+#~ msgid "12 places"
+#~ msgstr "‏۱۲ رقم"
+
+#~ msgid "13 places"
+#~ msgstr "‏۱۳ رقم"
+
+#~ msgid "14 places"
+#~ msgstr "‏۱۴ رقم"
+
+#~ msgid "15 places"
+#~ msgstr "‏۱۵ رقم"
+
+#~ msgid "_Memory Registers"
+#~ msgstr "ثبات‌های _حافظه"
+
+#~ msgid "Show memory registers"
+#~ msgstr "نمایش ثبات‌های حافظه"
+
+#~ msgid "_Use Arithmetic Precedence"
+#~ msgstr "_استفاده از تقدم محاسباتی"
+
+#~ msgid "Use Arithmetic Precedence"
+#~ msgstr "استفاده از تقدم محاسباتی"
+
+#~ msgid "_0 significant places"
+#~ msgstr "_‏۰ رقم معنی‌دار"
+
+#~ msgid "0 significant places"
+#~ msgstr "‏۰ رقم معنی‌دار"
+
+#~ msgid "_1 significant place"
+#~ msgstr "_‏۱ رقم معنی‌دار"
+
+#~ msgid "1 significant place"
+#~ msgstr "‏۱ رقم معنی‌دار"
+
+#~ msgid "_2 significant places"
+#~ msgstr "_‏۲ رقم معنی‌دار"
+
+#~ msgid "2 significant places"
+#~ msgstr "‏۲ رقم معنی‌دار"
+
+#~ msgid "_3 significant places"
+#~ msgstr "_‏۳ رقم معنی‌دار"
+
+#~ msgid "3 significant places"
+#~ msgstr "‏۳ رقم معنی‌دار"
+
+#~ msgid "_4 significant places"
+#~ msgstr "_‏۴ رقم معنی‌دار"
+
+#~ msgid "4 significant places"
+#~ msgstr "‏۴ رقم معنی‌دار"
+
+#~ msgid "_5 significant places"
+#~ msgstr "_‏۵ رقم معنی‌دار"
+
+#~ msgid "5 significant places"
+#~ msgstr "‏۵ رقم معنی‌دار"
+
+#~ msgid "_6 significant places"
+#~ msgstr "_‏۶ رقم معنی‌دار"
+
+#~ msgid "6 significant places"
+#~ msgstr "‏۶ رقم معنی‌دار"
+
+#~ msgid "_7 significant places"
+#~ msgstr "_‏۷ رقم معنی‌دار"
+
+#~ msgid "7 significant places"
+#~ msgstr "‏۷ رقم معنی‌دار"
+
+#~ msgid "_8 significant places"
+#~ msgstr "_‏۸ رقم معنی‌دار"
+
+#~ msgid "8 significant places"
+#~ msgstr "‏۸ رقم معنی‌دار"
+
+#~ msgid "_9 significant places"
+#~ msgstr "_‏۹ رقم معنی‌دار"
+
+#~ msgid "9 significant places"
+#~ msgstr "‏۹ رقم معنی‌دار"
+
+#~ msgid "_Other (10) ..."
+#~ msgstr "_غیره )۱۰("
+
+#~ msgid "Set other precision"
+#~ msgstr "تنظیم ارقام اعشار دقت به مقدار دیگر"
+
+#~ msgid "_Scientific"
+#~ msgstr "_علمی"
+
+#~ msgid "Insert ASCII Value"
+#~ msgstr "‏درج مقدار ASCII"
+
+#~ msgid "Edit Constants"
+#~ msgstr "ویرایش ثابت‌ها"
+
+#~ msgid "Note:"
+#~ msgstr "یادداشت:"
+
+#~ msgid "All constant values are specified in the decimal numeric base."
+#~ msgstr "همهٔ مقادیر ثابت در مبنای عددی ده‌دهی مشخص شده اند."
+
+#~ msgid "Click a _value or description to edit it:"
+#~ msgstr "روی یک مقدار یا توضیح کلیک کنید تا آن را ویرایش کنید:"
+
+#~ msgid "No."
+#~ msgstr "شمارهٔ "
+
+#~ msgid "_Do not warn me again"
+#~ msgstr "_دیگر اخطار داده نشود"
+
+#~ msgid "C_hange Mode"
+#~ msgstr "ت_غییر حالت"
+
+#~ msgid "Set Precision"
+#~ msgstr "تنظیم دقت"
