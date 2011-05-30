@@ -250,6 +250,29 @@ key_press_cb(MathWindow *window, GdkEventKey *event)
 {
     gboolean result;
     g_signal_emit_by_name(window->priv->display, "key-press-event", event, &result);
+
+    if (math_buttons_get_mode (window->priv->buttons) == PROGRAMMING && (event->state & GDK_CONTROL_MASK) == GDK_CONTROL_MASK) {
+        switch(event->keyval)
+        {
+        /* Binary */
+        case GDK_KEY_b:
+            math_equation_set_base (window->priv->equation, 2);
+            return TRUE;
+        /* Octal */
+        case GDK_KEY_o:
+            math_equation_set_base (window->priv->equation, 8);
+            return TRUE;
+        /* Decimal */
+        case GDK_KEY_d:
+            math_equation_set_base (window->priv->equation, 10);
+            return TRUE;
+        /* Hexdecimal */
+        case GDK_KEY_h:
+            math_equation_set_base (window->priv->equation, 16);
+            return TRUE;
+        }
+    }
+
     return result;
 }
 
