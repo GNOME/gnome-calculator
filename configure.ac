@@ -23,7 +23,7 @@ GIO_REQUIRED=2.25.10
 GTK_REQUIRED=2.90.7
 
 PKG_CHECK_MODULES(GCALCTOOL, [
-    gtk+-3.0 $GTK_REQUIRED
+    gtk+-3.0 >= $GTK_REQUIRED
     gio-2.0 >= $GIO_REQUIRED
     libxml-2.0
     gmodule-export-2.0
