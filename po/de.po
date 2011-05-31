@@ -30,9 +30,9 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-04-20 15:57+0000\n"
-"PO-Revision-Date: 2011-04-20 19:56+0100\n"
-"Last-Translator: Mario Blättermann <mariobl@freenet.de>\n"
+"POT-Creation-Date: 2011-05-30 10:37+0000\n"
+"PO-Revision-Date: 2011-06-01 00:09+0200\n"
+"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -199,8 +199,8 @@ msgid ""
 "payments discounted at a periodic interest rate over the number of payment "
 "periods in the term. "
 msgstr ""
-"Berechnet den Barwert (gegenwärtigen Wert) einer Investition bei regelmäßigen "
-"Zahlungen und einem periodischen Zinssatz  über die Anzahl der "
+"Berechnet den Barwert (gegenwärtigen Wert) einer Investition bei "
+"regelmäßigen Zahlungen und einem periodischen Zinssatz über die Anzahl der "
 "Zahlungsperioden der Laufzeit."
 
 #. Gross Profit Margin Dialog: Description of calculation
@@ -216,14 +216,14 @@ msgstr ""
 #: ../data/buttons-financial.ui.h:28
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly over "
-"the useful life of an asset. The useful life is the number of periods, "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
 "typically years, over which an asset is depreciated. "
 msgstr ""
 "Berechnet die lineare Abschreibungsrate eines Wirtschaftsguts pro Periode. "
-"Die Methode der linearen Abschreibung teilt die Gesamtabschreibung über einen "
-"gewissen Zeitraum gleichmäßig auf jede einzelne Periode auf. Die sinnvolle "
-"Lebenszeit des Abschreibungsobjekts ist die Anzahl der Perioden, "
+"Die Methode der linearen Abschreibung teilt die Gesamtabschreibung über "
+"einen gewissen Zeitraum gleichmäßig auf jede einzelne Periode auf. Die "
+"sinnvolle Lebenszeit des Abschreibungsobjekts ist die Anzahl der Perioden, "
 "typischerweise Jahre, in denen das Wirtschaftsguts abgeschrieben wird. "
 
 #. Title of Compounding Term dialog
@@ -487,14 +487,15 @@ msgid "_Angle units:"
 msgstr "_Winkeleinheiten:"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:523
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:546
 msgid "Calculator"
 msgstr "Taschenrechner"
 
 #: ../data/gcalctool.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr ""
-"Arithmetische, wissenschaftliche und finanztechnische Berechnungen durchführen"
+"Arithmetische, wissenschaftliche und finanztechnische Berechnungen "
+"durchführen"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
 msgid "Accuracy value"
@@ -518,8 +519,8 @@ msgstr "Währung, in welche die aktuelle Berechnung umgewandelt werden soll"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
 msgid ""
-"Indicates whether any trailing zeroes after the numeric point should be shown "
-"in the display value."
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
 msgstr ""
 "Zeigt an, ob nachfolgende Nullen nach dem Komma in der Anzeige angezeigt "
 "werden sollen."
@@ -870,7 +871,8 @@ msgid ""
 "GTK+ Options:\n"
 "  --class=CLASS                   Program class as used by the window "
 "manager\n"
-"  --name=NAME                     Program name as used by the window manager\n"
+"  --name=NAME                     Program name as used by the window "
+"manager\n"
 "  --screen=SCREEN                 X screen to use\n"
 "  --sync                          Make X calls synchronous\n"
 "  --gtk-module=MODULES            Load additional GTK+ modules\n"
@@ -1218,9 +1220,14 @@ msgid "Sign"
 msgstr "Vorzeichen"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
-#: ../src/math-converter.c:375
+#: ../src/math-converter.c:412
 msgid " in "
 msgstr " in "
+
+#. Tooltip for swap conversion button
+#: ../src/math-converter.c:427
+msgid "Switch conversion units"
+msgstr ""
 
 #. Error shown when trying to undo with no undo history
 #: ../src/math-equation.c:458
@@ -1237,54 +1244,54 @@ msgid "No sane value to store"
 msgstr "Kein vernünftiger Wert zum Speichern"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1229
+#: ../src/math-equation.c:1225
 msgid "Overflow. Try a bigger word size"
 msgstr "Überlauf. Versuchen Sie eine höhere Wortlänge zu verwenden"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1234
+#: ../src/math-equation.c:1230
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Unbekannte Variable »%s«"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1239
+#: ../src/math-equation.c:1235
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Die Funktion »%s« ist nicht definiert"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1244
+#: ../src/math-equation.c:1240
 msgid "Unknown conversion"
 msgstr "Unbekannte Umrechnung"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1253
+#: ../src/math-equation.c:1249
 msgid "Malformed expression"
 msgstr "Fehlerhafter Ausdruck"
 
-#: ../src/math-equation.c:1267
+#: ../src/math-equation.c:1263
 msgid "Calculating"
 msgstr "Berechnung läuft"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1389
+#: ../src/math-equation.c:1385
 msgid "Need an integer to factorize"
 msgstr "Es können nur Ganzzahlen faktorisiert werden"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1464
+#: ../src/math-equation.c:1460
 msgid "No sane value to bitwise shift"
 msgstr "Kein vernünftiger Wert zum bitweisen Verschieben"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1495
+#: ../src/math-equation.c:1491
 msgid "Displayed value not an integer"
 msgstr "Angezeigter Wert ist keine Ganzzahl"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1918
+#: ../src/math-equation.c:1916
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1374,10 +1381,10 @@ msgstr ""
 "weitergeben und/oder modifizieren, entweder gemäß Version 2 der Lizenz oder "
 "(nach Ihrer Option) jeder späteren Version. \n"
 "\n"
-"Die Veröffentlichung von Gcalctool erfolgt in der Hoffnung, dass es Ihnen von "
-"Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die implizite "
-"Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN BESTIMMTEN ZWECK. "
-"Details finden Sie in der GNU General Public License.\n"
+"Die Veröffentlichung von Gcalctool erfolgt in der Hoffnung, dass es Ihnen "
+"von Nutzen sein wird, aber OHNE IRGENDEINE GARANTIE, sogar ohne die "
+"implizite Garantie der MARKTREIFE oder der VERWENDBARKEIT FÜR EINEN "
+"BESTIMMTEN ZWECK. Details finden Sie in der GNU General Public License.\n"
 "\n"
 "Sie sollten ein Exemplar der GNU General Public License zusammen mit diesem "
 "Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software "
@@ -1399,42 +1406,42 @@ msgid "Calculator with financial and scientific modes."
 msgstr "Ein Taschenrechner mit finanztechnischem und wissenschaftlichem Modus."
 
 #. Calculator menu
-#: ../src/math-window.c:358
+#: ../src/math-window.c:381
 msgid "_Calculator"
 msgstr "_Taschenrechner"
 
 #. Mode menu
-#: ../src/math-window.c:360
+#: ../src/math-window.c:383
 msgid "_Mode"
 msgstr "_Modus"
 
 #. Help menu label
-#: ../src/math-window.c:362
+#: ../src/math-window.c:385
 msgid "_Help"
 msgstr "_Hilfe"
 
 #. Basic menu label
-#: ../src/math-window.c:364
+#: ../src/math-window.c:387
 msgid "_Basic"
 msgstr "_Standard"
 
 #. Advanced menu label
-#: ../src/math-window.c:366
+#: ../src/math-window.c:389
 msgid "_Advanced"
 msgstr "_Erweitert"
 
 #. Financial menu label
-#: ../src/math-window.c:368
+#: ../src/math-window.c:391
 msgid "_Financial"
 msgstr "_Finanztechnisch"
 
 #. Programming menu label
-#: ../src/math-window.c:370
+#: ../src/math-window.c:393
 msgid "_Programming"
 msgstr "_Programmierung"
 
 #. Help>Contents menu label
-#: ../src/math-window.c:372
+#: ../src/math-window.c:395
 msgid "_Contents"
 msgstr "_Inhalt"
 
@@ -1539,7 +1546,8 @@ msgstr ""
 #: ../src/mp-trigonometric.c:591
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
-"Inverser hyperbolischer Kosinus ist nicht für Werte kleiner als eins definiert"
+"Inverser hyperbolischer Kosinus ist nicht für Werte kleiner als eins "
+"definiert"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
 #: ../src/mp-trigonometric.c:615
@@ -1630,16 +1638,21 @@ msgstr "au"
 msgid "Nautical Miles"
 msgstr "Seemeilen"
 
-#: ../src/unit-manager.c:60 ../src/unit-manager.c:72
-#, c-format
+#: ../src/unit-manager.c:60
+#, fuzzy, c-format
+#| msgctxt "unit-format"
+#| msgid "%s nm"
 msgctxt "unit-format"
-msgid "%s nm"
-msgstr "%s nm"
+msgid "%s nmi"
+msgstr "%s sm"
 
 #: ../src/unit-manager.c:60
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "nm"
 msgctxt "unit-symbols"
-msgid "nm"
-msgstr "nm"
+msgid "nmi"
+msgstr "sm"
 
 #: ../src/unit-manager.c:61
 msgid "Miles"
@@ -1811,9 +1824,15 @@ msgid "Nanometers"
 msgstr "Nanometer"
 
 #: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
+
+#: ../src/unit-manager.c:72
 msgctxt "unit-symbols"
-msgid "nanometer,nanometers"
-msgstr "Nanometer,Nanometer"
+msgid "nanometer,nanometers,nm"
+msgstr "Nanometer,Nanometer,nm"
 
 #: ../src/unit-manager.c:73
 msgid "Hectares"
@@ -1846,7 +1865,7 @@ msgid "acre,acres"
 msgstr "Acre,Acre"
 
 #: ../src/unit-manager.c:75
-msgid "Square Meter"
+msgid "Square Meters"
 msgstr "Quadratmeter"
 
 #: ../src/unit-manager.c:75
@@ -1861,7 +1880,7 @@ msgid "m²"
 msgstr "m²"
 
 #: ../src/unit-manager.c:76
-msgid "Square Centimeter"
+msgid "Square Centimeters"
 msgstr "Quadratzentimeter"
 
 #: ../src/unit-manager.c:76
@@ -1876,7 +1895,7 @@ msgid "cm²"
 msgstr "cm²"
 
 #: ../src/unit-manager.c:77
-msgid "Square Millimeter"
+msgid "Square Millimeters"
 msgstr "Quadratmillimeter"
 
 #: ../src/unit-manager.c:77
@@ -1982,7 +2001,7 @@ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "Milliliter,Milliliter,Milliliter,Milliliter,ml,cm³"
 
 #: ../src/unit-manager.c:84
-msgid "Microlitre"
+msgid "Microlitres"
 msgstr "Mikroliter"
 
 #: ../src/unit-manager.c:84
@@ -2173,8 +2192,8 @@ msgstr "%s μs"
 
 #: ../src/unit-manager.c:96
 msgctxt "unit-symbols"
-msgid "microsecond,microseconds,us"
-msgstr "Mikrosekunde,Mikrosekunden,us"
+msgid "microsecond,microseconds,us,μs"
+msgstr "Mikrosekunde,Mikrosekunden,us,µs"
 
 #: ../src/unit-manager.c:97
 msgid "Celcius"
@@ -2183,8 +2202,8 @@ msgstr "Celcius"
 #: ../src/unit-manager.c:97
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚C"
-msgstr "%s˚C"
+msgid "%s ˚C"
+msgstr "%s ˚C"
 
 #: ../src/unit-manager.c:97
 msgctxt "unit-symbols"
@@ -2198,8 +2217,8 @@ msgstr "Farenheit"
 #: ../src/unit-manager.c:98
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚F"
-msgstr "%s˚F"
+msgid "%s ˚F"
+msgstr "%s ˚F"
 
 #: ../src/unit-manager.c:98
 msgctxt "unit-symbols"
@@ -2213,14 +2232,13 @@ msgstr "Kelvin"
 #: ../src/unit-manager.c:99
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚K"
-msgstr "%s˚K"
+msgid "%s K"
+msgstr "%s K"
 
-# Ist eigentlich Quatsch, Kelvin wird schon lange nicht mehr als »Grad Kelvin« bezeichnet, weil es ja eine absolute und keine relative Temperatureinheit ist.
 #: ../src/unit-manager.c:99
 msgctxt "unit-symbols"
-msgid "degK,˚K"
-msgstr "Grad Kelvin,˚K"
+msgid "K"
+msgstr "K"
 
 # http://de.wikipedia.org/wiki/Rankine-Skala
 # Die Rankine-Skala ist eine Temperaturskala
@@ -2232,14 +2250,14 @@ msgstr "Rankine"
 #: ../src/unit-manager.c:100
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚R"
-msgstr "%s˚R"
+msgid "%s ˚R"
+msgstr "%s ˚R"
 
 #
 #: ../src/unit-manager.c:100
 msgctxt "unit-symbols"
-msgid "degR,˚R"
-msgstr "Grad Rankine,˚R"
+msgid "degR,˚R,˚Ra"
+msgstr "Grad Rankine,˚R,˚Ra"
 
 #: ../src/unit-manager.c:109
 msgid "Angle"
@@ -2279,109 +2297,6 @@ msgstr "Währung"
 msgid "%s%%s"
 msgstr "%s%%s"
 
-#~ msgid "Recall"
-#~ msgstr "Abrufen"
-
-#~ msgid "← R"
-#~ msgstr "← R"
-
-#~ msgid "→ R"
-#~ msgstr "→ R"
-
-#~ msgid "Assign Variable"
-#~ msgstr "Variable zuweisen"
-
-#~ msgid "Insert Variable"
-#~ msgstr "Variable einfügen"
-
-#~ msgid "Angle Units"
-#~ msgstr "Winkeleinheiten"
-
-#~ msgid "Area Units"
-#~ msgstr "Flächeneinheiten"
-
-#~ msgid "cm³"
-#~ msgstr "cm³"
-
-#~ msgid "mm³"
-#~ msgstr "mm³"
-
-#~ msgid "Time Units"
-#~ msgstr "Zeiteinheiten"
-
-#~ msgid "%s%s = %s%s"
-#~ msgstr "%s%s = %s%s"
-
-#~ msgid "No variables defined"
-#~ msgstr "Keine Variablen definiert"
-
-#~ msgid "Clear"
-#~ msgstr "Löschen"
-
-#~ msgid "Undo"
-#~ msgstr "Rückgängig"
-
-#~ msgid "&#x2190; R"
-#~ msgstr "&#x2190; R"
-
-#~ msgid "&#x2192; R"
-#~ msgstr "&#x2192; R"
-
-#~ msgid "%s radians = %s degrees"
-#~ msgstr "%s Radiant = %s Grad"
-
-#~ msgid "%s gradians = %s degrees"
-#~ msgstr "%s Neugrad = %s Grad"
-
-#~ msgid "Display Mode"
-#~ msgstr "Arbeitsmodus"
-
-#~ msgid "Indicates whether the memory register window is initially displayed."
-#~ msgstr ""
-#~ "Zeigt an, ob das Fenster mit den Speicherregistern anfangs angezeigt wird."
-
-#~ msgid "Mode"
-#~ msgstr "Modus"
-
-#~ msgid "Show Registers"
-#~ msgstr "Register anzeigen"
-
-#~ msgid ""
-#~ "The display format used in advanced mode. One of: \"ENG\" (engineering), "
-#~ "\"FIX\" (fixed-point) and \"SCI\" (scientific)"
-#~ msgstr ""
-#~ "Das Anzeigeformat im erweiterten Modus. Gültige Werte sind "
-#~ "»ENG« (Entwicklung), »FIX« (Festkomma) und »SCI« (Wissenschaftlich)"
-
-#~ msgid ""
-#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-#~ msgstr ""
-#~ "Der anfängliche Modus des Taschenrechners. Gültige Werte sind "
-#~ "»BASIC« (Standard), »FINANCIAL« (Finanztechnisch), »LOGICAL« (Logisch), "
-#~ "»SCIENTIFIC« (Wissenschaftlich) und »PROGRAMMING« (Programmierung)"
-
-#~ msgid ""
-#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-#~ "\" (gradians) and \"RAD\" (radians)."
-#~ msgstr ""
-#~ "Der anfängliche trigonometrische Modus. Gültige Werte sind »DEG« (Grad), "
-#~ "»GRAD« (Neugrad) und »RAD« (Radiant)."
-
-#~ msgid "The initial x-coordinate for the window"
-#~ msgstr "Die anfängliche X-Koordinate für das Hauptfenster"
-
-#~ msgid "The initial y-coordinate for the window"
-#~ msgstr "Die anfängliche Y-Koordinate für das Hauptfenster"
-
-#~ msgid "The number of pixels to place the window from the left of the screen."
-#~ msgstr "Die Anzahl der Pixel zwischen Fenster und dem linken Bildrand."
-
-#~ msgid "The number of pixels to place the window from the top of the screen."
-#~ msgstr "Die Anzahl der Pixel zwischen Fenster und dem rechten Bildrand."
-
-#~ msgid "The numeric base (used in programming mode)"
-#~ msgstr "Die numerische Basis (im Programmiermodus verwendet)"
-
-#~ msgid "Trigonometric type"
-#~ msgstr "Trigonometrischer Modus"
+#~ msgctxt "unit-format"
+#~ msgid "%s˚K"
+#~ msgstr "%s˚K"
