@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-20 14:18+0300\n"
-"PO-Revision-Date: 2011-04-20 14:21+0200\n"
+"POT-Creation-Date: 2011-06-04 13:40+0300\n"
+"PO-Revision-Date: 2011-06-04 13:40+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -453,7 +454,7 @@ msgid "_Angle units:"
 msgstr "יחידות ה_זווית:"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:523
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:546
 msgid "Calculator"
 msgstr "מחשבון"
 
@@ -1182,9 +1183,14 @@ msgid "Sign"
 msgstr "סימן"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
-#: ../src/math-converter.c:375
+#: ../src/math-converter.c:412
 msgid " in "
 msgstr " תחת "
+
+#. Tooltip for swap conversion button
+#: ../src/math-converter.c:427
+msgid "Switch conversion units"
+msgstr "החלפת יחידות ההמרה"
 
 #. Error shown when trying to undo with no undo history
 #: ../src/math-equation.c:458
@@ -1201,54 +1207,54 @@ msgid "No sane value to store"
 msgstr "אין ערך שפוי לשמירה"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1229
+#: ../src/math-equation.c:1225
 msgid "Overflow. Try a bigger word size"
 msgstr "הצפה, יש לנסות גודל word גדול יותר"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1234
+#: ../src/math-equation.c:1230
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "המשתנה '%s' אינו מוכר"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1239
+#: ../src/math-equation.c:1235
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "הפונקציה '%s' אינה מוגדרת"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1244
+#: ../src/math-equation.c:1240
 msgid "Unknown conversion"
 msgstr "המרה בלתי מוכרת"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1253
+#: ../src/math-equation.c:1249
 msgid "Malformed expression"
 msgstr "ביטוי שגוי"
 
-#: ../src/math-equation.c:1267
+#: ../src/math-equation.c:1263
 msgid "Calculating"
 msgstr "מתבצע חישוב"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1389
+#: ../src/math-equation.c:1385
 msgid "Need an integer to factorize"
 msgstr "נדרש שלם חיובי כדי לפרק לגורמים"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1464
+#: ../src/math-equation.c:1460
 msgid "No sane value to bitwise shift"
 msgstr "אין ערך שפוי לביצוע הזזת סיביות"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1495
+#: ../src/math-equation.c:1491
 msgid "Displayed value not an integer"
 msgstr "הערך המוצג איננו שלם חיובי"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1918
+#: ../src/math-equation.c:1916
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1362,42 +1368,42 @@ msgid "Calculator with financial and scientific modes."
 msgstr "מחשבון עם מצבים פיננסיים ומדעיים"
 
 #. Calculator menu
-#: ../src/math-window.c:358
+#: ../src/math-window.c:381
 msgid "_Calculator"
 msgstr "_מחשבון"
 
 #. Mode menu
-#: ../src/math-window.c:360
+#: ../src/math-window.c:383
 msgid "_Mode"
 msgstr "_מצב"
 
 #. Help menu label
-#: ../src/math-window.c:362
+#: ../src/math-window.c:385
 msgid "_Help"
 msgstr "ע_זרה"
 
 #. Basic menu label
-#: ../src/math-window.c:364
+#: ../src/math-window.c:387
 msgid "_Basic"
 msgstr "_בסיסי"
 
 #. Advanced menu label
-#: ../src/math-window.c:366
+#: ../src/math-window.c:389
 msgid "_Advanced"
 msgstr "_מתקדם"
 
 #. Financial menu label
-#: ../src/math-window.c:368
+#: ../src/math-window.c:391
 msgid "_Financial"
 msgstr "_פיננסי"
 
 #. Programming menu label
-#: ../src/math-window.c:370
+#: ../src/math-window.c:393
 msgid "_Programming"
 msgstr "_תכנות"
 
 #. Help>Contents menu label
-#: ../src/math-window.c:372
+#: ../src/math-window.c:395
 msgid "_Contents"
 msgstr "ת_כנים"
 
