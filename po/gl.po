@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool-master-po-gl-72274_.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-20 10:10+0200\n"
-"PO-Revision-Date: 2011-04-20 10:11+0200\n"
+"POT-Creation-Date: 2011-06-06 11:19+0200\n"
+"PO-Revision-Date: 2011-06-06 11:18+0200\n"
 "Last-Translator: Fran Diéguez <frandieguez@gnome.org>\n"
 "Language-Team: Galician <gnome-l10n-gl@gnome.org>\n"
 "Language: gl\n"
@@ -472,7 +472,7 @@ msgid "_Angle units:"
 msgstr "Unidades de _ángulo:"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:523
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:546
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -1202,9 +1202,14 @@ msgid "Sign"
 msgstr "Signo"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
-#: ../src/math-converter.c:375
+#: ../src/math-converter.c:412
 msgid " in "
 msgstr "en"
+
+#. Tooltip for swap conversion button
+#: ../src/math-converter.c:427
+msgid "Switch conversion units"
+msgstr "Cambiar unidades de conversión"
 
 #. Error shown when trying to undo with no undo history
 #: ../src/math-equation.c:458
@@ -1221,54 +1226,54 @@ msgid "No sane value to store"
 msgstr "Non hai un valor lóxico para almacenar"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1229
+#: ../src/math-equation.c:1225
 msgid "Overflow. Try a bigger word size"
 msgstr "Desbordamento de búfer. Probe cun tamaño maior da palabra"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1234
+#: ../src/math-equation.c:1230
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Variábel descoñecida '%s'"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1239
+#: ../src/math-equation.c:1235
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "A función '%s' non está definida"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1244
+#: ../src/math-equation.c:1240
 msgid "Unknown conversion"
 msgstr "Conversión descoñecida"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1253
+#: ../src/math-equation.c:1249
 msgid "Malformed expression"
 msgstr "Expresión formada incorrectamente"
 
-#: ../src/math-equation.c:1267
+#: ../src/math-equation.c:1263
 msgid "Calculating"
 msgstr "Calculando"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1389
+#: ../src/math-equation.c:1385
 msgid "Need an integer to factorize"
 msgstr "Necesítase un enteiro para factorizar"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1464
+#: ../src/math-equation.c:1460
 msgid "No sane value to bitwise shift"
 msgstr "Non hai un valor lóxico para o desprazamento de bit a bit"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1495
+#: ../src/math-equation.c:1491
 msgid "Displayed value not an integer"
 msgstr "O valor mostrado non é un enteiro "
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1918
+#: ../src/math-equation.c:1916
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1383,42 +1388,42 @@ msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora con modo financeiro e científico."
 
 #. Calculator menu
-#: ../src/math-window.c:358
+#: ../src/math-window.c:381
 msgid "_Calculator"
 msgstr "_Calculadora"
 
 #. Mode menu
-#: ../src/math-window.c:360
+#: ../src/math-window.c:383
 msgid "_Mode"
 msgstr "_Modo"
 
 #. Help menu label
-#: ../src/math-window.c:362
+#: ../src/math-window.c:385
 msgid "_Help"
 msgstr "_Axuda"
 
 #. Basic menu label
-#: ../src/math-window.c:364
+#: ../src/math-window.c:387
 msgid "_Basic"
 msgstr "_Básico"
 
 #. Advanced menu label
-#: ../src/math-window.c:366
+#: ../src/math-window.c:389
 msgid "_Advanced"
 msgstr "_Avanzado"
 
 #. Financial menu label
-#: ../src/math-window.c:368
+#: ../src/math-window.c:391
 msgid "_Financial"
 msgstr "_Financeiro"
 
 #. Programming menu label
-#: ../src/math-window.c:370
+#: ../src/math-window.c:393
 msgid "_Programming"
 msgstr "_Programación"
 
 #. Help>Contents menu label
-#: ../src/math-window.c:372
+#: ../src/math-window.c:395
 msgid "_Contents"
 msgstr "_Contidos"
 
