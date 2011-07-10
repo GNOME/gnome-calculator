@@ -748,14 +748,11 @@ load_buttons(MathButtons *buttons)
 void
 math_buttons_set_mode(MathButtons *buttons, ButtonMode mode)
 {
-    ButtonMode old_mode;
-
     g_return_if_fail(buttons != NULL);
  
     if (buttons->priv->mode == mode)
         return;
 
-    old_mode = buttons->priv->mode;
     buttons->priv->mode = mode;
   
     if (mode == PROGRAMMING)

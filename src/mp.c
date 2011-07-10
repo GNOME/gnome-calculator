@@ -986,7 +986,7 @@ mp_epowy_real(const MPNumber *x, MPNumber *z)
 {
     float r__1;
     int i, ix, xs, tss;
-    float rx, rz, rlb;
+    float rx, rz;
     MPNumber t1, t2;
 
     /* e^0 = 1 */
@@ -1000,11 +1000,6 @@ mp_epowy_real(const MPNumber *x, MPNumber *z)
         mp_exp(x, z);
         return;
     }
-
-    /*  SEE IF ABS(X) SO LARGE THAT EXP(X) WILL CERTAINLY OVERFLOW
-     *  OR UNDERFLOW.  1.01 IS TO ALLOW FOR ERRORS IN ALOG.
-     */
-    rlb = log((float)MP_BASE) * 1.01f;
 
     /* NOW SAFE TO CONVERT X TO REAL */
     rx = mp_cast_to_float(x);

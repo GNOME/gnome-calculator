@@ -306,16 +306,13 @@ mp_cast_to_exponential_string(MpSerializer *serializer, const MPNumber *x, gbool
 
     if (mp_is_complex(x)) {
         GString *s;
-        gboolean force_sign = TRUE;
         MPNumber x_im;
         int n_complex_digits = 0;
 
         mp_imaginary_component(x, &x_im);
 
-        if (strcmp(string->str, "0") == 0) {
+        if (strcmp(string->str, "0") == 0)
             g_string_assign(string, "");
-            force_sign = FALSE;
-        }
 
         s = g_string_sized_new(1024);
         exponent = mp_cast_to_exponential_string_real(serializer, &x_im, s, eng_format, &n_complex_digits);
