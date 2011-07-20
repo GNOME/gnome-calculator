@@ -35,6 +35,7 @@ static const CurrencyInfo currency_info[] = {
     {"BRL", "R$",   N_("Brazilian Real")},
     {"BWP", "P",    N_("Botswana Pula")},
     {"CAD", "$",    N_("Canadian Dollar")},
+    {"CFA", "Fr",   N_("CFA Franc")},
     {"CHF", "Fr",   N_("Swiss Franc")},
     {"CLP", "$",    N_("Chilean Peso")},
     {"CNY", "元",   N_("Chinese Yuan")},
@@ -483,6 +484,7 @@ load_ecb_rates(CurrencyManager *manager)
 
     /* Set some fixed rates */
     set_ecb_fixed_rate(manager, "EEK", "0.06391", eur_rate);
+    set_ecb_fixed_rate(manager, "CFA", "0.152449", eur_rate);
 
     xmlInitParser();
     document = xmlReadFile(filename, NULL, 0);
