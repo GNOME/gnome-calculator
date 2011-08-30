@@ -16,13 +16,15 @@
 # Alexander Saprykin <xelfium@gmail.com>, 2010.
 # Yuri Kozlov <yuray@komyakino.ru>, 2010.
 # Dmitriy Kodanev <dkodanev@gmail.com>, 2011.
+# Stas Solovey <whats_up@tut.by>, 2011.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-03-26 01:21+0000\n"
-"PO-Revision-Date: 2011-03-26 16:01+0400\n"
-"Last-Translator: Yuri Myaseodov <omerta13@yandex.ru>\n"
+"POT-Creation-Date: 2011-08-26 13:31+0000\n"
+"PO-Revision-Date: 2011-08-30 22:40+0300\n"
+"Last-Translator: Yuri Myasoedov <omerta13@yandex.ru>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -81,7 +83,7 @@ msgstr "Инвертировать"
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16
 #: ../data/buttons-financial.ui.h:50
-#: ../src/math-buttons.c:223
+#: ../src/math-buttons.c:224
 msgid "Memory"
 msgstr "Память"
 
@@ -116,7 +118,7 @@ msgstr "В_ычислить"
 #. Gross Profit Margin Dialog: Label before cost input
 #: ../data/buttons-financial.ui.h:8
 msgid "C_ost:"
-msgstr "Цена:"
+msgstr "_Цена:"
 
 #. Periodic Payment Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:10
@@ -171,7 +173,7 @@ msgstr "Вычислить прямолинейную амортизацию р�
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
 #: ../data/buttons-financial.ui.h:30
-#: ../src/math-buttons.c:247
+#: ../src/math-buttons.c:248
 msgid "Compounding Term"
 msgstr "Составной период"
 
@@ -193,7 +195,7 @@ msgstr "Отброс двойного остатка"
 #. Title of Future Value dialog
 #. Tooltip for the future value button
 #: ../data/buttons-financial.ui.h:40
-#: ../src/math-buttons.c:253
+#: ../src/math-buttons.c:254
 msgid "Future Value"
 msgstr "Будущая стоимость"
 
@@ -215,7 +217,7 @@ msgstr "Gpm"
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
 #: ../data/buttons-financial.ui.h:48
-#: ../src/math-buttons.c:274
+#: ../src/math-buttons.c:275
 msgid "Gross Profit Margin"
 msgstr "Валовый доход"
 
@@ -227,7 +229,7 @@ msgstr "Период оплаты"
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
 #: ../data/buttons-financial.ui.h:54
-#: ../src/math-buttons.c:265
+#: ../src/math-buttons.c:266
 msgid "Periodic Interest Rate"
 msgstr "Периодическая процентная ставка"
 
@@ -239,7 +241,7 @@ msgstr "Периодическая проц_ентная ставка:"
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
 #: ../data/buttons-financial.ui.h:58
-#: ../src/math-buttons.c:271
+#: ../src/math-buttons.c:272
 msgid "Periodic Payment"
 msgstr "Периодическая оплата"
 
@@ -251,7 +253,7 @@ msgstr "Pmt"
 #. Title of Present Value dialog
 #. Tooltip for the present value button
 #: ../data/buttons-financial.ui.h:62
-#: ../src/math-buttons.c:268
+#: ../src/math-buttons.c:269
 msgid "Present Value"
 msgstr "Текущее значение"
 
@@ -348,7 +350,7 @@ msgstr "_Срок:"
 #. Insert ASCII dialog: Label before character entry
 #: ../data/buttons-programming.ui.h:6
 msgid "Ch_aracter:"
-msgstr "_Символ:"
+msgstr "С_имвол:"
 
 #. Accessible name for the insert character button
 #: ../data/buttons-programming.ui.h:14
@@ -358,28 +360,28 @@ msgstr "Вставить символ"
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
 #: ../data/buttons-programming.ui.h:16
-#: ../src/math-buttons.c:226
+#: ../src/math-buttons.c:227
 msgid "Insert Character Code"
 msgstr "Вставить код символа"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:20
-#: ../src/math-buttons.c:241
+#: ../src/math-buttons.c:242
 msgid "Shift Left"
 msgstr "Сдвинуть влево"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
 #: ../data/buttons-programming.ui.h:22
-#: ../src/math-buttons.c:244
+#: ../src/math-buttons.c:245
 msgid "Shift Right"
 msgstr "Сдвинуть вправо"
 
 #. Insert ASCII dialog: Button to insert selected character
 #: ../data/buttons-programming.ui.h:30
 msgid "_Insert"
-msgstr "_Вставить"
+msgstr "Вс_тавить"
 
 #. The label on the memory button
 #: ../data/buttons-programming.ui.h:32
@@ -439,7 +441,7 @@ msgstr "Единицы измерения _углов:"
 
 #. Title of main window
 #: ../data/gcalctool.desktop.in.h:1
-#: ../src/math-window.c:514
+#: ../src/math-window.c:546
 msgid "Calculator"
 msgstr "Калькулятор"
 
@@ -576,208 +578,216 @@ msgid "Canadian Dollar"
 msgstr "Канадский доллар"
 
 #: ../src/currency-manager.c:38
+msgid "CFA Franc"
+msgstr "Франк КФА"
+
+#: ../src/currency-manager.c:39
 msgid "Swiss Franc"
 msgstr "Швейцарский франк"
 
-#: ../src/currency-manager.c:39
+#: ../src/currency-manager.c:40
 msgid "Chilean Peso"
 msgstr "Чилийское песо"
 
-#: ../src/currency-manager.c:40
+#: ../src/currency-manager.c:41
 msgid "Chinese Yuan"
 msgstr "Китайский юань"
 
-#: ../src/currency-manager.c:41
+#: ../src/currency-manager.c:42
 msgid "Colombian Peso"
 msgstr "Колумбийское песо"
 
-#: ../src/currency-manager.c:42
+#: ../src/currency-manager.c:43
 msgid "Czech Koruna"
 msgstr "Чешская крона"
 
-#: ../src/currency-manager.c:43
+#: ../src/currency-manager.c:44
 msgid "Danish Krone"
 msgstr "Датская крона"
 
-#: ../src/currency-manager.c:44
+#: ../src/currency-manager.c:45
 msgid "Algerian Dinar"
 msgstr "Алжирский динар"
 
-#: ../src/currency-manager.c:45
+#: ../src/currency-manager.c:46
 msgid "Estonian Kroon"
 msgstr "Эстонская крона"
 
-#: ../src/currency-manager.c:46
+#: ../src/currency-manager.c:47
 msgid "Euro"
 msgstr "Евро"
 
-#: ../src/currency-manager.c:47
+#: ../src/currency-manager.c:48
 msgid "Pound Sterling"
 msgstr "Фунт стерлингов"
 
-#: ../src/currency-manager.c:48
+#: ../src/currency-manager.c:49
 msgid "Hong Kong Dollar"
 msgstr "Гонконгский доллар"
 
-#: ../src/currency-manager.c:49
+#: ../src/currency-manager.c:50
 msgid "Croatian Kuna"
 msgstr "Хорватская куна"
 
-#: ../src/currency-manager.c:50
+#: ../src/currency-manager.c:51
 msgid "Hungarian Forint"
 msgstr "Венгерский форинт"
 
-#: ../src/currency-manager.c:51
+#: ../src/currency-manager.c:52
 msgid "Indonesian Rupiah"
 msgstr "Индонезийская рупия"
 
-#: ../src/currency-manager.c:52
+#: ../src/currency-manager.c:53
 msgid "Israeli New Shekel"
 msgstr "Новый израильский шекель"
 
-#: ../src/currency-manager.c:53
+#: ../src/currency-manager.c:54
 msgid "Indian Rupee"
 msgstr "Индийская рупия"
 
-#: ../src/currency-manager.c:54
+#: ../src/currency-manager.c:55
 msgid "Iranian Rial"
 msgstr "Иранский реал"
 
-#: ../src/currency-manager.c:55
+#: ../src/currency-manager.c:56
 msgid "Icelandic Krona"
 msgstr "Исландская крона"
 
-#: ../src/currency-manager.c:56
+#: ../src/currency-manager.c:57
 msgid "Japanese Yen"
 msgstr "Японская иена"
 
-#: ../src/currency-manager.c:57
+#: ../src/currency-manager.c:58
 msgid "South Korean Won"
 msgstr "Южнокорейская вона"
 
-#: ../src/currency-manager.c:58
+#: ../src/currency-manager.c:59
 msgid "Kuwaiti Dinar"
 msgstr "Кувейтский динар"
 
-#: ../src/currency-manager.c:59
+#: ../src/currency-manager.c:60
 msgid "Kazakhstani Tenge"
 msgstr "Казахстанский тенге"
 
-#: ../src/currency-manager.c:60
+#: ../src/currency-manager.c:61
 msgid "Sri Lankan Rupee"
 msgstr "Ланкийская рупия"
 
-#: ../src/currency-manager.c:61
+#: ../src/currency-manager.c:62
 msgid "Lithuanian Litas"
 msgstr "Литовский лит"
 
-#: ../src/currency-manager.c:62
+#: ../src/currency-manager.c:63
 msgid "Latvian Lats"
 msgstr "Латвийский лат"
 
-#: ../src/currency-manager.c:63
+#: ../src/currency-manager.c:64
 msgid "Libyan Dinar"
 msgstr "Ливийский динар"
 
-#: ../src/currency-manager.c:64
+#: ../src/currency-manager.c:65
 msgid "Mauritian Rupee"
 msgstr "Маврикийская рупия"
 
-#: ../src/currency-manager.c:65
+#: ../src/currency-manager.c:66
 msgid "Mexican Peso"
 msgstr "Мексиканское песо"
 
-#: ../src/currency-manager.c:66
+#: ../src/currency-manager.c:67
 msgid "Malaysian Ringgit"
 msgstr "Малайзийский ринггит"
 
-#: ../src/currency-manager.c:67
+#: ../src/currency-manager.c:68
 msgid "Norwegian Krone"
 msgstr "Норвежская крона"
 
-#: ../src/currency-manager.c:68
+#: ../src/currency-manager.c:69
 msgid "Nepalese Rupee"
 msgstr "Непальская рупия"
 
-#: ../src/currency-manager.c:69
+#: ../src/currency-manager.c:70
 msgid "New Zealand Dollar"
 msgstr "Новозеландский доллар"
 
-#: ../src/currency-manager.c:70
+#: ../src/currency-manager.c:71
 msgid "Omani Rial"
 msgstr "Оманский риал"
 
-#: ../src/currency-manager.c:71
+#: ../src/currency-manager.c:72
 msgid "Peruvian Nuevo Sol"
 msgstr "Перуанский новый соль"
 
-#: ../src/currency-manager.c:72
+#: ../src/currency-manager.c:73
 msgid "Philippine Peso"
 msgstr "Филиппинское песо"
 
-#: ../src/currency-manager.c:73
+#: ../src/currency-manager.c:74
 msgid "Pakistani Rupee"
 msgstr "Пакистанская рупия"
 
-#: ../src/currency-manager.c:74
+#: ../src/currency-manager.c:75
 msgid "Polish Zloty"
 msgstr "Польский злотый"
 
-#: ../src/currency-manager.c:75
+#: ../src/currency-manager.c:76
 msgid "Qatari Riyal"
 msgstr "Катарский риял"
 
-#: ../src/currency-manager.c:76
+#: ../src/currency-manager.c:77
 msgid "New Romanian Leu"
 msgstr "Новый румынский лей"
 
-#: ../src/currency-manager.c:77
+#: ../src/currency-manager.c:78
 msgid "Russian Rouble"
 msgstr "Российский рубль"
 
-#: ../src/currency-manager.c:78
+#: ../src/currency-manager.c:79
 msgid "Saudi Riyal"
 msgstr "Саудовский риял"
 
-#: ../src/currency-manager.c:79
+#: ../src/currency-manager.c:80
 msgid "Swedish Krona"
 msgstr "Шведская крона"
 
-#: ../src/currency-manager.c:80
+#: ../src/currency-manager.c:81
 msgid "Singapore Dollar"
 msgstr "Сингапурский доллар"
 
-#: ../src/currency-manager.c:81
+#: ../src/currency-manager.c:82
 msgid "Thai Baht"
 msgstr "Тайский бат"
 
-#: ../src/currency-manager.c:82
+#: ../src/currency-manager.c:83
 msgid "Tunisian Dinar"
 msgstr "Тунисский динар"
 
-#: ../src/currency-manager.c:83
+#: ../src/currency-manager.c:84
 msgid "New Turkish Lira"
 msgstr "Новая турецкая лира"
 
-#: ../src/currency-manager.c:84
+#: ../src/currency-manager.c:85
 msgid "T&T Dollar (TTD)"
 msgstr "Доллар Тринидада и Тобаго"
 
-#: ../src/currency-manager.c:85
+#: ../src/currency-manager.c:86
 msgid "US Dollar"
 msgstr "Доллар США"
 
-#: ../src/currency-manager.c:86
+#: ../src/currency-manager.c:87
 msgid "Uruguayan Peso"
 msgstr "Уругвайское песо"
 
-#: ../src/currency-manager.c:87
+#: ../src/currency-manager.c:88
 msgid "Venezuelan Bolívar"
 msgstr "Венесуэльский боливар фуэрте"
 
-#: ../src/currency-manager.c:88
+#: ../src/currency-manager.c:89
 msgid "South African Rand"
 msgstr "Южноафриканский рэнд"
+
+#: ../src/financial.c:70
+msgid "Error: the number of periods must be positive"
+msgstr "Ошибка: количество периодов, должно быть положительным"
 
 #. Description on how to use gcalctool displayed on command-line
 #: ../src/gcalctool.c:77
@@ -828,10 +838,6 @@ msgstr ""
 #. Description on gcalctool application options displayed on command-line
 #: ../src/gcalctool.c:110
 #, c-format
-#| msgid ""
-#| "Application Options:\n"
-#| "  -u, --unittest                  Perform unit tests\n"
-#| "  -s, --solve <equation>          Solve the given equation"
 msgid ""
 "Application Options:\n"
 "  -s, --solve <equation>          Solve the given equation"
@@ -852,281 +858,281 @@ msgid "Unknown argument '%s'"
 msgstr "Неизвестный аргумент «%s»"
 
 #. Tooltip for the Pi button
-#: ../src/math-buttons.c:95
+#: ../src/math-buttons.c:96
 msgid "Pi [Ctrl+P]"
 msgstr "Число Пи [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.c:98
+#: ../src/math-buttons.c:99
 msgid "Euler’s Number"
 msgstr "Число Эйлера"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.c:103
+#: ../src/math-buttons.c:104
 msgid "Subscript mode [Alt]"
 msgstr "Подстрочный режим [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.c:106
+#: ../src/math-buttons.c:107
 msgid "Superscript mode [Ctrl]"
 msgstr "Надстрочный режим [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.c:109
+#: ../src/math-buttons.c:110
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Экспоненциальная запись [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.c:112
+#: ../src/math-buttons.c:113
 msgid "Add [+]"
 msgstr "Сложить [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.c:115
+#: ../src/math-buttons.c:116
 msgid "Subtract [-]"
 msgstr "Вычесть [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.c:118
+#: ../src/math-buttons.c:119
 msgid "Multiply [*]"
 msgstr "Умножить [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.c:121
+#: ../src/math-buttons.c:122
 msgid "Divide [/]"
 msgstr "Разделить [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.c:124
+#: ../src/math-buttons.c:125
 msgid "Modulus divide"
 msgstr "Остаток от деления"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.c:127
+#: ../src/math-buttons.c:128
 msgid "Additional Functions"
 msgstr "Дополнительные функции"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.c:130
+#: ../src/math-buttons.c:131
 msgid "Exponent [^ or **]"
 msgstr "Возвести в степень [^ или **]"
 
 #. Tooltip for the square button
-#: ../src/math-buttons.c:133
+#: ../src/math-buttons.c:134
 msgid "Square [Ctrl+2]"
 msgstr "Квадрат [Ctrl+2]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.c:136
+#: ../src/math-buttons.c:137
 msgid "Percentage [%]"
 msgstr "Процент [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.c:139
+#: ../src/math-buttons.c:140
 msgid "Factorial [!]"
 msgstr "Факториал [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.c:142
+#: ../src/math-buttons.c:143
 msgid "Absolute value [|]"
 msgstr "Модуль [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.c:145
+#: ../src/math-buttons.c:146
 msgid "Complex argument"
 msgstr "Комплексный аргумент"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.c:148
+#: ../src/math-buttons.c:149
 msgid "Complex conjugate"
 msgstr "Комплексное сопряжение"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.c:151
+#: ../src/math-buttons.c:152
 msgid "Root [Ctrl+R]"
 msgstr "Корень [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.c:154
+#: ../src/math-buttons.c:155
 msgid "Square root [Ctrl+R]"
 msgstr "Квадратный корень [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.c:157
+#: ../src/math-buttons.c:158
 msgid "Logarithm"
 msgstr "Логарифм"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.c:160
+#: ../src/math-buttons.c:161
 msgid "Natural Logarithm"
 msgstr "Натуральный логарифм"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.c:163
+#: ../src/math-buttons.c:164
 msgid "Sine"
 msgstr "Синус"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.c:166
+#: ../src/math-buttons.c:167
 msgid "Cosine"
 msgstr "Косинус"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.c:169
+#: ../src/math-buttons.c:170
 msgid "Tangent"
 msgstr "Тангенс"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.c:172
+#: ../src/math-buttons.c:173
 msgid "Hyperbolic Sine"
 msgstr "Гиперболический синус"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.c:175
+#: ../src/math-buttons.c:176
 msgid "Hyperbolic Cosine"
 msgstr "Гиперболический косинус"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.c:178
+#: ../src/math-buttons.c:179
 msgid "Hyperbolic Tangent"
 msgstr "Гиперболический тангенс"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.c:181
+#: ../src/math-buttons.c:182
 msgid "Inverse [Ctrl+I]"
 msgstr "Инвертировать [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.c:184
+#: ../src/math-buttons.c:185
 msgid "Boolean AND"
 msgstr "Логическое побитовое И"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.c:187
+#: ../src/math-buttons.c:188
 msgid "Boolean OR"
 msgstr "Логическое побитовое ИЛИ"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.c:190
+#: ../src/math-buttons.c:191
 msgid "Boolean Exclusive OR"
 msgstr "Логическое исключающее ИЛИ"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.c:193
+#: ../src/math-buttons.c:194
 msgid "Boolean NOT"
 msgstr "Логическое побитовое НЕ"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:196
-#: ../src/math-buttons.c:1028
+#: ../src/math-buttons.c:197
+#: ../src/math-buttons.c:1038
 msgid "Integer Component"
 msgstr "Целая часть"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:199
-#: ../src/math-buttons.c:1030
+#: ../src/math-buttons.c:200
+#: ../src/math-buttons.c:1040
 msgid "Fractional Component"
 msgstr "Дробная часть"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.c:202
+#: ../src/math-buttons.c:203
 msgid "Real Component"
 msgstr "Действительная часть"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.c:205
+#: ../src/math-buttons.c:206
 msgid "Imaginary Component"
 msgstr "Мнимая часть"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.c:208
+#: ../src/math-buttons.c:209
 msgid "Ones' Complement"
 msgstr "Дополнение до единицы"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.c:211
+#: ../src/math-buttons.c:212
 msgid "Two's Complement"
 msgstr "Дополнение до двух"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.c:214
+#: ../src/math-buttons.c:215
 msgid "Truncate"
 msgstr "Целочисленная часть"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.c:217
+#: ../src/math-buttons.c:218
 msgid "Start Group [(]"
 msgstr "Начать блок [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.c:220
+#: ../src/math-buttons.c:221
 msgid "End Group [)]"
 msgstr "Закончить блок [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.c:229
+#: ../src/math-buttons.c:230
 msgid "Calculate Result"
 msgstr "Вычислить результат"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.c:232
+#: ../src/math-buttons.c:233
 msgid "Factorize [Ctrl+F]"
 msgstr "Разложить на множители [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.c:235
+#: ../src/math-buttons.c:236
 msgid "Clear Display [Escape]"
 msgstr "Очистить дисплей [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.c:238
+#: ../src/math-buttons.c:239
 msgid "Undo [Ctrl+Z]"
 msgstr "Отменить [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.c:250
+#: ../src/math-buttons.c:251
 msgid "Double Declining Depreciation"
 msgstr "Отброс двойного остатка"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.c:256
+#: ../src/math-buttons.c:257
 msgid "Financial Term"
 msgstr "Финансовое условие"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.c:259
+#: ../src/math-buttons.c:260
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Амортизация Сумма-Лет-Цифр"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.c:262
+#: ../src/math-buttons.c:263
 msgid "Straight Line Depreciation"
 msgstr "Линейная амортизация"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:652
+#: ../src/math-buttons.c:653
 msgid "Binary"
 msgstr "Двоичный"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:656
+#: ../src/math-buttons.c:657
 msgid "Octal"
 msgstr "Восьмеричный"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:660
+#: ../src/math-buttons.c:661
 msgid "Decimal"
 msgstr "Десятичный"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:664
+#: ../src/math-buttons.c:665
 msgid "Hexadecimal"
 msgstr "Шестнадцатеричный"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:938
-#: ../src/math-buttons.c:982
+#: ../src/math-buttons.c:948
+#: ../src/math-buttons.c:992
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1136,8 +1142,8 @@ msgstr[2] "_%d разрядов"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:942
-#: ../src/math-buttons.c:986
+#: ../src/math-buttons.c:952
+#: ../src/math-buttons.c:996
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1146,89 +1152,98 @@ msgstr[1] "%d разряда"
 msgstr[2] "%d разрядов"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:1032
+#: ../src/math-buttons.c:1042
 msgid "Round"
 msgstr "Округлить"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:1034
+#: ../src/math-buttons.c:1044
 msgid "Floor"
 msgstr "Округление в большую сторону"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1036
+#: ../src/math-buttons.c:1046
 msgid "Ceiling"
 msgstr "Округление в меньшую сторону"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1038
+#: ../src/math-buttons.c:1048
 msgid "Sign"
 msgstr "Знак"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
-#: ../src/math-converter.c:364
+#: ../src/math-converter.c:412
 msgid " in "
 msgstr " в "
 
+#. Tooltip for swap conversion button
+#: ../src/math-converter.c:427
+msgid "Switch conversion units"
+msgstr "Поменять местами конвертируемые единицы"
+
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:453
+#: ../src/math-equation.c:458
 msgid "No undo history"
 msgstr "Нет истории отмены изменений"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:478
+#: ../src/math-equation.c:485
 msgid "No redo history"
 msgstr "Нет истории отмены изменений"
 
-#: ../src/math-equation.c:867
+#: ../src/math-equation.c:943
 msgid "No sane value to store"
 msgstr "Отсутствует разумное значение для сохранения"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1132
+#: ../src/math-equation.c:1225
 msgid "Overflow. Try a bigger word size"
 msgstr "Переполнение. Попробуйте установить большее значение размера слова"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1137
+#: ../src/math-equation.c:1230
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Неизвестная переменная «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1142
+#: ../src/math-equation.c:1235
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Функция «%s» не определена"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1147
+#: ../src/math-equation.c:1240
 msgid "Unknown conversion"
 msgstr "Неизвестное преобразование"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1156
+#: ../src/math-equation.c:1249
 msgid "Malformed expression"
 msgstr "Некорректное выражение"
 
+#: ../src/math-equation.c:1263
+msgid "Calculating"
+msgstr "Вычисление"
+
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1288
+#: ../src/math-equation.c:1394
 msgid "Need an integer to factorize"
 msgstr "Для разложения на простые множители необходимо целое число"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1355
+#: ../src/math-equation.c:1469
 msgid "No sane value to bitwise shift"
 msgstr "Отсутствует разумное значение для побитового сдвига"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1384
+#: ../src/math-equation.c:1500
 msgid "Displayed value not an integer"
 msgstr "Значение не является целым числом"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1807
+#: ../src/math-equation.c:1925
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1283,20 +1298,24 @@ msgid "Show %d decimal _places"
 msgstr "Показывать %d десятичных _разрядов"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:163
+#: ../src/math-window.c:172
 msgid "Unable to open help file"
 msgstr "Не удалось открыть файл справки"
 
 #. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:195
+#: ../src/math-window.c:204
 msgid "translator-credits"
 msgstr ""
-"Андрей Носенко <awn@bcs.zp.ua>\n"
-"Артур Сибагатуллин <ArtSib@mail.ru>\n"
-"Alexander Saprykin <xelfium@gmail.com>, 2010"
+"Andrew W. Nosenko <awn@bcs.zp.ua>, 2003.\n"
+"Leonid Kanter <leon@asplinux.ru>, 2005, 2006.\n"
+"Artur G. Sibagatullin <ArtSib@mail.ru>, 2010.\n"
+"Alexander Saprykin <xelfium@gmail.com>, 2010.\n"
+"Yuri Kozlov <yuray@komyakino.ru>, 2010.\n"
+"Dmitriy Kodanev <dkodanev@gmail.com>, 2011.\n"
+"Stas Solovey <whats_up@tut.by>, 2011."
 
 #. The license this software is under (GPL2+)
-#: ../src/math-window.c:198
+#: ../src/math-window.c:207
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -1328,57 +1347,57 @@ msgstr ""
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 
 #. Program name in the about dialog
-#: ../src/math-window.c:215
+#: ../src/math-window.c:224
 msgid "Gcalctool"
 msgstr "Калькулятор Gcalctool"
 
 #. Copyright notice in the about dialog
-#: ../src/math-window.c:219
+#: ../src/math-window.c:228
 msgid "© 1986–2010 The Gcalctool authors"
 msgstr "© 1986–2010 авторы Gcalctool"
 
 #. Short description in the about dialog
-#: ../src/math-window.c:223
+#: ../src/math-window.c:232
 msgid "Calculator with financial and scientific modes."
 msgstr "Калькулятор с финансовым и научным режимами."
 
 #. Calculator menu
-#: ../src/math-window.c:349
+#: ../src/math-window.c:381
 msgid "_Calculator"
 msgstr "_Калькулятор"
 
 #. Mode menu
-#: ../src/math-window.c:351
+#: ../src/math-window.c:383
 msgid "_Mode"
 msgstr "_Режим"
 
 #. Help menu label
-#: ../src/math-window.c:353
+#: ../src/math-window.c:385
 msgid "_Help"
 msgstr "_Справка"
 
 #. Basic menu label
-#: ../src/math-window.c:355
+#: ../src/math-window.c:387
 msgid "_Basic"
 msgstr "_Простой"
 
 #. Advanced menu label
-#: ../src/math-window.c:357
+#: ../src/math-window.c:389
 msgid "_Advanced"
 msgstr "_Расширенный"
 
 #. Financial menu label
-#: ../src/math-window.c:359
+#: ../src/math-window.c:391
 msgid "_Financial"
 msgstr "_Финансовый"
 
 #. Programming menu label
-#: ../src/math-window.c:361
+#: ../src/math-window.c:393
 msgid "_Programming"
 msgstr "_Программирование"
 
 #. Help>Contents menu label
-#: ../src/math-window.c:363
+#: ../src/math-window.c:395
 msgid "_Contents"
 msgstr "_Содержание"
 
@@ -1419,45 +1438,45 @@ msgstr "Переполнение: результат не может быть в
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:644
 #: ../src/mp.c:676
-#: ../src/mp.c:1610
+#: ../src/mp.c:1605
 msgid "Division by zero is undefined"
 msgstr "Деление на ноль не определено"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1281
-#: ../src/mp.c:1318
+#: ../src/mp.c:1276
+#: ../src/mp.c:1313
 msgid "Logarithm of zero is undefined"
 msgstr "Логарифм нуля не определён"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1683
-#: ../src/mp.c:1998
+#: ../src/mp.c:1680
+#: ../src/mp.c:1994
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Функция возведения в степень нуля не определена для отрицательных показателей степени"
 
-#: ../src/mp.c:1708
+#: ../src/mp.c:1704
 msgid "Reciprocal of zero is undefined"
 msgstr "Обратная величина нуля не определена"
 
-#: ../src/mp.c:1793
+#: ../src/mp.c:1789
 msgid "Root must be non-zero"
 msgstr "Корень должен быть ненулевым"
 
-#: ../src/mp.c:1811
+#: ../src/mp.c:1807
 msgid "Negative root of zero is undefined"
 msgstr "Отрицательный корень нуля не определён"
 
-#: ../src/mp.c:1817
+#: ../src/mp.c:1813
 msgid "nth root of negative number is undefined for even n"
 msgstr "Корень n-той степени от отрицательного числа не определён для чётных n"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1938
+#: ../src/mp.c:1934
 msgid "Factorial is only defined for natural numbers"
 msgstr "Факториал определён только для натуральных чисел"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1958
+#: ../src/mp.c:1954
 msgid "Modulus division is only defined for integers"
 msgstr "Деление по модулю определено только для целых чисел"
 
@@ -1569,16 +1588,15 @@ msgid "Nautical Miles"
 msgstr "Морские мили"
 
 #: ../src/unit-manager.c:60
-#: ../src/unit-manager.c:72
 #, c-format
 msgctxt "unit-format"
-msgid "%s nm"
-msgstr "%s нм"
+msgid "%s nmi"
+msgstr "%s морских миль"
 
 #: ../src/unit-manager.c:60
 msgctxt "unit-symbols"
-msgid "nm"
-msgstr "нм"
+msgid "nmi"
+msgstr "морская миля"
 
 #: ../src/unit-manager.c:61
 msgid "Miles"
@@ -1750,9 +1768,15 @@ msgid "Nanometers"
 msgstr "Нанометры"
 
 #: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s нм"
+
+#: ../src/unit-manager.c:72
 msgctxt "unit-symbols"
-msgid "nanometer,nanometers"
-msgstr "нанометр, нанометры"
+msgid "nanometer,nanometers,nm"
+msgstr "нанометр, нанометры, нм"
 
 #: ../src/unit-manager.c:73
 msgid "Hectares"
@@ -1767,7 +1791,7 @@ msgstr "%s га"
 #: ../src/unit-manager.c:73
 msgctxt "unit-symbols"
 msgid "hectare,hectares,ha"
-msgstr "гектар, гектары, "
+msgstr "гектар, гектары, га"
 
 #: ../src/unit-manager.c:74
 msgid "Acres"
@@ -1785,8 +1809,8 @@ msgid "acre,acres"
 msgstr "акр, акры"
 
 #: ../src/unit-manager.c:75
-msgid "Square Meter"
-msgstr "Квадратный метр"
+msgid "Square Meters"
+msgstr "Квадратные метры"
 
 #: ../src/unit-manager.c:75
 #, c-format
@@ -1800,8 +1824,8 @@ msgid "m²"
 msgstr "м²"
 
 #: ../src/unit-manager.c:76
-msgid "Square Centimeter"
-msgstr "Квадратный сантиметр"
+msgid "Square Centimeters"
+msgstr "Квадратные сантиметры"
 
 #: ../src/unit-manager.c:76
 #, c-format
@@ -1815,7 +1839,7 @@ msgid "cm²"
 msgstr "см²"
 
 #: ../src/unit-manager.c:77
-msgid "Square Millimeter"
+msgid "Square Millimeters"
 msgstr "Квадратные миллиметры"
 
 #: ../src/unit-manager.c:77
@@ -1920,7 +1944,7 @@ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "миллилитр, миллилитры, мл, см³"
 
 #: ../src/unit-manager.c:84
-msgid "Microlitre"
+msgid "Microlitres"
 msgstr "Микролитры"
 
 #: ../src/unit-manager.c:84
@@ -2092,7 +2116,7 @@ msgstr "Миллисекунды"
 #, c-format
 msgctxt "unit-format"
 msgid "%s ms"
-msgstr "%s мсs"
+msgstr "%s мс"
 
 #: ../src/unit-manager.c:95
 msgctxt "unit-symbols"
@@ -2111,8 +2135,8 @@ msgstr "%s мкс"
 
 #: ../src/unit-manager.c:96
 msgctxt "unit-symbols"
-msgid "microsecond,microseconds,us"
-msgstr "микросекунда, микросекунды, мкс"
+msgid "microsecond,microseconds,us,μs"
+msgstr "микросекунда, микросекунды, мкc"
 
 #: ../src/unit-manager.c:97
 msgid "Celcius"
@@ -2121,8 +2145,8 @@ msgstr "Цельсий"
 #: ../src/unit-manager.c:97
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚C"
-msgstr "%s˚C"
+msgid "%s ˚C"
+msgstr "%s ˚C"
 
 #: ../src/unit-manager.c:97
 msgctxt "unit-symbols"
@@ -2136,8 +2160,8 @@ msgstr "Фаренгейт"
 #: ../src/unit-manager.c:98
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚F"
-msgstr "%s˚F"
+msgid "%s ˚F"
+msgstr "%s ˚F"
 
 #: ../src/unit-manager.c:98
 msgctxt "unit-symbols"
@@ -2151,13 +2175,13 @@ msgstr "Кельвины"
 #: ../src/unit-manager.c:99
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚K"
-msgstr "%s ˚K"
+msgid "%s K"
+msgstr "%s K"
 
 #: ../src/unit-manager.c:99
 msgctxt "unit-symbols"
-msgid "degK,˚K"
-msgstr "градусы Кельвина, ˚К"
+msgid "K"
+msgstr "K"
 
 #: ../src/unit-manager.c:100
 msgid "Rankine"
@@ -2166,13 +2190,13 @@ msgstr "Ранкин"
 #: ../src/unit-manager.c:100
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚R"
-msgstr "%s˚Ra"
+msgid "%s ˚R"
+msgstr "%s ˚R"
 
 #: ../src/unit-manager.c:100
 msgctxt "unit-symbols"
-msgid "degR,˚R"
-msgstr "градусы Ранкина,˚R"
+msgid "degR,˚R,˚Ra"
+msgstr "градусы Ранкина, ˚R, ˚Ra"
 
 #: ../src/unit-manager.c:109
 msgid "Angle"
