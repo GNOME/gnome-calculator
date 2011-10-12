@@ -73,7 +73,7 @@ unit_manager_get_default(void)
         {"area",     "hectare",             N_("Hectares"),          NC_("unit-format", "%s ha"),       "10000x",             "x/10000",        NC_("unit-symbols", "hectare,hectares,ha")},
         {NULL,       "acre",                N_("Acres"),             NC_("unit-format", "%s acres"),    "4046.8564224x",      "x/4046.8564224", NC_("unit-symbols", "acre,acres")},
         {NULL,       "square-meter",        N_("Square Meters"),      NC_("unit-format", "%s m²"),       "x",                  "x",              NC_("unit-symbols", "m²")},
-        {NULL,       "square-centimeter",   N_("Square Centimeters"), NC_("unit-format", "%s cm²"),      "0.001x",             "1000x",          NC_("unit-symbols", "cm²")},
+        {NULL,       "square-centimeter",   N_("Square Centimeters"), NC_("unit-format", "%s cm²"),      "0.0001x",            "10000x",         NC_("unit-symbols", "cm²")},
         {NULL,       "square-millimeter",   N_("Square Millimeters"), NC_("unit-format", "%s mm²"),      "0.000001x",          "1000000x",       NC_("unit-symbols", "mm²")},
         {"volume",   "cubic-meter",         N_("Cubic Meters"),      NC_("unit-format", "%s m³"),       "1000x",              "x/1000",         NC_("unit-symbols", "m³")},
         {NULL,       "gallon",              N_("Gallons"),           NC_("unit-format", "%s gal"),      "3.785412x",          "x/3.785412",     NC_("unit-symbols", "gallon,gallons,gal")},
