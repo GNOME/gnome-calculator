@@ -469,7 +469,7 @@ static void
 load_ecb_rates(CurrencyManager *manager)
 {
     Currency *eur_rate;
-    char *filename = get_ecb_rate_filepath();
+    char *filename;
     xmlDocPtr document;
     xmlXPathContextPtr xpath_ctx;
     xmlXPathObjectPtr xpath_obj;
@@ -487,12 +487,13 @@ load_ecb_rates(CurrencyManager *manager)
     set_ecb_fixed_rate(manager, "CFA", "0.152449", eur_rate);
 
     xmlInitParser();
+    filename = get_ecb_rate_filepath();
     document = xmlReadFile(filename, NULL, 0);
-    g_free (filename);
-    if (document == NULL) {
+    if (!document)
         g_error("Couldn't parse ECB rate file %s", filename);
+    g_free (filename);
+    if (!document)    
         return;
-    }
 
     xpath_ctx = xmlXPathNewContext(document);
     if (xpath_ctx == NULL) {
