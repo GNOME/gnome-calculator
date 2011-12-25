@@ -15,1826 +15,2960 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.mk\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-04 07:53+0000\n"
-"PO-Revision-Date: 2008-09-25 18:51+0200\n"
-"Last-Translator: Jovan Naumovski <jovan@lugola.net>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-11-30 22:17+0000\n"
+"PO-Revision-Date: 2011-12-25 18:54+0100\n"
+"Last-Translator: Jovan N\n"
 "Language-Team: Macedonian <mkde-l10n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural= n==1 || n%10==1 ? 0 : 1\n"
+"Plural-Forms: nplurals=2; plural= n==1 || n%10==1 ? 0 : 1\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../gcalctool/calctool.c:472
-msgid "Kilometer-to-mile conversion factor"
-msgstr "Фактор за конвертирање на километри во милји"
+#. The label on the memory button
+#: ../data/buttons-advanced.ui.h:2
+#: ../data/buttons-financial.ui.h:2
+#| msgid "<i>x</i>!"
+msgid "<i>x</i>"
+msgstr "<i>x</i>"
 
-#: ../gcalctool/calctool.c:474
-msgid "square root of 2"
-msgstr "квадратен корен од 2"
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:4
+#: ../data/buttons-basic.ui.h:2
+#: ../data/buttons-financial.ui.h:4
+#: ../data/buttons-programming.ui.h:2
+msgid "="
+msgstr "="
 
-#: ../gcalctool/calctool.c:475
-msgid "Euler's Number (e)"
-msgstr "Ојлеровиот број (e)"
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:6
+#: ../data/buttons-programming.ui.h:4
+#| msgid "Absolute value"
+msgid "Absolute Value"
+msgstr "Апсолутна вредност"
 
-#: ../gcalctool/calctool.c:476
-msgid "pi"
-msgstr "пи"
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:8
+#: ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:38
+#: ../data/buttons-programming.ui.h:8
+msgid "Exponent"
+msgstr "Експонент"
 
-#: ../gcalctool/calctool.c:477
-msgid "Centimeter-to-inch conversion factor"
-msgstr "Фактор за конвертирање на сентиметри во инчи"
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:10
+#: ../data/buttons-programming.ui.h:10
+msgid "Factorial"
+msgstr "Факториел"
 
-#: ../gcalctool/calctool.c:479
-msgid "degrees in a radian"
-msgstr "степени во радијан"
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:12
+#: ../data/buttons-programming.ui.h:12
+#| msgid "Factorial"
+msgid "Factorize"
+msgstr "Факторизирај"
 
-#: ../gcalctool/calctool.c:480
-msgid "2 ^ 20"
-msgstr "2 ^ 20"
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:14
+#: ../data/buttons-programming.ui.h:18
+msgid "Inverse"
+msgstr "Инверзна вредност"
 
-#: ../gcalctool/calctool.c:481
-msgid "Gram-to-ounce conversion factor"
-msgstr "Фактор за конвертирање од грамови во унци"
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+#: ../data/buttons-advanced.ui.h:16
+#: ../data/buttons-financial.ui.h:50
+#: ../src/math-buttons.c:224
+msgid "Memory"
+msgstr "Меморија"
 
-#: ../gcalctool/calctool.c:483
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "Фактор за конвертирање од килоџул во британски термички единици"
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:18
+#| msgid "Scientific"
+msgid "Scientific Exponent"
+msgstr "Експонент"
 
-#: ../gcalctool/calctool.c:486
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Фактор на конвертирање од кубни сантиметри во кубни инчи"
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:20
+#: ../data/buttons-programming.ui.h:24
+#| msgid "Sto"
+msgid "Store"
+msgstr "Зачувај"
 
-#. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
-#.
-#: ../gcalctool/calctool.c:497 ../gcalctool/mp.c:1814
-#: ../gcalctool/mpmath.c:347 ../gcalctool/mpmath.c:384
-#: ../gcalctool/mpmath.c:432 ../gcalctool/mpmath.c:998
-msgid "Error"
-msgstr "Грешка"
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:22
+#: ../data/buttons-programming.ui.h:26
+#| msgid "Description"
+msgid "Subscript"
+msgstr "Индекс"
 
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is an error message (see the last parameter in the
-#. * getparam() call in the get_options() routine below.
-#.
-#: ../gcalctool/calctool.c:514
-#, c-format
-msgid "%s: %s as next argument.\n"
-msgstr "%s: %s како следен аргумент.\n"
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:24
+#: ../data/buttons-programming.ui.h:28
+#| msgid "Description"
+msgid "Superscript"
+msgstr "Експонент"
 
-#. Translators: the following string contains two strings that
-#. * are passed to it: the first is the gcalctool program name and
-#. * the second is the program version number.
-#.
-#: ../gcalctool/calctool.c:527
-#, c-format
-msgid ""
-"%s version %s\n"
-"\n"
-msgstr ""
-"%s верзија %s\n"
-"\n"
+#. Payment Period Dialog: Button to calculate result
+#: ../data/buttons-financial.ui.h:6
+#| msgid "Calculator"
+msgid "C_alculate"
+msgstr "П_ресметај"
 
-#: ../gcalctool/calctool.c:528
-#, c-format
-msgid "Usage: %s: [-E] [-u] [-a accuracy] "
-msgstr "Употреба: %s: [-E] [-u] [-a accuracy] "
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:8
+#| msgid "Cos"
+msgid "C_ost:"
+msgstr "Ц_ена:"
 
-#: ../gcalctool/calctool.c:529
-msgid "\t\t [-?] [-v] [-h]\n"
-msgstr "\t\t [-?] [-v] [-h]\n"
+#. Periodic Payment Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:10
+msgid "Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. "
+msgstr "Ја пресметува количината на периодична наплата на заем, каде исплатите се прават на крајот на секој период на исплата."
 
-#: ../gcalctool/calctool.c:550
-msgid "-a needs accuracy value"
-msgstr "-на а му треба вредност на точност"
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:12
+msgid "Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-of-the-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The useful life is the number of periods, typically years, over which an asset is depreciated. "
+msgstr "Ја пресметува девалвацијата на средства во текот на даден период со користење на методот „Sum-of-the-Years'-Digits“. Овој метод ја забрзува ратата на девалвација за трошоците да се случуваат во периодите порано, наместо подоцна."
 
-#: ../gcalctool/calctool.c:554 ../gcalctool/get.c:242
-#, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s точноста треба да е во опсег 0-%d\n"
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:14
+msgid "Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method."
+msgstr "Ја пресметува ратата на девалвација на средства на одреден период со користење на метод на двојно опаѓање."
 
-#: ../gcalctool/display.c:322
-msgid "No undo history"
-msgstr "Нема историја за отповикување"
+#. Future Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:16
+msgid "Calculates the future value of an investment based on a series of equal payments at a periodic interest rate over the number of payment periods in the term."
+msgstr "Ја пресметува идната вредност на инвестицијата врз база на неколку еднакви рати на исплата со периодична камата на бројот на исплати во тој период."
 
-#: ../gcalctool/display.c:336
-msgid "No redo steps"
-msgstr "Нема чекори за отповикување"
+#. Compounding Term Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:18
+msgid "Calculates the number of compounding periods necessary to increase an investment of present value to a future value, at a fixed interest rate per compounding period."
+msgstr "ГО пресметува бројот на периоди потребен за зголемување на инвестицијата на тековната вредност до некоја идна вредност со фиксна каматна стапка."
 
-#: ../gcalctool/functions.c:135
-msgid "Malformed function"
-msgstr "Погрешна функција"
+#. Payment Period Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:20
+msgid "Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value, at a periodic interest rate."
+msgstr "Го пресметува бројот на периоди на исплата."
 
-#: ../gcalctool/functions.c:145
-msgid "No sane value to do bitwise shift"
-msgstr "Нема разумна вредност за да се направи битово поместување"
+#. Periodic Interest Rate Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:22
+msgid "Calculates the periodic interest necessary to increase an investment to a future value, over the number of compounding periods. "
+msgstr "Ја пресметува периодичната камата потребна за да се зголеми инвестицијата до некоја идна вредност, во неколку рати."
 
-#: ../gcalctool/functions.c:178 ../gcalctool/functions.c:227
-msgid "No sane value to convert"
-msgstr "Нема вистинска вредност за конвертирање"
+#. Present Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:24
+msgid "Calculates the present value of an investment based on a series of equal payments discounted at a periodic interest rate over the number of payment periods in the term. "
+msgstr "Ја пресметува сегашната вредност на инвестицијата врз база на неколку еднакви исплати со периодична камата."
 
-#: ../gcalctool/functions.c:202 ../gcalctool/functions.c:244
-msgid "No sane value to store"
-msgstr "Нема вистинска вредност за складирање"
+#. Gross Profit Margin Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:26
+msgid "Calculates the resale price of a product, based on the product cost and the wanted gross profit margin."
+msgstr "Ја пресметува цената на препродажба на производ, врз база на цената на прозиводот и саканата бруто маржа."
 
-#: ../gcalctool/functions.c:401
-msgid "Invalid number for the current base"
-msgstr "Невалиден број за тековната основа"
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:28
+msgid "Calculates the straight-line depreciation of an asset for one period. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. "
+msgstr "Ја пресметува праволиниската девалвација на средствата за даден период. Праволинискиот метод на девалвација ја разделува цената на девалвација на целосниот рок на средствата. Корисниот рок е бројот на периоди, најчесто години, во кој средствата се губат."
 
-#: ../gcalctool/functions.c:405
-msgid "Too long number"
-msgstr "Предлог број"
+#. Title of Compounding Term dialog
+#. Tooltip for the compounding term button
+#: ../data/buttons-financial.ui.h:30
+#: ../src/math-buttons.c:248
+#| msgid "Compounding term"
+msgid "Compounding Term"
+msgstr "Збирен израз"
 
-#: ../gcalctool/functions.c:409
-msgid "Invalid bitwise operation parameter(s)"
-msgstr "Невалидни параметри на битовната операција"
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/buttons-financial.ui.h:32
+msgid "Ctrm"
+msgstr "Ctrm"
 
-#: ../gcalctool/functions.c:413
-msgid "Invalid modulus operation parameter(s)"
-msgstr "Невалидни параметри на операцијата со остаток"
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:34
+msgid "Ddb"
+msgstr "Ddb"
 
-#: ../gcalctool/functions.c:417
-msgid "Math operation error"
-msgstr "Грешка во математичката операција"
+#. Title of Double-Declining Depreciation dialog
+#: ../data/buttons-financial.ui.h:36
+#| msgid "Double-declining depreciation"
+msgid "Double-Declining Depreciation"
+msgstr "Двојно опаѓачка девалвација"
 
-#: ../gcalctool/functions.c:421
-msgid "Malformed expression"
-msgstr "Погрешен израз"
+#. Title of Future Value dialog
+#. Tooltip for the future value button
+#: ../data/buttons-financial.ui.h:40
+#: ../src/math-buttons.c:254
+#| msgid "Future value"
+msgid "Future Value"
+msgstr "Идна вредност"
 
-#: ../gcalctool/get.c:263
-#, c-format
-msgid "%s: base should be 2, 8, 10 or 16\n"
-msgstr "%s базата треба да биде 2, 8 , 10 или 16\n"
+#. Payment Period Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:42
+#| msgid "Future value"
+msgid "Future _Value:"
+msgstr "Идна _вредност:"
 
-#: ../gcalctool/get.c:278
-#, c-format
-msgid "%s: invalid display mode [%s]\n"
-msgstr "%s: неважечки режим на прикажување[%s]\n"
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/buttons-financial.ui.h:44
+msgid "Fv"
+msgstr "Fv"
 
-#: ../gcalctool/get.c:293
-#, c-format
-msgid "%s: invalid mode [%s]\n"
-msgstr "%s: неважечки режим [%s]\n"
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/buttons-financial.ui.h:46
+msgid "Gpm"
+msgstr "бруто маржа"
 
-#: ../gcalctool/get.c:307
-#, c-format
-msgid "%s: invalid trigonometric mode [%s]\n"
-msgstr "%s: неважечки тригонометриски режим [%s]\n"
+#. Title of Gross Profit Margin dialog
+#. Tooltip for the gross profit margin button
+#: ../data/buttons-financial.ui.h:48
+#: ../src/math-buttons.c:275
+msgid "Gross Profit Margin"
+msgstr "Бруто маржа"
 
-#: ../gcalctool/gtk.c:54 ../gcalctool.desktop.in.h:1
+#. Title of Payment Period dialog
+#: ../data/buttons-financial.ui.h:52
+#| msgid "Payment period"
+msgid "Payment Period"
+msgstr "Период на исплата"
+
+#. Title of Periodic Interest Rate dialog
+#. Tooltip for the periodic interest rate button
+#: ../data/buttons-financial.ui.h:54
+#: ../src/math-buttons.c:266
+#| msgid "Periodic interest rate"
+msgid "Periodic Interest Rate"
+msgstr "Периодична каматна стапка"
+
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/buttons-financial.ui.h:56
+#| msgid "Periodic interest rate"
+msgid "Periodic Interest _Rate:"
+msgstr "Периодична каматна _стапка"
+
+#. Title of Periodic Payment dialog
+#. Tooltip for the periodic payment button
+#: ../data/buttons-financial.ui.h:58
+#: ../src/math-buttons.c:272
+#| msgid "Periodic payment"
+msgid "Periodic Payment"
+msgstr "Рата на исплата"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/buttons-financial.ui.h:60
+msgid "Pmt"
+msgstr "Pmt"
+
+#. Title of Present Value dialog
+#. Tooltip for the present value button
+#: ../data/buttons-financial.ui.h:62
+#: ../src/math-buttons.c:269
+#| msgid "Present value"
+msgid "Present Value"
+msgstr "Сегашна вредност"
+
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/buttons-financial.ui.h:64
+#| msgid "Present value"
+msgid "Present _Value:"
+msgstr "Сегашна в_редност"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/buttons-financial.ui.h:66
+msgid "Pv"
+msgstr "Pv"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/buttons-financial.ui.h:68
+msgid "Rate"
+msgstr "Стапка"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:70
+msgid "Sln"
+msgstr "Sln"
+
+#. Title of Straight-Line Depreciation dialog
+#: ../data/buttons-financial.ui.h:72
+#| msgid "Straight-line depreciation"
+msgid "Straight-Line Depreciation"
+msgstr "Девалвација по права линија"
+
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
+#: ../data/buttons-financial.ui.h:74
+#| msgid "Sum-of-the years'-digits depreciation"
+msgid "Sum-of-the-Years'-Digits Depreciation"
+msgstr "Девалвација според збирот на цифрите на годините"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:76
+msgid "Syd"
+msgstr "Syd"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/buttons-financial.ui.h:78
+msgid "Term"
+msgstr "Временски термин"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:80
+#| msgid "Cos"
+msgid "_Cost:"
+msgstr "_Цена:"
+
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:82
+#| msgid "Future value"
+msgid "_Future Value:"
+msgstr "_Идна вредност"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:84
+msgid "_Life:"
+msgstr "_Рок:"
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/buttons-financial.ui.h:86
+msgid "_Margin:"
+msgstr "_Маргина:"
+
+#. Present Value Dialog: Label before number of periods input
+#: ../data/buttons-financial.ui.h:88
+msgid "_Number of Periods:"
+msgstr "_Број на периоди:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:90
+msgid "_Period:"
+msgstr "_Период:"
+
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/buttons-financial.ui.h:92
+#| msgid "Periodic payment"
+msgid "_Periodic Payment:"
+msgstr "_Периодична наплата:"
+
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/buttons-financial.ui.h:94
+#| msgid "_Financial"
+msgid "_Principal:"
+msgstr "_Финансиски:"
+
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:96
+msgid "_Salvage:"
+msgstr "_Повраток:"
+
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/buttons-financial.ui.h:98
+#| msgid "Term"
+msgid "_Term:"
+msgstr "_Член:"
+
+#. Insert ASCII dialog: Label before character entry
+#: ../data/buttons-programming.ui.h:6
+msgid "Ch_aracter:"
+msgstr "Зн_ак:"
+
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:14
+#| msgid "Ch_aracter:"
+msgid "Insert Character"
+msgstr "Вметни знак"
+
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+#: ../data/buttons-programming.ui.h:16
+#: ../src/math-buttons.c:227
+msgid "Insert Character Code"
+msgstr "Внеси код на знак"
+
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+#: ../data/buttons-programming.ui.h:20
+#: ../src/math-buttons.c:242
+#| msgid "Shift left"
+msgid "Shift Left"
+msgstr "Помести на лево"
+
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+#: ../data/buttons-programming.ui.h:22
+#: ../src/math-buttons.c:245
+#| msgid "Shift right"
+msgid "Shift Right"
+msgstr "Помести на десно"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: ../data/buttons-programming.ui.h:30
+msgid "_Insert"
+msgstr "_Вметни"
+
+#. The label on the memory button
+#: ../data/buttons-programming.ui.h:32
+#| msgid "ex"
+msgid "x"
+msgstr "x"
+
+#. Word size combo: 16 bits
+#: ../data/preferences.ui.h:2
+msgid "16-bit"
+msgstr "16-bit"
+
+#. Word size combo: 32 bits
+#: ../data/preferences.ui.h:4
+msgid "32-bit"
+msgstr "32-bit"
+
+#. Word size combo: 64 bits
+#: ../data/preferences.ui.h:6
+msgid "64-bit"
+msgstr "64-bit"
+
+#. Word size combo: 8 bits
+#: ../data/preferences.ui.h:8
+msgid "8-bit"
+msgstr "8-bit"
+
+#. Preferences dialog: Label for display format combo box
+#: ../data/preferences.ui.h:10
+msgid "Number _Format:"
+msgstr "_Формат на броеви"
+
+#. Title of preferences dialog
+#: ../data/preferences.ui.h:11
+#: ../src/math-preferences.c:231
+msgid "Preferences"
+msgstr "Преференци"
+
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/preferences.ui.h:13
+#| msgid "Show thousands separator"
+msgid "Show _thousands separators"
+msgstr "Покажи го одделувачот за илјадарки"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/preferences.ui.h:15
+#| msgid "Show trailing zeroes"
+msgid "Show trailing _zeroes"
+msgstr "Покажи ги _нулите од десно"
+
+#. Preferences dialog: label for word size combo box
+#: ../data/preferences.ui.h:17
+msgid "Word _size:"
+msgstr "_Големина на збор:"
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/preferences.ui.h:19
+msgid "_Angle units:"
+msgstr "Единици за _агол:"
+
+#. Title of main window
+#: ../data/gcalctool.desktop.in.h:1
+#: ../src/math-window.c:546
 msgid "Calculator"
 msgstr "Калкулатор"
 
-#: ../gcalctool/gtk.c:54
-msgid "Calculator - Advanced"
-msgstr "Калкулатор - напреден"
+#: ../data/gcalctool.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Извршете аритметички, научни или финансиски пресметки"
 
-#: ../gcalctool/gtk.c:54
-msgid "Calculator - Financial"
-msgstr "Калкулатор - финансиски"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
+#| msgid "Accuracy"
+msgid "Accuracy value"
+msgstr "Вредност за точноста"
 
-#: ../gcalctool/gtk.c:55
-msgid "Calculator - Scientific"
-msgstr "Калкулатор - научен"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+msgid "Angle units"
+msgstr "Единици за агол"
 
-#: ../gcalctool/gtk.c:60
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr "Режим на копчиња"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+msgid "Currency of the current calculation"
+msgstr "Валута на тековната операција"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+msgid "Currency to convert the current calculation into"
+msgstr "Валута во која ќе се претвора тековната валута"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
+msgid "Indicates whether any trailing zeroes after the numeric point should be shown in the display value."
+msgstr "Одредува дали ќе се прикажуваат крајните нули после запирката."
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "Одредува дали ќе се прикажуваат разделници за илјадарки кај големите броеви."
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+#| msgid "Numeric point"
+msgid "Number format"
+msgstr "Формат на броеви"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
+#| msgid "Numeric 0"
+msgid "Numeric Base"
+msgstr "Нумеричка основа"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
+#| msgid "Show T_housands Separator"
+msgid "Show Thousands Separators"
+msgstr "Покажи одделувач за илјадарки"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
+#| msgid "Show _Trailing Zeroes"
+msgid "Show Trailing Zeroes"
+msgstr "Покажи ги нулите од десно"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+msgid "Source currency"
+msgstr "Изворна валута"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Source units"
+msgstr "Изворни единици"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "Target currency"
+msgstr "Целна валута"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "Target units"
+msgstr "Целни единици"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The angle units to use"
+msgstr "Единиците за агол кои ќе се користат"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+msgid "The button mode"
+msgstr "Режимот на копчиња"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The format to display numbers in"
+msgstr "Форматот во кој ќе се прикажуваат бројките"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+msgid "The number of digits displayed after the numeric point"
+msgstr "Бројот на цифри прикажани после децималната запирка"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+msgid "The numeric base"
+msgstr "Основа на броевите"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
+msgid "The size of the words used in bitwise operations"
+msgstr "Големина на зборовите кои се користат во операциите со битови"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+#| msgid "Quit the calculator"
+msgid "Units of the current calculation"
+msgstr "Единици на тековната пресметка"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+msgid "Units to convert the current calculation into"
+msgstr "Единици во кои ќе се претвора тековната пресметка"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
+msgid "Word size"
+msgstr "Големина на збор"
+
+#: ../src/currency-manager.c:30
+msgid "UAE Dirham"
+msgstr "UAE Dirham"
+
+#: ../src/currency-manager.c:31
+msgid "Australian Dollar"
+msgstr "Австралијански долар"
+
+#: ../src/currency-manager.c:32
+msgid "Bulgarian Lev"
+msgstr "Бугарски лев"
+
+#: ../src/currency-manager.c:33
+msgid "Bahraini Dinar"
+msgstr "Бахреински динар"
+
+#: ../src/currency-manager.c:34
+msgid "Brunei Dollar"
+msgstr "Brunei Dollar"
+
+#: ../src/currency-manager.c:35
+msgid "Brazilian Real"
+msgstr "Бразилски реал"
+
+#: ../src/currency-manager.c:36
+msgid "Botswana Pula"
+msgstr "Botswana Pula"
+
+#: ../src/currency-manager.c:37
+msgid "Canadian Dollar"
+msgstr "Канадски долар"
+
+#: ../src/currency-manager.c:38
+#| msgid "Frac"
+msgid "CFA Franc"
+msgstr "CFA Franc"
+
+#: ../src/currency-manager.c:39
+msgid "Swiss Franc"
+msgstr "Швајцарски франк"
+
+#: ../src/currency-manager.c:40
+msgid "Chilean Peso"
+msgstr "Челеански песо"
+
+#: ../src/currency-manager.c:41
+msgid "Chinese Yuan"
+msgstr "Кинески јуан"
+
+#: ../src/currency-manager.c:42
+msgid "Colombian Peso"
+msgstr "Колумбиско песо"
+
+#: ../src/currency-manager.c:43
+msgid "Czech Koruna"
+msgstr "Чешка круна"
+
+#: ../src/currency-manager.c:44
+msgid "Danish Krone"
+msgstr "Данска круна"
+
+#: ../src/currency-manager.c:45
+msgid "Algerian Dinar"
+msgstr "Алжирски динар"
+
+#: ../src/currency-manager.c:46
+msgid "Estonian Kroon"
+msgstr "Естонска круна"
+
+#: ../src/currency-manager.c:47
+#| msgid "Error"
+msgid "Euro"
+msgstr "Евро"
+
+#: ../src/currency-manager.c:48
+msgid "Pound Sterling"
+msgstr "Фунта"
+
+#: ../src/currency-manager.c:49
+msgid "Hong Kong Dollar"
+msgstr "Hong Kong Dollar"
+
+#: ../src/currency-manager.c:50
+msgid "Croatian Kuna"
+msgstr "Хрватска куна"
+
+#: ../src/currency-manager.c:51
+msgid "Hungarian Forint"
+msgstr "Унгарски форинт"
+
+#: ../src/currency-manager.c:52
+msgid "Indonesian Rupiah"
+msgstr "Indonesian Rupiah"
+
+#: ../src/currency-manager.c:53
+msgid "Israeli New Shekel"
+msgstr "Изрелски нов шекел"
+
+#: ../src/currency-manager.c:54
+msgid "Indian Rupee"
+msgstr "Индиска рупија"
+
+#: ../src/currency-manager.c:55
+msgid "Iranian Rial"
+msgstr "Ирански риал"
+
+#: ../src/currency-manager.c:56
+msgid "Icelandic Krona"
+msgstr "Исландска круна"
+
+#: ../src/currency-manager.c:57
+msgid "Japanese Yen"
+msgstr "Јапонски јен"
+
+#: ../src/currency-manager.c:58
+msgid "South Korean Won"
+msgstr "Јужнокорејски вон"
+
+#: ../src/currency-manager.c:59
+msgid "Kuwaiti Dinar"
+msgstr "Кувајтски динар"
+
+#: ../src/currency-manager.c:60
+msgid "Kazakhstani Tenge"
+msgstr "Kazakhstani Tenge"
+
+#: ../src/currency-manager.c:61
+msgid "Sri Lankan Rupee"
+msgstr "Sri Lankan Rupee"
+
+#: ../src/currency-manager.c:62
+msgid "Lithuanian Litas"
+msgstr "Lithuanian Litas"
+
+#: ../src/currency-manager.c:63
+msgid "Latvian Lats"
+msgstr "Latvian Lats"
+
+#: ../src/currency-manager.c:64
+msgid "Libyan Dinar"
+msgstr "Либиски динар"
+
+#: ../src/currency-manager.c:65
+msgid "Mauritian Rupee"
+msgstr "Мавританска рупија"
+
+#: ../src/currency-manager.c:66
+msgid "Mexican Peso"
+msgstr "Мексиканско песо"
+
+#: ../src/currency-manager.c:67
+msgid "Malaysian Ringgit"
+msgstr "Malaysian Ringgit"
+
+#: ../src/currency-manager.c:68
+msgid "Norwegian Krone"
+msgstr "Норвешка круна"
+
+#: ../src/currency-manager.c:69
+msgid "Nepalese Rupee"
+msgstr "Непалска рупија"
+
+#: ../src/currency-manager.c:70
+msgid "New Zealand Dollar"
+msgstr "Новозеландски долар"
+
+#: ../src/currency-manager.c:71
+msgid "Omani Rial"
+msgstr "Omani Rial"
+
+#: ../src/currency-manager.c:72
+msgid "Peruvian Nuevo Sol"
+msgstr "Peruvian Nuevo Sol"
+
+#: ../src/currency-manager.c:73
+msgid "Philippine Peso"
+msgstr "Philippine Peso"
+
+#: ../src/currency-manager.c:74
+msgid "Pakistani Rupee"
+msgstr "Pakistani Rupee"
+
+#: ../src/currency-manager.c:75
+msgid "Polish Zloty"
+msgstr "Полски злоти"
+
+#: ../src/currency-manager.c:76
+msgid "Qatari Riyal"
+msgstr "Qatari Riyal"
+
+#: ../src/currency-manager.c:77
+msgid "New Romanian Leu"
+msgstr "Нов романски леи"
+
+#: ../src/currency-manager.c:78
+msgid "Russian Rouble"
+msgstr "Руски рубљи"
+
+#: ../src/currency-manager.c:79
+msgid "Saudi Riyal"
+msgstr "Саудиски риал"
+
+#: ../src/currency-manager.c:80
+msgid "Swedish Krona"
+msgstr "Шведска круна"
+
+#: ../src/currency-manager.c:81
+msgid "Singapore Dollar"
+msgstr "Сингапурски долар"
+
+#: ../src/currency-manager.c:82
+msgid "Thai Baht"
+msgstr "Thai Baht"
+
+#: ../src/currency-manager.c:83
+msgid "Tunisian Dinar"
+msgstr "Tunisian Dinar"
+
+#: ../src/currency-manager.c:84
+msgid "New Turkish Lira"
+msgstr "Нова турска лира"
+
+#: ../src/currency-manager.c:85
+msgid "T&T Dollar (TTD)"
+msgstr "T&T Dollar (TTD)"
+
+#: ../src/currency-manager.c:86
+msgid "US Dollar"
+msgstr "САД долар"
+
+#: ../src/currency-manager.c:87
+msgid "Uruguayan Peso"
+msgstr "Uruguayan Peso"
+
+#: ../src/currency-manager.c:88
+msgid "Venezuelan Bolívar"
+msgstr "c"
+
+#: ../src/currency-manager.c:89
+msgid "South African Rand"
+msgstr "Јужноафрикански ранд"
+
+#: ../src/financial.c:70
+msgid "Error: the number of periods must be positive"
+msgstr "Грешка: бројот на запирки мора да е позитивен"
+
+#. Description on how to use gcalctool displayed on command-line
+#: ../src/gcalctool.c:77
 #, c-format
-msgid "Calculator [%s]"
-msgstr "Калкулатор [%s]"
-
-#: ../gcalctool/gtk.c:60
-#, c-format
-msgid "Calculator [%s] - Advanced"
-msgstr "Калкулатор [%s] - напреден"
-
-#: ../gcalctool/gtk.c:60
-#, c-format
-msgid "Calculator [%s] - Financial"
-msgstr "Калкулатор [%s] - финансиски"
-
-#: ../gcalctool/gtk.c:61
-#, c-format
-msgid "Calculator [%s] - Scientific"
-msgstr "Калкулатор [%s] - научен"
-
-#: ../gcalctool/gtk.c:495 ../glade/gcalctool.glade.h:385
-#, no-c-format
-msgid "_Other (%d) ..."
-msgstr "_Друго (%d) ..."
-
-#: ../gcalctool/gtk.c:499
-#, c-format
-msgid "Set accuracy from 0 to %d numeric place."
-msgid_plural "Set accuracy from 0 to %d numeric places."
-msgstr[0] "Постави ја точноста од 0 на %d нумеричко место."
-msgstr[1] "Постави ја точноста од 0 на %d нумерички места."
-msgstr[2] "Постави ја точноста од 0 на %d нумерички места."
-
-#. Translators: This refers to the current accuracy setting
-#: ../gcalctool/gtk.c:505
-#, c-format
-msgid "Currently set to %d place."
-msgid_plural "Currently set to %d places."
-msgstr[0] "Моментално поставен на %d децимално место."
-msgstr[1] "Моментално поставен на %d децимални мести."
-msgstr[2] "Моментално поставен на %d децимални мести."
-
-#. Factorial
-#: ../gcalctool/gtk.c:537 ../glade/gcalctool.glade.h:313
-msgid "Sin"
-msgstr "Sin"
-
-#: ../gcalctool/gtk.c:537
-msgid "Sinh"
-msgstr "Sinh"
-
-#: ../gcalctool/gtk.c:538
-msgid "Sin<sup>-1</sup>"
-msgstr "Sin<sup>-1</sup>"
-
-#: ../gcalctool/gtk.c:539
-msgid "Sinh<sup>-1</sup>"
-msgstr "Sinh<sup>-1</sup>"
-
-#. Factorial
-#: ../gcalctool/gtk.c:541 ../glade/gcalctool.glade.h:139
-msgid "Cos"
-msgstr "Cos"
-
-#: ../gcalctool/gtk.c:541
-msgid "Cosh"
-msgstr "Cosh"
-
-#: ../gcalctool/gtk.c:542
-msgid "Cos<sup>-1</sup>"
-msgstr "Cos<sup>-1</sup>"
-
-#: ../gcalctool/gtk.c:543
-msgid "Cosh<sup>-1</sup>"
-msgstr "Cosh<sup>-1</sup>"
-
-#. Factorial
-#: ../gcalctool/gtk.c:545 ../glade/gcalctool.glade.h:338
-msgid "Tan"
-msgstr "Tan"
-
-#: ../gcalctool/gtk.c:545
-msgid "Tanh"
-msgstr "Tanh"
-
-#: ../gcalctool/gtk.c:546
-msgid "Tan<sup>-1</sup>"
-msgstr "Tan<sup>-1</sup>"
-
-#: ../gcalctool/gtk.c:547
-msgid "Tanh<sup>-1</sup>"
-msgstr "Tanh<sup>-1</sup>"
-
-#. Translators: When the bit editor is visible, there will be two
-#. * rows of ones and zeroes shown. When the number being displayed in
-#. * in the calculator is an integer value, these ones and zeroes will
-#. * be sensitive, and they will correspond to the value of each of
-#. * the bits in the displayed integer number. By clicking on any of
-#. * the labels for these ones and zeroes, their value can be toggled
-#. * (a one becomes a zero and a zero becomes a one), causing the
-#. * displayed integer value to be adjusted accordingly.
-#.
-#: ../gcalctool/gtk.c:643
-msgid "Bit editor activated. Click on bit values to toggle them."
+msgid ""
+"Usage:\n"
+"  %s — Perform mathematical calculations"
 msgstr ""
-"Уредувачот на битови е активиран. Кликнете на вредностите на битовите за да "
-"ги менувате."
+"Упатство:\n"
+"  %s — изврши математички пресметки"
 
-#: ../gcalctool/gtk.c:1069
+#. Description on gcalctool command-line help options displayed on command-line
+#: ../src/gcalctool.c:85
+#, c-format
+msgid ""
+"Help Options:\n"
+"  -v, --version                   Show release version\n"
+"  -h, -?, --help                  Show help options\n"
+"  --help-all                      Show all help options\n"
+"  --help-gtk                      Show GTK+ options"
+msgstr ""
+"Опции за помош:\n"
+"  -v, --version                   покажи ја верзијата на изданието\n"
+"  -h, -?, --help                  покажи опции за помош\n"
+"  --help-all                      покажи ги сите опции за помош\n"
+"  --help-gtk                      покажи ги опциите за  GTK+"
+
+#. Description on gcalctool command-line GTK+ options displayed on command-line
+#: ../src/gcalctool.c:96
+#, c-format
+msgid ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window manager\n"
+"  --name=NAME                     Program name as used by the window manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+msgstr ""
+"GTK+ Options:\n"
+"  --class=CLASS                   Program class as used by the window manager\n"
+"  --name=NAME                     Program name as used by the window manager\n"
+"  --screen=SCREEN                 X screen to use\n"
+"  --sync                          Make X calls synchronous\n"
+"  --gtk-module=MODULES            Load additional GTK+ modules\n"
+"  --g-fatal-warnings              Make all warnings fatal"
+
+#. Description on gcalctool application options displayed on command-line
+#: ../src/gcalctool.c:110
+#, c-format
+msgid ""
+"Application Options:\n"
+"  -s, --solve <equation>          Solve the given equation"
+msgstr ""
+"Опции на апликацијата:\n"
+"  -s, --solve <equation>          реши ја дадената равенка"
+
+#. Error printed to stderr when user uses --solve argument without an equation
+#: ../src/gcalctool.c:154
+#, c-format
+msgid "Argument --solve requires an equation to solve"
+msgstr "Аргумент --solve бара равенка за решавање"
+
+#. Error printed to stderr when user provides an unknown command-line argument
+#: ../src/gcalctool.c:164
+#, c-format
+msgid "Unknown argument '%s'"
+msgstr "Непознат аргумент „%s“"
+
+#. Tooltip for the Pi button
+#: ../src/math-buttons.c:96
+msgid "Pi [Ctrl+P]"
+msgstr "Пи [Ctrl+P]"
+
+#. Tooltip for the Euler's Number button
+#: ../src/math-buttons.c:99
+#| msgid "Euler's Number (e)"
+msgid "Euler’s Number"
+msgstr "Ојлеровиот број"
+
+#. Tooltip for the subscript button
+#: ../src/math-buttons.c:104
+msgid "Subscript mode [Alt]"
+msgstr "Режим на индекси [Alt]"
+
+#. Tooltip for the superscript button
+#: ../src/math-buttons.c:107
+msgid "Superscript mode [Ctrl]"
+msgstr "Режим на експоненти [Ctrl]"
+
+#. Tooltip for the scientific exponent button
+#: ../src/math-buttons.c:110
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "Експонент [Ctrl+E]"
+
+#. Tooltip for the add button
+#: ../src/math-buttons.c:113
+msgid "Add [+]"
+msgstr "Собирање [+]"
+
+#. Tooltip for the subtract button
+#: ../src/math-buttons.c:116
+msgid "Subtract [-]"
+msgstr "Одземај [-]"
+
+#. Tooltip for the multiply button
+#: ../src/math-buttons.c:119
+msgid "Multiply [*]"
+msgstr "Помножи [*]"
+
+#. Tooltip for the divide button
+#: ../src/math-buttons.c:122
+msgid "Divide [/]"
+msgstr "Дели [/]"
+
+#. Tooltip for the modulus divide button
+#: ../src/math-buttons.c:125
+#| msgid "Modulus Division [M]"
+msgid "Modulus divide"
+msgstr "Делење со модули"
+
+#. Tooltip for the additional functions button
+#: ../src/math-buttons.c:128
+#| msgid "Edit Functions"
+msgid "Additional Functions"
+msgstr "Додатни функции"
+
+#. Tooltip for the exponent button
+#: ../src/math-buttons.c:131
+msgid "Exponent [^ or **]"
+msgstr "Експонент [^ или **]"
+
+#. Tooltip for the square button
+#: ../src/math-buttons.c:134
+#| msgid "Square [@]"
+msgid "Square [Ctrl+2]"
+msgstr "Квадрат [Ctrl+2]"
+
+#. Tooltip for the percentage button
+#: ../src/math-buttons.c:137
+msgid "Percentage [%]"
+msgstr "Процент [%]"
+
+#. Tooltip for the factorial button
+#: ../src/math-buttons.c:140
+#| msgid "Factorial"
+msgid "Factorial [!]"
+msgstr "Факториел [!]"
+
+#. Tooltip for the absolute value button
+#: ../src/math-buttons.c:143
+#| msgid "Absolute value [u]"
+msgid "Absolute value [|]"
+msgstr "Апсолутна вредност [|]"
+
+#. Tooltip for the complex argument component button
+#: ../src/math-buttons.c:146
+msgid "Complex argument"
+msgstr "Комплексен аргумент"
+
+#. Tooltip for the complex conjugate button
+#: ../src/math-buttons.c:149
+msgid "Complex conjugate"
+msgstr "Комплексен конјугат"
+
+#. Tooltip for the root button
+#: ../src/math-buttons.c:152
+msgid "Root [Ctrl+R]"
+msgstr "Корен [Ctrl+R]"
+
+#. Tooltip for the square root button
+#: ../src/math-buttons.c:155
+#| msgid "Square root [s]"
+msgid "Square root [Ctrl+R]"
+msgstr "Квадратен корен [Ctrl+R]"
+
+#. Tooltip for the logarithm button
+#: ../src/math-buttons.c:158
+msgid "Logarithm"
+msgstr "Логаритам"
+
+#. Tooltip for the natural logarithm button
+#: ../src/math-buttons.c:161
+#| msgid "Natural log [N]"
+msgid "Natural Logarithm"
+msgstr "Природен логаритам"
+
+#. Tooltip for the sine button
+#: ../src/math-buttons.c:164
+#| msgid "Sin"
+msgid "Sine"
+msgstr "Синус"
+
+#. Tooltip for the cosine button
+#: ../src/math-buttons.c:167
+#| msgid "Cosine [J]"
+msgid "Cosine"
+msgstr "Косинус"
+
+#. Tooltip for the tangent button
+#: ../src/math-buttons.c:170
+#| msgid "Tangent [L]"
+msgid "Tangent"
+msgstr "Тангенс"
+
+#. Tooltip for the hyperbolic sine button
+#: ../src/math-buttons.c:173
+msgid "Hyperbolic Sine"
+msgstr "Хиперболичка синусоида"
+
+#. Tooltip for the hyperbolic cosine button
+#: ../src/math-buttons.c:176
+msgid "Hyperbolic Cosine"
+msgstr "Хиперболичка косинусоида"
+
+#. Tooltip for the hyperbolic tangent button
+#: ../src/math-buttons.c:179
+msgid "Hyperbolic Tangent"
+msgstr "Хиперболичка тангента"
+
+#. Tooltip for the inverse button
+#: ../src/math-buttons.c:182
+msgid "Inverse [Ctrl+I]"
+msgstr "Инверз [Ctrl+I]"
+
+#. Tooltip for the boolean AND button
+#: ../src/math-buttons.c:185
+msgid "Boolean AND"
+msgstr "Булово И"
+
+#. Tooltip for the boolean OR button
+#: ../src/math-buttons.c:188
+msgid "Boolean OR"
+msgstr "Булово ИЛИ"
+
+#. Tooltip for the exclusive OR button
+#: ../src/math-buttons.c:191
+msgid "Boolean Exclusive OR"
+msgstr "Булово исклучително ИЛИ"
+
+#. Tooltip for the boolean NOT button
+#: ../src/math-buttons.c:194
+msgid "Boolean NOT"
+msgstr "Булово НЕ"
+
+#. Tooltip for the integer component button
+#: ../src/math-buttons.c:197
+#: ../src/math-buttons.c:1038
+#| msgid "Integer portion"
+msgid "Integer Component"
+msgstr "Целоброен дел"
+
+#. Tooltip for the fractional component button
+#: ../src/math-buttons.c:200
+#: ../src/math-buttons.c:1040
+#| msgid "Fractional portion"
+msgid "Fractional Component"
+msgstr "Дропкин дел"
+
+#. Tooltip for the real component button
+#: ../src/math-buttons.c:203
+msgid "Real Component"
+msgstr "Реален дел"
+
+#. Tooltip for the imaginary component button
+#: ../src/math-buttons.c:206
+msgid "Imaginary Component"
+msgstr "Имагинарен дел"
+
+#. Tooltip for the ones' complement button
+#: ../src/math-buttons.c:209
+msgid "Ones' Complement"
+msgstr "1-комплемент"
+
+#. Tooltip for the two's complement button
+#: ../src/math-buttons.c:212
+msgid "Two's Complement"
+msgstr "2-комплемент"
+
+#. Tooltip for the truncate button
+#: ../src/math-buttons.c:215
+msgid "Truncate"
+msgstr "Скрати"
+
+#. Tooltip for the start group button
+#: ../src/math-buttons.c:218
+#| msgid "Start group of calculations [(]"
+msgid "Start Group [(]"
+msgstr "Започни група на пресметки [(]"
+
+#. Tooltip for the end group button
+#: ../src/math-buttons.c:221
+msgid "End Group [)]"
+msgstr "Заврши ја групата [)]"
+
+#. Tooltip for the solve button
+#: ../src/math-buttons.c:230
+#| msgid "Calculate result"
+msgid "Calculate Result"
+msgstr "Пресметај резултат"
+
+#. Tooltip for the factor button
+#: ../src/math-buttons.c:233
+msgid "Factorize [Ctrl+F]"
+msgstr "Факторизирај [Ctrl+F]"
+
+#. Tooltip for the clear button
+#: ../src/math-buttons.c:236
+#| msgid "Clear displayed value [Escape]"
+msgid "Clear Display [Escape]"
+msgstr "Избриши ја прикажаната вредност [Escape]"
+
+#. Tooltip for the undo button
+#: ../src/math-buttons.c:239
+msgid "Undo [Ctrl+Z]"
+msgstr "Врати [Ctrl+Z]"
+
+#. Tooltip for the double declining depreciation button
+#: ../src/math-buttons.c:251
+#| msgid "Double-declining depreciation"
+msgid "Double Declining Depreciation"
+msgstr "Двојно опаѓачка девалвација"
+
+#. Tooltip for the financial term button
+#: ../src/math-buttons.c:257
+#| msgid "Financial"
+msgid "Financial Term"
+msgstr "Финансиски член"
+
+#. Tooltip for the sum of the years digits depreciation button
+#: ../src/math-buttons.c:260
+#| msgid "Sum-of-the years'-digits depreciation"
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Девалвација според збирот на цифрите на годините"
+
+#. Tooltip for the straight line depreciation button
+#: ../src/math-buttons.c:263
+#| msgid "Straight-line depreciation"
+msgid "Straight Line Depreciation"
+msgstr "Девалвација по права линија"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+#: ../src/math-buttons.c:653
+#| msgid "_Bin"
+msgid "Binary"
+msgstr "Бинарен"
+
+#. Number display mode combo: Octal, e.g. 2322₈
+#: ../src/math-buttons.c:657
+#| msgid "_Oct"
+msgid "Octal"
+msgstr "Октален"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../src/math-buttons.c:661
+msgid "Decimal"
+msgstr "Децимала"
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#: ../src/math-buttons.c:665
+#| msgid "Hexadecimal digit A"
+msgid "Hexadecimal"
+msgstr "Хексадецимален"
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#: ../src/math-buttons.c:948
+#: ../src/math-buttons.c:992
+#, c-format
+#| msgid "_1 place"
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "_%d место"
+msgstr[1] "_%d места"
+
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#: ../src/math-buttons.c:952
+#: ../src/math-buttons.c:996
+#, c-format
+#| msgid "_1 place"
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d место"
+msgstr[1] "%d места"
+
+#. Tooltip for the round button
+#: ../src/math-buttons.c:1042
+#| msgid "Rand"
+msgid "Round"
+msgstr "Заокружи"
+
+#. Tooltip for the floor button
+#: ../src/math-buttons.c:1044
+msgid "Floor"
+msgstr "Подна функција"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1046
+msgid "Ceiling"
+msgstr "Таванска функција"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1048
+#| msgid "Sin"
+msgid "Sign"
+msgstr "Знак"
+
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.c:412
+msgid " in "
+msgstr "во"
+
+#. Tooltip for swap conversion button
+#: ../src/math-converter.c:427
+msgid "Switch conversion units"
+msgstr "Смени ги единиците за конверзија"
+
+#. Error shown when trying to undo with no undo history
+#: ../src/math-equation.c:458
+msgid "No undo history"
+msgstr "Нема историја за отповикување"
+
+#. Error shown when trying to redo with no redo history
+#: ../src/math-equation.c:485
+#| msgid "No undo history"
+msgid "No redo history"
+msgstr "Нема историја за отповикување"
+
+#: ../src/math-equation.c:943
+msgid "No sane value to store"
+msgstr "Нема вистинска вредност за складирање"
+
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/math-equation.c:1225
+msgid "Overflow. Try a bigger word size"
+msgstr "Претекување. Пробајте со поголема големина на збор"
+
+#. Error displayed to user when they an unknown variable is entered
+#: ../src/math-equation.c:1230
+#, c-format
+msgid "Unknown variable '%s'"
+msgstr "Непозната променлива „%s“"
+
+#. Error displayed to user when an unknown function is entered
+#: ../src/math-equation.c:1235
+#, c-format
+msgid "Function '%s' is not defined"
+msgstr "Функцијата „%s“ не е дефинирана"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../src/math-equation.c:1240
+msgid "Unknown conversion"
+msgstr "Непозната конверзија"
+
+#. Error displayed to user when they enter an invalid calculation
+#: ../src/math-equation.c:1249
+msgid "Malformed expression"
+msgstr "Погрешен израз"
+
+#: ../src/math-equation.c:1263
+#| msgid "Calculator"
+msgid "Calculating"
+msgstr "Пресметувам"
+
+#. Error displayed when trying to factorize a non-integer value
+#: ../src/math-equation.c:1394
+msgid "Need an integer to factorize"
+msgstr "Потребен е цел број за факторизирање"
+
+#. This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/math-equation.c:1469
+#| msgid "No sane value to do bitwise shift"
+msgid "No sane value to bitwise shift"
+msgstr "Нема разумна вредност за да се направи битово поместување"
+
+#. Message displayed when cannot toggle bit in display
+#: ../src/math-equation.c:1500
+msgid "Displayed value not an integer"
+msgstr "Прикажаната вредност не е целобројна"
+
+#. Digits localized for the given language
+#: ../src/math-equation.c:1925
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+
+#. Label on close button in preferences dialog
+#: ../src/math-preferences.c:236
+#| msgid "Cos"
+msgid "_Close"
+msgstr "_Затвори"
+
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.c:246
+#: ../src/unit-manager.c:54
+#| msgid "De_grees"
+msgid "Degrees"
+msgstr "Степени"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.c:250
+#: ../src/unit-manager.c:55
+#| msgid "_Radians"
+msgid "Radians"
+msgstr "Радијани"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.c:254
+#: ../src/unit-manager.c:56
+#| msgid "Gr_adians"
+msgid "Gradians"
+msgstr "Градуси"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
+#: ../src/math-preferences.c:264
+msgid "Automatic"
+msgstr "Автоматски"
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:268
+#| msgid "_Fix"
+msgid "Fixed"
+msgstr "Фиксен"
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.c:272
+msgid "Scientific"
+msgstr "Научен"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.c:276
+msgid "Engineering"
+msgstr "Инженерски"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/math-preferences.c:287
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "Покажи %d децимални _места"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/math-window.c:172
+msgid "Unable to open help file"
+msgstr "Не можев да ја отворам датотеката со помош"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/math-window.c:204
 msgid "translator-credits"
 msgstr ""
 "Арангел Ангов <ufo@linux.net.mk>\n"
 "Јован Наумовски <jovan@lugola.net>\n"
 "http://gnome.linux.net.mk"
 
-#: ../gcalctool/gtk.c:1072
+#. The license this software is under (GPL2+)
+#: ../src/math-window.c:207
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
 "the Free Software Foundation; either version 2 of the License, or\n"
 "(at your option) any later version.\n"
-msgstr ""
-"Gcalctool е слободен софтвер; можете да го редистрибуирате и/или менувате\n"
-"во согласност со општата јавна ГНУ лиценца објавена од страна на\n"
-"Фондацијата за слободен софтвер; можете да ја разгледате втората\n"
-"или пак некоја понова верзија.\n"
-
-#: ../gcalctool/gtk.c:1076
-msgid ""
+"\n"
 "Gcalctool is distributed in the hope that it will be useful,\n"
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details.\n"
-msgstr ""
-"Gcalctool се дистрибуира со надеж дека ќе биде корисен, \n"
-"но без БИЛО КАКВИ ГАРАНЦИИ.  За повеќе погледнете ја \n"
-"општата јавна ГНУ лиценца.\n"
-
-#: ../gcalctool/gtk.c:1080
-msgid ""
+"\n"
 "You should have received a copy of the GNU General Public License\n"
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 msgstr ""
-"Заедно со Gcalctool треба да добиете и копија од општата и јавна\n"
-"ГНУ лиценца; доколку ја нема лиценцата пишете и на Фондацијата за\n"
-"слободен софтвер на следнава адреса: 59 Temple Place, Suite 330, Boston, MA  "
-"02111-1307  USA\n"
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 
-#: ../gcalctool/gtk.c:1091
+#. Program name in the about dialog
+#: ../src/math-window.c:224
 msgid "Gcalctool"
 msgstr "Алатка Gcalctool"
 
-#: ../gcalctool/gtk.c:1093
-msgid "© 1986-2008 The Gcalctool authors"
-msgstr "© 1987-2008 авторите на Gcalctool"
+#. Copyright notice in the about dialog
+#: ../src/math-window.c:228
+#| msgid "© 1986-2008 The Gcalctool authors"
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 авторите на Gcalctool"
 
-#: ../gcalctool/gtk.c:1095
+#. Short description in the about dialog
+#: ../src/math-window.c:232
 msgid "Calculator with financial and scientific modes."
 msgstr "Калкулатор со финансиски и научен режим на работа."
 
-#: ../gcalctool/gtk.c:1380 ../glade/gcalctool.glade.h:118
-msgid "C"
-msgstr "C"
-
-#: ../gcalctool/gtk.c:1398 ../glade/gcalctool.glade.h:169
-msgid "F"
-msgstr "F"
-
-#: ../gcalctool/gtk.c:1579
-msgid "Changing Modes Clears Calculation"
-msgstr "Променувањето на режимот ја брише пресметката"
-
-#: ../gcalctool/gtk.c:1582
-msgid ""
-"When you change modes, the current calculation will be cleared, and the base "
-"will be reset to decimal."
-msgstr ""
-"Кога менувате режими, моменталната пресметка ќе биде избришана и основата ќе "
-"биде вратена на децимална."
-
-#: ../gcalctool/gtk.c:1586
-msgid "_Do not warn me again"
-msgstr "_Не ме предупредувај пак"
-
-#: ../gcalctool/gtk.c:1591
-msgid "C_hange Mode"
-msgstr "С_мени режим"
-
-#. translators: R is the short form of register used inter alia
-#. in popup menus
-#: ../gcalctool/gtk.c:1707
-msgid "R"
-msgstr "Р"
-
-#: ../gcalctool/gtk.c:2127
-msgid "Paste"
-msgstr "Вметни"
-
-#: ../gcalctool/gtk.c:2381
-msgid "Error loading user interface"
-msgstr "Грешка во вчитувањето на интерфејсот"
-
-#: ../gcalctool/gtk.c:2383
-#, c-format
-msgid ""
-"The user interface file %s is missing or unable to be loaded. Please check "
-"your installation."
-msgstr ""
-"Датотеката со кориснички интерфејс %s недостасува или пак не може да се "
-"вчита. Ве молам, проверете ја Вашата инсталација."
-
-#: ../gcalctool/gtk.c:2607 ../gcalctool/gtk.c:2625
-msgid "No."
-msgstr "Бр."
-
-#: ../gcalctool/gtk.c:2609 ../gcalctool/gtk.c:2627
-msgid "Value"
-msgstr "Вредност"
-
-#: ../gcalctool/gtk.c:2611 ../gcalctool/gtk.c:2629
-msgid "Description"
-msgstr "Опис"
-
-#. Set default accuracy menu item
-#: ../gcalctool/gtk.c:2766 ../glade/gcalctool.glade.h:268
-#, no-c-format
-msgid "Reset to _Default (%d)"
-msgstr "Врати на _стандардното (%d)"
-
-#: ../gcalctool/mp.c:3152
-msgid "Negative X and non-integer Y not supported"
-msgstr "Не се поддржани негативен X и нецелоброен Y."
-
-#: ../gcalctool/mpmath.c:255
-msgid "Error, cannot calculate cosine"
-msgstr "Грешка, неможам да пресметам косинус"
-
-#: ../gcalctool.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Извршете аритметички, научни или финансиски пресметки"
-
-#. This is a percentage sign
-#: ../glade/gcalctool.glade.h:3
-#, no-c-format
-msgid "%"
-msgstr "%"
-
-#. 16 bit unsigned integer
-#: ../glade/gcalctool.glade.h:5
-msgid "&16"
-msgstr "&16"
-
-#. 32 bit unsigned integer
-#: ../glade/gcalctool.glade.h:7
-msgid "&32"
-msgstr "&32"
-
-#. Left bracket
-#: ../glade/gcalctool.glade.h:9
-msgid "("
-msgstr "("
-
-#. Right bracket
-#: ../glade/gcalctool.glade.h:11
-msgid ")"
-msgstr ")"
-
-#: ../glade/gcalctool.glade.h:12
-msgid "+"
-msgstr "+"
-
-#. Numeric point
-#: ../glade/gcalctool.glade.h:14
-msgid "."
-msgstr "."
-
-#. Numeric 0
-#: ../glade/gcalctool.glade.h:16
-msgid "0"
-msgstr "0"
-
-#. Numeric 1
-#: ../glade/gcalctool.glade.h:18
-msgid "1"
-msgstr "1"
-
-#: ../glade/gcalctool.glade.h:19
-msgid "1/<i>x</i>"
-msgstr "1/<i>x</i>"
-
-#: ../glade/gcalctool.glade.h:20
-msgid "1/x"
-msgstr "1/x"
-
-#: ../glade/gcalctool.glade.h:21
-msgid "10 places"
-msgstr "10 места"
-
-#: ../glade/gcalctool.glade.h:22
-msgid "10 to the power of displayed value [}]"
-msgstr "10 на степен од прикажаната вредност [}]"
-
-#: ../glade/gcalctool.glade.h:23
-msgid "10 to the x"
-msgstr "10 на x-та степен"
-
-#. 10 to thepower of  x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:25
-msgid "10<sup><i>x</i></sup>"
-msgstr "10<sup><i>x</i></sup>"
-
-#: ../glade/gcalctool.glade.h:26
-msgid "10x"
-msgstr "10x"
-
-#: ../glade/gcalctool.glade.h:27
-msgid "11 places"
-msgstr "11 места"
-
-#: ../glade/gcalctool.glade.h:28
-msgid "12 places"
-msgstr "12 места"
-
-#: ../glade/gcalctool.glade.h:29
-msgid "13 places"
-msgstr "13 места"
-
-#: ../glade/gcalctool.glade.h:30
-msgid "14 places"
-msgstr "14 места"
-
-#: ../glade/gcalctool.glade.h:31
-msgid "15"
-msgstr "15"
-
-#: ../glade/gcalctool.glade.h:32
-msgid "15 places"
-msgstr "15 места"
-
-#: ../glade/gcalctool.glade.h:33
-msgid "16 bit unsigned integer"
-msgstr "16-битен позитивен цел број"
-
-#: ../glade/gcalctool.glade.h:34
-msgid "16-bit unsigned integer value of display (])"
-msgstr "Прикажана 16-битна целобројна вредност без знак (])"
-
-#. Numeric 2
-#: ../glade/gcalctool.glade.h:36
-msgid "2"
-msgstr "2"
-
-#. Numeric 3
-#: ../glade/gcalctool.glade.h:38
-msgid "3"
-msgstr "3"
-
-#: ../glade/gcalctool.glade.h:39
-msgid "31"
-msgstr "31"
-
-#: ../glade/gcalctool.glade.h:40
-msgid "32"
-msgstr "32"
-
-#: ../glade/gcalctool.glade.h:41
-msgid "32-bit unsigned integer value of display ([)"
-msgstr "Прикажана 32-битна целобројна вредност без знак ([)"
-
-#. Numeric 4
-#: ../glade/gcalctool.glade.h:43
-msgid "4"
-msgstr "4"
-
-#: ../glade/gcalctool.glade.h:44
-msgid "47"
-msgstr "47"
-
-#. Numeric 5
-#: ../glade/gcalctool.glade.h:46
-msgid "5"
-msgstr "5"
-
-#. Numeric 6
-#: ../glade/gcalctool.glade.h:48
-msgid "6"
-msgstr "6"
-
-#: ../glade/gcalctool.glade.h:49
-msgid "63"
-msgstr "63"
-
-#. Numeric 7
-#: ../glade/gcalctool.glade.h:51
-msgid "7"
-msgstr "7"
-
-#. Numeric 8
-#: ../glade/gcalctool.glade.h:53
-msgid "8"
-msgstr "8"
-
-#. Numeric 9
-#: ../glade/gcalctool.glade.h:55
-msgid "9"
-msgstr "9"
-
-#. Shift left
-#: ../glade/gcalctool.glade.h:57
-msgid "<"
-msgstr "<"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:59
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#. x squared. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:61
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>2</sup>"
-
-#. X to the power of y. Note that this label uses mark up and the "y" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:63
-msgid "<i>x</i><sup><i>y</i></sup>"
-msgstr "<i>x</i><sup><i>y</i></sup>"
-
-#: ../glade/gcalctool.glade.h:64
-msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
-msgstr ""
-"<small><i><b>Забелешка:</b> Сите константни вредности се наведени во "
-"децималниот броен систем.</i></small>"
-
-#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:66
-msgid "<span weight=\"bold\">R0</span>"
-msgstr "<span weight=\"bold\">R0</span>"
-
-#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:68
-msgid "<span weight=\"bold\">R1</span>"
-msgstr "<span weight=\"bold\">R1</span>"
-
-#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:70
-msgid "<span weight=\"bold\">R2</span>"
-msgstr "<span weight=\"bold\">R2</span>"
-
-#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:72
-msgid "<span weight=\"bold\">R3</span>"
-msgstr "<span weight=\"bold\">R3</span>"
-
-#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:74
-msgid "<span weight=\"bold\">R4</span>"
-msgstr "<span weight=\"bold\">R4</span>"
-
-#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:76
-msgid "<span weight=\"bold\">R5</span>"
-msgstr "<span weight=\"bold\">R5</span>"
-
-#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:78
-msgid "<span weight=\"bold\">R6</span>"
-msgstr "<span weight=\"bold\">R6</span>"
-
-#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:80
-msgid "<span weight=\"bold\">R7</span>"
-msgstr "<span weight=\"bold\">R7</span>"
-
-#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:82
-msgid "<span weight=\"bold\">R8</span>"
-msgstr "<span weight=\"bold\">R8</span>"
-
-#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../glade/gcalctool.glade.h:84
-msgid "<span weight=\"bold\">R9</span>"
-msgstr "<span weight=\"bold\">R9</span>"
-
-#. This is the calculate result button (=)
-#: ../glade/gcalctool.glade.h:86
-msgid "="
-msgstr "="
-
-#. Shift right
-#: ../glade/gcalctool.glade.h:88
-msgid ">"
-msgstr ">"
-
-#: ../glade/gcalctool.glade.h:89
-msgid "A"
-msgstr "A"
-
-#: ../glade/gcalctool.glade.h:90
-msgid "AND"
-msgstr "И"
-
-#. Abs is short for Absolute
-#: ../glade/gcalctool.glade.h:92
-msgid "Abs"
-msgstr "Апсо."
-
-#: ../glade/gcalctool.glade.h:93
-msgid "Absolute value"
-msgstr "Апсолутна вредност"
-
-#: ../glade/gcalctool.glade.h:94
-msgid "Absolute value [u]"
-msgstr "Апсолутна вредност [u]"
-
-#. Accuracy
-#: ../glade/gcalctool.glade.h:96
-msgid "Acc"
-msgstr "Acc"
-
-#: ../glade/gcalctool.glade.h:97
-msgid "Accuracy"
-msgstr "Точност"
-
-#: ../glade/gcalctool.glade.h:98
-msgid "Add"
-msgstr "Додаj"
-
-#: ../glade/gcalctool.glade.h:99
-msgid "Add [+]"
-msgstr "Собирање [+]"
-
-#: ../glade/gcalctool.glade.h:100
-msgid "Advanced"
-msgstr "Напреден"
-
-#: ../glade/gcalctool.glade.h:101
-msgid "B"
-msgstr "B"
-
-#: ../glade/gcalctool.glade.h:102
-msgid "Backspace"
-msgstr "Backspace"
-
-#: ../glade/gcalctool.glade.h:103
-msgid "Base 10 log [G]"
-msgstr "Логаритам со основа 10 [G]"
-
-#: ../glade/gcalctool.glade.h:104
-msgid "Base 2 log [H]"
-msgstr "Логаритам со основа 2 [H]"
-
-#: ../glade/gcalctool.glade.h:105
-msgid "Basic"
-msgstr "Основен"
-
-#: ../glade/gcalctool.glade.h:106
-msgid "Bitwise AND"
-msgstr "Двонасочно И"
-
-#: ../glade/gcalctool.glade.h:107
-msgid "Bitwise AND [&]"
-msgstr "Двонасочно И [&]"
-
-#: ../glade/gcalctool.glade.h:108
-msgid "Bitwise NOT"
-msgstr "Двонасочно НЕ"
-
-#: ../glade/gcalctool.glade.h:109
-msgid "Bitwise NOT [~]"
-msgstr "Bitwise НЕ [~]"
-
-#: ../glade/gcalctool.glade.h:110
-msgid "Bitwise OR"
-msgstr "Bitwise ИЛИ"
-
-#: ../glade/gcalctool.glade.h:111
-msgid "Bitwise OR [|]"
-msgstr "Двонасочно ИЛИ [|]"
-
-#: ../glade/gcalctool.glade.h:112
-msgid "Bitwise XNOR"
-msgstr "Bitwise НИЛИ"
-
-#: ../glade/gcalctool.glade.h:113
-msgid "Bitwise XNOR [n]"
-msgstr "Двонасочно ексклузивно НИЛИ [n]"
-
-#: ../glade/gcalctool.glade.h:114
-msgid "Bitwise XOR"
-msgstr "Двонасочно ексклузивно ИЛИ"
-
-#: ../glade/gcalctool.glade.h:115
-msgid "Bitwise XOR [x]"
-msgstr "Bitwise X ИЛИ [x]"
-
-#. Bksp is short for Backspace
-#: ../glade/gcalctool.glade.h:117
-msgid "Bksp"
-msgstr "Bksp"
-
-#: ../glade/gcalctool.glade.h:119
-msgid "CE"
-msgstr "CE"
-
-#: ../glade/gcalctool.glade.h:120
-msgid "Calculate result"
-msgstr "Пресметај резултат"
-
-#: ../glade/gcalctool.glade.h:121
-msgid "Calculate result [=]"
-msgstr "Пресметај резултат [=]"
-
-#: ../glade/gcalctool.glade.h:122
-msgid "Ch_aracter:"
-msgstr "Зн_ак:"
-
-#: ../glade/gcalctool.glade.h:123
-msgid "Change Sign [C]"
-msgstr "Промени знак [C]"
-
-#: ../glade/gcalctool.glade.h:124
-msgid "Change sign"
-msgstr "Промени знак"
-
-#: ../glade/gcalctool.glade.h:125
-msgid "Clear"
-msgstr "Исчисти"
-
-#: ../glade/gcalctool.glade.h:126
-msgid "Clear displayed value [Escape]"
-msgstr "Избриши ја прикажаната вредност [Escape]"
-
-#: ../glade/gcalctool.glade.h:127
-msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr ""
-"Избриши ја прикажаната вредност и било која парцијална пресметка [Shift "
-"Delete]"
-
-#: ../glade/gcalctool.glade.h:128
-msgid "Clear entry"
-msgstr "Исчисти запис"
-
-#: ../glade/gcalctool.glade.h:129
-msgid "Click a _value or description to edit it:"
-msgstr "Притиснете врз вредност или опис за да го измените:"
-
-#. Clr is short for Clear
-#: ../glade/gcalctool.glade.h:131
-msgid "Clr"
-msgstr "Clr"
-
-#: ../glade/gcalctool.glade.h:132
-msgid "Compounding term"
-msgstr "Збирен израз"
-
-#: ../glade/gcalctool.glade.h:133
-msgid "Compounding term [m]"
-msgstr "Збирен израз [m]"
-
-#: ../glade/gcalctool.glade.h:134
-msgid "Con"
-msgstr "Конст"
-
-#: ../glade/gcalctool.glade.h:135
-msgid "Constants"
-msgstr "Константи"
-
-#: ../glade/gcalctool.glade.h:136
-msgid "Constants [#]"
-msgstr "Константи [#]"
-
-#: ../glade/gcalctool.glade.h:137
-msgid "Copy selection"
-msgstr "Копирај го избраното"
-
-#: ../glade/gcalctool.glade.h:140
-msgid "Cosine [J]"
-msgstr "Косинус [J]"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period.
-#. See also:
-#. http://en.wikipedia.org/wiki/Compound_interest
-#: ../glade/gcalctool.glade.h:144
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#: ../glade/gcalctool.glade.h:145
-msgid "D"
-msgstr "D"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:148
-msgid "Ddb"
-msgstr "Ddb"
-
-#: ../glade/gcalctool.glade.h:149
-msgid "De_grees"
-msgstr "Сте_пени"
-
-#: ../glade/gcalctool.glade.h:150
-msgid "Divide"
-msgstr "Дели"
-
-#: ../glade/gcalctool.glade.h:151
-msgid "Divide [/]"
-msgstr "Дели [/]"
-
-#: ../glade/gcalctool.glade.h:152
-msgid "Double-declining depreciation"
-msgstr "Двојно опаѓачка девалвација"
-
-#: ../glade/gcalctool.glade.h:153
-msgid "Double-declining depreciation [D]"
-msgstr "Двојно опаѓачка девалвација [D]"
-
-#: ../glade/gcalctool.glade.h:154
-msgid "E"
-msgstr "E"
-
-#: ../glade/gcalctool.glade.h:155
-msgid "E to the x"
-msgstr "Е до x"
-
-#: ../glade/gcalctool.glade.h:156
-msgid "E_ng"
-msgstr "А_нглиски"
-
-#: ../glade/gcalctool.glade.h:157
-msgid "Edit Constants"
-msgstr "Измени константи"
-
-#: ../glade/gcalctool.glade.h:158
-msgid "Edit Constants..."
-msgstr "Измени константи..."
-
-#: ../glade/gcalctool.glade.h:159
-msgid "Edit Functions"
-msgstr "Измени функции"
-
-#: ../glade/gcalctool.glade.h:160
-msgid "Edit Functions..."
-msgstr "Измени функции..."
-
-#: ../glade/gcalctool.glade.h:161
-msgid "End group of calculations [)]"
-msgstr "Заврши група на пресметки [)]"
-
-#: ../glade/gcalctool.glade.h:162
-msgid "Enter an exponential number [E]"
-msgstr "Внеси експоненцијална вредност [E]"
-
-#. Exchange with register
-#: ../glade/gcalctool.glade.h:164
-msgid "Exch"
-msgstr "Разм."
-
-#: ../glade/gcalctool.glade.h:165
-msgid "Exchange displayed value with memory register [X]"
-msgstr "Размени ја прикажаната вредност со меморискиот регистар [X]"
-
-#: ../glade/gcalctool.glade.h:166
-msgid "Exchange with register"
-msgstr "Размени со регистар"
-
-#. Exponential
-#: ../glade/gcalctool.glade.h:168
-msgid "Exp"
-msgstr "Експ."
-
-#: ../glade/gcalctool.glade.h:170
-msgid "Factorial"
-msgstr "Факториел"
-
-#: ../glade/gcalctool.glade.h:171
-msgid "Factorial of displayed value [!]"
-msgstr "Факториел од прикажаната вредност [!]"
-
-#: ../glade/gcalctool.glade.h:172
-msgid "Financial"
-msgstr "Финансиски"
-
-#. Fractional portion
-#: ../glade/gcalctool.glade.h:174
-msgid "Frac"
-msgstr "Дел"
-
-#: ../glade/gcalctool.glade.h:175
-msgid "Fractional portion"
-msgstr "Дропкин дел"
-
-#: ../glade/gcalctool.glade.h:176
-msgid "Fractional portion of displayed value [:]"
-msgstr "Децималниот дел од прикажаната вредност [:]"
-
-#: ../glade/gcalctool.glade.h:177
-msgid "Fun"
-msgstr "Забава"
-
-#: ../glade/gcalctool.glade.h:178
-msgid "Future value"
-msgstr "Идна вредност"
-
-#: ../glade/gcalctool.glade.h:179
-msgid "Future value [v]"
-msgstr "Идна вредност [v]"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Future_value
-#: ../glade/gcalctool.glade.h:182
-msgid "Fv"
-msgstr "Fv"
-
-#: ../glade/gcalctool.glade.h:183
-msgid "Gr_adians"
-msgstr "Гра_диенти"
-
-#: ../glade/gcalctool.glade.h:184
-msgid "H_yp"
-msgstr "H_yp"
-
-#: ../glade/gcalctool.glade.h:185
-msgid "He_x"
-msgstr "Хе_ксално"
-
-#: ../glade/gcalctool.glade.h:186
-msgid "Hexadecimal digit A"
-msgstr "Хексадецимална цифра А"
-
-#: ../glade/gcalctool.glade.h:187
-msgid "Hexadecimal digit A [a]"
-msgstr "Хексадецимална цифра А [a]"
-
-#: ../glade/gcalctool.glade.h:188
-msgid "Hexadecimal digit B"
-msgstr "Хексадецимална цифра B"
-
-#: ../glade/gcalctool.glade.h:189
-msgid "Hexadecimal digit B [b]"
-msgstr "Хексадецимална цифра B [b]"
-
-#: ../glade/gcalctool.glade.h:190
-msgid "Hexadecimal digit C"
-msgstr "Хексадецимална цифра C"
-
-#: ../glade/gcalctool.glade.h:191
-msgid "Hexadecimal digit C [c]"
-msgstr "Хексадецимална цифра C [c]"
-
-#: ../glade/gcalctool.glade.h:192
-msgid "Hexadecimal digit D"
-msgstr "Хексадецимална цифра Д"
-
-#: ../glade/gcalctool.glade.h:193
-msgid "Hexadecimal digit D [d]"
-msgstr "Хексадецимална цифра D [d]"
-
-#: ../glade/gcalctool.glade.h:194
-msgid "Hexadecimal digit E"
-msgstr "Хексадецимална цифра Е"
-
-#: ../glade/gcalctool.glade.h:195
-msgid "Hexadecimal digit E [e]"
-msgstr "Хексадецимална цифра [e]"
-
-#: ../glade/gcalctool.glade.h:196
-msgid "Hexadecimal digit F"
-msgstr "Хексадецимална цифра F"
-
-#: ../glade/gcalctool.glade.h:197
-msgid "Hexadecimal digit F [f]"
-msgstr "Хексадецимална цифра F [f]"
-
-#: ../glade/gcalctool.glade.h:198
-msgid "Insert ASCII Value"
-msgstr "Вметни аски (ASCII) вредност"
-
-#: ../glade/gcalctool.glade.h:199
-msgid "Insert ASCII value"
-msgstr "Вметни ASCII вредност"
-
-#. Integer portion
-#: ../glade/gcalctool.glade.h:201
-msgid "Int"
-msgstr "Int"
-
-#: ../glade/gcalctool.glade.h:202
-msgid "Integer portion"
-msgstr "Целоброен дел"
-
-#: ../glade/gcalctool.glade.h:203
-msgid "Integer portion of displayed value [i]"
-msgstr "Целобројниот дел од прикажаната вредност [i]"
-
-#: ../glade/gcalctool.glade.h:204
-msgid "Left bracket"
-msgstr "Лева заграда"
-
-#. Natural logarithm
-#: ../glade/gcalctool.glade.h:206
-msgid "Ln"
-msgstr "Ln"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:208
-msgid "Log<sub>10</sub>"
-msgstr "Log<sub>10</sub>"
-
-#. Factorial
-#: ../glade/gcalctool.glade.h:210
-msgid "Log<sub>2</sub>"
-msgstr "Log<sub>2</sub>"
-
-#: ../glade/gcalctool.glade.h:211
-msgid "Memory Registers"
-msgstr "Мемориски регистри"
-
-#: ../glade/gcalctool.glade.h:212
-msgid "Mod"
-msgstr "Режим"
-
-#: ../glade/gcalctool.glade.h:213
-msgid "Modulus Division [M]"
-msgstr "Делење на модули [M]"
-
-#: ../glade/gcalctool.glade.h:214
-msgid "Multiply"
-msgstr "Помножи"
-
-#: ../glade/gcalctool.glade.h:215
-msgid "Multiply [*]"
-msgstr "Помножи [*]"
-
-#: ../glade/gcalctool.glade.h:216
-msgid "NOT"
-msgstr "НЕ"
-
-#: ../glade/gcalctool.glade.h:217
-msgid "Natural log [N]"
-msgstr "Природен логаритам [N]"
-
-#: ../glade/gcalctool.glade.h:218
-msgid "Numeric 0"
-msgstr "Нумеричко 0"
-
-#: ../glade/gcalctool.glade.h:219
-msgid "Numeric 1"
-msgstr "Нумеричко 1"
-
-#: ../glade/gcalctool.glade.h:220
-msgid "Numeric 2"
-msgstr "Нумеричко 2"
-
-#: ../glade/gcalctool.glade.h:221
-msgid "Numeric 3"
-msgstr "Нумеричко 3"
-
-#: ../glade/gcalctool.glade.h:222
-msgid "Numeric 4"
-msgstr "Нумеричко 4"
-
-#: ../glade/gcalctool.glade.h:223
-msgid "Numeric 5"
-msgstr "Нумеричко 5"
-
-#: ../glade/gcalctool.glade.h:224
-msgid "Numeric 6"
-msgstr "Нумеричко 6"
-
-#: ../glade/gcalctool.glade.h:225
-msgid "Numeric 7"
-msgstr "Нумеричко 7"
-
-#: ../glade/gcalctool.glade.h:226
-msgid "Numeric 8"
-msgstr "Нумеричко 8"
-
-#: ../glade/gcalctool.glade.h:227
-msgid "Numeric 9"
-msgstr "Нумеричко 9"
-
-#: ../glade/gcalctool.glade.h:228
-msgid "Numeric point"
-msgstr "Нумеричка точка"
-
-#: ../glade/gcalctool.glade.h:229
-msgid "OR"
-msgstr "ИЛИ"
-
-#: ../glade/gcalctool.glade.h:230
-msgid "Paste selection"
-msgstr "Вменти го избраното"
-
-#: ../glade/gcalctool.glade.h:231
-msgid "Payment period"
-msgstr "Период на исплата"
-
-#: ../glade/gcalctool.glade.h:232
-msgid "Payment period [t]"
-msgstr "Период на исплата [t]"
-
-#: ../glade/gcalctool.glade.h:233
-msgid "Percentage"
-msgstr "Проценти"
-
-#: ../glade/gcalctool.glade.h:235
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "Процент [%]"
-
-#: ../glade/gcalctool.glade.h:236
-msgid "Periodic interest rate"
-msgstr "Периодична каматна стапка"
-
-#: ../glade/gcalctool.glade.h:237
-msgid "Periodic interest rate [T]"
-msgstr "Периодична каматна стапка [T]"
-
-#: ../glade/gcalctool.glade.h:238
-msgid "Periodic payment"
-msgstr "Периодична наплата"
-
-#: ../glade/gcalctool.glade.h:239
-msgid "Periodic payment [P]"
-msgstr "Периодична наплата [P]"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also:
-#. http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../glade/gcalctool.glade.h:242
-msgid "Pmt"
-msgstr "Pmt"
-
-#: ../glade/gcalctool.glade.h:243
-msgid "Present value"
-msgstr "Сегашна вредност"
-
-#: ../glade/gcalctool.glade.h:244
-msgid "Present value [p]"
-msgstr "Сегашна вредност [p]"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Present_value
-#: ../glade/gcalctool.glade.h:247
-msgid "Pv"
-msgstr "Pv"
-
-#: ../glade/gcalctool.glade.h:248
-msgid "Quit the calculator"
-msgstr "Излези од калкулаторот"
-
-#: ../glade/gcalctool.glade.h:249
-msgid "Raise displayed value to the power of y [^]"
-msgstr "Подигни ја прикажаната вредност на степен y [^]"
-
-#. Random number
-#: ../glade/gcalctool.glade.h:251
-msgid "Rand"
-msgstr "Случаен"
-
-#: ../glade/gcalctool.glade.h:252
-msgid "Random number"
-msgstr "Случаен број"
-
-#: ../glade/gcalctool.glade.h:253
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "Случаен број од опсегот 0,0 до 1,0 [?]"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also:
-#. http://en.wikipedia.org/wiki/Interest
-#.
-#.
-#.
-#.
-#: ../glade/gcalctool.glade.h:260
-msgid "Rate"
-msgstr "Стапка"
-
-#. Retrieve from register
-#: ../glade/gcalctool.glade.h:262
-msgid "Rcl"
-msgstr "Rcl"
-
-#: ../glade/gcalctool.glade.h:263
-msgid "Reciprocal"
-msgstr "Реципрочно"
-
-#: ../glade/gcalctool.glade.h:264
-msgid "Reciprocal [r]"
-msgstr "Реципрочно [r]"
-
-#: ../glade/gcalctool.glade.h:265
-msgid "Redo"
-msgstr "Повтори"
-
-#: ../glade/gcalctool.glade.h:266
-msgid "Remove rightmost character from displayed value [Backspace]"
-msgstr "Отстрани го најдесниот карактер од прикажаната вредност [Backspace]"
-
-#: ../glade/gcalctool.glade.h:269
-msgid "Result Region"
-msgstr "Регион за резултат"
-
-#: ../glade/gcalctool.glade.h:270
-msgid "Retrieve from register"
-msgstr "Поврати од регистер"
-
-#: ../glade/gcalctool.glade.h:271
-msgid "Retrieve memory register to display [R]"
-msgstr "Прикажи ја вредноста на меморискиот регистар []"
-
-#: ../glade/gcalctool.glade.h:272
-msgid "Right bracket"
-msgstr "Десна заграда"
-
-#: ../glade/gcalctool.glade.h:273
-msgid "Scientific"
-msgstr "Научен"
-
-#: ../glade/gcalctool.glade.h:274
-msgid "Set Precision"
-msgstr "Постави прецизност"
-
-#: ../glade/gcalctool.glade.h:275
-msgid "Set accuracy from 0 to 9 numeric places [A]"
-msgstr "Подеси ја точноста од 0 до 9 нумерички места [A]"
-
-#: ../glade/gcalctool.glade.h:276
-msgid "Set display type to engineering format"
-msgstr "Промени го типот на приказот во технички формат"
-
-#: ../glade/gcalctool.glade.h:277
-msgid "Set display type to fixed-point format"
-msgstr "Промени го типот на приказот во формат со фиксна децимална точка"
-
-#: ../glade/gcalctool.glade.h:278
-msgid "Set display type to scientific format"
-msgstr "Промени го типот на приказот во научен формат"
-
-#: ../glade/gcalctool.glade.h:279
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "Подеси ја хиперболичната опција за тригонометриските функции"
-
-#: ../glade/gcalctool.glade.h:280
-msgid "Set inverse option for trigonometric functions"
-msgstr "Постави ја опцијата инверзно за тригонометриски функции"
-
-#: ../glade/gcalctool.glade.h:281
-msgid "Set numeric base to binary (base 2)"
-msgstr "Промени ја нумеричката основа во бинарна (основа 2)"
-
-#: ../glade/gcalctool.glade.h:282
-msgid "Set numeric base to decimal (base 10)"
-msgstr "Промени ја нумеричката основа во децимална (основа 10)"
-
-#: ../glade/gcalctool.glade.h:283
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "Промени ја нумеричката основа во хексадецимална (основа 16)"
-
-#: ../glade/gcalctool.glade.h:284
-msgid "Set numeric base to octal (base 8)"
-msgstr "Промени ја нумеричката основа во октална (основа 8)"
-
-#: ../glade/gcalctool.glade.h:285
-msgid "Set trigonometric type to degrees"
-msgstr "Тригонометрискиот режим да смета во степени"
-
-#: ../glade/gcalctool.glade.h:286
-msgid "Set trigonometric type to gradians"
-msgstr "Постави го тригонометрискиот тип во градијани"
-
-#: ../glade/gcalctool.glade.h:287
-msgid "Set trigonometric type to radians"
-msgstr "Постави го тригонометрискиот тип во радијани"
-
-#: ../glade/gcalctool.glade.h:288
-msgid "Shift displayed value 1-15 places to the left [<]"
-msgstr "Помести ја прикажаната вредност 1-15 места налево [<]"
-
-#: ../glade/gcalctool.glade.h:289
-msgid "Shift displayed value 1-15 places to the right [>]"
-msgstr "Помести ја прикажаната вредност 1-15 места надесно [>]"
-
-#: ../glade/gcalctool.glade.h:290
-msgid "Shift left"
-msgstr "Помести на лево"
-
-#: ../glade/gcalctool.glade.h:291
-msgid "Shift right"
-msgstr "Помести на десно"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:295
-msgid "Show Bit Editor"
-msgstr "Покажи уредувач на битови"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:299
-msgid "Show Bit _Editor"
-msgstr "Покажи _уредувач на битови"
-
-#: ../glade/gcalctool.glade.h:300
-msgid "Show T_housands Separator"
-msgstr "Покажи ги нули_те од десно"
-
-#: ../glade/gcalctool.glade.h:301
-msgid "Show _Trailing Zeroes"
-msgstr "Покажи ги _нулите од десно"
-
-#. When the bit editor is visible, there will be two rows of ones
-#. and zeroes shown. When the number being displayed in
-#. in the calculator is an integer value, these ones and zeroes will be sensitive, and they will correspond to the value of each of the bits in the displayed integer number. By clicking on any of the labels for these ones and zeroes, their value can be toggled (a one becomes a zero and a zero becomes a one), causing the displayed integer value to be adjusted accordingly.
-#: ../glade/gcalctool.glade.h:305
-msgid "Show bit editor"
-msgstr "Покажи уредувач на битови"
-
-#: ../glade/gcalctool.glade.h:306
-msgid "Show help contents"
-msgstr "Покажи ги помошните содржини"
-
-#: ../glade/gcalctool.glade.h:307
-msgid "Show memory registers"
-msgstr "Покажи ги мемориските регистри"
-
-#: ../glade/gcalctool.glade.h:308
-msgid "Show the About Gcalctool dialog"
-msgstr "Покажи го дијалогот „За“"
-
-#: ../glade/gcalctool.glade.h:309
-msgid "Show thousands separator"
-msgstr "Покажи го оделувачот за илјади"
-
-#: ../glade/gcalctool.glade.h:310
-msgid "Show trailing zeroes"
-msgstr "Покажи ги нулите од десно"
-
-#: ../glade/gcalctool.glade.h:311
-msgid "Significant _places:"
-msgstr "Значајни _места:"
-
-#: ../glade/gcalctool.glade.h:314
-msgid "Sine [K]"
-msgstr "Синус [K]"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:317
-msgid "Sln"
-msgstr "Sln"
-
-#: ../glade/gcalctool.glade.h:318
-msgid "Square"
-msgstr "Квадрат"
-
-#: ../glade/gcalctool.glade.h:319
-msgid "Square [@]"
-msgstr "Квадрат [@]"
-
-#: ../glade/gcalctool.glade.h:320
-msgid "Square root"
-msgstr "Корен"
-
-#: ../glade/gcalctool.glade.h:321
-msgid "Square root [s]"
-msgstr "Корен [s]"
-
-#: ../glade/gcalctool.glade.h:322
-msgid "Start group of calculations [(]"
-msgstr "Започни група на пресметки [(]"
-
-#. Store to register
-#: ../glade/gcalctool.glade.h:324
-msgid "Sto"
-msgstr "Sto"
-
-#: ../glade/gcalctool.glade.h:325
-msgid "Store displayed value in memory register [S]"
-msgstr "Зачувај ја прикажаната вредност во меморискиот регистар [S]"
-
-#: ../glade/gcalctool.glade.h:326
-msgid "Store to register"
-msgstr "Складирај во регистрите"
-
-#: ../glade/gcalctool.glade.h:327
-msgid "Straight-line depreciation"
-msgstr "Девалвација по права линија"
-
-#: ../glade/gcalctool.glade.h:328
-msgid "Straight-line depreciation [l]"
-msgstr "Девалвација по права линија [l]"
-
-#: ../glade/gcalctool.glade.h:329
-msgid "Subtract"
-msgstr "Одземање"
-
-#: ../glade/gcalctool.glade.h:330
-msgid "Subtract [-]"
-msgstr "Одземај [-]"
-
-#: ../glade/gcalctool.glade.h:331
-msgid "Sum-of-the years'-digits depreciation"
-msgstr "Девалвација според збирот на цифрите на годините"
-
-#: ../glade/gcalctool.glade.h:332
-msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "Девалвација според збирот на цифрите на годините [y]"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones.
-#. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
-#: ../glade/gcalctool.glade.h:336
-msgid "Syd"
-msgstr "Syd"
-
-#: ../glade/gcalctool.glade.h:339
-msgid "Tangent [L]"
-msgstr "Тангенс [L]"
-
-#: ../glade/gcalctool.glade.h:340
-msgid "Ten to the x"
-msgstr "Десет до x"
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also:
-#. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../glade/gcalctool.glade.h:343
-msgid "Term"
-msgstr "Временски термин"
-
-#: ../glade/gcalctool.glade.h:344
-msgid "Undo"
-msgstr "Отповикај"
-
-#: ../glade/gcalctool.glade.h:345
-msgid "User-defined functions"
-msgstr "Функции дефинирани од корисникот"
-
-#: ../glade/gcalctool.glade.h:346
-msgid "User-defined functions [F]"
-msgstr "Функции дефинирани од корисникот [f]"
-
-#: ../glade/gcalctool.glade.h:347
-msgid "X to the y"
-msgstr "X до y"
-
-#: ../glade/gcalctool.glade.h:348
-msgid "XNOR"
-msgstr "Екслкузивно НИЛИ"
-
-#: ../glade/gcalctool.glade.h:349
-msgid "XOR"
-msgstr "Ексклузивно ИЛИ"
-
-#: ../glade/gcalctool.glade.h:350
-msgid "_0 significant places"
-msgstr "_0 значајни места"
-
-#: ../glade/gcalctool.glade.h:351
-msgid "_1 place"
-msgstr "_1 место"
-
-#: ../glade/gcalctool.glade.h:352
-msgid "_1 significant place"
-msgstr "_1 значајно место"
-
-#: ../glade/gcalctool.glade.h:353
-msgid "_2 places"
-msgstr "_2 места"
-
-#: ../glade/gcalctool.glade.h:354
-msgid "_2 significant places"
-msgstr "_2 значајни места"
-
-#: ../glade/gcalctool.glade.h:355
-msgid "_3 places"
-msgstr "_3 места"
-
-#: ../glade/gcalctool.glade.h:356
-msgid "_3 significant places"
-msgstr "_3 значајни места"
-
-#: ../glade/gcalctool.glade.h:357
-msgid "_4 places"
-msgstr "_4 места"
-
-#: ../glade/gcalctool.glade.h:358
-msgid "_4 significant places"
-msgstr "_4 значајни места"
-
-#: ../glade/gcalctool.glade.h:359
-msgid "_5 places"
-msgstr "_5 места"
-
-#: ../glade/gcalctool.glade.h:360
-msgid "_5 significant places"
-msgstr "_5 значајни места"
-
-#: ../glade/gcalctool.glade.h:361
-msgid "_6 places"
-msgstr "_6 места"
-
-#: ../glade/gcalctool.glade.h:362
-msgid "_6 significant places"
-msgstr "_6 значајни места"
-
-#: ../glade/gcalctool.glade.h:363
-msgid "_7 places"
-msgstr "_7 места"
-
-#: ../glade/gcalctool.glade.h:364
-msgid "_7 significant places"
-msgstr "_7 значајни места"
-
-#: ../glade/gcalctool.glade.h:365
-msgid "_8 places"
-msgstr "_8 места"
-
-#: ../glade/gcalctool.glade.h:366
-msgid "_8 significant places"
-msgstr "_8 значајни места"
-
-#: ../glade/gcalctool.glade.h:367
-msgid "_9 places"
-msgstr "_9 места"
-
-#: ../glade/gcalctool.glade.h:368
-msgid "_9 significant places"
-msgstr "_9 значајни места"
-
-#: ../glade/gcalctool.glade.h:369
-msgid "_Advanced"
-msgstr "_Напреден"
-
-#: ../glade/gcalctool.glade.h:370
-msgid "_Basic"
-msgstr "_Основен"
-
-#: ../glade/gcalctool.glade.h:371
-msgid "_Bin"
-msgstr "_Бинарно"
-
-#: ../glade/gcalctool.glade.h:372
+#. Calculator menu
+#: ../src/math-window.c:381
 msgid "_Calculator"
 msgstr "_Калкулатор"
 
-#: ../glade/gcalctool.glade.h:373
-msgid "_Contents"
-msgstr "_Содржини"
+#. Mode menu
+#: ../src/math-window.c:383
+#| msgid "Mod"
+msgid "_Mode"
+msgstr "_Режим"
 
-#: ../glade/gcalctool.glade.h:374
-msgid "_Dec"
-msgstr "_Децимално"
-
-#: ../glade/gcalctool.glade.h:375
-msgid "_Edit"
-msgstr "_Уреди"
-
-#: ../glade/gcalctool.glade.h:376
-msgid "_Financial"
-msgstr "_Финансиски"
-
-#: ../glade/gcalctool.glade.h:377
-msgid "_Fix"
-msgstr "_Фиксно"
-
-#: ../glade/gcalctool.glade.h:378
+#. Help menu label
+#: ../src/math-window.c:385
 msgid "_Help"
 msgstr "_Помош"
 
-#: ../glade/gcalctool.glade.h:379
-msgid "_Insert"
-msgstr "_Вметни"
+#. Basic menu label
+#: ../src/math-window.c:387
+msgid "_Basic"
+msgstr "_Основен"
 
-#: ../glade/gcalctool.glade.h:380
-msgid "_Insert ASCII value..."
-msgstr "_Вметни ASCII вредности..."
+#. Advanced menu label
+#: ../src/math-window.c:389
+msgid "_Advanced"
+msgstr "_Напреден"
 
-#: ../glade/gcalctool.glade.h:381
-msgid "_Inv"
-msgstr "_Inv"
+#. Financial menu label
+#: ../src/math-window.c:391
+msgid "_Financial"
+msgstr "_Финансиски"
 
-#: ../glade/gcalctool.glade.h:382
-msgid "_Memory Registers"
-msgstr "_Мемориски регистри"
+#. Programming menu label
+#: ../src/math-window.c:393
+msgid "_Programming"
+msgstr "_Програмирање"
 
-#: ../glade/gcalctool.glade.h:383
-msgid "_Oct"
-msgstr "_Октално"
+#. Help>Contents menu label
+#: ../src/math-window.c:395
+msgid "_Contents"
+msgstr "_Содржини"
 
-#: ../glade/gcalctool.glade.h:386
-msgid "_Radians"
-msgstr "_Радијани"
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/mp-binary.c:115
+msgid "Boolean AND is only defined for positive integers"
+msgstr "Булово И е дефинирана само за позитивни цели броеви"
 
-#: ../glade/gcalctool.glade.h:387
-msgid "_Redo"
-msgstr "_Повтори"
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/mp-binary.c:128
+msgid "Boolean OR is only defined for positive integers"
+msgstr "Булово ИЛИ е дефинирана само за позитивни цели броеви"
 
-#: ../glade/gcalctool.glade.h:388
-msgid "_Sci"
-msgstr "_Научно"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:141
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "Булово Исклучително ИЛИ е дефинирана само за позитивни цели броеви"
 
-#: ../glade/gcalctool.glade.h:389
-msgid "_Scientific"
-msgstr "_Научен"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:156
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "Булово НЕ е дефинирана само за позитивни цели броеви"
 
-#: ../glade/gcalctool.glade.h:390
-msgid "_Set"
-msgstr "_Постави"
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/mp-binary.c:187
+msgid "Shift is only possible on integer values"
+msgstr "Поместувањето е можно само за позитивни цели броеви"
 
-#: ../glade/gcalctool.glade.h:391
-msgid "_Undo"
-msgstr "_Отповикај"
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/mp.c:148
+msgid "Argument not defined for zero"
+msgstr "Аргументот не е фефиниран за нула"
 
-#: ../glade/gcalctool.glade.h:392
-msgid "_View"
-msgstr "_Поглед"
+#: ../src/mp.c:299
+msgid "Overflow: the result couldn't be calculated"
+msgstr "Претекување: резултатот не може да се пресмета"
 
-#: ../glade/gcalctool.glade.h:393
-msgid "e to the power of displayed value [{]"
-msgstr "е на степен од прикажаната вредност [{]"
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:644
+#: ../src/mp.c:676
+#: ../src/mp.c:1605
+msgid "Division by zero is undefined"
+msgstr "Делењето со нула не е дефинирано"
 
-#. E to the power of x. Note that this label uses mark up and the "x" is a superscript character. See: http://en.wikipedia.org/wiki/Superscript for more details on superscripts.
-#: ../glade/gcalctool.glade.h:395
-msgid "e<sup>x</sup>"
-msgstr "e<sup>x</sup>"
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1276
+#: ../src/mp.c:1313
+msgid "Logarithm of zero is undefined"
+msgstr "Логаритам од нула не е дефиниран"
 
-#: ../glade/gcalctool.glade.h:396
-msgid "ex"
-msgstr "ex"
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1680
+#: ../src/mp.c:1994
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Степенувањето на нула не е дефинирано за негативни експоненти"
 
-#. This is accessible name for memory register 0.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:400
-msgid "register 0"
-msgstr "register 0"
+#: ../src/mp.c:1704
+msgid "Reciprocal of zero is undefined"
+msgstr "Реципрочната вредонст на нула не е дефинирана"
 
-#. This is accessible name for memory register 1.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:404
-msgid "register 1"
-msgstr "register 1"
+#: ../src/mp.c:1789
+msgid "Root must be non-zero"
+msgstr "Коренот мора да е ненулта вредност"
 
-#. This is accessible name for memory register 2.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:408
-msgid "register 2"
-msgstr "register 2"
+#: ../src/mp.c:1807
+msgid "Negative root of zero is undefined"
+msgstr "Негативен корен од нула не е дефиниран"
 
-#. This is accessible name for memory register 3.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:412
-msgid "register 3"
-msgstr "register 3"
+#: ../src/mp.c:1813
+msgid "nth root of negative number is undefined for even n"
+msgstr "n-ти корен од негативен број е недефиниран за парно n"
 
-#. This is accessible name for memory register 4.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:416
-msgid "register 4"
-msgstr "register 4"
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1934
+msgid "Factorial is only defined for natural numbers"
+msgstr "Факториел е дефиниран само на природни броеви"
 
-#. This is accessible name for memory register 5.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:420
-msgid "register 5"
-msgstr "register 5"
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1954
+msgid "Modulus division is only defined for integers"
+msgstr "Модул е само дефиниран за цели броеви"
 
-#. This is accessible name for memory register 6.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:424
-msgid "register 6"
-msgstr "register 6"
+#. Translators: Error displayed when tangent value is undefined
+#: ../src/mp-trigonometric.c:310
+msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr "Тангенс е дефиниран за агли кои се производ на цел број со π (180°) од π∕2 (90°)"
 
-#. This is accessible name for memory register 7.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:428
-msgid "register 7"
-msgstr "register 7"
+#. Translators: Error displayed when inverse sine value is undefined
+#: ../src/mp-trigonometric.c:355
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr "Аркус синус е недефиниран за вредности надвор од [-1, 1]"
 
-#. This is accessible name for memory register 8.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:432
-msgid "register 8"
-msgstr "register 8"
+#. Translators: Error displayed when inverse cosine value is undefined
+#: ../src/mp-trigonometric.c:372
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr "Аркус косинус е недефиниран за вредности надвор од [-1, 1]"
 
-#. This is accessible name for memory register 9.  It is spoken
-#. by screen readers such as Orca, to help people who are
-#. blind or have low vision.
-#: ../glade/gcalctool.glade.h:436
-msgid "register 9"
-msgstr "register 9"
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: ../src/mp-trigonometric.c:591
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
+msgstr "Аркус синус хиперболикум е недефиниран за вредности помали од еден"
 
-#: ../glade/gcalctool.glade.h:437
-msgid "x2"
-msgstr "x2"
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: ../src/mp-trigonometric.c:615
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr "Аркус тангенс хиперболикум е недефиниран за вредности надвор од [-1, 1]"
 
-#: ../glade/gcalctool.glade.h:438
-msgid "xy"
-msgstr "xy"
+#: ../src/unit-manager.c:54
+#, c-format
+#| msgid "De_grees"
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s степени"
 
-#. This is a plus-minus sign (+/-)
-#: ../glade/gcalctool.glade.h:440
-msgid "±"
-msgstr "±"
+#: ../src/unit-manager.c:54
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "степен,степени,сте"
 
-#. This is a multiplication sign (*)
-#: ../glade/gcalctool.glade.h:442
-msgid "×"
-msgstr "×"
+#: ../src/unit-manager.c:55
+#, c-format
+#| msgid "Gr_adians"
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s радијани"
 
-#. this is a division sign (÷)
-#: ../glade/gcalctool.glade.h:444
-msgid "÷"
-msgstr "÷"
+#: ../src/unit-manager.c:55
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "радијан,радијани,рад"
 
-#. This is a minus sign (-)
-#: ../glade/gcalctool.glade.h:446
-msgid "−"
-msgstr "−"
+#: ../src/unit-manager.c:56
+#, c-format
+#| msgid "Gr_adians"
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s градуси"
 
-#. This is a square root sign
-#: ../glade/gcalctool.glade.h:448
-msgid "√"
-msgstr "√"
+#: ../src/unit-manager.c:56
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "градус,градијани,град"
+
+#: ../src/unit-manager.c:57
+#| msgid "Paste"
+msgid "Parsecs"
+msgstr "Парсеци"
+
+#: ../src/unit-manager.c:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
+
+#: ../src/unit-manager.c:57
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "парсек,парсеци,пс"
+
+#: ../src/unit-manager.c:58
+msgid "Light Years"
+msgstr "Светлосни години"
+
+#: ../src/unit-manager.c:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s ly"
+
+#: ../src/unit-manager.c:58
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "светлосна година,светлосни години,сг"
+
+#: ../src/unit-manager.c:59
+msgid "Astronomical Units"
+msgstr "Астрономски единици"
+
+#: ../src/unit-manager.c:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s au"
+
+#: ../src/unit-manager.c:59
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "au"
+
+#: ../src/unit-manager.c:60
+msgid "Nautical Miles"
+msgstr "Наутички милји"
+
+#: ../src/unit-manager.c:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr "%s nmi"
+
+#: ../src/unit-manager.c:60
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "nmi"
+
+#: ../src/unit-manager.c:61
+msgid "Miles"
+msgstr "Милји"
+
+#: ../src/unit-manager.c:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s mi"
+
+#: ../src/unit-manager.c:61
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "милја,милји,mi"
+
+#: ../src/unit-manager.c:62
+msgid "Kilometers"
+msgstr "Километри"
+
+#: ../src/unit-manager.c:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
+
+#: ../src/unit-manager.c:62
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "километар,километри,km,km"
+
+#: ../src/unit-manager.c:63
+msgid "Cables"
+msgstr "Кабли"
+
+#: ../src/unit-manager.c:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cb"
+
+#: ../src/unit-manager.c:63
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "кабел,кабли,cb"
+
+#: ../src/unit-manager.c:64
+msgid "Fathoms"
+msgstr "Fathoms"
+
+#: ../src/unit-manager.c:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s ftm"
+
+#: ../src/unit-manager.c:64
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "fathom,fathoms,ftm"
+
+#: ../src/unit-manager.c:65
+msgid "Meters"
+msgstr "Метри"
+
+#: ../src/unit-manager.c:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
+
+#: ../src/unit-manager.c:65
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "метар,метри,m"
+
+#: ../src/unit-manager.c:66
+msgid "Yards"
+msgstr "Јарди"
+
+#: ../src/unit-manager.c:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
+
+#: ../src/unit-manager.c:66
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "јард,јарди,yd"
+
+#: ../src/unit-manager.c:67
+msgid "Feet"
+msgstr "Стапки"
+
+#: ../src/unit-manager.c:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ft"
+
+#: ../src/unit-manager.c:67
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "стапка,стапки,ft"
+
+#: ../src/unit-manager.c:68
+msgid "Inches"
+msgstr "Инчи"
+
+#: ../src/unit-manager.c:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s in"
+
+#: ../src/unit-manager.c:68
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "инч,инчи,in"
+
+#: ../src/unit-manager.c:69
+#| msgid "_Contents"
+msgid "Centimeters"
+msgstr "Сантиметри"
+
+#: ../src/unit-manager.c:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
+
+#: ../src/unit-manager.c:69
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "сантиметар,сантиметри,cm,cm"
+
+#: ../src/unit-manager.c:70
+msgid "Millimeters"
+msgstr "Милиметри"
+
+#: ../src/unit-manager.c:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
+
+#: ../src/unit-manager.c:70
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "милиметар,милиметри,mm"
+
+#: ../src/unit-manager.c:71
+msgid "Micrometers"
+msgstr "Микрометри"
+
+#: ../src/unit-manager.c:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
+
+#: ../src/unit-manager.c:71
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "микрометар,микрометри,um"
+
+#: ../src/unit-manager.c:72
+msgid "Nanometers"
+msgstr "Нанометри"
+
+#: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
+
+#: ../src/unit-manager.c:72
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "нанометар,нанометри,nm"
+
+#: ../src/unit-manager.c:73
+msgid "Hectares"
+msgstr "Хектари"
+
+#: ../src/unit-manager.c:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../src/unit-manager.c:73
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "хектар,хектари,ha"
+
+#: ../src/unit-manager.c:74
+msgid "Acres"
+msgstr "Акри"
+
+#: ../src/unit-manager.c:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s акри"
+
+#: ../src/unit-manager.c:74
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "акр,акри"
+
+#: ../src/unit-manager.c:75
+#| msgid "Square root"
+msgid "Square Meters"
+msgstr "Квадратни метри"
+
+#: ../src/unit-manager.c:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../src/unit-manager.c:75
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
+
+#: ../src/unit-manager.c:76
+msgid "Square Centimeters"
+msgstr "Квадратни сантиметри"
+
+#: ../src/unit-manager.c:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit-manager.c:76
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
+#: ../src/unit-manager.c:77
+msgid "Square Millimeters"
+msgstr "Квадратни милиметри"
+
+#: ../src/unit-manager.c:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit-manager.c:77
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
+
+#: ../src/unit-manager.c:78
+msgid "Cubic Meters"
+msgstr "Кубни метри"
+
+#: ../src/unit-manager.c:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit-manager.c:78
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
+#: ../src/unit-manager.c:79
+msgid "Gallons"
+msgstr "Галони"
+
+#: ../src/unit-manager.c:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../src/unit-manager.c:79
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "галон,галони,gal"
+
+#: ../src/unit-manager.c:80
+msgid "Litres"
+msgstr "Lit"
+
+#: ../src/unit-manager.c:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s L"
+
+#: ../src/unit-manager.c:80
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "литар,литри,литар,литри,L"
+
+#: ../src/unit-manager.c:81
+msgid "Quarts"
+msgstr "Quarts"
+
+#: ../src/unit-manager.c:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s qt"
+
+#: ../src/unit-manager.c:81
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "quart,quarts,qt"
+
+#: ../src/unit-manager.c:82
+msgid "Pints"
+msgstr "Пинти"
+
+#: ../src/unit-manager.c:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
+
+#: ../src/unit-manager.c:82
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "пинт,пинти,pt"
+
+#: ../src/unit-manager.c:83
+msgid "Millilitres"
+msgstr "Милилитри"
+
+#: ../src/unit-manager.c:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s mL"
+
+#: ../src/unit-manager.c:83
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "милилитар,милилитри,милилитар,милилитри,mL,cm³"
+
+#: ../src/unit-manager.c:84
+msgid "Microlitres"
+msgstr "Микролитри"
+
+#: ../src/unit-manager.c:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μL"
+
+#: ../src/unit-manager.c:84
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μL,uL"
+
+#: ../src/unit-manager.c:85
+msgid "Tonnes"
+msgstr "Тони"
+
+#: ../src/unit-manager.c:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s T"
+
+#: ../src/unit-manager.c:85
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "тон,тони"
+
+#: ../src/unit-manager.c:86
+msgid "Kilograms"
+msgstr "Килограми"
+
+#: ../src/unit-manager.c:86
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
+
+#: ../src/unit-manager.c:86
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "килограм,килограми,килограм,килограми,kg,kg"
+
+#: ../src/unit-manager.c:87
+msgid "Pounds"
+msgstr "Фунти"
+
+#: ../src/unit-manager.c:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../src/unit-manager.c:87
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "фунта,фунти,lb"
+
+#: ../src/unit-manager.c:88
+msgid "Ounces"
+msgstr "Унци"
+
+#: ../src/unit-manager.c:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz"
+
+#: ../src/unit-manager.c:88
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "унца,унци,oz"
+
+#: ../src/unit-manager.c:89
+msgid "Grams"
+msgstr "Грамови"
+
+#: ../src/unit-manager.c:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit-manager.c:89
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "грам,грамови,g"
+
+#: ../src/unit-manager.c:90
+#| msgid "Clear"
+msgid "Years"
+msgstr "Години"
+
+#: ../src/unit-manager.c:90
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s години"
+
+#: ../src/unit-manager.c:90
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "година,години"
+
+#: ../src/unit-manager.c:91
+msgid "Days"
+msgstr "Денови"
+
+#: ../src/unit-manager.c:91
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s денови"
+
+#: ../src/unit-manager.c:91
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "ден,денови"
+
+#: ../src/unit-manager.c:92
+msgid "Hours"
+msgstr "Час"
+
+#: ../src/unit-manager.c:92
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s часови"
+
+#: ../src/unit-manager.c:92
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "час,часови"
+
+#: ../src/unit-manager.c:93
+msgid "Minutes"
+msgstr "Минути"
+
+#: ../src/unit-manager.c:93
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s минути"
+
+#: ../src/unit-manager.c:93
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "минута,минути"
+
+#: ../src/unit-manager.c:94
+msgid "Seconds"
+msgstr "Секунди"
+
+#: ../src/unit-manager.c:94
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit-manager.c:94
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "секунда,секунди,s"
+
+#: ../src/unit-manager.c:95
+msgid "Milliseconds"
+msgstr "Милисекунди"
+
+#: ../src/unit-manager.c:95
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit-manager.c:95
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "милисекунда,милисекунди,ms"
+
+#: ../src/unit-manager.c:96
+msgid "Microseconds"
+msgstr "Микросекунди"
+
+#: ../src/unit-manager.c:96
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit-manager.c:96
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "микросекунда,микросекунди,us,μs"
+
+#: ../src/unit-manager.c:97
+msgid "Celsius"
+msgstr "Целзиус"
+
+#: ../src/unit-manager.c:97
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr "%s ˚C"
+
+#: ../src/unit-manager.c:97
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "degC,˚C"
+
+#: ../src/unit-manager.c:98
+msgid "Farenheit"
+msgstr "Фаренхајт"
+
+#: ../src/unit-manager.c:98
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr "%s ˚F"
+
+#: ../src/unit-manager.c:98
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "degF,˚F"
+
+#: ../src/unit-manager.c:99
+msgid "Kelvin"
+msgstr "Келвин"
+
+#: ../src/unit-manager.c:99
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr "%s K"
+
+#: ../src/unit-manager.c:99
+msgctxt "unit-symbols"
+msgid "K"
+msgstr "K"
+
+#: ../src/unit-manager.c:100
+msgid "Rankine"
+msgstr "Rankine"
+
+#: ../src/unit-manager.c:100
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr "%s ˚R"
+
+#: ../src/unit-manager.c:100
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra"
+msgstr "degR,˚R,˚Ra"
+
+#: ../src/unit-manager.c:109
+msgid "Angle"
+msgstr "Агол"
+
+#: ../src/unit-manager.c:110
+msgid "Length"
+msgstr "Должина"
+
+#: ../src/unit-manager.c:111
+msgid "Area"
+msgstr "Површина"
+
+#: ../src/unit-manager.c:112
+#| msgid "Value"
+msgid "Volume"
+msgstr "Волумен"
+
+#: ../src/unit-manager.c:113
+msgid "Weight"
+msgstr "Тежина"
+
+#: ../src/unit-manager.c:114
+#| msgid "Description"
+msgid "Duration"
+msgstr "Времетраење"
+
+#: ../src/unit-manager.c:115
+msgid "Temperature"
+msgstr "Температура"
+
+#: ../src/unit-manager.c:127
+msgid "Currency"
+msgstr "Валута"
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../src/unit-manager.c:137
+#, c-format
+msgid "%s%%s"
+msgstr "%s%%s"
+
+#~ msgid "Kilometer-to-mile conversion factor"
+#~ msgstr "Фактор за конвертирање на километри во милји"
+#~ msgid "square root of 2"
+#~ msgstr "квадратен корен од 2"
+#~ msgid "pi"
+#~ msgstr "пи"
+#~ msgid "Centimeter-to-inch conversion factor"
+#~ msgstr "Фактор за конвертирање на сентиметри во инчи"
+#~ msgid "degrees in a radian"
+#~ msgstr "степени во радијан"
+#~ msgid "2 ^ 20"
+#~ msgstr "2 ^ 20"
+#~ msgid "Gram-to-ounce conversion factor"
+#~ msgstr "Фактор за конвертирање од грамови во унци"
+#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
+#~ msgstr "Фактор за конвертирање од килоџул во британски термички единици"
+#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+#~ msgstr "Фактор на конвертирање од кубни сантиметри во кубни инчи"
+#~ msgid "%s: %s as next argument.\n"
+#~ msgstr "%s: %s како следен аргумент.\n"
+#~ msgid ""
+#~ "%s version %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "%s верзија %s\n"
+#~ "\n"
+#~ msgid "Usage: %s: [-E] [-u] [-a accuracy] "
+#~ msgstr "Употреба: %s: [-E] [-u] [-a accuracy] "
+#~ msgid "\t\t [-?] [-v] [-h]\n"
+#~ msgstr "\t\t [-?] [-v] [-h]\n"
+#~ msgid "-a needs accuracy value"
+#~ msgstr "-на а му треба вредност на точност"
+#~ msgid "%s: accuracy should be in the range 0-%d\n"
+#~ msgstr "%s точноста треба да е во опсег 0-%d\n"
+#~ msgid "No redo steps"
+#~ msgstr "Нема чекори за отповикување"
+#~ msgid "Malformed function"
+#~ msgstr "Погрешна функција"
+#~ msgid "No sane value to convert"
+#~ msgstr "Нема вистинска вредност за конвертирање"
+#~ msgid "Invalid number for the current base"
+#~ msgstr "Невалиден број за тековната основа"
+#~ msgid "Too long number"
+#~ msgstr "Предлог број"
+#~ msgid "Invalid bitwise operation parameter(s)"
+#~ msgstr "Невалидни параметри на битовната операција"
+#~ msgid "Invalid modulus operation parameter(s)"
+#~ msgstr "Невалидни параметри на операцијата со остаток"
+#~ msgid "Math operation error"
+#~ msgstr "Грешка во математичката операција"
+#~ msgid "%s: base should be 2, 8, 10 or 16\n"
+#~ msgstr "%s базата треба да биде 2, 8 , 10 или 16\n"
+#~ msgid "%s: invalid display mode [%s]\n"
+#~ msgstr "%s: неважечки режим на прикажување[%s]\n"
+#~ msgid "%s: invalid mode [%s]\n"
+#~ msgstr "%s: неважечки режим [%s]\n"
+#~ msgid "%s: invalid trigonometric mode [%s]\n"
+#~ msgstr "%s: неважечки тригонометриски режим [%s]\n"
+#~ msgid "Calculator - Advanced"
+#~ msgstr "Калкулатор - напреден"
+#~ msgid "Calculator - Financial"
+#~ msgstr "Калкулатор - финансиски"
+#~ msgid "Calculator - Scientific"
+#~ msgstr "Калкулатор - научен"
+#~ msgid "Calculator [%s]"
+#~ msgstr "Калкулатор [%s]"
+#~ msgid "Calculator [%s] - Advanced"
+#~ msgstr "Калкулатор [%s] - напреден"
+#~ msgid "Calculator [%s] - Financial"
+#~ msgstr "Калкулатор [%s] - финансиски"
+#~ msgid "Calculator [%s] - Scientific"
+#~ msgstr "Калкулатор [%s] - научен"
+#~ msgid "_Other (%d) ..."
+#~ msgstr "_Друго (%d) ..."
+#~ msgid "Set accuracy from 0 to %d numeric place."
+#~ msgid_plural "Set accuracy from 0 to %d numeric places."
+#~ msgstr[0] "Постави ја точноста од 0 на %d нумеричко место."
+#~ msgstr[1] "Постави ја точноста од 0 на %d нумерички места."
+#~ msgid "Currently set to %d place."
+#~ msgid_plural "Currently set to %d places."
+#~ msgstr[0] "Моментално поставен на %d децимално место."
+#~ msgstr[1] "Моментално поставен на %d децимални мести."
+#~ msgid "Sinh"
+#~ msgstr "Sinh"
+#~ msgid "Sin<sup>-1</sup>"
+#~ msgstr "Sin<sup>-1</sup>"
+#~ msgid "Sinh<sup>-1</sup>"
+#~ msgstr "Sinh<sup>-1</sup>"
+#~ msgid "Cosh"
+#~ msgstr "Cosh"
+#~ msgid "Cos<sup>-1</sup>"
+#~ msgstr "Cos<sup>-1</sup>"
+#~ msgid "Cosh<sup>-1</sup>"
+#~ msgstr "Cosh<sup>-1</sup>"
+#~ msgid "Tan"
+#~ msgstr "Tan"
+#~ msgid "Tanh"
+#~ msgstr "Tanh"
+#~ msgid "Tan<sup>-1</sup>"
+#~ msgstr "Tan<sup>-1</sup>"
+#~ msgid "Tanh<sup>-1</sup>"
+#~ msgstr "Tanh<sup>-1</sup>"
+#~ msgid "Bit editor activated. Click on bit values to toggle them."
+#~ msgstr ""
+#~ "Уредувачот на битови е активиран. Кликнете на вредностите на битовите за "
+#~ "да ги менувате."
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ msgstr ""
+#~ "Gcalctool е слободен софтвер; можете да го редистрибуирате и/или "
+#~ "менувате\n"
+#~ "во согласност со општата јавна ГНУ лиценца објавена од страна на\n"
+#~ "Фондацијата за слободен софтвер; можете да ја разгледате втората\n"
+#~ "или пак некоја понова верзија.\n"
+#~ msgid ""
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ msgstr ""
+#~ "Gcalctool се дистрибуира со надеж дека ќе биде корисен, \n"
+#~ "но без БИЛО КАКВИ ГАРАНЦИИ.  За повеќе погледнете ја \n"
+#~ "општата јавна ГНУ лиценца.\n"
+#~ msgid ""
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+#~ msgstr ""
+#~ "Заедно со Gcalctool треба да добиете и копија од општата и јавна\n"
+#~ "ГНУ лиценца; доколку ја нема лиценцата пишете и на Фондацијата за\n"
+#~ "слободен софтвер на следнава адреса: 59 Temple Place, Suite 330, Boston, "
+#~ "MA  02111-1307  USA\n"
+#~ msgid "C"
+#~ msgstr "C"
+#~ msgid "F"
+#~ msgstr "F"
+#~ msgid "Changing Modes Clears Calculation"
+#~ msgstr "Променувањето на режимот ја брише пресметката"
+#~ msgid ""
+#~ "When you change modes, the current calculation will be cleared, and the "
+#~ "base will be reset to decimal."
+#~ msgstr ""
+#~ "Кога менувате режими, моменталната пресметка ќе биде избришана и основата "
+#~ "ќе биде вратена на децимална."
+#~ msgid "_Do not warn me again"
+#~ msgstr "_Не ме предупредувај пак"
+#~ msgid "C_hange Mode"
+#~ msgstr "С_мени режим"
+#~ msgid "R"
+#~ msgstr "Р"
+#~ msgid "Error loading user interface"
+#~ msgstr "Грешка во вчитувањето на интерфејсот"
+#~ msgid ""
+#~ "The user interface file %s is missing or unable to be loaded. Please "
+#~ "check your installation."
+#~ msgstr ""
+#~ "Датотеката со кориснички интерфејс %s недостасува или пак не може да се "
+#~ "вчита. Ве молам, проверете ја Вашата инсталација."
+#~ msgid "No."
+#~ msgstr "Бр."
+#~ msgid "Reset to _Default (%d)"
+#~ msgstr "Врати на _стандардното (%d)"
+#~ msgid "Negative X and non-integer Y not supported"
+#~ msgstr "Не се поддржани негативен X и нецелоброен Y."
+#~ msgid "Error, cannot calculate cosine"
+#~ msgstr "Грешка, неможам да пресметам косинус"
+#~ msgid "%"
+#~ msgstr "%"
+#~ msgid "&16"
+#~ msgstr "&16"
+#~ msgid "&32"
+#~ msgstr "&32"
+#~ msgid "("
+#~ msgstr "("
+#~ msgid ")"
+#~ msgstr ")"
+#~ msgid "+"
+#~ msgstr "+"
+#~ msgid "."
+#~ msgstr "."
+#~ msgid "0"
+#~ msgstr "0"
+#~ msgid "1"
+#~ msgstr "1"
+#~ msgid "1/<i>x</i>"
+#~ msgstr "1/<i>x</i>"
+#~ msgid "1/x"
+#~ msgstr "1/x"
+#~ msgid "10 places"
+#~ msgstr "10 места"
+#~ msgid "10 to the power of displayed value [}]"
+#~ msgstr "10 на степен од прикажаната вредност [}]"
+#~ msgid "10 to the x"
+#~ msgstr "10 на x-та степен"
+#~ msgid "10<sup><i>x</i></sup>"
+#~ msgstr "10<sup><i>x</i></sup>"
+#~ msgid "10x"
+#~ msgstr "10x"
+#~ msgid "11 places"
+#~ msgstr "11 места"
+#~ msgid "12 places"
+#~ msgstr "12 места"
+#~ msgid "13 places"
+#~ msgstr "13 места"
+#~ msgid "14 places"
+#~ msgstr "14 места"
+#~ msgid "15"
+#~ msgstr "15"
+#~ msgid "15 places"
+#~ msgstr "15 места"
+#~ msgid "16 bit unsigned integer"
+#~ msgstr "16-битен позитивен цел број"
+#~ msgid "16-bit unsigned integer value of display (])"
+#~ msgstr "Прикажана 16-битна целобројна вредност без знак (])"
+#~ msgid "2"
+#~ msgstr "2"
+#~ msgid "3"
+#~ msgstr "3"
+#~ msgid "31"
+#~ msgstr "31"
+#~ msgid "32"
+#~ msgstr "32"
+#~ msgid "32-bit unsigned integer value of display ([)"
+#~ msgstr "Прикажана 32-битна целобројна вредност без знак ([)"
+#~ msgid "4"
+#~ msgstr "4"
+#~ msgid "47"
+#~ msgstr "47"
+#~ msgid "5"
+#~ msgstr "5"
+#~ msgid "6"
+#~ msgstr "6"
+#~ msgid "63"
+#~ msgstr "63"
+#~ msgid "7"
+#~ msgstr "7"
+#~ msgid "8"
+#~ msgstr "8"
+#~ msgid "9"
+#~ msgstr "9"
+#~ msgid "<"
+#~ msgstr "<"
+#~ msgid "<i>x</i><sup>2</sup>"
+#~ msgstr "<i>x</i><sup>2</sup>"
+#~ msgid "<i>x</i><sup><i>y</i></sup>"
+#~ msgstr "<i>x</i><sup><i>y</i></sup>"
+#~ msgid ""
+#~ "<small><i><b>Note:</b> All constant values are specified in the decimal "
+#~ "numeric base.</i></small>"
+#~ msgstr ""
+#~ "<small><i><b>Забелешка:</b> Сите константни вредности се наведени во "
+#~ "децималниот броен систем.</i></small>"
+#~ msgid "<span weight=\"bold\">R0</span>"
+#~ msgstr "<span weight=\"bold\">R0</span>"
+#~ msgid "<span weight=\"bold\">R1</span>"
+#~ msgstr "<span weight=\"bold\">R1</span>"
+#~ msgid "<span weight=\"bold\">R2</span>"
+#~ msgstr "<span weight=\"bold\">R2</span>"
+#~ msgid "<span weight=\"bold\">R3</span>"
+#~ msgstr "<span weight=\"bold\">R3</span>"
+#~ msgid "<span weight=\"bold\">R4</span>"
+#~ msgstr "<span weight=\"bold\">R4</span>"
+#~ msgid "<span weight=\"bold\">R5</span>"
+#~ msgstr "<span weight=\"bold\">R5</span>"
+#~ msgid "<span weight=\"bold\">R6</span>"
+#~ msgstr "<span weight=\"bold\">R6</span>"
+#~ msgid "<span weight=\"bold\">R7</span>"
+#~ msgstr "<span weight=\"bold\">R7</span>"
+#~ msgid "<span weight=\"bold\">R8</span>"
+#~ msgstr "<span weight=\"bold\">R8</span>"
+#~ msgid "<span weight=\"bold\">R9</span>"
+#~ msgstr "<span weight=\"bold\">R9</span>"
+#~ msgid ">"
+#~ msgstr ">"
+#~ msgid "A"
+#~ msgstr "A"
+#~ msgid "AND"
+#~ msgstr "И"
+#~ msgid "Abs"
+#~ msgstr "Апсо."
+#~ msgid "Acc"
+#~ msgstr "Acc"
+#~ msgid "Add"
+#~ msgstr "Додаj"
+#~ msgid "Advanced"
+#~ msgstr "Напреден"
+#~ msgid "B"
+#~ msgstr "B"
+#~ msgid "Backspace"
+#~ msgstr "Backspace"
+#~ msgid "Base 10 log [G]"
+#~ msgstr "Логаритам со основа 10 [G]"
+#~ msgid "Base 2 log [H]"
+#~ msgstr "Логаритам со основа 2 [H]"
+#~ msgid "Basic"
+#~ msgstr "Основен"
+#~ msgid "Bitwise AND"
+#~ msgstr "Двонасочно И"
+#~ msgid "Bitwise AND [&]"
+#~ msgstr "Двонасочно И [&]"
+#~ msgid "Bitwise NOT"
+#~ msgstr "Двонасочно НЕ"
+#~ msgid "Bitwise NOT [~]"
+#~ msgstr "Bitwise НЕ [~]"
+#~ msgid "Bitwise OR"
+#~ msgstr "Bitwise ИЛИ"
+#~ msgid "Bitwise OR [|]"
+#~ msgstr "Двонасочно ИЛИ [|]"
+#~ msgid "Bitwise XNOR"
+#~ msgstr "Bitwise НИЛИ"
+#~ msgid "Bitwise XNOR [n]"
+#~ msgstr "Двонасочно ексклузивно НИЛИ [n]"
+#~ msgid "Bitwise XOR"
+#~ msgstr "Двонасочно ексклузивно ИЛИ"
+#~ msgid "Bitwise XOR [x]"
+#~ msgstr "Bitwise X ИЛИ [x]"
+#~ msgid "Bksp"
+#~ msgstr "Bksp"
+#~ msgid "CE"
+#~ msgstr "CE"
+#~ msgid "Calculate result [=]"
+#~ msgstr "Пресметај резултат [=]"
+#~ msgid "Change Sign [C]"
+#~ msgstr "Промени знак [C]"
+#~ msgid "Change sign"
+#~ msgstr "Промени знак"
+#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
+#~ msgstr ""
+#~ "Избриши ја прикажаната вредност и било која парцијална пресметка [Shift "
+#~ "Delete]"
+#~ msgid "Clear entry"
+#~ msgstr "Исчисти запис"
+#~ msgid "Click a _value or description to edit it:"
+#~ msgstr "Притиснете врз вредност или опис за да го измените:"
+#~ msgid "Clr"
+#~ msgstr "Clr"
+#~ msgid "Compounding term [m]"
+#~ msgstr "Збирен израз [m]"
+#~ msgid "Con"
+#~ msgstr "Конст"
+#~ msgid "Constants"
+#~ msgstr "Константи"
+#~ msgid "Constants [#]"
+#~ msgstr "Константи [#]"
+#~ msgid "Copy selection"
+#~ msgstr "Копирај го избраното"
+#~ msgid "D"
+#~ msgstr "D"
+#~ msgid "Divide"
+#~ msgstr "Дели"
+#~ msgid "Double-declining depreciation [D]"
+#~ msgstr "Двојно опаѓачка девалвација [D]"
+#~ msgid "E"
+#~ msgstr "E"
+#~ msgid "E to the x"
+#~ msgstr "Е до x"
+#~ msgid "E_ng"
+#~ msgstr "А_нглиски"
+#~ msgid "Edit Constants"
+#~ msgstr "Измени константи"
+#~ msgid "Edit Constants..."
+#~ msgstr "Измени константи..."
+#~ msgid "Edit Functions..."
+#~ msgstr "Измени функции..."
+#~ msgid "End group of calculations [)]"
+#~ msgstr "Заврши група на пресметки [)]"
+#~ msgid "Enter an exponential number [E]"
+#~ msgstr "Внеси експоненцијална вредност [E]"
+#~ msgid "Exch"
+#~ msgstr "Разм."
+#~ msgid "Exchange displayed value with memory register [X]"
+#~ msgstr "Размени ја прикажаната вредност со меморискиот регистар [X]"
+#~ msgid "Exchange with register"
+#~ msgstr "Размени со регистар"
+#~ msgid "Exp"
+#~ msgstr "Експ."
+#~ msgid "Factorial of displayed value [!]"
+#~ msgstr "Факториел од прикажаната вредност [!]"
+#~ msgid "Fractional portion of displayed value [:]"
+#~ msgstr "Децималниот дел од прикажаната вредност [:]"
+#~ msgid "Fun"
+#~ msgstr "Забава"
+#~ msgid "Future value [v]"
+#~ msgstr "Идна вредност [v]"
+#~ msgid "H_yp"
+#~ msgstr "H_yp"
+#~ msgid "He_x"
+#~ msgstr "Хе_ксално"
+#~ msgid "Hexadecimal digit A [a]"
+#~ msgstr "Хексадецимална цифра А [a]"
+#~ msgid "Hexadecimal digit B"
+#~ msgstr "Хексадецимална цифра B"
+#~ msgid "Hexadecimal digit B [b]"
+#~ msgstr "Хексадецимална цифра B [b]"
+#~ msgid "Hexadecimal digit C"
+#~ msgstr "Хексадецимална цифра C"
+#~ msgid "Hexadecimal digit C [c]"
+#~ msgstr "Хексадецимална цифра C [c]"
+#~ msgid "Hexadecimal digit D"
+#~ msgstr "Хексадецимална цифра Д"
+#~ msgid "Hexadecimal digit D [d]"
+#~ msgstr "Хексадецимална цифра D [d]"
+#~ msgid "Hexadecimal digit E"
+#~ msgstr "Хексадецимална цифра Е"
+#~ msgid "Hexadecimal digit E [e]"
+#~ msgstr "Хексадецимална цифра [e]"
+#~ msgid "Hexadecimal digit F"
+#~ msgstr "Хексадецимална цифра F"
+#~ msgid "Hexadecimal digit F [f]"
+#~ msgstr "Хексадецимална цифра F [f]"
+#~ msgid "Insert ASCII Value"
+#~ msgstr "Вметни аски (ASCII) вредност"
+#~ msgid "Insert ASCII value"
+#~ msgstr "Вметни ASCII вредност"
+#~ msgid "Int"
+#~ msgstr "Int"
+#~ msgid "Integer portion of displayed value [i]"
+#~ msgstr "Целобројниот дел од прикажаната вредност [i]"
+#~ msgid "Left bracket"
+#~ msgstr "Лева заграда"
+#~ msgid "Ln"
+#~ msgstr "Ln"
+#~ msgid "Log<sub>10</sub>"
+#~ msgstr "Log<sub>10</sub>"
+#~ msgid "Log<sub>2</sub>"
+#~ msgstr "Log<sub>2</sub>"
+#~ msgid "Memory Registers"
+#~ msgstr "Мемориски регистри"
+#~ msgid "Multiply"
+#~ msgstr "Помножи"
+#~ msgid "NOT"
+#~ msgstr "НЕ"
+#~ msgid "Numeric 1"
+#~ msgstr "Нумеричко 1"
+#~ msgid "Numeric 2"
+#~ msgstr "Нумеричко 2"
+#~ msgid "Numeric 3"
+#~ msgstr "Нумеричко 3"
+#~ msgid "Numeric 4"
+#~ msgstr "Нумеричко 4"
+#~ msgid "Numeric 5"
+#~ msgstr "Нумеричко 5"
+#~ msgid "Numeric 6"
+#~ msgstr "Нумеричко 6"
+#~ msgid "Numeric 7"
+#~ msgstr "Нумеричко 7"
+#~ msgid "Numeric 8"
+#~ msgstr "Нумеричко 8"
+#~ msgid "Numeric 9"
+#~ msgstr "Нумеричко 9"
+#~ msgid "OR"
+#~ msgstr "ИЛИ"
+#~ msgid "Paste selection"
+#~ msgstr "Вменти го избраното"
+#~ msgid "Payment period [t]"
+#~ msgstr "Период на исплата [t]"
+#~ msgid "Percentage"
+#~ msgstr "Проценти"
+#~ msgid "Periodic interest rate [T]"
+#~ msgstr "Периодична каматна стапка [T]"
+#~ msgid "Periodic payment [P]"
+#~ msgstr "Периодична наплата [P]"
+#~ msgid "Present value [p]"
+#~ msgstr "Сегашна вредност [p]"
+#~ msgid "Raise displayed value to the power of y [^]"
+#~ msgstr "Подигни ја прикажаната вредност на степен y [^]"
+#~ msgid "Random number"
+#~ msgstr "Случаен број"
+#~ msgid "Random number in the range 0.0 to 1.0 [?]"
+#~ msgstr "Случаен број од опсегот 0,0 до 1,0 [?]"
+#~ msgid "Rcl"
+#~ msgstr "Rcl"
+#~ msgid "Reciprocal"
+#~ msgstr "Реципрочно"
+#~ msgid "Reciprocal [r]"
+#~ msgstr "Реципрочно [r]"
+#~ msgid "Redo"
+#~ msgstr "Повтори"
+#~ msgid "Remove rightmost character from displayed value [Backspace]"
+#~ msgstr "Отстрани го најдесниот карактер од прикажаната вредност [Backspace]"
+#~ msgid "Result Region"
+#~ msgstr "Регион за резултат"
+#~ msgid "Retrieve from register"
+#~ msgstr "Поврати од регистер"
+#~ msgid "Retrieve memory register to display [R]"
+#~ msgstr "Прикажи ја вредноста на меморискиот регистар []"
+#~ msgid "Right bracket"
+#~ msgstr "Десна заграда"
+#~ msgid "Set Precision"
+#~ msgstr "Постави прецизност"
+#~ msgid "Set accuracy from 0 to 9 numeric places [A]"
+#~ msgstr "Подеси ја точноста од 0 до 9 нумерички места [A]"
+#~ msgid "Set display type to engineering format"
+#~ msgstr "Промени го типот на приказот во технички формат"
+#~ msgid "Set display type to fixed-point format"
+#~ msgstr "Промени го типот на приказот во формат со фиксна децимална точка"
+#~ msgid "Set display type to scientific format"
+#~ msgstr "Промени го типот на приказот во научен формат"
+#~ msgid "Set hyperbolic option for trigonometric functions"
+#~ msgstr "Подеси ја хиперболичната опција за тригонометриските функции"
+#~ msgid "Set inverse option for trigonometric functions"
+#~ msgstr "Постави ја опцијата инверзно за тригонометриски функции"
+#~ msgid "Set numeric base to binary (base 2)"
+#~ msgstr "Промени ја нумеричката основа во бинарна (основа 2)"
+#~ msgid "Set numeric base to decimal (base 10)"
+#~ msgstr "Промени ја нумеричката основа во децимална (основа 10)"
+#~ msgid "Set numeric base to hexadecimal (base 16)"
+#~ msgstr "Промени ја нумеричката основа во хексадецимална (основа 16)"
+#~ msgid "Set numeric base to octal (base 8)"
+#~ msgstr "Промени ја нумеричката основа во октална (основа 8)"
+#~ msgid "Set trigonometric type to degrees"
+#~ msgstr "Тригонометрискиот режим да смета во степени"
+#~ msgid "Set trigonometric type to gradians"
+#~ msgstr "Постави го тригонометрискиот тип во градијани"
+#~ msgid "Set trigonometric type to radians"
+#~ msgstr "Постави го тригонометрискиот тип во радијани"
+#~ msgid "Shift displayed value 1-15 places to the left [<]"
+#~ msgstr "Помести ја прикажаната вредност 1-15 места налево [<]"
+#~ msgid "Shift displayed value 1-15 places to the right [>]"
+#~ msgstr "Помести ја прикажаната вредност 1-15 места надесно [>]"
+#~ msgid "Show Bit Editor"
+#~ msgstr "Покажи уредувач на битови"
+#~ msgid "Show Bit _Editor"
+#~ msgstr "Покажи _уредувач на битови"
+#~ msgid "Show bit editor"
+#~ msgstr "Покажи уредувач на битови"
+#~ msgid "Show help contents"
+#~ msgstr "Покажи ги помошните содржини"
+#~ msgid "Show memory registers"
+#~ msgstr "Покажи ги мемориските регистри"
+#~ msgid "Show the About Gcalctool dialog"
+#~ msgstr "Покажи го дијалогот „За“"
+#~ msgid "Significant _places:"
+#~ msgstr "Значајни _места:"
+#~ msgid "Sine [K]"
+#~ msgstr "Синус [K]"
+#~ msgid "Square"
+#~ msgstr "Квадрат"
+#~ msgid "Store displayed value in memory register [S]"
+#~ msgstr "Зачувај ја прикажаната вредност во меморискиот регистар [S]"
+#~ msgid "Store to register"
+#~ msgstr "Складирај во регистрите"
+#~ msgid "Straight-line depreciation [l]"
+#~ msgstr "Девалвација по права линија [l]"
+#~ msgid "Subtract"
+#~ msgstr "Одземање"
+#~ msgid "Sum-of-the years'-digits depreciation [y]"
+#~ msgstr "Девалвација според збирот на цифрите на годините [y]"
+#~ msgid "Ten to the x"
+#~ msgstr "Десет до x"
+#~ msgid "Undo"
+#~ msgstr "Отповикај"
+#~ msgid "User-defined functions"
+#~ msgstr "Функции дефинирани од корисникот"
+#~ msgid "User-defined functions [F]"
+#~ msgstr "Функции дефинирани од корисникот [f]"
+#~ msgid "X to the y"
+#~ msgstr "X до y"
+#~ msgid "XNOR"
+#~ msgstr "Екслкузивно НИЛИ"
+#~ msgid "XOR"
+#~ msgstr "Ексклузивно ИЛИ"
+#~ msgid "_0 significant places"
+#~ msgstr "_0 значајни места"
+#~ msgid "_1 significant place"
+#~ msgstr "_1 значајно место"
+#~ msgid "_2 places"
+#~ msgstr "_2 места"
+#~ msgid "_2 significant places"
+#~ msgstr "_2 значајни места"
+#~ msgid "_3 places"
+#~ msgstr "_3 места"
+#~ msgid "_3 significant places"
+#~ msgstr "_3 значајни места"
+#~ msgid "_4 places"
+#~ msgstr "_4 места"
+#~ msgid "_4 significant places"
+#~ msgstr "_4 значајни места"
+#~ msgid "_5 places"
+#~ msgstr "_5 места"
+#~ msgid "_5 significant places"
+#~ msgstr "_5 значајни места"
+#~ msgid "_6 places"
+#~ msgstr "_6 места"
+#~ msgid "_6 significant places"
+#~ msgstr "_6 значајни места"
+#~ msgid "_7 places"
+#~ msgstr "_7 места"
+#~ msgid "_7 significant places"
+#~ msgstr "_7 значајни места"
+#~ msgid "_8 places"
+#~ msgstr "_8 места"
+#~ msgid "_8 significant places"
+#~ msgstr "_8 значајни места"
+#~ msgid "_9 places"
+#~ msgstr "_9 места"
+#~ msgid "_9 significant places"
+#~ msgstr "_9 значајни места"
+#~ msgid "_Dec"
+#~ msgstr "_Децимално"
+#~ msgid "_Edit"
+#~ msgstr "_Уреди"
+#~ msgid "_Insert ASCII value..."
+#~ msgstr "_Вметни ASCII вредности..."
+#~ msgid "_Inv"
+#~ msgstr "_Inv"
+#~ msgid "_Memory Registers"
+#~ msgstr "_Мемориски регистри"
+#~ msgid "_Redo"
+#~ msgstr "_Повтори"
+#~ msgid "_Sci"
+#~ msgstr "_Научно"
+#~ msgid "_Scientific"
+#~ msgstr "_Научен"
+#~ msgid "_Set"
+#~ msgstr "_Постави"
+#~ msgid "_Undo"
+#~ msgstr "_Отповикај"
+#~ msgid "_View"
+#~ msgstr "_Поглед"
+#~ msgid "e to the power of displayed value [{]"
+#~ msgstr "е на степен од прикажаната вредност [{]"
+#~ msgid "e<sup>x</sup>"
+#~ msgstr "e<sup>x</sup>"
+#~ msgid "register 0"
+#~ msgstr "register 0"
+#~ msgid "register 1"
+#~ msgstr "register 1"
+#~ msgid "register 2"
+#~ msgstr "register 2"
+#~ msgid "register 3"
+#~ msgstr "register 3"
+#~ msgid "register 4"
+#~ msgstr "register 4"
+#~ msgid "register 5"
+#~ msgstr "register 5"
+#~ msgid "register 6"
+#~ msgstr "register 6"
+#~ msgid "register 7"
+#~ msgstr "register 7"
+#~ msgid "register 8"
+#~ msgstr "register 8"
+#~ msgid "register 9"
+#~ msgstr "register 9"
+#~ msgid "x2"
+#~ msgstr "x2"
+#~ msgid "xy"
+#~ msgstr "xy"
+#~ msgid "±"
+#~ msgstr "±"
+#~ msgid "×"
+#~ msgstr "×"
+#~ msgid "÷"
+#~ msgstr "÷"
+#~ msgid "−"
+#~ msgstr "−"
+#~ msgid "√"
+#~ msgstr "√"
 
