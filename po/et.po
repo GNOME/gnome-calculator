@@ -6,22 +6,22 @@
 #
 # Priit Laes <amd tt ee>, 2004.
 # Ivar Smolin <okul linux ee>, 2005—2011.
-# Mattias Põldaru <mahfiaz gmail com>, 2010.
+# Mattias Põldaru <mahfiaz@gmail.com>, 2010, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Gcalctool MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-03-14 00:19+0000\n"
-"PO-Revision-Date: 2011-03-14 14:21+0300\n"
+"POT-Creation-Date: 2011-12-25 17:59+0000\n"
+"PO-Revision-Date: 2012-01-02 00:47+0200\n"
 "Last-Translator: Mattias Põldaru <mahfiaz@gmail.com>\n"
-"Language-Team: Estonian <gnome-et@linux.ee>\n"
+"Language-Team: Estonian <>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Content-Transfer-Encoding: 8bits\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
 #. The label on the memory button
 msgid "<i>x</i>"
@@ -490,6 +490,9 @@ msgstr "Botswana pula"
 msgid "Canadian Dollar"
 msgstr "Kanada dollar"
 
+msgid "CFA Franc"
+msgstr "CFA frank"
+
 msgid "Swiss Franc"
 msgstr "Šveitsi frank"
 
@@ -642,6 +645,9 @@ msgstr "Venezuela boliivar"
 
 msgid "South African Rand"
 msgstr "Lõuna-Aafrika Vabariigi rand"
+
+msgid "Error: the number of periods must be positive"
+msgstr "Viga: perioodide arv peab olema positiivne"
 
 #. Description on how to use gcalctool displayed on command-line
 #, c-format
@@ -960,6 +966,10 @@ msgstr "Märk"
 msgid " in "
 msgstr " → "
 
+#. Tooltip for swap conversion button
+msgid "Switch conversion units"
+msgstr "Teisendusühikute vahetamine"
+
 #. Error shown when trying to undo with no undo history
 msgid "No undo history"
 msgstr "Tühistamiste ajalugu puudub"
@@ -992,6 +1002,9 @@ msgstr "Tundmatu teisendus"
 #. Error displayed to user when they enter an invalid calculation
 msgid "Malformed expression"
 msgstr "Vigane avaldis"
+
+msgid "Calculating"
+msgstr "Arvutamine"
 
 #. Error displayed when trying to factorize a non-integer value
 msgid "Need an integer to factorize"
@@ -1248,12 +1261,11 @@ msgstr "goon,gooni,goonid,grad,gon"
 msgid "Parsecs"
 msgstr "Parsekid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s pc"
 msgstr "%s pc"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "parsec,parsecs,pc"
 msgstr "parsek,parsekit,parsekid,pc"
@@ -1287,25 +1299,24 @@ msgstr "Meremiilid"
 
 #, c-format
 msgctxt "unit-format"
-msgid "%s nm"
-msgstr "%s nm"
+msgid "%s nmi"
+msgstr "%s nmi"
 
 msgctxt "unit-symbols"
-msgid "nm"
-msgstr "nm"
+msgid "nmi"
+msgstr "nmi"
 
 msgid "Miles"
 msgstr "Miilid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s mi"
 msgstr "%s mi"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "mile,miles,mi"
-msgstr "miili,miilid"
+msgstr "miil,miili,miilid"
 
 msgid "Kilometers"
 msgstr "Kilomeetrid"
@@ -1322,12 +1333,11 @@ msgstr "kilomeeter,kilomeeterit,kilomeetrid,km"
 msgid "Cables"
 msgstr "Kaabeltaud"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s cb"
 msgstr "%s cb"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "cable,cables,cb"
 msgstr "kaabeltau,kaabeltaud"
@@ -1338,11 +1348,11 @@ msgstr "Süllad"
 #, c-format
 msgctxt "unit-format"
 msgid "%s ftm"
-msgstr ""
+msgstr "%s ftm"
 
 msgctxt "unit-symbols"
 msgid "fathom,fathoms,ftm"
-msgstr ""
+msgstr "süld,sülda,süllad,ftm"
 
 msgid "Meters"
 msgstr "Meetrid"
@@ -1359,12 +1369,11 @@ msgstr "meeter,meetrit,meetrid,m"
 msgid "Yards"
 msgstr "Jardid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s yd"
 msgstr "%s yd"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "yard,yards,yd"
 msgstr "jard,jardi,jardid"
@@ -1372,12 +1381,11 @@ msgstr "jard,jardi,jardid"
 msgid "Feet"
 msgstr "Jalad"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s ft"
 msgstr "%s ft"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "foot,feet,ft"
 msgstr "jalg,jalga,jalad"
@@ -1385,12 +1393,11 @@ msgstr "jalg,jalga,jalad"
 msgid "Inches"
 msgstr "Tollid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s in"
 msgstr "%s\""
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "inch,inches,in"
 msgstr "toll,tolli,tollid,\""
@@ -1434,8 +1441,13 @@ msgstr "mikromeeter,mikromeetrit,mikromeetrid,um,μm"
 msgid "Nanometers"
 msgstr "Nanomeetrid"
 
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
+
 msgctxt "unit-symbols"
-msgid "nanometer,nanometers"
+msgid "nanometer,nanometers,nm"
 msgstr "nanomeeter,nanomeetrit,nanomeetrid,nm"
 
 msgid "Hectares"
@@ -1462,7 +1474,7 @@ msgctxt "unit-symbols"
 msgid "acre,acres"
 msgstr "aaker,aakrit,aakrid"
 
-msgid "Square Meter"
+msgid "Square Meters"
 msgstr "Ruutmeetrid"
 
 #, c-format
@@ -1474,7 +1486,7 @@ msgctxt "unit-symbols"
 msgid "m²"
 msgstr "m²"
 
-msgid "Square Centimeter"
+msgid "Square Centimeters"
 msgstr "Ruutsentimeetrid"
 
 #, c-format
@@ -1486,7 +1498,7 @@ msgctxt "unit-symbols"
 msgid "cm²"
 msgstr "cm²"
 
-msgid "Square Millimeter"
+msgid "Square Millimeters"
 msgstr "Ruutmillimeetrid"
 
 #, c-format
@@ -1513,12 +1525,11 @@ msgstr "m³"
 msgid "Gallons"
 msgstr "Gallonid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s gal"
 msgstr "%s gal"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "gallon,gallons,gal"
 msgstr "gallon,gallonit,gallonid"
@@ -1526,12 +1537,11 @@ msgstr "gallon,gallonit,gallonid"
 msgid "Litres"
 msgstr "Liitrid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s L"
 msgstr "%s l"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "litre,litres,liter,liters,L"
 msgstr "liiter,liitrit,liitrid,l,L"
@@ -1542,21 +1552,20 @@ msgstr "Kvardid"
 #, c-format
 msgctxt "unit-format"
 msgid "%s qt"
-msgstr ""
+msgstr "%s qt"
 
 msgctxt "unit-symbols"
 msgid "quart,quarts,qt"
-msgstr ""
+msgstr "kvart,kvardi,kvardid,qt"
 
 msgid "Pints"
 msgstr "Pindid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s pt"
 msgstr "%s pt"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "pint,pints,pt"
 msgstr "pint,pinti,pindid"
@@ -1564,25 +1573,23 @@ msgstr "pint,pinti,pindid"
 msgid "Millilitres"
 msgstr "Milliliitrid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s mL"
 msgstr "%s ml"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "milliliiter,milliliitrit,milliliitrid,ml,mL,cm³"
 
-msgid "Microlitre"
+msgid "Microlitres"
 msgstr "Mikroliitrid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s μL"
-msgstr "%s μL"
+msgstr "%s μl"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
 msgstr "mm³,μL,uL,μl,ul"
@@ -1590,12 +1597,11 @@ msgstr "mm³,μL,uL,μl,ul"
 msgid "Tonnes"
 msgstr "Tonnid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s T"
-msgstr "%s T"
+msgstr "%s t"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "tonne,tonnes"
 msgstr "tonn,tonni,tonnid,t"
@@ -1615,12 +1621,11 @@ msgstr "kilogramm,kilogrammi,kilogrammid,kilo,kg"
 msgid "Pounds"
 msgstr "Naelad"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s lb"
 msgstr "%s lb"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb"
 msgstr "nael,naela,naelad"
@@ -1628,12 +1633,11 @@ msgstr "nael,naela,naelad"
 msgid "Ounces"
 msgstr "Untsid"
 
-#, fuzzy, c-format
+#, c-format
 msgctxt "unit-format"
 msgid "%s oz"
 msgstr "%s oz"
 
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "ounce,ounces,oz"
 msgstr "unts,untsi,untsid"
@@ -1731,7 +1735,7 @@ msgid "%s μs"
 msgstr "%s μs"
 
 msgctxt "unit-symbols"
-msgid "microsecond,microseconds,us"
+msgid "microsecond,microseconds,us,μs"
 msgstr "mikrosekund,mikrosekundid,mikrosekundit,us,μs"
 
 msgid "Celsius"
@@ -1739,8 +1743,8 @@ msgstr "Celsius"
 
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚C"
-msgstr "%s˚C"
+msgid "%s ˚C"
+msgstr "%s ˚C"
 
 msgctxt "unit-symbols"
 msgid "degC,˚C"
@@ -1751,8 +1755,8 @@ msgstr "Farenheit"
 
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚F"
-msgstr "%s˚F"
+msgid "%s ˚F"
+msgstr "%s ˚F"
 
 msgctxt "unit-symbols"
 msgid "degF,˚F"
@@ -1763,24 +1767,24 @@ msgstr "Kelvin"
 
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚K"
-msgstr "%s˚K"
+msgid "%s K"
+msgstr "%s K"
 
 msgctxt "unit-symbols"
-msgid "degK,˚K"
-msgstr " oK,˚K"
+msgid "K"
+msgstr "K"
 
 msgid "Rankine"
 msgstr "Rankine"
 
 #, c-format
 msgctxt "unit-format"
-msgid "%s˚R"
-msgstr "%s˚R"
+msgid "%s ˚R"
+msgstr "%s ˚R"
 
 msgctxt "unit-symbols"
-msgid "degR,˚R"
-msgstr " oR,˚R"
+msgid "degR,˚R,˚Ra"
+msgstr "degR,˚R,˚Ra"
 
 msgid "Angle"
 msgstr "Nurk"
@@ -1810,456 +1814,3 @@ msgstr "Valuuta"
 #, c-format
 msgid "%s%%s"
 msgstr "%%s %s"
-
-#~ msgid "United Arab Emirates dirham"
-#~ msgstr "Araabia Ühendemiraatide dirhem"
-
-#~ msgid "Trinidad and Tobago dollar"
-#~ msgstr "Trinidadi ja Tobago dollar"
-
-#~ msgid "%s%s = %s%s"
-#~ msgstr "%s%s = %s%s"
-
-#~ msgid "Liters"
-#~ msgstr "Liitrid"
-
-#~ msgid "cm³"
-#~ msgstr "cm³"
-
-#~ msgid "mm³"
-#~ msgstr "mm³"
-
-#~ msgid "Recall"
-#~ msgstr "Võta mälust"
-
-#~ msgid "← R"
-#~ msgstr "← R"
-
-#~ msgid "→ R"
-#~ msgstr "→ R"
-
-#~ msgid "Assign Variable"
-#~ msgstr "Muutujale väärtuse omistamine"
-
-#~ msgid "Insert Variable"
-#~ msgstr "Muutuja väärtuse sisestamine"
-
-#~ msgid "Angle Units"
-#~ msgstr "Nurgaühikud"
-
-#~ msgid "Area Units"
-#~ msgstr "Pindalaühikud"
-
-#~ msgid "Volume Units"
-#~ msgstr "Mahuühikud"
-
-#~ msgid "Time Units"
-#~ msgstr "Ajaühikud"
-
-#~ msgid "No variables defined"
-#~ msgstr "Muutujaid pole kirjeldatud"
-
-#~ msgid "Clear"
-#~ msgstr "Nulli"
-
-#~ msgid "Undo"
-#~ msgstr "Unusta"
-
-#~ msgid "Display Mode"
-#~ msgstr "Kuvamisrežiim"
-
-#~ msgid "Mode"
-#~ msgstr "Režiim"
-
-#~ msgid "Show Registers"
-#~ msgstr "Registrite näitamine"
-
-#~ msgid ""
-#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-#~ msgstr ""
-#~ "Kalkulaatori lähterežiim. Võimalikud väärtused on \"BASIC\" (tavaline), "
-#~ "\"FINANCIAL\" (rahandus), \"LOGICAL\" (loogika), \"SCIENTIFIC"
-#~ "\" (teaduslik) ja \"PROGRAMMING\" (programmeerimine)"
-
-#~ msgid ""
-#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-#~ "\" (gradians) and \"RAD\" (radians)."
-#~ msgstr ""
-#~ "Trigonomeetrilise tüübi lähterežiim. Võimalikud väärtused on \"DEG"
-#~ "\" (kraadid), \"GRAD\" (goonid) ja \"RAD\" (radiaanid)."
-
-#~ msgid "The initial x-coordinate for the window"
-#~ msgstr "Akna X-telje lähtekoordinaat"
-
-#~ msgid "The initial y-coordinate for the window"
-#~ msgstr "Akna Y-telje lähtekoordinaat"
-
-#~ msgid "Trigonometric type"
-#~ msgstr "Trigonomeetriline tüüp"
-
-#~ msgid "Error loading user interface"
-#~ msgstr "Viga kasutajaliidese laadimisel"
-
-#~ msgid ""
-#~ "A required file is missing or damaged. Please check your installation.\n"
-#~ "\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Vajalik fail on puudu või rikutud. Palun kontrolli programmi paigaldust.\n"
-#~ "\n"
-#~ "%s"
-
-#~ msgid "Bksp"
-#~ msgstr "Tagasi"
-
-#~ msgid "Change Sign [C]"
-#~ msgstr "Märgi muutmine [C]"
-
-#~ msgid "Change sign"
-#~ msgstr "Märgi muutmine"
-
-#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
-#~ msgstr ""
-#~ "Kuvatava väärtuse ja poolelioleva arvutuse kustutamine [Shift-Delete]"
-
-#~ msgid "Clear entry"
-#~ msgstr "Nulli väärtus"
-
-#~ msgid "Click a _value or description to edit it:"
-#~ msgstr "_Redigeerimiseks klõpsa väärtusel või kirjeldusel:"
-
-#~ msgid "Compounding term"
-#~ msgstr "Liitintress"
-
-#~ msgid "Compounding term [m]"
-#~ msgstr "Liitintress [m]"
-
-#~ msgid "Con"
-#~ msgstr "Kon"
-
-#~ msgid "Constants [#]"
-#~ msgstr "Konstandid [#]"
-
-#~ msgid "Copy selection"
-#~ msgstr "Valiku kopeerimine"
-
-#~ msgid "Edit Constants"
-#~ msgstr "Konstantide redigeerimine"
-
-#~ msgid "Edit Constants..."
-#~ msgstr "Konstantide redigeerimine..."
-
-#~ msgid "Edit Functions..."
-#~ msgstr "Funktsioonide redigeerimine..."
-
-#~ msgid "End group of calculations [)]"
-#~ msgstr "Arvutusgrupi lõpetamine [)]"
-
-#~ msgid "Enter an exponential number [E]"
-#~ msgstr "Eksponentarvu sisestamine [E]"
-
-#~ msgid "Exch"
-#~ msgstr "Vah"
-
-#~ msgid "Exchange displayed value with memory register [X]"
-#~ msgstr "Kuvatava väärtuse ümbervahetamine mäluregistri väärtusega [X]"
-
-#~ msgid "Exchange with register"
-#~ msgstr "Mäluregistri väärtuse ümbervahetamine"
-
-#~ msgid "Frac"
-#~ msgstr "Murd"
-
-#~ msgid "Fractional portion of displayed value [:]"
-#~ msgstr "Kuvatava väärtuse murdosa [:]"
-
-#~ msgid "Fun"
-#~ msgstr "Fun"
-
-#~ msgid "Insert ASCII value"
-#~ msgstr "ASCII-väärtuse sisestamine"
-
-#~ msgid "Int"
-#~ msgstr "Täis"
-
-#~ msgid "Integer portion of displayed value [i]"
-#~ msgstr "Kuvatava väärtuse täisosa [i]"
-
-#~ msgid "Left bracket"
-#~ msgstr "Vasakpoolne sulg"
-
-#~ msgid "Memory Registers"
-#~ msgstr "Mäluregistrid"
-
-#~ msgid "Mod"
-#~ msgstr "Jääk"
-
-#~ msgid "Multiply"
-#~ msgstr "Korrutamine"
-
-#~ msgid "Paste selection"
-#~ msgstr "Valiku asetamine"
-
-#~ msgid "Payment period"
-#~ msgstr "Makseperiood"
-
-#~ msgid "Payment period [t]"
-#~ msgstr "Makseperiood [t]"
-
-#~ msgid "Percentage"
-#~ msgstr "Protsent"
-
-#~ msgid "Periodic interest rate"
-#~ msgstr "Perioodiline intressimäär"
-
-#~ msgid "Periodic interest rate [T]"
-#~ msgstr "Perioodiline intressimäär [T]"
-
-#~ msgid "Periodic payment"
-#~ msgstr "Perioodiline makse"
-
-#~ msgid "Periodic payment [P]"
-#~ msgstr "Perioodiline makse [P]"
-
-#~ msgid "Programming"
-#~ msgstr "Programmeerimine"
-
-#~ msgid "Quit the calculator"
-#~ msgstr "Kalkulaatori väljalülitamine"
-
-#~ msgid "Random number in the range 0.0 to 1.0 [?]"
-#~ msgstr "Juhuslik arv vahemikus 0.0 kuni 1.0 [?]"
-
-#~ msgid "Reciprocal"
-#~ msgstr "Pöördväärtus"
-
-#~ msgid "Reciprocal [r]"
-#~ msgstr "Pöördväärtus [r]"
-
-#~ msgid "Redo"
-#~ msgstr "Unustatud tegevuse taastamine"
-
-#~ msgid "Remove rightmost character from displayed value [Backspace]"
-#~ msgstr "Kuvatavalt väärtuselt parempoolse sümboli eemaldamine [Backspace]"
-
-#~ msgid "Retrieve from register"
-#~ msgstr "Väärtuse võtmine mäluregistrist"
-
-#~ msgid "Retrieve memory register to display [R]"
-#~ msgstr "Kuvatava väärtuse võtmine mäluregistrist [R]"
-
-#~ msgid "Right bracket"
-#~ msgstr "Parempoolne sulg"
-
-#~ msgid "Set Precision"
-#~ msgstr "Täpsuse seadmine"
-
-#~ msgid "Set display type to engineering format"
-#~ msgstr "Kuva seadmine inseneriarvutuste vormingusse"
-
-#~ msgid "Set display type to fixed-point format"
-#~ msgstr "Kuva seadmine kinnispunktvormingusse"
-
-#~ msgid "Set display type to scientific format"
-#~ msgstr "Kuva seadmine teaduslike arvutuste vormingusse"
-
-#~ msgid "Show T_housands Separator"
-#~ msgstr "Näita tu_handike eraldajat"
-
-#~ msgid "Show _Trailing Zeroes"
-#~ msgstr "Näita lõpusolevaid _nulle"
-
-#~ msgid "Show help contents"
-#~ msgstr "Abiteabe näitamine"
-
-#~ msgid "Show memory registers"
-#~ msgstr "Mäluregistrite näitamine"
-
-#~ msgid "Show the About Gcalctool dialog"
-#~ msgstr "Gcalctool'i lähema teabe dialoogi kuvamine"
-
-#~ msgid "Significant _places:"
-#~ msgstr "_Tüvekohti:"
-
-#~ msgid "Square"
-#~ msgstr "Astendamine - ruut"
-
-#~ msgid "Store displayed value in memory register [S]"
-#~ msgstr "Kuvatava väärtuse salvestamine mäluregistrisse [S]"
-
-#~ msgid "Store to register"
-#~ msgstr "Registrisse salvestamine"
-
-#~ msgid "Straight-line depreciation"
-#~ msgstr "Lineaarne amortisatsioon"
-
-#~ msgid "Straight-line depreciation [l]"
-#~ msgstr "Lineaarne amortisatsioon [l]"
-
-#~ msgid "Subtract"
-#~ msgstr "Lahutamine"
-
-#~ msgid "Truncate displayed value to the chosen word size ([)"
-#~ msgstr "Kuvatava väärtuse kärpimine valitud sõna suuruse järgi ([)"
-
-#~ msgid "User-defined functions [F]"
-#~ msgstr "Kasutaja poolt kirjeldatud funktsioonid [F]"
-
-#~ msgid "XNOR"
-#~ msgstr "XNOR"
-
-#~ msgid "XOR"
-#~ msgstr "XOR"
-
-#~ msgid "_Dec"
-#~ msgstr "_10"
-
-#~ msgid "_Edit"
-#~ msgstr "_Redaktor"
-
-#~ msgid "_Insert ASCII value..."
-#~ msgstr "_Sisesta ASCII-väärtus..."
-
-#~ msgid "_Inv"
-#~ msgstr "_Inv"
-
-#~ msgid "_Memory Registers"
-#~ msgstr "_Mäluregistrid"
-
-#~ msgid "_Redo"
-#~ msgstr "_Taasta"
-
-#~ msgid "_Sci"
-#~ msgstr "_Tead"
-
-#~ msgid "_Set"
-#~ msgstr "_Säti"
-
-#~ msgid "_Undo"
-#~ msgstr "_Unusta"
-
-#~ msgid "%s: accuracy should be in the range 0-%d\n"
-#~ msgstr "%s: täpsus peab olema vahemikus 0-%d\n"
-
-#~ msgid "Malformed function"
-#~ msgstr "Vigane funktsioon"
-
-#~ msgid "No sane value to convert"
-#~ msgstr "Teisendamiseks pole mõistlikku väärtust"
-
-#~ msgid "Invalid number for the current base"
-#~ msgstr "Vigane number selle süsteemi jaoks"
-
-#~ msgid "Invalid modulus operation"
-#~ msgstr "Vigane jäägiga jagamise tehe"
-
-#~ msgid "_Other (%d) ..."
-#~ msgstr "_Muud (%d) ..."
-
-#~ msgid "Set accuracy from 0 to %d numeric place. [A]"
-#~ msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-#~ msgstr[0] "Täpsuse seadmine 0-st kuni %d. komakohani. [A]"
-#~ msgstr[1] "Täpsuse seadmine 0-st kuni %d. komakohani. [A]"
-
-#~ msgid "Raise displayed value to the power of y [o]"
-#~ msgstr "Kuvatava väärtuse suurendamine y astme võrra [o]"
-
-#~ msgid "Raise displayed value to the power of reciprocal y [O]"
-#~ msgstr "Tõstab kuvatava arvu y pöördväärtuse astmesse [O]"
-
-#~ msgid "Reset to _Default (%d)"
-#~ msgstr "Määra _vaikimisi (%d)"
-
-#~ msgid "Negative X and non-integer Y not supported"
-#~ msgstr "Negatiivne X ja mittetäisarvuline Y pole toetatud"
-
-#~ msgid "Tangent is infinite"
-#~ msgstr "Tangens on lõpmata suur"
-
-#~ msgid "Kilometer-to-mile conversion factor"
-#~ msgstr "Kilomeeterist miiliks teisendamise tegur"
-
-#~ msgid "square root of 2"
-#~ msgstr "ruutjuur kahest"
-
-#~ msgid "Centimeter-to-inch conversion factor"
-#~ msgstr "Sentimeetrist tolliks teisendamise tegur"
-
-#~ msgid "degrees in a radian"
-#~ msgstr "kraadid radiaanides"
-
-#~ msgid "Gram-to-ounce conversion factor"
-#~ msgstr "Grammist untsiks teisendamise tegur"
-
-#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
-#~ msgstr "Kilodžaulist Briti soojusühikuks teisendamise tegur"
-
-#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-#~ msgstr "Kuupsentimeetrist kuuptolliks teisendamise tegur"
-
-#~ msgid "Error in math library function %s"
-#~ msgstr "Viga matemaatikateegi funktsioonis %s"
-
-#~ msgid "Too long number"
-#~ msgstr "Liiga pikk arv"
-
-#~ msgid "%s: %s as next argument.\n"
-#~ msgstr "%s: %s järgmise argumendina.\n"
-
-#~ msgid "%s: base should be 2, 8, 10 or 16\n"
-#~ msgstr "%s: numbrisüsteemi põhi peab olema 2, 8, 10 või 16\n"
-
-#~ msgid "%s: invalid display mode [%s]\n"
-#~ msgstr "%s: vigane kuvarežiim [%s]\n"
-
-#~ msgid "%s: invalid mode [%s]\n"
-#~ msgstr "%s: vigane režiim [%s]\n"
-
-#~ msgid "%s: invalid trigonometric mode [%s]\n"
-#~ msgstr "%s: vigane trigonomeetriline režiim [%s]\n"
-
-#~ msgid "Currently set to %d place."
-#~ msgid_plural "Currently set to %d places."
-#~ msgstr[0] "Hetkel on määratud %d koht."
-#~ msgstr[1] "Hetkel on määratud %d kohta."
-
-#~ msgid "Changing Modes Clears Calculation"
-#~ msgstr "Režiimimuutus nullib arvutused"
-
-#~ msgid "_Do not warn me again"
-#~ msgstr "_Hoiatust rohkem mitte kuvada"
-
-#~ msgid "C_hange Mode"
-#~ msgstr "_Muuda režiimi"
-
-#~ msgid "10 to the x"
-#~ msgstr "10 astmele x"
-
-#~ msgid "16 bit unsigned integer"
-#~ msgstr "16-bitine märgita täisarv"
-
-#~ msgid "E to the x"
-#~ msgstr "E astmel x"
-
-#~ msgid "Ten to the x"
-#~ msgstr "Kümme astmel x"
-
-#~ msgid "User-defined functions"
-#~ msgstr "Kasutaja poolt kirjeldatud funktsioonid"
-
-#~ msgid "Bit editor activated. Click on bit values to toggle them."
-#~ msgstr ""
-#~ "Bitiredaktor on aktiveeritud. Biti väärtuse muutmiseks klõpsa bitil."
-
-#~ msgid "Show Bit Editor"
-#~ msgstr "Bitiredaktori näitamine"
-
-#~ msgid "Show Bit _Editor"
-#~ msgstr "Näita _bitiredaktorit"
-
-#~ msgid "Show bit editor"
-#~ msgstr "Bitiredaktori näitamine"
-
-#~ msgid "© 1986–2011 The Gcalctool authors"
-#~ msgstr "© 1986—2011 Gcalctool'i autorid"
