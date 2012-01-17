@@ -19,18 +19,20 @@ dnl ###########################################################################
 dnl Dependencies
 dnl ###########################################################################
 
+GLIB_REQUIRED=2.31
 GIO_REQUIRED=2.25.10
-GTK_REQUIRED=2.90.7
+GTK_REQUIRED=3.0
 
 PKG_CHECK_MODULES(GCALCTOOL, [
     gtk+-3.0 >= $GTK_REQUIRED
+    glib-2.0 >= $GLIB_REQUIRED
     gio-2.0 >= $GIO_REQUIRED
     libxml-2.0
     gmodule-export-2.0
 ])
 
 PKG_CHECK_MODULES(GCALCCMD, [
-    glib-2.0
+    glib-2.0 >= $GLIB_REQUIRED
     gio-2.0 >= $GIO_REQUIRED
     libxml-2.0
 ])

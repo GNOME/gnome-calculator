@@ -131,7 +131,7 @@ make_variable_entry(MathVariablePopup *popup, const gchar *name, const MPNumber 
     GtkWidget *hbox, *button, *label;
     gchar *text;
 
-    hbox = gtk_hbox_new(FALSE, 6);
+    hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
 
     if (value)
     {
@@ -211,7 +211,7 @@ math_variable_popup_set_property(GObject      *object,
         }
         g_strfreev(names);
 
-        entry = gtk_hbox_new(FALSE, 6);
+        entry = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
         gtk_widget_show(entry);
 
         // TODO: Show greyed "variable name" text to give user a hint how to use
@@ -301,7 +301,8 @@ math_variable_popup_init(MathVariablePopup *popup)
     /* Destroy this window when it loses focus */
     g_signal_connect(G_OBJECT(popup), "focus-out-event", G_CALLBACK(variable_focus_out_event_cb), popup);
 
-    popup->priv->vbox = gtk_vbox_new(TRUE, 6);
+    popup->priv->vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
+    gtk_box_set_homogeneous(GTK_BOX(popup->priv->vbox), TRUE);
     gtk_container_add(GTK_CONTAINER(popup), popup->priv->vbox);
     gtk_widget_show(popup->priv->vbox);
 }

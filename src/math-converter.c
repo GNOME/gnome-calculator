@@ -391,7 +391,7 @@ math_converter_init(MathConverter *converter)
 
     gtk_box_set_spacing(GTK_BOX(converter), 6);
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    hbox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
     gtk_widget_show(hbox);
     gtk_box_pack_start(GTK_BOX(converter), hbox, FALSE, TRUE, 0);
 

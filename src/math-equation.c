@@ -1300,9 +1300,6 @@ math_equation_look_for_answer(gpointer data)
 void
 math_equation_solve(MathEquation *equation)
 {
-    GError *error = NULL;
-    gulong stacksize = 0;
-
     g_return_if_fail(equation != NULL);
 
     // FIXME: should replace calculation or give error message
@@ -1323,18 +1320,7 @@ math_equation_solve(MathEquation *equation)
 
     math_equation_set_number_mode(equation, NORMAL);
 
-    // Fix for https://bugzilla.gnome.org/show_bug.cgi?id=650174
-    // FIXME: This is a real hack, should be avoidable when parser is rewritten and doesn't require a crazy large stack
-    if (GLIB_SIZEOF_LONG == 8) {
-           stacksize = 0x400000;
-    } else {
-           stacksize = 0x200000;
-    }
-
-    g_thread_create_full(math_equation_solve_real, equation, stacksize, false, false, G_THREAD_PRIORITY_NORMAL, &error);
-
-    if (error)
-        g_warning("Error spawning thread for calculations: %s\n", error->message);
+    g_thread_new("", math_equation_solve_real, equation);
 
     g_timeout_add(50, math_equation_look_for_answer, equation);
     g_timeout_add(100, math_equation_show_in_progress, equation);
@@ -1381,7 +1367,6 @@ void
 math_equation_factorize(MathEquation *equation)
 {
     MPNumber x;
-    GError *error = NULL;
 
     g_return_if_fail(equation != NULL);
 
@@ -1397,10 +1382,7 @@ math_equation_factorize(MathEquation *equation)
 
     equation->priv->in_solve = true;
 
-    g_thread_create(math_equation_factorize_real, equation, false, &error);
-
-    if (error)
-        g_warning("Error spawning thread for calculations: %s\n", error->message);
+    g_thread_new("", math_equation_factorize_real, equation);
 
     g_timeout_add(50, math_equation_look_for_answer, equation);
     g_timeout_add(100, math_equation_show_in_progress, equation);

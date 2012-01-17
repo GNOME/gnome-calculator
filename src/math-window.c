@@ -430,7 +430,7 @@ create_gui(MathWindow *window)
     GtkWidget *main_vbox, *vbox;
     GtkWidget *scrolled_window;
   
-    main_vbox = gtk_vbox_new(FALSE, 0);
+    main_vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_container_add(GTK_CONTAINER(window), main_vbox);
     gtk_widget_show(main_vbox);
 
@@ -440,7 +440,7 @@ create_gui(MathWindow *window)
   
     create_menu(window);
 
-    vbox = gtk_vbox_new(FALSE, 6);
+    vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 6);
     gtk_container_set_border_width(GTK_CONTAINER(vbox), 6);
     gtk_box_pack_start(GTK_BOX(main_vbox), vbox, TRUE, TRUE, 0);  
     gtk_widget_show(vbox);
