@@ -6,6 +6,7 @@ test -z "$srcdir" && srcdir=.
 
 PKG_NAME="gcalctool"
 REQUIRED_AUTOMAKE_VERSION=1.7
+REQUIRED_YELP_TOOLS_VERSION=3.1.1
 
 (test -f $srcdir/configure.ac \
   && test -d $srcdir/src) || {

@@ -163,7 +163,7 @@ help_cb(GtkWidget *widget, MathWindow *window)
     GError *error = NULL;
 
     screen = gtk_widget_get_screen(GTK_WIDGET(window));
-    gtk_show_uri(screen, "ghelp:gcalctool", gtk_get_current_event_time(), &error);
+    gtk_show_uri(screen, "help:gcalctool", gtk_get_current_event_time(), &error);
 
     if (error != NULL)
     {

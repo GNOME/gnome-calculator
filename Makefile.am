@@ -9,7 +9,6 @@ DISTCLEANFILES = \
 	config.h.in \
 	configure \
 	depcomp \
-	gnome-doc-utils.make \
 	install-sh \
 	missing \
 	mkinstalldirs \
