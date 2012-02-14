@@ -38,8 +38,6 @@ struct MathButtonsPrivate
 
     GtkBuilder *basic_ui, *advanced_ui, *financial_ui, *programming_ui;
 
-    GdkColor color_numbers, color_action, color_operator, color_function, color_memory, color_group;
-
     GtkWidget *bas_panel, *adv_panel, *fin_panel, *prog_panel;
     GtkWidget *active_panel;
 
@@ -298,31 +296,6 @@ math_buttons_new(MathEquation *equation)
     return g_object_new(math_buttons_get_type(), "equation", equation, NULL);
 }
 
-
-static void
-set_tint(GtkWidget *widget, GdkColor *tint, gint alpha)
-{
-    GtkStyle *style;
-    int j;
-  
-    if (!widget)
-      return;
-
-    gtk_widget_ensure_style(widget);
-    style = gtk_widget_get_style(widget);
-  
-    for (j = 0; j < 5; j++) {
-        GdkColor color;
-
-        color.red = (style->bg[j].red * (10 - alpha) + tint->red * alpha) / 10;
-        color.green = (style->bg[j].green * (10 - alpha) + tint->green * alpha) / 10;
-        color.blue = (style->bg[j].blue * (10 - alpha) + tint->blue * alpha) / 10;
-
-        gtk_widget_modify_bg(widget, j, &color);
-    }
-}
-
-
 static void
 set_data(GtkBuilder *ui, const gchar *object_name, const gchar *name, const char *value)
 {
@@ -559,30 +532,6 @@ load_mode(MathButtons *buttons, ButtonMode mode)
             gtk_widget_set_tooltip_text(button, _(button_data[i].tooltip));
       
         atk_object_set_name(gtk_widget_get_accessible(button), button_data[i].widget_name);
-
-        switch (button_data[i].class) {
-        case NUMBER:
-            set_tint(button, &buttons->priv->color_numbers, 1);          
-            break;
-        case NUMBER_BOLD:
-            set_tint(button, &buttons->priv->color_numbers, 2);
-            break;
-        case OPERATOR:
-            set_tint(button, &buttons->priv->color_operator, 1);          
-            break;
-        case FUNCTION:
-            set_tint(button, &buttons->priv->color_function, 1);          
-            break;
-        case MEMORY:
-            set_tint(button, &buttons->priv->color_memory, 1);
-            break;
-        case GROUP:
-            set_tint(button, &buttons->priv->color_group, 1);
-            break;
-        case ACTION:
-            set_tint(button, &buttons->priv->color_action, 2);
-            break;
-        }
     }
 
     /* Set special button data */
@@ -596,7 +545,6 @@ load_mode(MathButtons *buttons, ButtonMode mode)
             gint len;
 
             g_object_set_data(G_OBJECT(button), "calc_digit", GINT_TO_POINTER(i));
-            set_tint(button, &buttons->priv->color_numbers, 1);
             len = g_unichar_to_utf8(math_equation_get_digit_text(buttons->priv->equation, i), buffer);
             buffer[len] = '\0';
             gtk_button_set_label(GTK_BUTTON(button), buffer);
@@ -916,7 +864,6 @@ memory_cb(GtkWidget *widget, MathButtons *buttons)
     gint x, y;
 
     popup = math_variable_popup_new(buttons->priv->equation);
-    set_tint(GTK_WIDGET(popup), &buttons->priv->color_memory, 1);
     gtk_window_set_transient_for(GTK_WINDOW(popup), GTK_WINDOW(gtk_widget_get_toplevel(widget)));
 
     gtk_widget_get_allocation(widget, &allocation); 
@@ -937,7 +884,6 @@ shift_left_cb(GtkWidget *widget, MathButtons *buttons)
 
         menu = buttons->priv->shift_left_menu = gtk_menu_new();
         gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-        set_tint(menu, &buttons->priv->color_action, 1);
 
         for (i = 1; i < 16; i++) {
             GtkWidget *item, *label;
@@ -981,7 +927,6 @@ shift_right_cb(GtkWidget *widget, MathButtons *buttons)
 
         menu = buttons->priv->shift_right_menu = gtk_menu_new();
         gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-        set_tint(menu, &buttons->priv->color_action, 1);
 
         for (i = 1; i < 16; i++) {
             GtkWidget *item, *label;
@@ -1051,7 +996,6 @@ function_cb(GtkWidget *widget, MathButtons *buttons)
 
         menu = buttons->priv->function_menu = gtk_menu_new();
         gtk_menu_set_reserve_toggle_size(GTK_MENU(menu), FALSE);
-        set_tint(menu, &buttons->priv->color_function, 1);
 
         for (i = 0; functions[i].name != NULL; i++) {
             GtkWidget *item;
@@ -1413,11 +1357,5 @@ math_buttons_init(MathButtons *buttons)
     buttons->priv = G_TYPE_INSTANCE_GET_PRIVATE(buttons, math_buttons_get_type(), MathButtonsPrivate);
     gtk_box_set_spacing(GTK_BOX(buttons), 6);
     buttons->priv->programming_base = 10;
-    gdk_color_parse("#0000FF", &buttons->priv->color_numbers);
-    gdk_color_parse("#00FF00", &buttons->priv->color_action);
-    gdk_color_parse("#FF0000", &buttons->priv->color_operator);
-    gdk_color_parse("#00FFFF", &buttons->priv->color_function);
-    gdk_color_parse("#FF00FF", &buttons->priv->color_memory);
-    gdk_color_parse("#FFFFFF", &buttons->priv->color_group);
     g_signal_connect(G_OBJECT(buttons), "show", G_CALLBACK(load_buttons), NULL);
 }
