@@ -132,6 +132,7 @@ function_is_defined(MPEquationParserState *state, const char *name)
         strcmp(lower_name, "re") == 0 ||
         strcmp(lower_name, "im") == 0 ||
         strcmp(lower_name, "sin") == 0 || strcmp(lower_name, "cos") == 0 || strcmp(lower_name, "tan") == 0 ||
+        strcmp(lower_name, "asin") == 0 || strcmp(lower_name, "acos") == 0 || strcmp(lower_name, "atan") == 0 ||
         strcmp(lower_name, "sin⁻¹") == 0 || strcmp(lower_name, "cos⁻¹") == 0 || strcmp(lower_name, "tan⁻¹") == 0 ||
         strcmp(lower_name, "sinh") == 0 || strcmp(lower_name, "cosh") == 0 || strcmp(lower_name, "tanh") == 0 ||
         strcmp(lower_name, "sinh⁻¹") == 0 || strcmp(lower_name, "cosh⁻¹") == 0 || strcmp(lower_name, "tanh⁻¹") == 0 ||

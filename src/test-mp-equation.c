@@ -509,11 +509,15 @@ test_equations()
     test("cos⁻¹ 1", "0", 0);
     test("cos⁻¹ (−1)", "180", 0);
     test("cos⁻¹ (1÷√2)", "45", 0);
+    test("acos 0", "90", 0);
+    test("acos 1", "0", 0);
 
     test("sin⁻¹ 0", "0", 0);
     test("sin⁻¹ 1", "90", 0);
     test("sin⁻¹ (−1)", "−90", 0);
     test("sin⁻¹ (1÷√2)", "45", 0);
+    test("asin 0", "0", 0);
+    test("asin 1", "90", 0);
 
     test("cosh 0", "1", 0);
     test("cosh 10 − (e^10 + e^−10)÷2", "0", 0);
