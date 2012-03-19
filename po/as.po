@@ -5,34 +5,109 @@
 # Amitakhya Phukan <aphukan@redhat.com>, 2008.
 # Amitakhya Phukan <amitakhya@svn.gnome.org>, 2008.
 # Amitakhya Phukan <aphukan@fedoraproject.org>, 2009.
+# Nilamdyuti Goswami <ngoswami@redhat.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: as\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalctool&component=general\n"
-"POT-Creation-Date: 2009-08-16 06:22+0000\n"
-"PO-Revision-Date: 2009-09-19 16:44+0530\n"
-"Last-Translator: \n"
-"Language-Team: Assamese <>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
+"cgi?product=gcalctool&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-11-30 22:17+0000\n"
+"PO-Revision-Date: 2012-03-19 17:50+0530\n"
+"Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
+"Language-Team: as_IN <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1)\n"
-"X-Generator: Lokalize 0.2\n"
+"X-Generator: Lokalize 1.0\n"
+
+#. The label on the memory button
+#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
+#| msgid "<i>x</i>!"
+msgid "<i>x</i>"
+msgstr "<i>x</i>"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:4 ../data/buttons-basic.ui.h:2
+#: ../data/buttons-financial.ui.h:4 ../data/buttons-programming.ui.h:2
+msgid "="
+msgstr "="
+
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:6 ../data/buttons-programming.ui.h:4
+#| msgid "Absolute value"
+msgid "Absolute Value"
+msgstr "সম্পূৰ্ণ মান"
+
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:8 ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:38 ../data/buttons-programming.ui.h:8
+msgid "Exponent"
+msgstr "সূচক"
+
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:10 ../data/buttons-programming.ui.h:10
+msgid "Factorial"
+msgstr "গৌণিক"
+
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:12 ../data/buttons-programming.ui.h:12
+#| msgid "Factorial"
+msgid "Factorize"
+msgstr "গৌণিকৰণ"
+
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:14 ../data/buttons-programming.ui.h:18
+#| msgid "Inverse Sine [K]"
+msgid "Inverse"
+msgstr "উলোটা"
+
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:50
+#: ../src/math-buttons.c:224
+msgid "Memory"
+msgstr "মেমৰি"
+
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:18
+#| msgid "Scientific"
+msgid "Scientific Exponent"
+msgstr "বৈজ্ঞানিক সূচক"
+
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:24
+#| msgid "Sto"
+msgid "Store"
+msgstr "সংৰক্ষণ কৰক"
+
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:26
+#| msgid "Description"
+msgid "Subscript"
+msgstr "চাবস্ক্ৰিপ্ট"
+
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:28
+#| msgid "Description"
+msgid "Superscript"
+msgstr "চুপাৰস্ক্ৰিপ্ট"
 
 #
 #. Payment Period Dialog: Button to calculate result
-#: ../data/financial.ui.h:2
+#: ../data/buttons-financial.ui.h:6
 msgid "C_alculate"
 msgstr "ক্যালকুলেটৰ"
 
 #
 #. Gross Profit Margin Dialog: Label before cost input
-#: ../data/financial.ui.h:4
+#: ../data/buttons-financial.ui.h:8
 msgid "C_ost:"
 msgstr "Cos"
 
 #. Periodic Payment Dialog: Description of calculation
-#: ../data/financial.ui.h:6
+#: ../data/buttons-financial.ui.h:10
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -40,38 +115,51 @@ msgstr ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:8
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:12
+#| msgid ""
+#| "Calculates the depreciation allowance on an asset for a specified period "
+#| "of time, using the Sum-Of-The-Years'-Digits method. This method of "
+#| "depreciation accelerates the rate of depreciation, so that more "
+#| "depreciation expense occurs in earlier periods than in later ones. The "
+#| "useful life is the number of periods, typically years, over which an "
+#| "asset is depreciated. "
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
-"occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated. "
+"এটা সম্পদৰ স্খলিত অনুমোদন Sum-of-the-Years'-Digits পদ্ধতি ব্যৱহাৰ কৰি, এটা "
+"ধাৰ্য্যত "
+"সময়ৰ বাবে গণনা কৰে। স্খলন এই পদ্ধতিয়ে স্খলনৰ হাৰ বৃদ্ধি কৰে, যাতে অধিক স্খলন ব্যয় "
+"পিছৰ "
+"সময়ৰ বাদে আগৰ সময়ত ঘটিত হয়। উপযোগী জীৱন হল ম্যাদৰ সংখ্যা, সাধাৰণত বছৰ, যত এটা "
+"সম্পদ স্খলিত হয়। "
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:10
+#: ../data/buttons-financial.ui.h:14
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
 msgstr ""
+"এটা সম্পদত এটা ধাৰ্য্যত সময়ৰ বাবে স্খলিত অনুমোদন গণনা কৰে, দুবাৰ-নাকচ অৱশিষ্ট "
+"পদ্ধতি ব্যৱহাৰ কৰি।"
 
 #. Future Value Dialog: Description of calculation
-#: ../data/financial.ui.h:12
+#: ../data/buttons-financial.ui.h:16
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
 "the term."
 msgstr ""
+"এটা বিনিয়োগৰ ভৱিষ্যত মান ম্যাদৰ পৰিশোধ ম্যাদসমূহৰ সংখ্যাৰ উপৰত এটা ম্যাদী সুদত "
+"সমান পৰিশোধৰ "
+"এটা ক্ৰমৰ উপৰত ভিত্তি কৰি গণনা কৰে।"
 
 #. Compounding Term Dialog: Description of calculation
-#: ../data/financial.ui.h:14
+#: ../data/buttons-financial.ui.h:18
 msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
@@ -79,7 +167,7 @@ msgid ""
 msgstr ""
 
 #. Payment Period Dialog: Description of calculation
-#: ../data/financial.ui.h:16
+#: ../data/buttons-financial.ui.h:20
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -87,14 +175,14 @@ msgid ""
 msgstr ""
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: ../data/financial.ui.h:18
+#: ../data/buttons-financial.ui.h:22
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
 msgstr ""
 
 #. Present Value Dialog: Description of calculation
-#: ../data/financial.ui.h:20
+#: ../data/buttons-financial.ui.h:24
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -102,14 +190,14 @@ msgid ""
 msgstr ""
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: ../data/financial.ui.h:22
+#: ../data/buttons-financial.ui.h:26
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
 msgstr ""
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:24
+#: ../data/buttons-financial.ui.h:28
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -119,1527 +207,297 @@ msgstr ""
 
 #
 #. Title of Compounding Term dialog
-#: ../data/financial.ui.h:26
+#. Tooltip for the compounding term button
+#: ../data/buttons-financial.ui.h:30 ../src/math-buttons.c:248
 msgid "Compounding Term"
 msgstr "Compounding term"
 
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/buttons-financial.ui.h:32
+msgid "Ctrm"
+msgstr "Ctrm"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:34
+msgid "Ddb"
+msgstr "Ddb"
+
 #
 #. Title of Double-Declining Depreciation dialog
-#: ../data/financial.ui.h:28
+#: ../data/buttons-financial.ui.h:36
 msgid "Double-Declining Depreciation"
 msgstr "ডাবল"
 
 #
 #. Title of Future Value dialog
-#: ../data/financial.ui.h:30
+#. Tooltip for the future value button
+#: ../data/buttons-financial.ui.h:40 ../src/math-buttons.c:254
 msgid "Future Value"
 msgstr "মান"
 
 #
 #. Payment Period Dialog: Label before future value input
-#: ../data/financial.ui.h:32
+#: ../data/buttons-financial.ui.h:42
 msgid "Future _Value:"
 msgstr "মান"
 
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/buttons-financial.ui.h:44
+msgid "Fv"
+msgstr "Fv"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/buttons-financial.ui.h:46
+msgid "Gpm"
+msgstr "Gpm"
+
 #. Title of Gross Profit Margin dialog
-#: ../data/financial.ui.h:34 ../data/gcalctool.ui.h:209
-#, 
+#. Tooltip for the gross profit margin button
+#: ../data/buttons-financial.ui.h:48 ../src/math-buttons.c:275
 msgid "Gross Profit Margin"
 msgstr "মোট মুনাফার প্রান্ত"
 
 #
 #. Title of Payment Period dialog
-#: ../data/financial.ui.h:36
+#: ../data/buttons-financial.ui.h:52
 msgid "Payment Period"
 msgstr "Payment period"
 
 #
 #. Title of Periodic Interest Rate dialog
-#: ../data/financial.ui.h:38
+#. Tooltip for the periodic interest rate button
+#: ../data/buttons-financial.ui.h:54 ../src/math-buttons.c:266
 msgid "Periodic Interest Rate"
 msgstr "Periodic interest rate"
 
 #
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/financial.ui.h:40
+#: ../data/buttons-financial.ui.h:56
 msgid "Periodic Interest _Rate:"
 msgstr "Periodic interest rate"
 
 #
 #. Title of Periodic Payment dialog
-#: ../data/financial.ui.h:42
+#. Tooltip for the periodic payment button
+#: ../data/buttons-financial.ui.h:58 ../src/math-buttons.c:272
 msgid "Periodic Payment"
 msgstr "Periodic payment"
 
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/buttons-financial.ui.h:60
+msgid "Pmt"
+msgstr "Pmt"
+
 #
 #. Title of Present Value dialog
-#: ../data/financial.ui.h:44
+#. Tooltip for the present value button
+#: ../data/buttons-financial.ui.h:62 ../src/math-buttons.c:269
 msgid "Present Value"
 msgstr "মান"
 
 #
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/financial.ui.h:46
+#: ../data/buttons-financial.ui.h:64
 msgid "Present _Value:"
 msgstr "মান"
 
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/buttons-financial.ui.h:66
+msgid "Pv"
+msgstr "Pv"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/buttons-financial.ui.h:68
+msgid "Rate"
+msgstr "হাৰ"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:70
+msgid "Sln"
+msgstr "Sln"
+
 #
 #. Title of Straight-Line Depreciation dialog
-#: ../data/financial.ui.h:48
+#: ../data/buttons-financial.ui.h:72
 msgid "Straight-Line Depreciation"
 msgstr "Straight-line depreciation"
 
 #
-#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
-#: ../data/financial.ui.h:50
-msgid "Sum-Of-The-Years'-Digits Depreciation"
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
+#: ../data/buttons-financial.ui.h:74
+#, fuzzy
+#| msgid "Sum-Of-The-Years'-Digits Depreciation"
+msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "সৰ্বমোট বত্সৰ"
 
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:76
+msgid "Syd"
+msgstr "Syd"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/buttons-financial.ui.h:78
+msgid "Term"
+msgstr "মান"
+
 #
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/financial.ui.h:52
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:80
 msgid "_Cost:"
 msgstr "Cos"
 
 #
 #. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/financial.ui.h:54
+#: ../data/buttons-financial.ui.h:82
 msgid "_Future Value:"
 msgstr "মান"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/financial.ui.h:56
-#, 
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:84
 msgid "_Life:"
 msgstr "জীবনকাল: (_L)"
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: ../data/financial.ui.h:58
-#, 
+#: ../data/buttons-financial.ui.h:86
 msgid "_Margin:"
 msgstr "প্রান্ত: (_M)"
 
 #. Present Value Dialog: Label before number of periods input
-#: ../data/financial.ui.h:60
-#, 
-msgid "_Number Of Periods:"
+#: ../data/buttons-financial.ui.h:88
+#, fuzzy
+#| msgid "_Number Of Periods:"
+msgid "_Number of Periods:"
 msgstr "কালের সংখ্যা: (_N)"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/financial.ui.h:62
-#, 
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:90
 msgid "_Period:"
 msgstr "কাল: (_P)"
 
 #
 #. Payment Period Dialog: Label before periodic payment input
-#: ../data/financial.ui.h:64
+#: ../data/buttons-financial.ui.h:92
 msgid "_Periodic Payment:"
 msgstr "Periodic payment"
 
 #
 #. Periodic Payment Dialog: Label before principal input
-#: ../data/financial.ui.h:66
+#: ../data/buttons-financial.ui.h:94
 msgid "_Principal:"
 msgstr "অৰ্থনৈতিক মোড (_F)"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/financial.ui.h:68
-#, 
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:96
 msgid "_Salvage:"
 msgstr "পুনরুদ্ধার মূল্য: (_S)"
 
 #
 #. Periodic Interest Rate Dialog: Label before term input
-#: ../data/financial.ui.h:70
+#: ../data/buttons-financial.ui.h:98
 msgid "_Term:"
 msgstr "মান"
 
-#. The percentage button
-#: ../data/gcalctool.ui.h:3
-#, no-c-format
-msgid "%"
-msgstr "%"
-
-#. Subtraction button
-#: ../data/gcalctool.ui.h:5
-#, 
-msgid "&#x2212;"
-msgstr "১০x১৫"
-
-#. Square root button
-#: ../data/gcalctool.ui.h:7
-#, 
-msgid "&#x221A;"
-msgstr "&#x221A;"
-
-#. Change sign button
-#: ../data/gcalctool.ui.h:9
-#, 
-msgid "&#xB1;"
-msgstr "&#xB1;"
-
-#. Multiplication button
-#: ../data/gcalctool.ui.h:11
-#, 
-msgid "&#xD7;"
-msgstr "&#xD7;"
-
-#. Division button
-#: ../data/gcalctool.ui.h:13
-#, 
-msgid "&#xF7;"
-msgstr "&#xF7;"
-
-#. Start calculation group button
-#: ../data/gcalctool.ui.h:15
-msgid "("
-msgstr "("
-
-#: ../data/gcalctool.ui.h:16
-#, 
-#| msgid "Ln"
-msgid "(Ln)"
-msgstr "(Ln)"
-
-#: ../data/gcalctool.ui.h:17
-#, 
-#| msgid "Set accuracy from 0 to %d numeric place. [A]"
-#| msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-msgid "(Set accuracy from 0 to N numeric places [A])"
-msgstr "(নির্ভুলতার মাত্রা 0 থেকে N সংখ্যার স্থানে নির্ধারণ করুন। [A])"
-
-#: ../data/gcalctool.ui.h:18
-#, 
-msgid "(X^Y)"
-msgstr "(X^Y)"
-
-#: ../data/gcalctool.ui.h:19
-#, 
-msgid "(cos)"
-msgstr "(cos)"
-
-#: ../data/gcalctool.ui.h:20
-#, 
-msgid "(log)"
-msgstr "(log)"
-
-#: ../data/gcalctool.ui.h:21
-#, 
-msgid "(log2)"
-msgstr "(log2)"
-
-#: ../data/gcalctool.ui.h:22
-#, 
-msgid "(sin)"
-msgstr "(sin)"
-
-#: ../data/gcalctool.ui.h:23
-#, 
-msgid "(tan)"
-msgstr "(tan)"
-
-#. Right bracket
-#: ../data/gcalctool.ui.h:25
-msgid ")"
-msgstr ")"
-
-#. Addition button
-#: ../data/gcalctool.ui.h:27
-msgid "+"
-msgstr "+"
-
-#. Numeric 0 button
-#: ../data/gcalctool.ui.h:29
-msgid "0"
-msgstr "0"
-
-#. Numeric 1 button
-#: ../data/gcalctool.ui.h:31
-msgid "1"
-msgstr "১"
-
-#. 1's complement
-#: ../data/gcalctool.ui.h:33
-msgid "1's"
-msgstr ""
-
-#: ../data/gcalctool.ui.h:34
-#, 
-msgid "1's complement [z]"
-msgstr "1's complement [z]"
-
-#. Reciprocal button
-#: ../data/gcalctool.ui.h:36
-msgid "1/<i>x</i>"
-msgstr "১/<i>x</i>"
-
-#: ../data/gcalctool.ui.h:37
-msgid "1/x"
-msgstr "1/x"
-
-#. Right Shift Popup: Menu item to shift right by 10 bits
-#: ../data/gcalctool.ui.h:39
-msgid "10 places"
-msgstr "১০ ঘৰ"
-
-#. Right Shift Popup: Menu item to shift right by 11 bits
-#: ../data/gcalctool.ui.h:41
-msgid "11 places"
-msgstr "১১ ঘৰ"
-
-#. Right Shift Popup: Menu item to shift right by 12 bits
-#: ../data/gcalctool.ui.h:43
-msgid "12 places"
-msgstr "১২ ঘৰ"
-
-#. Right Shift Popup: Menu item to shift right by 13 bits
-#: ../data/gcalctool.ui.h:45
-msgid "13 places"
-msgstr "১৩ ঘৰ"
-
-#. Right Shift Popup: Menu item to shift right by 14 bits
-#: ../data/gcalctool.ui.h:47
-msgid "14 places"
-msgstr "১৪ ঘৰ"
-
-#. Label for bit 15 on the bit editor
-#: ../data/gcalctool.ui.h:49
-msgid "15"
-msgstr "15"
-
-#. Right Shift Popup: Menu item to shift right by 15 bits
-#: ../data/gcalctool.ui.h:51
-msgid "15 places"
-msgstr "১৫ ঘৰ"
-
-#. Numeric 2 button
-#: ../data/gcalctool.ui.h:53
-msgid "2"
-msgstr "২"
-
-#. 2's complement
-#: ../data/gcalctool.ui.h:55
-msgid "2's"
-msgstr ""
-
-#: ../data/gcalctool.ui.h:56
-#, 
-msgid "2's complement [Z]"
-msgstr "2's complement [Z]"
-
-#. Numeric 3 button
-#: ../data/gcalctool.ui.h:58
-msgid "3"
-msgstr "৩"
-
-#. Label for bit 31 on the bit editor
-#: ../data/gcalctool.ui.h:60
-msgid "31"
-msgstr "31"
-
-#. Label for bit 32 on the bit editor
-#: ../data/gcalctool.ui.h:62
-msgid "32"
-msgstr "৩২"
-
-#. Numeric 4 button
-#: ../data/gcalctool.ui.h:64
-msgid "4"
-msgstr "৪"
-
-#. Label for bit 47 on the bit editor
-#: ../data/gcalctool.ui.h:66
-msgid "47"
-msgstr "47"
-
-#. Numeric 5 button
-#: ../data/gcalctool.ui.h:68
-msgid "5"
-msgstr "৫"
-
-#. Numeric 6 button
-#: ../data/gcalctool.ui.h:70
-msgid "6"
-msgstr "৬"
-
-#. Label for the most significant bit (bit 63) on the bit editor
-#: ../data/gcalctool.ui.h:72
-msgid "63"
-msgstr "63"
-
-#. Numeric 7 button
-#: ../data/gcalctool.ui.h:74
-msgid "7"
-msgstr "৭"
-
-#. Numeric 8 button
-#: ../data/gcalctool.ui.h:76
-msgid "8"
-msgstr "৮"
-
-#. Numeric 9 button
-#: ../data/gcalctool.ui.h:78
-msgid "9"
-msgstr "৯"
-
-#. Shift left button
-#: ../data/gcalctool.ui.h:80
-msgid "<"
-msgstr "<"
-
-#. Factorial
-#: ../data/gcalctool.ui.h:82
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#. x to the power of 2 button
-#: ../data/gcalctool.ui.h:84
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>২</sup>"
-
-#. Edit Function Dialog: Note about what base numbers will be entered as
-#: ../data/gcalctool.ui.h:86
-msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
-msgstr "<small><i><b> নোট</b> সকল</i></small>"
-
-#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../data/gcalctool.ui.h:88
-msgid "<span weight=\"bold\">R0</span>"
-msgstr "<span weight=\"bold\">R0</span>"
-
-#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../data/gcalctool.ui.h:90
-msgid "<span weight=\"bold\">R1</span>"
-msgstr "<span weight=\"bold\">R1</span>"
-
-#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../data/gcalctool.ui.h:92
-msgid "<span weight=\"bold\">R2</span>"
-msgstr "<span weight=\"bold\">R2</span>"
-
-#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../data/gcalctool.ui.h:94
-msgid "<span weight=\"bold\">R3</span>"
-msgstr "<span weight=\"bold\">R3</span>"
-
-#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../data/gcalctool.ui.h:96
-msgid "<span weight=\"bold\">R4</span>"
-msgstr "<span weight=\"bold\">R4</span>"
-
-#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../data/gcalctool.ui.h:98
-msgid "<span weight=\"bold\">R5</span>"
-msgstr "<span weight=\"bold\">R5</span>"
-
-#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../data/gcalctool.ui.h:100
-msgid "<span weight=\"bold\">R6</span>"
-msgstr "<span weight=\"bold\">R6</span>"
-
-#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../data/gcalctool.ui.h:102
-msgid "<span weight=\"bold\">R7</span>"
-msgstr "<span weight=\"bold\">R7</span>"
-
-#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../data/gcalctool.ui.h:104
-msgid "<span weight=\"bold\">R8</span>"
-msgstr "<span weight=\"bold\">R8</span>"
-
-#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../data/gcalctool.ui.h:106
-msgid "<span weight=\"bold\">R9</span>"
-msgstr "<span weight=\"bold\">R9</span>"
-
-#. Solve button (clicking this solves the displayed calculation)
-#: ../data/gcalctool.ui.h:108
-msgid "="
-msgstr "="
-
-#. Shift right button
-#: ../data/gcalctool.ui.h:110
-msgid ">"
-msgstr ">"
-
-#. Hexadecimal digit A button
-#: ../data/gcalctool.ui.h:112
-msgid "A"
-msgstr "অ"
-
-#. Boolean AND button
-#: ../data/gcalctool.ui.h:114
-msgid "AND"
-msgstr "AND"
-
-#. Absolute value button. Abs is short for Absolute
-#: ../data/gcalctool.ui.h:116
-msgid "Abs"
-msgstr "Abs"
-
-#: ../data/gcalctool.ui.h:117
-msgid "Absolute value"
-msgstr "সম্পূৰ্ণ মান"
-
-#: ../data/gcalctool.ui.h:118
-msgid "Absolute value [u]"
-msgstr "সম্পূৰ্ণ মান"
-
-#. Accuracy button
-#: ../data/gcalctool.ui.h:120
-msgid "Acc"
-msgstr "Acc"
-
-#: ../data/gcalctool.ui.h:121
-msgid "Add"
-msgstr "যোগ কৰক"
-
-#: ../data/gcalctool.ui.h:122
-msgid "Add [+]"
-msgstr "যোগ কৰক"
-
-#: ../data/gcalctool.ui.h:123
-msgid "Advanced"
-msgstr "Advanced"
-
-#. Hexadecimal digit B button
-#: ../data/gcalctool.ui.h:125
-msgid "B"
-msgstr "B"
-
-#: ../data/gcalctool.ui.h:126
-msgid "Backspace"
-msgstr "ব্যাকস্পেস"
-
-#: ../data/gcalctool.ui.h:127
-msgid "Basic"
-msgstr "মৌলিক"
-
-#: ../data/gcalctool.ui.h:128
-msgid "Bitwise AND [&]"
-msgstr "Bitwise AND [&]"
-
-#: ../data/gcalctool.ui.h:129
-msgid "Bitwise NOT [~]"
-msgstr "Bitwise NOT [~]"
-
-#: ../data/gcalctool.ui.h:130
-msgid "Bitwise OR [|]"
-msgstr "Bitwise OR [|]"
-
-#
-#: ../data/gcalctool.ui.h:131
-msgid "Bitwise XNOR [{]"
-msgstr "Bitwise XNOR [n]"
-
-#: ../data/gcalctool.ui.h:132
-msgid "Bitwise XOR [x]"
-msgstr "Bitwise XOR [x]"
-
-#. Bksp is short for Backspace
-#: ../data/gcalctool.ui.h:134
-msgid "Bksp"
-msgstr "Bksp"
-
-#. Hexadecimal digit C button
-#: ../data/gcalctool.ui.h:136 ../src/gtk.c:1700
-msgid "C"
-msgstr "C"
-
-#. Clear displayed value button
-#: ../data/gcalctool.ui.h:138
-msgid "CE"
-msgstr "CE"
-
-#: ../data/gcalctool.ui.h:139
-msgid "Calculate result"
-msgstr "ফলাফল গণনা কৰো"
-
-#: ../data/gcalctool.ui.h:140
-msgid "Calculate result [=]"
-msgstr "Calculate result [=]"
-
 #. Insert ASCII dialog: Label before character entry
-#: ../data/gcalctool.ui.h:142
+#: ../data/buttons-programming.ui.h:6
 msgid "Ch_aracter:"
 msgstr "অক্ষৰ (_a):"
 
-#: ../data/gcalctool.ui.h:143
-msgid "Change Sign [C]"
-msgstr "স্বাক্ষৰ কৰুন C"
-
-#: ../data/gcalctool.ui.h:144
-msgid "Change sign"
-msgstr "Change sign"
-
-#: ../data/gcalctool.ui.h:145
-msgid "Clear"
-msgstr "Clear"
-
-#: ../data/gcalctool.ui.h:146
-msgid "Clear displayed value [Escape]"
-msgstr "Clear মান"
-
-#: ../data/gcalctool.ui.h:147
-msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr "Clear মান এবং মুছে ফেলুন"
-
-#: ../data/gcalctool.ui.h:148
-msgid "Clear entry"
-msgstr "এন্ট্ৰি মুছে ফেলো"
-
-#. Edit Functions Dialog: Instructions in dialog
-#: ../data/gcalctool.ui.h:150
-msgid "Click a _value or description to edit it:"
-msgstr "একটি মান অথবা বিবৰণ সম্পাদন কৰতে হলে তাৰ উপৰ ক্লিক কৰুন (_v):"
-
-#. Clear display button. Clr is short for Clear
-#: ../data/gcalctool.ui.h:152
-msgid "Clr"
-msgstr "Clr"
-
-#: ../data/gcalctool.ui.h:153
-msgid "Compounding term"
-msgstr "Compounding term"
-
-#: ../data/gcalctool.ui.h:154
-msgid "Compounding term [m]"
-msgstr "Compounding term [m]"
-
-#. Constants button
-#: ../data/gcalctool.ui.h:156
-msgid "Con"
-msgstr "Con"
-
-#: ../data/gcalctool.ui.h:157
-msgid "Constants [#]"
-msgstr "Constants [#]"
-
-#: ../data/gcalctool.ui.h:158
-msgid "Copy selection"
-msgstr "নিৰ্বাচিত অংশ কপি কৰো"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: ../data/gcalctool.ui.h:160
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#. Hexadecimal digit D button
-#: ../data/gcalctool.ui.h:162
-msgid "D"
-msgstr "D"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:164
-msgid "Ddb"
-msgstr "Ddb"
-
-#. Degrees radio button
-#: ../data/gcalctool.ui.h:166
-msgid "De_grees"
-msgstr "ডিগ্ৰি (_g)"
-
-#: ../data/gcalctool.ui.h:167
-msgid "Divide"
-msgstr "ভাগ"
-
-#: ../data/gcalctool.ui.h:168
-msgid "Divide [/]"
-msgstr "ভাগ"
-
-#: ../data/gcalctool.ui.h:169
-msgid "Double-declining depreciation"
-msgstr "ডাবল"
-
-#: ../data/gcalctool.ui.h:170
-msgid "Double-declining depreciation [D]"
-msgstr "ডাবল D"
-
-#. Hexadecimal digit E button
-#: ../data/gcalctool.ui.h:172
-msgid "E"
-msgstr "E"
-
-#. Engineering display radio button
-#: ../data/gcalctool.ui.h:174
-msgid "E_ng"
-msgstr "E_ng"
-
-#. Title of edit constants dialog
-#: ../data/gcalctool.ui.h:176
-msgid "Edit Constants"
-msgstr "কনস্ট্যান্ট-এৰ মান সম্পাদন কৰো"
-
-#. Menu item in the constants menu to show the Edit Constants dialog
-#: ../data/gcalctool.ui.h:178
-msgid "Edit Constants..."
-msgstr "কনস্ট্যান্ট সম্পাদন কৰো..."
-
-#. Title of edit functions dialog
-#: ../data/gcalctool.ui.h:180
-msgid "Edit Functions"
-msgstr "ফাংশন সম্পাদন কৰো"
-
-#. Menu item in the constants menu to show the Edit Functions dialog
-#: ../data/gcalctool.ui.h:182
-msgid "Edit Functions..."
-msgstr "ফাংশন সম্পাদন কৰো..."
-
-#: ../data/gcalctool.ui.h:183
-msgid "End group of calculations [)]"
-msgstr "সমাপ্তি সৰ্বমোট"
-
-#: ../data/gcalctool.ui.h:184
-msgid "Enter an exponential number [E]"
-msgstr "সংখ্যা E"
-
-#. Memory exchange button. Exch is short for Exchange
-#: ../data/gcalctool.ui.h:186
-msgid "Exch"
-msgstr "Exch"
-
-#: ../data/gcalctool.ui.h:187
-msgid "Exchange displayed value with memory register [X]"
-msgstr "মান এক্স স্থানাঙ্ক"
-
-#: ../data/gcalctool.ui.h:188
-msgid "Exchange with register"
-msgstr "ৰেজিস্টাৰেৰ সাথে অদলবদল কৰো"
-
-#. Exponential
-#: ../data/gcalctool.ui.h:190
-msgid "Exp"
-msgstr "Exp"
-
-#. Hexadecimal digit F button
-#: ../data/gcalctool.ui.h:192 ../src/gtk.c:1723
-msgid "F"
-msgstr "F"
-
-#: ../data/gcalctool.ui.h:193
-msgid "Factorial of displayed value [!]"
-msgstr "গৌণিক সৰ্বমোট মান"
-
-#: ../data/gcalctool.ui.h:194
-msgid "Financial"
-msgstr "Financial"
-
-#. Fractional portion button
-#: ../data/gcalctool.ui.h:196
-msgid "Frac"
-msgstr "Frac"
-
-#: ../data/gcalctool.ui.h:197
-msgid "Fractional portion"
-msgstr "ভগ্নাংশ অংশ"
-
-#: ../data/gcalctool.ui.h:198
-msgid "Fractional portion of displayed value [:]"
-msgstr "সৰ্বমোট মান"
-
-#. Functions button
-#: ../data/gcalctool.ui.h:200
-msgid "Fun"
-msgstr "Fun"
-
-#: ../data/gcalctool.ui.h:201
-msgid "Future value"
-msgstr "মান"
-
-#: ../data/gcalctool.ui.h:202
-msgid "Future value [v]"
-msgstr "মান"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: ../data/gcalctool.ui.h:204
-msgid "Fv"
-msgstr "Fv"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../data/gcalctool.ui.h:206
-msgid "Gpm"
-msgstr "Gpm"
-
-#. Gradians radio button
-#: ../data/gcalctool.ui.h:208
-msgid "Gr_adians"
-msgstr "গ্ৰেডিয়েন (_a)"
-
-#: ../data/gcalctool.ui.h:210
-msgid "Gross Profit Margin [I]"
-msgstr "Gross Profit Margin [I]"
-
-#: ../data/gcalctool.ui.h:211
-msgid "Gross Profit Margin [g]"
-msgstr "Gross Profit Margin [g]"
-
-#. Hyperbolic check box
-#: ../data/gcalctool.ui.h:213
-msgid "H_yp"
-msgstr "H_yp"
-
-#. Base 16 radio button
-#: ../data/gcalctool.ui.h:215
-msgid "He_x"
-msgstr "He_x"
-
-#: ../data/gcalctool.ui.h:216
-msgid "Hexadecimal digit A [a]"
-msgstr "অ"
-
-#: ../data/gcalctool.ui.h:217
-msgid "Hexadecimal digit B [b]"
-msgstr "B"
-
-#: ../data/gcalctool.ui.h:218
-msgid "Hexadecimal digit C [c]"
-msgstr "C"
-
-#: ../data/gcalctool.ui.h:219
-msgid "Hexadecimal digit D [d]"
-msgstr "D"
-
-#: ../data/gcalctool.ui.h:220
-msgid "Hexadecimal digit E [e]"
-msgstr "E e"
-
-#: ../data/gcalctool.ui.h:221
-msgid "Hexadecimal digit F [f]"
-msgstr "F"
-
-#. Title of insert ASCII dialog
-#: ../data/gcalctool.ui.h:223
-msgid "Insert ASCII Value"
-msgstr "ASCII মান সন্নিবেশ কৰো"
-
-#: ../data/gcalctool.ui.h:224
-msgid "Insert ASCII value"
-msgstr "ASCII মান সন্নিবেশ কৰো"
-
-#. Integer portion button
-#: ../data/gcalctool.ui.h:226
-msgid "Int"
-msgstr "Int"
-
-#: ../data/gcalctool.ui.h:227
-msgid "Integer portion"
-msgstr "পূৰ্ণসংখ্যা অংশ"
-
-#: ../data/gcalctool.ui.h:228
-msgid "Integer portion of displayed value [i]"
-msgstr "সৰ্বমোট মান"
-
-#: ../data/gcalctool.ui.h:229
-msgid "Left bracket"
-msgstr "বাঁদিকেৰ ব্ৰ্যাকেট"
-
-#: ../data/gcalctool.ui.h:230
-#, 
-msgid "Makes the bitwise functions use 16 bit mode"
-msgstr "bitwise ফাংশান দ্বারা ১৬-বিট মোড ব্যবহার করা হবে"
-
-#: ../data/gcalctool.ui.h:231
-#, 
-msgid "Makes the bitwise functions use 32 bit mode"
-msgstr "bitwise ফাংশান দ্বারা ৩২-বিট মোড ব্যবহার করা হবে"
-
-#: ../data/gcalctool.ui.h:232
-#, 
-msgid "Makes the bitwise functions use 64 bit mode"
-msgstr "bitwise ফাংশান দ্বারা ৬৪-বিট মোড ব্যবহার করা হবে"
-
-#: ../data/gcalctool.ui.h:233
-msgid "Memory Registers"
-msgstr "মেমৰি ৰেজিস্টাৰ"
-
-#. Modulus division button
-#: ../data/gcalctool.ui.h:235
-msgid "Mod"
-msgstr "Mod"
-
-#: ../data/gcalctool.ui.h:236
-msgid "Modulus Division [M]"
-msgstr "Modulus Division [M]"
-
-#: ../data/gcalctool.ui.h:237
-msgid "Multiply"
-msgstr "গুণ"
-
-#: ../data/gcalctool.ui.h:238
-msgid "Multiply [*]"
-msgstr "গুণ"
-
-#. Boolean NOT button
-#: ../data/gcalctool.ui.h:240
-msgid "NOT"
-msgstr "NOT"
-
-#: ../data/gcalctool.ui.h:241
-msgid "Numeric 0"
-msgstr "সংখ্যা ০"
-
-#: ../data/gcalctool.ui.h:242
-msgid "Numeric 1"
-msgstr "সংখ্যা ১"
-
-#: ../data/gcalctool.ui.h:243
-msgid "Numeric 2"
-msgstr "সংখ্যা ২"
-
-#: ../data/gcalctool.ui.h:244
-msgid "Numeric 3"
-msgstr "সংখ্যা ৩"
-
-#: ../data/gcalctool.ui.h:245
-msgid "Numeric 4"
-msgstr "সংখ্যা ৪"
-
-#: ../data/gcalctool.ui.h:246
-msgid "Numeric 5"
-msgstr "সংখ্যা ৫"
-
-#: ../data/gcalctool.ui.h:247
-msgid "Numeric 6"
-msgstr "সংখ্যা ৬"
-
-#: ../data/gcalctool.ui.h:248
-msgid "Numeric 7"
-msgstr "সংখ্যা ৭"
-
-#: ../data/gcalctool.ui.h:249
-msgid "Numeric 8"
-msgstr "সংখ্যা ৮"
-
-#: ../data/gcalctool.ui.h:250
-msgid "Numeric 9"
-msgstr "সংখ্যা ৯"
-
-#: ../data/gcalctool.ui.h:251
-msgid "Numeric point"
-msgstr "Numeric point"
-
-#. Boolean OR button
-#: ../data/gcalctool.ui.h:253
-msgid "OR"
-msgstr "OR"
-
-#: ../data/gcalctool.ui.h:254
-msgid "Paste selection"
-msgstr "নিৰ্বাচিত অংশ পেস্ট কৰো"
-
-#: ../data/gcalctool.ui.h:255
-msgid "Payment period"
-msgstr "Payment period"
-
-#: ../data/gcalctool.ui.h:256
-msgid "Payment period [t]"
-msgstr "Payment period [t]"
-
-#: ../data/gcalctool.ui.h:257
-msgid "Percentage"
-msgstr "শতাংশ"
-
-#: ../data/gcalctool.ui.h:259
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "শতাংশ"
-
-#: ../data/gcalctool.ui.h:260
-msgid "Periodic interest rate"
-msgstr "Periodic interest rate"
-
-#: ../data/gcalctool.ui.h:261
-msgid "Periodic interest rate [T]"
-msgstr "Periodic interest rate [T]"
-
-#: ../data/gcalctool.ui.h:262
-msgid "Periodic payment"
-msgstr "Periodic payment"
-
-#: ../data/gcalctool.ui.h:263
-msgid "Periodic payment [P]"
-msgstr "Periodic payment [P]"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/gcalctool.ui.h:265
-msgid "Pmt"
-msgstr "Pmt"
-
-#: ../data/gcalctool.ui.h:266
-msgid "Present value"
-msgstr "মান"
-
-#: ../data/gcalctool.ui.h:267
-msgid "Present value [p]"
-msgstr "মান"
-
-#: ../data/gcalctool.ui.h:268
-msgid "Programming"
-msgstr "প্ৰোগ্ৰামিং"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/gcalctool.ui.h:270
-msgid "Pv"
-msgstr "Pv"
-
-#: ../data/gcalctool.ui.h:271
-msgid "Quit the calculator"
-msgstr "ক্যালকুলেটৰ ৰ পৰা প্ৰস্থান কৰুন"
-
-#. Random number
-#: ../data/gcalctool.ui.h:273
-msgid "Rand"
-msgstr "Rand"
-
-#: ../data/gcalctool.ui.h:274
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "সংখ্যা"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/gcalctool.ui.h:276
-msgid "Rate"
-msgstr "হাৰ"
-
-#. Memory recall button. Rcl is short for Recall
-#: ../data/gcalctool.ui.h:278
-msgid "Rcl"
-msgstr "Rcl"
-
-#: ../data/gcalctool.ui.h:279
-msgid "Reciprocal"
-msgstr "Reciprocal"
-
-#: ../data/gcalctool.ui.h:280
-msgid "Reciprocal [r]"
-msgstr "Reciprocal [r]"
-
-#: ../data/gcalctool.ui.h:281
-msgid "Redo"
-msgstr "Redo"
-
-#: ../data/gcalctool.ui.h:282
-msgid "Remove rightmost character from displayed value [Backspace]"
-msgstr "মান ব্যাকস্পেস"
-
-#: ../data/gcalctool.ui.h:283
-msgid "Result Region"
-msgstr "Result Region"
-
-#: ../data/gcalctool.ui.h:284
-msgid "Retrieve from register"
-msgstr "ৰেজিস্টাৰ ৰ পৰা উদ্ধাৰ কৰো"
-
-#: ../data/gcalctool.ui.h:285
-msgid "Retrieve memory register to display [R]"
-msgstr "R"
-
-#: ../data/gcalctool.ui.h:286
-msgid "Right bracket"
-msgstr "ডানদিকেৰ ব্ৰ্যাকেট"
-
-#: ../data/gcalctool.ui.h:287
-msgid "Scientific"
-msgstr "বৈজ্ঞানিক"
-
-#. Title of set precision dialog
-#: ../data/gcalctool.ui.h:289
-msgid "Set Precision"
-msgstr "Set Precision"
-
-#: ../data/gcalctool.ui.h:290
-msgid "Set display type to engineering format"
-msgstr "ইঞ্জিনিয়াৰিং ফৰমায় প্ৰদৰ্শন কৰতে নিৰ্ধাৰণ কৰো"
-
-#: ../data/gcalctool.ui.h:291
-msgid "Set display type to fixed-point format"
-msgstr "ধৰন"
-
-#: ../data/gcalctool.ui.h:292
-msgid "Set display type to scientific format"
-msgstr "বৈজ্ঞানিক ফৰমায় প্ৰদৰ্শন কৰতে নিৰ্ধাৰণ কৰো"
-
-#: ../data/gcalctool.ui.h:293
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "ত্ৰিকোনমিতিৰ ফাংশানগুলোৰ জন্য হাইপাৰবোলিক অপশনটি নিৰ্ধাৰণ কৰো"
-
-#: ../data/gcalctool.ui.h:294
-msgid "Set inverse option for trigonometric functions"
-msgstr "ত্ৰিকোনমিতিৰ ফাংশানগুলোৰ জন্য ইনভাৰ্স অপশনটি নিৰ্ধাৰণ কৰো"
-
-#: ../data/gcalctool.ui.h:295
-msgid "Set numeric base to binary (base 2)"
-msgstr "সংখ্যাসূচক ভিত্তি -কে বাইনাৰি (ভিত্তি ২)- তে নিৰ্ধাৰণ কৰো"
-
-#: ../data/gcalctool.ui.h:296
-msgid "Set numeric base to decimal (base 10)"
-msgstr "সংখ্যাসূচক ভিত্তিকে দশমিক (ভিত্তি ১০) -এ নিৰ্ধাৰণ কৰো"
-
-#: ../data/gcalctool.ui.h:297
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "সংখ্যাসূচক নিধান কে হেক্সাডেসিমাল (ভিত্তি ১৬) -এ নিৰ্ধাৰণ কৰো"
-
-#: ../data/gcalctool.ui.h:298
-msgid "Set numeric base to octal (base 8)"
-msgstr "সংখ্যাসূচক ভিত্তিকে অক্টাল (ভিত্তি ৮) -এ নিৰ্ধাৰণ কৰো"
-
-#: ../data/gcalctool.ui.h:299
-msgid "Set trigonometric type to degrees"
-msgstr "ত্ৰিকেনমিতিৰ ধৰন ডিগ্ৰি হিসাবে চিহ্নিত কৰো"
-
-#: ../data/gcalctool.ui.h:300
-msgid "Set trigonometric type to gradians"
-msgstr "ত্ৰিকেনমিতিৰ ধৰন গ্ৰেডিয়েন হিসাবে চিহ্নিত কৰো"
-
-#: ../data/gcalctool.ui.h:301
-msgid "Set trigonometric type to radians"
-msgstr "ত্ৰিকেনমিতিৰ ধৰন ৰেডিয়েন হিসাবে চিহ্নিত কৰো"
-
-#: ../data/gcalctool.ui.h:302
-msgid "Shift displayed value 1-15 places to the left [<]"
-msgstr "মান"
-
-#: ../data/gcalctool.ui.h:303
-msgid "Shift displayed value 1-15 places to the right [>]"
-msgstr "মান"
-
-#. View|Show Thousands Separator menu item
-#: ../data/gcalctool.ui.h:305
-msgid "Show T_housands Separator"
-msgstr "হাজাৰ-এৰ স্থান বিভাজনকাৰী চিহ্ন প্ৰদৰ্শন কৰো (_h)"
-
-#. Accuracy Popup: Check menu item to enable trailing zeroes
-#: ../data/gcalctool.ui.h:307
-msgid "Show _Trailing Zeroes"
-msgstr "অনুসৰণকাৰী শূণ্য প্ৰদৰ্শন কৰো (_T)"
-
-#: ../data/gcalctool.ui.h:308
-msgid "Show help contents"
-msgstr "সহায়িকাৰ সূচী প্ৰদৰ্শন কৰো"
-
-#: ../data/gcalctool.ui.h:309
-msgid "Show memory registers"
-msgstr "মেমৰি ৰেজিস্টাৰ প্ৰদৰ্শন কৰো"
-
-#: ../data/gcalctool.ui.h:310
-msgid "Show the About Gcalctool dialog"
-msgstr "বিষয়ে Gcalctool"
-
-#: ../data/gcalctool.ui.h:311
-msgid "Show thousands separator"
-msgstr "হাজাৰ-এৰ স্থান বিভাজনকাৰী চিহ্ন প্ৰদৰ্শন কৰো"
-
-#: ../data/gcalctool.ui.h:312
-msgid "Show trailing zeroes"
-msgstr "অনুসৰণকাৰী শূণ্য প্ৰদৰ্শন কৰো"
-
-#. Set Precision Dialog: Label before the significant places spin button
-#: ../data/gcalctool.ui.h:314
-msgid "Significant _places:"
-msgstr "Significant _places:"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:316
-msgid "Sln"
-msgstr "Sln"
-
-#: ../data/gcalctool.ui.h:317
-msgid "Square"
-msgstr "Square"
-
-#: ../data/gcalctool.ui.h:318
-msgid "Square [@]"
-msgstr "Square [@]"
-
-#: ../data/gcalctool.ui.h:319
-msgid "Square root"
-msgstr "Square root"
-
-#: ../data/gcalctool.ui.h:320
-msgid "Square root [s]"
-msgstr "Square root [s]"
-
-#: ../data/gcalctool.ui.h:321
-msgid "Start group of calculations [(]"
-msgstr "আৰম্ভ সৰ্বমোট"
-
-#. Memory store button. Sto is short for Store
-#: ../data/gcalctool.ui.h:323
-msgid "Sto"
-msgstr "Sto"
-
-#: ../data/gcalctool.ui.h:324
-msgid "Store displayed value in memory register [S]"
-msgstr "মান এস"
-
-#: ../data/gcalctool.ui.h:325
-msgid "Store to register"
-msgstr "ৰেজিস্টাৰে সংৰক্ষণ কৰো"
-
-#: ../data/gcalctool.ui.h:326
-msgid "Straight-line depreciation"
-msgstr "Straight-line depreciation"
-
-#: ../data/gcalctool.ui.h:327
-msgid "Straight-line depreciation [l]"
-msgstr "Straight-line depreciation [l]"
-
-#: ../data/gcalctool.ui.h:328
-msgid "Subtract"
-msgstr "বিয়োগ"
-
-#: ../data/gcalctool.ui.h:329
-msgid "Subtract [-]"
-msgstr "বিয়োগ"
-
-#: ../data/gcalctool.ui.h:330
-msgid "Sum-of-the years'-digits depreciation"
-msgstr "সৰ্বমোট বত্সৰ"
-
-#
-#: ../data/gcalctool.ui.h:331
-msgid "Sum-of-the years'-digits depreciation [Y]"
-msgstr "সৰ্বমোট বত্সৰ y"
-
-#: ../data/gcalctool.ui.h:332
-msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "সৰ্বমোট বত্সৰ y"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:334
-msgid "Syd"
-msgstr "Syd"
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/gcalctool.ui.h:336
-msgid "Term"
-msgstr "মান"
-
-#. Truncate displayed value
-#: ../data/gcalctool.ui.h:338
-#, 
-msgid "Trunc"
-msgstr "Trunc"
-
-#
-#: ../data/gcalctool.ui.h:339
-#, 
-#| msgid "Raise displayed value to the power of y [o]"
-msgid "Truncate displayed value to the chosen word size ([)"
-msgstr "মান সৰ্বমোট y"
-
-#: ../data/gcalctool.ui.h:340
-msgid "Undo"
-msgstr "পূৰ্বাবস্থা"
-
-#: ../data/gcalctool.ui.h:341
-msgid "User-defined functions [F]"
-msgstr "ব্যৱহাৰকৰ্তা F"
-
-#. Boolean exclusive NOR button
-#: ../data/gcalctool.ui.h:343
-msgid "XNOR"
-msgstr "XNOR"
-
-#. Boolean exlcusive OR button
-#: ../data/gcalctool.ui.h:345
-msgid "XOR"
-msgstr "XOR"
-
-#. Accuracy Popup: Menu item to set accuracy to 0 significant places
-#: ../data/gcalctool.ui.h:347
-msgid "_0 significant places"
-msgstr "_0 significant places"
-
-#. Right Shift Popup: Menu item to shift right by 1 bit
-#: ../data/gcalctool.ui.h:349
-msgid "_1 place"
-msgstr "_1 place"
-
-#. Accuracy Popup: Menu item to set accuracy to 1 significant place
-#: ../data/gcalctool.ui.h:351
-msgid "_1 significant place"
-msgstr "_1 significant place"
-
-#. 16 bit radio button
-#: ../data/gcalctool.ui.h:353
-#, 
-msgid "_16 bit"
-msgstr "১৬ বিট (_1)"
-
-#. Right Shift Popup: Menu item to shift right by 2 bits
-#: ../data/gcalctool.ui.h:355
-msgid "_2 places"
-msgstr "_2 places"
-
-#. Accuracy Popup: Menu item to set accuracy to 2 significant places
-#: ../data/gcalctool.ui.h:357
-msgid "_2 significant places"
-msgstr "_2 significant places"
-
-#. Right Shift Popup: Menu item to shift right by 3 bits
-#: ../data/gcalctool.ui.h:359
-msgid "_3 places"
-msgstr "_3 places"
-
-#. Accuracy Popup: Menu item to set accuracy to 3 significant places
-#: ../data/gcalctool.ui.h:361
-msgid "_3 significant places"
-msgstr "_3 significant places"
-
-#. 32 bit radio button
-#: ../data/gcalctool.ui.h:363
-#, 
-msgid "_32 bit"
-msgstr "৩২ বিট (_3)"
-
-#. Right Shift Popup: Menu item to shift right by 4 bits
-#: ../data/gcalctool.ui.h:365
-msgid "_4 places"
-msgstr "_4 places"
-
-#. Accuracy Popup: Menu item to set accuracy to 4 significant places
-#: ../data/gcalctool.ui.h:367
-msgid "_4 significant places"
-msgstr "_4 significant places"
-
-#. Right Shift Popup: Menu item to shift right by 5 bits
-#: ../data/gcalctool.ui.h:369
-msgid "_5 places"
-msgstr "_5 places"
-
-#. Accuracy Popup: Menu item to set accuracy to 5 significant places
-#: ../data/gcalctool.ui.h:371
-msgid "_5 significant places"
-msgstr "_5 significant places"
-
-#. Right Shift Popup: Menu item to shift right by 6 bits
-#: ../data/gcalctool.ui.h:373
-msgid "_6 places"
-msgstr "_6 places"
-
-#. Accuracy Popup: Menu item to set accuracy to 6 significant places
-#: ../data/gcalctool.ui.h:375
-msgid "_6 significant places"
-msgstr "_6 significant places"
-
-#. 64 bit radio button
-#: ../data/gcalctool.ui.h:377
-#, 
-msgid "_64 bit"
-msgstr "৬৪ বিট (_6)"
-
-#. Right Shift Popup: Menu item to shift right by 7 bits
-#: ../data/gcalctool.ui.h:379
-msgid "_7 places"
-msgstr "_7 places"
-
-#. Accuracy Popup: Menu item to set accuracy to 7 significant places
-#: ../data/gcalctool.ui.h:381
-msgid "_7 significant places"
-msgstr "_7 significant places"
-
-#. Right Shift Popup: Menu item to shift right by 8 bits
-#: ../data/gcalctool.ui.h:383
-msgid "_8 places"
-msgstr "_8 places"
-
-#. Accuracy Popup: Menu item to set accuracy to 8 significant places
-#: ../data/gcalctool.ui.h:385
-msgid "_8 significant places"
-msgstr "_8 significant places"
-
-#. Right Shift Popup: Menu item to shift right by 9 bits
-#: ../data/gcalctool.ui.h:387
-msgid "_9 places"
-msgstr "_9 places"
-
-#. Accuracy Popup: Menu item to set accuracy to 9 significant places
-#: ../data/gcalctool.ui.h:389
-msgid "_9 significant places"
-msgstr "_9 significant places"
-
-#. View|Advanced menu item
-#: ../data/gcalctool.ui.h:391
-msgid "_Advanced"
-msgstr "_Advanced"
-
-#. View|Basic menu item
-#: ../data/gcalctool.ui.h:393
-msgid "_Basic"
-msgstr "মৌলিক (_B)"
-
-#. Base 2 radio button
-#: ../data/gcalctool.ui.h:395
-msgid "_Bin"
-msgstr "_Bin"
-
-#. Calculator menu
-#: ../data/gcalctool.ui.h:397
-msgid "_Calculator"
-msgstr "ক্যালকুলেটৰ"
-
-#
-#: ../data/gcalctool.ui.h:398
-msgid "_Contents"
-msgstr "বিষয়বস্তু (_C)"
-
-#. Base 10 radio button
-#: ../data/gcalctool.ui.h:400
-msgid "_Dec"
-msgstr "_Dec"
-
-#. Edit menu
-#: ../data/gcalctool.ui.h:402
-msgid "_Edit"
-msgstr "সম্পাদনা (_E)"
-
-#. View|Financial menu item
-#: ../data/gcalctool.ui.h:404
-msgid "_Financial"
-msgstr "অৰ্থনৈতিক মোড (_F)"
-
-#. Fixed-point display radio button
-#: ../data/gcalctool.ui.h:406
-msgid "_Fix"
-msgstr "_Fix"
-
-#. Help menu
-#: ../data/gcalctool.ui.h:408
-msgid "_Help"
-msgstr "সাহায্য (_H)"
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:14
+#, fuzzy
+#| msgid "Ch_aracter:"
+msgid "Insert Character"
+msgstr "অক্ষৰ (_a):"
+
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:227
+msgid "Insert Character Code"
+msgstr "আখৰ ক'ড সুমুৱাওক"
+
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+#: ../data/buttons-programming.ui.h:20 ../src/math-buttons.c:242
+#| msgid "Shift left"
+msgid "Shift Left"
+msgstr "বাঁওফালে স্থানান্তৰ কৰক"
+
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:245
+#| msgid "Shift right"
+msgid "Shift Right"
+msgstr "সোঁফালে স্থানান্তৰ কৰক"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:410
+#: ../data/buttons-programming.ui.h:30
 msgid "_Insert"
 msgstr "সন্নিবেশ কৰুন (_I)"
 
-#. Edit|Insert ASCII value menu item
-#: ../data/gcalctool.ui.h:412
-msgid "_Insert ASCII value..."
-msgstr "মান."
+#. The label on the memory button
+#: ../data/buttons-programming.ui.h:32
+#| msgid "x2"
+msgid "x"
+msgstr "x"
 
-#. Inverse check box
-#: ../data/gcalctool.ui.h:414
-msgid "_Inv"
-msgstr "_Inv"
+#. Word size combo: 16 bits
+#: ../data/preferences.ui.h:2
+#| msgid "_16 bit"
+msgid "16-bit"
+msgstr "16-bit"
 
-#. View|Memory Registers menu item
-#: ../data/gcalctool.ui.h:416
-msgid "_Memory Registers"
-msgstr "মেমৰি ৰেজিস্টাৰ (_M)"
+#. Word size combo: 32 bits
+#: ../data/preferences.ui.h:4
+#| msgid "_32 bit"
+msgid "32-bit"
+msgstr "32-bit"
 
-#. Base 8 radio button
-#: ../data/gcalctool.ui.h:418
-msgid "_Oct"
-msgstr "_Oct"
+#. Word size combo: 64 bits
+#: ../data/preferences.ui.h:6
+#| msgid "_64 bit"
+msgid "64-bit"
+msgstr "64-bit"
 
-#. View|Programming menu item
-#: ../data/gcalctool.ui.h:420
-#, 
-msgid "_Programming"
-msgstr "প্রোগ্রামিং (_P)"
+#. Word size combo: 8 bits
+#: ../data/preferences.ui.h:8
+msgid "8-bit"
+msgstr "8-bit"
 
-#. Radian radio button
-#: ../data/gcalctool.ui.h:422
-msgid "_Radians"
-msgstr "ৰেডিয়েন (_R)"
+#. Preferences dialog: Label for display format combo box
+#: ../data/preferences.ui.h:10
+msgid "Number _Format:"
+msgstr "নম্বৰৰ বিন্যাস (_F):"
 
-#: ../data/gcalctool.ui.h:423
-msgid "_Redo"
-msgstr "_Redo"
+#. Title of preferences dialog
+#: ../data/preferences.ui.h:11 ../src/math-preferences.c:231
+msgid "Preferences"
+msgstr "পছন্দসমূহ"
 
-#. Scientific display radio button
-#: ../data/gcalctool.ui.h:425
-msgid "_Sci"
-msgstr "_Sci"
+#. Preferences dialog: label for show thousands separator check button
+#: ../data/preferences.ui.h:13
+#| msgid "Show thousands separator"
+msgid "Show _thousands separators"
+msgstr "হাজাৰ বিভাজকসমূহ দেখুৱাওক (_t)"
 
-#. View|Scientific menu item
-#: ../data/gcalctool.ui.h:427
-msgid "_Scientific"
-msgstr "বৈজ্ঞানিক মোড (_S)"
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../data/preferences.ui.h:15
+#| msgid "Show trailing zeroes"
+msgid "Show trailing _zeroes"
+msgstr "অনুসৰণকাৰী শূণ্য দেখুৱাওক (_z)"
 
-#. Set Precision Dialog: Button to apply settings
-#: ../data/gcalctool.ui.h:429
-msgid "_Set"
-msgstr "_Set"
+#. Preferences dialog: label for word size combo box
+#: ../data/preferences.ui.h:17
+#| msgid "Word size"
+msgid "Word _size:"
+msgstr "শব্দৰ আকাৰ (_s):"
 
-#: ../data/gcalctool.ui.h:430
-msgid "_Undo"
-msgstr "পূৰ্বাবস্থা (_U)"
+#. Preferences dialog: Label for angle unit combo box
+#: ../data/preferences.ui.h:19
+msgid "_Angle units:"
+msgstr "কোণৰ এককসমূহ (_A):"
 
-#. View menu
-#: ../data/gcalctool.ui.h:432
-msgid "_View"
-msgstr "প্ৰদৰ্শন (_V)"
-
-#. This is accessible name for memory register 0.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:434
-msgid "register 0"
-msgstr "0"
-
-#
-#. This is accessible name for memory register 1.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:436
-msgid "register 1"
-msgstr "0"
-
-#
-#. This is accessible name for memory register 2.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:438
-msgid "register 2"
-msgstr "0"
-
-#
-#. This is accessible name for memory register 3.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:440
-msgid "register 3"
-msgstr "0"
-
-#
-#. This is accessible name for memory register 4.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:442
-msgid "register 4"
-msgstr "0"
-
-#
-#. This is accessible name for memory register 5.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:444
-msgid "register 5"
-msgstr "0"
-
-#
-#. This is accessible name for memory register 6.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:446
-msgid "register 6"
-msgstr "0"
-
-#
-#. This is accessible name for memory register 7.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:448
-msgid "register 7"
-msgstr "0"
-
-#
-#. This is accessible name for memory register 8.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:450
-msgid "register 8"
-msgstr "0"
-
-#
-#. This is accessible name for memory register 9.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:452
-msgid "register 9"
-msgstr "0"
-
-#: ../data/gcalctool.ui.h:453
-msgid "x2"
-msgstr "x2"
-
-#. Translators: The window title when in basic mode
-#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:62
+#. Title of main window
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:546
 msgid "Calculator"
 msgstr "ক্যালকুলেটৰ"
 
@@ -1647,133 +505,372 @@ msgstr "ক্যালকুলেটৰ"
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Perform arithmetic, scientific or financial calculations"
 
-#: ../data/gcalctool.schemas.in.h:1
-#, 
-#| msgid "Accuracy"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "নির্ভুলতার মাত্রা"
 
-#: ../data/gcalctool.schemas.in.h:2
-#, 
-msgid "Display Mode"
-msgstr "প্রদর্শনের মোড"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+msgid "Angle units"
+msgstr "কোণৰ এককসমূহ"
 
-#: ../data/gcalctool.schemas.in.h:3
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+msgid "Button mode"
+msgstr "বুটাম অৱস্থা"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+msgid "Currency of the current calculation"
+msgstr "বৰ্তমান গণনাৰ টকা"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+msgid "Currency to convert the current calculation into"
+msgstr "বৰ্তমান গণনা পৰিৱৰ্তন কৰিবলে টকা"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
 msgid ""
-"Indicates whether any trailing zeroes after the number point should be shown "
-"in the display value."
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
 msgstr ""
+"প্ৰদৰ্শন মানত সাংখ্যিক বিন্দুৰ পিছত কোনো অনুসৰণকাৰী শূন্য দেখুৱা হব নে ইংগিত দিয়ে।"
 
-#: ../data/gcalctool.schemas.in.h:4
-msgid "Indicates whether the memory register window is initially displayed."
-msgstr ""
-
-#: ../data/gcalctool.schemas.in.h:5
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
 msgid "Indicates whether thousands separators are shown in large numbers."
-msgstr ""
+msgstr "হাজাৰৰ বিভাজকসমূহ ডাঙৰ সংখ্যাত দেখুৱা হব নে ইংগিত দিয়ে।"
 
-#: ../data/gcalctool.schemas.in.h:6
-#, 
-#| msgid "Mod"
-msgid "Mode"
-msgstr "মোড"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+#| msgid "Numeric point"
+msgid "Number format"
+msgstr "সংখ্যাৰ বিন্যাস"
 
-#: ../data/gcalctool.schemas.in.h:7
-#, 
-#| msgid "Numeric 0"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
 msgid "Numeric Base"
 msgstr "সংখ্যা ০"
 
-#: ../data/gcalctool.schemas.in.h:8
-#, 
-#| msgid "Show memory registers"
-msgid "Show Registers"
-msgstr "রেজিস্টার প্রদর্শন করা হবে"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
+#| msgid "Show Thousands Separator"
+msgid "Show Thousands Separators"
+msgstr "হাজাৰৰ বিভাজকসমূহ দেখুৱাওক"
 
-#: ../data/gcalctool.schemas.in.h:9
-#, 
-#| msgid "Show T_housands Separator"
-msgid "Show Thousands Separator"
-msgstr "হাজার-এর স্থান বিভাজনকারী চিহ্ন প্রদর্শন করা হবে"
-
-#: ../data/gcalctool.schemas.in.h:10
-#, 
-#| msgid "Show _Trailing Zeroes"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
 msgid "Show Trailing Zeroes"
 msgstr "অনুসরণকারী শূণ্য প্রদর্শন করা হবে"
 
-#: ../data/gcalctool.schemas.in.h:11
-msgid ""
-"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+msgid "Source currency"
+msgstr "টকা দেখুৱাওক"
 
-#: ../data/gcalctool.schemas.in.h:12
-msgid ""
-"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
-"\" (fixed-point) and \"SCI\" (scientific)"
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+msgid "Source units"
+msgstr "উৎস এককসমূহ"
 
-#: ../data/gcalctool.schemas.in.h:13
-msgid ""
-"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-"\" (gradians) and \"RAD\" (radians)."
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+msgid "Target currency"
+msgstr "লক্ষ্যৰ টকা"
 
-#: ../data/gcalctool.schemas.in.h:14
-msgid "The initial x-coordinate for the window"
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+msgid "Target units"
+msgstr "লক্ষ্য এককসমূহ"
 
-#: ../data/gcalctool.schemas.in.h:15
-msgid "The initial y-coordinate for the window"
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+msgid "The angle units to use"
+msgstr "ব্যৱহাৰ কৰিবলে কোণ এককসমূহ"
 
-#: ../data/gcalctool.schemas.in.h:16
-msgid ""
-"The number of digits displayed after the numeric point. This value must be "
-"in the range 0 to 9."
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+msgid "The button mode"
+msgstr "বুটাম অৱস্থা"
 
-#: ../data/gcalctool.schemas.in.h:17
-msgid "The number of pixels to place the window from the left of the screen."
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+msgid "The format to display numbers in"
+msgstr "সংখ্যা প্ৰদৰ্শন কৰাৰ বিন্যাস"
 
-#: ../data/gcalctool.schemas.in.h:18
-msgid "The number of pixels to place the window from the top of the screen."
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+msgid "The number of digits displayed after the numeric point"
+msgstr "সাংখ্যিক বিন্দুৰ পিছত প্ৰদৰ্শিত ডিজিটসমূহৰ সংখ্যা"
 
-#: ../data/gcalctool.schemas.in.h:19
-msgid "The numeric base for input and display."
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+#| msgid "Numeric Base"
+msgid "The numeric base"
+msgstr "সাংখ্যিক ভিত্তি"
 
-#: ../data/gcalctool.schemas.in.h:20
-msgid ""
-"The size of the words used in bitwise operations. Valid values are 16, 32 "
-"and 64."
-msgstr ""
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
+msgid "The size of the words used in bitwise operations"
+msgstr "bitwise কাৰ্য্যসমূহত ব্যৱহৃত শব্দৰ আকাৰ"
 
-#: ../data/gcalctool.schemas.in.h:21
-#, 
-#| msgid "Set trigonometric type to degrees"
-msgid "Trigonometric type"
-msgstr "ত্রিকেনমিতির ধরন"
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+#| msgid "Quit the calculator"
+msgid "Units of the current calculation"
+msgstr "বৰ্তমান গণনাত ব্যৱহাৰ কৰা এককসমূহ"
 
-#: ../data/gcalctool.schemas.in.h:22
-#, 
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+msgid "Units to convert the current calculation into"
+msgstr "বৰ্তমান গণনাক পৰিৱৰ্তন কৰিবলে এককসমূহ"
+
+#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
 msgid "Word size"
 msgstr "শব্দের মাপ"
 
-#: ../src/calctool.c:82
-#, , c-format
+#: ../src/currency-manager.c:30
+msgid "UAE Dirham"
+msgstr "UAE ডিৰহাম"
+
+#: ../src/currency-manager.c:31
+msgid "Australian Dollar"
+msgstr "অস্ট্ৰেলিয়ান ড'লাৰ"
+
+#: ../src/currency-manager.c:32
+msgid "Bulgarian Lev"
+msgstr "বুলগেৰিয়ান লেভ"
+
+#: ../src/currency-manager.c:33
+msgid "Bahraini Dinar"
+msgstr "বাহৰেইনি দিনাৰ"
+
+#: ../src/currency-manager.c:34
+msgid "Brunei Dollar"
+msgstr "ব্ৰুনেই ড'লাৰ"
+
+#: ../src/currency-manager.c:35
+msgid "Brazilian Real"
+msgstr "ব্ৰাজিলিয়ান ৰিয়াল"
+
+#: ../src/currency-manager.c:36
+msgid "Botswana Pula"
+msgstr "বট্সৱানা পুলা"
+
+#: ../src/currency-manager.c:37
+msgid "Canadian Dollar"
+msgstr "কানাডিয়ান ড'লাৰ"
+
+#: ../src/currency-manager.c:38
+#| msgid "Frac"
+msgid "CFA Franc"
+msgstr "CFA ফ্ৰাংক"
+
+#: ../src/currency-manager.c:39
+msgid "Swiss Franc"
+msgstr "চুইচ ফ্ৰাংক"
+
+#: ../src/currency-manager.c:40
+msgid "Chilean Peso"
+msgstr "চিলিয়ান পেচো"
+
+#: ../src/currency-manager.c:41
+msgid "Chinese Yuan"
+msgstr "চিনি ইউৱান"
+
+#: ../src/currency-manager.c:42
+msgid "Colombian Peso"
+msgstr "কলোম্বিয়ান পেচো"
+
+#: ../src/currency-manager.c:43
+msgid "Czech Koruna"
+msgstr "চেক কৰুনা"
+
+#: ../src/currency-manager.c:44
+msgid "Danish Krone"
+msgstr "ডানিচ ক্ৰৌন"
+
+#: ../src/currency-manager.c:45
+msgid "Algerian Dinar"
+msgstr "আলজেৰিয়ান দিনাৰ"
+
+#: ../src/currency-manager.c:46
+msgid "Estonian Kroon"
+msgstr "এচটোনিয়ান ক্ৰুন"
+
+#: ../src/currency-manager.c:47
+#| msgid "Error"
+msgid "Euro"
+msgstr "ইউৰো"
+
+#: ../src/currency-manager.c:48
+msgid "Pound Sterling"
+msgstr "পাউণ্ড স্টাৰলিং"
+
+#: ../src/currency-manager.c:49
+msgid "Hong Kong Dollar"
+msgstr "হঙ কঙ ড'লাৰ"
+
+#: ../src/currency-manager.c:50
+msgid "Croatian Kuna"
+msgstr "ক্ৰোৱেচিয়ান কুনা"
+
+#: ../src/currency-manager.c:51
+msgid "Hungarian Forint"
+msgstr "হাঙেৰিয়ান ফোৰিন্ট"
+
+#: ../src/currency-manager.c:52
+msgid "Indonesian Rupiah"
+msgstr "ইণ্ডোনেচিয়ান ৰুপিয়াহ"
+
+#: ../src/currency-manager.c:53
+msgid "Israeli New Shekel"
+msgstr "ইজৰাইলি নিউ শেকেল"
+
+#: ../src/currency-manager.c:54
+msgid "Indian Rupee"
+msgstr "ভাৰতীয় ৰুপি"
+
+#: ../src/currency-manager.c:55
+msgid "Iranian Rial"
+msgstr "ইৰানিয়ান ৰিয়াল"
+
+#: ../src/currency-manager.c:56
+msgid "Icelandic Krona"
+msgstr "আইচলেণ্ডিক ক্ৰোনা"
+
+#: ../src/currency-manager.c:57
+msgid "Japanese Yen"
+msgstr "জাপানী ইয়েন"
+
+#: ../src/currency-manager.c:58
+msgid "South Korean Won"
+msgstr "দক্ষিন কৰিয়াৰ ওন"
+
+#: ../src/currency-manager.c:59
+msgid "Kuwaiti Dinar"
+msgstr "কুৱেটি দিনাৰ"
+
+#: ../src/currency-manager.c:60
+msgid "Kazakhstani Tenge"
+msgstr "কাজাকস্তানি টেঞ্জ"
+
+#: ../src/currency-manager.c:61
+msgid "Sri Lankan Rupee"
+msgstr "শ্ৰী লঙকাৰ ৰুপি"
+
+#: ../src/currency-manager.c:62
+msgid "Lithuanian Litas"
+msgstr "লিথুৱেনিয়ান লিটাচ"
+
+#: ../src/currency-manager.c:63
+msgid "Latvian Lats"
+msgstr "লাটভিয়ান লাট্চ"
+
+#: ../src/currency-manager.c:64
+msgid "Libyan Dinar"
+msgstr "লিব্য়ান দিনাৰ"
+
+#: ../src/currency-manager.c:65
+msgid "Mauritian Rupee"
+msgstr "মৌৰিচিয়ান ৰুপি"
+
+#: ../src/currency-manager.c:66
+msgid "Mexican Peso"
+msgstr "মেক্সিকান পেচো"
+
+#: ../src/currency-manager.c:67
+msgid "Malaysian Ringgit"
+msgstr "মালায়চিয়ান ৰিঙগিট"
+
+#: ../src/currency-manager.c:68
+msgid "Norwegian Krone"
+msgstr "নোৰৱেইয়ান ক্ৰৌন"
+
+#: ../src/currency-manager.c:69
+msgid "Nepalese Rupee"
+msgstr "নেপালী ৰুপি"
+
+#: ../src/currency-manager.c:70
+msgid "New Zealand Dollar"
+msgstr "নিউ জিলেণ্ড ড'লাৰ"
+
+#: ../src/currency-manager.c:71
+msgid "Omani Rial"
+msgstr "অমানি ৰিয়াল"
+
+#: ../src/currency-manager.c:72
+msgid "Peruvian Nuevo Sol"
+msgstr "পেৰুভিয়ান নিভো চ'ল"
+
+#: ../src/currency-manager.c:73
+msgid "Philippine Peso"
+msgstr "ফিলিপাইন পেচো"
+
+#: ../src/currency-manager.c:74
+msgid "Pakistani Rupee"
+msgstr "পাকিস্তানি ৰুপি"
+
+#: ../src/currency-manager.c:75
+msgid "Polish Zloty"
+msgstr "পলিচ জ্লটি"
+
+#: ../src/currency-manager.c:76
+msgid "Qatari Riyal"
+msgstr "কাটাৰী ৰিয়াল"
+
+#: ../src/currency-manager.c:77
+msgid "New Romanian Leu"
+msgstr "নিউ ৰমানিয়ান লিউ"
+
+#: ../src/currency-manager.c:78
+msgid "Russian Rouble"
+msgstr "ৰাচিয়ান ৰাবুল"
+
+#: ../src/currency-manager.c:79
+msgid "Saudi Riyal"
+msgstr "চাউদি ৰিয়াল"
+
+#: ../src/currency-manager.c:80
+msgid "Swedish Krona"
+msgstr "চুইডিচ ক্ৰোনা"
+
+#: ../src/currency-manager.c:81
+msgid "Singapore Dollar"
+msgstr "চিঙাপৌৰ ড'লাৰ"
+
+#: ../src/currency-manager.c:82
+msgid "Thai Baht"
+msgstr "থাই বাহ্ট"
+
+#: ../src/currency-manager.c:83
+msgid "Tunisian Dinar"
+msgstr "টিউনিচিয়ান দিনাৰ"
+
+#: ../src/currency-manager.c:84
+msgid "New Turkish Lira"
+msgstr "নিউ টাৰ্কিচ লিৰা"
+
+#: ../src/currency-manager.c:85
+msgid "T&T Dollar (TTD)"
+msgstr "T&T ড'লাৰ (TTD)"
+
+#: ../src/currency-manager.c:86
+msgid "US Dollar"
+msgstr "US ড'লাৰ"
+
+#: ../src/currency-manager.c:87
+msgid "Uruguayan Peso"
+msgstr "ওৰুগুৱান পেচো"
+
+#: ../src/currency-manager.c:88
+msgid "Venezuelan Bolívar"
+msgstr "ভেনিজুৱেলান বলিভাৰ"
+
+#: ../src/currency-manager.c:89
+msgid "South African Rand"
+msgstr "দক্ষিণ আফ্ৰিকান ৰাণ্ড"
+
+#: ../src/financial.c:70
+#| msgid "Error, operands must be integers"
+msgid "Error: the number of periods must be positive"
+msgstr "ত্ৰুটি: ম্যাদৰ সংখ্যা ধনাত্মক হব লাগিব"
+
+#. Description on how to use gcalctool displayed on command-line
+#: ../src/gcalctool.c:77
+#, c-format
+#| msgid ""
+#| "Usage:\n"
+#| "  %s - Perform mathematical calculations"
 msgid ""
 "Usage:\n"
-"  %s - Perform mathematical calculations"
+"  %s — Perform mathematical calculations"
 msgstr ""
-"ব্যবহারপ্রণালী:\n"
-"  %s - Perform mathematical calculations"
+"ব্যৱহাৰ:\n"
+"  %s — গাণিতিক গণনাসমূহ পৰিৱেশন কৰক"
 
-#: ../src/calctool.c:90
-#, , c-format
+#. Description on gcalctool command-line help options displayed on command-line
+#: ../src/gcalctool.c:85
+#, c-format
 msgid ""
 "Help Options:\n"
 "  -v, --version                   Show release version\n"
@@ -1787,8 +884,9 @@ msgstr ""
 "  --help-all                      Show all help options\n"
 "  --help-gtk                      Show GTK+ options"
 
-#: ../src/calctool.c:101
-#, , c-format
+#. Description on gcalctool command-line GTK+ options displayed on command-line
+#: ../src/gcalctool.c:96
+#, c-format
 msgid ""
 "GTK+ Options:\n"
 "  --class=CLASS                   Program class as used by the window "
@@ -1810,474 +908,567 @@ msgstr ""
 "  --gtk-module=MODULES            Load additional GTK+ modules\n"
 "  --g-fatal-warnings              Make all warnings fatal"
 
-#: ../src/calctool.c:114
-#, , c-format
+#. Description on gcalctool application options displayed on command-line
+#: ../src/gcalctool.c:110
+#, c-format
+#| msgid ""
+#| "Application Options:\n"
+#| "  -u, --unittest                  Perform unittests\n"
+#| "  -s, --solve <equation>          Solve the given equation"
 msgid ""
 "Application Options:\n"
-"  -u, --unittest                  Perform unittests\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
-"Application Options:\n"
-"  -u, --unittest                  Perform unittests\n"
-"  -s, --solve <equation>          Solve the given equation"
+"অনুপ্ৰয়োগ বিকল্পসমূহ:\n"
+"  -s, --solve <equation>          প্ৰদান কৰা সমীকৰণ সমাধান কৰক"
 
-#. Translators: Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:150
+#. Error printed to stderr when user uses --solve argument without an equation
+#: ../src/gcalctool.c:154
 #, c-format
 msgid "Argument --solve requires an equation to solve"
-msgstr ""
+msgstr "তৰ্ক --solve ৰ সমাধান কৰিবলে এটা সমীকৰণৰ প্ৰয়োজন"
 
-#. Translators: Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:163
-#, , c-format
+#. Error printed to stderr when user provides an unknown command-line argument
+#: ../src/gcalctool.c:164
+#, c-format
 msgid "Unknown argument '%s'"
 msgstr "অজানা আর্গুমেন্ট '%s'"
 
-#. Translators: A log message displayed when an invalid accuracy
-#. is read from the configuration
-#: ../src/calctool.c:191
-#, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: accuracy should be in the range 0-%d\n"
+#. Tooltip for the Pi button
+#: ../src/math-buttons.c:96
+msgid "Pi [Ctrl+P]"
+msgstr "Pi [Ctrl+P]"
 
-#: ../src/display.c:417
+#. Tooltip for the Euler's Number button
+#: ../src/math-buttons.c:99
+#| msgid "Euler's Number (e)"
+msgid "Euler’s Number"
+msgstr "Euler ৰ সংখ্যা"
+
+#. Tooltip for the subscript button
+#: ../src/math-buttons.c:104
+msgid "Subscript mode [Alt]"
+msgstr "চাবস্ক্ৰিপ্ট অৱস্থা [Alt]"
+
+#. Tooltip for the superscript button
+#: ../src/math-buttons.c:107
+msgid "Superscript mode [Ctrl]"
+msgstr "চুপাৰস্ক্ৰিপ্ট অৱস্থা [Ctrl]"
+
+#. Tooltip for the scientific exponent button
+#: ../src/math-buttons.c:110
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "বিজ্ঞানভিত্তিক ঘাত [Ctrl+E]"
+
+#. Tooltip for the add button
+#: ../src/math-buttons.c:113
+msgid "Add [+]"
+msgstr "যোগ কৰক"
+
+#. Tooltip for the subtract button
+#: ../src/math-buttons.c:116
+msgid "Subtract [-]"
+msgstr "বিয়োগ"
+
+#. Tooltip for the multiply button
+#: ../src/math-buttons.c:119
+msgid "Multiply [*]"
+msgstr "গুণ"
+
+#. Tooltip for the divide button
+#: ../src/math-buttons.c:122
+msgid "Divide [/]"
+msgstr "ভাগ"
+
+#. Tooltip for the modulus divide button
+#: ../src/math-buttons.c:125
+#| msgid "Modulus Division [M]"
+msgid "Modulus divide"
+msgstr "মডুলাচ হৰণ"
+
+#. Tooltip for the additional functions button
+#: ../src/math-buttons.c:128
+#| msgid "Edit Functions"
+msgid "Additional Functions"
+msgstr "অতিৰিক্ত ফলনসমূহ"
+
+#. Tooltip for the exponent button
+#: ../src/math-buttons.c:131
+msgid "Exponent [^ or **]"
+msgstr "ঘাতচিহ্ন [^ অথবা **]"
+
+#. Tooltip for the square button
+#: ../src/math-buttons.c:134
+#, fuzzy
+#| msgid "Square [@]"
+msgid "Square [Ctrl+2]"
+msgstr "Square [@]"
+
+#. Tooltip for the percentage button
+#: ../src/math-buttons.c:137
+msgid "Percentage [%]"
+msgstr "শতাংশ"
+
+#. Tooltip for the factorial button
+#: ../src/math-buttons.c:140
+#, fuzzy
+#| msgid "Factorial"
+msgid "Factorial [!]"
+msgstr "গৌণিক"
+
+#. Tooltip for the absolute value button
+#: ../src/math-buttons.c:143
+#, fuzzy
+#| msgid "Absolute value [u]"
+msgid "Absolute value [|]"
+msgstr "সম্পূৰ্ণ মান"
+
+#. Tooltip for the complex argument component button
+#: ../src/math-buttons.c:146
+msgid "Complex argument"
+msgstr ""
+
+#. Tooltip for the complex conjugate button
+#: ../src/math-buttons.c:149
+msgid "Complex conjugate"
+msgstr ""
+
+#. Tooltip for the root button
+#: ../src/math-buttons.c:152
+msgid "Root [Ctrl+R]"
+msgstr ""
+
+#. Tooltip for the square root button
+#: ../src/math-buttons.c:155
+#, fuzzy
+#| msgid "Square root [s]"
+msgid "Square root [Ctrl+R]"
+msgstr "Square root [s]"
+
+#. Tooltip for the logarithm button
+#: ../src/math-buttons.c:158
+msgid "Logarithm"
+msgstr ""
+
+#
+#. Tooltip for the natural logarithm button
+#: ../src/math-buttons.c:161
+#, fuzzy
+#| msgid "Natural logarithm [n]"
+msgid "Natural Logarithm"
+msgstr "স্বাভাবিক লগারিদম [n]"
+
+#. Tooltip for the sine button
+#: ../src/math-buttons.c:164
+#, fuzzy
+#| msgid "Sine [k]"
+msgid "Sine"
+msgstr "Sine [k]"
+
+#
+#. Tooltip for the cosine button
+#: ../src/math-buttons.c:167
+#, fuzzy
+#| msgid "Cosine [j]"
+msgid "Cosine"
+msgstr "Cosine [J]"
+
+#
+#. Tooltip for the tangent button
+#: ../src/math-buttons.c:170
+#, fuzzy
+#| msgid "Tangent [w]"
+msgid "Tangent"
+msgstr "Tangent [L]"
+
+#. Tooltip for the hyperbolic sine button
+#: ../src/math-buttons.c:173
+#, fuzzy
+#| msgid "Hyperbolic Sine [k]"
+msgid "Hyperbolic Sine"
+msgstr "Hyperbolic Sine [k]"
+
+#. Tooltip for the hyperbolic cosine button
+#: ../src/math-buttons.c:176
+#, fuzzy
+#| msgid "Hyperbolic Cosine [j]"
+msgid "Hyperbolic Cosine"
+msgstr "Hyperbolic Cosine [j]"
+
+#
+#. Tooltip for the hyperbolic tangent button
+#: ../src/math-buttons.c:179
+#, fuzzy
+#| msgid "Hyperbolic Tangent [w]"
+msgid "Hyperbolic Tangent"
+msgstr "Periodic payment [P]"
+
+#. Tooltip for the inverse button
+#: ../src/math-buttons.c:182
+#, fuzzy
+#| msgid "Inverse Sine [K]"
+msgid "Inverse [Ctrl+I]"
+msgstr "Inverse Sine [K]"
+
+#. Tooltip for the boolean AND button
+#: ../src/math-buttons.c:185
+msgid "Boolean AND"
+msgstr ""
+
+#. Tooltip for the boolean OR button
+#: ../src/math-buttons.c:188
+msgid "Boolean OR"
+msgstr ""
+
+#. Tooltip for the exclusive OR button
+#: ../src/math-buttons.c:191
+msgid "Boolean Exclusive OR"
+msgstr ""
+
+#. Tooltip for the boolean NOT button
+#: ../src/math-buttons.c:194
+msgid "Boolean NOT"
+msgstr ""
+
+#. Tooltip for the integer component button
+#: ../src/math-buttons.c:197 ../src/math-buttons.c:1038
+#, fuzzy
+#| msgid "Integer portion"
+msgid "Integer Component"
+msgstr "পূৰ্ণসংখ্যা অংশ"
+
+#. Tooltip for the fractional component button
+#: ../src/math-buttons.c:200 ../src/math-buttons.c:1040
+#, fuzzy
+#| msgid "Fractional portion"
+msgid "Fractional Component"
+msgstr "ভগ্নাংশ অংশ"
+
+#. Tooltip for the real component button
+#: ../src/math-buttons.c:203
+msgid "Real Component"
+msgstr ""
+
+#. Tooltip for the imaginary component button
+#: ../src/math-buttons.c:206
+msgid "Imaginary Component"
+msgstr ""
+
+#. Tooltip for the ones' complement button
+#: ../src/math-buttons.c:209
+#, fuzzy
+#| msgid "1's complement [z]"
+msgid "Ones' Complement"
+msgstr "1's complement [z]"
+
+#. Tooltip for the two's complement button
+#: ../src/math-buttons.c:212
+#, fuzzy
+#| msgid "1's complement [z]"
+msgid "Two's Complement"
+msgstr "1's complement [z]"
+
+#. Tooltip for the truncate button
+#: ../src/math-buttons.c:215
+#, fuzzy
+#| msgid "Trunc"
+msgid "Truncate"
+msgstr "Trunc"
+
+#. Tooltip for the start group button
+#: ../src/math-buttons.c:218
+#, fuzzy
+#| msgid "Start group of calculations [(]"
+msgid "Start Group [(]"
+msgstr "আৰম্ভ সৰ্বমোট"
+
+#. Tooltip for the end group button
+#: ../src/math-buttons.c:221
+msgid "End Group [)]"
+msgstr ""
+
+#. Tooltip for the solve button
+#: ../src/math-buttons.c:230
+#, fuzzy
+#| msgid "Calculate result"
+msgid "Calculate Result"
+msgstr "ফলাফল গণনা কৰো"
+
+#. Tooltip for the factor button
+#: ../src/math-buttons.c:233
+msgid "Factorize [Ctrl+F]"
+msgstr ""
+
+#. Tooltip for the clear button
+#: ../src/math-buttons.c:236
+#, fuzzy
+#| msgid "Clear displayed value [Escape]"
+msgid "Clear Display [Escape]"
+msgstr "Clear মান"
+
+#. Tooltip for the undo button
+#: ../src/math-buttons.c:239
+msgid "Undo [Ctrl+Z]"
+msgstr ""
+
+#
+#. Tooltip for the double declining depreciation button
+#: ../src/math-buttons.c:251
+#, fuzzy
+#| msgid "Double-Declining Depreciation"
+msgid "Double Declining Depreciation"
+msgstr "ডাবল"
+
+#. Tooltip for the financial term button
+#: ../src/math-buttons.c:257
+#, fuzzy
+#| msgid "Financial"
+msgid "Financial Term"
+msgstr "Financial"
+
+#
+#. Tooltip for the sum of the years digits depreciation button
+#: ../src/math-buttons.c:260
+#, fuzzy
+#| msgid "Sum-Of-The-Years'-Digits Depreciation"
+msgid "Sum of the Years Digits Depreciation"
+msgstr "সৰ্বমোট বত্সৰ"
+
+#
+#. Tooltip for the straight line depreciation button
+#: ../src/math-buttons.c:263
+#, fuzzy
+#| msgid "Straight-Line Depreciation"
+msgid "Straight Line Depreciation"
+msgstr "Straight-line depreciation"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+#: ../src/math-buttons.c:653
+#, fuzzy
+#| msgid "_Bin"
+msgid "Binary"
+msgstr "_Bin"
+
+#. Number display mode combo: Octal, e.g. 2322₈
+#: ../src/math-buttons.c:657
+#, fuzzy
+#| msgid "_Oct"
+msgid "Octal"
+msgstr "_Oct"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../src/math-buttons.c:661
+msgid "Decimal"
+msgstr ""
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#: ../src/math-buttons.c:665
+#, fuzzy
+#| msgid "Hexadecimal digit A"
+msgid "Hexadecimal"
+msgstr "হেক্সাডেসিমেল সংখ্যা A"
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#: ../src/math-buttons.c:948 ../src/math-buttons.c:992
+#, fuzzy, c-format
+#| msgid "_1 place"
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "_1 place"
+msgstr[1] "_1 place"
+
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#: ../src/math-buttons.c:952 ../src/math-buttons.c:996
+#, fuzzy, c-format
+#| msgid "_1 place"
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "_1 place"
+msgstr[1] "_1 place"
+
+#. Tooltip for the round button
+#: ../src/math-buttons.c:1042
+#, fuzzy
+#| msgid "Rand"
+msgid "Round"
+msgstr "Rand"
+
+#. Tooltip for the floor button
+#: ../src/math-buttons.c:1044
+msgid "Floor"
+msgstr ""
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1046
+msgid "Ceiling"
+msgstr ""
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.c:1048
+msgid "Sign"
+msgstr ""
+
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.c:412
+#, fuzzy
+#| msgid "  "
+msgid " in "
+msgstr "  "
+
+#. Tooltip for swap conversion button
+#: ../src/math-converter.c:427
+msgid "Switch conversion units"
+msgstr ""
+
+#. Error shown when trying to undo with no undo history
+#: ../src/math-equation.c:458
 msgid "No undo history"
 msgstr "না"
 
-#: ../src/display.c:432
-msgid "No redo steps"
+#. Error shown when trying to redo with no redo history
+#: ../src/math-equation.c:485
+#, fuzzy
+#| msgid "No undo history"
+msgid "No redo history"
 msgstr "না"
 
-#. Translators: This message is displayed in the status bar when an
-#. invalid user-defined function is executed
-#: ../src/functions.c:235
-msgid "Malformed function"
-msgstr "Malformed function"
-
-#. Translators: This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-#: ../src/functions.c:322
-msgid "No sane value to do bitwise shift"
-msgstr "না মান"
-
-#: ../src/functions.c:343 ../src/functions.c:398
-msgid "No sane value to convert"
-msgstr "না মান"
-
-#: ../src/functions.c:366 ../src/functions.c:418
+#: ../src/math-equation.c:943
 msgid "No sane value to store"
 msgstr "না মান"
 
-#: ../src/functions.c:583
-msgid "Invalid number for the current base"
-msgstr "সংখ্যা উল্লিখিত সময় অবধি"
-
-#. Translators: Error displayed to user when they
-#. * perform an invalid bitwise operation, e.g.
-#. * 1 XOR -1
-#: ../src/functions.c:590
-#, 
-#| msgid "Invalid bitwise operation parameter(s)"
-msgid "Invalid bitwise operation"
-msgstr "বিট প্রণালীর জন্য অবৈধ মান"
-
-#. Translators: Error displayed to user when they
-#. * perform an invalid modulus operation, e.g.
-#. * 6 MOD 1.2
-#: ../src/functions.c:597
-#, 
-#| msgid "Invalid modulus operation parameter(s)"
-msgid "Invalid modulus operation"
-msgstr "মডুলাস প্রণালীর জন্য অবৈধ মান"
-
-#. Translators; Error displayd to user when they
-#. * perform a bitwise operation on numbers greater
-#. * than the current word
-#: ../src/functions.c:604
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/math-equation.c:1225
 msgid "Overflow. Try a bigger word size"
 msgstr ""
 
-#. Translators; Error displayd to user when they
-#. * an unknown variable is entered
-#: ../src/functions.c:610
-#, 
-msgid "Unknown variable"
+#. Error displayed to user when they an unknown variable is entered
+#: ../src/math-equation.c:1230
+#, fuzzy, c-format
+#| msgid "Unknown variable"
+msgid "Unknown variable '%s'"
 msgstr "অজানা ভেরিয়েবল"
 
-#. Translators; Error displayd to user when they
-#. * an unknown function is entered
-#: ../src/functions.c:616
-#, 
-msgid "Unknown function"
+#. Error displayed to user when an unknown function is entered
+#: ../src/math-equation.c:1235
+#, c-format
+msgid "Function '%s' is not defined"
+msgstr ""
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../src/math-equation.c:1240
+#, fuzzy
+#| msgid "Unknown function"
+msgid "Unknown conversion"
 msgstr "অজানা ফাংশান"
 
-#. Translators: Error displayed to user when they
-#. * enter an invalid calculation
-#: ../src/functions.c:626
+#. Error displayed to user when they enter an invalid calculation
+#: ../src/math-equation.c:1249
 msgid "Malformed expression"
 msgstr "Malformed expression"
 
-#. Translators: The window title when in advanced mode
-#: ../src/gtk.c:64
-msgid "Calculator - Advanced"
-msgstr "ক্যালকুলেটৰ"
-
-#. Translators: The window title when in financial mode
-#: ../src/gtk.c:66
-msgid "Calculator - Financial"
-msgstr "ক্যালকুলেটৰ"
-
-#. Translators: The window title when in scientific mode
-#: ../src/gtk.c:68
-msgid "Calculator - Scientific"
-msgstr "ক্যালকুলেটৰ বৈজ্ঞানিক"
-
 #
-#. Translators: The window title when in programming mode
-#: ../src/gtk.c:70
-msgid "Calculator - Programming"
+#: ../src/math-equation.c:1263
+#, fuzzy
+#| msgid "C_alculate"
+msgid "Calculating"
 msgstr "ক্যালকুলেটৰ"
 
-#. Translators: The window title when in basic mode. %s is replaced with the hostname.
-#: ../src/gtk.c:76
-#, c-format
-msgid "Calculator [%s]"
-msgstr "Calculator [%s]"
-
-#. Translators: The window title when in advanced mode. %s is replaced with the hostname.
-#: ../src/gtk.c:78
-#, c-format
-msgid "Calculator [%s] - Advanced"
-msgstr "Calculator [%s] - উন্নত"
-
-#. Translators: The window title when in financial mode. %s is replaced with the hostname.
-#: ../src/gtk.c:80
-#, c-format
-msgid "Calculator [%s] - Financial"
-msgstr "Calculator [%s] - Financial"
-
-#. Translators: The window title when in scientific mode. %s is replaced with the hostname.
-#: ../src/gtk.c:82
-#, c-format
-msgid "Calculator [%s] - Scientific"
-msgstr "Calculator [%s] - বৈজ্ঞানিক"
-
-#. Translators: The window title when in programming mode. %s is replaced with the hostname.
-#: ../src/gtk.c:84
-#, c-format
-msgid "Calculator [%s] - Programming"
-msgstr "Calculator [%s] - উন্নত"
-
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:572
-msgid "Error loading user interface"
-msgstr "ত্ৰুটি"
-
-#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:575
-#, , c-format
-#| msgid ""
-#| "The user interface file %s is missing or unable to be loaded. Please "
-#| "check your installation."
-msgid ""
-"A required file is missing or damaged, please check your installation.\n"
-"\n"
-"%s"
+#. Error displayed when trying to factorize a non-integer value
+#: ../src/math-equation.c:1394
+msgid "Need an integer to factorize"
 msgstr ""
-"প্রয়োজনীয় একটি ফাইল অনুপস্থিত অথবা ক্ষতিগ্রস্ত হয়েছে। অনুগ্রহ করে ইনস্টলেশন পরীক্ষা "
-"করুন।\n"
-"\n"
-"%s"
 
-#. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
-#: ../src/gtk.c:672
+#. This message is displayed in the status bar when a bit
+#. shift operation is performed and the display does not contain a number
+#: ../src/math-equation.c:1469
+#, fuzzy
+#| msgid "No sane value to do bitwise shift"
+msgid "No sane value to bitwise shift"
+msgstr "না মান"
+
+#. Message displayed when cannot toggle bit in display
+#: ../src/math-equation.c:1500
+msgid "Displayed value not an integer"
+msgstr ""
+
+#. Digits localized for the given language
+#: ../src/math-equation.c:1925
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr ""
+
+#
+#. Label on close button in preferences dialog
+#: ../src/math-preferences.c:236
+#, fuzzy
+#| msgid "_Cost:"
+msgid "_Close"
+msgstr "Cos"
+
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.c:246 ../src/unit-manager.c:54
+#, fuzzy
+#| msgid "De_grees"
+msgid "Degrees"
+msgstr "ডিগ্ৰি (_g)"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.c:250 ../src/unit-manager.c:55
+#, fuzzy
+#| msgid "_Radians"
+msgid "Radians"
+msgstr "ৰেডিয়েন (_R)"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.c:254 ../src/unit-manager.c:56
+#, fuzzy
+#| msgid "Gr_adians"
+msgid "Gradians"
+msgstr "গ্ৰেডিয়েন (_a)"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
+#: ../src/math-preferences.c:264
+msgid "Automatic"
+msgstr ""
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.c:268
+#, fuzzy
+#| msgid "_Fix"
+msgid "Fixed"
+msgstr "_Fix"
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.c:272
+msgid "Scientific"
+msgstr "বৈজ্ঞানিক"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.c:276
+msgid "Engineering"
+msgstr ""
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/math-preferences.c:287
 #, c-format
-msgid "_Other (%d) ..."
-msgstr "অন্য (%d) ..."
-
-#. Translators: Tooltip for accuracy button
-#: ../src/gtk.c:678
-#, c-format
-msgid "Set accuracy from 0 to %d numeric place. [A]"
-msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-msgstr[0] "Set accuracy from 0 to %d numeric place. [A]"
-msgstr[1] "Set accuracy from 0 to %d numeric places. [A]"
-
-#. Translators: The sine button
-#: ../src/gtk.c:703
-#, 
-#| msgid "Sin"
-msgid "sin"
-msgstr "sin"
-
-#. Translators: The inverse sine button
-#: ../src/gtk.c:705
-#, 
-#| msgid "Sin<sup>-1</sup>"
-msgid "sin<sup>−1</sup>"
-msgstr "sin<sup>−1</sup>"
-
-#. Translators: The hyperbolic sine button
-#: ../src/gtk.c:707
-#, 
-#| msgid "Sinh"
-msgid "sinh"
-msgstr "sinh"
-
-#. Translators: The inverse hyperbolic sine button
-#: ../src/gtk.c:709
-#, 
-#| msgid "Sinh<sup>-1</sup>"
-msgid "sinh<sup>−1</sup>"
-msgstr "sinh<sup>−1</sup>"
-
-#. Translators: The sine tooltip
-#: ../src/gtk.c:712
-msgid "Sine [k]"
-msgstr "Sine [k]"
-
-#. Translators: The inverse sine tooltip
-#: ../src/gtk.c:714
-msgid "Inverse Sine [K]"
-msgstr "Inverse Sine [K]"
-
-#. Translators: The hyperbolic sine tooltip
-#: ../src/gtk.c:716
-msgid "Hyperbolic Sine [k]"
-msgstr "Hyperbolic Sine [k]"
-
-#. Translators: The hyperbolic inverse sine tooltip
-#: ../src/gtk.c:718
-msgid "Hyperbolic Inverse Sine [K]"
-msgstr "Hyperbolic Inverse Sine [K]"
-
-#. Translators: The cosine button
-#: ../src/gtk.c:722
-#, 
-#| msgid "Cos"
-msgid "cos"
-msgstr "cos"
-
-#. Translators: The inverse cosine button
-#: ../src/gtk.c:724
-#, 
-#| msgid "Cos<sup>-1</sup>"
-msgid "cos<sup>−1</sup>"
-msgstr "cos<sup>−1</sup>"
-
-#. Translators: The hyperbolic cosine button
-#: ../src/gtk.c:726
-#, 
-#| msgid "Cosh"
-msgid "cosh"
-msgstr "cosh"
-
-#. Translators: The inverse hyperbolic cosine button
-#: ../src/gtk.c:728
-#, 
-#| msgid "Cosh<sup>-1</sup>"
-msgid "cosh<sup>−1</sup>"
-msgstr "cosh<sup>−1</sup>"
+msgid "Show %d decimal _places"
+msgstr ""
 
 #
-#. Translators: The cosine tooltip
-#: ../src/gtk.c:731
-msgid "Cosine [j]"
-msgstr "Cosine [J]"
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/math-window.c:172
+msgid "Unable to open help file"
+msgstr "সহায়িকাৰ নথিপত্ৰ খুলিবলৈ ব্যৰ্থ"
 
-#
-#. Translators: The inverse cosine tooltip
-#: ../src/gtk.c:733
-msgid "Inverse Cosine [J]"
-msgstr "Cosine [J]"
-
-#. Translators: The hyperbolic cosine tooltip
-#: ../src/gtk.c:735
-msgid "Hyperbolic Cosine [j]"
-msgstr "Hyperbolic Cosine [j]"
-
-#. Translators: The hyperbolic inverse cosine tooltip
-#: ../src/gtk.c:737
-msgid "Hyperbolic Inverse Cosine [J]"
-msgstr "Hyperbolic Inverse Cosine [J]"
-
-#. Translators: The tangent button
-#: ../src/gtk.c:741
-#, 
-#| msgid "Tan"
-msgid "tan"
-msgstr "tan"
-
-#. Translators: The inverse tangent button
-#: ../src/gtk.c:743
-#, 
-#| msgid "Tan<sup>-1</sup>"
-msgid "tan<sup>−1</sup>"
-msgstr "tan<sup>−1</sup>"
-
-#. Translators: The hyperbolic tangent button
-#: ../src/gtk.c:745
-#, 
-#| msgid "Tanh"
-msgid "tanh"
-msgstr "tanh"
-
-#. Translators: The inverse hyperbolic tangent button
-#: ../src/gtk.c:747
-#, 
-#| msgid "Tanh<sup>-1</sup>"
-msgid "tanh<sup>−1</sup>"
-msgstr "tanh<sup>−1</sup>"
-
-#
-#. Translators: The tangent tooltip
-#: ../src/gtk.c:750
-msgid "Tangent [w]"
-msgstr "Tangent [L]"
-
-#
-#. Translators: The inverse tangent tooltip
-#: ../src/gtk.c:752
-msgid "Inverse Tangent [W]"
-msgstr "Tangent [L]"
-
-#
-#. Translators: The hyperbolic tangent tooltip
-#: ../src/gtk.c:754
-msgid "Hyperbolic Tangent [w]"
-msgstr "Periodic payment [P]"
-
-#. Translators: The hyperbolic inverse tangent tooltip
-#: ../src/gtk.c:756
-msgid "Hyperbolic Inverse Tangent [W]"
-msgstr "Hyperbolic Inverse Tangent [W]"
-
-#. Translators: The natural logaritm button
-#: ../src/gtk.c:761
-#, 
-#| msgid "Sln"
-msgid "ln"
-msgstr "ln"
-
-#
-#. Translators: The e to the power of x button
-#: ../src/gtk.c:763
-msgid "e<sup><i>x</i></sup>"
-msgstr "১০<sup><i>x</i></sup>"
-
-#
-#. Translators: Tooltip for the natural log button
-#: ../src/gtk.c:766
-#, 
-#| msgid "Natural log [n]"
-msgid "Natural logarithm [n]"
-msgstr "স্বাভাবিক লগারিদম [n]"
-
-#
-#. Translators: Tooltip for the e to the power of x button
-#: ../src/gtk.c:768
-msgid "e to the power of the displayed value [N]"
-msgstr "e সৰ্বমোট মান"
-
-#. Translators: The 10-based logaritm button
-#: ../src/gtk.c:773
-#, 
-#| msgid "Log"
-msgid "log"
-msgstr "লগ"
-
-#. Translators: The 10 to the power of x button
-#: ../src/gtk.c:775
-msgid "10<sup><i>x</i></sup>"
-msgstr "১০<sup><i>x</i></sup>"
-
-#
-#. Translators: Tooltip for the log base 10 button
-#: ../src/gtk.c:778
-#, 
-#| msgid "Base 10 log [g]"
-msgid "Base 10 logarithm [g]"
-msgstr "ভূমি ১০ লগারিদম [g]"
-
-#
-#. Translators: Tooltip for the 10 to the power of x button
-#: ../src/gtk.c:780
-msgid "10 to the power of displayed value [G]"
-msgstr "সৰ্বমোট মান"
-
-#. Translators: The 2-based logaritm button
-#: ../src/gtk.c:785
-#, 
-#| msgid "Log<sub>2</sub>"
-msgid "log<sub>2</sub>"
-msgstr "log<sub>2</sub>"
-
-#
-#. Translators: The 2 to the power of x button
-#: ../src/gtk.c:787
-msgid "2<sup><i>x</i></sup>"
-msgstr "%x"
-
-#
-#. Translators: Tooltip for the log base 2 button
-#: ../src/gtk.c:790
-#, 
-#| msgid "Base 2 log [h]"
-msgid "Base 2 logarithm [h]"
-msgstr "ভূমি ১০ লগারিদম [h]"
-
-#
-#. Translators: Tooltip for the 2 to the power of x button
-#: ../src/gtk.c:792
-msgid "2 to the power of the displayed value [H]"
-msgstr "e সৰ্বমোট মান"
-
-#
-#. Translators: The x to the power of y button
-#: ../src/gtk.c:797
-msgid "x<sup><i>y</i></sup>"
-msgstr "১০<sup><i>x</i></sup>"
-
-#
-#. Translators: The x to the power of reciprocal y button
-#: ../src/gtk.c:799
-msgid "x<sup>1/<i>y</i></sup>"
-msgstr "১০<sup><i>x</i></sup>"
-
-#
-#. Translators: Tooltip for the x to the power of y button
-#: ../src/gtk.c:802
-msgid "Raise displayed value to the power of y [o]"
-msgstr "মান সৰ্বমোট y"
-
-#
-#. Translators: Tooltip for the x to the power of reciprocal y button
-#: ../src/gtk.c:804
-msgid "Raise displayed value to the power of reciprocal y [O]"
-msgstr "মান সৰ্বমোট y"
-
-#. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:1365
+#. The translator credits. Please translate this with your name(s).
+#: ../src/math-window.c:204
 msgid "translator-credits"
 msgstr "অমিতাক্ষ ফুকন (aphukan@fedoraproject.org)"
 
-#: ../src/gtk.c:1369
-#, 
-#| msgid ""
-#| "Gcalctool is free software; you can redistribute it and/or modify\n"
-#| "it under the terms of the GNU General Public License as published by\n"
-#| "the Free Software Foundation; either version 2 of the License, or\n"
-#| "(at your option) any later version.\n"
-#| "\n"
-#| "Gcalctool is distributed in the hope that it will be useful,\n"
-#| "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#| "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#| "GNU General Public License for more details.\n"
-#| "\n"
-#| "You should have received a copy of the GNU General Public License\n"
-#| "along with Gcalctool; if not, write to the Free Software Foundation, "
-#| "Inc.,\n"
-#| "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
+#. The license this software is under (GPL2+)
+#: ../src/math-window.c:207
 msgid ""
 "Gcalctool is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -2309,122 +1500,1875 @@ msgstr ""
 "Inc., \n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 
-#. Translators: Program name in the about dialog
-#: ../src/gtk.c:1385
+#. Program name in the about dialog
+#: ../src/math-window.c:224
 msgid "Gcalctool"
 msgstr "Gcalctool"
 
-#. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:1388
-msgid "© 1986-2008 The Gcalctool authors"
+#. Copyright notice in the about dialog
+#: ../src/math-window.c:228
+#, fuzzy
+#| msgid "© 1986-2008 The Gcalctool authors"
+msgid "© 1986–2010 The Gcalctool authors"
 msgstr "Gcalctool"
 
-#. Translators: Short description in the about dialog
-#: ../src/gtk.c:1391
+#. Short description in the about dialog
+#: ../src/math-window.c:232
 msgid "Calculator with financial and scientific modes."
 msgstr "অৰ্থনৈতিক এবং বৈজ্ঞানিক মোডসহ ক্যালকুলেটৰ।"
 
+#. Calculator menu
+#: ../src/math-window.c:381
+msgid "_Calculator"
+msgstr "ক্যালকুলেটৰ"
+
+#. Mode menu
+#: ../src/math-window.c:383
+#, fuzzy
+#| msgid "Mode"
+msgid "_Mode"
+msgstr "মোড"
+
+#. Help menu label
+#: ../src/math-window.c:385
+msgid "_Help"
+msgstr "সাহায্য (_H)"
+
+#. Basic menu label
+#: ../src/math-window.c:387
+msgid "_Basic"
+msgstr "মৌলিক (_B)"
+
+#. Advanced menu label
+#: ../src/math-window.c:389
+msgid "_Advanced"
+msgstr "_Advanced"
+
+#. Financial menu label
+#: ../src/math-window.c:391
+msgid "_Financial"
+msgstr "অৰ্থনৈতিক মোড (_F)"
+
+#. Programming menu label
+#: ../src/math-window.c:393
+msgid "_Programming"
+msgstr "প্রোগ্রামিং (_P)"
+
 #
-#: ../src/gtk.c:1549
-msgid "Unable to open help file"
-msgstr "সহায়িকাৰ নথিপত্ৰ খুলিবলৈ ব্যৰ্থ"
+#. Help>Contents menu label
+#: ../src/math-window.c:395
+msgid "_Contents"
+msgstr "বিষয়বস্তু (_C)"
 
-#. Translators: R is the short form of register used inter alia in popup menus
-#: ../src/gtk.c:1956
-msgid "R"
-msgstr "R"
-
-#. FIXME: WTF?
-#: ../src/gtk.c:2319
-msgid "Paste"
-msgstr "পেস্ট কৰুন"
-
-#. Translators: Edit Constants Dialog: Constant number column title
-#. Translators: Edit Functions Dialog: Function number column title
-#: ../src/gtk.c:2679 ../src/gtk.c:2696
-msgid "No."
-msgstr "না।"
-
-#. Translators: Edit Constants Dialog: Constant value column title
-#. Translators: Edit Functions Dialog: Function value column title
-#: ../src/gtk.c:2681 ../src/gtk.c:2699
-msgid "Value"
-msgstr "মান"
-
-#. Translators: Edit Constants Dialog: Constant description column title
-#. Translators: Edit Functions Dialog: Function description column title
-#: ../src/gtk.c:2683 ../src/gtk.c:2702
-msgid "Description"
-msgstr "বিৱৰণ"
-
-#. Set default accuracy menu item
-#. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../src/gtk.c:2826
-#, c-format
-msgid "Reset to _Default (%d)"
-msgstr "Reset to _Default (%d)"
-
-#: ../src/mp.c:1467
-msgid "Negative X and non-integer Y not supported"
-msgstr "এক্স স্থানাঙ্ক এবং পূৰ্ণসংখ্যা ওয়াই স্থানাঙ্ক"
-
-#. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:281
-msgid "Tangent is infinite"
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/mp-binary.c:115
+msgid "Boolean AND is only defined for positive integers"
 msgstr ""
 
-#. Translators: This is the label for the default constant, the number of miles in one kilometer (0.621)
-#: ../src/register.c:40
-msgid "Kilometer-to-mile conversion factor"
-msgstr "কিলোমিটাৰ-ৰ পৰা-মাইল -এ ৰূপান্তৰ কৰাৰ গুণক"
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/mp-binary.c:128
+msgid "Boolean OR is only defined for positive integers"
+msgstr ""
 
-#. Translators: This is the label for the default constant, the square root of 2 (1.41421)
-#: ../src/register.c:42
-msgid "square root of 2"
-msgstr "২ এৰ বৰ্গফল"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:141
+msgid "Boolean XOR is only defined for positive integers"
+msgstr ""
 
-#. Translators: This is the label for the default constant, Euler's number (2.71828)
-#: ../src/register.c:44
-msgid "Euler's Number (e)"
-msgstr "Euler's Number (e)"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/mp-binary.c:156
+msgid "Boolean NOT is only defined for positive integers"
+msgstr ""
 
-#. Translators: This is the label for the default constant, π (3.14159)
-#: ../src/register.c:46
-msgid "π"
-msgstr "π"
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/mp-binary.c:187
+msgid "Shift is only possible on integer values"
+msgstr ""
 
-#. Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370)
-#: ../src/register.c:48
-msgid "Centimeter-to-inch conversion factor"
-msgstr "সিন্টিমিটাট-ৰ পৰা-ইঞ্চি-তে ৰূপান্তৰ কৰাৰ গুণক"
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/mp.c:148
+msgid "Argument not defined for zero"
+msgstr ""
 
-#. Translators: This is the label for the default constant, the number of degrees in a radian (57.2958)
-#: ../src/register.c:50
-msgid "degrees in a radian"
-msgstr "ৰেডিয়ানে উপস্থিত ডিগ্ৰি সমুহ"
+#: ../src/mp.c:299
+msgid "Overflow: the result couldn't be calculated"
+msgstr ""
 
-#. Translators: This is the label for the default constant, 2 to the power of 20 (1048576)
-#: ../src/register.c:52
-msgid "2 ^ 20"
-msgstr "২ ^ ২০"
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/mp.c:644 ../src/mp.c:676 ../src/mp.c:1605
+msgid "Division by zero is undefined"
+msgstr ""
 
-#. Translators: This is the label for the default constant, the number of ounces in one gram (0.0353)
-#: ../src/register.c:54
-msgid "Gram-to-ounce conversion factor"
-msgstr "গ্ৰাম-ৰ পৰা-আউন্স-এ ৰূপান্তৰ কৰাৰ গুণক"
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/mp.c:1276 ../src/mp.c:1313
+msgid "Logarithm of zero is undefined"
+msgstr ""
 
-#. Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948)
-#: ../src/register.c:56
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "কিলোজুল-ৰ পৰা-ব্ৰিটিশ-থাৰ্মাল-ইউনিট-এ ৰূপান্তৰ কৰাৰ গুণক"
+#. Translators: Error displayed when attempted to raise 0 to a negative exponent
+#: ../src/mp.c:1680 ../src/mp.c:1994
+msgid "The power of zero is undefined for a negative exponent"
+msgstr ""
 
-#. Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610)
-#: ../src/register.c:58
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "ঘন-সিন্টিমিটাৰ-ৰ পৰা-ঘন-ইঞ্চি-তে ৰূপান্তৰ কৰাৰ গুণক"
+#: ../src/mp.c:1704
+msgid "Reciprocal of zero is undefined"
+msgstr ""
 
-#~ msgid "Error"
+#: ../src/mp.c:1789
+msgid "Root must be non-zero"
+msgstr ""
+
+#: ../src/mp.c:1807
+msgid "Negative root of zero is undefined"
+msgstr ""
+
+#: ../src/mp.c:1813
+msgid "nth root of negative number is undefined for even n"
+msgstr ""
+
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/mp.c:1934
+msgid "Factorial is only defined for natural numbers"
+msgstr ""
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/mp.c:1954
+msgid "Modulus division is only defined for integers"
+msgstr ""
+
+#. Translators: Error displayed when tangent value is undefined
+#: ../src/mp-trigonometric.c:310
+msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr ""
+
+#. Translators: Error displayed when inverse sine value is undefined
+#: ../src/mp-trigonometric.c:355
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr ""
+
+#. Translators: Error displayed when inverse cosine value is undefined
+#: ../src/mp-trigonometric.c:372
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr ""
+
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: ../src/mp-trigonometric.c:591
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
+msgstr ""
+
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: ../src/mp-trigonometric.c:615
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr ""
+
+#: ../src/unit-manager.c:54
+#, fuzzy, c-format
+#| msgid "De_grees"
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "ডিগ্ৰি (_g)"
+
+#: ../src/unit-manager.c:54
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr ""
+
+#: ../src/unit-manager.c:55
+#, fuzzy, c-format
+#| msgid "Gr_adians"
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "গ্ৰেডিয়েন (_a)"
+
+#: ../src/unit-manager.c:55
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr ""
+
+#: ../src/unit-manager.c:56
+#, fuzzy, c-format
+#| msgid "Gr_adians"
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "গ্ৰেডিয়েন (_a)"
+
+#: ../src/unit-manager.c:56
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr ""
+
+#: ../src/unit-manager.c:57
+#, fuzzy
+#| msgid "Paste"
+msgid "Parsecs"
+msgstr "পেস্ট কৰুন"
+
+#: ../src/unit-manager.c:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr ""
+
+#: ../src/unit-manager.c:57
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr ""
+
+#: ../src/unit-manager.c:58
+msgid "Light Years"
+msgstr ""
+
+#: ../src/unit-manager.c:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr ""
+
+#: ../src/unit-manager.c:58
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr ""
+
+#: ../src/unit-manager.c:59
+msgid "Astronomical Units"
+msgstr ""
+
+#: ../src/unit-manager.c:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr ""
+
+#: ../src/unit-manager.c:59
+msgctxt "unit-symbols"
+msgid "au"
+msgstr ""
+
+#: ../src/unit-manager.c:60
+msgid "Nautical Miles"
+msgstr ""
+
+#: ../src/unit-manager.c:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr ""
+
+#: ../src/unit-manager.c:60
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr ""
+
+#: ../src/unit-manager.c:61
+msgid "Miles"
+msgstr ""
+
+#: ../src/unit-manager.c:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr ""
+
+#: ../src/unit-manager.c:61
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr ""
+
+#: ../src/unit-manager.c:62
+msgid "Kilometers"
+msgstr ""
+
+#: ../src/unit-manager.c:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr ""
+
+#: ../src/unit-manager.c:62
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr ""
+
+#: ../src/unit-manager.c:63
+msgid "Cables"
+msgstr ""
+
+#: ../src/unit-manager.c:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr ""
+
+#: ../src/unit-manager.c:63
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr ""
+
+#: ../src/unit-manager.c:64
+msgid "Fathoms"
+msgstr ""
+
+#: ../src/unit-manager.c:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr ""
+
+#: ../src/unit-manager.c:64
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr ""
+
+#: ../src/unit-manager.c:65
+msgid "Meters"
+msgstr ""
+
+#: ../src/unit-manager.c:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr ""
+
+#: ../src/unit-manager.c:65
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr ""
+
+#: ../src/unit-manager.c:66
+msgid "Yards"
+msgstr ""
+
+#: ../src/unit-manager.c:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr ""
+
+#: ../src/unit-manager.c:66
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr ""
+
+#: ../src/unit-manager.c:67
+msgid "Feet"
+msgstr ""
+
+#: ../src/unit-manager.c:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr ""
+
+#: ../src/unit-manager.c:67
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr ""
+
+#: ../src/unit-manager.c:68
+msgid "Inches"
+msgstr ""
+
+#: ../src/unit-manager.c:68
+#, fuzzy, c-format
+#| msgid "sin"
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "sin"
+
+#: ../src/unit-manager.c:68
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr ""
+
+#
+#: ../src/unit-manager.c:69
+#, fuzzy
+#| msgid "_Contents"
+msgid "Centimeters"
+msgstr "বিষয়বস্তু (_C)"
+
+#: ../src/unit-manager.c:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr ""
+
+#: ../src/unit-manager.c:69
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr ""
+
+#: ../src/unit-manager.c:70
+msgid "Millimeters"
+msgstr ""
+
+#: ../src/unit-manager.c:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr ""
+
+#: ../src/unit-manager.c:70
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr ""
+
+#: ../src/unit-manager.c:71
+msgid "Micrometers"
+msgstr ""
+
+#: ../src/unit-manager.c:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr ""
+
+#: ../src/unit-manager.c:71
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr ""
+
+#: ../src/unit-manager.c:72
+msgid "Nanometers"
+msgstr ""
+
+#: ../src/unit-manager.c:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr ""
+
+#: ../src/unit-manager.c:72
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr ""
+
+#: ../src/unit-manager.c:73
+msgid "Hectares"
+msgstr ""
+
+#: ../src/unit-manager.c:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr ""
+
+#: ../src/unit-manager.c:73
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr ""
+
+#: ../src/unit-manager.c:74
+msgid "Acres"
+msgstr ""
+
+#: ../src/unit-manager.c:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr ""
+
+#: ../src/unit-manager.c:74
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr ""
+
+#: ../src/unit-manager.c:75
+#, fuzzy
+#| msgid "Square root"
+msgid "Square Meters"
+msgstr "Square root"
+
+#: ../src/unit-manager.c:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr ""
+
+#: ../src/unit-manager.c:75
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr ""
+
+#: ../src/unit-manager.c:76
+msgid "Square Centimeters"
+msgstr ""
+
+#: ../src/unit-manager.c:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr ""
+
+#: ../src/unit-manager.c:76
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr ""
+
+#: ../src/unit-manager.c:77
+msgid "Square Millimeters"
+msgstr ""
+
+#: ../src/unit-manager.c:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr ""
+
+#: ../src/unit-manager.c:77
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr ""
+
+#: ../src/unit-manager.c:78
+msgid "Cubic Meters"
+msgstr ""
+
+#: ../src/unit-manager.c:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr ""
+
+#: ../src/unit-manager.c:78
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr ""
+
+#: ../src/unit-manager.c:79
+msgid "Gallons"
+msgstr ""
+
+#: ../src/unit-manager.c:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr ""
+
+#: ../src/unit-manager.c:79
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr ""
+
+#: ../src/unit-manager.c:80
+msgid "Litres"
+msgstr ""
+
+#: ../src/unit-manager.c:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr ""
+
+#: ../src/unit-manager.c:80
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr ""
+
+#: ../src/unit-manager.c:81
+msgid "Quarts"
+msgstr ""
+
+#: ../src/unit-manager.c:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr ""
+
+#: ../src/unit-manager.c:81
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr ""
+
+#: ../src/unit-manager.c:82
+msgid "Pints"
+msgstr ""
+
+#: ../src/unit-manager.c:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr ""
+
+#: ../src/unit-manager.c:82
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr ""
+
+#: ../src/unit-manager.c:83
+msgid "Millilitres"
+msgstr ""
+
+#: ../src/unit-manager.c:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr ""
+
+#: ../src/unit-manager.c:83
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr ""
+
+#: ../src/unit-manager.c:84
+msgid "Microlitres"
+msgstr ""
+
+#: ../src/unit-manager.c:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr ""
+
+#: ../src/unit-manager.c:84
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr ""
+
+#: ../src/unit-manager.c:85
+msgid "Tonnes"
+msgstr ""
+
+#: ../src/unit-manager.c:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr ""
+
+#: ../src/unit-manager.c:85
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr ""
+
+#: ../src/unit-manager.c:86
+msgid "Kilograms"
+msgstr ""
+
+#: ../src/unit-manager.c:86
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr ""
+
+#: ../src/unit-manager.c:86
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr ""
+
+#: ../src/unit-manager.c:87
+msgid "Pounds"
+msgstr ""
+
+#: ../src/unit-manager.c:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr ""
+
+#: ../src/unit-manager.c:87
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr ""
+
+#: ../src/unit-manager.c:88
+msgid "Ounces"
+msgstr ""
+
+#: ../src/unit-manager.c:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr ""
+
+#: ../src/unit-manager.c:88
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr ""
+
+#: ../src/unit-manager.c:89
+msgid "Grams"
+msgstr ""
+
+#: ../src/unit-manager.c:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr ""
+
+#: ../src/unit-manager.c:89
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr ""
+
+#: ../src/unit-manager.c:90
+#, fuzzy
+#| msgid "Clear"
+msgid "Years"
+msgstr "Clear"
+
+#: ../src/unit-manager.c:90
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr ""
+
+#: ../src/unit-manager.c:90
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr ""
+
+#: ../src/unit-manager.c:91
+msgid "Days"
+msgstr ""
+
+#: ../src/unit-manager.c:91
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr ""
+
+#: ../src/unit-manager.c:91
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr ""
+
+#: ../src/unit-manager.c:92
+msgid "Hours"
+msgstr ""
+
+#: ../src/unit-manager.c:92
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr ""
+
+#: ../src/unit-manager.c:92
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr ""
+
+#: ../src/unit-manager.c:93
+msgid "Minutes"
+msgstr ""
+
+#: ../src/unit-manager.c:93
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr ""
+
+#: ../src/unit-manager.c:93
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr ""
+
+#: ../src/unit-manager.c:94
+#, fuzzy
+#| msgid "cos"
+msgid "Seconds"
+msgstr "cos"
+
+#: ../src/unit-manager.c:94
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr ""
+
+#: ../src/unit-manager.c:94
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr ""
+
+#: ../src/unit-manager.c:95
+msgid "Milliseconds"
+msgstr ""
+
+#: ../src/unit-manager.c:95
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr ""
+
+#: ../src/unit-manager.c:95
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr ""
+
+#: ../src/unit-manager.c:96
+msgid "Microseconds"
+msgstr ""
+
+#: ../src/unit-manager.c:96
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr ""
+
+#: ../src/unit-manager.c:96
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr ""
+
+#: ../src/unit-manager.c:97
+msgid "Celsius"
+msgstr ""
+
+#: ../src/unit-manager.c:97
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr ""
+
+#: ../src/unit-manager.c:97
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr ""
+
+#: ../src/unit-manager.c:98
+msgid "Farenheit"
+msgstr ""
+
+#: ../src/unit-manager.c:98
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr ""
+
+#: ../src/unit-manager.c:98
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr ""
+
+#: ../src/unit-manager.c:99
+msgid "Kelvin"
+msgstr ""
+
+#: ../src/unit-manager.c:99
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr ""
+
+#: ../src/unit-manager.c:99
+msgctxt "unit-symbols"
+msgid "K"
+msgstr ""
+
+#: ../src/unit-manager.c:100
+msgid "Rankine"
+msgstr ""
+
+#: ../src/unit-manager.c:100
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr ""
+
+#: ../src/unit-manager.c:100
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra"
+msgstr ""
+
+#: ../src/unit-manager.c:109
+msgid "Angle"
+msgstr ""
+
+#: ../src/unit-manager.c:110
+msgid "Length"
+msgstr ""
+
+#: ../src/unit-manager.c:111
+msgid "Area"
+msgstr ""
+
+#: ../src/unit-manager.c:112
+#, fuzzy
+#| msgid "Value"
+msgid "Volume"
+msgstr "মান"
+
+#: ../src/unit-manager.c:113
+msgid "Weight"
+msgstr ""
+
+#: ../src/unit-manager.c:114
+#, fuzzy
+#| msgid "Description"
+msgid "Duration"
+msgstr "বিৱৰণ"
+
+#: ../src/unit-manager.c:115
+msgid "Temperature"
+msgstr ""
+
+#: ../src/unit-manager.c:127
+msgid "Currency"
+msgstr ""
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../src/unit-manager.c:137
+#, c-format
+msgid "%s%%s"
+msgstr ""
+
+#~ msgid "%"
+#~ msgstr "%"
+
+#~ msgid "&#x2212;"
+#~ msgstr "১০x১৫"
+
+#~ msgid "&#x221A;"
+#~ msgstr "&#x221A;"
+
+#~ msgid "&#xB1;"
+#~ msgstr "&#xB1;"
+
+#~ msgid "&#xD7;"
+#~ msgstr "&#xD7;"
+
+#~ msgid "&#xF7;"
+#~ msgstr "&#xF7;"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~| msgid "Ln"
+#~ msgid "(Ln)"
+#~ msgstr "(Ln)"
+
+#~| msgid "Set accuracy from 0 to %d numeric place. [A]"
+#~| msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
+#~ msgid "(Set accuracy from 0 to N numeric places [A])"
+#~ msgstr "(নির্ভুলতার মাত্রা 0 থেকে N সংখ্যার স্থানে নির্ধারণ করুন। [A])"
+
+#~ msgid "(X^Y)"
+#~ msgstr "(X^Y)"
+
+#~ msgid "(cos)"
+#~ msgstr "(cos)"
+
+#~ msgid "(log)"
+#~ msgstr "(log)"
+
+#~ msgid "(log2)"
+#~ msgstr "(log2)"
+
+#~ msgid "(sin)"
+#~ msgstr "(sin)"
+
+#~ msgid "(tan)"
+#~ msgstr "(tan)"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#~ msgid "1"
+#~ msgstr "১"
+
+#~ msgid "1/<i>x</i>"
+#~ msgstr "১/<i>x</i>"
+
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "10 places"
+#~ msgstr "১০ ঘৰ"
+
+#~ msgid "11 places"
+#~ msgstr "১১ ঘৰ"
+
+#~ msgid "12 places"
+#~ msgstr "১২ ঘৰ"
+
+#~ msgid "13 places"
+#~ msgstr "১৩ ঘৰ"
+
+#~ msgid "14 places"
+#~ msgstr "১৪ ঘৰ"
+
+#~ msgid "15"
+#~ msgstr "15"
+
+#~ msgid "15 places"
+#~ msgstr "১৫ ঘৰ"
+
+#~ msgid "2"
+#~ msgstr "২"
+
+#~ msgid "2's complement [Z]"
+#~ msgstr "2's complement [Z]"
+
+#~ msgid "3"
+#~ msgstr "৩"
+
+#~ msgid "31"
+#~ msgstr "31"
+
+#~ msgid "32"
+#~ msgstr "৩২"
+
+#~ msgid "4"
+#~ msgstr "৪"
+
+#~ msgid "47"
+#~ msgstr "47"
+
+#~ msgid "5"
+#~ msgstr "৫"
+
+#~ msgid "6"
+#~ msgstr "৬"
+
+#~ msgid "63"
+#~ msgstr "63"
+
+#~ msgid "7"
+#~ msgstr "৭"
+
+#~ msgid "8"
+#~ msgstr "৮"
+
+#~ msgid "9"
+#~ msgstr "৯"
+
+#~ msgid "<"
+#~ msgstr "<"
+
+#~ msgid "<i>x</i><sup>2</sup>"
+#~ msgstr "<i>x</i><sup>২</sup>"
+
+#~ msgid ""
+#~ "<small><i><b>Note:</b> All constant values are specified in the decimal "
+#~ "numeric base.</i></small>"
+#~ msgstr "<small><i><b> নোট</b> সকল</i></small>"
+
+#~ msgid "<span weight=\"bold\">R0</span>"
+#~ msgstr "<span weight=\"bold\">R0</span>"
+
+#~ msgid "<span weight=\"bold\">R1</span>"
+#~ msgstr "<span weight=\"bold\">R1</span>"
+
+#~ msgid "<span weight=\"bold\">R2</span>"
+#~ msgstr "<span weight=\"bold\">R2</span>"
+
+#~ msgid "<span weight=\"bold\">R3</span>"
+#~ msgstr "<span weight=\"bold\">R3</span>"
+
+#~ msgid "<span weight=\"bold\">R4</span>"
+#~ msgstr "<span weight=\"bold\">R4</span>"
+
+#~ msgid "<span weight=\"bold\">R5</span>"
+#~ msgstr "<span weight=\"bold\">R5</span>"
+
+#~ msgid "<span weight=\"bold\">R6</span>"
+#~ msgstr "<span weight=\"bold\">R6</span>"
+
+#~ msgid "<span weight=\"bold\">R7</span>"
+#~ msgstr "<span weight=\"bold\">R7</span>"
+
+#~ msgid "<span weight=\"bold\">R8</span>"
+#~ msgstr "<span weight=\"bold\">R8</span>"
+
+#~ msgid "<span weight=\"bold\">R9</span>"
+#~ msgstr "<span weight=\"bold\">R9</span>"
+
+#~ msgid ">"
+#~ msgstr ">"
+
+#~ msgid "A"
+#~ msgstr "অ"
+
+#~ msgid "AND"
+#~ msgstr "AND"
+
+#~ msgid "Abs"
+#~ msgstr "Abs"
+
+#~ msgid "Acc"
+#~ msgstr "Acc"
+
+#~ msgid "Add"
+#~ msgstr "যোগ কৰক"
+
+#~ msgid "Advanced"
+#~ msgstr "Advanced"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~ msgid "Backspace"
+#~ msgstr "ব্যাকস্পেস"
+
+#~ msgid "Basic"
+#~ msgstr "মৌলিক"
+
+#~ msgid "Bitwise AND [&]"
+#~ msgstr "Bitwise AND [&]"
+
+#~ msgid "Bitwise NOT [~]"
+#~ msgstr "Bitwise NOT [~]"
+
+#~ msgid "Bitwise OR [|]"
+#~ msgstr "Bitwise OR [|]"
+
+#
+#~ msgid "Bitwise XNOR [{]"
+#~ msgstr "Bitwise XNOR [n]"
+
+#~ msgid "Bitwise XOR [x]"
+#~ msgstr "Bitwise XOR [x]"
+
+#~ msgid "Bksp"
+#~ msgstr "Bksp"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~ msgid "CE"
+#~ msgstr "CE"
+
+#~ msgid "Calculate result [=]"
+#~ msgstr "Calculate result [=]"
+
+#~ msgid "Change Sign [C]"
+#~ msgstr "স্বাক্ষৰ কৰুন C"
+
+#~ msgid "Change sign"
+#~ msgstr "Change sign"
+
+#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
+#~ msgstr "Clear মান এবং মুছে ফেলুন"
+
+#~ msgid "Clear entry"
+#~ msgstr "এন্ট্ৰি মুছে ফেলো"
+
+#~ msgid "Click a _value or description to edit it:"
+#~ msgstr "একটি মান অথবা বিবৰণ সম্পাদন কৰতে হলে তাৰ উপৰ ক্লিক কৰুন (_v):"
+
+#~ msgid "Clr"
+#~ msgstr "Clr"
+
+#~ msgid "Compounding term"
+#~ msgstr "Compounding term"
+
+#~ msgid "Compounding term [m]"
+#~ msgstr "Compounding term [m]"
+
+#~ msgid "Con"
+#~ msgstr "Con"
+
+#~ msgid "Constants [#]"
+#~ msgstr "Constants [#]"
+
+#~ msgid "Copy selection"
+#~ msgstr "নিৰ্বাচিত অংশ কপি কৰো"
+
+#~ msgid "D"
+#~ msgstr "D"
+
+#~ msgid "Divide"
+#~ msgstr "ভাগ"
+
+#~ msgid "Double-declining depreciation"
+#~ msgstr "ডাবল"
+
+#~ msgid "Double-declining depreciation [D]"
+#~ msgstr "ডাবল D"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~ msgid "E_ng"
+#~ msgstr "E_ng"
+
+#~ msgid "Edit Constants"
+#~ msgstr "কনস্ট্যান্ট-এৰ মান সম্পাদন কৰো"
+
+#~ msgid "Edit Constants..."
+#~ msgstr "কনস্ট্যান্ট সম্পাদন কৰো..."
+
+#~ msgid "Edit Functions..."
+#~ msgstr "ফাংশন সম্পাদন কৰো..."
+
+#~ msgid "End group of calculations [)]"
+#~ msgstr "সমাপ্তি সৰ্বমোট"
+
+#~ msgid "Enter an exponential number [E]"
+#~ msgstr "সংখ্যা E"
+
+#~ msgid "Exch"
+#~ msgstr "Exch"
+
+#~ msgid "Exchange displayed value with memory register [X]"
+#~ msgstr "মান এক্স স্থানাঙ্ক"
+
+#~ msgid "Exchange with register"
+#~ msgstr "ৰেজিস্টাৰেৰ সাথে অদলবদল কৰো"
+
+#~ msgid "Exp"
+#~ msgstr "Exp"
+
+#~ msgid "F"
+#~ msgstr "F"
+
+#~ msgid "Factorial of displayed value [!]"
+#~ msgstr "গৌণিক সৰ্বমোট মান"
+
+#~ msgid "Fractional portion of displayed value [:]"
+#~ msgstr "সৰ্বমোট মান"
+
+#~ msgid "Fun"
+#~ msgstr "Fun"
+
+#~ msgid "Future value"
+#~ msgstr "মান"
+
+#~ msgid "Future value [v]"
+#~ msgstr "মান"
+
+#~ msgid "Gross Profit Margin [I]"
+#~ msgstr "Gross Profit Margin [I]"
+
+#~ msgid "Gross Profit Margin [g]"
+#~ msgstr "Gross Profit Margin [g]"
+
+#~ msgid "H_yp"
+#~ msgstr "H_yp"
+
+#~ msgid "He_x"
+#~ msgstr "He_x"
+
+#~ msgid "Hexadecimal digit A [a]"
+#~ msgstr "অ"
+
+#~ msgid "Hexadecimal digit B [b]"
+#~ msgstr "B"
+
+#~ msgid "Hexadecimal digit C [c]"
+#~ msgstr "C"
+
+#~ msgid "Hexadecimal digit D [d]"
+#~ msgstr "D"
+
+#~ msgid "Hexadecimal digit E [e]"
+#~ msgstr "E e"
+
+#~ msgid "Hexadecimal digit F [f]"
+#~ msgstr "F"
+
+#~ msgid "Insert ASCII Value"
+#~ msgstr "ASCII মান সন্নিবেশ কৰো"
+
+#~ msgid "Insert ASCII value"
+#~ msgstr "ASCII মান সন্নিবেশ কৰো"
+
+#~ msgid "Int"
+#~ msgstr "Int"
+
+#~ msgid "Integer portion of displayed value [i]"
+#~ msgstr "সৰ্বমোট মান"
+
+#~ msgid "Left bracket"
+#~ msgstr "বাঁদিকেৰ ব্ৰ্যাকেট"
+
+#~ msgid "Makes the bitwise functions use 16 bit mode"
+#~ msgstr "bitwise ফাংশান দ্বারা ১৬-বিট মোড ব্যবহার করা হবে"
+
+#~ msgid "Makes the bitwise functions use 32 bit mode"
+#~ msgstr "bitwise ফাংশান দ্বারা ৩২-বিট মোড ব্যবহার করা হবে"
+
+#~ msgid "Makes the bitwise functions use 64 bit mode"
+#~ msgstr "bitwise ফাংশান দ্বারা ৬৪-বিট মোড ব্যবহার করা হবে"
+
+#~ msgid "Memory Registers"
+#~ msgstr "মেমৰি ৰেজিস্টাৰ"
+
+#~ msgid "Mod"
+#~ msgstr "Mod"
+
+#~ msgid "Multiply"
+#~ msgstr "গুণ"
+
+#~ msgid "NOT"
+#~ msgstr "NOT"
+
+#~ msgid "Numeric 0"
+#~ msgstr "সংখ্যা ০"
+
+#~ msgid "Numeric 1"
+#~ msgstr "সংখ্যা ১"
+
+#~ msgid "Numeric 2"
+#~ msgstr "সংখ্যা ২"
+
+#~ msgid "Numeric 3"
+#~ msgstr "সংখ্যা ৩"
+
+#~ msgid "Numeric 4"
+#~ msgstr "সংখ্যা ৪"
+
+#~ msgid "Numeric 5"
+#~ msgstr "সংখ্যা ৫"
+
+#~ msgid "Numeric 6"
+#~ msgstr "সংখ্যা ৬"
+
+#~ msgid "Numeric 7"
+#~ msgstr "সংখ্যা ৭"
+
+#~ msgid "Numeric 8"
+#~ msgstr "সংখ্যা ৮"
+
+#~ msgid "Numeric 9"
+#~ msgstr "সংখ্যা ৯"
+
+#~ msgid "OR"
+#~ msgstr "OR"
+
+#~ msgid "Paste selection"
+#~ msgstr "নিৰ্বাচিত অংশ পেস্ট কৰো"
+
+#~ msgid "Payment period"
+#~ msgstr "Payment period"
+
+#~ msgid "Payment period [t]"
+#~ msgstr "Payment period [t]"
+
+#~ msgid "Percentage"
+#~ msgstr "শতাংশ"
+
+#~ msgid "Periodic interest rate"
+#~ msgstr "Periodic interest rate"
+
+#~ msgid "Periodic interest rate [T]"
+#~ msgstr "Periodic interest rate [T]"
+
+#~ msgid "Periodic payment"
+#~ msgstr "Periodic payment"
+
+#~ msgid "Periodic payment [P]"
+#~ msgstr "Periodic payment [P]"
+
+#~ msgid "Present value"
+#~ msgstr "মান"
+
+#~ msgid "Present value [p]"
+#~ msgstr "মান"
+
+#~ msgid "Programming"
+#~ msgstr "প্ৰোগ্ৰামিং"
+
+#~ msgid "Random number in the range 0.0 to 1.0 [?]"
+#~ msgstr "সংখ্যা"
+
+#~ msgid "Rcl"
+#~ msgstr "Rcl"
+
+#~ msgid "Reciprocal"
+#~ msgstr "Reciprocal"
+
+#~ msgid "Reciprocal [r]"
+#~ msgstr "Reciprocal [r]"
+
+#~ msgid "Redo"
+#~ msgstr "Redo"
+
+#~ msgid "Remove rightmost character from displayed value [Backspace]"
+#~ msgstr "মান ব্যাকস্পেস"
+
+#~ msgid "Result Region"
+#~ msgstr "Result Region"
+
+#~ msgid "Retrieve from register"
+#~ msgstr "ৰেজিস্টাৰ ৰ পৰা উদ্ধাৰ কৰো"
+
+#~ msgid "Retrieve memory register to display [R]"
+#~ msgstr "R"
+
+#~ msgid "Right bracket"
+#~ msgstr "ডানদিকেৰ ব্ৰ্যাকেট"
+
+#~ msgid "Set Precision"
+#~ msgstr "Set Precision"
+
+#~ msgid "Set display type to engineering format"
+#~ msgstr "ইঞ্জিনিয়াৰিং ফৰমায় প্ৰদৰ্শন কৰতে নিৰ্ধাৰণ কৰো"
+
+#~ msgid "Set display type to fixed-point format"
+#~ msgstr "ধৰন"
+
+#~ msgid "Set display type to scientific format"
+#~ msgstr "বৈজ্ঞানিক ফৰমায় প্ৰদৰ্শন কৰতে নিৰ্ধাৰণ কৰো"
+
+#~ msgid "Set hyperbolic option for trigonometric functions"
+#~ msgstr "ত্ৰিকোনমিতিৰ ফাংশানগুলোৰ জন্য হাইপাৰবোলিক অপশনটি নিৰ্ধাৰণ কৰো"
+
+#~ msgid "Set inverse option for trigonometric functions"
+#~ msgstr "ত্ৰিকোনমিতিৰ ফাংশানগুলোৰ জন্য ইনভাৰ্স অপশনটি নিৰ্ধাৰণ কৰো"
+
+#~ msgid "Set numeric base to binary (base 2)"
+#~ msgstr "সংখ্যাসূচক ভিত্তি -কে বাইনাৰি (ভিত্তি ২)- তে নিৰ্ধাৰণ কৰো"
+
+#~ msgid "Set numeric base to decimal (base 10)"
+#~ msgstr "সংখ্যাসূচক ভিত্তিকে দশমিক (ভিত্তি ১০) -এ নিৰ্ধাৰণ কৰো"
+
+#~ msgid "Set numeric base to hexadecimal (base 16)"
+#~ msgstr "সংখ্যাসূচক নিধান কে হেক্সাডেসিমাল (ভিত্তি ১৬) -এ নিৰ্ধাৰণ কৰো"
+
+#~ msgid "Set numeric base to octal (base 8)"
+#~ msgstr "সংখ্যাসূচক ভিত্তিকে অক্টাল (ভিত্তি ৮) -এ নিৰ্ধাৰণ কৰো"
+
+#~ msgid "Set trigonometric type to degrees"
+#~ msgstr "ত্ৰিকেনমিতিৰ ধৰন ডিগ্ৰি হিসাবে চিহ্নিত কৰো"
+
+#~ msgid "Set trigonometric type to gradians"
+#~ msgstr "ত্ৰিকেনমিতিৰ ধৰন গ্ৰেডিয়েন হিসাবে চিহ্নিত কৰো"
+
+#~ msgid "Set trigonometric type to radians"
+#~ msgstr "ত্ৰিকেনমিতিৰ ধৰন ৰেডিয়েন হিসাবে চিহ্নিত কৰো"
+
+#~ msgid "Shift displayed value 1-15 places to the left [<]"
+#~ msgstr "মান"
+
+#~ msgid "Shift displayed value 1-15 places to the right [>]"
+#~ msgstr "মান"
+
+#~ msgid "Show T_housands Separator"
+#~ msgstr "হাজাৰ-এৰ স্থান বিভাজনকাৰী চিহ্ন প্ৰদৰ্শন কৰো (_h)"
+
+#~ msgid "Show _Trailing Zeroes"
+#~ msgstr "অনুসৰণকাৰী শূণ্য প্ৰদৰ্শন কৰো (_T)"
+
+#~ msgid "Show help contents"
+#~ msgstr "সহায়িকাৰ সূচী প্ৰদৰ্শন কৰো"
+
+#~ msgid "Show memory registers"
+#~ msgstr "মেমৰি ৰেজিস্টাৰ প্ৰদৰ্শন কৰো"
+
+#~ msgid "Show the About Gcalctool dialog"
+#~ msgstr "বিষয়ে Gcalctool"
+
+#~ msgid "Significant _places:"
+#~ msgstr "Significant _places:"
+
+#~ msgid "Square"
+#~ msgstr "Square"
+
+#~ msgid "Store displayed value in memory register [S]"
+#~ msgstr "মান এস"
+
+#~ msgid "Store to register"
+#~ msgstr "ৰেজিস্টাৰে সংৰক্ষণ কৰো"
+
+#~ msgid "Straight-line depreciation"
+#~ msgstr "Straight-line depreciation"
+
+#~ msgid "Straight-line depreciation [l]"
+#~ msgstr "Straight-line depreciation [l]"
+
+#~ msgid "Subtract"
+#~ msgstr "বিয়োগ"
+
+#~ msgid "Sum-of-the years'-digits depreciation"
+#~ msgstr "সৰ্বমোট বত্সৰ"
+
+#
+#~ msgid "Sum-of-the years'-digits depreciation [Y]"
+#~ msgstr "সৰ্বমোট বত্সৰ y"
+
+#~ msgid "Sum-of-the years'-digits depreciation [y]"
+#~ msgstr "সৰ্বমোট বত্সৰ y"
+
+#
+#~| msgid "Raise displayed value to the power of y [o]"
+#~ msgid "Truncate displayed value to the chosen word size ([)"
+#~ msgstr "মান সৰ্বমোট y"
+
+#~ msgid "Undo"
+#~ msgstr "পূৰ্বাবস্থা"
+
+#~ msgid "User-defined functions [F]"
+#~ msgstr "ব্যৱহাৰকৰ্তা F"
+
+#~ msgid "XNOR"
+#~ msgstr "XNOR"
+
+#~ msgid "XOR"
+#~ msgstr "XOR"
+
+#~ msgid "_0 significant places"
+#~ msgstr "_0 significant places"
+
+#~ msgid "_1 significant place"
+#~ msgstr "_1 significant place"
+
+#~ msgid "_2 places"
+#~ msgstr "_2 places"
+
+#~ msgid "_2 significant places"
+#~ msgstr "_2 significant places"
+
+#~ msgid "_3 places"
+#~ msgstr "_3 places"
+
+#~ msgid "_3 significant places"
+#~ msgstr "_3 significant places"
+
+#~ msgid "_4 places"
+#~ msgstr "_4 places"
+
+#~ msgid "_4 significant places"
+#~ msgstr "_4 significant places"
+
+#~ msgid "_5 places"
+#~ msgstr "_5 places"
+
+#~ msgid "_5 significant places"
+#~ msgstr "_5 significant places"
+
+#~ msgid "_6 places"
+#~ msgstr "_6 places"
+
+#~ msgid "_6 significant places"
+#~ msgstr "_6 significant places"
+
+#~ msgid "_7 places"
+#~ msgstr "_7 places"
+
+#~ msgid "_7 significant places"
+#~ msgstr "_7 significant places"
+
+#~ msgid "_8 places"
+#~ msgstr "_8 places"
+
+#~ msgid "_8 significant places"
+#~ msgstr "_8 significant places"
+
+#~ msgid "_9 places"
+#~ msgstr "_9 places"
+
+#~ msgid "_9 significant places"
+#~ msgstr "_9 significant places"
+
+#~ msgid "_Dec"
+#~ msgstr "_Dec"
+
+#~ msgid "_Edit"
+#~ msgstr "সম্পাদনা (_E)"
+
+#~ msgid "_Insert ASCII value..."
+#~ msgstr "মান."
+
+#~ msgid "_Inv"
+#~ msgstr "_Inv"
+
+#~ msgid "_Memory Registers"
+#~ msgstr "মেমৰি ৰেজিস্টাৰ (_M)"
+
+#~ msgid "_Redo"
+#~ msgstr "_Redo"
+
+#~ msgid "_Sci"
+#~ msgstr "_Sci"
+
+#~ msgid "_Scientific"
+#~ msgstr "বৈজ্ঞানিক মোড (_S)"
+
+#~ msgid "_Set"
+#~ msgstr "_Set"
+
+#~ msgid "_Undo"
+#~ msgstr "পূৰ্বাবস্থা (_U)"
+
+#~ msgid "_View"
+#~ msgstr "প্ৰদৰ্শন (_V)"
+
+#~ msgid "register 0"
+#~ msgstr "0"
+
+#
+#~ msgid "register 1"
+#~ msgstr "0"
+
+#
+#~ msgid "register 2"
+#~ msgstr "0"
+
+#
+#~ msgid "register 3"
+#~ msgstr "0"
+
+#
+#~ msgid "register 4"
+#~ msgstr "0"
+
+#
+#~ msgid "register 5"
+#~ msgstr "0"
+
+#
+#~ msgid "register 6"
+#~ msgstr "0"
+
+#
+#~ msgid "register 7"
+#~ msgstr "0"
+
+#
+#~ msgid "register 8"
+#~ msgstr "0"
+
+#
+#~ msgid "register 9"
+#~ msgstr "0"
+
+#~ msgid "Display Mode"
+#~ msgstr "প্রদর্শনের মোড"
+
+#~| msgid "Show memory registers"
+#~ msgid "Show Registers"
+#~ msgstr "রেজিস্টার প্রদর্শন করা হবে"
+
+#~| msgid "Set trigonometric type to degrees"
+#~ msgid "Trigonometric type"
+#~ msgstr "ত্রিকেনমিতির ধরন"
+
+#~ msgid "%s: accuracy should be in the range 0-%d\n"
+#~ msgstr "%s: accuracy should be in the range 0-%d\n"
+
+#~ msgid "No redo steps"
+#~ msgstr "না"
+
+#~ msgid "Malformed function"
+#~ msgstr "Malformed function"
+
+#~ msgid "No sane value to convert"
+#~ msgstr "না মান"
+
+#~ msgid "Invalid number for the current base"
+#~ msgstr "সংখ্যা উল্লিখিত সময় অবধি"
+
+#~| msgid "Invalid bitwise operation parameter(s)"
+#~ msgid "Invalid bitwise operation"
+#~ msgstr "বিট প্রণালীর জন্য অবৈধ মান"
+
+#~| msgid "Invalid modulus operation parameter(s)"
+#~ msgid "Invalid modulus operation"
+#~ msgstr "মডুলাস প্রণালীর জন্য অবৈধ মান"
+
+#~ msgid "Calculator - Advanced"
+#~ msgstr "ক্যালকুলেটৰ"
+
+#~ msgid "Calculator - Financial"
+#~ msgstr "ক্যালকুলেটৰ"
+
+#~ msgid "Calculator - Scientific"
+#~ msgstr "ক্যালকুলেটৰ বৈজ্ঞানিক"
+
+#
+#~ msgid "Calculator - Programming"
+#~ msgstr "ক্যালকুলেটৰ"
+
+#~ msgid "Calculator [%s]"
+#~ msgstr "Calculator [%s]"
+
+#~ msgid "Calculator [%s] - Advanced"
+#~ msgstr "Calculator [%s] - উন্নত"
+
+#~ msgid "Calculator [%s] - Financial"
+#~ msgstr "Calculator [%s] - Financial"
+
+#~ msgid "Calculator [%s] - Scientific"
+#~ msgstr "Calculator [%s] - বৈজ্ঞানিক"
+
+#~ msgid "Calculator [%s] - Programming"
+#~ msgstr "Calculator [%s] - উন্নত"
+
+#~ msgid "Error loading user interface"
 #~ msgstr "ত্ৰুটি"
+
+#~| msgid ""
+#~| "The user interface file %s is missing or unable to be loaded. Please "
+#~| "check your installation."
+#~ msgid ""
+#~ "A required file is missing or damaged, please check your installation.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "প্রয়োজনীয় একটি ফাইল অনুপস্থিত অথবা ক্ষতিগ্রস্ত হয়েছে। অনুগ্রহ করে ইনস্টলেশন পরীক্ষা "
+#~ "করুন।\n"
+#~ "\n"
+#~ "%s"
+
+#~ msgid "_Other (%d) ..."
+#~ msgstr "অন্য (%d) ..."
+
+#~ msgid "Set accuracy from 0 to %d numeric place. [A]"
+#~ msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
+#~ msgstr[0] "Set accuracy from 0 to %d numeric place. [A]"
+#~ msgstr[1] "Set accuracy from 0 to %d numeric places. [A]"
+
+#~| msgid "Sin<sup>-1</sup>"
+#~ msgid "sin<sup>−1</sup>"
+#~ msgstr "sin<sup>−1</sup>"
+
+#~| msgid "Sinh"
+#~ msgid "sinh"
+#~ msgstr "sinh"
+
+#~| msgid "Sinh<sup>-1</sup>"
+#~ msgid "sinh<sup>−1</sup>"
+#~ msgstr "sinh<sup>−1</sup>"
+
+#~ msgid "Hyperbolic Inverse Sine [K]"
+#~ msgstr "Hyperbolic Inverse Sine [K]"
+
+#~| msgid "Cos<sup>-1</sup>"
+#~ msgid "cos<sup>−1</sup>"
+#~ msgstr "cos<sup>−1</sup>"
+
+#~| msgid "Cosh"
+#~ msgid "cosh"
+#~ msgstr "cosh"
+
+#~| msgid "Cosh<sup>-1</sup>"
+#~ msgid "cosh<sup>−1</sup>"
+#~ msgstr "cosh<sup>−1</sup>"
+
+#
+#~ msgid "Inverse Cosine [J]"
+#~ msgstr "Cosine [J]"
+
+#~ msgid "Hyperbolic Inverse Cosine [J]"
+#~ msgstr "Hyperbolic Inverse Cosine [J]"
+
+#~| msgid "Tan"
+#~ msgid "tan"
+#~ msgstr "tan"
+
+#~| msgid "Tan<sup>-1</sup>"
+#~ msgid "tan<sup>−1</sup>"
+#~ msgstr "tan<sup>−1</sup>"
+
+#~| msgid "Tanh"
+#~ msgid "tanh"
+#~ msgstr "tanh"
+
+#~| msgid "Tanh<sup>-1</sup>"
+#~ msgid "tanh<sup>−1</sup>"
+#~ msgstr "tanh<sup>−1</sup>"
+
+#
+#~ msgid "Inverse Tangent [W]"
+#~ msgstr "Tangent [L]"
+
+#~ msgid "Hyperbolic Inverse Tangent [W]"
+#~ msgstr "Hyperbolic Inverse Tangent [W]"
+
+#~| msgid "Sln"
+#~ msgid "ln"
+#~ msgstr "ln"
+
+#
+#~ msgid "e<sup><i>x</i></sup>"
+#~ msgstr "১০<sup><i>x</i></sup>"
+
+#
+#~ msgid "e to the power of the displayed value [N]"
+#~ msgstr "e সৰ্বমোট মান"
+
+#~| msgid "Log"
+#~ msgid "log"
+#~ msgstr "লগ"
+
+#~ msgid "10<sup><i>x</i></sup>"
+#~ msgstr "১০<sup><i>x</i></sup>"
+
+#
+#~| msgid "Base 10 log [g]"
+#~ msgid "Base 10 logarithm [g]"
+#~ msgstr "ভূমি ১০ লগারিদম [g]"
+
+#
+#~ msgid "10 to the power of displayed value [G]"
+#~ msgstr "সৰ্বমোট মান"
+
+#~| msgid "Log<sub>2</sub>"
+#~ msgid "log<sub>2</sub>"
+#~ msgstr "log<sub>2</sub>"
+
+#
+#~ msgid "2<sup><i>x</i></sup>"
+#~ msgstr "%x"
+
+#
+#~| msgid "Base 2 log [h]"
+#~ msgid "Base 2 logarithm [h]"
+#~ msgstr "ভূমি ১০ লগারিদম [h]"
+
+#
+#~ msgid "2 to the power of the displayed value [H]"
+#~ msgstr "e সৰ্বমোট মান"
+
+#
+#~ msgid "x<sup><i>y</i></sup>"
+#~ msgstr "১০<sup><i>x</i></sup>"
+
+#
+#~ msgid "x<sup>1/<i>y</i></sup>"
+#~ msgstr "১০<sup><i>x</i></sup>"
+
+#
+#~ msgid "Raise displayed value to the power of y [o]"
+#~ msgstr "মান সৰ্বমোট y"
+
+#
+#~ msgid "Raise displayed value to the power of reciprocal y [O]"
+#~ msgstr "মান সৰ্বমোট y"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "No."
+#~ msgstr "না।"
+
+#~ msgid "Reset to _Default (%d)"
+#~ msgstr "Reset to _Default (%d)"
+
+#~ msgid "Negative X and non-integer Y not supported"
+#~ msgstr "এক্স স্থানাঙ্ক এবং পূৰ্ণসংখ্যা ওয়াই স্থানাঙ্ক"
+
+#~ msgid "Kilometer-to-mile conversion factor"
+#~ msgstr "কিলোমিটাৰ-ৰ পৰা-মাইল -এ ৰূপান্তৰ কৰাৰ গুণক"
+
+#~ msgid "square root of 2"
+#~ msgstr "২ এৰ বৰ্গফল"
+
+#~ msgid "π"
+#~ msgstr "π"
+
+#~ msgid "Centimeter-to-inch conversion factor"
+#~ msgstr "সিন্টিমিটাট-ৰ পৰা-ইঞ্চি-তে ৰূপান্তৰ কৰাৰ গুণক"
+
+#~ msgid "degrees in a radian"
+#~ msgstr "ৰেডিয়ানে উপস্থিত ডিগ্ৰি সমুহ"
+
+#~ msgid "2 ^ 20"
+#~ msgstr "২ ^ ২০"
+
+#~ msgid "Gram-to-ounce conversion factor"
+#~ msgstr "গ্ৰাম-ৰ পৰা-আউন্স-এ ৰূপান্তৰ কৰাৰ গুণক"
+
+#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
+#~ msgstr "কিলোজুল-ৰ পৰা-ব্ৰিটিশ-থাৰ্মাল-ইউনিট-এ ৰূপান্তৰ কৰাৰ গুণক"
+
+#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+#~ msgstr "ঘন-সিন্টিমিটাৰ-ৰ পৰা-ঘন-ইঞ্চি-তে ৰূপান্তৰ কৰাৰ গুণক"
 
 #~ msgid "Too long number"
 #~ msgstr "সংখ্যা"
@@ -2486,9 +3430,6 @@ msgstr "ঘন-সিন্টিমিটাৰ-ৰ পৰা-ঘন-ইঞ্�
 
 #~ msgid "-a needs accuracy value"
 #~ msgstr "-a তে সঠিক মান প্ৰয়োজন"
-
-#~ msgid "Error, operands must be integers"
-#~ msgstr "ত্ৰুটি"
 
 #~ msgid "Cleared display, prefix without an operator is not allowed"
 #~ msgstr "হলো"
@@ -2576,9 +3517,6 @@ msgstr "ঘন-সিন্টিমিটাৰ-ৰ পৰা-ঘন-ইঞ্�
 #~ msgid "Clipboard contained malformed calculation"
 #~ msgstr "Clipboard contained malformed calculation"
 
-#~ msgid "  "
-#~ msgstr "  "
-
 #~ msgid " 0"
 #~ msgstr "0"
 
@@ -2618,12 +3556,6 @@ msgstr "ঘন-সিন্টিমিটাৰ-ৰ পৰা-ঘন-ইঞ্�
 #~ msgid "E to the x"
 #~ msgstr "E"
 
-#~ msgid "Factorial"
-#~ msgstr "গৌণিক"
-
-#~ msgid "Hexadecimal digit A"
-#~ msgstr "হেক্সাডেসিমেল সংখ্যা A"
-
 #~ msgid "Hexadecimal digit B"
 #~ msgstr "হেক্সাডেসিমেল সংখ্যা B"
 
@@ -2647,12 +3579,6 @@ msgstr "ঘন-সিন্টিমিটাৰ-ৰ পৰা-ঘন-ইঞ্�
 
 #~ msgid "Retreive from register"
 #~ msgstr "Retreive from register"
-
-#~ msgid "Shift left"
-#~ msgstr "বাদিকে স্থানান্তৰ কৰো"
-
-#~ msgid "Shift right"
-#~ msgstr "ডানদিকে স্থানান্তৰ কৰো"
 
 #~ msgid "Show Bitcalculating _Extension"
 #~ msgstr "Show Bitcalculating _Extension"
@@ -2686,4 +3612,3 @@ msgstr "ঘন-সিন্টিমিটাৰ-ৰ পৰা-ঘন-ইঞ্�
 
 #~ msgid "xy"
 #~ msgstr "xy"
-
