@@ -17,6 +17,7 @@ HELP_FILES = absolute.page \
              functions.page \
              index.page \
              keyboard.page \
+             legal.xml \
              logarithm.page \
              modulus.page \
              mouse.page \
