@@ -223,7 +223,8 @@ reformat_separators(MathEquation *equation)
         /* See what digit this character is */
         c = g_utf8_get_char(read_iter);
 
-        expect_tsep = mp_serializer_get_show_thousands_separators(equation->priv->serializer) &&
+        expect_tsep = math_equation_get_base(equation) == 10 &&
+                      mp_serializer_get_show_thousands_separators(equation->priv->serializer) &&
                       in_number && !in_radix && !last_is_tsep &&
                       digit_offset > 0 && digit_offset % mp_serializer_get_thousands_separator_count(equation->priv->serializer) == 0;
         last_is_tsep = FALSE;
