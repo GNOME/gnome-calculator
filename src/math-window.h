@@ -25,20 +25,20 @@ typedef struct MathWindowPrivate MathWindowPrivate;
 
 typedef struct
 {
-    GtkWindow parent_instance;
+    GtkApplicationWindow parent_instance;
     MathWindowPrivate *priv;
 } MathWindow;
 
 typedef struct
 {
-    GtkWindowClass parent_class;
+    GtkApplicationWindowClass parent_class;
 
     void (*quit)(MathWindow *window);
 } MathWindowClass;
 
 GType math_window_get_type(void);
 
-MathWindow *math_window_new(MathEquation *equation);
+MathWindow *math_window_new(GtkApplication *app, MathEquation *equation);
 
 GtkWidget *math_window_get_menu_bar(MathWindow *window);
 

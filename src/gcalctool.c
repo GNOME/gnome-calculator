@@ -255,14 +255,7 @@ mode_cb(MathButtons *buttons, GParamSpec *spec)
 
 
 static void
-quit_cb(MathWindow *window)
-{
-    gtk_main_quit();
-}
-
-
-int
-main(int argc, char **argv)
+startup_cb(GApplication *application)
 {
     MathEquation *equation;
     MathButtons *buttons;
@@ -273,18 +266,6 @@ main(int argc, char **argv)
     ButtonMode button_mode;
     gchar *source_currency, *target_currency;
     gchar *source_units, *target_units;
-
-    g_type_init();
-
-    setlocale(LC_ALL, "");
-    bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
-    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-    textdomain(GETTEXT_PACKAGE);
-
-    /* Seed random number generator. */
-    srand48((long) time((time_t *) 0));
-
-    get_options(argc, argv);
 
     settings = g_settings_new ("org.gnome.gcalctool");
     accuracy = g_settings_get_int(settings, "accuracy");
@@ -327,18 +308,49 @@ main(int argc, char **argv)
     g_signal_connect(equation, "notify::source-units", G_CALLBACK(source_units_cb), NULL);
     g_signal_connect(equation, "notify::target-units", G_CALLBACK(target_units_cb), NULL);
 
-    gtk_init(&argc, &argv);
-
-    window = math_window_new(equation);
+    window = math_window_new(GTK_APPLICATION(application), equation);
     buttons = math_window_get_buttons(window);
-    g_signal_connect(G_OBJECT(window), "quit", G_CALLBACK(quit_cb), NULL);
     math_buttons_set_programming_base(buttons, base);
     math_buttons_set_mode(buttons, button_mode); // FIXME: We load the basic buttons even if we immediately switch to the next type
     g_signal_connect(buttons, "notify::programming-base", G_CALLBACK(programming_base_cb), NULL);
     g_signal_connect(buttons, "notify::mode", G_CALLBACK(mode_cb), NULL);
 
     gtk_widget_show(GTK_WIDGET(window));
-    gtk_main();
+}
 
-    return(0);
+
+static void
+activate_cb(GApplication *application)
+{
+    gtk_window_present(GTK_WINDOW(window));
+}
+
+
+int
+main(int argc, char **argv)
+{
+    GtkApplication *app;
+    int status;
+
+    setlocale(LC_ALL, "");
+    bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
+    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+    textdomain(GETTEXT_PACKAGE);
+
+    /* Seed random number generator. */
+    srand48((long) time((time_t *) 0));
+
+    g_type_init();
+
+    get_options(argc, argv);
+
+    gtk_init(&argc, &argv);
+
+    app = gtk_application_new("org.gnome.gcalctool", G_APPLICATION_FLAGS_NONE);
+    g_signal_connect(app, "startup", G_CALLBACK(startup_cb), NULL);
+    g_signal_connect(app, "activate", G_CALLBACK(activate_cb), NULL);
+
+    status = g_application_run(G_APPLICATION(app), argc, argv);
+
+    return status;
 }
