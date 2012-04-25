@@ -40,8 +40,6 @@ GType math_window_get_type(void);
 
 MathWindow *math_window_new(GtkApplication *app, MathEquation *equation);
 
-GtkWidget *math_window_get_menu_bar(MathWindow *window);
-
 MathEquation *math_window_get_equation(MathWindow *window);
 
 MathDisplay *math_window_get_display(MathWindow *window);
