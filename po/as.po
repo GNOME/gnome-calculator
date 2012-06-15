@@ -43,7 +43,7 @@ msgstr "সম্পূৰ্ণ মান"
 #: ../data/buttons-advanced.ui.h:8 ../data/buttons-basic.ui.h:4
 #: ../data/buttons-financial.ui.h:38 ../data/buttons-programming.ui.h:8
 msgid "Exponent"
-msgstr "সূচক"
+msgstr "ঘাতচিহ্ন"
 
 #. Accessible name for the factorial button
 #: ../data/buttons-advanced.ui.h:10 ../data/buttons-programming.ui.h:10
@@ -74,7 +74,7 @@ msgstr "মেমৰি"
 #: ../data/buttons-advanced.ui.h:18
 #| msgid "Scientific"
 msgid "Scientific Exponent"
-msgstr "বৈজ্ঞানিক সূচক"
+msgstr "বৈজ্ঞানিক ঘাতচিহ্ন"
 
 #. Accessible name for the store value button
 #: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:24
@@ -98,7 +98,7 @@ msgstr "চুপাৰস্ক্ৰিপ্ট"
 #. Payment Period Dialog: Button to calculate result
 #: ../data/buttons-financial.ui.h:6
 msgid "C_alculate"
-msgstr "গণক"
+msgstr "গণনা কৰক (_a)"
 
 #
 #. Gross Profit Margin Dialog: Label before cost input
@@ -319,7 +319,7 @@ msgstr "বৰ্তমান মান"
 #. Periodic Interest Rate Dialog: Label before present value input
 #: ../data/buttons-financial.ui.h:64
 msgid "Present _Value:"
-msgstr "বৰ্তমান মান (_V)"
+msgstr "বৰ্তমান মান (_V):"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
 #: ../data/buttons-financial.ui.h:66
@@ -368,17 +368,17 @@ msgstr "দাম (_C):"
 #. Periodic Interest Rate Dialog: Label before future value input
 #: ../data/buttons-financial.ui.h:82
 msgid "_Future Value:"
-msgstr "ভৱিষ্যত মান (_F)"
+msgstr "ভৱিষ্যত মান (_F):"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
 #: ../data/buttons-financial.ui.h:84
 msgid "_Life:"
-msgstr "জীবনকাল: (_L)"
+msgstr "জীবনকাল (_L):"
 
 #. Gross Profit Margin Dialog: Label before margin input
 #: ../data/buttons-financial.ui.h:86
 msgid "_Margin:"
-msgstr "সীমা: (_M)"
+msgstr "সীমা (_M):"
 
 #. Present Value Dialog: Label before number of periods input
 #: ../data/buttons-financial.ui.h:88
@@ -389,7 +389,7 @@ msgstr "ম্যাদৰ সংখ্যা (_N):"
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
 #: ../data/buttons-financial.ui.h:90
 msgid "_Period:"
-msgstr "কাল: (_P)"
+msgstr "ম্যাদ (_P):"
 
 #
 #. Payment Period Dialog: Label before periodic payment input
@@ -401,18 +401,18 @@ msgstr "ম্যাদী পৰিশোধ (_P):"
 #. Periodic Payment Dialog: Label before principal input
 #: ../data/buttons-financial.ui.h:94
 msgid "_Principal:"
-msgstr "অৰ্থনৈতিক অৱস্থা (_F)"
+msgstr "মূলধন (_F):"
 
 #. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
 #: ../data/buttons-financial.ui.h:96
 msgid "_Salvage:"
-msgstr "পুনৰুদ্ধাৰ মূল্য: (_S)"
+msgstr "পুনৰুদ্ধাৰ মূল্য (_S):"
 
 #
 #. Periodic Interest Rate Dialog: Label before term input
 #: ../data/buttons-financial.ui.h:98
 msgid "_Term:"
-msgstr "মান"
+msgstr "ম্যাদ (_T):"
 
 #. Insert ASCII dialog: Label before character entry
 #: ../data/buttons-programming.ui.h:6
@@ -974,7 +974,7 @@ msgstr "চুপাৰস্ক্ৰিপ্ট অৱস্থা [Ctrl]"
 #. Tooltip for the scientific exponent button
 #: ../src/math-buttons.c:110
 msgid "Scientific exponent [Ctrl+E]"
-msgstr "বিজ্ঞানভিত্তিক ঘাত [Ctrl+E]"
+msgstr "বিজ্ঞানভিত্তিক ঘাতচিহ্ন [Ctrl+E]"
 
 #. Tooltip for the add button
 #: ../src/math-buttons.c:113
@@ -984,17 +984,17 @@ msgstr "যোগ কৰক"
 #. Tooltip for the subtract button
 #: ../src/math-buttons.c:116
 msgid "Subtract [-]"
-msgstr "বিয়োগ"
+msgstr "বিয়োগ কৰক"
 
 #. Tooltip for the multiply button
 #: ../src/math-buttons.c:119
 msgid "Multiply [*]"
-msgstr "গুণ"
+msgstr "পুৰন কৰক"
 
 #. Tooltip for the divide button
 #: ../src/math-buttons.c:122
 msgid "Divide [/]"
-msgstr "ভাগ"
+msgstr "হৰণ কৰক"
 
 #. Tooltip for the modulus divide button
 #: ../src/math-buttons.c:125
@@ -1349,7 +1349,7 @@ msgstr "স্খলিত অভিব্যক্তি"
 #: ../src/math-equation.c:1263
 #| msgid "C_alculate"
 msgid "Calculating"
-msgstr "গণনা কৰা হৈ আছে"
+msgstr "গণনা কৰা হৈছে"
 
 #. Error displayed when trying to factorize a non-integer value
 #: ../src/math-equation.c:1394
@@ -1455,15 +1455,15 @@ msgid ""
 "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 msgstr ""
-"Gcalctool এটা বিনামুলিয়া চফ্টওৱেৰ; আপুনি Free Software Foundation -ৰ দ্বাৰা\n "
-"প্ৰকাশিত GNU General Public License -ৰ চুক্তিসমূহৰ অন্তৰ্গত ইয়াক পুনৰ বিলাব \n"
-"পাৰিব অথবা সলনি  কৰিব পাৰিব; হৈতো লাইচেঞ্চৰ সংস্কৰণ ২, অথবা (আপুনাৰ বিকল্পত)\n "
+"Gcalctool এটা বিনামুলিয়া চফ্টৱেৰ; আপুনি Free Software Foundation ৰ দ্বাৰা\n "
+"প্ৰকাশিত GNU General Public License ৰ চুক্তিসমূহৰ অন্তৰ্গত ইয়াক পুনৰ বিলাব \n"
+"পাৰিব অথবা সলনি  কৰিব পাৰিব; হৈতো অনুজ্ঞাৰ সংস্কৰণ ২, অথবা (আপুনাৰ বিকল্পত)\n "
 "যিকোনো পৰৱৰ্তী সংস্কৰণ।\n"
-"Gcalctool এইটো আশাত বিলোৱা হৈছে যে ই ব্যৱহাৰযোগ্য হ'ব, কিন্তু কোনো ওৱাৰেন্টি\n"
-"নথকাকৈ; ব্যৱসায়ীক  অথবা কোনো এটা বিশেষ কাৰণৰ যোগ্যতাৰ বাবে বুজুৱা ওৱাৰেন্টি\n"
+"Gcalctool এইটো আশাত বিলোৱা হৈছে যে ই ব্যৱহাৰযোগ্য হ'ব, কিন্তু কোনো ৱাৰেন্টি\n"
+"নথকাকৈ; ব্যৱসায়ীক  অথবা কোনো এটা বিশেষ কাৰণৰ যোগ্যতাৰ বাবে বুজুৱা ৱাৰেন্টি\n"
 "নথকাকৈ। অধিক যানিবলৈ  GNU General Public License চাওক।\n"
 "\n"
-"আপুনি হৈতো ইতিমধ্যে Gcalctool ৰ সৈতে GNU General Public License -ৰ কপি এটা\n"
+"আপুনি হৈতো ইতিমধ্যে Gcalctool ৰ সৈতে GNU General Public License ৰ কপি এটা\n"
 "পাইছে; যদি নাই তেন্তে Free Software Foundation, Inc., \n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA লে লিখক"
 
@@ -1486,7 +1486,7 @@ msgstr "অৰ্থনৈতিক এবং বৈজ্ঞানিক অৱ
 #. Calculator menu
 #: ../src/math-window.c:381
 msgid "_Calculator"
-msgstr "গণক"
+msgstr "গণক (_C)"
 
 #. Mode menu
 #: ../src/math-window.c:383
@@ -1497,7 +1497,7 @@ msgstr "অৱস্থা (_M)"
 #. Help menu label
 #: ../src/math-window.c:385
 msgid "_Help"
-msgstr "সাহায্য (_H)"
+msgstr "সহায় (_H)"
 
 #. Basic menu label
 #: ../src/math-window.c:387
@@ -1517,13 +1517,13 @@ msgstr "আৰ্থিক (_F)"
 #. Programming menu label
 #: ../src/math-window.c:393
 msgid "_Programming"
-msgstr "প্রোগ্ৰামিং (_P)"
+msgstr "প্ৰগ্ৰামিং (_P)"
 
 #
 #. Help>Contents menu label
 #: ../src/math-window.c:395
 msgid "_Contents"
-msgstr "বিষয়বস্তু (_C)"
+msgstr "সমল (_C)"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
@@ -1572,7 +1572,7 @@ msgstr "শূন্যৰ লগাৰিথম অবিৱৰিত"
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
 #: ../src/mp.c:1680 ../src/mp.c:1994
 msgid "The power of zero is undefined for a negative exponent"
-msgstr "শূন্যৰ ঘাত এটা ঋণাত্মক ঘাতৰ বাবে অবিৱৰিত"
+msgstr "শূন্যৰ ঘাত এটা ঋণাত্মক ঘাতচিহ্নৰ বাবে অবিৱৰিত"
 
 #: ../src/mp.c:1704
 msgid "Reciprocal of zero is undefined"
@@ -2644,7 +2644,7 @@ msgstr "%s%%s"
 #~ msgstr "E_ng"
 
 #~ msgid "Edit Constants"
-#~ msgstr "কনস্ট্যান্ট-এৰ মান সম্পাদন কৰো"
+#~ msgstr "কনস্ট্যান্টএৰ মান সম্পাদন কৰো"
 
 #~ msgid "Edit Constants..."
 #~ msgstr "কনস্ট্যান্ট সম্পাদন কৰো..."
@@ -2869,16 +2869,16 @@ msgstr "%s%%s"
 #~ msgstr "ত্ৰিকোনমিতিৰ ফাংশানগুলোৰ জন্য ইনভাৰ্স অপশনটি নিৰ্ধাৰণ কৰো"
 
 #~ msgid "Set numeric base to binary (base 2)"
-#~ msgstr "সংখ্যাসূচক ভিত্তি -কে বাইনাৰি (ভিত্তি ২)- তে নিৰ্ধাৰণ কৰো"
+#~ msgstr "সংখ্যাসূচক ভিত্তি কে বাইনাৰি (ভিত্তি ২)- তে নিৰ্ধাৰণ কৰো"
 
 #~ msgid "Set numeric base to decimal (base 10)"
-#~ msgstr "সংখ্যাসূচক ভিত্তিকে দশমিক (ভিত্তি ১০) -এ নিৰ্ধাৰণ কৰো"
+#~ msgstr "সংখ্যাসূচক ভিত্তিকে দশমিক (ভিত্তি ১০) এ নিৰ্ধাৰণ কৰো"
 
 #~ msgid "Set numeric base to hexadecimal (base 16)"
-#~ msgstr "সংখ্যাসূচক নিধান কে হেক্সাডেসিমাল (ভিত্তি ১৬) -এ নিৰ্ধাৰণ কৰো"
+#~ msgstr "সংখ্যাসূচক নিধান কে হেক্সাডেসিমাল (ভিত্তি ১৬) এ নিৰ্ধাৰণ কৰো"
 
 #~ msgid "Set numeric base to octal (base 8)"
-#~ msgstr "সংখ্যাসূচক ভিত্তিকে অক্টাল (ভিত্তি ৮) -এ নিৰ্ধাৰণ কৰো"
+#~ msgstr "সংখ্যাসূচক ভিত্তিকে অক্টাল (ভিত্তি ৮) এ নিৰ্ধাৰণ কৰো"
 
 #~ msgid "Set trigonometric type to degrees"
 #~ msgstr "ত্ৰিকেনমিতিৰ ধৰন ডিগ্ৰি হিসাবে চিহ্নিত কৰো"
@@ -2896,7 +2896,7 @@ msgstr "%s%%s"
 #~ msgstr "মান"
 
 #~ msgid "Show T_housands Separator"
-#~ msgstr "হাজাৰ-এৰ স্থান বিভাজনকাৰী চিহ্ন প্ৰদৰ্শন কৰো (_h)"
+#~ msgstr "হাজাৰএৰ স্থান বিভাজনকাৰী চিহ্ন প্ৰদৰ্শন কৰো (_h)"
 
 #~ msgid "Show _Trailing Zeroes"
 #~ msgstr "অনুসৰণকাৰী শূণ্য প্ৰদৰ্শন কৰো (_T)"
@@ -3301,7 +3301,7 @@ msgstr "%s%%s"
 #~ msgstr "এক্স স্থানাঙ্ক এবং পূৰ্ণসংখ্যা ওয়াই স্থানাঙ্ক"
 
 #~ msgid "Kilometer-to-mile conversion factor"
-#~ msgstr "কিলোমিটাৰ-ৰ পৰা-মাইল -এ ৰূপান্তৰ কৰাৰ গুণক"
+#~ msgstr "কিলোমিটাৰৰ পৰা-মাইল এ ৰূপান্তৰ কৰাৰ গুণক"
 
 #~ msgid "square root of 2"
 #~ msgstr "২ এৰ বৰ্গফল"
@@ -3310,7 +3310,7 @@ msgstr "%s%%s"
 #~ msgstr "π"
 
 #~ msgid "Centimeter-to-inch conversion factor"
-#~ msgstr "সিন্টিমিটাট-ৰ পৰা-ইঞ্চি-তে ৰূপান্তৰ কৰাৰ গুণক"
+#~ msgstr "সিন্টিমিটাটৰ পৰা-ইঞ্চিতে ৰূপান্তৰ কৰাৰ গুণক"
 
 #~ msgid "degrees in a radian"
 #~ msgstr "ৰেডিয়ানে উপস্থিত ডিগ্ৰি সমুহ"
@@ -3319,13 +3319,13 @@ msgstr "%s%%s"
 #~ msgstr "২ ^ ২০"
 
 #~ msgid "Gram-to-ounce conversion factor"
-#~ msgstr "গ্ৰাম-ৰ পৰা-আউন্স-এ ৰূপান্তৰ কৰাৰ গুণক"
+#~ msgstr "গ্ৰামৰ পৰা-আউন্সএ ৰূপান্তৰ কৰাৰ গুণক"
 
 #~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
-#~ msgstr "কিলোজুল-ৰ পৰা-ব্ৰিটিশ-থাৰ্মাল-ইউনিট-এ ৰূপান্তৰ কৰাৰ গুণক"
+#~ msgstr "কিলোজুলৰ পৰা-ব্ৰিটিশ-থাৰ্মাল-ইউনিটএ ৰূপান্তৰ কৰাৰ গুণক"
 
 #~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-#~ msgstr "ঘন-সিন্টিমিটাৰ-ৰ পৰা-ঘন-ইঞ্চি-তে ৰূপান্তৰ কৰাৰ গুণক"
+#~ msgstr "ঘন-সিন্টিমিটাৰৰ পৰা-ঘন-ইঞ্চিতে ৰূপান্তৰ কৰাৰ গুণক"
 
 #~ msgid "Too long number"
 #~ msgstr "সংখ্যা"
