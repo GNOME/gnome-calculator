@@ -346,6 +346,8 @@ main(int argc, char **argv)
 
     gtk_init(&argc, &argv);
 
+    gtk_window_set_default_icon_name("accessories-calculator");
+
     app = gtk_application_new("org.gnome.gcalctool", G_APPLICATION_FLAGS_NONE);
     g_signal_connect(app, "startup", G_CALLBACK(startup_cb), NULL);
     g_signal_connect(app, "activate", G_CALLBACK(activate_cb), NULL);
