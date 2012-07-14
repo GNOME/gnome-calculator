@@ -23,25 +23,25 @@
 # Jochen Skulj <jochen@jochenskulj.de>
 # Andre Klapper <ak-47@gmx.net>, 2008.
 # Mario Blättermann <mariobl@freenet.de>, 2010, 2011.
-# Jakob Kramer <jakob.kramer@gmx.de>, 2010.
+# Jakob Kramer <jakob.kramer@gmx.de>, 2010, 2012.
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2011.
-# Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009, 2010, 2011, 2012.
 # Hendrik Knackstedt <kn.hendrik@gmail.com>, 2012.
+# Christian Kirbach <Christian.Kirbach@googlemail.com>, 2009, 2010, 2011, 2012.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-31 09:31+0000\n"
-"PO-Revision-Date: 2012-01-12 19:13+0200\n"
-"Last-Translator: Hendrik Knackstedt <kn.hendrik@gmail.com>\n"
-"Language-Team: Ubuntu German Translators\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-14 16:14+0200\n"
+"PO-Revision-Date: 2012-07-14 16:15+0200\n"
+"Last-Translator: Christian Kirbach <Christian.Kirbach@googlemail.com>\n"
+"Language-Team: Deutsch <gnome-de@gnome.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.7.0\n"
+"X-Generator: Gtranslator 2.91.5\n"
 "X-Project-Style: gnome\n"
 
 #. Accessible name for the inverse button
@@ -90,8 +90,9 @@ msgstr "Speicher"
 
 #. The label on the memory button
 #: ../data/buttons-advanced.ui.h:18 ../data/buttons-financial.ui.h:74
-msgid "<i>x</i>"
-msgstr "<i>x</i>"
+#: ../data/buttons-programming.ui.h:14
+msgid "x"
+msgstr "x"
 
 #. Accessible name for the absolute value button
 #: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:4
@@ -402,11 +403,6 @@ msgstr "Zhlg"
 msgid "Gpm"
 msgstr "Bgs"
 
-#. The label on the memory button
-#: ../data/buttons-programming.ui.h:14
-msgid "x"
-msgstr "x"
-
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:240
@@ -462,6 +458,7 @@ msgstr "64 Bit"
 
 #. Title of preferences dialog
 #: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
+#: ../src/math-window.c:369
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -491,7 +488,7 @@ msgid "Show _thousands separators"
 msgstr "_Tausender-Trennzeichen anzeigen"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:546
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
 msgid "Calculator"
 msgstr "Taschenrechner"
 
@@ -1304,54 +1301,54 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:236
+#: ../src/math-preferences.c:235
 msgid "_Close"
 msgstr "S_chließen"
 
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:246 ../src/unit-manager.c:54
+#: ../src/math-preferences.c:245 ../src/unit-manager.c:54
 msgid "Degrees"
 msgstr "Grad"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:250 ../src/unit-manager.c:55
+#: ../src/math-preferences.c:249 ../src/unit-manager.c:55
 msgid "Radians"
 msgstr "im Bogenmaß"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:254 ../src/unit-manager.c:56
+#: ../src/math-preferences.c:253 ../src/unit-manager.c:56
 msgid "Gradians"
 msgstr "gon"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:264
+#: ../src/math-preferences.c:263
 msgid "Automatic"
 msgstr "Automatisch"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:268
+#: ../src/math-preferences.c:267
 msgid "Fixed"
 msgstr "Fest"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:271
 msgid "Scientific"
 msgstr "Wissenschaftlich"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:275
 msgid "Engineering"
 msgstr "Ingenieurwissenschaftlich"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:287
+#: ../src/math-preferences.c:286
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "%d _Nachkommastellen anzeigen"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:172
+#: ../src/math-window.c:171
 msgid "Unable to open help file"
 msgstr "Die Hilfedatei konnte nicht geöffnet werden"
 
@@ -1415,45 +1412,37 @@ msgstr "© 1986-2010 Die Autoren des Taschenrechners"
 msgid "Calculator with financial and scientific modes."
 msgstr "Ein Taschenrechner mit finanztechnischem und wissenschaftlichem Modus."
 
-#. Calculator menu
-#: ../src/math-window.c:381
-msgid "_Calculator"
-msgstr "_Taschenrechner"
+#: ../src/math-window.c:362
+msgid "Basic"
+msgstr "Standard"
 
-#. Mode menu
-#: ../src/math-window.c:383
-msgid "_Mode"
-msgstr "_Modus"
+#: ../src/math-window.c:363
+msgid "Advanced"
+msgstr "Erweitert"
 
-#. Help menu label
-#: ../src/math-window.c:385
-msgid "_Help"
-msgstr "_Hilfe"
+#: ../src/math-window.c:364
+msgid "Financial"
+msgstr "Finanztechnisch"
 
-#. Basic menu label
-#: ../src/math-window.c:387
-msgid "_Basic"
-msgstr "_Standard"
+#: ../src/math-window.c:365
+msgid "Programming"
+msgstr "Programmierung"
 
-#. Advanced menu label
-#: ../src/math-window.c:389
-msgid "_Advanced"
-msgstr "_Erweitert"
+#: ../src/math-window.c:366
+msgid "Mode"
+msgstr "Modus"
 
-#. Financial menu label
-#: ../src/math-window.c:391
-msgid "_Financial"
-msgstr "_Finanztechnisch"
+#: ../src/math-window.c:373
+msgid "About Calculator"
+msgstr "Info zu Taschenrechner"
 
-#. Programming menu label
-#: ../src/math-window.c:393
-msgid "_Programming"
-msgstr "_Programmierung"
+#: ../src/math-window.c:374
+msgid "Help"
+msgstr "Hilfe"
 
-#. Help>Contents menu label
-#: ../src/math-window.c:395
-msgid "_Contents"
-msgstr "_Inhalt"
+#: ../src/math-window.c:375
+msgid "Quit"
+msgstr "Beenden"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
@@ -1483,7 +1472,7 @@ msgstr "Verschiebung ist nur mit Ganzzahlen möglich"
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/mp.c:148
 msgid "Argument not defined for zero"
-msgstr "Das Argument ist nicht definiert für Null"
+msgstr "Das Argument ist für null nicht definiert"
 
 #: ../src/mp.c:299
 msgid "Overflow: the result couldn't be calculated"
@@ -1492,29 +1481,29 @@ msgstr "Überlauf: Das Ergebnis konnte nicht berechnet werden"
 #. Translators: Error displayed attempted to divide by zero
 #: ../src/mp.c:644 ../src/mp.c:676 ../src/mp.c:1605
 msgid "Division by zero is undefined"
-msgstr "Division durch Null ist nicht definiert"
+msgstr "Division durch null ist nicht definiert"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
 #: ../src/mp.c:1276 ../src/mp.c:1313
 msgid "Logarithm of zero is undefined"
-msgstr "Der Logarithmus von Null ist nicht definiert"
+msgstr "Der Logarithmus von null ist nicht definiert"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative exponent
 #: ../src/mp.c:1680 ../src/mp.c:1994
 msgid "The power of zero is undefined for a negative exponent"
-msgstr "Die Potenz von Null ist nicht für einen negativen Exponenten definiert"
+msgstr "Die Potenz von null ist nicht für einen negativen Exponenten definiert"
 
 #: ../src/mp.c:1704
 msgid "Reciprocal of zero is undefined"
-msgstr "Der Kehrwert von Null ist nicht definiert"
+msgstr "Der Kehrwert von null ist nicht definiert"
 
 #: ../src/mp.c:1789
 msgid "Root must be non-zero"
-msgstr "Quadratwurzel muss von Null verschieden sein"
+msgstr "Quadratwurzel muss von null verschieden sein"
 
 #: ../src/mp.c:1807
 msgid "Negative root of zero is undefined"
-msgstr "Die negative Quadratwurzel von Null ist nicht definiert"
+msgstr "Die negative Quadratwurzel von null ist nicht definiert"
 
 #: ../src/mp.c:1813
 msgid "nth root of negative number is undefined for even n"
@@ -1856,13 +1845,13 @@ msgstr "Hektar,Hektar,ha"
 
 #: ../src/unit-manager.c:74
 msgid "Acres"
-msgstr "Acres"
+msgstr "Acre"
 
 #: ../src/unit-manager.c:74
 #, c-format
 msgctxt "unit-format"
 msgid "%s acres"
-msgstr "%s Ar"
+msgstr "%s Acre"
 
 #: ../src/unit-manager.c:74
 msgctxt "unit-symbols"
@@ -2301,6 +2290,15 @@ msgstr "Währung"
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
+
+#~ msgid "<i>x</i>"
+#~ msgstr "<i>x</i>"
+
+#~ msgid "_Calculator"
+#~ msgstr "_Taschenrechner"
+
+#~ msgid "_Contents"
+#~ msgstr "_Inhalt"
 
 #~ msgctxt "unit-format"
 #~ msgid "%s˚K"
