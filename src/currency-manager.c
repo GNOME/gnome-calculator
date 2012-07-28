@@ -490,7 +490,7 @@ load_ecb_rates(CurrencyManager *manager)
     filename = get_ecb_rate_filepath();
     document = xmlReadFile(filename, NULL, 0);
     if (!document)
-        g_error("Couldn't parse ECB rate file %s", filename);
+        g_warning("Couldn't parse ECB rate file %s", filename);
     g_free (filename);
     if (!document)    
         return;
@@ -498,7 +498,7 @@ load_ecb_rates(CurrencyManager *manager)
     xpath_ctx = xmlXPathNewContext(document);
     if (xpath_ctx == NULL) {
         xmlFreeDoc(document);
-        g_error("Couldn't create XPath context");
+        g_warning("Couldn't create XPath context");
         return;
     }
 
@@ -510,7 +510,7 @@ load_ecb_rates(CurrencyManager *manager)
     if (xpath_obj == NULL) {
         xmlXPathFreeContext(xpath_ctx);
         xmlFreeDoc(document);
-        fprintf(stderr, "Couldn't create XPath object\n");
+        g_warning("Couldn't create XPath object");
         return;
     }
     len = (xpath_obj->nodesetval) ? xpath_obj->nodesetval->nodeNr : 0;
