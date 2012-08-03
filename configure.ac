@@ -43,25 +43,6 @@ AC_SUBST(GLIB_MKENUMS)
 AC_CHECK_LIB(m, log)
 
 dnl ###########################################################################
-dnl Determine if a usable lex is available on this system
-dnl ###########################################################################
-
-AM_PROG_LEX
-if [[ "$LEX" != "flex" ]]; then
-	AC_MSG_ERROR(flex is required to create the gcalctool scanners)
-fi
-
-dnl ###########################################################################
-dnl Determine if a usable yacc is available on this system
-dnl ###########################################################################
-
-AC_PROG_YACC
-AC_CHECK_PROG(HAVE_YACC, $YACC, yes, no)
-if [[ "$HAVE_YACC" = "no" ]]; then
-	AC_MSG_ERROR($YACC is not usable as yacc - consider using bison)
-fi
-
-dnl ###########################################################################
 dnl Internationalization
 dnl ###########################################################################
 

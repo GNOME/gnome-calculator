@@ -42,10 +42,6 @@ gcalctool_SOURCES = \
 	mp-equation.c \
 	mp-equation.h \
 	mp-equation-private.h \
-	mp-equation-lexer.c \
-	mp-equation-lexer.h \
-	mp-equation-parser.c \
-	mp-equation-parser.h \
 	mp-private.h \
 	mp-serializer.c \
 	mp-serializer.h \
@@ -57,7 +53,15 @@ gcalctool_SOURCES = \
 	unit-category.c \
 	unit-category.h \
 	unit-manager.c \
-	unit-manager.h
+	unit-manager.h \
+	prelexer.c \
+	prelexer.h \
+	lexer.c \
+	lexer.h \
+	parserfunc.c \
+	parserfunc.h \
+	parser.c \
+	parser.h
 
 gcalctool_LDADD = \
 	$(GCALCTOOL_LIBS)        
@@ -74,8 +78,6 @@ gcalccmd_SOURCES = \
 	mp-enums.c \
 	mp-enums.h \
 	mp-equation.c \
-	mp-equation-parser.c \
-	mp-equation-lexer.c \
 	mp-serializer.c \
 	mp-serializer.h\
 	mp-trigonometric.c \
@@ -84,7 +86,15 @@ gcalccmd_SOURCES = \
 	unit-category.c \
 	unit-category.h \
 	unit-manager.c \
-	unit-manager.h
+	unit-manager.h \
+	prelexer.c \
+	prelexer.h \
+	lexer.c \
+	lexer.h \
+	parserfunc.c \
+	parserfunc.h \
+	parser.c \
+	parser.h
 
 gcalccmd_LDADD = \
 	$(GCALCCMD_LIBS) \
@@ -117,8 +127,6 @@ test_mp_equation_SOURCES = \
 	mp-enums.c \
 	mp-enums.h \
 	mp-equation.c \
-	mp-equation-parser.c \
-	mp-equation-lexer.c \
 	mp-serializer.c \
 	mp-serializer.h \
 	mp-trigonometric.c \
@@ -127,7 +135,15 @@ test_mp_equation_SOURCES = \
 	unit-category.c \
 	unit-category.h \
 	unit-manager.c \
-	unit-manager.h
+	unit-manager.h \
+	prelexer.c \
+	prelexer.h \
+	lexer.c \
+	lexer.h \
+	parserfunc.c \
+	parserfunc.h \
+	parser.c \
+	parser.h
 
 test_mp_equation_LDADD = \
 	$(GCALCCMD_LIBS) \
@@ -135,24 +151,7 @@ test_mp_equation_LDADD = \
 
 CLEANFILES = \
 	mp-enums.c \
-	mp-enums.h \
-	mp-equation-parser.h \
-	mp-equation-parser.c \
-	mp-equation-lexer.c \
-	mp-equation-lexer.h
-
-# Generate parser files
-mp-equation-parser.c mp-equation-parser.h: mp-equation-parser.y mp-equation-lexer.h
-	$(AM_V_GEN)$(YACC) -d -o mp-equation-parser.c $(srcdir)/mp-equation-parser.y
-
-# Generate lexer files
-mp-equation-lexer.c mp-equation-lexer.h: mp-equation-lexer.l
-	$(AM_V_GEN)$(LEX) $(srcdir)/mp-equation-lexer.l
-
-# Rebuild parser when source files change
-mp-equation-parser.o: mp-equation-lexer.h
-mp-equation-lexer.o: mp-equation-parser.h
-mp-equation.c: mp-equation-lexer.h mp-equation-parser.h
+	mp-enums.h
 
 # Generate enum types
 mp-enums.h: mp-enums.h.template mp-serializer.h
@@ -176,8 +175,6 @@ uninstall-local:
 	&& rm -f "$(DESTDIR)$(bindir)/gnome-calculator"
 
 EXTRA_DIST = \
-	mp-equation-parser.y \
-	mp-equation-lexer.l \
 	mp-enums.c.template \
 	mp-enums.h.template
 

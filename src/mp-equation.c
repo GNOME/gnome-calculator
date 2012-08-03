@@ -10,16 +10,12 @@
  */
 
 #include <ctype.h>
-
-#include "mp-equation-private.h"
-#include "mp-equation-parser.h"
-#include "mp-equation-lexer.h"
-
-extern int _mp_equation_parse(yyscan_t yyscanner);
-
+#include <string.h>
+#include <stdlib.h>
+#include "parser.h"
 
 static int
-variable_is_defined(MPEquationParserState *state, const char *name)
+variable_is_defined(ParserState *state, const char *name)
 {
     /* FIXME: Make more generic */
     if (strcmp(name, "e") == 0 || strcmp(name, "i") == 0 || strcmp(name, "π") == 0)
@@ -31,7 +27,7 @@ variable_is_defined(MPEquationParserState *state, const char *name)
 
 
 static int
-get_variable(MPEquationParserState *state, const char *name, MPNumber *z)
+get_variable(ParserState *state, const char *name, MPNumber *z)
 {
     int result = 1;
 
@@ -50,7 +46,7 @@ get_variable(MPEquationParserState *state, const char *name, MPNumber *z)
 }
 
 static void
-set_variable(MPEquationParserState *state, const char *name, const MPNumber *x)
+set_variable(ParserState *state, const char *name, const MPNumber *x)
 {
     // Reserved words, e, π, mod, and, or, xor, not, abs, log, ln, sqrt, int, frac, sin, cos, ...
     if (strcmp(name, "e") == 0 || strcmp(name, "i") == 0 || strcmp(name, "π") == 0)
@@ -107,7 +103,7 @@ super_atoi(const char *data)
 
 
 static int
-function_is_defined(MPEquationParserState *state, const char *name)
+function_is_defined(ParserState *state, const char *name)
 {
     char *c, *lower_name;
 
@@ -151,7 +147,7 @@ function_is_defined(MPEquationParserState *state, const char *name)
 
 
 static int
-get_function(MPEquationParserState *state, const char *name, const MPNumber *x, MPNumber *z)
+get_function(ParserState *state, const char *name, const MPNumber *x, MPNumber *z)
 {
     char *c, *lower_name;
     int result = 1;
@@ -239,7 +235,7 @@ get_function(MPEquationParserState *state, const char *name, const MPNumber *x, 
 
 
 static int
-convert(MPEquationParserState *state, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
+convert(ParserState *state, const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z)
 {
     if (state->options->convert)
         return state->options->convert(x, x_units, z_units, z, state->options->callback_data);
@@ -252,49 +248,44 @@ MPErrorCode
 mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token)
 {
     int ret;
-    MPEquationParserState state;
-    yyscan_t yyscanner;
-    YY_BUFFER_STATE buffer;
+    int err;
+    ParserState* state;
+    state = p_create_parser (expression, options);
 
     if (!(expression && result) || strlen(expression) == 0)
         return PARSER_ERR_INVALID;
 
-    memset(&state, 0, sizeof(MPEquationParserState));
-    state.options = options;
-    state.variable_is_defined = variable_is_defined;
-    state.get_variable = get_variable;
-    state.set_variable = set_variable;
-    state.function_is_defined = function_is_defined;
-    state.get_function = get_function;
-    state.convert = convert;
-    state.error = 0;
-
+    state->variable_is_defined = variable_is_defined;
+    state->get_variable = get_variable;
+    state->set_variable = set_variable;
+    state->function_is_defined = function_is_defined;
+    state->get_function = get_function;
+    state->convert = convert;
+    state->error = 0;
     mp_clear_error();
-
-    _mp_equation_lex_init_extra(&state, &yyscanner);
-    buffer = _mp_equation__scan_string(expression, yyscanner);
-
-    ret = _mp_equation_parse(yyscanner);
-    if (state.error_token != NULL && error_token != NULL) {
-        *error_token = state.error_token;
+    ret = p_parse (state);
+    if (state->error_token != NULL && error_token != NULL) {
+        *error_token = state->error_token;
+    }
+    /* Error during parsing */
+    if (state->error) {
+	err = state->error;
+        p_destroy_parser (state);
+        return err;
     }
 
-    _mp_equation__delete_buffer(buffer, yyscanner);
-    _mp_equation_lex_destroy(yyscanner);
-
-    /* Error during parsing */
-    if (state.error)
-        return state.error;
-
-    if (mp_get_error())
+    if (mp_get_error()) {
+        p_destroy_parser (state);
         return PARSER_ERR_MP;
+    }
 
     /* Failed to parse */
-    if (ret)
+    if (ret) {
+        p_destroy_parser (state);
         return PARSER_ERR_INVALID;
-
-    mp_set_from_mp(&state.ret, result);
-
+    }
+    mp_set_from_mp(&state->ret, result);
+    p_destroy_parser (state);
     return PARSER_ERR_NONE;
 }
 
@@ -321,10 +312,4 @@ mp_error_code_to_string(MPErrorCode error_code)
     default:
         return "Unknown parser error";
     }
-}
-
-
-int _mp_equation_error(void *yylloc, MPEquationParserState *state, char *text)
-{
-    return 0;
 }

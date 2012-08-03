@@ -398,7 +398,7 @@ test_equations()
     test("2^1", "2", 0);
     test("2^2", "4", 0);
     test("2⁻¹", "0.5", 0);
-    //test("2⁻", "", PARSER_ERR_MP); // FIXME: Maybe an error in bison?
+    test("2⁻", "", PARSER_ERR_MP);
     test("2^−1", "0.5", 0);
     test("2^(−1)", "0.5", 0);
     test("x⁻¹", "0.5", 0);
