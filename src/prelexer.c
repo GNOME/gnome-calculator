@@ -139,7 +139,7 @@ pl_get_next_token(PreLexerState* state)
     if(pl_compare_all(ch, 1, (gchar*[]){"+"}))
         return T_ADD;
 
-    if(pl_compare_all(ch, 2, (gchar*[]){"-","−"}))
+    if(pl_compare_all(ch, 3, (gchar*[]){"-","−","–"}))
         return T_SUBTRACT;
 
     if(pl_compare_all(ch, 2, (gchar*[]){"*","×"}))
