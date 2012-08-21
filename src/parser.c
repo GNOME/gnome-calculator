@@ -19,7 +19,7 @@ p_get_precedence(LexerTokenType type)
         return P_Multiply;
     if(type == T_MOD)
         return P_Mod;
-    if(type == T_DIVIDE)
+    if(type == T_DIV)
         return P_Divide;
     if(type == T_NOT)
         return P_Not;
@@ -934,9 +934,9 @@ expression_2(ParserState* state)
             return 0;
         return 1;
     }
-    else if(token->token_type == T_DIVIDE)
+    else if(token->token_type == T_DIV)
     {
-        /* expression T_DIVIDE expression */
+        /* expression T_DIV expression */
 
         node = p_create_node(state, token, p_make_precedence_t(state, token->token_type), p_get_associativity(token), NULL, pf_do_divide);
         p_insert_into_tree(state, node);

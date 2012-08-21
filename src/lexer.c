@@ -94,7 +94,7 @@ l_insert_next_token(LexerState* lstate)
      ||type == T_ADD
      ||type == T_SUBTRACT
      ||type == T_MULTIPLY
-     ||type == T_DIVIDE
+     ||type == T_DIV
      ||type == T_L_FLOOR
      ||type == T_R_FLOOR
      ||type == T_L_CEILING

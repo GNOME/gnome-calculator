@@ -36,7 +36,7 @@ typedef enum
     T_ADD,			//Plus
     T_SUBTRACT,			//Minus
     T_MULTIPLY,			//Multiply
-    T_DIVIDE,			//Divide
+    T_DIV,			//Divide
     T_MOD,			//Modulus
     T_L_FLOOR,			//Floor ( Left )
     T_R_FLOOR,		//20	//Floor ( Right )

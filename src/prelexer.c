@@ -146,7 +146,7 @@ pl_get_next_token(PreLexerState* state)
         return T_MULTIPLY;
 
     if(pl_compare_all(ch, 3, (gchar*[]){"/","∕","÷"}))
-        return T_DIVIDE;
+        return T_DIV;
 
     if(pl_compare_all(ch, 1, (gchar*[]){"⌊"}))
         return T_L_FLOOR;
