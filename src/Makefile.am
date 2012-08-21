@@ -41,7 +41,6 @@ gcalctool_SOURCES = \
 	mp-enums.h \
 	mp-equation.c \
 	mp-equation.h \
-	mp-equation-private.h \
 	mp-private.h \
 	mp-serializer.c \
 	mp-serializer.h \
