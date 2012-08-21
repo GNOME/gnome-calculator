@@ -16,12 +16,14 @@
 #include <glib/gi18n.h>
 
 #include "math-window.h"
+#include "math-preferences.h"
 #include "mp-equation.h"
 #include "unit-manager.h"
 
 static GSettings *settings = NULL;
 
 static MathWindow *window;
+static MathPreferencesDialog *preferences_dialog;
 
 static void
 version(const gchar *progname)
@@ -248,10 +250,198 @@ programming_base_cb(MathButtons *buttons, GParamSpec *spec)
 
 
 static void
-mode_cb(MathButtons *buttons, GParamSpec *spec)
+mode_cb(MathButtons *buttons, GParamSpec *spec, GApplication *app)
 {
+    const char *state;
+    GAction *action;
+
     g_settings_set_enum(settings, "button-mode", math_buttons_get_mode(buttons));
+
+    switch(math_buttons_get_mode(buttons))
+    {
+    default:
+    case BASIC:
+      state = "basic";
+      //FIXME: Should it revert to decimal mode? math_equation_set_number_format(window->priv->equation, DEC);
+      break;
+
+    case ADVANCED:
+      state = "advanced";
+      break;
+
+    case FINANCIAL:
+      state = "financial";
+      break;
+
+    case PROGRAMMING:
+      state = "programming";
+      break;
+    }
+
+    action = g_action_map_lookup_action(G_ACTION_MAP(app), "mode");
+    g_simple_action_set_state(G_SIMPLE_ACTION(action),
+                              g_variant_new_string(state));
 }
+
+
+static void
+copy_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    math_equation_copy(math_window_get_equation(window));
+}
+
+
+static void
+paste_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    math_equation_paste(math_window_get_equation(window));
+}
+
+
+static void
+undo_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    math_equation_undo(math_window_get_equation(window));
+}
+
+
+static void
+redo_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    math_equation_redo(math_window_get_equation(window));
+}
+
+
+static void
+mode_changed_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    const char *mode_str;
+    int mode = BASIC;
+
+    mode_str = g_variant_get_string(parameter, NULL);
+    if (strcmp(mode_str, "basic") == 0)
+        mode = BASIC;
+    else if (strcmp(mode_str, "advanced") == 0)
+        mode = ADVANCED;
+    else if (strcmp(mode_str, "financial") == 0)
+        mode = FINANCIAL;
+    else if (strcmp(mode_str, "programming") == 0)
+        mode = PROGRAMMING;
+    math_buttons_set_mode(math_window_get_buttons(window), mode);
+}
+
+
+static void
+show_preferences_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    if (!preferences_dialog) {
+        preferences_dialog = math_preferences_dialog_new(math_window_get_equation(window));
+        gtk_window_set_transient_for(GTK_WINDOW(preferences_dialog), GTK_WINDOW(window));
+    }
+    gtk_window_present(GTK_WINDOW(preferences_dialog));
+}
+
+
+static void
+help_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    GdkScreen *screen;
+    GError *error = NULL;
+
+    screen = gtk_widget_get_screen(GTK_WIDGET(window));
+    gtk_show_uri(screen, "help:gcalctool", gtk_get_current_event_time(), &error);
+
+    if (error != NULL)
+    {
+        GtkWidget *d;
+        /* Translators: Error message displayed when unable to launch help browser */
+        const char *message = _("Unable to open help file");
+
+        d = gtk_message_dialog_new(GTK_WINDOW (window),
+                                   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+                                   GTK_MESSAGE_ERROR, GTK_BUTTONS_CLOSE,
+                                   "%s", message);
+        gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG (d),
+                                                 "%s", error->message);
+        g_signal_connect(d, "response", G_CALLBACK(gtk_widget_destroy), NULL);
+        gtk_window_present(GTK_WINDOW(d));
+
+        g_error_free(error);
+    }
+}
+
+
+static void
+about_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    const gchar *authors[] = {
+        "Rich Burridge <rich.burridge@gmail.com>",
+        "Robert Ancell <robert.ancell@gmail.com>",
+        "Klaus Niederkrüger <kniederk@umpa.ens-lyon.fr>",
+        "Robin Sonefors <ozamosi@flukkost.nu>",
+        NULL
+    };
+    const gchar *documenters[] = {
+        "Sun Microsystems",
+        NULL
+    };
+
+    /* The translator credits. Please translate this with your name(s). */
+    const gchar *translator_credits = _("translator-credits");
+
+    /* The license this software is under (GPL2+) */
+    char *license = _("Gcalctool is free software; you can redistribute it and/or modify\n"
+          "it under the terms of the GNU General Public License as published by\n"
+          "the Free Software Foundation; either version 2 of the License, or\n"
+          "(at your option) any later version.\n"
+          "\n"
+          "Gcalctool is distributed in the hope that it will be useful,\n"
+          "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+          "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+          "GNU General Public License for more details.\n"
+          "\n"
+          "You should have received a copy of the GNU General Public License\n"
+          "along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+          "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA");
+
+    gtk_show_about_dialog(GTK_WINDOW(window),
+                          "name",
+                          /* Program name in the about dialog */
+                          _("Gcalctool"),
+                          "version", VERSION,
+                          "copyright",
+                          /* Copyright notice in the about dialog */
+                          _("\xc2\xa9 1986–2010 The Gcalctool authors"),
+                          "license", license,
+                          "comments",
+                          /* Short description in the about dialog */
+                          _("Calculator with financial and scientific modes."),
+                          "authors", authors,
+                          "documenters", documenters,
+                          "translator_credits", translator_credits,
+                          "logo-icon-name", "accessories-calculator",
+                          NULL);
+}
+
+
+static void
+quit_cb(GSimpleAction *action, GVariant *parameter, gpointer user_data)
+{
+    gtk_widget_destroy(GTK_WIDGET(window));
+}
+
+
+static GActionEntry app_entries[] = {
+        { "copy", copy_cb, NULL, NULL, NULL },
+        { "paste", paste_cb, NULL, NULL, NULL },
+        { "undo", undo_cb, NULL, NULL, NULL },
+        { "redo", redo_cb, NULL, NULL, NULL },
+        { "mode", mode_changed_cb, "s", "\"basic\"", NULL },
+        { "preferences", show_preferences_cb, NULL, NULL, NULL },
+        { "help", help_cb, NULL, NULL, NULL },
+        { "about", about_cb, NULL, NULL, NULL },
+        { "quit", quit_cb, NULL, NULL, NULL },
+};
 
 
 static void
@@ -266,6 +456,7 @@ startup_cb(GApplication *application)
     ButtonMode button_mode;
     gchar *source_currency, *target_currency;
     gchar *source_units, *target_units;
+    GMenu *menu, *section;
 
     settings = g_settings_new ("org.gnome.gcalctool");
     accuracy = g_settings_get_int(settings, "accuracy");
@@ -308,14 +499,43 @@ startup_cb(GApplication *application)
     g_signal_connect(equation, "notify::source-units", G_CALLBACK(source_units_cb), NULL);
     g_signal_connect(equation, "notify::target-units", G_CALLBACK(target_units_cb), NULL);
 
+    g_action_map_add_action_entries(G_ACTION_MAP(application), app_entries, G_N_ELEMENTS(app_entries), NULL);
+
     window = math_window_new(GTK_APPLICATION(application), equation);
     buttons = math_window_get_buttons(window);
     math_buttons_set_programming_base(buttons, base);
     math_buttons_set_mode(buttons, button_mode); // FIXME: We load the basic buttons even if we immediately switch to the next type
     g_signal_connect(buttons, "notify::programming-base", G_CALLBACK(programming_base_cb), NULL);
-    g_signal_connect(buttons, "notify::mode", G_CALLBACK(mode_cb), NULL);
+    g_signal_connect(buttons, "notify::mode", G_CALLBACK(mode_cb), application);
+    mode_cb (buttons, NULL, application);
 
-    gtk_widget_show(GTK_WIDGET(window));
+    menu = g_menu_new();
+
+    section = g_menu_new();
+    g_menu_append(section, _("Basic"), "app.mode::basic");
+    g_menu_append(section, _("Advanced"), "app.mode::advanced");
+    g_menu_append(section, _("Financial"), "app.mode::financial");
+    g_menu_append(section, _("Programming"), "app.mode::programming");
+    g_menu_append_section(menu, _("Mode"), G_MENU_MODEL(section));
+
+    section = g_menu_new();
+    g_menu_append(section, _("Preferences"), "app.preferences");
+    g_menu_append_section(menu, NULL, G_MENU_MODEL(section));
+
+    section = g_menu_new();
+    g_menu_append(section, _("About Calculator"), "app.about");
+    g_menu_append(section, _("Help"), "app.help");
+    g_menu_append(section, _("Quit"), "app.quit");
+    g_menu_append_section(menu, NULL, G_MENU_MODEL(section));
+
+    gtk_application_set_app_menu(GTK_APPLICATION(application), G_MENU_MODEL(menu));
+
+    gtk_application_add_accelerator(GTK_APPLICATION(application), "<control>Q", "app.quit", NULL);
+    gtk_application_add_accelerator(GTK_APPLICATION(application), "F1", "app.help", NULL);
+    gtk_application_add_accelerator(GTK_APPLICATION(application), "<control>C", "app.copy", NULL);
+    gtk_application_add_accelerator(GTK_APPLICATION(application), "<control>V", "app.paste", NULL);
+    gtk_application_add_accelerator(GTK_APPLICATION(application), "<control>Z", "app.undo", NULL);
+    gtk_application_add_accelerator(GTK_APPLICATION(application), "<control><shift>Z", "app.redo", NULL);
 }
 
 
