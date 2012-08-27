@@ -9,12 +9,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: as\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
-"cgi?product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-06-09 18:42+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=gcalctool&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-08-17 08:37+0000\n"
 "PO-Revision-Date: 2012-06-15 17:51+0530\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: as_IN <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,8 +68,9 @@ msgstr "মেমৰি"
 
 #. The label on the memory button
 #: ../data/buttons-advanced.ui.h:18 ../data/buttons-financial.ui.h:74
-msgid "<i>x</i>"
-msgstr "<i>x</i>"
+#: ../data/buttons-programming.ui.h:14
+msgid "x"
+msgstr "x"
 
 #. Accessible name for the absolute value button
 #: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:4
@@ -387,11 +389,6 @@ msgstr "Pmt"
 msgid "Gpm"
 msgstr "Gpm"
 
-#. The label on the memory button
-#: ../data/buttons-programming.ui.h:14
-msgid "x"
-msgstr "x"
-
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:240
@@ -566,7 +563,7 @@ msgstr "লক্ষ্যৰ টকা"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
 msgid "Currency to convert the current calculation into"
-msgstr "বৰ্তমান গণনা পৰিৱৰ্তন কৰিবলে টকা"
+msgstr "বৰ্তমান গণনা পৰিবৰ্তন কৰিবলে টকা"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
 msgid "Source units"
@@ -582,7 +579,7 @@ msgstr "লক্ষ্য এককসমূহ"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
 msgid "Units to convert the current calculation into"
-msgstr "বৰ্তমান গণনাক পৰিৱৰ্তন কৰিবলে এককসমূহ"
+msgstr "বৰ্তমান গণনাক পৰিবৰ্তন কৰিবলে এককসমূহ"
 
 #: ../src/currency-manager.c:30
 msgid "UAE Dirham"
@@ -884,7 +881,7 @@ msgid ""
 "Application Options:\n"
 "  -s, --solve <equation>          Solve the given equation"
 msgstr ""
-"অনুপ্ৰয়োগ বিকল্পসমূহ:\n"
+"এপ্লিকেচন বিকল্পসমূহ:\n"
 "  -s, --solve <equation>          প্ৰদান কৰা সমীকৰণ সমাধান কৰক"
 
 #. Error printed to stderr when user uses --solve argument without an equation
@@ -1215,7 +1212,7 @@ msgstr " ভিতৰত "
 #. Tooltip for swap conversion button
 #: ../src/math-converter.c:427
 msgid "Switch conversion units"
-msgstr "পৰিৱৰ্তন এককসমূহ অদল বদল কৰক"
+msgstr "পৰিবৰ্তন এককসমূহ অদল বদল কৰক"
 
 #. Error shown when trying to undo with no undo history
 #: ../src/math-equation.c:459
@@ -1251,7 +1248,7 @@ msgstr "ফলন '%s' ৰ বিৱৰণ দিয়া হোৱা নাই"
 #. Error displayed to user when an conversion with unknown units is attempted
 #: ../src/math-equation.c:1241
 msgid "Unknown conversion"
-msgstr "অজ্ঞাত পৰিৱৰ্তন"
+msgstr "অজ্ঞাত পৰিবৰ্তন"
 
 #. Error displayed to user when they enter an invalid calculation
 #: ../src/math-equation.c:1250
@@ -1284,48 +1281,48 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:236
+#: ../src/math-preferences.c:235
 msgid "_Close"
 msgstr "বন্ধ কৰক (_C)"
 
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:246 ../src/unit-manager.c:54
+#: ../src/math-preferences.c:245 ../src/unit-manager.c:54
 msgid "Degrees"
 msgstr "ডিগ্ৰিসমূহ"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:250 ../src/unit-manager.c:55
+#: ../src/math-preferences.c:249 ../src/unit-manager.c:55
 msgid "Radians"
 msgstr "ৰেডিয়ানসমূহ"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:254 ../src/unit-manager.c:56
+#: ../src/math-preferences.c:253 ../src/unit-manager.c:56
 msgid "Gradians"
 msgstr "গ্ৰেডিয়ানসমূহ"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:264
+#: ../src/math-preferences.c:263
 msgid "Automatic"
 msgstr "স্বচালিত"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:268
+#: ../src/math-preferences.c:267
 msgid "Fixed"
 msgstr "ঠিক কৰা হল"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:271
 msgid "Scientific"
 msgstr "বৈজ্ঞানিক"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:275
 msgid "Engineering"
 msgstr "অভিযান্ত্ৰিকী"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:287
+#: ../src/math-preferences.c:286
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "%d দশমিক স্থানসমূহ দেখুৱাওক (_p)"
@@ -1334,7 +1331,7 @@ msgstr "%d দশমিক স্থানসমূহ দেখুৱাওক 
 #. Translators: Error message displayed when unable to launch help browser
 #: ../src/math-window.c:171
 msgid "Unable to open help file"
-msgstr "সহায়িকাৰ নথিপত্ৰ খুলিবলৈ ব্যৰ্থ"
+msgstr "সহায়িকাৰ ফাইল খুলিবলৈ ব্যৰ্থ"
 
 #. The translator credits. Please translate this with your name(s).
 #: ../src/math-window.c:204
@@ -1496,7 +1493,8 @@ msgstr "মডুলাচ হৰণ কেৱল পূৰ্ণসংখ্য
 
 #. Translators: Error displayed when tangent value is undefined
 #: ../src/mp-trigonometric.c:310
-msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgid ""
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "যিসমূহ কোণ π∕2 (90°) পৰা π (180°) ৰ গুণিতক সিহতৰ বাবে টেঞ্জেন্ট অবিৱৰিত"
 
 #. Translators: Error displayed when inverse sine value is undefined
@@ -2249,6 +2247,9 @@ msgstr "টকা"
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
+
+#~ msgid "<i>x</i>"
+#~ msgstr "<i>x</i>"
 
 #~ msgid "_Calculator"
 #~ msgstr "গণক (_C)"
