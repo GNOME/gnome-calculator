@@ -1,32 +1,29 @@
 # Lithuanian translation of gcalctool
 # Copyright © 2003-2006, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
-#
 # Gediminas Paulauskas <menesis@delfi.lt>, 2003.
 # Tomas Kuliavas <tokul@users.sourceforge.net>, 2003-2004.
-# Žygimantas Beručka <zygis@gnome.org>, 2004-2006.
+# Žygimantas Beručka <zygis@gnome.org>, 2004-2006, 2012.
 # Justina Klingaitė <justina.klingaite@gmail.com>, 2005.
 # Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007, 2008.
 # Aurimas Černius <aurisc4@gmail.com>, 2010.
 # Rimas Kudelis <rq@akl.lt>, 2010.
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-04-30 09:01+0000\n"
-"PO-Revision-Date: 2012-04-30 19:34+0300\n"
-"Last-Translator: Algimantas Margevičius <margevicius.algimantas@gmail.com>\n"
-"Language-Team: Lietuvių <>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-09-17 00:30+0300\n"
+"PO-Revision-Date: 2012-09-17 00:34+0300\n"
+"Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
+"Language-Team: Lithuanian\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lt\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%"
-"100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Virtaal 0.6.1\n"
+"100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.7.0\n"
 
 #. Accessible name for the inverse button
 #: ../data/buttons-advanced.ui.h:2 ../data/buttons-programming.ui.h:24
@@ -74,8 +71,9 @@ msgstr "Atmintis"
 
 #. The label on the memory button
 #: ../data/buttons-advanced.ui.h:18 ../data/buttons-financial.ui.h:74
-msgid "<i>x</i>"
-msgstr "<i>x</i>"
+#: ../data/buttons-programming.ui.h:14
+msgid "x"
+msgstr "x"
 
 #. Accessible name for the absolute value button
 #: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:4
@@ -379,11 +377,6 @@ msgstr "Pmk"
 msgid "Gpm"
 msgstr "Bgp"
 
-#. The label on the memory button
-#: ../data/buttons-programming.ui.h:14
-msgid "x"
-msgstr "x"
-
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:240
@@ -438,8 +431,8 @@ msgid "64-bit"
 msgstr "64 bitai"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Nustatymai"
 
@@ -469,7 +462,7 @@ msgid "Show _thousands separators"
 msgstr "Rodyti _tūkstančių skyriklį"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:242
 msgid "Calculator"
 msgstr "Skaičiuotuvas"
 
@@ -820,7 +813,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Klaida, pasikartojimų skaičius turi būti teigiamas"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -830,7 +823,7 @@ msgstr ""
 "  %s - Vykdyti matematinius skaičiavimus"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -846,7 +839,7 @@ msgstr ""
 "  --help-gtk                      Rodyti GTK+ parinktis"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -870,7 +863,7 @@ msgstr ""
 "  --g-fatal-warnings              Visi perspėjimai yra „mirtini"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -880,16 +873,112 @@ msgstr ""
 "  -s, --solve <equation>          Išspręsti duotą lygtį"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Argumnetui --solve yra privaloma lygtis sprendimui"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Nežinomas argumentas „%s“"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "Nepavyko atverti žinyno failo"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Algimantas Markevičius <margevicius.algimantas@gmail.com>\n"
+"Aurimas Černius <aurisc4@gmail.com>\n"
+"Rimas Kudelis <rq@akl.lt>\n"
+"Žygimantas Beručka <uid0@akl.lt>\n"
+"Justina Klingaitė <justina.klingaite@gmail.com>\n"
+"Gintautas Miliauskas <gintas@akl.lt>\n"
+"Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"Gediminas Paulauskas <menesis@chatsubo.lt>"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Gcalctool yra nemokama programa, ją galima platinti ir/arba modifikuoti\n"
+"pagal GNU General Public License reikalavimus, kuriuos paskelbė\n"
+"Free Software Foundation; naudotina licencijos versija 2, arba\n"
+"(jūsų pasirinkimu) bet kuri vėlesnė versija.\n"
+"\n"
+"Gcalctool yra platinamas tikintis, jog ji bus naudinga,\n"
+"bet BE JOKIŲ GARANTIJŲ; netgi be numanomų TINKAMUMO\n"
+" PREKYBAI ar KONKREČIAM TIKSLUI garantijų. Daugiau\n"
+"smulkmenų rasite GNU General Public License.\n"
+"\n"
+"Jūs turėtumėte gauti GNU General Public License kopiją\n"
+"kartu su Gcalctool; jei ne, parašykite Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986-2010 Gcalctool autoriai"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "Skaičiuotuvas su finansiniais bei moksliniais priedais"
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "Paprastas"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "Sudėtingesnis"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "Finansinis"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "Programuojamasis"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "Veiksena"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "Apie skaičiuotuvą"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "Žinynas"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "Baigti"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1278,147 +1367,51 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:236
+#: ../src/math-preferences.c:235
 msgid "_Close"
 msgstr "_Užverti"
 
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:246 ../src/unit-manager.c:54
+#: ../src/math-preferences.c:245 ../src/unit-manager.c:54
 msgid "Degrees"
 msgstr "Laipsniai"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:250 ../src/unit-manager.c:55
+#: ../src/math-preferences.c:249 ../src/unit-manager.c:55
 msgid "Radians"
 msgstr "Radianai"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:254 ../src/unit-manager.c:56
+#: ../src/math-preferences.c:253 ../src/unit-manager.c:56
 msgid "Gradians"
 msgstr "Gradientai"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:264
+#: ../src/math-preferences.c:263
 msgid "Automatic"
 msgstr "Automatinis"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:268
+#: ../src/math-preferences.c:267
 msgid "Fixed"
 msgstr "Fiks"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:271
 msgid "Scientific"
 msgstr "Mokslinis"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:275
 msgid "Engineering"
 msgstr "Inžinerinis"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:287
+#: ../src/math-preferences.c:286
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "Rodyti %d dešimtainių _pozicijų"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "Nepavyko atverti žinyno failo"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Paskutinieji vertėjai:\n"
-"Žygimantas Beručka <uid0@akl.lt>,\n"
-"Justina Klingaitė <justina.klingaite@gmail.com>\n"
-"Gintautas Miliauskas <gintas@akl.lt>\n"
-"\n"
-"Ankstesnieji vertėjai:\n"
-"Tomas Kuliavas <tokul@users.sourceforge.net>,\n"
-"Gediminas Paulauskas <menesis@chatsubo.lt>"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Gcalctool yra nemokama programa, ją galima platinti ir/arba modifikuoti\n"
-"pagal GNU General Public License reikalavimus, kuriuos paskelbė\n"
-"Free Software Foundation; naudotina licencijos versija 2, arba\n"
-"(jūsų pasirinkimu) bet kuri vėlesnė versija.\n"
-"\n"
-"Gcalctool yra platinamas tikintis, jog ji bus naudinga,\n"
-"bet BE JOKIŲ GARANTIJŲ; netgi be numanomų TINKAMUMO\n"
-" PREKYBAI ar KONKREČIAM TIKSLUI garantijų. Daugiau\n"
-"smulkmenų rasite GNU General Public License.\n"
-"\n"
-"Jūs turėtumėte gauti GNU General Public License kopiją\n"
-"kartu su Gcalctool; jei ne, parašykite Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986-2010 Gcalctool autoriai"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "Skaičiuotuvas su finansiniais bei moksliniais priedais"
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "Paprastas"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "Sudėtingesnis"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "Finansinis"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "Programuojamasis"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "Režimas"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "Apie skaičiuotuvą"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "Žinynas"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "Baigti"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
@@ -2255,6 +2248,9 @@ msgstr "Valiutų"
 #, c-format
 msgid "%s%%s"
 msgstr "%%s%s"
+
+#~ msgid "<i>x</i>"
+#~ msgstr "<i>x</i>"
 
 #~ msgid "_Calculator"
 #~ msgstr "_Skaičiuotuvas"
