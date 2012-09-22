@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the gcalctool package.
 # Blanca Biosca <b_biosca@hotmail.com>, 2003.
 # Josep Puigdemont i Casamajó <josep.puigdemont@gmail.com>, 2005-2007.
-# Joan Duran <jodufi@gmail.com>, 2008-2011. 
+# Joan Duran <jodufi@gmail.com>, 2008-2012. 
 # Jordi Serratosa <jordis@softcatala.cat>, 2012.
 #
 msgid ""
@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-03-30 01:00+0000\n"
-"PO-Revision-Date: 2011-09-07 22:58+0200\n"
+"POT-Creation-Date: 2012-08-27 18:01+0000\n"
+"PO-Revision-Date: 2012-08-28 08:06+0200\n"
 "Last-Translator: Joan Duran <jodufi@gmail.com>\n"
 "Language-Team: Catalan  <tradgnome@softcatala.org>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. Accessible name for the inverse button
@@ -67,8 +67,9 @@ msgstr "Memòria"
 
 #. The label on the memory button
 #: ../data/buttons-advanced.ui.h:18 ../data/buttons-financial.ui.h:74
-msgid "<i>x</i>"
-msgstr "<i>x</i>"
+#: ../data/buttons-programming.ui.h:14
+msgid "x"
+msgstr "x"
 
 #. Accessible name for the absolute value button
 #: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:4
@@ -375,11 +376,6 @@ msgstr "Pmt"
 msgid "Gpm"
 msgstr "Gpm"
 
-#. The label on the memory button
-#: ../data/buttons-programming.ui.h:14
-msgid "x"
-msgstr "x"
-
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:240
@@ -434,7 +430,8 @@ msgid "64-bit"
 msgstr "64 bits"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Preferències"
 
@@ -464,7 +461,7 @@ msgid "Show _thousands separators"
 msgstr "Mostra els separadors de _milers"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:546
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:242
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -818,7 +815,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "S'ha produït un error, el nombre de períodes ha de ser positiu"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -828,7 +825,7 @@ msgstr ""
 "  %s — Realitza càlculs matemàtics"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -844,7 +841,7 @@ msgstr ""
 "  --help-gtk                      Mostra les opcions de la GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -868,7 +865,7 @@ msgstr ""
 "  --g-fatal-warnings              Fa que tots els avisos siguin fatals"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -878,16 +875,105 @@ msgstr ""
 "  -s, --solve <equation>          Resol l'equació proporcionada"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "L'argument --solve requereix una equació a resoldre"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Argument desconegut «%s»"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "No s'ha pogut obrir el fitxer d'ajuda"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Blanca Biosca <b_biosca@hotmail.com>\n"
+"Josep Puigdemont <josep.puigdemont@gmail.com>\n"
+"Joan Duran <jodufi@gmail.com>"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"El gcalctool és programari lliure; podeu redistribuir-lo i/o modificar-lo\n"
+"sota els termes de la Llicència pública general de GNU tal com publica la\n"
+"Free Software Foundation; tant en la versió 2 de la llicència, o (a la\n"
+"vostra opció) una versió posterior.\n"
+"El gcalctool es distribueix amb l'esperança que sigui útil, però\n"
+"SENSE CAP GARANTIA; fins i tot sense la garantia implícita de\n"
+"COMERCIALITZACIÓ o ADEQUACIÓ A UN ÚS CONCRET. Per a més detalls vegeu la\n"
+"Llicència pública general de GNU.\n"
+"Hauríeu d'haver rebut una còpia de la Llicència pública general de GNU\n"
+"amb el gcalctool; si no és així, escriviu a la Free Software Foundation, \n"
+"Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 Els autors del Gcalctool"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "Calculadora amb mode financer i científic."
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "Bàsic"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "Avançat"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "Financer"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "Programació"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "Mode"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "Quant a la Calculadora"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "Ajuda"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "Surt"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1208,214 +1294,117 @@ msgid "Switch conversion units"
 msgstr "Commuta les unitats de conversió"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:458
+#: ../src/math-equation.c:459
 msgid "No undo history"
 msgstr "Sense historial per desfer"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:485
+#: ../src/math-equation.c:486
 msgid "No redo history"
 msgstr "Sense historial per refer"
 
-#: ../src/math-equation.c:943
+#: ../src/math-equation.c:944
 msgid "No sane value to store"
 msgstr "No és un valor adequat per emmagatzemar"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1225
+#: ../src/math-equation.c:1226
 msgid "Overflow. Try a bigger word size"
 msgstr "Desbordament. Torneu-ho a provar amb una mida de paraula més gran"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1230
+#: ../src/math-equation.c:1231
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Variable desconeguda «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1235
+#: ../src/math-equation.c:1236
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "La funció «%s» no és definida"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1240
+#: ../src/math-equation.c:1241
 msgid "Unknown conversion"
 msgstr "Conversió desconeguda"
 
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1249
+#: ../src/math-equation.c:1250
 msgid "Malformed expression"
 msgstr "Expressió mal escrita"
 
-#: ../src/math-equation.c:1263
+#: ../src/math-equation.c:1264
 msgid "Calculating"
 msgstr "S'està calculant"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1379
+#: ../src/math-equation.c:1380
 msgid "Need an integer to factorize"
 msgstr "Cal un enter per factoritzar"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1451
+#: ../src/math-equation.c:1452
 msgid "No sane value to bitwise shift"
 msgstr "No és un valor adequat per fer un desplaçament bit a bit"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1482
+#: ../src/math-equation.c:1483
 msgid "Displayed value not an integer"
 msgstr "El valor a mostrar no és un enter"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1907
+#: ../src/math-equation.c:1908
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:236
+#: ../src/math-preferences.c:235
 msgid "_Close"
 msgstr "_Tanca"
 
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:246 ../src/unit-manager.c:54
+#: ../src/math-preferences.c:245 ../src/unit-manager.c:54
 msgid "Degrees"
 msgstr "Graus"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:250 ../src/unit-manager.c:55
+#: ../src/math-preferences.c:249 ../src/unit-manager.c:55
 msgid "Radians"
 msgstr "Radians"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:254 ../src/unit-manager.c:56
+#: ../src/math-preferences.c:253 ../src/unit-manager.c:56
 msgid "Gradians"
 msgstr "Graus centesimals"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:264
+#: ../src/math-preferences.c:263
 msgid "Automatic"
 msgstr "Automàtic"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:268
+#: ../src/math-preferences.c:267
 msgid "Fixed"
 msgstr "Fix"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:271
 msgid "Scientific"
 msgstr "Científic"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:275
 msgid "Engineering"
 msgstr "Enginyer"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:287
+#: ../src/math-preferences.c:286
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "Mostra %d _posicions decimals"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:172
-msgid "Unable to open help file"
-msgstr "No s'ha pogut obrir el fitxer d'ajuda"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Blanca Biosca <b_biosca@hotmail.com>\n"
-"Josep Puigdemont <josep.puigdemont@gmail.com>\n"
-"Joan Duran <jodufi@gmail.com>"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"El gcalctool és programari lliure; podeu redistribuir-lo i/o modificar-lo\n"
-"sota els termes de la Llicència pública general de GNU tal com publica la\n"
-"Free Software Foundation; tant en la versió 2 de la llicència, o (a la\n"
-"vostra opció) una versió posterior.\n"
-"El gcalctool es distribueix amb l'esperança que sigui útil, però\n"
-"SENSE CAP GARANTIA; fins i tot sense la garantia implícita de\n"
-"COMERCIALITZACIÓ o ADEQUACIÓ A UN ÚS CONCRET. Per a més detalls vegeu la\n"
-"Llicència pública general de GNU.\n"
-"Hauríeu d'haver rebut una còpia de la Llicència pública general de GNU\n"
-"amb el gcalctool; si no és així, escriviu a la Free Software Foundation, \n"
-"Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 Els autors del Gcalctool"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "Calculadora amb mode financer i científic."
-
-#. Calculator menu
-#: ../src/math-window.c:381
-msgid "_Calculator"
-msgstr "_Calculadora"
-
-#. Mode menu
-#: ../src/math-window.c:383
-msgid "_Mode"
-msgstr "_Mode"
-
-#. Help menu label
-#: ../src/math-window.c:385
-msgid "_Help"
-msgstr "A_juda"
-
-#. Basic menu label
-#: ../src/math-window.c:387
-msgid "_Basic"
-msgstr "_Bàsic"
-
-#. Advanced menu label
-#: ../src/math-window.c:389
-msgid "_Advanced"
-msgstr "_Avançat"
-
-#. Financial menu label
-#: ../src/math-window.c:391
-msgid "_Financial"
-msgstr "_Financer"
-
-#. Programming menu label
-#: ../src/math-window.c:393
-msgid "_Programming"
-msgstr "_Programació"
-
-#. Help>Contents menu label
-#: ../src/math-window.c:395
-msgid "_Contents"
-msgstr "_Continguts"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
@@ -2252,6 +2241,27 @@ msgstr "Divisa"
 msgid "%s%%s"
 msgstr "%%s %s"
 
+#~ msgid "<i>x</i>"
+#~ msgstr "<i>x</i>"
+
+#~ msgid "_Calculator"
+#~ msgstr "_Calculadora"
+
+#~ msgid "_Mode"
+#~ msgstr "_Mode"
+
+#~ msgid "_Basic"
+#~ msgstr "_Bàsic"
+
+#~ msgid "_Advanced"
+#~ msgstr "_Avançat"
+
+#~ msgid "_Programming"
+#~ msgstr "_Programació"
+
+#~ msgid "_Contents"
+#~ msgstr "_Continguts"
+
 #~ msgctxt "unit-format"
 #~ msgid "%s˚C"
 #~ msgstr "%s ˚C"
@@ -2426,9 +2436,6 @@ msgstr "%%s %s"
 #~ "Indica si s'ha de mostrar inicialment la finestra dels registres de "
 #~ "memòria."
 
-#~ msgid "Mode"
-#~ msgstr "Mode"
-
 #~ msgid "Show Registers"
 #~ msgstr "Mostra els registres"
 
@@ -2535,20 +2542,11 @@ msgstr "%%s %s"
 #~ msgid "0"
 #~ msgstr "0"
 
-#~ msgid "Advanced"
-#~ msgstr "Avançat"
-
-#~ msgid "Basic"
-#~ msgstr "Bàsic"
-
 #~ msgid "Copy selection"
 #~ msgstr "Copia la selecció"
 
 #~ msgid "Paste selection"
 #~ msgstr "Enganxa la selecció"
-
-#~ msgid "Programming"
-#~ msgstr "Programació"
 
 #~ msgid "Quit the calculator"
 #~ msgstr "Surt de la calculadora"
@@ -3884,9 +3882,6 @@ msgstr "%%s %s"
 
 #~ msgid "*10^"
 #~ msgstr "*10^"
-
-#~ msgid "_Quit"
-#~ msgstr "_Surt"
 
 #~ msgid "_Copy"
 #~ msgstr "_Copia"
