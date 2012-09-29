@@ -18,14 +18,14 @@ msgstr ""
 "Project-Id-Version: gcalctool.gnome-2-26\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-06-09 18:32+0000\n"
-"PO-Revision-Date: 2012-06-09 21:39+0200\n"
+"POT-Creation-Date: 2012-09-25 11:34+0000\n"
+"PO-Revision-Date: 2012-09-29 02:26+0200\n"
 "Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.6.1\n"
 
@@ -75,8 +75,9 @@ msgstr "Μνήμη"
 
 #. The label on the memory button
 #: ../data/buttons-advanced.ui.h:18 ../data/buttons-financial.ui.h:74
-msgid "<i>x</i>"
-msgstr "<i>x</i>"
+#: ../data/buttons-programming.ui.h:14
+msgid "x"
+msgstr "x"
 
 #. Accessible name for the absolute value button
 #: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:4
@@ -385,11 +386,6 @@ msgstr "Pmt"
 msgid "Gpm"
 msgstr "Gpm"
 
-#. The label on the memory button
-#: ../data/buttons-programming.ui.h:14
-msgid "x"
-msgstr "x"
-
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:240
@@ -444,8 +440,8 @@ msgid "64-bit"
 msgstr "64-bit"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Προτιμήσεις"
 
@@ -475,7 +471,7 @@ msgid "Show _thousands separators"
 msgstr "Εμφάνιση διαχωριστικού _χιλιάδων"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:242
 msgid "Calculator"
 msgstr "Αριθμομηχανή"
 
@@ -535,7 +531,7 @@ msgstr "Μορφή αριθμών"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
 msgid "The format to display numbers in"
-msgstr "Η μορφή που θα εμφανίζονται οι αριθμοί"
+msgstr "Η μορφή στην οποία θα εμφανίζονται οι αριθμοί"
 
 #: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
 msgid "Angle units"
@@ -830,7 +826,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Σφάλμα: ο αριθμός των περιόδων πρέπει να είναι θετικός"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -840,7 +836,7 @@ msgstr ""
 "  %s — Εκτέλεση μαθηματικών υπολογισμών"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -856,7 +852,7 @@ msgstr ""
 "  --help-gtk                      Εμφάνιση επιλογών GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -880,7 +876,7 @@ msgstr ""
 "  --g-fatal-warnings              Να είναι όλες οι προειδοποιήσεις μοιραίες"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -890,16 +886,111 @@ msgstr ""
 "  -s, --solve <equation>          Επίλυση της δοσμένης εξίσωσης"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Το όρισμα --solve πρέπει να ακολουθείται από μία εξίσωση προς επίλυση"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Άγνωστο όρισμα '%s'"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "Αδύνατο το άνοιγμα του αρχείου βοήθειας"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Κώστας Παπαδήμας <pkst@gnome.org>\n"
+"Τζένη Πετούμενου <epetoumenou@gmail.com>\n"
+"Φώτης Τσάμης <ftsamis@gmail.com>\n"
+"Μιχάλης Κοτσαρίνης <mk73628@gmail.com>"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Το Gcalctool είναι ελεύθερο λογισμικό. Επιτρέπεται η αναδιανομή ή/και \n"
+"τροποποίησή του υπό τους όρους της Γενικής Άδειας Δημόσιας Χρήσης \n"
+"GNU (GPL), όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου \n"
+"Λογισμικού (FSS) — είτε της έκδοσης 2 της Άδειας, είτε (κατ' επιλογήν \n"
+"σας) οποιασδήποτε μεταγενέστερης έκδοσης. \n"
+"\n"
+"Το Gcalctool διανέμεται με την ελπίδα ότι θα αποδειχθεί χρήσιμο, \n"
+"παρόλα αυτά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ — χωρίς ούτε και την σιωπηρή \n"
+"εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΕΙΔΙΚΟ ΣΚΟΠΟ. \n"
+"Για περισσότερες λεπτομέρειες ανατρέξτε στη Γενική Άδεια Δημόσιας \n"
+"Χρήσης GNU.\n"
+"\n"
+"Θα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Άδειας Δημόσιας \n"
+"Χρήσης GNU μαζί με το Gcalctool. Αν όχι, γράψτε στο Free Software \n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, \n"
+"USA"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 Οι συγγραφείς του Gcalctool"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "Αριθμομηχανή με εμπορικές και επιστημονικές λειτουργίες."
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "Βασική"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "Προχωρημένη"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "Εμπορική"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "Προγραμματιστική"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "Λειτουργία"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "Περί Αριθμομηχανή"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "Έξοδος"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1286,146 +1377,51 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:236
+#: ../src/math-preferences.c:235
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:246 ../src/unit-manager.c:54
+#: ../src/math-preferences.c:245 ../src/unit-manager.c:54
 msgid "Degrees"
 msgstr "Μοίρες"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:250 ../src/unit-manager.c:55
+#: ../src/math-preferences.c:249 ../src/unit-manager.c:55
 msgid "Radians"
 msgstr "Ακτίνια"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:254 ../src/unit-manager.c:56
+#: ../src/math-preferences.c:253 ../src/unit-manager.c:56
 msgid "Gradians"
 msgstr "Βαθμοί"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:264
+#: ../src/math-preferences.c:263
 msgid "Automatic"
-msgstr "Αυτόματoς"
+msgstr "Αυτόματη"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:268
+#: ../src/math-preferences.c:267
 msgid "Fixed"
-msgstr "Σταθερό"
+msgstr "Σταθερή"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:271
 msgid "Scientific"
 msgstr "Επιστημονική"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:275
 msgid "Engineering"
 msgstr "Τεχνολογική"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:287
+#: ../src/math-preferences.c:286
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "Εμφάνιση %d δεκαδικών _ψηφίων"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "Αδύνατο το άνοιγμα του αρχείου βοήθειας"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Κώστας Παπαδήμας <pkst@gnome.org>\n"
-"Τζένη Πετούμενου <epetoumenou@gmail.com>\n"
-"Φώτης Τσάμης <ftsamis@gmail.com>\n"
-"Μιχάλης Κοτσαρίνης <mk73628@gmail.com>"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Το Gcalctool είναι ελεύθερο λογισμικό. Επιτρέπεται η αναδιανομή ή/και \n"
-"τροποποίησή του υπό τους όρους της Γενικής Άδειας Δημόσιας Χρήσης \n"
-"GNU (GPL), όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου \n"
-"Λογισμικού (FSS) — είτε της έκδοσης 2 της Άδειας, είτε (κατ' επιλογήν \n"
-"σας) οποιασδήποτε μεταγενέστερης έκδοσης. \n"
-"\n"
-"Το Gcalctool διανέμεται με την ελπίδα ότι θα αποδειχθεί χρήσιμο, \n"
-"παρόλα αυτά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ — χωρίς ούτε και την σιωπηρή \n"
-"εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΕΙΔΙΚΟ ΣΚΟΠΟ. \n"
-"Για περισσότερες λεπτομέρειες ανατρέξτε στη Γενική Άδεια Δημόσιας \n"
-"Χρήσης GNU.\n"
-"\n"
-"Θα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Άδειας Δημόσιας \n"
-"Χρήσης GNU μαζί με το Gcalctool. Αν όχι, γράψτε στο Free Software \n"
-"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, \n"
-"USA"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 Οι συγγραφείς του Gcalctool"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "Αριθμομηχανή με εμπορικές και επιστημονικές λειτουργίες."
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "Βασική"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "Προχωρημένη"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "Εμπορική"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "Προγραμματιστική"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "Λειτουργία"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "Περί Αριθμομηχανή"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "Βοήθεια"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "Έξοδος"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
@@ -2262,6 +2258,9 @@ msgstr "Νόμισμα"
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
+
+#~ msgid "<i>x</i>"
+#~ msgstr "<i>x</i>"
 
 #~ msgid "_Calculator"
 #~ msgstr "Αρ_ιθμομηχανή"
