@@ -1242,7 +1242,14 @@ math_equation_solve_real(gpointer data)
             break;
 
         case PARSER_ERR_MP:
-            solvedata->error = g_strdup(mp_get_error());
+            if (mp_get_error())
+                solvedata->error = g_strdup(mp_get_error());
+            else if (error_token)
+                solvedata->error = g_strdup_printf(/* Uncategorized error. Show error token to user*/
+                                    _("Malformed expression at token '%s'"), error_token);
+            else
+                solvedata->error = g_strdup (/* Unknown error. */
+                                    _("Malformed expression"));
             break;
 
         default:
