@@ -7,22 +7,22 @@
 # Translated on 2010-08-25 by: Бранко Кокановић <branko.kokanovic@gmail.com>
 # Translated on 2011-03-19 by: Бранко Кокановић <branko.kokanovic@gmail.com>
 # Бранко Кокановић <branko.kokanovic@gmail.com>, 2011.
-# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011.
+# Мирослав Николић <miroslavnikolic@rocketmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-07-12 10:42+0000\n"
-"PO-Revision-Date: 2012-07-22 15:33+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gcalct"
+"ool&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-10-05 05:01+0000\n"
+"PO-Revision-Date: 2012-10-05 09:59+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 
 #. Accessible name for the inverse button
@@ -429,8 +429,8 @@ msgid "64-bit"
 msgstr "64 бита"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Поставке"
 
@@ -460,7 +460,7 @@ msgid "Show _thousands separators"
 msgstr "Прикажи _раздвајач хиљада"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "Калкулатор"
 
@@ -813,7 +813,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Грешка: број периода мора бити позитиван"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -823,7 +823,7 @@ msgstr ""
 "  %s — Обавите математичка израчунавања"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -839,7 +839,7 @@ msgstr ""
 "  --help-gtk                      Приказује Гтк+ опције"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -863,7 +863,7 @@ msgstr ""
 "  --g-fatal-warnings              Чини сва упозорења кобним"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -873,16 +873,111 @@ msgstr ""
 "  -s, --solve <equation>          Решава задату једначину"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Аргумент „--solve“ захтева једначину за решавање"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Непознат аргумент „%s“"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "Не могу да отворим датотеку помоћи"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Данило Шеган <danilo@prevod.org>\n"
+"Игор Несторовић <igor@prevod.org>\n"
+"Слободан Д. Средојевић <slobo@akrep.be>\n"
+"Бранко Кокановић <branko.kokanovic@gmail.com>\n"
+"\n"
+"Prevod.org — превод на српски језик"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Калкулатор је слободан софтвер; можете га расподељивати и/или\n"
+"мењати под условима ГНУ Опште јавне лиценце како је објављује\n"
+"Задужбина слободног софтвера; било верзије 2 те Лиценце, или\n"
+"(по вашем мишљењу) било које новије верзије.\n"
+"\n"
+"Калкулатор се расподељује у нади да ће бити користан, али БЕЗ\n"
+"ИКАКВИХ ГАРАНЦИЈА; чак и без подразумеване гаранције КОРИСНОСТИ\n"
+"или ПРИЛАГОЂЕНОСТИ ОДРЕЂЕНОЈ НАМЕНИ.  Погледајте Гнуову општу\n"
+"јавну лиценцу за више детаља.\n"
+"\n"
+"Требали сте да примите примерак Гнуове опште јавне лиценце уз\n"
+"Калкулатор; ако нисте, пишите Задужбини слободног софтвера на:\n"
+"„Free Software Foundation, Inc.), 51 Franklin Street, Fifth Floor,\n"
+"Boston, MA 02110-1301 USA“"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Гномов калкулатор"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 Аутори Гномовог калкулатора"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "Калкулатор са финансијским и научним начином рада."
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "Основни"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "Напредни"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "Финансијски"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "Програмерски"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "Режим"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "О Калкулатору"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "Помоћ"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "Изађи"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1163,6 +1258,7 @@ msgid_plural "_%d places"
 msgstr[0] "_%d место"
 msgstr[1] "_%d места"
 msgstr[2] "_%d места"
+msgstr[3] "_%d место"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
@@ -1173,6 +1269,7 @@ msgid_plural "%d places"
 msgstr[0] "%d место"
 msgstr[1] "%d места"
 msgstr[2] "%d места"
+msgstr[3] "%d место"
 
 #. Tooltip for the round button
 #: ../src/math-buttons.c:987
@@ -1240,33 +1337,41 @@ msgstr "Функција „%s“ није дефинисана"
 msgid "Unknown conversion"
 msgstr "Непознато претварање"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, c-format
+#| msgid "Malformed expression"
+msgid "Malformed expression at token '%s'"
+msgstr "Неисправан израз на симболу „%s“"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "Неисправан израз"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
 msgstr "Израчунавам"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "За факторисање је потребан цео број"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "Нема разумне вредности за битско померање"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "Приказана вредност није цео број"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1316,101 +1421,6 @@ msgstr "Инжењерски"
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "_Прикажи %d децимална места"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "Не могу да отворим датотеку помоћи"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Данило Шеган <danilo@prevod.org>\n"
-"Игор Несторовић <igor@prevod.org>\n"
-"Слободан Д. Средојевић <slobo@akrep.be>\n"
-"Бранко Кокановић <branko.kokanovic@gmail.com>\n"
-"\n"
-"Prevod.org — превод на српски језик"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Калкулатор је слободан софтвер; можете га расподељивати и/или\n"
-"мењати под условима ГНУ Опште јавне лиценце како је објављује\n"
-"Задужбина слободног софтвера; било верзије 2 те Лиценце, или\n"
-"(по вашем мишљењу) било које новије верзије.\n"
-"\n"
-"Калкулатор се расподељује у нади да ће бити користан, али БЕЗ\n"
-"ИКАКВИХ ГАРАНЦИЈА; чак и без подразумеване гаранције КОРИСНОСТИ\n"
-"или ПРИЛАГОЂЕНОСТИ ОДРЕЂЕНОЈ НАМЕНИ.  Погледајте Гнуову општу\n"
-"јавну лиценцу за више детаља.\n"
-"\n"
-"Требали сте да примите примерак Гнуове опште јавне лиценце уз\n"
-"Калкулатор; ако нисте, пишите Задужбини слободног софтвера на:\n"
-"„Free Software Foundation, Inc.), 51 Franklin Street, Fifth Floor,\n"
-"Boston, MA 02110-1301 USA“"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Гномов калкулатор"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 Аутори Гномовог калкулатора"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "Калкулатор са финансијским и научним начином рада."
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "Основни"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "Напредни"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "Финансијски"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "Програмерски"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "Режим"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "О Калкулатору"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "Помоћ"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "Изађи"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
@@ -2089,6 +2099,7 @@ msgstr "%s сати"
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "сат,сата,сати"
+
 #: ../src/unit-manager.c:93
 msgid "Minutes"
 msgstr "Минути"
