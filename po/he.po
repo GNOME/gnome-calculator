@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-27 09:55+0300\n"
-"PO-Revision-Date: 2012-04-27 09:55+0200\n"
+"POT-Creation-Date: 2012-10-07 10:54+0200\n"
+"PO-Revision-Date: 2012-10-07 10:55+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "Language: he\n"
@@ -74,8 +74,9 @@ msgstr "זיכרון"
 #. The label on the memory button
 #: ../data/buttons-advanced.ui.h:18
 #: ../data/buttons-financial.ui.h:74
-msgid "<i>x</i>"
-msgstr "<i>x</i>"
+#: ../data/buttons-programming.ui.h:14
+msgid "x"
+msgstr "x"
 
 #. Accessible name for the absolute value button
 #: ../data/buttons-advanced.ui.h:20
@@ -334,11 +335,6 @@ msgstr "Pmt"
 msgid "Gpm"
 msgstr "Gpm"
 
-#. The label on the memory button
-#: ../data/buttons-programming.ui.h:14
-msgid "x"
-msgstr "x"
-
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:16
@@ -397,8 +393,8 @@ msgstr "64-סיביות"
 
 #. Title of preferences dialog
 #: ../data/preferences.ui.h:9
+#: ../src/gcalctool.c:522
 #: ../src/math-preferences.c:231
-#: ../src/math-window.c:369
 msgid "Preferences"
 msgstr "העדפות"
 
@@ -429,7 +425,7 @@ msgstr "הצגת מפריד _אלפים"
 
 #. Title of main window
 #: ../data/gcalctool.desktop.in.h:1
-#: ../src/math-window.c:493
+#: ../src/math-window.c:243
 msgid "Calculator"
 msgstr "מחשבון"
 
@@ -778,7 +774,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "שגיאה: מספר התקופות חייב להיות ערך חיובי"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -788,7 +784,7 @@ msgstr ""
 "  %s — Perform mathematical calculations"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -804,7 +800,7 @@ msgstr ""
 "  --help-gtk                      Show GTK+ options"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -824,7 +820,7 @@ msgstr ""
 "  --g-fatal-warnings              Make all warnings fatal"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -834,16 +830,110 @@ msgstr ""
 "  -s, --solve <equation>          Solve the given equation"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Argument --solve requires an equation to solve"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Unknown argument '%s'"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "לא ניתן לפתוח את קובץ העזרה"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"גיל אשר <dolfin@rpg.org.il>\n"
+"יאיר הרשקוביץ <yairhr@gmail.com>\n"
+"ירון שהרבני <sh.yaron@gmail.com>\n"
+"\n"
+"פרויקט תרגום GNOME לעברית\n"
+"‏http://gnome-il.berlios.de"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"‏Gcalctool הנה תכנה חופשית; ניתן להפיץ מחדש ו/או לשנות\n"
+"אותה תחת תנאי הרישיון הציבורי הכללי של GNU כפי שפורסם\n"
+"על ידי המוסד לתכנה חופשית; גם גרסה 2 של הרישיון, או\n"
+"(לבחירתך) כל גרסה עדכנית יותר.\n"
+"\n"
+"‏Gcalctool מופצת בתקווה שתביא תועלת אך ללא,\n"
+"כל אחריות; אפילו לא אחריות מרומזת לצורכי מסחר\n"
+"או התאמה לצרכים כלשהים.  ניתן לעיין ברישיון\n"
+"הציבורי הכללי של GNU לפרטים נוספים.\n"
+"\n"
+"ל־Gcalctool אמור היה להיות מצורף עותק של הרישיון הציבורי הכללי\n"
+"של GNU; במידה שלא, יש לכתוב אל Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 יוצרי Gcalctool"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "מחשבון עם מצבים פיננסיים ומדעיים"
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "בסיסי"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "מתקדם"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "פיננסי"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "תכנות"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "מצב"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "על אודות המחשבון"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "עזרה"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "יציאה"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1203,179 +1293,93 @@ msgstr "הפונקציה '%s' אינה מוגדרת"
 msgid "Unknown conversion"
 msgstr "המרה בלתי מוכרת"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, c-format
+msgid "Malformed expression at token '%s'"
+msgstr "ביטוי שגוי לאסימון '%s'"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252
+#: ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "ביטוי שגוי"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
 msgstr "מתבצע חישוב"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "נדרש שלם חיובי כדי לפרק לגורמים"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "אין ערך שפוי לביצוע הזזת סיביות"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "הערך המוצג איננו שלם חיובי"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:236
+#: ../src/math-preferences.c:235
 msgid "_Close"
 msgstr "ס_גירה"
 
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:246
+#: ../src/math-preferences.c:245
 #: ../src/unit-manager.c:54
 msgid "Degrees"
 msgstr "מעלות"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:250
+#: ../src/math-preferences.c:249
 #: ../src/unit-manager.c:55
 msgid "Radians"
 msgstr "רדיאנים"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:254
+#: ../src/math-preferences.c:253
 #: ../src/unit-manager.c:56
 msgid "Gradians"
 msgstr "גראדיאנים"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:264
+#: ../src/math-preferences.c:263
 msgid "Automatic"
 msgstr "אוטומטי"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:268
+#: ../src/math-preferences.c:267
 msgid "Fixed"
 msgstr "קבועה"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:271
 msgid "Scientific"
 msgstr "מדעי"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:275
 msgid "Engineering"
 msgstr "הנדסה"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:287
+#: ../src/math-preferences.c:286
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "הצגת %d _מקומות עשרוניים"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "לא ניתן לפתוח את קובץ העזרה"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"גיל אשר <dolfin@rpg.org.il>\n"
-"יאיר הרשקוביץ <yairhr@gmail.com>\n"
-"ירון שהרבני <sh.yaron@gmail.com>\n"
-"\n"
-"פרויקט תרגום GNOME לעברית\n"
-"‏http://gnome-il.berlios.de"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"‏Gcalctool הנה תכנה חופשית; ניתן להפיץ מחדש ו/או לשנות\n"
-"אותה תחת תנאי הרישיון הציבורי הכללי של GNU כפי שפורסם\n"
-"על ידי המוסד לתכנה חופשית; גם גרסה 2 של הרישיון, או\n"
-"(לבחירתך) כל גרסה עדכנית יותר.\n"
-"\n"
-"‏Gcalctool מופצת בתקווה שתביא תועלת אך ללא,\n"
-"כל אחריות; אפילו לא אחריות מרומזת לצורכי מסחר\n"
-"או התאמה לצרכים כלשהים.  ניתן לעיין ברישיון\n"
-"הציבורי הכללי של GNU לפרטים נוספים.\n"
-"\n"
-"ל־Gcalctool אמור היה להיות מצורף עותק של הרישיון הציבורי הכללי\n"
-"של GNU; במידה שלא, יש לכתוב אל Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 יוצרי Gcalctool"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "מחשבון עם מצבים פיננסיים ומדעיים"
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "בסיסי"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "מתקדם"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "פיננסי"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "תכנות"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "מצב"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "על אודות המחשבון"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "עזרה"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "יציאה"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
@@ -2211,6 +2215,9 @@ msgstr "מטבע"
 #, c-format
 msgid "%s%%s"
 msgstr "%%s%s"
+
+#~ msgid "<i>x</i>"
+#~ msgstr "<i>x</i>"
 
 #~ msgid "_Calculator"
 #~ msgstr "_מחשבון"
