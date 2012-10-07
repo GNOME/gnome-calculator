@@ -12,10 +12,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool\n"
+"Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-07-12 10:42+0000\n"
+"POT-Creation-Date: 2012-10-05 04:59+0000\n"
 "PO-Revision-Date: 2012-09-08 10:17+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
@@ -431,8 +431,8 @@ msgid "64-bit"
 msgstr "64 bitů"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Předvolby"
 
@@ -462,7 +462,7 @@ msgid "Show _thousands separators"
 msgstr "Zobrazovat _oddělovače tisíců"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "Kalkulačka"
 
@@ -815,7 +815,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Chyba: počet období musí být kladný"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -825,7 +825,7 @@ msgstr ""
 "  %s — Provést matematické výpočty"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -841,7 +841,7 @@ msgstr ""
 "  --help-gtk                      Zobrazí přepínače GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -865,7 +865,7 @@ msgstr ""
 "  --g-fatal-warnings              Všechna varování budou kritická"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -875,16 +875,108 @@ msgstr ""
 "  -s, --solve <rovnice>         Vyřešit zadanou rovnici"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Přepínač --solve vyžaduje rovnici, která se má vyřešit"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Neznámý přepínač „%s“"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "Nelze otevřít soubor s nápovědou"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Miloslav Trmač <mitr@volny.cz>\n"
+"Michal Bukovjan <bukm@centrum.cz>\n"
+"Petr Pulc <petrpulc@gmail.com>\n"
+"Marek Černocký <marek@manet.cz>"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Gcalctool je svobodný software; můžete jej šířit a upravovat podle\n"
+"ustanovení GNU General Public License, vydávané Free Software \n"
+"Foundation, a to buď ve verzi 2 této licence anebo (podle vlastního\n"
+"uvážení) v kterékoliv pozdější verze.\n"
+"\n"
+"Tento program je šířen v naději, že bude užitečný, avšak BEZ\n"
+"JAKÉKOLIV ZÁRUKY; neposkytují se ani odvozené záruky PRODEJNOSTI\n"
+"anebo VHODNOSTI PRO URČITÝ ÚČEL. Další podrobnosti hledejte v GNU\n"
+"General Public License.\n"
+"\n"
+"Kopii GNU General Public License byste měl(a) obdržet spolu s tímto\n"
+"programem. Pokud se tak nestalo, napište o ni Free Software Foundation,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986-2010 autoři aplikace Gcalctool"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "Kalkulačka s finančním a vědeckým režimem."
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "Základní"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "Pokročilá"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "Finanční"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "Programátorská"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "Režim"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "O kalkulačce"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "Nápověda"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "Ukončit"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1242,33 +1334,40 @@ msgstr "Funkce „%s“ není definovaná"
 msgid "Unknown conversion"
 msgstr "Neznámý převod"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, c-format
+msgid "Malformed expression at token '%s'"
+msgstr "Chybný výraz v místě symbolu „%s“"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "Nesprávný výraz"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
 msgstr "Počítá se"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "Pro rozklad na součin prvočísel je zapotřebí celé číslo"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "Nesmyslná hodnota pro bitový posun"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "Zobrazená hodnota není celé číslo"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1318,98 +1417,6 @@ msgstr "Inženýrský"
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "Zobrazovat %d desetinných _míst"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "Nelze otevřít soubor s nápovědou"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Miloslav Trmač <mitr@volny.cz>\n"
-"Michal Bukovjan <bukm@centrum.cz>\n"
-"Petr Pulc <petrpulc@gmail.com>\n"
-"Marek Černocký <marek@manet.cz>"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Gcalctool je svobodný software; můžete jej šířit a upravovat podle\n"
-"ustanovení GNU General Public License, vydávané Free Software \n"
-"Foundation, a to buď ve verzi 2 této licence anebo (podle vlastního\n"
-"uvážení) v kterékoliv pozdější verze.\n"
-"\n"
-"Tento program je šířen v naději, že bude užitečný, avšak BEZ\n"
-"JAKÉKOLIV ZÁRUKY; neposkytují se ani odvozené záruky PRODEJNOSTI\n"
-"anebo VHODNOSTI PRO URČITÝ ÚČEL. Další podrobnosti hledejte v GNU\n"
-"General Public License.\n"
-"\n"
-"Kopii GNU General Public License byste měl(a) obdržet spolu s tímto\n"
-"programem. Pokud se tak nestalo, napište o ni Free Software Foundation,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986-2010 autoři aplikace Gcalctool"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "Kalkulačka s finančním a vědeckým režimem."
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "Základní"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "Pokročilá"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "Finanční"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "Programátorská"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "Režim"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "O kalkulačce"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "Nápověda"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "Ukončit"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
