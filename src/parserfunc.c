@@ -8,11 +8,15 @@
 
 /* Register error variables in ParserState structure. */
 void
-set_error(ParserState* state, gint errorno, const gchar *token)
+set_error(ParserState* state, gint errorno, const gchar *token, const gint token_start, const gint token_end)
 {
     state->error = errorno;
     if(token)
+    {
         state->error_token = strdup(token);
+        state->error_token_start = g_utf8_pointer_to_offset(state->lexer->prelexer->stream, state->lexer->prelexer->stream + token_start);
+        state->error_token_end = g_utf8_pointer_to_offset(state->lexer->prelexer->stream, state->lexer->prelexer->stream + token_end);
+    }
 }
 
 /* Unused function pointer. This won't be called anytime. */
@@ -78,7 +82,7 @@ pf_convert_number(ParseNode* self)
     }
     if(!(*(self->state->convert))(self->state, &tmp, from, to, ans))
     {
-        set_error(self->state, PARSER_ERR_UNKNOWN_CONVERSION, NULL);
+        set_error(self->state, PARSER_ERR_UNKNOWN_CONVERSION, NULL, 0, 0);
         free(ans);
         ans = NULL;
     }
@@ -129,7 +133,7 @@ pf_convert_1(ParseNode* self )
     }
     if(!(*(self->state->convert))(self->state, &tmp, from, to, ans))
     {
-        set_error(self->state, PARSER_ERR_UNKNOWN_CONVERSION, NULL);
+        set_error(self->state, PARSER_ERR_UNKNOWN_CONVERSION, NULL, 0, 0);
         free(ans);
         ans = NULL;
     }
@@ -211,9 +215,9 @@ pf_get_variable(ParseNode* self)
     }
     if(!result)
     {
-        free (ans);
+        free(ans);
         ans = NULL;
-        set_error(self->state, PARSER_ERR_UNKNOWN_VARIABLE, self->token->string);
+        set_error(self->state, PARSER_ERR_UNKNOWN_VARIABLE, self->token->string, self->token->start_index, self->token->end_index);
     }
     return ans;
 }
@@ -279,7 +283,7 @@ pf_get_variable_with_power(ParseNode* self)
     {
         free(ans);
         ans = NULL;
-        set_error(self->state, PARSER_ERR_UNKNOWN_VARIABLE, self->token->string);
+        set_error(self->state, PARSER_ERR_UNKNOWN_VARIABLE, self->token->string, self->token->start_index, self->token->end_index);
     }
     return ans;
 }
@@ -307,7 +311,7 @@ pf_apply_func(ParseNode* self)
     {
         free(val);
         free(ans);
-        set_error(self->state, PARSER_ERR_UNKNOWN_FUNCTION, self->token->string);
+        set_error(self->state, PARSER_ERR_UNKNOWN_FUNCTION, self->token->string, self->token->start_index, self->token->end_index);
         return NULL;
     }
     free(val);
@@ -346,7 +350,7 @@ pf_apply_func_with_power(ParseNode* self)
         free(ans);
         free(val);
         self->value = NULL;
-        set_error(self->state, PARSER_ERR_UNKNOWN_FUNCTION, self->token->string);
+        set_error(self->state, PARSER_ERR_UNKNOWN_FUNCTION, self->token->string, self->token->start_index, self->token->end_index);
         return NULL;
     }
     pow = super_atoi(((LexerToken*) self->value)->string);
@@ -395,7 +399,7 @@ pf_apply_func_with_npower(ParseNode* self)
         free(val);
         free(inv_name);
         self->value = NULL;
-        set_error(self->state, PARSER_ERR_UNKNOWN_FUNCTION, self->token->string);
+        set_error(self->state, PARSER_ERR_UNKNOWN_FUNCTION, self->token->string, self->token->start_index, self->token->end_index);
         return NULL;
     }
     pow = super_atoi(((LexerToken*) self->value)->string);
@@ -501,7 +505,7 @@ pf_do_floor(ParseNode* self)
 }
 
 /* Apply ceiling function. */
-void* pf_do_ceiling (ParseNode* self)
+void* pf_do_ceiling(ParseNode* self)
 {
     MPNumber* val;
     MPNumber* ans;
@@ -742,7 +746,7 @@ pf_do_subtract(ParseNode* self)
         if(left)
             free(left);
         if(right)
-            free (right);
+            free(right);
         free(ans);
         return NULL;
     }
@@ -864,7 +868,7 @@ pf_do_not(ParseNode* self)
     }
     if(!mp_is_overflow(val, self->state->options->wordlen))
     {
-        set_error(self->state, PARSER_ERR_OVERFLOW, NULL);
+        set_error(self->state, PARSER_ERR_OVERFLOW, NULL, 0, 0);
         free(ans);
         ans = NULL;
     }
@@ -959,7 +963,7 @@ pf_constant(ParseNode* self)
         /* This should never happen, as l_check_if_number() has already passed the string once. */
         /* If the code reaches this point, something is really wrong. X( */
         free(ans);
-        set_error(self->state, PARSER_ERR_INVALID, self->token->string);
+        set_error(self->state, PARSER_ERR_INVALID, self->token->string, self->token->start_index, self->token->end_index);
         return NULL;
     }
     return ans;

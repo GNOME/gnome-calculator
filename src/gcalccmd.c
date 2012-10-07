@@ -35,7 +35,7 @@ solve(const char *equation)
     options.wordlen = 32;
     options.angle_units = MP_DEGREES;
     
-    ret = mp_equation_parse(equation, &options, &z, NULL);
+    ret = mp_equation_parse(equation, &options, &z, NULL, NULL, NULL);
 
     if (ret == PARSER_ERR_MP)
         fprintf(stderr, "Error %s\n", mp_get_error());

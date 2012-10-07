@@ -319,6 +319,24 @@ status_changed_cb(MathEquation *equation, GParamSpec *spec, MathDisplay *display
 
 
 static void
+error_status_changed_cb(MathEquation *equation, GParamSpec *spec, MathDisplay *display)
+{
+    GtkTextIter start, end;
+    /* If both start and end locatoin of error token are the same, no need to select anything. */
+    if(math_equation_get_error_token_end(equation) - math_equation_get_error_token_start(equation) != 0)
+    {
+        gtk_text_buffer_get_start_iter(GTK_TEXT_BUFFER(display->priv->equation), &start);
+        gtk_text_buffer_get_start_iter(GTK_TEXT_BUFFER(display->priv->equation), &end);
+
+        gtk_text_iter_set_offset(&start, math_equation_get_error_token_start(equation));
+        gtk_text_iter_set_offset(&end, math_equation_get_error_token_end(equation));
+
+        gtk_text_buffer_select_range(GTK_TEXT_BUFFER(display->priv->equation), &start, &end);
+    }
+}
+
+
+static void
 create_gui(MathDisplay *display)
 {
     GtkWidget *info_view, *info_box, *main_box;
@@ -377,6 +395,7 @@ create_gui(MathDisplay *display)
     gtk_widget_show(main_box);
 
     g_signal_connect(display->priv->equation, "notify::status", G_CALLBACK(status_changed_cb), display);
+    g_signal_connect(display->priv->equation, "notify::error-token-end", G_CALLBACK(error_status_changed_cb), display);
     status_changed_cb(display->priv->equation, NULL, display);
 }
 

@@ -77,7 +77,7 @@ test(char *expression, char *expected, int expected_error)
     MPErrorCode error;
     MPNumber result;
 
-    error = mp_equation_parse(expression, &options, &result, NULL);
+    error = mp_equation_parse(expression, &options, &result, NULL, NULL, NULL);
 
     if (error == 0) {
         char *result_str;

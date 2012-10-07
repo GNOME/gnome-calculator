@@ -44,7 +44,9 @@ enum {
     PROP_TARGET_CURRENCY,
     PROP_SOURCE_UNITS,
     PROP_TARGET_UNITS,  
-    PROP_SERIALIZER
+    PROP_SERIALIZER,
+    PROP_ERROR_TOKEN_START,
+    PROP_ERROR_TOKEN_END
 };
 
 static GType number_mode_type, number_format_type, angle_unit_type;
@@ -61,6 +63,8 @@ typedef struct {
     gboolean can_super_minus;  /* TRUE if entering minus can generate a superscript minus */
     gboolean entered_multiply; /* Last insert was a multiply character */
     gchar *status;             /* Equation status */
+    glong error_token_start;   /* Start offset of error token */
+    glong error_token_end;     /* End offset of error token */
 } MathEquationState;
 
 struct MathEquationPrivate
@@ -101,6 +105,8 @@ typedef struct {
     MPNumber *number_result;
     gchar *text_result;
     gchar *error;
+    glong error_start;
+    glong error_end;
 } SolveData;
 
 G_DEFINE_TYPE (MathEquation, math_equation, GTK_TYPE_TEXT_BUFFER);
@@ -761,7 +767,7 @@ math_equation_set_status(MathEquation *equation, const gchar *status)
 
     g_free(equation->priv->state.status);
     equation->priv->state.status = g_strdup(status);
-    g_object_notify(G_OBJECT(equation), "status");    
+    g_object_notify(G_OBJECT(equation), "status");
 }
 
 
@@ -770,6 +776,92 @@ math_equation_get_status(MathEquation *equation)
 {
     g_return_val_if_fail(equation != NULL, NULL);
     return equation->priv->state.status;
+}
+
+
+void
+math_equation_set_error_token_start(MathEquation *equation, glong error_start)
+{
+    equation->priv->state.error_token_start = error_start;
+}
+
+
+void
+math_equation_set_error_token_end(MathEquation *equation, glong error_end)
+{
+    equation->priv->state.error_token_end = error_end;
+}
+
+
+/* Fix the offsets to consider thousand separators inserted by the gui. */
+static void
+math_equation_error_token_fix_thousands_separator(MathEquation *equation)
+{
+    GtkTextIter start, end, temp;
+    gunichar ch = mp_serializer_get_thousands_separator(equation->priv->serializer);
+    gchar* str = g_ucs4_to_utf8(&ch, 1, NULL, NULL, NULL);
+    glong length = g_utf8_strlen(str, -1);
+
+    gtk_text_buffer_get_start_iter(GTK_TEXT_BUFFER(equation), &start);
+    temp = end = start;
+
+    gtk_text_iter_set_offset(&start, math_equation_get_error_token_start(equation));
+    gtk_text_iter_set_offset(&end, math_equation_get_error_token_end(equation));
+
+    /* Move both start and end offsets for each thousand separator till the start of error token. */
+    while(gtk_text_iter_forward_search(&temp, str, GTK_TEXT_SEARCH_TEXT_ONLY, NULL, &temp, &start))
+    {
+        equation->priv->state.error_token_start += length;
+        equation->priv->state.error_token_end += length;
+        gtk_text_iter_forward_chars(&start, length);
+        gtk_text_iter_forward_chars(&end, length);
+    }
+
+    /* Starting from start, move only end offset for each thousand separator till the end of error token. */
+    temp = start;
+    while(gtk_text_iter_forward_search(&temp, str, GTK_TEXT_SEARCH_TEXT_ONLY, NULL, &temp, &end))
+    {
+        equation->priv->state.error_token_end += length;
+        gtk_text_iter_forward_chars(&end, length);
+    }
+}
+
+
+void
+math_equation_set_error(MathEquation *equation, glong error_start, glong error_end)
+{
+    math_equation_set_error_token_start(equation, error_start);
+    math_equation_set_error_token_end(equation, error_end);
+    /* Fix thousand separator offsets in the start and end offsets of error token. */
+    math_equation_error_token_fix_thousands_separator(equation);
+    /* Notify the GUI about the change in error token locations. */
+    g_object_notify (G_OBJECT(equation), "error_token_end");
+}
+
+
+glong
+math_equation_get_error_token_start(MathEquation *equation)
+{
+    gint ans_start, ans_end;
+    get_ans_offsets(equation, &ans_start, &ans_end);
+    /* Check if the previous answer is before start of error token.
+     * If so, subtract 3 (the length of string "ans") and add actual answer length (ans_end - ans_start) into it. */
+    if(ans_start != -1 && ans_start < equation->priv->state.error_token_start)
+        return equation->priv->state.error_token_start + ans_end - ans_start - 3;
+    return equation->priv->state.error_token_start;
+}
+
+
+glong
+math_equation_get_error_token_end(MathEquation *equation)
+{
+    gint ans_start, ans_end;
+    get_ans_offsets(equation, &ans_start, &ans_end);
+    /* Check if the previous answer is before end of error token.
+     * If so, subtract 3 (the length of string "ans") and add actual answer length (ans_end - ans_start) into it. */
+    if(ans_start != -1 && ans_start < equation->priv->state.error_token_end)
+        return equation->priv->state.error_token_end + ans_end - ans_start - 3;
+    return equation->priv->state.error_token_end;
 }
 
 
@@ -1163,7 +1255,7 @@ convert(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z
 
 
 static int
-parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
+parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token, glong *error_start, glong *error_end)
 {
     MPEquationOptions options;
 
@@ -1177,7 +1269,7 @@ parse(MathEquation *equation, const char *text, MPNumber *z, char **error_token)
     options.convert = convert;
     options.callback_data = equation;
 
-    return mp_equation_parse(text, &options, z, error_token);
+    return mp_equation_parse(text, &options, z, error_token, error_start, error_end);
 }
 
 
@@ -1193,6 +1285,7 @@ math_equation_solve_real(gpointer data)
 
     gint n_brackets = 0, result;
     gchar *c, *text, *error_token;
+    glong error_start = 0, error_end = 0;
     GString *equation_text;
     MPNumber z;
 
@@ -1212,7 +1305,7 @@ math_equation_solve_real(gpointer data)
     }
 
 
-    result = parse(equation, equation_text->str, &z, &error_token);
+    result = parse(equation, equation_text->str, &z, &error_token, &error_start, &error_end);
     g_string_free(equation_text, TRUE);
 
     switch (result) {
@@ -1229,11 +1322,15 @@ math_equation_solve_real(gpointer data)
         case PARSER_ERR_UNKNOWN_VARIABLE:
             solvedata->error = g_strdup_printf(/* Error displayed to user when they an unknown variable is entered */
                                       _("Unknown variable '%s'"), error_token);
+            solvedata->error_start = error_start;
+            solvedata->error_end = error_end;
             break;
 
         case PARSER_ERR_UNKNOWN_FUNCTION:
             solvedata->error = g_strdup_printf(/* Error displayed to user when an unknown function is entered */
                                       _("Function '%s' is not defined"), error_token);
+            solvedata->error_start = error_start;
+            solvedata->error_end = error_end;
             break;
 
         case PARSER_ERR_UNKNOWN_CONVERSION:
@@ -1245,8 +1342,12 @@ math_equation_solve_real(gpointer data)
             if (mp_get_error())
                 solvedata->error = g_strdup(mp_get_error());
             else if (error_token)
+            {
                 solvedata->error = g_strdup_printf(/* Uncategorized error. Show error token to user*/
                                     _("Malformed expression at token '%s'"), error_token);
+                solvedata->error_start = error_start;
+                solvedata->error_end = error_end;
+            }
             else
                 solvedata->error = g_strdup (/* Unknown error. */
                                     _("Malformed expression"));
@@ -1289,6 +1390,7 @@ math_equation_look_for_answer(gpointer data)
 
     if (result->error != NULL) {
         math_equation_set_status(equation, result->error);
+        math_equation_set_error(equation, result->error_start, result->error_end);
         g_free(result->error);
     }
     else if (result->number_result != NULL) {
@@ -1553,6 +1655,12 @@ math_equation_set_property(GObject      *object,
     case PROP_TARGET_UNITS:
         math_equation_set_target_units(self, g_value_get_string(value));
         break;
+    case PROP_ERROR_TOKEN_START:
+        math_equation_set_error_token_start(self, g_value_get_long(value));
+        break;
+    case PROP_ERROR_TOKEN_END:
+        math_equation_set_error_token_end(self, g_value_get_long(value));
+        break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
         break;
@@ -1623,6 +1731,12 @@ math_equation_get_property(GObject    *object,
         break;
     case PROP_SERIALIZER:
         g_value_set_object(value, self->priv->serializer);
+        break;
+    case PROP_ERROR_TOKEN_START:
+        g_value_set_long(value, math_equation_get_error_token_start(self));
+        break;
+    case PROP_ERROR_TOKEN_END:
+        g_value_set_long(value, math_equation_get_error_token_end(self));
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -1787,6 +1901,20 @@ math_equation_class_init(MathEquationClass *klass)
                                                         "Serializer",
                                                         MP_TYPE_SERIALIZER,
                                                         G_PARAM_READABLE));
+    g_object_class_install_property(object_class,
+                                    PROP_ERROR_TOKEN_START,
+                                    g_param_spec_long("error-token-start",
+                                                      "error-token-start",
+                                                      "Error token start offset",
+                                                      G_MINLONG, G_MAXLONG, 0,
+                                                      G_PARAM_READWRITE));
+    g_object_class_install_property(object_class,
+                                    PROP_ERROR_TOKEN_END,
+                                    g_param_spec_long("error-token-end",
+                                                      "error-token-end",
+                                                      "Error token end offset",
+                                                      G_MINLONG, G_MAXLONG, 0,
+                                                      G_PARAM_READWRITE));
 }
 
 

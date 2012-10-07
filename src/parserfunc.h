@@ -3,7 +3,7 @@
 
 #include "parser.h"
 
-void set_error(ParserState*, gint, const gchar*);
+void set_error(ParserState*, gint, const gchar*, const gint, const gint);
 
 void* pf_none(ParseNode*);
 

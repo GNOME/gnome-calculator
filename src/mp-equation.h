@@ -61,7 +61,7 @@ typedef struct {
     int (*convert)(const MPNumber *x, const char *x_units, const char *z_units, MPNumber *z, void *data);
 } MPEquationOptions;
 
-MPErrorCode mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token);
+MPErrorCode mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token, glong *error_start, glong *error_end);
 const char *mp_error_code_to_string(MPErrorCode error_code);
 
 int sub_atoi(const char *data);

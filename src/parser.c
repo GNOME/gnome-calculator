@@ -238,6 +238,8 @@ p_create_parser(const gchar* input, MPEquationOptions* options)
     state->options = options;
     state->error = 0;
     state->error_token = NULL;
+    state->error_token_start = 0;
+    state->error_token_end = 0;
     return state;
 }
 
@@ -259,7 +261,7 @@ p_parse(ParserState* state)
         {
         /* Full string is not parsed. */
             if(!state->error)
-                set_error(state, PARSER_ERR_INVALID, token->string);
+                set_error(state, PARSER_ERR_INVALID, token->string, token->start_index, token->end_index);
             return PARSER_ERR_INVALID;
         }
     }
@@ -267,7 +269,7 @@ p_parse(ParserState* state)
     {
         /* Full string is not parsed. */
         if(!state->error)
-            set_error(state, PARSER_ERR_INVALID, token->string);
+            set_error(state, PARSER_ERR_INVALID, token->string, token->start_index, token->end_index);
         return PARSER_ERR_INVALID;
     }
     if(ret == 0)
@@ -1166,7 +1168,7 @@ term(ParserState* state)
         /* Check if the token is a valid variable or not. */
         if(!p_check_variable(state, token->string))
         {
-            set_error(state, PARSER_ERR_UNKNOWN_VARIABLE, token->string);
+            set_error(state, PARSER_ERR_UNKNOWN_VARIABLE, token->string, token->start_index, token->end_index);
             return 0;
         }
         token = l_get_next_token(state->lexer);

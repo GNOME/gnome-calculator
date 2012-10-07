@@ -126,7 +126,7 @@ solve_function(const gchar *function, const MPNumber *x, MPNumber *z)
     options.variable_is_defined = variable_is_defined;
     options.get_variable = get_variable;
     options.callback_data = (void *)x;
-    ret = mp_equation_parse(function, &options, z, NULL);
+    ret = mp_equation_parse(function, &options, z, NULL, NULL, NULL);
     if (ret) {
         g_warning("Failed to convert value: %s", function);
         return FALSE;

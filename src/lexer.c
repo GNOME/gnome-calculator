@@ -122,7 +122,7 @@ l_insert_next_token(LexerState* lstate)
         if((type = pl_get_next_token(state)) != PL_SUPER_DIGIT)
         {
             /* ERROR: expected PL_SUP_DIGIT */
-            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring (state));
+            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
             free(tmp);
             return l_insert_token(lstate, T_UNKNOWN);
         }
@@ -190,7 +190,7 @@ l_insert_next_token(LexerState* lstate)
                         else
                         {
                             /* ERROR: expected PL_SECOND */
-                            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring (state));
+                            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
                             free(tmp);
                             return l_insert_token(lstate, T_UNKNOWN);
                         }
@@ -201,7 +201,7 @@ ANGLE_NUM_DMS_STATE:
                         if((type = pl_get_next_token (state)) != PL_DIGIT)
                         {
                             /* ERROR: expected PL_DIGIT */
-                            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state));
+                            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
                             free(tmp);
                             return l_insert_token(lstate, T_UNKNOWN);
                         }
@@ -213,7 +213,7 @@ ANGLE_NUM_DMS_STATE:
                         else
                         {
                             /* ERROR: expected PL_SECOND */
-                            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state));
+                            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
                             free(tmp);
                             return l_insert_token(lstate, T_UNKNOWN);
                         }
@@ -227,7 +227,7 @@ ANGLE_NUM_DMS_STATE:
                 else
                 {
                     /* ERROR: expected PL_MINUTE | PL_DIGIT */
-                    set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state));
+                    set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
                     free(tmp);
                     return l_insert_token(lstate, T_UNKNOWN);
                 }
@@ -238,7 +238,7 @@ ANGLE_NUM_DM_STATE:
                 if((type = pl_get_next_token(state)) != PL_DIGIT)
                 {
                     /* ERROR: expected PL_DIGIT */
-                    set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state));
+                    set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
                     free(tmp);
                     return l_insert_token(lstate, T_UNKNOWN);
                 }
@@ -250,7 +250,7 @@ ANGLE_NUM_DM_STATE:
                 else
                 {
                     /* ERROR: expected PL_MINUTE */
-                    set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state));
+                    set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
                     free(tmp);
                     return l_insert_token(lstate, T_UNKNOWN);
                 }
@@ -308,7 +308,7 @@ DECIMAL_STATE:
         else
         {
             /* ERROR: expected PL_DIGIT | PL_HEX */
-            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state));
+            set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
             free(tmp);
             return l_insert_token(lstate, T_UNKNOWN);
         }
@@ -341,7 +341,7 @@ HEX_DEC_STATE:
                     if(l_check_if_number(lstate))
                         return l_insert_token(lstate, T_NUMBER);
                     /* ERROR: expected PL_DECIMAL | PL_DIGIT | PL_HEX */
-                    set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state));
+                    set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
                     free(tmp);
                     return l_insert_token(lstate, T_UNKNOWN);
                 }
@@ -354,7 +354,7 @@ DECIMAL_HEX_STATE:
             if(!(type == PL_DIGIT || type == PL_HEX))
             {
                 /* ERROR: expected PL_DIGIT | PL_HEX */
-                set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state));
+                set_error(lstate->parent, PARSER_ERR_MP, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
                 free(tmp);
                 return l_insert_token(lstate, T_UNKNOWN);
             }
@@ -518,7 +518,7 @@ LETTER_STATE:
         return l_insert_token(lstate, PL_EOS);
     }
     /* ERROR: Unexpected token.. X( */
-    set_error(lstate->parent, PARSER_ERR_INVALID, tmp = pl_get_marked_substring(state));
+    set_error(lstate->parent, PARSER_ERR_INVALID, tmp = pl_get_marked_substring(state), state->mark_index, state->next_index);
     free(tmp);
     return l_insert_token(lstate, T_UNKNOWN);
 }

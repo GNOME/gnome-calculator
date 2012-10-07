@@ -245,7 +245,7 @@ convert(ParserState *state, const MPNumber *x, const char *x_units, const char *
 
 
 MPErrorCode
-mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token)
+mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *result, char **error_token, glong *error_start, glong *error_end)
 {
     int ret;
     int err;
@@ -262,14 +262,21 @@ mp_equation_parse(const char *expression, MPEquationOptions *options, MPNumber *
     state->get_function = get_function;
     state->convert = convert;
     state->error = 0;
+    state->error_token_start = 0;
+    state->error_token_end = 0;
     mp_clear_error();
     ret = p_parse (state);
-    if (state->error_token != NULL && error_token != NULL) {
-        *error_token = state->error_token;
+    if (state->error_token != NULL) {
+        if (error_token)
+            *error_token = state->error_token;
+        if (error_start)
+            *error_start = state->error_token_start;
+        if (error_end)
+            *error_end = state->error_token_end;
     }
     /* Error during parsing */
     if (state->error) {
-	err = state->error;
+        err = state->error;
         p_destroy_parser (state);
         return err;
     }

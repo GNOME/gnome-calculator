@@ -58,6 +58,8 @@ typedef struct parser_state
     MPEquationOptions *options;
     int error;
     char *error_token;
+    glong error_token_start;
+    glong error_token_end;
     MPNumber ret;
     int (*variable_is_defined)(struct parser_state *state, const char *name);
     int (*get_variable)(struct parser_state *state, const char *name, MPNumber *z);

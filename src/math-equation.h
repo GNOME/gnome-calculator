@@ -54,6 +54,12 @@ gunichar math_equation_get_digit_text(MathEquation *equation, guint digit);
 void math_equation_set_status(MathEquation *equation, const gchar *status);
 const gchar *math_equation_get_status(MathEquation *equation);
 
+void math_equation_set_error_token_start(MathEquation *equation, glong error_start);
+void math_equation_set_error_token_end(MathEquation *equation, glong error_end);
+void math_equation_set_error(MathEquation *equation, glong error_start, glong error_end);
+glong math_equation_get_error_token_start(MathEquation *equation);
+glong math_equation_get_error_token_end(MathEquation *equation);
+
 gboolean math_equation_is_empty(MathEquation *equation);
 gboolean math_equation_is_result(MathEquation *equation);
 gchar *math_equation_get_display(MathEquation *equation);
