@@ -1,5 +1,5 @@
 # Traduzione italiana di gcaltool
-# Copyright (C) 2003-2010, 2011  Free Software Foundation, Inc.
+# Copyright (C) 2003-2010, 2011, 2012  Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
 # Stefano Canepa <sc@linux.it>, 2003, 2004, 2005, 2006.
 # Sergio Durzu <sergio.durzu@ildeposito.org>, 2009.
@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcaltool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-22 16:29+0200\n"
-"PO-Revision-Date: 2012-09-22 16:30+0200\n"
+"POT-Creation-Date: 2012-10-08 08:34+0200\n"
+"PO-Revision-Date: 2012-10-08 08:35+0200\n"
 "Last-Translator: Milo Casagrande <milo@ubuntu.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: \n"
@@ -468,7 +468,7 @@ msgid "Show _thousands separators"
 msgstr "Mostrare il separatore delle _migliaia"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:242
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "Calcolatrice"
 
@@ -1343,33 +1343,40 @@ msgstr "La funzione «%s» non è definita"
 msgid "Unknown conversion"
 msgstr "Conversione sconosciuta"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, fuzzy, c-format
+msgid "Malformed expression at token '%s'"
+msgstr "Espressione malformata al token «%s»"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "Espressione malformata"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
 msgstr "Calcolo"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "Per fattorizzare è necessario un numero intero"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "Nessun valore corretto per eseguire lo shift bit a bit"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "Il valore visualizzato non è un intero"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
