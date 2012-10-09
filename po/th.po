@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-07-12 10:42+0000\n"
-"PO-Revision-Date: 2012-09-06 21:46+0700\n"
+"POT-Creation-Date: 2012-10-05 05:01+0000\n"
+"PO-Revision-Date: 2012-10-09 19:16+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -421,8 +421,8 @@ msgid "64-bit"
 msgstr "64 บิต"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "ปรับแต่ง"
 
@@ -452,7 +452,7 @@ msgid "Show _thousands separators"
 msgstr "แสดงสัญลักษณ์แบ่งหลัก_พัน"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "เครื่องคิดเลข"
 
@@ -803,7 +803,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "ผิดพลาด: จำนวนคาบต้องเป็นค่าบวก"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -813,7 +813,7 @@ msgstr ""
 "  %s — เครื่องคำนวณทางคณิตศาสตร์"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -829,7 +829,7 @@ msgstr ""
 "  --help-gtk                      แสดงตัวเลือก GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -851,7 +851,7 @@ msgstr ""
 "  --g-fatal-warnings              ถือว่าคำเตือนต่างๆ ที่เกิดขึ้นเป็นความผิดพลาดร้ายแรง"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -861,16 +861,112 @@ msgstr ""
 "  -s, --solve <equation>          หาผลลัพธ์ของนิพจน์ที่กำหนด"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "อาร์กิวเมนต์ --solve ต้องการนิพจน์ที่จะหาผลลัพธ์ด้วย"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "ไม่รู้จักอาร์กิวเมนต์ '%s'"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "ไม่สามารถเปิดแฟ้มข้อมูลวิธีใช้"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Ithipan Methasate <tumm_xx@hotmail.com>\n"
+"Supranee Thirawatthanasuk <supranee@opentle.org>\n"
+"Chanchai Junlouchai <taz@opentle.org>\n"
+"Paisa Seeluangsawat <paisa@users.sf.net>\n"
+"Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
+"Sira Nokyoongtong <gumaraa@gmail.com>\n"
+"\n"
+"ถ้าพอมีเวลาโปรดมาช่วยกันแปล\n"
+"http://gnome-th.sf.net"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Gcalctool เป็นซอฟต์แวร์เสรี คุณสามารถแจกจ่ายต่อ และ/หรือ แก้ไขโปรแกรมได้\n"
+"ภายใต้เงื่อนไขของ GNU General Public License ที่เผยแพร่โดยมูลนิธิซอฟต์แวร์เสรี\n"
+"ไม่ว่าจะเป็นสัญญาอนุญาตรุ่นที่ 2 หรือรุ่นถัดมา (ตามแต่คุณจะเลือก)\n"
+"\n"
+"Gcalctool เผยแพร่ด้วยความหวังว่าโปรแกรมจะมีประโยชน์\n"
+"แต่ *ไม่มีการรับประกันใดๆ* ไม่มีแม้การรับประกัน *อรรถประโยชน์เชิงพาณิชย์*\n"
+"หรือ *ความเหมาะสมสำหรับวัตถุประสงค์เฉพาะกิจใดๆ* กรุณาอ่าน\n"
+"GNU General Public License เพื่อดูรายละเอียดเพิ่มเติม\n"
+"\n"
+"คุณควรจะได้รับสำเนาของ GNU General Public License มาพร้อมกับ Gcalctool\n"
+"ถ้าคุณไม่ได้รับ กรุณาติดต่อไปที่ Free Software Foundation, Inc., \n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 The Gcalctool authors"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "เครื่องคิดเลข พร้อมด้วยโหมดการเงินและวิทยาศาสตร์"
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "พื้นฐาน"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "พิเศษ"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "การเงิน"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "การเขียนโปรแกรม"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "โหมด"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "เกี่ยวกับเครื่องคิดเลข"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "วิธีใช้"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "ออก"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1224,33 +1320,40 @@ msgstr "ไม่รู้จักฟังก์ชัน '%s'"
 msgid "Unknown conversion"
 msgstr "ไม่มีข้อมูลสำหรับแปลงหน่วย"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, c-format
+msgid "Malformed expression at token '%s'"
+msgstr "รูปแบบนิพจน์ไม่ถูกต้องที่โทเคน '%s'"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "รูปแบบนิพจน์ไม่ถูกต้อง"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
 msgstr "กำลังคำนวณ"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "การแยกตัวประกอบทำได้กับจำนวนเต็มเท่านั้น"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "ไม่มีค่าที่ใช้ได้ให้เลื่อนบิต"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "ค่าที่แสดงอยู่ไม่ใช่จำนวนเต็ม"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1300,102 +1403,6 @@ msgstr "วิศวกรรม"
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "แสดงจุดทศนิยม %d _ตำแหน่ง"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "ไม่สามารถเปิดแฟ้มข้อมูลวิธีใช้"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Ithipan Methasate <tumm_xx@hotmail.com>\n"
-"Supranee Thirawatthanasuk <supranee@opentle.org>\n"
-"Chanchai Junlouchai <taz@opentle.org>\n"
-"Paisa Seeluangsawat <paisa@users.sf.net>\n"
-"Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
-"Sira Nokyoongtong <gumaraa@gmail.com>\n"
-"\n"
-"ถ้าพอมีเวลาโปรดมาช่วยกันแปล\n"
-"http://gnome-th.sf.net"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Gcalctool เป็นซอฟต์แวร์เสรี คุณสามารถแจกจ่ายต่อ และ/หรือ แก้ไขโปรแกรมได้\n"
-"ภายใต้เงื่อนไขของ GNU General Public License ที่เผยแพร่โดยมูลนิธิซอฟต์แวร์เสรี\n"
-"ไม่ว่าจะเป็นสัญญาอนุญาตรุ่นที่ 2 หรือรุ่นถัดมา (ตามแต่คุณจะเลือก)\n"
-"\n"
-"Gcalctool เผยแพร่ด้วยความหวังว่าโปรแกรมจะมีประโยชน์\n"
-"แต่ *ไม่มีการรับประกันใดๆ* ไม่มีแม้การรับประกัน *อรรถประโยชน์เชิงพาณิชย์*\n"
-"หรือ *ความเหมาะสมสำหรับวัตถุประสงค์เฉพาะกิจใดๆ* กรุณาอ่าน\n"
-"GNU General Public License เพื่อดูรายละเอียดเพิ่มเติม\n"
-"\n"
-"คุณควรจะได้รับสำเนาของ GNU General Public License มาพร้อมกับ Gcalctool\n"
-"ถ้าคุณไม่ได้รับ กรุณาติดต่อไปที่ Free Software Foundation, Inc., \n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 The Gcalctool authors"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "เครื่องคิดเลข พร้อมด้วยโหมดการเงินและวิทยาศาสตร์"
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "พื้นฐาน"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "พิเศษ"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "การเงิน"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "การเขียนโปรแกรม"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "โหมด"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "เกี่ยวกับเครื่องคิดเลข"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "วิธีใช้"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "ออก"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
