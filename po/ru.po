@@ -17,22 +17,23 @@
 # Yuri Kozlov <yuray@komyakino.ru>, 2010.
 # Dmitriy Kodanev <dkodanev@gmail.com>, 2011.
 # Stas Solovey <whats_up@tut.by>, 2011.
+# Yuri Myasoedov <omerta13@yandex.ru>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-07-12 10:42+0000\n"
-"PO-Revision-Date: 2012-07-03 12:29+0400\n"
-"Last-Translator: Aleksej Kabanov <ak099@mail.ru>\n"
-"Language-Team: Russian <gnome-cyr@gnome.org>\n"
+"POT-Creation-Date: 2012-10-05 05:01+0000\n"
+"PO-Revision-Date: 2012-10-12 23:36+0400\n"
+"Last-Translator: Yuri Myasoedov <omerta13@yandex.ru>\n"
+"Language-Team: русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "X-Generator: KBabel 1.11.4\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
@@ -443,8 +444,8 @@ msgid "64-bit"
 msgstr "64 бита"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Параметры"
 
@@ -474,7 +475,7 @@ msgid "Show _thousands separators"
 msgstr "Показывать разделители _тысяч"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "Калькулятор"
 
@@ -825,7 +826,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Ошибка: количество периодов, должно быть положительным"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -835,7 +836,7 @@ msgstr ""
 "  %s — Произвести математические вычисления"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -851,7 +852,7 @@ msgstr ""
 "  --help-gtk                      Показать опции GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -875,7 +876,7 @@ msgstr ""
 "  --g-fatal-warnings              Сделать все предупреждения фатальными"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -885,16 +886,112 @@ msgstr ""
 "  -s, --solve <выражение>          Вычислить заданное выражение"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Аргументу --solve требуется выражение  для вычисления"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Неизвестный аргумент «%s»"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "Не удалось открыть файл справки"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Andrew W. Nosenko <awn@bcs.zp.ua>, 2003.\n"
+"Leonid Kanter <leon@asplinux.ru>, 2005, 2006.\n"
+"Artur G. Sibagatullin <ArtSib@mail.ru>, 2010.\n"
+"Alexander Saprykin <xelfium@gmail.com>, 2010.\n"
+"Yuri Kozlov <yuray@komyakino.ru>, 2010.\n"
+"Dmitriy Kodanev <dkodanev@gmail.com>, 2011.\n"
+"Stas Solovey <whats_up@tut.by>, 2011."
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Gcalctool — свободное программное обеспечение; вы можете\n"
+"распространять его и/или модифицировать на условиях Универсальной \n"
+"общественной лицензии GNU версии 2 либо любой более поздней.\n"
+"\n"
+"Gcalctool распространяется в надежде на то, что он будет полезен,\n"
+"но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ; даже без гарантий КОММЕРЧЕСКОЙ\n"
+"ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ. Для получения\n"
+"дополнительных сведений обратитесь к Универсальной общественной\n"
+"лицензии GNU.\n"
+"\n"
+"Вы должны были получить копию лицензии GNU c программой Gcalctool;\n"
+"если лицензия не была получена, известите об этом Фонд свободного\n"
+"программного обеспечения по адресу: Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Калькулятор Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 авторы Gcalctool"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "Калькулятор с финансовым и научным режимами."
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "Простой"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "Расширенный"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "Финансовый"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "Программирование"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "Режим"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "О программе"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "Справка"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "Выйти"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1252,33 +1349,41 @@ msgstr "Функция «%s» не определена"
 msgid "Unknown conversion"
 msgstr "Неизвестное преобразование"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, c-format
+#| msgid "Malformed expression"
+msgid "Malformed expression at token '%s'"
+msgstr "Некорректное выражение: лексема «%s»"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "Некорректное выражение"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
 msgstr "Вычисление"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "Для разложения на простые множители необходимо целое число"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "Отсутствует разумное значение для побитового сдвига"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "Значение не является целым числом"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1328,102 +1433,6 @@ msgstr "Инженерный"
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "Показывать %d десятичных _разрядов"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "Не удалось открыть файл справки"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Andrew W. Nosenko <awn@bcs.zp.ua>, 2003.\n"
-"Leonid Kanter <leon@asplinux.ru>, 2005, 2006.\n"
-"Artur G. Sibagatullin <ArtSib@mail.ru>, 2010.\n"
-"Alexander Saprykin <xelfium@gmail.com>, 2010.\n"
-"Yuri Kozlov <yuray@komyakino.ru>, 2010.\n"
-"Dmitriy Kodanev <dkodanev@gmail.com>, 2011.\n"
-"Stas Solovey <whats_up@tut.by>, 2011."
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Gcalctool — свободное программное обеспечение; вы можете\n"
-"распространять его и/или модифицировать на условиях Универсальной \n"
-"общественной лицензии GNU версии 2 либо любой более поздней.\n"
-"\n"
-"Gcalctool распространяется в надежде на то, что он будет полезен,\n"
-"но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ; даже без гарантий КОММЕРЧЕСКОЙ\n"
-"ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ КОНКРЕТНОЙ ЦЕЛИ. Для получения\n"
-"дополнительных сведений обратитесь к Универсальной общественной\n"
-"лицензии GNU.\n"
-"\n"
-"Вы должны были получить копию лицензии GNU c программой Gcalctool;\n"
-"если лицензия не была получена, известите об этом Фонд свободного\n"
-"программного обеспечения по адресу: Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Калькулятор Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 авторы Gcalctool"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "Калькулятор с финансовым и научным режимами."
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "Простой"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "Расширенный"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "Финансовый"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "Программирование"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "Режим"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "О программе"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "Справка"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "Выйти"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
