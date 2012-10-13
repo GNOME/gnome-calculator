@@ -18,8 +18,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-07-12 10:42+0000\n"
-"PO-Revision-Date: 2012-09-10 03:13+0900\n"
+"POT-Creation-Date: 2012-10-05 05:01+0000\n"
+"PO-Revision-Date: 2012-10-13 19:01+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: Korean\n"
@@ -430,8 +430,8 @@ msgid "64-bit"
 msgstr "64비트"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "기본 설정"
 
@@ -461,7 +461,7 @@ msgid "Show _thousands separators"
 msgstr "천단위 자리수 구분 표시(_T)"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "계산기"
 
@@ -812,7 +812,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "오류: 기간은 0보다 커야 합니다"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -822,7 +822,7 @@ msgstr ""
 "  %s — 수학 계산을 합니다"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -838,7 +838,7 @@ msgstr ""
 "  --help-gtk                      GTK+ 옵션을 표시합니다"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -860,7 +860,7 @@ msgstr ""
 "  --g-fatal-warnings              모든 경고를 치명적으로 취급"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -870,16 +870,106 @@ msgstr ""
 "  -s, --solve <equation>          주어진 식을 풉니다"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "--solve 옵션에는 풀 식이 필요합니다"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "알 수 없는 인수 '%s'"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "도움말 파일을 열 수 없습니다"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"차영호 <ganadist at gmail dot com>\n"
+"류창우 <cwryu@debian.org>"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 The Gcalctool authors"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "재무 및 과학 모드가 지원되는 계산기."
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "기본"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "고급"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "재무"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "프로그래밍"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "모드"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "계산기 정보"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "도움말"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "끝내기"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1234,34 +1324,41 @@ msgstr "'%s' 함수가 정의되지 않았습니다"
 msgid "Unknown conversion"
 msgstr "변환 불가"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, c-format
+msgid "Malformed expression at token '%s'"
+msgstr "수식 형식이 틀렸습니다 (토큰 '%s')"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "수식 형식이 틀렸습니다"
 
 # status
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
 msgstr "계산 중"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "소인수 분해에는 정수 값이 필요합니다"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "비트 쉬프트의 값이 올바르지 않습니다"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "표시 중인 값이 정수가 아닙니다"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1311,96 +1408,6 @@ msgstr "공학"
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "%d자리 십진수 표시(_P)"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "도움말 파일을 열 수 없습니다"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"차영호 <ganadist at gmail dot com>\n"
-"류창우 <cwryu@debian.org>"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 The Gcalctool authors"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "재무 및 과학 모드가 지원되는 계산기."
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "기본"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "고급"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "재무"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "프로그래밍"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "모드"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "계산기 정보"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "도움말"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "끝내기"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
