@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-08-17 08:37+0000\n"
-"PO-Revision-Date: 2012-04-27 12:23+0200\n"
+"POT-Creation-Date: 2012-10-05 05:01+0000\n"
+"PO-Revision-Date: 2012-10-13 12:18+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Español <gnome-es-list@gnome.org>\n"
+"Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Gtranslator 2.91.5\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Accessible name for the inverse button
@@ -434,8 +434,8 @@ msgid "64-bit"
 msgstr "64-bit"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -465,7 +465,7 @@ msgid "Show _thousands separators"
 msgstr "Mostrar separador de _miles"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -819,7 +819,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Error: el número de períodos debe ser positivo"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -829,7 +829,7 @@ msgstr ""
 "  %s — Realizar cálculos matemáticos"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -845,7 +845,7 @@ msgstr ""
 "  -help-gtk                       Mostrar las opciones de GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -870,7 +870,7 @@ msgstr ""
 "  --g-fatal-warnings              Hacer que todos los avisos sean fatales"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -880,16 +880,109 @@ msgstr ""
 "  -s, --solve <ecuación>          Resolver la ecuación proporcionada"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Parámetro --resolver requiere una ecuación para resolver"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Parámetro «%s» desconocido"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "No se pudo abrir el archivo de ayuda"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Jorge González <jorgegonz@svn.gnome.org>, 2007-2009\n"
+"Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006\n"
+"Germán Poo-Caamaño <gpoo@ubiobio.cl>, 2003"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"La calculadora es software libre; puede redistribuirlo y/o modificarlo "
+"bajo \n"
+"los términos de la Licencia Pública General GNU tal como se publica por \n"
+"la Free Software Foundation; ya sea la versión 2 de la Licencia, o \n"
+"(a su elección) cualquier versión posterior.\n"
+"\n"
+"La calculadora se distribuye con la esperanza de que le sea útil, pero SIN \n"
+"NINGUNA GARANTÍA; sin incluso la garantía implícita de MERCANTILIDAD o \n"
+"IDONEIDAD PARA UN PROPÓSITO PARTICULAR. Vea la Licencia Pública \n"
+"General GNU para más detalles.\n"
+"\n"
+"Debería haber recibido una copia de la Licencia Pública General GNU\n"
+"junto con la Calculadora; de lo contrario escriba a la Free Software "
+"Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, EE. UU."
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 Los autores de Gcalctool"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "Calculadora con modos científico y financiero."
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "Básico"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "Financiero"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "Programador"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "Modo"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "Acerca de Calculadora"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "Ayuda"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "Salir"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1245,33 +1338,41 @@ msgstr "La función «%s» no está definida"
 msgid "Unknown conversion"
 msgstr "Conversión desconocida"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, c-format
+#| msgid "Malformed expression"
+msgid "Malformed expression at token '%s'"
+msgstr "Expresión mal formada en el valor «%s»"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "Expresión malformada"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
 msgstr "Calculando"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "Se necesita un entero para factorizar"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "No hay un valor bueno para un desplazamiento de bits"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "El valor mostrado no es un entero"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1321,99 +1422,6 @@ msgstr "Ingeniería"
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "Mostrar %d deci_males"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "No se pudo abrir el archivo de ayuda"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Jorge González <jorgegonz@svn.gnome.org>, 2007-2009\n"
-"Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006\n"
-"Germán Poo-Caamaño <gpoo@ubiobio.cl>, 2003"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"La calculadora es software libre; puede redistribuirlo y/o modificarlo "
-"bajo \n"
-"los términos de la Licencia Pública General GNU tal como se publica por \n"
-"la Free Software Foundation; ya sea la versión 2 de la Licencia, o \n"
-"(a su elección) cualquier versión posterior.\n"
-"\n"
-"La calculadora se distribuye con la esperanza de que le sea útil, pero SIN \n"
-"NINGUNA GARANTÍA; sin incluso la garantía implícita de MERCANTILIDAD o \n"
-"IDONEIDAD PARA UN PROPÓSITO PARTICULAR. Vea la Licencia Pública \n"
-"General GNU para más detalles.\n"
-"\n"
-"Debería haber recibido una copia de la Licencia Pública General GNU\n"
-"junto con la Calculadora; de lo contrario escriba a la Free Software "
-"Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, EE. UU."
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 Los autores de Gcalctool"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "Calculadora con modos científico y financiero."
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "Básico"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "Avanzado"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "Financiero"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "Programador"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "Modo"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "Acerca de Calculadora"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "Ayuda"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "Salir"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
