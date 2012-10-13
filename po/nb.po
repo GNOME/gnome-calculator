@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 6.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-30 11:02+0200\n"
-"PO-Revision-Date: 2012-04-30 11:03+0200\n"
+"POT-Creation-Date: 2012-10-13 12:30+0200\n"
+"PO-Revision-Date: 2012-10-13 12:31+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -64,8 +64,9 @@ msgstr "Minne"
 
 #. The label on the memory button
 #: ../data/buttons-advanced.ui.h:18 ../data/buttons-financial.ui.h:74
-msgid "<i>x</i>"
-msgstr "<i>x</i>"
+#: ../data/buttons-programming.ui.h:14
+msgid "x"
+msgstr "x"
 
 #. Accessible name for the absolute value button
 #: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:4
@@ -345,11 +346,6 @@ msgstr "Bet"
 msgid "Gpm"
 msgstr ""
 
-#. The label on the memory button
-#: ../data/buttons-programming.ui.h:14
-msgid "x"
-msgstr "x"
-
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:240
@@ -404,8 +400,8 @@ msgid "64-bit"
 msgstr "64-bit"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Brukervalg"
 
@@ -435,7 +431,7 @@ msgid "Show _thousands separators"
 msgstr "Vis _tusenskilletegn"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "Kalkulator"
 
@@ -786,7 +782,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Feil: antall perioder må være et positivt tall"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -796,7 +792,7 @@ msgstr ""
 "  %s - Utfør matematiske beregninger"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -812,7 +808,7 @@ msgstr ""
 "  --help-gtk                      Vis alternativer for GTK+"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -827,7 +823,7 @@ msgid ""
 msgstr ""
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -837,16 +833,106 @@ msgstr ""
 "  -s, --solve <likning>           Løs gitt likning"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "Argumentet --solve krever en likning å løse"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Ukjent argument «%s»"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "Kan ikke åpne hjelpfil"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Kjartan Maraas <kmaraas@gnome.org>\n"
+"Espen Stefansen <libbe AT stefansen DOT net>\n"
+"Eskild Hustvedt <i18n@zerodogg.org>"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Gcalctool er fri programvare. Du kan redistribuere og/eller endre programmet "
+"under betingelsene gitt i GNU General Public License som utgitt av Free "
+"Software Foundation; enten versjon 2 av lisensen, eller (hvis du ønsker det) "
+"enhver senere versjon.\n"
+"\n"
+"Gcalctool distribueres i håp om at programmet er nyttig, men uten NOEN "
+"GARANTI, ikke engang implisitt garanti om at det er SALGBART eller PASSER ET "
+"BESTEMT FORMÅL. Se GNU General Public License for detaljer.\n"
+"\n"
+"Du skal ha mottatt en kopi av GNU General Public License sammen med dette "
+"programmet. Hvis dette ikke er tilfelle, kan du skrive til Free Software "
+"Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986-2010 Utviklerene av Gcalctool"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "Kalkulator med finans- og vitenskapelig modus."
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "Grunnleggende"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "Avansert"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "Finansiell"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "Programmering"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "Modus"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "Om Kalkulator"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "Hjelp"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "Avslutt"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1167,207 +1253,124 @@ msgid "Switch conversion units"
 msgstr "Bytt konverteringsenheter"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:459
+#: ../src/math-equation.c:465
 msgid "No undo history"
 msgstr "Ingen angrehistorikk"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:486
+#: ../src/math-equation.c:492
 msgid "No redo history"
 msgstr "Ingen gjenopprettingshistorikk"
 
-#: ../src/math-equation.c:944
+#: ../src/math-equation.c:1036
 msgid "No sane value to store"
 msgstr "Ingen fornuftige verdier å lagre"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1226
+#: ../src/math-equation.c:1319
 msgid "Overflow. Try a bigger word size"
 msgstr "Overflyt. Prøv høyere ordstørrelse"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1231
+#: ../src/math-equation.c:1324
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Ukjent variabel «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1236
+#: ../src/math-equation.c:1331
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funksjon «%s» er ikke definert"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1241
+#: ../src/math-equation.c:1338
 msgid "Unknown conversion"
 msgstr "Ukjent konvertering"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1347
+#, c-format
+msgid "Malformed expression at token '%s'"
+msgstr "Feilutformet uttrykk ved tegn «%s»"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1353 ../src/math-equation.c:1358
 msgid "Malformed expression"
 msgstr "Feilutformet uttrykk"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1372
 msgid "Calculating"
 msgstr "Beregner"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1489
 msgid "Need an integer to factorize"
 msgstr "Trenger et heltall for å faktorisere"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1561
 msgid "No sane value to bitwise shift"
 msgstr "Ingen verdi å bruke til bitvis skift"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1592
 msgid "Displayed value not an integer"
 msgstr "Vist verdi er ikke et heltall"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:2043
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,Æ,Ø,Å"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:236
+#: ../src/math-preferences.c:235
 msgid "_Close"
 msgstr "_Lukk"
 
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:246 ../src/unit-manager.c:54
+#: ../src/math-preferences.c:245 ../src/unit-manager.c:54
 msgid "Degrees"
 msgstr "Grader"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:250 ../src/unit-manager.c:55
+#: ../src/math-preferences.c:249 ../src/unit-manager.c:55
 msgid "Radians"
 msgstr "Radianer"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:254 ../src/unit-manager.c:56
+#: ../src/math-preferences.c:253 ../src/unit-manager.c:56
 msgid "Gradians"
 msgstr "Gradianer"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:264
+#: ../src/math-preferences.c:263
 msgid "Automatic"
 msgstr "Automatisk"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:268
+#: ../src/math-preferences.c:267
 msgid "Fixed"
 msgstr "Fast"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:271
 msgid "Scientific"
 msgstr "Vitenskapelig"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:275
 msgid "Engineering"
 msgstr "Ingeniør"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:287
+#: ../src/math-preferences.c:286
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "Vis %d desimal_plasser"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "Kan ikke åpne hjelpfil"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Kjartan Maraas <kmaraas@gnome.org>\n"
-"Espen Stefansen <libbe AT stefansen DOT net>\n"
-"Eskild Hustvedt <i18n@zerodogg.org>"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Gcalctool er fri programvare. Du kan redistribuere og/eller endre programmet "
-"under betingelsene gitt i GNU General Public License som utgitt av Free "
-"Software Foundation; enten versjon 2 av lisensen, eller (hvis du ønsker det) "
-"enhver senere versjon.\n"
-"\n"
-"Gcalctool distribueres i håp om at programmet er nyttig, men uten NOEN "
-"GARANTI, ikke engang implisitt garanti om at det er SALGBART eller PASSER ET "
-"BESTEMT FORMÅL. Se GNU General Public License for detaljer.\n"
-"\n"
-"Du skal ha mottatt en kopi av GNU General Public License sammen med dette "
-"programmet. Hvis dette ikke er tilfelle, kan du skrive til Free Software "
-"Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986-2010 Utviklerene av Gcalctool"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "Kalkulator med finans- og vitenskapelig modus."
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "Grunnleggende"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "Avansert"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "Finansiell"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "Programmering"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "Modus"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "Om Kalkulator"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "Hjelp"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "Avslutt"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
@@ -2202,3 +2205,6 @@ msgstr "Valuta"
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
+
+#~ msgid "<i>x</i>"
+#~ msgstr "<i>x</i>"
