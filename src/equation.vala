@@ -68,7 +68,7 @@ public int super_atoi (string data)
     return sign * value;
 }
 
-string mp_error_code_to_string (ErrorCode error_code)
+public string mp_error_code_to_string (ErrorCode error_code)
 {
     switch (error_code)
     {

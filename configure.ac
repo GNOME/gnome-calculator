@@ -1,19 +1,15 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(configure.ac)
-AM_INIT_AUTOMAKE(gcalctool, 6.6.0)
-AM_CONFIG_HEADER(config.h)
+AC_INIT(gcalctool, 6.7.0)
+AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
+AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE
 GNOME_MAINTAINER_MODE_DEFINES
-m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
-AC_ISC_POSIX
-AC_PROG_CC
-AM_PROG_CC_STDC
-AC_HEADER_STDC
+AM_PROG_VALAC([0.16.0])
+AM_PROG_CC_C_O
 
 GLIB_GSETTINGS
-GNOME_COMPILE_WARNINGS(maximum)
 
 dnl ###########################################################################
 dnl Dependencies
@@ -36,11 +32,6 @@ PKG_CHECK_MODULES(GCALCCMD, [
     gio-2.0 >= $GIO_REQUIRED
     libxml-2.0
 ])
-
-GLIB_MKENUMS=`$PKG_CONFIG --variable=glib_mkenums glib-2.0`
-AC_SUBST(GLIB_MKENUMS)
-
-AC_CHECK_LIB(m, log)
 
 dnl ###########################################################################
 dnl Internationalization

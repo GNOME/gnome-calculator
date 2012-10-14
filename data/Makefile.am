@@ -1,6 +1,5 @@
 uidir = $(datadir)/gcalctool
 ui_DATA = \
-	preferences.ui \
 	buttons-basic.ui \
 	buttons-advanced.ui \
 	buttons-financial.ui \
