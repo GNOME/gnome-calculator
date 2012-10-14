@@ -147,7 +147,7 @@ public class PreLexer
         if (c == '"')
             return LexerTokenType.PL_SECOND;
 
-        if (c.isalpha ())
+        if (c.isalpha () || c == '_')
             return LexerTokenType.PL_LETTER;
 
         if (c == '∧')
