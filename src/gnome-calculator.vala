@@ -9,7 +9,7 @@
  * license.
  */
 
-public class GCalctool : Gtk.Application
+public class Calculator : Gtk.Application
 {
     private Settings settings;
     private MathWindow window;
@@ -28,7 +28,7 @@ public class GCalctool : Gtk.Application
         { "quit", quit_cb, null, null, null },
     };
     
-    public GCalctool ()
+    public Calculator ()
     {
         Object (flags : ApplicationFlags.NON_UNIQUE);
     }
@@ -37,7 +37,7 @@ public class GCalctool : Gtk.Application
     {
         base.startup ();
 
-        settings = new Settings ("org.gnome.gcalctool");
+        settings = new Settings ("org.gnome.calculator");
         var accuracy = settings.get_int ("accuracy");
         var word_size = settings.get_int ("word-size");
         var number_base = settings.get_int ("base");
@@ -158,25 +158,25 @@ public class GCalctool : Gtk.Application
 
     private static void usage (string progname, bool show_application, bool show_gtk)
     {
-        stderr.printf (/* Description on how to use gcalctool displayed on command-line */
+        stderr.printf (/* Description on how to use gnome-calculator displayed on command-line */
                        _("Usage:\n  %s — Perform mathematical calculations"), progname);
 
         stderr.printf ("\n\n");
 
-        stderr.printf (/* Description on gcalctool command-line help options displayed on command-line */
+        stderr.printf (/* Description on gnome-calculator command-line help options displayed on command-line */
                        _("Help Options:\n  -v, --version                   Show release version\n  -h, -?, --help                  Show help options\n  --help-all                      Show all help options\n  --help-gtk                      Show GTK+ options"));
         stderr.printf ("\n\n");
 
         if (show_gtk)
         {
-            stderr.printf (/* Description on gcalctool command-line GTK+ options displayed on command-line */
+            stderr.printf (/* Description on gnome-calculator command-line GTK+ options displayed on command-line */
                            _("GTK+ Options:\n  --class=CLASS                   Program class as used by the window manager\n  --name=NAME                     Program name as used by the window manager\n  --screen=SCREEN                 X screen to use\n  --sync                          Make X calls synchronous\n  --gtk-module=MODULES            Load additional GTK+ modules\n  --g-fatal-warnings              Make all warnings fatal"));
             stderr.printf ("\n\n");
         }
 
         if (show_application)
         {
-            stderr.printf (/* Description on gcalctool application options displayed on command-line */
+            stderr.printf (/* Description on gnome-calculator application options displayed on command-line */
                            _("Application Options:\n  -s, --solve <equation>          Solve the given equation"));
             stderr.printf ("\n\n");
         }
@@ -313,7 +313,7 @@ public class GCalctool : Gtk.Application
     {
         try
         {
-            Gtk.show_uri (window.get_screen (), "help:gcalctool", Gtk.get_current_event_time ());
+            Gtk.show_uri (window.get_screen (), "help:gnome-calculator", Gtk.get_current_event_time ());
         }
         catch (Error e)
         {
@@ -350,17 +350,15 @@ public class GCalctool : Gtk.Application
         /* The translator credits. Please translate this with your name (s). */
         var translator_credits = _("translator-credits");
 
-        /* The license this software is under (GPL2+) */
-        var license = _("Gcalctool is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nGcalctool is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA");
+        var license = "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA";
 
         Gtk.show_about_dialog (window,
                                "name",
                                /* Program name in the about dialog */
-                               _("Gcalctool"),
+                               _("Calculator"),
                                "version", VERSION,
                                "copyright",
-                               /* Copyright notice in the about dialog */
-                               _("\xc2\xa9 1986–2010 The Gcalctool authors"),
+                               "\xc2\xa9 1986–2012 The Calculator authors",
                                "license", license,
                                "comments",
                                /* Short description in the about dialog */
@@ -393,7 +391,7 @@ public class GCalctool : Gtk.Application
 
         Gtk.Window.set_default_icon_name ("accessories-calculator");
 
-        var app = new GCalctool ();
+        var app = new Calculator ();
 
         return app.run (args);
     }

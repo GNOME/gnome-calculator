@@ -116,12 +116,12 @@ public class CurrencyManager : Object
 
     private string get_imf_rate_filepath ()
     {
-        return Path.build_filename (Environment.get_user_cache_dir (), "gcalctool", "rms_five.xls");
+        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "rms_five.xls");
     }
 
     private string get_ecb_rate_filepath ()
     {
-        return Path.build_filename (Environment.get_user_cache_dir (), "gcalctool", "eurofxref-daily.xml");
+        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "eurofxref-daily.xml");
     }
 
     private Currency add_currency (string short_name)

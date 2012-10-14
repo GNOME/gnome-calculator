@@ -17,4 +17,4 @@ DISTCLEANFILES = \
 
 EXTRA_DIST = \
 	autogen.sh \
-	gcalctool.doap
+	gnome-calculator.doap

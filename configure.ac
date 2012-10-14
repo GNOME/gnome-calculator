@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(gcalctool, 6.7.0)
+AC_INIT(gnome-calculator, 3.7.0)
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE
@@ -19,7 +19,7 @@ GLIB_REQUIRED=2.31
 GIO_REQUIRED=2.25.10
 GTK_REQUIRED=3.0
 
-PKG_CHECK_MODULES(GCALCTOOL, [
+PKG_CHECK_MODULES(GNOME_CALCULATOR, [
     gtk+-3.0 >= $GTK_REQUIRED
     glib-2.0 >= $GLIB_REQUIRED
     gio-2.0 >= $GIO_REQUIRED
@@ -38,7 +38,7 @@ dnl Internationalization
 dnl ###########################################################################
 
 IT_PROG_INTLTOOL([0.35.0])
-AC_SUBST(GETTEXT_PACKAGE, gcalctool)
+AC_SUBST(GETTEXT_PACKAGE, gnome-calculator)
 
 dnl ###########################################################################
 dnl Documentation

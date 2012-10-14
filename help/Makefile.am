@@ -1,5 +1,5 @@
 @YELP_HELP_RULES@
-HELP_ID = gcalctool
+HELP_ID = gnome-calculator
 HELP_FILES = absolute.page \
              base.page \
              boolean.page \

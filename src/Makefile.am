@@ -1,19 +1,19 @@
-bin_PROGRAMS = gcalctool gcalccmd
+bin_PROGRAMS = gnome-calculator gcalccmd
 noinst_PROGRAMS = test-number test-equation
 
 TESTS = test-number test-equation
 
 INCLUDES = \
-	-DUI_DIR=\""$(datadir)/gcalctool"\" \
+	-DUI_DIR=\""$(datadir)/gnome-calculator"\" \
 	-DVERSION=\""$(VERSION)"\" \
 	-DLOCALE_DIR=\""$(localedir)"\" \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	$(WARN_CFLAGS) \
-	$(GCALCTOOL_CFLAGS)
+	$(GNOME_CALCULATOR_CFLAGS)
 
-gcalctool_SOURCES = \
+gnome_calculator_SOURCES = \
 	config.vapi \
-	gcalctool.vala \
+	gnome-calculator.vala \
 	currency.vala \
 	equation.vala \
 	equation-lexer.vala \
@@ -31,14 +31,14 @@ gcalctool_SOURCES = \
 	serializer.vala \
   	unit.vala
 
-gcalctool_VALAFLAGS = \
+gnome_calculator_VALAFLAGS = \
 	--target-glib 2.32 \
 	--pkg posix \
 	--pkg gtk+-3.0 \
 	--pkg libxml-2.0
 
-gcalctool_LDADD = \
-	$(GCALCTOOL_LIBS) \
+gnome_calculator_LDADD = \
+	$(GNOME_CALCULATOR_LIBS) \
 	-lm
 
 gcalccmd_SOURCES = \
@@ -99,18 +99,5 @@ test_equation_LDADD = \
 	$(GCALCCMD_LIBS) \
 	-lm
 
-# Install a symlink between gcalctool and gnome-calculator
-install-exec-hook:
-	test -e "$(DESTDIR)$(bindir)/gnome-calculator" \
-	|| (cd "$(DESTDIR)$(bindir)" && ln -s gcalctool gnome-calculator)
-
-# Remove the symlink between gcalctool and gnome-calculator
-uninstall-local:
-	test -h "$(DESTDIR)$(bindir)/gnome-calculator" \
-	&& rm -f "$(DESTDIR)$(bindir)/gnome-calculator"
-
 DISTCLEANFILES = \
 	Makefile.in
-
-test: gcalctool
-	./gcalctool -u

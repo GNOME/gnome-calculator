@@ -27,7 +27,7 @@ public class MathWindow : Gtk.ApplicationWindow
         _equation = equation;
         set_title (/* Title of main window */
                    _("Calculator"));
-        role = "gcalctool";
+        role = "gnome-calculator";
         resizable = false;
 
         var main_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);

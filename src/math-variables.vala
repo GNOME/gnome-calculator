@@ -17,7 +17,7 @@ public class MathVariables : Object
     public MathVariables ()
     {
         registers = new HashTable <string, Number?> (str_hash, str_equal);
-        file_name = Path.build_filename (Environment.get_user_data_dir (), "gcalctool", "registers");
+        file_name = Path.build_filename (Environment.get_user_data_dir (), "gnome-calculator", "registers");
         serializer = new Serializer (DisplayFormat.SCIENTIFIC, 10, 50);
         serializer.set_radix ('.');
         registers_load ();

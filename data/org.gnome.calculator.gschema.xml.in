@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <enum id="org.gnome.gcalctool.NumberFormat">
+  <enum id="org.gnome.calculator.NumberFormat">
     <value value="0" nick="automatic"/>
     <value value="1" nick="fixed"/>
     <value value="2" nick="scientific"/>
     <value value="3" nick="engineering"/>
   </enum>
-  <enum id="org.gnome.gcalctool.ButtonMode">
+  <enum id="org.gnome.calculator.ButtonMode">
     <value value="0" nick="basic"/>
     <value value="1" nick="advanced"/>
     <value value="2" nick="financial"/>
     <value value="3" nick="programming"/>
   </enum>
-  <enum id="org.gnome.gcalctool.AngleUnit">
+  <enum id="org.gnome.calculator.AngleUnit">
     <value value="0" nick="radians"/>
     <value value="1" nick="degrees"/>
     <value value="2" nick="gradians"/>
   </enum>
 
-  <schema path="/org/gnome/gcalctool/" id="org.gnome.gcalctool" gettext-domain="gcalctool">
+  <schema path="/org/gnome/calculator/" id="org.gnome.calculator" gettext-domain="calculator">
     <key type="i" name="accuracy">
       <default>9</default>
       <range min="0" max="9"/>
@@ -47,17 +47,17 @@
       <_summary>Show Trailing Zeroes</_summary>
       <_description>Indicates whether any trailing zeroes after the  numeric point should be shown in the display value.</_description>
     </key>
-    <key name="number-format" enum="org.gnome.gcalctool.NumberFormat">
+    <key name="number-format" enum="org.gnome.calculator.NumberFormat">
       <default>'automatic'</default>
       <_summary>Number format</_summary>
       <_description>The format to display numbers in</_description>
     </key>
-    <key name="angle-units" enum="org.gnome.gcalctool.AngleUnit">
+    <key name="angle-units" enum="org.gnome.calculator.AngleUnit">
       <default>'degrees'</default>
       <_summary>Angle units</_summary>
       <_description>The angle units to use</_description>
     </key>
-    <key name="button-mode" enum="org.gnome.gcalctool.ButtonMode">
+    <key name="button-mode" enum="org.gnome.calculator.ButtonMode">
       <default>'basic'</default>
       <_summary>Button mode</_summary>
       <_description>The button mode</_description>
