@@ -38,7 +38,8 @@ gcalctool_VALAFLAGS = \
 	--pkg libxml-2.0
 
 gcalctool_LDADD = \
-	$(GCALCTOOL_LIBS)        
+	$(GCALCTOOL_LIBS) \
+	-lm
 
 gcalccmd_SOURCES = \
 	config.vapi \
