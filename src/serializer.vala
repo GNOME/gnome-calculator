@@ -61,10 +61,35 @@ public class Serializer : Object
         case DisplayFormat.AUTOMATIC:
             int n_digits = 0;
             var s0 = cast_to_string (x, ref n_digits);
-            if (n_digits <= leading_digits)
-                return s0;
-            else
-                return cast_to_exponential_string (x, false, ref n_digits);
+            /* Decide leading digits based on number_base. Support 64 bits in programming mode. */
+            switch (get_base ())
+            {
+                /* 64 digits for binary mode. */
+                case 2:
+                    if (n_digits <= 64)
+                        return s0;
+                    else
+                        return cast_to_exponential_string (x, false, ref n_digits);
+                /* 22 digis for octal mode. */
+                case 8:
+                    if (n_digits <= 22)
+                        return s0;
+                    else
+                        return cast_to_exponential_string (x, false, ref n_digits);
+                /* 16 digits for hexadecimal mode. */
+                case 16:
+                    if(n_digits <= 16)
+                        return s0;
+                    else
+                        return cast_to_exponential_string (x, false, ref n_digits);
+                /* Use default leading_digits for base 10 numbers. */
+                case 10:
+                default:
+                    if (n_digits <= leading_digits)
+                        return s0;
+                    else
+                        return cast_to_exponential_string (x, false, ref n_digits);
+            }
         case DisplayFormat.FIXED:
             int n_digits = 0;
             return cast_to_string (x, ref n_digits);
