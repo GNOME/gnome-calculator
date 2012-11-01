@@ -14,6 +14,8 @@ public class Calculator : Gtk.Application
     private Settings settings;
     private MathWindow window;
     private MathPreferencesDialog preferences_dialog;
+    private static string program_name = null;
+    private static string equation_string = null;
 
     private const ActionEntry[] app_entries =
     {
@@ -106,6 +108,17 @@ public class Calculator : Gtk.Application
         base.activate ();
 
         window.present ();
+        if (equation_string != "" && equation_string != null)
+        {
+            var equations = (equation_string.compress ()).split ("\n",0);
+            for (var i = 0; i < equations.length; i++)
+            {
+                if ((equations [i].strip ()).length > 0)
+                    window.equation.set (equations [i]);
+                else
+                    window.equation.solve ();
+            }
+        }
     }
 
     protected override void shutdown ()
@@ -129,7 +142,7 @@ public class Calculator : Gtk.Application
         settings.set_int ("base", buttons.programming_base);
     }
 
-    private static void solve (string equation)
+    private static void solve (string arg, string equation, void *data)
     {
         var e = new SolveEquation (equation);
         e.base = 10;
@@ -156,83 +169,16 @@ public class Calculator : Gtk.Application
         }
     }
 
-    private static void usage (string progname, bool show_application, bool show_gtk)
+    private static void show_version (string arg, string? val, void *data)
     {
-        stderr.printf (/* Description on how to use gnome-calculator displayed on command-line */
-                       _("Usage:\n  %s — Perform mathematical calculations"), progname);
-
-        stderr.printf ("\n\n");
-
-        stderr.printf (/* Description on gnome-calculator command-line help options displayed on command-line */
-                       _("Help Options:\n  -v, --version                   Show release version\n  -h, -?, --help                  Show help options\n  --help-all                      Show all help options\n  --help-gtk                      Show GTK+ options"));
-        stderr.printf ("\n\n");
-
-        if (show_gtk)
-        {
-            stderr.printf (/* Description on gnome-calculator command-line GTK+ options displayed on command-line */
-                           _("GTK+ Options:\n  --class=CLASS                   Program class as used by the window manager\n  --name=NAME                     Program name as used by the window manager\n  --screen=SCREEN                 X screen to use\n  --sync                          Make X calls synchronous\n  --gtk-module=MODULES            Load additional GTK+ modules\n  --g-fatal-warnings              Make all warnings fatal"));
-            stderr.printf ("\n\n");
-        }
-
-        if (show_application)
-        {
-            stderr.printf (/* Description on gnome-calculator application options displayed on command-line */
-                           _("Application Options:\n  -s, --solve <equation>          Solve the given equation"));
-            stderr.printf ("\n\n");
-        }
+        /* NOTE: Is not translated so can be easily parsed */
+        stderr.printf ("%1$s %2$s\n", program_name, VERSION);
+        Posix.exit (Posix.EXIT_SUCCESS);
     }
 
-    private static void get_options (string[] args)
+    private static void equation (string arg, string val, void *data)
     {
-        var progname = Path.get_basename (args[0]);
-
-        for (var i = 1; i < args.length; i++)
-        {
-            var arg = args[i];
-
-            if (arg == "-v" || arg == "--version")
-            {
-                /* NOTE: Is not translated so can be easily parsed */
-                stderr.printf ("%1$s %2$s\n", progname, VERSION);
-                Posix.exit (Posix.EXIT_SUCCESS);
-            }
-            else if (arg == "-h" || arg == "-?" || arg == "--help")
-            {
-                usage (progname, true, false);
-                Posix.exit (Posix.EXIT_SUCCESS);
-            }
-            else if (arg == "--help-all")
-            {
-                usage (progname, true, true);
-                Posix.exit (Posix.EXIT_SUCCESS);
-            }
-            else if (arg == "--help-gtk")
-            {
-                usage (progname, false, true);
-                Posix.exit (Posix.EXIT_SUCCESS);
-            }
-            else if (arg == "-s" || arg == "--solve")
-            {
-                i++;
-                if (i >= args.length)
-                {
-                    stderr.printf (/* Error printed to stderr when user uses --solve argument without an equation */
-                                   _("Argument --solve requires an equation to solve"));
-                    stderr.printf ("\n");
-                    Posix.exit (Posix.EXIT_FAILURE);
-                }
-                else
-                    solve (args[i]);
-            }
-            else
-            {
-                stderr.printf (/* Error printed to stderr when user provides an unknown command-line argument */
-                               _("Unknown argument '%s'"), arg);
-                stderr.printf ("\n");
-                usage (progname, true, false);
-                Posix.exit (Posix.EXIT_FAILURE);
-            }
-        }
+        equation_string = val;
     }
 
     private void mode_cb ()
@@ -385,9 +331,47 @@ public class Calculator : Gtk.Application
         var now = new DateTime.now_utc ();
         Random.set_seed (now.get_microsecond ());
 
-        get_options (args);
+        program_name = Path.get_basename (args [0]);
 
-        Gtk.init (ref args);
+        var options = new OptionEntry [3];
+
+        options [0] = {"solve",
+                       's',
+                       OptionFlags.IN_MAIN,
+                       OptionArg.CALLBACK,
+                       (void *)solve,
+                       "Solve given equation",
+                       "Equation to solve"};
+
+        options [1] = {"equation",
+                       'e',
+                       OptionFlags.IN_MAIN,
+                       OptionArg.CALLBACK,
+                       (void *)equation,
+                       "Start with given equation",
+                       "Equation to start with"};
+
+        options [2] = {"version",
+                       'v',
+                       OptionFlags.IN_MAIN | OptionFlags.NO_ARG,
+                       OptionArg.CALLBACK,
+                       (void *)show_version,
+                       "Show release version",
+                       null};
+
+        try
+        {
+            if (!Gtk.init_with_args (ref args, "Perform mathematical calculations", options, null))
+            {
+                stderr.printf ("Unable to initialize window.\n");
+                Posix.exit (Posix.EXIT_FAILURE);
+            }
+        }
+        catch (Error e)
+        {
+            stderr.printf ("%s\nUse '%s --help' to display help.\n", e.message, program_name);
+            Posix.exit (Posix.EXIT_FAILURE);
+        }
 
         Gtk.Window.set_default_icon_name ("accessories-calculator");
 
