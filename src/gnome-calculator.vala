@@ -142,45 +142,6 @@ public class Calculator : Gtk.Application
         settings.set_int ("base", buttons.programming_base);
     }
 
-    private static void solve (string arg, string equation, void *data)
-    {
-        var e = new SolveEquation (equation);
-        e.base = 10;
-        e.wordlen = 32;
-        e.angle_units = AngleUnit.DEGREES;
-
-        ErrorCode error;
-        var result = e.parse (out error);
-        if (result != null)
-        {
-            var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
-            stdout.printf ("%s\n", serializer.to_string (result));
-            Posix.exit (0);
-        }
-        else if (error == ErrorCode.MP)
-        {
-            stderr.printf ("Error: %s\n", mp_get_error ());
-            Posix.exit (Posix.EXIT_FAILURE);
-        }
-        else
-        {
-            stderr.printf ("Error: %s\n", mp_error_code_to_string (error));
-            Posix.exit (Posix.EXIT_FAILURE);
-        }
-    }
-
-    private static void show_version (string arg, string? val, void *data)
-    {
-        /* NOTE: Is not translated so can be easily parsed */
-        stderr.printf ("%1$s %2$s\n", program_name, VERSION);
-        Posix.exit (Posix.EXIT_SUCCESS);
-    }
-
-    private static void equation (string arg, string val, void *data)
-    {
-        equation_string = val;
-    }
-
     private void mode_cb ()
     {
         var buttons = window.buttons;
@@ -335,42 +296,78 @@ public class Calculator : Gtk.Application
 
         var options = new OptionEntry [3];
 
-        options [0] = {"solve",
-                       's',
-                       OptionFlags.IN_MAIN,
-                       OptionArg.CALLBACK,
-                       (void *)solve,
-                       "Solve given equation",
-                       "Equation to solve"};
+        string? solve_equation = null;
+        options[0] = {"solve",
+                      's',
+                      0,
+                      OptionArg.STRING,
+                      ref solve_equation,
+                      _("Solve given equation"),
+                      "equation"};
 
-        options [1] = {"equation",
-                       'e',
-                       OptionFlags.IN_MAIN,
-                       OptionArg.CALLBACK,
-                       (void *)equation,
-                       "Start with given equation",
-                       "Equation to start with"};
+        options[1] = {"equation",
+                      'e',
+                      0,
+                      OptionArg.STRING,
+                      ref equation_string,
+                      _("Start with given equation"),
+                      "equation"};
 
-        options [2] = {"version",
-                       'v',
-                       OptionFlags.IN_MAIN | OptionFlags.NO_ARG,
-                       OptionArg.CALLBACK,
-                       (void *)show_version,
-                       "Show release version",
-                       null};
+        bool show_version = false;
+        options[2] = {"version",
+                      'v',
+                      0,
+                      OptionArg.NONE,
+                      ref show_version,
+                      _("Show release version"),
+                      null};
 
         try
         {
             if (!Gtk.init_with_args (ref args, "Perform mathematical calculations", options, null))
             {
-                stderr.printf ("Unable to initialize window.\n");
-                Posix.exit (Posix.EXIT_FAILURE);
+                stderr.printf ("Unable to initialize GTK+\n");
+                return Posix.EXIT_FAILURE;
             }
         }
         catch (Error e)
         {
             stderr.printf ("%s\nUse '%s --help' to display help.\n", e.message, program_name);
-            Posix.exit (Posix.EXIT_FAILURE);
+            return Posix.EXIT_FAILURE;
+        }
+
+        if (show_version)
+        {
+            /* NOTE: Is not translated so can be easily parsed */
+            stderr.printf ("%1$s %2$s\n", program_name, VERSION);
+            return Posix.EXIT_SUCCESS;
+        }
+
+        if (solve_equation != null)
+        {
+            var e = new SolveEquation (solve_equation);
+            e.base = 10;
+            e.wordlen = 32;
+            e.angle_units = AngleUnit.DEGREES;
+
+            ErrorCode error;
+            var result = e.parse (out error);
+            if (result != null)
+            {
+                var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
+                stdout.printf ("%s\n", serializer.to_string (result));
+                return Posix.EXIT_SUCCESS;
+            }
+            else if (error == ErrorCode.MP)
+            {
+                stderr.printf ("Error: %s\n", mp_get_error ());
+                return Posix.EXIT_FAILURE;
+            }
+            else
+            {
+                stderr.printf ("Error: %s\n", mp_error_code_to_string (error));
+                return Posix.EXIT_FAILURE;
+            }
         }
 
         Gtk.Window.set_default_icon_name ("accessories-calculator");
