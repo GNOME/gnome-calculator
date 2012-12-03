@@ -294,7 +294,7 @@ public class Calculator : Gtk.Application
 
         program_name = Path.get_basename (args [0]);
 
-        var options = new OptionEntry [3];
+        var options = new OptionEntry [4];
 
         string? solve_equation = null;
         options[0] = {"solve",
@@ -321,6 +321,8 @@ public class Calculator : Gtk.Application
                       ref show_version,
                       _("Show release version"),
                       null};
+                      
+        options[3] = { null, 0, 0, 0, null, null, null };
 
         try
         {
