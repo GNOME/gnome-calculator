@@ -347,7 +347,11 @@ public class Calculator : Gtk.Application
 
         if (solve_equation != null)
         {
-            var e = new SolveEquation (solve_equation);
+            var tsep_string = nl_langinfo (NLItem.THOUSEP);
+            if (tsep_string == null || tsep_string == "")
+                tsep_string = " ";
+
+            var e = new SolveEquation (solve_equation.replace (tsep_string, ""));
             e.base = 10;
             e.wordlen = 32;
             e.angle_units = AngleUnit.DEGREES;

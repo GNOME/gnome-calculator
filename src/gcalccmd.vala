@@ -15,7 +15,11 @@ private static Serializer result_serializer;
 
 static void solve (string equation)
 {
-    var e = new Equation (equation);
+    var tsep_string = nl_langinfo (NLItem.THOUSEP);
+    if (tsep_string == null || tsep_string == "")
+        tsep_string = " ";
+
+    var e = new Equation (equation.replace (tsep_string, ""));
     e.base = 10;
     e.wordlen = 32;
     e.angle_units = AngleUnit.DEGREES;
