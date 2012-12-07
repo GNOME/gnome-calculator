@@ -1165,9 +1165,9 @@ public class Number
         var z = subtract (t2);
 
         t1 = new Number.integer (0);
-        if ((y.compare (t1) < 0 && z.compare (t1) > 0) || z.compare (t1) < 0)
+        if ((y.compare (t1) < 0 && z.compare (t1) > 0) || (y.compare (t1) > 0 && z.compare (t1) < 0))
             z = z.add (y);
-            
+
         return z;
     }
 
