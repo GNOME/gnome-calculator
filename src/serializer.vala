@@ -118,6 +118,11 @@ public class Serializer : Object
         return tsep_count;
     }
 
+    public void set_thousands_separator_count (int count)
+    {
+        tsep_count = count;
+    }
+
     public void set_show_thousands_separators (bool visible)
     {
         show_tsep = visible;

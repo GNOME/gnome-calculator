@@ -1,5 +1,5 @@
 bin_PROGRAMS = gnome-calculator gcalccmd
-noinst_PROGRAMS = test-number test-equation
+noinst_PROGRAMS = test-number test-equation test-serializer
 
 TESTS = test-number test-equation
 
@@ -100,6 +100,23 @@ test_equation_VALAFLAGS = \
 	--pkg libxml-2.0
 
 test_equation_LDADD = \
+	$(GCALCCMD_LIBS) \
+	-lm
+
+test_serializer_SOURCES = \
+	config.vapi \
+	fixes.vapi \
+	test-serializer.vala \
+	number.vala \
+	serializer.vala
+
+test_serializer_VAFLAGS = \
+	--target-glib 2.32 \
+	--pkg posix \
+	--pkg gio-2.0 \
+	--pkg libxml-2.0
+
+test_serializer_LDADD = \
 	$(GCALCCMD_LIBS) \
 	-lm
 
