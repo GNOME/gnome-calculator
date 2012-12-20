@@ -296,7 +296,6 @@ public class Unit : Object
         var equation = new UnitSolveEquation (function, x);
         equation.base = 10;
         equation.wordlen = 32;
-
         var z = equation.parse ();
         if (z == null)
             warning ("Failed to convert value: %s", function);

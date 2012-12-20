@@ -357,10 +357,12 @@ public class Calculator : Gtk.Application
             e.angle_units = AngleUnit.DEGREES;
 
             ErrorCode error;
-            var result = e.parse (out error);
+            uint representation_base;
+            var result = e.parse (out representation_base, out error);
             if (result != null)
             {
                 var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
+                serializer.set_representation_base (representation_base);
                 stdout.printf ("%s\n", serializer.to_string (result));
                 return Posix.EXIT_SUCCESS;
             }
