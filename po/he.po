@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-05 10:24+0200\n"
-"PO-Revision-Date: 2012-10-05 10:27+0200\n"
+"POT-Creation-Date: 2012-12-26 23:45+0200\n"
+"PO-Revision-Date: 2012-12-26 23:46+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "Language: he\n"
@@ -67,7 +67,7 @@ msgstr "מעריך מדעי"
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16
 #: ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.c:222
+#: ../src/math-buttons.vala:384
 msgid "Memory"
 msgstr "זיכרון"
 
@@ -101,7 +101,7 @@ msgstr "שמירה"
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
 #: ../data/buttons-financial.ui.h:2
-#: ../src/math-buttons.c:246
+#: ../src/math-buttons.vala:400
 msgid "Compounding Term"
 msgstr "משך הצבירה"
 
@@ -158,7 +158,7 @@ msgstr "_תקופה:"
 #. Title of Future Value dialog
 #. Tooltip for the future value button
 #: ../data/buttons-financial.ui.h:24
-#: ../src/math-buttons.c:252
+#: ../src/math-buttons.vala:404
 msgid "Future Value"
 msgstr "ערך עתידי"
 
@@ -180,7 +180,7 @@ msgstr "_מספר התקופות:"
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
 #: ../data/buttons-financial.ui.h:32
-#: ../src/math-buttons.c:273
+#: ../src/math-buttons.vala:418
 msgid "Gross Profit Margin"
 msgstr "שיעור הרווח הגולמי"
 
@@ -197,7 +197,7 @@ msgstr "_שוליים:"
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
 #: ../data/buttons-financial.ui.h:38
-#: ../src/math-buttons.c:270
+#: ../src/math-buttons.vala:416
 msgid "Periodic Payment"
 msgstr "תשלום תקופתי"
 
@@ -219,7 +219,7 @@ msgstr "_תקופה:"
 #. Title of Present Value dialog
 #. Tooltip for the present value button
 #: ../data/buttons-financial.ui.h:46
-#: ../src/math-buttons.c:267
+#: ../src/math-buttons.vala:414
 msgid "Present Value"
 msgstr "ערך נוכחי"
 
@@ -231,7 +231,7 @@ msgstr "חישוב הערך הנוכחי של השקעה המבוססת על ס�
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
 #: ../data/buttons-financial.ui.h:50
-#: ../src/math-buttons.c:264
+#: ../src/math-buttons.vala:412
 msgid "Periodic Interest Rate"
 msgstr "שער ריבית תקופתי"
 
@@ -338,14 +338,14 @@ msgstr "Gpm"
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:16
-#: ../src/math-buttons.c:240
+#: ../src/math-buttons.vala:396
 msgid "Shift Left"
 msgstr "הזזה שמאלה"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
 #: ../data/buttons-programming.ui.h:18
-#: ../src/math-buttons.c:243
+#: ../src/math-buttons.vala:398
 msgid "Shift Right"
 msgstr "הזזה ימינה"
 
@@ -357,7 +357,7 @@ msgstr "הוספת תו"
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
 #: ../data/buttons-programming.ui.h:28
-#: ../src/math-buttons.c:225
+#: ../src/math-buttons.vala:386
 msgid "Insert Character Code"
 msgstr "הוספת קוד תו"
 
@@ -371,483 +371,403 @@ msgstr "_תו:"
 msgid "_Insert"
 msgstr "הו_ספה"
 
-#. Word size combo: 8 bits
-#: ../data/preferences.ui.h:2
-msgid "8-bit"
-msgstr "8-סיביות"
-
-#. Word size combo: 16 bits
-#: ../data/preferences.ui.h:4
-msgid "16-bit"
-msgstr "16-סיביות"
-
-#. Word size combo: 32 bits
-#: ../data/preferences.ui.h:6
-msgid "32-bit"
-msgstr "32-סיביות"
-
-#. Word size combo: 64 bits
-#: ../data/preferences.ui.h:8
-msgid "64-bit"
-msgstr "64-סיביות"
-
-#. Title of preferences dialog
-#: ../data/preferences.ui.h:9
-#: ../src/gcalctool.c:522
-#: ../src/math-preferences.c:231
-msgid "Preferences"
-msgstr "העדפות"
-
-#. Preferences dialog: Label for angle unit combo box
-#: ../data/preferences.ui.h:11
-msgid "_Angle units:"
-msgstr "יחידות ה_זווית:"
-
-#. Preferences dialog: Label for display format combo box
-#: ../data/preferences.ui.h:13
-msgid "Number _Format:"
-msgstr "מבנה ה_ספרות:"
-
-#. Preferences dialog: label for word size combo box
-#: ../data/preferences.ui.h:15
-msgid "Word _size:"
-msgstr "_גודל Word:"
-
-#. Preferences dialog: label for show trailing zeroes check button
-#: ../data/preferences.ui.h:17
-msgid "Show trailing _zeroes"
-msgstr "הצגת אפסים _עוקבים"
-
-#. Preferences dialog: label for show thousands separator check button
-#: ../data/preferences.ui.h:19
-msgid "Show _thousands separators"
-msgstr "הצגת מפריד _אלפים"
-
+#. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1
-#: ../src/math-window.c:243
+#: ../data/gnome-calculator.desktop.in.h:1
+#: ../src/gnome-calculator.vala:265
+#: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "מחשבון"
 
-#: ../data/gcalctool.desktop.in.h:2
+#: ../data/gnome-calculator.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "ביצוע חישובים פשוטים, מדעיים וכלכליים."
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
+#: ../data/org.gnome.calculator.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "Accuracy value"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+#: ../data/org.gnome.calculator.gschema.xml.in.h:2
 msgid "The number of digits displayed after the numeric point"
 msgstr "The number of digits displayed after the numeric point"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+#: ../data/org.gnome.calculator.gschema.xml.in.h:3
 msgid "Word size"
 msgstr "Word size"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+#: ../data/org.gnome.calculator.gschema.xml.in.h:4
 msgid "The size of the words used in bitwise operations"
 msgstr "The size of the words used in bitwise operations"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+#: ../data/org.gnome.calculator.gschema.xml.in.h:5
 msgid "Numeric Base"
 msgstr "Numeric Base"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
+#: ../data/org.gnome.calculator.gschema.xml.in.h:6
 msgid "The numeric base"
 msgstr "The numeric base"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
+#: ../data/org.gnome.calculator.gschema.xml.in.h:7
 msgid "Show Thousands Separators"
 msgstr "Show Thousands Separators"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+#: ../data/org.gnome.calculator.gschema.xml.in.h:8
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Indicates whether thousands separators are shown in large numbers."
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
+#: ../data/org.gnome.calculator.gschema.xml.in.h:9
 msgid "Show Trailing Zeroes"
 msgstr "Show Trailing Zeroes"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
+#: ../data/org.gnome.calculator.gschema.xml.in.h:10
 msgid "Indicates whether any trailing zeroes after the numeric point should be shown in the display value."
 msgstr "Indicates whether any trailing zeroes after the numeric point should be shown in the display value."
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
+#: ../data/org.gnome.calculator.gschema.xml.in.h:11
 msgid "Number format"
 msgstr "Number format"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+#: ../data/org.gnome.calculator.gschema.xml.in.h:12
 msgid "The format to display numbers in"
 msgstr "The format to display numbers in"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+#: ../data/org.gnome.calculator.gschema.xml.in.h:13
 msgid "Angle units"
 msgstr "Angle units"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+#: ../data/org.gnome.calculator.gschema.xml.in.h:14
 msgid "The angle units to use"
 msgstr "The angle units to use"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+#: ../data/org.gnome.calculator.gschema.xml.in.h:15
 msgid "Button mode"
 msgstr "Button mode"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+#: ../data/org.gnome.calculator.gschema.xml.in.h:16
 msgid "The button mode"
 msgstr "The button mode"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+#: ../data/org.gnome.calculator.gschema.xml.in.h:17
 msgid "Source currency"
 msgstr "Source currency"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+#: ../data/org.gnome.calculator.gschema.xml.in.h:18
 msgid "Currency of the current calculation"
 msgstr "Currency of the current calculation"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+#: ../data/org.gnome.calculator.gschema.xml.in.h:19
 msgid "Target currency"
 msgstr "Target currency"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+#: ../data/org.gnome.calculator.gschema.xml.in.h:20
 msgid "Currency to convert the current calculation into"
 msgstr "Currency to convert the current calculation into"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
+#: ../data/org.gnome.calculator.gschema.xml.in.h:21
 msgid "Source units"
 msgstr "יחידות המקור"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+#: ../data/org.gnome.calculator.gschema.xml.in.h:22
 msgid "Units of the current calculation"
 msgstr "Units of the current calculation"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+#: ../data/org.gnome.calculator.gschema.xml.in.h:23
 msgid "Target units"
 msgstr "יחידות היעד"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
+#: ../data/org.gnome.calculator.gschema.xml.in.h:24
 msgid "Units to convert the current calculation into"
 msgstr "Units to convert the current calculation into"
 
-#: ../src/currency-manager.c:30
+#: ../src/currency.vala:28
 msgid "UAE Dirham"
 msgstr "דירהאם של איחוד האמירויות הערביות"
 
-#: ../src/currency-manager.c:31
+#: ../src/currency.vala:29
 msgid "Australian Dollar"
 msgstr "דולר אוסטרלי"
 
-#: ../src/currency-manager.c:32
+#: ../src/currency.vala:30
 msgid "Bulgarian Lev"
 msgstr "לב בולגרי"
 
-#: ../src/currency-manager.c:33
+#: ../src/currency.vala:31
 msgid "Bahraini Dinar"
 msgstr "דינר בחרייני"
 
-#: ../src/currency-manager.c:34
+#: ../src/currency.vala:32
 msgid "Brunei Dollar"
 msgstr "דולר ברוניי"
 
-#: ../src/currency-manager.c:35
+#: ../src/currency.vala:33
 msgid "Brazilian Real"
 msgstr "ריאל ברזילאי"
 
-#: ../src/currency-manager.c:36
+#: ../src/currency.vala:34
 msgid "Botswana Pula"
 msgstr "פולה בוטסואנית"
 
-#: ../src/currency-manager.c:37
+#: ../src/currency.vala:35
 msgid "Canadian Dollar"
 msgstr "דולר קנדי"
 
-#: ../src/currency-manager.c:38
+#: ../src/currency.vala:36
 msgid "CFA Franc"
 msgstr "פרנק הקהילה הצרפתית באפריקה (CFA)"
 
-#: ../src/currency-manager.c:39
+#: ../src/currency.vala:37
 msgid "Swiss Franc"
 msgstr "פרנק שווייצרי"
 
-#: ../src/currency-manager.c:40
+#: ../src/currency.vala:38
 msgid "Chilean Peso"
 msgstr "פסו צ׳יליאני"
 
-#: ../src/currency-manager.c:41
+#: ../src/currency.vala:39
 msgid "Chinese Yuan"
 msgstr "יואן סיני"
 
-#: ../src/currency-manager.c:42
+#: ../src/currency.vala:40
 msgid "Colombian Peso"
 msgstr "פסו קולומביאני"
 
-#: ../src/currency-manager.c:43
+#: ../src/currency.vala:41
 msgid "Czech Koruna"
 msgstr "קורונה צ׳כי"
 
-#: ../src/currency-manager.c:44
+#: ../src/currency.vala:42
 msgid "Danish Krone"
 msgstr "כתר דני"
 
-#: ../src/currency-manager.c:45
+#: ../src/currency.vala:43
 msgid "Algerian Dinar"
 msgstr "דינר אלג׳ירי"
 
-#: ../src/currency-manager.c:46
+#: ../src/currency.vala:44
 msgid "Estonian Kroon"
 msgstr "קרון אסטוני"
 
-#: ../src/currency-manager.c:47
+#: ../src/currency.vala:45
 msgid "Euro"
 msgstr "אירו"
 
-#: ../src/currency-manager.c:48
+#: ../src/currency.vala:46
 msgid "Pound Sterling"
 msgstr "לירה סטרלינג"
 
-#: ../src/currency-manager.c:49
+#: ../src/currency.vala:47
 msgid "Hong Kong Dollar"
 msgstr "דולר הונג קונגי"
 
-#: ../src/currency-manager.c:50
+#: ../src/currency.vala:48
 msgid "Croatian Kuna"
 msgstr "קונה קרואטית"
 
-#: ../src/currency-manager.c:51
+#: ../src/currency.vala:49
 msgid "Hungarian Forint"
 msgstr "פורינט הונגרי"
 
-#: ../src/currency-manager.c:52
+#: ../src/currency.vala:50
 msgid "Indonesian Rupiah"
 msgstr "רופיה אינדונזית"
 
-#: ../src/currency-manager.c:53
+#: ../src/currency.vala:51
 msgid "Israeli New Shekel"
 msgstr "שקל חדש ישראלי"
 
-#: ../src/currency-manager.c:54
+#: ../src/currency.vala:52
 msgid "Indian Rupee"
 msgstr "רופי הודי"
 
-#: ../src/currency-manager.c:55
+#: ../src/currency.vala:53
 msgid "Iranian Rial"
 msgstr "ריאל איראני"
 
-#: ../src/currency-manager.c:56
+#: ../src/currency.vala:54
 msgid "Icelandic Krona"
 msgstr "כתר איסלנדי"
 
-#: ../src/currency-manager.c:57
+#: ../src/currency.vala:55
 msgid "Japanese Yen"
 msgstr "ין יפני"
 
-#: ../src/currency-manager.c:58
+#: ../src/currency.vala:56
 msgid "South Korean Won"
 msgstr "וון דרום קוריאני"
 
-#: ../src/currency-manager.c:59
+#: ../src/currency.vala:57
 msgid "Kuwaiti Dinar"
 msgstr "דינר כוויתי"
 
-#: ../src/currency-manager.c:60
+#: ../src/currency.vala:58
 msgid "Kazakhstani Tenge"
 msgstr "טנגה קזחסטני"
 
-#: ../src/currency-manager.c:61
+#: ../src/currency.vala:59
 msgid "Sri Lankan Rupee"
 msgstr "רופי סרי לנקי"
 
-#: ../src/currency-manager.c:62
+#: ../src/currency.vala:60
 msgid "Lithuanian Litas"
 msgstr "ליטאס ליטאי"
 
-#: ../src/currency-manager.c:63
+#: ../src/currency.vala:61
 msgid "Latvian Lats"
 msgstr "לאטס ליטאי"
 
-#: ../src/currency-manager.c:64
+#: ../src/currency.vala:62
 msgid "Libyan Dinar"
 msgstr "דינר לובי"
 
-#: ../src/currency-manager.c:65
+#: ../src/currency.vala:63
 msgid "Mauritian Rupee"
 msgstr "רופי מאוריטני"
 
-#: ../src/currency-manager.c:66
+#: ../src/currency.vala:64
 msgid "Mexican Peso"
 msgstr "פזו מקסיקני"
 
-#: ../src/currency-manager.c:67
+#: ../src/currency.vala:65
 msgid "Malaysian Ringgit"
 msgstr "רינגיט מלזי"
 
-#: ../src/currency-manager.c:68
+#: ../src/currency.vala:66
 msgid "Norwegian Krone"
 msgstr "כתר נורווגי"
 
-#: ../src/currency-manager.c:69
+#: ../src/currency.vala:67
 msgid "Nepalese Rupee"
 msgstr "רופי נפאלי"
 
-#: ../src/currency-manager.c:70
+#: ../src/currency.vala:68
 msgid "New Zealand Dollar"
 msgstr "דולר ניו־זילנדי"
 
-#: ../src/currency-manager.c:71
+#: ../src/currency.vala:69
 msgid "Omani Rial"
 msgstr "ריאל עומאני"
 
-#: ../src/currency-manager.c:72
+#: ../src/currency.vala:70
 msgid "Peruvian Nuevo Sol"
 msgstr "סול חדש פרואני"
 
-#: ../src/currency-manager.c:73
+#: ../src/currency.vala:71
 msgid "Philippine Peso"
 msgstr "פזו פיליפיני"
 
-#: ../src/currency-manager.c:74
+#: ../src/currency.vala:72
 msgid "Pakistani Rupee"
 msgstr "רופי פקיסטני"
 
-#: ../src/currency-manager.c:75
+#: ../src/currency.vala:73
 msgid "Polish Zloty"
 msgstr "זלוטי פולני"
 
-#: ../src/currency-manager.c:76
+#: ../src/currency.vala:74
 msgid "Qatari Riyal"
 msgstr "ריאל קטארי"
 
-#: ../src/currency-manager.c:77
+#: ../src/currency.vala:75
 msgid "New Romanian Leu"
 msgstr "לאו רומני חדש"
 
-#: ../src/currency-manager.c:78
+#: ../src/currency.vala:76
 msgid "Russian Rouble"
 msgstr "רובל רוסי"
 
-#: ../src/currency-manager.c:79
+#: ../src/currency.vala:77
 msgid "Saudi Riyal"
 msgstr "ריאל סעודי"
 
-#: ../src/currency-manager.c:80
+#: ../src/currency.vala:78
 msgid "Swedish Krona"
 msgstr "כתר שבדי"
 
-#: ../src/currency-manager.c:81
+#: ../src/currency.vala:79
 msgid "Singapore Dollar"
 msgstr "דולר סינגפורי"
 
-#: ../src/currency-manager.c:82
+#: ../src/currency.vala:80
 msgid "Thai Baht"
 msgstr "באט תאילנדי"
 
-#: ../src/currency-manager.c:83
+#: ../src/currency.vala:81
 msgid "Tunisian Dinar"
 msgstr "דינר תוניסאי"
 
-#: ../src/currency-manager.c:84
+#: ../src/currency.vala:82
 msgid "New Turkish Lira"
 msgstr "לירה טורקית חדשה"
 
-#: ../src/currency-manager.c:85
+#: ../src/currency.vala:83
 msgid "T&T Dollar (TTD)"
 msgstr "דולר טרינידדי"
 
-#: ../src/currency-manager.c:86
+#: ../src/currency.vala:84
 msgid "US Dollar"
 msgstr "דולר אמריקאי"
 
-#: ../src/currency-manager.c:87
+#: ../src/currency.vala:85
 msgid "Uruguayan Peso"
 msgstr "פזו אורוגוואי"
 
-#: ../src/currency-manager.c:88
+#: ../src/currency.vala:86
 msgid "Venezuelan Bolívar"
 msgstr "בוליבר ונצואלי"
 
-#: ../src/currency-manager.c:89
+#: ../src/currency.vala:87
 msgid "South African Rand"
 msgstr "ראנד דרום אפריקאי"
 
-#: ../src/financial.c:70
+#: ../src/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "שגיאה: מספר התקופות חייב להיות ערך חיובי"
 
-#. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:79
-#, c-format
-msgid ""
-"Usage:\n"
-"  %s — Perform mathematical calculations"
-msgstr ""
-"Usage:\n"
-"  %s — Perform mathematical calculations"
+#: ../src/gnome-calculator.vala:80
+msgid "Basic"
+msgstr "בסיסי"
 
-#. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:87
-#, c-format
-msgid ""
-"Help Options:\n"
-"  -v, --version                   Show release version\n"
-"  -h, -?, --help                  Show help options\n"
-"  --help-all                      Show all help options\n"
-"  --help-gtk                      Show GTK+ options"
-msgstr ""
-"Help Options:\n"
-"  -v, --version                   Show release version\n"
-"  -h, -?, --help                  Show help options\n"
-"  --help-all                      Show all help options\n"
-"  --help-gtk                      Show GTK+ options"
+#: ../src/gnome-calculator.vala:81
+msgid "Advanced"
+msgstr "מתקדם"
 
-#. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:98
-#, c-format
-msgid ""
-"GTK+ Options:\n"
-"  --class=CLASS                   Program class as used by the window manager\n"
-"  --name=NAME                     Program name as used by the window manager\n"
-"  --screen=SCREEN                 X screen to use\n"
-"  --sync                          Make X calls synchronous\n"
-"  --gtk-module=MODULES            Load additional GTK+ modules\n"
-"  --g-fatal-warnings              Make all warnings fatal"
-msgstr ""
-"GTK+ Options:\n"
-"  --class=CLASS                   Program class as used by the window manager\n"
-"  --name=NAME                     Program name as used by the window manager\n"
-"  --screen=SCREEN                 X screen to use\n"
-"  --sync                          Make X calls synchronous\n"
-"  --gtk-module=MODULES            Load additional GTK+ modules\n"
-"  --g-fatal-warnings              Make all warnings fatal"
+#: ../src/gnome-calculator.vala:82
+msgid "Financial"
+msgstr "פיננסי"
 
-#. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:112
-#, c-format
-msgid ""
-"Application Options:\n"
-"  -s, --solve <equation>          Solve the given equation"
-msgstr ""
-"Application Options:\n"
-"  -s, --solve <equation>          Solve the given equation"
+#: ../src/gnome-calculator.vala:83
+msgid "Programming"
+msgstr "תכנות"
 
-#. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:156
-#, c-format
-msgid "Argument --solve requires an equation to solve"
-msgstr "Argument --solve requires an equation to solve"
+#: ../src/gnome-calculator.vala:84
+msgid "Mode"
+msgstr "מצב"
 
-#. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:166
-#, c-format
-msgid "Unknown argument '%s'"
-msgstr "Unknown argument '%s'"
+#. Title of preferences dialog
+#: ../src/gnome-calculator.vala:87
+#: ../src/math-preferences.vala:26
+msgid "Preferences"
+msgstr "העדפות"
+
+#: ../src/gnome-calculator.vala:91
+msgid "About Calculator"
+msgstr "על אודות המחשבון"
+
+#: ../src/gnome-calculator.vala:92
+msgid "Help"
+msgstr "עזרה"
+
+#: ../src/gnome-calculator.vala:93
+msgid "Quit"
+msgstr "יציאה"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gcalctool.c:358
+#: ../src/gnome-calculator.vala:228
 msgid "Unable to open help file"
 msgstr "לא ניתן לפתוח את קובץ העזרה"
 
-#. The translator credits. Please translate this with your name(s).
-#: ../src/gcalctool.c:390
+#. The translator credits. Please translate this with your name (s).
+#: ../src/gnome-calculator.vala:258
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -857,360 +777,300 @@ msgstr ""
 "פרויקט תרגום GNOME לעברית\n"
 "‏http://gnome-il.berlios.de"
 
-#. The license this software is under (GPL2+)
-#: ../src/gcalctool.c:393
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"‏Gcalctool הנה תכנה חופשית; ניתן להפיץ מחדש ו/או לשנות\n"
-"אותה תחת תנאי הרישיון הציבורי הכללי של GNU כפי שפורסם\n"
-"על ידי המוסד לתכנה חופשית; גם גרסה 2 של הרישיון, או\n"
-"(לבחירתך) כל גרסה עדכנית יותר.\n"
-"\n"
-"‏Gcalctool מופצת בתקווה שתביא תועלת אך ללא,\n"
-"כל אחריות; אפילו לא אחריות מרומזת לצורכי מסחר\n"
-"או התאמה לצרכים כלשהים.  ניתן לעיין ברישיון\n"
-"הציבורי הכללי של GNU לפרטים נוספים.\n"
-"\n"
-"ל־Gcalctool אמור היה להיות מצורף עותק של הרישיון הציבורי הכללי\n"
-"של GNU; במידה שלא, יש לכתוב אל Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/gcalctool.c:410
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/gcalctool.c:414
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 יוצרי Gcalctool"
-
 #. Short description in the about dialog
-#: ../src/gcalctool.c:418
+#: ../src/gnome-calculator.vala:272
 msgid "Calculator with financial and scientific modes."
 msgstr "מחשבון עם מצבים פיננסיים ומדעיים"
 
-#: ../src/gcalctool.c:515
-msgid "Basic"
-msgstr "בסיסי"
+#: ../src/gnome-calculator.vala:305
+msgid "Solve given equation"
+msgstr "Solve given equation"
 
-#: ../src/gcalctool.c:516
-msgid "Advanced"
-msgstr "מתקדם"
+#: ../src/gnome-calculator.vala:313
+msgid "Start with given equation"
+msgstr "Start with given equation"
 
-#: ../src/gcalctool.c:517
-msgid "Financial"
-msgstr "פיננסי"
+#: ../src/gnome-calculator.vala:322
+msgid "Show release version"
+msgstr "Show release version"
 
-#: ../src/gcalctool.c:518
-msgid "Programming"
-msgstr "תכנות"
-
-#: ../src/gcalctool.c:519
-msgid "Mode"
-msgstr "מצב"
-
-#: ../src/gcalctool.c:526
-msgid "About Calculator"
-msgstr "על אודות המחשבון"
-
-#: ../src/gcalctool.c:527
-msgid "Help"
-msgstr "עזרה"
-
-#: ../src/gcalctool.c:528
-msgid "Quit"
-msgstr "יציאה"
-
+#. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.c:94
+#: ../src/math-buttons.vala:298
 msgid "Pi [Ctrl+P]"
 msgstr "פאי [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.c:97
+#: ../src/math-buttons.vala:300
 msgid "Euler’s Number"
 msgstr "קבוע אוילר"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.c:102
+#: ../src/math-buttons.vala:304
 msgid "Subscript mode [Alt]"
 msgstr "מצב כתב תחתי [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.c:105
+#: ../src/math-buttons.vala:306
 msgid "Superscript mode [Ctrl]"
 msgstr "מצב כתב עילי [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.c:108
+#: ../src/math-buttons.vala:308
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "מעריך מדעי [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.c:111
+#: ../src/math-buttons.vala:310
 msgid "Add [+]"
 msgstr "חיבור [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.c:114
+#: ../src/math-buttons.vala:312
 msgid "Subtract [-]"
 msgstr "חיסור [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.c:117
+#: ../src/math-buttons.vala:314
 msgid "Multiply [*]"
 msgstr "כפל [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.c:120
+#: ../src/math-buttons.vala:316
 msgid "Divide [/]"
 msgstr "חילוק [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.c:123
+#: ../src/math-buttons.vala:318
 msgid "Modulus divide"
 msgstr "חילוק עם שארית"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.c:126
+#: ../src/math-buttons.vala:320
 msgid "Additional Functions"
 msgstr "פונקציות נוספות"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.c:129
+#: ../src/math-buttons.vala:322
 msgid "Exponent [^ or **]"
 msgstr "מעריך [^ or **]"
 
 #. Tooltip for the square button
-#: ../src/math-buttons.c:132
+#: ../src/math-buttons.vala:324
 msgid "Square [Ctrl+2]"
 msgstr "ריבוע [Ctrl+2]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.c:135
+#: ../src/math-buttons.vala:326
 msgid "Percentage [%]"
 msgstr "אחוזים [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.c:138
+#: ../src/math-buttons.vala:328
 msgid "Factorial [!]"
 msgstr "עצרת [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.c:141
+#: ../src/math-buttons.vala:330
 msgid "Absolute value [|]"
 msgstr "ערך מוחלט [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.c:144
+#: ../src/math-buttons.vala:332
 msgid "Complex argument"
 msgstr "הארגומנט המרוכב"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.c:147
+#: ../src/math-buttons.vala:334
 msgid "Complex conjugate"
 msgstr "צמוד מרוכב "
 
 #. Tooltip for the root button
-#: ../src/math-buttons.c:150
+#: ../src/math-buttons.vala:336
 msgid "Root [Ctrl+R]"
 msgstr "שורש [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.c:153
+#: ../src/math-buttons.vala:338
 msgid "Square root [Ctrl+R]"
 msgstr "שורש ריבועי [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.c:156
+#: ../src/math-buttons.vala:340
 msgid "Logarithm"
 msgstr "לוגריתם"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.c:159
+#: ../src/math-buttons.vala:342
 msgid "Natural Logarithm"
 msgstr "לוגוריתם טבעי"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.c:162
+#: ../src/math-buttons.vala:344
 msgid "Sine"
 msgstr "סינוס"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.c:165
+#: ../src/math-buttons.vala:346
 msgid "Cosine"
 msgstr "קוסינוס"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.c:168
+#: ../src/math-buttons.vala:348
 msgid "Tangent"
 msgstr "טנגנס"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.c:171
+#: ../src/math-buttons.vala:350
 msgid "Hyperbolic Sine"
 msgstr "סינוס היפרבולי"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.c:174
+#: ../src/math-buttons.vala:352
 msgid "Hyperbolic Cosine"
 msgstr "קוסינוס היפרבולי"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.c:177
+#: ../src/math-buttons.vala:354
 msgid "Hyperbolic Tangent"
 msgstr "טנגנס היפרבולי"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.c:180
+#: ../src/math-buttons.vala:356
 msgid "Inverse [Ctrl+I]"
 msgstr "היפוך [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.c:183
+#: ../src/math-buttons.vala:358
 msgid "Boolean AND"
 msgstr "AND לוגי"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.c:186
+#: ../src/math-buttons.vala:360
 msgid "Boolean OR"
 msgstr "OR לוגי"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.c:189
+#: ../src/math-buttons.vala:362
 msgid "Boolean Exclusive OR"
 msgstr "XOR לוגי"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.c:192
+#: ../src/math-buttons.vala:364
 msgid "Boolean NOT"
 msgstr "NOT לוגי"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:195
-#: ../src/math-buttons.c:983
+#: ../src/math-buttons.vala:366
+#: ../src/math-buttons.vala:809
 msgid "Integer Component"
 msgstr "החלק השלם"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:198
-#: ../src/math-buttons.c:985
+#: ../src/math-buttons.vala:368
+#: ../src/math-buttons.vala:811
 msgid "Fractional Component"
 msgstr "חלק השבר"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.c:201
+#: ../src/math-buttons.vala:370
 msgid "Real Component"
 msgstr "רכיב ממשי"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.c:204
+#: ../src/math-buttons.vala:372
 msgid "Imaginary Component"
 msgstr "רכיב מדומה"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.c:207
+#: ../src/math-buttons.vala:374
 msgid "Ones' Complement"
 msgstr "משלים לאחד"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.c:210
+#: ../src/math-buttons.vala:376
 msgid "Two's Complement"
 msgstr "משלים לשתיים"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.c:213
+#: ../src/math-buttons.vala:378
 msgid "Truncate"
 msgstr "קיצוץ"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.c:216
+#: ../src/math-buttons.vala:380
 msgid "Start Group [(]"
 msgstr "התחלת קבוצת חישובים [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.c:219
+#: ../src/math-buttons.vala:382
 msgid "End Group [)]"
 msgstr "סגירת קבוצת חישובים [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.c:228
+#: ../src/math-buttons.vala:388
 msgid "Calculate Result"
 msgstr "חישוב תוצאה"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.c:231
+#: ../src/math-buttons.vala:390
 msgid "Factorize [Ctrl+F]"
 msgstr "פירוק לגורמים [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.c:234
+#: ../src/math-buttons.vala:392
 msgid "Clear Display [Escape]"
 msgstr "מחיקת התצוגה [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.c:237
+#: ../src/math-buttons.vala:394
 msgid "Undo [Ctrl+Z]"
 msgstr "ביטול [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.c:249
+#: ../src/math-buttons.vala:402
 msgid "Double Declining Depreciation"
 msgstr "פחת בשיטת יתרה פוחתת כפולה"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.c:255
+#: ../src/math-buttons.vala:406
 msgid "Financial Term"
 msgstr "תקופה חשבונאית"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.c:258
+#: ../src/math-buttons.vala:408
 msgid "Sum of the Years Digits Depreciation"
 msgstr "פחת לפי סכום ספרות"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.c:261
+#: ../src/math-buttons.vala:410
 msgid "Straight Line Depreciation"
 msgstr "פחת בשיטת קו ישר"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:601
+#: ../src/math-buttons.vala:523
 msgid "Binary"
 msgstr "בינרי"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:605
+#: ../src/math-buttons.vala:527
 msgid "Octal"
 msgstr "אוקטלי"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:609
+#: ../src/math-buttons.vala:531
 msgid "Decimal"
 msgstr "עשרוני"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:613
+#: ../src/math-buttons.vala:535
 msgid "Hexadecimal"
 msgstr "הקסדצימלי"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:894
-#: ../src/math-buttons.c:937
+#: ../src/math-buttons.vala:740
+#: ../src/math-buttons.vala:777
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1219,8 +1079,8 @@ msgstr[1] "_%d מקומות"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:898
-#: ../src/math-buttons.c:941
+#: ../src/math-buttons.vala:745
+#: ../src/math-buttons.vala:782
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1228,993 +1088,996 @@ msgstr[0] "מקום אחד"
 msgstr[1] "%d מקומות"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:987
+#: ../src/math-buttons.vala:813
 msgid "Round"
 msgstr "עיגול"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:989
+#: ../src/math-buttons.vala:815
 msgid "Floor"
 msgstr "רצפה"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:991
+#: ../src/math-buttons.vala:817
 msgid "Ceiling"
 msgstr "תקרה"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:993
+#: ../src/math-buttons.vala:819
 msgid "Sign"
 msgstr "סימן"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
-#: ../src/math-converter.c:412
+#: ../src/math-converter.vala:46
 msgid " in "
 msgstr " תחת "
 
 #. Tooltip for swap conversion button
-#: ../src/math-converter.c:427
+#: ../src/math-converter.vala:60
 msgid "Switch conversion units"
 msgstr "החלפת יחידות ההמרה"
 
+#. Digits localized for the given language
+#: ../src/math-equation.vala:169
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:459
+#: ../src/math-equation.vala:480
 msgid "No undo history"
 msgstr "אין היסטוריית ביטול"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:486
+#: ../src/math-equation.vala:496
 msgid "No redo history"
 msgstr "אין היסטוריית שחזור"
 
-#: ../src/math-equation.c:944
+#: ../src/math-equation.vala:725
 msgid "No sane value to store"
 msgstr "אין ערך שפוי לשמירה"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1226
+#: ../src/math-equation.vala:873
 msgid "Overflow. Try a bigger word size"
 msgstr "הצפה, יש לנסות גודל word גדול יותר"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1231
+#: ../src/math-equation.vala:878
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "המשתנה '%s' אינו מוכר"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1236
+#: ../src/math-equation.vala:885
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "הפונקציה '%s' אינה מוגדרת"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1241
+#: ../src/math-equation.vala:892
 msgid "Unknown conversion"
 msgstr "המרה בלתי מוכרת"
 
-#. Uncategorized error. Show error token to user
-#: ../src/math-equation.c:1249
+#: ../src/math-equation.vala:900
 #, c-format
 msgid "Malformed expression at token '%s'"
 msgstr "ביטוי שגוי באסימון '%s'"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1252
-#: ../src/math-equation.c:1257
+#: ../src/math-equation.vala:905
+#: ../src/math-equation.vala:910
 msgid "Malformed expression"
 msgstr "ביטוי שגוי"
 
-#: ../src/math-equation.c:1271
+#: ../src/math-equation.vala:921
 msgid "Calculating"
 msgstr "מתבצע חישוב"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1387
+#: ../src/math-equation.vala:1048
 msgid "Need an integer to factorize"
 msgstr "נדרש שלם חיובי כדי לפרק לגורמים"
 
-#. This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1459
+#. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
+#: ../src/math-equation.vala:1102
 msgid "No sane value to bitwise shift"
 msgstr "אין ערך שפוי לביצוע הזזת סיביות"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1490
+#: ../src/math-equation.vala:1116
 msgid "Displayed value not an integer"
 msgstr "הערך המוצג איננו שלם חיובי"
 
-#. Digits localized for the given language
-#: ../src/math-equation.c:1915
-msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:235
+#: ../src/math-preferences.vala:29
 msgid "_Close"
 msgstr "ס_גירה"
 
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:245
-#: ../src/unit-manager.c:54
-msgid "Degrees"
-msgstr "מעלות"
-
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:249
-#: ../src/unit-manager.c:55
-msgid "Radians"
-msgstr "רדיאנים"
-
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:253
-#: ../src/unit-manager.c:56
-msgid "Gradians"
-msgstr "גראדיאנים"
+#. Preferences dialog: Label for number format combo box
+#: ../src/math-preferences.vala:39
+msgid "Number _Format:"
+msgstr "מבנה ה_ספרות:"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:263
+#: ../src/math-preferences.vala:56
 msgid "Automatic"
 msgstr "אוטומטי"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:267
+#: ../src/math-preferences.vala:60
 msgid "Fixed"
 msgstr "קבועה"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:271
+#: ../src/math-preferences.vala:64
 msgid "Scientific"
 msgstr "מדעי"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:275
+#: ../src/math-preferences.vala:68
 msgid "Engineering"
 msgstr "הנדסה"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:286
+#: ../src/math-preferences.vala:88
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "הצגת %d _מקומות עשרוניים"
 
-#. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/mp-binary.c:115
-msgid "Boolean AND is only defined for positive integers"
-msgstr "AND לוגי מוגדר רק עבור שלמים חיוביים"
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../src/math-preferences.vala:115
+msgid "Show trailing _zeroes"
+msgstr "הצגת אפסים _עוקבים"
 
-#. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/mp-binary.c:128
-msgid "Boolean OR is only defined for positive integers"
-msgstr "OR לוגי מוגדר רק עבור שלמים חיוביים"
+#. Preferences dialog: label for show show thousands separator check button
+#: ../src/math-preferences.vala:121
+msgid "Show _thousands separators"
+msgstr "הצגת מפריד _אלפים"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:141
-msgid "Boolean XOR is only defined for positive integers"
-msgstr "XOR לוגי מוגדר רק עבור שלמים חיוביים"
+#. Preferences dialog: Label for angle unit combo box
+#: ../src/math-preferences.vala:127
+msgid "_Angle units:"
+msgstr "יחידות ה_זווית:"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:156
-msgid "Boolean NOT is only defined for positive integers"
-msgstr "NOT לוגי מוגדר רק עבור שלמים חיוביים"
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.vala:143
+#: ../src/unit.vala:38
+msgid "Degrees"
+msgstr "מעלות"
 
-#. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/mp-binary.c:187
-msgid "Shift is only possible on integer values"
-msgstr "ניתן לבצע הזזה רק על מספרים שלמים וחיוביים"
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.vala:147
+#: ../src/unit.vala:39
+msgid "Radians"
+msgstr "רדיאנים"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.vala:151
+#: ../src/unit.vala:40
+msgid "Gradians"
+msgstr "גראדיאנים"
+
+#. Preferences dialog: Label for word size combo box
+#: ../src/math-preferences.vala:157
+msgid "Word _size:"
+msgstr "_גודל Word:"
+
+#. Word size combo: 8 bits
+#: ../src/math-preferences.vala:171
+msgid "8 bits"
+msgstr "8 סיביות"
+
+#. Word size combo: 16 bits
+#: ../src/math-preferences.vala:173
+msgid "16 bits"
+msgstr "16 סיביות"
+
+#. Word size combo: 32 bits
+#: ../src/math-preferences.vala:175
+msgid "32 bits"
+msgstr "32 סיביות"
+
+#. Word size combo: 64 bits
+#: ../src/math-preferences.vala:177
+msgid "64 bits"
+msgstr "64 סיביות"
 
 #. Translators: Error display when attempting to take argument of zero
-#: ../src/mp.c:148
+#: ../src/number.vala:652
 msgid "Argument not defined for zero"
 msgstr "לא מוגדר ארגומנט עבור אפס"
 
-#: ../src/mp.c:299
-msgid "Overflow: the result couldn't be calculated"
-msgstr "חריגה: לא ניתן לחשב את התוצאה"
-
-#. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:644
-#: ../src/mp.c:676
-#: ../src/mp.c:1605
-msgid "Division by zero is undefined"
-msgstr "חלוקה באפס אינה מוגדרת"
-
-#. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1276
-#: ../src/mp.c:1313
-msgid "Logarithm of zero is undefined"
-msgstr "הלוגריתם של אפס אינו מוגדר"
-
-#. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1680
-#: ../src/mp.c:1994
+#. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
+#: ../src/number.vala:909
+#: ../src/number.vala:1858
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "החזקה של אפס אינה מוגדרת עבור מעריך שלילי"
 
-#: ../src/mp.c:1704
-msgid "Reciprocal of zero is undefined"
-msgstr "לא מוגדרת הדדיות לאפס"
-
-#: ../src/mp.c:1789
-msgid "Root must be non-zero"
-msgstr "על השורש להיות שונה מאפס"
-
-#: ../src/mp.c:1807
-msgid "Negative root of zero is undefined"
-msgstr "שורש שלילי של אפס אינו מוגדר"
-
-#: ../src/mp.c:1813
-msgid "nth root of negative number is undefined for even n"
-msgstr "השורש ה־nי של מספר שלילי אינו מוגדר עבור n זוגי"
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/number.vala:992
+#: ../src/number.vala:1025
+msgid "Logarithm of zero is undefined"
+msgstr "הלוגריתם של אפס אינו מוגדר"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1934
+#: ../src/number.vala:1043
 msgid "Factorial is only defined for natural numbers"
 msgstr "פירוק לגורמים אפשרי עבור מספרים טבעיים בלבד"
 
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/number.vala:1119
+#: ../src/number.vala:2608
+msgid "Division by zero is undefined"
+msgstr "חלוקה באפס אינה מוגדרת"
+
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1954
+#: ../src/number.vala:1159
 msgid "Modulus division is only defined for integers"
 msgstr "חלוקת שארית מוגדרת רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:310
+#: ../src/number.vala:1227
 msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "טנגנס אינו מוגדר עבור זוויות שהן כפולות של π ‏(180°) החל מ־π∕2 ‏(90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:355
+#: ../src/number.vala:1265
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "סינוס הפוך אינו מוגדר עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:372
+#: ../src/number.vala:1280
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "קוסינוס הפוך אינו מוגדר עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:591
+#: ../src/number.vala:1477
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "קוסינוס היפרבולי הפוך אינו מוגדר עבור ערכים הקטנים מאחד"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:615
+#: ../src/number.vala:1496
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "טנגנס היפרבולי הפוך אינו מוגדל עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
-#: ../src/unit-manager.c:54
-#, c-format
-msgctxt "unit-format"
-msgid "%s degrees"
-msgstr "%s מעלות"
-
-#: ../src/unit-manager.c:54
-msgctxt "unit-symbols"
-msgid "degree,degrees,deg"
-msgstr "מעלה,מעלות"
-
-#: ../src/unit-manager.c:55
-#, c-format
-msgctxt "unit-format"
-msgid "%s radians"
-msgstr "%s רדיאנים"
-
-#: ../src/unit-manager.c:55
-msgctxt "unit-symbols"
-msgid "radian,radians,rad"
-msgstr "רדיאן,רדיאנים"
-
-#: ../src/unit-manager.c:56
-#, c-format
-msgctxt "unit-format"
-msgid "%s gradians"
-msgstr "%s גרדיאנים"
-
-#: ../src/unit-manager.c:56
-msgctxt "unit-symbols"
-msgid "gradian,gradians,grad"
-msgstr "גרדיאן,גרדיאנים"
-
-#: ../src/unit-manager.c:57
-msgid "Parsecs"
-msgstr "פארסק"
-
-#: ../src/unit-manager.c:57
-#, c-format
-msgctxt "unit-format"
-msgid "%s pc"
-msgstr "%s פרסק"
-
-#: ../src/unit-manager.c:57
-msgctxt "unit-symbols"
-msgid "parsec,parsecs,pc"
-msgstr "פרסק,פרסקים,פארסק,פארסקים"
-
-#: ../src/unit-manager.c:58
-msgid "Light Years"
-msgstr "שנות אור"
-
-#: ../src/unit-manager.c:58
-#, c-format
-msgctxt "unit-format"
-msgid "%s ly"
-msgstr "%s שנות אור"
-
-#: ../src/unit-manager.c:58
-msgctxt "unit-symbols"
-msgid "lightyear,lightyears,ly"
-msgstr "שנת אור,שנות אור"
-
-#: ../src/unit-manager.c:59
-msgid "Astronomical Units"
-msgstr "יחידות אסטרונומיות"
-
-#: ../src/unit-manager.c:59
-#, c-format
-msgctxt "unit-format"
-msgid "%s au"
-msgstr "%s י״א"
-
-#: ../src/unit-manager.c:59
-msgctxt "unit-symbols"
-msgid "au"
-msgstr "י״א"
-
-#: ../src/unit-manager.c:60
-msgid "Nautical Miles"
-msgstr "מיל ימי"
-
-#: ../src/unit-manager.c:60
-#, c-format
-msgctxt "unit-format"
-msgid "%s nmi"
-msgstr "%s ננומטר"
-
-#: ../src/unit-manager.c:60
-msgctxt "unit-symbols"
-msgid "nmi"
-msgstr "ננומטר"
-
-#: ../src/unit-manager.c:61
-msgid "Miles"
-msgstr "מילים"
-
-#: ../src/unit-manager.c:61
-#, c-format
-msgctxt "unit-format"
-msgid "%s mi"
-msgstr "%s מיל"
-
-#: ../src/unit-manager.c:61
-msgctxt "unit-symbols"
-msgid "mile,miles,mi"
-msgstr "מיל,מילים"
-
-#: ../src/unit-manager.c:62
-msgid "Kilometers"
-msgstr "קילומטרים"
-
-#: ../src/unit-manager.c:62
-#, c-format
-msgctxt "unit-format"
-msgid "%s km"
-msgstr "%s ק״מ"
-
-#: ../src/unit-manager.c:62
-msgctxt "unit-symbols"
-msgid "kilometer,kilometers,km,kms"
-msgstr "קילומטר,קילומטרים,ק״מ"
-
-#: ../src/unit-manager.c:63
-msgid "Cables"
-msgstr "כבל"
-
-#: ../src/unit-manager.c:63
-#, c-format
-msgctxt "unit-format"
-msgid "%s cb"
-msgstr "%s כבל"
-
-#: ../src/unit-manager.c:63
-msgctxt "unit-symbols"
-msgid "cable,cables,cb"
-msgstr "כבל,כבלים"
-
-#: ../src/unit-manager.c:64
-msgid "Fathoms"
-msgstr "פתום"
-
-#: ../src/unit-manager.c:64
-#, c-format
-msgctxt "unit-format"
-msgid "%s ftm"
-msgstr "%s פאתום"
-
-#: ../src/unit-manager.c:64
-msgctxt "unit-symbols"
-msgid "fathom,fathoms,ftm"
-msgstr "פאתום,פאתומים,פאדום,פאדומים"
-
-#: ../src/unit-manager.c:65
-msgid "Meters"
-msgstr "מטרים"
-
-#: ../src/unit-manager.c:65
-#, c-format
-msgctxt "unit-format"
-msgid "%s m"
-msgstr "%s מטרים"
-
-#: ../src/unit-manager.c:65
-msgctxt "unit-symbols"
-msgid "meter,meters,m"
-msgstr "מטר,מטרים,מ׳,מ'"
-
-#: ../src/unit-manager.c:66
-msgid "Yards"
-msgstr "יארד"
-
-#: ../src/unit-manager.c:66
-#, c-format
-msgctxt "unit-format"
-msgid "%s yd"
-msgstr "%s יארד"
-
-#: ../src/unit-manager.c:66
-msgctxt "unit-symbols"
-msgid "yard,yards,yd"
-msgstr "יארד,יארדים"
-
-#: ../src/unit-manager.c:67
-msgid "Feet"
-msgstr "רגל"
-
-#: ../src/unit-manager.c:67
-#, c-format
-msgctxt "unit-format"
-msgid "%s ft"
-msgstr "%s רגל"
-
-#: ../src/unit-manager.c:67
-msgctxt "unit-symbols"
-msgid "foot,feet,ft"
-msgstr "רגל,רגלים,רגליים"
-
-#: ../src/unit-manager.c:68
-msgid "Inches"
-msgstr "אינטשים"
-
-#: ../src/unit-manager.c:68
-#, c-format
-msgctxt "unit-format"
-msgid "%s in"
-msgstr "%s אינצ׳ים"
-
-#: ../src/unit-manager.c:68
-msgctxt "unit-symbols"
-msgid "inch,inches,in"
-msgstr "אינץ׳,אינצ׳ים,אינטש,אינטשים"
-
-#: ../src/unit-manager.c:69
-msgid "Centimeters"
-msgstr "סנטימטרים"
-
-#: ../src/unit-manager.c:69
-#, c-format
-msgctxt "unit-format"
-msgid "%s cm"
-msgstr "%s ס״מ"
-
-#: ../src/unit-manager.c:69
-msgctxt "unit-symbols"
-msgid "centimeter,centimeters,cm,cms"
-msgstr "סנטימטר,סנטימטרים,ס״מ"
-
-#: ../src/unit-manager.c:70
-msgid "Millimeters"
-msgstr "מילימטרים"
-
-#: ../src/unit-manager.c:70
-#, c-format
-msgctxt "unit-format"
-msgid "%s mm"
-msgstr "%s מ״מ"
-
-#: ../src/unit-manager.c:70
-msgctxt "unit-symbols"
-msgid "millimeter,millimeters,mm"
-msgstr "מילימטר,מילימטרים,מ״מ"
-
-#: ../src/unit-manager.c:71
-msgid "Micrometers"
-msgstr "מיקרומקטרים"
-
-#: ../src/unit-manager.c:71
-#, c-format
-msgctxt "unit-format"
-msgid "%s μm"
-msgstr "%s מיקרומטר"
-
-#: ../src/unit-manager.c:71
-msgctxt "unit-symbols"
-msgid "micrometer,micrometers,um"
-msgstr "מיקרומטר,מיקרומטרים,מיקרון,מיקרונים"
-
-#: ../src/unit-manager.c:72
-msgid "Nanometers"
-msgstr "ננומטרים"
-
-#: ../src/unit-manager.c:72
-#, c-format
-msgctxt "unit-format"
-msgid "%s nm"
-msgstr "%s ננומטר"
-
-#: ../src/unit-manager.c:72
-msgctxt "unit-symbols"
-msgid "nanometer,nanometers,nm"
-msgstr "ננומטר,ננומטרים,נ״מ,נ\"מ"
-
-#: ../src/unit-manager.c:73
-msgid "Hectares"
-msgstr "הקטר"
-
-#: ../src/unit-manager.c:73
-#, c-format
-msgctxt "unit-format"
-msgid "%s ha"
-msgstr "%s הקטאר"
-
-#: ../src/unit-manager.c:73
-msgctxt "unit-symbols"
-msgid "hectare,hectares,ha"
-msgstr "הקטאר,הקטארים,ha"
-
-#: ../src/unit-manager.c:74
-msgid "Acres"
-msgstr "אקר"
-
-#: ../src/unit-manager.c:74
-#, c-format
-msgctxt "unit-format"
-msgid "%s acres"
-msgstr "%s אקר"
-
-#: ../src/unit-manager.c:74
-msgctxt "unit-symbols"
-msgid "acre,acres"
-msgstr "אקר,אקרים,אקרות"
-
-#: ../src/unit-manager.c:75
-msgid "Square Meters"
-msgstr "מטר מעוקב"
-
-#: ../src/unit-manager.c:75
-#, c-format
-msgctxt "unit-format"
-msgid "%s m²"
-msgstr "%s מ׳²"
-
-#: ../src/unit-manager.c:75
-msgctxt "unit-symbols"
-msgid "m²"
-msgstr "מ׳²"
-
-#: ../src/unit-manager.c:76
-msgid "Square Centimeters"
-msgstr "סנטימטר מעוקב"
-
-#: ../src/unit-manager.c:76
-#, c-format
-msgctxt "unit-format"
-msgid "%s cm²"
-msgstr "%s ס״מ²"
-
-#: ../src/unit-manager.c:76
-msgctxt "unit-symbols"
-msgid "cm²"
-msgstr "ס״מ²"
-
-#: ../src/unit-manager.c:77
-msgid "Square Millimeters"
-msgstr "מילימטר מעוקב"
-
-#: ../src/unit-manager.c:77
-#, c-format
-msgctxt "unit-format"
-msgid "%s mm²"
-msgstr "%s מ״מ²"
-
-#: ../src/unit-manager.c:77
-msgctxt "unit-symbols"
-msgid "mm²"
-msgstr "מ״מ²"
-
-#: ../src/unit-manager.c:78
-msgid "Cubic Meters"
-msgstr "מטרים מעוקבים"
-
-#: ../src/unit-manager.c:78
-#, c-format
-msgctxt "unit-format"
-msgid "%s m³"
-msgstr "%s מ׳³"
-
-#: ../src/unit-manager.c:78
-msgctxt "unit-symbols"
-msgid "m³"
-msgstr "מ׳³"
-
-#: ../src/unit-manager.c:79
-msgid "Gallons"
-msgstr "גלון"
-
-#: ../src/unit-manager.c:79
-#, c-format
-msgctxt "unit-format"
-msgid "%s gal"
-msgstr "%s גלון"
-
-#: ../src/unit-manager.c:79
-msgctxt "unit-symbols"
-msgid "gallon,gallons,gal"
-msgstr "גלון,גלונים"
-
-#: ../src/unit-manager.c:80
-msgid "Litres"
-msgstr "ליטרים"
-
-#: ../src/unit-manager.c:80
-#, c-format
-msgctxt "unit-format"
-msgid "%s L"
-msgstr "%s ל׳"
-
-#: ../src/unit-manager.c:80
-msgctxt "unit-symbols"
-msgid "litre,litres,liter,liters,L"
-msgstr "ליטר,ליטרים,ל׳,ל'"
-
-#: ../src/unit-manager.c:81
-msgid "Quarts"
-msgstr "רבע גלון"
-
-#: ../src/unit-manager.c:81
-#, c-format
-msgctxt "unit-format"
-msgid "%s qt"
-msgstr "%s qt"
-
-#: ../src/unit-manager.c:81
-msgctxt "unit-symbols"
-msgid "quart,quarts,qt"
-msgstr "רבע גלון, רבעי גלון,qt"
-
-#: ../src/unit-manager.c:82
-msgid "Pints"
-msgstr "פיינט"
-
-#: ../src/unit-manager.c:82
-#, c-format
-msgctxt "unit-format"
-msgid "%s pt"
-msgstr "%s פיינט"
-
-#: ../src/unit-manager.c:82
-msgctxt "unit-symbols"
-msgid "pint,pints,pt"
-msgstr "פיינט,פיינטים,pt"
-
-#: ../src/unit-manager.c:83
-msgid "Millilitres"
-msgstr "מיליליטרים"
-
-#: ../src/unit-manager.c:83
-#, c-format
-msgctxt "unit-format"
-msgid "%s mL"
-msgstr "%s מ״ל"
-
-#: ../src/unit-manager.c:83
-msgctxt "unit-symbols"
-msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
-msgstr "מיליליטר,מיליליטרים,מ״ל,מ\"ל"
-
-#: ../src/unit-manager.c:84
-msgid "Microlitres"
-msgstr "מיקרוליטר"
-
-#: ../src/unit-manager.c:84
-#, c-format
-msgctxt "unit-format"
-msgid "%s μL"
-msgstr "%s מיקרוליטרים"
-
-#: ../src/unit-manager.c:84
-msgctxt "unit-symbols"
-msgid "mm³,μL,uL"
-msgstr "מ״מ³,מיקרוליטר,מיקרוליטרים"
-
-#: ../src/unit-manager.c:85
-msgid "Tonnes"
-msgstr "טונות"
-
-#: ../src/unit-manager.c:85
-#, c-format
-msgctxt "unit-format"
-msgid "%s T"
-msgstr "%s טון"
-
-#: ../src/unit-manager.c:85
-msgctxt "unit-symbols"
-msgid "tonne,tonnes"
-msgstr "טון,טונות"
-
-#: ../src/unit-manager.c:86
-msgid "Kilograms"
-msgstr "קילוגרמים"
-
-#: ../src/unit-manager.c:86
-#, c-format
-msgctxt "unit-format"
-msgid "%s kg"
-msgstr "%s ק״ג"
-
-#: ../src/unit-manager.c:86
-msgctxt "unit-symbols"
-msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
-msgstr "קילוגרם,קילוגרמים,ק״ג"
-
-#: ../src/unit-manager.c:87
-msgid "Pounds"
-msgstr "ליברה"
-
-#: ../src/unit-manager.c:87
-#, c-format
-msgctxt "unit-format"
-msgid "%s lb"
-msgstr "%s ליברות"
-
-#: ../src/unit-manager.c:87
-msgctxt "unit-symbols"
-msgid "pound,pounds,lb"
-msgstr "ליברה,ליברות,פאונד,פאונדים,lbs"
-
-#: ../src/unit-manager.c:88
-msgid "Ounces"
-msgstr "אונקיות"
-
-#: ../src/unit-manager.c:88
-#, c-format
-msgctxt "unit-format"
-msgid "%s oz"
-msgstr "%s אונקיות"
-
-#: ../src/unit-manager.c:88
-msgctxt "unit-symbols"
-msgid "ounce,ounces,oz"
-msgstr "אונקיה,אונקיות,oz"
-
-#: ../src/unit-manager.c:89
-msgid "Grams"
-msgstr "גרמים"
-
-#: ../src/unit-manager.c:89
-#, c-format
-msgctxt "unit-format"
-msgid "%s g"
-msgstr "%s ג׳"
-
-#: ../src/unit-manager.c:89
-msgctxt "unit-symbols"
-msgid "gram,grams,gramme,grammes,g"
-msgstr "גרם,גרמים,ג׳,ג',g"
-
-#: ../src/unit-manager.c:90
-msgid "Years"
-msgstr "שנים"
-
-#: ../src/unit-manager.c:90
-#, c-format
-msgctxt "unit-format"
-msgid "%s years"
-msgstr "%s שנים"
-
-#: ../src/unit-manager.c:90
-msgctxt "unit-symbols"
-msgid "year,years"
-msgstr "שנה,שנים,שנתיים"
-
-#: ../src/unit-manager.c:91
-msgid "Days"
-msgstr "ימים"
-
-#: ../src/unit-manager.c:91
-#, c-format
-msgctxt "unit-format"
-msgid "%s days"
-msgstr "%s ימים"
-
-#: ../src/unit-manager.c:91
-msgctxt "unit-symbols"
-msgid "day,days"
-msgstr "יום,ימים,יומיים"
-
-#: ../src/unit-manager.c:92
-msgid "Hours"
-msgstr "שעות"
-
-#: ../src/unit-manager.c:92
-#, c-format
-msgctxt "unit-format"
-msgid "%s hours"
-msgstr "%s שעות"
-
-#: ../src/unit-manager.c:92
-msgctxt "unit-symbols"
-msgid "hour,hours"
-msgstr "שעה,שעות,שעתיים"
-
-#: ../src/unit-manager.c:93
-msgid "Minutes"
-msgstr "דקות"
-
-#: ../src/unit-manager.c:93
-#, c-format
-msgctxt "unit-format"
-msgid "%s minutes"
-msgstr "%s דקות"
-
-#: ../src/unit-manager.c:93
-msgctxt "unit-symbols"
-msgid "minute,minutes"
-msgstr "דקה,דקות"
-
-#: ../src/unit-manager.c:94
-msgid "Seconds"
-msgstr "שניות"
-
-#: ../src/unit-manager.c:94
-#, c-format
-msgctxt "unit-format"
-msgid "%s s"
-msgstr "%s ש׳"
-
-#: ../src/unit-manager.c:94
-msgctxt "unit-symbols"
-msgid "second,seconds,s"
-msgstr "שנייה,שניות,ש׳,ש'"
-
-#: ../src/unit-manager.c:95
-msgid "Milliseconds"
-msgstr "מילישניות"
-
-#: ../src/unit-manager.c:95
-#, c-format
-msgctxt "unit-format"
-msgid "%s ms"
-msgstr "%s מ״ש"
-
-#: ../src/unit-manager.c:95
-msgctxt "unit-symbols"
-msgid "millisecond,milliseconds,ms"
-msgstr "מילישנייה,מילישניות,מ״ש"
-
-#: ../src/unit-manager.c:96
-msgid "Microseconds"
-msgstr "מיקרושניות"
-
-#: ../src/unit-manager.c:96
-#, c-format
-msgctxt "unit-format"
-msgid "%s μs"
-msgstr "%s מיקרושנייה"
-
-#: ../src/unit-manager.c:96
-msgctxt "unit-symbols"
-msgid "microsecond,microseconds,us,μs"
-msgstr "מיקרושנייה,מיקרושניות"
-
-#: ../src/unit-manager.c:97
-msgid "Celsius"
-msgstr "צלזיוס"
-
-#: ../src/unit-manager.c:97
-#, c-format
-msgctxt "unit-format"
-msgid "%s ˚C"
-msgstr "%s ˚C"
-
-#: ../src/unit-manager.c:97
-msgctxt "unit-symbols"
-msgid "degC,˚C"
-msgstr "מעלות צלזיוס,degC,˚C"
-
-#: ../src/unit-manager.c:98
-msgid "Farenheit"
-msgstr "פרנהייט"
-
-#: ../src/unit-manager.c:98
-#, c-format
-msgctxt "unit-format"
-msgid "%s ˚F"
-msgstr "%s ˚F"
-
-#: ../src/unit-manager.c:98
-msgctxt "unit-symbols"
-msgid "degF,˚F"
-msgstr "מעלות פרנהייט,˚F"
-
-#: ../src/unit-manager.c:99
-msgid "Kelvin"
-msgstr "קלווין"
-
-#: ../src/unit-manager.c:99
-#, c-format
-msgctxt "unit-format"
-msgid "%s K"
-msgstr "%s K"
-
-#: ../src/unit-manager.c:99
-msgctxt "unit-symbols"
-msgid "K"
-msgstr "K"
-
-#: ../src/unit-manager.c:100
-msgid "Rankine"
-msgstr "רנקין"
-
-#: ../src/unit-manager.c:100
-#, c-format
-msgctxt "unit-format"
-msgid "%s ˚R"
-msgstr "%s ˚R"
-
-#: ../src/unit-manager.c:100
-msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra"
-msgstr "מעלות רנקין,˚R"
-
-#: ../src/unit-manager.c:109
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/number.vala:1515
+msgid "Boolean AND is only defined for positive integers"
+msgstr "AND לוגי מוגדר רק עבור שלמים חיוביים"
+
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/number.vala:1527
+msgid "Boolean OR is only defined for positive integers"
+msgstr "OR לוגי מוגדר רק עבור שלמים חיוביים"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/number.vala:1539
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "XOR לוגי מוגדר רק עבור שלמים חיוביים"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/number.vala:1551
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "NOT לוגי מוגדר רק עבור שלמים חיוביים"
+
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/number.vala:1574
+msgid "Shift is only possible on integer values"
+msgstr "ניתן לבצע הזזה רק על מספרים שלמים וחיוביים"
+
+#: ../src/number.vala:1878
+msgid "Root must be non-zero"
+msgstr "על השורש להיות שונה מאפס"
+
+#: ../src/number.vala:1895
+msgid "Negative root of zero is undefined"
+msgstr "שורש שלילי של אפס אינו מוגדר"
+
+#: ../src/number.vala:1902
+msgid "nth root of negative number is undefined for even n"
+msgstr "השורש ה־nי של מספר שלילי אינו מוגדר עבור n זוגי"
+
+#: ../src/number.vala:2225
+msgid "Overflow: the result couldn't be calculated"
+msgstr "חריגה: לא ניתן לחשב את התוצאה"
+
+#: ../src/number.vala:2553
+msgid "Reciprocal of zero is undefined"
+msgstr "לא מוגדרת הדדיות לאפס"
+
+#: ../src/unit.vala:29
 msgid "Angle"
 msgstr "זווית"
 
-#: ../src/unit-manager.c:110
+#: ../src/unit.vala:30
 msgid "Length"
 msgstr "אורך"
 
-#: ../src/unit-manager.c:111
+#: ../src/unit.vala:31
 msgid "Area"
 msgstr "שטח"
 
-#: ../src/unit-manager.c:112
+#: ../src/unit.vala:32
 msgid "Volume"
 msgstr "נפח"
 
-#: ../src/unit-manager.c:113
+#: ../src/unit.vala:33
 msgid "Weight"
 msgstr "משקל"
 
-#: ../src/unit-manager.c:114
+#: ../src/unit.vala:34
 msgid "Duration"
 msgstr "משך זמן"
 
-#: ../src/unit-manager.c:115
+#: ../src/unit.vala:35
 msgid "Temperature"
 msgstr "טמפרטורה"
 
-#: ../src/unit-manager.c:127
+#: ../src/unit.vala:41
+msgid "Parsecs"
+msgstr "פארסק"
+
+#: ../src/unit.vala:42
+msgid "Light Years"
+msgstr "שנות אור"
+
+#: ../src/unit.vala:43
+msgid "Astronomical Units"
+msgstr "יחידות אסטרונומיות"
+
+#: ../src/unit.vala:44
+msgid "Nautical Miles"
+msgstr "מיל ימי"
+
+#: ../src/unit.vala:45
+msgid "Miles"
+msgstr "מילים"
+
+#: ../src/unit.vala:46
+msgid "Kilometers"
+msgstr "קילומטרים"
+
+#: ../src/unit.vala:47
+msgid "Cables"
+msgstr "כבל"
+
+#: ../src/unit.vala:48
+msgid "Fathoms"
+msgstr "פתום"
+
+#: ../src/unit.vala:49
+msgid "Meters"
+msgstr "מטרים"
+
+#: ../src/unit.vala:50
+msgid "Yards"
+msgstr "יארד"
+
+#: ../src/unit.vala:51
+msgid "Feet"
+msgstr "רגל"
+
+#: ../src/unit.vala:52
+msgid "Inches"
+msgstr "אינטשים"
+
+#: ../src/unit.vala:53
+msgid "Centimeters"
+msgstr "סנטימטרים"
+
+#: ../src/unit.vala:54
+msgid "Millimeters"
+msgstr "מילימטרים"
+
+#: ../src/unit.vala:55
+msgid "Micrometers"
+msgstr "מיקרומקטרים"
+
+#: ../src/unit.vala:56
+msgid "Nanometers"
+msgstr "ננומטרים"
+
+#: ../src/unit.vala:57
+msgid "Hectares"
+msgstr "הקטר"
+
+#: ../src/unit.vala:58
+msgid "Acres"
+msgstr "אקר"
+
+#: ../src/unit.vala:59
+msgid "Square Meters"
+msgstr "מטר מעוקב"
+
+#: ../src/unit.vala:60
+msgid "Square Centimeters"
+msgstr "סנטימטר מעוקב"
+
+#: ../src/unit.vala:61
+msgid "Square Millimeters"
+msgstr "מילימטר מעוקב"
+
+#: ../src/unit.vala:62
+msgid "Cubic Meters"
+msgstr "מטרים מעוקבים"
+
+#: ../src/unit.vala:63
+msgid "Gallons"
+msgstr "גלון"
+
+#: ../src/unit.vala:64
+msgid "Litres"
+msgstr "ליטרים"
+
+#: ../src/unit.vala:65
+msgid "Quarts"
+msgstr "רבע גלון"
+
+#: ../src/unit.vala:66
+msgid "Pints"
+msgstr "פיינט"
+
+#: ../src/unit.vala:67
+msgid "Millilitres"
+msgstr "מיליליטרים"
+
+#: ../src/unit.vala:68
+msgid "Microlitres"
+msgstr "מיקרוליטר"
+
+#: ../src/unit.vala:69
+msgid "Tonnes"
+msgstr "טונות"
+
+#: ../src/unit.vala:70
+msgid "Kilograms"
+msgstr "קילוגרמים"
+
+#: ../src/unit.vala:71
+msgid "Pounds"
+msgstr "ליברה"
+
+#: ../src/unit.vala:72
+msgid "Ounces"
+msgstr "אונקיות"
+
+#: ../src/unit.vala:73
+msgid "Grams"
+msgstr "גרמים"
+
+#: ../src/unit.vala:74
+msgid "Years"
+msgstr "שנים"
+
+#: ../src/unit.vala:75
+msgid "Days"
+msgstr "ימים"
+
+#: ../src/unit.vala:76
+msgid "Hours"
+msgstr "שעות"
+
+#: ../src/unit.vala:77
+msgid "Minutes"
+msgstr "דקות"
+
+#: ../src/unit.vala:78
+msgid "Seconds"
+msgstr "שניות"
+
+#: ../src/unit.vala:79
+msgid "Milliseconds"
+msgstr "מילישניות"
+
+#: ../src/unit.vala:80
+msgid "Microseconds"
+msgstr "מיקרושניות"
+
+#: ../src/unit.vala:81
+msgid "Celsius"
+msgstr "צלזיוס"
+
+#: ../src/unit.vala:82
+msgid "Farenheit"
+msgstr "פרנהייט"
+
+#: ../src/unit.vala:83
+msgid "Kelvin"
+msgstr "קלווין"
+
+#: ../src/unit.vala:84
+msgid "Rankine"
+msgstr "רנקין"
+
+#: ../src/unit.vala:86
 msgid "Currency"
 msgstr "מטבע"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: ../src/unit-manager.c:137
+#: ../src/unit.vala:92
 #, c-format
 msgid "%s%%s"
 msgstr "%%s%s"
+
+#~ msgid "8-bit"
+#~ msgstr "8-סיביות"
+
+#~ msgid "16-bit"
+#~ msgstr "16-סיביות"
+
+#~ msgid "32-bit"
+#~ msgstr "32-סיביות"
+
+#~ msgid "64-bit"
+#~ msgstr "64-סיביות"
+
+#~ msgid ""
+#~ "Usage:\n"
+#~ "  %s — Perform mathematical calculations"
+#~ msgstr ""
+#~ "Usage:\n"
+#~ "  %s — Perform mathematical calculations"
+
+#~ msgid ""
+#~ "Help Options:\n"
+#~ "  -v, --version                   Show release version\n"
+#~ "  -h, -?, --help                  Show help options\n"
+#~ "  --help-all                      Show all help options\n"
+#~ "  --help-gtk                      Show GTK+ options"
+#~ msgstr ""
+#~ "Help Options:\n"
+#~ "  -v, --version                   Show release version\n"
+#~ "  -h, -?, --help                  Show help options\n"
+#~ "  --help-all                      Show all help options\n"
+#~ "  --help-gtk                      Show GTK+ options"
+
+#~ msgid ""
+#~ "GTK+ Options:\n"
+#~ "  --class=CLASS                   Program class as used by the window "
+#~ "manager\n"
+#~ "  --name=NAME                     Program name as used by the window "
+#~ "manager\n"
+#~ "  --screen=SCREEN                 X screen to use\n"
+#~ "  --sync                          Make X calls synchronous\n"
+#~ "  --gtk-module=MODULES            Load additional GTK+ modules\n"
+#~ "  --g-fatal-warnings              Make all warnings fatal"
+#~ msgstr ""
+#~ "GTK+ Options:\n"
+#~ "  --class=CLASS                   Program class as used by the window "
+#~ "manager\n"
+#~ "  --name=NAME                     Program name as used by the window "
+#~ "manager\n"
+#~ "  --screen=SCREEN                 X screen to use\n"
+#~ "  --sync                          Make X calls synchronous\n"
+#~ "  --gtk-module=MODULES            Load additional GTK+ modules\n"
+#~ "  --g-fatal-warnings              Make all warnings fatal"
+
+#~ msgid ""
+#~ "Application Options:\n"
+#~ "  -s, --solve <equation>          Solve the given equation"
+#~ msgstr ""
+#~ "Application Options:\n"
+#~ "  -s, --solve <equation>          Solve the given equation"
+
+#~ msgid "Argument --solve requires an equation to solve"
+#~ msgstr "Argument --solve requires an equation to solve"
+
+#~ msgid "Unknown argument '%s'"
+#~ msgstr "Unknown argument '%s'"
+
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+#~ msgstr ""
+#~ "‏Gcalctool הנה תכנה חופשית; ניתן להפיץ מחדש ו/או לשנות\n"
+#~ "אותה תחת תנאי הרישיון הציבורי הכללי של GNU כפי שפורסם\n"
+#~ "על ידי המוסד לתכנה חופשית; גם גרסה 2 של הרישיון, או\n"
+#~ "(לבחירתך) כל גרסה עדכנית יותר.\n"
+#~ "\n"
+#~ "‏Gcalctool מופצת בתקווה שתביא תועלת אך ללא,\n"
+#~ "כל אחריות; אפילו לא אחריות מרומזת לצורכי מסחר\n"
+#~ "או התאמה לצרכים כלשהים.  ניתן לעיין ברישיון\n"
+#~ "הציבורי הכללי של GNU לפרטים נוספים.\n"
+#~ "\n"
+#~ "ל־Gcalctool אמור היה להיות מצורף עותק של הרישיון הציבורי הכללי\n"
+#~ "של GNU; במידה שלא, יש לכתוב אל Free Software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#~ msgid "Gcalctool"
+#~ msgstr "Gcalctool"
+
+#~ msgid "© 1986–2010 The Gcalctool authors"
+#~ msgstr "© 1986–2010 יוצרי Gcalctool"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s degrees"
+#~ msgstr "%s מעלות"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "degree,degrees,deg"
+#~ msgstr "מעלה,מעלות"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s radians"
+#~ msgstr "%s רדיאנים"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "radian,radians,rad"
+#~ msgstr "רדיאן,רדיאנים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s gradians"
+#~ msgstr "%s גרדיאנים"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "gradian,gradians,grad"
+#~ msgstr "גרדיאן,גרדיאנים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s pc"
+#~ msgstr "%s פרסק"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "parsec,parsecs,pc"
+#~ msgstr "פרסק,פרסקים,פארסק,פארסקים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s ly"
+#~ msgstr "%s שנות אור"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "lightyear,lightyears,ly"
+#~ msgstr "שנת אור,שנות אור"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s au"
+#~ msgstr "%s י״א"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "au"
+#~ msgstr "י״א"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s nmi"
+#~ msgstr "%s ננומטר"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "nmi"
+#~ msgstr "ננומטר"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s mi"
+#~ msgstr "%s מיל"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "mile,miles,mi"
+#~ msgstr "מיל,מילים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s km"
+#~ msgstr "%s ק״מ"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "kilometer,kilometers,km,kms"
+#~ msgstr "קילומטר,קילומטרים,ק״מ"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s cb"
+#~ msgstr "%s כבל"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "cable,cables,cb"
+#~ msgstr "כבל,כבלים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s ftm"
+#~ msgstr "%s פאתום"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "fathom,fathoms,ftm"
+#~ msgstr "פאתום,פאתומים,פאדום,פאדומים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s m"
+#~ msgstr "%s מטרים"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "meter,meters,m"
+#~ msgstr "מטר,מטרים,מ׳,מ'"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s yd"
+#~ msgstr "%s יארד"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "yard,yards,yd"
+#~ msgstr "יארד,יארדים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s ft"
+#~ msgstr "%s רגל"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "foot,feet,ft"
+#~ msgstr "רגל,רגלים,רגליים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s in"
+#~ msgstr "%s אינצ׳ים"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "inch,inches,in"
+#~ msgstr "אינץ׳,אינצ׳ים,אינטש,אינטשים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s cm"
+#~ msgstr "%s ס״מ"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "centimeter,centimeters,cm,cms"
+#~ msgstr "סנטימטר,סנטימטרים,ס״מ"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s mm"
+#~ msgstr "%s מ״מ"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "millimeter,millimeters,mm"
+#~ msgstr "מילימטר,מילימטרים,מ״מ"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s μm"
+#~ msgstr "%s מיקרומטר"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "micrometer,micrometers,um"
+#~ msgstr "מיקרומטר,מיקרומטרים,מיקרון,מיקרונים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s nm"
+#~ msgstr "%s ננומטר"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "nanometer,nanometers,nm"
+#~ msgstr "ננומטר,ננומטרים,נ״מ,נ\"מ"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s ha"
+#~ msgstr "%s הקטאר"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "hectare,hectares,ha"
+#~ msgstr "הקטאר,הקטארים,ha"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s acres"
+#~ msgstr "%s אקר"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "acre,acres"
+#~ msgstr "אקר,אקרים,אקרות"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s m²"
+#~ msgstr "%s מ׳²"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "m²"
+#~ msgstr "מ׳²"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s cm²"
+#~ msgstr "%s ס״מ²"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "cm²"
+#~ msgstr "ס״מ²"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s mm²"
+#~ msgstr "%s מ״מ²"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "mm²"
+#~ msgstr "מ״מ²"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s m³"
+#~ msgstr "%s מ׳³"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "m³"
+#~ msgstr "מ׳³"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s gal"
+#~ msgstr "%s גלון"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "gallon,gallons,gal"
+#~ msgstr "גלון,גלונים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s L"
+#~ msgstr "%s ל׳"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "litre,litres,liter,liters,L"
+#~ msgstr "ליטר,ליטרים,ל׳,ל'"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s qt"
+#~ msgstr "%s qt"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "quart,quarts,qt"
+#~ msgstr "רבע גלון, רבעי גלון,qt"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s pt"
+#~ msgstr "%s פיינט"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "pint,pints,pt"
+#~ msgstr "פיינט,פיינטים,pt"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s mL"
+#~ msgstr "%s מ״ל"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+#~ msgstr "מיליליטר,מיליליטרים,מ״ל,מ\"ל"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s μL"
+#~ msgstr "%s מיקרוליטרים"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "mm³,μL,uL"
+#~ msgstr "מ״מ³,מיקרוליטר,מיקרוליטרים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s T"
+#~ msgstr "%s טון"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "tonne,tonnes"
+#~ msgstr "טון,טונות"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s kg"
+#~ msgstr "%s ק״ג"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+#~ msgstr "קילוגרם,קילוגרמים,ק״ג"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s lb"
+#~ msgstr "%s ליברות"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "pound,pounds,lb"
+#~ msgstr "ליברה,ליברות,פאונד,פאונדים,lbs"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s oz"
+#~ msgstr "%s אונקיות"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "ounce,ounces,oz"
+#~ msgstr "אונקיה,אונקיות,oz"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s g"
+#~ msgstr "%s ג׳"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "gram,grams,gramme,grammes,g"
+#~ msgstr "גרם,גרמים,ג׳,ג',g"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s years"
+#~ msgstr "%s שנים"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "year,years"
+#~ msgstr "שנה,שנים,שנתיים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s days"
+#~ msgstr "%s ימים"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "day,days"
+#~ msgstr "יום,ימים,יומיים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s hours"
+#~ msgstr "%s שעות"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "hour,hours"
+#~ msgstr "שעה,שעות,שעתיים"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s minutes"
+#~ msgstr "%s דקות"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "minute,minutes"
+#~ msgstr "דקה,דקות"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s s"
+#~ msgstr "%s ש׳"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "second,seconds,s"
+#~ msgstr "שנייה,שניות,ש׳,ש'"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s ms"
+#~ msgstr "%s מ״ש"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "millisecond,milliseconds,ms"
+#~ msgstr "מילישנייה,מילישניות,מ״ש"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s μs"
+#~ msgstr "%s מיקרושנייה"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "microsecond,microseconds,us,μs"
+#~ msgstr "מיקרושנייה,מיקרושניות"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s ˚C"
+#~ msgstr "%s ˚C"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "degC,˚C"
+#~ msgstr "מעלות צלזיוס,degC,˚C"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s ˚F"
+#~ msgstr "%s ˚F"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "degF,˚F"
+#~ msgstr "מעלות פרנהייט,˚F"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s K"
+#~ msgstr "%s K"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "K"
+#~ msgstr "K"
+#~ msgctxt "unit-format"
+
+#~ msgid "%s ˚R"
+#~ msgstr "%s ˚R"
+#~ msgctxt "unit-symbols"
+
+#~ msgid "degR,˚R,˚Ra"
+#~ msgstr "מעלות רנקין,˚R"
 
 #~ msgid "<i>x</i>"
 #~ msgstr "<i>x</i>"
