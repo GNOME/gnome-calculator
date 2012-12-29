@@ -7,20 +7,21 @@
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009.
 # Mate ORY <orymate at gmail d0t com>, 2006.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2009, 2010, 2011, 2012.
+# Balázs Úr <urbalazs at gmail dot com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-07-12 10:42+0000\n"
-"PO-Revision-Date: 2012-09-04 01:51+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
+"bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-11-14 11:15+0000\n"
+"PO-Revision-Date: 2012-12-29 13:01+0100\n"
+"Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. Accessible name for the inverse button
@@ -433,8 +434,8 @@ msgid "64-bit"
 msgstr "64 bit"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "Beállítások"
 
@@ -464,7 +465,7 @@ msgid "Show _thousands separators"
 msgstr "_Ezreselválasztók megjelenítése"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "Számológép"
 
@@ -817,7 +818,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Hiba: a periódusok számának pozitívnak kell lennie"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -827,7 +828,7 @@ msgstr ""
 "  %s – Matematikai számítások végrehajtása"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -843,7 +844,7 @@ msgstr ""
 "  --help-gtk                      GTK+ beállítások megjelenítése"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -868,7 +869,7 @@ msgstr ""
 "  --g-fatal-warnings              Minden figyelmeztetés végzetes legyen"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -878,16 +879,110 @@ msgstr ""
 "  -s, --solve <egyenlet>          A megadott egyenlet megoldása"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "A --solve kapcsolóhoz meg kell adni egy megoldandó egyenletet"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "Ismeretlen kapcsoló: „%s”"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "A súgófájl nem nyitható meg"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Dvornik László <dvornik at gnome dot hu>\n"
+"Kelemen Gábor <kelemeng at gnome dot hu>\n"
+"Tímár András <timar at gnome dot hu>"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"A Gcalctool szabad szoftver, terjesztheti és/vagy módosíthatja a Free "
+"Software\n"
+"Foundation által kiadott GNU General Public License második (vagy bármely\n"
+"későbbi) változatában foglaltak alapján.\n"
+"\n"
+"A Gcalctool programot abban a reményben terjesztjük, hogy hasznos lesz, de "
+"nem\n"
+"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\n"
+"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További\n"
+"részletekért tanulmányozza a GNU GPL licencet.\n"
+"\n"
+"A Gcalctool programhoz a GNU General Public License egy példánya is jár, ha "
+"nem\n"
+"kapta meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 "
+"Franklin\n"
+"St, Fifth Floor, Boston, MA 02110-1301, USA."
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2010 A Gcalctool szerzői"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "Számológép pénzügyi és tudományos üzemmódokkal."
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "Alap"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "Speciális"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "Pénzügyi"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "Programozói"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "Mód"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "Számológép névjegye"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "Súgó"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "Kilépés"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1243,33 +1338,41 @@ msgstr "A függvény („%s”) nincs meghatározva"
 msgid "Unknown conversion"
 msgstr "Ismeretlen konverzió"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, c-format
+#| msgid "Malformed expression"
+msgid "Malformed expression at token '%s'"
+msgstr "Hibás kifejezés a(z) „%s” tokennél"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "Hibás kifejezés"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
 msgstr "Számítás"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "A faktorizáláshoz egész szám szükséges"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "Nincs ép érték a bitenkénti eltoláshoz"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "A megjelenített érték nem egész"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
@@ -1319,107 +1422,6 @@ msgstr "Műszaki"
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "%d decimális _hely megjelenítése"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "A súgófájl nem nyitható meg"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Dvornik László <dvornik at gnome dot hu>\n"
-"Kelemen Gábor <kelemeng at gnome dot hu>\n"
-"Tímár András <timar at gnome dot hu>"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"A Gcalctool szabad szoftver, terjesztheti és/vagy módosíthatja a Free "
-"Software\n"
-"Foundation által kiadott GNU General Public License második (vagy bármely\n"
-"későbbi) változatában foglaltak alapján.\n"
-"\n"
-"A Gcalctool programot abban a reményben terjesztjük, hogy hasznos lesz, de "
-"nem\n"
-"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\n"
-"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További\n"
-"részletekért tanulmányozza a GNU GPL licencet.\n"
-"\n"
-"A Gcalctool programhoz a GNU General Public License egy példánya is jár, ha "
-"nem\n"
-"kapta meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 "
-"Franklin\n"
-"St, Fifth Floor, Boston, MA 02110-1301, USA."
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 A Gcalctool szerzői"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "Számológép pénzügyi és tudományos üzemmódokkal."
-
-#: ../src/math-window.c:362
-#| msgid "_Basic"
-msgid "Basic"
-msgstr "Alap"
-
-#: ../src/math-window.c:363
-#| msgid "_Advanced"
-msgid "Advanced"
-msgstr "Speciális"
-
-#: ../src/math-window.c:364
-#| msgid "_Financial"
-msgid "Financial"
-msgstr "Pénzügyi"
-
-#: ../src/math-window.c:365
-#| msgid "_Programming"
-msgid "Programming"
-msgstr "Programozói"
-
-#: ../src/math-window.c:366
-#| msgid "_Mode"
-msgid "Mode"
-msgstr "Mód"
-
-#: ../src/math-window.c:373
-#| msgid "Calculator"
-msgid "About Calculator"
-msgstr "Számológép névjegye"
-
-#: ../src/math-window.c:374
-#| msgid "_Help"
-msgid "Help"
-msgstr "Súgó"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "Kilépés"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
