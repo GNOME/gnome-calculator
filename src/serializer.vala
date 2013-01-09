@@ -26,6 +26,7 @@ public class Serializer : Object
     private bool show_zeroes;        /* Set if trailing zeroes should be shown. */
 
     private int number_base;         /* Numeric base */
+    private uint representation_base;/* Representation base. */
 
     private unichar radix;           /* Locale specific radix string. */
     private unichar tsep;            /* Locale specific thousands separator. */
@@ -46,6 +47,7 @@ public class Serializer : Object
         tsep_count = 3;
 
         this.number_base = number_base;
+        this.representation_base = number_base;
         leading_digits = 12;
         this.trailing_digits = trailing_digits;
         show_zeroes = false;
@@ -55,6 +57,12 @@ public class Serializer : Object
 
     public string to_string (Number x)
     {
+        /* For base conversion equation, use FIXED format. */
+        if (representation_base != number_base)
+        {
+            int n_digits = 0;
+            return cast_to_string (x, ref n_digits);
+        }
         switch (format)
         {
         default:
@@ -116,6 +124,16 @@ public class Serializer : Object
     public int get_base ()
     {
         return number_base;
+    }
+
+    public void set_representation_base (uint representation_base)
+    {
+        this.representation_base = representation_base;
+    }
+
+    public uint get_representation_base ()
+    {
+        return representation_base;
     }
 
     public void set_radix (unichar radix)
@@ -203,7 +221,7 @@ public class Serializer : Object
         var string = new StringBuilder.sized (1024);
 
         var x_real = x.real_component ();
-        cast_to_string_real (x_real, number_base, false, ref n_digits, string);
+        cast_to_string_real (x_real, (int) representation_base, false, ref n_digits, string);
         if (x.is_complex ())
         {
             var x_im = x.imaginary_component ();
@@ -217,7 +235,7 @@ public class Serializer : Object
 
             var s = new StringBuilder.sized (1024);
             int n_complex_digits = 0;
-            cast_to_string_real (x_im, 10, force_sign, ref n_complex_digits, s);
+            cast_to_string_real (x_im, (int) representation_base, force_sign, ref n_complex_digits, s);
             if (n_complex_digits > n_digits)
                 n_digits = n_complex_digits;
             if (s.str == "0" || s.str == "+0" || s.str == "−0")
@@ -270,7 +288,7 @@ public class Serializer : Object
         var i = 0;
         do
         {
-            if (this.number_base == 10 && show_tsep && i == tsep_count)
+            if (number_base == 10 && show_tsep && i == tsep_count)
             {
                 string.prepend_unichar (tsep);
                 i = 0;

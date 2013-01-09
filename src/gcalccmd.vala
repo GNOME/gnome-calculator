@@ -25,8 +25,10 @@ static void solve (string equation)
     e.angle_units = AngleUnit.DEGREES;
 
     ErrorCode ret;
-    var z = e.parse (out ret, null);
+    uint representation_base;
+    var z = e.parse (out representation_base, out ret);
 
+    result_serializer.set_representation_base (representation_base);
     if (z != null)
         stdout.printf ("%s\n", result_serializer.to_string (z));
     else if (ret == ErrorCode.MP)

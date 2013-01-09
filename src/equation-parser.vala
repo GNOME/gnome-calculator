@@ -622,6 +622,32 @@ public class ConvertNode : LRNode
     }
 }
 
+public class ConvertBaseNode : ParseNode
+{
+    public ConvertBaseNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string? value)
+    {
+        base (parser, token, precedence, associativity, value);
+    }
+
+    public override Number? solve ()
+    {
+        if (value == "hex" || value == "hexadecimal")
+            parser.set_representation_base (16);
+        else if (value == "dec" || value == "decimal")
+            parser.set_representation_base (10);
+        else if (value == "oct" || value == "octal")
+            parser.set_representation_base (8);
+        else if (value == "bin" || value == "binary")
+            parser.set_representation_base (2);
+        else
+        {
+            parser.set_error (ErrorCode.UNKNOWN_CONVERSION, token.text, token.start_index, token.end_index);
+            return null;
+        }
+        return left.solve ();
+    }
+}
+
 public class ConvertNumberNode : ParseNode
 {
     public ConvertNumberNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
@@ -674,6 +700,7 @@ public class Parser
     private string error_token;
     private int error_token_start;
     private int error_token_end;
+    private uint representation_base;
 
     public Parser (string input, int number_base, int wordlen)
     {
@@ -683,6 +710,7 @@ public class Parser
         depth_level = 0;
         right_most = null;
         this.number_base = number_base;
+        this.representation_base = number_base;
         this.wordlen = wordlen;
         error = ErrorCode.NONE;
         error_token = null;
@@ -696,6 +724,11 @@ public class Parser
         error_token = token;
         error_token_start = input.char_count (token_start);
         error_token_end = input.char_count (token_end);
+    }
+
+    public void set_representation_base (uint new_base)
+    {
+        representation_base = new_base;
     }
 
     public virtual bool variable_is_defined (string name)
@@ -728,8 +761,9 @@ public class Parser
     }
 
     /* Start parsing input string. And call evaluate on success. */
-    public Number? parse (out ErrorCode error_code, out string? error_token, out uint error_start, out uint error_end)
+    public Number? parse (out uint representation_base, out ErrorCode error_code, out string? error_token, out uint error_start, out uint error_end)
     {
+        representation_base = number_base;
         /* Scan string and split into tokens */
         lexer.scan ();
 
@@ -785,6 +819,7 @@ public class Parser
             return null;
         }
 
+        representation_base = this.representation_base;
         error_code = ErrorCode.NONE;
         error_token = null;
         error_start = 0;
@@ -996,19 +1031,41 @@ public class Parser
             }
             else if (token.type == LexerTokenType.IN)
             {
-                lexer.roll_back ();
-                lexer.roll_back ();
+                if (!check_base ())
+                {
+                    lexer.roll_back ();
+                    lexer.roll_back ();
 
-                if (!unit ())
-                    return false;
-                lexer.get_next_token ();
+                    if (!unit ())
+                        return false;
+                    lexer.get_next_token ();
 
-                insert_into_tree (new ConvertNode (this, token, 0, get_associativity (token)));
+                    insert_into_tree (new ConvertNode (this, token, 0, get_associativity (token)));
 
-                if (!unit ())
-                    return false;
+                    if (!unit ())
+                        return false;
 
-                return true;
+                    return true;
+                }
+                else
+                {
+                    token = lexer.get_next_token ();
+                    if (token.type == LexerTokenType.VARIABLE)
+                    {
+                        insert_into_tree (new VariableNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old)));
+                        insert_into_tree (new ConvertBaseNode (this, token, 0, get_associativity (token), token.text));
+                        return true;
+                    }
+                    else
+                    {
+                        lexer.roll_back ();
+                        lexer.roll_back ();
+                        lexer.roll_back ();
+                        set_error (ErrorCode.UNKNOWN_CONVERSION, token.text, token.start_index, token.end_index);
+                        return false;
+                    }
+
+                }
             }
             else if (token.type == LexerTokenType.SUP_NUMBER)
             {
@@ -1119,6 +1176,24 @@ public class Parser
                     return true;
                 }
             }
+            else if (token.type == LexerTokenType.IN)
+            {
+                token = lexer.get_next_token ();
+                if (token.type == LexerTokenType.VARIABLE)
+                {
+                    insert_into_tree (new ConstantNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token)));
+                    insert_into_tree (new ConvertBaseNode (this, token, 0, get_associativity (token), token.text));
+                    return true;
+                }
+                else
+                {
+                    lexer.roll_back ();
+                    lexer.roll_back ();
+                    lexer.roll_back ();
+                    set_error (ErrorCode.UNKNOWN_CONVERSION, token.text, token.start_index, token.end_index);
+                    return false;
+                }
+            }
             else
             {
                 lexer.roll_back ();
@@ -1135,6 +1210,21 @@ public class Parser
                 return false;
             return true;
         }
+    }
+
+    private bool check_base ()
+    {
+        var token = lexer.get_next_token ();
+        foreach (string s in "hex,hexadecimal,dec,decimal,oct,octal,bin,binary".split (","))
+        {
+            if (token.text == s)
+            {
+                lexer.roll_back ();
+                return true;
+            }
+        }
+        lexer.roll_back ();
+        return false;
     }
 
     private bool unit ()

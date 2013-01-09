@@ -20,6 +20,7 @@ public enum NumberMode
 private class MathEquationState
 {
     public Number ans;             /* Previously calculated answer */
+    public uint ans_base;          /* Representation base of previous answer. */
     public string expression;      /* Expression entered by user */
     public int ans_start;          /* Start character for ans variable in expression */
     public int ans_end;            /* End character for ans variable in expression */
@@ -39,6 +40,7 @@ private class SolveData
     public string error;
     public uint error_start;
     public uint error_end;
+    public uint representation_base;
 }
 
 public class MathEquation : Gtk.TextBuffer
@@ -193,6 +195,7 @@ public class MathEquation : Gtk.TextBuffer
         queue = new AsyncQueue<SolveData> ();
 
         state.ans = new Number.integer (0);
+        state.ans_base = 10;
 
         ans_tag = create_tag (null, "weight", Pango.Weight.BOLD, null);
     }
@@ -223,7 +226,9 @@ public class MathEquation : Gtk.TextBuffer
         get_iter_at_mark (out ans_end, ans_end_mark);
 
         var orig_ans_text = get_text (ans_start, ans_end, false);
+        serializer.set_representation_base (state.ans_base);
         var ans_text = serializer.to_string (state.ans);
+        serializer.set_representation_base (serializer.get_base ());
         if (orig_ans_text != ans_text)
         {
             in_undo_operation = true;
@@ -376,6 +381,7 @@ public class MathEquation : Gtk.TextBuffer
 
         var s = new MathEquationState ();
         s.ans = state.ans;
+        s.ans_base = state.ans_base;
         s.expression = display;
         s.ans_start = ans_start;
         s.ans_end = ans_end;
@@ -427,6 +433,7 @@ public class MathEquation : Gtk.TextBuffer
         in_undo_operation = true;
 
         state.ans = s.ans;
+        state.ans_base = s.ans_base;
         set_text (s.expression, -1);
         Gtk.TextIter cursor;
         get_iter_at_offset (out cursor, s.cursor);
@@ -738,10 +745,17 @@ public class MathEquation : Gtk.TextBuffer
         clear_ans (false);
     }
 
-    public void set_number (Number x)
+    public void set_number (Number x, uint representation_base = 0)
     {
+        if (representation_base != 0)
+            serializer.set_representation_base (representation_base);
+
         /* Show the number in the user chosen format */
         var text = serializer.to_string (x);
+
+        if (representation_base != 0)
+            serializer.set_representation_base (serializer.get_base ());
+
         set_text (text, -1);
         state.ans = x;
 
@@ -824,14 +838,14 @@ public class MathEquation : Gtk.TextBuffer
         }
     }
 
-    private Number? parse (string text, out ErrorCode error_code = null, out string error_token = null, out uint error_start, out uint error_end)
+    private Number? parse (string text, out uint representation_base, out ErrorCode error_code = null, out string error_token = null, out uint error_start, out uint error_end)
     {
         var equation = new MEquation (this, text);
         equation.base = serializer.get_base ();
         equation.wordlen = word_size;
         equation.angle_units = angle_units;
 
-        return equation.parse (out error_code, out error_token, out error_start, out error_end);
+        return equation.parse (out representation_base, out error_code, out error_token, out error_start, out error_end);
     }
 
     /*
@@ -860,8 +874,9 @@ public class MathEquation : Gtk.TextBuffer
 
         ErrorCode error_code;
         string error_token;
-        uint error_start, error_end;
-        var z = parse (text, out error_code, out error_token, out error_start, out error_end);
+        uint error_start, error_end, representation_base;
+        var z = parse (text, out representation_base, out error_code, out error_token, out error_start, out error_end);
+        solvedata.representation_base = representation_base;
         switch (error_code)
         {
             case ErrorCode.NONE:
@@ -947,7 +962,7 @@ public class MathEquation : Gtk.TextBuffer
             notify_property ("error-token-end");
         }
         else if (result.number_result != null)
-            set_number (result.number_result);
+            set_number (result.number_result, result.representation_base);
         else if (result.text_result != null)
             set (result.text_result);
 

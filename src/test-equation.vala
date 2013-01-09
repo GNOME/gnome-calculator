@@ -33,7 +33,8 @@ private void test (string expression, string expected, ErrorCode expected_error)
     equation.angle_units = angle_units;
 
     ErrorCode error;
-    var result = equation.parse (out error, null);
+    uint representation_base;
+    var result = equation.parse (out representation_base, out error);
 
     if (result == null)
     {
@@ -56,6 +57,7 @@ private void test (string expression, string expected, ErrorCode expected_error)
     else
     {
         var serializer = new Serializer (DisplayFormat.FIXED, number_base, 9);
+        serializer.set_representation_base (representation_base);
         var result_str = serializer.to_string (result);
 
         if (expected_error != ErrorCode.NONE)
@@ -590,12 +592,41 @@ private void test_equations ()
     //test ("¬¬10₂", "10₂", 0);
 }
 
+private void test_base_conversion ()
+{
+    number_base = 10;
+    wordlen = 32;
+    angle_units = AngleUnit.DEGREES;
+    enable_conversions = true;
+    enable_variables = true;
+
+    test ("10 in bin", "1010₂", 0);
+    test ("10 in oct", "12₈", 0);
+    test ("10 in dec", "10", 0);
+    test ("10 in hex", "A₁₆", 0);
+    test ("10 in binary", "1010₂", 0);
+    test ("10 in octal", "12₈", 0);
+    test ("10 in decimal", "10", 0);
+    test ("10 in hexadecimal", "A₁₆", 0);
+
+    test ("1010₂ in dec", "10", 0);
+    test ("12₈ in dec", "10", 0);
+    test ("10 in dec", "10", 0);
+    test ("A₁₆ in dec", "10", 0);
+
+    test ("x in bin", "10₂", 0);
+    test ("x in oct", "2₈", 0);
+    test ("x in dec", "2", 0);
+    test ("x in hex", "2₁₆", 0);
+}
+
 public int main (string args[])
 {
     Intl.setlocale (LocaleCategory.ALL, "C");
 
     test_conversions ();
     test_equations ();
+    test_base_conversion ();
 
     if (fail_count == 0)
         stdout.printf ("Passed all %i tests\n", pass_count);
