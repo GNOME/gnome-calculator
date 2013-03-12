@@ -5,7 +5,7 @@
 # Martin Willemoes Hansen <mwh@sysrq.dk>, 2004, 05.
 # Lasse Bang Mikkelsen <lbm@fatalerror.dk>, 2006.
 # Peter Bach <bach.peter@gmail.com>, 2007.
-# Kenneth Nielsen <k.nielsen81@gmail.com>, 2011.
+# Kenneth Nielsen <k.nielsen81@gmail.com>, 2011, 2013
 # Ask Hjorth Larsen <asklarsen@gmail.com>, 2008, 09, 10, 11, 12.
 #
 # Husk at tilføje dig i credit-listen (besked id "translator-credits")
@@ -25,9 +25,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-15 06:32+0200\n"
-"PO-Revision-Date: 2012-10-12 17:35+0200\n"
-"Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
+"POT-Creation-Date: 2013-03-12 23:36+0100\n"
+"PO-Revision-Date: 2013-03-12 23:29+0100\n"
+"Last-Translator: Kenneth Nielsen <k.nielsen81@gmail.com>\n"
 "Language-Team: Dansk <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -425,111 +425,117 @@ msgstr "_Tegn:"
 msgid "_Insert"
 msgstr "_Indsæt"
 
+#. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.vala:29
+#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "Lommeregner"
 
-#: ../data/gcalctool.desktop.in.h:2
+#: ../data/gnome-calculator.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Udfør aritmetiske, videnskabelige eller finansielle udregninger"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
+#: ../data/gnome-calculator.desktop.in.h:3
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr "udregning;aritmetik;videnskabelig;finansiel;"
+
+#: ../data/org.gnome.calculator.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "Værdi for nøjagtighed"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+#: ../data/org.gnome.calculator.gschema.xml.in.h:2
 msgid "The number of digits displayed after the numeric point"
 msgstr "Antallet af cifre, der vises efter kommaet"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+#: ../data/org.gnome.calculator.gschema.xml.in.h:3
 msgid "Word size"
 msgstr "Word-størrelse"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+#: ../data/org.gnome.calculator.gschema.xml.in.h:4
 msgid "The size of the words used in bitwise operations"
 msgstr "Størrelsen af word, der bruges i bitvise operationer"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+#: ../data/org.gnome.calculator.gschema.xml.in.h:5
 msgid "Numeric Base"
 msgstr "Numerisk grundtal"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
+#: ../data/org.gnome.calculator.gschema.xml.in.h:6
 msgid "The numeric base"
 msgstr "Numerisk grundtal"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
+#: ../data/org.gnome.calculator.gschema.xml.in.h:7
 msgid "Show Thousands Separators"
 msgstr "Vis tusinde-adskillere"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+#: ../data/org.gnome.calculator.gschema.xml.in.h:8
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Angiver om tusindtalsseparatorer vises i store tal."
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
+#: ../data/org.gnome.calculator.gschema.xml.in.h:9
 msgid "Show Trailing Zeroes"
 msgstr "Vis afsluttende nuller"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
+#: ../data/org.gnome.calculator.gschema.xml.in.h:10
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr ""
 "Angiver om nuller, der følger efter kommaet, skal indgå i den viste værdi."
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
+#: ../data/org.gnome.calculator.gschema.xml.in.h:11
 msgid "Number format"
 msgstr "Talformat"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+#: ../data/org.gnome.calculator.gschema.xml.in.h:12
 msgid "The format to display numbers in"
 msgstr "Formatet som tal vises i"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+#: ../data/org.gnome.calculator.gschema.xml.in.h:13
 msgid "Angle units"
 msgstr "Vinkelenheder"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+#: ../data/org.gnome.calculator.gschema.xml.in.h:14
 msgid "The angle units to use"
 msgstr "Vinkelenhed, der skal bruges"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+#: ../data/org.gnome.calculator.gschema.xml.in.h:15
 msgid "Button mode"
 msgstr "Knaptilstand"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+#: ../data/org.gnome.calculator.gschema.xml.in.h:16
 msgid "The button mode"
 msgstr "Knaptilstanden"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+#: ../data/org.gnome.calculator.gschema.xml.in.h:17
 msgid "Source currency"
 msgstr "Kildevaluta"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+#: ../data/org.gnome.calculator.gschema.xml.in.h:18
 msgid "Currency of the current calculation"
 msgstr "Valuta for den aktuelle beregning"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+#: ../data/org.gnome.calculator.gschema.xml.in.h:19
 msgid "Target currency"
 msgstr "Målvaluta"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+#: ../data/org.gnome.calculator.gschema.xml.in.h:20
 msgid "Currency to convert the current calculation into"
 msgstr "Valuta, som den aktuelle beregning skal konverteres til"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
+#: ../data/org.gnome.calculator.gschema.xml.in.h:21
 msgid "Source units"
 msgstr "Kildeenheder"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+#: ../data/org.gnome.calculator.gschema.xml.in.h:22
 msgid "Units of the current calculation"
 msgstr "Enheder for den aktuelle beregning"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+#: ../data/org.gnome.calculator.gschema.xml.in.h:23
 msgid "Target units"
 msgstr "Målenheder"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
+#: ../data/org.gnome.calculator.gschema.xml.in.h:24
 msgid "Units to convert the current calculation into"
 msgstr "Den aktuelle beregning skal omregnes til disse enheder"
 
@@ -778,122 +784,50 @@ msgstr "Sydafrikanske rand"
 msgid "Error: the number of periods must be positive"
 msgstr "Fejl: Antallet af perioder skal være positivt"
 
-#: ../src/gcalctool.vala:78
+#: ../src/gnome-calculator.vala:80
 msgid "Basic"
 msgstr "Basalt"
 
-#: ../src/gcalctool.vala:79
+#: ../src/gnome-calculator.vala:81
 msgid "Advanced"
 msgstr "Avanceret"
 
-#: ../src/gcalctool.vala:80
+#: ../src/gnome-calculator.vala:82
 msgid "Financial"
 msgstr "Finansiel"
 
-#: ../src/gcalctool.vala:81
+#: ../src/gnome-calculator.vala:83
 msgid "Programming"
 msgstr "Programmering"
 
-#: ../src/gcalctool.vala:82
+#: ../src/gnome-calculator.vala:84
 msgid "Mode"
 msgstr "Tilstand"
 
 #. Title of preferences dialog
-#: ../src/gcalctool.vala:85 ../src/math-preferences.vala:26
+#: ../src/gnome-calculator.vala:87 ../src/math-preferences.vala:26
 msgid "Preferences"
 msgstr "Indstillinger"
 
-#: ../src/gcalctool.vala:89
+#: ../src/gnome-calculator.vala:91
 msgid "About Calculator"
 msgstr "Om Lommeregner"
 
-#: ../src/gcalctool.vala:90
+#: ../src/gnome-calculator.vala:92
 msgid "Help"
 msgstr "Hjælp"
 
-#: ../src/gcalctool.vala:91
+#: ../src/gnome-calculator.vala:93
 msgid "Quit"
 msgstr "Afslut"
 
-#. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.vala:162
-#, c-format
-msgid ""
-"Usage:\n"
-"  %s — Perform mathematical calculations"
-msgstr ""
-"Brug:\n"
-"  %s — Foretag matematiske udregninger"
-
-#. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.vala:167
-#, c-format
-msgid ""
-"Help Options:\n"
-"  -v, --version                   Show release version\n"
-"  -h, -?, --help                  Show help options\n"
-"  --help-all                      Show all help options\n"
-"  --help-gtk                      Show GTK+ options"
-msgstr ""
-"Hjælpetilvalg:\n"
-"  -v, --version                   Vis versionsnummeret\n"
-"  -h, -?, --help                  Vis hjælpetilvalg\n"
-"  --help-all                      Vis alle hjælpetilvalg\n"
-"  --help-gtk                      Vis GTK+-tilvalg"
-
-#. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.vala:173
-#, c-format
-msgid ""
-"GTK+ Options:\n"
-"  --class=CLASS                   Program class as used by the window "
-"manager\n"
-"  --name=NAME                     Program name as used by the window "
-"manager\n"
-"  --screen=SCREEN                 X screen to use\n"
-"  --sync                          Make X calls synchronous\n"
-"  --gtk-module=MODULES            Load additional GTK+ modules\n"
-"  --g-fatal-warnings              Make all warnings fatal"
-msgstr ""
-"GTK+-tilvalg:\n"
-"  --class=KLASSE                  Programklasse, som den bruges af\n"
-"                                    vindueshåndteringen\n"
-"  --name=NAVN                     Programnavnet, som det bruges af\n"
-"                                    vindueshåndteringen\n"
-"  --screen=SKÆRM                  X-skærm, der skal bruges\n"
-"  --sync                          Gør X-kald synkrone\n"
-"  --gtk-module=MODULER            Indlæs ekstra GTK+-moduler\n"
-"  --g-fatal-warnings              Gør alle advarsler fatale"
-
-#. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.vala:180
-#, c-format
-msgid ""
-"Application Options:\n"
-"  -s, --solve <equation>          Solve the given equation"
-msgstr ""
-"Programtilvalg:\n"
-"  -s, --solve <ligning>           Løs den givne ligning"
-
-#. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.vala:220
-#, c-format
-msgid "Argument --solve requires an equation to solve"
-msgstr "Argumentet --solve kræver en ligning, der skal løses"
-
-#. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.vala:230
-#, c-format
-msgid "Unknown argument '%s'"
-msgstr "Ukendt argument \"%s\""
-
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gcalctool.vala:321
+#: ../src/gnome-calculator.vala:228
 msgid "Unable to open help file"
 msgstr "Kan ikke åbne hjælpefil"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gcalctool.vala:351
+#: ../src/gnome-calculator.vala:258
 msgid "translator-credits"
 msgstr ""
 "Ole Laursen\n"
@@ -905,52 +839,22 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#. The license this software is under (GPL2+)
-#: ../src/gcalctool.vala:354
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Gcalctool er fri software. Du kan redistribuere og/eller modificere det\n"
-"under de betingelserne som er angivet i GNU General Public License, som\n"
-"er udgivet af Free Software Foundation. Enten version 2 af licensen\n"
-"eller (efter eget valg) enhver senere version.\n"
-"\n"
-"Gcalctool distribueres i håb om at det vil vise sig nyttigt, men UDEN "
-"NOGEN \n"
-"FORM FOR GARANTI, uden selv de underforståede garantier omkring \n"
-"SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere detaljer kan \n"
-"læses i GNU General Public License.\n"
-"\n"
-"Du skulle have modtaget en kopi af GNU General Public License sammen med\n"
-"Gcalctool. Hvis ikke, så skriv til Free software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/gcalctool.vala:359
-msgid "Gcalctool"
-msgstr "Lommeregner"
-
-#. Copyright notice in the about dialog
-#: ../src/gcalctool.vala:363
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 Forfatterne af Gcalctool"
-
 #. Short description in the about dialog
-#: ../src/gcalctool.vala:367
+#: ../src/gnome-calculator.vala:272
 msgid "Calculator with financial and scientific modes."
 msgstr "Lommeregner med finansiel og videnskabelig tilstand."
+
+#: ../src/gnome-calculator.vala:305
+msgid "Solve given equation"
+msgstr "Løs given ligning"
+
+#: ../src/gnome-calculator.vala:313
+msgid "Start with given equation"
+msgstr "Start med given ligning"
+
+#: ../src/gnome-calculator.vala:322
+msgid "Show release version"
+msgstr "Vis udgivelsesversion"
 
 #. Configure buttons
 #. Tooltip for the Pi button
@@ -1275,73 +1179,73 @@ msgid "Switch conversion units"
 msgstr "Byt om på konverteringsenheder"
 
 #. Digits localized for the given language
-#: ../src/math-equation.vala:169
+#: ../src/math-equation.vala:171
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.vala:480
+#: ../src/math-equation.vala:487
 msgid "No undo history"
 msgstr "Ingen fortrydelseshistorik"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.vala:496
+#: ../src/math-equation.vala:503
 msgid "No redo history"
 msgstr "Ingen fortrydelseshistorik"
 
-#: ../src/math-equation.vala:725
+#: ../src/math-equation.vala:732
 msgid "No sane value to store"
 msgstr "Ingen gyldig værdi til at lagre"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.vala:873
+#: ../src/math-equation.vala:888
 msgid "Overflow. Try a bigger word size"
 msgstr "Overløb. Prøv at øge word-størrelsen"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.vala:878
+#: ../src/math-equation.vala:893
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Ukendt variabel \"%s\""
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.vala:885
+#: ../src/math-equation.vala:900
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funktionen \"%s\" er ikke defineret"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.vala:892
+#: ../src/math-equation.vala:907
 msgid "Unknown conversion"
 msgstr "Ukendt konvertering"
 
-#: ../src/math-equation.vala:900
+#: ../src/math-equation.vala:915
 #, c-format
 msgid "Malformed expression at token '%s'"
 msgstr "Misdannet udtryk ved symbolet \"%s\""
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.vala:905 ../src/math-equation.vala:910
+#: ../src/math-equation.vala:920 ../src/math-equation.vala:925
 msgid "Malformed expression"
 msgstr "Misdannet udtryk"
 
-#: ../src/math-equation.vala:921
+#: ../src/math-equation.vala:936
 msgid "Calculating"
 msgstr "Udregner"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.vala:1048
+#: ../src/math-equation.vala:1063
 msgid "Need an integer to factorize"
 msgstr "Kræver et heltal at faktorisere"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../src/math-equation.vala:1102
+#: ../src/math-equation.vala:1117
 msgid "No sane value to bitwise shift"
 msgstr "Ingen gyldig værdi til at udføre bitvis-skift"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.vala:1116
+#: ../src/math-equation.vala:1131
 msgid "Displayed value not an integer"
 msgstr "Den viste værdi er ikke et heltal"
 
@@ -1420,22 +1324,22 @@ msgstr "Word-_størrelse:"
 #. Word size combo: 8 bits
 #: ../src/math-preferences.vala:171
 msgid "8 bits"
-msgstr ""
+msgstr "8 bit"
 
 #. Word size combo: 16 bits
 #: ../src/math-preferences.vala:173
 msgid "16 bits"
-msgstr ""
+msgstr "16 bit"
 
 #. Word size combo: 32 bits
 #: ../src/math-preferences.vala:175
 msgid "32 bits"
-msgstr ""
+msgstr "32 bit"
 
 #. Word size combo: 64 bits
 #: ../src/math-preferences.vala:177
 msgid "64 bits"
-msgstr ""
+msgstr "64 bit"
 
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/number.vala:652
@@ -1753,6 +1657,98 @@ msgstr "Valuta"
 #, c-format
 msgid "%s%%s"
 msgstr "%s %%s"
+
+#~ msgid ""
+#~ "Usage:\n"
+#~ "  %s — Perform mathematical calculations"
+#~ msgstr ""
+#~ "Brug:\n"
+#~ "  %s — Foretag matematiske udregninger"
+
+#~ msgid ""
+#~ "Help Options:\n"
+#~ "  -v, --version                   Show release version\n"
+#~ "  -h, -?, --help                  Show help options\n"
+#~ "  --help-all                      Show all help options\n"
+#~ "  --help-gtk                      Show GTK+ options"
+#~ msgstr ""
+#~ "Hjælpetilvalg:\n"
+#~ "  -v, --version                   Vis versionsnummeret\n"
+#~ "  -h, -?, --help                  Vis hjælpetilvalg\n"
+#~ "  --help-all                      Vis alle hjælpetilvalg\n"
+#~ "  --help-gtk                      Vis GTK+-tilvalg"
+
+#~ msgid ""
+#~ "GTK+ Options:\n"
+#~ "  --class=CLASS                   Program class as used by the window "
+#~ "manager\n"
+#~ "  --name=NAME                     Program name as used by the window "
+#~ "manager\n"
+#~ "  --screen=SCREEN                 X screen to use\n"
+#~ "  --sync                          Make X calls synchronous\n"
+#~ "  --gtk-module=MODULES            Load additional GTK+ modules\n"
+#~ "  --g-fatal-warnings              Make all warnings fatal"
+#~ msgstr ""
+#~ "GTK+-tilvalg:\n"
+#~ "  --class=KLASSE                  Programklasse, som den bruges af\n"
+#~ "                                    vindueshåndteringen\n"
+#~ "  --name=NAVN                     Programnavnet, som det bruges af\n"
+#~ "                                    vindueshåndteringen\n"
+#~ "  --screen=SKÆRM                  X-skærm, der skal bruges\n"
+#~ "  --sync                          Gør X-kald synkrone\n"
+#~ "  --gtk-module=MODULER            Indlæs ekstra GTK+-moduler\n"
+#~ "  --g-fatal-warnings              Gør alle advarsler fatale"
+
+#~ msgid ""
+#~ "Application Options:\n"
+#~ "  -s, --solve <equation>          Solve the given equation"
+#~ msgstr ""
+#~ "Programtilvalg:\n"
+#~ "  -s, --solve <ligning>           Løs den givne ligning"
+
+#~ msgid "Argument --solve requires an equation to solve"
+#~ msgstr "Argumentet --solve kræver en ligning, der skal løses"
+
+#~ msgid "Unknown argument '%s'"
+#~ msgstr "Ukendt argument \"%s\""
+
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+#~ msgstr ""
+#~ "Gcalctool er fri software. Du kan redistribuere og/eller modificere det\n"
+#~ "under de betingelserne som er angivet i GNU General Public License, som\n"
+#~ "er udgivet af Free Software Foundation. Enten version 2 af licensen\n"
+#~ "eller (efter eget valg) enhver senere version.\n"
+#~ "\n"
+#~ "Gcalctool distribueres i håb om at det vil vise sig nyttigt, men UDEN "
+#~ "NOGEN \n"
+#~ "FORM FOR GARANTI, uden selv de underforståede garantier omkring \n"
+#~ "SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere detaljer "
+#~ "kan \n"
+#~ "læses i GNU General Public License.\n"
+#~ "\n"
+#~ "Du skulle have modtaget en kopi af GNU General Public License sammen med\n"
+#~ "Gcalctool. Hvis ikke, så skriv til Free software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#~ msgid "Gcalctool"
+#~ msgstr "Lommeregner"
+
+#~ msgid "© 1986–2010 The Gcalctool authors"
+#~ msgstr "© 1986–2010 Forfatterne af Gcalctool"
 
 #~ msgid "8-bit"
 #~ msgstr "8-bit"
