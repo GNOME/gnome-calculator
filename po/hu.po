@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-14 21:05+0000\n"
-"PO-Revision-Date: 2013-03-15 13:07+0100\n"
+"POT-Creation-Date: 2013-03-15 12:07+0000\n"
+"PO-Revision-Date: 2013-03-15 13:13+0100\n"
 "Last-Translator: Balázs Úr <urbalazs at gmail dot com>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -24,23 +24,98 @@ msgstr ""
 "X-Generator: Lokalize 1.2\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:2 ../data/buttons-programming.ui.h:24
+msgid "Inverse"
+msgstr "Invertálás"
+
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:4 ../data/buttons-programming.ui.h:2
+msgid "Factorize"
+msgstr "Faktorizálás"
+
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:6 ../data/buttons-programming.ui.h:22
+msgid "Factorial"
+msgstr "Faktoriális"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:8 ../data/buttons-basic.ui.h:2
+#: ../data/buttons-financial.ui.h:76 ../data/buttons-programming.ui.h:6
+msgid "="
+msgstr "="
+
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:10 ../data/buttons-programming.ui.h:8
+msgid "Subscript"
+msgstr "Alsó index"
+
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:12 ../data/buttons-programming.ui.h:10
+#| msgid "Subscript"
+msgid "Superscript"
+msgstr "Felső index"
+
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:14
+msgid "Scientific Exponent"
+msgstr "Tudományos kitevő"
+
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#. Tooltip for the memory button
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
+#: ../src/math-buttons.vala:384
+msgid "Memory"
+msgstr "Memória"
+
+#. The label on the memory button
+#: ../data/buttons-advanced.ui.h:18 ../data/buttons-financial.ui.h:74
+#: ../data/buttons-programming.ui.h:14
+#| msgid "x2"
+msgid "x"
+msgstr "x"
+
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:4
+#| msgid "Absolute value"
+msgid "Absolute Value"
+msgstr "Abszolút érték"
+
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:22 ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:98 ../data/buttons-programming.ui.h:26
+msgid "Exponent"
+msgstr "Kitevő"
+
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:12
+msgid "Store"
+msgstr "Tárolás"
+
 #. Title of Compounding Term dialog
-#: ../data/financial.ui.h:2
+#. Tooltip for the compounding term button
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:400
 msgid "Compounding Term"
 msgstr "Időszakok száma"
 
+#. Payment Period Dialog: Button to calculate result
+#: ../data/buttons-financial.ui.h:4
+msgid "C_alculate"
+msgstr "S_zámolás"
+
 #. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/financial.ui.h:4
+#: ../data/buttons-financial.ui.h:6
 msgid "Present _Value:"
 msgstr "_Jelenérték:"
 
 #. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/financial.ui.h:6
+#: ../data/buttons-financial.ui.h:8
 msgid "Periodic Interest _Rate:"
 msgstr "_Időszakra vonatkozó kamatláb:"
 
 #. Compounding Term Dialog: Description of calculation
-#: ../data/financial.ui.h:8
+#: ../data/buttons-financial.ui.h:10
 msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
@@ -51,22 +126,17 @@ msgstr ""
 "időszakonkénti kamatláb mellett."
 
 #. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/financial.ui.h:10
+#: ../data/buttons-financial.ui.h:12
 msgid "_Future Value:"
 msgstr "Jö_vőérték:"
 
-#. Payment Period Dialog: Button to calculate result
-#: ../data/financial.ui.h:12
-msgid "C_alculate"
-msgstr "S_zámolás"
-
 #. Title of Double-Declining Depreciation dialog
-#: ../data/financial.ui.h:14
+#: ../data/buttons-financial.ui.h:14
 msgid "Double-Declining Depreciation"
 msgstr "Progresszív értékcsökkenési leírás"
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:16
+#: ../data/buttons-financial.ui.h:16
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -75,27 +145,28 @@ msgstr ""
 "kétszeresen csökkenő egyenleg módszer használatával."
 
 #. Gross Profit Margin Dialog: Label before cost input
-#: ../data/financial.ui.h:18
+#: ../data/buttons-financial.ui.h:18
 msgid "C_ost:"
 msgstr "_Költség:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/financial.ui.h:20
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:20
 msgid "_Life:"
 msgstr "Él_ettartam:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/financial.ui.h:22
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:22
 msgid "_Period:"
 msgstr "_Időszak:"
 
 #. Title of Future Value dialog
-#: ../data/financial.ui.h:24
+#. Tooltip for the future value button
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:404
 msgid "Future Value"
 msgstr "Jövőérték"
 
 #. Future Value Dialog: Description of calculation
-#: ../data/financial.ui.h:26
+#: ../data/buttons-financial.ui.h:26
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -106,23 +177,24 @@ msgstr ""
 "folyamán."
 
 #. Payment Period Dialog: Label before periodic payment input
-#: ../data/financial.ui.h:28
+#: ../data/buttons-financial.ui.h:28
 msgid "_Periodic Payment:"
 msgstr "_Rendszeres pénzáramlás:"
 
 #. Present Value Dialog: Label before number of periods input
-#: ../data/financial.ui.h:30
-#| msgid "_Number of Periods:"
-msgid "_Number Of Periods:"
+#: ../data/buttons-financial.ui.h:30
+#| msgid "_Number Of Periods:"
+msgid "_Number of Periods:"
 msgstr "I_dőszakok száma:"
 
 #. Title of Gross Profit Margin dialog
-#: ../data/financial.ui.h:32 ../data/gcalctool.ui.h:120
+#. Tooltip for the gross profit margin button
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:418
 msgid "Gross Profit Margin"
 msgstr "Bruttó haszon"
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: ../data/financial.ui.h:34
+#: ../data/buttons-financial.ui.h:34
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -131,17 +203,18 @@ msgstr ""
 "bruttó haszon alapján."
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: ../data/financial.ui.h:36
+#: ../data/buttons-financial.ui.h:36
 msgid "_Margin:"
 msgstr "Á_rrés"
 
 #. Title of Periodic Payment dialog
-#: ../data/financial.ui.h:38
+#. Tooltip for the periodic payment button
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:416
 msgid "Periodic Payment"
 msgstr "Rendszeres pénzáramlás"
 
 #. Periodic Payment Dialog: Description of calculation
-#: ../data/financial.ui.h:40
+#: ../data/buttons-financial.ui.h:40
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -150,22 +223,23 @@ msgstr ""
 "az egyes fizetési időszakok végén történnek."
 
 #. Periodic Payment Dialog: Label before principal input
-#: ../data/financial.ui.h:42
+#: ../data/buttons-financial.ui.h:42
 msgid "_Principal:"
 msgstr "_Tőke:"
 
 #. Periodic Interest Rate Dialog: Label before term input
-#: ../data/financial.ui.h:44
+#: ../data/buttons-financial.ui.h:44
 msgid "_Term:"
 msgstr "_Periódus:"
 
 #. Title of Present Value dialog
-#: ../data/financial.ui.h:46
+#. Tooltip for the present value button
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:414
 msgid "Present Value"
 msgstr "Jelenérték"
 
 #. Present Value Dialog: Description of calculation
-#: ../data/financial.ui.h:48
+#: ../data/buttons-financial.ui.h:48
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -176,12 +250,13 @@ msgstr ""
 "időszakai során."
 
 #. Title of Periodic Interest Rate dialog
-#: ../data/financial.ui.h:50
+#. Tooltip for the periodic interest rate button
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:412
 msgid "Periodic Interest Rate"
 msgstr "Időszakra vonatkozó kamatláb"
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: ../data/financial.ui.h:52
+#: ../data/buttons-financial.ui.h:52
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
@@ -190,22 +265,22 @@ msgstr ""
 "alatt szükséges időszakra vonatkozó kamatlábat."
 
 #. Title of Straight-Line Depreciation dialog
-#: ../data/financial.ui.h:54
+#: ../data/buttons-financial.ui.h:54
 msgid "Straight-Line Depreciation"
 msgstr "Lineáris értékcsökkenési leírás"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/financial.ui.h:56
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:56
 msgid "_Cost:"
 msgstr "_Költség:"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/financial.ui.h:58
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:58
 msgid "_Salvage:"
 msgstr "Át_mentés:"
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:60
+#: ../data/buttons-financial.ui.h:60
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -217,24 +292,24 @@ msgstr ""
 "eszköz hasznos élettartama alatt. A hasznos élettartam azon periódusok, "
 "általában évek száma, amelyek alatt az eszköz elavul."
 
-#. Title of Sum-Of-The-Years'-Digits Depreciation dialog
-#: ../data/financial.ui.h:62
-#| msgid "Sum-of-the-Years'-Digits Depreciation"
-msgid "Sum-Of-The-Years'-Digits Depreciation"
+#. Title of Sum-of-the-Years'-Digits Depreciation dialog
+#: ../data/buttons-financial.ui.h:62
+#| msgid "Sum-Of-The-Years'-Digits Depreciation"
+msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "Évek száma szerinti értékcsökkenési leírás"
 
-#. Sum-Of-The-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../data/financial.ui.h:64
+#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:64
 #| msgid ""
 #| "Calculates the depreciation allowance on an asset for a specified period "
-#| "of time, using the Sum-of-the-Years'-Digits method. This method of "
+#| "of time, using the Sum-Of-The-Years'-Digits method. This method of "
 #| "depreciation accelerates the rate of depreciation, so that more "
 #| "depreciation expense occurs in earlier periods than in later ones. The "
 #| "useful life is the number of periods, typically years, over which an "
 #| "asset is depreciated. "
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-Of-The-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
@@ -247,17 +322,17 @@ msgstr ""
 "bekövetkezik."
 
 #. Title of Payment Period dialog
-#: ../data/financial.ui.h:66
+#: ../data/buttons-financial.ui.h:66
 msgid "Payment Period"
 msgstr "Fizetési időszak"
 
 #. Payment Period Dialog: Label before future value input
-#: ../data/financial.ui.h:68
+#: ../data/buttons-financial.ui.h:68
 msgid "Future _Value:"
 msgstr "_Jövőérték:"
 
 #. Payment Period Dialog: Description of calculation
-#: ../data/financial.ui.h:70
+#: ../data/buttons-financial.ui.h:70
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -267,2057 +342,504 @@ msgstr ""
 "összegyűjtéséhez szükséges fizetési időszakok számát, az időszakra vonatkozó "
 "kamatláb mellett."
 
-#. Calculator menu
-#: ../data/gcalctool.ui.h:2
-msgid "_Calculator"
-msgstr "Számoló_gép"
-
-#: ../data/gcalctool.ui.h:3
-#| msgid "About Calculator"
-msgid "Quit the calculator"
-msgstr "Kilépés a számológépből"
-
-#. Edit menu
-#: ../data/gcalctool.ui.h:5
-msgid "_Edit"
-msgstr "S_zerkesztés"
-
-#: ../data/gcalctool.ui.h:6
-msgid "Copy selection"
-msgstr "Kijelölés másolása"
-
-#: ../data/gcalctool.ui.h:7
-msgid "Paste selection"
-msgstr "Kijelölés beillesztése"
-
-#: ../data/gcalctool.ui.h:8
-msgid "_Undo"
-msgstr "_Visszavonás"
-
-#: ../data/gcalctool.ui.h:9
-msgid "Undo"
-msgstr "Visszavonás"
-
-#: ../data/gcalctool.ui.h:10
-msgid "_Redo"
-msgstr "Új_ra"
-
-#: ../data/gcalctool.ui.h:11
-msgid "Redo"
-msgstr "Újra"
-
-#: ../data/gcalctool.ui.h:12
-msgid "Insert ASCII value"
-msgstr "ASCII-érték beszúrása"
-
-#. Edit|Insert ASCII value menu item
-#: ../data/gcalctool.ui.h:14
-msgid "_Insert ASCII value..."
-msgstr "ASCII-érték _beszúrása…"
-
-#. View menu
-#: ../data/gcalctool.ui.h:16
-msgid "_View"
-msgstr "_Nézet"
-
-#: ../data/gcalctool.ui.h:17
-msgid "Basic"
-msgstr "Alap"
-
-#. View|Basic menu item
-#: ../data/gcalctool.ui.h:19
-#| msgid "Basic"
-msgid "_Basic"
-msgstr "_Alap"
-
-#: ../data/gcalctool.ui.h:20
-msgid "Advanced"
-msgstr "Speciális"
-
-#. View|Advanced menu item
-#: ../data/gcalctool.ui.h:22
-#| msgid "Advanced"
-msgid "_Advanced"
-msgstr "_Speciális"
-
-#: ../data/gcalctool.ui.h:23
-msgid "Financial"
-msgstr "Pénzügyi"
-
-#. View|Financial menu item
-#: ../data/gcalctool.ui.h:25
-#| msgid "Financial"
-msgid "_Financial"
-msgstr "_Pénzügyi mód"
-
-#: ../data/gcalctool.ui.h:26
-msgid "Scientific"
-msgstr "Tudományos mód"
-
-#. View|Scientific menu item
-#: ../data/gcalctool.ui.h:28
-#| msgid "Scientific"
-msgid "_Scientific"
-msgstr "_Tudományos mód"
-
-#: ../data/gcalctool.ui.h:29
-msgid "Programming"
-msgstr "Programozói"
-
-#. View|Programming menu item
-#: ../data/gcalctool.ui.h:31
-#| msgid "Programming"
-msgid "_Programming"
-msgstr "_Programozói"
-
-#: ../data/gcalctool.ui.h:32
-#| msgid "Show trailing _zeroes"
-msgid "Show trailing zeroes"
-msgstr "Nullák megjelenítése a szám végén"
-
-#. Accuracy Popup: Check menu item to enable trailing zeroes
-#: ../data/gcalctool.ui.h:34
-#| msgid "Show Trailing Zeroes"
-msgid "Show _Trailing Zeroes"
-msgstr "_Nullák megjelenítése a szám végén"
-
-#: ../data/gcalctool.ui.h:35
-#| msgid "Show _thousands separators"
-msgid "Show thousands separator"
-msgstr "Ezreselválasztók megjelenítése"
-
-#. View|Show Thousands Separator menu item
-#: ../data/gcalctool.ui.h:37
-#| msgid "Show Thousands Separators"
-msgid "Show T_housands Separator"
-msgstr "_Ezreselválasztók megjelenítése"
-
-#: ../data/gcalctool.ui.h:38
-msgid "Show memory registers"
-msgstr "Memóriaregiszterek megjelenítése"
-
-#. View|Memory Registers menu item
-#: ../data/gcalctool.ui.h:40
-msgid "_Memory Registers"
-msgstr "_Memóriaregiszterek"
-
-#. Help menu
-#: ../data/gcalctool.ui.h:42
-#| msgid "Help"
-msgid "_Help"
-msgstr "_Súgó"
-
-#: ../data/gcalctool.ui.h:43
-msgid "_Contents"
-msgstr "_Tartalom"
-
-#: ../data/gcalctool.ui.h:44
-msgid "Show help contents"
-msgstr "Súgótartalom megjelenítése"
-
-#: ../data/gcalctool.ui.h:45
-msgid "Show the About Gcalctool dialog"
-msgstr "A Gcalctool névjegyének megjelenítése"
-
-#: ../data/gcalctool.ui.h:46
-msgid "Result Region"
-msgstr "Eredményrégió"
-
-#. 64 bit radio button
-#: ../data/gcalctool.ui.h:48
-#| msgid "64 bits"
-msgid "_64 bit"
-msgstr "_64 bit"
-
-#: ../data/gcalctool.ui.h:49
-msgid "Makes the bitwise functions use 64 bit mode"
-msgstr "A bitenkénti műveletek 64 bites módot használjanak"
-
-#. 32 bit radio button
-#: ../data/gcalctool.ui.h:51
-#| msgid "32 bits"
-msgid "_32 bit"
-msgstr "_32 bit"
-
-#: ../data/gcalctool.ui.h:52
-msgid "Makes the bitwise functions use 32 bit mode"
-msgstr "A bitenkénti műveletek 32 bites módot használjanak"
-
-#. 16 bit radio button
-#: ../data/gcalctool.ui.h:54
-#| msgid "16 bits"
-msgid "_16 bit"
-msgstr "_16 bit"
-
-#: ../data/gcalctool.ui.h:55
-msgid "Makes the bitwise functions use 16 bit mode"
-msgstr "A bitenkénti műveletek 16 bites módot használjanak"
-
-#. Base 2 radio button
-#: ../data/gcalctool.ui.h:57
-msgid "_Bin"
-msgstr "_Bin"
-
-#: ../data/gcalctool.ui.h:58
-msgid "Set numeric base to binary (base 2)"
-msgstr "Kettes számrendszer"
-
-#. Base 8 radio button
-#: ../data/gcalctool.ui.h:60
-msgid "_Oct"
-msgstr "_Oct"
-
-#: ../data/gcalctool.ui.h:61
-msgid "Set numeric base to octal (base 8)"
-msgstr "Nyolcas számrendszer"
-
-#. Base 10 radio button
-#: ../data/gcalctool.ui.h:63
-msgid "_Dec"
-msgstr "_Dec"
-
-#: ../data/gcalctool.ui.h:64
-msgid "Set numeric base to decimal (base 10)"
-msgstr "Tízes számrendszer"
-
-#. Base 16 radio button
-#: ../data/gcalctool.ui.h:66
-msgid "He_x"
-msgstr "He_x"
-
-#: ../data/gcalctool.ui.h:67
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "Tizenhatos számrendszer"
-
-#. Degrees radio button
-#: ../data/gcalctool.ui.h:69
-#| msgid "Degrees"
-msgid "De_grees"
-msgstr "_Fok"
-
-#: ../data/gcalctool.ui.h:70
-msgid "Set trigonometric type to degrees"
-msgstr "Trigonometriai számítások fokban"
-
-#. Gradians radio button
-#: ../data/gcalctool.ui.h:72
-#| msgid "Gradians"
-msgid "Gr_adians"
-msgstr "Újf_ok"
-
-#: ../data/gcalctool.ui.h:73
-msgid "Set trigonometric type to gradians"
-msgstr "Trigonometriai számítások újfokban"
-
-#. Radian radio button
-#: ../data/gcalctool.ui.h:75
-#| msgid "Radians"
-msgid "_Radians"
-msgstr "_Radián"
-
-#: ../data/gcalctool.ui.h:76
-msgid "Set trigonometric type to radians"
-msgstr "Trigonometriai számítások radiánban"
-
-#. Engineering display radio button
-#: ../data/gcalctool.ui.h:78
-msgid "E_ng"
-msgstr "E_ng"
-
-#: ../data/gcalctool.ui.h:79
-msgid "Set display type to engineering format"
-msgstr "Mérnöki típusú megjelenítés"
-
-#. Fixed-point display radio button
-#: ../data/gcalctool.ui.h:81
-msgid "_Fix"
-msgstr "_Fix"
-
-#: ../data/gcalctool.ui.h:82
-msgid "Set display type to fixed-point format"
-msgstr "Fixpontos típusú megjelenítés"
-
-#. Scientific display radio button
-#: ../data/gcalctool.ui.h:84
-msgid "_Sci"
-msgstr "_Sci"
-
-#: ../data/gcalctool.ui.h:85
-msgid "Set display type to scientific format"
-msgstr "Tudományos típusú megjelenítés"
-
-#. Inverse check box
-#: ../data/gcalctool.ui.h:87
-msgid "_Inv"
-msgstr "_Inv"
-
-#: ../data/gcalctool.ui.h:88
-msgid "Set inverse option for trigonometric functions"
-msgstr "Trigonometriai függvények inverze"
-
-#. Hyperbolic check box
-#: ../data/gcalctool.ui.h:90
-msgid "H_yp"
-msgstr "H_yp"
-
-#: ../data/gcalctool.ui.h:91
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "Trigonometriai függvények hiperbolikus változata"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:93
-msgid "Syd"
-msgstr "Syd"
-
-#: ../data/gcalctool.ui.h:94
-#| msgid "Sum-of-the-Years'-Digits Depreciation"
-msgid "Sum-of-the years'-digits depreciation [Y]"
-msgstr "Évszámok összege szerinti értékcsökkenési leírás [Y]"
-
-#: ../data/gcalctool.ui.h:95
-#| msgid "Sum-of-the-Years'-Digits Depreciation"
-msgid "Sum-of-the years'-digits depreciation"
-msgstr "Évszámok összege szerinti értékcsökkenési leírás"
-
-#: ../data/gcalctool.ui.h:96
-#| msgid "Sum-of-the-Years'-Digits Depreciation"
-msgid "Sum-of-the years'-digits depreciation [y]"
-msgstr "Évszámok összege szerinti értékcsökkenési leírás [y]"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:98
-msgid "Sln"
-msgstr "Sln"
-
-#: ../data/gcalctool.ui.h:99
-#| msgid "Straight-Line Depreciation"
-msgid "Straight-line depreciation [l]"
-msgstr "Lineáris értékcsökkenési leírás [l]"
-
-#: ../data/gcalctool.ui.h:100
-#| msgid "Straight-Line Depreciation"
-msgid "Straight-line depreciation"
-msgstr "Lineáris értékcsökkenési leírás"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/gcalctool.ui.h:102
-msgid "Rate"
-msgstr "Rate"
-
-#: ../data/gcalctool.ui.h:103
-#| msgid "Periodic Interest Rate"
-msgid "Periodic interest rate [T]"
-msgstr "Időszakra vonatkozó kamatláb [T]"
-
-#: ../data/gcalctool.ui.h:104
-#| msgid "Periodic Interest Rate"
-msgid "Periodic interest rate"
-msgstr "Időszakra vonatkozó kamatláb"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/gcalctool.ui.h:106
-msgid "Pv"
-msgstr "PV"
-
-#: ../data/gcalctool.ui.h:107
-#| msgid "Present Value"
-msgid "Present value [p]"
-msgstr "Jelenérték [p]"
-
-#: ../data/gcalctool.ui.h:108
-#| msgid "Present Value"
-msgid "Present value"
-msgstr "Jelenérték"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/gcalctool.ui.h:110
-msgid "Pmt"
-msgstr "Pmt"
-
-#: ../data/gcalctool.ui.h:111
-#| msgid "Periodic Payment"
-msgid "Periodic payment [P]"
-msgstr "Rendszeres pénzáramlás [P]"
-
-#: ../data/gcalctool.ui.h:112
-#| msgid "Periodic Payment"
-msgid "Periodic payment"
-msgstr "Rendszeres pénzáramlás"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: ../data/gcalctool.ui.h:114
-msgid "Fv"
-msgstr "FV"
-
-#: ../data/gcalctool.ui.h:115
-#| msgid "Future Value"
-msgid "Future value [v]"
-msgstr "Jövőérték [v]"
-
-#: ../data/gcalctool.ui.h:116
-#| msgid "Future Value"
-msgid "Future value"
-msgstr "Jövőérték"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../data/gcalctool.ui.h:118
-msgid "Gpm"
-msgstr "Gpm"
-
-#: ../data/gcalctool.ui.h:119
-#| msgid "Gross Profit Margin"
-msgid "Gross Profit Margin [I]"
-msgstr "Bruttó haszon [I]"
-
-#: ../data/gcalctool.ui.h:121
-#| msgid "Gross Profit Margin"
-msgid "Gross Profit Margin [g]"
-msgstr "Bruttó haszon [g]"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/gcalctool.ui.h:123
-msgid "Ddb"
-msgstr "Ddb"
-
-#: ../data/gcalctool.ui.h:124
-#| msgid "Double-Declining Depreciation"
-msgid "Double-declining depreciation [D]"
-msgstr "Progresszív értékcsökkenési leírás [D]"
-
-#: ../data/gcalctool.ui.h:125
-#| msgid "Double-Declining Depreciation"
-msgid "Double-declining depreciation"
-msgstr "Progresszív értékcsökkenési leírás"
-
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: ../data/gcalctool.ui.h:127
+#: ../data/buttons-financial.ui.h:78
 msgid "Ctrm"
 msgstr "Ctrm"
 
-#: ../data/gcalctool.ui.h:128
-#| msgid "Compounding Term"
-msgid "Compounding term [m]"
-msgstr "Időszakok száma [m]"
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:80
+msgid "Ddb"
+msgstr "Ddb"
 
-#: ../data/gcalctool.ui.h:129
-#| msgid "Compounding Term"
-msgid "Compounding term"
-msgstr "Időszakok száma"
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/buttons-financial.ui.h:82
+msgid "Fv"
+msgstr "FV"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/gcalctool.ui.h:131
+#: ../data/buttons-financial.ui.h:84
 msgid "Term"
 msgstr "Időszak"
 
-#: ../data/gcalctool.ui.h:132
-#| msgid "Payment Period"
-msgid "Payment period [t]"
-msgstr "Fizetési időszak [t]"
-
-#: ../data/gcalctool.ui.h:133
-#| msgid "Payment Period"
-msgid "Payment period"
-msgstr "Fizetési időszak"
-
-#. Label for the most significant bit (bit 63) on the bit editor
-#: ../data/gcalctool.ui.h:135
-msgid "63"
-msgstr "63"
-
-#. Label for bit 31 on the bit editor
-#: ../data/gcalctool.ui.h:137
-msgid "31"
-msgstr "31"
-
-#. Label for bit 32 on the bit editor
-#: ../data/gcalctool.ui.h:139
-msgid "32"
-msgstr "32"
-
-#. Numeric 0 button
-#: ../data/gcalctool.ui.h:141
-msgid "0"
-msgstr "0"
-
-#. Label for bit 47 on the bit editor
-#: ../data/gcalctool.ui.h:143
-msgid "47"
-msgstr "47"
-
-#. Label for bit 15 on the bit editor
-#: ../data/gcalctool.ui.h:145
-msgid "15"
-msgstr "15"
-
-#: ../data/gcalctool.ui.h:146
-msgid "User-defined functions [F]"
-msgstr "Felhasználó által megadott függvények [F]"
-
-#. Functions button
-#: ../data/gcalctool.ui.h:148
-msgid "Fun"
-msgstr "Fun"
-
-#: ../data/gcalctool.ui.h:149
-msgid "Constants [#]"
-msgstr "Állandók [#]"
-
-#. Constants button
-#: ../data/gcalctool.ui.h:151
-#| msgid "Cosine"
-msgid "Con"
-msgstr "Con"
-
-#: ../data/gcalctool.ui.h:152
-msgid "(Ln)"
-msgstr "(Ln)"
-
-#: ../data/gcalctool.ui.h:153
-msgid "(log)"
-msgstr "(log)"
-
-#: ../data/gcalctool.ui.h:154
-msgid "(log2)"
-msgstr "(log2)"
-
-#. Exponential
-#: ../data/gcalctool.ui.h:156
-msgid "Exp"
-msgstr "Exp"
-
-#: ../data/gcalctool.ui.h:157
-msgid "Enter an exponential number [E]"
-msgstr "Exponenciális alakú szám bevitele [E]"
-
-#: ../data/gcalctool.ui.h:158
-msgid "(Set accuracy from 0 to N numeric places [A])"
-msgstr "(A pontosság beállítása 0-tól N számjegyig. [A])"
-
-#. Accuracy button
-#: ../data/gcalctool.ui.h:160
-msgid "Acc"
-msgstr "Acc"
-
-#. Random number
-#: ../data/gcalctool.ui.h:162
-msgid "Rand"
-msgstr "Rand"
-
-#: ../data/gcalctool.ui.h:163
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "Véletlen szám a 0,0 - 1,0 tartományban [?]"
-
-#: ../data/gcalctool.ui.h:164
-msgid "Factorial of displayed value [!]"
-msgstr "A megjelenített érték faktoriálisa [!]"
-
-#. Factorial
-#: ../data/gcalctool.ui.h:166
-#| msgid "<i>x</i>"
-msgid "<i>x</i>!"
-msgstr "<i>x</i>!"
-
-#: ../data/gcalctool.ui.h:167
-msgid "(X^Y)"
-msgstr "(X^Y)"
-
-#: ../data/gcalctool.ui.h:168
-msgid "(tan)"
-msgstr "(tan)"
-
-#: ../data/gcalctool.ui.h:169
-msgid "(sin)"
-msgstr "(sin)"
-
-#: ../data/gcalctool.ui.h:170
-msgid "(cos)"
-msgstr "(cos)"
-
-#. Hexadecimal digit D button
-#: ../data/gcalctool.ui.h:172
-msgid "D"
-msgstr "D"
-
-#: ../data/gcalctool.ui.h:173
-#| msgid "Hexadecimal"
-msgid "Hexadecimal digit D [d]"
-msgstr "Hexadecimális számjegy D [d]"
-
-#. Hexadecimal digit E button
-#: ../data/gcalctool.ui.h:175
-msgid "E"
-msgstr "E"
-
-#: ../data/gcalctool.ui.h:176
-#| msgid "Hexadecimal"
-msgid "Hexadecimal digit E [e]"
-msgstr "Hexadecimális számjegy E [e]"
-
-#. Hexadecimal digit F button
-#: ../data/gcalctool.ui.h:178 ../src/gtk.c:1757
-#| msgid "Fv"
-msgid "F"
-msgstr "F"
-
-#: ../data/gcalctool.ui.h:179
-#| msgid "Hexadecimal"
-msgid "Hexadecimal digit F [f]"
-msgstr "Hexadecimális számjegy F [f]"
-
-#. Hexadecimal digit A button
-#: ../data/gcalctool.ui.h:181
-msgid "A"
-msgstr "A"
-
-#: ../data/gcalctool.ui.h:182
-#| msgid "Hexadecimal"
-msgid "Hexadecimal digit A [a]"
-msgstr "A hexadecimális számjegy A [a]"
-
-#. Hexadecimal digit B button
-#: ../data/gcalctool.ui.h:184
-msgid "B"
-msgstr "B"
-
-#: ../data/gcalctool.ui.h:185
-#| msgid "Hexadecimal"
-msgid "Hexadecimal digit B [b]"
-msgstr "Hexadecimális számjegy B [b]"
-
-#. Hexadecimal digit C button
-#: ../data/gcalctool.ui.h:187 ../src/gtk.c:1734
-msgid "C"
-msgstr "C"
-
-#: ../data/gcalctool.ui.h:188
-#| msgid "Hexadecimal"
-msgid "Hexadecimal digit C [c]"
-msgstr "Hexadecimális számjegy C [c]"
-
-#. 1's complement
-#: ../data/gcalctool.ui.h:190
-msgid "1's"
-msgstr "1-es"
-
-#: ../data/gcalctool.ui.h:191
-#| msgid "Two's Complement"
-msgid "1's complement [z]"
-msgstr "1-es komplemens [z]"
-
-#. 2's complement
-#: ../data/gcalctool.ui.h:193
-msgid "2's"
-msgstr "2-es"
-
-#: ../data/gcalctool.ui.h:194
-#| msgid "Two's Complement"
-msgid "2's complement [Z]"
-msgstr "2-es komplemens [Z]"
-
-#. Boolean exclusive NOR button
-#: ../data/gcalctool.ui.h:196
-msgid "XNOR"
-msgstr "XNOR"
-
-#: ../data/gcalctool.ui.h:197
-msgid "Bitwise XNOR [{]"
-msgstr "Bitenkénti XNOR [{]"
-
-#. Modulus division button
-#: ../data/gcalctool.ui.h:199
-#| msgid "Mode"
-msgid "Mod"
-msgstr "Mod"
-
-#: ../data/gcalctool.ui.h:200
-#| msgid "Modulus divide"
-msgid "Modulus Division [M]"
-msgstr "Maradékos osztás [M]"
-
-#. Truncate displayed value
-#: ../data/gcalctool.ui.h:202
-#| msgid "Truncate"
-msgid "Trunc"
-msgstr "Csonk"
-
-#: ../data/gcalctool.ui.h:203
-msgid "Truncate displayed value to the chosen word size ([)"
-msgstr "A megjelenített érték csonkolása a kiválasztott szóhosszra ([)"
-
-#. Boolean NOT button
-#: ../data/gcalctool.ui.h:205
-msgid "NOT"
-msgstr "NOT"
-
-#: ../data/gcalctool.ui.h:206
-msgid "Bitwise NOT [~]"
-msgstr "Bitenkénti NOT [~]"
-
-#. Boolean exlcusive OR button
-#: ../data/gcalctool.ui.h:208
-msgid "XOR"
-msgstr "XOR"
-
-#: ../data/gcalctool.ui.h:209
-msgid "Bitwise XOR [x]"
-msgstr "Bitenkénti XOR [x]"
-
-#. Boolean AND button
-#: ../data/gcalctool.ui.h:211
-msgid "AND"
-msgstr "AND"
-
-#: ../data/gcalctool.ui.h:212
-msgid "Bitwise AND [&]"
-msgstr "Bitenkénti AND [&]"
-
-#. Boolean OR button
-#: ../data/gcalctool.ui.h:214
-msgid "OR"
-msgstr "OR"
-
-#: ../data/gcalctool.ui.h:215
-msgid "Bitwise OR [|]"
-msgstr "Bitenkénti OR [|]"
-
-#: ../data/gcalctool.ui.h:216
-msgid "Shift displayed value 1-15 places to the left [<]"
-msgstr "A megjelenített érték eltolása balra 1-15 jeggyel [<]"
-
-#. Shift left button
-#: ../data/gcalctool.ui.h:218
-msgid "<"
-msgstr "<"
-
-#: ../data/gcalctool.ui.h:219
-msgid "Shift displayed value 1-15 places to the right [>]"
-msgstr "A megjelenített érték eltolása jobbra 1-15 jeggyel [>]"
-
-#. Shift right button
-#: ../data/gcalctool.ui.h:221
-msgid ">"
-msgstr ">"
-
-#. Bksp is short for Backspace
-#: ../data/gcalctool.ui.h:223
-msgid "Bksp"
-msgstr "Bksp"
-
-#: ../data/gcalctool.ui.h:224
-msgid "Remove rightmost character from displayed value [Backspace]"
-msgstr "A megjelenített érték jobb szélső karakterének törlése  [Backspace]"
-
-#: ../data/gcalctool.ui.h:225
-msgid "Backspace"
-msgstr "Backspace"
-
-#. Change sign button
-#: ../data/gcalctool.ui.h:227
-msgid "&#xB1;"
-msgstr "&#xB1;"
-
-#: ../data/gcalctool.ui.h:228
-msgid "Change Sign [C]"
-msgstr "Előjelváltás [C]"
-
-#: ../data/gcalctool.ui.h:229
-msgid "Change sign"
-msgstr "Előjelváltás"
-
-#. Clear display button. Clr is short for Clear
-#: ../data/gcalctool.ui.h:231
-msgid "Clr"
-msgstr "Clr"
-
-#: ../data/gcalctool.ui.h:232
-msgid "Clear displayed value and any partial calculation [Shift Delete]"
-msgstr "A megjelenített érték és a részszámítás törlése [Shift Delete]"
-
-#: ../data/gcalctool.ui.h:233
-msgid "Clear"
-msgstr "Törlés"
-
-#. Clear displayed value button
-#: ../data/gcalctool.ui.h:235
-msgid "CE"
-msgstr "CE"
-
-#: ../data/gcalctool.ui.h:236
-#| msgid "Clear Display [Escape]"
-msgid "Clear displayed value [Escape]"
-msgstr "A megjelenített érték törlése [Esc]"
-
-#: ../data/gcalctool.ui.h:237
-msgid "Clear entry"
-msgstr "Érték törlése"
-
-#. Start calculation group button
-#: ../data/gcalctool.ui.h:239
-msgid "("
-msgstr "("
-
-#: ../data/gcalctool.ui.h:240
-#| msgid "Start Group [(]"
-msgid "Start group of calculations [(]"
-msgstr "Számításcsoport kezdete [(]"
-
-#: ../data/gcalctool.ui.h:241
-msgid "Left bracket"
-msgstr "Nyitó zárójel"
-
-#: ../data/gcalctool.ui.h:242
-msgid "Reciprocal [r]"
-msgstr "Reciprok [r]"
-
-#: ../data/gcalctool.ui.h:243
-msgid "Reciprocal"
-msgstr "Reciprok"
-
-#. Reciprocal button
-#: ../data/gcalctool.ui.h:245
-#| msgid "<i>x</i>"
-msgid "1/<i>x</i>"
-msgstr "1/<i>x</i>"
-
-#: ../data/gcalctool.ui.h:246
-msgid "1/x"
-msgstr "1/x"
-
-#. The percentage button
-#: ../data/gcalctool.ui.h:249
-#, no-c-format
-msgid "%"
-msgstr "%"
-
-#: ../data/gcalctool.ui.h:251
-#, no-c-format
-msgid "Percentage [%]"
-msgstr "Százalék [%]"
-
-#: ../data/gcalctool.ui.h:252
-#| msgid "Percentage [%]"
-msgid "Percentage"
-msgstr "Százalék"
-
-#. Right bracket
-#: ../data/gcalctool.ui.h:254
-msgid ")"
-msgstr ")"
-
-#: ../data/gcalctool.ui.h:255
-msgid "End group of calculations [)]"
-msgstr "Számításcsoport vége [)]"
-
-#: ../data/gcalctool.ui.h:256
-msgid "Right bracket"
-msgstr "Záró zárójel"
-
-#. Square root button
-#: ../data/gcalctool.ui.h:258
-msgid "&#x221A;"
-msgstr "&#x221A;"
-
-#: ../data/gcalctool.ui.h:259
-#| msgid "Square root [Ctrl+R]"
-msgid "Square root [s]"
-msgstr "Négyzetgyök [s]"
-
-#: ../data/gcalctool.ui.h:260
-#| msgid "Square root [Ctrl+R]"
-msgid "Square root"
-msgstr "Négyzetgyök"
-
-#. Absolute value button. Abs is short for Absolute
-#: ../data/gcalctool.ui.h:262
-msgid "Abs"
-msgstr "Abs"
-
-#: ../data/gcalctool.ui.h:263
-#| msgid "Absolute value [|]"
-msgid "Absolute value [u]"
-msgstr "Abszolút érték [u]"
-
-#: ../data/gcalctool.ui.h:264
-#| msgid "Absolute Value"
-msgid "Absolute value"
-msgstr "Abszolút érték"
-
-#. Fractional portion button
-#: ../data/gcalctool.ui.h:266
-msgid "Frac"
-msgstr "Frac"
-
-#: ../data/gcalctool.ui.h:267
-msgid "Fractional portion of displayed value [:]"
-msgstr "A megjelenített érték törtrésze [:]"
-
-#: ../data/gcalctool.ui.h:268
-#| msgid "Fractional Component"
-msgid "Fractional portion"
-msgstr "Törtrész"
-
-#. Integer portion button
-#: ../data/gcalctool.ui.h:270
-#| msgid "_Insert"
-msgid "Int"
-msgstr "Int"
-
-#: ../data/gcalctool.ui.h:271
-msgid "Integer portion of displayed value [i]"
-msgstr "A megjelenített érték egész része [i]"
-
-#: ../data/gcalctool.ui.h:272
-#| msgid "Integer Component"
-msgid "Integer portion"
-msgstr "Egész rész"
-
-#: ../data/gcalctool.ui.h:273
-msgid "Exchange displayed value with memory register [X]"
-msgstr "A megjelenített érték és a memória felcserélése [X]"
-
-#: ../data/gcalctool.ui.h:274
-msgid "Exchange with register"
-msgstr "Csere a memóriával"
-
-#. Memory exchange button. Exch is short for Exchange
-#: ../data/gcalctool.ui.h:276
-msgid "Exch"
-msgstr "Exch"
-
-#: ../data/gcalctool.ui.h:277
-msgid "Retrieve memory register to display [R]"
-msgstr "A memória tartalmának megjelenítése [R]"
-
-#: ../data/gcalctool.ui.h:278
-msgid "Retrieve from register"
-msgstr "Előhozás a memóriából"
-
-#. Memory recall button. Rcl is short for Recall
-#: ../data/gcalctool.ui.h:280
-msgid "Rcl"
-msgstr "Rcl"
-
-#: ../data/gcalctool.ui.h:281
-msgid "Store displayed value in memory register [S]"
-msgstr "A megjelenített érték tárolása a memóriában [S]"
-
-#: ../data/gcalctool.ui.h:282
-msgid "Store to register"
-msgstr "Tárolás a memóriában"
-
-#. Memory store button. Sto is short for Store
-#: ../data/gcalctool.ui.h:284
-#| msgid "Store"
-msgid "Sto"
-msgstr "Sto"
-
-#: ../data/gcalctool.ui.h:285
-#| msgid "Square [Ctrl+2]"
-msgid "Square [@]"
-msgstr "Négyzet [@]"
-
-#: ../data/gcalctool.ui.h:286
-#| msgid "Square Meters"
-msgid "Square"
-msgstr "Négyzet"
-
-#. x to the power of 2 button
-#: ../data/gcalctool.ui.h:288
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i>x</i><sup>2</sup>"
-
-#: ../data/gcalctool.ui.h:289
-#| msgid "x"
-msgid "x2"
-msgstr "x2"
-
-#. Numeric 4 button
-#: ../data/gcalctool.ui.h:291
-msgid "4"
-msgstr "4"
-
-#: ../data/gcalctool.ui.h:292
-#| msgid "Numeric Base"
-msgid "Numeric 4"
-msgstr "4-es számjegy"
-
-#. Numeric 7 button
-#: ../data/gcalctool.ui.h:294
-msgid "7"
-msgstr "7"
-
-#: ../data/gcalctool.ui.h:295
-#| msgid "Numeric Base"
-msgid "Numeric 7"
-msgstr "7-es számjegy"
-
-#. Numeric 8 button
-#: ../data/gcalctool.ui.h:297
-msgid "8"
-msgstr "8"
-
-#: ../data/gcalctool.ui.h:298
-#| msgid "Numeric Base"
-msgid "Numeric 8"
-msgstr "8-as számjegy"
-
-#. Numeric 9 button
-#: ../data/gcalctool.ui.h:300
-msgid "9"
-msgstr "9"
-
-#: ../data/gcalctool.ui.h:301
-#| msgid "Numeric Base"
-msgid "Numeric 9"
-msgstr "9-es számjegy"
-
-#. Numeric 5 button
-#: ../data/gcalctool.ui.h:303
-msgid "5"
-msgstr "5"
-
-#: ../data/gcalctool.ui.h:304
-#| msgid "Numeric Base"
-msgid "Numeric 5"
-msgstr "5-ös számjegy"
-
-#. Numeric 6 button
-#: ../data/gcalctool.ui.h:306
-msgid "6"
-msgstr "6"
-
-#: ../data/gcalctool.ui.h:307
-#| msgid "Numeric Base"
-msgid "Numeric 6"
-msgstr "6-os számjegy"
-
-#. Division button
-#: ../data/gcalctool.ui.h:309
-msgid "&#xF7;"
-msgstr "&#xF7;"
-
-#: ../data/gcalctool.ui.h:310
-msgid "Divide [/]"
-msgstr "Osztás [/]"
-
-#: ../data/gcalctool.ui.h:311
-#| msgid "Divide [/]"
-msgid "Divide"
-msgstr "Osztás"
-
-#. Numeric 1 button
-#: ../data/gcalctool.ui.h:313
-msgid "1"
-msgstr "1"
-
-#: ../data/gcalctool.ui.h:314
-#| msgid "Numeric Base"
-msgid "Numeric 1"
-msgstr "1-es számjegy"
-
-#. Numeric 2 button
-#: ../data/gcalctool.ui.h:316
-msgid "2"
-msgstr "2"
-
-#: ../data/gcalctool.ui.h:317
-#| msgid "Numeric Base"
-msgid "Numeric 2"
-msgstr "2-es számjegy"
-
-#: ../data/gcalctool.ui.h:318
-#| msgid "Numeric Base"
-msgid "Numeric 0"
-msgstr "0-s számjegy"
-
-#: ../data/gcalctool.ui.h:319
-#| msgid "Numeric Base"
-msgid "Numeric point"
-msgstr "Tizedesvessző"
-
-#. Solve button (clicking this solves the displayed calculation)
-#: ../data/gcalctool.ui.h:321
-msgid "="
-msgstr "="
-
-#: ../data/gcalctool.ui.h:322
-#| msgid "Calculate Result"
-msgid "Calculate result [=]"
-msgstr "Számítás elvégzése [=]"
-
-#: ../data/gcalctool.ui.h:323
-#| msgid "Calculate Result"
-msgid "Calculate result"
-msgstr "Számítás elvégzése"
-
-#. Numeric 3 button
-#: ../data/gcalctool.ui.h:325
-msgid "3"
-msgstr "3"
-
-#: ../data/gcalctool.ui.h:326
-#| msgid "Numeric Base"
-msgid "Numeric 3"
-msgstr "3-as számjegy"
-
-#. Multiplication button
-#: ../data/gcalctool.ui.h:328
-msgid "&#xD7;"
-msgstr "&#xD7;"
-
-#: ../data/gcalctool.ui.h:329
-msgid "Multiply [*]"
-msgstr "Szorzás [*]"
-
-#: ../data/gcalctool.ui.h:330
-#| msgid "Multiply [*]"
-msgid "Multiply"
-msgstr "Szorzás"
-
-#. Subtraction button
-#: ../data/gcalctool.ui.h:332
-msgid "&#x2212;"
-msgstr "&#x2212;"
-
-#: ../data/gcalctool.ui.h:333
-msgid "Subtract [-]"
-msgstr "Kivonás [-]"
-
-#: ../data/gcalctool.ui.h:334
-#| msgid "Subtract [-]"
-msgid "Subtract"
-msgstr "Kivonás"
-
-#. Addition button
-#: ../data/gcalctool.ui.h:336
-msgid "+"
-msgstr "+"
-
-#: ../data/gcalctool.ui.h:337
-msgid "Add [+]"
-msgstr "Összeadás [+]"
-
-#: ../data/gcalctool.ui.h:338
-#| msgid "Add [+]"
-msgid "Add"
-msgstr "Összeadás"
-
-#. Right Shift Popup: Menu item to shift right by 1 bit
-#: ../data/gcalctool.ui.h:340
-#| msgid "_%d place"
-#| msgid_plural "_%d places"
-msgid "_1 place"
-msgstr "_1 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 2 bits
-#: ../data/gcalctool.ui.h:342
-#| msgid "_%d place"
-#| msgid_plural "_%d places"
-msgid "_2 places"
-msgstr "_2 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 3 bits
-#: ../data/gcalctool.ui.h:344
-#| msgid "_%d place"
-#| msgid_plural "_%d places"
-msgid "_3 places"
-msgstr "_3 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 4 bits
-#: ../data/gcalctool.ui.h:346
-#| msgid "_%d place"
-#| msgid_plural "_%d places"
-msgid "_4 places"
-msgstr "_4 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 5 bits
-#: ../data/gcalctool.ui.h:348
-#| msgid "_%d place"
-#| msgid_plural "_%d places"
-msgid "_5 places"
-msgstr "_5 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 6 bits
-#: ../data/gcalctool.ui.h:350
-#| msgid "_%d place"
-#| msgid_plural "_%d places"
-msgid "_6 places"
-msgstr "_6 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 7 bits
-#: ../data/gcalctool.ui.h:352
-#| msgid "_%d place"
-#| msgid_plural "_%d places"
-msgid "_7 places"
-msgstr "_7 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 8 bits
-#: ../data/gcalctool.ui.h:354
-#| msgid "_%d place"
-#| msgid_plural "_%d places"
-msgid "_8 places"
-msgstr "_8 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 9 bits
-#: ../data/gcalctool.ui.h:356
-#| msgid "_%d place"
-#| msgid_plural "_%d places"
-msgid "_9 places"
-msgstr "_9 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 10 bits
-#: ../data/gcalctool.ui.h:358
-#| msgid "%d place"
-#| msgid_plural "%d places"
-msgid "10 places"
-msgstr "10 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 11 bits
-#: ../data/gcalctool.ui.h:360
-#| msgid "%d place"
-#| msgid_plural "%d places"
-msgid "11 places"
-msgstr "11 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 12 bits
-#: ../data/gcalctool.ui.h:362
-#| msgid "%d place"
-#| msgid_plural "%d places"
-msgid "12 places"
-msgstr "12 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 13 bits
-#: ../data/gcalctool.ui.h:364
-#| msgid "%d place"
-#| msgid_plural "%d places"
-msgid "13 places"
-msgstr "13 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 14 bits
-#: ../data/gcalctool.ui.h:366
-#| msgid "%d place"
-#| msgid_plural "%d places"
-msgid "14 places"
-msgstr "14 jegy"
-
-#. Right Shift Popup: Menu item to shift right by 15 bits
-#: ../data/gcalctool.ui.h:368
-#| msgid "%d place"
-#| msgid_plural "%d places"
-msgid "15 places"
-msgstr "15 jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 0 significant places
-#: ../data/gcalctool.ui.h:370
-msgid "_0 significant places"
-msgstr "_0 értékes jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 1 significant place
-#: ../data/gcalctool.ui.h:372
-msgid "_1 significant place"
-msgstr "_1 értékes jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 2 significant places
-#: ../data/gcalctool.ui.h:374
-msgid "_2 significant places"
-msgstr "_2 értékes jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 3 significant places
-#: ../data/gcalctool.ui.h:376
-msgid "_3 significant places"
-msgstr "_3 értékes jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 4 significant places
-#: ../data/gcalctool.ui.h:378
-msgid "_4 significant places"
-msgstr "_4 értékes jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 5 significant places
-#: ../data/gcalctool.ui.h:380
-msgid "_5 significant places"
-msgstr "_5 értékes jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 6 significant places
-#: ../data/gcalctool.ui.h:382
-msgid "_6 significant places"
-msgstr "_6 értékes jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 7 significant places
-#: ../data/gcalctool.ui.h:384
-msgid "_7 significant places"
-msgstr "_7 értékes jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 8 significant places
-#: ../data/gcalctool.ui.h:386
-msgid "_8 significant places"
-msgstr "_8 értékes jegy"
-
-#. Accuracy Popup: Menu item to set accuracy to 9 significant places
-#: ../data/gcalctool.ui.h:388
-msgid "_9 significant places"
-msgstr "_9 értékes jegy"
-
-#: ../data/gcalctool.ui.h:389
-msgid "Memory Registers"
-msgstr "Memóriaregiszterek"
-
-#. "R0" is the abbreviation for "Register 0", used in the memory register dialog
-#: ../data/gcalctool.ui.h:391
-msgid "<span weight=\"bold\">R0</span>"
-msgstr "<span weight=\"bold\">R0</span>"
-
-#. "R1" is the abbreviation for "Register 1", used in the memory register dialog
-#: ../data/gcalctool.ui.h:393
-msgid "<span weight=\"bold\">R1</span>"
-msgstr "<span weight=\"bold\">R1</span>"
-
-#. "R2" is the abbreviation for "Register 2", used in the memory register dialog
-#: ../data/gcalctool.ui.h:395
-msgid "<span weight=\"bold\">R2</span>"
-msgstr "<span weight=\"bold\">R2</span>"
-
-#. "R3" is the abbreviation for "Register 3", used in the memory register dialog
-#: ../data/gcalctool.ui.h:397
-msgid "<span weight=\"bold\">R3</span>"
-msgstr "<span weight=\"bold\">R3</span>"
-
-#. "R4" is the abbreviation for "Register 4", used in the memory register dialog
-#: ../data/gcalctool.ui.h:399
-msgid "<span weight=\"bold\">R4</span>"
-msgstr "<span weight=\"bold\">R4</span>"
-
-#. "R5" is the abbreviation for "Register 5", used in the memory register dialog
-#: ../data/gcalctool.ui.h:401
-msgid "<span weight=\"bold\">R5</span>"
-msgstr "<span weight=\"bold\">R5</span>"
-
-#. "R6" is the abbreviation for "Register 6", used in the memory register dialog
-#: ../data/gcalctool.ui.h:403
-msgid "<span weight=\"bold\">R6</span>"
-msgstr "<span weight=\"bold\">R6</span>"
-
-#. "R7" is the abbreviation for "Register 7", used in the memory register dialog
-#: ../data/gcalctool.ui.h:405
-msgid "<span weight=\"bold\">R7</span>"
-msgstr "<span weight=\"bold\">R7</span>"
-
-#. "R8" is the abbreviation for "Register 8", used in the memory register dialog
-#: ../data/gcalctool.ui.h:407
-msgid "<span weight=\"bold\">R8</span>"
-msgstr "<span weight=\"bold\">R8</span>"
-
-#. "R9" is the abbreviation for "Register 9", used in the memory register dialog
-#: ../data/gcalctool.ui.h:409
-msgid "<span weight=\"bold\">R9</span>"
-msgstr "<span weight=\"bold\">R9</span>"
-
-#. This is accessible name for memory register 0.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:411
-msgid "register 0"
-msgstr "0. regiszter"
-
-#. This is accessible name for memory register 1.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:413
-msgid "register 1"
-msgstr "1. regiszter"
-
-#. This is accessible name for memory register 2.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:415
-msgid "register 2"
-msgstr "2. regiszter"
-
-#. This is accessible name for memory register 3.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:417
-msgid "register 3"
-msgstr "3. regiszter"
-
-#. This is accessible name for memory register 4.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:419
-msgid "register 4"
-msgstr "4. regiszter"
-
-#. This is accessible name for memory register 5.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:421
-msgid "register 5"
-msgstr "5. regiszter"
-
-#. This is accessible name for memory register 6.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:423
-msgid "register 6"
-msgstr "6. regiszter"
-
-#. This is accessible name for memory register 7.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:425
-msgid "register 7"
-msgstr "7. regiszter"
-
-#. This is accessible name for memory register 8.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:427
-msgid "register 8"
-msgstr "8. regiszter"
-
-#. This is accessible name for memory register 9.  It is spoken by screen readers such as Orca, to help people who are blind or have low vision.
-#: ../data/gcalctool.ui.h:429
-msgid "register 9"
-msgstr "9. regiszter"
-
-#. Title of edit constants dialog
-#: ../data/gcalctool.ui.h:431
-msgid "Edit Constants"
-msgstr "Állandók szerkesztése"
-
-#. Edit Functions Dialog: Instructions in dialog
-#: ../data/gcalctool.ui.h:433
-msgid "Click a _value or description to edit it:"
-msgstr "_Kattintson az érték vagy leírás szerkesztéséhez:"
-
-#. Edit Function Dialog: Note about what base numbers will be entered as
-#: ../data/gcalctool.ui.h:435
-msgid ""
-"<small><i><b>Note:</b> All constant values are specified in the decimal "
-"numeric base.</i></small>"
-msgstr ""
-"<small><i><b>Megjegyzés:</b> Minden állandó értéke tízes számrendszerben van "
-"kifejezve.</i></small>"
-
-#. Menu item in the constants menu to show the Edit Constants dialog
-#: ../data/gcalctool.ui.h:437
-msgid "Edit Constants..."
-msgstr "Állandók szerkesztése…"
-
-#. Menu item in the constants menu to show the Edit Functions dialog
-#: ../data/gcalctool.ui.h:439
-#| msgid "Additional Functions"
-msgid "Edit Functions..."
-msgstr "Függvények szerkesztése…"
-
-#. Title of edit functions dialog
-#: ../data/gcalctool.ui.h:441
-#| msgid "Additional Functions"
-msgid "Edit Functions"
-msgstr "Függvények szerkesztése"
-
-#. Title of insert ASCII dialog
-#: ../data/gcalctool.ui.h:443
-msgid "Insert ASCII Value"
-msgstr "ASCII-érték beszúrása"
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:86
+msgid "Syd"
+msgstr "Syd"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:88
+msgid "Sln"
+msgstr "Sln"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/buttons-financial.ui.h:90
+msgid "Rate"
+msgstr "Rate"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/buttons-financial.ui.h:92
+msgid "Pv"
+msgstr "PV"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/buttons-financial.ui.h:94
+msgid "Pmt"
+msgstr "Pmt"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/buttons-financial.ui.h:96
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Accessible name for the shift left button
+#. Tooltip for the shift left button
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:396
+msgid "Shift Left"
+msgstr "Balra csúsztatás"
+
+#. Accessible name for the shift right button
+#. Tooltip for the shift right button
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:398
+msgid "Shift Right"
+msgstr "Jobbra csúsztatás"
+
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:20
+msgid "Insert Character"
+msgstr "Karakter beszúrása"
+
+#. Title of insert character code dialog
+#. Tooltip for the insert character code button
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:386
+msgid "Insert Character Code"
+msgstr "Karakterkód beszúrása"
 
 #. Insert ASCII dialog: Label before character entry
-#: ../data/gcalctool.ui.h:445
+#: ../data/buttons-programming.ui.h:30
 msgid "Ch_aracter:"
 msgstr "K_arakter:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: ../data/gcalctool.ui.h:447
+#: ../data/buttons-programming.ui.h:32
 msgid "_Insert"
 msgstr "_Beszúrás"
 
-#. Title of set precision dialog
-#: ../data/gcalctool.ui.h:449
-msgid "Set Precision"
-msgstr "Pontosság beállítása"
-
-#. Set Precision Dialog: Label before the significant places spin button
-#: ../data/gcalctool.ui.h:451
-msgid "Significant _places:"
-msgstr "Értékes _jegyek:"
-
-#. Set Precision Dialog: Button to apply settings
-#: ../data/gcalctool.ui.h:453
-msgid "_Set"
-msgstr "_Beállítás"
-
-#. Translators: The window title when in basic mode
-#: ../data/gcalctool.desktop.in.h:1 ../src/gtk.c:62
+#. Program name in the about dialog
+#. Title of main window
+#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "Számológép"
 
-#: ../data/gcalctool.desktop.in.h:2
+#: ../data/gnome-calculator.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Aritmetikai, tudományos vagy pénzügyi számítások végrehajtása"
 
-#: ../data/gcalctool.schemas.in.h:1
+#: ../data/gnome-calculator.desktop.in.h:3
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr "számítás;aritmetikai;tudományos;pénzügyi;"
+
+#: ../data/org.gnome.calculator.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "Pontosság értéke"
 
-#: ../data/gcalctool.schemas.in.h:2
-#| msgid "The number of digits displayed after the numeric point"
-msgid ""
-"The number of digits displayed after the numeric point. This value must be "
-"in the range 0 to 9."
-msgstr ""
-"A tizedespont után megjelenő számjegyek száma. Ez az érték 0-9 között lehet."
+#: ../data/org.gnome.calculator.gschema.xml.in.h:2
+#| msgid ""
+#| "The number of digits displayed after the numeric point. This value must "
+#| "be in the range 0 to 9."
+msgid "The number of digits displayed after the numeric point"
+msgstr "A tizedesvessző után megjelenő számjegyek száma"
 
-#: ../data/gcalctool.schemas.in.h:3
+#: ../data/org.gnome.calculator.gschema.xml.in.h:3
+msgid "Word size"
+msgstr "Szóhossz"
+
+#: ../data/org.gnome.calculator.gschema.xml.in.h:4
+#| msgid ""
+#| "The size of the words used in bitwise operations. Valid values are 16, 32 "
+#| "and 64."
+msgid "The size of the words used in bitwise operations"
+msgstr "A bitenkénti műveletekben használt szavak hossza"
+
+#: ../data/org.gnome.calculator.gschema.xml.in.h:5
 msgid "Numeric Base"
 msgstr "Számrendszer alapja"
 
-#: ../data/gcalctool.schemas.in.h:4
-msgid "The numeric base for input and display."
-msgstr "A bevitt és megjelenített számok számrendszere."
+#: ../data/org.gnome.calculator.gschema.xml.in.h:6
+msgid "The numeric base"
+msgstr "A számrendszer alapja"
 
-#: ../data/gcalctool.schemas.in.h:5
-msgid "Display Mode"
-msgstr "Megjelenítési mód"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:7
+#| msgid "Show Thousands Separator"
+msgid "Show Thousands Separators"
+msgstr "Ezreselválasztók megjelenítése"
 
-#: ../data/gcalctool.schemas.in.h:6
-msgid ""
-"The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
-"\" (fixed-point) and \"SCI\" (scientific)"
-msgstr ""
-"A kiinduló megjelenítési mód. A lehetséges értékek: \"ENG\" (műszaki), \"FIX"
-"\" (fixpontos) and \"SCI\" (tudományos)"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:8
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "Jelzi, hogy nagy számokban megjelenjenek-e az ezreselválasztók."
 
-#: ../data/gcalctool.schemas.in.h:7
-msgid "Mode"
-msgstr "Mód"
-
-#: ../data/gcalctool.schemas.in.h:8
-msgid ""
-"The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-"\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-msgstr ""
-"A számológép kiindulási módja. A lehetséges értékek: „BASIC” (alap), "
-"„FINANCIAL” (pénzügyi), „LOGICAL” (logikai), „SCIENTIFIC” (tudományos) és "
-"„PROGRAMMING” (programozói)"
-
-#: ../data/gcalctool.schemas.in.h:9
+#: ../data/org.gnome.calculator.gschema.xml.in.h:9
 msgid "Show Trailing Zeroes"
 msgstr "Záró nullák megjelenítése"
 
-#: ../data/gcalctool.schemas.in.h:10
+#: ../data/org.gnome.calculator.gschema.xml.in.h:10
 #| msgid ""
-#| "Indicates whether any trailing zeroes after the numeric point should be "
+#| "Indicates whether any trailing zeroes after the number point should be "
 #| "shown in the display value."
 msgid ""
-"Indicates whether any trailing zeroes after the number point should be shown "
-"in the display value."
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
 msgstr ""
 "Jelzi, hogy a megjelenő értékben a tizedespont után megjelenjenek-e a záró "
 "nullák."
 
-#: ../data/gcalctool.schemas.in.h:11
-#| msgid "Show Thousands Separators"
-msgid "Show Thousands Separator"
-msgstr "Ezreselválasztó megjelenítése"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:11
+msgid "Number format"
+msgstr "Számformátum"
 
-#: ../data/gcalctool.schemas.in.h:12
-msgid "Indicates whether thousands separators are shown in large numbers."
-msgstr "Jelzi, hogy nagy számokban megjelenjenek-e az ezreselválasztók."
+#: ../data/org.gnome.calculator.gschema.xml.in.h:12
+msgid "The format to display numbers in"
+msgstr "A számok megjelenítésére használandó formátum"
 
-#: ../data/gcalctool.schemas.in.h:13
-msgid "Show Registers"
-msgstr "Regiszterek megjelenítése"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:13
+msgid "Angle units"
+msgstr "Szög mértékegysége"
 
-#: ../data/gcalctool.schemas.in.h:14
-msgid "Indicates whether the memory register window is initially displayed."
-msgstr "Jelzi, hogy induláskor megjelenjen-e a memóriaregiszter ablak."
+#: ../data/org.gnome.calculator.gschema.xml.in.h:14
+msgid "The angle units to use"
+msgstr "A használandó szögegység"
 
-#: ../data/gcalctool.schemas.in.h:15
-msgid "Trigonometric type"
-msgstr "Trigonometriai típus"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:15
+msgid "Button mode"
+msgstr "Gombmód"
 
-#: ../data/gcalctool.schemas.in.h:16
-msgid ""
-"The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-"\" (gradians) and \"RAD\" (radians)."
-msgstr ""
-"A kiinduló trigonometriai típus. A lehetséges értékek: \"DEG\" (fok), \"GRAD"
-"\" (gradián) és \"RAD\" (radián)."
+#: ../data/org.gnome.calculator.gschema.xml.in.h:16
+msgid "The button mode"
+msgstr "A gombmód"
 
-#: ../data/gcalctool.schemas.in.h:17
-msgid "Word size"
-msgstr "Szóhossz"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:17
+msgid "Source currency"
+msgstr "Forrás pénznem"
 
-#: ../data/gcalctool.schemas.in.h:18
-#| msgid "The size of the words used in bitwise operations"
-msgid ""
-"The size of the words used in bitwise operations. Valid values are 16, 32 "
-"and 64."
-msgstr ""
-"A bitenkénti műveletekben használt szavak hossza. A lehetséges értékek: 16, "
-"32, 64."
+#: ../data/org.gnome.calculator.gschema.xml.in.h:18
+msgid "Currency of the current calculation"
+msgstr "A jelenlegi számítás pénzneme"
 
-#: ../data/gcalctool.schemas.in.h:19
-msgid "The initial x-coordinate for the window"
-msgstr "Az ablak kiinduló X koordinátája"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:19
+msgid "Target currency"
+msgstr "Cél pénznem"
 
-#: ../data/gcalctool.schemas.in.h:20
-msgid "The number of pixels to place the window from the left of the screen."
-msgstr "Az ablak elhelyezése a képernyő bal szélétől ennyi képpontra."
+#: ../data/org.gnome.calculator.gschema.xml.in.h:20
+msgid "Currency to convert the current calculation into"
+msgstr "A jelenlegi számítás ezen pénznemmé alakítása"
 
-#: ../data/gcalctool.schemas.in.h:21
-msgid "The initial y-coordinate for the window"
-msgstr "Az ablak kiinduló Y koordinátája"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:21
+msgid "Source units"
+msgstr "Forrás mértékegység"
 
-#: ../data/gcalctool.schemas.in.h:22
-msgid "The number of pixels to place the window from the top of the screen."
-msgstr "Az ablak elhelyezése a képernyő tetejétől ennyi képpontra."
+#: ../data/org.gnome.calculator.gschema.xml.in.h:22
+msgid "Units of the current calculation"
+msgstr "A jelenlegi számítás mértékegysége"
 
-#: ../src/calctool.c:82
-#, c-format
-#| msgid ""
-#| "Usage:\n"
-#| "  %s — Perform mathematical calculations"
-msgid ""
-"Usage:\n"
-"  %s - Perform mathematical calculations"
-msgstr ""
-"Használat:\n"
-"  %s - Matematikai számítások végrehajtása"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:23
+msgid "Target units"
+msgstr "Cél mértékegység"
 
-#: ../src/calctool.c:90
-#, c-format
-msgid ""
-"Help Options:\n"
-"  -v, --version                   Show release version\n"
-"  -h, -?, --help                  Show help options\n"
-"  --help-all                      Show all help options\n"
-"  --help-gtk                      Show GTK+ options"
-msgstr ""
-"Súgólehetőségek:\n"
-"  -v, --version                   Verziószám megjelenítése\n"
-"  -h, -?, --help                  Súgólehetőségek megjelenítése\n"
-"  --help-all                      Minden súgólehetőség megjelenítése\n"
-"  --help-gtk                      GTK+ beállítások megjelenítése"
+#: ../data/org.gnome.calculator.gschema.xml.in.h:24
+msgid "Units to convert the current calculation into"
+msgstr "A jelenlegi számítás ezen mértékegységgé alakítása"
 
-#: ../src/calctool.c:101
-#, c-format
-msgid ""
-"GTK+ Options:\n"
-"  --class=CLASS                   Program class as used by the window "
-"manager\n"
-"  --name=NAME                     Program name as used by the window "
-"manager\n"
-"  --screen=SCREEN                 X screen to use\n"
-"  --sync                          Make X calls synchronous\n"
-"  --gtk-module=MODULES            Load additional GTK+ modules\n"
-"  --g-fatal-warnings              Make all warnings fatal"
-msgstr ""
-"GTK+ beállításai\n"
-"  --class=OSZTÁLY                 A program osztálya, ahogy az ablakkezelő "
-"használja\n"
-"  --name=NÉV                      A programnév, ahogy az ablakkezelő "
-"használja\n"
-"  --display=MEGJELENÍTŐ           Használandó X-megjelenítő\n"
-"  --screen=KÉPERNYŐ               Használandó X-képernyő\n"
-"  --sync                          Legyenek szinkron X-hívások\n"
-"  --gtk-module=MODULOK            További GTK+ modulok betöltése\n"
-"  --g-fatal-warnings              Minden figyelmeztetés végzetes legyen"
+#: ../src/currency.vala:28
+msgid "UAE Dirham"
+msgstr "UAE dirham"
 
-#: ../src/calctool.c:115
-#, c-format
-#| msgid ""
-#| "Application Options:\n"
-#| "  -s, --solve <equation>          Solve the given equation"
-msgid ""
-"Application Options:\n"
-"  -u, --unittest                  Perform unit tests\n"
-"  -s, --solve <equation>          Solve the given equation"
-msgstr ""
-"Alkalmazás kapcsolói:\n"
-"  -u, --unittest                  Egységtesztek végrehajtása\n"
-"  -s, --solve <egyenlet>          A megadott egyenlet megoldása"
+#: ../src/currency.vala:29
+msgid "Australian Dollar"
+msgstr "Ausztrál dollár"
 
-#. Translators: Error printed to stderr when user uses --solve argument without an equation
-#: ../src/calctool.c:156
-#, c-format
-msgid "Argument --solve requires an equation to solve"
-msgstr "A --solve kapcsolóhoz meg kell adni egy megoldandó egyenletet"
+#: ../src/currency.vala:30
+msgid "Bulgarian Lev"
+msgstr "Bolgár leva"
 
-#. Translators: Error printed to stderr when user provides an unknown command-line argument
-#: ../src/calctool.c:169
-#, c-format
-msgid "Unknown argument '%s'"
-msgstr "Ismeretlen kapcsoló: „%s”"
+#: ../src/currency.vala:31
+msgid "Bahraini Dinar"
+msgstr "Bahreini dinár"
 
-#. Translators: A log message displayed when an invalid accuracy
-#. is read from the configuration
-#: ../src/calctool.c:197
-#, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s: a pontosság a 0-%d tartományba eshet\n"
+#: ../src/currency.vala:32
+msgid "Brunei Dollar"
+msgstr "Brunei dollár"
 
-#: ../src/display.c:416
-msgid "No undo history"
-msgstr "A visszavonási műveletnek nincsenek előzményei"
+#: ../src/currency.vala:33
+msgid "Brazilian Real"
+msgstr "Brazil real"
 
-#: ../src/display.c:431
-#| msgid "No redo history"
-msgid "No redo steps"
-msgstr "Nincsenek ismétlési lépések"
+#: ../src/currency.vala:34
+msgid "Botswana Pula"
+msgstr "Botswanai pula"
 
-#. Translators: This message is displayed in the status bar when an
-#. invalid user-defined function is executed
-#: ../src/functions.c:237
-#| msgid "Malformed expression"
-msgid "Malformed function"
-msgstr "Hibás függvény"
+#: ../src/currency.vala:35
+msgid "Canadian Dollar"
+msgstr "Kanadai dollár"
 
-#. Translators: This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-#: ../src/functions.c:324
-#| msgid "No sane value to bitwise shift"
-msgid "No sane value to do bitwise shift"
-msgstr "Nincs ép érték a bitenkénti eltoláshoz"
+#: ../src/currency.vala:36
+msgid "CFA Franc"
+msgstr "CFA frank"
 
-#: ../src/functions.c:343 ../src/functions.c:396
-#| msgid "No sane value to store"
-msgid "No sane value to convert"
-msgstr "Nincs átalakítandó ép kifejezés"
+#: ../src/currency.vala:37
+msgid "Swiss Franc"
+msgstr "Svájci frank"
 
-#: ../src/functions.c:366 ../src/functions.c:416
-msgid "No sane value to store"
-msgstr "Nincs tárolható ép kifejezés"
+#: ../src/currency.vala:38
+msgid "Chilean Peso"
+msgstr "Chilei peso"
 
-#: ../src/functions.c:581
-msgid "Invalid number for the current base"
-msgstr "A szám érvénytelen a jelenlegi alaphoz"
+#: ../src/currency.vala:39
+msgid "Chinese Yuan"
+msgstr "Kínai jüan"
 
-#. Translators: Error displayed to user when they
-#. * perform an invalid bitwise operation, e.g.
-#. * 1 XOR -1
-#: ../src/functions.c:588
-msgid "Invalid bitwise operation"
-msgstr "Érvénytelen bitenkénti művelet"
+#: ../src/currency.vala:40
+msgid "Colombian Peso"
+msgstr "Kolumbiai peso"
 
-#. Translators: Error displayed to user when they
-#. * perform an invalid modulus operation, e.g.
-#. * 6 MOD 1.2
-#: ../src/functions.c:595
-msgid "Invalid modulus operation"
-msgstr "Érvénytelen maradékképzés művelet"
+#: ../src/currency.vala:41
+msgid "Czech Koruna"
+msgstr "Cseh korona"
 
-#. Translators; Error displayd to user when they
-#. * perform a bitwise operation on numbers greater
-#. * than the current word
-#: ../src/functions.c:602
-msgid "Overflow. Try a bigger word size"
-msgstr "Túlcsordulás. Próbálja nagyobb szóhosszal."
+#: ../src/currency.vala:42
+msgid "Danish Krone"
+msgstr "Dán korona"
 
-#. Translators; Error displayd to user when they
-#. * an unknown variable is entered
-#: ../src/functions.c:608
-#| msgid "Unknown variable '%s'"
-msgid "Unknown variable"
-msgstr "Ismeretlen változó"
+#: ../src/currency.vala:43
+msgid "Algerian Dinar"
+msgstr "Algériai dinár"
 
-#. Translators; Error displayd to user when they
-#. * an unknown function is entered
-#: ../src/functions.c:614
-#| msgid "Unknown conversion"
-msgid "Unknown function"
-msgstr "Ismeretlen függvény"
+#: ../src/currency.vala:44
+msgid "Estonian Kroon"
+msgstr "Észt korona"
 
-#. Translators: Error displayed to user when they
-#. * enter an invalid calculation
-#: ../src/functions.c:624
-msgid "Malformed expression"
-msgstr "Hibás kifejezés"
+#: ../src/currency.vala:45
+msgid "Euro"
+msgstr "Euró"
 
-#. Translators: The window title when in advanced mode
-#: ../src/gtk.c:64
+#: ../src/currency.vala:46
+msgid "Pound Sterling"
+msgstr "Font sterling"
+
+#: ../src/currency.vala:47
+msgid "Hong Kong Dollar"
+msgstr "Hongkongi dollár"
+
+#: ../src/currency.vala:48
+msgid "Croatian Kuna"
+msgstr "Horvát kuna"
+
+#: ../src/currency.vala:49
+msgid "Hungarian Forint"
+msgstr "Magyar forint"
+
+#: ../src/currency.vala:50
+msgid "Indonesian Rupiah"
+msgstr "Indonéz rúpia"
+
+#: ../src/currency.vala:51
+msgid "Israeli New Shekel"
+msgstr "Izraeli új sékel"
+
+#: ../src/currency.vala:52
+msgid "Indian Rupee"
+msgstr "Indiai rúpia"
+
+#: ../src/currency.vala:53
+msgid "Iranian Rial"
+msgstr "Iráni riál"
+
+#: ../src/currency.vala:54
+msgid "Icelandic Krona"
+msgstr "Izlandi korona"
+
+#: ../src/currency.vala:55
+msgid "Japanese Yen"
+msgstr "Japán jen"
+
+#: ../src/currency.vala:56
+msgid "South Korean Won"
+msgstr "Dél-koreai von"
+
+#: ../src/currency.vala:57
+msgid "Kuwaiti Dinar"
+msgstr "Kuvaiti dinár"
+
+#: ../src/currency.vala:58
+msgid "Kazakhstani Tenge"
+msgstr "Kazah tenge"
+
+#: ../src/currency.vala:59
+msgid "Sri Lankan Rupee"
+msgstr "Srí-lankai rúpia"
+
+#: ../src/currency.vala:60
+msgid "Lithuanian Litas"
+msgstr "Litván litas"
+
+#: ../src/currency.vala:61
+msgid "Latvian Lats"
+msgstr "Lett lat"
+
+#: ../src/currency.vala:62
+msgid "Libyan Dinar"
+msgstr "Líbiai dinár"
+
+#: ../src/currency.vala:63
+msgid "Mauritian Rupee"
+msgstr "Mauritániai rúpia"
+
+#: ../src/currency.vala:64
+msgid "Mexican Peso"
+msgstr "Mexikói peso"
+
+#: ../src/currency.vala:65
+msgid "Malaysian Ringgit"
+msgstr "Maláj ringgit"
+
+#: ../src/currency.vala:66
+msgid "Norwegian Krone"
+msgstr "Norvég korona"
+
+#: ../src/currency.vala:67
+msgid "Nepalese Rupee"
+msgstr "Nepáli rúpia"
+
+#: ../src/currency.vala:68
+msgid "New Zealand Dollar"
+msgstr "Új-zélandi dollár"
+
+#: ../src/currency.vala:69
+msgid "Omani Rial"
+msgstr "Ománi rial"
+
+#: ../src/currency.vala:70
+msgid "Peruvian Nuevo Sol"
+msgstr "Perui új sol"
+
+#: ../src/currency.vala:71
+msgid "Philippine Peso"
+msgstr "Fülöp-szigeteki peso"
+
+#: ../src/currency.vala:72
+msgid "Pakistani Rupee"
+msgstr "Pakisztáni rúpia"
+
+#: ../src/currency.vala:73
+msgid "Polish Zloty"
+msgstr "Lengyel zloty"
+
+#: ../src/currency.vala:74
+msgid "Qatari Riyal"
+msgstr "Katari riyál"
+
+#: ../src/currency.vala:75
+msgid "New Romanian Leu"
+msgstr "Új román lej"
+
+#: ../src/currency.vala:76
+msgid "Russian Rouble"
+msgstr "orosz rubel"
+
+#: ../src/currency.vala:77
+msgid "Saudi Riyal"
+msgstr "Szaud-arábiai riyál"
+
+#: ../src/currency.vala:78
+msgid "Swedish Krona"
+msgstr "Svéd korona"
+
+#: ../src/currency.vala:79
+msgid "Singapore Dollar"
+msgstr "Szingapúri dollár"
+
+#: ../src/currency.vala:80
+msgid "Thai Baht"
+msgstr "Thai baht"
+
+#: ../src/currency.vala:81
+msgid "Tunisian Dinar"
+msgstr "Tunéziai dinár"
+
+#: ../src/currency.vala:82
+msgid "New Turkish Lira"
+msgstr "Új török líra"
+
+#: ../src/currency.vala:83
+msgid "T&T Dollar (TTD)"
+msgstr "T&T dollár (TTD)"
+
+#: ../src/currency.vala:84
+msgid "US Dollar"
+msgstr "USA dollár"
+
+#: ../src/currency.vala:85
+msgid "Uruguayan Peso"
+msgstr "Uruguayi peso"
+
+#: ../src/currency.vala:86
+msgid "Venezuelan Bolívar"
+msgstr "Venezuelai bolivár"
+
+#: ../src/currency.vala:87
+msgid "South African Rand"
+msgstr "Dél-afrikai rand"
+
+#: ../src/financial.vala:114
+msgid "Error: the number of periods must be positive"
+msgstr "Hiba: a periódusok számának pozitívnak kell lennie"
+
+#: ../src/gnome-calculator.vala:80
+msgid "Basic"
+msgstr "Alap"
+
+#: ../src/gnome-calculator.vala:81
+msgid "Advanced"
+msgstr "Speciális"
+
+#: ../src/gnome-calculator.vala:82
+msgid "Financial"
+msgstr "Pénzügyi"
+
+#: ../src/gnome-calculator.vala:83
+msgid "Programming"
+msgstr "Programozói"
+
+#: ../src/gnome-calculator.vala:84
+msgid "Mode"
+msgstr "Mód"
+
+#. Title of preferences dialog
+#: ../src/gnome-calculator.vala:87 ../src/math-preferences.vala:26
+msgid "Preferences"
+msgstr "Beállítások"
+
+#: ../src/gnome-calculator.vala:91
 #| msgid "Calculator"
-msgid "Calculator - Advanced"
-msgstr "Számológép – Speciális"
+msgid "About Calculator"
+msgstr "Számológép névjegye"
 
-#. Translators: The window title when in financial mode
-#: ../src/gtk.c:66
-#| msgid "Calculator"
-msgid "Calculator - Financial"
-msgstr "Számológép – Pénzügyi"
+#: ../src/gnome-calculator.vala:92
+#| msgid "_Help"
+msgid "Help"
+msgstr "Súgó"
 
-#. Translators: The window title when in scientific mode
-#: ../src/gtk.c:68
-#| msgid "Calculator"
-msgid "Calculator - Scientific"
-msgstr "Számológép – Tudományos"
+#: ../src/gnome-calculator.vala:93
+msgid "Quit"
+msgstr "Kilépés"
 
-#. Translators: The window title when in programming mode
-#: ../src/gtk.c:70
-#| msgid "Programming"
-msgid "Calculator - Programming"
-msgstr "Számológép – Programozói"
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gnome-calculator.vala:228
+msgid "Unable to open help file"
+msgstr "A súgófájl nem nyitható meg"
 
-#. Translators: The window title when in basic mode. %s is replaced with the hostname.
-#: ../src/gtk.c:76
-#, c-format
-#| msgid "Calculator"
-msgid "Calculator [%s]"
-msgstr "Számológép [%s]"
-
-#. Translators: The window title when in advanced mode. %s is replaced with the hostname.
-#: ../src/gtk.c:78
-#, c-format
-msgid "Calculator [%s] - Advanced"
-msgstr "Számológép [%s] – Speciális"
-
-#. Translators: The window title when in financial mode. %s is replaced with the hostname.
-#: ../src/gtk.c:80
-#, c-format
-msgid "Calculator [%s] - Financial"
-msgstr "Számológép [%s] – Pénzügyi"
-
-#. Translators: The window title when in scientific mode. %s is replaced with the hostname.
-#: ../src/gtk.c:82
-#, c-format
-msgid "Calculator [%s] - Scientific"
-msgstr "Számológép [%s] – Tudományos"
-
-#. Translators: The window title when in programming mode. %s is replaced with the hostname.
-#: ../src/gtk.c:84
-#, c-format
-msgid "Calculator [%s] - Programming"
-msgstr "Számológép [%s] – Programozói"
-
-#. Translators: Title of the error dialog when unable to load the UI files
-#: ../src/gtk.c:574
-msgid "Error loading user interface"
-msgstr "Hiba a felhasználói felület betöltésekor"
-
-#. Translators: Description in UI error dialog when unable to load the UI files. %s is replaced with the error message provided by GTK+
-#: ../src/gtk.c:577
-#, c-format
-msgid ""
-"A required file is missing or damaged, please check your installation.\n"
-"\n"
-"%s"
-msgstr ""
-"Egy szükséges fájl hiányzik vagy sérült. Ellenőrizze a telepítést.\n"
-"\n"
-"%s"
-
-#. Translators: Accuracy Popup: Menu item to show the accuracy dialog. %d is replaced with the current accuracy.
-#: ../src/gtk.c:674
-#, c-format
-msgid "_Other (%d) ..."
-msgstr "_Egyéb (%d) …"
-
-#. Translators: Tooltip for accuracy button
-#: ../src/gtk.c:680
-#, c-format
-msgid "Set accuracy from 0 to %d numeric place. [A]"
-msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-msgstr[0] "A pontosság beállítása 0-tól %d számjegyig. [A]"
-msgstr[1] "A pontosság beállítása 0-tól %d számjegyig. [A]"
-
-#. Translators: The sine button
-#: ../src/gtk.c:705
-#| msgctxt "unit-format"
-#| msgid "%s in"
-msgid "sin"
-msgstr "sin"
-
-#. Translators: The inverse sine button
-#: ../src/gtk.c:707
-msgid "sin<sup>−1</sup>"
-msgstr "sin<sup>−1</sup>"
-
-#. Translators: The hyperbolic sine button
-#: ../src/gtk.c:709
-msgid "sinh"
-msgstr "sinh"
-
-#. Translators: The inverse hyperbolic sine button
-#: ../src/gtk.c:711
-msgid "sinh<sup>−1</sup>"
-msgstr "sinh<sup>−1</sup>"
-
-#. Translators: The sine tooltip
-#: ../src/gtk.c:714
-#| msgid "Sine"
-msgid "Sine [k]"
-msgstr "Szinusz [k]"
-
-#. Translators: The inverse sine tooltip
-#: ../src/gtk.c:716
-#| msgid "Inverse [Ctrl+I]"
-msgid "Inverse Sine [K]"
-msgstr "Inverz szinusz [K]"
-
-#. Translators: The hyperbolic sine tooltip
-#: ../src/gtk.c:718
-#| msgid "Hyperbolic Sine"
-msgid "Hyperbolic Sine [k]"
-msgstr "Hiperbolikus szinusz [k]"
-
-#. Translators: The hyperbolic inverse sine tooltip
-#: ../src/gtk.c:720
-#| msgid "Hyperbolic Sine"
-msgid "Hyperbolic Inverse Sine [K]"
-msgstr "Hiperbolikus inverz szinusz [K]"
-
-#. Translators: The cosine button
-#: ../src/gtk.c:724
-#| msgid "Seconds"
-msgid "cos"
-msgstr "cos"
-
-#. Translators: The inverse cosine button
-#: ../src/gtk.c:726
-msgid "cos<sup>−1</sup>"
-msgstr "cos<sup>−1</sup>"
-
-#. Translators: The hyperbolic cosine button
-#: ../src/gtk.c:728
-msgid "cosh"
-msgstr "cosh"
-
-#. Translators: The inverse hyperbolic cosine button
-#: ../src/gtk.c:730
-msgid "cosh<sup>−1</sup>"
-msgstr "cosh<sup>−1</sup>"
-
-#. Translators: The cosine tooltip
-#: ../src/gtk.c:733
-#| msgid "Cosine"
-msgid "Cosine [j]"
-msgstr "Koszinusz [j]"
-
-#. Translators: The inverse cosine tooltip
-#: ../src/gtk.c:735
-msgid "Inverse Cosine [J]"
-msgstr "Inverz koszinusz [J]"
-
-#. Translators: The hyperbolic cosine tooltip
-#: ../src/gtk.c:737
-#| msgid "Hyperbolic Cosine"
-msgid "Hyperbolic Cosine [j]"
-msgstr "Hiperbolikus koszinusz [j]"
-
-#. Translators: The hyperbolic inverse cosine tooltip
-#: ../src/gtk.c:739
-#| msgid "Hyperbolic Cosine"
-msgid "Hyperbolic Inverse Cosine [J]"
-msgstr "Hiperbolikus inverz koszinusz [J]"
-
-#. Translators: The tangent button
-#: ../src/gtk.c:743
-msgid "tan"
-msgstr "tan"
-
-#. Translators: The inverse tangent button
-#: ../src/gtk.c:745
-msgid "tan<sup>−1</sup>"
-msgstr "tan<sup>−1</sup>"
-
-#. Translators: The hyperbolic tangent button
-#: ../src/gtk.c:747
-msgid "tanh"
-msgstr "tanh"
-
-#. Translators: The inverse hyperbolic tangent button
-#: ../src/gtk.c:749
-msgid "tanh<sup>−1</sup>"
-msgstr "tanh<sup>−1</sup>"
-
-#. Translators: The tangent tooltip
-#: ../src/gtk.c:752
-#| msgid "Tangent"
-msgid "Tangent [w]"
-msgstr "Tangens [w]"
-
-#. Translators: The inverse tangent tooltip
-#: ../src/gtk.c:754
-msgid "Inverse Tangent [W]"
-msgstr "Inverz tangens [W]"
-
-#. Translators: The hyperbolic tangent tooltip
-#: ../src/gtk.c:756
-#| msgid "Hyperbolic Tangent"
-msgid "Hyperbolic Tangent [w]"
-msgstr "Hiperbolikus tangens [w]"
-
-#. Translators: The hyperbolic inverse tangent tooltip
-#: ../src/gtk.c:758
-#| msgid "Hyperbolic Tangent"
-msgid "Hyperbolic Inverse Tangent [W]"
-msgstr "Hiperbolikus inverz tangens [W]"
-
-#. Translators: The natural logaritm button
-#: ../src/gtk.c:763
-#| msgid "Sln"
-msgid "ln"
-msgstr "ln"
-
-#. Translators: The e to the power of x button
-#: ../src/gtk.c:765
-msgid "e<sup><i>x</i></sup>"
-msgstr "e<sup><i>x</i></sup>"
-
-#. Translators: Tooltip for the natural log button
-#: ../src/gtk.c:768
-#| msgid "Natural Logarithm"
-msgid "Natural logarithm [n]"
-msgstr "Természetes alapú logaritmus [n]"
-
-#. Translators: Tooltip for the e to the power of x button
-#: ../src/gtk.c:770
-msgid "e to the power of the displayed value [N]"
-msgstr "e hatványozása a megjelenített értékre [N]"
-
-#. Translators: The 10-based logaritm button
-#: ../src/gtk.c:775
-msgid "log"
-msgstr "log"
-
-#. Translators: The 10 to the power of x button
-#: ../src/gtk.c:777
-msgid "10<sup><i>x</i></sup>"
-msgstr "10<sup><i>x</i></sup>"
-
-#. Translators: Tooltip for the log base 10 button
-#: ../src/gtk.c:780
-msgid "Base 10 logarithm [g]"
-msgstr "10-es alapú logaritmus [g]"
-
-#. Translators: Tooltip for the 10 to the power of x button
-#: ../src/gtk.c:782
-msgid "10 to the power of displayed value [G]"
-msgstr "10 hatványozása a megjelenített értékre [G]"
-
-#. Translators: The 2-based logaritm button
-#: ../src/gtk.c:787
-msgid "log<sub>2</sub>"
-msgstr "log<sub>2</sub>"
-
-#. Translators: The 2 to the power of x button
-#: ../src/gtk.c:789
-msgid "2<sup><i>x</i></sup>"
-msgstr "2<sup><i>x</i></sup>"
-
-#. Translators: Tooltip for the log base 2 button
-#: ../src/gtk.c:792
-msgid "Base 2 logarithm [h]"
-msgstr "2-es alapú logaritmus [h]"
-
-#. Translators: Tooltip for the 2 to the power of x button
-#: ../src/gtk.c:794
-msgid "2 to the power of the displayed value [H]"
-msgstr "2 hatványozása a megjelenített értékre [H]"
-
-#. Translators: The x to the power of y button
-#: ../src/gtk.c:799
-msgid "x<sup><i>y</i></sup>"
-msgstr "x<sup><i>y</i></sup>"
-
-#. Translators: The x to the power of reciprocal y button
-#: ../src/gtk.c:801
-msgid "x<sup>1/<i>y</i></sup>"
-msgstr "x<sup>1/<i>y</i></sup>"
-
-#. Translators: Tooltip for the x to the power of y button
-#: ../src/gtk.c:804
-msgid "Raise displayed value to the power of y [o]"
-msgstr "A megjelenített érték y-adik hatványra emelése [o]"
-
-#. Translators: Tooltip for the x to the power of reciprocal y button
-#: ../src/gtk.c:806
-msgid "Raise displayed value to the power of reciprocal y [O]"
-msgstr "A megjelenített érték 1/y-adik hatványra emelése [O]"
-
-#. Translators: The translator credits. Please translate this with your name(s).
-#: ../src/gtk.c:1395
+#. The translator credits. Please translate this with your name (s).
+#: ../src/gnome-calculator.vala:258
 msgid "translator-credits"
 msgstr ""
 "Dvornik László <dvornik at gnome dot hu>\n"
@@ -2325,808 +847,2106 @@ msgstr ""
 "Tímár András <timar at gnome dot hu>\n"
 "Úr Balázs <urbalazs at gmail dot com>"
 
-#: ../src/gtk.c:1399
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"A Gcalctool szabad szoftver, terjesztheti és/vagy módosíthatja a Free "
-"Software\n"
-"Foundation által kiadott GNU General Public License második (vagy bármely\n"
-"későbbi) változatában foglaltak alapján.\n"
-"\n"
-"A Gcalctool programot abban a reményben terjesztjük, hogy hasznos lesz, de "
-"nem\n"
-"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\n"
-"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További\n"
-"részletekért tanulmányozza a GNU GPL licencet.\n"
-"\n"
-"A Gcalctool programhoz a GNU General Public License egy példánya is jár, ha "
-"nem\n"
-"kapta meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 "
-"Franklin\n"
-"St, Fifth Floor, Boston, MA 02110-1301, USA."
-
-#. Translators: Program name in the about dialog
-#: ../src/gtk.c:1415
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Translators: Copyright notice in the about dialog
-#: ../src/gtk.c:1418
-#| msgid "© 1986–2010 The Gcalctool authors"
-msgid "© 1986-2008 The Gcalctool authors"
-msgstr "© 1986-2008 A Gcalctool szerzői"
-
-#. Translators: Short description in the about dialog
-#: ../src/gtk.c:1421
+#. Short description in the about dialog
+#: ../src/gnome-calculator.vala:272
 msgid "Calculator with financial and scientific modes."
 msgstr "Számológép pénzügyi és tudományos üzemmódokkal."
 
-#: ../src/gtk.c:1579
-msgid "Unable to open help file"
-msgstr "A súgófájl nem nyitható meg"
+#: ../src/gnome-calculator.vala:305
+msgid "Solve given equation"
+msgstr "A megadott egyenlet megoldása"
 
-#. Translators: R is the short form of register used inter alia in popup menus
-#: ../src/gtk.c:1990
-msgid "R"
-msgstr "R"
+#: ../src/gnome-calculator.vala:313
+msgid "Start with given equation"
+msgstr "Kezdés a megadott egyenlettel"
 
-#. FIXME: WTF?
-#: ../src/gtk.c:2371
-msgid "Paste"
-msgstr "Beillesztés"
+#: ../src/gnome-calculator.vala:322
+msgid "Show release version"
+msgstr "Verziószám megjelenítése"
 
-#. Translators: Edit Constants Dialog: Constant number column title
-#. Translators: Edit Functions Dialog: Function number column title
-#: ../src/gtk.c:2739 ../src/gtk.c:2756
-msgid "No."
-msgstr "Sorszám"
+#. Configure buttons
+#. Tooltip for the Pi button
+#: ../src/math-buttons.vala:298
+msgid "Pi [Ctrl+P]"
+msgstr "Pi [Ctrl+P]"
 
-#. Translators: Edit Constants Dialog: Constant value column title
-#. Translators: Edit Functions Dialog: Function value column title
-#: ../src/gtk.c:2741 ../src/gtk.c:2759
-msgid "Value"
-msgstr "Érték"
+#. Tooltip for the Euler's Number button
+#: ../src/math-buttons.vala:300
+#| msgid "Euler's Number (e)"
+msgid "Euler’s Number"
+msgstr "Euler-szám"
 
-#. Translators: Edit Constants Dialog: Constant description column title
-#. Translators: Edit Functions Dialog: Function description column title
-#: ../src/gtk.c:2743 ../src/gtk.c:2762
-#| msgid "Superscript"
-msgid "Description"
-msgstr "Leírás"
+#. Tooltip for the subscript button
+#: ../src/math-buttons.vala:304
+msgid "Subscript mode [Alt]"
+msgstr "Alsó index mód [Alt]"
 
-#. Set default accuracy menu item
-#. Translators: Accuracy Popup: Menu item to reset the accuracy to the default value. %d is replaced with the default value.
-#: ../src/gtk.c:2886
+#. Tooltip for the superscript button
+#: ../src/math-buttons.vala:306
+msgid "Superscript mode [Ctrl]"
+msgstr "Felső index mód [Ctrl]"
+
+#. Tooltip for the scientific exponent button
+#: ../src/math-buttons.vala:308
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "Tudományos kitevő [Ctrl+E]"
+
+#. Tooltip for the add button
+#: ../src/math-buttons.vala:310
+msgid "Add [+]"
+msgstr "Összeadás [+]"
+
+#. Tooltip for the subtract button
+#: ../src/math-buttons.vala:312
+msgid "Subtract [-]"
+msgstr "Kivonás [-]"
+
+#. Tooltip for the multiply button
+#: ../src/math-buttons.vala:314
+msgid "Multiply [*]"
+msgstr "Szorzás [*]"
+
+#. Tooltip for the divide button
+#: ../src/math-buttons.vala:316
+msgid "Divide [/]"
+msgstr "Osztás [/]"
+
+#. Tooltip for the modulus divide button
+#: ../src/math-buttons.vala:318
+#| msgid "Modulus Division [M]"
+msgid "Modulus divide"
+msgstr "Maradékos osztás"
+
+#. Tooltip for the additional functions button
+#: ../src/math-buttons.vala:320
+#| msgid "Edit Functions"
+msgid "Additional Functions"
+msgstr "További függvények"
+
+#. Tooltip for the exponent button
+#: ../src/math-buttons.vala:322
+msgid "Exponent [^ or **]"
+msgstr "Kitevő [^ vagy **]"
+
+#. Tooltip for the square button
+#: ../src/math-buttons.vala:324
+#| msgid "Square [@]"
+msgid "Square [Ctrl+2]"
+msgstr "Négyzet [Ctrl+2]"
+
+#. Tooltip for the percentage button
+#: ../src/math-buttons.vala:326
+msgid "Percentage [%]"
+msgstr "Százalék [%]"
+
+#. Tooltip for the factorial button
+#: ../src/math-buttons.vala:328
+msgid "Factorial [!]"
+msgstr "Faktoriális [!]"
+
+#. Tooltip for the absolute value button
+#: ../src/math-buttons.vala:330
+#| msgid "Absolute value [u]"
+msgid "Absolute value [|]"
+msgstr "Abszolút érték [|]"
+
+#. Tooltip for the complex argument component button
+#: ../src/math-buttons.vala:332
+msgid "Complex argument"
+msgstr "Komplex argumentum"
+
+#. Tooltip for the complex conjugate button
+#: ../src/math-buttons.vala:334
+msgid "Complex conjugate"
+msgstr "Komplex konjugált"
+
+#. Tooltip for the root button
+#: ../src/math-buttons.vala:336
+msgid "Root [Ctrl+R]"
+msgstr "Gyök [Ctrl+R]"
+
+#. Tooltip for the square root button
+#: ../src/math-buttons.vala:338
+#| msgid "Square root [s]"
+msgid "Square root [Ctrl+R]"
+msgstr "Négyzetgyök [Ctrl+R]"
+
+#. Tooltip for the logarithm button
+#: ../src/math-buttons.vala:340
+msgid "Logarithm"
+msgstr "Logaritmus"
+
+#. Tooltip for the natural logarithm button
+#: ../src/math-buttons.vala:342
+#| msgid "Natural logarithm [n]"
+msgid "Natural Logarithm"
+msgstr "Természetes alapú logaritmus"
+
+#. Tooltip for the sine button
+#: ../src/math-buttons.vala:344
+#| msgid "Sine [k]"
+msgid "Sine"
+msgstr "Szinusz"
+
+#. Tooltip for the cosine button
+#: ../src/math-buttons.vala:346
+#| msgid "Cosine [j]"
+msgid "Cosine"
+msgstr "Koszinusz"
+
+#. Tooltip for the tangent button
+#: ../src/math-buttons.vala:348
+#| msgid "Tangent [w]"
+msgid "Tangent"
+msgstr "Tangens"
+
+#. Tooltip for the hyperbolic sine button
+#: ../src/math-buttons.vala:350
+#| msgid "Hyperbolic Sine [k]"
+msgid "Hyperbolic Sine"
+msgstr "Szinusz hiperbolikusz"
+
+#. Tooltip for the hyperbolic cosine button
+#: ../src/math-buttons.vala:352
+#| msgid "Hyperbolic Cosine [j]"
+msgid "Hyperbolic Cosine"
+msgstr "Koszinusz hiperbolikusz"
+
+#. Tooltip for the hyperbolic tangent button
+#: ../src/math-buttons.vala:354
+#| msgid "Hyperbolic Tangent [w]"
+msgid "Hyperbolic Tangent"
+msgstr "Tangens hiperbolikusz"
+
+#. Tooltip for the inverse button
+#: ../src/math-buttons.vala:356
+#| msgid "Inverse Sine [K]"
+msgid "Inverse [Ctrl+I]"
+msgstr "Invertálás [Ctrl+I]"
+
+#. Tooltip for the boolean AND button
+#: ../src/math-buttons.vala:358
+msgid "Boolean AND"
+msgstr "Logikai ÉS"
+
+#. Tooltip for the boolean OR button
+#: ../src/math-buttons.vala:360
+msgid "Boolean OR"
+msgstr "Logikai VAGY"
+
+#. Tooltip for the exclusive OR button
+#: ../src/math-buttons.vala:362
+msgid "Boolean Exclusive OR"
+msgstr "Logikai kizáró VAGY"
+
+#. Tooltip for the boolean NOT button
+#: ../src/math-buttons.vala:364
+msgid "Boolean NOT"
+msgstr "Logikai NEM"
+
+#. Tooltip for the integer component button
+#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
+#| msgid "Imaginary Component"
+msgid "Integer Component"
+msgstr "Egész rész"
+
+#. Tooltip for the fractional component button
+#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
+#| msgid "Fractional portion"
+msgid "Fractional Component"
+msgstr "Törtrész"
+
+#. Tooltip for the real component button
+#: ../src/math-buttons.vala:370
+msgid "Real Component"
+msgstr "Valós rész"
+
+#. Tooltip for the imaginary component button
+#: ../src/math-buttons.vala:372
+msgid "Imaginary Component"
+msgstr "Képzetes rész"
+
+#. Tooltip for the ones' complement button
+#: ../src/math-buttons.vala:374
+msgid "Ones' Complement"
+msgstr "1-es komplemens"
+
+#. Tooltip for the two's complement button
+#: ../src/math-buttons.vala:376
+#| msgid "Ones' Complement"
+msgid "Two's Complement"
+msgstr "2-es komplemens"
+
+#. Tooltip for the truncate button
+#: ../src/math-buttons.vala:378
+#| msgid "Trunc"
+msgid "Truncate"
+msgstr "Csonkítás"
+
+#. Tooltip for the start group button
+#: ../src/math-buttons.vala:380
+#| msgid "End Group [)]"
+msgid "Start Group [(]"
+msgstr "Csoport kezdete [(]"
+
+#. Tooltip for the end group button
+#: ../src/math-buttons.vala:382
+msgid "End Group [)]"
+msgstr "Csoport vége [)]"
+
+#. Tooltip for the solve button
+#: ../src/math-buttons.vala:388
+#| msgid "Calculate result"
+msgid "Calculate Result"
+msgstr "Számítás elvégzése"
+
+#. Tooltip for the factor button
+#: ../src/math-buttons.vala:390
+msgid "Factorize [Ctrl+F]"
+msgstr "Faktorizálás [Ctrl+F]"
+
+#. Tooltip for the clear button
+#: ../src/math-buttons.vala:392
+#| msgid "Clear displayed value [Escape]"
+msgid "Clear Display [Escape]"
+msgstr "A kijelző törlése [Esc]"
+
+#. Tooltip for the undo button
+#: ../src/math-buttons.vala:394
+msgid "Undo [Ctrl+Z]"
+msgstr "Visszavonás [Ctrl+Z]"
+
+#. Tooltip for the double declining depreciation button
+#: ../src/math-buttons.vala:402
+msgid "Double Declining Depreciation"
+msgstr "Progresszív értékcsökkenési leírás"
+
+#. Tooltip for the financial term button
+#: ../src/math-buttons.vala:406
+msgid "Financial Term"
+msgstr "Pénzügyi év"
+
+#. Tooltip for the sum of the years digits depreciation button
+#: ../src/math-buttons.vala:408
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Évek száma szerinti értékcsökkenési leírás"
+
+#. Tooltip for the straight line depreciation button
+#: ../src/math-buttons.vala:410
+msgid "Straight Line Depreciation"
+msgstr "Lineáris értékcsökkenési leírás"
+
+#. Number display mode combo: Binary, e.g. 10011010010₂
+#: ../src/math-buttons.vala:523
+msgid "Binary"
+msgstr "Bináris"
+
+#. Number display mode combo: Octal, e.g. 2322₈
+#: ../src/math-buttons.vala:527
+msgid "Octal"
+msgstr "Oktális"
+
+#. Number display mode combo: Decimal, e.g. 1234
+#: ../src/math-buttons.vala:531
+msgid "Decimal"
+msgstr "Decimális"
+
+#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
+#: ../src/math-buttons.vala:535
+#| msgid "Decimal"
+msgid "Hexadecimal"
+msgstr "Hexadecimális"
+
+#. Left Shift Popup: Menu item to shift left by n places (n < 10)
+#. Right Shift Popup: Menu item to shift right by n places (n < 10)
+#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
 #, c-format
-msgid "Reset to _Default (%d)"
-msgstr "Visszaállítás az ala_pértelmezettre (%d)"
+#| msgid "_1 place"
+msgid "_%d place"
+msgid_plural "_%d places"
+msgstr[0] "_%d jegy"
+msgstr[1] "_%d jegy"
 
-#: ../src/mp.c:1469
-msgid "Negative X and non-integer Y not supported"
-msgstr "Negatív X és nem-egész Y nem támogatott"
+#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
+#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
+#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
+#, c-format
+#| msgid "_1 place"
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d jegy"
+msgstr[1] "%d jegy"
+
+#. Tooltip for the round button
+#: ../src/math-buttons.vala:813
+msgid "Round"
+msgstr "Kerekítés"
+
+#. Tooltip for the floor button
+#: ../src/math-buttons.vala:815
+msgid "Floor"
+msgstr "Alsó egészrész"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.vala:817
+msgid "Ceiling"
+msgstr "Felső egészrész"
+
+#. Tooltip for the ceiling button
+#: ../src/math-buttons.vala:819
+msgid "Sign"
+msgstr "Előjel"
+
+#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
+#: ../src/math-converter.vala:46
+msgid " in "
+msgstr " ebben: "
+
+#. Tooltip for swap conversion button
+#: ../src/math-converter.vala:60
+msgid "Switch conversion units"
+msgstr "Mértékegységek cseréje"
+
+#. Digits localized for the given language
+#: ../src/math-equation.vala:171
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+
+#. Error shown when trying to undo with no undo history
+#: ../src/math-equation.vala:487
+msgid "No undo history"
+msgstr "A visszavonási műveletnek nincsenek előzményei"
+
+#. Error shown when trying to redo with no redo history
+#: ../src/math-equation.vala:503
+#| msgid "No undo history"
+msgid "No redo history"
+msgstr "A mégis műveletnek nincsenek előzményei"
+
+#: ../src/math-equation.vala:732
+msgid "No sane value to store"
+msgstr "Nincs tárolható ép kifejezés"
+
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../src/math-equation.vala:888
+msgid "Overflow. Try a bigger word size"
+msgstr "Túlcsordulás. Próbálja nagyobb szóhosszal."
+
+#. Error displayed to user when they an unknown variable is entered
+#: ../src/math-equation.vala:893
+#, c-format
+#| msgid "Unknown variable"
+msgid "Unknown variable '%s'"
+msgstr "Ismeretlen változó: „%s”"
+
+#. Error displayed to user when an unknown function is entered
+#: ../src/math-equation.vala:900
+#, c-format
+msgid "Function '%s' is not defined"
+msgstr "A függvény („%s”) nincs meghatározva"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../src/math-equation.vala:907
+#| msgid "Unknown function"
+msgid "Unknown conversion"
+msgstr "Ismeretlen konverzió"
+
+#: ../src/math-equation.vala:915
+#, c-format
+msgid "Malformed expression at token '%s'"
+msgstr "Hibás kifejezés a(z) „%s” tokennél"
+
+#. Unknown error.
+#. Error displayed to user when they enter an invalid calculation
+#: ../src/math-equation.vala:920 ../src/math-equation.vala:925
+msgid "Malformed expression"
+msgstr "Hibás kifejezés"
+
+#: ../src/math-equation.vala:936
+msgid "Calculating"
+msgstr "Számítás"
+
+#. Error displayed when trying to factorize a non-integer value
+#: ../src/math-equation.vala:1063
+msgid "Need an integer to factorize"
+msgstr "A faktorizáláshoz egész szám szükséges"
+
+#. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
+#: ../src/math-equation.vala:1117
+#| msgid "No sane value to do bitwise shift"
+msgid "No sane value to bitwise shift"
+msgstr "Nincs ép érték a bitenkénti eltoláshoz"
+
+#. Message displayed when cannot toggle bit in display
+#: ../src/math-equation.vala:1131
+msgid "Displayed value not an integer"
+msgstr "A megjelenített érték nem egész"
+
+#. Label on close button in preferences dialog
+#: ../src/math-preferences.vala:29
+msgid "_Close"
+msgstr "_Bezárás"
+
+#. Preferences dialog: Label for number format combo box
+#: ../src/math-preferences.vala:39
+msgid "Number _Format:"
+msgstr "S_zámformátum:"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
+#: ../src/math-preferences.vala:56
+msgid "Automatic"
+msgstr "Automatikus"
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.vala:60
+msgid "Fixed"
+msgstr "Rögzített"
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.vala:64
+msgid "Scientific"
+msgstr "Tudományos mód"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.vala:68
+msgid "Engineering"
+msgstr "Műszaki"
+
+#. Label used in preferences dialog.  The %d is replaced by a spinbutton
+#: ../src/math-preferences.vala:88
+#, c-format
+msgid "Show %d decimal _places"
+msgstr "%d decimális _hely megjelenítése"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../src/math-preferences.vala:115
+#| msgid "Show trailing zeroes"
+msgid "Show trailing _zeroes"
+msgstr "_Záró nullák megjelenítése"
+
+#. Preferences dialog: label for show show thousands separator check button
+#: ../src/math-preferences.vala:121
+#| msgid "Show thousands separator"
+msgid "Show _thousands separators"
+msgstr "_Ezreselválasztók megjelenítése"
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../src/math-preferences.vala:127
+msgid "_Angle units:"
+msgstr "S_zög mértékegysége:"
+
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.vala:143 ../src/unit.vala:38
+#| msgid "De_grees"
+msgid "Degrees"
+msgstr "Fok"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.vala:147 ../src/unit.vala:39
+#| msgid "_Radians"
+msgid "Radians"
+msgstr "Radián"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.vala:151 ../src/unit.vala:40
+#| msgid "Gr_adians"
+msgid "Gradians"
+msgstr "Gradián"
+
+#. Preferences dialog: Label for word size combo box
+#: ../src/math-preferences.vala:157
+msgid "Word _size:"
+msgstr "Szó_hossz:"
+
+#. Word size combo: 8 bits
+#: ../src/math-preferences.vala:171
+msgid "8 bits"
+msgstr "8 bit"
+
+#. Word size combo: 16 bits
+#: ../src/math-preferences.vala:173
+#| msgid "_16 bit"
+msgid "16 bits"
+msgstr ""
+
+#. Word size combo: 32 bits
+#: ../src/math-preferences.vala:175
+#| msgid "_32 bit"
+msgid "32 bits"
+msgstr ""
+
+#. Word size combo: 64 bits
+#: ../src/math-preferences.vala:177
+#| msgid "_64 bit"
+msgid "64 bits"
+msgstr ""
+
+#. Translators: Error display when attempting to take argument of zero
+#: ../src/number.vala:652
+msgid "Argument not defined for zero"
+msgstr "Az argumentum nincs definiálva nullára"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
+#: ../src/number.vala:909 ../src/number.vala:1858
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Nulla hatványozása nincs meghatározva negatív kitevőre"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/number.vala:992 ../src/number.vala:1025
+msgid "Logarithm of zero is undefined"
+msgstr "A nulla logaritmusa nincs meghatározva"
+
+#. Translators: Error displayed when attempted take the factorial of a fractional number
+#: ../src/number.vala:1043
+msgid "Factorial is only defined for natural numbers"
+msgstr "A faktoriális csak természetes számokra van meghatározva"
+
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/number.vala:1119 ../src/number.vala:2608
+msgid "Division by zero is undefined"
+msgstr "A nullával osztás nincs meghatározva"
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../src/number.vala:1159
+msgid "Modulus division is only defined for integers"
+msgstr "A maradékos osztás csak egészekre van meghatározva"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:281
-msgid "Tangent is infinite"
-msgstr "A tangens végtelen"
+#: ../src/number.vala:1227
+msgid ""
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr ""
+"A tangens nincs meghatározva π∕2 (90°) és π (180°) közötti szögek "
+"többszöröseire"
+
+#. Translators: Error displayed when inverse sine value is undefined
+#: ../src/number.vala:1265
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr ""
+"Az inverz szinusz nincs meghatározva a [-1, 1] intervallumon kívüli értékekre"
+
+#. Translators: Error displayed when inverse cosine value is undefined
+#: ../src/number.vala:1280
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr ""
+"Az inverz koszinusz nincs meghatározva a [-1, 1] intervallumon kívüli "
+"értékekre"
+
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: ../src/number.vala:1477
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
+msgstr ""
+"Az inverz hiperbolikus koszinusz nincs meghatározva az egynél kisebb "
+"értékekre"
+
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: ../src/number.vala:1496
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr ""
+"Az inverz hiperbolikus tangens nincs meghatározva a [-1, 1] intervallumon "
+"kívüli értékekre"
+
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/number.vala:1515
+msgid "Boolean AND is only defined for positive integers"
+msgstr "A logikai ÉS csak pozitív egészekre van meghatározva"
+
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/number.vala:1527
+msgid "Boolean OR is only defined for positive integers"
+msgstr "A logikai VAGY csak pozitív egészekre van meghatározva"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/number.vala:1539
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "A logikai XOR csak pozitív egészekre van meghatározva"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/number.vala:1551
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "A logikai NEM csak pozitív egészekre van meghatározva"
+
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/number.vala:1574
+msgid "Shift is only possible on integer values"
+msgstr "A csúsztatást csak egészekre lehet elvégezni"
+
+#: ../src/number.vala:1878
+msgid "Root must be non-zero"
+msgstr "A gyök nem lehet nulla"
+
+#: ../src/number.vala:1895
+msgid "Negative root of zero is undefined"
+msgstr "A nulla negatív gyöke nincs meghatározva"
+
+#: ../src/number.vala:1902
+msgid "nth root of negative number is undefined for even n"
+msgstr "Negatív szám n. gyöke nincs meghatározva páros n-re."
+
+#: ../src/number.vala:2225
+msgid "Overflow: the result couldn't be calculated"
+msgstr "Túlcsordulás: az eredmény nem számolható ki"
+
+#: ../src/number.vala:2553
+msgid "Reciprocal of zero is undefined"
+msgstr "A nulla reciproka nincs meghatározva"
+
+#: ../src/unit.vala:29
+msgid "Angle"
+msgstr "Szög"
+
+#: ../src/unit.vala:30
+msgid "Length"
+msgstr "Hossz"
+
+#: ../src/unit.vala:31
+msgid "Area"
+msgstr "Terület"
+
+#: ../src/unit.vala:32
+msgid "Volume"
+msgstr "Térfogat"
+
+#: ../src/unit.vala:33
+msgid "Weight"
+msgstr "Tömeg"
+
+#: ../src/unit.vala:34
+msgid "Duration"
+msgstr "Időtartam"
+
+#: ../src/unit.vala:35
+msgid "Temperature"
+msgstr "Hőmérséklet"
+
+#: ../src/unit.vala:41
+msgid "Parsecs"
+msgstr "Parszek"
+
+#: ../src/unit.vala:42
+msgid "Light Years"
+msgstr "Fényév"
+
+#: ../src/unit.vala:43
+msgid "Astronomical Units"
+msgstr "Csillagászati egység"
+
+#: ../src/unit.vala:44
+msgid "Nautical Miles"
+msgstr "Tengeri mérföld"
+
+#: ../src/unit.vala:45
+msgid "Miles"
+msgstr "Mérföld"
+
+#: ../src/unit.vala:46
+msgid "Kilometers"
+msgstr "Kilométer"
+
+#: ../src/unit.vala:47
+msgid "Cables"
+msgstr "Kötélhossz"
+
+#: ../src/unit.vala:48
+msgid "Fathoms"
+msgstr "Fathom"
+
+#: ../src/unit.vala:49
+msgid "Meters"
+msgstr "Méter"
+
+#: ../src/unit.vala:50
+msgid "Yards"
+msgstr "Yard"
+
+#: ../src/unit.vala:51
+msgid "Feet"
+msgstr "Láb"
+
+#: ../src/unit.vala:52
+msgid "Inches"
+msgstr "Hüvelyk"
+
+#: ../src/unit.vala:53
+msgid "Centimeters"
+msgstr "Centiméter"
+
+#: ../src/unit.vala:54
+msgid "Millimeters"
+msgstr "Milliméter"
+
+#: ../src/unit.vala:55
+msgid "Micrometers"
+msgstr "Mikrométer"
+
+#: ../src/unit.vala:56
+msgid "Nanometers"
+msgstr "Nanométer"
+
+#: ../src/unit.vala:57
+msgid "Hectares"
+msgstr "Hektár"
+
+#: ../src/unit.vala:58
+msgid "Acres"
+msgstr "Acre"
+
+#: ../src/unit.vala:59
+#| msgid "Square Millimeters"
+msgid "Square Meters"
+msgstr "Négyzetméter"
+
+#: ../src/unit.vala:60
+msgid "Square Centimeters"
+msgstr "Négyzetcentiméter"
+
+#: ../src/unit.vala:61
+msgid "Square Millimeters"
+msgstr "Négyzetmilliméter"
+
+#: ../src/unit.vala:62
+msgid "Cubic Meters"
+msgstr "Köbméter"
+
+#: ../src/unit.vala:63
+msgid "Gallons"
+msgstr "Gallon"
+
+#: ../src/unit.vala:64
+msgid "Litres"
+msgstr "Liter"
+
+#: ../src/unit.vala:65
+msgid "Quarts"
+msgstr "Quart"
+
+#: ../src/unit.vala:66
+msgid "Pints"
+msgstr "Pint"
 
-#. Translators: This is the label for the default constant, the number of miles in one kilometer (0.621)
-#: ../src/register.c:40
-msgid "Kilometer-to-mile conversion factor"
-msgstr "Kilométer -> mérföld konverziótényező"
+#: ../src/unit.vala:67
+msgid "Millilitres"
+msgstr "Milliliter"
 
-#. Translators: This is the label for the default constant, the square root of 2 (1.41421)
-#: ../src/register.c:42
-#| msgid "Square root [Ctrl+R]"
-msgid "square root of 2"
-msgstr "2 négyzetgyöke"
+#: ../src/unit.vala:68
+msgid "Microlitres"
+msgstr "Mikroliter"
 
-#. Translators: This is the label for the default constant, Euler's number (2.71828)
-#: ../src/register.c:44
-#| msgid "Euler’s Number"
-msgid "Euler's Number (e)"
-msgstr "Euler-szám (e)"
+#: ../src/unit.vala:69
+msgid "Tonnes"
+msgstr "Tonna"
 
-#. Translators: This is the label for the default constant, π (3.14159)
-#: ../src/register.c:46
-msgid "π"
-msgstr "π"
+#: ../src/unit.vala:70
+msgid "Kilograms"
+msgstr "Kilogramm"
 
-#. Translators: This is the label for the default constant, the number of inches in a centimeter (0.39370)
-#: ../src/register.c:48
-msgid "Centimeter-to-inch conversion factor"
-msgstr "Centiméter -> hüvelyk konverziótényező"
+#: ../src/unit.vala:71
+msgid "Pounds"
+msgstr "Font"
 
-#. Translators: This is the label for the default constant, the number of degrees in a radian (57.2958)
-#: ../src/register.c:50
-msgid "degrees in a radian"
-msgstr "fok -> radián"
+#: ../src/unit.vala:72
+msgid "Ounces"
+msgstr "Uncia"
 
-#. Translators: This is the label for the default constant, 2 to the power of 20 (1048576)
-#: ../src/register.c:52
-msgid "2 ^ 20"
-msgstr "2 ^ 20"
+#: ../src/unit.vala:73
+msgid "Grams"
+msgstr "Gramm"
 
-#. Translators: This is the label for the default constant, the number of ounces in one gram (0.0353)
-#: ../src/register.c:54
-msgid "Gram-to-ounce conversion factor"
-msgstr "Gramm -> uncia konverziótényező"
+#: ../src/unit.vala:74
+msgid "Years"
+msgstr "Év"
 
-#. Translators: This is the label for the default constant, the number of British Thermal Units in one Kilojoule (0.948)
-#: ../src/register.c:56
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "Kilojoule -> BTU konverziótényező"
+#: ../src/unit.vala:75
+msgid "Days"
+msgstr "Nap"
 
-#. Translators: This is the label for the default constant, the number of cubic inches in one cubic centimeter (0.0610)
-#: ../src/register.c:58
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Köbcenti -> köbhüvelyk konverziótényező"
+#: ../src/unit.vala:76
+msgid "Hours"
+msgstr "Óra"
 
-#~ msgid "Inverse"
-#~ msgstr "Invertálás"
+#: ../src/unit.vala:77
+msgid "Minutes"
+msgstr "Perc"
 
-#~ msgid "Factorize"
-#~ msgstr "Faktorizálás"
+#: ../src/unit.vala:78
+#| msgid "Milliseconds"
+msgid "Seconds"
+msgstr "Másodperc"
 
-#~ msgid "Factorial"
-#~ msgstr "Faktoriális"
+#: ../src/unit.vala:79
+msgid "Milliseconds"
+msgstr "Ezredmásodperc"
 
-#~ msgid "Subscript"
-#~ msgstr "Alsó index"
+#: ../src/unit.vala:80
+msgid "Microseconds"
+msgstr "Mikromásodperc"
 
-#~ msgid "Scientific Exponent"
-#~ msgstr "Tudományos kitevő"
+#: ../src/unit.vala:81
+msgid "Celsius"
+msgstr "Celsius"
 
-#~ msgid "Memory"
-#~ msgstr "Memória"
+#: ../src/unit.vala:82
+msgid "Farenheit"
+msgstr "Farenheit"
 
-#~ msgid "Exponent"
-#~ msgstr "Kitevő"
+#: ../src/unit.vala:83
+msgid "Kelvin"
+msgstr "Kelvin"
 
-#~ msgid "Shift Left"
-#~ msgstr "Balra csúsztatás"
+#: ../src/unit.vala:84
+msgid "Rankine"
+msgstr "Rankine"
 
-#~ msgid "Shift Right"
-#~ msgstr "Jobbra csúsztatás"
+#: ../src/unit.vala:86
+msgid "Currency"
+msgstr "Pénznem"
 
-#~ msgid "Insert Character"
-#~ msgstr "Karakter beszúrása"
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../src/unit.vala:92
+#, c-format
+msgid "%s%%s"
+msgstr "%%s %s"
 
-#~ msgid "Insert Character Code"
-#~ msgstr "Karakterkód beszúrása"
+#~ msgid "_Calculator"
+#~ msgstr "Számoló_gép"
 
-#~| msgid "Perform arithmetic, scientific or financial calculations"
-#~ msgid "calculation;arithmetic;scientific;financial;"
-#~ msgstr "számítás;aritmetikai;tudományos;pénzügyi;"
+#~| msgid "About Calculator"
+#~ msgid "Quit the calculator"
+#~ msgstr "Kilépés a számológépből"
 
-#~ msgid "The numeric base"
-#~ msgstr "A számrendszer alapja"
+#~ msgid "_Edit"
+#~ msgstr "S_zerkesztés"
 
-#~ msgid "Number format"
-#~ msgstr "Számformátum"
+#~ msgid "Copy selection"
+#~ msgstr "Kijelölés másolása"
 
-#~ msgid "The format to display numbers in"
-#~ msgstr "A számok megjelenítésére használandó formátum"
+#~ msgid "Paste selection"
+#~ msgstr "Kijelölés beillesztése"
 
-#~ msgid "Angle units"
-#~ msgstr "Szög mértékegysége"
+#~ msgid "_Undo"
+#~ msgstr "_Visszavonás"
 
-#~ msgid "The angle units to use"
-#~ msgstr "A használandó szögegység"
+#~ msgid "Undo"
+#~ msgstr "Visszavonás"
 
-#~ msgid "Button mode"
-#~ msgstr "Gombmód"
+#~ msgid "_Redo"
+#~ msgstr "Új_ra"
 
-#~ msgid "The button mode"
-#~ msgstr "A gombmód"
+#~ msgid "Redo"
+#~ msgstr "Újra"
 
-#~ msgid "Source currency"
-#~ msgstr "Forrás pénznem"
+#~ msgid "Insert ASCII value"
+#~ msgstr "ASCII-érték beszúrása"
 
-#~ msgid "Currency of the current calculation"
-#~ msgstr "A jelenlegi számítás pénzneme"
+#~ msgid "_Insert ASCII value..."
+#~ msgstr "ASCII-érték _beszúrása…"
 
-#~ msgid "Target currency"
-#~ msgstr "Cél pénznem"
+#~ msgid "_View"
+#~ msgstr "_Nézet"
 
-#~ msgid "Currency to convert the current calculation into"
-#~ msgstr "A jelenlegi számítás ezen pénznemmé alakítása"
+#~| msgid "Basic"
+#~ msgid "_Basic"
+#~ msgstr "_Alap"
 
-#~ msgid "Source units"
-#~ msgstr "Forrás mértékegység"
+#~| msgid "Advanced"
+#~ msgid "_Advanced"
+#~ msgstr "_Speciális"
 
-#~ msgid "Units of the current calculation"
-#~ msgstr "A jelenlegi számítás mértékegysége"
+#~| msgid "Financial"
+#~ msgid "_Financial"
+#~ msgstr "_Pénzügyi mód"
 
-#~ msgid "Target units"
-#~ msgstr "Cél mértékegység"
+#~| msgid "Scientific"
+#~ msgid "_Scientific"
+#~ msgstr "_Tudományos mód"
 
-#~ msgid "Units to convert the current calculation into"
-#~ msgstr "A jelenlegi számítás ezen mértékegységgé alakítása"
+#~| msgid "Programming"
+#~ msgid "_Programming"
+#~ msgstr "_Programozói"
 
-#~ msgid "UAE Dirham"
-#~ msgstr "UAE dirham"
+#~| msgid "Show Trailing Zeroes"
+#~ msgid "Show _Trailing Zeroes"
+#~ msgstr "_Nullák megjelenítése a szám végén"
 
-#~ msgid "Australian Dollar"
-#~ msgstr "Ausztrál dollár"
+#~| msgid "Show Thousands Separators"
+#~ msgid "Show T_housands Separator"
+#~ msgstr "_Ezreselválasztók megjelenítése"
 
-#~ msgid "Bulgarian Lev"
-#~ msgstr "Bolgár leva"
+#~ msgid "Show memory registers"
+#~ msgstr "Memóriaregiszterek megjelenítése"
 
-#~ msgid "Bahraini Dinar"
-#~ msgstr "Bahreini dinár"
+#~ msgid "_Memory Registers"
+#~ msgstr "_Memóriaregiszterek"
 
-#~ msgid "Brunei Dollar"
-#~ msgstr "Brunei dollár"
+#~ msgid "_Contents"
+#~ msgstr "_Tartalom"
 
-#~ msgid "Brazilian Real"
-#~ msgstr "Brazil real"
+#~ msgid "Show help contents"
+#~ msgstr "Súgótartalom megjelenítése"
 
-#~ msgid "Botswana Pula"
-#~ msgstr "Botswanai pula"
+#~ msgid "Show the About Gcalctool dialog"
+#~ msgstr "A Gcalctool névjegyének megjelenítése"
 
-#~ msgid "Canadian Dollar"
-#~ msgstr "Kanadai dollár"
+#~ msgid "Result Region"
+#~ msgstr "Eredményrégió"
 
-#~ msgid "CFA Franc"
-#~ msgstr "CFA frank"
+#~ msgid "Makes the bitwise functions use 64 bit mode"
+#~ msgstr "A bitenkénti műveletek 64 bites módot használjanak"
 
-#~ msgid "Swiss Franc"
-#~ msgstr "Svájci frank"
+#~ msgid "Makes the bitwise functions use 32 bit mode"
+#~ msgstr "A bitenkénti műveletek 32 bites módot használjanak"
 
-#~ msgid "Chilean Peso"
-#~ msgstr "Chilei peso"
+#~ msgid "Makes the bitwise functions use 16 bit mode"
+#~ msgstr "A bitenkénti műveletek 16 bites módot használjanak"
 
-#~ msgid "Chinese Yuan"
-#~ msgstr "Kínai jüan"
+#~ msgid "_Bin"
+#~ msgstr "_Bin"
 
-#~ msgid "Colombian Peso"
-#~ msgstr "Kolumbiai peso"
+#~ msgid "Set numeric base to binary (base 2)"
+#~ msgstr "Kettes számrendszer"
 
-#~ msgid "Czech Koruna"
-#~ msgstr "Cseh korona"
+#~ msgid "_Oct"
+#~ msgstr "_Oct"
 
-#~ msgid "Danish Krone"
-#~ msgstr "Dán korona"
+#~ msgid "Set numeric base to octal (base 8)"
+#~ msgstr "Nyolcas számrendszer"
 
-#~ msgid "Algerian Dinar"
-#~ msgstr "Algériai dinár"
+#~ msgid "_Dec"
+#~ msgstr "_Dec"
 
-#~ msgid "Estonian Kroon"
-#~ msgstr "Észt korona"
+#~ msgid "Set numeric base to decimal (base 10)"
+#~ msgstr "Tízes számrendszer"
 
-#~ msgid "Euro"
-#~ msgstr "Euró"
+#~ msgid "He_x"
+#~ msgstr "He_x"
 
-#~ msgid "Pound Sterling"
-#~ msgstr "Font sterling"
+#~ msgid "Set numeric base to hexadecimal (base 16)"
+#~ msgstr "Tizenhatos számrendszer"
 
-#~ msgid "Hong Kong Dollar"
-#~ msgstr "Hongkongi dollár"
+#~ msgid "Set trigonometric type to degrees"
+#~ msgstr "Trigonometriai számítások fokban"
 
-#~ msgid "Croatian Kuna"
-#~ msgstr "Horvát kuna"
+#~ msgid "Set trigonometric type to gradians"
+#~ msgstr "Trigonometriai számítások újfokban"
 
-#~ msgid "Hungarian Forint"
-#~ msgstr "Magyar forint"
+#~ msgid "Set trigonometric type to radians"
+#~ msgstr "Trigonometriai számítások radiánban"
 
-#~ msgid "Indonesian Rupiah"
-#~ msgstr "Indonéz rúpia"
+#~ msgid "E_ng"
+#~ msgstr "E_ng"
 
-#~ msgid "Israeli New Shekel"
-#~ msgstr "Izraeli új sékel"
+#~ msgid "Set display type to engineering format"
+#~ msgstr "Mérnöki típusú megjelenítés"
 
-#~ msgid "Indian Rupee"
-#~ msgstr "Indiai rúpia"
+#~ msgid "_Fix"
+#~ msgstr "_Fix"
 
-#~ msgid "Iranian Rial"
-#~ msgstr "Iráni riál"
+#~ msgid "Set display type to fixed-point format"
+#~ msgstr "Fixpontos típusú megjelenítés"
 
-#~ msgid "Icelandic Krona"
-#~ msgstr "Izlandi korona"
+#~ msgid "_Sci"
+#~ msgstr "_Sci"
 
-#~ msgid "Japanese Yen"
-#~ msgstr "Japán jen"
+#~ msgid "Set display type to scientific format"
+#~ msgstr "Tudományos típusú megjelenítés"
 
-#~ msgid "South Korean Won"
-#~ msgstr "Dél-koreai von"
+#~ msgid "_Inv"
+#~ msgstr "_Inv"
 
-#~ msgid "Kuwaiti Dinar"
-#~ msgstr "Kuvaiti dinár"
+#~ msgid "Set inverse option for trigonometric functions"
+#~ msgstr "Trigonometriai függvények inverze"
 
-#~ msgid "Kazakhstani Tenge"
-#~ msgstr "Kazah tenge"
+#~ msgid "H_yp"
+#~ msgstr "H_yp"
 
-#~ msgid "Sri Lankan Rupee"
-#~ msgstr "Srí-lankai rúpia"
+#~ msgid "Set hyperbolic option for trigonometric functions"
+#~ msgstr "Trigonometriai függvények hiperbolikus változata"
 
-#~ msgid "Lithuanian Litas"
-#~ msgstr "Litván litas"
+#~| msgid "Sum-of-the-Years'-Digits Depreciation"
+#~ msgid "Sum-of-the years'-digits depreciation [Y]"
+#~ msgstr "Évszámok összege szerinti értékcsökkenési leírás [Y]"
 
-#~ msgid "Latvian Lats"
-#~ msgstr "Lett lat"
+#~| msgid "Sum-of-the-Years'-Digits Depreciation"
+#~ msgid "Sum-of-the years'-digits depreciation"
+#~ msgstr "Évszámok összege szerinti értékcsökkenési leírás"
 
-#~ msgid "Libyan Dinar"
-#~ msgstr "Líbiai dinár"
+#~| msgid "Sum-of-the-Years'-Digits Depreciation"
+#~ msgid "Sum-of-the years'-digits depreciation [y]"
+#~ msgstr "Évszámok összege szerinti értékcsökkenési leírás [y]"
 
-#~ msgid "Mauritian Rupee"
-#~ msgstr "Mauritániai rúpia"
+#~| msgid "Straight-Line Depreciation"
+#~ msgid "Straight-line depreciation [l]"
+#~ msgstr "Lineáris értékcsökkenési leírás [l]"
 
-#~ msgid "Mexican Peso"
-#~ msgstr "Mexikói peso"
-
-#~ msgid "Malaysian Ringgit"
-#~ msgstr "Maláj ringgit"
-
-#~ msgid "Norwegian Krone"
-#~ msgstr "Norvég korona"
-
-#~ msgid "Nepalese Rupee"
-#~ msgstr "Nepáli rúpia"
-
-#~ msgid "New Zealand Dollar"
-#~ msgstr "Új-zélandi dollár"
-
-#~ msgid "Omani Rial"
-#~ msgstr "Ománi rial"
-
-#~ msgid "Peruvian Nuevo Sol"
-#~ msgstr "Perui új sol"
-
-#~ msgid "Philippine Peso"
-#~ msgstr "Fülöp-szigeteki peso"
-
-#~ msgid "Pakistani Rupee"
-#~ msgstr "Pakisztáni rúpia"
-
-#~ msgid "Polish Zloty"
-#~ msgstr "Lengyel zloty"
-
-#~ msgid "Qatari Riyal"
-#~ msgstr "Katari riyál"
-
-#~ msgid "New Romanian Leu"
-#~ msgstr "Új román lej"
-
-#~ msgid "Russian Rouble"
-#~ msgstr "orosz rubel"
-
-#~ msgid "Saudi Riyal"
-#~ msgstr "Szaud-arábiai riyál"
-
-#~ msgid "Swedish Krona"
-#~ msgstr "Svéd korona"
-
-#~ msgid "Singapore Dollar"
-#~ msgstr "Szingapúri dollár"
-
-#~ msgid "Thai Baht"
-#~ msgstr "Thai baht"
-
-#~ msgid "Tunisian Dinar"
-#~ msgstr "Tunéziai dinár"
-
-#~ msgid "New Turkish Lira"
-#~ msgstr "Új török líra"
-
-#~ msgid "T&T Dollar (TTD)"
-#~ msgstr "T&T dollár (TTD)"
-
-#~ msgid "US Dollar"
-#~ msgstr "USA dollár"
-
-#~ msgid "Uruguayan Peso"
-#~ msgstr "Uruguayi peso"
-
-#~ msgid "Venezuelan Bolívar"
-#~ msgstr "Venezuelai bolivár"
-
-#~ msgid "South African Rand"
-#~ msgstr "Dél-afrikai rand"
-
-#~ msgid "Error: the number of periods must be positive"
-#~ msgstr "Hiba: a periódusok számának pozitívnak kell lennie"
-
-#~ msgid "Preferences"
-#~ msgstr "Beállítások"
-
-#~ msgid "Quit"
-#~ msgstr "Kilépés"
-
-#~ msgid "Solve given equation"
-#~ msgstr "A megadott egyenlet megoldása"
-
-#~ msgid "Start with given equation"
-#~ msgstr "Kezdés a megadott egyenlettel"
-
-#~ msgid "Show release version"
-#~ msgstr "Verziószám megjelenítése"
-
-#~ msgid "Pi [Ctrl+P]"
-#~ msgstr "Pi [Ctrl+P]"
-
-#~ msgid "Subscript mode [Alt]"
-#~ msgstr "Alsó index mód [Alt]"
-
-#~ msgid "Superscript mode [Ctrl]"
-#~ msgstr "Felső index mód [Ctrl]"
-
-#~ msgid "Scientific exponent [Ctrl+E]"
-#~ msgstr "Tudományos kitevő [Ctrl+E]"
-
-#~ msgid "Exponent [^ or **]"
-#~ msgstr "Kitevő [^ vagy **]"
-
-#~ msgid "Factorial [!]"
-#~ msgstr "Faktoriális [!]"
-
-#~ msgid "Complex argument"
-#~ msgstr "Komplex argumentum"
-
-#~ msgid "Complex conjugate"
-#~ msgstr "Komplex konjugált"
-
-#~ msgid "Root [Ctrl+R]"
-#~ msgstr "Gyök [Ctrl+R]"
-
-#~ msgid "Logarithm"
-#~ msgstr "Logaritmus"
-
-#~ msgid "Boolean AND"
-#~ msgstr "Logikai ÉS"
-
-#~ msgid "Boolean OR"
-#~ msgstr "Logikai VAGY"
-
-#~ msgid "Boolean Exclusive OR"
-#~ msgstr "Logikai kizáró VAGY"
-
-#~ msgid "Boolean NOT"
-#~ msgstr "Logikai NEM"
-
-#~ msgid "Real Component"
-#~ msgstr "Valós rész"
-
-#~ msgid "Imaginary Component"
-#~ msgstr "Képzetes rész"
-
-#~ msgid "Ones' Complement"
-#~ msgstr "1-es komplemens"
-
-#~ msgid "End Group [)]"
-#~ msgstr "Csoport vége [)]"
-
-#~ msgid "Factorize [Ctrl+F]"
-#~ msgstr "Faktorizálás [Ctrl+F]"
-
-#~ msgid "Undo [Ctrl+Z]"
-#~ msgstr "Visszavonás [Ctrl+Z]"
-
-#~ msgid "Double Declining Depreciation"
-#~ msgstr "Progresszív értékcsökkenési leírás"
-
-#~ msgid "Financial Term"
-#~ msgstr "Pénzügyi év"
-
-#~ msgid "Sum of the Years Digits Depreciation"
-#~ msgstr "Évek száma szerinti értékcsökkenési leírás"
-
-#~ msgid "Straight Line Depreciation"
+#~| msgid "Straight-Line Depreciation"
+#~ msgid "Straight-line depreciation"
 #~ msgstr "Lineáris értékcsökkenési leírás"
 
-#~ msgid "Binary"
-#~ msgstr "Bináris"
+#~| msgid "Periodic Interest Rate"
+#~ msgid "Periodic interest rate [T]"
+#~ msgstr "Időszakra vonatkozó kamatláb [T]"
 
-#~ msgid "Octal"
-#~ msgstr "Oktális"
+#~| msgid "Periodic Interest Rate"
+#~ msgid "Periodic interest rate"
+#~ msgstr "Időszakra vonatkozó kamatláb"
 
-#~ msgid "Decimal"
-#~ msgstr "Decimális"
+#~| msgid "Present Value"
+#~ msgid "Present value [p]"
+#~ msgstr "Jelenérték [p]"
 
-#~ msgid "Round"
-#~ msgstr "Kerekítés"
+#~| msgid "Present Value"
+#~ msgid "Present value"
+#~ msgstr "Jelenérték"
 
-#~ msgid "Floor"
-#~ msgstr "Alsó egészrész"
+#~| msgid "Periodic Payment"
+#~ msgid "Periodic payment [P]"
+#~ msgstr "Rendszeres pénzáramlás [P]"
 
-#~ msgid "Ceiling"
-#~ msgstr "Felső egészrész"
+#~| msgid "Periodic Payment"
+#~ msgid "Periodic payment"
+#~ msgstr "Rendszeres pénzáramlás"
 
-#~ msgid "Sign"
-#~ msgstr "Előjel"
+#~| msgid "Future Value"
+#~ msgid "Future value [v]"
+#~ msgstr "Jövőérték [v]"
 
-#~ msgid " in "
-#~ msgstr " ebben: "
+#~| msgid "Future Value"
+#~ msgid "Future value"
+#~ msgstr "Jövőérték"
 
-#~ msgid "Switch conversion units"
-#~ msgstr "Mértékegységek cseréje"
+#~| msgid "Gross Profit Margin"
+#~ msgid "Gross Profit Margin [I]"
+#~ msgstr "Bruttó haszon [I]"
 
-#~ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-#~ msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+#~| msgid "Gross Profit Margin"
+#~ msgid "Gross Profit Margin [g]"
+#~ msgstr "Bruttó haszon [g]"
 
-#~ msgid "Function '%s' is not defined"
-#~ msgstr "A függvény („%s”) nincs meghatározva"
+#~| msgid "Double-Declining Depreciation"
+#~ msgid "Double-declining depreciation [D]"
+#~ msgstr "Progresszív értékcsökkenési leírás [D]"
 
-#~| msgid "Malformed expression"
-#~ msgid "Malformed expression at token '%s'"
-#~ msgstr "Hibás kifejezés a(z) „%s” tokennél"
+#~| msgid "Double-Declining Depreciation"
+#~ msgid "Double-declining depreciation"
+#~ msgstr "Progresszív értékcsökkenési leírás"
 
-#~ msgid "Calculating"
-#~ msgstr "Számítás"
+#~| msgid "Compounding Term"
+#~ msgid "Compounding term [m]"
+#~ msgstr "Időszakok száma [m]"
 
-#~ msgid "Need an integer to factorize"
-#~ msgstr "A faktorizáláshoz egész szám szükséges"
+#~| msgid "Compounding Term"
+#~ msgid "Compounding term"
+#~ msgstr "Időszakok száma"
 
-#~ msgid "Displayed value not an integer"
-#~ msgstr "A megjelenített érték nem egész"
+#~| msgid "Payment Period"
+#~ msgid "Payment period [t]"
+#~ msgstr "Fizetési időszak [t]"
 
-#~ msgid "_Close"
-#~ msgstr "_Bezárás"
+#~| msgid "Payment Period"
+#~ msgid "Payment period"
+#~ msgstr "Fizetési időszak"
 
-#~ msgid "Number _Format:"
-#~ msgstr "S_zámformátum:"
+#~ msgid "63"
+#~ msgstr "63"
 
-#~ msgid "Automatic"
-#~ msgstr "Automatikus"
+#~ msgid "31"
+#~ msgstr "31"
 
-#~ msgid "Fixed"
-#~ msgstr "Rögzített"
+#~ msgid "32"
+#~ msgstr "32"
 
-#~ msgid "Engineering"
-#~ msgstr "Műszaki"
+#~ msgid "0"
+#~ msgstr "0"
 
-#~ msgid "Show %d decimal _places"
-#~ msgstr "%d decimális _hely megjelenítése"
+#~ msgid "47"
+#~ msgstr "47"
 
-#~ msgid "_Angle units:"
-#~ msgstr "S_zög mértékegysége:"
+#~ msgid "15"
+#~ msgstr "15"
 
-#~ msgid "Word _size:"
-#~ msgstr "Szó_hossz:"
+#~ msgid "User-defined functions [F]"
+#~ msgstr "Felhasználó által megadott függvények [F]"
 
-#~ msgid "8 bits"
-#~ msgstr "8 bit"
+#~ msgid "Fun"
+#~ msgstr "Fun"
 
-#~ msgid "Argument not defined for zero"
-#~ msgstr "Az argumentum nincs definiálva nullára"
+#~ msgid "Constants [#]"
+#~ msgstr "Állandók [#]"
 
-#~ msgid "The power of zero is undefined for a negative exponent"
-#~ msgstr "Nulla hatványozása nincs meghatározva negatív kitevőre"
+#~| msgid "Cosine"
+#~ msgid "Con"
+#~ msgstr "Con"
 
-#~ msgid "Logarithm of zero is undefined"
-#~ msgstr "A nulla logaritmusa nincs meghatározva"
+#~ msgid "(Ln)"
+#~ msgstr "(Ln)"
 
-#~ msgid "Factorial is only defined for natural numbers"
-#~ msgstr "A faktoriális csak természetes számokra van meghatározva"
+#~ msgid "(log)"
+#~ msgstr "(log)"
 
-#~ msgid "Division by zero is undefined"
-#~ msgstr "A nullával osztás nincs meghatározva"
+#~ msgid "(log2)"
+#~ msgstr "(log2)"
 
-#~ msgid "Modulus division is only defined for integers"
-#~ msgstr "A maradékos osztás csak egészekre van meghatározva"
+#~ msgid "Exp"
+#~ msgstr "Exp"
+
+#~ msgid "Enter an exponential number [E]"
+#~ msgstr "Exponenciális alakú szám bevitele [E]"
+
+#~ msgid "(Set accuracy from 0 to N numeric places [A])"
+#~ msgstr "(A pontosság beállítása 0-tól N számjegyig. [A])"
+
+#~ msgid "Acc"
+#~ msgstr "Acc"
+
+#~ msgid "Rand"
+#~ msgstr "Rand"
+
+#~ msgid "Random number in the range 0.0 to 1.0 [?]"
+#~ msgstr "Véletlen szám a 0,0 - 1,0 tartományban [?]"
+
+#~ msgid "Factorial of displayed value [!]"
+#~ msgstr "A megjelenített érték faktoriálisa [!]"
+
+#~| msgid "<i>x</i>"
+#~ msgid "<i>x</i>!"
+#~ msgstr "<i>x</i>!"
+
+#~ msgid "(X^Y)"
+#~ msgstr "(X^Y)"
+
+#~ msgid "(tan)"
+#~ msgstr "(tan)"
+
+#~ msgid "(sin)"
+#~ msgstr "(sin)"
+
+#~ msgid "(cos)"
+#~ msgstr "(cos)"
+
+#~ msgid "D"
+#~ msgstr "D"
+
+#~| msgid "Hexadecimal"
+#~ msgid "Hexadecimal digit D [d]"
+#~ msgstr "Hexadecimális számjegy D [d]"
+
+#~ msgid "E"
+#~ msgstr "E"
+
+#~| msgid "Hexadecimal"
+#~ msgid "Hexadecimal digit E [e]"
+#~ msgstr "Hexadecimális számjegy E [e]"
+
+#~| msgid "Fv"
+#~ msgid "F"
+#~ msgstr "F"
+
+#~| msgid "Hexadecimal"
+#~ msgid "Hexadecimal digit F [f]"
+#~ msgstr "Hexadecimális számjegy F [f]"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~| msgid "Hexadecimal"
+#~ msgid "Hexadecimal digit A [a]"
+#~ msgstr "A hexadecimális számjegy A [a]"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~| msgid "Hexadecimal"
+#~ msgid "Hexadecimal digit B [b]"
+#~ msgstr "Hexadecimális számjegy B [b]"
+
+#~ msgid "C"
+#~ msgstr "C"
+
+#~| msgid "Hexadecimal"
+#~ msgid "Hexadecimal digit C [c]"
+#~ msgstr "Hexadecimális számjegy C [c]"
+
+#~ msgid "1's"
+#~ msgstr "1-es"
+
+#~| msgid "Two's Complement"
+#~ msgid "1's complement [z]"
+#~ msgstr "1-es komplemens [z]"
+
+#~ msgid "2's"
+#~ msgstr "2-es"
+
+#~| msgid "Two's Complement"
+#~ msgid "2's complement [Z]"
+#~ msgstr "2-es komplemens [Z]"
+
+#~ msgid "XNOR"
+#~ msgstr "XNOR"
+
+#~ msgid "Bitwise XNOR [{]"
+#~ msgstr "Bitenkénti XNOR [{]"
+
+#~| msgid "Mode"
+#~ msgid "Mod"
+#~ msgstr "Mod"
+
+#~ msgid "Truncate displayed value to the chosen word size ([)"
+#~ msgstr "A megjelenített érték csonkolása a kiválasztott szóhosszra ([)"
+
+#~ msgid "NOT"
+#~ msgstr "NOT"
+
+#~ msgid "Bitwise NOT [~]"
+#~ msgstr "Bitenkénti NOT [~]"
+
+#~ msgid "XOR"
+#~ msgstr "XOR"
+
+#~ msgid "Bitwise XOR [x]"
+#~ msgstr "Bitenkénti XOR [x]"
+
+#~ msgid "AND"
+#~ msgstr "AND"
+
+#~ msgid "Bitwise AND [&]"
+#~ msgstr "Bitenkénti AND [&]"
+
+#~ msgid "OR"
+#~ msgstr "OR"
+
+#~ msgid "Bitwise OR [|]"
+#~ msgstr "Bitenkénti OR [|]"
+
+#~ msgid "Shift displayed value 1-15 places to the left [<]"
+#~ msgstr "A megjelenített érték eltolása balra 1-15 jeggyel [<]"
+
+#~ msgid "<"
+#~ msgstr "<"
+
+#~ msgid "Shift displayed value 1-15 places to the right [>]"
+#~ msgstr "A megjelenített érték eltolása jobbra 1-15 jeggyel [>]"
+
+#~ msgid ">"
+#~ msgstr ">"
+
+#~ msgid "Bksp"
+#~ msgstr "Bksp"
+
+#~ msgid "Remove rightmost character from displayed value [Backspace]"
+#~ msgstr "A megjelenített érték jobb szélső karakterének törlése  [Backspace]"
+
+#~ msgid "Backspace"
+#~ msgstr "Backspace"
+
+#~ msgid "&#xB1;"
+#~ msgstr "&#xB1;"
+
+#~ msgid "Change Sign [C]"
+#~ msgstr "Előjelváltás [C]"
+
+#~ msgid "Change sign"
+#~ msgstr "Előjelváltás"
+
+#~ msgid "Clr"
+#~ msgstr "Clr"
+
+#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
+#~ msgstr "A megjelenített érték és a részszámítás törlése [Shift Delete]"
+
+#~ msgid "Clear"
+#~ msgstr "Törlés"
+
+#~ msgid "CE"
+#~ msgstr "CE"
+
+#~ msgid "Clear entry"
+#~ msgstr "Érték törlése"
+
+#~ msgid "("
+#~ msgstr "("
+
+#~| msgid "Start Group [(]"
+#~ msgid "Start group of calculations [(]"
+#~ msgstr "Számításcsoport kezdete [(]"
+
+#~ msgid "Left bracket"
+#~ msgstr "Nyitó zárójel"
+
+#~ msgid "Reciprocal [r]"
+#~ msgstr "Reciprok [r]"
+
+#~ msgid "Reciprocal"
+#~ msgstr "Reciprok"
+
+#~| msgid "<i>x</i>"
+#~ msgid "1/<i>x</i>"
+#~ msgstr "1/<i>x</i>"
+
+#~ msgid "1/x"
+#~ msgstr "1/x"
+
+#~ msgid "%"
+#~ msgstr "%"
+
+#~| msgid "Percentage [%]"
+#~ msgid "Percentage"
+#~ msgstr "Százalék"
+
+#~ msgid ")"
+#~ msgstr ")"
+
+#~ msgid "End group of calculations [)]"
+#~ msgstr "Számításcsoport vége [)]"
+
+#~ msgid "Right bracket"
+#~ msgstr "Záró zárójel"
+
+#~ msgid "&#x221A;"
+#~ msgstr "&#x221A;"
+
+#~| msgid "Square root [Ctrl+R]"
+#~ msgid "Square root"
+#~ msgstr "Négyzetgyök"
+
+#~ msgid "Abs"
+#~ msgstr "Abs"
+
+#~ msgid "Frac"
+#~ msgstr "Frac"
+
+#~ msgid "Fractional portion of displayed value [:]"
+#~ msgstr "A megjelenített érték törtrésze [:]"
+
+#~| msgid "_Insert"
+#~ msgid "Int"
+#~ msgstr "Int"
+
+#~ msgid "Integer portion of displayed value [i]"
+#~ msgstr "A megjelenített érték egész része [i]"
+
+#~| msgid "Integer Component"
+#~ msgid "Integer portion"
+#~ msgstr "Egész rész"
+
+#~ msgid "Exchange displayed value with memory register [X]"
+#~ msgstr "A megjelenített érték és a memória felcserélése [X]"
+
+#~ msgid "Exchange with register"
+#~ msgstr "Csere a memóriával"
+
+#~ msgid "Exch"
+#~ msgstr "Exch"
+
+#~ msgid "Retrieve memory register to display [R]"
+#~ msgstr "A memória tartalmának megjelenítése [R]"
+
+#~ msgid "Retrieve from register"
+#~ msgstr "Előhozás a memóriából"
+
+#~ msgid "Rcl"
+#~ msgstr "Rcl"
+
+#~ msgid "Store displayed value in memory register [S]"
+#~ msgstr "A megjelenített érték tárolása a memóriában [S]"
+
+#~ msgid "Store to register"
+#~ msgstr "Tárolás a memóriában"
+
+#~| msgid "Store"
+#~ msgid "Sto"
+#~ msgstr "Sto"
+
+#~| msgid "Square Meters"
+#~ msgid "Square"
+#~ msgstr "Négyzet"
+
+#~ msgid "<i>x</i><sup>2</sup>"
+#~ msgstr "<i>x</i><sup>2</sup>"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 4"
+#~ msgstr "4-es számjegy"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 7"
+#~ msgstr "7-es számjegy"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 8"
+#~ msgstr "8-as számjegy"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 9"
+#~ msgstr "9-es számjegy"
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 5"
+#~ msgstr "5-ös számjegy"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 6"
+#~ msgstr "6-os számjegy"
+
+#~ msgid "&#xF7;"
+#~ msgstr "&#xF7;"
+
+#~| msgid "Divide [/]"
+#~ msgid "Divide"
+#~ msgstr "Osztás"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 1"
+#~ msgstr "1-es számjegy"
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 2"
+#~ msgstr "2-es számjegy"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 0"
+#~ msgstr "0-s számjegy"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric point"
+#~ msgstr "Tizedesvessző"
+
+#~| msgid "Calculate Result"
+#~ msgid "Calculate result [=]"
+#~ msgstr "Számítás elvégzése [=]"
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#~| msgid "Numeric Base"
+#~ msgid "Numeric 3"
+#~ msgstr "3-as számjegy"
+
+#~ msgid "&#xD7;"
+#~ msgstr "&#xD7;"
+
+#~| msgid "Multiply [*]"
+#~ msgid "Multiply"
+#~ msgstr "Szorzás"
+
+#~ msgid "&#x2212;"
+#~ msgstr "&#x2212;"
+
+#~| msgid "Subtract [-]"
+#~ msgid "Subtract"
+#~ msgstr "Kivonás"
+
+#~ msgid "+"
+#~ msgstr "+"
+
+#~| msgid "Add [+]"
+#~ msgid "Add"
+#~ msgstr "Összeadás"
+
+#~| msgid "_%d place"
+#~| msgid_plural "_%d places"
+#~ msgid "_2 places"
+#~ msgstr "_2 jegy"
+
+#~| msgid "_%d place"
+#~| msgid_plural "_%d places"
+#~ msgid "_3 places"
+#~ msgstr "_3 jegy"
+
+#~| msgid "_%d place"
+#~| msgid_plural "_%d places"
+#~ msgid "_4 places"
+#~ msgstr "_4 jegy"
+
+#~| msgid "_%d place"
+#~| msgid_plural "_%d places"
+#~ msgid "_5 places"
+#~ msgstr "_5 jegy"
+
+#~| msgid "_%d place"
+#~| msgid_plural "_%d places"
+#~ msgid "_6 places"
+#~ msgstr "_6 jegy"
+
+#~| msgid "_%d place"
+#~| msgid_plural "_%d places"
+#~ msgid "_7 places"
+#~ msgstr "_7 jegy"
+
+#~| msgid "_%d place"
+#~| msgid_plural "_%d places"
+#~ msgid "_8 places"
+#~ msgstr "_8 jegy"
+
+#~| msgid "_%d place"
+#~| msgid_plural "_%d places"
+#~ msgid "_9 places"
+#~ msgstr "_9 jegy"
+
+#~| msgid "%d place"
+#~| msgid_plural "%d places"
+#~ msgid "10 places"
+#~ msgstr "10 jegy"
+
+#~| msgid "%d place"
+#~| msgid_plural "%d places"
+#~ msgid "11 places"
+#~ msgstr "11 jegy"
+
+#~| msgid "%d place"
+#~| msgid_plural "%d places"
+#~ msgid "12 places"
+#~ msgstr "12 jegy"
+
+#~| msgid "%d place"
+#~| msgid_plural "%d places"
+#~ msgid "13 places"
+#~ msgstr "13 jegy"
+
+#~| msgid "%d place"
+#~| msgid_plural "%d places"
+#~ msgid "14 places"
+#~ msgstr "14 jegy"
+
+#~| msgid "%d place"
+#~| msgid_plural "%d places"
+#~ msgid "15 places"
+#~ msgstr "15 jegy"
+
+#~ msgid "_0 significant places"
+#~ msgstr "_0 értékes jegy"
+
+#~ msgid "_1 significant place"
+#~ msgstr "_1 értékes jegy"
+
+#~ msgid "_2 significant places"
+#~ msgstr "_2 értékes jegy"
+
+#~ msgid "_3 significant places"
+#~ msgstr "_3 értékes jegy"
+
+#~ msgid "_4 significant places"
+#~ msgstr "_4 értékes jegy"
+
+#~ msgid "_5 significant places"
+#~ msgstr "_5 értékes jegy"
+
+#~ msgid "_6 significant places"
+#~ msgstr "_6 értékes jegy"
+
+#~ msgid "_7 significant places"
+#~ msgstr "_7 értékes jegy"
+
+#~ msgid "_8 significant places"
+#~ msgstr "_8 értékes jegy"
+
+#~ msgid "_9 significant places"
+#~ msgstr "_9 értékes jegy"
+
+#~ msgid "Memory Registers"
+#~ msgstr "Memóriaregiszterek"
+
+#~ msgid "<span weight=\"bold\">R0</span>"
+#~ msgstr "<span weight=\"bold\">R0</span>"
+
+#~ msgid "<span weight=\"bold\">R1</span>"
+#~ msgstr "<span weight=\"bold\">R1</span>"
+
+#~ msgid "<span weight=\"bold\">R2</span>"
+#~ msgstr "<span weight=\"bold\">R2</span>"
+
+#~ msgid "<span weight=\"bold\">R3</span>"
+#~ msgstr "<span weight=\"bold\">R3</span>"
+
+#~ msgid "<span weight=\"bold\">R4</span>"
+#~ msgstr "<span weight=\"bold\">R4</span>"
+
+#~ msgid "<span weight=\"bold\">R5</span>"
+#~ msgstr "<span weight=\"bold\">R5</span>"
+
+#~ msgid "<span weight=\"bold\">R6</span>"
+#~ msgstr "<span weight=\"bold\">R6</span>"
+
+#~ msgid "<span weight=\"bold\">R7</span>"
+#~ msgstr "<span weight=\"bold\">R7</span>"
+
+#~ msgid "<span weight=\"bold\">R8</span>"
+#~ msgstr "<span weight=\"bold\">R8</span>"
+
+#~ msgid "<span weight=\"bold\">R9</span>"
+#~ msgstr "<span weight=\"bold\">R9</span>"
+
+#~ msgid "register 0"
+#~ msgstr "0. regiszter"
+
+#~ msgid "register 1"
+#~ msgstr "1. regiszter"
+
+#~ msgid "register 2"
+#~ msgstr "2. regiszter"
+
+#~ msgid "register 3"
+#~ msgstr "3. regiszter"
+
+#~ msgid "register 4"
+#~ msgstr "4. regiszter"
+
+#~ msgid "register 5"
+#~ msgstr "5. regiszter"
+
+#~ msgid "register 6"
+#~ msgstr "6. regiszter"
+
+#~ msgid "register 7"
+#~ msgstr "7. regiszter"
+
+#~ msgid "register 8"
+#~ msgstr "8. regiszter"
+
+#~ msgid "register 9"
+#~ msgstr "9. regiszter"
+
+#~ msgid "Edit Constants"
+#~ msgstr "Állandók szerkesztése"
+
+#~ msgid "Click a _value or description to edit it:"
+#~ msgstr "_Kattintson az érték vagy leírás szerkesztéséhez:"
 
 #~ msgid ""
-#~ "Tangent is undefined for angles that are multiples of π (180°) from π∕2 "
-#~ "(90°)"
+#~ "<small><i><b>Note:</b> All constant values are specified in the decimal "
+#~ "numeric base.</i></small>"
 #~ msgstr ""
-#~ "A tangens nincs meghatározva π∕2 (90°) és π (180°) közötti szögek "
-#~ "többszöröseire"
+#~ "<small><i><b>Megjegyzés:</b> Minden állandó értéke tízes számrendszerben "
+#~ "van kifejezve.</i></small>"
 
-#~ msgid "Inverse sine is undefined for values outside [-1, 1]"
+#~ msgid "Edit Constants..."
+#~ msgstr "Állandók szerkesztése…"
+
+#~| msgid "Additional Functions"
+#~ msgid "Edit Functions..."
+#~ msgstr "Függvények szerkesztése…"
+
+#~ msgid "Insert ASCII Value"
+#~ msgstr "ASCII-érték beszúrása"
+
+#~ msgid "Set Precision"
+#~ msgstr "Pontosság beállítása"
+
+#~ msgid "Significant _places:"
+#~ msgstr "Értékes _jegyek:"
+
+#~ msgid "_Set"
+#~ msgstr "_Beállítás"
+
+#~ msgid "The numeric base for input and display."
+#~ msgstr "A bevitt és megjelenített számok számrendszere."
+
+#~ msgid "Display Mode"
+#~ msgstr "Megjelenítési mód"
+
+#~ msgid ""
+#~ "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
+#~ "\" (fixed-point) and \"SCI\" (scientific)"
 #~ msgstr ""
-#~ "Az inverz szinusz nincs meghatározva a [-1, 1] intervallumon kívüli "
-#~ "értékekre"
+#~ "A kiinduló megjelenítési mód. A lehetséges értékek: \"ENG\" (műszaki), "
+#~ "\"FIX\" (fixpontos) and \"SCI\" (tudományos)"
 
-#~ msgid "Inverse cosine is undefined for values outside [-1, 1]"
+#~ msgid ""
+#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
+#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
 #~ msgstr ""
-#~ "Az inverz koszinusz nincs meghatározva a [-1, 1] intervallumon kívüli "
-#~ "értékekre"
+#~ "A számológép kiindulási módja. A lehetséges értékek: „BASIC” (alap), "
+#~ "„FINANCIAL” (pénzügyi), „LOGICAL” (logikai), „SCIENTIFIC” (tudományos) és "
+#~ "„PROGRAMMING” (programozói)"
 
-#~ msgid "Inverse hyperbolic cosine is undefined for values less than one"
+#~ msgid "Show Registers"
+#~ msgstr "Regiszterek megjelenítése"
+
+#~ msgid "Indicates whether the memory register window is initially displayed."
+#~ msgstr "Jelzi, hogy induláskor megjelenjen-e a memóriaregiszter ablak."
+
+#~ msgid "Trigonometric type"
+#~ msgstr "Trigonometriai típus"
+
+#~ msgid ""
+#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
+#~ "\" (gradians) and \"RAD\" (radians)."
 #~ msgstr ""
-#~ "Az inverz hiperbolikus koszinusz nincs meghatározva az egynél kisebb "
-#~ "értékekre"
+#~ "A kiinduló trigonometriai típus. A lehetséges értékek: \"DEG\" (fok), "
+#~ "\"GRAD\" (gradián) és \"RAD\" (radián)."
 
-#~ msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+#~ msgid "The initial x-coordinate for the window"
+#~ msgstr "Az ablak kiinduló X koordinátája"
+
+#~ msgid ""
+#~ "The number of pixels to place the window from the left of the screen."
+#~ msgstr "Az ablak elhelyezése a képernyő bal szélétől ennyi képpontra."
+
+#~ msgid "The initial y-coordinate for the window"
+#~ msgstr "Az ablak kiinduló Y koordinátája"
+
+#~ msgid "The number of pixels to place the window from the top of the screen."
+#~ msgstr "Az ablak elhelyezése a képernyő tetejétől ennyi képpontra."
+
+#~| msgid ""
+#~| "Usage:\n"
+#~| "  %s — Perform mathematical calculations"
+#~ msgid ""
+#~ "Usage:\n"
+#~ "  %s - Perform mathematical calculations"
 #~ msgstr ""
-#~ "Az inverz hiperbolikus tangens nincs meghatározva a [-1, 1] intervallumon "
-#~ "kívüli értékekre"
+#~ "Használat:\n"
+#~ "  %s - Matematikai számítások végrehajtása"
 
-#~ msgid "Boolean AND is only defined for positive integers"
-#~ msgstr "A logikai ÉS csak pozitív egészekre van meghatározva"
+#~ msgid ""
+#~ "Help Options:\n"
+#~ "  -v, --version                   Show release version\n"
+#~ "  -h, -?, --help                  Show help options\n"
+#~ "  --help-all                      Show all help options\n"
+#~ "  --help-gtk                      Show GTK+ options"
+#~ msgstr ""
+#~ "Súgólehetőségek:\n"
+#~ "  -v, --version                   Verziószám megjelenítése\n"
+#~ "  -h, -?, --help                  Súgólehetőségek megjelenítése\n"
+#~ "  --help-all                      Minden súgólehetőség megjelenítése\n"
+#~ "  --help-gtk                      GTK+ beállítások megjelenítése"
 
-#~ msgid "Boolean OR is only defined for positive integers"
-#~ msgstr "A logikai VAGY csak pozitív egészekre van meghatározva"
+#~ msgid ""
+#~ "GTK+ Options:\n"
+#~ "  --class=CLASS                   Program class as used by the window "
+#~ "manager\n"
+#~ "  --name=NAME                     Program name as used by the window "
+#~ "manager\n"
+#~ "  --screen=SCREEN                 X screen to use\n"
+#~ "  --sync                          Make X calls synchronous\n"
+#~ "  --gtk-module=MODULES            Load additional GTK+ modules\n"
+#~ "  --g-fatal-warnings              Make all warnings fatal"
+#~ msgstr ""
+#~ "GTK+ beállításai\n"
+#~ "  --class=OSZTÁLY                 A program osztálya, ahogy az "
+#~ "ablakkezelő használja\n"
+#~ "  --name=NÉV                      A programnév, ahogy az ablakkezelő "
+#~ "használja\n"
+#~ "  --display=MEGJELENÍTŐ           Használandó X-megjelenítő\n"
+#~ "  --screen=KÉPERNYŐ               Használandó X-képernyő\n"
+#~ "  --sync                          Legyenek szinkron X-hívások\n"
+#~ "  --gtk-module=MODULOK            További GTK+ modulok betöltése\n"
+#~ "  --g-fatal-warnings              Minden figyelmeztetés végzetes legyen"
 
-#~ msgid "Boolean XOR is only defined for positive integers"
-#~ msgstr "A logikai XOR csak pozitív egészekre van meghatározva"
+#~| msgid ""
+#~| "Application Options:\n"
+#~| "  -s, --solve <equation>          Solve the given equation"
+#~ msgid ""
+#~ "Application Options:\n"
+#~ "  -u, --unittest                  Perform unit tests\n"
+#~ "  -s, --solve <equation>          Solve the given equation"
+#~ msgstr ""
+#~ "Alkalmazás kapcsolói:\n"
+#~ "  -u, --unittest                  Egységtesztek végrehajtása\n"
+#~ "  -s, --solve <egyenlet>          A megadott egyenlet megoldása"
 
-#~ msgid "Boolean NOT is only defined for positive integers"
-#~ msgstr "A logikai NEM csak pozitív egészekre van meghatározva"
+#~ msgid "Argument --solve requires an equation to solve"
+#~ msgstr "A --solve kapcsolóhoz meg kell adni egy megoldandó egyenletet"
 
-#~ msgid "Shift is only possible on integer values"
-#~ msgstr "A csúsztatást csak egészekre lehet elvégezni"
+#~ msgid "Unknown argument '%s'"
+#~ msgstr "Ismeretlen kapcsoló: „%s”"
 
-#~ msgid "Root must be non-zero"
-#~ msgstr "A gyök nem lehet nulla"
+#~ msgid "%s: accuracy should be in the range 0-%d\n"
+#~ msgstr "%s: a pontosság a 0-%d tartományba eshet\n"
 
-#~ msgid "Negative root of zero is undefined"
-#~ msgstr "A nulla negatív gyöke nincs meghatározva"
+#~| msgid "No redo history"
+#~ msgid "No redo steps"
+#~ msgstr "Nincsenek ismétlési lépések"
 
-#~ msgid "nth root of negative number is undefined for even n"
-#~ msgstr "Negatív szám n. gyöke nincs meghatározva páros n-re."
+#~| msgid "Malformed expression"
+#~ msgid "Malformed function"
+#~ msgstr "Hibás függvény"
 
-#~ msgid "Overflow: the result couldn't be calculated"
-#~ msgstr "Túlcsordulás: az eredmény nem számolható ki"
+#~| msgid "No sane value to store"
+#~ msgid "No sane value to convert"
+#~ msgstr "Nincs átalakítandó ép kifejezés"
 
-#~ msgid "Reciprocal of zero is undefined"
-#~ msgstr "A nulla reciproka nincs meghatározva"
+#~ msgid "Invalid number for the current base"
+#~ msgstr "A szám érvénytelen a jelenlegi alaphoz"
 
-#~ msgid "Angle"
-#~ msgstr "Szög"
+#~ msgid "Invalid bitwise operation"
+#~ msgstr "Érvénytelen bitenkénti művelet"
 
-#~ msgid "Length"
-#~ msgstr "Hossz"
+#~ msgid "Invalid modulus operation"
+#~ msgstr "Érvénytelen maradékképzés művelet"
 
-#~ msgid "Area"
-#~ msgstr "Terület"
+#~| msgid "Calculator"
+#~ msgid "Calculator - Advanced"
+#~ msgstr "Számológép – Speciális"
 
-#~ msgid "Volume"
-#~ msgstr "Térfogat"
+#~| msgid "Calculator"
+#~ msgid "Calculator - Financial"
+#~ msgstr "Számológép – Pénzügyi"
 
-#~ msgid "Weight"
-#~ msgstr "Tömeg"
+#~| msgid "Calculator"
+#~ msgid "Calculator - Scientific"
+#~ msgstr "Számológép – Tudományos"
 
-#~ msgid "Duration"
-#~ msgstr "Időtartam"
+#~| msgid "Programming"
+#~ msgid "Calculator - Programming"
+#~ msgstr "Számológép – Programozói"
 
-#~ msgid "Temperature"
-#~ msgstr "Hőmérséklet"
+#~| msgid "Calculator"
+#~ msgid "Calculator [%s]"
+#~ msgstr "Számológép [%s]"
 
-#~ msgid "Parsecs"
-#~ msgstr "Parszek"
+#~ msgid "Calculator [%s] - Advanced"
+#~ msgstr "Számológép [%s] – Speciális"
 
-#~ msgid "Light Years"
-#~ msgstr "Fényév"
+#~ msgid "Calculator [%s] - Financial"
+#~ msgstr "Számológép [%s] – Pénzügyi"
 
-#~ msgid "Astronomical Units"
-#~ msgstr "Csillagászati egység"
+#~ msgid "Calculator [%s] - Scientific"
+#~ msgstr "Számológép [%s] – Tudományos"
 
-#~ msgid "Nautical Miles"
-#~ msgstr "Tengeri mérföld"
+#~ msgid "Calculator [%s] - Programming"
+#~ msgstr "Számológép [%s] – Programozói"
 
-#~ msgid "Miles"
-#~ msgstr "Mérföld"
+#~ msgid "Error loading user interface"
+#~ msgstr "Hiba a felhasználói felület betöltésekor"
 
-#~ msgid "Kilometers"
-#~ msgstr "Kilométer"
+#~ msgid ""
+#~ "A required file is missing or damaged, please check your installation.\n"
+#~ "\n"
+#~ "%s"
+#~ msgstr ""
+#~ "Egy szükséges fájl hiányzik vagy sérült. Ellenőrizze a telepítést.\n"
+#~ "\n"
+#~ "%s"
 
-#~ msgid "Cables"
-#~ msgstr "Kötélhossz"
+#~ msgid "_Other (%d) ..."
+#~ msgstr "_Egyéb (%d) …"
 
-#~ msgid "Fathoms"
-#~ msgstr "Fathom"
+#~ msgid "Set accuracy from 0 to %d numeric place. [A]"
+#~ msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
+#~ msgstr[0] "A pontosság beállítása 0-tól %d számjegyig. [A]"
+#~ msgstr[1] "A pontosság beállítása 0-tól %d számjegyig. [A]"
 
-#~ msgid "Meters"
-#~ msgstr "Méter"
+#~| msgctxt "unit-format"
+#~| msgid "%s in"
+#~ msgid "sin"
+#~ msgstr "sin"
 
-#~ msgid "Yards"
-#~ msgstr "Yard"
+#~ msgid "sin<sup>−1</sup>"
+#~ msgstr "sin<sup>−1</sup>"
 
-#~ msgid "Feet"
-#~ msgstr "Láb"
+#~ msgid "sinh"
+#~ msgstr "sinh"
 
-#~ msgid "Inches"
-#~ msgstr "Hüvelyk"
+#~ msgid "sinh<sup>−1</sup>"
+#~ msgstr "sinh<sup>−1</sup>"
 
-#~ msgid "Centimeters"
-#~ msgstr "Centiméter"
+#~| msgid "Hyperbolic Sine"
+#~ msgid "Hyperbolic Inverse Sine [K]"
+#~ msgstr "Hiperbolikus inverz szinusz [K]"
 
-#~ msgid "Millimeters"
-#~ msgstr "Milliméter"
+#~| msgid "Seconds"
+#~ msgid "cos"
+#~ msgstr "cos"
 
-#~ msgid "Micrometers"
-#~ msgstr "Mikrométer"
+#~ msgid "cos<sup>−1</sup>"
+#~ msgstr "cos<sup>−1</sup>"
 
-#~ msgid "Nanometers"
-#~ msgstr "Nanométer"
+#~ msgid "cosh"
+#~ msgstr "cosh"
 
-#~ msgid "Hectares"
-#~ msgstr "Hektár"
+#~ msgid "cosh<sup>−1</sup>"
+#~ msgstr "cosh<sup>−1</sup>"
 
-#~ msgid "Acres"
-#~ msgstr "Acre"
+#~ msgid "Inverse Cosine [J]"
+#~ msgstr "Inverz koszinusz [J]"
 
-#~ msgid "Square Centimeters"
-#~ msgstr "Négyzetcentiméter"
+#~| msgid "Hyperbolic Cosine"
+#~ msgid "Hyperbolic Inverse Cosine [J]"
+#~ msgstr "Hiperbolikus inverz koszinusz [J]"
 
-#~ msgid "Square Millimeters"
-#~ msgstr "Négyzetmilliméter"
+#~ msgid "tan"
+#~ msgstr "tan"
 
-#~ msgid "Cubic Meters"
-#~ msgstr "Köbméter"
+#~ msgid "tan<sup>−1</sup>"
+#~ msgstr "tan<sup>−1</sup>"
 
-#~ msgid "Gallons"
-#~ msgstr "Gallon"
+#~ msgid "tanh"
+#~ msgstr "tanh"
 
-#~ msgid "Litres"
-#~ msgstr "Liter"
+#~ msgid "tanh<sup>−1</sup>"
+#~ msgstr "tanh<sup>−1</sup>"
 
-#~ msgid "Quarts"
-#~ msgstr "Quart"
+#~ msgid "Inverse Tangent [W]"
+#~ msgstr "Inverz tangens [W]"
 
-#~ msgid "Pints"
-#~ msgstr "Pint"
+#~| msgid "Hyperbolic Tangent"
+#~ msgid "Hyperbolic Inverse Tangent [W]"
+#~ msgstr "Hiperbolikus inverz tangens [W]"
 
-#~ msgid "Millilitres"
-#~ msgstr "Milliliter"
+#~| msgid "Sln"
+#~ msgid "ln"
+#~ msgstr "ln"
 
-#~ msgid "Microlitres"
-#~ msgstr "Mikroliter"
+#~ msgid "e<sup><i>x</i></sup>"
+#~ msgstr "e<sup><i>x</i></sup>"
 
-#~ msgid "Tonnes"
-#~ msgstr "Tonna"
+#~ msgid "e to the power of the displayed value [N]"
+#~ msgstr "e hatványozása a megjelenített értékre [N]"
 
-#~ msgid "Kilograms"
-#~ msgstr "Kilogramm"
+#~ msgid "log"
+#~ msgstr "log"
 
-#~ msgid "Pounds"
-#~ msgstr "Font"
+#~ msgid "10<sup><i>x</i></sup>"
+#~ msgstr "10<sup><i>x</i></sup>"
 
-#~ msgid "Ounces"
-#~ msgstr "Uncia"
+#~ msgid "Base 10 logarithm [g]"
+#~ msgstr "10-es alapú logaritmus [g]"
 
-#~ msgid "Grams"
-#~ msgstr "Gramm"
+#~ msgid "10 to the power of displayed value [G]"
+#~ msgstr "10 hatványozása a megjelenített értékre [G]"
 
-#~ msgid "Years"
-#~ msgstr "Év"
+#~ msgid "log<sub>2</sub>"
+#~ msgstr "log<sub>2</sub>"
 
-#~ msgid "Days"
-#~ msgstr "Nap"
+#~ msgid "2<sup><i>x</i></sup>"
+#~ msgstr "2<sup><i>x</i></sup>"
 
-#~ msgid "Hours"
-#~ msgstr "Óra"
+#~ msgid "Base 2 logarithm [h]"
+#~ msgstr "2-es alapú logaritmus [h]"
 
-#~ msgid "Minutes"
-#~ msgstr "Perc"
+#~ msgid "2 to the power of the displayed value [H]"
+#~ msgstr "2 hatványozása a megjelenített értékre [H]"
 
-#~ msgid "Milliseconds"
-#~ msgstr "Ezredmásodperc"
+#~ msgid "x<sup><i>y</i></sup>"
+#~ msgstr "x<sup><i>y</i></sup>"
 
-#~ msgid "Microseconds"
-#~ msgstr "Mikromásodperc"
+#~ msgid "x<sup>1/<i>y</i></sup>"
+#~ msgstr "x<sup>1/<i>y</i></sup>"
 
-#~ msgid "Celsius"
-#~ msgstr "Celsius"
+#~ msgid "Raise displayed value to the power of y [o]"
+#~ msgstr "A megjelenített érték y-adik hatványra emelése [o]"
 
-#~ msgid "Farenheit"
-#~ msgstr "Farenheit"
+#~ msgid "Raise displayed value to the power of reciprocal y [O]"
+#~ msgstr "A megjelenített érték 1/y-adik hatványra emelése [O]"
 
-#~ msgid "Kelvin"
-#~ msgstr "Kelvin"
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+#~ msgstr ""
+#~ "A Gcalctool szabad szoftver, terjesztheti és/vagy módosíthatja a Free "
+#~ "Software\n"
+#~ "Foundation által kiadott GNU General Public License második (vagy "
+#~ "bármely\n"
+#~ "későbbi) változatában foglaltak alapján.\n"
+#~ "\n"
+#~ "A Gcalctool programot abban a reményben terjesztjük, hogy hasznos lesz, "
+#~ "de nem\n"
+#~ "vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\n"
+#~ "alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További\n"
+#~ "részletekért tanulmányozza a GNU GPL licencet.\n"
+#~ "\n"
+#~ "A Gcalctool programhoz a GNU General Public License egy példánya is jár, "
+#~ "ha nem\n"
+#~ "kapta meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 "
+#~ "Franklin\n"
+#~ "St, Fifth Floor, Boston, MA 02110-1301, USA."
 
-#~ msgid "Rankine"
-#~ msgstr "Rankine"
+#~ msgid "Gcalctool"
+#~ msgstr "Gcalctool"
 
-#~ msgid "Currency"
-#~ msgstr "Pénznem"
+#~| msgid "© 1986–2010 The Gcalctool authors"
+#~ msgid "© 1986-2008 The Gcalctool authors"
+#~ msgstr "© 1986-2008 A Gcalctool szerzői"
 
-#~ msgid "%s%%s"
-#~ msgstr "%%s %s"
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "Paste"
+#~ msgstr "Beillesztés"
+
+#~ msgid "No."
+#~ msgstr "Sorszám"
+
+#~ msgid "Value"
+#~ msgstr "Érték"
+
+#~| msgid "Superscript"
+#~ msgid "Description"
+#~ msgstr "Leírás"
+
+#~ msgid "Reset to _Default (%d)"
+#~ msgstr "Visszaállítás az ala_pértelmezettre (%d)"
+
+#~ msgid "Negative X and non-integer Y not supported"
+#~ msgstr "Negatív X és nem-egész Y nem támogatott"
+
+#~ msgid "Tangent is infinite"
+#~ msgstr "A tangens végtelen"
+
+#~ msgid "Kilometer-to-mile conversion factor"
+#~ msgstr "Kilométer -> mérföld konverziótényező"
+
+#~| msgid "Square root [Ctrl+R]"
+#~ msgid "square root of 2"
+#~ msgstr "2 négyzetgyöke"
+
+#~ msgid "π"
+#~ msgstr "π"
+
+#~ msgid "Centimeter-to-inch conversion factor"
+#~ msgstr "Centiméter -> hüvelyk konverziótényező"
+
+#~ msgid "degrees in a radian"
+#~ msgstr "fok -> radián"
+
+#~ msgid "2 ^ 20"
+#~ msgstr "2 ^ 20"
+
+#~ msgid "Gram-to-ounce conversion factor"
+#~ msgstr "Gramm -> uncia konverziótényező"
+
+#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
+#~ msgstr "Kilojoule -> BTU konverziótényező"
+
+#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+#~ msgstr "Köbcenti -> köbhüvelyk konverziótényező"
 
 #~ msgid "8-bit"
 #~ msgstr "8 bit"
