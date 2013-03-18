@@ -10,31 +10,31 @@
 # будут долго, но до 'ВыТереть' не додумаются, а вот под 'CE' распознают
 # 'ClEar' мгновенно).
 #
+#
 # Andrew W. Nosenko <awn@bcs.zp.ua>, 2003.
 # Leonid Kanter <leon@asplinux.ru>, 2005, 2006.
 # Artur G. Sibagatullin <ArtSib@mail.ru>, 2010.
 # Alexander Saprykin <xelfium@gmail.com>, 2010.
-# Yuri Kozlov <yuray@komyakino.ru>, 2010.
+# Yuri Kozlov <yuray@komyakino.ru>, 2010, 2013.
 # Dmitriy Kodanev <dkodanev@gmail.com>, 2011.
 # Stas Solovey <whats_up@tut.by>, 2011.
 # Yuri Myasoedov <omerta13@yandex.ru>, 2012, 2013.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-12-11 02:30+0000\n"
-"PO-Revision-Date: 2013-01-29 09:48+0400\n"
-"Last-Translator: Yuri Myasoedov <omerta13@yandex.ru>\n"
-"Language-Team: русский <gnome-cyr@gnome.org>\n"
+"POT-Creation-Date: 2013-03-15 15:25+0000\n"
+"PO-Revision-Date: 2013-03-10 19:11+0400\n"
+"Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
+"Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. Accessible name for the inverse button
 #: ../data/buttons-advanced.ui.h:2 ../data/buttons-programming.ui.h:24
@@ -423,14 +423,18 @@ msgstr "Вс_тавить"
 
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:265
 #: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "Калькулятор"
 
-#: ../data/gnome-calculator.desktop.in.h:2
+#: ../data/gcalctool.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Вычисления: арифметические, научные и финансовые"
+
+#: ../data/gcalctool.desktop.in.h:3
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr "вычисление;арифметические;научные;финансовые;"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:1
 msgid "Accuracy value"
@@ -1167,73 +1171,73 @@ msgid "Switch conversion units"
 msgstr "Поменять местами конвертируемые единицы"
 
 #. Digits localized for the given language
-#: ../src/math-equation.vala:169
+#: ../src/math-equation.vala:171
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.vala:480
+#: ../src/math-equation.vala:487
 msgid "No undo history"
 msgstr "Нет истории отмены изменений"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.vala:496
+#: ../src/math-equation.vala:503
 msgid "No redo history"
 msgstr "Нет истории отмены изменений"
 
-#: ../src/math-equation.vala:725
+#: ../src/math-equation.vala:732
 msgid "No sane value to store"
 msgstr "Отсутствует разумное значение для сохранения"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.vala:873
+#: ../src/math-equation.vala:888
 msgid "Overflow. Try a bigger word size"
 msgstr "Переполнение. Попробуйте установить большее значение размера слова"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.vala:878
+#: ../src/math-equation.vala:893
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Неизвестная переменная «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.vala:885
+#: ../src/math-equation.vala:900
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Функция «%s» не определена"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.vala:892
+#: ../src/math-equation.vala:907
 msgid "Unknown conversion"
 msgstr "Неизвестное преобразование"
 
-#: ../src/math-equation.vala:900
+#: ../src/math-equation.vala:915
 #, c-format
 msgid "Malformed expression at token '%s'"
 msgstr "Некорректное выражение: лексема «%s»"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.vala:905 ../src/math-equation.vala:910
+#: ../src/math-equation.vala:920 ../src/math-equation.vala:925
 msgid "Malformed expression"
 msgstr "Некорректное выражение"
 
-#: ../src/math-equation.vala:921
+#: ../src/math-equation.vala:936
 msgid "Calculating"
 msgstr "Вычисление"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.vala:1048
+#: ../src/math-equation.vala:1063
 msgid "Need an integer to factorize"
 msgstr "Для разложения на простые множители необходимо целое число"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../src/math-equation.vala:1102
+#: ../src/math-equation.vala:1117
 msgid "No sane value to bitwise shift"
 msgstr "Отсутствует разумное значение для побитового сдвига"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.vala:1116
+#: ../src/math-equation.vala:1131
 msgid "Displayed value not an integer"
 msgstr "Значение не является целым числом"
 
