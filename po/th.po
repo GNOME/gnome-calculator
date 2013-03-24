@@ -1,20 +1,20 @@
 # Thai gcaltool translation.
-# Copyright (C) 2005-2012 Free Software Foundation, Inc.
+# Copyright (C) 2005-2013 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
 #
 # Ithipan Methasate <tumm_xx@hotmail.com>, 2003.
 # Chanchai Junlouchai <taz@opentle.org>, 2004.
 # Paisa Seeluangsawat <paisa@users.sf.net>, 2004.
 # Supranee Thirawatthanasuk <supranee@opentle.org>, 2004.
-# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2005-2008, 2010-2012.
+# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2005-2008, 2010-2013.
 # Sira Nokyoongtong <gumaraa@gmail.com>, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-10-05 05:01+0000\n"
-"PO-Revision-Date: 2012-10-09 19:16+0700\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
+"bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-15 15:25+0000\n"
+"PO-Revision-Date: 2013-03-24 14:29+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -63,7 +63,7 @@ msgstr "เลขชี้กำลังวิทยาศาสตร์"
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.c:222
+#: ../src/math-buttons.vala:384
 msgid "Memory"
 msgstr "หน่วยความจำ"
 
@@ -91,7 +91,7 @@ msgstr "เก็บ"
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.c:246
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:400
 msgid "Compounding Term"
 msgstr "จำนวนงวดทบต้น"
 
@@ -154,7 +154,7 @@ msgstr "_ระยะเวลา:"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.c:252
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:404
 msgid "Future Value"
 msgstr "มูลค่าในอนาคต"
 
@@ -180,7 +180,7 @@ msgstr "_จำนวนงวด:"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.c:273
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:418
 msgid "Gross Profit Margin"
 msgstr "อัตรากำไรสุทธิ"
 
@@ -198,7 +198,7 @@ msgstr "อัตรา_กำไร:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.c:270
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:416
 msgid "Periodic Payment"
 msgstr "เงินผ่อนต่องวด"
 
@@ -221,7 +221,7 @@ msgstr "_จำนวนงวด:"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.c:267
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:414
 msgid "Present Value"
 msgstr "มูลค่าปัจจุบัน"
 
@@ -237,7 +237,7 @@ msgstr ""
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.c:264
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:412
 msgid "Periodic Interest Rate"
 msgstr "อัตราดอกเบี้ยต่องวด"
 
@@ -369,13 +369,13 @@ msgstr "Gpm"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:240
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:396
 msgid "Shift Left"
 msgstr "เลื่อนบิตไปทางซ้าย"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.c:243
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:398
 msgid "Shift Right"
 msgstr "เลื่อนบิตไปทางขวา"
 
@@ -386,7 +386,7 @@ msgstr "แทรกตัวอักษร"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.c:225
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:386
 msgid "Insert Character Code"
 msgstr "แทรกรหัสตัวอักษร"
 
@@ -400,59 +400,10 @@ msgstr "ตัว_อักษร:"
 msgid "_Insert"
 msgstr "แ_ทรก"
 
-#. Word size combo: 8 bits
-#: ../data/preferences.ui.h:2
-msgid "8-bit"
-msgstr "8 บิต"
-
-#. Word size combo: 16 bits
-#: ../data/preferences.ui.h:4
-msgid "16-bit"
-msgstr "16 บิต"
-
-#. Word size combo: 32 bits
-#: ../data/preferences.ui.h:6
-msgid "32-bit"
-msgstr "32 บิต"
-
-#. Word size combo: 64 bits
-#: ../data/preferences.ui.h:8
-msgid "64-bit"
-msgstr "64 บิต"
-
-#. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
-#: ../src/math-preferences.c:231
-msgid "Preferences"
-msgstr "ปรับแต่ง"
-
-#. Preferences dialog: Label for angle unit combo box
-#: ../data/preferences.ui.h:11
-msgid "_Angle units:"
-msgstr "หน่วยมุ_ม:"
-
-#. Preferences dialog: Label for display format combo box
-#: ../data/preferences.ui.h:13
-msgid "Number _Format:"
-msgstr "รูปแ_บบตัวเลข:"
-
-#. Preferences dialog: label for word size combo box
-#: ../data/preferences.ui.h:15
-msgid "Word _size:"
-msgstr "_ขนาดเวิร์ด:"
-
-#. Preferences dialog: label for show trailing zeroes check button
-#: ../data/preferences.ui.h:17
-msgid "Show trailing _zeroes"
-msgstr "แสดงเลขศู_นย์ต่อท้าย"
-
-#. Preferences dialog: label for show thousands separator check button
-#: ../data/preferences.ui.h:19
-msgid "Show _thousands separators"
-msgstr "แสดงสัญลักษณ์แบ่งหลัก_พัน"
-
+#. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "เครื่องคิดเลข"
 
@@ -460,425 +411,396 @@ msgstr "เครื่องคิดเลข"
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "คำนวณเลขคณิต ฟังก์ชันวิทยาศาสตร์ หรือการเงิน"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
+#: ../data/gcalctool.desktop.in.h:3
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr "คำนวณ;คิดเลข;เลขคณิต;วิทยาศาสตร์;การเงิน;"
+
+#: ../data/org.gnome.calculator.gschema.xml.in.h:1
 msgid "Accuracy value"
 msgstr "ความละเอียด"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
+#: ../data/org.gnome.calculator.gschema.xml.in.h:2
 msgid "The number of digits displayed after the numeric point"
 msgstr "จำนวนหลักของเลขหลังจุดทศนิยม"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
+#: ../data/org.gnome.calculator.gschema.xml.in.h:3
 msgid "Word size"
 msgstr "ขนาดเวิร์ด"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
+#: ../data/org.gnome.calculator.gschema.xml.in.h:4
 msgid "The size of the words used in bitwise operations"
 msgstr "ขนาดของเวิร์ดที่ใช้ในการกระทำบิต"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
+#: ../data/org.gnome.calculator.gschema.xml.in.h:5
 msgid "Numeric Base"
 msgstr "ฐานเลข"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
+#: ../data/org.gnome.calculator.gschema.xml.in.h:6
 msgid "The numeric base"
 msgstr "ฐานเลข"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
+#: ../data/org.gnome.calculator.gschema.xml.in.h:7
 msgid "Show Thousands Separators"
 msgstr "แสดงสัญลักษณ์แบ่งหลักพัน"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
+#: ../data/org.gnome.calculator.gschema.xml.in.h:8
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "กำหนดว่าจะแสดงสัญลักษณ์แบ่งหลักพันในเลขจำนวนขนาดใหญ่หรือไม่"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
+#: ../data/org.gnome.calculator.gschema.xml.in.h:9
 msgid "Show Trailing Zeroes"
 msgstr "แสดงเลขศูนย์ต่อท้าย"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
+#: ../data/org.gnome.calculator.gschema.xml.in.h:10
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr "กำหนดว่าจะแสดงเลขศูนย์เติมท้ายจุดทศนิยมในค่าที่แสดงหรือไม่"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
+#: ../data/org.gnome.calculator.gschema.xml.in.h:11
 msgid "Number format"
 msgstr "รูปแบบตัวเลข"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
+#: ../data/org.gnome.calculator.gschema.xml.in.h:12
 msgid "The format to display numbers in"
 msgstr "รูปแบบตัวเลขที่แสดง"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
+#: ../data/org.gnome.calculator.gschema.xml.in.h:13
 msgid "Angle units"
 msgstr "หน่วยมุม"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
+#: ../data/org.gnome.calculator.gschema.xml.in.h:14
 msgid "The angle units to use"
 msgstr "หน่วยมุมที่ใช้"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
+#: ../data/org.gnome.calculator.gschema.xml.in.h:15
 msgid "Button mode"
 msgstr "โหมดปุ่ม"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
+#: ../data/org.gnome.calculator.gschema.xml.in.h:16
 msgid "The button mode"
 msgstr "โหมดของปุ่มกด"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
+#: ../data/org.gnome.calculator.gschema.xml.in.h:17
 msgid "Source currency"
 msgstr "สกุลเงินต้นทาง"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
+#: ../data/org.gnome.calculator.gschema.xml.in.h:18
 msgid "Currency of the current calculation"
 msgstr "สกุลเงินของการคำนวณปัจจุบัน"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
+#: ../data/org.gnome.calculator.gschema.xml.in.h:19
 msgid "Target currency"
 msgstr "สกุลเงินปลายทาง"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
+#: ../data/org.gnome.calculator.gschema.xml.in.h:20
 msgid "Currency to convert the current calculation into"
 msgstr "สกุลเงินปลายทางที่จะแปลงผลการคำนวณปัจจุบันไป"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:21
+#: ../data/org.gnome.calculator.gschema.xml.in.h:21
 msgid "Source units"
 msgstr "หน่วยต้นทาง"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:22
+#: ../data/org.gnome.calculator.gschema.xml.in.h:22
 msgid "Units of the current calculation"
 msgstr "หน่วยของการคำนวณปัจจุบัน"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:23
+#: ../data/org.gnome.calculator.gschema.xml.in.h:23
 msgid "Target units"
 msgstr "หน่วยปลายทาง"
 
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:24
+#: ../data/org.gnome.calculator.gschema.xml.in.h:24
 msgid "Units to convert the current calculation into"
 msgstr "หน่วยที่จะแปลงผลการคำนวณปัจจุบันไป"
 
-#: ../src/currency-manager.c:30
+#: ../src/currency.vala:28
 msgid "UAE Dirham"
 msgstr "ดีแรห์ม สหรัฐอาหรับเอมิเรตส์"
 
-#: ../src/currency-manager.c:31
+#: ../src/currency.vala:29
 msgid "Australian Dollar"
 msgstr "ดอลลาร์ ออสเตรเลีย"
 
-#: ../src/currency-manager.c:32
+#: ../src/currency.vala:30
 msgid "Bulgarian Lev"
 msgstr "เลฟ บัลแกเรีย"
 
-#: ../src/currency-manager.c:33
+#: ../src/currency.vala:31
 msgid "Bahraini Dinar"
 msgstr "ดีนาร์ บาห์เรน"
 
-#: ../src/currency-manager.c:34
+#: ../src/currency.vala:32
 msgid "Brunei Dollar"
 msgstr "ดอลลาร์ บรูไน"
 
-#: ../src/currency-manager.c:35
+#: ../src/currency.vala:33
 msgid "Brazilian Real"
 msgstr "เรียล บราซิล"
 
-#: ../src/currency-manager.c:36
+#: ../src/currency.vala:34
 msgid "Botswana Pula"
 msgstr "พูลา บอตสวานา"
 
-#: ../src/currency-manager.c:37
+#: ../src/currency.vala:35
 msgid "Canadian Dollar"
 msgstr "ดอลลาร์ แคนาดา"
 
-#: ../src/currency-manager.c:38
+#: ../src/currency.vala:36
 msgid "CFA Franc"
 msgstr "ฟรังก์ ซีเอฟเอ"
 
-#: ../src/currency-manager.c:39
+#: ../src/currency.vala:37
 msgid "Swiss Franc"
 msgstr "ฟรังก์ สวิส"
 
-#: ../src/currency-manager.c:40
+#: ../src/currency.vala:38
 msgid "Chilean Peso"
 msgstr "เปโซ ชิลี"
 
-#: ../src/currency-manager.c:41
+#: ../src/currency.vala:39
 msgid "Chinese Yuan"
 msgstr "หยวน จีน"
 
-#: ../src/currency-manager.c:42
+#: ../src/currency.vala:40
 msgid "Colombian Peso"
 msgstr "เปโซ โคลอมเบีย"
 
-#: ../src/currency-manager.c:43
+#: ../src/currency.vala:41
 msgid "Czech Koruna"
 msgstr "คราวน์ สาธารณรัฐเช็ก"
 
-#: ../src/currency-manager.c:44
+#: ../src/currency.vala:42
 msgid "Danish Krone"
 msgstr "โครน เดนมาร์ก"
 
-#: ../src/currency-manager.c:45
+#: ../src/currency.vala:43
 msgid "Algerian Dinar"
 msgstr "ดีนาร์ แอลจีเรีย"
 
-#: ../src/currency-manager.c:46
+#: ../src/currency.vala:44
 msgid "Estonian Kroon"
 msgstr "โครน เอสโตเนีย"
 
-#: ../src/currency-manager.c:47
+#: ../src/currency.vala:45
 msgid "Euro"
 msgstr "ยูโร"
 
-#: ../src/currency-manager.c:48
+#: ../src/currency.vala:46
 msgid "Pound Sterling"
 msgstr "ปอนด์ สเตอร์ลิง"
 
-#: ../src/currency-manager.c:49
+#: ../src/currency.vala:47
 msgid "Hong Kong Dollar"
 msgstr "ดอลลาร์ ฮ่องกง"
 
-#: ../src/currency-manager.c:50
+#: ../src/currency.vala:48
 msgid "Croatian Kuna"
 msgstr "คูนา โครเอเชีย"
 
-#: ../src/currency-manager.c:51
+#: ../src/currency.vala:49
 msgid "Hungarian Forint"
 msgstr "ฟอรินท์ ฮังการี"
 
-#: ../src/currency-manager.c:52
+#: ../src/currency.vala:50
 msgid "Indonesian Rupiah"
 msgstr "รูเปีย อินโดนีเซีย"
 
-#: ../src/currency-manager.c:53
+#: ../src/currency.vala:51
 msgid "Israeli New Shekel"
 msgstr "เชคเกิล อิสราเอล"
 
-#: ../src/currency-manager.c:54
+#: ../src/currency.vala:52
 msgid "Indian Rupee"
 msgstr "รูปี อินเดีย"
 
-#: ../src/currency-manager.c:55
+#: ../src/currency.vala:53
 msgid "Iranian Rial"
 msgstr "เรียล อิหร่าน"
 
-#: ../src/currency-manager.c:56
+#: ../src/currency.vala:54
 msgid "Icelandic Krona"
 msgstr "โครนา ไอซ์แลนด์"
 
-#: ../src/currency-manager.c:57
+#: ../src/currency.vala:55
 msgid "Japanese Yen"
 msgstr "เยน ญี่ปุ่น"
 
-#: ../src/currency-manager.c:58
+#: ../src/currency.vala:56
 msgid "South Korean Won"
 msgstr "วอน เกาหลีใต้"
 
-#: ../src/currency-manager.c:59
+#: ../src/currency.vala:57
 msgid "Kuwaiti Dinar"
 msgstr "ดีนาร์ คูเวต"
 
-#: ../src/currency-manager.c:60
+#: ../src/currency.vala:58
 msgid "Kazakhstani Tenge"
 msgstr "เทงเก คาซัคสถาน"
 
-#: ../src/currency-manager.c:61
+#: ../src/currency.vala:59
 msgid "Sri Lankan Rupee"
 msgstr "รูปี ศรีลังกา"
 
-#: ../src/currency-manager.c:62
+#: ../src/currency.vala:60
 msgid "Lithuanian Litas"
 msgstr "ลีทาส ลิทัวเนีย"
 
-#: ../src/currency-manager.c:63
+#: ../src/currency.vala:61
 msgid "Latvian Lats"
 msgstr "ลัตส์ ลัตเวีย"
 
-#: ../src/currency-manager.c:64
+#: ../src/currency.vala:62
 msgid "Libyan Dinar"
 msgstr "ดีนาร์ ลิเบีย"
 
-#: ../src/currency-manager.c:65
+#: ../src/currency.vala:63
 msgid "Mauritian Rupee"
 msgstr "รูปี มอริเชียส"
 
-#: ../src/currency-manager.c:66
+#: ../src/currency.vala:64
 msgid "Mexican Peso"
 msgstr "เปโซ เม็กซิโก"
 
-#: ../src/currency-manager.c:67
+#: ../src/currency.vala:65
 msgid "Malaysian Ringgit"
 msgstr "ริงกิต มาเลเซีย"
 
-#: ../src/currency-manager.c:68
+#: ../src/currency.vala:66
 msgid "Norwegian Krone"
 msgstr "โครน นอร์เวย์"
 
-#: ../src/currency-manager.c:69
+#: ../src/currency.vala:67
 msgid "Nepalese Rupee"
 msgstr "รูปี เนปาล"
 
-#: ../src/currency-manager.c:70
+#: ../src/currency.vala:68
 msgid "New Zealand Dollar"
 msgstr "ดอลลาร์ นิวซีแลนด์"
 
-#: ../src/currency-manager.c:71
+#: ../src/currency.vala:69
 msgid "Omani Rial"
 msgstr "เรียล โอมาน"
 
-#: ../src/currency-manager.c:72
+#: ../src/currency.vala:70
 msgid "Peruvian Nuevo Sol"
 msgstr "ซัล เปรู"
 
-#: ../src/currency-manager.c:73
+#: ../src/currency.vala:71
 msgid "Philippine Peso"
 msgstr "เปโซ ฟิลิปปินส์"
 
-#: ../src/currency-manager.c:74
+#: ../src/currency.vala:72
 msgid "Pakistani Rupee"
 msgstr "รูปี ปากีสถาน"
 
-#: ../src/currency-manager.c:75
+#: ../src/currency.vala:73
 msgid "Polish Zloty"
 msgstr "สล็อตตี โปแลนด์"
 
-#: ../src/currency-manager.c:76
+#: ../src/currency.vala:74
 msgid "Qatari Riyal"
 msgstr "เรียล กาตาร์"
 
-#: ../src/currency-manager.c:77
+#: ../src/currency.vala:75
 msgid "New Romanian Leu"
 msgstr "ลิว โรมาเนีย"
 
-#: ../src/currency-manager.c:78
+#: ../src/currency.vala:76
 msgid "Russian Rouble"
 msgstr "รูเบิล รัสเซีย"
 
-#: ../src/currency-manager.c:79
+#: ../src/currency.vala:77
 msgid "Saudi Riyal"
 msgstr "ริยัล ซาอุดีอาระเบีย"
 
-#: ../src/currency-manager.c:80
+#: ../src/currency.vala:78
 msgid "Swedish Krona"
 msgstr "โครนา สวีเดน"
 
-#: ../src/currency-manager.c:81
+#: ../src/currency.vala:79
 msgid "Singapore Dollar"
 msgstr "ดอลลาร์ สิงคโปร์"
 
-#: ../src/currency-manager.c:82
+#: ../src/currency.vala:80
 msgid "Thai Baht"
 msgstr "บาท ไทย"
 
-#: ../src/currency-manager.c:83
+#: ../src/currency.vala:81
 msgid "Tunisian Dinar"
 msgstr "ดีนาร์ ตูนิเซีย"
 
-#: ../src/currency-manager.c:84
+#: ../src/currency.vala:82
 msgid "New Turkish Lira"
 msgstr "ลีร์ ตุรกี"
 
-#: ../src/currency-manager.c:85
+#: ../src/currency.vala:83
 msgid "T&T Dollar (TTD)"
 msgstr "ดอลลาร์ ตรินิแดดและโตเบโก"
 
-#: ../src/currency-manager.c:86
+#: ../src/currency.vala:84
 msgid "US Dollar"
 msgstr "ดอลลาร์ สหรัฐ"
 
-#: ../src/currency-manager.c:87
+#: ../src/currency.vala:85
 msgid "Uruguayan Peso"
 msgstr "เปโซ อุรุกวัย"
 
-#: ../src/currency-manager.c:88
+#: ../src/currency.vala:86
 msgid "Venezuelan Bolívar"
 msgstr "โบลิวาร์ เวเนซุเอลา"
 
-#: ../src/currency-manager.c:89
+#: ../src/currency.vala:87
 msgid "South African Rand"
 msgstr "แรนด์ แอฟริกาใต้"
 
-#: ../src/financial.c:70
+#: ../src/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "ผิดพลาด: จำนวนคาบต้องเป็นค่าบวก"
 
-#. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:79
-#, c-format
-msgid ""
-"Usage:\n"
-"  %s — Perform mathematical calculations"
-msgstr ""
-"วิธีใช้:\n"
-"  %s — เครื่องคำนวณทางคณิตศาสตร์"
+#: ../src/gnome-calculator.vala:80
+msgid "Basic"
+msgstr "พื้นฐาน"
 
-#. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:87
-#, c-format
-msgid ""
-"Help Options:\n"
-"  -v, --version                   Show release version\n"
-"  -h, -?, --help                  Show help options\n"
-"  --help-all                      Show all help options\n"
-"  --help-gtk                      Show GTK+ options"
-msgstr ""
-"ตัวเลือก:\n"
-"  -v, --version                   แสดงเลขรุ่น\n"
-"  -h, -?, --help                  แสดงคำอธิบายตัวเลือกต่างๆ\n"
-"  --help-all                      แสดงคำอธิบายของตัวเลือกทั้งหมด\n"
-"  --help-gtk                      แสดงตัวเลือก GTK+"
+#: ../src/gnome-calculator.vala:81
+msgid "Advanced"
+msgstr "พิเศษ"
 
-#. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:98
-#, c-format
-msgid ""
-"GTK+ Options:\n"
-"  --class=CLASS                   Program class as used by the window "
-"manager\n"
-"  --name=NAME                     Program name as used by the window "
-"manager\n"
-"  --screen=SCREEN                 X screen to use\n"
-"  --sync                          Make X calls synchronous\n"
-"  --gtk-module=MODULES            Load additional GTK+ modules\n"
-"  --g-fatal-warnings              Make all warnings fatal"
-msgstr ""
-"ตัวเลือก GTK+:\n"
-"  --class=CLASS                   คลาสของโปรแกรมตามที่ใช้โดยโปรแกรมจัดการหน้าต่าง\n"
-"  --name=NAME                     ชื่อของโปรแกรมตามที่ใช้โดยโปรแกรมจัดการหน้าต่าง\n"
-"  --screen=SCREEN                 สกรีน X ที่จะใช้\n"
-"  --sync                          ทำให้การเรียก X เป็นแบบหยุดคอย (synchronous)\n"
-"  --gtk-module=MODULES            โหลดมอดูล GTK+ เพิ่มเติม\n"
-"  --g-fatal-warnings              ถือว่าคำเตือนต่างๆ ที่เกิดขึ้นเป็นความผิดพลาดร้ายแรง"
+#: ../src/gnome-calculator.vala:82
+msgid "Financial"
+msgstr "การเงิน"
 
-#. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:112
-#, c-format
-msgid ""
-"Application Options:\n"
-"  -s, --solve <equation>          Solve the given equation"
-msgstr ""
-"ตัวเลือกของโปรแกรม:\n"
-"  -s, --solve <equation>          หาผลลัพธ์ของนิพจน์ที่กำหนด"
+#: ../src/gnome-calculator.vala:83
+msgid "Programming"
+msgstr "การเขียนโปรแกรม"
 
-#. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:156
-#, c-format
-msgid "Argument --solve requires an equation to solve"
-msgstr "อาร์กิวเมนต์ --solve ต้องการนิพจน์ที่จะหาผลลัพธ์ด้วย"
+#: ../src/gnome-calculator.vala:84
+msgid "Mode"
+msgstr "โหมด"
 
-#. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:166
-#, c-format
-msgid "Unknown argument '%s'"
-msgstr "ไม่รู้จักอาร์กิวเมนต์ '%s'"
+#. Title of preferences dialog
+#: ../src/gnome-calculator.vala:87 ../src/math-preferences.vala:26
+msgid "Preferences"
+msgstr "ปรับแต่ง"
+
+#: ../src/gnome-calculator.vala:91
+msgid "About Calculator"
+msgstr "เกี่ยวกับเครื่องคิดเลข"
+
+#: ../src/gnome-calculator.vala:92
+msgid "Help"
+msgstr "วิธีใช้"
+
+#: ../src/gnome-calculator.vala:93
+msgid "Quit"
+msgstr "ออก"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gcalctool.c:358
+#: ../src/gnome-calculator.vala:228
 msgid "Unable to open help file"
 msgstr "ไม่สามารถเปิดแฟ้มข้อมูลวิธีใช้"
 
-#. The translator credits. Please translate this with your name(s).
-#: ../src/gcalctool.c:390
+#. The translator credits. Please translate this with your name (s).
+#: ../src/gnome-calculator.vala:258
 msgid "translator-credits"
 msgstr ""
 "Ithipan Methasate <tumm_xx@hotmail.com>\n"
@@ -891,356 +813,297 @@ msgstr ""
 "ถ้าพอมีเวลาโปรดมาช่วยกันแปล\n"
 "http://gnome-th.sf.net"
 
-#. The license this software is under (GPL2+)
-#: ../src/gcalctool.c:393
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Gcalctool เป็นซอฟต์แวร์เสรี คุณสามารถแจกจ่ายต่อ และ/หรือ แก้ไขโปรแกรมได้\n"
-"ภายใต้เงื่อนไขของ GNU General Public License ที่เผยแพร่โดยมูลนิธิซอฟต์แวร์เสรี\n"
-"ไม่ว่าจะเป็นสัญญาอนุญาตรุ่นที่ 2 หรือรุ่นถัดมา (ตามแต่คุณจะเลือก)\n"
-"\n"
-"Gcalctool เผยแพร่ด้วยความหวังว่าโปรแกรมจะมีประโยชน์\n"
-"แต่ *ไม่มีการรับประกันใดๆ* ไม่มีแม้การรับประกัน *อรรถประโยชน์เชิงพาณิชย์*\n"
-"หรือ *ความเหมาะสมสำหรับวัตถุประสงค์เฉพาะกิจใดๆ* กรุณาอ่าน\n"
-"GNU General Public License เพื่อดูรายละเอียดเพิ่มเติม\n"
-"\n"
-"คุณควรจะได้รับสำเนาของ GNU General Public License มาพร้อมกับ Gcalctool\n"
-"ถ้าคุณไม่ได้รับ กรุณาติดต่อไปที่ Free Software Foundation, Inc., \n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#. Program name in the about dialog
-#: ../src/gcalctool.c:410
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/gcalctool.c:414
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986–2010 The Gcalctool authors"
-
 #. Short description in the about dialog
-#: ../src/gcalctool.c:418
+#: ../src/gnome-calculator.vala:272
 msgid "Calculator with financial and scientific modes."
 msgstr "เครื่องคิดเลข พร้อมด้วยโหมดการเงินและวิทยาศาสตร์"
 
-#: ../src/gcalctool.c:515
-msgid "Basic"
-msgstr "พื้นฐาน"
+#: ../src/gnome-calculator.vala:305
+msgid "Solve given equation"
+msgstr "แก้สมการที่กำหนด"
 
-#: ../src/gcalctool.c:516
-msgid "Advanced"
-msgstr "พิเศษ"
+#: ../src/gnome-calculator.vala:313
+msgid "Start with given equation"
+msgstr "เริ่มด้วยสมการที่กำหนด"
 
-#: ../src/gcalctool.c:517
-msgid "Financial"
-msgstr "การเงิน"
+#: ../src/gnome-calculator.vala:322
+msgid "Show release version"
+msgstr "แสดงรุ่นของโปรแกรม"
 
-#: ../src/gcalctool.c:518
-msgid "Programming"
-msgstr "การเขียนโปรแกรม"
-
-#: ../src/gcalctool.c:519
-msgid "Mode"
-msgstr "โหมด"
-
-#: ../src/gcalctool.c:526
-msgid "About Calculator"
-msgstr "เกี่ยวกับเครื่องคิดเลข"
-
-#: ../src/gcalctool.c:527
-msgid "Help"
-msgstr "วิธีใช้"
-
-#: ../src/gcalctool.c:528
-msgid "Quit"
-msgstr "ออก"
-
+#. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.c:94
+#: ../src/math-buttons.vala:298
 msgid "Pi [Ctrl+P]"
 msgstr "พาย [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.c:97
+#: ../src/math-buttons.vala:300
 msgid "Euler’s Number"
 msgstr "ค่าคงที่ของออยเลอร์"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.c:102
+#: ../src/math-buttons.vala:304
 msgid "Subscript mode [Alt]"
 msgstr "โหมดเลขตัวห้อย [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.c:105
+#: ../src/math-buttons.vala:306
 msgid "Superscript mode [Ctrl]"
 msgstr "โหมดเลขตัวยก [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.c:108
+#: ../src/math-buttons.vala:308
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "เลขชี้กำลังวิทยาศาสตร์ [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.c:111
+#: ../src/math-buttons.vala:310
 msgid "Add [+]"
 msgstr "บวก [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.c:114
+#: ../src/math-buttons.vala:312
 msgid "Subtract [-]"
 msgstr "ลบ [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.c:117
+#: ../src/math-buttons.vala:314
 msgid "Multiply [*]"
 msgstr "คูณ [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.c:120
+#: ../src/math-buttons.vala:316
 msgid "Divide [/]"
 msgstr "หาร [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.c:123
+#: ../src/math-buttons.vala:318
 msgid "Modulus divide"
 msgstr "หารเอาเศษ"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.c:126
+#: ../src/math-buttons.vala:320
 msgid "Additional Functions"
 msgstr "ฟังก์ชันเพิ่มเติม"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.c:129
+#: ../src/math-buttons.vala:322
 msgid "Exponent [^ or **]"
 msgstr "ยกกำลัง [^ หรือ **]"
 
 #. Tooltip for the square button
-#: ../src/math-buttons.c:132
+#: ../src/math-buttons.vala:324
 msgid "Square [Ctrl+2]"
 msgstr "กำลังสอง [Ctrl+2]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.c:135
+#: ../src/math-buttons.vala:326
 msgid "Percentage [%]"
 msgstr "อัตราร้อยละ [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.c:138
+#: ../src/math-buttons.vala:328
 msgid "Factorial [!]"
 msgstr "แฟกทอเรียล [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.c:141
+#: ../src/math-buttons.vala:330
 msgid "Absolute value [|]"
 msgstr "ค่าสัมบูรณ์ [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.c:144
+#: ../src/math-buttons.vala:332
 msgid "Complex argument"
 msgstr "อาร์กิวเมนต์ของเลขเชิงซ้อน"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.c:147
+#: ../src/math-buttons.vala:334
 msgid "Complex conjugate"
 msgstr "สังยุคของเลขเชิงซ้อน"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.c:150
+#: ../src/math-buttons.vala:336
 msgid "Root [Ctrl+R]"
 msgstr "ราก [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.c:153
+#: ../src/math-buttons.vala:338
 msgid "Square root [Ctrl+R]"
 msgstr "รากที่สอง [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.c:156
+#: ../src/math-buttons.vala:340
 msgid "Logarithm"
 msgstr "ลอการิทึม"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.c:159
+#: ../src/math-buttons.vala:342
 msgid "Natural Logarithm"
 msgstr "ลอการิทึมธรรมชาติ"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.c:162
+#: ../src/math-buttons.vala:344
 msgid "Sine"
 msgstr "ไซน์"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.c:165
+#: ../src/math-buttons.vala:346
 msgid "Cosine"
 msgstr "โคไซน์"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.c:168
+#: ../src/math-buttons.vala:348
 msgid "Tangent"
 msgstr "แทนเจนท์"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.c:171
+#: ../src/math-buttons.vala:350
 msgid "Hyperbolic Sine"
 msgstr "ไซน์ไฮเพอร์โบลิก"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.c:174
+#: ../src/math-buttons.vala:352
 msgid "Hyperbolic Cosine"
 msgstr "โคไซน์ไฮเพอร์โบลิก"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.c:177
+#: ../src/math-buttons.vala:354
 msgid "Hyperbolic Tangent"
 msgstr "แทนเจนต์ไฮเพอร์โบลิก"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.c:180
+#: ../src/math-buttons.vala:356
 msgid "Inverse [Ctrl+I]"
 msgstr "ส่วนกลับ [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.c:183
+#: ../src/math-buttons.vala:358
 msgid "Boolean AND"
 msgstr "AND แบบบูลีน"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.c:186
+#: ../src/math-buttons.vala:360
 msgid "Boolean OR"
 msgstr "OR แบบบูลีน"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.c:189
+#: ../src/math-buttons.vala:362
 msgid "Boolean Exclusive OR"
 msgstr "Exclusive OR แบบบูลีน"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.c:192
+#: ../src/math-buttons.vala:364
 msgid "Boolean NOT"
 msgstr "NOT แบบบูลีน"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.c:195 ../src/math-buttons.c:983
+#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
 msgid "Integer Component"
 msgstr "ส่วนจำนวนเต็ม"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.c:198 ../src/math-buttons.c:985
+#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
 msgid "Fractional Component"
 msgstr "ส่วนเศษทศนิยม"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.c:201
+#: ../src/math-buttons.vala:370
 msgid "Real Component"
 msgstr "ส่วนจริง"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.c:204
+#: ../src/math-buttons.vala:372
 msgid "Imaginary Component"
 msgstr "ส่วนจินตภาพ"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.c:207
+#: ../src/math-buttons.vala:374
 msgid "Ones' Complement"
 msgstr "ส่วนเติมเต็มหนึ่ง"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.c:210
+#: ../src/math-buttons.vala:376
 msgid "Two's Complement"
 msgstr "ส่วนเติมเต็มสอง"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.c:213
+#: ../src/math-buttons.vala:378
 msgid "Truncate"
 msgstr "ตัดทอนค่า"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.c:216
+#: ../src/math-buttons.vala:380
 msgid "Start Group [(]"
 msgstr "เริ่มกลุ่มคำนวณ [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.c:219
+#: ../src/math-buttons.vala:382
 msgid "End Group [)]"
 msgstr "จบกลุ่มคำนวณ [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.c:228
+#: ../src/math-buttons.vala:388
 msgid "Calculate Result"
 msgstr "คำนวณผลลัพธ์"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.c:231
+#: ../src/math-buttons.vala:390
 msgid "Factorize [Ctrl+F]"
 msgstr "แยกตัวประกอบ [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.c:234
+#: ../src/math-buttons.vala:392
 msgid "Clear Display [Escape]"
 msgstr "ล้างช่องแสดงผล [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.c:237
+#: ../src/math-buttons.vala:394
 msgid "Undo [Ctrl+Z]"
 msgstr "เรียกคืน [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.c:249
+#: ../src/math-buttons.vala:402
 msgid "Double Declining Depreciation"
 msgstr "ค่าเสื่อมราคาแบบยอดลดลงทวีคูณ"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.c:255
+#: ../src/math-buttons.vala:406
 msgid "Financial Term"
 msgstr "เทอมการเงิน"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.c:258
+#: ../src/math-buttons.vala:408
 msgid "Sum of the Years Digits Depreciation"
 msgstr "ค่าเสื่อมราคาแบบผลรวมจำนวนปี"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.c:261
+#: ../src/math-buttons.vala:410
 msgid "Straight Line Depreciation"
 msgstr "ค่าเสื่อมราคาแบบเส้นตรง"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:601
+#: ../src/math-buttons.vala:523
 msgid "Binary"
 msgstr "ฐานสอง"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:605
+#: ../src/math-buttons.vala:527
 msgid "Octal"
 msgstr "ฐานแปด"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:609
+#: ../src/math-buttons.vala:531
 msgid "Decimal"
 msgstr "ฐานสิบ"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:613
+#: ../src/math-buttons.vala:535
 msgid "Hexadecimal"
 msgstr "ฐานสิบหก"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:894 ../src/math-buttons.c:937
+#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1248,994 +1111,998 @@ msgstr[0] "_%d ตำแหน่ง"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:898 ../src/math-buttons.c:941
+#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "%d ตำแหน่ง"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.c:987
+#: ../src/math-buttons.vala:813
 msgid "Round"
 msgstr "ปัดเศษ"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.c:989
+#: ../src/math-buttons.vala:815
 msgid "Floor"
 msgstr "ปัดเศษลง"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:991
+#: ../src/math-buttons.vala:817
 msgid "Ceiling"
 msgstr "ปัดเศษขึ้น"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.c:993
+#: ../src/math-buttons.vala:819
 msgid "Sign"
 msgstr "เครื่องหมาย"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
-#: ../src/math-converter.c:412
+#: ../src/math-converter.vala:46
 msgid " in "
 msgstr " เป็น "
 
 #. Tooltip for swap conversion button
-#: ../src/math-converter.c:427
+#: ../src/math-converter.vala:60
 msgid "Switch conversion units"
 msgstr "สลับหน่วยการแปลง"
 
+#. Digits localized for the given language
+#: ../src/math-equation.vala:171
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:459
+#: ../src/math-equation.vala:487
 msgid "No undo history"
 msgstr "ไม่มีประวัติคำสั่งที่จะเรียกคืน"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:486
+#: ../src/math-equation.vala:503
 msgid "No redo history"
 msgstr "ไม่มีประวัติคำสั่งที่จะทำซ้ำ"
 
-#: ../src/math-equation.c:944
+#: ../src/math-equation.vala:732
 msgid "No sane value to store"
 msgstr "ไม่มีค่าที่ใช้ได้ให้เก็บ"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1226
+#: ../src/math-equation.vala:888
 msgid "Overflow. Try a bigger word size"
 msgstr "ค่าล้น กรุณาลองใช้ขนาดเวิร์ดที่ใหญ่กว่านี้"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1231
+#: ../src/math-equation.vala:893
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "ไม่รู้จักตัวแปร '%s'"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1236
+#: ../src/math-equation.vala:900
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "ไม่รู้จักฟังก์ชัน '%s'"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1241
+#: ../src/math-equation.vala:907
 msgid "Unknown conversion"
 msgstr "ไม่มีข้อมูลสำหรับแปลงหน่วย"
 
-#. Uncategorized error. Show error token to user
-#: ../src/math-equation.c:1249
+#: ../src/math-equation.vala:915
 #, c-format
 msgid "Malformed expression at token '%s'"
 msgstr "รูปแบบนิพจน์ไม่ถูกต้องที่โทเคน '%s'"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
+#: ../src/math-equation.vala:920 ../src/math-equation.vala:925
 msgid "Malformed expression"
 msgstr "รูปแบบนิพจน์ไม่ถูกต้อง"
 
-#: ../src/math-equation.c:1271
+#: ../src/math-equation.vala:936
 msgid "Calculating"
 msgstr "กำลังคำนวณ"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1387
+#: ../src/math-equation.vala:1063
 msgid "Need an integer to factorize"
 msgstr "การแยกตัวประกอบทำได้กับจำนวนเต็มเท่านั้น"
 
-#. This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1459
+#. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
+#: ../src/math-equation.vala:1117
 msgid "No sane value to bitwise shift"
 msgstr "ไม่มีค่าที่ใช้ได้ให้เลื่อนบิต"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1490
+#: ../src/math-equation.vala:1131
 msgid "Displayed value not an integer"
 msgstr "ค่าที่แสดงอยู่ไม่ใช่จำนวนเต็ม"
 
-#. Digits localized for the given language
-#: ../src/math-equation.c:1915
-msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:235
+#: ../src/math-preferences.vala:29
 msgid "_Close"
 msgstr "ปิ_ด"
 
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:245 ../src/unit-manager.c:54
-msgid "Degrees"
-msgstr "องศา"
-
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:249 ../src/unit-manager.c:55
-msgid "Radians"
-msgstr "เรเดียน"
-
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:253 ../src/unit-manager.c:56
-msgid "Gradians"
-msgstr "เกรเดียน"
+#. Preferences dialog: Label for number format combo box
+#: ../src/math-preferences.vala:39
+msgid "Number _Format:"
+msgstr "รูปแ_บบตัวเลข:"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:263
+#: ../src/math-preferences.vala:56
 msgid "Automatic"
 msgstr "อัตโนมัติ"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:267
+#: ../src/math-preferences.vala:60
 msgid "Fixed"
 msgstr "ทศนิยมตายตัว"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:271
+#: ../src/math-preferences.vala:64
 msgid "Scientific"
 msgstr "วิทยาศาสตร์"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:275
+#: ../src/math-preferences.vala:68
 msgid "Engineering"
 msgstr "วิศวกรรม"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:286
+#: ../src/math-preferences.vala:88
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "แสดงจุดทศนิยม %d _ตำแหน่ง"
 
-#. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/mp-binary.c:115
-msgid "Boolean AND is only defined for positive integers"
-msgstr "AND แบบบูลีนมีนิยามไว้สำหรับจำนวนเต็มบวกเท่านั้น"
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../src/math-preferences.vala:115
+msgid "Show trailing _zeroes"
+msgstr "แสดงเลขศู_นย์ต่อท้าย"
 
-#. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/mp-binary.c:128
-msgid "Boolean OR is only defined for positive integers"
-msgstr "OR แบบบูลีนมีนิยามไว้สำหรับจำนวนเต็มบวกเท่านั้น"
+#. Preferences dialog: label for show show thousands separator check button
+#: ../src/math-preferences.vala:121
+msgid "Show _thousands separators"
+msgstr "แสดงสัญลักษณ์แบ่งหลัก_พัน"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:141
-msgid "Boolean XOR is only defined for positive integers"
-msgstr "XOR แบบบูลีนมีนิยามไว้สำหรับจำนวนเต็มบวกเท่านั้น"
+#. Preferences dialog: Label for angle unit combo box
+#: ../src/math-preferences.vala:127
+msgid "_Angle units:"
+msgstr "หน่วยมุ_ม:"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:156
-msgid "Boolean NOT is only defined for positive integers"
-msgstr "NOT แบบบูลีนมีนิยามไว้สำหรับจำนวนเต็มบวกเท่านั้น"
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: ../src/math-preferences.vala:143 ../src/unit.vala:38
+msgid "Degrees"
+msgstr "องศา"
 
-#. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/mp-binary.c:187
-msgid "Shift is only possible on integer values"
-msgstr "การเลื่อนบิตทำได้กับจำนวนเต็มเท่านั้น"
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../src/math-preferences.vala:147 ../src/unit.vala:39
+msgid "Radians"
+msgstr "เรเดียน"
+
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../src/math-preferences.vala:151 ../src/unit.vala:40
+msgid "Gradians"
+msgstr "เกรเดียน"
+
+#. Preferences dialog: Label for word size combo box
+#: ../src/math-preferences.vala:157
+msgid "Word _size:"
+msgstr "_ขนาดเวิร์ด:"
+
+#. Word size combo: 8 bits
+#: ../src/math-preferences.vala:171
+msgid "8 bits"
+msgstr "8 บิต"
+
+#. Word size combo: 16 bits
+#: ../src/math-preferences.vala:173
+msgid "16 bits"
+msgstr "16 บิต"
+
+#. Word size combo: 32 bits
+#: ../src/math-preferences.vala:175
+msgid "32 bits"
+msgstr "32 บิต"
+
+#. Word size combo: 64 bits
+#: ../src/math-preferences.vala:177
+msgid "64 bits"
+msgstr "64 บิต"
 
 #. Translators: Error display when attempting to take argument of zero
-#: ../src/mp.c:148
+#: ../src/number.vala:652
 msgid "Argument not defined for zero"
 msgstr "อาร์กิวเมนต์นี้ไม่นิยามสำหรับค่าศูนย์"
 
-#: ../src/mp.c:299
-msgid "Overflow: the result couldn't be calculated"
-msgstr "ข้อมูลล้น: ไม่สามารถคำนวณผลลัพธ์ได้"
-
-#. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:644 ../src/mp.c:676 ../src/mp.c:1605
-msgid "Division by zero is undefined"
-msgstr "การหารด้วยศูนย์ไม่มีนิยาม"
-
-#. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1276 ../src/mp.c:1313
-msgid "Logarithm of zero is undefined"
-msgstr "ลอการิทึมของศูนย์ไม่มีนิยาม"
-
-#. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1680 ../src/mp.c:1994
+#. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
+#: ../src/number.vala:909 ../src/number.vala:1858
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "เลขยกกำลังของศูนย์ไม่มีนิยามสำหรับเลขชี้กำลังที่เป็นลบ"
 
-#: ../src/mp.c:1704
-msgid "Reciprocal of zero is undefined"
-msgstr "ส่วนกลับของศูนยไม่มีนิยาม"
-
-#: ../src/mp.c:1789
-msgid "Root must be non-zero"
-msgstr "อันดับของรากต้องไม่เป็นศูนย์"
-
-#: ../src/mp.c:1807
-msgid "Negative root of zero is undefined"
-msgstr "รากอันดับลบของศูนย์ไม่มีนิยาม"
-
-#: ../src/mp.c:1813
-msgid "nth root of negative number is undefined for even n"
-msgstr "รากที่ n ของเลขลบไม่มีนิยามสำหรับ n ที่เป็นเลขคู่"
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/number.vala:992 ../src/number.vala:1025
+msgid "Logarithm of zero is undefined"
+msgstr "ลอการิทึมของศูนย์ไม่มีนิยาม"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1934
+#: ../src/number.vala:1043
 msgid "Factorial is only defined for natural numbers"
 msgstr "แฟกทอเรียลมีนิยามไว้สำหรับจำนวนนับเท่านั้น"
 
+#. Translators: Error displayed attempted to divide by zero
+#: ../src/number.vala:1119 ../src/number.vala:2608
+msgid "Division by zero is undefined"
+msgstr "การหารด้วยศูนย์ไม่มีนิยาม"
+
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1954
+#: ../src/number.vala:1159
 msgid "Modulus division is only defined for integers"
 msgstr "การหารเอาเศษมีนิยามไว้สำหรับจำนวนเต็มเท่านั้น"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:310
+#: ../src/number.vala:1227
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "แทนเจนต์ไม่มีนิยามสำหรับมุมที่ห่างจาก π∕2 (90°) เป็นจำนวนเท่าของ π (180°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:355
+#: ../src/number.vala:1265
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "ไซน์ผกผันไม่มีนิยามสำหรับค่าที่อยู่นอกช่วง [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:372
+#: ../src/number.vala:1280
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "โคไซน์ผกผันไม่มีนิยามสำหรับค่าที่อยู่นอกช่วง [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:591
+#: ../src/number.vala:1477
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "โคไซน์ไฮเพอร์โบลิกผกผันไม่มีนิยามสำหรับค่าที่น้อยกว่าหนึ่ง"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:615
+#: ../src/number.vala:1496
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "แทนเจนต์ไฮเพอร์โบลิกผกผันไม่มีนิยามสำหรับค่าที่อยู่นอกช่วง [-1, 1]"
 
-#: ../src/unit-manager.c:54
-#, c-format
-msgctxt "unit-format"
-msgid "%s degrees"
-msgstr "%s องศา"
-
-#: ../src/unit-manager.c:54
-msgctxt "unit-symbols"
-msgid "degree,degrees,deg"
-msgstr "องศา,degree,degrees,deg"
-
-#: ../src/unit-manager.c:55
-#, c-format
-msgctxt "unit-format"
-msgid "%s radians"
-msgstr "%s เรเดียน"
-
-#: ../src/unit-manager.c:55
-msgctxt "unit-symbols"
-msgid "radian,radians,rad"
-msgstr "เรเดียน,radian,radians,rad"
-
-#: ../src/unit-manager.c:56
-#, c-format
-msgctxt "unit-format"
-msgid "%s gradians"
-msgstr "%s เกรเดียน"
-
-#: ../src/unit-manager.c:56
-msgctxt "unit-symbols"
-msgid "gradian,gradians,grad"
-msgstr "เกรเดียน,gradian,gradians,grad"
-
-#: ../src/unit-manager.c:57
-msgid "Parsecs"
-msgstr "พาร์เซก"
-
-#: ../src/unit-manager.c:57
-#, c-format
-msgctxt "unit-format"
-msgid "%s pc"
-msgstr "%s พาร์เซก"
-
-#: ../src/unit-manager.c:57
-msgctxt "unit-symbols"
-msgid "parsec,parsecs,pc"
-msgstr "พาร์เซก,parsec,parsecs,pc"
-
-#: ../src/unit-manager.c:58
-msgid "Light Years"
-msgstr "ปีแสง"
-
-#: ../src/unit-manager.c:58
-#, c-format
-msgctxt "unit-format"
-msgid "%s ly"
-msgstr "%s ปีแสง"
-
-#: ../src/unit-manager.c:58
-msgctxt "unit-symbols"
-msgid "lightyear,lightyears,ly"
-msgstr "ปีแสง,lightyear,lightyears,ly"
-
-#: ../src/unit-manager.c:59
-msgid "Astronomical Units"
-msgstr "หน่วยดาราศาสตร์"
-
-#: ../src/unit-manager.c:59
-#, c-format
-msgctxt "unit-format"
-msgid "%s au"
-msgstr "%s au"
-
-#: ../src/unit-manager.c:59
-msgctxt "unit-symbols"
-msgid "au"
-msgstr "หน่วยดาราศาสตร์,au"
-
-#: ../src/unit-manager.c:60
-msgid "Nautical Miles"
-msgstr "ไมล์ทะเล"
-
-#: ../src/unit-manager.c:60
-#, c-format
-msgctxt "unit-format"
-msgid "%s nmi"
-msgstr "%s nmi"
-
-#: ../src/unit-manager.c:60
-msgctxt "unit-symbols"
-msgid "nmi"
-msgstr "ไมล์ทะเล,nmi"
-
-#: ../src/unit-manager.c:61
-msgid "Miles"
-msgstr "ไมล์"
-
-#: ../src/unit-manager.c:61
-#, c-format
-msgctxt "unit-format"
-msgid "%s mi"
-msgstr "%s mi"
-
-#: ../src/unit-manager.c:61
-msgctxt "unit-symbols"
-msgid "mile,miles,mi"
-msgstr "ไมล์,mile,miles,mi"
-
-#: ../src/unit-manager.c:62
-msgid "Kilometers"
-msgstr "กิโลเมตร"
-
-#: ../src/unit-manager.c:62
-#, c-format
-msgctxt "unit-format"
-msgid "%s km"
-msgstr "%s กม."
-
-#: ../src/unit-manager.c:62
-msgctxt "unit-symbols"
-msgid "kilometer,kilometers,km,kms"
-msgstr "กิโลเมตร,กม.,kilometer,kilometers,km,kms"
-
-#: ../src/unit-manager.c:63
-msgid "Cables"
-msgstr "เคเบิล"
-
-#: ../src/unit-manager.c:63
-#, c-format
-msgctxt "unit-format"
-msgid "%s cb"
-msgstr "%s cb"
-
-#: ../src/unit-manager.c:63
-msgctxt "unit-symbols"
-msgid "cable,cables,cb"
-msgstr "เคเบิล,cable,cables,cb"
-
-#: ../src/unit-manager.c:64
-msgid "Fathoms"
-msgstr "ฟาทอม"
-
-#: ../src/unit-manager.c:64
-#, c-format
-msgctxt "unit-format"
-msgid "%s ftm"
-msgstr "%s ฟาทอม"
-
-#: ../src/unit-manager.c:64
-msgctxt "unit-symbols"
-msgid "fathom,fathoms,ftm"
-msgstr "ฟาทอม,fathom,fathoms,ftm"
-
-#: ../src/unit-manager.c:65
-msgid "Meters"
-msgstr "เมตร"
-
-#: ../src/unit-manager.c:65
-#, c-format
-msgctxt "unit-format"
-msgid "%s m"
-msgstr "%s ม."
-
-#: ../src/unit-manager.c:65
-msgctxt "unit-symbols"
-msgid "meter,meters,m"
-msgstr "เมตร,meter,meters,m"
-
-#: ../src/unit-manager.c:66
-msgid "Yards"
-msgstr "หลา"
-
-#: ../src/unit-manager.c:66
-#, c-format
-msgctxt "unit-format"
-msgid "%s yd"
-msgstr "%s หลา"
-
-#: ../src/unit-manager.c:66
-msgctxt "unit-symbols"
-msgid "yard,yards,yd"
-msgstr "หลา,yard,yards,yd"
-
-#: ../src/unit-manager.c:67
-msgid "Feet"
-msgstr "ฟุต"
-
-#: ../src/unit-manager.c:67
-#, c-format
-msgctxt "unit-format"
-msgid "%s ft"
-msgstr "%s ฟุต"
-
-#: ../src/unit-manager.c:67
-msgctxt "unit-symbols"
-msgid "foot,feet,ft"
-msgstr "ฟุต,foot,feet,ft"
-
-#: ../src/unit-manager.c:68
-msgid "Inches"
-msgstr "นิ้ว"
-
-#: ../src/unit-manager.c:68
-#, c-format
-msgctxt "unit-format"
-msgid "%s in"
-msgstr "%s นิ้ว"
-
-#: ../src/unit-manager.c:68
-msgctxt "unit-symbols"
-msgid "inch,inches,in"
-msgstr "นิ้ว,inch,inches,in"
-
-#: ../src/unit-manager.c:69
-msgid "Centimeters"
-msgstr "เซนติเมตร"
-
-#: ../src/unit-manager.c:69
-#, c-format
-msgctxt "unit-format"
-msgid "%s cm"
-msgstr "%s ซม."
-
-#: ../src/unit-manager.c:69
-msgctxt "unit-symbols"
-msgid "centimeter,centimeters,cm,cms"
-msgstr "เซนติเมตร,ซม.,centimeter,centimeters,cm,cms"
-
-#: ../src/unit-manager.c:70
-msgid "Millimeters"
-msgstr "มิลลิเมตร"
-
-#: ../src/unit-manager.c:70
-#, c-format
-msgctxt "unit-format"
-msgid "%s mm"
-msgstr "%s มม."
-
-#: ../src/unit-manager.c:70
-msgctxt "unit-symbols"
-msgid "millimeter,millimeters,mm"
-msgstr "มิลลิเมตร,มม.,millimeter,millimeters,mm"
-
-#: ../src/unit-manager.c:71
-msgid "Micrometers"
-msgstr "ไมโครเมตร"
-
-#: ../src/unit-manager.c:71
-#, c-format
-msgctxt "unit-format"
-msgid "%s μm"
-msgstr "%s μm"
-
-#: ../src/unit-manager.c:71
-msgctxt "unit-symbols"
-msgid "micrometer,micrometers,um"
-msgstr "ไมโครเมตร,ไมครอน,micrometer,micrometers,um"
-
-#: ../src/unit-manager.c:72
-msgid "Nanometers"
-msgstr "นาโนเมตร"
-
-#: ../src/unit-manager.c:72
-#, c-format
-msgctxt "unit-format"
-msgid "%s nm"
-msgstr "%s nm"
-
-#: ../src/unit-manager.c:72
-msgctxt "unit-symbols"
-msgid "nanometer,nanometers,nm"
-msgstr "นาโนเมตร,nanometer,nanometers,nm"
-
-#: ../src/unit-manager.c:73
-msgid "Hectares"
-msgstr "เฮกแตร์"
-
-#: ../src/unit-manager.c:73
-#, c-format
-msgctxt "unit-format"
-msgid "%s ha"
-msgstr "%s เฮกแตร์"
-
-#: ../src/unit-manager.c:73
-msgctxt "unit-symbols"
-msgid "hectare,hectares,ha"
-msgstr "เฮกแตร์,เฮกตาร์,hectare,hectares,ha"
-
-#: ../src/unit-manager.c:74
-msgid "Acres"
-msgstr "เอเคอร์"
-
-#: ../src/unit-manager.c:74
-#, c-format
-msgctxt "unit-format"
-msgid "%s acres"
-msgstr "%s เอเคอร์"
-
-#: ../src/unit-manager.c:74
-msgctxt "unit-symbols"
-msgid "acre,acres"
-msgstr "เอเคอร์,acre,acres"
-
-#: ../src/unit-manager.c:75
-msgid "Square Meters"
-msgstr "ตารางเมตร"
-
-#: ../src/unit-manager.c:75
-#, c-format
-msgctxt "unit-format"
-msgid "%s m²"
-msgstr "%s ม²"
-
-#: ../src/unit-manager.c:75
-msgctxt "unit-symbols"
-msgid "m²"
-msgstr "ม²,ตร.ม.,m²"
-
-#: ../src/unit-manager.c:76
-msgid "Square Centimeters"
-msgstr "ตารางเซนติเมตร"
-
-#: ../src/unit-manager.c:76
-#, c-format
-msgctxt "unit-format"
-msgid "%s cm²"
-msgstr "%s ซม²"
-
-#: ../src/unit-manager.c:76
-msgctxt "unit-symbols"
-msgid "cm²"
-msgstr "ซม²,ตร.ซม.,cm²"
-
-#: ../src/unit-manager.c:77
-msgid "Square Millimeters"
-msgstr "ตารางมิลลิเมตร"
-
-#: ../src/unit-manager.c:77
-#, c-format
-msgctxt "unit-format"
-msgid "%s mm²"
-msgstr "%s มม²"
-
-#: ../src/unit-manager.c:77
-msgctxt "unit-symbols"
-msgid "mm²"
-msgstr "มม²,mm²"
-
-#: ../src/unit-manager.c:78
-msgid "Cubic Meters"
-msgstr "ลูกบาศก์เมตร"
-
-#: ../src/unit-manager.c:78
-#, c-format
-msgctxt "unit-format"
-msgid "%s m³"
-msgstr "%s ม³"
-
-#: ../src/unit-manager.c:78
-msgctxt "unit-symbols"
-msgid "m³"
-msgstr "ม³,ลบ.ม.,m³"
-
-#: ../src/unit-manager.c:79
-msgid "Gallons"
-msgstr "แกลลอน"
-
-#: ../src/unit-manager.c:79
-#, c-format
-msgctxt "unit-format"
-msgid "%s gal"
-msgstr "%s gal"
-
-#: ../src/unit-manager.c:79
-msgctxt "unit-symbols"
-msgid "gallon,gallons,gal"
-msgstr "แกลลอน,gallon,gallons,gal"
-
-#: ../src/unit-manager.c:80
-msgid "Litres"
-msgstr "ลิตร"
-
-#: ../src/unit-manager.c:80
-#, c-format
-msgctxt "unit-format"
-msgid "%s L"
-msgstr "%s ล."
-
-#: ../src/unit-manager.c:80
-msgctxt "unit-symbols"
-msgid "litre,litres,liter,liters,L"
-msgstr "ลิตร,ล.,litre,litres,liter,liters,L"
-
-#: ../src/unit-manager.c:81
-msgid "Quarts"
-msgstr "ควอร์ต"
-
-#: ../src/unit-manager.c:81
-#, c-format
-msgctxt "unit-format"
-msgid "%s qt"
-msgstr "%s ควอร์ต"
-
-#: ../src/unit-manager.c:81
-msgctxt "unit-symbols"
-msgid "quart,quarts,qt"
-msgstr "ควอร์ต,quart,quarts,qt"
-
-#: ../src/unit-manager.c:82
-msgid "Pints"
-msgstr "ไพนต์"
-
-#: ../src/unit-manager.c:82
-#, c-format
-msgctxt "unit-format"
-msgid "%s pt"
-msgstr "%s ไพนต์"
-
-#: ../src/unit-manager.c:82
-msgctxt "unit-symbols"
-msgid "pint,pints,pt"
-msgstr "ไพนต์,pint,pints,pt"
-
-#: ../src/unit-manager.c:83
-msgid "Millilitres"
-msgstr "มิลลิลิตร"
-
-#: ../src/unit-manager.c:83
-#, c-format
-msgctxt "unit-format"
-msgid "%s mL"
-msgstr "%s มล."
-
-#: ../src/unit-manager.c:83
-msgctxt "unit-symbols"
-msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
-msgstr ""
-"มิลลิลิตร,มล.,ซม³,ลบ.ซม.millilitre,millilitres,milliliter,milliliters,mL,cm³"
-
-#: ../src/unit-manager.c:84
-msgid "Microlitres"
-msgstr "ไมโครลิตร"
-
-#: ../src/unit-manager.c:84
-#, c-format
-msgctxt "unit-format"
-msgid "%s μL"
-msgstr "%s μL"
-
-#: ../src/unit-manager.c:84
-msgctxt "unit-symbols"
-msgid "mm³,μL,uL"
-msgstr "มม³,mm³,μL,uL"
-
-#: ../src/unit-manager.c:85
-msgid "Tonnes"
-msgstr "ตัน"
-
-#: ../src/unit-manager.c:85
-#, c-format
-msgctxt "unit-format"
-msgid "%s T"
-msgstr "%s ตัน"
-
-#: ../src/unit-manager.c:85
-msgctxt "unit-symbols"
-msgid "tonne,tonnes"
-msgstr "ตัน,tonne,tonnes"
-
-#: ../src/unit-manager.c:86
-msgid "Kilograms"
-msgstr "กิโลกรัม"
-
-#: ../src/unit-manager.c:86
-#, c-format
-msgctxt "unit-format"
-msgid "%s kg"
-msgstr "%s กก."
-
-#: ../src/unit-manager.c:86
-msgctxt "unit-symbols"
-msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
-msgstr "กิโลกรัม,กก.,kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
-
-#: ../src/unit-manager.c:87
-msgid "Pounds"
-msgstr "ปอนด์"
-
-#: ../src/unit-manager.c:87
-#, c-format
-msgctxt "unit-format"
-msgid "%s lb"
-msgstr "%s ปอนด์"
-
-#: ../src/unit-manager.c:87
-msgctxt "unit-symbols"
-msgid "pound,pounds,lb"
-msgstr "ปอนด์,pound,pounds,lb"
-
-#: ../src/unit-manager.c:88
-msgid "Ounces"
-msgstr "ออนซ์"
-
-#: ../src/unit-manager.c:88
-#, c-format
-msgctxt "unit-format"
-msgid "%s oz"
-msgstr "%s ออนซ์"
-
-#: ../src/unit-manager.c:88
-msgctxt "unit-symbols"
-msgid "ounce,ounces,oz"
-msgstr "ออนซ์,ounce,ounces,oz"
-
-#: ../src/unit-manager.c:89
-msgid "Grams"
-msgstr "กรัม"
-
-#: ../src/unit-manager.c:89
-#, c-format
-msgctxt "unit-format"
-msgid "%s g"
-msgstr "%s ก."
-
-#: ../src/unit-manager.c:89
-msgctxt "unit-symbols"
-msgid "gram,grams,gramme,grammes,g"
-msgstr "กรัม,ก.,gram,grams,gramme,grammes,g"
-
-#: ../src/unit-manager.c:90
-msgid "Years"
-msgstr "ปี"
-
-#: ../src/unit-manager.c:90
-#, c-format
-msgctxt "unit-format"
-msgid "%s years"
-msgstr "%s ปี"
-
-#: ../src/unit-manager.c:90
-msgctxt "unit-symbols"
-msgid "year,years"
-msgstr "ปี,year,years"
-
-#: ../src/unit-manager.c:91
-msgid "Days"
-msgstr "วัน"
-
-#: ../src/unit-manager.c:91
-#, c-format
-msgctxt "unit-format"
-msgid "%s days"
-msgstr "%s วัน"
-
-#: ../src/unit-manager.c:91
-msgctxt "unit-symbols"
-msgid "day,days"
-msgstr "วัน,day,days"
-
-#: ../src/unit-manager.c:92
-msgid "Hours"
-msgstr "ชั่วโมง"
-
-#: ../src/unit-manager.c:92
-#, c-format
-msgctxt "unit-format"
-msgid "%s hours"
-msgstr "%s ชม."
-
-#: ../src/unit-manager.c:92
-msgctxt "unit-symbols"
-msgid "hour,hours"
-msgstr "ชั่วโมง,ชม.,hour,hours"
-
-#: ../src/unit-manager.c:93
-msgid "Minutes"
-msgstr "นาที"
-
-#: ../src/unit-manager.c:93
-#, c-format
-msgctxt "unit-format"
-msgid "%s minutes"
-msgstr "%s นาที"
-
-#: ../src/unit-manager.c:93
-msgctxt "unit-symbols"
-msgid "minute,minutes"
-msgstr "นาที,minute,minutes"
-
-#: ../src/unit-manager.c:94
-msgid "Seconds"
-msgstr "วินาที"
-
-#: ../src/unit-manager.c:94
-#, c-format
-msgctxt "unit-format"
-msgid "%s s"
-msgstr "%s วินาที"
-
-#: ../src/unit-manager.c:94
-msgctxt "unit-symbols"
-msgid "second,seconds,s"
-msgstr "วินาที,second,seconds,s"
-
-#: ../src/unit-manager.c:95
-msgid "Milliseconds"
-msgstr "มิลลิวินาที"
-
-#: ../src/unit-manager.c:95
-#, c-format
-msgctxt "unit-format"
-msgid "%s ms"
-msgstr "%s ms"
-
-#: ../src/unit-manager.c:95
-msgctxt "unit-symbols"
-msgid "millisecond,milliseconds,ms"
-msgstr "มิลลิวินาที,millisecond,milliseconds,ms"
-
-#: ../src/unit-manager.c:96
-msgid "Microseconds"
-msgstr "ไมโครวินาที"
-
-#: ../src/unit-manager.c:96
-#, c-format
-msgctxt "unit-format"
-msgid "%s μs"
-msgstr "%s μs"
-
-#: ../src/unit-manager.c:96
-msgctxt "unit-symbols"
-msgid "microsecond,microseconds,us,μs"
-msgstr "ไมโครวินาที,microsecond,microseconds,us,μs"
-
-#: ../src/unit-manager.c:97
-msgid "Celsius"
-msgstr "องศาเซลเซียส"
-
-#: ../src/unit-manager.c:97
-#, c-format
-msgctxt "unit-format"
-msgid "%s ˚C"
-msgstr "%s ˚ซ"
-
-#: ../src/unit-manager.c:97
-msgctxt "unit-symbols"
-msgid "degC,˚C"
-msgstr "˚ซ,˚C"
-
-#: ../src/unit-manager.c:98
-msgid "Farenheit"
-msgstr "องศาฟาเรนไฮต์"
-
-#: ../src/unit-manager.c:98
-#, c-format
-msgctxt "unit-format"
-msgid "%s ˚F"
-msgstr "%s ˚ฟ"
-
-#: ../src/unit-manager.c:98
-msgctxt "unit-symbols"
-msgid "degF,˚F"
-msgstr "˚ฟ,˚F"
-
-#: ../src/unit-manager.c:99
-msgid "Kelvin"
-msgstr "เคลวิน"
-
-#: ../src/unit-manager.c:99
-#, c-format
-msgctxt "unit-format"
-msgid "%s K"
-msgstr "%s K"
-
-#: ../src/unit-manager.c:99
-msgctxt "unit-symbols"
-msgid "K"
-msgstr "K"
-
-#: ../src/unit-manager.c:100
-msgid "Rankine"
-msgstr "องศาแรงกิน"
-
-#: ../src/unit-manager.c:100
-#, c-format
-msgctxt "unit-format"
-msgid "%s ˚R"
-msgstr "%s ˚R"
-
-#: ../src/unit-manager.c:100
-msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra"
-msgstr "˚R,˚Ra"
-
-#: ../src/unit-manager.c:109
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../src/number.vala:1515
+msgid "Boolean AND is only defined for positive integers"
+msgstr "AND แบบบูลีนมีนิยามไว้สำหรับจำนวนเต็มบวกเท่านั้น"
+
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../src/number.vala:1527
+msgid "Boolean OR is only defined for positive integers"
+msgstr "OR แบบบูลีนมีนิยามไว้สำหรับจำนวนเต็มบวกเท่านั้น"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/number.vala:1539
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "XOR แบบบูลีนมีนิยามไว้สำหรับจำนวนเต็มบวกเท่านั้น"
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../src/number.vala:1551
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "NOT แบบบูลีนมีนิยามไว้สำหรับจำนวนเต็มบวกเท่านั้น"
+
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../src/number.vala:1574
+msgid "Shift is only possible on integer values"
+msgstr "การเลื่อนบิตทำได้กับจำนวนเต็มเท่านั้น"
+
+#: ../src/number.vala:1878
+msgid "Root must be non-zero"
+msgstr "อันดับของรากต้องไม่เป็นศูนย์"
+
+#: ../src/number.vala:1895
+msgid "Negative root of zero is undefined"
+msgstr "รากอันดับลบของศูนย์ไม่มีนิยาม"
+
+#: ../src/number.vala:1902
+msgid "nth root of negative number is undefined for even n"
+msgstr "รากที่ n ของเลขลบไม่มีนิยามสำหรับ n ที่เป็นเลขคู่"
+
+#: ../src/number.vala:2225
+msgid "Overflow: the result couldn't be calculated"
+msgstr "ข้อมูลล้น: ไม่สามารถคำนวณผลลัพธ์ได้"
+
+#: ../src/number.vala:2553
+msgid "Reciprocal of zero is undefined"
+msgstr "ส่วนกลับของศูนยไม่มีนิยาม"
+
+#: ../src/unit.vala:29
 msgid "Angle"
 msgstr "มุม"
 
-#: ../src/unit-manager.c:110
+#: ../src/unit.vala:30
 msgid "Length"
 msgstr "ความยาว"
 
-#: ../src/unit-manager.c:111
+#: ../src/unit.vala:31
 msgid "Area"
 msgstr "พื้นที่"
 
-#: ../src/unit-manager.c:112
+#: ../src/unit.vala:32
 msgid "Volume"
 msgstr "ปริมาตร"
 
-#: ../src/unit-manager.c:113
+#: ../src/unit.vala:33
 msgid "Weight"
 msgstr "น้ำหนัก"
 
-#: ../src/unit-manager.c:114
+#: ../src/unit.vala:34
 msgid "Duration"
 msgstr "เวลา"
 
-#: ../src/unit-manager.c:115
+#: ../src/unit.vala:35
 msgid "Temperature"
 msgstr "อุณหภูมิ"
 
-#: ../src/unit-manager.c:127
+#: ../src/unit.vala:41
+msgid "Parsecs"
+msgstr "พาร์เซก"
+
+#: ../src/unit.vala:42
+msgid "Light Years"
+msgstr "ปีแสง"
+
+#: ../src/unit.vala:43
+msgid "Astronomical Units"
+msgstr "หน่วยดาราศาสตร์"
+
+#: ../src/unit.vala:44
+msgid "Nautical Miles"
+msgstr "ไมล์ทะเล"
+
+#: ../src/unit.vala:45
+msgid "Miles"
+msgstr "ไมล์"
+
+#: ../src/unit.vala:46
+msgid "Kilometers"
+msgstr "กิโลเมตร"
+
+#: ../src/unit.vala:47
+msgid "Cables"
+msgstr "เคเบิล"
+
+#: ../src/unit.vala:48
+msgid "Fathoms"
+msgstr "ฟาทอม"
+
+#: ../src/unit.vala:49
+msgid "Meters"
+msgstr "เมตร"
+
+#: ../src/unit.vala:50
+msgid "Yards"
+msgstr "หลา"
+
+#: ../src/unit.vala:51
+msgid "Feet"
+msgstr "ฟุต"
+
+#: ../src/unit.vala:52
+msgid "Inches"
+msgstr "นิ้ว"
+
+#: ../src/unit.vala:53
+msgid "Centimeters"
+msgstr "เซนติเมตร"
+
+#: ../src/unit.vala:54
+msgid "Millimeters"
+msgstr "มิลลิเมตร"
+
+#: ../src/unit.vala:55
+msgid "Micrometers"
+msgstr "ไมโครเมตร"
+
+#: ../src/unit.vala:56
+msgid "Nanometers"
+msgstr "นาโนเมตร"
+
+#: ../src/unit.vala:57
+msgid "Hectares"
+msgstr "เฮกแตร์"
+
+#: ../src/unit.vala:58
+msgid "Acres"
+msgstr "เอเคอร์"
+
+#: ../src/unit.vala:59
+msgid "Square Meters"
+msgstr "ตารางเมตร"
+
+#: ../src/unit.vala:60
+msgid "Square Centimeters"
+msgstr "ตารางเซนติเมตร"
+
+#: ../src/unit.vala:61
+msgid "Square Millimeters"
+msgstr "ตารางมิลลิเมตร"
+
+#: ../src/unit.vala:62
+msgid "Cubic Meters"
+msgstr "ลูกบาศก์เมตร"
+
+#: ../src/unit.vala:63
+msgid "Gallons"
+msgstr "แกลลอน"
+
+#: ../src/unit.vala:64
+msgid "Litres"
+msgstr "ลิตร"
+
+#: ../src/unit.vala:65
+msgid "Quarts"
+msgstr "ควอร์ต"
+
+#: ../src/unit.vala:66
+msgid "Pints"
+msgstr "ไพนต์"
+
+#: ../src/unit.vala:67
+msgid "Millilitres"
+msgstr "มิลลิลิตร"
+
+#: ../src/unit.vala:68
+msgid "Microlitres"
+msgstr "ไมโครลิตร"
+
+#: ../src/unit.vala:69
+msgid "Tonnes"
+msgstr "ตัน"
+
+#: ../src/unit.vala:70
+msgid "Kilograms"
+msgstr "กิโลกรัม"
+
+#: ../src/unit.vala:71
+msgid "Pounds"
+msgstr "ปอนด์"
+
+#: ../src/unit.vala:72
+msgid "Ounces"
+msgstr "ออนซ์"
+
+#: ../src/unit.vala:73
+msgid "Grams"
+msgstr "กรัม"
+
+#: ../src/unit.vala:74
+msgid "Years"
+msgstr "ปี"
+
+#: ../src/unit.vala:75
+msgid "Days"
+msgstr "วัน"
+
+#: ../src/unit.vala:76
+msgid "Hours"
+msgstr "ชั่วโมง"
+
+#: ../src/unit.vala:77
+msgid "Minutes"
+msgstr "นาที"
+
+#: ../src/unit.vala:78
+msgid "Seconds"
+msgstr "วินาที"
+
+#: ../src/unit.vala:79
+msgid "Milliseconds"
+msgstr "มิลลิวินาที"
+
+#: ../src/unit.vala:80
+msgid "Microseconds"
+msgstr "ไมโครวินาที"
+
+#: ../src/unit.vala:81
+msgid "Celsius"
+msgstr "องศาเซลเซียส"
+
+#: ../src/unit.vala:82
+msgid "Farenheit"
+msgstr "องศาฟาเรนไฮต์"
+
+#: ../src/unit.vala:83
+msgid "Kelvin"
+msgstr "เคลวิน"
+
+#: ../src/unit.vala:84
+msgid "Rankine"
+msgstr "องศาแรงกิน"
+
+#: ../src/unit.vala:86
 msgid "Currency"
 msgstr "สกุลเงิน"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: ../src/unit-manager.c:137
+#: ../src/unit.vala:92
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
+
+#~ msgid "8-bit"
+#~ msgstr "8 บิต"
+
+#~ msgid "16-bit"
+#~ msgstr "16 บิต"
+
+#~ msgid "32-bit"
+#~ msgstr "32 บิต"
+
+#~ msgid "64-bit"
+#~ msgstr "64 บิต"
+
+#~ msgid ""
+#~ "Usage:\n"
+#~ "  %s — Perform mathematical calculations"
+#~ msgstr ""
+#~ "วิธีใช้:\n"
+#~ "  %s — เครื่องคำนวณทางคณิตศาสตร์"
+
+#~ msgid ""
+#~ "Help Options:\n"
+#~ "  -v, --version                   Show release version\n"
+#~ "  -h, -?, --help                  Show help options\n"
+#~ "  --help-all                      Show all help options\n"
+#~ "  --help-gtk                      Show GTK+ options"
+#~ msgstr ""
+#~ "ตัวเลือก:\n"
+#~ "  -v, --version                   แสดงเลขรุ่น\n"
+#~ "  -h, -?, --help                  แสดงคำอธิบายตัวเลือกต่างๆ\n"
+#~ "  --help-all                      แสดงคำอธิบายของตัวเลือกทั้งหมด\n"
+#~ "  --help-gtk                      แสดงตัวเลือก GTK+"
+
+#~ msgid ""
+#~ "GTK+ Options:\n"
+#~ "  --class=CLASS                   Program class as used by the window "
+#~ "manager\n"
+#~ "  --name=NAME                     Program name as used by the window "
+#~ "manager\n"
+#~ "  --screen=SCREEN                 X screen to use\n"
+#~ "  --sync                          Make X calls synchronous\n"
+#~ "  --gtk-module=MODULES            Load additional GTK+ modules\n"
+#~ "  --g-fatal-warnings              Make all warnings fatal"
+#~ msgstr ""
+#~ "ตัวเลือก GTK+:\n"
+#~ "  --class=CLASS                   "
+#~ "คลาสของโปรแกรมตามที่ใช้โดยโปรแกรมจัดการหน้าต่าง\n"
+#~ "  --name=NAME                     "
+#~ "ชื่อของโปรแกรมตามที่ใช้โดยโปรแกรมจัดการหน้าต่าง\n"
+#~ "  --screen=SCREEN                 สกรีน X ที่จะใช้\n"
+#~ "  --sync                          ทำให้การเรียก X เป็นแบบหยุดคอย "
+#~ "(synchronous)\n"
+#~ "  --gtk-module=MODULES            โหลดมอดูล GTK+ เพิ่มเติม\n"
+#~ "  --g-fatal-warnings              ถือว่าคำเตือนต่างๆ ที่เกิดขึ้นเป็นความผิดพลาดร้ายแรง"
+
+#~ msgid ""
+#~ "Application Options:\n"
+#~ "  -s, --solve <equation>          Solve the given equation"
+#~ msgstr ""
+#~ "ตัวเลือกของโปรแกรม:\n"
+#~ "  -s, --solve <equation>          หาผลลัพธ์ของนิพจน์ที่กำหนด"
+
+#~ msgid "Argument --solve requires an equation to solve"
+#~ msgstr "อาร์กิวเมนต์ --solve ต้องการนิพจน์ที่จะหาผลลัพธ์ด้วย"
+
+#~ msgid "Unknown argument '%s'"
+#~ msgstr "ไม่รู้จักอาร์กิวเมนต์ '%s'"
+
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+#~ msgstr ""
+#~ "Gcalctool เป็นซอฟต์แวร์เสรี คุณสามารถแจกจ่ายต่อ และ/หรือ แก้ไขโปรแกรมได้\n"
+#~ "ภายใต้เงื่อนไขของ GNU General Public License ที่เผยแพร่โดยมูลนิธิซอฟต์แวร์เสรี\n"
+#~ "ไม่ว่าจะเป็นสัญญาอนุญาตรุ่นที่ 2 หรือรุ่นถัดมา (ตามแต่คุณจะเลือก)\n"
+#~ "\n"
+#~ "Gcalctool เผยแพร่ด้วยความหวังว่าโปรแกรมจะมีประโยชน์\n"
+#~ "แต่ *ไม่มีการรับประกันใดๆ* ไม่มีแม้การรับประกัน *อรรถประโยชน์เชิงพาณิชย์*\n"
+#~ "หรือ *ความเหมาะสมสำหรับวัตถุประสงค์เฉพาะกิจใดๆ* กรุณาอ่าน\n"
+#~ "GNU General Public License เพื่อดูรายละเอียดเพิ่มเติม\n"
+#~ "\n"
+#~ "คุณควรจะได้รับสำเนาของ GNU General Public License มาพร้อมกับ Gcalctool\n"
+#~ "ถ้าคุณไม่ได้รับ กรุณาติดต่อไปที่ Free Software Foundation, Inc., \n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#~ msgid "Gcalctool"
+#~ msgstr "Gcalctool"
+
+#~ msgid "© 1986–2010 The Gcalctool authors"
+#~ msgstr "© 1986–2010 The Gcalctool authors"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s degrees"
+#~ msgstr "%s องศา"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degree,degrees,deg"
+#~ msgstr "องศา,degree,degrees,deg"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s radians"
+#~ msgstr "%s เรเดียน"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "radian,radians,rad"
+#~ msgstr "เรเดียน,radian,radians,rad"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s gradians"
+#~ msgstr "%s เกรเดียน"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "gradian,gradians,grad"
+#~ msgstr "เกรเดียน,gradian,gradians,grad"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s pc"
+#~ msgstr "%s พาร์เซก"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "parsec,parsecs,pc"
+#~ msgstr "พาร์เซก,parsec,parsecs,pc"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ly"
+#~ msgstr "%s ปีแสง"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "lightyear,lightyears,ly"
+#~ msgstr "ปีแสง,lightyear,lightyears,ly"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s au"
+#~ msgstr "%s au"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "au"
+#~ msgstr "หน่วยดาราศาสตร์,au"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s nmi"
+#~ msgstr "%s nmi"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "nmi"
+#~ msgstr "ไมล์ทะเล,nmi"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s mi"
+#~ msgstr "%s mi"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "mile,miles,mi"
+#~ msgstr "ไมล์,mile,miles,mi"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s km"
+#~ msgstr "%s กม."
+
+#~ msgctxt "unit-symbols"
+#~ msgid "kilometer,kilometers,km,kms"
+#~ msgstr "กิโลเมตร,กม.,kilometer,kilometers,km,kms"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s cb"
+#~ msgstr "%s cb"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "cable,cables,cb"
+#~ msgstr "เคเบิล,cable,cables,cb"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ftm"
+#~ msgstr "%s ฟาทอม"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "fathom,fathoms,ftm"
+#~ msgstr "ฟาทอม,fathom,fathoms,ftm"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s m"
+#~ msgstr "%s ม."
+
+#~ msgctxt "unit-symbols"
+#~ msgid "meter,meters,m"
+#~ msgstr "เมตร,meter,meters,m"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s yd"
+#~ msgstr "%s หลา"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "yard,yards,yd"
+#~ msgstr "หลา,yard,yards,yd"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ft"
+#~ msgstr "%s ฟุต"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "foot,feet,ft"
+#~ msgstr "ฟุต,foot,feet,ft"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s in"
+#~ msgstr "%s นิ้ว"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "inch,inches,in"
+#~ msgstr "นิ้ว,inch,inches,in"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s cm"
+#~ msgstr "%s ซม."
+
+#~ msgctxt "unit-symbols"
+#~ msgid "centimeter,centimeters,cm,cms"
+#~ msgstr "เซนติเมตร,ซม.,centimeter,centimeters,cm,cms"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s mm"
+#~ msgstr "%s มม."
+
+#~ msgctxt "unit-symbols"
+#~ msgid "millimeter,millimeters,mm"
+#~ msgstr "มิลลิเมตร,มม.,millimeter,millimeters,mm"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s μm"
+#~ msgstr "%s μm"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "micrometer,micrometers,um"
+#~ msgstr "ไมโครเมตร,ไมครอน,micrometer,micrometers,um"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s nm"
+#~ msgstr "%s nm"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "nanometer,nanometers,nm"
+#~ msgstr "นาโนเมตร,nanometer,nanometers,nm"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ha"
+#~ msgstr "%s เฮกแตร์"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "hectare,hectares,ha"
+#~ msgstr "เฮกแตร์,เฮกตาร์,hectare,hectares,ha"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s acres"
+#~ msgstr "%s เอเคอร์"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "acre,acres"
+#~ msgstr "เอเคอร์,acre,acres"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s m²"
+#~ msgstr "%s ม²"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "m²"
+#~ msgstr "ม²,ตร.ม.,m²"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s cm²"
+#~ msgstr "%s ซม²"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "cm²"
+#~ msgstr "ซม²,ตร.ซม.,cm²"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s mm²"
+#~ msgstr "%s มม²"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "mm²"
+#~ msgstr "มม²,mm²"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s m³"
+#~ msgstr "%s ม³"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "m³"
+#~ msgstr "ม³,ลบ.ม.,m³"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s gal"
+#~ msgstr "%s gal"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "gallon,gallons,gal"
+#~ msgstr "แกลลอน,gallon,gallons,gal"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s L"
+#~ msgstr "%s ล."
+
+#~ msgctxt "unit-symbols"
+#~ msgid "litre,litres,liter,liters,L"
+#~ msgstr "ลิตร,ล.,litre,litres,liter,liters,L"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s qt"
+#~ msgstr "%s ควอร์ต"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "quart,quarts,qt"
+#~ msgstr "ควอร์ต,quart,quarts,qt"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s pt"
+#~ msgstr "%s ไพนต์"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "pint,pints,pt"
+#~ msgstr "ไพนต์,pint,pints,pt"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s mL"
+#~ msgstr "%s มล."
+
+#~ msgctxt "unit-symbols"
+#~ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+#~ msgstr ""
+#~ "มิลลิลิตร,มล.,ซม³,ลบ.ซม.millilitre,millilitres,milliliter,milliliters,mL,cm³"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s μL"
+#~ msgstr "%s μL"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "mm³,μL,uL"
+#~ msgstr "มม³,mm³,μL,uL"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s T"
+#~ msgstr "%s ตัน"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "tonne,tonnes"
+#~ msgstr "ตัน,tonne,tonnes"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s kg"
+#~ msgstr "%s กก."
+
+#~ msgctxt "unit-symbols"
+#~ msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+#~ msgstr "กิโลกรัม,กก.,kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s lb"
+#~ msgstr "%s ปอนด์"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "pound,pounds,lb"
+#~ msgstr "ปอนด์,pound,pounds,lb"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s oz"
+#~ msgstr "%s ออนซ์"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "ounce,ounces,oz"
+#~ msgstr "ออนซ์,ounce,ounces,oz"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s g"
+#~ msgstr "%s ก."
+
+#~ msgctxt "unit-symbols"
+#~ msgid "gram,grams,gramme,grammes,g"
+#~ msgstr "กรัม,ก.,gram,grams,gramme,grammes,g"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s years"
+#~ msgstr "%s ปี"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "year,years"
+#~ msgstr "ปี,year,years"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s days"
+#~ msgstr "%s วัน"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "day,days"
+#~ msgstr "วัน,day,days"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s hours"
+#~ msgstr "%s ชม."
+
+#~ msgctxt "unit-symbols"
+#~ msgid "hour,hours"
+#~ msgstr "ชั่วโมง,ชม.,hour,hours"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s minutes"
+#~ msgstr "%s นาที"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "minute,minutes"
+#~ msgstr "นาที,minute,minutes"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s s"
+#~ msgstr "%s วินาที"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "second,seconds,s"
+#~ msgstr "วินาที,second,seconds,s"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ms"
+#~ msgstr "%s ms"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "millisecond,milliseconds,ms"
+#~ msgstr "มิลลิวินาที,millisecond,milliseconds,ms"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s μs"
+#~ msgstr "%s μs"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "microsecond,microseconds,us,μs"
+#~ msgstr "ไมโครวินาที,microsecond,microseconds,us,μs"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ˚C"
+#~ msgstr "%s ˚ซ"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degC,˚C"
+#~ msgstr "˚ซ,˚C"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ˚F"
+#~ msgstr "%s ˚ฟ"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degF,˚F"
+#~ msgstr "˚ฟ,˚F"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s K"
+#~ msgstr "%s K"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "K"
+#~ msgstr "K"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ˚R"
+#~ msgstr "%s ˚R"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degR,˚R,˚Ra"
+#~ msgstr "˚R,˚Ra"
 
 #~ msgid "_Calculator"
 #~ msgstr "เ_ครื่องคิดเลข"
