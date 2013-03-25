@@ -276,12 +276,9 @@ public class Lexer
     /* Get next token interface. Will be called by parser to get pointer to next token in token stream. */
     public LexerToken get_next_token ()
     {
-        var token = tokens.nth_data (next_token);
-        next_token++;
         if (next_token >= tokens.length ())
-            next_token = tokens.length ();
-       
-        return token;
+            return tokens.nth_data (tokens.length () - 1);
+        return tokens.nth_data (next_token++);
     }
 
     /* Roll back one lexer token. */
