@@ -777,7 +777,7 @@ public class Parser
             if (token.type != LexerTokenType.PL_EOS)
             {
                 /* Full string is not parsed. */
-                if (error == 0)
+                if (error == ErrorCode.NONE)
                     set_error (ErrorCode.INVALID, token.text, token.start_index, token.end_index);
 
                 error_code = error;
@@ -790,7 +790,7 @@ public class Parser
         if (token.type != LexerTokenType.PL_EOS)
         {
             /* Full string is not parsed. */
-            if (error == 0)
+            if (error == ErrorCode.NONE)
                 set_error (ErrorCode.INVALID, token.text, token.start_index, token.end_index);
 
             error_code = error;
@@ -803,6 +803,9 @@ public class Parser
         /* Input can't be parsed with grammar. */
         if (!ret)
         {
+            if (error == ErrorCode.NONE)
+                set_error (ErrorCode.INVALID);
+
             error_code = error;
             error_token = this.error_token;
             error_start = error_token_start;
