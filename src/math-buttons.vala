@@ -309,7 +309,7 @@ public class MathButtons : Gtk.Box
         /* Tooltip for the add button */
         setup_button (builder, "add",                "+", _("Add [+]"));
         /* Tooltip for the subtract button */
-        setup_button (builder, "subtract",           "−", _("Subtract [-]"));
+        setup_button (builder, "subtract",           "−", _("Subtract [-]"), false);
         /* Tooltip for the multiply button */
         setup_button (builder, "multiply",           "×", _("Multiply [*]"));
         /* Tooltip for the divide button */
@@ -616,7 +616,7 @@ public class MathButtons : Gtk.Box
         return panel;
     }
 
-    private void setup_button (Gtk.Builder builder, string name, string? data, string? tooltip)
+    private void setup_button (Gtk.Builder builder, string name, string? data, string? tooltip, bool connect = true)
     {
         var widget_name = "calc_%s_button".printf (name);
         var button = builder.get_object (widget_name) as Gtk.Button;
@@ -626,7 +626,10 @@ public class MathButtons : Gtk.Box
         if (data != null)
         {
             button.set_data<string> ("calc_text", data);
-            button.clicked.connect ((widget) =>  { equation.insert (widget.get_data<string> ("calc_text")); });
+            if (connect)
+            {
+                button.clicked.connect ((widget) =>  { equation.insert (widget.get_data<string> ("calc_text")); });
+            }
         }
 
         if (tooltip != null)
