@@ -16,6 +16,10 @@ public enum ButtonMode
     PROGRAMMING
 }
 
+/* FIXME: Remove when depend on Vala >= 0.20.2
+ * https://bugzilla.gnome.org/show_bug.cgi?id=697960 */
+extern uint gtk_builder_add_objects_from_resource (Gtk.Builder builder, string resource_path, [CCode (array_length = false)] string[] object_ids) throws GLib.Error;
+
 public class MathButtons : Gtk.Box
 {
     private MathEquation equation;
@@ -266,7 +270,9 @@ public class MathButtons : Gtk.Box
 
         try
         {
-            builder.add_objects_from_resource ("/org/gnome/calculator/%s".printf(builder_resource), objects);
+            /* FIXME: Replace with builder.add_objects_from_resource when depend on Vala >= 0.20.2
+             * https://bugzilla.gnome.org/show_bug.cgi?id=697960 */
+            gtk_builder_add_objects_from_resource (builder, "/org/gnome/calculator/%s".printf(builder_resource), objects);
         }
         catch (Error e)
         {
