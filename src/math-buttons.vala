@@ -234,7 +234,7 @@ public class MathButtons : Gtk.Box
                                    "syd_dialog", "term_dialog", "adjustment1", "adjustment2", null };
 
         Gtk.Builder builder;
-        string builder_filename;
+        string builder_resource;
         switch (mode)
         {
         default:
@@ -242,37 +242,37 @@ public class MathButtons : Gtk.Box
             if (bas_panel != null)
                 return bas_panel;
             builder = basic_ui = new Gtk.Builder ();
-            builder_filename = Path.build_filename (UI_DIR, "buttons-basic.ui");
+            builder_resource = "buttons-basic.ui";
             break;
         case ButtonMode.ADVANCED:
             if (adv_panel != null)
                 return adv_panel;
             builder = advanced_ui = new Gtk.Builder ();
-            builder_filename = Path.build_filename (UI_DIR, "buttons-advanced.ui");
+            builder_resource = "buttons-advanced.ui";
             break;
         case ButtonMode.FINANCIAL:
             if (fin_panel != null)
                 return fin_panel;
             builder = financial_ui = new Gtk.Builder ();
-            builder_filename = Path.build_filename (UI_DIR, "buttons-financial.ui");
+            builder_resource = "buttons-financial.ui";
             break;
         case ButtonMode.PROGRAMMING:
             if (prog_panel != null)
                 return prog_panel;
             builder = programming_ui = new Gtk.Builder ();
-            builder_filename = Path.build_filename (UI_DIR, "buttons-programming.ui");            
+            builder_resource = "buttons-programming.ui";
             break;
         }
 
-        // FIXME: Show dialog if failed to load
         try
         {
-            builder.add_objects_from_file (builder_filename, objects);
+            builder.add_objects_from_resource ("/org/gnome/calculator/%s".printf(builder_resource), objects);
         }
         catch (Error e)
         {
-            warning ("Error loading button UI: %s", e.message);
+            error ("Error loading button UI: %s", e.message);
         }
+
         var panel = builder.get_object ("button_panel") as Gtk.Widget;
         pack_end (panel, true, true, 0);
 

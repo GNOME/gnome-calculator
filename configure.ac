@@ -9,6 +9,8 @@ GNOME_MAINTAINER_MODE_DEFINES
 AM_PROG_VALAC([0.18.0])
 AM_PROG_CC_C_O
 
+AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
+
 GLIB_GSETTINGS
 
 dnl ###########################################################################

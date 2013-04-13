@@ -11,6 +11,11 @@ INCLUDES = \
 	$(WARN_CFLAGS) \
 	$(GNOME_CALCULATOR_CFLAGS)
 
+BUILT_SOURCES = resources.c
+
+resources.c: $(top_srcdir)/data/gnome-calculator.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=$(top_srcdir)/data/ $(top_srcdir)/data/gnome-calculator.gresource.xml)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(top_srcdir)/data/ --generate-source $<
+
 gnome_calculator_SOURCES = \
 	config.vapi \
 	fixes.vapi \
@@ -30,7 +35,8 @@ gnome_calculator_SOURCES = \
 	math-window.vala \
 	number.vala \
 	serializer.vala \
-  	unit.vala
+	unit.vala \
+	$(BUILT_SOURCES)
 
 gnome_calculator_VALAFLAGS = \
 	--target-glib 2.32 \
