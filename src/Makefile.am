@@ -8,7 +8,6 @@ INCLUDES = \
 	-DVERSION=\""$(VERSION)"\" \
 	-DLOCALE_DIR=\""$(localedir)"\" \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
-	$(WARN_CFLAGS) \
 	$(GNOME_CALCULATOR_CFLAGS)
 
 BUILT_SOURCES = resources.c
@@ -116,7 +115,7 @@ test_serializer_SOURCES = \
 	number.vala \
 	serializer.vala
 
-test_serializer_VAFLAGS = \
+test_serializer_VALAFLAGS = \
 	--target-glib 2.32 \
 	--pkg posix \
 	--pkg gio-2.0 \
