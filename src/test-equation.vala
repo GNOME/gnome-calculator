@@ -620,7 +620,7 @@ private void test_base_conversion ()
     test ("x in hex", "2₁₆", 0);
 }
 
-public int main (string args[])
+public int main (string[] args)
 {
     Intl.setlocale (LocaleCategory.ALL, "C");
 
