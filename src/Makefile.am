@@ -8,6 +8,7 @@ INCLUDES = \
 	-DVERSION=\""$(VERSION)"\" \
 	-DLOCALE_DIR=\""$(localedir)"\" \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
+	-Wno-unused -Wno-deprecated-declarations \
 	$(GNOME_CALCULATOR_CFLAGS)
 
 BUILT_SOURCES = resources.c
