@@ -707,6 +707,7 @@ public class MathButtons : Gtk.Box
         button.get_allocation (out allocation);
         x = (int) (origin_x + allocation.x + border);
         y = (int) (origin_y + allocation.y + border);
+        push_in = false;
     }
 
     private void memory_cb (Gtk.Widget widget)
