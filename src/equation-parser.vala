@@ -509,6 +509,9 @@ public class XPowYNode : LRNode
     }
 }
 
+/**
+ * This class is a XPowY in which the right token is an nsup number.
+ */
 public class XPowYIntegerNode : ParseNode
 {
     public XPowYIntegerNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
@@ -519,7 +522,20 @@ public class XPowYIntegerNode : ParseNode
     public override Number? solve ()
     {
         var val = left.solve ();
-        var pow = super_atoi (right.token.text);
+
+        // Are we inside a nested pow?
+        if (val == null)
+        {
+            val = new Number.integer (super_atoi (left.token.text));
+        }
+
+        int64 pow;
+
+        if (right.token != null)
+            pow = super_atoi (right.token.text);
+        else
+            pow = right.solve ().to_integer ();
+
         if (val == null)
             return null;
 
