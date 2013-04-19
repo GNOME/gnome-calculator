@@ -1,4 +1,4 @@
-# translation of gcalctool.HEAD.po to Simplified Chinese.
+# translation of gnome-calculator.master.po to Simplified Chinese.
 # Copyright (C) 2009, 2010 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
 # Funda Wang <fundawang@linux.net.cn>, 2003, 2004.
@@ -12,20 +12,20 @@
 # 朱涛 <bill_zt@sina.com>, 2010.
 # Lele Long <schemacs@gmail.com>, 2011.
 # YunQiang Su <wzssyqa@gmail.com>, 2011.
-#
+# tuhaihe <1132321739qq@gmail.com>, 2012.
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool master\n"
+"Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=gcalctool&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2012-05-23 15:36+0000\n"
-"PO-Revision-Date: 2012-05-24 13:41+0800\n"
+"POT-Creation-Date: 2012-11-13 01:10+0000\n"
+"PO-Revision-Date: 2012-11-15 09:21+0800\n"
 "Last-Translator: tuhaihe <1132321739qq@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. Accessible name for the inverse button
@@ -74,8 +74,9 @@ msgstr "记忆"
 
 #. The label on the memory button
 #: ../data/buttons-advanced.ui.h:18 ../data/buttons-financial.ui.h:74
-msgid "<i>x</i>"
-msgstr "<i>x</i>"
+#: ../data/buttons-programming.ui.h:14
+msgid "x"
+msgstr "x"
 
 #. Accessible name for the absolute value button
 #: ../data/buttons-advanced.ui.h:20 ../data/buttons-programming.ui.h:4
@@ -357,11 +358,6 @@ msgstr "Pmt"
 msgid "Gpm"
 msgstr "Gpm"
 
-#. The label on the memory button
-#: ../data/buttons-programming.ui.h:14
-msgid "x"
-msgstr "记忆"
-
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
 #: ../data/buttons-programming.ui.h:16 ../src/math-buttons.c:240
@@ -416,8 +412,8 @@ msgid "64-bit"
 msgstr "64 位"
 
 #. Title of preferences dialog
-#: ../data/preferences.ui.h:9 ../src/math-preferences.c:231
-#: ../src/math-window.c:369
+#: ../data/preferences.ui.h:9 ../src/gcalctool.c:522
+#: ../src/math-preferences.c:231
 msgid "Preferences"
 msgstr "首选项"
 
@@ -447,7 +443,7 @@ msgid "Show _thousands separators"
 msgstr "显示千位分隔符(_T)"
 
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:493
+#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:243
 msgid "Calculator"
 msgstr "计算器"
 
@@ -801,7 +797,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "错误：周期必须为正数"
 
 #. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:77
+#: ../src/gcalctool.c:79
 #, c-format
 msgid ""
 "Usage:\n"
@@ -811,7 +807,7 @@ msgstr ""
 "  %s - 执行数学计算"
 
 #. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:85
+#: ../src/gcalctool.c:87
 #, c-format
 msgid ""
 "Help Options:\n"
@@ -827,7 +823,7 @@ msgstr ""
 "  -help-gtk\t\t显示 GTK+ 选项"
 
 #. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:96
+#: ../src/gcalctool.c:98
 #, c-format
 msgid ""
 "GTK+ Options:\n"
@@ -849,7 +845,7 @@ msgstr ""
 "  --g-fatal-warnings             给出所有重要警告"
 
 #. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:110
+#: ../src/gcalctool.c:112
 #, c-format
 msgid ""
 "Application Options:\n"
@@ -859,16 +855,114 @@ msgstr ""
 "  -s，--solve <方程>              求解给出的方程"
 
 #. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
+#: ../src/gcalctool.c:156
 #, c-format
 msgid "Argument --solve requires an equation to solve"
 msgstr "参数 --solve 需要一个方程以便求解"
 
 #. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:164
+#: ../src/gcalctool.c:166
 #, c-format
 msgid "Unknown argument '%s'"
 msgstr "未知参数“%s”"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gcalctool.c:358
+msgid "Unable to open help file"
+msgstr "无法打开帮助文件"
+
+#. The translator credits. Please translate this with your name(s).
+#: ../src/gcalctool.c:390
+msgid "translator-credits"
+msgstr ""
+"Funda Wang <fundawang@linux.net.cn>, 2003, 2004\n"
+"Shaodong Di <gnuyhlfh@gmail.com>, 2008\n"
+"甘露 <rhythm.gan@gmail.com>, 2009\n"
+"Aron Xu <aronxu@gnome.org>, 2009, 2010\n"
+"arccos <boyermoore@gmail.com>, 2010\n"
+"YunQiang Su <wzssyqa@gmail.com>, 2010\n"
+"Tao Wei <weitao1979@gmail.com>, 2010\n"
+"vicwjb <vicwjb@gmail.com>, 2010\n"
+"Tao Wang <dancefire@gmail.com>, 2010\n"
+"朱涛 <bill_zt@sina.com>, 2010\n"
+"tuhaihe <1132321739qq@gmail.com>, 2012"
+
+#. The license this software is under (GPL2+)
+#: ../src/gcalctool.c:393
+msgid ""
+"Gcalctool is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"Gcalctool is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"Gcalctool 是自由软件；您可以在自由软件基金会发布的 \n"
+"GNU 通用公共许可证的条款下重新分发和(或)修改它；\n"
+"您可以选择使用 GPL 第二版，\n"
+"或(按照您的意愿)任何更新的版本。\n"
+"\n"
+"Gcalctool 分发的目的是希望它物有所用，\n"
+"但是没有任何担保；没有对其适销性和某一特定目的下\n"
+"的适用性的任何哪怕是暗示的担保。\n"
+"请查阅 GNU 通用公共许可证以获得更多信息。\n"
+"你应该已经跟 Gcalctool 一起收到一份 GNU 通用公共许可证的副本；\n"
+"如果没有，请写信至：Free Software Foundation, Inc., 59 Temple Place - Suite "
+"330, Boston, MA 02111-1307, USA"
+
+#. Program name in the about dialog
+#: ../src/gcalctool.c:410
+msgid "Gcalctool"
+msgstr "Gcalctool"
+
+#. Copyright notice in the about dialog
+#: ../src/gcalctool.c:414
+msgid "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986-2010 Gcalctool 作者"
+
+#. Short description in the about dialog
+#: ../src/gcalctool.c:418
+msgid "Calculator with financial and scientific modes."
+msgstr "带有财务和科学模式的计算器。"
+
+#: ../src/gcalctool.c:515
+msgid "Basic"
+msgstr "基本"
+
+#: ../src/gcalctool.c:516
+msgid "Advanced"
+msgstr "高级"
+
+#: ../src/gcalctool.c:517
+msgid "Financial"
+msgstr "财务"
+
+#: ../src/gcalctool.c:518
+msgid "Programming"
+msgstr "编程"
+
+#: ../src/gcalctool.c:519
+msgid "Mode"
+msgstr "模式"
+
+#: ../src/gcalctool.c:526
+msgid "About Calculator"
+msgstr "关于计算器"
+
+#: ../src/gcalctool.c:527
+msgid "Help"
+msgstr "帮助"
+
+#: ../src/gcalctool.c:528
+msgid "Quit"
+msgstr "退出"
 
 #. Tooltip for the Pi button
 #: ../src/math-buttons.c:94
@@ -1184,7 +1278,7 @@ msgstr " 换算为 "
 #. Tooltip for swap conversion button
 #: ../src/math-converter.c:427
 msgid "Switch conversion units"
-msgstr "转换单位"
+msgstr "切换换算单位"
 
 #. Error shown when trying to undo with no undo history
 #: ../src/math-equation.c:459
@@ -1222,179 +1316,89 @@ msgstr "函数“%s”未定义"
 msgid "Unknown conversion"
 msgstr "未知转换"
 
+#. Uncategorized error. Show error token to user
+#: ../src/math-equation.c:1249
+#, c-format
+msgid "Malformed expression at token '%s'"
+msgstr "标记“%s”处的表达式格式错误"
+
+#. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1250
+#: ../src/math-equation.c:1252 ../src/math-equation.c:1257
 msgid "Malformed expression"
 msgstr "表达式格式错误"
 
-#: ../src/math-equation.c:1264
+#: ../src/math-equation.c:1271
 msgid "Calculating"
-msgstr "计算"
+msgstr "计算中"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1380
+#: ../src/math-equation.c:1387
 msgid "Need an integer to factorize"
 msgstr "分解因式运算需要一个整数"
 
 #. This message is displayed in the status bar when a bit
 #. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1452
+#: ../src/math-equation.c:1459
 msgid "No sane value to bitwise shift"
 msgstr "没有正常数值可用于移位"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1483
+#: ../src/math-equation.c:1490
 msgid "Displayed value not an integer"
 msgstr "显示的值不是整数"
 
 #. Digits localized for the given language
-#: ../src/math-equation.c:1908
+#: ../src/math-equation.c:1915
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Label on close button in preferences dialog
-#: ../src/math-preferences.c:236
+#: ../src/math-preferences.c:235
 msgid "_Close"
-msgstr "关闭(_C)："
+msgstr "关闭(_C)"
 
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: ../src/math-preferences.c:246 ../src/unit-manager.c:54
+#: ../src/math-preferences.c:245 ../src/unit-manager.c:54
 msgid "Degrees"
-msgstr "角度(_G)"
+msgstr "角度"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-preferences.c:250 ../src/unit-manager.c:55
+#: ../src/math-preferences.c:249 ../src/unit-manager.c:55
 msgid "Radians"
 msgstr "弧度"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-preferences.c:254 ../src/unit-manager.c:56
+#: ../src/math-preferences.c:253 ../src/unit-manager.c:56
 msgid "Gradians"
 msgstr "百分度"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: ../src/math-preferences.c:264
+#: ../src/math-preferences.c:263
 msgid "Automatic"
 msgstr "自动"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:268
+#: ../src/math-preferences.c:267
 msgid "Fixed"
 msgstr "定点数"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:272
+#: ../src/math-preferences.c:271
 msgid "Scientific"
 msgstr "科学"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:276
+#: ../src/math-preferences.c:275
 msgid "Engineering"
 msgstr "工程"
 
 #. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:287
+#: ../src/math-preferences.c:286
 #, c-format
 msgid "Show %d decimal _places"
 msgstr "显示 %d 个十进制位(_P)"
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:171
-msgid "Unable to open help file"
-msgstr "无法打开帮助文件"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:204
-msgid "translator-credits"
-msgstr ""
-"Funda Wang <fundawang@linux.net.cn>, 2003, 2004\n"
-"Shaodong Di <gnuyhlfh@gmail.com>, 2008\n"
-"甘露 <rhythm.gan@gmail.com>, 2009\n"
-"Aron Xu <aronxu@gnome.org>, 2009, 2010\n"
-"arccos <boyermoore@gmail.com>, 2010\n"
-"YunQiang Su <wzssyqa@gmail.com>, 2010\n"
-"Tao Wei <weitao1979@gmail.com>, 2010\n"
-"vicwjb <vicwjb@gmail.com>, 2010\n"
-"Tao Wang <dancefire@gmail.com>, 2010\n"
-"朱涛 <bill_zt@sina.com>, 2010"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:207
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-"Gcalctool 是自由软件；您可以在自由软件基金会发布的 \n"
-"GNU 通用公共许可证的条款下重新分发和(或)修改它；\n"
-"您可以选择使用 GPL 第二版，\n"
-"或(按照您的意愿)任何更新的版本。\n"
-"\n"
-"Gcalctool 分发的目的是希望它物有所用，\n"
-"但是没有任何担保；没有对其适销性和某一特定目的下\n"
-"的适用性的任何哪怕是暗示的担保。\n"
-"请查阅 GNU 通用公共许可证以获得更多信息。\n"
-"你应该已经跟 Gcalctool 一起收到一份 GNU 通用公共许可证的副本；\n"
-"如果没有，请写信至：Free Software Foundation, Inc., 59 Temple Place - Suite "
-"330, Boston, MA 02111-1307, USA"
-
-#. Program name in the about dialog
-#: ../src/math-window.c:224
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:228
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986-2010 Gcalctool 作者"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:232
-msgid "Calculator with financial and scientific modes."
-msgstr "带有财务和科学模式的计算器。"
-
-#: ../src/math-window.c:362
-msgid "Basic"
-msgstr "基本"
-
-#: ../src/math-window.c:363
-msgid "Advanced"
-msgstr "高级"
-
-#: ../src/math-window.c:364
-msgid "Financial"
-msgstr "财务"
-
-#: ../src/math-window.c:365
-msgid "Programming"
-msgstr "编程"
-
-#: ../src/math-window.c:366
-msgid "Mode"
-msgstr "模式"
-
-#: ../src/math-window.c:373
-msgid "About Calculator"
-msgstr "关于计算器"
-
-#: ../src/math-window.c:374
-msgid "Help"
-msgstr "帮助"
-
-#: ../src/math-window.c:375
-msgid "Quit"
-msgstr "退出"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: ../src/mp-binary.c:115
@@ -2229,6 +2233,9 @@ msgstr "货币"
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
+
+#~ msgid "<i>x</i>"
+#~ msgstr "<i>x</i>"
 
 #~ msgid "_Calculator"
 #~ msgstr "计算器(_C)"
