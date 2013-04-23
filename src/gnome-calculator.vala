@@ -74,29 +74,19 @@ public class Calculator : Gtk.Application
         buttons.notify["mode"].connect ((pspec) => { mode_cb (); });
         mode_cb ();
 
-        var menu = new Menu ();
+        var builder = new Gtk.Builder ();
+        try
+        {
+            builder.add_from_resource ("/org/gnome/calculator/menu.ui");
+        }
+        catch (Error e)
+        {
+            error ("Error loading menu UI: %s", e.message);
+        }
 
-        var section = new Menu ();
-        section.append (_("Basic"), "app.mode::basic");
-        section.append (_("Advanced"), "app.mode::advanced");
-        section.append (_("Financial"), "app.mode::financial");
-        section.append (_("Programming"), "app.mode::programming");
-        menu.append_section (_("Mode"), section);
-
-        section = new Menu ();
-        section.append (_("Preferences"), "app.preferences");
-        menu.append_section (null, section);
-
-        section = new Menu ();
-        section.append (_("About Calculator"), "app.about");
-        section.append (_("Help"), "app.help");
-        section.append (_("Quit"), "app.quit");
-        menu.append_section (null, section);
-
+        var menu = builder.get_object ("appmenu") as MenuModel;
         set_app_menu (menu);
 
-        add_accelerator ("<control>Q", "app.quit", null);
-        add_accelerator ("F1", "app.help", null);
         add_accelerator ("<control>C", "app.copy", null);
         add_accelerator ("<control>V", "app.paste", null);
         add_accelerator ("<control>Z", "app.undo", null);

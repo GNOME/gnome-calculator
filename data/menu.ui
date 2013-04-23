@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <menu id="appmenu">
+    <section>
+      <attribute name="label" translatable="yes">Mode</attribute>
+      <item>
+        <attribute name="label" translatable="yes">Basic</attribute>
+        <attribute name="action">app.mode</attribute>
+        <attribute name="target">basic</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Advanced</attribute>
+        <attribute name="action">app.mode</attribute>
+        <attribute name="target">advanced</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Financial</attribute>
+        <attribute name="action">app.mode</attribute>
+        <attribute name="target">financial</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Programming</attribute>
+        <attribute name="action">app.mode</attribute>
+        <attribute name="target">programming</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">About Calculator</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Help</attribute>
+        <attribute name="action">app.help</attribute>
+        <attribute name="accel">F1</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Quit</attribute>
+        <attribute name="action">app.quit</attribute>
+        <attribute name="accel">&lt;Primary&gt;q</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>
