@@ -14,6 +14,7 @@ EXTRA_DIST = \
 	buttons-advanced.ui \
 	buttons-financial.ui \
 	buttons-programming.ui \
+	menu.ui \
 	gnome-calculator.gresource.xml \
 	org.gnome.calculator.gschema.xml.in \
 	gcalctool.desktop.in \
