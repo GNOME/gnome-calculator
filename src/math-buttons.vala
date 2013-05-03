@@ -315,8 +315,6 @@ public class MathButtons : Gtk.Box
         setup_button (builder, "function",           null, _("Additional Functions"));
         /* Tooltip for the exponent button */
         setup_button (builder, "x_pow_y",            "^", _("Exponent [^ or **]"));
-        /* Tooltip for the square button */
-        setup_button (builder, "x_squared",          "²", _("Square [Ctrl+2]"));
         /* Tooltip for the percentage button */
         setup_button (builder, "percentage",         "%", _("Percentage [%]"));
         /* Tooltip for the factorial button */
@@ -427,6 +425,12 @@ public class MathButtons : Gtk.Box
         var button = builder.get_object ("calc_subtract_button") as Gtk.Button;
         if (button != null)
             button.clicked.connect (() => { equation.insert_subtract (); });
+        button = builder.get_object ("calc_x_squared_button") as Gtk.Button;
+        if (button != null)
+        {
+            button.clicked.connect (() => { equation.insert_square (); });
+            button.set_tooltip_text (_("Square [Ctrl+2]"));
+        }
         button = builder.get_object ("calc_undo_button") as Gtk.Button;
         if (button != null)
             button.clicked.connect (() => { equation.undo (); });

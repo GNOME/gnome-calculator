@@ -792,6 +792,32 @@ public class MathEquation : Gtk.TextBuffer
         insert_at_cursor (text, -1);
     }
 
+    public new void insert_square ()
+    {
+        var space_required = false;
+        Gtk.TextIter iter;
+        get_iter_at_mark (out iter, get_insert ());
+
+        /*if it is not the first character in the buffer*/
+        if (iter.backward_char ())
+        {
+            unichar previous_character = iter.get_char ();
+            if ("⁰¹²³⁴⁵⁶⁷⁸⁹".index_of_char (previous_character) >= 0)
+            {
+                space_required = true;
+            }
+        }
+
+        if (space_required)
+        {
+            insert (" ²");
+        }
+        else
+        {
+            insert ("²");
+        }
+    }
+
     public void insert_digit (uint digit)
     {
         const unichar subscript_digits[] = {'₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'};
