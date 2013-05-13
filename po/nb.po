@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool 3.7.90\n"
+"Project-Id-Version: gcalctool 3.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-27 18:03+0100\n"
-"PO-Revision-Date: 2013-02-27 18:04+0100\n"
+"POT-Creation-Date: 2013-05-13 09:53+0200\n"
+"PO-Revision-Date: 2013-05-13 09:58+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -173,14 +173,14 @@ msgstr "A_ntall perioder:"
 #. Tooltip for the gross profit margin button
 #: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:418
 msgid "Gross Profit Margin"
-msgstr ""
+msgstr "Brutto fortjenestemargin"
 
 #. Gross Profit Margin Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:34
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
-msgstr ""
+msgstr "Beregner salgsprisen for et produkt basert på produktkost og ønsket brutto fortjenestemargin."
 
 #. Gross Profit Margin Dialog: Label before margin input
 #: ../data/buttons-financial.ui.h:36
@@ -216,7 +216,7 @@ msgstr "_Periode:"
 #. Tooltip for the present value button
 #: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:414
 msgid "Present Value"
-msgstr "Nåtidsverdi"
+msgstr "Nåverdi"
 
 #. Present Value Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:48
@@ -224,7 +224,7 @@ msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
 "periods in the term. "
-msgstr ""
+msgstr "Beregner nåverdi av en investering basert på en rekke like betalinger diskontert med en periodisk rente over antall betalingsperioder i terminen."
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
@@ -234,10 +234,11 @@ msgstr "Periodisk renterate"
 
 #. Periodic Interest Rate Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:52
+#, fuzzy
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
-msgstr ""
+msgstr "Beregner periodisk rente som kreves for å øke en investering til en fremtidig verdi over et antall perioder..."
 
 #. Title of Straight-Line Depreciation dialog
 #: ../data/buttons-financial.ui.h:54
@@ -344,7 +345,7 @@ msgstr "Bet"
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
 #: ../data/buttons-financial.ui.h:96
 msgid "Gpm"
-msgstr ""
+msgstr "Bft"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
@@ -381,16 +382,16 @@ msgstr "Sett _inn"
 
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:265
 #: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "Kalkulator"
 
-#: ../data/gnome-calculator.desktop.in.h:2
+#: ../data/gcalctool.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Utfør aritmetiske, vitenskapelige eller finansielle utregninger"
 
-#: ../data/gnome-calculator.desktop.in.h:3
+#: ../data/gcalctool.desktop.in.h:3
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "regning;aritmetikk,vitenskapelig;finans;"
 
@@ -970,12 +971,12 @@ msgid "Boolean NOT"
 msgstr "Boolsk IKKE"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
+#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:812
 msgid "Integer Component"
 msgstr "Heltallskomponent"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
+#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:814
 msgid "Fractional Component"
 msgstr "Brøkkomponent"
 
@@ -1076,7 +1077,7 @@ msgstr "Heksadesimal"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
+#: ../src/math-buttons.vala:743 ../src/math-buttons.vala:780
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1085,7 +1086,7 @@ msgstr[1] "_%d plasser"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
+#: ../src/math-buttons.vala:748 ../src/math-buttons.vala:785
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1093,22 +1094,22 @@ msgstr[0] "%d plass"
 msgstr[1] "%d plasser"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.vala:813
+#: ../src/math-buttons.vala:816
 msgid "Round"
 msgstr "Rund av"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.vala:815
+#: ../src/math-buttons.vala:818
 msgid "Floor"
 msgstr "Gulv"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:817
+#: ../src/math-buttons.vala:820
 msgid "Ceiling"
 msgstr "Tak"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:819
+#: ../src/math-buttons.vala:822
 msgid "Sign"
 msgstr "Tegn"
 
