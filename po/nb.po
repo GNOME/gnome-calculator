@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool 3.7.90\n"
+"Project-Id-Version: gcalctool 3.8.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-27 18:03+0100\n"
-"PO-Revision-Date: 2013-02-27 18:04+0100\n"
+"POT-Creation-Date: 2013-05-16 14:01+0200\n"
+"PO-Revision-Date: 2013-05-13 09:58+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -58,7 +58,7 @@ msgstr "Vitenskapelig eksponent"
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.vala:384
+#: ../src/math-buttons.vala:379
 msgid "Memory"
 msgstr "Minne"
 
@@ -86,7 +86,7 @@ msgstr "Lagre"
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:400
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:395
 msgid "Compounding Term"
 msgstr "Sammensatt uttrykk"
 
@@ -147,7 +147,7 @@ msgstr "_Periode:"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:404
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:399
 msgid "Future Value"
 msgstr "Fremtidig verdi"
 
@@ -171,9 +171,9 @@ msgstr "A_ntall perioder:"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:418
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:413
 msgid "Gross Profit Margin"
-msgstr ""
+msgstr "Brutto fortjenestemargin"
 
 #. Gross Profit Margin Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:34
@@ -181,6 +181,8 @@ msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
 msgstr ""
+"Beregner salgsprisen for et produkt basert på produktkost og ønsket brutto "
+"fortjenestemargin."
 
 #. Gross Profit Margin Dialog: Label before margin input
 #: ../data/buttons-financial.ui.h:36
@@ -189,7 +191,7 @@ msgstr "_Margin:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:416
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:411
 msgid "Periodic Payment"
 msgstr "Periodisk betaling"
 
@@ -214,9 +216,9 @@ msgstr "_Periode:"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:414
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:409
 msgid "Present Value"
-msgstr "Nåtidsverdi"
+msgstr "Nåverdi"
 
 #. Present Value Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:48
@@ -225,19 +227,24 @@ msgid ""
 "payments discounted at a periodic interest rate over the number of payment "
 "periods in the term. "
 msgstr ""
+"Beregner nåverdi av en investering basert på en rekke like betalinger "
+"diskontert med en periodisk rente over antall betalingsperioder i terminen."
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:412
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:407
 msgid "Periodic Interest Rate"
 msgstr "Periodisk renterate"
 
 #. Periodic Interest Rate Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:52
+#, fuzzy
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
 msgstr ""
+"Beregner periodisk rente som kreves for å øke en investering til en "
+"fremtidig verdi over et antall perioder..."
 
 #. Title of Straight-Line Depreciation dialog
 #: ../data/buttons-financial.ui.h:54
@@ -344,17 +351,17 @@ msgstr "Bet"
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
 #: ../data/buttons-financial.ui.h:96
 msgid "Gpm"
-msgstr ""
+msgstr "Bft"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:396
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:391
 msgid "Shift Left"
 msgstr "Skift til venstre"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:398
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:393
 msgid "Shift Right"
 msgstr "Skift til høyre"
 
@@ -365,7 +372,7 @@ msgstr "Sett inn tegn"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:386
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:381
 msgid "Insert Character Code"
 msgstr "Sett inn tegnkode"
 
@@ -379,18 +386,55 @@ msgstr "_Tegn:"
 msgid "_Insert"
 msgstr "Sett _inn"
 
+#: ../data/menu.ui.h:1
+msgid "Mode"
+msgstr "Modus"
+
+#: ../data/menu.ui.h:2
+msgid "Basic"
+msgstr "Grunnleggende"
+
+#: ../data/menu.ui.h:3
+msgid "Advanced"
+msgstr "Avansert"
+
+#: ../data/menu.ui.h:4
+msgid "Financial"
+msgstr "Finansiell"
+
+#: ../data/menu.ui.h:5
+msgid "Programming"
+msgstr "Programmering"
+
+#. Title of preferences dialog
+#: ../data/menu.ui.h:6 ../src/math-preferences.vala:26
+msgid "Preferences"
+msgstr "Brukervalg"
+
+#: ../data/menu.ui.h:7
+msgid "About Calculator"
+msgstr "Om Kalkulator"
+
+#: ../data/menu.ui.h:8
+msgid "Help"
+msgstr "Hjelp"
+
+#: ../data/menu.ui.h:9
+msgid "Quit"
+msgstr "Avslutt"
+
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
 #: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "Kalkulator"
 
-#: ../data/gnome-calculator.desktop.in.h:2
+#: ../data/gcalctool.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Utfør aritmetiske, vitenskapelige eller finansielle utregninger"
 
-#: ../data/gnome-calculator.desktop.in.h:3
+#: ../data/gcalctool.desktop.in.h:3
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "regning;aritmetikk,vitenskapelig;finans;"
 
@@ -736,50 +780,13 @@ msgstr "Sør-afrikanske rand"
 msgid "Error: the number of periods must be positive"
 msgstr "Feil: antall perioder må være et positivt tall"
 
-#: ../src/gnome-calculator.vala:80
-msgid "Basic"
-msgstr "Grunnleggende"
-
-#: ../src/gnome-calculator.vala:81
-msgid "Advanced"
-msgstr "Avansert"
-
-#: ../src/gnome-calculator.vala:82
-msgid "Financial"
-msgstr "Finansiell"
-
-#: ../src/gnome-calculator.vala:83
-msgid "Programming"
-msgstr "Programmering"
-
-#: ../src/gnome-calculator.vala:84
-msgid "Mode"
-msgstr "Modus"
-
-#. Title of preferences dialog
-#: ../src/gnome-calculator.vala:87 ../src/math-preferences.vala:26
-msgid "Preferences"
-msgstr "Brukervalg"
-
-#: ../src/gnome-calculator.vala:91
-msgid "About Calculator"
-msgstr "Om Kalkulator"
-
-#: ../src/gnome-calculator.vala:92
-msgid "Help"
-msgstr "Hjelp"
-
-#: ../src/gnome-calculator.vala:93
-msgid "Quit"
-msgstr "Avslutt"
-
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:228
+#: ../src/gnome-calculator.vala:218
 msgid "Unable to open help file"
 msgstr "Kan ikke åpne hjelpfil"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:258
+#: ../src/gnome-calculator.vala:248
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
@@ -787,296 +794,296 @@ msgstr ""
 "Eskild Hustvedt <i18n@zerodogg.org>"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:272
+#: ../src/gnome-calculator.vala:262
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator med finans- og vitenskapelig modus."
 
-#: ../src/gnome-calculator.vala:305
+#: ../src/gnome-calculator.vala:295
 msgid "Solve given equation"
 msgstr "Løs gitt likning"
 
-#: ../src/gnome-calculator.vala:313
+#: ../src/gnome-calculator.vala:303
 msgid "Start with given equation"
 msgstr "Start med gitt likning"
 
-#: ../src/gnome-calculator.vala:322
+#: ../src/gnome-calculator.vala:312
 msgid "Show release version"
 msgstr "Vis versjon"
 
 #. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.vala:298
+#: ../src/math-buttons.vala:293
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.vala:300
+#: ../src/math-buttons.vala:295
 msgid "Euler’s Number"
 msgstr "Eulers tall"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.vala:304
+#: ../src/math-buttons.vala:299
 msgid "Subscript mode [Alt]"
 msgstr "Senket modus [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.vala:306
+#: ../src/math-buttons.vala:301
 msgid "Superscript mode [Ctrl]"
 msgstr "Hevet modus [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.vala:308
+#: ../src/math-buttons.vala:303
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Vitenskaplig eksponent [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.vala:310
+#: ../src/math-buttons.vala:305
 msgid "Add [+]"
 msgstr "Legg til [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.vala:312
+#: ../src/math-buttons.vala:307
 msgid "Subtract [-]"
 msgstr "Trekk fra [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.vala:314
+#: ../src/math-buttons.vala:309
 msgid "Multiply [*]"
 msgstr "Multipliser [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.vala:316
+#: ../src/math-buttons.vala:311
 msgid "Divide [/]"
 msgstr "Del [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.vala:318
+#: ../src/math-buttons.vala:313
 msgid "Modulus divide"
 msgstr "Modulus-divisjon"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.vala:320
+#: ../src/math-buttons.vala:315
 msgid "Additional Functions"
 msgstr "Flere funksjoner"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.vala:322
+#: ../src/math-buttons.vala:317
 msgid "Exponent [^ or **]"
 msgstr "Eksponent [^ eller **]"
 
 #. Tooltip for the square button
-#: ../src/math-buttons.vala:324
+#: ../src/math-buttons.vala:319
 msgid "Square [Ctrl+2]"
 msgstr "Kvadrat [Ctrl+2]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.vala:326
+#: ../src/math-buttons.vala:321
 msgid "Percentage [%]"
 msgstr "Prosentdel [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.vala:328
+#: ../src/math-buttons.vala:323
 msgid "Factorial [!]"
 msgstr "Fakultet [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.vala:330
+#: ../src/math-buttons.vala:325
 msgid "Absolute value [|]"
 msgstr "Absoluttverdi [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.vala:332
+#: ../src/math-buttons.vala:327
 msgid "Complex argument"
 msgstr "Komplekst argument"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.vala:334
+#: ../src/math-buttons.vala:329
 msgid "Complex conjugate"
 msgstr "Komplekst konjugat"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.vala:336
+#: ../src/math-buttons.vala:331
 msgid "Root [Ctrl+R]"
 msgstr "Rot [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.vala:338
+#: ../src/math-buttons.vala:333
 msgid "Square root [Ctrl+R]"
 msgstr "Kvadratrot [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.vala:340
+#: ../src/math-buttons.vala:335
 msgid "Logarithm"
 msgstr "Logaritme"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.vala:342
+#: ../src/math-buttons.vala:337
 msgid "Natural Logarithm"
 msgstr "Naturlig logaritme"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.vala:344
+#: ../src/math-buttons.vala:339
 msgid "Sine"
 msgstr "Sinus"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.vala:346
+#: ../src/math-buttons.vala:341
 msgid "Cosine"
 msgstr "Cosinus"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.vala:348
+#: ../src/math-buttons.vala:343
 msgid "Tangent"
 msgstr "Tangent"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.vala:350
+#: ../src/math-buttons.vala:345
 msgid "Hyperbolic Sine"
 msgstr "Hyperbolsk sinus"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.vala:352
+#: ../src/math-buttons.vala:347
 msgid "Hyperbolic Cosine"
 msgstr "Hyperbolsk cosinus"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.vala:354
+#: ../src/math-buttons.vala:349
 msgid "Hyperbolic Tangent"
 msgstr "Hyperbolsk tangent"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.vala:356
+#: ../src/math-buttons.vala:351
 msgid "Inverse [Ctrl+I]"
 msgstr "Omvendt [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.vala:358
+#: ../src/math-buttons.vala:353
 msgid "Boolean AND"
 msgstr "Boolsk OG"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.vala:360
+#: ../src/math-buttons.vala:355
 msgid "Boolean OR"
 msgstr "Boolsk ELLER"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.vala:362
+#: ../src/math-buttons.vala:357
 msgid "Boolean Exclusive OR"
 msgstr "Boolsk ekslusiv ELLER"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.vala:364
+#: ../src/math-buttons.vala:359
 msgid "Boolean NOT"
 msgstr "Boolsk IKKE"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
+#: ../src/math-buttons.vala:361 ../src/math-buttons.vala:808
 msgid "Integer Component"
 msgstr "Heltallskomponent"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
+#: ../src/math-buttons.vala:363 ../src/math-buttons.vala:810
 msgid "Fractional Component"
 msgstr "Brøkkomponent"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.vala:370
+#: ../src/math-buttons.vala:365
 msgid "Real Component"
 msgstr "Heltallskomponent"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.vala:372
+#: ../src/math-buttons.vala:367
 msgid "Imaginary Component"
 msgstr "Imaginær komponent"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.vala:374
+#: ../src/math-buttons.vala:369
 msgid "Ones' Complement"
 msgstr "En-komplement"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.vala:376
+#: ../src/math-buttons.vala:371
 msgid "Two's Complement"
 msgstr "To-komplement"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.vala:378
+#: ../src/math-buttons.vala:373
 msgid "Truncate"
 msgstr "Avkort"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.vala:380
+#: ../src/math-buttons.vala:375
 msgid "Start Group [(]"
 msgstr "Start gruppe [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.vala:382
+#: ../src/math-buttons.vala:377
 msgid "End Group [)]"
 msgstr "Avslutt gruppe [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.vala:388
+#: ../src/math-buttons.vala:383
 msgid "Calculate Result"
 msgstr "Beregn resultat"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.vala:390
+#: ../src/math-buttons.vala:385
 msgid "Factorize [Ctrl+F]"
 msgstr "Faktoriser [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.vala:392
+#: ../src/math-buttons.vala:387
 msgid "Clear Display [Escape]"
 msgstr "Tøm skjermen [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.vala:394
+#: ../src/math-buttons.vala:389
 msgid "Undo [Ctrl+Z]"
 msgstr "Angre [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.vala:402
+#: ../src/math-buttons.vala:397
 msgid "Double Declining Depreciation"
 msgstr "Dobbelt degressiv avskrivning"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.vala:406
+#: ../src/math-buttons.vala:401
 msgid "Financial Term"
 msgstr "Finansielt begrep"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.vala:408
+#: ../src/math-buttons.vala:403
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Avskriving av summen av årenes sifre"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.vala:410
+#: ../src/math-buttons.vala:405
 msgid "Straight Line Depreciation"
 msgstr "Lineær avskriving"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.vala:523
+#: ../src/math-buttons.vala:518
 msgid "Binary"
 msgstr "Binær"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.vala:527
+#: ../src/math-buttons.vala:522
 msgid "Octal"
 msgstr "Oktal"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.vala:531
+#: ../src/math-buttons.vala:526
 msgid "Decimal"
 msgstr "Desimal"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.vala:535
+#: ../src/math-buttons.vala:530
 msgid "Hexadecimal"
 msgstr "Heksadesimal"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
+#: ../src/math-buttons.vala:739 ../src/math-buttons.vala:776
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1085,7 +1092,7 @@ msgstr[1] "_%d plasser"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
+#: ../src/math-buttons.vala:744 ../src/math-buttons.vala:781
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1093,22 +1100,22 @@ msgstr[0] "%d plass"
 msgstr[1] "%d plasser"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.vala:813
+#: ../src/math-buttons.vala:812
 msgid "Round"
 msgstr "Rund av"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.vala:815
+#: ../src/math-buttons.vala:814
 msgid "Floor"
 msgstr "Gulv"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:817
+#: ../src/math-buttons.vala:816
 msgid "Ceiling"
 msgstr "Tak"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:819
+#: ../src/math-buttons.vala:818
 msgid "Sign"
 msgstr "Tegn"
 
