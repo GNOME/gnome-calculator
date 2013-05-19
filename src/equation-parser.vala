@@ -474,6 +474,27 @@ public class ModulusDivideNode : LRNode
         base (parser, token, precedence, associativity);
     }
 
+    public override Number? solve ()
+    {
+        if (left is XPowYNode)
+        {
+            var base_value = left.left.solve ();
+            var exponent = left.right.solve ();
+            var mod = right.solve ();
+            if (base_value == null || exponent == null || mod == null)
+                return null;
+            return base_value.modular_exponentiation (exponent, mod);
+        }
+        else
+        {
+            var l = left.solve ();
+            var r = right.solve ();
+            if (l == null || r == null)
+                return null;
+            return solve_lr (l, r);
+        }
+    }
+
     public override Number solve_lr (Number l, Number r)
     {
         return l.modulus_divide (r);

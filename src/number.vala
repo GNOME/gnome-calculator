@@ -1171,6 +1171,28 @@ public class Number
         return z;
     }
 
+    /* Sets z = x ^ y mod p */
+    public Number modular_exponentiation (Number exp, Number mod)
+    {
+        var ans = new Number.integer (1);
+        var base_value = modulus_divide (mod);
+        var exp_value = exp.copy ();
+        var two = new Number.integer (2);
+        while (!exp_value.is_zero ())
+        {
+            bool is_even = exp_value.modulus_divide (two).is_zero ();
+            if (!is_even)
+            {
+                ans = ans.multiply (base_value);
+                ans = ans.modulus_divide (mod);
+            }
+            base_value = base_value.multiply (base_value);
+            base_value = base_value.modulus_divide (mod);
+            exp_value = exp_value.divide_integer (2).floor ();
+        }
+        return ans.modulus_divide (mod);
+    }
+
     /* Sets z = sin x */
     public Number sin (AngleUnit unit = AngleUnit.RADIANS)
     {
