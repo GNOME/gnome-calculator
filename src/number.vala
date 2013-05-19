@@ -1174,9 +1174,11 @@ public class Number
     /* Sets z = x ^ y mod p */
     public Number modular_exponentiation (Number exp, Number mod)
     {
+        var base_value = this.copy ();
+        if (exp.is_negative ())
+            base_value = base_value.reciprocal ();
+        var exp_value = exp.abs ();
         var ans = new Number.integer (1);
-        var base_value = modulus_divide (mod);
-        var exp_value = exp.copy ();
         var two = new Number.integer (2);
         while (!exp_value.is_zero ())
         {
