@@ -931,11 +931,14 @@ public class Number
         else
             t = this;
 
-        /* Multply x n times */
-        // FIXME: Can do z = z.multiply (z) until close to answer (each call doubles number of multiples) */
         var z = new Number.integer (1);
-        for (var i = 0; i < n; i++)
-            z = z.multiply (t);
+        while (n != 0)
+        {
+            if (n % 2 == 1)
+                z = z.multiply (t);
+            t = t.multiply (t);
+            n = n / 2;
+        }
         return z;
     }
 
