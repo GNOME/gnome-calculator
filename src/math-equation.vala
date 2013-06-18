@@ -226,23 +226,17 @@ public class MathEquation : Gtk.TextBuffer
         get_iter_at_mark (out ans_end, ans_end_mark);
 
         var orig_ans_text = get_text (ans_start, ans_end, false);
-        serializer.set_representation_base (state.ans_base);
         var ans_text = serializer.to_string (state.ans);
-        serializer.set_representation_base (serializer.get_base ());
+
         if (orig_ans_text != ans_text)
         {
             in_undo_operation = true;
             in_reformat = true;
 
-            var start = ans_start.get_offset ();
             @delete (ref ans_start, ref ans_end);
+            get_iter_at_mark (out ans_start, ans_start_mark);
+            get_iter_at_mark (out ans_end, ans_end_mark);
             insert_with_tags (ans_end, ans_text, -1, ans_tag);
-
-            /* There seems to be a bug in the marks as they alternate being the correct and incorrect ways.  Reset them */
-            get_iter_at_offset (out ans_start, start);
-            get_iter_at_offset (out ans_end, start + ans_text.length);
-            move_mark (ans_start_mark, ans_start);
-            move_mark (ans_end_mark, ans_end);
 
             in_reformat = false;
             in_undo_operation = false;
@@ -578,10 +572,11 @@ public class MathEquation : Gtk.TextBuffer
         get { return serializer.get_base (); }
         set
         {
-            if (serializer.get_base () == value)
+            if (serializer.get_base () == value && serializer.get_representation_base () == value)
                 return;
 
             serializer.set_base (value);
+            serializer.set_representation_base (value);
             reformat_display ();
             notify_property ("number-base");
         }
