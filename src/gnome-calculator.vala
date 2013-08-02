@@ -284,6 +284,9 @@ public class Calculator : Gtk.Application
 
         program_name = Path.get_basename (args [0]);
 
+        /* GNOME Shell expects WM_CLASS to match the desktop file */
+        Environment.set_prgname ("gcalctool");
+
         var options = new OptionEntry [4];
 
         string? solve_equation = null;
