@@ -22,18 +22,19 @@ private enum Precedence
     UNKNOWN         = 0,
     ADD_SUBTRACT    = 1,
     MULTIPLY        = 2,
+    /* MOD and DIVIDE must have same preedence. */
     MOD             = 3,
-    DIVIDE          = 4,
-    NOT             = 5,
-    ROOT            = 6,
-    FUNCTION        = 7,
-    BOOLEAN         = 8,
-    PERCENTAGE      = 9,
+    DIVIDE          = 3,
+    NOT             = 4,
+    ROOT            = 5,
+    FUNCTION        = 6,
+    BOOLEAN         = 7,
+    PERCENTAGE      = 8,
     /* UNARY_MINUS and POWER must have same precedence. */
-    UNARY_MINUS     = 10,
-    POWER           = 10,
-    FACTORIAL       = 11,
-    NUMBER_VARIABLE = 12,
+    UNARY_MINUS     = 9,
+    POWER           = 9,
+    FACTORIAL       = 10,
+    NUMBER_VARIABLE = 11,
     /* DEPTH should be always at the bottom. It stops node jumping off the current depth level. */
     DEPTH
 }
@@ -1709,6 +1710,7 @@ public class Parser
         var token = lexer.get_next_token ();
         if (token.type == LexerTokenType.FUNCTION)
         {
+            depth_level++;
             var token_old = token;
             token = lexer.get_next_token ();
             if (token.type == LexerTokenType.SUP_NUMBER)
@@ -1716,7 +1718,21 @@ public class Parser
                 /* Pass power as void * value. That will be taken care in pf_apply_func_with_power. */
 
                 insert_into_tree_unary (new FunctionWithPowerNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old), token.text));
-                if (!expression ())
+                if (!expression_1 ())
+                {
+                    depth_level--;
+                    return false;
+                }
+
+                token = lexer.get_next_token ();
+                if (token.type == LexerTokenType.FACTORIAL)
+                    insert_into_tree_unary (new FactorialNode (this, token, make_precedence_t (token.type), get_associativity (token)));
+                else
+                    lexer.roll_back ();
+
+                depth_level--;
+
+                if (!expression_2 ())
                     return false;
 
                 return true;
@@ -1726,7 +1742,21 @@ public class Parser
                 /* Pass power as void * value. That will be taken care in pf_apply_func_with_npower. */
 
                 insert_into_tree_unary (new FunctionWithNegativePowerNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old), token.text));
-                if (!expression ())
+                if (!expression_1 ())
+                {
+                    depth_level--;
+                    return false;
+                }
+
+                token = lexer.get_next_token ();
+                if (token.type == LexerTokenType.FACTORIAL)
+                    insert_into_tree_unary (new FactorialNode (this, token, make_precedence_t (token.type), get_associativity (token)));
+                else
+                    lexer.roll_back ();
+
+                depth_level--;
+
+                if (!expression_2 ())
                     return false;
 
                 return true;
@@ -1735,7 +1765,21 @@ public class Parser
             {
                 lexer.roll_back ();
                 insert_into_tree_unary (new FunctionNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old)));
-                if (!expression ())
+                if (!expression_1 ())
+                {
+                    depth_level--;
+                    return false;
+                }
+
+                token = lexer.get_next_token ();
+                if (token.type == LexerTokenType.FACTORIAL)
+                    insert_into_tree_unary (new FactorialNode (this, token, make_precedence_t (token.type), get_associativity (token)));
+                else
+                    lexer.roll_back ();
+
+                depth_level--;
+
+                if (!expression_2 ())
                     return false;
 
                 return true;

@@ -620,6 +620,46 @@ private void test_base_conversion ()
     test ("x in hex", "2₁₆", 0);
 }
 
+private void test_precedence ()
+{
+    number_base = 10;
+    wordlen = 32;
+    angle_units = AngleUnit.DEGREES;
+    enable_conversions = true;
+    enable_variables = true;
+
+    test ("1 + 2 - 3 * 4 / 5", "0.6", 0);
+    test ("10 mod 4 / 2", "1", 0);
+    test ("20 / 10 mod 3", "2", 0);
+    test ("12 / 3 √4", "8", 0);
+    test ("√5!", "10.95445115", 0);
+    test ("4 ^ sin 30", "2", 0);
+    test ("4 ^ (sin 30)", "2", 0);
+    test ("4 ^ sin (30)", "2", 0);
+    test ("sin (30) ^ 4", "0.0625", 0);
+    test ("sin 30 ^ 4", "0.0625", 0);
+    test ("sin (30 ^ 4)", "0", 0);
+
+    test ("10 / - 2", "−5", 0);
+    test ("10 * - 2", "−20", 0);
+    test ("10 ^ -2", "0.01", 0);
+    test ("-10 ^ 2", "−100", 0);
+    test ("sin (-30)", "−0.5", 0);
+    test ("sin - 30", "−0.5", 0);
+
+    test ("6 + 3!", "12", 0);
+    test ("4 * 3!", "24", 0);
+    test ("100 mod 3!", "4", 0);
+    test ("5! mod 7", "1", 0);
+    test ("24 / 3!", "4", 0);
+    test ("4! / 6", "4", 0);
+    test ("cos 5!", "−0.5", 0);
+    test ("sin 6!", "0", 0);
+    test ("- 4!", "−24", 0);
+    test ("3! ^ 3", "216", 0);
+    test ("3 ^ 3!", "729", 0);
+}
+
 public int main (string[] args)
 {
     Intl.setlocale (LocaleCategory.ALL, "C");
@@ -627,6 +667,7 @@ public int main (string[] args)
     test_conversions ();
     test_equations ();
     test_base_conversion ();
+    test_precedence ();
 
     if (fail_count == 0)
         stdout.printf ("Passed all %i tests\n", pass_count);
