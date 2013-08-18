@@ -1,5 +1,8 @@
 @YELP_HELP_RULES@
 HELP_ID = gnome-calculator
+
+HELP_MEDIA = figures/logo32.png
+
 HELP_FILES = absolute.page \
              base.page \
              boolean.page \
