@@ -253,6 +253,7 @@ public class Calculator : Gtk.Application
                                "program-name",
                                /* Program name in the about dialog */
                                _("Calculator"),
+                               "title", _("About Calculator"),
                                "version", VERSION,
                                "copyright",
                                "\xc2\xa9 1986–2012 The Calculator authors",
