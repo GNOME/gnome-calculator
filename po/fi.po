@@ -11,14 +11,15 @@
 # Tommi Vainikainen <Tommi.Vainikainen@iki.fi>, 2004-2005, 2008-2010.
 # Ilkka Tuohela <hile@iki.fi>, 2005-2008.
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2010, 2012, 2013.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-26 12:35+0000\n"
-"PO-Revision-Date: 2013-03-26 20:12+0200\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
+"POT-Creation-Date: 2013-07-26 11:36+0000\n"
+"PO-Revision-Date: 2013-09-03 19:01+0300\n"
+"Last-Translator: Lasse Liehu <lasse.liehu@gmail.com>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +70,7 @@ msgstr "Tieteellinen eksponentti"
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.vala:384
+#: ../src/math-buttons.vala:377
 msgid "Memory"
 msgstr "Muisti"
 
@@ -97,7 +98,7 @@ msgstr "Tallenna"
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:400
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:393
 msgid "Compounding Term"
 msgstr "Korkojakso"
 
@@ -163,7 +164,7 @@ msgstr "_Maksujakso:"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:404
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:397
 msgid "Future Value"
 msgstr "Tuleva arvo"
 
@@ -189,7 +190,7 @@ msgstr "Jaksojen _lukumäärä:"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:418
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:411
 msgid "Gross Profit Margin"
 msgstr "Bruttokate"
 
@@ -209,7 +210,7 @@ msgstr "_Marginaali:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:416
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:409
 msgid "Periodic Payment"
 msgstr "Säännöllinen maksu"
 
@@ -234,7 +235,7 @@ msgstr "_Kausi:"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:414
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:407
 msgid "Present Value"
 msgstr "Nykyinen arvo"
 
@@ -250,7 +251,7 @@ msgstr ""
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:412
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:405
 msgid "Periodic Interest Rate"
 msgstr "Säännöllinen korkotaso"
 
@@ -383,13 +384,13 @@ msgstr "Kate"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:396
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:389
 msgid "Shift Left"
 msgstr "Siirrä vasemmalle"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:398
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:391
 msgid "Shift Right"
 msgstr "Siirrä oikealle"
 
@@ -400,7 +401,7 @@ msgstr "Syötä merkki"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:386
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:379
 msgid "Insert Character Code"
 msgstr "Syötä merkin koodi"
 
@@ -414,9 +415,46 @@ msgstr "_Kirjain:"
 msgid "_Insert"
 msgstr "_Lisää"
 
+#: ../data/menu.ui.h:1
+msgid "Mode"
+msgstr "Tila"
+
+#: ../data/menu.ui.h:2
+msgid "Basic"
+msgstr "Perustila"
+
+#: ../data/menu.ui.h:3
+msgid "Advanced"
+msgstr "Edistynyt"
+
+#: ../data/menu.ui.h:4
+msgid "Financial"
+msgstr "Taloustila"
+
+#: ../data/menu.ui.h:5
+msgid "Programming"
+msgstr "Ohjelmointi"
+
+#. Title of preferences dialog
+#: ../data/menu.ui.h:6 ../src/math-preferences.vala:26
+msgid "Preferences"
+msgstr "Asetukset"
+
+#: ../data/menu.ui.h:7
+msgid "About Calculator"
+msgstr "Tietoja - Laskin"
+
+#: ../data/menu.ui.h:8
+msgid "Help"
+msgstr "Ohje"
+
+#: ../data/menu.ui.h:9
+msgid "Quit"
+msgstr "Lopeta"
+
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
 #: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "Laskin"
@@ -426,10 +464,12 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Suorita aritmeettisia, tieteellisiä tai talouslaskutoimituksia"
 
 #: ../data/gcalctool.desktop.in.h:3
-#, fuzzy
 #| msgid "Perform arithmetic, scientific or financial calculations"
 msgid "calculation;arithmetic;scientific;financial;"
-msgstr "Suorita aritmeettisia, tieteellisiä tai talouslaskutoimituksia"
+msgstr ""
+"calculation;arithmetic;scientific;financial;laskenta;laskut;laskutoimitus;arit"
+"metiikka;aritmeettinen;tieteellinen;tiede;ta"
+"lous;talouslaskut;"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:1
 msgid "Accuracy value"
@@ -445,7 +485,7 @@ msgstr "Sanakoko"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:4
 msgid "The size of the words used in bitwise operations"
-msgstr ""
+msgstr "Bittioperaatioissa käytettyjen sanojen koko"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:5
 msgid "Numeric Base"
@@ -771,54 +811,18 @@ msgstr "Etelä-Afrikan randi"
 
 #: ../src/financial.vala:114
 msgid "Error: the number of periods must be positive"
-msgstr ""
-
-#: ../src/gnome-calculator.vala:80
-msgid "Basic"
-msgstr "Perustila"
-
-#: ../src/gnome-calculator.vala:81
-msgid "Advanced"
-msgstr "Edistynyt"
-
-#: ../src/gnome-calculator.vala:82
-msgid "Financial"
-msgstr "Taloustila"
-
-#: ../src/gnome-calculator.vala:83
-msgid "Programming"
-msgstr "Ohjelmointi"
-
-#: ../src/gnome-calculator.vala:84
-msgid "Mode"
-msgstr "Tila"
-
-#. Title of preferences dialog
-#: ../src/gnome-calculator.vala:87 ../src/math-preferences.vala:26
-msgid "Preferences"
-msgstr "Asetukset"
-
-#: ../src/gnome-calculator.vala:91
-msgid "About Calculator"
-msgstr "Tietoja - Laskin"
-
-#: ../src/gnome-calculator.vala:92
-msgid "Help"
-msgstr "Ohje"
-
-#: ../src/gnome-calculator.vala:93
-msgid "Quit"
-msgstr "Lopeta"
+msgstr "Virhe: maksujaksojen määrän pitää olla positiivinen"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:228
+#: ../src/gnome-calculator.vala:218
 msgid "Unable to open help file"
 msgstr "Ohjetiedostoa ei voi avata"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:258
+#: ../src/gnome-calculator.vala:248
 msgid "translator-credits"
 msgstr ""
+"Lasse Liehu, 2013\n"
 "Ilkka Tuohela, 2005-2009\n"
 "Tommi Vainikainen, 2004, 2008-2009\n"
 "Sami Pesonen, 2003-2004\n"
@@ -836,296 +840,295 @@ msgstr ""
 "  Tommi Vainikainen https://launchpad.net/~thv"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:272
+#: ../src/gnome-calculator.vala:262
 msgid "Calculator with financial and scientific modes."
 msgstr "Laskin talous- ja tiedetilojen kera"
 
-#: ../src/gnome-calculator.vala:305
+#: ../src/gnome-calculator.vala:295
 msgid "Solve given equation"
-msgstr ""
+msgstr "Ratkaise annettu yhtälö"
 
-#: ../src/gnome-calculator.vala:313
+#: ../src/gnome-calculator.vala:303
 msgid "Start with given equation"
-msgstr ""
+msgstr "Aloita annetulla yhtälöllä"
 
-#: ../src/gnome-calculator.vala:322
+#: ../src/gnome-calculator.vala:312
 msgid "Show release version"
-msgstr ""
+msgstr "Näytä julkaisuversio"
 
 #. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.vala:298
+#: ../src/math-buttons.vala:293
 msgid "Pi [Ctrl+P]"
 msgstr "Pii [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.vala:300
+#: ../src/math-buttons.vala:295
 msgid "Euler’s Number"
 msgstr "Neperin luku"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.vala:304
+#: ../src/math-buttons.vala:299
 msgid "Subscript mode [Alt]"
 msgstr "Alaindeksitila [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.vala:306
+#: ../src/math-buttons.vala:301
 msgid "Superscript mode [Ctrl]"
 msgstr "Yläindeksitila [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.vala:308
+#: ../src/math-buttons.vala:303
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Tieteellinen eksponentti [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.vala:310
+#: ../src/math-buttons.vala:305
 msgid "Add [+]"
 msgstr "Lisää [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.vala:312
+#: ../src/math-buttons.vala:307
 msgid "Subtract [-]"
 msgstr "Vähennä [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.vala:314
+#: ../src/math-buttons.vala:309
 msgid "Multiply [*]"
 msgstr "Kerro [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.vala:316
+#: ../src/math-buttons.vala:311
 msgid "Divide [/]"
 msgstr "Jaa [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.vala:318
+#: ../src/math-buttons.vala:313
 msgid "Modulus divide"
 msgstr "Modulusjakolasku"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.vala:320
+#: ../src/math-buttons.vala:315
 msgid "Additional Functions"
 msgstr "Lisätoiminnot"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.vala:322
+#: ../src/math-buttons.vala:317
 msgid "Exponent [^ or **]"
 msgstr "Eksponentti [^ tai **]"
 
-#. Tooltip for the square button
-#: ../src/math-buttons.vala:324
-msgid "Square [Ctrl+2]"
-msgstr "Neliö [Ctrl+2]"
-
 #. Tooltip for the percentage button
-#: ../src/math-buttons.vala:326
+#: ../src/math-buttons.vala:319
 msgid "Percentage [%]"
 msgstr "Prosentti [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.vala:328
+#: ../src/math-buttons.vala:321
 msgid "Factorial [!]"
 msgstr "Kertoma [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.vala:330
+#: ../src/math-buttons.vala:323
 msgid "Absolute value [|]"
 msgstr "Itseisarvo [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.vala:332
+#: ../src/math-buttons.vala:325
 msgid "Complex argument"
 msgstr "Kompeleksiluvun argumentti"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.vala:334
+#: ../src/math-buttons.vala:327
 msgid "Complex conjugate"
 msgstr "Kompleksiluvun liittoluku"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.vala:336
+#: ../src/math-buttons.vala:329
 msgid "Root [Ctrl+R]"
 msgstr "Juuri [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.vala:338
+#: ../src/math-buttons.vala:331
 msgid "Square root [Ctrl+R]"
 msgstr "Neliöjuuri [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.vala:340
+#: ../src/math-buttons.vala:333
 msgid "Logarithm"
 msgstr "Logaritmi"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.vala:342
+#: ../src/math-buttons.vala:335
 msgid "Natural Logarithm"
 msgstr "Luonnollinen logaritmi"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.vala:344
+#: ../src/math-buttons.vala:337
 msgid "Sine"
 msgstr "Sini"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.vala:346
+#: ../src/math-buttons.vala:339
 msgid "Cosine"
 msgstr "Kosini"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.vala:348
+#: ../src/math-buttons.vala:341
 msgid "Tangent"
 msgstr "Tangentti"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.vala:350
+#: ../src/math-buttons.vala:343
 msgid "Hyperbolic Sine"
 msgstr "Hyperbolinen sini"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.vala:352
+#: ../src/math-buttons.vala:345
 msgid "Hyperbolic Cosine"
 msgstr "Hyperbolinen kosini"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.vala:354
+#: ../src/math-buttons.vala:347
 msgid "Hyperbolic Tangent"
 msgstr "Hyperbolinen tangentti"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.vala:356
+#: ../src/math-buttons.vala:349
 msgid "Inverse [Ctrl+I]"
 msgstr "Käänteisluku [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.vala:358
+#: ../src/math-buttons.vala:351
 msgid "Boolean AND"
 msgstr "Totuusarvo JA"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.vala:360
+#: ../src/math-buttons.vala:353
 msgid "Boolean OR"
 msgstr "Totuusarvo TAI"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.vala:362
+#: ../src/math-buttons.vala:355
 msgid "Boolean Exclusive OR"
 msgstr "Totuusarvo Ehdoton TAI"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.vala:364
+#: ../src/math-buttons.vala:357
 msgid "Boolean NOT"
 msgstr "Totuusarvo EI"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
+#: ../src/math-buttons.vala:359 ../src/math-buttons.vala:812
 msgid "Integer Component"
 msgstr "Kokonaisosa"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
+#: ../src/math-buttons.vala:361 ../src/math-buttons.vala:814
 msgid "Fractional Component"
 msgstr "Desimaaliosa"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.vala:370
+#: ../src/math-buttons.vala:363
 msgid "Real Component"
 msgstr "Reaalikomponentti"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.vala:372
+#: ../src/math-buttons.vala:365
 msgid "Imaginary Component"
 msgstr "Imaginäärikomponentti"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.vala:374
+#: ../src/math-buttons.vala:367
 msgid "Ones' Complement"
 msgstr "Yhden komplementti"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.vala:376
+#: ../src/math-buttons.vala:369
 msgid "Two's Complement"
 msgstr "Kahden komplementti"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.vala:378
+#: ../src/math-buttons.vala:371
 msgid "Truncate"
 msgstr "Katkaise"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.vala:380
+#: ../src/math-buttons.vala:373
 msgid "Start Group [(]"
 msgstr "Ryhmän aloituskohta [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.vala:382
+#: ../src/math-buttons.vala:375
 msgid "End Group [)]"
 msgstr "Ryhmän lopetuskohta [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.vala:388
+#: ../src/math-buttons.vala:381
 msgid "Calculate Result"
 msgstr "Laske tulos"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.vala:390
+#: ../src/math-buttons.vala:383
 msgid "Factorize [Ctrl+F]"
 msgstr "Jaa tekijöihin [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.vala:392
+#: ../src/math-buttons.vala:385
 msgid "Clear Display [Escape]"
 msgstr "Tyhjennä näyttö [Esc]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.vala:394
+#: ../src/math-buttons.vala:387
 msgid "Undo [Ctrl+Z]"
 msgstr "Kumoa [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.vala:402
+#: ../src/math-buttons.vala:395
 msgid "Double Declining Depreciation"
-msgstr ""
+msgstr "Kahdestialeneva arvonalennus"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.vala:406
+#: ../src/math-buttons.vala:399
 msgid "Financial Term"
 msgstr "Tilikausi"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.vala:408
+#: ../src/math-buttons.vala:401
 msgid "Sum of the Years Digits Depreciation"
-msgstr ""
+msgstr "Vuosipoistomenetelmän vähennys"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.vala:410
+#: ../src/math-buttons.vala:403
 msgid "Straight Line Depreciation"
 msgstr "Tasapoisto"
 
+#: ../src/math-buttons.vala:432
+msgid "Square [Ctrl+2]"
+msgstr "Neliö [Ctrl+2]"
+
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.vala:523
+#: ../src/math-buttons.vala:522
 msgid "Binary"
 msgstr "Binääri"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.vala:527
+#: ../src/math-buttons.vala:526
 msgid "Octal"
 msgstr "Oktaali"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.vala:531
+#: ../src/math-buttons.vala:530
 msgid "Decimal"
 msgstr "Desimaali"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.vala:535
+#: ../src/math-buttons.vala:534
 msgid "Hexadecimal"
 msgstr "Heksadesimaali"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
+#: ../src/math-buttons.vala:743 ../src/math-buttons.vala:780
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1134,7 +1137,7 @@ msgstr[1] "_%d kohtaa"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
+#: ../src/math-buttons.vala:748 ../src/math-buttons.vala:785
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1142,24 +1145,24 @@ msgstr[0] "%d kohta"
 msgstr[1] "%d kohtaa"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.vala:813
+#: ../src/math-buttons.vala:816
 msgid "Round"
-msgstr ""
+msgstr "Pyöristys"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.vala:815
+#: ../src/math-buttons.vala:818
 msgid "Floor"
-msgstr ""
+msgstr "Lattiafunktio"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:817
+#: ../src/math-buttons.vala:820
 msgid "Ceiling"
-msgstr ""
+msgstr "Kattofunktio"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:819
+#: ../src/math-buttons.vala:822
 msgid "Sign"
-msgstr ""
+msgstr "Etumerkki"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
 #: ../src/math-converter.vala:46
@@ -1177,69 +1180,69 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.vala:487
+#: ../src/math-equation.vala:481
 msgid "No undo history"
 msgstr "Ei perumishistoriaa"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.vala:503
+#: ../src/math-equation.vala:497
 msgid "No redo history"
 msgstr "Ei palautettavaa historiaa"
 
-#: ../src/math-equation.vala:732
+#: ../src/math-equation.vala:727
 msgid "No sane value to store"
 msgstr "Ei kelpoa arvoa tallennettavaksi"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.vala:888
+#: ../src/math-equation.vala:909
 msgid "Overflow. Try a bigger word size"
 msgstr "Ylivuoto. Kokeile suurempaa sanakokoa"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.vala:893
+#: ../src/math-equation.vala:914
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Tuntematon muuttuja '%s'"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.vala:900
+#: ../src/math-equation.vala:921
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funktiota '%s' ei ole määritelty"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.vala:907
+#: ../src/math-equation.vala:928
 msgid "Unknown conversion"
 msgstr "Tuntematon muunnos"
 
-#: ../src/math-equation.vala:915
-#, fuzzy, c-format
+#: ../src/math-equation.vala:936
+#, c-format
 #| msgid "Malformed expression"
 msgid "Malformed expression at token '%s'"
-msgstr "Virheellinen lauseke"
+msgstr "Virheellinen lauseke kohdassa ”%s”"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.vala:920 ../src/math-equation.vala:925
+#: ../src/math-equation.vala:941 ../src/math-equation.vala:946
 msgid "Malformed expression"
 msgstr "Virheellinen lauseke"
 
-#: ../src/math-equation.vala:936
+#: ../src/math-equation.vala:957
 msgid "Calculating"
 msgstr "Lasketaan"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.vala:1063
+#: ../src/math-equation.vala:1084
 msgid "Need an integer to factorize"
 msgstr "Tekijöihin jakamiseen vaaditaan kokonaisluku"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../src/math-equation.vala:1117
+#: ../src/math-equation.vala:1138
 msgid "No sane value to bitwise shift"
 msgstr "Ei järkevää arvoa bittisiirrolle"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.vala:1131
+#: ../src/math-equation.vala:1152
 msgid "Displayed value not an integer"
 msgstr "Esitettävä arvo ei ole kokonaisluku"
 
@@ -1277,7 +1280,7 @@ msgstr "Insinööri"
 #: ../src/math-preferences.vala:88
 #, c-format
 msgid "Show %d decimal _places"
-msgstr "Näytä %d desimaa_likohtaa"
+msgstr "Näytä %d desimaa_lia"
 
 #. Preferences dialog: label for show trailing zeroes check button
 #: ../src/math-preferences.vala:115
@@ -1318,55 +1321,55 @@ msgstr "Sana_koko:"
 #. Word size combo: 8 bits
 #: ../src/math-preferences.vala:171
 msgid "8 bits"
-msgstr ""
+msgstr "8 bittiä"
 
 #. Word size combo: 16 bits
 #: ../src/math-preferences.vala:173
 msgid "16 bits"
-msgstr ""
+msgstr "16 bittiä"
 
 #. Word size combo: 32 bits
 #: ../src/math-preferences.vala:175
 msgid "32 bits"
-msgstr ""
+msgstr "32 bittiä"
 
 #. Word size combo: 64 bits
 #: ../src/math-preferences.vala:177
 msgid "64 bits"
-msgstr ""
+msgstr "64 bittiä"
 
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/number.vala:652
 msgid "Argument not defined for zero"
-msgstr ""
+msgstr "Argumenttia ei ole määritelty nollalle"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1858
+#: ../src/number.vala:909 ../src/number.vala:1923
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nollan potensseja ei ole määritelty negatiivisilla eksponenteilla"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/number.vala:992 ../src/number.vala:1025
+#: ../src/number.vala:995 ../src/number.vala:1028
 msgid "Logarithm of zero is undefined"
 msgstr "Nollan logaritmia ei ole määritelty"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1043
+#: ../src/number.vala:1046
 msgid "Factorial is only defined for natural numbers"
 msgstr "Tekijöihin jakaminen on määritelty vain luonnollisille luvuille"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1119 ../src/number.vala:2608
+#: ../src/number.vala:1122 ../src/number.vala:2673
 msgid "Division by zero is undefined"
 msgstr "Nollalla jakamista ei ole määritelty"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1159
+#: ../src/number.vala:1162
 msgid "Modulus division is only defined for integers"
 msgstr "Modulusjakolasku on määritelty vain kokonaisluvuille"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1227
+#: ../src/number.vala:1254
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1374,69 +1377,71 @@ msgstr ""
 "π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1265
+#: ../src/number.vala:1292
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Sinin käänteisarvoa ei ole määritelty muualla kuin välillä [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1280
+#: ../src/number.vala:1307
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Kosinin käänteisarvoa ei ole määritelty muualla kuin välillä [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1477
+#: ../src/number.vala:1504
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
+"Hyperbolisen kosinin käänteisarvoa ei ole määritelty ykköstä pienemmille "
+"arvoille"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1496
+#: ../src/number.vala:1523
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Hyperbolisen tangentin käänteisarvoa ei ole määritelty muualla kuin välillä "
 "[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1515
+#: ../src/number.vala:1542
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Totuusarvo JA on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1527
+#: ../src/number.vala:1554
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Totuusarvo TAI on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1539
+#: ../src/number.vala:1566
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Totuusarvo XOR on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1551
+#: ../src/number.vala:1578
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Totuusarvo EI on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1574
+#: ../src/number.vala:1601
 msgid "Shift is only possible on integer values"
 msgstr "Siirto on mahdollista vain kokonaisluvuille"
 
-#: ../src/number.vala:1878
+#: ../src/number.vala:1943
 msgid "Root must be non-zero"
 msgstr "Juuri ei voi olla nolla"
 
-#: ../src/number.vala:1895
+#: ../src/number.vala:1960
 msgid "Negative root of zero is undefined"
 msgstr "Nollan negatiivista juurta ei ole määritelty"
 
-#: ../src/number.vala:1902
+#: ../src/number.vala:1967
 msgid "nth root of negative number is undefined for even n"
 msgstr "Negatiivisen luvun n:ttä juurta ei ole määritelty parilliselle n:lle"
 
-#: ../src/number.vala:2225
+#: ../src/number.vala:2290
 msgid "Overflow: the result couldn't be calculated"
-msgstr ""
+msgstr "Ylivuoto: tulosta ei voitu laskea"
 
-#: ../src/number.vala:2553
+#: ../src/number.vala:2618
 msgid "Reciprocal of zero is undefined"
 msgstr "Nollan käänteislukua ei ole määritelty"
 
@@ -1470,11 +1475,11 @@ msgstr "Lämpötila"
 
 #: ../src/unit.vala:41
 msgid "Parsecs"
-msgstr "Parsekit"
+msgstr "Parsek"
 
 #: ../src/unit.vala:42
 msgid "Light Years"
-msgstr "Valovuotta"
+msgstr "Valovuosi"
 
 #: ../src/unit.vala:43
 msgid "Astronomical Units"
@@ -1482,151 +1487,151 @@ msgstr "Astronomiset yksiköt"
 
 #: ../src/unit.vala:44
 msgid "Nautical Miles"
-msgstr "Meripeninkulmat"
+msgstr "Meripeninkulma"
 
 #: ../src/unit.vala:45
 msgid "Miles"
-msgstr "mailia"
+msgstr "Maili"
 
 #: ../src/unit.vala:46
 msgid "Kilometers"
-msgstr "kilometriä"
+msgstr "Kilometri"
 
 #: ../src/unit.vala:47
 msgid "Cables"
-msgstr ""
+msgstr "Kaapelinmitta"
 
 #: ../src/unit.vala:48
 msgid "Fathoms"
-msgstr ""
+msgstr "Syli"
 
 #: ../src/unit.vala:49
 msgid "Meters"
-msgstr "Metrit"
+msgstr "Metri"
 
 #: ../src/unit.vala:50
 msgid "Yards"
-msgstr "Jaardit"
+msgstr "Jaardi"
 
 #: ../src/unit.vala:51
 msgid "Feet"
-msgstr "Jalkaa"
+msgstr "Jalka"
 
 #: ../src/unit.vala:52
 msgid "Inches"
-msgstr "tuumaa"
+msgstr "Tuuma"
 
 #: ../src/unit.vala:53
 msgid "Centimeters"
-msgstr "senttimetriä"
+msgstr "Senttimetri"
 
 #: ../src/unit.vala:54
 msgid "Millimeters"
-msgstr "millimetriä"
+msgstr "Millimetri"
 
 #: ../src/unit.vala:55
 msgid "Micrometers"
-msgstr "Mikrometrit"
+msgstr "Mikrometri"
 
 #: ../src/unit.vala:56
 msgid "Nanometers"
-msgstr "Nanometrit"
+msgstr "Nanometri"
 
 #: ../src/unit.vala:57
 msgid "Hectares"
-msgstr "Hehtaarit"
+msgstr "Hehtaari"
 
 #: ../src/unit.vala:58
 msgid "Acres"
-msgstr "Aarit"
+msgstr "Aari"
 
 #: ../src/unit.vala:59
 msgid "Square Meters"
-msgstr "Neliömetrit"
+msgstr "Neliömetri"
 
 #: ../src/unit.vala:60
 msgid "Square Centimeters"
-msgstr "Neliösenttimetrit"
+msgstr "Neliösenttimetri"
 
 #: ../src/unit.vala:61
 msgid "Square Millimeters"
-msgstr "Neliömillimetrit"
+msgstr "Neliömillimetri"
 
 #: ../src/unit.vala:62
 msgid "Cubic Meters"
-msgstr "Kuutiometrit"
+msgstr "Kuutiometri"
 
 #: ../src/unit.vala:63
 msgid "Gallons"
-msgstr "Gallonat"
+msgstr "Gallona"
 
 #: ../src/unit.vala:64
 msgid "Litres"
-msgstr "Litrat"
+msgstr "Litra"
 
 #: ../src/unit.vala:65
 msgid "Quarts"
-msgstr "Gallonat"
+msgstr "Gallona"
 
 #: ../src/unit.vala:66
 msgid "Pints"
-msgstr ""
+msgstr "Pint"
 
 #: ../src/unit.vala:67
 msgid "Millilitres"
-msgstr "Millilitrat"
+msgstr "Millilitra"
 
 #: ../src/unit.vala:68
 msgid "Microlitres"
-msgstr "Mikrolitrat"
+msgstr "Mikrolitra"
 
 #: ../src/unit.vala:69
 msgid "Tonnes"
-msgstr "Tonnit"
+msgstr "Tonni"
 
 #: ../src/unit.vala:70
 msgid "Kilograms"
-msgstr "Kilogrammaa"
+msgstr "Kilogramma"
 
 #: ../src/unit.vala:71
 msgid "Pounds"
-msgstr "Paunat"
+msgstr "Pauna"
 
 #: ../src/unit.vala:72
 msgid "Ounces"
-msgstr "Unssit"
+msgstr "Unssi"
 
 #: ../src/unit.vala:73
 msgid "Grams"
-msgstr "Grammat"
+msgstr "Gramma"
 
 #: ../src/unit.vala:74
 msgid "Years"
-msgstr "Vuodet"
+msgstr "Vuosi"
 
 #: ../src/unit.vala:75
 msgid "Days"
-msgstr "Päivät"
+msgstr "Päivä"
 
 #: ../src/unit.vala:76
 msgid "Hours"
-msgstr "Tunnit"
+msgstr "Tunti"
 
 #: ../src/unit.vala:77
 msgid "Minutes"
-msgstr "Minuutit"
+msgstr "Minuutti"
 
 #: ../src/unit.vala:78
 msgid "Seconds"
-msgstr "Sekunnit"
+msgstr "Sekunti"
 
 #: ../src/unit.vala:79
 msgid "Milliseconds"
-msgstr "Millisekunnit"
+msgstr "Millisekunti"
 
 #: ../src/unit.vala:80
 msgid "Microseconds"
-msgstr "Mikrosekunnit"
+msgstr "Mikrosekunti"
 
 #: ../src/unit.vala:81
 msgid "Celsius"
@@ -1642,7 +1647,7 @@ msgstr "Kelvin"
 
 #: ../src/unit.vala:84
 msgid "Rankine"
-msgstr ""
+msgstr "Rankine"
 
 #: ../src/unit.vala:86
 msgid "Currency"
