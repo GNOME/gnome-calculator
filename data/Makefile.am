@@ -7,6 +7,9 @@ Utilities_in_files = gcalctool.desktop.in
 Utilities_DATA = $(Utilities_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
+appdatadir = $(datadir)/appdata
+dist_appdata_DATA = gnome-calculator.appdata.xml
+
 man1_MANS = gnome-calculator.1 gcalccmd.1
 
 EXTRA_DIST = \
