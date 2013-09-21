@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-04-14 18:08+0000\n"
-"PO-Revision-Date: 2013-04-16 20:13+0900\n"
-"Last-Translator: OKANO Takayoshi <kano@na.rim.or.jp>\n"
+"POT-Creation-Date: 2013-09-20 18:20+0000\n"
+"PO-Revision-Date: 2013-09-21 09:38+0900\n"
+"Last-Translator: Jiro Matsuzawa <jmatsuzawa@gnome.org>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +61,7 @@ msgstr "科学的指数"
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.vala:384
+#: ../src/math-buttons.vala:377
 msgid "Memory"
 msgstr "メモリー"
 
@@ -89,7 +89,7 @@ msgstr "保存"
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:400
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:393
 msgid "Compounding Term"
 msgstr "複利計算期"
 
@@ -145,7 +145,7 @@ msgstr "期間(_P):"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:404
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:397
 msgid "Future Value"
 msgstr "将来価値"
 
@@ -166,7 +166,7 @@ msgstr "期間(_N):"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:418
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:411
 msgid "Gross Profit Margin"
 msgstr "売上総利益"
 
@@ -182,7 +182,7 @@ msgstr "利幅(_M):"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:416
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:409
 msgid "Periodic Payment"
 msgstr "定期支払額"
 
@@ -203,7 +203,7 @@ msgstr "期間(_T):"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:414
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:407
 msgid "Present Value"
 msgstr "現在価値"
 
@@ -214,7 +214,7 @@ msgstr "将来価値を一定の割引率を使って現在時点まで割り戻
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:412
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:405
 msgid "Periodic Interest Rate"
 msgstr "定期利率"
 
@@ -320,13 +320,13 @@ msgstr "売上"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:396
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:389
 msgid "Shift Left"
 msgstr "左シフト"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:398
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:391
 msgid "Shift Right"
 msgstr "右シフト"
 
@@ -337,7 +337,7 @@ msgstr "文字の挿入"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:386
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:379
 msgid "Insert Character Code"
 msgstr "文字コードの挿入"
 
@@ -351,9 +351,46 @@ msgstr "文字(_A):"
 msgid "_Insert"
 msgstr "挿入する(_I)"
 
+#: ../data/menu.ui.h:1
+msgid "Mode"
+msgstr "モード"
+
+#: ../data/menu.ui.h:2
+msgid "Basic"
+msgstr "基本"
+
+#: ../data/menu.ui.h:3
+msgid "Advanced"
+msgstr "拡張"
+
+#: ../data/menu.ui.h:4
+msgid "Financial"
+msgstr "財務"
+
+#: ../data/menu.ui.h:5
+msgid "Programming"
+msgstr "プログラミング"
+
+#. Title of preferences dialog
+#: ../data/menu.ui.h:6 ../src/math-preferences.vala:26
+msgid "Preferences"
+msgstr "設定"
+
+#: ../data/menu.ui.h:7
+msgid "About Calculator"
+msgstr "このアプリケーションについて"
+
+#: ../data/menu.ui.h:8
+msgid "Help"
+msgstr "ヘルプ"
+
+#: ../data/menu.ui.h:9
+msgid "Quit"
+msgstr "終了"
+
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
 #: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "電卓"
@@ -363,9 +400,8 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "算術/科学/財務の計算を行います"
 
 #: ../data/gcalctool.desktop.in.h:3
-#, fuzzy
 msgid "calculation;arithmetic;scientific;financial;"
-msgstr "算術/科学/財務の計算を行います"
+msgstr "calculation;arithmetic;scientific;financial;算術;科学;財務;calculator;計算機;"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:1
 msgid "Accuracy value"
@@ -453,7 +489,7 @@ msgstr "元の単位"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:22
 msgid "Units of the current calculation"
-msgstr ""
+msgstr "現在の計算単位"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:23
 msgid "Target units"
@@ -461,7 +497,7 @@ msgstr "変換後の単位"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:24
 msgid "Units to convert the current calculation into"
-msgstr ""
+msgstr "現在の計算の変換後の単位"
 
 # 以下の通貨表記は日本銀行での表記に準じ、カタカナ語連続の場合は・でつなぎ、それ以外は省きます
 # http://www.boj.or.jp/about/services/tame/tame_rate/kijun/kiju1204.htm/
@@ -709,50 +745,13 @@ msgstr "南アフリカ・ランド"
 msgid "Error: the number of periods must be positive"
 msgstr "エラー: 期間は正でなくてはなりません"
 
-#: ../src/gnome-calculator.vala:80
-msgid "Basic"
-msgstr "基本"
-
-#: ../src/gnome-calculator.vala:81
-msgid "Advanced"
-msgstr "拡張"
-
-#: ../src/gnome-calculator.vala:82
-msgid "Financial"
-msgstr "財務"
-
-#: ../src/gnome-calculator.vala:83
-msgid "Programming"
-msgstr "プログラミング"
-
-#: ../src/gnome-calculator.vala:84
-msgid "Mode"
-msgstr "モード"
-
-#. Title of preferences dialog
-#: ../src/gnome-calculator.vala:87 ../src/math-preferences.vala:26
-msgid "Preferences"
-msgstr "設定"
-
-#: ../src/gnome-calculator.vala:91
-msgid "About Calculator"
-msgstr "このアプリケーションについて"
-
-#: ../src/gnome-calculator.vala:92
-msgid "Help"
-msgstr "ヘルプ"
-
-#: ../src/gnome-calculator.vala:93
-msgid "Quit"
-msgstr "終了"
-
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:228
+#: ../src/gnome-calculator.vala:218
 msgid "Unable to open help file"
 msgstr "ヘルプを開けません"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:258
+#: ../src/gnome-calculator.vala:248
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
@@ -767,290 +766,289 @@ msgstr ""
 "  vbk https://launchpad.net/~vbkaisetsu"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:272
+#: ../src/gnome-calculator.vala:262
 msgid "Calculator with financial and scientific modes."
 msgstr "財務と科学計算のモードを持つ電卓です。"
 
-#: ../src/gnome-calculator.vala:305
+#: ../src/gnome-calculator.vala:298
 msgid "Solve given equation"
 msgstr "与えられた式を解く"
 
-#: ../src/gnome-calculator.vala:313
+#: ../src/gnome-calculator.vala:306
 msgid "Start with given equation"
 msgstr "与えられた式が入力された状態で起動する"
 
-#: ../src/gnome-calculator.vala:322
+#: ../src/gnome-calculator.vala:315
 msgid "Show release version"
 msgstr "リリースバージョンを表示する"
 
 #. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.vala:298
+#: ../src/math-buttons.vala:293
 msgid "Pi [Ctrl+P]"
 msgstr "π [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.vala:300
+#: ../src/math-buttons.vala:295
 msgid "Euler’s Number"
 msgstr "ネイピア数"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.vala:304
+#: ../src/math-buttons.vala:299
 msgid "Subscript mode [Alt]"
 msgstr "下付き数字モード [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.vala:306
+#: ../src/math-buttons.vala:301
 msgid "Superscript mode [Ctrl]"
 msgstr "上付き数字モード [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.vala:308
+#: ../src/math-buttons.vala:303
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "科学的指数 [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.vala:310
+#: ../src/math-buttons.vala:305
 msgid "Add [+]"
 msgstr "加算 [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.vala:312
+#: ../src/math-buttons.vala:307
 msgid "Subtract [-]"
 msgstr "減算 [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.vala:314
+#: ../src/math-buttons.vala:309
 msgid "Multiply [*]"
 msgstr "乗算 [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.vala:316
+#: ../src/math-buttons.vala:311
 msgid "Divide [/]"
 msgstr "除算 [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.vala:318
+#: ../src/math-buttons.vala:313
 msgid "Modulus divide"
 msgstr "剰余"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.vala:320
+#: ../src/math-buttons.vala:315
 msgid "Additional Functions"
 msgstr "追加の関数"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.vala:322
+#: ../src/math-buttons.vala:317
 msgid "Exponent [^ or **]"
 msgstr "指数 [^ または **]"
 
-#. Tooltip for the square button
-#: ../src/math-buttons.vala:324
-msgid "Square [Ctrl+2]"
-msgstr "二乗 [Ctrl+2]"
-
 #. Tooltip for the percentage button
-#: ../src/math-buttons.vala:326
+#: ../src/math-buttons.vala:319
 msgid "Percentage [%]"
 msgstr "百分率 [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.vala:328
+#: ../src/math-buttons.vala:321
 msgid "Factorial [!]"
 msgstr "階乗 [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.vala:330
+#: ../src/math-buttons.vala:323
 msgid "Absolute value [|]"
 msgstr "絶対値 [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.vala:332
+#: ../src/math-buttons.vala:325
 msgid "Complex argument"
 msgstr "複素数の偏角"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.vala:334
+#: ../src/math-buttons.vala:327
 msgid "Complex conjugate"
 msgstr "共役複素数"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.vala:336
+#: ../src/math-buttons.vala:329
 msgid "Root [Ctrl+R]"
 msgstr "累乗根 [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.vala:338
+#: ../src/math-buttons.vala:331
 msgid "Square root [Ctrl+R]"
 msgstr "平方根 [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.vala:340
+#: ../src/math-buttons.vala:333
 msgid "Logarithm"
 msgstr "対数"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.vala:342
+#: ../src/math-buttons.vala:335
 msgid "Natural Logarithm"
 msgstr "自然対数"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.vala:344
+#: ../src/math-buttons.vala:337
 msgid "Sine"
 msgstr "正弦の算出"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.vala:346
+#: ../src/math-buttons.vala:339
 msgid "Cosine"
 msgstr "余弦の算出"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.vala:348
+#: ../src/math-buttons.vala:341
 msgid "Tangent"
 msgstr "正接の算出"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.vala:350
+#: ../src/math-buttons.vala:343
 msgid "Hyperbolic Sine"
 msgstr "双曲線正弦の算出"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.vala:352
+#: ../src/math-buttons.vala:345
 msgid "Hyperbolic Cosine"
 msgstr "双曲線余弦の算出"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.vala:354
+#: ../src/math-buttons.vala:347
 msgid "Hyperbolic Tangent"
 msgstr "双曲線正接の算出"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.vala:356
+#: ../src/math-buttons.vala:349
 msgid "Inverse [Ctrl+I]"
 msgstr "逆関数の算出 [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.vala:358
+#: ../src/math-buttons.vala:351
 msgid "Boolean AND"
 msgstr "真偽値の積"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.vala:360
+#: ../src/math-buttons.vala:353
 msgid "Boolean OR"
 msgstr "真偽値の和"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.vala:362
+#: ../src/math-buttons.vala:355
 msgid "Boolean Exclusive OR"
 msgstr "真偽値の排他的論理和"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.vala:364
+#: ../src/math-buttons.vala:357
 msgid "Boolean NOT"
 msgstr "真偽値の否定"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:812
+#: ../src/math-buttons.vala:359 ../src/math-buttons.vala:812
 msgid "Integer Component"
 msgstr "整数部"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:814
+#: ../src/math-buttons.vala:361 ../src/math-buttons.vala:814
 msgid "Fractional Component"
 msgstr "端数"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.vala:370
+#: ../src/math-buttons.vala:363
 msgid "Real Component"
 msgstr "実数部"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.vala:372
+#: ../src/math-buttons.vala:365
 msgid "Imaginary Component"
 msgstr "虚数部"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.vala:374
+#: ../src/math-buttons.vala:367
 msgid "Ones' Complement"
 msgstr "1の補数"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.vala:376
+#: ../src/math-buttons.vala:369
 msgid "Two's Complement"
 msgstr "2の補数"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.vala:378
+#: ../src/math-buttons.vala:371
 msgid "Truncate"
 msgstr "切り捨て"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.vala:380
+#: ../src/math-buttons.vala:373
 msgid "Start Group [(]"
 msgstr "計算するグループの開始 [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.vala:382
+#: ../src/math-buttons.vala:375
 msgid "End Group [)]"
 msgstr "計算するグループの終了 [(]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.vala:388
+#: ../src/math-buttons.vala:381
 msgid "Calculate Result"
 msgstr "計算結果"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.vala:390
+#: ../src/math-buttons.vala:383
 msgid "Factorize [Ctrl+F]"
 msgstr "因数分解 [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.vala:392
+#: ../src/math-buttons.vala:385
 msgid "Clear Display [Escape]"
 msgstr "表示のクリア [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.vala:394
+#: ../src/math-buttons.vala:387
 msgid "Undo [Ctrl+Z]"
 msgstr "元に戻す [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.vala:402
+#: ../src/math-buttons.vala:395
 msgid "Double Declining Depreciation"
 msgstr "定率法による減価償却費"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.vala:406
+#: ../src/math-buttons.vala:399
 msgid "Financial Term"
 msgstr "財務期間"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.vala:408
+#: ../src/math-buttons.vala:401
 msgid "Sum of the Years Digits Depreciation"
 msgstr "級数法による減価償却費"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.vala:410
+#: ../src/math-buttons.vala:403
 msgid "Straight Line Depreciation"
 msgstr "定額法による減価償却費"
 
+#: ../src/math-buttons.vala:432
+msgid "Square [Ctrl+2]"
+msgstr "二乗 [Ctrl+2]"
+
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.vala:523
+#: ../src/math-buttons.vala:522
 msgid "Binary"
 msgstr "2進数"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.vala:527
+#: ../src/math-buttons.vala:526
 msgid "Octal"
 msgstr "8進数"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.vala:531
+#: ../src/math-buttons.vala:530
 msgid "Decimal"
 msgstr "10進数"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.vala:535
+#: ../src/math-buttons.vala:534
 msgid "Hexadecimal"
 msgstr "16進数"
 
@@ -1106,68 +1104,68 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.vala:487
+#: ../src/math-equation.vala:481
 msgid "No undo history"
 msgstr "アンドゥの履歴はありません"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.vala:503
+#: ../src/math-equation.vala:497
 msgid "No redo history"
 msgstr "リドゥの履歴はありません"
 
-#: ../src/math-equation.vala:732
+#: ../src/math-equation.vala:727
 msgid "No sane value to store"
 msgstr "格納する値が正しくありません"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.vala:888
+#: ../src/math-equation.vala:909
 msgid "Overflow. Try a bigger word size"
 msgstr "オーバーフローしました。Wordサイズを大きくして試してください。"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.vala:893
+#: ../src/math-equation.vala:914
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "変数 '%s' が不明です"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.vala:900
+#: ../src/math-equation.vala:921
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "関数 '%s' は未定義です"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.vala:907
+#: ../src/math-equation.vala:928
 msgid "Unknown conversion"
 msgstr "変換方法が分かりません"
 
-#: ../src/math-equation.vala:915
-#, fuzzy, c-format
+#: ../src/math-equation.vala:936
+#, c-format
 msgid "Malformed expression at token '%s'"
-msgstr "計算式が間違っています"
+msgstr "トークン '%s' で計算式が間違っています"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.vala:920 ../src/math-equation.vala:925
+#: ../src/math-equation.vala:941 ../src/math-equation.vala:946
 msgid "Malformed expression"
 msgstr "計算式が間違っています"
 
-#: ../src/math-equation.vala:936
+#: ../src/math-equation.vala:957
 msgid "Calculating"
 msgstr "計算中"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.vala:1063
+#: ../src/math-equation.vala:1084
 msgid "Need an integer to factorize"
 msgstr "因数分解は整数のみです"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../src/math-equation.vala:1117
+#: ../src/math-equation.vala:1138
 msgid "No sane value to bitwise shift"
 msgstr "ビット単位でシフトする値が正しくありません"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.vala:1131
+#: ../src/math-equation.vala:1152
 msgid "Displayed value not an integer"
 msgstr "整数以外の値を表示します"
 
@@ -1246,22 +1244,22 @@ msgstr "Wordサイズ(_S)"
 #. Word size combo: 8 bits
 #: ../src/math-preferences.vala:171
 msgid "8 bits"
-msgstr ""
+msgstr "8 ビット"
 
 #. Word size combo: 16 bits
 #: ../src/math-preferences.vala:173
 msgid "16 bits"
-msgstr ""
+msgstr "16 ビット"
 
 #. Word size combo: 32 bits
 #: ../src/math-preferences.vala:175
 msgid "32 bits"
-msgstr ""
+msgstr "32 ビット"
 
 #. Word size combo: 64 bits
 #: ../src/math-preferences.vala:177
 msgid "64 bits"
-msgstr ""
+msgstr "64 ビット"
 
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/number.vala:652
@@ -1269,97 +1267,97 @@ msgid "Argument not defined for zero"
 msgstr "ゼロの偏角は定義されていません"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1858
+#: ../src/number.vala:909 ../src/number.vala:1923
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "負の指数関数に対するゼロの乗数は未定義です"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/number.vala:992 ../src/number.vala:1025
+#: ../src/number.vala:995 ../src/number.vala:1028
 msgid "Logarithm of zero is undefined"
 msgstr "ゼロの対数は未定義です"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1043
+#: ../src/number.vala:1046
 msgid "Factorial is only defined for natural numbers"
 msgstr "階乗は自然数のみ定義されています"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1119 ../src/number.vala:2608
+#: ../src/number.vala:1122 ../src/number.vala:2673
 msgid "Division by zero is undefined"
 msgstr "ゼロ除算は未定義です"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1159
+#: ../src/number.vala:1162
 msgid "Modulus division is only defined for integers"
 msgstr "剰余は整数のみ定義しています"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1227
+#: ../src/number.vala:1254
 msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "π∕2 (90°)にπ (180°)の倍数を加えた角度の正接は未定義です"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1265
+#: ../src/number.vala:1292
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "[-1, 1]の範囲外の値の逆正弦は定義されていません"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1280
+#: ../src/number.vala:1307
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "[-1, 1]の範囲外の値の逆余弦は未定義です"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1477
+#: ../src/number.vala:1504
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "1未満の値の逆双曲線余弦は未定義です。"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1496
+#: ../src/number.vala:1523
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "[-1, 1]の範囲外の値の逆双曲線正接は未定義です。"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1515
+#: ../src/number.vala:1542
 msgid "Boolean AND is only defined for positive integers"
 msgstr "真偽値の積は、正の整数のみ定義しています"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1527
+#: ../src/number.vala:1554
 msgid "Boolean OR is only defined for positive integers"
 msgstr "真偽値の和は、正の整数のみ定義しています。"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1539
+#: ../src/number.vala:1566
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "真偽値の排他的論理和は、正の整数のみ定義しています"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1551
+#: ../src/number.vala:1578
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "真偽値の否定は、正の整数のみ定義しています。"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1574
+#: ../src/number.vala:1601
 msgid "Shift is only possible on integer values"
 msgstr "シフトは整数値のみ可能です"
 
-#: ../src/number.vala:1878
+#: ../src/number.vala:1943
 msgid "Root must be non-zero"
 msgstr "累乗根はゼロ以外にする必要があります"
 
-#: ../src/number.vala:1895
+#: ../src/number.vala:1960
 msgid "Negative root of zero is undefined"
 msgstr "ゼロの負の累乗根は未定義です"
 
-#: ../src/number.vala:1902
+#: ../src/number.vala:1967
 msgid "nth root of negative number is undefined for even n"
 msgstr "負の数のn乗根は偶数のnでは未定義です"
 
-#: ../src/number.vala:2225
+#: ../src/number.vala:2290
 msgid "Overflow: the result couldn't be calculated"
 msgstr "オーバーフロー: 結果を算出できませんでした"
 
-#: ../src/number.vala:2553
+#: ../src/number.vala:2618
 msgid "Reciprocal of zero is undefined"
 msgstr "ゼロの逆数は未定義です"
 
