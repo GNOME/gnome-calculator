@@ -7,7 +7,7 @@ Utilities_in_files = gcalctool.desktop.in
 Utilities_DATA = $(Utilities_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
-@INTLTOOL_XML_NOMERGE_RULE@
+@INTLTOOL_XML_RULE@
 appdatadir = $(datadir)/appdata
 dist_appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 appdata_in_files = gnome-calculator.appdata.xml.in
