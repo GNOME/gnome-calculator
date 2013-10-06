@@ -9,12 +9,13 @@ Utilities_DATA = $(Utilities_in_files:.desktop.in=.desktop)
 
 @INTLTOOL_XML_RULE@
 appdatadir = $(datadir)/appdata
-dist_appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+appdata_DATA = $(appdata_in_files:.xml.in=.xml)
 appdata_in_files = gnome-calculator.appdata.xml.in
 
 man1_MANS = gnome-calculator.1 gcalccmd.1
 
 EXTRA_DIST = \
+	gnome-calculator.appdata.xml.in \
 	buttons-basic.ui \
 	buttons-advanced.ui \
 	buttons-financial.ui \
