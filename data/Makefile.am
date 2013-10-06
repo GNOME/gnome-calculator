@@ -26,8 +26,8 @@ EXTRA_DIST = \
 	$(man1_MANS)
 
 CLEANFILES = \
-	gnome-calculator.appdata.xml
+	gnome-calculator.appdata.xml \
+	gcalctool.desktop
 
 DISTCLEANFILES = \
-	Makefile.in \
-	gcalctool.desktop
+	Makefile.in
