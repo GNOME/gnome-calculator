@@ -1,5 +1,4 @@
 gsettings_SCHEMAS = org.gnome.calculator.gschema.xml
-@INTLTOOL_XML_NOMERGE_RULE@
 @GSETTINGS_RULES@
 
 Utilitiesdir = $(datadir)/applications
@@ -22,7 +21,7 @@ EXTRA_DIST = \
 	buttons-programming.ui \
 	menu.ui \
 	gnome-calculator.gresource.xml \
-	org.gnome.calculator.gschema.xml.in \
+	org.gnome.calculator.gschema.xml \
 	gcalctool.desktop.in \
 	$(man1_MANS)
 
@@ -31,5 +30,4 @@ CLEANFILES = \
 
 DISTCLEANFILES = \
 	Makefile.in \
-	gcalctool.desktop \
-	$(gsettings_SCHEMAS)
+	gcalctool.desktop
