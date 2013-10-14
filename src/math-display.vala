@@ -39,9 +39,9 @@ public class MathDisplay : Gtk.Viewport
         /*text_view.set_right_margin (6);*/
         text_view.set_justification (Gtk.Justification.RIGHT);
         text_view.ensure_style ();
-        var font_desc = text_view.get_style ().font_desc.copy ();
+        var font_desc = text_view.get_style_context ().get_font (Gtk.StateFlags.NORMAL);
         font_desc.set_size (16 * Pango.SCALE);
-        text_view.modify_font (font_desc);
+        text_view.override_font (font_desc);
         text_view.set_name ("displayitem");
         text_view.get_accessible ().set_role (Atk.Role.EDITBAR);
         //FIXME:<property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
