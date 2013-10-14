@@ -114,7 +114,7 @@ public class Equation
         this.expression = expression;
     }
 
-    public new Number? parse (out uint representation_base = null, out ErrorCode error_code = null, out string error_token = null, out uint error_start = null, out uint error_end = null)
+    public new Number? parse (out uint representation_base = null, out ErrorCode error_code = null, out string? error_token = null, out uint? error_start = null, out uint? error_end = null)
     {
         var parser = new EquationParser (this, expression);
         mp_clear_error ();

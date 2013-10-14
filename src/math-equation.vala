@@ -859,7 +859,7 @@ public class MathEquation : Gtk.TextBuffer
         }
     }
 
-    private Number? parse (string text, out uint representation_base, out ErrorCode error_code = null, out string error_token = null, out uint error_start, out uint error_end)
+    private Number? parse (string text, out uint representation_base, out ErrorCode error_code = null, out string? error_token = null, out uint? error_start = null, out uint error_end = null)
     {
         var equation = new MEquation (this, text);
         equation.base = serializer.get_base ();
