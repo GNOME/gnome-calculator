@@ -55,7 +55,7 @@ public class MathVariablePopup : Gtk.Window
         add_variable_button = new Gtk.Button ();
         add_variable_button.sensitive = false;
         add_variable_button.clicked.connect (add_variable_cb);
-        var image = new Gtk.Image.from_stock (Gtk.Stock.ADD, Gtk.IconSize.BUTTON);
+        var image = new Gtk.Image.from_icon_name ("list-add", Gtk.IconSize.BUTTON);
         add_variable_button.add (image);
         entry.pack_start (add_variable_button, false, true, 0);
         image.show ();
@@ -162,7 +162,7 @@ public class MathVariablePopup : Gtk.Window
         {
             button = new Gtk.Button ();
             button.set_data<string> ("variable_name", name);
-            var image = new Gtk.Image.from_stock (Gtk.Stock.SAVE, Gtk.IconSize.BUTTON);
+            var image = new Gtk.Image.from_icon_name ("document-save", Gtk.IconSize.BUTTON);
             button.add (image);
             hbox.pack_start (button, false, true, 0);
             button.clicked.connect (save_variable_cb);
@@ -171,7 +171,7 @@ public class MathVariablePopup : Gtk.Window
 
             button = new Gtk.Button ();
             button.set_data<string> ("variable_name", name);
-            image = new Gtk.Image.from_stock (Gtk.Stock.DELETE, Gtk.IconSize.BUTTON);
+            image = new Gtk.Image.from_icon_name ("edit-delete", Gtk.IconSize.BUTTON);
             button.add (image);
             hbox.pack_start (button, false, true, 0);
             button.clicked.connect (delete_variable_cb);

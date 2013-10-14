@@ -64,7 +64,7 @@ public class MathWindow : Gtk.ApplicationWindow
                                             Gtk.ButtonsType.NONE,
                                             "%s", title);
         dialog.format_secondary_text ("%s", contents);
-        dialog.add_buttons (Gtk.Stock.QUIT, Gtk.ResponseType.ACCEPT);
+        dialog.add_buttons (_("_Quit"), Gtk.ResponseType.ACCEPT);
 
         dialog.run ();
 
