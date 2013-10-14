@@ -65,9 +65,6 @@ public class MathDisplay : Gtk.Viewport
 
         spinner = new Gtk.Spinner ();
         info_box.pack_end (spinner, false, false, 0);
-        style = info_view.get_style ();
-        for (var i = 0; i < 5; i++)
-            modify_bg (i, style.base[i]);
 
         info_box.show ();
         info_view.show ();
