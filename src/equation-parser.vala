@@ -130,6 +130,30 @@ public class AssignNode : RNode
     }
 }
 
+public class AssignFunctionNode : ParseNode
+{
+    public AssignFunctionNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    {
+        base (parser, token, precedence, associativity);
+    }
+
+    public override Number? solve ()
+    {
+        if (left == null || right == null || left.left == null || left.right == null)
+            return null;
+
+        var function_name = left.left.value;
+        var arguments = left.right.value;
+        var description = right.value;
+
+        FunctionManager function_manager = FunctionManager.get_default_function_manager();
+        if (function_manager.add_function_with_properties (function_name, arguments, description, parser))
+            return new Number.integer (0);
+
+        return null;
+    }
+}
+
 public class NameNode : ParseNode
 {
     public NameNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string? text = null)
@@ -167,7 +191,6 @@ public class VariableNode : ParseNode
             }
             value = value.multiply (t);
         }
-
         return value;
     }
 }
@@ -216,81 +239,121 @@ public class VariableWithPowerNode : ParseNode
     }
 }
 
-public class FunctionNode : RNode
+public class FunctionNameNode : NameNode
 {
-    public FunctionNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    public FunctionNameNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string name)
     {
-        base (parser, token, precedence, associativity);
-    }
-
-    public override Number solve_r (Number r)
-    {
-        var ans = parser.get_function (token.text, r);
-        if (ans == null)
-            parser.set_error (ErrorCode.UNKNOWN_FUNCTION, token.text, token.start_index, token.end_index);
-
-        return ans;
+        base (parser, token, precedence, associativity, name);
     }
 }
 
-public class FunctionWithPowerNode : ParseNode
+public class FunctionArgumentsNode : NameNode
 {
-    public FunctionWithPowerNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string text)
+    public FunctionArgumentsNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string arguments)
+    {
+        base (parser, token, precedence, associativity, arguments);
+    }
+}
+
+public class FunctionDescriptionNode : NameNode
+{
+    public FunctionDescriptionNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string description)
+    {
+        base (parser, token, precedence, associativity, description);
+    }
+}
+
+public class FunctionNode : ParseNode
+{
+    public FunctionNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string? text)
     {
         base (parser, token, precedence, associativity, text);
     }
 
     public override Number? solve ()
     {
-        var val = right.solve ();
-        if (val == null)
+        if (right == null || left == null)
         {
-            value = null;
-            return null;
-        }
-        var tmp = parser.get_function (token.text, val);
-        if (tmp == null)
-        {
-            value = null;
-            parser.set_error (ErrorCode.UNKNOWN_FUNCTION, token.text, token.start_index, token.end_index);
+            parser.set_error (ErrorCode.UNKNOWN_FUNCTION);
             return null;
         }
 
-        var pow = super_atoi (value);
-        value = null;
-
-        return tmp.xpowy_integer (pow);
-    }
-}
-
-public class FunctionWithNegativePowerNode : ParseNode
-{
-    public FunctionWithNegativePowerNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string text)
-    {
-        base (parser, token, precedence, associativity, text);
-    }
-
-    public override Number? solve ()
-    {
-        var val = right.solve ();
-        if (val == null)
+        var name = left.value;
+        if (name == null)
         {
-            value = null;
-            return null;
-        }
-        var inv_name = token.text + "⁻¹";
-        var tmp = parser.get_function (inv_name, val);
-        if (tmp == null)
-        {
-            value = null;
-            parser.set_error (ErrorCode.UNKNOWN_FUNCTION, token.text, token.start_index, token.end_index);
+            parser.set_error (ErrorCode.UNKNOWN_FUNCTION);
             return null;
         }
 
-        var pow = super_atoi (value);
-        value = null;
+        int pow = 1;
+        if (this.value != null)
+            pow = super_atoi (this.value);
 
-        return tmp.xpowy_integer (-pow);
+        if (pow < 0)
+        {
+            name = name + "⁻¹";
+            pow = -pow;
+        }
+
+        Number[] args = {};
+        if (right is FunctionArgumentsNode)
+        {
+            var argument_list = right.value;
+            var temp = "";
+            int depth = 0;
+            for (int i = 0; i < argument_list.length; i++)
+            {
+                string ss = argument_list.substring (i, 1);
+                if (ss == "(")
+                    depth++;
+                else if (ss == ")")
+                    depth--;
+                else if (ss == ";" && depth != 0)
+                    ss = "$";
+                temp += ss;
+            }
+            var arguments = temp.split_set (";");
+
+            foreach (var argument in arguments)
+            {
+                argument = argument.replace ("$", ";").strip ();
+                var argument_parser = new ExpressionParser (argument, parser);
+
+                uint representation_base;
+                ErrorCode error_code;
+                string? error_token;
+                uint error_start;
+                uint error_end;
+
+                var ans = argument_parser.parse (out representation_base, out error_code, out error_token, out error_start, out error_end);
+
+                if (error_code == ErrorCode.NONE && ans != null)
+                    args += ans;
+                else
+                {
+                    parser.set_error (ErrorCode.UNKNOWN_VARIABLE, error_token, error_start, error_end);
+                    return null;
+                }
+            }
+        }
+        else
+        {
+            var ans = right.solve ();
+            if (ans != null)
+                args += ans;
+            else
+            {
+                parser.set_error (ErrorCode.UNKNOWN_FUNCTION);
+                return null;
+            }
+        }
+
+        FunctionManager function_manager = FunctionManager.get_default_function_manager ();
+        var tmp = function_manager.evaluate_function (name, args, parser);
+
+        if (tmp != null)
+            tmp = tmp.xpowy_integer (pow);
+        return tmp;
     }
 }
 
@@ -733,6 +796,7 @@ public class Parser
     private Lexer lexer;
     public int number_base;
     public int wordlen;
+    public AngleUnit angle_units;
     private uint depth_level;
     private ErrorCode error;
     private string error_token;
@@ -740,7 +804,7 @@ public class Parser
     private int error_token_end;
     private uint representation_base;
 
-    public Parser (string input, int number_base, int wordlen)
+    public Parser (string input, int number_base, int wordlen, AngleUnit angle_units)
     {
         this.input = input;
         lexer = new Lexer (input, this, number_base);
@@ -750,10 +814,71 @@ public class Parser
         this.number_base = number_base;
         this.representation_base = number_base;
         this.wordlen = wordlen;
+        this.angle_units = angle_units;
         error = ErrorCode.NONE;
         error_token = null;
         error_token_start = 0;
         error_token_end = 0;
+    }
+
+    public bool create_parse_tree (out uint representation_base, out ErrorCode error_code, out string? error_token, out uint error_start, out uint error_end)
+    {
+        representation_base = number_base;
+        /* Scan string and split into tokens */
+        lexer.scan ();
+
+        /* Parse tokens */
+        var ret = statement ();
+
+        var token = lexer.get_next_token ();
+        if (token.type == LexerTokenType.ASSIGN)
+        {
+            token = lexer.get_next_token ();
+            if (token.type != LexerTokenType.PL_EOS)
+            {
+                /* Full string is not parsed. */
+                if (error == ErrorCode.NONE)
+                    set_error (ErrorCode.INVALID, token.text, token.start_index, token.end_index);
+
+                error_code = error;
+                error_token = this.error_token;
+                error_start = error_token_start;
+                error_end = error_token_end;
+                return false;
+            }
+        }
+        if (token.type != LexerTokenType.PL_EOS)
+        {
+            /* Full string is not parsed. */
+            if (error == ErrorCode.NONE)
+                set_error (ErrorCode.INVALID, token.text, token.start_index, token.end_index);
+
+            error_code = error;
+            error_token = this.error_token;
+            error_start = error_token_start;
+            error_end = error_token_end;
+            return false;
+        }
+
+        /* Input can't be parsed with grammar. */
+        if (!ret)
+        {
+            if (error == ErrorCode.NONE)
+                set_error (ErrorCode.INVALID);
+
+            error_code = error;
+            error_token = this.error_token;
+            error_start = error_token_start;
+            error_end = error_token_end;
+            return false;
+        }
+
+        error_code = ErrorCode.NONE;
+        error_token = null;
+        error_start = 0;
+        error_end = 0;
+
+        return true;
     }
 
     public void set_error (ErrorCode errorno, string? token = null, uint token_start = 0, uint token_end = 0)
@@ -788,11 +913,6 @@ public class Parser
         return false;
     }
 
-    public virtual Number? get_function (string name, Number x)
-    {
-        return null;
-    }
-
     public virtual Number? convert (Number x, string x_units, string z_units)
     {
         return null;
@@ -801,55 +921,11 @@ public class Parser
     /* Start parsing input string. And call evaluate on success. */
     public Number? parse (out uint representation_base, out ErrorCode error_code, out string? error_token, out uint error_start, out uint error_end)
     {
-        representation_base = number_base;
-        /* Scan string and split into tokens */
-        lexer.scan ();
+        var is_successfully_parsed = create_parse_tree (out representation_base, out error_code, out error_token, out error_start, out error_end);
 
-        /* Parse tokens */
-        var ret = statement ();
-
-        var token = lexer.get_next_token ();
-        if (token.type == LexerTokenType.ASSIGN)
-        {
-            token = lexer.get_next_token ();
-            if (token.type != LexerTokenType.PL_EOS)
-            {
-                /* Full string is not parsed. */
-                if (error == ErrorCode.NONE)
-                    set_error (ErrorCode.INVALID, token.text, token.start_index, token.end_index);
-
-                error_code = error;
-                error_token = this.error_token;
-                error_start = error_token_start;
-                error_end = error_token_end;
-                return null;
-            }
-        }
-        if (token.type != LexerTokenType.PL_EOS)
-        {
-            /* Full string is not parsed. */
-            if (error == ErrorCode.NONE)
-                set_error (ErrorCode.INVALID, token.text, token.start_index, token.end_index);
-
-            error_code = error;
-            error_token = this.error_token;
-            error_start = error_token_start;
-            error_end = error_token_end;
+        if (!is_successfully_parsed)
             return null;
-        }
 
-        /* Input can't be parsed with grammar. */
-        if (!ret)
-        {
-            if (error == ErrorCode.NONE)
-                set_error (ErrorCode.INVALID);
-
-            error_code = error;
-            error_token = this.error_token;
-            error_start = error_token_start;
-            error_end = error_token_end;
-            return null;
-        }
         var ans = root.solve ();
         if (ans == null)
         {
@@ -1056,7 +1132,7 @@ public class Parser
     private bool statement ()
     {
         var token = lexer.get_next_token ();
-        if (token.type == LexerTokenType.VARIABLE)
+        if (token.type == LexerTokenType.VARIABLE || token.type == LexerTokenType.FUNCTION)
         {
             var token_old = token;
             token = lexer.get_next_token ();
@@ -1143,6 +1219,12 @@ public class Parser
             {
                 lexer.roll_back ();
                 lexer.roll_back ();
+
+                if (token.type == LexerTokenType.L_R_BRACKET)
+                {
+                    if (function_definition ())
+                        return true;
+                }
 
                 if (!expression ())
                     return false;
@@ -1251,6 +1333,60 @@ public class Parser
                 return false;
             return true;
         }
+    }
+
+    private bool function_definition ()
+    {
+        int num_token_parsed = 0;
+        var token = lexer.get_next_token ();
+        num_token_parsed++;
+
+        string function_name = token.text;
+        lexer.get_next_token ();
+        num_token_parsed++;
+
+        token = lexer.get_next_token ();
+        num_token_parsed++;
+        string argument_list = "";
+
+        while (token.type != LexerTokenType.R_R_BRACKET && token.type != LexerTokenType.PL_EOS)
+        {
+            argument_list += token.text;
+            token = lexer.get_next_token ();
+            num_token_parsed++;
+        }
+
+        if (token.type == LexerTokenType.PL_EOS)
+        {
+            while (num_token_parsed-- > 0)
+                lexer.roll_back ();
+            return false;
+        }
+
+        var assign_token = lexer.get_next_token ();
+        num_token_parsed++;
+        if (assign_token.type != LexerTokenType.ASSIGN)
+        {
+            while (num_token_parsed-- > 0)
+                lexer.roll_back ();
+            return false;
+        }
+
+        string expression = "";
+        token = lexer.get_next_token ();
+        while (token.type != LexerTokenType.PL_EOS)
+        {
+            expression += token.text;
+            token = lexer.get_next_token ();
+        }
+
+        insert_into_tree (new FunctionNameNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), function_name));
+        insert_into_tree (new FunctionNode (this, null, make_precedence_p (Precedence.FUNCTION), get_associativity_p (Precedence.FUNCTION), null));
+        insert_into_tree (new FunctionArgumentsNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), argument_list));
+        insert_into_tree (new AssignFunctionNode (this, assign_token, 0, get_associativity (assign_token)));
+        insert_into_tree (new FunctionDescriptionNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), expression));
+
+        return true;
     }
 
     private bool check_base ()
@@ -1710,80 +1846,10 @@ public class Parser
         var token = lexer.get_next_token ();
         if (token.type == LexerTokenType.FUNCTION)
         {
-            depth_level++;
-            var token_old = token;
-            token = lexer.get_next_token ();
-            if (token.type == LexerTokenType.SUP_NUMBER)
-            {
-                /* Pass power as void * value. That will be taken care in pf_apply_func_with_power. */
-
-                insert_into_tree_unary (new FunctionWithPowerNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old), token.text));
-                if (!expression_1 ())
-                {
-                    depth_level--;
-                    return false;
-                }
-
-                token = lexer.get_next_token ();
-                if (token.type == LexerTokenType.FACTORIAL)
-                    insert_into_tree_unary (new FactorialNode (this, token, make_precedence_t (token.type), get_associativity (token)));
-                else
-                    lexer.roll_back ();
-
-                depth_level--;
-
-                if (!expression_2 ())
-                    return false;
-
-                return true;
-            }
-            else if (token.type == LexerTokenType.NSUP_NUMBER)
-            {
-                /* Pass power as void * value. That will be taken care in pf_apply_func_with_npower. */
-
-                insert_into_tree_unary (new FunctionWithNegativePowerNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old), token.text));
-                if (!expression_1 ())
-                {
-                    depth_level--;
-                    return false;
-                }
-
-                token = lexer.get_next_token ();
-                if (token.type == LexerTokenType.FACTORIAL)
-                    insert_into_tree_unary (new FactorialNode (this, token, make_precedence_t (token.type), get_associativity (token)));
-                else
-                    lexer.roll_back ();
-
-                depth_level--;
-
-                if (!expression_2 ())
-                    return false;
-
-                return true;
-            }
-            else
-            {
-                lexer.roll_back ();
-                insert_into_tree_unary (new FunctionNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old)));
-                if (!expression_1 ())
-                {
-                    depth_level--;
-                    return false;
-                }
-
-                token = lexer.get_next_token ();
-                if (token.type == LexerTokenType.FACTORIAL)
-                    insert_into_tree_unary (new FactorialNode (this, token, make_precedence_t (token.type), get_associativity (token)));
-                else
-                    lexer.roll_back ();
-
-                depth_level--;
-
-                if (!expression_2 ())
-                    return false;
-
-                return true;
-            }
+            lexer.roll_back ();
+            if (!function_invocation ())
+                return false;
+            return true;
         }
         else if (token.type == LexerTokenType.SUB_NUMBER)
         {
@@ -1840,6 +1906,90 @@ public class Parser
             return false;
     }
 
+    private bool function_invocation ()
+    {
+        depth_level++;
+        int num_token_parsed = 0;
+        var fun_token = lexer.get_next_token ();
+        num_token_parsed ++;
+        string function_name = fun_token.text;
+
+        insert_into_tree (new FunctionNameNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), function_name));
+
+        var token = lexer.get_next_token ();
+        num_token_parsed++;
+        string? power = null;
+        if (token.type == LexerTokenType.SUP_NUMBER || token.type == LexerTokenType.NSUP_NUMBER)
+        {
+            power = token.text;
+            token = lexer.get_next_token ();
+            num_token_parsed++;
+        }
+
+        insert_into_tree (new FunctionNode (this, fun_token, make_precedence_t (fun_token.type), get_associativity (fun_token), power));
+
+        if (token.type == LexerTokenType.L_R_BRACKET)
+        {
+            token = lexer.get_next_token ();
+            num_token_parsed++;
+            int m_depth = 1;
+            string argument_list = "";
+
+            while (token.type != LexerTokenType.PL_EOS && token.type != LexerTokenType.ASSIGN)
+            {
+                if (token.type == LexerTokenType.L_R_BRACKET)
+                    m_depth++;
+                else if (token.type == LexerTokenType.R_R_BRACKET)
+                {
+                    m_depth--;
+                    if (m_depth == 0)
+                        break;
+                }
+                argument_list += token.text;
+                token = lexer.get_next_token ();
+                num_token_parsed++;
+            }
+
+            if (token.type != LexerTokenType.R_R_BRACKET)
+            {
+                while (num_token_parsed-- > 0)
+                    lexer.roll_back ();
+                depth_level--;
+                return false;
+            }
+
+            insert_into_tree (new FunctionArgumentsNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), argument_list));
+        }
+        else
+        {
+            lexer.roll_back ();
+            if (!expression_1 ())
+            {
+                lexer.roll_back ();
+                depth_level--;
+                return false;
+            }
+
+            token = lexer.get_next_token ();
+            if (token.type == LexerTokenType.FACTORIAL)
+                insert_into_tree_unary (new FactorialNode (this, token, make_precedence_t (token.type), get_associativity (token)));
+            else
+                lexer.roll_back ();
+
+            depth_level--;
+
+            if (!expression_2 ())
+            {
+                lexer.roll_back ();
+                return false;
+            }
+            return true;
+        }
+
+        depth_level--;
+        return true;
+    }
+
     private bool term ()
     {
         var token = lexer.get_next_token ();
@@ -1847,13 +1997,16 @@ public class Parser
         if (token.type == LexerTokenType.VARIABLE)
         {
             var token_old = token;
+            token = lexer.get_next_token ();
             /* Check if the token is a valid variable or not. */
-            if (!check_variable (token.text))
+            if (!check_variable (token_old.text))
             {
-                set_error (ErrorCode.UNKNOWN_VARIABLE, token.text, token.start_index, token.end_index);
+                if (token.text == "(")
+                    set_error (ErrorCode.UNKNOWN_FUNCTION, token_old.text, token_old.start_index, token_old.end_index);
+                else
+                    set_error (ErrorCode.UNKNOWN_VARIABLE, token_old.text, token_old.start_index, token_old.end_index);
                 return false;
             }
-            token = lexer.get_next_token ();
             if (token.type == LexerTokenType.SUP_NUMBER)
                 insert_into_tree (new VariableWithPowerNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old), token.text));
             else

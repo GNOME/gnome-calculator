@@ -43,7 +43,7 @@ private class SolveData
     public uint representation_base;
 }
 
-public class MathEquation : Gtk.TextBuffer
+public class MathEquation : Gtk.SourceBuffer
 {
     private Gtk.TextTag ans_tag;
 
@@ -473,7 +473,7 @@ public class MathEquation : Gtk.TextBuffer
             insert (text);
     }
 
-    public void undo ()
+    public override void undo ()
     {
         if (undo_stack == null)
         {
@@ -489,7 +489,7 @@ public class MathEquation : Gtk.TextBuffer
         apply_state (state);
     }
 
-    public void redo ()
+    public override void redo ()
     {
         if (redo_stack == null)
         {

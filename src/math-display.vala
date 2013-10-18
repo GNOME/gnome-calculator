@@ -15,7 +15,7 @@ public class MathDisplay : Gtk.Viewport
     public MathEquation equation { get { return _equation; } }
 
     /* Display widget */
-    Gtk.TextView text_view;
+    Gtk.SourceView source_view;
 
     /* Buffer that shows errors etc */
     Gtk.TextBuffer info_buffer;
@@ -30,24 +30,25 @@ public class MathDisplay : Gtk.Viewport
         var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         add (main_box);
 
-        text_view = new Gtk.TextView.with_buffer (equation);
-        text_view.set_wrap_mode (Gtk.WrapMode.WORD);
-        text_view.set_accepts_tab (false);
-        text_view.set_pixels_above_lines (8);
-        text_view.set_pixels_below_lines (2);
+        source_view = new Gtk.SourceView.with_buffer (equation);
+        source_view.set_wrap_mode (Gtk.WrapMode.WORD);
+        source_view.set_accepts_tab (false);
+        source_view.set_pixels_above_lines (8);
+        source_view.set_pixels_below_lines (2);
         /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
-        /*text_view.set_right_margin (6);*/
-        text_view.set_justification (Gtk.Justification.RIGHT);
-        text_view.ensure_style ();
-        var font_desc = text_view.get_style_context ().get_font (Gtk.StateFlags.NORMAL);
+        /*source_view.set_right_margin (6);*/
+        source_view.set_justification (Gtk.Justification.RIGHT);
+        source_view.ensure_style ();
+        var font_desc = source_view.get_style_context ().get_font (Gtk.StateFlags.NORMAL);
         font_desc.set_size (16 * Pango.SCALE);
-        text_view.override_font (font_desc);
-        text_view.set_name ("displayitem");
-        text_view.get_accessible ().set_role (Atk.Role.EDITBAR);
+        source_view.override_font (font_desc);
+        source_view.set_name ("displayitem");
+        source_view.get_accessible ().set_role (Atk.Role.EDITBAR);
         //FIXME:<property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
-        text_view.key_press_event.connect (key_press_cb);
+        source_view.key_press_event.connect (key_press_cb);
+        create_autocompletion ();
 
-        main_box.pack_start (text_view, true, true, 0);
+        main_box.pack_start (source_view, true, true, 0);
 
         var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         main_box.pack_start (info_box, false, true, 0);
@@ -68,7 +69,7 @@ public class MathDisplay : Gtk.Viewport
 
         info_box.show ();
         info_view.show ();
-        text_view.show ();
+        source_view.show ();
         main_box.show ();
 
         equation.notify["status"].connect ((pspec) => { status_changed_cb (); });
@@ -77,9 +78,35 @@ public class MathDisplay : Gtk.Viewport
         equation.notify["error-token-end"].connect ((pspec) => { error_status_changed_cb (); });
     }
 
+    private void create_autocompletion ()
+    {
+        Gtk.SourceCompletion completion = source_view.get_completion ();
+        try
+        {
+            completion.add_provider (new FunctionCompletionProvider ());
+            completion.add_provider (new VariableCompletionProvider (equation));
+        }
+        catch (Error e)
+        {
+            warning ("Could not add CompletionProvider to source-view");
+        }
+    }
+
+    private bool function_completion_window_visible ()
+    {
+        unowned List<Gtk.SourceCompletionProvider> providers_list = source_view.get_completion ().get_providers ();
+        if (providers_list.length () > 0)
+        {
+            MathFunction[] functions = FunctionCompletionProvider.get_matches_for_completion_at_cursor (equation);
+            string[] variables = VariableCompletionProvider.get_matches_for_completion_at_cursor (equation, equation.variables);
+            return ((functions.length > 0 || variables.length > 0) ? true : false);
+        }
+        return false;
+    }
+
     protected override bool key_press_event (Gdk.EventKey event)
     {
-        return text_view.key_press_event (event);
+        return source_view.key_press_event (event);
     }
 
     private bool key_press_cb (Gdk.EventKey event)
@@ -133,6 +160,8 @@ public class MathDisplay : Gtk.Viewport
         /* Solve on enter */
         if (event.keyval == Gdk.Key.Return || event.keyval == Gdk.Key.KP_Enter)
         {
+            if (function_completion_window_visible ())
+                return false;
             equation.solve ();
             return true;
         }
@@ -348,5 +377,149 @@ public class MathDisplay : Gtk.Viewport
         end.set_offset ((int) equation.error_token_end);
 
         equation.select_range (start, end);
+    }
+}
+
+public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
+{
+    public virtual string get_name ()
+    {
+        return "";
+    }
+
+    public static void move_iter_to_name_start (ref Gtk.TextIter iter)
+    {
+        while (iter.backward_char ())
+        {
+            unichar current_char = iter.get_char ();
+            if (!current_char.isalpha ())
+            {
+                iter.forward_char ();
+                break;
+            }
+        }
+    }
+
+    public virtual bool get_start_iter (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal, Gtk.TextIter iter)
+    {
+        return false;
+    }
+
+    public virtual bool activate_proposal (Gtk.SourceCompletionProposal proposal, Gtk.TextIter iter)
+    {
+        string proposed_string = proposal.get_text ();
+        Gtk.TextBuffer buffer = iter.get_buffer ();
+
+        Gtk.TextIter start_iter, end;
+        buffer.get_iter_at_offset (out start_iter, iter.get_offset ());
+        move_iter_to_name_start (ref start_iter);
+
+        buffer.place_cursor (start_iter);
+        buffer.delete_range (start_iter, iter);
+        buffer.insert_at_cursor (proposed_string, proposed_string.length);
+        if (proposed_string.contains ("()"))
+        {
+            buffer.get_iter_at_mark (out end, buffer.get_insert ());
+            end.backward_chars (1);
+            buffer.place_cursor (end);
+        }
+        return true;
+    }
+
+    public virtual void populate (Gtk.SourceCompletionContext context) {}
+}
+
+public class FunctionCompletionProvider : CompletionProvider
+{
+    public override string get_name ()
+    {
+        return "Defined Functions";
+    }
+
+    public static MathFunction[] get_matches_for_completion_at_cursor (Gtk.TextBuffer text_buffer)
+    {
+        Gtk.TextIter start_iter, end_iter;
+        text_buffer.get_iter_at_mark (out end_iter, text_buffer.get_insert ());
+        text_buffer.get_iter_at_mark (out start_iter, text_buffer.get_insert ());
+        CompletionProvider.move_iter_to_name_start (ref start_iter);
+
+        string search_pattern = text_buffer.get_slice (start_iter, end_iter, false);
+
+        FunctionManager function_manager = FunctionManager.get_default_function_manager ();
+        MathFunction[] functions = function_manager.functions_eligible_for_autocompletion_for_text (search_pattern);
+        return functions;
+    }
+
+    public override void populate (Gtk.SourceCompletionContext context)
+    {
+        Gtk.TextBuffer text_buffer = context.get_iter ().get_buffer ();
+        MathFunction[] functions = get_matches_for_completion_at_cursor (text_buffer);
+
+        List<Gtk.SourceCompletionItem>? proposals = null;
+        if (functions.length > 0)
+        {
+            proposals = new List<Gtk.SourceCompletionItem> ();
+            foreach (var function in functions)
+            {
+                string display_text = "%s(%s)".printf (function.name, string.joinv (";", function.arguments));
+                string details_text = "%s".printf (function.description);
+                string label_text = function.name + "()";
+                if (function.is_custom_function ())
+                    details_text = "%s(%s)=%s\n%s".printf (function.name, string.joinv (";", function.arguments),
+                                                           function.expression, function.description);
+                var proposal = new Gtk.SourceCompletionItem (display_text, label_text, null, details_text);
+                proposals.append (proposal);
+            }
+        }
+        context.add_proposals (this, proposals, true);
+    }
+}
+
+public class VariableCompletionProvider : CompletionProvider
+{
+    private MathEquation _equation;
+
+    public VariableCompletionProvider (MathEquation equation)
+    {
+        _equation = equation;
+    }
+
+    public override string get_name ()
+    {
+        return "Defined Variables";
+    }
+
+    public static string[] get_matches_for_completion_at_cursor (Gtk.TextBuffer text_buffer, MathVariables variables )
+    {
+        Gtk.TextIter start_iter, end_iter;
+        text_buffer.get_iter_at_mark (out end_iter, text_buffer.get_insert ());
+        text_buffer.get_iter_at_mark (out start_iter, text_buffer.get_insert ());
+        CompletionProvider.move_iter_to_name_start (ref start_iter);
+
+        string search_pattern = text_buffer.get_slice (start_iter, end_iter, false);
+        string[] math_variables = variables.variables_eligible_for_autocompletion (search_pattern);
+        return math_variables;
+    }
+
+    public override void populate (Gtk.SourceCompletionContext context)
+    {
+        Gtk.TextBuffer text_buffer = context.get_iter ().get_buffer ();
+        string[] variables = get_matches_for_completion_at_cursor (text_buffer, _equation.variables);
+
+        List<Gtk.SourceCompletionItem>? proposals = null;
+        if (variables.length > 0)
+        {
+            proposals = new List<Gtk.SourceCompletionItem> ();
+            foreach (var variable in variables)
+            {
+                string display_text = "%s".printf (variable);
+                string details_text = _equation.serializer.to_string (_equation.variables.get (variable));
+                string label_text = variable;
+
+                var proposal = new Gtk.SourceCompletionItem (display_text, label_text, null, details_text);
+                proposals.append (proposal);
+            }
+        }
+        context.add_proposals (this, proposals, true);
     }
 }

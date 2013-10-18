@@ -76,7 +76,30 @@ public class MathVariables : Object
         }
     }
 
-    // FIXME: Sort
+    private string[] array_sort_string (string[] array)
+    {
+        bool swapped = true;
+        int j = (array[array.length - 1] == null ? 1 : 0);
+        string tmp;
+
+        while (swapped)
+        {
+            swapped = false;
+            j++;
+            for (int i = 0; i < array.length - j; i++)
+            {
+                if (array[i] < array[i + 1])
+                {
+                    tmp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = tmp;
+                    swapped = true;
+                }
+            }
+        }
+        return array;
+    }
+
     public string[] get_names ()
     {
         var names = new string[registers.size () + 1];
@@ -92,7 +115,23 @@ public class MathVariables : Object
         }
         names[i] = null;
 
-        return names;
+        return array_sort_string (names);
+    }
+
+    public string[] variables_eligible_for_autocompletion (string text)
+    {
+        string[] eligible_variables = {};
+        if (text.length <=1)
+            return eligible_variables;
+
+        string[] variables = get_names ();
+        foreach (var variable in variables)
+        {
+            if (variable.has_prefix (text))
+                eligible_variables += variable;
+        }
+
+        return eligible_variables;
     }
 
     public new void set (string name, Number value)

@@ -68,8 +68,6 @@ public class MathButtons : Gtk.Box
     private Gtk.Menu shift_left_menu;
     private Gtk.Menu shift_right_menu;
 
-    private Gtk.Menu function_menu;
-
     private List<Gtk.ToggleButton> superscript_toggles;
     private List<Gtk.ToggleButton> subscript_toggles;
 
@@ -801,37 +799,17 @@ public class MathButtons : Gtk.Box
         popup_button_menu (button, shift_right_menu);
     }
 
-    private void function_cb (Gtk.Button button)
+    private void function_cb (Gtk.Widget widget)
     {
-        if (function_menu == null)
-        {
-            function_menu = new Gtk.Menu ();
-            function_menu.set_reserve_toggle_size (false);
+        var popup = new MathFunctionPopup (equation);
+        popup.set_transient_for (widget.get_toplevel () as Gtk.Window);
 
-            /* Tooltip for the integer component button */
-            add_function_menu_item (function_menu, _("Integer Component"), "int ");
-            /* Tooltip for the fractional component button */
-            add_function_menu_item (function_menu, _("Fractional Component"), "frac ");
-            /* Tooltip for the round button */
-            add_function_menu_item (function_menu, _("Round"), "round ");
-            /* Tooltip for the floor button */
-            add_function_menu_item (function_menu, _("Floor"), "floor ");
-            /* Tooltip for the ceiling button */
-            add_function_menu_item (function_menu, _("Ceiling"), "ceil ");
-            /* Tooltip for the ceiling button */
-            add_function_menu_item (function_menu, _("Sign"), "sgn ");
-        }
-
-        popup_button_menu (button, function_menu);
-    }
-
-    private void add_function_menu_item (Gtk.Menu menu, string label, string function)
-    {
-        var item = new Gtk.MenuItem.with_label (label);
-        item.set_data<string> ("function", function);
-        menu.append (item);
-        item.activate.connect ((widget) => { equation.insert (widget.get_data<string> ("function")); });
-        item.show ();
+        Gtk.Allocation allocation;
+        widget.get_allocation (out allocation);
+        int x, y;
+        widget.get_window ().get_root_coords (allocation.x, allocation.y, out x, out y);
+        popup.move (x, y);
+        popup.show ();
     }
 
     private void finc_cb (Gtk.Widget widget)
