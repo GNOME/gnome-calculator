@@ -470,7 +470,8 @@ public class MathEquation : Gtk.SourceBuffer
     private void on_paste (Gtk.Clipboard clipboard, string? text)
     {
         if (text != null)
-            insert (text);
+            /* Replaces '\n' characters by ' ' in text before pasting it. */
+            insert (text.delimit ("\n", ' '));
     }
 
     public override void undo ()
