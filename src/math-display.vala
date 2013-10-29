@@ -31,7 +31,6 @@ public class MathDisplay : Gtk.Viewport
         add (main_box);
 
         text_view = new Gtk.TextView.with_buffer (equation);
-        text_view.set_wrap_mode (Gtk.WrapMode.WORD);
         text_view.set_accepts_tab (false);
         text_view.set_pixels_above_lines (8);
         text_view.set_pixels_below_lines (2);
