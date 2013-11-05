@@ -11,14 +11,15 @@
 # Tommi Vainikainen <Tommi.Vainikainen@iki.fi>, 2004-2005, 2008-2010.
 # Ilkka Tuohela <hile@iki.fi>, 2005-2008.
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2010, 2012, 2013.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-03-26 12:35+0000\n"
-"PO-Revision-Date: 2013-03-26 20:12+0200\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
+"POT-Creation-Date: 2013-08-26 04:47+0000\n"
+"PO-Revision-Date: 2013-10-28 15:12+0200\n"
+"Last-Translator: Lasse Liehu <lasse.liehu@gmail.com>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -426,10 +427,11 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Suorita aritmeettisia, tieteellisiä tai talouslaskutoimituksia"
 
 #: ../data/gcalctool.desktop.in.h:3
-#, fuzzy
 #| msgid "Perform arithmetic, scientific or financial calculations"
 msgid "calculation;arithmetic;scientific;financial;"
-msgstr "Suorita aritmeettisia, tieteellisiä tai talouslaskutoimituksia"
+msgstr ""
+"calculation;arithmetic;scientific;financial;laskenta;laskut;laskutoimitus;"
+"aritmetiikka;aritmeettinen;tieteellinen;tiede;talous;talouslaskut;"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:1
 msgid "Accuracy value"
@@ -445,7 +447,7 @@ msgstr "Sanakoko"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:4
 msgid "The size of the words used in bitwise operations"
-msgstr ""
+msgstr "Bittioperaatioissa käytettyjen sanojen koko"
 
 #: ../data/org.gnome.calculator.gschema.xml.in.h:5
 msgid "Numeric Base"
@@ -771,7 +773,7 @@ msgstr "Etelä-Afrikan randi"
 
 #: ../src/financial.vala:114
 msgid "Error: the number of periods must be positive"
-msgstr ""
+msgstr "Virhe: maksujaksojen määrän pitää olla positiivinen"
 
 #: ../src/gnome-calculator.vala:80
 msgid "Basic"
@@ -842,15 +844,15 @@ msgstr "Laskin talous- ja tiedetilojen kera"
 
 #: ../src/gnome-calculator.vala:305
 msgid "Solve given equation"
-msgstr ""
+msgstr "Ratkaise annettu yhtälö"
 
 #: ../src/gnome-calculator.vala:313
 msgid "Start with given equation"
-msgstr ""
+msgstr "Aloita annetulla yhtälöllä"
 
 #: ../src/gnome-calculator.vala:322
 msgid "Show release version"
-msgstr ""
+msgstr "Näytä julkaisuversio"
 
 #. Configure buttons
 #. Tooltip for the Pi button
@@ -1019,12 +1021,12 @@ msgid "Boolean NOT"
 msgstr "Totuusarvo EI"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
+#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:812
 msgid "Integer Component"
 msgstr "Kokonaisosa"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
+#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:814
 msgid "Fractional Component"
 msgstr "Desimaaliosa"
 
@@ -1086,7 +1088,7 @@ msgstr "Kumoa [Ctrl+Z]"
 #. Tooltip for the double declining depreciation button
 #: ../src/math-buttons.vala:402
 msgid "Double Declining Depreciation"
-msgstr ""
+msgstr "Kahdestialeneva arvonalennus"
 
 #. Tooltip for the financial term button
 #: ../src/math-buttons.vala:406
@@ -1096,7 +1098,7 @@ msgstr "Tilikausi"
 #. Tooltip for the sum of the years digits depreciation button
 #: ../src/math-buttons.vala:408
 msgid "Sum of the Years Digits Depreciation"
-msgstr ""
+msgstr "Vuosipoistomenetelmän vähennys"
 
 #. Tooltip for the straight line depreciation button
 #: ../src/math-buttons.vala:410
@@ -1125,7 +1127,7 @@ msgstr "Heksadesimaali"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
+#: ../src/math-buttons.vala:743 ../src/math-buttons.vala:780
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1134,7 +1136,7 @@ msgstr[1] "_%d kohtaa"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
+#: ../src/math-buttons.vala:748 ../src/math-buttons.vala:785
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1142,24 +1144,24 @@ msgstr[0] "%d kohta"
 msgstr[1] "%d kohtaa"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.vala:813
+#: ../src/math-buttons.vala:816
 msgid "Round"
-msgstr ""
+msgstr "Pyöristys"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.vala:815
+#: ../src/math-buttons.vala:818
 msgid "Floor"
-msgstr ""
+msgstr "Lattiafunktio"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:817
+#: ../src/math-buttons.vala:820
 msgid "Ceiling"
-msgstr ""
+msgstr "Kattofunktio"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:819
+#: ../src/math-buttons.vala:822
 msgid "Sign"
-msgstr ""
+msgstr "Etumerkki"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
 #: ../src/math-converter.vala:46
@@ -1213,10 +1215,10 @@ msgid "Unknown conversion"
 msgstr "Tuntematon muunnos"
 
 #: ../src/math-equation.vala:915
-#, fuzzy, c-format
+#, c-format
 #| msgid "Malformed expression"
 msgid "Malformed expression at token '%s'"
-msgstr "Virheellinen lauseke"
+msgstr "Virheellinen lauseke kohdassa ”%s”"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
@@ -1318,27 +1320,27 @@ msgstr "Sana_koko:"
 #. Word size combo: 8 bits
 #: ../src/math-preferences.vala:171
 msgid "8 bits"
-msgstr ""
+msgstr "8 bittiä"
 
 #. Word size combo: 16 bits
 #: ../src/math-preferences.vala:173
 msgid "16 bits"
-msgstr ""
+msgstr "16 bittiä"
 
 #. Word size combo: 32 bits
 #: ../src/math-preferences.vala:175
 msgid "32 bits"
-msgstr ""
+msgstr "32 bittiä"
 
 #. Word size combo: 64 bits
 #: ../src/math-preferences.vala:177
 msgid "64 bits"
-msgstr ""
+msgstr "64 bittiä"
 
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/number.vala:652
 msgid "Argument not defined for zero"
-msgstr ""
+msgstr "Argumenttia ei ole määritelty nollalle"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
 #: ../src/number.vala:909 ../src/number.vala:1858
@@ -1387,6 +1389,8 @@ msgstr "Kosinin käänteisarvoa ei ole määritelty muualla kuin välillä [-1, 
 #: ../src/number.vala:1477
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
+"Hyperbolisen kosinin käänteisarvoa ei ole määritelty ykköstä pienemmille "
+"arvoille"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
 #: ../src/number.vala:1496
@@ -1434,7 +1438,7 @@ msgstr "Negatiivisen luvun n:ttä juurta ei ole määritelty parilliselle n:lle"
 
 #: ../src/number.vala:2225
 msgid "Overflow: the result couldn't be calculated"
-msgstr ""
+msgstr "Ylivuoto: tulosta ei voitu laskea"
 
 #: ../src/number.vala:2553
 msgid "Reciprocal of zero is undefined"
@@ -1494,11 +1498,11 @@ msgstr "kilometriä"
 
 #: ../src/unit.vala:47
 msgid "Cables"
-msgstr ""
+msgstr "Kaapelinmitta"
 
 #: ../src/unit.vala:48
 msgid "Fathoms"
-msgstr ""
+msgstr "Syli"
 
 #: ../src/unit.vala:49
 msgid "Meters"
@@ -1570,7 +1574,7 @@ msgstr "Gallonat"
 
 #: ../src/unit.vala:66
 msgid "Pints"
-msgstr ""
+msgstr "Pint"
 
 #: ../src/unit.vala:67
 msgid "Millilitres"
@@ -1642,7 +1646,7 @@ msgstr "Kelvin"
 
 #: ../src/unit.vala:84
 msgid "Rankine"
-msgstr ""
+msgstr "Rankine"
 
 #: ../src/unit.vala:86
 msgid "Currency"
