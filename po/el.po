@@ -13,13 +13,14 @@
 # Michael Kotsarinis <mk73628@gmail.com>, 2011.
 # Ioannis Zampoukas <ioza1964@yahoo.gr>, 2012.
 # Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>, 2013.
+# Efstathios Iosifidis <iosifidis@opensuse.org>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.gnome-2-26\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http:/"
 "/bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-09 09:15+0000\n"
-"PO-Revision-Date: 2013-02-25 17:22+0300\n"
+"POT-Creation-Date: 2013-10-24 19:11+0000\n"
+"PO-Revision-Date: 2013-11-05 15:05+0300\n"
 "Last-Translator: Dimitris Spingos (Δημήτρης Σπίγγος) <dmtrs32@gmail.com>\n"
 "Language-Team: team@gnome.gr\n"
 "Language: el\n"
@@ -70,7 +71,7 @@ msgstr "Εκθετικός αριθμός"
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.vala:384
+#: ../src/math-buttons.vala:377
 msgid "Memory"
 msgstr "Μνήμη"
 
@@ -98,7 +99,7 @@ msgstr "Αποθήκευση"
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:400
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:393
 msgid "Compounding Term"
 msgstr "Διάρκεια ανατοκισμού"
 
@@ -164,7 +165,7 @@ msgstr "Πε_ρίοδος:"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:404
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:397
 msgid "Future Value"
 msgstr "Μελλοντική αξία"
 
@@ -191,7 +192,7 @@ msgstr "Αριθ_μός περιόδων:"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:418
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:411
 msgid "Gross Profit Margin"
 msgstr "Μικτό περιθώριο κέρδους"
 
@@ -211,7 +212,7 @@ msgstr "Περι_θώριο:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:416
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:409
 msgid "Periodic Payment"
 msgstr "Περιοδική πληρωμή"
 
@@ -236,7 +237,7 @@ msgstr "_Διάρκεια:"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:414
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:407
 msgid "Present Value"
 msgstr "Τρέχουσα αξία"
 
@@ -252,7 +253,7 @@ msgstr ""
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:412
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:405
 msgid "Periodic Interest Rate"
 msgstr "Περιοδικό επιτόκιο"
 
@@ -388,13 +389,13 @@ msgstr "Gpm"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:396
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:389
 msgid "Shift Left"
 msgstr "Μετατόπιση αριστερά"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:398
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:391
 msgid "Shift Right"
 msgstr "Μετατόπιση δεξιά"
 
@@ -405,7 +406,7 @@ msgstr "Εισαγωγή χαρακτήρα"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:386
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:379
 msgid "Insert Character Code"
 msgstr "Εισαγωγή κωδικού χαρακτήρα"
 
@@ -419,61 +420,142 @@ msgstr "Χα_ρακτήρας:"
 msgid "_Insert"
 msgstr "_Εισαγωγή"
 
+#: ../data/menu.ui.h:1
+msgid "Mode"
+msgstr "Λειτουργία"
+
+#: ../data/menu.ui.h:2
+msgid "Basic"
+msgstr "Βασική"
+
+#: ../data/menu.ui.h:3
+msgid "Advanced"
+msgstr "Προχωρημένη"
+
+#: ../data/menu.ui.h:4
+msgid "Financial"
+msgstr "Εμπορική"
+
+#: ../data/menu.ui.h:5
+msgid "Programming"
+msgstr "Προγραμματιστική"
+
+#. Title of preferences dialog
+#: ../data/menu.ui.h:6 ../src/math-preferences.vala:26
+msgid "Preferences"
+msgstr "Προτιμήσεις"
+
+#: ../data/menu.ui.h:7
+msgid "About Calculator"
+msgstr "Περί Αριθμομηχανή"
+
+#: ../data/menu.ui.h:8
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: ../data/menu.ui.h:9
+msgid "Quit"
+msgstr "Έξοδος"
+
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
 #: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "Αριθμομηχανή"
 
-#: ../data/gnome-calculator.desktop.in.h:2
+#: ../data/gcalctool.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Εκτελεί αριθμητικούς, επιστημονικούς ή εμπορικούς υπολογισμούς"
 
-#: ../data/gnome-calculator.desktop.in.h:3
-#| msgid "Perform arithmetic, scientific or financial calculations"
+#: ../data/gcalctool.desktop.in.h:3
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "υπολογισμός;αριθμητικός;επιστημονικός;οικονομικός;"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:1
+#: ../data/gnome-calculator.appdata.xml.in.h:1
+msgid ""
+"GNOME Calculator is an application that solves mathematical equations. "
+"Though it at first appears to be a simple calculator with only basic "
+"arithmetic operations, you can switch into Advanced, Financial, or "
+"Programming mode to find a surprising set of capabilities."
+msgstr ""
+"Η Αριθμομηχανή του GNOME είναι μια εφαρμογή για να επιλύετε μαθηματικές "
+"εξισώσεις. Αν και εμφανίστηκε στην αρχή ως μια απλή αριθμομηχανή με μόνο τις "
+"βασικές αριθμητικές λειτουργίες, μπορείτε να το αλλάξετε σε κατάσταση για "
+"προχωρημένους, εμπορική ή προγραμματιστική κατάσταση ώστε να βρείτε ένα "
+"εκπληκτικό σύνολο δυνατοτήτων."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:2
+msgid ""
+"The Advanced calculator supports many operations, including: logarithms, "
+"factorials, trigonometric and hyperbolic functions, modulus division, "
+"complex numbers, random number generation, prime factorization and unit "
+"conversions."
+msgstr ""
+"Η αριθμομηχανή για προχωρημένους υποστηρίζει πολλές λειτουργίες, "
+"συμπεριλαμβανομένων: λογάριθμων, παραγοντικών, τριγωνομετρικών λειτουργιών, "
+"υπόλοιπο διαίρεσης ακέραιων, μιγαδικοί αριθμοί, δημιουργία τυχαίων αριθμών, "
+"παραγοντοποίηση και μετατροπή μονάδων."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:3
+msgid ""
+"Financial mode supports several computations, including periodic interest "
+"rate, present and future value, double declining and straight line "
+"depreciation, and many others."
+msgstr ""
+"Η εμπορική λειτουργία υποστηρίζει διάφορες υπολογισμούς, συμπεριλαμβανομένων "
+"του περιοδικού επιτοκίου, παρούσης και μελλοντικής αξίας, διπλή μείωση και "
+"σταθερή απόσβεση και πολλά άλλα."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:4
+msgid ""
+"Programming mode supports conversion between common bases (binary, octal, "
+"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"character to character code conversion, and more."
+msgstr ""
+"Η κατάσταση για προγραμματιστές υποστηρίζει μετατροπή μεταξύ κοινών βάσεων "
+"(δυαδικό, οκταδικό, δεκαδικό και δεκαεξαδικό), άλγεβρα Boole, συμπλήρωση "
+"ενός και δυο, μετατροπή κώδικα χαρακτήρα προς χαρακτήρα και πολλά άλλα."
+
+#: ../data/org.gnome.calculator.gschema.xml.h:1
 msgid "Accuracy value"
 msgstr "Τιμή ακρίβειας"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:2
+#: ../data/org.gnome.calculator.gschema.xml.h:2
 msgid "The number of digits displayed after the numeric point"
 msgstr "Ο αριθμός των ψηφίων που εμφανίζονται μετά την υποδιαστολή"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:3
+#: ../data/org.gnome.calculator.gschema.xml.h:3
 msgid "Word size"
 msgstr "Μήκος λέξης"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:4
+#: ../data/org.gnome.calculator.gschema.xml.h:4
 msgid "The size of the words used in bitwise operations"
 msgstr "Το μέγεθος των λέξεων που χρησιμοποιούνται στους υπολογισμούς κατά bit"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:5
+#: ../data/org.gnome.calculator.gschema.xml.h:5
 msgid "Numeric Base"
 msgstr "Αριθμητική βάση"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:6
+#: ../data/org.gnome.calculator.gschema.xml.h:6
 msgid "The numeric base"
 msgstr "Η αριθμητική βάση"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:7
+#: ../data/org.gnome.calculator.gschema.xml.h:7
 msgid "Show Thousands Separators"
 msgstr "Εμφάνιση διαχωριστικού χιλιάδων"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:8
+#: ../data/org.gnome.calculator.gschema.xml.h:8
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr ""
 "Καθορίζει το αν θα εμφανίζεται το διαχωριστικό χιλιάδων στους μεγάλους "
 "αριθμούς."
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:9
+#: ../data/org.gnome.calculator.gschema.xml.h:9
 msgid "Show Trailing Zeroes"
 msgstr "Εμφάνιση μηδενικών στο τέλος"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:10
+#: ../data/org.gnome.calculator.gschema.xml.h:10
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
@@ -481,59 +563,59 @@ msgstr ""
 "Καθορίζει το αν θα εμφανίζονται στην οθόνη μηδενικά στο τέλος του "
 "κλασματικού μέρους των δεκαδικών αριθμών."
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:11
+#: ../data/org.gnome.calculator.gschema.xml.h:11
 msgid "Number format"
 msgstr "Μορφή αριθμών"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:12
+#: ../data/org.gnome.calculator.gschema.xml.h:12
 msgid "The format to display numbers in"
 msgstr "Η μορφή στην οποία θα εμφανίζονται οι αριθμοί"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:13
+#: ../data/org.gnome.calculator.gschema.xml.h:13
 msgid "Angle units"
 msgstr "Μονάδες γωνιών"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:14
+#: ../data/org.gnome.calculator.gschema.xml.h:14
 msgid "The angle units to use"
 msgstr "Οι μονάδες γωνιών που θα χρησιμοποιούνται"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:15
+#: ../data/org.gnome.calculator.gschema.xml.h:15
 msgid "Button mode"
 msgstr "Λειτουργία με κουμπιά"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:16
+#: ../data/org.gnome.calculator.gschema.xml.h:16
 msgid "The button mode"
 msgstr "Η κατάσταση λειτουργίας με κουμπιά"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:17
+#: ../data/org.gnome.calculator.gschema.xml.h:17
 msgid "Source currency"
 msgstr "Νόμισμα πηγής"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:18
+#: ../data/org.gnome.calculator.gschema.xml.h:18
 msgid "Currency of the current calculation"
 msgstr "Νόμισμα του τρέχοντος υπολογισμού"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:19
+#: ../data/org.gnome.calculator.gschema.xml.h:19
 msgid "Target currency"
 msgstr "Νόμισμα προορισμού"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:20
+#: ../data/org.gnome.calculator.gschema.xml.h:20
 msgid "Currency to convert the current calculation into"
 msgstr "Νόμισμα στο οποίο θα μετατραπεί ο τρέχων υπολογισμός"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:21
+#: ../data/org.gnome.calculator.gschema.xml.h:21
 msgid "Source units"
 msgstr "Μονάδες προέλευσης"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:22
+#: ../data/org.gnome.calculator.gschema.xml.h:22
 msgid "Units of the current calculation"
 msgstr "Μονάδες του τρέχοντος υπολογισμού"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:23
+#: ../data/org.gnome.calculator.gschema.xml.h:23
 msgid "Target units"
 msgstr "Μονάδες προορισμού"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:24
+#: ../data/org.gnome.calculator.gschema.xml.h:24
 msgid "Units to convert the current calculation into"
 msgstr "Μονάδες στις οποίες θα μετατραπεί ο τρέχων υπολογισμός"
 
@@ -781,349 +863,312 @@ msgstr "Ραντ Νότιας Αφρικής"
 msgid "Error: the number of periods must be positive"
 msgstr "Σφάλμα: ο αριθμός των περιόδων πρέπει να είναι θετικός"
 
-#: ../src/gnome-calculator.vala:80
-msgid "Basic"
-msgstr "Βασική"
-
-#: ../src/gnome-calculator.vala:81
-msgid "Advanced"
-msgstr "Προχωρημένη"
-
-#: ../src/gnome-calculator.vala:82
-msgid "Financial"
-msgstr "Εμπορική"
-
-#: ../src/gnome-calculator.vala:83
-msgid "Programming"
-msgstr "Προγραμματιστική"
-
-#: ../src/gnome-calculator.vala:84
-msgid "Mode"
-msgstr "Λειτουργία"
-
-#. Title of preferences dialog
-#: ../src/gnome-calculator.vala:87 ../src/math-preferences.vala:26
-msgid "Preferences"
-msgstr "Προτιμήσεις"
-
-#: ../src/gnome-calculator.vala:91
-msgid "About Calculator"
-msgstr "Περί Αριθμομηχανή"
-
-#: ../src/gnome-calculator.vala:92
-msgid "Help"
-msgstr "Βοήθεια"
-
-#: ../src/gnome-calculator.vala:93
-msgid "Quit"
-msgstr "Έξοδος"
-
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:228
+#: ../src/gnome-calculator.vala:218
 msgid "Unable to open help file"
 msgstr "Αδύνατο το άνοιγμα του αρχείου βοήθειας"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:258
+#: ../src/gnome-calculator.vala:248
 msgid "translator-credits"
 msgstr ""
 "Δημήτρης Σπίγγος <dmtrs32@gmail.com>\n"
 "Κώστας Παπαδήμας <pkst@gnome.org>\n"
 "Τζένη Πετούμενου <epetoumenou@gmail.com>\n"
 "Φώτης Τσάμης <ftsamis@gmail.com>\n"
-"Μιχάλης Κοτσαρίνης <mk73628@gmail.com>"
+"Μιχάλης Κοτσαρίνης <mk73628@gmail.com>\n"
+"Ευστάθιος Ιωσηφίδης <iosifidis@opensuse.org>"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:272
+#: ../src/gnome-calculator.vala:262
 msgid "Calculator with financial and scientific modes."
 msgstr "Αριθμομηχανή με εμπορικές και επιστημονικές λειτουργίες."
 
-#: ../src/gnome-calculator.vala:305
+#: ../src/gnome-calculator.vala:298
 msgid "Solve given equation"
 msgstr "Λύση δεδομένης εξίσωσης"
 
-#: ../src/gnome-calculator.vala:313
+#: ../src/gnome-calculator.vala:306
 msgid "Start with given equation"
 msgstr "Έναρξη με τη δεδομένη εξίσωση"
 
-#: ../src/gnome-calculator.vala:322
+#: ../src/gnome-calculator.vala:315
 msgid "Show release version"
 msgstr "Προβολή της έκδοσης"
 
 #. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.vala:298
+#: ../src/math-buttons.vala:293
 msgid "Pi [Ctrl+P]"
 msgstr "π [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.vala:300
+#: ../src/math-buttons.vala:295
 msgid "Euler’s Number"
 msgstr "Αριθμός Euler"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.vala:304
+#: ../src/math-buttons.vala:299
 msgid "Subscript mode [Alt]"
 msgstr "Λειτουργία δείκτη [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.vala:306
+#: ../src/math-buttons.vala:301
 msgid "Superscript mode [Ctrl]"
 msgstr "Λειτουργία εκθέτη [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.vala:308
+#: ../src/math-buttons.vala:303
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Εκθετικός αριθμός [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.vala:310
+#: ../src/math-buttons.vala:305
 msgid "Add [+]"
 msgstr "Πρόσθεση [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.vala:312
+#: ../src/math-buttons.vala:307
 msgid "Subtract [-]"
 msgstr "Αφαίρεση [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.vala:314
+#: ../src/math-buttons.vala:309
 msgid "Multiply [*]"
 msgstr "Πολλαπλασιασμός [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.vala:316
+#: ../src/math-buttons.vala:311
 msgid "Divide [/]"
 msgstr "Διαίρεση [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.vala:318
+#: ../src/math-buttons.vala:313
 msgid "Modulus divide"
 msgstr "Υπόλοιπο διαίρεσης ακεραίων"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.vala:320
+#: ../src/math-buttons.vala:315
 msgid "Additional Functions"
 msgstr "Επιπλέον συναρτήσεις"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.vala:322
+#: ../src/math-buttons.vala:317
 msgid "Exponent [^ or **]"
 msgstr "Δύναμη [^ ή **]"
 
-#. Tooltip for the square button
-#: ../src/math-buttons.vala:324
-msgid "Square [Ctrl+2]"
-msgstr "Τετράγωνο [Ctrl+2]"
-
 #. Tooltip for the percentage button
-#: ../src/math-buttons.vala:326
+#: ../src/math-buttons.vala:319
 msgid "Percentage [%]"
 msgstr "Ποσοστό [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.vala:328
+#: ../src/math-buttons.vala:321
 msgid "Factorial [!]"
 msgstr "Παραγοντικό [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.vala:330
+#: ../src/math-buttons.vala:323
 msgid "Absolute value [|]"
 msgstr "Απόλυτη τιμή [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.vala:332
+#: ../src/math-buttons.vala:325
 msgid "Complex argument"
 msgstr "Όρισμα μιγαδικού"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.vala:334
+#: ../src/math-buttons.vala:327
 msgid "Complex conjugate"
 msgstr "Συζυγής μιγαδικός"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.vala:336
+#: ../src/math-buttons.vala:329
 msgid "Root [Ctrl+R]"
 msgstr "Ρίζα [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.vala:338
+#: ../src/math-buttons.vala:331
 msgid "Square root [Ctrl+R]"
 msgstr "Τετραγωνική ρίζα [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.vala:340
+#: ../src/math-buttons.vala:333
 msgid "Logarithm"
 msgstr "Λογάριθμος"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.vala:342
+#: ../src/math-buttons.vala:335
 msgid "Natural Logarithm"
 msgstr "Φυσικός λογάριθμος"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.vala:344
+#: ../src/math-buttons.vala:337
 msgid "Sine"
 msgstr "Ημίτονο"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.vala:346
+#: ../src/math-buttons.vala:339
 msgid "Cosine"
 msgstr "Συνημίτονο"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.vala:348
+#: ../src/math-buttons.vala:341
 msgid "Tangent"
 msgstr "Εφαπτομένη"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.vala:350
+#: ../src/math-buttons.vala:343
 msgid "Hyperbolic Sine"
 msgstr "Υπερβολικό ημίτονο"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.vala:352
+#: ../src/math-buttons.vala:345
 msgid "Hyperbolic Cosine"
 msgstr "Υπερβολικό συνημίτονο"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.vala:354
+#: ../src/math-buttons.vala:347
 msgid "Hyperbolic Tangent"
 msgstr "Υπερβολική εφαπτομένη"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.vala:356
+#: ../src/math-buttons.vala:349
 msgid "Inverse [Ctrl+I]"
 msgstr "Αντίστροφο [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.vala:358
+#: ../src/math-buttons.vala:351
 msgid "Boolean AND"
 msgstr "Λογικό AND"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.vala:360
+#: ../src/math-buttons.vala:353
 msgid "Boolean OR"
 msgstr "Λογικό OR"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.vala:362
+#: ../src/math-buttons.vala:355
 msgid "Boolean Exclusive OR"
 msgstr "Λογικό αποκλειστικό OR"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.vala:364
+#: ../src/math-buttons.vala:357
 msgid "Boolean NOT"
 msgstr "Λογικό NOT"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
+#: ../src/math-buttons.vala:359 ../src/math-buttons.vala:812
 msgid "Integer Component"
 msgstr "Ακέραιο μέρος"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
+#: ../src/math-buttons.vala:361 ../src/math-buttons.vala:814
 msgid "Fractional Component"
 msgstr "Κλασματικό μέρος"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.vala:370
+#: ../src/math-buttons.vala:363
 msgid "Real Component"
 msgstr "Πραγματικό μέρος"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.vala:372
+#: ../src/math-buttons.vala:365
 msgid "Imaginary Component"
 msgstr "Φανταστικό μέρος"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.vala:374
+#: ../src/math-buttons.vala:367
 msgid "Ones' Complement"
 msgstr "Συμπλήρωμα ως προς 1"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.vala:376
+#: ../src/math-buttons.vala:369
 msgid "Two's Complement"
 msgstr "Συμπλήρωμα ως προς 2"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.vala:378
+#: ../src/math-buttons.vala:371
 msgid "Truncate"
 msgstr "Αποκοπή ψηφίων"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.vala:380
+#: ../src/math-buttons.vala:373
 msgid "Start Group [(]"
 msgstr "Αρχή ομάδας [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.vala:382
+#: ../src/math-buttons.vala:375
 msgid "End Group [)]"
 msgstr "Τέλος ομάδας [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.vala:388
+#: ../src/math-buttons.vala:381
 msgid "Calculate Result"
 msgstr "Υπολογισμός αποτελέσματος"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.vala:390
+#: ../src/math-buttons.vala:383
 msgid "Factorize [Ctrl+F]"
 msgstr "Παραγοντοποίηση [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.vala:392
+#: ../src/math-buttons.vala:385
 msgid "Clear Display [Escape]"
 msgstr "Εκκαθάριση οθόνης [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.vala:394
+#: ../src/math-buttons.vala:387
 msgid "Undo [Ctrl+Z]"
 msgstr "Αναίρεση [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.vala:402
+#: ../src/math-buttons.vala:395
 msgid "Double Declining Depreciation"
 msgstr "Φθίνουσα απόσβεση διπλάσιου ρυθμού"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.vala:406
+#: ../src/math-buttons.vala:399
 msgid "Financial Term"
 msgstr "Οικονομική περίοδος"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.vala:408
+#: ../src/math-buttons.vala:401
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Απόσβεση με συντελεστή τα έτη ζωής"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.vala:410
+#: ../src/math-buttons.vala:403
 msgid "Straight Line Depreciation"
 msgstr "Σταθερή απόσβεση"
 
+#: ../src/math-buttons.vala:432
+msgid "Square [Ctrl+2]"
+msgstr "Τετράγωνο [Ctrl+2]"
+
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.vala:523
+#: ../src/math-buttons.vala:522
 msgid "Binary"
 msgstr "Δυαδική"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.vala:527
+#: ../src/math-buttons.vala:526
 msgid "Octal"
 msgstr "Οκταδική"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.vala:531
+#: ../src/math-buttons.vala:530
 msgid "Decimal"
 msgstr "Δεκαδική"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.vala:535
+#: ../src/math-buttons.vala:534
 msgid "Hexadecimal"
 msgstr "Δεκαεξαδική"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
+#: ../src/math-buttons.vala:743 ../src/math-buttons.vala:780
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1132,7 +1177,7 @@ msgstr[1] "_%d θέσεις"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
+#: ../src/math-buttons.vala:748 ../src/math-buttons.vala:785
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1140,22 +1185,22 @@ msgstr[0] "%d θέση"
 msgstr[1] "%d θέσεις"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.vala:813
+#: ../src/math-buttons.vala:816
 msgid "Round"
 msgstr "Στρογγυλοποίηση προς τον πλησιέστερο ακέραιο"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.vala:815
+#: ../src/math-buttons.vala:818
 msgid "Floor"
 msgstr "Στρογγυλοποίηση προς τα κάτω"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:817
+#: ../src/math-buttons.vala:820
 msgid "Ceiling"
 msgstr "Στρογγυλοποίηση προς τα πάνω"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:819
+#: ../src/math-buttons.vala:822
 msgid "Sign"
 msgstr "Πρόσημο"
 
@@ -1175,68 +1220,68 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.vala:487
+#: ../src/math-equation.vala:481
 msgid "No undo history"
 msgstr "Δεν υπάρχει ιστορικό αναίρεσης"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.vala:503
+#: ../src/math-equation.vala:497
 msgid "No redo history"
 msgstr "Δεν υπάρχει ιστορικό ενεργειών για επνάληψη"
 
-#: ../src/math-equation.vala:732
+#: ../src/math-equation.vala:727
 msgid "No sane value to store"
 msgstr "Δε δόθηκε θεμιτή τιμή για αποθήκευση"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.vala:888
+#: ../src/math-equation.vala:909
 msgid "Overflow. Try a bigger word size"
 msgstr "Υπερχείλιση. Δοκιμάστε να επιλέξετε μεγαλύτερο μήκος λέξης"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.vala:893
+#: ../src/math-equation.vala:914
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Άγνωστη μεταβλητή '%s'"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.vala:900
+#: ../src/math-equation.vala:921
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Η συνάρτηση '%s' δεν έχει οριστεί"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.vala:907
+#: ../src/math-equation.vala:928
 msgid "Unknown conversion"
 msgstr "Άγνωστη μετατροπή"
 
-#: ../src/math-equation.vala:915
+#: ../src/math-equation.vala:936
 #, c-format
 msgid "Malformed expression at token '%s'"
 msgstr "Λανθασμένη διατύπωση έκφρασης στο αναγνωριστικό '%s'"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.vala:920 ../src/math-equation.vala:925
+#: ../src/math-equation.vala:941 ../src/math-equation.vala:946
 msgid "Malformed expression"
 msgstr "Λανθασμένη διατύπωση έκφρασης"
 
-#: ../src/math-equation.vala:936
+#: ../src/math-equation.vala:957
 msgid "Calculating"
 msgstr "Υπολογισμός"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.vala:1063
+#: ../src/math-equation.vala:1084
 msgid "Need an integer to factorize"
 msgstr "Απαιτείται ακέραιος για την παραγοντοποίηση"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../src/math-equation.vala:1117
+#: ../src/math-equation.vala:1138
 msgid "No sane value to bitwise shift"
 msgstr "Χωρίς λογική τιμή για τη μετατόπιση κατά δυαδικό"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.vala:1131
+#: ../src/math-equation.vala:1152
 msgid "Displayed value not an integer"
 msgstr "Η εμφανιζόμενη τιμή δεν είναι ακέραια"
 
@@ -1332,38 +1377,42 @@ msgstr "32 δυαδικά ψηφία"
 msgid "64 bits"
 msgstr "64 δυαδικά"
 
+#: ../src/math-window.vala:67
+msgid "_Quit"
+msgstr "Έ_ξοδος"
+
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/number.vala:652
 msgid "Argument not defined for zero"
 msgstr "Δεν ορίζεται για μηδέν"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1858
+#: ../src/number.vala:909 ../src/number.vala:1923
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Δεν ορίζονται δυνάμεις του μηδενός για αρνητικούς εκθέτες"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/number.vala:992 ../src/number.vala:1025
+#: ../src/number.vala:995 ../src/number.vala:1028
 msgid "Logarithm of zero is undefined"
 msgstr "Δεν ορίζεται λογάριθμος του μηδενός"
 
 #. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1043
+#: ../src/number.vala:1046
 msgid "Factorial is only defined for natural numbers"
 msgstr "Το παραγοντικό ορίζεται μόνο για φυσικούς αριθμούς"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1119 ../src/number.vala:2608
+#: ../src/number.vala:1122 ../src/number.vala:2673
 msgid "Division by zero is undefined"
 msgstr "Η διαίρεση δια του μηδενός δεν ορίζεται"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1159
+#: ../src/number.vala:1162
 msgid "Modulus division is only defined for integers"
 msgstr "Το υπόλοιπο ορίζεται μόνο για διαίρεση ακέραιων αριθμών"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1227
+#: ../src/number.vala:1254
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1371,70 +1420,70 @@ msgstr ""
 "(180°) συν π/2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1265
+#: ../src/number.vala:1292
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Το αντίστροφο ημίτονο δεν ορίζεται για τιμές έξω από το [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1280
+#: ../src/number.vala:1307
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Το αντίστροφο συνημίτονο δεν ορίζεται για τιμές πέρα από το [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1477
+#: ../src/number.vala:1504
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Το αντίστροφο υπερβολικό συνημίτονο δεν ορίζεται για τιμές μικρότερες ή ίσες "
 "του 1"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1496
+#: ../src/number.vala:1523
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Η αντίστροφη υπερβολική εφαπτομένη δεν ορίζεται για τιμές έξω από το [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1515
+#: ../src/number.vala:1542
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Το λογικό AND ορίζεται μόνο για θετικούς ακέραιους"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1527
+#: ../src/number.vala:1554
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Το λογικό OR ορίζεται μόνο για θετικούς ακέραιους"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1539
+#: ../src/number.vala:1566
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Το λογικό XOR ορίζεται μόνο για θετικούς ακέραιους"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1551
+#: ../src/number.vala:1578
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Το λογικό NOT ορίζεται μόνο για θετικούς ακέραιους"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1574
+#: ../src/number.vala:1601
 msgid "Shift is only possible on integer values"
 msgstr "Η μετατόπιση επιτρέπεται μόνο για θετικές τιμές"
 
-#: ../src/number.vala:1878
+#: ../src/number.vala:1943
 msgid "Root must be non-zero"
 msgstr "Η ρίζα πρέπει να είναι διάφορη του μηδενός"
 
-#: ../src/number.vala:1895
+#: ../src/number.vala:1960
 msgid "Negative root of zero is undefined"
 msgstr "Δεν ορίζονται αρνητικές ρίζες του μηδενός"
 
-#: ../src/number.vala:1902
+#: ../src/number.vala:1967
 msgid "nth root of negative number is undefined for even n"
 msgstr "Η νιοστή ρίζα αρνητικού αριθμού δεν ορίζεται αν ο ν είναι άρτιος."
 
-#: ../src/number.vala:2225
+#: ../src/number.vala:2290
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Υπέρβαση: το αποτέλεσμα δεν μπορεί να υπολογισθεί"
 
-#: ../src/number.vala:2553
+#: ../src/number.vala:2618
 msgid "Reciprocal of zero is undefined"
 msgstr "Το αντίστροφο του μηδενός δεν ορίζεται"
 
@@ -1466,181 +1515,698 @@ msgstr "Διάρκεια"
 msgid "Temperature"
 msgstr "Θερμοκρασία"
 
+#: ../src/unit.vala:38
+#, c-format
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s Μοίρες"
+
+#: ../src/unit.vala:38
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "μοίρα,μοίρες,deg"
+
+#: ../src/unit.vala:39
+#, c-format
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s ακτίνια"
+
+#: ../src/unit.vala:39
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "ακτίνιο,ακτίνια,rad"
+
+#: ../src/unit.vala:40
+#, c-format
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s βαθμοί"
+
+#: ../src/unit.vala:40
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "βαθμός,βαθμοί,grad"
+
 #: ../src/unit.vala:41
 msgid "Parsecs"
 msgstr "Parsec"
+
+#: ../src/unit.vala:41
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
+
+#: ../src/unit.vala:41
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "parsec,parsecs,pc"
 
 #: ../src/unit.vala:42
 msgid "Light Years"
 msgstr "Έτη φωτός"
 
+#: ../src/unit.vala:42
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s ly"
+
+#: ../src/unit.vala:42
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "έτος φωτός,έτη φωτός,ly"
+
 #: ../src/unit.vala:43
 msgid "Astronomical Units"
 msgstr "Αστρονομικές Μονάδες"
+
+#: ../src/unit.vala:43
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s au"
+
+#: ../src/unit.vala:43
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "au"
 
 #: ../src/unit.vala:44
 msgid "Nautical Miles"
 msgstr "Ναυτικά μίλια"
 
+#: ../src/unit.vala:44
+#, c-format
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr "%s nmi"
+
+#: ../src/unit.vala:44
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "nmi"
+
 #: ../src/unit.vala:45
 msgid "Miles"
 msgstr "Μίλια"
+
+#: ../src/unit.vala:45
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s μι"
+
+#: ../src/unit.vala:45
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "μίλι,μίλια,μι"
 
 #: ../src/unit.vala:46
 msgid "Kilometers"
 msgstr "Χιλιόμετρα"
 
+#: ../src/unit.vala:46
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
+
+#: ../src/unit.vala:46
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "χιλιόμετρο,χιλιόμετρα,km,χλμ"
+
 #: ../src/unit.vala:47
 msgid "Cables"
 msgstr "Καλώδια"
+
+#: ../src/unit.vala:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cb"
+
+#: ../src/unit.vala:47
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "cable,cables,cb"
 
 #: ../src/unit.vala:48
 msgid "Fathoms"
 msgstr "Οργιές"
 
+#: ../src/unit.vala:48
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s ftm"
+
+#: ../src/unit.vala:48
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "οργιά,οργιές,ftm"
+
 #: ../src/unit.vala:49
 msgid "Meters"
 msgstr "Μέτρα"
+
+#: ../src/unit.vala:49
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
+
+#: ../src/unit.vala:49
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "μέτρο,μέτρα,m"
 
 #: ../src/unit.vala:50
 msgid "Yards"
 msgstr "Γιάρδες"
 
+#: ../src/unit.vala:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
+
+#: ../src/unit.vala:50
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "γιάρδα,γιάρδες,yd"
+
 #: ../src/unit.vala:51
 msgid "Feet"
 msgstr "Πόδια"
+
+#: ../src/unit.vala:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ft"
+
+#: ../src/unit.vala:51
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "πόδι,πόδια,ft"
 
 #: ../src/unit.vala:52
 msgid "Inches"
 msgstr "Ίντσες"
 
+#: ../src/unit.vala:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s in"
+
+#: ../src/unit.vala:52
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "ίντσα,ίντσες,in"
+
 #: ../src/unit.vala:53
 msgid "Centimeters"
 msgstr "Εκατοστά"
+
+#: ../src/unit.vala:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
+
+#: ../src/unit.vala:53
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "εκατοσστό,εκατοστά,cm,cms"
 
 #: ../src/unit.vala:54
 msgid "Millimeters"
 msgstr "Χιλιοστά"
 
+#: ../src/unit.vala:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
+
+#: ../src/unit.vala:54
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "χιλιοστό,χιλιοστά,mm\\"
+
 #: ../src/unit.vala:55
 msgid "Micrometers"
 msgstr "Μικρόμετρα"
+
+#: ../src/unit.vala:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
+
+#: ../src/unit.vala:55
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "μικρόμετρο,μικρόμετρα,μm"
 
 #: ../src/unit.vala:56
 msgid "Nanometers"
 msgstr "Νανόμετρα"
 
+#: ../src/unit.vala:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s νμ"
+
+#: ../src/unit.vala:56
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "νανόμετρο,νανόμετρα,νμ"
+
 #: ../src/unit.vala:57
 msgid "Hectares"
 msgstr "Εκτάρια"
+
+#: ../src/unit.vala:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../src/unit.vala:57
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "εκτάριο,εκτάρια,ha"
 
 #: ../src/unit.vala:58
 msgid "Acres"
 msgstr "Acre"
 
+#: ../src/unit.vala:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s acres"
+
+#: ../src/unit.vala:58
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "acre,acres"
+
 #: ../src/unit.vala:59
 msgid "Square Meters"
 msgstr "Τετραγωνικά μέτρα"
+
+#: ../src/unit.vala:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../src/unit.vala:59
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
 
 #: ../src/unit.vala:60
 msgid "Square Centimeters"
 msgstr "Τετραγωνικά εκατοστά"
 
+#: ../src/unit.vala:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit.vala:60
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
 #: ../src/unit.vala:61
 msgid "Square Millimeters"
 msgstr "Τετραγωνικά χιλιοστά"
+
+#: ../src/unit.vala:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit.vala:61
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
 
 #: ../src/unit.vala:62
 msgid "Cubic Meters"
 msgstr "Κυβικά μέτρα"
 
+#: ../src/unit.vala:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit.vala:62
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
 #: ../src/unit.vala:63
 msgid "Gallons"
 msgstr "Γαλόνια"
+
+#: ../src/unit.vala:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../src/unit.vala:63
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "γαλόνι,γαλόνια,gal"
 
 #: ../src/unit.vala:64
 msgid "Litres"
 msgstr "Λίτρα"
 
+#: ../src/unit.vala:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s L"
+
+#: ../src/unit.vala:64
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "λίτρο,λίτρα,L"
+
 #: ../src/unit.vala:65
 msgid "Quarts"
 msgstr "Quarts"
+
+#: ../src/unit.vala:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s qt"
+
+#: ../src/unit.vala:65
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "quart,quarts,qt"
 
 #: ../src/unit.vala:66
 msgid "Pints"
 msgstr "Pints"
 
+#: ../src/unit.vala:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
+
+#: ../src/unit.vala:66
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "pint,pints,pt"
+
 #: ../src/unit.vala:67
 msgid "Millilitres"
 msgstr "Χιλιοστόλιτρα"
+
+#: ../src/unit.vala:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s mL"
+
+#: ../src/unit.vala:67
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "χιλιοστόλιτρο,χιλιοστόλιτρα,mL,cm³"
 
 #: ../src/unit.vala:68
 msgid "Microlitres"
 msgstr "Μικρόλιτρα"
 
+#: ../src/unit.vala:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μL"
+
+#: ../src/unit.vala:68
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μL,uL"
+
 #: ../src/unit.vala:69
 msgid "Tonnes"
 msgstr "Τόνοι"
+
+#: ../src/unit.vala:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s T"
+
+#: ../src/unit.vala:69
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "τόνος,τόνοι"
 
 #: ../src/unit.vala:70
 msgid "Kilograms"
 msgstr "Κιλά"
 
+#: ../src/unit.vala:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
+
+#: ../src/unit.vala:70
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "κιλό,κιλά,kg,kgs"
+
 #: ../src/unit.vala:71
 msgid "Pounds"
 msgstr "Λίβρες"
+
+#: ../src/unit.vala:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../src/unit.vala:71
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "λίβρα,λίβρες,lb"
 
 #: ../src/unit.vala:72
 msgid "Ounces"
 msgstr "Ουγκιές"
 
+#: ../src/unit.vala:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz"
+
+#: ../src/unit.vala:72
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "ουγγία,ουγιές,oz"
+
 #: ../src/unit.vala:73
 msgid "Grams"
 msgstr "Γραμμάρια"
+
+#: ../src/unit.vala:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit.vala:73
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "γραμμάριο,γραμμάρια,g"
 
 #: ../src/unit.vala:74
 msgid "Years"
 msgstr "Έτη"
 
+#: ../src/unit.vala:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s έτη"
+
+#: ../src/unit.vala:74
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "έτος,έτη"
+
 #: ../src/unit.vala:75
 msgid "Days"
 msgstr "Ημέρες"
+
+#: ../src/unit.vala:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s ημέρες"
+
+#: ../src/unit.vala:75
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "ημέρα,ημέρες"
 
 #: ../src/unit.vala:76
 msgid "Hours"
 msgstr "Ώρες"
 
+#: ../src/unit.vala:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s ώρες"
+
+#: ../src/unit.vala:76
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "ώρα,ώρες"
+
 #: ../src/unit.vala:77
 msgid "Minutes"
 msgstr "Λεπτά"
+
+#: ../src/unit.vala:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s λεπτά"
+
+#: ../src/unit.vala:77
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "λεπτό,λεπτά"
 
 #: ../src/unit.vala:78
 msgid "Seconds"
 msgstr "Δευτερόλεπτα"
 
+#: ../src/unit.vala:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit.vala:78
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "δευτερόλεπτο,δευτερόλεπτα,s"
+
 #: ../src/unit.vala:79
 msgid "Milliseconds"
 msgstr "Χιλιοστά δευτερολέπτου"
+
+#: ../src/unit.vala:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit.vala:79
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "millisecond,milliseconds,ms"
 
 #: ../src/unit.vala:80
 msgid "Microseconds"
 msgstr "Microseconds"
 
+#: ../src/unit.vala:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit.vala:80
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "μικροδευτερόλεπτο,μικροδευτερόλεπτα,us,μs"
+
 #: ../src/unit.vala:81
 msgid "Celsius"
 msgstr "Κελσίου"
 
+#: ../src/unit.vala:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr "%s˚Κελσίου"
+
+#: ../src/unit.vala:81
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "βαθμοί κελσίου,˚C"
+
 #: ../src/unit.vala:82
-msgid "Farenheit"
-msgstr "Φαρενάιτ"
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+#: ../src/unit.vala:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr "%s˚Φαρενάιτ"
+
+#: ../src/unit.vala:82
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "βαθμοί φαρενάιτ,˚F"
 
 #: ../src/unit.vala:83
 msgid "Kelvin"
 msgstr "Κέλβιν"
 
+#: ../src/unit.vala:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr "%s Κέλβιν"
+
+#: ../src/unit.vala:83
+msgctxt "unit-symbols"
+msgid "K"
+msgstr "Κέλβιν"
+
 #: ../src/unit.vala:84
 msgid "Rankine"
 msgstr "Rankine"
+
+#: ../src/unit.vala:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr "%s ˚R"
+
+#: ../src/unit.vala:84
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra"
+msgstr "degR,˚R,˚Ra"
 
 #: ../src/unit.vala:86
 msgid "Currency"
@@ -1759,382 +2325,6 @@ msgstr "%s%%s"
 
 #~ msgid "© 1986–2010 The Gcalctool authors"
 #~ msgstr "© 1986–2010 Οι συγγραφείς του Gcalctool"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s degrees"
-#~ msgstr "%s Μοίρες"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degree,degrees,deg"
-#~ msgstr "μοίρα,μοίρες,deg"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s radians"
-#~ msgstr "%s ακτίνια"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "radian,radians,rad"
-#~ msgstr "ακτίνιο,ακτίνια,rad"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s gradians"
-#~ msgstr "%s βαθμοί"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gradian,gradians,grad"
-#~ msgstr "βαθμός,βαθμοί,grad"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s pc"
-#~ msgstr "%s pc"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "parsec,parsecs,pc"
-#~ msgstr "parsec,parsecs,pc"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ly"
-#~ msgstr "%s ly"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "lightyear,lightyears,ly"
-#~ msgstr "έτος φωτός,έτη φωτός,ly"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s au"
-#~ msgstr "%s au"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "au"
-#~ msgstr "au"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s nmi"
-#~ msgstr "%s nmi"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "nmi"
-#~ msgstr "nmi"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mi"
-#~ msgstr "%s μι"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mile,miles,mi"
-#~ msgstr "μίλι,μίλια,μι"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s km"
-#~ msgstr "%s km"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "kilometer,kilometers,km,kms"
-#~ msgstr "χιλιόμετρο,χιλιόμετρα,km,χλμ"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cb"
-#~ msgstr "%s cb"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "cable,cables,cb"
-#~ msgstr "cable,cables,cb"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ftm"
-#~ msgstr "%s ftm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "fathom,fathoms,ftm"
-#~ msgstr "οργιά,οργιές,ftm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m"
-#~ msgstr "%s m"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "meter,meters,m"
-#~ msgstr "μέτρο,μέτρα,m"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s yd"
-#~ msgstr "%s yd"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "yard,yards,yd"
-#~ msgstr "γιάρδα,γιάρδες,yd"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ft"
-#~ msgstr "%s ft"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "foot,feet,ft"
-#~ msgstr "πόδι,πόδια,ft"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s in"
-#~ msgstr "%s in"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "inch,inches,in"
-#~ msgstr "ίντσα,ίντσες,in"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cm"
-#~ msgstr "%s cm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "centimeter,centimeters,cm,cms"
-#~ msgstr "εκατοσστό,εκατοστά,cm,cms"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mm"
-#~ msgstr "%s mm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millimeter,millimeters,mm"
-#~ msgstr "χιλιοστό,χιλιοστά,mm\\"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μm"
-#~ msgstr "%s μm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "micrometer,micrometers,um"
-#~ msgstr "μικρόμετρο,μικρόμετρα,μm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s nm"
-#~ msgstr "%s νμ"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "nanometer,nanometers,nm"
-#~ msgstr "νανόμετρο,νανόμετρα,νμ"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ha"
-#~ msgstr "%s ha"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "hectare,hectares,ha"
-#~ msgstr "εκτάριο,εκτάρια,ha"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s acres"
-#~ msgstr "%s acres"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "acre,acres"
-#~ msgstr "acre,acres"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m²"
-#~ msgstr "%s m²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "m²"
-#~ msgstr "m²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cm²"
-#~ msgstr "%s cm²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "cm²"
-#~ msgstr "cm²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mm²"
-#~ msgstr "%s mm²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mm²"
-#~ msgstr "mm²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m³"
-#~ msgstr "%s m³"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "m³"
-#~ msgstr "m³"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s gal"
-#~ msgstr "%s gal"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gallon,gallons,gal"
-#~ msgstr "γαλόνι,γαλόνια,gal"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s L"
-#~ msgstr "%s L"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "litre,litres,liter,liters,L"
-#~ msgstr "λίτρο,λίτρα,L"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s qt"
-#~ msgstr "%s qt"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "quart,quarts,qt"
-#~ msgstr "quart,quarts,qt"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s pt"
-#~ msgstr "%s pt"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "pint,pints,pt"
-#~ msgstr "pint,pints,pt"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mL"
-#~ msgstr "%s mL"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
-#~ msgstr "χιλιοστόλιτρο,χιλιοστόλιτρα,mL,cm³"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μL"
-#~ msgstr "%s μL"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mm³,μL,uL"
-#~ msgstr "mm³,μL,uL"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s T"
-#~ msgstr "%s T"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "tonne,tonnes"
-#~ msgstr "τόνος,τόνοι"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s kg"
-#~ msgstr "%s kg"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
-#~ msgstr "κιλό,κιλά,kg,kgs"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s lb"
-#~ msgstr "%s lb"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "pound,pounds,lb"
-#~ msgstr "λίβρα,λίβρες,lb"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s oz"
-#~ msgstr "%s oz"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "ounce,ounces,oz"
-#~ msgstr "ουγγία,ουγιές,oz"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s g"
-#~ msgstr "%s g"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gram,grams,gramme,grammes,g"
-#~ msgstr "γραμμάριο,γραμμάρια,g"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s years"
-#~ msgstr "%s έτη"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "year,years"
-#~ msgstr "έτος,έτη"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s days"
-#~ msgstr "%s ημέρες"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "day,days"
-#~ msgstr "ημέρα,ημέρες"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s hours"
-#~ msgstr "%s ώρες"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "hour,hours"
-#~ msgstr "ώρα,ώρες"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s minutes"
-#~ msgstr "%s λεπτά"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "minute,minutes"
-#~ msgstr "λεπτό,λεπτά"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s s"
-#~ msgstr "%s s"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "second,seconds,s"
-#~ msgstr "δευτερόλεπτο,δευτερόλεπτα,s"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ms"
-#~ msgstr "%s ms"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millisecond,milliseconds,ms"
-#~ msgstr "millisecond,milliseconds,ms"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μs"
-#~ msgstr "%s μs"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "microsecond,microseconds,us,μs"
-#~ msgstr "μικροδευτερόλεπτο,μικροδευτερόλεπτα,us,μs"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚C"
-#~ msgstr "%s˚Κελσίου"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "βαθμοί κελσίου,˚C"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚F"
-#~ msgstr "%s˚Φαρενάιτ"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "βαθμοί φαρενάιτ,˚F"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s K"
-#~ msgstr "%s Κέλβιν"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "Κέλβιν"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚R"
-#~ msgstr "%s ˚R"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "degR,˚R,˚Ra"
 
 #~ msgid "<i>x</i>"
 #~ msgstr "<i>x</i>"
