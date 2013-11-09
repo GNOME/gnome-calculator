@@ -484,6 +484,7 @@ public class MathEquation : Gtk.TextBuffer
         }
 
         state = undo_stack.nth_data (0);
+        status = ("");
         undo_stack.remove (state);
         redo_stack.prepend (get_current_state ());
 
