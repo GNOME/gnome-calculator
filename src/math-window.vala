@@ -27,6 +27,7 @@ public class MathWindow : Gtk.ApplicationWindow
         _equation = equation;
         set_title (/* Title of main window */
                    _("Calculator"));
+        icon_name = "gnome-calculator";
         role = "gnome-calculator";
         resizable = false;
 
