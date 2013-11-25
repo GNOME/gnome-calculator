@@ -21,18 +21,20 @@ public class MathWindow : Gtk.ApplicationWindow
     public MathButtons buttons { get { return _buttons; } }
     private bool right_aligned;
 
+    private Gtk.HeaderBar headerbar;
+
     public MathWindow (Gtk.Application app, MathEquation equation)
     {
         Object (application: app);
         _equation = equation;
         set_title (/* Title of main window */
                    _("Calculator"));
+
         icon_name = "gnome-calculator";
         role = "gnome-calculator";
         resizable = false;
 
-        var headerbar = new Gtk.HeaderBar ();
-        headerbar.set_title (_("Calculator"));
+        headerbar = new Gtk.HeaderBar ();
         headerbar.show_close_button = true;
         headerbar.show_fallback_app_menu = true;
         headerbar.show ();
@@ -63,6 +65,30 @@ public class MathWindow : Gtk.ApplicationWindow
         _buttons = new MathButtons (equation);
         vbox.pack_start (buttons, true, true, 0);
         buttons.show ();
+        buttons.notify["mode"].connect (mode_changed_cb);
+    }
+
+    private void mode_changed_cb ()
+    {
+        switch (buttons.mode)
+        {
+        default:
+        case ButtonMode.BASIC:
+            headerbar.set_title (_("Basic Mode"));
+            break;
+
+        case ButtonMode.ADVANCED:
+            headerbar.set_title (_("Advanced Mode"));
+            break;
+
+        case ButtonMode.FINANCIAL:
+            headerbar.set_title (_("Financial Mode"));
+            break;
+
+        case ButtonMode.PROGRAMMING:
+            headerbar.set_title (_("Programming Mode"));
+            break;
+        }
     }
 
     public void critical_error (string title, string contents)
