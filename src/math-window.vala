@@ -30,6 +30,13 @@ public class MathWindow : Gtk.ApplicationWindow
         role = "gnome-calculator";
         resizable = false;
 
+        var headerbar = new Gtk.HeaderBar ();
+        headerbar.set_title (_("Calculator"));
+        headerbar.show_close_button = true;
+        headerbar.show_fallback_app_menu = true;
+        headerbar.show ();
+        set_titlebar (headerbar);
+
         var main_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         add (main_vbox);
         main_vbox.show ();
