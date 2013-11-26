@@ -66,6 +66,7 @@ public class MathWindow : Gtk.ApplicationWindow
         vbox.pack_start (buttons, true, true, 0);
         buttons.show ();
         buttons.notify["mode"].connect (mode_changed_cb);
+        mode_changed_cb ();
     }
 
     private void mode_changed_cb ()
