@@ -1042,9 +1042,21 @@ public class Number
             return new Number.integer (1);
         if (!is_natural ())
         {
-            /* Translators: Error displayed when attempted take the factorial of a fractional number */
-            mperr (_("Factorial is only defined for natural numbers"));
-            return new Number.integer (0);
+
+             /* Factorial Not defined for Complex or for negative numbers */
+            if(is_negative () || is_complex ())
+            {
+                /* Translators: Error displayed when attempted take the factorial of a fractional number */
+                mperr (_("Factorial is not computed for given input"));
+                return new Number.integer (0);
+            }
+            
+            var val = to_double ();
+
+            /* Factorial(x) = Gamma(x+1) - This is the formula used to calculate Factorial.*/
+            var fact = Math.tgamma(val+1);
+
+            return new Number.double(fact);
         }
 
         /* Convert to integer - if couldn't be converted then the factorial would be too big anyway */
