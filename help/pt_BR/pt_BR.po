@@ -5,13 +5,14 @@
 # Georges Basile Stavracas Neto <georges.stavracas@gmail.com>, 2013.
 # Lucas Romero de Abreu <lucasdeabreu@gmail.com>, 2013.
 # Enrico Nicoletto <liverig@gmail.com>, 2013.
+# Rafael Ferreira <rafael.f.f1@gmail.com>, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator help\n"
-"POT-Creation-Date: 2013-09-22 00:26+0000\n"
-"PO-Revision-Date: 2013-09-23 08:55-0300\n"
-"Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
+"POT-Creation-Date: 2013-11-19 07:36+0000\n"
+"PO-Revision-Date: 2013-12-10 03:12-0300\n"
+"Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -652,14 +653,21 @@ msgstr "Funções"
 
 #. (itstool) path: page/p
 #: C/functions.page:11
+#| msgid ""
+#| "Functions can be used by inserting the name of the function followed by "
+#| "the function argument. If the argument is not a number or <link xref="
+#| "\"variable\">variable</link> then use parenthesis around the argument."
 msgid ""
-"Functions can be used by inserting the name of the function followed by the "
-"function argument. If the argument is not a number or <link xref=\"variable"
-"\">variable</link> then use parenthesis around the argument."
+"Functions can be used by inserting the name of the function followed by "
+"function arguments. <app>Calculator</app> also support user-defined "
+"functions. If the argument is not a number or <link xref=\"variable\">a "
+"single variable</link> then write each argument separated by semicolon and "
+"use parenthesis around the argument list."
 msgstr ""
 "As funções podem ser usadas inserindo o nome da função seguida pelo "
-"argumento da função. Se o argumento não é um número ou uma <link xref="
-"\"variable\">variável</link> então use parênteses envolta do argumento."
+"argumento da função. A <app>Calculadora</app> também provê suporte a funções "
+"definidas pelo usuário. Se o argumento não é um número ou uma <link xref="
+"\"variable\">variável</link>, então use parênteses envolta do argumento."
 
 #. (itstool) path: example/p
 #: C/functions.page:16
@@ -671,165 +679,206 @@ msgstr "sin 30"
 msgid "abs (5−9)"
 msgstr "abs (5−9)"
 
+#. (itstool) path: example/p
+#: C/functions.page:22
+msgid "fun (9;10)"
+msgstr "fun (9;10)"
+
 #. (itstool) path: page/p
-#: C/functions.page:23
+#: C/functions.page:26
+msgid ""
+"To add a new function type the function in the format as given below. A "
+"function name and arguments must only contain upper or lower case "
+"characters. The part after @ is the function description which is optional."
+msgstr ""
+"Para adicionar uma nova função, digite a função no formato dado abaixo. Um "
+"nome de função e argumentos devem conter apenas caracteres maiúsculos ou "
+"minúsculos. A parte após @ é a descrição da função, a qual é opcional."
+
+#. (itstool) path: example/p
+#: C/functions.page:30
+msgid ""
+"SimpleInterest (principal; rate; time) = principal * rate * time @ Simple "
+"Interest formula"
+msgstr ""
+"InteresseSimples (principal; taxa; tempo) = principal * taxa * tempo @ "
+"fórmula Interesse Simples"
+
+#. (itstool) path: page/p
+#: C/functions.page:34
+msgid "Functions can also be added and inserted using the f(x) button."
+msgstr "Funções também podem ser adicionadas e inseridas usando o botão f(x)."
+
+#. (itstool) path: example/p
+#: C/functions.page:38
+msgid ""
+"Click on f(x). Type the function name in the box, choose the number of "
+"arguments and click on the plus sign button next to it. On the calculator "
+"screen type the function expression and press <key>Enter</key>."
+msgstr ""
+"Clique em f(x). Digite o nome da função na caixa, escolha o número de "
+"argumentos e clique no botão com sinal de mais próximo a ela. Na tela da "
+"calculadora, digite a expressão da função e pressione <key>Enter</key>."
+
+#. (itstool) path: example/p
+#: C/functions.page:43
+msgid "Click on f(x). Choose the function and click on it."
+msgstr "Clique em f(x). Escolha a função e clique nela."
+
+#. (itstool) path: page/p
+#: C/functions.page:47
 msgid "The following functions are defined."
 msgstr "Estão definidas as seguintes funções."
 
 #. (itstool) path: td/p
-#: C/functions.page:28
+#: C/functions.page:52
 msgid "abs"
 msgstr "abs"
 
 #. (itstool) path: td/p
-#: C/functions.page:29
+#: C/functions.page:53
 msgid "<link xref=\"absolute\">Absolute Value</link>"
 msgstr "<link xref=\"absolute\">Valor absoluto</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:32
+#: C/functions.page:56
 msgid "cos"
 msgstr "cos"
 
 #. (itstool) path: td/p
-#: C/functions.page:33
+#: C/functions.page:57
 msgid "<link xref=\"trigonometry\">Cosine</link>"
 msgstr "<link xref=\"trigonometry\">Cosseno</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:36
+#: C/functions.page:60
 msgid "cosh"
 msgstr "cosh"
 
 #. (itstool) path: td/p
-#: C/functions.page:37
+#: C/functions.page:61
 msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
 msgstr "<link xref=\"trigonometry\">Cosseno Hiperbólico</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:40
+#: C/functions.page:64
 msgid "frac"
 msgstr "frac"
 
 #. (itstool) path: td/p
-#: C/functions.page:41
+#: C/functions.page:65
 msgid "Fractional Component"
 msgstr "Porção fracionária"
 
 #. (itstool) path: td/p
-#: C/functions.page:44
+#: C/functions.page:68
 msgid "int"
 msgstr "int"
 
 #. (itstool) path: td/p
-#: C/functions.page:45
+#: C/functions.page:69
 msgid "Integer Component"
 msgstr "Porção inteira"
 
 #. (itstool) path: td/p
-#: C/functions.page:48
+#: C/functions.page:72
 msgid "ln"
 msgstr "ln"
 
 #. (itstool) path: td/p
-#: C/functions.page:49
+#: C/functions.page:73
 msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
 msgstr "<link xref=\"logarithm\">Logaritmo natural</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:52
+#: C/functions.page:76
 msgid "log"
 msgstr "log"
 
 #. (itstool) path: td/p
-#: C/functions.page:53
+#: C/functions.page:77
 msgid "<link xref=\"logarithm\">Logarithm</link>"
 msgstr "<link xref=\"logarithm\">Logaritmo</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:56
+#: C/functions.page:80
 msgid "not"
 msgstr "not"
 
 #. (itstool) path: td/p
-#: C/functions.page:57
+#: C/functions.page:81
 msgid "<link xref=\"boolean\">Boolean NOT</link>"
 msgstr "<link xref=\"boolean\">NÃO booleano (NOT)</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:60
+#: C/functions.page:84
 msgid "ones"
 msgstr "ones"
 
 #. (itstool) path: td/p
-#: C/functions.page:61
+#: C/functions.page:85
 msgid "Ones complement"
 msgstr "Complemento de um"
 
 #. (itstool) path: td/p
-#: C/functions.page:64
+#: C/functions.page:88
 msgid "sin"
 msgstr "sin"
 
 #. (itstool) path: td/p
-#: C/functions.page:65
+#: C/functions.page:89
 msgid "<link xref=\"trigonometry\">Sine</link>"
 msgstr "<link xref=\"trigonometry\">Seno</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:68
+#: C/functions.page:92
 msgid "sinh"
 msgstr "sinh"
 
 #. (itstool) path: td/p
-#: C/functions.page:69
+#: C/functions.page:93
 msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
 msgstr "<link xref=\"trigonometry\">Seno hiperbólico</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:72
+#: C/functions.page:96
 msgid "sqrt"
 msgstr "sqrt"
 
 #. (itstool) path: td/p
-#: C/functions.page:73
+#: C/functions.page:97
 msgid "<link xref=\"power\">Square Root</link>"
-msgstr "<link xref=\"power\">Raíz quadrada</link>"
+msgstr "<link xref=\"power\">Raiz quadrada</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:76
+#: C/functions.page:100
 msgid "tan"
 msgstr "tan"
 
 #. (itstool) path: td/p
-#: C/functions.page:77
+#: C/functions.page:101
 msgid "<link xref=\"trigonometry\">Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Tangente</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:80
+#: C/functions.page:104
 msgid "tanh"
 msgstr "tanh"
 
 #. (itstool) path: td/p
-#: C/functions.page:81
+#: C/functions.page:105
 msgid "<link xref=\"trigonometry\">Hyperbolic Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Tangente hiperbólica</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:84
+#: C/functions.page:108
 msgid "twos"
 msgstr "twos"
 
 #. (itstool) path: td/p
-#: C/functions.page:85
+#: C/functions.page:109
 msgid "Twos complement"
 msgstr "Complemento de dois"
-
-#. (itstool) path: page/p
-#: C/functions.page:88
-msgid "<app>Calculator</app> does not support user-defined functions."
-msgstr "A <app>Calculadora</app> não suporta funções definidas pelo usuário."
 
 #. (itstool) path: page/title
 #: C/keyboard.page:9
@@ -1119,7 +1168,7 @@ msgid ""
 "Results are displayed in scientific notation except the exponent is always a "
 "multiple of three"
 msgstr ""
-"Os resultados são exibidos em notação científica, com excessão do expoente "
+"Os resultados são exibidos em notação científica, com exceção do expoente "
 "que é sempre um múltiplo de três."
 
 #. (itstool) path: td/p
@@ -1203,8 +1252,8 @@ msgid ""
 "The following equation calculates one quarter of 80 apples ((25÷100)×80)."
 msgstr ""
 "Em todos os outros casos, o símbolo de porcentagem resulta em uma fração com "
-"denominador 100. A equação a seguir calcula um quarto de 80 maçãs ((25÷100)"
-"×80)."
+"denominador 100. A equação a seguir calcula um quarto de 80 maçãs "
+"((25÷100)×80)."
 
 #. (itstool) path: example/p
 #: C/percentage.page:28
@@ -1308,7 +1357,7 @@ msgid ""
 "\">number mode</link> automatically changes to superscript. To enter "
 "2×10¹⁰⁰, start by entering the mantissa (2):"
 msgstr ""
-"Para inserir números em formato ciêntifico use o botão <gui>×10x</gui> "
+"Para inserir números em formato científico use o botão <gui>×10x</gui> "
 "(<keyseq><key>Ctrl</key><key>E</key></keyseq>). O <link xref=\"superscript"
 "\">modo do número</link> é alterado de forma automática para sobrescrito. "
 "Para digitar 2×10¹⁰⁰, comece digitando a mantissa (2):"
@@ -1324,7 +1373,7 @@ msgid ""
 "Then press the scientific notation button (or press <keyseq><key>Ctrl</"
 "key><key>E</key></keyseq>):"
 msgstr ""
-"Então pressione o botão de notação ciêntifica (ou pressione "
+"Então pressione o botão de notação científica (ou pressione "
 "<keyseq><key>Ctrl</key><key>E</key></keyseq>):"
 
 #. (itstool) path: example/p
@@ -1420,7 +1469,7 @@ msgid ""
 "Trigonometry can be performed using the sin, cos, and tan <link xref="
 "\"function\">function</link>."
 msgstr ""
-"A trigometria pode ser efetuada usando a <link xref=\"function\">função</"
+"A trigonometria pode ser efetuada usando a <link xref=\"function\">função</"
 "link> de sin, cos, e tan."
 
 #. (itstool) path: example/p
@@ -1436,7 +1485,7 @@ msgid ""
 "when in <link xref=\"mouse\">Advanced mode</link>."
 msgstr ""
 "As unidades de ângulo podem ser alteradas indo em <guiseq><gui>Calculadora</"
-"gui><gui>Preferências</gui></guiseq>. Os botões de trigometria ficam "
+"gui><gui>Preferências</gui></guiseq>. Os botões de trigonometria ficam "
 "visíveis quando a calculadora está no <link xref=\"mouse\">Modo avançada</"
 "link>."
 
@@ -1490,10 +1539,16 @@ msgstr "Variáveis"
 
 #. (itstool) path: page/p
 #: C/variables.page:11
+#| msgid ""
+#| "To assign a value to a variable use the = symbol or choose the variable "
+#| "to assign to with the <gui>x</gui> button in <link xref=\"mouse"
+#| "\">advanced mode</link>. A variable name must only contain upper or lower "
+#| "characters."
 msgid ""
 "To assign a value to a variable use the = symbol or choose the variable to "
 "assign to with the <gui>x</gui> button in <link xref=\"mouse\">advanced "
-"mode</link>. A variable name must only contain upper or lower characters."
+"mode</link>. A variable name must only contain upper or lower case "
+"characters."
 msgstr ""
 "Para atribuir um valor a uma variável, use o símbolo de = ou escolha a "
 "variável a ser atribuída usando o botão <gui>x</gui> no <link xref=\"mouse"
@@ -1569,3 +1624,7 @@ msgstr "rand"
 #: C/variables.page:53
 msgid "Random value in the range [0,1] (changes on each read)"
 msgstr "Valor aleatório no intervalo de [0,1] (muda em cada leitura)"
+
+#~ msgid "<app>Calculator</app> does not support user-defined functions."
+#~ msgstr ""
+#~ "A <app>Calculadora</app> não suporta funções definidas pelo usuário."
