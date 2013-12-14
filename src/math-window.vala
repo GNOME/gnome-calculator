@@ -36,7 +36,6 @@ public class MathWindow : Gtk.ApplicationWindow
 
         headerbar = new Gtk.HeaderBar ();
         headerbar.show_close_button = true;
-        headerbar.show_fallback_app_menu = true;
         headerbar.show ();
         set_titlebar (headerbar);
 
