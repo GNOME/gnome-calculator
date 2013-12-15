@@ -1046,11 +1046,11 @@ public class Number
              /* Factorial Not defined for Complex or for negative numbers */
             if(is_negative () || is_complex ())
             {
-                /* Translators: Error displayed when attempted take the factorial of a fractional number */
-                mperr (_("Factorial is not computed for given input"));
+                /* Translators: Error displayed when attempted take the factorial of a negative or complex number */
+                mperr (_("Factorial is only defined for non-negative real numbers"));
                 return new Number.integer (0);
             }
-            
+
             var val = to_double ();
 
             /* Factorial(x) = Gamma(x+1) - This is the formula used to calculate Factorial.*/
