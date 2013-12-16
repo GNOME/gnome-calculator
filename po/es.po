@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-09 18:00+0000\n"
-"PO-Revision-Date: 2013-12-10 12:48+0100\n"
+"POT-Creation-Date: 2013-12-15 18:12+0000\n"
+"PO-Revision-Date: 2013-12-16 14:50+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -1349,23 +1349,23 @@ msgstr "32 bits"
 msgid "64 bits"
 msgstr "64 bits"
 
-#: ../src/math-window.vala:78
+#: ../src/math-window.vala:77
 msgid "Basic Mode"
 msgstr "Modo básico"
 
-#: ../src/math-window.vala:82
+#: ../src/math-window.vala:81
 msgid "Advanced Mode"
 msgstr "Modo avanzado"
 
-#: ../src/math-window.vala:86
+#: ../src/math-window.vala:85
 msgid "Financial Mode"
 msgstr "Modo financiero"
 
-#: ../src/math-window.vala:90
+#: ../src/math-window.vala:89
 msgid "Programming Mode"
 msgstr "Modo de programación"
 
-#: ../src/math-window.vala:102
+#: ../src/math-window.vala:101
 msgid "_Quit"
 msgstr "_Salir"
 
@@ -1375,7 +1375,7 @@ msgid "Argument not defined for zero"
 msgstr "El argumento no está definido para cero"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1923
+#: ../src/number.vala:909 ../src/number.vala:1935
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "La potencia de cero no está definida para un exponente negativo"
 
@@ -1384,23 +1384,24 @@ msgstr "La potencia de cero no está definida para un exponente negativo"
 msgid "Logarithm of zero is undefined"
 msgstr "El logaritmo de cero no está definido"
 
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1046
-msgid "Factorial is only defined for natural numbers"
-msgstr "El factorial sólo está definido para números naturales"
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#: ../src/number.vala:1050
+#| msgid "Factorial is only defined for natural numbers"
+msgid "Factorial is only defined for non-negative real numbers"
+msgstr "El factorial sólo está definido para números reales no negativos"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1122 ../src/number.vala:2673
+#: ../src/number.vala:1134 ../src/number.vala:2685
 msgid "Division by zero is undefined"
 msgstr "La división por cero no está definida"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1162
+#: ../src/number.vala:1174
 msgid "Modulus division is only defined for integers"
 msgstr "La división modular sólo está definida para enteros"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1254
+#: ../src/number.vala:1266
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1408,71 +1409,71 @@ msgstr ""
 "lo son de π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1292
+#: ../src/number.vala:1304
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "La inversa del seno no está definida para valores fuera de [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1307
+#: ../src/number.vala:1319
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "La inversa del coseno no está definida para valores fuera de [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1504
+#: ../src/number.vala:1516
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "La inversa del coseno hiperbólico no está definida para valores menores que "
 "uno"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1523
+#: ../src/number.vala:1535
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "La inversa de la tangente hiperbólica no está definida para valores fuera de "
 "[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1542
+#: ../src/number.vala:1554
 msgid "Boolean AND is only defined for positive integers"
 msgstr "El AND booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1554
+#: ../src/number.vala:1566
 msgid "Boolean OR is only defined for positive integers"
 msgstr "El OR booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1566
+#: ../src/number.vala:1578
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "El XOR booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1578
+#: ../src/number.vala:1590
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "El NOT booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1601
+#: ../src/number.vala:1613
 msgid "Shift is only possible on integer values"
 msgstr "El desplazamiento sólo es posible en valores enteros"
 
-#: ../src/number.vala:1943
+#: ../src/number.vala:1955
 msgid "Root must be non-zero"
 msgstr "La raíz debe ser distinta de cero"
 
-#: ../src/number.vala:1960
+#: ../src/number.vala:1972
 msgid "Negative root of zero is undefined"
 msgstr "La raíz negativa de cero no está definida"
 
-#: ../src/number.vala:1967
+#: ../src/number.vala:1979
 msgid "nth root of negative number is undefined for even n"
 msgstr "La raíz enésima de un número negativo no está definida, incluso para n"
 
-#: ../src/number.vala:2290
+#: ../src/number.vala:2302
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Desbordamiento: no se pudo calcular el resultado"
 
-#: ../src/number.vala:2618
+#: ../src/number.vala:2630
 msgid "Reciprocal of zero is undefined"
 msgstr "El recíproco de cero no está definido"
 
