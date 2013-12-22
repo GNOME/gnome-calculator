@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-10-06 02:43+0000\n"
-"PO-Revision-Date: 2013-09-27 18:53+0200\n"
+"POT-Creation-Date: 2013-12-18 20:06+0000\n"
+"PO-Revision-Date: 2013-10-09 16:55+0200\n"
 "Last-Translator: Pavol Klačanský <pavol@klacansky.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
@@ -62,7 +62,7 @@ msgstr "Vedecký exponent"
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.vala:377
+#: ../src/math-buttons.vala:375
 msgid "Memory"
 msgstr "Pamäť"
 
@@ -90,7 +90,7 @@ msgstr "Uložiť"
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:393
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:391
 msgid "Compounding Term"
 msgstr "Doba úročenia"
 
@@ -155,7 +155,7 @@ msgstr "_Obdobie:"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:397
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:395
 msgid "Future Value"
 msgstr "Budúca hodnota"
 
@@ -181,7 +181,7 @@ msgstr "_Počet období:"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:411
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:409
 msgid "Gross Profit Margin"
 msgstr "Hrubá marža"
 
@@ -201,7 +201,7 @@ msgstr "_Marža:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:409
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:407
 msgid "Periodic Payment"
 msgstr "Pravidelná splátka"
 
@@ -226,7 +226,7 @@ msgstr "_Obdobie:"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:407
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:405
 msgid "Present Value"
 msgstr "Súčasná hodnota"
 
@@ -242,7 +242,7 @@ msgstr ""
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:405
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:403
 msgid "Periodic Interest Rate"
 msgstr "Úroková sadzba za obdobie"
 
@@ -375,13 +375,13 @@ msgstr "Gpm"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:389
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:387
 msgid "Shift Left"
 msgstr "Posun vľavo"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:391
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:389
 msgid "Shift Right"
 msgstr "Posun vpravo"
 
@@ -392,7 +392,7 @@ msgstr "Vložiť znak"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:379
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:377
 msgid "Insert Character Code"
 msgstr "Vložiť kód znaku"
 
@@ -432,12 +432,12 @@ msgid "Preferences"
 msgstr "Predvoľby"
 
 #: ../data/menu.ui.h:7
-msgid "About Calculator"
-msgstr "O programe Kalkulačka"
-
-#: ../data/menu.ui.h:8
 msgid "Help"
 msgstr "Pomocník"
+
+#: ../data/menu.ui.h:8
+msgid "About"
+msgstr ""
 
 #: ../data/menu.ui.h:9
 msgid "Quit"
@@ -446,7 +446,7 @@ msgstr "Ukončiť"
 #. Program name in the about dialog
 #. Title of main window
 #: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
-#: ../src/math-window.vala:29
+#: ../src/math-window.vala:31
 msgid "Calculator"
 msgstr "Kalkulačka"
 
@@ -862,299 +862,303 @@ msgstr ""
 "Peter Tuhársky <tuharsky@misbb.sk>\n"
 "Robert Hartl <hartl.robert@gmail.com>"
 
+#: ../src/gnome-calculator.vala:256
+msgid "About Calculator"
+msgstr "O programe Kalkulačka"
+
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:262
+#: ../src/gnome-calculator.vala:263
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulačka s finančným a vedeckým režimom."
 
 #  cmd desc
-#: ../src/gnome-calculator.vala:298
+#: ../src/gnome-calculator.vala:299
 msgid "Solve given equation"
 msgstr "Vyrieši zadanú rovnicu"
 
 # cmd desc
-#: ../src/gnome-calculator.vala:306
+#: ../src/gnome-calculator.vala:307
 msgid "Start with given equation"
 msgstr "Spustí sa so zadanou rovnicou"
 
 #  cmd desc
-#: ../src/gnome-calculator.vala:315
+#: ../src/gnome-calculator.vala:316
 msgid "Show release version"
 msgstr "Zobrazí verziu vydania"
 
 #. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.vala:293
+#: ../src/math-buttons.vala:291
 msgid "Pi [Ctrl+P]"
 msgstr "Ludolfovo číslo Pí [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.vala:295
+#: ../src/math-buttons.vala:293
 msgid "Euler’s Number"
 msgstr "Eulerovo číslo"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.vala:299
+#: ../src/math-buttons.vala:297
 msgid "Subscript mode [Alt]"
 msgstr "Režim dolného indexu [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.vala:301
+#: ../src/math-buttons.vala:299
 msgid "Superscript mode [Ctrl]"
 msgstr "Režim horného indexu [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.vala:303
+#: ../src/math-buttons.vala:301
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Vedecký exponent [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.vala:305
+#: ../src/math-buttons.vala:303
 msgid "Add [+]"
 msgstr "Sčítanie [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.vala:307
+#: ../src/math-buttons.vala:305
 msgid "Subtract [-]"
 msgstr "Odčítanie [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.vala:309
+#: ../src/math-buttons.vala:307
 msgid "Multiply [*]"
 msgstr "Násobenie [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.vala:311
+#: ../src/math-buttons.vala:309
 msgid "Divide [/]"
 msgstr "Delenie [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.vala:313
+#: ../src/math-buttons.vala:311
 msgid "Modulus divide"
 msgstr "Zvyšok po delení"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.vala:315
+#: ../src/math-buttons.vala:313
 msgid "Additional Functions"
 msgstr "Ďalšie funkcie"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.vala:317
+#: ../src/math-buttons.vala:315
 msgid "Exponent [^ or **]"
 msgstr "Mocnina [^ alebo **]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.vala:319
+#: ../src/math-buttons.vala:317
 msgid "Percentage [%]"
 msgstr "Percentá [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.vala:321
+#: ../src/math-buttons.vala:319
 msgid "Factorial [!]"
 msgstr "Faktoriál [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.vala:323
+#: ../src/math-buttons.vala:321
 msgid "Absolute value [|]"
 msgstr "Absolútna hodnota [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.vala:325
+#: ../src/math-buttons.vala:323
 msgid "Complex argument"
 msgstr "Argument komplexného čísla"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.vala:327
+#: ../src/math-buttons.vala:325
 msgid "Complex conjugate"
 msgstr "Komplexne združené číslo"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.vala:329
+#: ../src/math-buttons.vala:327
 msgid "Root [Ctrl+R]"
 msgstr "Odmocnina [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.vala:331
+#: ../src/math-buttons.vala:329
 msgid "Square root [Ctrl+R]"
 msgstr "Druhá odmocnina [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.vala:333
+#: ../src/math-buttons.vala:331
 msgid "Logarithm"
 msgstr "Logaritmus"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.vala:335
+#: ../src/math-buttons.vala:333
 msgid "Natural Logarithm"
 msgstr "Prirodzený logaritmus"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.vala:337
+#: ../src/math-buttons.vala:335
 msgid "Sine"
 msgstr "Sínus"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.vala:339
+#: ../src/math-buttons.vala:337
 msgid "Cosine"
 msgstr "Kosínus"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.vala:341
+#: ../src/math-buttons.vala:339
 msgid "Tangent"
 msgstr "Tangens"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.vala:343
+#: ../src/math-buttons.vala:341
 msgid "Hyperbolic Sine"
 msgstr "Hyperbolický sínus"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.vala:345
+#: ../src/math-buttons.vala:343
 msgid "Hyperbolic Cosine"
 msgstr "Hyperbolický kosínus"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.vala:347
+#: ../src/math-buttons.vala:345
 msgid "Hyperbolic Tangent"
 msgstr "Hyperbolický tangens"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.vala:349
+#: ../src/math-buttons.vala:347
 msgid "Inverse [Ctrl+I]"
 msgstr "Prevrátená hodnota [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.vala:351
+#: ../src/math-buttons.vala:349
 msgid "Boolean AND"
 msgstr "Logický súčin AND"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.vala:353
+#: ../src/math-buttons.vala:351
 msgid "Boolean OR"
 msgstr "Logický súčet OR"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.vala:355
+#: ../src/math-buttons.vala:353
 msgid "Boolean Exclusive OR"
 msgstr "Exkluzívny logický súčet XOR"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.vala:357
+#: ../src/math-buttons.vala:355
 msgid "Boolean NOT"
 msgstr "Logická negácia NOT"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:359 ../src/math-buttons.vala:812
+#: ../src/math-buttons.vala:357
 msgid "Integer Component"
 msgstr "Celočíselná časť"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:361 ../src/math-buttons.vala:814
+#: ../src/math-buttons.vala:359
 msgid "Fractional Component"
 msgstr "Desatinná časť"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.vala:363
+#: ../src/math-buttons.vala:361
 msgid "Real Component"
 msgstr "Reálna časť"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.vala:365
+#: ../src/math-buttons.vala:363
 msgid "Imaginary Component"
 msgstr "Imaginárna časť"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.vala:367
+#: ../src/math-buttons.vala:365
 msgid "Ones' Complement"
 msgstr "Jednotkový doplnok"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.vala:369
+#: ../src/math-buttons.vala:367
 msgid "Two's Complement"
 msgstr "Dvojkový doplnok"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.vala:371
+#: ../src/math-buttons.vala:369
 msgid "Truncate"
 msgstr "Oreže"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.vala:373
+#: ../src/math-buttons.vala:371
 msgid "Start Group [(]"
 msgstr "Začiatok skupiny [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.vala:375
+#: ../src/math-buttons.vala:373
 msgid "End Group [)]"
 msgstr "Koniec skupiny [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.vala:381
+#: ../src/math-buttons.vala:379
 msgid "Calculate Result"
 msgstr "Vypočíta výsledok"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.vala:383
+#: ../src/math-buttons.vala:381
 msgid "Factorize [Ctrl+F]"
 msgstr "Faktorizuje [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.vala:385
+#: ../src/math-buttons.vala:383
 msgid "Clear Display [Escape]"
 msgstr "Zmaže displej [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.vala:387
+#: ../src/math-buttons.vala:385
 msgid "Undo [Ctrl+Z]"
 msgstr "Späť [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.vala:395
+#: ../src/math-buttons.vala:393
 msgid "Double Declining Depreciation"
 msgstr "Dvojitá odpisová metóda s klesajúcim zostatkom (DDB)"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.vala:399
+#: ../src/math-buttons.vala:397
 msgid "Financial Term"
 msgstr "Finančné obdobie"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.vala:401
+#: ../src/math-buttons.vala:399
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Amortizácia po súčtoch číslic rokov"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.vala:403
+#: ../src/math-buttons.vala:401
 msgid "Straight Line Depreciation"
 msgstr "Lineárna amortizácia"
 
-#: ../src/math-buttons.vala:432
+#: ../src/math-buttons.vala:430
 msgid "Square [Ctrl+2]"
 msgstr "Druhá mocnina [Ctrl+2]"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.vala:522
+#: ../src/math-buttons.vala:520
 msgid "Binary"
 msgstr "Dvojkový"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.vala:526
+#: ../src/math-buttons.vala:524
 msgid "Octal"
 msgstr "Osmičkový"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.vala:530
+#: ../src/math-buttons.vala:528
 msgid "Decimal"
 msgstr "Desiatkový"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.vala:534
+#: ../src/math-buttons.vala:532
 msgid "Hexadecimal"
 msgstr "Šestnástkový"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:743 ../src/math-buttons.vala:780
+#: ../src/math-buttons.vala:741 ../src/math-buttons.vala:778
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1164,33 +1168,13 @@ msgstr[2] "o _%d miesta"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:748 ../src/math-buttons.vala:785
+#: ../src/math-buttons.vala:746 ../src/math-buttons.vala:783
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "o %d miest"
 msgstr[1] "o %d miesto"
 msgstr[2] "o %d miesta"
-
-#. Tooltip for the round button
-#: ../src/math-buttons.vala:816
-msgid "Round"
-msgstr "Zaokrúhlenie"
-
-#. Tooltip for the floor button
-#: ../src/math-buttons.vala:818
-msgid "Floor"
-msgstr "Dolná celočíselná časť"
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:820
-msgid "Ceiling"
-msgstr "Horná celočíselná časť"
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:822
-msgid "Sign"
-msgstr "Znamienko"
 
 # Myslim, ze 'na' je lepsie, ako 'v', pretoze je potrebnych menej tvarov slov pri jednotkach (treba len A pl. = N pl., netreba L pl.).
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
@@ -1209,69 +1193,69 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.vala:481
+#: ../src/math-equation.vala:482
 msgid "No undo history"
 msgstr "Žiadna história spätných zmien"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.vala:497
+#: ../src/math-equation.vala:499
 msgid "No redo history"
 msgstr "Žiadna história dopredných zmien"
 
-#: ../src/math-equation.vala:727
+#: ../src/math-equation.vala:729
 msgid "No sane value to store"
 msgstr "Nie je rozumná hodnota na uloženie"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.vala:909
+#: ../src/math-equation.vala:911
 msgid "Overflow. Try a bigger word size"
 msgstr "Pretečenie. Skúste väčšiu veľkosť slova"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.vala:914
+#: ../src/math-equation.vala:916
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Neznáma premenná „%s“"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.vala:921
+#: ../src/math-equation.vala:923
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkcia „%s“ nie je definovaná"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.vala:928
+#: ../src/math-equation.vala:930
 msgid "Unknown conversion"
 msgstr "Neznámy prevod"
 
 # MČ: Token nemusí byť jednoznakový, je to najmenšia syntaktická jednotka použitá pri rozklade výrazu. Osobne by som to neprekladal.
-#: ../src/math-equation.vala:936
+#: ../src/math-equation.vala:938
 #, c-format
 msgid "Malformed expression at token '%s'"
 msgstr "Nesprávny výraz na tokene „%s“"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.vala:941 ../src/math-equation.vala:946
+#: ../src/math-equation.vala:943 ../src/math-equation.vala:948
 msgid "Malformed expression"
 msgstr "Nesprávny výraz"
 
-#: ../src/math-equation.vala:957
+#: ../src/math-equation.vala:959
 msgid "Calculating"
 msgstr "Počíta sa"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.vala:1084
+#: ../src/math-equation.vala:1086
 msgid "Need an integer to factorize"
 msgstr "Pre rozklad na súčin prvočísel je potrebné celé číslo"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../src/math-equation.vala:1138
+#: ../src/math-equation.vala:1140
 msgid "No sane value to bitwise shift"
 msgstr "Nezmyselná hodnota pre bitový posun"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.vala:1152
+#: ../src/math-equation.vala:1154
 msgid "Displayed value not an integer"
 msgstr "Zobrazená hodnota nie je celé číslo"
 
@@ -1367,13 +1351,43 @@ msgstr "32 bitov"
 msgid "64 bits"
 msgstr "64 bitov"
 
+#: ../src/math-window.vala:77
+#, fuzzy
+#| msgid "Basic"
+msgid "Basic Mode"
+msgstr "Základný"
+
+#: ../src/math-window.vala:81
+#, fuzzy
+#| msgid "Advanced"
+msgid "Advanced Mode"
+msgstr "Rozšírený"
+
+#: ../src/math-window.vala:85
+#, fuzzy
+#| msgid "Financial Term"
+msgid "Financial Mode"
+msgstr "Finančné obdobie"
+
+#: ../src/math-window.vala:89
+#, fuzzy
+#| msgid "Programming"
+msgid "Programming Mode"
+msgstr "Programátorský"
+
+#: ../src/math-window.vala:101
+#, fuzzy
+#| msgid "Quit"
+msgid "_Quit"
+msgstr "Ukončiť"
+
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/number.vala:652
 msgid "Argument not defined for zero"
 msgstr "Argument nie je definovaný pre nulu"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1923
+#: ../src/number.vala:909 ../src/number.vala:1935
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Mocnina nuly nie je definovaná pre záporný exponent"
 
@@ -1382,93 +1396,95 @@ msgstr "Mocnina nuly nie je definovaná pre záporný exponent"
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritmus nuly nie je definovaný"
 
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1046
-msgid "Factorial is only defined for natural numbers"
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#: ../src/number.vala:1050
+#, fuzzy
+#| msgid "Factorial is only defined for natural numbers"
+msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Faktoriál je definovaný len pre prirodzené čísla"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1122 ../src/number.vala:2673
+#: ../src/number.vala:1134 ../src/number.vala:2685
 msgid "Division by zero is undefined"
 msgstr "Delenie nulou nie je definované"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1162
+#: ../src/number.vala:1174
 msgid "Modulus division is only defined for integers"
 msgstr "Zvyšok po delení je definovaný len pre celé čísla"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1254
+#: ../src/number.vala:1266
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "Tangens nie je definovaný pre uhly, ktoré sú násobkami π (180°) od π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1292
+#: ../src/number.vala:1304
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Inverzný sínus nie je definovaný pre hodnoty mimo interval [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1307
+#: ../src/number.vala:1319
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Inverzný kosínus nie je definovaný pre hodnoty mimo interval [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1504
+#: ../src/number.vala:1516
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Inverzný hyperbolický kosínus nie je definovaný pre hodnoty menšie ako jedna"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1523
+#: ../src/number.vala:1535
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverzný hyperbolický tangens nie je definovaný pre hodnoty mimo interval "
 "[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1542
+#: ../src/number.vala:1554
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Logický súčin AND je definovaný len pre kladné celé čísla"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1554
+#: ../src/number.vala:1566
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Logický súčet OR je definovaný len pre kladné celé čísla"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1566
+#: ../src/number.vala:1578
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Exkluzívny logický súčet XOR je definovaný len pre kladné celé čísla"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1578
+#: ../src/number.vala:1590
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Logická negácia NOT je definovaná len pre kladné celé čísla"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1601
+#: ../src/number.vala:1613
 msgid "Shift is only possible on integer values"
 msgstr "Posun je možný len pri celočíselných hodnotách"
 
-#: ../src/number.vala:1943
+#: ../src/number.vala:1955
 msgid "Root must be non-zero"
 msgstr "Odmocniteľ musí byť nenulový"
 
-#: ../src/number.vala:1960
+#: ../src/number.vala:1972
 msgid "Negative root of zero is undefined"
 msgstr "Záporná odmocnina z nuly nie je definovaná"
 
-#: ../src/number.vala:1967
+#: ../src/number.vala:1979
 msgid "nth root of negative number is undefined for even n"
 msgstr "n-tá odmocnina záporného čísla nie je definovaná pre párne n"
 
-#: ../src/number.vala:2290
+#: ../src/number.vala:2302
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Pretečenie: výsledok nebolo možné vypočítať"
 
-#: ../src/number.vala:2618
+#: ../src/number.vala:2630
 msgid "Reciprocal of zero is undefined"
 msgstr "Prevrátená hodnota nuly nie je definovaná"
 
@@ -1500,711 +1516,187 @@ msgstr "Čas"
 msgid "Temperature"
 msgstr "Teplota"
 
-#: ../src/unit.vala:38
-#, fuzzy, c-format
-#| msgid "Degrees"
-msgctxt "unit-format"
-msgid "%s degrees"
-msgstr "Stupne"
-
-#: ../src/unit.vala:38
-msgctxt "unit-symbols"
-msgid "degree,degrees,deg"
-msgstr ""
-
-#: ../src/unit.vala:39
-#, fuzzy, c-format
-#| msgid "Gradians"
-msgctxt "unit-format"
-msgid "%s radians"
-msgstr "Gradiány"
-
-#: ../src/unit.vala:39
-msgctxt "unit-symbols"
-msgid "radian,radians,rad"
-msgstr ""
-
-#: ../src/unit.vala:40
-#, fuzzy, c-format
-#| msgid "Gradians"
-msgctxt "unit-format"
-msgid "%s gradians"
-msgstr "Gradiány"
-
-#: ../src/unit.vala:40
-msgctxt "unit-symbols"
-msgid "gradian,gradians,grad"
-msgstr ""
-
 #: ../src/unit.vala:41
 msgid "Parsecs"
 msgstr "Parseky"
-
-#: ../src/unit.vala:41
-#, c-format
-msgctxt "unit-format"
-msgid "%s pc"
-msgstr ""
-
-#: ../src/unit.vala:41
-msgctxt "unit-symbols"
-msgid "parsec,parsecs,pc"
-msgstr ""
 
 #: ../src/unit.vala:42
 msgid "Light Years"
 msgstr "Svetelné roky"
 
-#: ../src/unit.vala:42
-#, c-format
-msgctxt "unit-format"
-msgid "%s ly"
-msgstr ""
-
-#: ../src/unit.vala:42
-msgctxt "unit-symbols"
-msgid "lightyear,lightyears,ly"
-msgstr ""
-
 #: ../src/unit.vala:43
 msgid "Astronomical Units"
 msgstr "Astronomické jednotky"
-
-#: ../src/unit.vala:43
-#, c-format
-msgctxt "unit-format"
-msgid "%s au"
-msgstr ""
-
-#: ../src/unit.vala:43
-msgctxt "unit-symbols"
-msgid "au"
-msgstr ""
 
 #: ../src/unit.vala:44
 msgid "Nautical Miles"
 msgstr "Námorné míle"
 
-#: ../src/unit.vala:44
-#, c-format
-msgctxt "unit-format"
-msgid "%s nmi"
-msgstr ""
-
-#: ../src/unit.vala:44
-msgctxt "unit-symbols"
-msgid "nmi"
-msgstr ""
-
 #: ../src/unit.vala:45
 msgid "Miles"
 msgstr "Míle"
-
-#: ../src/unit.vala:45
-#, c-format
-msgctxt "unit-format"
-msgid "%s mi"
-msgstr ""
-
-#: ../src/unit.vala:45
-msgctxt "unit-symbols"
-msgid "mile,miles,mi"
-msgstr ""
 
 #: ../src/unit.vala:46
 msgid "Kilometers"
 msgstr "Kilometre"
 
-#: ../src/unit.vala:46
-#, c-format
-msgctxt "unit-format"
-msgid "%s km"
-msgstr ""
-
-#: ../src/unit.vala:46
-msgctxt "unit-symbols"
-msgid "kilometer,kilometers,km,kms"
-msgstr ""
-
 #: ../src/unit.vala:47
 msgid "Cables"
 msgstr "Káble"
-
-#: ../src/unit.vala:47
-#, c-format
-msgctxt "unit-format"
-msgid "%s cb"
-msgstr ""
-
-#: ../src/unit.vala:47
-msgctxt "unit-symbols"
-msgid "cable,cables,cb"
-msgstr ""
 
 #: ../src/unit.vala:48
 msgid "Fathoms"
 msgstr "Siahy"
 
-#: ../src/unit.vala:48
-#, c-format
-msgctxt "unit-format"
-msgid "%s ftm"
-msgstr ""
-
-#: ../src/unit.vala:48
-msgctxt "unit-symbols"
-msgid "fathom,fathoms,ftm"
-msgstr ""
-
 #: ../src/unit.vala:49
 msgid "Meters"
 msgstr "Metre"
-
-#: ../src/unit.vala:49
-#, c-format
-msgctxt "unit-format"
-msgid "%s m"
-msgstr ""
-
-#: ../src/unit.vala:49
-#, fuzzy
-#| msgid "Centimeters"
-msgctxt "unit-symbols"
-msgid "meter,meters,m"
-msgstr "Centimetre"
 
 #: ../src/unit.vala:50
 msgid "Yards"
 msgstr "Yardy"
 
-#: ../src/unit.vala:50
-#, c-format
-msgctxt "unit-format"
-msgid "%s yd"
-msgstr ""
-
-#: ../src/unit.vala:50
-msgctxt "unit-symbols"
-msgid "yard,yards,yd"
-msgstr ""
-
 #: ../src/unit.vala:51
 msgid "Feet"
 msgstr "Stopy"
-
-#: ../src/unit.vala:51
-#, c-format
-msgctxt "unit-format"
-msgid "%s ft"
-msgstr ""
-
-#: ../src/unit.vala:51
-msgctxt "unit-symbols"
-msgid "foot,feet,ft"
-msgstr ""
 
 #: ../src/unit.vala:52
 msgid "Inches"
 msgstr "Palce"
 
-#: ../src/unit.vala:52
-#, c-format
-msgctxt "unit-format"
-msgid "%s in"
-msgstr ""
-
-#: ../src/unit.vala:52
-msgctxt "unit-symbols"
-msgid "inch,inches,in"
-msgstr ""
-
 #: ../src/unit.vala:53
 msgid "Centimeters"
 msgstr "Centimetre"
-
-#: ../src/unit.vala:53
-#, c-format
-msgctxt "unit-format"
-msgid "%s cm"
-msgstr ""
-
-#: ../src/unit.vala:53
-msgctxt "unit-symbols"
-msgid "centimeter,centimeters,cm,cms"
-msgstr ""
 
 #: ../src/unit.vala:54
 msgid "Millimeters"
 msgstr "Milimetre"
 
-#: ../src/unit.vala:54
-#, c-format
-msgctxt "unit-format"
-msgid "%s mm"
-msgstr ""
-
-#: ../src/unit.vala:54
-msgctxt "unit-symbols"
-msgid "millimeter,millimeters,mm"
-msgstr ""
-
 #: ../src/unit.vala:55
 msgid "Micrometers"
 msgstr "Mikrometre"
-
-#: ../src/unit.vala:55
-#, c-format
-msgctxt "unit-format"
-msgid "%s μm"
-msgstr ""
-
-#: ../src/unit.vala:55
-msgctxt "unit-symbols"
-msgid "micrometer,micrometers,um"
-msgstr ""
 
 #: ../src/unit.vala:56
 msgid "Nanometers"
 msgstr "Nanometre"
 
-#: ../src/unit.vala:56
-#, c-format
-msgctxt "unit-format"
-msgid "%s nm"
-msgstr ""
-
-#: ../src/unit.vala:56
-msgctxt "unit-symbols"
-msgid "nanometer,nanometers,nm"
-msgstr ""
-
 #: ../src/unit.vala:57
 msgid "Hectares"
 msgstr "Hektáre"
-
-#: ../src/unit.vala:57
-#, c-format
-msgctxt "unit-format"
-msgid "%s ha"
-msgstr ""
-
-#: ../src/unit.vala:57
-msgctxt "unit-symbols"
-msgid "hectare,hectares,ha"
-msgstr ""
 
 #: ../src/unit.vala:58
 msgid "Acres"
 msgstr "Akre"
 
-#: ../src/unit.vala:58
-#, fuzzy, c-format
-#| msgid "Acres"
-msgctxt "unit-format"
-msgid "%s acres"
-msgstr "Akre"
-
-#: ../src/unit.vala:58
-msgctxt "unit-symbols"
-msgid "acre,acres"
-msgstr ""
-
 #: ../src/unit.vala:59
 msgid "Square Meters"
 msgstr "Štvorcové metre"
-
-#: ../src/unit.vala:59
-#, c-format
-msgctxt "unit-format"
-msgid "%s m²"
-msgstr ""
-
-#: ../src/unit.vala:59
-msgctxt "unit-symbols"
-msgid "m²"
-msgstr ""
 
 #: ../src/unit.vala:60
 msgid "Square Centimeters"
 msgstr "Štvorcové centimetre"
 
-#: ../src/unit.vala:60
-#, c-format
-msgctxt "unit-format"
-msgid "%s cm²"
-msgstr ""
-
-#: ../src/unit.vala:60
-msgctxt "unit-symbols"
-msgid "cm²"
-msgstr ""
-
 #: ../src/unit.vala:61
 msgid "Square Millimeters"
 msgstr "Štvorcové milimetre"
-
-#: ../src/unit.vala:61
-#, c-format
-msgctxt "unit-format"
-msgid "%s mm²"
-msgstr ""
-
-#: ../src/unit.vala:61
-msgctxt "unit-symbols"
-msgid "mm²"
-msgstr ""
 
 #: ../src/unit.vala:62
 msgid "Cubic Meters"
 msgstr "Kubické metre"
 
-#: ../src/unit.vala:62
-#, c-format
-msgctxt "unit-format"
-msgid "%s m³"
-msgstr ""
-
-#: ../src/unit.vala:62
-msgctxt "unit-symbols"
-msgid "m³"
-msgstr ""
-
 #: ../src/unit.vala:63
 msgid "Gallons"
 msgstr "Galóny"
 
-#: ../src/unit.vala:63
-#, c-format
-msgctxt "unit-format"
-msgid "%s gal"
-msgstr ""
-
-#: ../src/unit.vala:63
-msgctxt "unit-symbols"
-msgid "gallon,gallons,gal"
-msgstr ""
-
 #: ../src/unit.vala:64
-msgid "Litres"
-msgstr "Litre"
-
-#: ../src/unit.vala:64
-#, c-format
-msgctxt "unit-format"
-msgid "%s L"
-msgstr ""
-
-#: ../src/unit.vala:64
-msgctxt "unit-symbols"
-msgid "litre,litres,liter,liters,L"
-msgstr ""
+#, fuzzy
+#| msgid "Meters"
+msgid "Liters"
+msgstr "Metre"
 
 #: ../src/unit.vala:65
 msgid "Quarts"
 msgstr "Kvarty"
 
-#: ../src/unit.vala:65
-#, c-format
-msgctxt "unit-format"
-msgid "%s qt"
-msgstr ""
-
-#: ../src/unit.vala:65
-msgctxt "unit-symbols"
-msgid "quart,quarts,qt"
-msgstr ""
-
 #: ../src/unit.vala:66
 msgid "Pints"
 msgstr "Pinty"
 
-#: ../src/unit.vala:66
-#, c-format
-msgctxt "unit-format"
-msgid "%s pt"
-msgstr ""
-
-#: ../src/unit.vala:66
-msgctxt "unit-symbols"
-msgid "pint,pints,pt"
-msgstr ""
-
 #: ../src/unit.vala:67
-msgid "Millilitres"
+#, fuzzy
+#| msgid "Millilitres"
+msgid "Milliliters"
 msgstr "Mililitre"
 
-#: ../src/unit.vala:67
-#, c-format
-msgctxt "unit-format"
-msgid "%s mL"
-msgstr ""
-
-#: ../src/unit.vala:67
-msgctxt "unit-symbols"
-msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
-msgstr ""
-
 #: ../src/unit.vala:68
-msgid "Microlitres"
+#, fuzzy
+#| msgid "Microlitres"
+msgid "Microliters"
 msgstr "Mikrolitre"
-
-#: ../src/unit.vala:68
-#, c-format
-msgctxt "unit-format"
-msgid "%s μL"
-msgstr ""
-
-#: ../src/unit.vala:68
-msgctxt "unit-symbols"
-msgid "mm³,μL,uL"
-msgstr ""
 
 #: ../src/unit.vala:69
 msgid "Tonnes"
 msgstr "Tony"
 
-#: ../src/unit.vala:69
-#, c-format
-msgctxt "unit-format"
-msgid "%s T"
-msgstr ""
-
-#: ../src/unit.vala:69
-msgctxt "unit-symbols"
-msgid "tonne,tonnes"
-msgstr ""
-
 #: ../src/unit.vala:70
 msgid "Kilograms"
 msgstr "Kilogramy"
-
-#: ../src/unit.vala:70
-#, c-format
-msgctxt "unit-format"
-msgid "%s kg"
-msgstr ""
-
-#: ../src/unit.vala:70
-msgctxt "unit-symbols"
-msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
-msgstr ""
 
 #: ../src/unit.vala:71
 msgid "Pounds"
 msgstr "Libry"
 
-#: ../src/unit.vala:71
-#, c-format
-msgctxt "unit-format"
-msgid "%s lb"
-msgstr ""
-
-#: ../src/unit.vala:71
-msgctxt "unit-symbols"
-msgid "pound,pounds,lb"
-msgstr ""
-
 #: ../src/unit.vala:72
 msgid "Ounces"
 msgstr "Unce"
-
-#: ../src/unit.vala:72
-#, c-format
-msgctxt "unit-format"
-msgid "%s oz"
-msgstr ""
-
-#: ../src/unit.vala:72
-msgctxt "unit-symbols"
-msgid "ounce,ounces,oz"
-msgstr ""
 
 #: ../src/unit.vala:73
 msgid "Grams"
 msgstr "Gramy"
 
-#: ../src/unit.vala:73
-#, c-format
-msgctxt "unit-format"
-msgid "%s g"
-msgstr ""
-
-#: ../src/unit.vala:73
-msgctxt "unit-symbols"
-msgid "gram,grams,gramme,grammes,g"
-msgstr ""
-
 #: ../src/unit.vala:74
 msgid "Years"
 msgstr "Roky"
-
-#: ../src/unit.vala:74
-#, fuzzy, c-format
-#| msgid "Years"
-msgctxt "unit-format"
-msgid "%s years"
-msgstr "Roky"
-
-#: ../src/unit.vala:74
-msgctxt "unit-symbols"
-msgid "year,years"
-msgstr ""
 
 #: ../src/unit.vala:75
 msgid "Days"
 msgstr "Dni"
 
-#: ../src/unit.vala:75
-#, c-format
-msgctxt "unit-format"
-msgid "%s days"
-msgstr ""
-
-#: ../src/unit.vala:75
-msgctxt "unit-symbols"
-msgid "day,days"
-msgstr ""
-
 #: ../src/unit.vala:76
 msgid "Hours"
 msgstr "Hodiny"
-
-#: ../src/unit.vala:76
-#, fuzzy, c-format
-#| msgid "Hours"
-msgctxt "unit-format"
-msgid "%s hours"
-msgstr "Hodiny"
-
-#: ../src/unit.vala:76
-msgctxt "unit-symbols"
-msgid "hour,hours"
-msgstr ""
 
 #: ../src/unit.vala:77
 msgid "Minutes"
 msgstr "Minúty"
 
-#: ../src/unit.vala:77
-#, fuzzy, c-format
-#| msgid "Minutes"
-msgctxt "unit-format"
-msgid "%s minutes"
-msgstr "Minúty"
-
-#: ../src/unit.vala:77
-msgctxt "unit-symbols"
-msgid "minute,minutes"
-msgstr ""
-
 #: ../src/unit.vala:78
 msgid "Seconds"
 msgstr "Sekundy"
-
-#: ../src/unit.vala:78
-#, c-format
-msgctxt "unit-format"
-msgid "%s s"
-msgstr ""
-
-#: ../src/unit.vala:78
-#, fuzzy
-#| msgid "Microseconds"
-msgctxt "unit-symbols"
-msgid "second,seconds,s"
-msgstr "Mikrosekundy"
 
 #: ../src/unit.vala:79
 msgid "Milliseconds"
 msgstr "Milisekundy"
 
-#: ../src/unit.vala:79
-#, c-format
-msgctxt "unit-format"
-msgid "%s ms"
-msgstr ""
-
-#: ../src/unit.vala:79
-msgctxt "unit-symbols"
-msgid "millisecond,milliseconds,ms"
-msgstr ""
-
 #: ../src/unit.vala:80
 msgid "Microseconds"
 msgstr "Mikrosekundy"
-
-#: ../src/unit.vala:80
-#, c-format
-msgctxt "unit-format"
-msgid "%s μs"
-msgstr ""
-
-#: ../src/unit.vala:80
-msgctxt "unit-symbols"
-msgid "microsecond,microseconds,us,μs"
-msgstr ""
 
 #: ../src/unit.vala:81
 msgid "Celsius"
 msgstr "Stupne Celzia"
 
-#: ../src/unit.vala:81
-#, c-format
-msgctxt "unit-format"
-msgid "%s ˚C"
-msgstr ""
-
-#: ../src/unit.vala:81
-msgctxt "unit-symbols"
-msgid "degC,˚C"
-msgstr ""
-
 #: ../src/unit.vala:82
-#, fuzzy
-#| msgid "Farenheit"
 msgid "Fahrenheit"
-msgstr "Stupne Farenheita"
-
-#: ../src/unit.vala:82
-#, c-format
-msgctxt "unit-format"
-msgid "%s ˚F"
-msgstr ""
-
-#: ../src/unit.vala:82
-msgctxt "unit-symbols"
-msgid "degF,˚F"
-msgstr ""
+msgstr "Stupne Fahrenheita"
 
 #: ../src/unit.vala:83
 msgid "Kelvin"
 msgstr "Kelviny"
 
-#: ../src/unit.vala:83
-#, c-format
-msgctxt "unit-format"
-msgid "%s K"
-msgstr ""
-
-#: ../src/unit.vala:83
-msgctxt "unit-symbols"
-msgid "K"
-msgstr ""
-
 #: ../src/unit.vala:84
 msgid "Rankine"
 msgstr "Stupne Rankina"
-
-#: ../src/unit.vala:84
-#, c-format
-msgctxt "unit-format"
-msgid "%s ˚R"
-msgstr ""
-
-#: ../src/unit.vala:84
-msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra"
-msgstr ""
 
 #: ../src/unit.vala:86
 msgid "Currency"
@@ -2215,3 +1707,397 @@ msgstr "Mena"
 #, c-format
 msgid "%s%%s"
 msgstr "%%s %s"
+
+#~ msgid "Round"
+#~ msgstr "Zaokrúhlenie"
+
+#~ msgid "Floor"
+#~ msgstr "Dolná celočíselná časť"
+
+#~ msgid "Ceiling"
+#~ msgstr "Horná celočíselná časť"
+
+#~ msgid "Sign"
+#~ msgstr "Znamienko"
+
+# MČ: po pozretí kódu som našiel, že %s bude číslo, nemal by tam byť plural forms? Veľa krát.
+#, fuzzy
+#~ msgctxt "unit-format"
+#~ msgid "%s degrees"
+#~ msgstr "%s stupňov"
+
+# MČ: chýba mi tam medzi symbolmi jednotky aj „°“.
+#~ msgctxt "unit-symbols"
+#~ msgid "degree,degrees,deg"
+#~ msgstr "stupeň,stupne"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s radians"
+#~ msgstr "%s radiánov"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "radian,radians,rad"
+#~ msgstr "radián,radiány,rad"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s gradians"
+#~ msgstr "%s gradiánov"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "gradian,gradians,grad"
+#~ msgstr "gradián,gradiány,grad"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s pc"
+#~ msgstr "%s pc"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "parsec,parsecs,pc"
+#~ msgstr "parsek,parseky,pc"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ly"
+#~ msgstr "%s ly"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "lightyear,lightyears,ly"
+#~ msgstr "svetelný rok,svetelné roky,ly"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s au"
+#~ msgstr "%s au"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "au"
+#~ msgstr "au"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s nmi"
+#~ msgstr "%s nmi"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "nmi"
+#~ msgstr "nmi"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s mi"
+#~ msgstr "%s míl"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "mile,miles,mi"
+#~ msgstr "míľa,míle,mi"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s km"
+#~ msgstr "%s km"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "kilometer,kilometers,km,kms"
+#~ msgstr "kilometer,kilometre,km"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s cb"
+#~ msgstr "%s cb"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "cable,cables,cb"
+#~ msgstr "kábel,káble,cb"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ftm"
+#~ msgstr "%s ftm"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "fathom,fathoms,ftm"
+#~ msgstr "siaha,siahy,ftm"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s m"
+#~ msgstr "%s m"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "meter,meters,m"
+#~ msgstr "meter,metre,m"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s yd"
+#~ msgstr "%s yd"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "yard,yards,yd"
+#~ msgstr "yard,yardy,yd"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ft"
+#~ msgstr "%s stôp"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "foot,feet,ft"
+#~ msgstr "stopa,stopy"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s in"
+#~ msgstr "%s palcov"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "inch,inches,in"
+#~ msgstr "palec,palce"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s cm"
+#~ msgstr "%s cm"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "centimeter,centimeters,cm,cms"
+#~ msgstr "centimeter,centimetre,cm"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s mm"
+#~ msgstr "%s mm"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "millimeter,millimeters,mm"
+#~ msgstr "millimeter,millimetre,mm"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s μm"
+#~ msgstr "%s μm"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "micrometer,micrometers,um"
+#~ msgstr "mikrometer,mikrometre,um"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s nm"
+#~ msgstr "%s nm"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "nanometer,nanometers,nm"
+#~ msgstr "nanometer,nanometre,nm"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ha"
+#~ msgstr "%s ha"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "hectare,hectares,ha"
+#~ msgstr "hektár,hektáre,ha"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s acres"
+#~ msgstr "%s akrov"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "acre,acres"
+#~ msgstr "aker,akre"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s m²"
+#~ msgstr "%s m²"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "m²"
+#~ msgstr "m²"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s cm²"
+#~ msgstr "%s cm²"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "cm²"
+#~ msgstr "cm²"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s mm²"
+#~ msgstr "%s mm²"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "mm²"
+#~ msgstr "mm²"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s m³"
+#~ msgstr "%s m³"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "m³"
+#~ msgstr "m³"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s gal"
+#~ msgstr "%s gal"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "gallon,gallons,gal"
+#~ msgstr "galón,galóny,gal"
+
+#~ msgid "Litres"
+#~ msgstr "Litre"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s L"
+#~ msgstr "%s l"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "litre,litres,liter,liters,L"
+#~ msgstr "liter,litre,l"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s qt"
+#~ msgstr "%s qt"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "quart,quarts,qt"
+#~ msgstr "kvart,kvarty,qt"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s pt"
+#~ msgstr "%s pt"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "pint,pints,pt"
+#~ msgstr "pinta,pinty,pt"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s mL"
+#~ msgstr "%s ml"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+#~ msgstr "mililiter,mililitre,ml,cm³"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s μL"
+#~ msgstr "%s μl"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "mm³,μL,uL"
+#~ msgstr "mm³,μl,ul"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s T"
+#~ msgstr "%s t"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "tonne,tonnes"
+#~ msgstr "tona,tony"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s kg"
+#~ msgstr "%s kg"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+#~ msgstr "kilogram,kilogamy,kg"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s lb"
+#~ msgstr "%s lb"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "pound,pounds,lb"
+#~ msgstr "libra,libry,lb"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s oz"
+#~ msgstr "%s oz"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "ounce,ounces,oz"
+#~ msgstr "unca,unce,oz"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s g"
+#~ msgstr "%s g"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "gram,grams,gramme,grammes,g"
+#~ msgstr "gram,gramy,g"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s years"
+#~ msgstr "%s rokov"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "year,years"
+#~ msgstr "rok,roky"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s days"
+#~ msgstr "%s dní"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "day,days"
+#~ msgstr "deň,dni"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s hours"
+#~ msgstr "%s hodín"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "hour,hours"
+#~ msgstr "hodina,hodiny"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s minutes"
+#~ msgstr "%s minút"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "minute,minutes"
+#~ msgstr "minúta,minúty"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s s"
+#~ msgstr "%s s"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "second,seconds,s"
+#~ msgstr "sekunda,sekundy,s"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ms"
+#~ msgstr "%s ms"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "millisecond,milliseconds,ms"
+#~ msgstr "milisekunda,milisekundy,ms"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s μs"
+#~ msgstr "%s μs"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "microsecond,microseconds,us,μs"
+#~ msgstr "mikrosekunda,mikrosekundy,us,μs"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ˚C"
+#~ msgstr "%s ˚C"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degC,˚C"
+#~ msgstr "stupeň Celzia,˚C"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ˚F"
+#~ msgstr "%s ˚F"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degF,˚F"
+#~ msgstr "stupeň Fahrenheita,˚F"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s K"
+#~ msgstr "%s K"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "K"
+#~ msgstr "K"
+
+#~ msgctxt "unit-format"
+#~ msgid "%s ˚R"
+#~ msgstr "%s ˚R"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degR,˚R,˚Ra"
+#~ msgstr "stupeň Ranikna,˚R,˚Ra"
