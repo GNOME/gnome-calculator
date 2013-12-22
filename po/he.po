@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-15 00:34+0200\n"
-"PO-Revision-Date: 2013-12-15 01:45+0200\n"
+"POT-Creation-Date: 2013-12-22 13:03+0200\n"
+"PO-Revision-Date: 2013-12-22 13:02+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -1361,7 +1361,7 @@ msgid "Argument not defined for zero"
 msgstr "לא מוגדר ארגומנט עבור אפס"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1923
+#: ../src/number.vala:909 ../src/number.vala:1935
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "החזקה של אפס אינה מוגדרת עבור מעריך שלילי"
 
@@ -1370,89 +1370,89 @@ msgstr "החזקה של אפס אינה מוגדרת עבור מעריך שלי�
 msgid "Logarithm of zero is undefined"
 msgstr "הלוגריתם של אפס אינו מוגדר"
 
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1046
-msgid "Factorial is only defined for natural numbers"
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#: ../src/number.vala:1050
+msgid "Factorial is only defined for non-negative real numbers"
 msgstr "פירוק לגורמים אפשרי עבור מספרים טבעיים בלבד"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1122 ../src/number.vala:2673
+#: ../src/number.vala:1134 ../src/number.vala:2685
 msgid "Division by zero is undefined"
 msgstr "חלוקה באפס אינה מוגדרת"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1162
+#: ../src/number.vala:1174
 msgid "Modulus division is only defined for integers"
 msgstr "חלוקת שארית מוגדרת רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1254
+#: ../src/number.vala:1266
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "טנגנס אינו מוגדר עבור זוויות שהן כפולות של π ‏(180°) החל מ־π∕2 ‏(90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1292
+#: ../src/number.vala:1304
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "סינוס הפוך אינו מוגדר עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1307
+#: ../src/number.vala:1319
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "קוסינוס הפוך אינו מוגדר עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1504
+#: ../src/number.vala:1516
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "קוסינוס היפרבולי הפוך אינו מוגדר עבור ערכים הקטנים מאחד"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1523
+#: ../src/number.vala:1535
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "טנגנס היפרבולי הפוך אינו מוגדל עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1542
+#: ../src/number.vala:1554
 msgid "Boolean AND is only defined for positive integers"
 msgstr "AND לוגי מוגדר רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1554
+#: ../src/number.vala:1566
 msgid "Boolean OR is only defined for positive integers"
 msgstr "OR לוגי מוגדר רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1566
+#: ../src/number.vala:1578
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "XOR לוגי מוגדר רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1578
+#: ../src/number.vala:1590
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "NOT לוגי מוגדר רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1601
+#: ../src/number.vala:1613
 msgid "Shift is only possible on integer values"
 msgstr "ניתן לבצע הזזה רק על מספרים שלמים וחיוביים"
 
-#: ../src/number.vala:1943
+#: ../src/number.vala:1955
 msgid "Root must be non-zero"
 msgstr "על השורש להיות שונה מאפס"
 
-#: ../src/number.vala:1960
+#: ../src/number.vala:1972
 msgid "Negative root of zero is undefined"
 msgstr "שורש שלילי של אפס אינו מוגדר"
 
-#: ../src/number.vala:1967
+#: ../src/number.vala:1979
 msgid "nth root of negative number is undefined for even n"
 msgstr "השורש ה־nי של מספר שלילי אינו מוגדר עבור n זוגי"
 
-#: ../src/number.vala:2290
+#: ../src/number.vala:2302
 msgid "Overflow: the result couldn't be calculated"
 msgstr "חריגה: לא ניתן לחשב את התוצאה"
 
-#: ../src/number.vala:2618
+#: ../src/number.vala:2630
 msgid "Reciprocal of zero is undefined"
 msgstr "לא מוגדרת הדדיות לאפס"
 
