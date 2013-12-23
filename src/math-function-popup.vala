@@ -60,7 +60,7 @@ public class MathFunctionPopup : Gtk.Window
         entry.show ();
 
         function_name_entry = new Gtk.Entry ();
-        function_name_entry.set_text ("Type function name");
+        function_name_entry.set_text ("Type function name here");
         function_name_entry.key_press_event.connect (function_name_key_press_cb);
         function_name_entry.changed.connect (function_name_changed_cb);
         function_name_entry.set_margin_right (5);
@@ -72,6 +72,7 @@ public class MathFunctionPopup : Gtk.Window
         entry = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         entry.show ();
         add_arguments_button = new Gtk.SpinButton.with_range (1, 10, 1);
+        add_arguments_button.set_tooltip_text ("Select no. of arguments");
         entry.pack_start (add_arguments_button, false, true, 0);
         add_arguments_button.show ();
         add_function_button = new Gtk.Button ();
