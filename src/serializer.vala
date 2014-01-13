@@ -102,11 +102,27 @@ public class Serializer : Object
             int n_digits = 0;
             return cast_to_string (x, ref n_digits);
         case DisplayFormat.SCIENTIFIC:
-            int n_digits = 0;
-            return cast_to_exponential_string (x, false, ref n_digits);
+            if (representation_base == 10)
+            {
+                int n_digits = 0;
+                return cast_to_exponential_string (x, false, ref n_digits);
+            }
+            else
+            {
+                int n_digits = 0;
+                return cast_to_string (x, ref n_digits);
+            }
         case DisplayFormat.ENGINEERING:
-            int n_digits = 0;
-            return cast_to_exponential_string (x, true, ref n_digits);
+            if (representation_base == 10)
+            {
+                int n_digits = 0;
+                return cast_to_exponential_string (x, true, ref n_digits);
+            }
+            else
+            {
+                int n_digits = 0;
+                return cast_to_string (x, ref n_digits);
+            }
         }
     }
 
