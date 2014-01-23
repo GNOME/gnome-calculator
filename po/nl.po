@@ -14,16 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-10 14:49+0100\n"
-"PO-Revision-Date: 2013-11-10 14:49+0100\n"
-"Last-Translator: Wouter Bolsterlee <wbolster@gnome.org>\n"
+"POT-Creation-Date: 2014-01-23 23:53+0100\n"
+"PO-Revision-Date: 2013-12-28 18:32+0100\n"
+"Last-Translator: Erwin Poeze <donnut@outlook.com>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.5.4\n"
 
 #. Accessible name for the inverse button
 #: ../data/buttons-advanced.ui.h:2 ../data/buttons-programming.ui.h:24
@@ -446,13 +445,13 @@ msgstr "Programmeren"
 msgid "Preferences"
 msgstr "Voorkeuren"
 
-#: ../data/menu.ui.h:7 ../src/gnome-calculator.vala:256
-msgid "About Calculator"
-msgstr "Info Rekenmachine"
-
-#: ../data/menu.ui.h:8
+#: ../data/menu.ui.h:7
 msgid "Help"
 msgstr "Hulp"
+
+#: ../data/menu.ui.h:8
+msgid "About"
+msgstr "Info"
 
 #: ../data/menu.ui.h:9
 msgid "Quit"
@@ -461,7 +460,7 @@ msgstr "Afsluiten"
 #. Program name in the about dialog
 #. Title of main window
 #: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
-#: ../src/math-window.vala:29
+#: ../src/math-window.vala:31
 msgid "Calculator"
 msgstr "Rekenmachine"
 
@@ -475,7 +474,11 @@ msgstr ""
 "calculation;arithmetic;scientific;financial;rekenkundig;wetenschappelijk;"
 "financieel;"
 
-#: ../data/gnome-calculator.appdata.xml.in.h:1
+#: ../data/gcalctool.appdata.xml.in.h:1
+msgid "GNOME Calculator"
+msgstr "Gnome-rekenmachine"
+
+#: ../data/gcalctool.appdata.xml.in.h:2
 msgid ""
 "GNOME Calculator is an application that solves mathematical equations. "
 "Though it at first appears to be a simple calculator with only basic "
@@ -488,7 +491,7 @@ msgstr ""
 "Financiëel of Programmeren en een verbazende verzameling mogelijkheden "
 "vinden."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:2
+#: ../data/gcalctool.appdata.xml.in.h:3
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
@@ -500,7 +503,7 @@ msgstr ""
 "modulodeling, complexe getallen, willekeuriggetal-generatie, "
 "priemfactorisatie en eenhedenconversies."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:3
+#: ../data/gcalctool.appdata.xml.in.h:4
 msgid ""
 "Financial mode supports several computations, including periodic interest "
 "rate, present and future value, double declining and straight line "
@@ -510,7 +513,7 @@ msgstr ""
 "rente, huidige en toekomstige waarde, dubbel afnemende- en lineaire "
 "afschrijving en vele andere."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:4
+#: ../data/gcalctool.appdata.xml.in.h:5
 msgid ""
 "Programming mode supports conversion between common bases (binary, octal, "
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
@@ -916,6 +919,10 @@ msgstr ""
 "  cschutijser https://launchpad.net/~cschutijser\n"
 "  koen noens https://launchpad.net/~knpa01\n"
 "  rob https://launchpad.net/~rvdb"
+
+#: ../src/gnome-calculator.vala:256
+msgid "About Calculator"
+msgstr "Info Rekenmachine"
 
 #. Short description in the about dialog
 #: ../src/gnome-calculator.vala:263
@@ -1396,7 +1403,24 @@ msgstr "32-bits"
 msgid "64 bits"
 msgstr "64-bits"
 
-#: ../src/math-window.vala:67
+#: ../src/math-window.vala:77
+msgid "Basic Mode"
+msgstr "Eenvoudige modus"
+
+# sneltoets is Ctrl + a en de _G wordt gebruikt voor geheugenregisters
+#: ../src/math-window.vala:81
+msgid "Advanced Mode"
+msgstr "Geavanceerde modus"
+
+#: ../src/math-window.vala:85
+msgid "Financial Mode"
+msgstr "Financiële modus"
+
+#: ../src/math-window.vala:89
+msgid "Programming Mode"
+msgstr "Programmeermodus"
+
+#: ../src/math-window.vala:101
 msgid "_Quit"
 msgstr "_Afsluiten"
 
@@ -1406,7 +1430,7 @@ msgid "Argument not defined for zero"
 msgstr "Argument niet gedefinieerd voor nulwaarde"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1923
+#: ../src/number.vala:909 ../src/number.vala:1935
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nul tot een negatieve macht verheffen is niet gedefinieerd"
 
@@ -1415,23 +1439,23 @@ msgstr "Nul tot een negatieve macht verheffen is niet gedefinieerd"
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritme van nul is niet gedefinieerd"
 
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1046
-msgid "Factorial is only defined for natural numbers"
-msgstr "Faculteit is alleen gedefinieerd voor natuurlijke getallen"
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#: ../src/number.vala:1050
+msgid "Factorial is only defined for non-negative real numbers"
+msgstr "Faculteit is alleen gedefinieerd voor niet-negatieve, reële getallen"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1122 ../src/number.vala:2673
+#: ../src/number.vala:1134 ../src/number.vala:2685
 msgid "Division by zero is undefined"
 msgstr "Deling door nul is niet gedefinieerd"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1162
+#: ../src/number.vala:1174
 msgid "Modulus division is only defined for integers"
 msgstr "Modulus deling is alleen gedefinieerd voor gehele getallen"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1254
+#: ../src/number.vala:1266
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1439,70 +1463,70 @@ msgstr ""
 "verschillen met π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1292
+#: ../src/number.vala:1304
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Arcsinus is niet gedefinieerd voor waarden buiten [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1307
+#: ../src/number.vala:1319
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Arccosinus is niet gedefinieerd voor waarden buiten [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1504
+#: ../src/number.vala:1516
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Omgekeerde hyperbolische cosinus is niet gedefinieerd voor waarden onder de "
 "één"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1523
+#: ../src/number.vala:1535
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Hyperbolische arctangens is niet gedefinieerd voor waarden buiten [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1542
+#: ../src/number.vala:1554
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Booleaans AND is alleen gedefinieerd voor positieve gehele getallen"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1554
+#: ../src/number.vala:1566
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Booleaans OR is alleen gedefinieerd voor positieve gehele getallen"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1566
+#: ../src/number.vala:1578
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Booleaans XOR is alleen gedefinieerd voor positieve gehele getallen"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1578
+#: ../src/number.vala:1590
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Booleaans NOT is alleen gedefinieerd voor positieve gehele getallen"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1601
+#: ../src/number.vala:1613
 msgid "Shift is only possible on integer values"
 msgstr "Shift is alleen mogelijk op gehele getallen"
 
-#: ../src/number.vala:1943
+#: ../src/number.vala:1955
 msgid "Root must be non-zero"
 msgstr "Wortel mag niet nul zijn"
 
-#: ../src/number.vala:1960
+#: ../src/number.vala:1972
 msgid "Negative root of zero is undefined"
 msgstr "Negatieve wortel van nul is niet gedefinieerd"
 
-#: ../src/number.vala:1967
+#: ../src/number.vala:1979
 msgid "nth root of negative number is undefined for even n"
 msgstr "n-de wortel van een negatief getal is niet gedefinieerd voor even n"
 
-#: ../src/number.vala:2290
+#: ../src/number.vala:2302
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Overflow: de uitkomst kon niet worden berekend"
 
-#: ../src/number.vala:2618
+#: ../src/number.vala:2630
 msgid "Reciprocal of zero is undefined"
 msgstr "Omgekeerde waarde van nul is niet gedefinieerd"
 
@@ -1534,181 +1558,698 @@ msgstr "Tijd"
 msgid "Temperature"
 msgstr "Temperatuur"
 
+#: ../src/unit.vala:38
+#, c-format
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s graden"
+
+#: ../src/unit.vala:38
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "graad,graden,°"
+
+#: ../src/unit.vala:39
+#, c-format
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s radialen"
+
+#: ../src/unit.vala:39
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "radiaal,radialen,rad"
+
+#: ../src/unit.vala:40
+#, c-format
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s gon"
+
+#: ../src/unit.vala:40
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "gon,gon,gon"
+
 #: ../src/unit.vala:41
 msgid "Parsecs"
 msgstr "Parsecs"
+
+#: ../src/unit.vala:41
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
+
+#: ../src/unit.vala:41
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "parsec,parsecs,pc"
 
 #: ../src/unit.vala:42
 msgid "Light Years"
 msgstr "Lichtjaren"
 
+#: ../src/unit.vala:42
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s ly"
+
+#: ../src/unit.vala:42
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "lichtjaar,lichtjaren,ly"
+
 #: ../src/unit.vala:43
 msgid "Astronomical Units"
 msgstr "Astronomische Eenheden"
+
+#: ../src/unit.vala:43
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s au"
+
+#: ../src/unit.vala:43
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "au"
 
 #: ../src/unit.vala:44
 msgid "Nautical Miles"
 msgstr "Nautische mijlen"
 
+#: ../src/unit.vala:44
+#, c-format
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr "%s nmi"
+
+#: ../src/unit.vala:44
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "nmi"
+
 #: ../src/unit.vala:45
 msgid "Miles"
 msgstr "Mijlen"
+
+#: ../src/unit.vala:45
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s mi"
+
+#: ../src/unit.vala:45
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "mijl, mijlen,mi"
 
 #: ../src/unit.vala:46
 msgid "Kilometers"
 msgstr "Kilometer"
 
+#: ../src/unit.vala:46
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
+
+#: ../src/unit.vala:46
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "kilometer,kilometers,km,kms"
+
 #: ../src/unit.vala:47
 msgid "Cables"
 msgstr "Kabellengte"
+
+#: ../src/unit.vala:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cb"
+
+#: ../src/unit.vala:47
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "kabellengte,kabellengtes,cb"
 
 #: ../src/unit.vala:48
 msgid "Fathoms"
 msgstr "Vadem"
 
+#: ../src/unit.vala:48
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s ftm"
+
+#: ../src/unit.vala:48
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "vadem,vadems,ftm"
+
 #: ../src/unit.vala:49
 msgid "Meters"
 msgstr "Meter"
+
+#: ../src/unit.vala:49
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
+
+#: ../src/unit.vala:49
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "meter,meters,m"
 
 #: ../src/unit.vala:50
 msgid "Yards"
 msgstr "Yard"
 
+#: ../src/unit.vala:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
+
+#: ../src/unit.vala:50
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "yard,yards,yd"
+
 #: ../src/unit.vala:51
 msgid "Feet"
 msgstr "Voet"
+
+#: ../src/unit.vala:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ft"
+
+#: ../src/unit.vala:51
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "voet,voet,ft"
 
 #: ../src/unit.vala:52
 msgid "Inches"
 msgstr "Inch"
 
+#: ../src/unit.vala:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s in"
+
+#: ../src/unit.vala:52
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "inch,inches,in"
+
 #: ../src/unit.vala:53
 msgid "Centimeters"
 msgstr "Centimeter"
+
+#: ../src/unit.vala:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
+
+#: ../src/unit.vala:53
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "centimeter,centimeters,cm,cms"
 
 #: ../src/unit.vala:54
 msgid "Millimeters"
 msgstr "Millimeter"
 
+#: ../src/unit.vala:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
+
+#: ../src/unit.vala:54
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "millimeter,millimeters,mm"
+
 #: ../src/unit.vala:55
 msgid "Micrometers"
 msgstr "Micrometer"
+
+#: ../src/unit.vala:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
+
+#: ../src/unit.vala:55
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "micrometer,micrometers,um"
 
 #: ../src/unit.vala:56
 msgid "Nanometers"
 msgstr "Nanometer"
 
+#: ../src/unit.vala:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
+
+#: ../src/unit.vala:56
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "nanometer,nanometers,nm"
+
 #: ../src/unit.vala:57
 msgid "Hectares"
 msgstr "Hectare"
+
+#: ../src/unit.vala:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../src/unit.vala:57
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "hectare,hectares,ha"
 
 #: ../src/unit.vala:58
 msgid "Acres"
 msgstr "Acre"
 
+#: ../src/unit.vala:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s acre"
+
+#: ../src/unit.vala:58
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "acre,acres"
+
 #: ../src/unit.vala:59
 msgid "Square Meters"
 msgstr "Vierkante meter"
+
+#: ../src/unit.vala:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../src/unit.vala:59
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
 
 #: ../src/unit.vala:60
 msgid "Square Centimeters"
 msgstr "Vierkante centimeter"
 
+#: ../src/unit.vala:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit.vala:60
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
 #: ../src/unit.vala:61
 msgid "Square Millimeters"
 msgstr "Vierkante millimeter"
+
+#: ../src/unit.vala:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit.vala:61
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
 
 #: ../src/unit.vala:62
 msgid "Cubic Meters"
 msgstr "Kubieke meter"
 
+#: ../src/unit.vala:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit.vala:62
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
 #: ../src/unit.vala:63
 msgid "Gallons"
 msgstr "Gallon"
+
+#: ../src/unit.vala:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../src/unit.vala:63
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "gallon,gallons,gal"
 
 #: ../src/unit.vala:64
 msgid "Liters"
 msgstr "Liter"
 
+#: ../src/unit.vala:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s L"
+
+#: ../src/unit.vala:64
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "liter,liters,L"
+
 #: ../src/unit.vala:65
 msgid "Quarts"
 msgstr "Quart"
+
+#: ../src/unit.vala:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s qt"
+
+#: ../src/unit.vala:65
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "quart,quarts,qt"
 
 #: ../src/unit.vala:66
 msgid "Pints"
 msgstr "Pint"
 
+#: ../src/unit.vala:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
+
+#: ../src/unit.vala:66
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "pint,pints,pt"
+
 #: ../src/unit.vala:67
 msgid "Milliliters"
 msgstr "Milliliter"
+
+#: ../src/unit.vala:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s mL"
+
+#: ../src/unit.vala:67
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "milliliter,milliliters,mL"
 
 #: ../src/unit.vala:68
 msgid "Microliters"
 msgstr "Microliter"
 
+#: ../src/unit.vala:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μL"
+
+#: ../src/unit.vala:68
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μL,uL"
+
 #: ../src/unit.vala:69
 msgid "Tonnes"
 msgstr "Ton"
+
+#: ../src/unit.vala:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s T"
+
+#: ../src/unit.vala:69
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "ton, tonnen"
 
 #: ../src/unit.vala:70
 msgid "Kilograms"
 msgstr "Kilogram"
 
+#: ../src/unit.vala:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s Kg"
+
+#: ../src/unit.vala:70
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "kilogram,kilogrammen,kg,kilo"
+
 #: ../src/unit.vala:71
 msgid "Pounds"
 msgstr "Pond"
+
+#: ../src/unit.vala:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../src/unit.vala:71
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "ponden,pond"
 
 #: ../src/unit.vala:72
 msgid "Ounces"
 msgstr "Ounce"
 
+#: ../src/unit.vala:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz"
+
+#: ../src/unit.vala:72
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "ounce,ounces,oz"
+
 #: ../src/unit.vala:73
 msgid "Grams"
 msgstr "Gram"
+
+#: ../src/unit.vala:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit.vala:73
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "gram,grammen,g"
 
 #: ../src/unit.vala:74
 msgid "Years"
 msgstr "Jaren"
 
+#: ../src/unit.vala:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s jaar"
+
+#: ../src/unit.vala:74
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "jaar,jaren"
+
 #: ../src/unit.vala:75
 msgid "Days"
 msgstr "Dagen"
+
+#: ../src/unit.vala:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s dagen"
+
+#: ../src/unit.vala:75
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "dag,dagen"
 
 #: ../src/unit.vala:76
 msgid "Hours"
 msgstr "Uren"
 
+#: ../src/unit.vala:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s uur"
+
+#: ../src/unit.vala:76
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "uur"
+
 #: ../src/unit.vala:77
 msgid "Minutes"
 msgstr "Minuten"
+
+#: ../src/unit.vala:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s minuten"
+
+#: ../src/unit.vala:77
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "minuut,minuten,min"
 
 #: ../src/unit.vala:78
 msgid "Seconds"
 msgstr "Seconden"
 
+#: ../src/unit.vala:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit.vala:78
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "seconde,seconden,s"
+
 #: ../src/unit.vala:79
 msgid "Milliseconds"
 msgstr "Milliseconden"
+
+#: ../src/unit.vala:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit.vala:79
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "milliseconde,milliseconden,ms"
 
 #: ../src/unit.vala:80
 msgid "Microseconds"
 msgstr "Microseconden"
 
+#: ../src/unit.vala:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit.vala:80
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "microseconde,microseconden,us,μs"
+
 #: ../src/unit.vala:81
 msgid "Celsius"
 msgstr "Celsius"
+
+#: ../src/unit.vala:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr "%s ˚C"
+
+#: ../src/unit.vala:81
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "graden C,˚C"
 
 #: ../src/unit.vala:82
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
+#: ../src/unit.vala:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr "%s ˚F"
+
+#: ../src/unit.vala:82
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "graden F,˚F"
+
 #: ../src/unit.vala:83
 msgid "Kelvin"
 msgstr "Kelvin"
 
+#: ../src/unit.vala:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr "%s K"
+
+#: ../src/unit.vala:83
+msgctxt "unit-symbols"
+msgid "K"
+msgstr "K"
+
 #: ../src/unit.vala:84
 msgid "Rankine"
 msgstr "Rankine"
+
+#: ../src/unit.vala:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr "%s ˚R"
+
+#: ../src/unit.vala:84
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra"
+msgstr "graden R, ˚R, ˚Ra"
 
 #: ../src/unit.vala:86
 msgid "Currency"
@@ -1732,387 +2273,11 @@ msgstr "%s%%s"
 #~ msgid "Sign"
 #~ msgstr "Teken"
 
-#~ msgctxt "unit-format"
-#~ msgid "%s degrees"
-#~ msgstr "%s graden"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degree,degrees,deg"
-#~ msgstr "graad,graden,°"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s radians"
-#~ msgstr "%s radialen"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "radian,radians,rad"
-#~ msgstr "radiaal,radialen,rad"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s gradians"
-#~ msgstr "%s gon"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gradian,gradians,grad"
-#~ msgstr "gon,gon,gon"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s pc"
-#~ msgstr "%s pc"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "parsec,parsecs,pc"
-#~ msgstr "parsec,parsecs,pc"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ly"
-#~ msgstr "%s ly"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "lightyear,lightyears,ly"
-#~ msgstr "lichtjaar,lichtjaren,ly"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s au"
-#~ msgstr "%s au"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "au"
-#~ msgstr "au"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s nmi"
-#~ msgstr "%s nmi"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "nmi"
-#~ msgstr "nmi"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mi"
-#~ msgstr "%s mi"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mile,miles,mi"
-#~ msgstr "mijl, mijlen,mi"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s km"
-#~ msgstr "%s km"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "kilometer,kilometers,km,kms"
-#~ msgstr "kilometer,kilometers,km,kms"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cb"
-#~ msgstr "%s cb"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "cable,cables,cb"
-#~ msgstr "kabellengte,kabellengtes,cb"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ftm"
-#~ msgstr "%s ftm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "fathom,fathoms,ftm"
-#~ msgstr "vadem,vadems,ftm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m"
-#~ msgstr "%s m"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "meter,meters,m"
-#~ msgstr "meter,meters,m"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s yd"
-#~ msgstr "%s yd"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "yard,yards,yd"
-#~ msgstr "yard,yards,yd"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ft"
-#~ msgstr "%s ft"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "foot,feet,ft"
-#~ msgstr "voet,voet,ft"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s in"
-#~ msgstr "%s in"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "inch,inches,in"
-#~ msgstr "inch,inches,in"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cm"
-#~ msgstr "%s cm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "centimeter,centimeters,cm,cms"
-#~ msgstr "centimeter,centimeters,cm,cms"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mm"
-#~ msgstr "%s mm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millimeter,millimeters,mm"
-#~ msgstr "millimeter,millimeters,mm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μm"
-#~ msgstr "%s μm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "micrometer,micrometers,um"
-#~ msgstr "micrometer,micrometers,um"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s nm"
-#~ msgstr "%s nm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "nanometer,nanometers,nm"
-#~ msgstr "nanometer,nanometers,nm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ha"
-#~ msgstr "%s ha"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "hectare,hectares,ha"
-#~ msgstr "hectare,hectares,ha"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s acres"
-#~ msgstr "%s acre"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "acre,acres"
-#~ msgstr "acre,acres"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m²"
-#~ msgstr "%s m²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "m²"
-#~ msgstr "m²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cm²"
-#~ msgstr "%s cm²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "cm²"
-#~ msgstr "cm²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mm²"
-#~ msgstr "%s mm²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mm²"
-#~ msgstr "mm²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m³"
-#~ msgstr "%s m³"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "m³"
-#~ msgstr "m³"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s gal"
-#~ msgstr "%s gal"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gallon,gallons,gal"
-#~ msgstr "gallon,gallons,gal"
-
 #~ msgid "Litres"
 #~ msgstr "Liter"
 
-#~ msgctxt "unit-format"
-#~ msgid "%s L"
-#~ msgstr "%s L"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "litre,litres,liter,liters,L"
-#~ msgstr "liter,liters,L"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s qt"
-#~ msgstr "%s qt"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "quart,quarts,qt"
-#~ msgstr "quart,quarts,qt"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s pt"
-#~ msgstr "%s pt"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "pint,pints,pt"
-#~ msgstr "pint,pints,pt"
-
 #~ msgid "Millilitres"
 #~ msgstr "Milliliter"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mL"
-#~ msgstr "%s mL"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
-#~ msgstr "milliliter,milliliters,mL"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μL"
-#~ msgstr "%s μL"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mm³,μL,uL"
-#~ msgstr "mm³,μL,uL"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s T"
-#~ msgstr "%s T"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "tonne,tonnes"
-#~ msgstr "ton, tonnen"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s kg"
-#~ msgstr "%s Kg"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
-#~ msgstr "kilogram,kilogrammen,kg,kilo"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s lb"
-#~ msgstr "%s lb"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "pound,pounds,lb"
-#~ msgstr "ponden,pond"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s oz"
-#~ msgstr "%s oz"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "ounce,ounces,oz"
-#~ msgstr "ounce,ounces,oz"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s g"
-#~ msgstr "%s g"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gram,grams,gramme,grammes,g"
-#~ msgstr "gram,grammen,g"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s years"
-#~ msgstr "%s jaar"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "year,years"
-#~ msgstr "jaar,jaren"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s days"
-#~ msgstr "%s dagen"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "day,days"
-#~ msgstr "dag,dagen"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s hours"
-#~ msgstr "%s uur"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "hour,hours"
-#~ msgstr "uur"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s minutes"
-#~ msgstr "%s minuten"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "minute,minutes"
-#~ msgstr "minuut,minuten,min"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s s"
-#~ msgstr "%s s"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "second,seconds,s"
-#~ msgstr "seconde,seconden,s"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ms"
-#~ msgstr "%s ms"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millisecond,milliseconds,ms"
-#~ msgstr "milliseconde,milliseconden,ms"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μs"
-#~ msgstr "%s μs"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "microsecond,microseconds,us,μs"
-#~ msgstr "microseconde,microseconden,us,μs"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚C"
-#~ msgstr "%s ˚C"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "graden C,˚C"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚F"
-#~ msgstr "%s ˚F"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "graden F,˚F"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s K"
-#~ msgstr "%s K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "K"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚R"
-#~ msgstr "%s ˚R"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "graden R, ˚R, ˚Ra"
 
 #~ msgid "<i>x</i>"
 #~ msgstr "<i>x</i>"
