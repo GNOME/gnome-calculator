@@ -8,15 +8,15 @@
 # Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007, 2008.
 # Rimas Kudelis <rq@akl.lt>, 2010.
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012.
-# Aurimas Černius <aurisc4@gmail.com>, 2010, 2013.
+# Aurimas Černius <aurisc4@gmail.com>, 2010, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-11-02 15:59+0000\n"
-"PO-Revision-Date: 2013-11-03 22:15+0200\n"
+"POT-Creation-Date: 2014-01-23 02:17+0000\n"
+"PO-Revision-Date: 2014-01-25 22:25+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -67,7 +67,7 @@ msgstr "Mokslinis"
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.vala:377
+#: ../src/math-buttons.vala:375
 msgid "Memory"
 msgstr "Atmintis"
 
@@ -95,7 +95,7 @@ msgstr "Įraš"
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:393
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:391
 msgid "Compounding Term"
 msgstr "Sudėtinis terminas"
 
@@ -161,7 +161,7 @@ msgstr "_Periodas:"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:397
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:395
 msgid "Future Value"
 msgstr "Būsimoji vertė"
 
@@ -187,7 +187,7 @@ msgstr "_Periodų kiekis:"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:411
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:409
 msgid "Gross Profit Margin"
 msgstr "Bendras grynasis pelnas"
 
@@ -207,7 +207,7 @@ msgstr "Nor_ma:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:409
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:407
 msgid "Periodic Payment"
 msgstr "Periodinis mokėjimas"
 
@@ -232,7 +232,7 @@ msgstr "_Terminas:"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:407
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:405
 msgid "Present Value"
 msgstr "Dabartinė vertė"
 
@@ -249,7 +249,7 @@ msgstr ""
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:405
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:403
 msgid "Periodic Interest Rate"
 msgstr "Periodinė palūkanų norma"
 
@@ -381,13 +381,13 @@ msgstr "Bgp"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:389
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:387
 msgid "Shift Left"
 msgstr "Postūmis kairiau"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:391
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:389
 msgid "Shift Right"
 msgstr "Postūmis dešiniau"
 
@@ -398,7 +398,7 @@ msgstr "Įterpti simbolį"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:379
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:377
 msgid "Insert Character Code"
 msgstr "Įterpti simbolio kodą"
 
@@ -438,12 +438,12 @@ msgid "Preferences"
 msgstr "Nustatymai"
 
 #: ../data/menu.ui.h:7
-msgid "About Calculator"
-msgstr "Apie skaičiuotuvą"
-
-#: ../data/menu.ui.h:8
 msgid "Help"
 msgstr "Žinynas"
+
+#: ../data/menu.ui.h:8
+msgid "About"
+msgstr "Apie"
 
 #: ../data/menu.ui.h:9
 msgid "Quit"
@@ -452,7 +452,7 @@ msgstr "Baigti"
 #. Program name in the about dialog
 #. Title of main window
 #: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
-#: ../src/math-window.vala:29
+#: ../src/math-window.vala:31
 msgid "Calculator"
 msgstr "Skaičiuotuvas"
 
@@ -465,6 +465,11 @@ msgid "calculation;arithmetic;scientific;financial;"
 msgstr "skaičiavimai;aritmetika;moksliniai;finansiniai;"
 
 #: ../data/gnome-calculator.appdata.xml.in.h:1
+#| msgid "Calculator"
+msgid "GNOME Calculator"
+msgstr "GNOME skaičiuotuvas"
+
+#: ../data/gnome-calculator.appdata.xml.in.h:2
 msgid ""
 "GNOME Calculator is an application that solves mathematical equations. "
 "Though it at first appears to be a simple calculator with only basic "
@@ -476,7 +481,7 @@ msgstr ""
 "aritmetinius veiksmus, galima įjungti sudėtingesnę, finansų arba "
 "programavimo veikseną, kur atsiskleidžia įspūdingos galimybės."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:2
+#: ../data/gnome-calculator.appdata.xml.in.h:3
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
@@ -488,7 +493,7 @@ msgstr ""
 "kompleksiniai skaičiai, atsitiktinių skaičių generavimas, skaidymas "
 "pirminiais dauginamaisiais bei matavimo vienetų keitimas."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:3
+#: ../data/gnome-calculator.appdata.xml.in.h:4
 msgid ""
 "Financial mode supports several computations, including periodic interest "
 "rate, present and future value, double declining and straight line "
@@ -498,7 +503,7 @@ msgstr ""
 "norma, dabartinė ir ateities vertė, dvigubo mažėjimo ir tiesinį nusidėvėjimą "
 "bei daug kitų."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:4
+#: ../data/gnome-calculator.appdata.xml.in.h:5
 msgid ""
 "Programming mode supports conversion between common bases (binary, octal, "
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
@@ -868,296 +873,300 @@ msgstr ""
 "Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Gediminas Paulauskas <menesis@chatsubo.lt>"
 
+#: ../src/gnome-calculator.vala:256
+msgid "About Calculator"
+msgstr "Apie skaičiuotuvą"
+
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:262
+#: ../src/gnome-calculator.vala:263
 msgid "Calculator with financial and scientific modes."
 msgstr "Skaičiuotuvas su finansiniais bei moksliniais priedais"
 
-#: ../src/gnome-calculator.vala:298
+#: ../src/gnome-calculator.vala:299
 msgid "Solve given equation"
 msgstr "Išspręsti lygtį"
 
-#: ../src/gnome-calculator.vala:306
+#: ../src/gnome-calculator.vala:307
 msgid "Start with given equation"
 msgstr "Pradėti lygtimi"
 
-#: ../src/gnome-calculator.vala:315
+#: ../src/gnome-calculator.vala:316
 msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
 #. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.vala:293
+#: ../src/math-buttons.vala:291
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Vald+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.vala:295
+#: ../src/math-buttons.vala:293
 msgid "Euler’s Number"
 msgstr "Oilerio skaičius"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.vala:299
+#: ../src/math-buttons.vala:297
 msgid "Subscript mode [Alt]"
 msgstr "Skaičiaus apatinio indekso veiksena [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.vala:301
+#: ../src/math-buttons.vala:299
 msgid "Superscript mode [Ctrl]"
 msgstr "Skaičiaus viršutinio indekso veiksena [Vald]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.vala:303
+#: ../src/math-buttons.vala:301
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Mokslinė eksponentė [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.vala:305
+#: ../src/math-buttons.vala:303
 msgid "Add [+]"
 msgstr "Pridėti [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.vala:307
+#: ../src/math-buttons.vala:305
 msgid "Subtract [-]"
 msgstr "Atimti [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.vala:309
+#: ../src/math-buttons.vala:307
 msgid "Multiply [*]"
 msgstr "Dauginti [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.vala:311
+#: ../src/math-buttons.vala:309
 msgid "Divide [/]"
 msgstr "Dalinti [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.vala:313
+#: ../src/math-buttons.vala:311
 msgid "Modulus divide"
 msgstr "Dalyba su liekana"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.vala:315
+#: ../src/math-buttons.vala:313
 msgid "Additional Functions"
 msgstr "Papildomos funkcijos"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.vala:317
+#: ../src/math-buttons.vala:315
 msgid "Exponent [^ or **]"
 msgstr "Eksponentinis [^ arba **]"
 
 #. Tooltip for the percentage button
-#: ../src/math-buttons.vala:319
+#: ../src/math-buttons.vala:317
 msgid "Percentage [%]"
 msgstr "Procentai [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.vala:321
+#: ../src/math-buttons.vala:319
 msgid "Factorial [!]"
 msgstr "Faktorialas [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.vala:323
+#: ../src/math-buttons.vala:321
 msgid "Absolute value [|]"
 msgstr "Modulis [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.vala:325
+#: ../src/math-buttons.vala:323
 msgid "Complex argument"
 msgstr "Kompleksinis argumentas"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.vala:327
+#: ../src/math-buttons.vala:325
 msgid "Complex conjugate"
 msgstr "Kompleksinė konjunkcija"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.vala:329
+#: ../src/math-buttons.vala:327
 msgid "Root [Ctrl+R]"
 msgstr "Šaknis [Vald+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.vala:331
+#: ../src/math-buttons.vala:329
 msgid "Square root [Ctrl+R]"
 msgstr "Kvadratinė šaknis [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.vala:333
+#: ../src/math-buttons.vala:331
 msgid "Logarithm"
 msgstr "Logaritmas"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.vala:335
+#: ../src/math-buttons.vala:333
 msgid "Natural Logarithm"
 msgstr "Natūrinis logaritmas"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.vala:337
+#: ../src/math-buttons.vala:335
 msgid "Sine"
 msgstr "Sinusas"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.vala:339
+#: ../src/math-buttons.vala:337
 msgid "Cosine"
 msgstr "Kosinusas"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.vala:341
+#: ../src/math-buttons.vala:339
 msgid "Tangent"
 msgstr "Tangentas"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.vala:343
+#: ../src/math-buttons.vala:341
 msgid "Hyperbolic Sine"
 msgstr "Hiperbolinis sinusas"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.vala:345
+#: ../src/math-buttons.vala:343
 msgid "Hyperbolic Cosine"
 msgstr "Hiperbolinis kosinusas"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.vala:347
+#: ../src/math-buttons.vala:345
 msgid "Hyperbolic Tangent"
 msgstr "Hiperbolinis tangentas"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.vala:349
+#: ../src/math-buttons.vala:347
 msgid "Inverse [Ctrl+I]"
 msgstr "Apversti [Vald+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.vala:351
+#: ../src/math-buttons.vala:349
 msgid "Boolean AND"
 msgstr "Loginis IR"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.vala:353
+#: ../src/math-buttons.vala:351
 msgid "Boolean OR"
 msgstr "Loginis ARBA"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.vala:355
+#: ../src/math-buttons.vala:353
 msgid "Boolean Exclusive OR"
 msgstr "Loginė griežta disjunkcija"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.vala:357
+#: ../src/math-buttons.vala:355
 msgid "Boolean NOT"
 msgstr "Loginis NE"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:359 ../src/math-buttons.vala:812
+#: ../src/math-buttons.vala:357
 msgid "Integer Component"
 msgstr "Sveikoji dalis"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:361 ../src/math-buttons.vala:814
+#: ../src/math-buttons.vala:359
 msgid "Fractional Component"
 msgstr "Trupmeninė dalis"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.vala:363
+#: ../src/math-buttons.vala:361
 msgid "Real Component"
 msgstr "Realioji dalis"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.vala:365
+#: ../src/math-buttons.vala:363
 msgid "Imaginary Component"
 msgstr "Menamoji dalis"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.vala:367
+#: ../src/math-buttons.vala:365
 msgid "Ones' Complement"
 msgstr "Bitinis vieneto papildymas"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.vala:369
+#: ../src/math-buttons.vala:367
 msgid "Two's Complement"
 msgstr "Dvejetainis papildymas"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.vala:371
+#: ../src/math-buttons.vala:369
 msgid "Truncate"
 msgstr "Atmest"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.vala:373
+#: ../src/math-buttons.vala:371
 msgid "Start Group [(]"
 msgstr "Pradėti grupę [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.vala:375
+#: ../src/math-buttons.vala:373
 msgid "End Group [)]"
 msgstr "Užbaigti grupę [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.vala:381
+#: ../src/math-buttons.vala:379
 msgid "Calculate Result"
 msgstr "Skaičiuoti rezultatą"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.vala:383
+#: ../src/math-buttons.vala:381
 msgid "Factorize [Ctrl+F]"
 msgstr "Išskaidyti [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.vala:385
+#: ../src/math-buttons.vala:383
 msgid "Clear Display [Escape]"
 msgstr "Išvalyti ekraną [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.vala:387
+#: ../src/math-buttons.vala:385
 msgid "Undo [Ctrl+Z]"
 msgstr "Atšaukti [Vald+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.vala:395
+#: ../src/math-buttons.vala:393
 msgid "Double Declining Depreciation"
 msgstr "Dvigubai mažėjančios vertės nusidėvėjimas"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.vala:399
+#: ../src/math-buttons.vala:397
 msgid "Financial Term"
 msgstr "Finansinis terminas"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.vala:401
+#: ../src/math-buttons.vala:399
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Nusidėvėjimas metų skaičiaus metodu"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.vala:403
+#: ../src/math-buttons.vala:401
 msgid "Straight Line Depreciation"
 msgstr "Tiesiogiai proporcingas nusidėvėjimas"
 
-#: ../src/math-buttons.vala:432
+#: ../src/math-buttons.vala:430
 msgid "Square [Ctrl+2]"
 msgstr "Kvadratas [Ctrl+2]"
 
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.vala:522
+#: ../src/math-buttons.vala:520
 msgid "Binary"
 msgstr "Dvejetainė"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.vala:526
+#: ../src/math-buttons.vala:524
 msgid "Octal"
 msgstr "Aštuonetainis"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.vala:530
+#: ../src/math-buttons.vala:528
 msgid "Decimal"
 msgstr "Dešimtainė"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.vala:534
+#: ../src/math-buttons.vala:532
 msgid "Hexadecimal"
 msgstr "Šešioliktainis"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:743 ../src/math-buttons.vala:780
+#: ../src/math-buttons.vala:741 ../src/math-buttons.vala:778
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1167,33 +1176,13 @@ msgstr[2] "_%d vietų"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:748 ../src/math-buttons.vala:785
+#: ../src/math-buttons.vala:746 ../src/math-buttons.vala:783
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "%d vieta"
 msgstr[1] "%d vietos"
 msgstr[2] "%d vietų"
-
-#. Tooltip for the round button
-#: ../src/math-buttons.vala:816
-msgid "Round"
-msgstr "Apvalinti"
-
-#. Tooltip for the floor button
-#: ../src/math-buttons.vala:818
-msgid "Floor"
-msgstr "Apatinė riba"
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:820
-msgid "Ceiling"
-msgstr "Viršutinė riba"
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:822
-msgid "Sign"
-msgstr "Ženklas"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
 #: ../src/math-converter.vala:46
@@ -1211,68 +1200,68 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.vala:481
+#: ../src/math-equation.vala:482
 msgid "No undo history"
 msgstr "Nėra atšaukimo istorijos"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.vala:497
+#: ../src/math-equation.vala:499
 msgid "No redo history"
 msgstr "Nėra atšaukimo istorijos"
 
-#: ../src/math-equation.vala:727
+#: ../src/math-equation.vala:729
 msgid "No sane value to store"
 msgstr "Nėra sveikos reikšmės saugojimui"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.vala:909
+#: ../src/math-equation.vala:911
 msgid "Overflow. Try a bigger word size"
 msgstr "Perpildymas. Mėginkite didesnį žodžio ilgį"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.vala:914
+#: ../src/math-equation.vala:916
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Nežinomas kintamasis '%s'"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.vala:921
+#: ../src/math-equation.vala:923
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Neapibrėžta funkcija '%s'"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.vala:928
+#: ../src/math-equation.vala:930
 msgid "Unknown conversion"
 msgstr "Nežinoma konversija"
 
-#: ../src/math-equation.vala:936
+#: ../src/math-equation.vala:938
 #, c-format
 msgid "Malformed expression at token '%s'"
 msgstr "Blogai suformuota išraiška ties leksema „%s“"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.vala:941 ../src/math-equation.vala:946
+#: ../src/math-equation.vala:943 ../src/math-equation.vala:948
 msgid "Malformed expression"
 msgstr "Blogai suformuota išraiška"
 
-#: ../src/math-equation.vala:957
+#: ../src/math-equation.vala:959
 msgid "Calculating"
 msgstr "Skaičiuojama"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.vala:1084
+#: ../src/math-equation.vala:1086
 msgid "Need an integer to factorize"
 msgstr "Skaidymui reikalingas sveikas skaičius"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../src/math-equation.vala:1138
+#: ../src/math-equation.vala:1140
 msgid "No sane value to bitwise shift"
 msgstr "Nėra tinkamos reikšmės bitų pastūmimui"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.vala:1152
+#: ../src/math-equation.vala:1154
 msgid "Displayed value not an integer"
 msgstr "Rodoma reikšmė nėra sveikas skaičius"
 
@@ -1368,8 +1357,27 @@ msgstr "32 bitai"
 msgid "64 bits"
 msgstr "64 bitai"
 
-#: ../src/math-window.vala:67
-#| msgid "Quit"
+#: ../src/math-window.vala:77
+#| msgid "Basic"
+msgid "Basic Mode"
+msgstr "Paprasta veiksena"
+
+#: ../src/math-window.vala:81
+#| msgid "Advanced"
+msgid "Advanced Mode"
+msgstr "Sudėtingesnė veiksena"
+
+#: ../src/math-window.vala:85
+#| msgid "Financial Term"
+msgid "Financial Mode"
+msgstr "Finansinė veiksena"
+
+#: ../src/math-window.vala:89
+#| msgid "Programming"
+msgid "Programming Mode"
+msgstr "Programavimo veiksena"
+
+#: ../src/math-window.vala:101
 msgid "_Quit"
 msgstr "_Išeiti"
 
@@ -1379,7 +1387,7 @@ msgid "Argument not defined for zero"
 msgstr "Argumentas negali būti nulis"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1923
+#: ../src/number.vala:909 ../src/number.vala:1935
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nulinis laipsnis neapibrėžtas neigiamai eksponentei"
 
@@ -1388,93 +1396,94 @@ msgstr "Nulinis laipsnis neapibrėžtas neigiamai eksponentei"
 msgid "Logarithm of zero is undefined"
 msgstr "Nulio logaritmas neapibrėžtas"
 
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1046
-msgid "Factorial is only defined for natural numbers"
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#: ../src/number.vala:1050
+#| msgid "Factorial is only defined for natural numbers"
+msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Faktorialas apibrėžtas tik natūraliems skaičiams"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1122 ../src/number.vala:2673
+#: ../src/number.vala:1134 ../src/number.vala:2685
 msgid "Division by zero is undefined"
 msgstr "Dalyba iš nulio neapibrėžta"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1162
+#: ../src/number.vala:1174
 msgid "Modulus division is only defined for integers"
 msgstr "Dalyba su liekana apibrėžta tik sveikiems skaičiams"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1254
+#: ../src/number.vala:1266
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "Tangentas neapibrėžtas kampams, kurie yra π (180°) kartotiniai nuo π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1292
+#: ../src/number.vala:1304
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Arksinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1307
+#: ../src/number.vala:1319
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Arkkosinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1504
+#: ../src/number.vala:1516
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Hiperbolinis arkkosinusas neapibrėžtas reikšmėms, mažesnėms arba lygioms "
 "vienetui"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1523
+#: ../src/number.vala:1535
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "Hiperbolinis arktangentas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1542
+#: ../src/number.vala:1554
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Loginis IR apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1554
+#: ../src/number.vala:1566
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Loginis ARBA apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1566
+#: ../src/number.vala:1578
 msgid "Boolean XOR is only defined for positive integers"
 msgstr ""
 "Loginė griežta disjunkcija apibrėžta tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1578
+#: ../src/number.vala:1590
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Loginis NE apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1601
+#: ../src/number.vala:1613
 msgid "Shift is only possible on integer values"
 msgstr "Postūmis galimas tik sveikiems skaičiams"
 
-#: ../src/number.vala:1943
+#: ../src/number.vala:1955
 msgid "Root must be non-zero"
 msgstr "Šaknis turi būti nenulinė"
 
-#: ../src/number.vala:1960
+#: ../src/number.vala:1972
 msgid "Negative root of zero is undefined"
 msgstr "Neigiama nulio šaknis neapibrėžta"
 
-#: ../src/number.vala:1967
+#: ../src/number.vala:1979
 msgid "nth root of negative number is undefined for even n"
 msgstr "n-ojo laipsnio šaknis neigiamam skaičiui neapibrėžta lyginiams n"
 
-#: ../src/number.vala:2290
+#: ../src/number.vala:2302
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Perpildymas: rezultato suskaičiuoti nepavyko"
 
-#: ../src/number.vala:2618
+#: ../src/number.vala:2630
 msgid "Reciprocal of zero is undefined"
 msgstr "Nulinis vardiklis neapibrėžtas"
 
@@ -1508,7 +1517,6 @@ msgstr "Temperatūra"
 
 #: ../src/unit.vala:38
 #, c-format
-#| msgid "Degrees"
 msgctxt "unit-format"
 msgid "%s degrees"
 msgstr "%s laipsniai"
@@ -1520,7 +1528,6 @@ msgstr "laipsnis, laipsniai,laips"
 
 #: ../src/unit.vala:39
 #, c-format
-#| msgid "Gradians"
 msgctxt "unit-format"
 msgid "%s radians"
 msgstr "%s radianai"
@@ -1532,7 +1539,6 @@ msgstr "radianas,radianai,rad"
 
 #: ../src/unit.vala:40
 #, c-format
-#| msgid "Gradians"
 msgctxt "unit-format"
 msgid "%s gradians"
 msgstr "%s gradientai"
@@ -1673,7 +1679,6 @@ msgid "%s m"
 msgstr "%s m"
 
 #: ../src/unit.vala:49
-#| msgid "Centimeters"
 msgctxt "unit-symbols"
 msgid "meter,meters,m"
 msgstr "metras,metrai,m"
@@ -1804,7 +1809,6 @@ msgstr "Akrai"
 
 #: ../src/unit.vala:58
 #, c-format
-#| msgid "Acres"
 msgctxt "unit-format"
 msgid "%s acres"
 msgstr "%s akrai"
@@ -1890,7 +1894,8 @@ msgid "gallon,gallons,gal"
 msgstr "galonas,galonai,gal"
 
 #: ../src/unit.vala:64
-msgid "Litres"
+#| msgid "Meters"
+msgid "Liters"
 msgstr "Litrai"
 
 #: ../src/unit.vala:64
@@ -1935,7 +1940,8 @@ msgid "pint,pints,pt"
 msgstr "pinta,pintos,pt"
 
 #: ../src/unit.vala:67
-msgid "Millilitres"
+#| msgid "Millilitres"
+msgid "Milliliters"
 msgstr "Mililitrai"
 
 #: ../src/unit.vala:67
@@ -1950,7 +1956,8 @@ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "mililitras,mililitrai,ml,cm³"
 
 #: ../src/unit.vala:68
-msgid "Microlitres"
+#| msgid "Microlitres"
+msgid "Microliters"
 msgstr "Mikrolitrai"
 
 #: ../src/unit.vala:68
@@ -2045,7 +2052,6 @@ msgstr "Metai"
 
 #: ../src/unit.vala:74
 #, c-format
-#| msgid "Years"
 msgctxt "unit-format"
 msgid "%s years"
 msgstr "%s metai"
@@ -2076,7 +2082,6 @@ msgstr "Valandos"
 
 #: ../src/unit.vala:76
 #, c-format
-#| msgid "Hours"
 msgctxt "unit-format"
 msgid "%s hours"
 msgstr "%s valandos"
@@ -2092,7 +2097,6 @@ msgstr "Minutė"
 
 #: ../src/unit.vala:77
 #, c-format
-#| msgid "Minutes"
 msgctxt "unit-format"
 msgid "%s minutes"
 msgstr "%s minutės"
@@ -2113,7 +2117,6 @@ msgid "%s s"
 msgstr "%s s"
 
 #: ../src/unit.vala:78
-#| msgid "Microseconds"
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "sekundė,sekundės,s"
@@ -2164,7 +2167,6 @@ msgid "degC,˚C"
 msgstr "degC,˚C"
 
 #: ../src/unit.vala:82
-#| msgid "Farenheit"
 msgid "Fahrenheit"
 msgstr "Farenheito"
 
@@ -2218,3 +2220,4 @@ msgstr "Valiutų"
 #, c-format
 msgid "%s%%s"
 msgstr "%%s%s"
+
