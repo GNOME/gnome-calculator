@@ -8,15 +8,15 @@
 # Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007, 2008.
 # Rimas Kudelis <rq@akl.lt>, 2010.
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012.
-# Aurimas Černius <aurisc4@gmail.com>, 2010, 2013.
+# Aurimas Černius <aurisc4@gmail.com>, 2010, 2013, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-09 09:15+0000\n"
-"PO-Revision-Date: 2013-02-09 22:56+0200\n"
+"POT-Creation-Date: 2014-02-02 07:35+0000\n"
+"PO-Revision-Date: 2014-02-02 13:40+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -414,17 +414,16 @@ msgstr "Įterpt_i"
 
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:265
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:265
 #: ../src/math-window.vala:29
 msgid "Calculator"
 msgstr "Skaičiuotuvas"
 
-#: ../data/gnome-calculator.desktop.in.h:2
+#: ../data/gcalctool.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Atlikti aritmetinius, mokslinius ar finansinius skaičiavimus"
 
-#: ../data/gnome-calculator.desktop.in.h:3
-#| msgid "Perform arithmetic, scientific or financial calculations"
+#: ../data/gcalctool.desktop.in.h:3
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "skaičiavimai;aritmetika;moksliniai;finansiniai;"
 
@@ -1009,12 +1008,12 @@ msgid "Boolean NOT"
 msgstr "Loginis NE"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
+#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:812
 msgid "Integer Component"
 msgstr "Sveikoji dalis"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
+#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:814
 msgid "Fractional Component"
 msgstr "Trupmeninė dalis"
 
@@ -1115,7 +1114,7 @@ msgstr "Šešioliktainis"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
+#: ../src/math-buttons.vala:743 ../src/math-buttons.vala:780
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1125,7 +1124,7 @@ msgstr[2] "_%d vietų"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
+#: ../src/math-buttons.vala:748 ../src/math-buttons.vala:785
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1134,22 +1133,22 @@ msgstr[1] "%d vietos"
 msgstr[2] "%d vietų"
 
 #. Tooltip for the round button
-#: ../src/math-buttons.vala:813
+#: ../src/math-buttons.vala:816
 msgid "Round"
 msgstr "Apvalinti"
 
 #. Tooltip for the floor button
-#: ../src/math-buttons.vala:815
+#: ../src/math-buttons.vala:818
 msgid "Floor"
 msgstr "Apatinė riba"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:817
+#: ../src/math-buttons.vala:820
 msgid "Ceiling"
 msgstr "Viršutinė riba"
 
 #. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:819
+#: ../src/math-buttons.vala:822
 msgid "Sign"
 msgstr "Ženklas"
 
@@ -1459,181 +1458,707 @@ msgstr "Trukmė"
 msgid "Temperature"
 msgstr "Temperatūra"
 
+#: ../src/unit.vala:38
+#, c-format
+#| msgid "Degrees"
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s laipsniai"
+
+#: ../src/unit.vala:38
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "laipsnis,laipsniai,laips"
+
+#: ../src/unit.vala:39
+#, c-format
+#| msgid "Gradians"
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s radianai"
+
+#: ../src/unit.vala:39
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "radianas,radianai,rad"
+
+#: ../src/unit.vala:40
+#, c-format
+#| msgid "Gradians"
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s gradientai"
+
+#: ../src/unit.vala:40
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "gradientas,gradientai,grad"
+
 #: ../src/unit.vala:41
 msgid "Parsecs"
 msgstr "Parsekų"
+
+#: ../src/unit.vala:41
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
+
+#: ../src/unit.vala:41
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "parsekas,parsekai,pc"
 
 #: ../src/unit.vala:42
 msgid "Light Years"
 msgstr "Šviesmečiai"
 
+#: ../src/unit.vala:42
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s šm"
+
+#: ../src/unit.vala:42
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "šviesmetis,šviesmečiai,šm"
+
 #: ../src/unit.vala:43
 msgid "Astronomical Units"
 msgstr "Astronominiai vienetai"
+
+#: ../src/unit.vala:43
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s av"
+
+#: ../src/unit.vala:43
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "av"
 
 #: ../src/unit.vala:44
 msgid "Nautical Miles"
 msgstr "Jūrmylės"
 
+#: ../src/unit.vala:44
+#, c-format
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr "%s jm"
+
+#: ../src/unit.vala:44
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "jm"
+
 #: ../src/unit.vala:45
 msgid "Miles"
 msgstr "Mylios"
+
+#: ../src/unit.vala:45
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s myl"
+
+#: ../src/unit.vala:45
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "mylia,mylios,myl"
 
 #: ../src/unit.vala:46
 msgid "Kilometers"
 msgstr "Kilometrai"
 
+#: ../src/unit.vala:46
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
+
+#: ../src/unit.vala:46
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "kilometras,kilometrai,km"
+
 #: ../src/unit.vala:47
 msgid "Cables"
 msgstr "Kabeltovas"
+
+#: ../src/unit.vala:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cb"
+
+#: ../src/unit.vala:47
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "kabeltovas,kabeltovai,cb"
 
 #: ../src/unit.vala:48
 msgid "Fathoms"
 msgstr "Fatomas"
 
+#: ../src/unit.vala:48
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s ftm"
+
+#: ../src/unit.vala:48
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "fatomas,fatomai,ftm"
+
 #: ../src/unit.vala:49
 msgid "Meters"
 msgstr "Metrai"
+
+#: ../src/unit.vala:49
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
+
+#: ../src/unit.vala:49
+#| msgid "Centimeters"
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "metras,metrai,m"
 
 #: ../src/unit.vala:50
 msgid "Yards"
 msgstr "Jardas"
 
+#: ../src/unit.vala:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
+
+#: ../src/unit.vala:50
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "jardas,jardai,yd"
+
 #: ../src/unit.vala:51
 msgid "Feet"
 msgstr "Pėda"
+
+#: ../src/unit.vala:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ft"
+
+#: ../src/unit.vala:51
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "pėda,pėdos,ft"
 
 #: ../src/unit.vala:52
 msgid "Inches"
 msgstr "Colių"
 
+#: ../src/unit.vala:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s col"
+
+#: ../src/unit.vala:52
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "colis,coliai,col"
+
 #: ../src/unit.vala:53
 msgid "Centimeters"
 msgstr "Centimetrų"
+
+#: ../src/unit.vala:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
+
+#: ../src/unit.vala:53
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "centimetras,centimetrai,cm"
 
 #: ../src/unit.vala:54
 msgid "Millimeters"
 msgstr "Milimetrai"
 
+#: ../src/unit.vala:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
+
+#: ../src/unit.vala:54
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "milimetras,milimetrai,mm"
+
 #: ../src/unit.vala:55
 msgid "Micrometers"
 msgstr "Mikrometrai"
+
+#: ../src/unit.vala:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
+
+#: ../src/unit.vala:55
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "mikrometras,mikrometrai,um"
 
 #: ../src/unit.vala:56
 msgid "Nanometers"
 msgstr "Nanometrai"
 
+#: ../src/unit.vala:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
+
+#: ../src/unit.vala:56
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "nanometras,nanometrai,nm"
+
 #: ../src/unit.vala:57
 msgid "Hectares"
 msgstr "Hektarai"
+
+#: ../src/unit.vala:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../src/unit.vala:57
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "hektaras,hektarai,ha"
 
 #: ../src/unit.vala:58
 msgid "Acres"
 msgstr "Akrai"
 
+#: ../src/unit.vala:58
+#, c-format
+#| msgid "Acres"
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s akrai"
+
+#: ../src/unit.vala:58
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "akras,akrai"
+
 #: ../src/unit.vala:59
 msgid "Square Meters"
 msgstr "Kvadratiniai metrai"
+
+#: ../src/unit.vala:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../src/unit.vala:59
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
 
 #: ../src/unit.vala:60
 msgid "Square Centimeters"
 msgstr "Kvadratiniai centimetrai"
 
+#: ../src/unit.vala:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit.vala:60
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
 #: ../src/unit.vala:61
 msgid "Square Millimeters"
 msgstr "Kvadratiniai milimetrai"
+
+#: ../src/unit.vala:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit.vala:61
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
 
 #: ../src/unit.vala:62
 msgid "Cubic Meters"
 msgstr "Kubiniai metrai"
 
+#: ../src/unit.vala:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit.vala:62
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
 #: ../src/unit.vala:63
 msgid "Gallons"
 msgstr "Galonai"
+
+#: ../src/unit.vala:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../src/unit.vala:63
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "galonas,galonai,gal"
 
 #: ../src/unit.vala:64
 msgid "Litres"
 msgstr "Litrai"
 
+#: ../src/unit.vala:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s l"
+
+#: ../src/unit.vala:64
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "litras,litrai,l"
+
 #: ../src/unit.vala:65
 msgid "Quarts"
 msgstr "Kvortos"
+
+#: ../src/unit.vala:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s kvort"
+
+#: ../src/unit.vala:65
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "kvorta,kvortos,kvort"
 
 #: ../src/unit.vala:66
 msgid "Pints"
 msgstr "Pintos"
 
+#: ../src/unit.vala:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
+
+#: ../src/unit.vala:66
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "pinta,pintos,pt"
+
 #: ../src/unit.vala:67
 msgid "Millilitres"
 msgstr "Mililitrai"
+
+#: ../src/unit.vala:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s ml"
+
+#: ../src/unit.vala:67
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "mililitras,mililitrai,ml,cm³"
 
 #: ../src/unit.vala:68
 msgid "Microlitres"
 msgstr "Mikrolitrai"
 
+#: ../src/unit.vala:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μl"
+
+#: ../src/unit.vala:68
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μl,ul"
+
 #: ../src/unit.vala:69
 msgid "Tonnes"
 msgstr "Tonos"
+
+#: ../src/unit.vala:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s t"
+
+#: ../src/unit.vala:69
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "tona,tonos"
 
 #: ../src/unit.vala:70
 msgid "Kilograms"
 msgstr "Kilogramai"
 
+#: ../src/unit.vala:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
+
+#: ../src/unit.vala:70
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "kilogramas,kilogramai,kg"
+
 #: ../src/unit.vala:71
 msgid "Pounds"
 msgstr "Svarai"
+
+#: ../src/unit.vala:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../src/unit.vala:71
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "svaras,svarai,lb"
 
 #: ../src/unit.vala:72
 msgid "Ounces"
 msgstr "Uncijos"
 
+#: ../src/unit.vala:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz"
+
+#: ../src/unit.vala:72
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "uncija,uncijos,oz"
+
 #: ../src/unit.vala:73
 msgid "Grams"
 msgstr "Gramai"
+
+#: ../src/unit.vala:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit.vala:73
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "gramas,gramai,g"
 
 #: ../src/unit.vala:74
 msgid "Years"
 msgstr "Metai"
 
+#: ../src/unit.vala:74
+#, c-format
+#| msgid "Years"
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s metai"
+
+#: ../src/unit.vala:74
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "metai"
+
 #: ../src/unit.vala:75
 msgid "Days"
 msgstr "Dienos"
+
+#: ../src/unit.vala:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s dienos"
+
+#: ../src/unit.vala:75
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "diena,dienos"
 
 #: ../src/unit.vala:76
 msgid "Hours"
 msgstr "Valandos"
 
+#: ../src/unit.vala:76
+#, c-format
+#| msgid "Hours"
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s valandos"
+
+#: ../src/unit.vala:76
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "valanda,valandos"
+
 #: ../src/unit.vala:77
 msgid "Minutes"
 msgstr "Minutė"
+
+#: ../src/unit.vala:77
+#, c-format
+#| msgid "Minutes"
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s minutės"
+
+#: ../src/unit.vala:77
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "minutė,minutės"
 
 #: ../src/unit.vala:78
 msgid "Seconds"
 msgstr "Sekundės"
 
+#: ../src/unit.vala:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit.vala:78
+#| msgid "Microseconds"
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "sekundė,sekundės,s"
+
 #: ../src/unit.vala:79
 msgid "Milliseconds"
 msgstr "Milisekundės"
+
+#: ../src/unit.vala:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit.vala:79
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "milisekundė,milisekundės,ms"
 
 #: ../src/unit.vala:80
 msgid "Microseconds"
 msgstr "Mikrosekundės"
 
+#: ../src/unit.vala:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit.vala:80
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "mikrosekundė,mikrosekundės,us,μs"
+
 #: ../src/unit.vala:81
 msgid "Celsius"
 msgstr "Celcijaus"
+
+#: ../src/unit.vala:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr "%s ˚C"
+
+#: ../src/unit.vala:81
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "˚C"
 
 #: ../src/unit.vala:82
 msgid "Farenheit"
 msgstr "Farenheito"
 
+#: ../src/unit.vala:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr "%s ˚F"
+
+#: ../src/unit.vala:82
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "˚F"
+
 #: ../src/unit.vala:83
 msgid "Kelvin"
 msgstr "Kelvino"
 
+#: ../src/unit.vala:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr "%s K"
+
+#: ../src/unit.vala:83
+msgctxt "unit-symbols"
+msgid "K"
+msgstr "K"
+
 #: ../src/unit.vala:84
 msgid "Rankine"
 msgstr "Rankino"
+
+#: ../src/unit.vala:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr "%s ˚R"
+
+#: ../src/unit.vala:84
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra"
+msgstr "˚R,˚Ra"
 
 #: ../src/unit.vala:86
 msgid "Currency"
