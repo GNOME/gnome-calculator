@@ -1,7 +1,7 @@
 bin_PROGRAMS = gnome-calculator gcalccmd
 noinst_PROGRAMS = test-number test-equation test-serializer
 
-TESTS = test-number test-equation
+TESTS = test-number test-equation test-serializer
 
 INCLUDES = \
 	-DUI_DIR=\""$(datadir)/gnome-calculator"\" \
