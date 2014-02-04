@@ -78,7 +78,7 @@ public class MathFunctionPopup : Gtk.Window
         add_function_button = new Gtk.Button ();
         add_function_button.sensitive = false;
         add_function_button.clicked.connect (add_function_cb);
-        var image = new Gtk.Image.from_stock (Gtk.Stock.ADD, Gtk.IconSize.BUTTON);
+        var image = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.BUTTON);
         add_function_button.add (image);
         entry.pack_end (add_function_button, false, true, 0);
         image.show ();
@@ -188,7 +188,7 @@ public class MathFunctionPopup : Gtk.Window
         {
             button = new Gtk.Button ();
             button.set_data<string> ("function_name", name);
-            var image = new Gtk.Image.from_stock (Gtk.Stock.EDIT, Gtk.IconSize.BUTTON);
+            var image = new Gtk.Image.from_icon_name ("accessories-text-editor-symbolic", Gtk.IconSize.BUTTON);
             button.add (image);
             hbox.pack_start (button, false, true, 0);
             button.clicked.connect (save_function_cb);
@@ -197,7 +197,7 @@ public class MathFunctionPopup : Gtk.Window
 
             button = new Gtk.Button ();
             button.set_data<string> ("function_name", name);
-            image = new Gtk.Image.from_stock (Gtk.Stock.DELETE, Gtk.IconSize.BUTTON);
+            image = new Gtk.Image.from_icon_name ("edit-delete-symbolic", Gtk.IconSize.BUTTON);
             button.add (image);
             hbox.pack_start (button, false, true, 0);
             button.clicked.connect (delete_function_cb);
