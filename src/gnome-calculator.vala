@@ -247,8 +247,6 @@ public class Calculator : Gtk.Application
         /* The translator credits. Please translate this with your name (s). */
         var translator_credits = _("translator-credits");
 
-        var license = "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA";
-
         Gtk.show_about_dialog (window,
                                "program-name",
                                /* Program name in the about dialog */
@@ -257,7 +255,7 @@ public class Calculator : Gtk.Application
                                "version", VERSION,
                                "copyright",
                                "\xc2\xa9 1986–2012 The Calculator authors",
-                               "license", license,
+                               "license-type", Gtk.License.GPL_2_0,
                                "comments",
                                /* Short description in the about dialog */
                                _("Calculator with financial and scientific modes."),
