@@ -23,6 +23,15 @@ public class MathWindow : Gtk.ApplicationWindow
 
     private Gtk.HeaderBar headerbar;
 
+    private const ActionEntry[] window_entries =
+    {
+        { "copy", copy_cb, null, null, null },
+        { "paste", paste_cb, null, null, null },
+        { "undo", undo_cb, null, null, null },
+        { "redo", redo_cb, null, null, null },
+        { "mode", mode_cb, "s", "\"basic\"", null },
+    };
+
     public MathWindow (Gtk.Application app, MathEquation equation)
     {
         Object (application: app);
@@ -33,8 +42,30 @@ public class MathWindow : Gtk.ApplicationWindow
         role = "gnome-calculator";
         resizable = false;
 
+        add_action_entries (window_entries, this);
+
+        var builder = new Gtk.Builder ();
+        try
+        {
+            builder.add_from_resource ("/org/gnome/calculator/menu.ui");
+        }
+        catch (Error e)
+        {
+            error ("Error loading menu UI: %s", e.message);
+        }
+
+        var menu = builder.get_object ("window-menu") as MenuModel;
+
+        var gear_menu_button = new Gtk.MenuButton ();
+        gear_menu_button.valign = Gtk.Align.CENTER;
+        gear_menu_button.image = new Gtk.Image.from_icon_name ("emblem-system-symbolic", Gtk.IconSize.BUTTON);
+        gear_menu_button.menu_model = menu;
+        gear_menu_button.get_style_context ().add_class ("image-button");
+        gear_menu_button.show ();
+
         headerbar = new Gtk.HeaderBar ();
         headerbar.show_close_button = true;
+        headerbar.pack_start (gear_menu_button);
         headerbar.show ();
         set_titlebar (headerbar);
 
@@ -69,23 +100,29 @@ public class MathWindow : Gtk.ApplicationWindow
 
     private void mode_changed_cb ()
     {
+        var action = (SimpleAction) lookup_action ("mode");
+
         switch (buttons.mode)
         {
         default:
         case ButtonMode.BASIC:
             headerbar.set_title (_("Basic Mode"));
+            action.set_state (new Variant.string ("basic"));
             break;
 
         case ButtonMode.ADVANCED:
             headerbar.set_title (_("Advanced Mode"));
+            action.set_state (new Variant.string ("advanced"));
             break;
 
         case ButtonMode.FINANCIAL:
             headerbar.set_title (_("Financial Mode"));
+            action.set_state (new Variant.string ("financial"));
             break;
 
         case ButtonMode.PROGRAMMING:
             headerbar.set_title (_("Programming Mode"));
+            action.set_state (new Variant.string ("programming"));
             break;
         }
     }
@@ -146,5 +183,45 @@ public class MathWindow : Gtk.ApplicationWindow
             right_aligned = true;
         else
             right_aligned = false;
+    }
+
+    private void copy_cb ()
+    {
+        equation.copy ();
+    }
+
+    private void paste_cb ()
+    {
+        equation.paste ();
+    }
+
+    private void undo_cb ()
+    {
+        equation.undo ();
+    }
+
+    private void redo_cb ()
+    {
+        equation.redo ();
+    }
+
+    private void mode_cb (SimpleAction action, Variant? parameter)
+        requires (parameter != null)
+        requires (parameter.is_of_type (VariantType.STRING))
+    {
+        var mode = ButtonMode.BASIC;
+        var mode_str = parameter.get_string (null);
+
+        if (mode_str == "basic")
+            mode = ButtonMode.BASIC;
+        else if (mode_str == "advanced")
+            mode = ButtonMode.ADVANCED;
+        else if (mode_str == "financial")
+            mode = ButtonMode.FINANCIAL;
+        else if (mode_str == "programming")
+            mode = ButtonMode.PROGRAMMING;
+        else assert_not_reached ();
+
+        buttons.mode = mode;
     }
 }

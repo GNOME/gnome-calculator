@@ -19,11 +19,6 @@ public class Calculator : Gtk.Application
 
     private const ActionEntry[] app_entries =
     {
-        { "copy", copy_cb, null, null, null },
-        { "paste", paste_cb, null, null, null },
-        { "undo", undo_cb, null, null, null },
-        { "redo", redo_cb, null, null, null },
-        { "mode", mode_changed_cb, "s", "\"basic\"", null },
         { "preferences", show_preferences_cb, null, null, null },
         { "help", help_cb, null, null, null },
         { "about", about_cb, null, null, null },
@@ -71,8 +66,6 @@ public class Calculator : Gtk.Application
         var buttons = window.buttons;
         buttons.programming_base = number_base;
         buttons.mode = button_mode; // FIXME: We load the basic buttons even if we immediately switch to the next type
-        buttons.notify["mode"].connect ((pspec) => { mode_cb (); });
-        mode_cb ();
 
         var builder = new Gtk.Builder ();
         try
@@ -87,10 +80,10 @@ public class Calculator : Gtk.Application
         var menu = builder.get_object ("appmenu") as MenuModel;
         set_app_menu (menu);
 
-        add_accelerator ("<control>C", "app.copy", null);
-        add_accelerator ("<control>V", "app.paste", null);
-        add_accelerator ("<control>Z", "app.undo", null);
-        add_accelerator ("<control><shift>Z", "app.redo", null);
+        add_accelerator ("<control>C", "win.copy", null);
+        add_accelerator ("<control>V", "win.paste", null);
+        add_accelerator ("<control>Z", "win.undo", null);
+        add_accelerator ("<control><shift>Z", "win.redo", null);
     }
 
     protected override void activate ()
@@ -130,70 +123,6 @@ public class Calculator : Gtk.Application
         settings.set_string ("source-units", equation.source_units);
         settings.set_string ("target-units", equation.target_units);
         settings.set_int ("base", buttons.programming_base);
-    }
-
-    private void mode_cb ()
-    {
-        var buttons = window.buttons;
-        var state = "basic";
-        switch (buttons.mode)
-        {
-        default:
-        case ButtonMode.BASIC:
-            state = "basic";
-            //FIXME: Should it revert to decimal mode? equation.number_format = NumberFormat.DECIMAL;
-            break;
-
-        case ButtonMode.ADVANCED:
-            state = "advanced";
-            break;
-
-        case ButtonMode.FINANCIAL:
-            state = "financial";
-            break;
-
-        case ButtonMode.PROGRAMMING:
-            state = "programming";
-            break;
-        }
-
-        var action = lookup_action ("mode") as SimpleAction;
-        action.set_state (new Variant.string (state));
-    }
-
-    private void copy_cb ()
-    {
-        window.equation.copy ();
-    }
-
-    private void paste_cb ()
-    {
-        window.equation.paste ();
-    }
-
-    private void undo_cb ()
-    {
-        window.equation.undo ();
-    }
-
-    private void redo_cb ()
-    {
-        window.equation.redo ();
-    }
-
-    private void mode_changed_cb (SimpleAction action, Variant? parameter)
-    {
-        var mode = ButtonMode.BASIC;
-        var mode_str = parameter.get_string (null);
-        if (mode_str == "basic")
-            mode = ButtonMode.BASIC;
-        else if (mode_str == "advanced")
-            mode = ButtonMode.ADVANCED;
-        else if (mode_str == "financial")
-            mode = ButtonMode.FINANCIAL;
-        else if (mode_str == "programming")
-            mode = ButtonMode.PROGRAMMING;
-        window.buttons.mode = mode;
     }
 
     private void show_preferences_cb ()
