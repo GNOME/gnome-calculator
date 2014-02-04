@@ -254,7 +254,7 @@ public class Calculator : Gtk.Application
                                "title", _("About Calculator"),
                                "version", VERSION,
                                "copyright",
-                               "\xc2\xa9 1986–2012 The Calculator authors",
+                               "\xc2\xa9 1986–2014 The Calculator authors",
                                "license-type", Gtk.License.GPL_2_0,
                                "comments",
                                /* Short description in the about dialog */
