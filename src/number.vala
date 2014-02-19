@@ -910,6 +910,14 @@ public class Number
             return new Number.integer (0);
         }
 
+        /* 0^0 is indeterminate */
+        if (is_zero () && n == 0)
+        {
+            /* Translators: Error displayed when attempted to raise 0 to power of zero */
+            mperr (_("Zero raised to zero is undefined"));
+            return new Number.integer (0);
+        }
+
         /* x^0 = 1 */
         if (n == 0)
             return new Number.integer (1);
