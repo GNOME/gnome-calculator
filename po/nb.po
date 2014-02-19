@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 3.11.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-21 20:14+0100\n"
-"PO-Revision-Date: 2014-01-21 20:16+0100\n"
+"POT-Creation-Date: 2014-02-19 19:46+0100\n"
+"PO-Revision-Date: 2014-02-19 19:48+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -385,47 +385,43 @@ msgstr "_Tegn:"
 msgid "_Insert"
 msgstr "Sett _inn"
 
-#: ../data/menu.ui.h:1
-msgid "Mode"
-msgstr "Modus"
-
-#: ../data/menu.ui.h:2
-msgid "Basic"
-msgstr "Grunnleggende"
-
-#: ../data/menu.ui.h:3
-msgid "Advanced"
-msgstr "Avansert"
-
-#: ../data/menu.ui.h:4
-msgid "Financial"
-msgstr "Finansiell"
-
-#: ../data/menu.ui.h:5
-msgid "Programming"
-msgstr "Programmering"
-
 #. Title of preferences dialog
-#: ../data/menu.ui.h:6 ../src/math-preferences.vala:26
+#: ../data/menu.ui.h:1 ../src/math-preferences.vala:26
 msgid "Preferences"
 msgstr "Brukervalg"
 
-#: ../data/menu.ui.h:7
+#: ../data/menu.ui.h:2
 msgid "Help"
 msgstr "Hjelp"
 
-#: ../data/menu.ui.h:8
+#: ../data/menu.ui.h:3
 msgid "About"
 msgstr "Om"
 
-#: ../data/menu.ui.h:9
+#: ../data/menu.ui.h:4
 msgid "Quit"
 msgstr "Avslutt"
 
+#: ../data/menu.ui.h:5 ../src/math-window.vala:109
+msgid "Basic Mode"
+msgstr "Grunnleggende modus"
+
+#: ../data/menu.ui.h:6 ../src/math-window.vala:114
+msgid "Advanced Mode"
+msgstr "Avansert modus"
+
+#: ../data/menu.ui.h:7 ../src/math-window.vala:119
+msgid "Financial Mode"
+msgstr "Finansiell modus"
+
+#: ../data/menu.ui.h:8 ../src/math-window.vala:124
+msgid "Programming Mode"
+msgstr "Programmeringsmodus"
+
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
-#: ../src/math-window.vala:31
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:182
+#: ../src/math-window.vala:40
 msgid "Calculator"
 msgstr "Kalkulator"
 
@@ -437,7 +433,11 @@ msgstr "Utfør aritmetiske, vitenskapelige eller finansielle utregninger"
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "regning;aritmetikk,vitenskapelig;finans;"
 
-#: ../data/gnome-calculator.appdata.xml.in.h:1
+#: ../data/gcalctool.appdata.xml.in.h:1
+msgid "GNOME Calculator"
+msgstr "GNOME kalkulator"
+
+#: ../data/gcalctool.appdata.xml.in.h:2
 msgid ""
 "GNOME Calculator is an application that solves mathematical equations. "
 "Though it at first appears to be a simple calculator with only basic "
@@ -449,22 +449,22 @@ msgstr ""
 "til avansert, finansiell eller programmeringsmodus og da finne et "
 "overraskende sett med muligheter."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:2
+#: ../data/gcalctool.appdata.xml.in.h:3
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
 "complex numbers, random number generation, prime factorization and unit "
 "conversions."
-msgstr ""
+msgstr "Avansert kalkulator støtter mange operasjoner som f.eks: logaritmer, fakulteter, trigonometriske og hyperbolske funksjoner, modulus divisjon, komplekse tall, generering av tilfeldige tall, faktorisering av primtall og konvertering mellom enheter."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:3
+#: ../data/gcalctool.appdata.xml.in.h:4
 msgid ""
 "Financial mode supports several computations, including periodic interest "
 "rate, present and future value, double declining and straight line "
 "depreciation, and many others."
 msgstr ""
 
-#: ../data/gnome-calculator.appdata.xml.in.h:4
+#: ../data/gcalctool.appdata.xml.in.h:5
 msgid ""
 "Programming mode supports conversion between common bases (binary, octal, "
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
@@ -814,36 +814,36 @@ msgid "Error: the number of periods must be positive"
 msgstr "Feil: antall perioder må være et positivt tall"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:218
+#: ../src/gnome-calculator.vala:147
 msgid "Unable to open help file"
 msgstr "Kan ikke åpne hjelpfil"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:248
+#: ../src/gnome-calculator.vala:177
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
 "Espen Stefansen <libbe AT stefansen DOT net>\n"
 "Eskild Hustvedt <i18n@zerodogg.org>"
 
-#: ../src/gnome-calculator.vala:256
+#: ../src/gnome-calculator.vala:183
 msgid "About Calculator"
 msgstr "Om Kalkulator"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:263
+#: ../src/gnome-calculator.vala:190
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator med finans- og vitenskapelig modus."
 
-#: ../src/gnome-calculator.vala:299
+#: ../src/gnome-calculator.vala:226
 msgid "Solve given equation"
 msgstr "Løs gitt likning"
 
-#: ../src/gnome-calculator.vala:307
+#: ../src/gnome-calculator.vala:234
 msgid "Start with given equation"
 msgstr "Start med gitt likning"
 
-#: ../src/gnome-calculator.vala:316
+#: ../src/gnome-calculator.vala:243
 msgid "Show release version"
 msgstr "Vis versjon"
 
@@ -1308,23 +1308,7 @@ msgstr "32-bits"
 msgid "64 bits"
 msgstr "64-bits"
 
-#: ../src/math-window.vala:77
-msgid "Basic Mode"
-msgstr "Grunnleggende modus"
-
-#: ../src/math-window.vala:81
-msgid "Advanced Mode"
-msgstr "Avansert modus"
-
-#: ../src/math-window.vala:85
-msgid "Financial Mode"
-msgstr "Finansiell modus"
-
-#: ../src/math-window.vala:89
-msgid "Programming Mode"
-msgstr "Programmeringsmodus"
-
-#: ../src/math-window.vala:101
+#: ../src/math-window.vala:137
 msgid "_Quit"
 msgstr "A_vslutt"
 
