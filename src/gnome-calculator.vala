@@ -17,6 +17,13 @@ public class Calculator : Gtk.Application
     private static string program_name = null;
     private static string equation_string = null;
 
+    private const OptionEntry[] option_entries = {
+        { "solve", 's', 0, OptionArg.STRING, null, N_("Solve given equation"), "equation" },
+        { "equation", 'e', 0, OptionArg.STRING, ref equation_string, N_("Start with given equation"), "equation"},
+        { "version", 'v', 0, OptionArg.NONE, null, N_("Show release version"), null },
+        { null }
+    };
+
     private const ActionEntry[] app_entries =
     {
         { "preferences", show_preferences_cb, null, null, null },
@@ -28,6 +35,8 @@ public class Calculator : Gtk.Application
     public Calculator ()
     {
         Object (flags : ApplicationFlags.NON_UNIQUE);
+
+        add_main_option_entries (option_entries);
     }
 
     protected override void startup ()
@@ -125,6 +134,52 @@ public class Calculator : Gtk.Application
         settings.set_int ("base", buttons.programming_base);
     }
 
+    protected override int handle_local_options (GLib.VariantDict options)
+    {
+        if (options.contains ("version"))
+        {
+            /* NOTE: Is not translated so can be easily parsed */
+            stderr.printf ("%1$s %2$s\n", program_name, VERSION);
+            return Posix.EXIT_SUCCESS;
+        }
+
+        if (options.contains ("solve"))
+        {
+            var solve_equation = (string) options.lookup_value ("solve", VariantType.STRING);
+            var tsep_string = nl_langinfo (NLItem.THOUSEP);
+            if (tsep_string == null || tsep_string == "")
+                tsep_string = " ";
+
+            var e = new SolveEquation (solve_equation.replace (tsep_string, ""));
+            e.base = 10;
+            e.wordlen = 32;
+            e.angle_units = AngleUnit.DEGREES;
+
+            ErrorCode error;
+            uint representation_base;
+            var result = e.parse (out representation_base, out error);
+            if (result != null)
+            {
+                var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
+                serializer.set_representation_base (representation_base);
+                stdout.printf ("%s\n", serializer.to_string (result));
+                return Posix.EXIT_SUCCESS;
+            }
+            else if (error == ErrorCode.MP)
+            {
+                stderr.printf ("Error: %s\n", mp_get_error ());
+                return Posix.EXIT_FAILURE;
+            }
+            else
+            {
+                stderr.printf ("Error: %s\n", mp_error_code_to_string (error));
+                return Posix.EXIT_FAILURE;
+            }
+        }
+
+        return -1;
+    }
+
     private void show_preferences_cb ()
     {
         if (preferences_dialog == null)
@@ -211,90 +266,6 @@ public class Calculator : Gtk.Application
         Random.set_seed (now.get_microsecond ());
 
         program_name = Path.get_basename (args [0]);
-
-        var options = new OptionEntry [4];
-
-        string? solve_equation = null;
-        options[0] = {"solve",
-                      's',
-                      0,
-                      OptionArg.STRING,
-                      ref solve_equation,
-                      _("Solve given equation"),
-                      "equation"};
-
-        options[1] = {"equation",
-                      'e',
-                      0,
-                      OptionArg.STRING,
-                      ref equation_string,
-                      _("Start with given equation"),
-                      "equation"};
-
-        bool show_version = false;
-        options[2] = {"version",
-                      'v',
-                      0,
-                      OptionArg.NONE,
-                      ref show_version,
-                      _("Show release version"),
-                      null};
-                      
-        options[3] = { null, 0, 0, 0, null, null, null };
-
-        try
-        {
-            if (!Gtk.init_with_args (ref args, "Perform mathematical calculations", options, null))
-            {
-                stderr.printf ("Unable to initialize GTK+\n");
-                return Posix.EXIT_FAILURE;
-            }
-        }
-        catch (Error e)
-        {
-            stderr.printf ("%s\nUse '%s --help' to display help.\n", e.message, program_name);
-            return Posix.EXIT_FAILURE;
-        }
-
-        if (show_version)
-        {
-            /* NOTE: Is not translated so can be easily parsed */
-            stderr.printf ("%1$s %2$s\n", program_name, VERSION);
-            return Posix.EXIT_SUCCESS;
-        }
-
-        if (solve_equation != null)
-        {
-            var tsep_string = nl_langinfo (NLItem.THOUSEP);
-            if (tsep_string == null || tsep_string == "")
-                tsep_string = " ";
-
-            var e = new SolveEquation (solve_equation.replace (tsep_string, ""));
-            e.base = 10;
-            e.wordlen = 32;
-            e.angle_units = AngleUnit.DEGREES;
-
-            ErrorCode error;
-            uint representation_base;
-            var result = e.parse (out representation_base, out error);
-            if (result != null)
-            {
-                var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
-                serializer.set_representation_base (representation_base);
-                stdout.printf ("%s\n", serializer.to_string (result));
-                return Posix.EXIT_SUCCESS;
-            }
-            else if (error == ErrorCode.MP)
-            {
-                stderr.printf ("Error: %s\n", mp_get_error ());
-                return Posix.EXIT_FAILURE;
-            }
-            else
-            {
-                stderr.printf ("Error: %s\n", mp_error_code_to_string (error));
-                return Posix.EXIT_FAILURE;
-            }
-        }
 
         Gtk.Window.set_default_icon_name ("accessories-calculator");
 
