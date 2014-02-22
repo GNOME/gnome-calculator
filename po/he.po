@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-25 21:05+0200\n"
-"PO-Revision-Date: 2014-01-25 21:05+0200\n"
+"POT-Creation-Date: 2014-02-22 19:52+0200\n"
+"PO-Revision-Date: 2014-02-22 19:55+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: עברית <>\n"
 "Language: he\n"
@@ -400,47 +400,43 @@ msgstr "_תו:"
 msgid "_Insert"
 msgstr "הו_ספה"
 
-#: ../data/menu.ui.h:1
-msgid "Mode"
-msgstr "מצב"
-
-#: ../data/menu.ui.h:2
-msgid "Basic"
-msgstr "בסיסי"
-
-#: ../data/menu.ui.h:3
-msgid "Advanced"
-msgstr "מתקדם"
-
-#: ../data/menu.ui.h:4
-msgid "Financial"
-msgstr "פיננסי"
-
-#: ../data/menu.ui.h:5
-msgid "Programming"
-msgstr "תכנות"
-
 #. Title of preferences dialog
-#: ../data/menu.ui.h:6 ../src/math-preferences.vala:26
+#: ../data/menu.ui.h:1 ../src/math-preferences.vala:26
 msgid "Preferences"
 msgstr "העדפות"
 
-#: ../data/menu.ui.h:7
+#: ../data/menu.ui.h:2
 msgid "Help"
 msgstr "עזרה"
 
-#: ../data/menu.ui.h:8
+#: ../data/menu.ui.h:3
 msgid "About"
 msgstr "על אודות"
 
-#: ../data/menu.ui.h:9
+#: ../data/menu.ui.h:4
 msgid "Quit"
 msgstr "יציאה"
 
+#: ../data/menu.ui.h:5 ../src/math-window.vala:109
+msgid "Basic Mode"
+msgstr "מצב בסיסי"
+
+#: ../data/menu.ui.h:6 ../src/math-window.vala:114
+msgid "Advanced Mode"
+msgstr "מצב מתקדם"
+
+#: ../data/menu.ui.h:7 ../src/math-window.vala:119
+msgid "Financial Mode"
+msgstr "מצב תקופה חשבונאית"
+
+#: ../data/menu.ui.h:8 ../src/math-window.vala:124
+msgid "Programming Mode"
+msgstr "מצב תכנות"
+
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
-#: ../src/math-window.vala:31
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:182
+#: ../src/math-window.vala:40
 msgid "Calculator"
 msgstr "מחשבון"
 
@@ -841,12 +837,12 @@ msgid "Error: the number of periods must be positive"
 msgstr "שגיאה: מספר התקופות חייב להיות ערך חיובי"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:218
+#: ../src/gnome-calculator.vala:147
 msgid "Unable to open help file"
 msgstr "לא ניתן לפתוח את קובץ העזרה"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:248
+#: ../src/gnome-calculator.vala:177
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -857,24 +853,24 @@ msgstr ""
 "מיזם תרגום GNOME לעברית\n"
 "‏http://gnome-il.berlios.de"
 
-#: ../src/gnome-calculator.vala:256
+#: ../src/gnome-calculator.vala:183
 msgid "About Calculator"
 msgstr "על אודות המחשבון"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:263
+#: ../src/gnome-calculator.vala:190
 msgid "Calculator with financial and scientific modes."
 msgstr "מחשבון עם מצבים פיננסיים ומדעיים"
 
-#: ../src/gnome-calculator.vala:299
+#: ../src/gnome-calculator.vala:226
 msgid "Solve given equation"
 msgstr "Solve given equation"
 
-#: ../src/gnome-calculator.vala:307
+#: ../src/gnome-calculator.vala:234
 msgid "Start with given equation"
 msgstr "Start with given equation"
 
-#: ../src/gnome-calculator.vala:316
+#: ../src/gnome-calculator.vala:243
 msgid "Show release version"
 msgstr "Show release version"
 
@@ -1339,23 +1335,7 @@ msgstr "32 סיביות"
 msgid "64 bits"
 msgstr "64 סיביות"
 
-#: ../src/math-window.vala:77
-msgid "Basic Mode"
-msgstr "מצב בסיסי"
-
-#: ../src/math-window.vala:81
-msgid "Advanced Mode"
-msgstr "מצב מתקדם"
-
-#: ../src/math-window.vala:85
-msgid "Financial Mode"
-msgstr "מצב תקופה חשבונאית"
-
-#: ../src/math-window.vala:89
-msgid "Programming Mode"
-msgstr "מצב תכנות"
-
-#: ../src/math-window.vala:101
+#: ../src/math-window.vala:137
 msgid "_Quit"
 msgstr "_יציאה"
 
@@ -1365,98 +1345,103 @@ msgid "Argument not defined for zero"
 msgstr "לא מוגדר ארגומנט עבור אפס"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1935
+#: ../src/number.vala:909 ../src/number.vala:1943
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "החזקה של אפס אינה מוגדרת עבור מעריך שלילי"
 
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: ../src/number.vala:917
+msgid "Zero raised to zero is undefined"
+msgstr "העלאה של אפס באפס אינה מוגדרת"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/number.vala:995 ../src/number.vala:1028
+#: ../src/number.vala:1003 ../src/number.vala:1036
 msgid "Logarithm of zero is undefined"
 msgstr "הלוגריתם של אפס אינו מוגדר"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: ../src/number.vala:1050
+#: ../src/number.vala:1058
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "פירוק לגורמים אפשרי עבור מספרים טבעיים בלבד"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1134 ../src/number.vala:2685
+#: ../src/number.vala:1142 ../src/number.vala:2693
 msgid "Division by zero is undefined"
 msgstr "חלוקה באפס אינה מוגדרת"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1174
+#: ../src/number.vala:1182
 msgid "Modulus division is only defined for integers"
 msgstr "חלוקת שארית מוגדרת רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1266
+#: ../src/number.vala:1274
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "טנגנס אינו מוגדר עבור זוויות שהן כפולות של π ‏(180°) החל מ־π∕2 ‏(90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1304
+#: ../src/number.vala:1312
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "סינוס הפוך אינו מוגדר עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1319
+#: ../src/number.vala:1327
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "קוסינוס הפוך אינו מוגדר עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1516
+#: ../src/number.vala:1524
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "קוסינוס היפרבולי הפוך אינו מוגדר עבור ערכים הקטנים מאחד"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1535
+#: ../src/number.vala:1543
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "טנגנס היפרבולי הפוך אינו מוגדל עבור ערכים מחוץ לטווח ‎[-1, 1]‎"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1554
+#: ../src/number.vala:1562
 msgid "Boolean AND is only defined for positive integers"
 msgstr "AND לוגי מוגדר רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1566
+#: ../src/number.vala:1574
 msgid "Boolean OR is only defined for positive integers"
 msgstr "OR לוגי מוגדר רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1578
+#: ../src/number.vala:1586
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "XOR לוגי מוגדר רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1590
+#: ../src/number.vala:1598
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "NOT לוגי מוגדר רק עבור שלמים חיוביים"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1613
+#: ../src/number.vala:1621
 msgid "Shift is only possible on integer values"
 msgstr "ניתן לבצע הזזה רק על מספרים שלמים וחיוביים"
 
-#: ../src/number.vala:1955
+#: ../src/number.vala:1963
 msgid "Root must be non-zero"
 msgstr "על השורש להיות שונה מאפס"
 
-#: ../src/number.vala:1972
+#: ../src/number.vala:1980
 msgid "Negative root of zero is undefined"
 msgstr "שורש שלילי של אפס אינו מוגדר"
 
-#: ../src/number.vala:1979
+#: ../src/number.vala:1987
 msgid "nth root of negative number is undefined for even n"
 msgstr "השורש ה־nי של מספר שלילי אינו מוגדר עבור n זוגי"
 
-#: ../src/number.vala:2302
+#: ../src/number.vala:2310
 msgid "Overflow: the result couldn't be calculated"
 msgstr "חריגה: לא ניתן לחשב את התוצאה"
 
-#: ../src/number.vala:2630
+#: ../src/number.vala:2638
 msgid "Reciprocal of zero is undefined"
 msgstr "לא מוגדרת הדדיות לאפס"
 
@@ -2190,6 +2175,21 @@ msgstr "מטבע"
 #, c-format
 msgid "%s%%s"
 msgstr "%%s%s"
+
+#~ msgid "Mode"
+#~ msgstr "מצב"
+
+#~ msgid "Basic"
+#~ msgstr "בסיסי"
+
+#~ msgid "Advanced"
+#~ msgstr "מתקדם"
+
+#~ msgid "Financial"
+#~ msgstr "פיננסי"
+
+#~ msgid "Programming"
+#~ msgstr "תכנות"
 
 #~ msgid "Round"
 #~ msgstr "עיגול"
