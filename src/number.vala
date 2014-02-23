@@ -2086,6 +2086,10 @@ public class Number
 
     private Number ln_real ()
     {
+        // ln(e^1) = 1, fixes precision loss
+        if (equals (new Number.eulers ()))
+            return new Number.integer (1);
+
         /* LOOP TO GET APPROXIMATE Ln (X) USING SINGLE-PRECISION */
         var t1 = copy ();
         var z = new Number.integer (0);
