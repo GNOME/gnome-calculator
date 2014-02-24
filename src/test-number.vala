@@ -496,8 +496,8 @@ private void test_xpowy ()
             var expected = 1.0;
             if (a == 0)
             {
-                if (b != 0)
-                    expected = 0.0;
+                /* Note: 0^0 is indeterminate. Hence will return 0, with error set. */
+                expected = 0.0;
             }
             else
             {
@@ -530,8 +530,8 @@ private void test_xpowy_integer ()
             var expected = 1.0;
             if (a == 0)
             {
-                if (b != 0)
-                    expected = 0.0;
+                /* Note: 0^0 is indeterminate. Hence will return 0, with error set. */
+                expected = 0.0;
             }
             else
             {

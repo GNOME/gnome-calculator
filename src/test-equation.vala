@@ -369,7 +369,8 @@ private void test_equations ()
     test ("(x)²", "4", 0);
     test ("|1−3|²", "4", 0);
     test ("|x|²", "4", 0);
-    test ("0^0", "1", 0);
+    /* Note: 0^0 is indeterminate. Hence will return 0, with error set. */
+    test ("0^0", "0", ErrorCode.MP);
     test ("0^0.5", "0", 0);
     test ("2^0", "1", 0);
     test ("2^1", "2", 0);
