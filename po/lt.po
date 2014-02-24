@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-01-23 02:17+0000\n"
-"PO-Revision-Date: 2014-01-25 22:25+0200\n"
+"POT-Creation-Date: 2014-02-24 19:12+0000\n"
+"PO-Revision-Date: 2014-02-24 22:50+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -412,47 +412,43 @@ msgstr "_Simbolis:"
 msgid "_Insert"
 msgstr "Įterpt_i"
 
-#: ../data/menu.ui.h:1
-msgid "Mode"
-msgstr "Veiksena"
-
-#: ../data/menu.ui.h:2
-msgid "Basic"
-msgstr "Paprastas"
-
-#: ../data/menu.ui.h:3
-msgid "Advanced"
-msgstr "Sudėtingesnis"
-
-#: ../data/menu.ui.h:4
-msgid "Financial"
-msgstr "Finansinis"
-
-#: ../data/menu.ui.h:5
-msgid "Programming"
-msgstr "Programuojamasis"
-
 #. Title of preferences dialog
-#: ../data/menu.ui.h:6 ../src/math-preferences.vala:26
+#: ../data/menu.ui.h:1 ../src/math-preferences.vala:26
 msgid "Preferences"
 msgstr "Nustatymai"
 
-#: ../data/menu.ui.h:7
+#: ../data/menu.ui.h:2
 msgid "Help"
 msgstr "Žinynas"
 
-#: ../data/menu.ui.h:8
+#: ../data/menu.ui.h:3
 msgid "About"
 msgstr "Apie"
 
-#: ../data/menu.ui.h:9
+#: ../data/menu.ui.h:4
 msgid "Quit"
 msgstr "Baigti"
 
+#: ../data/menu.ui.h:5 ../src/math-window.vala:109
+msgid "Basic Mode"
+msgstr "Paprasta veiksena"
+
+#: ../data/menu.ui.h:6 ../src/math-window.vala:114
+msgid "Advanced Mode"
+msgstr "Sudėtingesnė veiksena"
+
+#: ../data/menu.ui.h:7 ../src/math-window.vala:119
+msgid "Financial Mode"
+msgstr "Finansinė veiksena"
+
+#: ../data/menu.ui.h:8 ../src/math-window.vala:124
+msgid "Programming Mode"
+msgstr "Programavimo veiksena"
+
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
-#: ../src/math-window.vala:31
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:182
+#: ../src/math-window.vala:40
 msgid "Calculator"
 msgstr "Skaičiuotuvas"
 
@@ -464,12 +460,11 @@ msgstr "Atlikti aritmetinius, mokslinius ar finansinius skaičiavimus"
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "skaičiavimai;aritmetika;moksliniai;finansiniai;"
 
-#: ../data/gnome-calculator.appdata.xml.in.h:1
-#| msgid "Calculator"
+#: ../data/gcalctool.appdata.xml.in.h:1
 msgid "GNOME Calculator"
 msgstr "GNOME skaičiuotuvas"
 
-#: ../data/gnome-calculator.appdata.xml.in.h:2
+#: ../data/gcalctool.appdata.xml.in.h:2
 msgid ""
 "GNOME Calculator is an application that solves mathematical equations. "
 "Though it at first appears to be a simple calculator with only basic "
@@ -481,7 +476,7 @@ msgstr ""
 "aritmetinius veiksmus, galima įjungti sudėtingesnę, finansų arba "
 "programavimo veikseną, kur atsiskleidžia įspūdingos galimybės."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:3
+#: ../data/gcalctool.appdata.xml.in.h:3
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
@@ -493,7 +488,7 @@ msgstr ""
 "kompleksiniai skaičiai, atsitiktinių skaičių generavimas, skaidymas "
 "pirminiais dauginamaisiais bei matavimo vienetų keitimas."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:4
+#: ../data/gcalctool.appdata.xml.in.h:4
 msgid ""
 "Financial mode supports several computations, including periodic interest "
 "rate, present and future value, double declining and straight line "
@@ -503,7 +498,7 @@ msgstr ""
 "norma, dabartinė ir ateities vertė, dvigubo mažėjimo ir tiesinį nusidėvėjimą "
 "bei daug kitų."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:5
+#: ../data/gcalctool.appdata.xml.in.h:5
 msgid ""
 "Programming mode supports conversion between common bases (binary, octal, "
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
@@ -856,12 +851,12 @@ msgid "Error: the number of periods must be positive"
 msgstr "Klaida, pasikartojimų skaičius turi būti teigiamas"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:218
+#: ../src/gnome-calculator.vala:147
 msgid "Unable to open help file"
 msgstr "Nepavyko atverti žinyno failo"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:248
+#: ../src/gnome-calculator.vala:177
 msgid "translator-credits"
 msgstr ""
 "Algimantas Markevičius <margevicius.algimantas@gmail.com>\n"
@@ -873,24 +868,24 @@ msgstr ""
 "Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Gediminas Paulauskas <menesis@chatsubo.lt>"
 
-#: ../src/gnome-calculator.vala:256
+#: ../src/gnome-calculator.vala:183
 msgid "About Calculator"
 msgstr "Apie skaičiuotuvą"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:263
+#: ../src/gnome-calculator.vala:190
 msgid "Calculator with financial and scientific modes."
 msgstr "Skaičiuotuvas su finansiniais bei moksliniais priedais"
 
-#: ../src/gnome-calculator.vala:299
+#: ../src/gnome-calculator.vala:226
 msgid "Solve given equation"
 msgstr "Išspręsti lygtį"
 
-#: ../src/gnome-calculator.vala:307
+#: ../src/gnome-calculator.vala:234
 msgid "Start with given equation"
 msgstr "Pradėti lygtimi"
 
-#: ../src/gnome-calculator.vala:316
+#: ../src/gnome-calculator.vala:243
 msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
@@ -1357,27 +1352,7 @@ msgstr "32 bitai"
 msgid "64 bits"
 msgstr "64 bitai"
 
-#: ../src/math-window.vala:77
-#| msgid "Basic"
-msgid "Basic Mode"
-msgstr "Paprasta veiksena"
-
-#: ../src/math-window.vala:81
-#| msgid "Advanced"
-msgid "Advanced Mode"
-msgstr "Sudėtingesnė veiksena"
-
-#: ../src/math-window.vala:85
-#| msgid "Financial Term"
-msgid "Financial Mode"
-msgstr "Finansinė veiksena"
-
-#: ../src/math-window.vala:89
-#| msgid "Programming"
-msgid "Programming Mode"
-msgstr "Programavimo veiksena"
-
-#: ../src/math-window.vala:101
+#: ../src/math-window.vala:137
 msgid "_Quit"
 msgstr "_Išeiti"
 
@@ -1387,103 +1362,108 @@ msgid "Argument not defined for zero"
 msgstr "Argumentas negali būti nulis"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1935
+#: ../src/number.vala:909 ../src/number.vala:1943
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nulinis laipsnis neapibrėžtas neigiamai eksponentei"
 
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: ../src/number.vala:917
+#| msgid "Reciprocal of zero is undefined"
+msgid "Zero raised to zero is undefined"
+msgstr "Nulis nuliniu laipsniu neapibrėžtas"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/number.vala:995 ../src/number.vala:1028
+#: ../src/number.vala:1003 ../src/number.vala:1036
 msgid "Logarithm of zero is undefined"
 msgstr "Nulio logaritmas neapibrėžtas"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: ../src/number.vala:1050
-#| msgid "Factorial is only defined for natural numbers"
+#: ../src/number.vala:1058
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Faktorialas apibrėžtas tik natūraliems skaičiams"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1134 ../src/number.vala:2685
+#: ../src/number.vala:1142 ../src/number.vala:2697
 msgid "Division by zero is undefined"
 msgstr "Dalyba iš nulio neapibrėžta"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1174
+#: ../src/number.vala:1182
 msgid "Modulus division is only defined for integers"
 msgstr "Dalyba su liekana apibrėžta tik sveikiems skaičiams"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1266
+#: ../src/number.vala:1274
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "Tangentas neapibrėžtas kampams, kurie yra π (180°) kartotiniai nuo π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1304
+#: ../src/number.vala:1312
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Arksinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1319
+#: ../src/number.vala:1327
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Arkkosinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1516
+#: ../src/number.vala:1524
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Hiperbolinis arkkosinusas neapibrėžtas reikšmėms, mažesnėms arba lygioms "
 "vienetui"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1535
+#: ../src/number.vala:1543
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "Hiperbolinis arktangentas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1554
+#: ../src/number.vala:1562
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Loginis IR apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1566
+#: ../src/number.vala:1574
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Loginis ARBA apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1578
+#: ../src/number.vala:1586
 msgid "Boolean XOR is only defined for positive integers"
 msgstr ""
 "Loginė griežta disjunkcija apibrėžta tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1590
+#: ../src/number.vala:1598
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Loginis NE apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1613
+#: ../src/number.vala:1621
 msgid "Shift is only possible on integer values"
 msgstr "Postūmis galimas tik sveikiems skaičiams"
 
-#: ../src/number.vala:1955
+#: ../src/number.vala:1963
 msgid "Root must be non-zero"
 msgstr "Šaknis turi būti nenulinė"
 
-#: ../src/number.vala:1972
+#: ../src/number.vala:1980
 msgid "Negative root of zero is undefined"
 msgstr "Neigiama nulio šaknis neapibrėžta"
 
-#: ../src/number.vala:1979
+#: ../src/number.vala:1987
 msgid "nth root of negative number is undefined for even n"
 msgstr "n-ojo laipsnio šaknis neigiamam skaičiui neapibrėžta lyginiams n"
 
-#: ../src/number.vala:2302
+#: ../src/number.vala:2314
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Perpildymas: rezultato suskaičiuoti nepavyko"
 
-#: ../src/number.vala:2630
+#: ../src/number.vala:2642
 msgid "Reciprocal of zero is undefined"
 msgstr "Nulinis vardiklis neapibrėžtas"
 
@@ -1894,7 +1874,6 @@ msgid "gallon,gallons,gal"
 msgstr "galonas,galonai,gal"
 
 #: ../src/unit.vala:64
-#| msgid "Meters"
 msgid "Liters"
 msgstr "Litrai"
 
@@ -1940,7 +1919,6 @@ msgid "pint,pints,pt"
 msgstr "pinta,pintos,pt"
 
 #: ../src/unit.vala:67
-#| msgid "Millilitres"
 msgid "Milliliters"
 msgstr "Mililitrai"
 
@@ -1956,7 +1934,6 @@ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "mililitras,mililitrai,ml,cm³"
 
 #: ../src/unit.vala:68
-#| msgid "Microlitres"
 msgid "Microliters"
 msgstr "Mikrolitrai"
 
