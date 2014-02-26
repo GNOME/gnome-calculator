@@ -3,7 +3,7 @@ noinst_PROGRAMS = test-number test-equation test-serializer
 
 TESTS = test-number test-equation test-serializer
 
-INCLUDES = \
+AM_CPPFLAGS = \
 	-DUI_DIR=\""$(datadir)/gnome-calculator"\" \
 	-DVERSION=\""$(VERSION)"\" \
 	-DLOCALE_DIR=\""$(localedir)"\" \
