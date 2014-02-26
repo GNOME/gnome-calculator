@@ -23,6 +23,8 @@ public class MathWindow : Gtk.ApplicationWindow
 
     private Gtk.HeaderBar headerbar;
 
+    private Gtk.Label mode_label;
+
     private const ActionEntry[] window_entries =
     {
         { "copy", copy_cb, null, null, null },
@@ -54,18 +56,28 @@ public class MathWindow : Gtk.ApplicationWindow
             error ("Error loading menu UI: %s", e.message);
         }
 
-        var menu = builder.get_object ("window-menu") as MenuModel;
+        mode_label = new Gtk.Label (null);
+        mode_label.show ();
 
-        var gear_menu_button = new Gtk.MenuButton ();
-        gear_menu_button.valign = Gtk.Align.CENTER;
-        gear_menu_button.image = new Gtk.Image.from_icon_name ("emblem-system-symbolic", Gtk.IconSize.BUTTON);
-        gear_menu_button.menu_model = menu;
-        gear_menu_button.get_style_context ().add_class ("image-button");
-        gear_menu_button.show ();
+        var arrow = new Gtk.Arrow (Gtk.ArrowType.DOWN, Gtk.ShadowType.NONE);
+        arrow.show ();
+
+        var menu_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+        menu_box.pack_start (mode_label);
+        menu_box.pack_start (arrow);
+        menu_box.show ();
+
+        var menu_button = new Gtk.MenuButton ();
+        menu_button.add (menu_box);
+        menu_button.menu_model = (MenuModel) builder.get_object ("window-menu");
+        menu_button.get_style_context ().add_class ("title");
+        menu_button.use_popover = true;
+        menu_button.relief = Gtk.ReliefStyle.NONE;
+        menu_button.show ();
 
         headerbar = new Gtk.HeaderBar ();
         headerbar.show_close_button = true;
-        headerbar.pack_start (gear_menu_button);
+        headerbar.custom_title = menu_button;
         headerbar.show ();
         set_titlebar (headerbar);
 
@@ -106,22 +118,22 @@ public class MathWindow : Gtk.ApplicationWindow
         {
         default:
         case ButtonMode.BASIC:
-            headerbar.set_title (_("Basic Mode"));
+            mode_label.label = _("Basic Mode");
             action.set_state (new Variant.string ("basic"));
             break;
 
         case ButtonMode.ADVANCED:
-            headerbar.set_title (_("Advanced Mode"));
+            mode_label.label = _("Advanced Mode");
             action.set_state (new Variant.string ("advanced"));
             break;
 
         case ButtonMode.FINANCIAL:
-            headerbar.set_title (_("Financial Mode"));
+            mode_label.label = _("Financial Mode");
             action.set_state (new Variant.string ("financial"));
             break;
 
         case ButtonMode.PROGRAMMING:
-            headerbar.set_title (_("Programming Mode"));
+            mode_label.label = _("Programming Mode");
             action.set_state (new Variant.string ("programming"));
             break;
         }
