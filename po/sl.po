@@ -4,15 +4,15 @@
 #
 # Andraž Tori <andraz.tori1@guest.arnes.si>, 2002.
 # Matic Žgur <mr.zgur@gmail.com>, 2006-2007.
-# Matej Urbančič <mateju@svn.gnome.org>, 2007-2013.
+# Matej Urbančič <mateju@svn.gnome.org>, 2007-2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-12-23 07:11+0000\n"
-"PO-Revision-Date: 2013-12-23 19:51+0100\n"
+"POT-Creation-Date: 2014-02-28 19:11+0000\n"
+"PO-Revision-Date: 2014-02-28 23:02+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -432,51 +432,47 @@ msgstr "_Znak:"
 msgid "_Insert"
 msgstr "_Vstavi"
 
-#: ../data/menu.ui.h:1
-msgid "Mode"
-msgstr "Način"
-
-# G:0 K:1 O:0
-#: ../data/menu.ui.h:2
-msgid "Basic"
-msgstr "Osnovni"
-
-# G:0 K:1 O:0
-#: ../data/menu.ui.h:3
-msgid "Advanced"
-msgstr "Napredni"
-
-# G:0 K:1 O:0
-#: ../data/menu.ui.h:4
-msgid "Financial"
-msgstr "Finančni"
-
-#: ../data/menu.ui.h:5
-msgid "Programming"
-msgstr "Programiranje"
-
 #. Title of preferences dialog
-#: ../data/menu.ui.h:6 ../src/math-preferences.vala:26
+#: ../data/menu.ui.h:1 ../src/math-preferences.vala:26
 msgid "Preferences"
 msgstr "Možnosti"
 
-#: ../data/menu.ui.h:7
+#: ../data/menu.ui.h:2
 msgid "Help"
 msgstr "Pomoč"
 
-#: ../data/menu.ui.h:8
+#: ../data/menu.ui.h:3
 msgid "About"
 msgstr "O programu"
 
-#: ../data/menu.ui.h:9
+#: ../data/menu.ui.h:4
 msgid "Quit"
 msgstr "Končaj"
+
+# G:0 K:1 O:0
+#: ../data/menu.ui.h:5 ../src/math-window.vala:109
+msgid "Basic Mode"
+msgstr "Osnovni"
+
+# G:0 K:1 O:0
+#: ../data/menu.ui.h:6 ../src/math-window.vala:114
+msgid "Advanced Mode"
+msgstr "Napredni"
+
+# G:0 K:1 O:0
+#: ../data/menu.ui.h:7 ../src/math-window.vala:119
+msgid "Financial Mode"
+msgstr "Finančni"
+
+#: ../data/menu.ui.h:8 ../src/math-window.vala:124
+msgid "Programming Mode"
+msgstr "Programerski"
 
 # G:1 K:0 O:0
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:255
-#: ../src/math-window.vala:31
+#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:182
+#: ../src/math-window.vala:40
 msgid "Calculator"
 msgstr "Računalo"
 
@@ -490,7 +486,13 @@ msgstr ""
 "računanje;izračunavanje;aritmetika;znanstveni izračuni;finančni izračuni;"
 "računalo;"
 
-#: ../data/gnome-calculator.appdata.xml.in.h:1
+# G:1 K:0 O:0
+#: ../data/gcalctool.appdata.xml.in.h:1
+#| msgid "Calculator"
+msgid "GNOME Calculator"
+msgstr "Računalo"
+
+#: ../data/gcalctool.appdata.xml.in.h:2
 msgid ""
 "GNOME Calculator is an application that solves mathematical equations. "
 "Though it at first appears to be a simple calculator with only basic "
@@ -501,7 +503,7 @@ msgstr ""
 "prvi pogled podpira le osnovne aritmetične operacije. S preklopom na "
 "napredni, finančni ali programerski način pa se pokažejo presenečenja."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:2
+#: ../data/gcalctool.appdata.xml.in.h:3
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
@@ -512,7 +514,7 @@ msgstr ""
 "trigonometrične in hiperbolične funkcije, modulo, kompleksna števila, "
 "ustvarjanje naključnih števil, praštevila in pretvorbe enot."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:3
+#: ../data/gcalctool.appdata.xml.in.h:4
 msgid ""
 "Financial mode supports several computations, including periodic interest "
 "rate, present and future value, double declining and straight line "
@@ -522,7 +524,7 @@ msgstr ""
 "merami, sedanje in prihodnje vrednosti, dvojno pojemajoče in linearno "
 "razvrednotenje ter mnoge druge."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:4
+#: ../data/gcalctool.appdata.xml.in.h:5
 msgid ""
 "Programming mode supports conversion between common bases (binary, octal, "
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
@@ -879,12 +881,12 @@ msgid "Error: the number of periods must be positive"
 msgstr "Napaka: število obdobij mora biti določeno s pozitivno vrednostjo"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:218
+#: ../src/gnome-calculator.vala:147
 msgid "Unable to open help file"
 msgstr "Ni mogoče odpreti datoteke pomoči"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:248
+#: ../src/gnome-calculator.vala:177
 msgid "translator-credits"
 msgstr ""
 "Andraž Tori <andraz.tori1@guest.arnes.si>\n"
@@ -892,24 +894,24 @@ msgstr ""
 "Matej Urbančič <mateju@svn.gnome.org>"
 
 # G:1 K:0 O:0
-#: ../src/gnome-calculator.vala:256
+#: ../src/gnome-calculator.vala:183
 msgid "About Calculator"
 msgstr "O Računalu"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:263
+#: ../src/gnome-calculator.vala:190
 msgid "Calculator with financial and scientific modes."
 msgstr "Računalo z različnimi načini delovanja."
 
-#: ../src/gnome-calculator.vala:299
+#: ../src/gnome-calculator.vala:226
 msgid "Solve given equation"
 msgstr "Razreši podano enačbo"
 
-#: ../src/gnome-calculator.vala:307
+#: ../src/gnome-calculator.vala:234
 msgid "Start with given equation"
 msgstr "Začni s podano enačbo"
 
-#: ../src/gnome-calculator.vala:316
+#: ../src/gnome-calculator.vala:243
 msgid "Show release version"
 msgstr "Pokaži različico objave"
 
@@ -1393,26 +1395,7 @@ msgstr "32 bitna"
 msgid "64 bits"
 msgstr "64 bitna"
 
-# G:0 K:1 O:0
-#: ../src/math-window.vala:77
-msgid "Basic Mode"
-msgstr "Osnovni"
-
-# G:0 K:1 O:0
-#: ../src/math-window.vala:81
-msgid "Advanced Mode"
-msgstr "Napredni"
-
-# G:0 K:1 O:0
-#: ../src/math-window.vala:85
-msgid "Financial Mode"
-msgstr "Finančni"
-
-#: ../src/math-window.vala:89
-msgid "Programming Mode"
-msgstr "Programerski"
-
-#: ../src/math-window.vala:101
+#: ../src/math-window.vala:137
 msgid "_Quit"
 msgstr "_Končaj"
 
@@ -1422,100 +1405,106 @@ msgid "Argument not defined for zero"
 msgstr "Argument števila nič ni določen"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1935
+#: ../src/number.vala:909 ../src/number.vala:1943
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Potenciranje vrednosti nič ni določeno za negativne potence"
 
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: ../src/number.vala:917
+#| msgid "Reciprocal of zero is undefined"
+msgid "Zero raised to zero is undefined"
+msgstr "Vrednost števila nič na potenco nič ni določena"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/number.vala:995 ../src/number.vala:1028
+#: ../src/number.vala:1003 ../src/number.vala:1036
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritem vrednosti nič ni določen"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: ../src/number.vala:1050
+#: ../src/number.vala:1058
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Fakulteta je določena le za ne-negativna realna števila"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1134 ../src/number.vala:2685
+#: ../src/number.vala:1142 ../src/number.vala:2697
 msgid "Division by zero is undefined"
 msgstr "Deljenje z nič ni določeno"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1174
+#: ../src/number.vala:1182
 msgid "Modulus division is only defined for integers"
 msgstr "Deljenje z ostankom je določeno le za cela števila"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1266
+#: ../src/number.vala:1274
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "Tangenta ni določena za kote, ki so večkratniki n (180°) od π∕2 (90°) naprej"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1304
+#: ../src/number.vala:1312
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Inverzni sinus ni določen za vrednosti izven območja [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1319
+#: ../src/number.vala:1327
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Inverzni kosinus ni določen za vrednosti izven območja [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1516
+#: ../src/number.vala:1524
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "Inverzni hiperbolični kosinus ni določen za vrednosti manjše od ena"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1535
+#: ../src/number.vala:1543
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverzna hiperbolična tangenta ni določena za vrednosti izven območja [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1554
+#: ../src/number.vala:1562
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Logični AND je določen le za pozitivna cela števila"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1566
+#: ../src/number.vala:1574
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Logični OR je določen le za pozitivna cela števila"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1578
+#: ../src/number.vala:1586
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Logični XOR je določen le za pozitivna cela števila"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1590
+#: ../src/number.vala:1598
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Logični NOT je določen le za pozitivna cela števila"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1613
+#: ../src/number.vala:1621
 msgid "Shift is only possible on integer values"
 msgstr "Zamik je mogoč le pri celoštevilčnih vrednostih"
 
-#: ../src/number.vala:1955
+#: ../src/number.vala:1963
 msgid "Root must be non-zero"
 msgstr "Koren ne sme biti vrednosti nič"
 
-#: ../src/number.vala:1972
+#: ../src/number.vala:1980
 msgid "Negative root of zero is undefined"
 msgstr "Negativni koren vrednosti nič ni določen"
 
-#: ../src/number.vala:1979
+#: ../src/number.vala:1987
 msgid "nth root of negative number is undefined for even n"
 msgstr "n-ti koren negativnega števila ni določen za sode vrednosti n"
 
-#: ../src/number.vala:2302
+#: ../src/number.vala:2314
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Prekoračitev: rezultata ni mogoče izračunati"
 
-#: ../src/number.vala:2630
+#: ../src/number.vala:2642
 msgid "Reciprocal of zero is undefined"
 msgstr "Obratna vrednost števila nič ni določena"
 
@@ -1547,181 +1536,698 @@ msgstr "Trajanje"
 msgid "Temperature"
 msgstr "Temperatura"
 
+#: ../src/unit.vala:38
+#, c-format
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s stopinj"
+
+#: ../src/unit.vala:38
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "stopinja,stopinj,˚"
+
+#: ../src/unit.vala:39
+#, c-format
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s radianov"
+
+#: ../src/unit.vala:39
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "radian,radiani,rad"
+
+#: ../src/unit.vala:40
+#, c-format
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s gradianov"
+
+#: ../src/unit.vala:40
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "gradian,gradiani grad"
+
 #: ../src/unit.vala:41
 msgid "Parsecs"
 msgstr "parseki"
+
+#: ../src/unit.vala:41
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
+
+#: ../src/unit.vala:41
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "parsek,parseki,pc"
 
 #: ../src/unit.vala:42
 msgid "Light Years"
 msgstr "svetlobna leta"
 
+#: ../src/unit.vala:42
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s slet"
+
+#: ../src/unit.vala:42
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "svetlobno leto, svetlobnih let,sl"
+
 #: ../src/unit.vala:43
 msgid "Astronomical Units"
 msgstr "Astronomske enote"
+
+#: ../src/unit.vala:43
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s ae"
+
+#: ../src/unit.vala:43
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "ae"
 
 #: ../src/unit.vala:44
 msgid "Nautical Miles"
 msgstr "pomorska milje"
 
+#: ../src/unit.vala:44
+#, c-format
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr "%s nm"
+
+#: ../src/unit.vala:44
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "nm"
+
 #: ../src/unit.vala:45
 msgid "Miles"
 msgstr "milje"
+
+#: ../src/unit.vala:45
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s mi"
+
+#: ../src/unit.vala:45
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "milja,milje,mi"
 
 #: ../src/unit.vala:46
 msgid "Kilometers"
 msgstr "kilometri"
 
+#: ../src/unit.vala:46
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
+
+#: ../src/unit.vala:46
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "kilometer,kilometri, km"
+
 #: ../src/unit.vala:47
 msgid "Cables"
 msgstr "kabli"
+
+#: ../src/unit.vala:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cb"
+
+#: ../src/unit.vala:47
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "kabel,kabla,kb,cb"
 
 #: ../src/unit.vala:48
 msgid "Fathoms"
 msgstr "seženj"
 
+#: ../src/unit.vala:48
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s sžn"
+
+#: ../src/unit.vala:48
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "seženj,sežnji,sžn"
+
 #: ../src/unit.vala:49
 msgid "Meters"
 msgstr "metri"
+
+#: ../src/unit.vala:49
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
+
+#: ../src/unit.vala:49
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "meter,metri,m"
 
 #: ../src/unit.vala:50
 msgid "Yards"
 msgstr "jardi"
 
+#: ../src/unit.vala:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
+
+#: ../src/unit.vala:50
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "jard,jardi,yd"
+
 #: ../src/unit.vala:51
 msgid "Feet"
 msgstr "čevlji"
+
+#: ../src/unit.vala:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ft"
+
+#: ../src/unit.vala:51
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "čevelj,čevlji,ft"
 
 #: ../src/unit.vala:52
 msgid "Inches"
 msgstr "cole"
 
+#: ../src/unit.vala:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s \""
+
+#: ../src/unit.vala:52
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "palec, palcev, cola, col, \""
+
 #: ../src/unit.vala:53
 msgid "Centimeters"
 msgstr "centimetri"
+
+#: ../src/unit.vala:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
+
+#: ../src/unit.vala:53
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "centimeter,centimetri,cm"
 
 #: ../src/unit.vala:54
 msgid "Millimeters"
 msgstr "milimetri"
 
+#: ../src/unit.vala:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
+
+#: ../src/unit.vala:54
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "milimeter,milimetri,mm"
+
 #: ../src/unit.vala:55
 msgid "Micrometers"
 msgstr "mikrometri"
+
+#: ../src/unit.vala:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
+
+#: ../src/unit.vala:55
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "mikrometer,mikrometri,um"
 
 #: ../src/unit.vala:56
 msgid "Nanometers"
 msgstr "nanometri"
 
+#: ../src/unit.vala:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
+
+#: ../src/unit.vala:56
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "nanometer,nanometri,nm"
+
 #: ../src/unit.vala:57
 msgid "Hectares"
 msgstr "hektari"
+
+#: ../src/unit.vala:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../src/unit.vala:57
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "hektar,hektarji,ha"
 
 #: ../src/unit.vala:58
 msgid "Acres"
 msgstr "akri"
 
+#: ../src/unit.vala:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s akrov"
+
+#: ../src/unit.vala:58
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "aker,akri"
+
 #: ../src/unit.vala:59
 msgid "Square Meters"
 msgstr "kvadratni metri"
+
+#: ../src/unit.vala:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../src/unit.vala:59
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
 
 #: ../src/unit.vala:60
 msgid "Square Centimeters"
 msgstr "kvadratni centimetri"
 
+#: ../src/unit.vala:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit.vala:60
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
 #: ../src/unit.vala:61
 msgid "Square Millimeters"
 msgstr "kvadratni milimetri"
+
+#: ../src/unit.vala:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit.vala:61
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
 
 #: ../src/unit.vala:62
 msgid "Cubic Meters"
 msgstr "kubični meter"
 
+#: ../src/unit.vala:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit.vala:62
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
 #: ../src/unit.vala:63
 msgid "Gallons"
 msgstr "galona"
+
+#: ../src/unit.vala:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../src/unit.vala:63
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "galona,galone,gal"
 
 #: ../src/unit.vala:64
 msgid "Liters"
 msgstr "Litri"
 
+#: ../src/unit.vala:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s L"
+
+#: ../src/unit.vala:64
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "liter,litri,L"
+
 #: ../src/unit.vala:65
 msgid "Quarts"
 msgstr "kvart"
+
+#: ../src/unit.vala:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s qt"
+
+#: ../src/unit.vala:65
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "kvart,kvarti,qt"
 
 #: ../src/unit.vala:66
 msgid "Pints"
 msgstr "pinte"
 
+#: ../src/unit.vala:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
+
+#: ../src/unit.vala:66
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "pinta,pinte,pt"
+
 #: ../src/unit.vala:67
 msgid "Milliliters"
 msgstr "mililitri"
+
+#: ../src/unit.vala:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s mL"
+
+#: ../src/unit.vala:67
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "milliliter,millilitri,mL,cm³"
 
 #: ../src/unit.vala:68
 msgid "Microliters"
 msgstr "mikrolitri"
 
+#: ../src/unit.vala:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μL"
+
+#: ../src/unit.vala:68
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³, μL"
+
 #: ../src/unit.vala:69
 msgid "Tonnes"
 msgstr "tone"
+
+#: ../src/unit.vala:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s T"
+
+#: ../src/unit.vala:69
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "tona,tone"
 
 #: ../src/unit.vala:70
 msgid "Kilograms"
 msgstr "kilogrami"
 
+#: ../src/unit.vala:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
+
+#: ../src/unit.vala:70
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "kilogram, kilogrami,kg"
+
 #: ../src/unit.vala:71
 msgid "Pounds"
 msgstr "funti"
+
+#: ../src/unit.vala:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../src/unit.vala:71
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "funt,funti,lb"
 
 #: ../src/unit.vala:72
 msgid "Ounces"
 msgstr "unče"
 
+#: ../src/unit.vala:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s unč"
+
+#: ../src/unit.vala:72
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "unča,unče,oz"
+
 #: ../src/unit.vala:73
 msgid "Grams"
 msgstr "grami"
+
+#: ../src/unit.vala:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit.vala:73
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "gram,grami,g"
 
 #: ../src/unit.vala:74
 msgid "Years"
 msgstr "leta"
 
+#: ../src/unit.vala:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s let"
+
+#: ../src/unit.vala:74
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "leto,leta"
+
 #: ../src/unit.vala:75
 msgid "Days"
 msgstr "dnevi"
+
+#: ../src/unit.vala:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s dni"
+
+#: ../src/unit.vala:75
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "dan,dnevi"
 
 #: ../src/unit.vala:76
 msgid "Hours"
 msgstr "ure"
 
+#: ../src/unit.vala:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s ur"
+
+#: ../src/unit.vala:76
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "ura,ure"
+
 #: ../src/unit.vala:77
 msgid "Minutes"
 msgstr "minute"
+
+#: ../src/unit.vala:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s minut"
+
+#: ../src/unit.vala:77
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "minuta, minute"
 
 #: ../src/unit.vala:78
 msgid "Seconds"
 msgstr "sekunde"
 
+#: ../src/unit.vala:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit.vala:78
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "sekunda, sekunde, s"
+
 #: ../src/unit.vala:79
 msgid "Milliseconds"
 msgstr "milisekunde"
+
+#: ../src/unit.vala:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit.vala:79
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "milisekunda, milisekunde, ms"
 
 #: ../src/unit.vala:80
 msgid "Microseconds"
 msgstr "mikrosekunde"
 
+#: ../src/unit.vala:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit.vala:80
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "mikrosekunda, mikrosekunde, μs"
+
 #: ../src/unit.vala:81
 msgid "Celsius"
 msgstr "Celzijeva lestvica"
+
+#: ../src/unit.vala:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr "%s ˚C"
+
+#: ../src/unit.vala:81
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "stopinj C, ˚C"
 
 #: ../src/unit.vala:82
 msgid "Fahrenheit"
 msgstr "Fahrenheitova lestvica"
 
+#: ../src/unit.vala:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr "%s ˚F"
+
+#: ../src/unit.vala:82
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "stopinj F, ˚F"
+
 #: ../src/unit.vala:83
 msgid "Kelvin"
 msgstr "Kelvinova lestvica"
 
+#: ../src/unit.vala:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr "%s K"
+
+#: ../src/unit.vala:83
+msgctxt "unit-symbols"
+msgid "K"
+msgstr "K"
+
 #: ../src/unit.vala:84
 msgid "Rankine"
 msgstr "Rankinova lestvica"
+
+#: ../src/unit.vala:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr "%s ˚R"
+
+#: ../src/unit.vala:84
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra"
+msgstr "stopinj R, ˚R,˚Ra"
 
 #: ../src/unit.vala:86
 msgid "Currency"
@@ -1733,491 +2239,5 @@ msgstr "Valuta"
 msgid "%s%%s"
 msgstr "%%s %s"
 
-#~ msgid "Round"
-#~ msgstr "Najbližje celo število števila x"
-
-#~ msgid "Floor"
-#~ msgstr "Največje celo število, ki je manjše od števila x"
-
-#~ msgid "Ceiling"
-#~ msgstr "Najmanjše celo število, ki ni manjše od števila x"
-
-#~ msgid "Sign"
-#~ msgstr "Predznak števila x"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s degrees"
-#~ msgstr "%s stopinj"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degree,degrees,deg"
-#~ msgstr "stopinja,stopinj,˚"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s radians"
-#~ msgstr "%s radianov"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "radian,radians,rad"
-#~ msgstr "radian,radiani,rad"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s gradians"
-#~ msgstr "%s gradianov"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gradian,gradians,grad"
-#~ msgstr "gradian,gradiani grad"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s pc"
-#~ msgstr "%s pc"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "parsec,parsecs,pc"
-#~ msgstr "parsek,parseki,pc"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ly"
-#~ msgstr "%s slet"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "lightyear,lightyears,ly"
-#~ msgstr "svetlobno leto, svetlobnih let,sl"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s au"
-#~ msgstr "%s ae"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "au"
-#~ msgstr "ae"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s nmi"
-#~ msgstr "%s nm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "nmi"
-#~ msgstr "nm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mi"
-#~ msgstr "%s mi"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mile,miles,mi"
-#~ msgstr "milja,milje,mi"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s km"
-#~ msgstr "%s km"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "kilometer,kilometers,km,kms"
-#~ msgstr "kilometer,kilometri, km"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cb"
-#~ msgstr "%s cb"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "cable,cables,cb"
-#~ msgstr "kabel,kabla,kb,cb"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ftm"
-#~ msgstr "%s sžn"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "fathom,fathoms,ftm"
-#~ msgstr "seženj,sežnji,sžn"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m"
-#~ msgstr "%s m"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "meter,meters,m"
-#~ msgstr "meter,metri,m"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s yd"
-#~ msgstr "%s yd"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "yard,yards,yd"
-#~ msgstr "jard,jardi,yd"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ft"
-#~ msgstr "%s ft"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "foot,feet,ft"
-#~ msgstr "čevelj,čevlji,ft"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s in"
-#~ msgstr "%s \""
-
-#~ msgctxt "unit-symbols"
-#~ msgid "inch,inches,in"
-#~ msgstr "palec, palcev, cola, col, \""
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cm"
-#~ msgstr "%s cm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "centimeter,centimeters,cm,cms"
-#~ msgstr "centimeter,centimetri,cm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mm"
-#~ msgstr "%s mm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millimeter,millimeters,mm"
-#~ msgstr "milimeter,milimetri,mm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μm"
-#~ msgstr "%s μm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "micrometer,micrometers,um"
-#~ msgstr "mikrometer,mikrometri,um"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s nm"
-#~ msgstr "%s nm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "nanometer,nanometers,nm"
-#~ msgstr "nanometer,nanometri,nm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ha"
-#~ msgstr "%s ha"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "hectare,hectares,ha"
-#~ msgstr "hektar,hektarji,ha"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s acres"
-#~ msgstr "%s akrov"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "acre,acres"
-#~ msgstr "aker,akri"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m²"
-#~ msgstr "%s m²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "m²"
-#~ msgstr "m²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cm²"
-#~ msgstr "%s cm²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "cm²"
-#~ msgstr "cm²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mm²"
-#~ msgstr "%s mm²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mm²"
-#~ msgstr "mm²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m³"
-#~ msgstr "%s m³"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "m³"
-#~ msgstr "m³"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s gal"
-#~ msgstr "%s gal"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gallon,gallons,gal"
-#~ msgstr "galona,galone,gal"
-
-#~ msgid "Litres"
-#~ msgstr "Litri"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s L"
-#~ msgstr "%s L"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "litre,litres,liter,liters,L"
-#~ msgstr "liter,litri,L"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s qt"
-#~ msgstr "%s qt"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "quart,quarts,qt"
-#~ msgstr "kvart,kvarti,qt"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s pt"
-#~ msgstr "%s pt"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "pint,pints,pt"
-#~ msgstr "pinta,pinte,pt"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mL"
-#~ msgstr "%s mL"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
-#~ msgstr "milliliter,millilitri,mL,cm³"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μL"
-#~ msgstr "%s μL"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mm³,μL,uL"
-#~ msgstr "mm³, μL"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s T"
-#~ msgstr "%s T"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "tonne,tonnes"
-#~ msgstr "tona,tone"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s kg"
-#~ msgstr "%s kg"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
-#~ msgstr "kilogram, kilogrami,kg"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s lb"
-#~ msgstr "%s lb"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "pound,pounds,lb"
-#~ msgstr "funt,funti,lb"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s oz"
-#~ msgstr "%s unč"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "ounce,ounces,oz"
-#~ msgstr "unča,unče,oz"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s g"
-#~ msgstr "%s g"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gram,grams,gramme,grammes,g"
-#~ msgstr "gram,grami,g"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s years"
-#~ msgstr "%s let"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "year,years"
-#~ msgstr "leto,leta"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s days"
-#~ msgstr "%s dni"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "day,days"
-#~ msgstr "dan,dnevi"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s hours"
-#~ msgstr "%s ur"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "hour,hours"
-#~ msgstr "ura,ure"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s minutes"
-#~ msgstr "%s minut"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "minute,minutes"
-#~ msgstr "minuta, minute"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s s"
-#~ msgstr "%s s"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "second,seconds,s"
-#~ msgstr "sekunda, sekunde, s"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ms"
-#~ msgstr "%s ms"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millisecond,milliseconds,ms"
-#~ msgstr "milisekunda, milisekunde, ms"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μs"
-#~ msgstr "%s μs"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "microsecond,microseconds,us,μs"
-#~ msgstr "mikrosekunda, mikrosekunde, μs"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚C"
-#~ msgstr "%s ˚C"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "stopinj C, ˚C"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚F"
-#~ msgstr "%s ˚F"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "stopinj F, ˚F"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s K"
-#~ msgstr "%s K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "K"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚R"
-#~ msgstr "%s ˚R"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "stopinj R, ˚R,˚Ra"
-
-#~ msgid "<i>x</i>"
-#~ msgstr "<i>x</i>"
-
-#~ msgid "8-bit"
-#~ msgstr "8 bitni"
-
-#~ msgid "16-bit"
-#~ msgstr "16 bitni"
-
-#~ msgid "32-bit"
-#~ msgstr "32 bitni"
-
-#~ msgid "64-bit"
-#~ msgstr "64 bitni"
-
-#~ msgid ""
-#~ "Usage:\n"
-#~ "  %s — Perform mathematical calculations"
-#~ msgstr ""
-#~ "Uporaba:\n"
-#~ "  %s - matematični izračun"
-
-#~ msgid ""
-#~ "Help Options:\n"
-#~ "  -v, --version                   Show release version\n"
-#~ "  -h, -?, --help                  Show help options\n"
-#~ "  --help-all                      Show all help options\n"
-#~ "  --help-gtk                      Show GTK+ options"
-#~ msgstr ""
-#~ "Možnosti pomoči:\n"
-#~ "  -v, --version                   Pokaži različico programa\n"
-#~ "  -h, -?, --help                  Pokaži možnosti pomoči\n"
-#~ "  --help-all                      Pokaži vse možnosti pomoči\n"
-#~ "  --help-gtk                      Pokaži GTK+ možnosti"
-
-#~ msgid ""
-#~ "GTK+ Options:\n"
-#~ "  --class=CLASS                   Program class as used by the window "
-#~ "manager\n"
-#~ "  --name=NAME                     Program name as used by the window "
-#~ "manager\n"
-#~ "  --screen=SCREEN                 X screen to use\n"
-#~ "  --sync                          Make X calls synchronous\n"
-#~ "  --gtk-module=MODULES            Load additional GTK+ modules\n"
-#~ "  --g-fatal-warnings              Make all warnings fatal"
-#~ msgstr ""
-#~ "Možnosti GTK+:\n"
-#~ "  --class=CLASS                   Programski razred uporabljen v "
-#~ "upravljalniku oken\n"
-#~ "  --name=NAME                     Ime programa, ki uporabljen v "
-#~ "upravljalniku oken\n"
-#~ "  --screen=SCREEN                 X zaslon za uporabo\n"
-#~ "  --sync                          Uskladi klice X\n"
-#~ "  --gtk-module=MODULES            Naloži dodatnemodule GTK+\n"
-#~ "  --g-fatal-warnings              Določi vsa opozorila ključna"
-
-#~ msgid ""
-#~ "Application Options:\n"
-#~ "  -s, --solve <equation>          Solve the given equation"
-#~ msgstr ""
-#~ "Možnosti programa:\n"
-#~ "  -s, --solve <equation>          Reši podano enačbo"
-
-#~ msgid "Argument --solve requires an equation to solve"
-#~ msgstr "Argument --solve zahteva tudi zapis enačbe"
-
-#~ msgid "Unknown argument '%s'"
-#~ msgstr "Neznan argument '%s'"
-
-#~ msgid ""
-#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ "\n"
-#~ "Gcalctool is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License\n"
-#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
-#~ "Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-#~ msgstr ""
-#~ "Gcalctool je prosta programska oprema; lahko ga širite in spreminjate\n"
-#~ "pod pogoji GNU splošne javne pravice, ki jo je izdala organizacija\n"
-#~ "Free Software Foundation; različica 2 ali katerakoli kasnejša\n"
-#~ "različica.\n"
-#~ "\n"
-#~ "Gcalctool je objavljen brez garancije.  Oglejte si splošne javne pravice\n"
-#~ "(GNU General Public License) za več podrobnosti.\n"
-#~ "\n"
-#~ "S programom bi morali dobiti tudi kopijo pravic.\n"
-#~ "V primeru, da kopije niste dobili, pišite na Free Software Foundation, "
-#~ "Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+#~ msgid "Mode"
+#~ msgstr "Način"
