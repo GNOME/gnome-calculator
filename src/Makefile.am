@@ -133,3 +133,5 @@ test_serializer_VALAFLAGS = \
 test_serializer_LDADD = \
 	$(GCALCCMD_LIBS) \
 	-lm
+
+-include $(top_srcdir)/git.mk
