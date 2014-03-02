@@ -33,6 +33,3 @@ HELP_FILES = absolute.page \
              variables.page
 
 HELP_LINGUAS = bg ca cs de el es eu fi fr gl hu it ja ko lv oc pt_BR ro ru sl sv te zh_CN zh_HK zh_TW
-
-DISTCLEANFILES = \
-	Makefile.in

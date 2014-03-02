@@ -28,6 +28,3 @@ EXTRA_DIST = \
 CLEANFILES = \
 	$(appdata_DATA) \
 	$(desktop_DATA)
-
-DISTCLEANFILES = \
-	Makefile.in

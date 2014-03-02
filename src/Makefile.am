@@ -133,6 +133,3 @@ test_serializer_VALAFLAGS = \
 test_serializer_LDADD = \
 	$(GCALCCMD_LIBS) \
 	-lm
-
-DISTCLEANFILES = \
-	Makefile.in
