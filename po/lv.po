@@ -4,14 +4,14 @@
 #
 # Viesturs Zariņš <viesturs.zarins@mii.lu.lv>, 2006.
 # Raivis Dejus <orvils@gmail.com>, 2006, 2009.
-# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2010, 2011, 2012, 2013.
+# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2010, 2011, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: lv\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2013-01-09 09:15+0000\n"
-"PO-Revision-Date: 2013-03-10 16:17+0200\n"
+"POT-Creation-Date: 2014-03-07 07:12+0000\n"
+"PO-Revision-Date: 2014-03-08 12:23+0200\n"
 "Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "Language: lv\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 "X-Launchpad-Export-Date: 2009-02-19 16:52+0000\n"
 
 #. Accessible name for the inverse button
@@ -63,7 +63,7 @@ msgstr "Zinātniskā kāpināšana"
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.vala:384
+#: ../src/math-buttons.vala:375
 msgid "Memory"
 msgstr "Atmiņa"
 
@@ -91,7 +91,7 @@ msgstr "Krātuve"
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:400
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:391
 msgid "Compounding Term"
 msgstr "Saliktais periods"
 
@@ -157,7 +157,7 @@ msgstr "_Periods:"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:404
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:395
 msgid "Future Value"
 msgstr "Vērtība nākotnē"
 
@@ -183,7 +183,7 @@ msgstr "_Periodu skaits:"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:418
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:409
 msgid "Gross Profit Margin"
 msgstr "Bruto peļņas norma"
 
@@ -203,7 +203,7 @@ msgstr "_Peļņa:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:416
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:407
 msgid "Periodic Payment"
 msgstr "Periodiskie maksājumi"
 
@@ -228,7 +228,7 @@ msgstr "_Termiņš:"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:414
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:405
 msgid "Present Value"
 msgstr "Pašreizējā vērtība"
 
@@ -245,7 +245,7 @@ msgstr ""
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:412
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:403
 msgid "Periodic Interest Rate"
 msgstr "Periodiskā procentu likme"
 
@@ -378,13 +378,13 @@ msgstr "Bpn"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:396
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:387
 msgid "Shift Left"
 msgstr "Bīdīt pa kreisi"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:398
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:389
 msgid "Shift Right"
 msgstr "Bīdīt pa labi"
 
@@ -395,7 +395,7 @@ msgstr "Ievietot rakstzīmi"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:386
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:377
 msgid "Insert Character Code"
 msgstr "Ievietot rakstzīmes kodu"
 
@@ -411,8 +411,8 @@ msgstr "_Ievietot"
 
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:265
-#: ../src/math-window.vala:29
+#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:182
+#: ../src/math-window.vala:40
 msgid "Calculator"
 msgstr "Kalkulators"
 
@@ -421,105 +421,190 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Veikt aritmētiskus, zinātniskus vai finansiālus aprēķinus"
 
 #: ../data/gnome-calculator.desktop.in.h:3
-#| msgid "Perform arithmetic, scientific or financial calculations"
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "aprēķins;aritmētika;zinātnisks;finansiāls;"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:1
+#: ../data/gnome-calculator.appdata.xml.in.h:1
+#| msgid "Calculator"
+msgid "GNOME Calculator"
+msgstr "GNOME kalkulators"
+
+#: ../data/gnome-calculator.appdata.xml.in.h:2
+msgid ""
+"GNOME Calculator is an application that solves mathematical equations. "
+"Though it at first appears to be a simple calculator with only basic "
+"arithmetic operations, you can switch into Advanced, Financial, or "
+"Programming mode to find a surprising set of capabilities."
+msgstr ""
+"GNOME kalkulators ir lietotne, kas risina matemātikas vienādojumus. Lai arī "
+"sākumā tas izskatās pēc vienkārša kalkulatora ar dažām aritmētikas "
+"operācijām, jūs varat ieslēgt paplašināto, finanšu vai programmēšanas režīmu, "
+"lai atrastu papildu iespējas."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:3
+msgid ""
+"The Advanced calculator supports many operations, including: logarithms, "
+"factorials, trigonometric and hyperbolic functions, modulus division, "
+"complex numbers, random number generation, prime factorization and unit "
+"conversions."
+msgstr ""
+"Paplašinātais kalkulators atbalsta daudzas operācijas, tai skaitā logaritmus, "
+"faktoriālus, trigonometriskās un hiperboliskās funkcijas, dalīšanu pēc "
+"moduļa, kompleksos skaitļus, nejaušu skaitļu ģenerēšanu, dalīšanu "
+"reizinātājos un mērvienību pārveidošanu."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:4
+msgid ""
+"Financial mode supports several computations, including periodic interest "
+"rate, present and future value, double declining and straight line "
+"depreciation, and many others."
+msgstr ""
+"Finanšu režīms atbalsta dažādus aprēķinus, piemēram, periodisko procentu "
+"likmi, pašreizējo un nākotnes vērtību, paātrināto un lineāro amortizāciju, un "
+"daudzas citas."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:5
+msgid ""
+"Programming mode supports conversion between common bases (binary, octal, "
+"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"character to character code conversion, and more."
+msgstr ""
+"Programmēšanas režīms atbalsta pārveidošanu starp bāzēm (bināro, astotnieku, "
+"decimālo un heksadecimālo), būla algebru, vieninieku un divnieku papildkodu, "
+"koda pārveidošanu pa rakstzīmēm un vēl vairāk."
+
+#. Title of preferences dialog
+#: ../data/menu.ui.h:1 ../src/math-preferences.vala:26
+msgid "Preferences"
+msgstr "Iestatījumi"
+
+#: ../data/menu.ui.h:2
+msgid "Help"
+msgstr "Palīdzība"
+
+#: ../data/menu.ui.h:3
+msgid "About"
+msgstr "Par"
+
+#: ../data/menu.ui.h:4
+msgid "Quit"
+msgstr "Iziet"
+
+#: ../data/menu.ui.h:5 ../src/math-window.vala:109
+#| msgid "Basic"
+msgid "Basic Mode"
+msgstr "Vienkāršais režīms"
+
+#: ../data/menu.ui.h:6 ../src/math-window.vala:114
+#| msgid "Advanced"
+msgid "Advanced Mode"
+msgstr "Paplašinātais režīms"
+
+#: ../data/menu.ui.h:7 ../src/math-window.vala:119
+#| msgid "Financial Term"
+msgid "Financial Mode"
+msgstr "Finanšu režīms"
+
+#: ../data/menu.ui.h:8 ../src/math-window.vala:124
+#| msgid "Programming"
+msgid "Programming Mode"
+msgstr "Programmēšanas režīms"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:1
 msgid "Accuracy value"
 msgstr "Precizitātes vērtība"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:2
+#: ../data/org.gnome.calculator.gschema.xml.h:2
 msgid "The number of digits displayed after the numeric point"
 msgstr "Ciparu skaits, ko rāda pēc komata"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:3
+#: ../data/org.gnome.calculator.gschema.xml.h:3
 msgid "Word size"
 msgstr "Vārda garums"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:4
+#: ../data/org.gnome.calculator.gschema.xml.h:4
 msgid "The size of the words used in bitwise operations"
 msgstr "Vārda garums, ko izmantot bitu darbībās"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:5
+#: ../data/org.gnome.calculator.gschema.xml.h:5
 msgid "Numeric Base"
 msgstr "Skaitļa bāze"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:6
+#: ../data/org.gnome.calculator.gschema.xml.h:6
 msgid "The numeric base"
 msgstr "Skaitļa bāze"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:7
+#: ../data/org.gnome.calculator.gschema.xml.h:7
 msgid "Show Thousands Separators"
 msgstr "Rādīt tūkstošu atdalītāju"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:8
+#: ../data/org.gnome.calculator.gschema.xml.h:8
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Norāda, vai lieliem skaitļiem būtu jārāda tūkstošu atdalītājs."
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:9
+#: ../data/org.gnome.calculator.gschema.xml.h:9
 msgid "Show Trailing Zeroes"
 msgstr "Rādīt beigu nulles"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:10
+#: ../data/org.gnome.calculator.gschema.xml.h:10
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr "Norāda, vai attēlotajā rezultātā būtu jārāda beigu nulles pēc komata."
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:11
+#: ../data/org.gnome.calculator.gschema.xml.h:11
 msgid "Number format"
 msgstr "Skaitļu formāts"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:12
+#: ../data/org.gnome.calculator.gschema.xml.h:12
 msgid "The format to display numbers in"
 msgstr "Formāts, kādā attēlot skaitļus"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:13
+#: ../data/org.gnome.calculator.gschema.xml.h:13
 msgid "Angle units"
 msgstr "Leņķu mērvienības"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:14
+#: ../data/org.gnome.calculator.gschema.xml.h:14
 msgid "The angle units to use"
 msgstr "Leņķu mērvienības, ko izmantot"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:15
+#: ../data/org.gnome.calculator.gschema.xml.h:15
 msgid "Button mode"
 msgstr "Pogu režīms"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:16
+#: ../data/org.gnome.calculator.gschema.xml.h:16
 msgid "The button mode"
 msgstr "Pogu režīms"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:17
+#: ../data/org.gnome.calculator.gschema.xml.h:17
 msgid "Source currency"
 msgstr "Avota valūta"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:18
+#: ../data/org.gnome.calculator.gschema.xml.h:18
 msgid "Currency of the current calculation"
 msgstr "Pašreizējā aprēķina valūta"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:19
+#: ../data/org.gnome.calculator.gschema.xml.h:19
 msgid "Target currency"
 msgstr "Mērķa valūta"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:20
+#: ../data/org.gnome.calculator.gschema.xml.h:20
 msgid "Currency to convert the current calculation into"
 msgstr "Valūta, uz kuru pārveidot pašreizējo aprēķinu"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:21
+#: ../data/org.gnome.calculator.gschema.xml.h:21
 msgid "Source units"
 msgstr "Avota vienības"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:22
+#: ../data/org.gnome.calculator.gschema.xml.h:22
 msgid "Units of the current calculation"
 msgstr "Esošā aprēķina mērvienības"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:23
+#: ../data/org.gnome.calculator.gschema.xml.h:23
 msgid "Target units"
 msgstr "Mērķa mērvienības"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:24
+#: ../data/org.gnome.calculator.gschema.xml.h:24
 msgid "Units to convert the current calculation into"
 msgstr "Mērvienības, kurās pārveidot esošo aprēķinu"
 
@@ -767,50 +852,13 @@ msgstr "Dienvidāfrikas rands"
 msgid "Error: the number of periods must be positive"
 msgstr "Kļūda — periodu skaitam jābūt pozitīvam"
 
-#: ../src/gnome-calculator.vala:80
-msgid "Basic"
-msgstr "Vienkāršais"
-
-#: ../src/gnome-calculator.vala:81
-msgid "Advanced"
-msgstr "Paplašinātais"
-
-#: ../src/gnome-calculator.vala:82
-msgid "Financial"
-msgstr "Finanšu"
-
-#: ../src/gnome-calculator.vala:83
-msgid "Programming"
-msgstr "Programmēšanas"
-
-#: ../src/gnome-calculator.vala:84
-msgid "Mode"
-msgstr "Režīms"
-
-#. Title of preferences dialog
-#: ../src/gnome-calculator.vala:87 ../src/math-preferences.vala:26
-msgid "Preferences"
-msgstr "Iestatījumi"
-
-#: ../src/gnome-calculator.vala:91
-msgid "About Calculator"
-msgstr "Par Kalkulatoru"
-
-#: ../src/gnome-calculator.vala:92
-msgid "Help"
-msgstr "Palīdzība"
-
-#: ../src/gnome-calculator.vala:93
-msgid "Quit"
-msgstr "Iziet"
-
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:228
+#: ../src/gnome-calculator.vala:147
 msgid "Unable to open help file"
 msgstr "Nevar atvērt palīdzības datni"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:258
+#: ../src/gnome-calculator.vala:177
 msgid "translator-credits"
 msgstr ""
 "Viesturs Zariņš <viesturs.zarins@mii.lu.lv>\n"
@@ -820,297 +868,300 @@ msgstr ""
 "  Pēteris Caune https://launchpad.net/~cuu508\n"
 "  Raivis Dejus https://launchpad.net/~orvils"
 
+#: ../src/gnome-calculator.vala:183
+msgid "About Calculator"
+msgstr "Par Kalkulatoru"
+
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:272
+#: ../src/gnome-calculator.vala:190
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulators ar finansiālo un zinātnisko režīmu."
 
-#: ../src/gnome-calculator.vala:305
+#: ../src/gnome-calculator.vala:223
 msgid "Solve given equation"
 msgstr "Atrisināt doto vienādojumu"
 
-#: ../src/gnome-calculator.vala:313
+#: ../src/gnome-calculator.vala:231
 msgid "Start with given equation"
 msgstr "Sākt ar doto vienādojumu"
 
-#: ../src/gnome-calculator.vala:322
+#: ../src/gnome-calculator.vala:240
 msgid "Show release version"
 msgstr "Rādīt laidiena versiju"
 
 #. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.vala:298
+#: ../src/math-buttons.vala:291
 msgid "Pi [Ctrl+P]"
 msgstr "Pī [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.vala:300
+#: ../src/math-buttons.vala:293
 msgid "Euler’s Number"
 msgstr "Eilera skaitlis"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.vala:304
+#: ../src/math-buttons.vala:297
 msgid "Subscript mode [Alt]"
 msgstr "Apakšraksta skaitļa režīms [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.vala:306
+#: ../src/math-buttons.vala:299
 msgid "Superscript mode [Ctrl]"
 msgstr "Augšraksta skaitļa režīms [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.vala:308
+#: ../src/math-buttons.vala:301
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Zinātniskā kāpināšana [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.vala:310
+#: ../src/math-buttons.vala:303
 msgid "Add [+]"
 msgstr "Pieskaitīšana [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.vala:312
+#: ../src/math-buttons.vala:305
 msgid "Subtract [-]"
 msgstr "Atņemšana [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.vala:314
+#: ../src/math-buttons.vala:307
 msgid "Multiply [*]"
 msgstr "Reizināšana [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.vala:316
+#: ../src/math-buttons.vala:309
 msgid "Divide [/]"
 msgstr "Dalīšana [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.vala:318
+#: ../src/math-buttons.vala:311
 msgid "Modulus divide"
 msgstr "Modulārā dalīšana"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.vala:320
+#: ../src/math-buttons.vala:313
 msgid "Additional Functions"
 msgstr "Papildu funkcijas"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.vala:322
+#: ../src/math-buttons.vala:315
 msgid "Exponent [^ or **]"
 msgstr "Kāpinātājs [^ vai **]"
 
-#. Tooltip for the square button
-#: ../src/math-buttons.vala:324
-msgid "Square [Ctrl+2]"
-msgstr "Sakne [Ctrl+2]"
-
 #. Tooltip for the percentage button
-#: ../src/math-buttons.vala:326
+#: ../src/math-buttons.vala:317
 msgid "Percentage [%]"
 msgstr "Procenti [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.vala:328
+#: ../src/math-buttons.vala:319
 msgid "Factorial [!]"
 msgstr "Faktoriāls [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.vala:330
+#: ../src/math-buttons.vala:321
 msgid "Absolute value [|]"
 msgstr "Absolūtā vērtība [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.vala:332
+#: ../src/math-buttons.vala:323
 msgid "Complex argument"
 msgstr "Komplekss arguments"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.vala:334
+#: ../src/math-buttons.vala:325
 msgid "Complex conjugate"
 msgstr "Kompleksi saistīts"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.vala:336
+#: ../src/math-buttons.vala:327
 msgid "Root [Ctrl+R]"
 msgstr "Sakne [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.vala:338
+#: ../src/math-buttons.vala:329
 msgid "Square root [Ctrl+R]"
 msgstr "Kvadrātsakne [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.vala:340
+#: ../src/math-buttons.vala:331
 msgid "Logarithm"
 msgstr "Logaritms"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.vala:342
+#: ../src/math-buttons.vala:333
 msgid "Natural Logarithm"
 msgstr "Naturālais logaritms"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.vala:344
+#: ../src/math-buttons.vala:335
 msgid "Sine"
 msgstr "Sinuss"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.vala:346
+#: ../src/math-buttons.vala:337
 msgid "Cosine"
 msgstr "Kosinuss"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.vala:348
+#: ../src/math-buttons.vala:339
 msgid "Tangent"
 msgstr "Tangenss"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.vala:350
+#: ../src/math-buttons.vala:341
 msgid "Hyperbolic Sine"
 msgstr "Hiperboliskais sinuss"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.vala:352
+#: ../src/math-buttons.vala:343
 msgid "Hyperbolic Cosine"
 msgstr "Hiperboliskais kosinuss"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.vala:354
+#: ../src/math-buttons.vala:345
 msgid "Hyperbolic Tangent"
 msgstr "Hiperboliskais tangenss"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.vala:356
+#: ../src/math-buttons.vala:347
 msgid "Inverse [Ctrl+I]"
 msgstr "Pretējs [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.vala:358
+#: ../src/math-buttons.vala:349
 msgid "Boolean AND"
 msgstr "Loģiskais UN"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.vala:360
+#: ../src/math-buttons.vala:351
 msgid "Boolean OR"
 msgstr "Loģiskais VAI"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.vala:362
+#: ../src/math-buttons.vala:353
 msgid "Boolean Exclusive OR"
 msgstr "Loģiskais izslēdzošais VAI"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.vala:364
+#: ../src/math-buttons.vala:355
 msgid "Boolean NOT"
 msgstr "Loģiskais NE"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
+#: ../src/math-buttons.vala:357
 msgid "Integer Component"
 msgstr "Veselā daļa"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
+#: ../src/math-buttons.vala:359
 msgid "Fractional Component"
 msgstr "Daļveida daļa"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.vala:370
+#: ../src/math-buttons.vala:361
 msgid "Real Component"
 msgstr "Reālā daļa"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.vala:372
+#: ../src/math-buttons.vala:363
 msgid "Imaginary Component"
 msgstr "Imaginārā daļa"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.vala:374
+#: ../src/math-buttons.vala:365
 msgid "Ones' Complement"
 msgstr "Vieninieku papildkods"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.vala:376
+#: ../src/math-buttons.vala:367
 msgid "Two's Complement"
 msgstr "Divnieku papildkods"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.vala:378
+#: ../src/math-buttons.vala:369
 msgid "Truncate"
 msgstr "Apraut"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.vala:380
+#: ../src/math-buttons.vala:371
 msgid "Start Group [(]"
 msgstr "Bloka sākums [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.vala:382
+#: ../src/math-buttons.vala:373
 msgid "End Group [)]"
 msgstr "Bloka beigas [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.vala:388
+#: ../src/math-buttons.vala:379
 msgid "Calculate Result"
 msgstr "Aprēķināt rezultātu"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.vala:390
+#: ../src/math-buttons.vala:381
 msgid "Factorize [Ctrl+F]"
 msgstr "Sadalīt reizinātājos [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.vala:392
+#: ../src/math-buttons.vala:383
 msgid "Clear Display [Escape]"
 msgstr "Nodzēst vērtību [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.vala:394
+#: ../src/math-buttons.vala:385
 msgid "Undo [Ctrl+Z]"
 msgstr "Atsaukt [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.vala:402
+#: ../src/math-buttons.vala:393
 msgid "Double Declining Depreciation"
 msgstr "Paātrinātā amortizācija"
 
 #. Tooltip for the financial term button
-#: ../src/math-buttons.vala:406
+#: ../src/math-buttons.vala:397
 msgid "Financial Term"
 msgstr "Finanšu termiņš"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.vala:408
+#: ../src/math-buttons.vala:399
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Gada ciparu summas nolietojums"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.vala:410
+#: ../src/math-buttons.vala:401
 msgid "Straight Line Depreciation"
 msgstr "Lineārā amortizācija"
 
+#: ../src/math-buttons.vala:430
+msgid "Square [Ctrl+2]"
+msgstr "Sakne [Ctrl+2]"
+
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.vala:523
+#: ../src/math-buttons.vala:520
 msgid "Binary"
 msgstr "Binārs"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.vala:527
+#: ../src/math-buttons.vala:524
 msgid "Octal"
 msgstr "Oktāls"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.vala:531
+#: ../src/math-buttons.vala:528
 msgid "Decimal"
 msgstr "Decimāls"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.vala:535
+#: ../src/math-buttons.vala:532
 msgid "Hexadecimal"
 msgstr "Heksadecimāls"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
+#: ../src/math-buttons.vala:741 ../src/math-buttons.vala:778
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1120,33 +1171,13 @@ msgstr[2] "_%d ciparu"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
+#: ../src/math-buttons.vala:746 ../src/math-buttons.vala:783
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "%d cipars"
 msgstr[1] "%d cipari"
 msgstr[2] "%d ciparu"
-
-#. Tooltip for the round button
-#: ../src/math-buttons.vala:813
-msgid "Round"
-msgstr "Apaļot"
-
-#. Tooltip for the floor button
-#: ../src/math-buttons.vala:815
-msgid "Floor"
-msgstr "Grīda"
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:817
-msgid "Ceiling"
-msgstr "Griesti"
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:819
-msgid "Sign"
-msgstr "Zīme"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
 #: ../src/math-converter.vala:46
@@ -1164,69 +1195,68 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.vala:487
+#: ../src/math-equation.vala:482
 msgid "No undo history"
 msgstr "Nav darbību, ko atsaukt"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.vala:503
+#: ../src/math-equation.vala:499
 msgid "No redo history"
 msgstr "Nav atkārtošanas vēstures"
 
-#: ../src/math-equation.vala:732
+#: ../src/math-equation.vala:729
 msgid "No sane value to store"
 msgstr "Nav saprātīgas vērtības, ko saglabāt"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.vala:888
+#: ../src/math-equation.vala:911
 msgid "Overflow. Try a bigger word size"
 msgstr "Pārpilde. Mēģiniet ar lielāku vārda garumu"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.vala:893
+#: ../src/math-equation.vala:916
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Nezināms mainīgais “%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.vala:900
+#: ../src/math-equation.vala:923
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funkcija “%s” nav definēta"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.vala:907
+#: ../src/math-equation.vala:930
 msgid "Unknown conversion"
 msgstr "Nezināms pārveidojums"
 
-#: ../src/math-equation.vala:915
+#: ../src/math-equation.vala:938
 #, c-format
-#| msgid "Malformed expression"
 msgid "Malformed expression at token '%s'"
 msgstr "Slikti formēta izteiksme pie marķiera “%s”"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.vala:920 ../src/math-equation.vala:925
+#: ../src/math-equation.vala:943 ../src/math-equation.vala:948
 msgid "Malformed expression"
 msgstr "Slikti formēta izteiksme"
 
-#: ../src/math-equation.vala:936
+#: ../src/math-equation.vala:959
 msgid "Calculating"
 msgstr "Rēķina"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.vala:1063
+#: ../src/math-equation.vala:1086
 msgid "Need an integer to factorize"
 msgstr "Vajag veselu skaitli, lai dalītu reizinātājos"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../src/math-equation.vala:1117
+#: ../src/math-equation.vala:1140
 msgid "No sane value to bitwise shift"
 msgstr "Nav saprātīgas vērtības bitu bīdīšanai"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.vala:1131
+#: ../src/math-equation.vala:1154
 msgid "Displayed value not an integer"
 msgstr "Attēlotā vērtība nav vesels skaitlis"
 
@@ -1322,110 +1352,122 @@ msgstr "32 biti"
 msgid "64 bits"
 msgstr "64 biti"
 
+#: ../src/math-window.vala:137
+#| msgid "Quit"
+msgid "_Quit"
+msgstr "_Iziet"
+
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/number.vala:652
 msgid "Argument not defined for zero"
 msgstr "Parametrs nullei nav definēts"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1858
+#: ../src/number.vala:909 ../src/number.vala:1943
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nulles pakāpe nav definēta negatīviem kāpinātājiem"
 
-#. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/number.vala:992 ../src/number.vala:1025
-msgid "Logarithm of zero is undefined"
-msgstr "Logaritms no nulles ir nedefinēts"
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: ../src/number.vala:917
+#| msgid "Reciprocal of zero is undefined"
+msgid "Zero raised to zero is undefined"
+msgstr "Nulle celta nulles pakāpē nav definēta"
 
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1043
-msgid "Factorial is only defined for natural numbers"
-msgstr "Faktoriāls ir definēts tikai naturāliem skaitļiem"
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../src/number.vala:1003 ../src/number.vala:1036
+msgid "Logarithm of zero is undefined"
+msgstr "Logaritms no nulles nav definēts"
+
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#: ../src/number.vala:1058
+#| msgid "Factorial is only defined for natural numbers"
+msgid "Factorial is only defined for non-negative real numbers"
+msgstr "Faktoriāls ir definēts tikai nenegatīviem reāliem skaitļiem"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1119 ../src/number.vala:2608
+#: ../src/number.vala:1142 ../src/number.vala:2644
 msgid "Division by zero is undefined"
-msgstr "Dalīšana ar nulli ir nedefinēta"
+msgstr "Dalīšana ar nulli nav definēta"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1159
+#: ../src/number.vala:1182
 msgid "Modulus division is only defined for integers"
 msgstr "Moduļu dalīšana ir definēta tikai veseliem skaitļiem"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1227
+#: ../src/number.vala:1274
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
-"Tangens ir nedefinēts leņķiem, kuri ir π∕2 (90°) vai tā summa ar π (180°) "
+"Tangens nav definēts leņķiem, kuri ir π∕2 (90°) vai tā summa ar π (180°) "
 "reizinājumu – π∕2 + kπ, kur k ir vesels skaitlis."
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1265
+#: ../src/number.vala:1312
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Apgrieztais sinus nav definēts ārpus intervāla [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1280
+#: ../src/number.vala:1327
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Apgrieztais kosinus nav definēts ārpus intervāla [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1477
+#: ../src/number.vala:1524
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
-"Apgrieztais hiperboliskais kosinus ir nedefinēts vērtībām mazākām par viens"
+"Apgrieztais hiperboliskais kosinus nav definēts vērtībām mazākām par viens"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1496
+#: ../src/number.vala:1543
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Apgrieztais hiperboliskais tangens nav definēts ārpus intervāla [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1515
+#: ../src/number.vala:1562
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Bula UN ir definēts tikai pozitīviem veseliem skaitļiem"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1527
+#: ../src/number.vala:1574
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Bula VAI ir definēts tikai pozitīviem veseliem skaitļiem"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1539
+#: ../src/number.vala:1586
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Bula izslēdzošais VAI ir definēts tikai pozitīviem veseliem skaitļiem"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1551
+#: ../src/number.vala:1598
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Bula NE ir definēts tikai pozitīviem veseliem skaitļiem"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1574
+#: ../src/number.vala:1621
 msgid "Shift is only possible on integer values"
 msgstr "Bīdīšana ir iespējama tikai ar veseliem skaitļiem"
 
-#: ../src/number.vala:1878
+#: ../src/number.vala:1963
 msgid "Root must be non-zero"
 msgstr "Sakne nevar būt nulle"
 
-#: ../src/number.vala:1895
+#: ../src/number.vala:1980
 msgid "Negative root of zero is undefined"
-msgstr "Negatīva nulles sakne ir nedefinēta"
+msgstr "Negatīva nulles sakne nav definēta"
 
-#: ../src/number.vala:1902
+#: ../src/number.vala:1987
 msgid "nth root of negative number is undefined for even n"
-msgstr "n-tā sakne no negatīva skaitļa ir nedefinēta nepāra n"
+msgstr "n-tā sakne no negatīva skaitļa nav definēta nepāra n"
 
-#: ../src/number.vala:2225
+#: ../src/number.vala:2261
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Pārpilde — nevarēja izrēķināt rezultātu "
 
-#: ../src/number.vala:2553
+#: ../src/number.vala:2589
 msgid "Reciprocal of zero is undefined"
-msgstr "Nulles apgrieztais skaitlis ir nedefinēts"
+msgstr "Nulles apgrieztais skaitlis nav definēts"
 
 #: ../src/unit.vala:29
 msgid "Angle"
@@ -1455,181 +1497,702 @@ msgstr "Ilgums"
 msgid "Temperature"
 msgstr "Temperatūra"
 
+#: ../src/unit.vala:38
+#, c-format
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s grādi"
+
+#: ../src/unit.vala:38
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "grāds,grādi,deg"
+
+#: ../src/unit.vala:39
+#, c-format
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s radiāni"
+
+#: ../src/unit.vala:39
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "radiāns,radiāni,rad"
+
+#: ../src/unit.vala:40
+#, c-format
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s gradiāni"
+
+#: ../src/unit.vala:40
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "gradiāns,gradiāni,grad"
+
 #: ../src/unit.vala:41
 msgid "Parsecs"
 msgstr "Parseki"
+
+#: ../src/unit.vala:41
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
+
+#: ../src/unit.vala:41
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "parseks,parseki,pc"
 
 #: ../src/unit.vala:42
 msgid "Light Years"
 msgstr "Gaismas gadi"
 
+#: ../src/unit.vala:42
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s ly"
+
+#: ../src/unit.vala:42
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "gaismas gads,gaismas gadi,ly"
+
 #: ../src/unit.vala:43
 msgid "Astronomical Units"
 msgstr "Astronomiskās mērvienības"
+
+#: ../src/unit.vala:43
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s au"
+
+#: ../src/unit.vala:43
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "au"
 
 #: ../src/unit.vala:44
 msgid "Nautical Miles"
 msgstr "Jūras jūdzes"
 
+#: ../src/unit.vala:44
+#, c-format
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr "%s nmi"
+
+#: ../src/unit.vala:44
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "nmi"
+
 #: ../src/unit.vala:45
 msgid "Miles"
 msgstr "Jūdzes"
+
+#: ../src/unit.vala:45
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s mi"
+
+#: ../src/unit.vala:45
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "jūdze,jūdzes,mi"
 
 #: ../src/unit.vala:46
 msgid "Kilometers"
 msgstr "Kilometrs"
 
+#: ../src/unit.vala:46
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
+
+#: ../src/unit.vala:46
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "Kilometrs,kilometri,km,kms"
+
 #: ../src/unit.vala:47
 msgid "Cables"
 msgstr "Kabeļtauva"
+
+#: ../src/unit.vala:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cb"
+
+#: ../src/unit.vala:47
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "kabeļtauva,kabeļtauvas,cb"
 
 #: ../src/unit.vala:48
 msgid "Fathoms"
 msgstr "Jūras asis"
 
+#: ../src/unit.vala:48
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s ftm"
+
+#: ../src/unit.vala:48
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "jūras ass,jūras asis, ftm"
+
 #: ../src/unit.vala:49
 msgid "Meters"
 msgstr "Metri"
+
+#: ../src/unit.vala:49
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
+
+#: ../src/unit.vala:49
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "metrs,metri,m"
 
 #: ../src/unit.vala:50
 msgid "Yards"
 msgstr "Jardi"
 
+#: ../src/unit.vala:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
+
+#: ../src/unit.vala:50
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "jards,jardi,yd"
+
 #: ../src/unit.vala:51
 msgid "Feet"
 msgstr "Pēdas"
+
+#: ../src/unit.vala:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ft"
+
+#: ../src/unit.vala:51
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "pēda,pēdas,ft"
 
 #: ../src/unit.vala:52
 msgid "Inches"
 msgstr "Collas"
 
+#: ../src/unit.vala:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s in"
+
+#: ../src/unit.vala:52
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "colla,collas,in"
+
 #: ../src/unit.vala:53
 msgid "Centimeters"
 msgstr "Centimetri"
+
+#: ../src/unit.vala:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
+
+#: ../src/unit.vala:53
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "centimetrs,centimetri,cm,cms"
 
 #: ../src/unit.vala:54
 msgid "Millimeters"
 msgstr "Milimetri"
 
+#: ../src/unit.vala:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
+
+#: ../src/unit.vala:54
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "milimetrs,milimetri,mm"
+
 #: ../src/unit.vala:55
 msgid "Micrometers"
 msgstr "Mikrometri"
+
+#: ../src/unit.vala:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
+
+#: ../src/unit.vala:55
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "mikrometrs,mikrometri,um"
 
 #: ../src/unit.vala:56
 msgid "Nanometers"
 msgstr "Nanometri"
 
+#: ../src/unit.vala:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
+
+#: ../src/unit.vala:56
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "nanometrs,nanometri,nm"
+
 #: ../src/unit.vala:57
 msgid "Hectares"
 msgstr "Hektāri"
+
+#: ../src/unit.vala:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../src/unit.vala:57
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "hektārs,hektāri,ha"
 
 #: ../src/unit.vala:58
 msgid "Acres"
 msgstr "Akrs"
 
+#: ../src/unit.vala:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s akri"
+
+#: ../src/unit.vala:58
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "akrs,akri"
+
 #: ../src/unit.vala:59
 msgid "Square Meters"
 msgstr "Kvadrātmetri"
+
+#: ../src/unit.vala:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../src/unit.vala:59
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
 
 #: ../src/unit.vala:60
 msgid "Square Centimeters"
 msgstr "Kvadrātcentimetri"
 
+#: ../src/unit.vala:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../src/unit.vala:60
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
 #: ../src/unit.vala:61
 msgid "Square Millimeters"
 msgstr "Kvadrātmilimetri"
+
+#: ../src/unit.vala:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../src/unit.vala:61
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
 
 #: ../src/unit.vala:62
 msgid "Cubic Meters"
 msgstr "Kubikmetri"
 
+#: ../src/unit.vala:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../src/unit.vala:62
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
 #: ../src/unit.vala:63
 msgid "Gallons"
 msgstr "Galoni"
 
+#: ../src/unit.vala:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../src/unit.vala:63
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "galons,galoni,gal"
+
 #: ../src/unit.vala:64
-msgid "Litres"
+#| msgid "Meters"
+msgid "Liters"
 msgstr "Litri"
+
+#: ../src/unit.vala:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s L"
+
+#: ../src/unit.vala:64
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "litrs,litri,L"
 
 #: ../src/unit.vala:65
 msgid "Quarts"
 msgstr "Kvarta"
 
+#: ../src/unit.vala:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s qt"
+
+#: ../src/unit.vala:65
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "kvarta,kvarti,qt"
+
 #: ../src/unit.vala:66
 msgid "Pints"
 msgstr "Pintes"
 
+#: ../src/unit.vala:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
+
+#: ../src/unit.vala:66
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "pints,pintes,pt"
+
 #: ../src/unit.vala:67
-msgid "Millilitres"
+#| msgid "Millilitres"
+msgid "Milliliters"
 msgstr "Mililitri"
 
+#: ../src/unit.vala:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s mL"
+
+#: ../src/unit.vala:67
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "mililitrs,mililitri,mL,cm³"
+
 #: ../src/unit.vala:68
-msgid "Microlitres"
+#| msgid "Microlitres"
+msgid "Microliters"
 msgstr "Mikrolitri"
+
+#: ../src/unit.vala:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μL"
+
+#: ../src/unit.vala:68
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μL,uL"
 
 #: ../src/unit.vala:69
 msgid "Tonnes"
 msgstr "Tonnas"
 
+#: ../src/unit.vala:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s T"
+
+#: ../src/unit.vala:69
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "tonna,tonnas"
+
 #: ../src/unit.vala:70
 msgid "Kilograms"
 msgstr "Kilograms"
+
+#: ../src/unit.vala:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
+
+#: ../src/unit.vala:70
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "kilograms,kilogrami,kg,kgs"
 
 #: ../src/unit.vala:71
 msgid "Pounds"
 msgstr "Mārciņas"
 
+#: ../src/unit.vala:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../src/unit.vala:71
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "mārciņa,mārciņās,lb"
+
 #: ../src/unit.vala:72
 msgid "Ounces"
 msgstr "Unces"
+
+#: ../src/unit.vala:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz"
+
+#: ../src/unit.vala:72
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "unce,unces,oz"
 
 #: ../src/unit.vala:73
 msgid "Grams"
 msgstr "Grami"
 
+#: ../src/unit.vala:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../src/unit.vala:73
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "grams,grami,g"
+
 #: ../src/unit.vala:74
 msgid "Years"
 msgstr "Gadi"
+
+#: ../src/unit.vala:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s gadi"
+
+#: ../src/unit.vala:74
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "gads,gadi"
 
 #: ../src/unit.vala:75
 msgid "Days"
 msgstr "Dienas"
 
+#: ../src/unit.vala:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s dienas"
+
+#: ../src/unit.vala:75
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "diena,dienas"
+
 #: ../src/unit.vala:76
 msgid "Hours"
 msgstr "Stundas"
+
+#: ../src/unit.vala:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s stundas"
+
+#: ../src/unit.vala:76
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "stunda,stundas"
 
 #: ../src/unit.vala:77
 msgid "Minutes"
 msgstr "Minūtes"
 
+#: ../src/unit.vala:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s minūtes"
+
+#: ../src/unit.vala:77
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "minūte,minūtes"
+
 #: ../src/unit.vala:78
 msgid "Seconds"
 msgstr "Sekundes"
+
+#: ../src/unit.vala:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../src/unit.vala:78
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "sekunde,sekundes,s"
 
 #: ../src/unit.vala:79
 msgid "Milliseconds"
 msgstr "Milisekundes"
 
+#: ../src/unit.vala:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../src/unit.vala:79
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "milisekunde,milisekundes,ms"
+
 #: ../src/unit.vala:80
 msgid "Microseconds"
 msgstr "Mikrosekundes"
+
+#: ../src/unit.vala:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../src/unit.vala:80
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "mikrosekunde,mikrosekundes,us,μs"
 
 #: ../src/unit.vala:81
 msgid "Celsius"
 msgstr "Celsiji"
 
+#: ../src/unit.vala:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr "%s ˚C"
+
+#: ../src/unit.vala:81
+msgctxt "unit-symbols"
+msgid "degC,˚C"
+msgstr "degC,˚C"
+
 #: ../src/unit.vala:82
-msgid "Farenheit"
+#| msgid "Farenheit"
+msgid "Fahrenheit"
 msgstr "Fārenheits"
+
+#: ../src/unit.vala:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr "%s ˚F"
+
+#: ../src/unit.vala:82
+msgctxt "unit-symbols"
+msgid "degF,˚F"
+msgstr "degF,˚F"
 
 #: ../src/unit.vala:83
 msgid "Kelvin"
 msgstr "Kelvini"
 
+#: ../src/unit.vala:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr "%s K"
+
+#: ../src/unit.vala:83
+msgctxt "unit-symbols"
+msgid "K"
+msgstr "K"
+
 #: ../src/unit.vala:84
 msgid "Rankine"
 msgstr "Rankine"
+
+#: ../src/unit.vala:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr "%s ˚R"
+
+#: ../src/unit.vala:84
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra"
+msgstr "degR,˚R,˚Ra"
 
 #: ../src/unit.vala:86
 msgid "Currency"
@@ -1640,6 +2203,27 @@ msgstr "Valūta"
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
+
+#~ msgid "Financial"
+#~ msgstr "Finanšu"
+
+#~ msgid "Mode"
+#~ msgstr "Režīms"
+
+#~ msgid "Round"
+#~ msgstr "Apaļot"
+
+#~ msgid "Floor"
+#~ msgstr "Grīda"
+
+#~ msgid "Ceiling"
+#~ msgstr "Griesti"
+
+#~ msgid "Sign"
+#~ msgstr "Zīme"
+
+#~ msgid "Litres"
+#~ msgstr "Litri"
 
 #~ msgid "8-bit"
 #~ msgstr "8 biti"
@@ -1743,382 +2327,6 @@ msgstr "%s%%s"
 
 #~ msgid "© 1986–2010 The Gcalctool authors"
 #~ msgstr "© 1986-2010 Gcalctool autori"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s degrees"
-#~ msgstr "%s grādi"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degree,degrees,deg"
-#~ msgstr "grāds,grādi,deg"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s radians"
-#~ msgstr "%s radiāni"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "radian,radians,rad"
-#~ msgstr "radiāns,radiāni,rad"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s gradians"
-#~ msgstr "%s gradiāni"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gradian,gradians,grad"
-#~ msgstr "gradiāns,gradiāni,grad"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s pc"
-#~ msgstr "%s pc"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "parsec,parsecs,pc"
-#~ msgstr "parseks,parseki,pc"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ly"
-#~ msgstr "%s ly"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "lightyear,lightyears,ly"
-#~ msgstr "gaismas gads,gaismas gadi,ly"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s au"
-#~ msgstr "%s au"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "au"
-#~ msgstr "au"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s nmi"
-#~ msgstr "%s nmi"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "nmi"
-#~ msgstr "nmi"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mi"
-#~ msgstr "%s mi"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mile,miles,mi"
-#~ msgstr "jūdze,jūdzes,mi"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s km"
-#~ msgstr "%s km"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "kilometer,kilometers,km,kms"
-#~ msgstr "Kilometrs,kilometri,km,kms"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cb"
-#~ msgstr "%s cb"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "cable,cables,cb"
-#~ msgstr "kabeļtauva,kabeļtauvas,cb"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ftm"
-#~ msgstr "%s ftm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "fathom,fathoms,ftm"
-#~ msgstr "jūras ass,jūras asis, ftm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m"
-#~ msgstr "%s m"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "meter,meters,m"
-#~ msgstr "metrs,metri,m"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s yd"
-#~ msgstr "%s yd"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "yard,yards,yd"
-#~ msgstr "jards,jardi,yd"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ft"
-#~ msgstr "%s ft"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "foot,feet,ft"
-#~ msgstr "pēda,pēdas,ft"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s in"
-#~ msgstr "%s in"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "inch,inches,in"
-#~ msgstr "colla,collas,in"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cm"
-#~ msgstr "%s cm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "centimeter,centimeters,cm,cms"
-#~ msgstr "centimetrs,centimetri,cm,cms"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mm"
-#~ msgstr "%s mm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millimeter,millimeters,mm"
-#~ msgstr "milimetrs,milimetri,mm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μm"
-#~ msgstr "%s μm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "micrometer,micrometers,um"
-#~ msgstr "mikrometrs,mikrometri,um"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s nm"
-#~ msgstr "%s nm"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "nanometer,nanometers,nm"
-#~ msgstr "nanometrs,nanometri,nm"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ha"
-#~ msgstr "%s ha"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "hectare,hectares,ha"
-#~ msgstr "hektārs,hektāri,ha"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s acres"
-#~ msgstr "%s akri"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "acre,acres"
-#~ msgstr "akrs,akri"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m²"
-#~ msgstr "%s m²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "m²"
-#~ msgstr "m²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s cm²"
-#~ msgstr "%s cm²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "cm²"
-#~ msgstr "cm²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mm²"
-#~ msgstr "%s mm²"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mm²"
-#~ msgstr "mm²"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s m³"
-#~ msgstr "%s m³"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "m³"
-#~ msgstr "m³"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s gal"
-#~ msgstr "%s gal"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gallon,gallons,gal"
-#~ msgstr "galons,galoni,gal"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s L"
-#~ msgstr "%s L"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "litre,litres,liter,liters,L"
-#~ msgstr "litrs,litri,L"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s qt"
-#~ msgstr "%s qt"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "quart,quarts,qt"
-#~ msgstr "kvarta,kvarti,qt"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s pt"
-#~ msgstr "%s pt"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "pint,pints,pt"
-#~ msgstr "pints,pintes,pt"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s mL"
-#~ msgstr "%s mL"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
-#~ msgstr "mililitrs,mililitri,mL,cm³"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μL"
-#~ msgstr "%s μL"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "mm³,μL,uL"
-#~ msgstr "mm³,μL,uL"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s T"
-#~ msgstr "%s T"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "tonne,tonnes"
-#~ msgstr "tonna,tonnas"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s kg"
-#~ msgstr "%s kg"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
-#~ msgstr "kilograms,kilogrami,kg,kgs"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s lb"
-#~ msgstr "%s lb"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "pound,pounds,lb"
-#~ msgstr "mārciņa,mārciņās,lb"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s oz"
-#~ msgstr "%s oz"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "ounce,ounces,oz"
-#~ msgstr "unce,unces,oz"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s g"
-#~ msgstr "%s g"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "gram,grams,gramme,grammes,g"
-#~ msgstr "grams,grami,g"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s years"
-#~ msgstr "%s gadi"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "year,years"
-#~ msgstr "gads,gadi"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s days"
-#~ msgstr "%s dienas"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "day,days"
-#~ msgstr "diena,dienas"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s hours"
-#~ msgstr "%s stundas"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "hour,hours"
-#~ msgstr "stunda,stundas"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s minutes"
-#~ msgstr "%s minūtes"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "minute,minutes"
-#~ msgstr "minūte,minūtes"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s s"
-#~ msgstr "%s s"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "second,seconds,s"
-#~ msgstr "sekunde,sekundes,s"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ms"
-#~ msgstr "%s ms"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "millisecond,milliseconds,ms"
-#~ msgstr "milisekunde,milisekundes,ms"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s μs"
-#~ msgstr "%s μs"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "microsecond,microseconds,us,μs"
-#~ msgstr "mikrosekunde,mikrosekundes,us,μs"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚C"
-#~ msgstr "%s ˚C"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "degC,˚C"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚F"
-#~ msgstr "%s ˚F"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "degF,˚F"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s K"
-#~ msgstr "%s K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "K"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚R"
-#~ msgstr "%s ˚R"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "degR,˚R,˚Ra"
 
 #~ msgid "<i>x</i>"
 #~ msgstr "<i>x</i>"
