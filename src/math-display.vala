@@ -54,8 +54,7 @@ public class MathDisplay : Gtk.Viewport
 
         var info_view = new Gtk.TextView ();
         info_view.set_wrap_mode (Gtk.WrapMode.WORD);
-        info_view.set_can_focus (true); // FIXME: This should be false but it locks the cursor inside the main view for some reason
-        info_view.set_cursor_visible (false); // FIXME: Just here so when incorrectly gets focus doesn't look editable
+        info_view.set_can_focus (false);
         info_view.set_editable (false);
         info_view.set_justification (Gtk.Justification.RIGHT);
         /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
