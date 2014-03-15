@@ -5,15 +5,13 @@
 # Yury Syrota <yuriy@beer.com>
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2010
 # wanderlust <wanderlust@ukr.net>, 2009.
-# Korostil Daniel <ted.korostiled@gmail.com>, 2011, 2012.
 # Daniel Korostil <ted.korostiled@gmail.com>, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
-"bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2014-02-10 07:12+0000\n"
-"PO-Revision-Date: 2014-02-11 00:34+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-03-15 21:24+0200\n"
+"PO-Revision-Date: 2014-03-15 21:26+0300\n"
 "Last-Translator: Daniel Korostil <ted.korostiled@gmail.com>\n"
 "Language-Team: linux.org.ua\n"
 "Language: uk\n"
@@ -413,6 +411,69 @@ msgstr "_Символ:"
 msgid "_Insert"
 msgstr "_Вставити"
 
+#. Program name in the about dialog
+#. Title of main window
+#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:182
+#: ../src/math-window.vala:40
+msgid "Calculator"
+msgstr "Калькулятор"
+
+#: ../data/gnome-calculator.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Виконання арифметичних, наукових або фінансових розрахунків"
+
+#: ../data/gnome-calculator.desktop.in.h:3
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr "калькулятор;арифметика;науковий;фінансовий;"
+
+#: ../data/gnome-calculator.appdata.xml.in.h:1
+msgid "GNOME Calculator"
+msgstr "Калькулятор GNOME"
+
+#: ../data/gnome-calculator.appdata.xml.in.h:2
+msgid ""
+"GNOME Calculator is an application that solves mathematical equations. "
+"Though it at first appears to be a simple calculator with only basic "
+"arithmetic operations, you can switch into Advanced, Financial, or "
+"Programming mode to find a surprising set of capabilities."
+msgstr ""
+"Калькулятор GNOME — програма, яка розв'язує математичні рівняння. Хоча на "
+"перший погляд це простий калькулятор тільки з базовими арифметичними "
+"операціями, ви можете перейти у розширений, фінансовий або програмувальний "
+"режим, щоб побачити зворушливий набір можливостей."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:3
+msgid ""
+"The Advanced calculator supports many operations, including: logarithms, "
+"factorials, trigonometric and hyperbolic functions, modulus division, "
+"complex numbers, random number generation, prime factorization and unit "
+"conversions."
+msgstr ""
+"Розширений калькулятор підтримує багато операцій, зокрема: логарифмічні, "
+"факторіальні, тригонометричні й  гіперболічні функції, ділення модулів, "
+"комплексні числа, породження випадкових чисел, розкладання на прості "
+"множники, перетворення одиниць."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:4
+msgid ""
+"Financial mode supports several computations, including periodic interest "
+"rate, present and future value, double declining and straight line "
+"depreciation, and many others."
+msgstr ""
+"Фінансовий режим підтримує кілька обрахувань, зокрема процентна ставка за "
+"період, теперішня і майбутня вартість, методи подвійного скорочення та "
+"пропорційного списання амортизації, тощо."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:5
+msgid ""
+"Programming mode supports conversion between common bases (binary, octal, "
+"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"character to character code conversion, and more."
+msgstr ""
+"Програмувальний режим підтримує перетворення між загальними базами (бінарна, "
+"вісімкова, десяткова, шістнадцяткова), булова алгебра, зворотний і "
+"доповняльний код, перетворення символів у код символу, тощо."
+
 #. Title of preferences dialog
 #: ../data/menu.ui.h:1 ../src/math-preferences.vala:26
 msgid "Preferences"
@@ -431,88 +492,20 @@ msgid "Quit"
 msgstr "Вийти"
 
 #: ../data/menu.ui.h:5 ../src/math-window.vala:109
-#| msgid "Basic"
 msgid "Basic Mode"
 msgstr "Простий режим"
 
 #: ../data/menu.ui.h:6 ../src/math-window.vala:114
-#| msgid "Advanced"
 msgid "Advanced Mode"
 msgstr "Розширений режим"
 
 #: ../data/menu.ui.h:7 ../src/math-window.vala:119
-#| msgid "Financial Term"
 msgid "Financial Mode"
 msgstr "Фінансовий режим"
 
 #: ../data/menu.ui.h:8 ../src/math-window.vala:124
-#| msgid "Programming"
 msgid "Programming Mode"
 msgstr "Програмувальний режим"
-
-#. Program name in the about dialog
-#. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:182
-#: ../src/math-window.vala:40
-msgid "Calculator"
-msgstr "Калькулятор"
-
-#: ../data/gcalctool.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Виконання арифметичних, наукових або фінансових розрахунків"
-
-#: ../data/gcalctool.desktop.in.h:3
-msgid "calculation;arithmetic;scientific;financial;"
-msgstr "калькулятор;арифметика;науковий;фінансовий;"
-
-#: ../data/gcalctool.appdata.xml.in.h:1
-#| msgid "Calculator"
-msgid "GNOME Calculator"
-msgstr "Калькулятор GNOME"
-
-#: ../data/gcalctool.appdata.xml.in.h:2
-msgid ""
-"GNOME Calculator is an application that solves mathematical equations. "
-"Though it at first appears to be a simple calculator with only basic "
-"arithmetic operations, you can switch into Advanced, Financial, or "
-"Programming mode to find a surprising set of capabilities."
-msgstr ""
-"Калькулятор GNOME — програма, яка розв'язує математичні рівняння. Хоча на "
-"перший погляд це простий калькулятор тільки з базовими арифметичними "
-"операціями, ви можете перейти у розширений, фінансовий або програмувальний "
-"режим, щоб побачити зворушливий набір можливостей."
-
-#: ../data/gcalctool.appdata.xml.in.h:3
-msgid ""
-"The Advanced calculator supports many operations, including: logarithms, "
-"factorials, trigonometric and hyperbolic functions, modulus division, "
-"complex numbers, random number generation, prime factorization and unit "
-"conversions."
-msgstr ""
-"Розширений калькулятор підтримує багато операцій, зокрема: логарифмічні, "
-"факторіальні, тригонометричні й  гіперболічні функції, ділення модулів, "
-"комплексні числа, породження випадкових чисел, розкладання на прості "
-"множники, перетворення одиниць."
-
-#: ../data/gcalctool.appdata.xml.in.h:4
-msgid ""
-"Financial mode supports several computations, including periodic interest "
-"rate, present and future value, double declining and straight line "
-"depreciation, and many others."
-msgstr ""
-"Фінансовий режим підтримує кілька обрахувань, зокрема процентна ставка за "
-"період, теперішня і майбутня вартість, методи подвійного скорочення та "
-"пропорційного списання амортизації, тощо."
-
-#: ../data/gcalctool.appdata.xml.in.h:5
-msgid ""
-"Programming mode supports conversion between common bases (binary, octal, "
-"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
-"character to character code conversion, and more."
-msgstr ""
-"Програмувальний режим підтримує перетворення між загальними базами (бінарна, "
-"вісімкова, десяткова, шістнадцяткова), булова алгебра, зворотний і "
-"доповняльний код, перетворення символів у код символу, тощо."
 
 #: ../data/org.gnome.calculator.gschema.xml.h:1
 msgid "Accuracy value"
@@ -878,15 +871,15 @@ msgstr "Про програму"
 msgid "Calculator with financial and scientific modes."
 msgstr "Калькулятор з фінансовими і науковими функціями."
 
-#: ../src/gnome-calculator.vala:226
+#: ../src/gnome-calculator.vala:223
 msgid "Solve given equation"
 msgstr "Розв'язати задане рівняння"
 
-#: ../src/gnome-calculator.vala:234
+#: ../src/gnome-calculator.vala:231
 msgid "Start with given equation"
 msgstr "Почати із заданого рівняння"
 
-#: ../src/gnome-calculator.vala:243
+#: ../src/gnome-calculator.vala:240
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
@@ -1354,7 +1347,6 @@ msgid "64 bits"
 msgstr "64 біти"
 
 #: ../src/math-window.vala:137
-#| msgid "Quit"
 msgid "_Quit"
 msgstr "Ви_йти"
 
@@ -1364,102 +1356,106 @@ msgid "Argument not defined for zero"
 msgstr "Аргумент не визначено за нуль"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1935
+#: ../src/number.vala:909 ../src/number.vala:1943
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Степінь від нуля не визначена для від'ємних експонент"
 
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: ../src/number.vala:917
+msgid "Zero raised to zero is undefined"
+msgstr "Нуль підносити до нуля не можна"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/number.vala:995 ../src/number.vala:1028
+#: ../src/number.vala:1003 ../src/number.vala:1036
 msgid "Logarithm of zero is undefined"
 msgstr "Логарифм від нуля неприпустимий"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: ../src/number.vala:1050
-#| msgid "Factorial is only defined for natural numbers"
+#: ../src/number.vala:1058
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Факторіал припустимий лише для ненегативниз дійсних чисел"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1134 ../src/number.vala:2685
+#: ../src/number.vala:1142 ../src/number.vala:2644
 msgid "Division by zero is undefined"
 msgstr "Ділення на нуль неприпустиме"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1174
+#: ../src/number.vala:1182
 msgid "Modulus division is only defined for integers"
 msgstr "Ділення за модулем визначено лише для цілих"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1266
+#: ../src/number.vala:1274
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "Тангенс невизначений для кутів з періодом π(180°) від π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1304
+#: ../src/number.vala:1312
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Зворотний синус невизначено для значень поза діапазоном [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1319
+#: ../src/number.vala:1327
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Зворотний косинус невизначено для значень поза діапазоном [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1516
+#: ../src/number.vala:1524
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Зворотний гіперболічний косинус невизначено для значень менших за одиницю"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1535
+#: ../src/number.vala:1543
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Зворотний гіперболічний тангенс невизначено для значень поза діапазоном [-1, "
 "1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1554
+#: ../src/number.vala:1562
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Двійкове ТА визначено лише для натуральних чисел"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1566
+#: ../src/number.vala:1574
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Двійкове АБО визначено лише для натуральних чисел"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1578
+#: ../src/number.vala:1586
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Двійкове ВИКЛЮЧНЕ-АБО визначено лише для натуральних чисел"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1590
+#: ../src/number.vala:1598
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Двійкове НІ визначено лише для натуральних чисел"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1613
+#: ../src/number.vala:1621
 msgid "Shift is only possible on integer values"
 msgstr "Зсув можливий лише для цілих чисел"
 
-#: ../src/number.vala:1955
+#: ../src/number.vala:1963
 msgid "Root must be non-zero"
 msgstr "Корінь від нуля неприпустимий"
 
-#: ../src/number.vala:1972
+#: ../src/number.vala:1980
 msgid "Negative root of zero is undefined"
 msgstr "Корінь від від'ємного числа неприпустимий"
 
-#: ../src/number.vala:1979
+#: ../src/number.vala:1987
 msgid "nth root of negative number is undefined for even n"
 msgstr "корінь n-го степеня від від'ємного числа не визначено для парних n"
 
-#: ../src/number.vala:2302
+#: ../src/number.vala:2261
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Переповнення: результат неможливо розрахувати"
 
-#: ../src/number.vala:2630
+#: ../src/number.vala:2589
 msgid "Reciprocal of zero is undefined"
 msgstr "Зворотна величина від нуля неприпустима"
 
@@ -1870,7 +1866,6 @@ msgid "gallon,gallons,gal"
 msgstr "галон,галони,гал"
 
 #: ../src/unit.vala:64
-#| msgid "Meters"
 msgid "Liters"
 msgstr "Літри"
 
@@ -1916,7 +1911,6 @@ msgid "pint,pints,pt"
 msgstr "пінт,пінти,пт"
 
 #: ../src/unit.vala:67
-#| msgid "Millilitres"
 msgid "Milliliters"
 msgstr "Мілілітри"
 
@@ -1932,7 +1926,6 @@ msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "мілілітр,мілілітер,мілілтри,мл,см³"
 
 #: ../src/unit.vala:68
-#| msgid "Microlitres"
 msgid "Microliters"
 msgstr "Мікролітри"
 
@@ -2143,7 +2136,6 @@ msgid "degC,˚C"
 msgstr "цельсій,˚C"
 
 #: ../src/unit.vala:82
-#| msgid "Farenheit"
 msgid "Fahrenheit"
 msgstr "Фаренгейт"
 
