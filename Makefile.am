@@ -13,4 +13,8 @@ EXTRA_DIST = \
 	autogen.sh \
 	gnome-calculator.doap
 
+@BEHAVE_INSTALLED_TESTS_RULE@
+INSTALLED_TESTS=basic_mode advanced_mode financial_mode programming_mode
+INSTALLED_TESTS_TYPE=session-exclusive
+
 -include $(top_srcdir)/git.mk

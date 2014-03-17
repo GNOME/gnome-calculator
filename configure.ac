@@ -1,6 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT(gnome-calculator, 3.12.0)
+AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE
@@ -49,6 +50,11 @@ dnl Documentation
 dnl ###########################################################################
 
 YELP_HELP_INIT
+
+dnl ###########################################################################
+dnl Installed tests
+dnl ###########################################################################
+BEHAVE_INSTALLED_TESTS
 
 dnl ###########################################################################
 dnl Files to generate
