@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 3.11.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-03-05 06:48+0100\n"
-"PO-Revision-Date: 2014-03-05 06:49+0100\n"
+"POT-Creation-Date: 2014-03-18 22:31+0100\n"
+"PO-Revision-Date: 2014-03-18 22:47+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: \n"
@@ -111,7 +111,7 @@ msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
 "compounding period."
-msgstr ""
+msgstr "Beregner antall renteberegningsperioder som kreves for å øke en investering av gjeldende verdi til en fremtidig verdi, med en fast styringsrente per renteberegningsperiode."
 
 #. Periodic Interest Rate Dialog: Label before future value input
 #: ../data/buttons-financial.ui.h:12
@@ -128,7 +128,7 @@ msgstr "Dobbelt degressiv avskrivning"
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
-msgstr ""
+msgstr "Beregner avskrivningsbeløpet på et anleggsmiddel for en bestemt tidsperiode, med dobbelt avskrivningsbeløp (halvert levetid)."
 
 #. Gross Profit Margin Dialog: Label before cost input
 #: ../data/buttons-financial.ui.h:18
@@ -157,7 +157,7 @@ msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
 "the term."
-msgstr ""
+msgstr "Beregner fremtidig verdi av en investering, basert på en rekke med like nedbetalinger og en gitt rentesats per betalingstermin."
 
 #. Payment Period Dialog: Label before periodic payment input
 #: ../data/buttons-financial.ui.h:28
@@ -267,7 +267,7 @@ msgid ""
 "straight-line method of depreciation divides the depreciable cost evenly "
 "over the useful life of an asset. The useful life is the number of periods, "
 "typically years, over which an asset is depreciated. "
-msgstr ""
+msgstr "Beregner lineær avskrivning for et anleggsmiddel over én periode. Linær avskrivning deler opp kostnadsføringen månedsvis i henhold til anleggsmiddelets forventede levetid, som typisk oppgis i antall år."
 
 #. Title of Sum-of-the-Years'-Digits Depreciation dialog
 #: ../data/buttons-financial.ui.h:62
@@ -282,7 +282,7 @@ msgid ""
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
-msgstr ""
+msgstr "Beregner avskrivningsbeløpet på et anleggsmiddel over en gitt tidsperiode, med degressiv avskrivningsmetode. Denne metoden avskriver større andeler i tidligere perioder enn i senere perioder. Levetiden er lik antall perioder, som typisk oppgis i antall år. "
 
 #. Title of Payment Period dialog
 #: ../data/buttons-financial.ui.h:66
@@ -300,7 +300,7 @@ msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
 "rate."
-msgstr ""
+msgstr "Beregner hvor mange betalingsperioder som er nødvendig for å betale ned et annuitetslån, med dagens rente."
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
 #: ../data/buttons-financial.ui.h:78
@@ -433,14 +433,14 @@ msgid ""
 "Financial mode supports several computations, including periodic interest "
 "rate, present and future value, double declining and straight line "
 "depreciation, and many others."
-msgstr ""
+msgstr "Finansiell modus støtter flere beregninger inkludert periodisk renterate og fremtidig verdi, halvert levetid, lineær avskriving og mange andre."
 
 #: ../data/gnome-calculator.appdata.xml.in.h:5
 msgid ""
 "Programming mode supports conversion between common bases (binary, octal, "
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
 "character to character code conversion, and more."
-msgstr ""
+msgstr "Programmeringsmodus støtter konvertering mellom ulike grunntall (binær, oktal, desimal, og heksadesimal), bolsk algebra, ener- og toerkomplementet, konvertering fra tegn til tegnkode og mer."
 
 #. Title of preferences dialog
 #: ../data/menu.ui.h:1 ../src/math-preferences.vala:26
@@ -1342,7 +1342,7 @@ msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Fakultet er kun definert for naturlige og positive tall"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1142 ../src/number.vala:2697
+#: ../src/number.vala:1142 ../src/number.vala:2644
 msgid "Division by zero is undefined"
 msgstr "Deling med null er ikke definert"
 
@@ -1416,11 +1416,11 @@ msgstr "Negativ rot for null er ikke definert"
 msgid "nth root of negative number is undefined for even n"
 msgstr "nte rot av negative tall er ikke definert for lik n"
 
-#: ../src/number.vala:2314
+#: ../src/number.vala:2261
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Overflyt: resultatet kunne ikke beregnes"
 
-#: ../src/number.vala:2642
+#: ../src/number.vala:2589
 msgid "Reciprocal of zero is undefined"
 msgstr "Resiprok for null er ikke definert"
 
