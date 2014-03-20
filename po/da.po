@@ -5,7 +5,7 @@
 # Martin Willemoes Hansen <mwh@sysrq.dk>, 2004, 05.
 # Lasse Bang Mikkelsen <lbm@fatalerror.dk>, 2006.
 # Peter Bach <bach.peter@gmail.com>, 2007.
-# Kenneth Nielsen <k.nielsen81@gmail.com>, 2011, 2013
+# Kenneth Nielsen <k.nielsen81@gmail.com>, 2011, 2013-2014.
 # Ask Hjorth Larsen <asklarsen@gmail.com>, 2008, 09, 10, 11, 12.
 #
 # Husk at tilføje dig i credit-listen (besked id "translator-credits")
@@ -25,8 +25,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-16 17:12+0100\n"
-"PO-Revision-Date: 2013-03-16 17:12+0100\n"
+"POT-Creation-Date: 2014-03-20 22:15+0100\n"
+"PO-Revision-Date: 2014-03-20 22:02+0100\n"
 "Last-Translator: Kenneth Nielsen <k.nielsen81@gmail.com>\n"
 "Language-Team: Dansk <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -75,7 +75,7 @@ msgstr "Videnskabelig eksponent"
 #. Accessible name for the memory value button
 #. Tooltip for the memory button
 #: ../data/buttons-advanced.ui.h:16 ../data/buttons-financial.ui.h:72
-#: ../src/math-buttons.vala:384
+#: ../src/math-buttons.vala:375
 msgid "Memory"
 msgstr "Hukommelse"
 
@@ -103,7 +103,7 @@ msgstr "Gem"
 
 #. Title of Compounding Term dialog
 #. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:400
+#: ../data/buttons-financial.ui.h:2 ../src/math-buttons.vala:391
 msgid "Compounding Term"
 msgstr "Rentetilskrivningstermin"
 
@@ -170,7 +170,7 @@ msgstr "_Periode:"
 
 #. Title of Future Value dialog
 #. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:404
+#: ../data/buttons-financial.ui.h:24 ../src/math-buttons.vala:395
 msgid "Future Value"
 msgstr "Fremtidig værdi"
 
@@ -197,7 +197,7 @@ msgstr "_Antal perioder:"
 
 #. Title of Gross Profit Margin dialog
 #. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:418
+#: ../data/buttons-financial.ui.h:32 ../src/math-buttons.vala:409
 msgid "Gross Profit Margin"
 msgstr "Margen for bruttofortjeneste"
 
@@ -217,7 +217,7 @@ msgstr "_Margen:"
 
 #. Title of Periodic Payment dialog
 #. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:416
+#: ../data/buttons-financial.ui.h:38 ../src/math-buttons.vala:407
 msgid "Periodic Payment"
 msgstr "Periodisk betaling"
 
@@ -242,7 +242,7 @@ msgstr "_Termin:"
 
 #. Title of Present Value dialog
 #. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:414
+#: ../data/buttons-financial.ui.h:46 ../src/math-buttons.vala:405
 msgid "Present Value"
 msgstr "Nuværende værdi"
 
@@ -259,7 +259,7 @@ msgstr ""
 
 #. Title of Periodic Interest Rate dialog
 #. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:412
+#: ../data/buttons-financial.ui.h:50 ../src/math-buttons.vala:403
 msgid "Periodic Interest Rate"
 msgstr "Periodisk rentesats"
 
@@ -394,13 +394,13 @@ msgstr "Bpm"
 
 #. Accessible name for the shift left button
 #. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:396
+#: ../data/buttons-programming.ui.h:16 ../src/math-buttons.vala:387
 msgid "Shift Left"
 msgstr "Forskyd til venstre"
 
 #. Accessible name for the shift right button
 #. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:398
+#: ../data/buttons-programming.ui.h:18 ../src/math-buttons.vala:389
 msgid "Shift Right"
 msgstr "Forskyd til højre"
 
@@ -411,7 +411,7 @@ msgstr "Indsæt tegn"
 
 #. Title of insert character code dialog
 #. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:386
+#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.vala:377
 msgid "Insert Character Code"
 msgstr "Indsæt tegnkode"
 
@@ -427,115 +427,196 @@ msgstr "_Indsæt"
 
 #. Program name in the about dialog
 #. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/gnome-calculator.vala:265
-#: ../src/math-window.vala:29
+#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:182
+#: ../src/math-window.vala:40
 msgid "Calculator"
 msgstr "Lommeregner"
 
-#: ../data/gcalctool.desktop.in.h:2
+#: ../data/gnome-calculator.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Udfør aritmetiske, videnskabelige eller finansielle udregninger"
 
-#: ../data/gcalctool.desktop.in.h:3
+#: ../data/gnome-calculator.desktop.in.h:3
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "udregning;aritmetik;videnskabelig;finansiel;"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:1
+#: ../data/gnome-calculator.appdata.xml.in.h:1
+msgid "GNOME Calculator"
+msgstr "GNOME Lommeregner"
+
+#: ../data/gnome-calculator.appdata.xml.in.h:2
+msgid ""
+"GNOME Calculator is an application that solves mathematical equations. "
+"Though it at first appears to be a simple calculator with only basic "
+"arithmetic operations, you can switch into Advanced, Financial, or "
+"Programming mode to find a surprising set of capabilities."
+msgstr ""
+"GNOME Lommeregner er et program, som kan løse matematiske ligninger. Selvom "
+"det ved første øjekast ligner en simpel lommeregner med simple aritmetiske "
+"operationer, vil du med et skift til avanceret, finansiel eller "
+"programmeringstilstand finde et imponerende sæt funktioner."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:3
+msgid ""
+"The Advanced calculator supports many operations, including: logarithms, "
+"factorials, trigonometric and hyperbolic functions, modulus division, "
+"complex numbers, random number generation, prime factorization and unit "
+"conversions."
+msgstr ""
+"Den avancerede lommeregner understøtter mange operationer inklusive: "
+"Logaritmer, fakulteter, trigonometriske og hyberbolske funktioner, "
+"modulusdivision, komplekse tal, en tilfældig talgenerator, "
+"primtalsfaktorisering og enhedskonvertering."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:4
+msgid ""
+"Financial mode supports several computations, including periodic interest "
+"rate, present and future value, double declining and straight line "
+"depreciation, and many others."
+msgstr ""
+"Den finansielle tilstand understøtter adskillige udregninger inklusive "
+"periodisk renterate, nuværende og fremtidig værdi, dobbelt faldende- og ret "
+"linje-afskrivning og mange andre."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:5
+msgid ""
+"Programming mode supports conversion between common bases (binary, octal, "
+"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"character to character code conversion, and more."
+msgstr ""
+"Programmeringstilstand understøtter konvertering mellem almindelige grundtal "
+"(binær, oktal, decimal og heksadecimal), boolesk algebra, etter- og toer-"
+"kompliment, tegn til tegnkode-konvertering med mere."
+
+#. Title of preferences dialog
+#: ../data/menu.ui.h:1 ../src/math-preferences.vala:26
+msgid "Preferences"
+msgstr "Indstillinger"
+
+#: ../data/menu.ui.h:2
+msgid "Help"
+msgstr "Hjælp"
+
+#: ../data/menu.ui.h:3
+msgid "About"
+msgstr "Om"
+
+#: ../data/menu.ui.h:4
+msgid "Quit"
+msgstr "Afslut"
+
+#: ../data/menu.ui.h:5 ../src/math-window.vala:109
+msgid "Basic Mode"
+msgstr "Grundlæggende-tilstand"
+
+#: ../data/menu.ui.h:6 ../src/math-window.vala:114
+msgid "Advanced Mode"
+msgstr "Avanceret tilstand"
+
+#: ../data/menu.ui.h:7 ../src/math-window.vala:119
+msgid "Financial Mode"
+msgstr "Finansiel tilstand"
+
+#: ../data/menu.ui.h:8 ../src/math-window.vala:124
+msgid "Programming Mode"
+msgstr "Programmeringstilstand"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:1
 msgid "Accuracy value"
 msgstr "Værdi for nøjagtighed"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:2
+#: ../data/org.gnome.calculator.gschema.xml.h:2
 msgid "The number of digits displayed after the numeric point"
 msgstr "Antallet af cifre, der vises efter kommaet"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:3
+#: ../data/org.gnome.calculator.gschema.xml.h:3
 msgid "Word size"
 msgstr "Word-størrelse"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:4
+#: ../data/org.gnome.calculator.gschema.xml.h:4
 msgid "The size of the words used in bitwise operations"
 msgstr "Størrelsen af word, der bruges i bitvise operationer"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:5
+#: ../data/org.gnome.calculator.gschema.xml.h:5
 msgid "Numeric Base"
 msgstr "Numerisk grundtal"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:6
+#: ../data/org.gnome.calculator.gschema.xml.h:6
 msgid "The numeric base"
 msgstr "Numerisk grundtal"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:7
+#: ../data/org.gnome.calculator.gschema.xml.h:7
 msgid "Show Thousands Separators"
 msgstr "Vis tusinde-adskillere"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:8
+#: ../data/org.gnome.calculator.gschema.xml.h:8
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Angiver om tusindtalsseparatorer vises i store tal."
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:9
+#: ../data/org.gnome.calculator.gschema.xml.h:9
 msgid "Show Trailing Zeroes"
 msgstr "Vis afsluttende nuller"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:10
+#: ../data/org.gnome.calculator.gschema.xml.h:10
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr ""
 "Angiver om nuller, der følger efter kommaet, skal indgå i den viste værdi."
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:11
+#: ../data/org.gnome.calculator.gschema.xml.h:11
 msgid "Number format"
 msgstr "Talformat"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:12
+#: ../data/org.gnome.calculator.gschema.xml.h:12
 msgid "The format to display numbers in"
 msgstr "Formatet som tal vises i"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:13
+#: ../data/org.gnome.calculator.gschema.xml.h:13
 msgid "Angle units"
 msgstr "Vinkelenheder"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:14
+#: ../data/org.gnome.calculator.gschema.xml.h:14
 msgid "The angle units to use"
 msgstr "Vinkelenhed, der skal bruges"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:15
+#: ../data/org.gnome.calculator.gschema.xml.h:15
 msgid "Button mode"
 msgstr "Knaptilstand"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:16
+#: ../data/org.gnome.calculator.gschema.xml.h:16
 msgid "The button mode"
 msgstr "Knaptilstanden"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:17
+#: ../data/org.gnome.calculator.gschema.xml.h:17
 msgid "Source currency"
 msgstr "Kildevaluta"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:18
+#: ../data/org.gnome.calculator.gschema.xml.h:18
 msgid "Currency of the current calculation"
 msgstr "Valuta for den aktuelle beregning"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:19
+#: ../data/org.gnome.calculator.gschema.xml.h:19
 msgid "Target currency"
 msgstr "Målvaluta"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:20
+#: ../data/org.gnome.calculator.gschema.xml.h:20
 msgid "Currency to convert the current calculation into"
 msgstr "Valuta, som den aktuelle beregning skal konverteres til"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:21
+#: ../data/org.gnome.calculator.gschema.xml.h:21
 msgid "Source units"
 msgstr "Kildeenheder"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:22
+#: ../data/org.gnome.calculator.gschema.xml.h:22
 msgid "Units of the current calculation"
 msgstr "Enheder for den aktuelle beregning"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:23
+#: ../data/org.gnome.calculator.gschema.xml.h:23
 msgid "Target units"
 msgstr "Målenheder"
 
-#: ../data/org.gnome.calculator.gschema.xml.in.h:24
+#: ../data/org.gnome.calculator.gschema.xml.h:24
 msgid "Units to convert the current calculation into"
 msgstr "Den aktuelle beregning skal omregnes til disse enheder"
 
@@ -784,50 +865,13 @@ msgstr "Sydafrikanske rand"
 msgid "Error: the number of periods must be positive"
 msgstr "Fejl: Antallet af perioder skal være positivt"
 
-#: ../src/gnome-calculator.vala:80
-msgid "Basic"
-msgstr "Basalt"
-
-#: ../src/gnome-calculator.vala:81
-msgid "Advanced"
-msgstr "Avanceret"
-
-#: ../src/gnome-calculator.vala:82
-msgid "Financial"
-msgstr "Finansiel"
-
-#: ../src/gnome-calculator.vala:83
-msgid "Programming"
-msgstr "Programmering"
-
-#: ../src/gnome-calculator.vala:84
-msgid "Mode"
-msgstr "Tilstand"
-
-#. Title of preferences dialog
-#: ../src/gnome-calculator.vala:87 ../src/math-preferences.vala:26
-msgid "Preferences"
-msgstr "Indstillinger"
-
-#: ../src/gnome-calculator.vala:91
-msgid "About Calculator"
-msgstr "Om Lommeregner"
-
-#: ../src/gnome-calculator.vala:92
-msgid "Help"
-msgstr "Hjælp"
-
-#: ../src/gnome-calculator.vala:93
-msgid "Quit"
-msgstr "Afslut"
-
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:228
+#: ../src/gnome-calculator.vala:147
 msgid "Unable to open help file"
 msgstr "Kan ikke åbne hjælpefil"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:258
+#: ../src/gnome-calculator.vala:177
 msgid "translator-credits"
 msgstr ""
 "Ole Laursen\n"
@@ -839,299 +883,302 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
+#: ../src/gnome-calculator.vala:183
+msgid "About Calculator"
+msgstr "Om Lommeregner"
+
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:272
+#: ../src/gnome-calculator.vala:190
 msgid "Calculator with financial and scientific modes."
 msgstr "Lommeregner med finansiel og videnskabelig tilstand."
 
-#: ../src/gnome-calculator.vala:305
+#: ../src/gnome-calculator.vala:223
 msgid "Solve given equation"
 msgstr "Løs given ligning"
 
-#: ../src/gnome-calculator.vala:313
+#: ../src/gnome-calculator.vala:231
 msgid "Start with given equation"
 msgstr "Start med given ligning"
 
-#: ../src/gnome-calculator.vala:322
+#: ../src/gnome-calculator.vala:240
 msgid "Show release version"
 msgstr "Vis udgivelsesversion"
 
 #. Configure buttons
 #. Tooltip for the Pi button
-#: ../src/math-buttons.vala:298
+#: ../src/math-buttons.vala:291
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Ctrl+P]"
 
 #. Tooltip for the Euler's Number button
-#: ../src/math-buttons.vala:300
+#: ../src/math-buttons.vala:293
 msgid "Euler’s Number"
 msgstr "Eulers tal"
 
 #. Tooltip for the subscript button
-#: ../src/math-buttons.vala:304
+#: ../src/math-buttons.vala:297
 msgid "Subscript mode [Alt]"
 msgstr "Sænket skrifttilstand [Alt]"
 
 #. Tooltip for the superscript button
-#: ../src/math-buttons.vala:306
+#: ../src/math-buttons.vala:299
 msgid "Superscript mode [Ctrl]"
 msgstr "Hævet skrifttilstand [Ctrl]"
 
 #. Tooltip for the scientific exponent button
-#: ../src/math-buttons.vala:308
+#: ../src/math-buttons.vala:301
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Videnskabelig eksponent [Ctrl+E]"
 
 #. Tooltip for the add button
-#: ../src/math-buttons.vala:310
+#: ../src/math-buttons.vala:303
 msgid "Add [+]"
 msgstr "Læg til [+]"
 
 #. Tooltip for the subtract button
-#: ../src/math-buttons.vala:312
+#: ../src/math-buttons.vala:305
 msgid "Subtract [-]"
 msgstr "Træk fra [-]"
 
 #. Tooltip for the multiply button
-#: ../src/math-buttons.vala:314
+#: ../src/math-buttons.vala:307
 msgid "Multiply [*]"
 msgstr "Multiplicér [*]"
 
 #. Tooltip for the divide button
-#: ../src/math-buttons.vala:316
+#: ../src/math-buttons.vala:309
 msgid "Divide [/]"
 msgstr "Dividér [/]"
 
 #. Tooltip for the modulus divide button
-#: ../src/math-buttons.vala:318
+#: ../src/math-buttons.vala:311
 msgid "Modulus divide"
 msgstr "Modulo-division"
 
 #. Tooltip for the additional functions button
-#: ../src/math-buttons.vala:320
+#: ../src/math-buttons.vala:313
 msgid "Additional Functions"
 msgstr "Flere funktioner"
 
 #. Tooltip for the exponent button
-#: ../src/math-buttons.vala:322
+#: ../src/math-buttons.vala:315
 msgid "Exponent [^ or **]"
 msgstr "Eksponent [^ eller **]"
 
-#. Tooltip for the square button
-#: ../src/math-buttons.vala:324
-msgid "Square [Ctrl+2]"
-msgstr "Kvadrat [Ctrl+2]"
-
 #. Tooltip for the percentage button
-#: ../src/math-buttons.vala:326
+#: ../src/math-buttons.vala:317
 msgid "Percentage [%]"
 msgstr "Procent [%]"
 
 #. Tooltip for the factorial button
-#: ../src/math-buttons.vala:328
+#: ../src/math-buttons.vala:319
 msgid "Factorial [!]"
 msgstr "Fakultet [!]"
 
 #. Tooltip for the absolute value button
-#: ../src/math-buttons.vala:330
+#: ../src/math-buttons.vala:321
 msgid "Absolute value [|]"
 msgstr "Absolut værdi [|]"
 
 #. Tooltip for the complex argument component button
-#: ../src/math-buttons.vala:332
+#: ../src/math-buttons.vala:323
 msgid "Complex argument"
 msgstr "Komplekst argument"
 
 #. Tooltip for the complex conjugate button
-#: ../src/math-buttons.vala:334
+#: ../src/math-buttons.vala:325
 msgid "Complex conjugate"
 msgstr "Kompleks konjugeret"
 
 #. Tooltip for the root button
-#: ../src/math-buttons.vala:336
+#: ../src/math-buttons.vala:327
 msgid "Root [Ctrl+R]"
 msgstr "Rod [Ctrl+R]"
 
 #. Tooltip for the square root button
-#: ../src/math-buttons.vala:338
+#: ../src/math-buttons.vala:329
 msgid "Square root [Ctrl+R]"
 msgstr "Kvadratrod [Ctrl+R]"
 
 #. Tooltip for the logarithm button
-#: ../src/math-buttons.vala:340
+#: ../src/math-buttons.vala:331
 msgid "Logarithm"
 msgstr "Logaritme"
 
 #. Tooltip for the natural logarithm button
-#: ../src/math-buttons.vala:342
+#: ../src/math-buttons.vala:333
 msgid "Natural Logarithm"
 msgstr "Naturlig logaritme"
 
 #. Tooltip for the sine button
-#: ../src/math-buttons.vala:344
+#: ../src/math-buttons.vala:335
 msgid "Sine"
 msgstr "Sinus"
 
 #. Tooltip for the cosine button
-#: ../src/math-buttons.vala:346
+#: ../src/math-buttons.vala:337
 msgid "Cosine"
 msgstr "Cosinus"
 
 #. Tooltip for the tangent button
-#: ../src/math-buttons.vala:348
+#: ../src/math-buttons.vala:339
 msgid "Tangent"
 msgstr "Tangens"
 
 #. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.vala:350
+#: ../src/math-buttons.vala:341
 msgid "Hyperbolic Sine"
 msgstr "Sinushyperbolsk"
 
 #. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.vala:352
+#: ../src/math-buttons.vala:343
 msgid "Hyperbolic Cosine"
 msgstr "Cosinushyperbolsk"
 
 #. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.vala:354
+#: ../src/math-buttons.vala:345
 msgid "Hyperbolic Tangent"
 msgstr "Tangenshyperbolsk"
 
 #. Tooltip for the inverse button
-#: ../src/math-buttons.vala:356
+#: ../src/math-buttons.vala:347
 msgid "Inverse [Ctrl+I]"
 msgstr "Reciprok [Ctrl+I]"
 
 #. Tooltip for the boolean AND button
-#: ../src/math-buttons.vala:358
+#: ../src/math-buttons.vala:349
 msgid "Boolean AND"
 msgstr "Boolesk OG"
 
 #. Tooltip for the boolean OR button
-#: ../src/math-buttons.vala:360
+#: ../src/math-buttons.vala:351
 msgid "Boolean OR"
 msgstr "Boolesk ELLER"
 
 #. Tooltip for the exclusive OR button
-#: ../src/math-buttons.vala:362
+#: ../src/math-buttons.vala:353
 msgid "Boolean Exclusive OR"
 msgstr "Boolesk eksklusiv ELLER"
 
 #. Tooltip for the boolean NOT button
-#: ../src/math-buttons.vala:364
+#: ../src/math-buttons.vala:355
 msgid "Boolean NOT"
 msgstr "Boolesk IKKE"
 
 #. Tooltip for the integer component button
-#: ../src/math-buttons.vala:366 ../src/math-buttons.vala:809
+#: ../src/math-buttons.vala:357
 msgid "Integer Component"
 msgstr "Heltalsdel"
 
 #. Tooltip for the fractional component button
-#: ../src/math-buttons.vala:368 ../src/math-buttons.vala:811
+#: ../src/math-buttons.vala:359
 msgid "Fractional Component"
 msgstr "Decimaldel"
 
 #. Tooltip for the real component button
-#: ../src/math-buttons.vala:370
+#: ../src/math-buttons.vala:361
 msgid "Real Component"
 msgstr "Realdel"
 
 #. Tooltip for the imaginary component button
-#: ../src/math-buttons.vala:372
+#: ../src/math-buttons.vala:363
 msgid "Imaginary Component"
 msgstr "Imaginærdel"
 
 #. Tooltip for the ones' complement button
-#: ../src/math-buttons.vala:374
+#: ../src/math-buttons.vala:365
 msgid "Ones' Complement"
 msgstr "1'er-komplement"
 
 #. Tooltip for the two's complement button
-#: ../src/math-buttons.vala:376
+#: ../src/math-buttons.vala:367
 msgid "Two's Complement"
 msgstr "2'er-komplement"
 
 #. Tooltip for the truncate button
-#: ../src/math-buttons.vala:378
+#: ../src/math-buttons.vala:369
 msgid "Truncate"
 msgstr "Trunkér"
 
 #. Tooltip for the start group button
-#: ../src/math-buttons.vala:380
+#: ../src/math-buttons.vala:371
 msgid "Start Group [(]"
 msgstr "Start gruppe [(]"
 
 #. Tooltip for the end group button
-#: ../src/math-buttons.vala:382
+#: ../src/math-buttons.vala:373
 msgid "End Group [)]"
 msgstr "Afslut gruppe [)]"
 
 #. Tooltip for the solve button
-#: ../src/math-buttons.vala:388
+#: ../src/math-buttons.vala:379
 msgid "Calculate Result"
 msgstr "Beregn resultat"
 
 #. Tooltip for the factor button
-#: ../src/math-buttons.vala:390
+#: ../src/math-buttons.vala:381
 msgid "Factorize [Ctrl+F]"
 msgstr "Faktorisér [Ctrl+F]"
 
 #. Tooltip for the clear button
-#: ../src/math-buttons.vala:392
+#: ../src/math-buttons.vala:383
 msgid "Clear Display [Escape]"
 msgstr "Ryd skærm [Escape]"
 
 #. Tooltip for the undo button
-#: ../src/math-buttons.vala:394
+#: ../src/math-buttons.vala:385
 msgid "Undo [Ctrl+Z]"
 msgstr "Fortryd [Ctrl+Z]"
 
 #. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.vala:402
+#: ../src/math-buttons.vala:393
 msgid "Double Declining Depreciation"
 msgstr "Dobbeltmindskende afskrivning"
 
 # ..term?
 #. Tooltip for the financial term button
-#: ../src/math-buttons.vala:406
+#: ../src/math-buttons.vala:397
 msgid "Financial Term"
 msgstr "Finansiel term"
 
 #. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.vala:408
+#: ../src/math-buttons.vala:399
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Summen af årenes cifre-afskrivning"
 
 #. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.vala:410
+#: ../src/math-buttons.vala:401
 msgid "Straight Line Depreciation"
 msgstr "Retlinjet afskrivning"
 
+#: ../src/math-buttons.vala:430
+msgid "Square [Ctrl+2]"
+msgstr "Kvadrat [Ctrl+2]"
+
 #. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.vala:523
+#: ../src/math-buttons.vala:520
 msgid "Binary"
 msgstr "Binær"
 
 #. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.vala:527
+#: ../src/math-buttons.vala:524
 msgid "Octal"
 msgstr "Oktal"
 
 #. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.vala:531
+#: ../src/math-buttons.vala:528
 msgid "Decimal"
 msgstr "Titalssystem"
 
 #. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.vala:535
+#: ../src/math-buttons.vala:532
 msgid "Hexadecimal"
 msgstr "Heksadecimal"
 
 # right og left shift er bitvise operatorer, der forskyder N bit til højre eller venstre.  Places og bit er derfor det samme i denne sammenhæng
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:740 ../src/math-buttons.vala:777
+#: ../src/math-buttons.vala:741 ../src/math-buttons.vala:778
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1141,32 +1188,12 @@ msgstr[1] "_%d bit"
 # right og left shift er bitvise operatorer, der forskyder N bit til højre eller venstre.  Places og bit er derfor det samme i denne sammenhæng
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:745 ../src/math-buttons.vala:782
+#: ../src/math-buttons.vala:746 ../src/math-buttons.vala:783
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "%d bit"
 msgstr[1] "%d bit"
-
-#. Tooltip for the round button
-#: ../src/math-buttons.vala:813
-msgid "Round"
-msgstr "Afrund"
-
-#. Tooltip for the floor button
-#: ../src/math-buttons.vala:815
-msgid "Floor"
-msgstr "Gulv"
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:817
-msgid "Ceiling"
-msgstr "Loft"
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.vala:819
-msgid "Sign"
-msgstr "Fortegn"
 
 #. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
 #: ../src/math-converter.vala:46
@@ -1184,68 +1211,68 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../src/math-equation.vala:487
+#: ../src/math-equation.vala:482
 msgid "No undo history"
 msgstr "Ingen fortrydelseshistorik"
 
 #. Error shown when trying to redo with no redo history
-#: ../src/math-equation.vala:503
+#: ../src/math-equation.vala:499
 msgid "No redo history"
 msgstr "Ingen fortrydelseshistorik"
 
-#: ../src/math-equation.vala:732
+#: ../src/math-equation.vala:729
 msgid "No sane value to store"
 msgstr "Ingen gyldig værdi til at lagre"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.vala:888
+#: ../src/math-equation.vala:911
 msgid "Overflow. Try a bigger word size"
 msgstr "Overløb. Prøv at øge word-størrelsen"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.vala:893
+#: ../src/math-equation.vala:916
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Ukendt variabel \"%s\""
 
 #. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.vala:900
+#: ../src/math-equation.vala:923
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funktionen \"%s\" er ikke defineret"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.vala:907
+#: ../src/math-equation.vala:930
 msgid "Unknown conversion"
 msgstr "Ukendt konvertering"
 
-#: ../src/math-equation.vala:915
+#: ../src/math-equation.vala:938
 #, c-format
 msgid "Malformed expression at token '%s'"
 msgstr "Misdannet udtryk ved symbolet \"%s\""
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.vala:920 ../src/math-equation.vala:925
+#: ../src/math-equation.vala:943 ../src/math-equation.vala:948
 msgid "Malformed expression"
 msgstr "Misdannet udtryk"
 
-#: ../src/math-equation.vala:936
+#: ../src/math-equation.vala:959
 msgid "Calculating"
 msgstr "Udregner"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.vala:1063
+#: ../src/math-equation.vala:1086
 msgid "Need an integer to factorize"
 msgstr "Kræver et heltal at faktorisere"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../src/math-equation.vala:1117
+#: ../src/math-equation.vala:1140
 msgid "No sane value to bitwise shift"
 msgstr "Ingen gyldig værdi til at udføre bitvis-skift"
 
 #. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.vala:1131
+#: ../src/math-equation.vala:1154
 msgid "Displayed value not an integer"
 msgstr "Den viste værdi er ikke et heltal"
 
@@ -1345,38 +1372,47 @@ msgstr "32 bit"
 msgid "64 bits"
 msgstr "64 bit"
 
+#: ../src/math-window.vala:137
+msgid "_Quit"
+msgstr "_Afslut"
+
 #. Translators: Error display when attempting to take argument of zero
 #: ../src/number.vala:652
 msgid "Argument not defined for zero"
 msgstr "Argumentet af nul er ikke defineret"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../src/number.vala:909 ../src/number.vala:1858
+#: ../src/number.vala:909 ../src/number.vala:1943
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Potenser af nul er ikke defineret for negative eksponenter"
 
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: ../src/number.vala:917
+msgid "Zero raised to zero is undefined"
+msgstr "Nul opløftet i nulte potens er udefineret"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/number.vala:992 ../src/number.vala:1025
+#: ../src/number.vala:1003 ../src/number.vala:1036
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritmen til nul er ikke defineret"
 
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/number.vala:1043
-msgid "Factorial is only defined for natural numbers"
-msgstr "Fakultet er kun defineret for naturlige tal"
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#: ../src/number.vala:1058
+msgid "Factorial is only defined for non-negative real numbers"
+msgstr "Fakultet er kun defineret for ikke-negative reelle tal"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../src/number.vala:1119 ../src/number.vala:2608
+#: ../src/number.vala:1142 ../src/number.vala:2644
 msgid "Division by zero is undefined"
 msgstr "Division med nul er ikke defineret"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/number.vala:1159
+#: ../src/number.vala:1182
 msgid "Modulus division is only defined for integers"
 msgstr "Modulo-division er kun defineret for heltal"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../src/number.vala:1227
+#: ../src/number.vala:1274
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1384,67 +1420,67 @@ msgstr ""
 "(90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../src/number.vala:1265
+#: ../src/number.vala:1312
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Arcussinus er ikke defineret for værdier uden for [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/number.vala:1280
+#: ../src/number.vala:1327
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Arcuscosinus er ikke defineret for værdier uden for [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/number.vala:1477
+#: ../src/number.vala:1524
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "Areacosinushyperbolsk er ikke defineret for værdier mindre end et"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/number.vala:1496
+#: ../src/number.vala:1543
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "Areatangenshyperbolsk er ikke defineret for værdier uden for [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/number.vala:1515
+#: ../src/number.vala:1562
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Boolesk OG er kun defineret for naturlige tal"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/number.vala:1527
+#: ../src/number.vala:1574
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Boolesk ELLER er kun defineret for naturlige tal"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1539
+#: ../src/number.vala:1586
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Boolesk XOR er kun defineret for naturlige tal"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/number.vala:1551
+#: ../src/number.vala:1598
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Boolesk IKKE er kun defineret for naturlige tal"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/number.vala:1574
+#: ../src/number.vala:1621
 msgid "Shift is only possible on integer values"
 msgstr "Bitvis forskydning er kun mulig på heltalsværdier"
 
-#: ../src/number.vala:1878
+#: ../src/number.vala:1963
 msgid "Root must be non-zero"
 msgstr "Roden skal være forskellige fra nul"
 
-#: ../src/number.vala:1895
+#: ../src/number.vala:1980
 msgid "Negative root of zero is undefined"
 msgstr "Negative rødder af nul er ikke defineret"
 
-#: ../src/number.vala:1902
+#: ../src/number.vala:1987
 msgid "nth root of negative number is undefined for even n"
 msgstr "n'te rod af et negativt tal er ikke defineret for lige n"
 
-#: ../src/number.vala:2225
+#: ../src/number.vala:2261
 msgid "Overflow: the result couldn't be calculated"
 msgstr "Overløb: Resultatet kunne ikke beregnes"
 
-#: ../src/number.vala:2553
+#: ../src/number.vala:2589
 msgid "Reciprocal of zero is undefined"
 msgstr "Reciprokværdien af nul er ikke defineret"
 
@@ -1569,7 +1605,7 @@ msgid "Gallons"
 msgstr "Gallons"
 
 #: ../src/unit.vala:64
-msgid "Litres"
+msgid "Liters"
 msgstr "Liter"
 
 #: ../src/unit.vala:65
@@ -1581,11 +1617,11 @@ msgid "Pints"
 msgstr "Pint"
 
 #: ../src/unit.vala:67
-msgid "Millilitres"
+msgid "Milliliters"
 msgstr "Milliliter"
 
 #: ../src/unit.vala:68
-msgid "Microlitres"
+msgid "Microliters"
 msgstr "Mikroliter"
 
 #: ../src/unit.vala:69
@@ -1641,7 +1677,7 @@ msgid "Celsius"
 msgstr "Celsius"
 
 #: ../src/unit.vala:82
-msgid "Farenheit"
+msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #: ../src/unit.vala:83
@@ -1661,110 +1697,6 @@ msgstr "Valuta"
 #, c-format
 msgid "%s%%s"
 msgstr "%s %%s"
-
-#~ msgid ""
-#~ "Usage:\n"
-#~ "  %s — Perform mathematical calculations"
-#~ msgstr ""
-#~ "Brug:\n"
-#~ "  %s — Foretag matematiske udregninger"
-
-#~ msgid ""
-#~ "Help Options:\n"
-#~ "  -v, --version                   Show release version\n"
-#~ "  -h, -?, --help                  Show help options\n"
-#~ "  --help-all                      Show all help options\n"
-#~ "  --help-gtk                      Show GTK+ options"
-#~ msgstr ""
-#~ "Hjælpetilvalg:\n"
-#~ "  -v, --version                   Vis versionsnummeret\n"
-#~ "  -h, -?, --help                  Vis hjælpetilvalg\n"
-#~ "  --help-all                      Vis alle hjælpetilvalg\n"
-#~ "  --help-gtk                      Vis GTK+-tilvalg"
-
-#~ msgid ""
-#~ "GTK+ Options:\n"
-#~ "  --class=CLASS                   Program class as used by the window "
-#~ "manager\n"
-#~ "  --name=NAME                     Program name as used by the window "
-#~ "manager\n"
-#~ "  --screen=SCREEN                 X screen to use\n"
-#~ "  --sync                          Make X calls synchronous\n"
-#~ "  --gtk-module=MODULES            Load additional GTK+ modules\n"
-#~ "  --g-fatal-warnings              Make all warnings fatal"
-#~ msgstr ""
-#~ "GTK+-tilvalg:\n"
-#~ "  --class=KLASSE                  Programklasse, som den bruges af\n"
-#~ "                                    vindueshåndteringen\n"
-#~ "  --name=NAVN                     Programnavnet, som det bruges af\n"
-#~ "                                    vindueshåndteringen\n"
-#~ "  --screen=SKÆRM                  X-skærm, der skal bruges\n"
-#~ "  --sync                          Gør X-kald synkrone\n"
-#~ "  --gtk-module=MODULER            Indlæs ekstra GTK+-moduler\n"
-#~ "  --g-fatal-warnings              Gør alle advarsler fatale"
-
-#~ msgid ""
-#~ "Application Options:\n"
-#~ "  -s, --solve <equation>          Solve the given equation"
-#~ msgstr ""
-#~ "Programtilvalg:\n"
-#~ "  -s, --solve <ligning>           Løs den givne ligning"
-
-#~ msgid "Argument --solve requires an equation to solve"
-#~ msgstr "Argumentet --solve kræver en ligning, der skal løses"
-
-#~ msgid "Unknown argument '%s'"
-#~ msgstr "Ukendt argument \"%s\""
-
-#~ msgid ""
-#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ "\n"
-#~ "Gcalctool is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License\n"
-#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
-#~ "Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-#~ msgstr ""
-#~ "Gcalctool er fri software. Du kan redistribuere og/eller modificere det\n"
-#~ "under de betingelserne som er angivet i GNU General Public License, som\n"
-#~ "er udgivet af Free Software Foundation. Enten version 2 af licensen\n"
-#~ "eller (efter eget valg) enhver senere version.\n"
-#~ "\n"
-#~ "Gcalctool distribueres i håb om at det vil vise sig nyttigt, men UDEN "
-#~ "NOGEN \n"
-#~ "FORM FOR GARANTI, uden selv de underforståede garantier omkring \n"
-#~ "SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere detaljer "
-#~ "kan \n"
-#~ "læses i GNU General Public License.\n"
-#~ "\n"
-#~ "Du skulle have modtaget en kopi af GNU General Public License sammen med\n"
-#~ "Gcalctool. Hvis ikke, så skriv til Free software Foundation, Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-
-#~ msgid "Gcalctool"
-#~ msgstr "Lommeregner"
-
-#~ msgid "© 1986–2010 The Gcalctool authors"
-#~ msgstr "© 1986–2010 Forfatterne af Gcalctool"
-
-#~ msgid "8-bit"
-#~ msgstr "8-bit"
-
-#~ msgid "16-bit"
-#~ msgstr "16-bit"
-
-#~ msgid "32-bit"
-#~ msgstr "32-bit"
-
-#~ msgid "64-bit"
-#~ msgstr "64-bit"
 
 #~ msgctxt "unit-format"
 #~ msgid "%s degrees"
@@ -2144,6 +2076,137 @@ msgstr "%s %%s"
 #~ msgctxt "unit-symbols"
 #~ msgid "degR,˚R,˚Ra"
 #~ msgstr "gradR,˚R,˚Ra"
+
+#~ msgid "Basic"
+#~ msgstr "Basalt"
+
+#~ msgid "Advanced"
+#~ msgstr "Avanceret"
+
+#~ msgid "Financial"
+#~ msgstr "Finansiel"
+
+#~ msgid "Mode"
+#~ msgstr "Tilstand"
+
+#~ msgid "Round"
+#~ msgstr "Afrund"
+
+#~ msgid "Floor"
+#~ msgstr "Gulv"
+
+#~ msgid "Ceiling"
+#~ msgstr "Loft"
+
+#~ msgid "Sign"
+#~ msgstr "Fortegn"
+
+#~ msgid "Litres"
+#~ msgstr "Liter"
+
+#~ msgid ""
+#~ "Usage:\n"
+#~ "  %s — Perform mathematical calculations"
+#~ msgstr ""
+#~ "Brug:\n"
+#~ "  %s — Foretag matematiske udregninger"
+
+#~ msgid ""
+#~ "Help Options:\n"
+#~ "  -v, --version                   Show release version\n"
+#~ "  -h, -?, --help                  Show help options\n"
+#~ "  --help-all                      Show all help options\n"
+#~ "  --help-gtk                      Show GTK+ options"
+#~ msgstr ""
+#~ "Hjælpetilvalg:\n"
+#~ "  -v, --version                   Vis versionsnummeret\n"
+#~ "  -h, -?, --help                  Vis hjælpetilvalg\n"
+#~ "  --help-all                      Vis alle hjælpetilvalg\n"
+#~ "  --help-gtk                      Vis GTK+-tilvalg"
+
+#~ msgid ""
+#~ "GTK+ Options:\n"
+#~ "  --class=CLASS                   Program class as used by the window "
+#~ "manager\n"
+#~ "  --name=NAME                     Program name as used by the window "
+#~ "manager\n"
+#~ "  --screen=SCREEN                 X screen to use\n"
+#~ "  --sync                          Make X calls synchronous\n"
+#~ "  --gtk-module=MODULES            Load additional GTK+ modules\n"
+#~ "  --g-fatal-warnings              Make all warnings fatal"
+#~ msgstr ""
+#~ "GTK+-tilvalg:\n"
+#~ "  --class=KLASSE                  Programklasse, som den bruges af\n"
+#~ "                                    vindueshåndteringen\n"
+#~ "  --name=NAVN                     Programnavnet, som det bruges af\n"
+#~ "                                    vindueshåndteringen\n"
+#~ "  --screen=SKÆRM                  X-skærm, der skal bruges\n"
+#~ "  --sync                          Gør X-kald synkrone\n"
+#~ "  --gtk-module=MODULER            Indlæs ekstra GTK+-moduler\n"
+#~ "  --g-fatal-warnings              Gør alle advarsler fatale"
+
+#~ msgid ""
+#~ "Application Options:\n"
+#~ "  -s, --solve <equation>          Solve the given equation"
+#~ msgstr ""
+#~ "Programtilvalg:\n"
+#~ "  -s, --solve <ligning>           Løs den givne ligning"
+
+#~ msgid "Argument --solve requires an equation to solve"
+#~ msgstr "Argumentet --solve kræver en ligning, der skal løses"
+
+#~ msgid "Unknown argument '%s'"
+#~ msgstr "Ukendt argument \"%s\""
+
+#~ msgid ""
+#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Gcalctool is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
+#~ "Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+#~ msgstr ""
+#~ "Gcalctool er fri software. Du kan redistribuere og/eller modificere det\n"
+#~ "under de betingelserne som er angivet i GNU General Public License, som\n"
+#~ "er udgivet af Free Software Foundation. Enten version 2 af licensen\n"
+#~ "eller (efter eget valg) enhver senere version.\n"
+#~ "\n"
+#~ "Gcalctool distribueres i håb om at det vil vise sig nyttigt, men UDEN "
+#~ "NOGEN \n"
+#~ "FORM FOR GARANTI, uden selv de underforståede garantier omkring \n"
+#~ "SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere detaljer "
+#~ "kan \n"
+#~ "læses i GNU General Public License.\n"
+#~ "\n"
+#~ "Du skulle have modtaget en kopi af GNU General Public License sammen med\n"
+#~ "Gcalctool. Hvis ikke, så skriv til Free software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+
+#~ msgid "Gcalctool"
+#~ msgstr "Lommeregner"
+
+#~ msgid "© 1986–2010 The Gcalctool authors"
+#~ msgstr "© 1986–2010 Forfatterne af Gcalctool"
+
+#~ msgid "8-bit"
+#~ msgstr "8-bit"
+
+#~ msgid "16-bit"
+#~ msgstr "16-bit"
+
+#~ msgid "32-bit"
+#~ msgstr "32-bit"
+
+#~ msgid "64-bit"
+#~ msgstr "64-bit"
 
 #~ msgid "<i>x</i>"
 #~ msgstr "<i>x</i>"
@@ -3599,9 +3662,6 @@ msgstr "%s %%s"
 #~ msgid "_Copy"
 #~ msgstr "_Kopiér"
 
-#~ msgid "_About"
-#~ msgstr "_Om"
-
 #~ msgid "_Basic mode"
 #~ msgstr "_Basis tilstand"
 
@@ -3611,17 +3671,8 @@ msgstr "%s %%s"
 #~ msgid "_Advanced mode"
 #~ msgstr "_Avanceret tilstand"
 
-#~ msgid "Advanced mode"
-#~ msgstr "Avanceret tilstand"
-
-#~ msgid "_Financial mode"
-#~ msgstr "_Finansiel tilstand"
-
 #~ msgid "_Scientific mode"
 #~ msgstr "Viden_skabelig tilstand"
-
-#~ msgid "Basic Mode"
-#~ msgstr "Grundlæggende-tilstand"
 
 #~ msgid "BASIC"
 #~ msgstr "GRUNDLÆGGENDE"
