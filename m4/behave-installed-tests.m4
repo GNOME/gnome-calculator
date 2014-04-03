@@ -74,16 +74,17 @@ ifeq ($(BEHAVE_INSTALLED_TESTS_ENABLED),yes)
 install-exec-am: installed-tests-exec-hook
 install-data-am: installed-tests-data-hook
 
-META_DIRECTORY=${DESTDIR}/${datadir}/installed-tests/${PACKAGE}
-EXEC_DIRECTORY=${DESTDIR}/${pkglibexecdir}/installed-tests
+META_DIRECTORY=${DESTDIR}${datadir}/installed-tests/${PACKAGE}
+EXEC_DIRECTORY=${DESTDIR}${pkglibexecdir}/installed-tests
+
+BEHAVE_FEATURES=$(wildcard $(srcdir)/tests/*.feature)
+BEHAVE_STEP_DEFINITION=$(wildcard $(srcdir)/tests/steps/*.py)
+BEHAVE_COMMON_FILES=$(srcdir)/tests/environment.py $(srcdir)/tests/common_steps.py
 
 FINAL_TEST_ENVIRONMENT=
 ifneq ($(INSTALLED_TESTS_ENVIRONMENT),)
       FINAL_TEST_ENVIRONMENT="env $(INSTALLED_TESTS_ENVIRONMENT)"
 endif
-BEHAVE_FEATURES=$(wildcard tests/*.feature)
-BEHAVE_STEP_DEFINITION=$(wildcard tests/steps/*.py)
-BEHAVE_COMMON_FILES=tests/environment.py tests/common_steps.py
 
 installed-tests-exec-hook:
 	@$(MKDIR_P) $(EXEC_DIRECTORY);
