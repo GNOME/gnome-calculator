@@ -73,6 +73,7 @@ ifeq ($(BEHAVE_INSTALLED_TESTS_ENABLED),yes)
 
 install-exec-am: installed-tests-exec-hook
 install-data-am: installed-tests-data-hook
+uninstall-am: uninstall-tests-hook
 
 META_DIRECTORY=${DESTDIR}${datadir}/installed-tests/${PACKAGE}
 EXEC_DIRECTORY=${DESTDIR}${pkglibexecdir}/installed-tests
@@ -109,6 +110,24 @@ installed-tests-data-hook:
 	                                           >> $(META_DIRECTORY)/$$test.test;		\
 	    echo "Type=$(INSTALLED_TESTS_TYPE)" >> $(META_DIRECTORY)/$$test.test;		\
 	done
+
+uninstall-tests-hook:
+	@for feature in $(BEHAVE_FEATURES); do\
+	    echo "Removing feature $(EXEC_DIRECTORY) $$feature";\
+	    $(LIBTOOL) --mode=uninstall $(RM) $(EXEC_DIRECTORY)/$$feature;\
+	done
+	@for common_file in $(BEHAVE_COMMON_FILES); do\
+	    echo "Removing feature $(EXEC_DIRECTORY) $$common_file";\
+	    $(LIBTOOL) --mode=uninstall $(RM) $(EXEC_DIRECTORY)/$$common_file;\
+	done
+	@for step_definition in $(BEHAVE_STEP_DEFINITION); do\
+	    echo "Removing feature $(EXEC_DIRECTORY)/steps $$step_definition";\
+	    $(LIBTOOL) --mode=uninstall $(RM) $(EXEC_DIRECTORY)/steps/$$step_definition;\
+	done
+	@for test in $(INSTALLED_TESTS); do\
+	    $(LIBTOOL) --mode=uninstall $(RM) $(META_DIRECTORY)/$$test.test;\
+	done
+
 endif
 '
 
