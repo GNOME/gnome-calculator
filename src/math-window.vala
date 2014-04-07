@@ -21,6 +21,8 @@ public class MathWindow : Gtk.ApplicationWindow
     public MathButtons buttons { get { return _buttons; } }
     private bool right_aligned;
 
+    private Gtk.MenuButton menu_button;
+
     private Gtk.HeaderBar headerbar;
 
     private Gtk.Label mode_label;
@@ -67,7 +69,7 @@ public class MathWindow : Gtk.ApplicationWindow
         menu_box.pack_start (arrow);
         menu_box.show ();
 
-        var menu_button = new Gtk.MenuButton ();
+        menu_button = new Gtk.MenuButton ();
         menu_button.add (menu_box);
         menu_button.menu_model = (MenuModel) builder.get_object ("window-menu");
         menu_button.get_style_context ().add_class ("title");
@@ -221,6 +223,10 @@ public class MathWindow : Gtk.ApplicationWindow
         requires (parameter != null)
         requires (parameter.is_of_type (VariantType.STRING))
     {
+        var popover = menu_button.get_popover ();
+        popover.hide ();
+        menu_button.set_active (false);
+
         var mode = ButtonMode.BASIC;
         var mode_str = parameter.get_string (null);
 
