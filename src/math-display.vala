@@ -376,6 +376,11 @@ public class MathDisplay : Gtk.Viewport
 
         equation.select_range (start, end);
     }
+
+    public new void grab_focus ()
+    {
+        source_view.grab_focus ();
+    }
 }
 
 public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider

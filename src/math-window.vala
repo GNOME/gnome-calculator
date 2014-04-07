@@ -227,6 +227,8 @@ public class MathWindow : Gtk.ApplicationWindow
         popover.hide ();
         menu_button.set_active (false);
 
+        display.grab_focus ();
+
         var mode = ButtonMode.BASIC;
         var mode_str = parameter.get_string (null);
 
