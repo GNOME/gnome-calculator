@@ -19,7 +19,7 @@ def help_is_displayed(context, name):
 @step(u'Switch to {mode:w} mode')
 def switch_to_basic_mode(context, mode):
     context.app.child(roleName='toggle button', name='Menu').click()
-    context.app.child(roleName='radio menu item', name='%s Mode' % mode).click()
+    context.app.child(roleName='radio button', name='%s Mode' % mode).click()
 
 
 @limit_execution_time_to(seconds=30)
