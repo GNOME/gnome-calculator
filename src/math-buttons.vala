@@ -366,7 +366,8 @@ public class MathButtons : Gtk.Box
         /* Tooltip for the two's complement button */
         setup_button (builder, "twos_complement",    "twos ", _("Two's Complement"));
         /* Tooltip for the truncate button */
-        setup_button (builder, "trunc",              "trunc ", _("Truncate"));
+        /* FIXME : Can be Added Once the support is available at the back-end */
+        // setup_button (builder, "trunc",              "trunc ", _("Truncate"));
         /* Tooltip for the start group button */
         setup_button (builder, "start_group",        "(", _("Start Group [(]"));
         /* Tooltip for the end group button */
