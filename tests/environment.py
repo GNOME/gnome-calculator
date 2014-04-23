@@ -7,6 +7,7 @@ if not isA11yEnabled():
 
 from common_steps import App
 from dogtail.config import config
+import os
 
 
 def before_all(context):
