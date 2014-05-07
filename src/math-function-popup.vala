@@ -14,7 +14,10 @@ public class MathFunctionPopup : Gtk.Window
 
     private Gtk.ScrolledWindow scrolled_window;
     private Gtk.Box vbox;
+
     private Gtk.Entry function_name_entry;
+    private bool function_name_entry_placeholder_reseted = false;
+
     private Gtk.Button add_function_button;
     private Gtk.SpinButton add_arguments_button;
 
@@ -62,6 +65,7 @@ public class MathFunctionPopup : Gtk.Window
         function_name_entry = new Gtk.Entry ();
         function_name_entry.set_text ("Type function name here");
         function_name_entry.key_press_event.connect (function_name_key_press_cb);
+        function_name_entry.button_press_event.connect (function_name_mouse_click_cb);
         function_name_entry.changed.connect (function_name_changed_cb);
         function_name_entry.set_margin_right (5);
         function_name_entry.activate.connect (add_function_cb);
@@ -97,6 +101,16 @@ public class MathFunctionPopup : Gtk.Window
         end.backward_chars (1);
         equation.place_cursor (end);
         widget.get_toplevel ().destroy ();
+    }
+
+    private bool function_name_mouse_click_cb (Gtk.Widget widget, Gdk.EventButton event)
+    {
+        if(!this.function_name_entry_placeholder_reseted) {
+            this.function_name_entry_placeholder_reseted = true;
+            this.function_name_entry.set_text ("");
+        }
+        
+        return false;
     }
 
     private bool function_name_key_press_cb (Gtk.Widget widget, Gdk.EventKey event)
