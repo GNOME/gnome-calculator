@@ -962,9 +962,12 @@ public class MathButtons : Gtk.Box
         while (start.backward_char ())
         {
             if (!start.get_char ().isspace ())
+            {
+                start.forward_char ();
                 break;
-            equation.delete (ref start, ref end);
+            }
         }
+        equation.delete (ref start, ref end);
     }
 
     private void set_superscript_cb (Gtk.Button widget)
