@@ -10,7 +10,8 @@
 
 public class MathPreferencesDialog : Gtk.Dialog
 {
-    private MathEquation equation;
+    public MathEquation equation { private get; construct; }
+
     private Gtk.ComboBox angle_unit_combo;
     private Gtk.ComboBox number_format_combo;
     private Gtk.ComboBox word_size_combo;
@@ -18,15 +19,18 @@ public class MathPreferencesDialog : Gtk.Dialog
     private Gtk.CheckButton thousands_separator_check;
     private Gtk.CheckButton trailing_zeroes_check;
 
-    public MathPreferencesDialog (MathEquation equation)
+    public MathPreferencesDialog (MathEquation eq)
     {
-        this.equation = equation;
+        Object(use_header_bar: 1, equation: eq);
+    }
 
+    construct
+    {
         set_title (/* Title of preferences dialog */
                    _("Preferences"));
         border_width = 8;
-        add_button (/* Label on close button in preferences dialog */
-                    _("_Close"), 0);
+
+        ((Gtk.HeaderBar) get_header_bar ()).show_close_button = true;
 
         var grid = new Gtk.Grid ();
         grid.show ();
