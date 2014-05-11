@@ -18,15 +18,14 @@ dnl ###########################################################################
 dnl Dependencies
 dnl ###########################################################################
 
-GLIB_REQUIRED=2.31
-GIO_REQUIRED=2.25.10
+GLIB_REQUIRED=2.40.0
 GTK_REQUIRED=3.11.6
 GTKSOURCEVIEW_REQUIRED=3.0.0
 
 PKG_CHECK_MODULES(GNOME_CALCULATOR, [
     gtk+-3.0 >= $GTK_REQUIRED
     glib-2.0 >= $GLIB_REQUIRED
-    gio-2.0 >= $GIO_REQUIRED
+    gio-2.0 >= $GLIB_REQUIRED
     gtksourceview-3.0 >= $GTKSOURCEVIEW_REQUIRED
     libxml-2.0
     gmodule-export-2.0
@@ -34,8 +33,13 @@ PKG_CHECK_MODULES(GNOME_CALCULATOR, [
 
 PKG_CHECK_MODULES(GCALCCMD, [
     glib-2.0 >= $GLIB_REQUIRED
-    gio-2.0 >= $GIO_REQUIRED
+    gio-2.0 >= $GLIB_REQUIRED
     libxml-2.0
+])
+
+PKG_CHECK_MODULES(SEARCH_PROVIDER, [
+    glib-2.0 >= $GLIB_REQUIRED
+    gio-2.0 >= $GLIB_REQUIRED
 ])
 
 dnl ###########################################################################
@@ -62,6 +66,7 @@ dnl ###########################################################################
 
 AC_OUTPUT([
 Makefile
+search-provider/Makefile
 src/Makefile
 po/Makefile.in
 data/Makefile
