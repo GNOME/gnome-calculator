@@ -73,6 +73,7 @@ public class MathWindow : Gtk.ApplicationWindow
         menu_button.add (menu_box);
         menu_button.menu_model = (MenuModel) builder.get_object ("window-menu");
         menu_button.get_style_context ().add_class ("title");
+        menu_button.get_style_context ().add_class ("text-button");
         menu_button.use_popover = true;
         menu_button.relief = Gtk.ReliefStyle.NONE;
         menu_button.show ();
