@@ -53,7 +53,8 @@ public static int main (string[] args)
         stdout.printf ("> ");
         var line = stdin.gets (buffer);
 
-        line = line.strip ();
+        if (line != null)
+            line = line.strip ();
         if (line == null || line == "exit" || line == "quit" || line == "")
             break;
 
