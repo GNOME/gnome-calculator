@@ -41,6 +41,8 @@ public static int main (string[] args)
 {
     /* Seed random number generator. */
     var now = new DateTime.now_utc ();
+    bool requires_new_line = false;
+
     Random.set_seed (now.get_microsecond ());
 
     Intl.setlocale (LocaleCategory.ALL, "");
@@ -55,11 +57,17 @@ public static int main (string[] args)
 
         if (line != null)
             line = line.strip ();
+        else
+            requires_new_line = true;
+
         if (line == null || line == "exit" || line == "quit" || line == "")
             break;
 
         solve (line);
     }
+
+    if (requires_new_line)
+        stdout.printf ("\n");
 
     return Posix.EXIT_SUCCESS;
 }
