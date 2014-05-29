@@ -19,7 +19,11 @@ static void solve (string equation)
     if (tsep_string == null || tsep_string == "")
         tsep_string = " ";
 
-    var e = new Equation (equation.replace (tsep_string, ""));
+    var decimal = nl_langinfo (NLItem.RADIXCHAR);
+    if (decimal == null)
+        decimal = "";
+
+    var e = new Equation (equation.replace (tsep_string, "").replace (decimal, "."));
     e.base = 10;
     e.wordlen = 32;
     e.angle_units = AngleUnit.DEGREES;
