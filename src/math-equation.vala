@@ -57,7 +57,6 @@ public class MathEquation : Gtk.SourceBuffer
             if (_word_size == value)
                 return;
             _word_size = value;
-            notify_property ("word-size");
         }
     }
 
@@ -523,7 +522,6 @@ public class MathEquation : Gtk.SourceBuffer
                 return;
             serializer.set_trailing_digits (value);
             reformat_display ();
-            notify_property ("accuracy");
         }
     }
 
@@ -537,7 +535,6 @@ public class MathEquation : Gtk.SourceBuffer
 
             serializer.set_show_thousands_separators (value);
             reformat_display ();
-            notify_property ("show-thousands-separators");
         }
     }
 
@@ -551,7 +548,6 @@ public class MathEquation : Gtk.SourceBuffer
 
             serializer.set_show_trailing_zeroes (value);
             reformat_display ();
-            notify_property ("show-trailing-zeroes");
         }
     }
 
@@ -565,7 +561,6 @@ public class MathEquation : Gtk.SourceBuffer
 
             serializer.set_number_format (value);
             reformat_display ();
-            notify_property ("number-format");
         }
     }
 
@@ -580,7 +575,6 @@ public class MathEquation : Gtk.SourceBuffer
             serializer.set_base (value);
             serializer.set_representation_base (value);
             reformat_display ();
-            notify_property ("number-base");
         }
     }
 
@@ -593,7 +587,6 @@ public class MathEquation : Gtk.SourceBuffer
                 return;
 
             _angle_units = value;
-            notify_property ("angle-units");
         }
     }
 
@@ -606,7 +599,6 @@ public class MathEquation : Gtk.SourceBuffer
                 return;
 
             state.status = value;
-            notify_property ("status");
         }
     }
 
@@ -713,7 +705,6 @@ public class MathEquation : Gtk.SourceBuffer
             can_super_minus = value == NumberMode.SUPERSCRIPT;
 
             _number_mode = value;
-            notify_property ("number-mode");
         }
     }
 

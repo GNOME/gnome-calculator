@@ -687,7 +687,6 @@ public class MathButtons : Gtk.Box
                 return;
 
             _programming_base = value;
-            notify_property ("programming-base");
 
             if (mode == ButtonMode.PROGRAMMING)
                 equation.number_base = value;
