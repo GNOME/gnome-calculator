@@ -150,7 +150,11 @@ public class Calculator : Gtk.Application
             if (tsep_string == null || tsep_string == "")
                 tsep_string = " ";
 
-            var e = new SolveEquation (solve_equation.replace (tsep_string, ""));
+            var decimal = nl_langinfo (NLItem.RADIXCHAR);
+            if (decimal == null)
+                decimal = "";
+
+            var e = new SolveEquation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
             e.base = 10;
             e.wordlen = 32;
             e.angle_units = AngleUnit.DEGREES;
