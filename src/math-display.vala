@@ -173,8 +173,9 @@ public class MathDisplay : Gtk.Viewport
             return true;
         }
 
-        /* Numeric keypad will often insert '.' regardless of locale */
-        if (event.keyval == Gdk.Key.KP_Decimal)
+        /* Numeric keypad will insert '.' or ',' depending on layout */
+        if ((event.keyval == Gdk.Key.KP_Decimal) ||
+            (event.keyval == Gdk.Key.KP_Separator))
         {
             equation.insert_numeric_point ();
             return true;
