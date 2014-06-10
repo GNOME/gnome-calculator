@@ -237,6 +237,15 @@ public class MathEquation : Gtk.SourceBuffer
             get_iter_at_mark (out ans_end, ans_end_mark);
             insert_with_tags (ans_end, ans_text, -1, ans_tag);
 
+            // NOTE: Due to the inverted gravity of answer marks, after inserting text
+            //       the positions are inverted. Hence, we need to recreate marks.
+            get_iter_at_mark (out ans_start, ans_start_mark);
+            get_iter_at_mark (out ans_end, ans_end_mark);
+            delete_mark (ans_start_mark);
+            delete_mark (ans_end_mark);
+            ans_start_mark = create_mark (null, ans_end, false);
+            ans_end_mark = create_mark (null, ans_start, true);
+
             in_reformat = false;
             in_undo_operation = false;
         }
