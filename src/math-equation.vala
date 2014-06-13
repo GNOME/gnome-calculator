@@ -495,6 +495,7 @@ public class MathEquation : Gtk.SourceBuffer
         status = ("");
         undo_stack.remove (state);
         redo_stack.prepend (get_current_state ());
+        state.ans = undo_stack.nth_data (0).ans;
 
         apply_state (state);
     }
