@@ -55,7 +55,7 @@ public enum AngleUnit
  *
  * x = sign * (BASE^(exponent-1) + BASE^(exponent-2) + ...)
  */
-public class Number
+public class Number : Object
 {
     /* Sign (+1, -1) or 0 for the value zero */
     public int re_sign;

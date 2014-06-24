@@ -17,7 +17,7 @@ public enum NumberMode
 }
 
 /* Expression mode state */
-private class MathEquationState
+private class MathEquationState : Object
 {
     public Number ans;             /* Previously calculated answer */
     public uint ans_base;          /* Representation base of previous answer. */
@@ -33,7 +33,7 @@ private class MathEquationState
     public uint error_token_end;   /* End offset of error token */
 }
 
-private class SolveData
+private class SolveData : Object
 {
     public Number? number_result;
     public string text_result;

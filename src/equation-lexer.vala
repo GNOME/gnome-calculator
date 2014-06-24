@@ -68,7 +68,7 @@ public enum LexerTokenType
 }
 
 // FIXME: Merge into lexer
-public class PreLexer
+public class PreLexer : Object
 {
     public string stream; /* String being scanned */
     public int index;      /* Current character index */
@@ -240,7 +240,7 @@ public class PreLexer
 }
 
 /* Structure to hold single token. */
-public class LexerToken
+public class LexerToken : Object
 {
     public string text;                /* Copy of token string. */
     public uint start_index;           /* Start index in original stream. */
@@ -249,7 +249,7 @@ public class LexerToken
 }
 
 /* Structure to hold lexer state and all the tokens. */
-public class Lexer
+public class Lexer : Object
 {
     private Parser parser;           /* Pointer to the parser parser. */
     private PreLexer prelexer;       /* Pre-lexer  Pre-lexer is part of lexer. */

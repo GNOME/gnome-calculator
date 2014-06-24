@@ -102,7 +102,7 @@ public enum ErrorCode
     MP
 }
 
-public class Equation
+public class Equation : Object
 {
     public int base;
     public int wordlen;

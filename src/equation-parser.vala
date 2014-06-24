@@ -40,7 +40,7 @@ private enum Precedence
 }
 
 /* ParseNode structure for parse tree. */
-public class ParseNode
+public class ParseNode : Object
 {
     public Parser parser;
     public ParseNode? parent = null;
