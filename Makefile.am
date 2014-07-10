@@ -4,6 +4,7 @@ SUBDIRS = po src search-provider data help
 ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS} -I m4
 
 DISTCLEANFILES = test-driver
+DISTCHECK_CONFIGURE_FLAGS = --enable-installed-tests
 
 MAINTAINERCLEANFILES = \
 	$(GITIGNORE_MAINTAINERCLEANFILES_TOPLEVEL) \
@@ -12,7 +13,8 @@ MAINTAINERCLEANFILES = \
 
 EXTRA_DIST = \
 	autogen.sh \
-	gnome-calculator.doap
+	gnome-calculator.doap \
+	tests
 
 @BEHAVE_INSTALLED_TESTS_RULE@
 INSTALLED_TESTS=basic_mode advanced_mode financial_mode programming_mode
