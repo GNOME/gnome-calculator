@@ -79,7 +79,7 @@ META_DIRECTORY=${DESTDIR}${datadir}/installed-tests/${PACKAGE}
 EXEC_DIRECTORY=${DESTDIR}${pkglibexecdir}/installed-tests
 
 BEHAVE_FEATURES=$(notdir $(wildcard tests/*.feature))
-BEHAVE_STEP_DEFINITION=$(notdir $(wildcard /tests/steps/*.py))
+BEHAVE_STEP_DEFINITION=$(notdir $(wildcard tests/steps/*.py))
 BEHAVE_COMMON_FILES=environment.py common_steps.py
 
 FINAL_TEST_ENVIRONMENT=
@@ -97,7 +97,7 @@ installed-tests-exec-hook:
 	done
 	@$(MKDIR_P) $(EXEC_DIRECTORY)/steps;
 	@for step_definition in $(BEHAVE_STEP_DEFINITION); do									\
-	    $(LIBTOOL) --mode=install $(INSTALL) --mode=777 $(srcdir)/tests/$$step_definition $(EXEC_DIRECTORY)/steps;\
+	    $(LIBTOOL) --mode=install $(INSTALL) --mode=777 $(srcdir)/tests/steps/$$step_definition $(EXEC_DIRECTORY)/steps;\
 	done
 
 
