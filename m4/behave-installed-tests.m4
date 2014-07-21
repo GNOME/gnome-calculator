@@ -78,14 +78,9 @@ uninstall-am: uninstall-tests-hook
 META_DIRECTORY=${DESTDIR}${datadir}/installed-tests/${PACKAGE}
 EXEC_DIRECTORY=${DESTDIR}${pkglibexecdir}/installed-tests
 
-BEHAVE_FEATURES=$(notdir $(wildcard tests/*.feature))
-BEHAVE_STEP_DEFINITION=$(notdir $(wildcard tests/steps/*.py))
+BEHAVE_FEATURES=$(notdir $(wildcard $(srcdir)/tests/*.feature))
+BEHAVE_STEP_DEFINITION=$(notdir $(wildcard $(srcdir)/tests/steps/*.py))
 BEHAVE_COMMON_FILES=environment.py common_steps.py
-
-FINAL_TEST_ENVIRONMENT=
-ifneq ($(INSTALLED_TESTS_ENVIRONMENT),)
-      FINAL_TEST_ENVIRONMENT="env $(INSTALLED_TESTS_ENVIRONMENT)"
-endif
 
 installed-tests-exec-hook:
 	@$(MKDIR_P) $(EXEC_DIRECTORY);
@@ -135,3 +130,4 @@ endif
   AC_SUBST([BEHAVE_INSTALLED_TESTS_RULE])
   m4_ifdef([_AM_SUBST_NOTMAKE], [_AM_SUBST_NOTMAKE([BEHAVE_INSTALLED_TESTS_RULE])])
 ])
+
