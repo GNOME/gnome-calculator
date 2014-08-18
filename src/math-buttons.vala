@@ -13,7 +13,8 @@ public enum ButtonMode
     BASIC,
     ADVANCED,
     FINANCIAL,
-    PROGRAMMING
+    PROGRAMMING,
+    KEYBOARD
 }
 
 public class MathButtons : Gtk.Box

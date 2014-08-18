@@ -44,12 +44,13 @@ public class MathDisplay : Gtk.Viewport
         font_desc.set_size (16 * Pango.SCALE);
         source_view.override_font (font_desc);
         source_view.set_name ("displayitem");
+        source_view.set_size_request (20, 20);
         source_view.get_accessible ().set_role (Atk.Role.EDITBAR);
         //FIXME:<property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
         source_view.key_press_event.connect (key_press_cb);
         create_autocompletion ();
 
-        main_box.pack_start (scrolled_window, true, true, 0);
+        main_box.pack_start (scrolled_window, false, false, 0);
         scrolled_window.add (source_view); /* Adds ScrolledWindow to source_view for displaying long equations */
         scrolled_window.show ();
 

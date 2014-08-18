@@ -29,6 +29,8 @@ public class HistoryView : Gtk.Box
         scroll_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
         scroll_window.set_placement (Gtk.CornerType.TOP_LEFT);
         scroll_window.add (listbox);
+        scroll_window.set_vexpand (true);
+        listbox.set_vexpand (true);
         scroll_window.set_size_request (100, 100);
         scroll_window.size_allocate.connect (scroll_bottom);
         main_box.add (scroll_window);

@@ -16,15 +16,15 @@ public class MathWindow : Gtk.ApplicationWindow
 
     private MathDisplay _display;
     public MathDisplay display { get { return _display; } }
-
+    private MathConverter converter;
     private MathButtons _buttons;
     public MathButtons buttons { get { return _buttons; } }
     private bool right_aligned;
-
+    private bool remove_buttons;
     private Gtk.MenuButton menu_button;
 
     private Gtk.HeaderBar headerbar;
-
+    private Gtk.Box vbox;
     private Gtk.Label mode_label;
 
     private const ActionEntry[] window_entries =
@@ -45,7 +45,9 @@ public class MathWindow : Gtk.ApplicationWindow
 
         role = "gnome-calculator";
         resizable = false;
-
+        converter = new MathConverter (_equation);
+        converter.set_category (null);
+        converter.set_conversion (equation.source_units, equation.target_units);
         add_action_entries (window_entries, this);
 
         var builder = new Gtk.Builder ();
@@ -88,15 +90,17 @@ public class MathWindow : Gtk.ApplicationWindow
         add (main_vbox);
         main_vbox.show ();
 
-        var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
         vbox.border_width = 6;
+        vbox.set_vexpand (true);
+        vbox.pack_start (converter, false, true, 0);
         main_vbox.pack_start (vbox, true, true, 0);
         vbox.show ();
 
         var scrolled_window = new Gtk.ScrolledWindow (null, null);
         scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
         scrolled_window.set_shadow_type (Gtk.ShadowType.IN);
-        vbox.pack_start (scrolled_window, false, false, 0);
+        vbox.pack_start (scrolled_window, false, true, 0);
         scrolled_window.get_hadjustment ().changed.connect (scroll_changed_cb);
         scrolled_window.get_hadjustment ().value_changed.connect (scroll_value_changed_cb);
         right_aligned = true;
@@ -108,7 +112,20 @@ public class MathWindow : Gtk.ApplicationWindow
         display.show ();
 
         _buttons = new MathButtons (equation);
-        vbox.pack_start (buttons, true, true, 0);
+
+        if (_buttons.mode != ButtonMode.KEYBOARD) /* Checks if the calculator is in Keyboard mode or not */
+        {
+            vbox.pack_start (buttons, true, true, 0); /* Packs buttons if not in keyboard mode. */
+            remove_buttons = false;
+            converter.set_visible (false);
+        }
+        else
+        {
+            remove_buttons = true;
+            converter.set_visible (true); /* Unpacks buttons if in keyboard mode */
+            resizable = true;
+        }
+
         buttons.show ();
         buttons.notify["mode"].connect (mode_changed_cb);
         mode_changed_cb ();
@@ -140,6 +157,26 @@ public class MathWindow : Gtk.ApplicationWindow
             mode_label.label = _("Programming Mode");
             action.set_state (new Variant.string ("programming"));
             break;
+
+        case ButtonMode.KEYBOARD:
+            mode_label.label = _("Keyboard Mode");
+            action.set_state (new Variant.string ("keyboard"));
+            break;
+        }
+
+        if (remove_buttons ==  true && buttons.mode != ButtonMode.KEYBOARD)
+        {
+            vbox.pack_start (buttons, true, true, 0); /* Packs buttons when calculator is switched from keyboard mode to any other mode */
+            remove_buttons = false;
+            converter.set_visible (false);
+            resizable = false;
+        }
+        else if (remove_buttons == false && buttons.mode == ButtonMode.KEYBOARD)
+        {
+            vbox.remove (vbox.get_children ().nth_data (2)); /* Unpacks buttons when switched to keyboard mode */
+            remove_buttons = true;
+            converter.set_visible (true); /* Converter above the display window is set to visible. */
+            resizable = true;
         }
     }
 
@@ -242,6 +279,8 @@ public class MathWindow : Gtk.ApplicationWindow
             mode = ButtonMode.FINANCIAL;
         else if (mode_str == "programming")
             mode = ButtonMode.PROGRAMMING;
+        else if (mode_str == "keyboard")
+            mode = ButtonMode.KEYBOARD;
         else assert_not_reached ();
 
         buttons.mode = mode;
