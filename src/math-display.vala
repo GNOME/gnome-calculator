@@ -13,6 +13,7 @@ public class MathDisplay : Gtk.Viewport
     /* Equation being displayed */
     private MathEquation _equation;
     public MathEquation equation { get { return _equation; } }
+    private HistoryView history;
 
     /* Display widget */
     Gtk.SourceView source_view;
@@ -26,10 +27,12 @@ public class MathDisplay : Gtk.Viewport
     public MathDisplay (MathEquation equation)
     {
         _equation = equation;
-
+        _equation.history_signal.connect (this.handler);
         var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         add (main_box);
-
+        history = new HistoryView (this, main_box);
+        var scrolled_window = new Gtk.ScrolledWindow (null, null);
+        scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
         source_view = new Gtk.SourceView.with_buffer (equation);
         source_view.set_accepts_tab (false);
         source_view.set_pixels_above_lines (8);
@@ -46,7 +49,9 @@ public class MathDisplay : Gtk.Viewport
         source_view.key_press_event.connect (key_press_cb);
         create_autocompletion ();
 
-        main_box.pack_start (source_view, true, true, 0);
+        main_box.pack_start (scrolled_window, true, true, 0);
+        scrolled_window.add (source_view); /* Adds ScrolledWindow to source_view for displaying long equations */
+        scrolled_window.show ();
 
         var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         main_box.pack_start (info_box, false, true, 0);
@@ -73,6 +78,31 @@ public class MathDisplay : Gtk.Viewport
         status_changed_cb ();
 
         equation.notify["error-token-end"].connect ((pspec) => { error_status_changed_cb (); });
+    }
+
+    public void grabfocus () /* Editbar grabs focus when an instance of gnome-calculator is created */
+    {
+        source_view.grab_focus ();
+    }
+
+    public void handler (string answer, Number number, int number_base, uint representation_base)
+    {
+        this.update_history (answer, number, number_base, representation_base); /* Recieves signal emitted by a MathEquation object for updating history-view */
+    }
+
+    public void display_text (string prev_eq)
+    {
+        _equation.display_selected (prev_eq);
+    }
+
+    public  void update_history (string answer, Number number, int number_base, uint representation_base)
+    {
+        history.insert_entry (answer, number, number_base, representation_base); /* Sends current equation and answer for updating History-View */
+    }
+
+    public void insert_text (string answer)
+    {
+        _equation.insert_selected (answer);
     }
 
     private void create_autocompletion ()

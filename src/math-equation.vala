@@ -118,6 +118,7 @@ public class MathEquation : Gtk.SourceBuffer
         }
     }
 
+    public signal void history_signal (string answer, Number number, int number_base, uint representation_base); /*signal to be emitted when a new calculation is tp be entered in history-view */
     private AngleUnit _angle_units;  /* Units for trigonometric functions */
     private NumberMode _number_mode;   /* ??? */
     private bool can_super_minus; /* true if entering minus can generate a superscript minus */
@@ -197,6 +198,11 @@ public class MathEquation : Gtk.SourceBuffer
         state.ans_base = 10;
 
         ans_tag = create_tag (null, "weight", Pango.Weight.BOLD, null);
+    }
+
+    public void display_selected (string selected)
+    {
+        set_text (selected, -1);
     }
 
     private void get_ans_offsets (out int start, out int end)
@@ -760,7 +766,7 @@ public class MathEquation : Gtk.SourceBuffer
 
         if (representation_base != 0)
             serializer.set_representation_base (serializer.get_base ());
-
+        this.history_signal (get_current_state ().expression, x, serializer.get_base(), representation_base); /*emits signal to enter a new entry into history-view */
         set_text (text, -1);
         state.ans = x;
 
@@ -795,6 +801,11 @@ public class MathEquation : Gtk.SourceBuffer
 
         delete_selection (false, false);
         insert_at_cursor (text, -1);
+    }
+
+    public void insert_selected (string answer)
+    {
+        insert (answer);
     }
 
     public new void insert_square ()

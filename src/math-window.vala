@@ -103,6 +103,7 @@ public class MathWindow : Gtk.ApplicationWindow
         scrolled_window.show ();
 
         _display = new MathDisplay (equation);
+        _display.grabfocus ();
         scrolled_window.add (display);
         display.show ();
 

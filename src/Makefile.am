@@ -38,6 +38,7 @@ gnome_calculator_SOURCES = \
 	math-function.vala \
 	function-manager.vala \
 	math-function-popup.vala \
+	math-history.vala \
 	$(BUILT_SOURCES)
 
 gnome_calculator_VALAFLAGS = \
