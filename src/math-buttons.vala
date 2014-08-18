@@ -620,6 +620,11 @@ public class MathButtons : Gtk.Box
         var button = builder.get_object (widget_name) as Gtk.Button;
         if (button == null)
             return;
+        if (name == "result") /* Adds blue color to result button */
+            button.get_style_context ().add_class ("suggested-action");
+
+        if (name == "clear") /* Adds red color to clear button */
+            button.get_style_context ().add_class ("destructive-action");
 
         if (data != null)
         {
