@@ -89,10 +89,10 @@ public class Calculator : Gtk.Application
         var menu = builder.get_object ("appmenu") as MenuModel;
         set_app_menu (menu);
 
-        add_accelerator ("<control>C", "win.copy", null);
-        add_accelerator ("<control>V", "win.paste", null);
-        add_accelerator ("<control>Z", "win.undo", null);
-        add_accelerator ("<control><shift>Z", "win.redo", null);
+        set_accels_for_action ("win.copy", {"<control>C"});
+        set_accels_for_action ("win.paste", {"<control>V"});
+        set_accels_for_action ("win.undo", {"<control>Z"});
+        set_accels_for_action ("win.redo", {"<control><shift>Z"});
     }
 
     protected override void activate ()
