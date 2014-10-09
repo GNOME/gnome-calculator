@@ -127,7 +127,7 @@ public class SearchProviderApp : Application
     {
         Object (application_id: "org.gnome.Calculator.SearchProvider",
                 flags: ApplicationFlags.IS_SERVICE,
-                inactivity_timeout: 10000);
+                inactivity_timeout: 60000);
     }
 
     public override bool dbus_register (DBusConnection connection, string object_path)
