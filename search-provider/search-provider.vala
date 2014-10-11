@@ -40,7 +40,7 @@ public class SearchProvider : Object
     }
 
     private static string[] get_result_identifier (string[] terms)
-        ensures (result.length == 0 || result.length == 1)
+//        ensures (result.length == 0 || result.length == 1)    bug #737222
     {
         /* We have at most one result: the search terms as one string */
         if (can_parse (terms))
@@ -61,7 +61,7 @@ public class SearchProvider : Object
 
     public HashTable<string, Variant>[] get_result_metas (string[] results)
         requires (results.length == 1)
-        ensures (result.length == 1)
+//        ensures (result.length == 1)  bug #737222
     {
         Subprocess subprocess;
         string stdout_buf;
