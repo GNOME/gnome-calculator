@@ -1179,6 +1179,8 @@ public class MathEquation : Gtk.SourceBuffer
             return;
         }
 
+        var mark = create_mark (null, location, false);
+
         /* If following a delete then have already pushed undo stack (Gtk.TextBuffer doesn't indicate replace operations so we have to infer them) */
         if (!in_delete)
             push_undo_stack ();
@@ -1209,8 +1211,11 @@ public class MathEquation : Gtk.SourceBuffer
 
         state.entered_multiply = text == "×";
 
-        /* Update thousands separators */
+        /* Update thousands separators, then revalidate iterator */
         reformat_separators ();
+        get_iter_at_mark (out location, mark);
+
+        delete_mark (mark);
 
         notify_property ("display");
     }
