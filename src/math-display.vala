@@ -37,7 +37,6 @@ public class MathDisplay : Gtk.Viewport
         /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
         /*source_view.set_right_margin (6);*/
         source_view.set_justification (Gtk.Justification.RIGHT);
-        source_view.ensure_style ();
         var font_desc = source_view.get_style_context ().get_font (Gtk.StateFlags.NORMAL);
         font_desc.set_size (16 * Pango.SCALE);
         source_view.override_font (font_desc);
