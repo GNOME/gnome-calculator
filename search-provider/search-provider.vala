@@ -22,8 +22,25 @@ public class SearchProvider : Object
         try
         {
             int exit_status;
+
+            var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
+            if (tsep_string == null || tsep_string == "")
+                tsep_string = " ";
+
+            var decimal = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
+            if (decimal == null)
+                decimal = "";
+
+            // "normalize" input to a format known to double.try_parse
+            var equation = terms_to_equation (terms).replace (tsep_string, "").replace (decimal, ".");
+
+            // if the search is a plain number, don't process it
+            if (double.try_parse (equation)) {
+                return false;
+            }
+
             Process.spawn_command_line_sync (
-                "gnome-calculator --solve " + Shell.quote (terms_to_equation (terms)),
+                "gnome-calculator --solve " + Shell.quote (equation),
                 null, null, out exit_status);
             Process.check_exit_status (exit_status);
         }
@@ -148,5 +165,7 @@ public class SearchProviderApp : Application
 
 int main ()
 {
+    Intl.setlocale (LocaleCategory.ALL, "");
+
     return new SearchProviderApp ().run ();
 }
