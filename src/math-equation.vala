@@ -684,13 +684,14 @@ public class MathEquation : Gtk.SourceBuffer
                     next_is_digit = next_char.isdigit ();
 
                 /* Ignore thousands separators */
-                if (c == serializer.get_thousands_separator () && last_is_digit && next_is_digit)
-                    ;
-                /* Substitute radix character */
-                else if (c == serializer.get_radix () && (last_is_digit || next_is_digit))
-                    eq_text += ".";
-                else
-                    eq_text += c.to_string ();
+                if (c != serializer.get_thousands_separator () || !last_is_digit || !next_is_digit)
+                {
+                    /* Substitute radix character */
+                    if (c == serializer.get_radix () && (last_is_digit || next_is_digit))
+                        eq_text += ".";
+                    else
+                        eq_text += c.to_string ();
+                }
 
                 last_is_digit = is_digit;
             }
