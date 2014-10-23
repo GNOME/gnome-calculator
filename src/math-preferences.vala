@@ -74,15 +74,13 @@ public class MathPreferencesDialog : Gtk.Dialog
         number_format_combo.pack_start (renderer, true);
         number_format_combo.add_attribute (renderer, "text", 0);
 
-        var alignment = new Gtk.Alignment (0.5f, 0.5f, 1.0f, 1.0f);
-        alignment.bottom_padding = 6;
-        alignment.left_padding = 12;
-        alignment.show ();
-        grid.attach (alignment, 0, 1, 2, 1);
-
         var format_options_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
+        format_options_box.margin_bottom = 6;
+        format_options_box.margin_start = 12;
+        format_options_box.halign = Gtk.Align.CENTER;
+        format_options_box.valign = Gtk.Align.CENTER;
         format_options_box.show ();
-        alignment.add (format_options_box);
+        grid.attach (format_options_box, 0, 1, 2, 1);
 
         var places_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         places_box.show ();
