@@ -146,11 +146,11 @@ public class Calculator : Gtk.Application
         if (options.contains ("solve"))
         {
             var solve_equation = (string) options.lookup_value ("solve", VariantType.STRING);
-            var tsep_string = nl_langinfo (NLItem.THOUSEP);
+            var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
             if (tsep_string == null || tsep_string == "")
                 tsep_string = " ";
 
-            var decimal = nl_langinfo (NLItem.RADIXCHAR);
+            var decimal = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
             if (decimal == null)
                 decimal = "";
 
