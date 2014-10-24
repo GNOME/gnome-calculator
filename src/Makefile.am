@@ -18,7 +18,6 @@ resources.c: $(top_srcdir)/data/gnome-calculator.gresource.xml $(shell $(GLIB_CO
 
 gnome_calculator_SOURCES = \
 	config.vapi \
-	fixes.vapi \
 	gnome-calculator.vala \
 	currency.vala \
 	equation.vala \
@@ -54,7 +53,6 @@ gnome_calculator_LDADD = \
 
 gcalccmd_SOURCES = \
 	config.vapi \
-	fixes.vapi \
 	gcalccmd.vala \
 	currency.vala \
 	equation.vala \
@@ -78,7 +76,6 @@ gcalccmd_LDADD = \
 
 test_number_SOURCES = \
 	config.vapi \
-	fixes.vapi \
 	test-number.vala \
 	number.vala \
 	serializer.vala
@@ -95,7 +92,6 @@ test_number_LDADD = \
 
 test_equation_SOURCES = \
 	config.vapi \
-	fixes.vapi \
 	test-equation.vala \
 	currency.vala \
 	equation.vala \
@@ -119,7 +115,6 @@ test_equation_LDADD = \
 
 test_serializer_SOURCES = \
 	config.vapi \
-	fixes.vapi \
 	test-serializer.vala \
 	number.vala \
 	serializer.vala
