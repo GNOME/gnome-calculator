@@ -487,7 +487,8 @@ public class FunctionCompletionProvider : CompletionProvider
     {
         Gtk.TextIter emptyiter = {};
 
-        var iter1 = context.get_iter ();
+        Gtk.TextIter iter1;
+        context.get_iter (out iter1);
         // This check is based on the assumption/knowledge
         // that vala nulls the iter before passing at as a reference.
         // The gtksourceview api has no way to signal error.
@@ -549,7 +550,8 @@ public class VariableCompletionProvider : CompletionProvider
     {
         Gtk.TextIter emptyiter = {};
 
-        var iter1 = context.get_iter ();
+        Gtk.TextIter iter1;
+        context.get_iter (out iter1);
         // This check is based on the assumption/knowledge
         // that vala nulls the iter before passing at as a reference.
         // The gtksourceview api has no way to signal error.
