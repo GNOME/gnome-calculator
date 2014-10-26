@@ -485,17 +485,9 @@ public class FunctionCompletionProvider : CompletionProvider
 
     public override void populate (Gtk.SourceCompletionContext context)
     {
-        Gtk.TextIter emptyiter = {};
-
         Gtk.TextIter iter1;
-        context.get_iter (out iter1);
-        // This check is based on the assumption/knowledge
-        // that vala nulls the iter before passing at as a reference.
-        // The gtksourceview api has no way to signal error.
-        if (iter1 == emptyiter)
-        {
+        if (!context.get_iter (out iter1))
             return;
-        }
 
         Gtk.TextBuffer text_buffer = iter1.get_buffer ();
         MathFunction[] functions = get_matches_for_completion_at_cursor (text_buffer);
@@ -548,17 +540,9 @@ public class VariableCompletionProvider : CompletionProvider
 
     public override void populate (Gtk.SourceCompletionContext context)
     {
-        Gtk.TextIter emptyiter = {};
-
         Gtk.TextIter iter1;
-        context.get_iter (out iter1);
-        // This check is based on the assumption/knowledge
-        // that vala nulls the iter before passing at as a reference.
-        // The gtksourceview api has no way to signal error.
-        if (iter1 == emptyiter)
-        {
+        if (!context.get_iter (out iter1))
             return;
-        }
 
         Gtk.TextBuffer text_buffer = iter1.get_buffer ();
         string[] variables = get_matches_for_completion_at_cursor (text_buffer, _equation.variables);
