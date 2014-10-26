@@ -20,7 +20,7 @@ dnl ###########################################################################
 
 GLIB_REQUIRED=2.40.0
 GTK_REQUIRED=3.11.6
-GTKSOURCEVIEW_REQUIRED=3.0.0
+GTKSOURCEVIEW_REQUIRED=3.15.1
 
 PKG_CHECK_MODULES(GNOME_CALCULATOR, [
     gtk+-3.0 >= $GTK_REQUIRED
