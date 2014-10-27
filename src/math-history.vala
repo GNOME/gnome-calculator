@@ -71,12 +71,12 @@ public class HistoryView : Gtk.Box
         string current_equation = equation;
         string ans = answer;
         Gtk.ListBoxRow row = (listbox.get_row_at_index (no_ofitems - 1) as Gtk.ListBoxRow);
-        Gtk.Box box = (row.get_child () as Gtk.Box);
-        if (box != null)
+        Gtk.Grid grid = (row.get_child () as Gtk.Grid);
+        if (grid != null)
         {
-            Gtk.EventBox ans_eventbox = box.get_children ().nth_data (1) as Gtk.EventBox;
+            Gtk.EventBox ans_eventbox = grid.get_children ().nth_data (0) as Gtk.EventBox;
             string prev_ans = (ans_eventbox.get_child () as Gtk.Label).get_tooltip_text (); /* retrieves previous equation */
-            Gtk.EventBox eq_eventbox = box.get_children ().nth_data (0) as Gtk.EventBox;
+            Gtk.EventBox eq_eventbox = grid.get_children ().nth_data (1) as Gtk.EventBox;
             string prev_equation = (eq_eventbox.get_child () as Gtk.Label).get_tooltip_text (); /* retrieves previous answer */
 
             if ((no_ofitems >= 1) && (prev_ans == ans) && (current_equation == prev_equation))
