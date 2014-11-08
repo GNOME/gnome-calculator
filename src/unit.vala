@@ -123,7 +123,7 @@ public class UnitManager : Object
 
         var currency_category = default_unit_manager.add_category ("currency", _("Currency"));
         var currencies = CurrencyManager.get_default ().get_currencies ();
-        currencies.sort ((a, b) => { return strcmp (a.display_name, b.display_name); });
+        currencies.sort ((a, b) => { return a.display_name.collate (b.display_name); });
         foreach (var currency in currencies)
         {
             /* Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100 */
