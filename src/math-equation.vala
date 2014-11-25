@@ -241,7 +241,11 @@ public class MathEquation : Gtk.SourceBuffer
             @delete (ref ans_start, ref ans_end);
             get_iter_at_mark (out ans_start, ans_start_mark);
             get_iter_at_mark (out ans_end, ans_end_mark);
+#if VALA_0_28
+            insert_with_tags (ref ans_end, ans_text, -1, ans_tag);
+#else
             insert_with_tags (ans_end, ans_text, -1, ans_tag);
+#endif
 
             // NOTE: Due to the inverted gravity of answer marks, after inserting text
             //       the positions are inverted. Hence, we need to recreate marks.
