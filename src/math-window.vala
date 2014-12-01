@@ -129,6 +129,20 @@ public class MathWindow : Gtk.ApplicationWindow
         buttons.show ();
         buttons.notify["mode"].connect (mode_changed_cb);
         mode_changed_cb ();
+
+        var provider = new Gtk.CssProvider ();
+        var file = File.new_for_uri ("resource:///org/gnome/calculator/calculator.css");
+        try
+        {
+            if (provider.load_from_file (file))
+            {
+                Gtk.StyleContext.add_provider_for_screen (this.get_screen (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            }
+        }
+        catch (Error e)
+        {
+            warning ("Error while loading css: %s", e.message);
+        }
     }
 
     private void mode_changed_cb ()
