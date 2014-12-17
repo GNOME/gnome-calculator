@@ -47,7 +47,7 @@ public class MathEquation : Gtk.SourceBuffer
 {
     private Gtk.TextTag ans_tag;
 
-    /* Word size in bits */   
+    /* Word size in bits */
     private int _word_size;
     public int word_size
     {
@@ -781,6 +781,11 @@ public class MathEquation : Gtk.SourceBuffer
         ans_start_mark = create_mark (null, start, false);
         ans_end_mark = create_mark (null, end, true);
         apply_tag (ans_tag, start, end);
+
+        if (serializer.error != null)
+        {
+            status = serializer.error;
+        }
     }
 
     public new void insert (string text)
@@ -954,11 +959,13 @@ public class MathEquation : Gtk.SourceBuffer
                 break;
 
             case ErrorCode.MP:
-                if (mp_get_error () != null)
-                    solvedata.error = mp_get_error ();
-                else if (error_token != null) /* Uncategorized error. Show error token to user */
+                if (Number.error != null) // LEGACY, should never be run
                 {
-                    solvedata.error = _("Malformed expression at token '%s'").printf (error_token);
+                    solvedata.error = Number.error;
+                }
+                else if (error_token != null) // should always be run
+                {
+                    solvedata.error = _("%s").printf (error_token);
                     solvedata.error_start = error_start;
                     solvedata.error_end = error_end;
                 }
@@ -1003,6 +1010,8 @@ public class MathEquation : Gtk.SourceBuffer
 
             /* Fix thousand separator offsets in the start and end offsets of error token. */
             error_token_fix_thousands_separator ();
+            /* Fix missing Parenthesis before the start and after the end offsets of error token */
+            error_token_fix_parenthesis ();
 
             /* Notify the GUI about the change in error token locations. */
             notify_property ("error-token-end");
@@ -1071,6 +1080,70 @@ public class MathEquation : Gtk.SourceBuffer
         {
             state.error_token_end += length;
             end.forward_chars (length);
+        }
+    }
+
+    /* Fix the offsets to consider starting  and ending parenthesis */
+    private void error_token_fix_parenthesis ()
+    {
+        unichar c;
+        int count = 0;
+        int real_end = display.index_of_nth_char (error_token_end);
+        int real_start = display.index_of_nth_char (error_token_start);
+
+        /* checks if there are more opening/closing parenthesis than closing/opening parenthesis */
+        for (int i = real_start; display.get_next_char (ref i, out c) && i <= real_end;)
+        {
+            if (c.to_string () == "(") count++;
+            if (c.to_string () == ")") count--;
+        }
+
+        /* if there are more opening than closing parenthesis and there are closing parenthesis
+           after the end offset, include those in the offsets */
+        for (int i = real_end; display.get_next_char (ref i, out c) && count > 0;)
+        {
+            if (c.to_string () == ")")
+            {
+                state.error_token_end++;
+                count--;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        /* the same for closing parenthesis */
+        for (int i = real_start; display.get_prev_char (ref i, out c) && count < 0;)
+        {
+            if (c.to_string () == "(")
+            {
+                state.error_token_start--;
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        real_end = display.index_of_nth_char (error_token_end);
+        real_start = display.index_of_nth_char (error_token_start);
+
+        unichar d;
+
+        /* if there are opening parenthesis directly before aswell as closing parenthesis directly after the offsets, include those aswell */
+        while (display.get_next_char (ref real_end, out d) && display.get_prev_char (ref real_start, out c))
+        {
+            if (c.to_string () == "(" && d.to_string () == ")")
+            {
+                state.error_token_start--;
+                state.error_token_end++;
+            }
+            else
+            {
+                break;
+            }
         }
     }
 
@@ -1159,7 +1232,7 @@ public class MathEquation : Gtk.SourceBuffer
         var z = number;
         if (z == null)
         {
-            /* This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number */        
+            /* This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number */
             status = _("No sane value to bitwise shift");
             return;
         }

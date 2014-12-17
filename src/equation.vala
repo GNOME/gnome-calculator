@@ -117,15 +117,17 @@ public class Equation : Object
     public new Number? parse (out uint representation_base = null, out ErrorCode error_code = null, out string? error_token = null, out uint? error_start = null, out uint? error_end = null)
     {
         var parser = new EquationParser (this, expression);
-        mp_clear_error ();
+        Number.error = null;
 
         var z = parser.parse (out representation_base, out error_code, out error_token, out error_start, out error_end);
 
         /* Error during parsing */
         if (error_code != ErrorCode.NONE)
+        {
             return null;
+        }
 
-        if (mp_get_error () != null)
+        if (Number.error != null)
         {
             error_code = ErrorCode.MP;
             return null;

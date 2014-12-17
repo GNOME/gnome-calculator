@@ -78,7 +78,20 @@ public abstract class RNode : ParseNode
         var r = right.solve ();
         if (r == null)
             return null;
-        return solve_r (r);
+        var z = solve_r (r);
+
+        /* check for errors */
+        Number.check_flags ();
+        if (Number.error != null)
+        {
+            var tmpleft = right;
+            var tmpright = right;
+            while (tmpleft.left != null) tmpleft = tmpleft.left;
+            while (tmpright.right != null) tmpright = tmpright.right;
+            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            Number.error = null;
+        }
+        return z;
     }
 
     public abstract Number solve_r (Number r);
@@ -97,7 +110,20 @@ public abstract class LRNode : ParseNode
         var r = right.solve ();
         if (l == null || r == null)
             return null;
-        return solve_lr (l, r);
+        var z = solve_lr (l, r);
+
+        /* check for errors */
+        Number.check_flags ();
+        if (Number.error != null)
+        {
+            var tmpleft = left;
+            var tmpright = right;
+            while (tmpleft.left != null) tmpleft = tmpleft.left;
+            while (tmpright.right != null) tmpright = tmpright.right;
+            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            Number.error = null;
+        }
+        return z;
     }
 
     public abstract Number solve_lr (Number left, Number r);
@@ -109,7 +135,7 @@ public class ConstantNode : ParseNode
     {
         base (parser, token, precedence, associativity);
     }
-    
+
     public override Number? solve ()
     {
         return mp_set_from_string (token.text, parser.number_base);
@@ -118,7 +144,7 @@ public class ConstantNode : ParseNode
 
 public class AssignNode : RNode
 {
-    public AssignNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity) 
+    public AssignNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
     }
@@ -170,7 +196,7 @@ public class VariableNode : ParseNode
     }
 
     public override Number? solve ()
-    {   
+    {
         /* If defined, then get the variable */
         var ans = parser.get_variable (token.text);
         if (ans != null)
@@ -233,6 +259,18 @@ public class VariableWithPowerNode : ParseNode
             if (!token.text.get_next_char (ref i, out next))
                 t = t.xpowy_integer (pow);
             value = value.multiply (t);
+        }
+
+        /* check for errors */
+        Number.check_flags ();
+        if (Number.error != null)
+        {
+            var tmpleft = left;
+            var tmpright = right;
+            while (tmpleft.left != null) tmpleft = tmpleft.left;
+            while (tmpright.right != null) tmpright = tmpright.right;
+            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            Number.error = null;
         }
 
         return value;
@@ -353,6 +391,15 @@ public class FunctionNode : ParseNode
 
         if (tmp != null)
             tmp = tmp.xpowy_integer (pow);
+
+        /* check for errors */
+        Number.check_flags ();
+        if (Number.error != null)
+        {
+            parser.set_error (ErrorCode.MP, Number.error);
+            Number.error = null;
+        }
+
         return tmp;
     }
 }
@@ -527,7 +574,17 @@ public class DivideNode : LRNode
 
     public override Number solve_lr (Number l, Number r)
     {
-        return l.divide (r);
+        var z = l.divide (r);
+        if (Number.error != null)
+        {
+            var tmpleft = right;
+            var tmpright = right;
+            while (tmpleft.left != null) tmpleft = tmpleft.left;
+            while (tmpright.right != null) tmpright = tmpright.right;
+            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            Number.error = null;
+        }
+        return z;
     }
 }
 
@@ -547,7 +604,21 @@ public class ModulusDivideNode : LRNode
             var mod = right.solve ();
             if (base_value == null || exponent == null || mod == null)
                 return null;
-            return base_value.modular_exponentiation (exponent, mod);
+            var z = base_value.modular_exponentiation (exponent, mod);
+
+            /* check for errors */
+            Number.check_flags ();
+            if (Number.error != null)
+            {
+                var tmpleft = left;
+                var tmpright = right;
+                while (tmpleft.left != null) tmpleft = tmpleft.left;
+                while (tmpright.right != null) tmpright = tmpright.right;
+                parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+                Number.error = null;
+            }
+
+            return z;
         }
         else
         {
@@ -555,7 +626,21 @@ public class ModulusDivideNode : LRNode
             var r = right.solve ();
             if (l == null || r == null)
                 return null;
-            return solve_lr (l, r);
+            var z = solve_lr (l, r);
+
+            /* check for errors */
+            Number.check_flags ();
+            if (Number.error != null)
+            {
+                var tmpleft = left;
+                var tmpright = right;
+                while (tmpleft.left != null) tmpleft = tmpleft.left;
+                while (tmpright.right != null) tmpright = tmpright.right;
+                parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+                Number.error = null;
+            }
+
+            return z;
         }
     }
 
@@ -624,7 +709,21 @@ public class XPowYIntegerNode : ParseNode
         if (val == null)
             return null;
 
-        return val.xpowy_integer (pow);
+        var z = val.xpowy_integer (pow);
+
+        /* check for errors */
+        Number.check_flags ();
+        if (Number.error != null)
+        {
+            var tmpleft = left;
+            var tmpright = right;
+            while (tmpleft.left != null) tmpleft = tmpleft.left;
+            while (tmpright.right != null) tmpright = tmpright.right;
+            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            Number.error = null;
+        }
+
+        return z;
     }
 }
 
@@ -937,10 +1036,10 @@ public class Parser
         }
 
         representation_base = this.representation_base;
-        error_code = ErrorCode.NONE;
-        error_token = null;
-        error_start = 0;
-        error_end = 0;
+        error_code = this.error;
+        error_token = this.error_token;
+        error_start = this.error_token_start;
+        error_end = this.error_token_end;
         return ans;
     }
 

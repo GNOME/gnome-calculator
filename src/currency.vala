@@ -444,7 +444,7 @@ public class CurrencyManager : Object
         {
             warning ("Couldn't download IMF currency rate file: %s", e.message);
         }
-       
+
         downloading_imf_rates = false;
         load_rates ();
     }

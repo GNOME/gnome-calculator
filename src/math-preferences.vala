@@ -90,7 +90,7 @@ public class MathPreferencesDialog : Gtk.Dialog
         var string = _("Show %d decimal _places");
         var tokens = string.split ("%d", 2);
 
-        var decimal_places_adjustment = new Gtk.Adjustment (0.0, 0.0, 9.0, 1.0, 1.0, 0.0);
+        var decimal_places_adjustment = new Gtk.Adjustment (0.0, 0.0, 100.0, 1.0, 1.0, 0.0);
         decimal_places_spin = new Gtk.SpinButton (decimal_places_adjustment, 0.0, 0);
 
         if (tokens.length > 0)

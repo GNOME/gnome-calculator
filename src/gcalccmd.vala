@@ -34,9 +34,15 @@ static void solve (string equation)
 
     result_serializer.set_representation_base (representation_base);
     if (z != null)
-        stdout.printf ("%s\n", result_serializer.to_string (z));
+    {
+        var str = result_serializer.to_string (z);
+        if (result_serializer.error != null)
+            stderr.printf ("%s\n", result_serializer.error);
+        else
+            stdout.printf ("%s\n", str);
+    }
     else if (ret == ErrorCode.MP)
-        stderr.printf ("Error %s\n", mp_get_error ());
+        stderr.printf ("Error %s\n", Number.error);
     else
         stderr.printf ("Error %d\n", ret);
 }

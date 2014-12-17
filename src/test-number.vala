@@ -72,21 +72,6 @@ private void test_fraction ()
     pass ();
 }
 
-private void test_float ()
-{
-    for (var a = -10.0f; a <= 10.0f; a += 0.5f)
-    {
-        var z = new Number.float (a);
-        if (z.to_float () != a)
-        {
-            fail ("Number.float (%f).to_float () -> %f, expected %f".printf (a, z.to_float (), a));
-            return;
-        }
-    }
-
-    pass ();
-}
-
 private void test_double ()
 {
     for (var a = -10.0; a <= 10.0; a += 0.5)
@@ -1089,7 +1074,6 @@ static int main (string[] args)
     test_integer ();
     test_unsigned_integer ();
     test_fraction ();
-    test_float ();
     test_double ();
     test_complex ();
     test_polar ();

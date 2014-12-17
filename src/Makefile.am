@@ -18,6 +18,7 @@ resources.c: $(top_srcdir)/data/gnome-calculator.gresource.xml $(shell $(GLIB_CO
 
 gnome_calculator_SOURCES = \
 	config.vapi \
+	mpfr.vapi \
 	gnome-calculator.vala \
 	currency.vala \
 	equation.vala \
@@ -50,10 +51,12 @@ gnome_calculator_VALAFLAGS = \
 
 gnome_calculator_LDADD = \
 	$(GNOME_CALCULATOR_LIBS) \
-	-lm
+	-lmpfr \
+	-lgmp
 
 gcalccmd_SOURCES = \
 	config.vapi \
+	mpfr.vapi \
 	gcalccmd.vala \
 	currency.vala \
 	equation.vala \
@@ -73,10 +76,12 @@ gcalccmd_VALAFLAGS = \
 
 gcalccmd_LDADD = \
 	$(GCALCCMD_LIBS) \
-	-lm
+	-lmpfr \
+	-lgmp
 
 test_number_SOURCES = \
 	config.vapi \
+	mpfr.vapi \
 	test-number.vala \
 	number.vala \
 	serializer.vala
@@ -89,10 +94,13 @@ test_number_VALAFLAGS = \
 
 test_number_LDADD = \
 	$(GCALCCMD_LIBS) \
-	-lm
+	-lm \
+	-lmpfr \
+	-lgmp
 
 test_equation_SOURCES = \
 	config.vapi \
+	mpfr.vapi \
 	test-equation.vala \
 	currency.vala \
 	equation.vala \
@@ -112,10 +120,12 @@ test_equation_VALAFLAGS = \
 
 test_equation_LDADD = \
 	$(GCALCCMD_LIBS) \
-	-lm
+	-lmpfr \
+	-lgmp
 
 test_serializer_SOURCES = \
 	config.vapi \
+	mpfr.vapi \
 	test-serializer.vala \
 	number.vala \
 	serializer.vala
@@ -128,6 +138,7 @@ test_serializer_VALAFLAGS = \
 
 test_serializer_LDADD = \
 	$(GCALCCMD_LIBS) \
-	-lm
+	-lmpfr \
+	-lgmp
 
 -include $(top_srcdir)/git.mk

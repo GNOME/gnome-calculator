@@ -18,7 +18,7 @@ public class MathConverter : Gtk.Box
     private Gtk.ComboBox to_combo;
 
     private Gtk.Label result_label;
-    
+
     public signal void changed ();
 
     public MathConverter (MathEquation equation)

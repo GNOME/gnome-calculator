@@ -31,7 +31,7 @@ public class Calculator : Gtk.Application
         { "about", about_cb, null, null, null },
         { "quit", quit_cb, null, null, null },
     };
-    
+
     public Calculator ()
     {
         Object (flags : ApplicationFlags.NON_UNIQUE);
@@ -56,6 +56,7 @@ public class Calculator : Gtk.Application
         var target_currency = settings.get_string ("target-currency");
         var source_units = settings.get_string ("source-units");
         var target_units = settings.get_string ("target-units");
+        var precision = settings.get_int ("precision");
 
         var equation = new MathEquation ();
         equation.accuracy = accuracy;
@@ -68,6 +69,7 @@ public class Calculator : Gtk.Application
         equation.target_currency = target_currency;
         equation.source_units = source_units;
         equation.target_units = target_units;
+        Number.precision = precision;
 
         add_action_entries (app_entries, this);
 
@@ -171,7 +173,7 @@ public class Calculator : Gtk.Application
             }
             else if (error == ErrorCode.MP)
             {
-                stderr.printf ("Error: %s\n", mp_get_error ());
+                stderr.printf ("Error: %s\n", Number.error);
                 return Posix.EXIT_FAILURE;
             }
             else

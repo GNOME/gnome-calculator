@@ -13,7 +13,7 @@ private UnitManager? default_unit_manager = null;
 public class UnitManager : Object
 {
     private List<UnitCategory> categories;
-    
+
     public UnitManager ()
     {
         categories = new List<UnitCategory> ();
@@ -313,7 +313,7 @@ private class UnitSolveEquation : Equation
         base (function);
         this.x = x;
     }
-    
+
     public override bool variable_is_defined (string name)
     {
         return true;

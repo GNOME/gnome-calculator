@@ -90,7 +90,7 @@ public class MathWindow : Gtk.ApplicationWindow
 
         var vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
         vbox.border_width = 6;
-        main_vbox.pack_start (vbox, true, true, 0);  
+        main_vbox.pack_start (vbox, true, true, 0);
         vbox.show ();
 
         var scrolled_window = new Gtk.ScrolledWindow (null, null);

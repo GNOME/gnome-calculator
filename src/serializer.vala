@@ -32,6 +32,9 @@ public class Serializer : Object
     private unichar tsep;            /* Locale specific thousands separator. */
     private int tsep_count;          /* Number of digits between separator. */
 
+    /* is set when an error (for example precision error while converting) occurs */
+    public string? error { get; set; default = null; }
+
     public Serializer (DisplayFormat format, int number_base, int trailing_digits)
     {
         var radix_string = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
@@ -318,7 +321,18 @@ public class Serializer : Object
             var t3 = temp.subtract (t2);
 
             var d = t3.to_integer ();
-            string.prepend_c (d < 16 ? digits[d] : '?');
+
+            if (d < 16 && d >= 0)
+            {
+                string.prepend_c (digits[d]);
+            }
+            else
+            {
+                string.prepend_c ('?');
+                error = _("Precision error");
+                string.assign ("0");
+                break;
+            }
             n_digits++;
 
             temp = t;

@@ -120,7 +120,7 @@ public class PreLexer : Object
 
         if (c == ',' || c == '.')
             return LexerTokenType.PL_DECIMAL;
-            
+
         if (c.isdigit ())
             return LexerTokenType.PL_DIGIT;
 

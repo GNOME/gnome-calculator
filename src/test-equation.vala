@@ -1,13 +1,13 @@
 /*
  * Copyright (C) 2008-2012 Robert Ancell.
- * 
+ *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
  * Foundation, either version 2 of the License, or (at your option) any later
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
  */
- 
+
 private int number_base = 10;
 private int wordlen = 32;
 private AngleUnit angle_units = AngleUnit.DEGREES;
@@ -20,7 +20,7 @@ private int pass_count = 0;
 private string error_code_to_string (ErrorCode error)
 {
     if (error == ErrorCode.MP)
-        return "ErrorCode.MP(\"%s\")".printf (mp_get_error ());
+        return "ErrorCode.MP(\"%s\")".printf (Number.error);
 
     return mp_error_code_to_string (error);
 }
@@ -115,7 +115,7 @@ private class TestEquation : Equation
     {
         if (!enable_conversions)
             return null;
-        
+
         return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units);
     }
 }
@@ -133,19 +133,19 @@ private void test_conversions ()
     test ("100 gradians in degrees", "90", 0);
 
     /* Length */
-    test ("1 meter in mm", "1000", 0);  
+    test ("1 meter in mm", "1000", 0);
     test ("1m in mm", "1000", 0);
     test ("1 inch in cm", "2.54", 0);
 
     /* Area */
     test ("1m² in mm²", "1000000", 0);
-  
+
     /* Volume */
-    test ("1m³ in mm³", "1000000000", 0);  
+    test ("1m³ in mm³", "1000000000", 0);
 
     /* Weight */
     test ("1 kg in pounds", "2.204622622", 0);
-  
+
     /* Duration */
     test ("1 minute in seconds", "60", 0);
     test ("1s in ms", "1000", 0);
@@ -223,7 +223,7 @@ private void test_equations ()
     test ("١٢٣٤٥٦٧٨٩٠", "1234567890", 0);
     test ("۱۲۳۴۵۶۷۸۹۰", "1234567890", 0);
 
-/*    
+/*
     //test ("2A", "2000000000000000", 0);
     test ("2T", "2000000000000", 0);
     test ("2G", "2000000000", 0);
@@ -263,7 +263,7 @@ private void test_equations ()
     test ("2y", "6", 0);
     test ("y2", "", ErrorCode.INVALID);
     test ("y 2", "", ErrorCode.INVALID);
-    test ("2z", "", ErrorCode.UNKNOWN_VARIABLE);  
+    test ("2z", "", ErrorCode.UNKNOWN_VARIABLE);
     test ("z2", "", ErrorCode.UNKNOWN_VARIABLE);
     test ("z 2", "", ErrorCode.UNKNOWN_VARIABLE);
     test ("z(2)", "", ErrorCode.UNKNOWN_FUNCTION);
@@ -414,7 +414,7 @@ private void test_equations ()
     test ("-21 mod 9", "6", 0);
     test ("-21 mod -9", "−3", 0);
 
-    test ("sgn 0", "0", 0);  
+    test ("sgn 0", "0", 0);
     test ("sgn 3", "1", 0);
     test ("sgn −3", "−1", 0);
     test ("⌊3⌋", "3", 0);
@@ -530,16 +530,16 @@ private void test_equations ()
     test ("i", "i", 0);
     test ("−i", "−i", 0);
     test ("2i", "2i", 0);
-    test ("1+i", "1+i", 0);  
+    test ("1+i", "1+i", 0);
     test ("i+1", "1+i", 0);
-    test ("1−i", "1−i", 0);  
+    test ("1−i", "1−i", 0);
     test ("i−1", "−1+i", 0);
     test ("i×i", "−1", 0);
     test ("i÷i", "1", 0);
     test ("1÷i", "−i", 0);
     test ("|i|", "1", 0);
     test ("|3+4i|", "5", 0);
-    test ("arg 0", "", ErrorCode.MP);  
+    test ("arg 0", "", ErrorCode.MP);
     test ("arg 1", "0", 0);
     test ("arg (1+i)", "45", 0);
     test ("arg i", "90", 0);
@@ -565,9 +565,9 @@ private void test_equations ()
     test ("1 and 1", "1", 0);
     test ("3 and 5", "1", 0);
 
-    test ("0 or 0", "0", 0);  
+    test ("0 or 0", "0", 0);
     test ("1 or 0", "1", 0);
-    test ("0 or 1", "1", 0);  
+    test ("0 or 1", "1", 0);
     test ("1 or 1", "1", 0);
     test ("3 or 5", "7", 0);
 
