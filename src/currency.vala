@@ -400,14 +400,14 @@ public class CurrencyManager : Object
         {
             downloading_imf_rates = true;
             debug ("Downloading rates from the IMF...");
-            download_file ("http://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, download_imf_cb);
+            download_file ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, download_imf_cb);
         }
         path = get_ecb_rate_filepath ();
         if (!downloading_ecb_rates && file_needs_update (path, 60 * 60 * 24 * 7))
         {
             downloading_ecb_rates = true;
             debug ("Downloading rates from the ECB...");
-            download_file ("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, download_ecb_cb);
+            download_file ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, download_ecb_cb);
         }
 
         if (!load_rates ())
