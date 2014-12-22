@@ -785,6 +785,7 @@ public class MathEquation : Gtk.SourceBuffer
         if (serializer.error != null)
         {
             status = serializer.error;
+            serializer.error = null;
         }
     }
 

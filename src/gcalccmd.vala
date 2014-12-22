@@ -37,7 +37,10 @@ static void solve (string equation)
     {
         var str = result_serializer.to_string (z);
         if (result_serializer.error != null)
+        {
             stderr.printf ("%s\n", result_serializer.error);
+            result_serializer.error = null;
+        }
         else
             stdout.printf ("%s\n", str);
     }
