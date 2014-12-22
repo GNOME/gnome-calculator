@@ -22,6 +22,8 @@ GLIB_REQUIRED=2.40.0
 GTK_REQUIRED=3.11.6
 GTKSOURCEVIEW_REQUIRED=3.15.1
 
+AC_CHECK_HEADER([mpfr.h], [], [AC_MSG_ERROR([The mpfr header is missing. Please, install mpfr])])
+
 PKG_CHECK_MODULES(GNOME_CALCULATOR, [
     gtk+-3.0 >= $GTK_REQUIRED
     glib-2.0 >= $GLIB_REQUIRED
