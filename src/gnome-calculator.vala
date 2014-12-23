@@ -245,7 +245,8 @@ public class Calculator : Gtk.Application
                                "version", VERSION,
                                "copyright",
                                "\xc2\xa9 1986–2014 The Calculator authors",
-                               "license-type", Gtk.License.GPL_2_0,
+                               /* We link to MPFR which is LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
+                               "license-type", Gtk.License.GPL_3_0,
                                "comments",
                                /* Short description in the about dialog */
                                _("Calculator with financial and scientific modes."),
