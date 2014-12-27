@@ -161,25 +161,65 @@ public class UnitManager : Object
 
     public Unit? get_unit_by_name (string name)
     {
+        int count = 0;
+        Unit? return_unit = null;
         foreach (var c in categories)
         {
             var u = c.get_unit_by_name (name);
             if (u != null)
-                return u;
+            {
+                return_unit = u;
+                count++;
+            }
         }
+        if (count > 1)
+            return null;
+        else if (count == 1)
+            return return_unit;
 
+        foreach (var c in categories)
+        {
+            var u = c.get_unit_by_name (name, false);
+            if (u != null)
+            {
+                return_unit = u;
+                count++;
+            }
+        }
+        if (count == 1)
+            return return_unit;
         return null;
     }
 
     public Unit? get_unit_by_symbol (string symbol)
     {
+        int count = 0;
+        Unit? return_unit = null;
         foreach (var c in categories)
         {
             var u = c.get_unit_by_symbol (symbol);
             if (u != null)
-                return u;
+            {
+                return_unit = u;
+                count++;
+            }
         }
+        if (count > 1)
+            return null;
+        else if (count == 1)
+            return return_unit;
 
+        foreach (var c in categories)
+        {
+            var u = c.get_unit_by_symbol (symbol, false);
+            if (u != null)
+            {
+                return_unit = u;
+                count++;
+            }
+        }
+        if (count == 1)
+            return return_unit;
         return null;
     }
 
@@ -188,7 +228,11 @@ public class UnitManager : Object
         foreach (var c in categories)
         {
             var x_units = c.get_unit_by_symbol (x_symbol);
+            if (x_units == null)
+                x_units = c.get_unit_by_symbol (x_symbol, false);
             var z_units = c.get_unit_by_symbol (z_symbol);
+            if (z_units == null)
+                z_units = c.get_unit_by_symbol (z_symbol, false);
             if (x_units != null && z_units != null)
                 return c.convert (x, x_units, z_units);
         }
@@ -219,21 +263,44 @@ public class UnitCategory : Object
         units.append (unit);
     }
 
-    public Unit? get_unit_by_name (string name)
+    public Unit? get_unit_by_name (string name, bool case_sensitive = true)
     {
+        int count = 0;
+        Unit? return_unit = null;
         foreach (var unit in units)
-            if (unit.name == name)
-                return unit;
-
+            if ((case_sensitive && unit.name == name) || (!case_sensitive && unit.name.down() == name.down ()))
+            {
+                return_unit = unit;
+                count++;
+            }
+        if (count == 1)
+            return return_unit;
         return null;
     }
 
-    public Unit? get_unit_by_symbol (string symbol)
+    public Unit? get_unit_by_symbol (string symbol, bool case_sensitive = true)
     {
+        int count = 0;
+        Unit? return_unit = null;
         foreach (var unit in units)
             if (unit.matches_symbol (symbol))
-                return unit;
+            {
+                return_unit = unit;
+                count++;
+            }
+        if (count > 1)
+            return null;
+        else if (count == 1)
+            return return_unit;
 
+        foreach (var unit in units)
+            if (unit.matches_symbol (symbol, false))
+            {
+                return_unit = unit;
+                count++;
+            }
+        if (count == 1)
+            return return_unit;
         return null;
     }
 
@@ -281,10 +348,10 @@ public class Unit : Object
             _symbols.append (symbol_name);
     }
 
-    public bool matches_symbol (string symbol)
+    public bool matches_symbol (string symbol, bool case_sensitive = true)
     {
         foreach (var s in _symbols)
-            if (s == symbol)
+            if ((case_sensitive && s == symbol) || (!case_sensitive && s.down () == symbol.down ()))
                 return true;
 
         return false;
