@@ -85,6 +85,9 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("VEF", _("Venezuelan Bolívar"), "Bs F"));
         default_currency_manager.currencies.append (new Currency ("ZAR", _("South African Rand"), "R"));
 
+        /* Start downloading the rates if they are outdated. */
+        default_currency_manager.download_rates ();
+
         return default_currency_manager;
     }
 
@@ -365,6 +368,25 @@ public class CurrencyManager : Object
         Xml.Parser.cleanup ();
     }
 
+    private void download_rates ()
+    {
+        /* Update rates if necessary */
+        var path = get_imf_rate_filepath ();
+        if (!downloading_imf_rates && file_needs_update (path, 60 * 60 * 24 * 7))
+        {
+            downloading_imf_rates = true;
+            debug ("Downloading rates from the IMF...");
+            download_file ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, download_imf_cb);
+        }
+        path = get_ecb_rate_filepath ();
+        if (!downloading_ecb_rates && file_needs_update (path, 60 * 60 * 24 * 7))
+        {
+            downloading_ecb_rates = true;
+            debug ("Downloading rates from the ECB...");
+            download_file ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, download_ecb_cb);
+        }
+    }
+
     private bool load_rates ()
     {
         /* Already loaded */
@@ -394,21 +416,8 @@ public class CurrencyManager : Object
 
     public Number? get_value (string currency)
     {
-        /* Update rates if necessary */
-        var path = get_imf_rate_filepath ();
-        if (!downloading_imf_rates && file_needs_update (path, 60 * 60 * 24 * 7))
-        {
-            downloading_imf_rates = true;
-            debug ("Downloading rates from the IMF...");
-            download_file ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, download_imf_cb);
-        }
-        path = get_ecb_rate_filepath ();
-        if (!downloading_ecb_rates && file_needs_update (path, 60 * 60 * 24 * 7))
-        {
-            downloading_ecb_rates = true;
-            debug ("Downloading rates from the ECB...");
-            download_file ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, download_ecb_cb);
-        }
+        /* Make sure that the rates we're returning are up to date. (Just in case the application is running from a long long time) */
+        download_rates ();
 
         if (!load_rates ())
             return null;
