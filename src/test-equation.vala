@@ -157,6 +157,28 @@ private void test_conversions ()
     test ("100degC in degF", "212", 0);
     test ("0degC in degF", "32", 0);
     test ("0 K in degC", "−273.15", 0);
+
+    /* Digital Storage */
+    test ("1000 bits in bytes", "125", 0);
+    test ("1000 bits in nibbles", "250", 0);
+    test ("1000 bytes in kilobytes", "1", 0);
+    test ("1 kB in bits", "8000", 0);
+    test ("10 kB in B", "10000", 0);
+    test ("1 GB in MB", "1000", 0);
+    test ("100 MB in kilobytes", "100000", 0);
+    test ("10000 MB in GB", "10", 0);
+    test ("1000 GB in petabytes", "0.001", 0);
+    test ("1 GB in MiB", "953.674316406", 0);
+    test ("1 mebibit in B", "131072", 0);
+    test ("10 kibibytes in b", "81920", 0);
+    test ("1000 GiB in tebibytes", "0.9765625", 0);
+    test ("100 MiB in Gib", "0.78125", 0);
+    test ("10 TiB in MiB", "10485760", 0);
+    test ("10 pebibytes in TiB", "10240", 0);
+    test ("10 exbibytes in PiB", "10240", 0);
+    test ("10 zebibytes in EiB", "10240", 0);
+    test ("10 yobibytes in ZiB", "10240", 0);
+
 }
 
 private void test_equations ()

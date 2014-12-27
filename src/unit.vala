@@ -33,6 +33,7 @@ public class UnitManager : Object
         var weight_category = default_unit_manager.add_category ("weight", _("Weight"));
         var duration_category = default_unit_manager.add_category ("duration", _("Duration"));
         var temperature_category = default_unit_manager.add_category ("temperature", _("Temperature"));
+        var digitalstorage_category = default_unit_manager.add_category ("digitalstorage", _("Digital Storage"));
 
         /* FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads */
         angle_category.add_unit (new Unit ("degree", _("Degrees"), dpgettext2 (null, "unit-format", "%s degrees"), "π*x/180", "180x/π", dpgettext2 (null, "unit-symbols", "degree,degrees,deg")));
@@ -82,6 +83,43 @@ public class UnitManager : Object
         temperature_category.add_unit (new Unit ("degree-farenheit", _("Fahrenheit"), dpgettext2 (null, "unit-format", "%s ˚F"), "(x+459.67)*5/9", "x*9/5-459.67", dpgettext2 (null, "unit-symbols", "degF,˚F")));
         temperature_category.add_unit (new Unit ("degree-kelvin", _("Kelvin"), dpgettext2 (null, "unit-format", "%s K"), "x", "x", dpgettext2 (null, "unit-symbols", "K")));
         temperature_category.add_unit (new Unit ("degree-rankine", _("Rankine"), dpgettext2 (null, "unit-format", "%s ˚R"), "x*5/9", "x*9/5", dpgettext2 (null, "unit-symbols", "degR,˚R,˚Ra")));
+        /* We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes */
+        digitalstorage_category.add_unit (new Unit ("bit", _("Bits"), dpgettext2 (null, "unit-format", "%s b"), "x/8", "8x", dpgettext2 (null, "unit-symbols", "bit,bits,b")));
+        digitalstorage_category.add_unit (new Unit ("byte", _("Bytes"), dpgettext2 (null, "unit-format", "%s B"), "x", "x", dpgettext2 (null, "unit-symbols", "byte,bytes,B")));
+        digitalstorage_category.add_unit (new Unit ("nibble", _("Nibbles"), dpgettext2 (null, "unit-format", "%s nibble"), "x/2", "2x", dpgettext2 (null, "unit-symbols", "nibble,nibbles")));
+        /* The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted. */
+        digitalstorage_category.add_unit (new Unit ("kilobit", _("Kilobits"), dpgettext2 (null, "unit-format", "%s kb"), "1000x/8", "8x/1000", dpgettext2 (null, "unit-symbols", "kilobit,kilobits,kb,Kb")));
+        digitalstorage_category.add_unit (new Unit ("kilobyte", _("Kilobytes"), dpgettext2 (null, "unit-format", "%s kB"), "1000x", "x/1000", dpgettext2 (null, "unit-symbols", "kilobyte,kilobytes,kB,KB")));
+        digitalstorage_category.add_unit (new Unit ("kibibit", _("Kibibits"), dpgettext2 (null, "unit-format", "%s Kib"), "1024x/8", "8x/1024", dpgettext2 (null, "unit-symbols", "kibibit,kibibits,Kib")));
+        digitalstorage_category.add_unit (new Unit ("kibibyte", _("Kibibytes"), dpgettext2 (null, "unit-format", "%s KiB"), "1024x", "x/1024", dpgettext2 (null, "unit-symbols", "kibibyte,kibibytes,KiB")));
+        digitalstorage_category.add_unit (new Unit ("megabit", _("Megabits"), dpgettext2 (null, "unit-format", "%s Mb"), "1000000x/8", "8x/1000000", dpgettext2 (null, "unit-symbols", "megabit,megabits,Mb")));
+        digitalstorage_category.add_unit (new Unit ("megabyte", _("Megabytes"), dpgettext2 (null, "unit-format", "%s MB"), "1000000x", "x/1000000", dpgettext2 (null, "unit-symbols", "megabyte,megabytes,MB")));
+        digitalstorage_category.add_unit (new Unit ("mebibit", _("Mebibits"), dpgettext2 (null, "unit-format", "%s Mib"), "1048576x/8", "8x/1048576", dpgettext2 (null, "unit-symbols", "mebibit,mebibits,Mib")));
+        digitalstorage_category.add_unit (new Unit ("mebibyte", _("Mebibytes"), dpgettext2 (null, "unit-format", "%s MiB"), "1048576x", "x/1048576", dpgettext2 (null, "unit-symbols", "mebibyte,mebibytes,MiB")));
+        digitalstorage_category.add_unit (new Unit ("gigabit", _("Gigabits"), dpgettext2 (null, "unit-format", "%s Gb"), "1000000000x/8", "8x/1000000000", dpgettext2 (null, "unit-symbols", "gigabit,gigabits,Gb")));
+        digitalstorage_category.add_unit (new Unit ("gigabyte", _("Gigabytes"), dpgettext2 (null, "unit-format", "%s GB"), "1000000000x", "x/1000000000", dpgettext2 (null, "unit-symbols", "gigabyte,gigabytes,GB")));
+        digitalstorage_category.add_unit (new Unit ("gibibit", _("Gibibits"), dpgettext2 (null, "unit-format", "%s Gib"), "1073741824x/8", "8x/1073741824", dpgettext2 (null, "unit-symbols", "gibibit,gibibits,Gib")));
+        digitalstorage_category.add_unit (new Unit ("gibibyte", _("Gibibytes"), dpgettext2 (null, "unit-format", "%s GiB"), "1073741824x", "x/1073741824", dpgettext2 (null, "unit-symbols", "gibibyte,gibibytes,GiB")));
+        digitalstorage_category.add_unit (new Unit ("terabit", _("Terabits"), dpgettext2 (null, "unit-format", "%s Tb"), "1000000000000x/8", "8x/1000000000000", dpgettext2 (null, "unit-symbols", "terabit,terabits,Tb")));
+        digitalstorage_category.add_unit (new Unit ("terabyte", _("Terabytes"), dpgettext2 (null, "unit-format", "%s TB"), "1000000000000x", "x/1000000000000", dpgettext2 (null, "unit-symbols", "terabyte,terabytes,TB")));
+        digitalstorage_category.add_unit (new Unit ("tebibit", _("Tebibits"), dpgettext2 (null, "unit-format", "%s Tib"), "1099511627776x/8", "8x/1099511627776", dpgettext2 (null, "unit-symbols", "tebibit,tebibits,Tib")));
+        digitalstorage_category.add_unit (new Unit ("tebibyte", _("Tebibytes"), dpgettext2 (null, "unit-format", "%s TiB"), "1099511627776x", "x/1099511627776", dpgettext2 (null, "unit-symbols", "tebibyte,tebibytes,TiB")));
+        digitalstorage_category.add_unit (new Unit ("petabit", _("Petabits"), dpgettext2 (null, "unit-format", "%s Pb"), "1000000000000000x/8", "8x/1000000000000000", dpgettext2 (null, "unit-symbols", "petabit,petabits,Pb")));
+        digitalstorage_category.add_unit (new Unit ("petabyte", _("Petabytes"), dpgettext2 (null, "unit-format", "%s PB"), "1000000000000000x", "x/1000000000000000", dpgettext2 (null, "unit-symbols", "petabyte,petabytes,PB")));
+        digitalstorage_category.add_unit (new Unit ("pebibit", _("Pebibits"), dpgettext2 (null, "unit-format", "%s Pib"), "1125899906842624x/8", "8x/1125899906842624", dpgettext2 (null, "unit-symbols", "pebibit,pebibits,Pib")));
+        digitalstorage_category.add_unit (new Unit ("pebibyte", _("Pebibytes"), dpgettext2 (null, "unit-format", "%s PiB"), "1125899906842624x", "x/1125899906842624", dpgettext2 (null, "unit-symbols", "pebibyte,pebibytes,PiB")));
+        digitalstorage_category.add_unit (new Unit ("exabit", _("Exabits"), dpgettext2 (null, "unit-format", "%s Eb"), "1000000000000000000x/8", "8x/1000000000000000000", dpgettext2 (null, "unit-symbols", "exabit,exabits,Eb")));
+        digitalstorage_category.add_unit (new Unit ("exabyte", _("Exabytes"), dpgettext2 (null, "unit-format", "%s EB"), "1000000000000000000x", "x/1000000000000000000", dpgettext2 (null, "unit-symbols", "exabyte,exabytes,EB")));
+        digitalstorage_category.add_unit (new Unit ("exbibit", _("Exbibits"), dpgettext2 (null, "unit-format", "%s Eib"), "1152921504606846976x/8", "8x/1152921504606846976", dpgettext2 (null, "unit-symbols", "exbibit,exbibits,Eib")));
+        digitalstorage_category.add_unit (new Unit ("exbibyte", _("Exbibytes"), dpgettext2 (null, "unit-format", "%s EiB"), "1152921504606846976x", "x/1152921504606846976", dpgettext2 (null, "unit-symbols", "exbibyte,exbibytes,EiB")));
+        digitalstorage_category.add_unit (new Unit ("zettabit", _("Zettabits"), dpgettext2 (null, "unit-format", "%s Eb"), "1000000000000000000000x/8", "8x/1000000000000000000000", dpgettext2 (null, "unit-symbols", "zettabit,zettabits,Zb")));
+        digitalstorage_category.add_unit (new Unit ("zettabyte", _("Zettabytes"), dpgettext2 (null, "unit-format", "%s EB"), "1000000000000000000000x", "x/1000000000000000000000", dpgettext2 (null, "unit-symbols", "zettabyte,zettabytes,ZB")));
+        digitalstorage_category.add_unit (new Unit ("zebibit", _("Zebibits"), dpgettext2 (null, "unit-format", "%s Zib"), "1180591620717411303424x/8", "8x/1180591620717411303424", dpgettext2 (null, "unit-symbols", "zebibit,zebibits,Zib")));
+        digitalstorage_category.add_unit (new Unit ("zebibyte", _("Zebibytes"), dpgettext2 (null, "unit-format", "%s ZiB"), "1180591620717411303424x", "x/1180591620717411303424", dpgettext2 (null, "unit-symbols", "zebibyte,zebibytes,ZiB")));
+        digitalstorage_category.add_unit (new Unit ("yottabit", _("Yottabits"), dpgettext2 (null, "unit-format", "%s Yb"), "1000000000000000000000000x/8", "8x/1000000000000000000000000", dpgettext2 (null, "unit-symbols", "yottabit,yottabits,Yb")));
+        digitalstorage_category.add_unit (new Unit ("yottabyte", _("Yottabytes"), dpgettext2 (null, "unit-format", "%s YB"), "1000000000000000000000000x", "x/1000000000000000000000000", dpgettext2 (null, "unit-symbols", "yottabyte,yottabytes,YB")));
+        digitalstorage_category.add_unit (new Unit ("yobibit", _("Yobibits"), dpgettext2 (null, "unit-format", "%s Yib"), "1208925819614629174706176x/8", "8x/1208925819614629174706176", dpgettext2 (null, "unit-symbols", "yobibit,yobibits,Yib")));
+        digitalstorage_category.add_unit (new Unit ("yobibyte", _("Yobibytes"), dpgettext2 (null, "unit-format", "%s YiB"), "1208925819614629174706176x", "x/1208925819614629174706176", dpgettext2 (null, "unit-symbols", "yobibyte,yobibytes,YiB")));
 
         var currency_category = default_unit_manager.add_category ("currency", _("Currency"));
         var currencies = CurrencyManager.get_default ().get_currencies ();
