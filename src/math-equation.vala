@@ -477,6 +477,10 @@ public class MathEquation : Gtk.SourceBuffer
             get_bounds (out start, out end);
 
         var text = get_text (start, end, false);
+        var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
+        if (tsep_string == null || tsep_string == "")
+            tsep_string = " ";
+        text = text.replace (tsep_string, "");
         Gtk.Clipboard.get (Gdk.Atom.NONE).set_text (text, -1);
     }
 
