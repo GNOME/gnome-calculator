@@ -434,7 +434,7 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
         }
     }
 
-    public virtual bool get_start_iter (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal, Gtk.TextIter iter)
+    public virtual bool get_start_iter (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal, out Gtk.TextIter iter)
     {
         return false;
     }
