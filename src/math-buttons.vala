@@ -624,9 +624,6 @@ public class MathButtons : Gtk.Box
         if (name == "result") /* Adds blue color to result button */
             button.get_style_context ().add_class ("suggested-action");
 
-        if (name == "clear") /* Adds red color to clear button */
-            button.get_style_context ().add_class ("destructive-action");
-
         if (data != null)
         {
             button.set_data<string> ("calc_text", data);
