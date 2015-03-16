@@ -11,16 +11,16 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-01-23 19:04+0000\n"
-"PO-Revision-Date: 2015-01-24 15:53+0100\n"
-"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"POT-Creation-Date: 2015-03-06 19:08+0000\n"
+"PO-Revision-Date: 2015-03-07 00:23+0100\n"
+"Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
 "Language-Team: svenska <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.7.3\n"
+"X-Generator: Poedit 1.6.10\n"
 
 #. Accessible name for the inverse button
 #: ../data/buttons-advanced.ui.h:2 ../data/buttons-programming.ui.h:24
@@ -46,13 +46,12 @@ msgstr "="
 #. Accessible name for the subscript mode button
 #: ../data/buttons-advanced.ui.h:10 ../data/buttons-programming.ui.h:8
 msgid "Subscript"
-msgstr "Nedsänkt"
+msgstr "Indexläge"
 
-# Upphöjt?
 #. Accessible name for the superscript mode button
 #: ../data/buttons-advanced.ui.h:12 ../data/buttons-programming.ui.h:10
 msgid "Superscript"
-msgstr "Överskrift"
+msgstr "Exponentläge"
 
 #. Accessible name for the scientific exponent button
 #: ../data/buttons-advanced.ui.h:14
@@ -142,8 +141,8 @@ msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
 msgstr ""
-"Beräknar avskrivningskostnaden för ett objekt för en angiven tidsperiod, som "
-"använder metoden dubbel degressiv avskrivning."
+"Beräknar avskrivningskostnaden för en tillgång under en angiven tidsperiod, "
+"som använder metoden dubbel degressiv avskrivning."
 
 #. Gross Profit Margin Dialog: Label before cost input
 #: ../data/buttons-financial.ui.h:19
@@ -287,7 +286,7 @@ msgid ""
 "over the useful life of an asset. The useful life is the number of periods, "
 "typically years, over which an asset is depreciated. "
 msgstr ""
-"Beräknar den linjära avskrivningen för ett objekt under en period. Den "
+"Beräknar den linjära avskrivningen för en tillgång under en period. Den "
 "linjära metoden för avskrivning delar upp den avskrivna kostnaden jämnt över "
 "den användbara livslängden för objektet. Den användbara livslängden är "
 "antalet perioder, oftast år, över vilket ett objekt skrivs av."
@@ -306,8 +305,8 @@ msgid ""
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
-"Beräknar avskrivningskostnaden för ett objekt för en angiven tidsperiod och "
-"använder metoden degressiv avskrivning. Denna metod för avskrivning "
+"Beräknar avskrivningskostnaden för en tillgång under en angiven tidsperiod "
+"och använder metoden degressiv avskrivning. Denna metod för avskrivning "
 "accelererar räntan för avskrivningen så att högra avskrivningskostnader "
 "inträffar i tidigare perioder än i de senare. Den användbara livslängden är "
 "antalet perioder, oftast år, över vilka ett objekt skrivs av."
@@ -1173,7 +1172,7 @@ msgstr "Hexadecimal"
 
 #. Left Shift Popup: Menu item to shift left by n places (n < 10)
 #. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.vala:747 ../src/math-buttons.vala:784
+#: ../src/math-buttons.vala:744 ../src/math-buttons.vala:781
 #, c-format
 msgid "_%d place"
 msgid_plural "_%d places"
@@ -1182,7 +1181,7 @@ msgstr[1] "_%d platser"
 
 #. Left Shift Popup: Menu item to shift left by n places (n >= 10)
 #. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.vala:752 ../src/math-buttons.vala:789
+#: ../src/math-buttons.vala:749 ../src/math-buttons.vala:786
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -1243,8 +1242,6 @@ msgstr "Okänd konvertering"
 #. should always be run
 #: ../src/math-equation.vala:973
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s m"
 msgid "%s"
 msgstr "%s"
 
@@ -2229,14 +2226,11 @@ msgid "byte,bytes,B"
 msgstr "byte,B"
 
 #: ../src/unit.vala:89
-#| msgid "Cables"
 msgid "Nibbles"
 msgstr "Nibble"
 
 #: ../src/unit.vala:89
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s nmi"
 msgctxt "unit-format"
 msgid "%s nibble"
 msgstr "%s nibble"
@@ -2248,41 +2242,31 @@ msgstr "nibble"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
 #: ../src/unit.vala:91
-#| msgid "Kilometers"
 msgid "Kilobits"
 msgstr "Kilobit"
 
 #: ../src/unit.vala:91
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
 msgctxt "unit-format"
 msgid "%s kb"
 msgstr "%s kb"
 
 #: ../src/unit.vala:91
-#| msgctxt "unit-symbols"
-#| msgid "kilometer,kilometers,km,kms"
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "kilobit,kb,Kb"
 
 #: ../src/unit.vala:92
-#| msgid "Kilometers"
 msgid "Kilobytes"
 msgstr "Kilobyte"
 
 #: ../src/unit.vala:92
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
 msgctxt "unit-format"
 msgid "%s kB"
 msgstr "%s kB"
 
 #: ../src/unit.vala:92
-#| msgctxt "unit-symbols"
-#| msgid "kilometer,kilometers,km,kms"
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "kilobyte,kB,KB"
@@ -2293,8 +2277,6 @@ msgstr "Kibibit"
 
 #: ../src/unit.vala:93
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s K"
 msgctxt "unit-format"
 msgid "%s Kib"
 msgstr "%s Kib"
@@ -2310,8 +2292,6 @@ msgstr "Kibibyte"
 
 #: ../src/unit.vala:94
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s K"
 msgctxt "unit-format"
 msgid "%s KiB"
 msgstr "%s KiB"
@@ -2447,8 +2427,6 @@ msgstr "Terabit"
 
 #: ../src/unit.vala:103
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s Tb"
 msgstr "%s Tb"
@@ -2464,8 +2442,6 @@ msgstr "Terabyte"
 
 #: ../src/unit.vala:104
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s TB"
 msgstr "%s TB"
@@ -2481,8 +2457,6 @@ msgstr "Tebibit"
 
 #: ../src/unit.vala:105
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s Tib"
 msgstr "%s Tib"
@@ -2498,8 +2472,6 @@ msgstr "Tebibyte"
 
 #: ../src/unit.vala:106
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s TiB"
 msgstr "%s TiB"
@@ -2570,7 +2542,6 @@ msgid "pebibyte,pebibytes,PiB"
 msgstr "pebibyte,PiB"
 
 #: ../src/unit.vala:111
-#| msgid "8 bits"
 msgid "Exabits"
 msgstr "Exabit"
 
