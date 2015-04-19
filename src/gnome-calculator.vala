@@ -18,6 +18,7 @@ public class Calculator : Gtk.Application
     private static string equation_string = null;
 
     private const OptionEntry[] option_entries = {
+        { "mode", 'm', 0, OptionArg.STRING, null, N_("Start in given mode"), "mode" },
         { "solve", 's', 0, OptionArg.STRING, null, N_("Solve given equation"), "equation" },
         { "equation", 'e', 0, OptionArg.STRING, ref equation_string, N_("Start with given equation"), "equation"},
         { "version", 'v', 0, OptionArg.NONE, null, N_("Show release version"), null },
@@ -113,6 +114,11 @@ public class Calculator : Gtk.Application
                 else
                     window.equation.solve ();
             }
+        }
+        if (options.contains ("mode"))
+        {
+            var button_mode = (string) options.lookup_value ("mode", VariantType.STRING);
+            window.buttons.mode = button_mode;
         }
     }
 
