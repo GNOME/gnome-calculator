@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(gnome-calculator, 3.16.0)
+AC_INIT([gnome-calculator], [3.16.0])
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AM_SILENT_RULES([yes])
@@ -13,7 +13,7 @@ AM_PROG_CC_C_O
 LT_PREREQ([2.2])
 LT_INIT
 
-AC_PATH_PROG(GLIB_COMPILE_RESOURCES, glib-compile-resources)
+AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
 
 GLIB_GSETTINGS
 
@@ -52,7 +52,7 @@ dnl Internationalization
 dnl ###########################################################################
 
 IT_PROG_INTLTOOL([0.50])
-AC_SUBST(GETTEXT_PACKAGE, gnome-calculator)
+AC_SUBST([GETTEXT_PACKAGE], [gnome-calculator])
 
 dnl ###########################################################################
 dnl Documentation
