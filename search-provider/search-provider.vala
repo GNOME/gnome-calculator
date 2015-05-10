@@ -39,9 +39,13 @@ public class SearchProvider : Object
                 return false;
             }
 
+            // Eat output so that it doesn't wind up in the journal. It's
+            // expected that most searches are not valid calculator input.
+            string stdout_buf;
+            string stderr_buf;
             Process.spawn_command_line_sync (
                 "gnome-calculator --solve " + Shell.quote (equation),
-                null, null, out exit_status);
+                out stdout_buf, out stderr_buf, out exit_status);
             Process.check_exit_status (exit_status);
         }
         catch (SpawnError e)
@@ -82,6 +86,7 @@ public class SearchProvider : Object
     {
         Subprocess subprocess;
         string stdout_buf;
+        string stderr_buf;
 
         string[] argv = {"gnome-calculator", "--solve"};
         argv += results[0];
@@ -89,7 +94,7 @@ public class SearchProvider : Object
 
         try
         {
-            subprocess = new Subprocess.newv (argv, SubprocessFlags.STDOUT_PIPE);
+            subprocess = new Subprocess.newv (argv, SubprocessFlags.STDOUT_PIPE | SubprocessFlags.STDERR_PIPE);
         }
         catch (Error e)
         {
@@ -98,7 +103,8 @@ public class SearchProvider : Object
 
         try
         {
-            subprocess.communicate_utf8 (null, null, out stdout_buf, null);
+            subprocess.communicate_utf8 (null, null, out stdout_buf, out stderr_buf);
+            assert (stderr_buf == "");
         }
         catch (Error e)
         {
