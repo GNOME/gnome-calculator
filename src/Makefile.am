@@ -28,7 +28,7 @@ gnome_calculator_SOURCES = \
 	$(BUILT_SOURCES)
 
 gnome_calculator_VALAFLAGS = \
-	--target-glib 2.32 \
+	--target-glib $(GLIB_REQUIRED) \
 	--pkg posix \
 	--pkg gtk+-3.0 \
 	--pkg gtksourceview-3.0 \
@@ -49,7 +49,7 @@ gcalccmd_SOURCES = \
 	gcalccmd.vala
 
 gcalccmd_VALAFLAGS = \
-	--target-glib 2.32 \
+	--target-glib $(GLIB_REQUIRED) \
 	--pkg posix \
 	--pkg gio-2.0 \
 	--pkg gtksourceview-3.0 \

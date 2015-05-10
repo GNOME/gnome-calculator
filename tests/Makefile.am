@@ -10,7 +10,7 @@ test_number_SOURCES = \
 	test-number.vala
 
 test_number_VALAFLAGS = \
-	--target-glib 2.32 \
+	--target-glib $(GLIB_REQUIRED) \
 	--pkg posix \
 	--pkg gio-2.0 \
 	--pkg gtksourceview-3.0 \
@@ -27,7 +27,7 @@ test_equation_SOURCES = \
 	test-equation.vala
 
 test_equation_VALAFLAGS = \
-	--target-glib 2.32 \
+	--target-glib $(GLIB_REQUIRED) \
 	--pkg posix \
 	--pkg gio-2.0 \
 	--pkg gtksourceview-3.0 \
@@ -44,7 +44,7 @@ test_serializer_SOURCES = \
 	test-serializer.vala
 
 test_serializer_VALAFLAGS = \
-	--target-glib 2.32 \
+	--target-glib $(GLIB_REQUIRED) \
 	--pkg posix \
 	--pkg gio-2.0 \
 	--pkg gtksourceview-3.0 \

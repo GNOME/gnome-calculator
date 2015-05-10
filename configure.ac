@@ -25,6 +25,8 @@ GLIB_REQUIRED=2.40.0
 GTK_REQUIRED=3.11.6
 GTKSOURCEVIEW_REQUIRED=3.15.1
 
+AC_SUBST([GLIB_REQUIRED])
+
 # FIXME We link to it too, so this check needs to be better....
 AC_CHECK_HEADER([mpfr.h], [], [AC_MSG_ERROR([The mpfr header is missing. Please, install mpfr])])
 

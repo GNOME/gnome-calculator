@@ -25,7 +25,7 @@ libcalculator_la_SOURCES = \
 	unit.vala
 
 libcalculator_la_VALAFLAGS = \
-	--target-glib 2.32 \
+	--target-glib $(GLIB_REQUIRED) \
 	--pkg posix \
 	--pkg gtksourceview-3.0 \
 	--pkg libxml-2.0 \
