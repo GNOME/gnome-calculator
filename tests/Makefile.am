@@ -57,4 +57,13 @@ test_serializer_LDADD = \
 	-lm \
 	$(top_builddir)/lib/libcalculator.la
 
+EXTRA_DIST = \
+	steps \
+	common_steps.py \
+	environment.py \
+	advanced_mode.feature \
+	basic_mode.feature \
+	financial_mode.feature \
+	programming_mode.feature
+
 -include $(top_srcdir)/git.mk
