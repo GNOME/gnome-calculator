@@ -104,7 +104,6 @@ public class SearchProvider : Object
         try
         {
             subprocess.communicate_utf8 (null, null, out stdout_buf, out stderr_buf);
-            assert (stderr_buf == "");
         }
         catch (Error e)
         {
