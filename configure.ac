@@ -4,10 +4,9 @@ AC_INIT([gnome-calculator], [3.17.3])
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz foreign])
 AM_SILENT_RULES([yes])
-AM_MAINTAINER_MODE
+AM_MAINTAINER_MODE([enable])
 
 AM_PROG_VALAC([0.24])
-AM_PROG_CC_C_O
 
 LT_PREREQ([2.2])
 LT_INIT
