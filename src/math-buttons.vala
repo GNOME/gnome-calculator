@@ -89,7 +89,7 @@ public class MathButtons : Gtk.Box
     private const string[] pv_entries = {"pv_pmt", "pv_pint", "pv_n"};
     private const string[] rate_entries = {"rate_fv", "rate_pv", "rate_n"};
     private const string[] sln_entries = {"sln_cost", "sln_salvage", "sln_life"};
-    private const string[] syd_entries = {"syd_cost", "syd_salvage", "syd_life"};
+    private const string[] syd_entries = {"syd_cost", "syd_salvage", "syd_life", "syd_period" };
     private const string[] term_entries = {"term_pmt","term_fv", "term_pint"};
 
     public MathButtons (MathEquation equation)
