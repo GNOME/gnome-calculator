@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 from dogtail.utils import isA11yEnabled, enableA11y
 if isA11yEnabled() is False:
     enableA11y(True)
