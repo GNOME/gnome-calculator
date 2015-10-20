@@ -44,6 +44,7 @@ gnome_calculator_LDADD = \
 	$(GNOME_CALCULATOR_LIBS) \
 	$(top_builddir)/lib/libcalculator.la
 
+
 gcalccmd_SOURCES = \
 	config.vapi \
 	gcalccmd.vala
@@ -57,7 +58,12 @@ gcalccmd_VALAFLAGS = \
 	$(top_builddir)/lib/libcalculator.vapi \
 	$(top_builddir)/lib/mpfr.vapi
 
+gcalccmd_CPPFLAGS = \
+	$(AM_CPPFLAGS) \
+	$(GCALCCMD_CFLAGS)
+
 gcalccmd_LDADD = \
+	$(GCALCCMD_LIBS) \
 	$(top_builddir)/lib/libcalculator.la
 
 -include $(top_srcdir)/git.mk
