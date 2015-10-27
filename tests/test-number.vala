@@ -150,6 +150,19 @@ private void test_pi ()
     pass ();
 }
 
+private void test_tau ()
+{
+    var z = new Number.tau ();
+    var expected = Math.TAU;
+    if (!double_matches (z, expected))
+    {
+        fail ("Number.tau () -> %f, expected %f".printf (z.to_double (), expected));
+        return;
+    }
+
+    pass ();
+}
+
 private void test_eulers ()
 {
     var z = new Number.eulers ();
