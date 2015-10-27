@@ -82,6 +82,7 @@ namespace MPFR {
         public double get_double (Round rnd);
 
         public int const_pi (Round rnd);
+	public int const_tau (Round rnd);
         [CCode (cname="mpfr_zero_p")]
         public bool is_zero ();
         public int sgn ();
