@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 Daniel Renninghoff
+ * Copyright (C) 2014-2015 Daniel Renninghoff
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -82,7 +82,16 @@ namespace MPFR {
         public double get_double (Round rnd);
 
         public int const_pi (Round rnd);
-	public int const_tau (Round rnd);
+
+        [CCode (cname="mpfr_mul_2ui")]
+        public int multiply_power_of_2 (MPFloat op1, long op2, Round rnd);
+
+        public int const_tau (Round rnd) {
+            int i = const_pi (rnd);
+            multiply_power_of_2 (this, 1, rnd);
+            return i;
+        }
+
         [CCode (cname="mpfr_zero_p")]
         public bool is_zero ();
         public int sgn ();
