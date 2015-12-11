@@ -153,7 +153,7 @@ private void test_pi ()
 private void test_tau ()
 {
     var z = new Number.tau ();
-    var expected = Math.TAU;
+    var expected = Math.PI * 2.0;
     if (!double_matches (z, expected))
     {
         fail ("Number.tau () -> %f, expected %f".printf (z.to_double (), expected));
@@ -1094,6 +1094,7 @@ static int main (string[] args)
     test_eulers ();
     test_i ();
     test_pi ();
+    test_tau ();
     //test_random ();
     test_is_zero ();
     test_is_negative ();
