@@ -420,6 +420,7 @@ private void test_equations ()
     test ("2×√4", "4", 0);
     test ("Sqrt (4)", "2", 0);
     test ("Sqrt (2)", "1.414213562", 0);
+    test ("Sqrt (-1)", "i", 0);
     test ("4^0.5", "2", 0);
     test ("2^0.5", "1.414213562", 0);
     test ("₃√−8", "−2", 0);
