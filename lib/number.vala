@@ -498,6 +498,12 @@ public class Number : Object
             return new Number.integer (0);
         }
 
+        /* base or exponent are complex */
+        if (is_complex () || y.is_complex ())
+        {
+            return pwr (y);
+        }
+
         if (!y.is_integer ())
         {
             var reciprocal = y.reciprocal ();
