@@ -623,10 +623,7 @@ public class Number : Object
     /* Sets z = √x */
     public Number sqrt ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.sqrt (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
-        return z;
+        return root(2);
     }
 
     /* Sets z = ln x */
