@@ -560,6 +560,8 @@ private void test_equations ()
     test ("i×i", "−1", 0);
     test ("i÷i", "1", 0);
     test ("1÷i", "−i", 0);
+    test ("i^2", "−1", 0);
+    test ("(−1)^(1/2)", "i", 0);
     test ("|i|", "1", 0);
     test ("|3+4i|", "5", 0);
     test ("arg 0", "", ErrorCode.MP);
