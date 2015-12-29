@@ -510,13 +510,9 @@ public class MathEquation : Gtk.SourceBuffer
         undo_stack.remove (state);
         redo_stack.prepend (get_current_state ());
 
-        if (undo_stack == null)
-        {
-            apply_state (state);
-            return;
-        }
+        if (undo_stack != null)
+            state.ans = undo_stack.nth_data (0).ans;
 
-        state.ans = undo_stack.nth_data (0).ans;
         apply_state (state);
     }
 
