@@ -417,6 +417,8 @@ public class MathEquation : Gtk.SourceBuffer
         redo_stack = new List<MathEquationState> ();
 
         state = get_current_state ();
+        notify_property ("status");
+
         undo_stack.prepend (state);
     }
 
@@ -506,7 +508,8 @@ public class MathEquation : Gtk.SourceBuffer
         }
 
         state = undo_stack.nth_data (0);
-        status = ("");
+        notify_property ("status");
+
         undo_stack.remove (state);
         redo_stack.prepend (get_current_state ());
 
@@ -526,6 +529,8 @@ public class MathEquation : Gtk.SourceBuffer
         }
 
         state = redo_stack.nth_data (0);
+        notify_property ("status");
+
         redo_stack.remove (state);
         undo_stack.prepend (get_current_state ());
 
@@ -616,14 +621,20 @@ public class MathEquation : Gtk.SourceBuffer
         }
     }
 
+    /* Warning: this implementation is quite the footgun. You must be sure to do
+     * an explicit notify when changing state. Previously, failure to do this
+     * caused MathDisplay to miss status message changes.
+     *
+     * FIXME: Rethink this implementation. Does status really need to be a
+     * member of MathEquationState?
+     */
     public string status
     {
         owned get { return state.status; }
         set
         {
-            if (state.status == value)
-                return;
-
+            // No early return -- we need to always emit notify so long as the
+            // value of this property can change unexpectedly.
             state.status = value;
         }
     }
