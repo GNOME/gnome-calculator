@@ -8,71 +8,42 @@
  * license.
  */
 
-public class MathConverter : Gtk.Box
+[GtkTemplate (ui = "/org/gnome/calculator/math-converter.ui")]
+public class MathConverter : Gtk.Grid
 {
-    private MathEquation equation;
+    private MathEquation equation = null;
 
     private string category;
 
-    private Gtk.ComboBox from_combo;
-    private Gtk.ComboBox to_combo;
+    [GtkChild]
+    private Gtk.CellRendererText from_renderer;
 
+    [GtkChild]
+    private Gtk.ComboBox from_combo;
+    [GtkChild]
+    private Gtk.ComboBox to_combo;
+    [GtkChild]
     private Gtk.Label result_label;
 
     public signal void changed ();
 
-    public MathConverter (MathEquation equation)
+    construct
     {
-        Object (orientation: Gtk.Orientation.HORIZONTAL);
-        this.equation = equation;
-
-        spacing = 6;
-
-        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        hbox.show ();
-        pack_start (hbox, false, true, 0);
-
-        from_combo = new Gtk.ComboBox ();
-
-        var renderer = new Gtk.CellRendererText ();
-        from_combo.pack_start (renderer, true);
-        from_combo.add_attribute (renderer, "text", 0);
-        from_combo.set_cell_data_func (renderer, from_cell_data_func);
-        from_combo.changed.connect (from_combobox_changed_cb);
-        from_combo.show ();
-        hbox.pack_start (from_combo, false, true, 0);
-
-        var label = new Gtk.Label (/* Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]" */
-                                   _(" in "));
-        label.show ();
-        hbox.pack_start (label, false, true, 5);
-
-        to_combo = new Gtk.ComboBox ();
-        renderer = new Gtk.CellRendererText ();
-        to_combo.pack_start (renderer, true);
-        to_combo.add_attribute (renderer, "text", 0);
-        to_combo.changed.connect (to_combobox_changed_cb);
-        to_combo.show ();
-        hbox.pack_start (to_combo, false, true, 0);
-
-        var swap_button = new Gtk.Button.with_label ("⇆");
-        swap_button.set_tooltip_text (/* Tooltip for swap conversion button */
-                                      _("Switch conversion units"));
-        swap_button.set_relief (Gtk.ReliefStyle.NONE);
-        swap_button.clicked.connect (swap_button_clicked_cb);
-        swap_button.show ();
-        hbox.pack_start (swap_button, false, true, 0);
-
-        result_label = new Gtk.Label ("");
-        result_label.set_alignment (1.0f, 0.5f);
-        result_label.sensitive = false;
-        result_label.show ();
-        pack_start (result_label, true, true, 0);
-
+        from_combo.set_cell_data_func (from_renderer, from_cell_data_func);
         CurrencyManager.get_default ().updated.connect (() => { update_result_label (); });
-        equation.notify["display"].connect ((pspec) => { update_result_label (); });
 
         update_from_model ();
+    }
+
+    public MathConverter (MathEquation equation)
+    {
+      set_equation (equation);
+    }
+
+    public void set_equation (MathEquation equation)
+    {
+        this.equation = equation;
+        equation.notify["display"].connect ((pspec) => { update_result_label (); });
     }
 
     public void set_category (string? category)
@@ -206,6 +177,7 @@ public class MathConverter : Gtk.Box
         return false;
     }
 
+    [GtkCallback]
     private void from_combobox_changed_cb ()
     {
         var model = from_combo.get_model ();
@@ -231,6 +203,7 @@ public class MathConverter : Gtk.Box
         to_combo.set_active (0);
     }
 
+    [GtkCallback]
     private void to_combobox_changed_cb ()
     {
         /* Conversion must have changed */
@@ -243,6 +216,7 @@ public class MathConverter : Gtk.Box
         cell.set ("sensitive", !tree_model.iter_has_child (iter));
     }
 
+    [GtkCallback]
     private void swap_button_clicked_cb ()
     {
         var x = equation.number;

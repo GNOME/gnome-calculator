@@ -9,9 +9,11 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)/lib \
 	$(LIBCALCULATOR_CFLAGS)
 
+
+resources_file = $(top_srcdir)/data/gnome-calculator.gresource.xml
 BUILT_SOURCES = resources.c
 
-resources.c: $(top_srcdir)/data/gnome-calculator.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=$(top_srcdir)/data/ $(top_srcdir)/data/gnome-calculator.gresource.xml)
+resources.c: $(resources_file) $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=$(top_srcdir)/data/ $(top_srcdir)/data/gnome-calculator.gresource.xml)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(top_srcdir)/data/ --generate-source $<
 
 gnome_calculator_SOURCES = \
@@ -33,6 +35,7 @@ gnome_calculator_VALAFLAGS = \
 	--pkg gtk+-3.0 \
 	--pkg gtksourceview-3.0 \
 	--pkg libxml-2.0 \
+	--gresources $(resources_file) \
 	$(top_builddir)/lib/libcalculator.vapi \
 	$(top_builddir)/lib/mpfr.vapi
 

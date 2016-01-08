@@ -18,6 +18,7 @@ EXTRA_DIST = \
 	buttons-advanced.ui \
 	buttons-financial.ui \
 	buttons-programming.ui \
+	math-converter.ui \
 	menu.ui \
 	calculator.css \
 	gnome-calculator.gresource.xml \
