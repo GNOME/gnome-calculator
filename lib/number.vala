@@ -507,7 +507,7 @@ public class Number : Object
         if (!y.is_integer ())
         {
             var reciprocal = y.reciprocal ();
-            if (reciprocal.is_integer ())
+            if (reciprocal.is_integer () && !reciprocal.is_negative())
                 return root (reciprocal.to_integer ());
             else
                 return pwr (y);
