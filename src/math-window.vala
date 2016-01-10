@@ -9,6 +9,7 @@
  * license.
  */
 
+[GtkTemplate (ui = "/org/gnome/calculator/math-window.ui")]
 public class MathWindow : Gtk.ApplicationWindow
 {
     private MathEquation _equation;
@@ -16,16 +17,21 @@ public class MathWindow : Gtk.ApplicationWindow
 
     private MathDisplay _display;
     public MathDisplay display { get { return _display; } }
-    private MathConverter converter;
     private MathButtons _buttons;
     public MathButtons buttons { get { return _buttons; } }
     private bool right_aligned;
     private bool remove_buttons;
-    private Gtk.MenuButton menu_button;
 
-    private Gtk.HeaderBar headerbar;
-    private Gtk.Box vbox;
+    [GtkChild]
+    private Gtk.MenuButton menu_button;
+    [GtkChild]
     private Gtk.Label mode_label;
+    [GtkChild]
+    private Gtk.ScrolledWindow scrolled_window;
+    [GtkChild]
+    private Gtk.Grid grid;
+    [GtkChild]
+    private MathConverter converter;
 
     private const ActionEntry[] window_entries =
     {
@@ -40,71 +46,13 @@ public class MathWindow : Gtk.ApplicationWindow
     {
         Object (application: app);
         _equation = equation;
-        set_title (/* Title of main window */
-                   _("Calculator"));
+        right_aligned = true;
 
-        role = "gnome-calculator";
-        resizable = false;
-        converter = new MathConverter (_equation);
-        converter.set_category (null);
-        converter.set_conversion (equation.source_units, equation.target_units);
         add_action_entries (window_entries, this);
 
-        var builder = new Gtk.Builder ();
-        try
-        {
-            builder.add_from_resource ("/org/gnome/calculator/menu.ui");
-        }
-        catch (Error e)
-        {
-            error ("Error loading menu UI: %s", e.message);
-        }
-
-        mode_label = new Gtk.Label (null);
-        mode_label.show ();
-
-        var arrow = new Gtk.Arrow (Gtk.ArrowType.DOWN, Gtk.ShadowType.NONE);
-        arrow.show ();
-
-        var menu_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        menu_box.pack_start (mode_label);
-        menu_box.pack_start (arrow);
-        menu_box.show ();
-
-        menu_button = new Gtk.MenuButton ();
-        menu_button.add (menu_box);
-        menu_button.menu_model = (MenuModel) builder.get_object ("window-menu");
-        menu_button.get_style_context ().add_class ("title");
-        menu_button.get_style_context ().add_class ("text-button");
-        menu_button.use_popover = true;
-        menu_button.relief = Gtk.ReliefStyle.NONE;
-        menu_button.show ();
-
-        headerbar = new Gtk.HeaderBar ();
-        headerbar.show_close_button = true;
-        headerbar.custom_title = menu_button;
-        headerbar.show ();
-        set_titlebar (headerbar);
-
-        var main_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        add (main_vbox);
-        main_vbox.show ();
-
-        vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 6);
-        vbox.border_width = 6;
-        vbox.set_vexpand (true);
-        vbox.pack_start (converter, false, true, 0);
-        main_vbox.pack_start (vbox, true, true, 0);
-        vbox.show ();
-
-        var scrolled_window = new Gtk.ScrolledWindow (null, null);
-        scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
-        scrolled_window.set_shadow_type (Gtk.ShadowType.IN);
-        vbox.pack_start (scrolled_window, false, true, 0);
-        scrolled_window.get_hadjustment ().changed.connect (scroll_changed_cb);
-        scrolled_window.get_hadjustment ().value_changed.connect (scroll_value_changed_cb);
-        right_aligned = true;
-        scrolled_window.show ();
+        converter.set_equation (_equation);
+        converter.set_category (null);
+        converter.set_conversion (equation.source_units, equation.target_units);
 
         _display = new MathDisplay (equation);
         scrolled_window.add (_display);
@@ -112,15 +60,17 @@ public class MathWindow : Gtk.ApplicationWindow
         _display.grabfocus ();
 
         _buttons = new MathButtons (equation);
+        grid.add(buttons);
 
         if (_buttons.mode != ButtonMode.KEYBOARD) /* Checks if the calculator is in Keyboard mode or not */
         {
-            vbox.pack_start (buttons, true, true, 0); /* Packs buttons if not in keyboard mode. */
+            buttons.set_visible (true);
             remove_buttons = false;
             converter.set_visible (false);
         }
         else
         {
+            buttons.set_visible(false);
             remove_buttons = true;
             converter.set_visible (true); /* Unpacks buttons if in keyboard mode */
             resizable = true;
@@ -180,14 +130,14 @@ public class MathWindow : Gtk.ApplicationWindow
 
         if (remove_buttons ==  true && buttons.mode != ButtonMode.KEYBOARD)
         {
-            vbox.pack_start (buttons, true, true, 0); /* Packs buttons when calculator is switched from keyboard mode to any other mode */
+            buttons.set_visible (true);
             remove_buttons = false;
             converter.set_visible (false);
             resizable = false;
         }
         else if (remove_buttons == false && buttons.mode == ButtonMode.KEYBOARD)
         {
-            vbox.remove (vbox.get_children ().nth_data (2)); /* Unpacks buttons when switched to keyboard mode */
+            buttons.set_visible (false);
             remove_buttons = true;
             converter.set_visible (true); /* Converter above the display window is set to visible. */
             resizable = true;
@@ -238,12 +188,14 @@ public class MathWindow : Gtk.ApplicationWindow
         return result;
     }
 
+    [GtkCallback]
     private void scroll_changed_cb (Gtk.Adjustment adjustment)
     {
         if (right_aligned)
             adjustment.set_value (adjustment.get_upper () - adjustment.get_page_size ());
     }
 
+    [GtkCallback]
     private void scroll_value_changed_cb (Gtk.Adjustment adjustment)
     {
         if (adjustment.get_value () == adjustment.get_upper () - adjustment.get_page_size ())

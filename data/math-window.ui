@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.19.0 -->
+<interface>
+  <requires lib="gtk+" version="3.16"/>
+  <object class="GtkAdjustment" id="hadjustment">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="vadjustment">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+    <signal name="changed" handler="scroll_changed_cb" swapped="no"/>
+    <signal name="value-changed" handler="scroll_value_changed_cb" swapped="no"/>
+  </object>
+  <menu id="window_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Basic Mode</attribute>
+        <attribute name="action">win.mode</attribute>
+        <attribute name="target">basic</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Advanced Mode</attribute>
+        <attribute name="action">win.mode</attribute>
+        <attribute name="target">advanced</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Financial Mode</attribute>
+        <attribute name="action">win.mode</attribute>
+        <attribute name="target">financial</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Programming Mode</attribute>
+        <attribute name="action">win.mode</attribute>
+        <attribute name="target">programming</attribute>
+      </item>
+       <item>
+        <attribute name="label" translatable="yes">Keyboard Mode</attribute>
+        <attribute name="action">win.mode</attribute>
+        <attribute name="target">keyboard</attribute>
+      </item>
+    </section>
+  </menu>
+  <template class="MathWindow" parent="GtkApplicationWindow">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Calculator</property>
+    <property name="role">gnome-calculator</property>
+    <property name="resizable">False</property>
+    <property name="show_menubar">False</property>
+    <child>
+      <object class="GtkGrid" id="grid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="vexpand">True</property>
+        <property name="border_width">6</property>
+        <property name="orientation">vertical</property>
+        <property name="row_spacing">6</property>
+        <child>
+          <object class="GtkScrolledWindow" id="scrolled_window">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="hadjustment">hadjustment</property>
+            <property name="vadjustment">vadjustment</property>
+            <property name="hscrollbar_policy">never</property>
+            <property name="shadow_type">in</property>
+            <property name="min_content_height">154</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="MathConverter" id="converter">
+            <property name="visible">False</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="headerbar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="show_close_button">True</property>
+        <child type="title">
+          <object class="GtkMenuButton" id="menu_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="relief">none</property>
+            <property name="menu_model">window_menu</property>
+            <child>
+              <object class="GtkGrid" id="grid1">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <child>
+                  <object class="GtkLabel" id="mode_label">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">baseline</property>
+                    <property name="hexpand">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkArrow" id="arrow">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="arrow_type">down</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+            <style>
+              <class name="title"/>
+              <class name="text-button"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
