@@ -107,9 +107,9 @@ public class MathWindow : Gtk.ApplicationWindow
         scrolled_window.show ();
 
         _display = new MathDisplay (equation);
+        scrolled_window.add (_display);
+        _display.show ();
         _display.grabfocus ();
-        scrolled_window.add (display);
-        display.show ();
 
         _buttons = new MathButtons (equation);
 
