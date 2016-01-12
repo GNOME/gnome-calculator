@@ -1,6 +1,6 @@
 SUBDIRS = data lib src search-provider tests help po
 
-DISTCHECK_CONFIGURE_FLAGS = --enable-installed-tests
+AM_DISTCHECK_CONFIGURE_FLAGS = --enable-installed-tests
 
 MAINTAINERCLEANFILES = \
 	$(GITIGNORE_MAINTAINERCLEANFILES_TOPLEVEL) \
