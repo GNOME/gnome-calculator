@@ -27,7 +27,7 @@
  *  THE MP USERS GUIDE.
  */
 
-using MPFR;
+using MPC;
 
 private delegate int BitwiseFunc (int v1, int v2);
 
@@ -42,32 +42,21 @@ public enum AngleUnit
 public class Number : Object
 {
     /* real and imaginary part of a Number */
-    private MPFloat re_num { get; set; }
-    private MPFloat im_num { get; set; }
+    private Complex num = Complex (precision);
 
-    public static ulong precision { get; set; default = 1000; }
+    public static MPFR.Precision precision { get; set; default = 1000; }
 
     /* Stores the error msg if an error occurs during calculation. Otherwise should be null */
     public static string? error { get; set; default = null; }
 
-    public Number.integer (int64 value)
+    public Number.integer (int64 real, int64 imag = 0)
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.set_signed_integer ((long)value, Round.NEAREST);
-        re_num = tmp;
-        var tmp2 = MPFloat.init2 ((Precision) precision);
-        tmp2.set_unsigned_integer (0, Round.NEAREST);
-        im_num = tmp2;
+        num.set_signed_integer ((long) real, (long) imag);
     }
 
-    public Number.unsigned_integer (uint64 x)
+    public Number.unsigned_integer (uint64 real, uint64 imag = 0)
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.set_unsigned_integer ((ulong)x, Round.NEAREST);
-        re_num = tmp;
-        var tmp2 = MPFloat.init2 ((Precision) precision);
-        tmp2.set_unsigned_integer (0, Round.NEAREST);
-        im_num = tmp2;
+        num.set_unsigned_integer ((ulong) real, (ulong) imag);
     }
 
     public Number.fraction (int64 numerator, int64 denominator)
@@ -81,39 +70,24 @@ public class Number : Object
         Number.integer (numerator);
         if (denominator != 1)
         {
-            var tmp = re_num;
-            tmp.divide_signed_integer (re_num, (long) denominator, Round.NEAREST);
-            re_num = tmp;
+            num.divide_unsigned_integer (num, (long) denominator);
         }
     }
 
-    /* Helper constructor. Creates new Number from already existing MPFloat. */
-    public Number.mpfloat (MPFloat value)
+    /* Helper constructor. Creates new Number from already existing MPFR.Real. */
+    public Number.mpreal (MPFR.Real real, MPFR.Real? imag = null)
     {
-        re_num = value;
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.set_unsigned_integer (0, Round.NEAREST);
-        im_num = tmp;
+        num.set_mpreal (real, imag);
     }
 
-    public Number.double (double value)
+    public Number.double (double real, double imag = 0)
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.set_double (value, Round.NEAREST);
-        re_num = tmp;
-        var tmp2 = MPFloat.init2 ((Precision) precision);
-        tmp2.set_unsigned_integer (0, Round.NEAREST);
-        im_num = tmp2;
+        num.set_double (real, imag);
     }
 
-    public Number.complex (Number x, Number y)
+    public Number.complex (Number r, Number i)
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.@set (x.re_num, Round.NEAREST);
-        re_num = tmp;
-        var tmp2 = MPFloat.init2 ((Precision) precision);
-        tmp2.@set (y.re_num, Round.NEAREST);
-        im_num = tmp2;
+        num.set_mpreal (r.num.get_real ().val, i.num.get_real ().val);
     }
 
     public Number.polar (Number r, Number theta, AngleUnit unit = AngleUnit.RADIANS)
@@ -125,35 +99,21 @@ public class Number : Object
 
     public Number.eulers ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        var tmp2 = MPFloat.init2 ((Precision) precision);
-        tmp2.set_unsigned_integer (1, Round.NEAREST);
+        num.get_real ().val.set_unsigned_integer (1);
         /* e^1, since mpfr doesn't have a function to return e */
-        tmp.exp (tmp2, Round.NEAREST);
-        re_num = tmp;
-        var tmp3 = MPFloat.init2 ((Precision) precision);
-        tmp3.set_unsigned_integer (0, Round.NEAREST);
-        im_num = tmp3;
+        num.get_real ().val.exp (num.get_real ().val);
+        num.get_imag ().val.set_zero ();
     }
 
     public Number.i ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        var tmp2 = MPFloat.init2 ((Precision) precision);
-        tmp.set_unsigned_integer (0, Round.NEAREST);
-        tmp2.set_unsigned_integer (1, Round.NEAREST);
-        re_num = tmp;
-        im_num = tmp2;
+        num.set_signed_integer (0, 1);
     }
 
     public Number.pi ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.const_pi (Round.NEAREST);
-        re_num = tmp;
-        var tmp2 = MPFloat.init2 ((Precision) precision);
-        tmp2.set_unsigned_integer (0, Round.NEAREST);
-        im_num = tmp2;
+        num.get_real ().val.const_pi ();
+        num.get_imag ().val.set_zero ();
     }
 
     /* Sets z to be a uniform random number in the range [0, 1] */
@@ -162,42 +122,36 @@ public class Number : Object
         Number.double (Random.next_double ());
     }
 
-    ~Number ()
-    {
-        re_num.clear ();
-        im_num.clear ();
-    }
-
     public int64 to_integer ()
     {
-        return re_num.get_signed_integer (Round.NEAREST);
+        return num.get_real ().val.get_signed_integer ();
     }
 
     public uint64 to_unsigned_integer ()
     {
-        return re_num.get_unsigned_integer (Round.NEAREST);
+        return num.get_real ().val.get_unsigned_integer ();
     }
 
     public float to_float ()
     {
-        return re_num.get_float (Round.NEAREST);
+        return num.get_real ().val.get_float (MPFR.Round.NEAREST);
     }
 
     public double to_double ()
     {
-        return re_num.get_double (Round.NEAREST);
+        return num.get_real ().val.get_double (MPFR.Round.NEAREST);
     }
 
     /* Return true if the value is x == 0 */
     public bool is_zero ()
     {
-        return re_num.is_zero () && im_num.is_zero ();
+        return num.is_zero ();
     }
 
     /* Return true if x < 0 */
     public bool is_negative ()
     {
-        return re_num.sgn () < 0;
+        return num.get_real ().val.sgn () < 0;
     }
 
     /* Return true if x is integer */
@@ -206,7 +160,7 @@ public class Number : Object
         if (is_complex ())
             return false;
 
-        return re_num.is_integer () != 0;
+        return num.get_real ().val.is_integer () != 0;
     }
 
     /* Return true if x is a positive integer */
@@ -215,7 +169,7 @@ public class Number : Object
         if (is_complex ())
             return false;
         else
-            return re_num.sgn () >= 0 && is_integer ();
+            return num.get_real ().val.sgn () >= 0 && is_integer ();
     }
 
     /* Return true if x is a natural number (an integer ≥ 0) */
@@ -224,24 +178,24 @@ public class Number : Object
         if (is_complex ())
             return false;
         else
-            return re_num.sgn () > 0 && is_integer ();
+            return num.get_real ().val.sgn () > 0 && is_integer ();
     }
 
     /* Return true if x has an imaginary component */
     public bool is_complex ()
     {
-        return !im_num.is_zero ();
+        return !num.get_imag ().val.is_zero ();
     }
 
     /* Return error if overflow or underflow */
     public static void check_flags ()
     {
-        if (mpfr_is_underflow () != 0)
+        if (MPFR.mpfr_is_underflow () != 0)
         {
             /* Translators: Error displayed when underflow error occured */
             error = _("Underflow error");
         }
-        else if (mpfr_is_overflow () != 0)
+        else if (MPFR.mpfr_is_overflow () != 0)
         {
             /* Translators: Error displayed when overflow error occured */
             error = _("Overflow error");
@@ -251,7 +205,7 @@ public class Number : Object
     /* Return true if x == y */
     public bool equals (Number y)
     {
-        return re_num.is_equal (y.re_num);
+        return num.is_equal (y.num);
     }
 
     /* Returns:
@@ -261,48 +215,31 @@ public class Number : Object
      */
     public int compare (Number y)
     {
-        return re_num.cmp (y.re_num);
+        return num.get_real ().val.cmp (y.num.get_real ().val);
     }
 
     /* Sets z = sgn (x) */
     public Number sgn ()
     {
-        var z = new Number.integer (re_num.sgn ());
+        var z = new Number.integer (num.get_real ().val.sgn ());
         return z;
     }
 
     /* Sets z = −x */
     public Number invert_sign ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.neg (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
-        var tmp_im = z.im_num;
-        tmp_im.neg (im_num, Round.NEAREST);
-        z.im_num = tmp_im;
+        var z = new Number ();
+        z.num.neg (num);
         return z;
     }
 
     /* Sets z = |x| */
     public Number abs ()
     {
-        if (is_complex ())
-        {
-            var x_real = real_component ();
-            var x_im = imaginary_component ();
-
-            x_real = x_real.multiply (x_real);
-            x_im = x_im.multiply (x_im);
-            var z = x_real.add (x_im);
-            return z.sqrt ();
-        }
-        else
-        {
-            var tmp = MPFloat.init2 ((Precision) precision);
-            tmp.abs (re_num, Round.NEAREST);
-            var z = new Number.mpfloat (tmp);
-            return z;
-        }
+      var z = new Number ();
+      z.num.get_imag ().val.set_zero ();
+      MPC.abs (z.num.get_real ().val, num);
+      return z;
     }
 
     /* Sets z = Arg (x) */
@@ -314,65 +251,33 @@ public class Number : Object
             error = _("Argument not defined for zero");
             return new Number.integer (0);
         }
+        var z = new Number ();
+        z.num.get_imag ().val.set_zero ();
+        MPC.arg (z.num.get_real ().val, num);
+        mpc_from_radians (z.num, z.num, unit);
+        // MPC returns -π for the argument of negative real numbers if
+        // their imaginary part is -0 (which it is in the numbers
+        // created by test-equation), we want +π for all real negative
+        // numbers
+        if (!is_complex () && is_negative ())
+            z.num.get_real ().val.abs (z.num.get_real ().val);
 
-        var x_real = real_component ();
-        var x_im = imaginary_component ();
-        var pi = new Number.pi ();
-
-        Number z;
-        if (x_im.is_zero ())
-        {
-            if (x_real.is_negative ())
-                z = pi;
-            else
-                return new Number.integer (0);
-        }
-        else if (x_real.is_zero ())
-        {
-            if (x_im.is_negative ())
-                z = pi.divide_integer (-2);
-            else
-                z = pi.divide_integer (2);
-        }
-        else if (x_real.is_negative ())
-        {
-            z = x_im.divide (x_real);
-            z = z.atan (AngleUnit.RADIANS);
-            if (x_im.is_negative ())
-                z = z.subtract (pi);
-            else
-                z = z.add (pi);
-        }
-        else
-        {
-            z = x_im.divide (x_real);
-            z = z.atan (AngleUnit.RADIANS);
-        }
-
-        return z.from_radians (unit);
+        return z;
     }
 
     /* Sets z = ‾̅x */
     public Number conjugate ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.neg (im_num, Round.NEAREST);
-        var z = copy ();
-        var tmp2 = z.im_num;
-        tmp2.clear ();
-        z.im_num = tmp;
+        var z = new Number ();
+        z.num.conj (num);
         return z;
     }
 
     /* Sets z = Re (x) */
     public Number real_component ()
     {
-        var z = copy ();
-        var tmp = z.im_num;
-        tmp.clear ();
-        tmp = MPFloat.init2 ((Precision) precision);
-        tmp.set_unsigned_integer (0, Round.NEAREST);
-        z.im_num = tmp;
+        var z = new Number ();
+        z.num.set_mpreal (num.get_real ().val);
         return z;
     }
 
@@ -380,30 +285,25 @@ public class Number : Object
     public Number imaginary_component ()
     {
         /* Copy imaginary component to real component */
-        var z = copy ();
-        var tmp = z.re_num;
-        tmp.clear ();
-        z.re_num = z.im_num;
-        tmp = MPFloat.init2 ((Precision) precision);
-        tmp.set_unsigned_integer (0, Round.NEAREST);
-        z.im_num = tmp;
+        var z = new Number ();
+        z.num.set_mpreal (num.get_imag ().val);
         return z;
     }
 
     public Number integer_component ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.trunc (re_num);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.get_imag ().val.set_zero ();
+        z.num.get_real ().val.trunc (num.get_real ().val);
         return z;
     }
 
     /* Sets z = x mod 1 */
     public Number fractional_component ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.frac (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.get_imag ().val.set_zero ();
+        z.num.get_real ().val.frac (num.get_real ().val);
         return z;
     }
 
@@ -416,67 +316,45 @@ public class Number : Object
     /* Sets z = ⌊x⌋ */
     public Number floor ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.floor (re_num);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.get_imag ().val.set_zero ();
+        z.num.get_real ().val.floor (num.get_real ().val);
         return z;
     }
 
     /* Sets z = ⌈x⌉ */
     public Number ceiling ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.ceil (re_num);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.get_imag ().val.set_zero ();
+        z.num.get_real ().val.ceil (num.get_real ().val);
         return z;
     }
 
     /* Sets z = [x] */
     public Number round ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.round (re_num);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.get_imag ().val.set_zero ();
+        z.num.get_real ().val.round (num.get_real ().val);
         return z;
     }
 
     /* Sets z = 1 ÷ x */
     public Number reciprocal ()
     {
-        if (is_complex ())
-        {
-            var real_x = real_component ();
-            var im_x = imaginary_component ();
-
-            /* 1/(a+bi) = (a-bi)/(a+bi)(a-bi) = (a-bi)/(a²+b²) */
-            var t1 = real_x.multiply (real_x);
-            var t2 = im_x.multiply (im_x);
-            t1 = t1.add (t2);
-            var z = t1.reciprocal_real ();
-            return conjugate ().multiply (z);
-        }
-        else
-            return reciprocal_real ();
+        var z = new Number ();
+        z.num.set_signed_integer (1);
+        z.num.mpreal_divide (z.num.get_real ().val, num);
+        return z;
     }
 
     /* Sets z = e^x */
     public Number epowy ()
     {
-
-        /* e^0 = 1 */
-        if (is_zero ())
-            return new Number.integer (1);
-
-        if (is_complex ())
-        {
-            var x_real = real_component ();
-            var theta = imaginary_component ();
-
-            var r = x_real.epowy_real ();
-            return new Number.polar (r, theta);
-        }
-        else
-            return epowy_real ();
+        var z = new Number ();
+        z.num.exp (num);
+        return z;
     }
 
     /* Sets z = x^y */
@@ -497,43 +375,15 @@ public class Number : Object
             error = _("Zero raised to zero is undefined");
             return new Number.integer (0);
         }
-
-        /* base or exponent are complex */
-        if (is_complex () || y.is_complex ())
-        {
-            return pwr (y);
-        }
-
-        if (!y.is_integer ())
+        if (!is_complex () && !y.is_complex () && !y.is_integer ())
         {
             var reciprocal = y.reciprocal ();
-            if (reciprocal.is_integer () && !reciprocal.is_negative())
+            if (reciprocal.is_integer ())
                 return root (reciprocal.to_integer ());
-            else
-                return pwr (y);
         }
 
-        Number t;
-        Number t2;
-        if (y.is_negative ())
-        {
-            t = reciprocal ();
-            t2 = y.invert_sign ();
-        }
-        else
-        {
-            t = this;
-            t2 = y;
-        }
-
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.power (t.re_num, t2.re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
-        var tmp2 = z.im_num;
-        tmp2.clear ();
-        tmp = MPFloat.init2 ((Precision) precision);
-        tmp.@set (t.im_num, Round.NEAREST);
-        z.im_num = tmp;
+        var z = new Number ();
+        z.num.power (num, y.num);
         return z;
     }
 
@@ -555,75 +405,39 @@ public class Number : Object
             error = _("Zero raised to zero is undefined");
             return new Number.integer (0);
         }
-
-        Number t;
-        if (n < 0)
-        {
-            t = reciprocal ();
-            n = -n;
-        }
-        else
-        {
-            t = this;
-        }
-
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.power_signed_integer (t.re_num, (long) n, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
-        var tmp2 = z.im_num;
-        tmp2.clear ();
-        tmp = MPFloat.init2 ((Precision) precision);
-        tmp.@set (t.im_num, Round.NEAREST);
-        z.im_num = tmp;
+        var z = new Number ();
+        z.num.power_integer (num, (long) n);
         return z;
-    }
-
-    private Number pwr (Number y)
-    {
-        /* (-x)^y imaginary */
-        /* FIXME: Make complex numbers optional */
-        /*if (re_sign < 0)
-        {
-            mperr (_("The power of negative numbers is only defined for integer exponents"));
-            return new Number.integer (0);
-        }*/
-
-        /* 0^y = 0, 0^-y undefined */
-        if (is_zero ())
-        {
-            if (y.is_negative ())
-                error = _("The power of zero is undefined for a negative exponent");
-            return new Number.integer (0);
-        }
-
-        /* x^0 = 1 */
-        if (y.is_zero ())
-            return new Number.integer (1);
-
-        return y.multiply (ln ()).epowy ();
     }
 
     /* Sets z = n√x */
     public Number root (int64 n)
     {
-        if (!is_complex () && is_negative () && n % 2 == 1)
+        uint64 p;
+        var z = new Number ();
+        if (n < 0)
         {
-            var z = abs ();
-            z = z.root_real (n);
-            z = z.invert_sign ();
-            return z;
+            z.num.unsigned_integer_divide (1, num);
+            if (n == int64.MIN)
+                p = (uint64) int64.MAX + 1;
+            else
+                p = -n;
+        } else {
+            z.num.@set (num);
+            p = n;
         }
-        else if (is_complex () || is_negative ())
-        {
-            var r = abs ();
-            var theta = arg ();
 
-            r = r.root_real (n);
-            theta = theta.divide_integer (n);
-            return new Number.polar (r, theta);
+        if (!is_complex () && (!is_negative () || (p & 1) == 1))
+        {
+            z.num.get_real ().val.root (z.num.get_real ().val, (ulong) p);
+            z.num.get_imag().val.set_zero();
+        } else {
+            var tmp = MPFR.Real (precision);
+            tmp.set_unsigned_integer ((ulong) p);
+            tmp.unsigned_integer_divide (1, tmp);
+            z.num.power_mpreal (z.num, tmp);
         }
-        else
-            return root_real (n);
+        return z;
     }
 
     /* Sets z = √x */
@@ -652,17 +466,15 @@ public class Number : Object
             return new Number.integer (0);
         }*/
 
-        if (is_complex () || is_negative ())
-        {
-            /* ln (re^iθ) = e^(ln (r)+iθ) */
-            var r = abs ();
-            var theta = arg ();
-            var z_real = r.ln_real ();
+        var z = new Number ();
+        z.num.log (num);
+        // MPC returns -π for the imaginary part of the log of
+        // negative real numbers if their imaginary part is -0 (which
+        // it is in the numbers created by test-equation), we want +π
+        if (!is_complex () && is_negative ())
+            z.num.get_imag ().val.abs (z.num.get_imag ().val);
 
-            return new Number.complex (z_real, theta);
-        }
-        else
-            return ln_real ();
+        return z;
     }
 
     /* Sets z = log_n x */
@@ -699,12 +511,12 @@ public class Number : Object
             }
 
             var tmp = add (new Number.integer (1));
-            var tmp2 = MPFloat.init2 ((Precision) precision);
+            var tmp2 = MPFR.Real (precision);
 
             /* Factorial(x) = Gamma(x+1) - This is the formula used to calculate Factorial.*/
-            tmp2.gamma (tmp.re_num, Round.NEAREST);
+            tmp2.gamma (tmp.num.get_real ().val);
 
-            return new Number.mpfloat (tmp2);
+            return new Number.mpreal (tmp2);
         }
 
         /* Convert to integer - if couldn't be converted then the factorial would be too big anyway */
@@ -719,80 +531,32 @@ public class Number : Object
     /* Sets z = x + y */
     public Number add (Number y)
     {
-        if (is_complex () || y.is_complex ())
-        {
-            Number real_z, im_z;
-
-            var real_x = real_component ();
-            var im_x = imaginary_component ();
-            var real_y = y.real_component ();
-            var im_y = y.imaginary_component ();
-
-            real_z = real_x.add_real (real_y);
-            im_z = im_x.add_real (im_y);
-
-            return new Number.complex (real_z, im_z);
-        }
-        else
-            return add_real (y);
-    }
-
-    public Number add_real (Number y)
-    {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.add (re_num, y.re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.add (num, y.num);
         return z;
     }
 
     /* Sets z = x − y */
     public Number subtract (Number y)
     {
-        return add (y.invert_sign ());
+        var z = new Number ();
+        z.num.subtract (num, y.num);
+        return z;
     }
 
     /* Sets z = x × y */
     public Number multiply (Number y)
     {
-        if (is_complex () || y.is_complex ())
-        {
-            Number t1, t2, real_z, im_z;
-
-            var real_x = real_component ();
-            var im_x = imaginary_component ();
-            var real_y = y.real_component ();
-            var im_y = y.imaginary_component ();
-
-            t1 = real_x.multiply_real (real_y);
-            t2 = im_x.multiply_real (im_y);
-            real_z = t1.subtract (t2);
-
-            t1 = real_x.multiply_real (im_y);
-            t2 = im_x.multiply_real (real_y);
-            im_z = t1.add (t2);
-
-            return new Number.complex (real_z, im_z);
-        }
-        else
-            return multiply_real (y);
-    }
-
-    public Number multiply_real (Number y)
-    {
-        var z = new Number.integer (0);
-        var tmp = z.re_num;
-        tmp.multiply (re_num, y.re_num, Round.NEAREST);
-        z.re_num = tmp;
+        var z = new Number ();
+        z.num.multiply (num, y.num);
         return z;
     }
 
     /* Sets z = x × y */
     public Number multiply_integer (int64 y)
     {
-        var z = new Number.integer (0);
-        var tmp = z.re_num;
-        tmp.multiply_signed_integer (re_num, (long) y, Round.NEAREST);
-        z.re_num = tmp;
+        var z = new Number ();
+        z.num.multiply_signed_integer (num, (long) y);
         return z;
     }
 
@@ -806,27 +570,8 @@ public class Number : Object
             return new Number.integer (0);
         }
 
-        if (is_complex () || y.is_complex ())
-        {
-            var a = real_component ();
-            var b = imaginary_component ();
-            var c = y.real_component ();
-            var d = y.imaginary_component ();
-
-            var tmp = a.multiply (c).add (b.multiply (d));
-            var tmp_2 = c.xpowy_integer (2).add (d.xpowy_integer (2));
-            var z_1 = tmp.divide (tmp_2);
-
-            tmp = b.multiply (c).subtract (a.multiply (d));
-            var z_2 = tmp.divide (tmp_2);
-
-            var z = new Number.complex (z_1, z_2);
-            return z;
-        }
-
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.divide (re_num, y.re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.divide (num, y.num);
         return z;
     }
 
@@ -884,46 +629,25 @@ public class Number : Object
     /* Sets z = sin x */
     public Number sin (AngleUnit unit = AngleUnit.RADIANS)
     {
+        var z = new Number ();
         if (is_complex ())
-        {
-            var x_real = real_component ();
-            var x_im = imaginary_component ();
-
-            var z_real = x_real.sin_real (unit);
-            var t = x_im.cosh ();
-            z_real = z_real.multiply (t);
-
-            var z_im = x_real.cos_real (unit);
-            t = x_im.sinh ();
-            z_im = z_im.multiply (t);
-
-            return new Number.complex (z_real, z_im);
-        }
+          z.num.@set (num);
         else
-            return sin_real (unit);
+          mpc_to_radians (z.num, num, unit);
+        z.num.sin (z.num);
+        return z;
     }
 
     /* Sets z = cos x */
     public Number cos (AngleUnit unit = AngleUnit.RADIANS)
     {
+        var z = new Number ();
         if (is_complex ())
-        {
-            var x_real = real_component ();
-            var x_im = imaginary_component ();
-
-            var z_real = x_real.cos_real (unit);
-            var t = x_im.cosh ();
-            z_real = z_real.multiply (t);
-
-            var z_im = x_real.sin_real (unit);
-            t = x_im.sinh ();
-            z_im = z_im.multiply (t);
-            z_im = z_im.invert_sign ();
-
-            return new Number.complex (z_real, z_im);
-        }
+          z.num.@set (num);
         else
-            return cos_real (unit);
+          mpc_to_radians (z.num, num, unit);
+        z.num.cos (z.num);
+        return z;
     }
 
     /* Sets z = tan x */
@@ -940,9 +664,12 @@ public class Number : Object
             return new Number.integer (0);
         }
 
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.tan (x_radians.re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        if (is_complex ())
+          z.num.@set (num);
+        else
+          mpc_to_radians (z.num, num, unit);
+        z.num.tan (z.num);
         return z;
     }
 
@@ -956,10 +683,11 @@ public class Number : Object
             return new Number.integer (0);
         }
 
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.asin (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
-        return z.from_radians (unit);
+        var z = new Number ();
+        z.num.asin (num);
+        if (!z.is_complex ())
+          mpc_from_radians (z.num, z.num, unit);
+        return z;
     }
 
     /* Sets z = cos⁻¹ x */
@@ -972,54 +700,52 @@ public class Number : Object
             return new Number.integer (0);
         }
 
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.acos (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
-        return z.from_radians (unit);
+        var z = new Number ();
+        z.num.acos (num);
+        if (!z.is_complex ())
+          mpc_from_radians (z.num, z.num, unit);
+        return z;
     }
 
     /* Sets z = tan⁻¹ x */
     public Number atan (AngleUnit unit = AngleUnit.RADIANS)
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.atan (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
-        return z.from_radians (unit);
+        var z = new Number ();
+        z.num.atan (num);
+        if (!z.is_complex ())
+          mpc_from_radians (z.num, z.num, unit);
+        return z;
     }
 
     /* Sets z = sinh x */
     public Number sinh ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.sinh (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.sinh (num);
         return z;
     }
 
     /* Sets z = cosh x */
     public Number cosh ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.cosh (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.cosh (num);
         return z;
     }
 
     /* Sets z = tanh x */
     public Number tanh ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.tanh (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.tanh (num);
         return z;
     }
 
     /* Sets z = sinh⁻¹ x */
     public Number asinh ()
     {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.asinh (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.asinh (num);
         return z;
     }
 
@@ -1035,9 +761,8 @@ public class Number : Object
             return new Number.integer (0);
         }
 
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.acosh (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.acosh (num);
         return z;
     }
 
@@ -1052,9 +777,8 @@ public class Number : Object
             return new Number.integer (0);
         }
 
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.atanh (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        z.num.atanh (num);
         return z;
     }
 
@@ -1256,109 +980,76 @@ public class Number : Object
     private Number copy ()
     {
         var z = new Number ();
-        var tmp = MPFloat.init2 ((Precision) precision);
-        var tmp2 = MPFloat.init2 ((Precision) precision);
-        tmp.@set(re_num, Round.NEAREST);
-        tmp2.@set(im_num, Round.NEAREST);
-        z.re_num = tmp;
-        z.im_num = tmp2;
+        z.num.@set (num);
         return z;
     }
 
-    private Number epowy_real ()
+    private static void mpc_from_radians (Complex res, Complex op, AngleUnit unit)
     {
-        var z = copy ();
-        var tmp = z.re_num;
-        tmp.exp (re_num, Round.NEAREST);
-        z.re_num = tmp;
-        return z;
-    }
+        int i;
 
-    private Number root_real (int64 n)
-    {
-        var z = copy ();
-        var tmp = z.re_num;
-        tmp.root (re_num, (ulong) n, Round.NEAREST);
-        z.re_num = tmp;
-        return z;
-    }
-
-    private Number ln_real ()
-    {
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.log (re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
-        return z;
-    }
-
-    private Number reciprocal_real ()
-    {
-        /* 1/0 invalid */
-        if (is_zero ())
+        switch (unit)
         {
-            error = _("Reciprocal of zero is undefined");
-            return new Number.integer (0);
-        }
+            default:
+            case AngleUnit.RADIANS:
+                if (res != op)
+                    res.@set (op);
+                return;
 
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.set_unsigned_integer (1, Round.NEAREST);
-        tmp.divide (tmp, re_num, Round.NEAREST);
-        var z = copy ();
-        z.re_num.clear ();
-        z.re_num = tmp;
-        return z;
+            case AngleUnit.DEGREES:
+                i = 180;
+                break;
+
+            case AngleUnit.GRADIANS:
+                i=200;
+                break;
+
+        }
+        var scale = MPFR.Real (precision);
+        scale.const_pi ();
+        scale.signed_integer_divide (i, scale);
+        res.multiply_mpreal (op, scale);
     }
 
+    private static void mpc_to_radians (Complex res, Complex op, AngleUnit unit)
+    {
+        int i;
+
+        switch (unit)
+        {
+            default:
+            case AngleUnit.RADIANS:
+                if (res != op)
+                    res.@set (op);
+                return;
+
+            case AngleUnit.DEGREES:
+                i = 180;
+                break;
+
+            case AngleUnit.GRADIANS:
+                i=200;
+                break;
+        }
+        var scale = MPFR.Real (precision);
+        scale.const_pi ();
+        scale.divide_signed_integer (scale, i);
+        res.multiply_mpreal (op, scale);
+    }
 
     private Number from_radians (AngleUnit unit)
     {
-        switch (unit)
-        {
-        default:
-        case AngleUnit.RADIANS:
-            return this;
-
-        case AngleUnit.DEGREES:
-            return multiply_integer (180).divide (new Number.pi ());
-
-        case AngleUnit.GRADIANS:
-            return multiply_integer (200).divide (new Number.pi ());
-        }
+        var z = new Number ();
+        mpc_from_radians (z.num, num, unit);
+        return z;
     }
+
 
     /* Convert x to radians */
     private Number to_radians (AngleUnit unit)
     {
-        switch (unit)
-        {
-        default:
-        case AngleUnit.RADIANS:
-            return this;
-
-        case AngleUnit.DEGREES:
-            return multiply (new Number.pi ()).divide_integer (180);
-
-        case AngleUnit.GRADIANS:
-            return multiply (new Number.pi ()).divide_integer (200);
-        }
-    }
-
-    private Number sin_real (AngleUnit unit)
-    {
-        var x_radians = to_radians (unit);
-        var z = new Number.integer (0);
-        var tmp = z.re_num;
-        tmp.sin (x_radians.re_num, Round.NEAREST);
-        z.re_num = tmp;
-        return z;
-    }
-
-    private Number cos_real (AngleUnit unit)
-    {
-        var x_radians = to_radians (unit);
-        var tmp = MPFloat.init2 ((Precision) precision);
-        tmp.cos (x_radians.re_num, Round.NEAREST);
-        var z = new Number.mpfloat (tmp);
+        var z = new Number ();
+        mpc_to_radians (z.num, num, unit);
         return z;
     }
 
