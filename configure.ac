@@ -28,6 +28,7 @@ AC_SUBST([GLIB_REQUIRED])
 
 # FIXME We link to it too, so this check needs to be better....
 AC_CHECK_HEADER([mpfr.h], [], [AC_MSG_ERROR([The mpfr header is missing. Please, install mpfr])])
+AC_CHECK_HEADER([mpc.h], [], [AC_MSG_ERROR([The mpc header is missing. Please, install mpc])])
 
 PKG_CHECK_MODULES(LIBCALCULATOR, [
     glib-2.0 >= $GLIB_REQUIRED

@@ -7,6 +7,8 @@ AM_CPPFLAGS = \
 
 libcalculator_la_SOURCES = \
 	mpfr.vapi \
+	mpfr-glue.vala \
+	mpc.vapi \
 	currency.vala \
 	equation.vala \
 	equation-lexer.vala \
@@ -35,7 +37,8 @@ libcalculator_la_LIBADD = \
 	$(LIBCALCULATOR_LIBS) \
 	-lgmp \
 	-lm \
-	-lmpfr
+	-lmpfr \
+	-lmpc
 
 EXTRA_DIST = \
 	libcalculator.h \

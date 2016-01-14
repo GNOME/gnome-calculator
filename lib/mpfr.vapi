@@ -8,23 +8,10 @@
  * license.
  */
 
-/* A small guide on using MPFR with gnome-calculator:
- * Using it is pretty much self-explanatory when you look at the code in
- * number.vala.
- * C syntax: mpfr_add (result, op1, op2, MPFR_RNDN);
- * Vala syntax: result.add (op1, op2, Round.NEAREST);
- *
- * The result has to be initialized with init2() before using it (same in C).
- * Since MPFR is a C library you have to do manual memory management. This means
- * that after init2()ing something, you have to clear() it at the end. Clearing
- * re_num and im_num is taken are of by the destructor of Number. Just make sure
- * to manually clear any temporary helper variables you use.
- */
-
 [CCode (cheader_filename="mpfr.h")]
 namespace MPFR {
     [SimpleType]
-    [IntegerType]
+    [IntegerType (rank = 9)]
     [CCode (cname = "mpfr_prec_t", has_type_id = false)]
     public struct Precision {}
 
@@ -46,83 +33,87 @@ namespace MPFR {
         NEARESTAWAY
     }
 
-    [CCode (cname = "__mpfr_struct", cprefix = "mpfr_", has_destroy_function = false, copy_function = "", has_type_id = false)]
-    public struct MPFloat {
+    [CCode (cname = "__mpfr_struct", cprefix = "mpfr_", destroy_function = "mpfr_clear", copy_function = "", lvalue_access = false, has_type_id = false)]
+    public struct Real {
         [CCode (cname="mpfr_init2")]
-        public MPFloat.init2 (Precision prec);
-
+        public Real (Precision prec);
+        public Precision get_precision ();
         [CCode (cname="mpfr_set_ui")]
-        public int set_unsigned_integer (ulong op, Round rnd);
+        public int set_unsigned_integer (ulong op, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_set_si")]
-        public int set_signed_integer (long op, Round rnd);
+        public int set_signed_integer (long op, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_set_flt")]
-        public int set_float (float op, Round rnd);
+        public int set_float (float op, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_set_d")]
-        public int set_double (double op, Round rnd);
+        public int set_double (double op, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_set")]
-        public int set (MPFloat op, Round rnd);
-
-        public void clear ();
-
-        public int add (MPFloat op1, MPFloat op2, Round rnd);
+        public int set (Real op, Round rnd = Round.NEAREST);
+        public int set_zero (Round rnd = Round.NEAREST);
+        public int add (Real op1, Real op2, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_sub")]
-        public int subtract (MPFloat op1, MPFloat op2, Round rnd);
+        public int subtract (Real op1, Real op2, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_mul")]
-        public int multiply (MPFloat op1, MPFloat op2, Round rnd);
+        public int multiply (Real op1, Real op2, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_div")]
-        public int divide (MPFloat op1, MPFloat op2, Round rnd);
+        public int divide (Real op1, Real op2, Round rnd = Round.NEAREST);
 
         [CCode (cname="mpfr_get_si")]
-        public long get_signed_integer (Round rnd);
+        public long get_signed_integer (Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_get_ui")]
-        public ulong get_unsigned_integer (Round rnd);
+        public ulong get_unsigned_integer (Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_get_flt")]
-        public float get_float (Round rnd);
+        public float get_float (Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_get_d")]
-        public double get_double (Round rnd);
+        public double get_double (Round rnd = Round.NEAREST);
 
-        public int const_pi (Round rnd);
+        public int const_pi (Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_zero_p")]
         public bool is_zero ();
         public int sgn ();
         [CCode (cname="mpfr_equal_p")]
-        public bool is_equal (MPFloat op2);
-        public int cmp (MPFloat op2);
-        public int sqrt (MPFloat op, Round rnd);
-        public int neg (MPFloat op, Round rnd);
+        public bool is_equal (Real op2);
+        public int cmp (Real op2);
+        public int sqrt (Real op, Round rnd = Round.NEAREST);
+        public int neg (Real op, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_pow_si")]
-        public int power_signed_integer (MPFloat op1, long op2, Round rnd);
+        public int power_signed_integer (Real op1, long op2, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_mul_si")]
-        public int multiply_signed_integer (MPFloat op1, long op2, Round rnd);
+        public int multiply_signed_integer (Real op1, long op2, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_div_si")]
-        public int divide_signed_integer (MPFloat op1, long op2, Round rnd);
-        public int floor (MPFloat op);
+        public int divide_signed_integer (Real op1, long op2, Round rnd = Round.NEAREST);
+        [CCode (cname="mpfr_si_div")]
+        public int signed_integer_divide (long op1, Real op2, Round rnd = Round.NEAREST);
+        [CCode (cname="mpfr_div_ui")]
+        public int divide_unsigned_integer (Real op1, ulong op2, Round rnd = Round.NEAREST);
+        [CCode (cname="mpfr_ui_div")]
+        public int unsigned_integer_divide (ulong op1, Real op2, Round rnd = Round.NEAREST);
+        public int floor (Real op);
         [CCode (cname="mpfr_pow")]
-        public int power (MPFloat op1, MPFloat op2, Round rnd);
-        public int exp (MPFloat op, Round rnd);
-        public int log (MPFloat op, Round rnd);
-        public int sin (MPFloat op, Round rnd);
-        public int cos (MPFloat op, Round rnd);
-        public int tan (MPFloat op, Round rnd);
-        public int asin (MPFloat op, Round rnd);
-        public int acos (MPFloat op, Round rnd);
-        public int atan (MPFloat op, Round rnd);
-        public int sinh (MPFloat op, Round rnd);
-        public int cosh (MPFloat op, Round rnd);
-        public int tanh (MPFloat op, Round rnd);
-        public int asinh (MPFloat op, Round rnd);
-        public int acosh (MPFloat op, Round rnd);
-        public int atanh (MPFloat op, Round rnd);
-        public int abs (MPFloat op, Round rnd);
-        public int root (MPFloat op, ulong k, Round rnd);
-        public int rint (MPFloat op, Round rnd);
-        public int frac (MPFloat op, Round rnd);
-        public int ceil (MPFloat op);
-        public int trunc (MPFloat op);
-        public int round (MPFloat op);
+        public int power (Real op1, Real op2, Round rnd = Round.NEAREST);
+        public int exp (Real op, Round rnd = Round.NEAREST);
+        public int log (Real op, Round rnd = Round.NEAREST);
+        public int sin (Real op, Round rnd = Round.NEAREST);
+        public int cos (Real op, Round rnd = Round.NEAREST);
+        public int tan (Real op, Round rnd = Round.NEAREST);
+        public int asin (Real op, Round rnd = Round.NEAREST);
+        public int acos (Real op, Round rnd = Round.NEAREST);
+        public int atan (Real op, Round rnd = Round.NEAREST);
+        public int sinh (Real op, Round rnd = Round.NEAREST);
+        public int cosh (Real op, Round rnd = Round.NEAREST);
+        public int tanh (Real op, Round rnd = Round.NEAREST);
+        public int asinh (Real op, Round rnd = Round.NEAREST);
+        public int acosh (Real op, Round rnd = Round.NEAREST);
+        public int atanh (Real op, Round rnd = Round.NEAREST);
+        public int abs (Real op, Round rnd = Round.NEAREST);
+        public int root (Real op, ulong k, Round rnd = Round.NEAREST);
+        public int rint (Real op, Round rnd = Round.NEAREST);
+        public int frac (Real op, Round rnd = Round.NEAREST);
+        public int ceil (Real op);
+        public int trunc (Real op);
+        public int round (Real op);
         [CCode (cname="mpfr_integer_p")]
         public int is_integer ();
-        public int gamma (MPFloat op, Round rnd);
+        public int gamma (Real op, Round rnd = Round.NEAREST);
     }
 
     [CCode (cname = "mpfr_underflow_p")]
