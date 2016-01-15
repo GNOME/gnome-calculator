@@ -10,7 +10,7 @@ AM_CPPFLAGS = \
 	$(LIBCALCULATOR_CFLAGS)
 
 
-resources_file = $(top_srcdir)/data/gnome-calculator.gresource.xml
+resources_file = $(top_builddir)/data/gnome-calculator.gresource.xml
 BUILT_SOURCES = resources.c
 
 resources.c: $(resources_file) $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=$(top_srcdir)/data/ $(top_srcdir)/data/gnome-calculator.gresource.xml)
