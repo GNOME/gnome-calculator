@@ -8,38 +8,36 @@
  * license.
 */
 
-public class HistoryView : Gtk.Box
+public class HistoryView : Gtk.ScrolledWindow
 {
     int no_ofitems = 0; /* No of entries in history-view listbox */
-    Gtk.ScrolledWindow scroll_window;
     Gtk.ListBox listbox;
-    Gtk.Box main_box;
+
     private MathDisplay _display;
     public MathDisplay display { get { return _display; } }
     /* Creates a History-View box */
-    public HistoryView (MathDisplay display, Gtk.Box box)
+    public HistoryView (MathDisplay display)
     {
         _display = display;
-        main_box = box;
+
         listbox = new Gtk.ListBox ();
         listbox.set_selection_mode (Gtk.SelectionMode.NONE);
         listbox.set_border_width (5);
-        scroll_window = new Gtk.ScrolledWindow (null, null);
-        scroll_window.set_shadow_type (Gtk.ShadowType.ETCHED_OUT);
-        scroll_window.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        scroll_window.set_placement (Gtk.CornerType.TOP_LEFT);
-        scroll_window.add (listbox);
-        scroll_window.set_vexpand (true);
         listbox.set_vexpand (true);
-        scroll_window.set_size_request (100, 100);
-        scroll_window.size_allocate.connect (scroll_bottom);
-        main_box.add (scroll_window);
-        main_box.show_all ();
+        add (listbox);
+
+        set_shadow_type (Gtk.ShadowType.ETCHED_OUT);
+        set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
+        set_placement (Gtk.CornerType.TOP_LEFT);
+        set_vexpand (true);
+
+        set_size_request (100, 100);
+        size_allocate.connect (scroll_bottom);
     }
 
     public void scroll_bottom ()
-    {   /* Scrolls to the last entered history-view entry */
-        Gtk.Adjustment adjustment = scroll_window.get_vadjustment ();
+    {
+        var adjustment = get_vadjustment ();
         adjustment.set_value (adjustment.get_upper () - adjustment.get_page_size ());
     }
 

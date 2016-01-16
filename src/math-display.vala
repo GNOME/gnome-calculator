@@ -30,7 +30,11 @@ public class MathDisplay : Gtk.Viewport
         _equation.history_signal.connect (this.handler);
         var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         add (main_box);
-        history = new HistoryView (this, main_box);
+
+        history = new HistoryView (this);
+        main_box.add (history);
+        main_box.show_all ();
+
         var scrolled_window = new Gtk.ScrolledWindow (null, null);
         scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
         source_view = new Gtk.SourceView.with_buffer (equation);
