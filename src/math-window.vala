@@ -60,24 +60,11 @@ public class MathWindow : Gtk.ApplicationWindow
         _display.grabfocus ();
 
         _buttons = new MathButtons (equation);
-        grid.add(buttons);
+        grid.add(_buttons);
 
-        if (_buttons.mode != ButtonMode.KEYBOARD) /* Checks if the calculator is in Keyboard mode or not */
-        {
-            buttons.set_visible (true);
-            remove_buttons = false;
-            converter.set_visible (false);
-        }
-        else
-        {
-            buttons.set_visible(false);
-            remove_buttons = true;
-            converter.set_visible (true); /* Unpacks buttons if in keyboard mode */
-            resizable = true;
-        }
+        remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;
 
-        buttons.show ();
-        buttons.notify["mode"].connect (mode_changed_cb);
+        _buttons.notify["mode"].connect (mode_changed_cb);
         mode_changed_cb ();
 
         var provider = new Gtk.CssProvider ();
@@ -128,18 +115,18 @@ public class MathWindow : Gtk.ApplicationWindow
             break;
         }
 
-        if (remove_buttons ==  true && buttons.mode != ButtonMode.KEYBOARD)
+        if (remove_buttons == true && _buttons.mode != ButtonMode.KEYBOARD)
         {
-            buttons.set_visible (true);
+            _buttons.show ();
             remove_buttons = false;
-            converter.set_visible (false);
+            converter.hide ();
             resizable = false;
         }
-        else if (remove_buttons == false && buttons.mode == ButtonMode.KEYBOARD)
+        else if (remove_buttons == false && _buttons.mode == ButtonMode.KEYBOARD)
         {
-            buttons.set_visible (false);
+            _buttons.hide ();
             remove_buttons = true;
-            converter.set_visible (true); /* Converter above the display window is set to visible. */
+            converter.show ();
             resizable = true;
         }
     }
