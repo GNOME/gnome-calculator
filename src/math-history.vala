@@ -16,8 +16,8 @@ public class HistoryView : Gtk.ScrolledWindow
     [GtkChild]
     Gtk.ListBox listbox;
 
-    private MathDisplay _display;
-    public MathDisplay display { set { _display = value; } get { return _display; } }
+    public signal void answer_clicked   (string ans);
+    public signal void equation_clicked (string equation);
 
     [GtkCallback]
     public void scroll_bottom ()
@@ -35,12 +35,15 @@ public class HistoryView : Gtk.ScrolledWindow
         bool check = check_history (prev_eq, ans);
         if (check == false)
         {
-            var entry = new HistoryEntryView (prev_eq, answer, _display, number_base, representation_base);
+            var entry = new HistoryEntryView (prev_eq, answer, number_base, representation_base);
             if (entry != null)
             {
                 listbox.add (entry);
                 entry.show ();
                 no_ofitems = no_ofitems + 1;
+
+                entry.answer_clicked.connect ((ans) => { this.answer_clicked (ans); });
+                entry.equation_clicked.connect ((eq) => { this.equation_clicked (eq); });
             }
         }
     }
@@ -70,9 +73,7 @@ public class HistoryView : Gtk.ScrolledWindow
 }
 
 public class HistoryEntryView : Gtk.ListBoxRow
-{   /* Creates a new history-view entry */
-    private MathDisplay _display;
-    public MathDisplay display { get { return _display; } }
+{
     private Number answer; /* Stores answer in Number object */
     private string prev_equation; /* Stores equation to be entered in history-view */
     private string prev_answer; /* Stores answer to be entered in history-view */
@@ -81,9 +82,11 @@ public class HistoryEntryView : Gtk.ListBoxRow
     Gtk.EventBox eq_eventbox;
     Gtk.EventBox ans_eventbox;
 
-    public HistoryEntryView (string equation, Number number, MathDisplay display, int number_base, uint representation_base)
+    public signal void answer_clicked (string ans);
+    public signal void equation_clicked (string equation);
+
+    public HistoryEntryView (string equation, Number number, int number_base, uint representation_base)
     {
-        _display = display;
         answer = number;
         prev_equation = equation;
         Serializer _serializer = new Serializer (DisplayFormat.AUTOMATIC, number_base, 9);
@@ -144,9 +147,7 @@ public class HistoryEntryView : Gtk.ListBoxRow
             Gtk.Label ans_label = (event.get_child () as Gtk.Label);
             string prev_ans = ans_label.get_tooltip_text ();
             if (prev_ans  != null)
-            {
-                _display.insert_text (prev_ans); /* Replaces current equation by selected equation from history-view */
-            }
+                answer_clicked (prev_ans);
         }
         return true;
     }
@@ -159,9 +160,7 @@ public class HistoryEntryView : Gtk.ListBoxRow
             Gtk.Label equation_label = (event.get_child () as Gtk.Label);
             string prev_equation = equation_label.get_text ();
             if (prev_equation != null)
-            {
-                _display.display_text (prev_equation); /* Appends selected answer from history-view to current equation in editbar */
-            }
+                equation_clicked (prev_equation);
         }
         return true;
     }

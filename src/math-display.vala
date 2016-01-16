@@ -32,7 +32,8 @@ public class MathDisplay : Gtk.Viewport
         add (main_box);
 
         history = new HistoryView ();
-        history.display = this;
+        history.answer_clicked.connect ((ans) => { insert_text (ans); });
+        history.equation_clicked.connect ((eq) => { display_text (eq); });
         main_box.add (history);
         main_box.show_all ();
 
