@@ -31,7 +31,8 @@ public class MathDisplay : Gtk.Viewport
         var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         add (main_box);
 
-        history = new HistoryView (this);
+        history = new HistoryView ();
+        history.display = this;
         main_box.add (history);
         main_box.show_all ();
 

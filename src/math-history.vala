@@ -8,33 +8,18 @@
  * license.
 */
 
+[GtkTemplate (ui = "/org/gnome/calculator/history-view.ui")]
 public class HistoryView : Gtk.ScrolledWindow
 {
     int no_ofitems = 0; /* No of entries in history-view listbox */
+
+    [GtkChild]
     Gtk.ListBox listbox;
 
     private MathDisplay _display;
-    public MathDisplay display { get { return _display; } }
-    /* Creates a History-View box */
-    public HistoryView (MathDisplay display)
-    {
-        _display = display;
+    public MathDisplay display { set { _display = value; } get { return _display; } }
 
-        listbox = new Gtk.ListBox ();
-        listbox.set_selection_mode (Gtk.SelectionMode.NONE);
-        listbox.set_border_width (5);
-        listbox.set_vexpand (true);
-        add (listbox);
-
-        set_shadow_type (Gtk.ShadowType.ETCHED_OUT);
-        set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
-        set_placement (Gtk.CornerType.TOP_LEFT);
-        set_vexpand (true);
-
-        set_size_request (100, 100);
-        size_allocate.connect (scroll_bottom);
-    }
-
+    [GtkCallback]
     public void scroll_bottom ()
     {
         var adjustment = get_vadjustment ();
