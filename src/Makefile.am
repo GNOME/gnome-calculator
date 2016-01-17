@@ -1,7 +1,6 @@
 bin_PROGRAMS = gnome-calculator gcalccmd
 
 AM_CPPFLAGS = \
-	-DUI_DIR=\""$(datadir)/gnome-calculator"\" \
 	-DVERSION=\""$(VERSION)"\" \
 	-DLOCALE_DIR=\""$(localedir)"\" \
 	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \

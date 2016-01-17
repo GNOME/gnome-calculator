@@ -1,15 +1,11 @@
 pkglib_LTLIBRARIES = libcalculator.la
 
 AM_CPPFLAGS = \
-	-DUI_DIR=\""$(datadir)/gnome-calculator"\" \
-	-DVERSION=\""$(VERSION)"\" \
-	-DLOCALE_DIR=\""$(localedir)"\" \
-	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	-w \
+	-DGETTEXT_PACKAGE=\"$(GETTEXT_PACKAGE)\" \
 	$(LIBCALCULATOR_CFLAGS)
 
 libcalculator_la_SOURCES = \
-	config.vapi \
 	mpfr.vapi \
 	currency.vala \
 	equation.vala \
