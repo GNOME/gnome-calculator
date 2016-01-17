@@ -619,6 +619,31 @@ private void test_logarithm10 ()
     pass ();
 }
 
+private void test_equals ()
+{
+    for (var a = -10; a <= 10; a++)
+    {
+        for (var b = -10; b <= 10; b++)
+        {
+            for (var c = -10; c <= 10; c++)
+            {
+                for (var d = -10; d <= 10; d++)
+                {
+                    var x = new Number.double (a ,b);
+                    var y = new Number.double (c, d);
+                    var expected = a == c && b == d;
+                    if (x.equals (y) != expected) {
+                        fail ("(%d, %d).is_equal (%d, %d) -> %s, expected %s".printf (a ,b, c, d, x.equals (y) ? "true" : "false", expected ? "true" : "false"));
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    pass ();
+}
+
 private void test_is_zero ()
 {
     for (var a = -10; a <= 10; a++)
@@ -1139,6 +1164,7 @@ static int main (string[] args)
     //test_ones_complement ();
     //test_twos_complement ();
     test_factorize ();
+    test_equals ();
 
     if (fail_count == 0)
         stdout.printf ("Passed all %i tests\n", pass_count);
