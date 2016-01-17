@@ -1,3 +1,18 @@
+Overview of changes in gnome-calculator 3.19.4
+    * New: Migrate MathConverter, MathWindow, HistoryView and HistoryEntry to GtkBuilder template (Alberto Ruiz)
+    * Fix: Remove unused -D defines from Makefile.am and configure.vapi for both src/ and lib/ (Alberto Ruiz)
+    * Fix: Check if base exponent are complex for xpowy() method (Gerlof Fokkema)
+    * Fix: Prevent infinte loop on some operations with imaginary numbers, bug #757657 (Kyle Green)
+    * Fix: e^(-0.5) returned the wrong value, bug #756960  (Felix Pelletier)
+    * Fix: Missing mnemonic bond in Gross Profit Margin dialog (Martin Simon)
+    * Fix: Use load_from_resource in the Gtk.CssProvider instead of opening the file manually (Alberto Ruiz)
+    * Fix: Use builddir for gresource.xml to satisfy Vala/autotools behaviour, bug #760679 (Michael Catanzaro)
+    * Fix: Rename gnome-calculator.doap name tag to GNOME Calculator instead of gnome-calculator (Alberto Ruiz)
+    * Fix: Use AM_DISTCHECK_CONFIGURE_FLAGS (Michael Catanzaro)
+    * Fix: MathDisplay grabs focus after being shown, bug #748743 (Elita.A.A.Lobo)
+    * Fix: math-equation: "No history" message should disappear when appropriate, bug #759943 (Michael Catanzaro)
+    * Update : Translation (Translation team)
+
 Overview of changes in gnome-calculator 3.19.2
     * Update : Translation (Translation team)
 
