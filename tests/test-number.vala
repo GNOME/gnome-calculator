@@ -767,12 +767,21 @@ private void test_add ()
     {
         for (var b = -10; b <= 10; b++)
         {
-            var z = (new Number.integer (a)).add (new Number.integer (b));
-            var expected = a + b;
-            if (z.to_integer () != expected)
+            var x = new Number.integer (a, b);
+            for (var c = -10; c <= 10; c++)
             {
-                fail ("(%d).add (%d) -> %lli, expected %d".printf (a, b, z.to_integer (), expected));
-                return;
+                for (var d = -10; d <= 10; d++)
+                {
+                    var z = x.add (new Number.integer (c, d));
+                    var re_expected = a + c;
+                    var im_expected = b + d;
+                    if (z.real_component ().to_integer () != re_expected ||
+                        z.imaginary_component ().to_integer () != im_expected)
+                    {
+                        fail ("(%d, %d).add (%d, %d) -> (%lli, %lli) expected (%d, %d)".printf (a, b, c, d, z.real_component ().to_integer (), z.imaginary_component ().to_integer (), re_expected, im_expected));
+                        return;
+                    }
+                }
             }
         }
     }
@@ -786,12 +795,21 @@ private void test_subtract ()
     {
         for (var b = -10; b <= 10; b++)
         {
-            var z = (new Number.integer (a)).subtract (new Number.integer (b));
-            var expected = a - b;
-            if (z.to_integer () != expected)
+            var x = new Number.integer (a, b);
+            for (var c = -10; c <= 10; c++)
             {
-                fail ("(%d).subtract (%d) -> %lli, expected %d".printf (a, b, z.to_integer (), expected));
-                return;
+                for (var d = -10; d <= 10; d++)
+                {
+                    var z = x.subtract (new Number.integer (c, d));
+                    var re_expected = a - c;
+                    var im_expected = b - d;
+                    if (z.real_component ().to_integer () != re_expected ||
+                        z.imaginary_component ().to_integer () != im_expected)
+                    {
+                        fail ("(%d, %d).subtract (%d, %d) -> (%lli, %lli) expected (%d, %d)".printf (a, b, c, d, z.real_component ().to_integer (), z.imaginary_component ().to_integer (), re_expected, im_expected));
+                        return;
+                    }
+                }
             }
         }
     }
@@ -805,12 +823,21 @@ private void test_multiply ()
     {
         for (var b = -10; b <= 10; b++)
         {
-            var z = (new Number.integer (a)).multiply (new Number.integer (b));
-            var expected = a * b;
-            if (z.to_integer () != expected)
+            var x = new Number.integer (a, b);
+            for (var c = -10; c <= 10; c++)
             {
-                fail ("(%d).multiply (%d) -> %lli, expected %d".printf (a, b, z.to_integer (), expected));
-                return;
+                for (var d = -10; d <= 10; d++)
+                {
+                    var z = x.multiply (new Number.integer (c, d));
+                    var re_expected = a * c - b * d;
+                    var im_expected = a * d + b * c;
+                    if (z.real_component ().to_integer () != re_expected ||
+                        z.imaginary_component ().to_integer () != im_expected)
+                    {
+                        fail ("(%d, %d).multiply (%d, %d) -> (%lli, %lli) expected (%d, %d)".printf (a, b, c, d, z.real_component ().to_integer (), z.imaginary_component ().to_integer (), re_expected, im_expected));
+                        return;
+                    }
+                }
             }
         }
     }
@@ -843,15 +870,24 @@ private void test_divide ()
     {
         for (var b = -10; b <= 10; b++)
         {
-            if (b == 0)
-                continue;
-
-            var z = (new Number.integer (a * b)).divide (new Number.integer (b));
-            var expected = a;
-            if (z.to_integer () != expected)
+            var x = new Number.integer (a, b);
+            for (var c = -10; c <= 10; c++)
             {
-                fail ("(%d).divide (%d) -> %lli, expected %d".printf (a * b, b, z.to_integer (), expected));
-                return;
+                for (var d = -10; d <= 10; d++)
+                {
+                    if (c == 0 && d == 0)
+                        continue;
+                    var z = x.divide (new Number.integer (c, d));
+                    double scale = c * c + d * d;
+                    double re_expected = (a * c + b * d) / scale;
+                    double im_expected = (b * c - a * d) / scale;
+                    if (z.real_component ().to_double () != re_expected ||
+                        z.imaginary_component ().to_double () != im_expected)
+                    {
+                        fail ("(%d, %d).divide (%d, %d) -> (%f, %f) expected (%f, %f)".printf (a, b, c, d, z.real_component ().to_double (), z.imaginary_component ().to_double (), re_expected, im_expected));
+                        return;
+                    }
+                }
             }
         }
     }
