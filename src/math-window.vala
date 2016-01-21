@@ -82,26 +82,31 @@ public class MathWindow : Gtk.ApplicationWindow
         case ButtonMode.BASIC:
             mode_label.label = _("Basic Mode");
             action.set_state (new Variant.string ("basic"));
+            Number.complex_enabled = false;
             break;
 
         case ButtonMode.ADVANCED:
             mode_label.label = _("Advanced Mode");
             action.set_state (new Variant.string ("advanced"));
+            Number.complex_enabled = true;
             break;
 
         case ButtonMode.FINANCIAL:
             mode_label.label = _("Financial Mode");
             action.set_state (new Variant.string ("financial"));
+            Number.complex_enabled = false;
             break;
 
         case ButtonMode.PROGRAMMING:
             mode_label.label = _("Programming Mode");
             action.set_state (new Variant.string ("programming"));
+            Number.complex_enabled = false;
             break;
 
         case ButtonMode.KEYBOARD:
             mode_label.label = _("Keyboard Mode");
             action.set_state (new Variant.string ("keyboard"));
+            Number.complex_enabled = true;
             break;
         }
 
