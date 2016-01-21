@@ -46,6 +46,8 @@ public class Number : Object
 
     public static MPFR.Precision precision { get; set; default = 1000; }
 
+    public static bool complex_enabled { get; set; default = true; }
+
     /* Stores the error msg if an error occurs during calculation. Otherwise should be null */
     public static string? error { get; set; default = null; }
 
@@ -384,6 +386,13 @@ public class Number : Object
 
         var z = new Number ();
         z.num.power (num, y.num);
+        if (!complex_enabled && z.is_complex ())
+        {
+            /* Translators: Error displayed when the root is complex
+               and complex numbers are not enabled */
+            error = _("The power is undefined");
+            return new Number.integer (0);
+        }
         return z;
     }
 
@@ -437,6 +446,13 @@ public class Number : Object
             tmp.unsigned_integer_divide (1, tmp);
             z.num.power_mpreal (z.num, tmp);
         }
+        if (!complex_enabled && z.is_complex ())
+        {
+            /* Translators: Error displayed when the root is complex
+               and complex numbers are not enabled */
+            error = _("The root is undefined");
+            return new Number.integer (0);
+        }
         return z;
     }
 
@@ -457,14 +473,12 @@ public class Number : Object
             return new Number.integer (0);
         }
 
-        /* ln (-x) complex */
-        /* FIXME: Make complex numbers optional */
-        /*if (is_negative ())
+        if (!complex_enabled && is_negative ())
         {
             // Translators: Error displayed attempted to take logarithm of negative value
-            mperr (_("Logarithm of negative values is undefined"));
+            error = _("Logarithm of negative values is undefined");
             return new Number.integer (0);
-        }*/
+        }
 
         var z = new Number ();
         z.num.log (num);
@@ -676,7 +690,7 @@ public class Number : Object
     /* Sets z = sin⁻¹ x */
     public Number asin (AngleUnit unit = AngleUnit.RADIANS)
     {
-        if (compare (new Number.integer (1)) > 0 || compare (new Number.integer (-1)) < 0)
+        if (!complex_enabled && (compare (new Number.integer (1)) > 0 || compare (new Number.integer (-1)) < 0))
         {
             /* Translators: Error displayed when inverse sine value is undefined */
             error = _("Inverse sine is undefined for values outside [-1, 1]");
@@ -693,7 +707,7 @@ public class Number : Object
     /* Sets z = cos⁻¹ x */
     public Number acos (AngleUnit unit = AngleUnit.RADIANS)
     {
-        if (compare (new Number.integer (1)) > 0 || compare (new Number.integer (-1)) < 0)
+        if (!complex_enabled && (compare (new Number.integer (1)) > 0 || compare (new Number.integer (-1)) < 0))
         {
             /* Translators: Error displayed when inverse cosine value is undefined */
             error = _("Inverse cosine is undefined for values outside [-1, 1]");
@@ -754,7 +768,7 @@ public class Number : Object
     {
         /* Check x >= 1 */
         var t = new Number.integer (1);
-        if (compare (t) < 0)
+        if (!complex_enabled && compare (t) < 0)
         {
             /* Translators: Error displayed when inverse hyperbolic cosine value is undefined */
             error = _("Inverse hyperbolic cosine is undefined for values less than one");
@@ -770,7 +784,7 @@ public class Number : Object
     public Number atanh ()
     {
         /* Check -1 <= x <= 1 */
-        if (compare (new Number.integer (1)) >= 0 || compare (new Number.integer (-1)) <= 0)
+        if (!complex_enabled && (compare (new Number.integer (1)) >= 0 || compare (new Number.integer (-1)) <= 0))
         {
             /* Translators: Error displayed when inverse hyperbolic tangent value is undefined */
             error = _("Inverse hyperbolic tangent is undefined for values outside [-1, 1]");
