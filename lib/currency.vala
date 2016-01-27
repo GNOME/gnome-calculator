@@ -36,7 +36,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("CFA", _("CFA Franc"), "Fr"));
         default_currency_manager.currencies.append (new Currency ("CHF", _("Swiss Franc"), "Fr"));
         default_currency_manager.currencies.append (new Currency ("CLP", _("Chilean Peso"), "$"));
-        default_currency_manager.currencies.append (new Currency ("CNY", _("Chinese Yuan"), "元"));
+        default_currency_manager.currencies.append (new Currency ("CNY", _("Chinese Yuan"), "¥"));
         default_currency_manager.currencies.append (new Currency ("COP", _("Colombian Peso"), "$"));
         default_currency_manager.currencies.append (new Currency ("CZK", _("Czech Koruna"), "Kč"));
         default_currency_manager.currencies.append (new Currency ("DKK", _("Danish Krone"), "kr"));
