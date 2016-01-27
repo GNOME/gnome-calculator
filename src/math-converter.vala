@@ -180,27 +180,36 @@ public class MathConverter : Gtk.Grid
     [GtkCallback]
     private void from_combobox_changed_cb ()
     {
+        UnitCategory? category = null, to_category = null;
+        Unit unit;
+        Gtk.TreeIter iter, to_iter;
+
         var model = from_combo.get_model ();
-        Gtk.TreeIter iter;
+        var to_model = to_combo.get_model () as Gtk.ListStore;
+
         if (!from_combo.get_active_iter (out iter))
             return;
-        UnitCategory category;
-        Unit unit;
+
         model.get (iter, 1, out category, 2, out unit, -1);
+        if (to_combo.get_active_iter (out to_iter))
+            to_model.get (to_iter, 1, out to_category);
 
-        /* Set the to combobox to be the list of units can be converted to */
-        var to_model = new Gtk.ListStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
-        foreach (var u in category.get_units ())
+        if (category != to_category)
         {
-            if (u == unit)
-                continue;
-            to_model.append (out iter);
-            to_model.set (iter, 0, u.display_name, 1, category, 2, u, -1);
-        }
-        to_combo.model = to_model;
+            /* Set the to combobox to be the list of units can be converted to */
+            to_model = new Gtk.ListStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
+            foreach (var u in category.get_units ())
+            {
+                if (u == unit)
+                    continue;
+                to_model.append (out iter);
+                to_model.set (iter, 0, u.display_name, 1, category, 2, u, -1);
+            }
+            to_combo.model = to_model;
 
-        /* Select the first possible unit */
-        to_combo.set_active (0);
+            /* Select the first possible unit */
+            to_combo.set_active (0);
+        }
     }
 
     [GtkCallback]
