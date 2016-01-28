@@ -25,6 +25,7 @@ libcalculator_la_VALAFLAGS = \
 	--pkg posix \
 	--pkg gtksourceview-3.0 \
 	--pkg libxml-2.0 \
+	--pkg libsoup-2.4 \
 	--header=libcalculator.h \
 	--vapi=libcalculator.vapi
 

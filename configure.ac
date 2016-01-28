@@ -22,6 +22,7 @@ dnl ###########################################################################
 GLIB_REQUIRED=2.40.0
 GTK_REQUIRED=3.11.6
 GTKSOURCEVIEW_REQUIRED=3.15.1
+LIBSOUP_REQUIRED=2.42
 
 AC_SUBST([GLIB_REQUIRED])
 
@@ -33,6 +34,7 @@ PKG_CHECK_MODULES(LIBCALCULATOR, [
     gio-2.0 >= $GLIB_REQUIRED
     gtksourceview-3.0 >= $GTKSOURCEVIEW_REQUIRED
     libxml-2.0
+    libsoup-2.4 >= $LIBSOUP_REQUIRED
 ])
 
 PKG_CHECK_MODULES(GNOME_CALCULATOR, [

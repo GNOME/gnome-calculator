@@ -376,14 +376,14 @@ public class CurrencyManager : Object
         {
             downloading_imf_rates = true;
             debug ("Downloading rates from the IMF...");
-            download_file ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, download_imf_cb);
+            download_file.begin ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, "IMF");
         }
         path = get_ecb_rate_filepath ();
         if (!downloading_ecb_rates && file_needs_update (path, 60 * 60 * 24 * 7))
         {
             downloading_ecb_rates = true;
             debug ("Downloading rates from the ECB...");
-            download_file ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, download_ecb_cb);
+            download_file.begin ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, "ECB");
         }
     }
 
@@ -429,50 +429,35 @@ public class CurrencyManager : Object
             return null;
     }
 
-    private void download_file (string uri, string filename, AsyncReadyCallback callback)
+    private async void download_file (string uri, string filename, string source)
     {
+
         var directory = Path.get_dirname (filename);
         DirUtils.create_with_parents (directory, 0755);
 
-        var source = File.new_for_uri (uri);
         var dest = File.new_for_path (filename);
-
-        source.copy_async.begin (dest, FileCopyFlags.OVERWRITE, GLib.Priority.DEFAULT, null, null, callback);
-    }
-
-    private void download_imf_cb (Object? object, AsyncResult result)
-    {
-        var f = object as File;
-
+        var session = new Soup.Session ();
+        var message = new Soup.Message ("GET", uri);
         try
         {
-            f.copy_async.end (result);
-            debug ("IMF rates updated");
+            var bodyinput = yield session.send_async (message);
+            var output = yield dest.replace_async (null, false, FileCreateFlags.REPLACE_DESTINATION, Priority.DEFAULT);
+            yield output.splice_async (bodyinput,
+                                       OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET,
+                                       Priority.DEFAULT);
+            if (source == "IMF")
+                downloading_imf_rates = false;
+            else
+                downloading_ecb_rates = false;
+
+            load_rates ();
+            debug ("%s rates updated", source);
         }
         catch (Error e)
         {
-            warning ("Couldn't download IMF currency rate file: %s", e.message);
+            warning ("Couldn't download %s currency rate file: %s", source, e.message);
         }
-
-        downloading_imf_rates = false;
-        load_rates ();
-    }
-
-    private void download_ecb_cb (Object? object, AsyncResult result)
-    {
-        var f = object as File;
-        try
-        {
-            f.copy_async.end (result);
-            debug ("ECB rates updated");
-        }
-        catch (Error e)
-        {
-            warning ("Couldn't download ECB currency rate file: %s", e.message);
-        }
-        downloading_ecb_rates = false;
-        load_rates ();
-    }
+     }
 }
 
 public class Currency : Object
