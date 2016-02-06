@@ -20,7 +20,7 @@ Feature: Basic mode
   @basic_add @basic_add_overflow
   Scenario: Add - overflow
     * Calculate "987654321^789456 +123456789"
-    Then "Overflow: the result couldn't be calculated" error is displayed
+    Then "Precision error" error is displayed
 
   @basic_subtract
   Scenario Outline: Subtract
