@@ -57,7 +57,6 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("KWD", _("Kuwaiti Dinar"), "ك.د"));
         default_currency_manager.currencies.append (new Currency ("KZT", _("Kazakhstani Tenge"), "₸"));
         default_currency_manager.currencies.append (new Currency ("LKR", _("Sri Lankan Rupee"), "Rs"));
-        default_currency_manager.currencies.append (new Currency ("LTL", _("Lithuanian Litas"), "Lt"));
         default_currency_manager.currencies.append (new Currency ("LYD", _("Libyan Dinar"), "د.ل"));
         default_currency_manager.currencies.append (new Currency ("MUR", _("Mauritian Rupee"), "Rs"));
         default_currency_manager.currencies.append (new Currency ("MXN", _("Mexican Peso"), "$"));
