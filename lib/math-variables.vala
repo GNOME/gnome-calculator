@@ -127,6 +127,8 @@ public class MathVariables : Object
         string[] variables = get_names ();
         foreach (var variable in variables)
         {
+            if (variable == null)
+                break;
             if (variable.has_prefix (text))
                 eligible_variables += variable;
         }
