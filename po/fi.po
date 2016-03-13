@@ -10,16 +10,16 @@
 # Tommi Vainikainen <Tommi.Vainikainen@iki.fi>, 2004-2005, 2008-2010.
 # Ilkka Tuohela <hile@iki.fi>, 2005-2008.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2013, 2015.
-# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2010, 2012, 2013, 2014, 2015.
+# Jiri Grönroos <jiri.gronroos+l10n@iki.fi>, 2010, 2012, 2013, 2014, 2015, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=http://"
 "bugzilla.gnome.org/&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2015-09-13 06:29+0000\n"
-"PO-Revision-Date: 2015-09-13 22:10+0300\n"
-"Last-Translator: Lasse Liehu <lasse.liehu@gmail.com>\n"
+"POT-Creation-Date: 2016-03-13 08:10+0000\n"
+"PO-Revision-Date: 2016-03-13 13:07+0200\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <gnome-fi-laatu@lists.sourceforge.net>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2011-09-08 08:16+0000\n"
-"X-Generator: Poedit 1.8.3\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "X-POT-Import-Date: 2012-02-19 15:17:38+0000\n"
 
 #. Accessible name for the inverse button
@@ -156,12 +156,12 @@ msgstr ""
 msgid "C_ost:"
 msgstr "K_ustannus:"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
+#. Sum-of-the-Years
 #: ../data/buttons-financial.ui.h:21
 msgid "_Life:"
 msgstr "_Kesto:"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
+#. Sum-of-the-Years
 #: ../data/buttons-financial.ui.h:23
 msgid "_Period:"
 msgstr "_Maksujakso:"
@@ -273,12 +273,12 @@ msgstr ""
 msgid "Straight-Line Depreciation"
 msgstr "Tasainen poistuma"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
+#. Sum-of-the-Years
 #: ../data/buttons-financial.ui.h:57
 msgid "_Cost:"
 msgstr "_Kustannus:"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
+#. Sum-of-the-Years
 #: ../data/buttons-financial.ui.h:59
 msgid "_Salvage:"
 msgstr "_Maksu:"
@@ -296,12 +296,12 @@ msgstr ""
 "hyödyllisen eliniän ajaksi. Hyödyllinen elinikä on jaksojen määrä, "
 "tyypillisesti vuosia, jonka aikana hankinta poistetaan. "
 
-#. Title of Sum-of-the-Years'-Digits Depreciation dialog
+#. Title of Sum-of-the-Years
 #: ../data/buttons-financial.ui.h:63
 msgid "Sum-of-the-Years'-Digits Depreciation"
 msgstr "Vuosipoistomenetelmän vähennys"
 
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
+#. Sum-of-the-Years
 #: ../data/buttons-financial.ui.h:65
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
@@ -356,7 +356,7 @@ msgstr "Fv"
 msgid "Term"
 msgstr "Ehto"
 
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years
 #: ../data/buttons-financial.ui.h:87
 msgid "Syd"
 msgstr "Syd"
@@ -419,23 +419,6 @@ msgstr "_Kirjain:"
 msgid "_Insert"
 msgstr "_Lisää"
 
-#. Program name in the about dialog
-#. Title of main window
-#: ../data/gnome-calculator.desktop.in.h:1 ../src/gnome-calculator.vala:243
-#: ../src/math-window.vala:44
-msgid "Calculator"
-msgstr "Laskin"
-
-#: ../data/gnome-calculator.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Suorita aritmeettisia, tieteellisiä tai talouslaskutoimituksia"
-
-#: ../data/gnome-calculator.desktop.in.h:3
-msgid "calculation;arithmetic;scientific;financial;"
-msgstr ""
-"calculation;arithmetic;scientific;financial;laskenta;laskut;laskutoimitus;"
-"aritmetiikka;aritmeettinen;tieteellinen;tiede;talous;talouslaskut;"
-
 #: ../data/gnome-calculator.appdata.xml.in.h:1
 msgid "GNOME Calculator"
 msgstr "Gnomen laskin"
@@ -483,6 +466,78 @@ msgstr ""
 "oktaali, desimaali ja heksadesimaali) välillä, Boolen algebraa, yhden ja "
 "kahden komplementtia, merkin muuntamista merkkikoodiksi ja muuta."
 
+#: ../data/gnome-calculator.appdata.xml.in.h:6
+#| msgid "GNOME Calculator"
+msgid "GNOME Calculator in Basic Mode."
+msgstr "Gnomen laskin perustilassa."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:7
+#| msgid "GNOME Calculator"
+msgid "GNOME Calculator in Advanced Mode."
+msgstr "Gnomen laskin edistyneessä tilassa."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:8
+#| msgid "Calculator with financial and scientific modes."
+msgid "GNOME Calculator in Financial Mode."
+msgstr "Gnomen laskin taloustilassa."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:9
+#| msgid "GNOME Calculator"
+msgid "GNOME Calculator in Programming Mode."
+msgstr "Gnomen laskin ohjelmointitilassa."
+
+#: ../data/gnome-calculator.appdata.xml.in.h:10
+msgid "The GNOME Project"
+msgstr "Gnome-projekti"
+
+#. Program name in the about dialog
+#: ../data/gnome-calculator.desktop.in.h:1 ../data/math-window.ui.h:6
+#: ../src/gnome-calculator.vala:243
+msgid "Calculator"
+msgstr "Laskin"
+
+#: ../data/gnome-calculator.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Suorita aritmeettisia, tieteellisiä tai talouslaskutoimituksia"
+
+#: ../data/gnome-calculator.desktop.in.h:3
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr ""
+"calculation;arithmetic;scientific;financial;laskenta;laskut;laskutoimitus;"
+"aritmetiikka;aritmeettinen;tieteellinen;tiede;talous;talouslaskut;"
+
+#: ../data/math-converter.ui.h:1
+msgid "Switch conversion units"
+msgstr "Vaihda muunnosyksiköitä"
+
+#: ../data/math-converter.ui.h:2
+msgid " in "
+msgstr " yksikköön "
+
+#: ../data/math-window.ui.h:1 ../src/math-window.vala:83
+msgid "Basic Mode"
+msgstr "Perustila"
+
+#: ../data/math-window.ui.h:2 ../src/math-window.vala:88
+msgid "Advanced Mode"
+msgstr "Edistynyt tila"
+
+#: ../data/math-window.ui.h:3 ../src/math-window.vala:93
+msgid "Financial Mode"
+msgstr "Taloustila"
+
+#: ../data/math-window.ui.h:4 ../src/math-window.vala:98
+msgid "Programming Mode"
+msgstr "Ohjelmointitila"
+
+#: ../data/math-window.ui.h:5 ../src/math-window.vala:103
+msgid "Keyboard Mode"
+msgstr "Näppäimistötila"
+
+#: ../data/math-window.ui.h:7
+msgid "Menu"
+msgstr "Valikko"
+
 #. Title of preferences dialog
 #: ../data/menu.ui.h:1 ../src/math-preferences.vala:30
 msgid "Preferences"
@@ -499,26 +554,6 @@ msgstr "Tietoja"
 #: ../data/menu.ui.h:4
 msgid "Quit"
 msgstr "Lopeta"
-
-#: ../data/menu.ui.h:5 ../src/math-window.vala:156
-msgid "Basic Mode"
-msgstr "Perustila"
-
-#: ../data/menu.ui.h:6 ../src/math-window.vala:161
-msgid "Advanced Mode"
-msgstr "Edistynyt tila"
-
-#: ../data/menu.ui.h:7 ../src/math-window.vala:166
-msgid "Financial Mode"
-msgstr "Taloustila"
-
-#: ../data/menu.ui.h:8 ../src/math-window.vala:171
-msgid "Programming Mode"
-msgstr "Ohjelmointitila"
-
-#: ../data/menu.ui.h:9 ../src/math-window.vala:176
-msgid "Keyboard Mode"
-msgstr "Näppäimistötila"
 
 #: ../data/org.gnome.calculator.gschema.xml.h:1
 msgid "Accuracy value"
@@ -755,110 +790,106 @@ msgid "Sri Lankan Rupee"
 msgstr "Sri Lankan rupia"
 
 #: ../lib/currency.vala:60
-msgid "Lithuanian Litas"
-msgstr "Liettuan litas"
-
-#: ../lib/currency.vala:61
 msgid "Libyan Dinar"
 msgstr "Libyan dinaari"
 
-#: ../lib/currency.vala:62
+#: ../lib/currency.vala:61
 msgid "Mauritian Rupee"
 msgstr "Mauritanian rupia"
 
-#: ../lib/currency.vala:63
+#: ../lib/currency.vala:62
 msgid "Mexican Peso"
 msgstr "Meksikon peso"
 
-#: ../lib/currency.vala:64
+#: ../lib/currency.vala:63
 msgid "Malaysian Ringgit"
 msgstr "Malesian ringgit"
 
-#: ../lib/currency.vala:65
+#: ../lib/currency.vala:64
 msgid "Norwegian Krone"
 msgstr "Norjan kruunu"
 
-#: ../lib/currency.vala:66
+#: ../lib/currency.vala:65
 msgid "Nepalese Rupee"
 msgstr "Nepalin rupia"
 
-#: ../lib/currency.vala:67
+#: ../lib/currency.vala:66
 msgid "New Zealand Dollar"
 msgstr "Uuden-Seelannin dollari"
 
-#: ../lib/currency.vala:68
+#: ../lib/currency.vala:67
 msgid "Omani Rial"
 msgstr "Omanin rial"
 
-#: ../lib/currency.vala:69
+#: ../lib/currency.vala:68
 msgid "Peruvian Nuevo Sol"
 msgstr "Perun uusi sol"
 
-#: ../lib/currency.vala:70
+#: ../lib/currency.vala:69
 msgid "Philippine Peso"
 msgstr "Filippiinien peso"
 
-#: ../lib/currency.vala:71
+#: ../lib/currency.vala:70
 msgid "Pakistani Rupee"
 msgstr "Pakistanin rupia"
 
-#: ../lib/currency.vala:72
+#: ../lib/currency.vala:71
 msgid "Polish Zloty"
 msgstr "Puolan zloty"
 
-#: ../lib/currency.vala:73
+#: ../lib/currency.vala:72
 msgid "Qatari Riyal"
 msgstr "Qatarin rial"
 
-#: ../lib/currency.vala:74
+#: ../lib/currency.vala:73
 msgid "New Romanian Leu"
 msgstr "Uusi Romanian Leu"
 
-#: ../lib/currency.vala:75
+#: ../lib/currency.vala:74
 msgid "Russian Rouble"
 msgstr "Venäjän rupla"
 
-#: ../lib/currency.vala:76
+#: ../lib/currency.vala:75
 msgid "Saudi Riyal"
 msgstr "Saudi-Arabian rial"
 
-#: ../lib/currency.vala:77
+#: ../lib/currency.vala:76
 msgid "Swedish Krona"
 msgstr "Ruotsin kruunu"
 
-#: ../lib/currency.vala:78
+#: ../lib/currency.vala:77
 msgid "Singapore Dollar"
 msgstr "Singaporen dollari"
 
-#: ../lib/currency.vala:79
+#: ../lib/currency.vala:78
 msgid "Thai Baht"
 msgstr "Thaimaan baht"
 
-#: ../lib/currency.vala:80
+#: ../lib/currency.vala:79
 msgid "Tunisian Dinar"
 msgstr "Tunisian dinaari"
 
-#: ../lib/currency.vala:81
+#: ../lib/currency.vala:80
 msgid "New Turkish Lira"
 msgstr "Turkin uusi liira"
 
-#: ../lib/currency.vala:82
+#: ../lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
 msgstr "Trinidad ja Tobagon dollari (TTD)"
 
-#: ../lib/currency.vala:83
+#: ../lib/currency.vala:82
 msgid "US Dollar"
 msgstr "Yhdysvaltain dollari"
 
-#: ../lib/currency.vala:84
+#: ../lib/currency.vala:83
 msgid "Uruguayan Peso"
 msgstr "Uruguayn peso"
 
-#: ../lib/currency.vala:85
+#: ../lib/currency.vala:84
 msgid "Venezuelan Bolívar"
 msgstr "Venezuelan bolívar"
 
-#: ../lib/currency.vala:86
+#: ../lib/currency.vala:85
 msgid "South African Rand"
 msgstr "Etelä-Afrikan randi"
 
@@ -872,69 +903,69 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: ../lib/math-equation.vala:504
+#: ../lib/math-equation.vala:506
 msgid "No undo history"
 msgstr "Ei perumishistoriaa"
 
 #. Error shown when trying to redo with no redo history
-#: ../lib/math-equation.vala:528
+#: ../lib/math-equation.vala:527
 msgid "No redo history"
 msgstr "Ei palautettavaa historiaa"
 
-#: ../lib/math-equation.vala:751
+#: ../lib/math-equation.vala:758
 msgid "No sane value to store"
 msgstr "Ei kelpoa arvoa tallennettavaksi"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../lib/math-equation.vala:944
+#: ../lib/math-equation.vala:951
 msgid "Overflow. Try a bigger word size"
 msgstr "Ylivuoto. Kokeile suurempaa sanakokoa"
 
 #. Error displayed to user when they an unknown variable is entered
-#: ../lib/math-equation.vala:949
+#: ../lib/math-equation.vala:956
 #, c-format
 msgid "Unknown variable '%s'"
 msgstr "Tuntematon muuttuja '%s'"
 
 #. Error displayed to user when an unknown function is entered
-#: ../lib/math-equation.vala:956
+#: ../lib/math-equation.vala:963
 #, c-format
 msgid "Function '%s' is not defined"
 msgstr "Funktiota '%s' ei ole määritelty"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: ../lib/math-equation.vala:963
+#: ../lib/math-equation.vala:970
 msgid "Unknown conversion"
 msgstr "Tuntematon muunnos"
 
 #. should always be run
-#: ../lib/math-equation.vala:973
+#: ../lib/math-equation.vala:980
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: ../lib/math-equation.vala:978 ../lib/math-equation.vala:983
+#: ../lib/math-equation.vala:985 ../lib/math-equation.vala:990
 msgid "Malformed expression"
 msgstr "Virheellinen lauseke"
 
-#: ../lib/math-equation.vala:994
+#: ../lib/math-equation.vala:1001
 msgid "Calculating"
 msgstr "Lasketaan"
 
 #. Error displayed when trying to factorize a non-integer value
-#: ../lib/math-equation.vala:1187
+#: ../lib/math-equation.vala:1194
 msgid "Need an integer to factorize"
 msgstr "Tekijöihin jakamiseen vaaditaan kokonaisluku"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: ../lib/math-equation.vala:1241
+#: ../lib/math-equation.vala:1248
 msgid "No sane value to bitwise shift"
 msgstr "Ei järkevää arvoa bittisiirrolle"
 
 #. Message displayed when cannot toggle bit in display
-#: ../lib/math-equation.vala:1255
+#: ../lib/math-equation.vala:1262
 msgid "Displayed value not an integer"
 msgstr "Esitettävä arvo ei ole kokonaisluku"
 
@@ -954,37 +985,37 @@ msgid "Argument not defined for zero"
 msgstr "Argumenttia ei ole määritelty nollalle"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: ../lib/number.vala:489 ../lib/number.vala:541 ../lib/number.vala:589
+#: ../lib/number.vala:489 ../lib/number.vala:547 ../lib/number.vala:595
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nollan potensseja ei ole määritelty negatiivisilla eksponenteilla"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: ../lib/number.vala:497 ../lib/number.vala:549
+#: ../lib/number.vala:497 ../lib/number.vala:555
 msgid "Zero raised to zero is undefined"
 msgstr "Nollaa potenssiin nolla ei ole määritelty"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../lib/number.vala:639 ../lib/number.vala:672
+#: ../lib/number.vala:642 ../lib/number.vala:675
 msgid "Logarithm of zero is undefined"
 msgstr "Nollan logaritmia ei ole määritelty"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: ../lib/number.vala:694
+#: ../lib/number.vala:697
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Kertoma on määritelty vain ei-negatiivisille reaaliluvuille"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../lib/number.vala:802
+#: ../lib/number.vala:805
 msgid "Division by zero is undefined"
 msgstr "Nollalla jakamista ei ole määritelty"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../lib/number.vala:842
+#: ../lib/number.vala:845
 msgid "Modulus division is only defined for integers"
 msgstr "Modulusjakolasku on määritelty vain kokonaisluvuille"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../lib/number.vala:936
+#: ../lib/number.vala:939
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -992,55 +1023,55 @@ msgstr ""
 "π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../lib/number.vala:952
+#: ../lib/number.vala:955
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Sinin käänteisarvoa ei ole määritelty muualla kuin välillä [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../lib/number.vala:968
+#: ../lib/number.vala:971
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Kosinin käänteisarvoa ei ole määritelty muualla kuin välillä [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../lib/number.vala:1031
+#: ../lib/number.vala:1034
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Hyperbolisen kosinin käänteisarvoa ei ole määritelty ykköstä pienemmille "
 "arvoille"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../lib/number.vala:1048
+#: ../lib/number.vala:1051
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Hyperbolisen tangentin käänteisarvoa ei ole määritelty muualla kuin välillä "
 "[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../lib/number.vala:1065
+#: ../lib/number.vala:1068
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Totuusarvo JA on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../lib/number.vala:1077
+#: ../lib/number.vala:1080
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Totuusarvo TAI on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:1089
+#: ../lib/number.vala:1092
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Totuusarvo XOR on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:1101
+#: ../lib/number.vala:1104
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Totuusarvo EI on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../lib/number.vala:1124
+#: ../lib/number.vala:1127
 msgid "Shift is only possible on integer values"
 msgstr "Siirto on mahdollista vain kokonaisluvuille"
 
-#: ../lib/number.vala:1296
+#: ../lib/number.vala:1299
 msgid "Reciprocal of zero is undefined"
 msgstr "Nollan käänteislukua ei ole määritelty"
 
@@ -1225,8 +1256,6 @@ msgstr "Kaapelinmitta"
 
 #: ../lib/unit.vala:48
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s cm"
 msgctxt "unit-format"
 msgid "%s cb"
 msgstr "%s cb"
@@ -1512,8 +1541,6 @@ msgstr "Pint"
 
 #: ../lib/unit.vala:67
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s pc"
 msgctxt "unit-format"
 msgid "%s pt"
 msgstr "%s pt"
@@ -1784,8 +1811,6 @@ msgstr "Rankine"
 
 #: ../lib/unit.vala:85
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s ˚C"
 msgctxt "unit-format"
 msgid "%s ˚R"
 msgstr "%s ˚R"
@@ -1848,8 +1873,6 @@ msgstr "Kilobitti"
 
 #: ../lib/unit.vala:91
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
 msgctxt "unit-format"
 msgid "%s kb"
 msgstr "%s kb"
@@ -1865,8 +1888,6 @@ msgstr "Kilotavu"
 
 #: ../lib/unit.vala:92
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
 msgctxt "unit-format"
 msgid "%s kB"
 msgstr "%s kB"
@@ -1882,8 +1903,6 @@ msgstr "Kibibitti"
 
 #: ../lib/unit.vala:93
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s K"
 msgctxt "unit-format"
 msgid "%s Kib"
 msgstr "%s Kib"
@@ -1899,8 +1918,6 @@ msgstr "Kibitavu"
 
 #: ../lib/unit.vala:94
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s K"
 msgctxt "unit-format"
 msgid "%s KiB"
 msgstr "%s KiB"
@@ -2036,8 +2053,6 @@ msgstr "Terabitti"
 
 #: ../lib/unit.vala:103
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s Tb"
 msgstr "%s Tb"
@@ -2053,8 +2068,6 @@ msgstr "Teratavu"
 
 #: ../lib/unit.vala:104
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s TB"
 msgstr "%s TB"
@@ -2070,8 +2083,6 @@ msgstr "Tebibitti"
 
 #: ../lib/unit.vala:105
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s Tib"
 msgstr "%s Tib"
@@ -2087,8 +2098,6 @@ msgstr "Tebitavu"
 
 #: ../lib/unit.vala:106
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s TiB"
 msgstr "%s TiB"
@@ -2357,7 +2366,7 @@ msgstr "Ohjetiedostoa ei voi avata"
 #: ../src/gnome-calculator.vala:238
 msgid "translator-credits"
 msgstr ""
-"Jiri Grönroos, 2010-2015\n"
+"Jiri Grönroos, 2010-2016\n"
 "Lasse Liehu, 2013\n"
 "Ilkka Tuohela, 2005-2009\n"
 "Tommi Vainikainen, 2004, 2008-2009\n"
@@ -2670,16 +2679,6 @@ msgid_plural "%d places"
 msgstr[0] "%d kohta"
 msgstr[1] "%d kohtaa"
 
-#. Label that is displayed between the two conversion combo boxes, e.g. "[degrees] in [radians]"
-#: ../src/math-converter.vala:46
-msgid " in "
-msgstr " yksikköön "
-
-#. Tooltip for swap conversion button
-#: ../src/math-converter.vala:60
-msgid "Switch conversion units"
-msgstr "Vaihda muunnosyksiköitä"
-
 #. Preferences dialog: Label for number format combo box
 #: ../src/math-preferences.vala:43
 msgid "Number _Format:"
@@ -2751,9 +2750,12 @@ msgstr "32 bittiä"
 msgid "64 bits"
 msgstr "64 bittiä"
 
-#: ../src/math-window.vala:204
+#: ../src/math-window.vala:131
 msgid "_Quit"
 msgstr "_Lopeta"
+
+#~ msgid "Lithuanian Litas"
+#~ msgstr "Liettuan litas"
 
 #~ msgid "Malformed expression at token '%s'"
 #~ msgstr "Virheellinen lauseke kohdassa ”%s”"
