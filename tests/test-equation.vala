@@ -689,6 +689,7 @@ private void test_precedence ()
     test ("- 4!", "−24", 0);
     test ("3! ^ 3", "216", 0);
     test ("3 ^ 3!", "729", 0);
+    test ("(−√3)^2", "3", 0);
 }
 
 private void test_custom_functions ()
