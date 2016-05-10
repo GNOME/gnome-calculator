@@ -19,6 +19,7 @@ EXTRA_DIST = \
 	buttons-financial.ui \
 	buttons-programming.ui \
 	history-entry.ui \
+	history-view.ui \
 	math-converter.ui \
 	math-window.ui \
 	menu.ui \
