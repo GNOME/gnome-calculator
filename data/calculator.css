@@ -22,3 +22,24 @@
 .bit-marker-label {
 }
 
+.history-entry {
+  background-color: @theme_bg_color;
+  border-bottom: 1px groove @borders;
+  font-size: 0.75em;
+  padding: 6px;
+}
+
+  .history-entry:last-child {
+    border-width: 0px;
+  }
+
+  .history-entry .equation-label {
+    /* word-spacing: 2px; Doesn't work (yet) in GTK */
+  }
+
+  .history-entry .equation-symbol {
+    font-weight: lighter;
+  }
+
+  .history-entry .answer-label {
+  }

@@ -83,13 +83,13 @@ public class HistoryEntry : Gtk.ListBoxRow
         answer_label.set_tooltip_text (answer_nine_digits);
 
         equation_label.set_text (equation);
-        answer_label.set_text ("= " + answer_four_digits);
+        answer_label.set_text (answer_four_digits);
     }
 
     [GtkCallback]
     public bool answer_clicked_cb (Gtk.Widget widget, Gdk.EventButton eventbutton)
     {
-        var answer = answer_label.get_tooltip_text ();
+        var answer = answer_label.get_text ();
         if (answer != null)
             answer_clicked (answer);
         return true;
