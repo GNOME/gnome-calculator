@@ -74,6 +74,7 @@ public class Calculator : Gtk.Application
         add_action_entries (app_entries, this);
 
         window = new MathWindow (this, equation);
+        window.set_title (_("Calculator"));
         var buttons = window.buttons;
         buttons.programming_base = number_base;
         buttons.mode = button_mode; // FIXME: We load the basic buttons even if we immediately switch to the next type
