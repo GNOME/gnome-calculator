@@ -223,6 +223,8 @@ public class MathButtons : Gtk.Box
             valid = model.get_iter_first (out iter);
 
         base_combo.set_active_iter (iter);
+
+        update_bit_panel ();
     }
 
     private Gtk.Widget load_mode (ButtonMode mode)
