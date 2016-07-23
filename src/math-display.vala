@@ -185,6 +185,9 @@ public class MathDisplay : Gtk.Viewport
         case Gdk.Key.KP_Page_Up:
             new_keyval = Gdk.Key.@9;
             break;
+		case Gdk.Key.KP_Delete:
+			new_keyval = Gdk.Key.period;
+			break;
         }
 
         if (new_keyval != 0)
