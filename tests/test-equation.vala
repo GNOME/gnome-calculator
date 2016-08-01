@@ -346,6 +346,7 @@ private void test_equations ()
     test ("2÷3", "0.666666667", 0);
     test ("1÷0", "", ErrorCode.MP);
     test ("0÷0", "", ErrorCode.MP);
+    test ("1÷sin(0)", "", ErrorCode.MP);
 
     /* Precision */
     test ("1000000000000000−1000000000000000", "0", 0);
