@@ -577,11 +577,15 @@ public class DivideNode : LRNode
         var z = l.divide (r);
         if (Number.error != null)
         {
+            uint token_start = 0;
+            uint token_end = 0;
             var tmpleft = right;
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            if (tmpleft.token != null) token_start = tmpleft.token.start_index;
+            if (tmpright.token != null) token_end = tmpright.token.end_index;
+            parser.set_error (ErrorCode.MP, Number.error, token_start, token_end);
             Number.error = null;
         }
         return z;
