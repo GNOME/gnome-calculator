@@ -16,8 +16,8 @@ public class MathPreferencesDialog : Gtk.Dialog
     private Gtk.ComboBox number_format_combo;
     private Gtk.ComboBox word_size_combo;
     private Gtk.SpinButton decimal_places_spin;
-    private Gtk.CheckButton thousands_separator_check;
-    private Gtk.CheckButton trailing_zeroes_check;
+    private Gtk.Switch thousands_separator_switch;
+    private Gtk.Switch trailing_zeroes_switch;
 
     public MathPreferencesDialog (MathEquation eq)
     {
@@ -82,60 +82,59 @@ public class MathPreferencesDialog : Gtk.Dialog
         format_options_box.show ();
         grid.attach (format_options_box, 0, 1, 2, 1);
 
-        var places_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        places_box.show ();
-        format_options_box.pack_start (places_box, false, false, 0);
-
-        /* Label used in preferences dialog.  The %d is replaced by a spinbutton */
-        var string = _("Show %d decimal _places");
-        var tokens = string.split ("%d", 2);
-
         var decimal_places_adjustment = new Gtk.Adjustment (0.0, 0.0, 100.0, 1.0, 1.0, 0.0);
         decimal_places_spin = new Gtk.SpinButton (decimal_places_adjustment, 0.0, 0);
 
-        if (tokens.length > 0)
-        {
-            label = new Gtk.Label.with_mnemonic (tokens[0].strip ());
-            label.mnemonic_widget = decimal_places_spin;
-            label.show ();
-            places_box.pack_start (label, false, false, 0);
-        }
+        label = new Gtk.Label.with_mnemonic (/* Preferences dialog: label for show trailing zeroes check button */
+						_("Number of _decimals"));
+        label.mnemonic_widget = decimal_places_spin;
+        label.show ();
+	label.xalign = 0;
+        grid.attach (label, 0, 2, 1, 1);
 
         decimal_places_spin.show ();
         decimal_places_spin.value_changed.connect (() => { equation.accuracy = decimal_places_spin.get_value_as_int (); });
-        places_box.pack_start (decimal_places_spin, false, false, 0);
 
-        if (tokens.length == 2)
-        {
-            label = new Gtk.Label.with_mnemonic (tokens[1].strip ());
-            label.mnemonic_widget = decimal_places_spin;
-            label.show ();
-            places_box.pack_start (label, false, false, 0);
-        }
+        grid.attach (decimal_places_spin, 1, 2, 1, 1);
 
-        trailing_zeroes_check = new Gtk.CheckButton.with_mnemonic (/* Preferences dialog: label for show trailing zeroes check button */
-                                                                   _("Show trailing _zeroes"));
-        trailing_zeroes_check.show ();
-        trailing_zeroes_check.toggled.connect (() => { equation.show_trailing_zeroes = trailing_zeroes_check.get_active (); });
-        format_options_box.pack_start (trailing_zeroes_check, false, false, 0);
+        label = new Gtk.Label.with_mnemonic (/* Preferences dialog: label for show trailing zeroes switch */
+                                                                   _("Trailing _zeroes"));
+	label.xalign = 0;
+        label.show ();
+	grid.attach (label, 0, 3, 1, 1);
+	label.mnemonic_widget = trailing_zeroes_switch;
+        
+	trailing_zeroes_switch = new Gtk.Switch ();
+        trailing_zeroes_switch.show ();
+        trailing_zeroes_switch.state_set.connect ((state) => { equation.show_trailing_zeroes = state; });
+        trailing_zeroes_switch.halign = Gtk.Align.END;
+	grid.attach (trailing_zeroes_switch, 1, 3, 1, 1);
 
-        thousands_separator_check = new Gtk.CheckButton.with_mnemonic (/* Preferences dialog: label for show show thousands separator check button */
-                                                                       _("Show _thousands separators"));
-        thousands_separator_check.show ();
-        thousands_separator_check.toggled.connect (() => { equation.show_thousands_separators = thousands_separator_check.get_active (); });
-        format_options_box.pack_start (thousands_separator_check, false, false, 0);
+        label = new Gtk.Label.with_mnemonic (/* Preferences dialog: label for show show thousands separator switch */
+                                                                       _("_Thousands separators"));
+	label.xalign = 0;
+        label.show ();
+	label.mnemonic_widget = thousands_separator_switch;
+	grid.attach (label, 0, 4, 1, 1);
+        
+	thousands_separator_switch = new Gtk.Switch ();
+        thousands_separator_switch.show ();
+        thousands_separator_switch.state_set.connect ((state) => { equation.show_thousands_separators = state; });
+        thousands_separator_switch.halign = Gtk.Align.END;
+
+	grid.attach (thousands_separator_switch, 1, 4, 1, 1);
 
         label = new Gtk.Label.with_mnemonic (/* Preferences dialog: Label for angle unit combo box */
                                              _("_Angle units:"));
         label.show ();
         label.xalign = 0;
-        grid.attach (label, 0, 2, 1, 1);
+        grid.attach (label, 0, 5, 1, 1);
 
         angle_unit_combo = new Gtk.ComboBox ();
         label.mnemonic_widget = angle_unit_combo;
         angle_unit_combo.show ();
         angle_unit_combo.changed.connect (angle_unit_combo_changed_cb);
-        grid.attach (angle_unit_combo, 1, 2, 1, 1);
+        grid.attach (angle_unit_combo, 1, 5, 1, 1);
 
         model = new Gtk.ListStore (2, typeof (string), typeof (int));
         angle_unit_combo.model = model;
@@ -159,13 +158,13 @@ public class MathPreferencesDialog : Gtk.Dialog
                                              _("Word _size:"));
         label.show ();
         label.xalign = 0;
-        grid.attach (label, 0, 3, 1, 1);
+        grid.attach (label, 0, 6, 1, 1);
 
         word_size_combo = new Gtk.ComboBox ();
         label.mnemonic_widget = word_size_combo;
         word_size_combo.show ();
         word_size_combo.changed.connect (word_size_combo_changed_cb);
-        grid.attach (word_size_combo, 1, 3, 1, 1);
+        grid.attach (word_size_combo, 1, 6, 1, 1);
 
         model = new Gtk.ListStore (2, typeof (string), typeof (int));
         word_size_combo.model = model;
@@ -184,11 +183,11 @@ public class MathPreferencesDialog : Gtk.Dialog
         decimal_places_spin.set_value (equation.accuracy);
         equation.notify["accuracy"].connect ((pspec) => { decimal_places_spin.set_value (equation.accuracy); });
 
-        thousands_separator_check.set_active (equation.show_thousands_separators);
-        equation.notify["show-thousands-separators"].connect (() => { thousands_separator_check.set_active (equation.show_thousands_separators); });
+        thousands_separator_switch.set_active (equation.show_thousands_separators);
+        equation.notify["show-thousands-separators"].connect (() => { thousands_separator_switch.set_active (equation.show_thousands_separators); });
 
-        trailing_zeroes_check.set_active (equation.show_trailing_zeroes);
-        equation.notify["show-trailing_zeroes"].connect (() => { trailing_zeroes_check.set_active (equation.show_trailing_zeroes); });
+        trailing_zeroes_switch.set_active (equation.show_trailing_zeroes);
+        equation.notify["show-trailing_zeroes"].connect (() => { trailing_zeroes_switch.set_active (equation.show_trailing_zeroes); });
 
         set_combo_box_from_int (number_format_combo, equation.number_format);
         equation.notify["number-format"].connect ((pspec) => { set_combo_box_from_int (number_format_combo, equation.number_format); });
