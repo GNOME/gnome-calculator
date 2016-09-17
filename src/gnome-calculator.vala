@@ -16,9 +16,10 @@ public class Calculator : Gtk.Application
     private MathPreferencesDialog preferences_dialog;
     private static string program_name = null;
     private static string equation_string = null;
+    private static string mode_string = null;
 
     private const OptionEntry[] option_entries = {
-        { "mode", 'm', 0, OptionArg.STRING, null, N_("Start in given mode"), "mode" },
+        { "mode", 'm', 0, OptionArg.STRING, ref mode_string, N_("Start in given mode"), "mode" },
         { "solve", 's', 0, OptionArg.STRING, null, N_("Solve given equation"), "equation" },
         { "equation", 'e', 0, OptionArg.STRING, ref equation_string, N_("Start with given equation"), "equation"},
         { "version", 'v', 0, OptionArg.NONE, null, N_("Show release version"), null },
@@ -115,10 +116,29 @@ public class Calculator : Gtk.Application
                     window.equation.solve ();
             }
         }
-        if (options.contains ("mode"))
+        if (mode_string != "" && mode_string != null)
         {
-            var button_mode = (string) options.lookup_value ("mode", VariantType.STRING);
-            window.buttons.mode = button_mode;
+            var mode = ButtonMode.BASIC;
+
+            switch (mode_string)
+            {
+            case "basic":
+                mode = ButtonMode.BASIC;
+                break;
+            case "advanced":
+                mode = ButtonMode.ADVANCED;
+                break;
+            case "financial":
+                mode = ButtonMode.FINANCIAL;
+                break;
+            case "programming":
+                mode = ButtonMode.PROGRAMMING;
+                break;
+            case "keyboard":
+                mode = ButtonMode.KEYBOARD;
+                break;
+            }
+            window.buttons.mode = mode;
         }
     }
 
