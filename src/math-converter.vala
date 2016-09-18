@@ -200,8 +200,6 @@ public class MathConverter : Gtk.Grid
             to_model = new Gtk.ListStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
             foreach (var u in category.get_units ())
             {
-                if (u == unit)
-                    continue;
                 to_model.append (out iter);
                 to_model.set (iter, 0, u.display_name, 1, category, 2, u, -1);
             }
