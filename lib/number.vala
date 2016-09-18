@@ -1377,7 +1377,7 @@ public class Number : Object
             return new Number.integer (0);
         }
 
-        var text_out = new char[offset_out + 1];
+        var text_out = new char[offset_out + 2];
 
         /* Perform bitwise operator on each character from right to left */
         for (text_out[offset_out+1] = '\0'; offset_out >= 0; offset_out--)
