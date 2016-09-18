@@ -325,6 +325,8 @@ public class FunctionManager : Object
 
     private MathFunction[] array_sort_math_function (MathFunction[] array)
     {
+        if (array.length == 0)
+            return array;
         bool swapped = true;
         int j = (array[array.length - 1] == null ? 1 : 0);
         MathFunction tmp;
@@ -333,8 +335,10 @@ public class FunctionManager : Object
         {
             swapped = false;
             j++;
+            assert (0 <= j <= array.length);
             for (int i = 0; i < array.length - j; i++)
             {
+                assert (0 <= (i+1) < array.length);
                 if (array[i].name > array[i + 1].name)
                 {
                     tmp = array[i];
