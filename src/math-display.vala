@@ -298,6 +298,8 @@ public class MathDisplay : Gtk.Viewport
 
         if (state == Gdk.ModifierType.CONTROL_MASK || equation.number_mode == NumberMode.SUPERSCRIPT)
         {
+            if (!equation.has_selection)
+                equation.remove_trailing_spaces ();
             switch (event.keyval)
             {
             case Gdk.Key.@0:
@@ -344,6 +346,8 @@ public class MathDisplay : Gtk.Viewport
         }
         else if (state == Gdk.ModifierType.MOD1_MASK || equation.number_mode == NumberMode.SUBSCRIPT)
         {
+            if (!equation.has_selection)
+                equation.remove_trailing_spaces ();
             switch (event.keyval)
             {
             case Gdk.Key.@0:

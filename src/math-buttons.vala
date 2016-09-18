@@ -934,23 +934,6 @@ public class MathButtons : Gtk.Box
         return true;
     }
 
-    private void remove_trailing_spaces ()
-    {
-        var insert_mark = equation.get_insert ();
-        Gtk.TextIter start, end;
-        equation.get_iter_at_mark (out end, insert_mark);
-        start = end;
-        while (start.backward_char ())
-        {
-            if (!start.get_char ().isspace ())
-            {
-                start.forward_char ();
-                break;
-            }
-        }
-        equation.delete (ref start, ref end);
-    }
-
     private void set_superscript_cb (Gtk.Button widget)
     {
         var button = widget as Gtk.ToggleButton;
@@ -959,7 +942,7 @@ public class MathButtons : Gtk.Box
         {
             equation.number_mode = NumberMode.SUPERSCRIPT;
             if (!equation.has_selection)
-                remove_trailing_spaces ();
+                equation.remove_trailing_spaces ();
         }
         else if (equation.number_mode == NumberMode.SUPERSCRIPT)
             equation.number_mode = NumberMode.NORMAL;
@@ -973,7 +956,7 @@ public class MathButtons : Gtk.Box
         {
             equation.number_mode = NumberMode.SUBSCRIPT;
             if (!equation.has_selection)
-                remove_trailing_spaces ();
+                equation.remove_trailing_spaces ();
         }
         else if (equation.number_mode == NumberMode.SUBSCRIPT)
             equation.number_mode = NumberMode.NORMAL;

@@ -263,6 +263,23 @@ public class MathEquation : Gtk.SourceBuffer
         get_iter_at_mark (out ans_end, ans_end_mark);
     }
 
+    public void remove_trailing_spaces ()
+    {
+        var insert_mark = get_insert ();
+        Gtk.TextIter start, end;
+        get_iter_at_mark (out end, insert_mark);
+        start = end;
+        while (start.backward_char ())
+        {
+            if (!start.get_char ().isspace ())
+            {
+                start.forward_char ();
+                break;
+            }
+        }
+        this.delete (ref start, ref end);
+    }
+
     private void reformat_separators ()
     {
         var in_number = false;
