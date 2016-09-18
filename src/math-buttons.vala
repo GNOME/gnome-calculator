@@ -164,7 +164,7 @@ public class MathButtons : Gtk.Box
         foreach (var label in bit_labels)
         {
             var text = " 0";
-            if ((bits & (1LL << i)) != 0)
+            if ((bits & (1ULL << i)) != 0)
                 text = " 1";
             label.set_text (text);
             i++;
