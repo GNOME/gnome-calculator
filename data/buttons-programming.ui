@@ -6,27 +6,29 @@
     <property name="visible">True</property>
     <property name="spacing">6</property>
     <child>
-      <object class="GtkHBox" id="hbox1">
+      <object class="GtkBox" id="hbox1">
         <property name="visible">True</property>
-        <property name="spacing">6</property>
+        <property name="orientation">horizontal</property>
         <child>
-          <object class="GtkComboBox" id="base_combo">
+          <object class="GtkComboBoxText" id="base_combo">
             <property name="visible">True</property>
             <property name="focus_on_click">False</property>
+            <items>
+              <item id="2" translatable="yes">Binary</item>
+              <item id="8" translatable="yes">Octal</item>
+              <item id="10" translatable="yes">Decimal</item>
+              <item id="16" translatable="yes">Hexadecimal</item>
+            </items>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="position">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkLabel" id="base_label">
             <property name="visible">True</property>
-            <property name="xalign">1</property>
+            <property name="halign">end</property>
             <property name="label" comments="Example content">FF₁₆ 256₁₀</property>
           </object>
           <packing>
-            <property name="position">1</property>
+            <property name="expand">True</property>
           </packing>
         </child>
       </object>
@@ -49,7 +51,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_1">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -64,7 +66,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_2">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -79,7 +81,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_3">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -94,7 +96,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_4">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -109,7 +111,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_5">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -124,7 +126,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_6">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -139,7 +141,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_7">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -154,7 +156,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_8">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -169,7 +171,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_9">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -184,7 +186,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_10">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -199,7 +201,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_11">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -214,7 +216,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_12">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -229,7 +231,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_13">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -244,7 +246,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_14">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -259,7 +261,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_15">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -274,7 +276,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_31">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -289,7 +291,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_30">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -304,7 +306,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_29">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -319,7 +321,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_28">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -334,7 +336,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_27">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -349,7 +351,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_26">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -364,7 +366,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_25">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -379,7 +381,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_24">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -394,7 +396,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_23">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -409,7 +411,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_22">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -424,7 +426,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_21">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -439,7 +441,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_20">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -454,7 +456,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_19">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -469,7 +471,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_18">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -484,7 +486,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_17">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -499,7 +501,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_16">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -511,7 +513,7 @@
             <child>
               <object class="GtkLabel" id="bit_marker_label0">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">63</property>
                 <property name="justify">center</property>
                 <style>
@@ -522,12 +524,13 @@
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">1</property>
+                <property name="width">20</property>
               </packing>
             </child>
             <child>
               <object class="GtkLabel" id="bit_marker_label3">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">31</property>
                 <property name="justify">center</property>
                 <style>
@@ -538,12 +541,13 @@
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">3</property>
+                <property name="width">20</property>
               </packing>
             </child>
             <child>
               <object class="GtkLabel" id="bit_marker_label2">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">32</property>
                 <property name="justify">center</property>
                 <style>
@@ -559,7 +563,7 @@
             <child>
               <object class="GtkLabel" id="bit_marker_label5">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label"> 0</property>
                 <property name="justify">center</property>
                 <style>
@@ -578,7 +582,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_32">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -594,7 +598,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_33">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -610,7 +614,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_34">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -626,7 +630,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_35">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -642,7 +646,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_36">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -658,7 +662,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_37">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -674,7 +678,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_38">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -690,7 +694,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_39">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -706,7 +710,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_40">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -722,7 +726,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_41">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -738,7 +742,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_42">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -754,7 +758,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_43">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -770,7 +774,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_44">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -786,7 +790,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_45">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -802,7 +806,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_46">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -818,7 +822,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_47">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -834,7 +838,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_48">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -850,7 +854,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_49">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -866,7 +870,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_50">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -882,7 +886,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_51">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -898,7 +902,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_52">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -914,7 +918,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_53">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -930,7 +934,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_54">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -946,7 +950,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_55">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -962,7 +966,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_56">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -978,7 +982,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_57">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -994,7 +998,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_58">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -1010,7 +1014,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_59">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -1026,7 +1030,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_60">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -1042,7 +1046,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_61">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -1058,7 +1062,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_62">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -1074,7 +1078,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_63">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -1087,7 +1091,7 @@
             <child>
               <object class="GtkLabel" id="bit_marker_label1">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">47</property>
                 <property name="justify">center</property>
                 <style>
@@ -1098,12 +1102,13 @@
               <packing>
                 <property name="left_attach">20</property>
                 <property name="top_attach">1</property>
+                <property name="width">18</property>
               </packing>
             </child>
             <child>
               <object class="GtkLabel" id="bit_marker_label4">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">15</property>
                 <property name="justify">center</property>
                 <style>
@@ -1114,12 +1119,13 @@
               <packing>
                 <property name="left_attach">20</property>
                 <property name="top_attach">3</property>
+                <property name="width">18</property>
               </packing>
             </child>
             <child>
               <object class="GtkLabel" id="label25">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1129,7 +1135,7 @@
             <child>
               <object class="GtkLabel" id="label26">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1139,7 +1145,7 @@
             <child>
               <object class="GtkLabel" id="label27">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1149,7 +1155,7 @@
             <child>
               <object class="GtkLabel" id="label28">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1159,7 +1165,7 @@
             <child>
               <object class="GtkLabel" id="label29">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1169,7 +1175,7 @@
             <child>
               <object class="GtkLabel" id="label30">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1179,7 +1185,7 @@
             <child>
               <object class="GtkLabel" id="label31">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1189,7 +1195,7 @@
             <child>
               <object class="GtkLabel" id="label32">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1200,7 +1206,7 @@
             <child>
               <object class="GtkLabel" id="label33">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1211,7 +1217,7 @@
             <child>
               <object class="GtkLabel" id="label34">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1222,7 +1228,7 @@
             <child>
               <object class="GtkLabel" id="label35">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1233,7 +1239,7 @@
             <child>
               <object class="GtkLabel" id="label36">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1244,7 +1250,7 @@
             <child>
               <object class="GtkLabel" id="label37">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1255,7 +1261,7 @@
             <child>
               <object class="GtkLabel" id="label38">
                 <property name="visible">True</property>
-                <property name="xalign">0</property>
+                <property name="halign">start</property>
                 <property name="label">  </property>
               </object>
               <packing>
@@ -1269,7 +1275,7 @@
                 <child>
                   <object class="GtkLabel" id="bit_label_0">
                     <property name="visible">True</property>
-                    <property name="xalign">0</property>
+                    <property name="halign">start</property>
                     <property name="label"> 0</property>
                   </object>
                 </child>
@@ -1277,222 +1283,6 @@
               <packing>
                 <property name="left_attach">0</property>
               </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
             </child>
           </object>
         </child>
@@ -1517,6 +1307,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Root [Ctrl+R]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'√'</property>
           </object>
           <packing>
             <property name="left_attach">7</property>
@@ -1530,6 +1323,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Logarithm</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'log '</property>
           </object>
           <packing>
             <property name="left_attach">7</property>
@@ -1544,6 +1340,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Factorize [Ctrl+F]</property>
+            <property name="action_name">cal.factorize</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_factor_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the factorize button">Factorize</property>
@@ -1563,6 +1361,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Natural Logarithm</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'ln '</property>
           </object>
           <packing>
             <property name="left_attach">8</property>
@@ -1576,6 +1377,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Absolute Value [|]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'|'</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_abs_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the absolute value button">Absolute Value</property>
@@ -1602,6 +1406,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Integer Component</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'int '</property>
           </object>
           <packing>
             <property name="left_attach">9</property>
@@ -1616,6 +1423,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Fractional Component</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'frac '</property>
           </object>
           <packing>
             <property name="left_attach">9</property>
@@ -1630,6 +1440,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Divide [/]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'÷'</property>
           </object>
           <packing>
             <property name="left_attach">4</property>
@@ -1645,6 +1458,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">0</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1662,6 +1477,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Multiply [*]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'×'</property>
           </object>
           <packing>
             <property name="left_attach">4</property>
@@ -1676,6 +1494,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Subtract [-]</property>
+            <property name="action_name">cal.subtract</property>
           </object>
           <packing>
             <property name="left_attach">4</property>
@@ -1690,6 +1510,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Add [+]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'+'</property>
           </object>
           <packing>
             <property name="left_attach">4</property>
@@ -1704,6 +1527,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Calculate Result</property>
+            <property name="action_name">cal.solve</property>
             <style>
               <class name="suggested-action"/>
             </style>
@@ -1720,6 +1545,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Clear Display [Escape]</property>
+            <property name="action_name">cal.clear</property>
             <child>
               <object class="GtkImage" id="image1">
                 <property name="visible">True</property>
@@ -1740,6 +1567,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">1</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1757,6 +1586,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">2</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1774,6 +1605,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">3</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1791,6 +1624,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">4</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1808,6 +1643,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">5</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1825,6 +1662,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">6</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1842,6 +1681,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">7</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1859,6 +1700,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">8</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1876,6 +1719,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">9</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1893,6 +1738,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">10</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1910,6 +1757,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">11</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1927,6 +1776,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">12</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1944,6 +1795,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">13</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1961,6 +1814,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">14</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1978,6 +1833,8 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">15</property>
             <style>
               <class name="number-button"/>
             </style>
@@ -1993,6 +1850,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Subscript mode [Alt]</property>
+            <property name="action_name">cal.set-number-mode</property>
+            <property name="action_target">'subscript'</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_subscript_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the subscript mode button">Subscript</property>
@@ -2017,6 +1877,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Superscript mode [Ctrl]</property>
+            <property name="action_name">cal.set-number-mode</property>
+            <property name="action_target">'superscript'</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_superscript_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the superscript mode button">Superscript</property>
@@ -2042,6 +1905,7 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-numeric-point</property>
             <style>
               <class name="numeric-point-button"/>
             </style>
@@ -2056,6 +1920,7 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Memory</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_store_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the store value button">Store</property>
@@ -2099,6 +1964,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Boolean Exclusive OR</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'⊻'</property>
           </object>
           <packing>
             <property name="left_attach">5</property>
@@ -2113,6 +1981,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Boolean OR</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'∨'</property>
           </object>
           <packing>
             <property name="left_attach">5</property>
@@ -2127,6 +1998,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Boolean AND</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'∧'</property>
           </object>
           <packing>
             <property name="left_attach">5</property>
@@ -2141,6 +2015,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Modulus divide</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">' mod '</property>
           </object>
           <packing>
             <property name="left_attach">5</property>
@@ -2155,6 +2032,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Start Group [(]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'('</property>
           </object>
           <packing>
             <property name="left_attach">4</property>
@@ -2168,17 +2048,21 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">End Group [)]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">')'</property>
           </object>
           <packing>
             <property name="left_attach">5</property>
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="calc_shift_left_button">
+          <object class="GtkMenuButton" id="calc_shift_left_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Shift Left</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_shift_left_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the shift left button">Shift Left</property>
@@ -2216,11 +2100,12 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="calc_shift_right_button">
+          <object class="GtkMenuButton" id="calc_shift_right_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Shift Right</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_shift_right_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the shift right button">Shift Right</property>
@@ -2264,6 +2149,8 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Insert Character Code</property>
+            <property name="action_name">cal.insert-character</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_character_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the insert character button">Insert Character</property>
@@ -2282,6 +2169,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Boolean NOT</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'¬'</property>
           </object>
           <packing>
             <property name="left_attach">6</property>
@@ -2294,6 +2184,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Factorial [!]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'!'</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_factorial_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the factorial button">Factorial</property>
@@ -2318,6 +2211,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Inverse [Ctrl+I]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'⁻¹'</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_inverse_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the inverse button">Inverse</property>
@@ -2343,6 +2239,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Exponent [^ or **]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'^'</property>
             <child internal-child="accessible">
               <object class="AtkObject" id="calc_x_pow_y_button-atkobject">
                 <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the exponentiation (x to the power of y) button">Exponent</property>
@@ -2369,6 +2268,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Ones' Complement</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'ones '</property>
           </object>
           <packing>
             <property name="left_attach">6</property>
@@ -2383,6 +2285,9 @@
             <property name="receives_default">True</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Two's Complement</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'twos '</property>
           </object>
           <packing>
             <property name="left_attach">7</property>
