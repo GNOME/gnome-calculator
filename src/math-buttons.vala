@@ -129,7 +129,7 @@ public class MathButtons : Gtk.Box
         for (var i = 0; i < entry_names.length; i++)
         {
             var entry = financial_ui.get_object (entry_names[i]) as Gtk.Entry;
-            if (i != ctrm_entries.length - 1)
+            if (i != entry_names.length - 1)
                 entry.set_data<Gtk.Entry> ("next-entry", financial_ui.get_object (entry_names[i+1]) as Gtk.Entry);
             entry.activate.connect (finc_activate_cb);
         }
