@@ -10,7 +10,7 @@
     <property name="vexpand">True</property>
     <property name="hscrollbar_policy">never</property>
     <property name="shadow_type">etched-out</property>
-    <signal name="size-allocate" handler="scroll_bottom" swapped="no"/>
+    <signal name="row_added" handler="scroll_bottom" swapped="no"/>
     <child>
       <object class="GtkViewport" id="viewport">
         <property name="visible">True</property>

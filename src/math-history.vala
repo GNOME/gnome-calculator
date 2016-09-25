@@ -24,6 +24,7 @@ public class HistoryView : Gtk.ScrolledWindow
 
     public signal void answer_clicked   (string ans);
     public signal void equation_clicked (string equation);
+    public signal void row_added	();
 
 
     [GtkCallback]
@@ -59,6 +60,7 @@ public class HistoryView : Gtk.ScrolledWindow
 
         last_answer = answer_nine_digits;
         last_equation = equation;
+        row_added ();
     }
 }
 
