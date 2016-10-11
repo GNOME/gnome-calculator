@@ -21,7 +21,7 @@ public class MathPreferencesDialog : Gtk.Dialog
 
     public MathPreferencesDialog (MathEquation eq)
     {
-        Object(use_header_bar: 1, equation: eq);
+        Object(use_header_bar: 1, equation: eq, resizable: false);
     }
 
     construct
