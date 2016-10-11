@@ -69,7 +69,7 @@ public class MathButtons : Gtk.Box
     private Gtk.ComboBox base_combo;
     private Gtk.Label base_label;
     private Gtk.Widget bit_panel;
-    private List<Gtk.Label> bit_labels;
+    private List<Gtk.Button> toggle_bit_buttons;
 
     private Gtk.Dialog character_code_dialog;
     private Gtk.Entry character_code_entry;
@@ -98,6 +98,7 @@ public class MathButtons : Gtk.Box
         {"factorize",            on_factorize                                },
         {"insert-exponent",      on_insert_exponent                          },
         {"bitshift",             on_bitshift,             "i"                },
+        {"toggle-bit",           on_toggle_bit,           "i"                },
         {"insert-character",     on_insert_character                         },
         {"insert-numeric-point", on_insert_numeric_point                     },
         {"set-number-mode",      on_set_number_mode,      "s", "'normal'"    },
@@ -231,12 +232,12 @@ public class MathButtons : Gtk.Box
             return;
 
         var i = 0;
-        foreach (var label in bit_labels)
+        foreach (var button in toggle_bit_buttons)
         {
-            var text = " 0";
+            var text = "0";
             if ((bits & (1ULL << i)) != 0)
-                text = " 1";
-            label.set_text (text);
+                text = "1";
+            button.label = text;
             i++;
         }
 
@@ -367,22 +368,18 @@ public class MathButtons : Gtk.Box
             character_code_entry.activate.connect (character_code_dialog_activate_cb);
 
             bit_panel = builder.get_object ("bit_table") as Gtk.Widget;
-            bit_labels = new List<Gtk.Label> ();
+            toggle_bit_buttons = new List<Gtk.Button> ();
             var i = 0;
             while (true)
             {
-                var name = "bit_label_%d".printf (i);
-                var label = builder.get_object (name) as Gtk.Label;
-                if (label == null)
+                var name = "toggle_bit_%d_button".printf (i);
+                var toggle_bit_button = builder.get_object (name) as Gtk.Button;
+                if (toggle_bit_button == null)
                     break;
-                bit_labels.append (label);
-                name = "bit_eventbox_%d".printf (i);
-                var box = builder.get_object (name) as Gtk.EventBox;
-                box.set_data<int> ("bit_index", i);
-                box.button_press_event.connect (on_toggle_bit);
+                toggle_bit_buttons.append (toggle_bit_button);
                 i++;
             }
-            bit_labels.reverse ();
+            toggle_bit_buttons.reverse ();
 
             base_combo = builder.get_object ("base_combo") as Gtk.ComboBox;
             base_combo.changed.connect (base_combobox_changed_cb);
@@ -614,10 +611,9 @@ public class MathButtons : Gtk.Box
         return true;
     }
 
-    private bool on_toggle_bit (Gtk.Widget event_box, Gdk.EventButton event)
+    private void on_toggle_bit (SimpleAction action, Variant? param)
     {
-        equation.toggle_bit (event_box.get_data<int> ("bit_index"));
-        return true;
+        equation.toggle_bit (param.get_int32 ());
     }
 
     private void on_set_number_mode (SimpleAction action, Variant? param)
