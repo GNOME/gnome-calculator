@@ -211,7 +211,6 @@ public class MathDisplay : Gtk.Viewport
 
         /* Clear on escape */
         if ((event.keyval == Gdk.Key.Escape && state == 0) ||
-            (event.keyval == Gdk.Key.BackSpace && state == Gdk.ModifierType.CONTROL_MASK) ||
             (event.keyval == Gdk.Key.Delete && state == Gdk.ModifierType.SHIFT_MASK))
         {
             equation.clear ();
