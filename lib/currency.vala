@@ -263,14 +263,16 @@ public class CurrencyManager : Object
                     if (symbol != null)
                     {
                         var c = get_currency (symbol);
-                        if (c == null)
+                        var value = mp_set_from_string (tokens[value_index]);
+                        /* Use data if we have a valid value */
+                        if (c == null && value != null)
                         {
                             debug ("Using IMF rate of %s for %s", tokens[value_index], symbol);
                             c = add_currency (symbol);
+                            value = value.reciprocal ();
+                            if (c != null)
+                                c.set_value (value);
                         }
-                        var value = mp_set_from_string (tokens[value_index]);
-                        value = value.reciprocal ();
-                        c.set_value (value);
                     }
                     else
                         warning ("Unknown currency '%s'", tokens[0]);
