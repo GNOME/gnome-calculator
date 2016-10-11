@@ -86,10 +86,10 @@ public class MathPreferencesDialog : Gtk.Dialog
         decimal_places_spin = new Gtk.SpinButton (decimal_places_adjustment, 0.0, 0);
 
         label = new Gtk.Label.with_mnemonic (/* Preferences dialog: label for show trailing zeroes check button */
-						_("Number of _decimals"));
+                                             _("Number of _decimals"));
         label.mnemonic_widget = decimal_places_spin;
         label.show ();
-	label.xalign = 0;
+        label.xalign = 0;
         grid.attach (label, 0, 2, 1, 1);
 
         decimal_places_spin.show ();
@@ -99,30 +99,30 @@ public class MathPreferencesDialog : Gtk.Dialog
 
         label = new Gtk.Label.with_mnemonic (/* Preferences dialog: label for show trailing zeroes switch */
                                                                    _("Trailing _zeroes"));
-	label.xalign = 0;
+        label.xalign = 0;
         label.show ();
-	grid.attach (label, 0, 3, 1, 1);
-	label.mnemonic_widget = trailing_zeroes_switch;
-        
-	trailing_zeroes_switch = new Gtk.Switch ();
+        grid.attach (label, 0, 3, 1, 1);
+        label.mnemonic_widget = trailing_zeroes_switch;
+
+        trailing_zeroes_switch = new Gtk.Switch ();
         trailing_zeroes_switch.show ();
         trailing_zeroes_switch.state_set.connect ((state) => { equation.show_trailing_zeroes = state; });
         trailing_zeroes_switch.halign = Gtk.Align.END;
-	grid.attach (trailing_zeroes_switch, 1, 3, 1, 1);
+        grid.attach (trailing_zeroes_switch, 1, 3, 1, 1);
 
         label = new Gtk.Label.with_mnemonic (/* Preferences dialog: label for show show thousands separator switch */
                                                                        _("_Thousands separators"));
-	label.xalign = 0;
+        label.xalign = 0;
         label.show ();
-	label.mnemonic_widget = thousands_separator_switch;
-	grid.attach (label, 0, 4, 1, 1);
-        
-	thousands_separator_switch = new Gtk.Switch ();
+        label.mnemonic_widget = thousands_separator_switch;
+        grid.attach (label, 0, 4, 1, 1);
+
+        thousands_separator_switch = new Gtk.Switch ();
         thousands_separator_switch.show ();
         thousands_separator_switch.state_set.connect ((state) => { equation.show_thousands_separators = state; });
         thousands_separator_switch.halign = Gtk.Align.END;
 
-	grid.attach (thousands_separator_switch, 1, 4, 1, 1);
+        grid.attach (thousands_separator_switch, 1, 4, 1, 1);
 
         label = new Gtk.Label.with_mnemonic (/* Preferences dialog: Label for angle unit combo box */
                                              _("_Angle units:"));
