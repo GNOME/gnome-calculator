@@ -98,7 +98,7 @@ public class MathPreferencesDialog : Gtk.Dialog
         grid.attach (decimal_places_spin, 1, 2, 1, 1);
 
         label = new Gtk.Label.with_mnemonic (/* Preferences dialog: label for show trailing zeroes switch */
-                                                                   _("Trailing _zeroes"));
+                                             _("Trailing _zeroes"));
         label.xalign = 0;
         label.show ();
         grid.attach (label, 0, 3, 1, 1);
@@ -111,7 +111,7 @@ public class MathPreferencesDialog : Gtk.Dialog
         grid.attach (trailing_zeroes_switch, 1, 3, 1, 1);
 
         label = new Gtk.Label.with_mnemonic (/* Preferences dialog: label for show show thousands separator switch */
-                                                                       _("_Thousands separators"));
+                                             _("_Thousands separators"));
         label.xalign = 0;
         label.show ();
         label.mnemonic_widget = thousands_separator_switch;
