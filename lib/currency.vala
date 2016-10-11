@@ -43,7 +43,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("DZD", _("Algerian Dinar"), "ج.د"));
         default_currency_manager.currencies.append (new Currency ("EEK", _("Estonian Kroon"), "KR"));
         default_currency_manager.currencies.append (new Currency ("EUR", _("Euro"), "€"));
-        default_currency_manager.currencies.append (new Currency ("GBP", _("Pound Sterling"), "£"));
+        default_currency_manager.currencies.append (new Currency ("GBP", _("British Pound Sterling"), "£"));
         default_currency_manager.currencies.append (new Currency ("HKD", _("Hong Kong Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("HRK", _("Croatian Kuna"), "kn"));
         default_currency_manager.currencies.append (new Currency ("HUF", _("Hungarian Forint"), "Ft"));
