@@ -269,6 +269,9 @@ public class MathDisplay : Gtk.Viewport
             case Gdk.Key.p:
                 equation.insert ("π");
                 return true;
+	    case Gdk.Key.t:
+                equation.insert ("τ");
+                return true;
             case Gdk.Key.r:
                 equation.insert ("√");
                 return true;

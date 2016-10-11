@@ -156,6 +156,16 @@ public class Number : Object
         im_num = tmp2;
     }
 
+    public Number.tau ()
+    {
+        var tmp = MPFloat.init2 ((Precision) precision);
+        tmp.const_tau (Round.NEAREST);
+        re_num = tmp;
+        var tmp2 = MPFloat.init2 ((Precision) precision);
+        tmp2.set_unsigned_integer (0, Round.NEAREST);
+        im_num = tmp2;
+    }
+
     /* Sets z to be a uniform random number in the range [0, 1] */
     public Number.random ()
     {

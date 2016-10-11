@@ -290,7 +290,8 @@ public class MathButtons : Gtk.Box
         /* Configure buttons */
         /* Tooltip for the Pi button */
         setup_button (builder, "pi", "π", _("Pi [Ctrl+P]"));
-        /* Tooltip for the Euler's Number button */
+        setup_button (builder, "tau", "τ", _("Tau [Ctrl+T]"));
+	/* Tooltip for the Euler's Number button */
         setup_button (builder, "eulers_number", "e", _("Euler’s Number"));
         setup_button (builder, "imaginary", "i", null);
         setup_button (builder, "numeric_point", null, null);
