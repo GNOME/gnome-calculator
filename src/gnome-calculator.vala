@@ -12,7 +12,7 @@
 public class Calculator : Gtk.Application
 {
     private Settings settings;
-    private MathWindow window;
+    private MathWindow last_opened_window;
     private MathPreferencesDialog preferences_dialog;
     private static string program_name = null;
     private static string equation_string = null;
@@ -28,6 +28,7 @@ public class Calculator : Gtk.Application
 
     private const ActionEntry[] app_entries =
     {
+        { "new_window", new_window_cb, null, null, null },
         { "preferences", show_preferences_cb, null, null, null },
         { "help", help_cb, null, null, null },
         { "about", about_cb, null, null, null },
@@ -41,11 +42,8 @@ public class Calculator : Gtk.Application
         add_main_option_entries (option_entries);
     }
 
-    protected override void startup ()
+    private MathWindow create_new_window (Settings settings)
     {
-        base.startup ();
-
-        settings = new Settings ("org.gnome.calculator");
         var accuracy = settings.get_int ("accuracy");
         var word_size = settings.get_int ("word-size");
         var number_base = settings.get_int ("base");
@@ -75,9 +73,9 @@ public class Calculator : Gtk.Application
 
         add_action_entries (app_entries, this);
 
-        window = new MathWindow (this, equation);
-        window.set_title (_("Calculator"));
-        var buttons = window.buttons;
+        var current_window = new MathWindow (this, equation);
+        current_window.set_title (_("Calculator"));
+        var buttons = current_window.buttons;
         buttons.programming_base = number_base;
         buttons.mode = button_mode; // FIXME: We load the basic buttons even if we immediately switch to the next type
 
@@ -98,22 +96,36 @@ public class Calculator : Gtk.Application
         set_accels_for_action ("win.paste", {"<control>V"});
         set_accels_for_action ("win.undo", {"<control>Z"});
         set_accels_for_action ("win.redo", {"<control><shift>Z"});
+        return current_window;
+    }
+
+    protected override void startup ()
+    {
+        base.startup ();
+
+        settings = new Settings ("org.gnome.calculator");
+        last_opened_window = create_new_window (settings);
+    }
+
+    private MathWindow get_active_math_window ()
+    {
+        return (MathWindow) get_active_window ();
     }
 
     protected override void activate ()
     {
         base.activate ();
 
-        window.present ();
+        last_opened_window.present ();
         if (equation_string != "" && equation_string != null)
         {
             var equations = (equation_string.compress ()).split ("\n",0);
             for (var i = 0; i < equations.length; i++)
             {
                 if ((equations [i].strip ()).length > 0)
-                    window.equation.set (equations [i]);
+                    last_opened_window.equation.set (equations [i]);
                 else
-                    window.equation.solve ();
+                    last_opened_window.equation.solve ();
             }
         }
         if (mode_string != "" && mode_string != null)
@@ -138,7 +150,7 @@ public class Calculator : Gtk.Application
                 mode = ButtonMode.KEYBOARD;
                 break;
             }
-            window.buttons.mode = mode;
+            last_opened_window.buttons.mode = mode;
         }
     }
 
@@ -146,6 +158,7 @@ public class Calculator : Gtk.Application
     {
         base.shutdown ();
 
+        var window = last_opened_window;
         var equation = window.equation;
         var buttons = window.buttons;
 
@@ -217,8 +230,8 @@ public class Calculator : Gtk.Application
     {
         if (preferences_dialog == null)
         {
-            preferences_dialog = new MathPreferencesDialog (window.equation);
-            preferences_dialog.set_transient_for (window);
+            preferences_dialog = new MathPreferencesDialog (get_active_math_window ().equation);
+            preferences_dialog.set_transient_for (get_active_window ());
         }
         preferences_dialog.present ();
     }
@@ -227,14 +240,14 @@ public class Calculator : Gtk.Application
     {
         try
         {
-            Gtk.show_uri (window.get_screen (), "help:gnome-calculator", Gtk.get_current_event_time ());
+            Gtk.show_uri (get_active_window ().get_screen (), "help:gnome-calculator", Gtk.get_current_event_time ());
         }
         catch (Error e)
         {
             /* Translators: Error message displayed when unable to launch help browser */
             var message = _("Unable to open help file");
 
-            var d = new Gtk.MessageDialog (window,
+            var d = new Gtk.MessageDialog (get_active_window (),
                                            Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
                                            Gtk.MessageType.ERROR,
                                            Gtk.ButtonsType.CLOSE,
@@ -253,6 +266,7 @@ public class Calculator : Gtk.Application
             "Robert Ancell <robert.ancell@gmail.com>",
             "Klaus Niederkrüger <kniederk@umpa.ens-lyon.fr>",
             "Robin Sonefors <ozamosi@flukkost.nu>",
+            "Robert Roth <robert.roth.off@gmail.com",
             null
         };
         string[] documenters =
@@ -264,15 +278,15 @@ public class Calculator : Gtk.Application
         /* The translator credits. Please translate this with your name (s). */
         var translator_credits = _("translator-credits");
 
-        Gtk.show_about_dialog (window,
+        Gtk.show_about_dialog (get_active_window (),
                                "program-name",
                                /* Program name in the about dialog */
                                _("Calculator"),
                                "title", _("About Calculator"),
                                "version", VERSION,
                                "copyright",
-                               "\xc2\xa9 1986–2014 The Calculator authors",
-                               /* We link to MPFR which is LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
+                               "\xc2\xa9 1986–2016 The Calculator authors",
+                               /* We link to MPFR and MPC which are  LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
                                "license-type", Gtk.License.GPL_3_0,
                                "comments",
                                /* Short description in the about dialog */
@@ -285,7 +299,13 @@ public class Calculator : Gtk.Application
 
     private void quit_cb ()
     {
-        window.destroy ();
+        get_active_window ().destroy ();
+    }
+
+    private void new_window_cb ()
+    {
+        var window = create_new_window (settings);
+        window.present ();
     }
 
     public static int main (string[] args)
