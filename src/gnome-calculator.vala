@@ -266,7 +266,7 @@ public class Calculator : Gtk.Application
             "Robert Ancell <robert.ancell@gmail.com>",
             "Klaus Niederkrüger <kniederk@umpa.ens-lyon.fr>",
             "Robin Sonefors <ozamosi@flukkost.nu>",
-            "Robert Roth <robert.roth.off@gmail.com",
+            "Robert Roth <robert.roth.off@gmail.com>",
             null
         };
         string[] documenters =
