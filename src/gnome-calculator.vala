@@ -28,7 +28,7 @@ public class Calculator : Gtk.Application
 
     private const ActionEntry[] app_entries =
     {
-        { "new_window", new_window_cb, null, null, null },
+        { "newwindow", new_window_cb, null, null, null },
         { "preferences", show_preferences_cb, null, null, null },
         { "help", help_cb, null, null, null },
         { "about", about_cb, null, null, null },
