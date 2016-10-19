@@ -92,6 +92,11 @@ public class Calculator : Gtk.Application
         var menu = builder.get_object ("appmenu") as MenuModel;
         set_app_menu (menu);
 
+        set_accels_for_action ("win.mode::basic", {"<alt>B"});
+        set_accels_for_action ("win.mode::advanced", {"<alt>A"});
+        set_accels_for_action ("win.mode::financial", {"<alt>F"});
+        set_accels_for_action ("win.mode::programming", {"<alt>P"});
+        set_accels_for_action ("win.mode::keyboard", {"<alt>K"});
         set_accels_for_action ("win.copy", {"<control>C"});
         set_accels_for_action ("win.paste", {"<control>V"});
         set_accels_for_action ("win.undo", {"<control>Z"});
