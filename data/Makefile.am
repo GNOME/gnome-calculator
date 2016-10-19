@@ -22,6 +22,7 @@ EXTRA_DIST = \
 	history-view.ui \
 	math-converter.ui \
 	math-window.ui \
+	math-shortcuts.ui \
 	menu.ui \
 	calculator.css \
 	gnome-calculator.gresource.xml \

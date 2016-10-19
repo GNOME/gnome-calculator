@@ -20,7 +20,7 @@ dnl Dependencies
 dnl ###########################################################################
 
 GLIB_REQUIRED=2.40.0
-GTK_REQUIRED=3.11.6
+GTK_REQUIRED=3.19.3
 GTKSOURCEVIEW_REQUIRED=3.15.1
 LIBSOUP_REQUIRED=2.42
 
