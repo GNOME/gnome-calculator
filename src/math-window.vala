@@ -27,8 +27,6 @@ public class MathWindow : Gtk.ApplicationWindow
     [GtkChild]
     private Gtk.Label mode_label;
     [GtkChild]
-    private Gtk.ScrolledWindow scrolled_window;
-    [GtkChild]
     private Gtk.Grid grid;
     [GtkChild]
     private MathConverter converter;
@@ -55,7 +53,7 @@ public class MathWindow : Gtk.ApplicationWindow
         converter.set_conversion (equation.source_units, equation.target_units);
 
         _display = new MathDisplay (equation);
-        scrolled_window.add (_display);
+        grid.attach (_display, 0, 1, 1, 1);
         _display.show ();
         _display.grabfocus ();
 
