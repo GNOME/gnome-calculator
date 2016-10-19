@@ -43,9 +43,7 @@ public class MathDisplay : Gtk.Viewport
         source_view.set_accepts_tab (false);
         source_view.set_pixels_above_lines (8);
         source_view.set_pixels_below_lines (2);
-        /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
-        /*source_view.set_right_margin (6);*/
-        source_view.set_justification (Gtk.Justification.RIGHT);
+        source_view.set_justification (Gtk.Justification.LEFT);
 
         var style_context = source_view.get_style_context ();
         style_context.save ();
@@ -53,8 +51,9 @@ public class MathDisplay : Gtk.Viewport
         var font_desc = style_context.get_font (Gtk.StateFlags.NORMAL);
         style_context.restore ();
 
-        font_desc.set_size (16 * Pango.SCALE);
+        font_desc.set_size (15 * Pango.SCALE);
         source_view.override_font (font_desc);
+
         source_view.set_name ("displayitem");
         source_view.set_size_request (20, 20);
         source_view.get_accessible ().set_role (Atk.Role.EDITBAR);
@@ -73,7 +72,6 @@ public class MathDisplay : Gtk.Viewport
         info_view.set_wrap_mode (Gtk.WrapMode.WORD);
         info_view.set_can_focus (false);
         info_view.set_editable (false);
-        info_view.set_justification (Gtk.Justification.RIGHT);
         /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
         /*info_view.set_right_margin (6);*/
         info_box.pack_start (info_view, true, true, 0);
