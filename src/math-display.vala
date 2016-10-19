@@ -77,6 +77,9 @@ public class MathDisplay : Gtk.Viewport
         info_box.pack_start (info_view, true, true, 0);
         info_buffer = info_view.get_buffer ();
 
+        style_context = info_view.get_style_context ();
+        style_context.add_class ("info-view");
+
         spinner = new Gtk.Spinner ();
         info_box.pack_end (spinner, false, false, 0);
 
