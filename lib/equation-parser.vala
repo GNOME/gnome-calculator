@@ -1564,7 +1564,20 @@ public class Parser
             if (token.type == LexerTokenType.R_R_BRACKET)
             {
                 depth_level--;
-                return true;
+                token = lexer.get_next_token ();
+                lexer.roll_back ();
+
+                if (token.type == LexerTokenType.NUMBER)
+                {
+                    insert_into_tree (new MultiplyNode (this, null, make_precedence_p (Precedence.MULTIPLY), get_associativity_p (Precedence.MULTIPLY)));
+
+                    if (!expression ())
+                        return false;
+                    else
+                        return true;
+                 }
+                 else
+                     return true;
             }
             //Expected ")" here...
             else
