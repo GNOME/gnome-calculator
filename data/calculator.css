@@ -39,12 +39,15 @@ window > grid {
 .bit-marker-label {
 }
 
-.history-view {
-  background-color: @insensitive_bg_color;
+.history-view, .history-entry {
+  background-color: shade(@theme_base_color, .95);
+}
+
+.history-view:backdrop, .history-entry:backdrop {
+  background-color: shade(@theme_unfocused_base_color, .97);
 }
 
 .history-entry {
-  background-color: @insensitive_bg_color;
   border-top: 1px groove @borders;
   padding: 6px 3px;
   font-size: 15px;
