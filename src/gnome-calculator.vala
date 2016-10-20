@@ -102,6 +102,7 @@ public class Calculator : Gtk.Application
         set_accels_for_action ("win.copy", {"<control>C"});
         set_accels_for_action ("win.paste", {"<control>V"});
         set_accels_for_action ("win.undo", {"<control>Z"});
+        set_accels_for_action ("win.close", {"<control>W"});
         set_accels_for_action ("win.redo", {"<control><shift>Z"});
         return current_window;
     }

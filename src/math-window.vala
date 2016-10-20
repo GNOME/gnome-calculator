@@ -38,6 +38,7 @@ public class MathWindow : Gtk.ApplicationWindow
         { "undo", undo_cb, null, null, null },
         { "redo", redo_cb, null, null, null },
         { "mode", mode_cb, "s", "\"basic\"", null },
+        { "close",close, null, null, null },
     };
 
     public MathWindow (Gtk.Application app, MathEquation equation)
