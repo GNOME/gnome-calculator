@@ -39,20 +39,16 @@ window > grid {
 .bit-marker-label {
 }
 
-.history-view > .frame > list {
+.history-view {
   background-color: @insensitive_bg_color;
 }
 
 .history-entry {
   background-color: @insensitive_bg_color;
-  border-bottom: 1px groove @borders;
+  border-top: 1px groove @borders;
   padding: 6px 3px;
   font-size: 15px;
 }
-
-  .history-entry:last-child {
-    border-width: 0px;
-  }
 
   .history-entry .equation-label {
     /* word-spacing: 2px; Doesn't work (yet) in GTK */
