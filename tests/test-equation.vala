@@ -360,6 +360,8 @@ private void test_equations ()
     test ("(1+2)×3", "9", 0);
     test ("(1+2×3)", "7", 0);
     test ("2(1+1)", "4", 0);
+    test ("(2)1+1", "3", 0);
+    test ("(2)(1)", "2", 0);
     test ("4÷2(1+1)", "4", 0);
 
     /* Percentage */
