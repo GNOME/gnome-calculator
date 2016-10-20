@@ -30,7 +30,9 @@ public class HistoryView : Gtk.ScrolledWindow
     [GtkCallback]
     public void scroll_bottom ()
     {
-        var adjustment = get_vadjustment ();
+        var adjustment = listbox.get_adjustment ();
+        // TODO make this dynamic, do not hardcode listbox_height_request/number_of_rows
+        adjustment.page_size = 114 / 3;
         adjustment.set_value (adjustment.get_upper () - adjustment.get_page_size ());
     }
 
@@ -51,7 +53,7 @@ public class HistoryView : Gtk.ScrolledWindow
 
         var entry = new HistoryEntry (equation, answer_four_digits, answer_nine_digits);
 
-        listbox.add (entry);
+        listbox.insert (entry, -1);
         entry.show ();
         no_ofitems++;
 
