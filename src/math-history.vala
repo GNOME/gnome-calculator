@@ -32,7 +32,9 @@ public class HistoryView : Gtk.ScrolledWindow
     {
         var adjustment = listbox.get_adjustment ();
         // TODO make this dynamic, do not hardcode listbox_height_request/number_of_rows
-        adjustment.page_size = 114 / 3;
+        int width, height;
+        get_size_request (out width, out height);
+        adjustment.page_size = height / 3;
         adjustment.set_value (adjustment.get_upper () - adjustment.get_page_size ());
     }
 
