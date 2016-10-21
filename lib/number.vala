@@ -1037,14 +1037,6 @@ public class Number : Object
         res.multiply_mpreal (op, scale);
     }
 
-    private Number from_radians (AngleUnit unit)
-    {
-        var z = new Number ();
-        mpc_from_radians (z.num, num, unit);
-        return z;
-    }
-
-
     /* Convert x to radians */
     private Number to_radians (AngleUnit unit)
     {
