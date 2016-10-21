@@ -23,7 +23,9 @@ public class MathConverter : Gtk.Grid
     [GtkChild]
     private Gtk.ComboBox to_combo;
     [GtkChild]
-    private Gtk.Label result_label;
+    private Gtk.Label from_label;
+    [GtkChild]
+    private Gtk.Label to_label;
 
     public signal void changed ();
 
@@ -101,7 +103,6 @@ public class MathConverter : Gtk.Grid
             return;
 
         var z = convert_equation (x);
-        result_label.sensitive = z != null;
         if (z != null)
         {
             Unit source_unit, target_unit;
@@ -109,7 +110,8 @@ public class MathConverter : Gtk.Grid
 
             var source_text = source_unit.format (x);
             var target_text = target_unit.format (z);
-            result_label.set_text ("%s = %s".printf (source_text, target_text));
+            from_label.set_text (source_text);
+            to_label.set_text (target_text);
         }
     }
 
