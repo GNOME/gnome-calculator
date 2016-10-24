@@ -16,6 +16,10 @@ public class FunctionManager : Object
     private HashTable<string, MathFunction> functions;
     private Serializer serializer;
 
+    public signal void function_added (MathFunction function);
+    public signal void function_edited (MathFunction new_function);
+    public signal void function_deleted (MathFunction function);
+
     public FunctionManager ()
     {
         functions = new HashTable <string, MathFunction> (str_hash, str_equal);
@@ -159,7 +163,7 @@ public class FunctionManager : Object
         if (expression == null)
             return null;
 
-        i = left.index_of_char('(');
+        i = left.index_of_char ('(');
         if (i < 0)
             return null;
         var name = left.substring (0, i).strip ();
@@ -243,6 +247,11 @@ public class FunctionManager : Object
         return array_sort_string (names);
     }
 
+    /**
+      * Adds a function to the manager, unless the given name is already taken
+      * by a predefined function.
+      * @return If the function was successfully added.
+      */
     private bool add (MathFunction new_function)
     {
         MathFunction? existing_function = get (new_function.name);
@@ -250,10 +259,11 @@ public class FunctionManager : Object
         if (existing_function != null && !existing_function.is_custom_function ())
             return false;
 
+        functions[new_function.name] = new_function;
         if (existing_function != null)
-            functions.replace (new_function.name, new_function);
+            function_edited (new_function);
         else
-            functions.insert (new_function.name, new_function);
+            function_added (new_function);
 
         return true;
     }
@@ -291,6 +301,7 @@ public class FunctionManager : Object
         {
             functions.remove (name);
             save ();
+            function_deleted (function);
         }
     }
 

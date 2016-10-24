@@ -21,6 +21,8 @@ EXTRA_DIST = \
 	history-entry.ui \
 	history-view.ui \
 	math-converter.ui \
+	math-function-popover.ui \
+	math-variable-popover.ui \
 	math-window.ui \
 	math-shortcuts.ui \
 	menu.ui \

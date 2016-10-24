@@ -22,9 +22,9 @@ gnome_calculator_SOURCES = \
 	math-converter.vala \
 	math-display.vala \
 	math-preferences.vala \
-	math-variable-popup.vala \
+	math-function-popover.vala \
+	math-variable-popover.vala \
 	math-window.vala \
-	math-function-popup.vala \
 	math-history.vala \
 	$(BUILT_SOURCES)
 

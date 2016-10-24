@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="3.16"/>
+  <template class="MathVariablePopover" parent="GtkPopover">
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkBox" id="content">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="margin">3</property>
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkScrolledWindow" id="variable_list_scrolled">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="height_request">150</property>
+            <property name="shadow_type">in</property>
+            <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
+            <child>
+              <object class="GtkListBox" id="variable_list">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="selection_mode">none</property>
+                <signal name="row_activated" handler="insert_variable_cb" swapped="no"/>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox" id="add_variable_box">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">horizontal</property>
+            <child>
+              <object class="GtkEntry" id="variable_name_entry">
+                <property name="placeholder_text" translatable="yes">Variable name</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <signal name="key_press_event" handler="variable_name_key_press_cb" swapped="no"/>
+                <signal name="changed" handler="variable_name_changed_cb" swapped="no"/>
+                <signal name="activate" handler="store_variable_cb" swapped="no"/>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="store_variable_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="sensitive">False</property>
+                <property name="tooltip_text" translatable="yes">Store value into existing or new variable</property>
+                <signal name="clicked" handler="store_variable_cb" swapped="no"/>
+                <child>
+                  <object class="GtkImage" id="store_variable_button_image">
+                    <property name="visible">True</property>
+                    <property name="icon_name">document-save-symbolic</property>
+                    <property name="pixel_size">16</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

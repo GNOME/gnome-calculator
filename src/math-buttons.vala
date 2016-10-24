@@ -341,13 +341,7 @@ public class MathButtons : Gtk.Box
         }
 
         /* Configure buttons */
-        var button = builder.get_object ("calc_memory_button") as Gtk.Button;
-        if (button != null)
-            button.clicked.connect (on_memory);
-        button = builder.get_object ("calc_function_button") as Gtk.Button;
-        if (button != null)
-            button.clicked.connect (on_insert_function);
-        button = builder.get_object ("calc_numeric_point_button") as Gtk.Button;
+        var button = builder.get_object ("calc_numeric_point_button") as Gtk.Button;
         if (button != null)
             button.set_label (equation.serializer.get_radix ().to_string ());
 
@@ -357,6 +351,12 @@ public class MathButtons : Gtk.Box
         menu_button = builder.get_object ("calc_shift_right_button") as Gtk.MenuButton;
         if (menu_button != null)
             menu_button.menu_model = create_shift_menu (false);
+        menu_button = builder.get_object ("calc_memory_button") as Gtk.MenuButton;
+        if (menu_button != null)
+            menu_button.popover = new MathVariablePopover (equation);
+        menu_button = builder.get_object ("calc_function_button") as Gtk.MenuButton;
+        if (menu_button != null)
+            menu_button.popover = new MathFunctionPopover (equation);
 
         if (mode == ButtonMode.PROGRAMMING)
         {
@@ -455,19 +455,6 @@ public class MathButtons : Gtk.Box
         }
     }
 
-    private void on_memory (Gtk.Widget widget)
-    {
-        var popup = new MathVariablePopup (equation);
-        popup.set_transient_for (widget.get_toplevel () as Gtk.Window);
-
-        Gtk.Allocation allocation;
-        widget.get_allocation (out allocation);
-        int x, y;
-        widget.get_window ().get_root_coords (allocation.x, allocation.y, out x, out y);
-        popup.move (x, y);
-        popup.show ();
-    }
-
     private Menu create_shift_menu (bool shift_left)
     {
         var shift_menu = new Menu ();
@@ -483,19 +470,6 @@ public class MathButtons : Gtk.Box
         }
 
         return shift_menu;
-    }
-
-    private void on_insert_function (Gtk.Widget widget)
-    {
-        var popup = new MathFunctionPopup (equation);
-        popup.set_transient_for (widget.get_toplevel () as Gtk.Window);
-
-        Gtk.Allocation allocation;
-        widget.get_allocation (out allocation);
-        int x, y;
-        widget.get_window ().get_root_coords (allocation.x, allocation.y, out x, out y);
-        popup.move (x, y);
-        popup.show ();
     }
 
     private void on_launch_finc_dialog (SimpleAction action, Variant? param)

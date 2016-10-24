@@ -14,6 +14,10 @@ public class MathVariables : Object
     private HashTable<string, Number?> registers;
     private Serializer serializer;
 
+    public signal void variable_added (string name, Number value);
+    public signal void variable_edited (string name, Number new_value);
+    public signal void variable_deleted (string name);
+
     public MathVariables ()
     {
         registers = new HashTable <string, Number?> (str_hash, str_equal);
@@ -138,18 +142,24 @@ public class MathVariables : Object
 
     public new void set (string name, Number value)
     {
-        registers.insert (name, value);
+        bool editing = registers.contains (name);
+        registers[name] = value;
         save ();
+        if (editing)
+            variable_edited (name, value);
+        else
+            variable_added (name, value);
     }
 
     public new Number? get (string name)
     {
-        return registers.lookup (name);
+        return registers[name];
     }
 
     public void delete (string name)
     {
         registers.remove (name);
         save ();
+        variable_deleted (name);
     }
 }
