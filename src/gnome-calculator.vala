@@ -13,6 +13,7 @@ public class Calculator : Gtk.Application
 {
     private Settings settings;
     private MathWindow last_opened_window;
+    int n_math_windows = 0;
     private MathPreferencesDialog preferences_dialog;
     private Gtk.ShortcutsWindow shortcuts_window;
     private static string program_name = null;
@@ -77,6 +78,16 @@ public class Calculator : Gtk.Application
 
         var current_window = new MathWindow (this, equation);
         current_window.set_title (_("Calculator"));
+        // when closing the last window save its position to the settings
+        current_window.delete_event.connect((sender, event) => {
+            if (n_math_windows == 1) {
+                save_window_position ((sender as MathWindow));
+            }
+            n_math_windows -= 1;
+            return false;
+        });
+        n_math_windows += 1;
+
         var buttons = current_window.buttons;
         buttons.programming_base = number_base;
         buttons.mode = button_mode; // FIXME: We load the basic buttons even if we immediately switch to the next type
@@ -113,6 +124,8 @@ public class Calculator : Gtk.Application
 
         settings = new Settings ("org.gnome.calculator");
         last_opened_window = create_new_window (settings);
+        // restore the first window position from the settings
+        load_window_position (last_opened_window);
     }
 
     private MathWindow get_active_math_window ()
@@ -331,6 +344,7 @@ public class Calculator : Gtk.Application
 
     private void quit_cb ()
     {
+        save_window_position (get_active_math_window ());
         get_active_window ().destroy ();
     }
 
@@ -338,6 +352,28 @@ public class Calculator : Gtk.Application
     {
         var window = create_new_window (settings);
         window.present ();
+    }
+
+    /**
+     * Load `window-position` from the settings and move the window to that
+     * position
+     */
+    private void load_window_position (MathWindow window) {
+        int32 x, y;
+        settings.get("window-position", "(ii)", out x, out y);
+        // (-1, -1) is the default value
+        if (x != -1 && y != -1) {
+            window.move (x, y);
+        }
+    }
+
+    /**
+     * Save window position to the settings
+     */
+    private void save_window_position (MathWindow window) {
+        int32 x, y;
+        window.get_position (out x, out y);
+        settings.set_value("window-position", new Variant("(ii)", x, y));
     }
 
     public static int main (string[] args)
