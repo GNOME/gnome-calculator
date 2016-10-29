@@ -35,9 +35,9 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-10-11 23:30+0000\n"
-"PO-Revision-Date: 2016-10-12 22:06+0200\n"
-"Last-Translator: Bernd Homuth <dev@hmt.im>\n"
+"POT-Creation-Date: 2016-10-28 07:00+0000\n"
+"PO-Revision-Date: 2016-10-29 15:04+0200\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -730,7 +730,7 @@ msgstr "Das GNOME-Projekt"
 
 #. Program name in the about dialog
 #: ../data/gnome-calculator.desktop.in.h:1 ../data/math-window.ui.h:6
-#: ../src/gnome-calculator.vala:77 ../src/gnome-calculator.vala:284
+#: ../src/gnome-calculator.vala:79 ../src/gnome-calculator.vala:316
 msgid "Calculator"
 msgstr "Taschenrechner"
 
@@ -752,29 +752,162 @@ msgstr "Umrechnungseinheiten vertauschen"
 msgid " in "
 msgstr " in "
 
-#: ../data/math-window.ui.h:1 ../src/math-window.vala:83
+#: ../data/math-converter.ui.h:3
+#| msgid "="
+msgctxt "convertion equals label"
+msgid "="
+msgstr "="
+
+#: ../data/math-function-popover.ui.h:1
+msgid "New function"
+msgstr "Neue Funktion"
+
+#: ../data/math-variable-popover.ui.h:1
+msgid "Variable name"
+msgstr "Variablenname"
+
+#: ../data/math-variable-popover.ui.h:2
+msgid "Store value into existing or new variable"
+msgstr "Wert in vorhandener oder neuer Variable speichern"
+
+#: ../data/math-window.ui.h:1 ../src/math-window.vala:82
 msgid "Basic Mode"
 msgstr "Standardmodus"
 
-#: ../data/math-window.ui.h:2 ../src/math-window.vala:88
+#: ../data/math-window.ui.h:2 ../src/math-window.vala:87
 msgid "Advanced Mode"
 msgstr "Erweiterter Modus"
 
-#: ../data/math-window.ui.h:3 ../src/math-window.vala:93
+#: ../data/math-window.ui.h:3 ../src/math-window.vala:92
 msgid "Financial Mode"
 msgstr "Finanztechnischer Modus"
 
-#: ../data/math-window.ui.h:4 ../src/math-window.vala:98
+#: ../data/math-window.ui.h:4 ../src/math-window.vala:97
 msgid "Programming Mode"
 msgstr "Programmier-Modus"
 
-#: ../data/math-window.ui.h:5 ../src/math-window.vala:103
+#: ../data/math-window.ui.h:5 ../src/math-window.vala:102
 msgid "Keyboard Mode"
 msgstr "Tastaturmodus"
 
 #: ../data/math-window.ui.h:7
 msgid "Menu"
 msgstr "Menü"
+
+#: ../data/math-shortcuts.ui.h:1
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Allgemein"
+
+#: ../data/math-shortcuts.ui.h:2
+msgctxt "shortcut window"
+msgid "Open a new window"
+msgstr "Ein neues Fenster öffnen"
+
+#: ../data/math-shortcuts.ui.h:3
+msgctxt "shortcut window"
+msgid "Close current window"
+msgstr "Das aktuelle Fenster schließen"
+
+#: ../data/math-shortcuts.ui.h:4
+msgctxt "shortcut window"
+msgid "Open help"
+msgstr "Die Hilfe öffnen"
+
+#: ../data/math-shortcuts.ui.h:5
+msgctxt "shortcut window"
+msgid "Quit the application"
+msgstr "Die Anwendung beenden"
+
+#: ../data/math-shortcuts.ui.h:6
+msgctxt "shortcut window"
+msgid "Switching modes"
+msgstr "Modi umschalten"
+
+#: ../data/math-shortcuts.ui.h:7
+msgctxt "shortcut window"
+msgid "Switch to Basic mode"
+msgstr "In Standardmodus wechseln"
+
+#: ../data/math-shortcuts.ui.h:8
+msgctxt "shortcut window"
+msgid "Switch to Advanced mode"
+msgstr "in erweiterten Modus wechseln"
+
+#: ../data/math-shortcuts.ui.h:9
+msgctxt "shortcut window"
+msgid "Switch to Financial mode"
+msgstr "In finanztechnischen Modus wechseln"
+
+#: ../data/math-shortcuts.ui.h:10
+msgctxt "shortcut window"
+msgid "Switch to Programming mode"
+msgstr "In Programmier-Modus wechseln"
+
+#: ../data/math-shortcuts.ui.h:11
+msgctxt "shortcut window"
+msgid "Switch to Keyboard mode"
+msgstr "In Tastaturmodus wechseln"
+
+#: ../data/math-shortcuts.ui.h:12
+msgctxt "shortcut window"
+msgid "Keyboard entry"
+msgstr "Tastatureingabe"
+
+#: ../data/math-shortcuts.ui.h:13
+msgctxt "shortcut window"
+msgid "Multiply (×)"
+msgstr "Multiplizieren (×)"
+
+#: ../data/math-shortcuts.ui.h:14
+msgctxt "shortcut window"
+msgid "Divide (÷)"
+msgstr "Dividieren (÷)"
+
+#: ../data/math-shortcuts.ui.h:15
+msgctxt "shortcut window"
+msgid "Square root (√)"
+msgstr "Quadratwurzel (√)"
+
+#: ../data/math-shortcuts.ui.h:16
+msgctxt "shortcut window"
+msgid "Inverse"
+msgstr "Kehrwert"
+
+#: ../data/math-shortcuts.ui.h:17
+msgctxt "shortcut window"
+msgid "Pi (π)"
+msgstr "Pi (π)"
+
+#: ../data/math-shortcuts.ui.h:18
+msgctxt "shortcut window"
+msgid "Enter numbers in scientific format"
+msgstr "Zahlen in wissenschaftlichem Format eingeben"
+
+#: ../data/math-shortcuts.ui.h:19
+msgctxt "shortcut window"
+msgid "Programming mode"
+msgstr "Programmier-Modus"
+
+#: ../data/math-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Switch to binary"
+msgstr "In Binärmodus wechseln"
+
+#: ../data/math-shortcuts.ui.h:21
+msgctxt "shortcut window"
+msgid "Switch to octal"
+msgstr "In oktalen Modus wechseln"
+
+#: ../data/math-shortcuts.ui.h:22
+msgctxt "shortcut window"
+msgid "Switch to decimal"
+msgstr "In Dezimalmodus wechseln"
+
+#: ../data/math-shortcuts.ui.h:23
+msgctxt "shortcut window"
+msgid "Switch to hexadecimal"
+msgstr "In Hexadezimalmodus wechseln"
 
 #: ../data/menu.ui.h:1
 msgid "New Window"
@@ -786,14 +919,18 @@ msgid "Preferences"
 msgstr "Einstellungen"
 
 #: ../data/menu.ui.h:3
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastenkombinationen"
+
+#: ../data/menu.ui.h:4
 msgid "Help"
 msgstr "Hilfe"
 
-#: ../data/menu.ui.h:4
+#: ../data/menu.ui.h:5
 msgid "About"
 msgstr "Info"
 
-#: ../data/menu.ui.h:5
+#: ../data/menu.ui.h:6
 msgid "Quit"
 msgstr "Beenden"
 
@@ -2612,29 +2749,29 @@ msgstr "Währung"
 msgid "%s%%s"
 msgstr "%s%%s"
 
-#: ../src/gnome-calculator.vala:22
+#: ../src/gnome-calculator.vala:23
 msgid "Start in given mode"
 msgstr "Im vorgegebenen Modus anfangen"
 
-#: ../src/gnome-calculator.vala:23
+#: ../src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Eine gegebene Gleichung lösen"
 
-#: ../src/gnome-calculator.vala:24
+#: ../src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Mit einer gegebenen Gleichung anfangen"
 
-#: ../src/gnome-calculator.vala:25
+#: ../src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Version anzeigen"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:248
+#: ../src/gnome-calculator.vala:280
 msgid "Unable to open help file"
 msgstr "Die Hilfedatei konnte nicht geöffnet werden"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:279
+#: ../src/gnome-calculator.vala:311
 msgid "translator-credits"
 msgstr ""
 "Christian Neumair <chris@gnome-de.org>\n"
@@ -2645,16 +2782,16 @@ msgstr ""
 "Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>\n"
 "Jakob Kramer <jakob.kramer@gmx.de>"
 
-#: ../src/gnome-calculator.vala:285
+#: ../src/gnome-calculator.vala:317
 msgid "About Calculator"
 msgstr "Info zu Taschenrechner"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:293
+#: ../src/gnome-calculator.vala:325
 msgid "Calculator with financial and scientific modes."
 msgstr "Ein Taschenrechner mit finanztechnischem und wissenschaftlichem Modus."
 
-#: ../src/math-buttons.vala:477
+#: ../src/math-buttons.vala:464
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2731,7 +2868,7 @@ msgstr "32 Bit"
 msgid "64 bits"
 msgstr "64 Bit"
 
-#: ../src/math-window.vala:131
+#: ../src/math-window.vala:130
 msgid "_Quit"
 msgstr "_Beenden"
 
