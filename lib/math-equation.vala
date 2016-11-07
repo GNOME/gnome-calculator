@@ -970,14 +970,14 @@ public class MathEquation : Gtk.SourceBuffer
 
             case ErrorCode.UNKNOWN_VARIABLE:
                 solvedata.error = /* Error displayed to user when they an unknown variable is entered */
-                                  _("Unknown variable '%s'").printf (error_token);
+                                  _("Unknown variable “%s”").printf (error_token);
                 solvedata.error_start = error_start;
                 solvedata.error_end = error_end;
                 break;
 
             case ErrorCode.UNKNOWN_FUNCTION:
                 solvedata.error = /* Error displayed to user when an unknown function is entered */
-                                  _("Function '%s' is not defined").printf (error_token);
+                                  _("Function “%s” is not defined").printf (error_token);
                 solvedata.error_start = error_start;
                 solvedata.error_end = error_end;
                 break;
