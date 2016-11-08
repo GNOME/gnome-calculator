@@ -14,10 +14,10 @@ msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-10-28 07:00+0000\n"
-"PO-Revision-Date: 2016-10-28 11:17+0200\n"
+"POT-Creation-Date: 2016-11-07 11:31+0000\n"
+"PO-Revision-Date: 2016-11-08 12:22+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
-"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -310,12 +310,12 @@ msgstr ""
 msgid "C_ost:"
 msgstr "Ná_klady:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
 #: ../data/buttons-financial.ui.h:21
 msgid "_Life:"
 msgstr "Ži_votnost:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
 #: ../data/buttons-financial.ui.h:23
 msgid "_Period:"
 msgstr "_Období:"
@@ -423,12 +423,12 @@ msgstr ""
 msgid "Straight-Line Depreciation"
 msgstr "Lineární odpisy"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
 #: ../data/buttons-financial.ui.h:57
 msgid "_Cost:"
 msgstr "_Náklady:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
 #: ../data/buttons-financial.ui.h:59
 msgid "_Salvage:"
 msgstr "_Zůstatek:"
@@ -446,16 +446,16 @@ msgstr ""
 "aktiva. Použitelná životnost je počet období, typicky let, po kterou je "
 "aktivum odepisováno."
 
-#. Title of Sum-of-the-Years
+#. Title of Sum-of-the-Years’-Digits Depreciation dialog
 #: ../data/buttons-financial.ui.h:63
-msgid "Sum-of-the-Years'-Digits Depreciation"
+msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Hodnota degresivního odpisu pro období"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:65
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
@@ -513,7 +513,7 @@ msgstr "Term"
 msgid "Financial Term"
 msgstr "Platební období"
 
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/buttons-financial.ui.h:100
 msgid "Syd"
 msgstr "Syd"
@@ -612,11 +612,11 @@ msgid "Boolean NOT"
 msgstr "Logická negace NOT"
 
 #: ../data/buttons-programming.ui.h:59
-msgid "Ones' Complement"
+msgid "Ones’ Complement"
 msgstr "Jedničkový doplněk"
 
 #: ../data/buttons-programming.ui.h:60
-msgid "Two's Complement"
+msgid "Two’s Complement"
 msgstr "Dvojkový doplněk"
 
 #. Insert ASCII dialog: Label before character entry
@@ -699,7 +699,7 @@ msgstr "Projekt GNOME"
 
 #. Program name in the about dialog
 #: ../data/gnome-calculator.desktop.in.h:1 ../data/math-window.ui.h:6
-#: ../src/gnome-calculator.vala:79 ../src/gnome-calculator.vala:316
+#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:329
 msgid "Calculator"
 msgstr "Kalkulačka"
 
@@ -1008,6 +1008,14 @@ msgstr "Vnitřní přesnost"
 msgid "The internal precision used with the MPFR library"
 msgstr "Vnitřní přesnost použitá ve spojení s knihovnou MPFR"
 
+#: ../data/org.gnome.calculator.gschema.xml.h:27
+msgid "Window position"
+msgstr "Poloha okna"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:28
+msgid "Window position (x and y) of the last closed window."
+msgstr "Poloha okna (souřadnice x, y), když bylo naposledy zavřeno."
+
 #: ../lib/currency.vala:28
 msgid "UAE Dirham"
 msgstr "Dirham SAE"
@@ -1271,13 +1279,13 @@ msgstr "Došlo k přetečení. Zkuste větší velikost slova."
 #. Error displayed to user when they an unknown variable is entered
 #: ../lib/math-equation.vala:973
 #, c-format
-msgid "Unknown variable '%s'"
+msgid "Unknown variable “%s”"
 msgstr "Neznámá proměnná „%s“"
 
 #. Error displayed to user when an unknown function is entered
 #: ../lib/math-equation.vala:980
 #, c-format
-msgid "Function '%s' is not defined"
+msgid "Function “%s” is not defined"
 msgstr "Funkce „%s“ není definovaná"
 
 #. Error displayed to user when an conversion with unknown units is attempted
@@ -2693,29 +2701,29 @@ msgstr "Měna"
 msgid "%s%%s"
 msgstr "%%s %s"
 
-#: ../src/gnome-calculator.vala:23
+#: ../src/gnome-calculator.vala:24
 msgid "Start in given mode"
 msgstr "Spustit v zadaném režimu"
 
-#: ../src/gnome-calculator.vala:24
+#: ../src/gnome-calculator.vala:25
 msgid "Solve given equation"
 msgstr "Vypočítat zadaný výraz"
 
-#: ../src/gnome-calculator.vala:25
+#: ../src/gnome-calculator.vala:26
 msgid "Start with given equation"
 msgstr "Spustit se zadaným výrazem"
 
-#: ../src/gnome-calculator.vala:26
+#: ../src/gnome-calculator.vala:27
 msgid "Show release version"
 msgstr "Zobrazit verzi vydání"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:280
+#: ../src/gnome-calculator.vala:293
 msgid "Unable to open help file"
 msgstr "Nelze otevřít soubor s nápovědou"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:311
+#: ../src/gnome-calculator.vala:324
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -2723,12 +2731,12 @@ msgstr ""
 "Petr Pulc <petrpulc@gmail.com>\n"
 "Marek Černocký <marek@manet.cz>"
 
-#: ../src/gnome-calculator.vala:317
+#: ../src/gnome-calculator.vala:330
 msgid "About Calculator"
 msgstr "O kalkulačce"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:325
+#: ../src/gnome-calculator.vala:338
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulačka s finančním a vědeckým režimem."
 
