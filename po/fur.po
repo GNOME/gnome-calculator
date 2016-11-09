@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-10-28 07:00+0000\n"
-"PO-Revision-Date: 2016-11-04 21:12+0100\n"
+"POT-Creation-Date: 2016-11-08 11:24+0000\n"
+"PO-Revision-Date: 2016-11-09 14:39+0100\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -303,12 +303,12 @@ msgstr ""
 msgid "C_ost:"
 msgstr "C_ost:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
 #: ../data/buttons-financial.ui.h:21
 msgid "_Life:"
 msgstr "_Durade:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
 #: ../data/buttons-financial.ui.h:23
 msgid "_Period:"
 msgstr "_Periodi:"
@@ -416,12 +416,12 @@ msgstr ""
 msgid "Straight-Line Depreciation"
 msgstr "Amortament lineâr"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
 #: ../data/buttons-financial.ui.h:57
 msgid "_Cost:"
 msgstr "_Cost:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
 #: ../data/buttons-financial.ui.h:59
 msgid "_Salvage:"
 msgstr "Valôr re_sidui:"
@@ -439,16 +439,16 @@ msgstr ""
 "durade utile di un ben. La durade utile e je il numar di periodis, di solit "
 "agns, daspò i cuâi un ben si dispresee dal dut."
 
-#. Title of Sum-of-the-Years
+#. Title of Sum-of-the-Years’-Digits Depreciation dialog
 #: ../data/buttons-financial.ui.h:63
-msgid "Sum-of-the-Years'-Digits Depreciation"
+msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Amortament basât sore la cifre dal an"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:65
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
@@ -457,7 +457,7 @@ msgstr ""
 "maniere basade su la cifre dal an. Cheste maniere e acelere il tas di "
 "dispreseament, cussì che tai prins periodis l'amortament al è plui alt che "
 "tai ultins. La durade utile e je il numar di periodis, di solit agns, intai "
-"cuai un ben si dispresee dal dut."
+"cuai un ben si dispresee dal dut. "
 
 #. Title of Payment Period dialog
 #: ../data/buttons-financial.ui.h:67
@@ -508,7 +508,7 @@ msgstr "Tiermin"
 msgid "Financial Term"
 msgstr "Tiermin finanziari"
 
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/buttons-financial.ui.h:100
 msgid "Syd"
 msgstr "Syd"
@@ -607,11 +607,11 @@ msgid "Boolean NOT"
 msgstr "NOT boolean"
 
 #: ../data/buttons-programming.ui.h:59
-msgid "Ones' Complement"
+msgid "Ones’ Complement"
 msgstr "Complement a un"
 
 #: ../data/buttons-programming.ui.h:60
-msgid "Two's Complement"
+msgid "Two’s Complement"
 msgstr "Complement a doi"
 
 #. Insert ASCII dialog: Label before character entry
@@ -694,7 +694,7 @@ msgstr "Il progjet GNOME"
 
 #. Program name in the about dialog
 #: ../data/gnome-calculator.desktop.in.h:1 ../data/math-window.ui.h:6
-#: ../src/gnome-calculator.vala:79 ../src/gnome-calculator.vala:316
+#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:329
 msgid "Calculator"
 msgstr "Calcoladorie"
 
@@ -1004,6 +1004,14 @@ msgstr "Precision interne"
 msgid "The internal precision used with the MPFR library"
 msgstr "La precision interne doprade cun la librarie MPFR"
 
+#: ../data/org.gnome.calculator.gschema.xml.h:27
+msgid "Window position"
+msgstr "Posizion barcon"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:28
+msgid "Window position (x and y) of the last closed window."
+msgstr "Posizion dal barcon (x e y) dal ultin barcon sierât."
+
 #: ../lib/currency.vala:28
 msgid "UAE Dirham"
 msgstr "Dirham dai Emirâts Araps Unîts"
@@ -1267,14 +1275,14 @@ msgstr "Overflow. Provâ une dimension plui grande pe peraule"
 #. Error displayed to user when they an unknown variable is entered
 #: ../lib/math-equation.vala:973
 #, c-format
-msgid "Unknown variable '%s'"
-msgstr "Variabil '%s' no cognossude"
+msgid "Unknown variable “%s”"
+msgstr "Variabil “%s” no cognossude"
 
 #. Error displayed to user when an unknown function is entered
 #: ../lib/math-equation.vala:980
 #, c-format
-msgid "Function '%s' is not defined"
-msgstr "La funzion '%s' no je definide"
+msgid "Function “%s” is not defined"
+msgstr "La funzion “%s” no je definide"
 
 #. Error displayed to user when an conversion with unknown units is attempted
 #: ../lib/math-equation.vala:987
@@ -2681,38 +2689,38 @@ msgstr "Valude"
 msgid "%s%%s"
 msgstr "%%s %s"
 
-#: ../src/gnome-calculator.vala:23
+#: ../src/gnome-calculator.vala:24
 msgid "Start in given mode"
 msgstr "Tache inte modalitât dade"
 
-#: ../src/gnome-calculator.vala:24
+#: ../src/gnome-calculator.vala:25
 msgid "Solve given equation"
 msgstr "Risolf la ecuazion dade"
 
-#: ../src/gnome-calculator.vala:25
+#: ../src/gnome-calculator.vala:26
 msgid "Start with given equation"
 msgstr "Tache cun la ecuazion dade"
 
-#: ../src/gnome-calculator.vala:26
+#: ../src/gnome-calculator.vala:27
 msgid "Show release version"
 msgstr "Mostre il numar di version"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:280
+#: ../src/gnome-calculator.vala:293
 msgid "Unable to open help file"
 msgstr "Impussibil vierzi il file di jutori"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:311
+#: ../src/gnome-calculator.vala:324
 msgid "translator-credits"
 msgstr "Fabio Tomat, <f.t.public@gmail.com>"
 
-#: ../src/gnome-calculator.vala:317
+#: ../src/gnome-calculator.vala:330
 msgid "About Calculator"
 msgstr "Informazions su Calcoladorie"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:325
+#: ../src/gnome-calculator.vala:338
 msgid "Calculator with financial and scientific modes."
 msgstr "Calcoladorie cun modalitât finanziarie e sientifiche."
 
