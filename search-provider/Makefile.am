@@ -15,7 +15,7 @@ gnome_calculator_search_provider_LDADD = \
 	$(SEARCH_PROVIDER_LIBS)
 
 searchproviderdir = $(datadir)/gnome-shell/search-providers
-searchprovider_DATA = gnome-calculator-search-provider.ini
+searchprovider_DATA = org.gnome.Calculator-search-provider.ini
 
 servicedir = $(datadir)/dbus-1/services
 service_DATA = $(service_in_files:.service.in=.service)
