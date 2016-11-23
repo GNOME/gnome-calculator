@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-10-28 07:00+0000\n"
-"PO-Revision-Date: 2016-10-30 19:27+0100\n"
-"Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
+"POT-Creation-Date: 2016-11-08 11:24+0000\n"
+"PO-Revision-Date: 2016-11-23 11:54+0100\n"
+"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Poedit 1.8.11\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../data/buttons-advanced.ui.h:1 ../data/buttons-programming.ui.h:53
@@ -146,7 +146,6 @@ msgid "x"
 msgstr "x"
 
 #: ../data/buttons-advanced.ui.h:35 ../data/buttons-programming.ui.h:11
-#| msgid "Absolute value [|]"
 msgid "Absolute Value [|]"
 msgstr "Abszolút érték [|]"
 
@@ -310,12 +309,12 @@ msgstr ""
 msgid "C_ost:"
 msgstr "_Költség:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
 #: ../data/buttons-financial.ui.h:21
 msgid "_Life:"
 msgstr "Él_ettartam:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
 #: ../data/buttons-financial.ui.h:23
 msgid "_Period:"
 msgstr "_Időszak:"
@@ -424,12 +423,12 @@ msgstr ""
 msgid "Straight-Line Depreciation"
 msgstr "Lineáris értékcsökkenési leírás"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
 #: ../data/buttons-financial.ui.h:57
 msgid "_Cost:"
 msgstr "_Költség:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
 #: ../data/buttons-financial.ui.h:59
 msgid "_Salvage:"
 msgstr "Át_mentés:"
@@ -447,16 +446,16 @@ msgstr ""
 "eszköz hasznos élettartama alatt. A hasznos élettartam azon periódusok, "
 "általában évek száma, amelyek alatt az eszköz elavul."
 
-#. Title of Sum-of-the-Years
+#. Title of Sum-of-the-Years’-Digits Depreciation dialog
 #: ../data/buttons-financial.ui.h:63
-msgid "Sum-of-the-Years'-Digits Depreciation"
+msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Évek száma szerinti értékcsökkenési leírás"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:65
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
@@ -517,7 +516,7 @@ msgstr "Időszak"
 msgid "Financial Term"
 msgstr "Pénzügyi év"
 
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/buttons-financial.ui.h:100
 msgid "Syd"
 msgstr "Syd"
@@ -616,11 +615,11 @@ msgid "Boolean NOT"
 msgstr "Logikai NEM"
 
 #: ../data/buttons-programming.ui.h:59
-msgid "Ones' Complement"
+msgid "Ones’ Complement"
 msgstr "1-es komplemens"
 
 #: ../data/buttons-programming.ui.h:60
-msgid "Two's Complement"
+msgid "Two’s Complement"
 msgstr "2-es komplemens"
 
 #. Insert ASCII dialog: Label before character entry
@@ -703,7 +702,7 @@ msgstr "A GNOME projekt"
 
 #. Program name in the about dialog
 #: ../data/gnome-calculator.desktop.in.h:1 ../data/math-window.ui.h:6
-#: ../src/gnome-calculator.vala:79 ../src/gnome-calculator.vala:316
+#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:329
 msgid "Calculator"
 msgstr "Számológép"
 
@@ -724,13 +723,11 @@ msgid " in "
 msgstr " ebben: "
 
 #: ../data/math-converter.ui.h:3
-#| msgid "="
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
 #: ../data/math-function-popover.ui.h:1
-#| msgid "Malformed function"
 msgid "New function"
 msgstr "Új függvény"
 
@@ -787,7 +784,6 @@ msgid "Open help"
 msgstr "Súgó megnyitása"
 
 #: ../data/math-shortcuts.ui.h:5
-#| msgid "Quit the calculator"
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Kilépés az alkalmazásból"
@@ -798,61 +794,51 @@ msgid "Switching modes"
 msgstr "Módváltás"
 
 #: ../data/math-shortcuts.ui.h:7
-#| msgid "Basic Mode"
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Váltás az Alap módra"
 
 #: ../data/math-shortcuts.ui.h:8
-#| msgid "Advanced Mode"
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Váltás a Speciális módra"
 
 #: ../data/math-shortcuts.ui.h:9
-#| msgid "Financial Mode"
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Váltás a Pénzügyi módra"
 
 #: ../data/math-shortcuts.ui.h:10
-#| msgid "Programming Mode"
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Váltás a Programozói módra"
 
 #: ../data/math-shortcuts.ui.h:11
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Váltás a Billentyűzet módra"
 
 #: ../data/math-shortcuts.ui.h:12
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Billentyűzeten bevitel"
 
 #: ../data/math-shortcuts.ui.h:13
-#| msgid "Multiply"
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Szorzás (×)"
 
 #: ../data/math-shortcuts.ui.h:14
-#| msgid "Divide"
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Osztás (÷)"
 
 #: ../data/math-shortcuts.ui.h:15
-#| msgid "Square root"
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Négyzetgyök (√)"
 
 #: ../data/math-shortcuts.ui.h:16
-#| msgid "Inverse"
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Invertálás"
@@ -863,13 +849,11 @@ msgid "Pi (π)"
 msgstr "Pi (π)"
 
 #: ../data/math-shortcuts.ui.h:18
-#| msgid "Set display type to scientific format"
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Számok bevitele tudományos formátumban"
 
 #: ../data/math-shortcuts.ui.h:19
-#| msgid "Programming Mode"
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Programozói mód"
@@ -890,7 +874,6 @@ msgid "Switch to decimal"
 msgstr "Váltás decimálisra"
 
 #: ../data/math-shortcuts.ui.h:23
-#| msgid "Hexadecimal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Váltás hexadecimálisra"
@@ -905,7 +888,6 @@ msgid "Preferences"
 msgstr "Beállítások"
 
 #: ../data/menu.ui.h:3
-#| msgid "Keyboard Mode"
 msgid "_Keyboard Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
@@ -1029,6 +1011,14 @@ msgstr "Belső pontosság"
 msgid "The internal precision used with the MPFR library"
 msgstr "Az MPFR függvénykönyvtárral használt belső pontosság"
 
+#: ../data/org.gnome.calculator.gschema.xml.h:27
+msgid "Window position"
+msgstr "Ablakpozíció"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:28
+msgid "Window position (x and y) of the last closed window."
+msgstr "A legutóbb bezárt ablak pozíciója (x és y)."
+
 #: ../lib/currency.vala:28
 msgid "UAE Dirham"
 msgstr "UAE dirham"
@@ -1102,7 +1092,6 @@ msgid "Euro"
 msgstr "Euró"
 
 #: ../lib/currency.vala:46
-#| msgid "Pound Sterling"
 msgid "British Pound Sterling"
 msgstr "Brit font sterling"
 
@@ -1293,14 +1282,14 @@ msgstr "Túlcsordulás. Próbálja nagyobb szóhosszal."
 #. Error displayed to user when they an unknown variable is entered
 #: ../lib/math-equation.vala:973
 #, c-format
-msgid "Unknown variable '%s'"
+msgid "Unknown variable “%s”"
 msgstr "Ismeretlen változó: „%s”"
 
 #. Error displayed to user when an unknown function is entered
 #: ../lib/math-equation.vala:980
 #, c-format
-msgid "Function '%s' is not defined"
-msgstr "A függvény („%s”) nincs meghatározva"
+msgid "Function “%s” is not defined"
+msgstr "A(z)„%s” függvény nincs meghatározva"
 
 #. Error displayed to user when an conversion with unknown units is attempted
 #: ../lib/math-equation.vala:987
@@ -2713,30 +2702,29 @@ msgstr "Pénznem"
 msgid "%s%%s"
 msgstr "%%s %s"
 
-#: ../src/gnome-calculator.vala:23
-#| msgid "Start with given equation"
+#: ../src/gnome-calculator.vala:24
 msgid "Start in given mode"
 msgstr "Kezdés a megadott módban"
 
-#: ../src/gnome-calculator.vala:24
+#: ../src/gnome-calculator.vala:25
 msgid "Solve given equation"
 msgstr "A megadott egyenlet megoldása"
 
-#: ../src/gnome-calculator.vala:25
+#: ../src/gnome-calculator.vala:26
 msgid "Start with given equation"
 msgstr "Kezdés a megadott egyenlettel"
 
-#: ../src/gnome-calculator.vala:26
+#: ../src/gnome-calculator.vala:27
 msgid "Show release version"
 msgstr "Verziószám megjelenítése"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:280
+#: ../src/gnome-calculator.vala:293
 msgid "Unable to open help file"
 msgstr "A súgófájl nem nyitható meg"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:311
+#: ../src/gnome-calculator.vala:324
 msgid "translator-credits"
 msgstr ""
 "Dvornik László <dvornik at gnome dot hu>\n"
@@ -2744,12 +2732,12 @@ msgstr ""
 "Tímár András <timar at gnome dot hu>\n"
 "Úr Balázs <urbalazs at gmail dot com>"
 
-#: ../src/gnome-calculator.vala:317
+#: ../src/gnome-calculator.vala:330
 msgid "About Calculator"
 msgstr "Számológép névjegye"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:325
+#: ../src/gnome-calculator.vala:338
 msgid "Calculator with financial and scientific modes."
 msgstr "Számológép pénzügyi és tudományos üzemmódokkal."
 
@@ -2787,19 +2775,16 @@ msgstr "Műszaki"
 
 #. Preferences dialog: label for show trailing zeroes check button
 #: ../src/math-preferences.vala:89
-#| msgid "_Number of Periods:"
 msgid "Number of _decimals"
 msgstr "Tizedesek szá_ma"
 
 #. Preferences dialog: label for show trailing zeroes switch
 #: ../src/math-preferences.vala:101
-#| msgid "Show trailing _zeroes"
 msgid "Trailing _zeroes"
 msgstr "_Záró nullák"
 
 #. Preferences dialog: label for show show thousands separator switch
 #: ../src/math-preferences.vala:114
-#| msgid "Show _thousands separators"
 msgid "_Thousands separators"
 msgstr "_Ezreselválasztók"
 
