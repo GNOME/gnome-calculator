@@ -152,11 +152,12 @@ private void test_conversions ()
 
     /* Temperature */
     //test ("100˚C in ˚F", "", 0);
-    //test ("0˚C in ˚F", "32", 0);
-    //test ("0˚K in ˚C", "−273.15", 0);
+    //test ("0 ˚C in ˚F", "32", 0);
+    //test ("0 ˚K in ˚C", "−273.15", 0);
     test ("100degC in degF", "212", 0);
     test ("0degC in degF", "32", 0);
     test ("0 K in degC", "−273.15", 0);
+    test ("0 k in c", "−273.15", 0);
 
     /* Digital Storage */
     test ("1000 bits in bytes", "125", 0);
