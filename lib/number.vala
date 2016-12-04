@@ -67,7 +67,7 @@ public class Number : Object
             denominator = -denominator;
         }
 
-        Number.integer (numerator);
+        this.integer (numerator);
         if (denominator != 1)
         {
             num.divide_unsigned_integer (num, (long) denominator);
@@ -94,7 +94,7 @@ public class Number : Object
     {
         var x = theta.cos (unit);
         var y = theta.sin (unit);
-        Number.complex (x.multiply (r), y.multiply (r));
+        this.complex (x.multiply (r), y.multiply (r));
     }
 
     public Number.eulers ()
@@ -119,7 +119,7 @@ public class Number : Object
     /* Sets z to be a uniform random number in the range [0, 1] */
     public Number.random ()
     {
-        Number.double (Random.next_double ());
+        this.double (Random.next_double ());
     }
 
     public int64 to_integer ()
