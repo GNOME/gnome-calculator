@@ -422,9 +422,12 @@ public class Number : Object
                 p = (uint64) int64.MAX + 1;
             else
                 p = -n;
-        } else {
+        } else if (n > 0) {
             z.num.@set (num);
             p = n;
+        } else {
+            error = _("The zeroth root of a number is undefined.");
+            return new Number.integer (0);
         }
 
         if (!is_complex () && (!is_negative () || (p & 1) == 1))
