@@ -223,8 +223,9 @@ public class Calculator : Gtk.Application
             e.angle_units = AngleUnit.DEGREES;
 
             ErrorCode error;
+            string? error_token = null;
             uint representation_base;
-            var result = e.parse (out representation_base, out error);
+            var result = e.parse (out representation_base, out error, out error_token);
             if (result != null)
             {
                 var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
@@ -234,7 +235,7 @@ public class Calculator : Gtk.Application
             }
             else if (error == ErrorCode.MP)
             {
-                stderr.printf ("Error: %s\n", Number.error);
+                stderr.printf ("Error: %s\n", (Number.error != null) ? Number.error : error_token);
                 return Posix.EXIT_FAILURE;
             }
             else

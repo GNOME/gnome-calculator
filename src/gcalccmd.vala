@@ -23,6 +23,7 @@ static void solve (string equation)
     if (decimal == null)
         decimal = "";
 
+    string? error_token = null;
     var e = new Equation (equation.replace (tsep_string, "").replace (decimal, "."));
     e.base = 10;
     e.wordlen = 32;
@@ -30,7 +31,7 @@ static void solve (string equation)
 
     ErrorCode ret;
     uint representation_base;
-    var z = e.parse (out representation_base, out ret);
+    var z = e.parse (out representation_base, out ret, out error_token);
 
     result_serializer.set_representation_base (representation_base);
     if (z != null)
@@ -45,7 +46,7 @@ static void solve (string equation)
             stdout.printf ("%s\n", str);
     }
     else if (ret == ErrorCode.MP)
-        stderr.printf ("Error %s\n", Number.error);
+        stderr.printf ("Error %s\n", (Number.error != null) ? Number.error : error_token);
     else
         stderr.printf ("Error %d\n", ret);
 }
