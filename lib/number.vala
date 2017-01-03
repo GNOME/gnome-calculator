@@ -426,7 +426,7 @@ public class Number : Object
             z.num.@set (num);
             p = n;
         } else {
-            error = _("The zeroth root of a number is undefined.");
+            error = _("The zeroth root of a number is undefined");
             return new Number.integer (0);
         }
 
