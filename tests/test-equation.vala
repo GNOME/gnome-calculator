@@ -711,7 +711,7 @@ private void test_custom_functions ()
     test ("func(2;3;5)", "0", 0);
     test ("func(x;y;z)=abs(x-y)+abs(y-z)+abs(x-z)", "0", 0);
     test ("func(1;2;3)", "4", 0);
-    test ("func(x;y;z)", "0", ErrorCode.INVALID);
+    test ("func(x;y;z)", "0", ErrorCode.UNKNOWN_VARIABLE);
     test ("test(x;y)=func(x;y;x)+func(y;x;y)", "0", 0);
     test ("6*test(3;5)+log10", "49", 0);
     test ("test(test(5;6);9)", "20", 0);
