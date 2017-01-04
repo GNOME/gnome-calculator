@@ -121,7 +121,7 @@ public abstract class RNode : ParseNode
         return z;
     }
 
-    public abstract Number solve_r (Number r);
+    public abstract Number? solve_r (Number r);
 }
 
 public abstract class LRNode : ParseNode
@@ -176,7 +176,7 @@ public class AssignNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         parser.set_variable (left.token().text, r);
         return r;
@@ -438,7 +438,7 @@ public class UnaryMinusNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         return r.invert_sign ();
     }
@@ -451,7 +451,7 @@ public class AbsoluteValueNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         return r.abs ();
     }
@@ -464,7 +464,7 @@ public class FloorNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         return r.floor ();
     }
@@ -477,7 +477,7 @@ public class CeilingNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         return r.ceiling ();
     }
@@ -490,7 +490,7 @@ public class FractionalComponentNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         return r.fractional_part ();
     }
@@ -503,7 +503,7 @@ public class RoundNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         return r.round ();
     }
@@ -516,7 +516,7 @@ public class PercentNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         return r.divide_integer (100);
     }
@@ -529,7 +529,7 @@ public class FactorialNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         return r.factorial ();
     }
@@ -684,15 +684,34 @@ public class ModulusDivideNode : LRNode
 public class RootNode : RNode
 {
     private int n;
+    private LexerToken? token_n;
 
     public RootNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, int n)
     {
         base (parser, token, precedence, associativity);
         this.n = n;
+        this.token_n = null;
     }
 
-    public override Number solve_r (Number r)
+    public RootNode.WithToken (Parser parser, LexerToken? token, uint precedence, Associativity associativity, LexerToken token_n)
     {
+        base (parser, token, precedence, associativity);
+        n = 0;
+        this.token_n = token_n;
+    }
+
+    public override Number? solve_r (Number r)
+    {
+        if (n == 0 && token_n != null)
+        {
+            n = sub_atoi(token_n.text);
+        }
+        if (n == 0)
+        {
+            string error = _("The zeroth root of a number is undefined");
+            parser.set_error (ErrorCode.MP, error, token_n.start_index, token_n.end_index);
+            return null;
+        }
         return r.root (n);
     }
 }
@@ -765,7 +784,7 @@ public class NotNode : RNode
         base (parser, token, precedence, associativity);
     }
 
-    public override Number solve_r (Number r)
+    public override Number? solve_r (Number r)
     {
         if (!mp_is_overflow (r, parser.wordlen))
         {
@@ -1057,7 +1076,7 @@ public class Parser
             return null;
 
         var ans = root.solve ();
-        if (ans == null)
+        if (ans == null && this.error == ErrorCode.NONE)
         {
             error_code = ErrorCode.INVALID;
             error_token = null;
@@ -2002,7 +2021,7 @@ public class Parser
             token = lexer.get_next_token ();
             if (token.type == LexerTokenType.ROOT)
             {
-                insert_into_tree_unary (new RootNode (this, token, make_precedence_t (token.type), get_associativity (token), sub_atoi (token_old.text)));
+                insert_into_tree_unary (new RootNode.WithToken (this, token, make_precedence_t (token.type), get_associativity (token), token_old));
                 if (!expression ())
                     return false;
 
