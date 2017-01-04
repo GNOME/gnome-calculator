@@ -46,15 +46,42 @@ public class ParseNode : Object
     public ParseNode? parent = null;
     public ParseNode? left = null;
     public ParseNode? right = null;
-    public LexerToken token;
+    public List<LexerToken> token_list;
     public uint precedence;
     public Associativity associativity;
     public string? value;
 
+    public LexerToken token()
+    {
+        assert(token_list.length() == 1);
+        return token_list.first().data;
+    }
+
+    public LexerToken first_token()
+    {
+        return token_list.first().data;
+    }
+
+    public LexerToken last_token()
+    {
+        return token_list.last().data;
+    }
+
+    public ParseNode.WithList (Parser parser, List<LexerToken> token_list, uint precedence, Associativity associativity, string? value = null)
+    {
+        this.parser = parser;
+        this.token_list = token_list.copy();
+        this.precedence = precedence;
+        this.associativity = associativity;
+        this.value = value;
+
+    }
+
     public ParseNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string? value = null)
     {
         this.parser = parser;
-        this.token = token;
+        this.token_list = new List<LexerToken>();
+        token_list.insert(token, 0);
         this.precedence = precedence;
         this.associativity = associativity;
         this.value = value;
@@ -88,7 +115,7 @@ public abstract class RNode : ParseNode
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
             Number.error = null;
         }
         return z;
@@ -120,7 +147,7 @@ public abstract class LRNode : ParseNode
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
             Number.error = null;
         }
         return z;
@@ -138,7 +165,7 @@ public class ConstantNode : ParseNode
 
     public override Number? solve ()
     {
-        return mp_set_from_string (token.text, parser.number_base);
+        return mp_set_from_string (token().text, parser.number_base);
     }
 }
 
@@ -151,7 +178,7 @@ public class AssignNode : RNode
 
     public override Number solve_r (Number r)
     {
-        parser.set_variable (left.token.text, r);
+        parser.set_variable (left.token().text, r);
         return r;
     }
 }
@@ -198,7 +225,7 @@ public class VariableNode : ParseNode
     public override Number? solve ()
     {
         /* If defined, then get the variable */
-        var ans = parser.get_variable (token.text);
+        var ans = parser.get_variable (token().text);
         if (ans != null)
             return ans;
 
@@ -207,12 +234,12 @@ public class VariableNode : ParseNode
         var value = new Number.integer (1);
         var index = 0;
         unichar c;
-        while (token.text.get_next_char (ref index, out c))
+        while (token().text.get_next_char (ref index, out c))
         {
             var t = parser.get_variable (c.to_string ());
             if (t == null)
             {
-                parser.set_error (ErrorCode.UNKNOWN_VARIABLE, token.text, token.start_index, token.end_index);
+                parser.set_error (ErrorCode.UNKNOWN_VARIABLE, token().text, first_token().start_index, last_token().end_index);
                 return null;
             }
             value = value.multiply (t);
@@ -235,7 +262,7 @@ public class VariableWithPowerNode : ParseNode
         value = null;
 
         /* If defined, then get the variable */
-        var ans = parser.get_variable (token.text);
+        var ans = parser.get_variable (token().text);
         if (ans != null)
             return ans.xpowy_integer (pow);
 
@@ -244,19 +271,19 @@ public class VariableWithPowerNode : ParseNode
         var value = new Number.integer (1);
         var index = 0;
         unichar c;
-        while (token.text.get_next_char (ref index, out c))
+        while (token().text.get_next_char (ref index, out c))
         {
             var t = parser.get_variable (c.to_string ());
             if (t == null)
             {
-                parser.set_error (ErrorCode.UNKNOWN_VARIABLE, token.text, token.start_index, token.end_index);
+                parser.set_error (ErrorCode.UNKNOWN_VARIABLE, token().text, first_token().start_index, last_token().end_index);
                 return null;
             }
 
             /* If last term do power */
             var i = index;
             unichar next;
-            if (!token.text.get_next_char (ref i, out next))
+            if (!token().text.get_next_char (ref i, out next))
                 t = t.xpowy_integer (pow);
             value = value.multiply (t);
         }
@@ -269,7 +296,7 @@ public class VariableWithPowerNode : ParseNode
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
             Number.error = null;
         }
 
@@ -287,9 +314,9 @@ public class FunctionNameNode : NameNode
 
 public class FunctionArgumentsNode : NameNode
 {
-    public FunctionArgumentsNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, string arguments)
+    public FunctionArgumentsNode (Parser parser, List<LexerToken> token_list, uint precedence, Associativity associativity, string arguments)
     {
-        base (parser, token, precedence, associativity, arguments);
+        base.WithList (parser, token_list, precedence, associativity, arguments);
     }
 }
 
@@ -396,7 +423,7 @@ public class FunctionNode : ParseNode
         Number.check_flags ();
         if (Number.error != null)
         {
-            parser.set_error (ErrorCode.MP, Number.error);
+            parser.set_error (ErrorCode.MP, Number.error, right.first_token().start_index, right.last_token().end_index);
             Number.error = null;
         }
 
@@ -583,8 +610,8 @@ public class DivideNode : LRNode
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            if (tmpleft.token != null) token_start = tmpleft.token.start_index;
-            if (tmpright.token != null) token_end = tmpright.token.end_index;
+            if (tmpleft.first_token() != null) token_start = tmpleft.first_token().start_index;
+            if (tmpright.last_token() != null) token_end = tmpright.last_token().end_index;
             parser.set_error (ErrorCode.MP, Number.error, token_start, token_end);
             Number.error = null;
         }
@@ -618,7 +645,7 @@ public class ModulusDivideNode : LRNode
                 var tmpright = right;
                 while (tmpleft.left != null) tmpleft = tmpleft.left;
                 while (tmpright.right != null) tmpright = tmpright.right;
-                parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+                parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
                 Number.error = null;
             }
 
@@ -640,7 +667,7 @@ public class ModulusDivideNode : LRNode
                 var tmpright = right;
                 while (tmpleft.left != null) tmpleft = tmpleft.left;
                 while (tmpright.right != null) tmpright = tmpright.right;
-                parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+                parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
                 Number.error = null;
             }
 
@@ -700,13 +727,13 @@ public class XPowYIntegerNode : ParseNode
         // Are we inside a nested pow?
         if (val == null)
         {
-            val = new Number.integer (super_atoi (left.token.text));
+            val = new Number.integer (super_atoi (left.token().text));
         }
 
         int64 pow;
 
-        if (right.token != null)
-            pow = super_atoi (right.token.text);
+        if (right.token() != null)
+            pow = super_atoi (right.token().text);
         else
             pow = right.solve ().to_integer ();
 
@@ -723,7 +750,7 @@ public class XPowYIntegerNode : ParseNode
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_error (ErrorCode.MP, Number.error, tmpleft.token.start_index, tmpright.token.end_index);
+            parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
             Number.error = null;
         }
 
@@ -805,7 +832,7 @@ public class ConvertNode : LRNode
             left.value = null;
         }
         else
-            from = left.token.text;
+            from = left.token().text;
 
         string to;
         if (right.value != null)
@@ -814,7 +841,7 @@ public class ConvertNode : LRNode
             right.value = null;
         }
         else
-            to = right.token.text;
+            to = right.token().text;
 
         var tmp = new Number.integer (1);
 
@@ -845,7 +872,7 @@ public class ConvertBaseNode : ParseNode
             parser.set_representation_base (2);
         else
         {
-            parser.set_error (ErrorCode.UNKNOWN_CONVERSION, token.text, token.start_index, token.end_index);
+            parser.set_error (ErrorCode.UNKNOWN_CONVERSION, token().text, first_token().start_index, last_token().end_index);
             return null;
         }
         return left.solve ();
@@ -868,7 +895,7 @@ public class ConvertNumberNode : ParseNode
             left.value = null;
         }
         else
-            from = left.token.text;
+            from = left.token().text;
 
         string to;
         if (right.value != null)
@@ -877,9 +904,9 @@ public class ConvertNumberNode : ParseNode
             right.value = null;
         }
         else
-            to = right.token.text;
+            to = right.token().text;
 
-        var tmp = mp_set_from_string (left.left.token.text, parser.number_base);
+        var tmp = mp_set_from_string (left.left.token().text, parser.number_base);
         if (tmp == null)
             return null;
 
@@ -1451,9 +1478,11 @@ public class Parser
         token = lexer.get_next_token ();
         num_token_parsed++;
         string argument_list = "";
+        List<LexerToken> token_list = new List<LexerToken> ();
 
         while (token.type != LexerTokenType.R_R_BRACKET && token.type != LexerTokenType.PL_EOS)
         {
+            token_list.append (token);
             argument_list += token.text;
             token = lexer.get_next_token ();
             num_token_parsed++;
@@ -1485,7 +1514,7 @@ public class Parser
 
         insert_into_tree (new FunctionNameNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), function_name));
         insert_into_tree (new FunctionNode (this, null, make_precedence_p (Precedence.FUNCTION), get_associativity_p (Precedence.FUNCTION), null));
-        insert_into_tree (new FunctionArgumentsNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), argument_list));
+        insert_into_tree (new FunctionArgumentsNode (this, token_list, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), argument_list));
         insert_into_tree (new AssignFunctionNode (this, assign_token, 0, get_associativity (assign_token)));
         insert_into_tree (new FunctionDescriptionNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), expression));
 
@@ -2030,7 +2059,7 @@ public class Parser
         num_token_parsed ++;
         string function_name = fun_token.text;
 
-        insert_into_tree (new FunctionNameNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), function_name));
+        insert_into_tree (new FunctionNameNode (this, fun_token, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), function_name));
 
         var token = lexer.get_next_token ();
         num_token_parsed++;
@@ -2050,6 +2079,7 @@ public class Parser
             num_token_parsed++;
             int m_depth = 1;
             string argument_list = "";
+            List<LexerToken> token_list = new List<LexerToken>();
 
             while (token.type != LexerTokenType.PL_EOS && token.type != LexerTokenType.ASSIGN)
             {
@@ -2061,6 +2091,8 @@ public class Parser
                     if (m_depth == 0)
                         break;
                 }
+                else
+                    token_list.append(token);
                 argument_list += token.text;
                 token = lexer.get_next_token ();
                 num_token_parsed++;
@@ -2074,7 +2106,7 @@ public class Parser
                 return false;
             }
 
-            insert_into_tree (new FunctionArgumentsNode (this, null, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), argument_list));
+            insert_into_tree (new FunctionArgumentsNode (this, token_list, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE), argument_list));
         }
         else
         {
