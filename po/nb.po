@@ -1,15 +1,15 @@
-# Norwegian bokmål translation of eog.
-# Copyright (C) 1999-2004, 2005 Free Software Foundation, Inc.
+# Norwegian bokmål translation of gcalctool.
+# Copyright © 2003 Free Software Foundation, Inc.
+# Kjartan Maraas <kmaraas@gnome.org>, 2003-2016.
+# Sigurd Gartman <sigurd-translate@brogar.org>, 2003, 2005.
+# Eskild Hustvedt <i18n@zerodogg.org>, 2007
 #
-# Kjartan Maraas <kmaraas@gnome.org>, 1999-2016.
-# Terance Edward Sola <terance@lyse.net>, 2005.
-# Torstein Adolf Winterseth <kvikende@fsfe.org>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: eog 3.23.x\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=eog&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-12-13 18:32+0000\n"
-"PO-Revision-Date: 2017-01-07 17:44+0100\n"
+"Project-Id-Version: gcalctool 3.23.x\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-calculator&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2017-01-03 23:28+0000\n"
+"PO-Revision-Date: 2017-01-07 18:02+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.no>\n"
 "Language: nb\n"
@@ -18,1594 +18,2795 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../data/eog-app-menu.xml.h:1
-msgid "Prefere_nces"
-msgstr "_Brukervalg"
+#: ../data/buttons-advanced.ui.h:1 ../data/buttons-programming.ui.h:53
+msgid "Inverse [Ctrl+I]"
+msgstr "Omvendt [Ctrl+I]"
 
-#: ../data/eog-app-menu.xml.h:2
-msgid "_Keyboard Shortcuts"
-msgstr "_Tastatursnarveier"
+#. Accessible name for the inverse button
+#: ../data/buttons-advanced.ui.h:3 ../data/buttons-programming.ui.h:55
+msgid "Inverse"
+msgstr "Omvendt"
 
-#: ../data/eog-app-menu.xml.h:3 ../data/eog-preferences-dialog.ui.h:2
-msgid "_Help"
-msgstr "_Hjelp"
+#: ../data/buttons-advanced.ui.h:4 ../data/buttons-programming.ui.h:7
+msgid "Factorize [Ctrl+F]"
+msgstr "Faktoriser [Ctrl+F]"
 
-#: ../data/eog-app-menu.xml.h:4
-msgid "_About"
-msgstr "_Om"
+#. Accessible name for the factorize button
+#: ../data/buttons-advanced.ui.h:6 ../data/buttons-programming.ui.h:9
+msgid "Factorize"
+msgstr "Faktoriser"
 
-#: ../data/eog-app-menu.xml.h:5
-msgid "_Quit"
-msgstr "A_vslutt"
+#: ../data/buttons-advanced.ui.h:7 ../data/buttons-programming.ui.h:50
+msgid "Factorial [!]"
+msgstr "Fakultet [!]"
 
-#: ../data/eog.appdata.xml.in.h:1
-msgid "Eye of GNOME"
-msgstr "Eye of GNOME"
+#. Accessible name for the factorial button
+#: ../data/buttons-advanced.ui.h:9 ../data/buttons-programming.ui.h:52
+msgid "Factorial"
+msgstr "Fakultet"
 
-#: ../data/eog.appdata.xml.in.h:2 ../data/eog.desktop.in.in.h:2
-msgid "Browse and rotate images"
-msgstr "Bla gjennom og roter bilder"
+#: ../data/buttons-advanced.ui.h:10
+msgid "Imaginary Component"
+msgstr "Imaginær komponent"
 
-#: ../data/eog.appdata.xml.in.h:3
+#: ../data/buttons-advanced.ui.h:11 ../data/buttons-basic.ui.h:1
+#: ../data/buttons-financial.ui.h:77 ../data/buttons-programming.ui.h:16
+msgid "Divide [/]"
+msgstr "Del [/]"
+
+#: ../data/buttons-advanced.ui.h:12 ../data/buttons-basic.ui.h:4
+#: ../data/buttons-financial.ui.h:80 ../data/buttons-programming.ui.h:17
+msgid "Multiply [*]"
+msgstr "Multipliser [*]"
+
+#: ../data/buttons-advanced.ui.h:13 ../data/buttons-basic.ui.h:5
+#: ../data/buttons-financial.ui.h:81 ../data/buttons-programming.ui.h:18
+msgid "Subtract [-]"
+msgstr "Trekk fra [-]"
+
+#: ../data/buttons-advanced.ui.h:14 ../data/buttons-basic.ui.h:6
+#: ../data/buttons-financial.ui.h:82 ../data/buttons-programming.ui.h:19
+msgid "Add [+]"
+msgstr "Legg til [+]"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: ../data/buttons-advanced.ui.h:16 ../data/buttons-basic.ui.h:8
+#: ../data/buttons-financial.ui.h:84 ../data/buttons-programming.ui.h:21
+msgid "="
+msgstr "="
+
+#: ../data/buttons-advanced.ui.h:17 ../data/buttons-basic.ui.h:9
+#: ../data/buttons-financial.ui.h:85 ../data/buttons-programming.ui.h:22
+msgid "Calculate Result"
+msgstr "Beregn resultat"
+
+#: ../data/buttons-advanced.ui.h:18 ../data/buttons-basic.ui.h:12
+#: ../data/buttons-financial.ui.h:88 ../data/buttons-programming.ui.h:23
+msgid "Clear Display [Escape]"
+msgstr "Tøm skjermen [Escape]"
+
+#: ../data/buttons-advanced.ui.h:19 ../data/buttons-programming.ui.h:24
+msgid "Subscript mode [Alt]"
+msgstr "Senket modus [Alt]"
+
+#. Accessible name for the subscript mode button
+#: ../data/buttons-advanced.ui.h:21 ../data/buttons-programming.ui.h:26
+msgid "Subscript"
+msgstr "Senket"
+
+#: ../data/buttons-advanced.ui.h:22 ../data/buttons-programming.ui.h:27
+msgid "Superscript mode [Ctrl]"
+msgstr "Hevet modus [Ctrl]"
+
+#. Accessible name for the superscript mode button
+#: ../data/buttons-advanced.ui.h:24 ../data/buttons-programming.ui.h:29
+msgid "Superscript"
+msgstr "Hevet"
+
+#: ../data/buttons-advanced.ui.h:25
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "Vitenskaplig eksponent [Ctrl+E]"
+
+#. Accessible name for the scientific exponent button
+#: ../data/buttons-advanced.ui.h:27
+msgid "Scientific Exponent"
+msgstr "Vitenskapelig eksponent"
+
+#: ../data/buttons-advanced.ui.h:28 ../data/buttons-programming.ui.h:38
+msgid "Modulus divide"
+msgstr "Modulus-divisjon"
+
+#: ../data/buttons-advanced.ui.h:29 ../data/buttons-basic.ui.h:10
+#: ../data/buttons-financial.ui.h:86 ../data/buttons-programming.ui.h:39
+msgid "Start Group [(]"
+msgstr "Start gruppe [(]"
+
+#: ../data/buttons-advanced.ui.h:30 ../data/buttons-basic.ui.h:11
+#: ../data/buttons-financial.ui.h:87 ../data/buttons-programming.ui.h:40
+msgid "End Group [)]"
+msgstr "Avslutt gruppe [)]"
+
+#. Accessible name for the memory button
+#. Accessible name for the memory value button
+#: ../data/buttons-advanced.ui.h:32 ../data/buttons-financial.ui.h:73
+#: ../data/buttons-programming.ui.h:30
+msgid "Memory"
+msgstr "Minne"
+
+#. The label on the memory button
+#: ../data/buttons-advanced.ui.h:34 ../data/buttons-financial.ui.h:75
+#: ../data/buttons-programming.ui.h:34
+msgid "x"
+msgstr "x"
+
+#: ../data/buttons-advanced.ui.h:35 ../data/buttons-programming.ui.h:11
+msgid "Absolute Value [|]"
+msgstr "Absoluttverdi [|]"
+
+#. Accessible name for the absolute value button
+#: ../data/buttons-advanced.ui.h:37 ../data/buttons-programming.ui.h:13
+msgid "Absolute Value"
+msgstr "Absoluttverdi"
+
+#: ../data/buttons-advanced.ui.h:38
+msgid "Real Component"
+msgstr "Heltallskomponent"
+
+#: ../data/buttons-advanced.ui.h:39
+msgid "Complex conjugate"
+msgstr "Komplekst konjugat"
+
+#: ../data/buttons-advanced.ui.h:40
+msgid "Complex argument"
+msgstr "Komplekst argument"
+
+#: ../data/buttons-advanced.ui.h:41 ../data/buttons-programming.ui.h:10
+msgid "Natural Logarithm"
+msgstr "Naturlig logaritme"
+
+#: ../data/buttons-advanced.ui.h:42 ../data/buttons-financial.ui.h:76
+#: ../data/buttons-programming.ui.h:6
+msgid "Logarithm"
+msgstr "Logaritme"
+
+#: ../data/buttons-advanced.ui.h:43 ../data/buttons-financial.ui.h:114
+#: ../data/buttons-programming.ui.h:56
+msgid "Exponent [^ or **]"
+msgstr "Eksponent [^ eller **]"
+
+#. Accessible name for the exponentiation (x to the power of y) button
+#: ../data/buttons-advanced.ui.h:45 ../data/buttons-basic.ui.h:16
+#: ../data/buttons-financial.ui.h:116 ../data/buttons-programming.ui.h:58
+msgid "Exponent"
+msgstr "Eksponent"
+
+#: ../data/buttons-advanced.ui.h:46 ../data/buttons-financial.ui.h:117
+#: ../data/buttons-programming.ui.h:5
+msgid "Root [Ctrl+R]"
+msgstr "Rot [Ctrl+R]"
+
+#: ../data/buttons-advanced.ui.h:47 ../data/buttons-basic.ui.h:17
+#: ../data/buttons-financial.ui.h:113
+msgid "Undo [Ctrl+Z]"
+msgstr "Angre [Ctrl+Z]"
+
+#: ../data/buttons-advanced.ui.h:48
+msgid "Pi [Ctrl+P]"
+msgstr "Pi [Ctrl+P]"
+
+#: ../data/buttons-advanced.ui.h:49
+msgid "Euler’s Number"
+msgstr "Eulers tall"
+
+#: ../data/buttons-advanced.ui.h:50
+msgid "Cosine"
+msgstr "Cosinus"
+
+#: ../data/buttons-advanced.ui.h:51
+msgid "Sine"
+msgstr "Sinus"
+
+#: ../data/buttons-advanced.ui.h:52
+msgid "Tangent"
+msgstr "Tangent"
+
+#: ../data/buttons-advanced.ui.h:53
+msgid "Hyperbolic Sine"
+msgstr "Hyperbolsk sinus"
+
+#: ../data/buttons-advanced.ui.h:54
+msgid "Hyperbolic Cosine"
+msgstr "Hyperbolsk cosinus"
+
+#: ../data/buttons-advanced.ui.h:55
+msgid "Hyperbolic Tangent"
+msgstr "Hyperbolsk tangent"
+
+#: ../data/buttons-advanced.ui.h:56
+msgid "Additional Functions"
+msgstr "Flere funksjoner"
+
+#. Accessible name for the store value button
+#: ../data/buttons-advanced.ui.h:58 ../data/buttons-programming.ui.h:32
+msgid "Store"
+msgstr "Lagre"
+
+#: ../data/buttons-basic.ui.h:3 ../data/buttons-financial.ui.h:79
+#, no-c-format
+msgid "Percentage [%]"
+msgstr "Prosentdel [%]"
+
+#: ../data/buttons-basic.ui.h:13
+msgid "Square root [Ctrl+R]"
+msgstr "Kvadratrot [Ctrl+R]"
+
+#: ../data/buttons-basic.ui.h:14
+msgid "Square [Ctrl+2]"
+msgstr "Kvadrat [Ctrl+2]"
+
+#. Title of Compounding Term dialog
+#: ../data/buttons-financial.ui.h:2
+msgid "Compounding Term"
+msgstr "Sammensatt uttrykk"
+
+#: ../data/buttons-financial.ui.h:3 ../data/buttons-programming.ui.h:63
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#. Payment Period Dialog: Button to calculate result
+#: ../data/buttons-financial.ui.h:5
+msgid "C_alculate"
+msgstr "Bere_gn"
+
+#. Periodic Interest Rate Dialog: Label before present value input
+#: ../data/buttons-financial.ui.h:7
+msgid "Present _Value:"
+msgstr "Nåtids_verdi:"
+
+#. Payment Period Dialog: Label before periodic interest rate input
+#: ../data/buttons-financial.ui.h:9
+msgid "Periodic Interest _Rate:"
+msgstr "Periodisk _renterate:"
+
+#. Compounding Term Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:11
 msgid ""
-"The Eye of GNOME is the official image viewer for the GNOME desktop. It "
-"integrates with the GTK+ look and feel of GNOME, and supports many image "
-"formats for viewing single images or images in a collection."
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
 msgstr ""
-"Eye of GNOME er det offisielle programmet for bildevisning for GNOME "
-"skrivebordet. Det er integrert med GTK+ utseende og oppførsel for GNOME og "
-"støtter mange bildeformater for isning av enkeltbilder og samlinger."
+"Beregner antall renteberegningsperioder som kreves for å øke en investering "
+"av gjeldende verdi til en fremtidig verdi, med en fast styringsrente per "
+"renteberegningsperiode."
 
-#: ../data/eog.appdata.xml.in.h:4
+#. Periodic Interest Rate Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:13
+msgid "_Future Value:"
+msgstr "_Fremtidig verdi:"
+
+#. Title of Double-Declining Depreciation dialog
+#: ../data/buttons-financial.ui.h:15
+msgid "Double-Declining Depreciation"
+msgstr "Dobbelt degressiv avskrivning"
+
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:17
 msgid ""
-"The Eye of GNOME also allows to view the images in a fullscreen slideshow "
-"mode or set an image as the desktop wallpaper. It reads the camera tags to "
-"automatically rotate your images in the correct portrait or landscape "
-"orientation."
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
 msgstr ""
-"Eye of GNOME lar deg også se på bilder i som en lysbildefremvisning i "
-"fullskjerm modus eller du kan sette et bilde som bakgrunn på skrivebordet. "
-"Det leser kameramerkelapper for å rotere bildene automatisk som portrett- "
-"eller landskapsorientering."
+"Beregner avskrivningsbeløpet på et anleggsmiddel for en bestemt tidsperiode, "
+"med dobbelt avskrivningsbeløp (halvert levetid)."
 
-#: ../data/eog.desktop.in.in.h:1 ../src/eog-application.c:311
-#: ../src/eog-window.c:5567
-msgid "Image Viewer"
-msgstr "Bildevisning"
+#. Gross Profit Margin Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:19
+msgid "C_ost:"
+msgstr "K_ost:"
 
-#. Extra keywords that can be used to search for eog in GNOME Shell and Unity
-#: ../data/eog.desktop.in.in.h:4
-msgid "Picture;Slideshow;Graphics;"
-msgstr "Bilde;Lysbilder;Grafikk;"
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: ../data/buttons-financial.ui.h:21
+msgid "_Life:"
+msgstr "_Livstid"
 
-#: ../data/eog-gear-menu.ui.h:1
-msgid "_Open…"
-msgstr "_Åpne …"
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: ../data/buttons-financial.ui.h:23
+msgid "_Period:"
+msgstr "_Periode:"
 
-#: ../data/eog-gear-menu.ui.h:2
-msgid "Open _With"
-msgstr "Åpne _med"
+#. Title of Future Value dialog
+#: ../data/buttons-financial.ui.h:25
+msgid "Future Value"
+msgstr "Fremtidig verdi"
 
-#: ../data/eog-gear-menu.ui.h:3 ../data/popup-menus.ui.h:2
-#: ../src/eog-close-confirmation-dialog.c:178 ../src/eog-file-chooser.c:465
-msgid "_Save"
-msgstr "_Lagre"
+#. Future Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:27
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Beregner fremtidig verdi av en investering, basert på en rekke med like "
+"nedbetalinger og en gitt rentesats per betalingstermin."
 
-#: ../data/eog-gear-menu.ui.h:4 ../data/popup-menus.ui.h:3
-#: ../src/eog-error-message-area.c:133
-msgid "Save _As…"
-msgstr "L_agre som …"
+#. Payment Period Dialog: Label before periodic payment input
+#: ../data/buttons-financial.ui.h:29
+msgid "_Periodic Payment:"
+msgstr "_Periodisk betaling:"
 
-#: ../data/eog-gear-menu.ui.h:5 ../data/popup-menus.ui.h:4
-msgid "_Print…"
-msgstr "S_kriv ut …"
+#. Present Value Dialog: Label before number of periods input
+#: ../data/buttons-financial.ui.h:31
+msgid "_Number of Periods:"
+msgstr "A_ntall perioder:"
 
-#: ../data/eog-gear-menu.ui.h:6 ../data/popup-menus.ui.h:8
-msgid "Set as Wa_llpaper"
-msgstr "Sett som _bakgrunn"
+#. Title of Gross Profit Margin dialog
+#: ../data/buttons-financial.ui.h:33
+msgid "Gross Profit Margin"
+msgstr "Brutto fortjenestemargin"
 
-#: ../data/eog-gear-menu.ui.h:7
-msgid "Sli_deshow"
-msgstr "Lysbil_devisning"
+#. Gross Profit Margin Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:35
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Beregner salgsprisen for et produkt basert på produktkost og ønsket brutto "
+"fortjenestemargin."
 
-#: ../data/eog-gear-menu.ui.h:8
-msgid "S_ide Pane"
-msgstr "S_idelinje"
+#. Gross Profit Margin Dialog: Label before margin input
+#: ../data/buttons-financial.ui.h:37
+msgid "_Margin:"
+msgstr "_Margin:"
 
-#: ../data/eog-gear-menu.ui.h:9
-msgid "Image _Gallery"
-msgstr "Bilde_galleri"
+#. Title of Periodic Payment dialog
+#: ../data/buttons-financial.ui.h:39
+msgid "Periodic Payment"
+msgstr "Periodisk betaling"
 
-#: ../data/eog-gear-menu.ui.h:10
-msgid "S_tatus Bar"
-msgstr "S_tatuslinje"
+#. Periodic Payment Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:41
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
+msgstr ""
+"Beregner beløp for periodisk avbetaling av et lån hvor betalingene gjøres "
+"ved slutten av hver betalingsperiode."
 
-#: ../data/eog-gear-menu.ui.h:11 ../data/popup-menus.ui.h:7
-msgid "Prope_rties"
-msgstr "Egenskape_r"
+#. Periodic Payment Dialog: Label before principal input
+#: ../data/buttons-financial.ui.h:43
+msgid "_Principal:"
+msgstr "_Avdrag:"
 
-#: ../data/eog-image-properties-dialog.ui.h:1
-msgid "Image Properties"
-msgstr "Egenskaper for bilde"
+#. Periodic Interest Rate Dialog: Label before term input
+#: ../data/buttons-financial.ui.h:45
+msgid "_Term:"
+msgstr "_Periode:"
 
-#: ../data/eog-image-properties-dialog.ui.h:2
-msgid "Previous"
-msgstr "Forrige"
+#. Title of Present Value dialog
+#: ../data/buttons-financial.ui.h:47
+msgid "Present Value"
+msgstr "Nåverdi"
 
-#: ../data/eog-image-properties-dialog.ui.h:3
-msgid "Next"
-msgstr "Neste"
+#. Present Value Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:49
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
+"Beregner nåverdi av en investering basert på en rekke like betalinger "
+"diskontert med en periodisk rente over antall betalingsperioder i terminen."
 
-#: ../data/eog-image-properties-dialog.ui.h:4
-msgid "Name:"
-msgstr "Navn:"
+#. Title of Periodic Interest Rate dialog
+#: ../data/buttons-financial.ui.h:51
+msgid "Periodic Interest Rate"
+msgstr "Periodisk renterate"
 
-#: ../data/eog-image-properties-dialog.ui.h:5
-msgid "Width:"
-msgstr "Bredde:"
+#. Periodic Interest Rate Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:53
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
+"Beregner periodisk rente som kreves for å øke en investering til en "
+"fremtidig verdi over et antall perioder."
 
-#: ../data/eog-image-properties-dialog.ui.h:6
-msgid "Height:"
-msgstr "Høyde:"
+#. Title of Straight-Line Depreciation dialog
+#: ../data/buttons-financial.ui.h:55
+msgid "Straight-Line Depreciation"
+msgstr "Lineær avskrivning"
 
-#: ../data/eog-image-properties-dialog.ui.h:7
-msgid "Type:"
-msgstr "Type:"
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: ../data/buttons-financial.ui.h:57
+msgid "_Cost:"
+msgstr "_Kost:"
 
-#: ../data/eog-image-properties-dialog.ui.h:8
-msgid "Bytes:"
-msgstr "Bytes:"
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: ../data/buttons-financial.ui.h:59
+msgid "_Salvage:"
+msgstr "Re_stverdi:"
 
-#: ../data/eog-image-properties-dialog.ui.h:9
-msgid "Folder:"
-msgstr "Mappe:"
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:61
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+"Beregner lineær avskrivning for et anleggsmiddel over én periode. Linær "
+"avskrivning deler opp kostnadsføringen månedsvis i henhold til "
+"anleggsmiddelets forventede levetid, som typisk oppgis i antall år."
 
-#: ../data/eog-image-properties-dialog.ui.h:10
+#. Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: ../data/buttons-financial.ui.h:63
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "Avskriving av summen av årenes sifre"
+
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:65
+#, fuzzy
+#| msgid ""
+#| "Calculates the depreciation allowance on an asset for a specified period "
+#| "of time, using the Sum-of-the-Years'-Digits method. This method of "
+#| "depreciation accelerates the rate of depreciation, so that more "
+#| "depreciation expense occurs in earlier periods than in later ones. The "
+#| "useful life is the number of periods, typically years, over which an "
+#| "asset is depreciated. "
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
+msgstr ""
+"Beregner avskrivningsbeløpet på et anleggsmiddel over en gitt tidsperiode, "
+"med degressiv avskrivningsmetode. Denne metoden avskriver større andeler i "
+"tidligere perioder enn i senere perioder. Levetiden er lik antall perioder, "
+"som typisk oppgis i antall år. "
+
+#. Title of Payment Period dialog
+#: ../data/buttons-financial.ui.h:67
+msgid "Payment Period"
+msgstr "Betalingsperiode"
+
+#. Payment Period Dialog: Label before future value input
+#: ../data/buttons-financial.ui.h:69
+msgid "Future _Value:"
+msgstr "Fremtidig _verdi:"
+
+#. Payment Period Dialog: Description of calculation
+#: ../data/buttons-financial.ui.h:71
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Beregner hvor mange betalingsperioder som er nødvendig for å betale ned et "
+"annuitetslån, med dagens rente."
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: ../data/buttons-financial.ui.h:90
+msgid "Ctrm"
+msgstr "Sams"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:92
+msgid "Ddb"
+msgstr "Dd"
+
+#: ../data/buttons-financial.ui.h:93
+msgid "Double Declining Depreciation"
+msgstr "Dobbelt degressiv avskrivning"
+
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: ../data/buttons-financial.ui.h:95
+msgid "Fv"
+msgstr "Fv"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: ../data/buttons-financial.ui.h:97
+msgid "Term"
+msgstr "Term"
+
+#: ../data/buttons-financial.ui.h:98
+msgid "Financial Term"
+msgstr "Finansielt begrep"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:100
+msgid "Syd"
+msgstr "Sum"
+
+#: ../data/buttons-financial.ui.h:101
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Avskriving av summen av årenes sifre"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: ../data/buttons-financial.ui.h:103
+msgid "Sln"
+msgstr "Ln"
+
+#: ../data/buttons-financial.ui.h:104
+msgid "Straight Line Depreciation"
+msgstr "Lineær avskriving"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: ../data/buttons-financial.ui.h:106
+msgid "Rate"
+msgstr "Rate"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: ../data/buttons-financial.ui.h:108
+msgid "Pv"
+msgstr "Pv"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: ../data/buttons-financial.ui.h:110
+msgid "Pmt"
+msgstr "Bet"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: ../data/buttons-financial.ui.h:112
+msgid "Gpm"
+msgstr "Bft"
+
+#: ../data/buttons-programming.ui.h:1
+msgid "Binary"
+msgstr "Binær"
+
+#: ../data/buttons-programming.ui.h:2
+msgid "Octal"
+msgstr "Oktal"
+
+#: ../data/buttons-programming.ui.h:3
+msgid "Decimal"
+msgstr "Desimal"
+
+#: ../data/buttons-programming.ui.h:4
+msgid "Hexadecimal"
+msgstr "Heksadesimal"
+
+#: ../data/buttons-programming.ui.h:14
+msgid "Integer Component"
+msgstr "Heltallskomponent"
+
+#: ../data/buttons-programming.ui.h:15
+msgid "Fractional Component"
+msgstr "Brøkkomponent"
+
+#: ../data/buttons-programming.ui.h:35
+msgid "Boolean Exclusive OR"
+msgstr "Boolsk ekslusiv ELLER"
+
+#: ../data/buttons-programming.ui.h:36
+msgid "Boolean OR"
+msgstr "Boolsk ELLER"
+
+#: ../data/buttons-programming.ui.h:37
+msgid "Boolean AND"
+msgstr "Boolsk OG"
+
+#. Accessible name for the shift left button
+#: ../data/buttons-programming.ui.h:42
+msgid "Shift Left"
+msgstr "Skift til venstre"
+
+#. Accessible name for the shift right button
+#: ../data/buttons-programming.ui.h:44
+msgid "Shift Right"
+msgstr "Skift til høyre"
+
+#. Title of insert character code dialog
+#: ../data/buttons-programming.ui.h:46
+msgid "Insert Character Code"
+msgstr "Sett inn tegnkode"
+
+#. Accessible name for the insert character button
+#: ../data/buttons-programming.ui.h:48
+msgid "Insert Character"
+msgstr "Sett inn tegn"
+
+#: ../data/buttons-programming.ui.h:49
+msgid "Boolean NOT"
+msgstr "Boolsk IKKE"
+
+#: ../data/buttons-programming.ui.h:59
+msgid "Ones’ Complement"
+msgstr "Enerkomplement"
+
+#: ../data/buttons-programming.ui.h:60
+msgid "Two’s Complement"
+msgstr "Toerkomplement"
+
+#. Insert ASCII dialog: Label before character entry
+#: ../data/buttons-programming.ui.h:62
+msgid "Ch_aracter:"
+msgstr "_Tegn:"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: ../data/buttons-programming.ui.h:65
+msgid "_Insert"
+msgstr "Sett _inn"
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:1
+msgid "GNOME Calculator"
+msgstr "GNOME kalkulator"
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:2
+msgid ""
+"GNOME Calculator is an application that solves mathematical equations. "
+"Though it at first appears to be a simple calculator with only basic "
+"arithmetic operations, you can switch into Advanced, Financial, or "
+"Programming mode to find a surprising set of capabilities."
+msgstr ""
+"GNOME kalkulator er et program som løser matematiske likninger. Selv om det "
+"kan se ut som en enkel kalkulator med enkle regneoperasjoner kan du bytte "
+"til avansert, finansiell eller programmeringsmodus og da finne et "
+"overraskende sett med muligheter."
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:3
+msgid ""
+"The Advanced calculator supports many operations, including: logarithms, "
+"factorials, trigonometric and hyperbolic functions, modulus division, "
+"complex numbers, random number generation, prime factorization and unit "
+"conversions."
+msgstr ""
+"Avansert kalkulator støtter mange operasjoner som f.eks: logaritmer, "
+"fakulteter, trigonometriske og hyperbolske funksjoner, modulus divisjon, "
+"komplekse tall, generering av tilfeldige tall, faktorisering av primtall og "
+"konvertering mellom enheter."
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:4
+msgid ""
+"Financial mode supports several computations, including periodic interest "
+"rate, present and future value, double declining and straight line "
+"depreciation, and many others."
+msgstr ""
+"Finansiell modus støtter flere beregninger inkludert periodisk renterate og "
+"fremtidig verdi, halvert levetid, lineær avskriving og mange andre."
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:5
+msgid ""
+"Programming mode supports conversion between common bases (binary, octal, "
+"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"character to character code conversion, and more."
+msgstr ""
+"Programmeringsmodus støtter konvertering mellom ulike grunntall (binær, "
+"oktal, desimal, og heksadesimal), bolsk algebra, ener- og toerkomplementet, "
+"konvertering fra tegn til tegnkode og mer."
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:6
+msgid "GNOME Calculator in Basic Mode."
+msgstr "GNOME kalkulator i grunnleggende modus."
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:7
+msgid "GNOME Calculator in Advanced Mode."
+msgstr "GNOME kalkulator i avansert modus."
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:8
+msgid "GNOME Calculator in Financial Mode."
+msgstr "GNOME kalkulator i finansmodus."
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:9
+msgid "GNOME Calculator in Programming Mode."
+msgstr "GNOME kalkulator i programmeringsmodus."
+
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:10
+msgid "The GNOME Project"
+msgstr "GNOME prosjektet"
+
+#. Program name in the about dialog
+#: ../data/org.gnome.Calculator.desktop.in.h:1 ../data/math-window.ui.h:6
+#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:330
+msgid "Calculator"
+msgstr "Kalkulator"
+
+#: ../data/org.gnome.Calculator.desktop.in.h:2
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Utfør aritmetiske, vitenskapelige eller finansielle utregninger"
+
+#: ../data/org.gnome.Calculator.desktop.in.h:3
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr "regning;aritmetikk,vitenskapelig;finans;"
+
+#: ../data/math-converter.ui.h:1
+msgid "Switch conversion units"
+msgstr "Bytt konverteringsenheter"
+
+#: ../data/math-converter.ui.h:2
+msgid " in "
+msgstr " i "
+
+#: ../data/math-converter.ui.h:3
+msgctxt "convertion equals label"
+msgid "="
+msgstr "="
+
+#: ../data/math-function-popover.ui.h:1
+msgid "New function"
+msgstr "Ny funksjon"
+
+#: ../data/math-variable-popover.ui.h:1
+msgid "Variable name"
+msgstr "Navn på variabel"
+
+#: ../data/math-variable-popover.ui.h:2
+msgid "Store value into existing or new variable"
+msgstr "Lagre verdi i eksisterende eller ny variabel"
+
+#: ../data/math-window.ui.h:1 ../src/math-window.vala:82
+msgid "Basic Mode"
+msgstr "Grunnleggende modus"
+
+#: ../data/math-window.ui.h:2 ../src/math-window.vala:87
+msgid "Advanced Mode"
+msgstr "Avansert modus"
+
+#: ../data/math-window.ui.h:3 ../src/math-window.vala:92
+msgid "Financial Mode"
+msgstr "Finansiell modus"
+
+#: ../data/math-window.ui.h:4 ../src/math-window.vala:97
+msgid "Programming Mode"
+msgstr "Programmeringsmodus"
+
+#: ../data/math-window.ui.h:5 ../src/math-window.vala:102
+msgid "Keyboard Mode"
+msgstr "Tastaturmodus"
+
+#: ../data/math-window.ui.h:7
+msgid "Menu"
+msgstr "Meny"
+
+#: ../data/math-shortcuts.ui.h:1
+msgctxt "shortcut window"
 msgid "General"
 msgstr "Generelt"
 
-#: ../data/eog-image-properties-dialog.ui.h:11
-msgid "Aperture Value:"
-msgstr "Blenderåpning:"
+#: ../data/math-shortcuts.ui.h:2
+msgctxt "shortcut window"
+msgid "Open a new window"
+msgstr "Åpne et nytt vindu"
 
-#: ../data/eog-image-properties-dialog.ui.h:12
-msgid "Exposure Time:"
-msgstr "Eksponeringstid:"
+#: ../data/math-shortcuts.ui.h:3
+msgctxt "shortcut window"
+msgid "Close current window"
+msgstr "Lukk dette vinduet"
 
-#: ../data/eog-image-properties-dialog.ui.h:13
-msgid "Focal Length:"
-msgstr "Brennvidde:"
+#: ../data/math-shortcuts.ui.h:4
+msgctxt "shortcut window"
+msgid "Open help"
+msgstr "Åpne hjelp"
 
-#: ../data/eog-image-properties-dialog.ui.h:14
-msgid "Flash:"
-msgstr "Blitz:"
+#: ../data/math-shortcuts.ui.h:5
+msgctxt "shortcut window"
+msgid "Quit the application"
+msgstr "Avslutt programmet"
 
-#: ../data/eog-image-properties-dialog.ui.h:15
-msgid "ISO Speed Rating:"
-msgstr "ISO-verdi:"
+#: ../data/math-shortcuts.ui.h:6
+msgctxt "shortcut window"
+msgid "Switching modes"
+msgstr "Bytter modus"
 
-#: ../data/eog-image-properties-dialog.ui.h:16
-msgid "Metering Mode:"
-msgstr "Lysmålingsmodus:"
+#: ../data/math-shortcuts.ui.h:7
+msgctxt "shortcut window"
+msgid "Switch to Basic mode"
+msgstr "Bytt til grunnleggende modus"
 
-#: ../data/eog-image-properties-dialog.ui.h:17
-msgid "Camera Model:"
-msgstr "Kameramodell:"
+#: ../data/math-shortcuts.ui.h:8
+msgctxt "shortcut window"
+msgid "Switch to Advanced mode"
+msgstr "Bytt til avansert modus"
 
-#: ../data/eog-image-properties-dialog.ui.h:18
-msgid "Date/Time:"
-msgstr "Dato/klokkeslett:"
+#: ../data/math-shortcuts.ui.h:9
+msgctxt "shortcut window"
+msgid "Switch to Financial mode"
+msgstr "Bytt til finansiell modus"
 
-#: ../data/eog-image-properties-dialog.ui.h:19
-msgid "Description:"
-msgstr "Beskrivelse:"
+#: ../data/math-shortcuts.ui.h:10
+msgctxt "shortcut window"
+msgid "Switch to Programming mode"
+msgstr "Bytt til programmeringsmodus"
 
-#: ../data/eog-image-properties-dialog.ui.h:20
-msgid "Location:"
-msgstr "Plassering:"
+#: ../data/math-shortcuts.ui.h:11
+msgctxt "shortcut window"
+msgid "Switch to Keyboard mode"
+msgstr "Bytt til tastaturmodus"
 
-#: ../data/eog-image-properties-dialog.ui.h:21
-msgid "Keywords:"
-msgstr "Nøkkelord:"
+#: ../data/math-shortcuts.ui.h:12
+msgctxt "shortcut window"
+msgid "Keyboard entry"
+msgstr "Tastaturoppføring"
 
-#: ../data/eog-image-properties-dialog.ui.h:22
-msgid "Author:"
-msgstr "Forfatter:"
+#: ../data/math-shortcuts.ui.h:13
+msgctxt "shortcut window"
+msgid "Multiply (×)"
+msgstr "Multipliser (×)"
 
-#: ../data/eog-image-properties-dialog.ui.h:23
-msgid "Copyright:"
-msgstr "Opphavsrett:"
+#: ../data/math-shortcuts.ui.h:14
+msgctxt "shortcut window"
+msgid "Divide (÷)"
+msgstr "Del (÷)"
 
-#: ../data/eog-image-properties-dialog.ui.h:24
-msgid "Details"
-msgstr "Detaljer"
+#: ../data/math-shortcuts.ui.h:15
+msgctxt "shortcut window"
+msgid "Square root (√)"
+msgstr "Kvadratrot (√)"
 
-#: ../data/eog-image-properties-dialog.ui.h:25
-msgid "Metadata"
-msgstr "Metadata"
+#: ../data/math-shortcuts.ui.h:16
+msgctxt "shortcut window"
+msgid "Inverse"
+msgstr "Invers"
 
-#: ../data/eog-multiple-save-as-dialog.ui.h:1
-msgid "Save As"
-msgstr "Lagre som"
+#: ../data/math-shortcuts.ui.h:17
+msgctxt "shortcut window"
+msgid "Pi (π)"
+msgstr "Pi (π)"
 
-#: ../data/eog-multiple-save-as-dialog.ui.h:2
-#: ../src/eog-close-confirmation-dialog.c:172
-#: ../src/eog-error-message-area.c:123 ../src/eog-file-chooser.c:456
-#: ../src/eog-file-chooser.c:464 ../src/eog-file-chooser.c:472
-#: ../src/eog-window.c:3261 ../src/eog-window.c:3264 ../src/eog-window.c:3517
-msgid "_Cancel"
-msgstr "A_vbryt"
+#: ../data/math-shortcuts.ui.h:18
+msgctxt "shortcut window"
+msgid "Enter numbers in scientific format"
+msgstr "Oppgi tall i vitenskapelig format"
 
-#: ../data/eog-multiple-save-as-dialog.ui.h:3
-#: ../src/eog-close-confirmation-dialog.c:184
-msgid "Save _As"
-msgstr "L_agre som"
+#: ../data/math-shortcuts.ui.h:19
+msgctxt "shortcut window"
+msgid "Programming mode"
+msgstr "Programmeringsmodus"
 
-#: ../data/eog-multiple-save-as-dialog.ui.h:5
-#, no-c-format
-msgid "<b>%f:</b> original filename"
-msgstr "<b>%f:</b> opprinnelig filnavn"
+#: ../data/math-shortcuts.ui.h:20
+msgctxt "shortcut window"
+msgid "Switch to binary"
+msgstr "Bytt til binær"
 
-#: ../data/eog-multiple-save-as-dialog.ui.h:7
-#, no-c-format
-msgid "<b>%n:</b> counter"
-msgstr "<b>%n:</b> teller"
+#: ../data/math-shortcuts.ui.h:21
+msgctxt "shortcut window"
+msgid "Switch to octal"
+msgstr "Bytt til oktal"
 
-#: ../data/eog-multiple-save-as-dialog.ui.h:8
-msgid "_Filename format:"
-msgstr "_Format for filnavn:"
+#: ../data/math-shortcuts.ui.h:22
+msgctxt "shortcut window"
+msgid "Switch to decimal"
+msgstr "Bytt til desimal"
 
-#: ../data/eog-multiple-save-as-dialog.ui.h:9
-msgid "_Destination folder:"
-msgstr "_Målmappe:"
+#: ../data/math-shortcuts.ui.h:23
+msgctxt "shortcut window"
+msgid "Switch to hexadecimal"
+msgstr "Bytt til heksadesimal"
 
-#: ../data/eog-multiple-save-as-dialog.ui.h:10
-msgid "Choose a folder"
-msgstr "Velg en mappe"
+#: ../data/menu.ui.h:1
+msgid "New Window"
+msgstr "Nytt vindu"
 
-#: ../data/eog-multiple-save-as-dialog.ui.h:11
-msgid "File Path Specifications"
-msgstr "Spesifisert filsti"
-
-#: ../data/eog-multiple-save-as-dialog.ui.h:12
-msgid "_Start counter at:"
-msgstr "_Start teller på:"
-
-#: ../data/eog-multiple-save-as-dialog.ui.h:13
-msgid "_Replace spaces with underscores"
-msgstr "E_rstatt mellomrom med understreking"
-
-#: ../data/eog-multiple-save-as-dialog.ui.h:14
-msgid "Options"
-msgstr "Alternativer"
-
-#: ../data/eog-multiple-save-as-dialog.ui.h:15
-msgid "Rename from:"
-msgstr "Endre navn fra:"
-
-#: ../data/eog-multiple-save-as-dialog.ui.h:16
-msgid "To:"
-msgstr "Til:"
-
-#: ../data/eog-multiple-save-as-dialog.ui.h:17
-msgid "File Name Preview"
-msgstr "Forhåndsvisning av filnavn"
-
-#: ../data/eog-preferences-dialog.ui.h:1
+#. Title of preferences dialog
+#: ../data/menu.ui.h:2 ../src/math-preferences.vala:30
 msgid "Preferences"
 msgstr "Brukervalg"
 
-#: ../data/eog-preferences-dialog.ui.h:3
-msgid "Image Enhancements"
-msgstr "Bildeforbedringer"
-
-#: ../data/eog-preferences-dialog.ui.h:4
-msgid "Smooth images when zoomed _out"
-msgstr "Jevn ut bilder når de zoomes _ut"
-
-#: ../data/eog-preferences-dialog.ui.h:5
-msgid "Smooth images when zoomed _in"
-msgstr "Jevn ut bilder når de _zoomes inn"
-
-#: ../data/eog-preferences-dialog.ui.h:6
-msgid "_Automatic orientation"
-msgstr "_Automatisk orientering"
-
-#: ../data/eog-preferences-dialog.ui.h:7
-msgid "Background"
-msgstr "Bakgrunn"
-
-#: ../data/eog-preferences-dialog.ui.h:8
-msgid "As custom color:"
-msgstr "Som egendefinert farge:"
-
-#: ../data/eog-preferences-dialog.ui.h:9
-#: ../data/org.gnome.eog.gschema.xml.in.h:3
-msgid "Background Color"
-msgstr "Bakgrunnsfarge"
-
-#: ../data/eog-preferences-dialog.ui.h:10
-msgid "Transparent Parts"
-msgstr "Gjennomsiktige deler"
-
-#: ../data/eog-preferences-dialog.ui.h:11
-msgid "As check _pattern"
-msgstr "Som _rutemønster"
-
-#: ../data/eog-preferences-dialog.ui.h:12
-msgid "As custom c_olor:"
-msgstr "Som tilpasset f_arge:"
-
-#: ../data/eog-preferences-dialog.ui.h:13
-msgid "Color for Transparent Areas"
-msgstr "Farge for gjennomsiktige områder"
-
-#: ../data/eog-preferences-dialog.ui.h:14
-msgid "As _background"
-msgstr "Som _bakgrunn"
-
-#: ../data/eog-preferences-dialog.ui.h:15
-msgid "Image View"
-msgstr "Bildevisning"
-
-#: ../data/eog-preferences-dialog.ui.h:16
-msgid "Image Zoom"
-msgstr "Zoom i bilde"
-
-#: ../data/eog-preferences-dialog.ui.h:17
-msgid "E_xpand images to fit screen"
-msgstr "_Utvid bilder til å passe skjermen"
-
-#: ../data/eog-preferences-dialog.ui.h:18
-msgid "Sequence"
-msgstr "Sekvens"
-
-#. I18N: This sentence will be displayed above a horizonzal scale to select a number of seconds in eog
-#: ../data/eog-preferences-dialog.ui.h:20
-msgid "_Time between images:"
-msgstr "_Tid mellom bilder:"
-
-#: ../data/eog-preferences-dialog.ui.h:21
-msgid "_Loop sequence"
-msgstr "_Løkkesekvens"
-
-#: ../data/eog-preferences-dialog.ui.h:22
-msgid "Slideshow"
-msgstr "Lysbildevisning"
-
-#: ../data/eog-preferences-dialog.ui.h:23
-msgid "Plugins"
-msgstr "Tillegg"
-
-#: ../data/fullscreen-toolbar.ui.h:1
-msgid "Go to the first image of the gallery"
-msgstr "Gå til første bilde i samlingen"
-
-#: ../data/fullscreen-toolbar.ui.h:2
-msgid "_First Image"
-msgstr "_Første bilde"
-
-#: ../data/fullscreen-toolbar.ui.h:3 ../src/eog-scroll-view.c:2359
-msgid "Go to the previous image of the gallery"
-msgstr "Gå til forrige bilde i samlingen"
-
-#: ../data/fullscreen-toolbar.ui.h:4
-msgid "_Previous Image"
-msgstr "F_orrige bilde"
-
-#: ../data/fullscreen-toolbar.ui.h:5 ../src/eog-scroll-view.c:2347
-msgid "Go to the next image of the gallery"
-msgstr "Gå til neste bilde i samlingen"
-
-#: ../data/fullscreen-toolbar.ui.h:6
-msgid "_Next Image"
-msgstr "_Neste bilde"
-
-#: ../data/fullscreen-toolbar.ui.h:7
-msgid "Go to the last image of the gallery"
-msgstr "Gå til siste bilde i samlingen"
-
-#: ../data/fullscreen-toolbar.ui.h:8
-msgid "_Last Image"
-msgstr "_Siste bilde"
-
-#: ../data/fullscreen-toolbar.ui.h:9
-msgid "Enlarge the image"
-msgstr "Forstørr bildet"
-
-#: ../data/fullscreen-toolbar.ui.h:10
-msgid "_Zoom In"
-msgstr "_Zoom inn"
-
-#: ../data/fullscreen-toolbar.ui.h:11
-msgid "Shrink the image"
-msgstr "Krymp bildet"
-
-#: ../data/fullscreen-toolbar.ui.h:12
-msgid "Zoom _Out"
-msgstr "Zoom _ut"
-
-#: ../data/fullscreen-toolbar.ui.h:13
-msgid "_Normal Size"
-msgstr "_Normal størrelse"
-
-#: ../data/fullscreen-toolbar.ui.h:14
-msgid "_Best Fit"
-msgstr "_Beste tilpasning"
-
-#: ../data/fullscreen-toolbar.ui.h:15 ../src/eog-scroll-view.c:2374
-msgid "Rotate the image 90 degrees to the left"
-msgstr "Roter bildet 90 grader til venstre"
-
-#: ../data/fullscreen-toolbar.ui.h:16
-msgid "Rotate Counter_clockwise"
-msgstr "Roter mot k_lokken"
-
-#: ../data/fullscreen-toolbar.ui.h:17 ../src/eog-scroll-view.c:2385
-msgid "Rotate the image 90 degrees to the right"
-msgstr "Roter bildet 90 grader til høyre"
-
-#: ../data/fullscreen-toolbar.ui.h:18
-msgid "_Rotate Clockwise"
-msgstr "_Roter med klokken"
-
-#: ../data/fullscreen-toolbar.ui.h:19
-msgid "Changes the visibility of the image gallery pane in the current window"
-msgstr "Endre synlighet for bildesamlingsområdet i aktivt vindu"
-
-#: ../data/fullscreen-toolbar.ui.h:20
-msgid "_Image Gallery"
-msgstr "B_ildesamling"
-
-#: ../data/fullscreen-toolbar.ui.h:21
-msgid "Pause or resume the slideshow"
-msgstr "Sett lysbildevisning på pause eller gjenoppta den"
-
-#: ../data/fullscreen-toolbar.ui.h:22
-msgid "_Leave Fullscreen"
-msgstr "For_lat fullskjerm"
-
-#: ../data/fullscreen-toolbar.ui.h:23
-msgid "Leave fullscreen mode"
-msgstr "Forlat fullskjerm"
-
-#: ../data/help-overlay.ui.h:1
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Generelt"
-
-#: ../data/help-overlay.ui.h:2
-msgctxt "shortcut window"
-msgid "Open an image file"
-msgstr "Åpne en bildefil"
-
-#: ../data/help-overlay.ui.h:3
-msgctxt "shortcut window"
-msgid "Save the image"
-msgstr "Lagre bildet"
-
-#: ../data/help-overlay.ui.h:4
-msgctxt "shortcut window"
-msgid "Save the image with a new file name"
-msgstr "Lagre bildet med et nytt filnavn"
-
-#: ../data/help-overlay.ui.h:5
-msgctxt "shortcut window"
-msgid "Print the current image"
-msgstr "Skriv ut dette bildet"
-
-#: ../data/help-overlay.ui.h:6
-msgctxt "shortcut window"
-msgid "Close the current window"
-msgstr "Lukk dette vinduet"
-
-#: ../data/help-overlay.ui.h:7
-msgctxt "shortcut window"
-msgid "Close all windows"
-msgstr "Lukk alle vinduer"
-
-#: ../data/help-overlay.ui.h:8
-msgctxt "shortcut window"
-msgid "Set the image as desktop background"
-msgstr "Sett bildet som bakgrunn på skrivebordet"
-
-#: ../data/help-overlay.ui.h:9
-msgctxt "shortcut window"
-msgid "Show/Hide the sidebar"
-msgstr "Vis/skjul sidelinjen"
-
-#: ../data/help-overlay.ui.h:10
-msgctxt "shortcut window"
-msgid "Show image properties dialog"
-msgstr "Vis dialog for egenskaper for bildet"
-
-#: ../data/help-overlay.ui.h:11
-msgctxt "shortcut window"
-msgid "Open the application manual"
-msgstr "Åpne programmets brukerhåndbok"
-
-#: ../data/help-overlay.ui.h:12
-msgctxt "shortcut window"
-msgid "Zoom"
-msgstr "Zoom"
-
-#: ../data/help-overlay.ui.h:13
-msgctxt "shortcut window"
-msgid "Zoom in"
-msgstr "Zoom inn"
-
-#: ../data/help-overlay.ui.h:14
-msgctxt "shortcut window"
-msgid "Zoom out"
-msgstr "Zoom ut"
-
-#: ../data/help-overlay.ui.h:15
-msgctxt "shortcut window"
-msgid "Actual size"
-msgstr "Faktisk størrelse"
-
-#: ../data/help-overlay.ui.h:16
-msgctxt "shortcut window"
-msgid "Best fit"
-msgstr "Beste tilpasning "
-
-#: ../data/help-overlay.ui.h:17
-msgctxt "shortcut window"
-msgid "Browsing Images"
-msgstr "Se gjennom bilder"
-
-#: ../data/help-overlay.ui.h:18
-msgctxt "shortcut window"
-msgid "Go to the previous image in the folder"
-msgstr "Gå til forrige bilde i mappen"
-
-#: ../data/help-overlay.ui.h:19
-msgctxt "shortcut window"
-msgid "Go to the next image in the folder"
-msgstr "Gå til neste bilde i mappen"
-
-#: ../data/help-overlay.ui.h:20
-msgctxt "shortcut window"
-msgid "Go to the first image in the folder"
-msgstr "Gå til det første bilde i mappen"
-
-#: ../data/help-overlay.ui.h:21
-msgctxt "shortcut window"
-msgid "Go to the last image in the folder"
-msgstr "Gå til det siste bilde i mappen"
-
-#: ../data/help-overlay.ui.h:22
-msgctxt "shortcut window"
-msgid "Go to a random image in the folder"
-msgstr "Gå til et tilfeldig bilde i mappen"
-
-#: ../data/help-overlay.ui.h:23
-msgctxt "shortcut window"
-msgid "Show/Hide the image gallery"
-msgstr "Vis/skjul bildegalleriet"
-
-#: ../data/help-overlay.ui.h:24
-msgctxt "shortcut window"
-msgid "Rotation"
-msgstr "Rotering"
-
-#: ../data/help-overlay.ui.h:25
-msgctxt "shortcut window"
-msgid "Rotate clockwise"
-msgstr "Roter med klokken"
-
-#: ../data/help-overlay.ui.h:26
-msgctxt "shortcut window"
-msgid "Rotate counterclockwise"
-msgstr "Roter mot klokken"
-
-#: ../data/help-overlay.ui.h:27
-msgctxt "shortcut window"
-msgid "Fullscreen"
-msgstr "Fullskjerm"
-
-#: ../data/help-overlay.ui.h:28
-msgctxt "shortcut window"
-msgid "Enter/Leave fullscreen"
-msgstr "Start/stopp fullskjerm"
-
-#: ../data/help-overlay.ui.h:29
-msgctxt "shortcut window"
-msgid "Start/Stop slideshow"
-msgstr "Start/stopp lysbildevisning"
-
-#: ../data/help-overlay.ui.h:30
-msgctxt "shortcut window"
-msgid "Pause slideshow"
-msgstr "Sett lysbildevisning på pause"
-
-#: ../data/metadata-sidebar.ui.h:1 ../src/eog-print-image-setup.c:969
-msgid "Size"
-msgstr "Størrelse"
-
-#: ../data/metadata-sidebar.ui.h:2
-msgid "Type"
-msgstr "Type"
-
-#: ../data/metadata-sidebar.ui.h:3
-msgid "File Size"
-msgstr "Filstørrelse"
-
-#: ../data/metadata-sidebar.ui.h:4
-msgid "Folder"
-msgstr "Mappe"
-
-#: ../data/metadata-sidebar.ui.h:5
-msgid "Aperture"
-msgstr "Blenderåpning"
-
-#: ../data/metadata-sidebar.ui.h:6
-msgid "Exposure"
-msgstr "Eksponeringstid"
-
-#: ../data/metadata-sidebar.ui.h:7
-msgid "ISO"
-msgstr "ISO"
-
-#: ../data/metadata-sidebar.ui.h:8
-msgid "Metering"
-msgstr "Lysmålingsmodus"
-
-#: ../data/metadata-sidebar.ui.h:9 ../src/eog-metadata-details.c:65
-msgid "Camera"
-msgstr "Kamera"
-
-#: ../data/metadata-sidebar.ui.h:10
-msgid "Date"
-msgstr "Dato"
-
-#: ../data/metadata-sidebar.ui.h:11
-msgid "Time"
-msgstr "Klokkeslett"
-
-#: ../data/metadata-sidebar.ui.h:12
-msgid "Focal Length"
-msgstr "Brennvidde"
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:1
-msgid "Automatic orientation"
-msgstr "Automatisk orientering"
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:2
+#: ../data/menu.ui.h:3
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastatursnarveier"
+
+#: ../data/menu.ui.h:4
+msgid "Help"
+msgstr "Hjelp"
+
+#: ../data/menu.ui.h:5
+msgid "About"
+msgstr "Om"
+
+#: ../data/menu.ui.h:6
+msgid "Quit"
+msgstr "Avslutt"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:1
+msgid "Accuracy value"
+msgstr "Verdi for nøyaktighet"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:2
+msgid "The number of digits displayed after the numeric point"
+msgstr "Antall tall vist etter komma"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:3
+msgid "Word size"
+msgstr "Størrelse på ord"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:4
+msgid "The size of the words used in bitwise operations"
+msgstr "Størrelse på ord som brukes i bitvise operasjoner"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:5
+msgid "Numeric Base"
+msgstr "Tallbase"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:6
+msgid "The numeric base"
+msgstr "Tallbase"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:7
+msgid "Show Thousands Separators"
+msgstr "Vis tusenskilletegn"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:8
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "Indikerer om tusenskilletegn skal vises i store tall."
+
+#: ../data/org.gnome.calculator.gschema.xml.h:9
+msgid "Show Trailing Zeroes"
+msgstr "Vis etterfølgende nuller"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:10
 msgid ""
-"Whether the image should be rotated automatically based on EXIF orientation."
-msgstr "Om bildet skal roteres automatisk basert på EXIF-orientering."
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
+msgstr "Indikerer om etterfølgende nulltall etter komma skal vises."
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:4
+#: ../data/org.gnome.calculator.gschema.xml.h:11
+msgid "Number format"
+msgstr "Tallformat"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:12
+msgid "The format to display numbers in"
+msgstr "Format for visning av tall"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:13
+msgid "Angle units"
+msgstr "Enheter for vinkel"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:14
+msgid "The angle units to use"
+msgstr "Enhet som skal brukes for vinkel"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:15
+msgid "Button mode"
+msgstr "Knappemodus"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:16
+msgid "The button mode"
+msgstr "Knappemodus"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:17
+msgid "Source currency"
+msgstr "Kildevaluta"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:18
+msgid "Currency of the current calculation"
+msgstr "Valuta for aktiv utregning"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:19
+msgid "Target currency"
+msgstr "Målvaluta"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:20
+msgid "Currency to convert the current calculation into"
+msgstr "Valuta aktiv utregning skal konverteres til"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:21
+msgid "Source units"
+msgstr "Kildeenheter"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:22
+msgid "Units of the current calculation"
+msgstr "Enheter for aktiv utregning"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:23
+msgid "Target units"
+msgstr "Målenheter"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:24
+msgid "Units to convert the current calculation into"
+msgstr "Enheter aktiv utregning skal konverteres til"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:25
+msgid "Internal precision"
+msgstr "Intern presisjon"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:26
+msgid "The internal precision used with the MPFR library"
+msgstr "Intern presisjon som brukes med MPFR-biblioteket"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:27
+msgid "Window position"
+msgstr "Vinduposisjon"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:28
+msgid "Window position (x and y) of the last closed window."
+msgstr "Vinduposisjon (x og y) for sist lukkede vindu."
+
+#: ../lib/currency.vala:28
+msgid "UAE Dirham"
+msgstr "UAE dirham"
+
+#: ../lib/currency.vala:29
+msgid "Australian Dollar"
+msgstr "Australske dollar"
+
+#: ../lib/currency.vala:30
+msgid "Bulgarian Lev"
+msgstr "Bularske lev"
+
+#: ../lib/currency.vala:31
+msgid "Bahraini Dinar"
+msgstr "Bahrainske dinarer"
+
+#: ../lib/currency.vala:32
+msgid "Brunei Dollar"
+msgstr "Brunei dollar"
+
+#: ../lib/currency.vala:33
+msgid "Brazilian Real"
+msgstr "Brasilienske real"
+
+#: ../lib/currency.vala:34
+msgid "Botswana Pula"
+msgstr "Botswanske pula"
+
+#: ../lib/currency.vala:35
+msgid "Canadian Dollar"
+msgstr "Kanadiske dollar"
+
+#: ../lib/currency.vala:36
+msgid "CFA Franc"
+msgstr "CFA franc"
+
+#: ../lib/currency.vala:37
+msgid "Swiss Franc"
+msgstr "Sveitsiske franc"
+
+#: ../lib/currency.vala:38
+msgid "Chilean Peso"
+msgstr "Chileanske peso"
+
+#: ../lib/currency.vala:39
+msgid "Chinese Yuan"
+msgstr "Kinesiske yuan"
+
+#: ../lib/currency.vala:40
+msgid "Colombian Peso"
+msgstr "Columbianske peso"
+
+#: ../lib/currency.vala:41
+msgid "Czech Koruna"
+msgstr "Tsjekkiske koruna"
+
+#: ../lib/currency.vala:42
+msgid "Danish Krone"
+msgstr "Danske kroner"
+
+#: ../lib/currency.vala:43
+msgid "Algerian Dinar"
+msgstr "Algirske dinarer"
+
+#: ../lib/currency.vala:44
+msgid "Estonian Kroon"
+msgstr "Estiske kroon"
+
+#: ../lib/currency.vala:45
+msgid "Euro"
+msgstr "Euro"
+
+#: ../lib/currency.vala:46
+msgid "British Pound Sterling"
+msgstr "Britisk pund sterling"
+
+#: ../lib/currency.vala:47
+msgid "Hong Kong Dollar"
+msgstr "Hong Kong dollar"
+
+#: ../lib/currency.vala:48
+msgid "Croatian Kuna"
+msgstr "Kroatiske kuna"
+
+#: ../lib/currency.vala:49
+msgid "Hungarian Forint"
+msgstr "Ungarske forinter"
+
+#: ../lib/currency.vala:50
+msgid "Indonesian Rupiah"
+msgstr "Indonesiske rupi"
+
+#: ../lib/currency.vala:51
+msgid "Israeli New Shekel"
+msgstr "Israelske nye shekel"
+
+#: ../lib/currency.vala:52
+msgid "Indian Rupee"
+msgstr "Indiske rupi"
+
+#: ../lib/currency.vala:53
+msgid "Iranian Rial"
+msgstr "Iranske rial"
+
+#: ../lib/currency.vala:54
+msgid "Icelandic Krona"
+msgstr "Islandske kroner"
+
+#: ../lib/currency.vala:55
+msgid "Japanese Yen"
+msgstr "Japanske yen"
+
+#: ../lib/currency.vala:56
+msgid "South Korean Won"
+msgstr "Sør-koreanske won"
+
+#: ../lib/currency.vala:57
+msgid "Kuwaiti Dinar"
+msgstr "Kuwaitiske dinarer"
+
+#: ../lib/currency.vala:58
+msgid "Kazakhstani Tenge"
+msgstr "Kasakhstanske tenge"
+
+#: ../lib/currency.vala:59
+msgid "Sri Lankan Rupee"
+msgstr "Sri Lankiske rupi"
+
+#: ../lib/currency.vala:60
+msgid "Libyan Dinar"
+msgstr "Libyanske dinarer"
+
+#: ../lib/currency.vala:61
+msgid "Mauritian Rupee"
+msgstr "Mauritiske rupi"
+
+#: ../lib/currency.vala:62
+msgid "Mexican Peso"
+msgstr "Meksikanske peso"
+
+#: ../lib/currency.vala:63
+msgid "Malaysian Ringgit"
+msgstr "Malayiske ringgit"
+
+#: ../lib/currency.vala:64
+msgid "Norwegian Krone"
+msgstr "Norske kroner"
+
+#: ../lib/currency.vala:65
+msgid "Nepalese Rupee"
+msgstr "Nepalesiske rupi"
+
+#: ../lib/currency.vala:66
+msgid "New Zealand Dollar"
+msgstr "Ny Zealand dollar"
+
+#: ../lib/currency.vala:67
+msgid "Omani Rial"
+msgstr "Omanske rial"
+
+#: ../lib/currency.vala:68
+msgid "Peruvian Nuevo Sol"
+msgstr "Peruvianske nye sol"
+
+#: ../lib/currency.vala:69
+msgid "Philippine Peso"
+msgstr "Fillipinske peso"
+
+#: ../lib/currency.vala:70
+msgid "Pakistani Rupee"
+msgstr "Pakistanske rupi"
+
+#: ../lib/currency.vala:71
+msgid "Polish Zloty"
+msgstr "Polske zloty"
+
+#: ../lib/currency.vala:72
+msgid "Qatari Riyal"
+msgstr "Qatariske riyal"
+
+#: ../lib/currency.vala:73
+msgid "New Romanian Leu"
+msgstr "Nye rumenske leu"
+
+#: ../lib/currency.vala:74
+msgid "Russian Rouble"
+msgstr "Russiske rubler"
+
+#: ../lib/currency.vala:75
+msgid "Saudi Riyal"
+msgstr "Saudiske riyal"
+
+#: ../lib/currency.vala:76
+msgid "Swedish Krona"
+msgstr "Svenske kroner"
+
+#: ../lib/currency.vala:77
+msgid "Singapore Dollar"
+msgstr "Singapore dollar"
+
+#: ../lib/currency.vala:78
+msgid "Thai Baht"
+msgstr "Thailandske baht"
+
+#: ../lib/currency.vala:79
+msgid "Tunisian Dinar"
+msgstr "Tunisiske dinarer"
+
+#: ../lib/currency.vala:80
+msgid "New Turkish Lira"
+msgstr "Nye tyrkiske lira"
+
+#: ../lib/currency.vala:81
+msgid "T&T Dollar (TTD)"
+msgstr "T&T dollar (TTD)"
+
+#: ../lib/currency.vala:82
+msgid "US Dollar"
+msgstr "Amerikanske dollar"
+
+#: ../lib/currency.vala:83
+msgid "Uruguayan Peso"
+msgstr "Uruguayiske peso"
+
+#: ../lib/currency.vala:84
+msgid "Venezuelan Bolívar"
+msgstr "Venezuelanske bolivar"
+
+#: ../lib/currency.vala:85
+msgid "South African Rand"
+msgstr "Sør-afrikanske rand"
+
+#: ../lib/financial.vala:114
+msgid "Error: the number of periods must be positive"
+msgstr "Feil: antall perioder må være et positivt tall"
+
+#. Digits localized for the given language
+#: ../lib/math-equation.vala:171
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F,Æ,Ø,Å"
+
+#. Error shown when trying to undo with no undo history
+#: ../lib/math-equation.vala:523
+msgid "No undo history"
+msgstr "Ingen angrehistorikk"
+
+#. Error shown when trying to redo with no redo history
+#: ../lib/math-equation.vala:544
+msgid "No redo history"
+msgstr "Ingen gjenopprettingshistorikk"
+
+#: ../lib/math-equation.vala:775
+msgid "No sane value to store"
+msgstr "Ingen fornuftige verdier å lagre"
+
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: ../lib/math-equation.vala:968
+msgid "Overflow. Try a bigger word size"
+msgstr "Overflyt. Prøv høyere ordstørrelse"
+
+#. Error displayed to user when they an unknown variable is entered
+#: ../lib/math-equation.vala:973
+#, c-format
+msgid "Unknown variable “%s”"
+msgstr "Ukjent variabel «%s»"
+
+#. Error displayed to user when an unknown function is entered
+#: ../lib/math-equation.vala:980
+#, c-format
+msgid "Function “%s” is not defined"
+msgstr "Funksjon «%s» er ikke definert"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: ../lib/math-equation.vala:987
+msgid "Unknown conversion"
+msgstr "Ukjent konvertering"
+
+#. should always be run
+#: ../lib/math-equation.vala:997
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#. Unknown error.
+#. Error displayed to user when they enter an invalid calculation
+#: ../lib/math-equation.vala:1002 ../lib/math-equation.vala:1007
+msgid "Malformed expression"
+msgstr "Feilutformet uttrykk"
+
+#: ../lib/math-equation.vala:1018
+msgid "Calculating"
+msgstr "Beregner"
+
+#. Error displayed when trying to factorize a non-integer value
+#: ../lib/math-equation.vala:1211
+msgid "Need an integer to factorize"
+msgstr "Trenger et heltall for å faktorisere"
+
+#. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
+#: ../lib/math-equation.vala:1265
+msgid "No sane value to bitwise shift"
+msgstr "Ingen verdi å bruke til bitvis skift"
+
+#. Message displayed when cannot toggle bit in display
+#: ../lib/math-equation.vala:1279
+msgid "Displayed value not an integer"
+msgstr "Vist verdi er ikke et heltall"
+
+#. Translators: Error displayed when underflow error occured
+#: ../lib/number.vala:196
+msgid "Underflow error"
+msgstr "Tom datastrøm"
+
+#. Translators: Error displayed when overflow error occured
+#: ../lib/number.vala:201
+msgid "Overflow error"
+msgstr "Full datastrøm"
+
+#. Translators: Error display when attempting to take argument of zero
+#: ../lib/number.vala:251
+msgid "Argument not defined for zero"
+msgstr "Argument ikke definert for null"
+
+#. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
+#: ../lib/number.vala:367 ../lib/number.vala:397
+msgid "The power of zero is undefined for a negative exponent"
+msgstr "Kvadratet av null er ikke definert for en negativ eksponent"
+
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: ../lib/number.vala:375 ../lib/number.vala:405
+msgid "Zero raised to zero is undefined"
+msgstr "Null opphøyet i null er ikke definert"
+
+#: ../lib/number.vala:429
+msgid "The zeroth root of a number is undefined"
+msgstr "Nullte rot av et tall er ikke definert"
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: ../lib/number.vala:459 ../lib/number.vala:490
+msgid "Logarithm of zero is undefined"
+msgstr "Logaritmen for null er ikke definert"
+
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#: ../lib/number.vala:512
+msgid "Factorial is only defined for non-negative real numbers"
+msgstr "Fakultet er kun definert for naturlige og positive tall"
+
+#. Translators: Error displayed attempted to divide by zero
+#: ../lib/number.vala:572
+msgid "Division by zero is undefined"
+msgstr "Deling med null er ikke definert"
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: ../lib/number.vala:593
+msgid "Modulus division is only defined for integers"
+msgstr "Modulus divisjon er kun definert for heltall"
+
+#. Translators: Error displayed when tangent value is undefined
+#: ../lib/number.vala:666
 msgid ""
-"The color that is used to fill the area behind the image. If the use-"
-"background-color key is not set, the color is determined by the active GTK+ "
-"theme instead."
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
-"Fargen som brukes til å fylle området bak bildet. Hvis nøkkelen «use-"
-"background-color» ikke er satt blir fargen bestemt av det aktive GTK+-temaet "
-"i stedet."
+"Tangent er ikke definert for vinkler som er multipler av π (180°) fra π/2 "
+"(90°)"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:5
-msgid "Interpolate Image"
-msgstr "Interpoler bilde"
+#. Translators: Error displayed when inverse sine value is undefined
+#: ../lib/number.vala:685
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr "Invers sinus er udefinert for verdier utenfor [-1, 1]"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:6
-msgid ""
-"Whether the image should be interpolated on zoom-out. This leads to better "
-"quality but is somewhat slower than non-interpolated images."
-msgstr ""
-"Om bildet skal interpoleres ved zoom ut. Dette gir bedre kvalitet, men er "
-"noe tregere enn ikke-interpolerte bilder."
+#. Translators: Error displayed when inverse cosine value is undefined
+#: ../lib/number.vala:702
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr "Invers kosinus er udefinert for verdier utenfor [-1, 1]"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:7
-msgid "Extrapolate Image"
-msgstr "Ekstrapoler bilde"
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: ../lib/number.vala:763
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
+msgstr "Invers hyperbolsk kosinus er udefinert for verdier mindre enn en"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:8
-msgid ""
-"Whether the image should be extrapolated on zoom-in. This leads to blurry "
-"quality and is somewhat slower than non-extrapolated images."
-msgstr ""
-"Om bildet skal ekstrapoleres ved zoom inn. Dette gir en uskarp effekt og er "
-"noe tregere enn ikke-ekstrapolerte bilder."
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: ../lib/number.vala:779
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr "Invers hyperbolsk tangent er udefinert for verdier utenfor [-1, 1]"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:9
-msgid "Transparency indicator"
-msgstr "Indikator for gjennomsiktighet"
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: ../lib/number.vala:795
+msgid "Boolean AND is only defined for positive integers"
+msgstr "Bolsk OG er kun definert for positive verdier"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:10
-msgid ""
-"Determines how transparency should be indicated. Valid values are "
-"CHECK_PATTERN, COLOR and NONE. If COLOR is chosen, then the trans-color key "
-"determines the color value used."
-msgstr ""
-"Bestemmer hvordan gjennomsiktighet skal vises. Gyldige verdier er "
-"CHECK_PATTERN, COLOR og NONE. Hvis COLOR velges bestemmes valgt fargeverdi "
-"av nøkkelen trans-color."
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: ../lib/number.vala:807
+msgid "Boolean OR is only defined for positive integers"
+msgstr "Bolsk ELLER er kun definert for positive verdier"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:11
-msgid "Scroll wheel zoom"
-msgstr "Zoom med mushjul"
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../lib/number.vala:819
+msgid "Boolean XOR is only defined for positive integers"
+msgstr "Boolsk XELLER er kun definert for positive verdier"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:12
-msgid "Whether the scroll wheel should be used for zooming."
-msgstr "Om hjulet på musen skal brukes til å zoome eller ikke."
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: ../lib/number.vala:831
+msgid "Boolean NOT is only defined for positive integers"
+msgstr "Bolsk IKKE er kun definert for positive verdier"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:13
-msgid "Zoom multiplier"
-msgstr "Zoom-faktor"
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: ../lib/number.vala:854
+msgid "Shift is only possible on integer values"
+msgstr "Skift er kun mulig på heltallsverdier"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:15
-#, no-c-format
-msgid ""
-"The multiplier to be applied when using the mouse scroll wheel for zooming. "
-"This value defines the zooming step used for each scroll event. For example, "
-"0.05 results in a 5% zoom increment for each scroll event and 1.00 result in "
-"a 100% zoom increment."
-msgstr ""
-"Faktor som skal brukes ved bruk av mushjulet for zooming. Denne verdien "
-"definerer zoom-steg som brukes for hver rullehendelse. 0.05 gir f.eks 5% "
-"zoom for hver zoom-hendelse og 1.00 gir 100% per steg."
+#: ../lib/serializer.vala:332
+msgid "Precision error"
+msgstr "Presisjonsfeil"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:16
-msgid "Transparency color"
-msgstr "Farge for gjennomsiktighet"
+#: ../lib/unit.vala:29
+msgid "Angle"
+msgstr "Vinkel"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:17
-msgid ""
-"If the transparency key has the value COLOR, then this key determines the "
-"color which is used for indicating transparency."
-msgstr ""
-"Hvis nøkkel for gjennomsiktighet har verdien COLOR bestemmer denne nøkkelen "
-"farge som brukes for å indikere gjennomsiktighet."
+#: ../lib/unit.vala:30
+msgid "Length"
+msgstr "Lengde"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:18
-msgid "Use a custom background color"
-msgstr "Bruk en egendefinert bakgrunnsfarge"
+#: ../lib/unit.vala:31
+msgid "Area"
+msgstr "Område"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:19
-msgid ""
-"If this is active, the color set by the background-color key will be used to "
-"fill the area behind the image. If it is not set, the current GTK+ theme "
-"will determine the fill color."
-msgstr ""
-"Hvis denne aktiveres vil fargen som settes av nøkkelen «background-color» "
-"brukes til å fylle området bak bildet. Hvis den ikke settes vil aktivt GTK+-"
-"tema bestemme farge for fyllet."
+#: ../lib/unit.vala:32
+msgid "Volume"
+msgstr "Volum"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:20
-msgid "Loop through the image sequence"
-msgstr "Kontinuerlig visning av bildesekvensen"
+#: ../lib/unit.vala:33
+msgid "Weight"
+msgstr "Vekt"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:21
-msgid "Whether the sequence of images should be shown in an endless loop."
-msgstr "Om bildesekvensen skal vises i en uendelig løkke."
+#: ../lib/unit.vala:34
+msgid "Duration"
+msgstr "Varighet"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:23
-#, no-c-format
-msgid "Allow zoom greater than 100% initially"
-msgstr "Tillat zoom større enn 100% ved start"
+#: ../lib/unit.vala:35
+msgid "Temperature"
+msgstr "Temperatur"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:24
-msgid ""
-"If this is set to FALSE small images will not be stretched to fit into the "
-"screen initially."
-msgstr ""
-"Hvis dette settes til FALSE vil ikke små bilder strekkes for å passe til "
-"skjermen."
+#: ../lib/unit.vala:36
+msgid "Digital Storage"
+msgstr "Digital lagring"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:25
-msgid "Delay in seconds until showing the next image"
-msgstr "Pause i sekunder før visning av neste bilde"
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
+#: ../lib/unit.vala:39 ../src/math-preferences.vala:144
+msgid "Degrees"
+msgstr "Grader"
 
-#: ../data/org.gnome.eog.gschema.xml.in.h:26
-msgid ""
-"A value greater than 0 determines the seconds an image stays on screen until "
-"the next one is shown automatically. Zero disables the automatic browsing."
-msgstr ""
-"En verdi større enn 0 bestemmer antall sekunder før neste bilde vises "
-"automatisk. Null deaktiverer automatisk fremvisning."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:27
-msgid "Show/Hide the window statusbar."
-msgstr "Vis/skjul vinduets statuslinje."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:28
-msgid "Show/Hide the image gallery pane."
-msgstr "Vis/skjul bildesamlingsområdet."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:29
-msgid ""
-"Image gallery pane position. Set to 0 for bottom; 1 for left; 2 for top; 3 "
-"for right."
-msgstr ""
-"Posisjon for bildesamlingsområde. Sett til 0 for bunn; 1 for venstre; 2 for "
-"topp; 3 for høyre."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:30
-msgid "Whether the image gallery pane should be resizable."
-msgstr "Om bildesamlingsområdet skal kunne endre størrelse eller ikke."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:31
-msgid "Show/Hide the window side pane."
-msgstr "Vis/skjul vinduets sidelinje."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:32
-msgid "Show/Hide the image gallery pane scroll buttons."
-msgstr "Vis/skjul rulleknapper for bildesamlingsområdet."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:33
-msgid "Close main window without asking to save changes."
-msgstr "Lukk hovedvinduet uten å spørre om endringer skal lagres."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:34
-msgid "Trash images without asking"
-msgstr "Slett bilder uten å spørre"
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:35
-msgid ""
-"If activated, Eye of GNOME won’t ask for confirmation when moving images to "
-"the trash. It will still ask if any of the files cannot be moved to the "
-"trash and would be deleted instead."
-msgstr "Hvis denne aktiveres vil ikke Eye of GNOME spørre om bekreftelse når bilder flyttes til papirkurven. Programmet vil fremdeles spørre hvis noen av filene ikke kan flyttes til papirkurven og dermed må slettes i stedet."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:36
-msgid ""
-"Whether the file chooser should show the user’s pictures folder if no images "
-"are loaded."
-msgstr "Hvorvidt filvelger skal vise brukers bildemappe hvis ingen bilder er lastet."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:37
-msgid ""
-"If activated and no image is loaded in the active window, the file chooser "
-"will display the user’s pictures folder using the XDG special user "
-"directories. If deactivated or the pictures folder has not been set up, it "
-"will show the current working directory."
-msgstr ""
-"Hvis denne aktiveres og ingen bilder er lastet i det aktive vinduet vil "
-"filvelgeren vise brukers bildemappe ved å bruke XDG-definerte mapper. Hvis "
-"den deaktiveres eller bildemappen ikke er satt opp vil den vise nåværende "
-"arbeidskatalog."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:38
-msgid ""
-"Whether the metadata list in the properties dialog should have its own page."
-msgstr "Om metadatalisten i egenskaper-dialogen skal ha sin egen side."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:39
-msgid ""
-"If activated, the detailed metadata list in the properties dialog will be "
-"moved to its own page in the dialog. This should make the dialog more usable "
-"on smaller screens, e.g. as used by netbooks. If disabled, the widget will "
-"be embedded on the “Metadata” page."
-msgstr ""
-"Hvis aktivert vil den detaljerte metadatalisten i egenskaper-dialogen "
-"flyttes til sin egen side i dialogen. Dette bør gjøre bruk av dialogen mer "
-"brukervennlig på mindre skjermer, f.eks nettbrett. Hvis den deaktiveres vil "
-"komponenten vises på «Metadata»-siden."
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:40
-msgid "Active plugins"
-msgstr "Aktive tillegg"
-
-#: ../data/org.gnome.eog.gschema.xml.in.h:41
-msgid ""
-"List of active plugins. It doesn’t contain the “Location” of the active "
-"plugins. See the .eog-plugin file for obtaining the “Location” of a given "
-"plugin."
-msgstr ""
-"Liste med aktive tillegg. Inne holder ikke «Location» for aktive tillegg. "
-"Se .eog-plugin-filen for å finne «Location» for et gitt tillegg."
-
-#: ../data/popup-menus.ui.h:1
-msgid "Open _with"
-msgstr "Åpne _med"
-
-#: ../data/popup-menus.ui.h:5
-msgid "_Copy"
-msgstr "_Kopier"
-
-#: ../data/popup-menus.ui.h:6 ../src/eog-window.c:3520
-msgid "Move to _Trash"
-msgstr "Flytt til _papirkurv"
-
-#: ../data/popup-menus.ui.h:9
-msgid "Show Containing _Folder"
-msgstr "Vis opphavs_mappe"
-
-#: ../plugins/fullscreen/fullscreen.plugin.desktop.in.h:1
-msgid "Fullscreen with double-click"
-msgstr "Fullskjerm med dobbeltklikk"
-
-#: ../plugins/fullscreen/fullscreen.plugin.desktop.in.h:2
-msgid "Activate fullscreen mode with double-click"
-msgstr "Aktiver fullskjermmodus med dobbeltklikk"
-
-#: ../plugins/reload/eog-reload-plugin.c:185
-#: ../plugins/reload/reload.plugin.desktop.in.h:1
-msgid "Reload Image"
-msgstr "Les bilde på nytt"
-
-#: ../plugins/reload/reload.plugin.desktop.in.h:2
-msgid "Reload current image"
-msgstr "Les dette bildet på nytt"
-
-#: ../plugins/statusbar-date/statusbar-date.plugin.desktop.in.h:1
-msgid "Date in statusbar"
-msgstr "Dato i statuslinje"
-
-#: ../plugins/statusbar-date/statusbar-date.plugin.desktop.in.h:2
-msgid "Shows the image date in the window statusbar"
-msgstr "Viser dato for bildet i statuslinjen"
-
-#: ../src/eog-close-confirmation-dialog.c:166
-msgid "Close _without Saving"
-msgstr "Lukk _uten å lagre"
-
-#: ../src/eog-close-confirmation-dialog.c:212
-msgid "Question"
-msgstr "Spørsmål"
-
-#: ../src/eog-close-confirmation-dialog.c:391
-msgid "If you don’t save, your changes will be lost."
-msgstr "Hvis du ikke lagrer vil endringene gå tapt."
-
-#: ../src/eog-close-confirmation-dialog.c:437
+#: ../lib/unit.vala:39
 #, c-format
-msgid "Save changes to image “%s” before closing?"
-msgstr "Lagre endringer i bilde «%s» før du lukker?"
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "%s grader"
 
-#: ../src/eog-close-confirmation-dialog.c:652
+#: ../lib/unit.vala:39
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr "grad,grader,gra"
+
+#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
+#: ../lib/unit.vala:40 ../src/math-preferences.vala:148
+msgid "Radians"
+msgstr "Radianer"
+
+#: ../lib/unit.vala:40
 #, c-format
-msgid "There is %d image with unsaved changes. Save changes before closing?"
-msgid_plural ""
-"There are %d images with unsaved changes. Save changes before closing?"
-msgstr[0] ""
-"Det finnes %d bilde med endringer som ikke er lagret. Lagre endringer før "
-"programmet lukkes?"
-msgstr[1] ""
-"Det finnes %d bilder med endringer som ikke er lagret. Lagre endringer før "
-"programmet lukkes?"
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "%s radianer"
 
-#: ../src/eog-close-confirmation-dialog.c:669
-msgid "S_elect the images you want to save:"
-msgstr "V_elg bildene du vil lagre:"
+#: ../lib/unit.vala:40
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr "radian,radianer,rad"
 
-#. Secondary label
-#: ../src/eog-close-confirmation-dialog.c:688
-msgid "If you don’t save, all your changes will be lost."
-msgstr "Hvis du ikke lagrer vil alle endringene dine gå tapt."
+#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
+#: ../lib/unit.vala:41 ../src/math-preferences.vala:152
+msgid "Gradians"
+msgstr "Gradianer"
 
-#: ../src/eog-error-message-area.c:128 ../src/eog-window.c:906
-msgid "_Reload"
-msgstr "_Last på nytt"
-
-#: ../src/eog-error-message-area.c:137
-msgid "Open with _Document Viewer"
-msgstr "Åpne med _dokumentvisning"
-
-#: ../src/eog-error-message-area.c:219
+#: ../lib/unit.vala:41
 #, c-format
-msgid "Could not load image “%s”."
-msgstr "Kunne ikke laste bilde «%s»."
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "%s gradianer"
 
-#: ../src/eog-error-message-area.c:261
+#: ../lib/unit.vala:41
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr "gradian,gradianer,grad"
+
+#: ../lib/unit.vala:42
+msgid "Parsecs"
+msgstr "Parsecs"
+
+#: ../lib/unit.vala:42
 #, c-format
-msgid "Could not save image “%s”."
-msgstr "Kunne ikke lagre bilde «%s»."
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr "%s pc"
 
-#: ../src/eog-error-message-area.c:304
+#: ../lib/unit.vala:42
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr "parsec,parsecs,pc"
+
+#: ../lib/unit.vala:43
+msgid "Light Years"
+msgstr "Lysår"
+
+#: ../lib/unit.vala:43
 #, c-format
-msgid "No images found in “%s”."
-msgstr "Ingen bilder funnet i «%s»."
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr "%s ly"
 
-#: ../src/eog-error-message-area.c:311
-msgid "The given locations contain no images."
-msgstr "Oppgitte plasseringer inneholder ingen bilder."
+#: ../lib/unit.vala:43
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr "lysår,lysår,ly"
 
-#: ../src/eog-error-message-area.c:350
-msgid ""
-"This image contains multiple pages. Image Viewer displays only the first "
-"page.\n"
-"Do you want to open the image with the Document Viewer to see all pages?"
-msgstr ""
-"Dette bildet inneholder flere sider. Bildevisning viser kun den første "
-"siden.\n"
-"Vil du åpne bildet med dokumentvisning for å se alle sidene?"
+#: ../lib/unit.vala:44
+msgid "Astronomical Units"
+msgstr "Astronomisk enhet"
 
-#: ../src/eog-error-message-area.c:355
-msgid ""
-"This image contains multiple pages. Image Viewer displays only the first "
-"page.\n"
-"You may want to install the Document Viewer to see all pages."
-msgstr ""
-"Dette bildet inneholder flere sider. Bildevisning viser kun den første "
-"siden.\n"
-"Du vil kanskje installere dokumentvisning for å se alle sidene."
-
-#. A strftime-formatted string, to display the date the image was taken.
-#: ../src/eog-exif-util.c:189 ../src/eog-exif-util.c:191
-msgid "%a, %d %B %Y  %X"
-msgstr "%a, %d %B %Y  %X"
-
-#. TRANSLATORS: This is the actual focal length used when
-#. the image was taken.
-#: ../src/eog-exif-util.c:280
+#: ../lib/unit.vala:44
 #, c-format
-msgid "%.1f (lens)"
-msgstr "%.1f (linse)"
+msgctxt "unit-format"
+msgid "%s au"
+msgstr "%s au"
 
-#. Print as float to get a similar look as above.
-#. TRANSLATORS: This is the equivalent focal length assuming
-#. a 35mm film camera.
-#: ../src/eog-exif-util.c:291
+#: ../lib/unit.vala:44
+msgctxt "unit-symbols"
+msgid "au"
+msgstr "au"
+
+#: ../lib/unit.vala:45
+msgid "Nautical Miles"
+msgstr "Nautiske mil"
+
+#: ../lib/unit.vala:45
 #, c-format
-msgid "%.1f (35mm film)"
-msgstr "%.1f (35mm film)"
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr "%s nmi"
 
-#: ../src/eog-file-chooser.c:119
-msgid "File format is unknown or unsupported"
-msgstr "Filformatet er ukjent eller ikke støttet"
+#: ../lib/unit.vala:45
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr "nmi"
 
-#: ../src/eog-file-chooser.c:124
-msgid ""
-"Image Viewer could not determine a supported writable file format based on "
-"the filename."
-msgstr ""
-"Bildevisning kunne ikke bestemme et støttet skrivbart filformat basert på "
-"filnavnet."
+#: ../lib/unit.vala:46
+msgid "Miles"
+msgstr "Miles"
 
-#: ../src/eog-file-chooser.c:125
-msgid "Please try a different file extension like .png or .jpg."
-msgstr "Vennligst prøv en annen filtype som .png eller .jpg."
-
-#. Filter name: First description then file extension, eg. "The PNG-Format (*.png)".
-#: ../src/eog-file-chooser.c:160
+#: ../lib/unit.vala:46
 #, c-format
-msgid "%s (*.%s)"
-msgstr "%s (*.%s)"
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr "%s mi"
 
-#: ../src/eog-file-chooser.c:212
-msgid "All files"
-msgstr "Alle filer"
+#: ../lib/unit.vala:46
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr "mil,mil,mi"
 
-#: ../src/eog-file-chooser.c:217
-msgid "Supported image files"
-msgstr "Støttede bildefiler"
+#: ../lib/unit.vala:47
+msgid "Kilometers"
+msgstr "Kilometer"
 
-#. Pixel size of image: width x height in pixel
-#: ../src/eog-file-chooser.c:289 ../src/eog-properties-dialog.c:165
-#: ../src/eog-properties-dialog.c:167 ../src/eog-thumb-view.c:515
-msgid "pixel"
-msgid_plural "pixels"
-msgstr[0] "piksel"
-msgstr[1] "piksler"
-
-#: ../src/eog-file-chooser.c:457 ../src/eog-file-chooser.c:473
-msgid "_Open"
-msgstr "_Åpne"
-
-#: ../src/eog-file-chooser.c:459
-msgid "Open Image"
-msgstr "Åpne bilde"
-
-#: ../src/eog-file-chooser.c:467
-msgid "Save Image"
-msgstr "Lagre bilde"
-
-#: ../src/eog-file-chooser.c:475
-msgid "Open Folder"
-msgstr "Åpne mappe"
-
-#: ../src/eog-image.c:566
+#: ../lib/unit.vala:47
 #, c-format
-msgid "Transformation on unloaded image."
-msgstr "Transformasjon på bilde som ikke er lastet."
+msgctxt "unit-format"
+msgid "%s km"
+msgstr "%s km"
 
-#: ../src/eog-image.c:594
+#: ../lib/unit.vala:47
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr "kilometer,kilometer,km,km"
+
+#: ../lib/unit.vala:48
+msgid "Cables"
+msgstr "Kabellengder"
+
+#: ../lib/unit.vala:48
 #, c-format
-msgid "Transformation failed."
-msgstr "Transformasjon feilet."
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr "%s cb"
 
-#: ../src/eog-image.c:1074
+#: ../lib/unit.vala:48
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr "kabel,kabler,cb"
+
+#: ../lib/unit.vala:49
+msgid "Fathoms"
+msgstr "Favner"
+
+#: ../lib/unit.vala:49
 #, c-format
-msgid "EXIF not supported for this file format."
-msgstr "EXIF er ikke støttet for dette filformatet."
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr "%s fvn"
 
-#: ../src/eog-image.c:1221
+#: ../lib/unit.vala:49
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr "favn,favner,fvn"
+
+#: ../lib/unit.vala:50
+msgid "Meters"
+msgstr "Meter"
+
+#: ../lib/unit.vala:50
 #, c-format
-msgid "Image loading failed."
-msgstr "Lasting av bilde feilet."
+msgctxt "unit-format"
+msgid "%s m"
+msgstr "%s m"
 
-#: ../src/eog-image.c:1802 ../src/eog-image.c:1922
+#: ../lib/unit.vala:50
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr "meter,meter,m"
+
+#: ../lib/unit.vala:51
+msgid "Yards"
+msgstr "Yards"
+
+#: ../lib/unit.vala:51
 #, c-format
-msgid "No image loaded."
-msgstr "Ingen bilder lastet."
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr "%s yd"
 
-#: ../src/eog-image.c:1810 ../src/eog-image.c:1931
+#: ../lib/unit.vala:51
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr "yard,yards,yd"
+
+#: ../lib/unit.vala:52
+msgid "Feet"
+msgstr "Fot"
+
+#: ../lib/unit.vala:52
 #, c-format
-msgid "You do not have the permissions necessary to save the file."
-msgstr "Du har ikke tilstrekkelige rettigheter til å lagre filen."
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr "%s ft"
 
-#: ../src/eog-image.c:1820 ../src/eog-image.c:1942
-#, c-format
-msgid "Temporary file creation failed."
-msgstr "Oppretting av midlertidig fil feilet."
+#: ../lib/unit.vala:52
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr "fot,fot,ft"
 
-#: ../src/eog-image-jpeg.c:374
-#, c-format
-msgid "Couldn’t create temporary file for saving: %s"
-msgstr "Kunne ikke lage midlertidig fil for lagring: %s"
-
-#: ../src/eog-image-jpeg.c:393
-#, c-format
-msgid "Couldn’t allocate memory for loading JPEG file"
-msgstr "Kunne ikke reservere minne for lasting av JPEG-fil"
-
-#: ../src/eog-metadata-details.c:66
-msgid "Image Data"
-msgstr "Bildedata"
-
-#: ../src/eog-metadata-details.c:67
-msgid "Image Taking Conditions"
-msgstr "Tilstand når bildet ble tatt"
-
-#: ../src/eog-metadata-details.c:68
-msgid "GPS Data"
-msgstr "GPS-data"
-
-#: ../src/eog-metadata-details.c:69
-msgid "Maker Note"
-msgstr "Utvidet metadata for kameramodell"
-
-#: ../src/eog-metadata-details.c:70
-msgid "Other"
-msgstr "Annet"
-
-#: ../src/eog-metadata-details.c:72
-msgid "XMP Exif"
-msgstr "XMP Exif"
-
-#: ../src/eog-metadata-details.c:73
-msgid "XMP IPTC"
-msgstr "XMP IPTC"
-
-#: ../src/eog-metadata-details.c:74
-msgid "XMP Rights Management"
-msgstr "XMP rettighetshåndtering"
-
-#: ../src/eog-metadata-details.c:75
-msgid "XMP Other"
-msgstr "XMP annet"
-
-#: ../src/eog-metadata-details.c:251
-msgid "Tag"
-msgstr "Merking"
-
-#: ../src/eog-metadata-details.c:258
-msgid "Value"
-msgstr "Verdi"
-
-#: ../src/eog-metadata-details.c:434
-msgid "North"
-msgstr "Nord"
-
-#: ../src/eog-metadata-details.c:437
-msgid "East"
-msgstr "Øst"
-
-#: ../src/eog-metadata-details.c:440
-msgid "West"
-msgstr "Vest"
-
-#: ../src/eog-metadata-details.c:443
-msgid "South"
-msgstr "Sør"
-
-#: ../src/eog-metadata-sidebar.c:144
-#, c-format
-msgid "%i × %i pixel"
-msgid_plural "%i × %i pixels"
-msgstr[0] "%i × %i piksel"
-msgstr[1] "%i × %i piksler"
-
-#: ../src/eog-metadata-sidebar.c:155 ../src/eog-properties-dialog.c:182
-msgid "Unknown"
-msgstr "Ukjent"
-
-#: ../src/eog-metadata-sidebar.c:219
-msgid "%a, %d %B %Y"
-msgstr "%a, %d %B %Y"
-
-#: ../src/eog-metadata-sidebar.c:223
-#, c-format
-msgid "%X"
-msgstr "%X"
-
-#: ../src/eog-preferences-dialog.c:125
-#, c-format
-msgid "%lu second"
-msgid_plural "%lu seconds"
-msgstr[0] "%lu sekund"
-msgstr[1] "%lu sekunder"
-
-#: ../src/eog-print.c:371
-msgid "Image Settings"
-msgstr "Egenskaper for bilde"
-
-#: ../src/eog-print-image-setup.c:897
-msgid "Image"
-msgstr "Bilde"
-
-#: ../src/eog-print-image-setup.c:898
-msgid "The image whose printing properties will be set up"
-msgstr "Bilde som skal brukes til egenskaper for utskrift"
-
-#: ../src/eog-print-image-setup.c:904
-msgid "Page Setup"
-msgstr "Sideoppsett"
-
-#: ../src/eog-print-image-setup.c:905
-msgid "The information for the page where the image will be printed"
-msgstr "Informasjon for siden hvor bildet skal skrives ut"
-
-#: ../src/eog-print-image-setup.c:931
-msgid "Position"
-msgstr "Posisjon"
-
-#: ../src/eog-print-image-setup.c:935
-msgid "_Left:"
-msgstr "_Venstre:"
-
-#: ../src/eog-print-image-setup.c:937
-msgid "_Right:"
-msgstr "Høy_re:"
-
-#: ../src/eog-print-image-setup.c:938
-msgid "_Top:"
-msgstr "_Topp:"
-
-#: ../src/eog-print-image-setup.c:939
-msgid "_Bottom:"
-msgstr "_Bunn:"
-
-#: ../src/eog-print-image-setup.c:942
-msgid "C_enter:"
-msgstr "S_entrert:"
-
-#: ../src/eog-print-image-setup.c:947
-msgid "None"
-msgstr "Ingen"
-
-#: ../src/eog-print-image-setup.c:949
-msgid "Horizontal"
-msgstr "Horisontal"
-
-#: ../src/eog-print-image-setup.c:951
-msgid "Vertical"
-msgstr "Vertikal"
-
-#: ../src/eog-print-image-setup.c:953
-msgid "Both"
-msgstr "Begge"
-
-#: ../src/eog-print-image-setup.c:972
-msgid "_Width:"
-msgstr "_Bredde:"
-
-#: ../src/eog-print-image-setup.c:974
-msgid "_Height:"
-msgstr "_Høyde:"
-
-#: ../src/eog-print-image-setup.c:977
-msgid "_Scaling:"
-msgstr "_Skalering:"
-
-#: ../src/eog-print-image-setup.c:988
-msgid "_Unit:"
-msgstr "En_het:"
-
-#: ../src/eog-print-image-setup.c:993
-msgid "Millimeters"
-msgstr "Millimetere"
-
-#: ../src/eog-print-image-setup.c:995
+#: ../lib/unit.vala:53
 msgid "Inches"
 msgstr "Tommer"
 
-#: ../src/eog-print-image-setup.c:1024
-msgid "Preview"
-msgstr "Forhåndsvis"
-
-#: ../src/eog-properties-dialog.c:776
-msgid "Show the folder which contains this file in the file manager"
-msgstr "Vis mappen som inneholder denne filen i filhåndterer"
-
-#: ../src/eog-save-as-dialog-helper.c:162
-msgid "as is"
-msgstr "som det er"
-
-#. Translators: This string is displayed in the statusbar.
-#. * The first token is the image number, the second is total image
-#. * count.
-#. *
-#. * Translate to "%Id" if you want to use localized digits, or
-#. * translate to "%d" otherwise.
-#. *
-#. * Note that translating this doesn't guarantee that you get localized
-#. * digits. That needs support from your system and locale definition
-#. * too.
-#: ../src/eog-statusbar.c:118
+#: ../lib/unit.vala:53
 #, c-format
-msgid "%d / %d"
-msgstr "%d / %d"
+msgctxt "unit-format"
+msgid "%s in"
+msgstr "%s tm"
 
-#: ../src/eog-thumb-view.c:543
-msgid "Taken on"
-msgstr "Tatt"
+#: ../lib/unit.vala:53
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr "tomme,tommer,tm"
 
-#: ../src/eog-uri-converter.c:989
+#: ../lib/unit.vala:54
+msgid "Centimeters"
+msgstr "Centimeter"
+
+#: ../lib/unit.vala:54
 #, c-format
-msgid "At least two file names are equal."
-msgstr "Minst to filnavn er like."
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr "%s cm"
 
-#: ../src/eog-util.c:68
-msgid "Could not display help for Image Viewer"
-msgstr "Kunne ikke vise hjelp for bildevisning"
+#: ../lib/unit.vala:54
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr "centimeter,centimeter,cm,cm"
 
-#: ../src/eog-util.c:116
-msgid " (invalid Unicode)"
-msgstr " (ugyldig Unicode)"
+#: ../lib/unit.vala:55
+msgid "Millimeters"
+msgstr "Millimeter"
 
-#. Translators: This is the string displayed in the statusbar
-#. * The tokens are from left to right:
-#. * - image width
-#. * - image height
-#. * - image size in bytes
-#. * - zoom in percent
-#: ../src/eog-window.c:568
+#: ../lib/unit.vala:55
 #, c-format
-msgid "%i × %i pixel  %s    %i%%"
-msgid_plural "%i × %i pixels  %s    %i%%"
-msgstr[0] "%i x %i piksel  %s   %i%%"
-msgstr[1] "%i x %i piksler  %s   %i%%"
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr "%s mm"
 
-#: ../src/eog-window.c:908 ../src/eog-window.c:2655
-msgctxt "MessageArea"
-msgid "Hi_de"
-msgstr "Skj_ul"
+#: ../lib/unit.vala:55
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr "millimeter,millimeter,mm"
 
-#. The newline character is currently necessary due to a problem
-#. * with the automatic line break.
-#: ../src/eog-window.c:918
+#: ../lib/unit.vala:56
+msgid "Micrometers"
+msgstr "Mikrometer"
+
+#: ../lib/unit.vala:56
 #, c-format
-msgid ""
-"The image “%s” has been modified by an external application.\n"
-"Would you like to reload it?"
-msgstr ""
-"Bildet «%s» er endret av et eksternt program.\n"
-"Vil du laste bildet på nytt?"
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr "%s μm"
 
-#. Translators: This string is displayed in the statusbar
-#. * while saving images. The tokens are from left to right:
-#. * - the original filename
-#. * - the current image's position in the queue
-#. * - the total number of images queued for saving
-#: ../src/eog-window.c:1181
+#: ../lib/unit.vala:56
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr "mikrometer,mikrometer,um"
+
+#: ../lib/unit.vala:57
+msgid "Nanometers"
+msgstr "Nanometer"
+
+#: ../lib/unit.vala:57
 #, c-format
-msgid "Saving image “%s” (%u/%u)"
-msgstr "Lagrer bilde «%s» (%u/%u)"
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr "%s nm"
 
-#: ../src/eog-window.c:1606
+#: ../lib/unit.vala:57
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr "nanometer,nanometer,nm"
+
+#: ../lib/unit.vala:58
+msgid "Hectares"
+msgstr "Hektar"
+
+#: ../lib/unit.vala:58
 #, c-format
-msgid "Opening image “%s”"
-msgstr "Åpner bilde «%s»"
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
 
-#. L10N: This the reason why the screensaver is inhibited.
-#: ../src/eog-window.c:2002
-msgid "Viewing a slideshow"
-msgstr "Viser en presentasjon"
+#: ../lib/unit.vala:58
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "hektar,hektar,ha"
 
-#: ../src/eog-window.c:2221
+#: ../lib/unit.vala:59
+msgid "Acres"
+msgstr "mål"
+
+#: ../lib/unit.vala:59
 #, c-format
-msgid ""
-"Error printing file:\n"
-"%s"
-msgstr ""
-"Feil under utskrift av fil:\n"
-"%s"
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s mål"
 
-#: ../src/eog-window.c:2604 ../src/eog-window.c:2619
-msgid "Error launching System Settings: "
-msgstr "Feil under oppstart av systeminnstillinger: "
+#: ../lib/unit.vala:59
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "mål,mål"
 
-#: ../src/eog-window.c:2653
-msgid "_Open Background Preferences"
-msgstr "_Åpne brukervalg for bakgrunn"
+#: ../lib/unit.vala:60
+msgid "Square Meters"
+msgstr "Kvadratmeter"
 
-#. The newline character is currently necessary due to a problem
-#. * with the automatic line break.
-#: ../src/eog-window.c:2669
+#: ../lib/unit.vala:60
 #, c-format
-msgid ""
-"The image “%s” has been set as Desktop Background.\n"
-"Would you like to modify its appearance?"
-msgstr ""
-"Bildet «%s» er satt som skrivebordsbakgrunn.\n"
-"Vil du forandre utseende på bildet?"
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
 
-#: ../src/eog-window.c:3159
-msgid "Saving image locally…"
-msgstr "Lagrer bildet lokalt …"
+#: ../lib/unit.vala:60
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
 
-#: ../src/eog-window.c:3237
+#: ../lib/unit.vala:61
+msgid "Square Centimeters"
+msgstr "Kvadratcentimeter"
+
+#: ../lib/unit.vala:61
 #, c-format
-msgid ""
-"Are you sure you want to remove\n"
-"“%s” permanently?"
-msgstr ""
-"Er du sikker på at du vil\n"
-"fjerne «%s» permanent?"
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
 
-#: ../src/eog-window.c:3240
+#: ../lib/unit.vala:61
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
+#: ../lib/unit.vala:62
+msgid "Square Millimeters"
+msgstr "Kvadratmillimeter"
+
+#: ../lib/unit.vala:62
 #, c-format
-msgid ""
-"Are you sure you want to remove\n"
-"the selected image permanently?"
-msgid_plural ""
-"Are you sure you want to remove\n"
-"the %d selected images permanently?"
-msgstr[0] ""
-"Er du sikker på at du vil\n"
-"fjerne valgt bilde permanent?"
-msgstr[1] ""
-"Er du sikker på at du vil\n"
-"fjerne %d valgte bilder permanent?"
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
 
-#: ../src/eog-window.c:3262 ../src/eog-window.c:3528
-msgid "_Delete"
-msgstr "_Slett"
+#: ../lib/unit.vala:62
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
 
-#: ../src/eog-window.c:3265 ../src/eog-window.c:3530
-msgid "_Yes"
-msgstr "_Ja"
+#: ../lib/unit.vala:63
+msgid "Cubic Meters"
+msgstr "Kubikkmeter"
 
-#. add 'dont ask again' button
-#: ../src/eog-window.c:3269 ../src/eog-window.c:3522
-msgid "Do _not ask again during this session"
-msgstr "Ikke spør i_gjen under denne økten"
-
-#: ../src/eog-window.c:3313
+#: ../lib/unit.vala:63
 #, c-format
-msgid "Couldn’t retrieve image file"
-msgstr "Kunne ikke hente bildefil"
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
 
-#: ../src/eog-window.c:3329
+#: ../lib/unit.vala:63
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
+#: ../lib/unit.vala:64
+msgid "Gallons"
+msgstr "Gallons"
+
+#: ../lib/unit.vala:64
 #, c-format
-msgid "Couldn’t retrieve image file information"
-msgstr "Kunne ikke hente informasjon om bildefil"
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
 
-#: ../src/eog-window.c:3345 ../src/eog-window.c:3589
+#: ../lib/unit.vala:64
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "gallon,gallon,gal"
+
+#: ../lib/unit.vala:65
+msgid "Liters"
+msgstr "Liter"
+
+#: ../lib/unit.vala:65
 #, c-format
-msgid "Couldn’t delete file"
-msgstr "Kunne ikke slette fil"
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s L"
 
-#. set dialog error message
-#: ../src/eog-window.c:3395 ../src/eog-window.c:3689
+#: ../lib/unit.vala:65
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "liter,liter,liter,liter,L"
+
+#: ../lib/unit.vala:66
+msgid "Quarts"
+msgstr "Kvarter"
+
+#: ../lib/unit.vala:66
 #, c-format
-msgid "Error on deleting image %s"
-msgstr "Feil under sletting av bilde %s"
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s kv"
 
-#: ../src/eog-window.c:3490
+#: ../lib/unit.vala:66
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "kvart,kvarter,kv"
+
+#: ../lib/unit.vala:67
+msgid "Pints"
+msgstr "Pints"
+
+#: ../lib/unit.vala:67
 #, c-format
-msgid ""
-"Are you sure you want to move\n"
-"“%s” to the trash?"
-msgstr ""
-"Er du sikker på at du vil\n"
-"flytte «%s» til papirkurven?"
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr "%s pt"
 
-#: ../src/eog-window.c:3493
+#: ../lib/unit.vala:67
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr "pint,pints,pt"
+
+#: ../lib/unit.vala:68
+msgid "Milliliters"
+msgstr "Milliliter"
+
+#: ../lib/unit.vala:68
 #, c-format
-msgid ""
-"A trash for “%s” couldn’t be found. Do you want to remove this image "
-"permanently?"
-msgstr ""
-"Fant ikke papirkurv for «%s». Er du sikker på at du vil fjerne dette bildet "
-"permanent?"
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr "%s mL"
 
-#: ../src/eog-window.c:3498
+#: ../lib/unit.vala:68
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr "milliliter,milliliter,milliliter,milliliter,mL,cm³"
+
+#: ../lib/unit.vala:69
+msgid "Microliters"
+msgstr "Mikroliter"
+
+#: ../lib/unit.vala:69
 #, c-format
-msgid ""
-"Are you sure you want to move\n"
-"the selected image to the trash?"
-msgid_plural ""
-"Are you sure you want to move\n"
-"the %d selected images to the trash?"
-msgstr[0] ""
-"Er du sikker på at du vil\n"
-"flytte valgt bilde til papirkurven?"
-msgstr[1] ""
-"Er du sikker på at du vil\n"
-"flytte %d valgte bilder til papirkurven?"
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr "%s μL"
 
-#: ../src/eog-window.c:3503
-msgid ""
-"Some of the selected images can’t be moved to the trash and will be removed "
-"permanently. Are you sure you want to proceed?"
-msgstr ""
-"Noen av de valgte bildene kan ikke flyttes til papirkurven og vil bli "
-"fjernet permanent. Er du sikker på at du vil fortsette?"
+#: ../lib/unit.vala:69
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr "mm³,μL,uL"
 
-#: ../src/eog-window.c:3567 ../src/eog-window.c:3581
+#: ../lib/unit.vala:70
+msgid "Tonnes"
+msgstr "Tonn"
+
+#: ../lib/unit.vala:70
 #, c-format
-msgid "Couldn’t access trash."
-msgstr "Kunne ikke aksessere papirkurv."
+msgctxt "unit-format"
+msgid "%s T"
+msgstr "%s T"
 
-#: ../src/eog-window.c:4249
-msgid "Fit the image to the window"
-msgstr "Tilpass bildet til vinduet"
+#: ../lib/unit.vala:70
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr "tonn,tonn"
 
-#: ../src/eog-window.c:4257 ../src/eog-window.c:4302
-msgid "Shrink or enlarge the current image"
-msgstr "Krymp eller forstørr dette bildet"
+#: ../lib/unit.vala:71
+msgid "Kilograms"
+msgstr "Kilo"
 
-#: ../src/eog-window.c:4360
-msgid "Show the current image in fullscreen mode"
-msgstr "Vis det aktive bildet i fullskjerm-modus"
+#: ../lib/unit.vala:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr "%s kg"
 
-#: ../src/eog-window.c:4437
-msgid "Properties"
-msgstr "Egenskaper"
+#: ../lib/unit.vala:71
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr "kilogram,kilogram,kilogram,kilogram,kg,kgs"
 
-#: ../src/eog-window.c:5570
-msgid "The GNOME image viewer."
-msgstr "Bildevisning for GNOME."
+#: ../lib/unit.vala:72
+msgid "Pounds"
+msgstr "Pund"
 
-#: ../src/eog-window.c:5573
+#: ../lib/unit.vala:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr "%s lb"
+
+#: ../lib/unit.vala:72
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb"
+msgstr "pund,pund,lb"
+
+#: ../lib/unit.vala:73
+msgid "Ounces"
+msgstr "Unser"
+
+#: ../lib/unit.vala:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr "%s oz"
+
+#: ../lib/unit.vala:73
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr "unse,unser,oz"
+
+#: ../lib/unit.vala:74
+msgid "Grams"
+msgstr "Gram"
+
+#: ../lib/unit.vala:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr "%s g"
+
+#: ../lib/unit.vala:74
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr "gram,gram,gram,gram,g"
+
+#: ../lib/unit.vala:75
+msgid "Years"
+msgstr "År"
+
+#: ../lib/unit.vala:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr "%s år"
+
+#: ../lib/unit.vala:75
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr "år,år"
+
+#: ../lib/unit.vala:76
+msgid "Days"
+msgstr "Dager"
+
+#: ../lib/unit.vala:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr "%s dager"
+
+#: ../lib/unit.vala:76
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr "dag,dager"
+
+#: ../lib/unit.vala:77
+msgid "Hours"
+msgstr "Timer"
+
+#: ../lib/unit.vala:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr "%s timer"
+
+#: ../lib/unit.vala:77
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr "time,timer"
+
+#: ../lib/unit.vala:78
+msgid "Minutes"
+msgstr "Minutter"
+
+#: ../lib/unit.vala:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr "%s minutter"
+
+#: ../lib/unit.vala:78
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr "minutt,minutter"
+
+#: ../lib/unit.vala:79
+msgid "Seconds"
+msgstr "Sekunder"
+
+#: ../lib/unit.vala:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr "%s s"
+
+#: ../lib/unit.vala:79
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr "sekund,sekunder,s"
+
+#: ../lib/unit.vala:80
+msgid "Milliseconds"
+msgstr "Millisekunder"
+
+#: ../lib/unit.vala:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr "%s ms"
+
+#: ../lib/unit.vala:80
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr "millisekund,millisekund,ms"
+
+#: ../lib/unit.vala:81
+msgid "Microseconds"
+msgstr "Mikrosekunder"
+
+#: ../lib/unit.vala:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr "%s μs"
+
+#: ../lib/unit.vala:81
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr "mikrosekund,mikrosekund,us,μs"
+
+#: ../lib/unit.vala:82
+msgid "Celsius"
+msgstr "Celsius"
+
+#: ../lib/unit.vala:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr "%s °C"
+
+#: ../lib/unit.vala:82
+msgctxt "unit-symbols"
+msgid "degC,˚C,C,c,Celsius,celsius"
+msgstr "degC,°C,C,c,Celcius,celsius"
+
+#: ../lib/unit.vala:83
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+#: ../lib/unit.vala:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr "%s °F"
+
+#: ../lib/unit.vala:83
+msgctxt "unit-symbols"
+msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "degF,°F,F,f,Fahrenheit,fahrenheit"
+
+#: ../lib/unit.vala:84
+msgid "Kelvin"
+msgstr "Kelvin"
+
+#: ../lib/unit.vala:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr "%s K"
+
+#: ../lib/unit.vala:84
+msgctxt "unit-symbols"
+msgid "k,K,Kelvin,kelvin"
+msgstr "k,K,Kelvin,kelvin"
+
+#: ../lib/unit.vala:85
+msgid "Rankine"
+msgstr "Rankine"
+
+#: ../lib/unit.vala:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr "%s °R"
+
+#: ../lib/unit.vala:85
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
+msgstr "degR,°R,°Ra,r,R,Rankine,rankine"
+
+#. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
+#: ../lib/unit.vala:87
+msgid "Bits"
+msgstr "Bit"
+
+#: ../lib/unit.vala:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s b"
+msgstr "%s b"
+
+#: ../lib/unit.vala:87
+msgctxt "unit-symbols"
+msgid "bit,bits,b"
+msgstr "bit,bit,b"
+
+#: ../lib/unit.vala:88
+msgid "Bytes"
+msgstr "Byte"
+
+#: ../lib/unit.vala:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s B"
+msgstr "%s B"
+
+#: ../lib/unit.vala:88
+msgctxt "unit-symbols"
+msgid "byte,bytes,B"
+msgstr "byte,byte,B"
+
+#: ../lib/unit.vala:89
+msgid "Nibbles"
+msgstr "Nibble"
+
+#: ../lib/unit.vala:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s nibble"
+msgstr "%s nibble"
+
+#: ../lib/unit.vala:89
+msgctxt "unit-symbols"
+msgid "nibble,nibbles"
+msgstr "nibble,nibble"
+
+#. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
+#: ../lib/unit.vala:91
+msgid "Kilobits"
+msgstr "Kilobit"
+
+#: ../lib/unit.vala:91
+#, c-format
+msgctxt "unit-format"
+msgid "%s kb"
+msgstr "%s kb"
+
+#: ../lib/unit.vala:91
+msgctxt "unit-symbols"
+msgid "kilobit,kilobits,kb,Kb"
+msgstr "kilobit,kilobit,kb,Kb"
+
+#: ../lib/unit.vala:92
+msgid "Kilobytes"
+msgstr "Kilobyte"
+
+#: ../lib/unit.vala:92
+#, c-format
+msgctxt "unit-format"
+msgid "%s kB"
+msgstr "%s kB"
+
+#: ../lib/unit.vala:92
+msgctxt "unit-symbols"
+msgid "kilobyte,kilobytes,kB,KB"
+msgstr "kilobyte,kilobyte,kB,KB"
+
+#: ../lib/unit.vala:93
+msgid "Kibibits"
+msgstr "Kibibit"
+
+#: ../lib/unit.vala:93
+#, c-format
+msgctxt "unit-format"
+msgid "%s Kib"
+msgstr "%s Kib"
+
+#: ../lib/unit.vala:93
+msgctxt "unit-symbols"
+msgid "kibibit,kibibits,Kib"
+msgstr "kibibit,kibibit,Kib"
+
+#: ../lib/unit.vala:94
+msgid "Kibibytes"
+msgstr "Kibibyte"
+
+#: ../lib/unit.vala:94
+#, c-format
+msgctxt "unit-format"
+msgid "%s KiB"
+msgstr "%s KiB"
+
+#: ../lib/unit.vala:94
+msgctxt "unit-symbols"
+msgid "kibibyte,kibibytes,KiB"
+msgstr "kibibyte,kibibyte,KiB"
+
+#: ../lib/unit.vala:95
+msgid "Megabits"
+msgstr "Megabit"
+
+#: ../lib/unit.vala:95
+#, c-format
+msgctxt "unit-format"
+msgid "%s Mb"
+msgstr "%s Mb"
+
+#: ../lib/unit.vala:95
+msgctxt "unit-symbols"
+msgid "megabit,megabits,Mb"
+msgstr "megabit,megabit,Mb"
+
+#: ../lib/unit.vala:96
+msgid "Megabytes"
+msgstr "Megabyte"
+
+#: ../lib/unit.vala:96
+#, c-format
+msgctxt "unit-format"
+msgid "%s MB"
+msgstr "%s MB"
+
+#: ../lib/unit.vala:96
+msgctxt "unit-symbols"
+msgid "megabyte,megabytes,MB"
+msgstr "megabyte,megabyte,MB"
+
+#: ../lib/unit.vala:97
+msgid "Mebibits"
+msgstr "Mebibit"
+
+#: ../lib/unit.vala:97
+#, c-format
+msgctxt "unit-format"
+msgid "%s Mib"
+msgstr "%s Mib"
+
+#: ../lib/unit.vala:97
+msgctxt "unit-symbols"
+msgid "mebibit,mebibits,Mib"
+msgstr "mebibit,mebibit,Mib"
+
+#: ../lib/unit.vala:98
+msgid "Mebibytes"
+msgstr "Mebibyte"
+
+#: ../lib/unit.vala:98
+#, c-format
+msgctxt "unit-format"
+msgid "%s MiB"
+msgstr "%s MiB"
+
+#: ../lib/unit.vala:98
+msgctxt "unit-symbols"
+msgid "mebibyte,mebibytes,MiB"
+msgstr "mebibyte,mebibyte,MiB"
+
+#: ../lib/unit.vala:99
+msgid "Gigabits"
+msgstr "Gigabit"
+
+#: ../lib/unit.vala:99
+#, c-format
+msgctxt "unit-format"
+msgid "%s Gb"
+msgstr "%s Gb"
+
+#: ../lib/unit.vala:99
+msgctxt "unit-symbols"
+msgid "gigabit,gigabits,Gb"
+msgstr "gigabit,gigabit,Gb"
+
+#: ../lib/unit.vala:100
+msgid "Gigabytes"
+msgstr "Gigabyte"
+
+#: ../lib/unit.vala:100
+#, c-format
+msgctxt "unit-format"
+msgid "%s GB"
+msgstr "%s GB"
+
+#: ../lib/unit.vala:100
+msgctxt "unit-symbols"
+msgid "gigabyte,gigabytes,GB"
+msgstr "gigabyte,gigabyte,GB"
+
+#: ../lib/unit.vala:101
+msgid "Gibibits"
+msgstr "Gibibit"
+
+#: ../lib/unit.vala:101
+#, c-format
+msgctxt "unit-format"
+msgid "%s Gib"
+msgstr "%s Gib"
+
+#: ../lib/unit.vala:101
+msgctxt "unit-symbols"
+msgid "gibibit,gibibits,Gib"
+msgstr "gibibit,gibibit,Gib"
+
+#: ../lib/unit.vala:102
+msgid "Gibibytes"
+msgstr "Gibibyte"
+
+#: ../lib/unit.vala:102
+#, c-format
+msgctxt "unit-format"
+msgid "%s GiB"
+msgstr "%s GiB"
+
+#: ../lib/unit.vala:102
+msgctxt "unit-symbols"
+msgid "gibibyte,gibibytes,GiB"
+msgstr "gibibyte,gibibyte,GiB"
+
+#: ../lib/unit.vala:103
+msgid "Terabits"
+msgstr "Terabit"
+
+#: ../lib/unit.vala:103
+#, c-format
+msgctxt "unit-format"
+msgid "%s Tb"
+msgstr "%s Tb"
+
+#: ../lib/unit.vala:103
+msgctxt "unit-symbols"
+msgid "terabit,terabits,Tb"
+msgstr "terabit,terabit,Tb"
+
+#: ../lib/unit.vala:104
+msgid "Terabytes"
+msgstr "Terabyte"
+
+#: ../lib/unit.vala:104
+#, c-format
+msgctxt "unit-format"
+msgid "%s TB"
+msgstr "%s TB"
+
+#: ../lib/unit.vala:104
+msgctxt "unit-symbols"
+msgid "terabyte,terabytes,TB"
+msgstr "terabyte,terabyte,TB"
+
+#: ../lib/unit.vala:105
+msgid "Tebibits"
+msgstr "Tebibit"
+
+#: ../lib/unit.vala:105
+#, c-format
+msgctxt "unit-format"
+msgid "%s Tib"
+msgstr "%s Tib"
+
+#: ../lib/unit.vala:105
+msgctxt "unit-symbols"
+msgid "tebibit,tebibits,Tib"
+msgstr "tebibit,tebibit,Tib"
+
+#: ../lib/unit.vala:106
+msgid "Tebibytes"
+msgstr "Tebibyte"
+
+#: ../lib/unit.vala:106
+#, c-format
+msgctxt "unit-format"
+msgid "%s TiB"
+msgstr "%s TiB"
+
+#: ../lib/unit.vala:106
+msgctxt "unit-symbols"
+msgid "tebibyte,tebibytes,TiB"
+msgstr "tebibyte,tebibyte,TiB"
+
+#: ../lib/unit.vala:107
+msgid "Petabits"
+msgstr "Petabit"
+
+#: ../lib/unit.vala:107
+#, c-format
+msgctxt "unit-format"
+msgid "%s Pb"
+msgstr "%s Pb"
+
+#: ../lib/unit.vala:107
+msgctxt "unit-symbols"
+msgid "petabit,petabits,Pb"
+msgstr "petabit,petabit,Pb"
+
+#: ../lib/unit.vala:108
+msgid "Petabytes"
+msgstr "Petabyte"
+
+#: ../lib/unit.vala:108
+#, c-format
+msgctxt "unit-format"
+msgid "%s PB"
+msgstr "%s PB"
+
+#: ../lib/unit.vala:108
+msgctxt "unit-symbols"
+msgid "petabyte,petabytes,PB"
+msgstr "petabyte,petabyte,PB"
+
+#: ../lib/unit.vala:109
+msgid "Pebibits"
+msgstr "Pebibit"
+
+#: ../lib/unit.vala:109
+#, c-format
+msgctxt "unit-format"
+msgid "%s Pib"
+msgstr "%s Pib"
+
+#: ../lib/unit.vala:109
+msgctxt "unit-symbols"
+msgid "pebibit,pebibits,Pib"
+msgstr "pebibit,pebibit,Pib"
+
+#: ../lib/unit.vala:110
+msgid "Pebibytes"
+msgstr "Pebibyte"
+
+#: ../lib/unit.vala:110
+#, c-format
+msgctxt "unit-format"
+msgid "%s PiB"
+msgstr "%s PiB"
+
+#: ../lib/unit.vala:110
+msgctxt "unit-symbols"
+msgid "pebibyte,pebibytes,PiB"
+msgstr "pebibyte,pebibyte,PiB"
+
+#: ../lib/unit.vala:111
+msgid "Exabits"
+msgstr "Exabit"
+
+#: ../lib/unit.vala:111 ../lib/unit.vala:115
+#, c-format
+msgctxt "unit-format"
+msgid "%s Eb"
+msgstr "%s Eb"
+
+#: ../lib/unit.vala:111
+msgctxt "unit-symbols"
+msgid "exabit,exabits,Eb"
+msgstr "exabit,exabit,Eb"
+
+#: ../lib/unit.vala:112
+msgid "Exabytes"
+msgstr "Exabyte"
+
+#: ../lib/unit.vala:112 ../lib/unit.vala:116
+#, c-format
+msgctxt "unit-format"
+msgid "%s EB"
+msgstr "%s EB"
+
+#: ../lib/unit.vala:112
+msgctxt "unit-symbols"
+msgid "exabyte,exabytes,EB"
+msgstr "exabyte,exabyte,EB"
+
+#: ../lib/unit.vala:113
+msgid "Exbibits"
+msgstr "Exbibit"
+
+#: ../lib/unit.vala:113
+#, c-format
+msgctxt "unit-format"
+msgid "%s Eib"
+msgstr "%s Eib"
+
+#: ../lib/unit.vala:113
+msgctxt "unit-symbols"
+msgid "exbibit,exbibits,Eib"
+msgstr "exbibit,exbibit,Eib"
+
+#: ../lib/unit.vala:114
+msgid "Exbibytes"
+msgstr "Exbibyte"
+
+#: ../lib/unit.vala:114
+#, c-format
+msgctxt "unit-format"
+msgid "%s EiB"
+msgstr "%s EiB"
+
+#: ../lib/unit.vala:114
+msgctxt "unit-symbols"
+msgid "exbibyte,exbibytes,EiB"
+msgstr "exbibyte,exbibyte,EiB"
+
+#: ../lib/unit.vala:115
+msgid "Zettabits"
+msgstr "Zettabit"
+
+#: ../lib/unit.vala:115
+msgctxt "unit-symbols"
+msgid "zettabit,zettabits,Zb"
+msgstr "zettabit,zettabit,Zb"
+
+#: ../lib/unit.vala:116
+msgid "Zettabytes"
+msgstr "Zettabyte"
+
+#: ../lib/unit.vala:116
+msgctxt "unit-symbols"
+msgid "zettabyte,zettabytes,ZB"
+msgstr "zettabyte,zettabyte,ZB"
+
+#: ../lib/unit.vala:117
+msgid "Zebibits"
+msgstr "Zebibit"
+
+#: ../lib/unit.vala:117
+#, c-format
+msgctxt "unit-format"
+msgid "%s Zib"
+msgstr "%s Zib"
+
+#: ../lib/unit.vala:117
+msgctxt "unit-symbols"
+msgid "zebibit,zebibits,Zib"
+msgstr "zebibit,zebibit,Zib"
+
+#: ../lib/unit.vala:118
+msgid "Zebibytes"
+msgstr "Zebibyte"
+
+#: ../lib/unit.vala:118
+#, c-format
+msgctxt "unit-format"
+msgid "%s ZiB"
+msgstr "%s ZiB"
+
+#: ../lib/unit.vala:118
+msgctxt "unit-symbols"
+msgid "zebibyte,zebibytes,ZiB"
+msgstr "zebibyte,zebibyte,ZiB"
+
+#: ../lib/unit.vala:119
+msgid "Yottabits"
+msgstr "Yottabit"
+
+#: ../lib/unit.vala:119
+#, c-format
+msgctxt "unit-format"
+msgid "%s Yb"
+msgstr "%s Yb"
+
+#: ../lib/unit.vala:119
+msgctxt "unit-symbols"
+msgid "yottabit,yottabits,Yb"
+msgstr "yottabit,yottabit,Yb"
+
+#: ../lib/unit.vala:120
+msgid "Yottabytes"
+msgstr "Yottabyte"
+
+#: ../lib/unit.vala:120
+#, c-format
+msgctxt "unit-format"
+msgid "%s YB"
+msgstr "%s YB"
+
+#: ../lib/unit.vala:120
+msgctxt "unit-symbols"
+msgid "yottabyte,yottabytes,YB"
+msgstr "yottabyte,yottabyte,YB"
+
+#: ../lib/unit.vala:121
+msgid "Yobibits"
+msgstr "Yobibit"
+
+#: ../lib/unit.vala:121
+#, c-format
+msgctxt "unit-format"
+msgid "%s Yib"
+msgstr "%s Yib"
+
+#: ../lib/unit.vala:121
+msgctxt "unit-symbols"
+msgid "yobibit,yobibits,Yib"
+msgstr "yobibit,yobibit,Yib"
+
+#: ../lib/unit.vala:122
+msgid "Yobibytes"
+msgstr "Yobibyte"
+
+#: ../lib/unit.vala:122
+#, c-format
+msgctxt "unit-format"
+msgid "%s YiB"
+msgstr "%s YiB"
+
+#: ../lib/unit.vala:122
+msgctxt "unit-symbols"
+msgid "yobibyte,yobibytes,YiB"
+msgstr "yobibyte,yobibyte,YiB"
+
+#: ../lib/unit.vala:124
+msgid "Currency"
+msgstr "Valuta"
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: ../lib/unit.vala:130
+#, c-format
+msgid "%s%%s"
+msgstr "%s%%s"
+
+#: ../src/gnome-calculator.vala:24
+msgid "Start in given mode"
+msgstr "Start i gitt modus"
+
+#: ../src/gnome-calculator.vala:25
+msgid "Solve given equation"
+msgstr "Løs gitt likning"
+
+#: ../src/gnome-calculator.vala:26
+msgid "Start with given equation"
+msgstr "Start med gitt likning"
+
+#: ../src/gnome-calculator.vala:27
+msgid "Show release version"
+msgstr "Vis versjon"
+
+#. Translators: Error message displayed when unable to launch help browser
+#: ../src/gnome-calculator.vala:294
+msgid "Unable to open help file"
+msgstr "Kan ikke åpne hjelpfil"
+
+#. The translator credits. Please translate this with your name (s).
+#: ../src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Kjartan Maraas <kmaraas@gnome.org>\n"
-"Torstein Adolf Winterseth <kvikende@fsfe.org>"
+"Espen Stefansen <libbe AT stefansen DOT net>\n"
+"Eskild Hustvedt <i18n@zerodogg.org>"
 
-#: ../src/main.c:56
-msgid "GNOME Image Viewer"
-msgstr "GNOME bildevisning"
+#: ../src/gnome-calculator.vala:331
+msgid "About Calculator"
+msgstr "Om Kalkulator"
 
-#: ../src/main.c:63
-msgid "Open in fullscreen mode"
-msgstr "Åpne i fullskjermmodus"
+#. Short description in the about dialog
+#: ../src/gnome-calculator.vala:339
+msgid "Calculator with financial and scientific modes."
+msgstr "Kalkulator med finans- og vitenskapelig modus."
 
-#: ../src/main.c:64
-msgid "Disable image gallery"
-msgstr "Slå av bildesamling"
-
-#: ../src/main.c:65
-msgid "Open in slideshow mode"
-msgstr "Åpne i presentasjonsmodus"
-
-#: ../src/main.c:66
-msgid "Start a new instance instead of reusing an existing one"
-msgstr "Starter en ny instans i stedet for å gjenbruke en eksisterende"
-
-#: ../src/main.c:67
-msgid ""
-"Open in a single window, if multiple windows are open the first one is used"
-msgstr ""
-"Åpne i et enkelt vindu. Hvis flere vinduer er åpne vil det første bli brukt"
-
-#: ../src/main.c:69
-msgid "Show the application’s version"
-msgstr "Vis programmets versjon"
-
-#: ../src/main.c:99
-msgid "[FILE…]"
-msgstr "[FIL …]"
-
-#. I18N: The '%s' is replaced with eog's command name.
-#: ../src/main.c:112
+#: ../src/math-buttons.vala:464
 #, c-format
-msgid "Run “%s --help” to see a full list of available command line options."
-msgstr ""
-"Kjør «%s --help» for å se en full liste med tilgjengelige kommandolinjeflagg."
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "%d plass"
+msgstr[1] "%d plasser"
+
+#. Preferences dialog: Label for number format combo box
+#: ../src/math-preferences.vala:43
+msgid "Number _Format:"
+msgstr "Tall_format:"
+
+#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
+#: ../src/math-preferences.vala:60
+msgid "Automatic"
+msgstr "Automatisk"
+
+#. Number display mode combo: Fixed, e.g. 1234
+#: ../src/math-preferences.vala:64
+msgid "Fixed"
+msgstr "Fast"
+
+#. Number display mode combo: Scientific, e.g. 1.234×10^3
+#: ../src/math-preferences.vala:68
+msgid "Scientific"
+msgstr "Vitenskapelig"
+
+#. Number display mode combo: Engineering, e.g. 1.234k
+#: ../src/math-preferences.vala:72
+msgid "Engineering"
+msgstr "Ingeniør"
+
+#. Preferences dialog: label for show trailing zeroes check button
+#: ../src/math-preferences.vala:89
+msgid "Number of _decimals"
+msgstr "Antall _desimaler"
+
+#. Preferences dialog: label for show trailing zeroes switch
+#: ../src/math-preferences.vala:101
+msgid "Trailing _zeroes"
+msgstr "Vis etterfølgende _nuller"
+
+#. Preferences dialog: label for show show thousands separator switch
+#: ../src/math-preferences.vala:114
+msgid "_Thousands separators"
+msgstr "_Tusenskilletegn"
+
+#. Preferences dialog: Label for angle unit combo box
+#: ../src/math-preferences.vala:128
+msgid "_Angle units:"
+msgstr "_Enhet for vinkel:"
+
+#. Preferences dialog: Label for word size combo box
+#: ../src/math-preferences.vala:158
+msgid "Word _size:"
+msgstr "_Størrelse på ord:"
+
+#. Word size combo: 8 bits
+#: ../src/math-preferences.vala:172
+msgid "8 bits"
+msgstr "8-bits"
+
+#. Word size combo: 16 bits
+#: ../src/math-preferences.vala:174
+msgid "16 bits"
+msgstr "16-bits"
+
+#. Word size combo: 32 bits
+#: ../src/math-preferences.vala:176
+msgid "32 bits"
+msgstr "32-bits"
+
+#. Word size combo: 64 bits
+#: ../src/math-preferences.vala:178
+msgid "64 bits"
+msgstr "64-bits"
+
+#: ../src/math-window.vala:130
+msgid "_Quit"
+msgstr "A_vslutt"
