@@ -7,15 +7,15 @@
 # Jakub Friedl <jfriedl@suse.cz>, 2006.
 # Petr Pulc <petrpulc@gmail.com>, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2009, 2015.
-# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-29 11:39+0000\n"
-"PO-Revision-Date: 2016-12-18 23:09+0100\n"
+"POT-Creation-Date: 2017-01-03 23:28+0000\n"
+"PO-Revision-Date: 2017-01-10 00:14+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -699,7 +699,7 @@ msgstr "Projekt GNOME"
 
 #. Program name in the about dialog
 #: ../data/org.gnome.Calculator.desktop.in.h:1 ../data/math-window.ui.h:6
-#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:329
+#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Kalkulačka"
 
@@ -1349,28 +1349,32 @@ msgstr "Mocnina nuly není definovaná pro záporný exponent"
 msgid "Zero raised to zero is undefined"
 msgstr "Nula umocněná na nultou není definovaná"
 
+#: ../lib/number.vala:429
+msgid "The zeroth root of a number is undefined"
+msgstr "Nultá odmocnina čísla není definovaná"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../lib/number.vala:456 ../lib/number.vala:487
+#: ../lib/number.vala:459 ../lib/number.vala:490
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritmus nuly je nedefinovaný"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: ../lib/number.vala:509
+#: ../lib/number.vala:512
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Faktoriál je definovaný pouze pro nezáporná reálná čísla"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../lib/number.vala:569
+#: ../lib/number.vala:572
 msgid "Division by zero is undefined"
 msgstr "Dělení nulou není definováné"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../lib/number.vala:590
+#: ../lib/number.vala:593
 msgid "Modulus division is only defined for integers"
 msgstr "Zbytek po dělení je definován pouze pro celá čísla"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../lib/number.vala:663
+#: ../lib/number.vala:666
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1378,51 +1382,51 @@ msgstr ""
 "(90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../lib/number.vala:682
+#: ../lib/number.vala:685
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Inverzní sinus není definován pro hodnoty mimo interval [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../lib/number.vala:699
+#: ../lib/number.vala:702
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Inverzní kosinus není definován pro hodnoty mimo interval [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../lib/number.vala:760
+#: ../lib/number.vala:763
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Inverzní hyperbolický kosinus není definován pro hodnoty menší než jedna"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../lib/number.vala:776
+#: ../lib/number.vala:779
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverzní hyperbolický tangens není definován pro hodnoty mimo interval [-1, "
 "1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../lib/number.vala:792
+#: ../lib/number.vala:795
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Logická konjunkce AND je definovaná pouze pro celá kladná čísla"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../lib/number.vala:804
+#: ../lib/number.vala:807
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Logická disjunkce OR je definovaná pouze pro celá kladná čísla"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:816
+#: ../lib/number.vala:819
 msgid "Boolean XOR is only defined for positive integers"
 msgstr ""
 "Logická exkluzivní disjunkce XOR je definovaná pouze pro celá kladná čísla"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:828
+#: ../lib/number.vala:831
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Logická negace NOT je definovaná pouze pro celá kladná čísla"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../lib/number.vala:851
+#: ../lib/number.vala:854
 msgid "Shift is only possible on integer values"
 msgstr "Posun je možný pouze u celočíselných hodnot"
 
@@ -2726,12 +2730,12 @@ msgid "Show release version"
 msgstr "Zobrazit verzi vydání"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:293
+#: ../src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Nelze otevřít soubor s nápovědou"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:324
+#: ../src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -2739,12 +2743,12 @@ msgstr ""
 "Petr Pulc <petrpulc@gmail.com>\n"
 "Marek Černocký <marek@manet.cz>"
 
-#: ../src/gnome-calculator.vala:330
+#: ../src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "O kalkulačce"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:338
+#: ../src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulačka s finančním a vědeckým režimem."
 
@@ -2830,18 +2834,3 @@ msgstr "64 bitů"
 msgid "_Quit"
 msgstr "U_končit"
 
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "stupeň Celsia,stupně Celsia,stupňů Celsia,˚C"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "stupeň Fahrenheita,stupně Fahrenheita,stupňů Fahrenheita,˚F"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "kelvin,kelviny,kelvinů,K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "stupeň Rankina,stupně Rankina,stupňů Rankina,˚R"
