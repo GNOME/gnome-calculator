@@ -6,15 +6,15 @@
 # Germán Poo Caamaño <gpoo@ubiobio.cl>, 2003.
 # Francisco Javier F. Serrador <serrador@openshine.com>, 2006.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010, 2011.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011, 2012, 2013, 2014, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-29 11:39+0000\n"
-"PO-Revision-Date: 2016-12-15 09:40+0100\n"
+"POT-Creation-Date: 2017-01-03 23:28+0000\n"
+"PO-Revision-Date: 2017-01-11 09:32+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -448,19 +448,11 @@ msgstr ""
 
 #. Title of Sum-of-the-Years’-Digits Depreciation dialog
 #: ../data/buttons-financial.ui.h:63
-#| msgid "Sum-of-the-Years'-Digits Depreciation"
 msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Sumatorio de los años-dígitos de depreciación"
 
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:65
-#| msgid ""
-#| "Calculates the depreciation allowance on an asset for a specified period "
-#| "of time, using the Sum-of-the-Years'-Digits method. This method of "
-#| "depreciation accelerates the rate of depreciation, so that more "
-#| "depreciation expense occurs in earlier periods than in later ones. The "
-#| "useful life is the number of periods, typically years, over which an "
-#| "asset is depreciated. "
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
@@ -623,12 +615,10 @@ msgid "Boolean NOT"
 msgstr "NOT booleano"
 
 #: ../data/buttons-programming.ui.h:59
-#| msgid "Ones' Complement"
 msgid "Ones’ Complement"
 msgstr "Complemento a uno"
 
 #: ../data/buttons-programming.ui.h:60
-#| msgid "Two's Complement"
 msgid "Two’s Complement"
 msgstr "Complemento a dos"
 
@@ -712,7 +702,7 @@ msgstr "El Proyecto GNOME"
 
 #. Program name in the about dialog
 #: ../data/org.gnome.Calculator.desktop.in.h:1 ../data/math-window.ui.h:6
-#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:329
+#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -1293,14 +1283,12 @@ msgstr "Desbordamiento de búfer. Inténtelo con un tamaño de palabra mayor."
 #. Error displayed to user when they an unknown variable is entered
 #: ../lib/math-equation.vala:973
 #, c-format
-#| msgid "Unknown variable '%s'"
 msgid "Unknown variable “%s”"
 msgstr "Variable «%s» desconocida"
 
 #. Error displayed to user when an unknown function is entered
 #: ../lib/math-equation.vala:980
 #, c-format
-#| msgid "Function '%s' is not defined"
 msgid "Function “%s” is not defined"
 msgstr "La función «%s» no está definida"
 
@@ -1365,28 +1353,33 @@ msgstr "La potencia de cero no está definida para un exponente negativo"
 msgid "Zero raised to zero is undefined"
 msgstr "Cero elevado a cero no está definido"
 
+#: ../lib/number.vala:429
+#| msgid "nth root of negative number is undefined for even n"
+msgid "The zeroth root of a number is undefined"
+msgstr "La raíz cero de un número no está definida"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../lib/number.vala:456 ../lib/number.vala:487
+#: ../lib/number.vala:459 ../lib/number.vala:490
 msgid "Logarithm of zero is undefined"
 msgstr "El logaritmo de cero no está definido"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: ../lib/number.vala:509
+#: ../lib/number.vala:512
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "El factorial sólo está definido para números reales no negativos"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../lib/number.vala:569
+#: ../lib/number.vala:572
 msgid "Division by zero is undefined"
 msgstr "La división por cero no está definida"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../lib/number.vala:590
+#: ../lib/number.vala:593
 msgid "Modulus division is only defined for integers"
 msgstr "La división modular sólo está definida para enteros"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../lib/number.vala:663
+#: ../lib/number.vala:666
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1394,51 +1387,51 @@ msgstr ""
 "lo son de π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../lib/number.vala:682
+#: ../lib/number.vala:685
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "La inversa del seno no está definida para valores fuera de [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../lib/number.vala:699
+#: ../lib/number.vala:702
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "La inversa del coseno no está definida para valores fuera de [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../lib/number.vala:760
+#: ../lib/number.vala:763
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "La inversa del coseno hiperbólico no está definida para valores menores que "
 "uno"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../lib/number.vala:776
+#: ../lib/number.vala:779
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "La inversa de la tangente hiperbólica no está definida para valores fuera de "
 "[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../lib/number.vala:792
+#: ../lib/number.vala:795
 msgid "Boolean AND is only defined for positive integers"
 msgstr "El AND booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../lib/number.vala:804
+#: ../lib/number.vala:807
 msgid "Boolean OR is only defined for positive integers"
 msgstr "El OR booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:816
+#: ../lib/number.vala:819
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "El XOR booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:828
+#: ../lib/number.vala:831
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "El NOT booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../lib/number.vala:851
+#: ../lib/number.vala:854
 msgid "Shift is only possible on integer values"
 msgstr "El desplazamiento sólo es posible en valores enteros"
 
@@ -2729,24 +2722,24 @@ msgid "Show release version"
 msgstr "Mostrar el número de versión"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:293
+#: ../src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "No se pudo abrir el archivo de ayuda"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:324
+#: ../src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Jorge González <jorgegonz@svn.gnome.org>, 2007-2009\n"
 "Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006\n"
 "Germán Poo-Caamaño <gpoo@ubiobio.cl>, 2003"
 
-#: ../src/gnome-calculator.vala:330
+#: ../src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Acerca de Calculadora"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:338
+#: ../src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora con modos científico y financiero."
 
@@ -2878,10 +2871,6 @@ msgstr "_Salir"
 
 #~ msgid "Negative root of zero is undefined"
 #~ msgstr "La raíz negativa de cero no está definida"
-
-#~ msgid "nth root of negative number is undefined for even n"
-#~ msgstr ""
-#~ "La raíz enésima de un número negativo no está definida, incluso para n"
 
 #~ msgid "Overflow: the result couldn't be calculated"
 #~ msgstr "Desbordamiento: no se pudo calcular el resultado"
