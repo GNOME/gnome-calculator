@@ -22,7 +22,7 @@
 # Frank Arnold <frank@scirocco-5v-turbo.de>, 2005.
 # Jochen Skulj <jochen@jochenskulj.de>
 # Andre Klapper <ak-47@gmx.net>, 2008.
-# Mario Blättermann <mario.blaettermann@gmail.com>, 2010-2011, 2016.
+# Mario Blättermann <mario.blaettermann@gmail.com>, 2010-2011, 2016-2017.
 # Jakob Kramer <jakob.kramer@gmx.de>, 2010, 2012.
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2011.
 # Hendrik Knackstedt <kn.hendrik@gmail.com>, 2012.
@@ -35,8 +35,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-11-08 11:24+0000\n"
-"PO-Revision-Date: 2016-11-13 17:23+0100\n"
+"POT-Creation-Date: 2017-01-03 23:28+0000\n"
+"PO-Revision-Date: 2017-01-24 14:22+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -659,11 +659,11 @@ msgstr "_Zeichen:"
 msgid "_Insert"
 msgstr "E_infügen"
 
-#: ../data/gnome-calculator.appdata.xml.in.h:1
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:1
 msgid "GNOME Calculator"
 msgstr "GNOME Taschenrechner"
 
-#: ../data/gnome-calculator.appdata.xml.in.h:2
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:2
 msgid ""
 "GNOME Calculator is an application that solves mathematical equations. "
 "Though it at first appears to be a simple calculator with only basic "
@@ -676,7 +676,7 @@ msgstr ""
 "erweiterten, einen  finanztechnischen und einen Programmier-Modus "
 "umgeschaltet werden, in denen sich überraschende Fähigkeiten befinden."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:3
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:3
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
@@ -688,7 +688,7 @@ msgstr ""
 "Division, Berechnung komplexer Zahlen, Zufallszahlengeneration, "
 "Primfaktorzerlegung und Einheitenumrechnungen."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:4
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:4
 msgid ""
 "Financial mode supports several computations, including periodic interest "
 "rate, present and future value, double declining and straight line "
@@ -698,7 +698,7 @@ msgstr ""
 "periodischer Zinssatz, Barwert und zukünftigen Zielwert, degressive "
 "Doppelratenabschreibung und lineare Abschreibung und vieles mehr."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:5
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:5
 msgid ""
 "Programming mode supports conversion between common bases (binary, octal, "
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
@@ -708,39 +708,39 @@ msgstr ""
 "verbreiteten Zahlensystemen (Binär, Oktal, Dezimal und Hexadezimal), "
 "boolesche Algebra, Einer- und Zweierkomplement und weiteres."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:6
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:6
 msgid "GNOME Calculator in Basic Mode."
 msgstr "GNOME Taschenrechner im Standardmodus."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:7
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:7
 msgid "GNOME Calculator in Advanced Mode."
 msgstr "GNOME Taschenrechner im erweiterten Modus."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:8
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:8
 msgid "GNOME Calculator in Financial Mode."
 msgstr "GNOME Taschenrechner im finanztechnischen Modus."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:9
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:9
 msgid "GNOME Calculator in Programming Mode."
 msgstr "GNOME Taschenrechner im Programmier-Modus."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:10
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:10
 msgid "The GNOME Project"
 msgstr "Das GNOME-Projekt"
 
 #. Program name in the about dialog
-#: ../data/gnome-calculator.desktop.in.h:1 ../data/math-window.ui.h:6
-#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:329
+#: ../data/org.gnome.Calculator.desktop.in.h:1 ../data/math-window.ui.h:6
+#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Taschenrechner"
 
-#: ../data/gnome-calculator.desktop.in.h:2
+#: ../data/org.gnome.Calculator.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr ""
 "Arithmetische, wissenschaftliche und finanztechnische Berechnungen "
 "durchführen"
 
-#: ../data/gnome-calculator.desktop.in.h:3
+#: ../data/org.gnome.Calculator.desktop.in.h:3
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "Taschenrechner;Rechner;Arithmetisch;Wissenschaftlich;Finanztechnisch;"
 
@@ -1383,28 +1383,32 @@ msgstr "Die Potenz von null ist nicht für einen negativen Exponenten definiert"
 msgid "Zero raised to zero is undefined"
 msgstr "Null hoch null ist nicht definiert"
 
+#: ../lib/number.vala:429
+msgid "The zeroth root of a number is undefined"
+msgstr "Die 0-te Wurzel einer Zahl ist nicht definiert"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../lib/number.vala:456 ../lib/number.vala:487
+#: ../lib/number.vala:459 ../lib/number.vala:490
 msgid "Logarithm of zero is undefined"
 msgstr "Der Logarithmus von null ist nicht definiert"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: ../lib/number.vala:509
+#: ../lib/number.vala:512
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Fakultäten sind nur für nichtnegative ganze Zahlen definiert"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../lib/number.vala:569
+#: ../lib/number.vala:572
 msgid "Division by zero is undefined"
 msgstr "Division durch null ist nicht definiert"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../lib/number.vala:590
+#: ../lib/number.vala:593
 msgid "Modulus division is only defined for integers"
 msgstr "Modulo-Divisionen sind nur für Ganzzahlen definiert"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../lib/number.vala:663
+#: ../lib/number.vala:666
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1412,54 +1416,54 @@ msgstr ""
 "π∕2 (90°) sind"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../lib/number.vala:682
+#: ../lib/number.vala:685
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverser Sinus ist nicht für Werte außerhalb des Intervalls [-1, 1] definiert"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../lib/number.vala:699
+#: ../lib/number.vala:702
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverser Kosinus ist nicht für Werte außerhalb des Intervalls [-1, 1] "
 "definiert"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../lib/number.vala:760
+#: ../lib/number.vala:763
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Inverser hyperbolischer Kosinus ist nicht für Werte kleiner als eins "
 "definiert"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../lib/number.vala:776
+#: ../lib/number.vala:779
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inverser hyperbolischer Tangens ist nicht für Werte außerhalb des Intervalls "
 "[-1, 1] definiert"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../lib/number.vala:792
+#: ../lib/number.vala:795
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Boolesches UND ist nur für positive Ganzzahlen definiert"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../lib/number.vala:804
+#: ../lib/number.vala:807
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Boolesches ODER ist nur für positive Ganzzahlen definiert"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:816
+#: ../lib/number.vala:819
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Boolesches exklusives ODER ist nur für positive Ganzzahlen definiert"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:828
+#: ../lib/number.vala:831
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Boolesches NICHT ist nur für positive Ganzzahlen definiert"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../lib/number.vala:851
+#: ../lib/number.vala:854
 msgid "Shift is only possible on integer values"
 msgstr "Verschiebung ist nur mit Ganzzahlen möglich"
 
@@ -2161,8 +2165,8 @@ msgstr "%s ˚C"
 
 #: ../lib/unit.vala:82
 msgctxt "unit-symbols"
-msgid "degC,˚C"
-msgstr "Grad Celsius,°C"
+msgid "degC,˚C,C,c,Celsius,celsius"
+msgstr "degC,˚C,C,c,Celsius,celsius"
 
 #: ../lib/unit.vala:83
 msgid "Fahrenheit"
@@ -2176,8 +2180,8 @@ msgstr "%s ˚F"
 
 #: ../lib/unit.vala:83
 msgctxt "unit-symbols"
-msgid "degF,˚F"
-msgstr "Grad Fahrenheit,°F"
+msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "degF,˚F,F,f,Fahrenheit,fahrenheit"
 
 #: ../lib/unit.vala:84
 msgid "Kelvin"
@@ -2191,8 +2195,8 @@ msgstr "%s K"
 
 #: ../lib/unit.vala:84
 msgctxt "unit-symbols"
-msgid "K"
-msgstr "K"
+msgid "k,K,Kelvin,kelvin"
+msgstr "k,K,Kelvin,kelvin"
 
 # http://de.wikipedia.org/wiki/Rankine-Skala
 # Die Rankine-Skala ist eine Temperaturskala
@@ -2209,8 +2213,8 @@ msgstr "%s ˚R"
 
 #: ../lib/unit.vala:85
 msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra"
-msgstr "Grad Réaumur,°Ré, °Re, °Réaumur,°R"
+msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
+msgstr "degR,˚R,˚Ra,r,R,Rankine,rankine"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
 #: ../lib/unit.vala:87
@@ -2773,12 +2777,12 @@ msgid "Show release version"
 msgstr "Version anzeigen"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:293
+#: ../src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Die Hilfedatei konnte nicht geöffnet werden"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:324
+#: ../src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Christian Neumair <chris@gnome-de.org>\n"
@@ -2789,12 +2793,12 @@ msgstr ""
 "Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>\n"
 "Jakob Kramer <jakob.kramer@gmx.de>"
 
-#: ../src/gnome-calculator.vala:330
+#: ../src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Info zu Taschenrechner"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:338
+#: ../src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Ein Taschenrechner mit finanztechnischem und wissenschaftlichem Modus."
 
@@ -2879,6 +2883,22 @@ msgstr "64 Bit"
 msgid "_Quit"
 msgstr "_Beenden"
 
+#~ msgctxt "unit-symbols"
+#~ msgid "degC,˚C"
+#~ msgstr "Grad Celsius,°C"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degF,˚F"
+#~ msgstr "Grad Fahrenheit,°F"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "K"
+#~ msgstr "K"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degR,˚R,˚Ra"
+#~ msgstr "Grad Réaumur,°Ré, °Re, °Réaumur,°R"
+
 #~ msgid "Lithuanian Litas"
 #~ msgstr "Litauische Litas"
 
@@ -2904,11 +2924,6 @@ msgstr "_Beenden"
 
 #~ msgid "Negative root of zero is undefined"
 #~ msgstr "Die negative Quadratwurzel von null ist nicht definiert"
-
-#~ msgid "nth root of negative number is undefined for even n"
-#~ msgstr ""
-#~ "Die n-te Quadratwurzel von negativen Zahlen ist nicht für gerade n "
-#~ "definiert"
 
 #~ msgid "Overflow: the result couldn't be calculated"
 #~ msgstr "Überlauf: Das Ergebnis konnte nicht berechnet werden"
