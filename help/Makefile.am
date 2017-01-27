@@ -18,6 +18,7 @@ HELP_FILES = absolute.page \
              factorize.page \
              financial.page \
              functions.page \
+             history.page \
              index.page \
              keyboard.page \
              legal.xml \
