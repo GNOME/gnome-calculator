@@ -25,6 +25,7 @@ public class MathVariablePopover : Gtk.Popover
     public MathVariablePopover (MathEquation equation)
     {
         this.equation = equation;
+        equation.history_signal.connect (this.handler);
 
         // Fill variable list
         var names = equation.variables.get_names ();
@@ -35,7 +36,6 @@ public class MathVariablePopover : Gtk.Popover
         }
 
         variable_list.add (make_variable_row ("rand", null));
-        variable_list.add (make_variable_row ("ans", equation.answer));
 
         // Sort list
         variable_list.set_sort_func (variable_list_sort);
@@ -51,6 +51,12 @@ public class MathVariablePopover : Gtk.Popover
         equation.variables.variable_deleted.connect ((name) => {
             variable_list.remove (find_row_for_variable (name));
         });
+    }
+
+    private void handler (string answer, Number number, int number_base, uint representation_base)
+    {
+        variable_list.remove (find_row_for_variable ("ans"));
+        variable_list.add (make_variable_row ("ans", number));
     }
 
     private Gtk.ListBoxRow? find_row_for_variable (string name)
