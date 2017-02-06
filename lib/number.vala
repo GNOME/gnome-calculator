@@ -513,6 +513,9 @@ public class Number : Object
                 return pwr (y);
         }
 
+        if (is_complex ())
+            return pwr (y);
+
         Number t;
         Number t2;
         if (y.is_negative ())
@@ -554,6 +557,12 @@ public class Number : Object
             /* Translators: Error displayed when attempted to raise 0 to power of zero */
             error = _("Zero raised to zero is undefined");
             return new Number.integer (0);
+        }
+
+        if (is_complex ())
+        {
+            var y = new Number.integer (n);
+            return pwr (y);
         }
 
         Number t;
