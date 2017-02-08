@@ -217,10 +217,12 @@ public class Calculator : Gtk.Application
             if (decimal == null)
                 decimal = "";
 
+            settings = new Settings ("org.gnome.calculator");
+            var angle_units = (AngleUnit) settings.get_enum ("angle-units");
             var e = new SolveEquation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
             e.base = 10;
             e.wordlen = 32;
-            e.angle_units = AngleUnit.DEGREES;
+            e.angle_units = angle_units;
 
             ErrorCode error;
             string? error_token = null;
