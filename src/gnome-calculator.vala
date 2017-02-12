@@ -40,7 +40,7 @@ public class Calculator : Gtk.Application
 
     public Calculator ()
     {
-        Object (flags : ApplicationFlags.NON_UNIQUE);
+        Object (flags : ApplicationFlags.NON_UNIQUE, application_id : "org.gnome.Calculator");
 
         add_main_option_entries (option_entries);
     }
