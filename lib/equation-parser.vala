@@ -20,21 +20,25 @@ public enum Associativity
 private enum Precedence
 {
     UNKNOWN         = 0,
-    ADD_SUBTRACT    = 1,
-    MULTIPLY        = 2,
+    /* Conversion node */
+    CONVERT         = 0,
+    /* Unit for conversion */
+    UNIT            = 1,
+    ADD_SUBTRACT    = 2,
+    MULTIPLY        = 3,
     /* MOD and DIVIDE must have same preedence. */
-    MOD             = 3,
-    DIVIDE          = 3,
-    NOT             = 4,
-    FUNCTION        = 5,
-    BOOLEAN         = 6,
-    PERCENTAGE      = 7,
+    MOD             = 4,
+    DIVIDE          = 4,
+    NOT             = 5,
+    FUNCTION        = 6,
+    BOOLEAN         = 7,
+    PERCENTAGE      = 8,
     /* UNARY_MINUS, ROOT and POWER must have same precedence. */
-    UNARY_MINUS     = 8,
-    POWER           = 8,
-    ROOT            = 8,
-    FACTORIAL       = 9,
-    NUMBER_VARIABLE = 10,
+    UNARY_MINUS     = 9,
+    POWER           = 9,
+    ROOT            = 9,
+    FACTORIAL       = 10,
+    NUMBER_VARIABLE = 11,
     /* DEPTH should be always at the bottom. It stops node jumping off the current depth level. */
     DEPTH
 }
@@ -925,7 +929,7 @@ public class ConvertNumberNode : ParseNode
         else
             to = right.token().text;
 
-        var tmp = mp_set_from_string (left.left.token().text, parser.number_base);
+        var tmp = left.left.solve();
         if (tmp == null)
             return null;
 
@@ -1074,7 +1078,6 @@ public class Parser
 
         if (!is_successfully_parsed)
             return null;
-
         var ans = root.solve ();
         if (ans == null && this.error == ErrorCode.NONE)
         {
@@ -1281,6 +1284,22 @@ public class Parser
     private bool statement ()
     {
         var token = lexer.get_next_token ();
+
+        if (token.type == LexerTokenType.SUBTRACT)
+        {
+            var old_token = token;
+            token = lexer.get_next_token();
+            if (token.type != LexerTokenType.PL_EOS)
+            {
+                insert_into_tree_unary (new UnaryMinusNode (this, old_token, make_precedence_p (Precedence.UNARY_MINUS), get_associativity_p (Precedence.UNARY_MINUS)));
+            }
+            else
+            {
+                lexer.roll_back();
+                token = old_token;
+            }
+        }
+        /* Fall through */
         if (token.type == LexerTokenType.VARIABLE || token.type == LexerTokenType.FUNCTION)
         {
             var token_old = token;
@@ -1306,7 +1325,7 @@ public class Parser
                         return false;
                     lexer.get_next_token ();
 
-                    insert_into_tree (new ConvertNode (this, token, 0, get_associativity (token)));
+                    insert_into_tree (new ConvertNode (this, token, make_precedence_p(Precedence.CONVERT), get_associativity (token)));
 
                     if (!unit ())
                         return false;
@@ -1345,7 +1364,7 @@ public class Parser
                         return false;
                     lexer.get_next_token ();
 
-                    insert_into_tree (new ConvertNode (this, token, 0, get_associativity (token)));
+                    insert_into_tree (new ConvertNode (this, token, make_precedence_p(Precedence.CONVERT), get_associativity (token)));
 
                     if (!unit ())
                         return false;
@@ -1399,7 +1418,7 @@ public class Parser
                         return false;
 
                     token = lexer.get_next_token ();
-                    insert_into_tree (new ConvertNumberNode (this, token, 0, get_associativity (token)));
+                    insert_into_tree (new ConvertNumberNode (this, token, make_precedence_p(Precedence.CONVERT), get_associativity (token)));
 
                     if (!unit ())
                         return false;
@@ -1421,7 +1440,7 @@ public class Parser
                             return false;
                         token = lexer.get_next_token ();
 
-                        insert_into_tree (new ConvertNumberNode (this, token, 0, get_associativity (token)));
+                        insert_into_tree (new ConvertNumberNode (this, token, make_precedence_p(Precedence.CONVERT), get_associativity (token)));
 
                         if (!unit ())
                             return false;
@@ -1454,7 +1473,7 @@ public class Parser
                 if (token.type == LexerTokenType.VARIABLE)
                 {
                     insert_into_tree (new ConstantNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token)));
-                    insert_into_tree (new ConvertBaseNode (this, token, 0, get_associativity (token), token.text));
+                    insert_into_tree (new ConvertBaseNode (this, token, make_precedence_p(Precedence.CONVERT), get_associativity (token), token.text));
                     return true;
                 }
                 else
@@ -1564,13 +1583,13 @@ public class Parser
             token = lexer.get_next_token ();
             if (token.type == LexerTokenType.SUP_NUMBER)
             {
-                insert_into_tree (new NameNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old), token_old.text + token.text));
+                insert_into_tree (new NameNode (this, token_old, make_precedence_p (Precedence.UNIT), get_associativity (token_old), token_old.text + token.text));
                 return true;
             }
             else
             {
                 lexer.roll_back ();
-                insert_into_tree (new NameNode (this, token_old, make_precedence_t (token_old.type), get_associativity (token_old)));
+                insert_into_tree (new NameNode (this, token_old, make_precedence_p (Precedence.UNIT), get_associativity (token_old)));
                 return true;
             }
         }
