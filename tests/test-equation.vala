@@ -158,6 +158,7 @@ private void test_conversions ()
     test ("0degC in degF", "32", 0);
     test ("0 K in degC", "−273.15", 0);
     test ("0 k in c", "−273.15", 0);
+    test ("-1 c in k", "272.15", 0);
 
     /* Digital Storage */
     test ("1000 bits in bytes", "125", 0);
