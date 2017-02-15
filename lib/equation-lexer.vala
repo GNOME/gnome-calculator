@@ -52,6 +52,7 @@ public enum LexerTokenType
     NSUP_NUMBER,        /* Negative Super Number */
     SUB_NUMBER,         /* Sub Number */
     FUNCTION,           /* Function */
+    UNIT,               /* Unit of conversion */
     VARIABLE,           /* Variable name */
     ASSIGN,             /* = */
     L_R_BRACKET,        /* ( */
@@ -295,11 +296,26 @@ public class Lexer : Object
     private bool check_if_function ()
     {
         var name = prelexer.get_marked_substring ();
+        return parser.function_is_defined (name);
+    }
 
-        if (parser.function_is_defined (name))
+    private bool check_if_unit ()
+    {
+        int super_count = 0;
+        while (prelexer.get_next_token () == LexerTokenType.PL_SUPER_DIGIT)
+            super_count++;
+
+        prelexer.roll_back ();
+
+        var name = prelexer.get_marked_substring ();
+        if (parser.unit_is_defined (name))
             return true;
-        else
-            return false;
+
+        while (super_count-- > 0)
+            prelexer.roll_back ();
+
+        name = prelexer.get_marked_substring ();
+        return parser.unit_is_defined (name);
     }
 
     private bool check_if_number ()
@@ -587,6 +603,8 @@ public class Lexer : Object
             {
                 if (check_if_function ())
                     return insert_token (LexerTokenType.FUNCTION);
+                else if (check_if_unit ())
+                    return insert_token (LexerTokenType.UNIT);
                 else
                     return insert_token (LexerTokenType.VARIABLE);
             }
@@ -602,6 +620,8 @@ public class Lexer : Object
             {
                 if (check_if_function ())
                     return insert_token (LexerTokenType.FUNCTION);
+                else if (check_if_unit ())
+                    return insert_token (LexerTokenType.UNIT);
                 else
                     return insert_token (LexerTokenType.VARIABLE);
             }
@@ -676,6 +696,8 @@ public class Lexer : Object
             return insert_token (LexerTokenType.IN);
         if (check_if_function ())
             return insert_token (LexerTokenType.FUNCTION);
+        if (check_if_unit ())
+            return insert_token (LexerTokenType.UNIT);
         else
             return insert_token (LexerTokenType.VARIABLE);
     }

@@ -224,6 +224,15 @@ public class UnitManager : Object
         return null;
     }
 
+    public bool unit_is_defined (string name)
+    {
+        var unit = get_unit_by_symbol (name);
+        if (unit != null)
+            return true;
+        else
+            return false;
+    }
+
     public Number? convert_by_symbol (Number x, string x_symbol, string z_symbol)
     {
         foreach (var c in categories)

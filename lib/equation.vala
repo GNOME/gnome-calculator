@@ -146,6 +146,11 @@ public class Equation : Object
         return null;
     }
 
+    public virtual bool unit_is_defined (string name)
+    {
+        return false;
+    }
+
     public virtual void set_variable (string name, Number x)
     {
     }
@@ -214,6 +219,19 @@ private class EquationParser : Parser
             return true;
 
         return equation.function_is_defined (name);
+    }
+
+    protected override bool unit_is_defined (string name)
+    {
+        if (name == "hex" || name == "hexadecimal" || name == "dec" || name == "decimal" || name == "oct" || name == "octal" || name == "bin" || name == "binary")
+            return true;
+
+        var unit_manager = UnitManager.get_default ();
+
+        if (unit_manager.unit_is_defined (name))
+            return true;
+
+        return equation.unit_is_defined (name);
     }
 
     protected override Number? convert (Number x, string x_units, string z_units)
