@@ -8,15 +8,15 @@
 # Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007, 2008.
 # Rimas Kudelis <rq@akl.lt>, 2010.
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012.
-# Aurimas Černius <aurisc4@gmail.com>, 2010, 2013, 2014, 2015, 2016.
+# Aurimas Černius <aurisc4@gmail.com>, 2010, 2013, 2014, 2015, 2016, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2016-10-28 07:00+0000\n"
-"PO-Revision-Date: 2016-10-31 14:30+0200\n"
+"POT-Creation-Date: 2017-02-24 17:25+0000\n"
+"PO-Revision-Date: 2017-03-10 22:02+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -149,7 +149,6 @@ msgid "x"
 msgstr "x"
 
 #: ../data/buttons-advanced.ui.h:35 ../data/buttons-programming.ui.h:11
-#| msgid "Absolute value [|]"
 msgid "Absolute Value [|]"
 msgstr "Modulis [|]"
 
@@ -313,12 +312,12 @@ msgstr ""
 msgid "C_ost:"
 msgstr "_Kaštai:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
 #: ../data/buttons-financial.ui.h:21
 msgid "_Life:"
 msgstr "_Laikotarpis:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
 #: ../data/buttons-financial.ui.h:23
 msgid "_Period:"
 msgstr "_Periodas:"
@@ -426,12 +425,12 @@ msgstr ""
 msgid "Straight-Line Depreciation"
 msgstr "Tiesiogiai proporcingas nusidėvėjimas"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
 #: ../data/buttons-financial.ui.h:57
 msgid "_Cost:"
 msgstr "_Kaštai:"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
 #: ../data/buttons-financial.ui.h:59
 msgid "_Salvage:"
 msgstr "_Likvidacinė vertė:"
@@ -449,24 +448,33 @@ msgstr ""
 "lygiomis dalimis visam laikotarpiui. Dažniausiai naudojamas laikotarpis yra "
 "periodų (paprastai metų) skaičius, per kuriuos turtas nusidėvi."
 
-#. Title of Sum-of-the-Years
+#. Title of Sum-of-the-Years’-Digits Depreciation dialog
 #: ../data/buttons-financial.ui.h:63
-msgid "Sum-of-the-Years'-Digits Depreciation"
-msgstr "Nusidėvėjimas metų skaičiaus metodu"
+#| msgid "Sum-of-the-Years'-Digits Depreciation"
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "Nusidėvėjimas metų skaičiaus skaitiniu metodu"
 
-#. Sum-of-the-Years
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
 #: ../data/buttons-financial.ui.h:65
+#| msgid ""
+#| "Calculates the depreciation allowance on an asset for a specified period "
+#| "of time, using the Sum-of-the-Years'-Digits method. This method of "
+#| "depreciation accelerates the rate of depreciation, so that more "
+#| "depreciation expense occurs in earlier periods than in later ones. The "
+#| "useful life is the number of periods, typically years, over which an "
+#| "asset is depreciated. "
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
 "Skaičiuojamas turto nusidėvėjimas per nurodytą laiko periodą metų skaičiaus "
-"būdu. Naudojant šį būdą, ankstesniesiems periodams suskaičiuojamas didesnis "
-"nusidėvėjimas negu vėlesniesiems. Dažniausiai naudojamas laikotarpis yra "
-"periodų (paprastai metų) skaičius, per kuriuos turtas nusidėvi. "
+"skaitiniu metodu. Naudojant šį metodą, ankstesniesiems periodams "
+"suskaičiuojamas didesnis nusidėvėjimas negu vėlesniesiems. Dažniausiai "
+"naudojamas laikotarpis yra periodų (paprastai metų) skaičius, per kuriuos "
+"turtas nusidėvi. "
 
 #. Title of Payment Period dialog
 #: ../data/buttons-financial.ui.h:67
@@ -516,7 +524,7 @@ msgstr "Peri"
 msgid "Financial Term"
 msgstr "Finansinis terminas"
 
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: ../data/buttons-financial.ui.h:100
 msgid "Syd"
 msgstr "Msn"
@@ -615,11 +623,13 @@ msgid "Boolean NOT"
 msgstr "Loginis NE"
 
 #: ../data/buttons-programming.ui.h:59
-msgid "Ones' Complement"
-msgstr "Bitinis vieneto papildymas"
+#| msgid "Ones' Complement"
+msgid "Ones’ Complement"
+msgstr "Vieneto papildymas"
 
 #: ../data/buttons-programming.ui.h:60
-msgid "Two's Complement"
+#| msgid "Two's Complement"
+msgid "Two’s Complement"
 msgstr "Dvejetainis papildymas"
 
 #. Insert ASCII dialog: Label before character entry
@@ -632,11 +642,11 @@ msgstr "_Simbolis:"
 msgid "_Insert"
 msgstr "Įterpt_i"
 
-#: ../data/gnome-calculator.appdata.xml.in.h:1
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:1
 msgid "GNOME Calculator"
 msgstr "GNOME skaičiuotuvas"
 
-#: ../data/gnome-calculator.appdata.xml.in.h:2
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:2
 msgid ""
 "GNOME Calculator is an application that solves mathematical equations. "
 "Though it at first appears to be a simple calculator with only basic "
@@ -648,7 +658,7 @@ msgstr ""
 "aritmetinius veiksmus, galima įjungti išplėstinę, finansų arba programavimo "
 "veikseną, kurioje atsiskleidžia įspūdingos galimybės."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:3
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:3
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
@@ -660,7 +670,7 @@ msgstr ""
 "kompleksiniai skaičiai, atsitiktinių skaičių generavimas, skaidymas "
 "pirminiais dauginamaisiais bei matavimo vienetų keitimas."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:4
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:4
 msgid ""
 "Financial mode supports several computations, including periodic interest "
 "rate, present and future value, double declining and straight line "
@@ -670,7 +680,7 @@ msgstr ""
 "norma, dabartinė ir ateities vertė, dvigubo mažėjimo ir tiesinį nusidėvėjimą "
 "bei daug kitų."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:5
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:5
 msgid ""
 "Programming mode supports conversion between common bases (binary, octal, "
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
@@ -680,37 +690,37 @@ msgstr ""
 "sistemų (dvejetainės, aštuonetainės, dešimtainės ir šešioliktainės), bulio "
 "algebrą, vienetų dvejetų papildinys, simbolių kodų konvertavimas ir kt."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:6
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:6
 msgid "GNOME Calculator in Basic Mode."
 msgstr "GNOME skaičiuotuvas paprastoje veiksenoje."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:7
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:7
 msgid "GNOME Calculator in Advanced Mode."
 msgstr "GNOME skaičiuotuvas išplėstinėje veiksenoje."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:8
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:8
 msgid "GNOME Calculator in Financial Mode."
 msgstr "GNOME skaičiuotuvas finansinėje veiksenoje."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:9
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:9
 msgid "GNOME Calculator in Programming Mode."
 msgstr "GNOME skaičiuotuvas programavimo veiksenoje."
 
-#: ../data/gnome-calculator.appdata.xml.in.h:10
+#: ../data/org.gnome.Calculator.appdata.xml.in.h:10
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
 #. Program name in the about dialog
-#: ../data/gnome-calculator.desktop.in.h:1 ../data/math-window.ui.h:6
-#: ../src/gnome-calculator.vala:79 ../src/gnome-calculator.vala:316
+#: ../data/org.gnome.Calculator.desktop.in.h:1 ../data/math-window.ui.h:6
+#: ../src/gnome-calculator.vala:80 ../src/gnome-calculator.vala:332
 msgid "Calculator"
 msgstr "Skaičiuotuvas"
 
-#: ../data/gnome-calculator.desktop.in.h:2
+#: ../data/org.gnome.Calculator.desktop.in.h:2
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Atlikti aritmetinius, mokslinius ar finansinius skaičiavimus"
 
-#: ../data/gnome-calculator.desktop.in.h:3
+#: ../data/org.gnome.Calculator.desktop.in.h:3
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "skaičiavimai;aritmetika;moksliniai;finansiniai;"
 
@@ -723,7 +733,6 @@ msgid " in "
 msgstr " į "
 
 #: ../data/math-converter.ui.h:3
-#| msgid "="
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -795,61 +804,51 @@ msgid "Switching modes"
 msgstr "Keisti veiksenas"
 
 #: ../data/math-shortcuts.ui.h:7
-#| msgid "Basic Mode"
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Įjungti paprastą veikseną"
 
 #: ../data/math-shortcuts.ui.h:8
-#| msgid "Advanced Mode"
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Įjungti išplėstinę veikseną"
 
 #: ../data/math-shortcuts.ui.h:9
-#| msgid "Financial Mode"
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Įjungti finansinę veikseną"
 
 #: ../data/math-shortcuts.ui.h:10
-#| msgid "Programming Mode"
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Įjungti programavimo veikseną"
 
 #: ../data/math-shortcuts.ui.h:11
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Įjungti klaviatūros veikseną"
 
 #: ../data/math-shortcuts.ui.h:12
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Klaviatūros įvedimo laukas"
 
 #: ../data/math-shortcuts.ui.h:13
-#| msgid "Multiply [*]"
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Dauginti (*)"
 
 #: ../data/math-shortcuts.ui.h:14
-#| msgid "Divide [/]"
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Dalinti (/)"
 
 #: ../data/math-shortcuts.ui.h:15
-#| msgid "Square root [Ctrl+R]"
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Kvadratinė šaknis (√)"
 
 #: ../data/math-shortcuts.ui.h:16
-#| msgid "Inverse"
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Apsukti"
@@ -865,7 +864,6 @@ msgid "Enter numbers in scientific format"
 msgstr "Įveskite skaičius moksline forma"
 
 #: ../data/math-shortcuts.ui.h:19
-#| msgid "Programming Mode"
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Programavimo veiksena"
@@ -886,7 +884,6 @@ msgid "Switch to decimal"
 msgstr "Įjungti dešimtainę"
 
 #: ../data/math-shortcuts.ui.h:23
-#| msgid "Hexadecimal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Įjungti šešioliktainę"
@@ -901,7 +898,6 @@ msgid "Preferences"
 msgstr "Nuostatos"
 
 #: ../data/menu.ui.h:3
-#| msgid "Keyboard Mode"
 msgid "_Keyboard Shortcuts"
 msgstr "_Klaviatūros trumpiniai"
 
@@ -1023,6 +1019,14 @@ msgstr "Vidinis tikslumas"
 msgid "The internal precision used with the MPFR library"
 msgstr "MPFR bibliotekos naudojamas vidinis tikslumas"
 
+#: ../data/org.gnome.calculator.gschema.xml.h:27
+msgid "Window position"
+msgstr "Lango padėtis"
+
+#: ../data/org.gnome.calculator.gschema.xml.h:28
+msgid "Window position (x and y) of the last closed window."
+msgstr "Lango padėtis (x ir y) paskutiniam užvertam langui."
+
 #: ../lib/currency.vala:28
 msgid "UAE Dirham"
 msgstr "JAE dirhamas"
@@ -1096,7 +1100,6 @@ msgid "Euro"
 msgstr "Euro"
 
 #: ../lib/currency.vala:46
-#| msgid "Pound Sterling"
 msgid "British Pound Sterling"
 msgstr "Britų svaras sterlingų"
 
@@ -1256,6 +1259,11 @@ msgstr "Venesuelos bolivaras"
 msgid "South African Rand"
 msgstr "Pietų Afrikos Respublikos randas"
 
+#: ../lib/equation-parser.vala:715 ../lib/number.vala:429
+#| msgid "nth root of negative number is undefined for even n"
+msgid "The zeroth root of a number is undefined"
+msgstr "Skaičiaus nulinio laipsnio šaknis yra neapibrėžta"
+
 #: ../lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "Klaida, pasikartojimų skaičius turi būti teigiamas"
@@ -1287,14 +1295,16 @@ msgstr "Perpildymas. Mėginkite didesnį žodžio ilgį"
 #. Error displayed to user when they an unknown variable is entered
 #: ../lib/math-equation.vala:973
 #, c-format
-msgid "Unknown variable '%s'"
-msgstr "Nežinomas kintamasis '%s'"
+#| msgid "Unknown variable '%s'"
+msgid "Unknown variable “%s”"
+msgstr "Nežinomas kintamasis „%s“"
 
 #. Error displayed to user when an unknown function is entered
 #: ../lib/math-equation.vala:980
 #, c-format
-msgid "Function '%s' is not defined"
-msgstr "Neapibrėžta funkcija '%s'"
+#| msgid "Function '%s' is not defined"
+msgid "Function “%s” is not defined"
+msgstr "Neapibrėžta funkcija „%s“"
 
 #. Error displayed to user when an conversion with unknown units is attempted
 #: ../lib/math-equation.vala:987
@@ -1358,77 +1368,77 @@ msgid "Zero raised to zero is undefined"
 msgstr "Nulis nuliniu laipsniu neapibrėžtas"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: ../lib/number.vala:456 ../lib/number.vala:487
+#: ../lib/number.vala:459 ../lib/number.vala:490
 msgid "Logarithm of zero is undefined"
 msgstr "Nulio logaritmas neapibrėžtas"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: ../lib/number.vala:509
+#: ../lib/number.vala:512
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Faktorialas apibrėžtas tik natūraliems skaičiams"
 
 #. Translators: Error displayed attempted to divide by zero
-#: ../lib/number.vala:569
+#: ../lib/number.vala:572
 msgid "Division by zero is undefined"
 msgstr "Dalyba iš nulio neapibrėžta"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../lib/number.vala:590
+#: ../lib/number.vala:593
 msgid "Modulus division is only defined for integers"
 msgstr "Dalyba su liekana apibrėžta tik sveikiems skaičiams"
 
 #. Translators: Error displayed when tangent value is undefined
-#: ../lib/number.vala:663
+#: ../lib/number.vala:666
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "Tangentas neapibrėžtas kampams, kurie yra π (180°) kartotiniai nuo π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: ../lib/number.vala:682
+#: ../lib/number.vala:685
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Arksinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: ../lib/number.vala:699
+#: ../lib/number.vala:702
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Arkkosinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../lib/number.vala:760
+#: ../lib/number.vala:763
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Hiperbolinis arkkosinusas neapibrėžtas reikšmėms, mažesnėms arba lygioms "
 "vienetui"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../lib/number.vala:776
+#: ../lib/number.vala:779
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "Hiperbolinis arktangentas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../lib/number.vala:792
+#: ../lib/number.vala:795
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Loginis IR apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../lib/number.vala:804
+#: ../lib/number.vala:807
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Loginis ARBA apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:816
+#: ../lib/number.vala:819
 msgid "Boolean XOR is only defined for positive integers"
 msgstr ""
 "Loginė griežta disjunkcija apibrėžta tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../lib/number.vala:828
+#: ../lib/number.vala:831
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Loginis NE apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../lib/number.vala:851
+#: ../lib/number.vala:854
 msgid "Shift is only possible on integer values"
 msgstr "Postūmis galimas tik sveikiems skaičiams"
 
@@ -1758,974 +1768,984 @@ msgid "nanometer,nanometers,nm"
 msgstr "nanometras,nanometrai,nm"
 
 #: ../lib/unit.vala:58
-msgid "Hectares"
-msgstr "Hektarai"
+msgid "Desktop Publishing Point"
+msgstr "Darbalaukio paskelbimo taškas"
 
-#: ../lib/unit.vala:58
-#, c-format
-msgctxt "unit-format"
-msgid "%s ha"
-msgstr "%s ha"
-
-#: ../lib/unit.vala:58
-msgctxt "unit-symbols"
-msgid "hectare,hectares,ha"
-msgstr "hektaras,hektarai,ha"
-
-#: ../lib/unit.vala:59
-msgid "Acres"
-msgstr "Akrai"
-
-#: ../lib/unit.vala:59
-#, c-format
-msgctxt "unit-format"
-msgid "%s acres"
-msgstr "%s akrai"
-
-#: ../lib/unit.vala:59
-msgctxt "unit-symbols"
-msgid "acre,acres"
-msgstr "akras,akrai"
-
-#: ../lib/unit.vala:60
-msgid "Square Meters"
-msgstr "Kvadratiniai metrai"
-
-#: ../lib/unit.vala:60
-#, c-format
-msgctxt "unit-format"
-msgid "%s m²"
-msgstr "%s m²"
-
-#: ../lib/unit.vala:60
-msgctxt "unit-symbols"
-msgid "m²"
-msgstr "m²"
-
-#: ../lib/unit.vala:61
-msgid "Square Centimeters"
-msgstr "Kvadratiniai centimetrai"
-
-#: ../lib/unit.vala:61
-#, c-format
-msgctxt "unit-format"
-msgid "%s cm²"
-msgstr "%s cm²"
-
-#: ../lib/unit.vala:61
-msgctxt "unit-symbols"
-msgid "cm²"
-msgstr "cm²"
-
-#: ../lib/unit.vala:62
-msgid "Square Millimeters"
-msgstr "Kvadratiniai milimetrai"
-
-#: ../lib/unit.vala:62
-#, c-format
-msgctxt "unit-format"
-msgid "%s mm²"
-msgstr "%s mm²"
-
-#: ../lib/unit.vala:62
-msgctxt "unit-symbols"
-msgid "mm²"
-msgstr "mm²"
-
-#: ../lib/unit.vala:63
-msgid "Cubic Meters"
-msgstr "Kubiniai metrai"
-
-#: ../lib/unit.vala:63
-#, c-format
-msgctxt "unit-format"
-msgid "%s m³"
-msgstr "%s m³"
-
-#: ../lib/unit.vala:63
-msgctxt "unit-symbols"
-msgid "m³"
-msgstr "m³"
-
-#: ../lib/unit.vala:64
-msgid "Gallons"
-msgstr "Galonai"
-
-#: ../lib/unit.vala:64
-#, c-format
-msgctxt "unit-format"
-msgid "%s gal"
-msgstr "%s gal"
-
-#: ../lib/unit.vala:64
-msgctxt "unit-symbols"
-msgid "gallon,gallons,gal"
-msgstr "galonas,galonai,gal"
-
-#: ../lib/unit.vala:65
-msgid "Liters"
-msgstr "Litrai"
-
-#: ../lib/unit.vala:65
-#, c-format
-msgctxt "unit-format"
-msgid "%s L"
-msgstr "%s l"
-
-#: ../lib/unit.vala:65
-msgctxt "unit-symbols"
-msgid "litre,litres,liter,liters,L"
-msgstr "litras,litrai,l"
-
-#: ../lib/unit.vala:66
-msgid "Quarts"
-msgstr "Kvortos"
-
-#: ../lib/unit.vala:66
-#, c-format
-msgctxt "unit-format"
-msgid "%s qt"
-msgstr "%s kvort"
-
-#: ../lib/unit.vala:66
-msgctxt "unit-symbols"
-msgid "quart,quarts,qt"
-msgstr "kvorta,kvortos,kvort"
-
-#: ../lib/unit.vala:67
-msgid "Pints"
-msgstr "Pintos"
-
-#: ../lib/unit.vala:67
+#: ../lib/unit.vala:58 ../lib/unit.vala:68
 #, c-format
 msgctxt "unit-format"
 msgid "%s pt"
 msgstr "%s pt"
 
+#: ../lib/unit.vala:58
+#| msgctxt "unit-symbols"
+#| msgid "pint,pints,pt"
+msgctxt "unit-symbols"
+msgid "point,pt,points,pts"
+msgstr "taškas,tšk,taškai"
+
+#: ../lib/unit.vala:59
+msgid "Hectares"
+msgstr "Hektarai"
+
+#: ../lib/unit.vala:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr "%s ha"
+
+#: ../lib/unit.vala:59
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr "hektaras,hektarai,ha"
+
+#: ../lib/unit.vala:60
+msgid "Acres"
+msgstr "Akrai"
+
+#: ../lib/unit.vala:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr "%s akrai"
+
+#: ../lib/unit.vala:60
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr "akras,akrai"
+
+#: ../lib/unit.vala:61
+msgid "Square Meters"
+msgstr "Kvadratiniai metrai"
+
+#: ../lib/unit.vala:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
+msgstr "%s m²"
+
+#: ../lib/unit.vala:61
+msgctxt "unit-symbols"
+msgid "m²"
+msgstr "m²"
+
+#: ../lib/unit.vala:62
+msgid "Square Centimeters"
+msgstr "Kvadratiniai centimetrai"
+
+#: ../lib/unit.vala:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr "%s cm²"
+
+#: ../lib/unit.vala:62
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr "cm²"
+
+#: ../lib/unit.vala:63
+msgid "Square Millimeters"
+msgstr "Kvadratiniai milimetrai"
+
+#: ../lib/unit.vala:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr "%s mm²"
+
+#: ../lib/unit.vala:63
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr "mm²"
+
+#: ../lib/unit.vala:64
+msgid "Cubic Meters"
+msgstr "Kubiniai metrai"
+
+#: ../lib/unit.vala:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr "%s m³"
+
+#: ../lib/unit.vala:64
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr "m³"
+
+#: ../lib/unit.vala:65
+msgid "Gallons"
+msgstr "Galonai"
+
+#: ../lib/unit.vala:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr "%s gal"
+
+#: ../lib/unit.vala:65
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr "galonas,galonai,gal"
+
+#: ../lib/unit.vala:66
+msgid "Liters"
+msgstr "Litrai"
+
+#: ../lib/unit.vala:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr "%s l"
+
+#: ../lib/unit.vala:66
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr "litras,litrai,l"
+
 #: ../lib/unit.vala:67
+msgid "Quarts"
+msgstr "Kvortos"
+
+#: ../lib/unit.vala:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr "%s kvort"
+
+#: ../lib/unit.vala:67
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr "kvorta,kvortos,kvort"
+
+#: ../lib/unit.vala:68
+msgid "Pints"
+msgstr "Pintos"
+
+#: ../lib/unit.vala:68
 msgctxt "unit-symbols"
 msgid "pint,pints,pt"
 msgstr "pinta,pintos,pt"
 
-#: ../lib/unit.vala:68
+#: ../lib/unit.vala:69
 msgid "Milliliters"
 msgstr "Mililitrai"
 
-#: ../lib/unit.vala:68
+#: ../lib/unit.vala:69
 #, c-format
 msgctxt "unit-format"
 msgid "%s mL"
 msgstr "%s ml"
 
-#: ../lib/unit.vala:68
+#: ../lib/unit.vala:69
 msgctxt "unit-symbols"
 msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "mililitras,mililitrai,ml,cm³"
 
-#: ../lib/unit.vala:69
+#: ../lib/unit.vala:70
 msgid "Microliters"
 msgstr "Mikrolitrai"
 
-#: ../lib/unit.vala:69
+#: ../lib/unit.vala:70
 #, c-format
 msgctxt "unit-format"
 msgid "%s μL"
 msgstr "%s μl"
 
-#: ../lib/unit.vala:69
+#: ../lib/unit.vala:70
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
 msgstr "mm³,μl,ul"
 
-#: ../lib/unit.vala:70
+#: ../lib/unit.vala:71
 msgid "Tonnes"
 msgstr "Tonos"
 
-#: ../lib/unit.vala:70
+#: ../lib/unit.vala:71
 #, c-format
 msgctxt "unit-format"
 msgid "%s T"
 msgstr "%s t"
 
-#: ../lib/unit.vala:70
+#: ../lib/unit.vala:71
 msgctxt "unit-symbols"
 msgid "tonne,tonnes"
 msgstr "tona,tonos"
 
-#: ../lib/unit.vala:71
+#: ../lib/unit.vala:72
 msgid "Kilograms"
 msgstr "Kilogramai"
 
-#: ../lib/unit.vala:71
+#: ../lib/unit.vala:72
 #, c-format
 msgctxt "unit-format"
 msgid "%s kg"
 msgstr "%s kg"
 
-#: ../lib/unit.vala:71
+#: ../lib/unit.vala:72
 msgctxt "unit-symbols"
 msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgstr "kilogramas,kilogramai,kg"
 
-#: ../lib/unit.vala:72
+#: ../lib/unit.vala:73
 msgid "Pounds"
 msgstr "Svarai"
 
-#: ../lib/unit.vala:72
+#: ../lib/unit.vala:73
 #, c-format
 msgctxt "unit-format"
 msgid "%s lb"
 msgstr "%s lb"
 
-#: ../lib/unit.vala:72
+#: ../lib/unit.vala:73
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb"
 msgstr "svaras,svarai,lb"
 
-#: ../lib/unit.vala:73
+#: ../lib/unit.vala:74
 msgid "Ounces"
 msgstr "Uncijos"
 
-#: ../lib/unit.vala:73
+#: ../lib/unit.vala:74
 #, c-format
 msgctxt "unit-format"
 msgid "%s oz"
 msgstr "%s oz"
 
-#: ../lib/unit.vala:73
+#: ../lib/unit.vala:74
 msgctxt "unit-symbols"
 msgid "ounce,ounces,oz"
 msgstr "uncija,uncijos,oz"
 
-#: ../lib/unit.vala:74
+#: ../lib/unit.vala:75
 msgid "Grams"
 msgstr "Gramai"
 
-#: ../lib/unit.vala:74
+#: ../lib/unit.vala:75
 #, c-format
 msgctxt "unit-format"
 msgid "%s g"
 msgstr "%s g"
 
-#: ../lib/unit.vala:74
+#: ../lib/unit.vala:75
 msgctxt "unit-symbols"
 msgid "gram,grams,gramme,grammes,g"
 msgstr "gramas,gramai,g"
 
-#: ../lib/unit.vala:75
+#: ../lib/unit.vala:76
 msgid "Years"
 msgstr "Metai"
 
-#: ../lib/unit.vala:75
+#: ../lib/unit.vala:76
 #, c-format
 msgctxt "unit-format"
 msgid "%s years"
 msgstr "%s metai"
 
-#: ../lib/unit.vala:75
+#: ../lib/unit.vala:76
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "metai"
 
-#: ../lib/unit.vala:76
+#: ../lib/unit.vala:77
 msgid "Days"
 msgstr "Dienos"
 
-#: ../lib/unit.vala:76
+#: ../lib/unit.vala:77
 #, c-format
 msgctxt "unit-format"
 msgid "%s days"
 msgstr "%s dienos"
 
-#: ../lib/unit.vala:76
+#: ../lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "diena,dienos"
 
-#: ../lib/unit.vala:77
+#: ../lib/unit.vala:78
 msgid "Hours"
 msgstr "Valandos"
 
-#: ../lib/unit.vala:77
+#: ../lib/unit.vala:78
 #, c-format
 msgctxt "unit-format"
 msgid "%s hours"
 msgstr "%s valandos"
 
-#: ../lib/unit.vala:77
+#: ../lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "valanda,valandos"
 
-#: ../lib/unit.vala:78
+#: ../lib/unit.vala:79
 msgid "Minutes"
 msgstr "Minutė"
 
-#: ../lib/unit.vala:78
+#: ../lib/unit.vala:79
 #, c-format
 msgctxt "unit-format"
 msgid "%s minutes"
 msgstr "%s minutės"
 
-#: ../lib/unit.vala:78
+#: ../lib/unit.vala:79
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "minutė,minutės"
 
-#: ../lib/unit.vala:79
+#: ../lib/unit.vala:80
 msgid "Seconds"
 msgstr "Sekundės"
 
-#: ../lib/unit.vala:79
+#: ../lib/unit.vala:80
 #, c-format
 msgctxt "unit-format"
 msgid "%s s"
 msgstr "%s s"
 
-#: ../lib/unit.vala:79
+#: ../lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "sekundė,sekundės,s"
 
-#: ../lib/unit.vala:80
+#: ../lib/unit.vala:81
 msgid "Milliseconds"
 msgstr "Milisekundės"
 
-#: ../lib/unit.vala:80
+#: ../lib/unit.vala:81
 #, c-format
 msgctxt "unit-format"
 msgid "%s ms"
 msgstr "%s ms"
 
-#: ../lib/unit.vala:80
+#: ../lib/unit.vala:81
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "milisekundė,milisekundės,ms"
 
-#: ../lib/unit.vala:81
+#: ../lib/unit.vala:82
 msgid "Microseconds"
 msgstr "Mikrosekundės"
 
-#: ../lib/unit.vala:81
+#: ../lib/unit.vala:82
 #, c-format
 msgctxt "unit-format"
 msgid "%s μs"
 msgstr "%s μs"
 
-#: ../lib/unit.vala:81
+#: ../lib/unit.vala:82
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "mikrosekundė,mikrosekundės,us,μs"
 
-#: ../lib/unit.vala:82
+#: ../lib/unit.vala:83
 msgid "Celsius"
 msgstr "Celcijaus"
 
-#: ../lib/unit.vala:82
+#: ../lib/unit.vala:83
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚C"
 msgstr "%s ˚C"
 
-#: ../lib/unit.vala:82
-msgctxt "unit-symbols"
-msgid "degC,˚C"
-msgstr "degC,˚C"
-
 #: ../lib/unit.vala:83
+msgctxt "unit-symbols"
+msgid "degC,˚C,C,c,Celsius,celsius"
+msgstr "laipsC,˚C,C,c,Celsijus,celsijus"
+
+#: ../lib/unit.vala:84
 msgid "Fahrenheit"
 msgstr "Farenheito"
 
-#: ../lib/unit.vala:83
+#: ../lib/unit.vala:84
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚F"
 msgstr "%s ˚F"
 
-#: ../lib/unit.vala:83
-msgctxt "unit-symbols"
-msgid "degF,˚F"
-msgstr "degF,˚F"
-
 #: ../lib/unit.vala:84
+msgctxt "unit-symbols"
+msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "laipsF,F,F,f,Farenheito,farenheito"
+
+#: ../lib/unit.vala:85
 msgid "Kelvin"
 msgstr "Kelvino"
 
-#: ../lib/unit.vala:84
+#: ../lib/unit.vala:85
 #, c-format
 msgctxt "unit-format"
 msgid "%s K"
 msgstr "%s K"
 
-#: ../lib/unit.vala:84
-msgctxt "unit-symbols"
-msgid "K"
-msgstr "K"
-
 #: ../lib/unit.vala:85
+msgctxt "unit-symbols"
+msgid "k,K,Kelvin,kelvin"
+msgstr "k,K,Kelvino,kelvino"
+
+#: ../lib/unit.vala:86
 msgid "Rankine"
 msgstr "Rankino"
 
-#: ../lib/unit.vala:85
+#: ../lib/unit.vala:86
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚R"
 msgstr "%s ˚R"
 
-#: ../lib/unit.vala:85
+#: ../lib/unit.vala:86
 msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra"
-msgstr "degR,˚R,˚Ra"
+msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
+msgstr "laipsR,˚R,˚Ra,r,R,Rankine,rankine"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
-#: ../lib/unit.vala:87
+#: ../lib/unit.vala:88
 msgid "Bits"
 msgstr "Bitai"
 
-#: ../lib/unit.vala:87
+#: ../lib/unit.vala:88
 #, c-format
 msgctxt "unit-format"
 msgid "%s b"
 msgstr "%s b"
 
-#: ../lib/unit.vala:87
+#: ../lib/unit.vala:88
 msgctxt "unit-symbols"
 msgid "bit,bits,b"
 msgstr "bitas,bitai,b"
 
-#: ../lib/unit.vala:88
+#: ../lib/unit.vala:89
 msgid "Bytes"
 msgstr "Baitai"
 
-#: ../lib/unit.vala:88
+#: ../lib/unit.vala:89
 #, c-format
 msgctxt "unit-format"
 msgid "%s B"
 msgstr "%s B"
 
-#: ../lib/unit.vala:88
+#: ../lib/unit.vala:89
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
 msgstr "baitas,baitai,B"
 
-#: ../lib/unit.vala:89
+#: ../lib/unit.vala:90
 msgid "Nibbles"
 msgstr "Niblai"
 
-#: ../lib/unit.vala:89
+#: ../lib/unit.vala:90
 #, c-format
 msgctxt "unit-format"
 msgid "%s nibble"
 msgstr "%s niblas"
 
-#: ../lib/unit.vala:89
+#: ../lib/unit.vala:90
 msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "niblas,niblai"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
-#: ../lib/unit.vala:91
+#: ../lib/unit.vala:92
 msgid "Kilobits"
 msgstr "Kilobitai"
 
-#: ../lib/unit.vala:91
+#: ../lib/unit.vala:92
 #, c-format
 msgctxt "unit-format"
 msgid "%s kb"
 msgstr "%s kb"
 
-#: ../lib/unit.vala:91
+#: ../lib/unit.vala:92
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "kilobitas,kilobitai,kb,Kb"
 
-#: ../lib/unit.vala:92
+#: ../lib/unit.vala:93
 msgid "Kilobytes"
 msgstr "Kilobaitai"
 
-#: ../lib/unit.vala:92
+#: ../lib/unit.vala:93
 #, c-format
 msgctxt "unit-format"
 msgid "%s kB"
 msgstr "%s kB"
 
-#: ../lib/unit.vala:92
+#: ../lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "kilobaitas,kilobaitai,kB,KB"
 
-#: ../lib/unit.vala:93
+#: ../lib/unit.vala:94
 msgid "Kibibits"
 msgstr "Kibibitai"
 
-#: ../lib/unit.vala:93
+#: ../lib/unit.vala:94
 #, c-format
 msgctxt "unit-format"
 msgid "%s Kib"
 msgstr "%s Kib"
 
-#: ../lib/unit.vala:93
+#: ../lib/unit.vala:94
 msgctxt "unit-symbols"
 msgid "kibibit,kibibits,Kib"
 msgstr "kibibitas,kibibitai,Kib"
 
-#: ../lib/unit.vala:94
+#: ../lib/unit.vala:95
 msgid "Kibibytes"
 msgstr "Kibibaitai"
 
-#: ../lib/unit.vala:94
+#: ../lib/unit.vala:95
 #, c-format
 msgctxt "unit-format"
 msgid "%s KiB"
 msgstr "%s KiB"
 
-#: ../lib/unit.vala:94
+#: ../lib/unit.vala:95
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
 msgstr "kibibaitas,kibibaitai,KiB"
 
-#: ../lib/unit.vala:95
+#: ../lib/unit.vala:96
 msgid "Megabits"
 msgstr "Megabitai"
 
-#: ../lib/unit.vala:95
+#: ../lib/unit.vala:96
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mb"
 msgstr "%s Mb"
 
-#: ../lib/unit.vala:95
+#: ../lib/unit.vala:96
 msgctxt "unit-symbols"
 msgid "megabit,megabits,Mb"
 msgstr "megabitas,megabitai,Mb"
 
-#: ../lib/unit.vala:96
+#: ../lib/unit.vala:97
 msgid "Megabytes"
 msgstr "Megabaitai"
 
-#: ../lib/unit.vala:96
+#: ../lib/unit.vala:97
 #, c-format
 msgctxt "unit-format"
 msgid "%s MB"
 msgstr "%s MB"
 
-#: ../lib/unit.vala:96
+#: ../lib/unit.vala:97
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
 msgstr "megabaitas,megabaitai,MB"
 
-#: ../lib/unit.vala:97
+#: ../lib/unit.vala:98
 msgid "Mebibits"
 msgstr "Mebibitai"
 
-#: ../lib/unit.vala:97
+#: ../lib/unit.vala:98
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mib"
 msgstr "%s Mib"
 
-#: ../lib/unit.vala:97
+#: ../lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "mebibit,mebibits,Mib"
 msgstr "mebibitas,mebibitai,Mib"
 
-#: ../lib/unit.vala:98
+#: ../lib/unit.vala:99
 msgid "Mebibytes"
 msgstr "Mebibaitai"
 
-#: ../lib/unit.vala:98
+#: ../lib/unit.vala:99
 #, c-format
 msgctxt "unit-format"
 msgid "%s MiB"
 msgstr "%s MiB"
 
-#: ../lib/unit.vala:98
+#: ../lib/unit.vala:99
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
 msgstr "mebibaitas,mebibaitai,MiB"
 
-#: ../lib/unit.vala:99
+#: ../lib/unit.vala:100
 msgid "Gigabits"
 msgstr "Gigabitai"
 
-#: ../lib/unit.vala:99
+#: ../lib/unit.vala:100
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gb"
 msgstr "%s Gb"
 
-#: ../lib/unit.vala:99
+#: ../lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "gigabit,gigabits,Gb"
 msgstr "gigabitas,gigabitai,Gb"
 
-#: ../lib/unit.vala:100
+#: ../lib/unit.vala:101
 msgid "Gigabytes"
 msgstr "Gigabaitai"
 
-#: ../lib/unit.vala:100
+#: ../lib/unit.vala:101
 #, c-format
 msgctxt "unit-format"
 msgid "%s GB"
 msgstr "%s GB"
 
-#: ../lib/unit.vala:100
+#: ../lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
 msgstr "gigabaitas,gigabaitai,GB"
 
-#: ../lib/unit.vala:101
+#: ../lib/unit.vala:102
 msgid "Gibibits"
 msgstr "Gibibitai"
 
-#: ../lib/unit.vala:101
+#: ../lib/unit.vala:102
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gib"
 msgstr "%s Gib"
 
-#: ../lib/unit.vala:101
+#: ../lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "gibibit,gibibits,Gib"
 msgstr "gibibitas,gibibitai,Gib"
 
-#: ../lib/unit.vala:102
+#: ../lib/unit.vala:103
 msgid "Gibibytes"
 msgstr "Gibibaitai"
 
-#: ../lib/unit.vala:102
+#: ../lib/unit.vala:103
 #, c-format
 msgctxt "unit-format"
 msgid "%s GiB"
 msgstr "%s GiB"
 
-#: ../lib/unit.vala:102
+#: ../lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
 msgstr "gibibaitas,gibibaitai,GiB"
 
-#: ../lib/unit.vala:103
+#: ../lib/unit.vala:104
 msgid "Terabits"
 msgstr "Terabitai"
 
-#: ../lib/unit.vala:103
+#: ../lib/unit.vala:104
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tb"
 msgstr "%s Tb"
 
-#: ../lib/unit.vala:103
+#: ../lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "terabit,terabits,Tb"
 msgstr "terabitas,terabitai,Tb"
 
-#: ../lib/unit.vala:104
+#: ../lib/unit.vala:105
 msgid "Terabytes"
 msgstr "Terabaitai"
 
-#: ../lib/unit.vala:104
+#: ../lib/unit.vala:105
 #, c-format
 msgctxt "unit-format"
 msgid "%s TB"
 msgstr "%s TB"
 
-#: ../lib/unit.vala:104
+#: ../lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
 msgstr "terabaitas,terabaitai,TB"
 
-#: ../lib/unit.vala:105
+#: ../lib/unit.vala:106
 msgid "Tebibits"
 msgstr "Tebibitai"
 
-#: ../lib/unit.vala:105
+#: ../lib/unit.vala:106
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tib"
 msgstr "%s Tib"
 
-#: ../lib/unit.vala:105
+#: ../lib/unit.vala:106
 msgctxt "unit-symbols"
 msgid "tebibit,tebibits,Tib"
 msgstr "tebibitas,tebibitai,Tib"
 
-#: ../lib/unit.vala:106
+#: ../lib/unit.vala:107
 msgid "Tebibytes"
 msgstr "Tebibaitai"
 
-#: ../lib/unit.vala:106
+#: ../lib/unit.vala:107
 #, c-format
 msgctxt "unit-format"
 msgid "%s TiB"
 msgstr "%s TiB"
 
-#: ../lib/unit.vala:106
+#: ../lib/unit.vala:107
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
 msgstr "tebibaitas,tebibaitai,TiB"
 
-#: ../lib/unit.vala:107
+#: ../lib/unit.vala:108
 msgid "Petabits"
 msgstr "Petabitai"
 
-#: ../lib/unit.vala:107
+#: ../lib/unit.vala:108
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pb"
 msgstr "%s Pb"
 
-#: ../lib/unit.vala:107
+#: ../lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "petabit,petabits,Pb"
 msgstr "petabitas,petabitai,Pb"
 
-#: ../lib/unit.vala:108
+#: ../lib/unit.vala:109
 msgid "Petabytes"
 msgstr "Petabaitai"
 
-#: ../lib/unit.vala:108
+#: ../lib/unit.vala:109
 #, c-format
 msgctxt "unit-format"
 msgid "%s PB"
 msgstr "%s PB"
 
-#: ../lib/unit.vala:108
+#: ../lib/unit.vala:109
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
 msgstr "petabaitas,petabaitai,PB"
 
-#: ../lib/unit.vala:109
+#: ../lib/unit.vala:110
 msgid "Pebibits"
 msgstr "Pebibitai"
 
-#: ../lib/unit.vala:109
+#: ../lib/unit.vala:110
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pib"
 msgstr "%s Pib"
 
-#: ../lib/unit.vala:109
+#: ../lib/unit.vala:110
 msgctxt "unit-symbols"
 msgid "pebibit,pebibits,Pib"
 msgstr "pebibitas,pebibitai,Pib"
 
-#: ../lib/unit.vala:110
+#: ../lib/unit.vala:111
 msgid "Pebibytes"
 msgstr "Pebibaitai"
 
-#: ../lib/unit.vala:110
+#: ../lib/unit.vala:111
 #, c-format
 msgctxt "unit-format"
 msgid "%s PiB"
 msgstr "%s PiB"
 
-#: ../lib/unit.vala:110
+#: ../lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
 msgstr "pebibaitas,pebibaitai,PiB"
 
-#: ../lib/unit.vala:111
+#: ../lib/unit.vala:112
 msgid "Exabits"
 msgstr "Egzabitai"
 
-#: ../lib/unit.vala:111 ../lib/unit.vala:115
+#: ../lib/unit.vala:112 ../lib/unit.vala:116
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eb"
 msgstr "%s Eb"
 
-#: ../lib/unit.vala:111
+#: ../lib/unit.vala:112
 msgctxt "unit-symbols"
 msgid "exabit,exabits,Eb"
 msgstr "egzabitas,egzabitai,Eb"
 
-#: ../lib/unit.vala:112
+#: ../lib/unit.vala:113
 msgid "Exabytes"
 msgstr "Egzabaitai"
 
-#: ../lib/unit.vala:112 ../lib/unit.vala:116
+#: ../lib/unit.vala:113 ../lib/unit.vala:117
 #, c-format
 msgctxt "unit-format"
 msgid "%s EB"
 msgstr "%s EB"
 
-#: ../lib/unit.vala:112
+#: ../lib/unit.vala:113
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
 msgstr "egzabaitas,egzabaitai,EB"
 
-#: ../lib/unit.vala:113
+#: ../lib/unit.vala:114
 msgid "Exbibits"
 msgstr "Egzbibitai"
 
-#: ../lib/unit.vala:113
+#: ../lib/unit.vala:114
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eib"
 msgstr "%s Eib"
 
-#: ../lib/unit.vala:113
+#: ../lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "exbibit,exbibits,Eib"
 msgstr "egzbibitas,egzbibitai,Eib"
 
-#: ../lib/unit.vala:114
+#: ../lib/unit.vala:115
 msgid "Exbibytes"
 msgstr "Egzbibaitai"
 
-#: ../lib/unit.vala:114
+#: ../lib/unit.vala:115
 #, c-format
 msgctxt "unit-format"
 msgid "%s EiB"
 msgstr "%s EiB"
 
-#: ../lib/unit.vala:114
+#: ../lib/unit.vala:115
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
 msgstr "egzbibaitas,egzbibaitai,EiB"
 
-#: ../lib/unit.vala:115
+#: ../lib/unit.vala:116
 msgid "Zettabits"
 msgstr "Zetabitai"
 
-#: ../lib/unit.vala:115
+#: ../lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "zettabit,zettabits,Zb"
 msgstr "zetabitas,zetabitai,Zb"
 
-#: ../lib/unit.vala:116
+#: ../lib/unit.vala:117
 msgid "Zettabytes"
 msgstr "Zetabaitai"
 
-#: ../lib/unit.vala:116
+#: ../lib/unit.vala:117
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
 msgstr "zetabaitas,zetabaitai,ZB"
 
-#: ../lib/unit.vala:117
+#: ../lib/unit.vala:118
 msgid "Zebibits"
 msgstr "Zebibitai"
 
-#: ../lib/unit.vala:117
+#: ../lib/unit.vala:118
 #, c-format
 msgctxt "unit-format"
 msgid "%s Zib"
 msgstr "%s Zib"
 
-#: ../lib/unit.vala:117
+#: ../lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "zebibit,zebibits,Zib"
 msgstr "zrbibitas,zebibitai,Zib"
 
-#: ../lib/unit.vala:118
+#: ../lib/unit.vala:119
 msgid "Zebibytes"
 msgstr "Zebibaitai"
 
-#: ../lib/unit.vala:118
+#: ../lib/unit.vala:119
 #, c-format
 msgctxt "unit-format"
 msgid "%s ZiB"
 msgstr "%s ZiB"
 
-#: ../lib/unit.vala:118
+#: ../lib/unit.vala:119
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
 msgstr "zebibaitas,zebibaitai,ZiB"
 
-#: ../lib/unit.vala:119
+#: ../lib/unit.vala:120
 msgid "Yottabits"
 msgstr "Jotabitai"
 
-#: ../lib/unit.vala:119
+#: ../lib/unit.vala:120
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yb"
 msgstr "%s Yb"
 
-#: ../lib/unit.vala:119
+#: ../lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "yottabit,yottabits,Yb"
 msgstr "jotabitas,jotabitai,Yb"
 
-#: ../lib/unit.vala:120
+#: ../lib/unit.vala:121
 msgid "Yottabytes"
 msgstr "Jotabaitai"
 
-#: ../lib/unit.vala:120
+#: ../lib/unit.vala:121
 #, c-format
 msgctxt "unit-format"
 msgid "%s YB"
 msgstr "%s YB"
 
-#: ../lib/unit.vala:120
+#: ../lib/unit.vala:121
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
 msgstr "jotabaitas,jotabaitai,YB"
 
-#: ../lib/unit.vala:121
+#: ../lib/unit.vala:122
 msgid "Yobibits"
 msgstr "Jobibitai"
 
-#: ../lib/unit.vala:121
+#: ../lib/unit.vala:122
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yib"
 msgstr "%s Yib"
 
-#: ../lib/unit.vala:121
+#: ../lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "yobibit,yobibits,Yib"
 msgstr "jobibitas,jobibitai,Yib"
 
-#: ../lib/unit.vala:122
+#: ../lib/unit.vala:123
 msgid "Yobibytes"
 msgstr "Jobibaitai"
 
-#: ../lib/unit.vala:122
+#: ../lib/unit.vala:123
 #, c-format
 msgctxt "unit-format"
 msgid "%s YiB"
 msgstr "%s YiB"
 
-#: ../lib/unit.vala:122
+#: ../lib/unit.vala:123
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
 msgstr "jobibaitas,jobibaitai,YiB"
 
-#: ../lib/unit.vala:124
+#: ../lib/unit.vala:125
 msgid "Currency"
 msgstr "Valiutų"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: ../lib/unit.vala:130
+#: ../lib/unit.vala:131
 #, c-format
 msgid "%s%%s"
 msgstr "%%s%s"
 
-#: ../src/gnome-calculator.vala:23
-#| msgid "Start with given equation"
+#: ../src/gnome-calculator.vala:24
 msgid "Start in given mode"
 msgstr "Pradėti pateikta veiksena"
 
-#: ../src/gnome-calculator.vala:24
+#: ../src/gnome-calculator.vala:25
 msgid "Solve given equation"
 msgstr "Išspręsti lygtį"
 
-#: ../src/gnome-calculator.vala:25
+#: ../src/gnome-calculator.vala:26
 msgid "Start with given equation"
 msgstr "Pradėti lygtimi"
 
-#: ../src/gnome-calculator.vala:26
+#: ../src/gnome-calculator.vala:27
 msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: ../src/gnome-calculator.vala:280
+#: ../src/gnome-calculator.vala:296
 msgid "Unable to open help file"
 msgstr "Nepavyko atverti žinyno failo"
 
 #. The translator credits. Please translate this with your name (s).
-#: ../src/gnome-calculator.vala:311
+#: ../src/gnome-calculator.vala:327
 msgid "translator-credits"
 msgstr ""
 "Algimantas Markevičius <margevicius.algimantas@gmail.com>\n"
@@ -2737,12 +2757,12 @@ msgstr ""
 "Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Gediminas Paulauskas <menesis@chatsubo.lt>"
 
-#: ../src/gnome-calculator.vala:317
+#: ../src/gnome-calculator.vala:333
 msgid "About Calculator"
 msgstr "Apie skaičiuotuvą"
 
 #. Short description in the about dialog
-#: ../src/gnome-calculator.vala:325
+#: ../src/gnome-calculator.vala:341
 msgid "Calculator with financial and scientific modes."
 msgstr "Skaičiuotuvas su finansiniais bei moksliniais priedais"
 
@@ -2781,19 +2801,16 @@ msgstr "Inžinerinis"
 
 #. Preferences dialog: label for show trailing zeroes check button
 #: ../src/math-preferences.vala:89
-#| msgid "_Number of Periods:"
 msgid "Number of _decimals"
 msgstr "_Skaitmenų po kablelio:"
 
 #. Preferences dialog: label for show trailing zeroes switch
 #: ../src/math-preferences.vala:101
-#| msgid "Show trailing _zeroes"
 msgid "Trailing _zeroes"
 msgstr "Rodyti _nulius skaičiaus gale"
 
 #. Preferences dialog: label for show show thousands separator switch
 #: ../src/math-preferences.vala:114
-#| msgid "Show _thousands separators"
 msgid "_Thousands separators"
 msgstr "Rodyti _tūkstančių skyriklį"
 
@@ -2831,6 +2848,22 @@ msgstr "64 bitai"
 msgid "_Quit"
 msgstr "_Išeiti"
 
+#~ msgctxt "unit-symbols"
+#~ msgid "degC,˚C"
+#~ msgstr "degC,˚C"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degF,˚F"
+#~ msgstr "degF,˚F"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "K"
+#~ msgstr "K"
+
+#~ msgctxt "unit-symbols"
+#~ msgid "degR,˚R,˚Ra"
+#~ msgstr "degR,˚R,˚Ra"
+
 #~ msgid "Reciprocal of zero is undefined"
 #~ msgstr "Nulinis vardiklis neapibrėžtas"
 
@@ -2863,9 +2896,6 @@ msgstr "_Išeiti"
 
 #~ msgid "Negative root of zero is undefined"
 #~ msgstr "Neigiama nulio šaknis neapibrėžta"
-
-#~ msgid "nth root of negative number is undefined for even n"
-#~ msgstr "n-ojo laipsnio šaknis neigiamam skaičiui neapibrėžta lyginiams n"
 
 #~ msgid "Overflow: the result couldn't be calculated"
 #~ msgstr "Perpildymas: rezultato suskaičiuoti nepavyko"
