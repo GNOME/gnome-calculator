@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-12 16:14+0100\n"
-"PO-Revision-Date: 2017-02-12 16:15+0100\n"
+"POT-Creation-Date: 2017-03-19 20:18+0100\n"
+"PO-Revision-Date: 2017-03-19 20:19+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -481,8 +481,8 @@ msgid ""
 "rate."
 msgstr ""
 "Oblicza liczbę okresów płatności, które są wymagane do zgromadzenia "
-"przyszłej wartości w czasie płatności renty zwykłej przy okresowej stopie "
-"procentowej."
+"przyszłej wartości w czasie płatności rocznej renty zwykłej przy okresowej "
+"stopie procentowej."
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
 #: ../data/buttons-financial.ui.h:90
@@ -1248,6 +1248,10 @@ msgstr "boliwar wenezuelski"
 msgid "South African Rand"
 msgstr "rand południowoafrykański"
 
+#: ../lib/equation-parser.vala:715 ../lib/number.vala:429
+msgid "The zeroth root of a number is undefined"
+msgstr "Pierwiastek zerowy liczby jest nieokreślony"
+
 #: ../lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "Błąd: liczba okresów musi być dodatnia"
@@ -1349,10 +1353,6 @@ msgstr "Moc zera jest nieokreślona dla ujemnego potęgowania"
 msgid "Zero raised to zero is undefined"
 msgstr "Zero podniesione do potęgi zerowej jest nieokreślone"
 
-#: ../lib/number.vala:429
-msgid "The zeroth root of a number is undefined"
-msgstr "Pierwiastek zerowy liczby jest nieokreślony"
-
 #. Translators: Error displayed when attempting to take logarithm of zero
 #: ../lib/number.vala:459 ../lib/number.vala:490
 msgid "Logarithm of zero is undefined"
@@ -1443,7 +1443,7 @@ msgstr "Długość"
 
 #: ../lib/unit.vala:31
 msgid "Area"
-msgstr "Obszar"
+msgstr "Powierzchnia"
 
 #: ../lib/unit.vala:32
 msgid "Volume"
@@ -1463,7 +1463,7 @@ msgstr "Temperatura"
 
 #: ../lib/unit.vala:36
 msgid "Digital Storage"
-msgstr "Przechowywanie cyfrowe"
+msgstr "Dane cyfrowe"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
@@ -1475,12 +1475,12 @@ msgstr "Stopnie"
 #, c-format
 msgctxt "unit-format"
 msgid "%s degrees"
-msgstr "%s stopni"
+msgstr "%s°"
 
 #: ../lib/unit.vala:39
 msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
-msgstr "stopień,stopnie,stopni,st"
+msgstr "stopień,stopnie,stopni,st,°,deg"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
 #: ../lib/unit.vala:40 ../src/math-preferences.vala:148
@@ -1491,7 +1491,7 @@ msgstr "Radiany"
 #, c-format
 msgctxt "unit-format"
 msgid "%s radians"
-msgstr "%s radiany"
+msgstr "%s rad"
 
 #: ../lib/unit.vala:40
 msgctxt "unit-symbols"
@@ -1501,18 +1501,18 @@ msgstr "radian,radiany,radianów,rad"
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
 #: ../lib/unit.vala:41 ../src/math-preferences.vala:152
 msgid "Gradians"
-msgstr "Gradiany"
+msgstr "Grady"
 
 #: ../lib/unit.vala:41
 #, c-format
 msgctxt "unit-format"
 msgid "%s gradians"
-msgstr "%s grady"
+msgstr "%sᵍ"
 
 #: ../lib/unit.vala:41
 msgctxt "unit-symbols"
 msgid "gradian,gradians,grad"
-msgstr "grad,grady,gradów,gon,gradus"
+msgstr "grad,grady,gradów,gon,gradus,ᵍ"
 
 #: ../lib/unit.vala:42
 msgid "Parsecs"
@@ -1522,7 +1522,7 @@ msgstr "Parseki"
 #, c-format
 msgctxt "unit-format"
 msgid "%s pc"
-msgstr "%s pc"
+msgstr "%s pc"
 
 #: ../lib/unit.vala:42
 msgctxt "unit-symbols"
@@ -1537,12 +1537,12 @@ msgstr "Lata świetlne"
 #, c-format
 msgctxt "unit-format"
 msgid "%s ly"
-msgstr "%s ly"
+msgstr "%s ly"
 
 #: ../lib/unit.vala:43
 msgctxt "unit-symbols"
 msgid "lightyear,lightyears,ly"
-msgstr "rok świetlny,lata świetlne,lat świetlnych,ly"
+msgstr "rok świetlny,lata świetlne,lat świetlnych,ly,l.y."
 
 #: ../lib/unit.vala:44
 msgid "Astronomical Units"
@@ -1552,12 +1552,12 @@ msgstr "Jednostki astronomiczne"
 #, c-format
 msgctxt "unit-format"
 msgid "%s au"
-msgstr "%s au"
+msgstr "%s au"
 
 #: ../lib/unit.vala:44
 msgctxt "unit-symbols"
 msgid "au"
-msgstr "au"
+msgstr "au,j.a."
 
 #: ../lib/unit.vala:45
 msgid "Nautical Miles"
@@ -1567,7 +1567,7 @@ msgstr "Mile morskie"
 #, c-format
 msgctxt "unit-format"
 msgid "%s nmi"
-msgstr "%s nmi"
+msgstr "%s nmi"
 
 #: ../lib/unit.vala:45
 msgctxt "unit-symbols"
@@ -1582,7 +1582,7 @@ msgstr "Mile"
 #, c-format
 msgctxt "unit-format"
 msgid "%s mi"
-msgstr "%s mi"
+msgstr "%s mi"
 
 #: ../lib/unit.vala:46
 msgctxt "unit-symbols"
@@ -1597,7 +1597,7 @@ msgstr "Kilometry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s km"
-msgstr "%s km"
+msgstr "%s km"
 
 #: ../lib/unit.vala:47
 msgctxt "unit-symbols"
@@ -1612,7 +1612,7 @@ msgstr "Kable"
 #, c-format
 msgctxt "unit-format"
 msgid "%s cb"
-msgstr "%s cb"
+msgstr "%s cb"
 
 #: ../lib/unit.vala:48
 msgctxt "unit-symbols"
@@ -1621,18 +1621,18 @@ msgstr "kabel,kable,kabli,cb"
 
 #: ../lib/unit.vala:49
 msgid "Fathoms"
-msgstr "Sążeń"
+msgstr "Sążnie"
 
 #: ../lib/unit.vala:49
 #, c-format
 msgctxt "unit-format"
 msgid "%s ftm"
-msgstr "%s ftm"
+msgstr "%s fm"
 
 #: ../lib/unit.vala:49
 msgctxt "unit-symbols"
 msgid "fathom,fathoms,ftm"
-msgstr "sążeń,sążnie,sążni,ftm"
+msgstr "sążeń,sążnie,sążni,fm,ftm"
 
 #: ../lib/unit.vala:50
 msgid "Meters"
@@ -1642,7 +1642,7 @@ msgstr "Metry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s m"
-msgstr "%s m"
+msgstr "%s m"
 
 #: ../lib/unit.vala:50
 msgctxt "unit-symbols"
@@ -1651,13 +1651,13 @@ msgstr "metr,metry,metrów,m"
 
 #: ../lib/unit.vala:51
 msgid "Yards"
-msgstr "Jard"
+msgstr "Jardy"
 
 #: ../lib/unit.vala:51
 #, c-format
 msgctxt "unit-format"
 msgid "%s yd"
-msgstr "%s yd"
+msgstr "%s yd"
 
 #: ../lib/unit.vala:51
 msgctxt "unit-symbols"
@@ -1666,13 +1666,13 @@ msgstr "jard,jardy,jardów,yd"
 
 #: ../lib/unit.vala:52
 msgid "Feet"
-msgstr "Stopa"
+msgstr "Stopy"
 
 #: ../lib/unit.vala:52
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft"
-msgstr "%s ft"
+msgstr "%s ft"
 
 #: ../lib/unit.vala:52
 msgctxt "unit-symbols"
@@ -1687,7 +1687,7 @@ msgstr "Cale"
 #, c-format
 msgctxt "unit-format"
 msgid "%s in"
-msgstr "%s in"
+msgstr "%s in"
 
 #: ../lib/unit.vala:53
 msgctxt "unit-symbols"
@@ -1702,7 +1702,7 @@ msgstr "Centymetry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s cm"
-msgstr "%s cm"
+msgstr "%s cm"
 
 #: ../lib/unit.vala:54
 msgctxt "unit-symbols"
@@ -1717,7 +1717,7 @@ msgstr "Milimetry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s mm"
-msgstr "%s mm"
+msgstr "%s mm"
 
 #: ../lib/unit.vala:55
 msgctxt "unit-symbols"
@@ -1732,7 +1732,7 @@ msgstr "Mikrometry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s μm"
-msgstr "%s μm"
+msgstr "%s μm"
 
 #: ../lib/unit.vala:56
 msgctxt "unit-symbols"
@@ -1747,7 +1747,7 @@ msgstr "Nanometry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s nm"
-msgstr "%s nm"
+msgstr "%s nm"
 
 #: ../lib/unit.vala:57
 msgctxt "unit-symbols"
@@ -1756,13 +1756,13 @@ msgstr "nanometr,nanometry,nanometrów,nm"
 
 #: ../lib/unit.vala:58
 msgid "Desktop Publishing Point"
-msgstr "Punkt typograficzny"
+msgstr "Punkty typograficzne"
 
 #: ../lib/unit.vala:58 ../lib/unit.vala:68
 #, c-format
 msgctxt "unit-format"
 msgid "%s pt"
-msgstr "%s pt"
+msgstr "%s pt"
 
 #: ../lib/unit.vala:58
 msgctxt "unit-symbols"
@@ -1777,7 +1777,7 @@ msgstr "Hektary"
 #, c-format
 msgctxt "unit-format"
 msgid "%s ha"
-msgstr "%s ha"
+msgstr "%s ha"
 
 #: ../lib/unit.vala:59
 msgctxt "unit-symbols"
@@ -1792,12 +1792,12 @@ msgstr "Akry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s acres"
-msgstr "%s akry"
+msgstr "%s ac"
 
 #: ../lib/unit.vala:60
 msgctxt "unit-symbols"
 msgid "acre,acres"
-msgstr "akr,akry,akrów"
+msgstr "akr,akry,akrów,ac"
 
 #: ../lib/unit.vala:61
 msgid "Square Meters"
@@ -1807,7 +1807,7 @@ msgstr "Metry kwadratowe"
 #, c-format
 msgctxt "unit-format"
 msgid "%s m²"
-msgstr "%s m²"
+msgstr "%s m²"
 
 #: ../lib/unit.vala:61
 msgctxt "unit-symbols"
@@ -1822,7 +1822,7 @@ msgstr "Centymetry kwadratowe"
 #, c-format
 msgctxt "unit-format"
 msgid "%s cm²"
-msgstr "%s cm²"
+msgstr "%s cm²"
 
 #: ../lib/unit.vala:62
 msgctxt "unit-symbols"
@@ -1837,7 +1837,7 @@ msgstr "Milimetry kwadratowe"
 #, c-format
 msgctxt "unit-format"
 msgid "%s mm²"
-msgstr "%s mm²"
+msgstr "%s mm²"
 
 #: ../lib/unit.vala:63
 msgctxt "unit-symbols"
@@ -1852,7 +1852,7 @@ msgstr "Metry sześcienne"
 #, c-format
 msgctxt "unit-format"
 msgid "%s m³"
-msgstr "%s m³"
+msgstr "%s m³"
 
 #: ../lib/unit.vala:64
 msgctxt "unit-symbols"
@@ -1867,7 +1867,7 @@ msgstr "Galony"
 #, c-format
 msgctxt "unit-format"
 msgid "%s gal"
-msgstr "%s gal"
+msgstr "%s gal"
 
 #: ../lib/unit.vala:65
 msgctxt "unit-symbols"
@@ -1882,7 +1882,7 @@ msgstr "Litry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s L"
-msgstr "%s l"
+msgstr "%s l"
 
 #: ../lib/unit.vala:66
 msgctxt "unit-symbols"
@@ -1897,7 +1897,7 @@ msgstr "Kwarty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s qt"
-msgstr "%s qt"
+msgstr "%s qt"
 
 #: ../lib/unit.vala:67
 msgctxt "unit-symbols"
@@ -1921,7 +1921,7 @@ msgstr "Mililitry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s mL"
-msgstr "%s ml"
+msgstr "%s ml"
 
 #: ../lib/unit.vala:69
 msgctxt "unit-symbols"
@@ -1936,7 +1936,7 @@ msgstr "Mikrolitry"
 #, c-format
 msgctxt "unit-format"
 msgid "%s μL"
-msgstr "%s μl"
+msgstr "%s μl"
 
 #: ../lib/unit.vala:70
 msgctxt "unit-symbols"
@@ -1951,7 +1951,7 @@ msgstr "Tony"
 #, c-format
 msgctxt "unit-format"
 msgid "%s T"
-msgstr "%s t"
+msgstr "%s t"
 
 #: ../lib/unit.vala:71
 msgctxt "unit-symbols"
@@ -1966,7 +1966,7 @@ msgstr "Kilogramy"
 #, c-format
 msgctxt "unit-format"
 msgid "%s kg"
-msgstr "%s kg"
+msgstr "%s kg"
 
 #: ../lib/unit.vala:72
 msgctxt "unit-symbols"
@@ -1975,13 +1975,13 @@ msgstr "kilogram,kilogramy,kilogramów,kg,kgs"
 
 #: ../lib/unit.vala:73
 msgid "Pounds"
-msgstr "Funt"
+msgstr "Funty"
 
 #: ../lib/unit.vala:73
 #, c-format
 msgctxt "unit-format"
 msgid "%s lb"
-msgstr "%s lb"
+msgstr "%s lb"
 
 #: ../lib/unit.vala:73
 msgctxt "unit-symbols"
@@ -1996,7 +1996,7 @@ msgstr "Uncje"
 #, c-format
 msgctxt "unit-format"
 msgid "%s oz"
-msgstr "%s oz"
+msgstr "%s oz"
 
 #: ../lib/unit.vala:74
 msgctxt "unit-symbols"
@@ -2011,7 +2011,7 @@ msgstr "Gramy"
 #, c-format
 msgctxt "unit-format"
 msgid "%s g"
-msgstr "%s g"
+msgstr "%s g"
 
 #: ../lib/unit.vala:75
 msgctxt "unit-symbols"
@@ -2026,7 +2026,7 @@ msgstr "Lata"
 #, c-format
 msgctxt "unit-format"
 msgid "%s years"
-msgstr "%s lata"
+msgstr "%s lat(a)"
 
 #: ../lib/unit.vala:76
 msgctxt "unit-symbols"
@@ -2041,12 +2041,12 @@ msgstr "Dni"
 #, c-format
 msgctxt "unit-format"
 msgid "%s days"
-msgstr "%s dni"
+msgstr "%s dni"
 
 #: ../lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "day,days"
-msgstr "dzień,dni"
+msgstr "dzień,dni,doba,doby,dób"
 
 #: ../lib/unit.vala:78
 msgid "Hours"
@@ -2056,12 +2056,12 @@ msgstr "Godziny"
 #, c-format
 msgctxt "unit-format"
 msgid "%s hours"
-msgstr "%s godziny"
+msgstr "%s h"
 
 #: ../lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "hour,hours"
-msgstr "godzina,godziny,godzin"
+msgstr "godzina,godziny,godzin,h"
 
 #: ../lib/unit.vala:79
 msgid "Minutes"
@@ -2071,12 +2071,12 @@ msgstr "Minuty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s minutes"
-msgstr "%s minuty"
+msgstr "%s min"
 
 #: ../lib/unit.vala:79
 msgctxt "unit-symbols"
 msgid "minute,minutes"
-msgstr "minuta,minuty,minut"
+msgstr "minuta,minuty,minut,min"
 
 #: ../lib/unit.vala:80
 msgid "Seconds"
@@ -2086,12 +2086,12 @@ msgstr "Sekundy"
 #, c-format
 msgctxt "unit-format"
 msgid "%s s"
-msgstr "%s s"
+msgstr "%s s"
 
 #: ../lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
-msgstr "sekunda,sekundy,sekund,s"
+msgstr "sekunda,sekundy,sekund,s,sek"
 
 #: ../lib/unit.vala:81
 msgid "Milliseconds"
@@ -2101,7 +2101,7 @@ msgstr "Milisekundy"
 #, c-format
 msgctxt "unit-format"
 msgid "%s ms"
-msgstr "%s ms"
+msgstr "%s ms"
 
 #: ../lib/unit.vala:81
 msgctxt "unit-symbols"
@@ -2116,7 +2116,7 @@ msgstr "Mikrosekundy"
 #, c-format
 msgctxt "unit-format"
 msgid "%s μs"
-msgstr "%s μs"
+msgstr "%s μs"
 
 #: ../lib/unit.vala:82
 msgctxt "unit-symbols"
@@ -2131,7 +2131,7 @@ msgstr "Stopień Celsjusza"
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚C"
-msgstr "%s ˚C"
+msgstr "%s ˚C"
 
 #: ../lib/unit.vala:83
 msgctxt "unit-symbols"
@@ -2146,7 +2146,7 @@ msgstr "Stopień Fahrenheita"
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚F"
-msgstr "%s ˚F"
+msgstr "%s ˚F"
 
 #: ../lib/unit.vala:84
 msgctxt "unit-symbols"
@@ -2161,7 +2161,7 @@ msgstr "Kelwin"
 #, c-format
 msgctxt "unit-format"
 msgid "%s K"
-msgstr "%s K"
+msgstr "%s K"
 
 #: ../lib/unit.vala:85
 msgctxt "unit-symbols"
@@ -2176,7 +2176,7 @@ msgstr "Stopień Rankine’a"
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚R"
-msgstr "%s ˚R"
+msgstr "%s ˚R"
 
 #: ../lib/unit.vala:86
 msgctxt "unit-symbols"
@@ -2192,7 +2192,7 @@ msgstr "Bity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s b"
-msgstr "%s b"
+msgstr "%s b"
 
 #: ../lib/unit.vala:88
 msgctxt "unit-symbols"
@@ -2207,7 +2207,7 @@ msgstr "Bajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s B"
-msgstr "%s B"
+msgstr "%s B"
 
 #: ../lib/unit.vala:89
 msgctxt "unit-symbols"
@@ -2222,7 +2222,7 @@ msgstr "Półbajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s nibble"
-msgstr "%s półbajt"
+msgstr "%s półbajt"
 
 #: ../lib/unit.vala:90
 msgctxt "unit-symbols"
@@ -2238,7 +2238,7 @@ msgstr "Kilobity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s kb"
-msgstr "%s kb"
+msgstr "%s kb"
 
 #: ../lib/unit.vala:92
 msgctxt "unit-symbols"
@@ -2253,7 +2253,7 @@ msgstr "Kilobajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s kB"
-msgstr "%s kB"
+msgstr "%s kB"
 
 #: ../lib/unit.vala:93
 msgctxt "unit-symbols"
@@ -2268,7 +2268,7 @@ msgstr "Kibibity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Kib"
-msgstr "%s Kib"
+msgstr "%s Kib"
 
 #: ../lib/unit.vala:94
 msgctxt "unit-symbols"
@@ -2283,7 +2283,7 @@ msgstr "Kibibajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s KiB"
-msgstr "%s KiB"
+msgstr "%s KiB"
 
 #: ../lib/unit.vala:95
 msgctxt "unit-symbols"
@@ -2298,7 +2298,7 @@ msgstr "Megabity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mb"
-msgstr "%s Mb"
+msgstr "%s Mb"
 
 #: ../lib/unit.vala:96
 msgctxt "unit-symbols"
@@ -2313,7 +2313,7 @@ msgstr "Megabajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s MB"
-msgstr "%s MB"
+msgstr "%s MB"
 
 #: ../lib/unit.vala:97
 msgctxt "unit-symbols"
@@ -2328,7 +2328,7 @@ msgstr "Mebibity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mib"
-msgstr "%s Mib"
+msgstr "%s Mib"
 
 #: ../lib/unit.vala:98
 msgctxt "unit-symbols"
@@ -2343,7 +2343,7 @@ msgstr "Mebibajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s MiB"
-msgstr "%s MiB"
+msgstr "%s MiB"
 
 #: ../lib/unit.vala:99
 msgctxt "unit-symbols"
@@ -2358,7 +2358,7 @@ msgstr "Gigabity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gb"
-msgstr "%s Gb"
+msgstr "%s Gb"
 
 #: ../lib/unit.vala:100
 msgctxt "unit-symbols"
@@ -2373,7 +2373,7 @@ msgstr "Gigabajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s GB"
-msgstr "%s GB"
+msgstr "%s GB"
 
 #: ../lib/unit.vala:101
 msgctxt "unit-symbols"
@@ -2388,7 +2388,7 @@ msgstr "Gibibity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gib"
-msgstr "%s Gib"
+msgstr "%s Gib"
 
 #: ../lib/unit.vala:102
 msgctxt "unit-symbols"
@@ -2403,7 +2403,7 @@ msgstr "Gibibajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s GiB"
-msgstr "%s GiB"
+msgstr "%s GiB"
 
 #: ../lib/unit.vala:103
 msgctxt "unit-symbols"
@@ -2418,7 +2418,7 @@ msgstr "Terabity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tb"
-msgstr "%s Tb"
+msgstr "%s Tb"
 
 #: ../lib/unit.vala:104
 msgctxt "unit-symbols"
@@ -2433,7 +2433,7 @@ msgstr "Terabajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s TB"
-msgstr "%s TB"
+msgstr "%s TB"
 
 #: ../lib/unit.vala:105
 msgctxt "unit-symbols"
@@ -2448,7 +2448,7 @@ msgstr "Tebibity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tib"
-msgstr "%s Tib"
+msgstr "%s Tib"
 
 #: ../lib/unit.vala:106
 msgctxt "unit-symbols"
@@ -2463,7 +2463,7 @@ msgstr "Tebibajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s TiB"
-msgstr "%s TiB"
+msgstr "%s TiB"
 
 #: ../lib/unit.vala:107
 msgctxt "unit-symbols"
@@ -2478,7 +2478,7 @@ msgstr "Petabity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pb"
-msgstr "%s Pb"
+msgstr "%s Pb"
 
 #: ../lib/unit.vala:108
 msgctxt "unit-symbols"
@@ -2493,7 +2493,7 @@ msgstr "Petabajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s PB"
-msgstr "%s PB"
+msgstr "%s PB"
 
 #: ../lib/unit.vala:109
 msgctxt "unit-symbols"
@@ -2508,7 +2508,7 @@ msgstr "Pebibity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pib"
-msgstr "%s Pib"
+msgstr "%s Pib"
 
 #: ../lib/unit.vala:110
 msgctxt "unit-symbols"
@@ -2523,7 +2523,7 @@ msgstr "Pebibajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s PiB"
-msgstr "%s Pib"
+msgstr "%s Pib"
 
 #: ../lib/unit.vala:111
 msgctxt "unit-symbols"
@@ -2538,7 +2538,7 @@ msgstr "Eksabity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eb"
-msgstr "%s Eb"
+msgstr "%s Eb"
 
 #: ../lib/unit.vala:112
 msgctxt "unit-symbols"
@@ -2553,7 +2553,7 @@ msgstr "Eksabajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s EB"
-msgstr "%s EB"
+msgstr "%s EB"
 
 #: ../lib/unit.vala:113
 msgctxt "unit-symbols"
@@ -2568,7 +2568,7 @@ msgstr "Eksbibity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eib"
-msgstr "%s Eib"
+msgstr "%s Eib"
 
 #: ../lib/unit.vala:114
 msgctxt "unit-symbols"
@@ -2583,7 +2583,7 @@ msgstr "Eksbibajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s EiB"
-msgstr "%s EiB"
+msgstr "%s EiB"
 
 #: ../lib/unit.vala:115
 msgctxt "unit-symbols"
@@ -2616,7 +2616,7 @@ msgstr "Zebibity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Zib"
-msgstr "%s Zib"
+msgstr "%s Zib"
 
 #: ../lib/unit.vala:118
 msgctxt "unit-symbols"
@@ -2631,7 +2631,7 @@ msgstr "Zebibajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s ZiB"
-msgstr "%s ZiB"
+msgstr "%s ZiB"
 
 #: ../lib/unit.vala:119
 msgctxt "unit-symbols"
@@ -2646,7 +2646,7 @@ msgstr "Jottabity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yb"
-msgstr "%s Yb"
+msgstr "%s Yb"
 
 #: ../lib/unit.vala:120
 msgctxt "unit-symbols"
@@ -2661,7 +2661,7 @@ msgstr "Jottabajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s YB"
-msgstr "%s YB"
+msgstr "%s YB"
 
 #: ../lib/unit.vala:121
 msgctxt "unit-symbols"
@@ -2676,7 +2676,7 @@ msgstr "Jobibity"
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yib"
-msgstr "%s Yib"
+msgstr "%s Yib"
 
 #: ../lib/unit.vala:122
 msgctxt "unit-symbols"
@@ -2691,7 +2691,7 @@ msgstr "Jobibajty"
 #, c-format
 msgctxt "unit-format"
 msgid "%s YiB"
-msgstr "%s YiB"
+msgstr "%s YiB"
 
 #: ../lib/unit.vala:123
 msgctxt "unit-symbols"
@@ -2706,7 +2706,7 @@ msgstr "Waluta"
 #: ../lib/unit.vala:131
 #, c-format
 msgid "%s%%s"
-msgstr "%%s%s"
+msgstr "%%s %s"
 
 #: ../src/gnome-calculator.vala:24
 msgid "Start in given mode"
