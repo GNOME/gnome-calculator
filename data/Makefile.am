@@ -14,20 +14,6 @@ appdata_in_files = org.gnome.Calculator.appdata.xml.in
 man1_MANS = gnome-calculator.1 gcalccmd.1
 
 EXTRA_DIST = \
-	buttons-basic.ui \
-	buttons-advanced.ui \
-	buttons-financial.ui \
-	buttons-programming.ui \
-	history-entry.ui \
-	history-view.ui \
-	math-converter.ui \
-	math-function-popover.ui \
-	math-variable-popover.ui \
-	math-window.ui \
-	math-shortcuts.ui \
-	menu.ui \
-	calculator.css \
-	gnome-calculator.gresource.xml \
 	$(appdata_in_files) \
 	$(desktop_in_files) \
 	$(gsettings_SCHEMAS) \

@@ -9,11 +9,11 @@ AM_CPPFLAGS = \
 	$(LIBCALCULATOR_CFLAGS)
 
 
-resources_file = $(top_builddir)/data/gnome-calculator.gresource.xml
+resources_file = gnome-calculator.gresource.xml
 BUILT_SOURCES = resources.c
 
-resources.c: $(resources_file) $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=$(top_srcdir)/data/ $(top_srcdir)/data/gnome-calculator.gresource.xml)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(top_srcdir)/data/ --generate-source $<
+resources.c: $(resources_file) $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=$(srcdir) $(srcdir)/gnome-calculator.gresource.xml)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<
 
 gnome_calculator_SOURCES = \
 	config.vapi \
@@ -67,5 +67,21 @@ gcalccmd_CPPFLAGS = \
 gcalccmd_LDADD = \
 	$(GCALCCMD_LIBS) \
 	$(top_builddir)/lib/libcalculator.la
+
+EXTRA_DIST = \
+	buttons-basic.ui \
+	buttons-advanced.ui \
+	buttons-financial.ui \
+	buttons-programming.ui \
+	history-entry.ui \
+	history-view.ui \
+	math-converter.ui \
+	math-function-popover.ui \
+	math-variable-popover.ui \
+	math-window.ui \
+	math-shortcuts.ui \
+	menu.ui \
+	calculator.css \
+	gnome-calculator.gresource.xml
 
 -include $(top_srcdir)/git.mk
