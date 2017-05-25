@@ -4,12 +4,17 @@ gsettings_SCHEMAS = org.gnome.calculator.gschema.xml
 desktopdir = $(datadir)/applications
 desktop_in_files = org.gnome.Calculator.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
 
-@INTLTOOL_XML_RULE@
+$(desktop_DATA): $(desktop_in_files)
+	$(AM_V_GEN) $(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
+
 appdatadir = $(datadir)/appdata
-appdata_DATA = $(appdata_in_files:.xml.in=.xml)
+appdata_XML = $(appdata_in_files:.xml.in=.xml)
 appdata_in_files = org.gnome.Calculator.appdata.xml.in
+@APPSTREAM_XML_RULES@
+
+$(appstream_XML): $(appstream_in_files)
+	$(AM_V_GEN) $(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
 man1_MANS = gnome-calculator.1 gcalccmd.1
 
