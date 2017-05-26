@@ -378,7 +378,7 @@ public class Number : Object
         if (!is_complex () && !y.is_complex () && !y.is_integer ())
         {
             var reciprocal = y.reciprocal ();
-            if (reciprocal.is_integer ())
+            if (reciprocal.is_integer () && !reciprocal.is_negative())
                 return root (reciprocal.to_integer ());
         }
 
