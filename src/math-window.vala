@@ -138,6 +138,16 @@ public class MathWindow : Gtk.ApplicationWindow
     {
         var result = base.key_press_event (event);
 
+        if ((event.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK) {
+            switch (event.keyval)
+            {
+            /* Close window */
+            case Gdk.Key.w:
+                destroy ();
+                return true;
+            }
+        }
+
         if (buttons.mode == ButtonMode.PROGRAMMING && (event.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK)
         {
             switch (event.keyval)

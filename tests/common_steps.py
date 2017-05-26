@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+# -*- coding: utf-8 -*-
 from dogtail.utils import isA11yEnabled, enableA11y
 if isA11yEnabled() is False:
     enableA11y(True)
@@ -154,12 +154,22 @@ class App(object):
 
     def closeViaShortcut(self):
         """
-        Close the app via shortcut
+        Close the app via shortcut <Control><Q>
         """
         if not self.isRunning():
             raise Exception("App is not running")
 
         keyCombo(self.shortcut)
+        assert not self.isRunning(), "Application cannot be stopped"
+
+    def closeViaCloseShortcut(self):
+        """
+        Close the app via shortcut <Control><W>
+        """
+        if not self.isRunning():
+            raise Exception("App is not running")
+
+        keyCombo('<Control><W>')
         assert not self.isRunning(), "Application cannot be stopped"
 
 
