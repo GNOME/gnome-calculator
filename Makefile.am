@@ -2,6 +2,12 @@ SUBDIRS = data lib src search-provider tests help po
 
 AM_DISTCHECK_CONFIGURE_FLAGS = --enable-installed-tests
 
+EXTRA_DIST = \
+	**/meson.build \
+	meson_options.txt \
+	meson_post_install.py \
+	$(NULL)
+
 MAINTAINERCLEANFILES = \
 	$(GITIGNORE_MAINTAINERCLEANFILES_TOPLEVEL) \
 	$(GITIGNORE_MAINTAINERCLEANFILES_MAKEFILE_IN) \
