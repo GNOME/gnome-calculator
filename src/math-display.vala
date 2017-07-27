@@ -46,13 +46,6 @@ public class MathDisplay : Gtk.Viewport
         source_view.set_justification (Gtk.Justification.LEFT);
 
         var style_context = source_view.get_style_context ();
-        style_context.save ();
-        style_context.set_state (Gtk.StateFlags.NORMAL);
-        var font_desc = style_context.get_font (Gtk.StateFlags.NORMAL);
-        style_context.restore ();
-
-        font_desc.set_size (15 * Pango.SCALE);
-        source_view.override_font (font_desc);
 
         source_view.set_name ("displayitem");
         source_view.set_size_request (20, 20);
