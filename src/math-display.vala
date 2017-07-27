@@ -433,6 +433,15 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
         return "";
     }
 
+    public virtual Gtk.SourceCompletionItem create_proposal (string label, string text, string details)
+    {
+        var proposal = Gtk.SourceCompletionItem.new2 ();
+        proposal.label = label;
+        proposal.text = text;
+        proposal.info = details;
+        return proposal;
+    }
+
     public static void move_iter_to_name_start (ref Gtk.TextIter iter)
     {
         while (iter.backward_char ())
@@ -518,8 +527,8 @@ public class FunctionCompletionProvider : CompletionProvider
                 if (function.is_custom_function ())
                     details_text = "%s(%s)=%s\n%s".printf (function.name, string.joinv (";", function.arguments),
                                                            function.expression, function.description);
-                var proposal = new Gtk.SourceCompletionItem (display_text, label_text, null, details_text);
-                proposals.append (proposal);
+
+                proposals.append (create_proposal (display_text, label_text, details_text));
             }
         }
         context.add_proposals (this, proposals, true);
@@ -571,8 +580,7 @@ public class VariableCompletionProvider : CompletionProvider
                 string details_text = _equation.serializer.to_string (_equation.variables.get (variable));
                 string label_text = variable;
 
-                var proposal = new Gtk.SourceCompletionItem (display_text, label_text, null, details_text);
-                proposals.append (proposal);
+                proposals.append (create_proposal (display_text, label_text, details_text));
             }
         }
         context.add_proposals (this, proposals, true);
