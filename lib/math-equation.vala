@@ -661,11 +661,11 @@ public class MathEquation : Gtk.SourceBuffer
         get
         {
             /* Check if the previous answer is before start of error token.
-             * If so, subtract 3 (the length of string "ans") and add actual answer length (ans_end - ans_start) into it. */
+             * If so, subtract 1 (the length of string "_") and add actual answer length (ans_end - ans_start) into it. */
             int ans_start, ans_end;
             get_ans_offsets (out ans_start, out ans_end);
             if (ans_start != -1 && ans_start < state.error_token_start)
-                return state.error_token_start + ans_end - ans_start - 3;
+                return state.error_token_start + ans_end - ans_start - 1;
 
             return state.error_token_start;
         }
@@ -676,11 +676,11 @@ public class MathEquation : Gtk.SourceBuffer
         get
         {
             /* Check if the previous answer is before end of error token.
-             * If so, subtract 3 (the length of string "ans") and add actual answer length (ans_end - ans_start) into it. */
+             * If so, subtract 1 (the length of string "_") and add actual answer length (ans_end - ans_start) into it. */
             int ans_start, ans_end;
             get_ans_offsets (out ans_start, out ans_end);
             if (ans_start != -1 && ans_start < state.error_token_end)
-                return state.error_token_end + ans_end - ans_start - 3;
+                return state.error_token_end + ans_end - ans_start - 1;
 
             return state.error_token_end;
         }
@@ -693,7 +693,7 @@ public class MathEquation : Gtk.SourceBuffer
 
     public bool is_result
     {
-        get { return equation == "ans"; }
+        get { return equation == "_"; }
     }
 
     public string equation
@@ -707,7 +707,7 @@ public class MathEquation : Gtk.SourceBuffer
             if (ans_start_mark != null)
                 get_ans_offsets (out ans_start, out ans_end);
             if (ans_start >= 0)
-                text = text.splice (text.index_of_nth_char (ans_start), text.index_of_nth_char (ans_end), "ans");
+                text = text.splice (text.index_of_nth_char (ans_start), text.index_of_nth_char (ans_end), "_");
 
             var last_is_digit = false;
             var index = 0;
@@ -1063,7 +1063,7 @@ public class MathEquation : Gtk.SourceBuffer
             return;
 
         /* If showing a result return to the equation that caused it */
-        // FIXME: Result may not be here due to solve (i.e. the user may have entered "ans")
+        // FIXME: Result may not be here due to solve (i.e. the user may have entered "_")
         if (is_result)
         {
             undo ();
@@ -1388,7 +1388,7 @@ private class MEquation : Equation
     {
         var lower_name = name.down ();
 
-        if (lower_name == "rand" || lower_name == "ans")
+        if (lower_name == "rand" || lower_name == "_")
             return true;
 
         return m_equation.variables.get (name) != null;
@@ -1400,7 +1400,7 @@ private class MEquation : Equation
 
         if (lower_name == "rand")
             return new Number.random ();
-        else if (lower_name == "ans")
+        else if (lower_name == "_")
             return m_equation.answer;
         else
             return m_equation.variables.get (name);

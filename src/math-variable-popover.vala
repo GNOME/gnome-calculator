@@ -11,7 +11,7 @@
 [GtkTemplate (ui = "/org/gnome/calculator/math-variable-popover.ui")]
 public class MathVariablePopover : Gtk.Popover
 {
-    private static string[] RESERVED_VARIABLE_NAMES = {"ans", "rand"};
+    private static string[] RESERVED_VARIABLE_NAMES = {"_", "rand"};
 
     private MathEquation equation;
 
@@ -55,8 +55,8 @@ public class MathVariablePopover : Gtk.Popover
 
     private void handler (string answer, Number number, int number_base, uint representation_base)
     {
-        variable_list.remove (find_row_for_variable ("ans"));
-        variable_list.add (make_variable_row ("ans", number));
+        variable_list.remove (find_row_for_variable ("_"));
+        variable_list.add (make_variable_row ("_", number));
     }
 
     private Gtk.ListBoxRow? find_row_for_variable (string name)
