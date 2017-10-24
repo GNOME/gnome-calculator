@@ -1,3 +1,5 @@
+SUBDIRS = icons
+
 gsettings_SCHEMAS = org.gnome.calculator.gschema.xml
 @GSETTINGS_RULES@
 

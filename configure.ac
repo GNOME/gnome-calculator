@@ -85,6 +85,7 @@ lib/Makefile
 src/Makefile
 po/Makefile.in
 data/Makefile
+data/icons/Makefile
 help/Makefile
 tests/Makefile
 ])
