@@ -55,7 +55,9 @@ public class MathVariablePopover : Gtk.Popover
 
     private void handler (string answer, Number number, int number_base, uint representation_base)
     {
-        variable_list.remove (find_row_for_variable ("_"));
+        var row = find_row_for_variable ("_");
+        if (row != null)
+            variable_list.remove (row);
         variable_list.add (make_variable_row ("_", number));
     }
 
