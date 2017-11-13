@@ -10,8 +10,8 @@ public_icons = \
 	hicolor_apps_24x24_gnome-calculator.png \
 	hicolor_apps_32x32_gnome-calculator.png \
 	hicolor_apps_48x48_gnome-calculator.png \
-	hicolor_apps_512x512_gnome-calculator.png \
-	hicolor_apps_symbolic_gnome-calculator-symbolic.svg \
+	hicolor_apps_256x256_gnome-calculator.png \
+	hicolor_apps_scalable_gnome-calculator-symbolic.svg \
 	$(NULL)
 
 private_icons = \
