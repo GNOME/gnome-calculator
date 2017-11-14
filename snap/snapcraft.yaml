@@ -1,0 +1,82 @@
+name: gnome-calculator
+version: git
+summary: GNOME Calculator
+description: |
+  GNOME Calculator is an application that solves mathematical equations.
+  Though it at first appears to be a simple calculator with only basic
+  arithmetic operations, you can switch into Advanced, Financial, or
+  Programming mode to find a surprising set of capabilities.
+
+  The Advanced calculator supports many operations, including:
+  logarithms, factorials, trigonometric and hyperbolic functions,
+  modulus division, complex numbers, random number generation, prime
+  factorization and unit conversions.
+
+  Financial mode supports several computations, including periodic interest
+  rate, present and future value, double declining and straight line
+  depreciation, and many others.
+
+  Programming mode supports conversion between common bases (binary, octal,
+  decimal, and hexadecimal), boolean algebra, one’s and two’s complementation,
+  character to character code conversion, and more.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: strict
+
+plugs:
+    gnome-3-26-1604:
+      interface: content
+      target: $SNAP/gnome-platform
+      default-provider: gnome-3-26-1604:gnome-3-26-1604
+
+slots:
+  # for GtkApplication registration
+  gnome-calculator:
+    interface: dbus
+    bus: session
+    name: org.gnome.Calculator
+
+apps:
+  gnome-calculator:
+    command: desktop-launch gnome-calculator
+    plugs:
+      - desktop
+      - desktop-legacy
+      - gsettings
+      - network
+      - unity7
+      - wayland
+    desktop: usr/share/applications/org.gnome.Calculator.desktop
+    environment:
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/gnome-calculator
+
+parts:
+  gnome-calculator:
+    build-attributes: [no-system-libraries]
+    after: [desktop-gnome-platform]
+    source: .
+    source-type: git
+    plugin: autotools
+    # workaround the issue described in https://launchpad.net/bugs/1583250
+    configflags: [--prefix=/snap/gnome-calculator/current/usr]
+    organize:
+      snap/gnome-calculator/current/usr: usr
+    build-packages:
+      - desktop-file-utils
+      - gettext
+      - gnome-common
+      - appstream-util
+      - gnome-pkg-tools
+      - intltool
+      - libglib2.0-dev
+      - libgtk-3-dev
+      - libgtksourceview-3.0-dev 
+      - libxml2-dev
+      - libsoup2.4-dev
+      - libmpc-dev
+      - libmpfr-dev
+      - valac
+      - yelp-tools
+    prime:
+      - "-usr/lib/gnome-calculator/libcalculator.a"
+      - "-usr/share/appdata"
