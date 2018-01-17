@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-28 17:41+0000\n"
-"PO-Revision-Date: 2017-08-15 20:57+0300\n"
+"POT-Creation-Date: 2017-12-27 17:25+0000\n"
+"PO-Revision-Date: 2018-01-17 10:02+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2011-09-08 08:16+0000\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-POT-Import-Date: 2012-02-19 15:17:38+0000\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2148
@@ -173,7 +173,7 @@ msgstr "Kompleksiluvun liittoluku"
 msgid "Complex argument"
 msgstr "Kompeleksiluvun argumentti"
 
-#: src/buttons-advanced.ui:702 src/buttons-programming.ui:1298
+#: src/buttons-advanced.ui:702
 msgid "Natural Logarithm"
 msgstr "Luonnollinen logaritmi"
 
@@ -610,6 +610,10 @@ msgstr "Desimaali"
 msgid "Hexadecimal"
 msgstr "Heksadesimaali"
 
+#: src/buttons-programming.ui:1298
+msgid "Binary Logarithm"
+msgstr "Binäärinen logaritmi"
+
 #: src/buttons-programming.ui:1343
 msgid "Integer Component"
 msgstr "Kokonaisosa"
@@ -957,7 +961,7 @@ msgstr "Tarkkuusarvo"
 
 #: data/org.gnome.calculator.gschema.xml:26
 msgid "The number of digits displayed after the numeric point"
-msgstr "Pilkun jälkeen näytettävien numeroiden määrä."
+msgstr "Pilkun jälkeen näytettävien numeroiden määrä"
 
 #: data/org.gnome.calculator.gschema.xml:31
 msgid "Word size"
@@ -2069,691 +2073,708 @@ msgid "gram,grams,gramme,grammes,g"
 msgstr "gramma,grammaa,gramma,grammaa,g"
 
 #: lib/unit.vala:76
+msgid "Stone"
+msgstr "Kivi"
+
+#: lib/unit.vala:76
+#, c-format
+#| msgctxt "unit-format"
+#| msgid "%s s"
+msgctxt "unit-format"
+msgid "%s st"
+msgstr "%s st"
+
+#: lib/unit.vala:76
+msgctxt "unit-symbols"
+msgid "stone,st,stones"
+msgstr "kivi,st,kiveä"
+
+#: lib/unit.vala:77
 msgid "Years"
 msgstr "Vuosi"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:77
 #, c-format
 msgctxt "unit-format"
 msgid "%s years"
 msgstr "%s vuotta"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "vuosi,vuotta"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:78
 msgid "Days"
 msgstr "Päivä"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:78
 #, c-format
 msgctxt "unit-format"
 msgid "%s days"
 msgstr "%s päivää"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "päivä,päivää"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:79
 msgid "Hours"
 msgstr "Tunti"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:79
 #, c-format
 msgctxt "unit-format"
 msgid "%s hours"
 msgstr "%s tuntia"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:79
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "tunti,tuntia"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:80
 msgid "Minutes"
 msgstr "Minuutti"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:80
 #, c-format
 msgctxt "unit-format"
 msgid "%s minutes"
 msgstr "%s minuuttia"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "minuutti,minuuttia"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:81
 msgid "Seconds"
 msgstr "Sekunti"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:81
 #, c-format
 msgctxt "unit-format"
 msgid "%s s"
 msgstr "%s s"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:81
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "sekunti,sekuntia,s"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:82
 msgid "Milliseconds"
 msgstr "Millisekunti"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:82
 #, c-format
 msgctxt "unit-format"
 msgid "%s ms"
 msgstr "%s ms"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:82
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "millisekunti,millisekuntia"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:83
 msgid "Microseconds"
 msgstr "Mikrosekunti"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:83
 #, c-format
 msgctxt "unit-format"
 msgid "%s μs"
 msgstr "%s μs"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:83
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "mikrosekunti,mikrosekuntia,us,μs"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:84
 msgid "Celsius"
 msgstr "Celsius"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:84
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚C"
 msgstr "%s ˚C"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:84
 msgctxt "unit-symbols"
 msgid "degC,˚C,C,c,Celsius,celsius"
 msgstr "degC,˚C,C,c,Celsius,celsius"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:85
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:85
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚F"
 msgstr "%s ˚F"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:85
 msgctxt "unit-symbols"
 msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
 msgstr "degF,˚F,F,f,Fahrenheit,fahrenheit"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:86
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:86
 #, c-format
 msgctxt "unit-format"
 msgid "%s K"
 msgstr "%s K"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
 msgstr "k,K,Kelvin,kelvin"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:87
 msgid "Rankine"
 msgstr "Rankine"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:87
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚R"
 msgstr "%s ˚R"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:87
 msgctxt "unit-symbols"
 msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
 msgstr "degR,˚R,˚Ra,r,R,Rankine,rankine"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
-#: lib/unit.vala:88
+#: lib/unit.vala:89
 msgid "Bits"
 msgstr "Bitti"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:89
 #, c-format
 msgctxt "unit-format"
 msgid "%s b"
 msgstr "%s b"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:89
 msgctxt "unit-symbols"
 msgid "bit,bits,b"
 msgstr "bitti,bittiä,b"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:90
 msgid "Bytes"
 msgstr "Tavu"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:90
 #, c-format
 msgctxt "unit-format"
 msgid "%s B"
 msgstr "%s B"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:90
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
 msgstr "tavu,tavua,B"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:91
 msgid "Nibbles"
 msgstr "Puolitavu"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:91
 #, c-format
 msgctxt "unit-format"
 msgid "%s nibble"
 msgstr "%s puolitavua"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:91
 msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "puolitavu,puolitavua"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
-#: lib/unit.vala:92
+#: lib/unit.vala:93
 msgid "Kilobits"
 msgstr "Kilobitti"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:93
 #, c-format
 msgctxt "unit-format"
 msgid "%s kb"
 msgstr "%s kb"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "kilobitti,kilobittiä,kb,Kb"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:94
 msgid "Kilobytes"
 msgstr "Kilotavu"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:94
 #, c-format
 msgctxt "unit-format"
 msgid "%s kB"
 msgstr "%s kB"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:94
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "kilotavu,kilotavua,kB,KB"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:95
 msgid "Kibibits"
 msgstr "Kibibitti"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:95
 #, c-format
 msgctxt "unit-format"
 msgid "%s Kib"
 msgstr "%s Kib"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:95
 msgctxt "unit-symbols"
 msgid "kibibit,kibibits,Kib"
 msgstr "kibibitti,kibibittiä,Kib"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:96
 msgid "Kibibytes"
 msgstr "Kibitavu"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:96
 #, c-format
 msgctxt "unit-format"
 msgid "%s KiB"
 msgstr "%s KiB"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:96
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
 msgstr "kibitavu,kibitavua,KiB"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:97
 msgid "Megabits"
 msgstr "Megabitti"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:97
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mb"
 msgstr "%s Mb"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:97
 msgctxt "unit-symbols"
 msgid "megabit,megabits,Mb"
 msgstr "megabitti,megabittiä,Mb"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:98
 msgid "Megabytes"
 msgstr "Megatavu"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:98
 #, c-format
 msgctxt "unit-format"
 msgid "%s MB"
 msgstr "%s MB"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
 msgstr "megatavu,megatavua,MB"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:99
 msgid "Mebibits"
 msgstr "mebibitti"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:99
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mib"
 msgstr "%s Mib"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:99
 msgctxt "unit-symbols"
 msgid "mebibit,mebibits,Mib"
 msgstr "mebibitti,mebibittiä,Mib"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:100
 msgid "Mebibytes"
 msgstr "Mebitavu"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:100
 #, c-format
 msgctxt "unit-format"
 msgid "%s MiB"
 msgstr "%s MiB"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
 msgstr "mebitavu,mebitavua,MiB"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:101
 msgid "Gigabits"
 msgstr "Gigabitti"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:101
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gb"
 msgstr "%s Gb"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "gigabit,gigabits,Gb"
 msgstr "gigabitti,gigabittiä,Gb"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:102
 msgid "Gigabytes"
 msgstr "Gigatavu"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:102
 #, c-format
 msgctxt "unit-format"
 msgid "%s GB"
 msgstr "%s GB"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
 msgstr "gigatavu,gigatavua,GB"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:103
 msgid "Gibibits"
 msgstr "Gibibitti"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:103
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gib"
 msgstr "%s Gib"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "gibibit,gibibits,Gib"
 msgstr "gibibitti,gibibittiä,Gib"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:104
 msgid "Gibibytes"
 msgstr "Gibitavu"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:104
 #, c-format
 msgctxt "unit-format"
 msgid "%s GiB"
 msgstr "%s GiB"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
 msgstr "gibitavu,gibitavua,GiB"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:105
 msgid "Terabits"
 msgstr "Terabitti"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:105
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tb"
 msgstr "%s Tb"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "terabit,terabits,Tb"
 msgstr "terabitti,terabittiä,Tb"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:106
 msgid "Terabytes"
 msgstr "Teratavu"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:106
 #, c-format
 msgctxt "unit-format"
 msgid "%s TB"
 msgstr "%s TB"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:106
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
 msgstr "teratavu,teratavua,TB"
 
-#: lib/unit.vala:106
+#: lib/unit.vala:107
 msgid "Tebibits"
 msgstr "Tebibitti"
 
-#: lib/unit.vala:106
+#: lib/unit.vala:107
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tib"
 msgstr "%s Tib"
 
-#: lib/unit.vala:106
+#: lib/unit.vala:107
 msgctxt "unit-symbols"
 msgid "tebibit,tebibits,Tib"
 msgstr "tebibitti,tebibittiä,Tib"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:108
 msgid "Tebibytes"
 msgstr "Tebitavu"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:108
 #, c-format
 msgctxt "unit-format"
 msgid "%s TiB"
 msgstr "%s TiB"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
 msgstr "tebitavu,tebitavua,TiB"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:109
 msgid "Petabits"
 msgstr "Petabitti"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:109
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pb"
 msgstr "%s Pb"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:109
 msgctxt "unit-symbols"
 msgid "petabit,petabits,Pb"
 msgstr "petabitti,petabittiä,Pb"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:110
 msgid "Petabytes"
 msgstr "Petatavu"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:110
 #, c-format
 msgctxt "unit-format"
 msgid "%s PB"
 msgstr "%s PB"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:110
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
 msgstr "petatavu,petatavua,PB"
 
-#: lib/unit.vala:110
+#: lib/unit.vala:111
 msgid "Pebibits"
 msgstr "Pebibitti"
 
-#: lib/unit.vala:110
+#: lib/unit.vala:111
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pib"
 msgstr "%s Pib"
 
-#: lib/unit.vala:110
+#: lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "pebibit,pebibits,Pib"
 msgstr "pebibitti,pebibittiä,Pib"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:112
 msgid "Pebibytes"
 msgstr "Pebitavu"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:112
 #, c-format
 msgctxt "unit-format"
 msgid "%s PiB"
 msgstr "%s PiB"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:112
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
 msgstr "pebitavu,pebitavua,PiB"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:113
 msgid "Exabits"
 msgstr "Eksabitti"
 
-#: lib/unit.vala:112 lib/unit.vala:116
+#: lib/unit.vala:113 lib/unit.vala:117
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eb"
 msgstr "%s Eb"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:113
 msgctxt "unit-symbols"
 msgid "exabit,exabits,Eb"
 msgstr "eksabitti,eksabittiä,Eb"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:114
 msgid "Exabytes"
 msgstr "Eksatavu"
 
-#: lib/unit.vala:113 lib/unit.vala:117
+#: lib/unit.vala:114 lib/unit.vala:118
 #, c-format
 msgctxt "unit-format"
 msgid "%s EB"
 msgstr "%s EB"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
 msgstr "eksatavu,eksatavua,EB"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:115
 msgid "Exbibits"
 msgstr "Eksbibitti"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:115
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eib"
 msgstr "%s Eib"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:115
 msgctxt "unit-symbols"
 msgid "exbibit,exbibits,Eib"
 msgstr "eksbibitti,eksbibittiä,Eib"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:116
 msgid "Exbibytes"
 msgstr "Eksbitavu"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:116
 #, c-format
 msgctxt "unit-format"
 msgid "%s EiB"
 msgstr "%s EiB"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
 msgstr "eksbitavu,eksbitavua,EiB"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:117
 msgid "Zettabits"
 msgstr "Tsettabitti"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:117
 msgctxt "unit-symbols"
 msgid "zettabit,zettabits,Zb"
 msgstr "tsettabitti,tsettabittiä,Zb"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:118
 msgid "Zettabytes"
 msgstr "Tsettatavu"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
 msgstr "tsettatavu,tsettatavua,ZB"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:119
 msgid "Zebibits"
 msgstr "Tsebibitti"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:119
 #, c-format
 msgctxt "unit-format"
 msgid "%s Zib"
 msgstr "%s Zib"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:119
 msgctxt "unit-symbols"
 msgid "zebibit,zebibits,Zib"
 msgstr "tsebibitti,tsebibittiä,Zib"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:120
 msgid "Zebibytes"
 msgstr "Tsebitavu"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:120
 #, c-format
 msgctxt "unit-format"
 msgid "%s ZiB"
 msgstr "%s ZiB"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
 msgstr "tsebitavu,tsebitavua,ZiB"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:121
 msgid "Yottabits"
 msgstr "Jottabitti"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:121
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yb"
 msgstr "%s Yb"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:121
 msgctxt "unit-symbols"
 msgid "yottabit,yottabits,Yb"
 msgstr "jottabitti,jottabittiä,Yb"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:122
 msgid "Yottabytes"
 msgstr "Jottatavu"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:122
 #, c-format
 msgctxt "unit-format"
 msgid "%s YB"
 msgstr "%s YB"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
 msgstr "jottatavu,jottatavu,YB"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:123
 msgid "Yobibits"
 msgstr "Jobibitti"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:123
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yib"
 msgstr "%s Yib"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:123
 msgctxt "unit-symbols"
 msgid "yobibit,yobibits,Yib"
 msgstr "jobibitti,jobibittiä,Yib"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:124
 msgid "Yobibytes"
 msgstr "Jobitavu"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:124
 #, c-format
 msgctxt "unit-format"
 msgid "%s YiB"
 msgstr "%s YiB"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:124
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
 msgstr "jobitavu,jobitavua,YiB"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:126
 msgid "Currency"
 msgstr "Valuutta"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:131
+#: lib/unit.vala:132
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
@@ -2783,7 +2804,7 @@ msgstr "Ohjetiedostoa ei voi avata"
 #: src/gnome-calculator.vala:327
 msgid "translator-credits"
 msgstr ""
-"Jiri Grönroos, 2010-2017\n"
+"Jiri Grönroos, 2010-2018\n"
 "Lasse Liehu, 2013\n"
 "Ilkka Tuohela, 2005-2009\n"
 "Tommi Vainikainen, 2004, 2008-2009\n"
@@ -2808,7 +2829,7 @@ msgstr "Tietoja - Laskin"
 #. Short description in the about dialog
 #: src/gnome-calculator.vala:341
 msgid "Calculator with financial and scientific modes."
-msgstr "Laskin talous- ja tiedetilojen kera"
+msgstr "Laskin talous- ja tiedetilojen kera."
 
 #: src/math-buttons.vala:464
 #, c-format
