@@ -1,5 +1,5 @@
 # Hungarian translation of gcalctool.
-# Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Free Software Foundation, Inc.
+# Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2018. Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
 #
 # Andras Timar <timar at gnome dot hu>, 2003.
@@ -7,21 +7,21 @@
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009.
 # Mate ORY <orymate at gmail d0t com>, 2006.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2009, 2010, 2011, 2012, 2013, 2016.
-# Balázs Úr <urbalazs at gmail dot com>, 2013, 2014.
+# Balázs Úr <urbalazs at gmail dot com>, 2013, 2014, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
 "calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2017-06-22 12:09+0000\n"
-"PO-Revision-Date: 2017-06-27 12:07+0200\n"
-"Last-Translator: Meskó Balázs <meskobalazs@fedoraproject.org>\n"
+"POT-Creation-Date: 2017-12-27 17:25+0000\n"
+"PO-Revision-Date: 2018-01-22 00:01+0100\n"
+"Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Lokalize 1.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2148
@@ -167,7 +167,7 @@ msgstr "Komplex konjugált"
 msgid "Complex argument"
 msgstr "Komplex argumentum"
 
-#: src/buttons-advanced.ui:702 src/buttons-programming.ui:1298
+#: src/buttons-advanced.ui:702
 msgid "Natural Logarithm"
 msgstr "Természetes alapú logaritmus"
 
@@ -607,6 +607,11 @@ msgstr "Decimális"
 #: src/buttons-programming.ui:20
 msgid "Hexadecimal"
 msgstr "Hexadecimális"
+
+#: src/buttons-programming.ui:1298
+#| msgid "Natural Logarithm"
+msgid "Binary Logarithm"
+msgstr "Kettes alapú logaritmus"
 
 #: src/buttons-programming.ui:1343
 msgid "Integer Component"
@@ -2071,691 +2076,708 @@ msgid "gram,grams,gramme,grammes,g"
 msgstr "gram,gramm,g"
 
 #: lib/unit.vala:76
+msgid "Stone"
+msgstr "Kő"
+
+#: lib/unit.vala:76
+#, c-format
+#| msgctxt "unit-format"
+#| msgid "%s s"
+msgctxt "unit-format"
+msgid "%s st"
+msgstr "%s st"
+
+#: lib/unit.vala:76
+msgctxt "unit-symbols"
+msgid "stone,st,stones"
+msgstr "kő,st,kövek"
+
+#: lib/unit.vala:77
 msgid "Years"
 msgstr "Év"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:77
 #, c-format
 msgctxt "unit-format"
 msgid "%s years"
 msgstr "%s év"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "év"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:78
 msgid "Days"
 msgstr "Nap"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:78
 #, c-format
 msgctxt "unit-format"
 msgid "%s days"
 msgstr "%s nap"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "nap"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:79
 msgid "Hours"
 msgstr "Óra"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:79
 #, c-format
 msgctxt "unit-format"
 msgid "%s hours"
 msgstr "%s óra"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:79
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "óra"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:80
 msgid "Minutes"
 msgstr "Perc"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:80
 #, c-format
 msgctxt "unit-format"
 msgid "%s minutes"
 msgstr "%s perc"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "perc"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:81
 msgid "Seconds"
 msgstr "Másodperc"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:81
 #, c-format
 msgctxt "unit-format"
 msgid "%s s"
 msgstr "%s s"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:81
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "perc,s"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:82
 msgid "Milliseconds"
 msgstr "Ezredmásodperc"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:82
 #, c-format
 msgctxt "unit-format"
 msgid "%s ms"
 msgstr "%s ms"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:82
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "ezredmásodperc,ms"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:83
 msgid "Microseconds"
 msgstr "Mikromásodperc"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:83
 #, c-format
 msgctxt "unit-format"
 msgid "%s μs"
 msgstr "%s μs"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:83
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "mikromásodperc,us,μs"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:84
 msgid "Celsius"
 msgstr "Celsius"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:84
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚C"
 msgstr "%s ˚C"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:84
 msgctxt "unit-symbols"
 msgid "degC,˚C,C,c,Celsius,celsius"
 msgstr "degC,˚C,C,c,Celsius,celsius"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:85
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:85
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚F"
 msgstr "%s ˚F"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:85
 msgctxt "unit-symbols"
 msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
 msgstr "degF,˚F,F,f,Fahrenheit,fahrenheit"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:86
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:86
 #, c-format
 msgctxt "unit-format"
 msgid "%s K"
 msgstr "%s K"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
 msgstr "k,K,Kelvin,kelvin"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:87
 msgid "Rankine"
 msgstr "Rankine"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:87
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚R"
 msgstr "%s ˚R"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:87
 msgctxt "unit-symbols"
 msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
 msgstr "degR,˚R,˚Ra,r,R,Rankine,rankine"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
-#: lib/unit.vala:88
+#: lib/unit.vala:89
 msgid "Bits"
 msgstr "Bit"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:89
 #, c-format
 msgctxt "unit-format"
 msgid "%s b"
 msgstr "%s b"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:89
 msgctxt "unit-symbols"
 msgid "bit,bits,b"
 msgstr "bit,bitek,b"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:90
 msgid "Bytes"
 msgstr "Bájt"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:90
 #, c-format
 msgctxt "unit-format"
 msgid "%s B"
 msgstr "%s B"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:90
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
 msgstr "byte,byte-ok,bájt,bájtok,B"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:91
 msgid "Nibbles"
 msgstr "Nibble"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:91
 #, c-format
 msgctxt "unit-format"
 msgid "%s nibble"
 msgstr "%s nibble"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:91
 msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "nybble,nybble-ök,nibble,nibble-ök"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
-#: lib/unit.vala:92
+#: lib/unit.vala:93
 msgid "Kilobits"
 msgstr "Kilobit"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:93
 #, c-format
 msgctxt "unit-format"
 msgid "%s kb"
 msgstr "%s kb"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "kilobit,kilobitek,kb,Kb"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:94
 msgid "Kilobytes"
 msgstr "Kilobájt"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:94
 #, c-format
 msgctxt "unit-format"
 msgid "%s kB"
 msgstr "%s kB"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:94
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "kilobyte,kilobyte-ok,kilobájt,kilobájtok,kB,KB"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:95
 msgid "Kibibits"
 msgstr "Kibibit"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:95
 #, c-format
 msgctxt "unit-format"
 msgid "%s Kib"
 msgstr "%s Kib"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:95
 msgctxt "unit-symbols"
 msgid "kibibit,kibibits,Kib"
 msgstr "kibibit,kibibitek,Kib"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:96
 msgid "Kibibytes"
 msgstr "Kibibájt"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:96
 #, c-format
 msgctxt "unit-format"
 msgid "%s KiB"
 msgstr "%s KiB"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:96
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
 msgstr "kibibyte,kibibyte-ok,kibibájt,kibibájtok,KiB"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:97
 msgid "Megabits"
 msgstr "Megabit"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:97
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mb"
 msgstr "%s Mb"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:97
 msgctxt "unit-symbols"
 msgid "megabit,megabits,Mb"
 msgstr "megabit,megabitek,Mb"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:98
 msgid "Megabytes"
 msgstr "Megabájt"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:98
 #, c-format
 msgctxt "unit-format"
 msgid "%s MB"
 msgstr "%s MB"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
 msgstr "megabyte,megabyte-ok,megabájt,megabájtok,MB"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:99
 msgid "Mebibits"
 msgstr "Mebibit"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:99
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mib"
 msgstr "%s Mib"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:99
 msgctxt "unit-symbols"
 msgid "mebibit,mebibits,Mib"
 msgstr "mebibit,mebibitek,Mib"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:100
 msgid "Mebibytes"
 msgstr "Mebibájt"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:100
 #, c-format
 msgctxt "unit-format"
 msgid "%s MiB"
 msgstr "%s MiB"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
 msgstr "mebibyte,mebibyte-ok,mebibájt,mebibájtok,MiB"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:101
 msgid "Gigabits"
 msgstr "Gigabit"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:101
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gb"
 msgstr "%s Gb"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "gigabit,gigabits,Gb"
 msgstr "gigabit,gigabitek,Gb"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:102
 msgid "Gigabytes"
 msgstr "Gigabájt"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:102
 #, c-format
 msgctxt "unit-format"
 msgid "%s GB"
 msgstr "%s GB"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
 msgstr "gigabyte,gigabyte-ok,gigabájt,gigabájtok,GB"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:103
 msgid "Gibibits"
 msgstr "Gibibit"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:103
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gib"
 msgstr "%s Gib"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "gibibit,gibibits,Gib"
 msgstr "gibibit,gibibitek,Gib"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:104
 msgid "Gibibytes"
 msgstr "Gibibájt"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:104
 #, c-format
 msgctxt "unit-format"
 msgid "%s GiB"
 msgstr "%s GiB"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
 msgstr "gibibyte,gibibyte-ok,gibibájt,gibibájtok,GiB"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:105
 msgid "Terabits"
 msgstr "Terabit"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:105
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tb"
 msgstr "%s Tb"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "terabit,terabits,Tb"
 msgstr "terabit,terabitek,Tb"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:106
 msgid "Terabytes"
 msgstr "Terabájt"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:106
 #, c-format
 msgctxt "unit-format"
 msgid "%s TB"
 msgstr "%s TB"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:106
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
 msgstr "terabyte,terabyte-ok,terabájt,terabájtok,TB"
 
-#: lib/unit.vala:106
+#: lib/unit.vala:107
 msgid "Tebibits"
 msgstr "Tebibit"
 
-#: lib/unit.vala:106
+#: lib/unit.vala:107
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tib"
 msgstr "%s Tib"
 
-#: lib/unit.vala:106
+#: lib/unit.vala:107
 msgctxt "unit-symbols"
 msgid "tebibit,tebibits,Tib"
 msgstr "tebibit,tebibitek,Tib"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:108
 msgid "Tebibytes"
 msgstr "Tebibájt"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:108
 #, c-format
 msgctxt "unit-format"
 msgid "%s TiB"
 msgstr "%s TiB"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
 msgstr "tebibyte,tebibyte-ok,tebibájt,tebibájtok,TiB"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:109
 msgid "Petabits"
 msgstr "Petabit"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:109
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pb"
 msgstr "%s Pb"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:109
 msgctxt "unit-symbols"
 msgid "petabit,petabits,Pb"
 msgstr "petabit,petabitek,Pb"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:110
 msgid "Petabytes"
 msgstr "Petabájt"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:110
 #, c-format
 msgctxt "unit-format"
 msgid "%s PB"
 msgstr "%s PB"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:110
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
 msgstr "petabyte,petabyte-ok,petabájt,petabájtok,PB"
 
-#: lib/unit.vala:110
+#: lib/unit.vala:111
 msgid "Pebibits"
 msgstr "Pebibit"
 
-#: lib/unit.vala:110
+#: lib/unit.vala:111
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pib"
 msgstr "%s Pib"
 
-#: lib/unit.vala:110
+#: lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "pebibit,pebibits,Pib"
 msgstr "pebibit,pebibitek,Pib"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:112
 msgid "Pebibytes"
 msgstr "Pebibájt"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:112
 #, c-format
 msgctxt "unit-format"
 msgid "%s PiB"
 msgstr "%s PiB"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:112
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
 msgstr "pebibyte,pebibyte-ok,pebibájt,pebibájtok,PiB"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:113
 msgid "Exabits"
 msgstr "Exabit"
 
-#: lib/unit.vala:112 lib/unit.vala:116
+#: lib/unit.vala:113 lib/unit.vala:117
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eb"
 msgstr "%s Eb"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:113
 msgctxt "unit-symbols"
 msgid "exabit,exabits,Eb"
 msgstr "exabit,exabitek,Eb"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:114
 msgid "Exabytes"
 msgstr "Exabájt"
 
-#: lib/unit.vala:113 lib/unit.vala:117
+#: lib/unit.vala:114 lib/unit.vala:118
 #, c-format
 msgctxt "unit-format"
 msgid "%s EB"
 msgstr "%s EB"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
 msgstr "exabyte,exabyte-ok,exabájt,exabájtok,EB"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:115
 msgid "Exbibits"
 msgstr "Exbibit"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:115
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eib"
 msgstr "%s Eib"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:115
 msgctxt "unit-symbols"
 msgid "exbibit,exbibits,Eib"
 msgstr "exbibit,exbibitek,Eib"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:116
 msgid "Exbibytes"
 msgstr "Exbibájt"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:116
 #, c-format
 msgctxt "unit-format"
 msgid "%s EiB"
 msgstr "%s EiB"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
 msgstr "exbibyte,exbibyte-ok,exbibájt,exbibájtok,EiB"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:117
 msgid "Zettabits"
 msgstr "Zettabit"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:117
 msgctxt "unit-symbols"
 msgid "zettabit,zettabits,Zb"
 msgstr "zettabit,zettabitek,Zb"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:118
 msgid "Zettabytes"
 msgstr "Zettabájt"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
 msgstr "zettabyte,zettabyte-ok,zettabájt,zettabájtok,ZB"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:119
 msgid "Zebibits"
 msgstr "Zebibit"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:119
 #, c-format
 msgctxt "unit-format"
 msgid "%s Zib"
 msgstr "%s Zib"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:119
 msgctxt "unit-symbols"
 msgid "zebibit,zebibits,Zib"
 msgstr "zebibit,zebibitek,Zib"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:120
 msgid "Zebibytes"
 msgstr "Zebibájt"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:120
 #, c-format
 msgctxt "unit-format"
 msgid "%s ZiB"
 msgstr "%s ZiB"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
 msgstr "zebibyte,zebibyte-ok,zebibájt,zebibájtok,ZiB"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:121
 msgid "Yottabits"
 msgstr "Yottabit"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:121
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yb"
 msgstr "%s Yb"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:121
 msgctxt "unit-symbols"
 msgid "yottabit,yottabits,Yb"
 msgstr "yottabit,yottabitek,Yb"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:122
 msgid "Yottabytes"
 msgstr "Yottabájt"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:122
 #, c-format
 msgctxt "unit-format"
 msgid "%s YB"
 msgstr "%s YB"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
 msgstr "yottabyte,yottabyte-ok,yottabájt,yottabájtok,YB"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:123
 msgid "Yobibits"
 msgstr "Yobibit"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:123
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yib"
 msgstr "%s Yib"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:123
 msgctxt "unit-symbols"
 msgid "yobibit,yobibits,Yib"
 msgstr "yobibit,yobibitek,Yib"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:124
 msgid "Yobibytes"
 msgstr "Yobibájt"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:124
 #, c-format
 msgctxt "unit-format"
 msgid "%s YiB"
 msgstr "%s YiB"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:124
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
 msgstr "yobibyte,yobibyte-ok,yobibájt,yobibájtok,YiB"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:126
 msgid "Currency"
 msgstr "Pénznem"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:131
+#: lib/unit.vala:132
 #, c-format
 msgid "%s%%s"
 msgstr "%%s %s"
@@ -2881,1285 +2903,3 @@ msgstr "64 bits"
 msgid "_Quit"
 msgstr "_Kilépés"
 
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "degC,˚C"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "degF,˚F"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "degR,˚R,˚Ra"
-
-#~ msgid "Lithuanian Litas"
-#~ msgstr "Litván litas"
-
-#~ msgid "Reciprocal of zero is undefined"
-#~ msgstr "A nulla reciproka nincs meghatározva"
-
-#~ msgid "_%d place"
-#~ msgid_plural "_%d places"
-#~ msgstr[0] "_%d jegy"
-#~ msgstr[1] "_%d jegy"
-
-#~ msgid "Show %d decimal _places"
-#~ msgstr "%d decimális _hely megjelenítése"
-
-#~ msgid "Latvian Lats"
-#~ msgstr "Lett lat"
-
-#~ msgid "Truncate"
-#~ msgstr "Csonkítás"
-
-#~ msgid "Malformed expression at token '%s'"
-#~ msgstr "Hibás kifejezés a(z) „%s” tokennél"
-
-#~ msgid "_Close"
-#~ msgstr "_Bezárás"
-
-#~ msgid "Root must be non-zero"
-#~ msgstr "A gyök nem lehet nulla"
-
-#~ msgid "Negative root of zero is undefined"
-#~ msgstr "A nulla negatív gyöke nincs meghatározva"
-
-#~ msgid "Overflow: the result couldn't be calculated"
-#~ msgstr "Túlcsordulás: az eredmény nem számolható ki"
-
-#~ msgid "Mode"
-#~ msgstr "Mód"
-
-#~ msgid "Financial"
-#~ msgstr "Pénzügyi"
-
-#~ msgid "Round"
-#~ msgstr "Kerekítés"
-
-#~ msgid "Floor"
-#~ msgstr "Alsó egészrész"
-
-#~ msgid "Ceiling"
-#~ msgstr "Felső egészrész"
-
-#~ msgid "Sign"
-#~ msgstr "Előjel"
-
-#~ msgid "Litres"
-#~ msgstr "Liter"
-
-#~ msgid "_Calculator"
-#~ msgstr "Számoló_gép"
-
-#~ msgid "_Edit"
-#~ msgstr "S_zerkesztés"
-
-#~ msgid "Copy selection"
-#~ msgstr "Kijelölés másolása"
-
-#~ msgid "Paste selection"
-#~ msgstr "Kijelölés beillesztése"
-
-#~ msgid "_Undo"
-#~ msgstr "_Visszavonás"
-
-#~ msgid "Undo"
-#~ msgstr "Visszavonás"
-
-#~ msgid "_Redo"
-#~ msgstr "Új_ra"
-
-#~ msgid "Redo"
-#~ msgstr "Újra"
-
-#~ msgid "Insert ASCII value"
-#~ msgstr "ASCII-érték beszúrása"
-
-#~ msgid "_Insert ASCII value..."
-#~ msgstr "ASCII-érték _beszúrása…"
-
-#~ msgid "_View"
-#~ msgstr "_Nézet"
-
-#~| msgid "Basic"
-#~ msgid "_Basic"
-#~ msgstr "_Alap"
-
-#~| msgid "Financial"
-#~ msgid "_Financial"
-#~ msgstr "_Pénzügyi mód"
-
-#~| msgid "Scientific"
-#~ msgid "_Scientific"
-#~ msgstr "_Tudományos mód"
-
-#~| msgid "Programming"
-#~ msgid "_Programming"
-#~ msgstr "_Programozói"
-
-#~| msgid "Show Trailing Zeroes"
-#~ msgid "Show _Trailing Zeroes"
-#~ msgstr "_Nullák megjelenítése a szám végén"
-
-#~| msgid "Show Thousands Separators"
-#~ msgid "Show T_housands Separator"
-#~ msgstr "_Ezreselválasztók megjelenítése"
-
-#~ msgid "Show memory registers"
-#~ msgstr "Memóriaregiszterek megjelenítése"
-
-#~ msgid "_Memory Registers"
-#~ msgstr "_Memóriaregiszterek"
-
-#~ msgid "_Contents"
-#~ msgstr "_Tartalom"
-
-#~ msgid "Show help contents"
-#~ msgstr "Súgótartalom megjelenítése"
-
-#~ msgid "Show the About Gcalctool dialog"
-#~ msgstr "A Gcalctool névjegyének megjelenítése"
-
-#~ msgid "Result Region"
-#~ msgstr "Eredményrégió"
-
-#~ msgid "Makes the bitwise functions use 64 bit mode"
-#~ msgstr "A bitenkénti műveletek 64 bites módot használjanak"
-
-#~ msgid "Makes the bitwise functions use 32 bit mode"
-#~ msgstr "A bitenkénti műveletek 32 bites módot használjanak"
-
-#~ msgid "Makes the bitwise functions use 16 bit mode"
-#~ msgstr "A bitenkénti műveletek 16 bites módot használjanak"
-
-#~ msgid "_Bin"
-#~ msgstr "_Bin"
-
-#~ msgid "Set numeric base to binary (base 2)"
-#~ msgstr "Kettes számrendszer"
-
-#~ msgid "_Oct"
-#~ msgstr "_Oct"
-
-#~ msgid "Set numeric base to octal (base 8)"
-#~ msgstr "Nyolcas számrendszer"
-
-#~ msgid "_Dec"
-#~ msgstr "_Dec"
-
-#~ msgid "Set numeric base to decimal (base 10)"
-#~ msgstr "Tízes számrendszer"
-
-#~ msgid "He_x"
-#~ msgstr "He_x"
-
-#~ msgid "Set numeric base to hexadecimal (base 16)"
-#~ msgstr "Tizenhatos számrendszer"
-
-#~ msgid "Set trigonometric type to degrees"
-#~ msgstr "Trigonometriai számítások fokban"
-
-#~ msgid "Set trigonometric type to gradians"
-#~ msgstr "Trigonometriai számítások újfokban"
-
-#~ msgid "Set trigonometric type to radians"
-#~ msgstr "Trigonometriai számítások radiánban"
-
-#~ msgid "E_ng"
-#~ msgstr "E_ng"
-
-#~ msgid "Set display type to engineering format"
-#~ msgstr "Mérnöki típusú megjelenítés"
-
-#~ msgid "_Fix"
-#~ msgstr "_Fix"
-
-#~ msgid "Set display type to fixed-point format"
-#~ msgstr "Fixpontos típusú megjelenítés"
-
-#~ msgid "_Sci"
-#~ msgstr "_Sci"
-
-#~ msgid "_Inv"
-#~ msgstr "_Inv"
-
-#~ msgid "Set inverse option for trigonometric functions"
-#~ msgstr "Trigonometriai függvények inverze"
-
-#~ msgid "H_yp"
-#~ msgstr "H_yp"
-
-#~ msgid "Set hyperbolic option for trigonometric functions"
-#~ msgstr "Trigonometriai függvények hiperbolikus változata"
-
-#~| msgid "Sum-of-the-Years'-Digits Depreciation"
-#~ msgid "Sum-of-the years'-digits depreciation [Y]"
-#~ msgstr "Évszámok összege szerinti értékcsökkenési leírás [Y]"
-
-#~| msgid "Sum-of-the-Years'-Digits Depreciation"
-#~ msgid "Sum-of-the years'-digits depreciation"
-#~ msgstr "Évszámok összege szerinti értékcsökkenési leírás"
-
-#~| msgid "Sum-of-the-Years'-Digits Depreciation"
-#~ msgid "Sum-of-the years'-digits depreciation [y]"
-#~ msgstr "Évszámok összege szerinti értékcsökkenési leírás [y]"
-
-#~| msgid "Straight-Line Depreciation"
-#~ msgid "Straight-line depreciation [l]"
-#~ msgstr "Lineáris értékcsökkenési leírás [l]"
-
-#~| msgid "Straight-Line Depreciation"
-#~ msgid "Straight-line depreciation"
-#~ msgstr "Lineáris értékcsökkenési leírás"
-
-#~| msgid "Periodic Interest Rate"
-#~ msgid "Periodic interest rate [T]"
-#~ msgstr "Időszakra vonatkozó kamatláb [T]"
-
-#~| msgid "Periodic Interest Rate"
-#~ msgid "Periodic interest rate"
-#~ msgstr "Időszakra vonatkozó kamatláb"
-
-#~| msgid "Present Value"
-#~ msgid "Present value [p]"
-#~ msgstr "Jelenérték [p]"
-
-#~| msgid "Present Value"
-#~ msgid "Present value"
-#~ msgstr "Jelenérték"
-
-#~| msgid "Periodic Payment"
-#~ msgid "Periodic payment [P]"
-#~ msgstr "Rendszeres pénzáramlás [P]"
-
-#~| msgid "Periodic Payment"
-#~ msgid "Periodic payment"
-#~ msgstr "Rendszeres pénzáramlás"
-
-#~| msgid "Future Value"
-#~ msgid "Future value [v]"
-#~ msgstr "Jövőérték [v]"
-
-#~| msgid "Future Value"
-#~ msgid "Future value"
-#~ msgstr "Jövőérték"
-
-#~| msgid "Gross Profit Margin"
-#~ msgid "Gross Profit Margin [I]"
-#~ msgstr "Bruttó haszon [I]"
-
-#~| msgid "Gross Profit Margin"
-#~ msgid "Gross Profit Margin [g]"
-#~ msgstr "Bruttó haszon [g]"
-
-#~| msgid "Double-Declining Depreciation"
-#~ msgid "Double-declining depreciation [D]"
-#~ msgstr "Progresszív értékcsökkenési leírás [D]"
-
-#~| msgid "Double-Declining Depreciation"
-#~ msgid "Double-declining depreciation"
-#~ msgstr "Progresszív értékcsökkenési leírás"
-
-#~| msgid "Compounding Term"
-#~ msgid "Compounding term [m]"
-#~ msgstr "Időszakok száma [m]"
-
-#~| msgid "Compounding Term"
-#~ msgid "Compounding term"
-#~ msgstr "Időszakok száma"
-
-#~| msgid "Payment Period"
-#~ msgid "Payment period [t]"
-#~ msgstr "Fizetési időszak [t]"
-
-#~| msgid "Payment Period"
-#~ msgid "Payment period"
-#~ msgstr "Fizetési időszak"
-
-#~ msgid "63"
-#~ msgstr "63"
-
-#~ msgid "31"
-#~ msgstr "31"
-
-#~ msgid "32"
-#~ msgstr "32"
-
-#~ msgid "0"
-#~ msgstr "0"
-
-#~ msgid "47"
-#~ msgstr "47"
-
-#~ msgid "15"
-#~ msgstr "15"
-
-#~ msgid "User-defined functions [F]"
-#~ msgstr "Felhasználó által megadott függvények [F]"
-
-#~ msgid "Fun"
-#~ msgstr "Fun"
-
-#~ msgid "Constants [#]"
-#~ msgstr "Állandók [#]"
-
-#~| msgid "Cosine"
-#~ msgid "Con"
-#~ msgstr "Con"
-
-#~ msgid "(Ln)"
-#~ msgstr "(Ln)"
-
-#~ msgid "(log)"
-#~ msgstr "(log)"
-
-#~ msgid "(log2)"
-#~ msgstr "(log2)"
-
-#~ msgid "Exp"
-#~ msgstr "Exp"
-
-#~ msgid "Enter an exponential number [E]"
-#~ msgstr "Exponenciális alakú szám bevitele [E]"
-
-#~ msgid "(Set accuracy from 0 to N numeric places [A])"
-#~ msgstr "(A pontosság beállítása 0-tól N számjegyig. [A])"
-
-#~ msgid "Acc"
-#~ msgstr "Acc"
-
-#~ msgid "Rand"
-#~ msgstr "Rand"
-
-#~ msgid "Random number in the range 0.0 to 1.0 [?]"
-#~ msgstr "Véletlen szám a 0,0 - 1,0 tartományban [?]"
-
-#~ msgid "Factorial of displayed value [!]"
-#~ msgstr "A megjelenített érték faktoriálisa [!]"
-
-#~| msgid "<i>x</i>"
-#~ msgid "<i>x</i>!"
-#~ msgstr "<i>x</i>!"
-
-#~ msgid "(X^Y)"
-#~ msgstr "(X^Y)"
-
-#~ msgid "(tan)"
-#~ msgstr "(tan)"
-
-#~ msgid "(sin)"
-#~ msgstr "(sin)"
-
-#~ msgid "(cos)"
-#~ msgstr "(cos)"
-
-#~ msgid "D"
-#~ msgstr "D"
-
-#~| msgid "Hexadecimal"
-#~ msgid "Hexadecimal digit D [d]"
-#~ msgstr "Hexadecimális számjegy D [d]"
-
-#~ msgid "E"
-#~ msgstr "E"
-
-#~| msgid "Hexadecimal"
-#~ msgid "Hexadecimal digit E [e]"
-#~ msgstr "Hexadecimális számjegy E [e]"
-
-#~| msgid "Fv"
-#~ msgid "F"
-#~ msgstr "F"
-
-#~| msgid "Hexadecimal"
-#~ msgid "Hexadecimal digit F [f]"
-#~ msgstr "Hexadecimális számjegy F [f]"
-
-#~ msgid "A"
-#~ msgstr "A"
-
-#~| msgid "Hexadecimal"
-#~ msgid "Hexadecimal digit A [a]"
-#~ msgstr "A hexadecimális számjegy A [a]"
-
-#~ msgid "B"
-#~ msgstr "B"
-
-#~| msgid "Hexadecimal"
-#~ msgid "Hexadecimal digit B [b]"
-#~ msgstr "Hexadecimális számjegy B [b]"
-
-#~ msgid "C"
-#~ msgstr "C"
-
-#~| msgid "Hexadecimal"
-#~ msgid "Hexadecimal digit C [c]"
-#~ msgstr "Hexadecimális számjegy C [c]"
-
-#~ msgid "1's"
-#~ msgstr "1-es"
-
-#~| msgid "Two's Complement"
-#~ msgid "1's complement [z]"
-#~ msgstr "1-es komplemens [z]"
-
-#~ msgid "2's"
-#~ msgstr "2-es"
-
-#~| msgid "Two's Complement"
-#~ msgid "2's complement [Z]"
-#~ msgstr "2-es komplemens [Z]"
-
-#~ msgid "XNOR"
-#~ msgstr "XNOR"
-
-#~ msgid "Bitwise XNOR [{]"
-#~ msgstr "Bitenkénti XNOR [{]"
-
-#~| msgid "Mode"
-#~ msgid "Mod"
-#~ msgstr "Mod"
-
-#~ msgid "Truncate displayed value to the chosen word size ([)"
-#~ msgstr "A megjelenített érték csonkolása a kiválasztott szóhosszra ([)"
-
-#~ msgid "NOT"
-#~ msgstr "NOT"
-
-#~ msgid "Bitwise NOT [~]"
-#~ msgstr "Bitenkénti NOT [~]"
-
-#~ msgid "XOR"
-#~ msgstr "XOR"
-
-#~ msgid "Bitwise XOR [x]"
-#~ msgstr "Bitenkénti XOR [x]"
-
-#~ msgid "AND"
-#~ msgstr "AND"
-
-#~ msgid "Bitwise AND [&]"
-#~ msgstr "Bitenkénti AND [&]"
-
-#~ msgid "OR"
-#~ msgstr "OR"
-
-#~ msgid "Bitwise OR [|]"
-#~ msgstr "Bitenkénti OR [|]"
-
-#~ msgid "Shift displayed value 1-15 places to the left [<]"
-#~ msgstr "A megjelenített érték eltolása balra 1-15 jeggyel [<]"
-
-#~ msgid "<"
-#~ msgstr "<"
-
-#~ msgid "Shift displayed value 1-15 places to the right [>]"
-#~ msgstr "A megjelenített érték eltolása jobbra 1-15 jeggyel [>]"
-
-#~ msgid ">"
-#~ msgstr ">"
-
-#~ msgid "Bksp"
-#~ msgstr "Bksp"
-
-#~ msgid "Remove rightmost character from displayed value [Backspace]"
-#~ msgstr "A megjelenített érték jobb szélső karakterének törlése  [Backspace]"
-
-#~ msgid "Backspace"
-#~ msgstr "Backspace"
-
-#~ msgid "&#xB1;"
-#~ msgstr "&#xB1;"
-
-#~ msgid "Change Sign [C]"
-#~ msgstr "Előjelváltás [C]"
-
-#~ msgid "Change sign"
-#~ msgstr "Előjelváltás"
-
-#~ msgid "Clr"
-#~ msgstr "Clr"
-
-#~ msgid "Clear displayed value and any partial calculation [Shift Delete]"
-#~ msgstr "A megjelenített érték és a részszámítás törlése [Shift Delete]"
-
-#~ msgid "Clear"
-#~ msgstr "Törlés"
-
-#~ msgid "CE"
-#~ msgstr "CE"
-
-#~ msgid "Clear entry"
-#~ msgstr "Érték törlése"
-
-#~ msgid "("
-#~ msgstr "("
-
-#~| msgid "Start Group [(]"
-#~ msgid "Start group of calculations [(]"
-#~ msgstr "Számításcsoport kezdete [(]"
-
-#~ msgid "Left bracket"
-#~ msgstr "Nyitó zárójel"
-
-#~ msgid "Reciprocal [r]"
-#~ msgstr "Reciprok [r]"
-
-#~ msgid "Reciprocal"
-#~ msgstr "Reciprok"
-
-#~| msgid "<i>x</i>"
-#~ msgid "1/<i>x</i>"
-#~ msgstr "1/<i>x</i>"
-
-#~ msgid "1/x"
-#~ msgstr "1/x"
-
-#~| msgid "Percentage [%]"
-#~ msgid "Percentage"
-#~ msgstr "Százalék"
-
-#~ msgid ")"
-#~ msgstr ")"
-
-#~ msgid "End group of calculations [)]"
-#~ msgstr "Számításcsoport vége [)]"
-
-#~ msgid "Right bracket"
-#~ msgstr "Záró zárójel"
-
-#~ msgid "&#x221A;"
-#~ msgstr "&#x221A;"
-
-#~ msgid "Abs"
-#~ msgstr "Abs"
-
-#~ msgid "Frac"
-#~ msgstr "Frac"
-
-#~ msgid "Fractional portion of displayed value [:]"
-#~ msgstr "A megjelenített érték törtrésze [:]"
-
-#~| msgid "_Insert"
-#~ msgid "Int"
-#~ msgstr "Int"
-
-#~ msgid "Integer portion of displayed value [i]"
-#~ msgstr "A megjelenített érték egész része [i]"
-
-#~ msgid "Exchange displayed value with memory register [X]"
-#~ msgstr "A megjelenített érték és a memória felcserélése [X]"
-
-#~ msgid "Exchange with register"
-#~ msgstr "Csere a memóriával"
-
-#~ msgid "Exch"
-#~ msgstr "Exch"
-
-#~ msgid "Retrieve memory register to display [R]"
-#~ msgstr "A memória tartalmának megjelenítése [R]"
-
-#~ msgid "Retrieve from register"
-#~ msgstr "Előhozás a memóriából"
-
-#~ msgid "Rcl"
-#~ msgstr "Rcl"
-
-#~ msgid "Store displayed value in memory register [S]"
-#~ msgstr "A megjelenített érték tárolása a memóriában [S]"
-
-#~ msgid "Store to register"
-#~ msgstr "Tárolás a memóriában"
-
-#~| msgid "Store"
-#~ msgid "Sto"
-#~ msgstr "Sto"
-
-#~| msgid "Square Meters"
-#~ msgid "Square"
-#~ msgstr "Négyzet"
-
-#~ msgid "<i>x</i><sup>2</sup>"
-#~ msgstr "<i>x</i><sup>2</sup>"
-
-#~ msgid "4"
-#~ msgstr "4"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 4"
-#~ msgstr "4-es számjegy"
-
-#~ msgid "7"
-#~ msgstr "7"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 7"
-#~ msgstr "7-es számjegy"
-
-#~ msgid "8"
-#~ msgstr "8"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 8"
-#~ msgstr "8-as számjegy"
-
-#~ msgid "9"
-#~ msgstr "9"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 9"
-#~ msgstr "9-es számjegy"
-
-#~ msgid "5"
-#~ msgstr "5"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 5"
-#~ msgstr "5-ös számjegy"
-
-#~ msgid "6"
-#~ msgstr "6"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 6"
-#~ msgstr "6-os számjegy"
-
-#~ msgid "&#xF7;"
-#~ msgstr "&#xF7;"
-
-#~ msgid "1"
-#~ msgstr "1"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 1"
-#~ msgstr "1-es számjegy"
-
-#~ msgid "2"
-#~ msgstr "2"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 2"
-#~ msgstr "2-es számjegy"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 0"
-#~ msgstr "0-s számjegy"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric point"
-#~ msgstr "Tizedesvessző"
-
-#~| msgid "Calculate Result"
-#~ msgid "Calculate result [=]"
-#~ msgstr "Számítás elvégzése [=]"
-
-#~ msgid "3"
-#~ msgstr "3"
-
-#~| msgid "Numeric Base"
-#~ msgid "Numeric 3"
-#~ msgstr "3-as számjegy"
-
-#~ msgid "&#xD7;"
-#~ msgstr "&#xD7;"
-
-#~ msgid "&#x2212;"
-#~ msgstr "&#x2212;"
-
-#~| msgid "Subtract [-]"
-#~ msgid "Subtract"
-#~ msgstr "Kivonás"
-
-#~ msgid "+"
-#~ msgstr "+"
-
-#~| msgid "Add [+]"
-#~ msgid "Add"
-#~ msgstr "Összeadás"
-
-#~| msgid "_%d place"
-#~| msgid_plural "_%d places"
-#~ msgid "_2 places"
-#~ msgstr "_2 jegy"
-
-#~| msgid "_%d place"
-#~| msgid_plural "_%d places"
-#~ msgid "_3 places"
-#~ msgstr "_3 jegy"
-
-#~| msgid "_%d place"
-#~| msgid_plural "_%d places"
-#~ msgid "_4 places"
-#~ msgstr "_4 jegy"
-
-#~| msgid "_%d place"
-#~| msgid_plural "_%d places"
-#~ msgid "_5 places"
-#~ msgstr "_5 jegy"
-
-#~| msgid "_%d place"
-#~| msgid_plural "_%d places"
-#~ msgid "_6 places"
-#~ msgstr "_6 jegy"
-
-#~| msgid "_%d place"
-#~| msgid_plural "_%d places"
-#~ msgid "_7 places"
-#~ msgstr "_7 jegy"
-
-#~| msgid "_%d place"
-#~| msgid_plural "_%d places"
-#~ msgid "_8 places"
-#~ msgstr "_8 jegy"
-
-#~| msgid "_%d place"
-#~| msgid_plural "_%d places"
-#~ msgid "_9 places"
-#~ msgstr "_9 jegy"
-
-#~| msgid "%d place"
-#~| msgid_plural "%d places"
-#~ msgid "10 places"
-#~ msgstr "10 jegy"
-
-#~| msgid "%d place"
-#~| msgid_plural "%d places"
-#~ msgid "11 places"
-#~ msgstr "11 jegy"
-
-#~| msgid "%d place"
-#~| msgid_plural "%d places"
-#~ msgid "12 places"
-#~ msgstr "12 jegy"
-
-#~| msgid "%d place"
-#~| msgid_plural "%d places"
-#~ msgid "13 places"
-#~ msgstr "13 jegy"
-
-#~| msgid "%d place"
-#~| msgid_plural "%d places"
-#~ msgid "14 places"
-#~ msgstr "14 jegy"
-
-#~| msgid "%d place"
-#~| msgid_plural "%d places"
-#~ msgid "15 places"
-#~ msgstr "15 jegy"
-
-#~ msgid "_0 significant places"
-#~ msgstr "_0 értékes jegy"
-
-#~ msgid "_1 significant place"
-#~ msgstr "_1 értékes jegy"
-
-#~ msgid "_2 significant places"
-#~ msgstr "_2 értékes jegy"
-
-#~ msgid "_3 significant places"
-#~ msgstr "_3 értékes jegy"
-
-#~ msgid "_4 significant places"
-#~ msgstr "_4 értékes jegy"
-
-#~ msgid "_5 significant places"
-#~ msgstr "_5 értékes jegy"
-
-#~ msgid "_6 significant places"
-#~ msgstr "_6 értékes jegy"
-
-#~ msgid "_7 significant places"
-#~ msgstr "_7 értékes jegy"
-
-#~ msgid "_8 significant places"
-#~ msgstr "_8 értékes jegy"
-
-#~ msgid "_9 significant places"
-#~ msgstr "_9 értékes jegy"
-
-#~ msgid "Memory Registers"
-#~ msgstr "Memóriaregiszterek"
-
-#~ msgid "<span weight=\"bold\">R0</span>"
-#~ msgstr "<span weight=\"bold\">R0</span>"
-
-#~ msgid "<span weight=\"bold\">R1</span>"
-#~ msgstr "<span weight=\"bold\">R1</span>"
-
-#~ msgid "<span weight=\"bold\">R2</span>"
-#~ msgstr "<span weight=\"bold\">R2</span>"
-
-#~ msgid "<span weight=\"bold\">R3</span>"
-#~ msgstr "<span weight=\"bold\">R3</span>"
-
-#~ msgid "<span weight=\"bold\">R4</span>"
-#~ msgstr "<span weight=\"bold\">R4</span>"
-
-#~ msgid "<span weight=\"bold\">R5</span>"
-#~ msgstr "<span weight=\"bold\">R5</span>"
-
-#~ msgid "<span weight=\"bold\">R6</span>"
-#~ msgstr "<span weight=\"bold\">R6</span>"
-
-#~ msgid "<span weight=\"bold\">R7</span>"
-#~ msgstr "<span weight=\"bold\">R7</span>"
-
-#~ msgid "<span weight=\"bold\">R8</span>"
-#~ msgstr "<span weight=\"bold\">R8</span>"
-
-#~ msgid "<span weight=\"bold\">R9</span>"
-#~ msgstr "<span weight=\"bold\">R9</span>"
-
-#~ msgid "register 0"
-#~ msgstr "0. regiszter"
-
-#~ msgid "register 1"
-#~ msgstr "1. regiszter"
-
-#~ msgid "register 2"
-#~ msgstr "2. regiszter"
-
-#~ msgid "register 3"
-#~ msgstr "3. regiszter"
-
-#~ msgid "register 4"
-#~ msgstr "4. regiszter"
-
-#~ msgid "register 5"
-#~ msgstr "5. regiszter"
-
-#~ msgid "register 6"
-#~ msgstr "6. regiszter"
-
-#~ msgid "register 7"
-#~ msgstr "7. regiszter"
-
-#~ msgid "register 8"
-#~ msgstr "8. regiszter"
-
-#~ msgid "register 9"
-#~ msgstr "9. regiszter"
-
-#~ msgid "Edit Constants"
-#~ msgstr "Állandók szerkesztése"
-
-#~ msgid "Click a _value or description to edit it:"
-#~ msgstr "_Kattintson az érték vagy leírás szerkesztéséhez:"
-
-#~ msgid ""
-#~ "<small><i><b>Note:</b> All constant values are specified in the decimal "
-#~ "numeric base.</i></small>"
-#~ msgstr ""
-#~ "<small><i><b>Megjegyzés:</b> Minden állandó értéke tízes számrendszerben "
-#~ "van kifejezve.</i></small>"
-
-#~ msgid "Edit Constants..."
-#~ msgstr "Állandók szerkesztése…"
-
-#~| msgid "Additional Functions"
-#~ msgid "Edit Functions..."
-#~ msgstr "Függvények szerkesztése…"
-
-#~ msgid "Insert ASCII Value"
-#~ msgstr "ASCII-érték beszúrása"
-
-#~ msgid "Significant _places:"
-#~ msgstr "Értékes _jegyek:"
-
-#~ msgid "_Set"
-#~ msgstr "_Beállítás"
-
-#~ msgid "The numeric base for input and display."
-#~ msgstr "A bevitt és megjelenített számok számrendszere."
-
-#~ msgid "Display Mode"
-#~ msgstr "Megjelenítési mód"
-
-#~ msgid ""
-#~ "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
-#~ "\" (fixed-point) and \"SCI\" (scientific)"
-#~ msgstr ""
-#~ "A kiinduló megjelenítési mód. A lehetséges értékek: \"ENG\" (műszaki), "
-#~ "\"FIX\" (fixpontos) and \"SCI\" (tudományos)"
-
-#~ msgid ""
-#~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
-#~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
-#~ msgstr ""
-#~ "A számológép kiindulási módja. A lehetséges értékek: „BASIC” (alap), "
-#~ "„FINANCIAL” (pénzügyi), „LOGICAL” (logikai), „SCIENTIFIC” (tudományos) és "
-#~ "„PROGRAMMING” (programozói)"
-
-#~ msgid "Show Registers"
-#~ msgstr "Regiszterek megjelenítése"
-
-#~ msgid "Indicates whether the memory register window is initially displayed."
-#~ msgstr "Jelzi, hogy induláskor megjelenjen-e a memóriaregiszter ablak."
-
-#~ msgid "Trigonometric type"
-#~ msgstr "Trigonometriai típus"
-
-#~ msgid ""
-#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-#~ "\" (gradians) and \"RAD\" (radians)."
-#~ msgstr ""
-#~ "A kiinduló trigonometriai típus. A lehetséges értékek: \"DEG\" (fok), "
-#~ "\"GRAD\" (gradián) és \"RAD\" (radián)."
-
-#~ msgid "The initial x-coordinate for the window"
-#~ msgstr "Az ablak kiinduló X koordinátája"
-
-#~ msgid ""
-#~ "The number of pixels to place the window from the left of the screen."
-#~ msgstr "Az ablak elhelyezése a képernyő bal szélétől ennyi képpontra."
-
-#~ msgid "The initial y-coordinate for the window"
-#~ msgstr "Az ablak kiinduló Y koordinátája"
-
-#~ msgid "The number of pixels to place the window from the top of the screen."
-#~ msgstr "Az ablak elhelyezése a képernyő tetejétől ennyi képpontra."
-
-#~| msgid ""
-#~| "Usage:\n"
-#~| "  %s — Perform mathematical calculations"
-#~ msgid ""
-#~ "Usage:\n"
-#~ "  %s - Perform mathematical calculations"
-#~ msgstr ""
-#~ "Használat:\n"
-#~ "  %s - Matematikai számítások végrehajtása"
-
-#~ msgid ""
-#~ "Help Options:\n"
-#~ "  -v, --version                   Show release version\n"
-#~ "  -h, -?, --help                  Show help options\n"
-#~ "  --help-all                      Show all help options\n"
-#~ "  --help-gtk                      Show GTK+ options"
-#~ msgstr ""
-#~ "Súgólehetőségek:\n"
-#~ "  -v, --version                   Verziószám megjelenítése\n"
-#~ "  -h, -?, --help                  Súgólehetőségek megjelenítése\n"
-#~ "  --help-all                      Minden súgólehetőség megjelenítése\n"
-#~ "  --help-gtk                      GTK+ beállítások megjelenítése"
-
-#~ msgid ""
-#~ "GTK+ Options:\n"
-#~ "  --class=CLASS                   Program class as used by the window "
-#~ "manager\n"
-#~ "  --name=NAME                     Program name as used by the window "
-#~ "manager\n"
-#~ "  --screen=SCREEN                 X screen to use\n"
-#~ "  --sync                          Make X calls synchronous\n"
-#~ "  --gtk-module=MODULES            Load additional GTK+ modules\n"
-#~ "  --g-fatal-warnings              Make all warnings fatal"
-#~ msgstr ""
-#~ "GTK+ beállításai\n"
-#~ "  --class=OSZTÁLY                 A program osztálya, ahogy az "
-#~ "ablakkezelő használja\n"
-#~ "  --name=NÉV                      A programnév, ahogy az ablakkezelő "
-#~ "használja\n"
-#~ "  --display=MEGJELENÍTŐ           Használandó X-megjelenítő\n"
-#~ "  --screen=KÉPERNYŐ               Használandó X-képernyő\n"
-#~ "  --sync                          Legyenek szinkron X-hívások\n"
-#~ "  --gtk-module=MODULOK            További GTK+ modulok betöltése\n"
-#~ "  --g-fatal-warnings              Minden figyelmeztetés végzetes legyen"
-
-#~| msgid ""
-#~| "Application Options:\n"
-#~| "  -s, --solve <equation>          Solve the given equation"
-#~ msgid ""
-#~ "Application Options:\n"
-#~ "  -u, --unittest                  Perform unit tests\n"
-#~ "  -s, --solve <equation>          Solve the given equation"
-#~ msgstr ""
-#~ "Alkalmazás kapcsolói:\n"
-#~ "  -u, --unittest                  Egységtesztek végrehajtása\n"
-#~ "  -s, --solve <egyenlet>          A megadott egyenlet megoldása"
-
-#~ msgid "Argument --solve requires an equation to solve"
-#~ msgstr "A --solve kapcsolóhoz meg kell adni egy megoldandó egyenletet"
-
-#~ msgid "Unknown argument '%s'"
-#~ msgstr "Ismeretlen kapcsoló: „%s”"
-
-#~ msgid "%s: accuracy should be in the range 0-%d\n"
-#~ msgstr "%s: a pontosság a 0-%d tartományba eshet\n"
-
-#~| msgid "No redo history"
-#~ msgid "No redo steps"
-#~ msgstr "Nincsenek ismétlési lépések"
-
-#~| msgid "No sane value to store"
-#~ msgid "No sane value to convert"
-#~ msgstr "Nincs átalakítandó ép kifejezés"
-
-#~ msgid "Invalid number for the current base"
-#~ msgstr "A szám érvénytelen a jelenlegi alaphoz"
-
-#~ msgid "Invalid bitwise operation"
-#~ msgstr "Érvénytelen bitenkénti művelet"
-
-#~ msgid "Invalid modulus operation"
-#~ msgstr "Érvénytelen maradékképzés művelet"
-
-#~| msgid "Calculator"
-#~ msgid "Calculator - Scientific"
-#~ msgstr "Számológép – Tudományos"
-
-#~| msgid "Calculator"
-#~ msgid "Calculator [%s]"
-#~ msgstr "Számológép [%s]"
-
-#~ msgid "Calculator [%s] - Advanced"
-#~ msgstr "Számológép [%s] – Speciális"
-
-#~ msgid "Calculator [%s] - Financial"
-#~ msgstr "Számológép [%s] – Pénzügyi"
-
-#~ msgid "Calculator [%s] - Scientific"
-#~ msgstr "Számológép [%s] – Tudományos"
-
-#~ msgid "Calculator [%s] - Programming"
-#~ msgstr "Számológép [%s] – Programozói"
-
-#~ msgid "Error loading user interface"
-#~ msgstr "Hiba a felhasználói felület betöltésekor"
-
-#~ msgid ""
-#~ "A required file is missing or damaged, please check your installation.\n"
-#~ "\n"
-#~ "%s"
-#~ msgstr ""
-#~ "Egy szükséges fájl hiányzik vagy sérült. Ellenőrizze a telepítést.\n"
-#~ "\n"
-#~ "%s"
-
-#~ msgid "_Other (%d) ..."
-#~ msgstr "_Egyéb (%d) …"
-
-#~ msgid "Set accuracy from 0 to %d numeric place. [A]"
-#~ msgid_plural "Set accuracy from 0 to %d numeric places. [A]"
-#~ msgstr[0] "A pontosság beállítása 0-tól %d számjegyig. [A]"
-#~ msgstr[1] "A pontosság beállítása 0-tól %d számjegyig. [A]"
-
-#~| msgctxt "unit-format"
-#~| msgid "%s in"
-#~ msgid "sin"
-#~ msgstr "sin"
-
-#~ msgid "sin<sup>−1</sup>"
-#~ msgstr "sin<sup>−1</sup>"
-
-#~ msgid "sinh"
-#~ msgstr "sinh"
-
-#~ msgid "sinh<sup>−1</sup>"
-#~ msgstr "sinh<sup>−1</sup>"
-
-#~| msgid "Hyperbolic Sine"
-#~ msgid "Hyperbolic Inverse Sine [K]"
-#~ msgstr "Hiperbolikus inverz szinusz [K]"
-
-#~| msgid "Seconds"
-#~ msgid "cos"
-#~ msgstr "cos"
-
-#~ msgid "cos<sup>−1</sup>"
-#~ msgstr "cos<sup>−1</sup>"
-
-#~ msgid "cosh"
-#~ msgstr "cosh"
-
-#~ msgid "cosh<sup>−1</sup>"
-#~ msgstr "cosh<sup>−1</sup>"
-
-#~ msgid "Inverse Cosine [J]"
-#~ msgstr "Inverz koszinusz [J]"
-
-#~| msgid "Hyperbolic Cosine"
-#~ msgid "Hyperbolic Inverse Cosine [J]"
-#~ msgstr "Hiperbolikus inverz koszinusz [J]"
-
-#~ msgid "tan"
-#~ msgstr "tan"
-
-#~ msgid "tan<sup>−1</sup>"
-#~ msgstr "tan<sup>−1</sup>"
-
-#~ msgid "tanh"
-#~ msgstr "tanh"
-
-#~ msgid "tanh<sup>−1</sup>"
-#~ msgstr "tanh<sup>−1</sup>"
-
-#~ msgid "Inverse Tangent [W]"
-#~ msgstr "Inverz tangens [W]"
-
-#~| msgid "Hyperbolic Tangent"
-#~ msgid "Hyperbolic Inverse Tangent [W]"
-#~ msgstr "Hiperbolikus inverz tangens [W]"
-
-#~| msgid "Sln"
-#~ msgid "ln"
-#~ msgstr "ln"
-
-#~ msgid "e<sup><i>x</i></sup>"
-#~ msgstr "e<sup><i>x</i></sup>"
-
-#~ msgid "e to the power of the displayed value [N]"
-#~ msgstr "e hatványozása a megjelenített értékre [N]"
-
-#~ msgid "log"
-#~ msgstr "log"
-
-#~ msgid "10<sup><i>x</i></sup>"
-#~ msgstr "10<sup><i>x</i></sup>"
-
-#~ msgid "Base 10 logarithm [g]"
-#~ msgstr "10-es alapú logaritmus [g]"
-
-#~ msgid "10 to the power of displayed value [G]"
-#~ msgstr "10 hatványozása a megjelenített értékre [G]"
-
-#~ msgid "log<sub>2</sub>"
-#~ msgstr "log<sub>2</sub>"
-
-#~ msgid "2<sup><i>x</i></sup>"
-#~ msgstr "2<sup><i>x</i></sup>"
-
-#~ msgid "Base 2 logarithm [h]"
-#~ msgstr "2-es alapú logaritmus [h]"
-
-#~ msgid "2 to the power of the displayed value [H]"
-#~ msgstr "2 hatványozása a megjelenített értékre [H]"
-
-#~ msgid "x<sup><i>y</i></sup>"
-#~ msgstr "x<sup><i>y</i></sup>"
-
-#~ msgid "x<sup>1/<i>y</i></sup>"
-#~ msgstr "x<sup>1/<i>y</i></sup>"
-
-#~ msgid "Raise displayed value to the power of y [o]"
-#~ msgstr "A megjelenített érték y-adik hatványra emelése [o]"
-
-#~ msgid "Raise displayed value to the power of reciprocal y [O]"
-#~ msgstr "A megjelenített érték 1/y-adik hatványra emelése [O]"
-
-#~ msgid ""
-#~ "Gcalctool is free software; you can redistribute it and/or modify\n"
-#~ "it under the terms of the GNU General Public License as published by\n"
-#~ "the Free Software Foundation; either version 2 of the License, or\n"
-#~ "(at your option) any later version.\n"
-#~ "\n"
-#~ "Gcalctool is distributed in the hope that it will be useful,\n"
-#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-#~ "GNU General Public License for more details.\n"
-#~ "\n"
-#~ "You should have received a copy of the GNU General Public License\n"
-#~ "along with Gcalctool; if not, write to the Free Software Foundation, "
-#~ "Inc.,\n"
-#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-#~ msgstr ""
-#~ "A Gcalctool szabad szoftver, terjesztheti és/vagy módosíthatja a Free "
-#~ "Software\n"
-#~ "Foundation által kiadott GNU General Public License második (vagy "
-#~ "bármely\n"
-#~ "későbbi) változatában foglaltak alapján.\n"
-#~ "\n"
-#~ "A Gcalctool programot abban a reményben terjesztjük, hogy hasznos lesz, "
-#~ "de nem\n"
-#~ "vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\n"
-#~ "alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További\n"
-#~ "részletekért tanulmányozza a GNU GPL licencet.\n"
-#~ "\n"
-#~ "A Gcalctool programhoz a GNU General Public License egy példánya is jár, "
-#~ "ha nem\n"
-#~ "kapta meg, írjon a Free Software Foundation Inc.-nek. Levélcímük: 51 "
-#~ "Franklin\n"
-#~ "St, Fifth Floor, Boston, MA 02110-1301, USA."
-
-#~ msgid "Gcalctool"
-#~ msgstr "Gcalctool"
-
-#~| msgid "© 1986–2010 The Gcalctool authors"
-#~ msgid "© 1986-2008 The Gcalctool authors"
-#~ msgstr "© 1986-2008 A Gcalctool szerzői"
-
-#~ msgid "R"
-#~ msgstr "R"
-
-#~ msgid "Paste"
-#~ msgstr "Beillesztés"
-
-#~ msgid "No."
-#~ msgstr "Sorszám"
-
-#~ msgid "Value"
-#~ msgstr "Érték"
-
-#~| msgid "Superscript"
-#~ msgid "Description"
-#~ msgstr "Leírás"
-
-#~ msgid "Reset to _Default (%d)"
-#~ msgstr "Visszaállítás az ala_pértelmezettre (%d)"
-
-#~ msgid "Negative X and non-integer Y not supported"
-#~ msgstr "Negatív X és nem-egész Y nem támogatott"
-
-#~ msgid "Tangent is infinite"
-#~ msgstr "A tangens végtelen"
-
-#~ msgid "Kilometer-to-mile conversion factor"
-#~ msgstr "Kilométer -> mérföld konverziótényező"
-
-#~| msgid "Square root [Ctrl+R]"
-#~ msgid "square root of 2"
-#~ msgstr "2 négyzetgyöke"
-
-#~ msgid "π"
-#~ msgstr "π"
-
-#~ msgid "Centimeter-to-inch conversion factor"
-#~ msgstr "Centiméter -> hüvelyk konverziótényező"
-
-#~ msgid "degrees in a radian"
-#~ msgstr "fok -> radián"
-
-#~ msgid "2 ^ 20"
-#~ msgstr "2 ^ 20"
-
-#~ msgid "Gram-to-ounce conversion factor"
-#~ msgstr "Gramm -> uncia konverziótényező"
-
-#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
-#~ msgstr "Kilojoule -> BTU konverziótényező"
-
-#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-#~ msgstr "Köbcenti -> köbhüvelyk konverziótényező"
-
-#~ msgid "8-bit"
-#~ msgstr "8 bit"
-
-#~ msgid "16-bit"
-#~ msgstr "16 bit"
-
-#~ msgid "32-bit"
-#~ msgstr "32 bit"
-
-#~ msgid "64-bit"
-#~ msgstr "64 bit"
-
-#~ msgctxt "unit-format"
-#~ msgid "%s˚K"
-#~ msgstr "%s˚K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degK,˚K"
-#~ msgstr "degK,˚K"
