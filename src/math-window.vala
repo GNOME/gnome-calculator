@@ -109,14 +109,12 @@ public class MathWindow : Gtk.ApplicationWindow
             _buttons.show ();
             remove_buttons = false;
             converter.hide ();
-            resizable = false;
         }
         else if (remove_buttons == false && _buttons.mode == ButtonMode.KEYBOARD)
         {
             _buttons.hide ();
             remove_buttons = true;
             converter.show ();
-            resizable = true;
         }
     }
 
