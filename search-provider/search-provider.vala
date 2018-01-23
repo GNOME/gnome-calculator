@@ -113,7 +113,8 @@ public class SearchProvider : Object
         var metadata = new HashTable<string, Variant>[1];
         metadata[0] = new HashTable<string, Variant>(str_hash, str_equal);
         metadata[0].insert ("id", results[0]);
-        metadata[0].insert ("name", results[0] + " = " + stdout_buf);
+        metadata[0].insert ("name", results[0] );
+        metadata[0].insert ("description", " = " + stdout_buf.strip() );
 
         return metadata;
     }
