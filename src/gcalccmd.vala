@@ -63,6 +63,11 @@ public static int main (string[] args)
 
     result_serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
 
+    if (args.length == 2) {
+        solve (args[1]);
+        return Posix.EXIT_SUCCESS;
+    }
+
     var buffer = new char[1024];
     while (true)
     {
