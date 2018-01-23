@@ -38,14 +38,15 @@ public class MathDisplay : Gtk.Viewport
         main_box.show_all ();
 
         var scrolled_window = new Gtk.ScrolledWindow (null, null);
+        var style_context = scrolled_window.get_style_context ();
+        style_context.add_class ("display-scrolled");
+
         scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
         source_view = new Gtk.SourceView.with_buffer (equation);
         source_view.set_accepts_tab (false);
         source_view.set_pixels_above_lines (8);
         source_view.set_pixels_below_lines (2);
         source_view.set_justification (Gtk.Justification.LEFT);
-
-        var style_context = source_view.get_style_context ();
 
         source_view.set_name ("displayitem");
         source_view.set_size_request (20, 20);
