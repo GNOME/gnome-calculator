@@ -232,7 +232,13 @@ public class Calculator : Gtk.Application
             {
                 var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
                 serializer.set_representation_base (representation_base);
-                stdout.printf ("%s\n", serializer.to_string (result));
+                var eq_result = serializer.to_string (result);
+                if (serializer.error != null) {
+                    stderr.printf (serializer.error);
+                    return Posix.EXIT_FAILURE;
+                }
+
+                stdout.printf ("%s\n", eq_result);
                 return Posix.EXIT_SUCCESS;
             }
             else if (error == ErrorCode.MP)
