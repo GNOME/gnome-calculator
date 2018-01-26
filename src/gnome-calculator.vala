@@ -75,7 +75,7 @@ public class Calculator : Gtk.Application
         Number.precision = precision;
 
         add_action_entries (app_entries, this);
-        add_accelerator ("<Primary>Escape",  "win.clear", null);
+        set_accels_for_action ("win.clear", {"<Primary>Escape"});
 
         var current_window = new MathWindow (this, equation);
         current_window.set_title (_("Calculator"));
