@@ -4,7 +4,7 @@ AM_DISTCHECK_CONFIGURE_FLAGS = --enable-installed-tests
 
 EXTRA_DIST = \
 	**/meson.build \
-	meson_options.txt \
+	meson.build \
 	meson_post_install.py \
 	$(NULL)
 
