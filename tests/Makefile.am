@@ -16,7 +16,7 @@ test_number_VALAFLAGS = \
 	--pkg gtksourceview-3.0 \
 	--pkg libxml-2.0 \
 	$(top_builddir)/lib/libcalculator.vapi \
-	$(top_builddir)/lib/mpfr.vapi
+	$(top_builddir)/vapi/mpfr.vapi
 
 test_number_LDADD = \
 	$(LIBCALCULATOR_LIBS) \
@@ -33,7 +33,7 @@ test_equation_VALAFLAGS = \
 	--pkg gtksourceview-3.0 \
 	--pkg libxml-2.0 \
 	$(top_builddir)/lib/libcalculator.vapi \
-	$(top_builddir)/lib/mpfr.vapi
+	$(top_builddir)/vapi/mpfr.vapi
 
 test_equation_LDADD = \
 	$(LIBCALCULATOR_LIBS) \
@@ -50,7 +50,7 @@ test_serializer_VALAFLAGS = \
 	--pkg gtksourceview-3.0 \
 	--pkg libxml-2.0 \
 	$(top_builddir)/lib/libcalculator.vapi \
-	$(top_builddir)/lib/mpfr.vapi
+	$(top_builddir)/vapi/mpfr.vapi
 
 test_serializer_LDADD = \
 	$(LIBCALCULATOR_LIBS) \
