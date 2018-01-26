@@ -16,7 +16,7 @@ resources.c: $(resources_file) $(shell $(GLIB_COMPILE_RESOURCES) --generate-depe
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $<
 
 gnome_calculator_SOURCES = \
-	config.vapi \
+	$(top_builddir)/vapi/config.vapi \
 	gnome-calculator.vala \
 	math-buttons.vala \
 	math-converter.vala \
@@ -36,7 +36,7 @@ gnome_calculator_VALAFLAGS = \
 	--pkg libxml-2.0 \
 	--gresources $(resources_file) \
 	$(top_builddir)/lib/libcalculator.vapi \
-	$(top_builddir)/lib/mpfr.vapi
+	$(top_builddir)/vapi/mpfr.vapi
 
 gnome_calculator_CPPFLAGS = \
 	$(AM_CPPFLAGS) \
@@ -48,7 +48,7 @@ gnome_calculator_LDADD = \
 
 
 gcalccmd_SOURCES = \
-	config.vapi \
+	$(top_builddir)/vapi/config.vapi \
 	gcalccmd.vala
 
 gcalccmd_VALAFLAGS = \
@@ -58,7 +58,7 @@ gcalccmd_VALAFLAGS = \
 	--pkg gtksourceview-3.0 \
 	--pkg libxml-2.0 \
 	$(top_builddir)/lib/libcalculator.vapi \
-	$(top_builddir)/lib/mpfr.vapi
+	$(top_builddir)/vapi/mpfr.vapi
 
 gcalccmd_CPPFLAGS = \
 	$(AM_CPPFLAGS) \

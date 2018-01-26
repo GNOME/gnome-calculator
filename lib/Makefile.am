@@ -6,7 +6,9 @@ AM_CPPFLAGS = \
 	$(LIBCALCULATOR_CFLAGS)
 
 libcalculator_la_SOURCES = \
+	$(top_builddir)/vapi/mpfr.vapi \
 	mpfr-glue.vala \
+	$(top_builddir)/vapi/mpc.vapi \
 	currency.vala \
 	equation.vala \
 	equation-lexer.vala \
