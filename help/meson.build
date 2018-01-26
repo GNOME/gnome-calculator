@@ -34,37 +34,7 @@ gnome_calculator_help_media = [
   'figures/logo32.png',
 ]
 
-gnome_calculator_help_languages = [
-  'bg',
-  'ca',
-  'cs',
-  'de',
-  'el',
-  'es',
-  'eu',
-  'fi',
-  'fr',
-  'gl',
-  'hu',
-  'it',
-  'ja',
-  'ko',
-  'lv',
-  'oc',
-  'pt',
-  'pt_BR',
-  'ro',
-  'ru',
-  'sl',
-  'sv',
-  'te',
-  'zh_CN',
-  'zh_HK',
-  'zh_TW',
-]
-
 gnome.yelp(meson.project_name(),
   sources: gnome_calculator_help_pages,
-  media: gnome_calculator_help_media,
-  languages: gnome_calculator_help_languages
+  media: gnome_calculator_help_media
 )
