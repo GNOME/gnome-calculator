@@ -329,7 +329,7 @@ public class Serializer : Object
             else
             {
                 string.prepend_c ('?');
-                error = _("Overflow: the result couldn't be calculated");
+                error = _("Overflow: the result couldn’t be calculated");
                 string.assign ("0");
                 break;
             }
