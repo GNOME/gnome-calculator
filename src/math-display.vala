@@ -103,9 +103,14 @@ public class MathDisplay : Gtk.Viewport
         _equation.display_selected (prev_eq);
     }
 
-    public  void update_history (string answer, Number number, int number_base, uint representation_base)
+    public void update_history (string answer, Number number, int number_base, uint representation_base)
     {
         history.insert_entry (answer, number, number_base, representation_base); /* Sends current equation and answer for updating History-View */
+    }
+
+    public void clear_history ()
+    {
+        history.clear ();
     }
 
     public void insert_text (string answer)

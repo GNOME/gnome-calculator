@@ -11,8 +11,6 @@
 [GtkTemplate (ui = "/org/gnome/calculator/history-view.ui")]
 public class HistoryView : Gtk.ScrolledWindow
 {
-    int no_ofitems = 0; /* No of entries in history-view listbox */
-
     string? last_answer = null;
     string? last_equation = null;
 
@@ -57,7 +55,6 @@ public class HistoryView : Gtk.ScrolledWindow
 
         listbox.insert (entry, -1);
         entry.show ();
-        no_ofitems++;
 
         entry.answer_clicked.connect ((ans) => { this.answer_clicked (ans); });
         entry.equation_clicked.connect ((eq) => { this.equation_clicked (eq); });
@@ -65,6 +62,11 @@ public class HistoryView : Gtk.ScrolledWindow
         last_answer = answer_nine_digits;
         last_equation = equation;
         row_added ();
+    }
+
+    public void clear ()
+    {
+        listbox.foreach ((child) => { listbox.remove(child); });
     }
 }
 

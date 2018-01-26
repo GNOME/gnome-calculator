@@ -38,6 +38,7 @@ public class MathWindow : Gtk.ApplicationWindow
         { "undo", undo_cb, null, null, null },
         { "redo", redo_cb, null, null, null },
         { "mode", mode_cb, "s", "\"basic\"", null },
+        { "clear", clear_cb, null, null, null },
         { "close",close, null, null, null },
     };
 
@@ -69,6 +70,11 @@ public class MathWindow : Gtk.ApplicationWindow
         var provider = new Gtk.CssProvider ();
         provider.load_from_resource ("/org/gnome/calculator/calculator.css");
         Gtk.StyleContext.add_provider_for_screen (get_screen (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+
+    private void clear_cb ()
+    {
+        _display.clear_history ();
     }
 
     private void mode_changed_cb ()
