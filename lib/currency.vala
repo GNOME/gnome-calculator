@@ -125,14 +125,18 @@ public class CurrencyManager : Object
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "eurofxref-daily.xml");
     }
 
-    private Currency add_currency (string short_name)
+    private Currency add_currency (string short_name, string source)
     {
         foreach (var c in currencies)
             if (c.name == short_name)
+            {
+                c.source = source;
                 return c;
+            }
 
         warning ("Currency %s is not in the currency table", short_name);
         var c = new Currency (short_name, short_name, short_name);
+        c.source = source;
         currencies.append (c);
 
         return c;
@@ -268,7 +272,7 @@ public class CurrencyManager : Object
                         if (c == null && value != null)
                         {
                             debug ("Using IMF rate of %s for %s", tokens[value_index], symbol);
-                            c = add_currency (symbol);
+                            c = add_currency (symbol, "imf");
                             value = value.reciprocal ();
                             if (c != null)
                                 c.set_value (value);
@@ -298,7 +302,7 @@ public class CurrencyManager : Object
         if (name != null && value != null && get_currency (name) == null)
         {
             debug ("Using ECB rate of %s for %s", value, name);
-            var c = add_currency (name);
+            var c = add_currency (name, "ecb");
             var r = mp_set_from_string (value);
             var v = eur_rate.get_value ();
             v = v.multiply (r);
@@ -309,7 +313,7 @@ public class CurrencyManager : Object
     private void set_ecb_fixed_rate (string name, string value, Currency eur_rate)
     {
         debug ("Using ECB fixed rate of %s for %s", value, name);
-        var c = add_currency (name);
+        var c = add_currency (name, "ecb#fixed");
         var r = mp_set_from_string (value);
         var v = eur_rate.get_value ();
         v = v.divide (r);
@@ -473,6 +477,9 @@ public class Currency : Object
 
     private string _symbol;
     public string symbol { owned get { return _symbol; } }
+
+    private string _source;
+    public string source { owned get { return _source; } owned set { _source = value; }}
 
     public Currency (string name, string display_name, string symbol)
     {
