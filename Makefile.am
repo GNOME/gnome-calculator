@@ -3,8 +3,14 @@ SUBDIRS = data lib src search-provider tests help po
 AM_DISTCHECK_CONFIGURE_FLAGS = --enable-installed-tests
 
 EXTRA_DIST = \
-	**/meson.build \
 	meson.build \
+	data/meson.build \
+	help/meson.build \
+	lib/meson.build \
+	po/meson.build \
+	search-provider/meson.build \
+	src/meson.build \
+	tests/meson.build \
 	meson_post_install.py \
 	$(NULL)
 
