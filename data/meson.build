@@ -26,7 +26,7 @@ i18n.merge_file(
 
 # Gschema
 install_data('org.gnome.calculator.gschema.xml',
-  install_dir: join_paths(get_option('datadir'), 'appdata'),
+  install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas'),
 )
 
 # Manpage
