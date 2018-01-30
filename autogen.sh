@@ -1,7 +1,11 @@
 #!/bin/sh
 # Run this to generate all the initial makefiles, etc.
-srcdir=`dirname $0`
-test -z "$srcdir" && srcdir=.
+
+test -n "$srcdir" || srcdir=`dirname "$0"`
+test -n "$srcdir" || srcdir=.
+
+olddir=`pwd`
+cd "$srcdir"
 
 (test -f $srcdir/configure.ac) || {
         echo "**Error**: Directory "\`$srcdir\'" does not look like the top-level project directory"
@@ -23,14 +27,7 @@ intltoolize --force --copy --automake || exit 1
 autoreconf --verbose --force --install -Wno-portability || exit 1
 { set +x; } 2>/dev/null
 
-if [ "$NOCONFIGURE" = "" ]; then
-        set -x
-        $srcdir/configure "$@" || exit 1
-        { set +x; } 2>/dev/null
+cd "$olddir"
+test -n "$NOCONFIGURE" || "$srcdir/configure" "$@"
 
-        if [ "$1" = "--help" ]; then exit 0 else
-                echo "Now type \`make\' to compile $PKG_NAME" || exit 1
-        fi
-else
-        echo "Skipping configure process."
-fi
+
