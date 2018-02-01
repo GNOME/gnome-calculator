@@ -38,13 +38,23 @@ public class Serializer : Object
     public Serializer (DisplayFormat format, int number_base, int trailing_digits)
     {
         var radix_string = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
-        if (radix_string != null && radix_string != "")
-            radix = radix_string.locale_to_utf8 (-1, null, null).get_char (0);
+        if (radix_string != null && radix_string != "") {
+            var radix_utf8 = radix_string.locale_to_utf8 (-1, null, null);
+            if (radix_utf8 != null)
+                radix = radix_utf8.get_char (0);
+            else
+                radix = '.';
+        }
         else
             radix = '.';
         var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
-        if (tsep_string != null && tsep_string != "")
-            tsep = tsep_string.locale_to_utf8 (-1, null, null).get_char (0);
+        if (tsep_string != null && tsep_string != "") {
+            var tsep_utf8 = tsep_string.locale_to_utf8 (-1, null, null);
+            if (tsep_utf8 != null)
+                tsep = tsep_utf8.get_char (0);
+            else
+                tsep = ' ';
+        }
         else
             tsep = ' ';
         tsep_count = 3;
