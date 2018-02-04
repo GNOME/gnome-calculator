@@ -44,6 +44,7 @@ public class MathDisplay : Gtk.Viewport
         scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
         source_view = new Gtk.SourceView.with_buffer (equation);
         source_view.set_accepts_tab (false);
+        source_view.set_left_margin (14);
         source_view.set_pixels_above_lines (8);
         source_view.set_pixels_below_lines (2);
         source_view.set_justification (Gtk.Justification.LEFT);
