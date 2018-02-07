@@ -67,8 +67,8 @@ public class MathDisplay : Gtk.Viewport
         info_view.set_wrap_mode (Gtk.WrapMode.WORD);
         info_view.set_can_focus (false);
         info_view.set_editable (false);
-        /* TEMP: Disabled for now as GTK+ doesn't properly render a right aligned right margin, see bug #482688 */
-        /*info_view.set_right_margin (6);*/
+        info_view.set_left_margin (12);
+        info_view.set_right_margin (12);
         info_box.pack_start (info_view, true, true, 0);
         info_buffer = info_view.get_buffer ();
 

@@ -1,13 +1,13 @@
-.history-view {
-  border-width: 0 0 1px 0;
-}
-
 .sourceview {
   padding: 0px 12px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  font-size: 1.4em;
+
 }
 
 .info-view {
-  padding: 0px 12px;
+  padding: 0px;
   padding-bottom: 4px;
 }
 
@@ -19,9 +19,6 @@ window > grid {
   padding: 12px;
 }
 
-.display-scrolled .sourceview {
-  padding-bottom: 8px;
-}
 
 .math-buttons button {
 }
@@ -43,17 +40,16 @@ window > grid {
 .bit-marker-label {
 }
 
+.history-view {
+  border-width: 0 0 1px 0;
+}
+
 .history-view, .history-entry {
   background-color: shade(@theme_base_color, .95);
 }
 
 .history-view:backdrop, .history-entry:backdrop {
   background-color: shade(@theme_unfocused_base_color, .97);
-}
-
-.sourceview {
-  padding-left: 0px;
-  font-size: 1.4em;
 }
 
 .history-entry {
