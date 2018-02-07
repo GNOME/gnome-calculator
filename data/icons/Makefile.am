@@ -11,6 +11,7 @@ public_icons = \
 	hicolor_apps_32x32_gnome-calculator.png \
 	hicolor_apps_48x48_gnome-calculator.png \
 	hicolor_apps_256x256_gnome-calculator.png \
+	hicolor_apps_512x512_gnome-calculator.png \
 	hicolor_apps_scalable_gnome-calculator-symbolic.svg \
 	$(NULL)
 
@@ -20,6 +21,7 @@ icon24dir=$(datadir)/icons/hicolor/24x24/apps
 icon32dir=$(datadir)/icons/hicolor/32x32/apps
 icon48dir=$(datadir)/icons/hicolor/48x48/apps
 icon256dir=$(datadir)/icons/hicolor/256x256/apps
+icon512dir=$(datadir)/icons/hicolor/512x512/apps
 iconscalabledir=$(datadir)/icons/hicolor/scalable/apps
 
 icon16_DATA = hicolor/16x16/apps/gnome-calculator.png
@@ -28,6 +30,7 @@ icon24_DATA = hicolor/24x24/apps/gnome-calculator.png
 icon32_DATA = hicolor/32x32/apps/gnome-calculator.png
 icon48_DATA = hicolor/48x48/apps/gnome-calculator.png
 icon256_DATA = hicolor/256x256/apps/gnome-calculator.png
+icon512_DATA = hicolor/512x512/apps/gnome-calculator.png
 iconscalable_DATA = hicolor/scalable/apps/gnome-calculator-symbolic.svg
 
 noinst_DATA = \
@@ -41,6 +44,7 @@ EXTRA_DIST = \
 	$(icon32_DATA)	\
 	$(icon48_DATA)	\
 	$(icon256_DATA)	\
+	$(icon512_DATA)	\
 	$(iconscalable_DATA)	\
 	$(noinst_DATA)		\
 	$(NULL)
