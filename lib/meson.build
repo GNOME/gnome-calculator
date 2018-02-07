@@ -35,10 +35,10 @@ libcalculator_deps = [
   posix,
 ]
 
-libcalculator = static_library('libcalculator', libcalculator_sources,
+libcalculator = static_library('calculator', libcalculator_sources,
   dependencies: libcalculator_deps,
   c_args: libcalculator_c_flags,
   vala_args: libcalculator_vala_flags,
   include_directories: config_h_dir,
-  install: true,
+  install: false,
 )
