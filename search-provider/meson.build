@@ -27,6 +27,7 @@ search_provider_includes = [
 executable('gnome-calculator-search-provider', search_provider_sources,
   dependencies: search_provider_deps,
   link_with: libcalculator,
+  install_dir: get_option('libexecdir'),
   include_directories: search_provider_includes,
   vala_args: search_provider_vala_flags,
   install: true,
