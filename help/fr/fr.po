@@ -7,20 +7,21 @@
 # Laurent Coudeur <laurentc@iol.ie>, 2009, 2010.
 # Bruno Brouard <annoa.b@gmail.com>, 2012.
 # Alain Lojewski <allomervan@gmail.com>, 2014.
-# Guillaume Bernard <translate@filorin.fr>, 2015.
+# Guillaume Bernard <contact.guib@laposte.net>, 2015-2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool documentation\n"
-"POT-Creation-Date: 2015-02-26 07:10+0000\n"
-"PO-Revision-Date: 2015-02-26 09:53+0100\n"
-"Last-Translator: Guillaume Bernard <translate@filorin.fr>\n"
+"POT-Creation-Date: 2018-01-24 00:23+0000\n"
+"PO-Revision-Date: 2018-02-20 18:47+0100\n"
+"Last-Translator: Guillaume Bernard <associations@guillaume-bernard.fr>\n"
 "Language-Team: français <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -30,7 +31,7 @@ msgstr ""
 "Claude Paroz <claude@2xlibre.net>, 2006-2009\n"
 "Laurent Coudeur <laurentc@iol.ie>, 2009-2010\n"
 "Alain Lojewski <allomervan@gmail.com>, 2014\n"
-"Guillaume Bernard <translate@filorin.fr>, 2015"
+"Guillaume Bernard <associations@guillaume-bernard.fr>, 2015, 2018"
 
 #. (itstool) path: page/title
 #: C/absolute.page:9
@@ -172,9 +173,72 @@ msgstr "Nombres complexes"
 
 #. (itstool) path: page/p
 #: C/complex.page:11
-msgid "Complex numbers are not supported in <app>Calculator</app>."
+msgid ""
+"<app>Calculator</app> supports complex numbers, as well as the following "
+"functions while in <link xref=\"mouse\">Advanced mode</link>."
 msgstr ""
-"Les nombres complexes ne sont pas pris en charge par <app>Calculatrice</app>."
+"<app>Calculatrice</app> prend en charge les nombres complexes, tout comme "
+"les fonctions suivantes en <link xref=\"mouse\">Mode avancé</link>."
+
+#. (itstool) path: td/p
+#: C/complex.page:18
+msgid "Re"
+msgstr "Re"
+
+#. (itstool) path: td/p
+#: C/complex.page:19
+msgid "Returns the real part of a complex number. For example:"
+msgstr "Donne la partie réelle d'un nombre complexe. Par exemple :"
+
+#. (itstool) path: example/p
+#: C/complex.page:21
+msgid "Re (2-5i) = 2"
+msgstr "Re (2-5i) = 2"
+
+#. (itstool) path: td/p
+#: C/complex.page:29
+msgid "Im"
+msgstr "Im"
+
+#. (itstool) path: td/p
+#: C/complex.page:30
+msgid "Returns the imaginary part of a complex number. For example:"
+msgstr "Donne la partie imaginaire d'un nombre complexe. Par exemple :"
+
+#. (itstool) path: example/p
+#: C/complex.page:32
+msgid "Im (2-5i) = -5"
+msgstr "Im (2-5i) = -5"
+
+#. (itstool) path: td/p
+#: C/complex.page:40
+msgid "conj"
+msgstr "conj"
+
+#. (itstool) path: td/p
+#: C/complex.page:41
+msgid "Returns the conjugate of a complex number. For example:"
+msgstr "Donne le conjugué d'un nombre complexe. Par exemple :"
+
+#. (itstool) path: example/p
+#: C/complex.page:43
+msgid "conj (2-5i) = 2+5i"
+msgstr "conj (2-5i) = 2+5i"
+
+#. (itstool) path: td/p
+#: C/complex.page:51
+msgid "Arg"
+msgstr "Arg"
+
+#. (itstool) path: td/p
+#: C/complex.page:52
+msgid "Returns the argument of a complex number. For example:"
+msgstr "Donne l'argument d'un nombre complexe. Par exemple :"
+
+#. (itstool) path: example/p
+#: C/complex.page:54
+msgid "Arg (2-5i) = -68.1986"
+msgstr "Arg (2-5i) = -68.1986"
 
 #. (itstool) path: page/p
 #: C/conv-base.page:11
@@ -750,144 +814,228 @@ msgstr "<link xref=\"absolute\">Valeur absolue</link>"
 
 #. (itstool) path: td/p
 #: C/functions.page:56
+msgid "ceil"
+msgstr "ceil"
+
+#. (itstool) path: td/p
+#: C/functions.page:57
+msgid "Ceiling"
+msgstr "Partie entière par excès"
+
+#. (itstool) path: td/p
+#: C/functions.page:60
 msgid "cos"
 msgstr "cos"
 
 #. (itstool) path: td/p
-#: C/functions.page:57
+#: C/functions.page:61
 msgid "<link xref=\"trigonometry\">Cosine</link>"
 msgstr "<link xref=\"trigonometry\">Cosinus</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:60
+#: C/functions.page:64
 msgid "cosh"
 msgstr "cosh"
 
 #. (itstool) path: td/p
-#: C/functions.page:61
+#: C/functions.page:65
 msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
 msgstr "<link xref=\"trigonometry\">Cosinus hyperbolique</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:64
+#: C/functions.page:68
+msgid "floor"
+msgstr "floor"
+
+#. (itstool) path: td/p
+#: C/functions.page:69
+msgid "Floor"
+msgstr "Partie entière par défaut"
+
+#. (itstool) path: td/p
+#: C/functions.page:72
 msgid "frac"
 msgstr "frac"
 
 #. (itstool) path: td/p
-#: C/functions.page:65
+#: C/functions.page:73
 msgid "Fractional Component"
 msgstr "Partie fractionnaire"
 
 #. (itstool) path: td/p
-#: C/functions.page:68
+#: C/functions.page:76
 msgid "int"
 msgstr "int"
 
 #. (itstool) path: td/p
-#: C/functions.page:69
+#: C/functions.page:77
 msgid "Integer Component"
 msgstr "Partie entière"
 
 #. (itstool) path: td/p
-#: C/functions.page:72
+#: C/functions.page:80
 msgid "ln"
 msgstr "ln"
 
 #. (itstool) path: td/p
-#: C/functions.page:73
+#: C/functions.page:81
 msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
 msgstr "<link xref=\"logarithm\">Logarithme népérien</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:76
+#: C/functions.page:84
 msgid "log"
 msgstr "log"
 
 #. (itstool) path: td/p
-#: C/functions.page:77
+#: C/functions.page:85
 msgid "<link xref=\"logarithm\">Logarithm</link>"
 msgstr "<link xref=\"logarithm\">Logarithme</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:80
+#: C/functions.page:88
 msgid "not"
 msgstr "not"
 
 #. (itstool) path: td/p
-#: C/functions.page:81
+#: C/functions.page:89
 msgid "<link xref=\"boolean\">Boolean NOT</link>"
 msgstr "<link xref=\"boolean\">NOT booléen</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:84
+#: C/functions.page:92
 msgid "ones"
 msgstr "ones"
 
 #. (itstool) path: td/p
-#: C/functions.page:85
+#: C/functions.page:93
 msgid "Ones complement"
 msgstr "Complément à un"
 
 #. (itstool) path: td/p
-#: C/functions.page:88
+#: C/functions.page:96
+msgid "round"
+msgstr "arrondi"
+
+#. (itstool) path: td/p
+#: C/functions.page:97
+msgid "Round"
+msgstr "Arrondi"
+
+#. (itstool) path: td/p
+#: C/functions.page:100
+msgid "sgn"
+msgstr "sgn"
+
+#. (itstool) path: td/p
+#: C/functions.page:101
+msgid "Signum"
+msgstr "Signum"
+
+#. (itstool) path: td/p
+#: C/functions.page:104
 msgid "sin"
 msgstr "sin"
 
 #. (itstool) path: td/p
-#: C/functions.page:89
+#: C/functions.page:105
 msgid "<link xref=\"trigonometry\">Sine</link>"
 msgstr "<link xref=\"trigonometry\">Sinus</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:92
+#: C/functions.page:108
 msgid "sinh"
 msgstr "sinh"
 
 #. (itstool) path: td/p
-#: C/functions.page:93
+#: C/functions.page:109
 msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
 msgstr "<link xref=\"trigonometry\">Sinus hyperbolique</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:96
+#: C/functions.page:112
 msgid "sqrt"
 msgstr "√"
 
 #. (itstool) path: td/p
-#: C/functions.page:97
+#: C/functions.page:113
 msgid "<link xref=\"power\">Square Root</link>"
 msgstr "<link xref=\"power\">Racine carrée</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:100
+#: C/functions.page:116
 msgid "tan"
 msgstr "tan"
 
 #. (itstool) path: td/p
-#: C/functions.page:101
+#: C/functions.page:117
 msgid "<link xref=\"trigonometry\">Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Tangente</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:104
+#: C/functions.page:120
 msgid "tanh"
 msgstr "tanh"
 
 #. (itstool) path: td/p
-#: C/functions.page:105
+#: C/functions.page:121
 msgid "<link xref=\"trigonometry\">Hyperbolic Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Tangente hyperbolique</link>"
 
 # complément à deux
 #. (itstool) path: td/p
-#: C/functions.page:108
+#: C/functions.page:124
 msgid "twos"
 msgstr "twos"
 
 #. (itstool) path: td/p
-#: C/functions.page:109
+#: C/functions.page:125
 msgid "Twos complement"
 msgstr "Complément à deux"
+
+#. (itstool) path: credit/name
+#: C/history.page:11
+msgid "Gopal Krishnan"
+msgstr "Gopal Krishnan"
+
+#. (itstool) path: credit/years
+#: C/history.page:13
+msgid "2012, 2013"
+msgstr "2012, 2013"
+
+#. (itstool) path: credit/name
+#: C/history.page:17
+msgid "Sanket Dasgupta"
+msgstr "Sanket Dasgupta"
+
+#. (itstool) path: credit/years
+#: C/history.page:19
+msgid "2016, 2017"
+msgstr "2016, 2017"
+
+#. (itstool) path: page/title
+#: C/history.page:23
+msgid "Using the History View"
+msgstr "Utilisation de l'historique"
+
+#. (itstool) path: page/p
+#: C/history.page:25
+msgid ""
+"The History View is located above the entry box and is designed to show your "
+"previous calculations in the form of a scrollable list that can be clicked "
+"and scrolled through using a mouse or even navigated and selected using the "
+"arrow keys on a keyboard. Once an entry has been selected, it will "
+"immediately show up in the entry box for you to manipulate and use. Finally, "
+"there is no upper limit on the number of calculations that can show up in "
+"the list for you to use."
+msgstr ""
+"L'historique est situé au dessus de la zone de saisie et est conçu pour "
+"afficher vos calculs précédents sous la forme d'un liste déroulante "
+"contenant des éléments que l'on peut faire défiler et sélectionner avec la "
+"souris ou avec les flèches du clavier. Une fois qu'une entrée a été "
+"sélectionnée, elle apparaîtra immédiatement dans la zone de saisie, pourra "
+"être éditée et utilisée. Enfin, il n'y a aucune limite sur le nombre de "
+"calculs qui peuvent apparaître dans cette liste."
 
 #. (itstool) path: page/title
 #: C/index.page:14
@@ -1351,9 +1499,6 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/power.page:50
-#| msgid ""
-#| "Square roots can be calculated using the symbol (<keyseq><key>Ctrl</"
-#| "key><key>R</key></keyseq>)."
 msgid ""
 "Square roots can be calculated using the √ symbol (<keyseq><key>Ctrl</"
 "key><key>R</key></keyseq>)."
@@ -1388,13 +1533,13 @@ msgstr "Notation scientifique"
 #. (itstool) path: page/p
 #: C/scientific.page:11
 msgid ""
-"To enter numbers in scientific format use the <gui>×10x</gui> button "
+"To enter numbers in scientific format use the <gui>×10y</gui> button "
 "(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link xref=\"superscript"
 "\">number mode</link> automatically changes to superscript. To enter "
 "2×10¹⁰⁰, start by entering the mantissa (2):"
 msgstr ""
 "Pour saisir des nombres en notation scientifique, utilisez le bouton "
-"<gui>×10x</gui> (<keyseq><key>Ctrl</key><key>E</key></keyseq>). Le <link "
+"<gui>×10y</gui> (<keyseq><key>Ctrl</key><key>E</key></keyseq>). Le <link "
 "xref=\"superscript\">mode numérique</link> change automatiquement en "
 "exposant. Pour saisir 2×10¹⁰⁰, commencez par saisir la mantisse (2) :"
 
@@ -1622,8 +1767,8 @@ msgstr "Les variables suivantes sont toujours définies."
 
 #. (itstool) path: td/p
 #: C/variables.page:40
-msgid "ans"
-msgstr "ans"
+msgid "_"
+msgstr "_"
 
 #. (itstool) path: td/p
 #: C/variables.page:41
@@ -1654,3 +1799,11 @@ msgstr "rand"
 #: C/variables.page:53
 msgid "Random value in the range [0,1] (changes on each read)"
 msgstr "Une valeur aléatoire comprise entre [0,1] (change à chaque lecture)"
+
+#~ msgid "Complex numbers are not supported in <app>Calculator</app>."
+#~ msgstr ""
+#~ "Les nombres complexes ne sont pas pris en charge par <app>Calculatrice</"
+#~ "app>."
+
+#~ msgid "ans"
+#~ msgstr "ans"
