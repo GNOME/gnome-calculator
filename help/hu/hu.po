@@ -2,13 +2,13 @@
 # Copyright (C) 2010, 2011, 2012, 2013, 2014. Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-calculator help.
 #
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2010, 2011, 2012, 2013, 2014, 2015, 2017.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018.
 # Balázs Úr <urbalazs at gmail dot com>, 2014, 2015.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator_help master\n"
-"POT-Creation-Date: 2017-02-24 17:27+0000\n"
-"PO-Revision-Date: 2017-03-13 00:10+0100\n"
+"POT-Creation-Date: 2018-01-26 19:29+0000\n"
+"PO-Revision-Date: 2018-03-05 00:06+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at ubuntu dot com>\n"
 "Language-Team: Hungarian <openscope at googlegroups dot com>\n"
 "Language: hu\n"
@@ -164,8 +164,73 @@ msgstr "Komplex számok"
 
 #. (itstool) path: page/p
 #: C/complex.page:11
-msgid "Complex numbers are not supported in <app>Calculator</app>."
-msgstr "A <app>Számológép</app> nem támogatja a komplex számokat."
+msgid ""
+"<app>Calculator</app> supports complex numbers, as well as the following "
+"functions while in <link xref=\"mouse\">Advanced mode</link>."
+msgstr ""
+"A <app>Számológép</app> támogatja a komplex számokat, valamint a következő "
+"funkciókat a <link xref=\"mouse\">Speciális módban</link>."
+
+#. (itstool) path: td/p
+#: C/complex.page:18
+#| msgid "e"
+msgid "Re"
+msgstr "Re"
+
+#. (itstool) path: td/p
+#: C/complex.page:19
+msgid "Returns the real part of a complex number. For example:"
+msgstr "Visszaadja egy komplex szám valós részét. Például:"
+
+#. (itstool) path: example/p
+#: C/complex.page:21
+msgid "Re (2-5i) = 2"
+msgstr "Re (2-5i) = 2"
+
+#. (itstool) path: td/p
+#: C/complex.page:29
+msgid "Im"
+msgstr "Im"
+
+#. (itstool) path: td/p
+#: C/complex.page:30
+msgid "Returns the imaginary part of a complex number. For example:"
+msgstr "Visszaadja egy komplex szám képzetes részét. Például:"
+
+#. (itstool) path: example/p
+#: C/complex.page:32
+msgid "Im (2-5i) = -5"
+msgstr "Im (2-5i) = -5"
+
+#. (itstool) path: td/p
+#: C/complex.page:40
+msgid "conj"
+msgstr "conj"
+
+#. (itstool) path: td/p
+#: C/complex.page:41
+msgid "Returns the conjugate of a complex number. For example:"
+msgstr "Visszaadja egy komplex szám konjugáltját. Például:"
+
+#. (itstool) path: example/p
+#: C/complex.page:43
+msgid "conj (2-5i) = 2+5i"
+msgstr "conj (2-5i) = 2+5i"
+
+#. (itstool) path: td/p
+#: C/complex.page:51
+msgid "Arg"
+msgstr "Arg"
+
+#. (itstool) path: td/p
+#: C/complex.page:52
+msgid "Returns the argument of a complex number. For example:"
+msgstr "Visszaadja egy komplex szám argumentumát. Például:"
+
+#. (itstool) path: example/p
+#: C/complex.page:54
+msgid "Arg (2-5i) = -68.1986"
+msgstr "Arg (2-5i) = -68.1986"
 
 #. (itstool) path: page/p
 #: C/conv-base.page:11
@@ -844,7 +909,6 @@ msgstr "Kerekítés"
 
 #. (itstool) path: td/p
 #: C/functions.page:100
-#| msgid "sin"
 msgid "sgn"
 msgstr "sgn"
 
@@ -935,7 +999,6 @@ msgstr "2016, 2017"
 
 #. (itstool) path: page/title
 #: C/history.page:23
-#| msgid "Using the Mouse"
 msgid "Using the History View"
 msgstr "Az Előzmények nézet használata"
 
@@ -950,11 +1013,11 @@ msgid ""
 "there is no upper limit on the number of calculations that can show up in "
 "the list for you to use."
 msgstr ""
-"Az Előzmények nézet a beviteli mező fölött található, és a korábbi számítások "
-"egérrel vagy nyílbillentyűkkel görgethető listaként való megjelenítésére "
-"tervezték. Egy bejegyzés kiválasztása után az azonnal megjelenik a beviteli "
-"mezőben, így módosítható és használható. A listában megjelenő és újra "
-"használható számítások száma korlátlan."
+"Az Előzmények nézet a beviteli mező fölött található, és a korábbi "
+"számítások egérrel vagy nyílbillentyűkkel görgethető listaként való "
+"megjelenítésére tervezték. Egy bejegyzés kiválasztása után az azonnal "
+"megjelenik a beviteli mezőben, így módosítható és használható. A listában "
+"megjelenő és újra használható számítások száma korlátlan."
 
 #. (itstool) path: page/title
 #: C/index.page:14
@@ -1444,11 +1507,6 @@ msgstr "Tudományos jelölés"
 
 #. (itstool) path: page/p
 #: C/scientific.page:11
-#| msgid ""
-#| "To enter numbers in scientific format use the <gui>×10x</gui> button "
-#| "(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link xref="
-#| "\"superscript\">number mode</link> automatically changes to superscript. "
-#| "To enter 2×10¹⁰⁰, start by entering the mantissa (2):"
 msgid ""
 "To enter numbers in scientific format use the <gui>×10y</gui> button "
 "(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link xref=\"superscript"
@@ -1682,8 +1740,10 @@ msgstr "A következő változók mindig definiálva vannak."
 
 #. (itstool) path: td/p
 #: C/variables.page:40
-msgid "ans"
-msgstr "ans"
+#| msgctxt "sort"
+#| msgid "_"
+msgid "_"
+msgstr "_"
 
 #. (itstool) path: td/p
 #: C/variables.page:41
@@ -1714,6 +1774,12 @@ msgstr "rand"
 #: C/variables.page:53
 msgid "Random value in the range [0,1] (changes on each read)"
 msgstr "Véletlen érték az [0,1] tartományban (minden olvasáskor változik)"
+
+#~ msgid "Complex numbers are not supported in <app>Calculator</app>."
+#~ msgstr "A <app>Számológép</app> nem támogatja a komplex számokat."
+
+#~ msgid "ans"
+#~ msgstr "ans"
 
 #~ msgid ""
 #~ "You can also convert currencies using the keyboard and the <em>in</em> "
