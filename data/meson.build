@@ -1,7 +1,7 @@
 # Icons
 install_subdir('icons',
   install_dir: join_paths(get_option('datadir')),
-  exclude_files: [ 'Makefile', 'Makefile.in', 'Makefile.am', 'gnome-calculator-src.svg' ],
+  exclude_files: [ 'gnome-calculator-src.svg' ],
 )
 
 # Desktop file
