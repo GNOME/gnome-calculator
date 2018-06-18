@@ -30,7 +30,7 @@ public class UnitManager : Object
         var length_category = default_unit_manager.add_category ("length", _("Length"));
         var area_category = default_unit_manager.add_category ("area", _("Area"));
         var volume_category = default_unit_manager.add_category ("volume", _("Volume"));
-        var weight_category = default_unit_manager.add_category ("weight", _("Weight"));
+        var weight_category = default_unit_manager.add_category ("weight", _("Mass"));
         var duration_category = default_unit_manager.add_category ("duration", _("Duration"));
         var temperature_category = default_unit_manager.add_category ("temperature", _("Temperature"));
         var digitalstorage_category = default_unit_manager.add_category ("digitalstorage", _("Digital Storage"));
