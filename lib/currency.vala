@@ -77,7 +77,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("SGD", _("Singapore Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("THB", _("Thai Baht"), "฿"));
         default_currency_manager.currencies.append (new Currency ("TND", _("Tunisian Dinar"), "ت.د"));
-        default_currency_manager.currencies.append (new Currency ("TRY", _("New Turkish Lira"), "TL"));
+        default_currency_manager.currencies.append (new Currency ("TRY", _("Turkish Lira"), "₺"));
         default_currency_manager.currencies.append (new Currency ("TTD", _("T&T Dollar (TTD)"), "$"));
         default_currency_manager.currencies.append (new Currency ("USD", _("US Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("UYU", _("Uruguayan Peso"), "$"));
