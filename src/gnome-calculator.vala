@@ -93,19 +93,6 @@ public class Calculator : Gtk.Application
         buttons.programming_base = number_base;
         buttons.mode = button_mode; // FIXME: We load the basic buttons even if we immediately switch to the next type
 
-        var builder = new Gtk.Builder ();
-        try
-        {
-            builder.add_from_resource ("/org/gnome/calculator/menu.ui");
-        }
-        catch (Error e)
-        {
-            error ("Error loading menu UI: %s", e.message);
-        }
-
-        var menu = builder.get_object ("appmenu") as MenuModel;
-        set_app_menu (menu);
-
         set_accels_for_action ("win.mode::basic", {"<alt>B"});
         set_accels_for_action ("win.mode::advanced", {"<alt>A"});
         set_accels_for_action ("win.mode::financial", {"<alt>F"});
@@ -116,6 +103,7 @@ public class Calculator : Gtk.Application
         set_accels_for_action ("win.undo", {"<control>Z"});
         set_accels_for_action ("win.close", {"<control>W"});
         set_accels_for_action ("win.redo", {"<control><shift>Z"});
+        set_accels_for_action ("app.quit", {"<control>Q"});
         return current_window;
     }
 
