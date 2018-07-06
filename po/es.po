@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2018-06-18 16:13+0000\n"
-"PO-Revision-Date: 2018-06-21 09:54+0200\n"
+"POT-Creation-Date: 2018-07-05 16:06+0000\n"
+"PO-Revision-Date: 2018-07-06 12:42+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -748,8 +748,8 @@ msgid "The GNOME Project"
 msgstr "El Proyecto GNOME"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:327
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -808,7 +808,28 @@ msgstr "Modo de programación"
 msgid "Keyboard Mode"
 msgstr "Modo del teclado"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Ventana nueva"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "Atajos del _teclado"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Ayuda"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Acerca de"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menú"
 
@@ -931,31 +952,6 @@ msgstr "Cambiar a decimal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Cambiar a hexadecimal"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Ventana nueva"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Preferencias"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "Atajos del _teclado"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Ayuda"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Acerca de"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Salir"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1283,7 +1279,8 @@ msgid "Tunisian Dinar"
 msgstr "Dinar tunecino"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
+#| msgid "New Turkish Lira"
+msgid "Turkish Lira"
 msgstr "Lira turca"
 
 #: lib/currency.vala:81
@@ -2799,24 +2796,24 @@ msgid "Show release version"
 msgstr "Mostrar el número de versión"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:291
 msgid "Unable to open help file"
 msgstr "No se pudo abrir el archivo de ayuda"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:322
 msgid "translator-credits"
 msgstr ""
 "Jorge González <jorgegonz@svn.gnome.org>, 2007-2009\n"
 "Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006\n"
 "Germán Poo-Caamaño <gpoo@ubiobio.cl>, 2003"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:328
 msgid "About Calculator"
 msgstr "Acerca de Calculadora"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:336
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora con modos científico y financiero."
 
@@ -2900,6 +2897,9 @@ msgstr "64 bits"
 #: src/math-window.vala:134
 msgid "_Quit"
 msgstr "_Salir"
+
+#~ msgid "Quit"
+#~ msgstr "Salir"
 
 #~ msgid "Weight"
 #~ msgstr "Peso"
