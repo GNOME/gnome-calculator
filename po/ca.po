@@ -11,10 +11,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-03-01 18:44+0000\n"
-"PO-Revision-Date: 2018-01-22 00:39+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-07-05 16:06+0000\n"
+"PO-Revision-Date: 2018-07-08 09:17+0200\n"
 "Last-Translator: Gil Forcada Codinachs <gil.gnome@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
 msgid "Inverse [Ctrl+I]"
@@ -747,8 +747,8 @@ msgid "The GNOME Project"
 msgstr "El projecte GNOME"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:327
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -807,7 +807,28 @@ msgstr "Mode de programació"
 msgid "Keyboard Mode"
 msgstr "Mode del teclat"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Finestra nova"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Preferències"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Dreceres de teclat"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Ajuda"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Quant a"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menú"
 
@@ -930,31 +951,6 @@ msgstr "Commuta a decimal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Commuta a hexadecimal"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Finestra nova"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Preferències"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Dreceres de teclat"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Ajuda"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Quant a"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Surt"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1282,8 +1278,8 @@ msgid "Tunisian Dinar"
 msgstr "Dinar tunisià"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Nova lira turca"
+msgid "Turkish Lira"
+msgstr "Lira turca"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1505,8 +1501,8 @@ msgid "Volume"
 msgstr "Volum"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Pes"
+msgid "Mass"
+msgstr "Massa"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2795,24 +2791,24 @@ msgid "Show release version"
 msgstr "Mostra la versió de publicació"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:291
 msgid "Unable to open help file"
 msgstr "No s'ha pogut obrir el fitxer d'ajuda"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:322
 msgid "translator-credits"
 msgstr ""
 "Blanca Biosca <b_biosca@hotmail.com>\n"
 "Josep Puigdemont <josep.puigdemont@gmail.com>\n"
 "Joan Duran <jodufi@gmail.com>"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:328
 msgid "About Calculator"
 msgstr "Quant a la Calculadora"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:336
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora amb mode financer i científic."
 
@@ -2896,6 +2892,12 @@ msgstr "64 bits"
 #: src/math-window.vala:134
 msgid "_Quit"
 msgstr "_Surt"
+
+#~ msgid "Quit"
+#~ msgstr "Surt"
+
+#~ msgid "Weight"
+#~ msgstr "Pes"
 
 #~ msgid "accessories-calculator"
 #~ msgstr "accessories-calculator"
