@@ -93,6 +93,9 @@ public class Calculator : Gtk.Application
         buttons.programming_base = number_base;
         buttons.mode = button_mode; // FIXME: We load the basic buttons even if we immediately switch to the next type
 
+        /* Remove when https://wiki.gnome.org/Initiatives/GnomeGoals/AppMenuRetirement is confirmed */
+        set_app_menu (current_window.primary_menu_button.menu_model);
+
         set_accels_for_action ("win.mode::basic", {"<alt>B"});
         set_accels_for_action ("win.mode::advanced", {"<alt>A"});
         set_accels_for_action ("win.mode::financial", {"<alt>F"});

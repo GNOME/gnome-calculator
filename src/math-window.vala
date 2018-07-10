@@ -31,6 +31,10 @@ public class MathWindow : Gtk.ApplicationWindow
     [GtkChild]
     private MathConverter converter;
 
+    /* Remove when https://wiki.gnome.org/Initiatives/GnomeGoals/AppMenuRetirement is confirmed */
+    [GtkChild]
+    public Gtk.MenuButton primary_menu_button;
+
     private const ActionEntry[] window_entries =
     {
         { "copy", copy_cb, null, null, null },
