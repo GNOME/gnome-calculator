@@ -10,7 +10,7 @@ build-ubuntu:
 build-fedora:
   image: fedora:latest
   before_script:
-    - dnf install -y meson vala itstool gtk3-devel gtksourceview3-devel libmpc-devel mpfr-devel libsoup-devel libxml2-devel ImageMagick xorg-x11-server-Xvfb xorg-x11-fonts
+    - dnf install -y meson vala itstool gtk3-devel gtksourceview3-devel libmpc-devel mpfr-devel libsoup-devel libxml2-devel ImageMagick xorg-x11-server-Xvfb
   script:
     - meson _build
     - ninja -C _build install
