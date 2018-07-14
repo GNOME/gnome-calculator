@@ -16,10 +16,12 @@ build-fedora:
     - ninja -C _build install
     - Xvfb -fp /usr/share/X11/fonts/misc :0 -screen 0 1280x1024x24&
     - sleep 5
-    - DISPLAY=:0 _build/src/gnome-calculator
+    - DISPLAY=:0 _build/src/gnome-calculator&
     - sleep 5
     - DISPLAY=:0 import -window root screenshot.jpg
     - sleep 5
+    - pkill gnome-calculator
+    - pkill Xvfb
   artifacts:
     paths:
     - screenshot.jpg
