@@ -19,8 +19,8 @@
         "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "build-options" : {
-        "cflags": "-O2 -g",
-        "cxxflags": "-O2 -g"
+        "cflags": "-O2 -g -w",
+        "cxxflags": "-O2 -g -w"
     },
     "cleanup": ["/include", "/lib/pkgconfig",
                 "/share/pkgconfig", "/share/aclocal",
@@ -43,6 +43,9 @@
         },
         {
             "name": "mpc",
+            "config-opts" : [
+                "--with-mpfr=/app"
+            ],
             "sources": [
                 {
                     "type": "archive",
@@ -56,7 +59,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "git://git.gnome.org/gtksourceview",
+                    "url": "https://gitlab.gnome.org/GNOME/gtksourceview.git",
                     "branch": "gnome-3-24"
                 }
             ]
@@ -67,7 +70,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "git://git.gnome.org/gnome-calculator"
+                    "url": "https://gitlab.gnome.org/GNOME/gnome-calculator.git"
                 }
             ]
         }
