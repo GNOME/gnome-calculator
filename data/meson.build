@@ -1,7 +1,6 @@
 # Icons
 install_subdir('icons',
   install_dir: join_paths(get_option('datadir')),
-  exclude_files: [ 'gnome-calculator-src.svg' ],
 )
 
 # Desktop file
