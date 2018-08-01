@@ -24,10 +24,22 @@ grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: strict
 
 plugs:
-    gnome-3-26-1604:
-      interface: content
-      target: $SNAP/gnome-platform
-      default-provider: gnome-3-26-1604:gnome-3-26-1604
+  gnome-3-26-1604:
+    interface: content
+    target: $SNAP/gnome-platform
+    default-provider: gnome-3-26-1604
+  gtk-3-themes:
+    interface: content
+    target: $SNAP/data-dir/themes
+    default-provider: gtk-common-themes
+  icon-themes:
+    interface: content
+    target: $SNAP/data-dir/icons
+    default-provider: gtk-common-themes
+  sound-themes:
+    interface: content
+    target: $SNAP/data-dir/sounds
+    default-provider: gtk-common-themes
 
 slots:
   # for GtkApplication registration
@@ -55,10 +67,8 @@ parts:
     build-attributes: [no-system-libraries]
     after: [desktop-gnome-platform]
     source: .
-    source-type: git
-    plugin: autotools
-    # workaround the issue described in https://launchpad.net/bugs/1583250
-    configflags: [--prefix=/snap/gnome-calculator/current/usr]
+    plugin: meson
+    meson-parameters: [--prefix=/snap/gnome-calculator/current/usr]
     organize:
       snap/gnome-calculator/current/usr: usr
     build-packages:
