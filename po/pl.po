@@ -11,10 +11,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 12:08+0000\n"
-"PO-Revision-Date: 2018-02-08 02:11+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-07-24 22:53+0000\n"
+"PO-Revision-Date: 2018-08-01 03:22+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -746,8 +746,8 @@ msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Kalkulator"
 
@@ -786,27 +786,48 @@ msgstr "Nazwa zmiennej"
 msgid "Store value into existing or new variable"
 msgstr "Przechowuje wartość w istniejącej lub nowej zmiennej"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
-msgstr "Tryb podstawowy"
+msgstr "Podstawowy"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
-msgstr "Tryb zaawansowany"
+msgstr "Zaawansowany"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
-msgstr "Tryb finansowy"
+msgstr "Finansowy"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
-msgstr "Tryb programistyczny"
+msgstr "Programistyczny"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
-msgstr "Tryb klawiatury"
+msgstr "Klawiatura"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Nowe okno"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Preferencje"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Skróty klawiszowe"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Pomoc"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "O programie"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menu"
 
@@ -930,31 +951,6 @@ msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Przełączenie na system szesnastkowy"
 
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Nowe okno"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Preferencje"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Skróty klawiszowe"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Pomoc"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "O programie"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Zakończ"
-
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
 msgstr "Wartość dokładności"
@@ -1017,7 +1013,7 @@ msgstr "Używane jednostki kątowe"
 
 #: data/org.gnome.calculator.gschema.xml:62
 msgid "Button mode"
-msgstr "Tryb przycisku"
+msgstr "Tryb przycisków"
 
 #: data/org.gnome.calculator.gschema.xml:63
 msgid "The button mode"
@@ -1280,8 +1276,8 @@ msgid "Tunisian Dinar"
 msgstr "dinar tunezyjski"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "nowa lira turecka"
+msgid "Turkish Lira"
+msgstr "lira turecka"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1484,7 +1480,7 @@ msgstr "Zmienna NIE jest określona tylko dla dodatnich liczb całkowitych"
 msgid "Shift is only possible on integer values"
 msgstr "Przesunięcie jest możliwe tylko na wartościach całkowitych"
 
-#: lib/serializer.vala:332
+#: lib/serializer.vala:342
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Przepełnienie: nie można obliczyć wyniku"
 
@@ -1505,8 +1501,8 @@ msgid "Volume"
 msgstr "Objętość"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Waga"
+msgid "Mass"
+msgstr "Masa"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2795,12 +2791,12 @@ msgid "Show release version"
 msgstr "Wyświetla wersję wydania"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Nie można otworzyć pliku pomocy"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Artur Flinta <aflinta@at.kernel.pl>, 2003-2006\n"
@@ -2810,12 +2806,12 @@ msgstr ""
 "Paweł Żołnowski <pawel@zolnowski.name>, 2014-2015\n"
 "Aviary.pl <community-poland@mozilla.org>, 2007-2018"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "O kalkulatorze"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator z trybem finansowym i naukowym."
 
@@ -2897,6 +2893,6 @@ msgstr "32 bity"
 msgid "64 bits"
 msgstr "64 bity"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "Za_kończ"
