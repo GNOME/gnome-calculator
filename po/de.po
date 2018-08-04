@@ -17,8 +17,8 @@
 # Ich bin nicht sicher, in welchem Umfang man Knopfnamen bedenkenlos
 # übersetzen darf. Bitte CHECKen.
 #
-# Christian Neumair chrisatgnome-de.org, 2003, 2004.
-# Hendrik Richter <hendrikr@gnome.org>, 2005, 2006, 2007.
+# Christian Neumair chrisatgnome-de.org, 2003-2004.
+# Hendrik Richter <hendrikr@gnome.org>, 2005-2007.
 # Frank Arnold <frank@scirocco-5v-turbo.de>, 2005.
 # Jochen Skulj <jochen@jochenskulj.de>
 # Andre Klapper <ak-47@gmx.net>, 2008.
@@ -27,16 +27,16 @@
 # Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>, 2011.
 # Hendrik Knackstedt <kn.hendrik@gmail.com>, 2012.
 # Wolfgang Stöggl <c72578@yahoo.de>, 2012-2014, 2017.
-# Christian Kirbach <christian.kirbach@gmail.com>, 2009-2012, 2013.
-# Simon Linden <xhi2018@gmail.com>, 2013, 2014.
+# Christian Kirbach <christian.kirbach@gmail.com>, 2009-2013.
+# Simon Linden <xhi2018@gmail.com>, 2013-2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 12:08+0000\n"
-"PO-Revision-Date: 2018-02-04 14:32+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-07-24 22:53+0000\n"
+"PO-Revision-Date: 2018-08-04 19:29+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -44,7 +44,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.9\n"
 "X-Project-Style: gnome\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
@@ -778,8 +778,8 @@ msgid "The GNOME Project"
 msgstr "Das GNOME-Projekt"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Taschenrechner"
 
@@ -790,7 +790,6 @@ msgstr "Taschenrechner;Rechner;Arithmetisch;Wissenschaftlich;Finanztechnisch;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Calculator.desktop.in:9
-#| msgid "Calculator"
 msgid "gnome-calculator"
 msgstr "gnome-calculator"
 
@@ -819,27 +818,48 @@ msgstr "Variablenname"
 msgid "Store value into existing or new variable"
 msgstr "Wert in vorhandener oder neuer Variable speichern"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Standardmodus"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Erweiterter Modus"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Finanztechnischer Modus"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Programmier-Modus"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Tastaturmodus"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Neues Fenster"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Einstellungen"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastenkombinationen"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Hilfe"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Info"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menü"
 
@@ -962,31 +982,6 @@ msgstr "In Dezimalmodus wechseln"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "In Hexadezimalmodus wechseln"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Neues Fenster"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Einstellungen"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Tastenkombinationen"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Hilfe"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Info"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Beenden"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1314,8 +1309,8 @@ msgid "Tunisian Dinar"
 msgstr "Tunesische Dinar"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Neue türkische Lira"
+msgid "Turkish Lira"
+msgstr "Türkische Lira"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1522,7 +1517,7 @@ msgstr "Boolesches NICHT ist nur für positive Ganzzahlen definiert"
 msgid "Shift is only possible on integer values"
 msgstr "Verschiebung ist nur mit Ganzzahlen möglich"
 
-#: lib/serializer.vala:332
+#: lib/serializer.vala:342
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Überlauf: Das Ergebnis kann nicht berechnet werden"
 
@@ -1543,8 +1538,8 @@ msgid "Volume"
 msgstr "Volumen"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Gewicht"
+msgid "Mass"
+msgstr "Masse"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2857,12 +2852,12 @@ msgid "Show release version"
 msgstr "Version anzeigen"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Die Hilfedatei konnte nicht geöffnet werden"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Christian Neumair <chris@gnome-de.org>\n"
@@ -2873,12 +2868,12 @@ msgstr ""
 "Paul Seyfert <pseyfert@mathphys.fsk.uni-heidelberg.de>\n"
 "Jakob Kramer <jakob.kramer@gmx.de>"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Info zu Taschenrechner"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Ein Taschenrechner mit finanztechnischem und wissenschaftlichem Modus."
 
@@ -2959,6 +2954,6 @@ msgstr "32 Bit"
 msgid "64 bits"
 msgstr "64 Bit"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Beenden"
