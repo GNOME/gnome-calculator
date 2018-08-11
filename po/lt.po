@@ -8,16 +8,16 @@
 # Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007, 2008.
 # Rimas Kudelis <rq@akl.lt>, 2010.
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012.
-# Aurimas Černius <aurisc4@gmail.com>, 2010, 2013, 2014, 2015, 2016, 2017.
+# Aurimas Černius <aurisc4@gmail.com>, 2010, 2013, 2014, 2015, 2016, 2017, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-02-26 16:10+0000\n"
-"PO-Revision-Date: 2018-02-28 01:52+0200\n"
-"Last-Translator: Moo\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-07-24 22:53+0000\n"
+"PO-Revision-Date: 2018-08-11 20:58+0300\n"
+"Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
 msgid "Inverse [Ctrl+I]"
@@ -748,8 +748,8 @@ msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Skaičiuotuvas"
 
@@ -788,27 +788,48 @@ msgstr "Kintamojo vardas"
 msgid "Store value into existing or new variable"
 msgstr "Įrašyti reikšmę į esamą ar naują kintamąjį"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Paprasta veiksena"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Išplėstinė veiksena"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Finansinė veiksena"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Programavimo veiksena"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Klaviatūros veiksena"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Naujas langas"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Nuostatos"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Klaviatūros trumpiniai"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Žinynas"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Apie"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Meniu"
 
@@ -931,31 +952,6 @@ msgstr "Įjungti dešimtainę"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Įjungti šešioliktainę"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Naujas langas"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Nuostatos"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Klaviatūros trumpiniai"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Žinynas"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Apie"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Baigti"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1280,8 +1276,9 @@ msgid "Tunisian Dinar"
 msgstr "Tuniso dinaras"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Naujoji Turkijos lira"
+#| msgid "New Turkish Lira"
+msgid "Turkish Lira"
+msgstr "Turkijos lira"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1504,8 +1501,8 @@ msgid "Volume"
 msgstr "Reikšmė"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Svoris"
+msgid "Mass"
+msgstr "Masė"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2794,12 +2791,12 @@ msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Nepavyko atverti žinyno failo"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Algimantas Markevičius <margevicius.algimantas@gmail.com>\n"
@@ -2811,12 +2808,12 @@ msgstr ""
 "Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Gediminas Paulauskas <menesis@chatsubo.lt>"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Apie skaičiuotuvą"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Skaičiuotuvas su finansiniais bei moksliniais priedais"
 
@@ -2898,9 +2895,15 @@ msgstr "32 bitai"
 msgid "64 bits"
 msgstr "64 bitai"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Išeiti"
+
+#~ msgid "Quit"
+#~ msgstr "Baigti"
+
+#~ msgid "Weight"
+#~ msgstr "Svoris"
 
 #~ msgid "accessories-calculator"
 #~ msgstr "accessories-calculator"
