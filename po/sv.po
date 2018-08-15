@@ -9,10 +9,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 12:08+0000\n"
-"PO-Revision-Date: 2018-02-22 15:49+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-07-24 22:53+0000\n"
+"PO-Revision-Date: 2018-08-15 22:08+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
 msgid "Inverse [Ctrl+I]"
@@ -747,8 +747,8 @@ msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Kalkylator"
 
@@ -759,7 +759,6 @@ msgstr "uträkning;aritmetik;vetenskaplig;finansiell;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Calculator.desktop.in:9
-#| msgid "Calculator"
 msgid "gnome-calculator"
 msgstr "gnome-calculator"
 
@@ -788,27 +787,48 @@ msgstr "Variabelnamn"
 msgid "Store value into existing or new variable"
 msgstr "Lagra värde till en befintlig eller ny variabel"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Grundläggande läge"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Avancerat läge"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Finansiellt läge"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Programmeringsläge"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Tangentbordsläge"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Nytt fönster"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Tangentbordsgenvägar"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Hjälp"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Om"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Meny"
 
@@ -931,31 +951,6 @@ msgstr "Växla till decimalt"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Växla till hexadecimalt"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Nytt fönster"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Inställningar"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Tangentbordsgenvägar"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Hjälp"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Om"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Avsluta"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1282,8 +1277,8 @@ msgid "Tunisian Dinar"
 msgstr "Dinar (Tunisien)"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Ny turkisk lira"
+msgid "Turkish Lira"
+msgstr "Turkisk lira"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1485,7 +1480,7 @@ msgstr "Boolesk NOT definieras endast för positiva heltal"
 msgid "Shift is only possible on integer values"
 msgstr "Skift är endast möjlig på heltalsvärden"
 
-#: lib/serializer.vala:332
+#: lib/serializer.vala:342
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Överflöde: resultatet kunde inte beräknas"
 
@@ -1506,8 +1501,8 @@ msgid "Volume"
 msgstr "Volym"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Vikt"
+msgid "Mass"
+msgstr "Massa"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2796,12 +2791,12 @@ msgid "Show release version"
 msgstr "Visa programvaruversion"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Kunde inte öppna hjälpfilen"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -2812,12 +2807,12 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Om Kalkylator"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkylator med finansiella och vetenskapliga lägen."
 
@@ -2898,9 +2893,15 @@ msgstr "32 bitar"
 msgid "64 bits"
 msgstr "64 bitar"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Avsluta"
+
+#~ msgid "Quit"
+#~ msgstr "Avsluta"
+
+#~ msgid "Weight"
+#~ msgstr "Vikt"
 
 #~ msgid "accessories-calculator"
 #~ msgstr "accessories-calculator"
