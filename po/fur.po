@@ -6,10 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 12:08+0000\n"
-"PO-Revision-Date: 2018-02-04 17:36+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-07-24 22:53+0000\n"
+"PO-Revision-Date: 2018-08-16 23:02+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
 "Language: fur\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.7\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
 msgid "Inverse [Ctrl+I]"
@@ -740,8 +740,8 @@ msgid "The GNOME Project"
 msgstr "Il progjet GNOME"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Calcoladorie"
 
@@ -752,7 +752,6 @@ msgstr "calcui;calcoladorie;aritmetic;sientific;finanziari;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Calculator.desktop.in:9
-#| msgid "Calculator"
 msgid "gnome-calculator"
 msgstr "gnome-calculator"
 
@@ -781,27 +780,48 @@ msgstr "Non variabile"
 msgid "Store value into existing or new variable"
 msgstr "Archivie il valôr intune esistente o gnove variabile"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Modalitât base"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Modalitât avanzade"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Modalitât finanziarie"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Modalitât programazion"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Modalitât tastiere"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Gnûf barcon"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Preferencis"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Scurtis tastiere"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Jutori"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Informazions"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menù"
 
@@ -924,31 +944,6 @@ msgstr "Passe a decimâl"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Passe a esadecimâl"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Gnûf barcon"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Preferencis"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Scurtis tastiere"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Jutori"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Informazions"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Jes"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1276,8 +1271,8 @@ msgid "Tunisian Dinar"
 msgstr "Dinar tunisin"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Gnove lire turche"
+msgid "Turkish Lira"
+msgstr "Lire turche"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1478,7 +1473,7 @@ msgstr "Il NOT boolean al è definît nome pai intîrs positîfs"
 msgid "Shift is only possible on integer values"
 msgstr "Il shift al è pussibil nome sui valôrs intîrs"
 
-#: lib/serializer.vala:332
+#: lib/serializer.vala:342
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Ecès: il risultât nol pues jessi calcolât"
 
@@ -1499,8 +1494,8 @@ msgid "Volume"
 msgstr "Volum"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Pês"
+msgid "Mass"
+msgstr "Masse"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2789,21 +2784,21 @@ msgid "Show release version"
 msgstr "Mostre il numar di version"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Impussibil vierzi il file di jutori"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr "Fabio Tomat, <f.t.public@gmail.com>"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Informazions su Calcoladorie"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Calcoladorie cun modalitât finanziarie e sientifiche."
 
@@ -2884,9 +2879,15 @@ msgstr "32 bit"
 msgid "64 bits"
 msgstr "64 bit"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Jes"
+
+#~ msgid "Quit"
+#~ msgstr "Jes"
+
+#~ msgid "Weight"
+#~ msgstr "Pês"
 
 #~ msgid "accessories-calculator"
 #~ msgstr "accessories-calculator"
