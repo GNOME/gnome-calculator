@@ -203,7 +203,8 @@ public class SearchProviderApp : Application
     {
         Object (application_id: "org.gnome.Calculator.SearchProvider",
                 flags: ApplicationFlags.IS_SERVICE,
-                inactivity_timeout: 60000);
+                inactivity_timeout: 20000);
+    }
 
     public void renew_inactivity_timeout ()
     {
