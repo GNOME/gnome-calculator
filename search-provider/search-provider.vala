@@ -13,7 +13,12 @@
 [DBus (name = "org.gnome.Shell.SearchProvider2")]
 public class SearchProvider : Object
 {
+    private unowned SearchProviderApp application;
     private Cancellable cancellable = new Cancellable ();
+    public SearchProvider (SearchProviderApp app)
+    {
+        application = app;
+    }
 
     ~SearchProvider ()
     {
@@ -70,6 +75,8 @@ public class SearchProvider : Object
                 subprocess.force_exit ();
                 cancellable = null;
             });
+
+            application.renew_inactivity_timeout ();
 
             yield subprocess.communicate_utf8_async (null, cancellable, out solution_buf, out stderr_buf);
         }
@@ -197,11 +204,16 @@ public class SearchProviderApp : Application
         Object (application_id: "org.gnome.Calculator.SearchProvider",
                 flags: ApplicationFlags.IS_SERVICE,
                 inactivity_timeout: 60000);
+
+    public void renew_inactivity_timeout ()
+    {
+        this.hold ();
+        this.release ();
     }
 
     public override bool dbus_register (DBusConnection connection, string object_path)
     {
-        SearchProvider search_provider = new SearchProvider ();
+        SearchProvider search_provider = new SearchProvider (this);
 
         try
         {
