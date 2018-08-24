@@ -1,6 +1,7 @@
 /* -*- Mode: vala; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*-
  *
  * Copyright (C) 2014 Michael Catanzaro
+ * Copyright (C) 2018 Marco Trevisan
  *
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
@@ -12,17 +13,85 @@
 [DBus (name = "org.gnome.Shell.SearchProvider2")]
 public class SearchProvider : Object
 {
+    private Cancellable cancellable = new Cancellable ();
+
+    ~SearchProvider ()
+    {
+        cancel ();
+    }
+
+    [DBus (visible = false)]
+    public void cancel ()
+    {
+        if (cancellable != null)
+        {
+            cancellable.cancel ();
+        }
+    }
+
     private static string terms_to_equation (string[] terms)
     {
         return string.joinv (" ", terms);
     }
 
-    private static bool can_parse (string[] terms)
+    private async Subprocess solve_subprocess (string equation, bool return_solution = false, out string? solution_buf = null) throws Error
+    {
+        Subprocess subprocess;
+        string[] argv = {"gnome-calculator", "--solve"};
+        argv += equation;
+        argv += null;
+
+        debug (@"Trying to solve $(equation)");
+
+        try
+        {
+            // Eat output so that it doesn't wind up in the journal. It's
+            // expected that most searches are not valid calculator input.
+            var flags = SubprocessFlags.STDERR_PIPE;
+
+            if (return_solution)
+            {
+                flags |= SubprocessFlags.STDOUT_PIPE;
+            }
+
+            subprocess = new Subprocess.newv (argv, flags);
+        }
+        catch (Error e)
+        {
+            error ("Failed to spawn Calculator: %s", e.message);
+        }
+
+        try
+        {
+            string stderr_buf;
+
+            cancellable = new Cancellable ();
+            cancellable.cancelled.connect (() => {
+                subprocess.force_exit ();
+                cancellable = null;
+            });
+
+            yield subprocess.communicate_utf8_async (null, cancellable, out solution_buf, out stderr_buf);
+        }
+        catch (Error e)
+        {
+            if (e is IOError.CANCELLED)
+            {
+                throw e;
+            }
+            else
+            {
+                error ("Failed reading result: %s", e.message);
+            }
+        }
+
+        return subprocess;
+    }
+
+    private async bool can_parse (string[] terms)
     {
         try
         {
-            int exit_status;
-
             var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
             if (tsep_string == null || tsep_string == "")
                 tsep_string = " ";
@@ -39,14 +108,8 @@ public class SearchProvider : Object
                 return false;
             }
 
-            // Eat output so that it doesn't wind up in the journal. It's
-            // expected that most searches are not valid calculator input.
-            string stdout_buf;
-            string stderr_buf;
-            Process.spawn_command_line_sync (
-                "gnome-calculator --solve " + Shell.quote (equation),
-                out stdout_buf, out stderr_buf, out exit_status);
-            Process.check_exit_status (exit_status);
+            var subprocess = yield solve_subprocess (equation);
+            yield subprocess.wait_check_async ();
         }
         catch (SpawnError e)
         {
@@ -60,54 +123,37 @@ public class SearchProvider : Object
         return true;
     }
 
-    private static string[] get_result_identifier (string[] terms)
-        ensures (result.length == 0 || result.length == 1)
+    private async string[] get_result_identifier (string[] terms)
     {
         /* We have at most one result: the search terms as one string */
-        if (can_parse (terms))
+        if (yield can_parse (terms))
             return { terms_to_equation (terms) };
         else
             return new string[0];
     }
 
-    public string[] get_initial_result_set (string[] terms)
+    public async string[] get_initial_result_set (string[] terms)
     {
-        return get_result_identifier (terms);
+        return yield get_result_identifier (terms);
     }
 
-    public string[] get_subsearch_result_set (string[] previous_results, string[] terms)
+    public async string[] get_subsearch_result_set (string[] previous_results, string[] terms)
     {
-        return get_result_identifier (terms);
+        return yield get_result_identifier (terms);
     }
 
-    public HashTable<string, Variant>[] get_result_metas (string[] results)
+    public async HashTable<string, Variant>[] get_result_metas (string[] results, GLib.BusName sender)
         requires (results.length == 1)
-        ensures (result.length == 1)
     {
-        Subprocess subprocess;
         string stdout_buf;
-        string stderr_buf;
-
-        string[] argv = {"gnome-calculator", "--solve"};
-        argv += results[0];
-        argv += null;
 
         try
         {
-            subprocess = new Subprocess.newv (argv, SubprocessFlags.STDOUT_PIPE | SubprocessFlags.STDERR_PIPE);
+            yield solve_subprocess (results[0], true, out stdout_buf);
         }
         catch (Error e)
         {
-            error ("Failed to spawn Calculator: %s", e.message);
-        }
-
-        try
-        {
-            subprocess.communicate_utf8 (null, null, out stdout_buf, out stderr_buf);
-        }
-        catch (Error e)
-        {
-            error ("Failed reading result: %s", e.message);
+            return new HashTable<string, Variant>[0];
         }
 
         var metadata = new HashTable<string, Variant>[1];
@@ -155,15 +201,21 @@ public class SearchProviderApp : Application
 
     public override bool dbus_register (DBusConnection connection, string object_path)
     {
+        SearchProvider search_provider = new SearchProvider ();
+
         try
         {
-            connection.register_object (object_path, new SearchProvider ());
+            connection.register_object (object_path, search_provider);
         }
         catch (IOError error)
         {
             stderr.printf ("Could not register service: %s\n", error.message);
             quit ();
         }
+
+        shutdown.connect (() => {
+            search_provider.cancel ();
+        });
 
         return true;
     }
