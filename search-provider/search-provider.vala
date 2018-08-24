@@ -39,7 +39,7 @@ public class SearchProvider : Object
         return string.joinv (" ", terms);
     }
 
-    private async Subprocess solve_subprocess (string equation, bool return_solution = false, out string? solution_buf = null) throws Error
+    private async Subprocess solve_subprocess (string equation) throws Error
     {
         Subprocess subprocess;
         string[] argv = {"gnome-calculator", "--solve"};
@@ -52,13 +52,7 @@ public class SearchProvider : Object
         {
             // Eat output so that it doesn't wind up in the journal. It's
             // expected that most searches are not valid calculator input.
-            var flags = SubprocessFlags.STDERR_PIPE;
-
-            if (return_solution)
-            {
-                flags |= SubprocessFlags.STDOUT_PIPE;
-            }
-
+            var flags = SubprocessFlags.STDOUT_PIPE | SubprocessFlags.STDERR_PIPE;
             subprocess = new Subprocess.newv (argv, flags);
         }
         catch (Error e)
@@ -66,31 +60,13 @@ public class SearchProvider : Object
             error ("Failed to spawn Calculator: %s", e.message);
         }
 
-        try
-        {
-            string stderr_buf;
+        cancellable = new Cancellable ();
+        cancellable.cancelled.connect (() => {
+            subprocess.force_exit ();
+            cancellable = null;
+        });
 
-            cancellable = new Cancellable ();
-            cancellable.cancelled.connect (() => {
-                subprocess.force_exit ();
-                cancellable = null;
-            });
-
-            application.renew_inactivity_timeout ();
-
-            yield subprocess.communicate_utf8_async (null, cancellable, out solution_buf, out stderr_buf);
-        }
-        catch (Error e)
-        {
-            if (e is IOError.CANCELLED)
-            {
-                throw e;
-            }
-            else
-            {
-                error ("Failed reading result: %s", e.message);
-            }
-        }
+        application.renew_inactivity_timeout ();
 
         return subprocess;
     }
@@ -115,8 +91,7 @@ public class SearchProvider : Object
                 return false;
             }
 
-            var subprocess = yield solve_subprocess (equation);
-            yield subprocess.wait_check_async ();
+            yield (yield solve_subprocess (equation)).wait_check_async (cancellable);
         }
         catch (SpawnError e)
         {
@@ -153,10 +128,12 @@ public class SearchProvider : Object
         requires (results.length == 1)
     {
         string stdout_buf;
+        string stderr_buf;
 
         try
         {
-            yield solve_subprocess (results[0], true, out stdout_buf);
+            var subprocess = yield solve_subprocess (results[0]);
+            yield subprocess.communicate_utf8_async (null, cancellable, out stdout_buf, out stderr_buf);
         }
         catch (Error e)
         {
@@ -167,7 +144,7 @@ public class SearchProvider : Object
         metadata[0] = new HashTable<string, Variant>(str_hash, str_equal);
         metadata[0].insert ("id", results[0]);
         metadata[0].insert ("name", results[0] );
-        metadata[0].insert ("description", " = " + stdout_buf.strip() );
+        metadata[0].insert ("description", " = " + stdout_buf.strip ());
 
         return metadata;
     }
