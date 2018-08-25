@@ -70,25 +70,7 @@ public int super_atoi (string data)
 
 public string mp_error_code_to_string (ErrorCode error_code)
 {
-    switch (error_code)
-    {
-    case ErrorCode.NONE:
-        return "ErrorCode.NONE";
-    case ErrorCode.INVALID:
-        return "ErrorCode.INVALID";
-    case ErrorCode.OVERFLOW:
-        return "ErrorCode.OVERFLOW";
-    case ErrorCode.UNKNOWN_VARIABLE:
-        return "ErrorCode.UNKNOWN_VARIABLE";
-    case ErrorCode.UNKNOWN_FUNCTION:
-        return "ErrorCode.UNKNOWN_FUNCTION";
-    case ErrorCode.UNKNOWN_CONVERSION:
-        return "ErrorCode.UNKNOWN_CONVERSION";
-    case ErrorCode.MP:
-        return "ErrorCode.MP";
-    default:
-        return "Unknown parser error";
-    }
+    return @"$error_code".replace("ERROR_CODE_", "ErrorCode.");
 }
 
 public enum ErrorCode
