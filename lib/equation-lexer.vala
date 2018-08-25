@@ -246,7 +246,7 @@ public class LexerToken : Object
     public string text;                /* Copy of token string. */
     public uint start_index;           /* Start index in original stream. */
     public uint end_index;             /* End index in original stream. */
-    public LexerTokenType type;  /* Type of token. */
+    public LexerTokenType type;        /* Type of token. */
 }
 
 /* Structure to hold lexer state and all the tokens. */
@@ -316,6 +316,12 @@ public class Lexer : Object
 
         name = prelexer.get_marked_substring ();
         return parser.unit_is_defined (name);
+    }
+
+    private bool check_if_literal_base ()
+    {
+        var name = prelexer.get_marked_substring ();
+        return parser.literal_base_is_defined (name.down ());
     }
 
     private bool check_if_number ()
@@ -498,6 +504,8 @@ public class Lexer : Object
         }
         else if (type == LexerTokenType.PL_DECIMAL)
             return insert_decimal ();
+        else if (check_if_literal_base ())
+            return insert_hex ();
         else if (type == LexerTokenType.PL_HEX)
             return insert_hex_dec ();
         else

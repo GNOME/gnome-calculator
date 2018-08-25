@@ -151,6 +151,11 @@ public class Equation : Object
         return false;
     }
 
+    public virtual bool literal_base_is_defined (string name)
+    {
+        return false;
+    }
+
     public virtual void set_variable (string name, Number x)
     {
     }
@@ -237,5 +242,13 @@ private class EquationParser : Parser
     protected override Number? convert (Number x, string x_units, string z_units)
     {
         return equation.convert (x, x_units, z_units);
+    }
+
+    protected override bool literal_base_is_defined (string name)
+    {
+        if (name == "0x" || name == "0b" || name == "0o")
+            return true;
+
+        return equation.literal_base_is_defined (name);
     }
 }
