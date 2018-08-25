@@ -1105,6 +1105,40 @@ public class Number : Object
     }
 }
 
+private static int parse_literal_prefix (string str, ref int prefix_len)
+{
+    var new_base = 0;
+
+    if (str.length < 3 || str[0] != '0')
+        return new_base;
+
+    var prefix = str[1].tolower ();
+
+    if (prefix == 'b')
+        new_base = 2;
+    else if (prefix == 'o')
+        new_base = 8;
+    else if (prefix == 'x')
+        new_base = 16;
+
+    if (new_base != 0)
+        prefix_len = 2;
+
+    if (prefix.isdigit ())
+    {
+        unichar c;
+        bool all_digits = true;
+
+        for (int i = 1; str.get_next_char (ref i, out c) && all_digits;)
+            all_digits = c.isdigit ();
+
+        if (all_digits)
+            new_base = 8;
+    }
+
+    return new_base;
+}
+
 // FIXME: Should all be in the class
 
 // FIXME: Re-add overflow and underflow detection
@@ -1118,10 +1152,12 @@ public Number? mp_set_from_string (string str, int default_base = 10)
     /* Find the base */
     const unichar base_digits[] = {'₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'};
     var index = 0;
+    var base_prefix = 0;
     unichar c;
     while (str.get_next_char (ref index, out c));
     var end = index;
     var number_base = 0;
+    var literal_base = 0;
     var base_multiplier = 1;
     while (str.get_prev_char (ref index, out c))
     {
@@ -1141,12 +1177,18 @@ public Number? mp_set_from_string (string str, int default_base = 10)
         number_base += value * base_multiplier;
         base_multiplier *= 10;
     }
-    if (base_multiplier == 1)
-        number_base = default_base;
+
+    literal_base = parse_literal_prefix (str, ref base_prefix);
+
+    if (number_base != 0 && literal_base != 0 && literal_base != number_base)
+        return null;
+
+    if (number_base == 0)
+        number_base = (literal_base != 0) ? literal_base : default_base;
 
     /* Check if this has a sign */
     var negate = false;
-    index = 0;
+    index = base_prefix;
     str.get_next_char (ref index, out c);
     if (c == '+')
         negate = false;
