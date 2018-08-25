@@ -226,6 +226,50 @@ private void test_equations ()
     test ("e₂", "", ErrorCode.UNKNOWN_VARIABLE); test ("e₈", "", ErrorCode.UNKNOWN_VARIABLE); /* e is a built-in variable */              test ("e₁₆", "14", 0);
     test ("f₂", "", ErrorCode.UNKNOWN_VARIABLE); test ("f₈", "", ErrorCode.UNKNOWN_VARIABLE); test ("f", "", ErrorCode.INVALID); test ("f₁₆", "15", 0);
 
+    test ("0b0", "0", 0); test ("0B0", "0", 0); test ("0o0", "0", 0); test ("0O0", "0", 0); test ("000", "0", 0); test ("0", "0", 0); test ("0x0", "0", 0); test ("0X0", "0", 0);
+    test ("0b1", "1", 0); test ("0B1", "1", 0); test ("0o1", "1", 0); test ("0O1", "1", 0); test ("001", "1", 0); test ("1", "1", 0); test ("0x1", "1", 0); test ("0X1", "1", 0);
+    test ("0b2", "", ErrorCode.MP); test ("0B2", "", ErrorCode.MP); test ("0o2", "2", 0); test ("0O2", "2", 0); test ("002", "2", 0); test ("2", "2", 0); test ("0x2", "2", 0); test ("0X2", "2", 0);
+    test ("0b3", "", ErrorCode.MP); test ("0B3", "", ErrorCode.MP); test ("0o3", "3", 0); test ("0O3", "3", 0); test ("003", "3", 0); test ("3", "3", 0); test ("0x3", "3", 0); test ("0X3", "3", 0);
+    test ("0b4", "", ErrorCode.MP); test ("0B4", "", ErrorCode.MP); test ("0o4", "4", 0); test ("0O4", "4", 0); test ("004", "4", 0); test ("4", "4", 0); test ("0x4", "4", 0); test ("0X4", "4", 0);
+    test ("0b5", "", ErrorCode.MP); test ("0B5", "", ErrorCode.MP); test ("0o5", "5", 0); test ("0O5", "5", 0); test ("005", "5", 0); test ("5", "5", 0); test ("0x5", "5", 0); test ("0X5", "5", 0);
+    test ("0b6", "", ErrorCode.MP); test ("0B6", "", ErrorCode.MP); test ("0o6", "6", 0); test ("0O6", "6", 0); test ("006", "6", 0); test ("6", "6", 0); test ("0x6", "6", 0); test ("0X6", "6", 0);
+    test ("0b7", "", ErrorCode.MP); test ("0B7", "", ErrorCode.MP); test ("0o7", "7", 0); test ("0O7", "7", 0); test ("007", "7", 0); test ("7", "7", 0); test ("0x7", "7", 0); test ("0X7", "7", 0);
+    test ("0b8", "", ErrorCode.MP); test ("0B8", "", ErrorCode.MP); test ("0o8", "", ErrorCode.UNKNOWN_VARIABLE); test ("0O8", "", ErrorCode.UNKNOWN_VARIABLE); test ("008", "", ErrorCode.INVALID); test ("8", "8", 0); test ("0x8", "8", 0); test ("0X8", "8", 0);
+    test ("0b9", "", ErrorCode.MP); test ("0B9", "", ErrorCode.MP); test ("0o9", "", ErrorCode.UNKNOWN_VARIABLE); test ("0O9", "", ErrorCode.UNKNOWN_VARIABLE); test ("009", "", ErrorCode.INVALID); test ("9", "9", 0); test ("0x9", "9", 0); test ("0X9", "9", 0);
+    //  //  /* Note : "B", "b", "C", "c", "F", "f" are units, and hence have different error code. */
+    test ("0bA", "", ErrorCode.UNKNOWN_VARIABLE); test ("0BA", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oA", "", ErrorCode.UNKNOWN_VARIABLE); test ("0OA", "", ErrorCode.UNKNOWN_VARIABLE); test ("00A", "", ErrorCode.UNKNOWN_VARIABLE); test ("A", "", ErrorCode.UNKNOWN_VARIABLE); test ("0xA", "10", 0); test ("0XA", "10", 0);
+    test ("0bB", "", ErrorCode.UNKNOWN_VARIABLE); test ("0BB", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oB", "", ErrorCode.UNKNOWN_VARIABLE); test ("0OB", "", ErrorCode.UNKNOWN_VARIABLE); test ("00B", "", ErrorCode.INVALID); test ("B", "", ErrorCode.INVALID); test ("0xB", "11", 0); test ("0XB", "11", 0);
+    test ("0bC", "", ErrorCode.UNKNOWN_VARIABLE); test ("0BC", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oC", "", ErrorCode.UNKNOWN_VARIABLE); test ("0OC", "", ErrorCode.UNKNOWN_VARIABLE); test ("00C", "", ErrorCode.INVALID); test ("C", "", ErrorCode.INVALID); test ("0xC", "12", 0); test ("0XC", "12", 0);
+    test ("0bD", "", ErrorCode.UNKNOWN_VARIABLE); test ("0BD", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oD", "", ErrorCode.UNKNOWN_VARIABLE); test ("0OD", "", ErrorCode.UNKNOWN_VARIABLE); test ("00D", "", ErrorCode.UNKNOWN_VARIABLE); test ("D", "", ErrorCode.UNKNOWN_VARIABLE); test ("0xD", "13", 0); test ("0XD", "13", 0);
+    test ("0bE", "", ErrorCode.UNKNOWN_VARIABLE); test ("0BE", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oE", "", ErrorCode.UNKNOWN_VARIABLE); test ("0OE", "", ErrorCode.UNKNOWN_VARIABLE); test ("00E", "", ErrorCode.UNKNOWN_VARIABLE); test ("E", "", ErrorCode.UNKNOWN_VARIABLE); test ("0xE", "14", 0); test ("0XE", "14", 0);
+    test ("0bF", "", ErrorCode.UNKNOWN_VARIABLE); test ("0BF", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oF", "", ErrorCode.UNKNOWN_VARIABLE); test ("0OF", "", ErrorCode.UNKNOWN_VARIABLE); test ("00F", "", ErrorCode.INVALID); test ("F", "", ErrorCode.INVALID); test ("0xF", "15", 0); test ("0XF", "15", 0);
+    test ("0ba", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Ba", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oa", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Oa", "", ErrorCode.UNKNOWN_VARIABLE); test ("00a", "", ErrorCode.UNKNOWN_VARIABLE); test ("a", "", ErrorCode.UNKNOWN_VARIABLE); test ("0xa", "10", 0); test ("0Xa", "10", 0);
+    test ("0bb", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Bb", "", ErrorCode.UNKNOWN_VARIABLE); test ("0ob", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Ob", "", ErrorCode.UNKNOWN_VARIABLE); test ("00b", "", ErrorCode.INVALID); test ("b", "", ErrorCode.INVALID); test ("0xb", "11", 0); test ("0Xb", "11", 0);
+    test ("0bc", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Bc", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oc", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Oc", "", ErrorCode.UNKNOWN_VARIABLE); test ("00c", "", ErrorCode.INVALID); test ("c", "", ErrorCode.INVALID); test ("0xc", "12", 0); test ("0Xc", "12", 0);
+    test ("0bd", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Bd", "", ErrorCode.UNKNOWN_VARIABLE); test ("0od", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Od", "", ErrorCode.UNKNOWN_VARIABLE); test ("00d", "", ErrorCode.UNKNOWN_VARIABLE); test ("d", "", ErrorCode.UNKNOWN_VARIABLE); test ("0xd", "13", 0); test ("0Xd", "13", 0);
+    test ("0be", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Be", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oe", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Oe", "", ErrorCode.UNKNOWN_VARIABLE); test ("00e", "0", 0); /* e is a built-in variable */              test ("0xe", "14", 0); test ("0Xe", "14", 0);
+    test ("0bf", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Bf", "", ErrorCode.UNKNOWN_VARIABLE); test ("0of", "", ErrorCode.UNKNOWN_VARIABLE); test ("0Of", "", ErrorCode.UNKNOWN_VARIABLE); test ("f", "", ErrorCode.INVALID); test ("0xf", "15", 0); test ("0Xf", "15", 0);
+
+    test ("0b0b01", "", ErrorCode.MP);
+    test ("0B0b01", "", ErrorCode.MP);
+    test ("0b0B01", "", ErrorCode.MP);
+    test ("0B0B01", "", ErrorCode.MP);
+
+    test ("0x0x01", "", ErrorCode.INVALID);
+    test ("0X0x01", "", ErrorCode.INVALID);
+    test ("0x0X01", "", ErrorCode.UNKNOWN_VARIABLE);
+    test ("0X0X01", "", ErrorCode.UNKNOWN_VARIABLE);
+
+    test ("0o0o01", "", ErrorCode.UNKNOWN_VARIABLE);
+    test ("0O0o01", "", ErrorCode.UNKNOWN_VARIABLE);
+    test ("0o0O01", "", ErrorCode.UNKNOWN_VARIABLE);
+    test ("0O0O01", "", ErrorCode.UNKNOWN_VARIABLE);
+
+    test ("0b1₂", "1", 0); test ("0o2₈", "2", 0); test ("0x8₁₆", "8", 0);
+    test ("001₂", "1", 0); test ("002₈", "2", 0); test ("008₁₆", "8", 0);
+    test ("0x1₂", "", ErrorCode.INVALID); test ("0b1₈", "", ErrorCode.INVALID); test ("0o1₁₆", "", ErrorCode.INVALID);
+    test ("0o1₂", "", ErrorCode.INVALID); test ("0x1₈", "", ErrorCode.INVALID); test ("0b1₁₆", "", ErrorCode.INVALID);
+
     test ("+1", "1", 0);
     test ("−1", "−1", 0);
     test ("+ 1", "1", 0); // FIXME: Should this be allowed?
@@ -655,6 +699,16 @@ private void test_base_conversion ()
     test ("x in oct", "2₈", 0);
     test ("x in dec", "2", 0);
     test ("x in hex", "2₁₆", 0);
+
+    test ("012 in dec", "10", 0);
+    test ("0b1010 in dec", "10", 0);
+    test ("0B1010 in dec", "10", 0);
+    test ("0o012 in dec", "10", 0);
+    test ("0O012 in dec", "10", 0);
+    test ("0XA in dec", "10", 0);
+    test ("0Xa in dec", "10", 0);
+    test ("0xA in dec", "10", 0);
+    test ("0xa in dec", "10", 0);
 }
 
 private void test_precedence ()
