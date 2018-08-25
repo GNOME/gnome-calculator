@@ -1078,6 +1078,11 @@ public class Parser
         return false;
     }
 
+    public virtual bool literal_base_is_defined (string name)
+    {
+        return false;
+    }
+
     public virtual Number? convert (Number x, string x_units, string z_units)
     {
         return null;

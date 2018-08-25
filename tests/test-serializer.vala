@@ -25,7 +25,7 @@ private void fail (string text)
     fail_count++;
 }
 
-private void test_number (Serializer s, string number, int base_value, int representation_base, string expected_string)
+private void test_number (Serializer s, string number, int base_value, int representation_base, string? expected_string)
 {
     var n = mp_set_from_string (number, base_value);
     s.set_base (base_value);
@@ -132,6 +132,21 @@ private void test_base_conversion (Serializer s)
     test_number (s, "10", 10, 16, "A₁₆");
     test_number (s, "1234567890123456789012345678901234567890", 10, 16, "3A0C92075C0DBF3B8ACBC5F96CE3F0AD2₁₆");
 
+    test_number (s, "0b1010", 10, 10, "10");
+    test_number (s, "0B1010", 10, 10, "10");
+    test_number (s, "012", 10, 10, "10");
+    test_number (s, "0o012", 10, 10, "10");
+    test_number (s, "0O012", 10, 10, "10");
+    test_number (s, "0xA", 10, 10, "10");
+    test_number (s, "0XA", 10, 10, "10");
+
+    test_number (s, "0b10103", 10, 10, null);
+    test_number (s, "0B10103", 10, 10, null);
+    test_number (s, "0128", 10, 10, null);
+    test_number (s, "0o0128", 10, 10, null);
+    test_number (s, "0O0128", 10, 10, null);
+    test_number (s, "0xAH", 10, 10, null);
+    test_number (s, "0XAH", 10, 10, null);
 }
 
 static int main (string[] args)
