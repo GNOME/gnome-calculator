@@ -9,11 +9,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator gnome-3-20\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 12:08+0000\n"
-"PO-Revision-Date: 2018-01-31 13:41+0700\n"
-"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-07-10 07:31+0000\n"
+"PO-Revision-Date: 2018-07-14 22:47+0700\n"
+"Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -745,8 +745,8 @@ msgid "The GNOME Project"
 msgstr "Projek GNOME"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Kalkulator"
 
@@ -785,27 +785,48 @@ msgstr "Nama variabel"
 msgid "Store value into existing or new variable"
 msgstr "Simpan nilai ke variabel yang ada atau baru"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Mode Dasar"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Mode Tingkat Lanjut"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Mode Keuangan"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Mode Pemrograman"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Mode Papan Tik"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Jendela Baru"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Preferensi"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "Pintasan Papan Ti_k"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Bantuan"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Tentang"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menu"
 
@@ -928,31 +949,6 @@ msgstr "Berallih ke desimal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Berallih ke heksadesimal"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Jendela Baru"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Preferensi"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "Pintasan Papan Ti_k"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Bantuan"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Tentang"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Keluar"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1279,8 +1275,8 @@ msgid "Tunisian Dinar"
 msgstr "Dinar Tunisia"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Lira Turki Baru"
+msgid "Turkish Lira"
+msgstr "Lira Turki"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1481,7 +1477,7 @@ msgstr "Boolean NOT hanya untuk bilangan integer positif"
 msgid "Shift is only possible on integer values"
 msgstr "Penggeseran hanya untuk bilangan integer"
 
-#: lib/serializer.vala:332
+#: lib/serializer.vala:342
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Overflow: hasilnya tidak bisa dihitung"
 
@@ -1502,7 +1498,7 @@ msgid "Volume"
 msgstr "Volume"
 
 #: lib/unit.vala:33
-msgid "Weight"
+msgid "Mass"
 msgstr "Massa"
 
 #: lib/unit.vala:34
@@ -2793,26 +2789,26 @@ msgid "Show release version"
 msgstr "Tampilkan versi rilis"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Tidak dapat membuka berkas bantuan"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Ahmad Riza H Nst <rizahnst@gnome.org>, 2003, 2005.\n"
 "Mohammad DAMT <mdamt@bisnisweb.com>, 2005.\n"
 "Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2011, 2012.\n"
 "Andika Triwidada <andika@gmail.com>, 2011, 2012, 2013, 2014.\n"
-"Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017, 2018."
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018."
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Tentang Kalkulator"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulator dengan model keuangan dan ilmuwan"
 
@@ -2892,9 +2888,15 @@ msgstr "32 bit"
 msgid "64 bits"
 msgstr "64 bit"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Keluar"
+
+#~ msgid "Quit"
+#~ msgstr "Keluar"
+
+#~ msgid "Weight"
+#~ msgstr "Massa"
 
 #~ msgid "accessories-calculator"
 #~ msgstr "accessories-calculator"
