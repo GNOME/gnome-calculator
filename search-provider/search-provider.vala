@@ -14,10 +14,13 @@
 public class SearchProvider : Object
 {
     private unowned SearchProviderApp application;
-    private Cancellable cancellable = new Cancellable ();
+    private Cancellable cancellable;
+
+    private HashTable<string, string> cached_equations;
     public SearchProvider (SearchProviderApp app)
     {
         application = app;
+        cached_equations = new HashTable<string, string> (str_hash, str_equal);
     }
 
     ~SearchProvider ()
@@ -29,9 +32,7 @@ public class SearchProvider : Object
     public void cancel ()
     {
         if (cancellable != null)
-        {
             cancellable.cancel ();
-        }
     }
 
     private static string terms_to_equation (string[] terms)
@@ -60,7 +61,9 @@ public class SearchProvider : Object
             error ("Failed to spawn Calculator: %s", e.message);
         }
 
-        cancellable = new Cancellable ();
+        if (cancellable == null)
+            cancellable = new Cancellable ();
+
         cancellable.cancelled.connect (() => {
             subprocess.force_exit ();
             cancellable = null;
@@ -71,29 +74,36 @@ public class SearchProvider : Object
         return subprocess;
     }
 
-    private async bool can_parse (string[] terms)
+    private async bool solve_equation (string equation)
     {
+        string? result;
+
+        cancel();
+
+        var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
+        if (tsep_string == null || tsep_string == "")
+        tsep_string = " ";
+
+        var decimal = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
+        if (decimal == null)
+        decimal = "";
+
+        // "normalize" input to a format known to double.try_parse
+        var normalized_equation = equation.replace (tsep_string, "").replace (decimal, ".");
+
+        // if the search is a plain number, don't process it
+        if (double.try_parse (normalized_equation)) {
+            return false;
+        }
+
+        if (cached_equations.lookup (equation) != null)
+            return true;
+
         try
         {
-            var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
-            if (tsep_string == null || tsep_string == "")
-                tsep_string = " ";
-
-            var decimal = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
-            if (decimal == null)
-                decimal = "";
-
-            // "normalize" input to a format known to double.try_parse
-            var equation = terms_to_equation (terms).replace (tsep_string, "").replace (decimal, ".");
-
-            cancel();
-
-            // if the search is a plain number, don't process it
-            if (double.try_parse (equation)) {
-                return false;
-            }
-
-            (yield solve_subprocess (equation)).wait_check (cancellable);
+            var subprocess = yield solve_subprocess (normalized_equation);
+            yield subprocess.communicate_utf8_async (null, cancellable, out result, null);
+            subprocess.wait_check (cancellable);
         }
         catch (SpawnError e)
         {
@@ -104,14 +114,17 @@ public class SearchProvider : Object
             return false;
         }
 
+        cached_equations.insert (equation, result.strip ());
+
         return true;
     }
 
     private async string[] get_result_identifier (string[] terms)
     {
         /* We have at most one result: the search terms as one string */
-        if (yield can_parse (terms))
-            return { terms_to_equation (terms) };
+        var equation = terms_to_equation (terms);
+        if (yield solve_equation (equation))
+            return { equation };
         else
             return new string[0];
     }
@@ -129,24 +142,22 @@ public class SearchProvider : Object
     public async HashTable<string, Variant>[] get_result_metas (string[] results, GLib.BusName sender)
         requires (results.length == 1)
     {
-        string stdout_buf;
-        string stderr_buf;
+        string equation;
+        string result;
 
-        try
-        {
-            var subprocess = yield solve_subprocess (results[0]);
-            yield subprocess.communicate_utf8_async (null, cancellable, out stdout_buf, out stderr_buf);
-        }
-        catch (Error e)
-        {
+        equation = terms_to_equation (results);
+
+        if (!yield solve_equation (equation))
             return new HashTable<string, Variant>[0];
-        }
+
+        result = cached_equations.lookup (equation);
+        assert (result != null);
 
         var metadata = new HashTable<string, Variant>[1];
         metadata[0] = new HashTable<string, Variant>(str_hash, str_equal);
         metadata[0].insert ("id", results[0]);
         metadata[0].insert ("name", results[0] );
-        metadata[0].insert ("description", " = " + stdout_buf.strip ());
+        metadata[0].insert ("description", @" = $result");
 
         return metadata;
     }
