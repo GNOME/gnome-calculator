@@ -16,10 +16,15 @@ public class SearchProvider : Object
     private unowned SearchProviderApp application;
     private Cancellable cancellable = new Cancellable ();
 
+    private const int MAX_CACHED_OPERATIONS = 10;
+    private Queue<string> queued_equations;
     private HashTable<string, string> cached_equations;
+
     public SearchProvider (SearchProviderApp app)
     {
         application = app;
+
+        queued_equations = new Queue<string>();
         cached_equations = new HashTable<string, string> (str_hash, str_equal);
     }
 
@@ -112,7 +117,11 @@ public class SearchProvider : Object
             return false;
         }
 
+        queued_equations.push_tail (equation);
         cached_equations.insert (equation, result.strip ());
+
+        if (queued_equations.length > MAX_CACHED_OPERATIONS)
+            cached_equations.remove (queued_equations.pop_head ());
 
         return true;
     }
