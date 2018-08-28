@@ -2,31 +2,30 @@
 #
 # This file is distributed under the same license as the gcalctool package.
 #
+#
 # Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>, 2003.
 # Tino Meinen <tino.meinen@gmail.com>, 2003–2006, 2008, 2009.
 # Wouter Bolsterlee <wbolster@gnome.org>, 2007, 2009, 2011, 2013.
 # Redmar <redmar@ubuntu-nl.org>, 2010.
-# Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2010–20, 2011.
+# Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2010–20, 2011, 2018.
 # Erwin Poeze <donnut@outlook.com>, 2013.
 # Reinout van Schouwen <reinouts@gnome.org>, 2013.
 # Nathan Follens <nthn@unseen.is>, 2015-2018.
 # Justin van Steijn <jvs@fsfe.org>, 2017.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-02-08 01:19+0000\n"
-"PO-Revision-Date: 2018-02-21 22:38+0100\n"
-"Last-Translator: Justin van Steijn <jvs@fsfe.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
+"POT-Creation-Date: 2018-07-24 22:53+0000\n"
+"PO-Revision-Date: 2018-08-28 09:17+0100\n"
+"Last-Translator: Hannie Dumoleyn <hannie@ubuntu-nl.org>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Lokalize 2.0\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
 msgid "Inverse [Ctrl+I]"
@@ -759,8 +758,8 @@ msgid "The GNOME Project"
 msgstr "Het Gnome-project"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Rekenmachine"
 
@@ -801,28 +800,49 @@ msgstr "Naam van variabele"
 msgid "Store value into existing or new variable"
 msgstr "Waarde opslaan in bestaande of nieuwe variabele"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Eenvoudige modus"
 
 # sneltoets is Ctrl + a en de _G wordt gebruikt voor geheugenregisters
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Geavanceerde modus"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Financiële modus"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Programmeermodus"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Toetsenbordmodus"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Nieuw venster"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Sneltoetsen"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Hulp"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Info"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menu"
 
@@ -946,31 +966,6 @@ msgstr "Omschakelen naar decimaal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Omschakelen naar hexadecimaal"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Nieuw venster"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Voorkeuren"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Sneltoetsen"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Hulp"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Info"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Afsluiten"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1298,8 +1293,9 @@ msgid "Tunisian Dinar"
 msgstr "Tunesische dinar"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Nieuw-Turkse lire"
+#| msgid "New Turkish Lira"
+msgid "Turkish Lira"
+msgstr "Turkse lira"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1524,8 +1520,8 @@ msgid "Volume"
 msgstr "Inhoud"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Gewicht"
+msgid "Mass"
+msgstr "Massa"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2815,12 +2811,12 @@ msgid "Show release version"
 msgstr "Uitgaveversie tonen"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Kon hulpbestand niet openen"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Wouter Bolsterlee\n"
@@ -2867,12 +2863,12 @@ msgstr ""
 "  koen noens https://launchpad.net/~knpa01\n"
 "  rob https://launchpad.net/~rvdb"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Info Rekenmachine"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Rekenmachine met financiële en wetenschappelijke standen."
 
@@ -2953,9 +2949,15 @@ msgstr "32-bits"
 msgid "64 bits"
 msgstr "64-bits"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Afsluiten"
+
+#~ msgid "Quit"
+#~ msgstr "Afsluiten"
+
+#~ msgid "Weight"
+#~ msgstr "Gewicht"
 
 #~ msgid "accessories-calculator"
 #~ msgstr "accessories-calculator"
