@@ -14,12 +14,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool-master-po-gl-72274_.merged\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 12:08+0000\n"
-"PO-Revision-Date: 2018-02-17 02:15+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
+"POT-Creation-Date: 2018-07-24 22:53+0000\n"
+"PO-Revision-Date: 2018-08-30 01:23+0200\n"
 "Last-Translator: Fran Dieguez <frandieguez@gnome.org>\n"
-"Language-Team: Galician\n"
+"Language-Team: Proxecto Trasno <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -614,7 +613,6 @@ msgid "Hexadecimal"
 msgstr "Hexadecimal"
 
 #: src/buttons-programming.ui:1298
-#| msgid "Natural Logarithm"
 msgid "Binary Logarithm"
 msgstr "Logaritmo binario"
 
@@ -754,8 +752,8 @@ msgid "The GNOME Project"
 msgstr "O proxecto GNOME"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -766,7 +764,6 @@ msgstr "calculo;aritmético;científico;financeiro;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Calculator.desktop.in:9
-#| msgid "Calculator"
 msgid "gnome-calculator"
 msgstr "gnome-calculator"
 
@@ -795,27 +792,48 @@ msgstr "Nome da variábel"
 msgid "Store value into existing or new variable"
 msgstr "Almacenar valor nunha variábel existente ou nova"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Modo básico"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Modo avanzado"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Modo financeiro"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Modo programación"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Modo teclado"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Nova xanela"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "Atallos de _teclado"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Axuda"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Sobre"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menú"
 
@@ -840,7 +858,6 @@ msgid "Open help"
 msgstr "Abrir axuda"
 
 #: src/math-shortcuts.ui:41
-#| msgid "No redo history"
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Limpar historial"
@@ -939,31 +956,6 @@ msgstr "Cambiar a decimal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Cambiar a hexadecimal"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Nova xanela"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Preferencias"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "Atallos de _teclado"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Axuda"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Sobre"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Saír"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1291,8 +1283,9 @@ msgid "Tunisian Dinar"
 msgstr "Dinar tunecino"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Lira de Nova Turquía"
+#| msgid "New Turkish Lira"
+msgid "Turkish Lira"
+msgstr "Lira de Turquía"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1496,8 +1489,7 @@ msgstr "O booleano NOT só está definido para os enteiros positivos"
 msgid "Shift is only possible on integer values"
 msgstr "O desprazamento só está dispoñíbel para os valores enteiros"
 
-#: lib/serializer.vala:332
-#| msgid "Overflow: the result couldn't be calculated"
+#: lib/serializer.vala:342
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Desbordamento: non foi posíbel calcular o resultado"
 
@@ -1518,8 +1510,8 @@ msgid "Volume"
 msgstr "Volume"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Peso"
+msgid "Mass"
+msgstr "Masa"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2092,8 +2084,6 @@ msgstr "Stone"
 
 #: lib/unit.vala:76
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s s"
 msgctxt "unit-format"
 msgid "%s st"
 msgstr "%s st"
@@ -2810,12 +2800,12 @@ msgid "Show release version"
 msgstr "Mostrar o número de versión"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Non é posíbel abrir o ficheiro da axuda"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Fran Diéguez <frandieguez@ubuntu.com>, 2009-2014.\n"
@@ -2825,12 +2815,12 @@ msgstr ""
 "org>, 2009.\n"
 "Ignacio Casal Quinteiro <icq@gnome.org>, 2004, 2005, 2006, 2007, 2008."
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Sobre Calculadora"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora con modo financeiro e científico."
 
@@ -2911,9 +2901,15 @@ msgstr "32 bits"
 msgid "64 bits"
 msgstr "64 bits"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Saír"
+
+#~ msgid "Quit"
+#~ msgstr "Saír"
+
+#~ msgid "Weight"
+#~ msgstr "Peso"
 
 #~ msgid "accessories-calculator"
 #~ msgstr "accessories-calculator"
