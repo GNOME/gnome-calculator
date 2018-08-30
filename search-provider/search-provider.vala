@@ -86,6 +86,8 @@ public class SearchProvider : Object
             // "normalize" input to a format known to double.try_parse
             var equation = terms_to_equation (terms).replace (tsep_string, "").replace (decimal, ".");
 
+            cancel();
+
             // if the search is a plain number, don't process it
             if (double.try_parse (equation)) {
                 return false;
