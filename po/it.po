@@ -8,23 +8,23 @@
 # Luca Ferretti <lferrett@gnome.org>, 2010.
 # Milo Casagrande <milo@milo.name>, 2012, 2017, 2018.
 # Claudio Arseni <claudio.arseni@ubuntu.com>, 2011, 2013, 2014, 2015.
-# Gianvito Cavasoli <gianvito@gmx.it>, 2016.
+# Gianvito Cavasoli <gianvito@gmx.it>, 2016, 2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcaltool\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 12:08+0000\n"
-"PO-Revision-Date: 2018-03-07 10:28+0100\n"
-"Last-Translator: Milo Casagrande <milo@milo.name>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-08-13 11:02+0000\n"
+"PO-Revision-Date: 2018-08-31 12:27+0200\n"
+"Last-Translator: Gianvito Cavasoli <gianvito@gmx.it>\n"
 "Language-Team: Italiano <gnome-it-list@gnome.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
 msgid "Inverse [Ctrl+I]"
@@ -756,8 +756,8 @@ msgid "The GNOME Project"
 msgstr "Il progetto GNOME"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Calcolatrice"
 
@@ -768,7 +768,6 @@ msgstr "calcolo;calcolatrice;aritmetica;scientifica;finanziaria;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Calculator.desktop.in:9
-#| msgid "Calculator"
 msgid "gnome-calculator"
 msgstr "gnome-calculator"
 
@@ -797,27 +796,48 @@ msgstr "Nome della variabile"
 msgid "Store value into existing or new variable"
 msgstr "Memorizza il valore in una variabile nuova o esistente"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Modalità base"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Modalità avanzata"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Modalità finanziaria"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Modalità programmazione"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Modalità tastiera"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Nuova finestra"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Preferenze"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Scorciatoie da tastiera"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Aiuto"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Informazioni"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menù"
 
@@ -940,31 +960,6 @@ msgstr "Passa al decimale"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Passa a esadecimale"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Nuova finestra"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Preferenze"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Scorciatoie da tastiera"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Aiuto"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Informazioni"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Esci"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1292,8 +1287,9 @@ msgid "Tunisian Dinar"
 msgstr "Dinar tunisino"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Nuova lira turca"
+#| msgid "New Turkish Lira"
+msgid "Turkish Lira"
+msgstr "Lira turca"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1496,7 +1492,7 @@ msgstr "Il NOT booleano è definito solo per gli interi positivi"
 msgid "Shift is only possible on integer values"
 msgstr "Lo shift è possibile solo su valori interi"
 
-#: lib/serializer.vala:332
+#: lib/serializer.vala:342
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Overflow: il risultato non può essere calcolato"
 
@@ -1517,8 +1513,8 @@ msgid "Volume"
 msgstr "Volume"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Peso"
+msgid "Mass"
+msgstr "Massa"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2807,12 +2803,12 @@ msgid "Show release version"
 msgstr "Mostra la versione del rilascio"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Impossibile aprire il file della guida"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Claudio Arseni <claudio.arseni@ubuntu.com>\n"
@@ -2822,12 +2818,12 @@ msgstr ""
 "Davide Falanga <davide.falanga@alice.it>\n"
 "Sergio Zanchetta <primes2h@ubuntu.com>"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Informazioni su Calcolatrice"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Calcolatrice con modalità finanziaria e scientifica."
 
@@ -2908,39 +2904,6 @@ msgstr "32 bit"
 msgid "64 bits"
 msgstr "64 bit"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Esci"
-
-#~ msgid "accessories-calculator"
-#~ msgstr "accessories-calculator"
-
-#~ msgid "Precision error"
-#~ msgstr "Errore di precisione"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "˚C"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "˚F"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "˚R,˚Ra"
-
-#~ msgid "Reciprocal of zero is undefined"
-#~ msgstr "Il reciproco di zero non è definito"
-
-#~ msgid "_%d place"
-#~ msgid_plural "_%d places"
-#~ msgstr[0] "_%d posto"
-#~ msgstr[1] "_%d posti"
-
-#~ msgid "Show %d decimal _places"
-#~ msgstr "Mostrare %d _posizioni decimali"
