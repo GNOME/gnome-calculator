@@ -4,13 +4,13 @@
 # Changwoo Ryu <cwryu@debian.org>, 2007-2008, 2015.
 #
 # 새로 번역하신 분은 아래 "translator-credits"에 추가하세요.
-# Seong-ho Cho <shcho@gnome.org>, 2016.
+# Seong-ho Cho <shcho@gnome.org>, 2016-2018.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool-help\n"
-"POT-Creation-Date: 2017-02-24 17:27+0000\n"
-"PO-Revision-Date: 2017-03-04 14:40+0900\n"
+"POT-Creation-Date: 2018-07-02 06:09+0000\n"
+"PO-Revision-Date: 2018-09-01 20:14+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -26,7 +26,7 @@ msgid "translator-credits"
 msgstr ""
 "Sun Microsystems, 2003.\n"
 "류창우 <cwryu@debian.org>, 2007, 2008, 2015.\n"
-"조성호 <shcho@gnome.org>, 2016, 2017."
+"조성호 <shcho@gnome.org>, 2016, 2017, 2018."
 
 #. (itstool) path: page/title
 #: C/absolute.page:9
@@ -164,8 +164,73 @@ msgstr "복소수"
 
 #. (itstool) path: page/p
 #: C/complex.page:11
-msgid "Complex numbers are not supported in <app>Calculator</app>."
-msgstr "복소수는 <app>계산기</app>에서 지원하지 않습니다."
+msgid ""
+"<app>Calculator</app> supports complex numbers, as well as the following "
+"functions while in <link xref=\"mouse\">Advanced mode</link>."
+msgstr ""
+"<app>계산기</app>는 <link xref=\"mouse\">고급 모드</link>에서 다음 함수로 복"
+"소수 기능을 지원합니다."
+
+#. (itstool) path: td/p
+#: C/complex.page:18
+#| msgid "e"
+msgid "Re"
+msgstr "Re"
+
+#. (itstool) path: td/p
+#: C/complex.page:19
+msgid "Returns the real part of a complex number. For example:"
+msgstr "복소수의 실수를 반환합니다. 예제:"
+
+#. (itstool) path: example/p
+#: C/complex.page:21
+msgid "Re (2-5i) = 2"
+msgstr "Re (2-5i) = 2"
+
+#. (itstool) path: td/p
+#: C/complex.page:29
+msgid "Im"
+msgstr "Im"
+
+#. (itstool) path: td/p
+#: C/complex.page:30
+msgid "Returns the imaginary part of a complex number. For example:"
+msgstr "복소수의 허수부를 반환합니다. 예제:"
+
+#. (itstool) path: example/p
+#: C/complex.page:32
+msgid "Im (2-5i) = -5"
+msgstr "Im (2-5i) = -5"
+
+#. (itstool) path: td/p
+#: C/complex.page:40
+msgid "conj"
+msgstr "conj"
+
+#. (itstool) path: td/p
+#: C/complex.page:41
+msgid "Returns the conjugate of a complex number. For example:"
+msgstr "켤레 복소수를 반환합니다. 예제:"
+
+#. (itstool) path: example/p
+#: C/complex.page:43
+msgid "conj (2-5i) = 2+5i"
+msgstr "conj (2-5i) = 2+5i"
+
+#. (itstool) path: td/p
+#: C/complex.page:51
+msgid "Arg"
+msgstr "Arg"
+
+#. (itstool) path: td/p
+#: C/complex.page:52
+msgid "Returns the argument of a complex number. For example:"
+msgstr "복소수의 편각 값을 반환합니다. 예제:"
+
+#. (itstool) path: example/p
+#: C/complex.page:54
+msgid "Arg (2-5i) = -68.1986"
+msgstr "Arg (2-5i) = -68.1986"
 
 #. (itstool) path: page/p
 #: C/conv-base.page:11
@@ -819,7 +884,6 @@ msgstr "반올림"
 
 #. (itstool) path: td/p
 #: C/functions.page:100
-#| msgid "sin"
 msgid "sgn"
 msgstr "sgn"
 
@@ -1629,8 +1693,10 @@ msgstr "다음은 항상 정의한 변수입니다."
 
 #. (itstool) path: td/p
 #: C/variables.page:40
-msgid "ans"
-msgstr "ans"
+#| msgctxt "sort"
+#| msgid "_"
+msgid "_"
+msgstr "_"
 
 #. (itstool) path: td/p
 #: C/variables.page:41
@@ -1661,3 +1727,9 @@ msgstr "rand"
 #: C/variables.page:53
 msgid "Random value in the range [0,1] (changes on each read)"
 msgstr "[0,1] 범위의 임의의 수(읽을 때마다 달라짐)"
+
+#~ msgid "Complex numbers are not supported in <app>Calculator</app>."
+#~ msgstr "복소수는 <app>계산기</app>에서 지원하지 않습니다."
+
+#~ msgid "ans"
+#~ msgstr "ans"
