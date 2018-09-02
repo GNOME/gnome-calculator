@@ -24,10 +24,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 12:08+0000\n"
-"PO-Revision-Date: 2018-03-06 22:29+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-07-24 22:53+0000\n"
+"PO-Revision-Date: 2018-08-30 21:54+0200\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -762,8 +762,8 @@ msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Lommeregner"
 
@@ -804,27 +804,48 @@ msgstr "Variabelnavn"
 msgid "Store value into existing or new variable"
 msgstr "Gem værdi i eksisterende eller ny variabel"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Basistilstand"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Avanceret tilstand"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Finansiel tilstand"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Programmeringstilstand"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Tastaturtilstand"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Nyt vindue"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Indstillinger"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastaturgenveje"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Hjælp"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "Om"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Menu"
 
@@ -947,31 +968,6 @@ msgstr "Skift til decimal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Skift til heksadecimal"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Nyt vindue"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Indstillinger"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Tastaturgenveje"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Hjælp"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "Om"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Afslut"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1297,8 +1293,8 @@ msgid "Tunisian Dinar"
 msgstr "Tunesiske dinarer"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Nye tyrkiske lira"
+msgid "Turkish Lira"
+msgstr "Tyrkiske lira"
 
 # vist Trinidad og Tobago
 #: lib/currency.vala:81
@@ -1500,7 +1496,7 @@ msgstr "Boolesk IKKE er kun defineret for naturlige tal"
 msgid "Shift is only possible on integer values"
 msgstr "Bitvis forskydning er kun mulig på heltalsværdier"
 
-#: lib/serializer.vala:332
+#: lib/serializer.vala:342
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Overløb: Resultatet kunne ikke beregnes"
 
@@ -1521,8 +1517,8 @@ msgid "Volume"
 msgstr "Rumfang"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Vægt"
+msgid "Mass"
+msgstr "Masse"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2818,12 +2814,12 @@ msgid "Show release version"
 msgstr "Vis udgivelsesversion"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Kan ikke åbne hjælpefil"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Ole Laursen\n"
@@ -2835,12 +2831,12 @@ msgstr ""
 "Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Om Lommeregner"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Lommeregner med finans- og videnskabelig tilstand."
 
@@ -2926,9 +2922,15 @@ msgstr "32 bit"
 msgid "64 bits"
 msgstr "64 bit"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Afslut"
+
+#~ msgid "Quit"
+#~ msgstr "Afslut"
+
+#~ msgid "Weight"
+#~ msgstr "Vægt"
 
 #~ msgid "accessories-calculator"
 #~ msgstr "accessories-calculator"
