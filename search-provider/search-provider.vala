@@ -63,7 +63,7 @@ public class SearchProvider : Object
         }
         catch (Error e)
         {
-            error ("Failed to spawn Calculator: %s", e.message);
+            throw e;
         }
 
         if (cancellable == null)
@@ -79,7 +79,7 @@ public class SearchProvider : Object
         return subprocess;
     }
 
-    private async bool solve_equation (string equation)
+    private async bool solve_equation (string equation) throws DBusError
     {
         string? result;
 
@@ -112,7 +112,8 @@ public class SearchProvider : Object
         }
         catch (SpawnError e)
         {
-            error ("Failed to spawn Calculator: %s", e.message);
+            critical ("Failed to spawn Calculator: %s", e.message);
+            throw new DBusError.SPAWN_FAILED (e.message);
         }
         catch (Error e)
         {
@@ -128,7 +129,7 @@ public class SearchProvider : Object
         return true;
     }
 
-    private async string[] get_result_identifier (string[] terms)
+    private async string[] get_result_identifier (string[] terms) throws Error
     {
         /* We have at most one result: the search terms as one string */
         var equation = terms_to_equation (terms);
@@ -138,17 +139,17 @@ public class SearchProvider : Object
             return new string[0];
     }
 
-    public async string[] get_initial_result_set (string[] terms)
+    public async string[] get_initial_result_set (string[] terms) throws Error
     {
         return yield get_result_identifier (terms);
     }
 
-    public async string[] get_subsearch_result_set (string[] previous_results, string[] terms)
+    public async string[] get_subsearch_result_set (string[] previous_results, string[] terms) throws Error
     {
         return yield get_result_identifier (terms);
     }
 
-    public async HashTable<string, Variant>[] get_result_metas (string[] results, GLib.BusName sender)
+    public async HashTable<string, Variant>[] get_result_metas (string[] results, GLib.BusName sender) throws Error
         requires (results.length == 1)
     {
         string equation;
@@ -171,7 +172,7 @@ public class SearchProvider : Object
         return metadata;
     }
 
-    private static void spawn_and_display_equation (string[] terms)
+    private static void spawn_and_display_equation (string[] terms) throws Error
     {
         try
         {
@@ -180,16 +181,17 @@ public class SearchProvider : Object
         }
         catch (SpawnError e)
         {
-            error ("Failed to spawn Calculator: %s", e.message);
+            critical ("Failed to spawn Calculator: %s", e.message);
+            throw new DBusError.SPAWN_FAILED (e.message);
         }
     }
 
-    public void activate_result (string result, string[] terms, uint32 timestamp)
+    public void activate_result (string result, string[] terms, uint32 timestamp) throws Error
     {
         spawn_and_display_equation (terms);
     }
 
-    public void launch_search (string[] terms, uint32 timestamp)
+    public void launch_search (string[] terms, uint32 timestamp) throws Error
     {
         spawn_and_display_equation (terms);
     }
