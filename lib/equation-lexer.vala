@@ -692,6 +692,7 @@ public class Lexer : Object
             return insert_token (LexerTokenType.XOR);
         if (name == "not")
             return insert_token (LexerTokenType.NOT);
+        // Translators: conversion keyword, used e.g. 1 EUR in USD
         if (name == _("in"))
             return insert_token (LexerTokenType.IN);
         if (check_if_function ())
