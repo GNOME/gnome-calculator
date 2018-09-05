@@ -692,7 +692,7 @@ public class Lexer : Object
             return insert_token (LexerTokenType.XOR);
         if (name == "not")
             return insert_token (LexerTokenType.NOT);
-        if (name == "in")
+        if (name == _("in"))
             return insert_token (LexerTokenType.IN);
         if (check_if_function ())
             return insert_token (LexerTokenType.FUNCTION);
