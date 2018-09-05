@@ -30,7 +30,7 @@ public class Calculator : Gtk.Application
 
     private const ActionEntry[] app_entries =
     {
-        { "newwindow", new_window_cb, null, null, null },
+        { "new-window", new_window_cb, null, null, null },
         { "preferences", show_preferences_cb, null, null, null },
         { "shortcuts", keyboard_shortcuts_cb, null, null, null },
         { "help", help_cb, null, null, null },
