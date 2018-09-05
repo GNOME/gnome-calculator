@@ -496,7 +496,7 @@ public class FunctionCompletionProvider : CompletionProvider
 {
     public override string get_name ()
     {
-        return "Defined Functions";
+        return _("Defined Functions");
     }
 
     public static MathFunction[] get_matches_for_completion_at_cursor (Gtk.TextBuffer text_buffer)
@@ -553,7 +553,7 @@ public class VariableCompletionProvider : CompletionProvider
 
     public override string get_name ()
     {
-        return "Defined Variables";
+        return _("Defined Variables");
     }
 
     public static string[] get_matches_for_completion_at_cursor (Gtk.TextBuffer text_buffer, MathVariables variables )
