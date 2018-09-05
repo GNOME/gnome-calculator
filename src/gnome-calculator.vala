@@ -340,7 +340,7 @@ public class Calculator : Gtk.Application
                                "authors", authors,
                                "documenters", documenters,
                                "translator_credits", translator_credits,
-                               "logo-icon-name", "accessories-calculator");
+                               "logo-icon-name", "org.gnome.Calculator");
     }
 
     private void quit_cb ()
@@ -390,7 +390,7 @@ public class Calculator : Gtk.Application
 
         program_name = Path.get_basename (args [0]);
 
-        Gtk.Window.set_default_icon_name ("accessories-calculator");
+        Gtk.Window.set_default_icon_name ("org.gnome.Calculator-symbolic");
 
         var app = new Calculator ();
 
