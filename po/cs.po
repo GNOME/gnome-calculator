@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2018-07-24 22:53+0000\n"
-"PO-Revision-Date: 2018-08-14 09:47+0200\n"
+"POT-Creation-Date: 2018-09-05 22:20+0000\n"
+"PO-Revision-Date: 2018-09-06 08:25+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -757,8 +757,8 @@ msgstr "kalkulace;výpočty;vědecká;finanční;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Calculator.desktop.in:9
-msgid "gnome-calculator"
-msgstr "gnome-calculator"
+msgid "org.gnome.Calculator"
+msgstr "org.gnome.Calculator"
 
 #: src/math-converter.ui:16
 msgid "Switch conversion units"
@@ -776,6 +776,10 @@ msgstr "="
 #: src/math-function-popover.ui:33
 msgid "New function"
 msgstr "Nová funkce"
+
+#: src/math-function-popover.ui:46
+msgid "Select no. of arguments"
+msgstr "Vybrat počet argumentů"
 
 #: src/math-variable-popover.ui:37
 msgid "Variable name"
@@ -1297,6 +1301,11 @@ msgstr "Venezuelský bolívar"
 #: lib/currency.vala:85
 msgid "South African Rand"
 msgstr "Jihoafrický rand"
+
+#. Translators: conversion keyword, used e.g. 1 EUR in USD
+#: lib/equation-lexer.vala:704
+msgid "in"
+msgstr "v"
 
 #: lib/equation-parser.vala:717 lib/number.vala:429
 msgid "The zeroth root of a number is undefined"
@@ -2833,6 +2842,14 @@ msgid_plural "%d places"
 msgstr[0] "%d místo"
 msgstr[1] "%d místa"
 msgstr[2] "%d míst"
+
+#: src/math-display.vala:499
+msgid "Defined Functions"
+msgstr "Definované funkce"
+
+#: src/math-display.vala:556
+msgid "Defined Variables"
+msgstr "Definované proměnné"
 
 #. Preferences dialog: Label for number format combo box
 #: src/math-preferences.vala:43
