@@ -10,10 +10,9 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2018-07-05 16:06+0000\n"
-"PO-Revision-Date: 2018-07-17 18:48+0300\n"
-"Last-Translator: Florentina Mușat <florentina.musat.28 [at] gmail [dot] "
-"com>\n"
+"POT-Creation-Date: 2018-09-05 22:51+0000\n"
+"PO-Revision-Date: 2018-09-08 22:20+0200\n"
+"Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.9\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
 msgid "Inverse [Ctrl+I]"
@@ -749,7 +748,7 @@ msgstr "Proiectul GNOME"
 
 #. Program name in the about dialog
 #: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:327
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Calculator"
 
@@ -782,6 +781,10 @@ msgstr "="
 msgid "New function"
 msgstr "Funcție nouă"
 
+#: src/math-function-popover.ui:46
+msgid "Select no. of arguments"
+msgstr "Selectați nr. de argumente"
+
 #: src/math-variable-popover.ui:37
 msgid "Variable name"
 msgstr "Nume variabilă"
@@ -790,23 +793,23 @@ msgstr "Nume variabilă"
 msgid "Store value into existing or new variable"
 msgstr "Stochează valoarea într-o variabilă existentă sau nouă"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Mod de bază"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Mod avansat"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Mod financiar"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Mod programare"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Mod tastatură"
 
@@ -2798,17 +2801,17 @@ msgid "Show release version"
 msgstr "Afișează versiunea de lansare"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:291
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Nu s-a putut deschide fișierul de ajutor"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:322
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Mișu Moldovan <dumol@gnome.ro>\n"
 "Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
-"Daniel Șerbănescu <cyber19rider@gmail.com>\n"
+"Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2010, 2018\n"
 "Florentina Mușat <florentina.musat.28 [at] gmail [dot] com>, 2018\n"
 "\n"
 "Launchpad Contributions:\n"
@@ -2819,12 +2822,12 @@ msgstr ""
 "  Mircea MITU https://launchpad.net/~mache\n"
 "  Mișu Moldovan https://launchpad.net/~dumol-gnome"
 
-#: src/gnome-calculator.vala:328
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "Despre calculator"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:336
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculator cu mod financiar și științific."
 
@@ -2835,6 +2838,14 @@ msgid_plural "%d places"
 msgstr[0] "o poziție"
 msgstr[1] "%d poziții"
 msgstr[2] "%d de poziții"
+
+#: src/math-display.vala:499
+msgid "Defined Functions"
+msgstr "Funcții definite"
+
+#: src/math-display.vala:556
+msgid "Defined Variables"
+msgstr "Variabile definite"
 
 #. Preferences dialog: Label for number format combo box
 #: src/math-preferences.vala:43
@@ -2906,7 +2917,7 @@ msgstr "32 de biți"
 msgid "64 bits"
 msgstr "64 de biți"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Ieșire"
 
@@ -3133,9 +3144,6 @@ msgstr "_Ieșire"
 
 #~ msgid "Trinidad and Tobago dollar"
 #~ msgstr "Dolar Trinidad și Tobago"
-
-#~ msgid "Assign Variable"
-#~ msgstr "Atribuie o variabilă"
 
 #~ msgid "Insert Variable"
 #~ msgstr "Introdu o variabilă"
@@ -3875,9 +3883,6 @@ msgstr "_Ieșire"
 
 #~ msgid "Truncate displayed value to the chosen word size ([)"
 #~ msgstr "Trunchiază valoarea afișată la lungimea de cuvânt selectată ([)"
-
-#~ msgid "User-defined functions [F]"
-#~ msgstr "Funcții definite de utilizator [F]"
 
 #~ msgid "XNOR"
 #~ msgstr "XNOR"
