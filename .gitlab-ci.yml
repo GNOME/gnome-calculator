@@ -12,7 +12,7 @@
 .build_template: &meson_build
   stage: build
   script:
-    - meson _build .
+    - meson _build . -Db_coverage=true
     - ninja -C _build install
   artifacts:
     paths:
@@ -23,6 +23,7 @@
   stage: test
   script:
     - ninja -C _build test
+    - ninja -C _build coverage-html
 
 build:fedora:
   <<: *fedora_before_script
