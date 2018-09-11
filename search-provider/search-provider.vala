@@ -20,6 +20,8 @@ public class SearchProvider : Object
     private Queue<string> queued_equations;
     private HashTable<string, string> cached_equations;
 
+    private const string COPY_TO_CLIPBOARD_ID = "copy-to-clipboard";
+
     public SearchProvider (SearchProviderApp app)
     {
         application = app;
@@ -134,7 +136,7 @@ public class SearchProvider : Object
         /* We have at most one result: the search terms as one string */
         var equation = terms_to_equation (terms);
         if (yield solve_equation (equation))
-            return { equation };
+            return { equation, COPY_TO_CLIPBOARD_ID };
         else
             return new string[0];
     }
@@ -150,12 +152,21 @@ public class SearchProvider : Object
     }
 
     public async HashTable<string, Variant>[] get_result_metas (string[] results, GLib.BusName sender) throws Error
-        requires (results.length == 1)
+        requires (results.length == 1 || results.length == 2)
     {
         string equation;
         string result;
+        uint32 equation_index;
 
-        equation = terms_to_equation (results);
+        if (results.length == 1 && results[0] == COPY_TO_CLIPBOARD_ID)
+            return new HashTable<string, Variant>[0];
+
+        if (results.length == 1 || results[1] == COPY_TO_CLIPBOARD_ID)
+            equation_index = 0;
+        else
+            equation_index = 1;
+
+        equation = results[equation_index];
 
         if (!yield solve_equation (equation))
             return new HashTable<string, Variant>[0];
@@ -163,11 +174,22 @@ public class SearchProvider : Object
         result = cached_equations.lookup (equation);
         assert (result != null);
 
-        var metadata = new HashTable<string, Variant>[1];
-        metadata[0] = new HashTable<string, Variant>(str_hash, str_equal);
-        metadata[0].insert ("id", results[0]);
-        metadata[0].insert ("name", results[0] );
-        metadata[0].insert ("description", @" = $result");
+        var metadata = new HashTable<string, Variant>[results.length];
+
+        metadata[equation_index] = new HashTable<string, Variant> (str_hash, str_equal);
+        metadata[equation_index].insert ("id", equation);
+        metadata[equation_index].insert ("name", equation);
+        metadata[equation_index].insert ("description", @" = $result");
+
+        if (results.length == 2)
+        {
+            uint32 copy_index = (equation_index + 1) % 2;
+            metadata[copy_index] = new HashTable<string, Variant> (str_hash, str_equal);
+            metadata[copy_index].insert ("id", COPY_TO_CLIPBOARD_ID);
+            metadata[copy_index].insert ("name", _("Copy"));
+            metadata[copy_index].insert ("icon", "edit-copy");
+            metadata[copy_index].insert ("description", _("Copy Result to clipboard"));
+        }
 
         return metadata;
     }
@@ -186,9 +208,22 @@ public class SearchProvider : Object
         }
     }
 
-    public void activate_result (string result, string[] terms, uint32 timestamp) throws Error
+    public async void activate_result (string result_id, string[] terms, uint32 timestamp) throws Error
     {
-        spawn_and_display_equation (terms);
+        if (result_id == COPY_TO_CLIPBOARD_ID)
+        {
+            string equation = terms_to_equation (terms);
+
+            if (yield solve_equation (equation))
+            {
+                var equation_result = cached_equations.lookup (equation);
+                Gtk.Clipboard.get (Gdk.Atom.NONE).set_text (equation_result, -1);
+            }
+        }
+        else
+        {
+            spawn_and_display_equation (terms);
+        }
     }
 
     public void launch_search (string[] terms, uint32 timestamp) throws Error
@@ -235,8 +270,9 @@ public class SearchProviderApp : Application
     }
 }
 
-int main ()
+int main (string[] args)
 {
+    Gtk.init(ref args);
     Intl.setlocale (LocaleCategory.ALL, "");
 
     return new SearchProviderApp ().run ();
