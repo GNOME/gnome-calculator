@@ -31,6 +31,15 @@ build:ubuntu:
   <<: *ubuntu_before_script
   <<: *meson_build
 
+build:snap:
+  stage: build
+  image: snapcore/snapcraft
+  before_script:
+    - apt-get install software-properties-common
+    - add-apt-repository -u ppa:ubuntu-desktop/gnome-3-26
+  script: snapcraft
+  allow_failure: true
+
 test:ubuntu:
   dependencies:
     - build:ubuntu
