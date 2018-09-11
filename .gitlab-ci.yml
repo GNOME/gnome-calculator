@@ -31,6 +31,10 @@ build:ubuntu:
   <<: *ubuntu_before_script
   <<: *meson_build
 
+build:snap:
+  image: snapcore/snapcraft
+  script: snapcraft
+
 test:ubuntu:
   dependencies:
     - build:ubuntu
