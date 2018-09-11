@@ -1,16 +1,33 @@
-build-ubuntu:
+.build_template: &meson_build
+  stage: build
+  script:
+    - meson _build .
+    - ninja -C _build install
+
+.test_template: &meson_test
+  stage: test
+  script:
+    - ninja -C _build test
+
+build:fedora:
+  image: fedora:latest
+  before_script:
+    - dnf install -y meson vala itstool gtk3-devel gtksourceview3-devel libmpc-devel mpfr-devel libsoup-devel libxml2-devel
+  <<: *meson_build
+
+build:ubuntu:
   image: ubuntu:rolling
   before_script:
     - apt-get update
     - apt-get install -q -y --no-install-recommends meson valac gcc gettext itstool libgtk-3-dev libgtksourceview-3.0-dev libmpc-dev libmpfr-dev libsoup2.4-dev libxml2-dev
-  script:
-    - meson _build
-    - ninja -C _build install
+  <<: *meson_build
 
-build-fedora:
-  image: fedora:latest
-  before_script:
-    - dnf install -y meson vala itstool gtk3-devel gtksourceview3-devel libmpc-devel mpfr-devel libsoup-devel libxml2-devel
-  script:
-    - meson _build
-    - ninja -C _build install
+test:ubuntu:
+  dependencies:
+    - build:ubuntu
+  <<: *meson_test
+
+test:fedora:
+  dependencies:
+    - build:fedora
+  <<: *meson_test
