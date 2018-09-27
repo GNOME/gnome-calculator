@@ -9,10 +9,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
-"Report-Msgid-Bugs-To: https://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
-"calculator&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2018-01-29 12:08+0000\n"
-"PO-Revision-Date: 2018-02-16 09:14+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2018-09-05 22:51+0000\n"
+"PO-Revision-Date: 2018-09-27 22:14+0200\n"
 "Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.6\n"
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
 msgid "Inverse [Ctrl+I]"
@@ -742,8 +742,8 @@ msgid "The GNOME Project"
 msgstr "Пројекат Гном"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:48
-#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:339
+#: data/org.gnome.Calculator.desktop.in:3 src/math-window.ui:80
+#: src/gnome-calculator.vala:81 src/gnome-calculator.vala:330
 msgid "Calculator"
 msgstr "Калкулатор"
 
@@ -774,6 +774,10 @@ msgstr "="
 msgid "New function"
 msgstr "Нова функција"
 
+#: src/math-function-popover.ui:46
+msgid "Select no. of arguments"
+msgstr "Изабери одређени број аргумената"
+
 #: src/math-variable-popover.ui:37
 msgid "Variable name"
 msgstr "Назив променљиве"
@@ -782,27 +786,48 @@ msgstr "Назив променљиве"
 msgid "Store value into existing or new variable"
 msgstr "Сачувајте вредност у постојећу или у нову променљиву"
 
-#: src/math-window.ui:20 src/math-window.vala:88
+#: src/math-window.ui:20 src/math-window.vala:92
 msgid "Basic Mode"
 msgstr "Основни начин рада"
 
-#: src/math-window.ui:25 src/math-window.vala:93
+#: src/math-window.ui:25 src/math-window.vala:97
 msgid "Advanced Mode"
 msgstr "Напредни начин рада"
 
-#: src/math-window.ui:30 src/math-window.vala:98
+#: src/math-window.ui:30 src/math-window.vala:102
 msgid "Financial Mode"
 msgstr "Финансијски начин рада"
 
-#: src/math-window.ui:35 src/math-window.vala:103
+#: src/math-window.ui:35 src/math-window.vala:107
 msgid "Programming Mode"
 msgstr "Програмерски начин рада"
 
-#: src/math-window.ui:40 src/math-window.vala:108
+#: src/math-window.ui:40 src/math-window.vala:112
 msgid "Keyboard Mode"
 msgstr "Режим тастатуре"
 
-#: src/math-window.ui:88
+#: src/math-window.ui:49
+msgid "New Window"
+msgstr "Нови прозор"
+
+#. Title of preferences dialog
+#: src/math-window.ui:56 src/math-preferences.vala:30
+msgid "Preferences"
+msgstr "Поставке"
+
+#: src/math-window.ui:63
+msgid "_Keyboard Shortcuts"
+msgstr "_Пречице тастатуре"
+
+#: src/math-window.ui:68
+msgid "Help"
+msgstr "Помоћ"
+
+#: src/math-window.ui:73
+msgid "About"
+msgstr "О програму"
+
+#: src/math-window.ui:120
 msgid "Menu"
 msgstr "Изборник"
 
@@ -925,31 +950,6 @@ msgstr "Децимални бројеви"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Хексадецимални бројеви"
-
-#: src/menu.ui:7
-msgid "New Window"
-msgstr "Нови прозор"
-
-#. Title of preferences dialog
-#: src/menu.ui:14 src/math-preferences.vala:30
-msgid "Preferences"
-msgstr "Поставке"
-
-#: src/menu.ui:21
-msgid "_Keyboard Shortcuts"
-msgstr "_Пречице тастатуре"
-
-#: src/menu.ui:26
-msgid "Help"
-msgstr "Помоћ"
-
-#: src/menu.ui:31
-msgid "About"
-msgstr "О програму"
-
-#: src/menu.ui:35
-msgid "Quit"
-msgstr "Изађи"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -1276,8 +1276,8 @@ msgid "Tunisian Dinar"
 msgstr "Тунижански динар"
 
 #: lib/currency.vala:80
-msgid "New Turkish Lira"
-msgstr "Нова турска лира"
+msgid "Turkish Lira"
+msgstr "Турска лира"
 
 #: lib/currency.vala:81
 msgid "T&T Dollar (TTD)"
@@ -1479,7 +1479,7 @@ msgstr "Логичко НЕ је дефинисано само за позити
 msgid "Shift is only possible on integer values"
 msgstr "Померање је могуће само за позитивне целе вредности"
 
-#: lib/serializer.vala:332
+#: lib/serializer.vala:342
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Прекорачење: резултат се не може израчунати"
 
@@ -1500,8 +1500,8 @@ msgid "Volume"
 msgstr "Запремина"
 
 #: lib/unit.vala:33
-msgid "Weight"
-msgstr "Тежина"
+msgid "Mass"
+msgstr "Маса"
 
 #: lib/unit.vala:34
 msgid "Duration"
@@ -2790,12 +2790,12 @@ msgid "Show release version"
 msgstr "Приказује издање програма"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:303
+#: src/gnome-calculator.vala:294
 msgid "Unable to open help file"
 msgstr "Не могу да отворим датотеку помоћи"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:325
 msgid "translator-credits"
 msgstr ""
 "Данило Шеган <danilo@prevod.org>\n"
@@ -2807,12 +2807,12 @@ msgstr ""
 "\n"
 "http://prevod.org — превод на српски језик"
 
-#: src/gnome-calculator.vala:340
+#: src/gnome-calculator.vala:331
 msgid "About Calculator"
 msgstr "О Калкулатору"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:339
 msgid "Calculator with financial and scientific modes."
 msgstr "Калкулатор са финансијским и научним начином рада."
 
@@ -2824,6 +2824,14 @@ msgstr[0] "%d место"
 msgstr[1] "%d места"
 msgstr[2] "%d места"
 msgstr[3] "%d место"
+
+#: src/math-display.vala:499
+msgid "Defined Functions"
+msgstr "Дефинисане функције"
+
+#: src/math-display.vala:556
+msgid "Defined Variables"
+msgstr "Дефинисане променљиве"
 
 #. Preferences dialog: Label for number format combo box
 #: src/math-preferences.vala:43
@@ -2895,9 +2903,15 @@ msgstr "32 бита"
 msgid "64 bits"
 msgstr "4 бита"
 
-#: src/math-window.vala:134
+#: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Изађи"
+
+#~ msgid "Quit"
+#~ msgstr "Изађи"
+
+#~ msgid "Weight"
+#~ msgstr "Тежина"
 
 #~ msgid "accessories-calculator"
 #~ msgstr "accessories-calculator"
