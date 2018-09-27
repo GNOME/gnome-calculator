@@ -442,7 +442,7 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
 
     public virtual Gtk.SourceCompletionItem create_proposal (string label, string text, string details)
     {
-        var proposal = Gtk.SourceCompletionItem.new2 ();
+        var proposal = new Gtk.SourceCompletionItem ();
         proposal.label = label;
         proposal.text = text;
         proposal.info = details;

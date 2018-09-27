@@ -26,7 +26,7 @@ glib = dependency('glib-2.0', version: '>= ' + glib_min_version)
 gmodule_export = dependency('gmodule-export-2.0')
 gobject = dependency('gobject-2.0', version: '>= ' + glib_min_version)
 gtk = dependency('gtk+-3.0', version: '>= 3.19.3')
-gtksourceview = dependency('gtksourceview-3.0', version: '>= 3.15.1')
+gtksourceview = dependency('gtksourceview-4', version: '>= 4.0.2')
 libsoup = dependency('libsoup-2.4', version: '>= 2.42')
 libxml = dependency('libxml-2.0')
 
