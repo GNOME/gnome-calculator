@@ -136,6 +136,7 @@ public class MathVariablePopover : Gtk.Popover
             text = "<b>%s</b>".printf (name);
 
         var label = new Gtk.Label (text);
+        label.set_margin_start (6);
         label.set_use_markup (true);
         label.halign = Gtk.Align.START;
         hbox.pack_start (label, true, true, 0);

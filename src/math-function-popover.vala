@@ -162,6 +162,7 @@ public class MathFunctionPopover : Gtk.Popover
             expression = "(%s)".printf (string.joinv (";", function.arguments));
 
         var label = new Gtk.Label ("<b>%s</b>%s".printf (function.name, expression));
+        label.set_margin_start (6);
         label.set_use_markup (true);
         label.halign = Gtk.Align.START;
         hbox.pack_start (label, true, true, 0);
