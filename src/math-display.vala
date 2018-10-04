@@ -27,7 +27,7 @@ public class MathDisplay : Gtk.Viewport
     public MathDisplay (MathEquation equation)
     {
         _equation = equation;
-        _equation.history_signal.connect (this.handler);
+        _equation.history_signal.connect (this.update_history);
         var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
         add (main_box);
 
@@ -94,19 +94,15 @@ public class MathDisplay : Gtk.Viewport
         source_view.grab_focus ();
     }
 
-    public void handler (string answer, Number number, int number_base, uint representation_base)
+    public void update_history (string answer, Number number, int number_base, uint representation_base)
     {
-        this.update_history (answer, number, number_base, representation_base); /* Recieves signal emitted by a MathEquation object for updating history-view */
+        /* Recieves signal emitted by a MathEquation object for updating history-view */
+        history.insert_entry (answer, number, number_base, representation_base); /* Sends current equation and answer for updating History-View */
     }
 
     public void display_text (string prev_eq)
     {
         _equation.display_selected (prev_eq);
-    }
-
-    public void update_history (string answer, Number number, int number_base, uint representation_base)
-    {
-        history.insert_entry (answer, number, number_base, representation_base); /* Sends current equation and answer for updating History-View */
     }
 
     public void clear_history ()

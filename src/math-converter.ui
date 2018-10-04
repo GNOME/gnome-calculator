@@ -23,10 +23,14 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="in_label">
+      <object class="GtkButton" id="in_button">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="label" translatable="yes"> in </property>
+        <property name="label" translatable="yes"> to </property>
+        <signal name="clicked" handler="convert_button_clicked_cb" swapped="no"/>
+        <style>
+          <class name="flat"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">1</property>
@@ -130,3 +134,4 @@
     </child>
   </template>
 </interface>
+

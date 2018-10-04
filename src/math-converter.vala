@@ -102,12 +102,10 @@ public class MathConverter : Gtk.Grid
         if (x == null)
             return;
 
-        var z = convert_equation (x);
+        Unit source_unit, target_unit;
+        var z = convert_equation (x, out source_unit, out target_unit);
         if (z != null)
         {
-            Unit source_unit, target_unit;
-            get_conversion (out source_unit, out target_unit);
-
             var source_text = source_unit.format (x);
             var target_text = target_unit.format (z);
             from_label.set_text (source_text);
@@ -228,35 +226,52 @@ public class MathConverter : Gtk.Grid
     [GtkCallback]
     private void swap_button_clicked_cb ()
     {
-        var x = equation.number;
-        if (x != null)
-        {
-            var z = convert_equation (x);
-            if (z != null)
-                equation.set_number (z);
-        }
-
-        Unit from_unit, to_unit;
+        Unit? from_unit, to_unit;
         get_conversion (out from_unit, out to_unit);
+
         set_active_unit (from_combo, null, to_unit);
         set_active_unit (to_combo, null, from_unit);
+
+        do_convert(out from_unit, out to_unit);
 
         update_result_label ();
     }
 
-    private Number? convert_equation (Number x)
+    private void do_convert (out Unit? from_unit, out Unit? to_unit) {
+        var x = equation.number;
+        if (x != null)
+        {
+            var z = convert_equation (x, out from_unit, out to_unit);
+            if (z != null && from_unit != null && to_unit != null)
+            {
+                equation.set ("%s %s %s %s".printf(equation.serializer.to_string (x), from_unit.display_name, _("in"), to_unit.display_name));
+                equation.solve ();
+            }
+        }
+    }
+
+    [GtkCallback]
+    private void convert_button_clicked_cb ()
+    {
+        Unit? from_unit, to_unit;
+        do_convert (out from_unit, out to_unit);
+
+        update_result_label ();
+    }
+
+    private Number?  convert_equation (Number x,
+                                       out Unit? source_unit,
+                                       out Unit? target_unit)
     {
         Gtk.TreeIter from_iter, to_iter;
         if (!from_combo.get_active_iter (out from_iter))
             return null;
         if (!to_combo.get_active_iter (out to_iter))
             return null;
-
         UnitCategory category;
-        Unit source_unit, target_unit;
         from_combo.model.get (from_iter, 1, out category, 2, out source_unit, -1);
         to_combo.model.get (to_iter, 2, out target_unit, -1);
 
         return category.convert (x, source_unit, target_unit);
-    }
+  }
 }
