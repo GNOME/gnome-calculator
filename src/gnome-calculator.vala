@@ -75,7 +75,6 @@ public class Calculator : Gtk.Application
         Number.precision = precision;
 
         add_action_entries (app_entries, this);
-        set_accels_for_action ("win.clear", {"<Primary>Escape"});
 
         var current_window = new MathWindow (this, equation);
         current_window.set_title (_("Calculator"));
@@ -103,7 +102,11 @@ public class Calculator : Gtk.Application
         set_accels_for_action ("win.undo", {"<control>Z"});
         set_accels_for_action ("win.close", {"<control>W"});
         set_accels_for_action ("win.redo", {"<control><shift>Z"});
+        set_accels_for_action ("win.clear", {"<Primary>Escape"});
+
         set_accels_for_action ("app.quit", {"<control>Q"});
+        set_accels_for_action ("app.new-window", {"<control>N"});
+        set_accels_for_action ("app.help", {"F1"});
         return current_window;
     }
 
