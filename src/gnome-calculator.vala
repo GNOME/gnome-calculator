@@ -115,6 +115,7 @@ public class Calculator : Gtk.Application
         base.startup ();
 
         settings = new Settings ("org.gnome.calculator");
+        settings.delay ();
         last_opened_window = create_new_window (settings);
         // restore the first window position from the settings
         load_window_position (last_opened_window);
@@ -187,6 +188,7 @@ public class Calculator : Gtk.Application
         settings.set_string ("source-units", equation.source_units);
         settings.set_string ("target-units", equation.target_units);
         settings.set_int ("base", buttons.programming_base);
+        settings.apply ();
     }
 
     protected override int handle_local_options (GLib.VariantDict options)
