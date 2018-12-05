@@ -28,10 +28,6 @@ gio = dependency('gio-2.0', version: '>= ' + glib_min_version)
 glib = dependency('glib-2.0', version: '>= ' + glib_min_version)
 gmodule_export = dependency('gmodule-export-2.0')
 gobject = dependency('gobject-2.0', version: '>= ' + glib_min_version)
-gtk = dependency('gtk+-3.0', version: '>= 3.19.3')
-gtksourceview = dependency('gtksourceview-4', version: '>= 4.0.2')
-libsoup = dependency('libsoup-2.4', version: '>= 2.42')
-libxml = dependency('libxml-2.0')
 
 # Libraries
 cc = meson.get_compiler('c')
@@ -66,6 +62,12 @@ config_h_dir = include_directories('.')
 meson.add_install_script('meson_post_install.py')
 
 # Subdirs
+subdir('gcalc')
+if not get_option ('disable-ui')
+gtk = dependency('gtk+-3.0', version: '>= 3.19.3')
+libsoup = dependency('libsoup-2.4', version: '>= 2.42')
+libxml = dependency('libxml-2.0')
+gtksourceview = dependency('gtksourceview-4', version: '>= 4.0.2')
 subdir('data')
 subdir('lib')
 subdir('src')
@@ -73,3 +75,4 @@ subdir('search-provider')
 subdir('tests')
 subdir('help')
 subdir('po')
+endif
