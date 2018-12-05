@@ -4,6 +4,9 @@ project('gnome-calculator', ['c', 'vala'],
   license: 'GPLv3+',
 )
 
+inc_rooth = include_directories ('.')
+inc_rooth_dep = declare_dependency (include_directories : inc_rooth)
+
 gnome = import('gnome')
 i18n = import('i18n')
 
