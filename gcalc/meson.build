@@ -41,10 +41,36 @@ configure_file(output : 'config.h',
 sources = files([
 	'gcalc-solver.vala',
 	'gcalc-result.vala'
-  ])
+])
+
 
 inc_libh = include_directories ('.')
 inc_libh_dep = declare_dependency (include_directories : inc_libh)
+
+deps = [
+	gio,
+	namespaceinfo_dep,
+	inc_libh_dep,
+	inc_rooth_dep,
+]
+
+
+
+lib_mpfrg_sources = files([
+  'mpfr-glue.vala'
+])
+
+lib_mpfrg = static_library ('mpfrg',
+	lib_mpfrg_sources,
+	vala_header: 'mpfrg.h',
+	vala_vapi: 'mpfrg.vapi',
+	dependencies: [
+		gio,
+		mpc,
+		mpfr,
+	],
+	install: false,
+)
 
 # LT_VERSION for ABI related changes
 # From: https://autotools.io/libtool/version.html
@@ -65,11 +91,16 @@ lib = library(VERSIONED_PROJECT_NAME,
 	vala_header : PROJECT_NAME+'.h',
 	vala_vapi : VAPI_NAME,
 	vala_gir : GIR_NAME,
-	dependencies : [ gio, namespaceinfo_dep, inc_libh_dep, inc_rooth_dep ],
+	dependencies : deps,
+	vala_args: [
+		'--vapidir='+vapi_dir,
+		'--pkg=mpfr'
+	],
 	c_args : [
 		'-include',
-		meson.current_build_dir() + '/config.h'
+		meson.current_build_dir() + '/config.h',
 	],
+	link_with: [ lib_mpfrg ],
 	install : true,
 	install_dir : [
 		true,
