@@ -76,7 +76,10 @@ public class ParseNode : Object
     public ParseNode.WithList (Parser parser, List<LexerToken> token_list, uint precedence, Associativity associativity, string? value = null)
     {
         this.parser = parser;
-        this.token_list = token_list.copy();
+        this.token_list = new List<LexerToken> ();
+        foreach (LexerToken t in token_list) {
+          this.token_list.append (t);
+        }
         this.precedence = precedence;
         this.associativity = associativity;
         this.value = value;
