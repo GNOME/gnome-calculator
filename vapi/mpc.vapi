@@ -66,9 +66,9 @@ namespace MPC {
         [CCode (cname="mpc_set_d_d")]
         public int set_double (double re, double im = 0, Round rnd = Round.NEAREST);
         [CCode (cname="mpc_realref")]
-        public unowned MPFR.RealRef get_real ();
+        public unowned MPFRG.RealRef get_real ();
         [CCode (cname="mpc_imagref")]
-        public unowned MPFR.RealRef get_imag ();
+        public unowned MPFRG.RealRef get_imag ();
         public bool is_zero () { var res = cmp_si_si (0, 0); return inex_re (res) == 0 && inex_im (res) == 0; }
         public bool is_equal (Complex c) { var res = cmp (c); return inex_re (res) == 0 && inex_im (res) == 0; }
         public int cmp (Complex op2);

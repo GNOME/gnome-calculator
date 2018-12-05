@@ -1,4 +1,4 @@
-libcalculator_sources = [
+libcalculator_sources = files ([
   'mpfr-glue.vala',
   'currency.vala',
   'equation.vala',
@@ -12,7 +12,7 @@ libcalculator_sources = [
   'number.vala',
   'serializer.vala',
   'unit.vala',
-]
+])
 
 libcalculator_vala_flags = [
   '--target-glib', glib_min_version,

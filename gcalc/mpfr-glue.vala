@@ -18,12 +18,11 @@
  *
  * Authors: Phillip Wood <phillip.wood@dunelm.org.uk>
  */
-using MPFR;
 
 namespace MPFRG
 {
     [Compact]
     public class RealRef {
-        public Real val;
+        public MPFR.Real val;
     }
 }
