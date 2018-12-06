@@ -40,7 +40,16 @@ configure_file(output : 'config.h',
 
 sources = files([
 	'gcalc-solver.vala',
-	'gcalc-result.vala'
+	'gcalc-result.vala',
+	'gcalc-currency.vala',
+	'gcalc-equation.vala',
+	'gcalc-equation-parser.vala',
+	'gcalc-equation-lexer.vala',
+	'gcalc-function-manager.vala',
+	'gcalc-math-function.vala',
+	'gcalc-number.vala',
+	'gcalc-serializer.vala',
+	'gcalc-unit-manager.vala'
 ])
 
 
@@ -52,6 +61,9 @@ deps = [
 	namespaceinfo_dep,
 	inc_libh_dep,
 	inc_rooth_dep,
+	posix,
+	libxml,
+	libsoup
 ]
 
 
@@ -94,6 +106,7 @@ lib = library(VERSIONED_PROJECT_NAME,
 	dependencies : deps,
 	vala_args: [
 		'--vapidir='+vapi_dir,
+		'--pkg=mpc',
 		'--pkg=mpfr'
 	],
 	c_args : [
