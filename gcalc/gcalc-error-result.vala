@@ -1,4 +1,4 @@
-/* gcalc-result.vala
+/* gcalc-error-result.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,10 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Result : Object {
-  public abstract bool is_valid { get; }
+public interface GCalc.ErrorResult : Object {
+  public abstract uint start { get; }
+  public abstract uint end { get; }
+  public abstract uint representation_base { get; }
   public abstract string to_string ();
-  public abstract Number number { get; }
-  public abstract ErrorResult error { get; }
 }
 
