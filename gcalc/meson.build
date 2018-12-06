@@ -46,6 +46,7 @@ sources = files([
 	'gcalc-error-result.vala',
 	'gcalc-function-manager.vala',
 	'gcalc-math-equation.vala',
+	'gcalc-math-equation-manager.vala',
 	'gcalc-math-function.vala',
 	'gcalc-math-variables.vala',
 	'gcalc-number.vala',
