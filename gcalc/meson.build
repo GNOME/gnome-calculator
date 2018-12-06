@@ -47,6 +47,7 @@ sources = files([
 	'gcalc-equation-lexer.vala',
 	'gcalc-function-manager.vala',
 	'gcalc-math-function.vala',
+	'gcalc-math-variables.vala',
 	'gcalc-number.vala',
 	'gcalc-serializer.vala',
 	'gcalc-unit-manager.vala'
