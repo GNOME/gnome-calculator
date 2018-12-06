@@ -8,6 +8,7 @@
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
  */
+using GCalc;
 
 private const int MAXLINE = 1024;
 

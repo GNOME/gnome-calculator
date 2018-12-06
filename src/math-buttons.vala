@@ -7,6 +7,7 @@
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
  */
+using GCalc;
 
 public enum ButtonMode
 {
@@ -217,7 +218,7 @@ public class MathButtons : Gtk.Box
         var enabled = x != null;
         if (enabled)
         {
-            var max = new Number.unsigned_integer (uint64.MAX);
+            var max = new Number.unsigned_integer (uint64.MAX, 0, equation.precision);
             var fraction = x.fractional_part ();
             if (x.is_negative () || x.compare (max) > 0 || !fraction.is_zero ())
                 enabled = false;
@@ -542,7 +543,11 @@ public class MathButtons : Gtk.Box
             break;
         }
 
-        Number arg[4] = { new Number.integer (0), new Number.integer (0), new Number.integer (0), new Number.integer (0) };
+        Number arg[4] = { new Number.integer (0, 0, equation.precision),
+                          new Number.integer (0, 0, equation.precision),
+                          new Number.integer (0, 0, equation.precision),
+                          new Number.integer (0, 0, equation.precision)
+                        };
         for (var i = 0; i < entries.length; i++)
         {
             var entry = financial_ui.get_object (entries[i]) as Gtk.Entry;
@@ -561,10 +566,10 @@ public class MathButtons : Gtk.Box
 
         if (response_id == Gtk.ResponseType.OK)
         {
-            var x = new Number.integer (0);
+            var x = new Number.integer (0, 0, equation.precision);
             for (var i = 0; text[i] != '\0'; i++)
             {
-                x = x.add (new Number.integer (text[i]));
+                x = x.add (new Number.integer (text[i], 0, equation.precision));
                 x = x.shift (8);
             }
 

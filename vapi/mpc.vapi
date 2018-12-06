@@ -49,6 +49,8 @@ namespace MPC {
     public struct Complex {
         [CCode (cname="mpc_init2")]
         public Complex (MPFR.Precision prec);
+        [CCode (cname="mpc_set_prec")]
+        public void set_prec (MPFR.Precision prec);
         public int @set (Complex op, Round rnd = Round.NEAREST);
         [CCode (cname="mpc_set_ui_ui")]
         public int set_unsigned_integer (ulong re, ulong im = 0, Round rnd = Round.NEAREST);

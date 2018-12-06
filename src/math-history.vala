@@ -7,6 +7,7 @@
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
 */
+using GCalc;
 
 [GtkTemplate (ui = "/org/gnome/calculator/history-view.ui")]
 public class HistoryView : Gtk.ScrolledWindow

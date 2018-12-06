@@ -67,7 +67,8 @@ deps = [
 	inc_rooth_dep,
 	posix,
 	libxml,
-	libsoup
+	libsoup,
+	inc_rooth_dep
 ]
 
 
