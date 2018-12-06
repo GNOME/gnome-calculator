@@ -7,6 +7,7 @@
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
  */
+using GCalc;
 
 [GtkTemplate (ui = "/org/gnome/calculator/math-variable-popover.ui")]
 public class MathVariablePopover : Gtk.Popover

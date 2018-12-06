@@ -7,6 +7,7 @@
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
  */
+using GCalc;
 
 private int number_base = 10;
 private int wordlen = 32;

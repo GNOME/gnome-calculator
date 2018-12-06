@@ -8,11 +8,13 @@
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
  */
+using GCalc;
 
 public class Calculator : Gtk.Application
 {
     private Settings settings;
     private MathWindow last_opened_window;
+    private Number.Precision _precision = new Number.Precision (1000);
     int n_math_windows = 0;
     private MathPreferencesDialog preferences_dialog;
     private Gtk.ShortcutsWindow shortcuts_window;
@@ -59,9 +61,10 @@ public class Calculator : Gtk.Application
         var target_currency = settings.get_string ("target-currency");
         var source_units = settings.get_string ("source-units");
         var target_units = settings.get_string ("target-units");
-        var precision = settings.get_int ("precision");
+        _precision = new Number.Precision ((ulong) settings.get_int ("precision"));
 
         var equation = new MathEquation ();
+        equation.precision = _precision;
         equation.accuracy = accuracy;
         equation.word_size = word_size;
         equation.show_thousands_separators = show_tsep;
@@ -72,7 +75,6 @@ public class Calculator : Gtk.Application
         equation.target_currency = target_currency;
         equation.source_units = source_units;
         equation.target_units = target_units;
-        Number.precision = precision;
 
         add_action_entries (app_entries, this);
 

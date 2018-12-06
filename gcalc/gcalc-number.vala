@@ -45,12 +45,11 @@ namespace GCalc {
   public class Number : Object
   {
       /* real and imaginary part of a Number */
-      internal static MPFR.Precision _mpfr_precision;
 
-      private Complex num = Complex (_mpfr_precision);
+      private Complex num = Complex (1000);
 
       construct {
-        _mpfr_precision = 1000;
+        MPFR.Precision _mpfr_precision = 1000;
         precision = new Precision.internal_precision (_mpfr_precision);
       }
 
@@ -59,18 +58,31 @@ namespace GCalc {
       /* Stores the error msg if an error occurs during calculation. Otherwise should be null */
       public static string? error { get; set; default = null; }
 
-      public Number.integer (int64 real, int64 imag = 0)
+      public Number.integer (int64 real, int64 imag = 0, Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           num.set_signed_integer ((long) real, (long) imag);
       }
 
-      public Number.unsigned_integer (uint64 real, uint64 imag = 0)
+      public Number.unsigned_integer (uint64 real, uint64 imag = 0, Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           num.set_unsigned_integer ((ulong) real, (ulong) imag);
       }
 
-      public Number.fraction (int64 numerator, int64 denominator)
+      public Number.fraction (int64 numerator, int64 denominator, Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
+
           if (denominator < 0)
           {
               numerator = -numerator;
@@ -85,50 +97,82 @@ namespace GCalc {
       }
 
       /* Helper constructor. Creates new Number from already existing MPFR.Real. */
-      internal Number.mpreal (MPFR.Real real, MPFR.Real? imag = null)
+      internal Number.mpreal (MPFR.Real real, MPFR.Real? imag = null, Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           num.set_mpreal (real, imag);
       }
 
-      public Number.double (double real, double imag = 0)
+      public Number.double (double real, double imag = 0, Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           num.set_double (real, imag);
       }
 
-      public Number.complex (Number r, Number i)
+      public Number.complex (Number r, Number i, Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           num.set_mpreal (r.num.get_real ().val, i.num.get_real ().val);
       }
 
-      public Number.polar (Number r, Number theta, AngleUnit unit = AngleUnit.RADIANS)
+      public Number.polar (Number r, Number theta, AngleUnit unit = AngleUnit.RADIANS, Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           var x = theta.cos (unit);
           var y = theta.sin (unit);
           this.complex (x.multiply (r), y.multiply (r));
       }
 
-      public Number.eulers ()
+      public Number.eulers (Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           num.get_real ().val.set_unsigned_integer (1);
           /* e^1, since mpfr doesn't have a function to return e */
           num.get_real ().val.exp (num.get_real ().val);
           num.get_imag ().val.set_zero ();
       }
 
-      public Number.i ()
+      public Number.i (Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           num.set_signed_integer (0, 1);
       }
 
-      public Number.pi ()
+      public Number.pi (Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           num.get_real ().val.const_pi ();
           num.get_imag ().val.set_zero ();
       }
 
       /* Sets z to be a uniform random number in the range [0, 1] */
-      public Number.random ()
+      public Number.random (Precision? precision = null)
       {
+          if (precision != null) {
+            this.precision = precision;
+            num.set_prec (precision._mpfr_precision);
+          }
           this.double (Random.next_double ());
       }
 
@@ -445,7 +489,7 @@ namespace GCalc {
               z.num.get_real ().val.root (z.num.get_real ().val, (ulong) p);
               z.num.get_imag().val.set_zero();
           } else {
-              var tmp = MPFR.Real (_mpfr_precision);
+              var tmp = MPFR.Real (precision._mpfr_precision);
               tmp.set_unsigned_integer ((ulong) p);
               tmp.unsigned_integer_divide (1, tmp);
               z.num.power_mpreal (z.num, tmp);
@@ -524,7 +568,7 @@ namespace GCalc {
               }
 
               var tmp = add (new Number.integer (1));
-              var tmp2 = MPFR.Real (_mpfr_precision);
+              var tmp2 = MPFR.Real (precision._mpfr_precision);
 
               /* Factorial(x) = Gamma(x+1) - This is the formula used to calculate Factorial.*/
               tmp2.gamma (tmp.num.get_real ().val);
@@ -997,7 +1041,7 @@ namespace GCalc {
           return z;
       }
 
-      private static void mpc_from_radians (Complex res, Complex op, AngleUnit unit)
+      private void mpc_from_radians (Complex res, Complex op, AngleUnit unit)
       {
           int i;
 
@@ -1018,13 +1062,13 @@ namespace GCalc {
                   break;
 
           }
-          var scale = MPFR.Real (_mpfr_precision);
+          var scale = MPFR.Real (precision._mpfr_precision);
           scale.const_pi ();
           scale.signed_integer_divide (i, scale);
           res.multiply_mpreal (op, scale);
       }
 
-      private static void mpc_to_radians (Complex res, Complex op, AngleUnit unit)
+      private void mpc_to_radians (Complex res, Complex op, AngleUnit unit)
       {
           int i;
 
@@ -1044,7 +1088,7 @@ namespace GCalc {
                   i=200;
                   break;
           }
-          var scale = MPFR.Real (_mpfr_precision);
+          var scale = MPFR.Real (precision._mpfr_precision);
           scale.const_pi ();
           scale.divide_signed_integer (scale, i);
           res.multiply_mpreal (op, scale);
@@ -1114,25 +1158,25 @@ namespace GCalc {
           return serializer.to_string (this);
       }
       public class Precision : Object {
-        internal MPFR.Precision _precision;
+        internal MPFR.Precision _mpfr_precision;
 
         construct {
-          _precision = 1000;
+          _mpfr_precision = 1000;
         }
 
-        public long precision { get { return (long) _precision; } }
+        public ulong precision { get { return (ulong) _mpfr_precision; } }
 
         internal Precision.internal_precision (MPFR.Precision precision) {
-          _precision = precision;
+          _mpfr_precision = precision;
         }
-        public Precision (long precision) {
-          _precision = (MPFR.Precision) precision;
+        public Precision (ulong precision) {
+          _mpfr_precision = (MPFR.Precision) precision;
         }
       }
       public class Real : Object {
         internal MPFR.Real _value;
         public Real (Precision precision) {
-          _value = MPFR.Real (precision._precision);
+          _value = MPFR.Real (precision._mpfr_precision);
         }
       }
   }

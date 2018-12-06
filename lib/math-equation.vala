@@ -9,6 +9,8 @@
  * license.
  */
 
+using GCalc;
+
 public enum NumberMode
 {
     NORMAL,
@@ -46,6 +48,8 @@ private class SolveData : Object
 public class MathEquation : Gtk.SourceBuffer
 {
     private Gtk.TextTag ans_tag;
+
+    public Number.Precision precision { get; set; default = new Number.Precision (1000); }
 
     /* Word size in bits */
     private int _word_size;
@@ -194,7 +198,7 @@ public class MathEquation : Gtk.SourceBuffer
         _serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
         queue = new AsyncQueue<SolveData> ();
 
-        state.ans = new Number.integer (0);
+        state.ans = new Number.integer (0, 0, _precision);
         state.ans_base = 10;
 
         ans_tag = create_tag (null, "weight", Pango.Weight.BOLD, null);
@@ -1272,7 +1276,7 @@ public class MathEquation : Gtk.SourceBuffer
     public void toggle_bit (uint bit)
     {
         var x = number;
-        var max = new Number.unsigned_integer (uint64.MAX);
+        var max = new Number.unsigned_integer (uint64.MAX, 0, precision);
         if (x == null || x.is_negative () || x.compare (max) > 0)
         {
             /* Message displayed when cannot toggle bit in display */
@@ -1282,7 +1286,7 @@ public class MathEquation : Gtk.SourceBuffer
 
         var bits = x.to_unsigned_integer ();
         bits ^= (1LL << (63 - bit));
-        x = new Number.unsigned_integer (bits);
+        x = new Number.unsigned_integer (bits, 0, precision);
 
         // FIXME: Only do this if in ans format, otherwise set text in same format as previous number
         set_number (x);
@@ -1377,11 +1381,13 @@ public class MathEquation : Gtk.SourceBuffer
 private class MEquation : Equation
 {
     private MathEquation m_equation;
+    private Number.Precision precision = new Number.Precision (1000);
 
-    public MEquation (MathEquation m_equation, string equation)
+    public MEquation (MathEquation m_equation, string equation, Number.Precision? precision = null)
     {
         base (equation);
         this.m_equation = m_equation;
+        this.precision = precision;
     }
 
     public override bool variable_is_defined (string name)
@@ -1399,7 +1405,7 @@ private class MEquation : Equation
         var lower_name = name.down ();
 
         if (lower_name == "rand")
-            return new Number.random ();
+            return new Number.random (precision);
         else if (lower_name == "_")
             return m_equation.answer;
         else
