@@ -39,17 +39,19 @@ configure_file(output : 'config.h',
 	configuration : confh)
 
 sources = files([
-	'gcalc-solver.vala',
-	'gcalc-result.vala',
 	'gcalc-currency.vala',
 	'gcalc-equation.vala',
 	'gcalc-equation-parser.vala',
 	'gcalc-equation-lexer.vala',
+	'gcalc-error-result.vala',
 	'gcalc-function-manager.vala',
+	'gcalc-math-equation.vala',
 	'gcalc-math-function.vala',
 	'gcalc-math-variables.vala',
 	'gcalc-number.vala',
+	'gcalc-result.vala',
 	'gcalc-serializer.vala',
+	'gcalc-solver.vala',
 	'gcalc-unit-manager.vala'
 ])
 
