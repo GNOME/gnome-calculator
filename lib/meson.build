@@ -1,17 +1,6 @@
 libcalculator_sources = files ([
-  'mpfr-glue.vala',
-  'currency.vala',
-  'equation.vala',
-  'equation-lexer.vala',
-  'equation-parser.vala',
   'financial.vala',
-  'function-manager.vala',
-  'math-equation.vala',
-  'math-function.vala',
-  'math-variables.vala',
-  'number.vala',
-  'serializer.vala',
-  'unit.vala',
+  'math-equation.vala'
 ])
 
 libcalculator_vala_flags = [
@@ -23,16 +12,11 @@ libcalculator_c_flags = [
 ]
 
 libcalculator_deps = [
-  gio,
-  glib,
-  gobject,
   gtk,
   gtksourceview,
-  libsoup,
-  libxml,
-  mpc,
   mpfr,
   posix,
+  inc_rooth_dep
 ]
 
 libcalculator = static_library('calculator', libcalculator_sources,
@@ -41,4 +25,5 @@ libcalculator = static_library('calculator', libcalculator_sources,
   vala_args: libcalculator_vala_flags,
   include_directories: config_h_dir,
   install: false,
+  link_with: [lib, lib_mpfrg],
 )
