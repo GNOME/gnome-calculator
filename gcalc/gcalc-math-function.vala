@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Garima Joshi
+ * Copyright (C) 2013 Garima Joshi <gjoshi0311@gmail.com>
  * Copyright (C) 2018 Daniel Espinosa <esodan@gmail.com>
  *
  * This program is free software: you can redistribute it and/or modify it under
