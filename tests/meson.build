@@ -44,3 +44,14 @@ test_serializer = executable('test-serializer', test_serializer_sources,
   include_directories: gnome_calculator_tests_includes,
 )
 test('Serializer test', test_serializer)
+
+
+test_main_interfaces_sources = [
+  'gcalc-main-interfaces.vala',
+]
+test_interfaces = executable('gcalc-interfaces', test_main_interfaces_sources,
+  dependencies: gnome_calculator_tests_deps,
+  link_with: [lib, lib_mpfrg],
+  include_directories: gnome_calculator_tests_includes,
+)
+test('gcalc-interfaces', test_interfaces)
