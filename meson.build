@@ -72,7 +72,7 @@ subdir('data')
 subdir('lib')
 subdir('src')
 subdir('search-provider')
-subdir('tests')
 subdir('help')
 subdir('po')
 endif
+subdir('tests')
