@@ -21,3 +21,7 @@
 public interface GCalc.Solver : Object {
   public abstract Result solve (string str) throws GLib.Error;
 }
+
+public errordomain GCalc.SolverError {
+  EXPRESSION_ERROR
+}

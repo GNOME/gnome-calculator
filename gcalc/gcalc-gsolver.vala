@@ -22,7 +22,12 @@ public class GCalc.GSolver : Object, Solver {
   private Equation equation;
   public Result solve (string str) throws GLib.Error {
     equation = new Equation (str);
-    var num = equation.parse ();
+    ErrorCode err = ErrorCode.NONE;
+    uint rpb = 0;
+    var num = equation.parse (out rpb, out err);
+    if (num == null) {
+      throw new SolverError.EXPRESSION_ERROR ("Invalid equation. Parser error: %s", err.to_string ());
+    }
     var exp = new GExpression.number_object (num) as Expression;
     return new GResult (exp) as Result;
   }
