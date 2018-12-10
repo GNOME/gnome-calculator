@@ -62,10 +62,10 @@ public class UnitManager : Object
         area_category.add_unit (new Unit ("square-centimeter", _("Square Centimeters"), dpgettext2 (null, "unit-format", "%s cm²"), "0.0001x", "10000x", dpgettext2 (null, "unit-symbols", "cm²")));
         area_category.add_unit (new Unit ("square-millimeter", _("Square Millimeters"), dpgettext2 (null, "unit-format", "%s mm²"), "0.000001x", "1000000x", dpgettext2 (null, "unit-symbols", "mm²")));
         volume_category.add_unit (new Unit ("cubic-meter", _("Cubic Meters"), dpgettext2 (null, "unit-format", "%s m³"), "1000x", "x/1000", dpgettext2 (null, "unit-symbols", "m³")));
-        volume_category.add_unit (new Unit ("gallon", _("Gallons"), dpgettext2 (null, "unit-format", "%s gal"), "3.785412x", "x/3.785412", dpgettext2 (null, "unit-symbols", "gallon,gallons,gal")));
+        volume_category.add_unit (new Unit ("gallon", _("US Gallons"), dpgettext2 (null, "unit-format", "%s gal"), "3.785412x", "x/3.785412", dpgettext2 (null, "unit-symbols", "gallon,gallons,gal")));
         volume_category.add_unit (new Unit ("litre", _("Liters"), dpgettext2 (null, "unit-format", "%s L"), "x", "x", dpgettext2 (null, "unit-symbols", "litre,litres,liter,liters,L")));
-        volume_category.add_unit (new Unit ("quart", _("Quarts"), dpgettext2 (null, "unit-format", "%s qt"), "0.9463529x", "x/0.9463529", dpgettext2 (null, "unit-symbols", "quart,quarts,qt")));
-        volume_category.add_unit (new Unit ("pint", _("Pints"), dpgettext2 (null, "unit-format", "%s pt"), "0.4731765x", "x/0.4731765", dpgettext2 (null, "unit-symbols", "pint,pints,pt")));
+        volume_category.add_unit (new Unit ("quart", _("US  Quarts"), dpgettext2 (null, "unit-format", "%s qt"), "0.9463529x", "x/0.9463529", dpgettext2 (null, "unit-symbols", "quart,quarts,qt")));
+        volume_category.add_unit (new Unit ("pint", _("US Pints"), dpgettext2 (null, "unit-format", "%s pt"), "0.4731765x", "x/0.4731765", dpgettext2 (null, "unit-symbols", "pint,pints,pt")));
         volume_category.add_unit (new Unit ("millilitre", _("Milliliters"), dpgettext2 (null, "unit-format", "%s mL"), "0.001x", "1000x", dpgettext2 (null, "unit-symbols", "millilitre,millilitres,milliliter,milliliters,mL,cm³")));
         volume_category.add_unit (new Unit ("microlitre", _("Microliters"), dpgettext2 (null, "unit-format", "%s μL"), "0.000001x", "1000000x", dpgettext2 (null, "unit-symbols", "mm³,μL,uL")));
         weight_category.add_unit (new Unit ("tonne", _("Tonnes"), dpgettext2 (null, "unit-format", "%s T"), "1000x", "x/1000", dpgettext2 (null, "unit-symbols", "tonne,tonnes")));
