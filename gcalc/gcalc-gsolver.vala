@@ -1,4 +1,4 @@
-/* gcalc-result.vala
+/* gcalc-solver.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,10 +18,12 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Result : Object {
-  public abstract bool is_valid { get; }
-  public abstract string to_string ();
-  public abstract Expression expression { get; }
-  public abstract ErrorResult error { get; }
+public class GCalc.GSolver : Object, Solver {
+  private Equation equation;
+  public Result solve (string str) throws GLib.Error {
+    equation = new Equation (str);
+    var num = equation.parse ();
+    var exp = new GExpression.number_object (num) as Expression;
+    return new GResult (exp) as Result;
+  }
 }
-

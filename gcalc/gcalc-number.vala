@@ -46,7 +46,7 @@ namespace GCalc {
   {
       /* real and imaginary part of a Number */
 
-      private Complex num = Complex (1000);
+      internal Complex num = Complex (1000);
 
       construct {
         MPFR.Precision _mpfr_precision = 1000;

@@ -1,4 +1,4 @@
-/* gcalc-result.vala
+/* gcalc-gexpresion.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,10 +18,14 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Result : Object {
-  public abstract bool is_valid { get; }
-  public abstract string to_string ();
-  public abstract Expression expression { get; }
-  public abstract ErrorResult error { get; }
+public class GCalc.GExpression : Object {
+  public GCalc.Number number { get; set; }
+  public GExpression.number_object (Number number) {
+    this.number = number;
+  }
+  public string to_string () {
+    var ser = new Serializer (DisplayFormat.AUTOMATIC, 10, 10);
+    return ser.to_string (number);
+  }
 }
 
