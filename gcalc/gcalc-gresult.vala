@@ -1,4 +1,4 @@
-/* gcalc-result.vala
+/* gcalc-gresult.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,10 +18,17 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Result : Object {
-  public abstract bool is_valid { get; }
-  public abstract string to_string ();
-  public abstract Expression expression { get; }
-  public abstract ErrorResult error { get; }
+public class GCalc.GResult : Object {
+  private Expression _expression;
+  private ErrorResult _error;
+  public GResult (Expression exp) {
+    _expression = exp;
+  }
+  public bool is_valid { get { return expression != null; } }
+  public string to_string () {
+    return expression.to_string ();
+  }
+  public Expression expression { get { return _expression; } }
+  public ErrorResult error { get { return _error; } }
 }
 
