@@ -96,7 +96,7 @@ public class Calculator : Gtk.Application
         set_accels_for_action ("win.mode::advanced", {"<alt>A"});
         set_accels_for_action ("win.mode::financial", {"<alt>F"});
         set_accels_for_action ("win.mode::programming", {"<alt>P"});
-        set_accels_for_action ("win.mode::keyboard", {"<alt>K"});
+        set_accels_for_action ("win.mode::keyboard", {"<alt>K", "<alt>T"});
         set_accels_for_action ("win.copy", {"<control>C"});
         set_accels_for_action ("win.paste", {"<control>V"});
         set_accels_for_action ("win.undo", {"<control>Z"});
