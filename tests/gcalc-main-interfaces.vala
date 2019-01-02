@@ -23,12 +23,31 @@ class Tests {
   {
     GLib.Intl.setlocale (GLib.LocaleCategory.ALL, "");
     Test.init (ref args);
-    Test.add_func ("/gcalc/parser/constant",
+    Test.add_func ("/gcalc/parser/constant/integer",
     ()=>{
       try {
         var parser = new Parser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("1", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 1);
+        var c = p.expressions.get_item (0) as Constant;
+        assert (c != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/constant/double",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("10.3", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
