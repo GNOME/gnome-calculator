@@ -48,6 +48,7 @@ sources = files([
 	'gcalc-gexpression.vala',
 	'gcalc-gassign.vala',
 	'gcalc-gconstant.vala',
+	'gcalc-gerror-result.vala',
 	'gcalc-gfunction.vala',
 	'gcalc-gmath-equation.vala',
 	'gcalc-gmath-equation-manager.vala',

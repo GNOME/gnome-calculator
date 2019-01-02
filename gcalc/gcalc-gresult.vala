@@ -23,8 +23,13 @@ public class GCalc.GResult : Object {
   private ErrorResult _error;
   public GResult (Expression exp) {
     _expression = exp;
+    _error = null;
   }
-  public bool is_valid { get { return expression != null; } }
+  public GResult.with_error (Expression exp, ErrorResult error) {
+    _expression = exp;
+    _error = error;
+  }
+  public bool is_valid { get { return _error == null; } }
   public string to_string () {
     return expression.to_string ();
   }

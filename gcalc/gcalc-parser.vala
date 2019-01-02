@@ -31,6 +31,7 @@ public class GCalc.Parser : Object {
     Vala.TokenType token = Vala.TokenType.NONE;
     var expected = new Gee.ArrayList<Vala.TokenType> ();
     Expression current = null;
+    var eq = new GMathEquation ();
     while (token != Vala.TokenType.EOF) {
       Vala.SourceLocation begin, end;
       token = scanner.read_token (out begin, out end);
@@ -55,22 +56,25 @@ public class GCalc.Parser : Object {
             current = f;
             expected.clear ();
             expected.add(Vala.TokenType.OPEN_PARENS);
-          } else if (n.down () == "def" && !(current is Function)) {
+          } else if (n.down () == "def" && current is Function) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
             var v = new GVariable (n) as Expression;
-            if (eqman.equations.find (v) == null) {
-              eqman.equations.add (v);
+            if (eqman.variables.find_named (n) == null) {
+              eqman.variables.add (v);
             }
             if (current == null) {
               var ex = new GPolynomial ();
               current = ex;
+              ex.expressions.add (v);
+              eq.expressions.add (ex);
               expected.clear ();
               expected.add(Vala.TokenType.ASSIGN);
             }
             if (current is Assign) {
               var ex = new GPolynomial ();
               current.expressions.add (ex);
+              ex.expressions.add (v);
               expected.clear ();
               expected.add (Vala.TokenType.IDENTIFIER);
               expected.add (Vala.TokenType.STAR);
@@ -85,7 +89,14 @@ public class GCalc.Parser : Object {
           break;
         case Vala.TokenType.INTEGER_LITERAL:
         case Vala.TokenType.REAL_LITERAL:
+          double res = 0;
+          if (!double.try_parse (n, out res)) {
+            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a constant");
+          }
           var iexp = new GConstant.@double (double.parse (n));
+          if (current == null) {
+            current = new GPolynomial ();
+          }
           if (current is Polynomial) {
             current.expressions.add (iexp);
             expected.clear ();
@@ -185,6 +196,7 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.HASH:
           break;
       }
+      eqman.equations.add (eq);
     }
   }
 }
