@@ -18,9 +18,20 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+using GCalc;
+
 public class GCalc.GSolver : Object, Solver {
   public Result solve (string str) throws GLib.Error {
-    var e = new GExpression () as Expression;
-    return new GResult (e) as Result;
+    var p = new Parser ();
+    var em = new GMathEquationManager ();
+    Result res;
+    try {
+      p.parse (str, em);
+      res = new GResult ((Expression) em.equations.get_item (0)) as Result; // FIXME: This should return a constant object
+    } catch (GLib.Error e) {
+      var err = new GErrorResult (e.message);
+      res = new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result; // FIXME: This should return a constant object
+    }
+    return res;
   }
 }
