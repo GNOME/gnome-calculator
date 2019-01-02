@@ -19,6 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public interface GCalc.MathEquationManager : Object {
-  public abstract GLib.ListModel equations { get; }
+  public abstract ExpressionContainer equations { get; }
+  public abstract ExpressionContainer functions { get; }
 }
 

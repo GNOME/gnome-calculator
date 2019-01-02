@@ -18,9 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.MathEquation : Object {
-  public abstract Solver solver { get; }
-  public abstract string expresion { get; }
-  public abstract Result resolve ();
-}
+public interface GCalc.MathEquation : Object, Expression {}
 

@@ -1,4 +1,4 @@
-/* gcalc-expresion.vala
+/* gcalc-gconstant.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,8 +18,27 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Expression : Object {
-  public abstract ExpressionContainer expressions { get; }
-  public abstract string to_string ();
+public class GCalc.GConstant : GExpression, Constant {
+  private MPFR.Real real_value;
+
+  construct {
+    real_value.set_zero ();
+  }
+  public GConstant.integer (int val) {
+    real_value.set_signed_integer ((long) val);
+  }
+  public GConstant.unsigned_integer (uint val) {
+    real_value.set_unsigned_integer ((ulong) val);
+  }
+  public GConstant.@double (double val) {
+    real_value.set_double (val);
+  }
+
+  // Constant Interface
+  public void zero () { real_value.set_zero (); }
+  // Expression interface
+  public override string to_string () {
+    return ""; // FIXME: write down string representation
+  }
 }
 

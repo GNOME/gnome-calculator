@@ -1,6 +1,6 @@
-/*
- * Copyright (C) 2008-2012 Robert Ancell.
- * Copyright (C) 2018 Daniel Espinosa <esodan@gmail.com>
+/* gcalc-variable.vala
+ *
+ * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -14,6 +14,12 @@
 
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+ *
+ * Authors:
+ *      Daniel Espinosa <esodan@gmail.com>
  */
+public interface GCalc.Variable : Object, Expression {
+  public abstract string name { get; construct set; }
+  public abstract GLib.Value value { get; }
+}
 
-public class 
