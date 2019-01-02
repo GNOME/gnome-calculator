@@ -1,6 +1,16 @@
 libcalculator_sources = files ([
   'financial.vala',
-  'math-equation.vala'
+  'function-manager.vala',
+  'math-equation.vala',
+  'math-function.vala',
+  'number.vala',
+  'serializer.vala',
+  'currency.vala',
+  'equation.vala',
+  'equation-lexer.vala',
+  'equation-parser.vala',
+  'math-variables.vala',
+  'unit-manager.vala'
 ])
 
 libcalculator_vala_flags = [
@@ -14,9 +24,13 @@ libcalculator_c_flags = [
 libcalculator_deps = [
   gtk,
   gtksourceview,
+  mpc,
   mpfr,
   posix,
-  inc_rooth_dep
+  libxml,
+  libsoup,
+  inc_libh_dep,
+  inc_rooth_dep,
 ]
 
 libcalculator = static_library('calculator', libcalculator_sources,
