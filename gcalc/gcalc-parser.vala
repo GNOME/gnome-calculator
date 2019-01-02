@@ -37,6 +37,7 @@ public class GCalc.Parser : Object {
     Vala.TokenType token = Vala.TokenType.NONE;
     var expected = new Gee.ArrayList<Vala.TokenType> ();
     Expression current = null;
+    Expression current_parent = null;
     var eq = new GMathEquation ();
     while (token != Vala.TokenType.EOF) {
       Vala.SourceLocation begin, end;
@@ -48,14 +49,83 @@ public class GCalc.Parser : Object {
       n = n.replace ("`", "");
       n = n.replace ("'", "");
       string l = lines[begin.line - 1];
-      message ("Token: '%s' : Line: %d Column begin: %d Column end: %d Text: %s", n, begin.line, begin.column, end.column, l);
+      message ("Token: '%s' : Line: %d Column begin: %d Column end: %d Text: '%s'", n, begin.line, begin.column, end.column, l);
       n = l.substring (begin.column - 1, end.column - begin.column + 1);
-      message ("Token text: %s", n);
+      message ("Token text: '%s'", n);
       if (expected.size != 0 && !expected.contains (token)) {
         throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
       }
       switch (token) {
+        case Vala.TokenType.ABSTRACT:
+        case Vala.TokenType.AS:
+        case Vala.TokenType.ASYNC:
+        case Vala.TokenType.BASE:
+        case Vala.TokenType.BREAK:
+        case Vala.TokenType.CASE:
+        case Vala.TokenType.CATCH:
+        case Vala.TokenType.CLASS:
+        case Vala.TokenType.CONST:
+        case Vala.TokenType.CONSTRUCT:
+        case Vala.TokenType.CONTINUE:
+        case Vala.TokenType.DEFAULT:
+        case Vala.TokenType.DELEGATE:
+        case Vala.TokenType.DELETE:
+        case Vala.TokenType.DO:
+        case Vala.TokenType.DYNAMIC:
+        case Vala.TokenType.ELSE:
+        case Vala.TokenType.ENUM:
+        case Vala.TokenType.ENSURES:
+        case Vala.TokenType.ERRORDOMAIN:
+        case Vala.TokenType.EXTERN:
+        case Vala.TokenType.FALSE:
+        case Vala.TokenType.FINALLY:
+        case Vala.TokenType.FOR:
+        case Vala.TokenType.FOREACH:
+        case Vala.TokenType.GET:
+        case Vala.TokenType.IF:
+        case Vala.TokenType.IN:
+        case Vala.TokenType.INLINE:
+        case Vala.TokenType.INTERFACE:
+        case Vala.TokenType.INTERNAL:
+        case Vala.TokenType.IS:
+        case Vala.TokenType.LOCK:
+        case Vala.TokenType.NAMESPACE:
+        case Vala.TokenType.NEW:
+        case Vala.TokenType.NULL:
+        case Vala.TokenType.OUT:
+        case Vala.TokenType.OVERRIDE:
+        case Vala.TokenType.OWNED:
+        case Vala.TokenType.PARAMS:
+        case Vala.TokenType.PRIVATE:
+        case Vala.TokenType.PROTECTED:
+        case Vala.TokenType.PUBLIC:
+        case Vala.TokenType.REF:
+        case Vala.TokenType.REQUIRES:
+        case Vala.TokenType.RETURN:
+        case Vala.TokenType.SEALED:
+        case Vala.TokenType.SET:
+        case Vala.TokenType.SIGNAL:
+        case Vala.TokenType.SIZEOF:
+        case Vala.TokenType.STATIC:
+        case Vala.TokenType.STRUCT:
+        case Vala.TokenType.SWITCH:
+        case Vala.TokenType.THIS:
+        case Vala.TokenType.THROW:
+        case Vala.TokenType.THROWS:
+        case Vala.TokenType.TRUE:
+        case Vala.TokenType.TRY:
+        case Vala.TokenType.TYPEOF:
+        case Vala.TokenType.UNOWNED:
+        case Vala.TokenType.USING:
+        case Vala.TokenType.VAR:
+        case Vala.TokenType.VIRTUAL:
+        case Vala.TokenType.VOID:
+        case Vala.TokenType.VOLATILE:
+        case Vala.TokenType.WEAK:
+        case Vala.TokenType.WHILE:
+        case Vala.TokenType.YIELD:
         case Vala.TokenType.IDENTIFIER:
+          message ("Found an identifier");
           var sfunc = eqman.functions.find_named (n);
           if (sfunc != null) {
             current = sfunc;
@@ -70,31 +140,22 @@ public class GCalc.Parser : Object {
           } else if (n.down () == "def" && current is Function) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
+            message ("Searching variable: %s", n);
             var v = new GVariable (n) as Expression;
             if (eqman.variables.find_named (n) == null) {
               eqman.variables.add (v);
             }
             if (current == null) {
-              var ex = new GPolynomial ();
-              current = ex;
-              ex.expressions.add (v);
-              eq.expressions.add (ex);
+              current = v;
               expected.clear ();
               expected.add(Vala.TokenType.ASSIGN);
-            }
-            if (current is Assign) {
-              var ex = new GPolynomial ();
-              current.expressions.add (ex);
-              ex.expressions.add (v);
-              expected.clear ();
-              expected.add (Vala.TokenType.IDENTIFIER);
-              expected.add (Vala.TokenType.STAR);
-              expected.add (Vala.TokenType.PERCENT);
-              expected.add (Vala.TokenType.PLUS);
-              expected.add (Vala.TokenType.DIV);
-              expected.add (Vala.TokenType.MINUS);
-              expected.add (Vala.TokenType.INTEGER_LITERAL);
-              expected.add (Vala.TokenType.REAL_LITERAL);
+              message ("Adding new variable named: '%s'", (current as Variable).name);
+            } else {
+              if (current is Polynomial) {
+                current.expressions.add (v);
+                current = v;
+                expected.clear ();
+              }
             }
           }
           break;
@@ -112,11 +173,7 @@ public class GCalc.Parser : Object {
           if (current is Polynomial) {
             current.expressions.add (iexp);
             expected.clear ();
-            expected.add (Vala.TokenType.STAR);
-            expected.add (Vala.TokenType.PERCENT);
-            expected.add (Vala.TokenType.PLUS);
-            expected.add (Vala.TokenType.DIV);
-            expected.add (Vala.TokenType.MINUS);
+            current = iexp;
           }
           break;
         case Vala.TokenType.CHARACTER_LITERAL:
@@ -127,19 +184,21 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.MINUS:
           break;
         case Vala.TokenType.ASSIGN:
-          if (current.expressions.get_n_items () > 1) {
-            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
+          if (current == null) {
+            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for an assignment");
           }
-          if (expected.contains(token)) {
-            if (current is Variable) {
-              var expa = new GAssign ();
-              expa.expressions.add (current);
-              current = expa;
-              expected.clear ();
-              expected.add(Vala.TokenType.IDENTIFIER);
-              expected.add(Vala.TokenType.INTEGER_LITERAL);
-              expected.add(Vala.TokenType.REAL_LITERAL);
-            }
+          if (current is Polynomial) {
+            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression: can't set a value to a polynomial");
+          }
+          if (current is Variable) {
+            var expa = new GAssign ();
+            eq.expressions.add (expa);
+            expa.expressions.add (current);
+            var exp = new GPolynomial ();
+            expa.expressions.add (exp);
+            current = exp;
+            current_parent = expa;
+            expected.clear ();
           }
           break;
         case Vala.TokenType.OPEN_PARENS:
@@ -147,15 +206,17 @@ public class GCalc.Parser : Object {
             var fexp = new GPolynomial ();
             current = fexp;
             expected.clear ();
-            expected.add(Vala.TokenType.IDENTIFIER);
-            expected.add(Vala.TokenType.INTEGER_LITERAL);
-            expected.add(Vala.TokenType.REAL_LITERAL);
-            expected.add(Vala.TokenType.CLOSE_PARENS);
+            expected.add (Vala.TokenType.IDENTIFIER);
+            expected.add (Vala.TokenType.INTEGER_LITERAL);
+            expected.add (Vala.TokenType.REAL_LITERAL);
+            expected.add (Vala.TokenType.CLOSE_PARENS);
           }
           break;
         case Vala.TokenType.CLOSE_PARENS:
           break;
         case Vala.TokenType.STRING_LITERAL:
+          message ("Found string literal");
+          break;
         case Vala.TokenType.REGEX_LITERAL:
         case Vala.TokenType.TEMPLATE_STRING_LITERAL:
         case Vala.TokenType.VERBATIM_STRING_LITERAL:
@@ -208,8 +269,8 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.HASH:
           break;
       }
-      eqman.equations.add (eq);
     }
+    eqman.equations.add (eq);
   }
 }
 

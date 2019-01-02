@@ -61,6 +61,42 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/assign/error",
+    ()=>{
+      var parser = new Parser ();
+      var eqman = new GMathEquationManager ();
+      try {
+        parser.parse ("=", eqman);
+        assert_not_reached ();
+      } catch (GLib.Error error) {
+        message ("Error catched correctly: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/constant/variable",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("var=1", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var assign = eq.expressions.get_item (0) as Assign;
+        assert (assign != null);
+        assert (assign.expressions.get_n_items () == 2);
+        var v = assign.expressions.get_item (0) as Variable;
+        assert (v != null);
+        assert (v.name == "var");
+        var p = assign.expressions.get_item (1) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 1);
+        var c = p.expressions.get_item (0) as Constant;
+        assert (c != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }
