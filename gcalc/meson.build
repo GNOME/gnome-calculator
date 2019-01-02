@@ -39,25 +39,15 @@ configure_file(output : 'config.h',
 	configuration : confh)
 
 sources = files([
-	'gcalc-currency.vala',
-	'gcalc-equation.vala',
-	'gcalc-equation-parser.vala',
-	'gcalc-equation-lexer.vala',
 	'gcalc-expression.vala',
 	'gcalc-error-result.vala',
-	'gcalc-function-manager.vala',
 	'gcalc-gexpression.vala',
 	'gcalc-gresult.vala',
 	'gcalc-gsolver.vala',
 	'gcalc-math-equation.vala',
 	'gcalc-math-equation-manager.vala',
-	'gcalc-math-function.vala',
-	'gcalc-math-variables.vala',
-	'gcalc-number.vala',
 	'gcalc-result.vala',
-	'gcalc-serializer.vala',
 	'gcalc-solver.vala',
-	'gcalc-unit-manager.vala'
 ])
 
 
@@ -72,7 +62,6 @@ deps = [
 	posix,
 	libxml,
 	libsoup,
-	inc_rooth_dep
 ]
 
 

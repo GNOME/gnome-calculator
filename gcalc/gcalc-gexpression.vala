@@ -19,13 +19,8 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GExpression : Object {
-  public GCalc.Number number { get; set; }
-  public GExpression.number_object (Number number) {
-    this.number = number;
-  }
   public string to_string () {
-    var ser = new Serializer (DisplayFormat.AUTOMATIC, 10, 10);
-    return ser.to_string (number);
+    return "";
   }
 }
 
