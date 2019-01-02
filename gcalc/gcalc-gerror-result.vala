@@ -1,4 +1,4 @@
-/* gcalc-gmath-equation-manager.vala
+/* gcalc-gerror-result.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,12 +18,12 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMathEquationManager : Object, MathEquationManager {
-  ExpressionContainer _equations = new ExpressionContainer ();
-  ExpressionContainer _functions = new ExpressionContainer ();
-  ExpressionContainer _variables = new ExpressionContainer ();
-  public ExpressionContainer equations { get { return _equations; } }
-  public ExpressionContainer functions { get { return _functions; } }
-  public ExpressionContainer variables { get { return _variables; } }
+public class GCalc.GErrorResult : Object {
+  private string msg = "";
+  public GErrorResult (string msg) {
+    this.msg = msg;
+  }
+  // ErrorResult
+  public string to_string () { return msg; }
 }
 

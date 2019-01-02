@@ -19,9 +19,6 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public interface GCalc.ErrorResult : Object {
-  public abstract uint start { get; }
-  public abstract uint end { get; }
-  public abstract uint representation_base { get; }
   public abstract string to_string ();
 }
 
