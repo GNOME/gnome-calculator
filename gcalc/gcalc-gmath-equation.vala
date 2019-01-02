@@ -1,4 +1,4 @@
-/* gcalc-expresion.vala
+/* gcalc-gmath-equation.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,8 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Expression : Object {
-  public abstract ExpressionContainer expressions { get; }
-  public abstract string to_string ();
-}
+public class GCalc.GMathEquation : GExpression, MathEquation {}
 

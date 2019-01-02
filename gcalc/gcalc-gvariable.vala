@@ -1,4 +1,4 @@
-/* gcalc-expresion.vala
+/* gcalc-gvariable.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,8 +18,21 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Expression : Object {
-  public abstract ExpressionContainer expressions { get; }
-  public abstract string to_string ();
+public class GCalc.GVariable : GExpression, Variable {
+  private GLib.Value _value;
+
+  public string name { get; construct set; }
+  public GLib.Value value { get { return _value; } }
+
+  construct {
+    _value = GLib.Value (GLib.Type.DOUBLE);
+  }
+  public GVariable (string name) {
+    this.name = name;
+  }
+  // Expression
+  public override string to_string () {
+    return name;
+  }
 }
 

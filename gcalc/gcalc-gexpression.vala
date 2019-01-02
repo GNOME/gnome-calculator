@@ -18,8 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GExpression : Object {
-  public string to_string () {
+public class GCalc.GExpression : Object, Expression {
+  ExpressionContainer exps = new ExpressionContainer ();
+  public ExpressionContainer expressions { get { return exps; } }
+  public new virtual string to_string () {
     return "";
   }
 }
