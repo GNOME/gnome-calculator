@@ -27,7 +27,13 @@ public class GCalc.Parser : Object {
     SourceFileType type = SourceFileType.NONE;
     var sf = new SourceFile (context, type, "gcalc://", str);
     var scanner = new Vala.Scanner (sf);
-    var lines = str.split ("\n");
+    string[] lines;
+    if ("\n" in str) {
+      lines = str.split ("\n");
+    } else {
+      lines = new string [0];
+      lines[0] = str;
+    }
     Vala.TokenType token = Vala.TokenType.NONE;
     var expected = new Gee.ArrayList<Vala.TokenType> ();
     Expression current = null;
@@ -35,11 +41,16 @@ public class GCalc.Parser : Object {
     while (token != Vala.TokenType.EOF) {
       Vala.SourceLocation begin, end;
       token = scanner.read_token (out begin, out end);
+      if (token == Vala.TokenType.EOF) {
+        break;
+      }
       string n = token.to_string ();
       n = n.replace ("`", "");
       n = n.replace ("'", "");
-      string l = lines[begin.line];
-      n = l.substring (begin.column, end.column - begin.column);
+      string l = lines[begin.line - 1];
+      message ("Token: '%s' : Line: %d Column begin: %d Column end: %d Text: %s", n, begin.line, begin.column, end.column, l);
+      n = l.substring (begin.column - 1, end.column - begin.column + 1);
+      message ("Token text: %s", n);
       if (expected.size != 0 && !expected.contains (token)) {
         throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
       }
@@ -96,6 +107,7 @@ public class GCalc.Parser : Object {
           var iexp = new GConstant.@double (double.parse (n));
           if (current == null) {
             current = new GPolynomial ();
+            eq.expressions.add (current);
           }
           if (current is Polynomial) {
             current.expressions.add (iexp);

@@ -19,7 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GConstant : GExpression, Constant {
-  private MPFR.Real real_value;
+  private MPFR.Real real_value = MPFR.Real (1000);
 
   construct {
     real_value.set_zero ();
