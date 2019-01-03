@@ -1,4 +1,4 @@
-/* gcalc-assign.vala
+/* gcalc-gplus.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,5 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Assign : Object, Expression, Operator, BinaryOperator {}
+public class GCalc.GPlus : GExpression, Operator, BinaryOperator, Plus {
+  public override string to_string () {
+    return "*";
+  }
+}
 
