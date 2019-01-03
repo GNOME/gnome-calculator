@@ -1,4 +1,4 @@
-/* gcalc-gmultiply.vala
+/* gcalc-gplus.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,9 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMultiply : GExpression, Operator, BinaryOperator, Multiply {
+public class GCalc.GDivision : GExpression, Operator, BinaryOperator, Division {
   public override string to_string () {
-    return "*";
+    return "/";
   }
 }
 
