@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GAssign : GExpression, Assign {
+public class GCalc.GAssign : GExpression, Operator, BinaryOperator, Assign {
   public override string to_string () {
     return "=";
   }

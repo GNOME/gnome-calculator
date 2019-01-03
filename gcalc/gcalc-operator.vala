@@ -1,4 +1,4 @@
-/* gcalc-assign.vala
+/* gcalc-operator.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,5 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Assign : Object, Expression, Operator, BinaryOperator {}
+public interface GCalc.Operator : Object, Expression {}
 
