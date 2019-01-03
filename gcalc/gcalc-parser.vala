@@ -21,6 +21,11 @@
 using Vala;
 
 public class GCalc.Parser : Object {
+  Expression current = null;
+  Expression current_parent = null;
+  Expression top_parent = null;
+  Gee.ArrayList<Vala.TokenType> expected = new Gee.ArrayList<Vala.TokenType> ();
+
   public void parse (string str, MathEquationManager eqman) throws GLib.Error {
     var context = new CodeContext ();
     CodeContext.push (context);
@@ -35,11 +40,7 @@ public class GCalc.Parser : Object {
       lines[0] = str;
     }
     Vala.TokenType token = Vala.TokenType.NONE;
-    var expected = new Gee.ArrayList<Vala.TokenType> ();
-    Expression current = null;
-    Expression current_parent = null;
-    Expression top_parent = null;
-    var eq = new GMathEquation ();
+    GMathEquation eq = new GMathEquation ();
     while (token != Vala.TokenType.EOF) {
       Vala.SourceLocation begin, end;
       token = scanner.read_token (out begin, out end);
@@ -188,53 +189,13 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.STAR:
           break;
         case Vala.TokenType.PLUS:
-          if (current is BinaryOperator) {
-            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a plus operator");
-          }
           var opp = new GPlus ();
-          if (current == null) {
-            var exp = new GPolynomial ();
-            var t = new GTerm ();
-            t.expressions.add (opp);
-            exp.expressions.add (t);
-            current = opp;
-            current_parent = t;
-            top_parent = exp;
-            eq.expressions.add (exp);
-            expected.clear ();
-          } else if (current_parent is Polynomial && current is Term) {
-            current.expressions.add (opp);
-            top_parent = current_parent;
-            current_parent = current;
-            current = opp;
-            expected.clear ();
-          } else if ((current is Constant || current is Variable)
-                     && current_parent is Term && top_parent is Polynomial) {
-            // New term
-            var t = new GTerm ();
-            t.expressions.add (opp);
-            top_parent.expressions.add (t);
-            current = opp;
-            current_parent = t;
-            expected.clear ();
-          }if (current is Variable && current_parent == null) {
-            // New Polynomial
-            var exp = new GPolynomial ();
-            eq.expressions.add (exp);
-            var t = new GTerm ();
-            exp.expressions.add (t);
-            t.expressions.add (current);
-            var t2 = new GTerm ();
-            exp.expressions.add (t2);
-            t2.expressions.add (opp);
-            current = opp;
-            current_parent = t2;
-            top_parent = exp;
-            expected.clear ();
-          }
+          process_operator (opp, eq);
           break;
         case Vala.TokenType.DIV:
         case Vala.TokenType.MINUS:
+          var opp = new GMinus ();
+          process_operator (opp, eq);
           break;
         case Vala.TokenType.ASSIGN:
           if (current == null) {
@@ -327,6 +288,51 @@ public class GCalc.Parser : Object {
       }
     }
     eqman.equations.add (eq);
+  }
+  private void process_operator (Operator opp, GMathEquation eq) throws GLib.Error {
+    if (current is BinaryOperator) {
+      throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a plus operator");
+    }
+    if (current == null) {
+      var exp = new GPolynomial ();
+      var t = new GTerm ();
+      t.expressions.add (opp);
+      exp.expressions.add (t);
+      current = opp;
+      current_parent = t;
+      top_parent = exp;
+      eq.expressions.add (exp);
+      expected.clear ();
+    } else if (current_parent is Polynomial && current is Term) {
+      current.expressions.add (opp);
+      top_parent = current_parent;
+      current_parent = current;
+      current = opp;
+      expected.clear ();
+    } else if ((current is Constant || current is Variable)
+               && current_parent is Term && top_parent is Polynomial) {
+      // New term
+      var t = new GTerm ();
+      t.expressions.add (opp);
+      top_parent.expressions.add (t);
+      current = opp;
+      current_parent = t;
+      expected.clear ();
+    }if (current is Variable && current_parent == null) {
+      // New Polynomial
+      var exp = new GPolynomial ();
+      eq.expressions.add (exp);
+      var t = new GTerm ();
+      exp.expressions.add (t);
+      t.expressions.add (current);
+      var t2 = new GTerm ();
+      exp.expressions.add (t2);
+      t2.expressions.add (opp);
+      current = opp;
+      current_parent = t2;
+      top_parent = exp;
+      expected.clear ();
+    }
   }
 }
 

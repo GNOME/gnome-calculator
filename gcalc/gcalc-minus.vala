@@ -1,4 +1,4 @@
-/* gcalc-gplus.vala
+/* gcalc-minus.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,9 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GPlus : GExpression, Operator, BinaryOperator, Plus {
-  public override string to_string () {
-    return "+";
-  }
-}
+public interface GCalc.Minus : Object, Expression, Operator, BinaryOperator {}
 
