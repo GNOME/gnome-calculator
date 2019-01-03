@@ -153,12 +153,9 @@ public class GCalc.Parser : Object {
               expected.add(Vala.TokenType.PLUS);
               expected.add(Vala.TokenType.MINUS);
               message ("Adding new variable named: '%s'", (current as Variable).name);
-            } else if (current is Polynomial) {
-                var t = new GTerm ();
-                t.expressions.add (v);
-                current.expressions.add (t);
-                current_parent = current;
-                current = t;
+            } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
+                current_parent.expressions.add (v);
+                current = v;
                 expected.clear ();
             }
           }
@@ -212,13 +209,30 @@ public class GCalc.Parser : Object {
             top_parent = current_parent;
             current_parent = current;
             current = opp;
-          } else if (current is Constant && current_parent is Term && top_parent is Polynomial) {
+            expected.clear ();
+          } else if ((current is Constant || current is Variable)
+                     && current_parent is Term && top_parent is Polynomial) {
             // New term
             var t = new GTerm ();
             t.expressions.add (opp);
             top_parent.expressions.add (t);
             current = opp;
             current_parent = t;
+            expected.clear ();
+          }if (current is Variable && current_parent == null) {
+            // New Polynomial
+            var exp = new GPolynomial ();
+            eq.expressions.add (exp);
+            var t = new GTerm ();
+            exp.expressions.add (t);
+            t.expressions.add (current);
+            var t2 = new GTerm ();
+            exp.expressions.add (t2);
+            t2.expressions.add (opp);
+            current = opp;
+            current_parent = t2;
+            top_parent = exp;
+            expected.clear ();
           }
           break;
         case Vala.TokenType.DIV:
