@@ -1,6 +1,6 @@
 /* -*- Mode: Vala; indent-tabs-mode: nil; c-basic-offset: 2; tab-width: 2 -*- */
 /*
- * libvda Unit Tests
+ * GCalc Unit Tests
  * Copyright (C) Daniel Espinosa Ortiz 2018 <esodan@gmail.com>
  *
  * libgda is free software: you can redistribute it and/or modify it

@@ -51,10 +51,6 @@ test_serializer = executable('test-serializer', test_serializer_sources,
 test('Serializer test', test_serializer)
 endif
 
-test_main_interfaces_sources = [
-  'gcalc-parsing.vala',
-]
-
 tests_deps = [
   gio,
   glib,
@@ -67,8 +63,23 @@ tests_deps = [
   inc_rooth_dep
 ]
 
-test_interfaces = executable('gcalc-interfaces', test_main_interfaces_sources,
+test_parsing_sources = [
+  'gcalc-parsing.vala',
+]
+
+test_parsing = executable('gcalc-parsing', test_parsing_sources,
   dependencies:tests_deps,
   link_with: [lib, lib_mpfrg],
 )
-test('gcalc-interfaces', test_interfaces)
+test('gcalc-parsing', test_parsing)
+
+
+test_solve_basic_sources = [
+  'gcalc-solving-basic.vala',
+]
+
+test_solve_basic = executable('gcalc-solve-basic', test_solve_basic_sources,
+  dependencies:tests_deps,
+  link_with: [lib, lib_mpfrg],
+)
+test('gcalc-solve-basic', test_solve_basic)
