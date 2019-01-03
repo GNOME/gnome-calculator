@@ -59,6 +59,23 @@ class Tests {
       message (c3.to_string ());
       assert (c3.real () == 3.0);
     });
+    Test.add_func ("/gcalc/solve/constant/negation",
+    ()=>{
+      var c1 = new GConstant.@double (9.0);
+      var c3 = c1.neg ();
+      assert (c3 != null);
+      message (c3.to_string ());
+      assert (c3.real () == -9.0);
+    });
+    Test.add_func ("/gcalc/solve/constant/complex",
+    ()=>{
+      var c1 = new GConstant.complex (10.0, 15.0);
+      var c3 = c1.neg ();
+      assert (c3 != null);
+      message (c3.to_string ());
+      assert (c3.real () == -10.0);
+      assert (c3.imag () == -15.0);
+    });
     return Test.run ();
   }
 }
