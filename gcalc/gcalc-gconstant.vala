@@ -108,5 +108,8 @@ public class GCalc.GConstant : GExpression, Constant {
     }
     return "%g".printf (real ());
   }
+  public override Result solve () {
+    return new GResult (this) as Result;
+  }
 }
 

@@ -18,5 +18,6 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GTerm : GExpression, Term {}
+public class GCalc.GTerm : GExpression, Term {
+}
 
