@@ -145,15 +145,12 @@ public class GCalc.Parser : Object {
             message ("Searching variable: %s", n);
             var v = new GVariable (n) as Expression;
             if (eqman.variables.find_named (n) == null) {
+              message ("Adding new variable named: '%s'", (v as Variable).name);
               eqman.variables.add (v);
             }
             if (current == null) {
               current = v;
               expected.clear ();
-              expected.add(Vala.TokenType.ASSIGN);
-              expected.add(Vala.TokenType.PLUS);
-              expected.add(Vala.TokenType.MINUS);
-              message ("Adding new variable named: '%s'", (current as Variable).name);
             } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
                 current_parent.expressions.add (v);
                 current = v;
@@ -187,6 +184,27 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.CHARACTER_LITERAL:
           break;
         case Vala.TokenType.STAR:
+          var op = new GMultiply ();
+          if (current is Operator) {
+            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
+          }
+          if ((current is Constant || current is Variable)
+              && current_parent is Term && top_parent is Polynomial) {
+              current_parent.expressions.add (op);
+              current = op;
+          } else if (current is Variable && current_parent == null) {
+            // New Polynomial
+            var exp = new GPolynomial ();
+            eq.expressions.add (exp);
+            var t = new GTerm ();
+            exp.expressions.add (t);
+            t.expressions.add (current);
+            t.expressions.add (op);
+            current = op;
+            current_parent = t;
+            top_parent = exp;
+            expected.clear ();
+          }
           break;
         case Vala.TokenType.PLUS:
           var opp = new GPlus ();
@@ -318,7 +336,7 @@ public class GCalc.Parser : Object {
       current = opp;
       current_parent = t;
       expected.clear ();
-    }if (current is Variable && current_parent == null) {
+    } else if (current is Variable && current_parent == null) {
       // New Polynomial
       var exp = new GPolynomial ();
       eq.expressions.add (exp);
