@@ -20,14 +20,13 @@
  */
 public class GCalc.GConstant : GExpression, Constant {
   private MPC.Complex _complex = MPC.Complex (1000);
-  private bool imaginary = false;
 
   internal unowned MPC.Complex get_complex () { return _complex; }
 
   construct {
     _complex.set_double (0.0);
   }
-  internal GConstant.complex (MPC.Complex complex) {
+  internal GConstant.internal_complex (MPC.Complex complex) {
     _complex.set (complex);
   }
   public GConstant.integer (int val) {
@@ -39,9 +38,8 @@ public class GCalc.GConstant : GExpression, Constant {
   public GConstant.@double (double val) {
     _complex.set_double (val);
   }
-  public GConstant.new_imag (double real, double imag) {
+  public GConstant.complex (double real, double imag) {
     _complex.set_double (real, imag);
-    imaginary = true;
   }
 
   // Constant Interface
@@ -63,7 +61,7 @@ public class GCalc.GConstant : GExpression, Constant {
     var p1 = MPC.Complex (1000);
     p1.set ((c as GConstant).get_complex ());
     res.add (_complex, p1);
-    var nc = new GConstant.complex (res);
+    var nc = new GConstant.internal_complex (res);
     return nc as Constant;
   }
   public Constant subtract (Constant c)
@@ -73,7 +71,7 @@ public class GCalc.GConstant : GExpression, Constant {
     var p1 = MPC.Complex (1000);
     p1.set ((c as GConstant).get_complex ());
     res.subtract (_complex, p1);
-    var nc = new GConstant.complex (res);
+    var nc = new GConstant.internal_complex (res);
     return nc as Constant;
   }
   public Constant multiply (Constant c)
@@ -83,7 +81,7 @@ public class GCalc.GConstant : GExpression, Constant {
     var p1 = MPC.Complex (1000);
     p1.set ((c as GConstant).get_complex ());
     res.multiply (_complex, p1);
-    var nc = new GConstant.complex (res);
+    var nc = new GConstant.internal_complex (res);
     return nc as Constant;
   }
   public Constant divide (Constant c)
@@ -93,12 +91,19 @@ public class GCalc.GConstant : GExpression, Constant {
     var p1 = MPC.Complex (1000);
     p1.set ((c as GConstant).get_complex ());
     res.divide (_complex, p1);
-    var nc = new GConstant.complex (res);
+    var nc = new GConstant.internal_complex (res);
+    return nc as Constant;
+  }
+  public Constant neg ()
+  {
+    var res = MPC.Complex (1000);
+    res.neg (_complex);
+    var nc = new GConstant.internal_complex (res);
     return nc as Constant;
   }
   // Expression interface
   public override string to_string () {
-    if (imaginary) {
+    if (imag () != 0.0) {
       return MPC.Complex.to_string (10, 10, _complex);
     }
     return "%g".printf (real ());

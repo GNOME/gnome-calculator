@@ -25,5 +25,6 @@ public interface GCalc.Constant : Object, Expression {
   public abstract Constant add (Constant c);
   public abstract Constant multiply (Constant c);
   public abstract Constant divide (Constant c);
+  public abstract Constant neg ();
 }
 
