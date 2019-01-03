@@ -72,7 +72,7 @@ class Tests {
         message ("Error catched correctly: %s", error.message);
       }
     });
-    Test.add_func ("/gcalc/parser/constant/variable",
+    Test.add_func ("/gcalc/parser/assign/variable/constant",
     ()=>{
       try {
         var parser = new Parser ();
@@ -93,6 +93,30 @@ class Tests {
         assert (p.expressions.get_n_items () == 1);
         var c = p.expressions.get_item (0) as Constant;
         assert (c != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/binaryoperator/plus/constant",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("1+1", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p.expressions.get_n_items () == 1);
+        message ("%s", p.expressions.get_item (0).get_type ().name ());
+        var plus = p.expressions.get_item (0) as Plus;
+        assert (plus != null);
+        assert (plus.expressions.get_n_items () == 2);
+        var c1 = plus.expressions.get_item (0) as Constant;
+        assert (c1 != null);
+        var c2 = plus.expressions.get_item (1) as Constant;
+        assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
       }
