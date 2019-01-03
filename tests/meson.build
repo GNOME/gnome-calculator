@@ -52,7 +52,7 @@ test('Serializer test', test_serializer)
 endif
 
 test_main_interfaces_sources = [
-  'gcalc-main-interfaces.vala',
+  'gcalc-parsing.vala',
 ]
 
 tests_deps = [
