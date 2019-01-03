@@ -40,12 +40,10 @@ public interface GCalc.Term : Object, Expression {
         if (current == null) {
           current = e;
           first = false;
-        } else {
-          if (current is Constant) {
-            if (current_operator != null) {
-              if (e is Minus && e is Multiply) {
-                current = (current as Constant).multiply (e as Constant);
-              }
+        } else if (current is Constant) {
+          if (current_operator != null) {
+            if (e is Minus && e is Multiply) {
+              current = (current as Constant).multiply (e as Constant);
             }
           }
         }

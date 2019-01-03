@@ -76,6 +76,32 @@ class Tests {
       assert (c3.real () == -10.0);
       assert (c3.imag () == -15.0);
     });
+    Test.add_func ("/gcalc/solve/constant",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("1", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var t = e.expressions.get_item (0) as Term;
+        assert (t != null);
+        var c = t.expressions.get_item (0) as Constant;
+        assert (c != null);
+        var res = c.solve ();
+        assert (res != null);
+        assert (res.expression != null);
+        var rc = res.expression as Constant;
+        assert (rc != null);
+        message ("Constant Result: %s", rc.to_string ());
+        assert (rc.real () == 1.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
     return Test.run ();
   }
 }

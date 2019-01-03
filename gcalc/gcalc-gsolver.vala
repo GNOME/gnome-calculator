@@ -31,10 +31,19 @@ public class GCalc.GSolver : Object, Solver {
     Result res;
     try {
       p.parse (str, equation_manager);
-      res = new GResult ((Expression) equation_manager.equations.get_item (0)) as Result; // FIXME: This should return a constant object
+      if (equation_manager.equations.get_n_items () == 0) {
+        var err = new GErrorResult ("No equations found after parsing");
+        res = new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result;
+      }
+      var eq = equation_manager.equations.get_item (0) as MathEquation;
+      if (eq == null) {
+        var err = new GErrorResult ("No equations found after parsing");
+        res = new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result;
+      }
+      res = eq.solve ();
     } catch (GLib.Error e) {
       var err = new GErrorResult (e.message);
-      res = new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result; // FIXME: This should return a constant object
+      res = new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result;
     }
     return res;
   }
