@@ -38,6 +38,7 @@ public class GCalc.Parser : Object {
     var expected = new Gee.ArrayList<Vala.TokenType> ();
     Expression current = null;
     Expression current_parent = null;
+    Expression top_parent = null;
     var eq = new GMathEquation ();
     while (token != Vala.TokenType.EOF) {
       Vala.SourceLocation begin, end;
@@ -152,17 +153,13 @@ public class GCalc.Parser : Object {
               expected.add(Vala.TokenType.PLUS);
               expected.add(Vala.TokenType.MINUS);
               message ("Adding new variable named: '%s'", (current as Variable).name);
-            } else {
-              if (current is Polynomial && current.expressions.get_n_items () == 0) {
-                current.expressions.add (v);
-                current = v;
+            } else if (current is Polynomial) {
+                var t = new GTerm ();
+                t.expressions.add (v);
+                current.expressions.add (t);
+                current_parent = current;
+                current = t;
                 expected.clear ();
-              } else if (current is BinaryOperator) {
-                current.expressions.add (v);
-                current = current_parent;
-              } else {
-                throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected variable without operator");
-              }
             }
           }
           break;
@@ -172,20 +169,22 @@ public class GCalc.Parser : Object {
           if (!double.try_parse (n, out res)) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a constant");
           }
-          var iexp = new GConstant.@double (double.parse (n));
+          var cexp = new GConstant.@double (double.parse (n));
           if (current == null) {
-            current = new GPolynomial ();
-            eq.expressions.add (current);
-          }
-          if (current is Polynomial) {
-            current.expressions.add (iexp);
+            var exp = new GPolynomial ();
+            eq.expressions.add (exp);
+            var t = new GTerm ();
+            exp.expressions.add (t);
+            t.expressions.add (cexp);
+            current = cexp;
+            current_parent = t;
+            top_parent = exp;
+          } else if ((current is Operator || current is Term) && current_parent is Term && top_parent is Polynomial) {
+            current_parent.expressions.add (cexp);
             expected.clear ();
-            current_parent = current;
-            current = iexp;
-          }
-          if (current is BinaryOperator) {
-            current.expressions.add (iexp);
             current = current_parent;
+            current_parent = top_parent;
+            top_parent = null;
           }
           break;
         case Vala.TokenType.PERCENT:
@@ -200,35 +199,26 @@ public class GCalc.Parser : Object {
           var opp = new GPlus ();
           if (current == null) {
             var exp = new GPolynomial ();
+            var t = new GTerm ();
+            t.expressions.add (opp);
+            exp.expressions.add (t);
             current = opp;
-            exp.expressions.add (opp);
-            current_parent = exp;
+            current_parent = t;
+            top_parent = exp;
             eq.expressions.add (exp);
             expected.clear ();
-          } else {
-            if (current is Variable || current is Constant) {
-              if (current_parent == null) {
-                var exp = new GPolynomial ();
-                exp.expressions.add (opp);
-                eq.expressions.add (exp);
-                opp.expressions.add (current);
-                current = opp;
-                current_parent = exp;
-              } else {
-                var i = current_parent.expressions.index_of (current);
-                if (!(current_parent is Polynomial)) {
-                  throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a plus operator: parent is not a Polynomial");
-                }
-                opp.expressions.add (current);
-                current_parent.expressions.@set (i, opp);
-                current = opp;
-              }
-            }
-            if (current is Polynomial) { // FIXME: Add the concept of term
-              current.expressions.add (opp);
-              current_parent = current;
-              current = opp;
-            }
+          } else if (current_parent is Polynomial && current is Term) {
+            current.expressions.add (opp);
+            top_parent = current_parent;
+            current_parent = current;
+            current = opp;
+          } else if (current is Constant && current_parent is Term && top_parent is Polynomial) {
+            // New term
+            var t = new GTerm ();
+            t.expressions.add (opp);
+            top_parent.expressions.add (t);
+            current = opp;
+            current_parent = t;
           }
           break;
         case Vala.TokenType.DIV:
@@ -247,8 +237,11 @@ public class GCalc.Parser : Object {
             expa.expressions.add (current);
             var exp = new GPolynomial ();
             expa.expressions.add (exp);
-            current = exp;
-            current_parent = expa;
+            var t = new GTerm ();
+            exp.expressions.add (t);
+            current = t;
+            current_parent = t;
+            top_parent = exp;
             expected.clear ();
           }
           break;
@@ -319,7 +312,6 @@ public class GCalc.Parser : Object {
         // Hash
         case Vala.TokenType.HASH:
           throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
-          break;
       }
     }
     eqman.equations.add (eq);

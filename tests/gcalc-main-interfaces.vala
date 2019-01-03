@@ -36,7 +36,10 @@ class Tests {
         var p = eq.expressions.get_item (0) as Polynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
-        var c = p.expressions.get_item (0) as Constant;
+        var t = p.expressions.get_item (0) as Term;
+        assert (t != null);
+        assert (t.expressions.get_n_items () == 1);
+        var c = t.expressions.get_item (0) as Constant;
         assert (c != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -55,7 +58,10 @@ class Tests {
         var p = eq.expressions.get_item (0) as Polynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
-        var c = p.expressions.get_item (0) as Constant;
+        var t = p.expressions.get_item (0) as Term;
+        assert (t != null);
+        assert (t.expressions.get_n_items () == 1);
+        var c = t.expressions.get_item (0) as Constant;
         assert (c != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -91,7 +97,10 @@ class Tests {
         var p = assign.expressions.get_item (1) as Polynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
-        var c = p.expressions.get_item (0) as Constant;
+        var t = p.expressions.get_item (0) as Term;
+        assert (t != null);
+        assert (t.expressions.get_n_items () == 1);
+        var c = t.expressions.get_item (0) as Constant;
         assert (c != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -108,14 +117,19 @@ class Tests {
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
         var p = eq.expressions.get_item (0) as Polynomial;
-        assert (p.expressions.get_n_items () == 1);
-        message ("%s", p.expressions.get_item (0).get_type ().name ());
-        var plus = p.expressions.get_item (0) as Plus;
-        assert (plus != null);
-        assert (plus.expressions.get_n_items () == 2);
-        var c1 = plus.expressions.get_item (0) as Constant;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 2);
+        var t1 = p.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 1);
+        var c1 = t1.expressions.get_item (0) as Constant;
         assert (c1 != null);
-        var c2 = plus.expressions.get_item (1) as Constant;
+        var t2 = p.expressions.get_item (1) as Term;
+        assert (t2 != null);
+        assert (t2.expressions.get_n_items () == 2);
+        var plus = t2.expressions.get_item (0) as Plus;
+        assert (plus != null);
+        var c2 = t2.expressions.get_item (1) as Constant;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
