@@ -19,6 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public interface GCalc.Solver : Object {
+  public abstract MathEquationManager equation_manager { get; set; }
   public abstract Result solve (string str) throws GLib.Error;
 }
 

@@ -21,13 +21,17 @@
 using GCalc;
 
 public class GCalc.GSolver : Object, Solver {
+  construct {
+    equation_manager = new GMathEquationManager ();
+  }
+  // Sover
+  public MathEquationManager equation_manager { get; set; }
   public Result solve (string str) throws GLib.Error {
     var p = new Parser ();
-    var em = new GMathEquationManager ();
     Result res;
     try {
-      p.parse (str, em);
-      res = new GResult ((Expression) em.equations.get_item (0)) as Result; // FIXME: This should return a constant object
+      p.parse (str, equation_manager);
+      res = new GResult ((Expression) equation_manager.equations.get_item (0)) as Result; // FIXME: This should return a constant object
     } catch (GLib.Error e) {
       var err = new GErrorResult (e.message);
       res = new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result; // FIXME: This should return a constant object
