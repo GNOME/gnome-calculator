@@ -314,6 +314,98 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/term/multiply/constant",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("1*1", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 1);
+        var t1 = p.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 3);
+        var c1 = t1.expressions.get_item (0) as Constant;
+        assert (c1 != null);
+        var m = t1.expressions.get_item (1) as Multiply;
+        assert (m != null);
+        var c2 = t1.expressions.get_item (2) as Constant;
+        assert (c2 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/term/multiply/variable",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("A*B", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        message ("Terms: %u", p.expressions.get_n_items ());
+        assert (p.expressions.get_n_items () == 1);
+        var t1 = p.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 3);
+        var c1 = t1.expressions.get_item (0) as Variable;
+        assert (c1 != null);
+        var m = t1.expressions.get_item (1) as Multiply;
+        assert (m != null);
+        var c2 = t1.expressions.get_item (2) as Variable;
+        assert (c2 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/term/complex/constant*variable",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("-1*B+3*A", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        message ("Terms: %u", p.expressions.get_n_items ());
+        assert (p.expressions.get_n_items () == 2);
+        var t1 = p.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 4);
+        var minus = t1.expressions.get_item (0) as Minus;
+        assert (minus != null);
+        var c1 = t1.expressions.get_item (1) as Constant;
+        assert (c1 != null);
+        var m1 = t1.expressions.get_item (2) as Multiply;
+        assert (m1 != null);
+        var c2 = t1.expressions.get_item (3) as Variable;
+        assert (c2 != null);
+        var t2 = p.expressions.get_item (1) as Term;
+        assert (t2 != null);
+        var plus = t2.expressions.get_item (0) as Plus;
+        assert (plus != null);
+        var c3 = t2.expressions.get_item (1) as Constant;
+        assert (c3 != null);
+        var m2 = t2.expressions.get_item (2) as Multiply;
+        assert (m2 != null);
+        var c4 = t2.expressions.get_item (3) as Variable;
+        assert (c4 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }
