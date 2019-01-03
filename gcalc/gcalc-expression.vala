@@ -21,5 +21,6 @@
 public interface GCalc.Expression : Object {
   public abstract ExpressionContainer expressions { get; }
   public abstract string to_string ();
+  public abstract Result solve ();
 }
 

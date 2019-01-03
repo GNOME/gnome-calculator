@@ -18,5 +18,44 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Term : Object, Expression {}
+public interface GCalc.Term : Object, Expression {
+  public virtual Expression sum (Term t) throws GLib.Error {
+    if (t.expressions.get_n_items () == 0) {
+      return this;
+    }
+    Expression current = null;
+    Operator current_operator = null;
+    bool first = true;
+    foreach (Expression e in expressions) {
+      if (e is Operator) {
+        if (!(e is Minus || e is Plus) && first) {
+          throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
+        }
+        if (e is Minus && first) {
+          current = new GConstant.@double (-1.0);
+          first = false;
+        }
+        current_operator = e as Operator;
+      } else if (e is Constant) {
+        if (current == null) {
+          current = e;
+          first = false;
+        } else {
+          if (current is Constant) {
+            if (current_operator != null) {
+              if (e is Minus && e is Multiply) {
+                current = (current as Constant).multiply (e as Constant);
+              }
+            }
+          }
+        }
+      }
+    }
+    return current;
+  }
+}
+
+public errordomain GCalc.TermError {
+  INVALID_OPERATOR
+}
 

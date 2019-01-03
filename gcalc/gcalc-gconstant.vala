@@ -19,26 +19,89 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GConstant : GExpression, Constant {
-  private MPFR.Real real_value = MPFR.Real (1000);
+  private MPC.Complex _complex = MPC.Complex (1000);
+  private bool imaginary = false;
+
+  internal unowned MPC.Complex get_complex () { return _complex; }
 
   construct {
-    real_value.set_zero ();
+    _complex.set_double (0.0);
+  }
+  internal GConstant.complex (MPC.Complex complex) {
+    _complex.set (complex);
   }
   public GConstant.integer (int val) {
-    real_value.set_signed_integer ((long) val);
+    _complex.set_double (val);
   }
   public GConstant.unsigned_integer (uint val) {
-    real_value.set_unsigned_integer ((ulong) val);
+    _complex.set_double (val);
   }
   public GConstant.@double (double val) {
-    real_value.set_double (val);
+    _complex.set_double (val);
+  }
+  public GConstant.new_imag (double real, double imag) {
+    _complex.set_double (real, imag);
+    imaginary = true;
   }
 
   // Constant Interface
-  public void zero () { real_value.set_zero (); }
+  public double real () {
+    return _complex.get_real_double ();
+  }
+  public double imag () {
+    return _complex.get_imag_double ();
+  }
+  public void zero () {
+    MPFR.Real r = MPFR.Real (1000);
+    r.set_zero ();
+    _complex.set_mpreal (r);
+  }
+  public Constant add (Constant c)
+    requires (c is GConstant)
+  {
+    var res = MPC.Complex (1000);
+    var p1 = MPC.Complex (1000);
+    p1.set ((c as GConstant).get_complex ());
+    res.add (_complex, p1);
+    var nc = new GConstant.complex (res);
+    return nc as Constant;
+  }
+  public Constant subtract (Constant c)
+    requires (c is GConstant)
+  {
+    var res = MPC.Complex (1000);
+    var p1 = MPC.Complex (1000);
+    p1.set ((c as GConstant).get_complex ());
+    res.subtract (_complex, p1);
+    var nc = new GConstant.complex (res);
+    return nc as Constant;
+  }
+  public Constant multiply (Constant c)
+    requires (c is GConstant)
+  {
+    var res = MPC.Complex (1000);
+    var p1 = MPC.Complex (1000);
+    p1.set ((c as GConstant).get_complex ());
+    res.multiply (_complex, p1);
+    var nc = new GConstant.complex (res);
+    return nc as Constant;
+  }
+  public Constant divide (Constant c)
+    requires (c is GConstant)
+  {
+    var res = MPC.Complex (1000);
+    var p1 = MPC.Complex (1000);
+    p1.set ((c as GConstant).get_complex ());
+    res.divide (_complex, p1);
+    var nc = new GConstant.complex (res);
+    return nc as Constant;
+  }
   // Expression interface
   public override string to_string () {
-    return ""; // FIXME: write down string representation
+    if (imaginary) {
+      return MPC.Complex.to_string (10, 10, _complex);
+    }
+    return "%g".printf (real ());
   }
 }
 

@@ -19,5 +19,33 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GPolynomial : GExpression, Polynomial {
+  public override Result solve () {
+    Expression res = null;
+    Term current = null;
+    foreach (Expression e in expressions) {
+      var r = e.solve ();
+      if (!r.is_valid) {
+        return r;
+      }
+      if (r.expression is Term) {
+        var t = r.expression as Term;
+        if (current == null) {
+          current = t;
+          continue;
+        }
+        try {
+          current.sum (t);
+        } catch (GLib.Error err) {
+          var nerr = new GErrorResult (err.message);
+          return new GResult.with_error ((Expression) new GExpression (), (ErrorResult) nerr) as Result;
+        }
+      }
+      if (r.expression is Constant) {
+        res = r.expression;
+        break;
+      }
+    }
+    return new GResult (res) as Result;
+  }
 }
 

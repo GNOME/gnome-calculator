@@ -121,5 +121,19 @@ namespace MPC {
         public int asinh (Complex op, Round rnd = Round.NEAREST);
         public int acosh (Complex op, Round rnd = Round.NEAREST);
         public int atanh (Complex op, Round rnd = Round.NEAREST);
+
+        public double get_real_double () {
+          var r = MPFR.Real (1000);
+          r.set (get_real ().val);
+          return r.get_double ();
+        }
+        public double get_imag_double () {
+          var i = MPFR.Real (1000);
+          i.set (get_imag ().val);
+          return i.get_double ();
+        }
+
+        [CCode (cname="mpc_get_str")]
+        public static string to_string (int @base, size_t digits, Complex op, Round rnd = Round.NEAREST);
     }
 }

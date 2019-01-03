@@ -90,6 +90,7 @@ deps = [
 	libxml,
 	libsoup,
 	vala_dep,
+	libmath,
 	gee
 ]
 
