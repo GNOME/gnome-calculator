@@ -24,5 +24,9 @@ public class GCalc.GExpression : Object, Expression {
   public new virtual string to_string () {
     return "";
   }
+  public new virtual Result solve () {
+    var e = new GErrorResult ("Invalid expression");
+    return new GResult.with_error (this, e as ErrorResult);
+  }
 }
 

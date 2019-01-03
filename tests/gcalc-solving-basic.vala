@@ -23,16 +23,41 @@ class Tests {
   {
     GLib.Intl.setlocale (GLib.LocaleCategory.ALL, "");
     Test.init (ref args);
-    Test.add_func ("/gcalc/parser/constant/integer",
+    Test.add_func ("/gcalc/solve/constant/add",
     ()=>{
-      try {
-        var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
-        parser.parse ("1", eqman);
-
-      } catch (GLib.Error error) {
-        warning ("Error: %s", error.message);
-      }
+      var c1 = new GConstant.@double (3.0);
+      var c2 = new GConstant.@double (3.0);
+      var c3 = c1.add (c2);
+      assert (c3 != null);
+      message (c3.to_string ());
+      assert (c3.real () == 6.0);
+    });
+    Test.add_func ("/gcalc/solve/constant/subtract",
+    ()=>{
+      var c1 = new GConstant.@double (9.0);
+      var c2 = new GConstant.@double (3.0);
+      var c3 = c1.subtract (c2);
+      assert (c3 != null);
+      message (c3.to_string ());
+      assert (c3.real () == 6.0);
+    });
+    Test.add_func ("/gcalc/solve/constant/multiply",
+    ()=>{
+      var c1 = new GConstant.@double (3.0);
+      var c2 = new GConstant.@double (3.0);
+      var c3 = c1.multiply (c2);
+      assert (c3 != null);
+      message (c3.to_string ());
+      assert (c3.real () == 9.0);
+    });
+    Test.add_func ("/gcalc/solve/constant/devide",
+    ()=>{
+      var c1 = new GConstant.@double (9.0);
+      var c2 = new GConstant.@double (3.0);
+      var c3 = c1.divide (c2);
+      assert (c3 != null);
+      message (c3.to_string ());
+      assert (c3.real () == 3.0);
     });
     return Test.run ();
   }
