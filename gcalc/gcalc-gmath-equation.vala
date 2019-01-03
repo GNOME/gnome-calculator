@@ -18,5 +18,14 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMathEquation : GExpression, MathEquation {}
+public class GCalc.GMathEquation : GExpression, MathEquation {
+  public override Result solve () {
+    if (expressions.get_n_items () == 0) {
+      var err = new GErrorResult ("No expressions found in equation");
+      return new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result;
+    }
+    var e = expressions.get_item (0) as Expression;
+    return e.solve ();
+  }
+}
 

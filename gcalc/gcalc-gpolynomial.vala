@@ -34,7 +34,7 @@ public class GCalc.GPolynomial : GExpression, Polynomial {
           continue;
         }
         try {
-          current.sum (t);
+          current = current.sum (t) as Term;
         } catch (GLib.Error err) {
           var nerr = new GErrorResult (err.message);
           return new GResult.with_error ((Expression) new GExpression (), (ErrorResult) nerr) as Result;
