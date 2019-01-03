@@ -57,6 +57,7 @@ sources = files([
 	'gcalc-gpolynomial.vala',
 	'gcalc-gresult.vala',
 	'gcalc-gsolver.vala',
+	'gcalc-gterm.vala',
 	'gcalc-gvariable.vala',
 	'gcalc-math-equation.vala',
 	'gcalc-math-equation-manager.vala',
@@ -66,6 +67,7 @@ sources = files([
 	'gcalc-polynomial.vala',
 	'gcalc-result.vala',
 	'gcalc-solver.vala',
+	'gcalc-term.vala',
 	'gcalc-variable.vala',
 ])
 
