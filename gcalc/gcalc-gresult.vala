@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GResult : Object {
+public class GCalc.GResult : Object, Result {
   private Expression _expression;
   private ErrorResult _error;
   public GResult (Expression exp) {
@@ -29,6 +29,8 @@ public class GCalc.GResult : Object {
     _expression = exp;
     _error = error;
   }
+
+  // Result
   public bool is_valid { get { return _error == null; } }
   public string to_string () {
     return expression.to_string ();

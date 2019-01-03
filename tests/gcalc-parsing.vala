@@ -504,6 +504,11 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/constant/to_string",
+    ()=>{
+      Constant c = new GConstant.@double (-1.0) as Constant;
+      assert ("-1" in c.to_string ());
+    });
     return Test.run ();
   }
 }
