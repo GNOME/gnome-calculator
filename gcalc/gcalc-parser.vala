@@ -179,9 +179,7 @@ public class GCalc.Parser : Object {
           } else if ((current is Operator || current is Term) && current_parent is Term && top_parent is Polynomial) {
             current_parent.expressions.add (cexp);
             expected.clear ();
-            current = current_parent;
-            current_parent = top_parent;
-            top_parent = null;
+            current = cexp;
           }
           break;
         case Vala.TokenType.PERCENT:
