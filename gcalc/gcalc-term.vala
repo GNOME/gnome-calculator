@@ -50,6 +50,9 @@ public interface GCalc.Term : Object, Expression {
             if (current_operator is Multiply) {
               current = (current as Constant).multiply (e as Constant);
             }
+            if (current_operator is Division) {
+              current = (current as Constant).divide (e as Constant);
+            }
           }
         }
       }
