@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GErrorResult : Object {
+public class GCalc.GErrorResult : Object, ErrorResult {
   private string msg = "";
   public GErrorResult (string msg) {
     this.msg = msg;
