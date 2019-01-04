@@ -50,6 +50,7 @@ sources = files([
 	'gcalc-function-asin.vala',
 	'gcalc-function-atan.vala',
 	'gcalc-function-cos.vala',
+	'gcalc-function-cosh.vala',
 	'gcalc-function-exp.vala',
 	'gcalc-function-log.vala',
 	'gcalc-function-sin.vala',
