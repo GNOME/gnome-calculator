@@ -19,15 +19,27 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GFunction : GExpression, Function {
+  ExpressionContainer _parameters = new ExpressionContainer ();
+  ExpressionContainer _param_types = new ExpressionContainer ();
+
+  public ExpressionContainer parameters { get { return _parameters; } }
+  public ExpressionContainer param_types { get { return _param_types; } }
+  public uint n_params { get; construct set; }
   public string name { get; construct set; }
+
   construct {
     name = "NoName";
   }
-  public GFunction (string name) {
+  public GFunction (string name, int nparams) {
     this.name = name;
+    n_params = nparams;
   }
   public override string to_string () {
-    return name + " ()";
+    return name + "()";
+  }
+
+  public new virtual Expression call () throws GLib.Error {
+    return new GErrorExpression ();
   }
 }
 

@@ -35,7 +35,7 @@ public class GCalc.GExpression : Object, Expression {
   }
   public new virtual Result solve () {
     var e = new GErrorResult ("Invalid expression");
-    return new GResult.with_error (this, e as ErrorResult);
+    return new GResult.with_error (new GErrorExpression (), e as ErrorResult);
   }
 }
 

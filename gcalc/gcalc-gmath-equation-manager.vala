@@ -25,5 +25,10 @@ public class GCalc.GMathEquationManager : Object, MathEquationManager {
   public ExpressionContainer equations { get { return _equations; } }
   public ExpressionContainer functions { get { return _functions; } }
   public ExpressionContainer variables { get { return _variables; } }
+
+  construct {
+    // Initialize default Functions
+    functions.add (new GFunctionSqrt ());
+  }
 }
 

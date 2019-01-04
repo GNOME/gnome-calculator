@@ -127,14 +127,13 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.WHILE:
         case Vala.TokenType.YIELD:
         case Vala.TokenType.IDENTIFIER:
-          message ("Found an identifier");
           var sfunc = eqman.functions.find_named (n);
           if (sfunc != null) {
             current = sfunc;
             expected.clear ();
             expected.add(Vala.TokenType.OPEN_PARENS);
           } else if (n.down () == "def" && current == null) {
-            var f = new GFunction (n) as Expression;
+            var f = new GFunction (n, 1) as Expression; // FIXME: Requires more work to identify parameters
             eqman.functions.add (f);
             current = f;
             expected.clear ();
@@ -142,10 +141,8 @@ public class GCalc.Parser : Object {
           } else if (n.down () == "def" && current is Function) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
-            message ("Searching variable: %s", n);
             var v = new GVariable (n) as Expression;
             if (eqman.variables.find_named (n) == null) {
-              message ("Adding new variable named: '%s'", (v as Variable).name);
               eqman.variables.add (v);
             }
             if (current == null) {
@@ -245,10 +242,6 @@ public class GCalc.Parser : Object {
             var fexp = new GPolynomial ();
             current = fexp;
             expected.clear ();
-            expected.add (Vala.TokenType.IDENTIFIER);
-            expected.add (Vala.TokenType.INTEGER_LITERAL);
-            expected.add (Vala.TokenType.REAL_LITERAL);
-            expected.add (Vala.TokenType.CLOSE_PARENS);
           } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
             var g = new GGroup ();
             current_parent.expressions.add (g);
