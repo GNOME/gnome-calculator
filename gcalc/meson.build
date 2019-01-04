@@ -57,6 +57,7 @@ sources = files([
 	'gcalc-function-sinh.vala',
 	'gcalc-function-sqrt.vala',
 	'gcalc-function-tan.vala',
+	'gcalc-function-tanh.vala',
 	'gcalc-error-result.vala',
 	'gcalc-gexpression.vala',
 	'gcalc-gassign.vala',
