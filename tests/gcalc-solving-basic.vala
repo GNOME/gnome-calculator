@@ -127,6 +127,31 @@ class Tests {
         warning ("Error: %s", e.message);
       }
     });
+    Test.add_func ("/gcalc/solve/term/constant/multiply",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("3*5", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var t = e.expressions.get_item (0) as Term;
+        var res = t.solve ();
+        assert (res != null);
+        assert (res.expression != null);
+        message ("Result type: %s", res.expression.get_type ().name ());
+        assert (res.is_valid);
+        var rc = res.expression as Constant;
+        assert (rc != null);
+        message ("Constant Result: %s", rc.to_string ());
+        assert (rc.real () == 15.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
     return Test.run ();
   }
 }
