@@ -1,4 +1,4 @@
-/* gcalc-function-sqrt.vala
+/* gcalc-function-atan.vala
  *
  * Copyright (C) 2019 Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,10 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionSqrt : GFunction {
+public class GCalc.GFunctionAtan : GFunction {
 
-  public GFunctionSqrt () {
-    base ("sqrt", 1);
+  public GFunctionAtan () {
+    base ("atan", 1);
     param_types.add (new GConstant ());
   }
 
@@ -46,7 +46,7 @@ public class GCalc.GFunctionSqrt : GFunction {
     var p1 = MPC.Complex (1000);
     p1.set (c.get_complex ());
     var res = MPC.Complex (1000);
-    res.sqrt (p1);
+    res.atan (p1);
     var nc = new GConstant.internal_complex (res);
     return nc as Expression;
   }
