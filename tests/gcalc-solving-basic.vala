@@ -638,7 +638,21 @@ class Tests {
     ()=>{
       try {
         var c1 = new GConstant.@double (0.0);
-        var f = new GFunctionTanh ();
+        var f = new GFunctionAsinh ();
+        f.parameters.add (c1);
+        var c2 = f.call () as Constant;
+        assert (c2 != null);
+        message (c2.to_string ());
+        assert (c2.real () == 0.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/acosh",
+    ()=>{
+      try {
+        var c1 = new GConstant.@double (1.0);
+        var f = new GFunctionAcosh ();
         f.parameters.add (c1);
         var c2 = f.call () as Constant;
         assert (c2 != null);
