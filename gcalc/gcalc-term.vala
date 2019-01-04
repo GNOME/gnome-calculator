@@ -35,7 +35,9 @@ public interface GCalc.Term : Object, Expression {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
         }
         if (e is Minus && first) {
-          current = new GConstant.@double (-1.0);
+          var c = new GConstant.@double (1.0);
+          c = c.neg () as GConstant;
+          current = c;
           first = false;
         }
         current_operator = e as Operator;
@@ -45,7 +47,7 @@ public interface GCalc.Term : Object, Expression {
           first = false;
         } else if (current is Constant) {
           if (current_operator != null) {
-            if (e is Minus && e is Multiply) {
+            if (current_operator is Multiply) {
               current = (current as Constant).multiply (e as Constant);
             }
           }
