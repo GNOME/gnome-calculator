@@ -249,6 +249,16 @@ public class GCalc.Parser : Object {
             expected.add (Vala.TokenType.INTEGER_LITERAL);
             expected.add (Vala.TokenType.REAL_LITERAL);
             expected.add (Vala.TokenType.CLOSE_PARENS);
+          } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
+            var g = new GGroup ();
+            current_parent.expressions.add (g);
+            var exp = new GPolynomial ();
+            g.expressions.add (exp);
+            var t = new GTerm ();
+            exp.expressions.add (t);
+            current = t;
+            current_parent = exp;
+            top_parent = g;
           }
           break;
         case Vala.TokenType.CLOSE_PARENS:
@@ -266,8 +276,8 @@ public class GCalc.Parser : Object {
             par = par.parent;
           }
           if (foundp) {
-            current = par.parent; // Term
-            current_parent = current.parent;
+            current = par;
+            current_parent = par.parent; // Term
             top_parent = current_parent.parent;
           }
           break;
@@ -359,6 +369,15 @@ public class GCalc.Parser : Object {
       top_parent.expressions.add (t);
       current = opp;
       current_parent = t;
+      expected.clear ();
+    } else if (current is Group && current_parent is Term && top_parent is Polynomial) {
+      // New term
+      var t = new GTerm ();
+      t.expressions.add (opp);
+      top_parent.expressions.add (t);
+      current = opp;
+      current_parent = t;
+      top_parent = current_parent.parent;
       expected.clear ();
     } else if (current is Variable && current_parent == null) {
       // New Polynomial

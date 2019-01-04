@@ -37,6 +37,7 @@ public interface GCalc.Term : Object, Expression {
     Operator current_operator = null;
     bool first = true;
     foreach (Expression e in expressions) {
+      message ("Evaluation Expression in term: %s", e.to_string ());
       if (e is Operator) {
         if (!(e is Minus || e is Plus) && first) {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
@@ -65,6 +66,12 @@ public interface GCalc.Term : Object, Expression {
               current = (current as Constant).divide (e as Constant);
             }
           }
+        }
+      } else if (e is Group) {
+        var ev = ((Group) e).evaluate ();
+        if (current == null) {
+          current = ev;
+          first = false;
         }
       }
     }

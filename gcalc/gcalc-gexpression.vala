@@ -27,7 +27,11 @@ public class GCalc.GExpression : Object, Expression {
   public weak Expression parent { get; set; }
   public ExpressionContainer expressions { get { return exps; } }
   public new virtual string to_string () {
-    return "";
+    string s = "";
+    foreach (Expression e in expressions) {
+      s += e.to_string ();
+    }
+    return s;
   }
   public new virtual Result solve () {
     var e = new GErrorResult ("Invalid expression");

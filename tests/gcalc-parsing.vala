@@ -563,6 +563,55 @@ class Tests {
         message ("Correctly catched grouping error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/term/parenthesis/grouping",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("(1)+(1)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 2);
+        var t1 = p.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 1);
+        var g1 = t1.expressions.get_item (0) as Group;
+        assert (g1 != null);
+        assert (g1.closed);
+        assert (g1.expressions.get_n_items () == 1);
+        var p1 = g1.expressions.get_item (0) as Polynomial;
+        assert (p1 != null);
+        assert (p1.expressions.get_n_items () == 1);
+        var t11 = p1.expressions.get_item (0) as Term;
+        assert (t11 != null);
+        assert (t11.expressions.get_n_items () == 1);
+        var c1 = t11.expressions.get_item (0) as Constant;
+        assert (c1 != null);
+        var t2 = p.expressions.get_item (1) as Term;
+        assert (t2 != null);
+        assert (t2.expressions.get_n_items () == 2);
+        var plus = t2.expressions.get_item (0) as Plus;
+        assert (plus != null);
+        var g2 = t2.expressions.get_item (1) as Group;
+        assert (g2 != null);
+        assert (g2.closed);
+        assert (g2.expressions.get_n_items () == 1);
+        var p2 = g2.expressions.get_item (0) as Polynomial;
+        assert (p2 != null);
+        assert (p2.expressions.get_n_items () == 1);
+        var t21 = p1.expressions.get_item (0) as Term;
+        assert (t21 != null);
+        assert (t21.expressions.get_n_items () == 1);
+        var c2 = t21.expressions.get_item (0) as Constant;
+        assert (c2 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }

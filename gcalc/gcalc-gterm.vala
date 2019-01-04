@@ -30,13 +30,5 @@ public class GCalc.GTerm : GExpression, Term {
     }
     return res;
   }
-  // Expression
-  public override string to_string () {
-    string s = "";
-    foreach (Expression e in expressions) {
-      s += e.to_string ();
-    }
-    return s;
-  }
 }
 
