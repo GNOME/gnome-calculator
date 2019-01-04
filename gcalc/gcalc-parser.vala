@@ -178,6 +178,12 @@ public class GCalc.Parser : Object {
             current_parent.expressions.add (cexp);
             expected.clear ();
             current = cexp;
+          } else if (current is Term && current_parent is Polynomial && top_parent is Group) {
+            current.expressions.add (cexp);
+            top_parent = current_parent;
+            current_parent = current;
+            current = cexp;
+            expected.clear ();
           }
           break;
         case Vala.TokenType.PERCENT:
@@ -221,7 +227,21 @@ public class GCalc.Parser : Object {
           }
           break;
         case Vala.TokenType.OPEN_PARENS:
-          if (current is Function) {
+          if (current == null) {
+            var exp = new GPolynomial ();
+            eq.expressions.add (exp);
+            var t = new GTerm ();
+            exp.expressions.add (t);
+            var g = new GGroup ();
+            t.expressions.add (g);
+            var exp2 = new GPolynomial ();
+            var t2 = new GTerm ();
+            exp2.expressions.add (t2);
+            g.expressions.add (exp2);
+            current = t2;
+            current_parent = exp2;
+            top_parent = g;
+          } else if (current is Function) {
             var fexp = new GPolynomial ();
             current = fexp;
             expected.clear ();
@@ -232,6 +252,30 @@ public class GCalc.Parser : Object {
           }
           break;
         case Vala.TokenType.CLOSE_PARENS:
+          if (current == null) {
+            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression while closing parenthesis");
+          }
+          bool foundp = false;
+          var par = current;
+          while (par != null) {
+            if (par is Group) {
+              foundp = true;
+              ((Group) par).closed = true;
+              break;
+            }
+            par = par.parent;
+          }
+          if (foundp) {
+            current = par.parent; // Term
+            current_parent = current.parent;
+            top_parent = current_parent.parent;
+          }
+          break;
+        // braces
+        case Vala.TokenType.CLOSE_BRACE:
+        case Vala.TokenType.CLOSE_BRACKET:
+        case Vala.TokenType.OPEN_BRACE:
+        case Vala.TokenType.OPEN_BRACKET:
           break;
         case Vala.TokenType.STRING_LITERAL:
           message ("Found string literal");
@@ -266,13 +310,9 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.OP_SHIFT_LEFT:
         // Carret?
         case Vala.TokenType.CARRET:
-        // braces
-        case Vala.TokenType.CLOSE_BRACE:
-        case Vala.TokenType.CLOSE_BRACKET:
+        // templates and regex
         case Vala.TokenType.CLOSE_REGEX_LITERAL:
         case Vala.TokenType.CLOSE_TEMPLATE:
-        case Vala.TokenType.OPEN_BRACE:
-        case Vala.TokenType.OPEN_BRACKET:
         case Vala.TokenType.OPEN_REGEX_LITERAL:
         case Vala.TokenType.OPEN_TEMPLATE:
         //

@@ -1,4 +1,4 @@
-/* gcalc-expresion.vala
+/* gcalc-ggroup.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,13 +18,37 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Expression : Object {
-  public abstract weak Expression parent { get; set; }
-  public abstract ExpressionContainer expressions { get; }
-  public abstract string to_string ();
-  public abstract Result solve ();
-}
-
-public interface GCalc.ErrorExpression : Object, Expression {
+public class GCalc.GGroup : GExpression, Group {
+  public Group.Level level { get; set; }
+  public bool closed { get; set; }
+  public override string to_string () {
+    string s = "";
+    switch (level) {
+      case ONE:
+        s = "(";
+        break;
+      case TWO:
+        s = "[";
+        break;
+      case THREE:
+        s = "{";
+        break;
+    }
+    foreach (Expression e in expressions) {
+      s += e.to_string ();
+    }
+    switch (level) {
+      case ONE:
+        s += ")";
+        break;
+      case TWO:
+        s += "]";
+        break;
+      case THREE:
+        s += "}";
+        break;
+    }
+    return s;
+  }
 }
 

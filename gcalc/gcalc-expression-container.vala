@@ -19,6 +19,23 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.ExpressionContainer : Gee.ArrayList<Expression>, GLib.ListModel {
+  public weak Expression parent { get; set; }
+  public new void add (Expression exp) {
+    (this as Gee.ArrayList<Expression>).add (exp);
+    exp.parent = parent;
+  }
+  public new Expression remove_at (int index) {
+    var r = (this as Gee.ArrayList<Expression>).remove_at (index);
+    if (r != null) {
+      r.parent = null;
+    }
+    return r;
+  }
+  public new Expression remove (Expression exp) {
+    var i = (this as Gee.ArrayList<Expression>).index_of (exp);
+    return remove_at (i);
+  }
+  // GLib.ListModel
   public Object? get_item (uint position) {
     return (this as Gee.ArrayList<Expression>).@get ((int) position) as Object;
   }

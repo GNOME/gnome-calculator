@@ -60,6 +60,8 @@ sources = files([
 	'gcalc-gplus.vala',
 	'gcalc-gpolynomial.vala',
 	'gcalc-gresult.vala',
+	'gcalc-group.vala',
+	'gcalc-ggroup.vala',
 	'gcalc-gsolver.vala',
 	'gcalc-gterm.vala',
 	'gcalc-gvariable.vala',

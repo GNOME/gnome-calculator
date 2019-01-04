@@ -509,6 +509,60 @@ class Tests {
       Constant c = new GConstant.@double (-1.0) as Constant;
       assert ("-1" in c.to_string ());
     });
+    Test.add_func ("/gcalc/parser/term/parenthesis",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("(1)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 1);
+        var t = p.expressions.get_item (0) as Term;
+        assert (t != null);
+        assert (t.expressions.get_n_items () == 1);
+        var g = t.expressions.get_item (0) as Group;
+        assert (g != null);
+        assert (g.closed);
+        assert (g.expressions.get_n_items () == 1);
+        var p1 = g.expressions.get_item (0) as Polynomial;
+        assert (p1 != null);
+        assert (p1.expressions.get_n_items () == 1);
+        var t1 = p1.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 1);
+        var c = t1.expressions.get_item (0) as Constant;
+        assert (c != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/term/parenthesis/errors",
+    ()=>{
+      var parser = new Parser ();
+      var eqman1 = new GMathEquationManager ();
+      try {
+        parser.parse ("(", eqman1);
+      } catch (GLib.Error error) {
+        message ("Correctly catched grouping error: %s", error.message);
+      }
+      var eqman2 = new GMathEquationManager ();
+      try {
+        parser.parse ("1)", eqman2);
+      } catch (GLib.Error error) {
+        message ("Correctly catched grouping error: %s", error.message);
+      }
+      var eqman3 = new GMathEquationManager ();
+      try {
+        parser.parse ("(1))", eqman3);
+      } catch (GLib.Error error) {
+        message ("Correctly catched grouping error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }

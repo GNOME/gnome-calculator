@@ -20,6 +20,11 @@
  */
 public class GCalc.GExpression : Object, Expression {
   ExpressionContainer exps = new ExpressionContainer ();
+  construct {
+    exps.parent = this;
+  }
+  // Expression
+  public weak Expression parent { get; set; }
   public ExpressionContainer expressions { get { return exps; } }
   public new virtual string to_string () {
     return "";
