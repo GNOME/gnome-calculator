@@ -19,15 +19,15 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public interface GCalc.Function : Object, Expression {
-  public abstract ExpressionContainer parameters { get; }
   public abstract ExpressionContainer param_types { get; }
   public abstract string name { get; construct set; }
   public abstract uint n_params { get; construct set; }
-  public abstract Expression call () throws GLib.Error;
+  public abstract bool closed { get; set; }
+  public abstract Expression evaluate () throws GLib.Error;
   public virtual bool verify_params () throws GLib.Error {
-    if (parameters.get_n_items () != n_params) {
+    if (expressions.get_n_items () != n_params) {
       throw new FunctionError.INVALID_PARAMETERS_ERROR ("Invalid number of parameters. Required %u, provided: %u",
-                                                  n_params, parameters.get_n_items ());
+                                                  n_params, expressions.get_n_items ());
     }
     return true;
   }

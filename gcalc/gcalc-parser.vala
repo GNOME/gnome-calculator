@@ -129,15 +129,20 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.IDENTIFIER:
           var sfunc = eqman.functions.find_named (n);
           if (sfunc != null) {
-            current = sfunc;
-            expected.clear ();
-            expected.add(Vala.TokenType.OPEN_PARENS);
+            if (current == null) {
+              var exp = new GPolynomial ();
+              eq.expressions.add (exp);
+              var t = new GTerm ();
+              exp.expressions.add (t);
+              t.expressions.add (sfunc);
+              current = sfunc;
+              current_parent = t;
+              top_parent = exp;
+              expected.clear ();
+              expected.add(Vala.TokenType.OPEN_PARENS);
+            }
           } else if (n.down () == "def" && current == null) {
-            var f = new GFunction (n, 1) as Expression; // FIXME: Requires more work to identify parameters
-            eqman.functions.add (f);
-            current = f;
-            expected.clear ();
-            expected.add(Vala.TokenType.OPEN_PARENS);
+            // FIXME: implement function definition
           } else if (n.down () == "def" && current is Function) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
@@ -175,7 +180,7 @@ public class GCalc.Parser : Object {
             current_parent.expressions.add (cexp);
             expected.clear ();
             current = cexp;
-          } else if (current is Term && current_parent is Polynomial && top_parent is Group) {
+          } else if (current is Term && current_parent is Polynomial && (top_parent is Group || top_parent is Function)) {
             current.expressions.add (cexp);
             top_parent = current_parent;
             current_parent = current;
@@ -239,8 +244,14 @@ public class GCalc.Parser : Object {
             current_parent = exp2;
             top_parent = g;
           } else if (current is Function) {
+            message ("Function Open parens");
             var fexp = new GPolynomial ();
-            current = fexp;
+            var t = new GTerm ();
+            fexp.expressions.add (t);
+            current.expressions.add (fexp);
+            top_parent = current;
+            current = t;
+            current_parent = fexp;
             expected.clear ();
           } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
             var g = new GGroup ();
@@ -264,6 +275,11 @@ public class GCalc.Parser : Object {
             if (par is Group) {
               foundp = true;
               ((Group) par).closed = true;
+              break;
+            }
+            if (par is Function) {
+              foundp = true;
+              ((Function) par).closed = true;
               break;
             }
             par = par.parent;

@@ -706,6 +706,57 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/function/defaults",
+    ()=>{
+      var eqman = new GMathEquationManager ();
+      assert (eqman.functions.get_n_items () > 0);
+      assert (eqman.functions.find_named ("sin") != null);
+      assert (eqman.functions.find_named ("cos") != null);
+      assert (eqman.functions.find_named ("tan") != null);
+      assert (eqman.functions.find_named ("asin") != null);
+      assert (eqman.functions.find_named ("acos") != null);
+      assert (eqman.functions.find_named ("atan") != null);
+      assert (eqman.functions.find_named ("sinh") != null);
+      assert (eqman.functions.find_named ("cosh") != null);
+      assert (eqman.functions.find_named ("tanh") != null);
+      assert (eqman.functions.find_named ("asinh") != null);
+      assert (eqman.functions.find_named ("acosh") != null);
+      assert (eqman.functions.find_named ("atanh") != null);
+      assert (eqman.functions.find_named ("exp") != null);
+      assert (eqman.functions.find_named ("log") != null);
+      assert (eqman.functions.find_named ("sqrt") != null);
+    });
+    Test.add_func ("/gcalc/parser/function/unique",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("sin(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 1);
+        var t = p.expressions.get_item (0) as Term;
+        assert (t != null);
+        assert (t.expressions.get_n_items () == 1);
+        var f = t.expressions.get_item (0) as Function;
+        assert (f != null);
+        assert (f.expressions.get_n_items () == 1);
+        var p1 = f.expressions.get_item (0) as Polynomial;
+        assert (p1 != null);
+        var t1 =p1.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        message ("Terms: %u", t1.expressions.get_n_items ());
+        assert (t1.expressions.get_n_items () == 1);
+        var c = t1.expressions.get_item (0) as Constant;
+        assert (c != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }

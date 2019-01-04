@@ -19,13 +19,12 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GFunction : GExpression, Function {
-  ExpressionContainer _parameters = new ExpressionContainer ();
   ExpressionContainer _param_types = new ExpressionContainer ();
 
-  public ExpressionContainer parameters { get { return _parameters; } }
   public ExpressionContainer param_types { get { return _param_types; } }
   public uint n_params { get; construct set; }
   public string name { get; construct set; }
+  public bool closed { get; set; }
 
   construct {
     name = "NoName";
@@ -38,7 +37,7 @@ public class GCalc.GFunction : GExpression, Function {
     return name + "()";
   }
 
-  public new virtual Expression call () throws GLib.Error {
+  public new virtual Expression evaluate () throws GLib.Error {
     return new GErrorExpression ();
   }
 }

@@ -471,8 +471,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (9.0);
         var f = new GFunctionSqrt ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 3.0);
@@ -485,8 +485,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionExp ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 1.0);
@@ -499,8 +499,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (1.0);
         var f = new GFunctionLog ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -513,8 +513,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionSin ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -527,8 +527,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionCos ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 1.0);
@@ -541,8 +541,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionTan ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -555,8 +555,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionAsin ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -569,8 +569,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (1.0);
         var f = new GFunctionAcos ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -583,8 +583,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionAtan ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -597,8 +597,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionSinh ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -611,8 +611,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionCosh ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 1.0);
@@ -625,8 +625,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionTanh ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -639,8 +639,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionAsinh ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -653,8 +653,8 @@ class Tests {
       try {
         var c1 = new GConstant.@double (1.0);
         var f = new GFunctionAcosh ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -667,11 +667,35 @@ class Tests {
       try {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionAtanh ();
-        f.parameters.add (c1);
-        var c2 = f.call () as Constant;
+        f.expressions.add (c1);
+        var c2 = f.evaluate () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/unique",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("sin(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var t = e.expressions.get_item (0) as Term;
+        assert (t != null);
+        var f = t.expressions.get_item (0) as Function;
+        assert (f != null);
+        assert (f.closed);
+        var res = f.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 0.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
       }

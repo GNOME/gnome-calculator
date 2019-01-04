@@ -65,6 +65,11 @@ public class GCalc.ExpressionContainer : Gee.ArrayList<Expression>, GLib.ListMod
           return e;
         }
       }
+      if (e is Function) {
+        if ((e as Function).name == name) {
+          return e;
+        }
+      }
     }
     return null;
   }

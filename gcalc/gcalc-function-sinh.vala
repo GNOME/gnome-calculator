@@ -25,11 +25,11 @@ public class GCalc.GFunctionSinh : GFunction {
     param_types.add (new GConstant ());
   }
 
-  public override Expression call () throws GLib.Error
+  public override Expression evaluate () throws GLib.Error
   {
     verify_params ();
     GConstant c = null;
-    var exp = parameters.get_item (0) as Expression;
+    var exp = expressions.get_item (0) as Expression;
     if (exp == null) {
       throw new FunctionError.INVOCATION_ERROR ("Invalid parameter type. Expected %s", typeof(Expression).name ());
     }
