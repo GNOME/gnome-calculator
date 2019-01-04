@@ -34,7 +34,19 @@ public class GCalc.GFunction : GExpression, Function {
     n_params = nparams;
   }
   public override string to_string () {
-    return name + "()";
+    string s = name + "(";
+    for (uint i = 0; i < expressions.get_n_items (); i++) {
+      var e = expressions.get_item (i) as Expression;
+      if (e == null) {
+        continue;
+      }
+      s += e.to_string ();
+      if (i + 1 < expressions.get_n_items ()) {
+        s += ",";
+      }
+    }
+    s += ")";
+    return s;
   }
 
   public new virtual Expression evaluate () throws GLib.Error {

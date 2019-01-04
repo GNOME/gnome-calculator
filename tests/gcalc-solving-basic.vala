@@ -700,6 +700,216 @@ class Tests {
         warning ("Error: %s", e.message);
       }
     });
+    Test.add_func ("/gcalc/solve/function/unique/evaluated-polynomial",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("sin(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 0.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/term/mul",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("cos(0)*3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/term/mul-inv",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("3*cos(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/term/div",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("3/cos(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/term/div-inv",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("cos(0)/1", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 1.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/polynomial",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("cos(0)+4", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 5.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/polynomial-inv",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("4+cos(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 5.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/polynomial/functions",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("cos(0)+sin(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 1.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/polynomial/constan+func",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("1+cos(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 2.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/polynomial/constan-func",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("4-cos(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/polynomial/complex",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("9/3+5+2*cos(0)-9/cos(0)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 10.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
     return Test.run ();
   }
 }

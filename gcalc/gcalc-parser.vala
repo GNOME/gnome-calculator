@@ -140,6 +140,10 @@ public class GCalc.Parser : Object {
               top_parent = exp;
               expected.clear ();
               expected.add(Vala.TokenType.OPEN_PARENS);
+            } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
+                current_parent.expressions.add (sfunc);
+                current = sfunc;
+                expected.clear ();
             }
           } else if (n.down () == "def" && current == null) {
             // FIXME: implement function definition
@@ -379,7 +383,7 @@ public class GCalc.Parser : Object {
       current = opp;
       current_parent = t;
       expected.clear ();
-    } else if (current is Group && current_parent is Term && top_parent is Polynomial) {
+    } else if ((current is Group || current is Function) && current_parent is Term && top_parent is Polynomial) {
       // New term
       var t = new GTerm ();
       t.expressions.add (opp);
@@ -408,7 +412,7 @@ public class GCalc.Parser : Object {
     if (current is Operator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
     }
-    if ((current is Constant || current is Variable || current is Group)
+    if ((current is Constant || current is Variable || current is Group || current is Function)
         && current_parent is Term && top_parent is Polynomial) {
         current_parent.expressions.add (op);
         current = op;

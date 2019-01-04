@@ -64,7 +64,17 @@ public interface GCalc.Term : Object, Expression {
         if (current == null) {
           current = ev;
           first = false;
-        } else if (current is Constant&& ev is Constant) {
+        } else if (current is Constant && ev is Constant) {
+          if (current_operator != null) {
+            current = evaluate_constants ((Constant) current, (Constant) ev, current_operator);
+          }
+        }
+      } else if (e is Function) {
+        var ev = ((Function) e).evaluate ();
+        if (current == null) {
+          current = ev;
+          first = false;
+        } else if (current is Constant && ev is Constant) {
           if (current_operator != null) {
             current = evaluate_constants ((Constant) current, (Constant) ev, current_operator);
           }
