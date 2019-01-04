@@ -19,5 +19,16 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GTerm : GExpression, Term {
+  public override Result solve () {
+    Result res = null;
+    try {
+      var e = evaluate ();
+      res = new GResult (e) as Result;
+    } catch (GLib.Error err) {
+      var nerr = new GErrorResult (err.message);
+      res = new GResult.with_error ((Expression) new GExpression (), (ErrorResult) nerr) as Result;
+    }
+    return res;
+  }
 }
 
