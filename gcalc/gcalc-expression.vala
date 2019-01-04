@@ -24,3 +24,6 @@ public interface GCalc.Expression : Object {
   public abstract Result solve ();
 }
 
+public interface GCalc.ErrorExpression : Object, Expression {
+}
+

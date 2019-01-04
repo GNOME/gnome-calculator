@@ -30,3 +30,6 @@ public class GCalc.GExpression : Object, Expression {
   }
 }
 
+
+public class GCalc.GErrorExpression : GExpression, ErrorExpression {}
+
