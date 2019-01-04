@@ -1,4 +1,4 @@
-/* gcalc-function-log.vala
+/* gcalc-function-acos.vala
  *
  * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,10 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionLog : GFunction {
+public class GCalc.GFunctionAcos : GFunction {
 
-  public GFunctionLog () {
-    base ("log", 1);
+  public GFunctionAcos () {
+    base ("acos", 1);
     param_types.add (new GConstant ());
   }
 
@@ -46,7 +46,7 @@ public class GCalc.GFunctionLog : GFunction {
     var p1 = MPC.Complex (1000);
     p1.set (c.get_complex ());
     var res = MPC.Complex (1000);
-    res.log (p1);
+    res.acos (p1);
     var nc = new GConstant.internal_complex (res);
     return nc as Expression;
   }

@@ -1,6 +1,6 @@
 /* gcalc-function-tan.vala
  *
- * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
+ * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
