@@ -562,6 +562,12 @@ class Tests {
       } catch (GLib.Error error) {
         message ("Correctly catched grouping error: %s", error.message);
       }
+      var eqman4 = new GMathEquationManager ();
+      try {
+        parser.parse ("(((1))))", eqman4);
+      } catch (GLib.Error error) {
+        message ("Correctly catched grouping error: %s", error.message);
+      }
     });
     Test.add_func ("/gcalc/parser/term/parenthesis/grouping",
     ()=>{
