@@ -29,6 +29,7 @@ public class GCalc.GMathEquationManager : Object, MathEquationManager {
   construct {
     // Initialize default Functions
     functions.add (new GFunctionSqrt ());
+    functions.add (new GFunctionExp ());
   }
 }
 

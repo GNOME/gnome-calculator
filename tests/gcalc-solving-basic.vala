@@ -470,12 +470,26 @@ class Tests {
     ()=>{
       try {
         var c1 = new GConstant.@double (9.0);
-        var fsqrt = new GFunctionSqrt ();
-        fsqrt.parameters.add (c1);
-        var c2 = fsqrt.call () as Constant;
+        var f = new GFunctionSqrt ();
+        f.parameters.add (c1);
+        var c2 = f.call () as Constant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/exp",
+    ()=>{
+      try {
+        var c1 = new GConstant.@double (0.0);
+        var f = new GFunctionExp ();
+        f.parameters.add (c1);
+        var c2 = f.call () as Constant;
+        assert (c2 != null);
+        message (c2.to_string ());
+        assert (c2.real () == 1.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
       }
