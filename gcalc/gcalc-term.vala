@@ -56,15 +56,7 @@ public interface GCalc.Term : Object, Expression {
           first = false;
         } else if (current is Constant) {
           if (current_operator != null) {
-            if (current_operator is Minus) {
-              current = (current as Constant).multiply (e as Constant);
-            }
-            if (current_operator is Multiply) {
-              current = (current as Constant).multiply (e as Constant);
-            }
-            if (current_operator is Division) {
-              current = (current as Constant).divide (e as Constant);
-            }
+            current = evaluate_constants ((Constant) current, (Constant) e, current_operator);
           }
         }
       } else if (e is Group) {
@@ -72,6 +64,10 @@ public interface GCalc.Term : Object, Expression {
         if (current == null) {
           current = ev;
           first = false;
+        } else if (current is Constant&& ev is Constant) {
+          if (current_operator != null) {
+            current = evaluate_constants ((Constant) current, (Constant) ev, current_operator);
+          }
         }
       }
     }
@@ -79,6 +75,24 @@ public interface GCalc.Term : Object, Expression {
       throw new TermError.EVALUATION_FAIL ("Evaluation fail on Term");
     }
     return current;
+  }
+  public static Expression evaluate_constants (Constant c1, Constant c2, Operator op)
+    throws GLib.Error
+  {
+    Expression res = null;
+    if (op is Minus) {
+      res = (c1 as Constant).multiply (c2 as Constant);
+    }
+    if (op is Multiply) {
+      res = (c1 as Constant).multiply (c2 as Constant);
+    }
+    if (op is Division) {
+      res = (c1 as Constant).divide (c2 as Constant);
+    }
+    if (res == null) {
+      throw new TermError.INVALID_OPERATOR ("Unsupported operator in term's expression");
+    }
+    return res;
   }
 }
 

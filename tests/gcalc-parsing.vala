@@ -612,6 +612,94 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/term/parenthesis/grouping/multiply",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("5*(3+2)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 1);
+        var t1 = p.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 3);
+        var c1 = t1.expressions.get_item (0) as Constant;
+        assert (c1 != null);
+        var m1 = t1.expressions.get_item (1) as Multiply;
+        assert (m1 != null);
+        var g = t1.expressions.get_item (2) as Group;
+        assert (g != null);
+        assert (g.closed);
+        assert (g.expressions.get_n_items () == 1);
+        var pg = g.expressions.get_item (0) as Polynomial;
+        assert (pg != null);
+        assert (pg.expressions.get_n_items () == 2);
+        var tg1 = pg.expressions.get_item (0) as Term;
+        assert (tg1 != null);
+        assert (tg1.expressions.get_n_items () == 1);
+        var c2 = tg1.expressions.get_item (0) as Constant;
+        assert (c2 != null);
+        var tg2 = pg.expressions.get_item (1) as Term;
+        assert (tg2 != null);
+        assert (tg2.expressions.get_n_items () == 2);
+        message (tg2.to_string ());
+        var plus = tg2.expressions.get_item (0) as Plus;
+        assert (plus != null);
+        var c3 = tg2.expressions.get_item (1) as Constant;
+        assert (c3 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/term/parenthesis/grouping/multiply-inv",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("(3+2)*5", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 1);
+        var t1 = p.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 3);
+        var g = t1.expressions.get_item (0) as Group;
+        assert (g != null);
+        assert (g.closed);
+        assert (g.expressions.get_n_items () == 1);
+        var pg = g.expressions.get_item (0) as Polynomial;
+        assert (pg != null);
+        assert (pg.expressions.get_n_items () == 2);
+        var tg1 = pg.expressions.get_item (0) as Term;
+        assert (tg1 != null);
+        assert (tg1.expressions.get_n_items () == 1);
+        var c2 = tg1.expressions.get_item (0) as Constant;
+        assert (c2 != null);
+        var tg2 = pg.expressions.get_item (1) as Term;
+        assert (tg2 != null);
+        assert (tg2.expressions.get_n_items () == 2);
+        message (tg2.to_string ());
+        var plus = tg2.expressions.get_item (0) as Plus;
+        assert (plus != null);
+        var c3 = tg2.expressions.get_item (1) as Constant;
+        assert (c3 != null);
+        var m1 = t1.expressions.get_item (1) as Multiply;
+        assert (m1 != null);
+        var c1 = t1.expressions.get_item (2) as Constant;
+        assert (c1 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }

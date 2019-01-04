@@ -333,6 +333,82 @@ class Tests {
         warning ("Error: %s", e.message);
       }
     });
+    Test.add_func ("/gcalc/solve/group/multiply-term",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("5*(3+2)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 25.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/group/multiply-term/plug-constant",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("5*(3+2)+1", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 26.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/group/multiply-term-inv",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("(3+2)*5", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 25.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/group/complex",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("(3+2)*5+1-3*(8-2)*7-(3)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == -103.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
     return Test.run ();
   }
 }

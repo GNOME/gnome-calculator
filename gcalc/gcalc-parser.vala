@@ -399,7 +399,7 @@ public class GCalc.Parser : Object {
     if (current is Operator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
     }
-    if ((current is Constant || current is Variable)
+    if ((current is Constant || current is Variable || current is Group)
         && current_parent is Term && top_parent is Polynomial) {
         current_parent.expressions.add (op);
         current = op;
