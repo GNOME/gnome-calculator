@@ -35,6 +35,14 @@ public class GCalc.GMathEquationManager : Object, MathEquationManager {
     functions.add (new GFunctionCos ());
     functions.add (new GFunctionTan ());
     functions.add (new GFunctionAsin ());
+    functions.add (new GFunctionAcos ());
+    functions.add (new GFunctionAtan ());
+    functions.add (new GFunctionSinh ());
+    functions.add (new GFunctionCosh ());
+    functions.add (new GFunctionTanh ());
+    functions.add (new GFunctionAsinh ());
+    functions.add (new GFunctionAcosh ());
+    functions.add (new GFunctionAtanh ());
   }
 }
 
