@@ -47,6 +47,7 @@ sources = files([
 	'gcalc-expression-container.vala',
 	'gcalc-function.vala',
 	'gcalc-function-exp.vala',
+	'gcalc-function-log.vala',
 	'gcalc-function-sqrt.vala',
 	'gcalc-error-result.vala',
 	'gcalc-gexpression.vala',
