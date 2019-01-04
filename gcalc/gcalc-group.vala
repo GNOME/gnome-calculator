@@ -19,12 +19,27 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public interface GCalc.Group : Object, Expression {
-  public abstract Level level { get; set; }
-  public abstract bool closed { get; set; }
   public enum Level {
     ONE,
     TWO,
     THREE
   }
+  public abstract Level level { get; set; }
+  public abstract bool closed { get; set; }
+  public virtual Expression evaluate () throws GLib.Error {
+    if (expressions.get_n_items () == 0) {
+      throw new GroupError.INVALID_POLYNOMIAL ("No internal polynomial in group");
+    }
+    var e = expressions.get_item (0) as Polynomial;
+    if (e == null) {
+      throw new GroupError.INVALID_POLYNOMIAL ("Invalid internal polynomial in group");
+    }
+    return e.evaluate ();
+  }
+}
+
+public errordomain GCalc.GroupError {
+  INVALID_POLYNOMIAL,
+  INVALID_INTERNAL_TERM,
 }
 
