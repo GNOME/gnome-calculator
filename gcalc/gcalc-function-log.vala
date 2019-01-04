@@ -21,7 +21,7 @@
 public class GCalc.GFunctionLog : GFunction {
 
   public GFunctionLog () {
-    base ("sqrt", 1);
+    base ("log", 1);
     param_types.add (new GConstant ());
   }
 

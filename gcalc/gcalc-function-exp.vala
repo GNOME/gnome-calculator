@@ -21,7 +21,7 @@
 public class GCalc.GFunctionExp : GFunction {
 
   public GFunctionExp () {
-    base ("sqrt", 1);
+    base ("exp", 1);
     param_types.add (new GConstant ());
   }
 

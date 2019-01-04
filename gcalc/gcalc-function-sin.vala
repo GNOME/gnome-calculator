@@ -21,7 +21,7 @@
 public class GCalc.GFunctionSin : GFunction {
 
   public GFunctionSin () {
-    base ("sqrt", 1);
+    base ("sin", 1);
     param_types.add (new GConstant ());
   }
 

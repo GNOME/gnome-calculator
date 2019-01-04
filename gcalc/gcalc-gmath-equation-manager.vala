@@ -30,6 +30,11 @@ public class GCalc.GMathEquationManager : Object, MathEquationManager {
     // Initialize default Functions
     functions.add (new GFunctionSqrt ());
     functions.add (new GFunctionExp ());
+    functions.add (new GFunctionLog ());
+    functions.add (new GFunctionSin ());
+    functions.add (new GFunctionCos ());
+    functions.add (new GFunctionTan ());
+    functions.add (new GFunctionAsin ());
   }
 }
 

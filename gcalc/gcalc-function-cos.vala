@@ -21,7 +21,7 @@
 public class GCalc.GFunctionCos : GFunction {
 
   public GFunctionCos () {
-    base ("sqrt", 1);
+    base ("cos", 1);
     param_types.add (new GConstant ());
   }
 

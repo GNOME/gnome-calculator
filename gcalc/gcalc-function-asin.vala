@@ -1,6 +1,6 @@
-/* gcalc-function-tan.vala
+/* gcalc-function-asin.vala
  *
- * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
+ * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,10 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionTan : GFunction {
+public class GCalc.GFunctionAsin : GFunction {
 
-  public GFunctionTan () {
-    base ("tan", 1);
+  public GFunctionAsin () {
+    base ("asin", 1);
     param_types.add (new GConstant ());
   }
 
@@ -46,7 +46,7 @@ public class GCalc.GFunctionTan : GFunction {
     var p1 = MPC.Complex (1000);
     p1.set (c.get_complex ());
     var res = MPC.Complex (1000);
-    res.tan (p1);
+    res.asin (p1);
     var nc = new GConstant.internal_complex (res);
     return nc as Expression;
   }
