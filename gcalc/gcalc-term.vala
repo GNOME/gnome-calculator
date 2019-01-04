@@ -23,6 +23,9 @@ public interface GCalc.Term : Object, Expression {
     if (t.expressions.get_n_items () == 0) {
       return this;
     }
+    return this;
+  }
+  public virtual Expression evaluate () throws GLib.Error {
     Expression current = null;
     Operator current_operator = null;
     bool first = true;
