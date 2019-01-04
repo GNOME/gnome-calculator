@@ -26,9 +26,17 @@ public class GCalc.GTerm : GExpression, Term {
       res = new GResult (e) as Result;
     } catch (GLib.Error err) {
       var nerr = new GErrorResult (err.message);
-      res = new GResult.with_error ((Expression) new GExpression (), (ErrorResult) nerr) as Result;
+      res = new GResult.with_error ((Expression) new GErrorExpression (), (ErrorResult) nerr) as Result;
     }
     return res;
+  }
+  // Expression
+  public override string to_string () {
+    string s = "";
+    foreach (Expression e in expressions) {
+      s += e.to_string ();
+    }
+    return s;
   }
 }
 

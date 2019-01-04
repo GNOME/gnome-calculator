@@ -19,13 +19,20 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public interface GCalc.Term : Object, Expression {
-  public virtual Expression sum (Term t) throws GLib.Error {
+  public virtual Expression add (Term t) throws GLib.Error {
     if (t.expressions.get_n_items () == 0) {
-      return this;
+      return new GConstant.@double (1.0);
     }
-    return this;
+    Expression res = new GExpression ();
+    var e = evaluate ();
+    var e2 = t.evaluate ();
+    if (e is Constant && e2 is Constant) {
+      res = ((Constant) e).add ((Constant) e2);
+    }
+    return res;
   }
   public virtual Expression evaluate () throws GLib.Error {
+    message ("Evaluating term: %s", this.to_string ());
     Expression current = null;
     Operator current_operator = null;
     bool first = true;
@@ -35,18 +42,22 @@ public interface GCalc.Term : Object, Expression {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
         }
         if (e is Minus && first) {
-          var c = new GConstant.@double (1.0);
-          c = c.neg () as GConstant;
+          var c = new GConstant.@double (-1.0);
           current = c;
           first = false;
         }
+        message ("Setting current operator to: %s", e.get_type ().name());
         current_operator = e as Operator;
+        continue;
       } else if (e is Constant) {
         if (current == null) {
           current = e;
           first = false;
         } else if (current is Constant) {
           if (current_operator != null) {
+            if (current_operator is Minus) {
+              current = (current as Constant).multiply (e as Constant);
+            }
             if (current_operator is Multiply) {
               current = (current as Constant).multiply (e as Constant);
             }
@@ -57,11 +68,15 @@ public interface GCalc.Term : Object, Expression {
         }
       }
     }
+    if (current == null) {
+      throw new TermError.EVALUATION_FAIL ("Evaluation fail on Term");
+    }
     return current;
   }
 }
 
 public errordomain GCalc.TermError {
-  INVALID_OPERATOR
+  INVALID_OPERATOR,
+  EVALUATION_FAIL
 }
 

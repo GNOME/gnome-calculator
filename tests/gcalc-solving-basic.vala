@@ -177,6 +177,74 @@ class Tests {
         warning ("Error: %s", e.message);
       }
     });
+    Test.add_func ("/gcalc/solve/term/add/constant",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("1+1", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var t1 = e.expressions.get_item (0) as Term;
+        var t2 = e.expressions.get_item (1) as Term;
+        var res = t1.add (t2);
+        assert (res != null);
+        message (res.get_type ().name ());
+        var c = res as Constant;
+        assert (c != null);
+        message (c.to_string ());
+        assert (c.real () == 2.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/term/add/constant-multiple",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("1+1-9+8-3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate ();
+        assert (res != null);
+        message (res.get_type ().name ());
+        var c = res as Constant;
+        assert (c != null);
+        message (c.to_string ());
+        assert (c.real () == -2.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/term/add-mult-div/constant-multiple",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("15/3+18/6-27/9+4*2-3*2", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate ();
+        assert (res != null);
+        message (res.get_type ().name ());
+        var c = res as Constant;
+        assert (c != null);
+        message (c.to_string ());
+        assert (c.real () == 7.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
     return Test.run ();
   }
 }
