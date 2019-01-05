@@ -812,6 +812,90 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/variable/constant",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var a = eq.expressions.get_item (0) as Assign;
+        assert (a != null);
+        assert (a.expressions.get_n_items () == 2);
+        var v = a.expressions.get_item (0) as Variable;
+        assert (v != null);
+        var e = a.expressions.get_item (1) as Polynomial;
+        assert (e != null);
+        assert (e.expressions.get_n_items () == 1);
+        var t = e.expressions.get_item (0) as Term;
+        assert (t != null);
+        assert (t.expressions.get_n_items () == 1);
+        var c = t.expressions.get_item (0) as Constant;
+        assert (c != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/variable/polynomial",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3*4*cos(0)+1", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var a = eq.expressions.get_item (0) as Assign;
+        assert (a != null);
+        assert (a.expressions.get_n_items () == 2);
+        var v = a.expressions.get_item (0) as Variable;
+        assert (v != null);
+        var e = a.expressions.get_item (1) as Polynomial;
+        assert (e != null);
+        assert (e.expressions.get_n_items () == 2);
+        var t1 = e.expressions.get_item (0) as Term;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 5);
+        var c1 = t1.expressions.get_item (0) as Constant;
+        assert (c1 != null);
+        var m1 = t1.expressions.get_item (1) as Multiply;
+        assert (m1 != null);
+        var c2 = t1.expressions.get_item (2) as Constant;
+        assert (c2 != null);
+        var m2 = t1.expressions.get_item (3) as Multiply;
+        assert (m2 != null);
+        var f1 = t1.expressions.get_item (4) as Function;
+        assert (f1 != null);
+        var t2 = e.expressions.get_item (1) as Term;
+        assert (t2 != null);
+        assert (t2.expressions.get_n_items () == 2);
+        var pl = t2.expressions.get_item (0) as Plus;
+        assert (pl != null);
+        var c3 = t2.expressions.get_item (1) as Constant;
+        assert (c3 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/variable/lookup/equation",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var v = eq.variables.find_named ("x");
+        assert (v != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }
