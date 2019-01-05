@@ -29,6 +29,7 @@ libcalculator_deps = [
   posix,
   libxml,
   libsoup,
+  gee,
   inc_libh_dep,
   inc_rooth_dep,
 ]
