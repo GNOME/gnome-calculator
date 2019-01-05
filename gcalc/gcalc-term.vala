@@ -99,6 +99,9 @@ public interface GCalc.Term : Object, Expression {
     if (op is Division) {
       res = (c1 as Constant).divide (c2 as Constant);
     }
+    if (op is Pow) {
+      res = (c1 as Constant).pow (c2 as Constant);
+    }
     if (res == null) {
       throw new TermError.INVALID_OPERATOR ("Unsupported operator in term's expression");
     }

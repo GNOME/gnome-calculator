@@ -284,14 +284,18 @@ public class GCalc.Parser : Object {
           var par = current;
           while (par != null) {
             if (par is Group) {
-              foundp = true;
-              ((Group) par).closed = true;
-              break;
+              if (!((Group) par).closed) {
+                foundp = true;
+                ((Group) par).closed = true;
+                break;
+              }
             }
             if (par is Function) {
-              foundp = true;
-              ((Function) par).closed = true;
-              break;
+              if (!((Function) par).closed) {
+                foundp = true;
+                ((Function) par).closed = true;
+                break;
+              }
             }
             par = par.parent;
           }
@@ -299,6 +303,14 @@ public class GCalc.Parser : Object {
             current = par;
             current_parent = par.parent; // Term
             top_parent = current_parent.parent;
+          }
+          break;
+        case Vala.TokenType.CARRET:
+          var op = new GPow ();
+          if (current == null) {
+            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression trying power expression");
+          } else {
+            process_term_operator (op, eq);
           }
           break;
         // braces
@@ -338,8 +350,6 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.OP_OR:
         case Vala.TokenType.OP_PTR:
         case Vala.TokenType.OP_SHIFT_LEFT:
-        // Carret?
-        case Vala.TokenType.CARRET:
         // templates and regex
         case Vala.TokenType.CLOSE_REGEX_LITERAL:
         case Vala.TokenType.CLOSE_TEMPLATE:

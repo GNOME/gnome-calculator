@@ -1,6 +1,6 @@
-/* gcalc-constant.vala
+/* gcalc-pow.vala
  *
- * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
+ * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,14 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Constant : Object, Expression {
-  public abstract double real ();
-  public abstract double imag ();
-  public abstract void zero ();
-  public abstract Constant add (Constant c);
-  public abstract Constant multiply (Constant c);
-  public abstract Constant divide (Constant c);
-  public abstract Constant neg ();
-  public abstract Constant pow (Constant c);
-}
+public interface GCalc.Pow : Object, Expression, Operator {}
 

@@ -757,6 +757,61 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/pow/unique",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("3^3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 1);
+        var t = p.expressions.get_item (0) as Term;
+        assert (t != null);
+        assert (t.expressions.get_n_items () == 3);
+        var c1 = t.expressions.get_item (0) as Constant;
+        assert (c1 != null);
+        var pw = t.expressions.get_item (1) as Pow;
+        assert (pw != null);
+        var c2 = t.expressions.get_item (2) as Constant;
+        assert (c2 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/pow/polynomial",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("3^(3+5*3)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as Polynomial;
+        assert (p != null);
+        assert (p.expressions.get_n_items () == 1);
+        var t = p.expressions.get_item (0) as Term;
+        assert (t != null);
+        assert (t.expressions.get_n_items () == 3);
+        var c1 = t.expressions.get_item (0) as Constant;
+        assert (c1 != null);
+        var pw = t.expressions.get_item (1) as Pow;
+        assert (pw != null);
+        var g = t.expressions.get_item (2) as Group;
+        assert (g != null);
+        assert (g.expressions.get_n_items () == 1);
+        var p1 = g.expressions.get_item (0) as Polynomial;
+        assert (p1 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }

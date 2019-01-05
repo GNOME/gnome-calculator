@@ -101,6 +101,16 @@ public class GCalc.GConstant : GExpression, Constant {
     var nc = new GConstant.internal_complex (res);
     return nc as Constant;
   }
+  public Constant pow (Constant c)
+    requires (c is GConstant)
+  {
+    var res = MPC.Complex (1000);
+    var p1 = MPC.Complex (1000);
+    p1.set ((c as GConstant).get_complex ());
+    res.power (_complex, p1);
+    var nc = new GConstant.internal_complex (res);
+    return nc as Constant;
+  }
   // Expression interface
   public override string to_string () {
     if (imag () != 0.0) {

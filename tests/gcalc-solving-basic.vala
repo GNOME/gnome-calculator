@@ -950,6 +950,86 @@ class Tests {
         warning ("Error: %s", e.message);
       }
     });
+    Test.add_func ("/gcalc/solve/pow",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("3^3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 27.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/pow/polynomial/constants",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("2^(3+5)", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 256.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/pow/polynomial/function",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("2^(3+5*cos(0))", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 256.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/pow/polynomial/terms",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("2^(3+5*cos(0))+5*3-3^(sin(0)+5/cos(0))", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 28.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
     return Test.run ();
   }
 }
