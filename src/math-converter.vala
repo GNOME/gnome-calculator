@@ -7,7 +7,7 @@
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
  */
-using GCalc;
+using Calc;
 
 [GtkTemplate (ui = "/org/gnome/calculator/math-converter.ui")]
 public class MathConverter : Gtk.Grid

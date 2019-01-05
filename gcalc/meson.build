@@ -171,7 +171,7 @@ lib = library(VERSIONED_PROJECT_NAME,
 	])
 
 g_ir_compiler = find_program('g-ir-compiler', required: false)
-if g_ir_compiler.found()
+if g_ir_compiler.found() and not get_option('disable-introspection')
 custom_target('typelib',
 	command: [
 		g_ir_compiler,

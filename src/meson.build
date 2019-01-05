@@ -27,6 +27,7 @@ gnome_calculator_deps = [
   mpc,
   mpfr,
   posix,
+  gee,
   inc_rooth_dep
 ]
 
@@ -70,6 +71,7 @@ gcalccmd_deps = [
   mpc,
   mpfr,
   posix,
+  gee,
   inc_rooth_dep
 ]
 

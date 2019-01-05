@@ -9,7 +9,7 @@
  * license.
  */
 
-namespace GCalc {
+namespace Calc {
   public class MathFunction : Object
   {
       private string _name;

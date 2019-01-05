@@ -7,7 +7,7 @@
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
  */
-using GCalc;
+using Calc;
 
 private int fail_count = 0;
 private int pass_count = 0;

@@ -16,7 +16,7 @@
  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace GCalc {
+namespace Calc {
   private UnitManager? default_unit_manager = null;
 
   public class UnitManager : Object

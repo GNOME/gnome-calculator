@@ -16,7 +16,7 @@
  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace GCalc {
+namespace Calc {
   static bool downloading_imf_rates = false;
   static bool downloading_ecb_rates = false;
   static bool loaded_rates = false;

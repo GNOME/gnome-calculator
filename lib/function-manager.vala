@@ -9,7 +9,7 @@
  * license.
  */
 
-namespace GCalc {
+namespace Calc {
   private FunctionManager? default_function_manager = null;
 
   public class FunctionManager : Object

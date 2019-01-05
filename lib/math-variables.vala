@@ -16,7 +16,7 @@
  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace GCalc {
+namespace Calc {
   public class MathVariables : Object
   {
       private string file_name;

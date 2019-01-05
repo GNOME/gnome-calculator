@@ -10,7 +10,7 @@
  * license.
  */
 
-namespace GCalc {
+namespace Calc {
   public enum DisplayFormat
   {
       AUTOMATIC,

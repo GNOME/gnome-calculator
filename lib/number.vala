@@ -30,7 +30,7 @@
 
 using MPC;
 
-namespace GCalc {
+namespace Calc {
 
   private delegate int BitwiseFunc (int v1, int v2);
 

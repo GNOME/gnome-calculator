@@ -9,7 +9,7 @@
  * license.
  */
 
-using GCalc;
+using Calc;
 
 public enum NumberMode
 {

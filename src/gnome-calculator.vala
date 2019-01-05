@@ -8,6 +8,7 @@
  * version. See http://www.gnu.org/copyleft/gpl.html the full text of the
  * license.
  */
+using Calc;
 using GCalc;
 
 public class Calculator : Gtk.Application

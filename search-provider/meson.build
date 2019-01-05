@@ -11,6 +11,7 @@ search_provider_deps = [
   mpc,
   mpfr,
   posix,
+  gee,
   inc_rooth_dep
 ]
 
