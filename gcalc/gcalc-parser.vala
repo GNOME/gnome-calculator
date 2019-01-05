@@ -145,6 +145,12 @@ public class GCalc.Parser : Object {
                 current_parent.expressions.add (sfunc);
                 current = sfunc;
                 expected.clear ();
+            } else if (current is Term && current_parent is Polynomial) {
+                current.expressions.add (sfunc);
+                current_parent = current;
+                current = sfunc;
+                top_parent = current_parent.parent;
+                expected.clear ();
             }
           } else if (n.down () == "def" && current == null) {
             // FIXME: implement function definition

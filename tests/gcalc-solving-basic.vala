@@ -890,7 +890,7 @@ class Tests {
         warning ("Error: %s", e.message);
       }
     });
-    Test.add_func ("/gcalc/solve/function/polynomial/complex",
+    Test.add_func ("/gcalc/solve/function/polynomial/complex1",
     ()=>{
       try {
         var parser = new Parser ();
@@ -906,6 +906,46 @@ class Tests {
         assert (res != null);
         message ("Constant Result: %s", res.to_string ());
         assert (res.real () == -7.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/polynomial/group",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("(cos(0))", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 1.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/function/polynomial/complex2",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("5*6+tan(0)+tan(0)/2*8+2*cos(0)-9/cos(0)+(1/(cos(0)+cos(0))", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        var e = eq.expressions.get_item (0) as Polynomial;
+        assert (e != null);
+        var res = e.evaluate () as Constant;
+        assert (res != null);
+        message ("Constant Result: %s", res.to_string ());
+        assert (res.real () == 23.5);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
       }
