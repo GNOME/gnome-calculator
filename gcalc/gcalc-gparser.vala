@@ -20,7 +20,7 @@
  */
 using Vala;
 
-public class GCalc.Parser : Object {
+public class GCalc.GParser : Object {
   Expression current = null;
   Expression current_parent = null;
   Expression top_parent = null;

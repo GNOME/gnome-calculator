@@ -26,7 +26,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/constant/integer",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("1", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -48,7 +48,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/constant/double",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("10.3", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -69,7 +69,7 @@ class Tests {
     });
     Test.add_func ("/gcalc/parser/assign/error",
     ()=>{
-      var parser = new Parser ();
+      var parser = new GParser ();
       var eqman = new GMathEquationManager ();
       try {
         parser.parse ("=", eqman);
@@ -81,7 +81,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/assign/variable/constant",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("var=1", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -109,7 +109,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/plus/constant",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("1+1", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -138,7 +138,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/plus/variables",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("A+B", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -167,7 +167,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/plus/variables+constant",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("A+1", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -196,7 +196,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/plus/constant+variable",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("1+B", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -225,7 +225,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/complex/constant+variable",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("-1+B+3+A", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -271,7 +271,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/complex/constant+variable/combined-operators",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("-1+B+3-A", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -317,7 +317,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/multiply/constant",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("1*1", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -343,7 +343,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/multiply/variable",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("A*B", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -370,7 +370,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/complex/constant*variable",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("-1*B+3*A", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -410,7 +410,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/division/constant",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("1/1", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -436,7 +436,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/division/variable",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("A/B", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -463,7 +463,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/complex/multiply-division/constant-variable",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("-1/B+3*A/5", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -512,7 +512,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/parenthesis",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("(1)", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -543,7 +543,7 @@ class Tests {
     });
     Test.add_func ("/gcalc/parser/term/parenthesis/errors",
     ()=>{
-      var parser = new Parser ();
+      var parser = new GParser ();
       var eqman1 = new GMathEquationManager ();
       try {
         parser.parse ("(", eqman1);
@@ -572,7 +572,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/parenthesis/grouping",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("(1)+(1)", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -621,7 +621,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/parenthesis/grouping/multiply",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("5*(3+2)", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -665,7 +665,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/parenthesis/grouping/multiply-inv",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("(3+2)*5", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -729,7 +729,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/function/unique",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("sin(0)", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -760,7 +760,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/pow/unique",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("3^3", eqman);
         assert (eqman.equations.get_n_items () == 1);
@@ -786,7 +786,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/pow/polynomial",
     ()=>{
       try {
-        var parser = new Parser ();
+        var parser = new GParser ();
         var eqman = new GMathEquationManager ();
         parser.parse ("3^(3+5*3)", eqman);
         assert (eqman.equations.get_n_items () == 1);
