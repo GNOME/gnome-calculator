@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionSin : GFunction {
 
-  public GFunctionSin () {
-    base ("sin", 1);
+  construct {
+    name = "sin";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

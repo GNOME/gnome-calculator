@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionAtanh : GFunction {
 
-  public GFunctionAtanh () {
-    base ("atanh", 1);
+  construct {
+    name = "atanh";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

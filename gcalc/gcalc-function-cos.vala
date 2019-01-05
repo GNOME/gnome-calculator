@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionCos : GFunction {
 
-  public GFunctionCos () {
-    base ("cos", 1);
+  construct {
+    name = "cos";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

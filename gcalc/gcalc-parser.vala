@@ -127,8 +127,9 @@ public class GCalc.Parser : Object {
         case Vala.TokenType.WHILE:
         case Vala.TokenType.YIELD:
         case Vala.TokenType.IDENTIFIER:
-          var sfunc = eqman.functions.find_named (n);
+          Expression sfunc = eqman.functions.find_named (n);
           if (sfunc != null) {
+            sfunc = Object.new (sfunc.get_type ()) as Expression;
             if (current == null) {
               var exp = new GPolynomial ();
               eq.expressions.add (exp);

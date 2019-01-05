@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionAsin : GFunction {
 
-  public GFunctionAsin () {
-    base ("asin", 1);
+  construct {
+    name = "asin";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

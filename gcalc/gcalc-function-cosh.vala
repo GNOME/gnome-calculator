@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionCosh : GFunction {
 
-  public GFunctionCosh () {
-    base ("cosh", 1);
+  construct {
+    name = "cosh";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

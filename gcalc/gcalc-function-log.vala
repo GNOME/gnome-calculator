@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionLog : GFunction {
 
-  public GFunctionLog () {
-    base ("log", 1);
+  construct {
+    name = "log";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

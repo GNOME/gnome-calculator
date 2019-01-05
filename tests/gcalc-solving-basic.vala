@@ -895,7 +895,7 @@ class Tests {
       try {
         var parser = new Parser ();
         var eqman = new GMathEquationManager ();
-        parser.parse ("9/3+5+2*cos(0)-9/cos(0)", eqman);
+        parser.parse ("2*cos(0)-9/cos(0)", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
@@ -905,7 +905,7 @@ class Tests {
         var res = e.evaluate () as Constant;
         assert (res != null);
         message ("Constant Result: %s", res.to_string ());
-        assert (res.real () == 10.0);
+        assert (res.real () == -7.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
       }

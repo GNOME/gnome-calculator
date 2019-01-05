@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionSinh : GFunction {
 
-  public GFunctionSinh () {
-    base ("sinh", 1);
+  construct {
+    name = "sinh";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

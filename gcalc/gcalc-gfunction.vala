@@ -29,7 +29,7 @@ public class GCalc.GFunction : GExpression, Function {
   construct {
     name = "NoName";
   }
-  public GFunction (string name, int nparams) {
+  public GFunction.with_name (string name, int nparams) {
     this.name = name;
     n_params = nparams;
   }

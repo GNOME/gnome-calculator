@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionAsinh : GFunction {
 
-  public GFunctionAsinh () {
-    base ("asinh", 1);
+  construct {
+    name = "asinh";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

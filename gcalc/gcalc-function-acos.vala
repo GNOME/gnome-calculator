@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionAcos : GFunction {
 
-  public GFunctionAcos () {
-    base ("acos", 1);
+  construct {
+    name = "acos";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionExp : GFunction {
 
-  public GFunctionExp () {
-    base ("exp", 1);
+  construct {
+    name = "exp";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 

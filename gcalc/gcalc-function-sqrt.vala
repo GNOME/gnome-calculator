@@ -20,8 +20,9 @@
  */
 public class GCalc.GFunctionSqrt : GFunction {
 
-  public GFunctionSqrt () {
-    base ("sqrt", 1);
+  construct {
+    name = "sqrt";
+    n_params = 1;
     param_types.add (new GConstant ());
   }
 
