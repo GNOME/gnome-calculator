@@ -158,8 +158,8 @@ public class GCalc.GParser : Object {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
             var v = new GVariable (n) as Expression;
-            if (eqman.variables.find_named (n) == null) {
-              eqman.variables.add (v);
+            if (eq.variables.find_named (n) == null) {
+              eq.variables.add (v);
             }
             if (current == null) {
               current = v;

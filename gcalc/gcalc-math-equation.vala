@@ -18,5 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.MathEquation : Object, Expression {}
+public interface GCalc.MathEquation : Object, Expression {
+  public abstract ExpressionHashMap variables { get; }
+}
 

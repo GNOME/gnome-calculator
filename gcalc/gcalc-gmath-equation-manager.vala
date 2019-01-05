@@ -21,10 +21,8 @@
 public class GCalc.GMathEquationManager : Object, MathEquationManager {
   ExpressionContainer _equations = new ExpressionContainer ();
   ExpressionContainer _functions = new ExpressionContainer ();
-  ExpressionContainer _variables = new ExpressionContainer ();
   public ExpressionContainer equations { get { return _equations; } }
   public ExpressionContainer functions { get { return _functions; } }
-  public ExpressionContainer variables { get { return _variables; } }
 
   construct {
     // Initialize default Functions

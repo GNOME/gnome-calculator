@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunction : GExpression, Function {
+public class GCalc.GFunction : GExpression, Function, Hashable {
   ExpressionContainer _param_types = new ExpressionContainer ();
 
   public ExpressionContainer param_types { get { return _param_types; } }
@@ -51,6 +51,10 @@ public class GCalc.GFunction : GExpression, Function {
 
   public new virtual Expression evaluate () throws GLib.Error {
     return new GErrorExpression ();
+  }
+  // Hashable
+  public uint hash () {
+    return name.hash ();
   }
 }
 

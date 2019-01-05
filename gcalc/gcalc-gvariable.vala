@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GVariable : GExpression, Variable {
+public class GCalc.GVariable : GExpression, Variable, Hashable {
   private GLib.Value _value;
 
   public string name { get; construct set; }
@@ -33,6 +33,10 @@ public class GCalc.GVariable : GExpression, Variable {
   // Expression
   public override string to_string () {
     return name;
+  }
+  // Hashable
+  public uint hash () {
+    return name.hash ();
   }
 }
 

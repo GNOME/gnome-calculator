@@ -1,6 +1,6 @@
-/* gcalc-gmath-equation.vala
+/* gcalc-expression-hash-table.vala
  *
- * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
+ * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,16 +18,19 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMathEquation : GExpression, MathEquation {
-  ExpressionHashMap _variables = new ExpressionHashMap ();
-  public ExpressionHashMap variables { get { return _variables; } }
-  public override Result solve () {
-    if (expressions.get_n_items () == 0) {
-      var err = new GErrorResult ("No expressions found in equation");
-      return new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result;
-    }
-    var e = expressions.get_item (0) as Expression;
-    return e.solve ();
+public class GCalc.ExpressionHashMap : Gee.HashMap<uint,Expression> {
+  public weak Expression parent { get; set; }
+  public void add (Expression exp)
+    requires (exp is Hashable)
+  {
+    (this as Gee.HashMap<uint,Expression>).set (((Hashable) exp).hash (), exp);
+    exp.parent = parent;
+  }
+  public void remove (Expression exp) {
+    (this as Gee.HashMap<uint,Expression>).unset (((Hashable) exp).hash ());
+  }
+  public Expression find_named (string name) {
+    return (this as Gee.HashMap<uint,Expression>).@get (name.hash ());
   }
 }
 

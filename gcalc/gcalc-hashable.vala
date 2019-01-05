@@ -1,4 +1,4 @@
-/* gcalc-gmath-equation.vala
+/* gcalc-hashable.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,16 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMathEquation : GExpression, MathEquation {
-  ExpressionHashMap _variables = new ExpressionHashMap ();
-  public ExpressionHashMap variables { get { return _variables; } }
-  public override Result solve () {
-    if (expressions.get_n_items () == 0) {
-      var err = new GErrorResult ("No expressions found in equation");
-      return new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result;
-    }
-    var e = expressions.get_item (0) as Expression;
-    return e.solve ();
-  }
+public interface GCalc.Hashable : Object {
+  public abstract uint hash ();
 }
 

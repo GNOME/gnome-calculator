@@ -21,6 +21,5 @@
 public interface GCalc.MathEquationManager : Object {
   public abstract ExpressionContainer equations { get; }
   public abstract ExpressionContainer functions { get; }
-  public abstract ExpressionContainer variables { get; }
 }
 
