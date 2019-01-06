@@ -19,13 +19,12 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GVariable : GExpression, Variable, Hashable {
-  private GLib.Value _value;
 
   public string name { get; construct set; }
-  public GLib.Value value { get { return _value; } }
+  public Constant value { get; set; }
 
   construct {
-    _value = GLib.Value (GLib.Type.DOUBLE);
+    _value = new GConstant.@double (0.0);
   }
   public GVariable (string name) {
     this.name = name;

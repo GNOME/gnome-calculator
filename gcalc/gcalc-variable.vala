@@ -20,6 +20,30 @@
  */
 public interface GCalc.Variable : Object, Expression {
   public abstract string name { get; construct set; }
-  public abstract GLib.Value value { get; }
+  public abstract Constant @value { get; set; }
+  public virtual Expression evaluate () throws GLib.Error {
+    if (parent == null) {
+      throw new VariableError.INVALID_PARENT ("Can't access to Variable's expression definition. Invalid parent. Expected Assign operator");
+    }
+    if (parent.expressions.get_n_items () != 2) {
+      throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to Variable's expression definition. Expression not found");
+    }
+    var e = parent.expressions.get_item (1) as Polynomial;
+    if (e == null) {
+      throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to Variable's expression definition. Unexpected object type");
+    }
+    var exp = e.evaluate () as Constant;
+    if (exp == null) {
+      throw new VariableError.EVALUATION_FAIL ("Variable evaluation fail. Variable's value not updated");
+    }
+    @value = exp;
+    return exp;
+  }
+}
+
+public errordomain GCalc.VariableError {
+  INVALID_PARENT,
+  INVALID_EXPRESSION_DEFINITION,
+  EVALUATION_FAIL
 }
 

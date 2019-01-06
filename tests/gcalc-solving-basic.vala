@@ -1030,6 +1030,58 @@ class Tests {
         warning ("Error: %s", e.message);
       }
     });
+    Test.add_func ("/gcalc/solve/variable/constant",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var a = eq.expressions.get_item (0) as Assign;
+        assert (a != null);
+        var res1 = a.evaluate () as Constant;
+        assert (res1 != null);
+        message ("Constant Result: %s", res1.to_string ());
+        assert (res1.real () == 3.0);
+        assert (a.expressions.get_n_items () == 2);
+        var v = a.expressions.get_item (0) as Variable;
+        assert (v != null);
+        var res2 = v.evaluate () as Constant;
+        assert (res2 != null);
+        message ("Constant Result: %s", res2.to_string ());
+        assert (res2.real () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/variable/complex/polynomial",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3*4/cos(0)+(4+5)/(1+sin(0))*4", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var a = eq.expressions.get_item (0) as Assign;
+        assert (a != null);
+        var res1 = a.evaluate () as Constant;
+        assert (res1 != null);
+        message ("Constant Result: %s", res1.to_string ());
+        assert (res1.real () == 48.0);
+        assert (a.expressions.get_n_items () == 2);
+        var v = a.expressions.get_item (0) as Variable;
+        assert (v != null);
+        var res2 = v.evaluate () as Constant;
+        assert (res2 != null);
+        message ("Constant Result: %s", res2.to_string ());
+        assert (res2.real () == 48.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
     return Test.run ();
   }
 }

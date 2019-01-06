@@ -18,5 +18,29 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Assign : Object, Expression, Operator, BinaryOperator {}
+public interface GCalc.Assign : Object, Expression, Operator, BinaryOperator {
+  public Expression evaluate () throws GLib.Error {
+    if (expressions.get_n_items () != 2) {
+      throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid number of expressions in assign");
+    }
+    var v = expressions.get_item (0) as Variable;
+    if (v == null) {
+      throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid variable object in assign");
+    }
+    var p = expressions.get_item (1) as Polynomial;
+    if (p == null) {
+      throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid polynomial object in assign");
+    }
+    var ca = p.evaluate () as Constant;
+    if (ca == null) {
+      throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid polynomial evaluation in assign; should a constant no Variable update was done");
+    }
+    v.@value = ca;
+    return v.@value;
+  }
+}
+
+public errordomain GCalc.AssigError {
+  INVALID_STRUCTURE_ERROR
+}
 
