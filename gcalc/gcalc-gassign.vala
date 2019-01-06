@@ -22,5 +22,15 @@ public class GCalc.GAssign : GExpression, Operator, BinaryOperator, Assign {
   public override string to_string () {
     return "=";
   }
+  public override Result solve () {
+    Result res = null;
+    try {
+      res = new GResult (evaluate ());
+    } catch (GLib.Error e) {
+      var err = new GErrorResult ("Invalid expression");
+      return new GResult.with_error (new GErrorExpression (), err as ErrorResult);
+    }
+    return res;
+  }
 }
 

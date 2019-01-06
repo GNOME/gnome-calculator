@@ -22,12 +22,19 @@ public class GCalc.GMathEquation : GExpression, MathEquation {
   ExpressionHashMap _variables = new ExpressionHashMap ();
   public ExpressionHashMap variables { get { return _variables; } }
   public override Result solve () {
+    Result res = null;
     if (expressions.get_n_items () == 0) {
       var err = new GErrorResult ("No expressions found in equation");
       return new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result;
     }
     var e = expressions.get_item (0) as Expression;
-    return e.solve ();
+    if (e == null) {
+      var err = new GErrorResult ("Invalid expression in equation");
+      return new GResult.with_error ((Expression) new GErrorExpression (), (ErrorResult) err) as Result;
+    } else {
+      res = e.solve ();
+    }
+    return res;
   }
 }
 
