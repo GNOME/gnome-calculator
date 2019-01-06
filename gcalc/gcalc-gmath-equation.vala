@@ -25,7 +25,7 @@ public class GCalc.GMathEquation : GExpression, MathEquation {
     Result res = null;
     if (expressions.get_n_items () == 0) {
       var err = new GErrorResult ("No expressions found in equation");
-      return new GResult.with_error ((Expression) new GExpression (), (ErrorResult) err) as Result;
+      return new GResult.with_error ((Expression) new GErrorExpression (), (ErrorResult) err) as Result;
     }
     var e = expressions.get_item (0) as Expression;
     if (e == null) {

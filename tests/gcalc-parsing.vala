@@ -896,6 +896,30 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/variables/lookup/equation",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        parser.parse ("y=x", eqman);
+        assert (eqman.equations.get_n_items () == 2);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var v = eq.variables.find_named ("x");
+        assert (v != null);
+        var eq2 = eqman.equations.get_item (1) as MathEquation;
+        assert (eq2 != null);
+        var v2 = eq2.variables.find_named ("y");
+        assert (v2 != null);
+        var v3 = eq2.variables.find_named ("x");
+        assert (v3 == null);
+        assert (eqman.find_variable ("x") != null);
+        assert (eqman.find_variable ("y") != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }

@@ -23,7 +23,7 @@ public interface GCalc.Term : Object, Expression {
     if (t.expressions.get_n_items () == 0) {
       return new GConstant.@double (1.0);
     }
-    Expression res = new GExpression ();
+    Expression res = new GErrorExpression ();
     var e = evaluate ();
     var e2 = t.evaluate ();
     if (e is Constant && e2 is Constant) {
@@ -79,6 +79,31 @@ public interface GCalc.Term : Object, Expression {
             current = evaluate_constants ((Constant) current, (Constant) ev, current_operator);
           }
         }
+      } else if (e is Variable) {
+        message ("Evaluating Variable '%s'", (e as Variable).name);
+        var par = e.parent;
+        while (par != null) {
+          if (par is MathEquation) {
+            break;
+          }
+          par = par.parent;
+        }
+        if (par == null) {
+          throw new TermError.EVALUATION_FAIL ("Variable's equation definition not found");
+        }
+        var res = ((MathEquation) par).solve ();
+        if (res.error != null) {
+          throw new TermError.EVALUATION_FAIL ("Variable evaluation fail: %s", res.error.to_string ());
+        }
+        var ev = res.expression;
+        if (current == null) {
+          current = ev;
+          first = false;
+        } else if (current is Constant && ev is Constant) {
+          if (current_operator != null) {
+            current = evaluate_constants ((Constant) current, (Constant) ev, current_operator);
+          }
+        }
       }
     }
     if (current == null) {
@@ -111,6 +136,6 @@ public interface GCalc.Term : Object, Expression {
 
 public errordomain GCalc.TermError {
   INVALID_OPERATOR,
-  EVALUATION_FAIL
+  EVALUATION_FAIL,
 }
 

@@ -21,7 +21,11 @@
 public interface GCalc.Variable : Object, Expression {
   public abstract string name { get; construct set; }
   public abstract Constant @value { get; set; }
+  public abstract Variable bind { get; set; }
   public virtual Expression evaluate () throws GLib.Error {
+    if (bind != null) {
+      return bind.evaluate ();
+    }
     if (parent == null) {
       throw new VariableError.INVALID_PARENT ("Can't access to Variable's expression definition. Invalid parent. Expected Assign operator");
     }

@@ -158,15 +158,38 @@ public class GCalc.GParser : Object {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
             var v = new GVariable (n) as Expression;
-            if (eq.variables.find_named (n) == null) {
-              eq.variables.add (v);
+            var sv = eqman.find_variable (n) as Variable;
+            if (sv == null) {
+              sv = eq.variables.find_named (n) as Variable;
+              if (sv == null) {
+                eq.variables.add (v);
+              } else {
+                ((Variable) v).bind = sv;
+              }
+            } else {
+              ((Variable) v).bind = sv;
             }
             if (current == null) {
+              message ("Trying to Add a polynomial in a variable");
+              var exp = new GPolynomial ();
+              eq.expressions.add (exp);
+              var t = new GTerm ();
+              exp.expressions.add (t);
+              t.expressions.add (v);
               current = v;
+              current_parent = v.parent;
+              top_parent = current_parent.parent;
               expected.clear ();
+              message ("Created initial variable");
             } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
                 current_parent.expressions.add (v);
                 current = v;
+                expected.clear ();
+            } else if (current is Term) {
+                current.expressions.add (v);
+                current = v;
+                current_parent = v.parent;
+                top_parent = current_parent.parent;
                 expected.clear ();
             }
           }
@@ -221,11 +244,30 @@ public class GCalc.GParser : Object {
         case Vala.TokenType.ASSIGN:
           if (current == null) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for an assignment");
-          }
-          if (current is Polynomial) {
+          } else if (current is Polynomial) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression: can't set a value to a polynomial");
-          }
-          if (current is Variable) {
+          } else if (current is Variable) {
+            bool removed = false;
+            if (current.parent != null) {
+              if (current.parent is Term) {
+                var t = current.parent;
+                if (t.parent != null) {
+                  if (t.parent is Polynomial) {
+                    var p = t.parent;
+                    if (p.parent != null) {
+                      if (p.parent is MathEquation) {
+                        eq.expressions.remove (p);
+                        p.expressions.remove (t);
+                        removed = true;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            if (!removed) {
+              throw new ParserError.INVALID_EXPRESSION_ERROR ("Found an unexpected expression for an assignment. Assignment should be done on variables");
+            }
             var expa = new GAssign ();
             eq.expressions.add (expa);
             expa.expressions.add (current);
