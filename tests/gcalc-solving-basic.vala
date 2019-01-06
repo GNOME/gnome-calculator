@@ -1141,6 +1141,42 @@ class Tests {
         warning ("Error: %s", e.message);
       }
     });
+    Test.add_func ("/gcalc/solve/equations/solve/variable/assignment",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        parser.parse ("y=x", eqman);
+        assert (eqman.equations.get_n_items () == 2);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var res = eq.solve ();
+        if (res is ErrorResult) {
+          warning ("Error: %s", res.error.to_string ());
+        }
+        assert (res.expression != null);
+        assert (res.expression is Constant);
+        message ("Result: %s", res.expression.to_string ());
+        var c = res.expression as Constant;
+        assert (c != null);
+        assert (c.real () == 3.0);
+        var eq2 = eqman.equations.get_item (0) as MathEquation;
+        assert (eq2 != null);
+        var res2 = eq2.solve ();
+        if (res2 is ErrorResult) {
+          warning ("Error: %s", res2.error.to_string ());
+        }
+        assert (res2.expression != null);
+        assert (res2.expression is Constant);
+        message ("Result: %s", res2.expression.to_string ());
+        var c2 = res2.expression as Constant;
+        assert (c2 != null);
+        assert (c2.real () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
     return Test.run ();
   }
 }

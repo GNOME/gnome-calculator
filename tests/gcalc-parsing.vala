@@ -958,6 +958,49 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/variable/equations/asigments",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        parser.parse ("y=x", eqman);
+        assert (eqman.equations.get_n_items () == 2);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var a = eq.expressions.get_item (0) as Assign;
+        assert (a != null);
+        assert (a.expressions.get_n_items () == 2);
+        var v = a.expressions.get_item (0) as Variable;
+        assert (v != null);
+        var e = a.expressions.get_item (1) as Polynomial;
+        assert (e != null);
+        assert (e.expressions.get_n_items () == 1);
+        var t = e.expressions.get_item (0) as Term;
+        assert (t != null);
+        var c = t.expressions.get_item (0) as Constant;
+        assert (c != null);
+        var eq2 = eqman.equations.get_item (1) as MathEquation;
+        assert (eq2 != null);
+        message (eq2.to_string ());
+        assert (eq2.expressions.get_n_items () == 1);
+        var a2 = eq2.expressions.get_item (0) as Assign;
+        assert (a2 != null);
+        assert (a2.expressions.get_n_items () == 2);
+        var v2 = a2.expressions.get_item (0) as Variable;
+        assert (v2 != null);
+        var e2 = a2.expressions.get_item (1) as Polynomial;
+        assert (e2 != null);
+        assert (e2.expressions.get_n_items () == 1);
+        var t2 = e2.expressions.get_item (0) as Term;
+        assert (t2 != null);
+        var v3 = t2.expressions.get_item (0) as Variable;
+        assert (v3 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }
