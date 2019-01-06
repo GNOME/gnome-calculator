@@ -27,6 +27,7 @@ gnome_calculator_deps = [
   mpc,
   mpfr,
   posix,
+  inc_libh_dep
 ]
 
 gnome_calculator_vala_flags = [
@@ -47,10 +48,10 @@ gnome_calculator_includes = [
 
 executable('gnome-calculator', gnome_calculator_sources,
   dependencies: gnome_calculator_deps,
-  link_with: libcalculator,
   include_directories: gnome_calculator_includes,
   vala_args: gnome_calculator_vala_flags,
   c_args: gnome_calculator_c_flags,
+  link_with: [libcalculator, lib_mpfrg],
   install: true,
 )
 
@@ -69,6 +70,7 @@ gcalccmd_deps = [
   mpc,
   mpfr,
   posix,
+  inc_libh_dep
 ]
 
 gcalccmd_vala_flags = [
@@ -83,7 +85,7 @@ gcalccmd_includes = [
 
 executable('gcalccmd', gcalccmd_sources,
   dependencies: gcalccmd_deps,
-  link_with: libcalculator,
+  link_with: [libcalculator, lib_mpfrg],
   include_directories: gcalccmd_includes,
   vala_args: gcalccmd_vala_flags,
   install: true,

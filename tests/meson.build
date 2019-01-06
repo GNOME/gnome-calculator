@@ -1,14 +1,17 @@
+if not get_option ('disable-ui')
+
 # Common
 gnome_calculator_tests_deps = [
+  gtk,
+  gtksourceview,
   gio,
   glib,
   gobject,
-  gtk,
-  gtksourceview,
   libmath,
   mpc,
   mpfr,
   posix,
+  inc_rooth_dep
 ]
 
 gnome_calculator_tests_includes = [
@@ -16,12 +19,13 @@ gnome_calculator_tests_includes = [
 ]
 
 # Tests
+
 test_equation_sources = [
   'test-equation.vala',
 ]
 test_equation = executable('test-equation', test_equation_sources,
   dependencies: gnome_calculator_tests_deps,
-  link_with: libcalculator,
+  link_with: [libcalculator, lib_mpfrg],
   include_directories: gnome_calculator_tests_includes,
 )
 test('Equation test', test_equation)
@@ -31,7 +35,7 @@ test_number_sources = [
 ]
 test_number = executable('test-number', test_number_sources,
   dependencies: gnome_calculator_tests_deps,
-  link_with: libcalculator,
+  link_with: [libcalculator, lib_mpfrg],
   include_directories: gnome_calculator_tests_includes,
 )
 test('Number test', test_number)
@@ -41,7 +45,41 @@ test_serializer_sources = [
 ]
 test_serializer = executable('test-serializer', test_serializer_sources,
   dependencies: gnome_calculator_tests_deps,
-  link_with: libcalculator,
+  link_with: [libcalculator, lib_mpfrg],
   include_directories: gnome_calculator_tests_includes,
 )
 test('Serializer test', test_serializer)
+endif
+
+tests_deps = [
+  gio,
+  glib,
+  gobject,
+  libmath,
+  mpc,
+  mpfr,
+  posix,
+  gee,
+  inc_rooth_dep
+]
+
+test_parsing_sources = [
+  'gcalc-parsing.vala',
+]
+
+test_parsing = executable('gcalc-parsing', test_parsing_sources,
+  dependencies:tests_deps,
+  link_with: [lib, lib_mpfrg],
+)
+test('gcalc-parsing', test_parsing)
+
+
+test_solve_basic_sources = [
+  'gcalc-solving-basic.vala',
+]
+
+test_solve_basic = executable('gcalc-solve-basic', test_solve_basic_sources,
+  dependencies:tests_deps,
+  link_with: [lib, lib_mpfrg],
+)
+test('gcalc-solve-basic', test_solve_basic)
