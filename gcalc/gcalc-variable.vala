@@ -22,6 +22,8 @@ public interface GCalc.Variable : Object, Expression {
   public abstract string name { get; construct set; }
   public abstract Constant @value { get; set; }
   public abstract Variable bind { get; set; }
+  public virtual bool binded { get { return bind != null; } }
+
   public virtual Expression evaluate () throws GLib.Error {
     if (bind != null) {
       return bind.evaluate ();
@@ -41,6 +43,7 @@ public interface GCalc.Variable : Object, Expression {
       throw new VariableError.EVALUATION_FAIL ("Variable evaluation fail. Variable's value not updated");
     }
     @value = exp;
+    message ("Variable '%s' evaluated to: %s", name, @value.to_string ());
     return exp;
   }
 }

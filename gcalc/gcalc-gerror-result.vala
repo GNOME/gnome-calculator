@@ -18,12 +18,18 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GErrorResult : Object, ErrorResult {
+public class GCalc.GErrorResult : Object, Result, ErrorResult {
   private string msg = "";
+  private Expression _expression;
+
   public GErrorResult (string msg) {
     this.msg = msg;
+    _expression = new GErrorExpression ();
   }
-  // ErrorResult
+  // Result
+  public Expression expression { get { return _expression; } }
   public string to_string () { return msg; }
+  // ErrorResult
+  public string message { get { return msg; } }
 }
 

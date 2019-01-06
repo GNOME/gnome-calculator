@@ -36,7 +36,7 @@ public class GCalc.GFunctionExp : GFunction {
     }
     var ev = exp.solve ();
     if (ev is ErrorResult) {
-       throw new FunctionError.INVOCATION_ERROR ("Invalid expression: %s", ((ErrorResult) ev).to_string ());
+       throw new FunctionError.INVOCATION_ERROR ("Invalid expression: %s", ((ErrorResult) ev).message);
     }
     if (ev is Result) {
       c = ((Result) ev).expression as GConstant;

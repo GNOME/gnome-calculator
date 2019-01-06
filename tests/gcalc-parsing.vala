@@ -1001,6 +1001,76 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/variable/equations/asigments/polynomial/variables",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        parser.parse ("y=x", eqman);
+        parser.parse ("z=x+y", eqman);
+        assert (eqman.equations.get_n_items () == 3);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Eq1: %s", eq.to_string ());
+        assert (eq.expressions.get_n_items () == 1);
+        var a = eq.expressions.get_item (0) as Assign;
+        assert (a != null);
+        assert (a.expressions.get_n_items () == 2);
+        var v = a.expressions.get_item (0) as Variable;
+        assert (v != null);
+        var e = a.expressions.get_item (1) as Polynomial;
+        assert (e != null);
+        assert (e.expressions.get_n_items () == 1);
+        var t = e.expressions.get_item (0) as Term;
+        assert (t != null);
+        var c = t.expressions.get_item (0) as Constant;
+        assert (c != null);
+        var eq2 = eqman.equations.get_item (1) as MathEquation;
+        assert (eq2 != null);
+        message ("Eq2: %s", eq2.to_string ());
+        assert (eq2.expressions.get_n_items () == 1);
+        var a2 = eq2.expressions.get_item (0) as Assign;
+        assert (a2 != null);
+        assert (a2.expressions.get_n_items () == 2);
+        var v2 = a2.expressions.get_item (0) as Variable;
+        assert (v2 != null);
+        var e2 = a2.expressions.get_item (1) as Polynomial;
+        assert (e2 != null);
+        assert (e2.expressions.get_n_items () == 1);
+        var t2 = e2.expressions.get_item (0) as Term;
+        assert (t2 != null);
+        var v3 = t2.expressions.get_item (0) as Variable;
+        assert (v3 != null);
+        var eq3 = eqman.equations.get_item (2) as MathEquation;
+        assert (eq3 != null);
+        message ("Eq3: %s", eq3.to_string ());
+        assert (eq3.expressions.get_n_items () == 1);
+        var a3 = eq3.expressions.get_item (0) as Assign;
+        assert (a3 != null);
+        assert (a3.expressions.get_n_items () == 2);
+        var v4 = a3.expressions.get_item (0) as Variable;
+        assert (v4 != null);
+        var e3 = a3.expressions.get_item (1) as Polynomial;
+        assert (e3 != null);
+        message ("Termns in Polynomial3: %u", e3.expressions.get_n_items ());
+        assert (e3.expressions.get_n_items () == 2);
+        var t3 = e3.expressions.get_item (0) as Term;
+        assert (t3 != null);
+        assert (t3.expressions.get_n_items () == 1);
+        var v5 = t3.expressions.get_item (0) as Variable;
+        assert (v5 != null);
+        var t4 = e3.expressions.get_item (1) as Term;
+        assert (t4 != null);
+        assert (t4.expressions.get_n_items () == 2);
+        var plus = t4.expressions.get_item (0) as Plus;
+        assert (plus != null);
+        var v6 = t4.expressions.get_item (1) as Variable;
+        assert (v6 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }

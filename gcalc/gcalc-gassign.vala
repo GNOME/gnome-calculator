@@ -20,15 +20,25 @@
  */
 public class GCalc.GAssign : GExpression, Operator, BinaryOperator, Assign {
   public override string to_string () {
-    return "=";
+    if (expressions.get_n_items () != 2) {
+      return "Invalid Assigment structure";
+    }
+    var v = expressions.get_item (0) as Variable;
+    if (v == null) {
+      return "Invalid Assigment structure. No variable is set";
+    }
+    var e = expressions.get_item (1) as Expression;
+    if (e == null) {
+      return "Invalid Assigment structure. No variable's definition is set";
+    }
+    return v.to_string ()+"="+e.to_string ();
   }
   public override Result solve () {
     Result res = null;
     try {
       res = new GResult (evaluate ());
     } catch (GLib.Error e) {
-      var err = new GErrorResult ("Invalid expression");
-      return new GResult.with_error (new GErrorExpression (), err as ErrorResult);
+      res = new GErrorResult ("Invalid expression in Assignment: %s".printf (e.message));
     }
     return res;
   }

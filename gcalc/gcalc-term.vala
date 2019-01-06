@@ -37,7 +37,7 @@ public interface GCalc.Term : Object, Expression {
     Operator current_operator = null;
     bool first = true;
     foreach (Expression e in expressions) {
-      message ("Evaluation Expression in term: %s", e.to_string ());
+      message ("Evaluating Expression in term: %s", e.to_string ());
       if (e is Operator) {
         if (!(e is Minus || e is Plus) && first) {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
@@ -81,21 +81,7 @@ public interface GCalc.Term : Object, Expression {
         }
       } else if (e is Variable) {
         message ("Evaluating Variable '%s'", (e as Variable).name);
-        var par = e.parent;
-        while (par != null) {
-          if (par is MathEquation) {
-            break;
-          }
-          par = par.parent;
-        }
-        if (par == null) {
-          throw new TermError.EVALUATION_FAIL ("Variable's equation definition not found");
-        }
-        var res = ((MathEquation) par).solve ();
-        if (res.error != null) {
-          throw new TermError.EVALUATION_FAIL ("Variable evaluation fail: %s", res.error.to_string ());
-        }
-        var ev = res.expression;
+        var ev = (e as Variable).evaluate ();
         if (current == null) {
           current = ev;
           first = false;

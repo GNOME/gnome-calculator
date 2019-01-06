@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.ErrorResult : Object {
-  public abstract string to_string ();
+public interface GCalc.ErrorResult : Object, Result {
+  public abstract string message { get; }
 }
 

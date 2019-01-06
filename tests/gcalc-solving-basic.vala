@@ -118,7 +118,7 @@ class Tests {
         assert (res != null);
         assert (res.expression != null);
         message ("Result type: %s", res.expression.get_type ().name ());
-        assert (res.is_valid);
+        assert (!(res is ErrorResult));
         var rc = res.expression as Constant;
         assert (rc != null);
         message ("Constant Result: %s", rc.to_string ());
@@ -143,7 +143,7 @@ class Tests {
         assert (res != null);
         assert (res.expression != null);
         message ("Result type: %s", res.expression.get_type ().name ());
-        assert (res.is_valid);
+        assert (!(res is ErrorResult));
         var rc = res.expression as Constant;
         assert (rc != null);
         message ("Constant Result: %s", rc.to_string ());
@@ -168,7 +168,7 @@ class Tests {
         assert (res != null);
         assert (res.expression != null);
         message ("Result type: %s", res.expression.get_type ().name ());
-        assert (res.is_valid);
+        assert (!(res is ErrorResult));
         var rc = res.expression as Constant;
         assert (rc != null);
         message ("Constant Result: %s", rc.to_string ());
@@ -1093,7 +1093,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", res.error.to_string ());
+          warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
         assert (res.expression is Constant);
@@ -1117,7 +1117,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", res.error.to_string ());
+          warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
         assert (res.expression is Constant);
@@ -1129,7 +1129,7 @@ class Tests {
         assert (eq2 != null);
         var res2 = eq2.solve ();
         if (res2 is ErrorResult) {
-          warning ("Error: %s", res2.error.to_string ());
+          warning ("Error: %s", (res2 as ErrorResult).message);
         }
         assert (res2.expression != null);
         assert (res2.expression is Constant);
@@ -1153,7 +1153,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", res.error.to_string ());
+          warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
         assert (res.expression is Constant);
@@ -1165,7 +1165,7 @@ class Tests {
         assert (eq2 != null);
         var res2 = eq2.solve ();
         if (res2 is ErrorResult) {
-          warning ("Error: %s", res2.error.to_string ());
+          warning ("Error: %s", (res2 as ErrorResult).message);
         }
         assert (res2.expression != null);
         assert (res2.expression is Constant);
@@ -1173,6 +1173,159 @@ class Tests {
         var c2 = res2.expression as Constant;
         assert (c2 != null);
         assert (c2.real () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/equations/solve/variable/assignment/polynomial",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        parser.parse ("y=x", eqman);
+        parser.parse ("z=y+x", eqman);
+        assert (eqman.equations.get_n_items () == 3);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var res = eq.solve ();
+        if (res is ErrorResult) {
+          warning ("Error: %s", (res as ErrorResult).message);
+        }
+        assert (res.expression != null);
+        assert (res.expression is Constant);
+        message ("Result: %s", res.expression.to_string ());
+        var c = res.expression as Constant;
+        assert (c != null);
+        assert (c.real () == 3.0);
+        var eq2 = eqman.equations.get_item (0) as MathEquation;
+        assert (eq2 != null);
+        var res2 = eq2.solve ();
+        if (res2 is ErrorResult) {
+          warning ("Error: %s", (res2 as ErrorResult).message);
+        }
+        assert (res2.expression != null);
+        assert (res2.expression is Constant);
+        message ("Result: %s", res2.expression.to_string ());
+        var c2 = res2.expression as Constant;
+        assert (c2 != null);
+        assert (c2.real () == 3.0);
+        var eq3 = eqman.equations.get_item (2) as MathEquation;
+        assert (eq3 != null);
+        message ("Evaluating Eq3...");
+        var res3 = eq3.solve ();
+        if (res3 is ErrorResult) {
+          warning ("Error: %s", (res3 as ErrorResult).message);
+        }
+        assert (res3.expression != null);
+        message ("Result Type: %s", res3.expression.get_type ().name ());
+        assert (res3.expression is Constant);
+        message ("Result: %s", res3.expression.to_string ());
+        var c3 = res3.expression as Constant;
+        assert (c3 != null);
+        assert (c3.real () == 6.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/equations/solve/variable/assignment/polynomial/complex1",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        parser.parse ("y=x", eqman);
+        parser.parse ("z=y+x*3+9/y*2*x", eqman);
+        assert (eqman.equations.get_n_items () == 3);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var res = eq.solve ();
+        if (res is ErrorResult) {
+          warning ("Error: %s", (res as ErrorResult).message);
+        }
+        assert (res.expression != null);
+        assert (res.expression is Constant);
+        message ("Result: %s", res.expression.to_string ());
+        var c = res.expression as Constant;
+        assert (c != null);
+        assert (c.real () == 3.0);
+        var eq2 = eqman.equations.get_item (0) as MathEquation;
+        assert (eq2 != null);
+        var res2 = eq2.solve ();
+        if (res2 is ErrorResult) {
+          warning ("Error: %s", (res2 as ErrorResult).message);
+        }
+        assert (res2.expression != null);
+        assert (res2.expression is Constant);
+        message ("Result: %s", res2.expression.to_string ());
+        var c2 = res2.expression as Constant;
+        assert (c2 != null);
+        assert (c2.real () == 3.0);
+        var eq3 = eqman.equations.get_item (2) as MathEquation;
+        assert (eq3 != null);
+        message ("Evaluating Eq3...");
+        var res3 = eq3.solve ();
+        if (res3 is ErrorResult) {
+          warning ("Error: %s", (res3 as ErrorResult).message);
+        }
+        assert (res3.expression != null);
+        message ("Result Type: %s", res3.expression.get_type ().name ());
+        assert (res3.expression is Constant);
+        message ("Result: %s", res3.expression.to_string ());
+        var c3 = res3.expression as Constant;
+        assert (c3 != null);
+        assert (c3.real () == 30.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/equations/solve/variable/assignment/polynomial/complex2",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=3", eqman);
+        parser.parse ("y=x", eqman);
+        parser.parse ("z=y+x*3+9/y*2*x-((x-2*y)/(x+2-y))", eqman);
+        assert (eqman.equations.get_n_items () == 3);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var res = eq.solve ();
+        if (res is ErrorResult) {
+          warning ("Error: %s", (res as ErrorResult).message);
+        }
+        assert (res.expression != null);
+        assert (res.expression is Constant);
+        message ("Result: %s", res.expression.to_string ());
+        var c = res.expression as Constant;
+        assert (c != null);
+        assert (c.real () == 3.0);
+        var eq2 = eqman.equations.get_item (0) as MathEquation;
+        assert (eq2 != null);
+        var res2 = eq2.solve ();
+        if (res2 is ErrorResult) {
+          warning ("Error: %s", (res2 as ErrorResult).message);
+        }
+        assert (res2.expression != null);
+        assert (res2.expression is Constant);
+        message ("Result: %s", res2.expression.to_string ());
+        var c2 = res2.expression as Constant;
+        assert (c2 != null);
+        assert (c2.real () == 3.0);
+        var eq3 = eqman.equations.get_item (2) as MathEquation;
+        assert (eq3 != null);
+        message ("Evaluating Eq3...");
+        var res3 = eq3.solve ();
+        if (res3 is ErrorResult) {
+          warning ("Error: %s", (res3 as ErrorResult).message);
+        }
+        assert (res3.expression != null);
+        message ("Result Type: %s", res3.expression.get_type ().name ());
+        assert (res3.expression is Constant);
+        message ("Result: %s", res3.expression.to_string ());
+        var c3 = res3.expression as Constant;
+        assert (c3 != null);
+        assert (c3.real () == 31.5);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
       }

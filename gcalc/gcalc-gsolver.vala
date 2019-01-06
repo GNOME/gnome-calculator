@@ -32,18 +32,15 @@ public class GCalc.GSolver : Object, Solver {
     try {
       p.parse (str, equation_manager);
       if (equation_manager.equations.get_n_items () == 0) {
-        var err = new GErrorResult ("No equations found after parsing");
-        res = new GResult.with_error ((Expression) new GErrorExpression (), (ErrorResult) err) as Result;
+        return new GErrorResult ("No equations found after parsing");
       }
       var eq = equation_manager.equations.get_item (0) as MathEquation;
       if (eq == null) {
-        var err = new GErrorResult ("No equations found after parsing");
-        res = new GResult.with_error ((Expression) new GErrorExpression (), (ErrorResult) err) as Result;
+        return new GErrorResult ("No equations found after parsing");
       }
       res = eq.solve ();
     } catch (GLib.Error e) {
-      var err = new GErrorResult (e.message);
-      res = new GResult.with_error ((Expression) new GErrorExpression (), (ErrorResult) err) as Result;
+      res = new GErrorResult ("Solving fails: %s".printf (e.message));
     }
     return res;
   }

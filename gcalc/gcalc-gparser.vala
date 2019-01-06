@@ -173,7 +173,6 @@ public class GCalc.GParser : Object {
               ((Variable) v).bind = sv;
             }
             if (current == null) {
-              message ("Trying to Add a polynomial in a variable");
               var exp = new GPolynomial ();
               eq.expressions.add (exp);
               var t = new GTerm ();
@@ -183,7 +182,6 @@ public class GCalc.GParser : Object {
               current_parent = v.parent;
               top_parent = current_parent.parent;
               expected.clear ();
-              message ("Created initial variable");
             } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
                 current_parent.expressions.add (v);
                 current = v;
@@ -193,6 +191,9 @@ public class GCalc.GParser : Object {
                 current = v;
                 current_parent = v.parent;
                 top_parent = current_parent.parent;
+                message (current.get_type ().name ());
+                message (current_parent.get_type ().name ());
+                message (top_parent.get_type ().name ());
                 expected.clear ();
             }
           }

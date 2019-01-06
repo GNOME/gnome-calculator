@@ -22,11 +22,9 @@ public interface GCalc.Polynomial : Object, Expression {
   public virtual Expression evaluate () throws GLib.Error {
     Term current = null;
     Expression res = null;
-    message ("Terms: %u", expressions.get_n_items ());
     for (uint i = 0; i < expressions.get_n_items (); i++) {
       var e = expressions.get_item (i) as Term;
       if (e == null) {
-        message ("No Term: %s", e.get_type ().name ());
         continue;
       }
       if (current == null) {
@@ -40,22 +38,18 @@ public interface GCalc.Polynomial : Object, Expression {
           break;
         }
         if (res is Constant && er is Constant) {
-          message ("Adding: %s + %s", res.to_string (), er.to_string ());
           res = ((Constant) res).add ((Constant) er);
           break;
         }
       }
       var re = current.add ((Term) e);
       current = null;
-      message ("Current Terms Sum: %s", re.to_string ());
       if (res == null) {
         res = re;
       } else if (res is Constant && re is Constant) {
-        message ("Adding: %s + %s", res.to_string (), re.to_string ());
         res = ((Constant) res).add ((Constant) re);
       }
       if (res != null) {
-        message ("Current Sum: %s", res.to_string ());
       }
     }
     if (res == null) {

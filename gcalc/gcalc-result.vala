@@ -19,9 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public interface GCalc.Result : Object {
-  public abstract bool is_valid { get; }
   public abstract string to_string ();
   public abstract Expression expression { get; }
-  public abstract ErrorResult error { get; }
 }
 
