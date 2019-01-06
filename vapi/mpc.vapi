@@ -49,6 +49,8 @@ namespace MPC {
     public struct Complex {
         [CCode (cname="mpc_init2")]
         public Complex (MPFR.Precision prec);
+        [CCode (cname="mpc_set_prec")]
+        public void set_prec (MPFR.Precision prec);
         public int @set (Complex op, Round rnd = Round.NEAREST);
         [CCode (cname="mpc_set_ui_ui")]
         public int set_unsigned_integer (ulong re, ulong im = 0, Round rnd = Round.NEAREST);
@@ -66,9 +68,9 @@ namespace MPC {
         [CCode (cname="mpc_set_d_d")]
         public int set_double (double re, double im = 0, Round rnd = Round.NEAREST);
         [CCode (cname="mpc_realref")]
-        public unowned MPFR.RealRef get_real ();
+        public unowned MPFRG.RealRef get_real ();
         [CCode (cname="mpc_imagref")]
-        public unowned MPFR.RealRef get_imag ();
+        public unowned MPFRG.RealRef get_imag ();
         public bool is_zero () { var res = cmp_si_si (0, 0); return inex_re (res) == 0 && inex_im (res) == 0; }
         public bool is_equal (Complex c) { var res = cmp (c); return inex_re (res) == 0 && inex_im (res) == 0; }
         public int cmp (Complex op2);
@@ -119,5 +121,19 @@ namespace MPC {
         public int asinh (Complex op, Round rnd = Round.NEAREST);
         public int acosh (Complex op, Round rnd = Round.NEAREST);
         public int atanh (Complex op, Round rnd = Round.NEAREST);
+
+        public double get_real_double () {
+          var r = MPFR.Real (1000);
+          r.set (get_real ().val);
+          return r.get_double ();
+        }
+        public double get_imag_double () {
+          var i = MPFR.Real (1000);
+          i.set (get_imag ().val);
+          return i.get_double ();
+        }
+
+        [CCode (cname="mpc_get_str")]
+        public static string to_string (int @base, size_t digits, Complex op, Round rnd = Round.NEAREST);
     }
 }

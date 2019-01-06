@@ -1,5 +1,4 @@
 libcalculator_sources = [
-  'mpfr-glue.vala',
   'currency.vala',
   'equation.vala',
   'equation-lexer.vala',
@@ -33,6 +32,7 @@ libcalculator_deps = [
   mpc,
   mpfr,
   posix,
+  inc_libh_dep
 ]
 
 libcalculator = static_library('calculator', libcalculator_sources,
@@ -40,5 +40,6 @@ libcalculator = static_library('calculator', libcalculator_sources,
   c_args: libcalculator_c_flags,
   vala_args: libcalculator_vala_flags,
   include_directories: config_h_dir,
+  link_with: [ lib_mpfrg ],
   install: false,
 )
