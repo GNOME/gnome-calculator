@@ -11,6 +11,7 @@ search_provider_deps = [
   mpc,
   mpfr,
   posix,
+  inc_libh_dep
 ]
 
 search_provider_vala_flags = [
@@ -30,7 +31,7 @@ search_provider_includes = [
 # The executable
 executable('gnome-calculator-search-provider', search_provider_sources,
   dependencies: search_provider_deps,
-  link_with: libcalculator,
+  link_with: [libcalculator, lib_mpfrg],
   install_dir: get_option('libexecdir'),
   include_directories: search_provider_includes,
   vala_args: search_provider_vala_flags,
