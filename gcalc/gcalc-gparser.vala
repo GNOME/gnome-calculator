@@ -41,6 +41,9 @@ public class GCalc.GParser : Object {
     }
     Vala.TokenType token = Vala.TokenType.NONE;
     GMathEquation eq = new GMathEquation ();
+    current = null;
+    current_parent = null;
+    top_parent = null;
     while (token != Vala.TokenType.EOF) {
       Vala.SourceLocation begin, end;
       token = scanner.read_token (out begin, out end);
