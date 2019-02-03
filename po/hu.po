@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2018-12-10 11:03+0000\n"
-"PO-Revision-Date: 2019-01-26 23:17+0100\n"
+"POT-Creation-Date: 2019-02-03 14:33+0000\n"
+"PO-Revision-Date: 2019-02-03 18:20+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
@@ -99,7 +99,7 @@ msgstr "A GNOME projekt"
 
 #. Program name in the about dialog
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:332 src/math-window.ui:78
+#: src/gnome-calculator.vala:333 src/math-window.ui:78
 msgid "Calculator"
 msgstr "Számológép"
 
@@ -174,290 +174,298 @@ msgid "The angle units to use"
 msgstr "A használandó szögegység"
 
 #: data/org.gnome.calculator.gschema.xml:62
+msgid "Currency update interval"
+msgstr "Pénznem frissítésének gyakorisága"
+
+#: data/org.gnome.calculator.gschema.xml:63
+msgid "How often the currency exchange rates should be updated"
+msgstr "Milyen gyakran kell frissíteni a pénznem árfolyamát"
+
+#: data/org.gnome.calculator.gschema.xml:67
 msgid "Button mode"
 msgstr "Gombmód"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "The button mode"
 msgstr "A gombmód"
 
-#: data/org.gnome.calculator.gschema.xml:67
+#: data/org.gnome.calculator.gschema.xml:72
 msgid "Source currency"
 msgstr "Forrás pénznem"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:73
 msgid "Currency of the current calculation"
 msgstr "A jelenlegi számítás pénzneme"
 
-#: data/org.gnome.calculator.gschema.xml:72
+#: data/org.gnome.calculator.gschema.xml:77
 msgid "Target currency"
 msgstr "Cél pénznem"
 
-#: data/org.gnome.calculator.gschema.xml:73
+#: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency to convert the current calculation into"
 msgstr "A jelenlegi számítás ezen pénznemmé alakítása"
 
-#: data/org.gnome.calculator.gschema.xml:77
+#: data/org.gnome.calculator.gschema.xml:82
 msgid "Source units"
 msgstr "Forrás mértékegység"
 
-#: data/org.gnome.calculator.gschema.xml:78
+#: data/org.gnome.calculator.gschema.xml:83
 msgid "Units of the current calculation"
 msgstr "A jelenlegi számítás mértékegysége"
 
-#: data/org.gnome.calculator.gschema.xml:82
+#: data/org.gnome.calculator.gschema.xml:87
 msgid "Target units"
 msgstr "Cél mértékegység"
 
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Units to convert the current calculation into"
 msgstr "A jelenlegi számítás ezen mértékegységgé alakítása"
 
-#: data/org.gnome.calculator.gschema.xml:87
+#: data/org.gnome.calculator.gschema.xml:92
 msgid "Internal precision"
 msgstr "Belső pontosság"
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:93
 msgid "The internal precision used with the MPFR library"
 msgstr "Az MPFR függvénykönyvtárral használt belső pontosság"
 
-#: data/org.gnome.calculator.gschema.xml:92
+#: data/org.gnome.calculator.gschema.xml:97
 msgid "Window position"
 msgstr "Ablakpozíció"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Window position (x and y) of the last closed window."
 msgstr "A legutóbb bezárt ablak pozíciója (x és y)."
 
-#: lib/currency.vala:28
+#: lib/currency.vala:31
 msgid "UAE Dirham"
 msgstr "UAE dirham"
 
-#: lib/currency.vala:29
+#: lib/currency.vala:32
 msgid "Australian Dollar"
 msgstr "Ausztrál dollár"
 
-#: lib/currency.vala:30
+#: lib/currency.vala:33
 msgid "Bulgarian Lev"
 msgstr "Bolgár leva"
 
-#: lib/currency.vala:31
+#: lib/currency.vala:34
 msgid "Bahraini Dinar"
 msgstr "Bahreini dinár"
 
-#: lib/currency.vala:32
+#: lib/currency.vala:35
 msgid "Brunei Dollar"
 msgstr "Brunei dollár"
 
-#: lib/currency.vala:33
+#: lib/currency.vala:36
 msgid "Brazilian Real"
 msgstr "Brazil real"
 
-#: lib/currency.vala:34
+#: lib/currency.vala:37
 msgid "Botswana Pula"
 msgstr "Botswanai pula"
 
-#: lib/currency.vala:35
+#: lib/currency.vala:38
 msgid "Canadian Dollar"
 msgstr "Kanadai dollár"
 
-#: lib/currency.vala:36
+#: lib/currency.vala:39
 msgid "CFA Franc"
 msgstr "CFA frank"
 
-#: lib/currency.vala:37
+#: lib/currency.vala:40
 msgid "Swiss Franc"
 msgstr "Svájci frank"
 
-#: lib/currency.vala:38
+#: lib/currency.vala:41
 msgid "Chilean Peso"
 msgstr "Chilei peso"
 
-#: lib/currency.vala:39
+#: lib/currency.vala:42
 msgid "Chinese Yuan"
 msgstr "Kínai jüan"
 
-#: lib/currency.vala:40
+#: lib/currency.vala:43
 msgid "Colombian Peso"
 msgstr "Kolumbiai peso"
 
-#: lib/currency.vala:41
+#: lib/currency.vala:44
 msgid "Czech Koruna"
 msgstr "Cseh korona"
 
-#: lib/currency.vala:42
+#: lib/currency.vala:45
 msgid "Danish Krone"
 msgstr "Dán korona"
 
-#: lib/currency.vala:43
+#: lib/currency.vala:46
 msgid "Algerian Dinar"
 msgstr "Algériai dinár"
 
-#: lib/currency.vala:44
+#: lib/currency.vala:47
 msgid "Estonian Kroon"
 msgstr "Észt korona"
 
-#: lib/currency.vala:45
+#: lib/currency.vala:48
 msgid "Euro"
 msgstr "Euró"
 
-#: lib/currency.vala:46
+#: lib/currency.vala:49
 msgid "British Pound Sterling"
 msgstr "Brit font sterling"
 
-#: lib/currency.vala:47
+#: lib/currency.vala:50
 msgid "Hong Kong Dollar"
 msgstr "Hongkongi dollár"
 
-#: lib/currency.vala:48
+#: lib/currency.vala:51
 msgid "Croatian Kuna"
 msgstr "Horvát kuna"
 
-#: lib/currency.vala:49
+#: lib/currency.vala:52
 msgid "Hungarian Forint"
 msgstr "Magyar forint"
 
-#: lib/currency.vala:50
+#: lib/currency.vala:53
 msgid "Indonesian Rupiah"
 msgstr "Indonéz rúpia"
 
-#: lib/currency.vala:51
+#: lib/currency.vala:54
 msgid "Israeli New Shekel"
 msgstr "Izraeli új sékel"
 
-#: lib/currency.vala:52
+#: lib/currency.vala:55
 msgid "Indian Rupee"
 msgstr "Indiai rúpia"
 
-#: lib/currency.vala:53
+#: lib/currency.vala:56
 msgid "Iranian Rial"
 msgstr "Iráni riál"
 
-#: lib/currency.vala:54
+#: lib/currency.vala:57
 msgid "Icelandic Krona"
 msgstr "Izlandi korona"
 
-#: lib/currency.vala:55
+#: lib/currency.vala:58
 msgid "Japanese Yen"
 msgstr "Japán jen"
 
-#: lib/currency.vala:56
+#: lib/currency.vala:59
 msgid "South Korean Won"
 msgstr "Dél-koreai von"
 
-#: lib/currency.vala:57
+#: lib/currency.vala:60
 msgid "Kuwaiti Dinar"
 msgstr "Kuvaiti dinár"
 
-#: lib/currency.vala:58
+#: lib/currency.vala:61
 msgid "Kazakhstani Tenge"
 msgstr "Kazah tenge"
 
-#: lib/currency.vala:59
+#: lib/currency.vala:62
 msgid "Sri Lankan Rupee"
 msgstr "Srí-lankai rúpia"
 
-#: lib/currency.vala:60
+#: lib/currency.vala:63
 msgid "Libyan Dinar"
 msgstr "Líbiai dinár"
 
-#: lib/currency.vala:61
+#: lib/currency.vala:64
 msgid "Mauritian Rupee"
 msgstr "Mauritániai rúpia"
 
-#: lib/currency.vala:62
+#: lib/currency.vala:65
 msgid "Mexican Peso"
 msgstr "Mexikói peso"
 
-#: lib/currency.vala:63
+#: lib/currency.vala:66
 msgid "Malaysian Ringgit"
 msgstr "Maláj ringgit"
 
-#: lib/currency.vala:64
+#: lib/currency.vala:67
 msgid "Norwegian Krone"
 msgstr "Norvég korona"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:68
 msgid "Nepalese Rupee"
 msgstr "Nepáli rúpia"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:69
 msgid "New Zealand Dollar"
 msgstr "Új-zélandi dollár"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:70
 msgid "Omani Rial"
 msgstr "Ománi rial"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:71
 msgid "Peruvian Nuevo Sol"
 msgstr "Perui új sol"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:72
 msgid "Philippine Peso"
 msgstr "Fülöp-szigeteki peso"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:73
 msgid "Pakistani Rupee"
 msgstr "Pakisztáni rúpia"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:74
 msgid "Polish Zloty"
 msgstr "Lengyel zloty"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:75
 msgid "Qatari Riyal"
 msgstr "Katari riyál"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:76
 msgid "New Romanian Leu"
 msgstr "Új román lej"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:77
 msgid "Russian Rouble"
 msgstr "Orosz rubel"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:78
 msgid "Saudi Riyal"
 msgstr "Szaud-arábiai riyál"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:79
 msgid "Swedish Krona"
 msgstr "Svéd korona"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:80
 msgid "Singapore Dollar"
 msgstr "Szingapúri dollár"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:81
 msgid "Thai Baht"
 msgstr "Thai baht"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:82
 msgid "Tunisian Dinar"
 msgstr "Tunéziai dinár"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:83
 msgid "Turkish Lira"
 msgstr "Török líra"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:84
 msgid "T&T Dollar (TTD)"
 msgstr "T&T dollár (TTD)"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:85
 msgid "US Dollar"
 msgstr "USA dollár"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:86
 msgid "Uruguayan Peso"
 msgstr "Uruguayi peso"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:87
 msgid "Venezuelan Bolívar"
 msgstr "Venezuelai bolivár"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:88
 msgid "South African Rand"
 msgstr "Dél-afrikai rand"
 
@@ -689,7 +697,7 @@ msgstr "Digitális tároló"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: lib/unit.vala:39 src/math-preferences.vala:144
+#: lib/unit.vala:39 src/math-preferences.vala:147
 msgid "Degrees"
 msgstr "Fok"
 
@@ -705,7 +713,7 @@ msgid "degree,degrees,deg"
 msgstr "fok"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: lib/unit.vala:40 src/math-preferences.vala:148
+#: lib/unit.vala:40 src/math-preferences.vala:151
 msgid "Radians"
 msgstr "Radián"
 
@@ -721,7 +729,7 @@ msgid "radian,radians,rad"
 msgstr "radián,radian,rad"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: lib/unit.vala:41 src/math-preferences.vala:152
+#: lib/unit.vala:41 src/math-preferences.vala:155
 msgid "Gradians"
 msgstr "Gradián"
 
@@ -2504,7 +2512,7 @@ msgstr "Lineáris értékcsökkenési leírás"
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
 #: src/buttons-financial.ui:2377
 msgid "Rate"
-msgstr "Rate"
+msgstr "Kamat"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
 #: src/buttons-financial.ui:2394
@@ -2620,12 +2628,12 @@ msgid "Show release version"
 msgstr "Verziószám megjelenítése"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:296
+#: src/gnome-calculator.vala:297
 msgid "Unable to open help file"
 msgstr "A súgófájl nem nyitható meg"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:327
+#: src/gnome-calculator.vala:328
 msgid "translator-credits"
 msgstr ""
 "Dvornik László <dvornik at gnome dot hu>\n"
@@ -2634,12 +2642,12 @@ msgstr ""
 "Tímár András <timar at gnome dot hu>\n"
 "Úr Balázs <urbalazs at gmail dot com>"
 
-#: src/gnome-calculator.vala:333 src/math-window.ui:71
+#: src/gnome-calculator.vala:334 src/math-window.ui:71
 msgid "About Calculator"
 msgstr "Számológép névjegye"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:341
+#: src/gnome-calculator.vala:342
 msgid "Calculator with financial and scientific modes."
 msgstr "Számológép pénzügyi és tudományos üzemmódokkal."
 
@@ -2680,79 +2688,99 @@ msgid "Select no. of arguments"
 msgstr "Válassza ki az argumentumok számát"
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:30 src/math-window.ui:57
+#: src/math-preferences.vala:33 src/math-window.ui:57
 msgid "Preferences"
 msgstr "Beállítások"
 
 #. Preferences dialog: Label for number format combo box
-#: src/math-preferences.vala:43
+#: src/math-preferences.vala:46
 msgid "Number _Format:"
 msgstr "S_zámformátum:"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: src/math-preferences.vala:60
+#: src/math-preferences.vala:63
 msgid "Automatic"
 msgstr "Automatikus"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: src/math-preferences.vala:64
+#: src/math-preferences.vala:67
 msgid "Fixed"
 msgstr "Rögzített"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: src/math-preferences.vala:68
+#: src/math-preferences.vala:71
 msgid "Scientific"
 msgstr "Tudományos mód"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: src/math-preferences.vala:72
+#: src/math-preferences.vala:75
 msgid "Engineering"
 msgstr "Műszaki"
 
 #. Preferences dialog: label for show trailing zeroes check button
-#: src/math-preferences.vala:89
+#: src/math-preferences.vala:92
 msgid "Number of _decimals"
 msgstr "Tizedesek szá_ma"
 
 #. Preferences dialog: label for show trailing zeroes switch
-#: src/math-preferences.vala:101
+#: src/math-preferences.vala:104
 msgid "Trailing _zeroes"
 msgstr "_Záró nullák"
 
 #. Preferences dialog: label for show show thousands separator switch
-#: src/math-preferences.vala:114
+#: src/math-preferences.vala:117
 msgid "_Thousands separators"
 msgstr "_Ezreselválasztók"
 
 #. Preferences dialog: Label for angle unit combo box
-#: src/math-preferences.vala:128
+#: src/math-preferences.vala:131
 msgid "_Angle units:"
 msgstr "S_zög mértékegysége:"
 
 #. Preferences dialog: Label for word size combo box
-#: src/math-preferences.vala:158
+#: src/math-preferences.vala:161
 msgid "Word _size:"
 msgstr "Szó_hossz:"
 
 #. Word size combo: 8 bits
-#: src/math-preferences.vala:172
+#: src/math-preferences.vala:175
 msgid "8 bits"
 msgstr "8 bit"
 
 #. Word size combo: 16 bits
-#: src/math-preferences.vala:174
+#: src/math-preferences.vala:177
 msgid "16 bits"
 msgstr "16 bits"
 
 #. Word size combo: 32 bits
-#: src/math-preferences.vala:176
+#: src/math-preferences.vala:179
 msgid "32 bits"
 msgstr "32 bits"
 
 #. Word size combo: 64 bits
-#: src/math-preferences.vala:178
+#: src/math-preferences.vala:181
 msgid "64 bits"
 msgstr "64 bits"
+
+#. Preferences dialog: Label for word size combo box
+#: src/math-preferences.vala:187
+msgid "Exchange rate refresh interval"
+msgstr "Árfolyam frissítési gyakorisága"
+
+#. Refresh interval combo: never
+#: src/math-preferences.vala:201
+msgid "never"
+msgstr "soha"
+
+#. Refresh interval combo: daily
+#: src/math-preferences.vala:203
+msgid "daily"
+msgstr "naponta"
+
+#. Refresh interval combo: weekly
+#: src/math-preferences.vala:205
+msgid "weekly"
+msgstr "hetente"
 
 #: src/math-shortcuts.ui:15
 msgctxt "shortcut window"
