@@ -16,6 +16,9 @@ private static CurrencyManager? default_currency_manager = null;
 public class CurrencyManager : Object
 {
     private List<Currency> currencies;
+
+    public int refresh_interval { get; set; }
+
     public signal void updated ();
 
     public static CurrencyManager get_default ()
@@ -147,6 +150,9 @@ public class CurrencyManager : Object
      */
     private bool file_needs_update (string filename, double max_age)
     {
+        if (max_age == 0)
+            return false;
+
         if (!FileUtils.test (filename, FileTest.IS_REGULAR))
             return true;
 
@@ -377,14 +383,14 @@ public class CurrencyManager : Object
     {
         /* Update rates if necessary */
         var path = get_imf_rate_filepath ();
-        if (!downloading_imf_rates && file_needs_update (path, 60 * 60 * 24 * 7))
+        if (!downloading_imf_rates && file_needs_update (path, refresh_interval))
         {
             downloading_imf_rates = true;
             debug ("Downloading rates from the IMF...");
             download_file.begin ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, "IMF");
         }
         path = get_ecb_rate_filepath ();
-        if (!downloading_ecb_rates && file_needs_update (path, 60 * 60 * 24 * 7))
+        if (!downloading_ecb_rates && file_needs_update (path, refresh_interval))
         {
             downloading_ecb_rates = true;
             debug ("Downloading rates from the ECB...");

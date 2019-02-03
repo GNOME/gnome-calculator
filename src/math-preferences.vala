@@ -13,11 +13,13 @@ public class MathPreferencesDialog : Gtk.Dialog
     public MathEquation equation { private get; construct; }
 
     private Gtk.ComboBox angle_unit_combo;
+    private Gtk.ComboBox refresh_interval_combo;
     private Gtk.ComboBox number_format_combo;
     private Gtk.ComboBox word_size_combo;
     private Gtk.SpinButton decimal_places_spin;
     private Gtk.Switch thousands_separator_switch;
     private Gtk.Switch trailing_zeroes_switch;
+    private Settings settings;
 
     public MathPreferencesDialog (MathEquation eq)
     {
@@ -26,6 +28,7 @@ public class MathPreferencesDialog : Gtk.Dialog
 
     construct
     {
+        settings = new Settings ("org.gnome.calculator");
         set_title (/* Title of preferences dialog */
                    _("Preferences"));
         border_width = 8;
@@ -180,6 +183,30 @@ public class MathPreferencesDialog : Gtk.Dialog
         word_size_combo.pack_start (renderer, true);
         word_size_combo.add_attribute (renderer, "text", 0);
 
+        label = new Gtk.Label.with_mnemonic (/* Preferences dialog: Label for word size combo box */
+                                             _("Exchange rate refresh interval"));
+        label.show ();
+        label.xalign = 0;
+        grid.attach (label, 0, 7, 1, 1);
+
+        refresh_interval_combo = new Gtk.ComboBox ();
+        label.mnemonic_widget = refresh_interval_combo;
+        refresh_interval_combo.show ();
+        refresh_interval_combo.changed.connect (refresh_interval_combo_changed_cb);
+        grid.attach (refresh_interval_combo, 1, 7, 1, 1);
+
+        model = new Gtk.ListStore (2, typeof (string), typeof (int));
+        refresh_interval_combo.model = model;
+        model.append (out iter);
+        model.set (iter, 0, /* Refresh interval combo: never */ _("never"), 1, 0);
+        model.append (out iter);
+        model.set (iter, 0, /* Refresh interval combo: daily */ _("daily"), 1, 60 * 60 * 24);
+        model.append (out iter);
+        model.set (iter, 0, /* Refresh interval combo: weekly */ _("weekly"), 1, 60 * 60 * 24 * 7);
+        renderer = new Gtk.CellRendererText ();
+        refresh_interval_combo.pack_start (renderer, true);
+        refresh_interval_combo.add_attribute (renderer, "text", 0);
+
         decimal_places_spin.set_value (equation.accuracy);
         equation.notify["accuracy"].connect ((pspec) => { decimal_places_spin.set_value (equation.accuracy); });
 
@@ -197,6 +224,8 @@ public class MathPreferencesDialog : Gtk.Dialog
 
         set_combo_box_from_int (angle_unit_combo, equation.angle_units);
         equation.notify["angle-units"].connect ((pspec) => { set_combo_box_from_int (angle_unit_combo, equation.angle_units); });
+
+        set_combo_box_from_int (refresh_interval_combo, settings.get_int ("refresh-interval"));
     }
 
     protected override void response (int id)
@@ -235,6 +264,17 @@ public class MathPreferencesDialog : Gtk.Dialog
         int value;
         combo.model.get (iter, 1, out value, -1);
         equation.word_size = value;
+    }
+
+    private void refresh_interval_combo_changed_cb (Gtk.ComboBox combo)
+    {
+        Gtk.TreeIter iter;
+        combo.get_active_iter (out iter);
+        int value;
+        combo.model.get (iter, 1, out value, -1);
+        settings.set_int ("refresh-interval", value);
+        CurrencyManager.get_default ().refresh_interval = value;
+
     }
 
     private void set_combo_box_from_int (Gtk.ComboBox combo, int value)

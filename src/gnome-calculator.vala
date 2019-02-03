@@ -119,6 +119,7 @@ public class Calculator : Gtk.Application
         last_opened_window = create_new_window (settings);
         // restore the first window position from the settings
         load_window_position (last_opened_window);
+        CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
     }
 
     private MathWindow get_active_math_window ()
