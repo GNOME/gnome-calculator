@@ -216,7 +216,9 @@ public class MathDisplay : Gtk.Viewport
 
         /* Numeric keypad will insert '.' or ',' depending on layout */
         if ((event.keyval == Gdk.Key.KP_Decimal) ||
-            (event.keyval == Gdk.Key.KP_Separator))
+            (event.keyval == Gdk.Key.KP_Separator) ||
+            (event.keyval == Gdk.Key.decimalpoint) ||
+            (event.keyval == Gdk.Key.comma))
         {
             equation.insert_numeric_point ();
             return true;
