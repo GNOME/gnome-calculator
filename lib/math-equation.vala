@@ -27,7 +27,6 @@ private class MathEquationState : Object
     public int cursor;             /* ??? */
     public NumberMode number_mode; /* ??? */
     public bool can_super_minus;   /* true if entering minus can generate a superscript minus */
-    public bool entered_multiply;  /* Last insert was a multiply character */
     public string status;          /* Equation status */
     public uint error_token_start; /* Start offset of error token */
     public uint error_token_end;   /* End offset of error token */
@@ -417,7 +416,6 @@ public class MathEquation : Gtk.SourceBuffer
         get ("cursor-position", out s.cursor, null);
         s.number_mode = number_mode;
         s.can_super_minus = can_super_minus;
-        s.entered_multiply = state.entered_multiply;
         s.status = state.status;
 
         return s;
@@ -483,7 +481,6 @@ public class MathEquation : Gtk.SourceBuffer
 
         number_mode = s.number_mode;
         can_super_minus = s.can_super_minus;
-        state.entered_multiply = s.entered_multiply;
         status = s.status;
 
         in_undo_operation = false;
@@ -820,13 +817,17 @@ public class MathEquation : Gtk.SourceBuffer
     public new void insert (string text)
     {
         /* Replace ** with ^ (not on all keyboards) */
-        if (!has_selection && text == "×" && state.entered_multiply)
+        if (!has_selection && text == "×")
         {
-            Gtk.TextIter iter;
+            Gtk.TextIter iter, iter_prev;
             get_iter_at_mark (out iter, get_insert ());
-            (this as Gtk.TextBuffer).backspace (iter, true, true);
-            insert_at_cursor ("^", -1);
-            return;
+            get_iter_at_mark (out iter_prev, get_insert ());
+            if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == "×" )
+            {
+                (this as Gtk.TextBuffer).backspace (iter, true, true);
+                insert_at_cursor ("^", -1);
+                return;
+            }
         }
 
         /* Can't enter superscript minus after entering digits */
@@ -1326,8 +1327,6 @@ public class MathEquation : Gtk.SourceBuffer
 
         base.insert_text (ref location, text, len);
 
-        state.entered_multiply = text == "×";
-
         /* Update thousands separators, then revalidate iterator */
         reformat_separators ();
         get_iter_at_mark (out location, mark);
@@ -1363,8 +1362,6 @@ public class MathEquation : Gtk.SourceBuffer
         }
 
         base.delete_range (start, end);
-
-        state.entered_multiply = false;
 
         /* Update thousands separators */
         reformat_separators ();
