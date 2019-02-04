@@ -184,7 +184,7 @@ public class MathPreferencesDialog : Gtk.Dialog
         word_size_combo.add_attribute (renderer, "text", 0);
 
         label = new Gtk.Label.with_mnemonic (/* Preferences dialog: Label for exchange rate refresh interval combo box */
-                                             _("Exchange rate refresh interval"));
+                                             _("E_xchange rate refresh interval"));
         label.show ();
         label.xalign = 0;
         grid.attach (label, 0, 7, 1, 1);
