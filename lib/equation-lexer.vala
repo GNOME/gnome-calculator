@@ -46,7 +46,7 @@ public enum LexerTokenType
     AND,                /* Bitwise AND */
     OR,                 /* Bitwise OR */
     XOR,                /* Bitwise XOR */
-    IN,                 /* IN ( for converter ) */
+    IN,                 /* IN ( for converter e.g. 1 EUR in USD / 1 EUR to USD) */
     NUMBER,             /* Number */
     SUP_NUMBER,         /* Super Number */
     NSUP_NUMBER,        /* Negative Super Number */
@@ -700,8 +700,8 @@ public class Lexer : Object
             return insert_token (LexerTokenType.XOR);
         if (name == "not")
             return insert_token (LexerTokenType.NOT);
-        // Translators: conversion keyword, used e.g. 1 EUR in USD
-        if (name == _("in"))
+        // Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
+        if (name == _("in") || name == _("to"))
             return insert_token (LexerTokenType.IN);
         if (check_if_function ())
             return insert_token (LexerTokenType.FUNCTION);
