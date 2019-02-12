@@ -7,23 +7,23 @@
 # Jakub Friedl <jfriedl@suse.cz>, 2006.
 # Petr Pulc <petrpulc@gmail.com>, 2009.
 # Petr Kovar <pknbe@volny.cz>, 2009, 2015.
-# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018.
+# Marek Černocký <marek@manet.cz>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2018-12-27 09:35+0000\n"
-"PO-Revision-Date: 2019-01-20 17:00+0100\n"
-"Last-Translator: Daniel Rusek <mail@asciiwolf.com>\n"
+"POT-Creation-Date: 2019-02-06 18:32+0000\n"
+"PO-Revision-Date: 2019-02-12 14:33+0100\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Gtranslator 2.91.7\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
@@ -95,13 +95,13 @@ msgstr "Kalkulačka GNOME ve finančním režimu."
 msgid "GNOME Calculator in Programming Mode"
 msgstr "Kalkulačka GNOME v programátorském režimu."
 
-#: data/org.gnome.Calculator.appdata.xml.in:62
+#: data/org.gnome.Calculator.appdata.xml.in:60
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
 #. Program name in the about dialog
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:332 src/math-window.ui:78
+#: src/gnome-calculator.vala:333 src/math-window.ui:78
 msgid "Calculator"
 msgstr "Kalkulačka"
 
@@ -176,297 +176,309 @@ msgid "The angle units to use"
 msgstr "Úhlové jednotky, které se mají používat"
 
 #: data/org.gnome.calculator.gschema.xml:62
+msgid "Currency update interval"
+msgstr "Četnost aktualizace měn"
+
+#: data/org.gnome.calculator.gschema.xml:63
+msgid "How often the currency exchange rates should be updated"
+msgstr "Jak často by se měly aktualizovat měnové kurzy."
+
+#: data/org.gnome.calculator.gschema.xml:67
 msgid "Button mode"
 msgstr "Tlačítko režimu"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "The button mode"
 msgstr "Tlačítko režimu"
 
-#: data/org.gnome.calculator.gschema.xml:67
+#: data/org.gnome.calculator.gschema.xml:72
 msgid "Source currency"
 msgstr "Zdrojová měna"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:73
 msgid "Currency of the current calculation"
 msgstr "Měna současného rozpočtu"
 
-#: data/org.gnome.calculator.gschema.xml:72
+#: data/org.gnome.calculator.gschema.xml:77
 msgid "Target currency"
 msgstr "Cílová měna"
 
-#: data/org.gnome.calculator.gschema.xml:73
+#: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency to convert the current calculation into"
 msgstr "Měna, na kterou se má současný rozpočet převést"
 
-#: data/org.gnome.calculator.gschema.xml:77
+#: data/org.gnome.calculator.gschema.xml:82
 msgid "Source units"
 msgstr "Zdrojová měna"
 
-#: data/org.gnome.calculator.gschema.xml:78
+#: data/org.gnome.calculator.gschema.xml:83
 msgid "Units of the current calculation"
 msgstr "Jednotky současného výpočtu"
 
-#: data/org.gnome.calculator.gschema.xml:82
+#: data/org.gnome.calculator.gschema.xml:87
 msgid "Target units"
 msgstr "Cílová měna"
 
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Units to convert the current calculation into"
 msgstr "Jednotky, na které se má současný výpočet převést"
 
-#: data/org.gnome.calculator.gschema.xml:87
+#: data/org.gnome.calculator.gschema.xml:92
 msgid "Internal precision"
 msgstr "Vnitřní přesnost"
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:93
 msgid "The internal precision used with the MPFR library"
 msgstr "Vnitřní přesnost použitá ve spojení s knihovnou MPFR"
 
-#: data/org.gnome.calculator.gschema.xml:92
+#: data/org.gnome.calculator.gschema.xml:97
 msgid "Window position"
 msgstr "Poloha okna"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Window position (x and y) of the last closed window."
 msgstr "Poloha okna (souřadnice x, y), když bylo naposledy zavřeno."
 
-#: lib/currency.vala:28
+#: lib/currency.vala:31
 msgid "UAE Dirham"
 msgstr "Dirham SAE"
 
-#: lib/currency.vala:29
+#: lib/currency.vala:32
 msgid "Australian Dollar"
 msgstr "Australský dolar"
 
-#: lib/currency.vala:30
+#: lib/currency.vala:33
 msgid "Bulgarian Lev"
 msgstr "Bulharská leva"
 
-#: lib/currency.vala:31
+#: lib/currency.vala:34
 msgid "Bahraini Dinar"
 msgstr "Bahrajnský dinár"
 
-#: lib/currency.vala:32
+#: lib/currency.vala:35
 msgid "Brunei Dollar"
 msgstr "Brunejský dolar"
 
-#: lib/currency.vala:33
+#: lib/currency.vala:36
 msgid "Brazilian Real"
 msgstr "Brazilský reál"
 
-#: lib/currency.vala:34
+#: lib/currency.vala:37
 msgid "Botswana Pula"
 msgstr "Botswanská pula"
 
-#: lib/currency.vala:35
+#: lib/currency.vala:38
 msgid "Canadian Dollar"
 msgstr "Kanadský dolar"
 
-#: lib/currency.vala:36
+#: lib/currency.vala:39
 msgid "CFA Franc"
 msgstr "Frank CFA"
 
-#: lib/currency.vala:37
+#: lib/currency.vala:40
 msgid "Swiss Franc"
 msgstr "Švýcarský frank"
 
-#: lib/currency.vala:38
+#: lib/currency.vala:41
 msgid "Chilean Peso"
 msgstr "Chilské peso"
 
-#: lib/currency.vala:39
+#: lib/currency.vala:42
 msgid "Chinese Yuan"
 msgstr "Čínský jüan"
 
-#: lib/currency.vala:40
+#: lib/currency.vala:43
 msgid "Colombian Peso"
 msgstr "Kolumbijské peso"
 
-#: lib/currency.vala:41
+#: lib/currency.vala:44
 msgid "Czech Koruna"
 msgstr "Česká koruna"
 
-#: lib/currency.vala:42
+#: lib/currency.vala:45
 msgid "Danish Krone"
 msgstr "Dánská koruna"
 
-#: lib/currency.vala:43
+#: lib/currency.vala:46
 msgid "Algerian Dinar"
 msgstr "Alžírský dinár"
 
-#: lib/currency.vala:44
+#: lib/currency.vala:47
 msgid "Estonian Kroon"
 msgstr "Estonská koruna"
 
-#: lib/currency.vala:45
+#: lib/currency.vala:48
 msgid "Euro"
 msgstr "Euro"
 
-#: lib/currency.vala:46
+#: lib/currency.vala:49
 msgid "British Pound Sterling"
 msgstr "Britská libra"
 
-#: lib/currency.vala:47
+#: lib/currency.vala:50
 msgid "Hong Kong Dollar"
 msgstr "Honkongský dolar"
 
-#: lib/currency.vala:48
+#: lib/currency.vala:51
 msgid "Croatian Kuna"
 msgstr "Chorvatská kuna"
 
-#: lib/currency.vala:49
+#: lib/currency.vala:52
 msgid "Hungarian Forint"
 msgstr "Maďarský forint"
 
-#: lib/currency.vala:50
+#: lib/currency.vala:53
 msgid "Indonesian Rupiah"
 msgstr "Indonéská rupie"
 
-#: lib/currency.vala:51
+#: lib/currency.vala:54
 msgid "Israeli New Shekel"
 msgstr "Izraelský nový šekel"
 
-#: lib/currency.vala:52
+#: lib/currency.vala:55
 msgid "Indian Rupee"
 msgstr "Indická rupie"
 
-#: lib/currency.vala:53
+#: lib/currency.vala:56
 msgid "Iranian Rial"
 msgstr "Iránský reál"
 
-#: lib/currency.vala:54
+#: lib/currency.vala:57
 msgid "Icelandic Krona"
 msgstr "Islandská koruna"
 
-#: lib/currency.vala:55
+#: lib/currency.vala:58
 msgid "Japanese Yen"
 msgstr "Japonský jen"
 
-#: lib/currency.vala:56
+#: lib/currency.vala:59
 msgid "South Korean Won"
 msgstr "Jihokorejský won"
 
-#: lib/currency.vala:57
+#: lib/currency.vala:60
 msgid "Kuwaiti Dinar"
 msgstr "Kuvajtský dinár"
 
-#: lib/currency.vala:58
+#: lib/currency.vala:61
 msgid "Kazakhstani Tenge"
 msgstr "Kazachstánské tenge"
 
-#: lib/currency.vala:59
+#: lib/currency.vala:62
 msgid "Sri Lankan Rupee"
 msgstr "Srílanská rupie"
 
-#: lib/currency.vala:60
+#: lib/currency.vala:63
 msgid "Libyan Dinar"
 msgstr "Libyjský dinár"
 
-#: lib/currency.vala:61
+#: lib/currency.vala:64
 msgid "Mauritian Rupee"
 msgstr "Mauricijská rupie"
 
-#: lib/currency.vala:62
+#: lib/currency.vala:65
 msgid "Mexican Peso"
 msgstr "Mexické peso"
 
-#: lib/currency.vala:63
+#: lib/currency.vala:66
 msgid "Malaysian Ringgit"
 msgstr "Malajsijský ringgit"
 
-#: lib/currency.vala:64
+#: lib/currency.vala:67
 msgid "Norwegian Krone"
 msgstr "Norská koruna"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:68
 msgid "Nepalese Rupee"
 msgstr "Nepálská rupie"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:69
 msgid "New Zealand Dollar"
 msgstr "Novozélandský dolar"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:70
 msgid "Omani Rial"
 msgstr "Ománský rial"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:71
 msgid "Peruvian Nuevo Sol"
 msgstr "Peruánské nuevo sol"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:72
 msgid "Philippine Peso"
 msgstr "Filipínské peso"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:73
 msgid "Pakistani Rupee"
 msgstr "Pakistánská rupie"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:74
 msgid "Polish Zloty"
 msgstr "Polský złoty"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:75
 msgid "Qatari Riyal"
 msgstr "Katarský rial"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:76
 msgid "New Romanian Leu"
 msgstr "Nové rumunské leu"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:77
 msgid "Russian Rouble"
 msgstr "Ruský rubl"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:78
 msgid "Saudi Riyal"
 msgstr "Saúdskoarabský rial"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:79
 msgid "Swedish Krona"
 msgstr "Švédská koruna"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:80
 msgid "Singapore Dollar"
 msgstr "Singapurský dolar"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:81
 msgid "Thai Baht"
 msgstr "Thajský baht"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:82
 msgid "Tunisian Dinar"
 msgstr "Tuniský dinár"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:83
 msgid "Turkish Lira"
 msgstr "Turecká lira"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:84
 msgid "T&T Dollar (TTD)"
 msgstr "Dolar Trinidadu a Tobaga"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:85
 msgid "US Dollar"
 msgstr "Americký dolar"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:86
 msgid "Uruguayan Peso"
 msgstr "Uruguayské peso"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:87
 msgid "Venezuelan Bolívar"
 msgstr "Venezuelský bolívar"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:88
 msgid "South African Rand"
 msgstr "Jihoafrický rand"
 
-#. Translators: conversion keyword, used e.g. 1 EUR in USD
+#. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
 #: lib/equation-lexer.vala:704 src/math-converter.vala:247
 msgid "in"
 msgstr "v"
+
+#: lib/equation-lexer.vala:704
+msgid "to"
+msgstr "na"
 
 #: lib/equation-parser.vala:717 lib/number.vala:429
 msgid "The zeroth root of a number is undefined"
@@ -477,74 +489,74 @@ msgid "Error: the number of periods must be positive"
 msgstr "Chyba: počet období musí být kladný"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:171
+#: lib/math-equation.vala:170
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:523
+#: lib/math-equation.vala:520
 msgid "No undo history"
 msgstr "Žádná položka v historii změn"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:544
+#: lib/math-equation.vala:541
 msgid "No redo history"
 msgstr "Žádná položka v historii opakování změn"
 
-#: lib/math-equation.vala:775
+#: lib/math-equation.vala:772
 msgid "No sane value to store"
 msgstr "Nesmyslná hodnota pro uložení"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:968
+#: lib/math-equation.vala:969
 msgid "Overflow. Try a bigger word size"
 msgstr "Došlo k přetečení. Zkuste větší velikost slova."
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:973
+#: lib/math-equation.vala:974
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Neznámá proměnná „%s“"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:980
+#: lib/math-equation.vala:981
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funkce „%s“ není definovaná"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:987
+#: lib/math-equation.vala:988
 msgid "Unknown conversion"
 msgstr "Neznámý převod"
 
 #. should always be run
-#: lib/math-equation.vala:997
+#: lib/math-equation.vala:998
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1002 lib/math-equation.vala:1007
+#: lib/math-equation.vala:1003 lib/math-equation.vala:1008
 msgid "Malformed expression"
 msgstr "Nesprávný výraz"
 
-#: lib/math-equation.vala:1018
+#: lib/math-equation.vala:1019
 msgid "Calculating"
 msgstr "Počítá se"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1211
+#: lib/math-equation.vala:1212
 msgid "Need an integer to factorize"
 msgstr "Pro rozklad na součin prvočísel je zapotřebí celé číslo"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1265
+#: lib/math-equation.vala:1266
 msgid "No sane value to bitwise shift"
 msgstr "Nesmyslná hodnota pro bitový posun"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1279
+#: lib/math-equation.vala:1280
 msgid "Displayed value not an integer"
 msgstr "Zobrazená hodnota není celé číslo"
 
@@ -690,7 +702,7 @@ msgstr "Informace"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: lib/unit.vala:39 src/math-preferences.vala:144
+#: lib/unit.vala:39 src/math-preferences.vala:147
 msgid "Degrees"
 msgstr "Stupně"
 
@@ -706,7 +718,7 @@ msgid "degree,degrees,deg"
 msgstr "stupeň,stupně,stupňů,deg,°"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: lib/unit.vala:40 src/math-preferences.vala:148
+#: lib/unit.vala:40 src/math-preferences.vala:151
 msgid "Radians"
 msgstr "Radiány"
 
@@ -722,7 +734,7 @@ msgid "radian,radians,rad"
 msgstr "radián,radiány,radiánů,rad"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: lib/unit.vala:41 src/math-preferences.vala:152
+#: lib/unit.vala:41 src/math-preferences.vala:155
 msgid "Gradians"
 msgstr "Gony (grady)"
 
@@ -1083,10 +1095,8 @@ msgid "m³"
 msgstr "m3,m³"
 
 #: lib/unit.vala:65
-#, fuzzy
-#| msgid "Gallons"
 msgid "US Gallons"
-msgstr "Galony"
+msgstr "Galony (americké)"
 
 #: lib/unit.vala:65
 #, c-format
@@ -1115,10 +1125,8 @@ msgid "litre,litres,liter,liters,L"
 msgstr "litr,litry,litrů,l"
 
 #: lib/unit.vala:67
-#, fuzzy
-#| msgid "Quarts"
 msgid "US Quarts"
-msgstr "Kvarty"
+msgstr "Kvarty (americké)"
 
 #: lib/unit.vala:67
 #, c-format
@@ -1132,10 +1140,8 @@ msgid "quart,quarts,qt"
 msgstr "kvarta,kvarty,kvart,qt"
 
 #: lib/unit.vala:68
-#, fuzzy
-#| msgid "Pints"
 msgid "US Pints"
-msgstr "Pinty"
+msgstr "Pinty (americké)"
 
 #: lib/unit.vala:68
 msgctxt "unit-symbols"
@@ -2633,12 +2639,12 @@ msgid "Show release version"
 msgstr "Zobrazit verzi vydání"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:296
+#: src/gnome-calculator.vala:297
 msgid "Unable to open help file"
 msgstr "Nelze otevřít soubor s nápovědou"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:327
+#: src/gnome-calculator.vala:328
 msgid "translator-credits"
 msgstr ""
 "Miloslav Trmač <mitr@volny.cz>\n"
@@ -2646,12 +2652,12 @@ msgstr ""
 "Petr Pulc <petrpulc@gmail.com>\n"
 "Marek Černocký <marek@manet.cz>"
 
-#: src/gnome-calculator.vala:333 src/math-window.ui:71
+#: src/gnome-calculator.vala:334 src/math-window.ui:71
 msgid "About Calculator"
 msgstr "O kalkulačce"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:341
+#: src/gnome-calculator.vala:342
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulačka s finančním a vědeckým režimem."
 
@@ -2676,11 +2682,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:495
+#: src/math-display.vala:497
 msgid "Defined Functions"
 msgstr "Definované funkce"
 
-#: src/math-display.vala:552
+#: src/math-display.vala:554
 msgid "Defined Variables"
 msgstr "Definované proměnné"
 
@@ -2693,79 +2699,99 @@ msgid "Select no. of arguments"
 msgstr "Vybrat počet argumentů"
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:30 src/math-window.ui:57
+#: src/math-preferences.vala:33 src/math-window.ui:57
 msgid "Preferences"
 msgstr "Předvolby"
 
 #. Preferences dialog: Label for number format combo box
-#: src/math-preferences.vala:43
+#: src/math-preferences.vala:46
 msgid "Number _Format:"
 msgstr "_Formát čísla:"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: src/math-preferences.vala:60
+#: src/math-preferences.vala:63
 msgid "Automatic"
 msgstr "Automaticky"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: src/math-preferences.vala:64
+#: src/math-preferences.vala:67
 msgid "Fixed"
 msgstr "Pevný"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: src/math-preferences.vala:68
+#: src/math-preferences.vala:71
 msgid "Scientific"
 msgstr "Vědecký"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: src/math-preferences.vala:72
+#: src/math-preferences.vala:75
 msgid "Engineering"
 msgstr "Inženýrský"
 
 #. Preferences dialog: label for show trailing zeroes check button
-#: src/math-preferences.vala:89
+#: src/math-preferences.vala:92
 msgid "Number of _decimals"
 msgstr "Počet _desetinných míst"
 
 #. Preferences dialog: label for show trailing zeroes switch
-#: src/math-preferences.vala:101
+#: src/math-preferences.vala:104
 msgid "Trailing _zeroes"
 msgstr "Koncové _nuly"
 
 #. Preferences dialog: label for show show thousands separator switch
-#: src/math-preferences.vala:114
+#: src/math-preferences.vala:117
 msgid "_Thousands separators"
 msgstr "Oddělovače _tisíců"
 
 #. Preferences dialog: Label for angle unit combo box
-#: src/math-preferences.vala:128
+#: src/math-preferences.vala:131
 msgid "_Angle units:"
 msgstr "Ú_hlové jednotky:"
 
 #. Preferences dialog: Label for word size combo box
-#: src/math-preferences.vala:158
+#: src/math-preferences.vala:161
 msgid "Word _size:"
 msgstr "Délka _slova:"
 
 #. Word size combo: 8 bits
-#: src/math-preferences.vala:172
+#: src/math-preferences.vala:175
 msgid "8 bits"
 msgstr "8 bitů"
 
 #. Word size combo: 16 bits
-#: src/math-preferences.vala:174
+#: src/math-preferences.vala:177
 msgid "16 bits"
 msgstr "16 bitů"
 
 #. Word size combo: 32 bits
-#: src/math-preferences.vala:176
+#: src/math-preferences.vala:179
 msgid "32 bits"
 msgstr "32 bitů"
 
 #. Word size combo: 64 bits
-#: src/math-preferences.vala:178
+#: src/math-preferences.vala:181
 msgid "64 bits"
 msgstr "64 bitů"
+
+#. Preferences dialog: Label for exchange rate refresh interval combo box
+#: src/math-preferences.vala:187
+msgid "E_xchange rate refresh interval"
+msgstr "Četnost aktualizace měnových kurzů"
+
+#. Refresh interval combo: never
+#: src/math-preferences.vala:201
+msgid "never"
+msgstr "nikdy"
+
+#. Refresh interval combo: daily
+#: src/math-preferences.vala:203
+msgid "daily"
+msgstr "denně"
+
+#. Refresh interval combo: weekly
+#: src/math-preferences.vala:205
+msgid "weekly"
+msgstr "týdně"
 
 #: src/math-shortcuts.ui:15
 msgctxt "shortcut window"
@@ -2934,9 +2960,3 @@ msgstr "Nabídka"
 #: src/math-window.vala:138
 msgid "_Quit"
 msgstr "U_končit"
-
-#~ msgid " in "
-#~ msgstr " na "
-
-#~ msgid "About"
-#~ msgstr "O aplikaci"
