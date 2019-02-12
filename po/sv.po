@@ -1,18 +1,18 @@
 # Swedish translation for gnome-calculator
-# Copyright © 2002-2018 Free Software Foundation, Inc.
+# Copyright © 2002-2019 Free Software Foundation, Inc.
 # Christian Rose <menthos@menthos.com>, 2002, 2003, 2004, 2005.
 # Daniel Nylander <po@danielnylander.se>, 2006, 2007, 2008, 2009, 2010, 2011.
 # Marcus Lundblad <ml@update.uu.se>, 2014.
 # Mattias Eriksson <snaggen@gmail.com>, 2014.
-# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018.
+# Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2018-12-10 11:03+0000\n"
-"PO-Revision-Date: 2018-12-28 20:45+0100\n"
+"POT-Creation-Date: 2019-02-06 18:32+0000\n"
+"PO-Revision-Date: 2019-02-12 20:30+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 msgid "GNOME Calculator"
@@ -91,13 +91,13 @@ msgstr "GNOME Kalkylator i finansiellt läge"
 msgid "GNOME Calculator in Programming Mode"
 msgstr "GNOME Kalkylator i programmeringsläge"
 
-#: data/org.gnome.Calculator.appdata.xml.in:62
+#: data/org.gnome.Calculator.appdata.xml.in:60
 msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
 #. Program name in the about dialog
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:332 src/math-window.ui:78
+#: src/gnome-calculator.vala:333 src/math-window.ui:78
 msgid "Calculator"
 msgstr "Kalkylator"
 
@@ -108,7 +108,6 @@ msgstr "uträkning;aritmetik;vetenskaplig;finansiell;"
 
 #. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 #: data/org.gnome.Calculator.desktop.in:9
-#| msgid "gnome-calculator"
 msgid "org.gnome.Calculator"
 msgstr "org.gnome.Calculator"
 
@@ -173,297 +172,309 @@ msgid "The angle units to use"
 msgstr "Vinkelenheterna att använda"
 
 #: data/org.gnome.calculator.gschema.xml:62
+msgid "Currency update interval"
+msgstr "Uppdateringsintervall för valuta"
+
+#: data/org.gnome.calculator.gschema.xml:63
+msgid "How often the currency exchange rates should be updated"
+msgstr "Hur ofta valutakurserna ska uppdateras"
+
+#: data/org.gnome.calculator.gschema.xml:67
 msgid "Button mode"
 msgstr "Knappläge"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "The button mode"
 msgstr "Knappläget"
 
-#: data/org.gnome.calculator.gschema.xml:67
+#: data/org.gnome.calculator.gschema.xml:72
 msgid "Source currency"
 msgstr "Källvaluta"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:73
 msgid "Currency of the current calculation"
 msgstr "Valuta för aktuell beräkning"
 
-#: data/org.gnome.calculator.gschema.xml:72
+#: data/org.gnome.calculator.gschema.xml:77
 msgid "Target currency"
 msgstr "Målvaluta"
 
-#: data/org.gnome.calculator.gschema.xml:73
+#: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency to convert the current calculation into"
 msgstr "Valuta att konvertera den aktuell beräkningen till"
 
-#: data/org.gnome.calculator.gschema.xml:77
+#: data/org.gnome.calculator.gschema.xml:82
 msgid "Source units"
 msgstr "Källenheter"
 
-#: data/org.gnome.calculator.gschema.xml:78
+#: data/org.gnome.calculator.gschema.xml:83
 msgid "Units of the current calculation"
 msgstr "Enheter för aktuell beräkning"
 
-#: data/org.gnome.calculator.gschema.xml:82
+#: data/org.gnome.calculator.gschema.xml:87
 msgid "Target units"
 msgstr "Målenheter"
 
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Units to convert the current calculation into"
 msgstr "Enheter att konvertera den aktuell beräkningen till"
 
-#: data/org.gnome.calculator.gschema.xml:87
+#: data/org.gnome.calculator.gschema.xml:92
 msgid "Internal precision"
 msgstr "Intern precision"
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:93
 msgid "The internal precision used with the MPFR library"
 msgstr "Den interna precision som används med MPFR-biblioteket"
 
-#: data/org.gnome.calculator.gschema.xml:92
+#: data/org.gnome.calculator.gschema.xml:97
 msgid "Window position"
 msgstr "Fönsterposition"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Window position (x and y) of the last closed window."
 msgstr "Fönsterposition (x och y) för det senast stängda fönstret."
 
-#: lib/currency.vala:28
+#: lib/currency.vala:31
 msgid "UAE Dirham"
 msgstr "Dirham (Förenade Arabemiraten)"
 
-#: lib/currency.vala:29
+#: lib/currency.vala:32
 msgid "Australian Dollar"
 msgstr "Australisk dollar"
 
-#: lib/currency.vala:30
+#: lib/currency.vala:33
 msgid "Bulgarian Lev"
 msgstr "Bulgarisk leva"
 
-#: lib/currency.vala:31
+#: lib/currency.vala:34
 msgid "Bahraini Dinar"
 msgstr "Dinar (Bahrain)"
 
-#: lib/currency.vala:32
+#: lib/currency.vala:35
 msgid "Brunei Dollar"
 msgstr "Bruneisk dollar"
 
-#: lib/currency.vala:33
+#: lib/currency.vala:36
 msgid "Brazilian Real"
 msgstr "Brasiliansk real"
 
-#: lib/currency.vala:34
+#: lib/currency.vala:37
 msgid "Botswana Pula"
 msgstr "Botswansk pula"
 
-#: lib/currency.vala:35
+#: lib/currency.vala:38
 msgid "Canadian Dollar"
 msgstr "Kanadensisk dollar"
 
-#: lib/currency.vala:36
+#: lib/currency.vala:39
 msgid "CFA Franc"
 msgstr "CFA-franc"
 
-#: lib/currency.vala:37
+#: lib/currency.vala:40
 msgid "Swiss Franc"
 msgstr "Schweizisk franc"
 
-#: lib/currency.vala:38
+#: lib/currency.vala:41
 msgid "Chilean Peso"
 msgstr "Chilensk peso"
 
-#: lib/currency.vala:39
+#: lib/currency.vala:42
 msgid "Chinese Yuan"
 msgstr "Kinesisk yuan"
 
-#: lib/currency.vala:40
+#: lib/currency.vala:43
 msgid "Colombian Peso"
 msgstr "Colombiansk peso"
 
-#: lib/currency.vala:41
+#: lib/currency.vala:44
 msgid "Czech Koruna"
 msgstr "Tjeckisk koruna"
 
-#: lib/currency.vala:42
+#: lib/currency.vala:45
 msgid "Danish Krone"
 msgstr "Dansk krone"
 
-#: lib/currency.vala:43
+#: lib/currency.vala:46
 msgid "Algerian Dinar"
 msgstr "Dinar (Algeriet)"
 
-#: lib/currency.vala:44
+#: lib/currency.vala:47
 msgid "Estonian Kroon"
 msgstr "Estnisk kroon"
 
-#: lib/currency.vala:45
+#: lib/currency.vala:48
 msgid "Euro"
 msgstr "Euro"
 
-#: lib/currency.vala:46
+#: lib/currency.vala:49
 msgid "British Pound Sterling"
 msgstr "Brittiskt pund"
 
-#: lib/currency.vala:47
+#: lib/currency.vala:50
 msgid "Hong Kong Dollar"
 msgstr "Hong Kong-dollar"
 
-#: lib/currency.vala:48
+#: lib/currency.vala:51
 msgid "Croatian Kuna"
 msgstr "Kroatisk kuna"
 
-#: lib/currency.vala:49
+#: lib/currency.vala:52
 msgid "Hungarian Forint"
 msgstr "Ungersk forint"
 
-#: lib/currency.vala:50
+#: lib/currency.vala:53
 msgid "Indonesian Rupiah"
 msgstr "Indonesisk rupiah"
 
-#: lib/currency.vala:51
+#: lib/currency.vala:54
 msgid "Israeli New Shekel"
 msgstr "Israelisk ny shekel"
 
-#: lib/currency.vala:52
+#: lib/currency.vala:55
 msgid "Indian Rupee"
 msgstr "Indisk rupee"
 
-#: lib/currency.vala:53
+#: lib/currency.vala:56
 msgid "Iranian Rial"
 msgstr "Iransk rial"
 
-#: lib/currency.vala:54
+#: lib/currency.vala:57
 msgid "Icelandic Krona"
 msgstr "Isländsk krona"
 
-#: lib/currency.vala:55
+#: lib/currency.vala:58
 msgid "Japanese Yen"
 msgstr "Japansk yen"
 
-#: lib/currency.vala:56
+#: lib/currency.vala:59
 msgid "South Korean Won"
 msgstr "Sydkoreansk won"
 
-#: lib/currency.vala:57
+#: lib/currency.vala:60
 msgid "Kuwaiti Dinar"
 msgstr "Dinar (Kuwait)"
 
-#: lib/currency.vala:58
+#: lib/currency.vala:61
 msgid "Kazakhstani Tenge"
 msgstr "Kazakstansk tenge"
 
-#: lib/currency.vala:59
+#: lib/currency.vala:62
 msgid "Sri Lankan Rupee"
 msgstr "Sri Lankansk rupee"
 
-#: lib/currency.vala:60
+#: lib/currency.vala:63
 msgid "Libyan Dinar"
 msgstr "Dinar (Libyen)"
 
-#: lib/currency.vala:61
+#: lib/currency.vala:64
 msgid "Mauritian Rupee"
 msgstr "Mauritiansk rupee"
 
-#: lib/currency.vala:62
+#: lib/currency.vala:65
 msgid "Mexican Peso"
 msgstr "Mexikansk peso"
 
-#: lib/currency.vala:63
+#: lib/currency.vala:66
 msgid "Malaysian Ringgit"
 msgstr "Malaysisk ringgit"
 
-#: lib/currency.vala:64
+#: lib/currency.vala:67
 msgid "Norwegian Krone"
 msgstr "Norsk krone"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:68
 msgid "Nepalese Rupee"
 msgstr "Nepalesisk rupee"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:69
 msgid "New Zealand Dollar"
 msgstr "New Zealand-dollar"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:70
 msgid "Omani Rial"
 msgstr "Omansk rial"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:71
 msgid "Peruvian Nuevo Sol"
 msgstr "Peruansk nuevo sol"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:72
 msgid "Philippine Peso"
 msgstr "Filippinsk peso"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:73
 msgid "Pakistani Rupee"
 msgstr "Pakistansk rupee"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:74
 msgid "Polish Zloty"
 msgstr "Polsk zloty"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:75
 msgid "Qatari Riyal"
 msgstr "Qatarisk riyal"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:76
 msgid "New Romanian Leu"
 msgstr "Ny rumänsk leu"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:77
 msgid "Russian Rouble"
 msgstr "Rysk rubel"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:78
 msgid "Saudi Riyal"
 msgstr "Saudisk riyal"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:79
 msgid "Swedish Krona"
 msgstr "Svensk krona"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:80
 msgid "Singapore Dollar"
 msgstr "Singapore-dollar"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:81
 msgid "Thai Baht"
 msgstr "Thailändsk baht"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:82
 msgid "Tunisian Dinar"
 msgstr "Dinar (Tunisien)"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:83
 msgid "Turkish Lira"
 msgstr "Turkisk lira"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:84
 msgid "T&T Dollar (TTD)"
 msgstr "Trinidad & Tobago-dollar"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:85
 msgid "US Dollar"
 msgstr "Amerikansk dollar"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:86
 msgid "Uruguayan Peso"
 msgstr "Uruguayansk peso"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:87
 msgid "Venezuelan Bolívar"
 msgstr "Venezuelansk bolívar"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:88
 msgid "South African Rand"
 msgstr "Sydafrikansk rand"
 
-#. Translators: conversion keyword, used e.g. 1 EUR in USD
+#. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
 #: lib/equation-lexer.vala:704 src/math-converter.vala:247
 msgid "in"
 msgstr "i"
+
+#: lib/equation-lexer.vala:704
+msgid "to"
+msgstr "till"
 
 #: lib/equation-parser.vala:717 lib/number.vala:429
 msgid "The zeroth root of a number is undefined"
@@ -474,74 +485,74 @@ msgid "Error: the number of periods must be positive"
 msgstr "Fel: antalet punkter måste vara positivt"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:171
+#: lib/math-equation.vala:170
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:523
+#: lib/math-equation.vala:520
 msgid "No undo history"
 msgstr "Ingen ångringshistorik"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:544
+#: lib/math-equation.vala:541
 msgid "No redo history"
 msgstr "Ingen ångringshistorik"
 
-#: lib/math-equation.vala:775
+#: lib/math-equation.vala:772
 msgid "No sane value to store"
 msgstr "Inget vettigt värde att lagra"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:968
+#: lib/math-equation.vala:969
 msgid "Overflow. Try a bigger word size"
 msgstr "Överflöde. Prova en större ordstorlek"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:973
+#: lib/math-equation.vala:974
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Okänd variabel ”%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:980
+#: lib/math-equation.vala:981
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funktionen ”%s” är inte definierad"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:987
+#: lib/math-equation.vala:988
 msgid "Unknown conversion"
 msgstr "Okänd konvertering"
 
 #. should always be run
-#: lib/math-equation.vala:997
+#: lib/math-equation.vala:998
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1002 lib/math-equation.vala:1007
+#: lib/math-equation.vala:1003 lib/math-equation.vala:1008
 msgid "Malformed expression"
 msgstr "Felaktigt utformat uttryck"
 
-#: lib/math-equation.vala:1018
+#: lib/math-equation.vala:1019
 msgid "Calculating"
 msgstr "Beräknar"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1211
+#: lib/math-equation.vala:1212
 msgid "Need an integer to factorize"
 msgstr "Behöver ett heltal att faktorisera"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1265
+#: lib/math-equation.vala:1266
 msgid "No sane value to bitwise shift"
 msgstr "Inget vettigt värde att göra bitvis skifte"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1279
+#: lib/math-equation.vala:1280
 msgid "Displayed value not an integer"
 msgstr "Visat värde är inte ett heltal"
 
@@ -683,7 +694,7 @@ msgstr "Digital lagring"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: lib/unit.vala:39 src/math-preferences.vala:144
+#: lib/unit.vala:39 src/math-preferences.vala:147
 msgid "Degrees"
 msgstr "Grader"
 
@@ -699,7 +710,7 @@ msgid "degree,degrees,deg"
 msgstr "grad,grader,grd"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: lib/unit.vala:40 src/math-preferences.vala:148
+#: lib/unit.vala:40 src/math-preferences.vala:151
 msgid "Radians"
 msgstr "Radianer"
 
@@ -715,7 +726,7 @@ msgid "radian,radians,rad"
 msgstr "radian,radianer,rad"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: lib/unit.vala:41 src/math-preferences.vala:152
+#: lib/unit.vala:41 src/math-preferences.vala:155
 msgid "Gradians"
 msgstr "Nygrader"
 
@@ -2615,12 +2626,12 @@ msgid "Show release version"
 msgstr "Visa programvaruversion"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:296
+#: src/gnome-calculator.vala:297
 msgid "Unable to open help file"
 msgstr "Kunde inte öppna hjälpfilen"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:327
+#: src/gnome-calculator.vala:328
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -2631,12 +2642,12 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/gnome-calculator.vala:333 src/math-window.ui:71
+#: src/gnome-calculator.vala:334 src/math-window.ui:71
 msgid "About Calculator"
 msgstr "Om Kalkylator"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:341
+#: src/gnome-calculator.vala:342
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkylator med finansiella och vetenskapliga lägen."
 
@@ -2660,11 +2671,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:495
+#: src/math-display.vala:497
 msgid "Defined Functions"
 msgstr "Definierade funktioner"
 
-#: src/math-display.vala:552
+#: src/math-display.vala:554
 msgid "Defined Variables"
 msgstr "Definierade variabler"
 
@@ -2677,79 +2688,99 @@ msgid "Select no. of arguments"
 msgstr "Välj antal argument"
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:30 src/math-window.ui:57
+#: src/math-preferences.vala:33 src/math-window.ui:57
 msgid "Preferences"
 msgstr "Inställningar"
 
 #. Preferences dialog: Label for number format combo box
-#: src/math-preferences.vala:43
+#: src/math-preferences.vala:46
 msgid "Number _Format:"
 msgstr "Tal_format:"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: src/math-preferences.vala:60
+#: src/math-preferences.vala:63
 msgid "Automatic"
 msgstr "Automatiskt"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: src/math-preferences.vala:64
+#: src/math-preferences.vala:67
 msgid "Fixed"
 msgstr "Fast"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: src/math-preferences.vala:68
+#: src/math-preferences.vala:71
 msgid "Scientific"
 msgstr "Vetenskaplig"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: src/math-preferences.vala:72
+#: src/math-preferences.vala:75
 msgid "Engineering"
 msgstr "Ingenjör"
 
 #. Preferences dialog: label for show trailing zeroes check button
-#: src/math-preferences.vala:89
+#: src/math-preferences.vala:92
 msgid "Number of _decimals"
 msgstr "Antal _decimaler"
 
 #. Preferences dialog: label for show trailing zeroes switch
-#: src/math-preferences.vala:101
+#: src/math-preferences.vala:104
 msgid "Trailing _zeroes"
 msgstr "Efterliggande _nollor"
 
 #. Preferences dialog: label for show show thousands separator switch
-#: src/math-preferences.vala:114
+#: src/math-preferences.vala:117
 msgid "_Thousands separators"
 msgstr "Tusentalsa_vgränsare"
 
 #. Preferences dialog: Label for angle unit combo box
-#: src/math-preferences.vala:128
+#: src/math-preferences.vala:131
 msgid "_Angle units:"
 msgstr "V_inkelenheter:"
 
 #. Preferences dialog: Label for word size combo box
-#: src/math-preferences.vala:158
+#: src/math-preferences.vala:161
 msgid "Word _size:"
 msgstr "Ord_storlek:"
 
 #. Word size combo: 8 bits
-#: src/math-preferences.vala:172
+#: src/math-preferences.vala:175
 msgid "8 bits"
 msgstr "8 bitar"
 
 #. Word size combo: 16 bits
-#: src/math-preferences.vala:174
+#: src/math-preferences.vala:177
 msgid "16 bits"
 msgstr "16 bitar"
 
 #. Word size combo: 32 bits
-#: src/math-preferences.vala:176
+#: src/math-preferences.vala:179
 msgid "32 bits"
 msgstr "32 bitar"
 
 #. Word size combo: 64 bits
-#: src/math-preferences.vala:178
+#: src/math-preferences.vala:181
 msgid "64 bits"
 msgstr "64 bitar"
+
+#. Preferences dialog: Label for exchange rate refresh interval combo box
+#: src/math-preferences.vala:187
+msgid "E_xchange rate refresh interval"
+msgstr "_Uppdateringsintervall för valutakurser"
+
+#. Refresh interval combo: never
+#: src/math-preferences.vala:201
+msgid "never"
+msgstr "aldrig"
+
+#. Refresh interval combo: daily
+#: src/math-preferences.vala:203
+msgid "daily"
+msgstr "dagligen"
+
+#. Refresh interval combo: weekly
+#: src/math-preferences.vala:205
+msgid "weekly"
+msgstr "veckovis"
 
 #: src/math-shortcuts.ui:15
 msgctxt "shortcut window"
