@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2018-12-10 11:03+0000\n"
-"PO-Revision-Date: 2019-01-16 00:26+0900\n"
+"POT-Creation-Date: 2019-02-06 18:32+0000\n"
+"PO-Revision-Date: 2019-02-12 19:20+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -90,13 +90,13 @@ msgstr "GNOME 電卓財務モード"
 msgid "GNOME Calculator in Programming Mode"
 msgstr "GNOME 電卓プログラミングモード"
 
-#: data/org.gnome.Calculator.appdata.xml.in:62
+#: data/org.gnome.Calculator.appdata.xml.in:60
 msgid "The GNOME Project"
 msgstr ""
 
 #. Program name in the about dialog
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:332 src/math-window.ui:78
+#: src/gnome-calculator.vala:333 src/math-window.ui:78
 msgid "Calculator"
 msgstr "電卓"
 
@@ -170,383 +170,389 @@ msgid "The angle units to use"
 msgstr "使用する角度の単位"
 
 #: data/org.gnome.calculator.gschema.xml:62
+msgid "Currency update interval"
+msgstr ""
+
+#: data/org.gnome.calculator.gschema.xml:63
+msgid "How often the currency exchange rates should be updated"
+msgstr ""
+
+#: data/org.gnome.calculator.gschema.xml:67
 msgid "Button mode"
 msgstr "ボタンモード"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "The button mode"
 msgstr "ボタンモード"
 
-#: data/org.gnome.calculator.gschema.xml:67
+#: data/org.gnome.calculator.gschema.xml:72
 msgid "Source currency"
 msgstr "元の通貨"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:73
 msgid "Currency of the current calculation"
 msgstr "通貨計算で使用する通貨"
 
-#: data/org.gnome.calculator.gschema.xml:72
+#: data/org.gnome.calculator.gschema.xml:77
 msgid "Target currency"
 msgstr "変換後の通貨"
 
-#: data/org.gnome.calculator.gschema.xml:73
+#: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency to convert the current calculation into"
 msgstr "現在の計算結果の変換先の通貨"
 
-#: data/org.gnome.calculator.gschema.xml:77
+#: data/org.gnome.calculator.gschema.xml:82
 msgid "Source units"
 msgstr "元の単位"
 
-#: data/org.gnome.calculator.gschema.xml:78
+#: data/org.gnome.calculator.gschema.xml:83
 msgid "Units of the current calculation"
 msgstr "現在の計算単位"
 
-#: data/org.gnome.calculator.gschema.xml:82
+#: data/org.gnome.calculator.gschema.xml:87
 msgid "Target units"
 msgstr "変換後の単位"
 
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Units to convert the current calculation into"
 msgstr "現在の計算の変換後の単位"
 
-#: data/org.gnome.calculator.gschema.xml:87
+#: data/org.gnome.calculator.gschema.xml:92
 msgid "Internal precision"
 msgstr "内部精度"
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:93
 msgid "The internal precision used with the MPFR library"
 msgstr "MPFR ライブラリに使用される内部精度"
 
-#: data/org.gnome.calculator.gschema.xml:92
+#: data/org.gnome.calculator.gschema.xml:97
 msgid "Window position"
 msgstr "ウィンドウの位置"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Window position (x and y) of the last closed window."
 msgstr "最後に閉じたウィンドウの位置 (X 軸と Y 軸)。"
 
 # 以下の通貨表記は日本銀行での表記に準じ、カタカナ語連続の場合は・でつなぎ、それ以外は省きます
 # http://www.boj.or.jp/about/services/tame/tame_rate/kijun/kiju1204.htm/
-#: lib/currency.vala:28
+#: lib/currency.vala:31
 msgid "UAE Dirham"
 msgstr "UAE ディルハム"
 
-#: lib/currency.vala:29
+#: lib/currency.vala:32
 msgid "Australian Dollar"
 msgstr "オーストラリア・ドル"
 
-#: lib/currency.vala:30
+#: lib/currency.vala:33
 msgid "Bulgarian Lev"
 msgstr "ブルガリア・レフ"
 
-#: lib/currency.vala:31
+#: lib/currency.vala:34
 msgid "Bahraini Dinar"
 msgstr "バーレーン・ディナール"
 
-#: lib/currency.vala:32
+#: lib/currency.vala:35
 msgid "Brunei Dollar"
 msgstr "ブルネイ・ドル"
 
-#: lib/currency.vala:33
+#: lib/currency.vala:36
 msgid "Brazilian Real"
 msgstr "ブラジル・レアル"
 
-#: lib/currency.vala:34
+#: lib/currency.vala:37
 msgid "Botswana Pula"
 msgstr "ボツワナ・プラ"
 
-#: lib/currency.vala:35
+#: lib/currency.vala:38
 msgid "Canadian Dollar"
 msgstr "カナダ・ドル"
 
-#: lib/currency.vala:36
+#: lib/currency.vala:39
 msgid "CFA Franc"
 msgstr "CFA フラン"
 
-#: lib/currency.vala:37
+#: lib/currency.vala:40
 msgid "Swiss Franc"
 msgstr "スイス・フラン"
 
-#: lib/currency.vala:38
+#: lib/currency.vala:41
 msgid "Chilean Peso"
 msgstr "チリ・ペソ"
 
-#: lib/currency.vala:39
+#: lib/currency.vala:42
 msgid "Chinese Yuan"
 msgstr "中国人民元"
 
-#: lib/currency.vala:40
+#: lib/currency.vala:43
 msgid "Colombian Peso"
 msgstr "コロンビア・ペソ"
 
-#: lib/currency.vala:41
+#: lib/currency.vala:44
 msgid "Czech Koruna"
 msgstr "チェコ・コルナ"
 
-#: lib/currency.vala:42
+#: lib/currency.vala:45
 msgid "Danish Krone"
 msgstr "デンマーク・クローネ"
 
-#: lib/currency.vala:43
+#: lib/currency.vala:46
 msgid "Algerian Dinar"
 msgstr "アルジェリア・ディナール"
 
-#: lib/currency.vala:44
+#: lib/currency.vala:47
 msgid "Estonian Kroon"
 msgstr "エストニア・クルーン"
 
-#: lib/currency.vala:45
+#: lib/currency.vala:48
 msgid "Euro"
 msgstr "ユーロ"
 
-#: lib/currency.vala:46
-#, fuzzy
-#| msgid "Pound Sterling"
+#: lib/currency.vala:49
 msgid "British Pound Sterling"
-msgstr "英国ポンド"
+msgstr "英国スターリングポンド"
 
-#: lib/currency.vala:47
+#: lib/currency.vala:50
 msgid "Hong Kong Dollar"
 msgstr "香港ドル"
 
-#: lib/currency.vala:48
+#: lib/currency.vala:51
 msgid "Croatian Kuna"
 msgstr "クロアチア・クーナ"
 
-#: lib/currency.vala:49
+#: lib/currency.vala:52
 msgid "Hungarian Forint"
 msgstr "ハンガリー・フォリント"
 
-#: lib/currency.vala:50
+#: lib/currency.vala:53
 msgid "Indonesian Rupiah"
 msgstr "インドネシア・ルピア"
 
-#: lib/currency.vala:51
+#: lib/currency.vala:54
 msgid "Israeli New Shekel"
 msgstr "イスラエル新シェケル"
 
-#: lib/currency.vala:52
+#: lib/currency.vala:55
 msgid "Indian Rupee"
 msgstr "インド・ルピー"
 
-#: lib/currency.vala:53
+#: lib/currency.vala:56
 msgid "Iranian Rial"
 msgstr "ブラジル・レアル"
 
-#: lib/currency.vala:54
+#: lib/currency.vala:57
 msgid "Icelandic Krona"
 msgstr "アイスランド・クローナ"
 
-#: lib/currency.vala:55
+#: lib/currency.vala:58
 msgid "Japanese Yen"
 msgstr "日本円"
 
-#: lib/currency.vala:56
+#: lib/currency.vala:59
 msgid "South Korean Won"
 msgstr "韓国ウォン"
 
-#: lib/currency.vala:57
+#: lib/currency.vala:60
 msgid "Kuwaiti Dinar"
 msgstr "クウェート・ディナール"
 
-#: lib/currency.vala:58
+#: lib/currency.vala:61
 msgid "Kazakhstani Tenge"
 msgstr "カザフスタン・テンゲ"
 
-#: lib/currency.vala:59
+#: lib/currency.vala:62
 msgid "Sri Lankan Rupee"
 msgstr "スリランカ・ルピー"
 
-#: lib/currency.vala:60
+#: lib/currency.vala:63
 msgid "Libyan Dinar"
 msgstr "リビア・ディナール"
 
-#: lib/currency.vala:61
+#: lib/currency.vala:64
 msgid "Mauritian Rupee"
 msgstr "モーリシャス・ルピー"
 
-#: lib/currency.vala:62
+#: lib/currency.vala:65
 msgid "Mexican Peso"
 msgstr "メキシコ・ペソ"
 
-#: lib/currency.vala:63
+#: lib/currency.vala:66
 msgid "Malaysian Ringgit"
 msgstr "マレーシア・リンギット"
 
-#: lib/currency.vala:64
+#: lib/currency.vala:67
 msgid "Norwegian Krone"
 msgstr "ノルウェー・クローネ"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:68
 msgid "Nepalese Rupee"
 msgstr "ネパール・ルピー"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:69
 msgid "New Zealand Dollar"
 msgstr "ニュージーランド・ドル"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:70
 msgid "Omani Rial"
 msgstr "オマーン・リアル"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:71
 msgid "Peruvian Nuevo Sol"
 msgstr "ペルー・ヌエボ・ソル"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:72
 msgid "Philippine Peso"
 msgstr "フィリピン・ペソ"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:73
 msgid "Pakistani Rupee"
 msgstr "パキスタン・ルピー"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:74
 msgid "Polish Zloty"
 msgstr "ポーランド・ズロチ"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:75
 msgid "Qatari Riyal"
 msgstr "カタール・リアル"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:76
 msgid "New Romanian Leu"
 msgstr "新ルーマニア・レイ"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:77
 msgid "Russian Rouble"
 msgstr "ロシア・ルーブル"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:78
 msgid "Saudi Riyal"
 msgstr "サウジ・リアル"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:79
 msgid "Swedish Krona"
 msgstr "スウェーデン・クローナ"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:80
 msgid "Singapore Dollar"
 msgstr "シンガポール・ドル"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:81
 msgid "Thai Baht"
 msgstr "タイ・バーツ"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:82
 msgid "Tunisian Dinar"
 msgstr "チュニジア・ディナール"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:83
 msgid "Turkish Lira"
 msgstr "トルコ・リラ"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:84
 msgid "T&T Dollar (TTD)"
 msgstr "トリニダード・トバゴ・ドル"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:85
 msgid "US Dollar"
 msgstr "US ドル"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:86
 msgid "Uruguayan Peso"
 msgstr "ウルグアイ・ペソ"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:87
 msgid "Venezuelan Bolívar"
 msgstr "ボリバル・フエルテ"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:88
 msgid "South African Rand"
 msgstr "南アフリカ・ランド"
 
-#. Translators: conversion keyword, used e.g. 1 EUR in USD
+#. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
 #: lib/equation-lexer.vala:704 src/math-converter.vala:247
-#, fuzzy
-#| msgid " in "
 msgid "in"
-msgstr " in "
+msgstr ""
+
+#: lib/equation-lexer.vala:704
+msgid "to"
+msgstr ""
 
 #: lib/equation-parser.vala:717 lib/number.vala:429
-#, fuzzy
-#| msgid "nth root of negative number is undefined for even n"
 msgid "The zeroth root of a number is undefined"
-msgstr "負の数のn乗根は偶数のnでは未定義です"
+msgstr ""
 
 #: lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "エラー: 期間は正でなくてはなりません"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:171
+#: lib/math-equation.vala:170
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:523
+#: lib/math-equation.vala:520
 msgid "No undo history"
 msgstr "アンドゥの履歴はありません"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:544
+#: lib/math-equation.vala:541
 msgid "No redo history"
 msgstr "リドゥの履歴はありません"
 
-#: lib/math-equation.vala:775
+#: lib/math-equation.vala:772
 msgid "No sane value to store"
 msgstr "格納する値が正しくありません"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:968
+#: lib/math-equation.vala:969
 msgid "Overflow. Try a bigger word size"
 msgstr "オーバーフローしました。Wordサイズを大きくして試してください。"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:973
+#: lib/math-equation.vala:974
 #, c-format
 msgid "Unknown variable “%s”"
-msgstr "変数“%s”が不明です"
+msgstr "“%s”は不明な変数です"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:980
+#: lib/math-equation.vala:981
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "関数“%s”は未定義です"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:987
+#: lib/math-equation.vala:988
 msgid "Unknown conversion"
 msgstr "変換方法が分かりません"
 
 #. should always be run
-#: lib/math-equation.vala:997
+#: lib/math-equation.vala:998
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1002 lib/math-equation.vala:1007
+#: lib/math-equation.vala:1003 lib/math-equation.vala:1008
 msgid "Malformed expression"
 msgstr "計算式が間違っています"
 
-#: lib/math-equation.vala:1018
+#: lib/math-equation.vala:1019
 msgid "Calculating"
 msgstr "計算中"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1211
+#: lib/math-equation.vala:1212
 msgid "Need an integer to factorize"
 msgstr "素因数分解は整数のみです"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1265
+#: lib/math-equation.vala:1266
 msgid "No sane value to bitwise shift"
 msgstr "ビット単位でシフトする値が正しくありません"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1279
+#: lib/math-equation.vala:1280
 msgid "Displayed value not an integer"
 msgstr "整数以外の値を表示します"
 
@@ -685,7 +691,7 @@ msgstr "デジタル記憶"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: lib/unit.vala:39 src/math-preferences.vala:144
+#: lib/unit.vala:39 src/math-preferences.vala:147
 msgid "Degrees"
 msgstr "度"
 
@@ -701,7 +707,7 @@ msgid "degree,degrees,deg"
 msgstr "degree,degrees,deg"
 
 #. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: lib/unit.vala:40 src/math-preferences.vala:148
+#: lib/unit.vala:40 src/math-preferences.vala:151
 msgid "Radians"
 msgstr "ラジアン"
 
@@ -717,7 +723,7 @@ msgid "radian,radians,rad"
 msgstr "radian,radians,rad"
 
 #. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: lib/unit.vala:41 src/math-preferences.vala:152
+#: lib/unit.vala:41 src/math-preferences.vala:155
 msgid "Gradians"
 msgstr "グラード"
 
@@ -2605,12 +2611,12 @@ msgid "Show release version"
 msgstr "リリースバージョンを表示する"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:296
+#: src/gnome-calculator.vala:297
 msgid "Unable to open help file"
 msgstr "ヘルプを開けません"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:327
+#: src/gnome-calculator.vala:328
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
@@ -2624,12 +2630,12 @@ msgstr ""
 "  Shushi Kurose https://launchpad.net/~kurokuro\n"
 "  vbk https://launchpad.net/~vbkaisetsu"
 
-#: src/gnome-calculator.vala:333 src/math-window.ui:71
+#: src/gnome-calculator.vala:334 src/math-window.ui:71
 msgid "About Calculator"
 msgstr "このアプリケーションについて"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:341
+#: src/gnome-calculator.vala:342
 msgid "Calculator with financial and scientific modes."
 msgstr "財務と科学計算のモードを持つ電卓です。"
 
@@ -2652,11 +2658,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:495
+#: src/math-display.vala:497
 msgid "Defined Functions"
 msgstr "定義した関数"
 
-#: src/math-display.vala:552
+#: src/math-display.vala:554
 msgid "Defined Variables"
 msgstr "定義した変数"
 
@@ -2669,79 +2675,99 @@ msgid "Select no. of arguments"
 msgstr ""
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:30 src/math-window.ui:57
+#: src/math-preferences.vala:33 src/math-window.ui:57
 msgid "Preferences"
 msgstr "設定"
 
 #. Preferences dialog: Label for number format combo box
-#: src/math-preferences.vala:43
+#: src/math-preferences.vala:46
 msgid "Number _Format:"
 msgstr "数字の書式(_F):"
 
 #. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: src/math-preferences.vala:60
+#: src/math-preferences.vala:63
 msgid "Automatic"
 msgstr "自動"
 
 #. Number display mode combo: Fixed, e.g. 1234
-#: src/math-preferences.vala:64
+#: src/math-preferences.vala:67
 msgid "Fixed"
 msgstr "固定小数点"
 
 #. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: src/math-preferences.vala:68
+#: src/math-preferences.vala:71
 msgid "Scientific"
 msgstr "科学"
 
 #. Number display mode combo: Engineering, e.g. 1.234k
-#: src/math-preferences.vala:72
+#: src/math-preferences.vala:75
 msgid "Engineering"
 msgstr "工学"
 
 #. Preferences dialog: label for show trailing zeroes check button
-#: src/math-preferences.vala:89
+#: src/math-preferences.vala:92
 msgid "Number of _decimals"
 msgstr "小数点以降の桁数(_D)"
 
 #. Preferences dialog: label for show trailing zeroes switch
-#: src/math-preferences.vala:101
+#: src/math-preferences.vala:104
 msgid "Trailing _zeroes"
 msgstr "有効桁数(_Z)"
 
 #. Preferences dialog: label for show show thousands separator switch
-#: src/math-preferences.vala:114
+#: src/math-preferences.vala:117
 msgid "_Thousands separators"
 msgstr "3桁ごとの区切り(_T)"
 
 #. Preferences dialog: Label for angle unit combo box
-#: src/math-preferences.vala:128
+#: src/math-preferences.vala:131
 msgid "_Angle units:"
 msgstr "角度の単位(_A):"
 
 #. Preferences dialog: Label for word size combo box
-#: src/math-preferences.vala:158
+#: src/math-preferences.vala:161
 msgid "Word _size:"
 msgstr "Wordサイズ(_S)"
 
 #. Word size combo: 8 bits
-#: src/math-preferences.vala:172
+#: src/math-preferences.vala:175
 msgid "8 bits"
 msgstr "8 ビット"
 
 #. Word size combo: 16 bits
-#: src/math-preferences.vala:174
+#: src/math-preferences.vala:177
 msgid "16 bits"
 msgstr "16 ビット"
 
 #. Word size combo: 32 bits
-#: src/math-preferences.vala:176
+#: src/math-preferences.vala:179
 msgid "32 bits"
 msgstr "32 ビット"
 
 #. Word size combo: 64 bits
-#: src/math-preferences.vala:178
+#: src/math-preferences.vala:181
 msgid "64 bits"
 msgstr "64 ビット"
+
+#. Preferences dialog: Label for exchange rate refresh interval combo box
+#: src/math-preferences.vala:187
+msgid "E_xchange rate refresh interval"
+msgstr ""
+
+#. Refresh interval combo: never
+#: src/math-preferences.vala:201
+msgid "never"
+msgstr ""
+
+#. Refresh interval combo: daily
+#: src/math-preferences.vala:203
+msgid "daily"
+msgstr ""
+
+#. Refresh interval combo: weekly
+#: src/math-preferences.vala:205
+msgid "weekly"
+msgstr ""
 
 #: src/math-shortcuts.ui:15
 msgctxt "shortcut window"
