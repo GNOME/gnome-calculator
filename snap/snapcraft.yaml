@@ -108,7 +108,10 @@ parts:
     override-build: |
       sed -i.bak -e "s|vapi_dir]|vapi_dir, '--vapidir=$SNAPCRAFT_STAGE/usr/share/vala/vapi']|g" meson.build
       sed -i.bak -e "s|config',|config', '--vapidir=$SNAPCRAFT_STAGE/usr/share/vala/vapi',|g" src/meson.build
+      sed -i.bak -e 's|Icon=org.gnome.Calculator$|Icon=${SNAP}/meta/gui/org.gnome.Calculator.svg|g' data/org.gnome.Calculator.desktop.in
       snapcraftctl build
+      mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
+      cp ../src/data/icons/hicolor/scalable/apps/org.gnome.Calculator.svg $SNAPCRAFT_PART_INSTALL/meta/gui/
     build-packages:
       - desktop-file-utils
       - gettext
