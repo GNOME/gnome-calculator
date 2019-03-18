@@ -101,7 +101,7 @@ public class ParseNode : Object
 
 public abstract class RNode : ParseNode
 {
-    public RNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    protected RNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
     }
@@ -132,7 +132,7 @@ public abstract class RNode : ParseNode
 
 public abstract class LRNode : ParseNode
 {
-    public LRNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    protected LRNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
     }
