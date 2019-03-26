@@ -187,7 +187,6 @@ public class SearchProvider : Object
             metadata[copy_index] = new HashTable<string, Variant> (str_hash, str_equal);
             metadata[copy_index].insert ("id", COPY_TO_CLIPBOARD_ID);
             metadata[copy_index].insert ("name", _("Copy"));
-            metadata[copy_index].insert ("icon", "edit-copy");
             metadata[copy_index].insert ("description", _("Copy result to clipboard"));
         }
 
