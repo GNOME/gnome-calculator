@@ -1302,7 +1302,7 @@ public class MathEquation : Gtk.SourceBuffer
             count *= -1;
         }
 
-        insert (count.to_string ());
+        insert_number (new Number.integer(count));
         // set_number (z.shift (count));
     }
 
