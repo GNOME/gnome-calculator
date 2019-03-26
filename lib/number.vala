@@ -1128,11 +1128,15 @@ private static int parse_literal_prefix (string str, ref int prefix_len)
     {
         unichar c;
         bool all_digits = true;
+        bool all_binary_digits = true;
 
         for (int i = 2; str.get_next_char (ref i, out c) && all_digits;)
             all_digits = c.isdigit ();
 
-        if (all_digits)
+        for (int i = 2; str.get_next_char (ref i, out c) && all_binary_digits;)
+            all_binary_digits = (c == '0' || c == '1');
+
+        if (all_digits && !all_binary_digits)
             new_base = 8;
     }
 
@@ -1180,12 +1184,16 @@ public Number? mp_set_from_string (string str, int default_base = 10)
 
     literal_base = parse_literal_prefix (str, ref base_prefix);
 
+    info ("number_base is %d", number_base);
+
     if (number_base != 0 && literal_base != 0 && literal_base != number_base)
         return null;
 
+    info ("literal_base is %d", literal_base);
     if (number_base == 0)
         number_base = (literal_base != 0) ? literal_base : default_base;
 
+    info ("number_base is %d", number_base);
     /* Check if this has a sign */
     var negate = false;
     index = base_prefix;
