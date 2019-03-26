@@ -347,6 +347,7 @@ public class Unit : Object
     {
         serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 2);
         serializer.set_leading_digits (6);
+        serializer.set_show_thousands_separators (true);
 
         _name = name;
         _display_name = display_name;
