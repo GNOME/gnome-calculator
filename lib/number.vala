@@ -21,7 +21,6 @@
  *
  *  FOR A GENERAL DESCRIPTION OF THE PHILOSOPHY AND DESIGN OF MP,
  *  SEE - R. P. BRENT, A FORTRAN MULTIPLE-PRECISION ARITHMETIC
- *  PACKAGE, ACM TRANS. MATH. SOFTWARE 4 (MARCH 1978), 57-70.
  *  SOME ADDITIONAL DETAILS ARE GIVEN IN THE SAME ISSUE, 71-81.
  *  FOR DETAILS OF THE IMPLEMENTATION, CALLING SEQUENCES ETC. SEE
  *  THE MP USERS GUIDE.
@@ -1184,16 +1183,12 @@ public Number? mp_set_from_string (string str, int default_base = 10)
 
     literal_base = parse_literal_prefix (str, ref base_prefix);
 
-    info ("number_base is %d", number_base);
-
     if (number_base != 0 && literal_base != 0 && literal_base != number_base)
         return null;
 
-    info ("literal_base is %d", literal_base);
     if (number_base == 0)
         number_base = (literal_base != 0) ? literal_base : default_base;
 
-    info ("number_base is %d", number_base);
     /* Check if this has a sign */
     var negate = false;
     index = base_prefix;
