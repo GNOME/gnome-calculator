@@ -338,7 +338,7 @@ public class CurrencyManager : Object
 
         /* Set some fixed rates */
         set_ecb_fixed_rate ("EEK", "0.06391", eur_rate);
-        set_ecb_fixed_rate ("CFA", "0.152449", eur_rate);
+        set_ecb_fixed_rate ("CFA", "0.00152449", eur_rate);
 
         Xml.Parser.init ();
         var filename = get_ecb_rate_filepath ();
