@@ -46,10 +46,13 @@ install_data('org.gnome.Calculator-search-provider.ini',
 # The DBUS service file
 dbusconf = configuration_data()
 dbusconf.set('libexecdir', libexec_dir)
-configure_file(
+
+configuration_file = configure_file(
   input: 'org.gnome.Calculator.SearchProvider.service.in',
   output: 'org.gnome.Calculator.SearchProvider.service',
   configuration: dbusconf,
-  install: true,
+)
+
+install_data(configuration_file,
   install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services'),
 )
