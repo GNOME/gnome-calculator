@@ -846,7 +846,7 @@ public class Number : Object
     }
 
     /* Sets z = x shifted by 'count' bits.  Positive shift increases the value, negative decreases */
-    public Number shift (int count)
+    public Number shift (int64 count)
     {
         if (!is_integer ())
         {

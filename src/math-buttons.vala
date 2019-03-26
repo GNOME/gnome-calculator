@@ -198,7 +198,7 @@ public class MathButtons : Gtk.Box
 
     private void on_bitshift (SimpleAction action, Variant? param)
     {
-        equation.shift (param.get_int32 ());
+        equation.insert_shift (param.get_int32 ());
     }
 
     private void on_insert_numeric_point (SimpleAction action, Variant? param)

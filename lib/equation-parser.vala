@@ -39,6 +39,7 @@ private enum Precedence
     UNARY_MINUS     = 10,
     POWER           = 10,
     ROOT            = 10,
+    SHIFT           = 10,
     FACTORIAL       = 11,
     NUMBER_VARIABLE = 12,
     /* DEPTH should be always at the bottom. It stops node jumping off the current depth level. */
@@ -563,6 +564,7 @@ public class AddNode : LRNode
     }
 }
 
+
 public class SubtractNode : LRNode
 {
     public bool do_percentage = false;
@@ -595,6 +597,22 @@ public class MultiplyNode : LRNode
     public override Number solve_lr (Number l, Number r)
     {
         return l.multiply (r);
+    }
+}
+
+public class ShiftNode : LRNode
+{
+    public ShiftNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    {
+        base (parser, token, precedence, associativity);
+    }
+
+    public override Number solve_lr (Number l, Number r)
+    {
+        if (first_token().type == LexerTokenType.SHIFT_LEFT)
+            return l.shift (r.to_integer ());
+        else
+            return l.shift (r.multiply_integer (-1).to_integer ());
     }
 }
 
@@ -1145,6 +1163,8 @@ public class Parser
             return Precedence.UNIT;
         if (type == LexerTokenType.IN)
             return Precedence.CONVERT;
+        if (type == LexerTokenType.SHIFT_LEFT || type == LexerTokenType.SHIFT_RIGHT)
+            return Precedence.SHIFT;
         return Precedence.TOP;
     }
 
@@ -1803,6 +1823,17 @@ public class Parser
         else if (token.type == LexerTokenType.DIVIDE)
         {
             insert_into_tree (new DivideNode (this, token, make_precedence_t (token.type), get_associativity (token)));
+
+            if (!expression_1 ())
+                return false;
+            if (!expression_2 ())
+                return false;
+
+            return true;
+        }
+        else if (token.type == LexerTokenType.SHIFT_LEFT || token.type == LexerTokenType.SHIFT_RIGHT)
+        {
+            insert_into_tree (new ShiftNode (this, token, make_precedence_t (token.type), get_associativity (token)));
 
             if (!expression_1 ())
                 return false;

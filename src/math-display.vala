@@ -232,6 +232,16 @@ public class MathDisplay : Gtk.Viewport
                 equation.insert ("×");
                 return true;
             }
+            if (c == '>')
+            {
+                equation.insert (">");
+                return true;
+            }
+            if (c == '<')
+            {
+                equation.insert ("<");
+                return true;
+            }
             if (c == '/')
             {
                 equation.insert ("÷");

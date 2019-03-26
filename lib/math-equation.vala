@@ -830,6 +830,34 @@ public class MathEquation : Gtk.SourceBuffer
             }
         }
 
+        /* Replace >> with » (not on keyboards) */
+        if (!has_selection && text == ">")
+        {
+            Gtk.TextIter iter, iter_prev;
+            get_iter_at_mark (out iter, get_insert ());
+            get_iter_at_mark (out iter_prev, get_insert ());
+            if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == ">" )
+            {
+                (this as Gtk.TextBuffer).backspace (iter, true, true);
+                insert_at_cursor ("»", -1);
+                return;
+            }
+        }
+
+        /* Replace << with « (not on keyboard) */
+        if (!has_selection && text == "<")
+        {
+            Gtk.TextIter iter, iter_prev;
+            get_iter_at_mark (out iter, get_insert ());
+            get_iter_at_mark (out iter_prev, get_insert ());
+            if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == "<" )
+            {
+                (this as Gtk.TextBuffer).backspace (iter, true, true);
+                insert_at_cursor ("«", -1);
+                return;
+            }
+        }
+
         /* Can't enter superscript minus after entering digits */
         if ("⁰¹²³⁴⁵⁶⁷⁸⁹".index_of (text) >= 0 || text == "⁻")
             can_super_minus = false;
@@ -1257,7 +1285,7 @@ public class MathEquation : Gtk.SourceBuffer
         clear_ans (false);
     }
 
-    public void shift (int count)
+    public void insert_shift (int count)
     {
         var z = number;
         if (z == null)
@@ -1267,7 +1295,15 @@ public class MathEquation : Gtk.SourceBuffer
             return;
         }
 
-        set_number (z.shift (count));
+        if (count > 0)
+            insert ("«");
+        else {
+            insert ("»");
+            count *= -1;
+        }
+
+        insert (count.to_string ());
+        // set_number (z.shift (count));
     }
 
     public void toggle_bit (uint bit)
