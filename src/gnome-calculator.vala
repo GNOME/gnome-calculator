@@ -349,13 +349,27 @@ public class Calculator : Gtk.Application
     private void quit_cb ()
     {
         save_window_position (get_active_math_window ());
-        get_active_window ().destroy ();
+
+        if (get_windows ().length () > 1)
+        {
+            var dialog = new Gtk.MessageDialog.with_markup (get_active_math_window (), Gtk.DialogFlags.MODAL,
+                                                            Gtk.MessageType.QUESTION, Gtk.ButtonsType.CANCEL,
+                                                            _("Are you sure you want to close all open windows?"));
+            dialog.add_buttons (_("Close _All"), Gtk.ResponseType.CLOSE);
+
+            int result = dialog.run ();
+            if (result == Gtk.ResponseType.CLOSE)
+                this.quit ();
+            dialog.destroy ();
+        } else {
+            this.quit ();
+        }
     }
 
     private void new_window_cb ()
     {
         var window = create_new_window (settings);
-        window.present ();
+        window.show ();
     }
 
     /**
