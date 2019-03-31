@@ -108,7 +108,7 @@ public class SearchProvider : Object
 
         try
         {
-            var subprocess = yield solve_subprocess (normalized_equation);
+            var subprocess = yield solve_subprocess (equation);
             yield subprocess.communicate_utf8_async (null, cancellable, out result, null);
             subprocess.wait_check (cancellable);
         }
