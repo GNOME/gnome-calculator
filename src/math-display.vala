@@ -148,6 +148,20 @@ public class MathDisplay : Gtk.Viewport
 
     private bool key_press_cb (Gdk.EventKey event)
     {
+        /* Clear on escape */
+        var state = event.state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.MOD1_MASK);
+        if ((event.keyval == Gdk.Key.Escape && state == 0) ||
+            (event.keyval == Gdk.Key.Delete && state == Gdk.ModifierType.SHIFT_MASK))
+        {
+            equation.clear ();
+            status_changed_cb ();
+            return true;
+        }
+
+        /* Ignore keypresses while calculating */
+        if (equation.in_solve)
+            return true;
+
         /* Treat keypad keys as numbers even when numlock is off */
         uint new_keyval = 0;
         switch (event.keyval)
@@ -194,7 +208,6 @@ public class MathDisplay : Gtk.Viewport
             return key_press_event (new_event);
         }
 
-        var state = event.state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.MOD1_MASK);
         var c = Gdk.keyval_to_unicode (event.keyval);
 
         /* Solve on enter */
@@ -203,14 +216,6 @@ public class MathDisplay : Gtk.Viewport
             if (function_completion_window_visible ())
                 return false;
             equation.solve ();
-            return true;
-        }
-
-        /* Clear on escape */
-        if ((event.keyval == Gdk.Key.Escape && state == 0) ||
-            (event.keyval == Gdk.Key.Delete && state == Gdk.ModifierType.SHIFT_MASK))
-        {
-            equation.clear ();
             return true;
         }
 
