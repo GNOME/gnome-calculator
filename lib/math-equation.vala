@@ -135,6 +135,8 @@ public class MathEquation : Gtk.SourceBuffer
     private bool in_reformat;
 
     private bool in_delete;
+    private uint in_progress_timeout;
+    private uint looking_for_answer_timeout;
 
     private bool _in_solve;
     public bool in_solve
@@ -1077,8 +1079,8 @@ public class MathEquation : Gtk.SourceBuffer
 
         new Thread<void*> ("", solve_real);
 
-        Timeout.add (50, look_for_answer);
-        Timeout.add (100, show_in_progress);
+        looking_for_answer_timeout = Timeout.add (50, look_for_answer);
+        in_progress_timeout = Timeout.add (100, show_in_progress);
     }
 
     /* Fix the offsets to consider thousand separators inserted by the gui. */
@@ -1181,6 +1183,8 @@ public class MathEquation : Gtk.SourceBuffer
     {
         var x = number;
         var factors = x.factorize ();
+        var result = new SolveData ();
+        queue.push (result);
 
         var text = "";
         var i = 0;
@@ -1192,9 +1196,7 @@ public class MathEquation : Gtk.SourceBuffer
             i++;
         }
 
-        var result = new SolveData ();
         result.text_result = text;
-        queue.push (result);
 
         return null;
     }
@@ -1217,8 +1219,8 @@ public class MathEquation : Gtk.SourceBuffer
 
         new Thread<void*> ("", factorize_real);
 
-        Timeout.add (50, look_for_answer);
-        Timeout.add (100, show_in_progress);
+        looking_for_answer_timeout = Timeout.add (50, look_for_answer);
+        in_progress_timeout = Timeout.add (100, show_in_progress);
     }
 
     public void delete_next ()
@@ -1255,6 +1257,12 @@ public class MathEquation : Gtk.SourceBuffer
         number_mode = NumberMode.NORMAL;
         set_text ("", -1);
         clear_ans (false);
+        if (in_solve) {
+            _in_solve = false;
+            queue.try_pop ();
+            Source.remove (looking_for_answer_timeout);
+            Source.remove (in_progress_timeout);
+        }
     }
 
     public void shift (int count)
