@@ -796,8 +796,8 @@ public class MathEquation : Gtk.SourceBuffer
         var text = serializer.to_string (x);
 
         if (representation_base != 0)
-            serializer.set_representation_base (serializer.get_base ());
-        this.history_signal (get_current_state ().expression, x, serializer.get_base(), representation_base); /*emits signal to enter a new entry into history-view */
+            serializer.set_representation_base (number_base);
+        this.history_signal (get_current_state ().expression, x, number_base, representation_base); /*emits signal to enter a new entry into history-view */
         set_text (text, -1);
         state.ans = x;
 
@@ -893,7 +893,34 @@ public class MathEquation : Gtk.SourceBuffer
 
     public void insert_numeric_point ()
     {
-        insert (serializer.get_radix ().to_string ());
+        Gtk.TextIter iter_prev;
+        get_iter_at_mark (out iter_prev, get_insert ());
+        /** go back to the first digit of the currently entered number **/
+        while (iter_prev.backward_char () && (iter_prev.get_char () == serializer.get_thousands_separator ()
+                || iter_prev.get_char ().isdigit ()
+                || iter_prev.get_char () == serializer.get_radix ()))
+            ; // do nothing
+
+        if (!iter_prev.is_start ())
+            iter_prev.forward_char ();
+        var current_number = "";
+
+        /** find the currently entered number, ignoring thousand separators and including decimal point **/
+        while (iter_prev.get_char () == serializer.get_thousands_separator ()
+                || iter_prev.get_char ().isdigit ()
+                || iter_prev.get_char () == serializer.get_radix ()) {
+            if (iter_prev.get_char ().isdigit ()) {
+                current_number += iter_prev.get_char ().to_string ();
+            }
+            if (iter_prev.get_char () == serializer.get_radix ()) {
+                current_number += ".";
+            }
+            iter_prev.forward_char ();
+        }
+
+        /** if the current number doesn't contain decimal point yet, add one */
+        if (!current_number.contains ("."))
+            insert (serializer.get_radix ().to_string ());
     }
 
     public void insert_number (Number x)
@@ -924,7 +951,7 @@ public class MathEquation : Gtk.SourceBuffer
     private Number? parse (string text, out uint representation_base, out ErrorCode error_code = null, out string? error_token = null, out uint? error_start = null, out uint error_end = null)
     {
         var equation = new MEquation (this, text);
-        equation.base = serializer.get_base ();
+        equation.base = number_base;
         equation.wordlen = word_size;
         equation.angle_units = angle_units;
 
