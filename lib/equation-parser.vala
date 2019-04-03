@@ -34,12 +34,12 @@ private enum Precedence
     NOT             = 6,
     FUNCTION        = 7,
     BOOLEAN         = 8,
+    SHIFT           = 8,
     PERCENTAGE      = 9,
     /* UNARY_MINUS, ROOT and POWER must have same precedence. */
     UNARY_MINUS     = 10,
     POWER           = 10,
     ROOT            = 10,
-    SHIFT           = 10,
     FACTORIAL       = 11,
     NUMBER_VARIABLE = 12,
     /* DEPTH should be always at the bottom. It stops node jumping off the current depth level. */

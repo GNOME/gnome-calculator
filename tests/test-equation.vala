@@ -673,6 +673,15 @@ private void test_equations ()
     //test ("¬¬10₂", "10₂", 0);
 }
 
+private void test_bit_shift ()
+{
+    number_base = 10;
+    test ("1«2", "4", 0);
+    test ("1«2»1«2", "8", 0);
+    test ("32»3", "4", 0);
+    test ("0x1 « 0x10", "65536", 0);
+}
+
 private void test_base_conversion ()
 {
     number_base = 10;
@@ -809,6 +818,7 @@ public int main (string[] args)
     test_base_conversion ();
     test_precedence ();
     test_custom_functions ();
+    test_bit_shift ();
 
     if (fail_count == 0)
         stdout.printf ("Passed all %i tests\n", pass_count);
