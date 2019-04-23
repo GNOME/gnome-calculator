@@ -13,15 +13,15 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2019-02-06 18:32+0000\n"
-"PO-Revision-Date: 2019-02-11 10:16+0100\n"
+"POT-Creation-Date: 2019-03-27 12:01+0000\n"
+"PO-Revision-Date: 2019-04-23 10:12+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 3.31.90\n"
+"X-Generator: Gtranslator 3.32.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
@@ -107,11 +107,6 @@ msgstr "Calculadora"
 #: data/org.gnome.Calculator.desktop.in:6
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "cálculo;aritmética;científica;financiera;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Calculator.desktop.in:9
-msgid "org.gnome.Calculator"
-msgstr "org.gnome.Calculator"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -471,16 +466,15 @@ msgid "South African Rand"
 msgstr "Rand sudafricano"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:704 src/math-converter.vala:247
+#: lib/equation-lexer.vala:719 src/math-converter.vala:247
 msgid "in"
 msgstr "a"
 
-#: lib/equation-lexer.vala:704
-#| msgid " to "
+#: lib/equation-lexer.vala:719
 msgid "to"
 msgstr "a"
 
-#: lib/equation-parser.vala:717 lib/number.vala:429
+#: lib/equation-parser.vala:735 lib/number.vala:428
 msgid "The zeroth root of a number is undefined"
 msgstr "La raíz cero de un número no está definida"
 
@@ -508,105 +502,105 @@ msgid "No sane value to store"
 msgstr "No hay un valor bueno para almacenar"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:969
+#: lib/math-equation.vala:997
 msgid "Overflow. Try a bigger word size"
 msgstr "Desbordamiento de búfer. Inténtelo con un tamaño de palabra mayor."
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:974
+#: lib/math-equation.vala:1002
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Variable «%s» desconocida"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:981
+#: lib/math-equation.vala:1009
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "La función «%s» no está definida"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:988
+#: lib/math-equation.vala:1016
 msgid "Unknown conversion"
 msgstr "Conversión desconocida"
 
 #. should always be run
-#: lib/math-equation.vala:998
+#: lib/math-equation.vala:1026
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1003 lib/math-equation.vala:1008
+#: lib/math-equation.vala:1031 lib/math-equation.vala:1036
 msgid "Malformed expression"
 msgstr "Expresión malformada"
 
-#: lib/math-equation.vala:1019
+#: lib/math-equation.vala:1047
 msgid "Calculating"
 msgstr "Calculando"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1212
+#: lib/math-equation.vala:1240
 msgid "Need an integer to factorize"
 msgstr "Se necesita un entero para factorizar"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1266
+#: lib/math-equation.vala:1294
 msgid "No sane value to bitwise shift"
 msgstr "No hay un valor bueno para un desplazamiento de bits"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1280
+#: lib/math-equation.vala:1316
 msgid "Displayed value not an integer"
 msgstr "El valor mostrado no es un entero"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:196
+#: lib/number.vala:195
 msgid "Underflow error"
 msgstr "Error de subdesbordamiento"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:200
 msgid "Overflow error"
 msgstr "Error de desbordamiento"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:251
+#: lib/number.vala:250
 msgid "Argument not defined for zero"
 msgstr "El argumento no está definido para cero"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:367 lib/number.vala:397
+#: lib/number.vala:366 lib/number.vala:396
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "La potencia de cero no está definida para un exponente negativo"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:375 lib/number.vala:405
+#: lib/number.vala:374 lib/number.vala:404
 msgid "Zero raised to zero is undefined"
 msgstr "Cero elevado a cero no está definido"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:459 lib/number.vala:490
+#: lib/number.vala:458 lib/number.vala:489
 msgid "Logarithm of zero is undefined"
 msgstr "El logaritmo de cero no está definido"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:512
+#: lib/number.vala:511
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "El factorial sólo está definido para números reales no negativos"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:572
+#: lib/number.vala:571
 msgid "Division by zero is undefined"
 msgstr "La división por cero no está definida"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:593
+#: lib/number.vala:592
 msgid "Modulus division is only defined for integers"
 msgstr "La división modular sólo está definida para enteros"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:666
+#: lib/number.vala:665
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -614,51 +608,51 @@ msgstr ""
 "lo son de π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:685
+#: lib/number.vala:684
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "La inversa del seno no está definida para valores fuera de [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:702
+#: lib/number.vala:701
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "La inversa del coseno no está definida para valores fuera de [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:763
+#: lib/number.vala:762
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "La inversa del coseno hiperbólico no está definida para valores menores que "
 "uno"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:779
+#: lib/number.vala:778
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "La inversa de la tangente hiperbólica no está definida para valores fuera de "
 "[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:795
+#: lib/number.vala:794
 msgid "Boolean AND is only defined for positive integers"
 msgstr "El AND booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:807
+#: lib/number.vala:806
 msgid "Boolean OR is only defined for positive integers"
 msgstr "El OR booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:819
+#: lib/number.vala:818
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "El XOR booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
+#: lib/number.vala:830
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "El NOT booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:854
+#: lib/number.vala:853
 msgid "Shift is only possible on integer values"
 msgstr "El desplazamiento sólo es posible en valores enteros"
 
@@ -1960,7 +1954,7 @@ msgstr "%s%%s"
 msgid "Copy"
 msgstr "Copiar"
 
-#: search-provider/search-provider.vala:191
+#: search-provider/search-provider.vala:190
 msgid "Copy result to clipboard"
 msgstr "Copiar resultado al portapapeles"
 
@@ -2653,6 +2647,15 @@ msgstr "Acerca de Calculadora"
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora con modos científico y financiero."
 
+#: src/gnome-calculator.vala:357
+msgid "Are you sure you want to close all open windows?"
+msgstr "¿Seguro que quiere cerrar todas las ventanas abiertas?"
+
+#: src/gnome-calculator.vala:358
+#| msgid "_Close"
+msgid "Close _All"
+msgstr "Cerrar _todo"
+
 #: src/math-buttons.vala:464
 #, c-format
 msgid "%d place"
@@ -2673,11 +2676,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:497
+#: src/math-display.vala:507
 msgid "Defined Functions"
 msgstr "Funciones definidas"
 
-#: src/math-display.vala:554
+#: src/math-display.vala:564
 msgid "Defined Variables"
 msgstr "Variables definidas"
 
@@ -2952,6 +2955,9 @@ msgstr "Menú"
 msgid "_Quit"
 msgstr "_Salir"
 
+#~ msgid "org.gnome.Calculator"
+#~ msgstr "org.gnome.Calculator"
+
 #~ msgid " in "
 #~ msgstr " en "
 
@@ -3008,9 +3014,6 @@ msgstr "_Salir"
 
 #~ msgid "Malformed expression at token '%s'"
 #~ msgstr "Expresión mal formada en el valor «%s»"
-
-#~ msgid "_Close"
-#~ msgstr "_Cerrar"
 
 #~ msgid "Root must be non-zero"
 #~ msgstr "La raíz debe ser distinta de cero"
