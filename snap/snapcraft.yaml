@@ -127,6 +127,11 @@ parts:
       - libmpfr-dev
       - valac
       - yelp-tools
+  libraries:
+    plugin: nil
+    stage-packages:
+      - libgee-0.8-2
     prime:
       - "-usr/lib/gnome-calculator/libcalculator.a"
+      - "-usr/lib/x86_64-linux-gnu/libgee-0.8.so.*"
       - "-usr/share/appdata"
