@@ -960,6 +960,19 @@ private void test_xor ()
             }
         }
     }
+}
+
+private void test_xor_special ()
+{
+    var a = 0xA016;
+    var b = 0x0303;
+    var z = (new Number.integer (a)).xor (new Number.integer (b));
+    var expected = a ^ b;
+    if (z.to_integer () != expected)
+    {
+        fail ("(%d).xor (%d) -> %lli, expected %d".printf (a, b, z.to_integer (), expected));
+        return;
+    }
 
     pass ();
 }
@@ -975,6 +988,20 @@ private void test_not ()
             fail ("(%d).not () -> %lli, expected %d".printf (a, z.to_integer (), expected));
             return;
         }
+    }
+
+    pass ();
+}
+
+private void test_not_leading_zeros ()
+{
+    var a = 0xFFDD;
+    var z = (new Number.integer (a)).not (16);
+    var expected = ~a & 0xFF;
+    if (z.to_integer () != expected)
+    {
+        fail ("(%d).not () -> %lli, expected %d".printf (a, z.to_integer (), expected));
+        return;
     }
 
     pass ();
@@ -1133,7 +1160,9 @@ static int main (string[] args)
     test_and ();
     test_or ();
     test_xor ();
+    test_xor_special ();
     test_not ();
+    test_not_leading_zeros ();
     //test_mask ();
     test_shift ();
     //test_ones_complement ();

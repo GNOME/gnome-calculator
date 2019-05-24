@@ -1083,7 +1083,8 @@ public class Number : Object
             text_out[offset_out] = digits[bitwise_operator (v1, v2)];
         }
 
-        return mp_set_from_string ((string) text_out, 16);
+        var leading_zeros_removed = ((string) text_out).replace("0", " ").chug().replace(" ", "0");
+        return mp_set_from_string (leading_zeros_removed, 16);
     }
 
     private int hex_to_int (char digit)
