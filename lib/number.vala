@@ -1123,22 +1123,6 @@ private static int parse_literal_prefix (string str, ref int prefix_len)
     if (new_base != 0)
         prefix_len = 2;
 
-    if (prefix.isdigit ())
-    {
-        unichar c;
-        bool all_digits = true;
-        bool all_binary_digits = true;
-
-        for (int i = 2; str.get_next_char (ref i, out c) && all_digits;)
-            all_digits = c.isdigit ();
-
-        for (int i = 2; str.get_next_char (ref i, out c) && all_binary_digits;)
-            all_binary_digits = (c == '0' || c == '1');
-
-        if (all_digits && !all_binary_digits)
-            new_base = 8;
-    }
-
     return new_base;
 }
 
