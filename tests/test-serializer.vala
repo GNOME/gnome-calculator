@@ -134,7 +134,6 @@ private void test_base_conversion (Serializer s)
 
     test_number (s, "0b1010", 10, 10, "10");
     test_number (s, "0B1010", 10, 10, "10");
-    test_number (s, "012", 10, 10, "10");
     test_number (s, "0o012", 10, 10, "10");
     test_number (s, "0O012", 10, 10, "10");
     test_number (s, "0xA", 10, 10, "10");
@@ -142,7 +141,6 @@ private void test_base_conversion (Serializer s)
 
     test_number (s, "0b10103", 10, 10, null);
     test_number (s, "0B10103", 10, 10, null);
-    test_number (s, "0128", 10, 10, null);
     test_number (s, "0o0128", 10, 10, null);
     test_number (s, "0O0128", 10, 10, null);
     test_number (s, "0xAH", 10, 10, null);

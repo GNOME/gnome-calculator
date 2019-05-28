@@ -234,8 +234,8 @@ private void test_equations ()
     test ("0b5", "", ErrorCode.MP); test ("0B5", "", ErrorCode.MP); test ("0o5", "5", 0); test ("0O5", "5", 0); test ("005", "5", 0); test ("5", "5", 0); test ("0x5", "5", 0); test ("0X5", "5", 0);
     test ("0b6", "", ErrorCode.MP); test ("0B6", "", ErrorCode.MP); test ("0o6", "6", 0); test ("0O6", "6", 0); test ("006", "6", 0); test ("6", "6", 0); test ("0x6", "6", 0); test ("0X6", "6", 0);
     test ("0b7", "", ErrorCode.MP); test ("0B7", "", ErrorCode.MP); test ("0o7", "7", 0); test ("0O7", "7", 0); test ("007", "7", 0); test ("7", "7", 0); test ("0x7", "7", 0); test ("0X7", "7", 0);
-    test ("0b8", "", ErrorCode.MP); test ("0B8", "", ErrorCode.MP); test ("0o8", "", ErrorCode.UNKNOWN_VARIABLE); test ("0O8", "", ErrorCode.UNKNOWN_VARIABLE); test ("008", "", ErrorCode.INVALID); test ("8", "8", 0); test ("0x8", "8", 0); test ("0X8", "8", 0);
-    test ("0b9", "", ErrorCode.MP); test ("0B9", "", ErrorCode.MP); test ("0o9", "", ErrorCode.UNKNOWN_VARIABLE); test ("0O9", "", ErrorCode.UNKNOWN_VARIABLE); test ("009", "", ErrorCode.INVALID); test ("9", "9", 0); test ("0x9", "9", 0); test ("0X9", "9", 0);
+    test ("0b8", "", ErrorCode.MP); test ("0B8", "", ErrorCode.MP); test ("0o8", "", ErrorCode.UNKNOWN_VARIABLE); test ("0O8", "", ErrorCode.UNKNOWN_VARIABLE); test ("8", "8", 0); test ("0x8", "8", 0); test ("0X8", "8", 0);
+    test ("0b9", "", ErrorCode.MP); test ("0B9", "", ErrorCode.MP); test ("0o9", "", ErrorCode.UNKNOWN_VARIABLE); test ("0O9", "", ErrorCode.UNKNOWN_VARIABLE); test ("9", "9", 0); test ("0x9", "9", 0); test ("0X9", "9", 0);
     //  //  /* Note : "B", "b", "C", "c", "F", "f" are units, and hence have different error code. */
     test ("0bA", "", ErrorCode.UNKNOWN_VARIABLE); test ("0BA", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oA", "", ErrorCode.UNKNOWN_VARIABLE); test ("0OA", "", ErrorCode.UNKNOWN_VARIABLE); test ("00A", "", ErrorCode.UNKNOWN_VARIABLE); test ("A", "", ErrorCode.UNKNOWN_VARIABLE); test ("0xA", "10", 0); test ("0XA", "10", 0);
     test ("0bB", "", ErrorCode.UNKNOWN_VARIABLE); test ("0BB", "", ErrorCode.UNKNOWN_VARIABLE); test ("0oB", "", ErrorCode.UNKNOWN_VARIABLE); test ("0OB", "", ErrorCode.UNKNOWN_VARIABLE); test ("00B", "", ErrorCode.INVALID); test ("B", "", ErrorCode.INVALID); test ("0xB", "11", 0); test ("0XB", "11", 0);
@@ -709,7 +709,6 @@ private void test_base_conversion ()
     test ("x in dec", "2", 0);
     test ("x in hex", "2₁₆", 0);
 
-    test ("012 in dec", "10", 0);
     test ("0b1010 in dec", "10", 0);
     test ("0B1010 in dec", "10", 0);
     test ("0o012 in dec", "10", 0);
