@@ -6,13 +6,14 @@
 # Ahmad Riza H Nst <ari@160c.afraid.org>, 20031210, 20050301.
 # Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2011, 2012.
 # Andika Triwidada <andika@gmail.com>, 2011, 2012, 2013, 2014.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator gnome-3-20\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2019-03-27 12:01+0000\n"
-"PO-Revision-Date: 2019-04-24 18:52+0700\n"
+"POT-Creation-Date: 2019-05-27 07:14+0000\n"
+"PO-Revision-Date: 2019-05-31 10:27+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -480,74 +481,74 @@ msgid "Error: the number of periods must be positive"
 msgstr "Galat: cacah perioda mesti positif"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:170
+#: lib/math-equation.vala:172
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:520
+#: lib/math-equation.vala:522
 msgid "No undo history"
 msgstr "Tidak ada riwayat \"tak jadi\""
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:541
+#: lib/math-equation.vala:543
 msgid "No redo history"
 msgstr "Tidak ada riwayat \"jadi lagi\""
 
-#: lib/math-equation.vala:772
+#: lib/math-equation.vala:774
 msgid "No sane value to store"
 msgstr "Belum ada nilai untuk disimpan"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:997
+#: lib/math-equation.vala:1026
 msgid "Overflow. Try a bigger word size"
 msgstr "Kelebihan data. Cobalah ukuran huruf yang lebih besar"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1002
+#: lib/math-equation.vala:1031
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Variabel tak dikenal \"%s\""
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1009
+#: lib/math-equation.vala:1038
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Fungsi \"%s\" belum didefinisikan"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1016
+#: lib/math-equation.vala:1045
 msgid "Unknown conversion"
 msgstr "Konversi tak dikenal"
 
 #. should always be run
-#: lib/math-equation.vala:1026
+#: lib/math-equation.vala:1055
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1031 lib/math-equation.vala:1036
+#: lib/math-equation.vala:1060 lib/math-equation.vala:1065
 msgid "Malformed expression"
 msgstr "Ekspresi salah"
 
-#: lib/math-equation.vala:1047
+#: lib/math-equation.vala:1076
 msgid "Calculating"
 msgstr "Sedang menghitung"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1240
+#: lib/math-equation.vala:1269
 msgid "Need an integer to factorize"
 msgstr "Perlu nilai integer untuk difaktorkan"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1294
+#: lib/math-equation.vala:1329
 msgid "No sane value to bitwise shift"
 msgstr "Tidak ada nilai yang wajar untuk mengeser bit"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1316
+#: lib/math-equation.vala:1351
 msgid "Displayed value not an integer"
 msgstr "Nilai yang ditampilkan bukan integer"
 
@@ -2633,7 +2634,7 @@ msgstr ""
 "Andika Triwidada <andika@gmail.com>, 2011, 2012, 2013, 2014.\n"
 "Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017, 2018, 2019."
 
-#: src/gnome-calculator.vala:334 src/math-window.ui:71
+#: src/gnome-calculator.vala:334
 msgid "About Calculator"
 msgstr "Tentang Kalkulator"
 
@@ -2670,11 +2671,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:507
+#: src/math-display.vala:513
 msgid "Defined Functions"
 msgstr "Fungsi yang Ditetapkan"
 
-#: src/math-display.vala:564
+#: src/math-display.vala:570
 msgid "Defined Variables"
 msgstr "Variabel yang Ditetapkan"
 
@@ -2687,7 +2688,7 @@ msgid "Select no. of arguments"
 msgstr "Pilih nomor argumen"
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:33 src/math-window.ui:57
+#: src/math-preferences.vala:33
 msgid "Preferences"
 msgstr "Preferensi"
 
@@ -2930,16 +2931,24 @@ msgid "Keyboard Mode"
 msgstr "Mode Papan Tik"
 
 #: src/math-window.ui:49
-msgid "New Window"
-msgstr "Jendela Baru"
+msgid "_New Window"
+msgstr "Je_ndela Baru"
+
+#: src/math-window.ui:57
+msgid "_Preferences"
+msgstr "_Preferensi"
 
 #: src/math-window.ui:61
 msgid "_Keyboard Shortcuts"
 msgstr "Pintasan Papan Ti_k"
 
 #: src/math-window.ui:66
-msgid "Help"
-msgstr "Bantuan"
+msgid "_Help"
+msgstr "_Bantuan"
+
+#: src/math-window.ui:71
+msgid "_About Calculator"
+msgstr "Tent_ang Kalkulator"
 
 #: src/math-window.ui:118
 msgid "Menu"
