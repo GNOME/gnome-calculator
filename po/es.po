@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2019-03-27 12:01+0000\n"
-"PO-Revision-Date: 2019-04-23 10:12+0200\n"
+"POT-Creation-Date: 2019-05-27 07:14+0000\n"
+"PO-Revision-Date: 2019-06-03 12:12+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: es <gnome-es-list@gnome.org>\n"
 "Language: es\n"
@@ -483,74 +483,74 @@ msgid "Error: the number of periods must be positive"
 msgstr "Error: el número de períodos debe ser positivo"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:170
+#: lib/math-equation.vala:172
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:520
+#: lib/math-equation.vala:522
 msgid "No undo history"
 msgstr "Sin histórico"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:541
+#: lib/math-equation.vala:543
 msgid "No redo history"
 msgstr "Sin histórico"
 
-#: lib/math-equation.vala:772
+#: lib/math-equation.vala:774
 msgid "No sane value to store"
 msgstr "No hay un valor bueno para almacenar"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:997
+#: lib/math-equation.vala:1026
 msgid "Overflow. Try a bigger word size"
 msgstr "Desbordamiento de búfer. Inténtelo con un tamaño de palabra mayor."
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1002
+#: lib/math-equation.vala:1031
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Variable «%s» desconocida"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1009
+#: lib/math-equation.vala:1038
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "La función «%s» no está definida"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1016
+#: lib/math-equation.vala:1045
 msgid "Unknown conversion"
 msgstr "Conversión desconocida"
 
 #. should always be run
-#: lib/math-equation.vala:1026
+#: lib/math-equation.vala:1055
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1031 lib/math-equation.vala:1036
+#: lib/math-equation.vala:1060 lib/math-equation.vala:1065
 msgid "Malformed expression"
 msgstr "Expresión malformada"
 
-#: lib/math-equation.vala:1047
+#: lib/math-equation.vala:1076
 msgid "Calculating"
 msgstr "Calculando"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1240
+#: lib/math-equation.vala:1269
 msgid "Need an integer to factorize"
 msgstr "Se necesita un entero para factorizar"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1294
+#: lib/math-equation.vala:1329
 msgid "No sane value to bitwise shift"
 msgstr "No hay un valor bueno para un desplazamiento de bits"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1316
+#: lib/math-equation.vala:1351
 msgid "Displayed value not an integer"
 msgstr "El valor mostrado no es un entero"
 
@@ -2638,7 +2638,7 @@ msgstr ""
 "Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006\n"
 "Germán Poo-Caamaño <gpoo@ubiobio.cl>, 2003"
 
-#: src/gnome-calculator.vala:334 src/math-window.ui:71
+#: src/gnome-calculator.vala:334
 msgid "About Calculator"
 msgstr "Acerca de Calculadora"
 
@@ -2652,7 +2652,6 @@ msgid "Are you sure you want to close all open windows?"
 msgstr "¿Seguro que quiere cerrar todas las ventanas abiertas?"
 
 #: src/gnome-calculator.vala:358
-#| msgid "_Close"
 msgid "Close _All"
 msgstr "Cerrar _todo"
 
@@ -2676,11 +2675,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:507
+#: src/math-display.vala:513
 msgid "Defined Functions"
 msgstr "Funciones definidas"
 
-#: src/math-display.vala:564
+#: src/math-display.vala:570
 msgid "Defined Variables"
 msgstr "Variables definidas"
 
@@ -2693,7 +2692,7 @@ msgid "Select no. of arguments"
 msgstr "Seleccionar número de argumentos"
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:33 src/math-window.ui:57
+#: src/math-preferences.vala:33
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -2936,16 +2935,28 @@ msgid "Keyboard Mode"
 msgstr "Modo del teclado"
 
 #: src/math-window.ui:49
-msgid "New Window"
-msgstr "Ventana nueva"
+#| msgid "New Window"
+msgid "_New Window"
+msgstr "_Ventana nueva"
+
+#: src/math-window.ui:57
+#| msgid "Preferences"
+msgid "_Preferences"
+msgstr "Prefere_ncias"
 
 #: src/math-window.ui:61
 msgid "_Keyboard Shortcuts"
 msgstr "Atajos del _teclado"
 
 #: src/math-window.ui:66
-msgid "Help"
-msgstr "Ayuda"
+#| msgid "Help"
+msgid "_Help"
+msgstr "A_yuda"
+
+#: src/math-window.ui:71
+#| msgid "About Calculator"
+msgid "_About Calculator"
+msgstr "_Acerca de Calculadora"
 
 #: src/math-window.ui:118
 msgid "Menu"
