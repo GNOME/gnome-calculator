@@ -35,6 +35,7 @@ gnome_calculator_vala_flags = [
   '--vapidir=' + meson.current_source_dir(),
   '--pkg', 'config',
   '--gresources', gnome_calculator_resource_files,
+  '--vapidir='+gcalc_vapi_dir
 ]
 
 gnome_calculator_c_flags = [
@@ -76,6 +77,7 @@ gcalccmd_deps = [
 gcalccmd_vala_flags = [
   '--vapidir=' + meson.current_source_dir(),
   '--pkg', 'config',
+  '--vapidir='+gcalc_vapi_dir
 ]
 
 gcalccmd_includes = [

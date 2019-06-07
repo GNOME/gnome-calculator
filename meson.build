@@ -14,12 +14,7 @@ i18n = import('i18n')
 libexec_dir = join_paths(get_option('prefix'), get_option('libexecdir'))
 locale_dir = join_paths(get_option('prefix'), get_option('localedir'))
 po_dir = join_paths(meson.source_root(), 'po')
-vapi_dir = join_paths(meson.source_root(), 'vapi')
-
-# Add our custom VAPI dir
-add_project_arguments(['--vapidir', vapi_dir],
-  language: 'vala'
-)
+gcalc_vapi_dir = join_paths(meson.current_source_dir(), 'vapi')
 
 # Dependencies
 glib_min_version = '2.40.0'
@@ -50,13 +45,13 @@ libmath = cc.find_library('m')
 mpc = declare_dependency(
   dependencies: [
     cc.find_library('mpc'),
-    valac.find_library('mpc', dirs: vapi_dir)
+    valac.find_library('mpc', dirs: gcalc_vapi_dir)
   ]
 )
 mpfr = declare_dependency(
   dependencies: [
     cc.find_library('mpfr'),
-    valac.find_library('mpfr', dirs: vapi_dir)
+    valac.find_library('mpfr', dirs: gcalc_vapi_dir)
   ]
 )
 posix = valac.find_library('posix')
