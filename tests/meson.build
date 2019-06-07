@@ -69,7 +69,7 @@ test_parsing_sources = [
 
 test_parsing = executable('gcalc-parsing', test_parsing_sources,
   dependencies:tests_deps,
-  link_with: [lib, lib_mpfrg],
+  link_with: [libgcalc, lib_mpfrg],
 )
 test('gcalc-parsing', test_parsing)
 
@@ -80,6 +80,6 @@ test_solve_basic_sources = [
 
 test_solve_basic = executable('gcalc-solve-basic', test_solve_basic_sources,
   dependencies:tests_deps,
-  link_with: [lib, lib_mpfrg],
+  link_with: [libgcalc, lib_mpfrg],
 )
 test('gcalc-solve-basic', test_solve_basic)

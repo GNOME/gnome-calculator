@@ -120,7 +120,7 @@ sources = files([
 inc_libh = include_directories ('.')
 inc_libh_dep = declare_dependency (include_directories : inc_libh)
 
-deps = [
+gcalc_deps = [
 	gio,
 	namespaceinfo_dep,
 	inc_libh_dep,
@@ -145,14 +145,14 @@ LT_CURRENT='0'
 LT_REVISION='0'
 LT_AGE='0'
 LT_VERSION='0'
-lib = library(VERSIONED_PROJECT_NAME,
+libgcalc = library(VERSIONED_PROJECT_NAME,
 	sources,
 	version : LT_VERSION,
 	soversion : LT_VERSION+'.'+LT_AGE+'.'+LT_REVISION,
 	vala_header : PROJECT_NAME+'.h',
 	vala_vapi : VAPI_NAME,
 	vala_gir : GIR_NAME,
-	dependencies : deps,
+	dependencies : gcalc_deps,
 	vala_args: [
 		'--vapidir='+vapi_dir,
 		'--pkg=mpc',
@@ -171,8 +171,9 @@ lib = library(VERSIONED_PROJECT_NAME,
 		true
 	])
 
+if not get_option('disable-introspection')
 g_ir_compiler = find_program('g-ir-compiler', required: false)
-if g_ir_compiler.found() and not get_option('disable-introspection')
+if g_ir_compiler.found()
 custom_target('typelib',
 	command: [
 		g_ir_compiler,
@@ -181,7 +182,13 @@ custom_target('typelib',
 		join_paths(meson.current_build_dir(), GIR_NAME)
 	],
 	output: TYPELIB_NAME,
-	depends: lib,
+	depends: libgcalc,
 	install: true,
 	install_dir: join_paths(get_option('libdir'), 'girepository-1.0'))
 endif
+endif
+
+libgcalc_dep = declare_dependency(include_directories : inc_libh,
+  link_with : libgcalc,
+  dependencies: gcalc_deps,
+  )
