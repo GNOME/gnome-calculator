@@ -70,8 +70,7 @@ parts:
     plugin: make
     make-parameters: ["FLAVOR=gtk3"]
     build-packages:
-      - build-essential
-      - libgtk-3-dev
+      - gcc
     override-build: |
       snapcraftctl build
       mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
@@ -79,9 +78,8 @@ parts:
     after: [desktop-gnome-platform]
     source: https://gitlab.gnome.org/GNOME/gtksourceview.git
     source-type: git
-#    source-tag: 4.0.3
-    plugin: autotools
-    configflags: [--prefix=/usr]
+    plugin: meson
+    meson-parameters: [--prefix=/usr, -Dc_args="-Wno-error=undef"]
     organize:
       snap/gtksourceview/current/usr: usr
     build-packages:
@@ -89,6 +87,7 @@ parts:
       - gettext
       - gobject-introspection
       - gtk-doc-tools
+      - libfribidi-dev
       - libgirepository1.0-dev
       - libglib2.0-dev
       - libgtk-3-dev
@@ -101,14 +100,13 @@ parts:
     after: [gtksourceview]
     source: .
     plugin: meson
-    meson-parameters: [--prefix=/snap/gnome-calculator/current/usr]
+    meson-parameters: [--prefix=/snap/gnome-calculator/current/usr, -Dvala_args="--vapidir=$SNAPCRAFT_STAGE/usr/share/vala/vapi"]
     organize:
       snap/gnome-calculator/current/usr: usr
 # overriding vapidir in build-environment doesn't seem to work
     override-build: |
-      sed -i.bak -e "s|vapi_dir]|vapi_dir, '--vapidir=$SNAPCRAFT_STAGE/usr/share/vala/vapi']|g" meson.build
-      sed -i.bak -e "s|config',|config', '--vapidir=$SNAPCRAFT_STAGE/usr/share/vala/vapi',|g" src/meson.build
       sed -i.bak -e 's|Icon=org.gnome.Calculator$|Icon=${SNAP}/meta/gui/org.gnome.Calculator.svg|g' data/org.gnome.Calculator.desktop.in
+      sed -i.bak -e 's|media: gnome_calculator_help_media|media: gnome_calculator_help_media, symlink_media: false|g' help/meson.build
       snapcraftctl build
       mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
       cp ../src/data/icons/hicolor/scalable/apps/org.gnome.Calculator.svg $SNAPCRAFT_PART_INSTALL/meta/gui/
@@ -119,14 +117,20 @@ parts:
       - appstream-util
       - gnome-pkg-tools
       - intltool
+      - libgee-0.8-dev
       - libglib2.0-dev
       - libgtk-3-dev
       - libxml2-dev
       - libsoup2.4-dev
       - libmpc-dev
       - libmpfr-dev
+      - libvala-0.40-dev
       - valac
       - yelp-tools
+    stage-packages:
+      - libfribidi0
     prime:
       - "-usr/lib/gnome-calculator/libcalculator.a"
       - "-usr/share/appdata"
+      - "-usr/share/vala"
+      - "-usr/lib/*/pkgconfig"
