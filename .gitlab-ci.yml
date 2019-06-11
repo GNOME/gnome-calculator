@@ -34,11 +34,7 @@ build:ubuntu:
 
 build:snap:
   stage: build
-  image: snapcore/snapcraft
-  before_script:
-    - apt-get update
-    - apt-get install -q -y --no-install-recommends software-properties-common
-    - add-apt-repository -yu ppa:ubuntu-desktop/gnome-3-26
+  image: ubuntudesktop/gnome-3-28-1804
   script: snapcraft
   allow_failure: true
   artifacts:
