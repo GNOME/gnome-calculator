@@ -119,6 +119,7 @@ sources = files([
 
 inc_libh = include_directories ('.')
 inc_libh_dep = declare_dependency (include_directories : inc_libh)
+gcalc_build_dir = meson.current_build_dir ()
 
 gcalc_deps = [
 	gio,
