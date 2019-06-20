@@ -54,9 +54,7 @@ public class GCalc.GParser : Object {
       n = n.replace ("`", "");
       n = n.replace ("'", "");
       string l = lines[begin.line - 1];
-      message ("Token: '%s' : Line: %d Column begin: %d Column end: %d Text: '%s'", n, begin.line, begin.column, end.column, l);
       n = l.substring (begin.column - 1, end.column - begin.column + 1);
-      message ("Token text: '%s'", n);
       if (expected.size != 0 && !expected.contains (token)) {
         throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
       }
@@ -191,9 +189,6 @@ public class GCalc.GParser : Object {
                 current = v;
                 current_parent = v.parent;
                 top_parent = current_parent.parent;
-                message (current.get_type ().name ());
-                message (current_parent.get_type ().name ());
-                message (top_parent.get_type ().name ());
                 expected.clear ();
             }
           }
@@ -301,7 +296,6 @@ public class GCalc.GParser : Object {
             current_parent = exp2;
             top_parent = g;
           } else if (current is Function) {
-            message ("Function Open parens");
             var fexp = new GPolynomial ();
             var t = new GTerm ();
             fexp.expressions.add (t);
@@ -366,7 +360,6 @@ public class GCalc.GParser : Object {
         case Vala.TokenType.OPEN_BRACKET:
           break;
         case Vala.TokenType.STRING_LITERAL:
-          message ("Found string literal");
           break;
         case Vala.TokenType.REGEX_LITERAL:
         case Vala.TokenType.TEMPLATE_STRING_LITERAL:
