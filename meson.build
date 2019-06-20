@@ -27,16 +27,6 @@ libxml = dependency('libxml-2.0')
 libsoup = dependency('libsoup-2.4', version: '>= 2.42')
 gee = dependency('gee-0.8', version: '>= 0.20.0')
 
-# Vala compiler as expression parser
-vala_version = get_option ('vala-version')
-if vala_version == ''
-	vc = find_program('valac')
-	r = run_command(vc, '--api-version')
-	vala_version = r.stdout().strip()
-endif
-vala_dep_str = 'libvala-@0@'.format (vala_version)
-vala_dep = dependency(vala_dep_str)
-
 # Libraries
 cc = meson.get_compiler('c')
 valac = meson.get_compiler('vala')

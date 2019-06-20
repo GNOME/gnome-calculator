@@ -14,7 +14,6 @@ conf.set('libdir', '${exec_prefix}/'+get_option ('libdir'))
 conf.set('PROJECT_NAME', PROJECT_NAME)
 conf.set('PROJECT_VERSION', meson.project_version ())
 conf.set('API_VERSION', API_VERSION)
-conf.set('VALA_API_VERSION', vala_version)
 
 configure_file(input : 'gcalc.pc.in',
 	output : 'gcalc-@0@.pc'.format(API_VERSION),
@@ -129,7 +128,6 @@ gcalc_deps = [
 	posix,
 	libxml,
 	libsoup,
-	vala_dep,
 	libmath,
 	gee
 ]
