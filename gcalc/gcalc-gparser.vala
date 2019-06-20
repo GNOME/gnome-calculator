@@ -45,7 +45,6 @@ public class GCalc.GParser : Object {
     TokenType token = TokenType.NONE;
     GMathEquation eq = new GMathEquation ();
     scanner.input_text (str, str.length);
-    message ("STR to PARSE: '%s'", str);
     current = null;
     current_parent = null;
     top_parent = null;
@@ -55,14 +54,11 @@ public class GCalc.GParser : Object {
         break;
       }
       string n = token_to_string ();
-      message ("TOKEN STRING: '%s'", n);
-      message ("Token to string: %s", token.to_string ());
       if (expected.size != 0 && !expected.contains (token)) {
         throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
       }
       switch (token) {
         case TokenType.IDENTIFIER:
-          message ("Identifier String: %s", n);
           Expression sfunc = eqman.functions.find_named (n);
           if (sfunc != null) {
             sfunc = Object.new (sfunc.get_type ()) as Expression;
@@ -401,7 +397,6 @@ public class GCalc.GParser : Object {
   }
   public TokenType read_token () {
     GLib.TokenType t = scanner.get_next_token ();
-    message ("Token REad: %s", t.to_string ());
     switch (t) {
     case GLib.TokenType.IDENTIFIER:
       return TokenType.IDENTIFIER;

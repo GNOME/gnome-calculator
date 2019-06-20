@@ -43,7 +43,6 @@ public interface GCalc.Variable : Object, Expression {
       throw new VariableError.EVALUATION_FAIL ("Variable evaluation fail. Variable's value not updated");
     }
     @value = exp;
-    message ("Variable '%s' evaluated to: %s", name, @value.to_string ());
     return exp;
   }
 }
