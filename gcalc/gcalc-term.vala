@@ -32,12 +32,10 @@ public interface GCalc.Term : Object, Expression {
     return res;
   }
   public virtual Expression evaluate () throws GLib.Error {
-    message ("Evaluating term: %s", this.to_string ());
     Expression current = null;
     Operator current_operator = null;
     bool first = true;
     foreach (Expression e in expressions) {
-      message ("Evaluating Expression in term: %s", e.to_string ());
       if (e is Operator) {
         if (!(e is Minus || e is Plus) && first) {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
@@ -47,7 +45,6 @@ public interface GCalc.Term : Object, Expression {
           current = c;
           first = false;
         }
-        message ("Setting current operator to: %s", e.get_type ().name());
         current_operator = e as Operator;
         continue;
       } else if (e is Constant) {
@@ -80,7 +77,6 @@ public interface GCalc.Term : Object, Expression {
           }
         }
       } else if (e is Variable) {
-        message ("Evaluating Variable '%s'", (e as Variable).name);
         var ev = (e as Variable).evaluate ();
         if (current == null) {
           current = ev;

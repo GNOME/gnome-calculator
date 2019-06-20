@@ -18,116 +18,51 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-using Vala;
 
 public class GCalc.GParser : Object {
   Expression current = null;
   Expression current_parent = null;
   Expression top_parent = null;
-  Gee.ArrayList<Vala.TokenType> expected = new Gee.ArrayList<Vala.TokenType> ();
+  Gee.ArrayList<TokenType> expected = new Gee.ArrayList<TokenType> ();
+  GLib.Scanner scanner;
+
+  construct {
+    scanner = new GLib.Scanner (null);
+    scanner.input_name = "GCalc";
+    scanner.config.cpair_comment_single = "\n";
+    scanner.config.skip_comment_multi = false;
+    scanner.config.skip_comment_single = false;
+    scanner.config.char_2_token = false;
+    scanner.config.scan_binary = false;
+    scanner.config.scan_octal = false;
+    scanner.config.scan_float = false;
+    scanner.config.scan_hex = false;
+    scanner.config.scan_hex_dollar = false;
+    scanner.config.numbers_2_int = false;
+  }
 
   public void parse (string str, MathEquationManager eqman) throws GLib.Error {
-    var context = new CodeContext ();
-    CodeContext.push (context);
-    SourceFileType type = SourceFileType.NONE;
-    var sf = new SourceFile (context, type, "gcalc://", str);
-    var scanner = new Vala.Scanner (sf);
-    string[] lines;
-    if ("\n" in str) {
-      lines = str.split ("\n");
-    } else {
-      lines = new string [0];
-      lines[0] = str;
-    }
-    Vala.TokenType token = Vala.TokenType.NONE;
+    TokenType token = TokenType.NONE;
     GMathEquation eq = new GMathEquation ();
+    scanner.input_text (str, str.length);
+    message ("STR to PARSE: '%s'", str);
     current = null;
     current_parent = null;
     top_parent = null;
-    while (token != Vala.TokenType.EOF) {
-      Vala.SourceLocation begin, end;
-      token = scanner.read_token (out begin, out end);
-      if (token == Vala.TokenType.EOF) {
+    while (token != TokenType.EOF) {
+      token = read_token ();
+      if (token == TokenType.EOF) {
         break;
       }
-      string n = token.to_string ();
-      n = n.replace ("`", "");
-      n = n.replace ("'", "");
-      string l = lines[begin.line - 1];
-      n = l.substring (begin.column - 1, end.column - begin.column + 1);
+      string n = token_to_string ();
+      message ("TOKEN STRING: '%s'", n);
+      message ("Token to string: %s", token.to_string ());
       if (expected.size != 0 && !expected.contains (token)) {
         throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
       }
       switch (token) {
-        case Vala.TokenType.ABSTRACT:
-        case Vala.TokenType.AS:
-        case Vala.TokenType.ASYNC:
-        case Vala.TokenType.BASE:
-        case Vala.TokenType.BREAK:
-        case Vala.TokenType.CASE:
-        case Vala.TokenType.CATCH:
-        case Vala.TokenType.CLASS:
-        case Vala.TokenType.CONST:
-        case Vala.TokenType.CONSTRUCT:
-        case Vala.TokenType.CONTINUE:
-        case Vala.TokenType.DEFAULT:
-        case Vala.TokenType.DELEGATE:
-        case Vala.TokenType.DELETE:
-        case Vala.TokenType.DO:
-        case Vala.TokenType.DYNAMIC:
-        case Vala.TokenType.ELSE:
-        case Vala.TokenType.ENUM:
-        case Vala.TokenType.ENSURES:
-        case Vala.TokenType.ERRORDOMAIN:
-        case Vala.TokenType.EXTERN:
-        case Vala.TokenType.FALSE:
-        case Vala.TokenType.FINALLY:
-        case Vala.TokenType.FOR:
-        case Vala.TokenType.FOREACH:
-        case Vala.TokenType.GET:
-        case Vala.TokenType.IF:
-        case Vala.TokenType.IN:
-        case Vala.TokenType.INLINE:
-        case Vala.TokenType.INTERFACE:
-        case Vala.TokenType.INTERNAL:
-        case Vala.TokenType.IS:
-        case Vala.TokenType.LOCK:
-        case Vala.TokenType.NAMESPACE:
-        case Vala.TokenType.NEW:
-        case Vala.TokenType.NULL:
-        case Vala.TokenType.OUT:
-        case Vala.TokenType.OVERRIDE:
-        case Vala.TokenType.OWNED:
-        case Vala.TokenType.PARAMS:
-        case Vala.TokenType.PRIVATE:
-        case Vala.TokenType.PROTECTED:
-        case Vala.TokenType.PUBLIC:
-        case Vala.TokenType.REF:
-        case Vala.TokenType.REQUIRES:
-        case Vala.TokenType.RETURN:
-        case Vala.TokenType.SEALED:
-        case Vala.TokenType.SET:
-        case Vala.TokenType.SIGNAL:
-        case Vala.TokenType.SIZEOF:
-        case Vala.TokenType.STATIC:
-        case Vala.TokenType.STRUCT:
-        case Vala.TokenType.SWITCH:
-        case Vala.TokenType.THIS:
-        case Vala.TokenType.THROW:
-        case Vala.TokenType.THROWS:
-        case Vala.TokenType.TRUE:
-        case Vala.TokenType.TRY:
-        case Vala.TokenType.TYPEOF:
-        case Vala.TokenType.UNOWNED:
-        case Vala.TokenType.USING:
-        case Vala.TokenType.VAR:
-        case Vala.TokenType.VIRTUAL:
-        case Vala.TokenType.VOID:
-        case Vala.TokenType.VOLATILE:
-        case Vala.TokenType.WEAK:
-        case Vala.TokenType.WHILE:
-        case Vala.TokenType.YIELD:
-        case Vala.TokenType.IDENTIFIER:
+        case TokenType.IDENTIFIER:
+          message ("Identifier String: %s", n);
           Expression sfunc = eqman.functions.find_named (n);
           if (sfunc != null) {
             sfunc = Object.new (sfunc.get_type ()) as Expression;
@@ -141,7 +76,7 @@ public class GCalc.GParser : Object {
               current_parent = t;
               top_parent = exp;
               expected.clear ();
-              expected.add(Vala.TokenType.OPEN_PARENS);
+              expected.add(TokenType.OPEN_PARENS);
             } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
                 current_parent.expressions.add (sfunc);
                 current = sfunc;
@@ -193,8 +128,8 @@ public class GCalc.GParser : Object {
             }
           }
           break;
-        case Vala.TokenType.INTEGER_LITERAL:
-        case Vala.TokenType.REAL_LITERAL:
+        case TokenType.INTEGER_LITERAL:
+        case TokenType.REAL_LITERAL:
           double res = 0;
           if (!double.try_parse (n, out res)) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a constant");
@@ -221,26 +156,23 @@ public class GCalc.GParser : Object {
             expected.clear ();
           }
           break;
-        case Vala.TokenType.PERCENT:
-        case Vala.TokenType.CHARACTER_LITERAL:
-          break;
-        case Vala.TokenType.STAR:
+        case TokenType.STAR:
           var op = new GMultiply ();
           process_term_operator (op, eq);
           break;
-        case Vala.TokenType.PLUS:
+        case TokenType.PLUS:
           var opp = new GPlus ();
           process_operator (opp, eq);
           break;
-        case Vala.TokenType.DIV:
+        case TokenType.DIV:
           var op = new GDivision ();
           process_term_operator (op, eq);
           break;
-        case Vala.TokenType.MINUS:
+        case TokenType.MINUS:
           var opp = new GMinus ();
           process_operator (opp, eq);
           break;
-        case Vala.TokenType.ASSIGN:
+        case TokenType.ASSIGN:
           if (current == null) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for an assignment");
           } else if (current is Polynomial) {
@@ -280,7 +212,7 @@ public class GCalc.GParser : Object {
             expected.clear ();
           }
           break;
-        case Vala.TokenType.OPEN_PARENS:
+        case TokenType.OPEN_PARENS:
           if (current == null) {
             var exp = new GPolynomial ();
             eq.expressions.add (exp);
@@ -316,7 +248,7 @@ public class GCalc.GParser : Object {
             top_parent = g;
           }
           break;
-        case Vala.TokenType.CLOSE_PARENS:
+        case TokenType.CLOSE_PARENS:
           if (current == null) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression while closing parenthesis");
           }
@@ -345,7 +277,7 @@ public class GCalc.GParser : Object {
             top_parent = current_parent.parent;
           }
           break;
-        case Vala.TokenType.CARRET:
+        case TokenType.CARRET:
           var op = new GPow ();
           if (current == null) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression trying power expression");
@@ -354,57 +286,37 @@ public class GCalc.GParser : Object {
           }
           break;
         // braces
-        case Vala.TokenType.CLOSE_BRACE:
-        case Vala.TokenType.CLOSE_BRACKET:
-        case Vala.TokenType.OPEN_BRACE:
-        case Vala.TokenType.OPEN_BRACKET:
+        case TokenType.CLOSE_BRACE:
+        case TokenType.CLOSE_BRACKET:
+        case TokenType.OPEN_BRACE:
+        case TokenType.OPEN_BRACKET:
           break;
-        case Vala.TokenType.STRING_LITERAL:
+        case TokenType.STRING_LITERAL:
           break;
-        case Vala.TokenType.REGEX_LITERAL:
-        case Vala.TokenType.TEMPLATE_STRING_LITERAL:
-        case Vala.TokenType.VERBATIM_STRING_LITERAL:
-        case Vala.TokenType.ASSIGN_ADD:
-        case Vala.TokenType.ASSIGN_BITWISE_AND:
-        case Vala.TokenType.ASSIGN_BITWISE_OR:
-        case Vala.TokenType.ASSIGN_BITWISE_XOR:
-        case Vala.TokenType.ASSIGN_DIV:
-        case Vala.TokenType.ASSIGN_MUL:
-        case Vala.TokenType.ASSIGN_PERCENT:
-        case Vala.TokenType.ASSIGN_SHIFT_LEFT:
-        case Vala.TokenType.ASSIGN_SUB:
-        case Vala.TokenType.BITWISE_AND:
-        case Vala.TokenType.BITWISE_OR:
-        case Vala.TokenType.OP_AND:
-        case Vala.TokenType.OP_COALESCING:
-        case Vala.TokenType.OP_DEC:
-        case Vala.TokenType.OP_EQ:
-        case Vala.TokenType.OP_GE:
-        case Vala.TokenType.OP_GT:
-        case Vala.TokenType.OP_INC:
-        case Vala.TokenType.OP_LE:
-        case Vala.TokenType.OP_LT:
-        case Vala.TokenType.OP_NE:
-        case Vala.TokenType.OP_NEG:
-        case Vala.TokenType.OP_OR:
-        case Vala.TokenType.OP_PTR:
-        case Vala.TokenType.OP_SHIFT_LEFT:
-        // templates and regex
-        case Vala.TokenType.CLOSE_REGEX_LITERAL:
-        case Vala.TokenType.CLOSE_TEMPLATE:
-        case Vala.TokenType.OPEN_REGEX_LITERAL:
-        case Vala.TokenType.OPEN_TEMPLATE:
-        //
-        case Vala.TokenType.SEMICOLON:
-        case Vala.TokenType.TILDE:
-        case Vala.TokenType.COLON:
-        case Vala.TokenType.COMMA:
-        case Vala.TokenType.DOUBLE_COLON:
-        case Vala.TokenType.DOT:
-        case Vala.TokenType.ELLIPSIS:
-        case Vala.TokenType.INTERR:
+        case TokenType.OP_AND:
+        case TokenType.OP_COALESCING:
+        case TokenType.OP_DEC:
+        case TokenType.OP_EQ:
+        case TokenType.OP_GE:
+        case TokenType.OP_GT:
+        case TokenType.OP_INC:
+        case TokenType.OP_LE:
+        case TokenType.OP_LT:
+        case TokenType.OP_NE:
+        case TokenType.OP_NEG:
+        case TokenType.OP_OR:
+        case TokenType.OP_PTR:
+        case TokenType.OP_SHIFT_LEFT:
+        case TokenType.SEMICOLON:
+        case TokenType.TILDE:
+        case TokenType.COLON:
+        case TokenType.COMMA:
+        case TokenType.DOUBLE_COLON:
+        case TokenType.DOT:
+        case TokenType.ELLIPSIS:
+        case TokenType.INTERR:
         // Hash
-        case Vala.TokenType.HASH:
+        case TokenType.HASH:
           throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
       }
     }
@@ -486,6 +398,118 @@ public class GCalc.GParser : Object {
       top_parent = exp;
       expected.clear ();
     }
+  }
+  public TokenType read_token () {
+    GLib.TokenType t = scanner.get_next_token ();
+    message ("Token REad: %s", t.to_string ());
+    switch (t) {
+    case GLib.TokenType.IDENTIFIER:
+      return TokenType.IDENTIFIER;
+    case GLib.TokenType.INT:
+      return TokenType.INTEGER_LITERAL;
+    case GLib.TokenType.FLOAT:
+      return TokenType.REAL_LITERAL;
+    case GLib.TokenType.STRING:
+      return TokenType.STRING_LITERAL;
+    case GLib.TokenType.EOF:
+      return TokenType.EOF;
+    case GLib.TokenType.CHAR:
+      var v = scanner.cur_value ().@char;
+      if (((char) v).isalpha ()) {
+        return TokenType.IDENTIFIER;
+      }
+      switch (v) {
+        case '*':
+          return TokenType.STAR;
+        case '/':
+          return TokenType.DIV;
+        case '+':
+          return TokenType.PLUS;
+        case '-':
+          return TokenType.MINUS;
+        case '^':
+          return TokenType.CARRET;
+        case ')':
+          return TokenType.CLOSE_PARENS;
+        case '(':
+          return TokenType.OPEN_PARENS;
+        case '=':
+          return TokenType.ASSIGN;
+        case '{':
+          return TokenType.OPEN_BRACE;
+        case '}':
+          return TokenType.CLOSE_BRACE;
+        case '[':
+          return TokenType.OPEN_BRACKET;
+        case ']':
+          return TokenType.CLOSE_BRACKET;
+      }
+      break;
+    }
+    return TokenType.NONE;
+  }
+  public string token_to_string () {
+    GLib.TokenType t = scanner.cur_token ();
+    switch (t) {
+    case GLib.TokenType.IDENTIFIER:
+      return scanner.cur_value ().@identifier;
+    case GLib.TokenType.INT:
+      return scanner.cur_value ().@int.to_string ();
+    case GLib.TokenType.FLOAT:
+      return "%g".printf (scanner.cur_value ().@float);
+    case GLib.TokenType.EOF:
+      return "";
+    case GLib.TokenType.CHAR:
+      StringBuilder str = new StringBuilder ("");
+      str.append_c ((char) scanner.cur_value ().@char);
+      return str.str;
+    case GLib.TokenType.STRING:
+      return scanner.cur_value ().@string;
+    }
+    return "";
+  }
+  public enum TokenType {
+    NONE,
+    EOF,
+    IDENTIFIER,
+    INTEGER_LITERAL,
+    REAL_LITERAL,
+    STAR,
+    PLUS,
+    DIV,
+    MINUS,
+    ASSIGN,
+    OPEN_PARENS,
+    CLOSE_PARENS,
+    CARRET,
+    CLOSE_BRACE,
+    CLOSE_BRACKET,
+    OPEN_BRACE,
+    OPEN_BRACKET,
+    STRING_LITERAL,
+    OP_AND,
+    OP_COALESCING,
+    OP_DEC,
+    OP_EQ,
+    OP_GE,
+    OP_GT,
+    OP_INC,
+    OP_LE,
+    OP_LT,
+    OP_NE,
+    OP_NEG,
+    OP_OR,
+    OP_PTR,
+    OP_SHIFT_LEFT,
+    SEMICOLON,
+    TILDE,
+    COLON,
+    COMMA,
+    DOUBLE_COLON,
+    DOT,
+    ELLIPSIS,
+    INTERR,
+    HASH
   }
 }
 
