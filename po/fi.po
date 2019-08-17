@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2019-02-06 18:32+0000\n"
-"PO-Revision-Date: 2019-03-05 09:37+0200\n"
+"POT-Creation-Date: 2019-06-15 11:01+0000\n"
+"PO-Revision-Date: 2019-08-17 16:33+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2011-09-08 08:16+0000\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-POT-Import-Date: 2012-02-19 15:17:38+0000\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
@@ -114,11 +114,6 @@ msgid "calculation;arithmetic;scientific;financial;"
 msgstr ""
 "calculation;arithmetic;scientific;financial;laskenta;laskut;laskutoimitus;"
 "aritmetiikka;aritmeettinen;tieteellinen;tiede;talous;talouslaskut;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Calculator.desktop.in:9
-msgid "org.gnome.Calculator"
-msgstr "org.gnome.Calculator"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -475,15 +470,15 @@ msgid "South African Rand"
 msgstr "Etelä-Afrikan randi"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:704 src/math-converter.vala:247
+#: lib/equation-lexer.vala:719 src/math-converter.vala:247
 msgid "in"
 msgstr "yksikköön"
 
-#: lib/equation-lexer.vala:704
+#: lib/equation-lexer.vala:719
 msgid "to"
 msgstr "yksikköön"
 
-#: lib/equation-parser.vala:717 lib/number.vala:429
+#: lib/equation-parser.vala:735 lib/number.vala:428
 msgid "The zeroth root of a number is undefined"
 msgstr "Numeron nollatta juurta ei ole määritelty"
 
@@ -492,124 +487,124 @@ msgid "Error: the number of periods must be positive"
 msgstr "Virhe: maksujaksojen määrän pitää olla positiivinen"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:170
+#: lib/math-equation.vala:172
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:520
+#: lib/math-equation.vala:522
 msgid "No undo history"
 msgstr "Ei perumishistoriaa"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:541
+#: lib/math-equation.vala:543
 msgid "No redo history"
 msgstr "Ei palautettavaa historiaa"
 
-#: lib/math-equation.vala:772
+#: lib/math-equation.vala:774
 msgid "No sane value to store"
 msgstr "Ei kelpoa arvoa tallennettavaksi"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:969
+#: lib/math-equation.vala:1026
 msgid "Overflow. Try a bigger word size"
 msgstr "Ylivuoto. Kokeile suurempaa sanakokoa"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:974
+#: lib/math-equation.vala:1031
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Tuntematon muuttuja “%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:981
+#: lib/math-equation.vala:1038
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funktiota “%s” ei ole määritelty"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:988
+#: lib/math-equation.vala:1045
 msgid "Unknown conversion"
 msgstr "Tuntematon muunnos"
 
 #. should always be run
-#: lib/math-equation.vala:998
+#: lib/math-equation.vala:1055
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1003 lib/math-equation.vala:1008
+#: lib/math-equation.vala:1060 lib/math-equation.vala:1065
 msgid "Malformed expression"
 msgstr "Virheellinen lauseke"
 
-#: lib/math-equation.vala:1019
+#: lib/math-equation.vala:1076
 msgid "Calculating"
 msgstr "Lasketaan"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1212
+#: lib/math-equation.vala:1269
 msgid "Need an integer to factorize"
 msgstr "Tekijöihin jakamiseen vaaditaan kokonaisluku"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1266
+#: lib/math-equation.vala:1329
 msgid "No sane value to bitwise shift"
 msgstr "Ei järkevää arvoa bittisiirrolle"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1280
+#: lib/math-equation.vala:1351
 msgid "Displayed value not an integer"
 msgstr "Esitettävä arvo ei ole kokonaisluku"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:196
+#: lib/number.vala:195
 msgid "Underflow error"
 msgstr "Alivuotovirhe"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:200
 msgid "Overflow error"
 msgstr "Ylivuotovirhe"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:251
+#: lib/number.vala:250
 msgid "Argument not defined for zero"
 msgstr "Argumenttia ei ole määritelty nollalle"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:367 lib/number.vala:397
+#: lib/number.vala:366 lib/number.vala:396
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nollan potensseja ei ole määritelty negatiivisilla eksponenteilla"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:375 lib/number.vala:405
+#: lib/number.vala:374 lib/number.vala:404
 msgid "Zero raised to zero is undefined"
 msgstr "Nollaa potenssiin nolla ei ole määritelty"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:459 lib/number.vala:490
+#: lib/number.vala:458 lib/number.vala:489
 msgid "Logarithm of zero is undefined"
 msgstr "Nollan logaritmia ei ole määritelty"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:512
+#: lib/number.vala:511
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Kertoma on määritelty vain ei-negatiivisille reaaliluvuille"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:572
+#: lib/number.vala:571
 msgid "Division by zero is undefined"
 msgstr "Nollalla jakamista ei ole määritelty"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:593
+#: lib/number.vala:592
 msgid "Modulus division is only defined for integers"
 msgstr "Modulusjakolasku on määritelty vain kokonaisluvuille"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:666
+#: lib/number.vala:665
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -617,51 +612,51 @@ msgstr ""
 "π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:685
+#: lib/number.vala:684
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Sinin käänteisarvoa ei ole määritelty muualla kuin välillä [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:702
+#: lib/number.vala:701
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Kosinin käänteisarvoa ei ole määritelty muualla kuin välillä [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:763
+#: lib/number.vala:762
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Hyperbolisen kosinin käänteisarvoa ei ole määritelty ykköstä pienemmille "
 "arvoille"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:779
+#: lib/number.vala:778
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Hyperbolisen tangentin käänteisarvoa ei ole määritelty muualla kuin välillä "
 "[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:795
+#: lib/number.vala:794
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Totuusarvo JA on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:807
+#: lib/number.vala:806
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Totuusarvo TAI on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:819
+#: lib/number.vala:818
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Totuusarvo XOR on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
+#: lib/number.vala:830
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Totuusarvo EI on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:854
+#: lib/number.vala:853
 msgid "Shift is only possible on integer values"
 msgstr "Siirto on mahdollista vain kokonaisluvuille"
 
@@ -1963,7 +1958,7 @@ msgstr "%s%%s"
 msgid "Copy"
 msgstr "Kopioi"
 
-#: search-provider/search-provider.vala:191
+#: search-provider/search-provider.vala:190
 msgid "Copy result to clipboard"
 msgstr "Kopioi tulos leikepöydälle"
 
@@ -2656,7 +2651,7 @@ msgstr ""
 "  T Kortehisto https://launchpad.net/~kortehisto\n"
 "  Tommi Vainikainen https://launchpad.net/~thv"
 
-#: src/gnome-calculator.vala:334 src/math-window.ui:71
+#: src/gnome-calculator.vala:334
 msgid "About Calculator"
 msgstr "Tietoja - Laskin"
 
@@ -2664,6 +2659,14 @@ msgstr "Tietoja - Laskin"
 #: src/gnome-calculator.vala:342
 msgid "Calculator with financial and scientific modes."
 msgstr "Laskin talous- ja tiedetilojen kera."
+
+#: src/gnome-calculator.vala:357
+msgid "Are you sure you want to close all open windows?"
+msgstr "Haluatko varmasti sulkea kaikki avoimet ikkunat?"
+
+#: src/gnome-calculator.vala:358
+msgid "Close _All"
+msgstr "Sulje _kaikki"
 
 #: src/math-buttons.vala:464
 #, c-format
@@ -2685,11 +2688,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:497
+#: src/math-display.vala:513
 msgid "Defined Functions"
 msgstr "Määritetyt funktiot"
 
-#: src/math-display.vala:554
+#: src/math-display.vala:570
 msgid "Defined Variables"
 msgstr "Määritetyt muuttujat"
 
@@ -2702,7 +2705,7 @@ msgid "Select no. of arguments"
 msgstr "Valitse argumenttien määrä"
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:33 src/math-window.ui:57
+#: src/math-preferences.vala:33
 msgid "Preferences"
 msgstr "Asetukset"
 
@@ -2945,16 +2948,24 @@ msgid "Keyboard Mode"
 msgstr "Näppäimistötila"
 
 #: src/math-window.ui:49
-msgid "New Window"
-msgstr "Uusi ikkuna"
+msgid "_New Window"
+msgstr "_Uusi ikkuna"
+
+#: src/math-window.ui:57
+msgid "_Preferences"
+msgstr "_Asetukset"
 
 #: src/math-window.ui:61
 msgid "_Keyboard Shortcuts"
 msgstr "_Pikanäppäimet"
 
 #: src/math-window.ui:66
-msgid "Help"
-msgstr "Ohje"
+msgid "_Help"
+msgstr "_Ohje"
+
+#: src/math-window.ui:71
+msgid "_About Calculator"
+msgstr "_Tietoja - Laskin"
 
 #: src/math-window.ui:118
 msgid "Menu"
@@ -2963,6 +2974,9 @@ msgstr "Valikko"
 #: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Lopeta"
+
+#~ msgid "org.gnome.Calculator"
+#~ msgstr "org.gnome.Calculator"
 
 #~ msgid " in "
 #~ msgstr " yksikköön "
@@ -3041,9 +3055,6 @@ msgstr "_Lopeta"
 
 #~ msgid "Truncate"
 #~ msgstr "Katkaise"
-
-#~ msgid "_Close"
-#~ msgstr "_Sulje"
 
 #~ msgid "Round"
 #~ msgstr "Pyöristys"
