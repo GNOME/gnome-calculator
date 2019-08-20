@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2019-02-06 18:32+0000\n"
-"PO-Revision-Date: 2019-02-24 17:56+0200\n"
+"POT-Creation-Date: 2019-06-15 11:01+0000\n"
+"PO-Revision-Date: 2019-08-20 13:01+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Gtranslator 3.30.1\n"
+"X-Generator: Gtranslator 3.32.1\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 msgid "GNOME Calculator"
@@ -110,12 +110,6 @@ msgstr "Skaičiuotuvas"
 #: data/org.gnome.Calculator.desktop.in:6
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "skaičiavimai;aritmetika;moksliniai;finansiniai;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Calculator.desktop.in:9
-#| msgid "gnome-calculator"
-msgid "org.gnome.Calculator"
-msgstr "org.gnome.Calculator"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -472,16 +466,15 @@ msgid "South African Rand"
 msgstr "Pietų Afrikos Respublikos randas"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:704 src/math-converter.vala:247
-#| msgid "Sine"
+#: lib/equation-lexer.vala:719 src/math-converter.vala:247
 msgid "in"
 msgstr "valiuta"
 
-#: lib/equation-lexer.vala:704
+#: lib/equation-lexer.vala:719
 msgid "to"
 msgstr "į"
 
-#: lib/equation-parser.vala:717 lib/number.vala:429
+#: lib/equation-parser.vala:735 lib/number.vala:428
 msgid "The zeroth root of a number is undefined"
 msgstr "Skaičiaus nulinio laipsnio šaknis yra neapibrėžta"
 
@@ -490,174 +483,174 @@ msgid "Error: the number of periods must be positive"
 msgstr "Klaida, pasikartojimų skaičius turi būti teigiamas"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:170
+#: lib/math-equation.vala:172
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:520
+#: lib/math-equation.vala:522
 msgid "No undo history"
 msgstr "Nėra atšaukimo istorijos"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:541
+#: lib/math-equation.vala:543
 msgid "No redo history"
 msgstr "Nėra atšaukimo istorijos"
 
-#: lib/math-equation.vala:772
+#: lib/math-equation.vala:774
 msgid "No sane value to store"
 msgstr "Nėra sveikos reikšmės saugojimui"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:969
+#: lib/math-equation.vala:1026
 msgid "Overflow. Try a bigger word size"
 msgstr "Perpildymas. Mėginkite didesnį žodžio ilgį"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:974
+#: lib/math-equation.vala:1031
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Nežinomas kintamasis „%s“"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:981
+#: lib/math-equation.vala:1038
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Neapibrėžta funkcija „%s“"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:988
+#: lib/math-equation.vala:1045
 msgid "Unknown conversion"
 msgstr "Nežinoma konversija"
 
 #. should always be run
-#: lib/math-equation.vala:998
+#: lib/math-equation.vala:1055
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1003 lib/math-equation.vala:1008
+#: lib/math-equation.vala:1060 lib/math-equation.vala:1065
 msgid "Malformed expression"
 msgstr "Blogai suformuota išraiška"
 
-#: lib/math-equation.vala:1019
+#: lib/math-equation.vala:1076
 msgid "Calculating"
 msgstr "Skaičiuojama"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1212
+#: lib/math-equation.vala:1269
 msgid "Need an integer to factorize"
 msgstr "Skaidymui reikalingas sveikas skaičius"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1266
+#: lib/math-equation.vala:1329
 msgid "No sane value to bitwise shift"
 msgstr "Nėra tinkamos reikšmės bitų pastūmimui"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1280
+#: lib/math-equation.vala:1351
 msgid "Displayed value not an integer"
 msgstr "Rodoma reikšmė nėra sveikas skaičius"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:196
+#: lib/number.vala:195
 msgid "Underflow error"
 msgstr "Atvirkštinio perpildymo klaida"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:200
 msgid "Overflow error"
 msgstr "Perpildymo klaida"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:251
+#: lib/number.vala:250
 msgid "Argument not defined for zero"
 msgstr "Argumentas negali būti nulis"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:367 lib/number.vala:397
+#: lib/number.vala:366 lib/number.vala:396
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nulinis laipsnis neapibrėžtas neigiamai eksponentei"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:375 lib/number.vala:405
+#: lib/number.vala:374 lib/number.vala:404
 msgid "Zero raised to zero is undefined"
 msgstr "Nulis nuliniu laipsniu neapibrėžtas"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:459 lib/number.vala:490
+#: lib/number.vala:458 lib/number.vala:489
 msgid "Logarithm of zero is undefined"
 msgstr "Nulio logaritmas neapibrėžtas"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:512
+#: lib/number.vala:511
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Faktorialas apibrėžtas tik natūraliems skaičiams"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:572
+#: lib/number.vala:571
 msgid "Division by zero is undefined"
 msgstr "Dalyba iš nulio neapibrėžta"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:593
+#: lib/number.vala:592
 msgid "Modulus division is only defined for integers"
 msgstr "Dalyba su liekana apibrėžta tik sveikiems skaičiams"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:666
+#: lib/number.vala:665
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "Tangentas neapibrėžtas kampams, kurie yra π (180°) kartotiniai nuo π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:685
+#: lib/number.vala:684
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Arksinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:702
+#: lib/number.vala:701
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Arkkosinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:763
+#: lib/number.vala:762
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Hiperbolinis arkkosinusas neapibrėžtas reikšmėms, mažesnėms arba lygioms "
 "vienetui"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:779
+#: lib/number.vala:778
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "Hiperbolinis arktangentas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:795
+#: lib/number.vala:794
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Loginis IR apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:807
+#: lib/number.vala:806
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Loginis ARBA apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:819
+#: lib/number.vala:818
 msgid "Boolean XOR is only defined for positive integers"
 msgstr ""
 "Loginė griežta disjunkcija apibrėžta tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
+#: lib/number.vala:830
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Loginis NE apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:854
+#: lib/number.vala:853
 msgid "Shift is only possible on integer values"
 msgstr "Postūmis galimas tik sveikiems skaičiams"
 
@@ -1092,7 +1085,6 @@ msgid "m³"
 msgstr "m³"
 
 #: lib/unit.vala:65
-#| msgid "Gallons"
 msgid "US Gallons"
 msgstr "JAV galonai"
 
@@ -1123,7 +1115,6 @@ msgid "litre,litres,liter,liters,L"
 msgstr "litras,litrai,l"
 
 #: lib/unit.vala:67
-#| msgid "Quarts"
 msgid "US Quarts"
 msgstr "JAV kvortos"
 
@@ -1139,7 +1130,6 @@ msgid "quart,quarts,qt"
 msgstr "kvorta,kvortos,kvort"
 
 #: lib/unit.vala:68
-#| msgid "Pints"
 msgid "US Pints"
 msgstr "JAV pintos"
 
@@ -1962,7 +1952,7 @@ msgstr "%%s%s"
 msgid "Copy"
 msgstr "Kopijuoti"
 
-#: search-provider/search-provider.vala:191
+#: search-provider/search-provider.vala:190
 msgid "Copy result to clipboard"
 msgstr "Kopijuoti rezultatą į iškarpinę"
 
@@ -2647,7 +2637,7 @@ msgstr ""
 "Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Gediminas Paulauskas <menesis@chatsubo.lt>"
 
-#: src/gnome-calculator.vala:334 src/math-window.ui:71
+#: src/gnome-calculator.vala:334
 msgid "About Calculator"
 msgstr "Apie skaičiuotuvą"
 
@@ -2655,6 +2645,15 @@ msgstr "Apie skaičiuotuvą"
 #: src/gnome-calculator.vala:342
 msgid "Calculator with financial and scientific modes."
 msgstr "Skaičiuotuvas su finansiniais bei moksliniais priedais"
+
+#: src/gnome-calculator.vala:357
+msgid "Are you sure you want to close all open windows?"
+msgstr "Ar tikrai norite užverti visus atvertus langus?"
+
+#: src/gnome-calculator.vala:358
+#| msgid "_Close"
+msgid "Close _All"
+msgstr "Užverti _visus"
 
 #: src/math-buttons.vala:464
 #, c-format
@@ -2677,11 +2676,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:497
+#: src/math-display.vala:513
 msgid "Defined Functions"
 msgstr "Apibrėžtos funkcijos"
 
-#: src/math-display.vala:554
+#: src/math-display.vala:570
 msgid "Defined Variables"
 msgstr "Apibrėžti kintamieji"
 
@@ -2694,7 +2693,7 @@ msgid "Select no. of arguments"
 msgstr "Pasirinkite argumentų skaičių"
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:33 src/math-window.ui:57
+#: src/math-preferences.vala:33
 msgid "Preferences"
 msgstr "Nuostatos"
 
@@ -2937,16 +2936,28 @@ msgid "Keyboard Mode"
 msgstr "Klaviatūros veiksena"
 
 #: src/math-window.ui:49
-msgid "New Window"
-msgstr "Naujas langas"
+#| msgid "New Window"
+msgid "_New Window"
+msgstr "Naujas _langas"
+
+#: src/math-window.ui:57
+#| msgid "Preferences"
+msgid "_Preferences"
+msgstr "_Nuostatos"
 
 #: src/math-window.ui:61
 msgid "_Keyboard Shortcuts"
 msgstr "_Klaviatūros trumpiniai"
 
 #: src/math-window.ui:66
-msgid "Help"
-msgstr "Žinynas"
+#| msgid "Help"
+msgid "_Help"
+msgstr "_Žinynas"
+
+#: src/math-window.ui:71
+#| msgid "About Calculator"
+msgid "_About Calculator"
+msgstr "_Apie skaičiuotuvą"
 
 #: src/math-window.ui:118
 msgid "Menu"
@@ -2955,6 +2966,10 @@ msgstr "Meniu"
 #: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Išeiti"
+
+#~| msgid "gnome-calculator"
+#~ msgid "org.gnome.Calculator"
+#~ msgstr "org.gnome.Calculator"
 
 #~ msgid " in "
 #~ msgstr " į "
@@ -3013,9 +3028,6 @@ msgstr "_Išeiti"
 
 #~ msgid "Malformed expression at token '%s'"
 #~ msgstr "Blogai suformuota išraiška ties leksema „%s“"
-
-#~ msgid "_Close"
-#~ msgstr "_Užverti"
 
 #~ msgid "Root must be non-zero"
 #~ msgstr "Šaknis turi būti nenulinė"
