@@ -1,13 +1,13 @@
 # gcalctool ja.po.
 # Copyright (C) 2003-2010,2012 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
-# Takeshi AIHANA <takeshi.aihana@gmail.com>, 2003-2009.
 # KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>, 2003.
+# Takeshi AIHANA <takeshi.aihana@gmail.com>, 2003-2009.
 # Satoru SATOH <ss@gnome.gr.jp>, 2006.
 # Nishio Futoshi <fut_nis@d3.dion.ne.jp>, 2010.
 # Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2010, 2012.
 # Hajime Taira <htaira@redhat.com>, 2014, 2015.
-# sujiniku <sujinikusityuu@gmail.com>, 2016.
+# sujiniku <sujinikusityuu@gmail.com>, 2016, 2019.
 # sicklylife <translation@sicklylife.jp>, 2019.
 #
 msgid ""
@@ -15,9 +15,9 @@ msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2019-02-06 18:32+0000\n"
-"PO-Revision-Date: 2019-02-12 19:20+0900\n"
-"Last-Translator: sicklylife <translation@sicklylife.jp>\n"
+"POT-Creation-Date: 2019-06-15 11:01+0000\n"
+"PO-Revision-Date: 2019-06-14 11:57+0900\n"
+"Last-Translator: sujiniku <sujinikusityuu@gmail.com>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -105,11 +105,6 @@ msgstr "電卓"
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr ""
 "calculation;arithmetic;scientific;financial;算術;科学;財務;calculator;計算機;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Calculator.desktop.in:9
-msgid "org.gnome.Calculator"
-msgstr ""
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -468,15 +463,15 @@ msgid "South African Rand"
 msgstr "南アフリカ・ランド"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:704 src/math-converter.vala:247
+#: lib/equation-lexer.vala:719 src/math-converter.vala:247
 msgid "in"
 msgstr ""
 
-#: lib/equation-lexer.vala:704
+#: lib/equation-lexer.vala:719
 msgid "to"
 msgstr ""
 
-#: lib/equation-parser.vala:717 lib/number.vala:429
+#: lib/equation-parser.vala:735 lib/number.vala:428
 msgid "The zeroth root of a number is undefined"
 msgstr ""
 
@@ -485,171 +480,171 @@ msgid "Error: the number of periods must be positive"
 msgstr "エラー: 期間は正でなくてはなりません"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:170
+#: lib/math-equation.vala:172
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:520
+#: lib/math-equation.vala:522
 msgid "No undo history"
 msgstr "アンドゥの履歴はありません"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:541
+#: lib/math-equation.vala:543
 msgid "No redo history"
 msgstr "リドゥの履歴はありません"
 
-#: lib/math-equation.vala:772
+#: lib/math-equation.vala:774
 msgid "No sane value to store"
 msgstr "格納する値が正しくありません"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:969
+#: lib/math-equation.vala:1026
 msgid "Overflow. Try a bigger word size"
 msgstr "オーバーフローしました。Wordサイズを大きくして試してください。"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:974
+#: lib/math-equation.vala:1031
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "“%s”は不明な変数です"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:981
+#: lib/math-equation.vala:1038
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "関数“%s”は未定義です"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:988
+#: lib/math-equation.vala:1045
 msgid "Unknown conversion"
 msgstr "変換方法が分かりません"
 
 #. should always be run
-#: lib/math-equation.vala:998
+#: lib/math-equation.vala:1055
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1003 lib/math-equation.vala:1008
+#: lib/math-equation.vala:1060 lib/math-equation.vala:1065
 msgid "Malformed expression"
 msgstr "計算式が間違っています"
 
-#: lib/math-equation.vala:1019
+#: lib/math-equation.vala:1076
 msgid "Calculating"
 msgstr "計算中"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1212
+#: lib/math-equation.vala:1269
 msgid "Need an integer to factorize"
 msgstr "素因数分解は整数のみです"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1266
+#: lib/math-equation.vala:1329
 msgid "No sane value to bitwise shift"
 msgstr "ビット単位でシフトする値が正しくありません"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1280
+#: lib/math-equation.vala:1351
 msgid "Displayed value not an integer"
 msgstr "整数以外の値を表示します"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:196
+#: lib/number.vala:195
 msgid "Underflow error"
 msgstr "アンダーフローエラー"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:200
 msgid "Overflow error"
 msgstr "オーバーフローエラー"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:251
+#: lib/number.vala:250
 msgid "Argument not defined for zero"
 msgstr "ゼロの偏角は定義されていません"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:367 lib/number.vala:397
+#: lib/number.vala:366 lib/number.vala:396
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "負の指数関数に対するゼロの乗数は未定義です"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:375 lib/number.vala:405
+#: lib/number.vala:374 lib/number.vala:404
 msgid "Zero raised to zero is undefined"
 msgstr "ゼロに対するゼロの乗数は未定義です"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:459 lib/number.vala:490
+#: lib/number.vala:458 lib/number.vala:489
 msgid "Logarithm of zero is undefined"
 msgstr "ゼロの対数は未定義です"
 
 # 数学用語分からないので誰かレビューお願いします。by 平
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:512
+#: lib/number.vala:511
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "階乗は非負実数のみ定義されています"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:572
+#: lib/number.vala:571
 msgid "Division by zero is undefined"
 msgstr "ゼロ除算は未定義です"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:593
+#: lib/number.vala:592
 msgid "Modulus division is only defined for integers"
 msgstr "剰余は整数のみ定義しています"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:666
+#: lib/number.vala:665
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "π∕2 (90°)にπ (180°)の倍数を加えた角度の正接は未定義です"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:685
+#: lib/number.vala:684
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "[-1, 1]の範囲外の値の逆正弦は定義されていません"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:702
+#: lib/number.vala:701
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "[-1, 1]の範囲外の値の逆余弦は未定義です"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:763
+#: lib/number.vala:762
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "1未満の値の逆双曲線余弦は未定義です。"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:779
+#: lib/number.vala:778
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "[-1, 1]の範囲外の値の逆双曲線正接は未定義です。"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:795
+#: lib/number.vala:794
 msgid "Boolean AND is only defined for positive integers"
 msgstr "真偽値の積は、正の整数のみ定義しています"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:807
+#: lib/number.vala:806
 msgid "Boolean OR is only defined for positive integers"
 msgstr "真偽値の和は、正の整数のみ定義しています。"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:819
+#: lib/number.vala:818
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "真偽値の排他的論理和は、正の整数のみ定義しています"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
+#: lib/number.vala:830
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "真偽値の否定は、正の整数のみ定義しています。"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:854
+#: lib/number.vala:853
 msgid "Shift is only possible on integer values"
 msgstr "シフトは整数値のみ可能です"
 
@@ -687,13 +682,13 @@ msgstr "温度"
 
 #: lib/unit.vala:36
 msgid "Digital Storage"
-msgstr "デジタル記憶"
+msgstr "デジタル容量"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
 #. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
 #: lib/unit.vala:39 src/math-preferences.vala:147
 msgid "Degrees"
-msgstr "度"
+msgstr "Degree"
 
 #: lib/unit.vala:39
 #, c-format
@@ -1951,13 +1946,13 @@ msgstr "%%s%s"
 msgid "Copy"
 msgstr "コピー"
 
-#: search-provider/search-provider.vala:191
+#: search-provider/search-provider.vala:190
 msgid "Copy result to clipboard"
 msgstr ""
 
 #: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
 msgid "Inverse [Ctrl+I]"
-msgstr "逆関数の算出 [Ctrl+I]"
+msgstr "逆数 [Ctrl+I]"
 
 #. Accessible name for the inverse button
 #: src/buttons-advanced.ui:22 src/buttons-programming.ui:2148
@@ -1984,7 +1979,7 @@ msgstr "階乗"
 
 #: src/buttons-advanced.ui:95
 msgid "Imaginary Component"
-msgstr "虚数部"
+msgstr "虚部"
 
 #: src/buttons-advanced.ui:247 src/buttons-basic.ui:130
 #: src/buttons-financial.ui:2037 src/buttons-programming.ui:1377
@@ -2088,7 +2083,7 @@ msgstr "絶対値"
 
 #: src/buttons-advanced.ui:646
 msgid "Real Component"
-msgstr "実数部"
+msgstr "実部"
 
 #: src/buttons-advanced.ui:663
 msgid "Complex conjugate"
@@ -2121,7 +2116,7 @@ msgstr "指数"
 #: src/buttons-advanced.ui:757 src/buttons-financial.ui:2499
 #: src/buttons-programming.ui:1244
 msgid "Root [Ctrl+R]"
-msgstr "累乗根 [Ctrl+R]"
+msgstr "平方根 [Ctrl+R]"
 
 #: src/buttons-advanced.ui:773 src/buttons-basic.ui:419
 #: src/buttons-financial.ui:2450
@@ -2620,17 +2615,20 @@ msgstr "ヘルプを開けません"
 msgid "translator-credits"
 msgstr ""
 "相花 毅 <takeshi.aihana@gmail.com>\n"
+"草野 貴之 <AE5T-KSN@asahi-net.or.jp>\n"
 "佐藤 暁 <ss@gnome.gr.jp>\n"
+"日本 GNOME ユーザー会 <http://www.gnome.gr.jp/>\n"
+"Hajime Taira <htaira@redhat.com>\n"
 "KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
 "Nishio Futoshi <fut_nis@d3.dion.ne.jp>\n"
-"草野 貴之 <AE5T-KSN@asahi-net.or.jp>\n"
-"日本GNOMEユーザー会 <http://www.gnome.gr.jp/>\n"
+"sicklylife <translation@sicklylife.jp>\n"
+"sujiniku <sujinikusityuu@gmail.com>"
 "Launchpad Contributions:\n"
 "  Fumihito YOSHIDA https://launchpad.net/~hito\n"
 "  Shushi Kurose https://launchpad.net/~kurokuro\n"
 "  vbk https://launchpad.net/~vbkaisetsu"
 
-#: src/gnome-calculator.vala:334 src/math-window.ui:71
+#: src/gnome-calculator.vala:334
 msgid "About Calculator"
 msgstr "このアプリケーションについて"
 
@@ -2638,6 +2636,16 @@ msgstr "このアプリケーションについて"
 #: src/gnome-calculator.vala:342
 msgid "Calculator with financial and scientific modes."
 msgstr "財務と科学計算のモードを持つ電卓です。"
+
+#: src/gnome-calculator.vala:357
+msgid "Are you sure you want to close all open windows?"
+msgstr ""
+
+#: src/gnome-calculator.vala:358
+#, fuzzy
+#| msgid "_Close"
+msgid "Close _All"
+msgstr "閉じる(_C)"
 
 #: src/math-buttons.vala:464
 #, c-format
@@ -2658,11 +2666,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:497
+#: src/math-display.vala:513
 msgid "Defined Functions"
 msgstr "定義した関数"
 
-#: src/math-display.vala:554
+#: src/math-display.vala:570
 msgid "Defined Variables"
 msgstr "定義した変数"
 
@@ -2675,7 +2683,7 @@ msgid "Select no. of arguments"
 msgstr ""
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:33 src/math-window.ui:57
+#: src/math-preferences.vala:33
 msgid "Preferences"
 msgstr "設定"
 
@@ -2918,16 +2926,32 @@ msgid "Keyboard Mode"
 msgstr "キーボードモード"
 
 #: src/math-window.ui:49
-msgid "New Window"
+#, fuzzy
+#| msgid "New Window"
+msgid "_New Window"
 msgstr "新しいウィンドウ"
+
+#: src/math-window.ui:57
+#, fuzzy
+#| msgid "Preferences"
+msgid "_Preferences"
+msgstr "設定"
 
 #: src/math-window.ui:61
 msgid "_Keyboard Shortcuts"
 msgstr "キーボードショートカット(_K)"
 
 #: src/math-window.ui:66
-msgid "Help"
+#, fuzzy
+#| msgid "Help"
+msgid "_Help"
 msgstr "ヘルプ"
+
+#: src/math-window.ui:71
+#, fuzzy
+#| msgid "About Calculator"
+msgid "_About Calculator"
+msgstr "このアプリケーションについて"
 
 #: src/math-window.ui:118
 msgid "Menu"
@@ -3010,9 +3034,6 @@ msgstr "終了(_Q)"
 
 #~ msgid "Sign"
 #~ msgstr "符号"
-
-#~ msgid "_Close"
-#~ msgstr "閉じる(_C)"
 
 #~ msgid "Litres"
 #~ msgstr "リットル"
