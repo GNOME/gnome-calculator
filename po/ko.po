@@ -17,9 +17,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2019-02-06 18:32+0000\n"
-"PO-Revision-Date: 2019-03-08 14:41+0900\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2019-06-15 11:01+0000\n"
+"PO-Revision-Date: 2019-08-26 20:26+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -109,11 +110,6 @@ msgstr "계산기"
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr ""
 "calculation;계산;계산기;arithmetic;연산;scientific;과학;공학;financial;재무;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Calculator.desktop.in:9
-msgid "org.gnome.Calculator"
-msgstr "org.gnome.Calculator"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -472,16 +468,16 @@ msgstr "남아프리카공화국 랜드"
 
 # 번역할 수 없음: 이런 식으로 번역하게 만든 업스트림 잘못.
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:704 src/math-converter.vala:247
+#: lib/equation-lexer.vala:719 src/math-converter.vala:247
 msgid "in"
 msgstr "in"
 
 # 번역할 수 없음: 이런 식으로 번역하게 만든 업스트림 잘못.
-#: lib/equation-lexer.vala:704
+#: lib/equation-lexer.vala:719
 msgid "to"
 msgstr "to"
 
-#: lib/equation-parser.vala:717 lib/number.vala:429
+#: lib/equation-parser.vala:735 lib/number.vala:428
 msgid "The zeroth root of a number is undefined"
 msgstr "어떤 수의 0 제곱근은 정의되지 않습니다"
 
@@ -490,172 +486,172 @@ msgid "Error: the number of periods must be positive"
 msgstr "오류: 기간은 0보다 커야 합니다"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:170
+#: lib/math-equation.vala:172
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:520
+#: lib/math-equation.vala:522
 msgid "No undo history"
 msgstr "실행 취소 기록 없음"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:541
+#: lib/math-equation.vala:543
 msgid "No redo history"
 msgstr "다시 실행 기록 없음"
 
-#: lib/math-equation.vala:772
+#: lib/math-equation.vala:774
 msgid "No sane value to store"
 msgstr "제대로 된 값을 저장할 수 없습니다"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:969
+#: lib/math-equation.vala:1026
 msgid "Overflow. Try a bigger word size"
 msgstr "오버플로우. 워드 크기를 늘려 보십시오"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:974
+#: lib/math-equation.vala:1031
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "알 수 없는 변수 “%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:981
+#: lib/math-equation.vala:1038
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "“%s” 함수가 정의되지 않았습니다"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:988
+#: lib/math-equation.vala:1045
 msgid "Unknown conversion"
 msgstr "변환 불가"
 
 #. should always be run
-#: lib/math-equation.vala:998
+#: lib/math-equation.vala:1055
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1003 lib/math-equation.vala:1008
+#: lib/math-equation.vala:1060 lib/math-equation.vala:1065
 msgid "Malformed expression"
 msgstr "수식 형식이 틀렸습니다"
 
 # status
-#: lib/math-equation.vala:1019
+#: lib/math-equation.vala:1076
 msgid "Calculating"
 msgstr "계산 중"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1212
+#: lib/math-equation.vala:1269
 msgid "Need an integer to factorize"
 msgstr "소인수 분해에는 정수 값이 필요합니다"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1266
+#: lib/math-equation.vala:1329
 msgid "No sane value to bitwise shift"
 msgstr "비트 쉬프트의 값이 올바르지 않습니다"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1280
+#: lib/math-equation.vala:1351
 msgid "Displayed value not an integer"
 msgstr "표시 중인 값이 정수가 아닙니다"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:196
+#: lib/number.vala:195
 msgid "Underflow error"
 msgstr "언더플로우 오류"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:200
 msgid "Overflow error"
 msgstr "오버플로우 오류"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:251
+#: lib/number.vala:250
 msgid "Argument not defined for zero"
 msgstr "편각은 0에 대해서 정의되지 않습니다"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:367 lib/number.vala:397
+#: lib/number.vala:366 lib/number.vala:396
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "0의 제곱은 음수 지수에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:375 lib/number.vala:405
+#: lib/number.vala:374 lib/number.vala:404
 msgid "Zero raised to zero is undefined"
 msgstr "0의 0승은 정의되지 않습니다"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:459 lib/number.vala:490
+#: lib/number.vala:458 lib/number.vala:489
 msgid "Logarithm of zero is undefined"
 msgstr "0의 로그는 정의되지 않습니다"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:512
+#: lib/number.vala:511
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "팩토리얼은 음수가 아닌 실수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:572
+#: lib/number.vala:571
 msgid "Division by zero is undefined"
 msgstr "0으로 나누기는 정의되지 않습니다"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:593
+#: lib/number.vala:592
 msgid "Modulus division is only defined for integers"
 msgstr "나머지 나누기는 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:666
+#: lib/number.vala:665
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "탄젠트는 π∕2(90°)에 π(180°) 배수를 더한 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:685
+#: lib/number.vala:684
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "역 사인은 [-1, 1] 밖의 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:702
+#: lib/number.vala:701
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "역 코사인은 [-1, 1] 밖의 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:763
+#: lib/number.vala:762
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "역 하이퍼 코사인은 1보다 작은 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:779
+#: lib/number.vala:778
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "역 하이퍼 탄젠트는 [-1, 1] 밖의 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:795
+#: lib/number.vala:794
 msgid "Boolean AND is only defined for positive integers"
 msgstr "불리언 AND는 양의 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:807
+#: lib/number.vala:806
 msgid "Boolean OR is only defined for positive integers"
 msgstr "불리언 OR는 양의 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:819
+#: lib/number.vala:818
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "불리언 XOR는 양의 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
+#: lib/number.vala:830
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "불리언 NOT은 양의 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:854
+#: lib/number.vala:853
 msgid "Shift is only possible on integer values"
 msgstr "쉬프트는 정수 값에 대해서만 가능합니다"
 
@@ -1959,7 +1955,7 @@ msgstr "%s%%s"
 msgid "Copy"
 msgstr "복사"
 
-#: search-provider/search-provider.vala:191
+#: search-provider/search-provider.vala:190
 msgid "Copy result to clipboard"
 msgstr "결과를 클립보드에 복사합니다"
 
@@ -2635,7 +2631,7 @@ msgstr ""
 "류창우 <cwryu@debian.org>\n"
 "박열 <peary2@gmail.com>"
 
-#: src/gnome-calculator.vala:334 src/math-window.ui:71
+#: src/gnome-calculator.vala:334
 msgid "About Calculator"
 msgstr "계산기 정보"
 
@@ -2643,6 +2639,14 @@ msgstr "계산기 정보"
 #: src/gnome-calculator.vala:342
 msgid "Calculator with financial and scientific modes."
 msgstr "재무 및 과학 모드가 지원되는 계산기."
+
+#: src/gnome-calculator.vala:357
+msgid "Are you sure you want to close all open windows?"
+msgstr "정말로 열려 있는 모든 창을 닫으시겠습니까?"
+
+#: src/gnome-calculator.vala:358
+msgid "Close _All"
+msgstr "모두 닫기(_A)"
 
 #: src/math-buttons.vala:464
 #, c-format
@@ -2664,11 +2668,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:497
+#: src/math-display.vala:513
 msgid "Defined Functions"
 msgstr "정의된 기능"
 
-#: src/math-display.vala:554
+#: src/math-display.vala:570
 msgid "Defined Variables"
 msgstr "정의된 변수"
 
@@ -2681,7 +2685,7 @@ msgid "Select no. of arguments"
 msgstr "함수의 인자 개수 선택"
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:33 src/math-window.ui:57
+#: src/math-preferences.vala:33
 msgid "Preferences"
 msgstr "기본 설정"
 
@@ -2924,16 +2928,24 @@ msgid "Keyboard Mode"
 msgstr "키보드 모드"
 
 #: src/math-window.ui:49
-msgid "New Window"
-msgstr "새 창"
+msgid "_New Window"
+msgstr "새 창(_N)"
+
+#: src/math-window.ui:57
+msgid "_Preferences"
+msgstr "기본 설정(_P)"
 
 #: src/math-window.ui:61
 msgid "_Keyboard Shortcuts"
 msgstr "키보드 바로 가기(_K)"
 
 #: src/math-window.ui:66
-msgid "Help"
-msgstr "도움말"
+msgid "_Help"
+msgstr "도움말(_H)"
+
+#: src/math-window.ui:71
+msgid "_About Calculator"
+msgstr "계산기 정보(_A)"
 
 #: src/math-window.ui:118
 msgid "Menu"
@@ -2942,6 +2954,9 @@ msgstr "메뉴"
 #: src/math-window.vala:138
 msgid "_Quit"
 msgstr "끝내기(_Q)"
+
+#~ msgid "org.gnome.Calculator"
+#~ msgstr "org.gnome.Calculator"
 
 #~ msgid " in "
 #~ msgstr " -> "
