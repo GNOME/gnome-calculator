@@ -24,24 +24,6 @@ grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict
 base: core18
 
-plugs:
-  gnome-3-28-1804:
-    interface: content
-    target: $SNAP/gnome-platform
-    default-provider: gnome-3-28-1804
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes
-
 slots:
   # for GtkApplication registration
   gnome-calculator:
@@ -51,31 +33,17 @@ slots:
 
 apps:
   gnome-calculator:
-    command: desktop-launch gnome-calculator
+    command: usr/bin/gnome-calculator
+    extensions: [gnome-3-28]
     plugs:
-      - desktop
-      - desktop-legacy
       - gsettings
       - network
-      - unity7
-      - wayland
     desktop: usr/share/applications/org.gnome.Calculator.desktop
     environment:
       LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP/lib/gnome-calculator
 
 parts:
-  desktop-gnome-platform:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: gtk
-    plugin: make
-    make-parameters: ["FLAVOR=gtk3"]
-    build-packages:
-      - gcc
-    override-build: |
-      snapcraftctl build
-      mkdir -pv $SNAPCRAFT_PART_INSTALL/gnome-platform
   gtksourceview:
-    after: [desktop-gnome-platform]
     source: https://gitlab.gnome.org/GNOME/gtksourceview.git
     source-type: git
     plugin: meson
