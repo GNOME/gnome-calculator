@@ -21,7 +21,7 @@ public class Calculator : Gtk.Application
     private static string mode_string = null;
 
     private const OptionEntry[] option_entries = {
-        { "mode", 'm', 0, OptionArg.STRING, ref mode_string, N_("Start in given mode"), "mode" },
+        { "mode", 'm', 0, OptionArg.STRING, ref mode_string, N_("Start in given mode (basic, advanced, financial, programming, keyboard)"), "mode" },
         { "solve", 's', 0, OptionArg.STRING, null, N_("Solve given equation"), "equation" },
         { "equation", 'e', 0, OptionArg.STRING, ref equation_string, N_("Start with given equation"), "equation"},
         { "version", 'v', 0, OptionArg.NONE, null, N_("Show release version"), null },
