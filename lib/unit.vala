@@ -58,6 +58,7 @@ public class UnitManager : Object
         length_category.add_unit (new Unit ("point", _("Desktop Publishing Point"), dpgettext2 (null, "unit-format", "%s pt"), "0.000352777778x", "x/0.000352777778", dpgettext2 (null, "unit-symbols", "point,pt,points,pts")));
         area_category.add_unit (new Unit ("hectare", _("Hectares"), dpgettext2 (null, "unit-format", "%s ha"), "10000x", "x/10000", dpgettext2 (null, "unit-symbols", "hectare,hectares,ha")));
         area_category.add_unit (new Unit ("acre", _("Acres"), dpgettext2 (null, "unit-format", "%s acres"), "4046.8564224x", "x/4046.8564224", dpgettext2 (null, "unit-symbols", "acre,acres")));
+        area_category.add_unit (new Unit ("square-foot", _("Square Foot"), dpgettext2 (null, "unit-format", "%s ft²"), "x/10.763910417", "10.763910417x", dpgettext2 (null, "unit-symbols", "ft²")));
         area_category.add_unit (new Unit ("square-meter", _("Square Meters"), dpgettext2 (null, "unit-format", "%s m²"), "x", "x", dpgettext2 (null, "unit-symbols", "m²")));
         area_category.add_unit (new Unit ("square-centimeter", _("Square Centimeters"), dpgettext2 (null, "unit-format", "%s cm²"), "0.0001x", "10000x", dpgettext2 (null, "unit-symbols", "cm²")));
         area_category.add_unit (new Unit ("square-millimeter", _("Square Millimeters"), dpgettext2 (null, "unit-format", "%s mm²"), "0.000001x", "1000000x", dpgettext2 (null, "unit-symbols", "mm²")));
