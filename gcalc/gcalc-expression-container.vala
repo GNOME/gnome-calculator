@@ -20,55 +20,67 @@
  */
 public class GCalc.ExpressionContainer : Gee.ArrayList<Expression>, GLib.ListModel {
   public weak Expression parent { get; set; }
-  public new void add (Expression exp) {
-    (this as Gee.ArrayList<Expression>).add (exp);
+
+  // Gee.AbstractCollection
+  public override bool add (Expression exp) {
+    var r = base.add (exp);
     exp.parent = parent;
+    return r;
   }
-  public new Expression remove_at (int index) {
-    var r = (this as Gee.ArrayList<Expression>).remove_at (index);
+
+  public override Expression remove_at (int index) {
+    var r = base.remove_at (index);
     if (r != null) {
       r.parent = null;
     }
     return r;
   }
-  public new Expression remove (Expression exp) {
-    var i = (this as Gee.ArrayList<Expression>).index_of (exp);
-    return remove_at (i);
+
+  public override bool remove (Expression exp) {
+    var r = base.remove (exp);
+    if (r) {
+      exp.parent = null;
+    }
+    return r;
   }
+
   // GLib.ListModel
   public Object? get_item (uint position) {
-    return (this as Gee.ArrayList<Expression>).@get ((int) position) as Object;
+    return base.@get ((int) position) as Object;
   }
+
   public Type get_item_type () {
     return typeof (Expression);
   }
+
   public uint get_n_items () {
-    return (this as Gee.ArrayList<Expression>).size;
+    return size;
   }
+
   public Object? get_object (uint position) {
     return get_item (position);
   }
+
   public Expression? find (Expression exp) {
+    unowned Variable? variable = exp as Variable;
+    if (variable == null) {
+      return null;
+    }
     foreach (Expression e in this) {
-      if (exp is Variable && e is Variable) {
-        if ((exp as Variable).name == (e as Variable).name) {
-          return e;
-        }
+      if (e is Variable && ((Variable) e).name == variable.name) {
+        return e;
       }
     }
     return null;
   }
+
   public Expression? find_named (string name) {
     foreach (Expression e in this) {
-      if (e is Variable) {
-        if ((e as Variable).name == name) {
-          return e;
-        }
+      if (e is Variable && ((Variable) e).name == name) {
+        return e;
       }
-      if (e is Function) {
-        if ((e as Function).name == name) {
-          return e;
-        }
+      if (e is Function && ((Function) e).name == name) {
+        return e;
       }
     }
     return null;
