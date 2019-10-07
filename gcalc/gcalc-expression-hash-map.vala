@@ -20,17 +20,20 @@
  */
 public class GCalc.ExpressionHashMap : Gee.HashMap<uint,Expression> {
   public weak Expression parent { get; set; }
+
   public void add (Expression exp)
     requires (exp is Hashable)
   {
-    (this as Gee.HashMap<uint,Expression>).set (((Hashable) exp).hash (), exp);
+    @set (((Hashable) exp).hash (), exp);
     exp.parent = parent;
   }
+
   public void remove (Expression exp) {
-    (this as Gee.HashMap<uint,Expression>).unset (((Hashable) exp).hash ());
+    unset (((Hashable) exp).hash ());
   }
-  public Expression find_named (string name) {
-    return (this as Gee.HashMap<uint,Expression>).@get (name.hash ());
+
+  public Expression? find_named (string name) {
+    return @get (name.hash ());
   }
 }
 
