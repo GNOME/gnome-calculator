@@ -324,7 +324,7 @@ public class MathEquation : Gtk.SourceBuffer
                 {
                     Gtk.TextIter iter;
                     get_iter_at_offset (out iter, offset);
-                    (this as Gtk.TextBuffer).insert (ref iter, serializer.get_thousands_separator ().to_string (), -1);
+                    base.insert (ref iter, serializer.get_thousands_separator ().to_string (), -1);
                     offset++;
                     last_is_tsep = true;
                 }
@@ -826,7 +826,7 @@ public class MathEquation : Gtk.SourceBuffer
             get_iter_at_mark (out iter_prev, get_insert ());
             if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == "×" )
             {
-                (this as Gtk.TextBuffer).backspace (iter, true, true);
+                base.backspace (iter, true, true);
                 insert_at_cursor ("^", -1);
                 return;
             }
@@ -840,7 +840,7 @@ public class MathEquation : Gtk.SourceBuffer
             get_iter_at_mark (out iter_prev, get_insert ());
             if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == ">" )
             {
-                (this as Gtk.TextBuffer).backspace (iter, true, true);
+                base.backspace (iter, true, true);
                 insert_at_cursor ("»", -1);
                 return;
             }
@@ -854,7 +854,7 @@ public class MathEquation : Gtk.SourceBuffer
             get_iter_at_mark (out iter_prev, get_insert ());
             if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == "<" )
             {
-                (this as Gtk.TextBuffer).backspace (iter, true, true);
+                base.backspace (iter, true, true);
                 insert_at_cursor ("«", -1);
                 return;
             }
@@ -1303,7 +1303,7 @@ public class MathEquation : Gtk.SourceBuffer
         {
             Gtk.TextIter iter;
             get_iter_at_mark (out iter, get_insert ());
-            (this as Gtk.TextBuffer).backspace (iter, true, true);
+            base.backspace (iter, true, true);
         }
     }
 
