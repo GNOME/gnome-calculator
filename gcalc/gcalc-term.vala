@@ -77,7 +77,7 @@ public interface GCalc.Term : Object, Expression {
           }
         }
       } else if (e is Variable) {
-        var ev = (e as Variable).evaluate ();
+        var ev = ((Variable) e).evaluate ();
         if (current == null) {
           current = ev;
           first = false;
@@ -98,16 +98,16 @@ public interface GCalc.Term : Object, Expression {
   {
     Expression res = null;
     if (op is Minus) {
-      res = (c1 as Constant).multiply (c2 as Constant);
+      res = c1.multiply (c2);
     }
     if (op is Multiply) {
-      res = (c1 as Constant).multiply (c2 as Constant);
+      res = c1.multiply (c2);
     }
     if (op is Division) {
-      res = (c1 as Constant).divide (c2 as Constant);
+      res = c1.divide (c2);
     }
     if (op is Pow) {
-      res = (c1 as Constant).pow (c2 as Constant);
+      res = c1.pow (c2);
     }
     if (res == null) {
       throw new TermError.INVALID_OPERATOR ("Unsupported operator in term's expression");
