@@ -54,63 +54,64 @@ public class GCalc.GConstant : GExpression, Constant {
     r.set_zero ();
     _complex.set_mpreal (r);
   }
+
   public Constant add (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set ((c as GConstant).get_complex ());
+    p1.set (((GConstant) c).get_complex ());
     res.add (_complex, p1);
-    var nc = new GConstant.internal_complex (res);
-    return nc as Constant;
+    return new GConstant.internal_complex (res);
   }
+
   public Constant subtract (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set ((c as GConstant).get_complex ());
+    p1.set (((GConstant) c).get_complex ());
     res.subtract (_complex, p1);
-    var nc = new GConstant.internal_complex (res);
-    return nc as Constant;
+    return new GConstant.internal_complex (res);
   }
+
   public Constant multiply (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set ((c as GConstant).get_complex ());
+    p1.set (((GConstant) c).get_complex ());
     res.multiply (_complex, p1);
-    var nc = new GConstant.internal_complex (res);
-    return nc as Constant;
+    return new GConstant.internal_complex (res);
   }
+
   public Constant divide (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set ((c as GConstant).get_complex ());
+    p1.set (((GConstant) c).get_complex ());
     res.divide (_complex, p1);
-    var nc = new GConstant.internal_complex (res);
-    return nc as Constant;
+    return new GConstant.internal_complex (res);
   }
+
   public Constant neg ()
   {
     var res = MPC.Complex (1000);
     res.neg (_complex);
-    var nc = new GConstant.internal_complex (res);
-    return nc as Constant;
+    return new GConstant.internal_complex (res);
   }
+
   public Constant pow (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set ((c as GConstant).get_complex ());
+    p1.set (((GConstant) c).get_complex ());
     res.power (_complex, p1);
-    var nc = new GConstant.internal_complex (res);
-    return nc as Constant;
+    return new GConstant.internal_complex (res);
   }
+
   // Expression interface
   public override string to_string () {
     if (imag () != 0.0) {
@@ -118,8 +119,9 @@ public class GCalc.GConstant : GExpression, Constant {
     }
     return "%g".printf (real ());
   }
+
   public override Result solve () {
-    return new GResult (this) as Result;
+    return new GResult (this);
   }
 }
 
