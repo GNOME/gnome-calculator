@@ -2,12 +2,12 @@
   image: ubuntu:rolling
   before_script:
     - apt-get update
-    - apt-get install -q -y --no-install-recommends meson valac gcc gettext itstool libgtk-3-dev libgtksourceview-4-dev libmpc-dev libmpfr-dev libsoup2.4-dev libxml2-dev libgee-0.8-dev libvala-0.44
+    - apt-get install -q -y --no-install-recommends meson valac gcc gettext itstool libgtk-3-dev libgtksourceview-4-dev libmpc-dev libmpfr-dev libsoup2.4-dev libxml2-dev libgee-0.8-dev
 
 .before_script_template: &fedora_before_script
   image: fedora:latest
   before_script:
-    - dnf install -y meson vala itstool gtk3-devel gtksourceview4-devel libmpc-devel mpfr-devel libsoup-devel libxml2-devel libgee-devel vala-devel
+    - dnf install -y meson vala itstool gtk3-devel gtksourceview4-devel libmpc-devel mpfr-devel libsoup-devel libxml2-devel libgee-devel
 
 .build_template: &meson_build
   stage: build

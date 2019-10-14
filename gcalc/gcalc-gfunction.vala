@@ -49,7 +49,7 @@ public class GCalc.GFunction : GExpression, Function, Hashable {
     return s;
   }
 
-  public new virtual Expression evaluate () throws GLib.Error {
+  public virtual Expression evaluate () throws GLib.Error {
     return new GErrorExpression ();
   }
   // Hashable
