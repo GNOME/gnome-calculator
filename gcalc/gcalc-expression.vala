@@ -18,10 +18,25 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * A part of a math equation
+ */
 public interface GCalc.Expression : Object {
+  /**
+   * Parent of the expression
+   */
   public abstract weak Expression parent { get; set; }
+  /**
+   * Child expressions
+   */
   public abstract ExpressionContainer expressions { get; }
+  /**
+   * Creates a string representation of the expression
+   */
   public abstract string to_string ();
+  /**
+   * Solves the expression and returning a {@link Result}
+   */
   public abstract Result solve ();
 }
 

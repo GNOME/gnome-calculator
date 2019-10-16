@@ -18,11 +18,15 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-
+/**
+ * Takes a string an create a tree of {@link Expression} objects representing
+ * a math equation.
+ */
 public class GCalc.GParser : Object {
   Expression current = null;
   Expression current_parent = null;
   Expression top_parent = null;
+  bool enable_parameter = false;
   Gee.ArrayList<TokenType> expected = new Gee.ArrayList<TokenType> ();
   GLib.Scanner scanner;
 
@@ -40,7 +44,11 @@ public class GCalc.GParser : Object {
     scanner.config.scan_hex_dollar = false;
     scanner.config.numbers_2_int = false;
   }
-
+  /**
+   * Creates a {@link MathEquation} and adds it to given
+   * {@link MathEquationManager} including all Variables and
+   * parameters found in the parser expression.
+   */
   public void parse (string str, MathEquationManager eqman) throws GLib.Error {
     TokenType token = TokenType.NONE;
     GMathEquation eq = new GMathEquation ();
@@ -48,6 +56,7 @@ public class GCalc.GParser : Object {
     current = null;
     current_parent = null;
     top_parent = null;
+    enable_parameter = false;
     while (token != TokenType.EOF) {
       token = read_token ();
       if (token == TokenType.EOF) {
@@ -90,6 +99,10 @@ public class GCalc.GParser : Object {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
             var v = new GVariable (n) as Expression;
+            if (enable_parameter) {
+              v = new GParameter (n) as Expression;
+              enable_parameter = false;
+            }
             var sv = eqman.find_variable (n) as Variable;
             if (sv == null) {
               sv = eq.variables.find_named (n) as Variable;
@@ -313,7 +326,10 @@ public class GCalc.GParser : Object {
         case TokenType.INTERR:
         // Hash
         case TokenType.HASH:
-          throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
+          throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression: '%s'", token.to_string ());
+        case TokenType.CURRENCY_SYMBOL:
+          enable_parameter = true;
+          break;
       }
     }
     eqman.equations.add (eq);
@@ -395,7 +411,10 @@ public class GCalc.GParser : Object {
       expected.clear ();
     }
   }
-  public TokenType read_token () {
+  /**
+   * Reads a token at a given position
+   */
+  protected TokenType read_token () {
     GLib.TokenType t = scanner.get_next_token ();
     switch (t) {
     case GLib.TokenType.IDENTIFIER:
@@ -438,12 +457,17 @@ public class GCalc.GParser : Object {
           return TokenType.OPEN_BRACKET;
         case ']':
           return TokenType.CLOSE_BRACKET;
+        case '$':
+          return TokenType.CURRENCY_SYMBOL;
       }
       break;
     }
     return TokenType.NONE;
   }
-  public string token_to_string () {
+  /**
+   * Creates a string representation of the current {@link TokenType}
+   */
+  protected string token_to_string () {
     GLib.TokenType t = scanner.cur_token ();
     switch (t) {
     case GLib.TokenType.IDENTIFIER:
@@ -504,7 +528,8 @@ public class GCalc.GParser : Object {
     DOT,
     ELLIPSIS,
     INTERR,
-    HASH
+    HASH,
+    CURRENCY_SYMBOL
   }
 }
 

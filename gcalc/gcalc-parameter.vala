@@ -1,6 +1,6 @@
-/* gcalc-gvariable.vala
+/* gcalc-expresion.vala
  *
- * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
+ * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,25 +18,14 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GVariable : GExpression, Variable, Hashable {
-
-  public string name { get; construct set; }
-  internal Constant value { get; set; }
-  internal Variable bind { get; set; }
-
-  construct {
-    _value = new GConstant.@double (0.0);
-  }
-  public GVariable (string name) {
-    this.name = name;
-  }
-  // Expression
-  internal override string to_string () {
-    return name;
-  }
-  // Hashable
-  internal uint hash () {
-    return name.hash ();
-  }
+/**
+ * A parameter is a {@link Variable} holding a value, that is not
+ * expected to be resolved as part of an {@link Expression} evaluation,
+ * but by asigning its value.
+ *
+ * Currently the value will be converted to a {@link Constant} if possible.
+ */
+public interface GCalc.Parameter : Object, Variable {
+  public abstract void set_value (GLib.Value val) throws GLib.Error;
+  public abstract GLib.Value get_value ();
 }
-

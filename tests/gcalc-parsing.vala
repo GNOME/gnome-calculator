@@ -1071,6 +1071,82 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/parameter/equations",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=$param1", eqman);
+        parser.parse ("x", eqman);
+        assert (eqman.equations.get_n_items () == 2);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var a = eq.expressions.get_item (0) as Assign;
+        assert (a != null);
+        assert (a.expressions.get_n_items () == 2);
+        var v = a.expressions.get_item (0) as Variable;
+        assert (v != null);
+        assert (v.name == "x");
+        var e = a.expressions.get_item (1) as Polynomial;
+        assert (e != null);
+        assert (e.expressions.get_n_items () == 1);
+        var t = e.expressions.get_item (0) as Term;
+        assert (t != null);
+        var ev = t.expressions.get_item (0) as Variable;
+        assert (ev != null);
+        var p = ev as GCalc.Parameter;
+        assert (p != null);
+        assert (p.name == "param1");
+        var eq2 = eqman.equations.get_item (1) as MathEquation;
+        assert (eq2 != null);
+        message (eq2.to_string ());
+        assert (eq2.expressions.get_n_items () == 1);
+        var e2 = eq2.expressions.get_item (0) as Polynomial;
+        assert (e2 != null);
+        assert (e2.expressions.get_n_items () == 1);
+        var t2 = e2.expressions.get_item (0) as Term;
+        assert (t2 != null);
+        var v2 = t2.expressions.get_item (0) as Variable;
+        assert (v2 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
+    Test.add_func ("/gcalc/parser/parameter/equations/evaluate",
+    ()=>{
+      try {
+        var parser = new GParser ();
+        var eqman = new GMathEquationManager ();
+        parser.parse ("x=$param1", eqman);
+        parser.parse ("x", eqman);
+        assert (eqman.equations.get_n_items () == 2);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var r = eq.solve ();
+        assert (r.expression != null);
+        assert (r.expression is Constant);
+        var cr = r.expression as Constant;
+        assert (cr != null);
+        assert (cr.real () == 0.0);
+        var p = eq.variables.find_named ("param1") as GCalc.Parameter;
+        assert (p != null);
+        p.set_value (10.0);
+        r = eq.solve ();
+        assert (r.expression != null);
+        assert (r.expression is Constant);
+        cr = r.expression as Constant;
+        assert (cr != null);
+        assert (cr.real () == 10.0);
+        var eq2 = eqman.equations.get_item (1) as MathEquation;
+        assert (eq2 != null);
+        var cr2 = r.expression as Constant;
+        assert (cr2 != null);
+        assert (cr2.real () == 10.0);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     return Test.run ();
   }
 }

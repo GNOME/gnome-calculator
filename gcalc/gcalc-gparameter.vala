@@ -1,0 +1,46 @@
+/* gcalc-gparameter.vala
+ *
+ * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+ *
+ * Authors:
+ *      Daniel Espinosa <esodan@gmail.com>
+ */
+public class GCalc.GParameter : GCalc.GVariable, Parameter {
+
+  public GParameter (string name) {
+    base (name);
+  }
+
+  internal void set_value (GLib.Value val) throws GLib.Error {
+    Constant c = new GConstant.integer (0);
+    if (val.holds (GLib.Type.INT)) {
+      c = new GConstant.integer ((int) val);
+    } else if (val.holds (GLib.Type.DOUBLE)) {
+      c = new GConstant.@double ((double) val);
+    } else if (val.holds (GLib.Type.FLOAT)) {
+      c = new GConstant.@double ((double) ((float) val));
+    } else if (val.type ().is_a (typeof (GCalc.Constant))) {
+      c = (GCalc.Constant) ((Object) val);
+    }
+    @value = c;
+  }
+
+  internal GLib.Value get_value () {
+    var v = GLib.Value (typeof (GCalc.Constant));
+    v = @value;
+    return v;
+  }
+}
