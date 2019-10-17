@@ -18,5 +18,8 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * A pow operator in a math expression
+ */
 public interface GCalc.MathPow : Object, MathExpression, MathOperator {}
 

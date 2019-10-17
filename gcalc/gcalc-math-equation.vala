@@ -18,7 +18,13 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * A math equation with multiple terms
+ */
 public interface GCalc.MathEquation : Object, MathExpression {
+  /**
+   * Set of variables present in the equation expression
+   */
   public abstract ExpressionHashMap variables { get; }
 }
 

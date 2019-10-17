@@ -18,6 +18,41 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Equation manager, holding a set of equations and variables.
+ *
+ * Equations can depend on calculated expression from variables or
+ * values set to variables when they are a {@link MathParameter}
+ *
+ * In the next code you create a parser, then use {@link Parser.parse}
+ * to add the parsed equation to an equation manager.
+ * {{{
+ *  var parser = new Parser ();
+ *  var eqman = new EquationManager ();
+ *  parser.parse ("3*5", eqman);
+ *  var eq = eqman.equations.get_item (0) as MathEquation;
+ *  var res = eq.solve ();
+ *  var c = (MathConstant) res;
+ *  // Result will be 15
+ *  stdout.printf ("%g", c.real ());
+ * }}}
+ *
+ * Is possible to create expressions, set to a variable, add to an equation manager
+ * create an expression using that variable to add to the manager; then solve the
+ * dependant equation and then the variable will be evalated too, in order to produce
+ * a result:
+ * {{{
+ *  var parser = new Parser ();
+ *  var eqman = new EquationManager ();
+ *  parser.parse ("x=3*5", eqman);
+ *  parser.parse ("2*x+7*x^2", eqman);
+ *  var eq = eqman.equations.get_item (1) as MathEquation;
+ *  var res = eq.solve ();
+ *  var c = (MathConstant) res;
+ *  // Result will be 1605
+ *  stdout.printf ("%g", c.real ());
+ * }}}
+ */
 public interface GCalc.MathEquationManager : Object {
   public abstract ExpressionContainer equations { get; }
   public abstract ExpressionContainer functions { get; }

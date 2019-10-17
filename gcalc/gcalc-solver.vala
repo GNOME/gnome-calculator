@@ -19,14 +19,42 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 using GCalc;
+/**
+ * Math expression solver.
+ *
+ * Add any required equations to {@link equation_manager} or use {@link add_expression},
+ * then {@link solve} will add a new equation and returns the resulting
+ * {@link MathResult}.
+ * {{{
+ *  var s = new Solver ();
+ *  s.add ("x=3*5");
+ *  var res = s.solve ("2*x+7*x^2");
+ *  var c = (MathConstant) res;
+ *  // Result will be 1605
+ *  stdout.printf ("%g", c.real ());
+ * }}}
+ */
+public class GCalc.Solver : Object {
+  /**
+   * An equation manager using to solve a given expression
+   */
+  public MathEquationManager equation_manager { get; set; }
 
-public class GCalc.Solver : Object, MathSolver {
   construct {
     equation_manager = new EquationManager ();
   }
-  // Sover
-  internal MathEquationManager equation_manager { get; set; }
-  internal MathResult solve (string str) throws GLib.Error {
+
+  /**
+   * Add an equation to {@link equation_manager}
+   */
+  public void add_expression (string exp) throws GLib.Error {
+      var p = new Parser ();
+      p.parse (exp, equation_manager);
+  }
+  /**
+   * Add an equation to {@link equation_manager} and solves it
+   */
+  public MathResult solve (string str) throws GLib.Error {
     var p = new Parser ();
     MathResult res;
     try {
@@ -44,4 +72,8 @@ public class GCalc.Solver : Object, MathSolver {
     }
     return res;
   }
+}
+
+public errordomain GCalc.SolverError {
+  EXPRESSION_ERROR
 }

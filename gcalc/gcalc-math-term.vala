@@ -18,7 +18,15 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * A term in a math expression.
+ *
+ * Is a container of other terms.
+ */
 public interface GCalc.MathTerm : Object, MathExpression {
+  /**
+   * Add a child term
+   */
   public virtual MathExpression add (MathTerm t) throws GLib.Error {
     if (t.expressions.get_n_items () == 0) {
       return new Constant.@double (1.0);
@@ -31,6 +39,9 @@ public interface GCalc.MathTerm : Object, MathExpression {
     }
     return res;
   }
+  /**
+   * Evaluates the term an returns the resulting {@link MathExpression}
+   */
   public virtual MathExpression evaluate () throws GLib.Error {
     MathExpression current = null;
     MathOperator current_operator = null;
@@ -93,6 +104,9 @@ public interface GCalc.MathTerm : Object, MathExpression {
     }
     return current;
   }
+  /**
+   * Take two {@link MathConstant} and evaluate them using the given {@link MathOperator}
+   */
   public static MathExpression evaluate_constants (MathConstant c1, MathConstant c2, MathOperator op)
     throws GLib.Error
   {

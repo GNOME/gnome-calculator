@@ -18,7 +18,15 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Implemented by objects able to produce a hash.
+ *
+ * Returned value can be used in hash tables, for example.
+ */
 public interface GCalc.Hashable : Object {
+  /**
+   * Calculates the hash for this
+   */
   public abstract uint hash ();
 }
 

@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * A result of a calculation when the expression is solved
+ */
 public interface GCalc.MathResult : Object {
   public abstract string to_string ();
   public abstract MathExpression expression { get; }
