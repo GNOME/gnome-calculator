@@ -18,7 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Solver : Object {
+/**
+ * Math expression solver
+ */
+public interface GCalc.MathSolver : Object {
   public abstract MathEquationManager equation_manager { get; set; }
   public abstract MathResult solve (string str) throws GLib.Error;
 }

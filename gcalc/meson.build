@@ -104,6 +104,7 @@ gcalc_sources = files([
 	'gcalc-math-polynomial.vala',
 	'gcalc-math-pow.vala',
 	'gcalc-math-result.vala',
+	'gcalc-math-solver.vala',
 	'gcalc-minus.vala',
 	'gcalc-multiply.vala',
 	'gcalc-parameter.vala',
@@ -112,7 +113,6 @@ gcalc_sources = files([
 	'gcalc-polynomial.vala',
 	'gcalc-pow.vala',
 	'gcalc-result.vala',
-	'gcalc-solver.vala',
 	'gcalc-term.vala',
 	'gcalc-variable.vala',
 ])
