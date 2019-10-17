@@ -100,7 +100,7 @@ public class GCalc.Parser : Object {
           } else {
             var v = new GVariable (n) as MathExpression;
             if (enable_parameter) {
-              v = new GParameter (n) as MathExpression;
+              v = new Parameter (n) as MathExpression;
               enable_parameter = false;
             }
             var sv = eqman.find_variable (n) as Variable;

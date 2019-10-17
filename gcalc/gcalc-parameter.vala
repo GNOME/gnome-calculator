@@ -18,9 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GParameter : GCalc.GVariable, MathParameter {
+public class GCalc.Parameter : GCalc.GVariable, MathParameter {
 
-  public GParameter (string name) {
+  public Parameter (string name) {
     base (name);
   }
 
