@@ -33,8 +33,8 @@ public class GCalc.Assign : Expression, MathOperator, MathBinaryOperator, MathAs
     }
     return v.to_string ()+"="+e.to_string ();
   }
-  internal override Result solve () {
-    Result res = null;
+  internal override MathResult solve () {
+    MathResult res = null;
     try {
       res = new GResult (evaluate ());
     } catch (GLib.Error e) {

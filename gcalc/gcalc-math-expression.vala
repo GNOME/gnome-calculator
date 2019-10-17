@@ -35,9 +35,9 @@ public interface GCalc.MathExpression : Object {
    */
   public abstract string to_string ();
   /**
-   * Solves the expression and returning a {@link Result}
+   * Solves the expression and returning a {@link MathResult}
    */
-  public abstract Result solve ();
+  public abstract MathResult solve ();
 }
 
 public interface GCalc.ErrorExpression : Object, MathExpression {

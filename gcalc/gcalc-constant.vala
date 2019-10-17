@@ -120,7 +120,7 @@ public class GCalc.Constant : Expression, MathConstant {
     return "%g".printf (real ());
   }
 
-  internal override Result solve () {
+  internal override MathResult solve () {
     return new GResult (this);
   }
 }

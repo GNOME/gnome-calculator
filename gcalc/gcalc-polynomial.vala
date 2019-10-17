@@ -19,11 +19,11 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.Polynomial : Expression, MathPolynomial {
-  internal override Result solve () {
-    Result res = null;
+  internal override MathResult solve () {
+    MathResult res = null;
     try {
       var e = evaluate ();
-      res = new GResult (e) as Result;
+      res = new GResult (e) as MathResult;
     } catch (GLib.Error err) {
       res = new ErrorResult ("Polynomial solving fails: %s".printf (err.message));
     }

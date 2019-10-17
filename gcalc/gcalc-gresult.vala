@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GResult : Object, Result {
+public class GCalc.GResult : Object, MathResult {
   private MathExpression _expression;
   public GResult (MathExpression exp) {
     _expression = exp;

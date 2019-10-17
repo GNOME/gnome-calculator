@@ -26,9 +26,9 @@ public class GCalc.GSolver : Object, Solver {
   }
   // Sover
   internal MathEquationManager equation_manager { get; set; }
-  internal Result solve (string str) throws GLib.Error {
+  internal MathResult solve (string str) throws GLib.Error {
     var p = new Parser ();
-    Result res;
+    MathResult res;
     try {
       p.parse (str, equation_manager);
       if (equation_manager.equations.get_n_items () == 0) {

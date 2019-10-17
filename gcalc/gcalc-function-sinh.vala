@@ -38,8 +38,8 @@ public class GCalc.FunctionSinh : Function {
     if (ev is ErrorResult) {
        throw new FunctionError.INVOCATION_ERROR ("Invalid expression: %s", ((ErrorResult) ev).message);
     }
-    if (ev is Result) {
-      c = ((Result) ev).expression as Constant;
+    if (ev is MathResult) {
+      c = ((MathResult) ev).expression as Constant;
     }
     if (c == null) {
        throw new FunctionError.INVOCATION_ERROR ("Invalid expression in result");

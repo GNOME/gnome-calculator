@@ -21,7 +21,7 @@
 /**
  * A kind of result returned when there was an error in a solving operation
  */
-public interface GCalc.MathErrorResult : Object, Result {
+public interface GCalc.MathErrorResult : Object, MathResult {
   public abstract string message { get; }
 }
 

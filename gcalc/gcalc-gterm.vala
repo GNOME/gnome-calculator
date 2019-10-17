@@ -19,11 +19,11 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GTerm : Expression, Term {
-  internal override Result solve () {
-    Result res = null;
+  internal override MathResult solve () {
+    MathResult res = null;
     try {
       var e = evaluate ();
-      res = new GResult (e) as Result;
+      res = new GResult (e) as MathResult;
     } catch (GLib.Error err) {
       res = new ErrorResult ("Term evaluation fails: %s".printf (err.message));
     }

@@ -21,8 +21,8 @@
 public class GCalc.Equation : Expression, MathEquation {
   ExpressionHashMap _variables = new ExpressionHashMap ();
   internal ExpressionHashMap variables { get { return _variables; } }
-  internal override Result solve () {
-    Result res = null;
+  internal override MathResult solve () {
+    MathResult res = null;
     if (expressions.get_n_items () == 0) {
       return new ErrorResult ("No expressions found in equation");
     }

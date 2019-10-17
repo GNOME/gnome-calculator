@@ -1,4 +1,4 @@
-/* gcalc-result.vala
+/* gcalc-math-result.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Result : Object {
+public interface GCalc.MathResult : Object {
   public abstract string to_string ();
   public abstract MathExpression expression { get; }
 }
