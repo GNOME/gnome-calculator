@@ -1,4 +1,4 @@
-/* gcalc-pow.vala
+/* gcalc-math-pow.vala
  *
  * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,5 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Pow : Object, MathExpression, MathOperator {}
+public interface GCalc.MathPow : Object, MathExpression, MathOperator {}
 

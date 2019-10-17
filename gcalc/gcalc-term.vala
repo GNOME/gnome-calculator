@@ -106,7 +106,7 @@ public interface GCalc.Term : Object, MathExpression {
     if (op is MathDivision) {
       res = c1.divide (c2);
     }
-    if (op is Pow) {
+    if (op is MathPow) {
       res = c1.pow (c2);
     }
     if (res == null) {

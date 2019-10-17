@@ -775,7 +775,7 @@ class Tests {
         assert (t.expressions.get_n_items () == 3);
         var c1 = t.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
-        var pw = t.expressions.get_item (1) as Pow;
+        var pw = t.expressions.get_item (1) as MathPow;
         assert (pw != null);
         var c2 = t.expressions.get_item (2) as MathConstant;
         assert (c2 != null);
@@ -801,7 +801,7 @@ class Tests {
         assert (t.expressions.get_n_items () == 3);
         var c1 = t.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
-        var pw = t.expressions.get_item (1) as Pow;
+        var pw = t.expressions.get_item (1) as MathPow;
         assert (pw != null);
         var g = t.expressions.get_item (2) as MathGroup;
         assert (g != null);
