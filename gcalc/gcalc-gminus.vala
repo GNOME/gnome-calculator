@@ -19,7 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GMinus : GExpression, Operator, BinaryOperator, Minus {
-  public override string to_string () {
+  internal override string to_string () {
     return "-";
   }
 }

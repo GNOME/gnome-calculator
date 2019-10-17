@@ -24,9 +24,9 @@ public class GCalc.GResult : Object, Result {
     _expression = exp;
   }
   // Result
-  public string to_string () {
+  internal string to_string () {
     return expression.to_string ();
   }
-  public Expression expression { get { return _expression; } }
+  internal Expression expression { get { return _expression; } }
 }
 

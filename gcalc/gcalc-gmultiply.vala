@@ -19,7 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GMultiply : GExpression, Operator, BinaryOperator, Multiply {
-  public override string to_string () {
+  internal override string to_string () {
     return "*";
   }
 }

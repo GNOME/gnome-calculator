@@ -19,7 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GPolynomial : GExpression, Polynomial {
-  public override Result solve () {
+  internal override Result solve () {
     Result res = null;
     try {
       var e = evaluate ();

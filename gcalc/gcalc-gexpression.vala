@@ -24,16 +24,16 @@ public class GCalc.GExpression : Object, Expression {
     exps.parent = this;
   }
   // Expression
-  public weak Expression parent { get; set; }
-  public ExpressionContainer expressions { get { return exps; } }
-  public virtual string to_string () {
+  internal weak Expression parent { get; set; }
+  internal ExpressionContainer expressions { get { return exps; } }
+  internal virtual string to_string () {
     string s = "";
     foreach (Expression e in expressions) {
       s += e.to_string ();
     }
     return s;
   }
-  public virtual Result solve () {
+  internal virtual Result solve () {
     return new GErrorResult ("Invalid expression");
   }
 }

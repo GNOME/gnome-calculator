@@ -26,7 +26,7 @@ public class GCalc.GFunctionSin : GFunction {
     param_types.add (new GConstant ());
   }
 
-  public override Expression evaluate () throws GLib.Error
+  internal override Expression evaluate () throws GLib.Error
   {
     verify_params ();
     GConstant c = null;

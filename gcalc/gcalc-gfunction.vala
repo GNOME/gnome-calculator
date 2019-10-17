@@ -21,10 +21,10 @@
 public class GCalc.GFunction : GExpression, Function, Hashable {
   ExpressionContainer _param_types = new ExpressionContainer ();
 
-  public ExpressionContainer param_types { get { return _param_types; } }
+  internal ExpressionContainer param_types { get { return _param_types; } }
   public uint n_params { get; construct set; }
   public string name { get; construct set; }
-  public bool closed { get; set; }
+  internal bool closed { get; set; }
 
   construct {
     name = "NoName";
@@ -33,7 +33,7 @@ public class GCalc.GFunction : GExpression, Function, Hashable {
     this.name = name;
     n_params = nparams;
   }
-  public override string to_string () {
+  internal override string to_string () {
     string s = name + "(";
     for (uint i = 0; i < expressions.get_n_items (); i++) {
       var e = expressions.get_item (i) as Expression;
@@ -49,11 +49,11 @@ public class GCalc.GFunction : GExpression, Function, Hashable {
     return s;
   }
 
-  public virtual Expression evaluate () throws GLib.Error {
+  internal virtual Expression evaluate () throws GLib.Error {
     return new GErrorExpression ();
   }
   // Hashable
-  public uint hash () {
+  internal uint hash () {
     return name.hash ();
   }
 }

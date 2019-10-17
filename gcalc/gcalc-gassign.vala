@@ -19,7 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GAssign : GExpression, Operator, BinaryOperator, Assign {
-  public override string to_string () {
+  internal override string to_string () {
     if (expressions.get_n_items () != 2) {
       return "Invalid Assigment structure";
     }
@@ -33,7 +33,7 @@ public class GCalc.GAssign : GExpression, Operator, BinaryOperator, Assign {
     }
     return v.to_string ()+"="+e.to_string ();
   }
-  public override Result solve () {
+  internal override Result solve () {
     Result res = null;
     try {
       res = new GResult (evaluate ());

@@ -18,12 +18,39 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * A Function as part of a {@link Expression}
+ */
 public interface GCalc.Function : Object, Expression {
+  /**
+   * Parameters used by the function, objects representing
+   * the expected types. See {@link verify_params}
+   */
   public abstract ExpressionContainer param_types { get; }
+  /**
+   * Function's name
+   */
   public abstract string name { get; construct set; }
+  /**
+   * Number of parameters required by this function
+   */
   public abstract uint n_params { get; construct set; }
+  /**
+   * A condition used while parsing, as a flag when the function
+   * has been closed or finished and no more parameters should
+   * be parsed.
+   */
   public abstract bool closed { get; set; }
+  /**
+   * Evaluate the function returning a resulting {@link Expression}.
+   *
+   * In some cases return is a {@link Constant}
+   */
   public abstract Expression evaluate () throws GLib.Error;
+  /**
+   * Check the paratemeters given to the function agains {@link param_types}
+   * and number of parameters using {@link n_params}
+   */
   public virtual bool verify_params () throws GLib.Error {
     if (expressions.get_n_items () != n_params) {
       throw new FunctionError.INVALID_PARAMETERS_ERROR ("Invalid number of parameters. Required %u, provided: %u",

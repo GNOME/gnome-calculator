@@ -25,8 +25,8 @@ public class GCalc.GSolver : Object, Solver {
     equation_manager = new GMathEquationManager ();
   }
   // Sover
-  public MathEquationManager equation_manager { get; set; }
-  public Result solve (string str) throws GLib.Error {
+  internal MathEquationManager equation_manager { get; set; }
+  internal Result solve (string str) throws GLib.Error {
     var p = new GParser ();
     Result res;
     try {

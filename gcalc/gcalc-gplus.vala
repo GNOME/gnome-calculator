@@ -19,7 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GPlus : GExpression, Operator, BinaryOperator, Plus {
-  public override string to_string () {
+  internal override string to_string () {
     return "+";
   }
 }

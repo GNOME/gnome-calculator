@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Function to calculate arc cosine of a {@link Constant} in radians
+ */
 public class GCalc.GFunctionAcos : GFunction {
 
   construct {
@@ -26,7 +29,7 @@ public class GCalc.GFunctionAcos : GFunction {
     param_types.add (new GConstant ());
   }
 
-  public override Expression evaluate () throws GLib.Error
+  internal override Expression evaluate () throws GLib.Error
   {
     verify_params ();
     GConstant c = null;

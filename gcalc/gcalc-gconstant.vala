@@ -26,7 +26,7 @@ public class GCalc.GConstant : GExpression, Constant {
   construct {
     _complex.set_double (0.0);
   }
-  internal GConstant.internal_complex (MPC.Complex complex) {
+  public GConstant.internal_complex (MPC.Complex complex) {
     _complex.set (complex);
   }
   public GConstant.integer (int val) {
@@ -43,19 +43,19 @@ public class GCalc.GConstant : GExpression, Constant {
   }
 
   // Constant Interface
-  public double real () {
+  internal double real () {
     return _complex.get_real_double ();
   }
-  public double imag () {
+  internal double imag () {
     return _complex.get_imag_double ();
   }
-  public void zero () {
+  internal void zero () {
     MPFR.Real r = MPFR.Real (1000);
     r.set_zero ();
     _complex.set_mpreal (r);
   }
 
-  public Constant add (Constant c)
+  internal Constant add (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
@@ -65,7 +65,7 @@ public class GCalc.GConstant : GExpression, Constant {
     return new GConstant.internal_complex (res);
   }
 
-  public Constant subtract (Constant c)
+  internal Constant subtract (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
@@ -75,7 +75,7 @@ public class GCalc.GConstant : GExpression, Constant {
     return new GConstant.internal_complex (res);
   }
 
-  public Constant multiply (Constant c)
+  internal Constant multiply (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
@@ -85,7 +85,7 @@ public class GCalc.GConstant : GExpression, Constant {
     return new GConstant.internal_complex (res);
   }
 
-  public Constant divide (Constant c)
+  internal Constant divide (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
@@ -95,14 +95,14 @@ public class GCalc.GConstant : GExpression, Constant {
     return new GConstant.internal_complex (res);
   }
 
-  public Constant neg ()
+  internal Constant neg ()
   {
     var res = MPC.Complex (1000);
     res.neg (_complex);
     return new GConstant.internal_complex (res);
   }
 
-  public Constant pow (Constant c)
+  internal Constant pow (Constant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
@@ -113,14 +113,14 @@ public class GCalc.GConstant : GExpression, Constant {
   }
 
   // Expression interface
-  public override string to_string () {
+  internal override string to_string () {
     if (imag () != 0.0) {
       return MPC.Complex.to_string (10, 10, _complex);
     }
     return "%g".printf (real ());
   }
 
-  public override Result solve () {
+  internal override Result solve () {
     return new GResult (this);
   }
 }

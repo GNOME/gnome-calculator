@@ -20,8 +20,8 @@
  */
 public class GCalc.GMathEquation : GExpression, MathEquation {
   ExpressionHashMap _variables = new ExpressionHashMap ();
-  public ExpressionHashMap variables { get { return _variables; } }
-  public override Result solve () {
+  internal ExpressionHashMap variables { get { return _variables; } }
+  internal override Result solve () {
     Result res = null;
     if (expressions.get_n_items () == 0) {
       return new GErrorResult ("No expressions found in equation");

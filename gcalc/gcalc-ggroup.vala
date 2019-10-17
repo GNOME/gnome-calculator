@@ -19,9 +19,9 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GGroup : GExpression, Group {
-  public Group.Level level { get; set; }
-  public bool closed { get; set; }
-  public override string to_string () {
+  internal Group.Level level { get; set; }
+  internal bool closed { get; set; }
+  internal override string to_string () {
     string s = "";
     switch (level) {
       case ONE:
