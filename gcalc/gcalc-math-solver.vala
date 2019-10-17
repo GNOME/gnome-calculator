@@ -1,4 +1,4 @@
-/* gcalc-solver.vala
+/* gcalc-math-solver.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *

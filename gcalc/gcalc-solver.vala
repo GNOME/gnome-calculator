@@ -20,7 +20,7 @@
  */
 using GCalc;
 
-public class GCalc.GSolver : Object, MathSolver {
+public class GCalc.Solver : Object, MathSolver {
   construct {
     equation_manager = new EquationManager ();
   }

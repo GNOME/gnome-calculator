@@ -82,7 +82,6 @@ gcalc_sources = files([
 	'gcalc-function-tan.vala',
 	'gcalc-function-tanh.vala',
 	'gcalc-group.vala',
-	'gcalc-gsolver.vala',
 	'gcalc-gterm.vala',
 	'gcalc-gvariable.vala',
 	'gcalc-hashable.vala',
@@ -113,6 +112,7 @@ gcalc_sources = files([
 	'gcalc-polynomial.vala',
 	'gcalc-pow.vala',
 	'gcalc-result.vala',
+	'gcalc-solver.vala',
 	'gcalc-term.vala',
 	'gcalc-variable.vala',
 ])
