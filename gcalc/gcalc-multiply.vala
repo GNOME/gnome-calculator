@@ -18,5 +18,8 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Multiply : Object, MathExpression, MathOperator, BinaryOperator {}
+/**
+ * A multiply operator in a math expression
+ */
+public interface GCalc.Multiply : Object, MathExpression, MathOperator, MathBinaryOperator {}
 

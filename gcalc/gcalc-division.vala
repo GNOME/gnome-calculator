@@ -18,5 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Division : Object, MathExpression, MathOperator, BinaryOperator {}
+public interface GCalc.Division : Object, MathExpression, MathOperator, MathBinaryOperator {}
 

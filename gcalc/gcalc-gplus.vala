@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GPlus : Expression, MathOperator, BinaryOperator, Plus {
+public class GCalc.GPlus : Expression, MathOperator, MathBinaryOperator, Plus {
   internal override string to_string () {
     return "+";
   }

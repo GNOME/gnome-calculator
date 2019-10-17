@@ -57,7 +57,6 @@ lib_mpfrg = static_library ('mpfrg',
 
 gcalc_sources = files([
 	'gcalc-assign.vala',
-	'gcalc-binary-operator.vala',
 	'gcalc-constant.vala',
 	'gcalc-division.vala',
 	'gcalc-expression.vala',
@@ -101,6 +100,7 @@ gcalc_sources = files([
 	'gcalc-gterm.vala',
 	'gcalc-gvariable.vala',
 	'gcalc-hashable.vala',
+	'gcalc-math-binary-operator.vala',
 	'gcalc-math-equation.vala',
 	'gcalc-math-equation-manager.vala',
 	'gcalc-math-expression.vala',

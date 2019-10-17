@@ -335,7 +335,7 @@ public class GCalc.GParser : Object {
     eqman.equations.add (eq);
   }
   private void process_operator (MathOperator opp, GMathEquation eq) throws GLib.Error {
-    if (current is BinaryOperator) {
+    if (current is MathBinaryOperator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a plus operator");
     }
     if (current == null) {

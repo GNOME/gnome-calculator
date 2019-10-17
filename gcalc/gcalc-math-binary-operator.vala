@@ -1,4 +1,4 @@
-/* gcalc-binary-operator.vala
+/* gcalc-math-binary-operator.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,5 +18,8 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.BinaryOperator : Object, MathExpression, MathOperator {}
+/**
+ * An operator for two members in a math expression
+ */
+public interface GCalc.MathBinaryOperator : Object, MathExpression, MathOperator {}
 
