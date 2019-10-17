@@ -27,7 +27,7 @@ public interface GCalc.Assign : Object, MathExpression, MathOperator, MathBinary
     if (v == null) {
       throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid variable object in assign");
     }
-    var p = expressions.get_item (1) as Polynomial;
+    var p = expressions.get_item (1) as MathPolynomial;
     if (p == null) {
       throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid polynomial object in assign");
     }

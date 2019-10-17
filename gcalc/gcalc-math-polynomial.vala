@@ -18,7 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Polynomial : Object, MathExpression {
+/**
+ * A multiple expressions in a math expression
+ */
+public interface GCalc.MathPolynomial : Object, MathExpression {
   public virtual MathExpression evaluate () throws GLib.Error {
     Term current = null;
     MathExpression res = null;

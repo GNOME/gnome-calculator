@@ -30,7 +30,7 @@ public interface GCalc.Group : Object, MathExpression {
     if (expressions.get_n_items () == 0) {
       throw new GroupError.INVALID_POLYNOMIAL ("No internal polynomial in group");
     }
-    var e = expressions.get_item (0) as Polynomial;
+    var e = expressions.get_item (0) as MathPolynomial;
     if (e == null) {
       throw new GroupError.INVALID_POLYNOMIAL ("Invalid internal polynomial in group");
     }

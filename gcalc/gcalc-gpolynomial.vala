@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GPolynomial : Expression, Polynomial {
+public class GCalc.GPolynomial : Expression, MathPolynomial {
   internal override Result solve () {
     Result res = null;
     try {

@@ -33,7 +33,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t = p.expressions.get_item (0) as Term;
@@ -55,7 +55,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t = p.expressions.get_item (0) as Term;
@@ -94,7 +94,7 @@ class Tests {
         var v = assign.expressions.get_item (0) as Variable;
         assert (v != null);
         assert (v.name == "var");
-        var p = assign.expressions.get_item (1) as Polynomial;
+        var p = assign.expressions.get_item (1) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t = p.expressions.get_item (0) as Term;
@@ -116,7 +116,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 2);
         var t1 = p.expressions.get_item (0) as Term;
@@ -145,7 +145,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 2);
         var t1 = p.expressions.get_item (0) as Term;
@@ -174,7 +174,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 2);
         var t1 = p.expressions.get_item (0) as Term;
@@ -203,7 +203,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 2);
         var t1 = p.expressions.get_item (0) as Term;
@@ -232,7 +232,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         message ("Terms: %u", p.expressions.get_n_items ());
         assert (p.expressions.get_n_items () == 4);
@@ -278,7 +278,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         message ("Terms: %u", p.expressions.get_n_items ());
         assert (p.expressions.get_n_items () == 4);
@@ -324,7 +324,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t1 = p.expressions.get_item (0) as Term;
@@ -350,7 +350,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         message ("Terms: %u", p.expressions.get_n_items ());
         assert (p.expressions.get_n_items () == 1);
@@ -377,7 +377,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         message ("Terms: %u", p.expressions.get_n_items ());
         assert (p.expressions.get_n_items () == 2);
@@ -417,7 +417,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t1 = p.expressions.get_item (0) as Term;
@@ -443,7 +443,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         message ("Terms: %u", p.expressions.get_n_items ());
         assert (p.expressions.get_n_items () == 1);
@@ -470,7 +470,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         message ("Terms: %u", p.expressions.get_n_items ());
         assert (p.expressions.get_n_items () == 2);
@@ -519,7 +519,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t = p.expressions.get_item (0) as Term;
@@ -529,7 +529,7 @@ class Tests {
         assert (g != null);
         assert (g.closed);
         assert (g.expressions.get_n_items () == 1);
-        var p1 = g.expressions.get_item (0) as Polynomial;
+        var p1 = g.expressions.get_item (0) as MathPolynomial;
         assert (p1 != null);
         assert (p1.expressions.get_n_items () == 1);
         var t1 = p1.expressions.get_item (0) as Term;
@@ -579,7 +579,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 2);
         var t1 = p.expressions.get_item (0) as Term;
@@ -589,7 +589,7 @@ class Tests {
         assert (g1 != null);
         assert (g1.closed);
         assert (g1.expressions.get_n_items () == 1);
-        var p1 = g1.expressions.get_item (0) as Polynomial;
+        var p1 = g1.expressions.get_item (0) as MathPolynomial;
         assert (p1 != null);
         assert (p1.expressions.get_n_items () == 1);
         var t11 = p1.expressions.get_item (0) as Term;
@@ -606,7 +606,7 @@ class Tests {
         assert (g2 != null);
         assert (g2.closed);
         assert (g2.expressions.get_n_items () == 1);
-        var p2 = g2.expressions.get_item (0) as Polynomial;
+        var p2 = g2.expressions.get_item (0) as MathPolynomial;
         assert (p2 != null);
         assert (p2.expressions.get_n_items () == 1);
         var t21 = p1.expressions.get_item (0) as Term;
@@ -628,7 +628,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t1 = p.expressions.get_item (0) as Term;
@@ -642,7 +642,7 @@ class Tests {
         assert (g != null);
         assert (g.closed);
         assert (g.expressions.get_n_items () == 1);
-        var pg = g.expressions.get_item (0) as Polynomial;
+        var pg = g.expressions.get_item (0) as MathPolynomial;
         assert (pg != null);
         assert (pg.expressions.get_n_items () == 2);
         var tg1 = pg.expressions.get_item (0) as Term;
@@ -672,7 +672,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t1 = p.expressions.get_item (0) as Term;
@@ -682,7 +682,7 @@ class Tests {
         assert (g != null);
         assert (g.closed);
         assert (g.expressions.get_n_items () == 1);
-        var pg = g.expressions.get_item (0) as Polynomial;
+        var pg = g.expressions.get_item (0) as MathPolynomial;
         assert (pg != null);
         assert (pg.expressions.get_n_items () == 2);
         var tg1 = pg.expressions.get_item (0) as Term;
@@ -736,7 +736,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t = p.expressions.get_item (0) as Term;
@@ -745,7 +745,7 @@ class Tests {
         var f = t.expressions.get_item (0) as Function;
         assert (f != null);
         assert (f.expressions.get_n_items () == 1);
-        var p1 = f.expressions.get_item (0) as Polynomial;
+        var p1 = f.expressions.get_item (0) as MathPolynomial;
         assert (p1 != null);
         var t1 =p1.expressions.get_item (0) as Term;
         assert (t1 != null);
@@ -767,7 +767,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t = p.expressions.get_item (0) as Term;
@@ -793,7 +793,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var p = eq.expressions.get_item (0) as Polynomial;
+        var p = eq.expressions.get_item (0) as MathPolynomial;
         assert (p != null);
         assert (p.expressions.get_n_items () == 1);
         var t = p.expressions.get_item (0) as Term;
@@ -806,7 +806,7 @@ class Tests {
         var g = t.expressions.get_item (2) as Group;
         assert (g != null);
         assert (g.expressions.get_n_items () == 1);
-        var p1 = g.expressions.get_item (0) as Polynomial;
+        var p1 = g.expressions.get_item (0) as MathPolynomial;
         assert (p1 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -827,7 +827,7 @@ class Tests {
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
         assert (v != null);
-        var e = a.expressions.get_item (1) as Polynomial;
+        var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
         assert (e.expressions.get_n_items () == 1);
         var t = e.expressions.get_item (0) as Term;
@@ -854,7 +854,7 @@ class Tests {
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
         assert (v != null);
-        var e = a.expressions.get_item (1) as Polynomial;
+        var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
         assert (e.expressions.get_n_items () == 2);
         var t1 = e.expressions.get_item (0) as Term;
@@ -936,7 +936,7 @@ class Tests {
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
         assert (v != null);
-        var e = a.expressions.get_item (1) as Polynomial;
+        var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
         assert (e.expressions.get_n_items () == 1);
         var t = e.expressions.get_item (0) as Term;
@@ -947,7 +947,7 @@ class Tests {
         assert (eq2 != null);
         message (eq2.to_string ());
         assert (eq2.expressions.get_n_items () == 1);
-        var e2 = eq2.expressions.get_item (0) as Polynomial;
+        var e2 = eq2.expressions.get_item (0) as MathPolynomial;
         assert (e2 != null);
         assert (e2.expressions.get_n_items () == 1);
         var t2 = e2.expressions.get_item (0) as Term;
@@ -974,7 +974,7 @@ class Tests {
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
         assert (v != null);
-        var e = a.expressions.get_item (1) as Polynomial;
+        var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
         assert (e.expressions.get_n_items () == 1);
         var t = e.expressions.get_item (0) as Term;
@@ -990,7 +990,7 @@ class Tests {
         assert (a2.expressions.get_n_items () == 2);
         var v2 = a2.expressions.get_item (0) as Variable;
         assert (v2 != null);
-        var e2 = a2.expressions.get_item (1) as Polynomial;
+        var e2 = a2.expressions.get_item (1) as MathPolynomial;
         assert (e2 != null);
         assert (e2.expressions.get_n_items () == 1);
         var t2 = e2.expressions.get_item (0) as Term;
@@ -1019,7 +1019,7 @@ class Tests {
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
         assert (v != null);
-        var e = a.expressions.get_item (1) as Polynomial;
+        var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
         assert (e.expressions.get_n_items () == 1);
         var t = e.expressions.get_item (0) as Term;
@@ -1035,7 +1035,7 @@ class Tests {
         assert (a2.expressions.get_n_items () == 2);
         var v2 = a2.expressions.get_item (0) as Variable;
         assert (v2 != null);
-        var e2 = a2.expressions.get_item (1) as Polynomial;
+        var e2 = a2.expressions.get_item (1) as MathPolynomial;
         assert (e2 != null);
         assert (e2.expressions.get_n_items () == 1);
         var t2 = e2.expressions.get_item (0) as Term;
@@ -1051,7 +1051,7 @@ class Tests {
         assert (a3.expressions.get_n_items () == 2);
         var v4 = a3.expressions.get_item (0) as Variable;
         assert (v4 != null);
-        var e3 = a3.expressions.get_item (1) as Polynomial;
+        var e3 = a3.expressions.get_item (1) as MathPolynomial;
         assert (e3 != null);
         message ("Termns in Polynomial3: %u", e3.expressions.get_n_items ());
         assert (e3.expressions.get_n_items () == 2);
@@ -1088,7 +1088,7 @@ class Tests {
         var v = a.expressions.get_item (0) as Variable;
         assert (v != null);
         assert (v.name == "x");
-        var e = a.expressions.get_item (1) as Polynomial;
+        var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
         assert (e.expressions.get_n_items () == 1);
         var t = e.expressions.get_item (0) as Term;
@@ -1102,7 +1102,7 @@ class Tests {
         assert (eq2 != null);
         message (eq2.to_string ());
         assert (eq2.expressions.get_n_items () == 1);
-        var e2 = eq2.expressions.get_item (0) as Polynomial;
+        var e2 = eq2.expressions.get_item (0) as MathPolynomial;
         assert (e2 != null);
         assert (e2.expressions.get_n_items () == 1);
         var t2 = e2.expressions.get_item (0) as Term;

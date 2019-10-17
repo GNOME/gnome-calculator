@@ -40,7 +40,7 @@ public interface GCalc.Variable : Object, MathExpression {
     if (parent.expressions.get_n_items () != 2) {
       throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to Variable's expression definition. Expression not found");
     }
-    var e = parent.expressions.get_item (1) as Polynomial;
+    var e = parent.expressions.get_item (1) as MathPolynomial;
     if (e == null) {
       throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to Variable's expression definition. Unexpected object type");
     }
