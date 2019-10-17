@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathEquationManager}
+ */
 public class GCalc.EquationManager : Object, MathEquationManager {
   ExpressionContainer _equations = new ExpressionContainer ();
   ExpressionContainer _functions = new ExpressionContainer ();

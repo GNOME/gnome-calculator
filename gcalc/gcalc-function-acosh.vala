@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Function to calculate arc hyperbolic cosine of a {@link MathConstant} in radians
+ */
 public class GCalc.FunctionAcosh : Function {
 
   construct {

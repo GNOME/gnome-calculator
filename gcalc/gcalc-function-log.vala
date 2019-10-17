@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Function to calculate logarithm of a {@link MathConstant}
+ */
 public class GCalc.FunctionLog : Function {
 
   construct {

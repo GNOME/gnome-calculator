@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Function to calculate sine of a {@link MathConstant} in radians
+ */
 public class GCalc.FunctionSin : Function {
 
   construct {

@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathPolynomial}
+ */
 public class GCalc.Polynomial : Expression, MathPolynomial {
   internal override MathResult solve () {
     MathResult res = null;

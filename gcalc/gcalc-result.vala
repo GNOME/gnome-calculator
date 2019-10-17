@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathResult}
+ */
 public class GCalc.Result : Object, MathResult {
   private MathExpression _expression;
   public Result (MathExpression exp) {

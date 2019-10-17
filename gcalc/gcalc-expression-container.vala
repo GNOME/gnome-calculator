@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An expression container implementing {@link GLib.ListModel}
+ */
 public class GCalc.ExpressionContainer : Gee.ArrayList<MathExpression>, GLib.ListModel {
   public weak MathExpression parent { get; set; }
 

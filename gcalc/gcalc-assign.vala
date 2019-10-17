@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathAssign}
+ */
 public class GCalc.Assign : Expression, MathOperator, MathBinaryOperator, MathAssign {
   internal override string to_string () {
     if (expressions.get_n_items () != 2) {

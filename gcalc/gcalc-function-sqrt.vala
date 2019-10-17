@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Function to calculate square root of a {@link MathConstant}
+ */
 public class GCalc.FunctionSqrt : Function {
 
   construct {

@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathPlus}
+ */
 public class GCalc.Plus : Expression, MathOperator, MathBinaryOperator, MathPlus {
   internal override string to_string () {
     return "+";

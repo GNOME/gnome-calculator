@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathFunction}
+ */
 public class GCalc.Function : Expression, MathFunction, Hashable {
   ExpressionContainer _param_types = new ExpressionContainer ();
 

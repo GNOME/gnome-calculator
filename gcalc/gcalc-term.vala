@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathTerm}
+ */
 public class GCalc.Term : Expression, MathTerm {
   internal override MathResult solve () {
     MathResult res = null;

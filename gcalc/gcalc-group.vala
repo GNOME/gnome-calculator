@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathGroup}
+ */
 public class GCalc.Group : Expression, MathGroup {
   internal MathGroup.Level level { get; set; }
   internal bool closed { get; set; }

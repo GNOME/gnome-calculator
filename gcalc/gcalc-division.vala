@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathDivision}
+ */
 public class GCalc.Division : Expression, MathOperator, MathBinaryOperator, MathDivision {
   internal override string to_string () {
     return "/";

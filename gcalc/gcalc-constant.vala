@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathConstant}
+ */
 public class GCalc.Constant : Expression, MathConstant {
   private MPC.Complex _complex = MPC.Complex (1000);
 

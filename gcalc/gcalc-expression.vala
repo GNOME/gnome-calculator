@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathExpression}
+ */
 public class GCalc.Expression : Object, MathExpression {
   ExpressionContainer exps = new ExpressionContainer ();
   construct {
@@ -38,6 +41,8 @@ public class GCalc.Expression : Object, MathExpression {
   }
 }
 
-
+/**
+ * An implementation of {@link ErrorExpression}
+ */
 public class GCalc.GErrorExpression : Expression, ErrorExpression {}
 

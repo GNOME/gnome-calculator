@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Function to calculate cosine of a {@link MathConstant} in radians
+ */
 public class GCalc.FunctionCos : Function {
 
   construct {

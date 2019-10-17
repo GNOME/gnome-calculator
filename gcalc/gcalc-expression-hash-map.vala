@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * A hash table using {@link Hashable} objects
+ */
 public class GCalc.ExpressionHashMap : Gee.HashMap<uint,MathExpression> {
   public weak MathExpression parent { get; set; }
 

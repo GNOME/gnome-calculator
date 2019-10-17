@@ -18,6 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+
+/**
+ * Function to calculate inverse of logarithm of a {@link MathConstant}
+ */
 public class GCalc.FunctionExp : Function {
 
   construct {

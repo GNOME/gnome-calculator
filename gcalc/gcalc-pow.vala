@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathPow}
+ */
 public class GCalc.Pow : Expression, MathOperator, MathPow {
   internal override string to_string () {
     return "^";

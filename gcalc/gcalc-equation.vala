@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathEquation}
+ */
 public class GCalc.Equation : Expression, MathEquation {
   ExpressionHashMap _variables = new ExpressionHashMap ();
   internal ExpressionHashMap variables { get { return _variables; } }

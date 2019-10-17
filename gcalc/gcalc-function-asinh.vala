@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Function to calculate arc hyperbolic sine of a {@link MathConstant} in radians
+ */
 public class GCalc.FunctionAsinh : Function {
 
   construct {

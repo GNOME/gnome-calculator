@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathParameter}
+ */
 public class GCalc.Parameter : GCalc.Variable, MathParameter {
 
   public Parameter (string name) {

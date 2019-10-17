@@ -21,6 +21,9 @@
 /**
  * An implementation of {@link MathErrorResult}
  */
+/**
+ * An implementation of {@link MathErrorResult}
+ */
 public class GCalc.ErrorResult : Object, MathResult, MathErrorResult {
   private string msg = "";
   private MathExpression _expression;

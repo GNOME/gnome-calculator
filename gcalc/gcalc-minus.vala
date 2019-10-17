@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathMinus}
+ */
 public class GCalc.Minus : Expression, MathOperator, MathBinaryOperator, MathMinus {
   internal override string to_string () {
     return "-";

@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * Function to calculate arc sine of a {@link MathConstant} in radians
+ */
 public class GCalc.FunctionAsin : Function {
 
   construct {

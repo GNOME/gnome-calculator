@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathMultiply}
+ */
 public class GCalc.Multiply : Expression, MathOperator, MathBinaryOperator, MathMultiply {
   internal override string to_string () {
     return "*";

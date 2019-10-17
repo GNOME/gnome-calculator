@@ -18,6 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
+/**
+ * An implementation of {@link MathVariable}
+ */
 public class GCalc.Variable : Expression, MathVariable, Hashable {
 
   public string name { get; construct set; }
