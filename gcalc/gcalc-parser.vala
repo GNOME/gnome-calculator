@@ -82,11 +82,11 @@ public class GCalc.Parser : Object {
               top_parent = exp;
               expected.clear ();
               expected.add(TokenType.OPEN_PARENS);
-            } else if (current is MathOperator && current_parent is Term && top_parent is MathPolynomial) {
+            } else if (current is MathOperator && current_parent is MathTerm && top_parent is MathPolynomial) {
                 current_parent.expressions.add (sfunc);
                 current = sfunc;
                 expected.clear ();
-            } else if (current is Term && current_parent is MathPolynomial) {
+            } else if (current is MathTerm && current_parent is MathPolynomial) {
                 current.expressions.add (sfunc);
                 current_parent = current;
                 current = sfunc;
@@ -124,11 +124,11 @@ public class GCalc.Parser : Object {
               current_parent = v.parent;
               top_parent = current_parent.parent;
               expected.clear ();
-            } else if (current is MathOperator && current_parent is Term && top_parent is MathPolynomial) {
+            } else if (current is MathOperator && current_parent is MathTerm && top_parent is MathPolynomial) {
                 current_parent.expressions.add (v);
                 current = v;
                 expected.clear ();
-            } else if (current is Term) {
+            } else if (current is MathTerm) {
                 current.expressions.add (v);
                 current = v;
                 current_parent = v.parent;
@@ -153,11 +153,11 @@ public class GCalc.Parser : Object {
             current = cexp;
             current_parent = t;
             top_parent = exp;
-          } else if ((current is MathOperator || current is Term) && current_parent is Term && top_parent is MathPolynomial) {
+          } else if ((current is MathOperator || current is MathTerm) && current_parent is MathTerm && top_parent is MathPolynomial) {
             current_parent.expressions.add (cexp);
             expected.clear ();
             current = cexp;
-          } else if (current is Term && current_parent is MathPolynomial && (top_parent is MathGroup || top_parent is MathFunction)) {
+          } else if (current is MathTerm && current_parent is MathPolynomial && (top_parent is MathGroup || top_parent is MathFunction)) {
             current.expressions.add (cexp);
             top_parent = current_parent;
             current_parent = current;
@@ -189,7 +189,7 @@ public class GCalc.Parser : Object {
           } else if (current is Variable) {
             bool removed = false;
             if (current.parent != null) {
-              if (current.parent is Term) {
+              if (current.parent is MathTerm) {
                 var t = current.parent;
                 if (t.parent != null) {
                   if (t.parent is MathPolynomial) {
@@ -245,7 +245,7 @@ public class GCalc.Parser : Object {
             current = t;
             current_parent = fexp;
             expected.clear ();
-          } else if (current is MathOperator && current_parent is Term && top_parent is MathPolynomial) {
+          } else if (current is MathOperator && current_parent is MathTerm && top_parent is MathPolynomial) {
             var g = new Group ();
             current_parent.expressions.add (g);
             var exp = new Polynomial ();
@@ -282,7 +282,7 @@ public class GCalc.Parser : Object {
           }
           if (foundp) {
             current = par;
-            current_parent = par.parent; // Term
+            current_parent = par.parent; // MathTerm
             top_parent = current_parent.parent;
           }
           break;
@@ -348,14 +348,14 @@ public class GCalc.Parser : Object {
       top_parent = exp;
       eq.expressions.add (exp);
       expected.clear ();
-    } else if (current_parent is MathPolynomial && current is Term) {
+    } else if (current_parent is MathPolynomial && current is MathTerm) {
       current.expressions.add (opp);
       top_parent = current_parent;
       current_parent = current;
       current = opp;
       expected.clear ();
     } else if ((current is MathConstant || current is Variable)
-               && current_parent is Term && top_parent is MathPolynomial) {
+               && current_parent is MathTerm && top_parent is MathPolynomial) {
       // New term
       var t = new GTerm ();
       t.expressions.add (opp);
@@ -363,7 +363,7 @@ public class GCalc.Parser : Object {
       current = opp;
       current_parent = t;
       expected.clear ();
-    } else if ((current is MathGroup || current is MathFunction) && current_parent is Term && top_parent is MathPolynomial) {
+    } else if ((current is MathGroup || current is MathFunction) && current_parent is MathTerm && top_parent is MathPolynomial) {
       // New term
       var t = new GTerm ();
       t.expressions.add (opp);
@@ -393,7 +393,7 @@ public class GCalc.Parser : Object {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
     }
     if ((current is MathConstant || current is Variable || current is MathGroup || current is MathFunction)
-        && current_parent is Term && top_parent is MathPolynomial) {
+        && current_parent is MathTerm && top_parent is MathPolynomial) {
         current_parent.expressions.add (op);
         current = op;
         expected.clear ();

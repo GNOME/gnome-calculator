@@ -87,7 +87,7 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var t = e.expressions.get_item (0) as Term;
+        var t = e.expressions.get_item (0) as MathTerm;
         assert (t != null);
         var c = t.expressions.get_item (0) as MathConstant;
         assert (c != null);
@@ -113,7 +113,7 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var t = e.expressions.get_item (0) as Term;
+        var t = e.expressions.get_item (0) as MathTerm;
         var res = t.solve ();
         assert (res != null);
         assert (res.expression != null);
@@ -138,7 +138,7 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var t = e.expressions.get_item (0) as Term;
+        var t = e.expressions.get_item (0) as MathTerm;
         var res = t.solve ();
         assert (res != null);
         assert (res.expression != null);
@@ -163,7 +163,7 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var t = e.expressions.get_item (0) as Term;
+        var t = e.expressions.get_item (0) as MathTerm;
         var res = t.solve ();
         assert (res != null);
         assert (res.expression != null);
@@ -188,8 +188,8 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var t1 = e.expressions.get_item (0) as Term;
-        var t2 = e.expressions.get_item (1) as Term;
+        var t1 = e.expressions.get_item (0) as MathTerm;
+        var t2 = e.expressions.get_item (1) as MathTerm;
         var res = t1.add (t2);
         assert (res != null);
         message (res.get_type ().name ());
@@ -256,7 +256,7 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var t = e.expressions.get_item (0) as Term;
+        var t = e.expressions.get_item (0) as MathTerm;
         assert (t != null);
         var g = t.expressions.get_item (0) as MathGroup;
         assert (g != null);
@@ -336,7 +336,7 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var t = e.expressions.get_item (0) as Term;
+        var t = e.expressions.get_item (0) as MathTerm;
         assert (t != null);
         var g = t.expressions.get_item (0) as MathGroup;
         assert (g != null);
@@ -359,7 +359,7 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var t = e.expressions.get_item (0) as Term;
+        var t = e.expressions.get_item (0) as MathTerm;
         assert (t != null);
         var g = t.expressions.get_item (0) as MathGroup;
         assert (g != null);
@@ -687,7 +687,7 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var t = e.expressions.get_item (0) as Term;
+        var t = e.expressions.get_item (0) as MathTerm;
         assert (t != null);
         var f = t.expressions.get_item (0) as MathFunction;
         assert (f != null);

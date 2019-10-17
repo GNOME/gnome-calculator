@@ -23,19 +23,19 @@
  */
 public interface GCalc.MathPolynomial : Object, MathExpression {
   public virtual MathExpression evaluate () throws GLib.Error {
-    Term current = null;
+    MathTerm current = null;
     MathExpression res = null;
     for (uint i = 0; i < expressions.get_n_items (); i++) {
-      var e = expressions.get_item (i) as Term;
+      var e = expressions.get_item (i) as MathTerm;
       if (e == null) {
         continue;
       }
       if (current == null) {
-        current = (Term) e;
+        current = (MathTerm) e;
         if (i+1 < expressions.get_n_items ()) {
           continue;
         }
-        var er = ((Term) e).evaluate ();
+        var er = ((MathTerm) e).evaluate ();
         if (res == null) {
           res = er;
           break;
@@ -45,7 +45,7 @@ public interface GCalc.MathPolynomial : Object, MathExpression {
           break;
         }
       }
-      var re = current.add ((Term) e);
+      var re = current.add ((MathTerm) e);
       current = null;
       if (res == null) {
         res = re;

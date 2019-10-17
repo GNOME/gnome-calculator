@@ -1,4 +1,4 @@
-/* gcalc-term.vala
+/* gcalc-math-term.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,8 +18,8 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Term : Object, MathExpression {
-  public virtual MathExpression add (Term t) throws GLib.Error {
+public interface GCalc.MathTerm : Object, MathExpression {
+  public virtual MathExpression add (MathTerm t) throws GLib.Error {
     if (t.expressions.get_n_items () == 0) {
       return new Constant.@double (1.0);
     }

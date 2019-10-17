@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GTerm : Expression, Term {
+public class GCalc.GTerm : Expression, MathTerm {
   internal override MathResult solve () {
     MathResult res = null;
     try {
