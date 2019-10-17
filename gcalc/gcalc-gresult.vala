@@ -19,14 +19,14 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 public class GCalc.GResult : Object, Result {
-  private Expression _expression;
-  public GResult (Expression exp) {
+  private MathExpression _expression;
+  public GResult (MathExpression exp) {
     _expression = exp;
   }
   // Result
   internal string to_string () {
     return expression.to_string ();
   }
-  internal Expression expression { get { return _expression; } }
+  internal MathExpression expression { get { return _expression; } }
 }
 

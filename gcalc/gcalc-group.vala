@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Group : Object, Expression {
+public interface GCalc.Group : Object, MathExpression {
   public enum Level {
     ONE,
     TWO,
@@ -26,7 +26,7 @@ public interface GCalc.Group : Object, Expression {
   }
   public abstract Level level { get; set; }
   public abstract bool closed { get; set; }
-  public virtual Expression evaluate () throws GLib.Error {
+  public virtual MathExpression evaluate () throws GLib.Error {
     if (expressions.get_n_items () == 0) {
       throw new GroupError.INVALID_POLYNOMIAL ("No internal polynomial in group");
     }

@@ -18,17 +18,17 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.ExpressionContainer : Gee.ArrayList<Expression>, GLib.ListModel {
-  public weak Expression parent { get; set; }
+public class GCalc.ExpressionContainer : Gee.ArrayList<MathExpression>, GLib.ListModel {
+  public weak MathExpression parent { get; set; }
 
   // Gee.AbstractCollection
-  public override bool add (Expression exp) {
+  public override bool add (MathExpression exp) {
     var r = base.add (exp);
     exp.parent = parent;
     return r;
   }
 
-  public override Expression remove_at (int index) {
+  public override MathExpression remove_at (int index) {
     var r = base.remove_at (index);
     if (r != null) {
       r.parent = null;
@@ -36,7 +36,7 @@ public class GCalc.ExpressionContainer : Gee.ArrayList<Expression>, GLib.ListMod
     return r;
   }
 
-  public override bool remove (Expression exp) {
+  public override bool remove (MathExpression exp) {
     var r = base.remove (exp);
     if (r) {
       exp.parent = null;
@@ -50,7 +50,7 @@ public class GCalc.ExpressionContainer : Gee.ArrayList<Expression>, GLib.ListMod
   }
 
   public Type get_item_type () {
-    return typeof (Expression);
+    return typeof (MathExpression);
   }
 
   public uint get_n_items () {
@@ -61,12 +61,12 @@ public class GCalc.ExpressionContainer : Gee.ArrayList<Expression>, GLib.ListMod
     return get_item (position);
   }
 
-  public Expression? find (Expression exp) {
+  public MathExpression? find (MathExpression exp) {
     unowned Variable? variable = exp as Variable;
     if (variable == null) {
       return null;
     }
-    foreach (Expression e in this) {
+    foreach (MathExpression e in this) {
       if (e is Variable && ((Variable) e).name == variable.name) {
         return e;
       }
@@ -74,8 +74,8 @@ public class GCalc.ExpressionContainer : Gee.ArrayList<Expression>, GLib.ListMod
     return null;
   }
 
-  public Expression? find_named (string name) {
-    foreach (Expression e in this) {
+  public MathExpression? find_named (string name) {
+    foreach (MathExpression e in this) {
       if (e is Variable && ((Variable) e).name == name) {
         return e;
       }

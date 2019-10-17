@@ -21,11 +21,11 @@
 /**
  * A part of a math equation
  */
-public interface GCalc.Expression : Object {
+public interface GCalc.MathExpression : Object {
   /**
    * Parent of the expression
    */
-  public abstract weak Expression parent { get; set; }
+  public abstract weak MathExpression parent { get; set; }
   /**
    * Child expressions
    */
@@ -40,6 +40,6 @@ public interface GCalc.Expression : Object {
   public abstract Result solve ();
 }
 
-public interface GCalc.ErrorExpression : Object, Expression {
+public interface GCalc.ErrorExpression : Object, MathExpression {
 }
 

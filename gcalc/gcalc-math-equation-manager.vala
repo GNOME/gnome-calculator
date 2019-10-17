@@ -23,7 +23,7 @@ public interface GCalc.MathEquationManager : Object {
   public abstract ExpressionContainer functions { get; }
   public virtual Variable find_variable (string name) {
     Variable res = null;
-    foreach (Expression e in equations) {
+    foreach (MathExpression e in equations) {
       var eq = e as MathEquation;
       if (e == null) {
         continue;

@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Constant : Object, Expression {
+public interface GCalc.Constant : Object, MathExpression {
   public abstract double real ();
   public abstract double imag ();
   public abstract void zero ();

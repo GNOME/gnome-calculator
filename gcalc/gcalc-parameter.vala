@@ -20,12 +20,12 @@
  */
 /**
  * A parameter is a {@link Variable} holding a value, that is not
- * expected to be resolved as part of an {@link Expression} evaluation,
+ * expected to be resolved as part of an {@link MathExpression} evaluation,
  * but by asigning its value.
  *
  * Currently the value will be converted to a {@link Constant} if possible.
  */
-public interface GCalc.Parameter : Object, Variable {
+public interface GCalc.Parameter : Object, MathExpression, Variable {
   public abstract void set_value (GLib.Value val) throws GLib.Error;
   public abstract GLib.Value get_value ();
 }

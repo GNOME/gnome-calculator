@@ -60,7 +60,7 @@ gcalc_sources = files([
 	'gcalc-binary-operator.vala',
 	'gcalc-constant.vala',
 	'gcalc-division.vala',
-	'gcalc-expression.vala',
+	'gcalc-math-expression.vala',
 	'gcalc-expression-container.vala',
 	'gcalc-expression-hash-map.vala',
 	'gcalc-function.vala',

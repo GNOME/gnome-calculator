@@ -18,5 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Operator : Object, Expression {}
+public interface GCalc.Operator : Object, MathExpression {}
 

@@ -18,21 +18,21 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.ExpressionHashMap : Gee.HashMap<uint,Expression> {
-  public weak Expression parent { get; set; }
+public class GCalc.ExpressionHashMap : Gee.HashMap<uint,MathExpression> {
+  public weak MathExpression parent { get; set; }
 
-  public void add (Expression exp)
+  public void add (MathExpression exp)
     requires (exp is Hashable)
   {
     @set (((Hashable) exp).hash (), exp);
     exp.parent = parent;
   }
 
-  public void remove (Expression exp) {
+  public void remove (MathExpression exp) {
     unset (((Hashable) exp).hash ());
   }
 
-  public Expression? find_named (string name) {
+  public MathExpression? find_named (string name) {
     return @get (name.hash ());
   }
 }

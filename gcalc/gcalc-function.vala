@@ -19,9 +19,9 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 /**
- * A Function as part of a {@link Expression}
+ * A Function as part of a {@link MathExpression}
  */
-public interface GCalc.Function : Object, Expression {
+public interface GCalc.Function : Object, MathExpression {
   /**
    * Parameters used by the function, objects representing
    * the expected types. See {@link verify_params}
@@ -42,11 +42,11 @@ public interface GCalc.Function : Object, Expression {
    */
   public abstract bool closed { get; set; }
   /**
-   * Evaluate the function returning a resulting {@link Expression}.
+   * Evaluate the function returning a resulting {@link MathExpression}.
    *
    * In some cases return is a {@link Constant}
    */
-  public abstract Expression evaluate () throws GLib.Error;
+  public abstract MathExpression evaluate () throws GLib.Error;
   /**
    * Check the paratemeters given to the function agains {@link param_types}
    * and number of parameters using {@link n_params}

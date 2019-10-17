@@ -18,5 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Pow : Object, Expression, Operator {}
+public interface GCalc.Pow : Object, MathExpression, Operator {}
 

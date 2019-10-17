@@ -26,13 +26,13 @@ public class GCalc.GFunctionAsin : GFunction {
     param_types.add (new GConstant ());
   }
 
-  internal override Expression evaluate () throws GLib.Error
+  internal override MathExpression evaluate () throws GLib.Error
   {
     verify_params ();
     GConstant c = null;
-    var exp = expressions.get_item (0) as Expression;
+    var exp = expressions.get_item (0) as MathExpression;
     if (exp == null) {
-      throw new FunctionError.INVOCATION_ERROR ("Invalid parameter type. Expected %s", typeof(Expression).name ());
+      throw new FunctionError.INVOCATION_ERROR ("Invalid parameter type. Expected %s", typeof(MathExpression).name ());
     }
     var ev = exp.solve ();
     if (ev is ErrorResult) {
@@ -49,7 +49,7 @@ public class GCalc.GFunctionAsin : GFunction {
     var res = MPC.Complex (1000);
     res.asin (p1);
     var nc = new GConstant.internal_complex (res);
-    return nc as Expression;
+    return nc as MathExpression;
   }
 }
 

@@ -18,8 +18,8 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Assign : Object, Expression, Operator, BinaryOperator {
-  public Expression evaluate () throws GLib.Error {
+public interface GCalc.Assign : Object, MathExpression, Operator, BinaryOperator {
+  public MathExpression evaluate () throws GLib.Error {
     if (expressions.get_n_items () != 2) {
       throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid number of expressions in assign");
     }

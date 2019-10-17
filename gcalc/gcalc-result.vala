@@ -20,6 +20,6 @@
  */
 public interface GCalc.Result : Object {
   public abstract string to_string ();
-  public abstract Expression expression { get; }
+  public abstract MathExpression expression { get; }
 }
 

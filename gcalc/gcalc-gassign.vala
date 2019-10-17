@@ -27,7 +27,7 @@ public class GCalc.GAssign : GExpression, Operator, BinaryOperator, Assign {
     if (v == null) {
       return "Invalid Assigment structure. No variable is set";
     }
-    var e = expressions.get_item (1) as Expression;
+    var e = expressions.get_item (1) as MathExpression;
     if (e == null) {
       return "Invalid Assigment structure. No variable's definition is set";
     }

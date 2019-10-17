@@ -18,17 +18,17 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GExpression : Object, Expression {
+public class GCalc.GExpression : Object, MathExpression {
   ExpressionContainer exps = new ExpressionContainer ();
   construct {
     exps.parent = this;
   }
   // Expression
-  internal weak Expression parent { get; set; }
+  internal weak MathExpression parent { get; set; }
   internal ExpressionContainer expressions { get { return exps; } }
   internal virtual string to_string () {
     string s = "";
-    foreach (Expression e in expressions) {
+    foreach (MathExpression e in expressions) {
       s += e.to_string ();
     }
     return s;

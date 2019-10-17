@@ -19,15 +19,15 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 /**
- * A variable that can be evaluated from an {@link Expression}
+ * A variable that can be evaluated from an {@link MathExpression}
  */
-public interface GCalc.Variable : Object, Expression {
+public interface GCalc.Variable : Object, MathExpression {
   public abstract string name { get; construct set; }
   public abstract Constant @value { get; set; }
   public abstract Variable bind { get; set; }
   public virtual bool binded { get { return bind != null; } }
 
-  public virtual Expression evaluate () throws GLib.Error {
+  public virtual MathExpression evaluate () throws GLib.Error {
     if (bind != null) {
       return bind.evaluate ();
     }

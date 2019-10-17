@@ -19,13 +19,13 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 /**
- * Takes a string an create a tree of {@link Expression} objects representing
+ * Takes a string an create a tree of {@link MathExpression} objects representing
  * a math equation.
  */
 public class GCalc.GParser : Object {
-  Expression current = null;
-  Expression current_parent = null;
-  Expression top_parent = null;
+  MathExpression current = null;
+  MathExpression current_parent = null;
+  MathExpression top_parent = null;
   bool enable_parameter = false;
   Gee.ArrayList<TokenType> expected = new Gee.ArrayList<TokenType> ();
   GLib.Scanner scanner;
@@ -68,9 +68,9 @@ public class GCalc.GParser : Object {
       }
       switch (token) {
         case TokenType.IDENTIFIER:
-          Expression sfunc = eqman.functions.find_named (n);
+          MathExpression sfunc = eqman.functions.find_named (n);
           if (sfunc != null) {
-            sfunc = Object.new (sfunc.get_type ()) as Expression;
+            sfunc = Object.new (sfunc.get_type ()) as MathExpression;
             if (current == null) {
               var exp = new GPolynomial ();
               eq.expressions.add (exp);
@@ -98,9 +98,9 @@ public class GCalc.GParser : Object {
           } else if (n.down () == "def" && current is Function) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
-            var v = new GVariable (n) as Expression;
+            var v = new GVariable (n) as MathExpression;
             if (enable_parameter) {
-              v = new GParameter (n) as Expression;
+              v = new GParameter (n) as MathExpression;
               enable_parameter = false;
             }
             var sv = eqman.find_variable (n) as Variable;

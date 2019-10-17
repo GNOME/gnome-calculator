@@ -36,7 +36,7 @@ public class GCalc.GFunction : GExpression, Function, Hashable {
   internal override string to_string () {
     string s = name + "(";
     for (uint i = 0; i < expressions.get_n_items (); i++) {
-      var e = expressions.get_item (i) as Expression;
+      var e = expressions.get_item (i) as MathExpression;
       if (e == null) {
         continue;
       }
@@ -49,7 +49,7 @@ public class GCalc.GFunction : GExpression, Function, Hashable {
     return s;
   }
 
-  internal virtual Expression evaluate () throws GLib.Error {
+  internal virtual MathExpression evaluate () throws GLib.Error {
     return new GErrorExpression ();
   }
   // Hashable

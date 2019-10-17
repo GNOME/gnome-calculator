@@ -18,10 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Polynomial : Object, Expression {
-  public virtual Expression evaluate () throws GLib.Error {
+public interface GCalc.Polynomial : Object, MathExpression {
+  public virtual MathExpression evaluate () throws GLib.Error {
     Term current = null;
-    Expression res = null;
+    MathExpression res = null;
     for (uint i = 0; i < expressions.get_n_items (); i++) {
       var e = expressions.get_item (i) as Term;
       if (e == null) {

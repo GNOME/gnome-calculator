@@ -34,7 +34,7 @@ public class GCalc.GGroup : GExpression, Group {
         s = "{";
         break;
     }
-    foreach (Expression e in expressions) {
+    foreach (MathExpression e in expressions) {
       s += e.to_string ();
     }
     switch (level) {

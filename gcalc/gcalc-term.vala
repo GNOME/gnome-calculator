@@ -18,12 +18,12 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Term : Object, Expression {
-  public virtual Expression add (Term t) throws GLib.Error {
+public interface GCalc.Term : Object, MathExpression {
+  public virtual MathExpression add (Term t) throws GLib.Error {
     if (t.expressions.get_n_items () == 0) {
       return new GConstant.@double (1.0);
     }
-    Expression res = new GErrorExpression ();
+    MathExpression res = new GErrorExpression ();
     var e = evaluate ();
     var e2 = t.evaluate ();
     if (e is Constant && e2 is Constant) {
@@ -31,11 +31,11 @@ public interface GCalc.Term : Object, Expression {
     }
     return res;
   }
-  public virtual Expression evaluate () throws GLib.Error {
-    Expression current = null;
+  public virtual MathExpression evaluate () throws GLib.Error {
+    MathExpression current = null;
     Operator current_operator = null;
     bool first = true;
-    foreach (Expression e in expressions) {
+    foreach (MathExpression e in expressions) {
       if (e is Operator) {
         if (!(e is Minus || e is Plus) && first) {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
@@ -93,10 +93,10 @@ public interface GCalc.Term : Object, Expression {
     }
     return current;
   }
-  public static Expression evaluate_constants (Constant c1, Constant c2, Operator op)
+  public static MathExpression evaluate_constants (Constant c1, Constant c2, Operator op)
     throws GLib.Error
   {
-    Expression res = null;
+    MathExpression res = null;
     if (op is Minus) {
       res = c1.multiply (c2);
     }
