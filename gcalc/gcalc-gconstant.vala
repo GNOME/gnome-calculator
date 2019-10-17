@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GConstant : GExpression, Constant {
+public class GCalc.GConstant : Expression, Constant {
   private MPC.Complex _complex = MPC.Complex (1000);
 
   internal unowned MPC.Complex get_complex () { return _complex; }

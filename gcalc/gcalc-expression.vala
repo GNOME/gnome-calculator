@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GExpression : Object, MathExpression {
+public class GCalc.Expression : Object, MathExpression {
   ExpressionContainer exps = new ExpressionContainer ();
   construct {
     exps.parent = this;
@@ -39,5 +39,5 @@ public class GCalc.GExpression : Object, MathExpression {
 }
 
 
-public class GCalc.GErrorExpression : GExpression, ErrorExpression {}
+public class GCalc.GErrorExpression : Expression, ErrorExpression {}
 

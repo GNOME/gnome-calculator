@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GGroup : GExpression, Group {
+public class GCalc.GGroup : Expression, Group {
   internal Group.Level level { get; set; }
   internal bool closed { get; set; }
   internal override string to_string () {

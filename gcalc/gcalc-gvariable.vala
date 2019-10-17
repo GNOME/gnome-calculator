@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GVariable : GExpression, Variable, Hashable {
+public class GCalc.GVariable : Expression, Variable, Hashable {
 
   public string name { get; construct set; }
   internal Constant value { get; set; }

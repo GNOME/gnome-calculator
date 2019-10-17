@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMathEquation : GExpression, MathEquation {
+public class GCalc.GMathEquation : Expression, MathEquation {
   ExpressionHashMap _variables = new ExpressionHashMap ();
   internal ExpressionHashMap variables { get { return _variables; } }
   internal override Result solve () {

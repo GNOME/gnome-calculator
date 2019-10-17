@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GDivision : GExpression, Operator, BinaryOperator, Division {
+public class GCalc.GDivision : Expression, Operator, BinaryOperator, Division {
   internal override string to_string () {
     return "/";
   }

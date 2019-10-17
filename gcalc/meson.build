@@ -80,7 +80,7 @@ gcalc_sources = files([
 	'gcalc-function-tan.vala',
 	'gcalc-function-tanh.vala',
 	'gcalc-error-result.vala',
-	'gcalc-gexpression.vala',
+	'gcalc-expression.vala',
 	'gcalc-gassign.vala',
 	'gcalc-gconstant.vala',
 	'gcalc-gdivision.vala',
