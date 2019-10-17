@@ -21,7 +21,7 @@
 /**
  * Function to calculate arc cosine of a {@link MathConstant} in radians
  */
-public class GCalc.GFunctionAcos : Function {
+public class GCalc.FunctionAcos : Function {
 
   construct {
     name = "acos";

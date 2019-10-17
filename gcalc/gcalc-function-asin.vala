@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionAsin : Function {
+public class GCalc.FunctionAsin : Function {
 
   construct {
     name = "asin";

@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionAsinh : Function {
+public class GCalc.FunctionAsinh : Function {
 
   construct {
     name = "asinh";

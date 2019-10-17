@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionLog : Function {
+public class GCalc.FunctionLog : Function {
 
   construct {
     name = "log";

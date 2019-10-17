@@ -470,7 +470,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (9.0);
-        var f = new GFunctionSqrt ();
+        var f = new FunctionSqrt ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -484,7 +484,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionExp ();
+        var f = new FunctionExp ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -498,7 +498,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (1.0);
-        var f = new GFunctionLog ();
+        var f = new FunctionLog ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -512,7 +512,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionSin ();
+        var f = new FunctionSin ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -526,7 +526,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionCos ();
+        var f = new FunctionCos ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -540,7 +540,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionTan ();
+        var f = new FunctionTan ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -554,7 +554,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionAsin ();
+        var f = new FunctionAsin ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -568,7 +568,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (1.0);
-        var f = new GFunctionAcos ();
+        var f = new FunctionAcos ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -582,7 +582,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionAtan ();
+        var f = new FunctionAtan ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -596,7 +596,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionSinh ();
+        var f = new FunctionSinh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -610,7 +610,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionCosh ();
+        var f = new FunctionCosh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -624,7 +624,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionTanh ();
+        var f = new FunctionTanh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -638,7 +638,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionAsinh ();
+        var f = new FunctionAsinh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -652,7 +652,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (1.0);
-        var f = new GFunctionAcosh ();
+        var f = new FunctionAcosh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
@@ -666,7 +666,7 @@ class Tests {
     ()=>{
       try {
         var c1 = new Constant.@double (0.0);
-        var f = new GFunctionAtanh ();
+        var f = new FunctionAtanh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);

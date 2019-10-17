@@ -26,21 +26,21 @@ public class GCalc.GMathEquationManager : Object, MathEquationManager {
 
   construct {
     // Initialize default Functions
-    functions.add (new GFunctionSqrt ());
-    functions.add (new GFunctionExp ());
-    functions.add (new GFunctionLog ());
-    functions.add (new GFunctionSin ());
-    functions.add (new GFunctionCos ());
-    functions.add (new GFunctionTan ());
-    functions.add (new GFunctionAsin ());
-    functions.add (new GFunctionAcos ());
-    functions.add (new GFunctionAtan ());
-    functions.add (new GFunctionSinh ());
-    functions.add (new GFunctionCosh ());
-    functions.add (new GFunctionTanh ());
-    functions.add (new GFunctionAsinh ());
-    functions.add (new GFunctionAcosh ());
-    functions.add (new GFunctionAtanh ());
+    functions.add (new FunctionSqrt ());
+    functions.add (new FunctionExp ());
+    functions.add (new FunctionLog ());
+    functions.add (new FunctionSin ());
+    functions.add (new FunctionCos ());
+    functions.add (new FunctionTan ());
+    functions.add (new FunctionAsin ());
+    functions.add (new FunctionAcos ());
+    functions.add (new FunctionAtan ());
+    functions.add (new FunctionSinh ());
+    functions.add (new FunctionCosh ());
+    functions.add (new FunctionTanh ());
+    functions.add (new FunctionAsinh ());
+    functions.add (new FunctionAcosh ());
+    functions.add (new FunctionAtanh ());
   }
 }
 

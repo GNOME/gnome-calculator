@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionAtanh : Function {
+public class GCalc.FunctionAtanh : Function {
 
   construct {
     name = "atanh";

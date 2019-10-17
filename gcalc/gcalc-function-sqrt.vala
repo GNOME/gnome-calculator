@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionSqrt : Function {
+public class GCalc.FunctionSqrt : Function {
 
   construct {
     name = "sqrt";

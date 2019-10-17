@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionExp : Function {
+public class GCalc.FunctionExp : Function {
 
   construct {
     name = "exp";

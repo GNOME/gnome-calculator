@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionCosh : Function {
+public class GCalc.FunctionCosh : Function {
 
   construct {
     name = "cosh";

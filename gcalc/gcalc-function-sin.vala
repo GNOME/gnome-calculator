@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionSin : Function {
+public class GCalc.FunctionSin : Function {
 
   construct {
     name = "sin";
