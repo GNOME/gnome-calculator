@@ -37,7 +37,7 @@ public interface GCalc.Term : Object, MathExpression {
     bool first = true;
     foreach (MathExpression e in expressions) {
       if (e is MathOperator) {
-        if (!(e is MathMinus || e is Plus) && first) {
+        if (!(e is MathMinus || e is MathPlus) && first) {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
         }
         if (e is MathMinus && first) {

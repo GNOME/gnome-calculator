@@ -1,4 +1,4 @@
-/* gcalc-plus.vala
+/* gcalc-math-plus.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -21,5 +21,5 @@
 /**
  * A plus operator in a math expression
  */
-public interface GCalc.Plus : Object, MathExpression, MathOperator, MathBinaryOperator {}
+public interface GCalc.MathPlus : Object, MathExpression, MathOperator, MathBinaryOperator {}
 
