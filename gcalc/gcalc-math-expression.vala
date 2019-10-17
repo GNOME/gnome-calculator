@@ -43,6 +43,6 @@ public interface GCalc.MathExpression : Object {
 /**
  * Represent an expression in error condition
  */
-public interface GCalc.ErrorExpression : Object, MathExpression {
+public interface GCalc.MathErrorExpression : Object, MathExpression {
 }
 
