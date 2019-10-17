@@ -37,7 +37,7 @@ public interface GCalc.MathAssign : Object, MathExpression, MathOperator, MathBi
     if (p == null) {
       throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid polynomial object in assign");
     }
-    var ca = p.evaluate () as Constant;
+    var ca = p.evaluate () as MathConstant;
     if (ca == null) {
       throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid polynomial evaluation in assign; should a constant no Variable update was done");
     }

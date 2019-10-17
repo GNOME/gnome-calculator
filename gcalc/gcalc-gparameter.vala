@@ -25,21 +25,21 @@ public class GCalc.GParameter : GCalc.GVariable, Parameter {
   }
 
   internal void set_value (GLib.Value val) throws GLib.Error {
-    Constant c = new GConstant.integer (0);
+    MathConstant c = new GConstant.integer (0);
     if (val.holds (GLib.Type.INT)) {
       c = new GConstant.integer ((int) val);
     } else if (val.holds (GLib.Type.DOUBLE)) {
       c = new GConstant.@double ((double) val);
     } else if (val.holds (GLib.Type.FLOAT)) {
       c = new GConstant.@double ((double) ((float) val));
-    } else if (val.type ().is_a (typeof (GCalc.Constant))) {
-      c = (GCalc.Constant) ((Object) val);
+    } else if (val.type ().is_a (typeof (GCalc.MathConstant))) {
+      c = (GCalc.MathConstant) ((Object) val);
     }
     @value = c;
   }
 
   internal GLib.Value get_value () {
-    var v = GLib.Value (typeof (GCalc.Constant));
+    var v = GLib.Value (typeof (GCalc.MathConstant));
     v = @value;
     return v;
   }

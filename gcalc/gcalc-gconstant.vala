@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GConstant : Expression, Constant {
+public class GCalc.GConstant : Expression, MathConstant {
   private MPC.Complex _complex = MPC.Complex (1000);
 
   internal unowned MPC.Complex get_complex () { return _complex; }
@@ -42,7 +42,7 @@ public class GCalc.GConstant : Expression, Constant {
     _complex.set_double (real, imag);
   }
 
-  // Constant Interface
+  // MathConstant Interface
   internal double real () {
     return _complex.get_real_double ();
   }
@@ -55,7 +55,7 @@ public class GCalc.GConstant : Expression, Constant {
     _complex.set_mpreal (r);
   }
 
-  internal Constant add (Constant c)
+  internal MathConstant add (MathConstant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
@@ -65,7 +65,7 @@ public class GCalc.GConstant : Expression, Constant {
     return new GConstant.internal_complex (res);
   }
 
-  internal Constant subtract (Constant c)
+  internal MathConstant subtract (MathConstant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
@@ -75,7 +75,7 @@ public class GCalc.GConstant : Expression, Constant {
     return new GConstant.internal_complex (res);
   }
 
-  internal Constant multiply (Constant c)
+  internal MathConstant multiply (MathConstant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
@@ -85,7 +85,7 @@ public class GCalc.GConstant : Expression, Constant {
     return new GConstant.internal_complex (res);
   }
 
-  internal Constant divide (Constant c)
+  internal MathConstant divide (MathConstant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);
@@ -95,14 +95,14 @@ public class GCalc.GConstant : Expression, Constant {
     return new GConstant.internal_complex (res);
   }
 
-  internal Constant neg ()
+  internal MathConstant neg ()
   {
     var res = MPC.Complex (1000);
     res.neg (_complex);
     return new GConstant.internal_complex (res);
   }
 
-  internal Constant pow (Constant c)
+  internal MathConstant pow (MathConstant c)
     requires (c is GConstant)
   {
     var res = MPC.Complex (1000);

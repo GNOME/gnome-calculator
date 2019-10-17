@@ -44,7 +44,7 @@ public interface GCalc.Function : Object, MathExpression {
   /**
    * Evaluate the function returning a resulting {@link MathExpression}.
    *
-   * In some cases return is a {@link Constant}
+   * In some cases return is a {@link MathConstant}
    */
   public abstract MathExpression evaluate () throws GLib.Error;
   /**

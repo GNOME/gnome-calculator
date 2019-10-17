@@ -19,7 +19,7 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 /**
- * Function to calculate arc cosine of a {@link Constant} in radians
+ * Function to calculate arc cosine of a {@link MathConstant} in radians
  */
 public class GCalc.GFunctionAcos : GFunction {
 

@@ -26,8 +26,8 @@ public interface GCalc.Term : Object, MathExpression {
     MathExpression res = new GErrorExpression ();
     var e = evaluate ();
     var e2 = t.evaluate ();
-    if (e is Constant && e2 is Constant) {
-      res = ((Constant) e).add ((Constant) e2);
+    if (e is MathConstant && e2 is MathConstant) {
+      res = ((MathConstant) e).add ((MathConstant) e2);
     }
     return res;
   }
@@ -47,13 +47,13 @@ public interface GCalc.Term : Object, MathExpression {
         }
         current_operator = e as MathOperator;
         continue;
-      } else if (e is Constant) {
+      } else if (e is MathConstant) {
         if (current == null) {
           current = e;
           first = false;
-        } else if (current is Constant) {
+        } else if (current is MathConstant) {
           if (current_operator != null) {
-            current = evaluate_constants ((Constant) current, (Constant) e, current_operator);
+            current = evaluate_constants ((MathConstant) current, (MathConstant) e, current_operator);
           }
         }
       } else if (e is Group) {
@@ -61,9 +61,9 @@ public interface GCalc.Term : Object, MathExpression {
         if (current == null) {
           current = ev;
           first = false;
-        } else if (current is Constant && ev is Constant) {
+        } else if (current is MathConstant && ev is MathConstant) {
           if (current_operator != null) {
-            current = evaluate_constants ((Constant) current, (Constant) ev, current_operator);
+            current = evaluate_constants ((MathConstant) current, (MathConstant) ev, current_operator);
           }
         }
       } else if (e is Function) {
@@ -71,9 +71,9 @@ public interface GCalc.Term : Object, MathExpression {
         if (current == null) {
           current = ev;
           first = false;
-        } else if (current is Constant && ev is Constant) {
+        } else if (current is MathConstant && ev is MathConstant) {
           if (current_operator != null) {
-            current = evaluate_constants ((Constant) current, (Constant) ev, current_operator);
+            current = evaluate_constants ((MathConstant) current, (MathConstant) ev, current_operator);
           }
         }
       } else if (e is Variable) {
@@ -81,9 +81,9 @@ public interface GCalc.Term : Object, MathExpression {
         if (current == null) {
           current = ev;
           first = false;
-        } else if (current is Constant && ev is Constant) {
+        } else if (current is MathConstant && ev is MathConstant) {
           if (current_operator != null) {
-            current = evaluate_constants ((Constant) current, (Constant) ev, current_operator);
+            current = evaluate_constants ((MathConstant) current, (MathConstant) ev, current_operator);
           }
         }
       }
@@ -93,7 +93,7 @@ public interface GCalc.Term : Object, MathExpression {
     }
     return current;
   }
-  public static MathExpression evaluate_constants (Constant c1, Constant c2, MathOperator op)
+  public static MathExpression evaluate_constants (MathConstant c1, MathConstant c2, MathOperator op)
     throws GLib.Error
   {
     MathExpression res = null;

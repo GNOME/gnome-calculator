@@ -39,7 +39,7 @@ class Tests {
         var t = p.expressions.get_item (0) as Term;
         assert (t != null);
         assert (t.expressions.get_n_items () == 1);
-        var c = t.expressions.get_item (0) as Constant;
+        var c = t.expressions.get_item (0) as MathConstant;
         assert (c != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -61,7 +61,7 @@ class Tests {
         var t = p.expressions.get_item (0) as Term;
         assert (t != null);
         assert (t.expressions.get_n_items () == 1);
-        var c = t.expressions.get_item (0) as Constant;
+        var c = t.expressions.get_item (0) as MathConstant;
         assert (c != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -100,7 +100,7 @@ class Tests {
         var t = p.expressions.get_item (0) as Term;
         assert (t != null);
         assert (t.expressions.get_n_items () == 1);
-        var c = t.expressions.get_item (0) as Constant;
+        var c = t.expressions.get_item (0) as MathConstant;
         assert (c != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -122,14 +122,14 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 1);
-        var c1 = t1.expressions.get_item (0) as Constant;
+        var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
         var t2 = p.expressions.get_item (1) as Term;
         assert (t2 != null);
         assert (t2.expressions.get_n_items () == 2);
         var plus = t2.expressions.get_item (0) as Plus;
         assert (plus != null);
-        var c2 = t2.expressions.get_item (1) as Constant;
+        var c2 = t2.expressions.get_item (1) as MathConstant;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -187,7 +187,7 @@ class Tests {
         assert (t2.expressions.get_n_items () == 2);
         var plus = t2.expressions.get_item (0) as Plus;
         assert (plus != null);
-        var c2 = t2.expressions.get_item (1) as Constant;
+        var c2 = t2.expressions.get_item (1) as MathConstant;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -209,7 +209,7 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 1);
-        var c1 = t1.expressions.get_item (0) as Constant;
+        var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
         var t2 = p.expressions.get_item (1) as Term;
         assert (t2 != null);
@@ -241,7 +241,7 @@ class Tests {
         assert (t1.expressions.get_n_items () == 2);
         var minus = t1.expressions.get_item (0) as Minus;
         assert (minus != null);
-        var c1 = t1.expressions.get_item (1) as Constant;
+        var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
         var t2 = p.expressions.get_item (1) as Term;
         assert (t2 != null);
@@ -255,7 +255,7 @@ class Tests {
         assert (t3.expressions.get_n_items () == 2);
         var plus2 = t3.expressions.get_item (0) as Plus;
         assert (plus2 != null);
-        var c3 = t3.expressions.get_item (1) as Constant;
+        var c3 = t3.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
         var t4 = p.expressions.get_item (3) as Term;
         assert (t4 != null);
@@ -287,7 +287,7 @@ class Tests {
         assert (t1.expressions.get_n_items () == 2);
         var minus = t1.expressions.get_item (0) as Minus;
         assert (minus != null);
-        var c1 = t1.expressions.get_item (1) as Constant;
+        var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
         var t2 = p.expressions.get_item (1) as Term;
         assert (t2 != null);
@@ -301,7 +301,7 @@ class Tests {
         assert (t3.expressions.get_n_items () == 2);
         var plus2 = t3.expressions.get_item (0) as Plus;
         assert (plus2 != null);
-        var c3 = t3.expressions.get_item (1) as Constant;
+        var c3 = t3.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
         var t4 = p.expressions.get_item (3) as Term;
         assert (t4 != null);
@@ -330,11 +330,11 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 3);
-        var c1 = t1.expressions.get_item (0) as Constant;
+        var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
         var m = t1.expressions.get_item (1) as Multiply;
         assert (m != null);
-        var c2 = t1.expressions.get_item (2) as Constant;
+        var c2 = t1.expressions.get_item (2) as MathConstant;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -386,7 +386,7 @@ class Tests {
         assert (t1.expressions.get_n_items () == 4);
         var minus = t1.expressions.get_item (0) as Minus;
         assert (minus != null);
-        var c1 = t1.expressions.get_item (1) as Constant;
+        var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
         var m1 = t1.expressions.get_item (2) as Multiply;
         assert (m1 != null);
@@ -397,7 +397,7 @@ class Tests {
         assert (t2.expressions.get_n_items () == 4);
         var plus = t2.expressions.get_item (0) as Plus;
         assert (plus != null);
-        var c3 = t2.expressions.get_item (1) as Constant;
+        var c3 = t2.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
         var m2 = t2.expressions.get_item (2) as Multiply;
         assert (m2 != null);
@@ -423,11 +423,11 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 3);
-        var c1 = t1.expressions.get_item (0) as Constant;
+        var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
         var m = t1.expressions.get_item (1) as Division;
         assert (m != null);
-        var c2 = t1.expressions.get_item (2) as Constant;
+        var c2 = t1.expressions.get_item (2) as MathConstant;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -479,7 +479,7 @@ class Tests {
         assert (t1.expressions.get_n_items () == 4);
         var minus = t1.expressions.get_item (0) as Minus;
         assert (minus != null);
-        var c1 = t1.expressions.get_item (1) as Constant;
+        var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
         var m1 = t1.expressions.get_item (2) as Division;
         assert (m1 != null);
@@ -490,7 +490,7 @@ class Tests {
         assert (t2.expressions.get_n_items () == 6);
         var plus = t2.expressions.get_item (0) as Plus;
         assert (plus != null);
-        var c3 = t2.expressions.get_item (1) as Constant;
+        var c3 = t2.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
         var m2 = t2.expressions.get_item (2) as Multiply;
         assert (m2 != null);
@@ -498,7 +498,7 @@ class Tests {
         assert (c4 != null);
         var m3 = t2.expressions.get_item (4) as Division;
         assert (m3 != null);
-        var c5 = t2.expressions.get_item (5) as Constant;
+        var c5 = t2.expressions.get_item (5) as MathConstant;
         assert (c5 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -506,7 +506,7 @@ class Tests {
     });
     Test.add_func ("/gcalc/parser/constant/to_string",
     ()=>{
-      Constant c = new GConstant.@double (-1.0) as Constant;
+      MathConstant c = new GConstant.@double (-1.0) as MathConstant;
       assert ("-1" in c.to_string ());
     });
     Test.add_func ("/gcalc/parser/term/parenthesis",
@@ -535,7 +535,7 @@ class Tests {
         var t1 = p1.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 1);
-        var c = t1.expressions.get_item (0) as Constant;
+        var c = t1.expressions.get_item (0) as MathConstant;
         assert (c != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -595,7 +595,7 @@ class Tests {
         var t11 = p1.expressions.get_item (0) as Term;
         assert (t11 != null);
         assert (t11.expressions.get_n_items () == 1);
-        var c1 = t11.expressions.get_item (0) as Constant;
+        var c1 = t11.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
         var t2 = p.expressions.get_item (1) as Term;
         assert (t2 != null);
@@ -612,7 +612,7 @@ class Tests {
         var t21 = p1.expressions.get_item (0) as Term;
         assert (t21 != null);
         assert (t21.expressions.get_n_items () == 1);
-        var c2 = t21.expressions.get_item (0) as Constant;
+        var c2 = t21.expressions.get_item (0) as MathConstant;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -634,7 +634,7 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 3);
-        var c1 = t1.expressions.get_item (0) as Constant;
+        var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
         var m1 = t1.expressions.get_item (1) as Multiply;
         assert (m1 != null);
@@ -648,7 +648,7 @@ class Tests {
         var tg1 = pg.expressions.get_item (0) as Term;
         assert (tg1 != null);
         assert (tg1.expressions.get_n_items () == 1);
-        var c2 = tg1.expressions.get_item (0) as Constant;
+        var c2 = tg1.expressions.get_item (0) as MathConstant;
         assert (c2 != null);
         var tg2 = pg.expressions.get_item (1) as Term;
         assert (tg2 != null);
@@ -656,7 +656,7 @@ class Tests {
         message (tg2.to_string ());
         var plus = tg2.expressions.get_item (0) as Plus;
         assert (plus != null);
-        var c3 = tg2.expressions.get_item (1) as Constant;
+        var c3 = tg2.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -688,7 +688,7 @@ class Tests {
         var tg1 = pg.expressions.get_item (0) as Term;
         assert (tg1 != null);
         assert (tg1.expressions.get_n_items () == 1);
-        var c2 = tg1.expressions.get_item (0) as Constant;
+        var c2 = tg1.expressions.get_item (0) as MathConstant;
         assert (c2 != null);
         var tg2 = pg.expressions.get_item (1) as Term;
         assert (tg2 != null);
@@ -696,11 +696,11 @@ class Tests {
         message (tg2.to_string ());
         var plus = tg2.expressions.get_item (0) as Plus;
         assert (plus != null);
-        var c3 = tg2.expressions.get_item (1) as Constant;
+        var c3 = tg2.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
         var m1 = t1.expressions.get_item (1) as Multiply;
         assert (m1 != null);
-        var c1 = t1.expressions.get_item (2) as Constant;
+        var c1 = t1.expressions.get_item (2) as MathConstant;
         assert (c1 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -751,7 +751,7 @@ class Tests {
         assert (t1 != null);
         message ("Terms: %u", t1.expressions.get_n_items ());
         assert (t1.expressions.get_n_items () == 1);
-        var c = t1.expressions.get_item (0) as Constant;
+        var c = t1.expressions.get_item (0) as MathConstant;
         assert (c != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -773,11 +773,11 @@ class Tests {
         var t = p.expressions.get_item (0) as Term;
         assert (t != null);
         assert (t.expressions.get_n_items () == 3);
-        var c1 = t.expressions.get_item (0) as Constant;
+        var c1 = t.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
         var pw = t.expressions.get_item (1) as Pow;
         assert (pw != null);
-        var c2 = t.expressions.get_item (2) as Constant;
+        var c2 = t.expressions.get_item (2) as MathConstant;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -799,7 +799,7 @@ class Tests {
         var t = p.expressions.get_item (0) as Term;
         assert (t != null);
         assert (t.expressions.get_n_items () == 3);
-        var c1 = t.expressions.get_item (0) as Constant;
+        var c1 = t.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
         var pw = t.expressions.get_item (1) as Pow;
         assert (pw != null);
@@ -833,7 +833,7 @@ class Tests {
         var t = e.expressions.get_item (0) as Term;
         assert (t != null);
         assert (t.expressions.get_n_items () == 1);
-        var c = t.expressions.get_item (0) as Constant;
+        var c = t.expressions.get_item (0) as MathConstant;
         assert (c != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -860,11 +860,11 @@ class Tests {
         var t1 = e.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 5);
-        var c1 = t1.expressions.get_item (0) as Constant;
+        var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
         var m1 = t1.expressions.get_item (1) as Multiply;
         assert (m1 != null);
-        var c2 = t1.expressions.get_item (2) as Constant;
+        var c2 = t1.expressions.get_item (2) as MathConstant;
         assert (c2 != null);
         var m2 = t1.expressions.get_item (3) as Multiply;
         assert (m2 != null);
@@ -875,7 +875,7 @@ class Tests {
         assert (t2.expressions.get_n_items () == 2);
         var pl = t2.expressions.get_item (0) as Plus;
         assert (pl != null);
-        var c3 = t2.expressions.get_item (1) as Constant;
+        var c3 = t2.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -941,7 +941,7 @@ class Tests {
         assert (e.expressions.get_n_items () == 1);
         var t = e.expressions.get_item (0) as Term;
         assert (t != null);
-        var c = t.expressions.get_item (0) as Constant;
+        var c = t.expressions.get_item (0) as MathConstant;
         assert (c != null);
         var eq2 = eqman.equations.get_item (1) as MathEquation;
         assert (eq2 != null);
@@ -979,7 +979,7 @@ class Tests {
         assert (e.expressions.get_n_items () == 1);
         var t = e.expressions.get_item (0) as Term;
         assert (t != null);
-        var c = t.expressions.get_item (0) as Constant;
+        var c = t.expressions.get_item (0) as MathConstant;
         assert (c != null);
         var eq2 = eqman.equations.get_item (1) as MathEquation;
         assert (eq2 != null);
@@ -1024,7 +1024,7 @@ class Tests {
         assert (e.expressions.get_n_items () == 1);
         var t = e.expressions.get_item (0) as Term;
         assert (t != null);
-        var c = t.expressions.get_item (0) as Constant;
+        var c = t.expressions.get_item (0) as MathConstant;
         assert (c != null);
         var eq2 = eqman.equations.get_item (1) as MathEquation;
         assert (eq2 != null);
@@ -1125,8 +1125,8 @@ class Tests {
         assert (eq != null);
         var r = eq.solve ();
         assert (r.expression != null);
-        assert (r.expression is Constant);
-        var cr = r.expression as Constant;
+        assert (r.expression is MathConstant);
+        var cr = r.expression as MathConstant;
         assert (cr != null);
         assert (cr.real () == 0.0);
         var p = eq.variables.find_named ("param1") as GCalc.Parameter;
@@ -1134,13 +1134,13 @@ class Tests {
         p.set_value (10.0);
         r = eq.solve ();
         assert (r.expression != null);
-        assert (r.expression is Constant);
-        cr = r.expression as Constant;
+        assert (r.expression is MathConstant);
+        cr = r.expression as MathConstant;
         assert (cr != null);
         assert (cr.real () == 10.0);
         var eq2 = eqman.equations.get_item (1) as MathEquation;
         assert (eq2 != null);
-        var cr2 = r.expression as Constant;
+        var cr2 = r.expression as MathConstant;
         assert (cr2 != null);
         assert (cr2.real () == 10.0);
       } catch (GLib.Error error) {

@@ -23,7 +23,7 @@
  * expected to be resolved as part of an {@link MathExpression} evaluation,
  * but by asigning its value.
  *
- * Currently the value will be converted to a {@link Constant} if possible.
+ * Currently the value will be converted to a {@link MathConstant} if possible.
  */
 public interface GCalc.Parameter : Object, MathExpression, Variable {
   public abstract void set_value (GLib.Value val) throws GLib.Error;

@@ -23,7 +23,7 @@
  */
 public interface GCalc.Variable : Object, MathExpression {
   public abstract string name { get; construct set; }
-  public abstract Constant @value { get; set; }
+  public abstract MathConstant @value { get; set; }
   public abstract Variable bind { get; set; }
   public virtual bool binded { get { return bind != null; } }
 
@@ -44,7 +44,7 @@ public interface GCalc.Variable : Object, MathExpression {
     if (e == null) {
       throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to Variable's expression definition. Unexpected object type");
     }
-    var exp = e.evaluate () as Constant;
+    var exp = e.evaluate () as MathConstant;
     if (exp == null) {
       throw new VariableError.EVALUATION_FAIL ("Variable evaluation fail. Variable's value not updated");
     }

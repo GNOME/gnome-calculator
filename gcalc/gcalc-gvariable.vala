@@ -21,7 +21,7 @@
 public class GCalc.GVariable : Expression, Variable, Hashable {
 
   public string name { get; construct set; }
-  internal Constant value { get; set; }
+  internal MathConstant value { get; set; }
   internal Variable bind { get; set; }
 
   construct {

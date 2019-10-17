@@ -354,7 +354,7 @@ public class GCalc.Parser : Object {
       current_parent = current;
       current = opp;
       expected.clear ();
-    } else if ((current is Constant || current is Variable)
+    } else if ((current is MathConstant || current is Variable)
                && current_parent is Term && top_parent is MathPolynomial) {
       // New term
       var t = new GTerm ();
@@ -392,7 +392,7 @@ public class GCalc.Parser : Object {
     if (current is MathOperator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
     }
-    if ((current is Constant || current is Variable || current is Group || current is Function)
+    if ((current is MathConstant || current is Variable || current is Group || current is Function)
         && current_parent is Term && top_parent is MathPolynomial) {
         current_parent.expressions.add (op);
         current = op;

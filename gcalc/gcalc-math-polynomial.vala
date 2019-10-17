@@ -40,8 +40,8 @@ public interface GCalc.MathPolynomial : Object, MathExpression {
           res = er;
           break;
         }
-        if (res is Constant && er is Constant) {
-          res = ((Constant) res).add ((Constant) er);
+        if (res is MathConstant && er is MathConstant) {
+          res = ((MathConstant) res).add ((MathConstant) er);
           break;
         }
       }
@@ -49,8 +49,8 @@ public interface GCalc.MathPolynomial : Object, MathExpression {
       current = null;
       if (res == null) {
         res = re;
-      } else if (res is Constant && re is Constant) {
-        res = ((Constant) res).add ((Constant) re);
+      } else if (res is MathConstant && re is MathConstant) {
+        res = ((MathConstant) res).add ((MathConstant) re);
       }
       if (res != null) {
       }

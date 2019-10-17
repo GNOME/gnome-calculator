@@ -89,14 +89,14 @@ class Tests {
         assert (e != null);
         var t = e.expressions.get_item (0) as Term;
         assert (t != null);
-        var c = t.expressions.get_item (0) as Constant;
+        var c = t.expressions.get_item (0) as MathConstant;
         assert (c != null);
         var res = c.solve ();
         assert (res != null);
         assert (res.expression != null);
-        var rc = res.expression as Constant;
+        var rc = res.expression as MathConstant;
         assert (rc != null);
-        message ("Constant Result: %s", rc.to_string ());
+        message ("MathConstant Result: %s", rc.to_string ());
         assert (rc.real () == 1.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -119,9 +119,9 @@ class Tests {
         assert (res.expression != null);
         message ("Result type: %s", res.expression.get_type ().name ());
         assert (!(res is ErrorResult));
-        var rc = res.expression as Constant;
+        var rc = res.expression as MathConstant;
         assert (rc != null);
-        message ("Constant Result: %s", rc.to_string ());
+        message ("MathConstant Result: %s", rc.to_string ());
         assert (rc.real () == 1.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -144,9 +144,9 @@ class Tests {
         assert (res.expression != null);
         message ("Result type: %s", res.expression.get_type ().name ());
         assert (!(res is ErrorResult));
-        var rc = res.expression as Constant;
+        var rc = res.expression as MathConstant;
         assert (rc != null);
-        message ("Constant Result: %s", rc.to_string ());
+        message ("MathConstant Result: %s", rc.to_string ());
         assert (rc.real () == 15.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -169,9 +169,9 @@ class Tests {
         assert (res.expression != null);
         message ("Result type: %s", res.expression.get_type ().name ());
         assert (!(res is ErrorResult));
-        var rc = res.expression as Constant;
+        var rc = res.expression as MathConstant;
         assert (rc != null);
-        message ("Constant Result: %s", rc.to_string ());
+        message ("MathConstant Result: %s", rc.to_string ());
         assert (rc.real () == 5.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -193,7 +193,7 @@ class Tests {
         var res = t1.add (t2);
         assert (res != null);
         message (res.get_type ().name ());
-        var c = res as Constant;
+        var c = res as MathConstant;
         assert (c != null);
         message (c.to_string ());
         assert (c.real () == 2.0);
@@ -215,7 +215,7 @@ class Tests {
         var res = e.evaluate ();
         assert (res != null);
         message (res.get_type ().name ());
-        var c = res as Constant;
+        var c = res as MathConstant;
         assert (c != null);
         message (c.to_string ());
         assert (c.real () == -2.0);
@@ -237,7 +237,7 @@ class Tests {
         var res = e.evaluate ();
         assert (res != null);
         message (res.get_type ().name ());
-        var c = res as Constant;
+        var c = res as MathConstant;
         assert (c != null);
         message (c.to_string ());
         assert (c.real () == 7.0);
@@ -260,9 +260,9 @@ class Tests {
         assert (t != null);
         var g = t.expressions.get_item (0) as Group;
         assert (g != null);
-        var res = g.evaluate () as Constant;
+        var res = g.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 1.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -279,9 +279,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 1.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -298,9 +298,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 5.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -317,9 +317,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 6.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -340,9 +340,9 @@ class Tests {
         assert (t != null);
         var g = t.expressions.get_item (0) as Group;
         assert (g != null);
-        var res = g.evaluate () as Constant;
+        var res = g.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 3.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -363,9 +363,9 @@ class Tests {
         assert (t != null);
         var g = t.expressions.get_item (0) as Group;
         assert (g != null);
-        var res = g.evaluate () as Constant;
+        var res = g.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 14.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -382,9 +382,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 5.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -401,9 +401,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 25.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -420,9 +420,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 26.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -439,9 +439,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 25.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -458,9 +458,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == -103.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -472,7 +472,7 @@ class Tests {
         var c1 = new GConstant.@double (9.0);
         var f = new GFunctionSqrt ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 3.0);
@@ -486,7 +486,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionExp ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 1.0);
@@ -500,7 +500,7 @@ class Tests {
         var c1 = new GConstant.@double (1.0);
         var f = new GFunctionLog ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -514,7 +514,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionSin ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -528,7 +528,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionCos ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 1.0);
@@ -542,7 +542,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionTan ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -556,7 +556,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionAsin ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -570,7 +570,7 @@ class Tests {
         var c1 = new GConstant.@double (1.0);
         var f = new GFunctionAcos ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -584,7 +584,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionAtan ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -598,7 +598,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionSinh ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -612,7 +612,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionCosh ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 1.0);
@@ -626,7 +626,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionTanh ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -640,7 +640,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionAsinh ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -654,7 +654,7 @@ class Tests {
         var c1 = new GConstant.@double (1.0);
         var f = new GFunctionAcosh ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -668,7 +668,7 @@ class Tests {
         var c1 = new GConstant.@double (0.0);
         var f = new GFunctionAtanh ();
         f.expressions.add (c1);
-        var c2 = f.evaluate () as Constant;
+        var c2 = f.evaluate () as MathConstant;
         assert (c2 != null);
         message (c2.to_string ());
         assert (c2.real () == 0.0);
@@ -692,9 +692,9 @@ class Tests {
         var f = t.expressions.get_item (0) as Function;
         assert (f != null);
         assert (f.closed);
-        var res = f.evaluate () as Constant;
+        var res = f.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 0.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -711,9 +711,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 0.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -730,9 +730,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 3.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -749,9 +749,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 3.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -768,9 +768,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 3.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -787,9 +787,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 1.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -806,9 +806,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 5.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -825,9 +825,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 5.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -844,9 +844,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 1.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -863,9 +863,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 2.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -882,9 +882,9 @@ class Tests {
         assert (eq != null);
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 3.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -902,9 +902,9 @@ class Tests {
         message ("Equation: %s", eq.to_string ());
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == -7.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -922,9 +922,9 @@ class Tests {
         message ("Equation: %s", eq.to_string ());
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 1.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -942,9 +942,9 @@ class Tests {
         message ("Equation: %s", eq.to_string ());
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 23.5);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -962,9 +962,9 @@ class Tests {
         message ("Equation: %s", eq.to_string ());
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 27.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -982,9 +982,9 @@ class Tests {
         message ("Equation: %s", eq.to_string ());
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 256.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -1002,9 +1002,9 @@ class Tests {
         message ("Equation: %s", eq.to_string ());
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 256.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -1022,9 +1022,9 @@ class Tests {
         message ("Equation: %s", eq.to_string ());
         var e = eq.expressions.get_item (0) as MathPolynomial;
         assert (e != null);
-        var res = e.evaluate () as Constant;
+        var res = e.evaluate () as MathConstant;
         assert (res != null);
-        message ("Constant Result: %s", res.to_string ());
+        message ("MathConstant Result: %s", res.to_string ());
         assert (res.real () == 28.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -1041,16 +1041,16 @@ class Tests {
         assert (eq != null);
         var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
-        var res1 = a.evaluate () as Constant;
+        var res1 = a.evaluate () as MathConstant;
         assert (res1 != null);
-        message ("Constant Result: %s", res1.to_string ());
+        message ("MathConstant Result: %s", res1.to_string ());
         assert (res1.real () == 3.0);
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
         assert (v != null);
-        var res2 = v.evaluate () as Constant;
+        var res2 = v.evaluate () as MathConstant;
         assert (res2 != null);
-        message ("Constant Result: %s", res2.to_string ());
+        message ("MathConstant Result: %s", res2.to_string ());
         assert (res2.real () == 3.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -1067,16 +1067,16 @@ class Tests {
         assert (eq != null);
         var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
-        var res1 = a.evaluate () as Constant;
+        var res1 = a.evaluate () as MathConstant;
         assert (res1 != null);
-        message ("Constant Result: %s", res1.to_string ());
+        message ("MathConstant Result: %s", res1.to_string ());
         assert (res1.real () == 48.0);
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
         assert (v != null);
-        var res2 = v.evaluate () as Constant;
+        var res2 = v.evaluate () as MathConstant;
         assert (res2 != null);
-        message ("Constant Result: %s", res2.to_string ());
+        message ("MathConstant Result: %s", res2.to_string ());
         assert (res2.real () == 48.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
@@ -1096,9 +1096,9 @@ class Tests {
           warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
-        assert (res.expression is Constant);
+        assert (res.expression is MathConstant);
         message ("Result: %s", res.expression.to_string ());
-        var c = res.expression as Constant;
+        var c = res.expression as MathConstant;
         assert (c != null);
         assert (c.real () == 3.0);
       } catch (GLib.Error e) {
@@ -1120,9 +1120,9 @@ class Tests {
           warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
-        assert (res.expression is Constant);
+        assert (res.expression is MathConstant);
         message ("Result: %s", res.expression.to_string ());
-        var c = res.expression as Constant;
+        var c = res.expression as MathConstant;
         assert (c != null);
         assert (c.real () == 3.0);
         var eq2 = eqman.equations.get_item (0) as MathEquation;
@@ -1132,9 +1132,9 @@ class Tests {
           warning ("Error: %s", (res2 as ErrorResult).message);
         }
         assert (res2.expression != null);
-        assert (res2.expression is Constant);
+        assert (res2.expression is MathConstant);
         message ("Result: %s", res2.expression.to_string ());
-        var c2 = res2.expression as Constant;
+        var c2 = res2.expression as MathConstant;
         assert (c2 != null);
         assert (c2.real () == 3.0);
       } catch (GLib.Error e) {
@@ -1156,9 +1156,9 @@ class Tests {
           warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
-        assert (res.expression is Constant);
+        assert (res.expression is MathConstant);
         message ("Result: %s", res.expression.to_string ());
-        var c = res.expression as Constant;
+        var c = res.expression as MathConstant;
         assert (c != null);
         assert (c.real () == 3.0);
         var eq2 = eqman.equations.get_item (0) as MathEquation;
@@ -1168,9 +1168,9 @@ class Tests {
           warning ("Error: %s", (res2 as ErrorResult).message);
         }
         assert (res2.expression != null);
-        assert (res2.expression is Constant);
+        assert (res2.expression is MathConstant);
         message ("Result: %s", res2.expression.to_string ());
-        var c2 = res2.expression as Constant;
+        var c2 = res2.expression as MathConstant;
         assert (c2 != null);
         assert (c2.real () == 3.0);
       } catch (GLib.Error e) {
@@ -1193,9 +1193,9 @@ class Tests {
           warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
-        assert (res.expression is Constant);
+        assert (res.expression is MathConstant);
         message ("Result: %s", res.expression.to_string ());
-        var c = res.expression as Constant;
+        var c = res.expression as MathConstant;
         assert (c != null);
         assert (c.real () == 3.0);
         var eq2 = eqman.equations.get_item (0) as MathEquation;
@@ -1205,9 +1205,9 @@ class Tests {
           warning ("Error: %s", (res2 as ErrorResult).message);
         }
         assert (res2.expression != null);
-        assert (res2.expression is Constant);
+        assert (res2.expression is MathConstant);
         message ("Result: %s", res2.expression.to_string ());
-        var c2 = res2.expression as Constant;
+        var c2 = res2.expression as MathConstant;
         assert (c2 != null);
         assert (c2.real () == 3.0);
         var eq3 = eqman.equations.get_item (2) as MathEquation;
@@ -1219,9 +1219,9 @@ class Tests {
         }
         assert (res3.expression != null);
         message ("Result Type: %s", res3.expression.get_type ().name ());
-        assert (res3.expression is Constant);
+        assert (res3.expression is MathConstant);
         message ("Result: %s", res3.expression.to_string ());
-        var c3 = res3.expression as Constant;
+        var c3 = res3.expression as MathConstant;
         assert (c3 != null);
         assert (c3.real () == 6.0);
       } catch (GLib.Error e) {
@@ -1244,9 +1244,9 @@ class Tests {
           warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
-        assert (res.expression is Constant);
+        assert (res.expression is MathConstant);
         message ("Result: %s", res.expression.to_string ());
-        var c = res.expression as Constant;
+        var c = res.expression as MathConstant;
         assert (c != null);
         assert (c.real () == 3.0);
         var eq2 = eqman.equations.get_item (0) as MathEquation;
@@ -1256,9 +1256,9 @@ class Tests {
           warning ("Error: %s", (res2 as ErrorResult).message);
         }
         assert (res2.expression != null);
-        assert (res2.expression is Constant);
+        assert (res2.expression is MathConstant);
         message ("Result: %s", res2.expression.to_string ());
-        var c2 = res2.expression as Constant;
+        var c2 = res2.expression as MathConstant;
         assert (c2 != null);
         assert (c2.real () == 3.0);
         var eq3 = eqman.equations.get_item (2) as MathEquation;
@@ -1270,9 +1270,9 @@ class Tests {
         }
         assert (res3.expression != null);
         message ("Result Type: %s", res3.expression.get_type ().name ());
-        assert (res3.expression is Constant);
+        assert (res3.expression is MathConstant);
         message ("Result: %s", res3.expression.to_string ());
-        var c3 = res3.expression as Constant;
+        var c3 = res3.expression as MathConstant;
         assert (c3 != null);
         assert (c3.real () == 30.0);
       } catch (GLib.Error e) {
@@ -1295,9 +1295,9 @@ class Tests {
           warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
-        assert (res.expression is Constant);
+        assert (res.expression is MathConstant);
         message ("Result: %s", res.expression.to_string ());
-        var c = res.expression as Constant;
+        var c = res.expression as MathConstant;
         assert (c != null);
         assert (c.real () == 3.0);
         var eq2 = eqman.equations.get_item (0) as MathEquation;
@@ -1307,9 +1307,9 @@ class Tests {
           warning ("Error: %s", (res2 as ErrorResult).message);
         }
         assert (res2.expression != null);
-        assert (res2.expression is Constant);
+        assert (res2.expression is MathConstant);
         message ("Result: %s", res2.expression.to_string ());
-        var c2 = res2.expression as Constant;
+        var c2 = res2.expression as MathConstant;
         assert (c2 != null);
         assert (c2.real () == 3.0);
         var eq3 = eqman.equations.get_item (2) as MathEquation;
@@ -1321,9 +1321,9 @@ class Tests {
         }
         assert (res3.expression != null);
         message ("Result Type: %s", res3.expression.get_type ().name ());
-        assert (res3.expression is Constant);
+        assert (res3.expression is MathConstant);
         message ("Result: %s", res3.expression.to_string ());
-        var c3 = res3.expression as Constant;
+        var c3 = res3.expression as MathConstant;
         assert (c3 != null);
         assert (c3.real () == 31.5);
       } catch (GLib.Error e) {
@@ -1347,9 +1347,9 @@ class Tests {
           warning ("Error: %s", (res as ErrorResult).message);
         }
         assert (res.expression != null);
-        assert (res.expression is Constant);
+        assert (res.expression is MathConstant);
         message ("Result: %s", res.expression.to_string ());
-        var c = res.expression as Constant;
+        var c = res.expression as MathConstant;
         assert (c != null);
         assert (c.real () == 3.0);
         var eq2 = eqman.equations.get_item (0) as MathEquation;
@@ -1359,9 +1359,9 @@ class Tests {
           warning ("Error: %s", (res2 as ErrorResult).message);
         }
         assert (res2.expression != null);
-        assert (res2.expression is Constant);
+        assert (res2.expression is MathConstant);
         message ("Result: %s", res2.expression.to_string ());
-        var c2 = res2.expression as Constant;
+        var c2 = res2.expression as MathConstant;
         assert (c2 != null);
         assert (c2.real () == 3.0);
         var eq3 = eqman.equations.get_item (2) as MathEquation;
@@ -1373,9 +1373,9 @@ class Tests {
         }
         assert (res3.expression != null);
         message ("Result Type: %s", res3.expression.get_type ().name ());
-        assert (res3.expression is Constant);
+        assert (res3.expression is MathConstant);
         message ("Result: %s", res3.expression.to_string ());
-        var c3 = res3.expression as Constant;
+        var c3 = res3.expression as MathConstant;
         assert (c3 != null);
         assert (c3.real () == 31.5);
         var eq4 = eqman.equations.get_item (3) as MathEquation;
@@ -1387,9 +1387,9 @@ class Tests {
         }
         assert (res4.expression != null);
         message ("Result Type: %s", res4.expression.get_type ().name ());
-        assert (res4.expression is Constant);
+        assert (res4.expression is MathConstant);
         message ("Result: %s", res4.expression.to_string ());
-        var c4 = res4.expression as Constant;
+        var c4 = res4.expression as MathConstant;
         assert (c4 != null);
         assert (c4.real () == 8.16);
       } catch (GLib.Error e) {
