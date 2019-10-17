@@ -287,7 +287,7 @@ public class GCalc.Parser : Object {
           }
           break;
         case TokenType.CARRET:
-          var op = new GPow ();
+          var op = new Pow ();
           if (current == null) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression trying power expression");
           } else {

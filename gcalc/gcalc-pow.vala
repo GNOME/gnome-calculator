@@ -1,4 +1,4 @@
-/* gcalc-gpow.vala
+/* gcalc-pow.vala
  *
  * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GPow : Expression, MathOperator, MathPow {
+public class GCalc.Pow : Expression, MathOperator, MathPow {
   internal override string to_string () {
     return "^";
   }
