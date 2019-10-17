@@ -51,7 +51,7 @@ public class GCalc.Parser : Object {
    */
   public void parse (string str, MathEquationManager eqman) throws GLib.Error {
     TokenType token = TokenType.NONE;
-    GMathEquation eq = new GMathEquation ();
+    Equation eq = new Equation ();
     scanner.input_text (str, str.length);
     current = null;
     current_parent = null;
@@ -334,7 +334,7 @@ public class GCalc.Parser : Object {
     }
     eqman.equations.add (eq);
   }
-  private void process_operator (MathOperator opp, GMathEquation eq) throws GLib.Error {
+  private void process_operator (MathOperator opp, Equation eq) throws GLib.Error {
     if (current is MathBinaryOperator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a plus operator");
     }
@@ -388,7 +388,7 @@ public class GCalc.Parser : Object {
       expected.clear ();
     }
   }
-  private void process_term_operator (MathOperator op, GMathEquation eq) throws GLib.Error {
+  private void process_term_operator (MathOperator op, Equation eq) throws GLib.Error {
     if (current is MathOperator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
     }

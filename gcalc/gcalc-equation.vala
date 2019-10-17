@@ -1,4 +1,4 @@
-/* gcalc-gmath-equation.vala
+/* gcalc-quation.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMathEquation : Expression, MathEquation {
+public class GCalc.Equation : Expression, MathEquation {
   ExpressionHashMap _variables = new ExpressionHashMap ();
   internal ExpressionHashMap variables { get { return _variables; } }
   internal override Result solve () {
