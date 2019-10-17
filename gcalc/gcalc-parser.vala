@@ -174,7 +174,7 @@ public class GCalc.Parser : Object {
           process_operator (opp, eq);
           break;
         case TokenType.DIV:
-          var op = new GDivision ();
+          var op = new Division ();
           process_term_operator (op, eq);
           break;
         case TokenType.MINUS:

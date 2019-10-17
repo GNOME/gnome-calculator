@@ -1,4 +1,4 @@
-/* gcalc-gplus.vala
+/* gcalc-division.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GDivision : Expression, MathOperator, MathBinaryOperator, MathDivision {
+public class GCalc.Division : Expression, MathOperator, MathBinaryOperator, MathDivision {
   internal override string to_string () {
     return "/";
   }
