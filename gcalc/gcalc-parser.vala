@@ -74,7 +74,7 @@ public class GCalc.Parser : Object {
             if (current == null) {
               var exp = new Polynomial ();
               eq.expressions.add (exp);
-              var t = new GTerm ();
+              var t = new Term ();
               exp.expressions.add (t);
               t.expressions.add (sfunc);
               current = sfunc;
@@ -117,7 +117,7 @@ public class GCalc.Parser : Object {
             if (current == null) {
               var exp = new Polynomial ();
               eq.expressions.add (exp);
-              var t = new GTerm ();
+              var t = new Term ();
               exp.expressions.add (t);
               t.expressions.add (v);
               current = v;
@@ -147,7 +147,7 @@ public class GCalc.Parser : Object {
           if (current == null) {
             var exp = new Polynomial ();
             eq.expressions.add (exp);
-            var t = new GTerm ();
+            var t = new Term ();
             exp.expressions.add (t);
             t.expressions.add (cexp);
             current = cexp;
@@ -213,7 +213,7 @@ public class GCalc.Parser : Object {
             expa.expressions.add (current);
             var exp = new Polynomial ();
             expa.expressions.add (exp);
-            var t = new GTerm ();
+            var t = new Term ();
             exp.expressions.add (t);
             current = t;
             current_parent = t;
@@ -225,12 +225,12 @@ public class GCalc.Parser : Object {
           if (current == null) {
             var exp = new Polynomial ();
             eq.expressions.add (exp);
-            var t = new GTerm ();
+            var t = new Term ();
             exp.expressions.add (t);
             var g = new Group ();
             t.expressions.add (g);
             var exp2 = new Polynomial ();
-            var t2 = new GTerm ();
+            var t2 = new Term ();
             exp2.expressions.add (t2);
             g.expressions.add (exp2);
             current = t2;
@@ -238,7 +238,7 @@ public class GCalc.Parser : Object {
             top_parent = g;
           } else if (current is MathFunction) {
             var fexp = new Polynomial ();
-            var t = new GTerm ();
+            var t = new Term ();
             fexp.expressions.add (t);
             current.expressions.add (fexp);
             top_parent = current;
@@ -250,7 +250,7 @@ public class GCalc.Parser : Object {
             current_parent.expressions.add (g);
             var exp = new Polynomial ();
             g.expressions.add (exp);
-            var t = new GTerm ();
+            var t = new Term ();
             exp.expressions.add (t);
             current = t;
             current_parent = exp;
@@ -340,7 +340,7 @@ public class GCalc.Parser : Object {
     }
     if (current == null) {
       var exp = new Polynomial ();
-      var t = new GTerm ();
+      var t = new Term ();
       t.expressions.add (opp);
       exp.expressions.add (t);
       current = opp;
@@ -357,7 +357,7 @@ public class GCalc.Parser : Object {
     } else if ((current is MathConstant || current is Variable)
                && current_parent is MathTerm && top_parent is MathPolynomial) {
       // New term
-      var t = new GTerm ();
+      var t = new Term ();
       t.expressions.add (opp);
       top_parent.expressions.add (t);
       current = opp;
@@ -365,7 +365,7 @@ public class GCalc.Parser : Object {
       expected.clear ();
     } else if ((current is MathGroup || current is MathFunction) && current_parent is MathTerm && top_parent is MathPolynomial) {
       // New term
-      var t = new GTerm ();
+      var t = new Term ();
       t.expressions.add (opp);
       top_parent.expressions.add (t);
       current = opp;
@@ -376,10 +376,10 @@ public class GCalc.Parser : Object {
       // New MathPolynomial
       var exp = new Polynomial ();
       eq.expressions.add (exp);
-      var t = new GTerm ();
+      var t = new Term ();
       exp.expressions.add (t);
       t.expressions.add (current);
-      var t2 = new GTerm ();
+      var t2 = new Term ();
       exp.expressions.add (t2);
       t2.expressions.add (opp);
       current = opp;
@@ -401,7 +401,7 @@ public class GCalc.Parser : Object {
       // New MathPolynomial
       var exp = new Polynomial ();
       eq.expressions.add (exp);
-      var t = new GTerm ();
+      var t = new Term ();
       exp.expressions.add (t);
       t.expressions.add (current);
       t.expressions.add (op);

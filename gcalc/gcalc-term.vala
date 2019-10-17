@@ -1,4 +1,4 @@
-/* gcalc-gterm.vala
+/* gcalc-term.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GTerm : Expression, MathTerm {
+public class GCalc.Term : Expression, MathTerm {
   internal override MathResult solve () {
     MathResult res = null;
     try {
