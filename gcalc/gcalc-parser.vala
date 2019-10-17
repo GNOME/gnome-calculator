@@ -227,7 +227,7 @@ public class GCalc.Parser : Object {
             eq.expressions.add (exp);
             var t = new GTerm ();
             exp.expressions.add (t);
-            var g = new GGroup ();
+            var g = new Group ();
             t.expressions.add (g);
             var exp2 = new Polynomial ();
             var t2 = new GTerm ();
@@ -246,7 +246,7 @@ public class GCalc.Parser : Object {
             current_parent = fexp;
             expected.clear ();
           } else if (current is MathOperator && current_parent is Term && top_parent is MathPolynomial) {
-            var g = new GGroup ();
+            var g = new Group ();
             current_parent.expressions.add (g);
             var exp = new Polynomial ();
             g.expressions.add (exp);
