@@ -1,4 +1,4 @@
-/* gcalc-gmultiply.vala
+/* gcalc-multiply.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMultiply : Expression, MathOperator, MathBinaryOperator, MathMultiply {
+public class GCalc.Multiply : Expression, MathOperator, MathBinaryOperator, MathMultiply {
   internal override string to_string () {
     return "*";
   }

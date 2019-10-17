@@ -166,7 +166,7 @@ public class GCalc.Parser : Object {
           }
           break;
         case TokenType.STAR:
-          var op = new GMultiply ();
+          var op = new Multiply ();
           process_term_operator (op, eq);
           break;
         case TokenType.PLUS:

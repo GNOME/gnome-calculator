@@ -1,4 +1,4 @@
-/* gcalc-multiply.vala
+/* gcalc-math-multiply.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
