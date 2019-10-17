@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionCos : GFunction {
+public class GCalc.GFunctionCos : Function {
 
   construct {
     name = "cos";

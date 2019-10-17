@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunctionSinh : GFunction {
+public class GCalc.GFunctionSinh : Function {
 
   construct {
     name = "sinh";

@@ -1,4 +1,4 @@
-/* gcalc-gfunction.vala
+/* gcalc-function.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunction : Expression, MathFunction, Hashable {
+public class GCalc.Function : Expression, MathFunction, Hashable {
   ExpressionContainer _param_types = new ExpressionContainer ();
 
   internal ExpressionContainer param_types { get { return _param_types; } }
@@ -29,7 +29,7 @@ public class GCalc.GFunction : Expression, MathFunction, Hashable {
   construct {
     name = "NoName";
   }
-  public GFunction.with_name (string name, int nparams) {
+  public Function.with_name (string name, int nparams) {
     this.name = name;
     n_params = nparams;
   }
