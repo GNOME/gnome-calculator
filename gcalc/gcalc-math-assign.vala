@@ -29,7 +29,7 @@ public interface GCalc.MathAssign : Object, MathExpression, MathOperator, MathBi
     if (expressions.get_n_items () != 2) {
       throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid number of expressions in assign");
     }
-    var v = expressions.get_item (0) as Variable;
+    var v = expressions.get_item (0) as MathVariable;
     if (v == null) {
       throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid variable object in assign");
     }

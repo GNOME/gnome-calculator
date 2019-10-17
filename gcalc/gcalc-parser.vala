@@ -103,16 +103,16 @@ public class GCalc.Parser : Object {
               v = new Parameter (n) as MathExpression;
               enable_parameter = false;
             }
-            var sv = eqman.find_variable (n) as Variable;
+            var sv = eqman.find_variable (n) as MathVariable;
             if (sv == null) {
-              sv = eq.variables.find_named (n) as Variable;
+              sv = eq.variables.find_named (n) as MathVariable;
               if (sv == null) {
                 eq.variables.add (v);
               } else {
-                ((Variable) v).bind = sv;
+                ((MathVariable) v).bind = sv;
               }
             } else {
-              ((Variable) v).bind = sv;
+              ((MathVariable) v).bind = sv;
             }
             if (current == null) {
               var exp = new Polynomial ();
@@ -186,7 +186,7 @@ public class GCalc.Parser : Object {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for an assignment");
           } else if (current is MathPolynomial) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression: can't set a value to a polynomial");
-          } else if (current is Variable) {
+          } else if (current is MathVariable) {
             bool removed = false;
             if (current.parent != null) {
               if (current.parent is MathTerm) {
@@ -354,7 +354,7 @@ public class GCalc.Parser : Object {
       current_parent = current;
       current = opp;
       expected.clear ();
-    } else if ((current is MathConstant || current is Variable)
+    } else if ((current is MathConstant || current is MathVariable)
                && current_parent is MathTerm && top_parent is MathPolynomial) {
       // New term
       var t = new Term ();
@@ -372,7 +372,7 @@ public class GCalc.Parser : Object {
       current_parent = t;
       top_parent = current_parent.parent;
       expected.clear ();
-    } else if (current is Variable && current_parent == null) {
+    } else if (current is MathVariable && current_parent == null) {
       // New MathPolynomial
       var exp = new Polynomial ();
       eq.expressions.add (exp);
@@ -392,12 +392,12 @@ public class GCalc.Parser : Object {
     if (current is MathOperator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
     }
-    if ((current is MathConstant || current is Variable || current is MathGroup || current is MathFunction)
+    if ((current is MathConstant || current is MathVariable || current is MathGroup || current is MathFunction)
         && current_parent is MathTerm && top_parent is MathPolynomial) {
         current_parent.expressions.add (op);
         current = op;
         expected.clear ();
-    } else if (current is Variable && current_parent == null) {
+    } else if (current is MathVariable && current_parent == null) {
       // New MathPolynomial
       var exp = new Polynomial ();
       eq.expressions.add (exp);

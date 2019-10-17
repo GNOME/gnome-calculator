@@ -23,7 +23,7 @@ public class GCalc.Assign : Expression, MathOperator, MathBinaryOperator, MathAs
     if (expressions.get_n_items () != 2) {
       return "Invalid Assigment structure";
     }
-    var v = expressions.get_item (0) as Variable;
+    var v = expressions.get_item (0) as MathVariable;
     if (v == null) {
       return "Invalid Assigment structure. No variable is set";
     }

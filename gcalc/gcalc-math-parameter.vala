@@ -19,13 +19,13 @@
  *      Daniel Espinosa <esodan@gmail.com>
  */
 /**
- * A parameter is a {@link Variable} holding a value, that is not
+ * A parameter is a {@link MathVariable} holding a value, that is not
  * expected to be resolved as part of an {@link MathExpression} evaluation,
  * but by asigning its value.
  *
  * Currently the value will be converted to a {@link MathConstant} if possible.
  */
-public interface GCalc.MathParameter : Object, MathExpression, Variable {
+public interface GCalc.MathParameter : Object, MathExpression, MathVariable {
   public abstract void set_value (GLib.Value val) throws GLib.Error;
   public abstract GLib.Value get_value ();
 }

@@ -76,8 +76,8 @@ public interface GCalc.MathTerm : Object, MathExpression {
             current = evaluate_constants ((MathConstant) current, (MathConstant) ev, current_operator);
           }
         }
-      } else if (e is Variable) {
-        var ev = ((Variable) e).evaluate ();
+      } else if (e is MathVariable) {
+        var ev = ((MathVariable) e).evaluate ();
         if (current == null) {
           current = ev;
           first = false;

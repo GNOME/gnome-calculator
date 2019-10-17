@@ -1,4 +1,4 @@
-/* gcalc-variable.vala
+/* gcalc-math-variable.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -21,10 +21,10 @@
 /**
  * A variable that can be evaluated from an {@link MathExpression}
  */
-public interface GCalc.Variable : Object, MathExpression {
+public interface GCalc.MathVariable : Object, MathExpression {
   public abstract string name { get; construct set; }
   public abstract MathConstant @value { get; set; }
-  public abstract Variable bind { get; set; }
+  public abstract MathVariable bind { get; set; }
   public virtual bool binded { get { return bind != null; } }
 
   public virtual MathExpression evaluate () throws GLib.Error {
@@ -35,18 +35,18 @@ public interface GCalc.Variable : Object, MathExpression {
       return @value;
     }
     if (parent == null) {
-      throw new VariableError.INVALID_PARENT ("Can't access to Variable's expression definition. Invalid parent. Expected Assign operator");
+      throw new VariableError.INVALID_PARENT ("Can't access to MathVariable's expression definition. Invalid parent. Expected Assign operator");
     }
     if (parent.expressions.get_n_items () != 2) {
-      throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to Variable's expression definition. Expression not found");
+      throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to MathVariable's expression definition. Expression not found");
     }
     var e = parent.expressions.get_item (1) as MathPolynomial;
     if (e == null) {
-      throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to Variable's expression definition. Unexpected object type");
+      throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to MathVariable's expression definition. Unexpected object type");
     }
     var exp = e.evaluate () as MathConstant;
     if (exp == null) {
-      throw new VariableError.EVALUATION_FAIL ("Variable evaluation fail. Variable's value not updated");
+      throw new VariableError.EVALUATION_FAIL ("MathVariable evaluation fail. MathVariable's value not updated");
     }
     @value = exp;
     return exp;

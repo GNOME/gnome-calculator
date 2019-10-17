@@ -1046,7 +1046,7 @@ class Tests {
         message ("MathConstant Result: %s", res1.to_string ());
         assert (res1.real () == 3.0);
         assert (a.expressions.get_n_items () == 2);
-        var v = a.expressions.get_item (0) as Variable;
+        var v = a.expressions.get_item (0) as MathVariable;
         assert (v != null);
         var res2 = v.evaluate () as MathConstant;
         assert (res2 != null);
@@ -1072,7 +1072,7 @@ class Tests {
         message ("MathConstant Result: %s", res1.to_string ());
         assert (res1.real () == 48.0);
         assert (a.expressions.get_n_items () == 2);
-        var v = a.expressions.get_item (0) as Variable;
+        var v = a.expressions.get_item (0) as MathVariable;
         assert (v != null);
         var res2 = v.evaluate () as MathConstant;
         assert (res2 != null);

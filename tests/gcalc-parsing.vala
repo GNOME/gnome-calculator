@@ -91,7 +91,7 @@ class Tests {
         var assign = eq.expressions.get_item (0) as MathAssign;
         assert (assign != null);
         assert (assign.expressions.get_n_items () == 2);
-        var v = assign.expressions.get_item (0) as Variable;
+        var v = assign.expressions.get_item (0) as MathVariable;
         assert (v != null);
         assert (v.name == "var");
         var p = assign.expressions.get_item (1) as MathPolynomial;
@@ -151,14 +151,14 @@ class Tests {
         var t1 = p.expressions.get_item (0) as MathTerm;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 1);
-        var c1 = t1.expressions.get_item (0) as Variable;
+        var c1 = t1.expressions.get_item (0) as MathVariable;
         assert (c1 != null);
         var t2 = p.expressions.get_item (1) as MathTerm;
         assert (t2 != null);
         assert (t2.expressions.get_n_items () == 2);
         var plus = t2.expressions.get_item (0) as MathPlus;
         assert (plus != null);
-        var c2 = t2.expressions.get_item (1) as Variable;
+        var c2 = t2.expressions.get_item (1) as MathVariable;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -180,7 +180,7 @@ class Tests {
         var t1 = p.expressions.get_item (0) as MathTerm;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 1);
-        var c1 = t1.expressions.get_item (0) as Variable;
+        var c1 = t1.expressions.get_item (0) as MathVariable;
         assert (c1 != null);
         var t2 = p.expressions.get_item (1) as MathTerm;
         assert (t2 != null);
@@ -216,7 +216,7 @@ class Tests {
         assert (t2.expressions.get_n_items () == 2);
         var plus = t2.expressions.get_item (0) as MathPlus;
         assert (plus != null);
-        var c2 = t2.expressions.get_item (1) as Variable;
+        var c2 = t2.expressions.get_item (1) as MathVariable;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -248,7 +248,7 @@ class Tests {
         assert (t2.expressions.get_n_items () == 2);
         var plus = t2.expressions.get_item (0) as MathPlus;
         assert (plus != null);
-        var c2 = t2.expressions.get_item (1) as Variable;
+        var c2 = t2.expressions.get_item (1) as MathVariable;
         assert (c2 != null);
         var t3 = p.expressions.get_item (2) as MathTerm;
         assert (t3 != null);
@@ -262,7 +262,7 @@ class Tests {
         assert (t4.expressions.get_n_items () == 2);
         var plus3 = t4.expressions.get_item (0) as MathPlus;
         assert (plus3 != null);
-        var c4 = t4.expressions.get_item (1) as Variable;
+        var c4 = t4.expressions.get_item (1) as MathVariable;
         assert (c4 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -294,7 +294,7 @@ class Tests {
         assert (t2.expressions.get_n_items () == 2);
         var plus = t2.expressions.get_item (0) as MathPlus;
         assert (plus != null);
-        var c2 = t2.expressions.get_item (1) as Variable;
+        var c2 = t2.expressions.get_item (1) as MathVariable;
         assert (c2 != null);
         var t3 = p.expressions.get_item (2) as MathTerm;
         assert (t3 != null);
@@ -308,7 +308,7 @@ class Tests {
         assert (t4.expressions.get_n_items () == 2);
         var minus2 = t4.expressions.get_item (0) as MathMinus;
         assert (minus2 != null);
-        var c4 = t4.expressions.get_item (1) as Variable;
+        var c4 = t4.expressions.get_item (1) as MathVariable;
         assert (c4 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -357,11 +357,11 @@ class Tests {
         var t1 = p.expressions.get_item (0) as MathTerm;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 3);
-        var c1 = t1.expressions.get_item (0) as Variable;
+        var c1 = t1.expressions.get_item (0) as MathVariable;
         assert (c1 != null);
         var m = t1.expressions.get_item (1) as MathMultiply;
         assert (m != null);
-        var c2 = t1.expressions.get_item (2) as Variable;
+        var c2 = t1.expressions.get_item (2) as MathVariable;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -390,7 +390,7 @@ class Tests {
         assert (c1 != null);
         var m1 = t1.expressions.get_item (2) as MathMultiply;
         assert (m1 != null);
-        var c2 = t1.expressions.get_item (3) as Variable;
+        var c2 = t1.expressions.get_item (3) as MathVariable;
         assert (c2 != null);
         var t2 = p.expressions.get_item (1) as MathTerm;
         assert (t2 != null);
@@ -401,7 +401,7 @@ class Tests {
         assert (c3 != null);
         var m2 = t2.expressions.get_item (2) as MathMultiply;
         assert (m2 != null);
-        var c4 = t2.expressions.get_item (3) as Variable;
+        var c4 = t2.expressions.get_item (3) as MathVariable;
         assert (c4 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -450,11 +450,11 @@ class Tests {
         var t1 = p.expressions.get_item (0) as MathTerm;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 3);
-        var c1 = t1.expressions.get_item (0) as Variable;
+        var c1 = t1.expressions.get_item (0) as MathVariable;
         assert (c1 != null);
         var m = t1.expressions.get_item (1) as MathDivision;
         assert (m != null);
-        var c2 = t1.expressions.get_item (2) as Variable;
+        var c2 = t1.expressions.get_item (2) as MathVariable;
         assert (c2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -483,7 +483,7 @@ class Tests {
         assert (c1 != null);
         var m1 = t1.expressions.get_item (2) as MathDivision;
         assert (m1 != null);
-        var c2 = t1.expressions.get_item (3) as Variable;
+        var c2 = t1.expressions.get_item (3) as MathVariable;
         assert (c2 != null);
         var t2 = p.expressions.get_item (1) as MathTerm;
         assert (t2 != null);
@@ -494,7 +494,7 @@ class Tests {
         assert (c3 != null);
         var m2 = t2.expressions.get_item (2) as MathMultiply;
         assert (m2 != null);
-        var c4 = t2.expressions.get_item (3) as Variable;
+        var c4 = t2.expressions.get_item (3) as MathVariable;
         assert (c4 != null);
         var m3 = t2.expressions.get_item (4) as MathDivision;
         assert (m3 != null);
@@ -825,7 +825,7 @@ class Tests {
         var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
-        var v = a.expressions.get_item (0) as Variable;
+        var v = a.expressions.get_item (0) as MathVariable;
         assert (v != null);
         var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
@@ -852,7 +852,7 @@ class Tests {
         var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
-        var v = a.expressions.get_item (0) as Variable;
+        var v = a.expressions.get_item (0) as MathVariable;
         assert (v != null);
         var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
@@ -934,7 +934,7 @@ class Tests {
         var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
-        var v = a.expressions.get_item (0) as Variable;
+        var v = a.expressions.get_item (0) as MathVariable;
         assert (v != null);
         var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
@@ -952,7 +952,7 @@ class Tests {
         assert (e2.expressions.get_n_items () == 1);
         var t2 = e2.expressions.get_item (0) as MathTerm;
         assert (t2 != null);
-        var v2 = t2.expressions.get_item (0) as Variable;
+        var v2 = t2.expressions.get_item (0) as MathVariable;
         assert (v2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -972,7 +972,7 @@ class Tests {
         var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
-        var v = a.expressions.get_item (0) as Variable;
+        var v = a.expressions.get_item (0) as MathVariable;
         assert (v != null);
         var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
@@ -988,14 +988,14 @@ class Tests {
         var a2 = eq2.expressions.get_item (0) as MathAssign;
         assert (a2 != null);
         assert (a2.expressions.get_n_items () == 2);
-        var v2 = a2.expressions.get_item (0) as Variable;
+        var v2 = a2.expressions.get_item (0) as MathVariable;
         assert (v2 != null);
         var e2 = a2.expressions.get_item (1) as MathPolynomial;
         assert (e2 != null);
         assert (e2.expressions.get_n_items () == 1);
         var t2 = e2.expressions.get_item (0) as MathTerm;
         assert (t2 != null);
-        var v3 = t2.expressions.get_item (0) as Variable;
+        var v3 = t2.expressions.get_item (0) as MathVariable;
         assert (v3 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -1017,7 +1017,7 @@ class Tests {
         var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
-        var v = a.expressions.get_item (0) as Variable;
+        var v = a.expressions.get_item (0) as MathVariable;
         assert (v != null);
         var e = a.expressions.get_item (1) as MathPolynomial;
         assert (e != null);
@@ -1033,14 +1033,14 @@ class Tests {
         var a2 = eq2.expressions.get_item (0) as MathAssign;
         assert (a2 != null);
         assert (a2.expressions.get_n_items () == 2);
-        var v2 = a2.expressions.get_item (0) as Variable;
+        var v2 = a2.expressions.get_item (0) as MathVariable;
         assert (v2 != null);
         var e2 = a2.expressions.get_item (1) as MathPolynomial;
         assert (e2 != null);
         assert (e2.expressions.get_n_items () == 1);
         var t2 = e2.expressions.get_item (0) as MathTerm;
         assert (t2 != null);
-        var v3 = t2.expressions.get_item (0) as Variable;
+        var v3 = t2.expressions.get_item (0) as MathVariable;
         assert (v3 != null);
         var eq3 = eqman.equations.get_item (2) as MathEquation;
         assert (eq3 != null);
@@ -1049,7 +1049,7 @@ class Tests {
         var a3 = eq3.expressions.get_item (0) as MathAssign;
         assert (a3 != null);
         assert (a3.expressions.get_n_items () == 2);
-        var v4 = a3.expressions.get_item (0) as Variable;
+        var v4 = a3.expressions.get_item (0) as MathVariable;
         assert (v4 != null);
         var e3 = a3.expressions.get_item (1) as MathPolynomial;
         assert (e3 != null);
@@ -1058,14 +1058,14 @@ class Tests {
         var t3 = e3.expressions.get_item (0) as MathTerm;
         assert (t3 != null);
         assert (t3.expressions.get_n_items () == 1);
-        var v5 = t3.expressions.get_item (0) as Variable;
+        var v5 = t3.expressions.get_item (0) as MathVariable;
         assert (v5 != null);
         var t4 = e3.expressions.get_item (1) as MathTerm;
         assert (t4 != null);
         assert (t4.expressions.get_n_items () == 2);
         var plus = t4.expressions.get_item (0) as MathPlus;
         assert (plus != null);
-        var v6 = t4.expressions.get_item (1) as Variable;
+        var v6 = t4.expressions.get_item (1) as MathVariable;
         assert (v6 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
@@ -1085,7 +1085,7 @@ class Tests {
         var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
-        var v = a.expressions.get_item (0) as Variable;
+        var v = a.expressions.get_item (0) as MathVariable;
         assert (v != null);
         assert (v.name == "x");
         var e = a.expressions.get_item (1) as MathPolynomial;
@@ -1093,7 +1093,7 @@ class Tests {
         assert (e.expressions.get_n_items () == 1);
         var t = e.expressions.get_item (0) as MathTerm;
         assert (t != null);
-        var ev = t.expressions.get_item (0) as Variable;
+        var ev = t.expressions.get_item (0) as MathVariable;
         assert (ev != null);
         var p = ev as GCalc.MathParameter;
         assert (p != null);
@@ -1107,7 +1107,7 @@ class Tests {
         assert (e2.expressions.get_n_items () == 1);
         var t2 = e2.expressions.get_item (0) as MathTerm;
         assert (t2 != null);
-        var v2 = t2.expressions.get_item (0) as Variable;
+        var v2 = t2.expressions.get_item (0) as MathVariable;
         assert (v2 != null);
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);

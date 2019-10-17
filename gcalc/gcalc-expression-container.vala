@@ -62,12 +62,12 @@ public class GCalc.ExpressionContainer : Gee.ArrayList<MathExpression>, GLib.Lis
   }
 
   public MathExpression? find (MathExpression exp) {
-    unowned Variable? variable = exp as Variable;
+    unowned MathVariable? variable = exp as MathVariable;
     if (variable == null) {
       return null;
     }
     foreach (MathExpression e in this) {
-      if (e is Variable && ((Variable) e).name == variable.name) {
+      if (e is MathVariable && ((MathVariable) e).name == variable.name) {
         return e;
       }
     }
@@ -76,7 +76,7 @@ public class GCalc.ExpressionContainer : Gee.ArrayList<MathExpression>, GLib.Lis
 
   public MathExpression? find_named (string name) {
     foreach (MathExpression e in this) {
-      if (e is Variable && ((Variable) e).name == name) {
+      if (e is MathVariable && ((MathVariable) e).name == name) {
         return e;
       }
       if (e is MathFunction && ((MathFunction) e).name == name) {

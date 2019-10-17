@@ -18,11 +18,11 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GVariable : Expression, Variable, Hashable {
+public class GCalc.GVariable : Expression, MathVariable, Hashable {
 
   public string name { get; construct set; }
   internal MathConstant value { get; set; }
-  internal Variable bind { get; set; }
+  internal MathVariable bind { get; set; }
 
   construct {
     _value = new Constant.@double (0.0);

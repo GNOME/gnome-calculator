@@ -21,14 +21,14 @@
 public interface GCalc.MathEquationManager : Object {
   public abstract ExpressionContainer equations { get; }
   public abstract ExpressionContainer functions { get; }
-  public virtual Variable find_variable (string name) {
-    Variable res = null;
+  public virtual MathVariable find_variable (string name) {
+    MathVariable res = null;
     foreach (MathExpression e in equations) {
       var eq = e as MathEquation;
       if (e == null) {
         continue;
       }
-      var v = eq.variables.find_named (name) as Variable;
+      var v = eq.variables.find_named (name) as MathVariable;
       if (v != null) {
         res = v;
         break;

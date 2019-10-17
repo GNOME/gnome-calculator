@@ -104,6 +104,7 @@ gcalc_sources = files([
 	'gcalc-math-result.vala',
 	'gcalc-math-solver.vala',
 	'gcalc-math-term.vala',
+	'gcalc-math-variable.vala',
 	'gcalc-minus.vala',
 	'gcalc-multiply.vala',
 	'gcalc-parameter.vala',
@@ -114,7 +115,6 @@ gcalc_sources = files([
 	'gcalc-result.vala',
 	'gcalc-solver.vala',
 	'gcalc-term.vala',
-	'gcalc-variable.vala',
 ])
 
 
