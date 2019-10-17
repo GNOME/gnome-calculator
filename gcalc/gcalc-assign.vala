@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GAssign : Expression, MathOperator, MathBinaryOperator, MathAssign {
+public class GCalc.Assign : Expression, MathOperator, MathBinaryOperator, MathAssign {
   internal override string to_string () {
     if (expressions.get_n_items () != 2) {
       return "Invalid Assigment structure";

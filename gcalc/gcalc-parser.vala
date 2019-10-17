@@ -208,7 +208,7 @@ public class GCalc.Parser : Object {
             if (!removed) {
               throw new ParserError.INVALID_EXPRESSION_ERROR ("Found an unexpected expression for an assignment. Assignment should be done on variables");
             }
-            var expa = new GAssign ();
+            var expa = new Assign ();
             eq.expressions.add (expa);
             expa.expressions.add (current);
             var exp = new Polynomial ();
