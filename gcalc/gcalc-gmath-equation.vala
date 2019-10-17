@@ -24,11 +24,11 @@ public class GCalc.GMathEquation : Expression, MathEquation {
   internal override Result solve () {
     Result res = null;
     if (expressions.get_n_items () == 0) {
-      return new GErrorResult ("No expressions found in equation");
+      return new ErrorResult ("No expressions found in equation");
     }
     var e = expressions.get_item (0) as MathExpression;
     if (e == null) {
-      res = new GErrorResult ("Invalid expression in equation");
+      res = new ErrorResult ("Invalid expression in equation");
     } else {
       res = e.solve ();
     }

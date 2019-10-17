@@ -34,7 +34,7 @@ public class GCalc.Expression : Object, MathExpression {
     return s;
   }
   internal virtual Result solve () {
-    return new GErrorResult ("Invalid expression");
+    return new ErrorResult ("Invalid expression");
   }
 }
 

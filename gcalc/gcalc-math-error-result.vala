@@ -1,4 +1,4 @@
-/* gcalc-gerror-result.vala
+/* gcalc-error-result.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,18 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GErrorResult : Object, Result, ErrorResult {
-  private string msg = "";
-  private MathExpression _expression;
-
-  public GErrorResult (string msg) {
-    this.msg = msg;
-    _expression = new GErrorExpression ();
-  }
-  // Result
-  public MathExpression expression { get { return _expression; } }
-  public string to_string () { return msg; }
-  // ErrorResult
-  public string message { get { return msg; } }
+/**
+ * A kind of result returned when there was an error in a solving operation
+ */
+public interface GCalc.MathErrorResult : Object, Result {
+  public abstract string message { get; }
 }
 

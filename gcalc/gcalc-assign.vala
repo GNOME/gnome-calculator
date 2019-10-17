@@ -38,7 +38,7 @@ public class GCalc.Assign : Expression, MathOperator, MathBinaryOperator, MathAs
     try {
       res = new GResult (evaluate ());
     } catch (GLib.Error e) {
-      res = new GErrorResult ("Invalid expression in Assignment: %s".printf (e.message));
+      res = new ErrorResult ("Invalid expression in Assignment: %s".printf (e.message));
     }
     return res;
   }

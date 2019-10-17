@@ -25,7 +25,7 @@ public class GCalc.GTerm : Expression, Term {
       var e = evaluate ();
       res = new GResult (e) as Result;
     } catch (GLib.Error err) {
-      res = new GErrorResult ("Term evaluation fails: %s".printf (err.message));
+      res = new ErrorResult ("Term evaluation fails: %s".printf (err.message));
     }
     return res;
   }

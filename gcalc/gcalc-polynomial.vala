@@ -25,7 +25,7 @@ public class GCalc.Polynomial : Expression, MathPolynomial {
       var e = evaluate ();
       res = new GResult (e) as Result;
     } catch (GLib.Error err) {
-      res = new GErrorResult ("Polynomial solving fails: %s".printf (err.message));
+      res = new ErrorResult ("Polynomial solving fails: %s".printf (err.message));
     }
     return res;
   }
