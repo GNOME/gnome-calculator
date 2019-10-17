@@ -98,7 +98,7 @@ public class GCalc.Parser : Object {
           } else if (n.down () == "def" && current is MathFunction) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
-            var v = new GVariable (n) as MathExpression;
+            var v = new Variable (n) as MathExpression;
             if (enable_parameter) {
               v = new Parameter (n) as MathExpression;
               enable_parameter = false;

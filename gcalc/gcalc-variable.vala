@@ -1,4 +1,4 @@
-/* gcalc-gvariable.vala
+/* gcalc-variable.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GVariable : Expression, MathVariable, Hashable {
+public class GCalc.Variable : Expression, MathVariable, Hashable {
 
   public string name { get; construct set; }
   internal MathConstant value { get; set; }
@@ -27,7 +27,7 @@ public class GCalc.GVariable : Expression, MathVariable, Hashable {
   construct {
     _value = new Constant.@double (0.0);
   }
-  internal GVariable (string name) {
+  internal Variable (string name) {
     this.name = name;
   }
   // Expression

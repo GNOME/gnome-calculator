@@ -82,7 +82,6 @@ gcalc_sources = files([
 	'gcalc-function-tan.vala',
 	'gcalc-function-tanh.vala',
 	'gcalc-group.vala',
-	'gcalc-gvariable.vala',
 	'gcalc-hashable.vala',
 	'gcalc-math-assign.vala',
 	'gcalc-math-binary-operator.vala',
@@ -115,6 +114,7 @@ gcalc_sources = files([
 	'gcalc-result.vala',
 	'gcalc-solver.vala',
 	'gcalc-term.vala',
+	'gcalc-variable.vala',
 ])
 
 
