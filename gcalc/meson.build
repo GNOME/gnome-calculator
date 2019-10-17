@@ -178,7 +178,7 @@ libgcalc = library(VERSIONED_PROJECT_NAME,
 if not get_option('disable-introspection')
 g_ir_compiler = find_program('g-ir-compiler', required: false)
 if g_ir_compiler.found()
-custom_target('typelib',
+custom_target('gcalc-typelib',
 	command: [
 		g_ir_compiler,
 		'--shared-library', 'lib'+PROJECT_NAME+'-@0@.so'.format (API_VERSION),

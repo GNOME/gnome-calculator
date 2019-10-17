@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=@libdir@
+datadir=@prefix@/share
+includedir=@prefix@/include
+
+Name: libgcalc
+Description: GNOME Calculator Libray GTK Interface
+URL: http://live.gnome.org/
+Version: @PROJECT_VERSION@
+Requires: gcalc-2 >= 3.34 gtk+-3.0 > 3.19.3
+Libs: -L${libdir} -lgci-@API_VERSION@
+Cflags: -I${includedir}/gci-@API_VERSION@

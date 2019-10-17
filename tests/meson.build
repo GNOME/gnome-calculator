@@ -49,6 +49,29 @@ test_serializer = executable('test-serializer', test_serializer_sources,
   include_directories: gnome_calculator_tests_includes,
 )
 test('Serializer test', test_serializer)
+
+
+gci_test_deps = [
+	gee,
+	gtk,
+	inc_rooth_dep,
+	inc_libh_dep,
+	gci_inc_libh_dep
+]
+
+test_entry_controler_resource_files = files('test-entry-controller.gresource.xml')
+test_entry_controler_resources = gnome.compile_resources('test-entry-controller-resources', test_entry_controler_resource_files)
+
+test_entry_controler_sources = [
+  'test-gci-entry-controller.vala',
+]
+test_entry_controler_sources += test_entry_controler_resources
+
+test_entry_controler = executable('test-entry-controller', test_entry_controler_sources,
+  dependencies: gci_test_deps,
+  link_with: [libgci, libgcalc],
+)
+test('gci-entry-controller', test_entry_controler)
 endif
 
 tests_deps = [
