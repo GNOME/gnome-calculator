@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GPow : Expression, Operator, Pow {
+public class GCalc.GPow : Expression, MathOperator, Pow {
   internal override string to_string () {
     return "^";
   }

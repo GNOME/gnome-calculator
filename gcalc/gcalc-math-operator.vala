@@ -1,4 +1,4 @@
-/* gcalc-operator.vala
+/* gcalc-math-operator.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,5 +18,8 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Operator : Object, MathExpression {}
+/**
+ * An operator in a math expression
+ */
+public interface GCalc.MathOperator : Object, MathExpression {}
 

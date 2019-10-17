@@ -18,5 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Minus : Object, MathExpression, Operator, BinaryOperator {}
+public interface GCalc.Minus : Object, MathExpression, MathOperator, BinaryOperator {}
 

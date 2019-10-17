@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMinus : Expression, Operator, BinaryOperator, Minus {
+public class GCalc.GMinus : Expression, MathOperator, BinaryOperator, Minus {
   internal override string to_string () {
     return "-";
   }

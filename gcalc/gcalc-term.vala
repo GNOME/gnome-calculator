@@ -33,10 +33,10 @@ public interface GCalc.Term : Object, MathExpression {
   }
   public virtual MathExpression evaluate () throws GLib.Error {
     MathExpression current = null;
-    Operator current_operator = null;
+    MathOperator current_operator = null;
     bool first = true;
     foreach (MathExpression e in expressions) {
-      if (e is Operator) {
+      if (e is MathOperator) {
         if (!(e is Minus || e is Plus) && first) {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
         }
@@ -45,7 +45,7 @@ public interface GCalc.Term : Object, MathExpression {
           current = c;
           first = false;
         }
-        current_operator = e as Operator;
+        current_operator = e as MathOperator;
         continue;
       } else if (e is Constant) {
         if (current == null) {
@@ -93,7 +93,7 @@ public interface GCalc.Term : Object, MathExpression {
     }
     return current;
   }
-  public static MathExpression evaluate_constants (Constant c1, Constant c2, Operator op)
+  public static MathExpression evaluate_constants (Constant c1, Constant c2, MathOperator op)
     throws GLib.Error
   {
     MathExpression res = null;

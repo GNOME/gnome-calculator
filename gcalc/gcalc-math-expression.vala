@@ -1,4 +1,4 @@
-/* gcalc-expresion.vala
+/* gcalc-math-expresion.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *

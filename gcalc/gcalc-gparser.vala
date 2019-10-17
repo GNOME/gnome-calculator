@@ -82,7 +82,7 @@ public class GCalc.GParser : Object {
               top_parent = exp;
               expected.clear ();
               expected.add(TokenType.OPEN_PARENS);
-            } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
+            } else if (current is MathOperator && current_parent is Term && top_parent is Polynomial) {
                 current_parent.expressions.add (sfunc);
                 current = sfunc;
                 expected.clear ();
@@ -124,7 +124,7 @@ public class GCalc.GParser : Object {
               current_parent = v.parent;
               top_parent = current_parent.parent;
               expected.clear ();
-            } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
+            } else if (current is MathOperator && current_parent is Term && top_parent is Polynomial) {
                 current_parent.expressions.add (v);
                 current = v;
                 expected.clear ();
@@ -153,7 +153,7 @@ public class GCalc.GParser : Object {
             current = cexp;
             current_parent = t;
             top_parent = exp;
-          } else if ((current is Operator || current is Term) && current_parent is Term && top_parent is Polynomial) {
+          } else if ((current is MathOperator || current is Term) && current_parent is Term && top_parent is Polynomial) {
             current_parent.expressions.add (cexp);
             expected.clear ();
             current = cexp;
@@ -245,7 +245,7 @@ public class GCalc.GParser : Object {
             current = t;
             current_parent = fexp;
             expected.clear ();
-          } else if (current is Operator && current_parent is Term && top_parent is Polynomial) {
+          } else if (current is MathOperator && current_parent is Term && top_parent is Polynomial) {
             var g = new GGroup ();
             current_parent.expressions.add (g);
             var exp = new GPolynomial ();
@@ -334,7 +334,7 @@ public class GCalc.GParser : Object {
     }
     eqman.equations.add (eq);
   }
-  private void process_operator (Operator opp, GMathEquation eq) throws GLib.Error {
+  private void process_operator (MathOperator opp, GMathEquation eq) throws GLib.Error {
     if (current is BinaryOperator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a plus operator");
     }
@@ -388,8 +388,8 @@ public class GCalc.GParser : Object {
       expected.clear ();
     }
   }
-  private void process_term_operator (Operator op, GMathEquation eq) throws GLib.Error {
-    if (current is Operator) {
+  private void process_term_operator (MathOperator op, GMathEquation eq) throws GLib.Error {
+    if (current is MathOperator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
     }
     if ((current is Constant || current is Variable || current is Group || current is Function)

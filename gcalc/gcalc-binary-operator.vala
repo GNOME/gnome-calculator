@@ -18,5 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.BinaryOperator : Object, MathExpression, Operator {}
+public interface GCalc.BinaryOperator : Object, MathExpression, MathOperator {}
 

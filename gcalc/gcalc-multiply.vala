@@ -18,5 +18,5 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Multiply : Object, MathExpression, Operator, BinaryOperator {}
+public interface GCalc.Multiply : Object, MathExpression, MathOperator, BinaryOperator {}
 
