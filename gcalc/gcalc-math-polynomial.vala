@@ -1,4 +1,4 @@
-/* gcalc-polynomial.vala
+/* gcalc-math-polynomial.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *

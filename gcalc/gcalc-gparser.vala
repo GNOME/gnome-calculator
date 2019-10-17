@@ -72,7 +72,7 @@ public class GCalc.GParser : Object {
           if (sfunc != null) {
             sfunc = Object.new (sfunc.get_type ()) as MathExpression;
             if (current == null) {
-              var exp = new GPolynomial ();
+              var exp = new Polynomial ();
               eq.expressions.add (exp);
               var t = new GTerm ();
               exp.expressions.add (t);
@@ -115,7 +115,7 @@ public class GCalc.GParser : Object {
               ((Variable) v).bind = sv;
             }
             if (current == null) {
-              var exp = new GPolynomial ();
+              var exp = new Polynomial ();
               eq.expressions.add (exp);
               var t = new GTerm ();
               exp.expressions.add (t);
@@ -145,7 +145,7 @@ public class GCalc.GParser : Object {
           }
           var cexp = new GConstant.@double (double.parse (n));
           if (current == null) {
-            var exp = new GPolynomial ();
+            var exp = new Polynomial ();
             eq.expressions.add (exp);
             var t = new GTerm ();
             exp.expressions.add (t);
@@ -211,7 +211,7 @@ public class GCalc.GParser : Object {
             var expa = new GAssign ();
             eq.expressions.add (expa);
             expa.expressions.add (current);
-            var exp = new GPolynomial ();
+            var exp = new Polynomial ();
             expa.expressions.add (exp);
             var t = new GTerm ();
             exp.expressions.add (t);
@@ -223,13 +223,13 @@ public class GCalc.GParser : Object {
           break;
         case TokenType.OPEN_PARENS:
           if (current == null) {
-            var exp = new GPolynomial ();
+            var exp = new Polynomial ();
             eq.expressions.add (exp);
             var t = new GTerm ();
             exp.expressions.add (t);
             var g = new GGroup ();
             t.expressions.add (g);
-            var exp2 = new GPolynomial ();
+            var exp2 = new Polynomial ();
             var t2 = new GTerm ();
             exp2.expressions.add (t2);
             g.expressions.add (exp2);
@@ -237,7 +237,7 @@ public class GCalc.GParser : Object {
             current_parent = exp2;
             top_parent = g;
           } else if (current is Function) {
-            var fexp = new GPolynomial ();
+            var fexp = new Polynomial ();
             var t = new GTerm ();
             fexp.expressions.add (t);
             current.expressions.add (fexp);
@@ -248,7 +248,7 @@ public class GCalc.GParser : Object {
           } else if (current is MathOperator && current_parent is Term && top_parent is MathPolynomial) {
             var g = new GGroup ();
             current_parent.expressions.add (g);
-            var exp = new GPolynomial ();
+            var exp = new Polynomial ();
             g.expressions.add (exp);
             var t = new GTerm ();
             exp.expressions.add (t);
@@ -339,7 +339,7 @@ public class GCalc.GParser : Object {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a plus operator");
     }
     if (current == null) {
-      var exp = new GPolynomial ();
+      var exp = new Polynomial ();
       var t = new GTerm ();
       t.expressions.add (opp);
       exp.expressions.add (t);
@@ -374,7 +374,7 @@ public class GCalc.GParser : Object {
       expected.clear ();
     } else if (current is Variable && current_parent == null) {
       // New MathPolynomial
-      var exp = new GPolynomial ();
+      var exp = new Polynomial ();
       eq.expressions.add (exp);
       var t = new GTerm ();
       exp.expressions.add (t);
@@ -399,7 +399,7 @@ public class GCalc.GParser : Object {
         expected.clear ();
     } else if (current is Variable && current_parent == null) {
       // New MathPolynomial
-      var exp = new GPolynomial ();
+      var exp = new Polynomial ();
       eq.expressions.add (exp);
       var t = new GTerm ();
       exp.expressions.add (t);

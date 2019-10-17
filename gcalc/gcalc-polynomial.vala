@@ -1,4 +1,4 @@
-/* gcalc-gpolynomial.vala
+/* gcalc-polynomial.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GPolynomial : Expression, MathPolynomial {
+public class GCalc.Polynomial : Expression, MathPolynomial {
   internal override Result solve () {
     Result res = null;
     try {
