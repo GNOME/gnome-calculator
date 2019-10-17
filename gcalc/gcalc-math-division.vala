@@ -1,4 +1,4 @@
-/* gcalc-division.vala
+/* gcalc-math-division.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,5 +18,8 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Division : Object, MathExpression, MathOperator, MathBinaryOperator {}
+/**
+ * A division operator in a math expression
+ */
+public interface GCalc.MathDivision : Object, MathExpression, MathOperator, MathBinaryOperator {}
 

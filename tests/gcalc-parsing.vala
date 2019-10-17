@@ -425,7 +425,7 @@ class Tests {
         assert (t1.expressions.get_n_items () == 3);
         var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
-        var m = t1.expressions.get_item (1) as Division;
+        var m = t1.expressions.get_item (1) as MathDivision;
         assert (m != null);
         var c2 = t1.expressions.get_item (2) as MathConstant;
         assert (c2 != null);
@@ -452,7 +452,7 @@ class Tests {
         assert (t1.expressions.get_n_items () == 3);
         var c1 = t1.expressions.get_item (0) as Variable;
         assert (c1 != null);
-        var m = t1.expressions.get_item (1) as Division;
+        var m = t1.expressions.get_item (1) as MathDivision;
         assert (m != null);
         var c2 = t1.expressions.get_item (2) as Variable;
         assert (c2 != null);
@@ -481,7 +481,7 @@ class Tests {
         assert (minus != null);
         var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
-        var m1 = t1.expressions.get_item (2) as Division;
+        var m1 = t1.expressions.get_item (2) as MathDivision;
         assert (m1 != null);
         var c2 = t1.expressions.get_item (3) as Variable;
         assert (c2 != null);
@@ -496,7 +496,7 @@ class Tests {
         assert (m2 != null);
         var c4 = t2.expressions.get_item (3) as Variable;
         assert (c4 != null);
-        var m3 = t2.expressions.get_item (4) as Division;
+        var m3 = t2.expressions.get_item (4) as MathDivision;
         assert (m3 != null);
         var c5 = t2.expressions.get_item (5) as MathConstant;
         assert (c5 != null);

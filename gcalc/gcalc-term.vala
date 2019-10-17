@@ -103,7 +103,7 @@ public interface GCalc.Term : Object, MathExpression {
     if (op is Multiply) {
       res = c1.multiply (c2);
     }
-    if (op is Division) {
+    if (op is MathDivision) {
       res = c1.divide (c2);
     }
     if (op is Pow) {
