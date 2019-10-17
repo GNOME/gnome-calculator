@@ -26,7 +26,7 @@ public class GCalc.GConstant : GExpression, Constant {
   construct {
     _complex.set_double (0.0);
   }
-  public GConstant.internal_complex (MPC.Complex complex) {
+  internal GConstant.internal_complex (MPC.Complex complex) {
     _complex.set (complex);
   }
   public GConstant.integer (int val) {

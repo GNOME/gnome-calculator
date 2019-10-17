@@ -60,6 +60,7 @@ config_h_dir = include_directories('.')
 meson.add_install_script('meson_post_install.py')
 
 # Subdirs
+subdir('vapi')
 subdir('gcalc')
 if not get_option ('disable-ui')
 gtk = dependency('gtk+-3.0', version: '>= 3.19.3')
@@ -69,6 +70,7 @@ subdir('lib')
 subdir('src')
 subdir('search-provider')
 subdir('help')
+subdir('doc')
 subdir('po')
 endif
 subdir('tests')

@@ -55,7 +55,7 @@ lib_mpfrg = static_library ('mpfrg',
 	install: false,
 )
 
-sources = files([
+gcalc_sources = files([
 	'gcalc-assign.vala',
 	'gcalc-binary-operator.vala',
 	'gcalc-constant.vala',
@@ -121,6 +121,7 @@ sources = files([
 inc_libh = include_directories ('.')
 inc_libh_dep = declare_dependency (include_directories : inc_libh)
 gcalc_build_dir = meson.current_build_dir ()
+gcalc_sources_dir = meson.current_source_dir ()
 
 gcalc_deps = [
 	gio,
@@ -142,12 +143,12 @@ gcalc_deps = [
 # Increase the age value only if the changes made to the ABI are backward compatible.
 # Set version to the value of subtract age from current
 # Reset current and version to 1 and, age and version to 0 if library's name is changed
-LT_CURRENT='0'
-LT_REVISION='0'
+LT_CURRENT='1'
+LT_REVISION='1'
 LT_AGE='0'
-LT_VERSION='0'
+LT_VERSION='1'
 libgcalc = library(VERSIONED_PROJECT_NAME,
-	sources,
+	gcalc_sources,
 	version : LT_VERSION,
 	soversion : LT_VERSION+'.'+LT_AGE+'.'+LT_REVISION,
 	vala_header : PROJECT_NAME+'.h',
