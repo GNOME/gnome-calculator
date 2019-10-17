@@ -20,50 +20,35 @@
  */
 /**
  * A constant value in a math expression.
- *
- * This constant is a complex number with real and imaginary parts;
- * and multiple-precision.
  */
 public interface GCalc.MathConstant : Object, MathExpression {
   /**
-   * Returns the real part of the complex number
-   */
-  public abstract double real ();
-  /**
-   * Returns the imaginary part of the complex number
-   */
-  public abstract double imag ();
-  /**
-   * Set the complex number to zero
-   */
-  public abstract void zero ();
-  /**
-   * Add this value with another complex number and returns
+   * Add this value with another and returns
    * the result
    */
   public abstract MathConstant add (MathConstant c);
   /**
-   * Subtract another complex number from this value and returns
+   * Subtract another from this value and returns
    * the result
    */
   public abstract MathConstant subtract (MathConstant c);
   /**
-   * Multipy another complex number with this value and returns
+   * Multipy another with this value and returns
    * the result
    */
   public abstract MathConstant multiply (MathConstant c);
   /**
-   * Divide this value as numerator with another complex number as denominator
+   * Divide this value as numerator with another as denominator
    * and returns the result
    */
   public abstract MathConstant divide (MathConstant c);
   /**
-   * Changes the direction of this complex value and returns
+   * Changes the direction of the value and returns
    * the result
    */
   public abstract MathConstant neg ();
   /**
-   * Pows this value using another complex number and returns
+   * Pows this value using another and returns
    * the result
    */
   public abstract MathConstant pow (MathConstant c);

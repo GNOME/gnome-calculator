@@ -86,6 +86,8 @@ gcalc_sources = files([
 	'gcalc-math-assign.vala',
 	'gcalc-math-binary-operator.vala',
 	'gcalc-math-constant.vala',
+	'gcalc-math-constant-complex.vala',
+	'gcalc-math-constant-number.vala',
 	'gcalc-math-division.vala',
 	'gcalc-math-equation.vala',
 	'gcalc-math-equation-manager.vala',

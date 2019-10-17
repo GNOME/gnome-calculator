@@ -21,7 +21,11 @@
 /**
  * An implementation of {@link MathConstant}
  */
-public class GCalc.Constant : Expression, MathConstant {
+public class GCalc.Constant : Expression,
+                              MathConstant,
+                              MathConstantNumber,
+                              MathConstantComplex
+{
   private MPC.Complex _complex = MPC.Complex (1000);
 
   internal unowned MPC.Complex get_complex () { return _complex; }
@@ -45,7 +49,7 @@ public class GCalc.Constant : Expression, MathConstant {
     _complex.set_double (real, imag);
   }
 
-  // MathConstant Interface
+  // MathConstantComplex Interface
   internal double real () {
     return _complex.get_real_double ();
   }
@@ -57,7 +61,12 @@ public class GCalc.Constant : Expression, MathConstant {
     r.set_zero ();
     _complex.set_mpreal (r);
   }
+  // MathConstantNumber Interface
+  internal double @value () {
+    return real ();
+  }
 
+  // MathConstant Interface
   internal MathConstant add (MathConstant c)
     requires (c is Constant)
   {

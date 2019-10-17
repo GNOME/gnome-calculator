@@ -1126,21 +1126,21 @@ class Tests {
         var r = eq.solve ();
         assert (r.expression != null);
         assert (r.expression is MathConstant);
-        var cr = r.expression as MathConstant;
+        var cr = r.expression as MathConstantNumber;
         assert (cr != null);
-        assert (cr.real () == 0.0);
+        assert (cr.@value () == 0.0);
         var p = eq.variables.find_named ("param1") as GCalc.MathParameter;
         assert (p != null);
         p.set_value (10.0);
         r = eq.solve ();
         assert (r.expression != null);
         assert (r.expression is MathConstant);
-        cr = r.expression as MathConstant;
-        assert (cr != null);
-        assert (cr.real () == 10.0);
+        var cxr = r.expression as MathConstantComplex;
+        assert (cxr != null);
+        assert (cxr.real () == 10.0);
         var eq2 = eqman.equations.get_item (1) as MathEquation;
         assert (eq2 != null);
-        var cr2 = r.expression as MathConstant;
+        var cr2 = r.expression as MathConstantComplex;
         assert (cr2 != null);
         assert (cr2.real () == 10.0);
       } catch (GLib.Error error) {
