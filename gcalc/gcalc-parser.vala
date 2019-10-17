@@ -22,7 +22,7 @@
  * Takes a string an create a tree of {@link MathExpression} objects representing
  * a math equation.
  */
-public class GCalc.GParser : Object {
+public class GCalc.Parser : Object {
   MathExpression current = null;
   MathExpression current_parent = null;
   MathExpression top_parent = null;
