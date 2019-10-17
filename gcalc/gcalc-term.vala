@@ -37,10 +37,10 @@ public interface GCalc.Term : Object, MathExpression {
     bool first = true;
     foreach (MathExpression e in expressions) {
       if (e is MathOperator) {
-        if (!(e is Minus || e is Plus) && first) {
+        if (!(e is MathMinus || e is Plus) && first) {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
         }
-        if (e is Minus && first) {
+        if (e is MathMinus && first) {
           var c = new Constant.@double (-1.0);
           current = c;
           first = false;
@@ -97,7 +97,7 @@ public interface GCalc.Term : Object, MathExpression {
     throws GLib.Error
   {
     MathExpression res = null;
-    if (op is Minus) {
+    if (op is MathMinus) {
       res = c1.multiply (c2);
     }
     if (op is Multiply) {

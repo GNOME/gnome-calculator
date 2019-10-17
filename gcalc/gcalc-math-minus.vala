@@ -21,5 +21,5 @@
 /**
  * A minus operator in a math expression
  */
-public interface GCalc.Minus : Object, MathExpression, MathOperator, MathBinaryOperator {}
+public interface GCalc.MathMinus : Object, MathExpression, MathOperator, MathBinaryOperator {}
 

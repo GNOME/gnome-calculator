@@ -239,7 +239,7 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 2);
-        var minus = t1.expressions.get_item (0) as Minus;
+        var minus = t1.expressions.get_item (0) as MathMinus;
         assert (minus != null);
         var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
@@ -285,7 +285,7 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 2);
-        var minus = t1.expressions.get_item (0) as Minus;
+        var minus = t1.expressions.get_item (0) as MathMinus;
         assert (minus != null);
         var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
@@ -306,7 +306,7 @@ class Tests {
         var t4 = p.expressions.get_item (3) as Term;
         assert (t4 != null);
         assert (t4.expressions.get_n_items () == 2);
-        var minus2 = t4.expressions.get_item (0) as Minus;
+        var minus2 = t4.expressions.get_item (0) as MathMinus;
         assert (minus2 != null);
         var c4 = t4.expressions.get_item (1) as Variable;
         assert (c4 != null);
@@ -384,7 +384,7 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 4);
-        var minus = t1.expressions.get_item (0) as Minus;
+        var minus = t1.expressions.get_item (0) as MathMinus;
         assert (minus != null);
         var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
@@ -477,7 +477,7 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 4);
-        var minus = t1.expressions.get_item (0) as Minus;
+        var minus = t1.expressions.get_item (0) as MathMinus;
         assert (minus != null);
         var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
