@@ -22,7 +22,7 @@ using GCalc;
 
 public class GCalc.GSolver : Object, Solver {
   construct {
-    equation_manager = new GMathEquationManager ();
+    equation_manager = new EquationManager ();
   }
   // Sover
   internal MathEquationManager equation_manager { get; set; }

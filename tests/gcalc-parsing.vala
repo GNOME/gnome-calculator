@@ -27,7 +27,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("1", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -49,7 +49,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("10.3", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -70,7 +70,7 @@ class Tests {
     Test.add_func ("/gcalc/parser/assign/error",
     ()=>{
       var parser = new Parser ();
-      var eqman = new GMathEquationManager ();
+      var eqman = new EquationManager ();
       try {
         parser.parse ("=", eqman);
         assert_not_reached ();
@@ -82,7 +82,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("var=1", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -110,7 +110,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("1+1", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -139,7 +139,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("A+B", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -168,7 +168,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("A+1", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -197,7 +197,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("1+B", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -226,7 +226,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("-1+B+3+A", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -272,7 +272,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("-1+B+3-A", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -318,7 +318,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("1*1", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -344,7 +344,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("A*B", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -371,7 +371,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("-1*B+3*A", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -411,7 +411,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("1/1", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -437,7 +437,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("A/B", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -464,7 +464,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("-1/B+3*A/5", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -513,7 +513,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("(1)", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -544,25 +544,25 @@ class Tests {
     Test.add_func ("/gcalc/parser/term/parenthesis/errors",
     ()=>{
       var parser = new Parser ();
-      var eqman1 = new GMathEquationManager ();
+      var eqman1 = new EquationManager ();
       try {
         parser.parse ("(", eqman1);
       } catch (GLib.Error error) {
         message ("Correctly catched grouping error: %s", error.message);
       }
-      var eqman2 = new GMathEquationManager ();
+      var eqman2 = new EquationManager ();
       try {
         parser.parse ("1)", eqman2);
       } catch (GLib.Error error) {
         message ("Correctly catched grouping error: %s", error.message);
       }
-      var eqman3 = new GMathEquationManager ();
+      var eqman3 = new EquationManager ();
       try {
         parser.parse ("(1))", eqman3);
       } catch (GLib.Error error) {
         message ("Correctly catched grouping error: %s", error.message);
       }
-      var eqman4 = new GMathEquationManager ();
+      var eqman4 = new EquationManager ();
       try {
         parser.parse ("(((1))))", eqman4);
       } catch (GLib.Error error) {
@@ -573,7 +573,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("(1)+(1)", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -622,7 +622,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("5*(3+2)", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -666,7 +666,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("(3+2)*5", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -708,7 +708,7 @@ class Tests {
     });
     Test.add_func ("/gcalc/parser/function/defaults",
     ()=>{
-      var eqman = new GMathEquationManager ();
+      var eqman = new EquationManager ();
       assert (eqman.functions.get_n_items () > 0);
       assert (eqman.functions.find_named ("sin") != null);
       assert (eqman.functions.find_named ("cos") != null);
@@ -730,7 +730,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("sin(0)", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -761,7 +761,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("3^3", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -787,7 +787,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("3^(3+5*3)", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -816,7 +816,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("x=3", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -843,7 +843,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("x=3*4*cos(0)+1", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -885,7 +885,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("x=3", eqman);
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
@@ -900,7 +900,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("x=3", eqman);
         parser.parse ("y=x", eqman);
         assert (eqman.equations.get_n_items () == 2);
@@ -924,7 +924,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("x=3", eqman);
         parser.parse ("x", eqman);
         assert (eqman.equations.get_n_items () == 2);
@@ -962,7 +962,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("x=3", eqman);
         parser.parse ("y=x", eqman);
         assert (eqman.equations.get_n_items () == 2);
@@ -1005,7 +1005,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("x=3", eqman);
         parser.parse ("y=x", eqman);
         parser.parse ("z=x+y", eqman);
@@ -1075,7 +1075,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("x=$param1", eqman);
         parser.parse ("x", eqman);
         assert (eqman.equations.get_n_items () == 2);
@@ -1117,7 +1117,7 @@ class Tests {
     ()=>{
       try {
         var parser = new Parser ();
-        var eqman = new GMathEquationManager ();
+        var eqman = new EquationManager ();
         parser.parse ("x=$param1", eqman);
         parser.parse ("x", eqman);
         assert (eqman.equations.get_n_items () == 2);

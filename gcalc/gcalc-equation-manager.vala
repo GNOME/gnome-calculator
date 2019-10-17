@@ -1,4 +1,4 @@
-/* gcalc-gmath-equation-manager.vala
+/* gcalc-equation-manager.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GMathEquationManager : Object, MathEquationManager {
+public class GCalc.EquationManager : Object, MathEquationManager {
   ExpressionContainer _equations = new ExpressionContainer ();
   ExpressionContainer _functions = new ExpressionContainer ();
   internal ExpressionContainer equations { get { return _equations; } }
