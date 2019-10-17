@@ -689,7 +689,7 @@ class Tests {
         assert (e != null);
         var t = e.expressions.get_item (0) as Term;
         assert (t != null);
-        var f = t.expressions.get_item (0) as Function;
+        var f = t.expressions.get_item (0) as MathFunction;
         assert (f != null);
         assert (f.closed);
         var res = f.evaluate () as MathConstant;

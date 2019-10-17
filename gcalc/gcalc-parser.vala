@@ -95,7 +95,7 @@ public class GCalc.Parser : Object {
             }
           } else if (n.down () == "def" && current == null) {
             // FIXME: implement function definition
-          } else if (n.down () == "def" && current is Function) {
+          } else if (n.down () == "def" && current is MathFunction) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
           } else {
             var v = new GVariable (n) as MathExpression;
@@ -157,7 +157,7 @@ public class GCalc.Parser : Object {
             current_parent.expressions.add (cexp);
             expected.clear ();
             current = cexp;
-          } else if (current is Term && current_parent is MathPolynomial && (top_parent is Group || top_parent is Function)) {
+          } else if (current is Term && current_parent is MathPolynomial && (top_parent is Group || top_parent is MathFunction)) {
             current.expressions.add (cexp);
             top_parent = current_parent;
             current_parent = current;
@@ -236,7 +236,7 @@ public class GCalc.Parser : Object {
             current = t2;
             current_parent = exp2;
             top_parent = g;
-          } else if (current is Function) {
+          } else if (current is MathFunction) {
             var fexp = new Polynomial ();
             var t = new GTerm ();
             fexp.expressions.add (t);
@@ -271,10 +271,10 @@ public class GCalc.Parser : Object {
                 break;
               }
             }
-            if (par is Function) {
-              if (!((Function) par).closed) {
+            if (par is MathFunction) {
+              if (!((MathFunction) par).closed) {
                 foundp = true;
-                ((Function) par).closed = true;
+                ((MathFunction) par).closed = true;
                 break;
               }
             }
@@ -363,7 +363,7 @@ public class GCalc.Parser : Object {
       current = opp;
       current_parent = t;
       expected.clear ();
-    } else if ((current is Group || current is Function) && current_parent is Term && top_parent is MathPolynomial) {
+    } else if ((current is Group || current is MathFunction) && current_parent is Term && top_parent is MathPolynomial) {
       // New term
       var t = new GTerm ();
       t.expressions.add (opp);
@@ -392,7 +392,7 @@ public class GCalc.Parser : Object {
     if (current is MathOperator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
     }
-    if ((current is MathConstant || current is Variable || current is Group || current is Function)
+    if ((current is MathConstant || current is Variable || current is Group || current is MathFunction)
         && current_parent is Term && top_parent is MathPolynomial) {
         current_parent.expressions.add (op);
         current = op;

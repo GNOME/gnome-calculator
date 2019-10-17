@@ -1,4 +1,4 @@
-/* gcalc-function.vala
+/* gcalc-math-function.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -21,7 +21,7 @@
 /**
  * A Function as part of a {@link MathExpression}
  */
-public interface GCalc.Function : Object, MathExpression {
+public interface GCalc.MathFunction : Object, MathExpression {
   /**
    * Parameters used by the function, objects representing
    * the expected types. See {@link verify_params}

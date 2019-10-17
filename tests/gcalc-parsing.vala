@@ -742,7 +742,7 @@ class Tests {
         var t = p.expressions.get_item (0) as Term;
         assert (t != null);
         assert (t.expressions.get_n_items () == 1);
-        var f = t.expressions.get_item (0) as Function;
+        var f = t.expressions.get_item (0) as MathFunction;
         assert (f != null);
         assert (f.expressions.get_n_items () == 1);
         var p1 = f.expressions.get_item (0) as MathPolynomial;
@@ -868,7 +868,7 @@ class Tests {
         assert (c2 != null);
         var m2 = t1.expressions.get_item (3) as Multiply;
         assert (m2 != null);
-        var f1 = t1.expressions.get_item (4) as Function;
+        var f1 = t1.expressions.get_item (4) as MathFunction;
         assert (f1 != null);
         var t2 = e.expressions.get_item (1) as Term;
         assert (t2 != null);

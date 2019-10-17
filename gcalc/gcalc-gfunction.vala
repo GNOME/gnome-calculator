@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GFunction : Expression, Function, Hashable {
+public class GCalc.GFunction : Expression, MathFunction, Hashable {
   ExpressionContainer _param_types = new ExpressionContainer ();
 
   internal ExpressionContainer param_types { get { return _param_types; } }

@@ -79,7 +79,7 @@ public class GCalc.ExpressionContainer : Gee.ArrayList<MathExpression>, GLib.Lis
       if (e is Variable && ((Variable) e).name == name) {
         return e;
       }
-      if (e is Function && ((Function) e).name == name) {
+      if (e is MathFunction && ((MathFunction) e).name == name) {
         return e;
       }
     }
