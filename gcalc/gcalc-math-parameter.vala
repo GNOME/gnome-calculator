@@ -1,4 +1,4 @@
-/* gcalc-expresion.vala
+/* gcalc-math-parameter.vala
  *
  * Copyright (C) 2019  Daniel Espinosa <esodan@gmail.com>
  *
@@ -25,7 +25,7 @@
  *
  * Currently the value will be converted to a {@link MathConstant} if possible.
  */
-public interface GCalc.Parameter : Object, MathExpression, Variable {
+public interface GCalc.MathParameter : Object, MathExpression, Variable {
   public abstract void set_value (GLib.Value val) throws GLib.Error;
   public abstract GLib.Value get_value ();
 }

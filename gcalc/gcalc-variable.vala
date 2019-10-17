@@ -31,7 +31,7 @@ public interface GCalc.Variable : Object, MathExpression {
     if (bind != null) {
       return bind.evaluate ();
     }
-    if (this is Parameter) {
+    if (this is MathParameter) {
       return @value;
     }
     if (parent == null) {

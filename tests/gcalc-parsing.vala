@@ -1095,7 +1095,7 @@ class Tests {
         assert (t != null);
         var ev = t.expressions.get_item (0) as Variable;
         assert (ev != null);
-        var p = ev as GCalc.Parameter;
+        var p = ev as GCalc.MathParameter;
         assert (p != null);
         assert (p.name == "param1");
         var eq2 = eqman.equations.get_item (1) as MathEquation;
@@ -1129,7 +1129,7 @@ class Tests {
         var cr = r.expression as MathConstant;
         assert (cr != null);
         assert (cr.real () == 0.0);
-        var p = eq.variables.find_named ("param1") as GCalc.Parameter;
+        var p = eq.variables.find_named ("param1") as GCalc.MathParameter;
         assert (p != null);
         p.set_value (10.0);
         r = eq.solve ();
