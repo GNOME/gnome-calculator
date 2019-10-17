@@ -1,4 +1,4 @@
-/* gcalc-gresult.vala
+/* gcalc-result.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,9 +18,9 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GResult : Object, MathResult {
+public class GCalc.Result : Object, MathResult {
   private MathExpression _expression;
-  public GResult (MathExpression exp) {
+  public Result (MathExpression exp) {
     _expression = exp;
   }
   // Result

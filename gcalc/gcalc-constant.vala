@@ -121,7 +121,7 @@ public class GCalc.Constant : Expression, MathConstant {
   }
 
   internal override MathResult solve () {
-    return new GResult (this);
+    return new Result (this);
   }
 }
 

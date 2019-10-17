@@ -23,7 +23,7 @@ public class GCalc.Polynomial : Expression, MathPolynomial {
     MathResult res = null;
     try {
       var e = evaluate ();
-      res = new GResult (e) as MathResult;
+      res = new Result (e) as MathResult;
     } catch (GLib.Error err) {
       res = new ErrorResult ("Polynomial solving fails: %s".printf (err.message));
     }
