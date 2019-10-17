@@ -56,7 +56,7 @@ public interface GCalc.MathPolynomial : Object, MathExpression {
       }
     }
     if (res == null) {
-      return new GErrorExpression ();
+      return new ErrorExpression ();
     }
     return res;
   }

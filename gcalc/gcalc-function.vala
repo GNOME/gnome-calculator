@@ -53,7 +53,7 @@ public class GCalc.Function : Expression, MathFunction, Hashable {
   }
 
   internal virtual MathExpression evaluate () throws GLib.Error {
-    return new GErrorExpression ();
+    return new ErrorExpression ();
   }
   // Hashable
   internal uint hash () {

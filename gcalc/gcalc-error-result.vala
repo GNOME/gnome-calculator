@@ -30,7 +30,7 @@ public class GCalc.ErrorResult : Object, MathResult, MathErrorResult {
 
   public ErrorResult (string msg) {
     this.msg = msg;
-    _expression = new GErrorExpression ();
+    _expression = new ErrorExpression ();
   }
   // Result
   public MathExpression expression { get { return _expression; } }

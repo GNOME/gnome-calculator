@@ -42,7 +42,7 @@ public class GCalc.Expression : Object, MathExpression {
 }
 
 /**
- * An implementation of {@link MathErrorExpression}
+ * Represent an expression in error condition
  */
-public class GCalc.GErrorExpression : Expression, MathErrorExpression {}
+public class GCalc.ErrorExpression : Expression {}
 

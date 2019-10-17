@@ -31,7 +31,7 @@ public interface GCalc.MathTerm : Object, MathExpression {
     if (t.expressions.get_n_items () == 0) {
       return new Constant.@double (1.0);
     }
-    MathExpression res = new GErrorExpression ();
+    MathExpression res = new ErrorExpression ();
     var e = evaluate ();
     var e2 = t.evaluate ();
     if (e is MathConstant && e2 is MathConstant) {

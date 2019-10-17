@@ -40,9 +40,3 @@ public interface GCalc.MathExpression : Object {
   public abstract MathResult solve ();
 }
 
-/**
- * Represent an expression in error condition
- */
-public interface GCalc.MathErrorExpression : Object, MathExpression {
-}
-
