@@ -332,7 +332,7 @@ class Tests {
         assert (t1.expressions.get_n_items () == 3);
         var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
-        var m = t1.expressions.get_item (1) as Multiply;
+        var m = t1.expressions.get_item (1) as MathMultiply;
         assert (m != null);
         var c2 = t1.expressions.get_item (2) as MathConstant;
         assert (c2 != null);
@@ -359,7 +359,7 @@ class Tests {
         assert (t1.expressions.get_n_items () == 3);
         var c1 = t1.expressions.get_item (0) as Variable;
         assert (c1 != null);
-        var m = t1.expressions.get_item (1) as Multiply;
+        var m = t1.expressions.get_item (1) as MathMultiply;
         assert (m != null);
         var c2 = t1.expressions.get_item (2) as Variable;
         assert (c2 != null);
@@ -388,7 +388,7 @@ class Tests {
         assert (minus != null);
         var c1 = t1.expressions.get_item (1) as MathConstant;
         assert (c1 != null);
-        var m1 = t1.expressions.get_item (2) as Multiply;
+        var m1 = t1.expressions.get_item (2) as MathMultiply;
         assert (m1 != null);
         var c2 = t1.expressions.get_item (3) as Variable;
         assert (c2 != null);
@@ -399,7 +399,7 @@ class Tests {
         assert (plus != null);
         var c3 = t2.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
-        var m2 = t2.expressions.get_item (2) as Multiply;
+        var m2 = t2.expressions.get_item (2) as MathMultiply;
         assert (m2 != null);
         var c4 = t2.expressions.get_item (3) as Variable;
         assert (c4 != null);
@@ -492,7 +492,7 @@ class Tests {
         assert (plus != null);
         var c3 = t2.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
-        var m2 = t2.expressions.get_item (2) as Multiply;
+        var m2 = t2.expressions.get_item (2) as MathMultiply;
         assert (m2 != null);
         var c4 = t2.expressions.get_item (3) as Variable;
         assert (c4 != null);
@@ -636,7 +636,7 @@ class Tests {
         assert (t1.expressions.get_n_items () == 3);
         var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
-        var m1 = t1.expressions.get_item (1) as Multiply;
+        var m1 = t1.expressions.get_item (1) as MathMultiply;
         assert (m1 != null);
         var g = t1.expressions.get_item (2) as MathGroup;
         assert (g != null);
@@ -698,7 +698,7 @@ class Tests {
         assert (plus != null);
         var c3 = tg2.expressions.get_item (1) as MathConstant;
         assert (c3 != null);
-        var m1 = t1.expressions.get_item (1) as Multiply;
+        var m1 = t1.expressions.get_item (1) as MathMultiply;
         assert (m1 != null);
         var c1 = t1.expressions.get_item (2) as MathConstant;
         assert (c1 != null);
@@ -862,11 +862,11 @@ class Tests {
         assert (t1.expressions.get_n_items () == 5);
         var c1 = t1.expressions.get_item (0) as MathConstant;
         assert (c1 != null);
-        var m1 = t1.expressions.get_item (1) as Multiply;
+        var m1 = t1.expressions.get_item (1) as MathMultiply;
         assert (m1 != null);
         var c2 = t1.expressions.get_item (2) as MathConstant;
         assert (c2 != null);
-        var m2 = t1.expressions.get_item (3) as Multiply;
+        var m2 = t1.expressions.get_item (3) as MathMultiply;
         assert (m2 != null);
         var f1 = t1.expressions.get_item (4) as MathFunction;
         assert (f1 != null);

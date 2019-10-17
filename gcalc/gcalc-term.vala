@@ -100,7 +100,7 @@ public interface GCalc.Term : Object, MathExpression {
     if (op is MathMinus) {
       res = c1.multiply (c2);
     }
-    if (op is Multiply) {
+    if (op is MathMultiply) {
       res = c1.multiply (c2);
     }
     if (op is MathDivision) {

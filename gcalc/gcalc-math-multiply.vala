@@ -21,5 +21,5 @@
 /**
  * A multiply operator in a math expression
  */
-public interface GCalc.Multiply : Object, MathExpression, MathOperator, MathBinaryOperator {}
+public interface GCalc.MathMultiply : Object, MathExpression, MathOperator, MathBinaryOperator {}
 
