@@ -52,10 +52,35 @@
  *  // Result will be 1605
  *  stdout.printf ("%g", c.real ());
  * }}}
+ *
+ * Is possible to define parameters instead of {@link MathVariable}. To do so,
+ * fine them at parsing time, then you can get it to change its value, to
+ * evaluate the dependant equation.
+ * {{{
+ *  var parser = new Parser ();
+ *  var eqman = new EquationManager ();
+ *  parser.parse ("$param1*5", eqman);
+ *  var eq = eqman.equations.get_item (1) as MathEquation;
+ *  var p = eqman.variable.find_named ("param1");
+ *  p.set_value (5.0);
+ *  var res = eq.solve ();
+ *  var c = (MathConstant) res;
+ *  // Result will be 25
+ *  stdout.printf ("%g", c.real ());
+ * }}}
  */
 public interface GCalc.MathEquationManager : Object {
+  /**
+   * Set of equations. They can be related or not.
+   */
   public abstract ExpressionContainer equations { get; }
+  /**
+   * Set of functions defined to be possibily used in equations.
+   */
   public abstract ExpressionContainer functions { get; }
+  /**
+   * Set of variables or parameters defined in the set of equations.
+   */
   public virtual MathVariable find_variable (string name) {
     MathVariable res = null;
     foreach (MathExpression e in equations) {
