@@ -1,4 +1,4 @@
-/* gcalc-minus.vala
+/* gcalc-math-minus.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *

@@ -178,7 +178,7 @@ public class GCalc.Parser : Object {
           process_term_operator (op, eq);
           break;
         case TokenType.MINUS:
-          var opp = new GMinus ();
+          var opp = new Minus ();
           process_operator (opp, eq);
           break;
         case TokenType.ASSIGN:
