@@ -88,7 +88,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var assign = eq.expressions.get_item (0) as Assign;
+        var assign = eq.expressions.get_item (0) as MathAssign;
         assert (assign != null);
         assert (assign.expressions.get_n_items () == 2);
         var v = assign.expressions.get_item (0) as Variable;
@@ -822,7 +822,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var a = eq.expressions.get_item (0) as Assign;
+        var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
@@ -849,7 +849,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var a = eq.expressions.get_item (0) as Assign;
+        var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
@@ -931,7 +931,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var a = eq.expressions.get_item (0) as Assign;
+        var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
@@ -969,7 +969,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var a = eq.expressions.get_item (0) as Assign;
+        var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
@@ -985,7 +985,7 @@ class Tests {
         assert (eq2 != null);
         message (eq2.to_string ());
         assert (eq2.expressions.get_n_items () == 1);
-        var a2 = eq2.expressions.get_item (0) as Assign;
+        var a2 = eq2.expressions.get_item (0) as MathAssign;
         assert (a2 != null);
         assert (a2.expressions.get_n_items () == 2);
         var v2 = a2.expressions.get_item (0) as Variable;
@@ -1014,7 +1014,7 @@ class Tests {
         assert (eq != null);
         message ("Eq1: %s", eq.to_string ());
         assert (eq.expressions.get_n_items () == 1);
-        var a = eq.expressions.get_item (0) as Assign;
+        var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;
@@ -1030,7 +1030,7 @@ class Tests {
         assert (eq2 != null);
         message ("Eq2: %s", eq2.to_string ());
         assert (eq2.expressions.get_n_items () == 1);
-        var a2 = eq2.expressions.get_item (0) as Assign;
+        var a2 = eq2.expressions.get_item (0) as MathAssign;
         assert (a2 != null);
         assert (a2.expressions.get_n_items () == 2);
         var v2 = a2.expressions.get_item (0) as Variable;
@@ -1046,7 +1046,7 @@ class Tests {
         assert (eq3 != null);
         message ("Eq3: %s", eq3.to_string ());
         assert (eq3.expressions.get_n_items () == 1);
-        var a3 = eq3.expressions.get_item (0) as Assign;
+        var a3 = eq3.expressions.get_item (0) as MathAssign;
         assert (a3 != null);
         assert (a3.expressions.get_n_items () == 2);
         var v4 = a3.expressions.get_item (0) as Variable;
@@ -1082,7 +1082,7 @@ class Tests {
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
         assert (eq.expressions.get_n_items () == 1);
-        var a = eq.expressions.get_item (0) as Assign;
+        var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         assert (a.expressions.get_n_items () == 2);
         var v = a.expressions.get_item (0) as Variable;

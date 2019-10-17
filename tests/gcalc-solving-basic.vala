@@ -1039,7 +1039,7 @@ class Tests {
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
-        var a = eq.expressions.get_item (0) as Assign;
+        var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         var res1 = a.evaluate () as Constant;
         assert (res1 != null);
@@ -1065,7 +1065,7 @@ class Tests {
         assert (eqman.equations.get_n_items () == 1);
         var eq = eqman.equations.get_item (0) as MathEquation;
         assert (eq != null);
-        var a = eq.expressions.get_item (0) as Assign;
+        var a = eq.expressions.get_item (0) as MathAssign;
         assert (a != null);
         var res1 = a.evaluate () as Constant;
         assert (res1 != null);

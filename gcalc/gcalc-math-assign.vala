@@ -1,4 +1,4 @@
-/* gcalc-assign.vala
+/* gcalc-math-assign.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,13 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Assign : Object, MathExpression, MathOperator, MathBinaryOperator {
+/**
+ * An assing operator in a math expression
+ */
+public interface GCalc.MathAssign : Object, MathExpression, MathOperator, MathBinaryOperator {
+  /**
+   * Evaluates the assign an returns a {@link MathExpression} as a result
+   */
   public MathExpression evaluate () throws GLib.Error {
     if (expressions.get_n_items () != 2) {
       throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid number of expressions in assign");
