@@ -157,7 +157,7 @@ public class GCalc.Parser : Object {
             current_parent.expressions.add (cexp);
             expected.clear ();
             current = cexp;
-          } else if (current is Term && current_parent is MathPolynomial && (top_parent is Group || top_parent is MathFunction)) {
+          } else if (current is Term && current_parent is MathPolynomial && (top_parent is MathGroup || top_parent is MathFunction)) {
             current.expressions.add (cexp);
             top_parent = current_parent;
             current_parent = current;
@@ -264,10 +264,10 @@ public class GCalc.Parser : Object {
           bool foundp = false;
           var par = current;
           while (par != null) {
-            if (par is Group) {
-              if (!((Group) par).closed) {
+            if (par is MathGroup) {
+              if (!((MathGroup) par).closed) {
                 foundp = true;
-                ((Group) par).closed = true;
+                ((MathGroup) par).closed = true;
                 break;
               }
             }
@@ -363,7 +363,7 @@ public class GCalc.Parser : Object {
       current = opp;
       current_parent = t;
       expected.clear ();
-    } else if ((current is Group || current is MathFunction) && current_parent is Term && top_parent is MathPolynomial) {
+    } else if ((current is MathGroup || current is MathFunction) && current_parent is Term && top_parent is MathPolynomial) {
       // New term
       var t = new GTerm ();
       t.expressions.add (opp);
@@ -392,7 +392,7 @@ public class GCalc.Parser : Object {
     if (current is MathOperator) {
       throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
     }
-    if ((current is MathConstant || current is Variable || current is Group || current is MathFunction)
+    if ((current is MathConstant || current is Variable || current is MathGroup || current is MathFunction)
         && current_parent is Term && top_parent is MathPolynomial) {
         current_parent.expressions.add (op);
         current = op;

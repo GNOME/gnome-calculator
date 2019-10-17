@@ -525,7 +525,7 @@ class Tests {
         var t = p.expressions.get_item (0) as Term;
         assert (t != null);
         assert (t.expressions.get_n_items () == 1);
-        var g = t.expressions.get_item (0) as Group;
+        var g = t.expressions.get_item (0) as MathGroup;
         assert (g != null);
         assert (g.closed);
         assert (g.expressions.get_n_items () == 1);
@@ -585,7 +585,7 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 1);
-        var g1 = t1.expressions.get_item (0) as Group;
+        var g1 = t1.expressions.get_item (0) as MathGroup;
         assert (g1 != null);
         assert (g1.closed);
         assert (g1.expressions.get_n_items () == 1);
@@ -602,7 +602,7 @@ class Tests {
         assert (t2.expressions.get_n_items () == 2);
         var plus = t2.expressions.get_item (0) as Plus;
         assert (plus != null);
-        var g2 = t2.expressions.get_item (1) as Group;
+        var g2 = t2.expressions.get_item (1) as MathGroup;
         assert (g2 != null);
         assert (g2.closed);
         assert (g2.expressions.get_n_items () == 1);
@@ -638,7 +638,7 @@ class Tests {
         assert (c1 != null);
         var m1 = t1.expressions.get_item (1) as Multiply;
         assert (m1 != null);
-        var g = t1.expressions.get_item (2) as Group;
+        var g = t1.expressions.get_item (2) as MathGroup;
         assert (g != null);
         assert (g.closed);
         assert (g.expressions.get_n_items () == 1);
@@ -678,7 +678,7 @@ class Tests {
         var t1 = p.expressions.get_item (0) as Term;
         assert (t1 != null);
         assert (t1.expressions.get_n_items () == 3);
-        var g = t1.expressions.get_item (0) as Group;
+        var g = t1.expressions.get_item (0) as MathGroup;
         assert (g != null);
         assert (g.closed);
         assert (g.expressions.get_n_items () == 1);
@@ -803,7 +803,7 @@ class Tests {
         assert (c1 != null);
         var pw = t.expressions.get_item (1) as Pow;
         assert (pw != null);
-        var g = t.expressions.get_item (2) as Group;
+        var g = t.expressions.get_item (2) as MathGroup;
         assert (g != null);
         assert (g.expressions.get_n_items () == 1);
         var p1 = g.expressions.get_item (0) as MathPolynomial;

@@ -258,7 +258,7 @@ class Tests {
         assert (e != null);
         var t = e.expressions.get_item (0) as Term;
         assert (t != null);
-        var g = t.expressions.get_item (0) as Group;
+        var g = t.expressions.get_item (0) as MathGroup;
         assert (g != null);
         var res = g.evaluate () as MathConstant;
         assert (res != null);
@@ -338,7 +338,7 @@ class Tests {
         assert (e != null);
         var t = e.expressions.get_item (0) as Term;
         assert (t != null);
-        var g = t.expressions.get_item (0) as Group;
+        var g = t.expressions.get_item (0) as MathGroup;
         assert (g != null);
         var res = g.evaluate () as MathConstant;
         assert (res != null);
@@ -361,7 +361,7 @@ class Tests {
         assert (e != null);
         var t = e.expressions.get_item (0) as Term;
         assert (t != null);
-        var g = t.expressions.get_item (0) as Group;
+        var g = t.expressions.get_item (0) as MathGroup;
         assert (g != null);
         var res = g.evaluate () as MathConstant;
         assert (res != null);

@@ -1,4 +1,4 @@
-/* gcalc-group.vala
+/* gcalc-math-group.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,10 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public interface GCalc.Group : Object, MathExpression {
+/**
+ * A grouping math expression like parentesis
+ */
+public interface GCalc.MathGroup : Object, MathExpression {
   public enum Level {
     ONE,
     TWO,
