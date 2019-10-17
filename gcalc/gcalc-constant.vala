@@ -1,4 +1,4 @@
-/* gcalc-gconstant.vala
+/* gcalc-constant.vala
  *
  * Copyright (C) 2018  Daniel Espinosa <esodan@gmail.com>
  *
@@ -18,7 +18,7 @@
  * Authors:
  *      Daniel Espinosa <esodan@gmail.com>
  */
-public class GCalc.GConstant : Expression, MathConstant {
+public class GCalc.Constant : Expression, MathConstant {
   private MPC.Complex _complex = MPC.Complex (1000);
 
   internal unowned MPC.Complex get_complex () { return _complex; }
@@ -26,19 +26,19 @@ public class GCalc.GConstant : Expression, MathConstant {
   construct {
     _complex.set_double (0.0);
   }
-  internal GConstant.internal_complex (MPC.Complex complex) {
+  internal Constant.internal_complex (MPC.Complex complex) {
     _complex.set (complex);
   }
-  public GConstant.integer (int val) {
+  public Constant.integer (int val) {
     _complex.set_double (val);
   }
-  public GConstant.unsigned_integer (uint val) {
+  public Constant.unsigned_integer (uint val) {
     _complex.set_double (val);
   }
-  public GConstant.@double (double val) {
+  public Constant.@double (double val) {
     _complex.set_double (val);
   }
-  public GConstant.complex (double real, double imag) {
+  public Constant.complex (double real, double imag) {
     _complex.set_double (real, imag);
   }
 
@@ -56,60 +56,60 @@ public class GCalc.GConstant : Expression, MathConstant {
   }
 
   internal MathConstant add (MathConstant c)
-    requires (c is GConstant)
+    requires (c is Constant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set (((GConstant) c).get_complex ());
+    p1.set (((Constant) c).get_complex ());
     res.add (_complex, p1);
-    return new GConstant.internal_complex (res);
+    return new Constant.internal_complex (res);
   }
 
   internal MathConstant subtract (MathConstant c)
-    requires (c is GConstant)
+    requires (c is Constant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set (((GConstant) c).get_complex ());
+    p1.set (((Constant) c).get_complex ());
     res.subtract (_complex, p1);
-    return new GConstant.internal_complex (res);
+    return new Constant.internal_complex (res);
   }
 
   internal MathConstant multiply (MathConstant c)
-    requires (c is GConstant)
+    requires (c is Constant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set (((GConstant) c).get_complex ());
+    p1.set (((Constant) c).get_complex ());
     res.multiply (_complex, p1);
-    return new GConstant.internal_complex (res);
+    return new Constant.internal_complex (res);
   }
 
   internal MathConstant divide (MathConstant c)
-    requires (c is GConstant)
+    requires (c is Constant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set (((GConstant) c).get_complex ());
+    p1.set (((Constant) c).get_complex ());
     res.divide (_complex, p1);
-    return new GConstant.internal_complex (res);
+    return new Constant.internal_complex (res);
   }
 
   internal MathConstant neg ()
   {
     var res = MPC.Complex (1000);
     res.neg (_complex);
-    return new GConstant.internal_complex (res);
+    return new Constant.internal_complex (res);
   }
 
   internal MathConstant pow (MathConstant c)
-    requires (c is GConstant)
+    requires (c is Constant)
   {
     var res = MPC.Complex (1000);
     var p1 = MPC.Complex (1000);
-    p1.set (((GConstant) c).get_complex ());
+    p1.set (((Constant) c).get_complex ());
     res.power (_complex, p1);
-    return new GConstant.internal_complex (res);
+    return new Constant.internal_complex (res);
   }
 
   // Expression interface

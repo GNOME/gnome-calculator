@@ -26,13 +26,13 @@ public class GCalc.GFunctionAcos : GFunction {
   construct {
     name = "acos";
     n_params = 1;
-    param_types.add (new GConstant ());
+    param_types.add (new Constant ());
   }
 
   internal override MathExpression evaluate () throws GLib.Error
   {
     verify_params ();
-    GConstant c = null;
+    Constant c = null;
     var exp = expressions.get_item (0) as MathExpression;
     if (exp == null) {
       throw new FunctionError.INVOCATION_ERROR ("Invalid parameter type. Expected %s", typeof(MathExpression).name ());
@@ -42,7 +42,7 @@ public class GCalc.GFunctionAcos : GFunction {
        throw new FunctionError.INVOCATION_ERROR ("Invalid expression: %s", ((ErrorResult) ev).message);
     }
     if (ev is Result) {
-      c = ((Result) ev).expression as GConstant;
+      c = ((Result) ev).expression as Constant;
     }
     if (c == null) {
        throw new FunctionError.INVOCATION_ERROR ("Invalid expression in result");
@@ -51,7 +51,7 @@ public class GCalc.GFunctionAcos : GFunction {
     p1.set (c.get_complex ());
     var res = MPC.Complex (1000);
     res.acos (p1);
-    var nc = new GConstant.internal_complex (res);
+    var nc = new Constant.internal_complex (res);
     return nc as MathExpression;
   }
 }

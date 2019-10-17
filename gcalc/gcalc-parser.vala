@@ -143,7 +143,7 @@ public class GCalc.Parser : Object {
           if (!double.try_parse (n, out res)) {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a constant");
           }
-          var cexp = new GConstant.@double (double.parse (n));
+          var cexp = new Constant.@double (double.parse (n));
           if (current == null) {
             var exp = new Polynomial ();
             eq.expressions.add (exp);

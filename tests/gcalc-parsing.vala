@@ -506,7 +506,7 @@ class Tests {
     });
     Test.add_func ("/gcalc/parser/constant/to_string",
     ()=>{
-      MathConstant c = new GConstant.@double (-1.0) as MathConstant;
+      MathConstant c = new Constant.@double (-1.0) as MathConstant;
       assert ("-1" in c.to_string ());
     });
     Test.add_func ("/gcalc/parser/term/parenthesis",

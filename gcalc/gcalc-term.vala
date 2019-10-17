@@ -21,7 +21,7 @@
 public interface GCalc.Term : Object, MathExpression {
   public virtual MathExpression add (Term t) throws GLib.Error {
     if (t.expressions.get_n_items () == 0) {
-      return new GConstant.@double (1.0);
+      return new Constant.@double (1.0);
     }
     MathExpression res = new GErrorExpression ();
     var e = evaluate ();
@@ -41,7 +41,7 @@ public interface GCalc.Term : Object, MathExpression {
           throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
         }
         if (e is Minus && first) {
-          var c = new GConstant.@double (-1.0);
+          var c = new Constant.@double (-1.0);
           current = c;
           first = false;
         }

@@ -25,7 +25,7 @@ public class GCalc.GVariable : Expression, Variable, Hashable {
   internal Variable bind { get; set; }
 
   construct {
-    _value = new GConstant.@double (0.0);
+    _value = new Constant.@double (0.0);
   }
   internal GVariable (string name) {
     this.name = name;

@@ -25,8 +25,8 @@ class Tests {
     Test.init (ref args);
     Test.add_func ("/gcalc/solve/constant/add",
     ()=>{
-      var c1 = new GConstant.@double (3.0);
-      var c2 = new GConstant.@double (3.0);
+      var c1 = new Constant.@double (3.0);
+      var c2 = new Constant.@double (3.0);
       var c3 = c1.add (c2);
       assert (c3 != null);
       message (c3.to_string ());
@@ -34,8 +34,8 @@ class Tests {
     });
     Test.add_func ("/gcalc/solve/constant/subtract",
     ()=>{
-      var c1 = new GConstant.@double (9.0);
-      var c2 = new GConstant.@double (3.0);
+      var c1 = new Constant.@double (9.0);
+      var c2 = new Constant.@double (3.0);
       var c3 = c1.subtract (c2);
       assert (c3 != null);
       message (c3.to_string ());
@@ -43,8 +43,8 @@ class Tests {
     });
     Test.add_func ("/gcalc/solve/constant/multiply",
     ()=>{
-      var c1 = new GConstant.@double (3.0);
-      var c2 = new GConstant.@double (3.0);
+      var c1 = new Constant.@double (3.0);
+      var c2 = new Constant.@double (3.0);
       var c3 = c1.multiply (c2);
       assert (c3 != null);
       message (c3.to_string ());
@@ -52,8 +52,8 @@ class Tests {
     });
     Test.add_func ("/gcalc/solve/constant/devide",
     ()=>{
-      var c1 = new GConstant.@double (9.0);
-      var c2 = new GConstant.@double (3.0);
+      var c1 = new Constant.@double (9.0);
+      var c2 = new Constant.@double (3.0);
       var c3 = c1.divide (c2);
       assert (c3 != null);
       message (c3.to_string ());
@@ -61,7 +61,7 @@ class Tests {
     });
     Test.add_func ("/gcalc/solve/constant/negation",
     ()=>{
-      var c1 = new GConstant.@double (9.0);
+      var c1 = new Constant.@double (9.0);
       var c3 = c1.neg ();
       assert (c3 != null);
       message (c3.to_string ());
@@ -69,7 +69,7 @@ class Tests {
     });
     Test.add_func ("/gcalc/solve/constant/complex",
     ()=>{
-      var c1 = new GConstant.complex (10.0, 15.0);
+      var c1 = new Constant.complex (10.0, 15.0);
       var c3 = c1.neg ();
       assert (c3 != null);
       message (c3.to_string ());
@@ -469,7 +469,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/sqrt",
     ()=>{
       try {
-        var c1 = new GConstant.@double (9.0);
+        var c1 = new Constant.@double (9.0);
         var f = new GFunctionSqrt ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -483,7 +483,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/exp",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionExp ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -497,7 +497,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/log",
     ()=>{
       try {
-        var c1 = new GConstant.@double (1.0);
+        var c1 = new Constant.@double (1.0);
         var f = new GFunctionLog ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -511,7 +511,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/sin",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionSin ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -525,7 +525,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/cos",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionCos ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -539,7 +539,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/tan",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionTan ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -553,7 +553,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/asin",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionAsin ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -567,7 +567,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/acos",
     ()=>{
       try {
-        var c1 = new GConstant.@double (1.0);
+        var c1 = new Constant.@double (1.0);
         var f = new GFunctionAcos ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -581,7 +581,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/atan",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionAtan ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -595,7 +595,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/sinh",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionSinh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -609,7 +609,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/cosh",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionCosh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -623,7 +623,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/tanh",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionTanh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -637,7 +637,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/asinh",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionAsinh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -651,7 +651,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/acosh",
     ()=>{
       try {
-        var c1 = new GConstant.@double (1.0);
+        var c1 = new Constant.@double (1.0);
         var f = new GFunctionAcosh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
@@ -665,7 +665,7 @@ class Tests {
     Test.add_func ("/gcalc/solve/function/atanh",
     ()=>{
       try {
-        var c1 = new GConstant.@double (0.0);
+        var c1 = new Constant.@double (0.0);
         var f = new GFunctionAtanh ();
         f.expressions.add (c1);
         var c2 = f.evaluate () as MathConstant;
