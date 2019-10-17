@@ -170,7 +170,7 @@ public class GCalc.Parser : Object {
           process_term_operator (op, eq);
           break;
         case TokenType.PLUS:
-          var opp = new GPlus ();
+          var opp = new Plus ();
           process_operator (opp, eq);
           break;
         case TokenType.DIV:
