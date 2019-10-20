@@ -24,7 +24,8 @@
 .test_template: &meson_test
   stage: test
   script:
-    - ninja -C _build test
+    - broadwayd &
+    - GDK_BACKEND=broadway ninja -C _build test
 
 build:fedora:
   <<: *fedora_before_script
