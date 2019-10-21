@@ -14,7 +14,7 @@
 .build_template: &meson_build
   stage: build
   script:
-    - meson _build .
+    - meson -Dui-tests=true _build .
     - ninja -C _build install
   artifacts:
     paths:
