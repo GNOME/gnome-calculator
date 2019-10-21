@@ -50,7 +50,7 @@ test_serializer = executable('test-serializer', test_serializer_sources,
 )
 test('Serializer test', test_serializer)
 
-
+if get_option('ui-tests')
 gci_test_deps = [
 	gee,
 	gtk,
@@ -72,6 +72,8 @@ test_entry_controler = executable('test-entry-controller', test_entry_controler_
   link_with: [libgci, libgcalc],
 )
 test('gci-entry-controller', test_entry_controler)
+endif
+
 endif
 
 tests_deps = [
