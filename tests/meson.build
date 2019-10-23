@@ -55,7 +55,7 @@ gci_test_deps = [
 	gee,
 	gtk,
 	inc_rooth_dep,
-	inc_libh_dep,
+	gcalc_inc_libh_dep,
 	gci_inc_libh_dep
 ]
 

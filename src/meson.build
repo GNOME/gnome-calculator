@@ -27,7 +27,7 @@ gnome_calculator_deps = [
   mpc,
   mpfr,
   posix,
-  inc_libh_dep
+  gcalc_inc_libh_dep
 ]
 
 gnome_calculator_vala_flags = [
@@ -71,7 +71,7 @@ gcalccmd_deps = [
   mpc,
   mpfr,
   posix,
-  inc_libh_dep
+  gcalc_inc_libh_dep
 ]
 
 gcalccmd_vala_flags = [

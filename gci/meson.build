@@ -48,15 +48,19 @@ gci_inc_libh_dep = declare_dependency (include_directories : gci_inc_libh)
 gci_build_dir = meson.current_build_dir ()
 gci_sources_dir = meson.current_source_dir ()
 
-gci_deps = [
+gci_exported_deps = [
 	gio,
-	gci_namespaceinfo_dep,
-	inc_libh_dep,
+	gcalc_inc_libh_dep,
 	inc_rooth_dep,
 	gci_inc_libh_dep,
 	gee,
 	gtk
 ]
+gci_deps = [
+	gci_namespaceinfo_dep,
+]
+
+gci_deps += gci_exported_deps
 
 # LT_VERSION for ABI related changes
 # From: https://autotools.io/libtool/version.html
@@ -112,5 +116,5 @@ endif
 
 libgci_dep = declare_dependency(include_directories : gci_inc_libh,
   link_with : libgci,
-  dependencies: gci_deps,
+  dependencies: gci_exported_deps,
   )

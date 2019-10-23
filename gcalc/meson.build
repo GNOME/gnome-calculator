@@ -27,10 +27,10 @@ configure_file(input : 'gcalc.deps.in',
 	install : true,
 	install_dir : vapidir)
 
-nsinfo = configure_file(input : 'namespace-info.vala.in',
+gcalc_nsinfo = configure_file(input : 'namespace-info.vala.in',
 	output : 'namespace-info.vala',
 	configuration : conf)
-namespaceinfo_dep = declare_dependency (sources : nsinfo)
+gcalc_namespaceinfo_dep = declare_dependency (sources : gcalc_nsinfo)
 
 confh = configuration_data ()
 confh.set_quoted('PACKAGE_LOCALE_DIR', join_paths(get_option('prefix'), get_option('datadir'), 'locale'))
@@ -119,22 +119,26 @@ gcalc_sources = files([
 ])
 
 
-inc_libh = include_directories ('.')
-inc_libh_dep = declare_dependency (include_directories : inc_libh)
+gcalc_inc_libh = include_directories ('.')
+gcalc_inc_libh_dep = declare_dependency (include_directories : gcalc_inc_libh)
 gcalc_build_dir = meson.current_build_dir ()
 gcalc_sources_dir = meson.current_source_dir ()
 
-gcalc_deps = [
+gcalc_exported_deps = [
 	gio,
-	namespaceinfo_dep,
-	inc_libh_dep,
-	inc_rooth_dep,
 	posix,
 	libxml,
 	libsoup,
 	libmath,
-	gee
+	gee,
+	inc_rooth_dep,
+	gcalc_inc_libh_dep,
 ]
+
+gcalc_deps = [
+	gcalc_namespaceinfo_dep,
+]
+gcalc_deps += gcalc_exported_deps
 
 # LT_VERSION for ABI related changes
 # From: https://autotools.io/libtool/version.html
@@ -192,7 +196,7 @@ custom_target('gcalc-typelib',
 endif
 endif
 
-libgcalc_dep = declare_dependency(include_directories : inc_libh,
+libgcalc_dep = declare_dependency(include_directories : gcalc_inc_libh,
   link_with : libgcalc,
-  dependencies: gcalc_deps,
+  dependencies: gcalc_exported_deps,
   )
