@@ -49,7 +49,7 @@ public class GCi.EntryController : Object {
   }
   internal void setup () {
     if (entry == null) {
-      warning (_("No entry was set"));
+      warning ("No entry was set");
     }
     entry.secondary_icon_name = "accessories-calculator";
     entry.secondary_icon_activatable = true;
@@ -77,7 +77,7 @@ public class GCi.EntryController : Object {
         entry.text = r.expression.to_string ();
       }
     } catch (GLib.Error e) {
-      warning (_("Math Expression evaluation error: %s"), e.message);
+      warning ("Math Expression evaluation error: %s", e.message);
     }
   }
 }
