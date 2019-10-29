@@ -826,7 +826,11 @@ public class MathEquation : Gtk.SourceBuffer
             get_iter_at_mark (out iter_prev, get_insert ());
             if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == "×" )
             {
+#if VALA_0_48
+                base.backspace (ref iter, true, true);
+#else
                 base.backspace (iter, true, true);
+#endif
                 insert_at_cursor ("^", -1);
                 return;
             }
@@ -840,7 +844,11 @@ public class MathEquation : Gtk.SourceBuffer
             get_iter_at_mark (out iter_prev, get_insert ());
             if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == ">" )
             {
+#if VALA_0_48
+                base.backspace (ref iter, true, true);
+#else
                 base.backspace (iter, true, true);
+#endif
                 insert_at_cursor ("»", -1);
                 return;
             }
@@ -854,7 +862,11 @@ public class MathEquation : Gtk.SourceBuffer
             get_iter_at_mark (out iter_prev, get_insert ());
             if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == "<" )
             {
+#if VALA_0_48
+                base.backspace (ref iter, true, true);
+#else
                 base.backspace (iter, true, true);
+#endif
                 insert_at_cursor ("«", -1);
                 return;
             }
@@ -1303,7 +1315,11 @@ public class MathEquation : Gtk.SourceBuffer
         {
             Gtk.TextIter iter;
             get_iter_at_mark (out iter, get_insert ());
+#if VALA_0_48
+            base.backspace (ref iter, true, true);
+#else
             base.backspace (iter, true, true);
+#endif
         }
     }
 
