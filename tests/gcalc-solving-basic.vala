@@ -31,6 +31,13 @@ class Tests {
       assert (c3 != null);
       message (c3.to_string ());
       assert (c3.@value () == 6.0);
+      var c4 = new Constant.complex (0.0, -1.0);
+      var c5 = c1.add (c4) as MathConstantComplex;
+      assert (c5 != null);
+      assert (c5.real () == 3.0);
+      assert (c5.imag () == -1.0);
+      message (c5.to_string ());
+      assert (c5.to_string () == "3-i");
     });
     Test.add_func ("/gcalc/solve/constant/subtract",
     ()=>{
@@ -76,7 +83,7 @@ class Tests {
       assert (c3.real () == -10.0);
       assert (c3.imag () == -15.0);
     });
-    Test.add_func ("/gcalc/solve/constant",
+    Test.add_func ("/gcalc/solve/constant/number",
     ()=>{
       try {
         var parser = new Parser ();
@@ -98,6 +105,174 @@ class Tests {
         assert (rc != null);
         message ("MathConstant Result: %s", rc.to_string ());
         assert (rc.@value () == 1.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/parse/constant/complex/positive",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new EquationManager ();
+        parser.parse ("1+i3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        assert (eq.to_string () == "1+i3");
+        var e = eq.expressions.get_item (0) as MathPolynomial;
+        assert (e != null);
+        message ("Polynomial: %u items - exp: %s", e.expressions.get_n_items (), e.to_string ());
+        var t = e.expressions.get_item (0) as MathTerm;
+        assert (t != null);
+        message ("Real Term: %u items - exp: %s", t.expressions.get_n_items (), t.to_string ());
+        var n = t.expressions.get_item (0) as MathConstantNumber;
+        assert (n != null);
+        assert (n.@value () == 1);
+        var ct = e.expressions.get_item (1) as MathTerm;
+        assert (ct != null);
+        message ("Imag Term: %u items - exp: %s", ct.expressions.get_n_items (), ct.to_string ());
+        message ("1 Term: %s", ct.expressions.get_item (0).get_type ().name ());
+        message ("2 Term: %s", ct.expressions.get_item (1).get_type ().name ());
+        var c = ct.expressions.get_item (1) as MathConstantComplex;
+        assert (c != null);
+        assert (c.real () == 0.0);
+        assert (c.imag () == 3.0);
+        var res = eq.solve ();
+        assert (res != null);
+        assert (res.expression != null);
+        var rc = res.expression as MathConstantComplex;
+        assert (rc != null);
+        message ("MathConstant Result: %s", rc.to_string ());
+        assert (rc.to_string () == "1+i3");
+        assert (rc.real () == 1.0);
+        assert (rc.imag () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/parse/constant/complex/negative",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new EquationManager ();
+        parser.parse ("1-i3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        assert (eq.to_string () == "1-i3");
+        var e = eq.expressions.get_item (0) as MathPolynomial;
+        assert (e != null);
+        message ("Polynomial: %u items - exp: %s", e.expressions.get_n_items (), e.to_string ());
+        var t = e.expressions.get_item (0) as MathTerm;
+        assert (t != null);
+        message ("Real Term: %u items - exp: %s", t.expressions.get_n_items (), t.to_string ());
+        var n = t.expressions.get_item (0) as MathConstantNumber;
+        assert (n != null);
+        assert (n.@value () == 1);
+        var ct = e.expressions.get_item (1) as MathTerm;
+        assert (ct != null);
+        message ("Imag Term: %u items - exp: %s", ct.expressions.get_n_items (), ct.to_string ());
+        message ("1 Term: %s", ct.expressions.get_item (0).get_type ().name ());
+        message ("2 Term: %s", ct.expressions.get_item (1).get_type ().name ());
+        var c = ct.expressions.get_item (1) as MathConstantComplex;
+        assert (c != null);
+        assert (c.real () == 0.0);
+        assert (c.imag () == 3.0);
+        var res = eq.solve ();
+        assert (res != null);
+        assert (res.expression != null);
+        var rc = res.expression as MathConstantComplex;
+        assert (rc != null);
+        message ("MathConstant Result: %s", rc.to_string ());
+        assert (rc.to_string () == "1-i3");
+        assert (rc.real () == 1.0);
+        assert (rc.imag () == -3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/parse/constant/complex/real-negative",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new EquationManager ();
+        parser.parse ("-1+i3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        assert (eq.to_string () == "-1+i3");
+        var e = eq.expressions.get_item (0) as MathPolynomial;
+        assert (e != null);
+        message ("Polynomial: %u items - exp: %s", e.expressions.get_n_items (), e.to_string ());
+        var t = e.expressions.get_item (0) as MathTerm;
+        assert (t != null);
+        message ("Real Term: %u items - exp: %s", t.expressions.get_n_items (), t.to_string ());
+        var n = t.expressions.get_item (1) as MathConstantNumber;
+        assert (n != null);
+        assert (n.@value () == 1);
+        var ct = e.expressions.get_item (1) as MathTerm;
+        assert (ct != null);
+        message ("Imag Term: %u items - exp: %s", ct.expressions.get_n_items (), ct.to_string ());
+        message ("1 Term: %s", ct.expressions.get_item (0).get_type ().name ());
+        message ("2 Term: %s", ct.expressions.get_item (1).get_type ().name ());
+        var c = ct.expressions.get_item (1) as MathConstantComplex;
+        assert (c != null);
+        assert (c.real () == 0.0);
+        assert (c.imag () == 3.0);
+        var res = eq.solve ();
+        assert (res != null);
+        assert (res.expression != null);
+        var rc = res.expression as MathConstantComplex;
+        assert (rc != null);
+        message ("MathConstant Result: %s", rc.to_string ());
+        assert (rc.to_string () == "-1+i3");
+        assert (rc.real () == -1.0);
+        assert (rc.imag () == 3.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
+    Test.add_func ("/gcalc/solve/parse/constant/complex/all-negative",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new EquationManager ();
+        parser.parse ("-1-i3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        message ("Equation: %s", eq.to_string ());
+        assert (eq.to_string () == "-1-i3");
+        var e = eq.expressions.get_item (0) as MathPolynomial;
+        assert (e != null);
+        message ("Polynomial: %u items - exp: %s", e.expressions.get_n_items (), e.to_string ());
+        var t = e.expressions.get_item (0) as MathTerm;
+        assert (t != null);
+        message ("Real Term: %u items - exp: %s", t.expressions.get_n_items (), t.to_string ());
+        var n = t.expressions.get_item (1) as MathConstantNumber;
+        assert (n != null);
+        assert (n.@value () == 1);
+        var ct = e.expressions.get_item (1) as MathTerm;
+        assert (ct != null);
+        message ("Imag Term: %u items - exp: %s", ct.expressions.get_n_items (), ct.to_string ());
+        message ("1 Term: %s", ct.expressions.get_item (0).get_type ().name ());
+        message ("2 Term: %s", ct.expressions.get_item (1).get_type ().name ());
+        var c = ct.expressions.get_item (1) as MathConstantComplex;
+        assert (c != null);
+        assert (c.real () == 0.0);
+        assert (c.imag () == 3.0);
+        var res = eq.solve ();
+        assert (res != null);
+        assert (res.expression != null);
+        var rc = res.expression as MathConstantComplex;
+        assert (rc != null);
+        message ("MathConstant Result: %s", rc.to_string ());
+        assert (rc.to_string () == "-1-i3");
+        assert (rc.real () == -1.0);
+        assert (rc.imag () == -3.0);
       } catch (GLib.Error e) {
         warning ("Error: %s", e.message);
       }

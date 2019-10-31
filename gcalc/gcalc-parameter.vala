@@ -46,4 +46,25 @@ public class GCalc.Parameter : GCalc.Variable, MathParameter {
     v = @value;
     return v;
   }
+  // Expression
+  internal override string to_string () {
+    string str = name;
+    if (@value is MathConstantNumber) {
+      var c = @value as MathConstantNumber;
+      str = "%g".printf (c.@value ());
+    } else if (@value is MathConstantComplex) {
+      var c = @value as MathConstantComplex;
+      str = "%g".printf (c.real ());
+      double i = c.imag ();
+      if (i != 0) {
+        if (i > 0) {
+          str += "+";
+        } else {
+          str += "-";
+        }
+        str += "%gi".printf (c.imag ());
+      }
+    }
+    return str;
+  }
 }

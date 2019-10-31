@@ -126,10 +126,36 @@ public class GCalc.Constant : Expression,
 
   // Expression interface
   internal override string to_string () {
+    string s = "";
     if (imag () != 0.0) {
-      return MPC.Complex.to_string (10, 10, _complex);
+      bool par = false;
+      if (real () != 0.0) {
+        if (parent != null) {
+          s += "(";
+          par = true;
+        }
+        s += "%g".printf (real ());
+      }
+      var im = imag ();
+      if (im < 0.0) {
+        s += "-";
+        im = im * -1.0;
+      } else {
+        if (real () != 0.0) {
+          s += "+";
+        }
+      }
+      s += "i";
+      if (im != 1.0) {
+        s += "%g".printf (im);
+      }
+      if (par) {
+        s += ")";
+      }
+    } else {
+      s = "%g".printf (real ());
     }
-    return "%g".printf (real ());
+    return s;
   }
 
   internal override MathResult solve () {

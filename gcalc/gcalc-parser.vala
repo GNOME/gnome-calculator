@@ -26,6 +26,7 @@ public class GCalc.Parser : Object {
   MathExpression current = null;
   MathExpression current_parent = null;
   MathExpression top_parent = null;
+  Equation eq = null;
   bool enable_parameter = false;
   Gee.ArrayList<TokenType> expected = new Gee.ArrayList<TokenType> ();
   GLib.Scanner scanner;
@@ -51,7 +52,7 @@ public class GCalc.Parser : Object {
    */
   public void parse (string str, MathEquationManager eqman) throws GLib.Error {
     TokenType token = TokenType.NONE;
-    Equation eq = new Equation ();
+    eq = new Equation ();
     scanner.input_text (str, str.length);
     current = null;
     current_parent = null;
@@ -64,76 +65,84 @@ public class GCalc.Parser : Object {
       }
       string n = token_to_string ();
       if (expected.size != 0 && !expected.contains (token)) {
-        throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression");
+        throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected expression"));
       }
       switch (token) {
         case TokenType.IDENTIFIER:
-          MathExpression sfunc = eqman.functions.find_named (n);
-          if (sfunc != null) {
-            sfunc = Object.new (sfunc.get_type ()) as MathExpression;
-            if (current == null) {
-              var exp = new Polynomial ();
-              eq.expressions.add (exp);
-              var t = new Term ();
-              exp.expressions.add (t);
-              t.expressions.add (sfunc);
-              current = sfunc;
-              current_parent = t;
-              top_parent = exp;
-              expected.clear ();
-              expected.add(TokenType.OPEN_PARENS);
-            } else if (current is MathOperator && current_parent is MathTerm && top_parent is MathPolynomial) {
-                current_parent.expressions.add (sfunc);
-                current = sfunc;
-                expected.clear ();
-            } else if (current is MathTerm && current_parent is MathPolynomial) {
-                current.expressions.add (sfunc);
-                current_parent = current;
-                current = sfunc;
-                top_parent = current_parent.parent;
-                expected.clear ();
-            }
-          } else if (n.down () == "def" && current == null) {
-            // FIXME: implement function definition
-          } else if (n.down () == "def" && current is MathFunction) {
-            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
+          Regex rg = new Regex ("i[0-9]*.*", RegexCompileFlags.ANCHORED, RegexMatchFlags.ANCHORED);
+          if (rg.match (n, RegexMatchFlags.ANCHORED, null)) {
+            string cxn = n.replace ("i", "");
+            double v = double.parse (cxn);
+            var cx = new Constant.complex (0, v);
+            add_constant (cx);
           } else {
-            var v = new Variable (n) as MathExpression;
-            if (enable_parameter) {
-              v = new Parameter (n) as MathExpression;
-              enable_parameter = false;
-            }
-            var sv = eqman.find_variable (n) as MathVariable;
-            if (sv == null) {
-              sv = eq.variables.find_named (n) as MathVariable;
+            MathExpression sfunc = eqman.functions.find_named (n);
+            if (sfunc != null) {
+              sfunc = Object.new (sfunc.get_type ()) as MathExpression;
+              if (current == null) {
+                var exp = new Polynomial ();
+                eq.expressions.add (exp);
+                var t = new Term ();
+                exp.expressions.add (t);
+                t.expressions.add (sfunc);
+                current = sfunc;
+                current_parent = t;
+                top_parent = exp;
+                expected.clear ();
+                expected.add(TokenType.OPEN_PARENS);
+              } else if (current is MathOperator && current_parent is MathTerm && top_parent is MathPolynomial) {
+                  current_parent.expressions.add (sfunc);
+                  current = sfunc;
+                  expected.clear ();
+              } else if (current is MathTerm && current_parent is MathPolynomial) {
+                  current.expressions.add (sfunc);
+                  current_parent = current;
+                  current = sfunc;
+                  top_parent = current_parent.parent;
+                  expected.clear ();
+              }
+            } else if (n.down () == "def" && current == null) {
+              // FIXME: implement function definition
+            } else if (n.down () == "def" && current is MathFunction) {
+              throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
+            } else {
+              var v = new Variable (n) as MathExpression;
+              if (enable_parameter) {
+                v = new Parameter (n) as MathExpression;
+                enable_parameter = false;
+              }
+              var sv = eqman.find_variable (n) as MathVariable;
               if (sv == null) {
-                eq.variables.add (v);
+                sv = eq.variables.find_named (n) as MathVariable;
+                if (sv == null) {
+                  eq.variables.add (v);
+                } else {
+                  ((MathVariable) v).bind = sv;
+                }
               } else {
                 ((MathVariable) v).bind = sv;
               }
-            } else {
-              ((MathVariable) v).bind = sv;
-            }
-            if (current == null) {
-              var exp = new Polynomial ();
-              eq.expressions.add (exp);
-              var t = new Term ();
-              exp.expressions.add (t);
-              t.expressions.add (v);
-              current = v;
-              current_parent = v.parent;
-              top_parent = current_parent.parent;
-              expected.clear ();
-            } else if (current is MathOperator && current_parent is MathTerm && top_parent is MathPolynomial) {
-                current_parent.expressions.add (v);
-                current = v;
-                expected.clear ();
-            } else if (current is MathTerm) {
-                current.expressions.add (v);
+              if (current == null) {
+                var exp = new Polynomial ();
+                eq.expressions.add (exp);
+                var t = new Term ();
+                exp.expressions.add (t);
+                t.expressions.add (v);
                 current = v;
                 current_parent = v.parent;
                 top_parent = current_parent.parent;
                 expected.clear ();
+              } else if (current is MathOperator && current_parent is MathTerm && top_parent is MathPolynomial) {
+                  current_parent.expressions.add (v);
+                  current = v;
+                  expected.clear ();
+              } else if (current is MathTerm) {
+                  current.expressions.add (v);
+                  current = v;
+                  current_parent = v.parent;
+                  top_parent = current_parent.parent;
+                  expected.clear ();
+              }
             }
           }
           break;
@@ -144,26 +153,7 @@ public class GCalc.Parser : Object {
             throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a constant");
           }
           var cexp = new Constant.@double (double.parse (n));
-          if (current == null) {
-            var exp = new Polynomial ();
-            eq.expressions.add (exp);
-            var t = new Term ();
-            exp.expressions.add (t);
-            t.expressions.add (cexp);
-            current = cexp;
-            current_parent = t;
-            top_parent = exp;
-          } else if ((current is MathOperator || current is MathTerm) && current_parent is MathTerm && top_parent is MathPolynomial) {
-            current_parent.expressions.add (cexp);
-            expected.clear ();
-            current = cexp;
-          } else if (current is MathTerm && current_parent is MathPolynomial && (top_parent is MathGroup || top_parent is MathFunction)) {
-            current.expressions.add (cexp);
-            top_parent = current_parent;
-            current_parent = current;
-            current = cexp;
-            expected.clear ();
-          }
+          add_constant (cexp);
           break;
         case TokenType.STAR:
           var op = new Multiply ();
@@ -408,6 +398,28 @@ public class GCalc.Parser : Object {
       current = op;
       current_parent = t;
       top_parent = exp;
+      expected.clear ();
+    }
+  }
+  private void add_constant (MathConstant c) {
+    if (current == null) {
+      var exp = new Polynomial ();
+      eq.expressions.add (exp);
+      var t = new Term ();
+      exp.expressions.add (t);
+      t.expressions.add (c);
+      current = c;
+      current_parent = t;
+      top_parent = exp;
+    } else if ((current is MathOperator || current is MathTerm) && current_parent is MathTerm && top_parent is MathPolynomial) {
+      current_parent.expressions.add (c);
+      expected.clear ();
+      current = c;
+    } else if (current is MathTerm && current_parent is MathPolynomial && (top_parent is MathGroup || top_parent is MathFunction)) {
+      current.expressions.add (c);
+      top_parent = current_parent;
+      current_parent = current;
+      current = c;
       expected.clear ();
     }
   }
