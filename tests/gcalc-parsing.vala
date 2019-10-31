@@ -1109,6 +1109,15 @@ class Tests {
         assert (t2 != null);
         var v2 = t2.expressions.get_item (0) as MathVariable;
         assert (v2 != null);
+        message (eq.to_string ());
+        assert (eq.to_string () == "x=0");
+        p.set_value (10.0);
+        message (eq.to_string ());
+        assert (eq.to_string () == "x=10");
+        var cx = new Constant.complex (-5.0, -10.0);
+        p.set_value (cx);
+        message (eq.to_string ());
+        assert (eq.to_string () == "x=-5-i10");
       } catch (GLib.Error error) {
         warning ("Error: %s", error.message);
       }
