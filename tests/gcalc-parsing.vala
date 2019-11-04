@@ -460,6 +460,34 @@ class Tests {
         warning ("Error: %s", error.message);
       }
     });
+    Test.add_func ("/gcalc/parser/term/variable/i-start",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new EquationManager ();
+        parser.parse ("id*3", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        assert (eq.expressions.get_n_items () == 1);
+        var p = eq.expressions.get_item (0) as MathPolynomial;
+        assert (p != null);
+        message ("Terms: %u", p.expressions.get_n_items ());
+        assert (p.expressions.get_n_items () == 1);
+        var t1 = p.expressions.get_item (0) as MathTerm;
+        assert (t1 != null);
+        assert (t1.expressions.get_n_items () == 3);
+        message ("T: %s", t1.expressions.get_item (0).get_type ().name ());
+        var c1 = t1.expressions.get_item (0) as MathVariable;
+        assert (c1 != null);
+        var m = t1.expressions.get_item (1) as MathMultiply;
+        assert (m != null);
+        var c2 = t1.expressions.get_item (2) as MathConstant;
+        assert (c2 != null);
+      } catch (GLib.Error error) {
+        warning ("Error: %s", error.message);
+      }
+    });
     Test.add_func ("/gcalc/parser/term/complex/multiply-division/constant-variable",
     ()=>{
       try {

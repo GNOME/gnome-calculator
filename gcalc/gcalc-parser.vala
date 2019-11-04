@@ -27,6 +27,7 @@ public class GCalc.Parser : Object {
   MathExpression current_parent = null;
   MathExpression top_parent = null;
   Equation eq = null;
+  Regex rg;
   bool enable_parameter = false;
   Gee.ArrayList<TokenType> expected = new Gee.ArrayList<TokenType> ();
   GLib.Scanner scanner;
@@ -44,6 +45,11 @@ public class GCalc.Parser : Object {
     scanner.config.scan_hex = false;
     scanner.config.scan_hex_dollar = false;
     scanner.config.numbers_2_int = false;
+    try {
+      rg = new Regex ("^i\\d", RegexCompileFlags.ANCHORED, RegexMatchFlags.ANCHORED);
+    } catch (GLib.Error e) {
+      message ("Error on compile regular expression: %s", e.message);
+    }
   }
   /**
    * Creates a {@link MathEquation} and adds it to given
@@ -69,7 +75,6 @@ public class GCalc.Parser : Object {
       }
       switch (token) {
         case TokenType.IDENTIFIER:
-          Regex rg = new Regex ("i[0-9]*.*", RegexCompileFlags.ANCHORED, RegexMatchFlags.ANCHORED);
           if (rg.match (n, RegexMatchFlags.ANCHORED, null)) {
             string cxn = n.replace ("i", "");
             double v = double.parse (cxn);
