@@ -110,7 +110,6 @@ public interface GCalc.MathTerm : Object, MathExpression {
   public static MathExpression evaluate_constants (MathConstant c1, MathConstant c2, MathOperator op)
     throws GLib.Error
   {
-      message ("Eval: %s : %s", c1.to_string (), c2.to_string ());
     MathExpression res = null;
     if (op is MathMinus) {
       res = c1.multiply (c2);

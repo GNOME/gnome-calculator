@@ -27,7 +27,11 @@ public class GCalc.Parameter : GCalc.Variable, MathParameter {
     base (name);
   }
 
-  internal void set_value (GLib.Value val) throws GLib.Error {
+  internal void set_value (GLib.Value? val) throws GLib.Error {
+    if (val == null) {
+      @value = null;
+      return;
+    }
     MathConstant c = new Constant.integer (0);
     if (val.holds (GLib.Type.INT)) {
       c = new Constant.integer ((int) val);
@@ -41,7 +45,10 @@ public class GCalc.Parameter : GCalc.Variable, MathParameter {
     @value = c;
   }
 
-  internal GLib.Value get_value () {
+  internal GLib.Value? get_value () {
+    if (@value == null) {
+      return null;
+    }
     var v = GLib.Value (typeof (GCalc.MathConstant));
     v = @value;
     return v;
@@ -49,7 +56,7 @@ public class GCalc.Parameter : GCalc.Variable, MathParameter {
   // Expression
   internal override string to_string () {
     if (@value == null) {
-      return "0";
+      return name;
     }
     return @value.to_string ();
   }

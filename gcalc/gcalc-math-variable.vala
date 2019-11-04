@@ -32,6 +32,9 @@ public interface GCalc.MathVariable : Object, MathExpression {
       return bind.evaluate ();
     }
     if (this is MathParameter) {
+      if (@value == null) {
+        return new Constant.@double (0.0);
+      }
       return @value;
     }
     if (parent == null) {

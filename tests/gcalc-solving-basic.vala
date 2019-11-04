@@ -1571,6 +1571,60 @@ class Tests {
         warning ("Error: %s", e.message);
       }
     });
+    Test.add_func ("/gcalc/solve/equations/solve/variable/parameter",
+    ()=>{
+      try {
+        var parser = new Parser ();
+        var eqman = new EquationManager ();
+        parser.parse ("3*$p", eqman);
+        assert (eqman.equations.get_n_items () == 1);
+        var eq = eqman.equations.get_item (0) as MathEquation;
+        assert (eq != null);
+        var res = eq.solve ();
+        if (res is ErrorResult) {
+          warning ("Error: %s", (res as ErrorResult).message);
+        }
+        assert (res.expression != null);
+        assert (res.expression is MathConstant);
+        message ("Result: %s", res.expression.to_string ());
+        var c = res.expression as MathConstantNumber;
+        assert (c != null);
+        assert (c.@value () == 0.0);
+        var p = eq.variables.find_named ("p") as MathParameter;
+        assert (p != null);
+        assert (p is MathParameter);
+        message ("Param without value to string: %s", p.to_string ());
+        assert (p.to_string () == "p");
+        p.set_value (3.0);
+        message ("Param with value to string: %s", p.to_string ());
+        assert (p.to_string () == "3");
+        var res2 = eq.solve ();
+        if (res2 is ErrorResult) {
+          warning ("Error: %s", (res2 as ErrorResult).message);
+        }
+        assert (res2.expression != null);
+        assert (res2.expression is MathConstant);
+        message ("Result: %s", res2.expression.to_string ());
+        var c2 = res2.expression as MathConstantNumber;
+        assert (c2 != null);
+        assert (c2.@value () == 9.0);
+        p.set_value (null);
+        message ("Param without value to string: %s", p.to_string ());
+        assert (p.to_string () == "p");
+        var res3 = eq.solve ();
+        if (res3 is ErrorResult) {
+          warning ("Error: %s", (res3 as ErrorResult).message);
+        }
+        assert (res3.expression != null);
+        assert (res3.expression is MathConstant);
+        message ("Result: %s", res3.expression.to_string ());
+        var c3 = res3.expression as MathConstantNumber;
+        assert (c3 != null);
+        assert (c3.@value () == 0.0);
+      } catch (GLib.Error e) {
+        warning ("Error: %s", e.message);
+      }
+    });
     return Test.run ();
   }
 }

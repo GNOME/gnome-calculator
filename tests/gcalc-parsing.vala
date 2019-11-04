@@ -1138,7 +1138,7 @@ class Tests {
         var v2 = t2.expressions.get_item (0) as MathVariable;
         assert (v2 != null);
         message (eq.to_string ());
-        assert (eq.to_string () == "x=0");
+        assert (eq.to_string () == "x=param1");
         p.set_value (10.0);
         message (eq.to_string ());
         assert (eq.to_string () == "x=10");

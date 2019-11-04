@@ -26,6 +26,6 @@
  * Currently the value will be converted to a {@link MathConstant} if possible.
  */
 public interface GCalc.MathParameter : Object, MathExpression, MathVariable {
-  public abstract void set_value (GLib.Value val) throws GLib.Error;
-  public abstract GLib.Value get_value ();
+  public abstract void set_value (GLib.Value? val) throws GLib.Error;
+  public abstract GLib.Value? get_value ();
 }
