@@ -49,7 +49,7 @@ public interface GCalc.MathTerm : Object, MathExpression {
     foreach (MathExpression e in expressions) {
       if (e is MathOperator) {
         if (!(e is MathMinus || e is MathPlus) && first) {
-          throw new TermError.INVALID_OPERATOR ("Incorrect position for operator in expression");
+          throw new TermError.INVALID_OPERATOR (_("Incorrect position for operator in expression"));
         }
         if (e is MathMinus && first) {
           var c = new Constant.@double (-1.0);
@@ -100,7 +100,7 @@ public interface GCalc.MathTerm : Object, MathExpression {
       }
     }
     if (current == null) {
-      throw new TermError.EVALUATION_FAIL ("Evaluation fail on Term");
+      throw new TermError.EVALUATION_FAIL (_("Evaluation fail on Term"));
     }
     return current;
   }
@@ -124,7 +124,7 @@ public interface GCalc.MathTerm : Object, MathExpression {
       res = c1.pow (c2);
     }
     if (res == null) {
-      throw new TermError.INVALID_OPERATOR ("Unsupported operator in term's expression");
+      throw new TermError.INVALID_OPERATOR (_("Unsupported operator in term's expression"));
     }
     return res;
   }

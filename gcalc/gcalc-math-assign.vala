@@ -27,19 +27,19 @@ public interface GCalc.MathAssign : Object, MathExpression, MathOperator, MathBi
    */
   public MathExpression evaluate () throws GLib.Error {
     if (expressions.get_n_items () != 2) {
-      throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid number of expressions in assign");
+      throw new AssigError.INVALID_STRUCTURE_ERROR (_("Invalid number of expressions in assign"));
     }
     var v = expressions.get_item (0) as MathVariable;
     if (v == null) {
-      throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid variable object in assign");
+      throw new AssigError.INVALID_STRUCTURE_ERROR (_("Invalid variable object in assign"));
     }
     var p = expressions.get_item (1) as MathPolynomial;
     if (p == null) {
-      throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid polynomial object in assign");
+      throw new AssigError.INVALID_STRUCTURE_ERROR (_("Invalid polynomial object in assign"));
     }
     var ca = p.evaluate () as MathConstant;
     if (ca == null) {
-      throw new AssigError.INVALID_STRUCTURE_ERROR ("Invalid polynomial evaluation in assign; should a constant no Variable update was done");
+      throw new AssigError.INVALID_STRUCTURE_ERROR (_("Invalid polynomial evaluation in assign; should a constant no Variable update was done"));
     }
     v.@value = ca;
     return v.@value;

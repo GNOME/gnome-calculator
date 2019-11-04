@@ -35,17 +35,17 @@ public class GCalc.FunctionLog : Function {
     Constant c = null;
     var exp = expressions.get_item (0) as MathExpression;
     if (exp == null) {
-      throw new FunctionError.INVOCATION_ERROR ("Invalid parameter type. Expected %s", typeof(MathExpression).name ());
+      throw new FunctionError.INVOCATION_ERROR (_("Invalid parameter type. Expected %s"), typeof(MathExpression).name ());
     }
     var ev = exp.solve ();
     if (ev is ErrorResult) {
-       throw new FunctionError.INVOCATION_ERROR ("Invalid expression: %s", ((ErrorResult) ev).message);
+       throw new FunctionError.INVOCATION_ERROR (_("Invalid expression: %s"), ((ErrorResult) ev).message);
     }
     if (ev is MathResult) {
       c = ((MathResult) ev).expression as Constant;
     }
     if (c == null) {
-       throw new FunctionError.INVOCATION_ERROR ("Invalid expression in result");
+       throw new FunctionError.INVOCATION_ERROR (_("Invalid expression in result"));
     }
     var p1 = MPC.Complex (1000);
     p1.set (c.get_complex ());

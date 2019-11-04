@@ -31,11 +31,11 @@ public interface GCalc.MathGroup : Object, MathExpression {
   public abstract bool closed { get; set; }
   public virtual MathExpression evaluate () throws GLib.Error {
     if (expressions.get_n_items () == 0) {
-      throw new GroupError.INVALID_POLYNOMIAL ("No internal polynomial in group");
+      throw new GroupError.INVALID_POLYNOMIAL (_("No internal polynomial in group"));
     }
     var e = expressions.get_item (0) as MathPolynomial;
     if (e == null) {
-      throw new GroupError.INVALID_POLYNOMIAL ("Invalid internal polynomial in group");
+      throw new GroupError.INVALID_POLYNOMIAL (_("Invalid internal polynomial in group"));
     }
     return e.evaluate ();
   }

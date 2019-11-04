@@ -53,7 +53,7 @@ public interface GCalc.MathFunction : Object, MathExpression {
    */
   public virtual bool verify_params () throws GLib.Error {
     if (expressions.get_n_items () != n_params) {
-      throw new FunctionError.INVALID_PARAMETERS_ERROR ("Invalid number of parameters. Required %u, provided: %u",
+      throw new FunctionError.INVALID_PARAMETERS_ERROR (_("Invalid number of parameters. Required %u, provided: %u"),
                                                   n_params, expressions.get_n_items ());
     }
     return true;

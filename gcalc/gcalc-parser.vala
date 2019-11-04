@@ -109,7 +109,7 @@ public class GCalc.Parser : Object {
             } else if (n.down () == "def" && current == null) {
               // FIXME: implement function definition
             } else if (n.down () == "def" && current is MathFunction) {
-              throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected function definition expression");
+              throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected function definition expression"));
             } else {
               var v = new Variable (n) as MathExpression;
               if (enable_parameter) {
@@ -155,7 +155,7 @@ public class GCalc.Parser : Object {
         case TokenType.REAL_LITERAL:
           double res = 0;
           if (!double.try_parse (n, out res)) {
-            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a constant");
+            throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected expression for a constant"));
           }
           var cexp = new Constant.@double (double.parse (n));
           add_constant (cexp);
@@ -178,9 +178,9 @@ public class GCalc.Parser : Object {
           break;
         case TokenType.ASSIGN:
           if (current == null) {
-            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for an assignment");
+            throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected expression for an assignment"));
           } else if (current is MathPolynomial) {
-            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression: can't set a value to a polynomial");
+            throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected expression: can't set a value to a polynomial"));
           } else if (current is MathVariable) {
             bool removed = false;
             if (current.parent != null) {
@@ -201,7 +201,7 @@ public class GCalc.Parser : Object {
               }
             }
             if (!removed) {
-              throw new ParserError.INVALID_EXPRESSION_ERROR ("Found an unexpected expression for an assignment. Assignment should be done on variables");
+              throw new ParserError.INVALID_EXPRESSION_ERROR (_("Found an unexpected expression for an assignment. Assignment should be done on variables"));
             }
             var expa = new Assign ();
             eq.expressions.add (expa);
@@ -254,7 +254,7 @@ public class GCalc.Parser : Object {
           break;
         case TokenType.CLOSE_PARENS:
           if (current == null) {
-            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression while closing parenthesis");
+            throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected expression while closing parenthesis"));
           }
           bool foundp = false;
           var par = current;
@@ -284,7 +284,7 @@ public class GCalc.Parser : Object {
         case TokenType.CARRET:
           var op = new Pow ();
           if (current == null) {
-            throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression trying power expression");
+            throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected expression trying power expression"));
           } else {
             process_term_operator (op, eq);
           }
@@ -321,7 +321,7 @@ public class GCalc.Parser : Object {
         case TokenType.INTERR:
         // Hash
         case TokenType.HASH:
-          throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression: '%s'", token.to_string ());
+          throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected expression: '%s'"), token.to_string ());
         case TokenType.CURRENCY_SYMBOL:
           enable_parameter = true;
           break;
@@ -331,7 +331,7 @@ public class GCalc.Parser : Object {
   }
   private void process_operator (MathOperator opp, Equation eq) throws GLib.Error {
     if (current is MathBinaryOperator) {
-      throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a plus operator");
+      throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected expression for a plus operator"));
     }
     if (current == null) {
       var exp = new Polynomial ();
@@ -385,7 +385,7 @@ public class GCalc.Parser : Object {
   }
   private void process_term_operator (MathOperator op, Equation eq) throws GLib.Error {
     if (current is MathOperator) {
-      throw new ParserError.INVALID_TOKEN_ERROR ("Found an unexpected expression for a multiply operator");
+      throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected expression for a multiply operator"));
     }
     if ((current is MathConstant || current is MathVariable || current is MathGroup || current is MathFunction)
         && current_parent is MathTerm && top_parent is MathPolynomial) {

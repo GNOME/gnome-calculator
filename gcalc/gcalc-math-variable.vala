@@ -38,18 +38,18 @@ public interface GCalc.MathVariable : Object, MathExpression {
       return @value;
     }
     if (parent == null) {
-      throw new VariableError.INVALID_PARENT ("Can't access to MathVariable's expression definition. Invalid parent. Expected Assign operator");
+      throw new VariableError.INVALID_PARENT (_("Can't access to MathVariable's expression definition. Invalid parent. Expected Assign operator"));
     }
     if (parent.expressions.get_n_items () != 2) {
-      throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to MathVariable's expression definition. Expression not found");
+      throw new VariableError.INVALID_EXPRESSION_DEFINITION (_("Can't access to MathVariable's expression definition. Expression not found"));
     }
     var e = parent.expressions.get_item (1) as MathPolynomial;
     if (e == null) {
-      throw new VariableError.INVALID_EXPRESSION_DEFINITION ("Can't access to MathVariable's expression definition. Unexpected object type");
+      throw new VariableError.INVALID_EXPRESSION_DEFINITION (_("Can't access to MathVariable's expression definition. Unexpected object type"));
     }
     var exp = e.evaluate () as MathConstant;
     if (exp == null) {
-      throw new VariableError.EVALUATION_FAIL ("MathVariable evaluation fail. MathVariable's value not updated");
+      throw new VariableError.EVALUATION_FAIL (_("MathVariable evaluation fail. MathVariable's value not updated"));
     }
     @value = exp;
     return exp;
