@@ -1594,7 +1594,7 @@ class Tests {
         assert (p != null);
         assert (p is MathParameter);
         message ("Param without value to string: %s", p.to_string ());
-        assert (p.to_string () == "p");
+        assert (p.to_string () == "$p");
         p.set_value (3.0);
         message ("Param with value to string: %s", p.to_string ());
         assert (p.to_string () == "3");
@@ -1610,7 +1610,7 @@ class Tests {
         assert (c2.@value () == 9.0);
         p.set_value (null);
         message ("Param without value to string: %s", p.to_string ());
-        assert (p.to_string () == "p");
+        assert (p.to_string () == "$p");
         var res3 = eq.solve ();
         if (res3 is ErrorResult) {
           warning ("Error: %s", (res3 as ErrorResult).message);

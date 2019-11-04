@@ -56,7 +56,7 @@ public class GCalc.Parameter : GCalc.Variable, MathParameter {
   // Expression
   internal override string to_string () {
     if (@value == null) {
-      return name;
+      return "$"+name;
     }
     return @value.to_string ();
   }
