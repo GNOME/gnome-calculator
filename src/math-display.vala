@@ -24,6 +24,8 @@ public class MathDisplay : Gtk.Viewport
     /* Spinner widget that shows if we're calculating a response */
     Gtk.Spinner spinner;
 
+    Regex only_variable_name = /^_*\p{L}+(_|\p{L})*$/;
+
     public MathDisplay (MathEquation equation)
     {
         _equation = equation;
@@ -209,6 +211,15 @@ public class MathDisplay : Gtk.Viewport
         }
 
         var c = Gdk.keyval_to_unicode (event.keyval);
+
+        /* Solve on [=] if the input is not a variable name */
+        if (event.keyval == Gdk.Key.equal || event.keyval == Gdk.Key.KP_Equal)
+        {
+            if (!only_variable_name.match((string) equation.equation))
+            {
+                event.keyval = Gdk.Key.KP_Enter;
+            }
+        }
 
         /* Solve on enter */
         if (event.keyval == Gdk.Key.Return || event.keyval == Gdk.Key.KP_Enter)
