@@ -29,6 +29,10 @@ public class MathConverter : Gtk.Grid
 
     public signal void changed ();
 
+    static construct {
+        set_css_name ("mathconverter");
+    }
+
     construct
     {
         from_combo.set_cell_data_func (from_renderer, from_cell_data_func);
