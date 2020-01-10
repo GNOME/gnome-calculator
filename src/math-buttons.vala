@@ -124,7 +124,6 @@ public class MathButtons : Gtk.Box
     public MathButtons (MathEquation equation)
     {
         Object (orientation: Gtk.Orientation.VERTICAL, vexpand_set: true);
-        spacing = 6;
         show.connect (load_buttons);
         this.equation = equation;
 
