@@ -200,9 +200,10 @@
         <child>
           <object class="HdyClamp">
             <property name="visible">True</property>
-            <!-- (5*60 button width + 4*4 spacing + 2*12 margins) * 2 panels = 680 width. -->
-            <property name="maximum-size">680</property>
-            <property name="tightening-threshold">680</property>
+            <!-- (5*60px button width + 4*4px spacing + 12px margin) * 2 panels + 12px panel spacing = 668 width. -->
+            <!-- Update the panel size in CSS accordingly. -->
+            <property name="maximum-size">668</property>
+            <property name="tightening-threshold">668</property>
             <child>
               <object class="GtkGrid" id="grid">
                 <property name="visible">True</property>
