@@ -125,6 +125,7 @@ public class MathWindow : Hdy.ApplicationWindow
             converter.show ();
         }
 
+        display.set_enable_osk (remove_buttons);
         resize (1, 1);
     }
 

@@ -58,6 +58,8 @@ public class MathDisplay : Gtk.Box
         source_view.set_pixels_below_lines (2);
         source_view.set_justification (Gtk.Justification.LEFT);
 
+        set_enable_osk (false);
+
         source_view.set_name ("displayitem");
         source_view.set_size_request (20, 20);
         source_view.get_accessible ().set_role (Atk.Role.EDITBAR);
@@ -97,6 +99,12 @@ public class MathDisplay : Gtk.Box
         status_changed_cb ();
 
         equation.notify["error-token-end"].connect ((pspec) => { error_status_changed_cb (); });
+    }
+
+    public void set_enable_osk (bool enable_osk)
+    {
+        const Gtk.InputHints hints = Gtk.InputHints.NO_EMOJI | Gtk.InputHints.NO_SPELLCHECK;
+        source_view.set_input_hints (enable_osk ? hints : hints | Gtk.InputHints.INHIBIT_OSK);
     }
 
     public void grabfocus () /* Editbar grabs focus when an instance of gnome-calculator is created */
