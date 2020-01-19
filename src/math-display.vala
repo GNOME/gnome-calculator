@@ -139,18 +139,6 @@ public class MathDisplay : Gtk.Viewport
         }
     }
 
-    private bool function_completion_window_visible ()
-    {
-        unowned List<Gtk.SourceCompletionProvider> providers_list = source_view.get_completion ().get_providers ();
-        if (providers_list.length () > 0)
-        {
-            MathFunction[] functions = FunctionCompletionProvider.get_matches_for_completion_at_cursor (equation);
-            string[] variables = VariableCompletionProvider.get_matches_for_completion_at_cursor (equation, equation.variables);
-            return ((functions.length > 0 || variables.length > 0) ? true : false);
-        }
-        return false;
-    }
-
     protected override bool key_press_event (Gdk.EventKey event)
     {
         return source_view.key_press_event (event);
