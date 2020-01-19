@@ -23,6 +23,8 @@ public class MathDisplay : Gtk.Viewport
 
     /* Spinner widget that shows if we're calculating a response */
     Gtk.Spinner spinner;
+    public bool completion_visible { get; set;}
+    public bool completion_selected { get; set;}
 
     Regex only_variable_name = /^_*\p{L}+(_|\p{L})*$/;
 
@@ -57,6 +59,8 @@ public class MathDisplay : Gtk.Viewport
         //FIXME:<property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
         source_view.key_press_event.connect (key_press_cb);
         create_autocompletion ();
+        completion_visible = false;
+        completion_selected = false;
 
         main_box.pack_start (scrolled_window, false, false, 0);
         scrolled_window.add (source_view); /* Adds ScrolledWindow to source_view for displaying long equations */
@@ -120,6 +124,10 @@ public class MathDisplay : Gtk.Viewport
     private void create_autocompletion ()
     {
         Gtk.SourceCompletion completion = source_view.get_completion ();
+        completion.show.connect ((completion) => { this.completion_visible = true; this.completion_selected = false;} );
+        completion.hide.connect ((completion) => { this.completion_visible = false; this.completion_selected = false; } );
+        completion.move_cursor.connect ((completion) => {this.completion_selected = true;});
+        completion.select_on_show = false;
         try
         {
             completion.add_provider (new FunctionCompletionProvider ());
@@ -152,11 +160,18 @@ public class MathDisplay : Gtk.Viewport
     {
         /* Clear on escape */
         var state = event.state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.MOD1_MASK);
-        if ((event.keyval == Gdk.Key.Escape && state == 0) ||
+
+        if ((event.keyval == Gdk.Key.Escape && state == 0 && !completion_visible) ||
             (event.keyval == Gdk.Key.Delete && state == Gdk.ModifierType.SHIFT_MASK))
         {
             equation.clear ();
             status_changed_cb ();
+            return true;
+        } else if (event.keyval == Gdk.Key.Escape && state == 0 && completion_visible)
+        /* If completion window is shown and escape is pressed, hide it */
+        {
+            Gtk.SourceCompletion completion = source_view.get_completion ();
+            completion.hide ();
             return true;
         }
 
@@ -224,7 +239,7 @@ public class MathDisplay : Gtk.Viewport
         /* Solve on enter */
         if (event.keyval == Gdk.Key.Return || event.keyval == Gdk.Key.KP_Enter)
         {
-            if (function_completion_window_visible ())
+            if (completion_visible && completion_selected)
                 return false;
             equation.solve ();
             return true;
