@@ -6,15 +6,15 @@
 # Germán Poo Caamaño <gpoo@ubiobio.cl>, 2003.
 # Francisco Javier F. Serrador <serrador@openshine.com>, 2006.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010, 2011.
-# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2019.
+# Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2019-10-03 19:39+0000\n"
-"PO-Revision-Date: 2019-10-10 11:58+0200\n"
+"POT-Creation-Date: 2020-01-19 21:11+0000\n"
+"PO-Revision-Date: 2020-01-21 11:28+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -99,7 +99,7 @@ msgstr "El Proyecto GNOME"
 
 #. Program name in the about dialog
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:333 src/math-window.ui:78
+#: src/gnome-calculator.vala:334 src/math-window.ui:78
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -466,7 +466,7 @@ msgid "South African Rand"
 msgstr "Rand sudafricano"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:719 src/math-converter.vala:247
+#: lib/equation-lexer.vala:719 src/math-converter.vala:251
 msgid "in"
 msgstr "a"
 
@@ -502,55 +502,55 @@ msgid "No sane value to store"
 msgstr "No hay un valor bueno para almacenar"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1026
+#: lib/math-equation.vala:1038
 msgid "Overflow. Try a bigger word size"
 msgstr "Desbordamiento de búfer. Inténtelo con un tamaño de palabra mayor."
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1031
+#: lib/math-equation.vala:1043
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Variable «%s» desconocida"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1038
+#: lib/math-equation.vala:1050
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "La función «%s» no está definida"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1045
+#: lib/math-equation.vala:1057
 msgid "Unknown conversion"
 msgstr "Conversión desconocida"
 
 #. should always be run
-#: lib/math-equation.vala:1055
+#: lib/math-equation.vala:1067
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1060 lib/math-equation.vala:1065
+#: lib/math-equation.vala:1072 lib/math-equation.vala:1077
 msgid "Malformed expression"
 msgstr "Expresión malformada"
 
-#: lib/math-equation.vala:1076
+#: lib/math-equation.vala:1088
 msgid "Calculating"
 msgstr "Calculando"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1269
+#: lib/math-equation.vala:1281
 msgid "Need an integer to factorize"
 msgstr "Se necesita un entero para factorizar"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1329
+#: lib/math-equation.vala:1345
 msgid "No sane value to bitwise shift"
 msgstr "No hay un valor bueno para un desplazamiento de bits"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1351
+#: lib/math-equation.vala:1367
 msgid "Displayed value not an integer"
 msgstr "El valor mostrado no es un entero"
 
@@ -1027,15 +1027,11 @@ msgid "acre,acres"
 msgstr "acre,acres"
 
 #: lib/unit.vala:61
-#| msgctxt "shortcut window"
-#| msgid "Square root (√)"
 msgid "Square Foot"
 msgstr "Pie cuadrado"
 
 #: lib/unit.vala:61
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s ft"
 msgctxt "unit-format"
 msgid "%s ft²"
 msgstr "%s ft²"
@@ -1977,30 +1973,30 @@ msgstr "Copiar"
 msgid "Copy result to clipboard"
 msgstr "Copiar resultado al portapapeles"
 
-#: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
+#: src/buttons-advanced.ui:17 src/buttons-programming.ui:2145
 msgid "Inverse [Ctrl+I]"
 msgstr "Inverso [Ctrl+I]"
 
 #. Accessible name for the inverse button
-#: src/buttons-advanced.ui:22 src/buttons-programming.ui:2148
+#: src/buttons-advanced.ui:22 src/buttons-programming.ui:2150
 msgid "Inverse"
 msgstr "Inverso"
 
-#: src/buttons-advanced.ui:47 src/buttons-programming.ui:1277
+#: src/buttons-advanced.ui:47 src/buttons-programming.ui:1279
 msgid "Factorize [Ctrl+F]"
 msgstr "Factoriazar [Ctrl+F]"
 
 #. Accessible name for the factorize button
-#: src/buttons-advanced.ui:51 src/buttons-programming.ui:1281
+#: src/buttons-advanced.ui:51 src/buttons-programming.ui:1283
 msgid "Factorize"
 msgstr "Factorizar"
 
-#: src/buttons-advanced.ui:66 src/buttons-programming.ui:2116
+#: src/buttons-advanced.ui:66 src/buttons-programming.ui:2118
 msgid "Factorial [!]"
 msgstr "Factorial [!]"
 
 #. Accessible name for the factorial button
-#: src/buttons-advanced.ui:71 src/buttons-programming.ui:2121
+#: src/buttons-advanced.ui:71 src/buttons-programming.ui:2123
 msgid "Factorial"
 msgstr "Factorial"
 
@@ -2009,56 +2005,56 @@ msgid "Imaginary Component"
 msgstr "Parte imaginaria"
 
 #: src/buttons-advanced.ui:247 src/buttons-basic.ui:130
-#: src/buttons-financial.ui:2037 src/buttons-programming.ui:1377
+#: src/buttons-financial.ui:2037 src/buttons-programming.ui:1379
 msgid "Divide [/]"
 msgstr "Dividir [/]"
 
 #: src/buttons-advanced.ui:359 src/buttons-basic.ui:258
-#: src/buttons-financial.ui:2165 src/buttons-programming.ui:1414
+#: src/buttons-financial.ui:2165 src/buttons-programming.ui:1416
 msgid "Multiply [*]"
 msgstr "Multiplicar [*]"
 
 #: src/buttons-advanced.ui:376 src/buttons-basic.ui:275
-#: src/buttons-financial.ui:2182 src/buttons-programming.ui:1431
+#: src/buttons-financial.ui:2182 src/buttons-programming.ui:1433
 msgid "Subtract [-]"
 msgstr "Restar [-]"
 
 #: src/buttons-advanced.ui:392 src/buttons-basic.ui:291
-#: src/buttons-financial.ui:2198 src/buttons-programming.ui:1447
+#: src/buttons-financial.ui:2198 src/buttons-programming.ui:1449
 msgid "Add [+]"
 msgstr "Sumar [+]"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 #: src/buttons-advanced.ui:403 src/buttons-basic.ui:302
-#: src/buttons-financial.ui:2209 src/buttons-programming.ui:1458
+#: src/buttons-financial.ui:2209 src/buttons-programming.ui:1460
 msgid "="
 msgstr "="
 
 #: src/buttons-advanced.ui:409 src/buttons-basic.ui:308
-#: src/buttons-financial.ui:2215 src/buttons-programming.ui:1464
+#: src/buttons-financial.ui:2215 src/buttons-programming.ui:1466
 msgid "Calculate Result"
 msgstr "Calcular el resultado"
 
 #: src/buttons-advanced.ui:427 src/buttons-basic.ui:361
-#: src/buttons-financial.ui:2268 src/buttons-programming.ui:1482
+#: src/buttons-financial.ui:2268 src/buttons-programming.ui:1484
 msgid "Clear Display [Escape]"
 msgstr "Limpiar la pantalla [Escape]"
 
-#: src/buttons-advanced.ui:441 src/buttons-programming.ui:1782
+#: src/buttons-advanced.ui:441 src/buttons-programming.ui:1784
 msgid "Subscript mode [Alt]"
 msgstr "Modo subíndice [Alt]"
 
 #. Accessible name for the subscript mode button
-#: src/buttons-advanced.ui:446 src/buttons-programming.ui:1787
+#: src/buttons-advanced.ui:446 src/buttons-programming.ui:1789
 msgid "Subscript"
 msgstr "Subíndice"
 
-#: src/buttons-advanced.ui:468 src/buttons-programming.ui:1809
+#: src/buttons-advanced.ui:468 src/buttons-programming.ui:1811
 msgid "Superscript mode [Ctrl]"
 msgstr "Modo superíndice [Ctrl]"
 
 #. Accessible name for the superscript mode button
-#: src/buttons-advanced.ui:473 src/buttons-programming.ui:1814
+#: src/buttons-advanced.ui:473 src/buttons-programming.ui:1816
 msgid "Superscript"
 msgstr "Superíndice"
 
@@ -2071,17 +2067,17 @@ msgstr "Exponente científico [Ctrl+E]"
 msgid "Scientific Exponent"
 msgstr "Exponente científico"
 
-#: src/buttons-advanced.ui:522 src/buttons-programming.ui:1947
+#: src/buttons-advanced.ui:522 src/buttons-programming.ui:1949
 msgid "Modulus divide"
 msgstr "División modular"
 
 #: src/buttons-advanced.ui:538 src/buttons-basic.ui:328
-#: src/buttons-financial.ui:2235 src/buttons-programming.ui:1964
+#: src/buttons-financial.ui:2235 src/buttons-programming.ui:1966
 msgid "Start Group [(]"
 msgstr "Inicio de bloque [(]"
 
 #: src/buttons-advanced.ui:555 src/buttons-basic.ui:345
-#: src/buttons-financial.ui:2252 src/buttons-programming.ui:1980
+#: src/buttons-financial.ui:2252 src/buttons-programming.ui:1982
 msgid "End Group [)]"
 msgstr "Fin de bloque [)]"
 
@@ -2089,22 +2085,22 @@ msgstr "Fin de bloque [)]"
 #. Accessible name for the memory value button
 #: src/buttons-advanced.ui:570 src/buttons-advanced.ui:573
 #: src/buttons-financial.ui:1854 src/buttons-financial.ui:1857
-#: src/buttons-programming.ui:1852
+#: src/buttons-programming.ui:1854
 msgid "Memory"
 msgstr "Memoria"
 
 #. The label on the memory button
 #: src/buttons-advanced.ui:582 src/buttons-financial.ui:1869
-#: src/buttons-programming.ui:1865
+#: src/buttons-programming.ui:1867
 msgid "x"
 msgstr "x"
 
-#: src/buttons-advanced.ui:617 src/buttons-programming.ui:1314
+#: src/buttons-advanced.ui:617 src/buttons-programming.ui:1316
 msgid "Absolute Value [|]"
 msgstr "Valor absoluto [|]"
 
 #. Accessible name for the absolute value button
-#: src/buttons-advanced.ui:622 src/buttons-programming.ui:1319
+#: src/buttons-advanced.ui:622 src/buttons-programming.ui:1321
 msgid "Absolute Value"
 msgstr "Valor absoluto"
 
@@ -2125,23 +2121,23 @@ msgid "Natural Logarithm"
 msgstr "Logaritmo natural"
 
 #: src/buttons-advanced.ui:713 src/buttons-financial.ui:1908
-#: src/buttons-programming.ui:1260
+#: src/buttons-programming.ui:1262
 msgid "Logarithm"
 msgstr "Logaritmo"
 
 #: src/buttons-advanced.ui:728 src/buttons-financial.ui:2470
-#: src/buttons-programming.ui:2171
+#: src/buttons-programming.ui:2173
 msgid "Exponent [^ or **]"
 msgstr "Exponente [^ o **]"
 
 #. Accessible name for the exponentiation (x to the power of y) button
 #: src/buttons-advanced.ui:733 src/buttons-basic.ui:396
-#: src/buttons-financial.ui:2475 src/buttons-programming.ui:2176
+#: src/buttons-financial.ui:2475 src/buttons-programming.ui:2178
 msgid "Exponent"
 msgstr "Exponente"
 
 #: src/buttons-advanced.ui:757 src/buttons-financial.ui:2499
-#: src/buttons-programming.ui:1244
+#: src/buttons-programming.ui:1246
 msgid "Root [Ctrl+R]"
 msgstr "Raíz [Ctrl+R]"
 
@@ -2187,7 +2183,7 @@ msgid "Additional Functions"
 msgstr "Funciones adicionales"
 
 #. Accessible name for the store value button
-#: src/buttons-advanced.ui:949 src/buttons-programming.ui:1855
+#: src/buttons-advanced.ui:949 src/buttons-programming.ui:1857
 msgid "Store"
 msgstr "Almacenar"
 
@@ -2213,7 +2209,7 @@ msgstr "Periodo de interés compuesto"
 #: src/buttons-financial.ui:723 src/buttons-financial.ui:907
 #: src/buttons-financial.ui:1091 src/buttons-financial.ui:1275
 #: src/buttons-financial.ui:1459 src/buttons-financial.ui:1674
-#: src/buttons-programming.ui:2301
+#: src/buttons-programming.ui:2303
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -2561,69 +2557,69 @@ msgstr "Decimal"
 msgid "Hexadecimal"
 msgstr "Hexadecimal"
 
-#: src/buttons-programming.ui:1298
+#: src/buttons-programming.ui:1300
 msgid "Binary Logarithm"
 msgstr "Logaritmo binario"
 
-#: src/buttons-programming.ui:1343
+#: src/buttons-programming.ui:1345
 msgid "Integer Component"
 msgstr "Porción entera"
 
-#: src/buttons-programming.ui:1360
+#: src/buttons-programming.ui:1362
 msgid "Fractional Component"
 msgstr "Porción fraccional"
 
-#: src/buttons-programming.ui:1896
+#: src/buttons-programming.ui:1898
 msgid "Boolean Exclusive OR"
 msgstr "OR exclusivo booleano"
 
-#: src/buttons-programming.ui:1913
+#: src/buttons-programming.ui:1915
 msgid "Boolean OR"
 msgstr "OR booleano"
 
-#: src/buttons-programming.ui:1930
+#: src/buttons-programming.ui:1932
 msgid "Boolean AND"
 msgstr "AND booleano"
 
 #. Accessible name for the shift left button
-#: src/buttons-programming.ui:1994 src/buttons-programming.ui:1997
+#: src/buttons-programming.ui:1996 src/buttons-programming.ui:1999
 msgid "Shift Left"
 msgstr "Desplazar a la izquierda"
 
 #. Accessible name for the shift right button
-#: src/buttons-programming.ui:2037 src/buttons-programming.ui:2040
+#: src/buttons-programming.ui:2039 src/buttons-programming.ui:2042
 msgid "Shift Right"
 msgstr "Desplazar a la derecha"
 
 #. Title of insert character code dialog
-#: src/buttons-programming.ui:2081 src/buttons-programming.ui:2254
+#: src/buttons-programming.ui:2083 src/buttons-programming.ui:2256
 msgid "Insert Character Code"
 msgstr "Insertar código de carácter"
 
 #. Accessible name for the insert character button
-#: src/buttons-programming.ui:2085
+#: src/buttons-programming.ui:2087
 msgid "Insert Character"
 msgstr "Insertar carácter"
 
-#: src/buttons-programming.ui:2101
+#: src/buttons-programming.ui:2103
 msgid "Boolean NOT"
 msgstr "NOT booleano"
 
-#: src/buttons-programming.ui:2200
+#: src/buttons-programming.ui:2202
 msgid "Ones’ Complement"
 msgstr "Complemento a uno"
 
-#: src/buttons-programming.ui:2217
+#: src/buttons-programming.ui:2219
 msgid "Two’s Complement"
 msgstr "Complemento a dos"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/buttons-programming.ui:2267
+#: src/buttons-programming.ui:2269
 msgid "Ch_aracter:"
 msgstr "C_arácter:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/buttons-programming.ui:2316
+#: src/buttons-programming.ui:2318
 msgid "_Insert"
 msgstr "_Introducir"
 
@@ -2645,12 +2641,12 @@ msgid "Show release version"
 msgstr "Mostrar el número de versión"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:297
+#: src/gnome-calculator.vala:298
 msgid "Unable to open help file"
 msgstr "No se pudo abrir el archivo de ayuda"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:328
+#: src/gnome-calculator.vala:329
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.musiteles@gmail.com>, 2010 - 2018\n"
@@ -2658,20 +2654,20 @@ msgstr ""
 "Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006\n"
 "Germán Poo-Caamaño <gpoo@ubiobio.cl>, 2003"
 
-#: src/gnome-calculator.vala:334
+#: src/gnome-calculator.vala:335
 msgid "About Calculator"
 msgstr "Acerca de Calculadora"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:342
+#: src/gnome-calculator.vala:343
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora con modos científico y financiero."
 
-#: src/gnome-calculator.vala:357
+#: src/gnome-calculator.vala:358
 msgid "Are you sure you want to close all open windows?"
 msgstr "¿Seguro que quiere cerrar todas las ventanas abiertas?"
 
-#: src/gnome-calculator.vala:358
+#: src/gnome-calculator.vala:359
 msgid "Close _All"
 msgstr "Cerrar _todo"
 
@@ -2695,11 +2691,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:513
+#: src/math-display.vala:524
 msgid "Defined Functions"
 msgstr "Funciones definidas"
 
-#: src/math-display.vala:570
+#: src/math-display.vala:581
 msgid "Defined Variables"
 msgstr "Variables definidas"
 
@@ -2823,108 +2819,155 @@ msgstr "Cerrar la ventana actual"
 
 #: src/math-shortcuts.ui:34
 msgctxt "shortcut window"
+msgid "Quit the application"
+msgstr "Salir de la aplicación"
+
+#: src/math-shortcuts.ui:41
+msgctxt "shortcut window"
 msgid "Open help"
 msgstr "Abrir la ayuda"
 
-#: src/math-shortcuts.ui:41
+#: src/math-shortcuts.ui:48
+#| msgid "_Keyboard Shortcuts"
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Atajos del teclado"
+
+#: src/math-shortcuts.ui:55
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Limpiar histórico"
 
-#: src/math-shortcuts.ui:48
-msgctxt "shortcut window"
-msgid "Quit the application"
-msgstr "Salir de la aplicación"
-
-#: src/math-shortcuts.ui:56
+#: src/math-shortcuts.ui:63
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Cambiar entre modos"
 
-#: src/math-shortcuts.ui:61
+#: src/math-shortcuts.ui:68
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Cambiar al modo básico"
 
-#: src/math-shortcuts.ui:68
+#: src/math-shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Cambiar al modo avanzado"
 
-#: src/math-shortcuts.ui:75
+#: src/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Cambiar al modo financiero"
 
-#: src/math-shortcuts.ui:82
+#: src/math-shortcuts.ui:89
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Cambiar al modo de programación"
 
-#: src/math-shortcuts.ui:89
+#: src/math-shortcuts.ui:96
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Cambiar al modo de teclado"
 
-#: src/math-shortcuts.ui:97
+#: src/math-shortcuts.ui:104
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Entrada de teclado"
 
-#: src/math-shortcuts.ui:102
+#: src/math-shortcuts.ui:109
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Multiplicar (×)"
 
-#: src/math-shortcuts.ui:109
+#: src/math-shortcuts.ui:116
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Dividir (÷)"
 
-#: src/math-shortcuts.ui:116
+#: src/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Raíz cuadrada (√)"
 
-#: src/math-shortcuts.ui:123
+#: src/math-shortcuts.ui:130
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Inverso"
 
-#: src/math-shortcuts.ui:130
+#: src/math-shortcuts.ui:137
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Pi (π)"
 
-#: src/math-shortcuts.ui:137
+#: src/math-shortcuts.ui:144
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Introducir números en formato científico"
 
-#: src/math-shortcuts.ui:145
+#: src/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Modo de programación"
 
-#: src/math-shortcuts.ui:150
+#: src/math-shortcuts.ui:157
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Cambiar a binario"
 
-#: src/math-shortcuts.ui:157
+#: src/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Cambiar a octal"
 
-#: src/math-shortcuts.ui:164
+#: src/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Cambiar a decimal"
 
-#: src/math-shortcuts.ui:171
+#: src/math-shortcuts.ui:178
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Cambiar a hexadecimal"
+
+#: src/math-shortcuts.ui:186
+msgctxt "shortcut window"
+msgid "Others"
+msgstr "Otros"
+
+#: src/math-shortcuts.ui:191
+#| msgid "Copy"
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Copiar"
+
+#: src/math-shortcuts.ui:198
+msgctxt "shortcut window"
+msgid "Paste"
+msgstr "Pegar"
+
+#: src/math-shortcuts.ui:205
+#| msgid "Undo"
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr "Deshacer"
+
+#: src/math-shortcuts.ui:212
+#| msgid "Redo"
+msgctxt "shortcut window"
+msgid "Redo"
+msgstr "Rehacer"
+
+#: src/math-shortcuts.ui:219
+#| msgid "_Keyboard Shortcuts"
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts (alt.)"
+msgstr "Atajos del teclado (alt.)"
+
+#: src/math-shortcuts.ui:226
+#| msgctxt "shortcut window"
+#| msgid "Switch to Keyboard mode"
+msgctxt "shortcut window"
+msgid "Switch to Keyboard mode (alt.)"
+msgstr "Cambiar al modo de teclado (alt.)"
 
 #: src/math-variable-popover.ui:38
 msgid "Variable name"
@@ -3254,9 +3297,6 @@ msgstr "_Salir"
 
 #~ msgid "Clear"
 #~ msgstr "Borrar"
-
-#~ msgid "Undo"
-#~ msgstr "Deshacer"
 
 #~ msgid "&#x2190; R"
 #~ msgstr "&#x2190; R"
@@ -3897,9 +3937,6 @@ msgstr "_Salir"
 
 #~ msgid "Reciprocal [r]"
 #~ msgstr "Recíproco [r]"
-
-#~ msgid "Redo"
-#~ msgstr "Rehacer"
 
 #~ msgid "Remove rightmost character from displayed value [Backspace]"
 #~ msgstr "Quitar el carácter más a la derecha del valor mostrado [Retroceso]"
