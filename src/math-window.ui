@@ -112,7 +112,7 @@
             <property name="menu_model">window_menu</property>
             <child internal-child="accessible">
               <object class="AtkObject">
-                <property name="accessible-name" translatable="yes">Menu</property>
+                <property name="accessible-name" translatable="yes">Mode selection</property>
               </object>
             </child>
             <child>
@@ -156,6 +156,12 @@
             <property name="can_focus">False</property>
             <property name="receives_default">False</property>
             <property name="menu_model">primary_menu</property>
+            <accelerator key="F10" signal="clicked"/>
+            <child internal-child="accessible">
+              <object class="AtkObject">
+                <property name="accessible-name" translatable="yes">Primary menu</property>
+              </object>
+            </child>
             <child>
               <object class="GtkImage">
                 <property name="visible">True</property>
