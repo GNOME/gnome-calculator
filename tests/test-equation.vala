@@ -136,6 +136,8 @@ private void test_conversions ()
     test ("1 meter in mm", "1000", 0);
     test ("1m in mm", "1000", 0);
     test ("1 inch in cm", "2.54", 0);
+    test ("44.45 mm in U", "1", 0);
+    test ("1 U in inch", "1.75", 0);
 
     /* Area */
     test ("1m² in mm²", "1000000", 0);

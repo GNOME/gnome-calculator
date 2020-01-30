@@ -42,6 +42,7 @@ public class UnitManager : Object
         length_category.add_unit (new Unit ("parsec", _("Parsecs"), dpgettext2 (null, "unit-format", "%s pc"), "30857000000000000x", "x/30857000000000000", dpgettext2 (null, "unit-symbols", "parsec,parsecs,pc")));
         length_category.add_unit (new Unit ("lightyear", _("Light Years"), dpgettext2 (null, "unit-format", "%s ly"), "9460730472580800x", "x/9460730472580800", dpgettext2 (null, "unit-symbols", "lightyear,lightyears,ly")));
         length_category.add_unit (new Unit ("astronomical-unit", _("Astronomical Units"), dpgettext2 (null, "unit-format", "%s au"), "149597870691x", "x/149597870691", dpgettext2 (null, "unit-symbols", "au")));
+        length_category.add_unit (new Unit ("rack-unit", _("Rack Units"), dpgettext2 (null, "unit-format", "%sU"), "x/22.49718785151856", "22.49718785151856x", dpgettext2 (null, "unit-symbols", "U")));
         length_category.add_unit (new Unit ("nautical-mile", _("Nautical Miles"), dpgettext2 (null, "unit-format", "%s nmi"), "1852x", "x/1852", dpgettext2 (null, "unit-symbols", "nmi")));
         length_category.add_unit (new Unit ("mile", _("Miles"), dpgettext2 (null, "unit-format", "%s mi"), "1609.344x", "x/1609.344", dpgettext2 (null, "unit-symbols", "mile,miles,mi")));
         length_category.add_unit (new Unit ("kilometer", _("Kilometers"), dpgettext2 (null, "unit-format", "%s km"), "1000x", "x/1000", dpgettext2 (null, "unit-symbols", "kilometer,kilometers,km,kms")));
