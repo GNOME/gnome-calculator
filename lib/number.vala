@@ -712,6 +712,13 @@ public class Number : Object
     /* Sets z = tan⁻¹ x */
     public Number atan (AngleUnit unit = AngleUnit.RADIANS)
     {
+        /* Check x != i and x != -i */
+        if (equals (new Number.integer (0,1)) || equals (new Number.integer(0,-1)))
+        {
+            /* Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i) */
+            error = _("Arctangent function is undefined for values i and -i");
+            return new Number.integer (0);
+        }
         var z = new Number ();
         z.num.atan (num);
         if (!z.is_complex ())
