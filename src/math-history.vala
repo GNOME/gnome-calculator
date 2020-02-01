@@ -20,10 +20,21 @@ public class HistoryView : Gtk.ScrolledWindow
     [GtkChild]
     Gtk.ListBox listbox;
 
+    private int _rows = 0;
+    private int _current = 0;
+    public int rows {get {return _rows;} }
+    public int current {get {return _current;} set {_current = value.clamp(0, _rows); } }
     public signal void answer_clicked   (string ans);
     public signal void equation_clicked (string equation);
     public signal void row_added	();
 
+
+    public HistoryEntry? get_entry_at(int index)
+    {
+        if ( index >= 0 && index < rows)
+            return (HistoryEntry?) listbox.get_row_at_index (index);
+        return null;
+    }
 
     [GtkCallback]
     public void scroll_bottom ()
@@ -61,11 +72,15 @@ public class HistoryView : Gtk.ScrolledWindow
 
         last_answer = answer_nine_digits;
         last_equation = equation;
+        _rows++;
+        current = rows - 1;
         row_added ();
     }
 
     public void clear ()
     {
+        _rows = 0;
+        _current = 0;
         listbox.foreach ((child) => { listbox.remove(child); });
     }
 }
@@ -76,7 +91,7 @@ public class HistoryEntry : Gtk.ListBoxRow
     [GtkChild]
     Gtk.Label equation_label;
     [GtkChild]
-    Gtk.Label answer_label;
+    public Gtk.Label answer_label;
 
     public signal void answer_clicked (string ans);
     public signal void equation_clicked (string equation);

@@ -161,6 +161,23 @@ public class MathDisplay : Gtk.Viewport
             Gtk.SourceCompletion completion = source_view.get_completion ();
             completion.hide ();
             return true;
+        } else if (state == Gdk.ModifierType.MOD1_MASK && (event.keyval == Gdk.Key.Left || event.keyval == Gdk.Key.Right))
+        {
+            switch (event.keyval)
+            {
+            case Gdk.Key.Left:
+                history.current -= 1;
+                break;
+            case Gdk.Key.Right:
+                history.current += 1;
+                break;
+            }
+            HistoryEntry? entry = history.get_entry_at (history.current);
+            if (entry != null) {
+                equation.clear();
+                insert_text (entry.answer_label.get_text ());
+            }
+            return true;
         }
 
         /* Ignore keypresses while calculating */
