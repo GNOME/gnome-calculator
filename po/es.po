@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2020-01-30 23:27+0000\n"
-"PO-Revision-Date: 2020-01-31 08:56+0100\n"
+"POT-Creation-Date: 2020-02-01 19:14+0000\n"
+"PO-Revision-Date: 2020-02-03 11:59+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -617,42 +617,48 @@ msgstr "La inversa del seno no está definida para valores fuera de [-1, 1]"
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "La inversa del coseno no está definida para valores fuera de [-1, 1]"
 
+#. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
+#: lib/number.vala:719
+#| msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgid "Arctangent function is undefined for values i and -i"
+msgstr "La función arcotangente no está definida para valores i y -i"
+
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:762
+#: lib/number.vala:769
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "La inversa del coseno hiperbólico no está definida para valores menores que "
 "uno"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:778
+#: lib/number.vala:785
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "La inversa de la tangente hiperbólica no está definida para valores fuera de "
 "[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:794
+#: lib/number.vala:801
 msgid "Boolean AND is only defined for positive integers"
 msgstr "El AND booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:806
+#: lib/number.vala:813
 msgid "Boolean OR is only defined for positive integers"
 msgstr "El OR booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:818
+#: lib/number.vala:825
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "El XOR booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:830
+#: lib/number.vala:837
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "El NOT booleano sólo está definido para números enteros positivos"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:853
+#: lib/number.vala:860
 msgid "Shift is only possible on integer values"
 msgstr "El desplazamiento sólo es posible en valores enteros"
 
@@ -787,13 +793,11 @@ msgid "au"
 msgstr "ua"
 
 #: lib/unit.vala:45
-#| msgid "Area Units"
 msgid "Rack Units"
 msgstr "Unidades de rack"
 
 #: lib/unit.vala:45
 #, c-format
-#| msgid "%s"
 msgctxt "unit-format"
 msgid "%sU"
 msgstr "%sU"
@@ -2671,7 +2675,7 @@ msgstr ""
 "Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006\n"
 "Germán Poo-Caamaño <gpoo@ubiobio.cl>, 2003"
 
-#: src/gnome-calculator.vala:335
+#: src/gnome-calculator.vala:335 src/math-window.ui:68
 msgid "About Calculator"
 msgstr "Acerca de Calculadora"
 
@@ -2708,11 +2712,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:527
+#: src/math-display.vala:544
 msgid "Defined Functions"
 msgstr "Funciones definidas"
 
-#: src/math-display.vala:584
+#: src/math-display.vala:601
 msgid "Defined Variables"
 msgstr "Variables definidas"
 
@@ -2725,7 +2729,7 @@ msgid "Select no. of arguments"
 msgstr "Seleccionar número de argumentos"
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:33
+#: src/math-preferences.vala:33 src/math-window.ui:56
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -2976,10 +2980,20 @@ msgstr "Rehacer"
 
 #: src/math-shortcuts.ui:226
 msgctxt "shortcut window"
+msgid "Previous result"
+msgstr "Resultado anterior"
+
+#: src/math-shortcuts.ui:233
+msgctxt "shortcut window"
+msgid "Next result"
+msgstr "Siguiente resultado"
+
+#: src/math-shortcuts.ui:240
+msgctxt "shortcut window"
 msgid "Keyboard shortcuts (alt.)"
 msgstr "Atajos del teclado (alt.)"
 
-#: src/math-shortcuts.ui:233
+#: src/math-shortcuts.ui:247
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Cambiar al modo de teclado (alt.)"
@@ -3016,21 +3030,14 @@ msgstr "Modo del teclado"
 msgid "_New Window"
 msgstr "_Ventana nueva"
 
-#: src/math-window.ui:56
-msgid "_Preferences"
-msgstr "Prefere_ncias"
-
 #: src/math-window.ui:60
-msgid "_Keyboard Shortcuts"
-msgstr "Atajos del _teclado"
+#| msgid "_Keyboard Shortcuts"
+msgid "Keyboard Shortcuts"
+msgstr "Atajos de teclado"
 
 #: src/math-window.ui:64
 msgid "_Help"
 msgstr "A_yuda"
-
-#: src/math-window.ui:68
-msgid "_About Calculator"
-msgstr "_Acerca de Calculadora"
 
 #: src/math-window.ui:115
 msgid "Mode selection"
@@ -3043,6 +3050,12 @@ msgstr "Menú primario"
 #: src/math-window.vala:134
 msgid "_Quit"
 msgstr "_Salir"
+
+#~ msgid "_Preferences"
+#~ msgstr "Prefere_ncias"
+
+#~ msgid "_About Calculator"
+#~ msgstr "_Acerca de Calculadora"
 
 #~ msgid "Menu"
 #~ msgstr "Menú"
