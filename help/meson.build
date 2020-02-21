@@ -31,7 +31,7 @@ gnome_calculator_help_pages = [
 ]
 
 gnome_calculator_help_media = [
-  'figures/logo32.png',
+  'figures/org.gnome.Calculator.svg',
 ]
 
 gnome.yelp(meson.project_name(),
