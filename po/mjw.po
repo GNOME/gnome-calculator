@@ -1,23 +1,23 @@
 # Karbi translation for gnome-calculator.
 # Copyright (C) 2019 gnome-calculator's Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-calculator package.
-# Jor Teron <jor.teron@gmail.com>, 2019.
+# Jor Teron <jor.teron@gmail.com>, 2019, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2020-01-31 08:04+0000\n"
-"PO-Revision-Date: 2019-07-16 20:54+0530\n"
-"Last-Translator: \n"
-"Language-Team: Karbi <mjw@li.org>\n"
+"POT-Creation-Date: 2020-02-21 17:26+0000\n"
+"PO-Revision-Date: 2020-02-23 12:51+0530\n"
+"Last-Translator: Jor Teron <jor.teron@gmail.com>\n"
+"Language-Team: Karbi <karbi.translation@gmail.com>\n"
 "Language: mjw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"Plural-Forms: nplurals=2 ; plural=( n != 1 );\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 msgid "GNOME Calculator"
@@ -79,8 +79,8 @@ msgid "The GNOME Project"
 msgstr "GNOME Project"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:334 src/math-window.ui:75
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
+#: src/gnome-calculator.vala:335 src/math-window.ui:75
 msgid "Calculator"
 msgstr "Calculator"
 
@@ -99,7 +99,7 @@ msgstr ""
 
 #: data/org.gnome.calculator.gschema.xml:31
 msgid "Word size"
-msgstr ""
+msgstr "Word size"
 
 #: data/org.gnome.calculator.gschema.xml:32
 msgid "The size of the words used in bitwise operations"
@@ -593,38 +593,43 @@ msgstr ""
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr ""
 
+#. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
+#: lib/number.vala:719
+msgid "Arctangent function is undefined for values i and -i"
+msgstr ""
+
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:762
+#: lib/number.vala:769
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:778
+#: lib/number.vala:785
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:794
+#: lib/number.vala:801
 msgid "Boolean AND is only defined for positive integers"
 msgstr ""
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:806
+#: lib/number.vala:813
 msgid "Boolean OR is only defined for positive integers"
 msgstr ""
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:818
+#: lib/number.vala:825
 msgid "Boolean XOR is only defined for positive integers"
 msgstr ""
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:830
+#: lib/number.vala:837
 msgid "Boolean NOT is only defined for positive integers"
 msgstr ""
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:853
+#: lib/number.vala:860
 msgid "Shift is only possible on integer values"
 msgstr ""
 
@@ -2580,46 +2585,47 @@ msgstr ""
 msgid "_Insert"
 msgstr ""
 
-#: src/gnome-calculator.vala:24
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
+#: src/gnome-calculator.vala:25
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:26
 msgid "Solve given equation"
 msgstr ""
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:27
 msgid "Start with given equation"
 msgstr ""
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:28
 msgid "Show release version"
 msgstr ""
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:298
+#: src/gnome-calculator.vala:299
 msgid "Unable to open help file"
 msgstr ""
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:330
 msgid "translator-credits"
 msgstr ""
 
-#: src/gnome-calculator.vala:335
+#: src/gnome-calculator.vala:336 src/math-window.ui:68
 msgid "About Calculator"
 msgstr ""
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:343
+#: src/gnome-calculator.vala:344
 msgid "Calculator with financial and scientific modes."
 msgstr ""
 
-#: src/gnome-calculator.vala:358
+#: src/gnome-calculator.vala:359
 msgid "Are you sure you want to close all open windows?"
 msgstr ""
 
-#: src/gnome-calculator.vala:359
+#: src/gnome-calculator.vala:360
 msgid "Close _All"
 msgstr ""
 
@@ -2643,11 +2649,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr ""
 
-#: src/math-display.vala:527
+#: src/math-display.vala:544
 msgid "Defined Functions"
 msgstr ""
 
-#: src/math-display.vala:584
+#: src/math-display.vala:601
 msgid "Defined Variables"
 msgstr ""
 
@@ -2660,7 +2666,7 @@ msgid "Select no. of arguments"
 msgstr ""
 
 #. Title of preferences dialog
-#: src/math-preferences.vala:33
+#: src/math-preferences.vala:33 src/math-window.ui:56
 msgid "Preferences"
 msgstr "Ason-amung"
 
@@ -2910,13 +2916,16 @@ msgid "Redo"
 msgstr ""
 
 #: src/math-shortcuts.ui:226
-#, fuzzy
-#| msgid "_Keyboard Shortcuts"
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts (alt.)"
-msgstr "_Keyboard Shortcuts"
+msgid "Previous result"
+msgstr ""
 
 #: src/math-shortcuts.ui:233
+msgctxt "shortcut window"
+msgid "Next result"
+msgstr ""
+
+#: src/math-shortcuts.ui:240
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr ""
@@ -2951,23 +2960,15 @@ msgstr "Keyboard Mode"
 
 #: src/math-window.ui:49
 msgid "_New Window"
-msgstr "_Kimi Window"
-
-#: src/math-window.ui:56
-msgid "_Preferences"
-msgstr "_Ason-amung"
+msgstr "Kimi Wi_ndow"
 
 #: src/math-window.ui:60
-msgid "_Keyboard Shortcuts"
-msgstr "_Keyboard Shortcuts"
+msgid "Keyboard Shortcuts"
+msgstr "Keyboard Shortcuts"
 
 #: src/math-window.ui:64
 msgid "_Help"
-msgstr "_Kerap"
-
-#: src/math-window.ui:68
-msgid "_About Calculator"
-msgstr "Calculator _Aputhak"
+msgstr "Kerap"
 
 #: src/math-window.ui:115
 msgid "Mode selection"
@@ -2980,6 +2981,18 @@ msgstr ""
 #: src/math-window.vala:134
 msgid "_Quit"
 msgstr ""
+
+#, fuzzy
+#~| msgid "_Keyboard Shortcuts"
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts (alt.)"
+#~ msgstr "_Keyboard Shortcuts"
+
+#~ msgid "_Preferences"
+#~ msgstr "_Ason-amung"
+
+#~ msgid "_About Calculator"
+#~ msgstr "Calculator _Aputhak"
 
 #~ msgctxt "unit-format"
 #~ msgid "%s porphai"
