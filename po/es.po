@@ -7,22 +7,23 @@
 # Francisco Javier F. Serrador <serrador@openshine.com>, 2006.
 # Jorge González <jorgegonz@svn.gnome.org>, 2007, 2008, 2009, 2010, 2011.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2011-2020.
+# Javier Barbero <javierbg1995@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2020-02-01 19:14+0000\n"
-"PO-Revision-Date: 2020-02-03 11:59+0100\n"
-"Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
-"Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
-"Language: es_ES\n"
+"POT-Creation-Date: 2020-02-07 13:17+0000\n"
+"PO-Revision-Date: 2020-02-24 12:11+0100\n"
+"Last-Translator: Javier Barbero <javierbg1995@gmail.com>\n"
+"Language-Team: Spanish; Castilian <gnome-es-list@gnome.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Gtranslator 3.34.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 msgid "GNOME Calculator"
@@ -98,8 +99,8 @@ msgid "The GNOME Project"
 msgstr "El Proyecto GNOME"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:334 src/math-window.ui:75
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
+#: src/gnome-calculator.vala:335 src/math-window.ui:75
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -619,7 +620,6 @@ msgstr "La inversa del coseno no está definida para valores fuera de [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
 #: lib/number.vala:719
-#| msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgid "Arctangent function is undefined for values i and -i"
 msgstr "La función arcotangente no está definida para valores i y -i"
 
@@ -929,7 +929,7 @@ msgstr "pie,pies,ft"
 
 #: lib/unit.vala:54
 msgid "Inches"
-msgstr "Inverso0"
+msgstr "Pulgadas"
 
 #: lib/unit.vala:54
 #, c-format
@@ -2644,30 +2644,31 @@ msgstr "C_arácter:"
 msgid "_Insert"
 msgstr "_Introducir"
 
-#: src/gnome-calculator.vala:24
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
+#: src/gnome-calculator.vala:25
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Iniciar en un modo dado (básico, avanzado, financiero, programación, teclado)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:26
 msgid "Solve given equation"
 msgstr "Resolver la ecuación dada"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:27
 msgid "Start with given equation"
 msgstr "Empezar con la ecuación dada"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:28
 msgid "Show release version"
 msgstr "Mostrar el número de versión"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:298
+#: src/gnome-calculator.vala:299
 msgid "Unable to open help file"
 msgstr "No se pudo abrir el archivo de ayuda"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:330
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.musiteles@gmail.com>, 2010 - 2018\n"
@@ -2675,20 +2676,20 @@ msgstr ""
 "Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2006\n"
 "Germán Poo-Caamaño <gpoo@ubiobio.cl>, 2003"
 
-#: src/gnome-calculator.vala:335 src/math-window.ui:68
+#: src/gnome-calculator.vala:336 src/math-window.ui:68
 msgid "About Calculator"
 msgstr "Acerca de Calculadora"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:343
+#: src/gnome-calculator.vala:344
 msgid "Calculator with financial and scientific modes."
 msgstr "Calculadora con modos científico y financiero."
 
-#: src/gnome-calculator.vala:358
+#: src/gnome-calculator.vala:359
 msgid "Are you sure you want to close all open windows?"
 msgstr "¿Seguro que quiere cerrar todas las ventanas abiertas?"
 
-#: src/gnome-calculator.vala:359
+#: src/gnome-calculator.vala:360
 msgid "Close _All"
 msgstr "Cerrar _todo"
 
@@ -2990,11 +2991,6 @@ msgstr "Siguiente resultado"
 
 #: src/math-shortcuts.ui:240
 msgctxt "shortcut window"
-msgid "Keyboard shortcuts (alt.)"
-msgstr "Atajos del teclado (alt.)"
-
-#: src/math-shortcuts.ui:247
-msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Cambiar al modo de teclado (alt.)"
 
@@ -3031,7 +3027,6 @@ msgid "_New Window"
 msgstr "_Ventana nueva"
 
 #: src/math-window.ui:60
-#| msgid "_Keyboard Shortcuts"
 msgid "Keyboard Shortcuts"
 msgstr "Atajos de teclado"
 
@@ -3050,6 +3045,10 @@ msgstr "Menú primario"
 #: src/math-window.vala:134
 msgid "_Quit"
 msgstr "_Salir"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts (alt.)"
+#~ msgstr "Atajos del teclado (alt.)"
 
 #~ msgid "_Preferences"
 #~ msgstr "Prefere_ncias"
