@@ -335,6 +335,7 @@ public class Calculator : Gtk.Application
                                _("Calculator"),
                                "title", _("About Calculator"),
                                "version", VERSION,
+                               "website", "https://wiki.gnome.org/Apps/Calculator",
                                "copyright",
                                "\xc2\xa9 1986–2016 The Calculator authors",
                                /* We link to MPFR and MPC which are  LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
