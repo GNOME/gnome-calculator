@@ -55,8 +55,11 @@ parts:
       snap/gnome-calculator/current/usr: usr
     override-build: |
       sed -i.bak -e "s|subdir('doc')||g" meson.build
+      sed -i.bak -e 's|Icon=org.gnome.Calculator$|Icon=${SNAP}/meta/gui/org.gnome.Calculator.svg|g' data/org.gnome.Calculator.desktop.in
       sed -i.bak -e 's|media: gnome_calculator_help_media|media: gnome_calculator_help_media, symlink_media: false|g' help/meson.build
       snapcraftctl build
+      mkdir -p $SNAPCRAFT_PART_INSTALL/meta/gui/
+      cp ../src/data/icons/hicolor/scalable/apps/org.gnome.Calculator.svg $SNAPCRAFT_PART_INSTALL/meta/gui/
     build-packages:
       - desktop-file-utils
       - gettext
