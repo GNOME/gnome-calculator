@@ -28,6 +28,7 @@ public class UnitManager : Object
 
         var angle_category = default_unit_manager.add_category ("angle", _("Angle"));
         var length_category = default_unit_manager.add_category ("length", _("Length"));
+        var speed_category = default_unit_manager.add_category ("speed", _("Speed"));
         var area_category = default_unit_manager.add_category ("area", _("Area"));
         var volume_category = default_unit_manager.add_category ("volume", _("Volume"));
         var weight_category = default_unit_manager.add_category ("weight", _("Mass"));
@@ -57,6 +58,11 @@ public class UnitManager : Object
         length_category.add_unit (new Unit ("micrometer", _("Micrometers"), dpgettext2 (null, "unit-format", "%s μm"), "x/1000000", "1000000x", dpgettext2 (null, "unit-symbols", "micrometer,micrometers,um")));
         length_category.add_unit (new Unit ("nanometer", _("Nanometers"), dpgettext2 (null, "unit-format", "%s nm"), "x/1000000000", "1000000000x", dpgettext2 (null, "unit-symbols", "nanometer,nanometers,nm")));
         length_category.add_unit (new Unit ("point", _("Desktop Publishing Point"), dpgettext2 (null, "unit-format", "%s pt"), "0.000352777778x", "x/0.000352777778", dpgettext2 (null, "unit-symbols", "point,pt,points,pts")));
+        speed_category.add_unit (new Unit ("kilometers-hour", _("Kilometers per hour"), dpgettext2 (null, "unit-format", "%s km/h"), "x/3.6", "3.6x", dpgettext2 (null, "unit-symbols", "kilometers per hour,kmph,kmh")));
+        speed_category.add_unit (new Unit ("miles-hour", _("Miles per hour"), dpgettext2 (null, "unit-format", "%s miles/h"), "x/2.23693629", "2.23693629x", dpgettext2 (null, "unit-symbols", "milesph,miles per hour,mi/h,miph")));
+        speed_category.add_unit (new Unit ("meters-second", _("Meters per second"), dpgettext2 (null, "unit-format", "%s m/s"), "x", "x", dpgettext2 (null, "unit-symbols", "meters per second,mps")));
+        speed_category.add_unit (new Unit ("feet-second", _("Feets per second"), dpgettext2 (null, "unit-format", "%s feets/s"), "x/3.28084", "3.28084x", dpgettext2 (null, "unit-symbols", "fps,feets per second,feetsps")));
+        speed_category.add_unit (new Unit ("knot", _("Knots"), dpgettext2 (null, "unit-format", "%s kt"), "x/1.94384449", "1.94384449x", dpgettext2 (null, "unit-symbols", "kt,kn,nd,knot,knots")));
         area_category.add_unit (new Unit ("hectare", _("Hectares"), dpgettext2 (null, "unit-format", "%s ha"), "10000x", "x/10000", dpgettext2 (null, "unit-symbols", "hectare,hectares,ha")));
         area_category.add_unit (new Unit ("acre", _("Acres"), dpgettext2 (null, "unit-format", "%s acres"), "4046.8564224x", "x/4046.8564224", dpgettext2 (null, "unit-symbols", "acre,acres")));
         area_category.add_unit (new Unit ("square-foot", _("Square Foot"), dpgettext2 (null, "unit-format", "%s ft²"), "x/10.763910417", "10.763910417x", dpgettext2 (null, "unit-symbols", "ft²")));
