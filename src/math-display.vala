@@ -38,6 +38,8 @@ public class MathDisplay : Gtk.Viewport
         history = new HistoryView ();
         history.answer_clicked.connect ((ans) => { insert_text (ans); });
         history.equation_clicked.connect ((eq) => { display_text (eq); });
+        history.set_serializer (equation.serializer);
+        _equation.display_changed.connect (history.set_serializer);
         main_box.add (history);
         main_box.show_all ();
 

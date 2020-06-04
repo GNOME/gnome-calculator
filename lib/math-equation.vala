@@ -118,6 +118,7 @@ public class MathEquation : Gtk.SourceBuffer
     }
 
     public signal void history_signal (string answer, Number number, int number_base, uint representation_base); /*signal to be emitted when a new calculation is tp be entered in history-view */
+    public signal void display_changed (Serializer serializer);
     private AngleUnit _angle_units;  /* Units for trigonometric functions */
     private NumberMode _number_mode;   /* ??? */
     private bool can_super_minus; /* true if entering minus can generate a superscript minus */
@@ -394,6 +395,8 @@ public class MathEquation : Gtk.SourceBuffer
 
         /* Add/remove thousands separators */
         reformat_separators ();
+
+        this.display_changed (serializer);
     }
 
     private MathEquationState get_current_state ()
@@ -795,8 +798,6 @@ public class MathEquation : Gtk.SourceBuffer
         /* Show the number in the user chosen format */
         var text = serializer.to_string (x);
 
-        if (representation_base != 0)
-            serializer.set_representation_base (number_base);
         this.history_signal (get_current_state ().expression, x, number_base, representation_base); /*emits signal to enter a new entry into history-view */
         set_text (text, -1);
         state.ans = x;

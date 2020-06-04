@@ -11,16 +11,13 @@
 [GtkTemplate (ui = "/org/gnome/calculator/history-view.ui")]
 public class HistoryView : Gtk.ScrolledWindow
 {
-    string? last_answer = null;
     string? last_equation = null;
-
-    Serializer serializer_four = new Serializer (DisplayFormat.AUTOMATIC, 10, 4);
-    Serializer serializer_nine = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
 
     [GtkChild]
     Gtk.ListBox listbox;
 
     private int _rows = 0;
+    private Serializer serializer;
     private int _current = 0;
     public int rows {get {return _rows;} }
     public int current {get {return _current;} set {_current = value.clamp(0, _rows); } }
@@ -50,19 +47,10 @@ public class HistoryView : Gtk.ScrolledWindow
     public void insert_entry (string equation, Number answer, int number_base, uint representation_base)
     {
 
-        serializer_four.set_base (number_base);
-        serializer_nine.set_base (number_base);
-
-        serializer_four.set_representation_base (representation_base);
-        serializer_nine.set_representation_base (representation_base);
-
-        var answer_nine_digits = serializer_nine.to_string (answer);
-        var answer_four_digits = serializer_four.to_string (answer);
-
-        if (last_answer == answer_nine_digits && last_equation == equation)
+        if (last_equation == equation)
             return;
 
-        var entry = new HistoryEntry (equation, answer_four_digits, answer_nine_digits);
+        var entry = new HistoryEntry (equation, answer, serializer);
 
         listbox.insert (entry, -1);
         entry.show ();
@@ -70,7 +58,6 @@ public class HistoryView : Gtk.ScrolledWindow
         entry.answer_clicked.connect ((ans) => { this.answer_clicked (ans); });
         entry.equation_clicked.connect ((eq) => { this.equation_clicked (eq); });
 
-        last_answer = answer_nine_digits;
         last_equation = equation;
         _rows++;
         current = rows - 1;
@@ -83,6 +70,12 @@ public class HistoryView : Gtk.ScrolledWindow
         _current = 0;
         listbox.foreach ((child) => { listbox.remove(child); });
     }
+
+    public void set_serializer (Serializer serializer)
+    {
+        this.serializer = serializer;
+        listbox.foreach ((child) => { ((HistoryEntry)child).redisplay (serializer); });
+    }
 }
 
 [GtkTemplate (ui = "/org/gnome/calculator/history-entry.ui")]
@@ -93,18 +86,26 @@ public class HistoryEntry : Gtk.ListBoxRow
     [GtkChild]
     public Gtk.Label answer_label;
 
+    private Number number;
+
     public signal void answer_clicked (string ans);
     public signal void equation_clicked (string equation);
 
     public HistoryEntry (string equation,
-                         string answer_four_digits,
-                         string answer_nine_digits)
+                         Number answer,
+                         Serializer serializer)
     {
-        equation_label.set_tooltip_text (equation);
-        answer_label.set_tooltip_text (answer_nine_digits);
-
+        this.number = answer;
         equation_label.set_text (equation);
-        answer_label.set_text (answer_four_digits);
+        equation_label.set_tooltip_text (equation);
+        redisplay (serializer);
+    }
+
+    public void redisplay (Serializer serializer)
+    {
+        var answer = serializer.to_string (number);
+        answer_label.set_tooltip_text (answer);
+        answer_label.set_text (answer);
     }
 
     [GtkCallback]
