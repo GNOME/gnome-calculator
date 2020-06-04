@@ -1335,6 +1335,29 @@
           </packing>
         </child>
         <child>
+          <object class="GtkButton" id="calc_pi_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Pi [Ctrl+P]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'π'</property>
+            <child>
+              <object class="GtkLabel" id="pi_label">
+                <property name="visible">True</property>
+                <property name="label">π</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">9</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkButton" id="calc_integer_portion_button">
             <property name="label">int</property>
             <property name="visible">True</property>
