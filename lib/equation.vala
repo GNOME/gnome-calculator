@@ -157,6 +157,18 @@ private class EquationParser : Parser
 {
     private Equation equation;
 
+    private static HashTable<string, Number> CONSTANTS;
+
+    static construct {
+        CONSTANTS = new HashTable<string, Number> (str_hash, str_equal);
+        CONSTANTS.insert ("e", new Number.eulers ());
+        CONSTANTS.insert ("pi", new Number.pi ());
+        CONSTANTS.insert ("tau", new Number.tau ());
+        CONSTANTS.insert ("π", new Number.pi ());
+        CONSTANTS.insert ("τ", new Number.tau ());
+        CONSTANTS.insert ("i", new Number.i ());
+    }
+
     public EquationParser (Equation equation, string expression)
     {
         base (expression, equation.base, equation.wordlen, equation.angle_units);
@@ -165,8 +177,7 @@ private class EquationParser : Parser
 
     protected override bool variable_is_defined (string name)
     {
-        /* FIXME: Make more generic */
-        if (name == "e" || name == "i" || name == "π" || name == "pi" || name == "τ" || name == "tau")
+        if (CONSTANTS.contains (name))
             return true;
 
         return equation.variable_is_defined (name);
@@ -174,14 +185,8 @@ private class EquationParser : Parser
 
     protected override Number? get_variable (string name)
     {
-        if (name == "e")
-            return new Number.eulers ();
-        else if (name == "i")
-            return new Number.i ();
-        else if (name == "π" || name == "pi")
-            return new Number.pi ();
-        else if (name == "τ" || name == "tau")
-            return new Number.tau ();
+        if (CONSTANTS.contains (name))
+            return CONSTANTS.@get (name);
         else
             return equation.get_variable (name);
     }
@@ -189,7 +194,7 @@ private class EquationParser : Parser
     protected override void set_variable (string name, Number x)
     {
         // Reserved words, e, π, mod, and, or, xor, not, abs, log, ln, sqrt, int, frac, sin, cos, ...
-        if (name == "e" || name == "i" || name == "π")
+        if (CONSTANTS.contains (name))
             return; // FALSE
 
         equation.set_variable (name, x);
