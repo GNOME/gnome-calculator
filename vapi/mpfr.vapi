@@ -67,6 +67,13 @@ namespace MPFR {
         public double get_double (Round rnd = Round.NEAREST);
 
         public int const_pi (Round rnd = Round.NEAREST);
+        
+        public int const_tau (Round rnd = Round.NEAREST) {
+            int i = const_pi (rnd);
+            multiply_signed_integer(this, 2, rnd);
+            return i;
+        }
+
         [CCode (cname="mpfr_zero_p")]
         public bool is_zero ();
         public int sgn ();

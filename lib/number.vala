@@ -115,6 +115,12 @@ public class Number : Object
         num.get_imag ().val.set_zero ();
     }
 
+    public Number.tau ()
+    {
+        num.get_real ().val.const_tau ();
+        num.get_imag ().val.set_zero ();
+    }
+
     /* Sets z to be a uniform random number in the range [0, 1] */
     public Number.random ()
     {
