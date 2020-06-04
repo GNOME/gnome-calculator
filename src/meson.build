@@ -11,8 +11,8 @@ gnome_calculator_vala_sources = [
   'math-history.vala',
 ]
 
-gnome_calculator_resource_files = files('gnome-calculator.gresource.xml')
-gnome_calculator_resources = gnome.compile_resources('org.gnome.Calculator', gnome_calculator_resource_files)
+gnome_calculator_resource_files = files('ui/gnome-calculator.gresource.xml')
+gnome_calculator_resources = gnome.compile_resources('org.gnome.Calculator', gnome_calculator_resource_files, source_dir : ['ui'])
 
 gnome_calculator_sources = [
   gnome_calculator_vala_sources,
