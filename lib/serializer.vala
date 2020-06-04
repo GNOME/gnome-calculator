@@ -269,7 +269,10 @@ public class Serializer : Object
                 n_digits = n_complex_digits;
             if (s.str == "0" || s.str == "+0" || s.str == "−0")
             {
-                /* Ignore */
+                if (string.str == "")
+                {
+                    string.append ("0"); // real component is empty, the imaginary very small, we shouldn't return blank
+                }
             }
             else if (s.str == "1")
             {
