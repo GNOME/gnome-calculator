@@ -798,7 +798,7 @@ public class MathEquation : Gtk.SourceBuffer
         /* Show the number in the user chosen format */
         var text = serializer.to_string (x);
 
-        this.history_signal (get_current_state ().expression, x, number_base, representation_base); /*emits signal to enter a new entry into history-view */
+        this.history_signal (get_current_state ().expression.replace ("\\cdot", "×"), x, number_base, representation_base); /*emits signal to enter a new entry into history-view */
         set_text (text, -1);
         state.ans = x;
 

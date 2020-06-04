@@ -151,7 +151,7 @@ public class PreLexer : Object
         if (c == '"')
             return LexerTokenType.PL_SECOND;
 
-        if (c.isalpha () || c == '_')
+        if (c.isalpha () || c == '_' || c == '\\')
             return LexerTokenType.PL_LETTER;
 
         if (c == '∧')
@@ -709,6 +709,8 @@ public class Lexer : Object
             return insert_token (LexerTokenType.MOD);
         if (name == "and")
             return insert_token (LexerTokenType.AND);
+        if (name == "\\cdot")
+            return insert_token (LexerTokenType.MULTIPLY);
         if (name == "or")
             return insert_token (LexerTokenType.OR);
         if (name == "xor")
