@@ -166,7 +166,7 @@ private class EquationParser : Parser
     protected override bool variable_is_defined (string name)
     {
         /* FIXME: Make more generic */
-        if (name == "e" || name == "i" || name == "π")
+        if (name == "e" || name == "i" || name == "π" || name == "pi")
             return true;
 
         return equation.variable_is_defined (name);
@@ -178,7 +178,7 @@ private class EquationParser : Parser
             return new Number.eulers ();
         else if (name == "i")
             return new Number.i ();
-        else if (name == "π")
+        else if (name == "π" || name == "pi")
             return new Number.pi ();
         else
             return equation.get_variable (name);
