@@ -93,11 +93,11 @@ public class Calculator : Gtk.Application
         buttons.programming_base = number_base;
         buttons.mode = button_mode; // FIXME: We load the basic buttons even if we immediately switch to the next type
 
-        set_accels_for_action ("win.mode::basic", {"<alt>B"});
-        set_accels_for_action ("win.mode::advanced", {"<alt>A"});
-        set_accels_for_action ("win.mode::financial", {"<alt>F"});
-        set_accels_for_action ("win.mode::programming", {"<alt>P"});
-        set_accels_for_action ("win.mode::keyboard", {"<alt>K", "<alt>T"});
+        set_accels_for_action ("win.mode::basic", {"<control><alt>B"});
+        set_accels_for_action ("win.mode::advanced", {"<control><alt>A"});
+        set_accels_for_action ("win.mode::financial", {"<control><alt>F"});
+        set_accels_for_action ("win.mode::programming", {"<control><alt>P"});
+        set_accels_for_action ("win.mode::keyboard", {"<control><alt>K", "<control><alt>T"});
         set_accels_for_action ("win.copy", {"<control>C"});
         set_accels_for_action ("win.paste", {"<control>V"});
         set_accels_for_action ("win.undo", {"<control>Z"});
