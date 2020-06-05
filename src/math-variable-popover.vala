@@ -98,7 +98,7 @@ public class MathVariablePopover : Gtk.Popover
     private void store_variable_cb (Gtk.Widget widget)
     {
         var name = variable_name_entry.get_text ();
-        if (name == "" || name in RESERVED_VARIABLE_NAMES)
+        if (name == "" || name in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS)
             return;
 
         var z = equation.number;

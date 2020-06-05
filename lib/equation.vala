@@ -157,18 +157,6 @@ private class EquationParser : Parser
 {
     private Equation equation;
 
-    private static HashTable<string, Number> CONSTANTS;
-
-    static construct {
-        CONSTANTS = new HashTable<string, Number> (str_hash, str_equal);
-        CONSTANTS.insert ("e", new Number.eulers ());
-        CONSTANTS.insert ("pi", new Number.pi ());
-        CONSTANTS.insert ("tau", new Number.tau ());
-        CONSTANTS.insert ("π", new Number.pi ());
-        CONSTANTS.insert ("τ", new Number.tau ());
-        CONSTANTS.insert ("i", new Number.i ());
-    }
-
     public EquationParser (Equation equation, string expression)
     {
         base (expression, equation.base, equation.wordlen, equation.angle_units);

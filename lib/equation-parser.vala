@@ -982,6 +982,18 @@ public class Parser
     private int error_token_end;
     private uint representation_base;
 
+    public static HashTable<string, Number> CONSTANTS;
+
+    static construct {
+        CONSTANTS = new HashTable<string, Number> (str_hash, str_equal);
+        CONSTANTS.insert ("e", new Number.eulers ());
+        CONSTANTS.insert ("pi", new Number.pi ());
+        CONSTANTS.insert ("tau", new Number.tau ());
+        CONSTANTS.insert ("π", new Number.pi ());
+        CONSTANTS.insert ("τ", new Number.tau ());
+        CONSTANTS.insert ("i", new Number.i ());
+    }
+
     public Parser (string input, int number_base, int wordlen, AngleUnit angle_units)
     {
         this.input = input;
