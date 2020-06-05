@@ -1411,6 +1411,9 @@ public class MathEquation : Gtk.SourceBuffer
             /* Inserted inside ans */
             if (offset > ans_start && offset < ans_end)
                 clear_ans (true);
+            /* Inserted before ans */
+            if (offset == ans_start)
+                clear_ans (true);
         }
 
         base.insert_text (ref location, text, len);
