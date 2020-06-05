@@ -49,7 +49,9 @@ public class MathWindow : Gtk.ApplicationWindow
         right_aligned = true;
 
         add_action_entries (window_entries, this);
-
+        var settings = new Settings ("org.gnome.calculator");
+        add_action (settings.create_action ("number-format"));
+        settings.bind ("number-format", _equation, "number_format", SettingsBindFlags.DEFAULT);
         converter.set_equation (_equation);
         converter.set_category (null);
         converter.set_conversion (equation.source_units, equation.target_units);
