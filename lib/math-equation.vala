@@ -809,6 +809,7 @@ public class MathEquation : Gtk.SourceBuffer
         ans_start_mark = create_mark (null, start, false);
         ans_end_mark = create_mark (null, end, true);
         apply_tag (ans_tag, start, end);
+        notify_property ("display"); // notify after tag was applied to update bits panel
 
         if (serializer.error != null)
         {
