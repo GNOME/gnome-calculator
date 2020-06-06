@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2020-06-05 13:16+0000\n"
-"PO-Revision-Date: 2020-06-05 22:18+0300\n"
+"POT-Creation-Date: 2020-06-06 07:27+0000\n"
+"PO-Revision-Date: 2020-06-06 16:24+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -499,55 +499,55 @@ msgid "No sane value to store"
 msgstr "Немає нормального значення для зберігання"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1039
+#: lib/math-equation.vala:1040
 msgid "Overflow. Try a bigger word size"
 msgstr "Переповнення. Спробуйте більший розмір слова"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1044
+#: lib/math-equation.vala:1045
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Невідома змінна «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1051
+#: lib/math-equation.vala:1052
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Функцію «%s» не визначено"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1058
+#: lib/math-equation.vala:1059
 msgid "Unknown conversion"
 msgstr "Невідоме перетворення"
 
 #. should always be run
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1069
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1073 lib/math-equation.vala:1078
+#: lib/math-equation.vala:1074 lib/math-equation.vala:1079
 msgid "Malformed expression"
 msgstr "Неправильний вираз"
 
-#: lib/math-equation.vala:1089
+#: lib/math-equation.vala:1090
 msgid "Calculating"
 msgstr "Обчислення"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1282
+#: lib/math-equation.vala:1283
 msgid "Need an integer to factorize"
 msgstr "Для розкладання на множники вкажіть ціле число"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1346
+#: lib/math-equation.vala:1347
 msgid "No sane value to bitwise shift"
 msgstr "Немає нормального значення для побітового зсуву"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1368
+#: lib/math-equation.vala:1369
 msgid "Displayed value not an integer"
 msgstr "Показане значення не є цілим числом"
 
@@ -696,8 +696,7 @@ msgid "Digital Storage"
 msgstr "Цифрова пам'ять"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: lib/unit.vala:40 src/math-preferences.vala:106
+#: lib/unit.vala:40 src/ui/math-preferences.ui:181
 msgid "Degrees"
 msgstr "Градуси"
 
@@ -712,8 +711,7 @@ msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "градус,градусів,гр"
 
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: lib/unit.vala:41 src/math-preferences.vala:110
+#: lib/unit.vala:41 src/ui/math-preferences.ui:182
 msgid "Radians"
 msgstr "Радіани"
 
@@ -728,8 +726,7 @@ msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "радіан,радіани,рад"
 
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: lib/unit.vala:42 src/math-preferences.vala:114
+#: lib/unit.vala:42 src/ui/math-preferences.ui:183
 msgid "Gradians"
 msgstr "Гради"
 
@@ -2816,73 +2813,68 @@ msgstr "Створити функцію"
 msgid "Select no. of arguments"
 msgstr "Виберіть кількість аргументів"
 
-#. Title of preferences dialog
-#: src/math-preferences.vala:32 src/ui/math-window.ui:89
+#: src/ui/math-preferences.ui:21 src/ui/math-window.ui:89
 msgid "Preferences"
 msgstr "Параметри"
 
-#. Preferences dialog: label for show trailing zeroes check button
-#: src/math-preferences.vala:50
+#: src/ui/math-preferences.ui:63
 msgid "Number of _decimals"
 msgstr "Кількість знаків після _коми"
 
-#. Preferences dialog: label for show trailing zeroes switch
-#: src/math-preferences.vala:62
+#: src/ui/math-preferences.ui:77
 msgid "Trailing _zeroes"
 msgstr "Змінні _нулі"
 
-#. Preferences dialog: label for show show thousands separator switch
-#: src/math-preferences.vala:75
+#: src/ui/math-preferences.ui:90
 msgid "_Thousands separators"
 msgstr "Розділення _тисячних"
 
-#. Preferences dialog: Label for angle unit combo box
-#: src/math-preferences.vala:89
-msgid "_Angle units:"
-msgstr "Одиниця _куту:"
+#: src/ui/math-preferences.ui:104
+#| msgid "_Angle units:"
+msgid "_Angle units"
+msgstr "Одиниці _кутів"
 
-#. Preferences dialog: Label for word size combo box
-#: src/math-preferences.vala:120
-msgid "Word _size:"
-msgstr "_Розмір слова:"
+#: src/ui/math-preferences.ui:118
+#| msgid "Word _size:"
+msgid "Word _size"
+msgstr "_Розмір слова"
+
+#: src/ui/math-preferences.ui:132
+msgid "E_xchange rate refresh interval"
+msgstr "Інтервал оновлення об_мінних курсів"
 
 #. Word size combo: 8 bits
-#: src/math-preferences.vala:134
+#: src/ui/math-preferences.ui:196
 msgid "8 bits"
 msgstr "8 бітів"
 
 #. Word size combo: 16 bits
-#: src/math-preferences.vala:136
+#: src/ui/math-preferences.ui:197
 msgid "16 bits"
 msgstr "16 бітів"
 
 #. Word size combo: 32 bits
-#: src/math-preferences.vala:138
+#: src/ui/math-preferences.ui:198
 msgid "32 bits"
 msgstr "32 біти"
 
 #. Word size combo: 64 bits
-#: src/math-preferences.vala:140
+#: src/ui/math-preferences.ui:199
 msgid "64 bits"
 msgstr "64 біти"
 
-#. Preferences dialog: Label for exchange rate refresh interval combo box
-#: src/math-preferences.vala:146
-msgid "E_xchange rate refresh interval"
-msgstr "Інтервал оновлення об_мінних курсів"
-
 #. Refresh interval combo: never
-#: src/math-preferences.vala:160
+#: src/ui/math-preferences.ui:212
 msgid "never"
 msgstr "ніколи"
 
 #. Refresh interval combo: daily
-#: src/math-preferences.vala:162
+#: src/ui/math-preferences.ui:213
 msgid "daily"
 msgstr "щоденно"
 
 #. Refresh interval combo: weekly
-#: src/math-preferences.vala:164
+#: src/ui/math-preferences.ui:214
 msgid "weekly"
 msgstr "щотижня"
 
@@ -3090,25 +3082,21 @@ msgstr "_Нове вікно"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
-#| msgid "Automatic"
 msgid "_Automatic"
 msgstr "_Автоматично"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
-#| msgid "Fixed"
 msgid "_Fixed"
 msgstr "_Фіксований"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:73
-#| msgid "Scientific"
 msgid "_Scientific"
 msgstr "_Науковий"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.ui:79
-#| msgid "Engineering"
 msgid "_Engineering"
 msgstr "_Інженерний"
 
