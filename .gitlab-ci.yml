@@ -47,14 +47,3 @@ test:fedora:
   <<: *fedora_before_script
   <<: *meson_test
 
-include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
-
-flatpak:
-    image: 'registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master'
-    variables:
-        MANIFEST_PATH: "org.gnome.Calculator.json"
-        FLATPAK_MODULE: "gnome-calculator"
-        RUNTIME_REPO: "https://sdk.gnome.org/gnome-nightly.flatpakrepo"
-        APP_ID: "org.gnome.Calculator"
-    extends: .flatpak
-
