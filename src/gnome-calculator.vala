@@ -313,11 +313,11 @@ public class Calculator : Gtk.Application
     {
         string[] authors =
         {
-            "Rich Burridge <rich.burridge@gmail.com>",
-            "Robert Ancell <robert.ancell@gmail.com>",
-            "Klaus Niederkrüger <kniederk@umpa.ens-lyon.fr>",
-            "Robin Sonefors <ozamosi@flukkost.nu>",
             "Robert Roth <robert.roth.off@gmail.com>",
+            "Robert Ancell",
+            "Klaus Niederkrüger",
+            "Robin Sonefors",
+            "Rich Burridge",
             null
         };
         string[] documenters =
