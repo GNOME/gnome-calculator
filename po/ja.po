@@ -1,5 +1,5 @@
 # gcalctool ja.po.
-# Copyright (C) 2003-2020 Free Software Foundation, Inc.
+# Copyright (C) 2003-2010, 2012, 2014-2016, 2019-2020 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
 # KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>, 2003.
 # Takeshi AIHANA <takeshi.aihana@gmail.com>, 2003-2009.
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
 "POT-Creation-Date: 2020-06-06 07:27+0000\n"
-"PO-Revision-Date: 2020-02-26 00:00+0900\n"
+"PO-Revision-Date: 2020-08-23 23:30+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -667,7 +667,7 @@ msgstr "長さ"
 
 #: lib/unit.vala:31
 msgid "Speed"
-msgstr ""
+msgstr "速度"
 
 #: lib/unit.vala:32
 msgid "Area"
@@ -1010,94 +1010,79 @@ msgid "point,pt,points,pts"
 msgstr "point,pt,points,pts"
 
 #: lib/unit.vala:61
-#, fuzzy
-#| msgid "Kilometers"
 msgid "Kilometers per hour"
-msgstr "キロメートル"
+msgstr "キロメートル毎時"
 
 #: lib/unit.vala:61
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
+#, c-format
 msgctxt "unit-format"
 msgid "%s km/h"
-msgstr "%s km"
+msgstr "%s km/h"
 
 #: lib/unit.vala:61
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "kilometer,kilometers,km,kms"
 msgctxt "unit-symbols"
 msgid "kilometers per hour,kmph,kmh"
-msgstr "kilometer,kilometers,km,kms"
+msgstr "kilometers per hour,kmph,kmh"
 
 #: lib/unit.vala:62
 msgid "Miles per hour"
-msgstr ""
+msgstr "マイル毎時"
 
 #: lib/unit.vala:62
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s minutes"
+#, c-format
 msgctxt "unit-format"
 msgid "%s miles/h"
-msgstr "%s minutes"
+msgstr "%s miles/h"
 
 #: lib/unit.vala:62
 msgctxt "unit-symbols"
 msgid "milesph,miles per hour,mi/h,miph"
-msgstr ""
+msgstr "milesph,miles per hour,mi/h,miph"
 
 #: lib/unit.vala:63
 msgid "Meters per second"
-msgstr ""
+msgstr "メートル毎秒"
 
 #: lib/unit.vala:63
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s ms"
+#, c-format
 msgctxt "unit-format"
 msgid "%s m/s"
-msgstr "%s ms"
+msgstr "%s m/s"
 
 #: lib/unit.vala:63
 msgctxt "unit-symbols"
 msgid "meters per second,mps"
-msgstr ""
+msgstr "meters per second,mps"
 
 #: lib/unit.vala:64
 msgid "Feets per second"
-msgstr ""
+msgstr "フィート毎秒"
 
 #: lib/unit.vala:64
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s ft"
+#, c-format
 msgctxt "unit-format"
 msgid "%s feets/s"
-msgstr "%s ft"
+msgstr "%s feets/s"
 
 #: lib/unit.vala:64
 msgctxt "unit-symbols"
 msgid "fps,feets per second,feetsps"
-msgstr ""
+msgstr "fps,feets per second,feetsps"
 
 #: lib/unit.vala:65
 msgid "Knots"
-msgstr ""
+msgstr "ノット"
 
 #: lib/unit.vala:65
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
+#, c-format
 msgctxt "unit-format"
 msgid "%s kt"
-msgstr "%s km"
+msgstr "%s kt"
 
 #: lib/unit.vala:65
 msgctxt "unit-symbols"
 msgid "kt,kn,nd,knot,knots"
-msgstr ""
+msgstr "kt,kn,nd,knot,knots"
 
 #: lib/unit.vala:66
 msgid "Hectares"
@@ -1395,20 +1380,18 @@ msgstr "year,years"
 
 #: lib/unit.vala:86
 msgid "Months"
-msgstr ""
+msgstr "月"
 
 #: lib/unit.vala:86
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s minutes"
+#, c-format
 msgctxt "unit-format"
 msgid "%s months"
-msgstr "%s minutes"
+msgstr "%s months"
 
 #: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "month,months"
-msgstr ""
+msgstr "month,months"
 
 #: lib/unit.vala:87
 msgid "Days"
@@ -2842,16 +2825,12 @@ msgid "_Thousands separators"
 msgstr "3 桁ごとの区切り(_T)"
 
 #: src/ui/math-preferences.ui:104
-#, fuzzy
-#| msgid "_Angle units:"
 msgid "_Angle units"
-msgstr "角度の単位(_A):"
+msgstr "角度の単位(_A)"
 
 #: src/ui/math-preferences.ui:118
-#, fuzzy
-#| msgid "Word _size:"
 msgid "Word _size"
-msgstr "Word サイズ(_S):"
+msgstr "Word サイズ(_S)"
 
 #: src/ui/math-preferences.ui:132
 msgid "E_xchange rate refresh interval"
@@ -3096,31 +3075,23 @@ msgstr "新しいウィンドウ(_N)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
-#, fuzzy
-#| msgid "Automatic"
 msgid "_Automatic"
-msgstr "自動"
+msgstr "自動(_A)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
-#, fuzzy
-#| msgid "Fixed"
 msgid "_Fixed"
-msgstr "固定小数点"
+msgstr "固定小数点(_F)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:73
-#, fuzzy
-#| msgid "Scientific"
 msgid "_Scientific"
-msgstr "科学"
+msgstr "科学(_S)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.ui:79
-#, fuzzy
-#| msgid "Engineering"
 msgid "_Engineering"
-msgstr "工学"
+msgstr "工学(_E)"
 
 #: src/ui/math-window.ui:93
 msgid "Keyboard Shortcuts"
