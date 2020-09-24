@@ -20,7 +20,7 @@ public class SearchProvider : Object
     private Queue<string> queued_equations;
     private HashTable<string, string> cached_equations;
 
-    private const string COPY_TO_CLIPBOARD_ID = "copy-to-clipboard";
+    private const string COPY_TO_CLIPBOARD_ID = "copy-to-clipboard-";
 
     public SearchProvider (SearchProviderApp app)
     {
@@ -136,7 +136,7 @@ public class SearchProvider : Object
         /* We have at most one result: the search terms as one string */
         var equation = terms_to_equation (terms);
         if (yield solve_equation (equation))
-            return { equation, COPY_TO_CLIPBOARD_ID };
+            return { equation, COPY_TO_CLIPBOARD_ID+equation };
         else
             return new string[0];
     }
@@ -158,10 +158,10 @@ public class SearchProvider : Object
         string result;
         uint32 equation_index;
 
-        if (results.length == 1 && results[0] == COPY_TO_CLIPBOARD_ID)
+        if (results.length == 1 && results[0].has_prefix(COPY_TO_CLIPBOARD_ID))
             return new HashTable<string, Variant>[0];
 
-        if (results.length == 1 || results[1] == COPY_TO_CLIPBOARD_ID)
+        if (results.length == 1 || results[1].has_prefix(COPY_TO_CLIPBOARD_ID))
             equation_index = 0;
         else
             equation_index = 1;
@@ -185,9 +185,10 @@ public class SearchProvider : Object
         {
             uint32 copy_index = (equation_index + 1) % 2;
             metadata[copy_index] = new HashTable<string, Variant> (str_hash, str_equal);
-            metadata[copy_index].insert ("id", COPY_TO_CLIPBOARD_ID);
+            metadata[copy_index].insert ("id", COPY_TO_CLIPBOARD_ID+equation);
             metadata[copy_index].insert ("name", _("Copy"));
             metadata[copy_index].insert ("description", _("Copy result to clipboard"));
+            metadata[copy_index].insert ("clipboardText", @"$result");
         }
 
         return metadata;
@@ -209,7 +210,7 @@ public class SearchProvider : Object
 
     public async void activate_result (string result_id, string[] terms, uint32 timestamp) throws Error
     {
-        if (result_id == COPY_TO_CLIPBOARD_ID)
+        if (result_id.has_prefix(COPY_TO_CLIPBOARD_ID))
         {
             string equation = terms_to_equation (terms);
 
