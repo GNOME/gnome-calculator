@@ -68,6 +68,7 @@ public class MathButtons : Gtk.Box
 
     private Gtk.ComboBox base_combo;
     private Gtk.Label base_label;
+    private Gtk.Label word_size_label;
     private Gtk.Widget bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
 
@@ -98,6 +99,7 @@ public class MathButtons : Gtk.Box
         {"factorize",            on_factorize                                },
         {"insert-exponent",      on_insert_exponent                          },
         {"bitshift",             on_bitshift,             "i"                },
+        {"set-word-size",        on_set_word_size,        "i"                },
         {"toggle-bit",           on_toggle_bit,           "i"                },
         {"insert-character",     on_insert_character                         },
         {"insert-numeric-point", on_insert_numeric_point                     },
@@ -119,6 +121,7 @@ public class MathButtons : Gtk.Box
         equation.notify["number-mode"].connect ((pspec) => { number_mode_changed_cb (); });
         equation.notify["angle-units"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["number-format"].connect ((pspec) => { update_bit_panel (); });
+        equation.notify["word-size"].connect ((pspec) => { word_size_changed_cb (); });
         number_mode_changed_cb ();
         update_bit_panel ();
     }
@@ -199,6 +202,13 @@ public class MathButtons : Gtk.Box
     private void on_bitshift (SimpleAction action, Variant? param)
     {
         equation.insert_shift (param.get_int32 ());
+    }
+
+    private void on_set_word_size (SimpleAction action, Variant? param)
+    {
+        equation.word_size = (param.get_int32 ());
+        string format = ngettext("%d-bit", "%d-bit", param.get_int32 ());
+        word_size_label.set_label(format.printf(param.get_int32 ()));
     }
 
     private void on_insert_numeric_point (SimpleAction action, Variant? param)
@@ -351,6 +361,9 @@ public class MathButtons : Gtk.Box
         menu_button = builder.get_object ("calc_shift_right_button") as Gtk.MenuButton;
         if (menu_button != null)
             menu_button.menu_model = create_shift_menu (false);
+        menu_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
+        if (menu_button != null)
+            menu_button.menu_model = create_word_size_menu ();
         menu_button = builder.get_object ("calc_memory_button") as Gtk.MenuButton;
         if (menu_button != null)
             menu_button.popover = new MathVariablePopover (equation);
@@ -380,7 +393,7 @@ public class MathButtons : Gtk.Box
                 i++;
             }
             toggle_bit_buttons.reverse ();
-
+            word_size_label = builder.get_object ("word_size_label") as Gtk.Label;
             base_combo = builder.get_object ("base_combo") as Gtk.ComboBox;
             base_combo.changed.connect (base_combobox_changed_cb);
             equation.notify["number-base"].connect ((pspec) => { base_changed_cb (); } );
@@ -470,6 +483,29 @@ public class MathButtons : Gtk.Box
         }
 
         return shift_menu;
+    }
+
+    private Menu create_word_size_menu ()
+    {
+        var word_size_menu = new Menu ();
+        var i = 64;
+        string format = ngettext ("%d-bit", "%d-bit", i);
+        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
+        i = 32;
+        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
+        i = 16;
+        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
+        i = 8;
+        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
+
+        return word_size_menu;
+    }
+
+    private void word_size_changed_cb ()
+    {
+        var size = equation.word_size;
+        string format = ngettext("%d-bit", "%d-bit", size);
+        word_size_label.set_label(format.printf(size));
     }
 
     private void on_launch_finc_dialog (SimpleAction action, Variant? param)
