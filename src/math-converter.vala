@@ -236,8 +236,6 @@ public class MathConverter : Gtk.Grid
         set_active_unit (from_combo, null, to_unit);
         set_active_unit (to_combo, null, from_unit);
 
-        do_convert(out from_unit, out to_unit);
-
         update_result_label ();
     }
 
