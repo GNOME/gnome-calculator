@@ -504,10 +504,31 @@ public class MathButtons : Gtk.Box
     private void word_size_changed_cb ()
     {
         var size = equation.word_size;
-        string format = ngettext("%d-bit", "%d-bit", size);
-        word_size_label.set_label(format.printf(size));
+        string format = ngettext ("%d-bit", "%d-bit", size);
+        word_size_label.set_label (format.printf(size));
+        update_bit_button_sensitivities ();
     }
 
+    private void update_bit_button_sensitivities ()
+    {
+        var i = 0;
+        foreach (var button in toggle_bit_buttons)
+        {
+        if (i < equation.word_size)
+        {
+            button.set_sensitive (true);
+        }
+        else
+        {
+            if (button.label == "1")
+            {
+            equation.toggle_bit (63-i);
+            }
+            button.set_sensitive (false);
+        }
+            i++;
+        }
+    }
     private void on_launch_finc_dialog (SimpleAction action, Variant? param)
     {
         var name = param.get_string ();
