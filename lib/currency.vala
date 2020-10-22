@@ -30,6 +30,7 @@ public class CurrencyManager : Object
 
         default_currency_manager.currencies.append (new Currency ("AED", _("UAE Dirham"), "إ.د"));
         default_currency_manager.currencies.append (new Currency ("AUD", _("Australian Dollar"), "$"));
+        default_currency_manager.currencies.append (new Currency ("BDT", _("Bangladeshi Taka"), "৳"));
         default_currency_manager.currencies.append (new Currency ("BGN", _("Bulgarian Lev"), "лв"));
         default_currency_manager.currencies.append (new Currency ("BHD", _("Bahraini Dinar"), ".ب.د"));
         default_currency_manager.currencies.append (new Currency ("BND", _("Brunei Dollar"), "$"));
@@ -178,6 +179,7 @@ public class CurrencyManager : Object
         name_map.insert ("Algerian dinar", "DZD");
         name_map.insert ("Australian dollar", "AUD");
         name_map.insert ("Bahrain dinar", "BHD");
+        name_map.insert ("Bangladeshi taka", "BDT");
         name_map.insert ("Botswana pula", "BWP");
         name_map.insert ("Brazilian real", "BRL");
         name_map.insert ("Brunei dollar", "BND");
@@ -337,6 +339,7 @@ public class CurrencyManager : Object
         }
 
         /* Set some fixed rates */
+        set_ecb_fixed_rate ("BDT", "0.0099", eur_rate);
         set_ecb_fixed_rate ("EEK", "0.06391", eur_rate);
         set_ecb_fixed_rate ("CFA", "0.00152449", eur_rate);
 
