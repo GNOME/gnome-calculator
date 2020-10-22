@@ -614,17 +614,20 @@ public class MathButtons : Gtk.Box
 
     private void character_code_dialog_response_cb (Gtk.Widget dialog, int response_id)
     {
-        var text = character_code_entry.get_text ();
-
+        string text = character_code_entry.get_text ();
         if (response_id == Gtk.ResponseType.OK)
         {
             var x = new Number.integer (0);
-            for (var i = 0; text[i] != '\0'; i++)
+            var decoded = text.data;
+            var len = decoded.length;
+            for (var i = 0; i < len; i++)
             {
-                x = x.add (new Number.integer (text[i]));
-                x = x.shift (8);
+                x = x.add (new Number.integer (decoded[i]));
+                if(i != (len - 1))
+                {
+                    x = x.shift (8);
+                }
             }
-
             equation.insert_number (x);
         }
 
