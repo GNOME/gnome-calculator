@@ -1,5 +1,6 @@
 libcalculator_sources = [
   'currency.vala',
+  'currency-provider.vala',
   'equation.vala',
   'equation-lexer.vala',
   'equation-parser.vala',

@@ -8,16 +8,24 @@
  * license.
  */
 
-static bool downloading_imf_rates = false;
-static bool downloading_ecb_rates = false;
-static bool loaded_rates = false;
 private static CurrencyManager? default_currency_manager = null;
 
 public class CurrencyManager : Object
 {
     private List<Currency> currencies;
 
-    public int refresh_interval { get; set; }
+    private List<CurrencyProvider> providers;
+
+    private int _refresh_interval;
+    public int refresh_interval { get { return _refresh_interval;}
+        set
+        {
+            _refresh_interval = value;
+            foreach (var p in default_currency_manager.providers) {
+                p.set_refresh_interval(_refresh_interval);
+            }
+        }
+    }
 
     public signal void updated ();
 
@@ -89,8 +97,13 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("VEF", _("Venezuelan Bolívar"), "Bs F"));
         default_currency_manager.currencies.append (new Currency ("ZAR", _("South African Rand"), "R"));
 
+        default_currency_manager.providers.append (new ImfCurrencyProvider ());
+        default_currency_manager.providers.append (new EcbCurrencyProvider ());
         /* Start downloading the rates if they are outdated. */
-        default_currency_manager.download_rates ();
+        foreach (var p in default_currency_manager.providers) {
+            p.updated.connect ( () => { default_currency_manager.updated (); });
+            p.update_rates ();
+        }
 
         return default_currency_manager;
     }
@@ -120,17 +133,16 @@ public class CurrencyManager : Object
         return null;
     }
 
-    private string get_imf_rate_filepath ()
+    public Number? get_value (string currency)
     {
-        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "rms_five.xls");
+        var c = get_currency (currency);
+        if (c != null)
+            return c.get_value ();
+        else
+            return null;
     }
 
-    private string get_ecb_rate_filepath ()
-    {
-        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "eurofxref-daily.xml");
-    }
-
-    private Currency add_currency (string short_name, string source)
+    public Currency add_currency (string short_name, string source)
     {
         foreach (var c in currencies)
             if (c.name == short_name)
@@ -143,337 +155,8 @@ public class CurrencyManager : Object
         var c = new Currency (short_name, short_name, short_name);
         c.source = source;
         currencies.append (c);
-
         return c;
     }
-
-    /* A file needs to be redownloaded if it doesn't exist, or is too old.
-     * When an error occur, it probably won't hurt to try to download again.
-     */
-    private bool file_needs_update (string filename, double max_age)
-    {
-        if (max_age == 0)
-            return false;
-
-        if (!FileUtils.test (filename, FileTest.IS_REGULAR))
-            return true;
-
-        var buf = Posix.Stat ();
-        if (Posix.stat (filename, out buf) == -1)
-            return true;
-
-        var modify_time = buf.st_mtime;
-        var now = time_t ();
-        if (now - modify_time > max_age)
-            return true;
-
-        return false;
-    }
-
-    private void load_imf_rates ()
-    {
-        var name_map = new HashTable <string, string> (str_hash, str_equal);
-        name_map.insert ("Euro", "EUR");
-        name_map.insert ("Japanese yen", "JPY");
-        name_map.insert ("U.K. pound", "GBP");
-        name_map.insert ("U.S. dollar", "USD");
-        name_map.insert ("Algerian dinar", "DZD");
-        name_map.insert ("Australian dollar", "AUD");
-        name_map.insert ("Bahrain dinar", "BHD");
-        name_map.insert ("Bangladeshi taka", "BDT");
-        name_map.insert ("Botswana pula", "BWP");
-        name_map.insert ("Brazilian real", "BRL");
-        name_map.insert ("Brunei dollar", "BND");
-        name_map.insert ("Canadian dollar", "CAD");
-        name_map.insert ("Chilean peso", "CLP");
-        name_map.insert ("Chinese yuan", "CNY");
-        name_map.insert ("Colombian peso", "COP");
-        name_map.insert ("Czech koruna", "CZK");
-        name_map.insert ("Danish krone", "DKK");
-        name_map.insert ("Hungarian forint", "HUF");
-        name_map.insert ("Icelandic krona", "ISK");
-        name_map.insert ("Indian rupee", "INR");
-        name_map.insert ("Indonesian rupiah", "IDR");
-        name_map.insert ("Iranian rial", "IRR");
-        name_map.insert ("Israeli New Shekel", "ILS");
-        name_map.insert ("Kazakhstani tenge", "KZT");
-        name_map.insert ("Korean won", "KRW");
-        name_map.insert ("Kuwaiti dinar", "KWD");
-        name_map.insert ("Libyan dinar", "LYD");
-        name_map.insert ("Malaysian ringgit", "MYR");
-        name_map.insert ("Mauritian rupee", "MUR");
-        name_map.insert ("Mexican peso", "MXN");
-        name_map.insert ("Nepalese rupee", "NPR");
-        name_map.insert ("New Zealand dollar", "NZD");
-        name_map.insert ("Norwegian krone", "NOK");
-        name_map.insert ("Omani rial", "OMR");
-        name_map.insert ("Pakistani rupee", "PKR");
-        name_map.insert ("Peruvian sol", "PEN");
-        name_map.insert ("Philippine peso", "PHP");
-        name_map.insert ("Polish zloty", "PLN");
-        name_map.insert ("Qatari riyal", "QAR");
-        name_map.insert ("Russian ruble", "RUB");
-        name_map.insert ("Saudi Arabian riyal", "SAR");
-        name_map.insert ("Singapore dollar", "SGD");
-        name_map.insert ("South African rand", "ZAR");
-        name_map.insert ("Sri Lankan rupee", "LKR");
-        name_map.insert ("Swedish krona", "SEK");
-        name_map.insert ("Swiss franc", "CHF");
-        name_map.insert ("Thai baht", "THB");
-        name_map.insert ("Trinidadian dollar", "TTD");
-        name_map.insert ("Tunisian dinar", "TND");
-        name_map.insert ("U.A.E. dirham", "AED");
-        name_map.insert ("Uruguayan peso", "UYU");
-        name_map.insert ("Bolivar Fuerte", "VEF");
-
-        var filename = get_imf_rate_filepath ();
-        string data;
-        try
-        {
-            FileUtils.get_contents (filename, out data);
-        }
-        catch (Error e)
-        {
-            warning ("Failed to read exchange rates: %s", e.message);
-            return;
-        }
-
-        var lines = data.split ("\n", 0);
-
-        var in_data = false;
-        foreach (var line in lines)
-        {
-            line = line.chug ();
-
-            /* Start after first blank line, stop on next */
-            if (line == "")
-            {
-                if (!in_data)
-                {
-                   in_data = true;
-                   continue;
-                }
-                else
-                   break;
-            }
-            if (!in_data)
-                continue;
-
-            var tokens = line.split ("\t", 0);
-            if (tokens[0] != "Currency")
-            {
-                int value_index;
-                for (value_index = 1; value_index < tokens.length; value_index++)
-                {
-                    var value = tokens[value_index].chug ();
-                    if (value != "")
-                        break;
-                }
-
-                if (value_index < tokens.length)
-                {
-                    var symbol = name_map.lookup (tokens[0]);
-                    if (symbol != null)
-                    {
-                        var c = get_currency (symbol);
-                        var value = mp_set_from_string (tokens[value_index]);
-                        /* Use data if we have a valid value */
-                        if (c == null && value != null)
-                        {
-                            debug ("Using IMF rate of %s for %s", tokens[value_index], symbol);
-                            c = add_currency (symbol, "imf");
-                            value = value.reciprocal ();
-                            if (c != null)
-                                c.set_value (value);
-                        }
-                    }
-                    else
-                        warning ("Unknown currency '%s'", tokens[0]);
-                }
-            }
-        }
-    }
-
-    private void set_ecb_rate (Xml.Node node, Currency eur_rate)
-    {
-        string? name = null, value = null;
-
-        for (var attribute = node.properties; attribute != null; attribute = attribute->next)
-        {
-            var n = (Xml.Node*) attribute;
-            if (attribute->name == "currency")
-                name = n->get_content ();
-            else if (attribute->name == "rate")
-                value = n->get_content ();
-        }
-
-        /* Use data if value and no rate currently defined */
-        if (name != null && value != null && get_currency (name) == null)
-        {
-            debug ("Using ECB rate of %s for %s", value, name);
-            var c = add_currency (name, "ecb");
-            var r = mp_set_from_string (value);
-            var v = eur_rate.get_value ();
-            v = v.multiply (r);
-            c.set_value (v);
-        }
-    }
-
-    private void set_ecb_fixed_rate (string name, string value, Currency eur_rate)
-    {
-        debug ("Using ECB fixed rate of %s for %s", value, name);
-        var c = add_currency (name, "ecb#fixed");
-        var r = mp_set_from_string (value);
-        var v = eur_rate.get_value ();
-        v = v.divide (r);
-        c.set_value (v);
-    }
-
-    private void load_ecb_rates ()
-    {
-        /* Scale rates to the EUR value */
-        var eur_rate = get_currency ("EUR");
-        if (eur_rate == null)
-        {
-            warning ("Cannot use ECB rates as don't have EUR rate");
-            return;
-        }
-
-        /* Set some fixed rates */
-        set_ecb_fixed_rate ("BDT", "0.0099", eur_rate);
-        set_ecb_fixed_rate ("RSD", "0.0085", eur_rate);
-        set_ecb_fixed_rate ("EEK", "0.06391", eur_rate);
-        set_ecb_fixed_rate ("CFA", "0.00152449", eur_rate);
-
-        Xml.Parser.init ();
-        var filename = get_ecb_rate_filepath ();
-        var document = Xml.Parser.read_file (filename);
-        if (document == null)
-        {
-            warning ("Couldn't parse ECB rate file %s", filename);
-            return;
-        }
-
-        var xpath_ctx = new Xml.XPath.Context (document);
-        if (xpath_ctx == null)
-        {
-            warning ("Couldn't create XPath context");
-            return;
-        }
-
-        xpath_ctx.register_ns ("xref", "http://www.ecb.int/vocabulary/2002-08-01/eurofxref");
-        var xpath_obj = xpath_ctx.eval_expression ("//xref:Cube[@currency][@rate]");
-        if (xpath_obj == null)
-        {
-            warning ("Couldn't create XPath object");
-            return;
-        }
-        var len = (xpath_obj->nodesetval != null) ? xpath_obj->nodesetval->length () : 0;
-        for (var i = 0; i < len; i++)
-        {
-            var node = xpath_obj->nodesetval->item (i);
-
-            if (node->type == Xml.ElementType.ELEMENT_NODE)
-                set_ecb_rate (node, eur_rate);
-
-            /* Avoid accessing removed elements */
-            if (node->type != Xml.ElementType.NAMESPACE_DECL)
-                node = null;
-        }
-
-        Xml.Parser.cleanup ();
-    }
-
-    private void download_rates ()
-    {
-        /* Update rates if necessary */
-        var path = get_imf_rate_filepath ();
-        if (!downloading_imf_rates && file_needs_update (path, refresh_interval))
-        {
-            downloading_imf_rates = true;
-            debug ("Downloading rates from the IMF...");
-            download_file.begin ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, "IMF");
-        }
-        path = get_ecb_rate_filepath ();
-        if (!downloading_ecb_rates && file_needs_update (path, refresh_interval))
-        {
-            downloading_ecb_rates = true;
-            debug ("Downloading rates from the ECB...");
-            download_file.begin ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, "ECB");
-        }
-    }
-
-    private bool load_rates ()
-    {
-        /* Already loaded */
-        if (loaded_rates)
-            return true;
-
-        /* In process */
-        if (downloading_imf_rates || downloading_ecb_rates)
-            return false;
-
-        /* Use the IMF provided values and top up with currencies tracked by the ECB and not the IMF */
-        load_imf_rates ();
-        load_ecb_rates ();
-
-        /* Check if we couldn't find out a currency */
-        foreach (var c in currencies)
-            if (c.get_value () == null || c.get_value ().is_zero ())
-                warning ("Currency %s is not provided by IMF or ECB", c.name);
-
-        debug ("Rates loaded");
-        loaded_rates = true;
-
-        updated ();
-
-        return true;
-    }
-
-    public Number? get_value (string currency)
-    {
-        /* Make sure that the rates we're returning are up to date. (Just in case the application is running from a long long time) */
-        download_rates ();
-
-        if (!load_rates ())
-            return null;
-
-        var c = get_currency (currency);
-        if (c != null)
-            return c.get_value ();
-        else
-            return null;
-    }
-
-    private async void download_file (string uri, string filename, string source)
-    {
-
-        var directory = Path.get_dirname (filename);
-        DirUtils.create_with_parents (directory, 0755);
-
-        var dest = File.new_for_path (filename);
-        var session = new Soup.Session ();
-        var message = new Soup.Message ("GET", uri);
-        try
-        {
-            var bodyinput = yield session.send_async (message);
-            var output = yield dest.replace_async (null, false, FileCreateFlags.REPLACE_DESTINATION, Priority.DEFAULT);
-            yield output.splice_async (bodyinput,
-                                       OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET,
-                                       Priority.DEFAULT);
-            if (source == "IMF")
-                downloading_imf_rates = false;
-            else
-                downloading_ecb_rates = false;
-
-            load_rates ();
-            debug ("%s rates updated", source);
-        }
-        catch (Error e)
-        {
-            warning ("Couldn't download %s currency rate file: %s", source, e.message);
-        }
-     }
 }
 
 public class Currency : Object
@@ -508,4 +191,5 @@ public class Currency : Object
     {
         return value;
     }
+
 }
