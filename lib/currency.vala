@@ -77,6 +77,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("RON", _("New Romanian Leu"), "L"));
         default_currency_manager.currencies.append (new Currency ("RUB", _("Russian Rouble"), "руб."));
         default_currency_manager.currencies.append (new Currency ("SAR", _("Saudi Riyal"), "س.ر"));
+        default_currency_manager.currencies.append (new Currency ("RSD", _("Serbian Dinar"), "дин"));
         default_currency_manager.currencies.append (new Currency ("SEK", _("Swedish Krona"), "kr"));
         default_currency_manager.currencies.append (new Currency ("SGD", _("Singapore Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("THB", _("Thai Baht"), "฿"));
@@ -340,6 +341,7 @@ public class CurrencyManager : Object
 
         /* Set some fixed rates */
         set_ecb_fixed_rate ("BDT", "0.0099", eur_rate);
+        set_ecb_fixed_rate ("RSD", "0.0085", eur_rate);
         set_ecb_fixed_rate ("EEK", "0.06391", eur_rate);
         set_ecb_fixed_rate ("CFA", "0.00152449", eur_rate);
 
