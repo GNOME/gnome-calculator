@@ -15,6 +15,8 @@ public class MathConverter : Gtk.Grid
 
     private string category;
 
+    private Settings settings;
+
     [GtkChild]
     private Gtk.CellRendererText from_renderer;
 
@@ -35,6 +37,7 @@ public class MathConverter : Gtk.Grid
 
     construct
     {
+        settings = new Settings ("org.gnome.calculator");
         from_combo.set_cell_data_func (from_renderer, from_cell_data_func);
         CurrencyManager.get_default ().updated.connect (() => { update_result_label (); });
 
@@ -120,7 +123,6 @@ public class MathConverter : Gtk.Grid
     private void update_from_model ()
     {
         var from_model = new Gtk.TreeStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
-
         if (category == null)
         {
             var categories = UnitManager.get_default ().get_categories ();
@@ -134,7 +136,27 @@ public class MathConverter : Gtk.Grid
                 {
                     Gtk.TreeIter iter;
                     from_model.append (out iter, parent);
-                    from_model.set (iter, 0, unit.display_name, 1, category, 2, unit, -1);
+                    if (category.name == "currency")
+                    {
+                        var CurrencyFormat = settings.get_int ("currency-display-format");
+                        if (CurrencyFormat == 0) /* Currency names */
+                        {
+                            from_model.set (iter, 0, unit.display_name, 1, category, 2, unit, -1);
+                        }
+                        else if (CurrencyFormat == 1) /* Currency code */
+                        {
+                            from_model.set (iter, 0, unit.name, 1, category, 2, unit, -1);
+                        }
+                        else if (CurrencyFormat == 2) /* Both */
+                        {
+                            string DisplayName = unit.display_name + unit.name;
+                            from_model.set (iter, 0, DisplayName, 1, category, 2, unit, -1);
+                        }
+                    }
+                    else
+                    {
+                        from_model.set (iter, 0, unit.display_name, 1, category, 2, unit, -1);
+                    }
                 }
             }
         }

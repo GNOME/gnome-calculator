@@ -16,6 +16,8 @@ public class MathPreferencesDialog : Gtk.Dialog
     private Gtk.ComboBoxText combo_angle_units;
     [GtkChild]
     private Gtk.ComboBoxText combo_refresh_interval;
+	[GtkChild]
+	private Gtk.ComboBoxText combo_currency_display_format;
     [GtkChild]
     private Gtk.ComboBoxText combo_word_size;
     [GtkChild]
@@ -42,6 +44,7 @@ public class MathPreferencesDialog : Gtk.Dialog
         combo_angle_units.changed.connect (combo_angle_units_changed_cb);
         combo_word_size.changed.connect (combo_word_size_changed_cb);
         combo_refresh_interval.changed.connect (combo_refresh_interval_changed_cb);
+		combo_currency_display_format.changed.connect (combo_currency_display_format_changed_cb);
 
         spinbutton_decimals.set_value (equation.accuracy);
         equation.notify["accuracy"].connect ((pspec) => { spinbutton_decimals.set_value (equation.accuracy); });
@@ -84,6 +87,12 @@ public class MathPreferencesDialog : Gtk.Dialog
         CurrencyManager.get_default ().refresh_interval = value;
     }
 
+	private void combo_currency_display_format_changed_cb (Gtk.ComboBox combo)
+    {
+        string active_id = combo.get_active_id ();
+        int value = int.parse (active_id);
+        settings.set_int ("currency-display-format", value);
+    }
     protected override void response (int id)
     {
         hide ();
