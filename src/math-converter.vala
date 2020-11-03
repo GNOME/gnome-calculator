@@ -167,7 +167,27 @@ public class MathConverter : Gtk.Grid
             {
                 Gtk.TreeIter iter;
                 from_model.append (out iter, null);
-                from_model.set (iter, 0, unit.display_name, 1, c, 2, unit, -1);
+                if (category == "currency")
+                {
+                    var CurrencyFormat = settings.get_int ("currency-display-format");
+                    if (CurrencyFormat == 0) /* Currency names */
+                    {
+                        from_model.set (iter, 0, unit.display_name, 1, category, 2, unit, -1);
+                    }
+                    else if (CurrencyFormat == 1) /* Currency code */
+                    {
+                        from_model.set (iter, 0, unit.name, 1, category, 2, unit, -1);
+                    }
+                    else if (CurrencyFormat == 2) /* Both */
+                    {
+                        string DisplayName = unit.display_name + unit.name;
+                        from_model.set (iter, 0, DisplayName, 1, category, 2, unit, -1);
+                    }
+                }
+                else
+                {
+                    from_model.set (iter, 0, unit.display_name, 1, category, 2, unit, -1);
+                }
             }
         }
 

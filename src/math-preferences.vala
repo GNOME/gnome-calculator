@@ -62,6 +62,7 @@ public class MathPreferencesDialog : Gtk.Dialog
         equation.notify["angle-units"].connect ((pspec) => { set_combo_box_from_int (combo_angle_units, equation.angle_units); });
 
         set_combo_box_from_int (combo_refresh_interval, settings.get_int ("refresh-interval"));
+        set_combo_box_from_int (combo_currency_display_format, settings.get_int ("currency-display-format"));
     }
 
 
