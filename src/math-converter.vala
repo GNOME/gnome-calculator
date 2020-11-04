@@ -38,7 +38,7 @@ public class MathConverter : Gtk.Grid
     construct
     {
         settings = new Settings ("org.gnome.calculator");
-        settings.changed["currency-display-format"].connect (() => { update_financial_labels (); });
+        settings.changed["currency-display-format"].connect (() => { update_currency_labels (); });
         from_combo.set_cell_data_func (from_renderer, from_cell_data_func);
         CurrencyManager.get_default ().updated.connect (() => { update_result_label (); });
 
@@ -121,7 +121,7 @@ public class MathConverter : Gtk.Grid
         }
     }
 
-    private void update_financial_labels ()
+    private void update_currency_labels ()
     {
         update_from_model ();
         from_combobox_changed_cb ();
@@ -172,27 +172,7 @@ public class MathConverter : Gtk.Grid
             {
                 Gtk.TreeIter iter;
                 from_model.append (out iter, null);
-                if (c.name == "currency")
-                {
-                    var CurrencyFormat = settings.get_int ("currency-display-format");
-                    if (CurrencyFormat == 0) /* Currency names */
-                    {
-                        from_model.set (iter, 0, unit.display_name, 1, c, 2, unit, -1);
-                    }
-                    else if (CurrencyFormat == 1) /* Currency code */
-                    {
-                        from_model.set (iter, 0, unit.name, 1, c, 2, unit, -1);
-                    }
-                    else if (CurrencyFormat == 2) /* Both */
-                    {
-                        string DisplayName = unit.display_name + " " + unit.name;
-                        from_model.set (iter, 0, DisplayName, 1, c, 2, unit, -1);
-                    }
-                }
-                else
-                {
-                    from_model.set (iter, 0, unit.display_name, 1, c, 2, unit, -1);
-                }
+                from_model.set (iter, 0, get_unit_display_name (c, unit), 1, c, 2, unit, -1);
             }
         }
 
@@ -245,20 +225,24 @@ public class MathConverter : Gtk.Grid
         if (to_combo.get_active_iter (out to_iter))
             to_model.get (to_iter, 1, out to_category);
 
+        /* FIXME: by taking this section out of the below if statement,
+         * it causes the to combo box to be reset every time the user selects
+         * something in the from box... which is not ideal */
+        /* Set the to combobox to be the list of units can be converted to */
+        to_model = new Gtk.ListStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
+        foreach (var u in category.get_units ())
+        {
+            to_model.append (out iter);
+            to_model.set (iter, 0, get_unit_display_name(category, u), 1, category, 2, u, -1);
+        }
+        to_combo.model = to_model;
+
         if (category != to_category)
         {
-            /* Set the to combobox to be the list of units can be converted to */
-            to_model = new Gtk.ListStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
-            foreach (var u in category.get_units ())
-            {
-                to_model.append (out iter);
-                to_model.set (iter, 0, get_unit_display_name(category, u), 1, category, 2, u, -1);
-            }
-            to_combo.model = to_model;
-
             /* Select the first possible unit */
             to_combo.set_active (0);
         }
+
     }
 
     [GtkCallback]
