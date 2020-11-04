@@ -120,6 +120,24 @@ public class MathConverter : Gtk.Grid
         }
     }
 
+    private string get_unit_display_name (UnitCategory category, Unit unit) {
+        if (category.name != "currency") return unit.display_name;
+        var currencyFormat = settings.get_int ("currency-display-format");
+        switch (currencyFormat) {
+            case 0:
+                return unit.display_name;
+            break;
+            case 1:
+                return unit.name;
+            break;
+
+            case 2:
+                return "%s %s".printf (unit.display_name, unit.name);
+            break;
+        }
+        return null;
+    }
+
     private void update_from_model ()
     {
         var from_model = new Gtk.TreeStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
@@ -136,27 +154,7 @@ public class MathConverter : Gtk.Grid
                 {
                     Gtk.TreeIter iter;
                     from_model.append (out iter, parent);
-                    if (category.name == "currency")
-                    {
-                        var CurrencyFormat = settings.get_int ("currency-display-format");
-                        if (CurrencyFormat == 0) /* Currency names */
-                        {
-                            from_model.set (iter, 0, unit.display_name, 1, category, 2, unit, -1);
-                        }
-                        else if (CurrencyFormat == 1) /* Currency code */
-                        {
-                            from_model.set (iter, 0, unit.name, 1, category, 2, unit, -1);
-                        }
-                        else if (CurrencyFormat == 2) /* Both */
-                        {
-                            string DisplayName = unit.display_name + " " + unit.name;
-                            from_model.set (iter, 0, DisplayName, 1, category, 2, unit, -1);
-                        }
-                    }
-                    else
-                    {
-                        from_model.set (iter, 0, unit.display_name, 1, category, 2, unit, -1);
-                    }
+                    from_model.set (iter, 0, get_unit_display_name (category, unit), 1, category, 2, unit, -1);
                 }
             }
         }
@@ -247,7 +245,7 @@ public class MathConverter : Gtk.Grid
             foreach (var u in category.get_units ())
             {
                 to_model.append (out iter);
-                to_model.set (iter, 0, u.display_name, 1, category, 2, u, -1);
+                to_model.set (iter, 0, get_unit_display_name(category, u), 1, category, 2, u, -1);
             }
             to_combo.model = to_model;
 
