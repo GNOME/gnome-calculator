@@ -38,6 +38,7 @@ public class MathConverter : Gtk.Grid
     construct
     {
         settings = new Settings ("org.gnome.calculator");
+        settings.changed["currency-display-format"].connect (() => { update_financial_labels (); });
         from_combo.set_cell_data_func (from_renderer, from_cell_data_func);
         CurrencyManager.get_default ().updated.connect (() => { update_result_label (); });
 
@@ -118,6 +119,12 @@ public class MathConverter : Gtk.Grid
             from_label.set_text (source_text);
             to_label.set_text (target_text);
         }
+    }
+
+    private void update_financial_labels ()
+    {
+        update_from_model ();
+        from_combobox_changed_cb ();
     }
 
     private string get_unit_display_name (UnitCategory category, Unit unit) {
