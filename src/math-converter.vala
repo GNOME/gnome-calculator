@@ -21,6 +21,9 @@ public class MathConverter : Gtk.Grid
     private Gtk.CellRendererText from_renderer;
 
     [GtkChild]
+    private Gtk.CellRendererText to_renderer;
+
+    [GtkChild]
     private Gtk.ComboBox from_combo;
     [GtkChild]
     private Gtk.ComboBox to_combo;
@@ -37,17 +40,18 @@ public class MathConverter : Gtk.Grid
 
     construct
     {
-        settings = new Settings ("org.gnome.calculator");
-        settings.changed["currency-display-format"].connect (() => { update_currency_labels (); });
-        from_combo.set_cell_data_func (from_renderer, from_cell_data_func);
+        from_combo.set_cell_data_func (from_renderer, unit_combo_cell_data_func);
+        to_combo.set_cell_data_func (to_renderer, unit_combo_cell_data_func);
         CurrencyManager.get_default ().updated.connect (() => { update_result_label (); });
 
         update_from_model ();
+        settings = new Settings ("org.gnome.calculator");
+        settings.changed["currency-display-format"].connect (() => { update_currency_labels (); });
     }
 
     public MathConverter (MathEquation equation)
     {
-      set_equation (equation);
+        set_equation (equation);
     }
 
     public void set_equation (MathEquation equation)
@@ -123,26 +127,24 @@ public class MathConverter : Gtk.Grid
 
     private void update_currency_labels ()
     {
-        update_from_model ();
-        from_combobox_changed_cb ();
+        queue_allocate ();
+        from_combo.queue_draw ();
+        to_combo.queue_draw ();
     }
 
-    private string get_unit_display_name (UnitCategory category, Unit unit) {
+    private string get_unit_display_name (UnitCategory category, Unit? unit) {
+        if (unit == null) return category.display_name;
         if (category.name != "currency") return unit.display_name;
         var currencyFormat = settings.get_int ("currency-display-format");
         switch (currencyFormat) {
             case 0:
                 return unit.display_name;
-            break;
             case 1:
                 return unit.name;
-            break;
-
             case 2:
                 return "%s %s".printf (unit.display_name, unit.name);
-            break;
         }
-        return null;
+        return "-";
     }
 
     private void update_from_model ()
@@ -161,7 +163,7 @@ public class MathConverter : Gtk.Grid
                 {
                     Gtk.TreeIter iter;
                     from_model.append (out iter, parent);
-                    from_model.set (iter, 0, get_unit_display_name (category, unit), 1, category, 2, unit, -1);
+                    from_model.set (iter, 0, unit.name, 1, category, 2, unit, -1);
                 }
             }
         }
@@ -172,7 +174,7 @@ public class MathConverter : Gtk.Grid
             {
                 Gtk.TreeIter iter;
                 from_model.append (out iter, null);
-                from_model.set (iter, 0, get_unit_display_name (c, unit), 1, c, 2, unit, -1);
+                from_model.set (iter, 0, unit.name, 1, c, 2, unit, -1);
             }
         }
 
@@ -225,23 +227,23 @@ public class MathConverter : Gtk.Grid
         if (to_combo.get_active_iter (out to_iter))
             to_model.get (to_iter, 1, out to_category);
 
-        /* FIXME: by taking this section out of the below if statement,
-         * it causes the to combo box to be reset every time the user selects
-         * something in the from box... which is not ideal */
-        /* Set the to combobox to be the list of units can be converted to */
-        to_model = new Gtk.ListStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
-        foreach (var u in category.get_units ())
+        if (category != to_category)
         {
-            to_model.append (out iter);
-            to_model.set (iter, 0, get_unit_display_name(category, u), 1, category, 2, u, -1);
+            to_model = new Gtk.ListStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
+            foreach (var u in category.get_units ())
+            {
+                to_model.append (out iter);
+                to_model.set (iter, 0, u.name, 1, category, 2, u, -1);
+            }
+            to_combo.model = to_model;
         }
-        to_combo.model = to_model;
 
         if (category != to_category)
         {
             /* Select the first possible unit */
             to_combo.set_active (0);
         }
+        update_result_label ();
 
     }
 
@@ -253,8 +255,12 @@ public class MathConverter : Gtk.Grid
         changed ();
     }
 
-    private void from_cell_data_func (Gtk.CellLayout cell_layout, Gtk.CellRenderer cell, Gtk.TreeModel tree_model, Gtk.TreeIter iter)
+    private void unit_combo_cell_data_func (Gtk.CellLayout cell_layout, Gtk.CellRenderer cell, Gtk.TreeModel tree_model, Gtk.TreeIter iter)
     {
+        Unit? u;
+        UnitCategory category;
+        tree_model.get (iter, 1, out category, 2, out u, -1);
+        cell.set ("text", get_unit_display_name (category, u));
         cell.set ("sensitive", !tree_model.iter_has_child (iter));
     }
 
