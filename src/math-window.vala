@@ -10,7 +10,7 @@
  */
 
 [GtkTemplate (ui = "/org/gnome/calculator/math-window.ui")]
-public class MathWindow : Gtk.ApplicationWindow
+public class MathWindow : Hdy.ApplicationWindow
 {
     private MathEquation _equation;
     public MathEquation equation { get { return _equation; } }

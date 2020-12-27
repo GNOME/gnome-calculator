@@ -116,6 +116,8 @@ public class Calculator : Gtk.Application
     {
         base.startup ();
 
+        Hdy.init ();
+
         settings = new Settings ("org.gnome.calculator");
         settings.delay ();
         last_opened_window = create_new_window (settings);
