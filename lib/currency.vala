@@ -27,7 +27,7 @@ public class CurrencyManager : Object
             return default_currency_manager;
 
         default_currency_manager = new CurrencyManager ();
-
+        default_currency_manager.refresh_interval = new Settings ("org.gnome.calculator").get_int ("refresh-interval");
         default_currency_manager.currencies.append (new Currency ("AED", _("UAE Dirham"), "إ.د"));
         default_currency_manager.currencies.append (new Currency ("AUD", _("Australian Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("BDT", _("Bangladeshi Taka"), "৳"));
@@ -122,7 +122,7 @@ public class CurrencyManager : Object
 
     private string get_imf_rate_filepath ()
     {
-        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "rms_five.xls");
+        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "rms_rep.xls");
     }
 
     private string get_ecb_rate_filepath ()
@@ -245,16 +245,15 @@ public class CurrencyManager : Object
         {
             line = line.chug ();
 
-            /* Start after first blank line, stop on next */
-            if (line == "")
+            /* Start after Last Updated, end on Notes:*/
+            if (line.has_prefix ("Last Updated:"))
             {
-                if (!in_data)
-                {
-                   in_data = true;
-                   continue;
-                }
-                else
-                   break;
+                in_data = true;
+                continue;
+            } else if (line.has_prefix ("Notes:"))
+            {
+                in_data = false;
+                continue;
             }
             if (!in_data)
                 continue;
@@ -392,7 +391,7 @@ public class CurrencyManager : Object
         {
             downloading_imf_rates = true;
             debug ("Downloading rates from the IMF...");
-            download_file.begin ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, "IMF");
+            download_file.begin ("https://www.imf.org/external/np/fin/data/rms_rep.aspx?tsvflag=Y", path, "IMF");
         }
         path = get_ecb_rate_filepath ();
         if (!downloading_ecb_rates && file_needs_update (path, refresh_interval))
