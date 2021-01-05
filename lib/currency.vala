@@ -27,7 +27,7 @@ public class CurrencyManager : Object
             return default_currency_manager;
 
         default_currency_manager = new CurrencyManager ();
-
+        default_currency_manager.refresh_interval = new Settings ("org.gnome.calculator").get_int ("refresh-interval");
         default_currency_manager.currencies.append (new Currency ("AED", _("UAE Dirham"), "إ.د"));
         default_currency_manager.currencies.append (new Currency ("AUD", _("Australian Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("BDT", _("Bangladeshi Taka"), "৳"));
