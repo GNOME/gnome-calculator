@@ -398,6 +398,7 @@ public class MathButtons : Gtk.Box
             base_combo.changed.connect (base_combobox_changed_cb);
             equation.notify["number-base"].connect ((pspec) => { base_changed_cb (); } );
             base_changed_cb ();
+            word_size_changed_cb ();
         }
 
         /* Setup financial functions */
