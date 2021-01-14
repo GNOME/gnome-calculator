@@ -2,7 +2,7 @@ public interface CurrencyProvider : Object {
 
     public signal void updated ();
 
-    public abstract void update_rates ();
+    public abstract void update_rates (bool asyncLoad = false);
 
     public abstract void set_refresh_interval (int interval);
 }
@@ -17,22 +17,37 @@ abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
     public int refresh_interval { get; set; }
 
-    public override void set_refresh_interval (int interval) {
+    public void set_refresh_interval (int interval) {
+        loaded = false;
         this.refresh_interval = interval;
+        update_rates ();
     }
 
     private bool loading;
     private bool loaded;
     private List<Currency> currencies;
 
-    public void update_rates () {
+    public void update_rates (bool asyncLoad = true) {
+        debug ("Updating %s rates ".printf(source_name));
+
         if (loading || loaded) return;
+
+        debug ("Checking %s rates ".printf(source_name));
 
         if (!file_needs_update (rate_filepath, refresh_interval )) return;
 
+        debug ("Loading %s rates ".printf(source_name));
+
         loading = true;
 
-        download_file.begin (rate_source_url, rate_filepath, source_name);
+        if (asyncLoad)
+            download_file_async.begin (rate_source_url, rate_filepath, source_name);
+        else {
+            download_file_sync (rate_source_url, rate_filepath, source_name);
+            do_load_rates ();
+        }
+            
+
     }
 
     protected Currency? get_currency (string name)
@@ -41,6 +56,7 @@ abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     }
 
     protected virtual void do_load_rates () {
+        debug ("Loaded %s rates ".printf(source_name));
         loaded = true;
         updated ();
     }
@@ -68,7 +84,31 @@ abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         return false;
     }
 
-    private async void download_file (string uri, string filename, string source)
+    private async void download_file_sync (string uri, string filename, string source)
+    {
+
+        var directory = Path.get_dirname (filename);
+        DirUtils.create_with_parents (directory, 0755);
+
+        var dest = File.new_for_path (filename);
+        var session = new Soup.Session ();
+        var message = new Soup.Message ("GET", uri);
+        try
+        {
+            var bodyinput = session.send (message);
+            var output = dest.replace (null, false, FileCreateFlags.REPLACE_DESTINATION);
+            output.splice (bodyinput, OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET);
+            loading = false;
+            do_load_rates ();
+            debug ("%s rates updated", source);
+        }
+        catch (Error e)
+        {
+            warning ("Couldn't download %s currency rate file: %s", source, e.message);
+        }
+    }
+    
+    private async void download_file_async (string uri, string filename, string source)
     {
 
         var directory = Path.get_dirname (filename);

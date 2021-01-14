@@ -20,12 +20,10 @@ public class CurrencyManager : Object
     public int refresh_interval { get { return _refresh_interval;}
         set
         {
-            loaded_rates = false;
             _refresh_interval = value;
             foreach (var p in default_currency_manager.providers) {
                 p.set_refresh_interval(_refresh_interval);
             }
-            download_rates ();
         }
     }
 
