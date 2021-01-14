@@ -20,10 +20,12 @@ public class CurrencyManager : Object
     public int refresh_interval { get { return _refresh_interval;}
         set
         {
+            loaded_rates = false;
             _refresh_interval = value;
             foreach (var p in default_currency_manager.providers) {
                 p.set_refresh_interval(_refresh_interval);
             }
+            download_rates ();
         }
     }
 
@@ -35,7 +37,6 @@ public class CurrencyManager : Object
             return default_currency_manager;
 
         default_currency_manager = new CurrencyManager ();
-        default_currency_manager.refresh_interval = new Settings ("org.gnome.calculator").get_int ("refresh-interval");
         default_currency_manager.currencies.append (new Currency ("AED", _("UAE Dirham"), "إ.د"));
         default_currency_manager.currencies.append (new Currency ("AUD", _("Australian Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("BDT", _("Bangladeshi Taka"), "৳"));

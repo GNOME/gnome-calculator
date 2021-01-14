@@ -1,5 +1,5 @@
 project('gnome-calculator', ['c', 'vala'],
-  version: '40.alpha',
+  version: '40.beta',
   meson_version: '>= 0.50.0',
   license: 'GPLv3+',
 )
@@ -63,7 +63,8 @@ meson.add_install_script('meson_post_install.py')
 subdir('vapi')
 subdir('gcalc')
 if not get_option ('disable-ui')
-gtk = dependency('gtk+-3.0', version: '>= 3.19.3')
+gtk = dependency('gtk+-3.0', version: '>= 3.24.1')
+libhandy = dependency('libhandy-1', version: '>= 1.0.0')
 subdir('gci')
 gtksourceview = dependency('gtksourceview-4', version: '>= 4.0.2')
 subdir('data')
