@@ -26,7 +26,7 @@ public class CurrencyManager : Object
         set {
             loaded_rates = false;
             _refresh_interval = value;
-            download_rates ();
+            download_rates (false);
         }
     }
 
@@ -394,23 +394,31 @@ public class CurrencyManager : Object
         Xml.Parser.cleanup ();
     }
 
-    private void download_rates ()
+    public void download_rates (bool asyncLoad=true)
     {
         /* Update rates if necessary */
         var path = get_imf_rate_filepath ();
         if (!downloading_imf_rates && file_needs_update (path, refresh_interval))
         {
             downloading_imf_rates = true;
-            debug ("Downloading rates from the IMF...");
-            download_file.begin ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, "IMF");
+            debug ("Downloading rates from the IMF... %d", (int)asyncLoad);
+            if (asyncLoad)
+                download_file_async.begin ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, "IMF");
+            else
+                download_file_sync ("https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y", path, "IMF");
         }
         path = get_ecb_rate_filepath ();
         if (!downloading_ecb_rates && file_needs_update (path, refresh_interval))
         {
             downloading_ecb_rates = true;
-            debug ("Downloading rates from the ECB...");
-            download_file.begin ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, "ECB");
+            debug ("Downloading rates from the ECB... %d", (int)asyncLoad);
+            if (asyncLoad)
+                download_file_async.begin ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, "ECB");
+            else
+                download_file_sync ("https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml", path, "ECB");
         }
+        if (!asyncLoad)
+            load_rates ();
     }
 
     private bool load_rates ()
@@ -455,9 +463,39 @@ public class CurrencyManager : Object
             return null;
     }
 
-    private async void download_file (string uri, string filename, string source)
+    private void download_file_sync (string uri, string filename, string source)
     {
+        var directory = Path.get_dirname (filename);
+        DirUtils.create_with_parents (directory, 0755);
 
+        var dest = File.new_for_path (filename);
+        var session = new Soup.Session ();
+        var message = new Soup.Message ("GET", uri);
+        try
+        {
+            var bodyinput = session.send (message);
+            var output = dest.replace (null, false, FileCreateFlags.REPLACE_DESTINATION);
+            output.splice (bodyinput, OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET);
+            if (source == "IMF") {
+                downloading_imf_rates = false;
+                load_imf_rates ();
+            }
+            else {
+                downloading_ecb_rates = false;
+                load_ecb_rates ();
+            }
+
+            load_rates ();
+            debug ("%s rates updated", source);
+            updated ();
+        }
+        catch (Error e)
+        {
+            warning ("Couldn't download %s currency rate file: %s", source, e.message);
+        }
+    }
+    private async void download_file_async (string uri, string filename, string source)
+    {
         var directory = Path.get_dirname (filename);
         DirUtils.create_with_parents (directory, 0755);
 
@@ -471,19 +509,23 @@ public class CurrencyManager : Object
             yield output.splice_async (bodyinput,
                                        OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET,
                                        Priority.DEFAULT);
-            if (source == "IMF")
+            if (source == "IMF") {
                 downloading_imf_rates = false;
-            else
+                load_imf_rates ();
+            }
+            else {
                 downloading_ecb_rates = false;
+                load_ecb_rates ();
+            }
 
-            load_rates ();
             debug ("%s rates updated", source);
+            updated ();
         }
         catch (Error e)
         {
             warning ("Couldn't download %s currency rate file: %s", source, e.message);
         }
-     }
+    }
 }
 
 public class Currency : Object
