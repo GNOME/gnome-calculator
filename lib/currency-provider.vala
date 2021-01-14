@@ -2,7 +2,7 @@ public interface CurrencyProvider : Object {
 
     public signal void updated ();
 
-    public abstract void update_rates (bool asyncLoad = false);
+    public abstract void update_rates (bool asyncLoad = true);
 
     public abstract void set_refresh_interval (int interval);
 }
@@ -34,15 +34,20 @@ abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
         debug ("Checking %s rates ".printf(source_name));
 
-        if (!file_needs_update (rate_filepath, refresh_interval )) return;
+        if (!file_needs_update (rate_filepath, refresh_interval )) {
+            do_load_rates ();
+            return;
+        }
 
         debug ("Loading %s rates ".printf(source_name));
 
         loading = true;
 
-        if (asyncLoad)
+        if (asyncLoad) {
+            debug ("Downloading %s rates async".printf(source_name));
             download_file_async.begin (rate_source_url, rate_filepath, source_name);
-        else {
+        } else {
+            debug ("Downloading %s rates sync".printf(source_name));
             download_file_sync (rate_source_url, rate_filepath, source_name);
             do_load_rates ();
         }
