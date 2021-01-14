@@ -25,7 +25,7 @@
   stage: test
   script:
     - broadwayd &
-    - GDK_BACKEND=broadway ninja -C _build install test
+    - GDK_BACKEND=broadway ninja -C _build test
 
 build:fedora:
   <<: *fedora_before_script
