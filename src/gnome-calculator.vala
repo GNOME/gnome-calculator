@@ -124,6 +124,7 @@ public class Calculator : Gtk.Application
         // restore the first window position from the settings
         load_window_position (last_opened_window);
         CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
+        CurrencyManager.get_default ().refresh_async ();
     }
 
     private MathWindow get_active_math_window ()
@@ -218,7 +219,7 @@ public class Calculator : Gtk.Application
 
             settings = new Settings ("org.gnome.calculator");
             var angle_units = (AngleUnit) settings.get_enum ("angle-units");
-            var e = new SolveEquation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
+            var e = new ConvertEquation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
             e.base = 10;
             e.wordlen = 32;
             e.angle_units = angle_units;
@@ -227,6 +228,13 @@ public class Calculator : Gtk.Application
             string? error_token = null;
             uint representation_base;
             var result = e.parse (out representation_base, out error, out error_token);
+
+            // if unknown conversion, try force reloading conversion rates and retry conversion
+            if (error == ErrorCode.UNKNOWN_CONVERSION) {
+                CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
+                CurrencyManager.get_default ().refresh_sync ();
+                result = e.parse (out representation_base, out error, out error_token);
+            }
             if (result != null)
             {
                 var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
@@ -417,18 +425,5 @@ public class Calculator : Gtk.Application
         var app = new Calculator ();
 
         return app.run (args);
-    }
-}
-
-private class SolveEquation : Equation
-{
-    public SolveEquation (string text)
-    {
-        base (text);
-    }
-
-    public override Number? convert (Number x, string x_units, string z_units)
-    {
-        return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units);
     }
 }

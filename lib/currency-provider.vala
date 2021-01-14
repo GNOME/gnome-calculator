@@ -4,7 +4,7 @@ public interface CurrencyProvider : Object {
 
     public abstract void update_rates (bool asyncLoad = true);
 
-    public abstract void set_refresh_interval (int interval);
+    public abstract void set_refresh_interval (int interval, bool asyncLoad = true);
 }
 
 abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
@@ -15,12 +15,12 @@ abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
     public abstract string source_name {get;}
 
-    public int refresh_interval { get; set; }
+    public int refresh_interval { get; private set; }
 
-    public void set_refresh_interval (int interval) {
+    public void set_refresh_interval (int interval, bool asyncLoad = true) {
         loaded = false;
         this.refresh_interval = interval;
-        update_rates ();
+        update_rates (asyncLoad);
     }
 
     private bool loading;

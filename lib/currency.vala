@@ -17,19 +17,27 @@ public class CurrencyManager : Object
     private List<CurrencyProvider> providers;
 
     private int _refresh_interval;
-    public int refresh_interval { get { return _refresh_interval;}
+    public int refresh_interval { get { return _refresh_interval; }
         set
         {
             _refresh_interval = value;
-            foreach (var p in default_currency_manager.providers) {
-                p.set_refresh_interval(_refresh_interval);
-            }
         }
     }
 
     public signal void updated ();
 
-    public static CurrencyManager get_default ()
+    public void refresh_sync () {
+        foreach (var p in default_currency_manager.providers) {
+            p.set_refresh_interval(_refresh_interval, false);
+        }
+    }
+    public void refresh_async () {
+        foreach (var p in default_currency_manager.providers) {
+            p.set_refresh_interval(_refresh_interval, true);
+        }
+    }
+
+    public static CurrencyManager get_default (bool asyncLoad = true)
     {
         if (default_currency_manager != null)
             return default_currency_manager;
@@ -101,7 +109,7 @@ public class CurrencyManager : Object
         /* Start downloading the rates if they are outdated. */
         foreach (var p in default_currency_manager.providers) {
             p.updated.connect ( () => { default_currency_manager.updated (); });
-            p.update_rates ();
+            p.update_rates (asyncLoad);
         }
 
         return default_currency_manager;

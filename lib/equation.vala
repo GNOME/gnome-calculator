@@ -153,6 +153,19 @@ public class Equation : Object
     }
 }
 
+public class ConvertEquation : Equation
+{
+    public ConvertEquation (string text)
+    {
+        base (text);
+    }
+
+    public override Number? convert (Number x, string x_units, string z_units)
+    {
+        return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units);
+    }
+}
+
 private class EquationParser : Parser
 {
     private Equation equation;

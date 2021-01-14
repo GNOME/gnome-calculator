@@ -24,7 +24,7 @@ static void solve (string equation)
         decimal = "";
 
     string? error_token = null;
-    var e = new Equation (equation.replace (tsep_string, "").replace (decimal, "."));
+    var e = new ConvertEquation (equation.replace (tsep_string, "").replace (decimal, "."));
     e.base = 10;
     e.wordlen = 32;
     e.angle_units = AngleUnit.DEGREES;
@@ -62,6 +62,10 @@ public static int main (string[] args)
     Intl.setlocale (LocaleCategory.ALL, "");
 
     result_serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
+
+    var settings = new Settings ("org.gnome.calculator");
+    CurrencyManager.get_default (false).refresh_interval = settings.get_int ("refresh-interval");
+    CurrencyManager.get_default (false).refresh_sync ();
 
     if (args.length == 2) {
         solve (args[1]);

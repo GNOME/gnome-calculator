@@ -1486,7 +1486,6 @@ private class MEquation : Equation
     public override Number? get_variable (string name)
     {
         var lower_name = name.down ();
-
         if (lower_name == "rand")
             return new Number.random ();
         else if (lower_name == "_")
