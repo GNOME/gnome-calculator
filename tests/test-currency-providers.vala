@@ -36,6 +36,49 @@ private class TestConversion : Equation
     }
 }
 
+private void test_currency (CurrencyManager currency_manager, string currency_str, string? expected, ErrorCode expected_error)
+{
+    var result_currency = currency_manager.get_currency (currency_str);
+
+    uint representation_base = 10;
+
+    if (result_currency == null)
+    {
+        if (expected == null)
+        {
+            pass_count++;
+        }
+        else
+        {
+            stdout.printf ("*FAIL: '%s' currency should not be available\n", currency_str);
+            fail_count++;
+        }
+    }
+    else
+    {
+        var serializer = new Serializer (DisplayFormat.FIXED, number_base, 9);
+        serializer.set_representation_base (representation_base);
+        var result = result_currency.get_value ();
+        var result_str = serializer.to_string (result);
+
+        if (expected_error != ErrorCode.NONE)
+        {
+            stdout.printf ("*FAIL: '%s' -> %s, expected error %s\n", currency_str, result_str, error_code_to_string (expected_error));
+            fail_count++;
+        }
+        else if (result_str != expected)
+        {
+            stdout.printf ("*FAIL: '%s' -> '%s', expected '%s'\n", currency_str, result_str, expected);
+            fail_count++;
+        }
+        else
+        {
+            /*stdout.printf ("PASS: '%s' -> '%s'\n", expression, result_str);*/
+            pass_count++;
+        }
+    }
+}
+
 private void test (string expression, string expected, ErrorCode expected_error)
 {
     var equation = new TestConversion (expression);
@@ -92,6 +135,14 @@ private void test (string expression, string expected, ErrorCode expected_error)
 
 private void test_imf_provider ()
 {
+    var currency_manager = new CurrencyManager();
+    var imf_provider = new ImfCurrencyProvider (currency_manager);
+
+    imf_provider.clear ();
+    test_currency (currency_manager, "EUR", null, 0);
+    // set refresh interval and sync update
+    imf_provider.set_refresh_interval (3600, false);
+
 }
 
 private void test_ecb_provider ()
@@ -102,7 +153,7 @@ private void test_currency_conversions ()
 {
     CurrencyManager.get_default (false).refresh_interval = 3600;
     CurrencyManager.get_default ().refresh_sync ();
-    
+
     test ("1 EUR in EUR", "1", 0);
 }
 
@@ -110,9 +161,9 @@ public int main (string[] args)
 {
     Intl.setlocale (LocaleCategory.ALL, "C");
 
-    test_currency_conversions ();
     test_imf_provider ();
     test_ecb_provider ();
+    test_currency_conversions ();
 
     if (fail_count == 0)
         stdout.printf ("Passed all %i tests\n", pass_count);

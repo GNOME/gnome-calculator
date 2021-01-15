@@ -5,9 +5,11 @@ public interface CurrencyProvider : Object {
     public abstract void update_rates (bool asyncLoad = true);
 
     public abstract void set_refresh_interval (int interval, bool asyncLoad = true);
+
+    public abstract void clear ();
 }
 
-abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
+public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
     public abstract string rate_filepath {owned get ;}
 
@@ -27,6 +29,10 @@ abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     private bool loaded;
     private List<Currency> currencies;
     public CurrencyManager currency_manager {get; construct;}
+
+    public void clear () {
+        FileUtils.remove (rate_filepath);
+    }
 
     public void update_rates (bool asyncLoad = true) {
         debug ("Updating %s rates ".printf(source_name));
@@ -142,7 +148,7 @@ abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
 }
 
-class ImfCurrencyProvider : AbstractCurrencyProvider {
+public class ImfCurrencyProvider : AbstractCurrencyProvider {
     public override string rate_filepath { owned get {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "rms_five.xls"); } }
 
@@ -283,11 +289,12 @@ class ImfCurrencyProvider : AbstractCurrencyProvider {
     public ImfCurrencyProvider (CurrencyManager _currency_manager)
     {
         Object(currency_manager: _currency_manager);
+        _currency_manager.add_provider (this);
     }
 }
 
 
-class EcbCurrencyProvider : AbstractCurrencyProvider {
+public class EcbCurrencyProvider : AbstractCurrencyProvider {
     public override string rate_filepath { owned get {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "eurofxref-daily.xml"); } }
 
@@ -389,5 +396,6 @@ class EcbCurrencyProvider : AbstractCurrencyProvider {
     public EcbCurrencyProvider (CurrencyManager _currency_manager)
     {
         Object(currency_manager: _currency_manager);
+        _currency_manager.add_provider (this);
     }
 }
