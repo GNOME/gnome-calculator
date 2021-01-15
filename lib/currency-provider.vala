@@ -26,6 +26,7 @@ abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     private bool loading;
     private bool loaded;
     private List<Currency> currencies;
+    public CurrencyManager currency_manager {get; construct;}
 
     public void update_rates (bool asyncLoad = true) {
         debug ("Updating %s rates ".printf(source_name));
@@ -57,7 +58,7 @@ abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
     protected Currency? get_currency (string name)
     {
-        return CurrencyManager.get_default ().get_currency (name);
+        return currency_manager.get_currency (name);
     }
 
     protected virtual void do_load_rates () {
@@ -265,7 +266,7 @@ class ImfCurrencyProvider : AbstractCurrencyProvider {
                         if (c == null && value != null)
                         {
                             debug ("Using IMF rate of %s for %s", tokens[value_index], symbol);
-                            c = CurrencyManager.get_default ().add_currency (symbol, source_name);
+                            c = currency_manager.add_currency (symbol, source_name);
                             value = value.reciprocal ();
                             if (c != null)
                                 c.set_value (value);
@@ -277,6 +278,11 @@ class ImfCurrencyProvider : AbstractCurrencyProvider {
             }
         }
         base.do_load_rates ();
+    }
+
+    public ImfCurrencyProvider (CurrencyManager _currency_manager)
+    {
+        Object(currency_manager: _currency_manager);
     }
 }
 
@@ -362,7 +368,7 @@ class EcbCurrencyProvider : AbstractCurrencyProvider {
         if (name != null && value != null && get_currency (name) == null)
         {
             debug ("Using ECB rate of %s for %s", value, name);
-            var c = CurrencyManager.get_default ().add_currency (name, source_name);
+            var c = currency_manager.add_currency (name, source_name);
             var r = mp_set_from_string (value);
             var v = eur_rate.get_value ();
             v = v.multiply (r);
@@ -373,10 +379,15 @@ class EcbCurrencyProvider : AbstractCurrencyProvider {
     private void set_ecb_fixed_rate (string name, string value, Currency eur_rate)
     {
         debug ("Using ECB fixed rate of %s for %s", value, name);
-        var c = CurrencyManager.get_default ().add_currency (name, source_name + "#fixed");
+        var c = currency_manager.add_currency (name, source_name + "#fixed");
         var r = mp_set_from_string (value);
         var v = eur_rate.get_value ();
         v = v.divide (r);
         c.set_value (v);
+    }
+
+    public EcbCurrencyProvider (CurrencyManager _currency_manager)
+    {
+        Object(currency_manager: _currency_manager);
     }
 }

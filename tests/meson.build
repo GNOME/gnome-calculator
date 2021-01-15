@@ -30,6 +30,17 @@ test_equation = executable('test-equation', test_equation_sources,
 )
 test('Equation test', test_equation)
 
+test_currency_sources = [
+  'test-currency-providers.vala',
+]
+test_currency = executable('test-currency-providers', test_currency_sources,
+  dependencies: gnome_calculator_tests_deps,
+  link_with: [libcalculator, lib_mpfrg],
+  include_directories: gnome_calculator_tests_includes,
+)
+test('Currency test', test_currency)
+
+
 test_number_sources = [
   'test-number.vala',
 ]

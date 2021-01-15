@@ -104,8 +104,8 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("VEF", _("Venezuelan Bolívar"), "Bs F"));
         default_currency_manager.currencies.append (new Currency ("ZAR", _("South African Rand"), "R"));
 
-        default_currency_manager.providers.append (new ImfCurrencyProvider ());
-        default_currency_manager.providers.append (new EcbCurrencyProvider ());
+        default_currency_manager.providers.append (new ImfCurrencyProvider (default_currency_manager));
+        default_currency_manager.providers.append (new EcbCurrencyProvider (default_currency_manager));
         /* Start downloading the rates if they are outdated. */
         foreach (var p in default_currency_manager.providers) {
             p.updated.connect ( () => { default_currency_manager.updated (); });
