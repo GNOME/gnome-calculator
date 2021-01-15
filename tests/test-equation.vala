@@ -723,6 +723,14 @@ private void test_base_conversion ()
     test ("0xa in dec", "10", 0);
 }
 
+private void test_currency_conversions ()
+{
+    CurrencyManager.get_default (false).refresh_interval = 3600;
+    CurrencyManager.get_default ().refresh_sync ();
+    
+    test ("1 EUR in EUR", "1", 0);
+}
+
 private void test_precedence ()
 {
     number_base = 10;
@@ -819,6 +827,7 @@ public int main (string[] args)
     test_conversions ();
     test_equations ();
     test_base_conversion ();
+    test_currency_conversions ();
     test_precedence ();
     test_custom_functions ();
     test_bit_shift ();
