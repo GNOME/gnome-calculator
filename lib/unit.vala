@@ -33,6 +33,7 @@ public class UnitManager : Object
         var volume_category = default_unit_manager.add_category ("volume", _("Volume"));
         var weight_category = default_unit_manager.add_category ("weight", _("Mass"));
         var duration_category = default_unit_manager.add_category ("duration", _("Duration"));
+        var frequency_category = default_unit_manager.add_category ("frequency", _("Frequency"));
         var temperature_category = default_unit_manager.add_category ("temperature", _("Temperature"));
         var digitalstorage_category = default_unit_manager.add_category ("digitalstorage", _("Digital Storage"));
 
@@ -132,6 +133,11 @@ public class UnitManager : Object
         digitalstorage_category.add_unit (new Unit ("yottabyte", _("Yottabytes"), dpgettext2 (null, "unit-format", "%s YB"), "1000000000000000000000000x", "x/1000000000000000000000000", dpgettext2 (null, "unit-symbols", "yottabyte,yottabytes,YB")));
         digitalstorage_category.add_unit (new Unit ("yobibit", _("Yobibits"), dpgettext2 (null, "unit-format", "%s Yib"), "1208925819614629174706176x/8", "8x/1208925819614629174706176", dpgettext2 (null, "unit-symbols", "yobibit,yobibits,Yib")));
         digitalstorage_category.add_unit (new Unit ("yobibyte", _("Yobibytes"), dpgettext2 (null, "unit-format", "%s YiB"), "1208925819614629174706176x", "x/1208925819614629174706176", dpgettext2 (null, "unit-symbols", "yobibyte,yobibytes,YiB")));
+        frequency_category.add_unit (new Unit ("hertz", _("Hertz"), dpgettext2 (null, "unit-format", "%s Hz"), "x", "x", dpgettext2 (null, "unit-symbols", "hertz,Hz")));
+        frequency_category.add_unit (new Unit ("kilohertz", _("Kilohertz"), dpgettext2 (null, "unit-format", "%s kHz"), "1000x", "x/1000", dpgettext2 (null, "unit-symbols", "kilohertz,kHZ")));
+        frequency_category.add_unit (new Unit ("megahertz", _("Megahertz"), dpgettext2 (null, "unit-format", "%s MHz"), "1000000x", "x/1000000", dpgettext2 (null, "unit-symbols", "megahertz,MHz")));
+        frequency_category.add_unit (new Unit ("gigahertz", _("Gigahertz"), dpgettext2 (null, "unit-format", "%s GHz"), "1000000000x", "x/1000000000", dpgettext2 (null, "unit-symbols", "gigahertz,GHz")));
+        frequency_category.add_unit (new Unit ("terahertz", _("Terahertz"), dpgettext2 (null, "unit-format", "%s THz"), "1000000000000x", "x/1000000000000" ,dpgettext2 (null, "unit-symbols", "terahertz,THz")));
 
         var currency_category = default_unit_manager.add_category ("currency", _("Currency"));
         var currencies = CurrencyManager.get_default ().get_currencies ();
