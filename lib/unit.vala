@@ -84,6 +84,8 @@ public class UnitManager : Object
         weight_category.add_unit (new Unit ("ounce", _("Ounces"), dpgettext2 (null, "unit-format", "%s oz"), "0.02834952x", "x/0.02834952", dpgettext2 (null, "unit-symbols", "ounce,ounces,oz")));
         weight_category.add_unit (new Unit ("gram", _("Grams"), dpgettext2 (null, "unit-format", "%s g"), "0.001x", "1000x", dpgettext2 (null, "unit-symbols", "gram,grams,gramme,grammes,g")));
         weight_category.add_unit (new Unit ("stone", _("Stone"), dpgettext2 (null, "unit-format", "%s st"), "6.350293x", "x/6.350293", dpgettext2 (null, "unit-symbols", "stone,st,stones")));
+        duration_category.add_unit (new Unit ("century", _("Centuries"), dpgettext2 (null, "unit-format", "%s centuries"), "3155760000x", "x/3155760000", dpgettext2 (null, "unit-symbols", "century,centuries")));
+        duration_category.add_unit (new Unit ("decade", _("Decades"), dpgettext2 (null, "unit-format", "%s decades"), "315576000x", "x/315576000", dpgettext2 (null, "unit-symbols", "decade,decades")));
         duration_category.add_unit (new Unit ("year", _("Years"), dpgettext2 (null, "unit-format", "%s years"), "31557600x", "x/31557600", dpgettext2 (null, "unit-symbols", "year,years")));
         duration_category.add_unit (new Unit ("month", _("Months"), dpgettext2 (null, "unit-format", "%s months"), "2629800x", "x/2629800", dpgettext2 (null, "unit-symbols", "month,months")));
         duration_category.add_unit (new Unit ("week", _("Weeks"), dpgettext2 (null, "unit-format", "%s weeks"), "604800x", "x/604800", dpgettext2 (null, "unit-symbols", "week,weeks")));
