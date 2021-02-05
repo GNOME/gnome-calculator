@@ -119,8 +119,8 @@
         </child>
       </object>
       <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">4</property>
+        <property name="left_attach">4</property>
+        <property name="top_attach">2</property>
       </packing>
     </child>
     <child>
@@ -486,6 +486,23 @@
       </packing>
     </child>
     <child>
+      <object class="GtkButton" id="calc_percentage_button">
+        <property name="label">%</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <property name="use_underline">True</property>
+        <property name="focus_on_click">False</property>
+        <property name="tooltip_text" translatable="yes">Percentage [%]</property>
+        <property name="action_name">cal.insert-general</property>
+        <property name="action_target">'%'</property>
+      </object>
+      <packing>
+        <property name="left_attach">2</property>
+        <property name="top_attach">4</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkButton" id="calc_exponential_button">
         <property name="visible">True</property>
         <property name="can_focus">True</property>
@@ -602,9 +619,9 @@
         </child>
       </object>
       <packing>
-        <property name="left_attach">4</property>
+        <property name="left_attach">5</property>
         <property name="top_attach">2</property>
-        <property name="width">2</property>
+        <property name="width">1</property>
       </packing>
     </child>
     <child>
