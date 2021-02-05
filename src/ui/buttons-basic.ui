@@ -19,6 +19,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">4</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -37,6 +38,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">7</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -56,6 +58,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">8</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -74,6 +77,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">9</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -92,6 +96,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">5</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -111,6 +116,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">6</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -130,6 +136,10 @@
         <property name="tooltip_text" translatable="yes">Divide [/]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'÷'</property>
+        <style>
+          <class name="simple-operator-button"/>
+          <class name="operator-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -146,6 +156,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">1</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -165,6 +176,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">2</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -185,6 +197,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">0</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -203,6 +216,7 @@
         <property name="focus_on_click">False</property>
         <property name="action_name">cal.insert-numeric-point</property>
         <style>
+          <class name="simple-numeric-point-button"/>
           <class name="numeric-point-button"/>
         </style>
       </object>
@@ -222,6 +236,10 @@
         <property name="tooltip_text" translatable="yes">Percentage [%]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'%'</property>
+        <style>
+          <class name="simple-procent-button"/>
+          <class name="procent-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">2</property>
@@ -239,6 +257,7 @@
         <property name="action_name">cal.insert-digit</property>
         <property name="action_target">3</property>
         <style>
+          <class name="simple-number-button"/>
           <class name="number-button"/>
         </style>
       </object>
@@ -258,6 +277,10 @@
         <property name="tooltip_text" translatable="yes">Multiply [*]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'×'</property>
+        <style>
+          <class name="simple-operator-button"/>
+          <class name="operator-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -274,6 +297,10 @@
         <property name="focus_on_click">False</property>
         <property name="tooltip_text" translatable="yes">Subtract [-]</property>
         <property name="action_name">cal.subtract</property>
+        <style>
+          <class name="simple-operator-button"/>
+          <class name="operator-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -291,6 +318,10 @@
         <property name="tooltip_text" translatable="yes">Add [+]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'+'</property>
+        <style>
+          <class name="simple-operator-button"/>
+          <class name="operator-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -309,6 +340,7 @@
         <property name="action_name">cal.solve</property>
         <style>
           <class name="suggested-action"/>
+          <class name="simple-suggested-action"/>
         </style>
       </object>
       <packing>
@@ -328,6 +360,10 @@
         <property name="tooltip_text" translatable="yes">Start Group [(]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'('</property>
+        <style>
+          <class name="simple-function-button"/>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">4</property>
@@ -345,6 +381,10 @@
         <property name="tooltip_text" translatable="yes">End Group [)]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">')'</property>
+        <style>
+          <class name="simple-function-button"/>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">5</property>
@@ -361,6 +401,10 @@
         <property name="tooltip_text" translatable="yes">Clear Display [Escape]</property>
         <property name="action_name">cal.clear</property>
         <property name="label">C</property>
+        <style>
+          <class name="simple-clear-button"/>
+          <class name="clear-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">5</property>
@@ -377,6 +421,10 @@
         <property name="tooltip_text" translatable="yes">Square root [Ctrl+R]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'√'</property>
+        <style>
+          <class name="simple-function-button"/>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">5</property>
@@ -403,6 +451,10 @@
             <property name="use_markup">True</property>
           </object>
         </child>
+        <style>
+          <class name="simple-function-button"/>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">4</property>
@@ -424,13 +476,14 @@
             <property name="icon-name">edit-undo-symbolic</property>
           </object>
         </child>
+        <style>
+          <class name="undo-button"/>
+          <class name="simple-undo-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">4</property>
       </packing>
     </child>
-    <style>
-      <class name="math-buttons"/>
-    </style>
   </object>
 </interface>

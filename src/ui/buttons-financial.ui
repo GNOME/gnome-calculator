@@ -1852,6 +1852,9 @@
         <property name="receives_default">True</property>
         <property name="focus_on_click">False</property>
         <property name="tooltip_text" translatable="yes">Memory</property>
+        <style>
+              <class name="function-button"/>
+        </style>
         <child internal-child="accessible">
           <object class="AtkObject" id="calc_memory_button-atkobject">
             <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the memory value button">Memory</property>
@@ -1908,6 +1911,9 @@
         <property name="tooltip_text" translatable="yes">Logarithm</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'log '</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">6</property>
@@ -2037,6 +2043,9 @@
         <property name="tooltip_text" translatable="yes">Divide [/]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'÷'</property>
+        <style>
+          <class name="operator-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -2129,6 +2138,9 @@
         <property name="tooltip_text" translatable="yes">Percentage [%]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'%'</property>
+        <style>
+          <class name="procent-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">2</property>
@@ -2165,6 +2177,9 @@
         <property name="tooltip_text" translatable="yes">Multiply [*]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'×'</property>
+        <style>
+          <class name="operator-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -2181,6 +2196,9 @@
         <property name="focus_on_click">False</property>
         <property name="tooltip_text" translatable="yes">Subtract [-]</property>
         <property name="action_name">cal.subtract</property>
+        <style>
+          <class name="operator-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -2198,6 +2216,9 @@
         <property name="tooltip_text" translatable="yes">Add [+]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'+'</property>
+        <style>
+          <class name="operator-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">3</property>
@@ -2235,6 +2256,9 @@
         <property name="tooltip_text" translatable="yes">Start Group [(]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'('</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">4</property>
@@ -2252,6 +2276,9 @@
         <property name="tooltip_text" translatable="yes">End Group [)]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">')'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">5</property>
@@ -2268,6 +2295,9 @@
         <property name="tooltip_text" translatable="yes">Clear Display [Escape]</property>
         <property name="action_name">cal.clear</property>
         <property name="label">C</property>
+        <style>
+          <class name="clear-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">5</property>
@@ -2284,6 +2314,9 @@
         <property name="tooltip_text" translatable="yes">Compounding Term</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'ctrm_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">7</property>
@@ -2300,6 +2333,9 @@
         <property name="tooltip_text" translatable="yes">Double Declining Depreciation</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'ddb_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">8</property>
@@ -2316,6 +2352,9 @@
         <property name="tooltip_text" translatable="yes">Future Value</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'fv_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">9</property>
@@ -2332,6 +2371,9 @@
         <property name="tooltip_text" translatable="yes">Financial Term</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'term_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">8</property>
@@ -2349,6 +2391,9 @@
         <property name="tooltip_text" translatable="yes">Sum of the Years Digits Depreciation</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'syd_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">9</property>
@@ -2366,6 +2411,9 @@
         <property name="tooltip_text" translatable="yes">Straight Line Depreciation</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'sln_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">8</property>
@@ -2374,7 +2422,7 @@
     </child>
     <child>
       <object class="GtkButton" id="calc_finc_periodic_interest_rate_button">
-        <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest                                      ">Rate</property>
+        <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest">Rate</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <property name="receives_default">True</property>
@@ -2383,6 +2431,9 @@
         <property name="tooltip_text" translatable="yes">Periodic Interest Rate</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'rate_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">7</property>
@@ -2400,6 +2451,9 @@
         <property name="tooltip_text" translatable="yes">Present Value</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'pv_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">9</property>
@@ -2417,6 +2471,9 @@
         <property name="tooltip_text" translatable="yes">Periodic Payment</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'pmt_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">8</property>
@@ -2434,6 +2491,9 @@
         <property name="tooltip_text" translatable="yes">Gross Profit Margin</property>
         <property name="action_name">cal.launch-finc-dialog</property>
         <property name="action_target">'gpm_dialog'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">7</property>
@@ -2456,6 +2516,9 @@
             <property name="icon-name">edit-undo-symbolic</property>
           </object>
         </child>
+        <style>
+          <class name="undo-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">4</property>
@@ -2483,6 +2546,9 @@
             <property name="use_markup">True</property>
           </object>
         </child>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">6</property>
@@ -2499,6 +2565,9 @@
         <property name="tooltip_text" translatable="yes">Root [Ctrl+R]</property>
         <property name="action_name">cal.insert-general</property>
         <property name="action_target">'√'</property>
+        <style>
+          <class name="function-button"/>
+        </style>
       </object>
       <packing>
         <property name="left_attach">6</property>
