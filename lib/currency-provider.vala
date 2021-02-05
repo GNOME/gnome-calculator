@@ -33,6 +33,12 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     public void clear () {
         FileUtils.remove (rate_filepath);
     }
+    
+    public Currency register_currency(string symbol, string source) {
+        Currency currency = currency_manager.add_currency (symbol, source);
+        currencies.append(currency);
+        return currency;
+    }
 
     public void update_rates (bool asyncLoad = true) {
         debug ("Updating %s rates ".printf(source_name));
@@ -272,7 +278,7 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
                         if (c == null && value != null)
                         {
                             debug ("Using IMF rate of %s for %s", tokens[value_index], symbol);
-                            c = currency_manager.add_currency (symbol, source_name);
+                            c = register_currency (symbol, source_name);
                             value = value.reciprocal ();
                             if (c != null)
                                 c.set_value (value);
@@ -375,7 +381,7 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
         if (name != null && value != null && get_currency (name) == null)
         {
             debug ("Using ECB rate of %s for %s", value, name);
-            var c = currency_manager.add_currency (name, source_name);
+            var c = register_currency (name, source_name);
             var r = mp_set_from_string (value);
             var v = eur_rate.get_value ();
             v = v.multiply (r);
@@ -386,7 +392,7 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
     private void set_ecb_fixed_rate (string name, string value, Currency eur_rate)
     {
         debug ("Using ECB fixed rate of %s for %s", value, name);
-        var c = currency_manager.add_currency (name, source_name + "#fixed");
+        var c = register_currency (name, source_name + "#fixed");
         var r = mp_set_from_string (value);
         var v = eur_rate.get_value ();
         v = v.divide (r);
