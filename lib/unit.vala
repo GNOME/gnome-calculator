@@ -364,7 +364,7 @@ public class Unit : Object
 
     public Unit (string name, string display_name, string format, string? from_function, string? to_function, string symbols)
     {
-        serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 2);
+        serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 4);
         serializer.set_leading_digits (6);
         serializer.set_show_thousands_separators (true);
 
