@@ -14,7 +14,7 @@ public class HistoryView : Gtk.ScrolledWindow
     string? last_equation = null;
 
     [GtkChild]
-    Gtk.ListBox listbox;
+    unowned Gtk.ListBox listbox;
 
     private int _rows = 0;
     private Serializer serializer;
@@ -82,9 +82,9 @@ public class HistoryView : Gtk.ScrolledWindow
 public class HistoryEntry : Gtk.ListBoxRow
 {
     [GtkChild]
-    Gtk.Label equation_label;
+    unowned Gtk.Label equation_label;
     [GtkChild]
-    public Gtk.Label answer_label;
+    public unowned Gtk.Label answer_label;
 
     private Number number;
 

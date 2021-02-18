@@ -17,16 +17,16 @@ public class MathFunctionPopover : Gtk.Popover
     private MathEquation equation;
 
     [GtkChild]
-    private Gtk.ListBox function_list;
+    private unowned Gtk.ListBox function_list;
 
     [GtkChild]
-    private Gtk.Entry function_name_entry;
+    private unowned Gtk.Entry function_name_entry;
     private bool function_name_entry_placeholder_reseted = false;
 
     [GtkChild]
-    private Gtk.Button add_function_button;
+    private unowned Gtk.Button add_function_button;
     [GtkChild]
-    private Gtk.SpinButton add_arguments_button;
+    private unowned Gtk.SpinButton add_arguments_button;
 
     public MathFunctionPopover (MathEquation equation)
     {

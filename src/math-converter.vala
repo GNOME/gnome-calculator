@@ -16,16 +16,16 @@ public class MathConverter : Gtk.Grid
     private string category;
 
     [GtkChild]
-    private Gtk.CellRendererText from_renderer;
+    private unowned Gtk.CellRendererText from_renderer;
 
     [GtkChild]
-    private Gtk.ComboBox from_combo;
+    private unowned Gtk.ComboBox from_combo;
     [GtkChild]
-    private Gtk.ComboBox to_combo;
+    private unowned Gtk.ComboBox to_combo;
     [GtkChild]
-    private Gtk.Label from_label;
+    private unowned Gtk.Label from_label;
     [GtkChild]
-    private Gtk.Label to_label;
+    private unowned Gtk.Label to_label;
 
     public signal void changed ();
 

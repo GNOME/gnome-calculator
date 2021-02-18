@@ -23,13 +23,13 @@ public class MathWindow : Hdy.ApplicationWindow
     private bool remove_buttons;
 
     [GtkChild]
-    private Gtk.MenuButton menu_button;
+    private unowned Gtk.MenuButton menu_button;
     [GtkChild]
-    private Gtk.Label mode_label;
+    private unowned Gtk.Label mode_label;
     [GtkChild]
-    private Gtk.Grid grid;
+    private unowned Gtk.Grid grid;
     [GtkChild]
-    private MathConverter converter;
+    private unowned MathConverter converter;
 
     private const ActionEntry[] window_entries =
     {

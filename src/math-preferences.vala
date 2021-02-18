@@ -13,17 +13,17 @@ public class MathPreferencesDialog : Gtk.Dialog
     public MathEquation equation { private get; construct; }
 
     [GtkChild]
-    private Gtk.ComboBoxText combo_angle_units;
+    private unowned Gtk.ComboBoxText combo_angle_units;
     [GtkChild]
-    private Gtk.ComboBoxText combo_refresh_interval;
+    private unowned Gtk.ComboBoxText combo_refresh_interval;
     [GtkChild]
-    private Gtk.ComboBoxText combo_word_size;
+    private unowned Gtk.ComboBoxText combo_word_size;
     [GtkChild]
-    private Gtk.SpinButton spinbutton_decimals;
+    private unowned Gtk.SpinButton spinbutton_decimals;
     [GtkChild]
-    private Gtk.Switch switch_thousands_separators;
+    private unowned Gtk.Switch switch_thousands_separators;
     [GtkChild]
-    private Gtk.Switch switch_trailing_zeroes;
+    private unowned Gtk.Switch switch_trailing_zeroes;
 
     private Settings settings;
 

@@ -16,11 +16,11 @@ public class MathVariablePopover : Gtk.Popover
     private MathEquation equation;
 
     [GtkChild]
-    private Gtk.ListBox variable_list;
+    private unowned Gtk.ListBox variable_list;
     [GtkChild]
-    private Gtk.Entry variable_name_entry;
+    private unowned Gtk.Entry variable_name_entry;
     [GtkChild]
-    private Gtk.Button store_variable_button;
+    private unowned Gtk.Button store_variable_button;
 
     public MathVariablePopover (MathEquation equation)
     {
