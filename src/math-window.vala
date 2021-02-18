@@ -124,6 +124,8 @@ public class MathWindow : Hdy.ApplicationWindow
             remove_buttons = true;
             converter.show ();
         }
+
+        resize (1, 1);
     }
 
     public void critical_error (string title, string contents)
