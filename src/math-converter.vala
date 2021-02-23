@@ -241,6 +241,8 @@ public class MathConverter : Gtk.Grid
 
     private void do_convert (out Unit? from_unit, out Unit? to_unit) {
         var x = equation.number;
+        from_unit = null;
+        to_unit = null;
         if (x != null)
         {
             var z = convert_equation (x, out from_unit, out to_unit);
@@ -266,6 +268,8 @@ public class MathConverter : Gtk.Grid
                                        out Unit? target_unit)
     {
         Gtk.TreeIter from_iter, to_iter;
+        source_unit = null;
+        target_unit = null;
         if (!from_combo.get_active_iter (out from_iter))
             return null;
         if (!to_combo.get_active_iter (out to_iter))
