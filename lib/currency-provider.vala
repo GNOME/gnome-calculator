@@ -25,9 +25,9 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         update_rates (asyncLoad);
     }
 
-    private bool loading;
-    private bool loaded;
-    private List<Currency> currencies;
+    protected bool loading;
+    protected bool loaded;
+    protected List<Currency> currencies;
     public CurrencyManager currency_manager {get; construct;}
 
     public void clear () {
@@ -58,10 +58,10 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
         if (asyncLoad) {
             debug ("Downloading %s rates async".printf(source_name));
-            download_file_async.begin (rate_source_url, rate_filepath, source_name);
+            this.download_file_async.begin (rate_source_url, rate_filepath, source_name);
         } else {
             debug ("Downloading %s rates sync".printf(source_name));
-            download_file_sync (rate_source_url, rate_filepath, source_name);
+            this.download_file_sync (rate_source_url, rate_filepath, source_name);
             do_load_rates ();
         }
             
@@ -102,7 +102,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         return false;
     }
 
-    private async void download_file_sync (string uri, string filename, string source)
+    protected virtual void download_file_sync (string uri, string filename, string source)
     {
 
         var directory = Path.get_dirname (filename);
@@ -126,7 +126,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         }
     }
     
-    private async void download_file_async (string uri, string filename, string source)
+    protected virtual async void download_file_async (string uri, string filename, string source)
     {
 
         var directory = Path.get_dirname (filename);
@@ -299,6 +299,64 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
     }
 }
 
+
+public class OfflineImfCurrencyProvider : ImfCurrencyProvider {
+    private string source_file;
+
+    public OfflineImfCurrencyProvider (CurrencyManager _currency_manager, string source_file)
+    {
+        base(_currency_manager);
+        this.source_file = source_file;
+    }
+
+    protected override void download_file_sync (string uri, string filename, string source)
+    {
+
+        var directory = Path.get_dirname (filename);
+        DirUtils.create_with_parents (directory, 0755);
+
+        var dest = File.new_for_path (filename);
+        var source_file = File.new_for_path (source_file);
+        try
+        {
+            var bodyinput = source_file.read ();
+            var output = dest.replace (null, false, FileCreateFlags.REPLACE_DESTINATION);
+            output.splice (bodyinput, OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET);
+            loading = false;
+            do_load_rates ();
+            debug ("%s rates updated", source);
+        }
+        catch (Error e)
+        {
+            warning ("Couldn't download %s currency rate file: %s", source, e.message);
+        }
+    }
+
+    protected override async void download_file_async (string uri, string filename, string source)
+    {
+
+        var directory = Path.get_dirname (filename);
+        DirUtils.create_with_parents (directory, 0755);
+
+        var dest = File.new_for_path (filename);
+        var source_file = File.new_for_path (source_file);
+        try
+        {
+            var bodyinput = yield source_file.read_async ();
+            var output = yield dest.replace_async (null, false, FileCreateFlags.REPLACE_DESTINATION, Priority.DEFAULT);
+            yield output.splice_async (bodyinput,
+                                       OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET,
+                                       Priority.DEFAULT);
+            loading = false;
+            do_load_rates ();
+            debug ("%s rates updated", source);
+        }
+        catch (Error e)
+        {
+            warning ("Couldn't download %s currency rate file: %s", source, e.message);
+        }
+    }
+}
 
 public class EcbCurrencyProvider : AbstractCurrencyProvider {
     public override string rate_filepath { owned get {

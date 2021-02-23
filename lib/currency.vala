@@ -31,18 +31,18 @@ public class CurrencyManager : Object
     }
 
     public void refresh_sync () {
-        foreach (var p in default_currency_manager.providers) {
+        foreach (var p in providers) {
             p.set_refresh_interval(_refresh_interval, false);
         }
     }
 
     public void refresh_async () {
-        foreach (var p in default_currency_manager.providers) {
+        foreach (var p in providers) {
             p.set_refresh_interval(_refresh_interval, true);
         }
     }
 
-    public static CurrencyManager get_default (bool asyncLoad = true)
+    public static CurrencyManager get_default (bool asyncLoad = true, bool defaultProviders = true)
     {
         if (default_currency_manager != null)
             return default_currency_manager;
@@ -109,15 +109,22 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("VEF", _("Venezuelan Bolívar"), "Bs F"));
         default_currency_manager.currencies.append (new Currency ("ZAR", _("South African Rand"), "R"));
 
-        new ImfCurrencyProvider (default_currency_manager);
-        new EcbCurrencyProvider (default_currency_manager);
-        /* Start downloading the rates if they are outdated. */
-        foreach (var p in default_currency_manager.providers) {
-            p.updated.connect ( () => { default_currency_manager.updated (); });
-            p.update_rates (asyncLoad);
+        if (defaultProviders) {
+            new ImfCurrencyProvider (default_currency_manager);
+            new EcbCurrencyProvider (default_currency_manager);
+            default_currency_manager.initialize_providers (asyncLoad);
         }
 
         return default_currency_manager;
+    }
+
+    public void initialize_providers (bool asyncLoad = true)
+    {
+        /* Start downloading the rates if they are outdated. */
+        foreach (var p in providers) {
+            p.updated.connect ( () => { updated (); });
+            p.update_rates (asyncLoad);
+        }
     }
 
     public List<Currency> get_currencies ()

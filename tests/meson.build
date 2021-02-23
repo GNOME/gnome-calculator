@@ -33,12 +33,14 @@ test('Equation test', test_equation)
 test_currency_sources = [
   'test-currency-providers.vala',
 ]
+
 test_currency = executable('test-currency-providers', test_currency_sources,
   dependencies: gnome_calculator_tests_deps,
   link_with: [libcalculator, lib_mpfrg],
   include_directories: gnome_calculator_tests_includes,
 )
-test('Currency test', test_currency)
+tests_root_env = environment({'TESTS_ROOT': meson.current_source_dir()})
+test('Currency test', test_currency, env: tests_root_env)
 
 
 test_number_sources = [

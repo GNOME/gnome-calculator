@@ -1,6 +1,6 @@
 project('gnome-calculator', ['c', 'vala'],
   version: '40.rc',
-  meson_version: '>= 0.50.0',
+  meson_version: '>= 0.52.0',
   license: 'GPLv3+',
 )
 

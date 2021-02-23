@@ -136,7 +136,7 @@ private void test (string expression, string expected, ErrorCode expected_error)
 private void test_imf_provider ()
 {
     var currency_manager = new CurrencyManager();
-    var imf_provider = new ImfCurrencyProvider (currency_manager);
+    var imf_provider = new OfflineImfCurrencyProvider (currency_manager, Path.build_filename (Environment.get_variable ("TESTS_ROOT"), "rms_five.xls"));
 
     imf_provider.clear ();
     test_currency (currency_manager, "EUR", null, 0);
@@ -151,8 +151,11 @@ private void test_ecb_provider ()
 
 private void test_currency_conversions ()
 {
-    CurrencyManager.get_default (false).refresh_interval = 3600;
-    CurrencyManager.get_default ().refresh_sync ();
+    var currency_manager = CurrencyManager.get_default (false, false);
+    new OfflineImfCurrencyProvider (currency_manager, Path.build_filename (Environment.get_variable ("TESTS_ROOT"), "rms_five.xls"));
+    currency_manager.refresh_interval = 3600;
+    currency_manager.initialize_providers ();
+    currency_manager.refresh_sync ();
 
     test ("1 EUR in EUR", "1", 0);
 }
