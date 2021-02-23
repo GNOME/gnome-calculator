@@ -248,7 +248,7 @@ public class MathConverter : Gtk.Grid
             var z = convert_equation (x, out from_unit, out to_unit);
             if (z != null && from_unit != null && to_unit != null)
             {
-                equation.set ("%s %s %s %s".printf(equation.serializer.to_string (x), from_unit.name, _("in"), to_unit.name));
+                equation.set ("%s %s %s %s".printf(equation.serializer.to_string (x), from_unit.get_symbol_from_format (), _("in"), to_unit.get_symbol_from_format ()));
                 equation.solve ();
             }
         }

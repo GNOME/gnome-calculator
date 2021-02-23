@@ -379,6 +379,11 @@ public class Unit : Object
             _symbols.append (symbol_name);
     }
 
+    public string get_symbol_from_format ()
+    {
+        return _format.replace ("%s", "").replace (" ", "");
+    }
+
     public bool matches_symbol (string symbol, bool case_sensitive = true)
     {
         foreach (var s in _symbols)
