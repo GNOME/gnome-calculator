@@ -960,9 +960,7 @@ public class MathEquation : Gtk.SourceBuffer
             iter_prev.forward_char ();
         }
 
-        /** if the current number doesn't contain decimal point yet, add one */
-        if (!current_number.contains ("."))
-            insert (serializer.get_radix ().to_string ());
+        insert (serializer.get_radix ().to_string ());
     }
 
     public void insert_number (Number x)
