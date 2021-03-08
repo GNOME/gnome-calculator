@@ -322,6 +322,9 @@ public class MathDisplay : Gtk.Viewport
             case Gdk.Key.r:
                 equation.insert ("√");
                 return true;
+            case Gdk.Key.o:
+                equation.insert("˚");
+                return true;
             case Gdk.Key.u:
                 equation.insert ("µ");
                 return true;
