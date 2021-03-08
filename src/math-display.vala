@@ -152,7 +152,7 @@ public class MathDisplay : Gtk.Viewport
         var state = event.state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.MOD1_MASK);
 
         if ((event.keyval == Gdk.Key.Escape && state == 0 && !completion_visible) ||
-            (event.keyval == Gdk.Key.Delete && state == Gdk.ModifierType.SHIFT_MASK))
+            (event.keyval == Gdk.Key.Delete && (event.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK))
         {
             equation.clear ();
             status_changed_cb ();
