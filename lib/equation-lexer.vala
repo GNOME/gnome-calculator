@@ -142,7 +142,7 @@ public class PreLexer : Object
         if (c == '½' || c == '⅓' || c == '⅔' || c == '¼' || c == '¾' || c == '⅕' || c == '⅖' || c == '⅗' || c == '⅘' || c == '⅙' || c == '⅚' || c == '⅛' || c == '⅜' || c == '⅝' || c == '⅞')
             return LexerTokenType.PL_FRACTION;
 
-        if (c == '°')
+        if (c == '˚' || c == '°')
             return LexerTokenType.PL_DEGREE;
 
         if (c == '\'')
@@ -381,6 +381,7 @@ public class Lexer : Object
 
         /* Ignore whitespace */
         var type = prelexer.get_next_token ();
+
         while (type == LexerTokenType.PL_SKIP)
         {
             prelexer.set_marker ();
@@ -447,6 +448,13 @@ public class Lexer : Object
 
         if (type == LexerTokenType.PL_LETTER)
             return insert_letter ();
+
+        if (type == LexerTokenType.PL_DEGREE)
+        {
+            type = prelexer.get_next_token ();
+            if ((type == LexerTokenType.PL_HEX || type == LexerTokenType.PL_LETTER) && check_if_unit ())
+                return insert_token (LexerTokenType.UNIT);
+        }
 
         if (type == LexerTokenType.PL_EOS)
             return insert_token (LexerTokenType.PL_EOS);
