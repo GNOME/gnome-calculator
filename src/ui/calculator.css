@@ -54,11 +54,18 @@ window > deck > box > clamp > grid > box {
   padding-bottom: 12px;
 }
 
-/* This affects the keyboard mode */
-window > deck > box > clamp > grid > mathconverter {
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 12px;
+.converter,
+mathconverter {
+  /* Prevents the squeezer transition from being cut 12px away from the border */
+  padding: 6px 12px 0 12px;
+}
+
+.converter > :not(squeezer):not(:first-child),
+mathconverter > :not(squeezer):not(:first-child),
+.converter > squeezer:not(:first-child) > :first-child,
+mathconverter > squeezer:not(:first-child) > :first-child {
+  /* Prevents the squeezer transition from being cut 12px away from the border */
+  margin-left: 6px;
 }
 
 .bit-panel {

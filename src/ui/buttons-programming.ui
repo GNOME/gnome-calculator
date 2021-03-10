@@ -4,11 +4,13 @@
   <requires lib="gtk+" version="3.16"/>
   <object class="GtkVBox" id="button_panel">
     <property name="visible">True</property>
-    <property name="spacing">6</property>
     <child>
       <object class="GtkBox" id="hbox1">
         <property name="visible">True</property>
         <property name="orientation">horizontal</property>
+        <style>
+          <class name="converter"/>
+        </style>
         <child>
           <object class="GtkComboBoxText" id="base_combo">
             <property name="visible">True</property>
