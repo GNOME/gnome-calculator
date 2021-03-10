@@ -72,6 +72,7 @@
         <property name="valign">center</property>
         <property name="hexpand">True</property>
         <property name="vexpand">False</property>
+        <property name="visible" bind-source="MathConverter" bind-property="view-more-visible" bind-flags="sync-create|bidirectional|invert-boolean"/>
         <child>
           <object class="GtkLabel" id="from_label">
             <property name="visible">True</property>
@@ -188,6 +189,26 @@
             <property name="expand">false</property>
             <property name="fill">true</property>
           </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="view_more_button">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="receives_default">False</property>
+            <property name="active" bind-source="MathConverter" bind-property="view-more-active" bind-flags="sync-create|bidirectional"/>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">view-more-horizontal-symbolic</property>
+                <property name="icon_size">1</property>
+              </object>
+            </child>
+            <style>
+              <class name="image-button"/>
+              <class name="view-more-button"/>
+            </style>
+          </object>
         </child>
       </object>
       <packing>

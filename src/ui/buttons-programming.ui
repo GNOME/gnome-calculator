@@ -47,6 +47,24 @@
             <property name="expand">True</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkToggleButton" id="view_more_button">
+            <property name="can_focus">False</property>
+            <property name="receives_default">False</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">view-more-horizontal-symbolic</property>
+                <property name="icon_size">1</property>
+              </object>
+            </child>
+            <style>
+              <class name="image-button"/>
+              <class name="view-more-button"/>
+            </style>
+          </object>
+        </child>
       </object>
       <packing>
         <property name="expand">False</property>
@@ -1353,7 +1371,7 @@
       </packing>
     </child>
     <child>
-      <object class="HdyLeaflet">
+      <object class="HdyLeaflet" id="leaflet">
         <property name="visible">True</property>
         <property name="can-swipe-back">True</property>
         <property name="can-swipe-forward">True</property>

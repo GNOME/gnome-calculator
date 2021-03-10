@@ -27,6 +27,9 @@ public class MathConverter : Gtk.Grid
     [GtkChild]
     private unowned Gtk.Label to_label;
 
+    public bool view_more_visible { set; get; default = false; }
+    public bool view_more_active { set; get; default = false; }
+
     public signal void changed ();
 
     static construct {
