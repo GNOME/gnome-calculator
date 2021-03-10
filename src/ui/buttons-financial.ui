@@ -1838,744 +1838,776 @@
       <action-widget response="-5">button18</action-widget>
     </action-widgets>
   </object>
-  <object class="GtkGrid" id="button_panel">
+  <object class="HdyLeaflet" id="button_panel">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="row-homogeneous">True</property>
-    <property name="row_spacing">4</property>
-    <property name="column-homogeneous">True</property>
-    <property name="column_spacing">4</property>
-    <child>
-      <object class="GtkMenuButton" id="calc_memory_button">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Memory</property>
-        <style>
-              <class name="function-button"/>
-        </style>
-        <child internal-child="accessible">
-          <object class="AtkObject" id="calc_memory_button-atkobject">
-            <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the memory value button">Memory</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkHBox" id="hbox20">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="spacing">3</property>
-            <child>
-              <object class="GtkLabel" id="label23">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes" comments="The label on the memory button">x</property>
-                <attributes>
-                  <attribute name="style" value="italic"/>
-                </attributes>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkArrow" id="arrow14">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="arrow_type">down</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-        </child>
-      </object>
-      <packing>
-        <property name="left_attach">4</property>
-        <property name="top_attach">2</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_logarithm_button">
-        <property name="label">log</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Logarithm</property>
-        <property name="action_name">cal.insert-general</property>
-        <property name="action_target">'log '</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">6</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_4_button">
-        <property name="label">4</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">4</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="top_attach">1</property>
-        <property name="left_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_7_button">
-        <property name="label">7</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">7</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_8_button">
-        <property name="label">8</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">8</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_9_button">
-        <property name="label">9</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">9</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_5_button">
-        <property name="label">5</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">5</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_6_button">
-        <property name="label">6</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">6</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_divide_button">
-        <property name="label">÷</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Divide [/]</property>
-        <property name="action_name">cal.insert-general</property>
-        <property name="action_target">'÷'</property>
-        <style>
-          <class name="operator-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_1_button">
-        <property name="label">1</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">1</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="top_attach">2</property>
-        <property name="left_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_2_button">
-        <property name="label">2</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">2</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_0_button">
-        <property name="label">0</property>
-        <property name="width_request">50</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">0</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_numeric_point_button">
-        <property name="label" comments="Label is set in gtk.c to comply with LC flags">.</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-numeric-point</property>
-        <style>
-          <class name="numeric-point-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_percentage_button">
-        <property name="label">%</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Percentage [%]</property>
-        <property name="action_name">cal.insert-general</property>
-        <property name="action_target">'%'</property>
-        <style>
-          <class name="procent-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_3_button">
-        <property name="label">3</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="action_name">cal.insert-digit</property>
-        <property name="action_target">3</property>
-        <style>
-          <class name="number-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_multiply_button">
-        <property name="label">×</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Multiply [*]</property>
-        <property name="action_name">cal.insert-general</property>
-        <property name="action_target">'×'</property>
-        <style>
-          <class name="operator-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_subtract_button">
-        <property name="label">−</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Subtract [-]</property>
-        <property name="action_name">cal.subtract</property>
-        <style>
-          <class name="operator-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_add_button">
-        <property name="label">+</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Add [+]</property>
-        <property name="action_name">cal.insert-general</property>
-        <property name="action_target">'+'</property>
-        <style>
-          <class name="operator-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_result_button">
-        <property name="label" translatable="yes" comments="Label on the solve button (clicking this solves the displayed calculation)">=</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Calculate Result</property>
-        <property name="action_name">cal.solve</property>
-        <style>
-          <class name="suggested-action"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">4</property>
-        <property name="top_attach">3</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_start_group_button">
-        <property name="label">(</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Start Group [(]</property>
-        <property name="action_name">cal.insert-general</property>
-        <property name="action_target">'('</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">4</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_end_group_button">
-        <property name="label">)</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">End Group [)]</property>
-        <property name="action_name">cal.insert-general</property>
-        <property name="action_target">')'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">5</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_clear_button">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Clear Display [Escape]</property>
-        <property name="action_name">cal.clear</property>
-        <property name="label">C</property>
-        <style>
-          <class name="clear-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">5</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_compounding_term_button">
-        <property name="label" translatable="yes" comments="Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest">Ctrm</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Compounding Term</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'ctrm_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_double_declining_depreciation_button">
-        <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation">Ddb</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Double Declining Depreciation</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'ddb_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">8</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_future_value_button">
-        <property name="label" translatable="yes" comments="Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value">Fv</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Future Value</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'fv_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">9</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_term_button">
-        <property name="label" translatable="yes" comments="Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Financial Term</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'term_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">8</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_sum_of_the_years_digits_depreciation_button">
-        <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Syd</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Sum of the Years Digits Depreciation</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'syd_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">9</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_straight_line_depreciation_button">
-        <property name="label" translatable="yes" comments="Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Sln</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Straight Line Depreciation</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'sln_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">8</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_periodic_interest_rate_button">
-        <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest">Rate</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Periodic Interest Rate</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'rate_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">7</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_present_value_button">
-        <property name="label" translatable="yes" comments="Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value">Pv</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Present Value</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'pv_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">9</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_periodic_payment_button">
-        <property name="label" translatable="yes" comments="Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Periodic Payment</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'pmt_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">8</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_finc_gross_profit_margin_button">
-        <property name="label" translatable="yes" comments="Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin">Gpm</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Gross Profit Margin</property>
-        <property name="action_name">cal.launch-finc-dialog</property>
-        <property name="action_target">'gpm_dialog'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">7</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_undo_button">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Undo [Ctrl+Z]</property>
-        <property name="action_name">cal.undo</property>
-        <child>
-          <object class="GtkImage" id="image1">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="icon-name">edit-undo-symbolic</property>
-          </object>
-        </child>
-        <style>
-          <class name="undo-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">4</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_x_pow_y_button">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Exponent [^ or **]</property>
-        <property name="action_name">cal.insert-general</property>
-        <property name="action_target">'^'</property>
-        <child internal-child="accessible">
-          <object class="AtkObject" id="calc_x_pow_y_button-atkobject">
-            <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the exponentiation (x to the power of y) button">Exponent</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkLabel" id="x_pow_y_label">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&lt;i&gt;y&lt;/i&gt;&lt;/sup&gt;</property>
-            <property name="use_markup">True</property>
-          </object>
-        </child>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">6</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="calc_root_button">
-        <property name="label">√</property>
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">False</property>
-        <property name="tooltip_text" translatable="yes">Root [Ctrl+R]</property>
-        <property name="action_name">cal.insert-general</property>
-        <property name="action_target">'√'</property>
-        <style>
-          <class name="function-button"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">6</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
+    <property name="can-swipe-back">True</property>
+    <property name="can-swipe-forward">True</property>
+    <property name="transition-type">slide</property>
+    <property name="visible-child">basic</property>
     <style>
       <class name="math-buttons"/>
     </style>
+    <child>
+      <object class="GtkGrid" id="basic">
+        <property name="visible">True</property>
+        <property name="hexpand">true</property>
+        <property name="row-homogeneous">True</property>
+        <property name="column-homogeneous">True</property>
+        <property name="row_spacing">4</property>
+        <property name="column_spacing">4</property>
+        <child>
+          <object class="GtkButton" id="calc_4_button">
+            <property name="label">4</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">4</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_7_button">
+            <property name="label">7</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">7</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="top_attach">1</property>
+            <property name="left_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_8_button">
+            <property name="label">8</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">8</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_9_button">
+            <property name="label">9</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">9</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_5_button">
+            <property name="label">5</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">5</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_6_button">
+            <property name="label">6</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">6</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_modulus_divide_button">
+            <property name="label">mod</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Modulus divide</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">' mod '</property>
+            <style>
+              <class name="operator-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_divide_button">
+            <property name="label">÷</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Divide [/]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'÷'</property>
+            <style>
+              <class name="operator-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_1_button">
+            <property name="label">1</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">1</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="top_attach">3</property>
+            <property name="left_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_2_button">
+            <property name="label">2</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">2</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_0_button">
+            <property name="label">0</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">0</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="top_attach">4</property>
+            <property name="left_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_numeric_point_button">
+            <property name="label" comments="Label is set in gtk.c to comply with LC flags">.</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-numeric-point</property>
+            <style>
+              <class name="numeric-point-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_3_button">
+            <property name="label">3</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="action_name">cal.insert-digit</property>
+            <property name="action_target">3</property>
+            <style>
+              <class name="number-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_multiply_button">
+            <property name="label">×</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Multiply [*]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'×'</property>
+            <style>
+              <class name="operator-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_subtract_button">
+            <property name="label">−</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Subtract [-]</property>
+            <property name="action_name">cal.subtract</property>
+            <style>
+              <class name="operator-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_add_button">
+            <property name="label">+</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Add [+]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'+'</property>
+            <style>
+              <class name="operator-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_root_button">
+            <property name="label">√</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Root [Ctrl+R]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'√'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_clear_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Clear Display [Escape]</property>
+            <property name="action_name">cal.clear</property>
+            <child>
+              <object class="GtkImage" id="calc_clear_icon">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">edit-clear-symbolic</property>
+              </object>
+            </child>
+            <style>
+              <class name="destructive-action"/>
+              <class name="image-button"/>
+              <class name="clear-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_start_group_button">
+            <property name="label">(</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Start Group [(]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'('</property>
+            <style>
+              <class name="parenthesis-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_end_group_button">
+            <property name="label">)</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">End Group [)]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">')'</property>
+            <style>
+              <class name="parenthesis-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_percentage_button">
+            <property name="label">%</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Percentage [%]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'%'</property>
+            <style>
+              <class name="procent-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">4</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_result_button">
+            <property name="label" translatable="yes" comments="Label on the solve button (clicking this solves the displayed calculation)">=</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Calculate Result</property>
+            <property name="action_name">cal.solve</property>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">3</property>
+            <property name="height">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_x_pow_y_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Exponent [^ or **]</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'^'</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="calc_x_pow_y_button-atkobject">
+                <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the exponentiation (x to the power of y) button">Exponent</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="x_pow_y_label">
+                <property name="visible">True</property>
+                <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&lt;i&gt;y&lt;/i&gt;&lt;/sup&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_logarithm_button">
+            <property name="label">log</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Logarithm</property>
+            <property name="action_name">cal.insert-general</property>
+            <property name="action_target">'log '</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">4</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="name">basic</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid" id="advanced">
+        <property name="visible">True</property>
+        <property name="hexpand">true</property>
+        <property name="row-homogeneous">True</property>
+        <property name="column-homogeneous">True</property>
+        <property name="row_spacing">4</property>
+        <property name="column_spacing">4</property>
+        <child>
+          <object class="GtkMenuButton" id="calc_memory_button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Memory</property>
+            <child internal-child="accessible">
+              <object class="AtkObject" id="calc_memory_button-atkobject">
+                <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the memory button">Memory</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkHBox" id="hbox20">
+                <property name="visible">True</property>
+                <child>
+                  <object class="GtkLabel" id="label23">
+                    <property name="visible">True</property>
+                    <property name="label" translatable="yes" comments="The label on the memory button">x</property>
+                    <attributes>
+                      <attribute name="style" value="italic"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkArrow" id="arrow14">
+                    <property name="visible">True</property>
+                    <property name="arrow_type">down</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">4</property>
+            <property name="width">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_compounding_term_button">
+            <property name="label" translatable="yes" comments="Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest">Ctrm</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Compounding Term</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'ctrm_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_double_declining_depreciation_button">
+            <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation">Ddb</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Double Declining Depreciation</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'ddb_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_future_value_button">
+            <property name="label" translatable="yes" comments="Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value">Fv</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Future Value</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'fv_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_term_button">
+            <property name="label" translatable="yes" comments="Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Financial Term</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'term_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_sum_of_the_years_digits_depreciation_button">
+            <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Syd</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Sum of the Years Digits Depreciation</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'syd_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_straight_line_depreciation_button">
+            <property name="label" translatable="yes" comments="Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Sln</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Straight Line Depreciation</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'sln_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_periodic_interest_rate_button">
+            <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest">Rate</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Periodic Interest Rate</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'rate_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_present_value_button">
+            <property name="label" translatable="yes" comments="Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value">Pv</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Present Value</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'pv_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_periodic_payment_button">
+            <property name="label" translatable="yes" comments="Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Periodic Payment</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'pmt_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_finc_gross_profit_margin_button">
+            <property name="label" translatable="yes" comments="Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin">Gpm</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Gross Profit Margin</property>
+            <property name="action_name">cal.launch-finc-dialog</property>
+            <property name="action_target">'gpm_dialog'</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="name">advanced</property>
+      </packing>
+    </child>
   </object>
+  <object class="GtkSizeGroup">
+    <property name="mode">both</property>
+    <widgets>
+      <widget name="basic"/>
+      <widget name="advanced"/>
+    </widgets>
+  </object>
+
+
 </interface>
