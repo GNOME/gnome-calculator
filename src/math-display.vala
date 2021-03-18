@@ -8,7 +8,7 @@
  * license.
  */
 
-public class MathDisplay : Gtk.Viewport
+public class MathDisplay : Gtk.Box
 {
     /* Equation being displayed */
     private MathEquation _equation;
@@ -28,20 +28,23 @@ public class MathDisplay : Gtk.Viewport
 
     Regex only_variable_name = /^_*\p{L}+(_|\p{L})*$/;
 
+    static construct {
+        set_css_name ("mathdisplay");
+    }
+
     public MathDisplay (MathEquation equation)
     {
         _equation = equation;
         _equation.history_signal.connect (this.update_history);
-        var main_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        add (main_box);
+        orientation = Gtk.Orientation.VERTICAL;
 
         history = new HistoryView ();
         history.answer_clicked.connect ((ans) => { insert_text (ans); });
         history.equation_clicked.connect ((eq) => { display_text (eq); });
         history.set_serializer (equation.serializer);
         _equation.display_changed.connect (history.set_serializer);
-        main_box.add (history);
-        main_box.show_all ();
+        add (history);
+        show_all ();
 
         var scrolled_window = new Gtk.ScrolledWindow (null, null);
         var style_context = scrolled_window.get_style_context ();
@@ -64,12 +67,12 @@ public class MathDisplay : Gtk.Viewport
         completion_visible = false;
         completion_selected = false;
 
-        main_box.pack_start (scrolled_window, false, false, 0);
+        pack_start (scrolled_window, false, false, 0);
         scrolled_window.add (source_view); /* Adds ScrolledWindow to source_view for displaying long equations */
         scrolled_window.show ();
 
         var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        main_box.pack_start (info_box, false, true, 0);
+        pack_start (info_box, false, true, 0);
 
         var info_view = new Gtk.TextView ();
         info_view.set_wrap_mode (Gtk.WrapMode.WORD);
@@ -89,7 +92,6 @@ public class MathDisplay : Gtk.Viewport
         info_box.show ();
         info_view.show ();
         source_view.show ();
-        main_box.show ();
 
         equation.notify["status"].connect ((pspec) => { status_changed_cb (); });
         status_changed_cb ();

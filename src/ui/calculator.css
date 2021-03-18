@@ -15,18 +15,19 @@
   padding: 0px 12px;
 }
 
-window > deck > box > grid > .frame {
+mathdisplay {
+  border: solid @borders 1px;
   border-left-width: 0;
   border-right-width: 0;
 }
 
 /* It isn't first in keyboard mode */
-window > deck > box > grid > .frame:first-child {
+mathdisplay:first-child {
   border-top-width: 0;
 }
 
 /* It is last in keyboard mode */
-window > deck > box > grid > .frame:last-child {
+mathdisplay:last-child {
   border-bottom-width: 0;
 }
 
