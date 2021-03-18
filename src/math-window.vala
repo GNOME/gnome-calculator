@@ -126,7 +126,6 @@ public class MathWindow : Hdy.ApplicationWindow
         }
 
         display.set_enable_osk (remove_buttons);
-        resize (1, 1);
     }
 
     public void critical_error (string title, string contents)
