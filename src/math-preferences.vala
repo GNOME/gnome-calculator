@@ -37,8 +37,8 @@ public class MathPreferencesDialog : Gtk.Dialog
         settings = new Settings ("org.gnome.calculator");
 
         spinbutton_decimals.value_changed.connect (() => { equation.accuracy = spinbutton_decimals.get_value_as_int (); });
-        switch_trailing_zeroes.state_set.connect ((state) => { equation.show_trailing_zeroes = state; });
-        switch_thousands_separators.state_set.connect ((state) => { equation.show_thousands_separators = state; });
+        switch_trailing_zeroes.state_set.connect ((state) => { equation.show_trailing_zeroes = state; return false; });
+        switch_thousands_separators.state_set.connect ((state) => { equation.show_thousands_separators = state; return false; });
         combo_angle_units.changed.connect (combo_angle_units_changed_cb);
         combo_word_size.changed.connect (combo_word_size_changed_cb);
         combo_refresh_interval.changed.connect (combo_refresh_interval_changed_cb);
