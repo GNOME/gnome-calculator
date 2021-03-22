@@ -8,36 +8,6 @@
     <property name="row_spacing">6</property>
     <property name="column_spacing">6</property>
     <child>
-      <object class="GtkButton" id="swap_button">
-        <property name="label">⇆</property>
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="receives_default">False</property>
-        <property name="tooltip_text" translatable="yes">Switch conversion units</property>
-        <property name="relief">none</property>
-        <signal name="clicked" handler="swap_button_clicked_cb" swapped="no"/>
-      </object>
-      <packing>
-        <property name="left_attach">3</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="in_button">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="label" translatable="yes"> to </property>
-        <signal name="clicked" handler="convert_button_clicked_cb" swapped="no"/>
-        <style>
-          <class name="flat"/>
-        </style>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">0</property>
-      </packing>
-    </child>
-    <child>
       <object class="GtkComboBox" id="from_combo">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
@@ -52,10 +22,17 @@
           </attributes>
         </child>
       </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
-      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="in_button">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes"> to </property>
+        <signal name="clicked" handler="convert_button_clicked_cb" swapped="no"/>
+        <style>
+          <class name="flat"/>
+        </style>
+      </object>
     </child>
     <child>
       <object class="GtkComboBox" id="to_combo">
@@ -73,10 +50,17 @@
           </attributes>
         </child>
       </object>
-      <packing>
-        <property name="left_attach">2</property>
-        <property name="top_attach">0</property>
-      </packing>
+    </child>
+    <child>
+      <object class="GtkButton" id="swap_button">
+        <property name="label">⇆</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="receives_default">False</property>
+        <property name="tooltip_text" translatable="yes">Switch conversion units</property>
+        <property name="relief">none</property>
+        <signal name="clicked" handler="swap_button_clicked_cb" swapped="no"/>
+      </object>
     </child>
     <child>
       <object class="GtkBox" id="result_holder">
