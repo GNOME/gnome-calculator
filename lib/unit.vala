@@ -381,7 +381,8 @@ public class Unit : Object
 
     public string get_symbol_from_format ()
     {
-        return _format.replace ("%s", "").replace (" ", "");
+        return _name;
+        // return _format.replace ("%s", "").replace (" ", "");
     }
 
     public bool matches_symbol (string symbol, bool case_sensitive = true)
