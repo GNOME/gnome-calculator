@@ -87,27 +87,27 @@ public class MathWindow : Hdy.ApplicationWindow
         {
         default:
         case ButtonMode.BASIC:
-            mode_label.label = _("Basic Mode");
+            mode_label.label = _("Basic");
             action.set_state (new Variant.string ("basic"));
             break;
 
         case ButtonMode.ADVANCED:
-            mode_label.label = _("Advanced Mode");
+            mode_label.label = _("Advanced");
             action.set_state (new Variant.string ("advanced"));
             break;
 
         case ButtonMode.FINANCIAL:
-            mode_label.label = _("Financial Mode");
+            mode_label.label = _("Financial");
             action.set_state (new Variant.string ("financial"));
             break;
 
         case ButtonMode.PROGRAMMING:
-            mode_label.label = _("Programming Mode");
+            mode_label.label = _("Programming");
             action.set_state (new Variant.string ("programming"));
             break;
 
         case ButtonMode.KEYBOARD:
-            mode_label.label = _("Keyboard Mode");
+            mode_label.label = _("Keyboard");
             action.set_state (new Variant.string ("keyboard"));
             break;
         }
