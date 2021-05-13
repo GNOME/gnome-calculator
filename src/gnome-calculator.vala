@@ -125,6 +125,11 @@ public class Calculator : Gtk.Application
         load_window_position (last_opened_window);
         CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
         CurrencyManager.get_default ().refresh_async ();
+
+        settings.changed["refresh-interval"].connect(() => {
+            CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
+            CurrencyManager.get_default ().refresh_async ();
+        });
     }
 
     private MathWindow get_active_math_window ()
