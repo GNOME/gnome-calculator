@@ -26,17 +26,21 @@ public class CurrencyManager : Object
 
     public signal void updated ();
 
+    public bool loaded { get; private set; }
+
     public void add_provider (CurrencyProvider provider) {
         providers.append (provider);
     }
 
     public void refresh_sync () {
+        loaded = false;
         foreach (var p in providers) {
             p.set_refresh_interval(_refresh_interval, false);
         }
     }
 
     public void refresh_async () {
+        loaded = false;
         foreach (var p in providers) {
             p.set_refresh_interval(_refresh_interval, true);
         }
@@ -118,11 +122,23 @@ public class CurrencyManager : Object
         return default_currency_manager;
     }
 
+    private void update ()
+    {
+        loaded = false;
+        foreach (var p in providers) {
+            if (p.is_loaded ()) {
+                loaded = true;
+                break;
+            }
+        }
+        updated ();
+    }
+
     public void initialize_providers (bool asyncLoad = true)
     {
         /* Start downloading the rates if they are outdated. */
         foreach (var p in providers) {
-            p.updated.connect ( () => { updated (); });
+            p.updated.connect ( () => { update (); });
             p.update_rates (asyncLoad);
         }
     }

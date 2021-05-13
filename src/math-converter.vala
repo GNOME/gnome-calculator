@@ -27,6 +27,7 @@ public class MathConverter : Gtk.Grid
     [GtkChild]
     private unowned Gtk.Label to_label;
 
+    public bool outer_box_visible { set; get; default = false; }
     public bool view_more_visible { set; get; default = false; }
     public bool view_more_active { set; get; default = false; }
 
@@ -39,8 +40,12 @@ public class MathConverter : Gtk.Grid
     construct
     {
         from_combo.set_cell_data_func (from_renderer, from_cell_data_func);
-        CurrencyManager.get_default ().updated.connect (() => { update_result_label (); });
+        CurrencyManager.get_default ().updated.connect (() => {
+            update_visibility ();
+            update_result_label ();
+        });
 
+        update_visibility ();
         update_from_model ();
     }
 
@@ -61,6 +66,7 @@ public class MathConverter : Gtk.Grid
             return;
         this.category = category;
 
+        update_visibility ();
         update_from_model ();
     }
 
@@ -101,6 +107,16 @@ public class MathConverter : Gtk.Grid
 
         from_combo.get_model ().get (from_iter, 2, out from_unit, -1);
         to_combo.get_model ().get (to_iter, 2, out to_unit, -1);
+    }
+
+    private void update_visibility ()
+    {
+        if (category != "currency") {
+            this.outer_box_visible = true;
+            return;
+        }
+
+        this.outer_box_visible = CurrencyManager.get_default ().loaded;
     }
 
     private void update_result_label ()

@@ -7,6 +7,8 @@ public interface CurrencyProvider : Object {
     public abstract void set_refresh_interval (int interval, bool asyncLoad = true);
 
     public abstract void clear ();
+
+    public abstract bool is_loaded();
 }
 
 public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
@@ -27,6 +29,10 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         update_rates (asyncLoad);
     }
 
+    public bool is_loaded() {
+        return loaded;
+    }
+
     protected bool loading;
     protected bool loaded;
     protected List<Currency> currencies;
@@ -35,7 +41,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     public void clear () {
         FileUtils.remove (rate_filepath);
     }
-    
+
     public Currency register_currency(string symbol, string source) {
         Currency currency = currency_manager.add_currency (symbol, source);
         currencies.append(currency);
