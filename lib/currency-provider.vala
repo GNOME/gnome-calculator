@@ -45,6 +45,8 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
         if (loading || loaded) return;
 
+        if (refresh_interval == 0) return;
+
         debug ("Checking %s rates ".printf(source_name));
 
         if (!file_needs_update (rate_filepath, refresh_interval )) {
