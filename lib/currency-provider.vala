@@ -21,6 +21,8 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
     public void set_refresh_interval (int interval, bool asyncLoad = true) {
         loaded = false;
+        updated ();
+
         this.refresh_interval = interval;
         update_rates (asyncLoad);
     }
