@@ -8,5 +8,5 @@ Calculator is an application that solves mathematical equations and is suitable 
 
 - Homepage: <https://wiki.gnome.org/Apps/Calculator>
 - Report issues: <https://gitlab.gnome.org/GNOME/gnome-calculator/issues/>
-- Donate: <https://www.gnome.org/friends/>
+- Donate: <https://www.gnome.org/donate/>
 - Translate: <https://wiki.gnome.org/TranslationProject>
