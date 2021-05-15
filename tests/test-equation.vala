@@ -805,12 +805,15 @@ private void test_custom_functions ()
     test ("sum(sum(sum(1;1);sum(1;1));sum(sum(1;1);sum(1;1)))", "8", ErrorCode.UNKNOWN_FUNCTION);
     test ("sum(x;y)=x+y+1", "0", 0);
     test ("sum(sum(sum(1;1);sum(1;1));sum(sum(1;1);sum(1;1)))", "15", 0);
+    test ("funcWithDescription(x;y;z)=x+y+z @ Description", "0", 0);
+    test ("funcWithDescription(2;3;5)", "10", 0);
 
     function_manager.delete ("func");
     function_manager.delete ("test");
     function_manager.delete ("sum");
     function_manager.delete ("dummy");
     function_manager.delete ("abcd");
+    function_manager.delete ("funcWithDescription");
 }
 
 public int main (string[] args)

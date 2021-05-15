@@ -67,7 +67,8 @@ public enum LexerTokenType
     POWER,              /* ^ */
     FACTORIAL,          /* ! */
     PERCENTAGE,         /* % */
-    ARGUMENT_SEPARATOR  /* ; (Function argument separator) */
+    ARGUMENT_SEPARATOR, /* ; (Function argument separator) */
+    FUNC_DESC_SEPARATOR /* @ (Function description separator) */
 }
 
 // FIXME: Merge into lexer
@@ -244,6 +245,9 @@ public class PreLexer : Object
         if (c == ' ' || c == '\r' || c == '\t' || c == '\n')
             return LexerTokenType.PL_SKIP;
 
+        if (c == '@')
+            return LexerTokenType.FUNC_DESC_SEPARATOR;
+
         return LexerTokenType.UNKNOWN;
     }
 }
@@ -395,7 +399,8 @@ public class Lexer : Object
             || type == LexerTokenType.L_R_BRACKET || type == LexerTokenType.R_R_BRACKET || type == LexerTokenType.L_S_BRACKET
             || type == LexerTokenType.R_S_BRACKET || type == LexerTokenType.L_C_BRACKET || type == LexerTokenType.R_C_BRACKET
             || type == LexerTokenType.ABS || type == LexerTokenType.POWER || type == LexerTokenType.FACTORIAL || type == LexerTokenType.PERCENTAGE
-            || type == LexerTokenType.ARGUMENT_SEPARATOR || type == LexerTokenType.SHIFT_LEFT || type == LexerTokenType.SHIFT_RIGHT)
+            || type == LexerTokenType.ARGUMENT_SEPARATOR || type == LexerTokenType.SHIFT_LEFT || type == LexerTokenType.SHIFT_RIGHT
+            || type == LexerTokenType.FUNC_DESC_SEPARATOR)
             return insert_token (type);
 
         /* [LexerTokenType.PL_SUPER_MINUS][LexerTokenType.PL_SUPER_DIGIT]+ */
