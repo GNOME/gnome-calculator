@@ -27,6 +27,7 @@ public class MathDisplay : Gtk.Box
     public bool completion_selected { get; set;}
 
     Regex only_variable_name = /^_*\p{L}+(_|\p{L})*$/;
+    Regex only_function_definition = /^[a-zA-Z0-9 ]*\(([a-zA-z0-9;]*)?\)[ ]*$/;
 
     static construct {
         set_css_name ("mathdisplay");
@@ -247,7 +248,8 @@ public class MathDisplay : Gtk.Box
         /* Solve on [=] if the input is not a variable name */
         if (event.keyval == Gdk.Key.equal || event.keyval == Gdk.Key.KP_Equal)
         {
-            if (!only_variable_name.match((string) equation.equation))
+            if (!(only_variable_name.match((string) equation.equation)
+                || only_function_definition.match((string) equation.equation)))
             {
                 event.keyval = Gdk.Key.KP_Enter;
             }
