@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2021-03-26 08:56+0000\n"
-"PO-Revision-Date: 2021-07-04 18:20+0200\n"
+"POT-Creation-Date: 2021-07-04 16:22+0000\n"
+"PO-Revision-Date: 2021-08-03 19:39+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -522,15 +522,13 @@ msgstr "Depassament de capacitat. Ensajatz amb una talha de mot mai granda"
 
 #. Error displayed to user when they an unknown variable is entered
 #: lib/math-equation.vala:1043
-#, fuzzy, c-format
-#| msgid "Unknown variable '%s'"
+#, c-format
 msgid "Unknown variable “%s”"
 msgstr "Variabla « %s » desconeguda"
 
 #. Error displayed to user when an unknown function is entered
 #: lib/math-equation.vala:1050
-#, fuzzy, c-format
-#| msgid "Function '%s' is not defined"
+#, c-format
 msgid "Function “%s” is not defined"
 msgstr "La foncion « %s » es pas definida"
 
@@ -1076,7 +1074,7 @@ msgstr ""
 
 #: lib/unit.vala:64
 msgid "Meters per second"
-msgstr ""
+msgstr "Mètres per segonda"
 
 #: lib/unit.vala:64
 #, c-format
@@ -1428,10 +1426,8 @@ msgid "stone,st,stones"
 msgstr ""
 
 #: lib/unit.vala:87
-#, fuzzy
-#| msgid "Centimeters"
 msgid "Centuries"
-msgstr "Centimètres"
+msgstr "Sègles"
 
 #: lib/unit.vala:87
 #, c-format
@@ -1442,11 +1438,11 @@ msgstr ""
 #: lib/unit.vala:87
 msgctxt "unit-symbols"
 msgid "century,centuries"
-msgstr ""
+msgstr "sègle,sègles"
 
 #: lib/unit.vala:88
 msgid "Decades"
-msgstr ""
+msgstr "Decennias"
 
 #: lib/unit.vala:88
 #, c-format
@@ -1457,7 +1453,7 @@ msgstr "%s decennia"
 #: lib/unit.vala:88
 msgctxt "unit-symbols"
 msgid "decade,decades"
-msgstr ""
+msgstr "decennia, decennias"
 
 #: lib/unit.vala:89
 msgid "Years"
@@ -1476,7 +1472,7 @@ msgstr "an,ans,annada,annadas"
 
 #: lib/unit.vala:90
 msgid "Months"
-msgstr ""
+msgstr "Meses"
 
 #: lib/unit.vala:90
 #, c-format
@@ -1487,22 +1483,22 @@ msgstr "%s meses"
 #: lib/unit.vala:90
 msgctxt "unit-symbols"
 msgid "month,months"
-msgstr ""
+msgstr "mes,meses"
 
 #: lib/unit.vala:91
 msgid "Weeks"
-msgstr ""
+msgstr "Setmanas"
 
 #: lib/unit.vala:91
 #, c-format
 msgctxt "unit-format"
 msgid "%s weeks"
-msgstr ""
+msgstr "%s setmanas"
 
 #: lib/unit.vala:91
 msgctxt "unit-symbols"
 msgid "week,weeks"
-msgstr ""
+msgstr "setmana,setmanas"
 
 #: lib/unit.vala:92
 msgid "Days"
@@ -2262,7 +2258,7 @@ msgstr "Copiar"
 
 #: search-provider/search-provider.vala:190
 msgid "Copy result to clipboard"
-msgstr "Copiar lo resultat al quichapapièrs."
+msgstr "Copiar lo resultat al quichapapièrs"
 
 #: src/ui/buttons-advanced.ui:17 src/ui/buttons-programming.ui:2313
 msgid "Inverse [Ctrl+I]"
@@ -2393,8 +2389,6 @@ msgid "x"
 msgstr "x"
 
 #: src/ui/buttons-advanced.ui:685 src/ui/buttons-programming.ui:1392
-#, fuzzy
-#| msgid "Absolute value [|]"
 msgid "Absolute Value [|]"
 msgstr "Valor absoluda [|]"
 
@@ -2682,7 +2676,7 @@ msgid ""
 msgstr ""
 "Calcula la valor iniciala d'un investiment fondat sus una seria de pagaments "
 "egals escomptats amb un taus d'interès periodic donat compte tengut del "
-"nombre de periòdes de versament fins a son tèrme."
+"nombre de periòdes de versament fins a son tèrme. "
 
 #. Title of Periodic Interest Rate dialog
 #: src/ui/buttons-financial.ui:1077 src/ui/buttons-financial.ui:2431
@@ -2695,8 +2689,9 @@ msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
 msgstr ""
-"Calcula lo taus d'interès per periòde necessari per porter un investiment a "
-"una valor donada a tèrme compte tengut del nombre de periòdes de composicion."
+"Calcula lo taus d'interès per periòde necessari per portar un investiment a "
+"una valor donada a tèrme compte tengut del nombre de periòdes de "
+"composicion. "
 
 #. Title of Straight-Line Depreciation dialog
 #: src/ui/buttons-financial.ui:1261
@@ -2726,7 +2721,7 @@ msgstr ""
 "Calcula l'amortiment linear d'un actiu sus un periòde donat. Aqueste metòde "
 "repartís la valor d'amortiment d'un biais unifòrme sus la durada de vida "
 "utila de l'actiu. La vida utila correspond al nombre de periòdes, "
-"generalament annadièras, suls quals l'actiu es amortit."
+"generalament annadièras, suls quals l'actiu es amortit. "
 
 #. Title of Sum-of-the-Years’-Digits Depreciation dialog
 #: src/ui/buttons-financial.ui:1445
@@ -2924,10 +2919,8 @@ msgid "Two’s Complement"
 msgstr "Complement a dos"
 
 #: src/ui/buttons-programming.ui:2414
-#, fuzzy
-#| msgid "Word size"
 msgid "Change word size"
-msgstr "Talha de mot"
+msgstr "Modificar la talha de mot"
 
 #: src/ui/buttons-programming.ui:2448
 msgid "Word Size"
@@ -3016,10 +3009,8 @@ msgid "="
 msgstr "="
 
 #: src/math-display.vala:552
-#, fuzzy
-#| msgid "Additional Functions"
 msgid "Defined Functions"
-msgstr "Foncions suplementàrias"
+msgstr "Foncions definidas"
 
 #: src/math-display.vala:609
 msgid "Defined Variables"
@@ -3031,17 +3022,15 @@ msgstr "Foncion novèla"
 
 #: src/ui/math-function-popover.ui:47
 msgid "Select no. of arguments"
-msgstr ""
+msgstr "Causir nombre d’arguments"
 
 #: src/ui/math-preferences.ui:21 src/ui/math-window.ui:89
 msgid "Preferences"
 msgstr "Preferéncias"
 
 #: src/ui/math-preferences.ui:63
-#, fuzzy
-#| msgid "_Number of Periods:"
 msgid "Number of _decimals"
-msgstr "_Nombre d'escasenças :"
+msgstr "Nombre de _decimalas"
 
 #: src/ui/math-preferences.ui:77
 msgid "Trailing _zeroes"
@@ -3052,16 +3041,12 @@ msgid "_Thousands separators"
 msgstr "Separador dels _milierats"
 
 #: src/ui/math-preferences.ui:104
-#, fuzzy
-#| msgid "_Angle units:"
 msgid "_Angle units"
-msgstr "Unitats d'_angle :"
+msgstr "Unitats d'_angle"
 
 #: src/ui/math-preferences.ui:118
-#, fuzzy
-#| msgid "Word _size:"
 msgid "Word _size"
-msgstr "_Talha del mot :"
+msgstr "_Talha del mot"
 
 #: src/ui/math-preferences.ui:132
 msgid "E_xchange rate refresh interval"
@@ -3133,79 +3118,59 @@ msgid "Open menu"
 msgstr "Dobrir lo menú"
 
 #: src/ui/math-shortcuts.ui:55
-#, fuzzy
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
-msgstr "Mòde clavièr"
+msgstr "Acorchis de clavièr"
 
 #: src/ui/math-shortcuts.ui:62
-#, fuzzy
-#| msgid "No redo history"
 msgctxt "shortcut window"
 msgid "Clear history"
-msgstr "Pas cap d'istoric de restablir"
+msgstr "Escafar l’istoric"
 
 #: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switching modes"
-msgstr ""
+msgstr "Bascular de mòde"
 
 #: src/ui/math-shortcuts.ui:75
-#, fuzzy
-#| msgid "Basic Mode"
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
-msgstr "Mòde basic"
+msgstr "Passar al mòde basic"
 
 #: src/ui/math-shortcuts.ui:82
-#, fuzzy
-#| msgid "Advanced Mode"
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
-msgstr "Mòde avançat"
+msgstr "Passar al mòde avançat"
 
 #: src/ui/math-shortcuts.ui:89
-#, fuzzy
-#| msgid "Financial Mode"
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
-msgstr "Mòde financièr"
+msgstr "Passar al mòde financièr"
 
 #: src/ui/math-shortcuts.ui:96
-#, fuzzy
-#| msgid "Programming Mode"
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
-msgstr "Mòde programacion"
+msgstr "Passar al mòde programacion"
 
 #: src/ui/math-shortcuts.ui:103
-#, fuzzy
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
-msgstr "Mòde clavièr"
+msgstr "Passar al mòde clavièr"
 
 #: src/ui/math-shortcuts.ui:111
-#, fuzzy
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Keyboard entry"
-msgstr "Mòde clavièr"
+msgstr "Entrada clavièr"
 
 #: src/ui/math-shortcuts.ui:116
-#, fuzzy
-#| msgid "Multiply [*]"
 msgctxt "shortcut window"
 msgid "Multiply (×)"
-msgstr "Multiplicacion [*]"
+msgstr "Multiplicar (×)"
 
 #: src/ui/math-shortcuts.ui:123
-#, fuzzy
-#| msgid "Divide [/]"
 msgctxt "shortcut window"
 msgid "Divide (÷)"
-msgstr "Division [/]"
+msgstr "Devesir (÷)"
 
 #: src/ui/math-shortcuts.ui:130
 #, fuzzy
@@ -3215,8 +3180,6 @@ msgid "Square root (√)"
 msgstr "Raiç carrada [Ctrl+R]"
 
 #: src/ui/math-shortcuts.ui:137
-#, fuzzy
-#| msgid "Inverse"
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Invèrse"
@@ -3232,8 +3195,6 @@ msgid "Enter numbers in scientific format"
 msgstr ""
 
 #: src/ui/math-shortcuts.ui:159
-#, fuzzy
-#| msgid "Programming Mode"
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Mòde programacion"
@@ -3241,7 +3202,7 @@ msgstr "Mòde programacion"
 #: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to binary"
-msgstr ""
+msgstr "Passar en binari"
 
 #: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
@@ -3251,14 +3212,12 @@ msgstr ""
 #: src/ui/math-shortcuts.ui:178
 msgctxt "shortcut window"
 msgid "Switch to decimal"
-msgstr ""
+msgstr "Passar en decimal"
 
 #: src/ui/math-shortcuts.ui:185
-#, fuzzy
-#| msgid "Hexadecimal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
-msgstr "Exadecimal"
+msgstr "Passar en exadecimal"
 
 #: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
@@ -3306,7 +3265,7 @@ msgstr "Nom de la variabla"
 
 #: src/ui/math-variable-popover.ui:52
 msgid "Store value into existing or new variable"
-msgstr ""
+msgstr "Gardar la valor dins una variabla existenta o novèla"
 
 #: src/ui/math-window.ui:20 src/math-window.vala:90
 msgid "Basic Mode"
@@ -3339,10 +3298,8 @@ msgstr "_Automatic"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
-#, fuzzy
-#| msgid "Fixed"
 msgid "_Fixed"
-msgstr "Fixe"
+msgstr "_Fixe"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:73
@@ -3357,10 +3314,8 @@ msgid "_Engineering"
 msgstr "Ingenhariá"
 
 #: src/ui/math-window.ui:93
-#, fuzzy
-#| msgid "Keyboard Mode"
 msgid "Keyboard Shortcuts"
-msgstr "Mòde clavièr"
+msgstr "Acorchis de clavièr"
 
 #: src/ui/math-window.ui:97
 msgid "_Help"
