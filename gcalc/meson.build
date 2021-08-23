@@ -43,7 +43,7 @@ lib_mpfrg_sources = files([
   'mpfr-glue.vala'
 ])
 
-lib_mpfrg = static_library ('mpfrg',
+lib_mpfrg = static_library ('libmpfrg',
 	lib_mpfrg_sources,
 	vala_header: 'mpfrg.h',
 	vala_vapi: 'mpfrg.vapi',
