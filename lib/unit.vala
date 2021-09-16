@@ -381,7 +381,7 @@ public class Unit : Object
 
     public string get_symbol_from_format ()
     {
-        return _name;
+        return _symbols.first ().data;
         // return _format.replace ("%s", "").replace (" ", "");
     }
 
