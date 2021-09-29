@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2021-05-17 05:26+0000\n"
-"PO-Revision-Date: 2021-05-20 12:35+0300\n"
+"POT-Creation-Date: 2021-09-25 08:16+0000\n"
+"PO-Revision-Date: 2021-09-29 16:32+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -23,9 +23,12 @@ msgstr ""
 "X-Generator: Lokalize 20.12.0\n"
 "X-Project-Style: gnome\n"
 
+#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-msgid "GNOME Calculator"
-msgstr "Калькулятор GNOME"
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
+#: src/gnome-calculator.vala:350 src/ui/math-window.ui:108
+msgid "Calculator"
+msgstr "Калькулятор"
 
 #: data/org.gnome.Calculator.appdata.xml.in:8
 #: data/org.gnome.Calculator.desktop.in:4
@@ -33,13 +36,18 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Виконання арифметичних, наукових або фінансових розрахунків"
 
 #: data/org.gnome.Calculator.appdata.xml.in:10
+#| msgid ""
+#| "GNOME Calculator is an application that solves mathematical equations. "
+#| "Though it at first appears to be a simple calculator with only basic "
+#| "arithmetic operations, you can switch into Advanced, Financial, or "
+#| "Programming mode to find a surprising set of capabilities."
 msgid ""
-"GNOME Calculator is an application that solves mathematical equations. "
-"Though it at first appears to be a simple calculator with only basic "
-"arithmetic operations, you can switch into Advanced, Financial, or "
-"Programming mode to find a surprising set of capabilities."
+"Calculator is an application that solves mathematical equations. Though it "
+"at first appears to be a simple calculator with only basic arithmetic "
+"operations, you can switch into Advanced, Financial, or Programming mode to "
+"find a surprising set of capabilities."
 msgstr ""
-"Калькулятор GNOME — програма, яка розв'язує математичні рівняння. Хоча на "
+"«Калькулятор» — програма, яка розв'язує математичні рівняння. Хоча на "
 "перший погляд це простий калькулятор тільки з базовими арифметичними "
 "операціями, ви можете перейти у розширений, фінансовий або програмувальний "
 "режим, щоб побачити зворушливий набір можливостей."
@@ -92,15 +100,9 @@ msgstr "Калькулятор GNOME у фінансовому режимі"
 msgid "GNOME Calculator in Programming Mode"
 msgstr "Калькулятор GNOME у програмувальному режимі"
 
-#: data/org.gnome.Calculator.appdata.xml.in:59
+#: data/org.gnome.Calculator.appdata.xml.in:67
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
-
-#. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:350 src/ui/math-window.ui:108
-msgid "Calculator"
-msgstr "Калькулятор"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
@@ -174,7 +176,8 @@ msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
 msgstr ""
-"Визначає частоту оновлення обмінних курсів валют. Значення «0» означає, що програма не буде отримувати курси обміну валют з інтернету взагалі."
+"Визначає частоту оновлення обмінних курсів валют. Значення «0» означає, що "
+"програма не буде отримувати курси обміну валют з інтернету взагалі."
 
 #: data/org.gnome.calculator.gschema.xml:67
 msgid "Button mode"
@@ -473,11 +476,11 @@ msgid "South African Rand"
 msgstr "Південноафриканський ранд"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:729 src/math-converter.vala:270
+#: lib/equation-lexer.vala:734 src/math-converter.vala:270
 msgid "in"
 msgstr "у"
 
-#: lib/equation-lexer.vala:729
+#: lib/equation-lexer.vala:734
 msgid "to"
 msgstr "у"
 
@@ -2957,11 +2960,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:562
+#: src/math-display.vala:564
 msgid "Defined Functions"
 msgstr "Визначені функції"
 
-#: src/math-display.vala:619
+#: src/math-display.vala:621
 msgid "Defined Variables"
 msgstr "Визначені змінні"
 
@@ -3285,6 +3288,9 @@ msgstr "Основне меню"
 #: src/math-window.vala:138
 msgid "_Quit"
 msgstr "Ви_йти"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "Калькулятор GNOME"
 
 #~ msgid "How often the currency exchange rates should be updated"
 #~ msgstr "Визначає частоту оновлення обмінних курсів валют"
