@@ -327,28 +327,6 @@ public class MathButtons : Gtk.Box
             prog_view_more_button.visible = visible;
     }
 
-    private void update_view_more_active ()
-    {
-        switch (mode)
-        {
-        default:
-        case ButtonMode.BASIC:
-            break;
-        case ButtonMode.ADVANCED:
-            if (adv_panel != null)
-                converter.view_more_active = prog_view_more_button.active = (adv_panel as Hdy.Leaflet).visible_child_name == "advanced";
-            break;
-        case ButtonMode.FINANCIAL:
-            if (fin_panel != null)
-                converter.view_more_active = prog_view_more_button.active = (fin_panel as Hdy.Leaflet).visible_child_name == "advanced";
-            break;
-        case ButtonMode.PROGRAMMING:
-            if (prog_panel != null)
-                converter.view_more_active = prog_view_more_button.active = prog_leaflet.visible_child_name == "advanced";
-            break;
-        }
-    }
-
     private Gtk.Widget load_mode (ButtonMode mode)
     {
         Gtk.Builder builder;
