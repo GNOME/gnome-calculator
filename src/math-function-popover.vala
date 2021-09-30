@@ -28,9 +28,13 @@ public class MathFunctionPopover : Gtk.Popover
     [GtkChild]
     private unowned Gtk.SpinButton add_arguments_button;
 
+    private ListStore model;
+
     public MathFunctionPopover (MathEquation equation)
     {
         this.equation = equation;
+
+        model = new ListStore(typeof(MathFunction));
 
         FunctionManager function_manager = FunctionManager.get_default_function_manager ();
         var names = function_manager.get_names ();
@@ -38,22 +42,25 @@ public class MathFunctionPopover : Gtk.Popover
         for (var i = 0; names[i] != null; i++)
         {
             var function = function_manager[names[i]];
-            function_list.add (make_function_row (function));
+            model.insert_sorted (function, function_compare);
         }
 
-        // Sort list
-        function_list.set_sort_func (function_list_sort);
-
         function_manager.function_added.connect ((function) => {
-            function_list.add (make_function_row (function));
+            model.insert_sorted (function, function_compares);
         });
         function_manager.function_edited.connect ((function) => {
-            function_list.remove (find_row_for_function (function));
-            function_list.add (make_function_row (function));
+            uint position;
+            model.find (function, out position);
+            model.remove (position);
+            model.insert_sorted (function, function_compare);
         });
         function_manager.function_deleted.connect ((function) => {
-            function_list.remove (find_row_for_function (function));
+            uint position;
+            model.find (function, out position);
+            model.remove (position);
         });
+
+        function_list.bind_model (model, make_function_row);
 
         add_arguments_button.set_range (1, 10);
         add_arguments_button.set_increments (1, 1);
@@ -148,13 +155,9 @@ public class MathFunctionPopover : Gtk.Popover
         function_manager.delete (function.name);
     }
 
-    private Gtk.ListBoxRow make_function_row (MathFunction function)
+    private Gtk.Widget make_function_row (Object param)
     {
-        var row = new Gtk.ListBoxRow ();
-        row.get_style_context ().add_class ("popover-row");
-        row.set_data<MathFunction> ("function", function);
-        row.set_tooltip_text ("%s".printf (function.description));
-
+        MathFunction function = param as MathFunction;
         var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
 
         var expression = "(x)";
@@ -181,18 +184,12 @@ public class MathFunctionPopover : Gtk.Popover
             button.clicked.connect (delete_function_cb);
             hbox.pack_start (button, false, true, 0);
         }
-
-        row.add (hbox);
-        row.show_all ();
-
-        return row;
+        hbox.show_all ();
+        return hbox;
     }
 
-    private int function_list_sort (Gtk.ListBoxRow row1, Gtk.ListBoxRow row2)
+    private int function_compare (Object function1, Object function2)
     {
-        var function1 = row1.get_data<MathFunction> ("function");
-        var function2 = row2.get_data<MathFunction> ("function");
-
-        return strcmp (function1.name, function2.name);
+        return strcmp ((function1 as MathFunction).name, (function2 as MathFunction).name);
     }
 }
