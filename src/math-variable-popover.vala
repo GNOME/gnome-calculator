@@ -79,19 +79,11 @@ public class MathVariablePopover : Gtk.Popover
     }
 
     [GtkCallback]
-    private bool variable_name_key_press_cb (Gtk.Widget widget, Gdk.EventKey event)
+    private void variable_name_changed_cb (Gtk.Editable editable)
     {
-        /* Can't have whitespace in names, so replace with underscores */
-        if (event.keyval == Gdk.Key.space || event.keyval == Gdk.Key.KP_Space)
-            event.keyval = Gdk.Key.underscore;
-
-        return false;
-    }
-
-    [GtkCallback]
-    private void variable_name_changed_cb ()
-    {
-        store_variable_button.sensitive = (variable_name_entry.get_text () != "");
+        var entry = editable as Gtk.Entry;
+        entry.text = entry.text.replace (" ", "_");
+        store_variable_button.sensitive = (entry.text != "");
     }
 
     [GtkCallback]
