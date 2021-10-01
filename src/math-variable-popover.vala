@@ -48,7 +48,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
 
         variable_list.bind_model (model, (variable) => make_item_row (variable as MathVariable));
         equation.history_signal.connect (this.handler);
-
+        item_deleted.connect (delete_variable_cb);
     }
 
     protected override int get_item_index (MathVariable item)
@@ -98,16 +98,23 @@ public class MathVariablePopover : MathPopover<MathVariable>
         variable_name_entry.set_text ("");
     }
 
-    private void delete_variable_cb (Gtk.Widget widget)
+    private void delete_variable_cb (MathVariable variable)
     {
-        var name = widget.get_data<string> ("variable_name");
-        equation.variables.delete (name);
+        equation.variables.delete (variable.name);
     }
 
-    protected override Gtk.Widget make_item_row (MathVariable variable)
+    protected override bool is_deletable (MathVariable variable)
     {
-        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+        return !(variable.name in RESERVED_VARIABLE_NAMES);
+    }
 
+    protected override bool is_editable (MathVariable variable)
+    {
+        return false;
+    }
+
+    protected override string get_item_text (MathVariable variable)
+    {
         string text;
         if (variable.value != null)
         {
@@ -116,24 +123,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
         }
         else
             text = "<b>%s</b>".printf (variable.name);
-
-        var label = new Gtk.Label (text);
-        label.set_margin_start (6);
-        label.set_use_markup (true);
-        label.halign = Gtk.Align.START;
-        hbox.pack_start (label, true, true, 0);
-
-        if (!(variable.name in RESERVED_VARIABLE_NAMES))
-        {
-            var button = new Gtk.Button.from_icon_name ("list-remove-symbolic");
-            button.get_style_context ().add_class ("flat");
-            button.set_data<string> ("variable_name", variable.name);
-            button.clicked.connect (delete_variable_cb);
-            hbox.pack_start (button, false, true, 0);
-        }
-
-        hbox.show_all ();
-        return hbox;
+        return text;
     }
 
 }

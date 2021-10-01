@@ -43,6 +43,50 @@ public abstract class MathPopover<T> : Gtk.Popover
 
     protected abstract int get_item_index (T item);
 
-    protected abstract Gtk.Widget make_item_row (T item);
+    protected abstract bool is_deletable (T item);
+    protected abstract bool is_editable (T item);
+    protected abstract string get_item_text (T item);
 
+    public signal void item_edited(T item);
+    public signal void item_deleted(T item);
+
+    protected Gtk.Widget make_item_row (T item)
+    {
+        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+
+        var label = new Gtk.Label (get_item_text (item));
+        label.set_margin_start (6);
+        label.set_use_markup (true);
+        label.halign = Gtk.Align.START;
+        hbox.pack_start (label, true, true, 0);
+
+        if (is_editable (item))
+        {
+            var button = new Gtk.Button.from_icon_name ("document-edit-symbolic");
+            button.get_style_context ().add_class ("flat");
+            button.set_data<Object> ("object", item as Object);
+            button.clicked.connect (save_function_cb);
+            hbox.pack_start (button, false, true, 0);
+        }
+        if (is_deletable (item))
+        {
+            var button = new Gtk.Button.from_icon_name ("list-remove-symbolic");
+            button.get_style_context ().add_class ("flat");
+            button.set_data<Object> ("object", item as Object);
+            button.clicked.connect (delete_function_cb);
+            hbox.pack_start (button, false, true, 0);
+        }
+        hbox.show_all ();
+        return hbox;
+    }
+
+    private void save_function_cb (Gtk.Widget widget)
+    {
+        item_edited((T)widget.get_data<Object> ("object"));
+    }
+
+    private void delete_function_cb (Gtk.Widget widget)
+    {
+        item_deleted((T)widget.get_data<Object> ("object"));
+    }
 }

@@ -38,6 +38,24 @@ public class MathFunctionPopover : MathPopover<MathFunction>
 
         add_arguments_button.set_range (1, 10);
         add_arguments_button.set_increments (1, 1);
+        item_edited.connect (function_edited_cb);
+        item_deleted.connect (function_deleted_cb);
+    }
+
+    private void function_edited_cb (MathFunction function)
+    {
+        var function_to_edit = "%s(%s)=%s@%s".printf (function.name,
+                                                      string.joinv (";", function.arguments),
+                                                      function.expression,
+                                                      function.description);
+        equation.clear ();
+        equation.insert (function_to_edit);
+    }
+
+    private void function_deleted_cb (MathFunction function)
+    {
+        var function_manager = FunctionManager.get_default_function_manager ();
+        function_manager.delete (function.name);
     }
 
     [GtkCallback]
@@ -91,57 +109,25 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         equation.insert (name);
     }
 
-    private void save_function_cb (Gtk.Widget widget)
+    protected override bool is_deletable (MathFunction function)
     {
-        var function = widget.get_data<MathFunction> ("function");
-        var function_to_edit = "%s(%s)=%s@%s".printf (function.name,
-                                                      string.joinv (";", function.arguments),
-                                                      function.expression,
-                                                      function.description);
-        equation.clear ();
-        equation.insert (function_to_edit);
+        return function.is_custom_function ();
     }
 
-    private void delete_function_cb (Gtk.Widget widget)
+    protected override bool is_editable (MathFunction function)
     {
-        var function = widget.get_data<MathFunction> ("function");
-
-        var function_manager = FunctionManager.get_default_function_manager ();
-        function_manager.delete (function.name);
+        return function.is_custom_function ();
     }
 
-    protected override Gtk.Widget make_item_row (MathFunction function)
+    protected override string get_item_text (MathFunction function)
     {
-        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-
         var expression = "(x)";
         if (function.is_custom_function ())
             expression = "(%s)".printf (string.joinv (";", function.arguments));
 
-        var label = new Gtk.Label ("<b>%s</b>%s".printf (function.name, expression));
-        label.set_margin_start (6);
-        label.set_use_markup (true);
-        label.halign = Gtk.Align.START;
-        hbox.pack_start (label, true, true, 0);
-
-        if (function.is_custom_function ())
-        {
-            var button = new Gtk.Button.from_icon_name ("document-edit-symbolic");
-            button.get_style_context ().add_class ("flat");
-            button.set_data<MathFunction> ("function", function);
-            button.clicked.connect (save_function_cb);
-            hbox.pack_start (button, false, true, 0);
-
-            button = new Gtk.Button.from_icon_name ("list-remove-symbolic");
-            button.get_style_context ().add_class ("flat");
-            button.set_data<MathFunction> ("function", function);
-            button.clicked.connect (delete_function_cb);
-            hbox.pack_start (button, false, true, 0);
-        }
-        hbox.show_all ();
-        return hbox;
+        string text = "<b>%s</b>%s".printf (function.name, expression);
+        return text;
     }
-
 
     protected override int get_item_index (MathFunction item)
     {
