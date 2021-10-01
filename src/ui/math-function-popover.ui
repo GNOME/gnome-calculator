@@ -32,7 +32,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="placeholder_text" translatable="yes">New function</property>
-            <signal name="button_press_event" handler="function_name_mouse_click_cb" swapped="no"/>
+            <signal name="focus" handler="function_name_focus_cb" swapped="no"/>
             <signal name="changed" handler="function_name_entry_changed_cb" swapped="no"/>
             <signal name="activate" handler="add_function_cb" swapped="no"/>
           </object>

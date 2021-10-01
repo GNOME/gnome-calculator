@@ -74,7 +74,7 @@ public class MathFunctionPopover : Gtk.Popover
     }
 
     [GtkCallback]
-    private bool function_name_mouse_click_cb (Gtk.Widget widget, Gdk.EventButton event)
+    private bool function_name_focus_cb (Gtk.Widget widget, Gtk.DirectionType direction)
     {
         if (!this.function_name_entry_placeholder_reseted)
         {
