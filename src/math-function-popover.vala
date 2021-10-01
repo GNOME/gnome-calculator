@@ -50,14 +50,14 @@ public class MathFunctionPopover : Gtk.Popover
         });
         function_manager.function_edited.connect ((function) => {
             uint position;
-            model.find (function, out position);
-            model.remove (position);
+            if (model.find_with_equal_func (function, (a, b) => (function_compare (a,b) == 0), out position))
+                model.remove (position);
             model.insert_sorted (function, function_compare);
         });
         function_manager.function_deleted.connect ((function) => {
             uint position;
-            model.find (function, out position);
-            model.remove (position);
+            if (model.find_with_equal_func (function, (a, b) => (function_compare (a,b) == 0), out position))
+                model.remove (position);
         });
 
         function_list.bind_model (model, make_function_row);
@@ -66,20 +66,10 @@ public class MathFunctionPopover : Gtk.Popover
         add_arguments_button.set_increments (1, 1);
     }
 
-    private Gtk.ListBoxRow? find_row_for_function (MathFunction function)
-    {
-        weak Gtk.ListBoxRow? row = null;
-        function_list.foreach ((child) => {
-            if (function.name == child.get_data<MathFunction> ("function").name)
-                row = child as Gtk.ListBoxRow;
-        });
-        return row;
-    }
-
     [GtkCallback]
     private void insert_function_cb (Gtk.ListBoxRow row)
     {
-        var function = row.get_data<MathFunction> ("function");
+        var function = model.get_item (row.get_index ()) as MathFunction;
         equation.insert (function.name + "()");
 
         // Place the cursor between the parentheses after inserting the function
@@ -102,21 +92,12 @@ public class MathFunctionPopover : Gtk.Popover
     }
 
     [GtkCallback]
-    private bool function_name_key_press_cb (Gtk.Widget widget, Gdk.EventKey event)
+    private void function_name_entry_changed_cb (Gtk.Editable editable)
     {
         this.function_name_entry_placeholder_reseted = true;
-
-        /* Can't have whitespace in names, so replace with underscores */
-        if (event.keyval == Gdk.Key.space || event.keyval == Gdk.Key.KP_Space)
-            event.keyval = Gdk.Key.underscore;
-
-        return false;
-    }
-
-    [GtkCallback]
-    private void function_name_changed_cb ()
-    {
-        add_function_button.sensitive = function_name_entry.get_text () != "";
+        var entry = editable as Gtk.Entry;
+        entry.text = entry.text.replace (" ", "_");
+        add_function_button.sensitive = entry.text != "";
     }
 
     [GtkCallback]
@@ -172,7 +153,7 @@ public class MathFunctionPopover : Gtk.Popover
 
         if (function.is_custom_function ())
         {
-            var button = new Gtk.Button.from_icon_name ("edit-symbolic");
+            var button = new Gtk.Button.from_icon_name ("document-edit-symbolic");
             button.get_style_context ().add_class ("flat");
             button.set_data<MathFunction> ("function", function);
             button.clicked.connect (save_function_cb);
@@ -188,8 +169,9 @@ public class MathFunctionPopover : Gtk.Popover
         return hbox;
     }
 
-    private int function_compare (Object function1, Object function2)
+    private static int function_compare (Object function1, Object function2)
     {
         return strcmp ((function1 as MathFunction).name, (function2 as MathFunction).name);
     }
+
 }
