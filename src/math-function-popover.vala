@@ -30,40 +30,34 @@ public class MathFunctionPopover : Gtk.Popover
 
     private ListStore model;
 
-    public MathFunctionPopover (MathEquation equation)
+    public MathFunctionPopover (MathEquation equation, ListStore model)
     {
         this.equation = equation;
 
-        model = new ListStore(typeof(MathFunction));
-
-        FunctionManager function_manager = FunctionManager.get_default_function_manager ();
-        var names = function_manager.get_names ();
-
-        for (var i = 0; names[i] != null; i++)
-        {
-            var function = function_manager[names[i]];
-            model.insert_sorted (function, function_compare);
-        }
-
-        function_manager.function_added.connect ((function) => {
-            model.insert_sorted (function, function_compare);
-        });
-        function_manager.function_edited.connect ((function) => {
-            uint position;
-            if (model.find_with_equal_func (function, (a, b) => (function_compare (a,b) == 0), out position))
-                model.remove (position);
-            model.insert_sorted (function, function_compare);
-        });
-        function_manager.function_deleted.connect ((function) => {
-            uint position;
-            if (model.find_with_equal_func (function, (a, b) => (function_compare (a,b) == 0), out position))
-                model.remove (position);
-        });
+        this.model = model;
 
         function_list.bind_model (model, make_function_row);
 
         add_arguments_button.set_range (1, 10);
         add_arguments_button.set_increments (1, 1);
+    }
+
+    public void item_added_cb (MathFunction function)
+    {
+        model.insert_sorted (function, function_compare);
+    }
+
+    public void item_edited_cb (MathFunction function)
+    {
+        item_deleted_cb (function);
+        item_added_cb (function);
+    }
+
+    public void item_deleted_cb (MathFunction function)
+    {
+        uint position;
+        if (model.find_with_equal_func (function, (a, b) => (function_compare (a,b) == 0), out position))
+            model.remove (position);
     }
 
     [GtkCallback]

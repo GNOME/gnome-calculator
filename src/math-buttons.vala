@@ -427,8 +427,15 @@ public class MathButtons : Gtk.Box
         if (menu_button != null)
             menu_button.popover = new MathVariablePopover (equation);
         menu_button = builder.get_object ("calc_function_button") as Gtk.MenuButton;
+
+        FunctionManager function_manager = FunctionManager.get_default_function_manager ();
         if (menu_button != null)
-            menu_button.popover = new MathFunctionPopover (equation);
+        {
+            var model = new ListStore(typeof(MathFunction));
+            MathFunctionPopover math_popover = new MathFunctionPopover (equation, model);
+            build_functions_model (model, math_popover, function_manager);
+            menu_button.popover = math_popover;
+        }
 
         if (mode == ButtonMode.PROGRAMMING)
         {
@@ -470,6 +477,22 @@ public class MathButtons : Gtk.Box
         update_view_more_visible ();
 
         return panel;
+    }
+
+    private ListStore build_functions_model (ListStore model, MathFunctionPopover math_popover, FunctionManager function_manager)
+    {
+        var names = function_manager.get_names ();
+
+        for (var i = 0; names[i] != null; i++)
+        {
+            var function = function_manager[names[i]];
+            math_popover.item_added_cb (function);
+        }
+
+        function_manager.function_added.connect (math_popover.item_added_cb);
+        function_manager.function_edited.connect (math_popover.item_edited_cb);
+        function_manager.function_deleted.connect (math_popover.item_deleted_cb);
+        return model;
     }
 
     private void converter_changed_cb ()
