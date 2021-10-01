@@ -425,7 +425,12 @@ public class MathButtons : Gtk.Box
             menu_button.menu_model = create_word_size_menu ();
         menu_button = builder.get_object ("calc_memory_button") as Gtk.MenuButton;
         if (menu_button != null)
-            menu_button.popover = new MathVariablePopover (equation);
+        {
+            var model = new ListStore(typeof(MathVariable));
+            MathVariablePopover math_popover = new MathVariablePopover (equation, model, (a,b) => MathVariable.name_compare_func(a as MathVariable, b as MathVariable));
+            fill_variables_model (model, math_popover, equation);
+            menu_button.popover = math_popover;
+        }
         menu_button = builder.get_object ("calc_function_button") as Gtk.MenuButton;
 
         FunctionManager function_manager = FunctionManager.get_default_function_manager ();
@@ -433,7 +438,7 @@ public class MathButtons : Gtk.Box
         {
             var model = new ListStore(typeof(MathFunction));
             MathFunctionPopover math_popover = new MathFunctionPopover (equation, model);
-            build_functions_model (model, math_popover, function_manager);
+            fill_functions_model (model, math_popover, function_manager);
             menu_button.popover = math_popover;
         }
 
@@ -479,7 +484,7 @@ public class MathButtons : Gtk.Box
         return panel;
     }
 
-    private ListStore build_functions_model (ListStore model, MathPopover<MathFunction> math_popover, FunctionManager function_manager)
+    private void fill_functions_model (ListStore model, MathPopover<MathFunction> math_popover, FunctionManager function_manager)
     {
         var names = function_manager.get_names ();
 
@@ -492,7 +497,23 @@ public class MathButtons : Gtk.Box
         function_manager.function_added.connect (f=>math_popover.item_added_cb(f as MathFunction));
         function_manager.function_edited.connect (f=>math_popover.item_edited_cb(f as MathFunction));
         function_manager.function_deleted.connect (f=>math_popover.item_deleted_cb(f as MathFunction));
-        return model;
+    }
+
+    private void fill_variables_model (ListStore model, MathPopover<MathVariable> math_popover, MathEquation equation)
+    {
+        // Fill variable list
+        var names = equation.variables.get_names ();
+        for (var i = 0; names[i] != null; i++)
+        {
+            var value = equation.variables[names[i]];
+            math_popover.item_added_cb (new MathVariable(names[i], value));
+        }
+
+        math_popover.item_added_cb (new MathVariable ("rand", null));
+        // Listen for variable changes
+        equation.variables.variable_added.connect ((name, value) => math_popover.item_added_cb (new MathVariable (name, value)));
+        equation.variables.variable_edited.connect ((name, value) => math_popover.item_edited_cb (new MathVariable (name, value)));
+        equation.variables.variable_deleted.connect ((name) => math_popover.item_deleted_cb (new MathVariable (name, null)));
     }
 
     private void converter_changed_cb ()

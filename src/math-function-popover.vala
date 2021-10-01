@@ -143,7 +143,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     }
 
 
-    public override int get_item_index (MathFunction item)
+    protected override int get_item_index (MathFunction item)
     {
         uint position;
         if (model.find_with_equal_func (item as Object, (a, b) => (MathFunction.equal_func(a as MathFunction, b as MathFunction)), out position))

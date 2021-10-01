@@ -36,13 +36,13 @@ public abstract class MathPopover<T> : Gtk.Popover
 
     public void item_deleted_cb (T item)
     {
-        uint position = get_item_index (item);
+        int position = get_item_index (item);
         if (position >= 0)
             model.remove (position);
     }
 
-    public abstract int get_item_index (T item);
+    protected abstract int get_item_index (T item);
 
-    protected abstract Gtk.Widget make_item_row (MathFunction function);
+    protected abstract Gtk.Widget make_item_row (T item);
 
 }
