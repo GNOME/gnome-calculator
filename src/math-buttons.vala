@@ -479,7 +479,7 @@ public class MathButtons : Gtk.Box
         return panel;
     }
 
-    private ListStore build_functions_model (ListStore model, MathFunctionPopover math_popover, FunctionManager function_manager)
+    private ListStore build_functions_model (ListStore model, MathPopover<MathFunction> math_popover, FunctionManager function_manager)
     {
         var names = function_manager.get_names ();
 
@@ -489,9 +489,9 @@ public class MathButtons : Gtk.Box
             math_popover.item_added_cb (function);
         }
 
-        function_manager.function_added.connect (math_popover.item_added_cb);
-        function_manager.function_edited.connect (math_popover.item_edited_cb);
-        function_manager.function_deleted.connect (math_popover.item_deleted_cb);
+        function_manager.function_added.connect (f=>math_popover.item_added_cb(f as MathFunction));
+        function_manager.function_edited.connect (f=>math_popover.item_edited_cb(f as MathFunction));
+        function_manager.function_deleted.connect (f=>math_popover.item_deleted_cb(f as MathFunction));
         return model;
     }
 

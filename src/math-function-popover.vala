@@ -8,13 +8,15 @@
  * license.
  */
 
+class Something
+{
+
+}
 [GtkTemplate (ui = "/org/gnome/calculator/math-function-popover.ui")]
-public class MathFunctionPopover : Gtk.Popover
+public class MathFunctionPopover : MathPopover<MathFunction>
 {
     // Used to pretty print function arguments, e.g. f(x, y, z)
     private static string[] FUNCTION_ARGS = {"x","y","z","u","v","w","a","b","c","d"};
-
-    private MathEquation equation;
 
     [GtkChild]
     private unowned Gtk.ListBox function_list;
@@ -28,36 +30,14 @@ public class MathFunctionPopover : Gtk.Popover
     [GtkChild]
     private unowned Gtk.SpinButton add_arguments_button;
 
-    private ListStore model;
-
     public MathFunctionPopover (MathEquation equation, ListStore model)
     {
-        this.equation = equation;
+        base (equation, model, (a,b) => MathFunction.compare_func (a as MathFunction,b as MathFunction));
 
-        this.model = model;
-
-        function_list.bind_model (model, make_function_row);
+        function_list.bind_model (model, (item) => make_item_row(item as MathFunction));
 
         add_arguments_button.set_range (1, 10);
         add_arguments_button.set_increments (1, 1);
-    }
-
-    public void item_added_cb (MathFunction function)
-    {
-        model.insert_sorted (function, function_compare);
-    }
-
-    public void item_edited_cb (MathFunction function)
-    {
-        item_deleted_cb (function);
-        item_added_cb (function);
-    }
-
-    public void item_deleted_cb (MathFunction function)
-    {
-        uint position;
-        if (model.find_with_equal_func (function, (a, b) => (function_compare (a,b) == 0), out position))
-            model.remove (position);
     }
 
     [GtkCallback]
@@ -130,9 +110,8 @@ public class MathFunctionPopover : Gtk.Popover
         function_manager.delete (function.name);
     }
 
-    private Gtk.Widget make_function_row (Object param)
+    protected override Gtk.Widget make_item_row (MathFunction function)
     {
-        MathFunction function = param as MathFunction;
         var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
 
         var expression = "(x)";
@@ -163,9 +142,14 @@ public class MathFunctionPopover : Gtk.Popover
         return hbox;
     }
 
-    private static int function_compare (Object function1, Object function2)
+
+    public override int get_item_index (MathFunction item)
     {
-        return strcmp ((function1 as MathFunction).name, (function2 as MathFunction).name);
+        uint position;
+        if (model.find_with_equal_func (item as Object, (a, b) => (MathFunction.equal_func(a as MathFunction, b as MathFunction)), out position))
+            return (int)position;
+        else
+            return -1;
     }
 
 }
