@@ -46,7 +46,7 @@ public class MathFunctionPopover : Gtk.Popover
         }
 
         function_manager.function_added.connect ((function) => {
-            model.insert_sorted (function, function_compares);
+            model.insert_sorted (function, function_compare);
         });
         function_manager.function_edited.connect ((function) => {
             uint position;
