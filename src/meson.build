@@ -5,6 +5,7 @@ gnome_calculator_vala_sources = [
   'math-converter.vala',
   'math-display.vala',
   'math-preferences.vala',
+  'math-popover.vala',
   'math-function-popover.vala',
   'math-variable-popover.vala',
   'math-window.vala',
