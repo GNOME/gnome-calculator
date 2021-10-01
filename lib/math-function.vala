@@ -31,6 +31,16 @@ public class MathFunction : Object
         get { return _description; }
     }
 
+    public static int name_compare_func (MathFunction function1, MathFunction function2)
+    {
+        return strcmp (function1.name, function2.name);
+    }
+
+    public static bool name_equal_func (MathFunction function1, MathFunction function2)
+    {
+        return function1.name == function2.name;
+    }
+
     public MathFunction (string function_name, string[] arguments, string? expression, string? description)
     {
         _name = function_name;

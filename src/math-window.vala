@@ -16,7 +16,7 @@ public class MathWindow : Hdy.ApplicationWindow
     public MathEquation equation { get { return _equation; } }
 
     private MathDisplay _display;
-    public MathDisplay display { get { return _display; } }
+    public MathDisplay math_display { get { return _display; } }
     private MathButtons _buttons;
     public MathButtons buttons { get { return _buttons; } }
     private bool right_aligned;
@@ -30,6 +30,8 @@ public class MathWindow : Hdy.ApplicationWindow
     private unowned Gtk.Grid grid;
     [GtkChild]
     private unowned MathConverter converter;
+
+    private Gtk.EventControllerKey event_controller;
 
     private const ActionEntry[] window_entries =
     {
@@ -56,13 +58,17 @@ public class MathWindow : Hdy.ApplicationWindow
         converter.set_category (null);
         converter.set_conversion (equation.source_units, equation.target_units);
 
+        event_controller = new Gtk.EventControllerKey (this as Gtk.Widget);
+        // (this as Gtk.Widget).add_controller (event_controller);
+        event_controller.key_pressed.connect (key_press_cb);
+
         _display = new MathDisplay (equation);
         grid.attach (_display, 0, 1, 1, 1);
         _display.show ();
         _display.grabfocus ();
 
         _buttons = new MathButtons (equation);
-        grid.add(_buttons);
+        grid.attach_next_to(_buttons, _display, Gtk.PositionType.BOTTOM);
 
         remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;
 
@@ -125,7 +131,7 @@ public class MathWindow : Hdy.ApplicationWindow
             converter.show ();
         }
 
-        display.set_enable_osk (remove_buttons);
+        _display.set_enable_osk (remove_buttons);
     }
 
     public void critical_error (string title, string contents)
@@ -142,13 +148,11 @@ public class MathWindow : Hdy.ApplicationWindow
         destroy ();
     }
 
-    protected override bool key_press_event (Gdk.EventKey event)
+    protected bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType state)
     {
-        var result = base.key_press_event (event);
-
-        if (buttons.mode == ButtonMode.PROGRAMMING && (event.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK)
+        if (buttons.mode == ButtonMode.PROGRAMMING && (state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK)
         {
-            switch (event.keyval)
+            switch (keyval)
             {
             /* Binary */
             case Gdk.Key.b:
@@ -168,8 +172,7 @@ public class MathWindow : Hdy.ApplicationWindow
                 return true;
             }
         }
-
-        return result;
+        return false;
     }
 
     [GtkCallback]
@@ -216,7 +219,7 @@ public class MathWindow : Hdy.ApplicationWindow
         popover.hide ();
         menu_button.set_active (false);
 
-        display.grab_focus ();
+        _display.grab_focus ();
 
         var mode = ButtonMode.BASIC;
         var mode_str = parameter.get_string (null);

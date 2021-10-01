@@ -21,6 +21,8 @@ public class MathDisplay : Gtk.Box
     /* Buffer that shows errors etc */
     Gtk.TextBuffer info_buffer;
 
+    Gtk.EventControllerKey event_controller;
+
     /* Spinner widget that shows if we're calculating a response */
     Gtk.Spinner spinner;
     public bool completion_visible { get; set;}
@@ -65,7 +67,8 @@ public class MathDisplay : Gtk.Box
         source_view.set_size_request (20, 20);
         source_view.get_accessible ().set_role (Atk.Role.EDITBAR);
         //FIXME:<property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
-        source_view.key_press_event.connect (key_press_cb);
+        event_controller = new Gtk.EventControllerKey(source_view); //.key_press_event.connect (key_press_cb);
+        event_controller.key_pressed.connect (key_press_cb);
         create_autocompletion ();
         completion_visible = false;
         completion_selected = false;
@@ -152,31 +155,27 @@ public class MathDisplay : Gtk.Box
         }
     }
 
-    protected override bool key_press_event (Gdk.EventKey event)
+    private bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType mod_state)
     {
-        return source_view.key_press_event (event);
-    }
-
-    private bool key_press_cb (Gdk.EventKey event)
-    {
+        info ("event\n");
         /* Clear on escape */
-        var state = event.state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.MOD1_MASK);
+        var state = mod_state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.MOD1_MASK);
 
-        if ((event.keyval == Gdk.Key.Escape && state == 0 && !completion_visible) ||
-            (event.keyval == Gdk.Key.Delete && (event.state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK))
+        if ((keyval == Gdk.Key.Escape && state == 0 && !completion_visible) ||
+            (keyval == Gdk.Key.Delete && (mod_state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK))
         {
             equation.clear ();
             status_changed_cb ();
             return true;
-        } else if (event.keyval == Gdk.Key.Escape && state == 0 && completion_visible)
+        } else if (keyval == Gdk.Key.Escape && state == 0 && completion_visible)
         /* If completion window is shown and escape is pressed, hide it */
         {
             Gtk.SourceCompletion completion = source_view.get_completion ();
             completion.hide ();
             return true;
-        } else if (state == Gdk.ModifierType.MOD1_MASK && (event.keyval == Gdk.Key.Left || event.keyval == Gdk.Key.Right))
+        } else if (state == Gdk.ModifierType.MOD1_MASK && (keyval == Gdk.Key.Left || keyval == Gdk.Key.Right))
         {
-            switch (event.keyval)
+            switch (keyval)
             {
             case Gdk.Key.Left:
                 history.current -= 1;
@@ -199,7 +198,7 @@ public class MathDisplay : Gtk.Box
 
         /* Treat keypad keys as numbers even when numlock is off */
         uint new_keyval = 0;
-        switch (event.keyval)
+        switch (keyval)
         {
         case Gdk.Key.KP_Insert:
             new_keyval = Gdk.Key.@0;
@@ -238,25 +237,24 @@ public class MathDisplay : Gtk.Box
 
         if (new_keyval != 0)
         {
-            var new_event = event; // FIXME: Does this copy?
-            new_event.keyval = new_keyval;
-            return key_press_event (new_event);
+            info ("forwarding\n");
+            return key_press_cb (controller, new_keyval, keycode, mod_state);
         }
 
-        var c = Gdk.keyval_to_unicode (event.keyval);
+        var c = Gdk.keyval_to_unicode (keyval);
 
         /* Solve on [=] if the input is not a variable name */
-        if (event.keyval == Gdk.Key.equal || event.keyval == Gdk.Key.KP_Equal)
+        if (keyval == Gdk.Key.equal || keyval == Gdk.Key.KP_Equal)
         {
             if (!(only_variable_name.match((string) equation.equation)
                 || only_function_definition.match((string) equation.equation)))
             {
-                event.keyval = Gdk.Key.KP_Enter;
+                keyval = Gdk.Key.KP_Enter;
             }
         }
 
         /* Solve on enter */
-        if (event.keyval == Gdk.Key.Return || event.keyval == Gdk.Key.KP_Enter)
+        if (keyval == Gdk.Key.Return || keyval == Gdk.Key.KP_Enter)
         {
             if (completion_visible && completion_selected)
                 return false;
@@ -265,11 +263,11 @@ public class MathDisplay : Gtk.Box
         }
 
         /* Numeric keypad will insert '.' or ',' depending on layout */
-        if ((event.keyval == Gdk.Key.KP_Decimal) ||
-            (event.keyval == Gdk.Key.KP_Separator) ||
-            (event.keyval == Gdk.Key.period) ||
-            (event.keyval == Gdk.Key.decimalpoint) ||
-            (event.keyval == Gdk.Key.comma))
+        if ((keyval == Gdk.Key.KP_Decimal) ||
+            (keyval == Gdk.Key.KP_Separator) ||
+            (keyval == Gdk.Key.period) ||
+            (keyval == Gdk.Key.decimalpoint) ||
+            (keyval == Gdk.Key.comma))
         {
             equation.insert_numeric_point ();
             return true;
@@ -308,7 +306,7 @@ public class MathDisplay : Gtk.Box
         /* Shortcuts */
         if (state == Gdk.ModifierType.CONTROL_MASK)
         {
-            switch (event.keyval)
+            switch (keyval)
             {
             case Gdk.Key.bracketleft:
                 equation.insert ("⌈");
@@ -350,7 +348,7 @@ public class MathDisplay : Gtk.Box
         }
         if (state == Gdk.ModifierType.MOD1_MASK)
         {
-            switch (event.keyval)
+            switch (keyval)
             {
             case Gdk.Key.bracketleft:
                 equation.insert ("⌊");
@@ -365,7 +363,7 @@ public class MathDisplay : Gtk.Box
         {
             if (!equation.has_selection)
                 equation.remove_trailing_spaces ();
-            switch (event.keyval)
+            switch (keyval)
             {
             case Gdk.Key.@0:
             case Gdk.Key.KP_0:
@@ -413,7 +411,7 @@ public class MathDisplay : Gtk.Box
         {
             if (!equation.has_selection)
                 equation.remove_trailing_spaces ();
-            switch (event.keyval)
+            switch (keyval)
             {
             case Gdk.Key.@0:
             case Gdk.Key.KP_0:

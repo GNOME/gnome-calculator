@@ -327,28 +327,6 @@ public class MathButtons : Gtk.Box
             prog_view_more_button.visible = visible;
     }
 
-    private void update_view_more_active ()
-    {
-        switch (mode)
-        {
-        default:
-        case ButtonMode.BASIC:
-            break;
-        case ButtonMode.ADVANCED:
-            if (adv_panel != null)
-                converter.view_more_active = prog_view_more_button.active = (adv_panel as Hdy.Leaflet).visible_child_name == "advanced";
-            break;
-        case ButtonMode.FINANCIAL:
-            if (fin_panel != null)
-                converter.view_more_active = prog_view_more_button.active = (fin_panel as Hdy.Leaflet).visible_child_name == "advanced";
-            break;
-        case ButtonMode.PROGRAMMING:
-            if (prog_panel != null)
-                converter.view_more_active = prog_view_more_button.active = prog_leaflet.visible_child_name == "advanced";
-            break;
-        }
-    }
-
     private Gtk.Widget load_mode (ButtonMode mode)
     {
         Gtk.Builder builder;
@@ -447,10 +425,22 @@ public class MathButtons : Gtk.Box
             menu_button.menu_model = create_word_size_menu ();
         menu_button = builder.get_object ("calc_memory_button") as Gtk.MenuButton;
         if (menu_button != null)
-            menu_button.popover = new MathVariablePopover (equation);
+        {
+            var model = new ListStore(typeof(MathVariable));
+            MathVariablePopover math_popover = new MathVariablePopover (equation, model, (a,b) => MathVariable.name_compare_func(a as MathVariable, b as MathVariable));
+            fill_variables_model (model, math_popover, equation);
+            menu_button.popover = math_popover;
+        }
         menu_button = builder.get_object ("calc_function_button") as Gtk.MenuButton;
+
+        FunctionManager function_manager = FunctionManager.get_default_function_manager ();
         if (menu_button != null)
-            menu_button.popover = new MathFunctionPopover (equation);
+        {
+            var model = new ListStore(typeof(MathFunction));
+            MathFunctionPopover math_popover = new MathFunctionPopover (equation, model);
+            fill_functions_model (model, math_popover, function_manager);
+            menu_button.popover = math_popover;
+        }
 
         if (mode == ButtonMode.PROGRAMMING)
         {
@@ -492,6 +482,38 @@ public class MathButtons : Gtk.Box
         update_view_more_visible ();
 
         return panel;
+    }
+
+    private void fill_functions_model (ListStore model, MathPopover<MathFunction> math_popover, FunctionManager function_manager)
+    {
+        var names = function_manager.get_names ();
+
+        for (var i = 0; names[i] != null; i++)
+        {
+            var function = function_manager[names[i]];
+            math_popover.item_added_cb (function);
+        }
+
+        function_manager.function_added.connect (f=>math_popover.item_added_cb(f as MathFunction));
+        function_manager.function_edited.connect (f=>math_popover.item_edited_cb(f as MathFunction));
+        function_manager.function_deleted.connect (f=>math_popover.item_deleted_cb(f as MathFunction));
+    }
+
+    private void fill_variables_model (ListStore model, MathPopover<MathVariable> math_popover, MathEquation equation)
+    {
+        // Fill variable list
+        var names = equation.variables.get_names ();
+        for (var i = 0; names[i] != null; i++)
+        {
+            var value = equation.variables[names[i]];
+            math_popover.item_added_cb (new MathVariable(names[i], value));
+        }
+
+        math_popover.item_added_cb (new MathVariable ("rand", null));
+        // Listen for variable changes
+        equation.variables.variable_added.connect ((name, value) => math_popover.item_added_cb (new MathVariable (name, value)));
+        equation.variables.variable_edited.connect ((name, value) => math_popover.item_edited_cb (new MathVariable (name, value)));
+        equation.variables.variable_deleted.connect ((name) => math_popover.item_deleted_cb (new MathVariable (name, null)));
     }
 
     private void converter_changed_cb ()

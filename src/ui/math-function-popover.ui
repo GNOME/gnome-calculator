@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="3.16"/>
-  <template class="MathFunctionPopover" parent="GtkPopover">
+  <template class="MathFunctionPopover" parent="MathPopover">
     <property name="can_focus">False</property>
     <child>
       <object class="GtkBox" id="vbox">
@@ -32,9 +32,8 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="placeholder_text" translatable="yes">New function</property>
-            <signal name="button_press_event" handler="function_name_mouse_click_cb" swapped="no"/>
-            <signal name="key_press_event" handler="function_name_key_press_cb" swapped="no"/>
-            <signal name="changed" handler="function_name_changed_cb" swapped="no"/>
+            <signal name="focus" handler="function_name_focus_cb" swapped="no"/>
+            <signal name="changed" handler="function_name_entry_changed_cb" swapped="no"/>
             <signal name="activate" handler="add_function_cb" swapped="no"/>
           </object>
         </child>

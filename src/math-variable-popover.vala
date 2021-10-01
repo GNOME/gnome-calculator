@@ -8,12 +8,32 @@
  * license.
  */
 
+public class MathVariable : Object
+{
+    public string name;
+    public Number? value;
+
+    public MathVariable (string name, Number? value)
+    {
+        this.name = name;
+        this.value = value;
+    }
+
+    public static int name_compare_func (MathVariable var1, MathVariable var2)
+    {
+        return strcmp (var1.name, var2.name);
+    }
+
+    public static bool name_equal_func (MathVariable var1, MathVariable var2)
+    {
+        return var1.name == var2.name;
+    }
+}
+
 [GtkTemplate (ui = "/org/gnome/calculator/math-variable-popover.ui")]
-public class MathVariablePopover : Gtk.Popover
+public class MathVariablePopover : MathPopover<MathVariable>
 {
     private static string[] RESERVED_VARIABLE_NAMES = {"_", "rand"};
-
-    private MathEquation equation;
 
     [GtkChild]
     private unowned Gtk.ListBox variable_list;
@@ -22,76 +42,42 @@ public class MathVariablePopover : Gtk.Popover
     [GtkChild]
     private unowned Gtk.Button store_variable_button;
 
-    public MathVariablePopover (MathEquation equation)
+    public MathVariablePopover (MathEquation equation, ListStore model, CompareDataFunc compare_func)
     {
-        this.equation = equation;
+        base(equation, model, (a,b) => MathVariable.name_compare_func(a as MathVariable,b as MathVariable));
+
+        variable_list.bind_model (model, (variable) => make_item_row (variable as MathVariable));
         equation.history_signal.connect (this.handler);
+        item_deleted.connect (delete_variable_cb);
+    }
 
-        // Fill variable list
-        var names = equation.variables.get_names ();
-        for (var i = 0; names[i] != null; i++)
-        {
-            var value = equation.variables[names[i]];
-            variable_list.add (make_variable_row (names[i], value));
-        }
-
-        variable_list.add (make_variable_row ("rand", null));
-
-        // Sort list
-        variable_list.set_sort_func (variable_list_sort);
-
-        // Listen for variable changes
-        equation.variables.variable_added.connect ((name, value) => {
-            variable_list.add (make_variable_row (name, value));
-        });
-        equation.variables.variable_edited.connect ((name, value) => {
-            variable_list.remove (find_row_for_variable (name));
-            variable_list.add (make_variable_row (name, value));
-        });
-        equation.variables.variable_deleted.connect ((name) => {
-            variable_list.remove (find_row_for_variable (name));
-        });
+    protected override int get_item_index (MathVariable item)
+    {
+        uint position;
+        if (model.find_with_equal_func (item as Object, (a, b) => (MathVariable.name_equal_func(a as MathVariable, b as MathVariable)), out position))
+            return (int)position;
+        else
+            return -1;
     }
 
     private void handler (string answer, Number number, int number_base, uint representation_base)
     {
-        var row = find_row_for_variable ("_");
-        if (row != null)
-            variable_list.remove (row);
-        variable_list.add (make_variable_row ("_", number));
-    }
-
-    private Gtk.ListBoxRow? find_row_for_variable (string name)
-    {
-        weak Gtk.ListBoxRow? row = null;
-        variable_list.foreach ((child) => {
-            if (name == child.get_data<string> ("variable_name"))
-                row = child as Gtk.ListBoxRow;
-        });
-        return row;
+        item_edited_cb (new MathVariable("_", number));
     }
 
     [GtkCallback]
     private void insert_variable_cb (Gtk.ListBoxRow row)
     {
-        var name = row.get_data<string> ("variable_name");
-        equation.insert (name);
+        var variable = model.get_item (row.get_index ()) as MathVariable;
+        equation.insert (variable.name);
     }
 
     [GtkCallback]
-    private bool variable_name_key_press_cb (Gtk.Widget widget, Gdk.EventKey event)
+    private void variable_name_changed_cb (Gtk.Editable editable)
     {
-        /* Can't have whitespace in names, so replace with underscores */
-        if (event.keyval == Gdk.Key.space || event.keyval == Gdk.Key.KP_Space)
-            event.keyval = Gdk.Key.underscore;
-
-        return false;
-    }
-
-    [GtkCallback]
-    private void variable_name_changed_cb ()
-    {
-        store_variable_button.sensitive = (variable_name_entry.get_text () != "");
+        var entry = editable as Gtk.Entry;
+        entry.text = entry.text.replace (" ", "_");
+        store_variable_button.sensitive = (entry.text != "");
     }
 
     [GtkCallback]
@@ -112,55 +98,32 @@ public class MathVariablePopover : Gtk.Popover
         variable_name_entry.set_text ("");
     }
 
-    private void delete_variable_cb (Gtk.Widget widget)
+    private void delete_variable_cb (MathVariable variable)
     {
-        var name = widget.get_data<string> ("variable_name");
-        equation.variables.delete (name);
+        equation.variables.delete (variable.name);
     }
 
-    private Gtk.ListBoxRow make_variable_row (string name, Number? value)
+    protected override bool is_deletable (MathVariable variable)
     {
-        var row = new Gtk.ListBoxRow ();
-        row.get_style_context ().add_class ("popover-row");
-        row.set_data<string> ("variable_name", name);
+        return !(variable.name in RESERVED_VARIABLE_NAMES);
+    }
 
-        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+    protected override bool is_editable (MathVariable variable)
+    {
+        return false;
+    }
 
+    protected override string get_item_text (MathVariable variable)
+    {
         string text;
-        if (value != null)
+        if (variable.value != null)
         {
-            var value_text = equation.serializer.to_string (value);
-            text = "<b>%s</b> = %s".printf (name, value_text);
+            var value_text = equation.serializer.to_string (variable.value);
+            text = "<b>%s</b> = %s".printf (variable.name, value_text);
         }
         else
-            text = "<b>%s</b>".printf (name);
-
-        var label = new Gtk.Label (text);
-        label.set_margin_start (6);
-        label.set_use_markup (true);
-        label.halign = Gtk.Align.START;
-        hbox.pack_start (label, true, true, 0);
-
-        if (!(name in RESERVED_VARIABLE_NAMES))
-        {
-            var button = new Gtk.Button.from_icon_name ("list-remove-symbolic");
-            button.get_style_context ().add_class ("flat");
-            button.set_data<string> ("variable_name", name);
-            button.clicked.connect (delete_variable_cb);
-            hbox.pack_start (button, false, true, 0);
-        }
-
-        row.add (hbox);
-        row.show_all ();
-
-        return row;
+            text = "<b>%s</b>".printf (variable.name);
+        return text;
     }
 
-    private int variable_list_sort (Gtk.ListBoxRow row1, Gtk.ListBoxRow row2)
-    {
-        string name1 = row1.get_data<string> ("variable_name");
-        string name2 = row2.get_data<string> ("variable_name");
-
-        return strcmp (name1, name2);
-    }
 }

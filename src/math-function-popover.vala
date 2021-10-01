@@ -8,13 +8,15 @@
  * license.
  */
 
+class Something
+{
+
+}
 [GtkTemplate (ui = "/org/gnome/calculator/math-function-popover.ui")]
-public class MathFunctionPopover : Gtk.Popover
+public class MathFunctionPopover : MathPopover<MathFunction>
 {
     // Used to pretty print function arguments, e.g. f(x, y, z)
     private static string[] FUNCTION_ARGS = {"x","y","z","u","v","w","a","b","c","d"};
-
-    private MathEquation equation;
 
     [GtkChild]
     private unowned Gtk.ListBox function_list;
@@ -28,51 +30,38 @@ public class MathFunctionPopover : Gtk.Popover
     [GtkChild]
     private unowned Gtk.SpinButton add_arguments_button;
 
-    public MathFunctionPopover (MathEquation equation)
+    public MathFunctionPopover (MathEquation equation, ListStore model)
     {
-        this.equation = equation;
+        base (equation, model, (a,b) => MathFunction.name_compare_func (a as MathFunction,b as MathFunction));
 
-        FunctionManager function_manager = FunctionManager.get_default_function_manager ();
-        var names = function_manager.get_names ();
-
-        for (var i = 0; names[i] != null; i++)
-        {
-            var function = function_manager[names[i]];
-            function_list.add (make_function_row (function));
-        }
-
-        // Sort list
-        function_list.set_sort_func (function_list_sort);
-
-        function_manager.function_added.connect ((function) => {
-            function_list.add (make_function_row (function));
-        });
-        function_manager.function_edited.connect ((function) => {
-            function_list.remove (find_row_for_function (function));
-            function_list.add (make_function_row (function));
-        });
-        function_manager.function_deleted.connect ((function) => {
-            function_list.remove (find_row_for_function (function));
-        });
+        function_list.bind_model (model, (item) => make_item_row(item as MathFunction));
 
         add_arguments_button.set_range (1, 10);
         add_arguments_button.set_increments (1, 1);
+        item_edited.connect (function_edited_cb);
+        item_deleted.connect (function_deleted_cb);
     }
 
-    private Gtk.ListBoxRow? find_row_for_function (MathFunction function)
+    private void function_edited_cb (MathFunction function)
     {
-        weak Gtk.ListBoxRow? row = null;
-        function_list.foreach ((child) => {
-            if (function.name == child.get_data<MathFunction> ("function").name)
-                row = child as Gtk.ListBoxRow;
-        });
-        return row;
+        var function_to_edit = "%s(%s)=%s@%s".printf (function.name,
+                                                      string.joinv (";", function.arguments),
+                                                      function.expression,
+                                                      function.description);
+        equation.clear ();
+        equation.insert (function_to_edit);
+    }
+
+    private void function_deleted_cb (MathFunction function)
+    {
+        var function_manager = FunctionManager.get_default_function_manager ();
+        function_manager.delete (function.name);
     }
 
     [GtkCallback]
     private void insert_function_cb (Gtk.ListBoxRow row)
     {
-        var function = row.get_data<MathFunction> ("function");
+        var function = model.get_item (row.get_index ()) as MathFunction;
         equation.insert (function.name + "()");
 
         // Place the cursor between the parentheses after inserting the function
@@ -83,7 +72,7 @@ public class MathFunctionPopover : Gtk.Popover
     }
 
     [GtkCallback]
-    private bool function_name_mouse_click_cb (Gtk.Widget widget, Gdk.EventButton event)
+    private bool function_name_focus_cb (Gtk.Widget widget, Gtk.DirectionType direction)
     {
         if (!this.function_name_entry_placeholder_reseted)
         {
@@ -95,21 +84,12 @@ public class MathFunctionPopover : Gtk.Popover
     }
 
     [GtkCallback]
-    private bool function_name_key_press_cb (Gtk.Widget widget, Gdk.EventKey event)
+    private void function_name_entry_changed_cb (Gtk.Editable editable)
     {
         this.function_name_entry_placeholder_reseted = true;
-
-        /* Can't have whitespace in names, so replace with underscores */
-        if (event.keyval == Gdk.Key.space || event.keyval == Gdk.Key.KP_Space)
-            event.keyval = Gdk.Key.underscore;
-
-        return false;
-    }
-
-    [GtkCallback]
-    private void function_name_changed_cb ()
-    {
-        add_function_button.sensitive = function_name_entry.get_text () != "";
+        var entry = editable as Gtk.Entry;
+        entry.text = entry.text.replace (" ", "_");
+        add_function_button.sensitive = entry.text != "";
     }
 
     [GtkCallback]
@@ -129,70 +109,33 @@ public class MathFunctionPopover : Gtk.Popover
         equation.insert (name);
     }
 
-    private void save_function_cb (Gtk.Widget widget)
+    protected override bool is_deletable (MathFunction function)
     {
-        var function = widget.get_data<MathFunction> ("function");
-        var function_to_edit = "%s(%s)=%s@%s".printf (function.name,
-                                                      string.joinv (";", function.arguments),
-                                                      function.expression,
-                                                      function.description);
-        equation.clear ();
-        equation.insert (function_to_edit);
+        return function.is_custom_function ();
     }
 
-    private void delete_function_cb (Gtk.Widget widget)
+    protected override bool is_editable (MathFunction function)
     {
-        var function = widget.get_data<MathFunction> ("function");
-
-        var function_manager = FunctionManager.get_default_function_manager ();
-        function_manager.delete (function.name);
+        return function.is_custom_function ();
     }
 
-    private Gtk.ListBoxRow make_function_row (MathFunction function)
+    protected override string get_item_text (MathFunction function)
     {
-        var row = new Gtk.ListBoxRow ();
-        row.get_style_context ().add_class ("popover-row");
-        row.set_data<MathFunction> ("function", function);
-        row.set_tooltip_text ("%s".printf (function.description));
-
-        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-
         var expression = "(x)";
         if (function.is_custom_function ())
             expression = "(%s)".printf (string.joinv (";", function.arguments));
 
-        var label = new Gtk.Label ("<b>%s</b>%s".printf (function.name, expression));
-        label.set_margin_start (6);
-        label.set_use_markup (true);
-        label.halign = Gtk.Align.START;
-        hbox.pack_start (label, true, true, 0);
-
-        if (function.is_custom_function ())
-        {
-            var button = new Gtk.Button.from_icon_name ("edit-symbolic");
-            button.get_style_context ().add_class ("flat");
-            button.set_data<MathFunction> ("function", function);
-            button.clicked.connect (save_function_cb);
-            hbox.pack_start (button, false, true, 0);
-
-            button = new Gtk.Button.from_icon_name ("list-remove-symbolic");
-            button.get_style_context ().add_class ("flat");
-            button.set_data<MathFunction> ("function", function);
-            button.clicked.connect (delete_function_cb);
-            hbox.pack_start (button, false, true, 0);
-        }
-
-        row.add (hbox);
-        row.show_all ();
-
-        return row;
+        string text = "<b>%s</b>%s".printf (function.name, expression);
+        return text;
     }
 
-    private int function_list_sort (Gtk.ListBoxRow row1, Gtk.ListBoxRow row2)
+    protected override int get_item_index (MathFunction item)
     {
-        var function1 = row1.get_data<MathFunction> ("function");
-        var function2 = row2.get_data<MathFunction> ("function");
-
-        return strcmp (function1.name, function2.name);
+        uint position;
+        if (model.find_with_equal_func (item as Object, (a, b) => (MathFunction.name_equal_func(a as MathFunction, b as MathFunction)), out position))
+            return (int)position;
+        else
+            return -1;
     }
+
 }
