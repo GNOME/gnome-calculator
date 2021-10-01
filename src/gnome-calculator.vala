@@ -306,7 +306,7 @@ public class Calculator : Gtk.Application
     {
         try
         {
-            Gtk.show_uri_on_window (get_active_window (), "help:gnome-calculator", Gtk.get_current_event_time ());
+            Gtk.show_uri (get_active_window ().get_screen (), "help:gnome-calculator", Gdk.CURRENT_TIME);
         }
         catch (Error e)
         {
