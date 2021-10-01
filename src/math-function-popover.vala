@@ -32,7 +32,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
 
     public MathFunctionPopover (MathEquation equation, ListStore model)
     {
-        base (equation, model, (a,b) => MathFunction.compare_func (a as MathFunction,b as MathFunction));
+        base (equation, model, (a,b) => MathFunction.name_compare_func (a as MathFunction,b as MathFunction));
 
         function_list.bind_model (model, (item) => make_item_row(item as MathFunction));
 
@@ -132,7 +132,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     protected override int get_item_index (MathFunction item)
     {
         uint position;
-        if (model.find_with_equal_func (item as Object, (a, b) => (MathFunction.equal_func(a as MathFunction, b as MathFunction)), out position))
+        if (model.find_with_equal_func (item as Object, (a, b) => (MathFunction.name_equal_func(a as MathFunction, b as MathFunction)), out position))
             return (int)position;
         else
             return -1;
