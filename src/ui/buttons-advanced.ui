@@ -1052,11 +1052,13 @@
               </object>
             </child>
             <child>
-              <object class="GtkHBox" id="hbox20">
+              <object class="GtkBox" id="hbox20">
+                <property name="orientation">horizontal</property>
                 <property name="visible">True</property>
                 <child>
                   <object class="GtkLabel" id="label23">
                     <property name="visible">True</property>
+                    <property name="hexpand">true</property>
                     <property name="label" translatable="yes" comments="The label on the memory button">x</property>
                     <attributes>
                       <attribute name="style" value="italic"/>
@@ -1101,10 +1103,12 @@
               </object>
             </child>
             <child>
-              <object class="GtkHBox" id="hbox2">
+              <object class="GtkBox" id="hbox2">
                 <property name="visible">True</property>
+                <property name="orientation">horizontal</property>
                 <child>
                   <object class="GtkLabel" id="label5">
+                    <property name="hexpand">true</property>
                     <property name="visible">True</property>
                     <property name="label">f(x)</property>
                   </object>
