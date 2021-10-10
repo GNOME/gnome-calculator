@@ -55,9 +55,9 @@ public class MathButtons : Gtk.Box
             if (prog_view_more_button != null)
                 prog_view_more_button.active = false;
             if (adv_panel != null)
-                (adv_panel as Hdy.Leaflet).visible_child_name = "basic";
+                (adv_panel as Adw.Leaflet).visible_child_name = "basic";
             if (fin_panel != null)
-                (fin_panel as Hdy.Leaflet).visible_child_name = "basic";
+                (fin_panel as Adw.Leaflet).visible_child_name = "basic";
             if (prog_leaflet != null)
                 prog_leaflet.visible_child_name = "basic";
         }
@@ -77,12 +77,12 @@ public class MathButtons : Gtk.Box
     private Gtk.Widget prog_panel;
     private Gtk.Widget? active_panel = null;
 
-    private Hdy.Leaflet prog_leaflet;
+    private Adw.Leaflet prog_leaflet;
     private Gtk.ToggleButton prog_view_more_button;
 
     private Gtk.ComboBox base_combo;
     private Gtk.Label base_label;
-    private Gtk.Label word_size_label;
+    private Gtk.MenuButton word_size_button;
     private Gtk.Widget bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
 
@@ -221,7 +221,7 @@ public class MathButtons : Gtk.Box
     {
         equation.word_size = (param.get_int32 ());
         string format = ngettext("%d-bit", "%d-bit", param.get_int32 ());
-        word_size_label.set_label(format.printf(param.get_int32 ()));
+        word_size_button.set_label(format.printf(param.get_int32 ()));
     }
 
     private void on_insert_numeric_point (SimpleAction action, Variant? param)
@@ -312,10 +312,10 @@ public class MathButtons : Gtk.Box
             visible = false;
             break;
         case ButtonMode.ADVANCED:
-            visible = adv_panel != null && (adv_panel as Hdy.Leaflet).folded;
+            visible = adv_panel != null && (adv_panel as Adw.Leaflet).folded;
             break;
         case ButtonMode.FINANCIAL:
-            visible = fin_panel != null && (fin_panel as Hdy.Leaflet).folded;
+            visible = fin_panel != null && (fin_panel as Adw.Leaflet).folded;
             break;
         case ButtonMode.PROGRAMMING:
             visible = prog_leaflet != null && prog_leaflet.folded;
@@ -360,6 +360,8 @@ public class MathButtons : Gtk.Box
             break;
         }
 
+        builder.set_current_object (this);
+
         try
         {
             builder.add_from_resource ("/org/gnome/calculator/%s".printf(builder_resource));
@@ -370,7 +372,7 @@ public class MathButtons : Gtk.Box
         }
 
         var panel = builder.get_object ("button_panel") as Gtk.Widget;
-        pack_end (panel, true, true, 0);
+        append (panel);
 
         switch (mode)
         {
@@ -398,7 +400,7 @@ public class MathButtons : Gtk.Box
             break;
         case ButtonMode.PROGRAMMING:
             prog_panel = panel;
-            prog_leaflet = builder.get_object ("leaflet") as Hdy.Leaflet;
+            prog_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
 
             prog_view_more_button = builder.get_object ("view_more_button") as Gtk.ToggleButton;
             prog_view_more_button.bind_property ("active", prog_leaflet, "visible-child-name",
@@ -447,7 +449,7 @@ public class MathButtons : Gtk.Box
             base_label = builder.get_object ("base_label") as Gtk.Label;
             character_code_dialog = builder.get_object ("character_code_dialog") as Gtk.Dialog;
             character_code_dialog.response.connect (character_code_dialog_response_cb);
-            character_code_dialog.delete_event.connect (character_code_dialog_delete_cb);
+            character_code_dialog.close_request.connect (character_code_dialog_close_request);
             character_code_entry = builder.get_object ("character_code_entry") as Gtk.Entry;
             character_code_entry.activate.connect (character_code_dialog_activate_cb);
 
@@ -464,7 +466,7 @@ public class MathButtons : Gtk.Box
                 i++;
             }
             toggle_bit_buttons.reverse ();
-            word_size_label = builder.get_object ("word_size_label") as Gtk.Label;
+            word_size_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
             base_combo = builder.get_object ("base_combo") as Gtk.ComboBox;
             base_combo.changed.connect (base_combobox_changed_cb);
             equation.notify["number-base"].connect ((pspec) => { base_changed_cb (); } );
@@ -475,8 +477,6 @@ public class MathButtons : Gtk.Box
         /* Setup financial functions */
         if (mode == ButtonMode.FINANCIAL)
             load_finc_dialogs ();
-
-        builder.connect_signals (this);
 
         update_bit_panel ();
         update_view_more_visible ();
@@ -541,12 +541,12 @@ public class MathButtons : Gtk.Box
         {
             converter = new MathConverter (equation);
             converter.changed.connect (converter_changed_cb);
-            pack_start (converter, false, true, 0);
+            append (converter);
             converter.notify["view-more-active"].connect (() => {
                 if (adv_panel != null)
-                    (adv_panel as Hdy.Leaflet).visible_child_name = converter.view_more_active ? "advanced" : "basic";
+                    (adv_panel as Adw.Leaflet).visible_child_name = converter.view_more_active ? "advanced" : "basic";
                 if (fin_panel != null)
-                    (fin_panel as Hdy.Leaflet).visible_child_name = converter.view_more_active ? "advanced" : "basic";
+                    (fin_panel as Adw.Leaflet).visible_child_name = converter.view_more_active ? "advanced" : "basic";
             });
         }
 
@@ -616,7 +616,7 @@ public class MathButtons : Gtk.Box
     {
         var size = equation.word_size;
         string format = ngettext ("%d-bit", "%d-bit", size);
-        word_size_label.set_label (format.printf(size));
+        word_size_button.set_label (format.printf(size));
         update_bit_button_sensitivities ();
     }
 
@@ -644,8 +644,7 @@ public class MathButtons : Gtk.Box
     {
         var name = param.get_string ();
         var dialog = financial_ui.get_object (name) as Gtk.Dialog;
-        dialog.run ();
-        dialog.hide ();
+        dialog.show ();
     }
 
     private void on_insert_character (SimpleAction action, Variant? param)
@@ -658,8 +657,8 @@ public class MathButtons : Gtk.Box
         var next_entry = widget.get_data<Gtk.Entry> ("next-entry");
         if (next_entry == null)
         {
-            var dialog = widget.get_toplevel () as Gtk.Dialog;
-            if (dialog.is_toplevel ())
+            var dialog = widget.get_root () as Gtk.Dialog;
+            if (dialog != null)
             {
                 dialog.response (Gtk.ResponseType.OK);
                 return;
@@ -750,7 +749,7 @@ public class MathButtons : Gtk.Box
         character_code_dialog_response_cb (character_code_dialog, Gtk.ResponseType.OK);
     }
 
-    private bool character_code_dialog_delete_cb (Gtk.Widget dialog, Gdk.EventAny event)
+    private bool character_code_dialog_close_request (Gtk.Widget dialog)
     {
         character_code_dialog_response_cb (dialog, Gtk.ResponseType.CANCEL);
         return true;

@@ -3,7 +3,7 @@
   padding-bottom: 8px;
   padding-left: 0px;
   font-size: 1.4em;
-
+  border-top: 1px solid @borders;
 }
 
 .info-view {
@@ -25,17 +25,17 @@ mathdisplay:last-child {
   margin-bottom: 12px;
 }
 
-clamp.small mathdisplay {
+clamp > grid.small mathdisplay {
   border-width: 1px 0;
   margin: 6px 0 0 0;
 }
 
-clamp.small mathdisplay:first-child {
+clamp > grid.small mathdisplay:first-child {
   border-top-width: 0;
   margin: 0;
 }
 
-clamp.small mathdisplay:last-child {
+clamp > grid.small mathdisplay:last-child {
   border-bottom-width: 0;
 }
 
@@ -116,16 +116,14 @@ clamp.small .bit-panel button {
   padding: 2px 4px 2px 4px;
 }
 
-  .math-buttons .number-button {
-    font-size: 1.2em;
-    font-weight: bolder;
-  }
+.math-buttons .number-button {
+  font-size: 1.2em;
+  font-weight: bolder;
+}
 
-  .math-buttons .numeric-point-button {
-  }
-
-  .math-buttons .fx-button {
-  }
+.math-buttons .operator-button, .procent-button, .numeric-point-button, .parenthesis-button, .function-button {
+  font-weight: normal;
+}
 
 .bit-toggle-button {
   padding: 1px;
@@ -171,6 +169,10 @@ row.popover-row {
   min-height: 35px;
 }
 
-window > deck > * {
+window > leaflet > * {
   min-width: 360px;
+}
+
+.italic {
+  font-style: italic;
 }

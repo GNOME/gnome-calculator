@@ -46,12 +46,10 @@ public class MathDisplay : Gtk.Box
         history.equation_clicked.connect ((eq) => { display_text (eq); });
         history.set_serializer (equation.serializer);
         _equation.display_changed.connect (history.set_serializer);
-        add (history);
-        show_all ();
+        append (history);
 
-        var scrolled_window = new Gtk.ScrolledWindow (null, null);
-        var style_context = scrolled_window.get_style_context ();
-        style_context.add_class ("display-scrolled");
+        var scrolled_window = new Gtk.ScrolledWindow ();
+        scrolled_window.add_css_class ("display-scrolled");
 
         scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
         source_view = new Gtk.SourceView.with_buffer (equation);
@@ -65,20 +63,18 @@ public class MathDisplay : Gtk.Box
 
         source_view.set_name ("displayitem");
         source_view.set_size_request (20, 20);
-        source_view.get_accessible ().set_role (Atk.Role.EDITBAR);
-        //FIXME:<property name="AtkObject::accessible-description" translatable="yes" comments="Accessible description for the area in which results are displayed">Result Region</property>
-        event_controller = new Gtk.EventControllerKey(source_view); //.key_press_event.connect (key_press_cb);
+        event_controller = new Gtk.EventControllerKey ();
         event_controller.key_pressed.connect (key_press_cb);
+        source_view.add_controller (event_controller);
         create_autocompletion ();
         completion_visible = false;
         completion_selected = false;
 
-        pack_start (scrolled_window, false, false, 0);
-        scrolled_window.add (source_view); /* Adds ScrolledWindow to source_view for displaying long equations */
-        scrolled_window.show ();
+        append (scrolled_window);
+        scrolled_window.set_child (source_view); /* Adds ScrolledWindow to source_view for displaying long equations */
 
         var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        pack_start (info_box, false, true, 0);
+        append (info_box);
 
         var info_view = new Gtk.TextView ();
         info_view.set_wrap_mode (Gtk.WrapMode.WORD);
@@ -86,18 +82,13 @@ public class MathDisplay : Gtk.Box
         info_view.set_editable (false);
         info_view.set_left_margin (12);
         info_view.set_right_margin (12);
-        info_box.pack_start (info_view, true, true, 0);
+        info_view.set_hexpand (true);
+        info_view.add_css_class ("info-view");
+        info_box.append (info_view);
         info_buffer = info_view.get_buffer ();
 
-        style_context = info_view.get_style_context ();
-        style_context.add_class ("info-view");
-
         spinner = new Gtk.Spinner ();
-        info_box.pack_end (spinner, false, false, 0);
-
-        info_box.show ();
-        info_view.show ();
-        source_view.show ();
+        info_box.append (spinner);
 
         equation.notify["status"].connect ((pspec) => { status_changed_cb (); });
         status_changed_cb ();
@@ -139,6 +130,7 @@ public class MathDisplay : Gtk.Box
 
     private void create_autocompletion ()
     {
+        /*
         Gtk.SourceCompletion completion = source_view.get_completion ();
         completion.show.connect ((completion) => { this.completion_visible = true; this.completion_selected = false;} );
         completion.hide.connect ((completion) => { this.completion_visible = false; this.completion_selected = false; } );
@@ -153,13 +145,14 @@ public class MathDisplay : Gtk.Box
         {
             warning ("Could not add CompletionProvider to source-view");
         }
+        */
     }
 
     private bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType mod_state)
     {
         info ("event\n");
         /* Clear on escape */
-        var state = mod_state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.MOD1_MASK);
+        var state = mod_state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.ALT_MASK);
 
         if ((keyval == Gdk.Key.Escape && state == 0 && !completion_visible) ||
             (keyval == Gdk.Key.Delete && (mod_state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK))
@@ -173,7 +166,7 @@ public class MathDisplay : Gtk.Box
             Gtk.SourceCompletion completion = source_view.get_completion ();
             completion.hide ();
             return true;
-        } else if (state == Gdk.ModifierType.MOD1_MASK && (keyval == Gdk.Key.Left || keyval == Gdk.Key.Right))
+        } else if (state == Gdk.ModifierType.ALT_MASK && (keyval == Gdk.Key.Left || keyval == Gdk.Key.Right))
         {
             switch (keyval)
             {
@@ -346,7 +339,7 @@ public class MathDisplay : Gtk.Box
                  return true;
             }
         }
-        if (state == Gdk.ModifierType.MOD1_MASK)
+        if (state == Gdk.ModifierType.ALT_MASK)
         {
             switch (keyval)
             {
@@ -407,7 +400,7 @@ public class MathDisplay : Gtk.Box
                 return true;
             }
         }
-        else if (state == Gdk.ModifierType.MOD1_MASK || equation.number_mode == NumberMode.SUBSCRIPT)
+        else if (state == Gdk.ModifierType.ALT_MASK || equation.number_mode == NumberMode.SUBSCRIPT)
         {
             if (!equation.has_selection)
                 equation.remove_trailing_spaces ();
@@ -496,6 +489,7 @@ public class MathDisplay : Gtk.Box
     }
 }
 
+/*
 public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
 {
     public virtual string get_name ()
@@ -656,3 +650,4 @@ public class VariableCompletionProvider : CompletionProvider
         context.add_proposals (this, proposals, true);
     }
 }
+*/

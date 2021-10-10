@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-naming-policy toplevel-contextual -->
-  <requires lib="gtk+" version="3.16"/>
-  <object class="HdyLeaflet" id="button_panel">
-    <property name="visible">True</property>
+  <requires lib="gtk" version="4.0"/>
+  <object class="AdwLeaflet" id="button_panel">
     <property name="can-swipe-back">True</property>
     <property name="can-swipe-forward">True</property>
     <property name="transition-type">slide</property>
@@ -13,503 +11,437 @@
     </style>
     <child>
       <object class="GtkGrid" id="basic">
-        <property name="visible">True</property>
-        <property name="hexpand">true</property>
-        <property name="row-homogeneous">True</property>
-        <property name="column-homogeneous">True</property>
+        <property name="hexpand">1</property>
+        <property name="row-homogeneous">1</property>
+        <property name="column-homogeneous">1</property>
         <property name="row_spacing">4</property>
         <property name="column_spacing">4</property>
         <child>
           <object class="GtkButton" id="calc_4_button">
             <property name="label">4</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">4</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="row">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="top_attach">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_7_button">
             <property name="label">7</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">7</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="row">1</property>
+              <property name="column">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="top_attach">1</property>
-            <property name="left_attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_8_button">
             <property name="label">8</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">8</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">1</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_9_button">
             <property name="label">9</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">9</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">1</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_5_button">
             <property name="label">5</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">5</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_6_button">
             <property name="label">6</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">6</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_modulus_divide_button">
             <property name="label">mod</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Modulus divide</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Modulus divide</property>
             <property name="action_name">cal.insert-general</property>
-            <property name="action_target">' mod '</property>
+            <property name="action_target">&apos; mod &apos;</property>
             <style>
               <class name="operator-button"/>
             </style>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_divide_button">
             <property name="label">÷</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Divide [/]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Divide [/]</property>
             <property name="action_name">cal.insert-general</property>
-            <property name="action_target">'÷'</property>
+            <property name="action_target">&apos;÷&apos;</property>
             <style>
               <class name="operator-button"/>
             </style>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">1</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_1_button">
             <property name="label">1</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">1</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="row">3</property>
+              <property name="column">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="top_attach">3</property>
-            <property name="left_attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_2_button">
             <property name="label">2</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">2</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">3</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">3</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_0_button">
             <property name="label">0</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">0</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="row">4</property>
+              <property name="column">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="top_attach">4</property>
-            <property name="left_attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_numeric_point_button">
             <property name="label" comments="Label is set in gtk.c to comply with LC flags">.</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-numeric-point</property>
             <style>
               <class name="numeric-point-button"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">4</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">4</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_3_button">
             <property name="label">3</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
             <property name="action_name">cal.insert-digit</property>
             <property name="action_target">3</property>
             <style>
               <class name="number-button"/>
             </style>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">3</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">3</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_multiply_button">
             <property name="label">×</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Multiply [*]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Multiply [*]</property>
             <property name="action_name">cal.insert-general</property>
-            <property name="action_target">'×'</property>
+            <property name="action_target">&apos;×&apos;</property>
             <style>
               <class name="operator-button"/>
             </style>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_subtract_button">
             <property name="label">−</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Subtract [-]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Subtract [-]</property>
             <property name="action_name">cal.subtract</property>
             <style>
               <class name="operator-button"/>
             </style>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">3</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">3</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_add_button">
             <property name="label">+</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Add [+]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Add [+]</property>
             <property name="action_name">cal.insert-general</property>
-            <property name="action_target">'+'</property>
+            <property name="action_target">&apos;+&apos;</property>
             <style>
               <class name="operator-button"/>
             </style>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">4</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">4</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_pi_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Pi [Ctrl+P]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Pi [Ctrl+P]</property>
             <property name="action_name">cal.insert-general</property>
-            <property name="action_target">'π'</property>
+            <property name="action_target">&apos;π&apos;</property>
             <child>
               <object class="GtkLabel" id="pi_label">
-                <property name="visible">True</property>
                 <property name="label">π</property>
-                <property name="use_markup">True</property>
+                <property name="use_markup">1</property>
               </object>
             </child>
             <style>
               <class name="function-button"/>
             </style>
+            <layout>
+              <property name="column">4</property>
+              <property name="row">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">4</property>
-            <property name="top_attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_root_button">
             <property name="label">√</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Root [Ctrl+R]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Root [Ctrl+R]</property>
             <property name="action_name">cal.insert-general</property>
-            <property name="action_target">'√'</property>
+            <property name="action_target">&apos;√&apos;</property>
             <style>
               <class name="function-button"/>
             </style>
+            <layout>
+              <property name="column">4</property>
+              <property name="row">1</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">4</property>
-            <property name="top_attach">1</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_x_squared_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Square [Ctrl+2]</property>
+            <property name="receives_default">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Square [Ctrl+2]</property>
             <property name="action_name">cal.square</property>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="calc_x_squared_button-atkobject">
-                <property name="AtkObject::accessible-name" translatable="yes" comments="Accessible name for the exponentiation (x to the power of y) button">Exponent</property>
-              </object>
-            </child>
             <child>
               <object class="GtkLabel" id="x_squared_label">
-                <property name="visible">True</property>
                 <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&lt;i&gt;2&lt;/i&gt;&lt;/sup&gt;</property>
-                <property name="use_markup">True</property>
+                <property name="use_markup">1</property>
               </object>
             </child>
             <style>
               <class name="function-button"/>
             </style>
+            <layout>
+              <property name="column">4</property>
+              <property name="row">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">4</property>
-            <property name="top_attach">2</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_clear_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Clear Display [Escape]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Clear Display [Escape]</property>
             <property name="action_name">cal.clear</property>
-            <child>
-              <object class="GtkImage" id="calc_clear_icon">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="icon_name">edit-clear-symbolic</property>
-              </object>
-            </child>
+            <property name="icon_name">edit-clear-symbolic</property>
             <style>
               <class name="destructive-action"/>
-              <class name="image-button"/>
               <class name="clear-button"/>
             </style>
+            <layout>
+              <property name="column">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_start_group_button">
             <property name="label">(</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Start Group [(]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Start Group [(]</property>
             <property name="action_name">cal.insert-general</property>
-            <property name="action_target">'('</property>
+            <property name="action_target">&apos;(&apos;</property>
             <style>
               <class name="parenthesis-button"/>
             </style>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_end_group_button">
             <property name="label">)</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">End Group [)]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">End Group [)]</property>
             <property name="action_name">cal.insert-general</property>
-            <property name="action_target">')'</property>
+            <property name="action_target">&apos;)&apos;</property>
             <style>
               <class name="parenthesis-button"/>
             </style>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">0</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_percentage_button">
             <property name="label">%</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Percentage [%]</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Percentage [%]</property>
             <property name="action_name">cal.insert-general</property>
-            <property name="action_target">'%'</property>
+            <property name="action_target">&apos;%&apos;</property>
             <style>
               <class name="procent-button"/>
             </style>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">4</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">4</property>
-          </packing>
         </child>
         <child>
           <object class="GtkButton" id="calc_result_button">
-            <property name="label" translatable="yes" comments="Label on the solve button (clicking this solves the displayed calculation)">=</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="use_underline">True</property>
-            <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Calculate Result</property>
+            <property name="label" translatable="1" comments="Label on the solve button (clicking this solves the displayed calculation)">=</property>
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="1">Calculate Result</property>
             <property name="action_name">cal.solve</property>
             <style>
               <class name="suggested-action"/>
             </style>
+            <layout>
+              <property name="column">4</property>
+              <property name="row">3</property>
+              <property name="row-span">2</property>
+            </layout>
           </object>
-          <packing>
-            <property name="left_attach">4</property>
-            <property name="top_attach">3</property>
-            <property name="height">2</property>
-          </packing>
         </child>
       </object>
-      <packing>
-        <property name="name">basic</property>
-      </packing>
     </child>
   </object>
 </interface>

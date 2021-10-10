@@ -502,15 +502,23 @@ public class MathEquation : Gtk.SourceBuffer
         if (tsep_string == null || tsep_string == "")
             tsep_string = " ";
         text = text.replace (tsep_string, "");
-        Gtk.Clipboard.get (Gdk.Atom.NONE).set_text (text, -1);
+        Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
+        clipboard.set_text (text);
     }
 
     public void paste ()
     {
-        Gtk.Clipboard.get (Gdk.Atom.NONE).request_text (on_paste);
+        Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
+        clipboard.read_text_async.begin (null, (obj, res) => {
+            try {
+                on_paste (clipboard.read_text_async.end (res));
+            } catch (GLib.Error err) {
+                print (err.message);
+            }
+        });
     }
 
-    private void on_paste (Gtk.Clipboard clipboard, string? text)
+    private void on_paste (string? text)
     {
         if (text != null)
             /* Replaces '\n' characters by ' ' in text before pasting it. */

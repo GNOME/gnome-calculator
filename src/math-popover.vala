@@ -58,7 +58,7 @@ public abstract class MathPopover<T> : Gtk.Popover
         label.set_margin_start (6);
         label.set_use_markup (true);
         label.halign = Gtk.Align.START;
-        hbox.pack_start (label, true, true, 0);
+        hbox.append (label);
 
         if (is_editable (item))
         {
@@ -66,7 +66,7 @@ public abstract class MathPopover<T> : Gtk.Popover
             button.get_style_context ().add_class ("flat");
             button.set_data<Object> ("object", item as Object);
             button.clicked.connect (save_function_cb);
-            hbox.pack_start (button, false, true, 0);
+            hbox.append (button);
         }
         if (is_deletable (item))
         {
@@ -74,9 +74,8 @@ public abstract class MathPopover<T> : Gtk.Popover
             button.get_style_context ().add_class ("flat");
             button.set_data<Object> ("object", item as Object);
             button.clicked.connect (delete_function_cb);
-            hbox.pack_start (button, false, true, 0);
+            hbox.append (button);
         }
-        hbox.show_all ();
         return hbox;
     }
 

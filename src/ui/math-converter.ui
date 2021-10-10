@@ -8,15 +8,12 @@
         <property name="visible" bind-source="MathConverter" bind-property="outer-box-visible" bind-flags="sync-create|bidirectional"/>
         <property name="orientation">horizontal</property>
         <property name="sensitive">True</property>
-        <property name="can_focus">False</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
         <property name="hexpand">True</property>
         <property name="vexpand">False</property>
         <child>
           <object class="GtkComboBox" id="from_combo">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="hexpand">True</property>
             <signal name="changed" handler="from_combobox_changed_cb" swapped="no"/>
             <child>
@@ -31,8 +28,6 @@
         </child>
         <child>
           <object class="GtkButton" id="in_button">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="label" translatable="yes"> to </property>
             <signal name="clicked" handler="convert_button_clicked_cb" swapped="no"/>
             <style>
@@ -42,8 +37,6 @@
         </child>
         <child>
           <object class="GtkComboBox" id="to_combo">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="opacity">0.88</property>
             <property name="hexpand">True</property>
             <signal name="changed" handler="to_combobox_changed_cb" swapped="no"/>
@@ -60,22 +53,18 @@
         <child>
           <object class="GtkButton" id="swap_button">
             <property name="label">⇆</property>
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="has_frame">False</property>
             <property name="receives_default">False</property>
             <property name="tooltip_text" translatable="yes">Switch conversion units</property>
-            <property name="relief">none</property>
             <signal name="clicked" handler="swap_button_clicked_cb" swapped="no"/>
           </object>
         </child>
         <child>
           <object class="GtkBox" id="result_holder">
-            <property name="visible">True</property>
             <property name="orientation">horizontal</property>
             <property name="sensitive">True</property>
             <property name="spacing">6</property>
             <property name="margin-end">2</property>
-            <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="hexpand">True</property>
@@ -83,10 +72,8 @@
             <property name="visible" bind-source="MathConverter" bind-property="view-more-visible" bind-flags="sync-create|bidirectional|invert-boolean"/>
             <child>
               <object class="GtkLabel" id="from_label">
-                <property name="visible">True</property>
                 <property name="sensitive">True</property>
                 <property name="selectable">True</property>
-                <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
@@ -99,9 +86,7 @@
             </child>
             <child>
               <object class="GtkLabel" id="convert_equals">
-                <property name="visible">True</property>
                 <property name="sensitive">True</property>
-                <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="hexpand">False</property>
@@ -114,10 +99,8 @@
             </child>
             <child>
               <object class="GtkLabel" id="to_label">
-                <property name="visible">True</property>
                 <property name="sensitive">True</property>
                 <property name="selectable">True</property>
-                <property name="can_focus">False</property>
                 <property name="halign">fill</property>
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
@@ -127,9 +110,6 @@
                 <property name="xalign">0</property>
                 <property name="yalign">0</property>
               </object>
-              <packing>
-                <property name="expand">false</property>
-              </packing>
             </child>
           </object>
         </child>
@@ -138,7 +118,6 @@
             <property name="orientation">horizontal</property>
             <property name="sensitive">True</property>
             <property name="spacing">6</property>
-            <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
             <property name="hexpand">True</property>
@@ -146,10 +125,8 @@
             <property name="visible" bind-source="result_holder" bind-property="visible" bind-flags="sync-create|invert-boolean"/>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
                 <property name="sensitive">True</property>
                 <property name="selectable">True</property>
-                <property name="can_focus">False</property>
                 <property name="halign">start</property>
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
@@ -163,9 +140,7 @@
             </child>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
                 <property name="sensitive">True</property>
-                <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="hexpand">False</property>
@@ -178,10 +153,8 @@
             </child>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
                 <property name="sensitive">True</property>
                 <property name="selectable">True</property>
-                <property name="can_focus">False</property>
                 <property name="halign">fill</property>
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
@@ -195,32 +168,22 @@
             </child>
             <child>
               <object class="GtkToggleButton" id="view_more_button">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="icon_name">view-more-horizontal-symbolic</property>
                 <property name="receives_default">False</property>
                 <property name="active" bind-source="MathConverter" bind-property="view-more-active" bind-flags="sync-create|bidirectional"/>
-                <child>
-                  <object class="GtkImage">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">view-more-horizontal-symbolic</property>
-                    <property name="icon_size">1</property>
-                  </object>
-                </child>
                 <style>
-                  <class name="image-button"/>
                   <class name="view-more-button"/>
                 </style>
               </object>
             </child>
           </object>
         </child>
+        <layout>
+          <property name="column">0</property>
+          <property name="row">1</property>
+          <property name="column_span">4</property>
+        </layout>
       </object>
-      <packing>
-        <property name="left-attach">0</property>
-        <property name="top-attach">1</property>
-        <property name="width">4</property>
-      </packing>
     </child>
   </template>
 </interface>

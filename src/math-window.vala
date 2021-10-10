@@ -10,7 +10,7 @@
  */
 
 [GtkTemplate (ui = "/org/gnome/calculator/math-window.ui")]
-public class MathWindow : Hdy.ApplicationWindow
+public class MathWindow : Adw.ApplicationWindow
 {
     private MathEquation _equation;
     public MathEquation equation { get { return _equation; } }
@@ -24,8 +24,6 @@ public class MathWindow : Hdy.ApplicationWindow
 
     [GtkChild]
     private unowned Gtk.MenuButton menu_button;
-    [GtkChild]
-    private unowned Gtk.Label mode_label;
     [GtkChild]
     private unowned Gtk.Grid grid;
     [GtkChild]
@@ -58,8 +56,8 @@ public class MathWindow : Hdy.ApplicationWindow
         converter.set_category (null);
         converter.set_conversion (equation.source_units, equation.target_units);
 
-        event_controller = new Gtk.EventControllerKey (this as Gtk.Widget);
-        // (this as Gtk.Widget).add_controller (event_controller);
+        event_controller = new Gtk.EventControllerKey ();
+        (this as Gtk.Widget).add_controller (event_controller);
         event_controller.key_pressed.connect (key_press_cb);
 
         _display = new MathDisplay (equation);
@@ -77,7 +75,7 @@ public class MathWindow : Hdy.ApplicationWindow
 
         var provider = new Gtk.CssProvider ();
         provider.load_from_resource ("/org/gnome/calculator/calculator.css");
-        Gtk.StyleContext.add_provider_for_screen (get_screen (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+        Gtk.StyleContext.add_provider_for_display (display, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
     private void clear_cb ()
@@ -93,27 +91,27 @@ public class MathWindow : Hdy.ApplicationWindow
         {
         default:
         case ButtonMode.BASIC:
-            mode_label.label = _("Basic");
+            menu_button.label = _("Basic");
             action.set_state (new Variant.string ("basic"));
             break;
 
         case ButtonMode.ADVANCED:
-            mode_label.label = _("Advanced");
+            menu_button.label = _("Advanced");
             action.set_state (new Variant.string ("advanced"));
             break;
 
         case ButtonMode.FINANCIAL:
-            mode_label.label = _("Financial");
+            menu_button.label = _("Financial");
             action.set_state (new Variant.string ("financial"));
             break;
 
         case ButtonMode.PROGRAMMING:
-            mode_label.label = _("Programming");
+            menu_button.label = _("Programming");
             action.set_state (new Variant.string ("programming"));
             break;
 
         case ButtonMode.KEYBOARD:
-            mode_label.label = _("Keyboard");
+            menu_button.label = _("Keyboard");
             action.set_state (new Variant.string ("keyboard"));
             break;
         }
@@ -143,9 +141,11 @@ public class MathWindow : Hdy.ApplicationWindow
         dialog.format_secondary_text ("%s", contents);
         dialog.add_buttons (_("_Quit"), Gtk.ResponseType.ACCEPT);
 
-        dialog.run ();
+        dialog.response.connect (() => {
+            destroy ();
+        });
 
-        destroy ();
+        dialog.show ();
     }
 
     protected bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType state)
@@ -215,9 +215,7 @@ public class MathWindow : Hdy.ApplicationWindow
         requires (parameter != null)
         requires (parameter.is_of_type (VariantType.STRING))
     {
-        var popover = menu_button.get_popover ();
-        popover.hide ();
-        menu_button.set_active (false);
+        menu_button.popdown ();
 
         _display.grab_focus ();
 

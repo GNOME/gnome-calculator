@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.19.0 -->
 <interface>
-  <requires lib="gtk+" version="3.16"/>
-  <template class="HistoryView" parent="GtkScrolledWindow">
-    <property name="height_request">118</property>
-    <property name="visible">True</property>
-    <property name="can_focus">True</property>
-    <property name="vexpand">True</property>
-    <property name="hscrollbar_policy">never</property>
-    <property name="shadow_type">etched-out</property>
+  <template class="HistoryView" parent="AdwBin">
     <signal name="row_added" handler="scroll_bottom" swapped="no"/>
-    <child>
-      <object class="GtkViewport" id="viewport">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="hexpand">True</property>
-        <child>
-          <object class="GtkListBox" id="listbox">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="vexpand">True</property>
-            <property name="valign">end</property>
-            <property name="selection_mode">none</property>
+    <property name="child">
+      <object class="GtkScrolledWindow" id="scrolled_window">
+        <property name="height_request">118</property>
+        <property name="vexpand">True</property>
+        <property name="hscrollbar_policy">never</property>
+        <property name="child">
+          <object class="GtkViewport" id="viewport">
+            <property name="hexpand">True</property>
+            <property name="scroll_to_focus">True</property>
+            <child>
+              <object class="GtkListBox" id="listbox">
+                <property name="vexpand">True</property>
+                <property name="valign">end</property>
+                <property name="selection_mode">none</property>
+              </object>
+            </child>
           </object>
-        </child>
+        </property>
+        <style>
+          <class name="history-view"/>
+        </style>
       </object>
-    </child>
-    <style>
-      <class name="history-view"/>
-    </style>
+    </property>
   </template>
 </interface>

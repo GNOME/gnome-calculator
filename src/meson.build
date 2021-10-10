@@ -25,7 +25,7 @@ gnome_calculator_deps = [
   gobject,
   gtk,
   gtksourceview,
-  libhandy,
+  libadwaita,
   mpc,
   mpfr,
   posix,
