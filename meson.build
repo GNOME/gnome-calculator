@@ -32,15 +32,19 @@ cc = meson.get_compiler('c')
 valac = meson.get_compiler('vala')
 
 libmath = cc.find_library('m')
+searchpath = []
+if get_option('libpath') != ''
+searchpath += [get_option('libpath')]
+endif
 mpc = declare_dependency(
   dependencies: [
-    cc.find_library('mpc'),
+    cc.find_library('mpc', dirs: searchpath),
     valac.find_library('mpc', dirs: gcalc_vapi_dir)
   ]
 )
 mpfr = declare_dependency(
   dependencies: [
-    cc.find_library('mpfr'),
+    cc.find_library('mpfr', dirs: searchpath),
     valac.find_library('mpfr', dirs: gcalc_vapi_dir)
   ]
 )
