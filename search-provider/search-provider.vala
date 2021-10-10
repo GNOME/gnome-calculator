@@ -217,7 +217,8 @@ public class SearchProvider : Object
             if (yield solve_equation (equation))
             {
                 var equation_result = cached_equations.lookup (equation);
-                Gtk.Clipboard.get (Gdk.Atom.NONE).set_text (equation_result, -1);
+                Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
+                clipboard.set_text (equation_result);
             }
         }
         else
@@ -272,7 +273,7 @@ public class SearchProviderApp : Application
 
 int main (string[] args)
 {
-    Gtk.init(ref args);
+    Gtk.init();
     Intl.setlocale (LocaleCategory.ALL, "");
 
     return new SearchProviderApp ().run ();

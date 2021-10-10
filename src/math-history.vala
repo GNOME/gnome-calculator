@@ -9,7 +9,7 @@
 */
 
 [GtkTemplate (ui = "/org/gnome/calculator/history-view.ui")]
-public class HistoryView : Gtk.ScrolledWindow
+public class HistoryView : Adw.Bin
 {
     string? last_equation = null;
 
@@ -68,13 +68,18 @@ public class HistoryView : Gtk.ScrolledWindow
     {
         _rows = 0;
         _current = 0;
-        listbox.foreach ((child) => { listbox.remove(child); });
+        for (Gtk.Widget? child = listbox.get_row_at_index (0); child != null; child = listbox.get_row_at_index (0)) {
+            listbox.remove (child);
+        }
     }
 
     public void set_serializer (Serializer serializer)
     {
         this.serializer = serializer;
-        listbox.foreach ((child) => { ((HistoryEntry)child).redisplay (serializer); });
+        for (int i = 0; i < _rows; i++) {
+            HistoryEntry child = listbox.get_row_at_index (i) as HistoryEntry;
+            child.redisplay (serializer);
+        }
     }
 }
 
@@ -109,21 +114,19 @@ public class HistoryEntry : Gtk.ListBoxRow
     }
 
     [GtkCallback]
-    public bool answer_clicked_cb (Gtk.Widget widget, Gdk.EventButton eventbutton)
+    public void answer_clicked_cb (Gtk.GestureClick gesture, int n_press, double x, double y)
     {
         var answer = answer_label.get_text ();
         if (answer != null)
             answer_clicked (answer);
-        return true;
     }
 
     [GtkCallback]
-    private bool equation_clicked_cb (Gtk.Widget widget, Gdk.EventButton eventbutton)
+    private void equation_clicked_cb (Gtk.GestureClick gesture, int n_press, double x, double y)
     {
         var equation = equation_label.get_text ();
         if (equation != null)
             equation_clicked (equation);
-        return true;
     }
 }
 

@@ -71,6 +71,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         equation.place_cursor (end);
     }
 
+    /*
     [GtkCallback]
     private bool function_name_focus_cb (Gtk.Widget widget, Gtk.DirectionType direction)
     {
@@ -82,6 +83,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
 
         return false;
     }
+    */
 
     [GtkCallback]
     private void function_name_entry_changed_cb (Gtk.Editable editable)
