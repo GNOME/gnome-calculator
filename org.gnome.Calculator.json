@@ -29,7 +29,7 @@
         "/bin/gcalccmd",
         "/lib/girepository-1.0",
         "/share/info",
-        "/share/gtksourceview-4",
+        "/share/gtksourceview-5",
         "/share/doc",
         "/share/gir-1.0"
     ],
@@ -57,6 +57,18 @@
                 }
             ]
         },
+        {
+            "name" : "gtksourceview",
+            "buildsystem": "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/gtksourceview.git",
+                    "branch" : "master"
+                }
+            ]
+        },
+
         {
             "name" : "gee",
             "config-opts" : [
