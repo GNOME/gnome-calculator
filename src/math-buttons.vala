@@ -66,6 +66,8 @@ public class MathButtons : Gtk.Box
 
     private MathConverter converter;
 
+    private MathWindow window;
+
     private Gtk.Builder basic_ui;
     private Gtk.Builder advanced_ui;
     private Gtk.Builder financial_ui;
@@ -121,11 +123,12 @@ public class MathButtons : Gtk.Box
         {"launch-finc-dialog",   on_launch_finc_dialog,   "s"                }
     };
 
-    public MathButtons (MathEquation equation)
+    public MathButtons (MathEquation equation, MathWindow window)
     {
         Object (orientation: Gtk.Orientation.VERTICAL, vexpand_set: true);
         show.connect (load_buttons);
         this.equation = equation;
+        this.window = window;
 
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
@@ -644,6 +647,7 @@ public class MathButtons : Gtk.Box
     {
         var name = param.get_string ();
         var dialog = financial_ui.get_object (name) as Gtk.Dialog;
+        dialog.transient_for = this.window as Gtk.Window;
         dialog.show ();
     }
 
@@ -670,6 +674,7 @@ public class MathButtons : Gtk.Box
 
     private void finc_response_cb (Gtk.Widget widget, int response_id)
     {
+        (widget as Gtk.Window).hide ();
         if (response_id != Gtk.ResponseType.OK)
             return;
 

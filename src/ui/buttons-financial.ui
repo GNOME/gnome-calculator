@@ -3,8 +3,11 @@
   <requires lib="gtk" version="4.0"/>
   <object class="GtkDialog" id="ctrm_dialog">
     <property name="title" translatable="1" comments="Title of Compounding Term dialog">Compounding Term</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">234</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox1">
         <property name="orientation">vertical</property>
@@ -99,31 +102,29 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button1</action-widget>
-      <action-widget response="-5">button2</action-widget>
+      <action-widget response="cancel">button_ctrm_cancel</action-widget>
+      <action-widget response="ok" default="true">button_ctrm_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area1">
-        <property name="halign">2</property>
-        <child>
-          <object class="GtkButton" id="button1">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button2">
-            <property name="label" translatable="1" comments="Compounding Term Dialog: Calculate button">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_ctrm_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_ctrm_calculate">
+        <property name="label" translatable="1" comments="Compounding Term Dialog: Calculate button">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>
   <object class="GtkDialog" id="ddb_dialog">
     <property name="title" translatable="1" comments="Title of Double-Declining Depreciation dialog">Double-Declining Depreciation</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">220</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox2">
         <property name="orientation">vertical</property>
@@ -218,30 +219,29 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button3</action-widget>
-      <action-widget response="-5">button4</action-widget>
+      <action-widget response="cancel">button_ddb_cancel</action-widget>
+      <action-widget response="ok" default="true">button_ddb_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area2">
-        <child>
-          <object class="GtkButton" id="button3">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button4">
-            <property name="label" translatable="1" comments="Double-Declining Depreciation Dialog: Calculate button">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_ddb_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_ddb_calculate">
+        <property name="label" translatable="1" comments="Double-Declining Depreciation Dialog: Calculate button">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>
   <object class="GtkDialog" id="fv_dialog">
     <property name="title" translatable="1" comments="Title of Future Value dialog">Future Value</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">234</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox3">
         <property name="orientation">vertical</property>
@@ -335,30 +335,29 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button5</action-widget>
-      <action-widget response="-5">button6</action-widget>
+      <action-widget response="cancel">button_fv_cancel</action-widget>
+      <action-widget response="ok" default="true">button_fv_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area3">
-        <child>
-          <object class="GtkButton" id="button5">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button6">
-            <property name="label" translatable="1" comments="Future Value Dialog: Calculate button">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_fv_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_fv_calculate">
+        <property name="label" translatable="1" comments="Future Value Dialog: Calculate button">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>
   <object class="GtkDialog" id="gpm_dialog">
     <property name="title" translatable="1" comments="Title of Gross Profit Margin dialog">Gross Profit Margin</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">180</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox10">
         <property name="orientation">vertical</property>
@@ -430,31 +429,29 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button19</action-widget>
-      <action-widget response="-5">button20</action-widget>
+      <action-widget response="cancel">button_gpm_cancel</action-widget>
+      <action-widget response="ok" default="true">button_gpm_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area10">
-        <property name="halign">2</property>
-        <child>
-          <object class="GtkButton" id="button19">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button20">
-            <property name="label" translatable="1" comments="Gross Profit Margin Dialog: Calculate button">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_gpm_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_gpm_calculate">
+        <property name="label" translatable="1" comments="Gross Profit Margin Dialog: Calculate button">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>
   <object class="GtkDialog" id="pmt_dialog">
     <property name="title" translatable="1" comments="Title of Periodic Payment dialog">Periodic Payment</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">218</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox4">
         <property name="orientation">vertical</property>
@@ -549,31 +546,29 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button7</action-widget>
-      <action-widget response="-5">button8</action-widget>
+      <action-widget response="cancel">button_pmt_cancel</action-widget>
+      <action-widget response="ok" default="true">button_pmt_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area4">
-        <property name="halign">2</property>
-        <child>
-          <object class="GtkButton" id="button7">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button8">
-            <property name="label" translatable="1" comments="Periodic Payment Dialog: Calculate button">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_pmt_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_pmt_calculate">
+        <property name="label" translatable="1" comments="Periodic Payment Dialog: Calculate button">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>
   <object class="GtkDialog" id="pv_dialog">
     <property name="title" translatable="1" comments="Title of Present Value dialog">Present Value</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">234</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox5">
         <property name="orientation">vertical</property>
@@ -668,31 +663,29 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button9</action-widget>
-      <action-widget response="-5">button10</action-widget>
+      <action-widget response="cancel">button_pv_cancel</action-widget>
+      <action-widget response="ok" default="true">button_pv_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area5">
-        <property name="halign">2</property>
-        <child>
-          <object class="GtkButton" id="button9">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button10">
-            <property name="label" translatable="1" comments="Present Value Dialog: Calculate button">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_pv_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_pv_calculate">
+        <property name="label" translatable="1" comments="Present Value Dialog: Calculate button">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>
   <object class="GtkDialog" id="rate_dialog">
     <property name="title" translatable="1" comments="Title of Periodic Interest Rate dialog">Periodic Interest Rate</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">218</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox6">
         <property name="orientation">vertical</property>
@@ -787,31 +780,29 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button11</action-widget>
-      <action-widget response="-5">button12</action-widget>
+      <action-widget response="cancel">button_rate_cancel</action-widget>
+      <action-widget response="ok" default="true">button_rate_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area6">
-        <property name="halign">2</property>
-        <child>
-          <object class="GtkButton" id="button11">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button12">
-            <property name="label" translatable="1" comments="Periodic Interest Rate Dialog: Calculate button">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_rate_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_rate_calculate">
+        <property name="label" translatable="1" comments="Periodic Interest Rate Dialog: Calculate button">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>
   <object class="GtkDialog" id="sln_dialog">
     <property name="title" translatable="1" comments="Title of Straight-Line Depreciation dialog">Straight-Line Depreciation</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">254</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox7">
         <property name="orientation">vertical</property>
@@ -906,31 +897,29 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button13</action-widget>
-      <action-widget response="-5">button14</action-widget>
+      <action-widget response="cancel">button_sln_cancel</action-widget>
+      <action-widget response="ok" default="true">button_sln_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area7">
-        <property name="halign">2</property>
-        <child>
-          <object class="GtkButton" id="button13">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button14">
-            <property name="label" translatable="1" comments="Straight-Line Depreciation Dialog: Calculate button">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_sln_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_sln_calculate">
+        <property name="label" translatable="1" comments="Straight-Line Depreciation Dialog: Calculate button">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>
   <object class="GtkDialog" id="syd_dialog">
     <property name="title" translatable="1" comments="Title of Sum-of-the-Years’-Digits Depreciation dialog">Sum-of-the-Years’-Digits Depreciation</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">326</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox8">
         <property name="orientation">vertical</property>
@@ -1047,31 +1036,29 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button15</action-widget>
-      <action-widget response="-5">button16</action-widget>
+      <action-widget response="cancel">button_syd_cancel</action-widget>
+      <action-widget response="ok" default="true">button_syd_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area8">
-        <property name="halign">2</property>
-        <child>
-          <object class="GtkButton" id="button15">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button16">
-            <property name="label" translatable="1" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_syd_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_syd_calculate">
+        <property name="label" translatable="1" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>
   <object class="GtkDialog" id="term_dialog">
     <property name="title" translatable="1" comments="Title of Payment Period dialog">Payment Period</property>
-    <property name="default_width">618</property>
-    <property name="default_width">198</property>
+    <property name="default_width">462</property>
+    <property name="default_height">234</property>
+    <property name="use_header_bar">1</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
     <child internal-child="content_area">
       <object class="GtkBox" id="dialog-vbox9">
         <property name="orientation">vertical</property>
@@ -1166,24 +1153,19 @@
       </object>
     </child>
     <action-widgets>
-      <action-widget response="-6">button17</action-widget>
-      <action-widget response="-5">button18</action-widget>
+      <action-widget response="cancel">button_term_cancel</action-widget>
+      <action-widget response="ok" default="true">button_term_calculate</action-widget>
     </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area9">
-        <property name="halign">2</property>
-        <child>
-          <object class="GtkButton" id="button17">
-            <property name="label" translatable="1">_Cancel</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="button18">
-            <property name="label" translatable="1" comments="Payment Period Dialog: Button to calculate result">C_alculate</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
+    <child type="action">
+      <object class="GtkButton" id="button_term_cancel">
+        <property name="label" translatable="1">_Cancel</property>
+        <property name="use_underline">True</property>
+      </object>
+    </child>
+    <child type="action">
+      <object class="GtkButton" id="button_term_calculate">
+        <property name="label" translatable="1" comments="Payment Period Dialog: Button to calculate result">C_alculate</property>
+        <property name="use_underline">True</property>
       </object>
     </child>
   </object>

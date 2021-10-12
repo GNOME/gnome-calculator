@@ -65,7 +65,7 @@ public class MathWindow : Adw.ApplicationWindow
         _display.show ();
         _display.grabfocus ();
 
-        _buttons = new MathButtons (equation);
+        _buttons = new MathButtons (equation, this);
         grid.attach_next_to(_buttons, _display, Gtk.PositionType.BOTTOM);
 
         remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;
