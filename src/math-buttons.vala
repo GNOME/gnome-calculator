@@ -27,7 +27,7 @@ public class MathButtons : Gtk.Box
         get { return _mode; }
         set
         {
-            if (_mode == value)
+            if (_mode == value && converter != null )
                 return;
             _mode = value;
 
