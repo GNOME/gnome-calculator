@@ -10,37 +10,12 @@
 [GtkTemplate (ui = "/org/gnome/calculator/math-preferences.ui")]
 public class MathPreferencesDialog : Adw.PreferencesWindow
 {
-    private struct ComboEntry {
-        string name;
-        uint val;
-    }
-
-    private ComboEntry[] entries_word_size = {
-        // Translators: Word size combo: 8 bit
-        { _("8-bit"), 8 },
-        // Translators: Word size combo: 16 bit
-        { _("16-bit"), 16 },
-        // Translators: Word size combo: 32 bit
-        { _("32-bit"), 32 },
-        // Translators: Word size combo: 64 bit
-        { _("64-bit"), 64 }
-    };
-
     public enum WordSize {
         8_BIT = 8,
         16_BIT = 16,
         32_BIT = 32,
         64_BIT = 64,
     }
-
-    private ComboEntry[] entries_refresh_interval = {
-        // Translators: Refresh interval combo: never
-        { _("never"), 0 },
-        // Translators: Refresh interval combo: daily
-        { _("daily"), 86400 },
-        // Translators: Refresh interval combo: weekly
-        { _("weekly"), 604800 }
-    };
 
     public enum RefreshInterval {
         NEVER = 0,
@@ -76,12 +51,36 @@ public class MathPreferencesDialog : Adw.PreferencesWindow
     {
         settings = new Settings ("org.gnome.calculator");
 
+        var model = new Adw.EnumListModel (typeof (AngleUnit));
+        var expression = new Gtk.CClosureExpression (typeof (string),
+                                                     null, {},
+                                                     (Callback) angle_units_name,
+                                                     null, null);
+        row_angle_units.set_expression (expression);
+        row_angle_units.set_model (model);
+
+        model = new Adw.EnumListModel (typeof (WordSize));
+        expression = new Gtk.CClosureExpression (typeof (string),
+                                                 null, {},
+                                                 (Callback) word_size_name,
+                                                 null, null);
+        row_word_size.set_expression (expression);
+        row_word_size.set_model (model);
+
+        model = new Adw.EnumListModel (typeof (RefreshInterval));
+        expression = new Gtk.CClosureExpression (typeof (string),
+                                                 null, {},
+                                                 (Callback) refresh_interval_name,
+                                                 null, null);
+        row_refresh_interval.set_expression (expression);
+        row_refresh_interval.set_model (model);
+
         spinbutton_decimals.value_changed.connect (() => { equation.accuracy = spinbutton_decimals.get_value_as_int (); });
         switch_trailing_zeroes.state_set.connect ((state) => { equation.show_trailing_zeroes = state; return false; });
         switch_thousands_separators.state_set.connect ((state) => { equation.show_thousands_separators = state; return false; });
-        row_angle_units.notify["selected-index"].connect (row_angle_units_changed_cb);
-        row_word_size.notify["selected-index"].connect (row_word_size_changed_cb);
-        row_refresh_interval.notify["selected-index"].connect (row_refresh_interval_changed_cb);
+        row_angle_units.notify["selected"].connect (row_angle_units_changed_cb);
+        row_word_size.notify["selected"].connect (row_word_size_changed_cb);
+        row_refresh_interval.notify["selected"].connect (row_refresh_interval_changed_cb);
 
         spinbutton_decimals.set_value (equation.accuracy);
         equation.notify["accuracy"].connect ((pspec) => { spinbutton_decimals.set_value (equation.accuracy); });
@@ -92,18 +91,16 @@ public class MathPreferencesDialog : Adw.PreferencesWindow
         switch_trailing_zeroes.set_active (equation.show_trailing_zeroes);
         equation.notify["show-trailing_zeroes"].connect (() => { switch_trailing_zeroes.set_active (equation.show_trailing_zeroes); });
 
-        // set_combo_row_from_int (row_word_size, entries_word_size, equation.word_size);
-        // equation.notify["word-size"].connect ((pspec) => { set_combo_row_from_int (row_word_size, entries_word_size, equation.word_size); });
+        set_combo_row_from_int (row_word_size, equation.word_size);
+        equation.notify["word-size"].connect ((pspec) => { set_combo_row_from_int (row_word_size, equation.word_size); });
 
-        // set_combo_row_from_int (row_angle_units, entries_angle_units, equation.angle_units);
-        // equation.notify["angle-units"].connect ((pspec) => { set_combo_row_from_int (row_angle_units, entries_angle_units, equation.angle_units); });
+        set_combo_row_from_int (row_angle_units, equation.angle_units);
+        equation.notify["angle-units"].connect ((pspec) => { set_combo_row_from_int (row_angle_units, equation.angle_units); });
 
-        // set_combo_row_from_int (row_refresh_interval, entries_refresh_interval, settings.get_int ("refresh-interval"));
+        set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval"));
     }
 
-    /*
-    [GtkCallback]
-    private string? angle_units_name (Adw.EnumListItem item) {
+    private static string angle_units_name (Adw.EnumListItem item) {
         switch (item.value) {
             case AngleUnit.DEGREES:
                 return _("Degrees");
@@ -112,26 +109,54 @@ public class MathPreferencesDialog : Adw.PreferencesWindow
             case AngleUnit.GRADIANS:
                 return _("Gradians");
             default:
-                return null;
+                return "";
         }
     }
-    */
+
+    private static string word_size_name (Adw.EnumListItem item) {
+        switch (item.value) {
+            case WordSize.8_BIT:
+                return _("8-bit");
+            case WordSize.16_BIT:
+                return _("16-bit");
+            case WordSize.32_BIT:
+                return _("32-bit");
+            case WordSize.64_BIT:
+                return _("64-bit");
+            default:
+                return "";
+        }
+    }
+
+    private static string refresh_interval_name (Adw.EnumListItem item) {
+        switch (item.value) {
+            case RefreshInterval.NEVER:
+                return _("Never");
+            case RefreshInterval.DAILY:
+                return _("Daily");
+            case RefreshInterval.WEEKLY:
+                return _("Weekly");
+            default:
+                return "";
+        }
+    }
 
     private void row_angle_units_changed_cb ()
     {
-        AngleUnit value = (AngleUnit) row_angle_units.selected_item;
-        equation.angle_units = value;
+        Adw.EnumListItem item = (Adw.EnumListItem) row_angle_units.selected_item;
+        equation.angle_units = (AngleUnit) item.value;
     }
 
     private void row_word_size_changed_cb ()
     {
-        int value = (int) ((WordSize) row_word_size.selected_item);
-        equation.word_size = value;
+        Adw.EnumListItem item = (Adw.EnumListItem) row_word_size.selected_item;
+        equation.word_size = (WordSize) item.value;
     }
 
     private void row_refresh_interval_changed_cb ()
     {
-        int value = (int) ((RefreshInterval) row_refresh_interval.selected_item);
+        Adw.EnumListItem item = (Adw.EnumListItem) row_refresh_interval.selected_item;
+        RefreshInterval value = (RefreshInterval) item.value;
         settings.set_int ("refresh-interval", value);
         CurrencyManager.get_default ().refresh_interval = value;
     }
@@ -142,15 +167,13 @@ public class MathPreferencesDialog : Adw.PreferencesWindow
         return true;
     }
 
-    /*
-    private void set_combo_row_from_int (Adw.ComboRow row, ComboEntry[] entries, int value)
+    private void set_combo_row_from_int (Adw.ComboRow row, int value)
     {
-        for (int i = 0; i < entries.length; i++) {
-            if (entries[i].val == value) {
-                row.selected_index = i;
+        for (int i = 0; i < row.model.get_n_items (); i++) {
+            if ((int) ((Adw.EnumListItem) row.model.get_item(i)).value == value) {
+                row.selected = i;
                 break;
             }
         }
     }
-    */
 }
