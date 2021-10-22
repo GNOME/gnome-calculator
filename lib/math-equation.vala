@@ -128,6 +128,9 @@ public class MathEquation : Gtk.SourceBuffer
     private Gtk.TextMark? ans_start_mark = null;
     private Gtk.TextMark? ans_end_mark = null;
 
+    private Gtk.SourceStyleScheme? light_scheme;
+    private Gtk.SourceStyleScheme? dark_scheme;
+
     private MathEquationState state;  /* Equation state */
     private List<MathEquationState> undo_stack; /* History of expression mode states */
     private List<MathEquationState> redo_stack;
@@ -200,6 +203,13 @@ public class MathEquation : Gtk.SourceBuffer
         state.ans_base = 10;
 
         ans_tag = create_tag (null, "weight", Pango.Weight.BOLD, null);
+
+        var style_manager = Adw.StyleManager.get_default ();
+        var style_scheme_manager = Gtk.SourceStyleSchemeManager.get_default ();
+        light_scheme = style_scheme_manager.get_scheme ("Classic");
+        dark_scheme = style_scheme_manager.get_scheme ("Classic-dark");
+
+        set_style_scheme (style_manager.dark ? dark_scheme : light_scheme);
     }
 
     public void display_selected (string selected)

@@ -28,6 +28,7 @@ libcalculator_deps = [
   gobject,
   gtk,
   gtksourceview,
+  libadwaita,
   libsoup,
   libxml,
   mpc,
