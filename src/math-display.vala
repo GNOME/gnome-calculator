@@ -130,22 +130,12 @@ public class MathDisplay : Gtk.Box
 
     private void create_autocompletion ()
     {
-        /*
         Gtk.SourceCompletion completion = source_view.get_completion ();
         completion.show.connect ((completion) => { this.completion_visible = true; this.completion_selected = false;} );
         completion.hide.connect ((completion) => { this.completion_visible = false; this.completion_selected = false; } );
-        completion.move_cursor.connect ((completion) => {this.completion_selected = true;});
-        completion.select_on_show = false;
-        try
-        {
-            completion.add_provider (new FunctionCompletionProvider ());
-            completion.add_provider (new VariableCompletionProvider (equation));
-        }
-        catch (Error e)
-        {
-            warning ("Could not add CompletionProvider to source-view");
-        }
-        */
+        // completion.move_cursor.connect ((completion) => {this.completion_selected = true;});
+        completion.add_provider (new FunctionCompletionProvider ());
+        completion.add_provider (new VariableCompletionProvider (equation));
     }
 
     private bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType mod_state)
@@ -489,21 +479,57 @@ public class MathDisplay : Gtk.Box
     }
 }
 
-/*
+public class CompletionProposal : GLib.Object, Gtk.SourceCompletionProposal
+{
+    private string _label;
+    public string label
+    {
+        get { return _label; }
+    }
+
+    private string _text;
+    public string text
+    {
+        get { return _text; }
+    }
+
+    private string _details;
+    public string details
+    {
+        get { return _details; }
+    }
+
+    public CompletionProposal (string label, string text, string details)
+    {
+        _label = label;
+        _text = text;
+        _details = details;
+    }
+}
+
 public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
 {
-    public virtual string get_name ()
+    public virtual string? get_title ()
     {
         return "";
     }
 
-    public virtual Gtk.SourceCompletionItem create_proposal (string label, string text, string details)
-    {
-        var proposal = new Gtk.SourceCompletionItem ();
-        proposal.label = label;
-        proposal.text = text;
-        proposal.info = details;
-        return proposal;
+    public virtual void display (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal, Gtk.SourceCompletionCell cell) {
+        CompletionProposal item = (CompletionProposal) proposal;
+        switch (cell.column)
+        {
+            case Gtk.SourceCompletionColumn.TYPED_TEXT:
+                cell.text = item.text;
+                break;
+            case Gtk.SourceCompletionColumn.COMMENT:
+                cell.text = item.label;
+                break;
+            case Gtk.SourceCompletionColumn.DETAILS:
+                cell.text = item.details;
+                break;
+            default:
+                break;
+        }
     }
 
     public static void move_iter_to_name_start (ref Gtk.TextIter iter)
@@ -525,22 +551,22 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
         return false;
     }
 
-    public virtual bool activate_proposal (Gtk.SourceCompletionProposal proposal, Gtk.TextIter iter)
+
+    public virtual bool activate_proposal (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal)
     {
-        string proposed_string = proposal.get_text ();
-        Gtk.TextBuffer buffer = iter.get_buffer ();
+        string proposed_string = ((CompletionProposal) proposal).text;
+        Gtk.TextBuffer buffer = context.get_buffer ();
 
         Gtk.TextIter start_iter, end;
-        buffer.get_iter_at_offset (out start_iter, iter.get_offset ());
+        context.get_bounds(out start_iter, out end);
         move_iter_to_name_start (ref start_iter);
 
         buffer.place_cursor (start_iter);
-        buffer.delete_range (start_iter, iter);
+        buffer.delete_range (start_iter, end);
         buffer.insert_at_cursor (proposed_string, proposed_string.length);
         if (proposed_string.contains ("()"))
         {
-            buffer.get_iter_at_mark (out end, buffer.get_insert ());
-            end.backward_chars (1);
+            end.backward_char ();
             buffer.place_cursor (end);
         }
         return true;
@@ -551,7 +577,7 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
 
 public class FunctionCompletionProvider : CompletionProvider
 {
-    public override string get_name ()
+    public override string? get_title ()
     {
         return _("Defined Functions");
     }
@@ -572,17 +598,15 @@ public class FunctionCompletionProvider : CompletionProvider
 
     public override void populate (Gtk.SourceCompletionContext context)
     {
-        Gtk.TextIter iter1;
-        if (!context.get_iter (out iter1))
+        Gtk.TextBuffer? text_buffer = context.get_buffer ();
+        if (text_buffer == null)
             return;
 
-        Gtk.TextBuffer text_buffer = iter1.get_buffer ();
         MathFunction[] functions = get_matches_for_completion_at_cursor (text_buffer);
 
-        List<Gtk.SourceCompletionItem>? proposals = null;
+        ListStore proposals = new ListStore (typeof (CompletionProposal));
         if (functions.length > 0)
         {
-            proposals = new List<Gtk.SourceCompletionItem> ();
             foreach (var function in functions)
             {
                 string display_text = "%s(%s)".printf (function.name, string.joinv (";", function.arguments));
@@ -592,10 +616,10 @@ public class FunctionCompletionProvider : CompletionProvider
                     details_text = "%s(%s)=%s\n%s".printf (function.name, string.joinv (";", function.arguments),
                                                            function.expression, function.description);
 
-                proposals.append (create_proposal (display_text, label_text, details_text));
+                proposals.append (new CompletionProposal (display_text, label_text, details_text));
             }
         }
-        context.add_proposals (this, proposals, true);
+        context.set_proposals_for_provider (this, proposals);
     }
 }
 
@@ -608,7 +632,7 @@ public class VariableCompletionProvider : CompletionProvider
         _equation = equation;
     }
 
-    public override string get_name ()
+    public override string? get_title ()
     {
         return _("Defined Variables");
     }
@@ -627,27 +651,24 @@ public class VariableCompletionProvider : CompletionProvider
 
     public override void populate (Gtk.SourceCompletionContext context)
     {
-        Gtk.TextIter iter1;
-        if (!context.get_iter (out iter1))
+        Gtk.TextBuffer? text_buffer = context.get_buffer ();
+        if (text_buffer == null)
             return;
 
-        Gtk.TextBuffer text_buffer = iter1.get_buffer ();
         string[] variables = get_matches_for_completion_at_cursor (text_buffer, _equation.variables);
 
-        List<Gtk.SourceCompletionItem>? proposals = null;
+        ListStore proposals = new ListStore (typeof (CompletionProposal));
         if (variables.length > 0)
         {
-            proposals = new List<Gtk.SourceCompletionItem> ();
             foreach (var variable in variables)
             {
                 string display_text = "%s".printf (variable);
                 string details_text = _equation.serializer.to_string (_equation.variables.get (variable));
                 string label_text = variable;
 
-                proposals.append (create_proposal (display_text, label_text, details_text));
+                proposals.append (new CompletionProposal (display_text, label_text, details_text));
             }
         }
-        context.add_proposals (this, proposals, true);
+        context.set_proposals_for_provider (this, proposals);
     }
 }
-*/
