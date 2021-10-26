@@ -365,8 +365,6 @@ public class FunctionManager : Object
     public MathFunction[] functions_eligible_for_autocompletion_for_text (string display_text)
     {
         MathFunction[] eligible_functions = {};
-        if (display_text.length <= 1)
-            return eligible_functions;
 
         string display_text_case_insensitive = display_text.down ();
         var iter = HashTableIter<string, MathFunction> (functions);
