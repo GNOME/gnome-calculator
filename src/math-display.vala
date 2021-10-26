@@ -131,6 +131,7 @@ public class MathDisplay : Gtk.Box
     private void create_autocompletion ()
     {
         Gtk.SourceCompletion completion = source_view.get_completion ();
+        completion.select_on_show = true;
         completion.show.connect ((completion) => { this.completion_visible = true; this.completion_selected = false;} );
         completion.hide.connect ((completion) => { this.completion_visible = false; this.completion_selected = false; } );
         // completion.move_cursor.connect ((completion) => {this.completion_selected = true;});
@@ -551,60 +552,86 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
         return false;
     }
 
-
-    public virtual bool activate_proposal (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal)
+    public static Gtk.StringFilter create_filter (string word)
     {
-        string proposed_string = ((CompletionProposal) proposal).text;
-        Gtk.TextBuffer buffer = context.get_buffer ();
+        Gtk.Expression expr = new Gtk.PropertyExpression (typeof (CompletionProposal), null, "text");
+        Gtk.StringFilter filter = new Gtk.StringFilter (expr);
+        filter.set_match_mode (Gtk.StringFilterMatchMode.PREFIX);
+        filter.set_ignore_case (true);
+        filter.set_search (word);
 
-        Gtk.TextIter start_iter, end;
-        context.get_bounds(out start_iter, out end);
-        move_iter_to_name_start (ref start_iter);
-
-        buffer.place_cursor (start_iter);
-        buffer.delete_range (start_iter, end);
-        buffer.insert_at_cursor (proposed_string, proposed_string.length);
-        if (proposed_string.contains ("()"))
-        {
-            end.backward_char ();
-            buffer.place_cursor (end);
-        }
-        return true;
+        return filter;
     }
 
-    public virtual void populate (Gtk.SourceCompletionContext context) {}
+    public override void refilter (Gtk.SourceCompletionContext context, ListModel model)
+    {
+        if (!model.get_type ().is_a (typeof (Gtk.FilterListModel)))
+            return;
+
+        ((Gtk.FilterListModel)model).set_filter (create_filter (context.get_word ()));
+    }
+
+    public override void activate (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal)
+    {
+        string proposed_string = ((CompletionProposal) proposal).text;
+        string word;
+        Gtk.TextIter start_iter, end_iter;
+
+        context.get_bounds (out start_iter, out end_iter);
+        word = start_iter.get_slice (end_iter);
+
+        Gtk.TextBuffer buffer = start_iter.get_buffer ();
+
+        buffer.begin_user_action ();
+#if 0
+        /* Honestly, you'd want to do this like the following so you can
+         * handle situations where there is not a perfect prefix match (such
+         * as fuzzy completion. but since that is broken due to incorrect
+         * handling of delete-range in math-equation.vala, you can't now.
+         */
+        buffer.@delete (ref start_iter, ref end_iter);
+        buffer.insert (ref end_iter, proposed_string, -1);
+#endif
+        if (proposed_string.has_prefix (word))
+        {
+            buffer.insert (ref end_iter, proposed_string.substring(word.length, -1), -1);
+        }
+        buffer.end_user_action ();
+
+        if (proposed_string.has_suffix ("()"))
+        {
+            end_iter.backward_char ();
+            buffer.select_range (end_iter, end_iter);
+        }
+    }
 }
 
-public class FunctionCompletionProvider : CompletionProvider
+public class FunctionCompletionProvider : CompletionProvider, Gtk.SourceCompletionProvider
 {
     public override string? get_title ()
     {
         return _("Defined Functions");
     }
 
-    public static MathFunction[] get_matches_for_completion_at_cursor (Gtk.TextBuffer text_buffer)
+    public static MathFunction[] get_matches_for_completion_at_cursor (Gtk.SourceCompletionContext context)
     {
         Gtk.TextIter start_iter, end_iter;
-        text_buffer.get_iter_at_mark (out end_iter, text_buffer.get_insert ());
-        text_buffer.get_iter_at_mark (out start_iter, text_buffer.get_insert ());
-        CompletionProvider.move_iter_to_name_start (ref start_iter);
 
-        string search_pattern = text_buffer.get_slice (start_iter, end_iter, false);
+        context.get_bounds (out start_iter, out end_iter);
+        string search_pattern = start_iter.get_slice (end_iter);
 
         FunctionManager function_manager = FunctionManager.get_default_function_manager ();
         MathFunction[] functions = function_manager.functions_eligible_for_autocompletion_for_text (search_pattern);
         return functions;
     }
 
-    public override void populate (Gtk.SourceCompletionContext context)
+    public override async ListModel populate_async (Gtk.SourceCompletionContext context, GLib.Cancellable? cancellable)
+        throws GLib.Error
     {
-        Gtk.TextBuffer? text_buffer = context.get_buffer ();
-        if (text_buffer == null)
-            return;
-
-        MathFunction[] functions = get_matches_for_completion_at_cursor (text_buffer);
-
         ListStore proposals = new ListStore (typeof (CompletionProposal));
+        MathFunction[] functions = get_matches_for_completion_at_cursor (context);
+        string word = context.get_word ();
+
         if (functions.length > 0)
         {
             foreach (var function in functions)
@@ -619,11 +646,12 @@ public class FunctionCompletionProvider : CompletionProvider
                 proposals.append (new CompletionProposal (display_text, label_text, details_text));
             }
         }
-        context.set_proposals_for_provider (this, proposals);
+
+        return new Gtk.FilterListModel (proposals, create_filter (word));
     }
 }
 
-public class VariableCompletionProvider : CompletionProvider
+public class VariableCompletionProvider : CompletionProvider, Gtk.SourceCompletionProvider
 {
     private MathEquation _equation;
 
@@ -637,27 +665,23 @@ public class VariableCompletionProvider : CompletionProvider
         return _("Defined Variables");
     }
 
-    public static string[] get_matches_for_completion_at_cursor (Gtk.TextBuffer text_buffer, MathVariables variables )
+    public static string[] get_matches_for_completion_at_cursor (Gtk.SourceCompletionContext context, MathVariables variables)
     {
         Gtk.TextIter start_iter, end_iter;
-        text_buffer.get_iter_at_mark (out end_iter, text_buffer.get_insert ());
-        text_buffer.get_iter_at_mark (out start_iter, text_buffer.get_insert ());
-        CompletionProvider.move_iter_to_name_start (ref start_iter);
 
-        string search_pattern = text_buffer.get_slice (start_iter, end_iter, false);
+        context.get_bounds (out start_iter, out end_iter);
+
+        string search_pattern = start_iter.get_slice (end_iter);
         string[] math_variables = variables.variables_eligible_for_autocompletion (search_pattern);
         return math_variables;
     }
 
-    public override void populate (Gtk.SourceCompletionContext context)
+    public override async ListModel populate_async (Gtk.SourceCompletionContext context, GLib.Cancellable? cancellable)
+        throws GLib.Error
     {
-        Gtk.TextBuffer? text_buffer = context.get_buffer ();
-        if (text_buffer == null)
-            return;
-
-        string[] variables = get_matches_for_completion_at_cursor (text_buffer, _equation.variables);
-
         ListStore proposals = new ListStore (typeof (CompletionProposal));
+        string[] variables = get_matches_for_completion_at_cursor (context, _equation.variables);
+
         if (variables.length > 0)
         {
             foreach (var variable in variables)
@@ -669,6 +693,7 @@ public class VariableCompletionProvider : CompletionProvider
                 proposals.append (new CompletionProposal (display_text, label_text, details_text));
             }
         }
-        context.set_proposals_for_provider (this, proposals);
+
+        return proposals;
     }
 }
