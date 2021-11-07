@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: 3.8\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2021-05-17 05:26+0000\n"
-"PO-Revision-Date: 2021-06-26 22:36+0100\n"
+"POT-Creation-Date: 2021-09-25 08:16+0000\n"
+"PO-Revision-Date: 2021-11-07 21:59+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Português <https://l10n.gnome.org/teams/pt/>\n"
 "Language: pt\n"
@@ -23,9 +23,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0\n"
 
+#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-msgid "GNOME Calculator"
-msgstr "Calculadora do GNOME"
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
+#: src/gnome-calculator.vala:350 src/ui/math-window.ui:108
+msgid "Calculator"
+msgstr "Calculadora"
 
 #: data/org.gnome.Calculator.appdata.xml.in:8
 #: data/org.gnome.Calculator.desktop.in:4
@@ -34,16 +37,15 @@ msgstr "Realize cálculos aritméticos, científicos ou financeiros"
 
 #: data/org.gnome.Calculator.appdata.xml.in:10
 msgid ""
-"GNOME Calculator is an application that solves mathematical equations. "
-"Though it at first appears to be a simple calculator with only basic "
-"arithmetic operations, you can switch into Advanced, Financial, or "
-"Programming mode to find a surprising set of capabilities."
+"Calculator is an application that solves mathematical equations. Though it "
+"at first appears to be a simple calculator with only basic arithmetic "
+"operations, you can switch into Advanced, Financial, or Programming mode to "
+"find a surprising set of capabilities."
 msgstr ""
-"A Calculadora do GNOME é uma aplicação que resolve equações matemáticas. "
-"Apesar de à primeira vista parecer uma simples calculadora com apenas as "
-"funções aritméticas básicas, permite mudar para os modos Avançado, "
-"Financeiro ou de Programação, que proporcionam um surpreendente número de "
-"capacidades."
+"A Calculadora é uma aplicação que resolve equações matemáticas. Apesar de à "
+"primeira vista parecer uma simples calculadora com apenas as funções "
+"aritméticas básicas, permite mudar para os modos Avançado, Financeiro ou de "
+"Programação, que proporcionam um surpreendente número de capacidades."
 
 #: data/org.gnome.Calculator.appdata.xml.in:16
 msgid ""
@@ -93,15 +95,9 @@ msgstr "Calculadora do GNOME em modo financeiro"
 msgid "GNOME Calculator in Programming Mode"
 msgstr "Calculadora do GNOME em modo de programação"
 
-#: data/org.gnome.Calculator.appdata.xml.in:59
+#: data/org.gnome.Calculator.appdata.xml.in:67
 msgid "The GNOME Project"
 msgstr "O Projeto GNOME"
-
-#. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:350 src/ui/math-window.ui:108
-msgid "Calculator"
-msgstr "Calculadora"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
@@ -478,11 +474,11 @@ msgid "South African Rand"
 msgstr "Rand Sul-Africano"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:729 src/math-converter.vala:270
+#: lib/equation-lexer.vala:734 src/math-converter.vala:270
 msgid "in"
 msgstr "em"
 
-#: lib/equation-lexer.vala:729
+#: lib/equation-lexer.vala:734
 msgid "to"
 msgstr "para"
 
@@ -2961,11 +2957,11 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:562
+#: src/math-display.vala:564
 msgid "Defined Functions"
 msgstr "Funções definidas"
 
-#: src/math-display.vala:619
+#: src/math-display.vala:621
 msgid "Defined Variables"
 msgstr "Variáveis definidas"
 
@@ -3289,6 +3285,9 @@ msgstr "Menu principal"
 #: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Sair"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "Calculadora do GNOME"
 
 #~ msgid "How often the currency exchange rates should be updated"
 #~ msgstr "Frequência da atualização das taxas de câmbio de moeda"
