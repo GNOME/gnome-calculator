@@ -13,6 +13,20 @@
         <property name="hexpand">True</property>
         <property name="vexpand">False</property>
         <child>
+          <object class="GtkComboBox" id="category_combo">
+            <property name="hexpand">False</property>
+            <signal name="changed" handler="category_combobox_changed_cb" swapped="no"/>
+            <child>
+              <object class="GtkCellRendererText" id="category_renderer">
+                <property name="ellipsize">end</property>
+              </object>
+              <attributes>
+                <attribute name="text">0</attribute>
+              </attributes>
+            </child>
+          </object>
+        </child>
+        <child>
           <object class="GtkComboBox" id="from_combo">
             <property name="hexpand">True</property>
             <signal name="changed" handler="from_combobox_changed_cb" swapped="no"/>

@@ -19,6 +19,8 @@ public class MathConverter : Gtk.Grid
     private unowned Gtk.CellRendererText from_renderer;
 
     [GtkChild]
+    private unowned Gtk.ComboBox category_combo;
+    [GtkChild]
     private unowned Gtk.ComboBox from_combo;
     [GtkChild]
     private unowned Gtk.ComboBox to_combo;
@@ -45,6 +47,7 @@ public class MathConverter : Gtk.Grid
             update_result_label ();
         });
 
+        build_category_model ();
         update_visibility ();
         update_from_model ();
     }
@@ -58,6 +61,18 @@ public class MathConverter : Gtk.Grid
     {
         this.equation = equation;
         equation.notify["display"].connect ((pspec) => { update_result_label (); });
+    }
+
+    private void build_category_model () {
+        var category_model = new Gtk.TreeStore (2, typeof (string), typeof (UnitCategory));
+        var categories = UnitManager.get_default ().get_categories ();
+        foreach (var category in categories)
+        {
+            Gtk.TreeIter parent;
+            category_model.append (out parent, null);
+            category_model.set (parent, 0, category.display_name, 1, category, -1);
+        }
+        category_combo.model = category_model;
     }
 
     public void set_category (string? category)
@@ -198,6 +213,21 @@ public class MathConverter : Gtk.Grid
         } while (model.iter_next (ref child_iter));
 
         return false;
+    }
+
+    [GtkCallback]
+    private void category_combobox_changed_cb ()
+    {
+        UnitCategory? category = null;
+        Gtk.TreeIter iter;
+
+        var model = category_combo.get_model ();
+
+        if (!category_combo.get_active_iter (out iter))
+            return;
+
+        model.get (iter, 1, out category, -1);
+
     }
 
     [GtkCallback]
