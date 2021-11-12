@@ -31,17 +31,9 @@
             <property name="vexpand">False</property>
 
             <child>
-              <object class="GtkComboBox" id="from_combo">
+              <object class="GtkDropDown" id="from_combo">
                 <property name="hexpand">True</property>
-                <signal name="changed" handler="from_combobox_changed_cb" swapped="no"/>
-                <child>
-                  <object class="GtkCellRendererText" id="from_renderer">
-                    <property name="ellipsize">end</property>
-                  </object>
-                  <attributes>
-                    <attribute name="text">0</attribute>
-                  </attributes>
-                </child>
+                <signal name="notify::selected" handler="to_combobox_changed_cb" swapped="no"/>
               </object>
             </child>
             <child>
@@ -54,18 +46,9 @@
               </object>
             </child>
             <child>
-              <object class="GtkComboBox" id="to_combo">
-                <property name="opacity">0.88</property>
+              <object class="GtkDropDown" id="to_combo">
                 <property name="hexpand">True</property>
-                <signal name="changed" handler="to_combobox_changed_cb" swapped="no"/>
-                <child>
-                  <object class="GtkCellRendererText" id="to_renderer">
-                    <property name="ellipsize">end</property>
-                  </object>
-                  <attributes>
-                    <attribute name="text">0</attribute>
-                  </attributes>
-                </child>
+                <signal name="notify::selected" handler="to_combobox_changed_cb" swapped="no"/>
               </object>
             </child>
             <child>
