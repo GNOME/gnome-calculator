@@ -15,6 +15,8 @@ public class MathConverter : Gtk.Grid
 
     private string category;
 
+    private bool single_category = false;
+
     [GtkChild]
     private unowned Gtk.CellRendererText from_renderer;
 
@@ -83,9 +85,19 @@ public class MathConverter : Gtk.Grid
         if (this.category == category)
             return;
         this.category = category;
+        if (this.category != null) {
+            this.single_category = true;
+            UnitCategory? unit_category = UnitManager.get_default ().get_category (this.category);
+            uint position = 0;
+            var model = category_combo.get_model () as ListStore;
+            model.find (unit_category, out position);
+            category_combo.selected = position;
+        } else {
+            this.single_category = false;
+            category_combo.selected = 0;
+        }
+        // from_combobox_changed_cb ();
 
-        update_visibility ();
-        update_from_model ();
     }
 
     public string get_category ()
@@ -129,12 +141,14 @@ public class MathConverter : Gtk.Grid
 
     private void update_visibility ()
     {
+        this.category_combo.visible = !this.single_category;
         if (category != "currency") {
             this.outer_box_visible = true;
             return;
         }
 
         this.outer_box_visible = CurrencyManager.get_default ().loaded;
+
     }
 
     private void update_result_label ()
@@ -223,8 +237,12 @@ public class MathConverter : Gtk.Grid
     {
 
         UnitCategory? category  = category_combo.selected_item as UnitCategory;
-        print ("%s\n", category.name);
-        // set_category (category.name);
+
+        this.category = category.name;
+
+        update_visibility ();
+        update_from_model ();
+        from_combo.set_active (0);
 
     }
 
