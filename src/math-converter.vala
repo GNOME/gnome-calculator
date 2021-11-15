@@ -15,13 +15,14 @@ public class MathConverter : Gtk.Grid
 
     private string category;
 
-    [GtkChild]
-    private unowned Gtk.CellRendererText from_renderer;
+    private bool single_category = false;
 
     [GtkChild]
-    private unowned Gtk.ComboBox from_combo;
+    private unowned Gtk.DropDown category_combo;
     [GtkChild]
-    private unowned Gtk.ComboBox to_combo;
+    private unowned Gtk.DropDown from_combo;
+    [GtkChild]
+    private unowned Gtk.DropDown to_combo;
     [GtkChild]
     private unowned Gtk.Label from_label;
     [GtkChild]
@@ -39,14 +40,14 @@ public class MathConverter : Gtk.Grid
 
     construct
     {
-        from_combo.set_cell_data_func (from_renderer, from_cell_data_func);
         CurrencyManager.get_default ().updated.connect (() => {
             update_visibility ();
             update_result_label ();
         });
 
+        build_category_model ();
         update_visibility ();
-        update_from_model ();
+        build_units_model ();
     }
 
     public MathConverter (MathEquation equation)
@@ -60,14 +61,39 @@ public class MathConverter : Gtk.Grid
         equation.notify["display"].connect ((pspec) => { update_result_label (); });
     }
 
+    private void build_category_model () {
+        var category_model = new ListStore (typeof (UnitCategory));
+        var categories = UnitManager.get_default ().get_categories ();
+        foreach (var category in categories)
+        {
+            category_model.append (category);
+        }
+        category_combo.model = category_model;
+
+        var expression = new Gtk.PropertyExpression (typeof (UnitCategory),
+                                                     null,
+                                                     "display_name");
+        category_combo.expression = expression;
+    }
+
     public void set_category (string? category)
     {
         if (this.category == category)
             return;
         this.category = category;
+        if (this.category != null) {
+            this.single_category = true;
+            UnitCategory? unit_category = UnitManager.get_default ().get_category (this.category);
+            uint position = 0;
+            var model = category_combo.get_model () as ListStore;
+            model.find (unit_category, out position);
+            category_combo.selected = position;
+        } else {
+            this.single_category = false;
+            category_combo.selected = 0;
+        }
+        // from_combobox_changed_cb ();
 
-        update_visibility ();
-        update_from_model ();
     }
 
     public string get_category ()
@@ -81,46 +107,37 @@ public class MathConverter : Gtk.Grid
         var ub = UnitManager.get_default ().get_unit_by_name (unit_b);
         if (ua == null || ub == null)
         {
-            /* Select the first unit */
-            var model = from_combo.get_model ();
-            Gtk.TreeIter iter;
-            if (model.get_iter_first (out iter))
-            {
-                Gtk.TreeIter child_iter;
-                while (model.iter_children (out child_iter, iter))
-                    iter = child_iter;
-                from_combo.set_active_iter (iter);
-            }
+            from_combo.selected = 0;
             return;
         }
 
-        set_active_unit (from_combo, null, ua);
-        set_active_unit (to_combo, null, ub);
+        set_active_unit (from_combo, ua);
+        set_active_unit (to_combo, ub);
     }
 
     public void get_conversion (out Unit from_unit, out Unit to_unit)
     {
-        Gtk.TreeIter from_iter, to_iter;
 
-        from_combo.get_active_iter (out from_iter);
-        to_combo.get_active_iter (out to_iter);
-
-        from_combo.get_model ().get (from_iter, 2, out from_unit, -1);
-        to_combo.get_model ().get (to_iter, 2, out to_unit, -1);
+        from_unit = from_combo.selected_item as Unit;
+        to_unit = to_combo.selected_item as Unit;
     }
 
     private void update_visibility ()
     {
+        this.category_combo.visible = !this.single_category;
         if (category != "currency") {
             this.outer_box_visible = true;
             return;
         }
 
         this.outer_box_visible = CurrencyManager.get_default ().loaded;
+
     }
 
     private void update_result_label ()
     {
+        if (equation == null)
+            return;
         var x = equation.number;
         if (x == null)
             return;
@@ -136,101 +153,50 @@ public class MathConverter : Gtk.Grid
         }
     }
 
-    private void update_from_model ()
+    private void build_units_model ()
     {
-        var from_model = new Gtk.TreeStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
+        var unit_model = new ListStore (typeof (Unit));
 
-        if (category == null)
-        {
-            var categories = UnitManager.get_default ().get_categories ();
-            foreach (var category in categories)
-            {
-                Gtk.TreeIter parent;
-                from_model.append (out parent, null);
-                from_model.set (parent, 0, category.display_name, 1, category, -1);
+        var expression = new Gtk.PropertyExpression (typeof (Unit),
+                                                     null,
+                                                     "display_name");
+        from_combo.expression = expression;
+        to_combo.expression = expression;
 
-                foreach (var unit in category.get_units ())
-                {
-                    Gtk.TreeIter iter;
-                    from_model.append (out iter, parent);
-                    from_model.set (iter, 0, unit.display_name, 1, category, 2, unit, -1);
-                }
-            }
-        }
-        else
+        var c = UnitManager.get_default ().get_category (category);
+        foreach (var unit in c.get_units ())
         {
-            var c = UnitManager.get_default ().get_category (category);
-            foreach (var unit in c.get_units ())
-            {
-                Gtk.TreeIter iter;
-                from_model.append (out iter, null);
-                from_model.set (iter, 0, unit.display_name, 1, c, 2, unit, -1);
-            }
+            unit_model.append (unit);
         }
 
-        from_combo.model = from_model;
+        uint model_size = unit_model.get_n_items ();
+        to_combo.model = unit_model;
+        to_combo.enable_search = model_size > 10;
+        from_combo.model = unit_model;
+        from_combo.enable_search = model_size > 10;
     }
 
-    private bool iter_is_unit (Gtk.TreeModel model, Gtk.TreeIter iter, Unit unit)
+    private bool set_active_unit (Gtk.DropDown combo, Unit unit)
     {
-        Unit u;
-        model.get (iter, 2, out u, -1);
-        return u == unit;
-    }
-
-    private bool set_active_unit (Gtk.ComboBox combo, Gtk.TreeIter? iter, Unit unit)
-    {
-        var model = combo.get_model ();
-        if (iter != null && iter_is_unit (model, iter, unit))
-        {
-            combo.set_active_iter (iter);
-            return true;
-        }
-
-        Gtk.TreeIter child_iter;
-        if (!model.iter_children (out child_iter, iter))
+        uint position = 0;
+        var model = combo.get_model () as ListStore;
+        model.find (unit, out position);
+        if (position == -1)
             return false;
-
-        do
-        {
-            if (set_active_unit (combo, child_iter, unit))
-                return true;
-        } while (model.iter_next (ref child_iter));
-
-        return false;
+        combo.selected = position;
+        return true;
     }
 
     [GtkCallback]
-    private void from_combobox_changed_cb ()
+    private void category_combobox_changed_cb ()
     {
-        UnitCategory? category = null, to_category = null;
-        Unit unit;
-        Gtk.TreeIter iter, to_iter;
+        UnitCategory? category  = category_combo.selected_item as UnitCategory;
 
-        var model = from_combo.get_model ();
-        var to_model = to_combo.get_model () as Gtk.ListStore;
+        this.category = category.name;
 
-        if (!from_combo.get_active_iter (out iter))
-            return;
-
-        model.get (iter, 1, out category, 2, out unit, -1);
-        if (to_combo.get_active_iter (out to_iter))
-            to_model.get (to_iter, 1, out to_category);
-
-        if (category != to_category)
-        {
-            /* Set the to combobox to be the list of units can be converted to */
-            to_model = new Gtk.ListStore (3, typeof (string), typeof (UnitCategory), typeof (Unit));
-            foreach (var u in category.get_units ())
-            {
-                to_model.append (out iter);
-                to_model.set (iter, 0, u.display_name, 1, category, 2, u, -1);
-            }
-            to_combo.model = to_model;
-
-            /* Select the first possible unit */
-            to_combo.set_active (0);
-        }
+        update_visibility ();
+        build_units_model ();
+        from_combo.selected = 0;
     }
 
     [GtkCallback]
@@ -241,19 +207,14 @@ public class MathConverter : Gtk.Grid
         changed ();
     }
 
-    private void from_cell_data_func (Gtk.CellLayout cell_layout, Gtk.CellRenderer cell, Gtk.TreeModel tree_model, Gtk.TreeIter iter)
-    {
-        cell.set ("sensitive", !tree_model.iter_has_child (iter));
-    }
-
     [GtkCallback]
     private void swap_button_clicked_cb ()
     {
         Unit? from_unit, to_unit;
         get_conversion (out from_unit, out to_unit);
 
-        set_active_unit (from_combo, null, to_unit);
-        set_active_unit (to_combo, null, from_unit);
+        set_active_unit (from_combo, to_unit);
+        set_active_unit (to_combo, from_unit);
 
         update_result_label ();
     }
@@ -286,17 +247,14 @@ public class MathConverter : Gtk.Grid
                                        out Unit? source_unit,
                                        out Unit? target_unit)
     {
-        Gtk.TreeIter from_iter, to_iter;
-        source_unit = null;
-        target_unit = null;
-        if (!from_combo.get_active_iter (out from_iter))
+        if (category_combo == null || from_combo == null || to_combo == null)
             return null;
-        if (!to_combo.get_active_iter (out to_iter))
-            return null;
-        UnitCategory category;
-        from_combo.model.get (from_iter, 1, out category, 2, out source_unit, -1);
-        to_combo.model.get (to_iter, 2, out target_unit, -1);
+        UnitCategory? category = category_combo.selected_item as UnitCategory;
+        source_unit = from_combo.selected_item as Unit;
+        target_unit = to_combo.selected_item as Unit;
 
+        if (category == null || source_unit == null || target_unit == null)
+            return null;
         return category.convert (x, source_unit, target_unit);
   }
 }
