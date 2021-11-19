@@ -92,21 +92,25 @@ public class MathWindow : Adw.ApplicationWindow
         default:
         case ButtonMode.BASIC:
             menu_button.label = _("Basic");
+            this.default_width = -1;
             action.set_state (new Variant.string ("basic"));
             break;
 
         case ButtonMode.ADVANCED:
             menu_button.label = _("Advanced");
+            this.default_width = 680;
             action.set_state (new Variant.string ("advanced"));
             break;
 
         case ButtonMode.FINANCIAL:
             menu_button.label = _("Financial");
+            this.default_width = 680;
             action.set_state (new Variant.string ("financial"));
             break;
 
         case ButtonMode.PROGRAMMING:
             menu_button.label = _("Programming");
+            this.default_width = 680;
             action.set_state (new Variant.string ("programming"));
             break;
 
