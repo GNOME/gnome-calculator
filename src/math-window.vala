@@ -92,7 +92,7 @@ public class MathWindow : Adw.ApplicationWindow
         default:
         case ButtonMode.BASIC:
             menu_button.label = _("Basic");
-            this.default_width = -1;
+            this.default_width = 360;
             action.set_state (new Variant.string ("basic"));
             break;
 
@@ -116,6 +116,7 @@ public class MathWindow : Adw.ApplicationWindow
 
         case ButtonMode.KEYBOARD:
             menu_button.label = _("Keyboard");
+            this.default_width = 680;
             action.set_state (new Variant.string ("keyboard"));
             break;
         }
