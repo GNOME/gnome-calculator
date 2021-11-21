@@ -1879,6 +1879,16 @@ public class Parser
                 //FIXME: This condition needs to be verified for all cases.. :(
                 if (node.right.precedence > Precedence.PERCENTAGE)
                 {
+                    var next_token  = lexer.get_next_token ();
+                    lexer.roll_back ();
+
+                    if (next_token.text != "" && get_precedence (next_token.type) < Precedence.PERCENTAGE)
+                    {
+                        lexer.roll_back ();
+                        if (!expression_2 ())
+                            return true;
+                    }
+
                     node.precedence = Precedence.PERCENTAGE;
                     node.do_percentage = true;
                     return true;
@@ -1912,6 +1922,16 @@ public class Parser
                 //FIXME: This condition needs to be verified for all cases.. :(
                 if (node.right.precedence > Precedence.PERCENTAGE)
                 {
+                    var next_token  = lexer.get_next_token ();
+                    lexer.roll_back ();
+
+                    if (next_token.text != "" && get_precedence (next_token.type) < Precedence.PERCENTAGE)
+                    {
+                        lexer.roll_back ();
+                        if (!expression_2 ())
+                            return true;
+                    }
+
                     node.precedence = Precedence.PERCENTAGE;
                     node.do_percentage = true;
                     return true;
