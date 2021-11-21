@@ -222,9 +222,11 @@ public class MathButtons : Gtk.Box
 
     private void on_set_word_size (SimpleAction action, Variant? param)
     {
-        equation.word_size = (param.get_int32 ());
-        string format = ngettext("%d-bit", "%d-bit", param.get_int32 ());
-        word_size_button.set_label(format.printf(param.get_int32 ()));
+        if (word_size_button != null) {
+            equation.word_size = (param.get_int32 ());
+            string format = ngettext("%d-bit", "%d-bit", param.get_int32 ());
+            word_size_button.set_label(format.printf(param.get_int32 ()));
+        }
     }
 
     private void on_insert_numeric_point (SimpleAction action, Variant? param)
@@ -617,9 +619,11 @@ public class MathButtons : Gtk.Box
 
     private void word_size_changed_cb ()
     {
-        var size = equation.word_size;
-        string format = ngettext ("%d-bit", "%d-bit", size);
-        word_size_button.set_label (format.printf(size));
+        if (word_size_button != null) {
+            var size = equation.word_size;
+            string format = ngettext ("%d-bit", "%d-bit", size);
+            word_size_button.set_label (format.printf(size));
+        }
         update_bit_button_sensitivities ();
     }
 
