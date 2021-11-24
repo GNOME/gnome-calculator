@@ -13,7 +13,6 @@ public class MathDisplay : Gtk.Box
     /* Equation being displayed */
     private MathEquation _equation;
     public MathEquation equation { get { return _equation; } }
-    private HistoryView history;
 
     /* Display widget */
     Gtk.SourceView source_view;
@@ -38,15 +37,7 @@ public class MathDisplay : Gtk.Box
     public MathDisplay (MathEquation equation)
     {
         _equation = equation;
-        _equation.history_signal.connect (this.update_history);
         orientation = Gtk.Orientation.VERTICAL;
-
-        history = new HistoryView ();
-        history.answer_clicked.connect ((ans) => { insert_text (ans); });
-        history.equation_clicked.connect ((eq) => { display_text (eq); });
-        history.set_serializer (equation.serializer);
-        _equation.display_changed.connect (history.set_serializer);
-        append (history);
 
         var scrolled_window = new Gtk.ScrolledWindow ();
         scrolled_window.add_css_class ("display-scrolled");
@@ -107,20 +98,9 @@ public class MathDisplay : Gtk.Box
         source_view.grab_focus ();
     }
 
-    public void update_history (string answer, Number number, int number_base, uint representation_base)
-    {
-        /* Recieves signal emitted by a MathEquation object for updating history-view */
-        history.insert_entry (answer, number, number_base, representation_base); /* Sends current equation and answer for updating History-View */
-    }
-
     public void display_text (string prev_eq)
     {
         _equation.display_selected (prev_eq);
-    }
-
-    public void clear_history ()
-    {
-        history.clear ();
     }
 
     public void insert_text (string answer)
@@ -159,7 +139,7 @@ public class MathDisplay : Gtk.Box
             return true;
         } else if (state == Gdk.ModifierType.ALT_MASK && (keyval == Gdk.Key.Left || keyval == Gdk.Key.Right))
         {
-            switch (keyval)
+            /*switch (keyval)
             {
             case Gdk.Key.Left:
                 history.current -= 1;
@@ -173,7 +153,7 @@ public class MathDisplay : Gtk.Box
                 equation.clear();
                 insert_text (entry.answer_label.get_text ());
             }
-            return true;
+            return true;*/
         }
 
         /* Ignore keypresses while calculating */

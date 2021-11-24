@@ -15,6 +15,8 @@ public class MathWindow : Adw.ApplicationWindow
     private MathEquation _equation;
     public MathEquation equation { get { return _equation; } }
 
+    private HistoryView history;
+
     private MathDisplay _display;
     public MathDisplay math_display { get { return _display; } }
     private MathButtons _buttons;
@@ -61,9 +63,18 @@ public class MathWindow : Adw.ApplicationWindow
         event_controller.key_pressed.connect (key_press_cb);
 
         _display = new MathDisplay (equation);
-        grid.attach (_display, 0, 1, 1, 1);
+        grid.attach (_display, 0, 2, 1, 1);
         _display.show ();
         _display.grabfocus ();
+
+        history = new HistoryView ();
+        history.answer_clicked.connect ((ans) => { _display.insert_text (ans); });
+        history.equation_clicked.connect ((eq) => { _display.display_text (eq); });
+        history.set_serializer (_display.equation.serializer);
+        grid.attach (history, 0, 1, 1, 1);
+
+        _display.equation.display_changed.connect (history.set_serializer);
+        _display.equation.history_signal.connect (this.update_history);
 
         _buttons = new MathButtons (equation, this);
         grid.attach_next_to(_buttons, _display, Gtk.PositionType.BOTTOM);
@@ -80,7 +91,7 @@ public class MathWindow : Adw.ApplicationWindow
 
     private void clear_cb ()
     {
-        _display.clear_history ();
+        history.clear ();
     }
 
     private void mode_changed_cb ()
@@ -241,4 +252,11 @@ public class MathWindow : Adw.ApplicationWindow
 
         buttons.mode = mode;
     }
+
+    public void update_history (string answer, Number number, int number_base, uint representation_base)
+    {
+        /* Recieves signal emitted by a MathEquation object for updating history-view */
+        history.insert_entry (answer, number, number_base, representation_base); /* Sends current equation and answer for updating History-View */
+    }
+
 }
