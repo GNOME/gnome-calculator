@@ -15,7 +15,7 @@ public class MathDisplay : Gtk.Box
     public MathEquation equation { get { return _equation; } }
 
     /* Display widget */
-    Gtk.SourceView source_view;
+    GtkSource.View source_view;
 
     /* Buffer that shows errors etc */
     Gtk.TextBuffer info_buffer;
@@ -43,7 +43,7 @@ public class MathDisplay : Gtk.Box
         scrolled_window.add_css_class ("display-scrolled");
 
         scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
-        source_view = new Gtk.SourceView.with_buffer (equation);
+        source_view = new GtkSource.View.with_buffer (equation);
         source_view.set_accepts_tab (false);
         source_view.set_left_margin (14);
         source_view.set_pixels_above_lines (8);
@@ -110,7 +110,7 @@ public class MathDisplay : Gtk.Box
 
     private void create_autocompletion ()
     {
-        Gtk.SourceCompletion completion = source_view.get_completion ();
+        GtkSource.Completion completion = source_view.get_completion ();
         completion.select_on_show = true;
         completion.show.connect ((completion) => { this.completion_visible = true; this.completion_selected = false;} );
         completion.hide.connect ((completion) => { this.completion_visible = false; this.completion_selected = false; } );
@@ -134,7 +134,7 @@ public class MathDisplay : Gtk.Box
         } else if (keyval == Gdk.Key.Escape && state == 0 && completion_visible)
         /* If completion window is shown and escape is pressed, hide it */
         {
-            Gtk.SourceCompletion completion = source_view.get_completion ();
+            GtkSource.Completion completion = source_view.get_completion ();
             completion.hide ();
             return true;
         } else if (state == Gdk.ModifierType.ALT_MASK && (keyval == Gdk.Key.Left || keyval == Gdk.Key.Right))
@@ -460,7 +460,7 @@ public class MathDisplay : Gtk.Box
     }
 }
 
-public class CompletionProposal : GLib.Object, Gtk.SourceCompletionProposal
+public class CompletionProposal : GLib.Object, GtkSource.CompletionProposal
 {
     private string _label;
     public string label
@@ -488,24 +488,31 @@ public class CompletionProposal : GLib.Object, Gtk.SourceCompletionProposal
     }
 }
 
-public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
+public abstract class CompletionProvider : GLib.Object, GtkSource.CompletionProvider
 {
     public virtual string? get_title ()
     {
         return "";
     }
 
-    public virtual void display (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal, Gtk.SourceCompletionCell cell) {
+    public virtual async ListModel populate_async (GtkSource.CompletionContext context, GLib.Cancellable? cancellable)
+        throws GLib.Error { return null; }
+    public virtual GenericArray<GtkSource.CompletionProposal>? list_alternates (GtkSource.CompletionContext context, GtkSource.CompletionProposal proposal) { return null; }
+    public virtual int get_priority (GtkSource.CompletionContext context) { return 0; }
+    public virtual bool is_trigger (Gtk.TextIter iter, unichar ch) { return false; }
+    public virtual bool key_activates (GtkSource.CompletionContext context , GtkSource.CompletionProposal proposal, uint keyval, Gdk.ModifierType mod) {return false; }
+
+    public virtual void display (GtkSource.CompletionContext context, GtkSource.CompletionProposal proposal, GtkSource.CompletionCell cell) {
         CompletionProposal item = (CompletionProposal) proposal;
         switch (cell.column)
         {
-            case Gtk.SourceCompletionColumn.TYPED_TEXT:
+            case GtkSource.CompletionColumn.TYPED_TEXT:
                 cell.text = item.text;
                 break;
-            case Gtk.SourceCompletionColumn.COMMENT:
+            case GtkSource.CompletionColumn.COMMENT:
                 cell.text = item.label;
                 break;
-            case Gtk.SourceCompletionColumn.DETAILS:
+            case GtkSource.CompletionColumn.DETAILS:
                 cell.text = item.details;
                 break;
             default:
@@ -526,7 +533,7 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
         }
     }
 
-    public virtual bool get_start_iter (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal, out Gtk.TextIter iter)
+    public virtual bool get_start_iter (GtkSource.CompletionContext context, GtkSource.CompletionProposal proposal, out Gtk.TextIter iter)
     {
         iter = {};
         return false;
@@ -543,7 +550,7 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
         return filter;
     }
 
-    public override void refilter (Gtk.SourceCompletionContext context, ListModel model)
+    public void refilter (GtkSource.CompletionContext context, ListModel model)
     {
         if (!model.get_type ().is_a (typeof (Gtk.FilterListModel)))
             return;
@@ -551,7 +558,7 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
         ((Gtk.FilterListModel)model).set_filter (create_filter (context.get_word ()));
     }
 
-    public override void activate (Gtk.SourceCompletionContext context, Gtk.SourceCompletionProposal proposal)
+    public void activate (GtkSource.CompletionContext context, GtkSource.CompletionProposal proposal)
     {
         string proposed_string = ((CompletionProposal) proposal).text;
         string word;
@@ -586,14 +593,14 @@ public class CompletionProvider : GLib.Object, Gtk.SourceCompletionProvider
     }
 }
 
-public class FunctionCompletionProvider : CompletionProvider, Gtk.SourceCompletionProvider
+public class FunctionCompletionProvider : CompletionProvider, GtkSource.CompletionProvider
 {
     public override string? get_title ()
     {
         return _("Defined Functions");
     }
 
-    public static MathFunction[] get_matches_for_completion_at_cursor (Gtk.SourceCompletionContext context)
+    public static MathFunction[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context)
     {
         Gtk.TextIter start_iter, end_iter;
 
@@ -605,7 +612,7 @@ public class FunctionCompletionProvider : CompletionProvider, Gtk.SourceCompleti
         return functions;
     }
 
-    public override async ListModel populate_async (Gtk.SourceCompletionContext context, GLib.Cancellable? cancellable)
+    public override async ListModel populate_async (GtkSource.CompletionContext context, GLib.Cancellable? cancellable)
         throws GLib.Error
     {
         ListStore proposals = new ListStore (typeof (CompletionProposal));
@@ -631,7 +638,7 @@ public class FunctionCompletionProvider : CompletionProvider, Gtk.SourceCompleti
     }
 }
 
-public class VariableCompletionProvider : CompletionProvider, Gtk.SourceCompletionProvider
+public class VariableCompletionProvider : CompletionProvider, GtkSource.CompletionProvider
 {
     private MathEquation _equation;
 
@@ -645,7 +652,7 @@ public class VariableCompletionProvider : CompletionProvider, Gtk.SourceCompleti
         return _("Defined Variables");
     }
 
-    public static string[] get_matches_for_completion_at_cursor (Gtk.SourceCompletionContext context, MathVariables variables)
+    public static string[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context, MathVariables variables)
     {
         Gtk.TextIter start_iter, end_iter;
 
@@ -656,7 +663,7 @@ public class VariableCompletionProvider : CompletionProvider, Gtk.SourceCompleti
         return math_variables;
     }
 
-    public override async ListModel populate_async (Gtk.SourceCompletionContext context, GLib.Cancellable? cancellable)
+    public override async ListModel populate_async (GtkSource.CompletionContext context, GLib.Cancellable? cancellable)
         throws GLib.Error
     {
         ListStore proposals = new ListStore (typeof (CompletionProposal));

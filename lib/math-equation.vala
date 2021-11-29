@@ -42,7 +42,7 @@ private class SolveData : Object
     public uint representation_base;
 }
 
-public class MathEquation : Gtk.SourceBuffer
+public class MathEquation : GtkSource.Buffer
 {
     private Gtk.TextTag ans_tag;
 
@@ -128,8 +128,8 @@ public class MathEquation : Gtk.SourceBuffer
     private Gtk.TextMark? ans_start_mark = null;
     private Gtk.TextMark? ans_end_mark = null;
 
-    private Gtk.SourceStyleScheme? light_scheme;
-    private Gtk.SourceStyleScheme? dark_scheme;
+    private GtkSource.StyleScheme? light_scheme;
+    private GtkSource.StyleScheme? dark_scheme;
 
     private MathEquationState state;  /* Equation state */
     private List<MathEquationState> undo_stack; /* History of expression mode states */
@@ -205,7 +205,7 @@ public class MathEquation : Gtk.SourceBuffer
         ans_tag = create_tag (null, "weight", Pango.Weight.BOLD, null);
 
         var style_manager = Adw.StyleManager.get_default ();
-        var style_scheme_manager = Gtk.SourceStyleSchemeManager.get_default ();
+        var style_scheme_manager = GtkSource.StyleSchemeManager.get_default ();
         light_scheme = style_scheme_manager.get_scheme ("Classic");
         dark_scheme = style_scheme_manager.get_scheme ("Classic-dark");
 

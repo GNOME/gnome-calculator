@@ -107,7 +107,7 @@ public class Calculator : Gtk.Application
         base.startup ();
 
         Adw.init ();
-        Gtk.Sourceinit ();
+        GtkSource.init ();
 
         settings = new Settings ("org.gnome.calculator");
         settings.delay ();
