@@ -192,6 +192,22 @@ public class CurrencyManager : Object
         currencies.append (c);
         return c;
     }
+
+    public Currency[] currencies_eligible_for_autocompletion_for_text (string display_text)
+    {
+        Currency[] eligible_currencies = {};
+
+        string display_text_case_insensitive = display_text.up ();
+        foreach (Currency currency in currencies)
+        {
+            string currency_name_case_insensitive = currency.name.up ();
+            if (currency_name_case_insensitive.has_prefix (display_text_case_insensitive))
+                eligible_currencies += currency;
+        }
+
+        return eligible_currencies;
+    }
+
 }
 
 public class Currency : Object

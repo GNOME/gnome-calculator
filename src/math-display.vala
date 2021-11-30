@@ -115,7 +115,9 @@ public class MathDisplay : Gtk.Box
         completion.show.connect ((completion) => { this.completion_visible = true; this.completion_selected = false;} );
         completion.hide.connect ((completion) => { this.completion_visible = false; this.completion_selected = false; } );
         // completion.move_cursor.connect ((completion) => {this.completion_selected = true;});
+        completion.add_provider (new BuiltinCompletionProvider ());
         completion.add_provider (new FunctionCompletionProvider ());
+        completion.add_provider (new CurrencyCompletionProvider ());
         completion.add_provider (new VariableCompletionProvider (equation));
     }
 
@@ -495,12 +497,16 @@ public abstract class CompletionProvider : GLib.Object, GtkSource.CompletionProv
         return "";
     }
 
-    public virtual async ListModel populate_async (GtkSource.CompletionContext context, GLib.Cancellable? cancellable)
-        throws GLib.Error { return null; }
+    public abstract async ListModel populate_async (GtkSource.CompletionContext context, GLib.Cancellable? cancellable)
+       throws GLib.Error;
+
     public virtual GenericArray<GtkSource.CompletionProposal>? list_alternates (GtkSource.CompletionContext context, GtkSource.CompletionProposal proposal) { return null; }
     public virtual int get_priority (GtkSource.CompletionContext context) { return 0; }
     public virtual bool is_trigger (Gtk.TextIter iter, unichar ch) { return false; }
-    public virtual bool key_activates (GtkSource.CompletionContext context , GtkSource.CompletionProposal proposal, uint keyval, Gdk.ModifierType mod) {return false; }
+    public virtual bool key_activates (GtkSource.CompletionContext context , GtkSource.CompletionProposal proposal, uint keyval, Gdk.ModifierType mod)
+    {
+        return keyval == Gdk.Key.Return || keyval == Gdk.Key.KP_Enter;
+    }
 
     public virtual void display (GtkSource.CompletionContext context, GtkSource.CompletionProposal proposal, GtkSource.CompletionCell cell) {
         CompletionProposal item = (CompletionProposal) proposal;
@@ -638,6 +644,93 @@ public class FunctionCompletionProvider : CompletionProvider, GtkSource.Completi
     }
 }
 
+public class BuiltinCompletionProvider : CompletionProvider, GtkSource.CompletionProvider
+{
+    public override string? get_title ()
+    {
+        return _("Built-in keywords");
+    }
+
+    public new int get_priority (GtkSource.CompletionContext context) { return 3; }
+
+    public static string[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context)
+    {
+        Gtk.TextIter start_iter, end_iter;
+
+        context.get_bounds (out start_iter, out end_iter);
+        string search_pattern = start_iter.get_slice (end_iter);
+
+        string[] keywords = {"in", "to"};
+        string[] result = {};
+        foreach (var keyword in keywords)
+        {
+            if (keyword.has_prefix (search_pattern))
+                result += keyword;
+        }
+        return result;
+    }
+
+    public override async ListModel populate_async (GtkSource.CompletionContext context, GLib.Cancellable? cancellable)
+        throws GLib.Error
+    {
+        ListStore proposals = new ListStore (typeof (CompletionProposal));
+        string[] keywords = get_matches_for_completion_at_cursor (context);
+
+        if (keywords.length > 0)
+        {
+            foreach (var keyword in keywords)
+            {
+                proposals.append (new CompletionProposal (keyword, keyword, ""));
+            }
+        }
+
+        return proposals;
+    }
+}
+
+public class CurrencyCompletionProvider : CompletionProvider, GtkSource.CompletionProvider
+{
+    public override string? get_title ()
+    {
+        return _("Defined currencies");
+    }
+
+    public new int get_priority (GtkSource.CompletionContext context) { return 1; }
+
+    public static Currency[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context)
+    {
+        Gtk.TextIter start_iter, end_iter;
+
+        context.get_bounds (out start_iter, out end_iter);
+        string search_pattern = start_iter.get_slice (end_iter);
+
+        CurrencyManager currency_manager = CurrencyManager.get_default ();
+        Currency[] currencies = currency_manager.currencies_eligible_for_autocompletion_for_text (search_pattern);
+        return currencies;
+    }
+
+    public override async ListModel populate_async (GtkSource.CompletionContext context, GLib.Cancellable? cancellable)
+        throws GLib.Error
+    {
+        ListStore proposals = new ListStore (typeof (CompletionProposal));
+        Currency[] currencies = get_matches_for_completion_at_cursor (context);
+        string word = context.get_word ();
+
+        if (currencies.length > 0)
+        {
+            foreach (var currency in currencies)
+            {
+                string display_text = "%s (%s)".printf (currency.name, currency.display_name);
+                string label_text = "%s".printf (currency.name);
+                string details_text = "%s - %s".printf (currency.display_name, currency.symbol);
+                proposals.append (new CompletionProposal (display_text, label_text, details_text));
+            }
+        }
+
+        return new Gtk.FilterListModel (proposals, create_filter (word));
+    }
+}
+
 public class VariableCompletionProvider : CompletionProvider, GtkSource.CompletionProvider
 {
     private MathEquation _equation;
@@ -652,7 +745,7 @@ public class VariableCompletionProvider : CompletionProvider, GtkSource.Completi
         return _("Defined Variables");
     }
 
-    public override int get_priority (GtkSource.CompletionContext context) { return 1; }
+    public new int get_priority (GtkSource.CompletionContext context) { return 2; }
 
     public static string[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context, MathVariables variables)
     {
