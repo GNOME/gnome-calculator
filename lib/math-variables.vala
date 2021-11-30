@@ -125,7 +125,7 @@ public class MathVariables : Object
     public string[] variables_eligible_for_autocompletion (string text)
     {
         string[] eligible_variables = {};
-        if (text.length <=1)
+        if (text.length < 1)
             return eligible_variables;
 
         string[] variables = get_names ();

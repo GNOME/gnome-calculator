@@ -652,6 +652,8 @@ public class VariableCompletionProvider : CompletionProvider, GtkSource.Completi
         return _("Defined Variables");
     }
 
+    public override int get_priority (GtkSource.CompletionContext context) { return 1; }
+
     public static string[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context, MathVariables variables)
     {
         Gtk.TextIter start_iter, end_iter;
@@ -668,6 +670,7 @@ public class VariableCompletionProvider : CompletionProvider, GtkSource.Completi
     {
         ListStore proposals = new ListStore (typeof (CompletionProposal));
         string[] variables = get_matches_for_completion_at_cursor (context, _equation.variables);
+        string word = context.get_word ();
 
         if (variables.length > 0)
         {
@@ -681,6 +684,6 @@ public class VariableCompletionProvider : CompletionProvider, GtkSource.Completi
             }
         }
 
-        return proposals;
+        return new Gtk.FilterListModel (proposals, create_filter (word));
     }
 }
