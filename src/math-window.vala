@@ -89,26 +89,31 @@ public class MathWindow : Hdy.ApplicationWindow
         case ButtonMode.BASIC:
             mode_label.label = _("Basic");
             action.set_state (new Variant.string ("basic"));
+            this.default_width = 360;
             break;
 
         case ButtonMode.ADVANCED:
             mode_label.label = _("Advanced");
             action.set_state (new Variant.string ("advanced"));
+            this.default_width = 680;
             break;
 
         case ButtonMode.FINANCIAL:
             mode_label.label = _("Financial");
             action.set_state (new Variant.string ("financial"));
+            this.default_width = 680;
             break;
 
         case ButtonMode.PROGRAMMING:
             mode_label.label = _("Programming");
             action.set_state (new Variant.string ("programming"));
+            this.default_width = 680;
             break;
 
         case ButtonMode.KEYBOARD:
             mode_label.label = _("Keyboard");
             action.set_state (new Variant.string ("keyboard"));
+            this.default_width = 680;
             break;
         }
 
