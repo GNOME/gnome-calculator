@@ -98,6 +98,10 @@ public class MathPreferencesDialog : Adw.PreferencesWindow
         equation.notify["angle-units"].connect ((pspec) => { set_combo_row_from_int (row_angle_units, equation.angle_units); });
 
         set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval"));
+
+        if (DEVELOPMENT_BUILD) {
+            add_css_class ("devel");
+        }
     }
 
     private static string angle_units_name (Adw.EnumListItem item) {

@@ -87,6 +87,11 @@ public class MathWindow : Adw.ApplicationWindow
         var provider = new Gtk.CssProvider ();
         provider.load_from_resource ("/org/gnome/calculator/calculator.css");
         Gtk.StyleContext.add_provider_for_display (display, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+
+        if (DEVELOPMENT_BUILD) {
+            add_css_class ("devel");
+        }
+
     }
 
     private void clear_cb ()

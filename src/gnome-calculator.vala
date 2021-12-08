@@ -40,7 +40,7 @@ public class Calculator : Gtk.Application
 
     public Calculator ()
     {
-        Object (flags : ApplicationFlags.NON_UNIQUE, application_id : "org.gnome.Calculator");
+        Object (flags : ApplicationFlags.NON_UNIQUE, application_id : APP_ID);
 
         add_main_option_entries (option_entries);
     }
@@ -321,7 +321,7 @@ public class Calculator : Gtk.Application
         Gtk.show_about_dialog (get_active_window (),
                                "program-name",
                                /* Program name in the about dialog */
-                               _("Calculator"),
+                               NAME_PREFIX + _("Calculator"),
                                "title", _("About Calculator"),
                                "version", VERSION,
                                "website", "https://wiki.gnome.org/Apps/Calculator",
@@ -335,7 +335,7 @@ public class Calculator : Gtk.Application
                                "authors", authors,
                                "documenters", documenters,
                                "translator_credits", translator_credits,
-                               "logo-icon-name", "org.gnome.Calculator");
+                               "logo-icon-name", APP_ID);
     }
 
     private void quit_cb ()
@@ -378,7 +378,7 @@ public class Calculator : Gtk.Application
 
         program_name = Path.get_basename (args [0]);
 
-        Gtk.Window.set_default_icon_name ("org.gnome.Calculator-symbolic");
+        Gtk.Window.set_default_icon_name (APP_ID + "-symbolic");
 
         var app = new Calculator ();
 

@@ -3,9 +3,9 @@ include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_
 flatpak:
   image: 'registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:master'
   variables:
-    MANIFEST_PATH: "org.gnome.Calculator.json"
+    MANIFEST_PATH: "org.gnome.Calculator.Devel.json"
     FLATPAK_MODULE: "gnome-calculator"
-    APP_ID: "org.gnome.Calculator"
+    APP_ID: "org.gnome.Calculator.Devel"
     RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
     BUNDLE: "gnome-calculator-dev.flatpak"
   extends: '.flatpak'

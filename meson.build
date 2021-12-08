@@ -10,6 +10,17 @@ inc_rooth_dep = declare_dependency (include_directories : inc_rooth)
 gnome = import('gnome')
 i18n = import('i18n')
 
+if get_option('development')
+  app_id = 'org.gnome.Calculator.Devel'
+  name_prefix = '(Nightly) '
+  vcs_tag = run_command('git', 'rev-parse', '--short', 'HEAD').stdout().strip()
+  version_suffix = '-@0@'.format (vcs_tag)
+else
+  app_id = 'org.gnome.Calculator'
+  name_prefix = ''
+  version_suffix = ''
+endif
+
 # Some variables
 libexec_dir = join_paths(get_option('prefix'), get_option('libexecdir'))
 locale_dir = join_paths(get_option('prefix'), get_option('localedir'))
@@ -53,9 +64,12 @@ posix = valac.find_library('posix')
 # Configuration
 conf = configuration_data()
 
+conf.set_quoted('APP_ID', app_id)
+conf.set_quoted('NAME_PREFIX', name_prefix)
 conf.set_quoted('GETTEXT_PACKAGE', meson.project_name())
 conf.set_quoted('LOCALE_DIR', locale_dir)
-conf.set_quoted('VERSION', meson.project_version())
+conf.set_quoted('VERSION', meson.project_version() + version_suffix)
+conf.set10('DEVELOPMENT_BUILD', get_option('development'))
 
 configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')

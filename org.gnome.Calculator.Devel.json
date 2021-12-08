@@ -1,5 +1,5 @@
 {
-    "app-id" : "org.gnome.Calculator",
+    "app-id" : "org.gnome.Calculator.Devel",
     "runtime" : "org.gnome.Sdk",
     "runtime-version" : "master",
     "sdk" : "org.gnome.Sdk",
@@ -59,7 +59,7 @@
         },
         {
             "name" : "gtksourceview",
-            "buildsystem": "meson",
+            "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "git",
@@ -68,7 +68,6 @@
                 }
             ]
         },
-
         {
             "name" : "gee",
             "config-opts" : [
@@ -86,7 +85,8 @@
             "name" : "gnome-calculator",
             "buildsystem" : "meson",
             "config-opts" : [
-                "-Ddisable-introspection=true"
+                "-Ddisable-introspection=true",
+                "-Ddevelopment=true"
             ],
             "sources" : [
                 {
