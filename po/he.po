@@ -11,22 +11,22 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2021-11-15 09:55+0000\n"
-"PO-Revision-Date: 2021-11-15 11:57+0200\n"
+"POT-Creation-Date: 2021-12-09 20:39+0000\n"
+"PO-Revision-Date: 2022-01-02 09:32+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:350 src/ui/math-window.ui:108
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
+#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "מחשבון"
 
@@ -469,7 +469,7 @@ msgid "South African Rand"
 msgstr "ראנד דרום אפריקאי"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:270
+#: lib/equation-lexer.vala:734 src/math-converter.vala:231
 msgid "in"
 msgstr "ב"
 
@@ -486,74 +486,74 @@ msgid "Error: the number of periods must be positive"
 msgstr "שגיאה: מספר התקופות חייב להיות ערך חיובי"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:173
+#: lib/math-equation.vala:176
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:525
+#: lib/math-equation.vala:543
 msgid "No undo history"
 msgstr "אין היסטוריית ביטול"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:546
+#: lib/math-equation.vala:564
 msgid "No redo history"
 msgstr "אין היסטוריית שחזור"
 
-#: lib/math-equation.vala:777
+#: lib/math-equation.vala:795
 msgid "No sane value to store"
 msgstr "אין ערך שפוי לשמירה"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1038
+#: lib/math-equation.vala:1056
 msgid "Overflow. Try a bigger word size"
 msgstr "הצפה, יש לנסות גודל word גדול יותר"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1043
+#: lib/math-equation.vala:1061
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "המשתנה „%s” אינו מוכר"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1050
+#: lib/math-equation.vala:1068
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "הפונקציה „%s” אינה מוגדרת"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1057
+#: lib/math-equation.vala:1075
 msgid "Unknown conversion"
 msgstr "המרה בלתי מוכרת"
 
 #. should always be run
-#: lib/math-equation.vala:1067
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1072 lib/math-equation.vala:1077
+#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
 msgid "Malformed expression"
 msgstr "ביטוי שגוי"
 
-#: lib/math-equation.vala:1088
+#: lib/math-equation.vala:1106
 msgid "Calculating"
 msgstr "מתבצע חישוב"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1281
+#: lib/math-equation.vala:1299
 msgid "Need an integer to factorize"
 msgstr "נדרש שלם חיובי כדי לפרק לגורמים"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1345
+#: lib/math-equation.vala:1363
 msgid "No sane value to bitwise shift"
 msgstr "אין ערך שפוי לביצוע הזזת סיביות"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1367
+#: lib/math-equation.vala:1385
 msgid "Displayed value not an integer"
 msgstr "הערך המוצג איננו שלם חיובי"
 
@@ -703,7 +703,7 @@ msgid "Digital Storage"
 msgstr "אחסון ספרתי"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:41 src/math-preferences.vala:20
+#: lib/unit.vala:41 src/math-preferences.vala:110
 msgid "Degrees"
 msgstr "מעלות"
 
@@ -718,7 +718,7 @@ msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "מעלה,מעלות"
 
-#: lib/unit.vala:42 src/math-preferences.vala:19
+#: lib/unit.vala:42 src/math-preferences.vala:112
 msgid "Radians"
 msgstr "רדיאנים"
 
@@ -733,7 +733,7 @@ msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "רדיאן,רדיאנים"
 
-#: lib/unit.vala:43 src/math-preferences.vala:21
+#: lib/unit.vala:43 src/math-preferences.vala:114
 msgid "Gradians"
 msgstr "גראדיאנים"
 
@@ -2220,674 +2220,46 @@ msgstr "העתקה"
 msgid "Copy result to clipboard"
 msgstr "העתקה ללוח הגזירים"
 
-#: src/ui/buttons-advanced.ui:143 src/ui/buttons-basic.ui:143
-#: src/ui/buttons-financial.ui:1989 src/ui/buttons-programming.ui:1900
-msgid "Modulus divide"
-msgstr "חילוק עם שארית"
-
-#: src/ui/buttons-advanced.ui:163 src/ui/buttons-basic.ui:163
-#: src/ui/buttons-financial.ui:2009 src/ui/buttons-programming.ui:1442
-msgid "Divide [/]"
-msgstr "חילוק [/]"
-
-#: src/ui/buttons-advanced.ui:277 src/ui/buttons-basic.ui:277
-#: src/ui/buttons-financial.ui:2123 src/ui/buttons-programming.ui:1462
-msgid "Multiply [*]"
-msgstr "כפל [*]"
-
-#: src/ui/buttons-advanced.ui:297 src/ui/buttons-basic.ui:297
-#: src/ui/buttons-financial.ui:2143 src/ui/buttons-programming.ui:1482
-msgid "Subtract [-]"
-msgstr "חיסור [-]"
-
-#: src/ui/buttons-advanced.ui:316 src/ui/buttons-basic.ui:316
-#: src/ui/buttons-financial.ui:2162 src/ui/buttons-programming.ui:1501
-msgid "Add [+]"
-msgstr "חיבור [+]"
-
-#: src/ui/buttons-advanced.ui:335 src/ui/buttons-basic.ui:335
-#: src/ui/buttons-programming.ui:1416
-msgid "Pi [Ctrl+P]"
-msgstr "פאי [Ctrl+P]"
-
-#: src/ui/buttons-advanced.ui:362 src/ui/buttons-basic.ui:362
-#: src/ui/buttons-financial.ui:2182 src/ui/buttons-programming.ui:1397
-msgid "Root [Ctrl+R]"
-msgstr "שורש [Ctrl+R]"
-
-#: src/ui/buttons-advanced.ui:380 src/ui/buttons-basic.ui:380
-msgid "Square [Ctrl+2]"
-msgstr "ריבוע [Ctrl+2]"
-
-#. Accessible name for the exponentiation (x to the power of y) button
-#: src/ui/buttons-advanced.ui:384 src/ui/buttons-advanced.ui:761
-#: src/ui/buttons-basic.ui:384 src/ui/buttons-financial.ui:2311
-#: src/ui/buttons-programming.ui:2247
-msgid "Exponent"
-msgstr "מעריך"
-
-#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:410
-#: src/ui/buttons-financial.ui:2201 src/ui/buttons-programming.ui:1540
-msgid "Clear Display [Escape]"
-msgstr "מחיקת התצוגה [Escape]"
-
-#: src/ui/buttons-advanced.ui:437 src/ui/buttons-basic.ui:437
-#: src/ui/buttons-financial.ui:2228 src/ui/buttons-programming.ui:1919
-msgid "Start Group [(]"
-msgstr "התחלת קבוצת חישובים [(]"
-
-#: src/ui/buttons-advanced.ui:457 src/ui/buttons-basic.ui:457
-#: src/ui/buttons-financial.ui:2248 src/ui/buttons-programming.ui:1938
-msgid "End Group [)]"
-msgstr "סגירת קבוצת חישובים [)]"
-
-#: src/ui/buttons-advanced.ui:477 src/ui/buttons-basic.ui:477
-#: src/ui/buttons-financial.ui:2268
-msgid "Percentage [%]"
-msgstr "אחוזים [%]"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:491 src/ui/buttons-basic.ui:491
-#: src/ui/buttons-financial.ui:2282 src/ui/buttons-programming.ui:1515
-msgid "="
-msgstr "="
-
-#: src/ui/buttons-advanced.ui:497 src/ui/buttons-basic.ui:497
-#: src/ui/buttons-financial.ui:2288 src/ui/buttons-programming.ui:1521
-msgid "Calculate Result"
-msgstr "חישוב תוצאה"
-
-#: src/ui/buttons-advanced.ui:528 src/ui/buttons-programming.ui:1968
-msgid "Subscript mode [Alt]"
-msgstr "מצב כתב תחתי [Alt]"
-
-#. Accessible name for the subscript mode button
-#: src/ui/buttons-advanced.ui:533 src/ui/buttons-programming.ui:1973
-msgid "Subscript"
-msgstr "כתב תחתי"
-
-#: src/ui/buttons-advanced.ui:558 src/ui/buttons-programming.ui:1998
-msgid "Superscript mode [Ctrl]"
-msgstr "מצב כתב עילי [Ctrl]"
-
-#. Accessible name for the superscript mode button
-#: src/ui/buttons-advanced.ui:563 src/ui/buttons-programming.ui:2003
-msgid "Superscript"
-msgstr "כתב עילי"
-
-#: src/ui/buttons-advanced.ui:590 src/ui/buttons-programming.ui:2445
-msgid "Factorize [Ctrl+F]"
-msgstr "פירוק לגורמים [Ctrl+F]"
-
-#. Accessible name for the factorize button
-#: src/ui/buttons-advanced.ui:594 src/ui/buttons-programming.ui:2449
-msgid "Factorize"
-msgstr "פירוק לגורמים"
-
-#: src/ui/buttons-advanced.ui:613
-msgid "Scientific exponent [Ctrl+E]"
-msgstr "מעריך מדעי [Ctrl+E]"
-
-#. Accessible name for the scientific exponent button
-#: src/ui/buttons-advanced.ui:617
-msgid "Scientific Exponent"
-msgstr "מעריך מדעי"
-
-#: src/ui/buttons-advanced.ui:643
-msgid "Cosine"
-msgstr "קוסינוס"
-
-#: src/ui/buttons-advanced.ui:662
-msgid "Sine"
-msgstr "סינוס"
-
-#: src/ui/buttons-advanced.ui:681
-msgid "Tangent"
-msgstr "טנגנס"
-
-#: src/ui/buttons-advanced.ui:700
-msgid "Hyperbolic Cosine"
-msgstr "קוסינוס היפרבולי"
-
-#: src/ui/buttons-advanced.ui:719
-msgid "Hyperbolic Sine"
-msgstr "סינוס היפרבולי"
-
-#: src/ui/buttons-advanced.ui:738
-msgid "Hyperbolic Tangent"
-msgstr "טנגנס היפרבולי"
-
-#: src/ui/buttons-advanced.ui:756 src/ui/buttons-financial.ui:2306
-#: src/ui/buttons-programming.ui:2242
-msgid "Exponent [^ or **]"
-msgstr "מעריך [^ or **]"
-
-#: src/ui/buttons-advanced.ui:786 src/ui/buttons-programming.ui:2272
-msgid "Inverse [Ctrl+I]"
-msgstr "היפוך [Ctrl+I]"
-
-#. Accessible name for the inverse button
-#: src/ui/buttons-advanced.ui:791 src/ui/buttons-programming.ui:2277
-msgid "Inverse"
-msgstr "היפוך"
-
-#: src/ui/buttons-advanced.ui:818
-msgid "Euler’s Number"
-msgstr "קבוע אוילר"
-
-#: src/ui/buttons-advanced.ui:845
-msgid "Natural Logarithm"
-msgstr "לוגוריתם טבעי"
-
-#: src/ui/buttons-advanced.ui:864 src/ui/buttons-financial.ui:2337
-#: src/ui/buttons-programming.ui:2304
-msgid "Logarithm"
-msgstr "לוגריתם"
-
-#: src/ui/buttons-advanced.ui:882 src/ui/buttons-programming.ui:2342
-msgid "Factorial [!]"
-msgstr "עצרת [!]"
-
-#. Accessible name for the factorial button
-#: src/ui/buttons-advanced.ui:887 src/ui/buttons-programming.ui:2347
-msgid "Factorial"
-msgstr "עצרת"
-
-#: src/ui/buttons-advanced.ui:913 src/ui/buttons-programming.ui:2373
-msgid "Absolute Value [|]"
-msgstr "ערך מוחלט [|]"
-
-#. Accessible name for the absolute value button
-#: src/ui/buttons-advanced.ui:918 src/ui/buttons-programming.ui:2378
-msgid "Absolute Value"
-msgstr "ערך מוחלט"
-
-#: src/ui/buttons-advanced.ui:970
-msgid "Real Component"
-msgstr "רכיב ממשי"
-
-#: src/ui/buttons-advanced.ui:990
-msgid "Imaginary Component"
-msgstr "רכיב מדומה"
-
-#: src/ui/buttons-advanced.ui:1010
-msgid "Complex conjugate"
-msgstr "צמוד של מרוכב"
-
-#: src/ui/buttons-advanced.ui:1030
-msgid "Complex argument"
-msgstr "הארגומנט המרוכב"
-
-#. Accessible name for the memory button
-#: src/ui/buttons-advanced.ui:1048 src/ui/buttons-advanced.ui:1051
-#: src/ui/buttons-financial.ui:2368 src/ui/buttons-financial.ui:2371
-#: src/ui/buttons-programming.ui:2491
+#: src/ui/buttons-advanced.ui:844
 msgid "Memory"
 msgstr "זיכרון"
 
-#. The label on the memory button
-#: src/ui/buttons-advanced.ui:1062 src/ui/buttons-financial.ui:2381
-#: src/ui/buttons-programming.ui:2506
-msgid "x"
-msgstr "x"
-
-#: src/ui/buttons-advanced.ui:1099
-msgid "Additional Functions"
-msgstr "פונקציות נוספות"
-
-#. Accessible name for the store value button
-#: src/ui/buttons-advanced.ui:1102 src/ui/buttons-programming.ui:2494
-msgid "Store"
-msgstr "שמירה"
-
-#. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:8 src/ui/buttons-financial.ui:2420
-msgid "Compounding Term"
-msgstr "משך הצבירה"
-
-#: src/ui/buttons-financial.ui:23 src/ui/buttons-financial.ui:207
-#: src/ui/buttons-financial.ui:391 src/ui/buttons-financial.ui:575
-#: src/ui/buttons-financial.ui:728 src/ui/buttons-financial.ui:913
-#: src/ui/buttons-financial.ui:1098 src/ui/buttons-financial.ui:1283
-#: src/ui/buttons-financial.ui:1468 src/ui/buttons-financial.ui:1684
-#: src/ui/buttons-programming.ui:2655
-msgid "_Cancel"
-msgstr "_ביטול"
-
-#. Compounding Term Dialog: Calculate button
-#. Double-Declining Depreciation Dialog: Calculate button
-#. Future Value Dialog: Calculate button
-#. Gross Profit Margin Dialog: Calculate button
-#. Periodic Payment Dialog: Calculate button
-#. Present Value Dialog: Calculate button
-#. Periodic Interest Rate Dialog: Calculate button
-#. Straight-Line Depreciation Dialog: Calculate button
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
-#. Payment Period Dialog: Button to calculate result
-#: src/ui/buttons-financial.ui:38 src/ui/buttons-financial.ui:222
-#: src/ui/buttons-financial.ui:406 src/ui/buttons-financial.ui:590
-#: src/ui/buttons-financial.ui:743 src/ui/buttons-financial.ui:928
-#: src/ui/buttons-financial.ui:1113 src/ui/buttons-financial.ui:1298
-#: src/ui/buttons-financial.ui:1483 src/ui/buttons-financial.ui:1699
-msgid "C_alculate"
-msgstr "_חישוב"
-
-#. Compounding Term Dialog: Label before present value input
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:118 src/ui/buttons-financial.ui:1179
-msgid "Present _Value:"
-msgstr "ערך _נוכחי:"
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:134 src/ui/buttons-financial.ui:471
-#: src/ui/buttons-financial.ui:809 src/ui/buttons-financial.ui:994
-#: src/ui/buttons-financial.ui:1779
-msgid "Periodic Interest _Rate:"
-msgstr "שער ריבית _תקופתי:"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:150
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"חישוב מספר תקופות הצבירה הנדרשות על מנת להביא את ההשקעה של הערך הנוכחי לערך "
-"עתידי, בריבית קבועה לכל תקופת הצבירה."
-
-#. Compounding Term Dialog: Label before future value input
-#. Periodic Interest Rate Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:164 src/ui/buttons-financial.ui:1163
-msgid "_Future Value:"
-msgstr "ערך _עתידי:"
-
-#. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:192
-msgid "Double-Declining Depreciation"
-msgstr "פחת בשיטת יתרה פוחתת כפולה"
-
-#. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:257
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the double-declining balance method."
-msgstr ""
-"חישוב ההפרשה לפחת על הנכס לתקופת זמן קצובה, תוך שימוש בשיטת יתרה פוחתת כפולה."
-
-#. Double-Declining Depreciation Dialog: Label before cost input
-#. Gross Profit Margin Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:271 src/ui/buttons-financial.ui:639
-msgid "C_ost:"
-msgstr "_עלות:"
-
-#. Double-Declining Depreciation Dialog: Label before life input
-#. Straight-Line Depreciation Dialog: Label before life input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:287 src/ui/buttons-financial.ui:1365
-#: src/ui/buttons-financial.ui:1534
-msgid "_Life:"
-msgstr "_חיים:"
-
-#. Double-Declining Depreciation Dialog: Label before period input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:333 src/ui/buttons-financial.ui:1518
-msgid "_Period:"
-msgstr "_תקופה:"
-
-#. Title of Future Value dialog
-#: src/ui/buttons-financial.ui:376 src/ui/buttons-financial.ui:2458
-msgid "Future Value"
-msgstr "ערך עתידי"
-
-#. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:441
-msgid ""
-"Calculates the future value of an investment based on a series of equal "
-"payments at a periodic interest rate over the number of payment periods in "
-"the term."
-msgstr ""
-"חישוב הערך העתידי של השקעה המבוססת על סדרה של תשלומים שווים בריבית משתנה "
-"לאורך מספר תקופות התשלום."
-
-#. Future Value Dialog: Label before periodic payment input
-#. Present Value Dialog: Label before periodic payment input
-#. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:455 src/ui/buttons-financial.ui:978
-#: src/ui/buttons-financial.ui:1811
-msgid "_Periodic Payment:"
-msgstr "_תשלום תקופתי:"
-
-#. Future Value Dialog: Label before number of periods input
-#. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:487 src/ui/buttons-financial.ui:1010
-msgid "_Number of Periods:"
-msgstr "_מספר התקופות:"
-
-#. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:560 src/ui/buttons-financial.ui:2597
-msgid "Gross Profit Margin"
-msgstr "שיעור הרווח הגולמי"
-
-#. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:625
-msgid ""
-"Calculates the resale price of a product, based on the product cost and the "
-"wanted gross profit margin."
-msgstr ""
-"חישוב ערך המכירה החוזרת של מוצר, על פי מחיר המוצר ועל פי שולי הרווח הגולמי "
-"הרצויים."
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:655
-msgid "_Margin:"
-msgstr "_שוליים:"
-
-#. Title of Periodic Payment dialog
-#: src/ui/buttons-financial.ui:713 src/ui/buttons-financial.ui:2577
-msgid "Periodic Payment"
-msgstr "תשלום תקופתי"
-
-#. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:779
-msgid ""
-"Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period. "
-msgstr ""
-"חישוב מספר התשלומים להחזר הלוואה, כאשר כל תשלום מבוצע בסיום תקופת התשלום. "
-
-#. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:793
-msgid "_Principal:"
-msgstr "_עיקרון:"
-
-#. Periodic Payment Dialog: Label before term input
-#. Periodic Interest Rate Dialog: Label before term input
-#: src/ui/buttons-financial.ui:825 src/ui/buttons-financial.ui:1195
-msgid "_Term:"
-msgstr "_תקופה:"
-
-#. Title of Present Value dialog
-#: src/ui/buttons-financial.ui:898 src/ui/buttons-financial.ui:2557
-msgid "Present Value"
-msgstr "ערך נוכחי"
-
-#. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:964
-msgid ""
-"Calculates the present value of an investment based on a series of equal "
-"payments discounted at a periodic interest rate over the number of payment "
-"periods in the term. "
-msgstr ""
-"חישוב הערך הנוכחי של השקעה המבוססת על סדרה של תשלומים שווים המהוונים בשיעור "
-"ריבית משתנה על מספר תקופות התשלום. "
-
-#. Title of Periodic Interest Rate dialog
-#: src/ui/buttons-financial.ui:1083 src/ui/buttons-financial.ui:2537
-msgid "Periodic Interest Rate"
-msgstr "שער ריבית תקופתי"
-
-#. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1149
-msgid ""
-"Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods. "
-msgstr ""
-"חישוב הריבית המשתנה הנדרשת כדי להביא את ההשקעה אל הערך העתידי, על פני מספר "
-"תקופות צבירה. "
-
-#. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:1268
-msgid "Straight-Line Depreciation"
-msgstr "פחת בשיטת קו ישר"
-
-#. Straight-Line Depreciation Dialog: Label before cost input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:1333 src/ui/buttons-financial.ui:1566
-msgid "_Cost:"
-msgstr "ע_לות:"
-
-#. Straight-Line Depreciation Dialog: Label before salvage input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:1349 src/ui/buttons-financial.ui:1550
-msgid "_Salvage:"
-msgstr "_ניצולת:"
-
-#. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1427
-msgid ""
-"Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly "
-"over the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated. "
-msgstr ""
-"חישוב פחת של נכס על פי שיטת הקו הישר לתקופה אחת. שיטת הקו הישר מחלקת את עלות "
-"הפחת באופן שווה על פני אורך החיים השימושי של נכס. אורך החיים השימושיים הוא "
-"מספר התקופות, בדרך כלל שנים, אשר על פניהן נכס זה מופחת. "
-
-#. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:1453
-msgid "Sum-of-the-Years’-Digits Depreciation"
-msgstr "פְּחָת לפי סכום ספרות שנים"
-
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1643
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
-"occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated. "
-msgstr ""
-"חישוב הפחת על נכס לתקופה מוגדרת, תוך שימוש בשיטת סכום ספרות השנים. שיטת "
-"הפחתה זו מאיצה את קצב ההפחתה, כך שהפחתות חשבונאיות מתרחשות יותר בתקופות "
-"המוקדמות מאשר בתקופות המאוחרות. אורך החיים השימושיים הוא מספר התקופות, בדרך "
-"כלל שנים, אשר בהם נכס זה מופחת. "
-
-#. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:1669
-msgid "Payment Period"
-msgstr "תקופת התשלום"
-
-#. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:1795
-msgid "Future _Value:"
-msgstr "ערך _עתידי:"
-
-#. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1828
-msgid ""
-"Calculates the number of payment periods that are necessary during the term "
-"of an ordinary annuity, to accumulate a future value, at a periodic interest "
-"rate."
-msgstr ""
-"חישוב מספר תקופות התשלום הנדרשות במהלך תקופת הפקדה רגילה, על מנת לצבור ערך "
-"עתידי, בריבית משתנה."
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:2414
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2433
-msgid "Ddb"
-msgstr "Ddb"
-
-#: src/ui/buttons-financial.ui:2439
-msgid "Double Declining Depreciation"
-msgstr "פחת בשיטת יתרה פוחתת כפולה"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:2452
-msgid "Fv"
-msgstr "Fv"
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:2471
-msgid "Term"
-msgstr "תקופה"
-
-#: src/ui/buttons-financial.ui:2477
-msgid "Financial Term"
-msgstr "תקופה חשבונאית"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2491
-msgid "Syd"
-msgstr "Syd"
-
-#: src/ui/buttons-financial.ui:2497
-msgid "Sum of the Years Digits Depreciation"
-msgstr "פחת לפי סכום ספרות"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2511
-msgid "Sln"
-msgstr "Sln"
-
-#: src/ui/buttons-financial.ui:2517
-msgid "Straight Line Depreciation"
-msgstr "פחת בשיטת קו ישר"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:2531
-msgid "Rate"
-msgstr "דירוג"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:2551
-msgid "Pv"
-msgstr "Pv"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:2571
-msgid "Pmt"
-msgstr "Pmt"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:2591
-msgid "Gpm"
-msgstr "Gpm"
-
-#: src/ui/buttons-programming.ui:20
+#: src/ui/buttons-programming.ui:16
 msgid "Binary"
 msgstr "בינרי"
 
-#: src/ui/buttons-programming.ui:21
+#: src/ui/buttons-programming.ui:17
 msgid "Octal"
 msgstr "אוקטלי"
 
-#: src/ui/buttons-programming.ui:22
+#: src/ui/buttons-programming.ui:18
 msgid "Decimal"
 msgstr "עשרוני"
 
-#: src/ui/buttons-programming.ui:23
+#: src/ui/buttons-programming.ui:19
 msgid "Hexadecimal"
 msgstr "הקסדצימלי"
 
-#. Accessible name for the shift left button
-#: src/ui/buttons-programming.ui:2027 src/ui/buttons-programming.ui:2030
-msgid "Shift Left"
-msgstr "הזזה שמאלה"
-
-#. Accessible name for the shift right button
-#: src/ui/buttons-programming.ui:2075 src/ui/buttons-programming.ui:2078
-msgid "Shift Right"
-msgstr "הזזה ימינה"
-
-#: src/ui/buttons-programming.ui:2125
-msgid "Boolean Exclusive OR"
-msgstr "XOR לוגי"
-
-#: src/ui/buttons-programming.ui:2144
-msgid "Boolean OR"
-msgstr "OR לוגי"
-
-#: src/ui/buttons-programming.ui:2164
-msgid "Boolean AND"
-msgstr "AND לוגי"
-
-#: src/ui/buttons-programming.ui:2184
-msgid "Boolean NOT"
-msgstr "NOT לוגי"
-
-#: src/ui/buttons-programming.ui:2204
-msgid "Ones’ Complement"
-msgstr "משלים לאחד"
-
-#: src/ui/buttons-programming.ui:2224
-msgid "Two’s Complement"
-msgstr "משלים לשתיים"
-
-#: src/ui/buttons-programming.ui:2324
-msgid "Binary Logarithm"
-msgstr "לוגוריתם בינרי"
-
-#: src/ui/buttons-programming.ui:2405
-msgid "Integer Component"
-msgstr "החלק השלם"
-
-#: src/ui/buttons-programming.ui:2425
-msgid "Fractional Component"
-msgstr "חלק השבר"
-
-#. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2468 src/ui/buttons-programming.ui:2606
-msgid "Insert Character Code"
-msgstr "הוספת קוד תו"
-
-#. Accessible name for the insert character button
-#: src/ui/buttons-programming.ui:2472
-msgid "Insert Character"
-msgstr "הוספת תו"
-
-#: src/ui/buttons-programming.ui:2540
-msgid "Change word size"
-msgstr "שינוי גודל מילה"
-
-#: src/ui/buttons-programming.ui:2576
-msgid "Word Size"
-msgstr "גודל מילה"
-
-#. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2621
-msgid "Ch_aracter:"
-msgstr "_תו:"
-
-#. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2670
-msgid "_Insert"
-msgstr "הו_ספה"
-
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Start in given mode (basic, advanced, financial, programming, keyboard)"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Solve given equation"
 msgstr "Solve given equation"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Start with given equation"
 msgstr "Start with given equation"
 
-#: src/gnome-calculator.vala:28
+#: src/gnome-calculator.vala:27
 msgid "Show release version"
 msgstr "Show release version"
 
-#. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:314
-msgid "Unable to open help file"
-msgstr "לא ניתן לפתוח את קובץ העזרה"
-
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:345
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -2897,25 +2269,25 @@ msgstr ""
 "\n"
 "<a href=\"https://l10n.gnome.org/teams/he/\">מיזם תרגום GNOME לעברית</a>"
 
-#: src/gnome-calculator.vala:351 src/ui/math-window.ui:101
+#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
 msgid "About Calculator"
 msgstr "על המחשבון"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:360
+#: src/gnome-calculator.vala:334
 msgid "Calculator with financial and scientific modes."
 msgstr "מחשבון עם מצבים פיננסיים ומדעיים."
 
-#: src/gnome-calculator.vala:375
+#: src/gnome-calculator.vala:347
 msgid "Are you sure you want to close all open windows?"
 msgstr "לסגור את כל החלונות הפתוחים?"
 
-#: src/gnome-calculator.vala:376
+#: src/gnome-calculator.vala:348
 msgid "Close _All"
 msgstr "לסגור ה_כול"
 
-#: src/math-buttons.vala:223 src/math-buttons.vala:603
-#: src/math-buttons.vala:618
+#: src/math-buttons.vala:227 src/math-buttons.vala:608
+#: src/math-buttons.vala:624
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -2924,7 +2296,7 @@ msgstr[1] "‫%d-סיביות"
 msgstr[2] "‫%d-סיביות"
 msgstr[3] "‫%d-סיביות"
 
-#: src/math-buttons.vala:588
+#: src/math-buttons.vala:593
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2933,91 +2305,92 @@ msgstr[1] "שני מקומות"
 msgstr[2] "‫%d מקומות"
 msgstr[3] "‫%d מקומות"
 
-#: src/ui/math-converter.ui:36
+#: src/ui/math-converter.ui:41
 msgid " to "
 msgstr " אל "
 
-#: src/ui/math-converter.ui:66
+#: src/ui/math-converter.ui:59
 msgid "Switch conversion units"
 msgstr "החלפת יחידות ההמרה"
 
-#: src/ui/math-converter.ui:112
+#: src/ui/math-converter.ui:98
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:562
+#: src/math-display.vala:606
 msgid "Defined Functions"
 msgstr "הגדרת פונקציות"
 
-#: src/math-display.vala:619
+#: src/math-display.vala:651
+msgid "Built-in keywords"
+msgstr "מילות מפתח מובנות"
+
+#: src/math-display.vala:695
+msgid "Defined currencies"
+msgstr "מטבעות מוגדרים"
+
+#: src/math-display.vala:745
 msgid "Defined Variables"
 msgstr "הקצאת משתנה"
 
-#: src/ui/math-function-popover.ui:34
+#: src/ui/math-function-popover.ui:27
 msgid "New function"
 msgstr "פונקציה חדשה"
 
-#: src/ui/math-function-popover.ui:46
+#: src/ui/math-function-popover.ui:37
 msgid "Select no. of arguments"
 msgstr "בחירת מספר פרמטרים"
 
-#. Translators: Word size combo: 8 bit
-#: src/math-preferences.vala:26
+#: src/math-preferences.vala:123
 msgid "8-bit"
 msgstr "8-סיביות"
 
-#. Translators: Word size combo: 16 bit
-#: src/math-preferences.vala:28
+#: src/math-preferences.vala:125
 msgid "16-bit"
 msgstr "16-סיביות"
 
-#. Translators: Word size combo: 32 bit
-#: src/math-preferences.vala:30
+#: src/math-preferences.vala:127
 msgid "32-bit"
 msgstr "32-סיביות"
 
-#. Translators: Word size combo: 64 bit
-#: src/math-preferences.vala:32
+#: src/math-preferences.vala:129
 msgid "64-bit"
 msgstr "64-סיביות"
 
-#. Translators: Refresh interval combo: never
-#: src/math-preferences.vala:37
-msgid "never"
+#: src/math-preferences.vala:138
+msgid "Never"
 msgstr "לעולם לא"
 
-#. Translators: Refresh interval combo: daily
-#: src/math-preferences.vala:39
-msgid "daily"
+#: src/math-preferences.vala:140
+msgid "Daily"
 msgstr "יומי"
 
-#. Translators: Refresh interval combo: weekly
-#: src/math-preferences.vala:41
-msgid "weekly"
+#: src/math-preferences.vala:142
+msgid "Weekly"
 msgstr "שבועי"
 
-#: src/ui/math-preferences.ui:22
+#: src/ui/math-preferences.ui:19
 msgid "Number of _decimals"
 msgstr "מספר ספרות _עשרוניות"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:34
 msgid "Trailing _zeroes"
 msgstr "הצגת אפסים _עוקבים"
 
-#: src/ui/math-preferences.ui:55
+#: src/ui/math-preferences.ui:46
 msgid "_Thousands separators"
 msgstr "הצגת מפריד _אלפים"
 
-#: src/ui/math-preferences.ui:70
+#: src/ui/math-preferences.ui:58
 msgid "_Angle units"
 msgstr "יחידות ה_זווית"
 
-#: src/ui/math-preferences.ui:77
+#: src/ui/math-preferences.ui:64
 msgid "Word _size"
 msgstr "_גודל Word"
 
-#: src/ui/math-preferences.ui:84
+#: src/ui/math-preferences.ui:70
 msgid "E_xchange rate refresh interval"
 msgstr "מרווח זמן לשינוי שער _חליפין"
 
@@ -3191,31 +2564,31 @@ msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "מעבר למצב הקלדה (חלופי)"
 
-#: src/ui/math-variable-popover.ui:38
+#: src/ui/math-variable-popover.ui:31
 msgid "Variable name"
 msgstr "שם משתנה"
 
-#: src/ui/math-variable-popover.ui:51
+#: src/ui/math-variable-popover.ui:40
 msgid "Store value into existing or new variable"
 msgstr "אחסון ערך במשתנה חדש או קיים"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:96
+#: src/ui/math-window.ui:20 src/math-window.vala:110
 msgid "Basic"
 msgstr "בסיסי"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:101
+#: src/ui/math-window.ui:25 src/math-window.vala:116
 msgid "Advanced"
 msgstr "מתקדם"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:106
+#: src/ui/math-window.ui:30 src/math-window.vala:122
 msgid "Financial"
 msgstr "פיננסי"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:111
+#: src/ui/math-window.ui:35 src/math-window.vala:128
 msgid "Programming"
 msgstr "תכנות"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:116
+#: src/ui/math-window.ui:40 src/math-window.vala:134
 msgid "Keyboard"
 msgstr "מקלדת"
 
@@ -3255,25 +2628,419 @@ msgstr "צירופי מקשים"
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:117
 msgid "Mode selection"
 msgstr "בחירת מצב"
 
-#: src/ui/math-window.ui:179
-msgid "Undo"
-msgstr "ביטול"
-
-#: src/ui/math-window.ui:180
+#: src/ui/math-window.ui:128
 msgid "Undo [Ctrl+Z]"
 msgstr "ביטול [Ctrl+Z]"
 
-#: src/ui/math-window.ui:196
+#: src/ui/math-window.ui:132
+msgid "Undo"
+msgstr "ביטול"
+
+#: src/ui/math-window.ui:143
 msgid "Primary menu"
 msgstr "תפריט עיקרי"
 
-#: src/math-window.vala:144
+#: src/math-window.vala:163
 msgid "_Quit"
 msgstr "י_ציאה"
+
+#~ msgid "Modulus divide"
+#~ msgstr "חילוק עם שארית"
+
+#~ msgid "Divide [/]"
+#~ msgstr "חילוק [/]"
+
+#~ msgid "Multiply [*]"
+#~ msgstr "כפל [*]"
+
+#~ msgid "Subtract [-]"
+#~ msgstr "חיסור [-]"
+
+#~ msgid "Add [+]"
+#~ msgstr "חיבור [+]"
+
+#~ msgid "Pi [Ctrl+P]"
+#~ msgstr "פאי [Ctrl+P]"
+
+#~ msgid "Root [Ctrl+R]"
+#~ msgstr "שורש [Ctrl+R]"
+
+#~ msgid "Square [Ctrl+2]"
+#~ msgstr "ריבוע [Ctrl+2]"
+
+#~ msgid "Exponent"
+#~ msgstr "מעריך"
+
+#~ msgid "Clear Display [Escape]"
+#~ msgstr "מחיקת התצוגה [Escape]"
+
+#~ msgid "Start Group [(]"
+#~ msgstr "התחלת קבוצת חישובים [(]"
+
+#~ msgid "End Group [)]"
+#~ msgstr "סגירת קבוצת חישובים [)]"
+
+#~ msgid "Percentage [%]"
+#~ msgstr "אחוזים [%]"
+
+#~ msgid "="
+#~ msgstr "="
+
+#~ msgid "Calculate Result"
+#~ msgstr "חישוב תוצאה"
+
+#~ msgid "Subscript mode [Alt]"
+#~ msgstr "מצב כתב תחתי [Alt]"
+
+#~ msgid "Subscript"
+#~ msgstr "כתב תחתי"
+
+#~ msgid "Superscript mode [Ctrl]"
+#~ msgstr "מצב כתב עילי [Ctrl]"
+
+#~ msgid "Superscript"
+#~ msgstr "כתב עילי"
+
+#~ msgid "Factorize [Ctrl+F]"
+#~ msgstr "פירוק לגורמים [Ctrl+F]"
+
+#~ msgid "Factorize"
+#~ msgstr "פירוק לגורמים"
+
+#~ msgid "Scientific exponent [Ctrl+E]"
+#~ msgstr "מעריך מדעי [Ctrl+E]"
+
+#~ msgid "Scientific Exponent"
+#~ msgstr "מעריך מדעי"
+
+#~ msgid "Cosine"
+#~ msgstr "קוסינוס"
+
+#~ msgid "Sine"
+#~ msgstr "סינוס"
+
+#~ msgid "Tangent"
+#~ msgstr "טנגנס"
+
+#~ msgid "Hyperbolic Cosine"
+#~ msgstr "קוסינוס היפרבולי"
+
+#~ msgid "Hyperbolic Sine"
+#~ msgstr "סינוס היפרבולי"
+
+#~ msgid "Hyperbolic Tangent"
+#~ msgstr "טנגנס היפרבולי"
+
+#~ msgid "Exponent [^ or **]"
+#~ msgstr "מעריך [^ or **]"
+
+#~ msgid "Inverse [Ctrl+I]"
+#~ msgstr "היפוך [Ctrl+I]"
+
+#~ msgid "Inverse"
+#~ msgstr "היפוך"
+
+#~ msgid "Euler’s Number"
+#~ msgstr "קבוע אוילר"
+
+#~ msgid "Natural Logarithm"
+#~ msgstr "לוגוריתם טבעי"
+
+#~ msgid "Logarithm"
+#~ msgstr "לוגריתם"
+
+#~ msgid "Factorial [!]"
+#~ msgstr "עצרת [!]"
+
+#~ msgid "Factorial"
+#~ msgstr "עצרת"
+
+#~ msgid "Absolute Value [|]"
+#~ msgstr "ערך מוחלט [|]"
+
+#~ msgid "Absolute Value"
+#~ msgstr "ערך מוחלט"
+
+#~ msgid "Real Component"
+#~ msgstr "רכיב ממשי"
+
+#~ msgid "Imaginary Component"
+#~ msgstr "רכיב מדומה"
+
+#~ msgid "Complex conjugate"
+#~ msgstr "צמוד של מרוכב"
+
+#~ msgid "Complex argument"
+#~ msgstr "הארגומנט המרוכב"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "Additional Functions"
+#~ msgstr "פונקציות נוספות"
+
+#~ msgid "Store"
+#~ msgstr "שמירה"
+
+#~ msgid "Compounding Term"
+#~ msgstr "משך הצבירה"
+
+#~ msgid "_Cancel"
+#~ msgstr "_ביטול"
+
+#~ msgid "C_alculate"
+#~ msgstr "_חישוב"
+
+#~ msgid "Present _Value:"
+#~ msgstr "ערך _נוכחי:"
+
+#~ msgid "Periodic Interest _Rate:"
+#~ msgstr "שער ריבית _תקופתי:"
+
+#~ msgid ""
+#~ "Calculates the number of compounding periods necessary to increase an "
+#~ "investment of present value to a future value, at a fixed interest rate "
+#~ "per compounding period."
+#~ msgstr ""
+#~ "חישוב מספר תקופות הצבירה הנדרשות על מנת להביא את ההשקעה של הערך הנוכחי "
+#~ "לערך עתידי, בריבית קבועה לכל תקופת הצבירה."
+
+#~ msgid "_Future Value:"
+#~ msgstr "ערך _עתידי:"
+
+#~ msgid "Double-Declining Depreciation"
+#~ msgstr "פחת בשיטת יתרה פוחתת כפולה"
+
+#~ msgid ""
+#~ "Calculates the depreciation allowance on an asset for a specified period "
+#~ "of time, using the double-declining balance method."
+#~ msgstr ""
+#~ "חישוב ההפרשה לפחת על הנכס לתקופת זמן קצובה, תוך שימוש בשיטת יתרה פוחתת "
+#~ "כפולה."
+
+#~ msgid "C_ost:"
+#~ msgstr "_עלות:"
+
+#~ msgid "_Life:"
+#~ msgstr "_חיים:"
+
+#~ msgid "_Period:"
+#~ msgstr "_תקופה:"
+
+#~ msgid "Future Value"
+#~ msgstr "ערך עתידי"
+
+#~ msgid ""
+#~ "Calculates the future value of an investment based on a series of equal "
+#~ "payments at a periodic interest rate over the number of payment periods "
+#~ "in the term."
+#~ msgstr ""
+#~ "חישוב הערך העתידי של השקעה המבוססת על סדרה של תשלומים שווים בריבית משתנה "
+#~ "לאורך מספר תקופות התשלום."
+
+#~ msgid "_Periodic Payment:"
+#~ msgstr "_תשלום תקופתי:"
+
+#~ msgid "_Number of Periods:"
+#~ msgstr "_מספר התקופות:"
+
+#~ msgid "Gross Profit Margin"
+#~ msgstr "שיעור הרווח הגולמי"
+
+#~ msgid ""
+#~ "Calculates the resale price of a product, based on the product cost and "
+#~ "the wanted gross profit margin."
+#~ msgstr ""
+#~ "חישוב ערך המכירה החוזרת של מוצר, על פי מחיר המוצר ועל פי שולי הרווח "
+#~ "הגולמי הרצויים."
+
+#~ msgid "_Margin:"
+#~ msgstr "_שוליים:"
+
+#~ msgid "Periodic Payment"
+#~ msgstr "תשלום תקופתי"
+
+#~ msgid ""
+#~ "Calculates the amount of the periodic payment of a loan, where payments "
+#~ "are made at the end of each payment period. "
+#~ msgstr ""
+#~ "חישוב מספר התשלומים להחזר הלוואה, כאשר כל תשלום מבוצע בסיום תקופת התשלום. "
+
+#~ msgid "_Principal:"
+#~ msgstr "_עיקרון:"
+
+#~ msgid "_Term:"
+#~ msgstr "_תקופה:"
+
+#~ msgid "Present Value"
+#~ msgstr "ערך נוכחי"
+
+#~ msgid ""
+#~ "Calculates the present value of an investment based on a series of equal "
+#~ "payments discounted at a periodic interest rate over the number of "
+#~ "payment periods in the term. "
+#~ msgstr ""
+#~ "חישוב הערך הנוכחי של השקעה המבוססת על סדרה של תשלומים שווים המהוונים "
+#~ "בשיעור ריבית משתנה על מספר תקופות התשלום. "
+
+#~ msgid "Periodic Interest Rate"
+#~ msgstr "שער ריבית תקופתי"
+
+#~ msgid ""
+#~ "Calculates the periodic interest necessary to increase an investment to a "
+#~ "future value, over the number of compounding periods. "
+#~ msgstr ""
+#~ "חישוב הריבית המשתנה הנדרשת כדי להביא את ההשקעה אל הערך העתידי, על פני "
+#~ "מספר תקופות צבירה. "
+
+#~ msgid "Straight-Line Depreciation"
+#~ msgstr "פחת בשיטת קו ישר"
+
+#~ msgid "_Cost:"
+#~ msgstr "ע_לות:"
+
+#~ msgid "_Salvage:"
+#~ msgstr "_ניצולת:"
+
+#~ msgid ""
+#~ "Calculates the straight-line depreciation of an asset for one period. The "
+#~ "straight-line method of depreciation divides the depreciable cost evenly "
+#~ "over the useful life of an asset. The useful life is the number of "
+#~ "periods, typically years, over which an asset is depreciated. "
+#~ msgstr ""
+#~ "חישוב פחת של נכס על פי שיטת הקו הישר לתקופה אחת. שיטת הקו הישר מחלקת את "
+#~ "עלות הפחת באופן שווה על פני אורך החיים השימושי של נכס. אורך החיים "
+#~ "השימושיים הוא מספר התקופות, בדרך כלל שנים, אשר על פניהן נכס זה מופחת. "
+
+#~ msgid "Sum-of-the-Years’-Digits Depreciation"
+#~ msgstr "פְּחָת לפי סכום ספרות שנים"
+
+#~ msgid ""
+#~ "Calculates the depreciation allowance on an asset for a specified period "
+#~ "of time, using the Sum-of-the-Years’-Digits method. This method of "
+#~ "depreciation accelerates the rate of depreciation, so that more "
+#~ "depreciation expense occurs in earlier periods than in later ones. The "
+#~ "useful life is the number of periods, typically years, over which an "
+#~ "asset is depreciated. "
+#~ msgstr ""
+#~ "חישוב הפחת על נכס לתקופה מוגדרת, תוך שימוש בשיטת סכום ספרות השנים. שיטת "
+#~ "הפחתה זו מאיצה את קצב ההפחתה, כך שהפחתות חשבונאיות מתרחשות יותר בתקופות "
+#~ "המוקדמות מאשר בתקופות המאוחרות. אורך החיים השימושיים הוא מספר התקופות, "
+#~ "בדרך כלל שנים, אשר בהם נכס זה מופחת. "
+
+#~ msgid "Payment Period"
+#~ msgstr "תקופת התשלום"
+
+#~ msgid "Future _Value:"
+#~ msgstr "ערך _עתידי:"
+
+#~ msgid ""
+#~ "Calculates the number of payment periods that are necessary during the "
+#~ "term of an ordinary annuity, to accumulate a future value, at a periodic "
+#~ "interest rate."
+#~ msgstr ""
+#~ "חישוב מספר תקופות התשלום הנדרשות במהלך תקופת הפקדה רגילה, על מנת לצבור "
+#~ "ערך עתידי, בריבית משתנה."
+
+#~ msgid "Ctrm"
+#~ msgstr "Ctrm"
+
+#~ msgid "Ddb"
+#~ msgstr "Ddb"
+
+#~ msgid "Double Declining Depreciation"
+#~ msgstr "פחת בשיטת יתרה פוחתת כפולה"
+
+#~ msgid "Fv"
+#~ msgstr "Fv"
+
+#~ msgid "Term"
+#~ msgstr "תקופה"
+
+#~ msgid "Financial Term"
+#~ msgstr "תקופה חשבונאית"
+
+#~ msgid "Syd"
+#~ msgstr "Syd"
+
+#~ msgid "Sum of the Years Digits Depreciation"
+#~ msgstr "פחת לפי סכום ספרות"
+
+#~ msgid "Sln"
+#~ msgstr "Sln"
+
+#~ msgid "Straight Line Depreciation"
+#~ msgstr "פחת בשיטת קו ישר"
+
+#~ msgid "Rate"
+#~ msgstr "דירוג"
+
+#~ msgid "Pv"
+#~ msgstr "Pv"
+
+#~ msgid "Pmt"
+#~ msgstr "Pmt"
+
+#~ msgid "Gpm"
+#~ msgstr "Gpm"
+
+#~ msgid "Shift Left"
+#~ msgstr "הזזה שמאלה"
+
+#~ msgid "Shift Right"
+#~ msgstr "הזזה ימינה"
+
+#~ msgid "Boolean Exclusive OR"
+#~ msgstr "XOR לוגי"
+
+#~ msgid "Boolean OR"
+#~ msgstr "OR לוגי"
+
+#~ msgid "Boolean AND"
+#~ msgstr "AND לוגי"
+
+#~ msgid "Boolean NOT"
+#~ msgstr "NOT לוגי"
+
+#~ msgid "Ones’ Complement"
+#~ msgstr "משלים לאחד"
+
+#~ msgid "Two’s Complement"
+#~ msgstr "משלים לשתיים"
+
+#~ msgid "Binary Logarithm"
+#~ msgstr "לוגוריתם בינרי"
+
+#~ msgid "Integer Component"
+#~ msgstr "החלק השלם"
+
+#~ msgid "Fractional Component"
+#~ msgstr "חלק השבר"
+
+#~ msgid "Insert Character Code"
+#~ msgstr "הוספת קוד תו"
+
+#~ msgid "Insert Character"
+#~ msgstr "הוספת תו"
+
+#~ msgid "Change word size"
+#~ msgstr "שינוי גודל מילה"
+
+#~ msgid "Word Size"
+#~ msgstr "גודל מילה"
+
+#~ msgid "Ch_aracter:"
+#~ msgstr "_תו:"
+
+#~ msgid "_Insert"
+#~ msgstr "הו_ספה"
+
+#~ msgid "Unable to open help file"
+#~ msgstr "לא ניתן לפתוח את קובץ העזרה"
 
 #~ msgid "GNOME Calculator"
 #~ msgstr "מחשבון GNOME"
