@@ -17,26 +17,30 @@
 # zhouxiaobo <zhouxiaobo500@hotmail.com>, 2014, 2015.
 # Jeff Bai <jeffbai@aosc.xyz>, 2015, 2016.
 # Dingzhong Chen <wsxy162@gmail.com>, 2018-2021.
+# lumingzh <lumingzh@qq.com>, 2022.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2021-09-09 20:04+0000\n"
-"PO-Revision-Date: 2021-09-14 20:34+0800\n"
-"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
+"POT-Creation-Date: 2021-11-30 01:08+0000\n"
+"PO-Revision-Date: 2022-01-01 11:50+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: Gtranslator 40.0\n"
+"X-Generator: Gtranslator 41.0\n"
 
+#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-msgid "GNOME Calculator"
-msgstr "GNOME 计算器"
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
+#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+msgid "Calculator"
+msgstr "计算器"
 
 #: data/org.gnome.Calculator.appdata.xml.in:8
 #: data/org.gnome.Calculator.desktop.in:4
@@ -44,15 +48,20 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "执行算术、科学或财务计算"
 
 #: data/org.gnome.Calculator.appdata.xml.in:10
+#| msgid ""
+#| "GNOME Calculator is an application that solves mathematical equations. "
+#| "Though it at first appears to be a simple calculator with only basic "
+#| "arithmetic operations, you can switch into Advanced, Financial, or "
+#| "Programming mode to find a surprising set of capabilities."
 msgid ""
-"GNOME Calculator is an application that solves mathematical equations. "
-"Though it at first appears to be a simple calculator with only basic "
-"arithmetic operations, you can switch into Advanced, Financial, or "
-"Programming mode to find a surprising set of capabilities."
+"Calculator is an application that solves mathematical equations. Though it "
+"at first appears to be a simple calculator with only basic arithmetic "
+"operations, you can switch into Advanced, Financial, or Programming mode to "
+"find a surprising set of capabilities."
 msgstr ""
-"GNOME 计算器是解决数学算式的应用程序。虽然一眼看上去它只是个简单的计算器，只"
-"有基本的算数运算功能，但您要是切换到高级、金融或者编程模式，就会惊讶地发现它"
-"有这么多功能。"
+"计算器是解决数学算式的应用程序。虽然一眼看上去它只是个简单的计算器，只有基本"
+"的算数运算功能，但您要是切换到高级、金融或者编程模式，就会惊讶地发现它有这么"
+"多功能。"
 
 #: data/org.gnome.Calculator.appdata.xml.in:16
 msgid ""
@@ -100,12 +109,6 @@ msgstr "GNOME 计算器编程模式"
 #: data/org.gnome.Calculator.appdata.xml.in:67
 msgid "The GNOME Project"
 msgstr "GNOME 项目"
-
-#. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:350 src/ui/math-window.ui:108
-msgid "Calculator"
-msgstr "计算器"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
@@ -480,7 +483,7 @@ msgid "South African Rand"
 msgstr "南非兰特"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:270
+#: lib/equation-lexer.vala:734 src/math-converter.vala:231
 msgid "in"
 msgstr "转为"
 
@@ -497,74 +500,74 @@ msgid "Error: the number of periods must be positive"
 msgstr "错误：周期必须为正数"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:173
+#: lib/math-equation.vala:176
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:525
+#: lib/math-equation.vala:543
 msgid "No undo history"
 msgstr "无撤消记录"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:546
+#: lib/math-equation.vala:564
 msgid "No redo history"
 msgstr "无重做记录"
 
-#: lib/math-equation.vala:777
+#: lib/math-equation.vala:795
 msgid "No sane value to store"
 msgstr "没有要存储的标准值"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1038
+#: lib/math-equation.vala:1056
 msgid "Overflow. Try a bigger word size"
 msgstr "溢出。请尝试一个更大的字长"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1043
+#: lib/math-equation.vala:1061
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "未知变量“%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1050
+#: lib/math-equation.vala:1068
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "函数“%s”未定义"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1057
+#: lib/math-equation.vala:1075
 msgid "Unknown conversion"
 msgstr "未知转换"
 
 #. should always be run
-#: lib/math-equation.vala:1067
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1072 lib/math-equation.vala:1077
+#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
 msgid "Malformed expression"
 msgstr "表达式格式错误"
 
-#: lib/math-equation.vala:1088
+#: lib/math-equation.vala:1106
 msgid "Calculating"
 msgstr "正在计算"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1281
+#: lib/math-equation.vala:1299
 msgid "Need an integer to factorize"
 msgstr "分解因式运算需要一个整数"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1345
+#: lib/math-equation.vala:1363
 msgid "No sane value to bitwise shift"
 msgstr "没有正常数值可用于移位"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1367
+#: lib/math-equation.vala:1385
 msgid "Displayed value not an integer"
 msgstr "显示的值不是整数"
 
@@ -714,7 +717,7 @@ msgid "Digital Storage"
 msgstr "数据存储"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:41 src/math-preferences.vala:20
+#: lib/unit.vala:41 src/math-preferences.vala:106
 msgid "Degrees"
 msgstr "角度"
 
@@ -729,7 +732,7 @@ msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "degree,degrees,deg,角度,度"
 
-#: lib/unit.vala:42 src/math-preferences.vala:19
+#: lib/unit.vala:42 src/math-preferences.vala:108
 msgid "Radians"
 msgstr "弧度"
 
@@ -744,7 +747,7 @@ msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radian,radians,rad,弧度"
 
-#: lib/unit.vala:43 src/math-preferences.vala:21
+#: lib/unit.vala:43 src/math-preferences.vala:110
 msgid "Gradians"
 msgstr "百分度"
 
@@ -2233,656 +2236,45 @@ msgstr "复制"
 msgid "Copy result to clipboard"
 msgstr "复制结果到剪贴板"
 
-#: src/ui/buttons-advanced.ui:143 src/ui/buttons-basic.ui:143
-#: src/ui/buttons-financial.ui:1979 src/ui/buttons-programming.ui:1899
-msgid "Modulus divide"
-msgstr "求余数"
-
-#: src/ui/buttons-advanced.ui:163 src/ui/buttons-basic.ui:163
-#: src/ui/buttons-financial.ui:1999 src/ui/buttons-programming.ui:1441
-msgid "Divide [/]"
-msgstr "除法 [/]"
-
-#: src/ui/buttons-advanced.ui:277 src/ui/buttons-basic.ui:277
-#: src/ui/buttons-financial.ui:2113 src/ui/buttons-programming.ui:1461
-msgid "Multiply [*]"
-msgstr "乘法 [*]"
-
-#: src/ui/buttons-advanced.ui:297 src/ui/buttons-basic.ui:297
-#: src/ui/buttons-financial.ui:2133 src/ui/buttons-programming.ui:1481
-msgid "Subtract [-]"
-msgstr "减法 [-]"
-
-#: src/ui/buttons-advanced.ui:316 src/ui/buttons-basic.ui:316
-#: src/ui/buttons-financial.ui:2152 src/ui/buttons-programming.ui:1500
-msgid "Add [+]"
-msgstr "加法 [+]"
-
-#: src/ui/buttons-advanced.ui:335 src/ui/buttons-basic.ui:335
-#: src/ui/buttons-programming.ui:1415
-msgid "Pi [Ctrl+P]"
-msgstr "圆周率 [Ctrl+P]"
-
-#: src/ui/buttons-advanced.ui:362 src/ui/buttons-basic.ui:362
-#: src/ui/buttons-financial.ui:2172 src/ui/buttons-programming.ui:1396
-msgid "Root [Ctrl+R]"
-msgstr "根 [Ctrl+R]"
-
-#: src/ui/buttons-advanced.ui:380 src/ui/buttons-basic.ui:380
-msgid "Square [Ctrl+2]"
-msgstr "平方 [Ctrl+2]"
-
-#. Accessible name for the exponentiation (x to the power of y) button
-#: src/ui/buttons-advanced.ui:384 src/ui/buttons-advanced.ui:761
-#: src/ui/buttons-basic.ui:384 src/ui/buttons-financial.ui:2301
-#: src/ui/buttons-programming.ui:2242
-msgid "Exponent"
-msgstr "X^Y"
-
-#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:410
-#: src/ui/buttons-financial.ui:2191 src/ui/buttons-programming.ui:1539
-msgid "Clear Display [Escape]"
-msgstr "清除显示 [Escape]"
-
-#: src/ui/buttons-advanced.ui:437 src/ui/buttons-basic.ui:437
-#: src/ui/buttons-financial.ui:2218 src/ui/buttons-programming.ui:1918
-msgid "Start Group [(]"
-msgstr "开始组 [(]"
-
-#: src/ui/buttons-advanced.ui:457 src/ui/buttons-basic.ui:457
-#: src/ui/buttons-financial.ui:2238 src/ui/buttons-programming.ui:1937
-msgid "End Group [)]"
-msgstr "结束组 [)]"
-
-#: src/ui/buttons-advanced.ui:477 src/ui/buttons-basic.ui:477
-#: src/ui/buttons-financial.ui:2258
-msgid "Percentage [%]"
-msgstr "百分数 [%]"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:491 src/ui/buttons-basic.ui:491
-#: src/ui/buttons-financial.ui:2272 src/ui/buttons-programming.ui:1514
-msgid "="
-msgstr "="
-
-#: src/ui/buttons-advanced.ui:497 src/ui/buttons-basic.ui:497
-#: src/ui/buttons-financial.ui:2278 src/ui/buttons-programming.ui:1520
-msgid "Calculate Result"
-msgstr "计算结果"
-
-#: src/ui/buttons-advanced.ui:528 src/ui/buttons-programming.ui:1967
-msgid "Subscript mode [Alt]"
-msgstr "下标模式 [Alt]"
-
-#. Accessible name for the subscript mode button
-#: src/ui/buttons-advanced.ui:533 src/ui/buttons-programming.ui:1972
-msgid "Subscript"
-msgstr "下标"
-
-#: src/ui/buttons-advanced.ui:558 src/ui/buttons-programming.ui:1997
-msgid "Superscript mode [Ctrl]"
-msgstr "上标模式 [Ctrl]"
-
-#. Accessible name for the superscript mode button
-#: src/ui/buttons-advanced.ui:563 src/ui/buttons-programming.ui:2002
-msgid "Superscript"
-msgstr "上标"
-
-#: src/ui/buttons-advanced.ui:590 src/ui/buttons-programming.ui:2440
-msgid "Factorize [Ctrl+F]"
-msgstr "质因数分解 [Ctrl+F]"
-
-#. Accessible name for the factorize button
-#: src/ui/buttons-advanced.ui:594 src/ui/buttons-programming.ui:2444
-msgid "Factorize"
-msgstr "质因数分解"
-
-#: src/ui/buttons-advanced.ui:613
-msgid "Scientific exponent [Ctrl+E]"
-msgstr "科学记数法 [Ctrl+E]"
-
-#. Accessible name for the scientific exponent button
-#: src/ui/buttons-advanced.ui:617
-msgid "Scientific Exponent"
-msgstr "科学计数法"
-
-#: src/ui/buttons-advanced.ui:643
-msgid "Cosine"
-msgstr "余弦"
-
-#: src/ui/buttons-advanced.ui:662
-msgid "Sine"
-msgstr "正弦"
-
-#: src/ui/buttons-advanced.ui:681
-msgid "Tangent"
-msgstr "正切"
-
-#: src/ui/buttons-advanced.ui:700
-msgid "Hyperbolic Cosine"
-msgstr "双曲余弦"
-
-#: src/ui/buttons-advanced.ui:719
-msgid "Hyperbolic Sine"
-msgstr "双曲正弦"
-
-#: src/ui/buttons-advanced.ui:738
-msgid "Hyperbolic Tangent"
-msgstr "双曲正切"
-
-#: src/ui/buttons-advanced.ui:756 src/ui/buttons-financial.ui:2296
-#: src/ui/buttons-programming.ui:2237
-msgid "Exponent [^ or **]"
-msgstr "乘方 [^ 或 **]"
-
-#: src/ui/buttons-advanced.ui:786 src/ui/buttons-programming.ui:2267
-msgid "Inverse [Ctrl+I]"
-msgstr "反函数或倒数 [Ctrl+I]"
-
-#. Accessible name for the inverse button
-#: src/ui/buttons-advanced.ui:791 src/ui/buttons-programming.ui:2272
-msgid "Inverse"
-msgstr "倒数或反函数"
-
-#: src/ui/buttons-advanced.ui:818
-msgid "Euler’s Number"
-msgstr "欧拉数"
-
-#: src/ui/buttons-advanced.ui:845
-msgid "Natural Logarithm"
-msgstr "自然对数（以 e 为底）"
-
-#: src/ui/buttons-advanced.ui:864 src/ui/buttons-financial.ui:2327
-#: src/ui/buttons-programming.ui:2299
-msgid "Logarithm"
-msgstr "常用对数（以 10 为底）"
-
-#: src/ui/buttons-advanced.ui:882 src/ui/buttons-programming.ui:2337
-msgid "Factorial [!]"
-msgstr "阶乘 [!]"
-
-#. Accessible name for the factorial button
-#: src/ui/buttons-advanced.ui:887 src/ui/buttons-programming.ui:2342
-msgid "Factorial"
-msgstr "阶乘"
-
-#: src/ui/buttons-advanced.ui:913 src/ui/buttons-programming.ui:2368
-msgid "Absolute Value [|]"
-msgstr "绝对值 [|]"
-
-#. Accessible name for the absolute value button
-#: src/ui/buttons-advanced.ui:918 src/ui/buttons-programming.ui:2373
-msgid "Absolute Value"
-msgstr "绝对值"
-
-#: src/ui/buttons-advanced.ui:970
-msgid "Real Component"
-msgstr "实数部分"
-
-#: src/ui/buttons-advanced.ui:990
-msgid "Imaginary Component"
-msgstr "虚数部分"
-
-#: src/ui/buttons-advanced.ui:1010
-msgid "Complex conjugate"
-msgstr "复共轭"
-
-#: src/ui/buttons-advanced.ui:1030
-msgid "Complex argument"
-msgstr "复变量"
-
-#. Accessible name for the memory button
-#: src/ui/buttons-advanced.ui:1048 src/ui/buttons-advanced.ui:1051
-#: src/ui/buttons-financial.ui:2358 src/ui/buttons-financial.ui:2361
-#: src/ui/buttons-programming.ui:2486
+#: src/ui/buttons-advanced.ui:844
 msgid "Memory"
 msgstr "记忆"
 
-#. The label on the memory button
-#: src/ui/buttons-advanced.ui:1060 src/ui/buttons-financial.ui:2370
-#: src/ui/buttons-programming.ui:2499
-msgid "x"
-msgstr "记忆"
-
-#: src/ui/buttons-advanced.ui:1097
-msgid "Additional Functions"
-msgstr "附加函数"
-
-#. Accessible name for the store value button
-#: src/ui/buttons-advanced.ui:1100 src/ui/buttons-programming.ui:2489
-msgid "Store"
-msgstr "存储"
-
-#. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:8 src/ui/buttons-financial.ui:2409
-msgid "Compounding Term"
-msgstr "复利期数"
-
-#: src/ui/buttons-financial.ui:22 src/ui/buttons-financial.ui:205
-#: src/ui/buttons-financial.ui:388 src/ui/buttons-financial.ui:571
-#: src/ui/buttons-financial.ui:723 src/ui/buttons-financial.ui:907
-#: src/ui/buttons-financial.ui:1091 src/ui/buttons-financial.ui:1275
-#: src/ui/buttons-financial.ui:1459 src/ui/buttons-financial.ui:1674
-#: src/ui/buttons-programming.ui:2644
-msgid "_Cancel"
-msgstr "取消（_C）"
-
-#. Compounding Term Dialog: Calculate button
-#. Double-Declining Depreciation Dialog: Calculate button
-#. Future Value Dialog: Calculate button
-#. Gross Profit Margin Dialog: Calculate button
-#. Periodic Payment Dialog: Calculate button
-#. Present Value Dialog: Calculate button
-#. Periodic Interest Rate Dialog: Calculate button
-#. Straight-Line Depreciation Dialog: Calculate button
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
-#. Payment Period Dialog: Button to calculate result
-#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:220
-#: src/ui/buttons-financial.ui:403 src/ui/buttons-financial.ui:586
-#: src/ui/buttons-financial.ui:738 src/ui/buttons-financial.ui:922
-#: src/ui/buttons-financial.ui:1106 src/ui/buttons-financial.ui:1290
-#: src/ui/buttons-financial.ui:1474 src/ui/buttons-financial.ui:1689
-msgid "C_alculate"
-msgstr "计算(_A)"
-
-#. Compounding Term Dialog: Label before present value input
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:117 src/ui/buttons-financial.ui:1172
-msgid "Present _Value:"
-msgstr "现值(_V)："
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:468
-#: src/ui/buttons-financial.ui:804 src/ui/buttons-financial.ui:988
-#: src/ui/buttons-financial.ui:1769
-msgid "Periodic Interest _Rate:"
-msgstr "每期利率(_R)："
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:149
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr "计算某投资的现值到一期待值需要的投资周期数，每个投资周期利息率固定。"
-
-#. Compounding Term Dialog: Label before future value input
-#. Periodic Interest Rate Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:163 src/ui/buttons-financial.ui:1156
-msgid "_Future Value:"
-msgstr "终值(_F)："
-
-#. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:191
-msgid "Double-Declining Depreciation"
-msgstr "双倍余额递减折旧"
-
-#. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:255
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the double-declining balance method."
-msgstr "计算某一资产在指定期间的折旧提成，使用加倍余额递减法。"
-
-#. Double-Declining Depreciation Dialog: Label before cost input
-#. Gross Profit Margin Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:269 src/ui/buttons-financial.ui:635
-msgid "C_ost:"
-msgstr "成本(_O)："
-
-#. Double-Declining Depreciation Dialog: Label before life input
-#. Straight-Line Depreciation Dialog: Label before life input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:285 src/ui/buttons-financial.ui:1357
-#: src/ui/buttons-financial.ui:1525
-msgid "_Life:"
-msgstr "年限(_L)："
-
-#. Double-Declining Depreciation Dialog: Label before period input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:331 src/ui/buttons-financial.ui:1509
-msgid "_Period:"
-msgstr "期(_P)："
-
-#. Title of Future Value dialog
-#: src/ui/buttons-financial.ui:374 src/ui/buttons-financial.ui:2447
-msgid "Future Value"
-msgstr "未来值"
-
-#. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:438
-msgid ""
-"Calculates the future value of an investment based on a series of equal "
-"payments at a periodic interest rate over the number of payment periods in "
-"the term."
-msgstr "计算某投资的未来值，按约定付款期数的固定利率下每期等额付款。"
-
-#. Future Value Dialog: Label before periodic payment input
-#. Present Value Dialog: Label before periodic payment input
-#. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:452 src/ui/buttons-financial.ui:972
-#: src/ui/buttons-financial.ui:1801
-msgid "_Periodic Payment:"
-msgstr "定期付款(_P)："
-
-#. Future Value Dialog: Label before number of periods input
-#. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:484 src/ui/buttons-financial.ui:1004
-msgid "_Number of Periods:"
-msgstr "期数(_N)："
-
-#. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:557 src/ui/buttons-financial.ui:2586
-msgid "Gross Profit Margin"
-msgstr "毛利率"
-
-#. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:621
-msgid ""
-"Calculates the resale price of a product, based on the product cost and the "
-"wanted gross profit margin."
-msgstr "计算某产品的转售价格，按产品成本及期望的毛利率。"
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:651
-msgid "_Margin:"
-msgstr "利率(_M)："
-
-#. Title of Periodic Payment dialog
-#: src/ui/buttons-financial.ui:709 src/ui/buttons-financial.ui:2566
-msgid "Periodic Payment"
-msgstr "每期付款额"
-
-#. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:774
-msgid ""
-"Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period. "
-msgstr "计算一笔贷款的定期付款数量，在每笔付款期末期付款。"
-
-#. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:788
-msgid "_Principal:"
-msgstr "本金(_P)："
-
-#. Periodic Payment Dialog: Label before term input
-#. Periodic Interest Rate Dialog: Label before term input
-#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:1188
-msgid "_Term:"
-msgstr "期限(_T)："
-
-#. Title of Present Value dialog
-#: src/ui/buttons-financial.ui:893 src/ui/buttons-financial.ui:2546
-msgid "Present Value"
-msgstr "现值"
-
-#. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:958
-msgid ""
-"Calculates the present value of an investment based on a series of equal "
-"payments discounted at a periodic interest rate over the number of payment "
-"periods in the term. "
-msgstr "计算基于一系列平等付款的投资现值在付款周期的周期利率数字上的折现。    "
-
-#. Title of Periodic Interest Rate dialog
-#: src/ui/buttons-financial.ui:1077 src/ui/buttons-financial.ui:2526
-msgid "Periodic Interest Rate"
-msgstr "每期利率"
-
-#. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1142
-msgid ""
-"Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods. "
-msgstr "计算某投资增加到某一未来值需要的每期利率，按复合期数。"
-
-#. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:1261
-msgid "Straight-Line Depreciation"
-msgstr "直线折旧"
-
-#. Straight-Line Depreciation Dialog: Label before cost input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:1325 src/ui/buttons-financial.ui:1557
-msgid "_Cost:"
-msgstr "成本(_C)："
-
-#. Straight-Line Depreciation Dialog: Label before salvage input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:1341 src/ui/buttons-financial.ui:1541
-msgid "_Salvage:"
-msgstr "残值(_S)："
-
-#. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1419
-msgid ""
-"Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly "
-"over the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated. "
-msgstr ""
-"计算一个期间某资产的直线折旧。直线折旧法在某资产可用年限内均分折旧成本。可用"
-"年限指该资产折旧的期数，典型情况下为年。"
-
-#. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:1445
-msgid "Sum-of-the-Years’-Digits Depreciation"
-msgstr "年数总和法折旧"
-
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1634
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
-"occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated. "
-msgstr ""
-"计算某一资产在指定期间的折旧提成，使用年数总和法。该折旧方法会加速折旧率，因"
-"此前期比后期发生更多折旧费用。可用年限指该资产折旧的周期（通常为年）数。"
-
-#. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:1660
-msgid "Payment Period"
-msgstr "付款期"
-
-#. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:1785
-msgid "Future _Value:"
-msgstr "未来值(_V)："
-
-#. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1818
-msgid ""
-"Calculates the number of payment periods that are necessary during the term "
-"of an ordinary annuity, to accumulate a future value, at a periodic interest "
-"rate."
-msgstr "计算期限内普通年金积累到某一未来值需要的付款期数，按某一每期利率。"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:2403
-msgid "Ctrm"
-msgstr "复利"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2422
-msgid "Ddb"
-msgstr "Ddb"
-
-#: src/ui/buttons-financial.ui:2428
-msgid "Double Declining Depreciation"
-msgstr "双倍余额递减折旧"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:2441
-msgid "Fv"
-msgstr "Fv"
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:2460
-msgid "Term"
-msgstr "期数"
-
-#: src/ui/buttons-financial.ui:2466
-msgid "Financial Term"
-msgstr "财务"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2480
-msgid "Syd"
-msgstr "Syd"
-
-#: src/ui/buttons-financial.ui:2486
-msgid "Sum of the Years Digits Depreciation"
-msgstr "年数总和法折旧"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2500
-msgid "Sln"
-msgstr "Sln"
-
-#: src/ui/buttons-financial.ui:2506
-msgid "Straight Line Depreciation"
-msgstr "直线折旧"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:2520
-msgid "Rate"
-msgstr "利率"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:2540
-msgid "Pv"
-msgstr "Pv"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:2560
-msgid "Pmt"
-msgstr "Pmt"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:2580
-msgid "Gpm"
-msgstr "Gpm"
-
-#: src/ui/buttons-programming.ui:19
+#: src/ui/buttons-programming.ui:16
 msgid "Binary"
 msgstr "二进制"
 
-#: src/ui/buttons-programming.ui:20
+#: src/ui/buttons-programming.ui:17
 msgid "Octal"
 msgstr "八进制"
 
-#: src/ui/buttons-programming.ui:21
+#: src/ui/buttons-programming.ui:18
 msgid "Decimal"
 msgstr "十进制"
 
-#: src/ui/buttons-programming.ui:22
+#: src/ui/buttons-programming.ui:19
 msgid "Hexadecimal"
 msgstr "十六进制"
 
-#. Accessible name for the shift left button
-#: src/ui/buttons-programming.ui:2026 src/ui/buttons-programming.ui:2029
-msgid "Shift Left"
-msgstr "左移"
-
-#. Accessible name for the shift right button
-#: src/ui/buttons-programming.ui:2072 src/ui/buttons-programming.ui:2075
-msgid "Shift Right"
-msgstr "右移"
-
-#: src/ui/buttons-programming.ui:2120
-msgid "Boolean Exclusive OR"
-msgstr "逻辑异或"
-
-#: src/ui/buttons-programming.ui:2139
-msgid "Boolean OR"
-msgstr "逻辑或"
-
-#: src/ui/buttons-programming.ui:2159
-msgid "Boolean AND"
-msgstr "逻辑与"
-
-#: src/ui/buttons-programming.ui:2179
-msgid "Boolean NOT"
-msgstr "逻辑非"
-
-#: src/ui/buttons-programming.ui:2199
-msgid "Ones’ Complement"
-msgstr "反码"
-
-#: src/ui/buttons-programming.ui:2219
-msgid "Two’s Complement"
-msgstr "二进制补码"
-
-#: src/ui/buttons-programming.ui:2319
-msgid "Binary Logarithm"
-msgstr "二进制对数"
-
-#: src/ui/buttons-programming.ui:2400
-msgid "Integer Component"
-msgstr "整数部分"
-
-#: src/ui/buttons-programming.ui:2420
-msgid "Fractional Component"
-msgstr "小数部分"
-
-#. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2463 src/ui/buttons-programming.ui:2597
-msgid "Insert Character Code"
-msgstr "插入字符编码"
-
-#. Accessible name for the insert character button
-#: src/ui/buttons-programming.ui:2467
-msgid "Insert Character"
-msgstr "插入字符"
-
-#: src/ui/buttons-programming.ui:2533
-msgid "Change word size"
-msgstr "修改字长"
-
-#: src/ui/buttons-programming.ui:2567
-msgid "Word Size"
-msgstr "字长"
-
-#. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2610
-msgid "Ch_aracter:"
-msgstr "字符(_A)："
-
-#. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2659
-msgid "_Insert"
-msgstr "插入(_I)"
-
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr "以指定模式（基本，高级，财务，编程，键盘）启动"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Solve given equation"
 msgstr "求解给出的方程"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Start with given equation"
 msgstr "从给出的方程开始"
 
-#: src/gnome-calculator.vala:28
+#: src/gnome-calculator.vala:27
 msgid "Show release version"
 msgstr "显示版本信息"
 
-#. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:314
-msgid "Unable to open help file"
-msgstr "无法打开帮助文件"
-
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:345
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@linux.net.cn>, 2003, 2004\n"
@@ -2901,121 +2293,126 @@ msgstr ""
 "mars <gzhqyz@gmail.com>, 2021\n"
 "Dingzhong Chen <wsxy162@gmail.com>, 2019, 2021"
 
-#: src/gnome-calculator.vala:351 src/ui/math-window.ui:101
+#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
 msgid "About Calculator"
 msgstr "关于计算器"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:360
+#: src/gnome-calculator.vala:334
 msgid "Calculator with financial and scientific modes."
 msgstr "带有财务和科学模式的计算器。"
 
-#: src/gnome-calculator.vala:375
+#: src/gnome-calculator.vala:347
 msgid "Are you sure you want to close all open windows?"
 msgstr "您确定要关闭所有打开的窗口吗？"
 
-#: src/gnome-calculator.vala:376
+#: src/gnome-calculator.vala:348
 msgid "Close _All"
 msgstr "全部关闭(_A)"
 
-#: src/math-buttons.vala:223 src/math-buttons.vala:581
-#: src/math-buttons.vala:596
+#: src/math-buttons.vala:227 src/math-buttons.vala:608
+#: src/math-buttons.vala:624
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d 位"
 
-#: src/math-buttons.vala:566
+#: src/math-buttons.vala:593
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "%d 位"
 
-#: src/ui/math-converter.ui:36
+#: src/ui/math-converter.ui:41
 msgid " to "
 msgstr "转换"
 
-#: src/ui/math-converter.ui:66
+#: src/ui/math-converter.ui:59
 msgid "Switch conversion units"
 msgstr "转换单位"
 
-#: src/ui/math-converter.ui:112
+#: src/ui/math-converter.ui:98
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:564
+#: src/math-display.vala:606
 msgid "Defined Functions"
 msgstr "已定义函数"
 
-#: src/math-display.vala:621
+#: src/math-display.vala:651
+msgid "Built-in keywords"
+msgstr "内置关键词"
+
+#: src/math-display.vala:695
+#| msgid "Defined Functions"
+msgid "Defined currencies"
+msgstr "已定义货币"
+
+#: src/math-display.vala:745
 msgid "Defined Variables"
 msgstr "已定义变量"
 
-#: src/ui/math-function-popover.ui:34
+#: src/ui/math-function-popover.ui:27
 msgid "New function"
 msgstr "新函数"
 
-#: src/ui/math-function-popover.ui:47
+#: src/ui/math-function-popover.ui:37
 msgid "Select no. of arguments"
 msgstr "选择参数的数量"
 
-#. Translators: Word size combo: 8 bit
-#: src/math-preferences.vala:26
+#: src/math-preferences.vala:119
 msgid "8-bit"
 msgstr "8 位"
 
-#. Translators: Word size combo: 16 bit
-#: src/math-preferences.vala:28
+#: src/math-preferences.vala:121
 msgid "16-bit"
 msgstr "16 位"
 
-#. Translators: Word size combo: 32 bit
-#: src/math-preferences.vala:30
+#: src/math-preferences.vala:123
 msgid "32-bit"
 msgstr "32 位"
 
-#. Translators: Word size combo: 64 bit
-#: src/math-preferences.vala:32
+#: src/math-preferences.vala:125
 msgid "64-bit"
 msgstr "64 位"
 
-#. Translators: Refresh interval combo: never
-#: src/math-preferences.vala:37
-msgid "never"
+#: src/math-preferences.vala:134
+#| msgid "never"
+msgid "Never"
 msgstr "从不"
 
-#. Translators: Refresh interval combo: daily
-#: src/math-preferences.vala:39
-msgid "daily"
+#: src/math-preferences.vala:136
+#| msgid "daily"
+msgid "Daily"
 msgstr "每天"
 
-#. Translators: Refresh interval combo: weekly
-#: src/math-preferences.vala:41
-msgid "weekly"
+#: src/math-preferences.vala:138
+#| msgid "weekly"
+msgid "Weekly"
 msgstr "每周"
 
-#: src/ui/math-preferences.ui:22
+#: src/ui/math-preferences.ui:19
 msgid "Number of _decimals"
 msgstr "小数位数(_D)"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:34
 msgid "Trailing _zeroes"
 msgstr "尾部的零(_Z)"
 
-#: src/ui/math-preferences.ui:55
+#: src/ui/math-preferences.ui:46
 msgid "_Thousands separators"
 msgstr "千位分隔符(_T)"
 
-#: src/ui/math-preferences.ui:70
+#: src/ui/math-preferences.ui:58
 msgid "_Angle units"
 msgstr "角度单位(_A)"
 
-#: src/ui/math-preferences.ui:77
+#: src/ui/math-preferences.ui:64
 msgid "Word _size"
 msgstr "字长(_S)"
 
-#: src/ui/math-preferences.ui:84
+#: src/ui/math-preferences.ui:70
 msgid "E_xchange rate refresh interval"
 msgstr "汇率刷新间隔(_X)"
 
@@ -3189,31 +2586,31 @@ msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "切换到键盘模式"
 
-#: src/ui/math-variable-popover.ui:38
+#: src/ui/math-variable-popover.ui:31
 msgid "Variable name"
 msgstr "变量名称"
 
-#: src/ui/math-variable-popover.ui:52
+#: src/ui/math-variable-popover.ui:40
 msgid "Store value into existing or new variable"
 msgstr "将数值存入现有或新的变量"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:90
+#: src/ui/math-window.ui:20 src/math-window.vala:105
 msgid "Basic"
 msgstr "基本"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:95
+#: src/ui/math-window.ui:25 src/math-window.vala:111
 msgid "Advanced"
 msgstr "高级"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:100
+#: src/ui/math-window.ui:30 src/math-window.vala:117
 msgid "Financial"
 msgstr "财务"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:105
+#: src/ui/math-window.ui:35 src/math-window.vala:123
 msgid "Programming"
 msgstr "编程"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:110
+#: src/ui/math-window.ui:40 src/math-window.vala:129
 msgid "Keyboard"
 msgstr "键盘"
 
@@ -3253,25 +2650,406 @@ msgstr "快捷键"
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:117
 msgid "Mode selection"
 msgstr "模式选择"
 
-#: src/ui/math-window.ui:179
-msgid "Undo"
-msgstr "撤消"
-
-#: src/ui/math-window.ui:180
+#: src/ui/math-window.ui:128
 msgid "Undo [Ctrl+Z]"
 msgstr "撤消 [Ctrl+Z]"
 
-#: src/ui/math-window.ui:196
+#: src/ui/math-window.ui:132
+msgid "Undo"
+msgstr "撤消"
+
+#: src/ui/math-window.ui:143
 msgid "Primary menu"
 msgstr "主菜单"
 
-#: src/math-window.vala:138
+#: src/math-window.vala:158
 msgid "_Quit"
 msgstr "退出(_Q)"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "GNOME 计算器"
+
+#~ msgid "Modulus divide"
+#~ msgstr "求余数"
+
+#~ msgid "Divide [/]"
+#~ msgstr "除法 [/]"
+
+#~ msgid "Multiply [*]"
+#~ msgstr "乘法 [*]"
+
+#~ msgid "Subtract [-]"
+#~ msgstr "减法 [-]"
+
+#~ msgid "Add [+]"
+#~ msgstr "加法 [+]"
+
+#~ msgid "Pi [Ctrl+P]"
+#~ msgstr "圆周率 [Ctrl+P]"
+
+#~ msgid "Root [Ctrl+R]"
+#~ msgstr "根 [Ctrl+R]"
+
+#~ msgid "Square [Ctrl+2]"
+#~ msgstr "平方 [Ctrl+2]"
+
+#~ msgid "Exponent"
+#~ msgstr "X^Y"
+
+#~ msgid "Clear Display [Escape]"
+#~ msgstr "清除显示 [Escape]"
+
+#~ msgid "Start Group [(]"
+#~ msgstr "开始组 [(]"
+
+#~ msgid "End Group [)]"
+#~ msgstr "结束组 [)]"
+
+#~ msgid "Percentage [%]"
+#~ msgstr "百分数 [%]"
+
+#~ msgid "="
+#~ msgstr "="
+
+#~ msgid "Calculate Result"
+#~ msgstr "计算结果"
+
+#~ msgid "Subscript mode [Alt]"
+#~ msgstr "下标模式 [Alt]"
+
+#~ msgid "Subscript"
+#~ msgstr "下标"
+
+#~ msgid "Superscript mode [Ctrl]"
+#~ msgstr "上标模式 [Ctrl]"
+
+#~ msgid "Superscript"
+#~ msgstr "上标"
+
+#~ msgid "Factorize [Ctrl+F]"
+#~ msgstr "质因数分解 [Ctrl+F]"
+
+#~ msgid "Factorize"
+#~ msgstr "质因数分解"
+
+#~ msgid "Scientific exponent [Ctrl+E]"
+#~ msgstr "科学记数法 [Ctrl+E]"
+
+#~ msgid "Scientific Exponent"
+#~ msgstr "科学计数法"
+
+#~ msgid "Cosine"
+#~ msgstr "余弦"
+
+#~ msgid "Sine"
+#~ msgstr "正弦"
+
+#~ msgid "Tangent"
+#~ msgstr "正切"
+
+#~ msgid "Hyperbolic Cosine"
+#~ msgstr "双曲余弦"
+
+#~ msgid "Hyperbolic Sine"
+#~ msgstr "双曲正弦"
+
+#~ msgid "Hyperbolic Tangent"
+#~ msgstr "双曲正切"
+
+#~ msgid "Exponent [^ or **]"
+#~ msgstr "乘方 [^ 或 **]"
+
+#~ msgid "Inverse [Ctrl+I]"
+#~ msgstr "反函数或倒数 [Ctrl+I]"
+
+#~ msgid "Inverse"
+#~ msgstr "倒数或反函数"
+
+#~ msgid "Euler’s Number"
+#~ msgstr "欧拉数"
+
+#~ msgid "Natural Logarithm"
+#~ msgstr "自然对数（以 e 为底）"
+
+#~ msgid "Logarithm"
+#~ msgstr "常用对数（以 10 为底）"
+
+#~ msgid "Factorial [!]"
+#~ msgstr "阶乘 [!]"
+
+#~ msgid "Factorial"
+#~ msgstr "阶乘"
+
+#~ msgid "Absolute Value [|]"
+#~ msgstr "绝对值 [|]"
+
+#~ msgid "Absolute Value"
+#~ msgstr "绝对值"
+
+#~ msgid "Real Component"
+#~ msgstr "实数部分"
+
+#~ msgid "Imaginary Component"
+#~ msgstr "虚数部分"
+
+#~ msgid "Complex conjugate"
+#~ msgstr "复共轭"
+
+#~ msgid "Complex argument"
+#~ msgstr "复变量"
+
+#~ msgid "x"
+#~ msgstr "记忆"
+
+#~ msgid "Additional Functions"
+#~ msgstr "附加函数"
+
+#~ msgid "Store"
+#~ msgstr "存储"
+
+#~ msgid "Compounding Term"
+#~ msgstr "复利期数"
+
+#~ msgid "_Cancel"
+#~ msgstr "取消（_C）"
+
+#~ msgid "C_alculate"
+#~ msgstr "计算(_A)"
+
+#~ msgid "Present _Value:"
+#~ msgstr "现值(_V)："
+
+#~ msgid "Periodic Interest _Rate:"
+#~ msgstr "每期利率(_R)："
+
+#~ msgid ""
+#~ "Calculates the number of compounding periods necessary to increase an "
+#~ "investment of present value to a future value, at a fixed interest rate "
+#~ "per compounding period."
+#~ msgstr ""
+#~ "计算某投资的现值到一期待值需要的投资周期数，每个投资周期利息率固定。"
+
+#~ msgid "_Future Value:"
+#~ msgstr "终值(_F)："
+
+#~ msgid "Double-Declining Depreciation"
+#~ msgstr "双倍余额递减折旧"
+
+#~ msgid ""
+#~ "Calculates the depreciation allowance on an asset for a specified period "
+#~ "of time, using the double-declining balance method."
+#~ msgstr "计算某一资产在指定期间的折旧提成，使用加倍余额递减法。"
+
+#~ msgid "C_ost:"
+#~ msgstr "成本(_O)："
+
+#~ msgid "_Life:"
+#~ msgstr "年限(_L)："
+
+#~ msgid "_Period:"
+#~ msgstr "期(_P)："
+
+#~ msgid "Future Value"
+#~ msgstr "未来值"
+
+#~ msgid ""
+#~ "Calculates the future value of an investment based on a series of equal "
+#~ "payments at a periodic interest rate over the number of payment periods "
+#~ "in the term."
+#~ msgstr "计算某投资的未来值，按约定付款期数的固定利率下每期等额付款。"
+
+#~ msgid "_Periodic Payment:"
+#~ msgstr "定期付款(_P)："
+
+#~ msgid "_Number of Periods:"
+#~ msgstr "期数(_N)："
+
+#~ msgid "Gross Profit Margin"
+#~ msgstr "毛利率"
+
+#~ msgid ""
+#~ "Calculates the resale price of a product, based on the product cost and "
+#~ "the wanted gross profit margin."
+#~ msgstr "计算某产品的转售价格，按产品成本及期望的毛利率。"
+
+#~ msgid "_Margin:"
+#~ msgstr "利率(_M)："
+
+#~ msgid "Periodic Payment"
+#~ msgstr "每期付款额"
+
+#~ msgid ""
+#~ "Calculates the amount of the periodic payment of a loan, where payments "
+#~ "are made at the end of each payment period. "
+#~ msgstr "计算一笔贷款的定期付款数量，在每笔付款期末期付款。"
+
+#~ msgid "_Principal:"
+#~ msgstr "本金(_P)："
+
+#~ msgid "_Term:"
+#~ msgstr "期限(_T)："
+
+#~ msgid "Present Value"
+#~ msgstr "现值"
+
+#~ msgid ""
+#~ "Calculates the present value of an investment based on a series of equal "
+#~ "payments discounted at a periodic interest rate over the number of "
+#~ "payment periods in the term. "
+#~ msgstr ""
+#~ "计算基于一系列平等付款的投资现值在付款周期的周期利率数字上的折现。    "
+
+#~ msgid "Periodic Interest Rate"
+#~ msgstr "每期利率"
+
+#~ msgid ""
+#~ "Calculates the periodic interest necessary to increase an investment to a "
+#~ "future value, over the number of compounding periods. "
+#~ msgstr "计算某投资增加到某一未来值需要的每期利率，按复合期数。"
+
+#~ msgid "Straight-Line Depreciation"
+#~ msgstr "直线折旧"
+
+#~ msgid "_Cost:"
+#~ msgstr "成本(_C)："
+
+#~ msgid "_Salvage:"
+#~ msgstr "残值(_S)："
+
+#~ msgid ""
+#~ "Calculates the straight-line depreciation of an asset for one period. The "
+#~ "straight-line method of depreciation divides the depreciable cost evenly "
+#~ "over the useful life of an asset. The useful life is the number of "
+#~ "periods, typically years, over which an asset is depreciated. "
+#~ msgstr ""
+#~ "计算一个期间某资产的直线折旧。直线折旧法在某资产可用年限内均分折旧成本。可"
+#~ "用年限指该资产折旧的期数，典型情况下为年。"
+
+#~ msgid "Sum-of-the-Years’-Digits Depreciation"
+#~ msgstr "年数总和法折旧"
+
+#~ msgid ""
+#~ "Calculates the depreciation allowance on an asset for a specified period "
+#~ "of time, using the Sum-of-the-Years’-Digits method. This method of "
+#~ "depreciation accelerates the rate of depreciation, so that more "
+#~ "depreciation expense occurs in earlier periods than in later ones. The "
+#~ "useful life is the number of periods, typically years, over which an "
+#~ "asset is depreciated. "
+#~ msgstr ""
+#~ "计算某一资产在指定期间的折旧提成，使用年数总和法。该折旧方法会加速折旧率，"
+#~ "因此前期比后期发生更多折旧费用。可用年限指该资产折旧的周期（通常为年）数。"
+
+#~ msgid "Payment Period"
+#~ msgstr "付款期"
+
+#~ msgid "Future _Value:"
+#~ msgstr "未来值(_V)："
+
+#~ msgid ""
+#~ "Calculates the number of payment periods that are necessary during the "
+#~ "term of an ordinary annuity, to accumulate a future value, at a periodic "
+#~ "interest rate."
+#~ msgstr "计算期限内普通年金积累到某一未来值需要的付款期数，按某一每期利率。"
+
+#~ msgid "Ctrm"
+#~ msgstr "复利"
+
+#~ msgid "Ddb"
+#~ msgstr "Ddb"
+
+#~ msgid "Double Declining Depreciation"
+#~ msgstr "双倍余额递减折旧"
+
+#~ msgid "Fv"
+#~ msgstr "Fv"
+
+#~ msgid "Term"
+#~ msgstr "期数"
+
+#~ msgid "Financial Term"
+#~ msgstr "财务"
+
+#~ msgid "Syd"
+#~ msgstr "Syd"
+
+#~ msgid "Sum of the Years Digits Depreciation"
+#~ msgstr "年数总和法折旧"
+
+#~ msgid "Sln"
+#~ msgstr "Sln"
+
+#~ msgid "Straight Line Depreciation"
+#~ msgstr "直线折旧"
+
+#~ msgid "Rate"
+#~ msgstr "利率"
+
+#~ msgid "Pv"
+#~ msgstr "Pv"
+
+#~ msgid "Pmt"
+#~ msgstr "Pmt"
+
+#~ msgid "Gpm"
+#~ msgstr "Gpm"
+
+#~ msgid "Shift Left"
+#~ msgstr "左移"
+
+#~ msgid "Shift Right"
+#~ msgstr "右移"
+
+#~ msgid "Boolean Exclusive OR"
+#~ msgstr "逻辑异或"
+
+#~ msgid "Boolean OR"
+#~ msgstr "逻辑或"
+
+#~ msgid "Boolean AND"
+#~ msgstr "逻辑与"
+
+#~ msgid "Boolean NOT"
+#~ msgstr "逻辑非"
+
+#~ msgid "Ones’ Complement"
+#~ msgstr "反码"
+
+#~ msgid "Two’s Complement"
+#~ msgstr "二进制补码"
+
+#~ msgid "Binary Logarithm"
+#~ msgstr "二进制对数"
+
+#~ msgid "Integer Component"
+#~ msgstr "整数部分"
+
+#~ msgid "Fractional Component"
+#~ msgstr "小数部分"
+
+#~ msgid "Insert Character Code"
+#~ msgstr "插入字符编码"
+
+#~ msgid "Insert Character"
+#~ msgstr "插入字符"
+
+#~ msgid "Change word size"
+#~ msgstr "修改字长"
+
+#~ msgid "Word Size"
+#~ msgstr "字长"
+
+#~ msgid "Ch_aracter:"
+#~ msgstr "字符(_A)："
+
+#~ msgid "_Insert"
+#~ msgstr "插入(_I)"
+
+#~ msgid "Unable to open help file"
+#~ msgstr "无法打开帮助文件"
 
 #~ msgid "How often the currency exchange rates should be updated"
 #~ msgstr "应该多久更新一次货币汇率"
