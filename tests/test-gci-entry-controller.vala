@@ -23,18 +23,15 @@ class Tests {
   [GtkTemplate (ui = "/org/gnome/Calculator/gci-test-entry-controller.ui")]
   class Window : Gtk.ApplicationWindow {
     [GtkChild]
-    Gtk.Entry entry;
+    unowned Gtk.Entry entry;
     [GtkChild]
-    Gtk.Button button;
+    unowned Gtk.Button button;
 
     GCi.EntryController controller;
 
     construct {
       controller = new GCi.EntryController ();
       controller.entry = entry;
-      this.destroy.connect (()=>{
-        application.quit ();
-      });
       GLib.Timeout.add (10000, ()=>{
         application.quit ();
       });
@@ -57,7 +54,7 @@ class Tests {
 	  protected override void activate () {
 		  // Create the window of this application and show it
 		  Gtk.ApplicationWindow w = new Window (this);
-		  w.show_all ();
+		  w.present ();
 	  }
   }
   static int main (string[] args)
