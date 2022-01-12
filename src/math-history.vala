@@ -90,6 +90,8 @@ public class HistoryEntry : Gtk.ListBoxRow
     unowned Gtk.Label equation_label;
     [GtkChild]
     public unowned Gtk.Label answer_label;
+    [GtkChild]
+    public unowned Gtk.Grid grid;
 
     private Number number;
 
@@ -101,6 +103,9 @@ public class HistoryEntry : Gtk.ListBoxRow
                          Serializer serializer)
     {
         this.number = answer;
+        grid.set_direction(Gtk.TextDirection.LTR);
+        equation_label.set_direction(Gtk.TextDirection.LTR);
+        answer_label.set_direction(Gtk.TextDirection.LTR);
         equation_label.set_text (equation);
         equation_label.set_tooltip_text (equation);
         redisplay (serializer);
