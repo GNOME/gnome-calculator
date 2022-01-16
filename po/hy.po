@@ -1,1366 +1,1283 @@
-# Armenian translation for gcalctool
-# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
-# This file is distributed under the same license as the gcalctool package.
-# Davit <davidmayilyan@gmail.com>, 2010.
-# Narine <training@instigate.am>, 2010.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Andi Chandler <andi@gowling.com>, 2014
+# Martin Wimpress <code@flexion.org>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool\n"
+"Project-Id-Version: MATE Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-10 09:48+0500\n"
-"PO-Revision-Date: 2010-09-07 20:15+0400\n"
-"Last-Translator: Davit <davidmayilyan@gmail.com>\n"
-"Language-Team:  <norik@freenet.am>\n"
-"Language: hy\n"
+"POT-Creation-Date: 2014-03-17 16:18+0100\n"
+"PO-Revision-Date: 2021-12-26 16:40+0400\n"
+"Last-Translator: Avag Sayan <info@armath.am>\n"
+"Language-Team: Armenian (Armenian)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural= n > 1;\n"
-"X-Launchpad-Export-Date: 2010-08-21 06:52+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"Language: hy\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#. The label on the memory recall button
-#: ../data/buttons-advanced.ui.h:2 ../data/buttons-financial.ui.h:2
-#: ../data/buttons-programming.ui.h:2
-msgid "&#x2190; R"
-msgstr "&#x2190; R"
+#: ../galculator.desktop.in.h:1
+msgid "Perform simple and scientific calculations"
+msgstr "Perform simple and scientific calculations"
 
-#. The label on the memory store button
-#: ../data/buttons-advanced.ui.h:4 ../data/buttons-financial.ui.h:4
-#: ../data/buttons-programming.ui.h:4
-msgid "&#x2192; R"
-msgstr "&#x2192; R"
+#: ../src/callbacks.c:1051
+msgid "save here"
+msgstr "պահել այստեղ"
 
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: ../data/buttons-advanced.ui.h:6 ../data/buttons-basic.ui.h:2
-#: ../data/buttons-financial.ui.h:6 ../data/buttons-programming.ui.h:6
+#: ../src/callbacks.c:1427
+#, c-format
+msgid "[%s] on_prefs_number_combo_changed failed to retrieve iter. %s\n"
+msgstr "[%s] on_prefs_number_combo_changed failed to retrieve iter. %s\n"
+
+#: ../src/callbacks.c:1590
+#, c-format
+msgid "[%s] on_main_window_check_resize should not get called. %s\n"
+msgstr "[%s] on_main_window_check_resize should not get called. %s\n"
+
+#: ../src/main.c:61
+#, c-format
+msgid ""
+"\n"
+"%s v%s, (c) 2002-2014 Simon Flöry\n"
+"\n"
+"Usage: %s [options]\n"
+"\n"
+"options:\n"
+"(GTK options)\n"
+" -h, --help\t\tShow this usage message\n"
+" -v, --version\t\tShow version information\n"
+"\n"
+"Compiled against GTK version %i.%i.%i\n"
+"Linked against GTK version %i.%i.%i\n"
+"%s-precision floating point numbers.\n"
+msgstr ""
+"\n"
+"%s v%s, (c) 2002-2014 Սայմոն Ֆլորի\n"
+"\n"
+"Կիրառություն՝ %s [options]\n"
+"\n"
+"options:\n"
+"(GTK options)\n"
+" -h, --help\t\tՑուցադրել կիրառության հաղորդագրությունը\n"
+" -v, --version\t\tՑուցադրել տարբերակի տվյալները\n"
+"\n"
+"Կազմվել է հետևյալ GTK տարբերակի հետ՝ %i.%i.%i\n"
+"Կապված է հետևյալ GTK տարբերակի հետ՝ %i.%i.%i\n"
+"%s-ճշտված կոտորակային կետով թվերը։\n"
+
+#: ../src/main.c:196
+#, c-format
+msgid "[%s] configuration file: Failed to create directory %s.\n"
+msgstr "[%s] կարգաբերման նիշքին չհաջողվեց ստեղծել %s պանակ։\n"
+
+#: ../src/main.c:201
+#, c-format
+msgid ""
+"[%s] configuration file: We will move the configuration file from %s to %s. After you quit %s, you may remove the "
+"configuration file from its old location %s.\n"
+msgstr ""
+"[%s] կարգաբերման նիշք։ Նիշքը կտեղափոխվի %s֊ից դեպի %s։ %s֊ն փակելուց հետո, կարող եք հեռացնել կարգաբերման նիշքը %s "
+"պանակից։\n"
+
+#: ../src/galculator.h:92
+msgid "Please submit a bugreport."
+msgstr "Խնդրում ենք հաստատել զեկուցումը սխալի մասին։"
+
+#: ../src/calc_basic.c:300
+#, c-format
+msgid "[%s] %c - unknown operation character. %s\n"
+msgstr "[%s] %c - անհայտ գործողության նիշ։ %s\n"
+
+#: ../src/calc_basic.c:690
+#, c-format
+msgid ""
+"[%s] Conversion of floating point number in float2string failed because buffer was too small. %s\n"
+")"
+msgstr ""
+"[%s] Կոտորակային թվի փոխակերպումը տողի ձախողվեց, քանի որ բուֆերային տարածքը շատ փոքր է։ %s\n"
+")"
+
+#: ../src/calc_basic.c:719
+#, c-format
+msgid ""
+"[%s] Conversion of floating point number in float2stringP failed because buffer was too small. %s\n"
+")"
+msgstr ""
+"[%s] Կոտորակային թվի փոխակերպումը P տողի ձախողվեց, քանի որ բուֆերային տարածքը շատ փոքր է։ %s\n"
+")"
+
+#: ../src/config_file.c:180
+msgid "Pi"
+msgstr "Pi"
+
+#: ../src/config_file.c:181
+msgid "pi"
+msgstr "π"
+
+#: ../src/config_file.c:183
+msgid "Euler's Number"
+msgstr "Էյլերի թիվը"
+
+#: ../src/config_file.c:184
+msgid "e"
+msgstr "e"
+
+#: ../src/config_file.c:232
+#, c-format
+msgid "[%s] configuration file: ignoring unknown entry %s=%s. %s\n"
+msgstr "[%s] Կարգաբերման նիշքն անտեսում է անհայտ  %s=%s մուտքը։ %s\n"
+
+#: ../src/config_file.c:256
+#, c-format
+msgid "[%s] configuration file: %s has to be TRUE or FALSE. Using defaults. %s\n"
+msgstr "[%s] կարգավորման նիշք: %s ֊ն պետք է լինի ՃԻՇՏ կամ ՍԽԱԼ.։ Օգտագործում է լռելայն տարբերակը։ %s\n"
+
+#: ../src/config_file.c:262
+#, c-format
+msgid "[%s] configuration file: failed to convert %s to a number properly. Have you changed your locales? %s\n"
+msgstr "[%s]  կարգավորման նիշք: չհաջողվեց փոխակերպել %s֊ն  ուղիղ թվի. Փոխե՞լ եք Ձեր տեղանքը։ %s\n"
+
+#: ../src/config_file.c:265
+#, c-format
+msgid "[%s] configuration file: ignoring unknown key_type in config structure. %s\n"
+msgstr "[%s] կարգաբերման նիշք: Անտեսում է անհայտ key_type կարգավորման կառուցվածքում։ %s\n"
+
+#: ../src/config_file.c:284
+#, c-format
+msgid "[%s] found unknown section %s in configuration file %s. Using preceding section.\n"
+msgstr "[%s] գտնվել է անհայտ %s բաժին %s  կարգաբերման նիշքում։ Օգտագործել նախորդ բաժինը։\n"
+
+#: ../src/config_file.c:403
+#, c-format
+msgid ""
+"[%s] configuration file: couldn't open configuration file %s for reading. Nothing to worry about if you are "
+"starting %s for the first time. Using defaults.\n"
+msgstr ""
+"[%s] կարգավորման նիշք։ Կարդալու համար չհաջողվեց բացել կարգաբերման %s  նիշքը ։ Անհանգստանալու կարիք չկա, եթե դուք "
+"գործարկել եք %s֊ն առաջին անգամ։ Օգտագործել թողարկման կարգավորումները։ \n"
+
+#: ../src/config_file.c:432
+#, c-format
+msgid ""
+"[%s] configuration file - We reset at least one separator character as it coincides with the decimal point. If you "
+"recently changed your locales settings, this is nothing to worry about.\n"
+msgstr ""
+"[%s] կարգավորման նիշք - Մենք վերակայում ենք առնվազն մեկ բաժանարար նիշ, քանի որ այն համընկնում է տասնորդական կետի "
+"հետ: Եթե վերջերս փոխել եք ձեր տեղանքների կարգավորումները, ապա անհանգստանալու պատճառ չկա։ \n"
+
+#: ../src/config_file.c:470
+#, c-format
+msgid "[%s] configuration file: strange boolean when writing. Skipping this key. %s\n"
+msgstr "[%s] կարգաբերման նիշք՝ տարօրինակ բուլյան է իհայտ եկել գրառման ժամանակ։ Բաց թողնելով այս կետը։ %s\n"
+
+#: ../src/config_file.c:478
+#, c-format
+msgid "[%s] configuration file: ignoring unknown \"key_type\" in \"config_structure\". %s\n"
+msgstr "[%s] կարգավորման նիշք՝ անհայտ \"key_type\" ֊ի անտեսում \"config_structure\"֊ի մեջ։ %s\n"
+
+#: ../src/config_file.c:501
+#, c-format
+msgid "[%s] configuration file: couldn't save/write to configuration file %s.\n"
+msgstr "[%s] կարգավորման նիշք՝ չկարողացավ պահել/գրառել tկարգավորման %s նիշքը։ \n"
+
+#: ../src/display.c:420
+#, c-format
+msgid "[%s] Line_index exceeds valid range in function \"display_delete_line\". %s\n"
+msgstr "[%s] Line_index գերազանցում է վավեր միջակայքը \"display_delete_line\" ֆունկցիայում։ %s\n"
+
+#: ../src/display.c:598
+#, c-format
+msgid "[%s] unknown display option in function \"display_change_option\""
+msgstr "[%s] անհայտ ցուցադրման տարբերակ \"display_change_option\" ֆունկցիայում"
+
+#: ../src/general_functions.c:43
+msgid "unsupported inverse function"
+msgstr "հակադարձ ֆունկցիան չի սպասարկվում"
+
+#: ../src/general_functions.c:49
+msgid "unsupported hyperbolic function"
+msgstr "հիպերբոլիկ ֆունկցիան չի սպասարկվում"
+
+#: ../src/general_functions.c:112
+#, c-format
+msgid "[%s] unknown notation mode in function \"all_clear\". %s\n"
+msgstr "[%s] անհայտ նշագրման ռեժիմը \"all_clear\" ֆունկցիայի մեջ է։ %s\n"
+
+#: ../src/general_functions.c:138
+#, c-format
+msgid "[%s] failed to convert char %c in function \"axtof\". %s\n"
+msgstr "[%s] չհաջողվեց փոխակերպել %c նիշը \"axtof\" ֆունկցիայի մեջ։ %s\n"
+
+#: ../src/general_functions.c:194
+#, c-format
+msgid "[%s] failed to convert %s in function \"ftoax\". %s\n"
+msgstr "[%s] չհաջողվեց փոխակերպել %s ֊ը \"ftoax\" ֆունկցիայում։ %s\n"
+
+#: ../src/general_functions.c:274
+#, c-format
+msgid "[%s] failed to convert color %s in function \"set_button_color\". %s\n"
+msgstr "[%s] չհաջողվեց փոխակերպել %s  գույնը \"set_button_color\" ֆունկցիայի մեջ։ %s\n"
+
+#: ../src/general_functions.c:395
+#, c-format
+msgid "[%s] failed to find widget %s in function \"activate_menu_item\". %s\n"
+msgstr "[%s] չհաջողվեց գտնել %s վիդջեթը \"activate_menu_item\" ֆունկցիայի մեջ։ %s\n"
+
+#: ../src/general_functions.c:437
+msgid "unknown number base"
+msgstr "անհայտ թվի հիմք"
+
+#: ../src/general_functions.c:438
+#, c-format
+msgid "[%s] unknown number base in function \"get_display_number_string\". %s\n"
+msgstr "[%s] անհայտ թվի հիմք \"get_display_number_string\" ֆունկցիայում։ %s\n"
+
+#: ../src/general_functions.c:459
+#, c-format
+msgid "[%s] unknown number base in function \"get_display_number_length\". %s\n"
+msgstr "[%s] անհայտ թվի հիմք \"get_display_number_length\" ֆունկցիայում։ %s\n"
+
+#: ../src/general_functions.c:568
+#, c-format
+msgid ""
+"[%s] failed to convert %s to a number properly in function \"string2double\". Have you changed your locales? "
+"Deleting your configuration file might solve this problem. %s\n"
+msgstr ""
+"[%s] failed to convert %s to a number properly in function \"string2double\". Have you changed your locales? "
+"Deleting your configuration file might solve this problem. %s\n"
+
+#: ../src/general_functions.c:586
+#, c-format
+msgid "[%s] unknown number base in function \"string2double\". %s\n"
+msgstr "[%s]  անհայտ թվի հիմք \"string2double\" ֆունկցիայում։ %s\n"
+
+#: ../src/general_functions.c:741
+#, c-format
+msgid "[%s] unknown angle base in function \"x2rad\". %s\n"
+msgstr "[%s] անհայտ անկյան հիմք \"x2rad\" ֆունկցիայում։ %s\n"
+
+#: ../src/general_functions.c:756
+#, c-format
+msgid "[%s] unknown angle base in function \"rad2x\". %s\n"
+msgstr "[%s] անհայտ անկյան հիմք \"rad2x\" ֆունկցիայում։ %s\n"
+
+#: ../src/general_functions.c:773
+#, c-format
+msgid "[%s] unknown number base in function \"get_sep\". %s\n"
+msgstr "[%s] անհայտ թվի հիմք \"get_sep\" ֆունկցիայում։ %s\n"
+
+#: ../src/general_functions.c:790
+#, c-format
+msgid "[%s] unknown number base in function \"get_sep_length\". %s\n"
+msgstr "[%s] անհայտ թվի հիմք \"get_sep_length\" ֆունկցիայում։ %s\n"
+
+#: ../src/general_functions.c:807
+#, c-format
+msgid "[%s] unknown number base in function \"get_sep_char\". %s\n"
+msgstr "[%s] անհայտ թվի հիմք \"get_sep_char\" ֆունկցիայում։ %s\n"
+
+#: ../src/general_functions.c:875
+msgid "unknown display option in function \"change_option\""
+msgstr "սնհայը ցուցադրման տարբերակ \"change_option\" ֆունկցիայի մեջ"
+
+#: ../src/general_functions.c:915
+#, c-format
+msgid ""
+"[%s] length of decimal point (in locale) is not supported: >%s<\n"
+"You might face problems when using %s! %s\n"
+")"
+msgstr ""
+"[%s] length of decimal point (in locale) is not supported: >%s<\n"
+"You might face problems when using %s! %s\n"
+")"
+
+#: ../src/ui.c:89
+#, c-format
+msgid ""
+"[%s] Couldn't load %s. This file is necessary     to build galculator's user interface. Make sure you did a make "
+"install and the file     is accessible!\n"
+msgstr ""
+"[%s] Չհաջողվեց բեռնել %s֊ը։ Այս նիշքն անհրաժեշտ է     galculator֊ի միջերեսը կառուցելու համար։ Համոզվեք, որ կատարել "
+"եք make install հրամանը և նիշքը     հասանելի է!\n"
+
+#: ../src/ui.c:959 ../ui/main_frame.ui.h:17 ../ui/main_frame_hildon.ui.h:16
+msgid "Show _menu bar"
+msgstr "Ցուցադրել _ընտրացանկը"
+
+#: ../src/ui.c:999
+#, c-format
+msgid "%s Preferences"
+msgstr "%s Նախընտրանքներ"
+
+#: ../src/ui.c:1043 ../src/ui.c:1075
+msgid "Name"
+msgstr "Անուն"
+
+#: ../src/ui.c:1046
+msgid "Value"
+msgstr "Արժեք"
+
+#: ../src/ui.c:1049
+msgid "Description"
+msgstr "Նկարագրություն"
+
+#: ../src/ui.c:1078
+msgid "Variable"
+msgstr "Փոփոխական"
+
+#: ../src/ui.c:1081
+msgid "Expression"
+msgstr "Արտահայտություն"
+
+#: ../src/ui.c:1211 ../ui/basic_buttons_gtk2.ui.h:43 ../ui/basic_buttons_gtk3.ui.h:43
+#: ../ui/scientific_buttons_gtk2.ui.h:98 ../ui/scientific_buttons_gtk3.ui.h:98
 msgid "="
 msgstr "="
 
-#. Accessible name for the absolute value button
-#: ../data/buttons-advanced.ui.h:8 ../data/buttons-programming.ui.h:8
-msgid "Absolute Value"
-msgstr "Բացարձակ Արժեք"
-
-#. Label on the clear display button
-#: ../data/buttons-advanced.ui.h:10 ../data/buttons-basic.ui.h:4
-#: ../data/buttons-financial.ui.h:32 ../data/buttons-programming.ui.h:12
-msgid "Clear"
-msgstr "Ջնջել"
-
-#. Accessible name for the exponentiation (x to the power of y) button
-#: ../data/buttons-advanced.ui.h:12 ../data/buttons-basic.ui.h:6
-#: ../data/buttons-financial.ui.h:42 ../data/buttons-programming.ui.h:14
-msgid "Exponent"
-msgstr ""
-
-#. Accessible name for the factorial button
-#: ../data/buttons-advanced.ui.h:14 ../data/buttons-programming.ui.h:16
-msgid "Factorial"
-msgstr "Ֆակտորիալ"
-
-#. Accessible name for the factorize button
-#: ../data/buttons-advanced.ui.h:16 ../data/buttons-programming.ui.h:18
-msgid "Factorize"
-msgstr ""
-
-#. Accessible name for the inverse button
-#: ../data/buttons-advanced.ui.h:18 ../data/buttons-programming.ui.h:24
-msgid "Inverse"
-msgstr "Հակադարձ"
-
-#. Accessible name for the recall value button
-#: ../data/buttons-advanced.ui.h:20 ../data/buttons-financial.ui.h:72
-#: ../data/buttons-programming.ui.h:26
-msgid "Recall"
-msgstr "Նորից կանչել"
-
-#. Accessible name for the scientific exponent button
-#: ../data/buttons-advanced.ui.h:22
-msgid "Scientific Exponent"
-msgstr "Գիտական մեկնաբան"
-
-#. Accessible name for the store value button
-#: ../data/buttons-advanced.ui.h:24 ../data/buttons-financial.ui.h:76
-#: ../data/buttons-programming.ui.h:32
-msgid "Store"
-msgstr "Պահուստ"
-
-#. Accessible name for the subscript mode button
-#: ../data/buttons-advanced.ui.h:26 ../data/buttons-programming.ui.h:34
-msgid "Subscript"
-msgstr "Տողի ներքևի ինդեքս"
-
-#. Accessible name for the superscript mode button
-#: ../data/buttons-advanced.ui.h:28 ../data/buttons-programming.ui.h:36
-msgid "Superscript"
-msgstr "Տողի վերևի ինդեքս"
-
-#. Label on the undo button
-#. Label on the clear display button
-#: ../data/buttons-advanced.ui.h:30 ../data/buttons-basic.ui.h:8
-#: ../data/buttons-financial.ui.h:86
-msgid "Undo"
-msgstr "Ետարկել"
-
-#. Payment Period Dialog: Button to calculate result
-#: ../data/buttons-financial.ui.h:8
-msgid "C_alculate"
-msgstr "Հ_աշվել"
-
-#. Gross Profit Margin Dialog: Label before cost input
-#: ../data/buttons-financial.ui.h:10
-msgid "C_ost:"
-msgstr "Ա_րժեք"
-
-#. Periodic Payment Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:12
-msgid ""
-"Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period. "
-msgstr ""
-"Հաշվում է պարբերական մուծումների այն քանակը, որը կազմվում է յուրաքանչյուր "
-"վճարման ավարտին։"
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:14
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
-"occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated. "
-msgstr ""
-
-#. Double-Declining Depreciation Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:16
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the double-declining balance method."
-msgstr ""
-
-#. Future Value Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:18
-msgid ""
-"Calculates the future value of an investment based on a series of equal "
-"payments at a periodic interest rate over the number of payment periods in "
-"the term."
-msgstr ""
-
-#. Compounding Term Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:20
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-
-#. Payment Period Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:22
-msgid ""
-"Calculates the number of payment periods that are necessary during the term "
-"of an ordinary annuity, to accumulate a future value, at a periodic interest "
-"rate."
-msgstr ""
-
-#. Periodic Interest Rate Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:24
-msgid ""
-"Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods. "
-msgstr ""
-
-#. Present Value Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:26
-msgid ""
-"Calculates the present value of an investment based on a series of equal "
-"payments discounted at a periodic interest rate over the number of payment "
-"periods in the term. "
-msgstr ""
-
-#. Gross Profit Margin Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:28
-msgid ""
-"Calculates the resale price of a product, based on the product cost and the "
-"wanted gross profit margin."
-msgstr ""
-
-#. Straight-Line Depreciation Dialog: Description of calculation
-#: ../data/buttons-financial.ui.h:30
-msgid ""
-"Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly "
-"over the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated. "
-msgstr ""
-
-#. Title of Compounding Term dialog
-#. Tooltip for the compounding term button
-#: ../data/buttons-financial.ui.h:34 ../src/math-buttons.c:261
-msgid "Compounding Term"
-msgstr ""
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: ../data/buttons-financial.ui.h:36
-msgid "Ctrm"
-msgstr ""
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:38
-msgid "Ddb"
-msgstr ""
-
-#. Title of Double-Declining Depreciation dialog
-#: ../data/buttons-financial.ui.h:40
-msgid "Double-Declining Depreciation"
-msgstr ""
-
-#. Title of Future Value dialog
-#. Tooltip for the future value button
-#: ../data/buttons-financial.ui.h:44 ../src/math-buttons.c:267
-msgid "Future Value"
-msgstr "Ապագա Արժեք"
-
-#. Payment Period Dialog: Label before future value input
-#: ../data/buttons-financial.ui.h:46
-msgid "Future _Value:"
-msgstr "Ապագա _Արժեք."
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: ../data/buttons-financial.ui.h:48
-msgid "Fv"
-msgstr "Աա"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: ../data/buttons-financial.ui.h:50
-msgid "Gpm"
-msgstr "Հշգ"
-
-#. Title of Gross Profit Margin dialog
-#. Tooltip for the gross profit margin button
-#: ../data/buttons-financial.ui.h:52 ../src/math-buttons.c:288
-msgid "Gross Profit Margin"
-msgstr ""
-
-#. Title of Payment Period dialog
-#: ../data/buttons-financial.ui.h:54
-msgid "Payment Period"
-msgstr "Վճարման Ժամանակահատված"
-
-#. Title of Periodic Interest Rate dialog
-#. Tooltip for the periodic interest rate button
-#: ../data/buttons-financial.ui.h:56 ../src/math-buttons.c:279
-msgid "Periodic Interest Rate"
-msgstr "Պարբերական Տոկոսադրույք"
-
-#. Payment Period Dialog: Label before periodic interest rate input
-#: ../data/buttons-financial.ui.h:58
-msgid "Periodic Interest _Rate:"
-msgstr "Պարբերական _Տոկոսադրույք."
-
-#. Title of Periodic Payment dialog
-#. Tooltip for the periodic payment button
-#: ../data/buttons-financial.ui.h:60 ../src/math-buttons.c:285
-msgid "Periodic Payment"
-msgstr "Պարբերական Վճարում"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: ../data/buttons-financial.ui.h:62
-msgid "Pmt"
-msgstr ""
-
-#. Title of Present Value dialog
-#. Tooltip for the present value button
-#: ../data/buttons-financial.ui.h:64 ../src/math-buttons.c:282
-msgid "Present Value"
-msgstr "Առկա Արժեք"
-
-#. Periodic Interest Rate Dialog: Label before present value input
-#: ../data/buttons-financial.ui.h:66
-msgid "Present _Value:"
-msgstr "Առկա _Արժեք."
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: ../data/buttons-financial.ui.h:68
-msgid "Pv"
-msgstr ""
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: ../data/buttons-financial.ui.h:70
-msgid "Rate"
-msgstr ""
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:74
-msgid "Sln"
-msgstr ""
-
-#. Title of Straight-Line Depreciation dialog
-#: ../data/buttons-financial.ui.h:78
-msgid "Straight-Line Depreciation"
-msgstr ""
-
-#. Title of Sum-of-the-Years'-Digits Depreciation dialog
-#: ../data/buttons-financial.ui.h:80
-msgid "Sum-of-the-Years'-Digits Depreciation"
-msgstr ""
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: ../data/buttons-financial.ui.h:82
-msgid "Syd"
-msgstr ""
-
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: ../data/buttons-financial.ui.h:84
-msgid "Term"
-msgstr ""
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before cost input
-#: ../data/buttons-financial.ui.h:88
-msgid "_Cost:"
-msgstr "_Արժեք."
-
-#. Periodic Interest Rate Dialog: Label before future value input
-#: ../data/buttons-financial.ui.h:90
-msgid "_Future Value:"
-msgstr "_Ապագա Արժեք."
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before life input
-#: ../data/buttons-financial.ui.h:92
-msgid "_Life:"
-msgstr ""
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: ../data/buttons-financial.ui.h:94
-msgid "_Margin:"
-msgstr "_Գնանցք."
-
-#. Present Value Dialog: Label before number of periods input
-#: ../data/buttons-financial.ui.h:96
-msgid "_Number of Periods:"
-msgstr ""
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before period input
-#: ../data/buttons-financial.ui.h:98
-msgid "_Period:"
-msgstr "_ժամանակահատված."
-
-#. Payment Period Dialog: Label before periodic payment input
-#: ../data/buttons-financial.ui.h:100
-msgid "_Periodic Payment:"
-msgstr "_Պարբերական Վճարում."
-
-#. Periodic Payment Dialog: Label before principal input
-#: ../data/buttons-financial.ui.h:102
-msgid "_Principal:"
-msgstr ""
-
-#. Sum-of-the-Years'-Digits Depreciation Dialog: Label before salvage input
-#: ../data/buttons-financial.ui.h:104
-msgid "_Salvage:"
-msgstr ""
-
-#. Periodic Interest Rate Dialog: Label before term input
-#: ../data/buttons-financial.ui.h:106
-msgid "_Term:"
-msgstr ""
-
-#. Insert ASCII dialog: Label before character entry
-#: ../data/buttons-programming.ui.h:10
-msgid "Ch_aracter:"
-msgstr "Ն_իշ"
-
-#. Accessible name for the insert character button
-#: ../data/buttons-programming.ui.h:20
-msgid "Insert Character"
-msgstr "Ներմուծել Սիմվոլ"
-
-#. Title of insert character code dialog
-#. Tooltip for the insert character code button
-#: ../data/buttons-programming.ui.h:22 ../src/math-buttons.c:240
-msgid "Insert Character Code"
-msgstr ""
-
-#. Accessible name for the shift left button
-#. Tooltip for the shift left button
-#: ../data/buttons-programming.ui.h:28 ../src/math-buttons.c:255
-msgid "Shift Left"
-msgstr ""
-
-#. Accessible name for the shift right button
-#. Tooltip for the shift right button
-#: ../data/buttons-programming.ui.h:30 ../src/math-buttons.c:258
-msgid "Shift Right"
-msgstr ""
-
-#. Insert ASCII dialog: Button to insert selected character
-#: ../data/buttons-programming.ui.h:38
-msgid "_Insert"
-msgstr "_Տեղադրել"
-
-#. Word size combo: 16 bits
-#: ../data/preferences.ui.h:2
-msgid "16-bit"
-msgstr "16-բիտ"
-
-#. Word size combo: 32 bits
-#: ../data/preferences.ui.h:4
-msgid "32-bit"
-msgstr "32-բիտ"
-
-#. Word size combo: 64 bits
-#: ../data/preferences.ui.h:6
-msgid "64-bit"
-msgstr "64-բիտ"
-
-#. Word size combo: 8 bits
-#: ../data/preferences.ui.h:8
-msgid "8-bit"
-msgstr ""
-
-#. Preferences dialog: Label for display format combo box
-#: ../data/preferences.ui.h:10
-msgid "Number _Format:"
-msgstr ""
-
-#. Title of preferences dialog
-#: ../data/preferences.ui.h:11 ../src/math-preferences.c:239
-msgid "Preferences"
-msgstr ""
-
-#. Preferences dialog: label for show thousands separator check button
-#: ../data/preferences.ui.h:13
-msgid "Show _thousands separators"
-msgstr "Ցույց տալ _հազարների բաժանիչը"
-
-#. Preferences dialog: label for show trailing zeroes check button
-#: ../data/preferences.ui.h:15
-msgid "Show trailing _zeroes"
-msgstr "Ցույց տալ աջից _զրոները"
-
-#. Preferences dialog: label for word size combo box
-#: ../data/preferences.ui.h:17
-msgid "Word _size:"
-msgstr "Բառի _չափս"
-
-#. Preferences dialog: Label for angle unit combo box
-#: ../data/preferences.ui.h:19
-msgid "_Angle units:"
-msgstr ""
-
-#. Title of main window
-#: ../data/gcalctool.desktop.in.h:1 ../src/math-window.c:521
-msgid "Calculator"
-msgstr "Հաշվիչ"
-
-#: ../data/gcalctool.desktop.in.h:2
-msgid "Perform arithmetic, scientific or financial calculations"
-msgstr "Կատարել թվաբանական, գիտական կամ ֆինանսական հաշվարկներ"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:1
-msgid "Accuracy value"
-msgstr "Ճշտության արժեքը"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:2
-msgid "Angle units"
-msgstr ""
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:3
-msgid "Button mode"
-msgstr ""
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:4
-msgid "Currency of the current calculation"
-msgstr ""
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:5
-msgid "Currency to convert the current calculation into"
-msgstr ""
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:6
-msgid ""
-"Indicates whether any trailing zeroes after the numeric point should be "
-"shown in the display value."
-msgstr "Ցույց է տալիս արդյոք տասնորդական կետից հետո զրոներ ցույց տալ, թե ոչ"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:7
-msgid "Indicates whether thousands separators are shown in large numbers."
-msgstr ""
-"Ցույց է տալիս հազարների տարանջատիչները ցույց են տրվում մեծ թվերում, թե ոչ"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:8
-msgid "Number format"
-msgstr "Տասնորդական ֆորմատ"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:9
-msgid "Numeric Base"
-msgstr "Թվային Հիմք"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:10
-msgid "Show Thousands Separators"
-msgstr "Ցույց տալ Հազար Բաժանիչներ"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:11
-msgid "Show Trailing Zeroes"
-msgstr "Ցույց տալ Աջից Զրոները"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:12
-msgid "Source currency"
-msgstr ""
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:13
-msgid "Target currency"
-msgstr ""
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:14
-msgid "The angle units to use"
-msgstr ""
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:15
-msgid "The button mode"
-msgstr ""
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:16
-msgid "The format to display numbers in"
-msgstr ""
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:17
-msgid "The number of digits displayed after the numeric point"
-msgstr "Ստորակետից հետո ցույց տրվող թվերի քանակը"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:18
-msgid "The numeric base"
-msgstr "Թվային Հիմք"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:19
-msgid "The size of the words used in bitwise operations"
-msgstr ""
-"Բիտ-առ-բիտ գործողությունների բառերի չափսը"
-"64։"
-
-#: ../data/org.gnome.gcalctool.gschema.xml.in.h:20
-msgid "Word size"
-msgstr "Բառի չափս"
-
-#: ../src/currency.h:19
-msgid "Australian dollar"
-msgstr ""
-
-#: ../src/currency.h:20
-msgid "Bulgarian lev"
-msgstr ""
-
-#: ../src/currency.h:21
-msgid "Brazilian real"
-msgstr ""
-
-#: ../src/currency.h:22
-msgid "Canadian dollar"
-msgstr ""
-
-#: ../src/currency.h:23
-msgid "Swiss franc"
-msgstr ""
-
-#: ../src/currency.h:24
-msgid "Chinese yuan renminbi"
-msgstr ""
-
-#: ../src/currency.h:25
-msgid "Czech koruna"
-msgstr ""
-
-#: ../src/currency.h:26
-msgid "Danish krone"
-msgstr ""
-
-#: ../src/currency.h:27
-msgid "Estonian kroon"
-msgstr ""
-
-#: ../src/currency.h:28
-msgid "Euro"
-msgstr ""
-
-#: ../src/currency.h:29
-msgid "Pound sterling"
-msgstr ""
-
-#: ../src/currency.h:30
-msgid "Hong Kong dollar"
-msgstr ""
-
-#: ../src/currency.h:31
-msgid "Croatian kuna"
-msgstr ""
-
-#: ../src/currency.h:32
-msgid "Hungarian forint"
-msgstr ""
-
-#: ../src/currency.h:33
-msgid "Indonesian rupiah"
-msgstr ""
-
-#: ../src/currency.h:34
-msgid "Indian rupee"
-msgstr ""
-
-#: ../src/currency.h:35
-msgid "Icelandic krona"
-msgstr ""
-
-#: ../src/currency.h:36
-msgid "Japanese yen"
-msgstr ""
-
-#: ../src/currency.h:37
-msgid "South Korean won"
-msgstr ""
-
-#: ../src/currency.h:38
-msgid "Lithuanian litas"
-msgstr ""
-
-#: ../src/currency.h:39
-msgid "Latvian lats"
-msgstr ""
-
-#: ../src/currency.h:40
-msgid "Mexican peso"
-msgstr ""
-
-#: ../src/currency.h:41
-msgid "Malaysian ringgit"
-msgstr ""
-
-#: ../src/currency.h:42
-msgid "Norwegian krone"
-msgstr ""
-
-#: ../src/currency.h:43
-msgid "New Zealand dollar"
-msgstr ""
-
-#: ../src/currency.h:44
-msgid "Philippine peso"
-msgstr ""
-
-#: ../src/currency.h:45
-msgid "Polish zloty"
-msgstr ""
-
-#: ../src/currency.h:46
-msgid "New Romanian leu"
-msgstr ""
-
-#: ../src/currency.h:47
-msgid "Russian rouble"
-msgstr ""
-
-#: ../src/currency.h:48
-msgid "Swedish krona"
-msgstr ""
-
-#: ../src/currency.h:49
-msgid "Singapore dollar"
-msgstr ""
-
-#: ../src/currency.h:50
-msgid "Thai baht"
-msgstr ""
-
-#: ../src/currency.h:51
-msgid "New Turkish lira"
-msgstr ""
-
-#: ../src/currency.h:52
-msgid "US dollar"
-msgstr ""
-
-#: ../src/currency.h:53
-msgid "South African rand"
-msgstr ""
-
-#. Description on how to use gcalctool displayed on command-line
-#: ../src/gcalctool.c:76
-msgid ""
-"Usage:\n"
-"  %s — Perform mathematical calculations"
-msgstr ""
-"Օգտագործումը.\n"
-"  %s - Կատարել մաթեմատիկական հաշվարկներ"
-
-#. Description on gcalctool command-line help options displayed on command-line
-#: ../src/gcalctool.c:84
+#: ../src/ui.c:1211 ../src/ui.c:1223 ../ui/basic_buttons_gtk2.ui.h:44 ../ui/basic_buttons_gtk3.ui.h:44
+#: ../ui/paper_view.ui.h:2 ../ui/scientific_buttons_gtk2.ui.h:99 ../ui/scientific_buttons_gtk3.ui.h:99
+msgid "Enter"
+msgstr "Մուտքագրել"
+
+#: ../src/ui.c:1213 ../ui/scientific_buttons_gtk2.ui.h:17 ../ui/scientific_buttons_gtk3.ui.h:17
+msgid "x^y"
+msgstr "x^y"
+
+#: ../src/ui.c:1213 ../src/ui.c:1225 ../ui/scientific_buttons_gtk2.ui.h:18 ../ui/scientific_buttons_gtk3.ui.h:18
+msgid "Power"
+msgstr "Հզորություն"
+
+#: ../src/ui.c:1215 ../ui/basic_buttons_gtk2.ui.h:33 ../ui/basic_buttons_gtk3.ui.h:33
+#: ../ui/scientific_buttons_gtk2.ui.h:88 ../ui/scientific_buttons_gtk3.ui.h:88
+msgid "("
+msgstr "("
+
+#: ../src/ui.c:1215 ../ui/basic_buttons_gtk2.ui.h:34 ../ui/basic_buttons_gtk3.ui.h:34
+#: ../ui/scientific_buttons_gtk2.ui.h:89 ../ui/scientific_buttons_gtk3.ui.h:89
+msgid "Open Bracket"
+msgstr "Բացել փակագիծը"
+
+#: ../src/ui.c:1217 ../ui/basic_buttons_gtk2.ui.h:31 ../ui/basic_buttons_gtk3.ui.h:31
+#: ../ui/scientific_buttons_gtk2.ui.h:86 ../ui/scientific_buttons_gtk3.ui.h:86
+msgid ")"
+msgstr ")"
+
+#: ../src/ui.c:1217 ../ui/basic_buttons_gtk2.ui.h:32 ../ui/basic_buttons_gtk3.ui.h:32
+#: ../ui/scientific_buttons_gtk2.ui.h:87 ../ui/scientific_buttons_gtk3.ui.h:87
+msgid "Close Bracket"
+msgstr "Փակել փակագիծը"
+
+#: ../src/ui.c:1223
+msgid "ENT"
+msgstr "ENT"
+
+#: ../src/ui.c:1225
+msgid "y^x"
+msgstr "y^x"
+
+#: ../src/ui.c:1227
+msgid "x<>y"
+msgstr "x<>y"
+
+#: ../src/ui.c:1227
+msgid "swap current number with top of stack"
+msgstr "փոխանակել ընթացիկ համարը մեք քայլ դեպի վեր"
+
+#: ../src/ui.c:1229
+msgid "roll"
+msgstr "գլորել"
+
+#: ../src/ui.c:1229
+msgid "roll down stack"
+msgstr "գլորել դեպի ներքև"
+
+#: ../src/ui.c:1300
+msgid "Result Display"
+msgstr "Արդյունքների ցուցադրում"
+
+#: ../src/flex_parser.l:233
 #, c-format
-msgid ""
-"Help Options:\n"
-"  -v, --version                   Show release version\n"
-"  -h, -?, --help                  Show help options\n"
-"  --help-all                      Show all help options\n"
-"  --help-gtk                      Show GTK+ options"
-msgstr ""
-"Օգնության մանրամասներ.\n"
-"  -v, --version             Ցուցադրել թողարկման տարբերակը\n"
-"  -h, -?, --help            Ցուցադրել օգնության կարգավորումները\n"
-"  --help-all                Ցուցադրել օգնության բոլոր կարգավորումները\n"
-"  --help-gtk                Ցուցադրել GTK+ կարգավորումները"
-
-#. Description on gcalctool command-line GTK+ options displayed on command-line
-#: ../src/gcalctool.c:95
-#, c-format
-msgid ""
-"GTK+ Options:\n"
-"  --class=CLASS                   Program class as used by the window "
-"manager\n"
-"  --name=NAME                     Program name as used by the window "
-"manager\n"
-"  --screen=SCREEN                 X screen to use\n"
-"  --sync                          Make X calls synchronous\n"
-"  --gtk-module=MODULES            Load additional GTK+ modules\n"
-"  --g-fatal-warnings              Make all warnings fatal"
-msgstr ""
-"GTK+ Կարգավորումներ.\n"
-"  --class=CLASS             Պատուհանի մենեջերի կողմից օգտագործվող ծրագրի "
-"կլասը\n"
-"  --name=NAME               Պատուհանի մենեջերի կողմից օգտագործվող ծրագրի "
-"անունը\n"
-"  --screen=SCREEN           X screen to use\n"
-"  --sync                    Make X calls synchronous\n"
-"  --gtk-module=MODULES      Բեռնել GTK+ հավելյալ մոդուլներ\n"
-"  --g-fatal-warnings        Բոլոր զգուշացումները դարձնել ճակատագրական"
-
-#. Description on gcalctool application options displayed on command-line
-#: ../src/gcalctool.c:109
-#, c-format
-msgid ""
-"Application Options:\n"
-"  -u, --unittest                  Perform unit tests\n"
-"  -s, --solve <equation>          Solve the given equation"
-msgstr ""
-"Ծրագրի Կարգավորումներ.\n"
-"  -u, --unittest            Տեստավորել միավորները\n"
-"  -s, --solve <արտահայտություն>    Լուծում է տրված արտահայտությունը"
-
-#. Error printed to stderr when user uses --solve argument without an equation
-#: ../src/gcalctool.c:154
-#, c-format
-msgid "Argument --solve requires an equation to solve"
-msgstr "Արգումենտ --լուծման համար պահանջվում է հավասարում"
-
-#. Error printed to stderr when user provides an unknown command-line argument
-#: ../src/gcalctool.c:168
-#, c-format
-msgid "Unknown argument '%s'"
-msgstr "Անհայտ արգումենտ '%s'"
-
-#. Tooltip for the Pi button
-#: ../src/math-buttons.c:106
-msgid "Pi [Ctrl+P]"
-msgstr ""
-
-#. Tooltip for the Euler's Number button
-#: ../src/math-buttons.c:109
-msgid "Euler’s Number"
-msgstr "Էյլերի թիվը"
-
-#. Tooltip for the subscript button
-#: ../src/math-buttons.c:114
-msgid "Subscript mode [Alt]"
-msgstr ""
-
-#. Tooltip for the superscript button
-#: ../src/math-buttons.c:117
-msgid "Superscript mode [Ctrl]"
-msgstr ""
-
-#. Tooltip for the scientific exponent button
-#: ../src/math-buttons.c:120
-msgid "Scientific exponent [Ctrl+E]"
-msgstr ""
-
-#. Tooltip for the add button
-#: ../src/math-buttons.c:123
-msgid "Add [+]"
-msgstr "Գումարել [+]"
-
-#. Tooltip for the subtract button
-#: ../src/math-buttons.c:126
-msgid "Subtract [-]"
-msgstr "Հանել [-]"
-
-#. Tooltip for the multiply button
-#: ../src/math-buttons.c:129
-msgid "Multiply [*]"
-msgstr "Բազմապատկել [*]"
-
-#. Tooltip for the divide button
-#: ../src/math-buttons.c:132
-msgid "Divide [/]"
-msgstr "Բաժանել [/]"
-
-#. Tooltip for the modulus divide button
-#: ../src/math-buttons.c:135
-msgid "Modulus divide"
-msgstr "Բաժանում ըստ մոդուլի"
-
-#. Tooltip for the additional functions button
-#: ../src/math-buttons.c:138
-msgid "Additional Functions"
-msgstr "Լրացուցիչ Ֆունկցիաները"
-
-#. Tooltip for the exponent button
-#: ../src/math-buttons.c:141
-msgid "Exponent [^ or **]"
-msgstr ""
-
-#. Tooltip for the square button
-#: ../src/math-buttons.c:144
-msgid "Square [Ctrl+2]"
-msgstr "Քառակուսի [Ctrl+2]"
-
-#. Tooltip for the percentage button
-#: ../src/math-buttons.c:147
-msgid "Percentage [%]"
-msgstr "Տոկոս [%]"
-
-#. Tooltip for the factorial button
-#: ../src/math-buttons.c:150
-msgid "Factorial [!]"
-msgstr ""
-
-#. Tooltip for the absolute value button
-#: ../src/math-buttons.c:153
-msgid "Absolute value [|]"
-msgstr "Բացարձակ արժեք [|]"
-
-#. Tooltip for the complex argument component button
-#: ../src/math-buttons.c:156
-msgid "Complex argument"
-msgstr ""
-
-#. Tooltip for the complex conjugate button
-#: ../src/math-buttons.c:159
-msgid "Complex conjugate"
-msgstr ""
-
-#. Tooltip for the root button
-#: ../src/math-buttons.c:162
-msgid "Root [Ctrl+R]"
-msgstr ""
-
-#. Tooltip for the square root button
-#: ../src/math-buttons.c:165
-msgid "Square root [Ctrl+R]"
-msgstr "Քառակուսի արմատ [Ctrl+R]"
-
-#. Tooltip for the logarithm button
-#: ../src/math-buttons.c:168
-msgid "Logarithm"
-msgstr ""
-
-#. Tooltip for the natural logarithm button
-#: ../src/math-buttons.c:171
-msgid "Natural Logarithm"
-msgstr "Բնական Լոգարիթմ"
-
-#. Tooltip for the sine button
-#: ../src/math-buttons.c:174
-msgid "Sine"
-msgstr "Սինուս"
-
-#. Tooltip for the cosine button
-#: ../src/math-buttons.c:177
-msgid "Cosine"
-msgstr "Կոսինուս"
-
-#. Tooltip for the tangent button
-#: ../src/math-buttons.c:180
-msgid "Tangent"
-msgstr "Տանգենս"
-
-#. Tooltip for the hyperbolic sine button
-#: ../src/math-buttons.c:183
-msgid "Hyperbolic Sine"
-msgstr "Հիպերբոլիկ Սինուս"
-
-#. Tooltip for the hyperbolic cosine button
-#: ../src/math-buttons.c:186
-msgid "Hyperbolic Cosine"
-msgstr "Հիպերբոլիկ Կոսինուս"
-
-#. Tooltip for the hyperbolic tangent button
-#: ../src/math-buttons.c:189
-msgid "Hyperbolic Tangent"
-msgstr "Հիպերբոլիկ Տանգենս"
-
-#. Tooltip for the inverse button
-#: ../src/math-buttons.c:192
-msgid "Inverse [Ctrl+I]"
-msgstr "Հակադարձ Սինուս [Ctrl+I]"
-
-#. Tooltip for the boolean AND button
-#: ../src/math-buttons.c:195
-msgid "Boolean AND"
-msgstr ""
-
-#. Tooltip for the boolean OR button
-#: ../src/math-buttons.c:198
-msgid "Boolean OR"
-msgstr ""
-
-#. Tooltip for the exclusive OR button
-#: ../src/math-buttons.c:201
-msgid "Boolean Exclusive OR"
-msgstr ""
-
-#. Tooltip for the boolean NOT button
-#: ../src/math-buttons.c:204
-msgid "Boolean NOT"
-msgstr ""
-
-#. Tooltip for the integer component button
-#: ../src/math-buttons.c:207 ../src/math-buttons.c:1442
-msgid "Integer Component"
-msgstr "Ամբողջ Կոմպոնենտ"
-
-#. Tooltip for the fractional component button
-#: ../src/math-buttons.c:210 ../src/math-buttons.c:1444
-msgid "Fractional Component"
-msgstr "Կոտորակային Կոմպոնենտ"
-
-#. Tooltip for the real component button
-#: ../src/math-buttons.c:213
-msgid "Real Component"
-msgstr ""
-
-#. Tooltip for the imaginary component button
-#: ../src/math-buttons.c:216
-msgid "Imaginary Component"
-msgstr ""
-
-#. Tooltip for the ones complement button
-#: ../src/math-buttons.c:219
-msgid "Ones' Complement"
-msgstr ""
-
-#. Tooltip for the twos complement button
-#: ../src/math-buttons.c:222
-msgid "Two's Complement"
-msgstr ""
-
-#. Tooltip for the truncate button
-#: ../src/math-buttons.c:225
-msgid "Truncate"
-msgstr "Կտրել"
-
-#. Tooltip for the start group button
-#: ../src/math-buttons.c:228
-msgid "Start Group [(]"
-msgstr "Գործողությունների խմբի սկիզբ [(]"
-
-#. Tooltip for the end group button
-#: ../src/math-buttons.c:231
-msgid "End Group [)]"
-msgstr ""
-
-#. Tooltip for the assign variable button
-#: ../src/math-buttons.c:234
-msgid "Assign Variable"
-msgstr ""
-
-#. Tooltip for the insert variable button
-#: ../src/math-buttons.c:237
-msgid "Insert Variable"
-msgstr "Ներմուծել Փոփոխականը"
-
-#. Tooltip for the solve button
-#: ../src/math-buttons.c:243
-msgid "Calculate Result"
-msgstr "Հաշվել Արդյունքը"
-
-#. Tooltip for the factor button
-#: ../src/math-buttons.c:246
-msgid "Factorize [Ctrl+F]"
-msgstr ""
-
-#. Tooltip for the clear button
-#: ../src/math-buttons.c:249
-msgid "Clear Display [Escape]"
-msgstr "Ջնջել Display [Escape]"
-
-#. Tooltip for the undo button
-#: ../src/math-buttons.c:252
-msgid "Undo [Ctrl+Z]"
-msgstr ""
-
-#. Tooltip for the double declining depreciation button
-#: ../src/math-buttons.c:264
-msgid "Double Declining Depreciation"
-msgstr ""
-
-#. Tooltip for the financial term button
-#: ../src/math-buttons.c:270
-msgid "Financial Term"
-msgstr "Ֆինանսական Տերմին"
-
-#. Tooltip for the sum of the years digits depreciation button
-#: ../src/math-buttons.c:273
-msgid "Sum of the Years Digits Depreciation"
-msgstr ""
-
-#. Tooltip for the straight line depreciation button
-#: ../src/math-buttons.c:276
-msgid "Straight Line Depreciation"
-msgstr ""
-
-#. Advanced buttons: Angle unit combo box: Use degrees for trigonometric calculations
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: ../src/math-buttons.c:892 ../src/math-preferences.c:255
-msgid "Degrees"
-msgstr "Աստիճաններ"
-
-#. Advanced buttons: Angle unit combo box: Use radians for trigonometric calculations
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: ../src/math-buttons.c:896 ../src/math-preferences.c:259
-msgid "Radians"
-msgstr "Ռադիաններ"
-
-#. Advanced buttons: Angle unit combo box: Use gradians for trigonometric calculations
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: ../src/math-buttons.c:900 ../src/math-preferences.c:263
-msgid "Gradians"
-msgstr "Գռադիաններ"
-
-#. Number display mode combo: Binary, e.g. 10011010010₂
-#: ../src/math-buttons.c:934
-msgid "Binary"
-msgstr "Երկուական"
-
-#. Number display mode combo: Octal, e.g. 2322₈
-#: ../src/math-buttons.c:938
-msgid "Octal"
-msgstr "Ութական"
-
-#. Number display mode combo: Decimal, e.g. 1234
-#: ../src/math-buttons.c:942
-msgid "Decimal"
-msgstr ""
-
-#. Number display mode combo: Hexadecimal, e.g. 4D2₁₆
-#: ../src/math-buttons.c:946
-msgid "Hexadecimal"
-msgstr "16-ական"
-
-#. Text shown in store menu when no variables defined
-#. Text shown in recall menu when no variables defined
-#: ../src/math-buttons.c:1263 ../src/math-buttons.c:1309
-msgid "No variables defined"
-msgstr ""
-
-#. Left Shift Popup: Menu item to shift left by n places (n < 10)
-#. Right Shift Popup: Menu item to shift right by n places (n < 10)
-#: ../src/math-buttons.c:1352 ../src/math-buttons.c:1396
-msgid "_%d place"
-msgid_plural "_%d places"
-msgstr[0] "%d նիշ"
-msgstr[1] "%d նիշեր"
-
-#. Left Shift Popup: Menu item to shift left by n places (n >= 10)
-#. Right Shift Popup: Menu item to shift right by n places (n >= 10)
-#: ../src/math-buttons.c:1356 ../src/math-buttons.c:1400
-msgid "%d place"
-msgid_plural "%d places"
-msgstr[0] "%d նիշ"
-msgstr[1] "%d նիշեր"
-
-#. Tooltip for the round button
-#: ../src/math-buttons.c:1446
-msgid "Round"
-msgstr "Մոտարկում"
-
-#. Tooltip for the floor button
-#: ../src/math-buttons.c:1448
-msgid "Floor"
-msgstr ""
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1450
-msgid "Ceiling"
-msgstr ""
-
-#. Tooltip for the ceiling button
-#: ../src/math-buttons.c:1452
-msgid "Sign"
-msgstr ""
-
-#. Error shown when trying to undo with no undo history
-#: ../src/math-equation.c:496
-msgid "No undo history"
-msgstr "Ետարկում հնարավոր չէ"
-
-#. Error shown when trying to redo with no redo history
-#: ../src/math-equation.c:521
-msgid "No redo history"
-msgstr "Կրկնելը հնարավոր չէ"
-
-#: ../src/math-equation.c:845
-msgid "No sane value to store"
-msgstr "Պահեստավորման համար թիվը ճիշտ չէ"
-
-#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: ../src/math-equation.c:1105
-msgid "Overflow. Try a bigger word size"
-msgstr "Սահմանանց թիվ։ Փորձեք ավելի մեծ չափսի բառ"
-
-#. Error displayed to user when they an unknown variable is entered
-#: ../src/math-equation.c:1110
-msgid "Unknown variable '%s'"
-msgstr "Անհայտ փոփոխական '%s'"
-
-#. Error displayed to user when an unknown function is entered
-#: ../src/math-equation.c:1115
-#, c-format
-msgid "Function '%s' is not defined"
-msgstr ""
-
-#. Error displayed to user when an conversion with unknown units is attempted
-#: ../src/math-equation.c:1120
-msgid "Unknown conversion"
-msgstr "Անհայտ փոխարկում"
-
-#. Error displayed to user when they enter an invalid calculation
-#: ../src/math-equation.c:1129
-msgid "Malformed expression"
-msgstr "Սխալ ձևակերպված արտահայտություն"
-
-#. Error displayed when trying to factorize a non-integer value
-#: ../src/math-equation.c:1152
-msgid "Need an integer to factorize"
-msgstr ""
-
-#. This message is displayed in the status bar when a bit
-#. shift operation is performed and the display does not contain a number
-#: ../src/math-equation.c:1229
-msgid "No sane value to bitwise shift"
-msgstr "Բիտ-առ-բիտ գործողության կատարման համար թիվը ճիշտ չէ"
-
-#. Message displayed when cannot toggle bit in display
-#: ../src/math-equation.c:1258
-msgid "Displayed value not an integer"
-msgstr ""
-
-#. Digits localized for the given language
-#: ../src/math-equation.c:1648
-msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
-msgstr ""
-
-#. Label on close button in preferences dialog
-#: ../src/math-preferences.c:245
-msgid "Close"
-msgstr "Փակել"
-
-#. Number display mode combo: Fixed, e.g. 1234
-#: ../src/math-preferences.c:273
-msgid "Fixed"
-msgstr "Ֆիքսված է"
-
-#. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: ../src/math-preferences.c:277
-msgid "Scientific"
-msgstr "Գիտական"
-
-#. Number display mode combo: Engineering, e.g. 1.234k
-#: ../src/math-preferences.c:281
-msgid "Engineering"
-msgstr ""
-
-#. Label used in preferences dialog.  The %d is replaced by a spinbutton
-#: ../src/math-preferences.c:292
-#, c-format
-msgid "Show %d decimal _places"
-msgstr ""
-
-#. Translators: Error message displayed when unable to launch help browser
-#: ../src/math-window.c:170
-msgid "Unable to open help file"
-msgstr "Օգնության ֆայլը չհաջողվեց բացել"
-
-#. The translator credits. Please translate this with your name(s).
-#: ../src/math-window.c:201
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Davit Mayilyan https://launchpad.net/~davidmayilyan"
-
-#. The license this software is under (GPL2+)
-#: ../src/math-window.c:204
-msgid ""
-"Gcalctool is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2 of the License, or\n"
-"(at your option) any later version.\n"
-"\n"
-"Gcalctool is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with Gcalctool; if not, write to the Free Software Foundation, Inc.,\n"
-"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
-msgstr ""
-
-#. Program name in the about dialog
-#: ../src/math-window.c:221
-msgid "Gcalctool"
-msgstr "Gcalctool"
-
-#. Copyright notice in the about dialog
-#: ../src/math-window.c:225
-msgid "© 1986–2010 The Gcalctool authors"
-msgstr "© 1986-2010 Gcalctool-ի հեղինակները"
-
-#. Short description in the about dialog
-#: ../src/math-window.c:229
-msgid "Calculator with financial and scientific modes."
-msgstr "Հաշվիչ գիտական և ֆինանսական ռեժիմներով։"
-
-#. Calculator menu
-#: ../src/math-window.c:355
+msgid "[%s] flex parser was called more than %i times. Do you know what you are doing? If not: %s\n"
+msgstr "[%s]  flex parser կանչվել է %i֊ից ավելի։ Գիտե՞ք թե ինչ եք անում։ Եթե ոչ, ապա՝ %s\n"
+
+#: ../ui/about.ui.in.h:1
+msgid "About galculator"
+msgstr "G֊հաշվիչի մասին"
+
+#: ../ui/about.ui.in.h:2
+msgid "Copyright (c) 2002-2014 by Simon Flöry <simon.floery@rechenraum.com>"
+msgstr "Հեղինակային իրավունք (c) 2002-2014 Սայմոն Ֆլորի <simon.floery@rechenraum.com>"
+
+#: ../ui/about.ui.in.h:3
+msgid "a GTK+ based scientific calculator"
+msgstr "GTK+ -ի վրա հիմնված գիտական հաշվիչ"
+
+#: ../ui/basic_buttons_gtk2.ui.h:1 ../ui/basic_buttons_gtk3.ui.h:1 ../ui/scientific_buttons_gtk2.ui.h:52
+#: ../ui/scientific_buttons_gtk3.ui.h:52
+msgid "7"
+msgstr "7"
+
+#: ../ui/basic_buttons_gtk2.ui.h:2 ../ui/basic_buttons_gtk3.ui.h:2 ../ui/scientific_buttons_gtk2.ui.h:53
+#: ../ui/scientific_buttons_gtk3.ui.h:53
+msgid "Seven"
+msgstr "Յոթ"
+
+#: ../ui/basic_buttons_gtk2.ui.h:3 ../ui/basic_buttons_gtk3.ui.h:3 ../ui/scientific_buttons_gtk2.ui.h:54
+#: ../ui/scientific_buttons_gtk3.ui.h:54
+msgid "8"
+msgstr "8"
+
+#: ../ui/basic_buttons_gtk2.ui.h:4 ../ui/basic_buttons_gtk3.ui.h:4 ../ui/scientific_buttons_gtk2.ui.h:55
+#: ../ui/scientific_buttons_gtk3.ui.h:55
+msgid "Eight"
+msgstr "Ութ"
+
+#: ../ui/basic_buttons_gtk2.ui.h:5 ../ui/basic_buttons_gtk3.ui.h:5 ../ui/scientific_buttons_gtk2.ui.h:56
+#: ../ui/scientific_buttons_gtk3.ui.h:56
+msgid "9"
+msgstr "9"
+
+#: ../ui/basic_buttons_gtk2.ui.h:6 ../ui/basic_buttons_gtk3.ui.h:6 ../ui/scientific_buttons_gtk2.ui.h:57
+#: ../ui/scientific_buttons_gtk3.ui.h:57
+msgid "Nine"
+msgstr "Ինը"
+
+#: ../ui/basic_buttons_gtk2.ui.h:7 ../ui/basic_buttons_gtk3.ui.h:7 ../ui/scientific_buttons_gtk2.ui.h:58
+#: ../ui/scientific_buttons_gtk3.ui.h:58
+msgid "/"
+msgstr "/"
+
+#: ../ui/basic_buttons_gtk2.ui.h:8 ../ui/basic_buttons_gtk3.ui.h:8 ../ui/scientific_buttons_gtk2.ui.h:59
+#: ../ui/scientific_buttons_gtk3.ui.h:59
+msgid "Divide"
+msgstr "Բաժանած"
+
+#: ../ui/basic_buttons_gtk2.ui.h:9 ../ui/basic_buttons_gtk3.ui.h:9 ../ui/scientific_buttons_gtk2.ui.h:62
+#: ../ui/scientific_buttons_gtk3.ui.h:62
+msgid "4"
+msgstr "4"
+
+#: ../ui/basic_buttons_gtk2.ui.h:10 ../ui/basic_buttons_gtk3.ui.h:10 ../ui/scientific_buttons_gtk2.ui.h:63
+#: ../ui/scientific_buttons_gtk3.ui.h:63
+msgid "Four"
+msgstr "Չորս"
+
+#: ../ui/basic_buttons_gtk2.ui.h:11 ../ui/basic_buttons_gtk3.ui.h:11 ../ui/scientific_buttons_gtk2.ui.h:64
+#: ../ui/scientific_buttons_gtk3.ui.h:64
+msgid "5"
+msgstr "5"
+
+#: ../ui/basic_buttons_gtk2.ui.h:12 ../ui/basic_buttons_gtk3.ui.h:12 ../ui/scientific_buttons_gtk2.ui.h:65
+#: ../ui/scientific_buttons_gtk3.ui.h:65
+msgid "Five"
+msgstr "Հինգ"
+
+#: ../ui/basic_buttons_gtk2.ui.h:13 ../ui/basic_buttons_gtk3.ui.h:13 ../ui/scientific_buttons_gtk2.ui.h:66
+#: ../ui/scientific_buttons_gtk3.ui.h:66
+msgid "6"
+msgstr "6"
+
+#: ../ui/basic_buttons_gtk2.ui.h:14 ../ui/basic_buttons_gtk3.ui.h:14 ../ui/scientific_buttons_gtk2.ui.h:67
+#: ../ui/scientific_buttons_gtk3.ui.h:67
+msgid "Six"
+msgstr "Վեց"
+
+#: ../ui/basic_buttons_gtk2.ui.h:15 ../ui/basic_buttons_gtk3.ui.h:15 ../ui/scientific_buttons_gtk2.ui.h:68
+#: ../ui/scientific_buttons_gtk3.ui.h:68
+msgid "3"
+msgstr "3"
+
+#: ../ui/basic_buttons_gtk2.ui.h:16 ../ui/basic_buttons_gtk3.ui.h:16 ../ui/scientific_buttons_gtk2.ui.h:69
+#: ../ui/scientific_buttons_gtk3.ui.h:69
+msgid "Three"
+msgstr "Երեք"
+
+#: ../ui/basic_buttons_gtk2.ui.h:17 ../ui/basic_buttons_gtk3.ui.h:17 ../ui/scientific_buttons_gtk2.ui.h:70
+#: ../ui/scientific_buttons_gtk3.ui.h:70
+msgid "-"
+msgstr "-"
+
+#: ../ui/basic_buttons_gtk2.ui.h:18 ../ui/basic_buttons_gtk3.ui.h:18 ../ui/scientific_buttons_gtk2.ui.h:71
+#: ../ui/scientific_buttons_gtk3.ui.h:71
+msgid "Subtract"
+msgstr "Հանած"
+
+#: ../ui/basic_buttons_gtk2.ui.h:19 ../ui/basic_buttons_gtk3.ui.h:19 ../ui/scientific_buttons_gtk2.ui.h:72
+#: ../ui/scientific_buttons_gtk3.ui.h:72
+msgid "+"
+msgstr "+"
+
+#: ../ui/basic_buttons_gtk2.ui.h:20 ../ui/basic_buttons_gtk3.ui.h:20 ../ui/scientific_buttons_gtk2.ui.h:73
+#: ../ui/scientific_buttons_gtk3.ui.h:73
+msgid "Sum"
+msgstr "Գումարած"
+
+#: ../ui/basic_buttons_gtk2.ui.h:21 ../ui/basic_buttons_gtk3.ui.h:21 ../ui/scientific_buttons_gtk2.ui.h:76
+#: ../ui/scientific_buttons_gtk3.ui.h:76
+msgid "+/-"
+msgstr "+/-"
+
+#: ../ui/basic_buttons_gtk2.ui.h:22 ../ui/basic_buttons_gtk3.ui.h:22 ../ui/scientific_buttons_gtk2.ui.h:77
+#: ../ui/scientific_buttons_gtk3.ui.h:77
+msgid "Change sign"
+msgstr "Փոխել նշանը"
+
+#: ../ui/basic_buttons_gtk2.ui.h:23 ../ui/basic_buttons_gtk3.ui.h:23 ../ui/main_frame_hildon.ui.h:34
+#: ../ui/scientific_buttons_gtk2.ui.h:78 ../ui/scientific_buttons_gtk3.ui.h:78
+msgid "*"
+msgstr "*"
+
+#: ../ui/basic_buttons_gtk2.ui.h:24 ../ui/basic_buttons_gtk3.ui.h:24 ../ui/scientific_buttons_gtk2.ui.h:79
+#: ../ui/scientific_buttons_gtk3.ui.h:79
+msgid "Multiply"
+msgstr "Բազմապատկած"
+
+#: ../ui/basic_buttons_gtk2.ui.h:25 ../ui/basic_buttons_gtk3.ui.h:25 ../ui/scientific_buttons_gtk2.ui.h:80
+#: ../ui/scientific_buttons_gtk3.ui.h:80
+msgid "Add current display value to memory"
+msgstr "Ավելացնել ընթացիկ արժեքը հիշողության մեջ"
+
+#: ../ui/basic_buttons_gtk2.ui.h:26 ../ui/basic_buttons_gtk3.ui.h:26 ../ui/scientific_buttons_gtk2.ui.h:81
+#: ../ui/scientific_buttons_gtk3.ui.h:81
+msgid "M+"
+msgstr "M+"
+
+#: ../ui/basic_buttons_gtk2.ui.h:27 ../ui/basic_buttons_gtk3.ui.h:27 ../ui/scientific_buttons_gtk2.ui.h:82
+#: ../ui/scientific_buttons_gtk3.ui.h:82
+msgid "Read from memory"
+msgstr "Կարդալ հիշողությունից"
+
+#: ../ui/basic_buttons_gtk2.ui.h:28 ../ui/basic_buttons_gtk3.ui.h:28 ../ui/scientific_buttons_gtk2.ui.h:83
+#: ../ui/scientific_buttons_gtk3.ui.h:83
+msgid "MR"
+msgstr "MR"
+
+#: ../ui/basic_buttons_gtk2.ui.h:29 ../ui/basic_buttons_gtk3.ui.h:29 ../ui/scientific_buttons_gtk2.ui.h:84
+#: ../ui/scientific_buttons_gtk3.ui.h:84
+msgid "Save to memory"
+msgstr "Պահել հիշողության մեջ"
+
+#: ../ui/basic_buttons_gtk2.ui.h:30 ../ui/basic_buttons_gtk3.ui.h:30 ../ui/scientific_buttons_gtk2.ui.h:85
+#: ../ui/scientific_buttons_gtk3.ui.h:85
+msgid "MS"
+msgstr "MS"
+
+#: ../ui/basic_buttons_gtk2.ui.h:35 ../ui/basic_buttons_gtk3.ui.h:35 ../ui/scientific_buttons_gtk2.ui.h:90
+#: ../ui/scientific_buttons_gtk3.ui.h:90
+msgid "0"
+msgstr "0"
+
+#: ../ui/basic_buttons_gtk2.ui.h:36 ../ui/basic_buttons_gtk3.ui.h:36 ../ui/scientific_buttons_gtk2.ui.h:91
+#: ../ui/scientific_buttons_gtk3.ui.h:91
+msgid "Zero"
+msgstr "Զրո"
+
+#: ../ui/basic_buttons_gtk2.ui.h:37 ../ui/basic_buttons_gtk3.ui.h:37 ../ui/scientific_buttons_gtk2.ui.h:92
+#: ../ui/scientific_buttons_gtk3.ui.h:92
+msgid "."
+msgstr "."
+
+#: ../ui/basic_buttons_gtk2.ui.h:38 ../ui/basic_buttons_gtk3.ui.h:38 ../ui/scientific_buttons_gtk2.ui.h:93
+#: ../ui/scientific_buttons_gtk3.ui.h:93
+msgid "Decimal point"
+msgstr "Տասնորդական կետ"
+
+#: ../ui/basic_buttons_gtk2.ui.h:39 ../ui/basic_buttons_gtk3.ui.h:39 ../ui/scientific_buttons_gtk2.ui.h:94
+#: ../ui/scientific_buttons_gtk3.ui.h:94
+msgid "1"
+msgstr "1"
+
+#: ../ui/basic_buttons_gtk2.ui.h:40 ../ui/basic_buttons_gtk3.ui.h:40 ../ui/scientific_buttons_gtk2.ui.h:95
+#: ../ui/scientific_buttons_gtk3.ui.h:95
+msgid "One"
+msgstr "Մեկ"
+
+#: ../ui/basic_buttons_gtk2.ui.h:41 ../ui/basic_buttons_gtk3.ui.h:41 ../ui/scientific_buttons_gtk2.ui.h:96
+#: ../ui/scientific_buttons_gtk3.ui.h:96
+msgid "2"
+msgstr "2"
+
+#: ../ui/basic_buttons_gtk2.ui.h:42 ../ui/basic_buttons_gtk3.ui.h:42 ../ui/scientific_buttons_gtk2.ui.h:97
+#: ../ui/scientific_buttons_gtk3.ui.h:97
+msgid "Two"
+msgstr "Երկու"
+
+#: ../ui/basic_buttons_gtk2.ui.h:45 ../ui/basic_buttons_gtk3.ui.h:45 ../ui/scientific_buttons_gtk2.ui.h:5
+#: ../ui/scientific_buttons_gtk3.ui.h:5
+msgid "sqrt"
+msgstr "Քառակուսի"
+
+#: ../ui/basic_buttons_gtk2.ui.h:46 ../ui/basic_buttons_gtk3.ui.h:46 ../ui/scientific_buttons_gtk2.ui.h:6
+#: ../ui/scientific_buttons_gtk3.ui.h:6
+msgid "Square root"
+msgstr "Քառակուսի արմատ"
+
+#: ../ui/basic_buttons_gtk2.ui.h:48 ../ui/basic_buttons_gtk3.ui.h:48 ../ui/scientific_buttons_gtk2.ui.h:24
+#: ../ui/scientific_buttons_gtk3.ui.h:24
+#, no-c-format
+msgid "%"
+msgstr "%"
+
+#: ../ui/basic_buttons_gtk2.ui.h:49 ../ui/basic_buttons_gtk3.ui.h:49 ../ui/scientific_buttons_gtk2.ui.h:25
+#: ../ui/scientific_buttons_gtk3.ui.h:25
+msgid "Percent"
+msgstr "Տոկոս"
+
+#: ../ui/classic_view.ui.h:1 ../ui/main_frame.ui.h:1 ../ui/main_frame_hildon.ui.h:35 ../ui/paper_view.ui.h:1
+msgid "The main program window."
+msgstr "Ծրագրի հիմնական պատուհանը։"
+
+#: ../ui/classic_view.ui.h:2 ../ui/main_frame_hildon.ui.h:33
+msgid "Formula entry text field - enter string expression to compute here."
+msgstr "Բանաձևի մուտքագրման տեքստային դաշտ։ Մուտքագրեք տողի արտահայտությունն՝ այստեղ հաշվարկելու համար։"
+
+#: ../ui/dispctrl_bottom_gtk2.ui.h:1 ../ui/dispctrl_bottom_gtk3.ui.h:1 ../ui/dispctrl_right_gtk2.ui.h:1
+#: ../ui/dispctrl_right_gtk3.ui.h:1 ../ui/dispctrl_right_vertical_gtk2.ui.h:5
+#: ../ui/dispctrl_right_vertical_gtk3.ui.h:5
+msgid "AC"
+msgstr "AC"
+
+#: ../ui/dispctrl_bottom_gtk2.ui.h:2 ../ui/dispctrl_bottom_gtk3.ui.h:2 ../ui/dispctrl_right_gtk2.ui.h:2
+#: ../ui/dispctrl_right_gtk3.ui.h:2 ../ui/dispctrl_right_vertical_gtk2.ui.h:6
+#: ../ui/dispctrl_right_vertical_gtk3.ui.h:6
+msgid "Reset calculator (clear all)"
+msgstr "Վերակայել հաշվիչը (մաքրել ամենը)"
+
+#: ../ui/dispctrl_bottom_gtk2.ui.h:3 ../ui/dispctrl_bottom_gtk3.ui.h:3 ../ui/dispctrl_right_gtk2.ui.h:5
+#: ../ui/dispctrl_right_gtk3.ui.h:5 ../ui/dispctrl_right_vertical_gtk2.ui.h:3
+#: ../ui/dispctrl_right_vertical_gtk3.ui.h:3 ../ui/scientific_buttons_gtk2.ui.h:40
+#: ../ui/scientific_buttons_gtk3.ui.h:40
+msgid "C"
+msgstr "C"
+
+#: ../ui/dispctrl_bottom_gtk2.ui.h:4 ../ui/dispctrl_bottom_gtk3.ui.h:4 ../ui/dispctrl_right_gtk2.ui.h:6
+#: ../ui/dispctrl_right_gtk3.ui.h:6 ../ui/dispctrl_right_vertical_gtk2.ui.h:4
+#: ../ui/dispctrl_right_vertical_gtk3.ui.h:4
+msgid "Clear display"
+msgstr "Մաքրել էկրանը"
+
+#: ../ui/dispctrl_bottom_gtk2.ui.h:5 ../ui/dispctrl_bottom_gtk3.ui.h:5 ../ui/dispctrl_right_gtk2.ui.h:3
+#: ../ui/dispctrl_right_gtk3.ui.h:3 ../ui/dispctrl_right_vertical_gtk2.ui.h:1
+#: ../ui/dispctrl_right_vertical_gtk3.ui.h:1
+msgid "<-"
+msgstr "<-"
+
+#: ../ui/dispctrl_bottom_gtk2.ui.h:6 ../ui/dispctrl_bottom_gtk3.ui.h:6 ../ui/dispctrl_right_gtk2.ui.h:4
+#: ../ui/dispctrl_right_gtk3.ui.h:4 ../ui/dispctrl_right_vertical_gtk2.ui.h:2
+#: ../ui/dispctrl_right_vertical_gtk3.ui.h:2
+msgid "Backspace"
+msgstr "Մաքրել"
+
+#: ../ui/main_frame.ui.h:2 ../ui/main_frame_hildon.ui.h:1
+msgid "_File"
+msgstr "_Նիշք"
+
+#: ../ui/main_frame.ui.h:3 ../ui/main_frame_hildon.ui.h:3
+msgid "_Edit"
+msgstr "_Խմբագրել"
+
+#: ../ui/main_frame.ui.h:4 ../ui/main_frame_hildon.ui.h:4
+msgid "Cu_t Display Value"
+msgstr "Կտրել էկրանի արժեքը"
+
+#: ../ui/main_frame.ui.h:5 ../ui/main_frame_hildon.ui.h:5
+msgid "_Copy Display Value"
+msgstr "_Պատճենել էկրանի արժեքը"
+
+#: ../ui/main_frame.ui.h:6
+msgid "_Paste and Append to Display Value"
+msgstr "_Տեղադրել և հավելել էկրանի արժեքը"
+
+#: ../ui/main_frame.ui.h:7 ../ui/main_frame_hildon.ui.h:7
+msgid "_Preferences..."
+msgstr "_Նախընտրանքներ..."
+
+#: ../ui/main_frame.ui.h:8 ../ui/main_frame_hildon.ui.h:8
+msgid "_View"
+msgstr "_Տեսք"
+
+#: ../ui/main_frame.ui.h:9 ../ui/main_frame_hildon.ui.h:9
+msgid "_Basic Mode"
+msgstr "_Սովորական ռեժիմ"
+
+#: ../ui/main_frame.ui.h:10 ../ui/main_frame_hildon.ui.h:10
+msgid "_Scientific Mode"
+msgstr "_Գիտական ռեժիմ"
+
+#: ../ui/main_frame.ui.h:11
+msgid "_Paper Mode"
+msgstr "_Թղթային ռեժիմ"
+
+#: ../ui/main_frame.ui.h:12 ../ui/main_frame_hildon.ui.h:11 ../ui/prefs_gtk2.ui.h:40 ../ui/prefs_gtk3.ui.h:40
+#: ../ui/prefs-ume.ui.h:19
+msgid "Buttons"
+msgstr "Կոճակներ"
+
+#: ../ui/main_frame.ui.h:13 ../ui/main_frame_hildon.ui.h:12
+msgid "Display Control"
+msgstr "Ցուցադրել կառավարումը"
+
+#: ../ui/main_frame.ui.h:14 ../ui/main_frame_hildon.ui.h:13 ../ui/prefs_gtk2.ui.h:53 ../ui/prefs_gtk3.ui.h:53
+msgid "Functions"
+msgstr "Ֆունկցիաներ"
+
+#: ../ui/main_frame.ui.h:15 ../ui/main_frame_hildon.ui.h:14
+msgid "Logical"
+msgstr "Տրամաբանական"
+
+#: ../ui/main_frame.ui.h:16 ../ui/main_frame_hildon.ui.h:15
+msgid "Standard"
+msgstr "Ստանդարտ"
+
+#: ../ui/main_frame.ui.h:18 ../ui/main_frame_hildon.ui.h:17
 msgid "_Calculator"
 msgstr "_Հաշվիչ"
 
-#. Mode menu
-#: ../src/math-window.c:357
-msgid "_Mode"
-msgstr "_Ռեժիմ"
+#: ../ui/main_frame.ui.h:19 ../ui/main_frame_hildon.ui.h:18
+msgid "_Number bases"
+msgstr "_Թվերի հիմքերը"
 
-#. Help menu label
-#: ../src/math-window.c:359
+#: ../ui/main_frame.ui.h:20 ../ui/main_frame_hildon.ui.h:19
+msgid "_Decimal"
+msgstr "_Տասնորդական"
+
+#: ../ui/main_frame.ui.h:21 ../ui/main_frame_hildon.ui.h:20
+msgid "_Hexadecimal"
+msgstr "_Տասնվեցական"
+
+#: ../ui/main_frame.ui.h:22 ../ui/main_frame_hildon.ui.h:21
+msgid "_Octal"
+msgstr "Ութական"
+
+#: ../ui/main_frame.ui.h:23 ../ui/main_frame_hildon.ui.h:22
+msgid "_Binary"
+msgstr "_Երկուական"
+
+#: ../ui/main_frame.ui.h:24 ../ui/main_frame_hildon.ui.h:23
+msgid "Angle _units"
+msgstr "Անկյան _միավորներ"
+
+#: ../ui/main_frame.ui.h:25 ../ui/main_frame_hildon.ui.h:24
+msgid "D_egrees"
+msgstr "Աստիճաններ"
+
+#: ../ui/main_frame.ui.h:26 ../ui/main_frame_hildon.ui.h:25
+msgid "_Radians"
+msgstr "_Ռադիաններ"
+
+#: ../ui/main_frame.ui.h:27 ../ui/main_frame_hildon.ui.h:26
+msgid "_Gradians"
+msgstr "_Գրադիաններ"
+
+#: ../ui/main_frame.ui.h:28 ../ui/main_frame_hildon.ui.h:27
+msgid "Notation _modes"
+msgstr "Նշումային _ռեժիմները"
+
+#: ../ui/main_frame.ui.h:29 ../ui/main_frame_hildon.ui.h:28
+msgid "_Algebraic"
+msgstr "_Հանրահաշվական"
+
+#: ../ui/main_frame.ui.h:30 ../ui/main_frame_hildon.ui.h:29
+msgid "_Reverse Polish (RPN)"
+msgstr "_Հակադարձ լեհական (RPN)"
+
+#: ../ui/main_frame.ui.h:31 ../ui/main_frame_hildon.ui.h:30
+msgid "_Formula Entry"
+msgstr "_Բանաձևի մուտք"
+
+#: ../ui/main_frame.ui.h:32 ../ui/main_frame_hildon.ui.h:31
 msgid "_Help"
-msgstr "_Ձեռնարկ"
+msgstr "_Օգնություն"
 
-#. Basic menu label
-#: ../src/math-window.c:361
-msgid "_Basic"
-msgstr "Հ_իմնական"
+#: ../ui/main_frame_hildon.ui.h:2
+msgid "_Quit"
+msgstr "_Փակել"
 
-#. Advanced menu label
-#: ../src/math-window.c:363
-msgid "_Advanced"
-msgstr "_Ընդլայնված"
+#: ../ui/main_frame_hildon.ui.h:6
+msgid "_Paste As Display Value"
+msgstr "_Տեղադրել որպես էկրանի արժեք"
 
-#. Financial menu label
-#: ../src/math-window.c:365
-msgid "_Financial"
-msgstr "_Ֆինանսական"
+#: ../ui/main_frame_hildon.ui.h:32
+msgid "_About..."
+msgstr "_Մեր Մասին..."
 
-#. Programming menu label
-#: ../src/math-window.c:367
-msgid "_Programming"
-msgstr "_Ծրագրավորման"
+#: ../ui/prefs_gtk2.ui.h:1 ../ui/prefs_gtk3.ui.h:1
+msgid "Decimal"
+msgstr "Տասնորդական"
 
-#. Help>Contents menu label
-#: ../src/math-window.c:369
-msgid "_Contents"
-msgstr "_Բովանդակություն"
+#: ../ui/prefs_gtk2.ui.h:2 ../ui/prefs_gtk3.ui.h:2
+msgid "Hexadecimal"
+msgstr "Տասնվեցական"
 
-#. Translators: Error displayed when boolean AND attempted on non-integer values
-#: ../src/mp-binary.c:103
-msgid "Boolean AND is only defined for positive integers"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:3 ../ui/prefs_gtk3.ui.h:3
+msgid "Octal"
+msgstr "Ութական"
 
-#. Translators: Error displayed when boolean OR attempted on non-integer values
-#: ../src/mp-binary.c:116
-msgid "Boolean OR is only defined for positive integers"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:4 ../ui/prefs_gtk3.ui.h:4
+msgid "Binary"
+msgstr "Երկուական"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:129
-msgid "Boolean XOR is only defined for positive integers"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:5 ../ui/prefs_gtk3.ui.h:5 ../ui/prefs-ume.ui.h:1
+msgid "galculator - Preferences"
+msgstr "galculator - Նախընտրանքներ"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: ../src/mp-binary.c:144
-msgid "Boolean NOT is only defined for positive integers"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:6 ../ui/prefs_gtk3.ui.h:6 ../ui/prefs-ume.ui.h:2
+msgid "A dialog that is used to change preferences settings."
+msgstr "Երկխոսություն, որի օգնությամբ կարող եք փոխել նախընտրած կարգավորումները."
 
-#. Translators: Error displayed when bit shift attempted on non-integer values
-#: ../src/mp-binary.c:174
-msgid "Shift is only possible on integer values"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:7 ../ui/prefs_gtk3.ui.h:7 ../ui/prefs-ume.ui.h:3
+msgid "Closes the dialog."
+msgstr "Փակել երկխոսության պատուհանը"
 
-#. Translators: Error display when attempting to take argument of zero
-#: ../src/mp.c:149
-msgid "Argument not defined for zero"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:8 ../ui/prefs_gtk3.ui.h:8
+msgid "<b>Appearance</b>"
+msgstr "<b>Արտաքին տեսքը</b>"
 
-#. Translators: Error displayed attempted to divide by zero
-#: ../src/mp.c:636 ../src/mp.c:668 ../src/mp.c:1602
-msgid "Division by zero is undefined"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:9 ../ui/prefs_gtk3.ui.h:9 ../ui/prefs-ume.ui.h:5
+msgid "    "
+msgstr "    "
 
-#. Translators: Error displayed when attempting to take logarithm of zero
-#: ../src/mp.c:1273 ../src/mp.c:1310
-msgid "Logarithm of zero is undefined"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:10 ../ui/prefs_gtk3.ui.h:10
+msgid "Result font:"
+msgstr "Տառատեսակի արդյունքը՝"
 
-#. Translators: Error displayed when attempted to raise 0 to a negative exponent
-#: ../src/mp.c:1675 ../src/mp.c:1990
-msgid "The power of zero is undefined for a negative exponent"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:11 ../ui/prefs_gtk3.ui.h:11
+msgid "Inactive module color:"
+msgstr "Ոչ ակտիվ մոդուլի գույնը՝:"
 
-#: ../src/mp.c:1700
-msgid "Reciprocal of zero is undefined"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:12 ../ui/prefs_gtk3.ui.h:12
+msgid "Active module color:"
+msgstr "Ակտիվ մոդուլի գույնը՝"
 
-#: ../src/mp.c:1785
-msgid "Root must be non-zero"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:13 ../ui/prefs_gtk3.ui.h:13
+msgid "Result font color:"
+msgstr "Տառատեսակի գույնի արդյունքը՝"
 
-#: ../src/mp.c:1803
-msgid "Negative root of zero is undefined"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:14 ../ui/prefs_gtk3.ui.h:14
+msgid "Background color:"
+msgstr "Ֆոնի գույնը"
 
-#: ../src/mp.c:1809
-msgid "nth root of negative number is undefined for even n"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:15 ../ui/prefs_gtk3.ui.h:15
+msgid "Module font:"
+msgstr "Մոդուլի տառատեսակը՝"
 
-#. Translators: Error displayed when attempted take the factorial of a fractional number
-#: ../src/mp.c:1930
-msgid "Factorial is only defined for natural numbers"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:16 ../ui/prefs_gtk3.ui.h:16
+msgid "RPN stack font:"
+msgstr "RPN փաթեթի տառատեսակը՝"
 
-#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: ../src/mp.c:1950
-msgid "Modulus division is only defined for integers"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:17 ../ui/prefs_gtk3.ui.h:17
+msgid "RPN stack color:"
+msgstr "RPN փաթեթի գույնը՝"
 
-#. Translators: Error displayed when tangent value is undefined
-#: ../src/mp-trigonometric.c:311
-msgid ""
-"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:18 ../ui/prefs_gtk3.ui.h:18
+msgid "Pick a Display Background Color"
+msgstr "Ընտրեք էկրանի ֆոնի գույնը"
 
-#. Translators: Error displayed when inverse sine value is undefined
-#: ../src/mp-trigonometric.c:356
-msgid "Inverse sine is undefined for values outside [-1, 1]"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:19 ../ui/prefs_gtk3.ui.h:19
+msgid "Pick a Display Result Font Color"
+msgstr "Ընտրեք էկրանին տեքստի տառատեսակի գույնը"
 
-#. Translators: Error displayed when inverse cosine value is undefined
-#: ../src/mp-trigonometric.c:373
-msgid "Inverse cosine is undefined for values outside [-1, 1]"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:20 ../ui/prefs_gtk3.ui.h:20
+msgid "Pick a RPN Stack Color"
+msgstr "Ընտրեք RPN փաթեթի գույնը"
 
-#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: ../src/mp-trigonometric.c:591
-msgid ""
-"Inverse hyperbolic cosine is undefined for values less than or equal to one"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:21 ../ui/prefs_gtk3.ui.h:21
+msgid "Pick a Inactive Module Color"
+msgstr "Ընտրեք ոչ ակտիվ մոդուլի գույնը"
 
-#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: ../src/mp-trigonometric.c:615
-msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
-msgstr ""
+#: ../ui/prefs_gtk2.ui.h:22 ../ui/prefs_gtk3.ui.h:22
+msgid "Pick a Active Module Color"
+msgstr "Ընտրեք ակտիվ մոդուլի գույնը"
+
+#: ../ui/prefs_gtk2.ui.h:23 ../ui/prefs_gtk3.ui.h:23
+msgid "Pick a Result Font"
+msgstr "Ընտրեք արդյունքի տառատեսակը"
+
+#: ../ui/prefs_gtk2.ui.h:24 ../ui/prefs_gtk3.ui.h:24
+msgid "Pick a RPN Stack Font"
+msgstr "Ընտրեք RPN փաթեթի տառատեսակը"
+
+#: ../ui/prefs_gtk2.ui.h:25 ../ui/prefs_gtk3.ui.h:25
+msgid "Pick a Module Font"
+msgstr "Ընտրեք մոդուլի տառատեսակը"
+
+#: ../ui/prefs_gtk2.ui.h:26 ../ui/prefs_gtk3.ui.h:26 ../ui/prefs-ume.ui.h:4
+msgid "<b>Modules Visibility</b>"
+msgstr "<b>Մոդուլների տեսանելիություն</b>"
+
+#: ../ui/prefs_gtk2.ui.h:27 ../ui/prefs_gtk3.ui.h:27 ../ui/prefs-ume.ui.h:6
+msgid "Angle base units"
+msgstr "Անկյան հիմնական միավորները"
+
+#: ../ui/prefs_gtk2.ui.h:28 ../ui/prefs_gtk3.ui.h:28 ../ui/prefs-ume.ui.h:7
+msgid "Notation"
+msgstr "Նշում"
+
+#: ../ui/prefs_gtk2.ui.h:29 ../ui/prefs_gtk3.ui.h:29 ../ui/prefs-ume.ui.h:8
+msgid "Arithmetic operation"
+msgstr "Թվաբանական գործողություն"
+
+#: ../ui/prefs_gtk2.ui.h:30 ../ui/prefs_gtk3.ui.h:30 ../ui/prefs-ume.ui.h:9
+msgid "Open brackets"
+msgstr "Բացել փակագծերը"
+
+#: ../ui/prefs_gtk2.ui.h:31 ../ui/prefs_gtk3.ui.h:31 ../ui/prefs-ume.ui.h:10
+msgid "Number base units"
+msgstr "Թվի հիմնական միավորները"
+
+#: ../ui/prefs_gtk2.ui.h:32 ../ui/prefs_gtk3.ui.h:32 ../ui/prefs-ume.ui.h:11
+msgid "Display"
+msgstr "Էկրան"
+
+#: ../ui/prefs_gtk2.ui.h:33 ../ui/prefs_gtk3.ui.h:33 ../ui/prefs-ume.ui.h:12
+msgid "<b>Font</b>"
+msgstr "<b>Տառատեսակ</b>"
+
+#: ../ui/prefs_gtk2.ui.h:34 ../ui/prefs_gtk3.ui.h:34 ../ui/prefs-ume.ui.h:13
+msgid "Use custom button font"
+msgstr "Օգտագործել հատուկ տառատեսակ կոճակի համար"
+
+#: ../ui/prefs_gtk2.ui.h:35 ../ui/prefs_gtk3.ui.h:35 ../ui/prefs-ume.ui.h:14
+msgid "Button font:"
+msgstr "Կոճակի տառատեսակը՝"
+
+#: ../ui/prefs_gtk2.ui.h:36 ../ui/prefs_gtk3.ui.h:36 ../ui/prefs-ume.ui.h:15
+msgid "Pick a Button Font"
+msgstr "Ընտրեք կոճակի տառատեսակը՝"
+
+#: ../ui/prefs_gtk2.ui.h:37 ../ui/prefs_gtk3.ui.h:37 ../ui/prefs-ume.ui.h:16
+msgid "<b>Dimension</b>"
+msgstr "<b>Չափս</b>"
+
+#: ../ui/prefs_gtk2.ui.h:38 ../ui/prefs_gtk3.ui.h:38 ../ui/prefs-ume.ui.h:17
+msgid "Minimal button width:"
+msgstr "Կոճակի նվազագույն հաստություն՝"
+
+#: ../ui/prefs_gtk2.ui.h:39 ../ui/prefs_gtk3.ui.h:39 ../ui/prefs-ume.ui.h:18
+msgid "Minimal button height:"
+msgstr "Կոճակի նվազաֆույն բարձրություն"
+
+#: ../ui/prefs_gtk2.ui.h:41 ../ui/prefs_gtk3.ui.h:41
+msgid "<b>User defined constants:</b>"
+msgstr "<b>Օգտագործողի կողմից սահմանված հաստատուններ՝</b>"
+
+#: ../ui/prefs_gtk2.ui.h:42 ../ui/prefs_gtk3.ui.h:42
+msgid "Name:"
+msgstr "Անուն՝"
+
+#: ../ui/prefs_gtk2.ui.h:43 ../ui/prefs_gtk3.ui.h:43
+msgid "Value:"
+msgstr "Արժեք՝"
+
+#: ../ui/prefs_gtk2.ui.h:44 ../ui/prefs_gtk3.ui.h:44
+msgid "Description:"
+msgstr "Նկարագրություն՝"
+
+#: ../ui/prefs_gtk2.ui.h:45 ../ui/prefs_gtk3.ui.h:45
+msgid "Add"
+msgstr "Ավելացնել"
+
+#: ../ui/prefs_gtk2.ui.h:46 ../ui/prefs_gtk3.ui.h:46
+msgid "Update"
+msgstr "Թարմացնել"
+
+#: ../ui/prefs_gtk2.ui.h:47 ../ui/prefs_gtk3.ui.h:47
+msgid "Delete"
+msgstr "Ջնջել"
+
+#: ../ui/prefs_gtk2.ui.h:48 ../ui/prefs_gtk3.ui.h:48
+msgid "Clear"
+msgstr "Մաքրել"
+
+#: ../ui/prefs_gtk2.ui.h:49 ../ui/prefs_gtk3.ui.h:49 ../ui/scientific_buttons_gtk2.ui.h:21
+#: ../ui/scientific_buttons_gtk3.ui.h:21
+msgid "Constants"
+msgstr "Հաստատուններ"
+
+#: ../ui/prefs_gtk2.ui.h:50 ../ui/prefs_gtk3.ui.h:50
+msgid "<b>User defined functions:</b>"
+msgstr "<b>Օգտագործողի կողմից սահմանված ֆունկցիաներ՝</b>"
+
+#: ../ui/prefs_gtk2.ui.h:51 ../ui/prefs_gtk3.ui.h:51
+msgid "Variable:"
+msgstr "Փոփոխականներ՝"
+
+#: ../ui/prefs_gtk2.ui.h:52 ../ui/prefs_gtk3.ui.h:52
+msgid "Expression:"
+msgstr "Արտահայտություն՝"
+
+#: ../ui/prefs_gtk2.ui.h:54 ../ui/prefs_gtk3.ui.h:54 ../ui/prefs-ume.ui.h:20
+msgid "Configure number base: "
+msgstr "Կարգացորել թվի հիմքը՝ "
+
+#: ../ui/prefs_gtk2.ui.h:55 ../ui/prefs_gtk3.ui.h:55
+msgid "<b>Decimal Settings</b>"
+msgstr "<b>Տասնորդականի կարգավորումներ</b>"
+
+#: ../ui/prefs_gtk2.ui.h:56 ../ui/prefs_gtk3.ui.h:56
+msgid "Show thousands separator"
+msgstr "Ցուցադրել բաժանիչը հազարերոդականներով"
+
+#: ../ui/prefs_gtk2.ui.h:57 ../ui/prefs_gtk3.ui.h:57
+msgid "Separator character:"
+msgstr "Բաժանիչի նիշը՝"
+
+#: ../ui/prefs_gtk2.ui.h:58 ../ui/prefs_gtk3.ui.h:58
+msgid "Separator block length:"
+msgstr "Բաժանիչի մասնիկի երկարությունը"
+
+#: ../ui/prefs_gtk2.ui.h:59 ../ui/prefs_gtk3.ui.h:59
+msgid " "
+msgstr " "
+
+#: ../ui/prefs_gtk2.ui.h:60 ../ui/prefs_gtk3.ui.h:60
+msgid "<b>Hexadecimal Settings</b>"
+msgstr "<b>Տասնվեցականի կարգավորումներ</b>"
+
+#: ../ui/prefs_gtk2.ui.h:61 ../ui/prefs_gtk3.ui.h:61
+msgid "Signed"
+msgstr "Նշանակված"
+
+#: ../ui/prefs_gtk2.ui.h:62 ../ui/prefs_gtk3.ui.h:62
+msgid "Show separator"
+msgstr "Ցույց տալ բաժանիչը"
+
+#: ../ui/prefs_gtk2.ui.h:63 ../ui/prefs_gtk3.ui.h:63
+msgid "Number of bits: "
+msgstr "Բիթերի քանակը՝ "
+
+#: ../ui/prefs_gtk2.ui.h:64 ../ui/prefs_gtk3.ui.h:64
+msgid "<b>Octal Settings</b>"
+msgstr "<b>Ութականի կարգավորումներ</b>"
+
+#: ../ui/prefs_gtk2.ui.h:65 ../ui/prefs_gtk3.ui.h:65
+msgid "<b>Binary Settings</b>"
+msgstr "<b>Երկուականի կարգավորումներ</b>"
+
+#: ../ui/prefs_gtk2.ui.h:66 ../ui/prefs_gtk3.ui.h:66
+msgid "Fix length to a multiple of"
+msgstr "Ամրագրել երկարությունը բազմապատիկին"
+
+#: ../ui/prefs_gtk2.ui.h:67 ../ui/prefs_gtk3.ui.h:67 ../ui/prefs-ume.ui.h:21
+msgid "Numbers"
+msgstr "Թվեր"
+
+#: ../ui/prefs_gtk2.ui.h:68 ../ui/prefs_gtk3.ui.h:68 ../ui/prefs-ume.ui.h:22
+msgid "<b>RPN</b>"
+msgstr "<b>RPN</b>"
+
+#: ../ui/prefs_gtk2.ui.h:69 ../ui/prefs_gtk3.ui.h:69 ../ui/prefs-ume.ui.h:23
+msgid "finite stack size (x, y, z, t)"
+msgstr "Վերջավոր արժեքի չափսը (x, y, z, t)"
+
+#: ../ui/prefs_gtk2.ui.h:70 ../ui/prefs_gtk3.ui.h:70 ../ui/prefs-ume.ui.h:24
+msgid "infinite stack size"
+msgstr "անվերջ արժեքի չափսը"
+
+#: ../ui/prefs_gtk2.ui.h:71 ../ui/prefs_gtk3.ui.h:71 ../ui/prefs-ume.ui.h:25
+msgid "<b>Startup</b>"
+msgstr "<b>Մեկնարկ</b>"
+
+#: ../ui/prefs_gtk2.ui.h:72 ../ui/prefs_gtk3.ui.h:72 ../ui/prefs-ume.ui.h:26
+msgid "Remember display value on exit"
+msgstr "Հիշել էկրանի արժեքը ելքում"
+
+#: ../ui/prefs_gtk2.ui.h:73 ../ui/prefs_gtk3.ui.h:73
+msgid "<b>Visibility</b>"
+msgstr "<b>Տեսանելիություն</b>"
+
+#: ../ui/prefs_gtk2.ui.h:74 ../ui/prefs_gtk3.ui.h:74
+msgid "Show menu bar"
+msgstr "Ցուցադրել ընտրացանկը"
+
+#: ../ui/prefs_gtk2.ui.h:75 ../ui/prefs_gtk3.ui.h:75 ../ui/prefs-ume.ui.h:27
+msgid "General"
+msgstr "Գլխավոր"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:1 ../ui/scientific_buttons_gtk3.ui.h:1
+msgid "tan"
+msgstr "tan"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:2 ../ui/scientific_buttons_gtk3.ui.h:2
+msgid "Tangent"
+msgstr "Տանգենս"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:3 ../ui/scientific_buttons_gtk3.ui.h:3
+msgid "ln"
+msgstr "ln"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:4 ../ui/scientific_buttons_gtk3.ui.h:4
+msgid "Natural logarithm (base: e)"
+msgstr "Բնական լոգարիթմ (base: e)"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:7 ../ui/scientific_buttons_gtk3.ui.h:7
+msgid "n!"
+msgstr "n!"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:8 ../ui/scientific_buttons_gtk3.ui.h:8
+msgid "Factorial"
+msgstr "Ֆակտորիալ"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:9 ../ui/scientific_buttons_gtk3.ui.h:9
+msgid "EE"
+msgstr "EE"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:10 ../ui/scientific_buttons_gtk3.ui.h:10
+msgid "Enter exponent (base: 10)"
+msgstr "Էքսպոնենտի մուտք (base: 10)"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:11 ../ui/scientific_buttons_gtk3.ui.h:11
+msgid "cos"
+msgstr "cos"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:12 ../ui/scientific_buttons_gtk3.ui.h:12
+msgid "Cosine"
+msgstr "Կոսինուս"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:13 ../ui/scientific_buttons_gtk3.ui.h:13
+msgid "log"
+msgstr "log"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:14 ../ui/scientific_buttons_gtk3.ui.h:14
+msgid "Logarithm (base: 10)"
+msgstr "Լոգարիթմ (base: 10)"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:15 ../ui/scientific_buttons_gtk3.ui.h:15
+msgid "x^2"
+msgstr "x^2"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:16 ../ui/scientific_buttons_gtk3.ui.h:16
+msgid "Square"
+msgstr "Քառակուսի"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:19 ../ui/scientific_buttons_gtk3.ui.h:19
+msgid "User defined functions"
+msgstr "Օգտագործողի կողմից սահմանված ֆունկցիաներ"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:20 ../ui/scientific_buttons_gtk3.ui.h:20
+msgid "fun"
+msgstr "fun"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:22 ../ui/scientific_buttons_gtk3.ui.h:22
+msgid "con"
+msgstr "con"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:26 ../ui/scientific_buttons_gtk3.ui.h:26
+msgid "inv"
+msgstr "inv"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:27 ../ui/scientific_buttons_gtk3.ui.h:27
+msgid "Inverse mode"
+msgstr "Հակադարձ ռեժիմ"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:28 ../ui/scientific_buttons_gtk3.ui.h:28
+msgid "hyp"
+msgstr "hyp"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:29 ../ui/scientific_buttons_gtk3.ui.h:29
+msgid "Hyperbolic mode"
+msgstr "Հիպերբոլիկ ռեժիմ"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:30 ../ui/scientific_buttons_gtk3.ui.h:30
+msgid "sin"
+msgstr "sin"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:31 ../ui/scientific_buttons_gtk3.ui.h:31
+msgid "Sine"
+msgstr "Սինուս"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:32 ../ui/scientific_buttons_gtk3.ui.h:32
+msgid "AND"
+msgstr "AND"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:33 ../ui/scientific_buttons_gtk3.ui.h:33
+msgid "Logical AND"
+msgstr "Տրամաբանական և"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:34 ../ui/scientific_buttons_gtk3.ui.h:34
+msgid "OR"
+msgstr "OR"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:35 ../ui/scientific_buttons_gtk3.ui.h:35
+msgid "Logical OR"
+msgstr "Տրամաբանական կամ"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:36 ../ui/scientific_buttons_gtk3.ui.h:36
+msgid "XOR"
+msgstr "XOR"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:37 ../ui/scientific_buttons_gtk3.ui.h:37
+msgid "Logical XOR"
+msgstr "Տրամաբանական բացառիկ OR "
+
+#: ../ui/scientific_buttons_gtk2.ui.h:38 ../ui/scientific_buttons_gtk3.ui.h:38
+msgid "CMP"
+msgstr "CMP"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:39 ../ui/scientific_buttons_gtk3.ui.h:39
+msgid "Bitwise complement"
+msgstr "Զույգ երկուականի լրացում"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:41 ../ui/scientific_buttons_gtk3.ui.h:41
+msgid "Hexadecimal 0xC"
+msgstr "Տասնվեցական 0xC"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:42 ../ui/scientific_buttons_gtk3.ui.h:42
+msgid "D"
+msgstr "D"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:43 ../ui/scientific_buttons_gtk3.ui.h:43
+msgid "Hexadecimal 0xD"
+msgstr "Տասնվեցական 0xD"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:44 ../ui/scientific_buttons_gtk3.ui.h:44
+msgid "E"
+msgstr "E"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:45 ../ui/scientific_buttons_gtk3.ui.h:45
+msgid "Hexadecimal 0xE"
+msgstr "Hexadecimal 0xE"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:46 ../ui/scientific_buttons_gtk3.ui.h:46
+msgid "F"
+msgstr "F"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:47 ../ui/scientific_buttons_gtk3.ui.h:47
+msgid "Hexadecimal 0xF"
+msgstr "Տասնվեցական 0xF"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:48 ../ui/scientific_buttons_gtk3.ui.h:48
+msgid "B"
+msgstr "B"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:49 ../ui/scientific_buttons_gtk3.ui.h:49
+msgid "Hexadecimal 0xB"
+msgstr "Տասնվեցական 0xB"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:50 ../ui/scientific_buttons_gtk3.ui.h:50
+msgid "A"
+msgstr "A"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:51 ../ui/scientific_buttons_gtk3.ui.h:51
+msgid "Hexadecimal 0xA"
+msgstr "Տասնվեցական 0xA"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:60 ../ui/scientific_buttons_gtk3.ui.h:60
+msgid "MOD"
+msgstr "MOD"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:61 ../ui/scientific_buttons_gtk3.ui.h:61
+msgid "Modulus"
+msgstr "Մոդուլներ"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:74 ../ui/scientific_buttons_gtk3.ui.h:74
+msgid "LSH"
+msgstr "LSH"
+
+#: ../ui/scientific_buttons_gtk2.ui.h:75 ../ui/scientific_buttons_gtk3.ui.h:75
+msgid "Left shift"
+msgstr "Ձախ փոխարկում"
