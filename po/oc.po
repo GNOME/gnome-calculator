@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2021-12-09 20:39+0000\n"
+"POT-Creation-Date: 2022-01-18 18:04+0000\n"
 "PO-Revision-Date: 2021-11-21 20:44+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-DamnedLies-Scope: partial\n"
 "X-Generator: Poedit 3.0\n"
 "X-Project-Style: gnome\n"
 
@@ -168,12 +169,6 @@ msgstr "L'unitat d'angle d'utilizar"
 msgid "Currency update interval"
 msgstr "Interval de mesa a jorn de la devisa"
 
-#: data/org.gnome.calculator.gschema.xml:63
-msgid ""
-"How often the currency exchange rates should be updated. A value of 0 means "
-"the currency exchange rates won't be fetched from the network at all."
-msgstr ""
-
 #: data/org.gnome.calculator.gschema.xml:67
 msgid "Button mode"
 msgstr "Mòde dels botons"
@@ -225,10 +220,6 @@ msgstr "Precision intèrna utilizada per la bibliotèca MPFR"
 #: data/org.gnome.calculator.gschema.xml:97
 msgid "Window position"
 msgstr "Posicion de la fenèstra"
-
-#: data/org.gnome.calculator.gschema.xml:98
-msgid "Window position (x and y) of the last closed window."
-msgstr ""
 
 #: lib/currency.vala:55
 msgid "UAE Dirham"
@@ -695,7 +686,7 @@ msgstr "Volum"
 
 #: lib/unit.vala:34
 msgid "Mass"
-msgstr ""
+msgstr "Massa"
 
 #: lib/unit.vala:35
 msgid "Duration"
@@ -2247,9 +2238,529 @@ msgstr "Copiar"
 msgid "Copy result to clipboard"
 msgstr "Copiar lo resultat al quichapapièrs"
 
-#: src/ui/buttons-advanced.ui:844
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
+#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+msgid "Modulus divide"
+msgstr "Modulo de division"
+
+#: src/ui/buttons-advanced.ui:139 src/ui/buttons-basic.ui:145
+#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1269
+msgid "Divide [/]"
+msgstr "Division [/]"
+
+#: src/ui/buttons-advanced.ui:235 src/ui/buttons-basic.ui:247
+#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1286
+msgid "Multiply [*]"
+msgstr "Multiplicacion [*]"
+
+#: src/ui/buttons-advanced.ui:252 src/ui/buttons-basic.ui:265
+#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1303
+msgid "Subtract [-]"
+msgstr "Sostraccion [-]"
+
+#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:282
+#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1319
+msgid "Add [+]"
+msgstr "Addicion [+]"
+
+#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:299
+#: src/ui/buttons-programming.ui:1247
+msgid "Pi [Ctrl+P]"
+msgstr "Nombre pi [Ctrl+P]"
+
+#: src/ui/buttons-advanced.ui:307 src/ui/buttons-basic.ui:323
+#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1231
+msgid "Root [Ctrl+R]"
+msgstr "Raiç [Ctrl+R]"
+
+#: src/ui/buttons-advanced.ui:322 src/ui/buttons-basic.ui:339
+msgid "Square [Ctrl+2]"
+msgstr "Carrat [Ctrl+2]"
+
+#: src/ui/buttons-advanced.ui:343 src/ui/buttons-basic.ui:361
+#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1352
+msgid "Clear Display [Escape]"
+msgstr "Escafa l'afichatge [Escap]"
+
+#: src/ui/buttons-advanced.ui:359 src/ui/buttons-basic.ui:378
+#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1665
+msgid "Start Group [(]"
+msgstr "Començament de gropament [(]"
+
+#: src/ui/buttons-advanced.ui:376 src/ui/buttons-basic.ui:396
+#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1681
+msgid "End Group [)]"
+msgstr "Fin de gropament [)]"
+
+#: src/ui/buttons-advanced.ui:393 src/ui/buttons-basic.ui:414
+#: src/ui/buttons-financial.ui:1519
+msgid "Percentage [%]"
+msgstr "Percentatge [%]"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
+#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
+#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
+msgid "Calculate Result"
+msgstr "Calcula lo resultat"
+
+#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Mòde indici [Alt]"
+
+#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Mòde exponent [Ctrl]"
+
+# Décomposer as per description below
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
+msgid "Factorize [Ctrl+F]"
+msgstr "Factorizar[Ctrl+F]"
+
+#: src/ui/buttons-advanced.ui:498
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "Exponent scientific [Ctrl+E]"
+
+#: src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Cosinus"
+
+#: src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Sinus"
+
+#: src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Tangenta"
+
+#: src/ui/buttons-advanced.ui:567
+msgid "Hyperbolic Cosine"
+msgstr "Cosinus iperbolic"
+
+#: src/ui/buttons-advanced.ui:583
+msgid "Hyperbolic Sine"
+msgstr "Sinus iperbolic"
+
+#: src/ui/buttons-advanced.ui:599
+msgid "Hyperbolic Tangent"
+msgstr "Tangenta iperbolica"
+
+#: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
+#: src/ui/buttons-programming.ui:1877
+msgid "Exponent [^ or **]"
+msgstr "Exponent [^ o **]"
+
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
+msgid "Inverse [Ctrl+I]"
+msgstr "Invèrse [Ctrl+I]"
+
+#: src/ui/buttons-advanced.ui:658
+msgid "Euler’s Number"
+msgstr "Nombre d'Euler"
+
+#: src/ui/buttons-advanced.ui:681
+msgid "Natural Logarithm"
+msgstr "Logaritme neperian (basa e)"
+
+#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
+#: src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Logaritme decimal"
+
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
+msgid "Factorial [!]"
+msgstr "Factoriala [!]"
+
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
+msgid "Absolute Value [|]"
+msgstr "Valor absoluda [|]"
+
+#: src/ui/buttons-advanced.ui:778
+msgid "Real Component"
+msgstr "Partida reala"
+
+#: src/ui/buttons-advanced.ui:795
+msgid "Imaginary Component"
+msgstr "Partida imaginària"
+
+#: src/ui/buttons-advanced.ui:812
+msgid "Complex conjugate"
+msgstr "Complèxe conjugat"
+
+#: src/ui/buttons-advanced.ui:829
+msgid "Complex argument"
+msgstr "Argument complèxe"
+
+#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Memòria"
+
+#. The label on the memory button
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-programming.ui:2062
+msgid "x"
+msgstr "x"
+
+#: src/ui/buttons-advanced.ui:859
+msgid "Additional Functions"
+msgstr "Foncions suplementàrias"
+
+#. Title of Compounding Term dialog
+#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
+msgid "Compounding Term"
+msgstr "Durada de capitalizacion"
+
+#. Compounding Term Dialog: Label before present value input
+#. Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.ui:55 src/ui/buttons-financial.ui:727
+msgid "Present _Value:"
+msgstr "_Valor actuala :"
+
+#. Compounding Term Dialog: Label before periodic interest rate input
+#. Future Value Dialog: Label before periodic interest rate input
+#. Periodic Payment Dialog: Label before periodic interest rate input
+#. Present Value Dialog: Label before periodic interest rate input
+#. Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.ui:67 src/ui/buttons-financial.ui:282
+#: src/ui/buttons-financial.ui:493 src/ui/buttons-financial.ui:610
+#: src/ui/buttons-financial.ui:1106
+msgid "Periodic Interest _Rate:"
+msgstr "Taus d'interès _periodic :"
+
+#. Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:80
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Calcula lo nombre de periòdes de composicion necessaris per porter un "
+"investiment d'una valor de despart a una valor donada a tèrme compte tengut "
+"d'un taus d'interès fixe per periòde de composicion."
+
+#. Compounding Term Dialog: Label before future value input
+#. Periodic Interest Rate Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:91 src/ui/buttons-financial.ui:715
+msgid "_Future Value:"
+msgstr "V_alor a tèrme :"
+
+#: src/ui/buttons-financial.ui:110 src/ui/buttons-financial.ui:227
+#: src/ui/buttons-financial.ui:343 src/ui/buttons-financial.ui:437
+#: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
+#: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
+#: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
+#: src/ui/buttons-programming.ui:2139
+msgid "_Cancel"
+msgstr "A_nullar"
+
+#. Compounding Term Dialog: Calculate button
+#. Double-Declining Depreciation Dialog: Calculate button
+#. Future Value Dialog: Calculate button
+#. Gross Profit Margin Dialog: Calculate button
+#. Periodic Payment Dialog: Calculate button
+#. Present Value Dialog: Calculate button
+#. Periodic Interest Rate Dialog: Calculate button
+#. Straight-Line Depreciation Dialog: Calculate button
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
+#. Payment Period Dialog: Button to calculate result
+#: src/ui/buttons-financial.ui:116 src/ui/buttons-financial.ui:233
+#: src/ui/buttons-financial.ui:349 src/ui/buttons-financial.ui:443
+#: src/ui/buttons-financial.ui:560 src/ui/buttons-financial.ui:677
+#: src/ui/buttons-financial.ui:794 src/ui/buttons-financial.ui:911
+#: src/ui/buttons-financial.ui:1050 src/ui/buttons-financial.ui:1167
+msgid "C_alculate"
+msgstr "C_alcular"
+
+#. Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.ui:122
+msgid "Double-Declining Depreciation"
+msgstr "Amortiment degressiu de taus doble"
+
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:143
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"Calcula la dotacion als amortiments per un actiu sus un periòde donat de "
+"temps amb lo metòde d'amortiment degressiu de taus doble."
+
+#. Double-Declining Depreciation Dialog: Label before cost input
+#. Gross Profit Margin Dialog: Label before cost input
+#: src/ui/buttons-financial.ui:154 src/ui/buttons-financial.ui:386
+msgid "C_ost:"
+msgstr "Cò_st :"
+
+#. Double-Declining Depreciation Dialog: Label before life input
+#. Straight-Line Depreciation Dialog: Label before life input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.ui:166 src/ui/buttons-financial.ui:844
+#: src/ui/buttons-financial.ui:949
+msgid "_Life:"
+msgstr "_Durada de vida :"
+
+#. Double-Declining Depreciation Dialog: Label before period input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.ui:198 src/ui/buttons-financial.ui:937
+msgid "_Period:"
+msgstr "_Periòde :"
+
+#. Title of Future Value dialog
+#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:1651
+msgid "Future Value"
+msgstr "Valor futura"
+
+#. Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:259
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Calcula la valor a venir d'un placement, constitué per una seria de "
+"versaments egals remunerats de taus d'interès fixe per periòde pendent lo "
+"nombre de periòdes previstes per lo menar a tèrme."
+
+#. Future Value Dialog: Label before periodic payment input
+#. Present Value Dialog: Label before periodic payment input
+#. Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.ui:270 src/ui/buttons-financial.ui:598
+#: src/ui/buttons-financial.ui:1130
+msgid "_Periodic Payment:"
+msgstr "_Pagament periodic :"
+
+#. Future Value Dialog: Label before number of periods input
+#. Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.ui:294 src/ui/buttons-financial.ui:622
+msgid "_Number of Periods:"
+msgstr "_Nombre d'escasenças :"
+
+#. Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.ui:355 src/ui/buttons-financial.ui:1769
+msgid "Gross Profit Margin"
+msgstr "Marge brut"
+
+#. Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:375
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Calcula lo prètz de venda d'un produit compte tengut del còst de produccion "
+"e de lo marge brut volgut."
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.ui:398
+msgid "_Margin:"
+msgstr "_Marge :"
+
+#. Title of Periodic Payment dialog
+#: src/ui/buttons-financial.ui:449 src/ui/buttons-financial.ui:1752
+msgid "Periodic Payment"
+msgstr "Pagament periodic"
+
+#. Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:470
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
+msgstr ""
+"Calcula lo montant del versement périodique per lo remborsament d'un emprunt "
+"dins lo qual los pagaments son efectuats a tèrme échu. "
+
+#. Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.ui:481
+msgid "_Principal:"
+msgstr "_Principal :"
+
+#. Periodic Payment Dialog: Label before term input
+#. Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.ui:505 src/ui/buttons-financial.ui:739
+msgid "_Term:"
+msgstr "_Durada :"
+
+#. Title of Present Value dialog
+#: src/ui/buttons-financial.ui:566 src/ui/buttons-financial.ui:1735
+msgid "Present Value"
+msgstr "Valor actuala"
+
+#. Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:587
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
+"Calcula la valor iniciala d'un investiment fondat sus una seria de pagaments "
+"egals escomptats amb un taus d'interès periodic donat compte tengut del "
+"nombre de periòdes de versament fins a son tèrme. "
+
+#. Title of Periodic Interest Rate dialog
+#: src/ui/buttons-financial.ui:683 src/ui/buttons-financial.ui:1718
+msgid "Periodic Interest Rate"
+msgstr "Taus d'interès periodic"
+
+#. Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:704
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
+"Calcula lo taus d'interès per periòde necessari per portar un investiment a "
+"una valor donada a tèrme compte tengut del nombre de periòdes de "
+"composicion. "
+
+#. Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.ui:800
+msgid "Straight-Line Depreciation"
+msgstr "Amortiment linear"
+
+#. Straight-Line Depreciation Dialog: Label before cost input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:973
+msgid "_Cost:"
+msgstr "_Còst :"
+
+#. Straight-Line Depreciation Dialog: Label before salvage input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.ui:832 src/ui/buttons-financial.ui:961
+msgid "_Salvage:"
+msgstr "_Valor residuala :"
+
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:887
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+"Calcula l'amortiment linear d'un actiu sus un periòde donat. Aqueste metòde "
+"repartís la valor d'amortiment d'un biais unifòrme sus la durada de vida "
+"utila de l'actiu. La vida utila correspond al nombre de periòdes, "
+"generalament annadièras, suls quals l'actiu es amortit. "
+
+#. Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.ui:917
+#, fuzzy
+#| msgid "Sum-of-the-Years'-Digits Depreciation"
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "Amortiment Softy"
+
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:1026
+#, fuzzy
+#| msgid ""
+#| "Calculates the depreciation allowance on an asset for a specified period "
+#| "of time, using the Sum-of-the-Years'-Digits method. This method of "
+#| "depreciation accelerates the rate of depreciation, so that more "
+#| "depreciation expense occurs in earlier periods than in later ones. The "
+#| "useful life is the number of periods, typically years, over which an "
+#| "asset is depreciated. "
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
+msgstr ""
+"Calcula la dotacion als amortiments per un actiu sus un periòde donat de "
+"temps amb lo metòde Softy. Aqueste metòde accelèra lo taus d'amortiment : "
+"las dotacions son mai elevadas en començament de periòde qu'en fin. La "
+"durada de vida representa lo nombre de periòdes, generalament annadièras, "
+"suls quals l'actiu es amortit. "
+
+#. Title of Payment Period dialog
+#: src/ui/buttons-financial.ui:1056
+msgid "Payment Period"
+msgstr "Periòde de pagament"
+
+#. Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:1118
+msgid "Future _Value:"
+msgstr "_Valor futura :"
+
+#. Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:1143
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Calcula lo nombre d'escasenças necessàrias sus una durada de rente "
+"ordinaire, per acumular un capital a tèrme, a un taus d'interès periodic "
+"donat."
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.ui:1616
+msgid "Ctrm"
+msgstr "Durada"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1632
+msgid "Ddb"
+msgstr "Amort. DD"
+
+#: src/ui/buttons-financial.ui:1635
+msgid "Double Declining Depreciation"
+msgstr "Amortiment degressiu de taus doble"
+
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.ui:1648
+msgid "Fv"
+msgstr "VF"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: src/ui/buttons-financial.ui:1664
+msgid "Term"
+msgstr "Escasenças"
+
+#: src/ui/buttons-financial.ui:1667
+msgid "Financial Term"
+msgstr "Valor a tèrme"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1681
+msgid "Syd"
+msgstr "Amort.Softy"
+
+#: src/ui/buttons-financial.ui:1684
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Amortiment softy"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1698
+msgid "Sln"
+msgstr "Amort.L"
+
+#: src/ui/buttons-financial.ui:1701
+msgid "Straight Line Depreciation"
+msgstr "Amortiment linear"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.ui:1715
+msgid "Rate"
+msgstr "Taus"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.ui:1732
+msgid "Pv"
+msgstr "VA"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.ui:1749
+msgid "Pmt"
+msgstr "Annuitat"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.ui:1766
+msgid "Gpm"
+msgstr "Marge"
 
 #: src/ui/buttons-programming.ui:16
 msgid "Binary"
@@ -2266,6 +2777,75 @@ msgstr "Decimal"
 #: src/ui/buttons-programming.ui:19
 msgid "Hexadecimal"
 msgstr "Exadecimal"
+
+#: src/ui/buttons-programming.ui:1751
+msgid "Shift Left"
+msgstr "Maj. esquèrra"
+
+#: src/ui/buttons-programming.ui:1764
+msgid "Shift Right"
+msgstr "Maj. dreita"
+
+#: src/ui/buttons-programming.ui:1778
+msgid "Boolean Exclusive OR"
+msgstr "OR (O) exclusiu boolean"
+
+#: src/ui/buttons-programming.ui:1794
+msgid "Boolean OR"
+msgstr "OR (O) boolean"
+
+#: src/ui/buttons-programming.ui:1811
+msgid "Boolean AND"
+msgstr "AND (E) boolean"
+
+#: src/ui/buttons-programming.ui:1828
+msgid "Boolean NOT"
+msgstr "NOT (NON) boolean"
+
+#: src/ui/buttons-programming.ui:1845
+#, fuzzy
+#| msgid "Ones' Complement"
+msgid "Ones’ Complement"
+msgstr "Complement a un"
+
+#: src/ui/buttons-programming.ui:1862
+#, fuzzy
+#| msgid "Two's Complement"
+msgid "Two’s Complement"
+msgstr "Complement a dos"
+
+#: src/ui/buttons-programming.ui:1938
+#, fuzzy
+#| msgid "Natural Logarithm"
+msgid "Binary Logarithm"
+msgstr "Logaritme neperian (basa e)"
+
+#: src/ui/buttons-programming.ui:1998
+msgid "Integer Component"
+msgstr "Partida entièra"
+
+#: src/ui/buttons-programming.ui:2015
+msgid "Fractional Component"
+msgstr "Partida fraccionària"
+
+#. Title of insert character code dialog
+#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
+msgid "Insert Character Code"
+msgstr "Insercion d'un còdi de caractèr"
+
+#: src/ui/buttons-programming.ui:2078
+msgid "Change word size"
+msgstr "Modificar la talha de mot"
+
+#. Insert ASCII dialog: Label before character entry
+#: src/ui/buttons-programming.ui:2115
+msgid "Ch_aracter:"
+msgstr "_Caractèr :"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: src/ui/buttons-programming.ui:2145
+msgid "_Insert"
+msgstr "_Inserir"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
 #: src/gnome-calculator.vala:24
@@ -2671,421 +3251,38 @@ msgstr "Menú principal"
 msgid "_Quit"
 msgstr "_Quitar"
 
-#~ msgid "Modulus divide"
-#~ msgstr "Modulo de division"
-
-#~ msgid "Divide [/]"
-#~ msgstr "Division [/]"
-
-#~ msgid "Multiply [*]"
-#~ msgstr "Multiplicacion [*]"
-
-#~ msgid "Subtract [-]"
-#~ msgstr "Sostraccion [-]"
-
-#~ msgid "Add [+]"
-#~ msgstr "Addicion [+]"
-
-#~ msgid "Pi [Ctrl+P]"
-#~ msgstr "Nombre pi [Ctrl+P]"
-
-#~ msgid "Root [Ctrl+R]"
-#~ msgstr "Raiç [Ctrl+R]"
-
-#~ msgid "Square [Ctrl+2]"
-#~ msgstr "Carrat [Ctrl+2]"
-
 #~ msgid "Exponent"
 #~ msgstr "Exponent"
-
-#~ msgid "Clear Display [Escape]"
-#~ msgstr "Escafa l'afichatge [Escap]"
-
-#~ msgid "Start Group [(]"
-#~ msgstr "Començament de gropament [(]"
-
-#~ msgid "End Group [)]"
-#~ msgstr "Fin de gropament [)]"
-
-#~ msgid "Percentage [%]"
-#~ msgstr "Percentatge [%]"
-
-#~ msgid "="
-#~ msgstr "="
-
-#~ msgid "Calculate Result"
-#~ msgstr "Calcula lo resultat"
-
-#~ msgid "Subscript mode [Alt]"
-#~ msgstr "Mòde indici [Alt]"
 
 #~ msgid "Subscript"
 #~ msgstr "Indici"
 
-#~ msgid "Superscript mode [Ctrl]"
-#~ msgstr "Mòde exponent [Ctrl]"
-
 #~ msgid "Superscript"
 #~ msgstr "Exponent"
-
-# Décomposer as per description below
-#~ msgid "Factorize [Ctrl+F]"
-#~ msgstr "Factorizar[Ctrl+F]"
 
 #~ msgid "Factorize"
 #~ msgstr "Factorizar"
 
-#~ msgid "Scientific exponent [Ctrl+E]"
-#~ msgstr "Exponent scientific [Ctrl+E]"
-
 #~ msgid "Scientific Exponent"
 #~ msgstr "Exponent scientific"
-
-#~ msgid "Cosine"
-#~ msgstr "Cosinus"
-
-#~ msgid "Sine"
-#~ msgstr "Sinus"
-
-#~ msgid "Tangent"
-#~ msgstr "Tangenta"
-
-#~ msgid "Hyperbolic Cosine"
-#~ msgstr "Cosinus iperbolic"
-
-#~ msgid "Hyperbolic Sine"
-#~ msgstr "Sinus iperbolic"
-
-#~ msgid "Hyperbolic Tangent"
-#~ msgstr "Tangenta iperbolica"
-
-#~ msgid "Exponent [^ or **]"
-#~ msgstr "Exponent [^ o **]"
-
-#~ msgid "Inverse [Ctrl+I]"
-#~ msgstr "Invèrse [Ctrl+I]"
 
 #~ msgid "Inverse"
 #~ msgstr "Invèrse"
 
-#~ msgid "Euler’s Number"
-#~ msgstr "Nombre d'Euler"
-
-#~ msgid "Natural Logarithm"
-#~ msgstr "Logaritme neperian (basa e)"
-
-#~ msgid "Logarithm"
-#~ msgstr "Logaritme decimal"
-
-#~ msgid "Factorial [!]"
-#~ msgstr "Factoriala [!]"
-
 #~ msgid "Factorial"
 #~ msgstr "Factoriala"
-
-#~ msgid "Absolute Value [|]"
-#~ msgstr "Valor absoluda [|]"
 
 #~ msgid "Absolute Value"
 #~ msgstr "Valor absoluda"
 
-#~ msgid "Real Component"
-#~ msgstr "Partida reala"
-
-#~ msgid "Imaginary Component"
-#~ msgstr "Partida imaginària"
-
-#~ msgid "Complex conjugate"
-#~ msgstr "Complèxe conjugat"
-
-#~ msgid "Complex argument"
-#~ msgstr "Argument complèxe"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "Additional Functions"
-#~ msgstr "Foncions suplementàrias"
-
 #~ msgid "Store"
 #~ msgstr "Emmagazinar"
-
-#~ msgid "Compounding Term"
-#~ msgstr "Durada de capitalizacion"
-
-#~ msgid "_Cancel"
-#~ msgstr "A_nullar"
-
-#~ msgid "C_alculate"
-#~ msgstr "C_alcular"
-
-#~ msgid "Present _Value:"
-#~ msgstr "_Valor actuala :"
-
-#~ msgid "Periodic Interest _Rate:"
-#~ msgstr "Taus d'interès _periodic :"
-
-#~ msgid ""
-#~ "Calculates the number of compounding periods necessary to increase an "
-#~ "investment of present value to a future value, at a fixed interest rate "
-#~ "per compounding period."
-#~ msgstr ""
-#~ "Calcula lo nombre de periòdes de composicion necessaris per porter un "
-#~ "investiment d'una valor de despart a una valor donada a tèrme compte "
-#~ "tengut d'un taus d'interès fixe per periòde de composicion."
-
-#~ msgid "_Future Value:"
-#~ msgstr "V_alor a tèrme :"
-
-#~ msgid "Double-Declining Depreciation"
-#~ msgstr "Amortiment degressiu de taus doble"
-
-#~ msgid ""
-#~ "Calculates the depreciation allowance on an asset for a specified period "
-#~ "of time, using the double-declining balance method."
-#~ msgstr ""
-#~ "Calcula la dotacion als amortiments per un actiu sus un periòde donat de "
-#~ "temps amb lo metòde d'amortiment degressiu de taus doble."
-
-#~ msgid "C_ost:"
-#~ msgstr "Cò_st :"
-
-#~ msgid "_Life:"
-#~ msgstr "_Durada de vida :"
-
-#~ msgid "_Period:"
-#~ msgstr "_Periòde :"
-
-#~ msgid "Future Value"
-#~ msgstr "Valor futura"
-
-#~ msgid ""
-#~ "Calculates the future value of an investment based on a series of equal "
-#~ "payments at a periodic interest rate over the number of payment periods "
-#~ "in the term."
-#~ msgstr ""
-#~ "Calcula la valor a venir d'un placement, constitué per una seria de "
-#~ "versaments egals remunerats de taus d'interès fixe per periòde pendent lo "
-#~ "nombre de periòdes previstes per lo menar a tèrme."
-
-#~ msgid "_Periodic Payment:"
-#~ msgstr "_Pagament periodic :"
-
-#~ msgid "_Number of Periods:"
-#~ msgstr "_Nombre d'escasenças :"
-
-#~ msgid "Gross Profit Margin"
-#~ msgstr "Marge brut"
-
-#~ msgid ""
-#~ "Calculates the resale price of a product, based on the product cost and "
-#~ "the wanted gross profit margin."
-#~ msgstr ""
-#~ "Calcula lo prètz de venda d'un produit compte tengut del còst de "
-#~ "produccion e de lo marge brut volgut."
-
-#~ msgid "_Margin:"
-#~ msgstr "_Marge :"
-
-#~ msgid "Periodic Payment"
-#~ msgstr "Pagament periodic"
-
-#~ msgid ""
-#~ "Calculates the amount of the periodic payment of a loan, where payments "
-#~ "are made at the end of each payment period. "
-#~ msgstr ""
-#~ "Calcula lo montant del versement périodique per lo remborsament d'un "
-#~ "emprunt dins lo qual los pagaments son efectuats a tèrme échu. "
-
-#~ msgid "_Principal:"
-#~ msgstr "_Principal :"
-
-#~ msgid "_Term:"
-#~ msgstr "_Durada :"
-
-#~ msgid "Present Value"
-#~ msgstr "Valor actuala"
-
-#~ msgid ""
-#~ "Calculates the present value of an investment based on a series of equal "
-#~ "payments discounted at a periodic interest rate over the number of "
-#~ "payment periods in the term. "
-#~ msgstr ""
-#~ "Calcula la valor iniciala d'un investiment fondat sus una seria de "
-#~ "pagaments egals escomptats amb un taus d'interès periodic donat compte "
-#~ "tengut del nombre de periòdes de versament fins a son tèrme. "
-
-#~ msgid "Periodic Interest Rate"
-#~ msgstr "Taus d'interès periodic"
-
-#~ msgid ""
-#~ "Calculates the periodic interest necessary to increase an investment to a "
-#~ "future value, over the number of compounding periods. "
-#~ msgstr ""
-#~ "Calcula lo taus d'interès per periòde necessari per portar un investiment "
-#~ "a una valor donada a tèrme compte tengut del nombre de periòdes de "
-#~ "composicion. "
-
-#~ msgid "Straight-Line Depreciation"
-#~ msgstr "Amortiment linear"
-
-#~ msgid "_Cost:"
-#~ msgstr "_Còst :"
-
-#~ msgid "_Salvage:"
-#~ msgstr "_Valor residuala :"
-
-#~ msgid ""
-#~ "Calculates the straight-line depreciation of an asset for one period. The "
-#~ "straight-line method of depreciation divides the depreciable cost evenly "
-#~ "over the useful life of an asset. The useful life is the number of "
-#~ "periods, typically years, over which an asset is depreciated. "
-#~ msgstr ""
-#~ "Calcula l'amortiment linear d'un actiu sus un periòde donat. Aqueste "
-#~ "metòde repartís la valor d'amortiment d'un biais unifòrme sus la durada "
-#~ "de vida utila de l'actiu. La vida utila correspond al nombre de periòdes, "
-#~ "generalament annadièras, suls quals l'actiu es amortit. "
-
-#, fuzzy
-#~| msgid "Sum-of-the-Years'-Digits Depreciation"
-#~ msgid "Sum-of-the-Years’-Digits Depreciation"
-#~ msgstr "Amortiment Softy"
-
-#, fuzzy
-#~| msgid ""
-#~| "Calculates the depreciation allowance on an asset for a specified period "
-#~| "of time, using the Sum-of-the-Years'-Digits method. This method of "
-#~| "depreciation accelerates the rate of depreciation, so that more "
-#~| "depreciation expense occurs in earlier periods than in later ones. The "
-#~| "useful life is the number of periods, typically years, over which an "
-#~| "asset is depreciated. "
-#~ msgid ""
-#~ "Calculates the depreciation allowance on an asset for a specified period "
-#~ "of time, using the Sum-of-the-Years’-Digits method. This method of "
-#~ "depreciation accelerates the rate of depreciation, so that more "
-#~ "depreciation expense occurs in earlier periods than in later ones. The "
-#~ "useful life is the number of periods, typically years, over which an "
-#~ "asset is depreciated. "
-#~ msgstr ""
-#~ "Calcula la dotacion als amortiments per un actiu sus un periòde donat de "
-#~ "temps amb lo metòde Softy. Aqueste metòde accelèra lo taus d'amortiment : "
-#~ "las dotacions son mai elevadas en començament de periòde qu'en fin. La "
-#~ "durada de vida representa lo nombre de periòdes, generalament annadièras, "
-#~ "suls quals l'actiu es amortit. "
-
-#~ msgid "Payment Period"
-#~ msgstr "Periòde de pagament"
-
-#~ msgid "Future _Value:"
-#~ msgstr "_Valor futura :"
-
-#~ msgid ""
-#~ "Calculates the number of payment periods that are necessary during the "
-#~ "term of an ordinary annuity, to accumulate a future value, at a periodic "
-#~ "interest rate."
-#~ msgstr ""
-#~ "Calcula lo nombre d'escasenças necessàrias sus una durada de rente "
-#~ "ordinaire, per acumular un capital a tèrme, a un taus d'interès periodic "
-#~ "donat."
-
-#~ msgid "Ctrm"
-#~ msgstr "Durada"
-
-#~ msgid "Ddb"
-#~ msgstr "Amort. DD"
-
-#~ msgid "Double Declining Depreciation"
-#~ msgstr "Amortiment degressiu de taus doble"
-
-#~ msgid "Fv"
-#~ msgstr "VF"
-
-#~ msgid "Term"
-#~ msgstr "Escasenças"
-
-#~ msgid "Financial Term"
-#~ msgstr "Valor a tèrme"
-
-#~ msgid "Syd"
-#~ msgstr "Amort.Softy"
-
-#~ msgid "Sum of the Years Digits Depreciation"
-#~ msgstr "Amortiment softy"
-
-#~ msgid "Sln"
-#~ msgstr "Amort.L"
-
-#~ msgid "Straight Line Depreciation"
-#~ msgstr "Amortiment linear"
-
-#~ msgid "Rate"
-#~ msgstr "Taus"
-
-#~ msgid "Pv"
-#~ msgstr "VA"
-
-#~ msgid "Pmt"
-#~ msgstr "Annuitat"
-
-#~ msgid "Gpm"
-#~ msgstr "Marge"
-
-#~ msgid "Shift Left"
-#~ msgstr "Maj. esquèrra"
-
-#~ msgid "Shift Right"
-#~ msgstr "Maj. dreita"
-
-#~ msgid "Boolean Exclusive OR"
-#~ msgstr "OR (O) exclusiu boolean"
-
-#~ msgid "Boolean OR"
-#~ msgstr "OR (O) boolean"
-
-#~ msgid "Boolean AND"
-#~ msgstr "AND (E) boolean"
-
-#~ msgid "Boolean NOT"
-#~ msgstr "NOT (NON) boolean"
-
-#, fuzzy
-#~| msgid "Ones' Complement"
-#~ msgid "Ones’ Complement"
-#~ msgstr "Complement a un"
-
-#, fuzzy
-#~| msgid "Two's Complement"
-#~ msgid "Two’s Complement"
-#~ msgstr "Complement a dos"
-
-#, fuzzy
-#~| msgid "Natural Logarithm"
-#~ msgid "Binary Logarithm"
-#~ msgstr "Logaritme neperian (basa e)"
-
-#~ msgid "Integer Component"
-#~ msgstr "Partida entièra"
-
-#~ msgid "Fractional Component"
-#~ msgstr "Partida fraccionària"
-
-#~ msgid "Insert Character Code"
-#~ msgstr "Insercion d'un còdi de caractèr"
 
 #~ msgid "Insert Character"
 #~ msgstr "Inserir un caractèr"
 
-#~ msgid "Change word size"
-#~ msgstr "Modificar la talha de mot"
-
 #~ msgid "Word Size"
 #~ msgstr "Talha de mot"
-
-#~ msgid "Ch_aracter:"
-#~ msgstr "_Caractèr :"
-
-#~ msgid "_Insert"
-#~ msgstr "_Inserir"
 
 #~ msgid "Unable to open help file"
 #~ msgstr "Impossible de dobrir lo fichièr d'ajuda"
