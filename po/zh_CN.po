@@ -24,7 +24,7 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2021-11-30 01:08+0000\n"
+"POT-Creation-Date: 2022-01-24 13:36+0000\n"
 "PO-Revision-Date: 2022-01-01 11:50+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
@@ -48,11 +48,6 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "执行算术、科学或财务计算"
 
 #: data/org.gnome.Calculator.appdata.xml.in:10
-#| msgid ""
-#| "GNOME Calculator is an application that solves mathematical equations. "
-#| "Though it at first appears to be a simple calculator with only basic "
-#| "arithmetic operations, you can switch into Advanced, Financial, or "
-#| "Programming mode to find a surprising set of capabilities."
 msgid ""
 "Calculator is an application that solves mathematical equations. Though it "
 "at first appears to be a simple calculator with only basic arithmetic "
@@ -717,7 +712,7 @@ msgid "Digital Storage"
 msgstr "数据存储"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:41 src/math-preferences.vala:106
+#: lib/unit.vala:41 src/math-preferences.vala:110
 msgid "Degrees"
 msgstr "角度"
 
@@ -732,7 +727,7 @@ msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "degree,degrees,deg,角度,度"
 
-#: lib/unit.vala:42 src/math-preferences.vala:108
+#: lib/unit.vala:42 src/math-preferences.vala:112
 msgid "Radians"
 msgstr "弧度"
 
@@ -747,7 +742,7 @@ msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radian,radians,rad,弧度"
 
-#: lib/unit.vala:43 src/math-preferences.vala:110
+#: lib/unit.vala:43 src/math-preferences.vala:114
 msgid "Gradians"
 msgstr "百分度"
 
@@ -2236,9 +2231,492 @@ msgstr "复制"
 msgid "Copy result to clipboard"
 msgstr "复制结果到剪贴板"
 
-#: src/ui/buttons-advanced.ui:844
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
+#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+msgid "Modulus divide"
+msgstr "求余数"
+
+#: src/ui/buttons-advanced.ui:139 src/ui/buttons-basic.ui:145
+#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1269
+msgid "Divide [/]"
+msgstr "除法 [/]"
+
+#: src/ui/buttons-advanced.ui:235 src/ui/buttons-basic.ui:247
+#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1286
+msgid "Multiply [*]"
+msgstr "乘法 [*]"
+
+#: src/ui/buttons-advanced.ui:252 src/ui/buttons-basic.ui:265
+#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1303
+msgid "Subtract [-]"
+msgstr "减法 [-]"
+
+#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:282
+#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1319
+msgid "Add [+]"
+msgstr "加法 [+]"
+
+#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:299
+#: src/ui/buttons-programming.ui:1247
+msgid "Pi [Ctrl+P]"
+msgstr "圆周率 [Ctrl+P]"
+
+#: src/ui/buttons-advanced.ui:307 src/ui/buttons-basic.ui:323
+#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1231
+msgid "Root [Ctrl+R]"
+msgstr "根 [Ctrl+R]"
+
+#: src/ui/buttons-advanced.ui:322 src/ui/buttons-basic.ui:339
+msgid "Square [Ctrl+2]"
+msgstr "平方 [Ctrl+2]"
+
+#: src/ui/buttons-advanced.ui:343 src/ui/buttons-basic.ui:361
+#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1352
+msgid "Clear Display [Escape]"
+msgstr "清除显示 [Escape]"
+
+#: src/ui/buttons-advanced.ui:359 src/ui/buttons-basic.ui:378
+#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1665
+msgid "Start Group [(]"
+msgstr "开始组 [(]"
+
+#: src/ui/buttons-advanced.ui:376 src/ui/buttons-basic.ui:396
+#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1681
+msgid "End Group [)]"
+msgstr "结束组 [)]"
+
+#: src/ui/buttons-advanced.ui:393 src/ui/buttons-basic.ui:414
+#: src/ui/buttons-financial.ui:1519
+msgid "Percentage [%]"
+msgstr "百分数 [%]"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
+#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
+#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
+msgid "Calculate Result"
+msgstr "计算结果"
+
+#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "下标模式 [Alt]"
+
+#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "上标模式 [Ctrl]"
+
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
+msgid "Factorize [Ctrl+F]"
+msgstr "质因数分解 [Ctrl+F]"
+
+#: src/ui/buttons-advanced.ui:498
+msgid "Scientific exponent [Ctrl+E]"
+msgstr "科学记数法 [Ctrl+E]"
+
+#: src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "余弦"
+
+#: src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "正弦"
+
+#: src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "正切"
+
+#: src/ui/buttons-advanced.ui:567
+msgid "Hyperbolic Cosine"
+msgstr "双曲余弦"
+
+#: src/ui/buttons-advanced.ui:583
+msgid "Hyperbolic Sine"
+msgstr "双曲正弦"
+
+#: src/ui/buttons-advanced.ui:599
+msgid "Hyperbolic Tangent"
+msgstr "双曲正切"
+
+#: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
+#: src/ui/buttons-programming.ui:1877
+msgid "Exponent [^ or **]"
+msgstr "乘方 [^ 或 **]"
+
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
+msgid "Inverse [Ctrl+I]"
+msgstr "反函数或倒数 [Ctrl+I]"
+
+#: src/ui/buttons-advanced.ui:658
+msgid "Euler’s Number"
+msgstr "欧拉数"
+
+#: src/ui/buttons-advanced.ui:681
+msgid "Natural Logarithm"
+msgstr "自然对数（以 e 为底）"
+
+#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
+#: src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "常用对数（以 10 为底）"
+
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
+msgid "Factorial [!]"
+msgstr "阶乘 [!]"
+
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
+msgid "Absolute Value [|]"
+msgstr "绝对值 [|]"
+
+#: src/ui/buttons-advanced.ui:778
+msgid "Real Component"
+msgstr "实数部分"
+
+#: src/ui/buttons-advanced.ui:795
+msgid "Imaginary Component"
+msgstr "虚数部分"
+
+#: src/ui/buttons-advanced.ui:812
+msgid "Complex conjugate"
+msgstr "复共轭"
+
+#: src/ui/buttons-advanced.ui:829
+msgid "Complex argument"
+msgstr "复变量"
+
+#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "记忆"
+
+#. The label on the memory button
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-programming.ui:2062
+msgid "x"
+msgstr "记忆"
+
+#: src/ui/buttons-advanced.ui:859
+msgid "Additional Functions"
+msgstr "附加函数"
+
+#. Title of Compounding Term dialog
+#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
+msgid "Compounding Term"
+msgstr "复利期数"
+
+#. Compounding Term Dialog: Label before present value input
+#. Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.ui:55 src/ui/buttons-financial.ui:727
+msgid "Present _Value:"
+msgstr "现值(_V)："
+
+#. Compounding Term Dialog: Label before periodic interest rate input
+#. Future Value Dialog: Label before periodic interest rate input
+#. Periodic Payment Dialog: Label before periodic interest rate input
+#. Present Value Dialog: Label before periodic interest rate input
+#. Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.ui:67 src/ui/buttons-financial.ui:282
+#: src/ui/buttons-financial.ui:493 src/ui/buttons-financial.ui:610
+#: src/ui/buttons-financial.ui:1106
+msgid "Periodic Interest _Rate:"
+msgstr "每期利率(_R)："
+
+#. Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:80
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr "计算某投资的现值到一期待值需要的投资周期数，每个投资周期利息率固定。"
+
+#. Compounding Term Dialog: Label before future value input
+#. Periodic Interest Rate Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:91 src/ui/buttons-financial.ui:715
+msgid "_Future Value:"
+msgstr "终值(_F)："
+
+#: src/ui/buttons-financial.ui:110 src/ui/buttons-financial.ui:227
+#: src/ui/buttons-financial.ui:343 src/ui/buttons-financial.ui:437
+#: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
+#: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
+#: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
+#: src/ui/buttons-programming.ui:2139
+msgid "_Cancel"
+msgstr "取消（_C）"
+
+#. Compounding Term Dialog: Calculate button
+#. Double-Declining Depreciation Dialog: Calculate button
+#. Future Value Dialog: Calculate button
+#. Gross Profit Margin Dialog: Calculate button
+#. Periodic Payment Dialog: Calculate button
+#. Present Value Dialog: Calculate button
+#. Periodic Interest Rate Dialog: Calculate button
+#. Straight-Line Depreciation Dialog: Calculate button
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
+#. Payment Period Dialog: Button to calculate result
+#: src/ui/buttons-financial.ui:116 src/ui/buttons-financial.ui:233
+#: src/ui/buttons-financial.ui:349 src/ui/buttons-financial.ui:443
+#: src/ui/buttons-financial.ui:560 src/ui/buttons-financial.ui:677
+#: src/ui/buttons-financial.ui:794 src/ui/buttons-financial.ui:911
+#: src/ui/buttons-financial.ui:1050 src/ui/buttons-financial.ui:1167
+msgid "C_alculate"
+msgstr "计算(_A)"
+
+#. Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.ui:122
+msgid "Double-Declining Depreciation"
+msgstr "双倍余额递减折旧"
+
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:143
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr "计算某一资产在指定期间的折旧提成，使用加倍余额递减法。"
+
+#. Double-Declining Depreciation Dialog: Label before cost input
+#. Gross Profit Margin Dialog: Label before cost input
+#: src/ui/buttons-financial.ui:154 src/ui/buttons-financial.ui:386
+msgid "C_ost:"
+msgstr "成本(_O)："
+
+#. Double-Declining Depreciation Dialog: Label before life input
+#. Straight-Line Depreciation Dialog: Label before life input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.ui:166 src/ui/buttons-financial.ui:844
+#: src/ui/buttons-financial.ui:949
+msgid "_Life:"
+msgstr "年限(_L)："
+
+#. Double-Declining Depreciation Dialog: Label before period input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.ui:198 src/ui/buttons-financial.ui:937
+msgid "_Period:"
+msgstr "期(_P)："
+
+#. Title of Future Value dialog
+#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:1651
+msgid "Future Value"
+msgstr "未来值"
+
+#. Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:259
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr "计算某投资的未来值，按约定付款期数的固定利率下每期等额付款。"
+
+#. Future Value Dialog: Label before periodic payment input
+#. Present Value Dialog: Label before periodic payment input
+#. Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.ui:270 src/ui/buttons-financial.ui:598
+#: src/ui/buttons-financial.ui:1130
+msgid "_Periodic Payment:"
+msgstr "定期付款(_P)："
+
+#. Future Value Dialog: Label before number of periods input
+#. Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.ui:294 src/ui/buttons-financial.ui:622
+msgid "_Number of Periods:"
+msgstr "期数(_N)："
+
+#. Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.ui:355 src/ui/buttons-financial.ui:1769
+msgid "Gross Profit Margin"
+msgstr "毛利率"
+
+#. Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:375
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr "计算某产品的转售价格，按产品成本及期望的毛利率。"
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.ui:398
+msgid "_Margin:"
+msgstr "利率(_M)："
+
+#. Title of Periodic Payment dialog
+#: src/ui/buttons-financial.ui:449 src/ui/buttons-financial.ui:1752
+msgid "Periodic Payment"
+msgstr "每期付款额"
+
+#. Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:470
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
+msgstr "计算一笔贷款的定期付款数量，在每笔付款期末期付款。"
+
+#. Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.ui:481
+msgid "_Principal:"
+msgstr "本金(_P)："
+
+#. Periodic Payment Dialog: Label before term input
+#. Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.ui:505 src/ui/buttons-financial.ui:739
+msgid "_Term:"
+msgstr "期限(_T)："
+
+#. Title of Present Value dialog
+#: src/ui/buttons-financial.ui:566 src/ui/buttons-financial.ui:1735
+msgid "Present Value"
+msgstr "现值"
+
+#. Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:587
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr "计算基于一系列平等付款的投资现值在付款周期的周期利率数字上的折现。    "
+
+#. Title of Periodic Interest Rate dialog
+#: src/ui/buttons-financial.ui:683 src/ui/buttons-financial.ui:1718
+msgid "Periodic Interest Rate"
+msgstr "每期利率"
+
+#. Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:704
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr "计算某投资增加到某一未来值需要的每期利率，按复合期数。"
+
+#. Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.ui:800
+msgid "Straight-Line Depreciation"
+msgstr "直线折旧"
+
+#. Straight-Line Depreciation Dialog: Label before cost input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:973
+msgid "_Cost:"
+msgstr "成本(_C)："
+
+#. Straight-Line Depreciation Dialog: Label before salvage input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.ui:832 src/ui/buttons-financial.ui:961
+msgid "_Salvage:"
+msgstr "残值(_S)："
+
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:887
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+"计算一个期间某资产的直线折旧。直线折旧法在某资产可用年限内均分折旧成本。可用"
+"年限指该资产折旧的期数，典型情况下为年。"
+
+#. Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.ui:917
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "年数总和法折旧"
+
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:1026
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
+msgstr ""
+"计算某一资产在指定期间的折旧提成，使用年数总和法。该折旧方法会加速折旧率，因"
+"此前期比后期发生更多折旧费用。可用年限指该资产折旧的周期（通常为年）数。"
+
+#. Title of Payment Period dialog
+#: src/ui/buttons-financial.ui:1056
+msgid "Payment Period"
+msgstr "付款期"
+
+#. Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:1118
+msgid "Future _Value:"
+msgstr "未来值(_V)："
+
+#. Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:1143
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr "计算期限内普通年金积累到某一未来值需要的付款期数，按某一每期利率。"
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.ui:1616
+msgid "Ctrm"
+msgstr "复利"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1632
+msgid "Ddb"
+msgstr "Ddb"
+
+#: src/ui/buttons-financial.ui:1635
+msgid "Double Declining Depreciation"
+msgstr "双倍余额递减折旧"
+
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.ui:1648
+msgid "Fv"
+msgstr "Fv"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: src/ui/buttons-financial.ui:1664
+msgid "Term"
+msgstr "期数"
+
+#: src/ui/buttons-financial.ui:1667
+msgid "Financial Term"
+msgstr "财务"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1681
+msgid "Syd"
+msgstr "Syd"
+
+#: src/ui/buttons-financial.ui:1684
+msgid "Sum of the Years Digits Depreciation"
+msgstr "年数总和法折旧"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1698
+msgid "Sln"
+msgstr "Sln"
+
+#: src/ui/buttons-financial.ui:1701
+msgid "Straight Line Depreciation"
+msgstr "直线折旧"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.ui:1715
+msgid "Rate"
+msgstr "利率"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.ui:1732
+msgid "Pv"
+msgstr "Pv"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.ui:1749
+msgid "Pmt"
+msgstr "Pmt"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.ui:1766
+msgid "Gpm"
+msgstr "Gpm"
 
 #: src/ui/buttons-programming.ui:16
 msgid "Binary"
@@ -2255,6 +2733,69 @@ msgstr "十进制"
 #: src/ui/buttons-programming.ui:19
 msgid "Hexadecimal"
 msgstr "十六进制"
+
+#: src/ui/buttons-programming.ui:1751
+msgid "Shift Left"
+msgstr "左移"
+
+#: src/ui/buttons-programming.ui:1764
+msgid "Shift Right"
+msgstr "右移"
+
+#: src/ui/buttons-programming.ui:1778
+msgid "Boolean Exclusive OR"
+msgstr "逻辑异或"
+
+#: src/ui/buttons-programming.ui:1794
+msgid "Boolean OR"
+msgstr "逻辑或"
+
+#: src/ui/buttons-programming.ui:1811
+msgid "Boolean AND"
+msgstr "逻辑与"
+
+#: src/ui/buttons-programming.ui:1828
+msgid "Boolean NOT"
+msgstr "逻辑非"
+
+#: src/ui/buttons-programming.ui:1845
+msgid "Ones’ Complement"
+msgstr "反码"
+
+#: src/ui/buttons-programming.ui:1862
+msgid "Two’s Complement"
+msgstr "二进制补码"
+
+#: src/ui/buttons-programming.ui:1938
+msgid "Binary Logarithm"
+msgstr "二进制对数"
+
+#: src/ui/buttons-programming.ui:1998
+msgid "Integer Component"
+msgstr "整数部分"
+
+#: src/ui/buttons-programming.ui:2015
+msgid "Fractional Component"
+msgstr "小数部分"
+
+#. Title of insert character code dialog
+#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
+msgid "Insert Character Code"
+msgstr "插入字符编码"
+
+#: src/ui/buttons-programming.ui:2078
+msgid "Change word size"
+msgstr "修改字长"
+
+#. Insert ASCII dialog: Label before character entry
+#: src/ui/buttons-programming.ui:2115
+msgid "Ch_aracter:"
+msgstr "字符(_A)："
+
+#. Insert ASCII dialog: Button to insert selected character
+#: src/ui/buttons-programming.ui:2145
+msgid "_Insert"
+msgstr "插入(_I)"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
 #: src/gnome-calculator.vala:24
@@ -2345,7 +2886,6 @@ msgid "Built-in keywords"
 msgstr "内置关键词"
 
 #: src/math-display.vala:695
-#| msgid "Defined Functions"
 msgid "Defined currencies"
 msgstr "已定义货币"
 
@@ -2361,34 +2901,31 @@ msgstr "新函数"
 msgid "Select no. of arguments"
 msgstr "选择参数的数量"
 
-#: src/math-preferences.vala:119
+#: src/math-preferences.vala:123
 msgid "8-bit"
 msgstr "8 位"
 
-#: src/math-preferences.vala:121
+#: src/math-preferences.vala:125
 msgid "16-bit"
 msgstr "16 位"
 
-#: src/math-preferences.vala:123
+#: src/math-preferences.vala:127
 msgid "32-bit"
 msgstr "32 位"
 
-#: src/math-preferences.vala:125
+#: src/math-preferences.vala:129
 msgid "64-bit"
 msgstr "64 位"
 
-#: src/math-preferences.vala:134
-#| msgid "never"
+#: src/math-preferences.vala:138
 msgid "Never"
 msgstr "从不"
 
-#: src/math-preferences.vala:136
-#| msgid "daily"
+#: src/math-preferences.vala:140
 msgid "Daily"
 msgstr "每天"
 
-#: src/math-preferences.vala:138
-#| msgid "weekly"
+#: src/math-preferences.vala:142
 msgid "Weekly"
 msgstr "每周"
 
@@ -2594,23 +3131,23 @@ msgstr "变量名称"
 msgid "Store value into existing or new variable"
 msgstr "将数值存入现有或新的变量"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:105
+#: src/ui/math-window.ui:20 src/math-window.vala:110
 msgid "Basic"
 msgstr "基本"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:111
+#: src/ui/math-window.ui:25 src/math-window.vala:116
 msgid "Advanced"
 msgstr "高级"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:117
+#: src/ui/math-window.ui:30 src/math-window.vala:122
 msgid "Financial"
 msgstr "财务"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:123
+#: src/ui/math-window.ui:35 src/math-window.vala:128
 msgid "Programming"
 msgstr "编程"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:129
+#: src/ui/math-window.ui:40 src/math-window.vala:134
 msgid "Keyboard"
 msgstr "键盘"
 
@@ -2666,387 +3203,45 @@ msgstr "撤消"
 msgid "Primary menu"
 msgstr "主菜单"
 
-#: src/math-window.vala:158
+#: src/math-window.vala:163
 msgid "_Quit"
 msgstr "退出(_Q)"
 
 #~ msgid "GNOME Calculator"
 #~ msgstr "GNOME 计算器"
 
-#~ msgid "Modulus divide"
-#~ msgstr "求余数"
-
-#~ msgid "Divide [/]"
-#~ msgstr "除法 [/]"
-
-#~ msgid "Multiply [*]"
-#~ msgstr "乘法 [*]"
-
-#~ msgid "Subtract [-]"
-#~ msgstr "减法 [-]"
-
-#~ msgid "Add [+]"
-#~ msgstr "加法 [+]"
-
-#~ msgid "Pi [Ctrl+P]"
-#~ msgstr "圆周率 [Ctrl+P]"
-
-#~ msgid "Root [Ctrl+R]"
-#~ msgstr "根 [Ctrl+R]"
-
-#~ msgid "Square [Ctrl+2]"
-#~ msgstr "平方 [Ctrl+2]"
-
 #~ msgid "Exponent"
 #~ msgstr "X^Y"
-
-#~ msgid "Clear Display [Escape]"
-#~ msgstr "清除显示 [Escape]"
-
-#~ msgid "Start Group [(]"
-#~ msgstr "开始组 [(]"
-
-#~ msgid "End Group [)]"
-#~ msgstr "结束组 [)]"
-
-#~ msgid "Percentage [%]"
-#~ msgstr "百分数 [%]"
-
-#~ msgid "="
-#~ msgstr "="
-
-#~ msgid "Calculate Result"
-#~ msgstr "计算结果"
-
-#~ msgid "Subscript mode [Alt]"
-#~ msgstr "下标模式 [Alt]"
 
 #~ msgid "Subscript"
 #~ msgstr "下标"
 
-#~ msgid "Superscript mode [Ctrl]"
-#~ msgstr "上标模式 [Ctrl]"
-
 #~ msgid "Superscript"
 #~ msgstr "上标"
-
-#~ msgid "Factorize [Ctrl+F]"
-#~ msgstr "质因数分解 [Ctrl+F]"
 
 #~ msgid "Factorize"
 #~ msgstr "质因数分解"
 
-#~ msgid "Scientific exponent [Ctrl+E]"
-#~ msgstr "科学记数法 [Ctrl+E]"
-
 #~ msgid "Scientific Exponent"
 #~ msgstr "科学计数法"
-
-#~ msgid "Cosine"
-#~ msgstr "余弦"
-
-#~ msgid "Sine"
-#~ msgstr "正弦"
-
-#~ msgid "Tangent"
-#~ msgstr "正切"
-
-#~ msgid "Hyperbolic Cosine"
-#~ msgstr "双曲余弦"
-
-#~ msgid "Hyperbolic Sine"
-#~ msgstr "双曲正弦"
-
-#~ msgid "Hyperbolic Tangent"
-#~ msgstr "双曲正切"
-
-#~ msgid "Exponent [^ or **]"
-#~ msgstr "乘方 [^ 或 **]"
-
-#~ msgid "Inverse [Ctrl+I]"
-#~ msgstr "反函数或倒数 [Ctrl+I]"
 
 #~ msgid "Inverse"
 #~ msgstr "倒数或反函数"
 
-#~ msgid "Euler’s Number"
-#~ msgstr "欧拉数"
-
-#~ msgid "Natural Logarithm"
-#~ msgstr "自然对数（以 e 为底）"
-
-#~ msgid "Logarithm"
-#~ msgstr "常用对数（以 10 为底）"
-
-#~ msgid "Factorial [!]"
-#~ msgstr "阶乘 [!]"
-
 #~ msgid "Factorial"
 #~ msgstr "阶乘"
-
-#~ msgid "Absolute Value [|]"
-#~ msgstr "绝对值 [|]"
 
 #~ msgid "Absolute Value"
 #~ msgstr "绝对值"
 
-#~ msgid "Real Component"
-#~ msgstr "实数部分"
-
-#~ msgid "Imaginary Component"
-#~ msgstr "虚数部分"
-
-#~ msgid "Complex conjugate"
-#~ msgstr "复共轭"
-
-#~ msgid "Complex argument"
-#~ msgstr "复变量"
-
-#~ msgid "x"
-#~ msgstr "记忆"
-
-#~ msgid "Additional Functions"
-#~ msgstr "附加函数"
-
 #~ msgid "Store"
 #~ msgstr "存储"
-
-#~ msgid "Compounding Term"
-#~ msgstr "复利期数"
-
-#~ msgid "_Cancel"
-#~ msgstr "取消（_C）"
-
-#~ msgid "C_alculate"
-#~ msgstr "计算(_A)"
-
-#~ msgid "Present _Value:"
-#~ msgstr "现值(_V)："
-
-#~ msgid "Periodic Interest _Rate:"
-#~ msgstr "每期利率(_R)："
-
-#~ msgid ""
-#~ "Calculates the number of compounding periods necessary to increase an "
-#~ "investment of present value to a future value, at a fixed interest rate "
-#~ "per compounding period."
-#~ msgstr ""
-#~ "计算某投资的现值到一期待值需要的投资周期数，每个投资周期利息率固定。"
-
-#~ msgid "_Future Value:"
-#~ msgstr "终值(_F)："
-
-#~ msgid "Double-Declining Depreciation"
-#~ msgstr "双倍余额递减折旧"
-
-#~ msgid ""
-#~ "Calculates the depreciation allowance on an asset for a specified period "
-#~ "of time, using the double-declining balance method."
-#~ msgstr "计算某一资产在指定期间的折旧提成，使用加倍余额递减法。"
-
-#~ msgid "C_ost:"
-#~ msgstr "成本(_O)："
-
-#~ msgid "_Life:"
-#~ msgstr "年限(_L)："
-
-#~ msgid "_Period:"
-#~ msgstr "期(_P)："
-
-#~ msgid "Future Value"
-#~ msgstr "未来值"
-
-#~ msgid ""
-#~ "Calculates the future value of an investment based on a series of equal "
-#~ "payments at a periodic interest rate over the number of payment periods "
-#~ "in the term."
-#~ msgstr "计算某投资的未来值，按约定付款期数的固定利率下每期等额付款。"
-
-#~ msgid "_Periodic Payment:"
-#~ msgstr "定期付款(_P)："
-
-#~ msgid "_Number of Periods:"
-#~ msgstr "期数(_N)："
-
-#~ msgid "Gross Profit Margin"
-#~ msgstr "毛利率"
-
-#~ msgid ""
-#~ "Calculates the resale price of a product, based on the product cost and "
-#~ "the wanted gross profit margin."
-#~ msgstr "计算某产品的转售价格，按产品成本及期望的毛利率。"
-
-#~ msgid "_Margin:"
-#~ msgstr "利率(_M)："
-
-#~ msgid "Periodic Payment"
-#~ msgstr "每期付款额"
-
-#~ msgid ""
-#~ "Calculates the amount of the periodic payment of a loan, where payments "
-#~ "are made at the end of each payment period. "
-#~ msgstr "计算一笔贷款的定期付款数量，在每笔付款期末期付款。"
-
-#~ msgid "_Principal:"
-#~ msgstr "本金(_P)："
-
-#~ msgid "_Term:"
-#~ msgstr "期限(_T)："
-
-#~ msgid "Present Value"
-#~ msgstr "现值"
-
-#~ msgid ""
-#~ "Calculates the present value of an investment based on a series of equal "
-#~ "payments discounted at a periodic interest rate over the number of "
-#~ "payment periods in the term. "
-#~ msgstr ""
-#~ "计算基于一系列平等付款的投资现值在付款周期的周期利率数字上的折现。    "
-
-#~ msgid "Periodic Interest Rate"
-#~ msgstr "每期利率"
-
-#~ msgid ""
-#~ "Calculates the periodic interest necessary to increase an investment to a "
-#~ "future value, over the number of compounding periods. "
-#~ msgstr "计算某投资增加到某一未来值需要的每期利率，按复合期数。"
-
-#~ msgid "Straight-Line Depreciation"
-#~ msgstr "直线折旧"
-
-#~ msgid "_Cost:"
-#~ msgstr "成本(_C)："
-
-#~ msgid "_Salvage:"
-#~ msgstr "残值(_S)："
-
-#~ msgid ""
-#~ "Calculates the straight-line depreciation of an asset for one period. The "
-#~ "straight-line method of depreciation divides the depreciable cost evenly "
-#~ "over the useful life of an asset. The useful life is the number of "
-#~ "periods, typically years, over which an asset is depreciated. "
-#~ msgstr ""
-#~ "计算一个期间某资产的直线折旧。直线折旧法在某资产可用年限内均分折旧成本。可"
-#~ "用年限指该资产折旧的期数，典型情况下为年。"
-
-#~ msgid "Sum-of-the-Years’-Digits Depreciation"
-#~ msgstr "年数总和法折旧"
-
-#~ msgid ""
-#~ "Calculates the depreciation allowance on an asset for a specified period "
-#~ "of time, using the Sum-of-the-Years’-Digits method. This method of "
-#~ "depreciation accelerates the rate of depreciation, so that more "
-#~ "depreciation expense occurs in earlier periods than in later ones. The "
-#~ "useful life is the number of periods, typically years, over which an "
-#~ "asset is depreciated. "
-#~ msgstr ""
-#~ "计算某一资产在指定期间的折旧提成，使用年数总和法。该折旧方法会加速折旧率，"
-#~ "因此前期比后期发生更多折旧费用。可用年限指该资产折旧的周期（通常为年）数。"
-
-#~ msgid "Payment Period"
-#~ msgstr "付款期"
-
-#~ msgid "Future _Value:"
-#~ msgstr "未来值(_V)："
-
-#~ msgid ""
-#~ "Calculates the number of payment periods that are necessary during the "
-#~ "term of an ordinary annuity, to accumulate a future value, at a periodic "
-#~ "interest rate."
-#~ msgstr "计算期限内普通年金积累到某一未来值需要的付款期数，按某一每期利率。"
-
-#~ msgid "Ctrm"
-#~ msgstr "复利"
-
-#~ msgid "Ddb"
-#~ msgstr "Ddb"
-
-#~ msgid "Double Declining Depreciation"
-#~ msgstr "双倍余额递减折旧"
-
-#~ msgid "Fv"
-#~ msgstr "Fv"
-
-#~ msgid "Term"
-#~ msgstr "期数"
-
-#~ msgid "Financial Term"
-#~ msgstr "财务"
-
-#~ msgid "Syd"
-#~ msgstr "Syd"
-
-#~ msgid "Sum of the Years Digits Depreciation"
-#~ msgstr "年数总和法折旧"
-
-#~ msgid "Sln"
-#~ msgstr "Sln"
-
-#~ msgid "Straight Line Depreciation"
-#~ msgstr "直线折旧"
-
-#~ msgid "Rate"
-#~ msgstr "利率"
-
-#~ msgid "Pv"
-#~ msgstr "Pv"
-
-#~ msgid "Pmt"
-#~ msgstr "Pmt"
-
-#~ msgid "Gpm"
-#~ msgstr "Gpm"
-
-#~ msgid "Shift Left"
-#~ msgstr "左移"
-
-#~ msgid "Shift Right"
-#~ msgstr "右移"
-
-#~ msgid "Boolean Exclusive OR"
-#~ msgstr "逻辑异或"
-
-#~ msgid "Boolean OR"
-#~ msgstr "逻辑或"
-
-#~ msgid "Boolean AND"
-#~ msgstr "逻辑与"
-
-#~ msgid "Boolean NOT"
-#~ msgstr "逻辑非"
-
-#~ msgid "Ones’ Complement"
-#~ msgstr "反码"
-
-#~ msgid "Two’s Complement"
-#~ msgstr "二进制补码"
-
-#~ msgid "Binary Logarithm"
-#~ msgstr "二进制对数"
-
-#~ msgid "Integer Component"
-#~ msgstr "整数部分"
-
-#~ msgid "Fractional Component"
-#~ msgstr "小数部分"
-
-#~ msgid "Insert Character Code"
-#~ msgstr "插入字符编码"
 
 #~ msgid "Insert Character"
 #~ msgstr "插入字符"
 
-#~ msgid "Change word size"
-#~ msgstr "修改字长"
-
 #~ msgid "Word Size"
 #~ msgstr "字长"
-
-#~ msgid "Ch_aracter:"
-#~ msgstr "字符(_A)："
-
-#~ msgid "_Insert"
-#~ msgstr "插入(_I)"
 
 #~ msgid "Unable to open help file"
 #~ msgstr "无法打开帮助文件"
