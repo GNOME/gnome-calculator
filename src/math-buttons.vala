@@ -459,6 +459,7 @@ public class MathButtons : Gtk.Box
             character_code_entry.activate.connect (character_code_dialog_activate_cb);
 
             bit_panel = builder.get_object ("bit_table") as Gtk.Widget;
+            bit_panel.set_direction (Gtk.TextDirection.LTR);
             toggle_bit_buttons = new List<Gtk.Button> ();
             var i = 0;
             while (true)
