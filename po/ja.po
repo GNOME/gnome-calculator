@@ -1,5 +1,5 @@
 # gcalctool ja.po.
-# Copyright (C) 2003-2010, 2012, 2014-2016, 2019-2020 Free Software Foundation, Inc.
+# Copyright (C) 2003-2010, 2012, 2014-2016, 2019-2020, 2022 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gcalctool package.
 # KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>, 2003.
 # Takeshi AIHANA <takeshi.aihana@gmail.com>, 2003-2009.
@@ -8,7 +8,7 @@
 # Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2010, 2012.
 # Hajime Taira <htaira@redhat.com>, 2014, 2015.
 # sujiniku <sujinikusityuu@gmail.com>, 2016, 2019.
-# sicklylife <translation@sicklylife.jp>, 2019-2020.
+# sicklylife <translation@sicklylife.jp>, 2019-2020, 2022.
 #
 msgid ""
 msgstr ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
 "POT-Creation-Date: 2021-09-19 10:45+0000\n"
-"PO-Revision-Date: 2020-08-23 23:30+0900\n"
+"PO-Revision-Date: 2022-02-09 22:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
@@ -173,6 +173,8 @@ msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
 msgstr ""
+"どの程度の頻度で為替レートを更新するか。0 にすると為替レートをネットワークか"
+"ら一切取得しません。"
 
 #: data/org.gnome.calculator.gschema.xml:67
 msgid "Button mode"
@@ -429,10 +431,8 @@ msgid "Saudi Riyal"
 msgstr "サウジ・リアル"
 
 #: lib/currency.vala:104
-#, fuzzy
-#| msgid "Algerian Dinar"
 msgid "Serbian Dinar"
-msgstr "アルジェリア・ディナール"
+msgstr "セルビア・ディナール"
 
 #: lib/currency.vala:105
 msgid "Swedish Krona"
@@ -699,7 +699,7 @@ msgstr "時間"
 
 #: lib/unit.vala:36
 msgid "Frequency"
-msgstr ""
+msgstr "周波数"
 
 #: lib/unit.vala:37
 msgid "Temperature"
@@ -1036,12 +1036,9 @@ msgid "%s km/h"
 msgstr "%s km/h"
 
 #: lib/unit.vala:62
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "kilometers per hour,kmph,kmh"
 msgctxt "unit-symbols"
 msgid "kilometers per hour,kmph,kmh,kph"
-msgstr "kilometers per hour,kmph,kmh"
+msgstr "kilometers per hour,kmph,kmh,kph"
 
 #: lib/unit.vala:63
 msgid "Miles per hour"
@@ -1054,12 +1051,9 @@ msgid "%s miles/h"
 msgstr "%s miles/h"
 
 #: lib/unit.vala:63
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "milesph,miles per hour,mi/h,miph"
 msgctxt "unit-symbols"
 msgid "milesph,miles per hour,mi/h,miph,mph"
-msgstr "milesph,miles per hour,mi/h,miph"
+msgstr "milesph,miles per hour,mi/h,miph,mph"
 
 #: lib/unit.vala:64
 msgid "Meters per second"
@@ -1077,26 +1071,19 @@ msgid "meters per second,mps"
 msgstr "meters per second,mps"
 
 #: lib/unit.vala:65
-#, fuzzy
-#| msgid "Feets per second"
 msgid "Feet per second"
 msgstr "フィート毎秒"
 
 #: lib/unit.vala:65
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s feets/s"
+#, c-format
 msgctxt "unit-format"
 msgid "%s feet/s"
-msgstr "%s feets/s"
+msgstr "%s feet/s"
 
 #: lib/unit.vala:65
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "fps,feets per second,feetsps"
 msgctxt "unit-symbols"
 msgid "fps,feet per second,feetps"
-msgstr "fps,feets per second,feetsps"
+msgstr "fps,feet per second,feetps"
 
 #: lib/unit.vala:66
 msgid "Knots"
@@ -1277,17 +1264,15 @@ msgid "Metric Cups"
 msgstr ""
 
 #: lib/unit.vala:78
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s cb"
+#, c-format
 msgctxt "unit-format"
 msgid "%s cup"
-msgstr "%s cb"
+msgstr "%s カップ"
 
 #: lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "cup,cups,cp"
-msgstr ""
+msgstr "cup,cups,cp"
 
 #: lib/unit.vala:79
 msgid "Milliliters"
@@ -1360,12 +1345,9 @@ msgid "%s lb"
 msgstr "%s lb"
 
 #: lib/unit.vala:83
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "pound,pounds,lb"
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb,lbs"
-msgstr "pound,pounds,lb"
+msgstr "pound,pounds,lb,lbs"
 
 #: lib/unit.vala:84
 msgid "Ounces"
@@ -1413,10 +1395,8 @@ msgid "stone,st,stones"
 msgstr "stone,st,stones"
 
 #: lib/unit.vala:87
-#, fuzzy
-#| msgid "Centimeters"
 msgid "Centuries"
-msgstr "センチメートル"
+msgstr ""
 
 #: lib/unit.vala:87
 #, c-format
@@ -1427,24 +1407,22 @@ msgstr ""
 #: lib/unit.vala:87
 msgctxt "unit-symbols"
 msgid "century,centuries"
-msgstr ""
+msgstr "century,centuries"
 
 #: lib/unit.vala:88
 msgid "Decades"
 msgstr ""
 
 #: lib/unit.vala:88
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s days"
+#, c-format
 msgctxt "unit-format"
 msgid "%s decades"
-msgstr "%s days"
+msgstr ""
 
 #: lib/unit.vala:88
 msgctxt "unit-symbols"
 msgid "decade,decades"
-msgstr ""
+msgstr "decade,decades"
 
 #: lib/unit.vala:89
 msgid "Years"
@@ -1478,18 +1456,18 @@ msgstr "month,months"
 
 #: lib/unit.vala:91
 msgid "Weeks"
-msgstr ""
+msgstr "週"
 
 #: lib/unit.vala:91
 #, c-format
 msgctxt "unit-format"
 msgid "%s weeks"
-msgstr ""
+msgstr "%s weeks"
 
 #: lib/unit.vala:91
 msgctxt "unit-symbols"
 msgid "week,weeks"
-msgstr ""
+msgstr "week,weeks"
 
 #: lib/unit.vala:92
 msgid "Days"
@@ -2158,88 +2136,78 @@ msgstr "yobibyte,yobibytes,YiB"
 
 #: lib/unit.vala:139
 msgid "Hertz"
-msgstr ""
+msgstr "ヘルツ"
 
 #: lib/unit.vala:139
 #, c-format
 msgctxt "unit-format"
 msgid "%s Hz"
-msgstr ""
+msgstr "%s Hz"
 
 #: lib/unit.vala:139
 msgctxt "unit-symbols"
 msgid "hertz,Hz"
-msgstr ""
+msgstr "hertz,Hz"
 
 #: lib/unit.vala:140
-#, fuzzy
-#| msgid "Kilometers"
 msgid "Kilohertz"
-msgstr "キロメートル"
+msgstr "キロヘルツ"
 
 #: lib/unit.vala:140
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
+#, c-format
 msgctxt "unit-format"
 msgid "%s kHz"
-msgstr "%s km"
+msgstr "%s kHz"
 
 #: lib/unit.vala:140
 msgctxt "unit-symbols"
 msgid "kilohertz,kHz"
-msgstr ""
+msgstr "kilohertz,kHz"
 
 #: lib/unit.vala:141
 msgid "Megahertz"
-msgstr ""
+msgstr "メガヘルツ"
 
 #: lib/unit.vala:141
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s Mb"
+#, c-format
 msgctxt "unit-format"
 msgid "%s MHz"
-msgstr "%s Mb"
+msgstr "%s MHz"
 
 #: lib/unit.vala:141
 msgctxt "unit-symbols"
 msgid "megahertz,MHz"
-msgstr ""
+msgstr "megahertz,MHz"
 
 #: lib/unit.vala:142
 msgid "Gigahertz"
-msgstr ""
+msgstr "ギガヘルツ"
 
 #: lib/unit.vala:142
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s Gb"
+#, c-format
 msgctxt "unit-format"
 msgid "%s GHz"
-msgstr "%s Gb"
+msgstr "%s GHz"
 
 #: lib/unit.vala:142
 msgctxt "unit-symbols"
 msgid "gigahertz,GHz"
-msgstr ""
+msgstr "gigahertz,GHz"
 
 #: lib/unit.vala:143
 msgid "Terahertz"
-msgstr ""
+msgstr "テラヘルツ"
 
 #: lib/unit.vala:143
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
+#, c-format
 msgctxt "unit-format"
 msgid "%s THz"
-msgstr "%s T"
+msgstr "%s THz"
 
 #: lib/unit.vala:143
 msgctxt "unit-symbols"
 msgid "terahertz,THz"
-msgstr ""
+msgstr "terahertz,THz"
 
 #: lib/unit.vala:145
 msgid "Currency"
@@ -2883,14 +2851,10 @@ msgid "Insert Character"
 msgstr "文字の挿入"
 
 #: src/ui/buttons-programming.ui:2533
-#, fuzzy
-#| msgid "Word size"
 msgid "Change word size"
-msgstr "Word サイズ"
+msgstr "Word の変更"
 
 #: src/ui/buttons-programming.ui:2567
-#, fuzzy
-#| msgid "Word size"
 msgid "Word Size"
 msgstr "Word サイズ"
 
@@ -2967,7 +2931,7 @@ msgstr "すべて閉じる(_A)"
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
-msgstr[0] ""
+msgstr[0] "%d-bit"
 
 #: src/math-buttons.vala:566
 #, c-format
@@ -3007,22 +2971,22 @@ msgstr "引数の数を選択してください"
 #. Translators: Word size combo: 8 bit
 #: src/math-preferences.vala:26
 msgid "8-bit"
-msgstr ""
+msgstr "8-bit"
 
 #. Translators: Word size combo: 16 bit
 #: src/math-preferences.vala:28
 msgid "16-bit"
-msgstr ""
+msgstr "16-bit"
 
 #. Translators: Word size combo: 32 bit
 #: src/math-preferences.vala:30
 msgid "32-bit"
-msgstr ""
+msgstr "32-bit"
 
 #. Translators: Word size combo: 64 bit
 #: src/math-preferences.vala:32
 msgid "64-bit"
-msgstr ""
+msgstr "64-bit"
 
 #. Translators: Refresh interval combo: never
 #: src/math-preferences.vala:37
@@ -3242,30 +3206,22 @@ msgid "Store value into existing or new variable"
 msgstr "値を既存または新しい変数に保存します"
 
 #: src/ui/math-window.ui:20 src/math-window.vala:90
-#, fuzzy
-#| msgid "Basic Mode"
 msgid "Basic"
-msgstr "基本モード"
+msgstr "基本"
 
 #: src/ui/math-window.ui:25 src/math-window.vala:95
-#, fuzzy
-#| msgid "Advanced Mode"
 msgid "Advanced"
-msgstr "拡張モード"
+msgstr "拡張"
 
 #: src/ui/math-window.ui:30 src/math-window.vala:100
 msgid "Financial"
 msgstr "財務"
 
 #: src/ui/math-window.ui:35 src/math-window.vala:105
-#, fuzzy
-#| msgid "Programming Mode"
 msgid "Programming"
-msgstr "プログラミングモード"
+msgstr "プログラミング"
 
 #: src/ui/math-window.ui:40 src/math-window.vala:110
-#, fuzzy
-#| msgid "Keyboard Mode"
 msgid "Keyboard"
 msgstr "キーボードモード"
 
@@ -3310,9 +3266,6 @@ msgid "Mode selection"
 msgstr "モードを選択"
 
 #: src/ui/math-window.ui:179
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Undo"
 msgid "Undo"
 msgstr "元に戻す"
 
