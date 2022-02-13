@@ -62,31 +62,34 @@ public class MathWindow : Adw.ApplicationWindow
         (this as Gtk.Widget).add_controller (event_controller);
         event_controller.key_pressed.connect (key_press_cb);
 
+        var box = new Gtk.Box (VERTICAL, 0);
+        box.overflow = HIDDEN;
+        box.add_css_class ("display-container");
+        box.add_css_class ("card");
+        grid.attach (box, 0, 1, 1, 1);
+
         _display = new MathDisplay (equation);
-        grid.attach (_display, 0, 2, 1, 1);
         _display.show ();
         _display.grabfocus ();
+
+        _display.equation.display_changed.connect (history.set_serializer);
+        _display.equation.history_signal.connect (this.update_history);
 
         history = new HistoryView ();
         history.answer_clicked.connect ((ans) => { _display.insert_text (ans); });
         history.equation_clicked.connect ((eq) => { _display.display_text (eq); });
         history.set_serializer (_display.equation.serializer);
-        grid.attach (history, 0, 1, 1, 1);
 
-        _display.equation.display_changed.connect (history.set_serializer);
-        _display.equation.history_signal.connect (this.update_history);
+        box.append (history);
+        box.append (_display);
 
         _buttons = new MathButtons (equation, this);
-        grid.attach_next_to(_buttons, _display, Gtk.PositionType.BOTTOM);
+        grid.attach_next_to(_buttons, box, Gtk.PositionType.BOTTOM);
 
         remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;
 
         _buttons.notify["mode"].connect (mode_changed_cb);
         mode_changed_cb ();
-
-        var provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("/org/gnome/calculator/calculator.css");
-        Gtk.StyleContext.add_provider_for_display (display, provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         if (DEVELOPMENT_BUILD) {
             add_css_class ("devel");
