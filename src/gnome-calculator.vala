@@ -9,7 +9,7 @@
  * license.
  */
 
-public class Calculator : Gtk.Application
+public class Calculator : Adw.Application
 {
     private Settings settings;
     private MathWindow last_opened_window;
@@ -42,6 +42,7 @@ public class Calculator : Gtk.Application
     {
         Object (flags : ApplicationFlags.NON_UNIQUE, application_id : APP_ID);
 
+        set_resource_base_path ("/org/gnome/calculator");
         add_main_option_entries (option_entries);
     }
 
@@ -106,7 +107,6 @@ public class Calculator : Gtk.Application
     {
         base.startup ();
 
-        Adw.init ();
         GtkSource.init ();
 
         settings = new Settings ("org.gnome.calculator");
