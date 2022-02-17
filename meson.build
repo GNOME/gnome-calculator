@@ -1,6 +1,6 @@
 project('gnome-calculator', ['c', 'vala'],
   version: '42.beta',
-  meson_version: '>= 0.52.0',
+  meson_version: '>= 0.57.0',
   license: 'GPLv3+',
 )
 
@@ -75,7 +75,10 @@ configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
 # Extra scripts
-meson.add_install_script('meson_post_install.py')
+gnome.post_install(
+  glib_compile_schemas: true,
+  gtk_update_icon_cache: true,
+)
 
 # Subdirs
 subdir('vapi')
