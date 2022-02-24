@@ -171,7 +171,12 @@ libgcalc = library(VERSIONED_PROJECT_NAME,
 		meson.current_build_dir() + '/config.h',
 	],
 	link_with: [ lib_mpfrg ],
-	install : true,
+	install : [
+		true,
+		true,
+		true,
+		introspection,
+	],
 	install_dir : [
 		true,
 		join_paths (get_option('includedir'), 'gcalc-@0@'.format (API_VERSION), 'gcalc'),
@@ -179,7 +184,7 @@ libgcalc = library(VERSIONED_PROJECT_NAME,
 		true
 	])
 
-if not get_option('disable-introspection') and gobject_introspection.found()
+if introspection
 g_ir_compiler = find_program('g-ir-compiler', required: false)
 if g_ir_compiler.found()
 custom_target('gcalc-typelib',

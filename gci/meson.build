@@ -90,7 +90,12 @@ libgci = library(GCI_VERSIONED_PROJECT_NAME,
 		meson.current_build_dir() + '/config.h',
 	],
 	link_with: [ libgcalc ],
-	install : true,
+	install : [
+		true,
+		true,
+		true,
+		introspection,
+	],
 	install_dir : [
 		true,
 		join_paths (get_option('includedir'), 'gci-@0@'.format (API_VERSION), 'gci'),
@@ -98,7 +103,7 @@ libgci = library(GCI_VERSIONED_PROJECT_NAME,
 		true
 	])
 
-if not get_option('disable-introspection')
+if introspection
 if g_ir_compiler.found()
 custom_target('gci-typelib',
 	command: [
