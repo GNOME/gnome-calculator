@@ -179,7 +179,7 @@ libgcalc = library(VERSIONED_PROJECT_NAME,
 		true
 	])
 
-if not get_option('disable-introspection')
+if not get_option('disable-introspection') and gobject_introspection.found()
 g_ir_compiler = find_program('g-ir-compiler', required: false)
 if g_ir_compiler.found()
 custom_target('gcalc-typelib',

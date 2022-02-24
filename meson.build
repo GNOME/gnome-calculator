@@ -37,6 +37,7 @@ gobject = dependency('gobject-2.0', version: '>= ' + glib_min_version)
 libxml = dependency('libxml-2.0')
 libsoup = dependency('libsoup-2.4', version: '>= 2.42')
 gee = dependency('gee-0.8', version: '>= 0.20.0')
+gobject_introspection = dependency('gobject-introspection-1.0', required: false)
 
 # Libraries
 cc = meson.get_compiler('c')
