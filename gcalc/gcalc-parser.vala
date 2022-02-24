@@ -325,6 +325,10 @@ public class GCalc.Parser : Object {
         case TokenType.CURRENCY_SYMBOL:
           enable_parameter = true;
           break;
+        case TokenType.EOF:
+          throw new ParserError.INVALID_TOKEN_ERROR (_("Found an unexpected end of file"));
+        case TokenType.NONE:
+          break;
       }
     }
     eqman.equations.add (eq);
@@ -478,6 +482,25 @@ public class GCalc.Parser : Object {
           return TokenType.CURRENCY_SYMBOL;
       }
       break;
+    case GLib.TokenType.RIGHT_PAREN:
+    case GLib.TokenType.LEFT_PAREN:
+    case GLib.TokenType.LEFT_BRACE:
+    case GLib.TokenType.LEFT_CURLY:
+    case GLib.TokenType.OCTAL:
+    case GLib.TokenType.COMMENT_MULTI:
+    case GLib.TokenType.COMMA:
+    case GLib.TokenType.IDENTIFIER_NULL:
+    case GLib.TokenType.LAST:
+    case GLib.TokenType.RIGHT_BRACE:
+    case GLib.TokenType.NONE:
+    case GLib.TokenType.SYMBOL:
+    case GLib.TokenType.BINARY:
+    case GLib.TokenType.COMMENT_SINGLE:
+    case GLib.TokenType.RIGHT_CURLY:
+    case GLib.TokenType.HEX:
+    case GLib.TokenType.EQUAL_SIGN:
+    case GLib.TokenType.ERROR:
+    break;
     }
     return TokenType.NONE;
   }
@@ -501,6 +524,25 @@ public class GCalc.Parser : Object {
       return str.str;
     case GLib.TokenType.STRING:
       return scanner.cur_value ().@string;
+    case GLib.TokenType.RIGHT_PAREN:
+    case GLib.TokenType.LEFT_PAREN:
+    case GLib.TokenType.LEFT_BRACE:
+    case GLib.TokenType.LEFT_CURLY:
+    case GLib.TokenType.OCTAL:
+    case GLib.TokenType.COMMENT_MULTI:
+    case GLib.TokenType.COMMA:
+    case GLib.TokenType.IDENTIFIER_NULL:
+    case GLib.TokenType.LAST:
+    case GLib.TokenType.RIGHT_BRACE:
+    case GLib.TokenType.NONE:
+    case GLib.TokenType.SYMBOL:
+    case GLib.TokenType.BINARY:
+    case GLib.TokenType.COMMENT_SINGLE:
+    case GLib.TokenType.RIGHT_CURLY:
+    case GLib.TokenType.HEX:
+    case GLib.TokenType.EQUAL_SIGN:
+    case GLib.TokenType.ERROR:
+    break;
     }
     return "";
   }

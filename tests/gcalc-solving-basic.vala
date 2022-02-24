@@ -1268,7 +1268,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", (res as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res).message);
         }
         assert (res.expression != null);
         assert (res.expression is MathConstant);
@@ -1292,7 +1292,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", (res as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res).message);
         }
         assert (res.expression != null);
         assert (res.expression is MathConstant);
@@ -1304,7 +1304,7 @@ class Tests {
         assert (eq2 != null);
         var res2 = eq2.solve ();
         if (res2 is ErrorResult) {
-          warning ("Error: %s", (res2 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res2).message);
         }
         assert (res2.expression != null);
         assert (res2.expression is MathConstant);
@@ -1328,7 +1328,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", (res as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res).message);
         }
         assert (res.expression != null);
         assert (res.expression is MathConstant);
@@ -1340,7 +1340,7 @@ class Tests {
         assert (eq2 != null);
         var res2 = eq2.solve ();
         if (res2 is ErrorResult) {
-          warning ("Error: %s", (res2 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res2).message);
         }
         assert (res2.expression != null);
         assert (res2.expression is MathConstant);
@@ -1365,7 +1365,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", (res as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res).message);
         }
         assert (res.expression != null);
         assert (res.expression is MathConstant);
@@ -1377,7 +1377,7 @@ class Tests {
         assert (eq2 != null);
         var res2 = eq2.solve ();
         if (res2 is ErrorResult) {
-          warning ("Error: %s", (res2 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res2).message);
         }
         assert (res2.expression != null);
         assert (res2.expression is MathConstant);
@@ -1390,7 +1390,7 @@ class Tests {
         message ("Evaluating Eq3...");
         var res3 = eq3.solve ();
         if (res3 is ErrorResult) {
-          warning ("Error: %s", (res3 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res3).message);
         }
         assert (res3.expression != null);
         message ("Result Type: %s", res3.expression.get_type ().name ());
@@ -1416,7 +1416,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", (res as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res).message);
         }
         assert (res.expression != null);
         assert (res.expression is MathConstant);
@@ -1428,7 +1428,7 @@ class Tests {
         assert (eq2 != null);
         var res2 = eq2.solve ();
         if (res2 is ErrorResult) {
-          warning ("Error: %s", (res2 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res2).message);
         }
         assert (res2.expression != null);
         assert (res2.expression is MathConstant);
@@ -1441,7 +1441,7 @@ class Tests {
         message ("Evaluating Eq3...");
         var res3 = eq3.solve ();
         if (res3 is ErrorResult) {
-          warning ("Error: %s", (res3 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res3).message);
         }
         assert (res3.expression != null);
         message ("Result Type: %s", res3.expression.get_type ().name ());
@@ -1467,7 +1467,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", (res as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res).message);
         }
         assert (res.expression != null);
         assert (res.expression is MathConstant);
@@ -1479,7 +1479,7 @@ class Tests {
         assert (eq2 != null);
         var res2 = eq2.solve ();
         if (res2 is ErrorResult) {
-          warning ("Error: %s", (res2 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res2).message);
         }
         assert (res2.expression != null);
         assert (res2.expression is MathConstant);
@@ -1492,7 +1492,7 @@ class Tests {
         message ("Evaluating Eq3...");
         var res3 = eq3.solve ();
         if (res3 is ErrorResult) {
-          warning ("Error: %s", (res3 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res3).message);
         }
         assert (res3.expression != null);
         message ("Result Type: %s", res3.expression.get_type ().name ());
@@ -1519,7 +1519,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", (res as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res).message);
         }
         assert (res.expression != null);
         assert (res.expression is MathConstant);
@@ -1531,7 +1531,7 @@ class Tests {
         assert (eq2 != null);
         var res2 = eq2.solve ();
         if (res2 is ErrorResult) {
-          warning ("Error: %s", (res2 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res2).message);
         }
         assert (res2.expression != null);
         assert (res2.expression is MathConstant);
@@ -1544,7 +1544,7 @@ class Tests {
         message ("Evaluating Eq3...");
         var res3 = eq3.solve ();
         if (res3 is ErrorResult) {
-          warning ("Error: %s", (res3 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res3).message);
         }
         assert (res3.expression != null);
         message ("Result Type: %s", res3.expression.get_type ().name ());
@@ -1558,7 +1558,7 @@ class Tests {
         message ("Evaluating Eq4...");
         var res4 = eq4.solve ();
         if (res4 is ErrorResult) {
-          warning ("Error: %s", (res4 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res4).message);
         }
         assert (res4.expression != null);
         message ("Result Type: %s", res4.expression.get_type ().name ());
@@ -1582,7 +1582,7 @@ class Tests {
         assert (eq != null);
         var res = eq.solve ();
         if (res is ErrorResult) {
-          warning ("Error: %s", (res as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res).message);
         }
         assert (res.expression != null);
         assert (res.expression is MathConstant);
@@ -1600,7 +1600,7 @@ class Tests {
         assert (p.to_string () == "3");
         var res2 = eq.solve ();
         if (res2 is ErrorResult) {
-          warning ("Error: %s", (res2 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res2).message);
         }
         assert (res2.expression != null);
         assert (res2.expression is MathConstant);
@@ -1613,7 +1613,7 @@ class Tests {
         assert (p.to_string () == "$p");
         var res3 = eq.solve ();
         if (res3 is ErrorResult) {
-          warning ("Error: %s", (res3 as ErrorResult).message);
+          warning ("Error: %s", ((ErrorResult) res3).message);
         }
         assert (res3.expression != null);
         assert (res3.expression is MathConstant);
