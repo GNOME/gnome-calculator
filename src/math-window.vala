@@ -70,7 +70,6 @@ public class MathWindow : Adw.ApplicationWindow
 
         _display = new MathDisplay (equation);
         _display.show ();
-        _display.grabfocus ();
 
         _display.equation.display_changed.connect (history.set_serializer);
         _display.equation.history_signal.connect (this.update_history);
@@ -94,6 +93,7 @@ public class MathWindow : Adw.ApplicationWindow
         if (DEVELOPMENT_BUILD) {
             add_css_class ("devel");
         }
+        _display.grabfocus ();
 
     }
 
