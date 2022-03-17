@@ -13,20 +13,23 @@ msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2021-09-19 10:45+0000\n"
-"PO-Revision-Date: 2021-10-05 13:20+0200\n"
+"POT-Creation-Date: 2022-02-24 20:28+0000\n"
+"PO-Revision-Date: 2022-03-17 08:40+0100\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <gnome-sk-list@gnome.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0\n"
-"X-Generator: Gtranslator 40.0\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"X-Generator: Poedit 3.0.1\n"
 
+#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-msgid "GNOME Calculator"
-msgstr "Kalkulačka prostredia GNOME"
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
+#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+msgid "Calculator"
+msgstr "Kalkulačka"
 
 #: data/org.gnome.Calculator.appdata.xml.in:8
 #: data/org.gnome.Calculator.desktop.in:4
@@ -35,15 +38,15 @@ msgstr "Vykonáva aritmetické, vedecké alebo finančné výpočty"
 
 #: data/org.gnome.Calculator.appdata.xml.in:10
 msgid ""
-"GNOME Calculator is an application that solves mathematical equations. "
-"Though it at first appears to be a simple calculator with only basic "
-"arithmetic operations, you can switch into Advanced, Financial, or "
-"Programming mode to find a surprising set of capabilities."
+"Calculator is an application that solves mathematical equations. Though it "
+"at first appears to be a simple calculator with only basic arithmetic "
+"operations, you can switch into Advanced, Financial, or Programming mode to "
+"find a surprising set of capabilities."
 msgstr ""
-"Kalkulačka prostredia GNOME je aplikácia na riešenie matematických rovníc. "
-"Napriek tomu, že vyzerá ako jednoduchá kalkulačka na počítanie základných "
-"vecí, môžete prepnúť režim na Rozšírený, Finančný alebo Programátorský. "
-"Tieto režimy poskytujú rozsiahle možnosti."
+"Kalkulačka je aplikácia na riešenie matematických rovníc. Napriek tomu, že "
+"vyzerá ako jednoduchá kalkulačka na počítanie základných vecí, môžete "
+"prepnúť režim na Rozšírený, Finančný alebo Programátorský. Tieto režimy "
+"poskytujú rozsiahle možnosti."
 
 #: data/org.gnome.Calculator.appdata.xml.in:16
 msgid ""
@@ -79,31 +82,9 @@ msgstr ""
 "osmičková, desiatková a šestnástková), Boolovu algebru, jednotkový a "
 "dvojkový doplnok, prevod znaku na kód znaku, a viac."
 
-#: data/org.gnome.Calculator.appdata.xml.in:36
-msgid "GNOME Calculator in Basic Mode"
-msgstr "Kalkulačka prostredia GNOME v základnom režime"
-
-#: data/org.gnome.Calculator.appdata.xml.in:40
-msgid "GNOME Calculator in Advanced Mode"
-msgstr "Kalkulačka prostredia GNOME v rozšírenom režime"
-
-#: data/org.gnome.Calculator.appdata.xml.in:44
-msgid "GNOME Calculator in Financial Mode"
-msgstr "Kalkulačka prostredia GNOME vo finančnom režime"
-
-#: data/org.gnome.Calculator.appdata.xml.in:48
-msgid "GNOME Calculator in Programming Mode"
-msgstr "Kalkulačka prostredia GNOME v programátorskom režime"
-
-#: data/org.gnome.Calculator.appdata.xml.in:67
+#: data/org.gnome.Calculator.appdata.xml.in:66
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
-
-#. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:350 src/ui/math-window.ui:108
-msgid "Calculator"
-msgstr "Kalkulačka"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
@@ -435,7 +416,6 @@ msgid "Saudi Riyal"
 msgstr "Saudský rial"
 
 #: lib/currency.vala:104
-#| msgid "Algerian Dinar"
 msgid "Serbian Dinar"
 msgstr "Srbský dinár"
 
@@ -481,7 +461,7 @@ msgid "South African Rand"
 msgstr "Juhoafrický rand"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:270
+#: lib/equation-lexer.vala:734 src/math-converter.vala:231
 msgid "in"
 msgstr "v"
 
@@ -498,74 +478,74 @@ msgid "Error: the number of periods must be positive"
 msgstr "Chyba: počet období musí byť kladný"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:173
+#: lib/math-equation.vala:176
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:525
+#: lib/math-equation.vala:543
 msgid "No undo history"
 msgstr "Žiadna história spätných zmien"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:546
+#: lib/math-equation.vala:564
 msgid "No redo history"
 msgstr "Žiadna história dopredných zmien"
 
-#: lib/math-equation.vala:777
+#: lib/math-equation.vala:795
 msgid "No sane value to store"
 msgstr "Nie je rozumná hodnota na uloženie"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1038
+#: lib/math-equation.vala:1056
 msgid "Overflow. Try a bigger word size"
 msgstr "Pretečenie. Skúste väčšiu veľkosť slova"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1043
+#: lib/math-equation.vala:1061
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Neznáma premenná „%s“"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1050
+#: lib/math-equation.vala:1068
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funkcia „%s“ nie je definovaná"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1057
+#: lib/math-equation.vala:1075
 msgid "Unknown conversion"
 msgstr "Neznámy prevod"
 
 #. should always be run
-#: lib/math-equation.vala:1067
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1072 lib/math-equation.vala:1077
+#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
 msgid "Malformed expression"
 msgstr "Nesprávny výraz"
 
-#: lib/math-equation.vala:1088
+#: lib/math-equation.vala:1106
 msgid "Calculating"
 msgstr "Počíta sa"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1281
+#: lib/math-equation.vala:1299
 msgid "Need an integer to factorize"
 msgstr "Pre rozklad na súčin prvočísel je potrebné celé číslo"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1345
+#: lib/math-equation.vala:1363
 msgid "No sane value to bitwise shift"
 msgstr "Nezmyselná hodnota pre bitový posun"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1367
+#: lib/math-equation.vala:1385
 msgid "Displayed value not an integer"
 msgstr "Zobrazená hodnota nie je celé číslo"
 
@@ -719,7 +699,7 @@ msgid "Digital Storage"
 msgstr "Digitálne úložisko"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:41 src/math-preferences.vala:20
+#: lib/unit.vala:41 src/math-preferences.vala:110
 msgid "Degrees"
 msgstr "Stupne"
 
@@ -736,7 +716,7 @@ msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "stupeň,stupne"
 
-#: lib/unit.vala:42 src/math-preferences.vala:19
+#: lib/unit.vala:42 src/math-preferences.vala:112
 msgid "Radians"
 msgstr "Radiány"
 
@@ -751,7 +731,7 @@ msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radián,radiány,rad"
 
-#: lib/unit.vala:43 src/math-preferences.vala:21
+#: lib/unit.vala:43 src/math-preferences.vala:114
 msgid "Gradians"
 msgstr "Gradiány"
 
@@ -1047,8 +1027,6 @@ msgid "%s km/h"
 msgstr "%s km/h"
 
 #: lib/unit.vala:62
-#| msgctxt "unit-symbols"
-#| msgid "kilometers per hour,kmph,kmh"
 msgctxt "unit-symbols"
 msgid "kilometers per hour,kmph,kmh,kph"
 msgstr "kilometre za hodinu,kmph,kmh,kph"
@@ -1064,8 +1042,6 @@ msgid "%s miles/h"
 msgstr "%s míľ/h"
 
 #: lib/unit.vala:63
-#| msgctxt "unit-symbols"
-#| msgid "milesph,miles per hour,mi/h,miph"
 msgctxt "unit-symbols"
 msgid "milesph,miles per hour,mi/h,miph,mph"
 msgstr "milesph,míle za hodinu,mi/h,miph,mph"
@@ -1086,21 +1062,16 @@ msgid "meters per second,mps"
 msgstr "metre za sekundu,mps"
 
 #: lib/unit.vala:65
-#| msgid "Feets per second"
 msgid "Feet per second"
 msgstr "Stopy za sekundu"
 
 #: lib/unit.vala:65
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s feets/s"
 msgctxt "unit-format"
 msgid "%s feet/s"
 msgstr "%s stôp/s"
 
 #: lib/unit.vala:65
-#| msgctxt "unit-symbols"
-#| msgid "fps,feets per second,feetsps"
 msgctxt "unit-symbols"
 msgid "fps,feet per second,feetps"
 msgstr "fps,stopy za sekundu,feetsps"
@@ -1285,8 +1256,6 @@ msgstr "Metrické hrnčeky"
 
 #: lib/unit.vala:78
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s cb"
 msgctxt "unit-format"
 msgid "%s cup"
 msgstr "%s hrnček"
@@ -1367,8 +1336,6 @@ msgid "%s lb"
 msgstr "%s lb"
 
 #: lib/unit.vala:83
-#| msgctxt "unit-symbols"
-#| msgid "pound,pounds,lb"
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb,lbs"
 msgstr "libra,libry,lb,lbs"
@@ -1419,7 +1386,6 @@ msgid "stone,st,stones"
 msgstr "kameň,st,kamene"
 
 #: lib/unit.vala:87
-#| msgid "Centimeters"
 msgid "Centuries"
 msgstr "Storočia"
 
@@ -1440,8 +1406,6 @@ msgstr "Desaťročia"
 
 #: lib/unit.vala:88
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s days"
 msgctxt "unit-format"
 msgid "%s decades"
 msgstr "%s desaťročí"
@@ -2186,14 +2150,11 @@ msgid "hertz,Hz"
 msgstr "hertz,Hz"
 
 #: lib/unit.vala:140
-#| msgid "Kilometers"
 msgid "Kilohertz"
 msgstr "Kilohertz"
 
 #: lib/unit.vala:140
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
 msgctxt "unit-format"
 msgid "%s kHz"
 msgstr "%s kHz"
@@ -2209,8 +2170,6 @@ msgstr "Megahertz"
 
 #: lib/unit.vala:141
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s Mb"
 msgctxt "unit-format"
 msgid "%s MHz"
 msgstr "%s MHz"
@@ -2226,8 +2185,6 @@ msgstr "Gigahertz"
 
 #: lib/unit.vala:142
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s Gb"
 msgctxt "unit-format"
 msgid "%s GHz"
 msgstr "%s GHz"
@@ -2243,8 +2200,6 @@ msgstr "Terahertz"
 
 #: lib/unit.vala:143
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s THz"
 msgstr "%s THz"
@@ -2272,237 +2227,221 @@ msgstr "Kopírovať"
 msgid "Copy result to clipboard"
 msgstr "Skopíruje výsledok do schránky"
 
-#: src/ui/buttons-advanced.ui:143 src/ui/buttons-basic.ui:143
-#: src/ui/buttons-financial.ui:1979 src/ui/buttons-programming.ui:1899
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
+#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Zvyšok po delení"
 
-#: src/ui/buttons-advanced.ui:163 src/ui/buttons-basic.ui:163
-#: src/ui/buttons-financial.ui:1999 src/ui/buttons-programming.ui:1441
+#: src/ui/buttons-advanced.ui:139 src/ui/buttons-basic.ui:145
+#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1269
 msgid "Divide [/]"
 msgstr "Delenie [/]"
 
-#: src/ui/buttons-advanced.ui:277 src/ui/buttons-basic.ui:277
-#: src/ui/buttons-financial.ui:2113 src/ui/buttons-programming.ui:1461
+#: src/ui/buttons-advanced.ui:235 src/ui/buttons-basic.ui:247
+#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1286
 msgid "Multiply [*]"
 msgstr "Násobenie [*]"
 
-#: src/ui/buttons-advanced.ui:297 src/ui/buttons-basic.ui:297
-#: src/ui/buttons-financial.ui:2133 src/ui/buttons-programming.ui:1481
+#: src/ui/buttons-advanced.ui:252 src/ui/buttons-basic.ui:265
+#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1303
 msgid "Subtract [-]"
 msgstr "Odčítanie [-]"
 
-#: src/ui/buttons-advanced.ui:316 src/ui/buttons-basic.ui:316
-#: src/ui/buttons-financial.ui:2152 src/ui/buttons-programming.ui:1500
+#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:282
+#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1319
 msgid "Add [+]"
 msgstr "Sčítanie [+]"
 
-#: src/ui/buttons-advanced.ui:335 src/ui/buttons-basic.ui:335
-#: src/ui/buttons-programming.ui:1415
+#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:299
+#: src/ui/buttons-programming.ui:1247
 msgid "Pi [Ctrl+P]"
 msgstr "Ludolfovo číslo Pí [Ctrl+P]"
 
-#: src/ui/buttons-advanced.ui:362 src/ui/buttons-basic.ui:362
-#: src/ui/buttons-financial.ui:2172 src/ui/buttons-programming.ui:1396
+#: src/ui/buttons-advanced.ui:307 src/ui/buttons-basic.ui:323
+#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1231
 msgid "Root [Ctrl+R]"
 msgstr "Odmocnina [Ctrl+R]"
 
-#: src/ui/buttons-advanced.ui:380 src/ui/buttons-basic.ui:380
+#: src/ui/buttons-advanced.ui:322 src/ui/buttons-basic.ui:339
 msgid "Square [Ctrl+2]"
 msgstr "Druhá mocnina [Ctrl+2]"
 
-#. Accessible name for the exponentiation (x to the power of y) button
-#: src/ui/buttons-advanced.ui:384 src/ui/buttons-advanced.ui:761
-#: src/ui/buttons-basic.ui:384 src/ui/buttons-financial.ui:2301
-#: src/ui/buttons-programming.ui:2242
-msgid "Exponent"
-msgstr "Mocnina"
-
-#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:410
-#: src/ui/buttons-financial.ui:2191 src/ui/buttons-programming.ui:1539
+#: src/ui/buttons-advanced.ui:343 src/ui/buttons-basic.ui:361
+#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1352
 msgid "Clear Display [Escape]"
 msgstr "Zmaže displej [Escape]"
 
-#: src/ui/buttons-advanced.ui:437 src/ui/buttons-basic.ui:437
-#: src/ui/buttons-financial.ui:2218 src/ui/buttons-programming.ui:1918
+#: src/ui/buttons-advanced.ui:359 src/ui/buttons-basic.ui:378
+#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1665
 msgid "Start Group [(]"
 msgstr "Začiatok skupiny [(]"
 
-#: src/ui/buttons-advanced.ui:457 src/ui/buttons-basic.ui:457
-#: src/ui/buttons-financial.ui:2238 src/ui/buttons-programming.ui:1937
+#: src/ui/buttons-advanced.ui:376 src/ui/buttons-basic.ui:396
+#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1681
 msgid "End Group [)]"
 msgstr "Koniec skupiny [)]"
 
-#: src/ui/buttons-advanced.ui:477 src/ui/buttons-basic.ui:477
-#: src/ui/buttons-financial.ui:2258
+#: src/ui/buttons-advanced.ui:393 src/ui/buttons-basic.ui:414
+#: src/ui/buttons-financial.ui:1519
 msgid "Percentage [%]"
 msgstr "Percentá [%]"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:491 src/ui/buttons-basic.ui:491
-#: src/ui/buttons-financial.ui:2272 src/ui/buttons-programming.ui:1514
+#: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
+#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
 msgid "="
 msgstr "="
 
-#: src/ui/buttons-advanced.ui:497 src/ui/buttons-basic.ui:497
-#: src/ui/buttons-financial.ui:2278 src/ui/buttons-programming.ui:1520
+#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
+#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
 msgid "Calculate Result"
 msgstr "Vypočíta výsledok"
 
-#: src/ui/buttons-advanced.ui:528 src/ui/buttons-programming.ui:1967
+#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
 msgid "Subscript mode [Alt]"
 msgstr "Režim dolného indexu [Alt]"
 
-#. Accessible name for the subscript mode button
-#: src/ui/buttons-advanced.ui:533 src/ui/buttons-programming.ui:1972
-msgid "Subscript"
-msgstr "Dolný index"
-
-#: src/ui/buttons-advanced.ui:558 src/ui/buttons-programming.ui:1997
+#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
 msgid "Superscript mode [Ctrl]"
 msgstr "Režim horného indexu [Ctrl]"
 
-#. Accessible name for the superscript mode button
-#: src/ui/buttons-advanced.ui:563 src/ui/buttons-programming.ui:2002
-msgid "Superscript"
-msgstr "Horný index"
-
-#: src/ui/buttons-advanced.ui:590 src/ui/buttons-programming.ui:2440
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
 msgid "Factorize [Ctrl+F]"
 msgstr "Faktorizuje [Ctrl+F]"
 
-#. Accessible name for the factorize button
-#: src/ui/buttons-advanced.ui:594 src/ui/buttons-programming.ui:2444
-msgid "Factorize"
-msgstr "Faktorizovať"
-
-#: src/ui/buttons-advanced.ui:613
+#: src/ui/buttons-advanced.ui:498
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Vedecký exponent [Ctrl+E]"
 
-#. Accessible name for the scientific exponent button
-#: src/ui/buttons-advanced.ui:617
-msgid "Scientific Exponent"
-msgstr "Vedecký exponent"
-
-#: src/ui/buttons-advanced.ui:643
+#: src/ui/buttons-advanced.ui:519
 msgid "Cosine"
 msgstr "Kosínus"
 
-#: src/ui/buttons-advanced.ui:662
+#: src/ui/buttons-advanced.ui:535
 msgid "Sine"
 msgstr "Sínus"
 
-#: src/ui/buttons-advanced.ui:681
+#: src/ui/buttons-advanced.ui:551
 msgid "Tangent"
 msgstr "Tangens"
 
-#: src/ui/buttons-advanced.ui:700
+#: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
 msgstr "Hyperbolický kosínus"
 
-#: src/ui/buttons-advanced.ui:719
+#: src/ui/buttons-advanced.ui:583
 msgid "Hyperbolic Sine"
 msgstr "Hyperbolický sínus"
 
-#: src/ui/buttons-advanced.ui:738
+#: src/ui/buttons-advanced.ui:599
 msgid "Hyperbolic Tangent"
 msgstr "Hyperbolický tangens"
 
-#: src/ui/buttons-advanced.ui:756 src/ui/buttons-financial.ui:2296
-#: src/ui/buttons-programming.ui:2237
+#: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
+#: src/ui/buttons-programming.ui:1877
 msgid "Exponent [^ or **]"
 msgstr "Mocnina [^ alebo **]"
 
-#: src/ui/buttons-advanced.ui:786 src/ui/buttons-programming.ui:2267
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
 msgid "Inverse [Ctrl+I]"
 msgstr "Prevrátená hodnota [Ctrl+I]"
 
-#. Accessible name for the inverse button
-#: src/ui/buttons-advanced.ui:791 src/ui/buttons-programming.ui:2272
-msgid "Inverse"
-msgstr "Prevrátená hodnota"
-
-#: src/ui/buttons-advanced.ui:818
+#: src/ui/buttons-advanced.ui:658
 msgid "Euler’s Number"
 msgstr "Eulerovo číslo"
 
-#: src/ui/buttons-advanced.ui:845
+#: src/ui/buttons-advanced.ui:681
 msgid "Natural Logarithm"
 msgstr "Prirodzený logaritmus"
 
-#: src/ui/buttons-advanced.ui:864 src/ui/buttons-financial.ui:2327
-#: src/ui/buttons-programming.ui:2299
+#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
+#: src/ui/buttons-programming.ui:1921
 msgid "Logarithm"
 msgstr "Logaritmus"
 
-#: src/ui/buttons-advanced.ui:882 src/ui/buttons-programming.ui:2337
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
 msgstr "Faktoriál [!]"
 
-#. Accessible name for the factorial button
-#: src/ui/buttons-advanced.ui:887 src/ui/buttons-programming.ui:2342
-msgid "Factorial"
-msgstr "Faktoriál"
-
-#: src/ui/buttons-advanced.ui:913 src/ui/buttons-programming.ui:2368
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
 msgid "Absolute Value [|]"
 msgstr "Absolútna hodnota [|]"
 
-#. Accessible name for the absolute value button
-#: src/ui/buttons-advanced.ui:918 src/ui/buttons-programming.ui:2373
-msgid "Absolute Value"
-msgstr "Absolútna hodnota"
-
-#: src/ui/buttons-advanced.ui:970
+#: src/ui/buttons-advanced.ui:778
 msgid "Real Component"
 msgstr "Reálna časť"
 
-#: src/ui/buttons-advanced.ui:990
+#: src/ui/buttons-advanced.ui:795
 msgid "Imaginary Component"
 msgstr "Imaginárna časť"
 
-#: src/ui/buttons-advanced.ui:1010
+#: src/ui/buttons-advanced.ui:812
 msgid "Complex conjugate"
 msgstr "Komplexne združené číslo"
 
-#: src/ui/buttons-advanced.ui:1030
+#: src/ui/buttons-advanced.ui:829
 msgid "Complex argument"
 msgstr "Argument komplexného čísla"
 
-#. Accessible name for the memory button
-#: src/ui/buttons-advanced.ui:1048 src/ui/buttons-advanced.ui:1051
-#: src/ui/buttons-financial.ui:2358 src/ui/buttons-financial.ui:2361
-#: src/ui/buttons-programming.ui:2486
+#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Pamäť"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:1060 src/ui/buttons-financial.ui:2370
-#: src/ui/buttons-programming.ui:2499
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:1097
+#: src/ui/buttons-advanced.ui:859
 msgid "Additional Functions"
 msgstr "Ďalšie funkcie"
 
-#. Accessible name for the store value button
-#: src/ui/buttons-advanced.ui:1100 src/ui/buttons-programming.ui:2489
-msgid "Store"
-msgstr "Uložiť"
-
 #. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:8 src/ui/buttons-financial.ui:2409
+#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
 msgid "Compounding Term"
 msgstr "Doba úročenia"
 
-#: src/ui/buttons-financial.ui:22 src/ui/buttons-financial.ui:205
-#: src/ui/buttons-financial.ui:388 src/ui/buttons-financial.ui:571
-#: src/ui/buttons-financial.ui:723 src/ui/buttons-financial.ui:907
-#: src/ui/buttons-financial.ui:1091 src/ui/buttons-financial.ui:1275
-#: src/ui/buttons-financial.ui:1459 src/ui/buttons-financial.ui:1674
-#: src/ui/buttons-programming.ui:2644
+#. Compounding Term Dialog: Label before present value input
+#. Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.ui:55 src/ui/buttons-financial.ui:727
+msgid "Present _Value:"
+msgstr "Súčasná _hodnota:"
+
+#. Compounding Term Dialog: Label before periodic interest rate input
+#. Future Value Dialog: Label before periodic interest rate input
+#. Periodic Payment Dialog: Label before periodic interest rate input
+#. Present Value Dialog: Label before periodic interest rate input
+#. Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.ui:67 src/ui/buttons-financial.ui:282
+#: src/ui/buttons-financial.ui:493 src/ui/buttons-financial.ui:610
+#: src/ui/buttons-financial.ui:1106
+msgid "Periodic Interest _Rate:"
+msgstr "Úroková _sadzba za obdobie:"
+
+#. Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:80
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Vypočíta počet období, ktoré sú potrebné na navýšenie investície súčasnej "
+"hodnoty na budúcu hodnotu pri pevnom úročení za obdobie."
+
+#. Compounding Term Dialog: Label before future value input
+#. Periodic Interest Rate Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:91 src/ui/buttons-financial.ui:715
+msgid "_Future Value:"
+msgstr "_Budúca hodnota:"
+
+#: src/ui/buttons-financial.ui:110 src/ui/buttons-financial.ui:227
+#: src/ui/buttons-financial.ui:343 src/ui/buttons-financial.ui:437
+#: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
+#: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
+#: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
+#: src/ui/buttons-programming.ui:2139
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
@@ -2516,54 +2455,21 @@ msgstr "_Zrušiť"
 #. Straight-Line Depreciation Dialog: Calculate button
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
 #. Payment Period Dialog: Button to calculate result
-#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:220
-#: src/ui/buttons-financial.ui:403 src/ui/buttons-financial.ui:586
-#: src/ui/buttons-financial.ui:738 src/ui/buttons-financial.ui:922
-#: src/ui/buttons-financial.ui:1106 src/ui/buttons-financial.ui:1290
-#: src/ui/buttons-financial.ui:1474 src/ui/buttons-financial.ui:1689
+#: src/ui/buttons-financial.ui:116 src/ui/buttons-financial.ui:233
+#: src/ui/buttons-financial.ui:349 src/ui/buttons-financial.ui:443
+#: src/ui/buttons-financial.ui:560 src/ui/buttons-financial.ui:677
+#: src/ui/buttons-financial.ui:794 src/ui/buttons-financial.ui:911
+#: src/ui/buttons-financial.ui:1050 src/ui/buttons-financial.ui:1167
 msgid "C_alculate"
 msgstr "_Vypočítať"
 
-#. Compounding Term Dialog: Label before present value input
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:117 src/ui/buttons-financial.ui:1172
-msgid "Present _Value:"
-msgstr "Súčasná _hodnota:"
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:468
-#: src/ui/buttons-financial.ui:804 src/ui/buttons-financial.ui:988
-#: src/ui/buttons-financial.ui:1769
-msgid "Periodic Interest _Rate:"
-msgstr "Úroková _sadzba za obdobie:"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:149
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"Vypočíta počet období, ktoré sú potrebné na navýšenie investície súčasnej "
-"hodnoty na budúcu hodnotu pri pevnom úročení za obdobie."
-
-#. Compounding Term Dialog: Label before future value input
-#. Periodic Interest Rate Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:163 src/ui/buttons-financial.ui:1156
-msgid "_Future Value:"
-msgstr "_Budúca hodnota:"
-
 #. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:191
+#: src/ui/buttons-financial.ui:122
 msgid "Double-Declining Depreciation"
 msgstr "Dvojitá odpisová metóda s klesajúcim zostatkom (DDB)"
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:255
+#: src/ui/buttons-financial.ui:143
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -2573,31 +2479,31 @@ msgstr ""
 
 #. Double-Declining Depreciation Dialog: Label before cost input
 #. Gross Profit Margin Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:269 src/ui/buttons-financial.ui:635
+#: src/ui/buttons-financial.ui:154 src/ui/buttons-financial.ui:386
 msgid "C_ost:"
 msgstr "_Náklady:"
 
 #. Double-Declining Depreciation Dialog: Label before life input
 #. Straight-Line Depreciation Dialog: Label before life input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:285 src/ui/buttons-financial.ui:1357
-#: src/ui/buttons-financial.ui:1525
+#: src/ui/buttons-financial.ui:166 src/ui/buttons-financial.ui:844
+#: src/ui/buttons-financial.ui:949
 msgid "_Life:"
 msgstr "Ži_votnosť:"
 
 #. Double-Declining Depreciation Dialog: Label before period input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:331 src/ui/buttons-financial.ui:1509
+#: src/ui/buttons-financial.ui:198 src/ui/buttons-financial.ui:937
 msgid "_Period:"
 msgstr "_Obdobie:"
 
 #. Title of Future Value dialog
-#: src/ui/buttons-financial.ui:374 src/ui/buttons-financial.ui:2447
+#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:1651
 msgid "Future Value"
 msgstr "Budúca hodnota"
 
 #. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:438
+#: src/ui/buttons-financial.ui:259
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -2609,24 +2515,24 @@ msgstr ""
 #. Future Value Dialog: Label before periodic payment input
 #. Present Value Dialog: Label before periodic payment input
 #. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:452 src/ui/buttons-financial.ui:972
-#: src/ui/buttons-financial.ui:1801
+#: src/ui/buttons-financial.ui:270 src/ui/buttons-financial.ui:598
+#: src/ui/buttons-financial.ui:1130
 msgid "_Periodic Payment:"
 msgstr "_Pravidelná splátka:"
 
 #. Future Value Dialog: Label before number of periods input
 #. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:484 src/ui/buttons-financial.ui:1004
+#: src/ui/buttons-financial.ui:294 src/ui/buttons-financial.ui:622
 msgid "_Number of Periods:"
 msgstr "_Počet období:"
 
 #. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:557 src/ui/buttons-financial.ui:2586
+#: src/ui/buttons-financial.ui:355 src/ui/buttons-financial.ui:1769
 msgid "Gross Profit Margin"
 msgstr "Hrubá marža"
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:621
+#: src/ui/buttons-financial.ui:375
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -2635,17 +2541,17 @@ msgstr ""
 "hrubej marže."
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:651
+#: src/ui/buttons-financial.ui:398
 msgid "_Margin:"
 msgstr "_Marža:"
 
 #. Title of Periodic Payment dialog
-#: src/ui/buttons-financial.ui:709 src/ui/buttons-financial.ui:2566
+#: src/ui/buttons-financial.ui:449 src/ui/buttons-financial.ui:1752
 msgid "Periodic Payment"
 msgstr "Pravidelná splátka"
 
 #. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:774
+#: src/ui/buttons-financial.ui:470
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -2654,23 +2560,23 @@ msgstr ""
 "konci každého platobného obdobia"
 
 #. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:788
+#: src/ui/buttons-financial.ui:481
 msgid "_Principal:"
 msgstr "_Pôžička:"
 
 #. Periodic Payment Dialog: Label before term input
 #. Periodic Interest Rate Dialog: Label before term input
-#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:1188
+#: src/ui/buttons-financial.ui:505 src/ui/buttons-financial.ui:739
 msgid "_Term:"
 msgstr "_Obdobie:"
 
 #. Title of Present Value dialog
-#: src/ui/buttons-financial.ui:893 src/ui/buttons-financial.ui:2546
+#: src/ui/buttons-financial.ui:566 src/ui/buttons-financial.ui:1735
 msgid "Present Value"
 msgstr "Súčasná hodnota"
 
 #. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:958
+#: src/ui/buttons-financial.ui:587
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -2680,12 +2586,12 @@ msgstr ""
 "odpočítavaných pravidelným úročením v danom počte splátok v danom období."
 
 #. Title of Periodic Interest Rate dialog
-#: src/ui/buttons-financial.ui:1077 src/ui/buttons-financial.ui:2526
+#: src/ui/buttons-financial.ui:683 src/ui/buttons-financial.ui:1718
 msgid "Periodic Interest Rate"
 msgstr "Úroková sadzba za obdobie"
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1142
+#: src/ui/buttons-financial.ui:704
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
@@ -2694,24 +2600,24 @@ msgstr ""
 "hodnotu počas niekoľkých období."
 
 #. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:1261
+#: src/ui/buttons-financial.ui:800
 msgid "Straight-Line Depreciation"
 msgstr "Lineárna amortizácia"
 
 #. Straight-Line Depreciation Dialog: Label before cost input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:1325 src/ui/buttons-financial.ui:1557
+#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:973
 msgid "_Cost:"
 msgstr "_Náklady:"
 
 #. Straight-Line Depreciation Dialog: Label before salvage input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:1341 src/ui/buttons-financial.ui:1541
+#: src/ui/buttons-financial.ui:832 src/ui/buttons-financial.ui:961
 msgid "_Salvage:"
 msgstr "_Zostatok:"
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1419
+#: src/ui/buttons-financial.ui:887
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -2724,12 +2630,12 @@ msgstr ""
 "počas ktorých sa majetok odpisuje."
 
 #. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:1445
+#: src/ui/buttons-financial.ui:917
 msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Amortizácia po súčtoch číslic rokov"
 
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1634
+#: src/ui/buttons-financial.ui:1026
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
@@ -2744,17 +2650,17 @@ msgstr ""
 "ktorých sa majetok odpisuje."
 
 #. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:1660
+#: src/ui/buttons-financial.ui:1056
 msgid "Payment Period"
 msgstr "Platobné obdobie"
 
 #. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:1785
+#: src/ui/buttons-financial.ui:1118
 msgid "Future _Value:"
 msgstr "Budúca _hodnota:"
 
 #. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1818
+#: src/ui/buttons-financial.ui:1143
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -2764,166 +2670,153 @@ msgstr ""
 "splátkového obdobia na navýšenie budúcej hodnoty pri pravidelnom úročení"
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:2403
+#: src/ui/buttons-financial.ui:1616
 msgid "Ctrm"
 msgstr "Ctrm"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2422
+#: src/ui/buttons-financial.ui:1632
 msgid "Ddb"
 msgstr "Ddb"
 
-#: src/ui/buttons-financial.ui:2428
+#: src/ui/buttons-financial.ui:1635
 msgid "Double Declining Depreciation"
 msgstr "Dvojitá odpisová metóda s klesajúcim zostatkom (DDB)"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:2441
+#: src/ui/buttons-financial.ui:1648
 msgid "Fv"
 msgstr "Fv"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:2460
+#: src/ui/buttons-financial.ui:1664
 msgid "Term"
 msgstr "Term"
 
-#: src/ui/buttons-financial.ui:2466
+#: src/ui/buttons-financial.ui:1667
 msgid "Financial Term"
 msgstr "Finančné obdobie"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2480
+#: src/ui/buttons-financial.ui:1681
 msgid "Syd"
 msgstr "Syd"
 
-#: src/ui/buttons-financial.ui:2486
+#: src/ui/buttons-financial.ui:1684
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Amortizácia po súčtoch číslic rokov"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2500
+#: src/ui/buttons-financial.ui:1698
 msgid "Sln"
 msgstr "Sln"
 
-#: src/ui/buttons-financial.ui:2506
+#: src/ui/buttons-financial.ui:1701
 msgid "Straight Line Depreciation"
 msgstr "Lineárna amortizácia"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:2520
+#: src/ui/buttons-financial.ui:1715
 msgid "Rate"
 msgstr "Rate"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:2540
+#: src/ui/buttons-financial.ui:1732
 msgid "Pv"
 msgstr "Pv"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:2560
+#: src/ui/buttons-financial.ui:1749
 msgid "Pmt"
 msgstr "Pmt"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:2580
+#: src/ui/buttons-financial.ui:1766
 msgid "Gpm"
 msgstr "Gpm"
 
-#: src/ui/buttons-programming.ui:19
+#: src/ui/buttons-programming.ui:16
 msgid "Binary"
 msgstr "Dvojkový"
 
-#: src/ui/buttons-programming.ui:20
+#: src/ui/buttons-programming.ui:17
 msgid "Octal"
 msgstr "Osmičkový"
 
-#: src/ui/buttons-programming.ui:21
+#: src/ui/buttons-programming.ui:18
 msgid "Decimal"
 msgstr "Desiatkový"
 
-#: src/ui/buttons-programming.ui:22
+#: src/ui/buttons-programming.ui:19
 msgid "Hexadecimal"
 msgstr "Šestnástkový"
 
-#. Accessible name for the shift left button
-#: src/ui/buttons-programming.ui:2026 src/ui/buttons-programming.ui:2029
+#: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Posun vľavo"
 
-#. Accessible name for the shift right button
-#: src/ui/buttons-programming.ui:2072 src/ui/buttons-programming.ui:2075
+#: src/ui/buttons-programming.ui:1764
 msgid "Shift Right"
 msgstr "Posun vpravo"
 
-#: src/ui/buttons-programming.ui:2120
+#: src/ui/buttons-programming.ui:1778
 msgid "Boolean Exclusive OR"
 msgstr "Exkluzívny logický súčet XOR"
 
-#: src/ui/buttons-programming.ui:2139
+#: src/ui/buttons-programming.ui:1794
 msgid "Boolean OR"
 msgstr "Logický súčet OR"
 
-#: src/ui/buttons-programming.ui:2159
+#: src/ui/buttons-programming.ui:1811
 msgid "Boolean AND"
 msgstr "Logický súčin AND"
 
-#: src/ui/buttons-programming.ui:2179
+#: src/ui/buttons-programming.ui:1828
 msgid "Boolean NOT"
 msgstr "Logická negácia NOT"
 
-#: src/ui/buttons-programming.ui:2199
+#: src/ui/buttons-programming.ui:1845
 msgid "Ones’ Complement"
 msgstr "Jednotkový doplnok"
 
-#: src/ui/buttons-programming.ui:2219
+#: src/ui/buttons-programming.ui:1862
 msgid "Two’s Complement"
 msgstr "Dvojkový doplnok"
 
-#: src/ui/buttons-programming.ui:2319
+#: src/ui/buttons-programming.ui:1938
 msgid "Binary Logarithm"
 msgstr "Binárny logaritmus"
 
-#: src/ui/buttons-programming.ui:2400
+#: src/ui/buttons-programming.ui:1998
 msgid "Integer Component"
 msgstr "Celočíselná časť"
 
-#: src/ui/buttons-programming.ui:2420
+#: src/ui/buttons-programming.ui:2015
 msgid "Fractional Component"
 msgstr "Desatinná časť"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2463 src/ui/buttons-programming.ui:2597
+#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
 msgid "Insert Character Code"
 msgstr "Vložiť kód znaku"
 
-#. Accessible name for the insert character button
-#: src/ui/buttons-programming.ui:2467
-msgid "Insert Character"
-msgstr "Vložiť znak"
-
 # tooltip
-#: src/ui/buttons-programming.ui:2533
-#| msgid "Word size"
+#: src/ui/buttons-programming.ui:2078
 msgid "Change word size"
 msgstr "Zmení veľkosť slova"
 
-#: src/ui/buttons-programming.ui:2567
-#| msgid "Word size"
-msgid "Word Size"
-msgstr "Veľkosť slova"
-
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2610
+#: src/ui/buttons-programming.ui:2115
 msgid "Ch_aracter:"
 msgstr "_Znak:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2659
+#: src/ui/buttons-programming.ui:2145
 msgid "_Insert"
 msgstr "_Vložiť"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Spustí v zadanom režime (basic - „základný“, advanced - „rozšírený“, "
@@ -2931,27 +2824,22 @@ msgstr ""
 "klávesnice“)"
 
 #  cmd desc
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Solve given equation"
 msgstr "Vyrieši zadanú rovnicu"
 
 # cmd desc
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Start with given equation"
 msgstr "Spustí sa so zadanou rovnicou"
 
 #  cmd desc
-#: src/gnome-calculator.vala:28
+#: src/gnome-calculator.vala:27
 msgid "Show release version"
 msgstr "Zobrazí verziu vydania"
 
-#. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:314
-msgid "Unable to open help file"
-msgstr "Nie je možné otvoriť súbor s pomocníkom"
-
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:345
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "Marcel Telka <marcel@telka.sk>\n"
@@ -2959,25 +2847,25 @@ msgstr ""
 "Robert Hartl <hartl.robert@gmail.com>\n"
 "Dušan Kazik <prescott66@gmail.com>"
 
-#: src/gnome-calculator.vala:351 src/ui/math-window.ui:101
+#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
 msgid "About Calculator"
 msgstr "O programe Kalkulačka"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:360
+#: src/gnome-calculator.vala:334
 msgid "Calculator with financial and scientific modes."
 msgstr "Kalkulačka s finančným a vedeckým režimom."
 
-#: src/gnome-calculator.vala:375
+#: src/gnome-calculator.vala:347
 msgid "Are you sure you want to close all open windows?"
 msgstr "Naozaj chcete zavrieť všetky otvorené okná?"
 
-#: src/gnome-calculator.vala:376
+#: src/gnome-calculator.vala:348
 msgid "Close _All"
 msgstr "Za_vrieť všetko"
 
-#: src/math-buttons.vala:223 src/math-buttons.vala:581
-#: src/math-buttons.vala:596
+#: src/math-buttons.vala:227 src/math-buttons.vala:609
+#: src/math-buttons.vala:625
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -2985,7 +2873,7 @@ msgstr[0] "%d-bitov"
 msgstr[1] "%d-bit"
 msgstr[2] "%d-bity"
 
-#: src/math-buttons.vala:566
+#: src/math-buttons.vala:594
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2993,91 +2881,92 @@ msgstr[0] "o %d miest"
 msgstr[1] "o %d miesto"
 msgstr[2] "o %d miesta"
 
-#: src/ui/math-converter.ui:36
+#: src/ui/math-converter.ui:41
 msgid " to "
 msgstr "na"
 
-#: src/ui/math-converter.ui:66
+#: src/ui/math-converter.ui:59
 msgid "Switch conversion units"
 msgstr "Vymeniť jednotky prevodu"
 
-#: src/ui/math-converter.ui:112
+#: src/ui/math-converter.ui:98
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:564
+#: src/math-display.vala:606
 msgid "Defined Functions"
 msgstr "Definované funkcie"
 
-#: src/math-display.vala:621
+#: src/math-display.vala:651
+msgid "Built-in keywords"
+msgstr "Vstavané kľúčové slová"
+
+#: src/math-display.vala:695
+msgid "Defined currencies"
+msgstr "Definované meny"
+
+#: src/math-display.vala:745
 msgid "Defined Variables"
 msgstr "Definované premenné"
 
-#: src/ui/math-function-popover.ui:34
+#: src/ui/math-function-popover.ui:27
 msgid "New function"
 msgstr "Nová funkcia"
 
-#: src/ui/math-function-popover.ui:47
+#: src/ui/math-function-popover.ui:37
 msgid "Select no. of arguments"
 msgstr "Vyberte počet argumentov"
 
-#. Translators: Word size combo: 8 bit
-#: src/math-preferences.vala:26
+#: src/math-preferences.vala:123
 msgid "8-bit"
 msgstr "8-bitov"
 
-#. Translators: Word size combo: 16 bit
-#: src/math-preferences.vala:28
+#: src/math-preferences.vala:125
 msgid "16-bit"
 msgstr "16-bitov"
 
-#. Translators: Word size combo: 32 bit
-#: src/math-preferences.vala:30
+#: src/math-preferences.vala:127
 msgid "32-bit"
 msgstr "32-bitov"
 
-#. Translators: Word size combo: 64 bit
-#: src/math-preferences.vala:32
+#: src/math-preferences.vala:129
 msgid "64-bit"
 msgstr "64-bitov"
 
-#. Translators: Refresh interval combo: never
-#: src/math-preferences.vala:37
-msgid "never"
-msgstr "nikdy"
+#: src/math-preferences.vala:138
+msgid "Never"
+msgstr "Nikdy"
 
-#. Translators: Refresh interval combo: daily
-#: src/math-preferences.vala:39
-msgid "daily"
-msgstr "denne"
+#: src/math-preferences.vala:140
+msgid "Daily"
+msgstr "Denne"
 
-#. Translators: Refresh interval combo: weekly
-#: src/math-preferences.vala:41
-msgid "weekly"
-msgstr "týždenne"
+#: src/math-preferences.vala:142
+msgid "Weekly"
+msgstr "Týždenne"
 
-#: src/ui/math-preferences.ui:22
+#: src/ui/math-preferences.ui:19
 msgid "Number of _decimals"
 msgstr "Počet _desatinných miest"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:34
 msgid "Trailing _zeroes"
 msgstr "Koncové _nuly"
 
-#: src/ui/math-preferences.ui:55
+#: src/ui/math-preferences.ui:46
 msgid "_Thousands separators"
 msgstr "Oddeľovač _tisícov"
 
-#: src/ui/math-preferences.ui:70
+#: src/ui/math-preferences.ui:58
 msgid "_Angle units"
 msgstr "_Uhlové jednotky"
 
-#: src/ui/math-preferences.ui:77
+#: src/ui/math-preferences.ui:64
 msgid "Word _size"
 msgstr "Dĺžka _slova"
 
-#: src/ui/math-preferences.ui:84
+#: src/ui/math-preferences.ui:70
 msgid "E_xchange rate refresh interval"
 msgstr "Interval obnovenia konverzného _kurzu mien"
 
@@ -3251,33 +3140,32 @@ msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Prepnutie do režimu klávesnice (alt.)"
 
-#: src/ui/math-variable-popover.ui:38
+#: src/ui/math-variable-popover.ui:31
 msgid "Variable name"
 msgstr "Názov premennej"
 
 # tooltip
-#: src/ui/math-variable-popover.ui:52
+#: src/ui/math-variable-popover.ui:40
 msgid "Store value into existing or new variable"
 msgstr "Uloží hodnotu do existujúcej alebo novej premennej"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:90
+#: src/ui/math-window.ui:20 src/math-window.vala:113
 msgid "Basic"
 msgstr "Základný"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:95
+#: src/ui/math-window.ui:25 src/math-window.vala:119
 msgid "Advanced"
 msgstr "Rozšírený"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:100
+#: src/ui/math-window.ui:30 src/math-window.vala:125
 msgid "Financial"
 msgstr "Finančný"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:105
+#: src/ui/math-window.ui:35 src/math-window.vala:131
 msgid "Programming"
 msgstr "Programátorský"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:110
-#| msgid "Keyboard Mode"
+#: src/ui/math-window.ui:40 src/math-window.vala:137
 msgid "Keyboard"
 msgstr "Klávesnica"
 
@@ -3317,28 +3205,78 @@ msgstr "Klávesové skratky"
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:117
 msgid "Mode selection"
 msgstr "Výber režimu"
 
-# tooltip
-#: src/ui/math-window.ui:179
-#| msgctxt "shortcut window"
-#| msgid "Undo"
-msgid "Undo"
-msgstr "Vráti späť"
-
-#: src/ui/math-window.ui:180
+#: src/ui/math-window.ui:128
 msgid "Undo [Ctrl+Z]"
 msgstr "Späť [Ctrl+Z]"
 
-#: src/ui/math-window.ui:196
+# tooltip
+#: src/ui/math-window.ui:132
+msgid "Undo"
+msgstr "Vráti späť"
+
+#: src/ui/math-window.ui:143
 msgid "Primary menu"
 msgstr "Hlavná ponuka"
 
-#: src/math-window.vala:138
+#: src/math-window.vala:166
 msgid "_Quit"
 msgstr "U_končiť"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "Kalkulačka prostredia GNOME"
+
+#~ msgid "GNOME Calculator in Basic Mode"
+#~ msgstr "Kalkulačka prostredia GNOME v základnom režime"
+
+#~ msgid "GNOME Calculator in Advanced Mode"
+#~ msgstr "Kalkulačka prostredia GNOME v rozšírenom režime"
+
+#~ msgid "GNOME Calculator in Financial Mode"
+#~ msgstr "Kalkulačka prostredia GNOME vo finančnom režime"
+
+#~ msgid "GNOME Calculator in Programming Mode"
+#~ msgstr "Kalkulačka prostredia GNOME v programátorskom režime"
+
+#~ msgid "Exponent"
+#~ msgstr "Mocnina"
+
+#~ msgid "Subscript"
+#~ msgstr "Dolný index"
+
+#~ msgid "Superscript"
+#~ msgstr "Horný index"
+
+#~ msgid "Factorize"
+#~ msgstr "Faktorizovať"
+
+#~ msgid "Scientific Exponent"
+#~ msgstr "Vedecký exponent"
+
+#~ msgid "Inverse"
+#~ msgstr "Prevrátená hodnota"
+
+#~ msgid "Factorial"
+#~ msgstr "Faktoriál"
+
+#~ msgid "Absolute Value"
+#~ msgstr "Absolútna hodnota"
+
+#~ msgid "Store"
+#~ msgstr "Uložiť"
+
+#~ msgid "Insert Character"
+#~ msgstr "Vložiť znak"
+
+#~| msgid "Word size"
+#~ msgid "Word Size"
+#~ msgstr "Veľkosť slova"
+
+#~ msgid "Unable to open help file"
+#~ msgstr "Nie je možné otvoriť súbor s pomocníkom"
 
 #~ msgid "How often the currency exchange rates should be updated"
 #~ msgstr "Ako často bude aktualizovaný konverzný kurz mien"
