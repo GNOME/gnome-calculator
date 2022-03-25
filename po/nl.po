@@ -10,15 +10,15 @@
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2010–20, 2011, 2018.
 # Erwin Poeze <donnut@outlook.com>, 2013.
 # Reinout van Schouwen <reinouts@gnome.org>, 2013.
-# Nathan Follens <nfollens@gnome.org>, 2015-2021.
+# Nathan Follens <nfollens@gnome.org>, 2015-2022.
 # Justin van Steijn <jvs@fsfe.org>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2021-08-25 09:56+0000\n"
-"PO-Revision-Date: 2021-09-02 15:32+0200\n"
+"POT-Creation-Date: 2022-02-24 20:28+0000\n"
+"PO-Revision-Date: 2022-03-25 14:38+0100\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
 "Language: nl\n"
@@ -26,11 +26,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
+#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-msgid "GNOME Calculator"
-msgstr "Gnome Rekenmachine"
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
+#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+msgid "Calculator"
+msgstr "Rekenmachine"
 
 #: data/org.gnome.Calculator.appdata.xml.in:8
 #: data/org.gnome.Calculator.desktop.in:4
@@ -39,16 +42,16 @@ msgstr "Rekenkundige, wetenschappelijke of financiële berekeningen uitvoeren"
 
 #: data/org.gnome.Calculator.appdata.xml.in:10
 msgid ""
-"GNOME Calculator is an application that solves mathematical equations. "
-"Though it at first appears to be a simple calculator with only basic "
-"arithmetic operations, you can switch into Advanced, Financial, or "
-"Programming mode to find a surprising set of capabilities."
+"Calculator is an application that solves mathematical equations. Though it "
+"at first appears to be a simple calculator with only basic arithmetic "
+"operations, you can switch into Advanced, Financial, or Programming mode to "
+"find a surprising set of capabilities."
 msgstr ""
-"Gnome Rekenmachine is een toepassing die wiskundige vergelijkingen oplost. "
+"Rekenmachine is een toepassing die wiskundige vergelijkingen oplost. "
 "Alhoewel het op het eerste gezicht een eenvoudige rekenmachine lijkt met "
-"slechts rekenkundige basisoperaties, kunt u omschakelen naar Geavanceerd, "
-"Financieel of Programmeren en een verbazende verzameling mogelijkheden "
-"vinden."
+"slechts rekenkundige basisoperaties, kunt u omschakelen naar de modi "
+"Geavanceerd, Financieel of Programmeren en een verbazende verzameling "
+"mogelijkheden vinden."
 
 #: data/org.gnome.Calculator.appdata.xml.in:16
 msgid ""
@@ -82,31 +85,9 @@ msgstr ""
 "octaal, decimaal en hexadecimaal), booleaanse algebra, 1- en 2-complement, "
 "teken-naar-tekencodeconversie en meer."
 
-#: data/org.gnome.Calculator.appdata.xml.in:36
-msgid "GNOME Calculator in Basic Mode"
-msgstr "Gnome Rekenmachine in eenvoudige modus"
-
-#: data/org.gnome.Calculator.appdata.xml.in:40
-msgid "GNOME Calculator in Advanced Mode"
-msgstr "Gnome Rekenmachine in geavanceerde modus"
-
-#: data/org.gnome.Calculator.appdata.xml.in:44
-msgid "GNOME Calculator in Financial Mode"
-msgstr "Gnome Rekenmachine in financiële modus"
-
-#: data/org.gnome.Calculator.appdata.xml.in:48
-msgid "GNOME Calculator in Programming Mode"
-msgstr "Gnome Rekenmachine in programmeermodus"
-
-#: data/org.gnome.Calculator.appdata.xml.in:59
+#: data/org.gnome.Calculator.appdata.xml.in:66
 msgid "The GNOME Project"
 msgstr "Het Gnome-project"
-
-#. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:350 src/ui/math-window.ui:108
-msgid "Calculator"
-msgstr "Rekenmachine"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
@@ -486,7 +467,7 @@ msgid "South African Rand"
 msgstr "Zuid-Afrikaanse rand"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:270
+#: lib/equation-lexer.vala:734 src/math-converter.vala:231
 msgid "in"
 msgstr "in"
 
@@ -503,75 +484,75 @@ msgid "Error: the number of periods must be positive"
 msgstr "Fout: het aantal periodes moet positief zijn"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:173
+#: lib/math-equation.vala:176
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 # herstelhistorie
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:525
+#: lib/math-equation.vala:543
 msgid "No undo history"
 msgstr "Herstelgeschiedenis leeg"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:546
+#: lib/math-equation.vala:564
 msgid "No redo history"
 msgstr "Geen geschiedenis om te herhalen"
 
-#: lib/math-equation.vala:777
+#: lib/math-equation.vala:795
 msgid "No sane value to store"
 msgstr "Geen geldige waarde om op te slaan"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1038
+#: lib/math-equation.vala:1056
 msgid "Overflow. Try a bigger word size"
 msgstr "Overloop. Probeer een groter formaat woord"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1043
+#: lib/math-equation.vala:1061
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Onbekende variable “%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1050
+#: lib/math-equation.vala:1068
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Functie “%s” is niet gedefinieerd"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1057
+#: lib/math-equation.vala:1075
 msgid "Unknown conversion"
 msgstr "Onbekende conversie"
 
 #. should always be run
-#: lib/math-equation.vala:1067
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1072 lib/math-equation.vala:1077
+#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
 msgid "Malformed expression"
 msgstr "Ongeldige uitdrukking"
 
-#: lib/math-equation.vala:1088
+#: lib/math-equation.vala:1106
 msgid "Calculating"
 msgstr "Uitrekenen"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1281
+#: lib/math-equation.vala:1299
 msgid "Need an integer to factorize"
 msgstr "Geheel getal nodig om te kunnen ontbinden"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1345
+#: lib/math-equation.vala:1363
 msgid "No sane value to bitwise shift"
 msgstr "Waarde kan niet bitsgewijs worden verschoven"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1367
+#: lib/math-equation.vala:1385
 msgid "Displayed value not an integer"
 msgstr "Weergegeven waarde is niet een geheel getal"
 
@@ -726,7 +707,7 @@ msgid "Digital Storage"
 msgstr "Digitale opslag"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:41 src/math-preferences.vala:20
+#: lib/unit.vala:41 src/math-preferences.vala:110
 msgid "Degrees"
 msgstr "Graden"
 
@@ -741,7 +722,7 @@ msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "graad,graden,°"
 
-#: lib/unit.vala:42 src/math-preferences.vala:19
+#: lib/unit.vala:42 src/math-preferences.vala:112
 msgid "Radians"
 msgstr "Radialen"
 
@@ -756,7 +737,7 @@ msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radiaal,radialen,rad"
 
-#: lib/unit.vala:43 src/math-preferences.vala:21
+#: lib/unit.vala:43 src/math-preferences.vala:114
 msgid "Gradians"
 msgstr "Gon"
 
@@ -2177,8 +2158,6 @@ msgid "%s kHz"
 msgstr "%s kHz"
 
 #: lib/unit.vala:140
-#| msgctxt "unit-symbols"
-#| msgid "kilohertz,kHZ"
 msgctxt "unit-symbols"
 msgid "kilohertz,kHz"
 msgstr "kilohertz,kHz"
@@ -2246,238 +2225,222 @@ msgstr "Kopiëren"
 msgid "Copy result to clipboard"
 msgstr "Resultaat kopiëren naar klembord"
 
-#: src/ui/buttons-advanced.ui:143 src/ui/buttons-basic.ui:143
-#: src/ui/buttons-financial.ui:1979 src/ui/buttons-programming.ui:1899
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
+#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Modulus deling"
 
-#: src/ui/buttons-advanced.ui:163 src/ui/buttons-basic.ui:163
-#: src/ui/buttons-financial.ui:1999 src/ui/buttons-programming.ui:1441
+#: src/ui/buttons-advanced.ui:139 src/ui/buttons-basic.ui:145
+#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1269
 msgid "Divide [/]"
 msgstr "Delen [/]"
 
-#: src/ui/buttons-advanced.ui:277 src/ui/buttons-basic.ui:277
-#: src/ui/buttons-financial.ui:2113 src/ui/buttons-programming.ui:1461
+#: src/ui/buttons-advanced.ui:235 src/ui/buttons-basic.ui:247
+#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1286
 msgid "Multiply [*]"
 msgstr "Vermenigvuldigen [*]"
 
-#: src/ui/buttons-advanced.ui:297 src/ui/buttons-basic.ui:297
-#: src/ui/buttons-financial.ui:2133 src/ui/buttons-programming.ui:1481
+#: src/ui/buttons-advanced.ui:252 src/ui/buttons-basic.ui:265
+#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1303
 msgid "Subtract [-]"
 msgstr "Aftrekken [-]"
 
-#: src/ui/buttons-advanced.ui:316 src/ui/buttons-basic.ui:316
-#: src/ui/buttons-financial.ui:2152 src/ui/buttons-programming.ui:1500
+#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:282
+#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1319
 msgid "Add [+]"
 msgstr "Optellen [+]"
 
-#: src/ui/buttons-advanced.ui:335 src/ui/buttons-basic.ui:335
-#: src/ui/buttons-programming.ui:1415
+#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:299
+#: src/ui/buttons-programming.ui:1247
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Ctrl+P]"
 
-#: src/ui/buttons-advanced.ui:362 src/ui/buttons-basic.ui:362
-#: src/ui/buttons-financial.ui:2172 src/ui/buttons-programming.ui:1396
+#: src/ui/buttons-advanced.ui:307 src/ui/buttons-basic.ui:323
+#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1231
 msgid "Root [Ctrl+R]"
 msgstr "Wortel [Ctrl+R]"
 
-#: src/ui/buttons-advanced.ui:380 src/ui/buttons-basic.ui:380
+#: src/ui/buttons-advanced.ui:322 src/ui/buttons-basic.ui:339
 msgid "Square [Ctrl+2]"
 msgstr "Kwadrateren [Ctrl+2]"
 
-# Tooltip voor de knop "tot de macht" (^ of **)
-#. Accessible name for the exponentiation (x to the power of y) button
-#: src/ui/buttons-advanced.ui:384 src/ui/buttons-advanced.ui:761
-#: src/ui/buttons-basic.ui:384 src/ui/buttons-financial.ui:2301
-#: src/ui/buttons-programming.ui:2242
-msgid "Exponent"
-msgstr "Exponent"
-
-#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:410
-#: src/ui/buttons-financial.ui:2191 src/ui/buttons-programming.ui:1539
+#: src/ui/buttons-advanced.ui:343 src/ui/buttons-basic.ui:361
+#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1352
 msgid "Clear Display [Escape]"
 msgstr "Scherm leegmaken [Escape]"
 
-#: src/ui/buttons-advanced.ui:437 src/ui/buttons-basic.ui:437
-#: src/ui/buttons-financial.ui:2218 src/ui/buttons-programming.ui:1918
+#: src/ui/buttons-advanced.ui:359 src/ui/buttons-basic.ui:378
+#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1665
 msgid "Start Group [(]"
 msgstr "Begin groep [(]"
 
-#: src/ui/buttons-advanced.ui:457 src/ui/buttons-basic.ui:457
-#: src/ui/buttons-financial.ui:2238 src/ui/buttons-programming.ui:1937
+#: src/ui/buttons-advanced.ui:376 src/ui/buttons-basic.ui:396
+#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1681
 msgid "End Group [)]"
 msgstr "Einde groep [)]"
 
-#: src/ui/buttons-advanced.ui:477 src/ui/buttons-basic.ui:477
-#: src/ui/buttons-financial.ui:2258
+#: src/ui/buttons-advanced.ui:393 src/ui/buttons-basic.ui:414
+#: src/ui/buttons-financial.ui:1519
 msgid "Percentage [%]"
 msgstr "Percentage [%]"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:491 src/ui/buttons-basic.ui:491
-#: src/ui/buttons-financial.ui:2272 src/ui/buttons-programming.ui:1514
+#: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
+#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
 msgid "="
 msgstr "="
 
-#: src/ui/buttons-advanced.ui:497 src/ui/buttons-basic.ui:497
-#: src/ui/buttons-financial.ui:2278 src/ui/buttons-programming.ui:1520
+#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
+#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
 msgid "Calculate Result"
 msgstr "Bereken antwoord"
 
-#: src/ui/buttons-advanced.ui:528 src/ui/buttons-programming.ui:1967
+#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
 msgid "Subscript mode [Alt]"
 msgstr "Subscriptmodus [Alt]"
 
-#. Accessible name for the subscript mode button
-#: src/ui/buttons-advanced.ui:533 src/ui/buttons-programming.ui:1972
-msgid "Subscript"
-msgstr "Subscript"
-
-#: src/ui/buttons-advanced.ui:558 src/ui/buttons-programming.ui:1997
+#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
 msgid "Superscript mode [Ctrl]"
 msgstr "Superscriptmodus [Ctrl]"
 
-#. Accessible name for the superscript mode button
-#: src/ui/buttons-advanced.ui:563 src/ui/buttons-programming.ui:2002
-msgid "Superscript"
-msgstr "Superscript"
-
-#: src/ui/buttons-advanced.ui:590 src/ui/buttons-programming.ui:2440
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
 msgid "Factorize [Ctrl+F]"
 msgstr "Ontbinden [Ctrl+F]"
 
-#. Accessible name for the factorize button
-#: src/ui/buttons-advanced.ui:594 src/ui/buttons-programming.ui:2444
-msgid "Factorize"
-msgstr "Ontbinden in factoren"
-
-#: src/ui/buttons-advanced.ui:613
+#: src/ui/buttons-advanced.ui:498
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Wetenschappelijke notatie [Ctrl+E]"
 
-#. Accessible name for the scientific exponent button
-#: src/ui/buttons-advanced.ui:617
-msgid "Scientific Exponent"
-msgstr "Wetenschappelijke exponent"
-
-#: src/ui/buttons-advanced.ui:643
+#: src/ui/buttons-advanced.ui:519
 msgid "Cosine"
 msgstr "Cosinus"
 
-#: src/ui/buttons-advanced.ui:662
+#: src/ui/buttons-advanced.ui:535
 msgid "Sine"
 msgstr "Sinus"
 
-#: src/ui/buttons-advanced.ui:681
+#: src/ui/buttons-advanced.ui:551
 msgid "Tangent"
 msgstr "Tangens"
 
-#: src/ui/buttons-advanced.ui:700
+#: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
 msgstr "Hyperbolische cosinus"
 
-#: src/ui/buttons-advanced.ui:719
+#: src/ui/buttons-advanced.ui:583
 msgid "Hyperbolic Sine"
 msgstr "Hyperbolische sinus"
 
-#: src/ui/buttons-advanced.ui:738
+#: src/ui/buttons-advanced.ui:599
 msgid "Hyperbolic Tangent"
 msgstr "Hyperbolische tangens"
 
-#: src/ui/buttons-advanced.ui:756 src/ui/buttons-financial.ui:2296
-#: src/ui/buttons-programming.ui:2237
+#: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
+#: src/ui/buttons-programming.ui:1877
 msgid "Exponent [^ or **]"
 msgstr "Exponent [^ of **]"
 
-#: src/ui/buttons-advanced.ui:786 src/ui/buttons-programming.ui:2267
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
 msgid "Inverse [Ctrl+I]"
 msgstr "Inverse [Ctrl+I]"
 
-#. Accessible name for the inverse button
-#: src/ui/buttons-advanced.ui:791 src/ui/buttons-programming.ui:2272
-msgid "Inverse"
-msgstr "Omgekeerde waarde"
-
-#: src/ui/buttons-advanced.ui:818
+#: src/ui/buttons-advanced.ui:658
 msgid "Euler’s Number"
 msgstr "Het getal van Euler"
 
-#: src/ui/buttons-advanced.ui:845
+#: src/ui/buttons-advanced.ui:681
 msgid "Natural Logarithm"
 msgstr "Natuurlijke logaritme"
 
-#: src/ui/buttons-advanced.ui:864 src/ui/buttons-financial.ui:2327
-#: src/ui/buttons-programming.ui:2299
+#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
+#: src/ui/buttons-programming.ui:1921
 msgid "Logarithm"
 msgstr "Logaritme"
 
-#: src/ui/buttons-advanced.ui:882 src/ui/buttons-programming.ui:2337
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
 msgstr "Faculteit [!]"
 
-#. Accessible name for the factorial button
-#: src/ui/buttons-advanced.ui:887 src/ui/buttons-programming.ui:2342
-msgid "Factorial"
-msgstr "Faculteit"
-
-#: src/ui/buttons-advanced.ui:913 src/ui/buttons-programming.ui:2368
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
 msgid "Absolute Value [|]"
 msgstr "Absolute waarde [|]"
 
-#. Accessible name for the absolute value button
-#: src/ui/buttons-advanced.ui:918 src/ui/buttons-programming.ui:2373
-msgid "Absolute Value"
-msgstr "Absolute waarde"
-
-#: src/ui/buttons-advanced.ui:970
+#: src/ui/buttons-advanced.ui:778
 msgid "Real Component"
 msgstr "Reële deel"
 
-#: src/ui/buttons-advanced.ui:990
+#: src/ui/buttons-advanced.ui:795
 msgid "Imaginary Component"
 msgstr "Imaginaire deel"
 
-#: src/ui/buttons-advanced.ui:1010
+#: src/ui/buttons-advanced.ui:812
 msgid "Complex conjugate"
 msgstr "Complex toegevoegd"
 
-#: src/ui/buttons-advanced.ui:1030
+#: src/ui/buttons-advanced.ui:829
 msgid "Complex argument"
 msgstr "Complex argument"
 
-#. Accessible name for the memory button
-#: src/ui/buttons-advanced.ui:1048 src/ui/buttons-advanced.ui:1051
-#: src/ui/buttons-financial.ui:2358 src/ui/buttons-financial.ui:2361
-#: src/ui/buttons-programming.ui:2486
+#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Geheugen"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:1060 src/ui/buttons-financial.ui:2370
-#: src/ui/buttons-programming.ui:2499
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:1097
+#: src/ui/buttons-advanced.ui:859
 msgid "Additional Functions"
 msgstr "Aanvullende functies"
 
-#. Accessible name for the store value button
-#: src/ui/buttons-advanced.ui:1100 src/ui/buttons-programming.ui:2489
-msgid "Store"
-msgstr "Opslaan"
-
 #. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:8 src/ui/buttons-financial.ui:2409
+#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
 msgid "Compounding Term"
 msgstr "Afkooptermijn"
 
-#: src/ui/buttons-financial.ui:22 src/ui/buttons-financial.ui:205
-#: src/ui/buttons-financial.ui:388 src/ui/buttons-financial.ui:571
-#: src/ui/buttons-financial.ui:723 src/ui/buttons-financial.ui:907
-#: src/ui/buttons-financial.ui:1091 src/ui/buttons-financial.ui:1275
-#: src/ui/buttons-financial.ui:1459 src/ui/buttons-financial.ui:1674
-#: src/ui/buttons-programming.ui:2644
+#. Compounding Term Dialog: Label before present value input
+#. Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.ui:55 src/ui/buttons-financial.ui:727
+msgid "Present _Value:"
+msgstr "Huidige _waarde:"
+
+#. Compounding Term Dialog: Label before periodic interest rate input
+#. Future Value Dialog: Label before periodic interest rate input
+#. Periodic Payment Dialog: Label before periodic interest rate input
+#. Present Value Dialog: Label before periodic interest rate input
+#. Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.ui:67 src/ui/buttons-financial.ui:282
+#: src/ui/buttons-financial.ui:493 src/ui/buttons-financial.ui:610
+#: src/ui/buttons-financial.ui:1106
+msgid "Periodic Interest _Rate:"
+msgstr "Periodieke _rente-ratio:"
+
+#. Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:80
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Geeft het aantal perioden met samengestelde interest dat nodig is om een "
+"investering vanaf de huidige waarde naar de toekomstige waarde te brengen, "
+"bij een vast rentepercentage per periode."
+
+#. Compounding Term Dialog: Label before future value input
+#. Periodic Interest Rate Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:91 src/ui/buttons-financial.ui:715
+msgid "_Future Value:"
+msgstr "_Toekomstige waarde:"
+
+#: src/ui/buttons-financial.ui:110 src/ui/buttons-financial.ui:227
+#: src/ui/buttons-financial.ui:343 src/ui/buttons-financial.ui:437
+#: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
+#: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
+#: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
+#: src/ui/buttons-programming.ui:2139
 msgid "_Cancel"
 msgstr "_Annuleren"
 
@@ -2491,56 +2454,22 @@ msgstr "_Annuleren"
 #. Straight-Line Depreciation Dialog: Calculate button
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
 #. Payment Period Dialog: Button to calculate result
-#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:220
-#: src/ui/buttons-financial.ui:403 src/ui/buttons-financial.ui:586
-#: src/ui/buttons-financial.ui:738 src/ui/buttons-financial.ui:922
-#: src/ui/buttons-financial.ui:1106 src/ui/buttons-financial.ui:1290
-#: src/ui/buttons-financial.ui:1474 src/ui/buttons-financial.ui:1689
+#: src/ui/buttons-financial.ui:116 src/ui/buttons-financial.ui:233
+#: src/ui/buttons-financial.ui:349 src/ui/buttons-financial.ui:443
+#: src/ui/buttons-financial.ui:560 src/ui/buttons-financial.ui:677
+#: src/ui/buttons-financial.ui:794 src/ui/buttons-financial.ui:911
+#: src/ui/buttons-financial.ui:1050 src/ui/buttons-financial.ui:1167
 msgid "C_alculate"
 msgstr "_Berekenen"
 
-#. Compounding Term Dialog: Label before present value input
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:117 src/ui/buttons-financial.ui:1172
-msgid "Present _Value:"
-msgstr "Huidige _waarde:"
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:468
-#: src/ui/buttons-financial.ui:804 src/ui/buttons-financial.ui:988
-#: src/ui/buttons-financial.ui:1769
-msgid "Periodic Interest _Rate:"
-msgstr "Periodieke _rente-ratio:"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:149
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"Geeft het aantal perioden met samengestelde interest dat nodig is om een "
-"investering vanaf de huidige waarde naar de toekomstige waarde te brengen, "
-"bij een vast rentepercentage per periode."
-
-#. Compounding Term Dialog: Label before future value input
-#. Periodic Interest Rate Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:163 src/ui/buttons-financial.ui:1156
-msgid "_Future Value:"
-msgstr "_Toekomstige waarde:"
-
 #. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:191
+#: src/ui/buttons-financial.ui:122
 msgid "Double-Declining Depreciation"
 msgstr "Dubbele degressieve afschrijving"
 
 # wordt soms vertaald als dubbele degressieve afschrijvingsmethode
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:255
+#: src/ui/buttons-financial.ui:143
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -2551,31 +2480,31 @@ msgstr ""
 # Waarde/aanschafwaarde/kosten
 #. Double-Declining Depreciation Dialog: Label before cost input
 #. Gross Profit Margin Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:269 src/ui/buttons-financial.ui:635
+#: src/ui/buttons-financial.ui:154 src/ui/buttons-financial.ui:386
 msgid "C_ost:"
 msgstr "K_osten:"
 
 #. Double-Declining Depreciation Dialog: Label before life input
 #. Straight-Line Depreciation Dialog: Label before life input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:285 src/ui/buttons-financial.ui:1357
-#: src/ui/buttons-financial.ui:1525
+#: src/ui/buttons-financial.ui:166 src/ui/buttons-financial.ui:844
+#: src/ui/buttons-financial.ui:949
 msgid "_Life:"
 msgstr "_Looptijd:"
 
 #. Double-Declining Depreciation Dialog: Label before period input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:331 src/ui/buttons-financial.ui:1509
+#: src/ui/buttons-financial.ui:198 src/ui/buttons-financial.ui:937
 msgid "_Period:"
 msgstr "_Periode:"
 
 #. Title of Future Value dialog
-#: src/ui/buttons-financial.ui:374 src/ui/buttons-financial.ui:2447
+#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:1651
 msgid "Future Value"
 msgstr "Toekomstige waarde"
 
 #. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:438
+#: src/ui/buttons-financial.ui:259
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -2588,24 +2517,24 @@ msgstr ""
 #. Future Value Dialog: Label before periodic payment input
 #. Present Value Dialog: Label before periodic payment input
 #. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:452 src/ui/buttons-financial.ui:972
-#: src/ui/buttons-financial.ui:1801
+#: src/ui/buttons-financial.ui:270 src/ui/buttons-financial.ui:598
+#: src/ui/buttons-financial.ui:1130
 msgid "_Periodic Payment:"
 msgstr "_Periodieke betaling:"
 
 #. Future Value Dialog: Label before number of periods input
 #. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:484 src/ui/buttons-financial.ui:1004
+#: src/ui/buttons-financial.ui:294 src/ui/buttons-financial.ui:622
 msgid "_Number of Periods:"
 msgstr "Aa_ntal periodes:"
 
 #. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:557 src/ui/buttons-financial.ui:2586
+#: src/ui/buttons-financial.ui:355 src/ui/buttons-financial.ui:1769
 msgid "Gross Profit Margin"
 msgstr "Brutowinstmarge"
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:621
+#: src/ui/buttons-financial.ui:375
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -2614,17 +2543,17 @@ msgstr ""
 "kostprijs en de gewenste brutowinstmarge."
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:651
+#: src/ui/buttons-financial.ui:398
 msgid "_Margin:"
 msgstr "_Marge:"
 
 #. Title of Periodic Payment dialog
-#: src/ui/buttons-financial.ui:709 src/ui/buttons-financial.ui:2566
+#: src/ui/buttons-financial.ui:449 src/ui/buttons-financial.ui:1752
 msgid "Periodic Payment"
 msgstr "Periodieke betaling"
 
 #. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:774
+#: src/ui/buttons-financial.ui:470
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -2634,23 +2563,23 @@ msgstr ""
 
 # kapitaal/hoofdkapitaal
 #. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:788
+#: src/ui/buttons-financial.ui:481
 msgid "_Principal:"
 msgstr "_Kapitaal:"
 
 #. Periodic Payment Dialog: Label before term input
 #. Periodic Interest Rate Dialog: Label before term input
-#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:1188
+#: src/ui/buttons-financial.ui:505 src/ui/buttons-financial.ui:739
 msgid "_Term:"
 msgstr "_Termijn:"
 
 #. Title of Present Value dialog
-#: src/ui/buttons-financial.ui:893 src/ui/buttons-financial.ui:2546
+#: src/ui/buttons-financial.ui:566 src/ui/buttons-financial.ui:1735
 msgid "Present Value"
 msgstr "Huidige waarde"
 
 #. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:958
+#: src/ui/buttons-financial.ui:587
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -2661,12 +2590,12 @@ msgstr ""
 "aantal betalingstermijnen binnen de termijn. "
 
 #. Title of Periodic Interest Rate dialog
-#: src/ui/buttons-financial.ui:1077 src/ui/buttons-financial.ui:2526
+#: src/ui/buttons-financial.ui:683 src/ui/buttons-financial.ui:1718
 msgid "Periodic Interest Rate"
 msgstr "Periodieke rente-ratio"
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1142
+#: src/ui/buttons-financial.ui:704
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
@@ -2675,24 +2604,24 @@ msgstr ""
 "verhogen tot een toekomstige waarde, over het aantal samengestelde perioden. "
 
 #. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:1261
+#: src/ui/buttons-financial.ui:800
 msgid "Straight-Line Depreciation"
 msgstr "Lineaire afschrijving"
 
 #. Straight-Line Depreciation Dialog: Label before cost input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:1325 src/ui/buttons-financial.ui:1557
+#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:973
 msgid "_Cost:"
 msgstr "_Kosten:"
 
 #. Straight-Line Depreciation Dialog: Label before salvage input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:1341 src/ui/buttons-financial.ui:1541
+#: src/ui/buttons-financial.ui:832 src/ui/buttons-financial.ui:961
 msgid "_Salvage:"
 msgstr "_Restwaarde:"
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1419
+#: src/ui/buttons-financial.ui:887
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -2705,12 +2634,12 @@ msgstr ""
 "meestal jaren, gedurende welke een actief wordt afgeschreven. "
 
 #. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:1445
+#: src/ui/buttons-financial.ui:917
 msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Jaarcijfers afschrijvingen"
 
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1634
+#: src/ui/buttons-financial.ui:1026
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
@@ -2725,17 +2654,17 @@ msgstr ""
 "periodes, meestal jaren, gedurende welke een activa wordt afgeschreven. "
 
 #. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:1660
+#: src/ui/buttons-financial.ui:1056
 msgid "Payment Period"
 msgstr "Betalingstermijn"
 
 #. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:1785
+#: src/ui/buttons-financial.ui:1118
 msgid "Future _Value:"
 msgstr "Toekomstige _waarde:"
 
 #. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1818
+#: src/ui/buttons-financial.ui:1143
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -2746,190 +2675,174 @@ msgstr ""
 "waarde bijeen te brengen."
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:2403
+#: src/ui/buttons-financial.ui:1616
 msgid "Ctrm"
 msgstr "Ctrm"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2422
+#: src/ui/buttons-financial.ui:1632
 msgid "Ddb"
 msgstr "Dda"
 
-#: src/ui/buttons-financial.ui:2428
+#: src/ui/buttons-financial.ui:1635
 msgid "Double Declining Depreciation"
 msgstr "Dubbele degressieve afschrijving"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:2441
+#: src/ui/buttons-financial.ui:1648
 msgid "Fv"
 msgstr "Tw"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:2460
+#: src/ui/buttons-financial.ui:1664
 msgid "Term"
 msgstr "Termijn"
 
-#: src/ui/buttons-financial.ui:2466
+#: src/ui/buttons-financial.ui:1667
 msgid "Financial Term"
 msgstr "Financiële termijn"
 
 # Depreciable cost is [kost minus restwaarde]
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2480
+#: src/ui/buttons-financial.ui:1681
 msgid "Syd"
 msgstr "Ja"
 
-#: src/ui/buttons-financial.ui:2486
+#: src/ui/buttons-financial.ui:1684
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Som van de jaarcijfers afschrijvingen"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2500
+#: src/ui/buttons-financial.ui:1698
 msgid "Sln"
 msgstr "La"
 
-#: src/ui/buttons-financial.ui:2506
+#: src/ui/buttons-financial.ui:1701
 msgid "Straight Line Depreciation"
 msgstr "Lineaire afschrijving"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:2520
+#: src/ui/buttons-financial.ui:1715
 msgid "Rate"
 msgstr "Rente"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:2540
+#: src/ui/buttons-financial.ui:1732
 msgid "Pv"
 msgstr "Hw"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:2560
+#: src/ui/buttons-financial.ui:1749
 msgid "Pmt"
 msgstr "Pbt"
 
 # Bruto winstmarge
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:2580
+#: src/ui/buttons-financial.ui:1766
 msgid "Gpm"
 msgstr "Bwm"
 
-#: src/ui/buttons-programming.ui:19
+#: src/ui/buttons-programming.ui:16
 msgid "Binary"
 msgstr "Binair"
 
-#: src/ui/buttons-programming.ui:20
+#: src/ui/buttons-programming.ui:17
 msgid "Octal"
 msgstr "Octaal"
 
-#: src/ui/buttons-programming.ui:21
+#: src/ui/buttons-programming.ui:18
 msgid "Decimal"
 msgstr "Decimaal"
 
-#: src/ui/buttons-programming.ui:22
+#: src/ui/buttons-programming.ui:19
 msgid "Hexadecimal"
 msgstr "Hexadecimaal"
 
-#. Accessible name for the shift left button
-#: src/ui/buttons-programming.ui:2026 src/ui/buttons-programming.ui:2029
+#: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Shift links"
 
-#. Accessible name for the shift right button
-#: src/ui/buttons-programming.ui:2072 src/ui/buttons-programming.ui:2075
+#: src/ui/buttons-programming.ui:1764
 msgid "Shift Right"
 msgstr "Shift rechts"
 
-#: src/ui/buttons-programming.ui:2120
+#: src/ui/buttons-programming.ui:1778
 msgid "Boolean Exclusive OR"
 msgstr "Booleaans XOR"
 
-#: src/ui/buttons-programming.ui:2139
+#: src/ui/buttons-programming.ui:1794
 msgid "Boolean OR"
 msgstr "Booleaans OR"
 
-#: src/ui/buttons-programming.ui:2159
+#: src/ui/buttons-programming.ui:1811
 msgid "Boolean AND"
 msgstr "Booleaans AND"
 
-#: src/ui/buttons-programming.ui:2179
+#: src/ui/buttons-programming.ui:1828
 msgid "Boolean NOT"
 msgstr "Booleaans NOT"
 
-#: src/ui/buttons-programming.ui:2199
+#: src/ui/buttons-programming.ui:1845
 msgid "Ones’ Complement"
 msgstr "Ones’ complement"
 
-#: src/ui/buttons-programming.ui:2219
+#: src/ui/buttons-programming.ui:1862
 msgid "Two’s Complement"
 msgstr "Two’s complement"
 
-#: src/ui/buttons-programming.ui:2319
+#: src/ui/buttons-programming.ui:1938
 msgid "Binary Logarithm"
 msgstr "Binair logaritme"
 
-#: src/ui/buttons-programming.ui:2400
+#: src/ui/buttons-programming.ui:1998
 msgid "Integer Component"
 msgstr "Gehele deel"
 
-#: src/ui/buttons-programming.ui:2420
+#: src/ui/buttons-programming.ui:2015
 msgid "Fractional Component"
 msgstr "Fractie"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2463 src/ui/buttons-programming.ui:2597
+#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
 msgid "Insert Character Code"
 msgstr "Tekencode invoeren"
 
-#. Accessible name for the insert character button
-#: src/ui/buttons-programming.ui:2467
-msgid "Insert Character"
-msgstr "Teken invoegen"
-
-#: src/ui/buttons-programming.ui:2533
+#: src/ui/buttons-programming.ui:2078
 msgid "Change word size"
 msgstr "Woordgrootte wijzigen"
 
-#: src/ui/buttons-programming.ui:2567
-msgid "Word Size"
-msgstr "Woordgrootte"
-
 # Letterteken/teken
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2610
+#: src/ui/buttons-programming.ui:2115
 msgid "Ch_aracter:"
 msgstr "_Teken:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2659
+#: src/ui/buttons-programming.ui:2145
 msgid "_Insert"
 msgstr "_Invoegen"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Opstarten in gegeven modus (basic, advanced, financial, programming, "
 "keyboard)"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Solve given equation"
 msgstr "Opgegeven vergelijking oplossen"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Start with given equation"
 msgstr "Met opgegeven vergelijking starten"
 
-#: src/gnome-calculator.vala:28
+#: src/gnome-calculator.vala:27
 msgid "Show release version"
 msgstr "Uitgaveversie tonen"
 
-#. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:314
-msgid "Unable to open help file"
-msgstr "Kon hulpbestand niet openen"
-
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:345
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "Wouter Bolsterlee\n"
@@ -2938,7 +2851,7 @@ msgstr ""
 "Vincent van Adrighem\n"
 "Hannie Dumoleyn\n"
 "Erwin Poeze\n"
-"Nathan Follens\n"
+"Nathan Follens <nfollens@gnome.org>\n"
 "\n"
 "Meer info over Gnome-NL http://nl.gnome.org/\n"
 "\n"
@@ -2974,123 +2887,125 @@ msgstr ""
 "  koen noens https://launchpad.net/~knpa01\n"
 "  rob https://launchpad.net/~rvdb"
 
-#: src/gnome-calculator.vala:351 src/ui/math-window.ui:101
+#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
 msgid "About Calculator"
 msgstr "Info Rekenmachine"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:360
+#: src/gnome-calculator.vala:334
 msgid "Calculator with financial and scientific modes."
 msgstr "Rekenmachine met financiële en wetenschappelijke standen."
 
-#: src/gnome-calculator.vala:375
+#: src/gnome-calculator.vala:347
 msgid "Are you sure you want to close all open windows?"
 msgstr "Weet u zeker dat u alle geopende vensters wilt sluiten?"
 
-#: src/gnome-calculator.vala:376
+#: src/gnome-calculator.vala:348
 msgid "Close _All"
 msgstr "_Alles sluiten"
 
-#: src/math-buttons.vala:223 src/math-buttons.vala:581
-#: src/math-buttons.vala:596
+#: src/math-buttons.vala:227 src/math-buttons.vala:609
+#: src/math-buttons.vala:625
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-bit"
 msgstr[1] "%d-bits"
 
-#: src/math-buttons.vala:566
+#: src/math-buttons.vala:594
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "%d plaatsverschuiving"
 msgstr[1] "%d plaatsverschuivingen"
 
-#: src/ui/math-converter.ui:36
+#: src/ui/math-converter.ui:41
 msgid " to "
 msgstr " tot "
 
-#: src/ui/math-converter.ui:66
+#: src/ui/math-converter.ui:59
 msgid "Switch conversion units"
 msgstr "Conversie-eenheid omschakelen"
 
-#: src/ui/math-converter.ui:112
+#: src/ui/math-converter.ui:98
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:564
+#: src/math-display.vala:606
 msgid "Defined Functions"
 msgstr "Gedefinieerde functies"
 
-#: src/math-display.vala:621
+#: src/math-display.vala:651
+msgid "Built-in keywords"
+msgstr "Ingebouwde trefwoorden"
+
+#: src/math-display.vala:695
+#| msgid "Defined Functions"
+msgid "Defined currencies"
+msgstr "Gedefinieerde valuta"
+
+#: src/math-display.vala:745
 msgid "Defined Variables"
 msgstr "Gedefinieerde variabelen"
 
-#: src/ui/math-function-popover.ui:34
+#: src/ui/math-function-popover.ui:27
 msgid "New function"
 msgstr "Nieuwe functie"
 
-#: src/ui/math-function-popover.ui:47
+#: src/ui/math-function-popover.ui:37
 msgid "Select no. of arguments"
 msgstr "Selecteer het aantal parameters"
 
-#. Translators: Word size combo: 8 bit
-#: src/math-preferences.vala:26
+#: src/math-preferences.vala:123
 msgid "8-bit"
 msgstr "8-bits"
 
-#. Translators: Word size combo: 16 bit
-#: src/math-preferences.vala:28
+#: src/math-preferences.vala:125
 msgid "16-bit"
 msgstr "16-bits"
 
-#. Translators: Word size combo: 32 bit
-#: src/math-preferences.vala:30
+#: src/math-preferences.vala:127
 msgid "32-bit"
 msgstr "32-bits"
 
-#. Translators: Word size combo: 64 bit
-#: src/math-preferences.vala:32
+#: src/math-preferences.vala:129
 msgid "64-bit"
 msgstr "64-bits"
 
-#. Translators: Refresh interval combo: never
-#: src/math-preferences.vala:37
-msgid "never"
-msgstr "nooit"
+#: src/math-preferences.vala:138
+msgid "Never"
+msgstr "Nooit"
 
-#. Translators: Refresh interval combo: daily
-#: src/math-preferences.vala:39
-msgid "daily"
-msgstr "dagelijks"
+#: src/math-preferences.vala:140
+msgid "Daily"
+msgstr "Dagelijks"
 
-#. Translators: Refresh interval combo: weekly
-#: src/math-preferences.vala:41
-msgid "weekly"
-msgstr "wekelijks"
+#: src/math-preferences.vala:142
+msgid "Weekly"
+msgstr "Wekelijks"
 
-#: src/ui/math-preferences.ui:22
+#: src/ui/math-preferences.ui:19
 msgid "Number of _decimals"
 msgstr "Aantal _decimalen"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:34
 msgid "Trailing _zeroes"
 msgstr "Achterliggende _nullen"
 
-#: src/ui/math-preferences.ui:55
+#: src/ui/math-preferences.ui:46
 msgid "_Thousands separators"
 msgstr "Scheidings_tekens voor duizendtallen"
 
-#: src/ui/math-preferences.ui:70
+#: src/ui/math-preferences.ui:58
 msgid "_Angle units"
 msgstr "_Hoekeenheden"
 
-#: src/ui/math-preferences.ui:77
+#: src/ui/math-preferences.ui:64
 msgid "Word _size"
 msgstr "Woord_grootte"
 
-#: src/ui/math-preferences.ui:84
+#: src/ui/math-preferences.ui:70
 msgid "E_xchange rate refresh interval"
 msgstr "Vernieuwinterval voor wissel_koersen"
 
@@ -3265,32 +3180,32 @@ msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Omschakelen naar toetsenbordmodus (alt.)"
 
-#: src/ui/math-variable-popover.ui:38
+#: src/ui/math-variable-popover.ui:31
 msgid "Variable name"
 msgstr "Naam van variabele"
 
-#: src/ui/math-variable-popover.ui:52
+#: src/ui/math-variable-popover.ui:40
 msgid "Store value into existing or new variable"
 msgstr "Waarde opslaan in bestaande of nieuwe variabele"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:90
+#: src/ui/math-window.ui:20 src/math-window.vala:113
 msgid "Basic"
 msgstr "Eenvoudig"
 
 # sneltoets is Ctrl + a en de _G wordt gebruikt voor geheugenregisters
-#: src/ui/math-window.ui:25 src/math-window.vala:95
+#: src/ui/math-window.ui:25 src/math-window.vala:119
 msgid "Advanced"
 msgstr "Geavanceerd"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:100
+#: src/ui/math-window.ui:30 src/math-window.vala:125
 msgid "Financial"
 msgstr "Financieel"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:105
+#: src/ui/math-window.ui:35 src/math-window.vala:131
 msgid "Programming"
 msgstr "Programmeren"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:110
+#: src/ui/math-window.ui:40 src/math-window.vala:137
 msgid "Keyboard"
 msgstr "Toetsenbord"
 
@@ -3330,25 +3245,77 @@ msgstr "Sneltoetsen"
 msgid "_Help"
 msgstr "_Hulp"
 
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:117
 msgid "Mode selection"
 msgstr "Modusselectie"
 
-#: src/ui/math-window.ui:179
-msgid "Undo"
-msgstr "Ongedaan maken"
-
-#: src/ui/math-window.ui:180
+#: src/ui/math-window.ui:128
 msgid "Undo [Ctrl+Z]"
 msgstr "Ongedaan maken [Ctrl+Z]"
 
-#: src/ui/math-window.ui:196
+#: src/ui/math-window.ui:132
+msgid "Undo"
+msgstr "Ongedaan maken"
+
+#: src/ui/math-window.ui:143
 msgid "Primary menu"
 msgstr "Primair menu"
 
-#: src/math-window.vala:138
+#: src/math-window.vala:166
 msgid "_Quit"
 msgstr "_Afsluiten"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "Gnome Rekenmachine"
+
+#~ msgid "GNOME Calculator in Basic Mode"
+#~ msgstr "Gnome Rekenmachine in eenvoudige modus"
+
+#~ msgid "GNOME Calculator in Advanced Mode"
+#~ msgstr "Gnome Rekenmachine in geavanceerde modus"
+
+#~ msgid "GNOME Calculator in Financial Mode"
+#~ msgstr "Gnome Rekenmachine in financiële modus"
+
+#~ msgid "GNOME Calculator in Programming Mode"
+#~ msgstr "Gnome Rekenmachine in programmeermodus"
+
+# Tooltip voor de knop "tot de macht" (^ of **)
+#~ msgid "Exponent"
+#~ msgstr "Exponent"
+
+#~ msgid "Subscript"
+#~ msgstr "Subscript"
+
+#~ msgid "Superscript"
+#~ msgstr "Superscript"
+
+#~ msgid "Factorize"
+#~ msgstr "Ontbinden in factoren"
+
+#~ msgid "Scientific Exponent"
+#~ msgstr "Wetenschappelijke exponent"
+
+#~ msgid "Inverse"
+#~ msgstr "Omgekeerde waarde"
+
+#~ msgid "Factorial"
+#~ msgstr "Faculteit"
+
+#~ msgid "Absolute Value"
+#~ msgstr "Absolute waarde"
+
+#~ msgid "Store"
+#~ msgstr "Opslaan"
+
+#~ msgid "Insert Character"
+#~ msgstr "Teken invoegen"
+
+#~ msgid "Word Size"
+#~ msgstr "Woordgrootte"
+
+#~ msgid "Unable to open help file"
+#~ msgstr "Kon hulpbestand niet openen"
 
 #~ msgid "How often the currency exchange rates should be updated"
 #~ msgstr "Hoe vaak de wisselkoersen bijgewerkt dienen te worden"
