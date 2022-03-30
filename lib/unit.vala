@@ -83,6 +83,7 @@ public class UnitManager : Object
         weight_category.add_unit (new Unit ("kilograms", _("Kilograms"), dpgettext2 (null, "unit-format", "%s kg"), "x", "x", dpgettext2 (null, "unit-symbols", "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs")));
         weight_category.add_unit (new Unit ("pound", _("Pounds"), dpgettext2 (null, "unit-format", "%s lb"), "0.45359237x", "x/0.45359237", dpgettext2 (null, "unit-symbols", "pound,pounds,lb,lbs")));
         weight_category.add_unit (new Unit ("ounce", _("Ounces"), dpgettext2 (null, "unit-format", "%s oz"), "0.02834952x", "x/0.02834952", dpgettext2 (null, "unit-symbols", "ounce,ounces,oz")));
+        weight_category.add_unit (new Unit ("troy-ounce", _("Troy Ounces"), dpgettext2 (null, "unit-format", "%s ozt"), "0.0311034768x", "x/0.0311034768", dpgettext2 (null, "unit-symbols", "Troy ounce,Troy ounces,ozt")));
         weight_category.add_unit (new Unit ("gram", _("Grams"), dpgettext2 (null, "unit-format", "%s g"), "0.001x", "1000x", dpgettext2 (null, "unit-symbols", "gram,grams,gramme,grammes,g")));
         weight_category.add_unit (new Unit ("stone", _("Stone"), dpgettext2 (null, "unit-format", "%s st"), "6.350293x", "x/6.350293", dpgettext2 (null, "unit-symbols", "stone,st,stones")));
         duration_category.add_unit (new Unit ("century", _("Centuries"), dpgettext2 (null, "unit-format", "%s centuries"), "3155760000x", "x/3155760000", dpgettext2 (null, "unit-symbols", "century,centuries")));
