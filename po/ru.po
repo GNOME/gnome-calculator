@@ -27,9 +27,9 @@ msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2019-02-06 18:32+0000\n"
-"PO-Revision-Date: 2019-02-27 21:49+0300\n"
-"Last-Translator: Stas Solovey <whats_up@tut.by>\n"
+"POT-Creation-Date: 2021-09-15 15:44+0000\n"
+"PO-Revision-Date: 2022-03-31 21:32+1000\n"
+"Last-Translator: Ser82-png <sw@atrus.ru>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.3\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 msgid "GNOME Calculator"
@@ -55,10 +55,10 @@ msgid ""
 "arithmetic operations, you can switch into Advanced, Financial, or "
 "Programming mode to find a surprising set of capabilities."
 msgstr ""
-"Калькулятор GNOME — это приложение для решения математических уравнений. "
-"Хотя первоначально это приложение запускается в режиме простого калькулятора "
-"с основными арифметическими операциями, вы можете переключиться в "
-"расширенный, финансовый или программный режим."
+"Калькулятор GNOME - это приложение, которое решает математические уравнения. "
+"Хотя на первый взгляд это простой калькулятор с базовыми арифметическими "
+"операциями, вы можете переключиться в расширенный режим, финансовый режим "
+"или режим программирования, чтобы обнаружить удивительный набор возможностей."
 
 #: data/org.gnome.Calculator.appdata.xml.in:16
 msgid ""
@@ -109,13 +109,13 @@ msgstr "Калькулятор GNOME в финансовом режиме"
 msgid "GNOME Calculator in Programming Mode"
 msgstr "Калькулятор GNOME в режиме программирования"
 
-#: data/org.gnome.Calculator.appdata.xml.in:60
+#: data/org.gnome.Calculator.appdata.xml.in:59
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
 #. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:333 src/math-window.ui:78
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
+#: src/gnome-calculator.vala:345 src/ui/math-window.ui:108
 msgid "Calculator"
 msgstr "Калькулятор"
 
@@ -123,11 +123,6 @@ msgstr "Калькулятор"
 #: data/org.gnome.Calculator.desktop.in:6
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "вычисление;арифметические;научные;финансовые;"
-
-#. Translators: Do NOT translate or transliterate this text (this is an icon file name)!
-#: data/org.gnome.Calculator.desktop.in:9
-msgid "org.gnome.Calculator"
-msgstr "org.gnome.Calculator"
 
 #: data/org.gnome.calculator.gschema.xml:25
 msgid "Accuracy value"
@@ -171,7 +166,7 @@ msgid ""
 "shown in the display value."
 msgstr "Определяет, показываются ли незначащие нули после десятичной запятой."
 
-#: data/org.gnome.calculator.gschema.xml:52
+#: data/org.gnome.calculator.gschema.xml:52 src/ui/math-window.ui:56
 msgid "Number format"
 msgstr "Формат чисел"
 
@@ -251,248 +246,256 @@ msgstr "Положение окна"
 msgid "Window position (x and y) of the last closed window."
 msgstr "Положение (x ; y) последнего закрытого окна."
 
-#: lib/currency.vala:31
+#: lib/currency.vala:51
 msgid "UAE Dirham"
 msgstr "Дирхам ОАЭ"
 
-#: lib/currency.vala:32
+#: lib/currency.vala:52
 msgid "Australian Dollar"
 msgstr "Австралийский доллар"
 
-#: lib/currency.vala:33
+#: lib/currency.vala:53
+msgid "Bangladeshi Taka"
+msgstr "Бангладешская така"
+
+#: lib/currency.vala:54
 msgid "Bulgarian Lev"
 msgstr "Болгарский лев"
 
-#: lib/currency.vala:34
+#: lib/currency.vala:55
 msgid "Bahraini Dinar"
 msgstr "Бахрейнский динар"
 
-#: lib/currency.vala:35
+#: lib/currency.vala:56
 msgid "Brunei Dollar"
 msgstr "Брунейский доллар"
 
-#: lib/currency.vala:36
+#: lib/currency.vala:57
 msgid "Brazilian Real"
 msgstr "Бразильский реал"
 
-#: lib/currency.vala:37
+#: lib/currency.vala:58
 msgid "Botswana Pula"
 msgstr "Ботсванская пула"
 
-#: lib/currency.vala:38
+#: lib/currency.vala:59
 msgid "Canadian Dollar"
 msgstr "Канадский доллар"
 
-#: lib/currency.vala:39
+#: lib/currency.vala:60
 msgid "CFA Franc"
 msgstr "Франк КФА"
 
-#: lib/currency.vala:40
+#: lib/currency.vala:61
 msgid "Swiss Franc"
 msgstr "Швейцарский франк"
 
-#: lib/currency.vala:41
+#: lib/currency.vala:62
 msgid "Chilean Peso"
 msgstr "Чилийское песо"
 
-#: lib/currency.vala:42
+#: lib/currency.vala:63
 msgid "Chinese Yuan"
 msgstr "Китайский юань"
 
-#: lib/currency.vala:43
+#: lib/currency.vala:64
 msgid "Colombian Peso"
 msgstr "Колумбийское песо"
 
-#: lib/currency.vala:44
+#: lib/currency.vala:65
 msgid "Czech Koruna"
 msgstr "Чешская крона"
 
-#: lib/currency.vala:45
+#: lib/currency.vala:66
 msgid "Danish Krone"
 msgstr "Датская крона"
 
-#: lib/currency.vala:46
+#: lib/currency.vala:67
 msgid "Algerian Dinar"
 msgstr "Алжирский динар"
 
-#: lib/currency.vala:47
+#: lib/currency.vala:68
 msgid "Estonian Kroon"
 msgstr "Эстонская крона"
 
-#: lib/currency.vala:48
+#: lib/currency.vala:69
 msgid "Euro"
 msgstr "Евро"
 
-#: lib/currency.vala:49
+#: lib/currency.vala:70
 msgid "British Pound Sterling"
 msgstr "Британский фунт стерлингов"
 
-#: lib/currency.vala:50
+#: lib/currency.vala:71
 msgid "Hong Kong Dollar"
 msgstr "Гонконгский доллар"
 
-#: lib/currency.vala:51
+#: lib/currency.vala:72
 msgid "Croatian Kuna"
 msgstr "Хорватская куна"
 
-#: lib/currency.vala:52
+#: lib/currency.vala:73
 msgid "Hungarian Forint"
 msgstr "Венгерский форинт"
 
-#: lib/currency.vala:53
+#: lib/currency.vala:74
 msgid "Indonesian Rupiah"
 msgstr "Индонезийская рупия"
 
-#: lib/currency.vala:54
+#: lib/currency.vala:75
 msgid "Israeli New Shekel"
 msgstr "Новый израильский шекель"
 
-#: lib/currency.vala:55
+#: lib/currency.vala:76
 msgid "Indian Rupee"
 msgstr "Индийская рупия"
 
-#: lib/currency.vala:56
+#: lib/currency.vala:77
 msgid "Iranian Rial"
 msgstr "Иранский реал"
 
-#: lib/currency.vala:57
+#: lib/currency.vala:78
 msgid "Icelandic Krona"
 msgstr "Исландская крона"
 
-#: lib/currency.vala:58
+#: lib/currency.vala:79
 msgid "Japanese Yen"
 msgstr "Японская иена"
 
-#: lib/currency.vala:59
+#: lib/currency.vala:80
 msgid "South Korean Won"
 msgstr "Южнокорейская вона"
 
-#: lib/currency.vala:60
+#: lib/currency.vala:81
 msgid "Kuwaiti Dinar"
 msgstr "Кувейтский динар"
 
-#: lib/currency.vala:61
+#: lib/currency.vala:82
 msgid "Kazakhstani Tenge"
 msgstr "Казахстанский тенге"
 
-#: lib/currency.vala:62
+#: lib/currency.vala:83
 msgid "Sri Lankan Rupee"
 msgstr "Ланкийская рупия"
 
-#: lib/currency.vala:63
+#: lib/currency.vala:84
 msgid "Libyan Dinar"
 msgstr "Ливийский динар"
 
-#: lib/currency.vala:64
+#: lib/currency.vala:85
 msgid "Mauritian Rupee"
 msgstr "Маврикийская рупия"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:86
 msgid "Mexican Peso"
 msgstr "Мексиканское песо"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:87
 msgid "Malaysian Ringgit"
 msgstr "Малайзийский ринггит"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:88
 msgid "Norwegian Krone"
 msgstr "Норвежская крона"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:89
 msgid "Nepalese Rupee"
 msgstr "Непальская рупия"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:90
 msgid "New Zealand Dollar"
 msgstr "Новозеландский доллар"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:91
 msgid "Omani Rial"
 msgstr "Оманский риал"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:92
 msgid "Peruvian Nuevo Sol"
 msgstr "Перуанский новый соль"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:93
 msgid "Philippine Peso"
 msgstr "Филиппинское песо"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:94
 msgid "Pakistani Rupee"
 msgstr "Пакистанская рупия"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:95
 msgid "Polish Zloty"
 msgstr "Польский злотый"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:96
 msgid "Qatari Riyal"
 msgstr "Катарский риял"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:97
 msgid "New Romanian Leu"
 msgstr "Новый румынский лей"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:98
 msgid "Russian Rouble"
 msgstr "Российский рубль"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:99
 msgid "Saudi Riyal"
 msgstr "Саудовский риял"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:100
+msgid "Serbian Dinar"
+msgstr "Сербский динар"
+
+#: lib/currency.vala:101
 msgid "Swedish Krona"
 msgstr "Шведская крона"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:102
 msgid "Singapore Dollar"
 msgstr "Сингапурский доллар"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:103
 msgid "Thai Baht"
 msgstr "Тайский бат"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:104
 msgid "Tunisian Dinar"
 msgstr "Тунисский динар"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:105
 msgid "Turkish Lira"
 msgstr "Турецкая лира"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:106
 msgid "T&T Dollar (TTD)"
 msgstr "Доллар Тринидада и Тобаго"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:107
 msgid "US Dollar"
 msgstr "Доллар США"
 
-#: lib/currency.vala:86
+#: lib/currency.vala:108
 msgid "Uruguayan Peso"
 msgstr "Уругвайское песо"
 
-#: lib/currency.vala:87
+#: lib/currency.vala:109
 msgid "Venezuelan Bolívar"
 msgstr "Венесуэльский боливар фуэрте"
 
-#: lib/currency.vala:88
+#: lib/currency.vala:110
 msgid "South African Rand"
 msgstr "Южноафриканский рэнд"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:704 src/math-converter.vala:247
+#: lib/equation-lexer.vala:729 src/math-converter.vala:251
 msgid "in"
 msgstr "в"
 
-#: lib/equation-lexer.vala:704
+#: lib/equation-lexer.vala:729
 msgid "to"
 msgstr "к"
 
-#: lib/equation-parser.vala:717 lib/number.vala:429
+#: lib/equation-parser.vala:735 lib/number.vala:434
 msgid "The zeroth root of a number is undefined"
 msgstr "Корень нулевой степени из числа не определён"
 
@@ -501,184 +504,189 @@ msgid "Error: the number of periods must be positive"
 msgstr "Ошибка: количество периодов, должно быть положительным"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:170
+#: lib/math-equation.vala:173
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:520
+#: lib/math-equation.vala:525
 msgid "No undo history"
 msgstr "Нет истории отмены изменений"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:541
+#: lib/math-equation.vala:546
 msgid "No redo history"
 msgstr "Нет истории отмены изменений"
 
-#: lib/math-equation.vala:772
+#: lib/math-equation.vala:777
 msgid "No sane value to store"
 msgstr "Отсутствует разумное значение для сохранения"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:969
+#: lib/math-equation.vala:1038
 msgid "Overflow. Try a bigger word size"
 msgstr "Переполнение. Попробуйте установить большее значение размера слова"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:974
+#: lib/math-equation.vala:1043
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Неизвестная переменная «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:981
+#: lib/math-equation.vala:1050
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Функция «%s» не определена"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:988
+#: lib/math-equation.vala:1057
 msgid "Unknown conversion"
 msgstr "Неизвестное преобразование"
 
 #. should always be run
-#: lib/math-equation.vala:998
+#: lib/math-equation.vala:1067
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1003 lib/math-equation.vala:1008
+#: lib/math-equation.vala:1072 lib/math-equation.vala:1077
 msgid "Malformed expression"
 msgstr "Некорректное выражение"
 
-#: lib/math-equation.vala:1019
+#: lib/math-equation.vala:1088
 msgid "Calculating"
 msgstr "Вычисление"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1212
+#: lib/math-equation.vala:1281
 msgid "Need an integer to factorize"
 msgstr "Для разложения на простые множители необходимо целое число"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1266
+#: lib/math-equation.vala:1345
 msgid "No sane value to bitwise shift"
 msgstr "Отсутствует разумное значение для побитового сдвига"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1280
+#: lib/math-equation.vala:1367
 msgid "Displayed value not an integer"
 msgstr "Значение не является целым числом"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:196
+#: lib/number.vala:201
 msgid "Underflow error"
 msgstr "Ошибка исчезновения порядка"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:206
 msgid "Overflow error"
 msgstr "Ошибка переполнения"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:251
+#: lib/number.vala:256
 msgid "Argument not defined for zero"
 msgstr "Аргумент не определён для нуля"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:367 lib/number.vala:397
+#: lib/number.vala:372 lib/number.vala:402
 msgid "The power of zero is undefined for a negative exponent"
 msgstr ""
 "Функция возведения в степень нуля не определена для отрицательных "
 "показателей степени"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:375 lib/number.vala:405
+#: lib/number.vala:380 lib/number.vala:410
 msgid "Zero raised to zero is undefined"
 msgstr "Нуль в нулевой степени не определён"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:459 lib/number.vala:490
+#: lib/number.vala:464 lib/number.vala:495
 msgid "Logarithm of zero is undefined"
 msgstr "Логарифм нуля не определён"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:512
+#: lib/number.vala:517
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Факториал определён только для натуральных чисел"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:572
+#: lib/number.vala:577
 msgid "Division by zero is undefined"
 msgstr "Деление на ноль не определено"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:593
+#: lib/number.vala:598
 msgid "Modulus division is only defined for integers"
 msgstr "Деление по модулю определено только для целых чисел"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:666
+#: lib/number.vala:671
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "Тангенс не определён для углов с периодом π (180°), начиная с π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:685
+#: lib/number.vala:690
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Обратный синус не определён для значений вне диапазона [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:702
+#: lib/number.vala:707
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Обратный косинус не определён для значений вне диапазона [-1, 1]"
 
+#. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
+#: lib/number.vala:725
+msgid "Arctangent function is undefined for values i and -i"
+msgstr "Функция арктангенса не определена для значений i и -i"
+
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:763
+#: lib/number.vala:775
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Обратный гиперболический косинус не определён для значений, меньших единицы"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:779
+#: lib/number.vala:791
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Обратный гиперболический тангенс не определён для значений вне диапазона "
 "[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:795
+#: lib/number.vala:807
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Логическое побитовое И определено только для положительных целых чисел"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:807
+#: lib/number.vala:819
 msgid "Boolean OR is only defined for positive integers"
 msgstr ""
 "Логическое побитовое ИЛИ определено только для положительных целых чисел"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:819
+#: lib/number.vala:831
 msgid "Boolean XOR is only defined for positive integers"
 msgstr ""
 "Логическое побитовое исключающее ИЛИ определено только для положительных "
 "целых чисел"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
+#: lib/number.vala:843
 msgid "Boolean NOT is only defined for positive integers"
 msgstr ""
 "Логическое побитовое НЕ определено только для положительных целых чисел"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:854
+#: lib/number.vala:866
 msgid "Shift is only possible on integer values"
 msgstr "Сдвиг возможен только для целых чисел"
 
-#: lib/serializer.vala:342
+#: lib/serializer.vala:345
 msgid "Overflow: the result couldn’t be calculated"
 msgstr "Переполнение: результат не может быть рассчитан"
 
@@ -691,1285 +699,1547 @@ msgid "Length"
 msgstr "Длина"
 
 #: lib/unit.vala:31
+msgid "Speed"
+msgstr "Скорость"
+
+#: lib/unit.vala:32
 msgid "Area"
 msgstr "Площадь"
 
-#: lib/unit.vala:32
+#: lib/unit.vala:33
 msgid "Volume"
 msgstr "Объём"
 
-#: lib/unit.vala:33
+#: lib/unit.vala:34
 msgid "Mass"
 msgstr "Масса"
 
-#: lib/unit.vala:34
+#: lib/unit.vala:35
 msgid "Duration"
 msgstr "Время"
 
-#: lib/unit.vala:35
+#: lib/unit.vala:36
+msgid "Frequency"
+msgstr "Частота"
+
+#: lib/unit.vala:37
 msgid "Temperature"
 msgstr "Температура"
 
-#: lib/unit.vala:36
+#: lib/unit.vala:38
 msgid "Digital Storage"
 msgstr "Объём данных"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#. Preferences dialog: Angle unit combo box: Use degrees for trigonometric calculations
-#: lib/unit.vala:39 src/math-preferences.vala:147
+#: lib/unit.vala:41 src/ui/math-preferences.ui:182
 msgid "Degrees"
 msgstr "Градусы"
 
-#: lib/unit.vala:39
+#: lib/unit.vala:41
 #, c-format
 msgctxt "unit-format"
 msgid "%s degrees"
 msgstr "%s градусов"
 
-#: lib/unit.vala:39
+#: lib/unit.vala:41
 msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "градус, градусы, °"
 
-#. Preferences dialog: Angle unit combo box: Use radians for trigonometric calculations
-#: lib/unit.vala:40 src/math-preferences.vala:151
+#: lib/unit.vala:42 src/ui/math-preferences.ui:181
 msgid "Radians"
 msgstr "Радианы"
 
-#: lib/unit.vala:40
+#: lib/unit.vala:42
 #, c-format
 msgctxt "unit-format"
 msgid "%s radians"
 msgstr "%s радиан"
 
-#: lib/unit.vala:40
+#: lib/unit.vala:42
 msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "радиан, радианы, рад"
 
-#. Preferences dialog: Angle unit combo box: Use gradians for trigonometric calculations
-#: lib/unit.vala:41 src/math-preferences.vala:155
+#: lib/unit.vala:43 src/ui/math-preferences.ui:183
 msgid "Gradians"
 msgstr "Грады"
 
-#: lib/unit.vala:41
+#: lib/unit.vala:43
 #, c-format
 msgctxt "unit-format"
 msgid "%s gradians"
 msgstr "%s град"
 
-#: lib/unit.vala:41
+#: lib/unit.vala:43
 msgctxt "unit-symbols"
 msgid "gradian,gradians,grad"
 msgstr "град, грады, град"
 
-#: lib/unit.vala:42
+#: lib/unit.vala:44
 msgid "Parsecs"
 msgstr "Парсеки"
 
-#: lib/unit.vala:42
+#: lib/unit.vala:44
 #, c-format
 msgctxt "unit-format"
 msgid "%s pc"
 msgstr "%s пк"
 
-#: lib/unit.vala:42
+#: lib/unit.vala:44
 msgctxt "unit-symbols"
 msgid "parsec,parsecs,pc"
 msgstr "парсек, парсеки, пк"
 
-#: lib/unit.vala:43
+#: lib/unit.vala:45
 msgid "Light Years"
 msgstr "Световые годы"
 
-#: lib/unit.vala:43
+#: lib/unit.vala:45
 #, c-format
 msgctxt "unit-format"
 msgid "%s ly"
 msgstr "%s св. г."
 
-#: lib/unit.vala:43
+#: lib/unit.vala:45
 msgctxt "unit-symbols"
 msgid "lightyear,lightyears,ly"
 msgstr "световой год, световые годы, св.г."
 
-#: lib/unit.vala:44
+#: lib/unit.vala:46
 msgid "Astronomical Units"
 msgstr "Астрономические единицы"
 
-#: lib/unit.vala:44
+#: lib/unit.vala:46
 #, c-format
 msgctxt "unit-format"
 msgid "%s au"
 msgstr "%s а. е."
 
-#: lib/unit.vala:44
+#: lib/unit.vala:46
 msgctxt "unit-symbols"
 msgid "au"
 msgstr "а. е."
 
-#: lib/unit.vala:45
+#: lib/unit.vala:47
+msgid "Rack Units"
+msgstr "В долях дюйма"
+
+#: lib/unit.vala:47
+#, c-format
+msgctxt "unit-format"
+msgid "%sU"
+msgstr "%sU"
+
+#: lib/unit.vala:47
+msgctxt "unit-symbols"
+msgid "U"
+msgstr "U"
+
+#: lib/unit.vala:48
 msgid "Nautical Miles"
 msgstr "Морские мили"
 
-#: lib/unit.vala:45
+#: lib/unit.vala:48
 #, c-format
 msgctxt "unit-format"
 msgid "%s nmi"
 msgstr "%s морских миль"
 
-#: lib/unit.vala:45
+#: lib/unit.vala:48
 msgctxt "unit-symbols"
 msgid "nmi"
 msgstr "морская миля"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:49
 msgid "Miles"
 msgstr "Мили"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:49
 #, c-format
 msgctxt "unit-format"
 msgid "%s mi"
 msgstr "%s миль"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:49
 msgctxt "unit-symbols"
 msgid "mile,miles,mi"
 msgstr "миля, мили"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:50
 msgid "Kilometers"
 msgstr "Километры"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:50
 #, c-format
 msgctxt "unit-format"
 msgid "%s km"
 msgstr "%s км"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:50
 msgctxt "unit-symbols"
 msgid "kilometer,kilometers,km,kms"
 msgstr "километр, километры, км"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:51
 msgid "Cables"
 msgstr "Кабельтовы"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:51
 #, c-format
 msgctxt "unit-format"
 msgid "%s cb"
 msgstr "%s кабельтовых"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:51
 msgctxt "unit-symbols"
 msgid "cable,cables,cb"
 msgstr "кабельтов, кабельтовы"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:52
 msgid "Fathoms"
 msgstr "Морские сажени"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:52
 #, c-format
 msgctxt "unit-format"
 msgid "%s ftm"
 msgstr "%s мор. саженей"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:52
 msgctxt "unit-symbols"
 msgid "fathom,fathoms,ftm"
 msgstr "морская сажень, морские сажени"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:53
 msgid "Meters"
 msgstr "Метры"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:53
 #, c-format
 msgctxt "unit-format"
 msgid "%s m"
 msgstr "%s м"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:53
 msgctxt "unit-symbols"
 msgid "meter,meters,m"
 msgstr "метр, метры, м"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:54
 msgid "Yards"
 msgstr "Ярды"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:54
 #, c-format
 msgctxt "unit-format"
 msgid "%s yd"
 msgstr "%s ярдов"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:54
 msgctxt "unit-symbols"
 msgid "yard,yards,yd"
 msgstr "ярд, ярды"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:55
 msgid "Feet"
 msgstr "Футы"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:55
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft"
 msgstr "%s футов"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:55
 msgctxt "unit-symbols"
 msgid "foot,feet,ft"
 msgstr "фут, футы"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:56
 msgid "Inches"
 msgstr "Дюймы"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:56
 #, c-format
 msgctxt "unit-format"
 msgid "%s in"
 msgstr "%s дюймов"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:56
 msgctxt "unit-symbols"
 msgid "inch,inches,in"
 msgstr "дюйм, дюймы"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:57
 msgid "Centimeters"
 msgstr "Сантиметры"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:57
 #, c-format
 msgctxt "unit-format"
 msgid "%s cm"
 msgstr "%s см"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:57
 msgctxt "unit-symbols"
 msgid "centimeter,centimeters,cm,cms"
 msgstr "сантиметр, сантиметры, см"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:58
 msgid "Millimeters"
 msgstr "Миллиметры"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:58
 #, c-format
 msgctxt "unit-format"
 msgid "%s mm"
 msgstr "%s мм"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:58
 msgctxt "unit-symbols"
 msgid "millimeter,millimeters,mm"
 msgstr "миллиметр, миллиметры, мм"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:59
 msgid "Micrometers"
 msgstr "Микрометры"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:59
 #, c-format
 msgctxt "unit-format"
 msgid "%s μm"
 msgstr "%s мкм"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:59
 msgctxt "unit-symbols"
 msgid "micrometer,micrometers,um"
 msgstr "микрометр, микрометры, мкм"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:60
 msgid "Nanometers"
 msgstr "Нанометры"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:60
 #, c-format
 msgctxt "unit-format"
 msgid "%s nm"
 msgstr "%s нм"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:60
 msgctxt "unit-symbols"
 msgid "nanometer,nanometers,nm"
 msgstr "нанометр, нанометры, нм"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:61
 msgid "Desktop Publishing Point"
 msgstr "Компьютерный пункт"
 
-#: lib/unit.vala:58 lib/unit.vala:68
+#: lib/unit.vala:61 lib/unit.vala:77
 #, c-format
 msgctxt "unit-format"
 msgid "%s pt"
 msgstr "%s пункт"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:61
 msgctxt "unit-symbols"
 msgid "point,pt,points,pts"
 msgstr "пункт,пункты"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:62
+msgid "Kilometers per hour"
+msgstr "Километр в час"
+
+#: lib/unit.vala:62
+#, c-format
+msgctxt "unit-format"
+msgid "%s km/h"
+msgstr "%s км/ч"
+
+#: lib/unit.vala:62
+msgctxt "unit-symbols"
+msgid "kilometers per hour,kmph,kmh,kph"
+msgstr "километров в час, км/ч, кмч, км/ч, км/ч"
+
+#: lib/unit.vala:63
+msgid "Miles per hour"
+msgstr "Миль в час"
+
+#: lib/unit.vala:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s miles/h"
+msgstr "%s миль/ч"
+
+#: lib/unit.vala:63
+msgctxt "unit-symbols"
+msgid "milesph,miles per hour,mi/h,miph,mph"
+msgstr "миль в час, миль/ч"
+
+#: lib/unit.vala:64
+msgid "Meters per second"
+msgstr "Метр в секунду"
+
+#: lib/unit.vala:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s m/s"
+msgstr "%s м/с"
+
+#: lib/unit.vala:64
+msgctxt "unit-symbols"
+msgid "meters per second,mps"
+msgstr "метров в секунду, м/с"
+
+#: lib/unit.vala:65
+msgid "Feet per second"
+msgstr "Фут в секунду"
+
+#: lib/unit.vala:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s feet/s"
+msgstr "%s фут/с"
+
+#: lib/unit.vala:65
+msgctxt "unit-symbols"
+msgid "fps,feet per second,feetps"
+msgstr "футов в секунду"
+
+#: lib/unit.vala:66
+msgid "Knots"
+msgstr "Узлы"
+
+#: lib/unit.vala:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s kt"
+msgstr "%s уз"
+
+#: lib/unit.vala:66
+msgctxt "unit-symbols"
+msgid "kt,kn,nd,knot,knots"
+msgstr "уз, узел, узлы"
+
+#: lib/unit.vala:67
 msgid "Hectares"
 msgstr "Гектары"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:67
 #, c-format
 msgctxt "unit-format"
 msgid "%s ha"
 msgstr "%s га"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:67
 msgctxt "unit-symbols"
 msgid "hectare,hectares,ha"
 msgstr "гектар, гектары, га"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:68
 msgid "Acres"
 msgstr "Акры"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:68
 #, c-format
 msgctxt "unit-format"
 msgid "%s acres"
 msgstr "%s акров"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:68
 msgctxt "unit-symbols"
 msgid "acre,acres"
 msgstr "акр, акры"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:69
+msgid "Square Foot"
+msgstr "Квадратный фут"
+
+#: lib/unit.vala:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft²"
+msgstr "%s фут²"
+
+#: lib/unit.vala:69
+msgctxt "unit-symbols"
+msgid "ft²"
+msgstr "фт²"
+
+#: lib/unit.vala:70
 msgid "Square Meters"
 msgstr "Квадратные метры"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:70
 #, c-format
 msgctxt "unit-format"
 msgid "%s m²"
 msgstr "%s м²"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:70
 msgctxt "unit-symbols"
 msgid "m²"
 msgstr "м²"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:71
 msgid "Square Centimeters"
 msgstr "Квадратные сантиметры"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:71
 #, c-format
 msgctxt "unit-format"
 msgid "%s cm²"
 msgstr "%s см²"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:71
 msgctxt "unit-symbols"
 msgid "cm²"
 msgstr "см²"
 
-#: lib/unit.vala:63
+#: lib/unit.vala:72
 msgid "Square Millimeters"
 msgstr "Квадратные миллиметры"
 
-#: lib/unit.vala:63
+#: lib/unit.vala:72
 #, c-format
 msgctxt "unit-format"
 msgid "%s mm²"
 msgstr "%s мм²"
 
-#: lib/unit.vala:63
+#: lib/unit.vala:72
 msgctxt "unit-symbols"
 msgid "mm²"
 msgstr "мм²"
 
-#: lib/unit.vala:64
+#: lib/unit.vala:73
 msgid "Cubic Meters"
 msgstr "Кубические метры"
 
-#: lib/unit.vala:64
+#: lib/unit.vala:73
 #, c-format
 msgctxt "unit-format"
 msgid "%s m³"
 msgstr "%s м³"
 
-#: lib/unit.vala:64
+#: lib/unit.vala:73
 msgctxt "unit-symbols"
 msgid "m³"
 msgstr "м³"
 
-#: lib/unit.vala:65
+#: lib/unit.vala:74
 msgid "US Gallons"
 msgstr "Галлоны США"
 
-#: lib/unit.vala:65
+#: lib/unit.vala:74
 #, c-format
 msgctxt "unit-format"
 msgid "%s gal"
 msgstr "%s галлонов"
 
-#: lib/unit.vala:65
+#: lib/unit.vala:74
 msgctxt "unit-symbols"
 msgid "gallon,gallons,gal"
 msgstr "галлон, галлоны"
 
-#: lib/unit.vala:66
+#: lib/unit.vala:75
 msgid "Liters"
 msgstr "Литры"
 
-#: lib/unit.vala:66
+#: lib/unit.vala:75
 #, c-format
 msgctxt "unit-format"
 msgid "%s L"
 msgstr "%s л"
 
-#: lib/unit.vala:66
+#: lib/unit.vala:75
 msgctxt "unit-symbols"
 msgid "litre,litres,liter,liters,L"
 msgstr "литр, литры, л"
 
-#: lib/unit.vala:67
+#: lib/unit.vala:76
 msgid "US Quarts"
 msgstr "Кварты США"
 
-#: lib/unit.vala:67
+#: lib/unit.vala:76
 #, c-format
 msgctxt "unit-format"
 msgid "%s qt"
 msgstr "%s кварт"
 
-#: lib/unit.vala:67
+#: lib/unit.vala:76
 msgctxt "unit-symbols"
 msgid "quart,quarts,qt"
 msgstr "кварта, кварты"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:77
 msgid "US Pints"
 msgstr "Пинты США"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "pint,pints,pt"
 msgstr "пинта, пинты"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:78
+msgid "Metric Cups"
+msgstr "Метрические чашки"
+
+#: lib/unit.vala:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s cup"
+msgstr "%s чашка"
+
+#: lib/unit.vala:78
+msgctxt "unit-symbols"
+msgid "cup,cups,cp"
+msgstr "чашка, чашки"
+
+#: lib/unit.vala:79
 msgid "Milliliters"
 msgstr "Милилитры"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:79
 #, c-format
 msgctxt "unit-format"
 msgid "%s mL"
 msgstr "%s мл"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:79
 msgctxt "unit-symbols"
 msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "миллилитр, миллилитры, мл, см³"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:80
 msgid "Microliters"
 msgstr "Микролитры"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:80
 #, c-format
 msgctxt "unit-format"
 msgid "%s μL"
 msgstr "%s мкл"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
 msgstr "мм³, мкл"
 
-#: lib/unit.vala:71
+#: lib/unit.vala:81
 msgid "Tonnes"
 msgstr "Тонны"
 
-#: lib/unit.vala:71
+#: lib/unit.vala:81
 #, c-format
 msgctxt "unit-format"
 msgid "%s T"
 msgstr "%s т"
 
-#: lib/unit.vala:71
+#: lib/unit.vala:81
 msgctxt "unit-symbols"
 msgid "tonne,tonnes"
 msgstr "тонна, тонны"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:82
 msgid "Kilograms"
 msgstr "Килограммы"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:82
 #, c-format
 msgctxt "unit-format"
 msgid "%s kg"
 msgstr "%s кг"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:82
 msgctxt "unit-symbols"
 msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgstr "килограмм, килограммы, кг"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:83
 msgid "Pounds"
 msgstr "Фунты"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:83
 #, c-format
 msgctxt "unit-format"
 msgid "%s lb"
 msgstr "%s фунтов"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:83
 msgctxt "unit-symbols"
-msgid "pound,pounds,lb"
-msgstr "фунт, фунты"
+msgid "pound,pounds,lb,lbs"
+msgstr "фунт, фунты, фунты, фунты"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:84
 msgid "Ounces"
 msgstr "Унции"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:84
 #, c-format
 msgctxt "unit-format"
 msgid "%s oz"
 msgstr "%s унций"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:84
 msgctxt "unit-symbols"
 msgid "ounce,ounces,oz"
 msgstr "унция, унции"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:85
 msgid "Grams"
 msgstr "Граммы"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:85
 #, c-format
 msgctxt "unit-format"
 msgid "%s g"
 msgstr "%s г"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:85
 msgctxt "unit-symbols"
 msgid "gram,grams,gramme,grammes,g"
 msgstr "грамм, граммы, г"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:86
 msgid "Stone"
 msgstr "Стоун"
 
 # https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%BE%D1%83%D0%BD_(%D0%B5%D0%B4%D0%B8%D0%BD%D0%B8%D1%86%D0%B0_%D0%B8%D0%B7%D0%BC%D0%B5%D1%80%D0%B5%D0%BD%D0%B8%D1%8F)
-#: lib/unit.vala:76
+#: lib/unit.vala:86
 #, c-format
 msgctxt "unit-format"
 msgid "%s st"
 msgstr "%s ст"
 
 # https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%BE%D1%83%D0%BD_(%D0%B5%D0%B4%D0%B8%D0%BD%D0%B8%D1%86%D0%B0_%D0%B8%D0%B7%D0%BC%D0%B5%D1%80%D0%B5%D0%BD%D0%B8%D1%8F)
-#: lib/unit.vala:76
+#: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "stone,st,stones"
 msgstr "стоун,ст,стоуны"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:87
+msgid "Centuries"
+msgstr "Столетия"
+
+#: lib/unit.vala:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s centuries"
+msgstr "%s веков"
+
+#: lib/unit.vala:87
+msgctxt "unit-symbols"
+msgid "century,centuries"
+msgstr "век, века"
+
+#: lib/unit.vala:88
+msgid "Decades"
+msgstr "Десятилетия"
+
+#: lib/unit.vala:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s decades"
+msgstr "%s десятилетия"
+
+#: lib/unit.vala:88
+msgctxt "unit-symbols"
+msgid "decade,decades"
+msgstr "десятилетие, десятилетия"
+
+#: lib/unit.vala:89
 msgid "Years"
 msgstr "Годы"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:89
 #, c-format
 msgctxt "unit-format"
 msgid "%s years"
 msgstr "%s years"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:89
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "год, годы"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:90
+msgid "Months"
+msgstr "Месяцев"
+
+#: lib/unit.vala:90
+#, c-format
+msgctxt "unit-format"
+msgid "%s months"
+msgstr "%s месяцев"
+
+#: lib/unit.vala:90
+msgctxt "unit-symbols"
+msgid "month,months"
+msgstr "месяц, месяцы"
+
+#: lib/unit.vala:91
+msgid "Weeks"
+msgstr "Недель"
+
+#: lib/unit.vala:91
+#, c-format
+msgctxt "unit-format"
+msgid "%s weeks"
+msgstr "%s недели"
+
+#: lib/unit.vala:91
+msgctxt "unit-symbols"
+msgid "week,weeks"
+msgstr "неделя, недели"
+
+#: lib/unit.vala:92
 msgid "Days"
 msgstr "Дни"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:92
 #, c-format
 msgctxt "unit-format"
 msgid "%s days"
 msgstr "%s дней"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:92
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "день, дни"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:93
 msgid "Hours"
 msgstr "Часы"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:93
 #, c-format
 msgctxt "unit-format"
 msgid "%s hours"
 msgstr "%s часов"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "час, часы"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:94
 msgid "Minutes"
 msgstr "Минуты"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:94
 #, c-format
 msgctxt "unit-format"
 msgid "%s minutes"
 msgstr "%s минут"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:94
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "минута, минуты"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:95
 msgid "Seconds"
 msgstr "Секунды"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:95
 #, c-format
 msgctxt "unit-format"
 msgid "%s s"
 msgstr "%s с"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:95
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "секунда, секунды, с"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:96
 msgid "Milliseconds"
 msgstr "Миллисекунды"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:96
 #, c-format
 msgctxt "unit-format"
 msgid "%s ms"
 msgstr "%s мс"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:96
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "миллисекунда, миллисекунды, мс"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:97
 msgid "Microseconds"
 msgstr "Микросекунды"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:97
 #, c-format
 msgctxt "unit-format"
 msgid "%s μs"
 msgstr "%s мкс"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:97
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "микросекунда, микросекунды, мкc"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:98
 msgid "Celsius"
 msgstr "Цельсий"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:98
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚C"
 msgstr "%s ˚C"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "degC,˚C,C,c,Celsius,celsius"
 msgstr "˚C,C,c,Цельсий,цельсий"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:99
 msgid "Fahrenheit"
 msgstr "Фаренгейт"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:99
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚F"
 msgstr "%s ˚F"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:99
 msgctxt "unit-symbols"
 msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
 msgstr "˚F,F,f,Фаренгейт,фаренгейт"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:100
 msgid "Kelvin"
 msgstr "Кельвины"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:100
 #, c-format
 msgctxt "unit-format"
 msgid "%s K"
 msgstr "%s K"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
 msgstr "к,К,Кельвин,кельвин"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:101
 msgid "Rankine"
 msgstr "Ранкин"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:101
 #, c-format
 msgctxt "unit-format"
 msgid "%s ˚R"
 msgstr "%s ˚R"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
 msgstr "˚R,˚Ra,r,R,Ранкин,ранкин"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
-#: lib/unit.vala:89
+#: lib/unit.vala:103
 msgid "Bits"
 msgstr "Биты"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:103
 #, c-format
 msgctxt "unit-format"
 msgid "%s b"
 msgstr "%s бит"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "bit,bits,b"
 msgstr "бит,биты,бит"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:104
 msgid "Bytes"
 msgstr "Байты"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:104
 #, c-format
 msgctxt "unit-format"
 msgid "%s B"
 msgstr "%s Б"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
 msgstr "байт,байты,Б"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:105
 msgid "Nibbles"
 msgstr "Полубайт"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:105
 #, c-format
 msgctxt "unit-format"
 msgid "%s nibble"
 msgstr "%s полубайт"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "полубайт,полубайты"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
-#: lib/unit.vala:93
+#: lib/unit.vala:107
 msgid "Kilobits"
 msgstr "Килобиты"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:107
 #, c-format
 msgctxt "unit-format"
 msgid "%s kb"
 msgstr "%s кбит"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:107
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "килобит, килобиты, кбит, Кбит"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:108
 msgid "Kilobytes"
 msgstr "Килобайты"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:108
 #, c-format
 msgctxt "unit-format"
 msgid "%s kB"
 msgstr "%s кБ"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "килобайт, килобайты, кБ, КБ"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:109
 msgid "Kibibits"
 msgstr "Кибибиты"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:109
 #, c-format
 msgctxt "unit-format"
 msgid "%s Kib"
 msgstr "%s Kибит"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:109
 msgctxt "unit-symbols"
 msgid "kibibit,kibibits,Kib"
 msgstr "кибибит,кибибиты,Кибит"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:110
 msgid "Kibibytes"
 msgstr "Кибибайты"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:110
 #, c-format
 msgctxt "unit-format"
 msgid "%s KiB"
 msgstr "%s KиБ"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:110
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
 msgstr "кибибайт,кибибайты,КиБ"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:111
 msgid "Megabits"
 msgstr "Мегабиты"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:111
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mb"
 msgstr "%s Мбит"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "megabit,megabits,Mb"
 msgstr "мегабит,мегабиты,Мбит"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:112
 msgid "Megabytes"
 msgstr "Мегабайты"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:112
 #, c-format
 msgctxt "unit-format"
 msgid "%s MB"
 msgstr "%s МБ"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:112
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
 msgstr "мегабайт,мегабайты,МБ"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:113
 msgid "Mebibits"
 msgstr "Мебибиты"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:113
 #, c-format
 msgctxt "unit-format"
 msgid "%s Mib"
 msgstr "%s Мибит"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:113
 msgctxt "unit-symbols"
 msgid "mebibit,mebibits,Mib"
 msgstr "мебибит,мебибиты,Мибит"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:114
 msgid "Mebibytes"
 msgstr "Мебибайты"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:114
 #, c-format
 msgctxt "unit-format"
 msgid "%s MiB"
 msgstr "%s МиБ"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
 msgstr "мебибайт,мебибайты,МиБ"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:115
 msgid "Gigabits"
 msgstr "Гигабиты"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:115
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gb"
 msgstr "%s Гб"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:115
 msgctxt "unit-symbols"
 msgid "gigabit,gigabits,Gb"
 msgstr "гигабит,гигабиты,Гбит"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:116
 msgid "Gigabytes"
 msgstr "Гигабайты"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:116
 #, c-format
 msgctxt "unit-format"
 msgid "%s GB"
 msgstr "%s ГБ"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
 msgstr "гигабайт,гигабайты,ГБ"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:117
 msgid "Gibibits"
 msgstr "Гибибиты"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:117
 #, c-format
 msgctxt "unit-format"
 msgid "%s Gib"
 msgstr "%s Гибит"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:117
 msgctxt "unit-symbols"
 msgid "gibibit,gibibits,Gib"
 msgstr "гибибит,гибибиты,Гибит"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:118
 msgid "Gibibytes"
 msgstr "Гибибайт"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:118
 #, c-format
 msgctxt "unit-format"
 msgid "%s GiB"
 msgstr "%s ГиБ"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
 msgstr "гибибайт,гибибайты,ГиБ"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:119
 msgid "Terabits"
 msgstr "Терабиты"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:119
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tb"
 msgstr "%s Тбит"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:119
 msgctxt "unit-symbols"
 msgid "terabit,terabits,Tb"
 msgstr "терабит,терабиты,Тбит"
 
-#: lib/unit.vala:106
+#: lib/unit.vala:120
 msgid "Terabytes"
 msgstr "Терабайты"
 
-#: lib/unit.vala:106
+#: lib/unit.vala:120
 #, c-format
 msgctxt "unit-format"
 msgid "%s TB"
 msgstr "%s ТБ"
 
-#: lib/unit.vala:106
+#: lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
 msgstr "терабайт,терабайты,ТБ"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:121
 msgid "Tebibits"
 msgstr "Тебибиты"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:121
 #, c-format
 msgctxt "unit-format"
 msgid "%s Tib"
 msgstr "%s Тибит"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:121
 msgctxt "unit-symbols"
 msgid "tebibit,tebibits,Tib"
 msgstr "тебибит,тебибиты,Тибит"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:122
 msgid "Tebibytes"
 msgstr "Тебибайты"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:122
 #, c-format
 msgctxt "unit-format"
 msgid "%s TiB"
 msgstr "%s ТиБ"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
 msgstr "тебибайт,тебибайты,ТиБ"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:123
 msgid "Petabits"
 msgstr "Петабиты"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:123
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pb"
 msgstr "%s Пбит"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:123
 msgctxt "unit-symbols"
 msgid "petabit,petabits,Pb"
 msgstr "петабит,петабиты,Пбит"
 
-#: lib/unit.vala:110
+#: lib/unit.vala:124
 msgid "Petabytes"
 msgstr "Петабайты"
 
-#: lib/unit.vala:110
+#: lib/unit.vala:124
 #, c-format
 msgctxt "unit-format"
 msgid "%s PB"
 msgstr "%s ПБ"
 
-#: lib/unit.vala:110
+#: lib/unit.vala:124
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
 msgstr "петабайт,петабайты,ПБ"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:125
 msgid "Pebibits"
 msgstr "Пебибиты"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:125
 #, c-format
 msgctxt "unit-format"
 msgid "%s Pib"
 msgstr "%s Пибит"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:125
 msgctxt "unit-symbols"
 msgid "pebibit,pebibits,Pib"
 msgstr "пебибит,пебибиты,Пибит"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:126
 msgid "Pebibytes"
 msgstr "Пебибайты"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:126
 #, c-format
 msgctxt "unit-format"
 msgid "%s PiB"
 msgstr "%s ПБ"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:126
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
 msgstr "пебибайт,пебибайты,ПБ"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:127
 msgid "Exabits"
 msgstr "Эксабиты"
 
-#: lib/unit.vala:113 lib/unit.vala:117
+#: lib/unit.vala:127 lib/unit.vala:131
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eb"
 msgstr "%s Эбит"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:127
 msgctxt "unit-symbols"
 msgid "exabit,exabits,Eb"
 msgstr "эксабит,эксабиты,Эбит"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:128
 msgid "Exabytes"
 msgstr "Эксабайты"
 
-#: lib/unit.vala:114 lib/unit.vala:118
+#: lib/unit.vala:128 lib/unit.vala:132
 #, c-format
 msgctxt "unit-format"
 msgid "%s EB"
 msgstr "%s ЭБ"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:128
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
 msgstr "эксабайт,эксабайты,ЭБ"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:129
 msgid "Exbibits"
 msgstr "Эксбибиты"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:129
 #, c-format
 msgctxt "unit-format"
 msgid "%s Eib"
 msgstr "%s Эибит"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:129
 msgctxt "unit-symbols"
 msgid "exbibit,exbibits,Eib"
 msgstr "эксбибит,эксбибиты,Эибит"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:130
 msgid "Exbibytes"
 msgstr "Эксбибайты"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:130
 #, c-format
 msgctxt "unit-format"
 msgid "%s EiB"
 msgstr "%s ЭиБ"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:130
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
 msgstr "эксбибайт,эксбибайты,ЭиБ"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:131
 msgid "Zettabits"
 msgstr "Зеттабиты"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:131
 msgctxt "unit-symbols"
 msgid "zettabit,zettabits,Zb"
 msgstr "зеттабит,зеттабиты,Збит"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:132
 msgid "Zettabytes"
 msgstr "Зеттабайты"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:132
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
 msgstr "зеттабайт,зеттабайты,ЗБ"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:133
 msgid "Zebibits"
 msgstr "Зебибиты"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:133
 #, c-format
 msgctxt "unit-format"
 msgid "%s Zib"
 msgstr "%s Зибит"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:133
 msgctxt "unit-symbols"
 msgid "zebibit,zebibits,Zib"
 msgstr "зебибит,зебибиты,Зибит"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:134
 msgid "Zebibytes"
 msgstr "Зебибайты"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:134
 #, c-format
 msgctxt "unit-format"
 msgid "%s ZiB"
 msgstr "%s ЗиБ"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:134
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
 msgstr "зебибайт,зебибайты,ЗиБ"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:135
 msgid "Yottabits"
 msgstr "Йоттабиты"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:135
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yb"
 msgstr "%s Йбит"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:135
 msgctxt "unit-symbols"
 msgid "yottabit,yottabits,Yb"
 msgstr "йоттабит,йоттабиты,Йбит"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:136
 msgid "Yottabytes"
 msgstr "Йоттабайты"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:136
 #, c-format
 msgctxt "unit-format"
 msgid "%s YB"
 msgstr "%s ЙБ"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:136
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
 msgstr "йоттабайт,йоттабайты,ЙБ"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:137
 msgid "Yobibits"
 msgstr "Йобибиты"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:137
 #, c-format
 msgctxt "unit-format"
 msgid "%s Yib"
 msgstr "%s Йибит"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:137
 msgctxt "unit-symbols"
 msgid "yobibit,yobibits,Yib"
 msgstr "йобибит,йобибиты,Йибит"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:138
 msgid "Yobibytes"
 msgstr "Йобибайты"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:138
 #, c-format
 msgctxt "unit-format"
 msgid "%s YiB"
 msgstr "%s ЙиБ"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:138
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
 msgstr "йобибайт,йобибайты,ЙиБ"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:139
+msgid "Hertz"
+msgstr "Герц"
+
+#: lib/unit.vala:139
+#, c-format
+msgctxt "unit-format"
+msgid "%s Hz"
+msgstr "%s Hz"
+
+#: lib/unit.vala:139
+msgctxt "unit-symbols"
+msgid "hertz,Hz"
+msgstr "герц, Гц"
+
+#: lib/unit.vala:140
+msgid "Kilohertz"
+msgstr "Килогерц"
+
+#: lib/unit.vala:140
+#, c-format
+msgctxt "unit-format"
+msgid "%s kHz"
+msgstr "%s кГц"
+
+#: lib/unit.vala:140
+#| msgctxt "unit-symbols"
+#| msgid "kilohertz,kHz"
+msgctxt "unit-symbols"
+msgid "kilohertz,kHZ"
+msgstr "килогерц, кГц"
+
+#: lib/unit.vala:141
+msgid "Megahertz"
+msgstr "Мегагерц"
+
+#: lib/unit.vala:141
+#, c-format
+msgctxt "unit-format"
+msgid "%s MHz"
+msgstr "%s МГц"
+
+#: lib/unit.vala:141
+msgctxt "unit-symbols"
+msgid "megahertz,MHz"
+msgstr "мегагерц, МГц"
+
+#: lib/unit.vala:142
+msgid "Gigahertz"
+msgstr "Гигагерц"
+
+#: lib/unit.vala:142
+#, c-format
+msgctxt "unit-format"
+msgid "%s GHz"
+msgstr "%s ГГц"
+
+#: lib/unit.vala:142
+msgctxt "unit-symbols"
+msgid "gigahertz,GHz"
+msgstr "гигагерц, ГГц"
+
+#: lib/unit.vala:143
+msgid "Terahertz"
+msgstr "Терагерц"
+
+#: lib/unit.vala:143
+#, c-format
+msgctxt "unit-format"
+msgid "%s THz"
+msgstr "%s ТГц"
+
+#: lib/unit.vala:143
+msgctxt "unit-symbols"
+msgid "terahertz,THz"
+msgstr "терагерц, ТГц"
+
+#: lib/unit.vala:145
 msgid "Currency"
 msgstr "Валюта"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:132
+#: lib/unit.vala:151
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
@@ -1978,247 +2248,248 @@ msgstr "%s%%s"
 msgid "Copy"
 msgstr "Копировать"
 
-#: search-provider/search-provider.vala:191
+#: search-provider/search-provider.vala:190
 msgid "Copy result to clipboard"
 msgstr "Копировать результат в буфер обмена"
 
-#: src/buttons-advanced.ui:17 src/buttons-programming.ui:2143
+#: src/ui/buttons-advanced.ui:17 src/ui/buttons-programming.ui:2313
 msgid "Inverse [Ctrl+I]"
 msgstr "Инвертировать [Ctrl+I]"
 
 #. Accessible name for the inverse button
-#: src/buttons-advanced.ui:22 src/buttons-programming.ui:2148
+#: src/ui/buttons-advanced.ui:22 src/ui/buttons-programming.ui:2318
 msgid "Inverse"
 msgstr "Инвертировать"
 
-#: src/buttons-advanced.ui:47 src/buttons-programming.ui:1277
+#: src/ui/buttons-advanced.ui:50 src/ui/buttons-programming.ui:1349
 msgid "Factorize [Ctrl+F]"
 msgstr "Разложить на множители [Ctrl+F]"
 
 #. Accessible name for the factorize button
-#: src/buttons-advanced.ui:51 src/buttons-programming.ui:1281
+#: src/ui/buttons-advanced.ui:54 src/ui/buttons-programming.ui:1353
 msgid "Factorize"
 msgstr "Разложить на множители"
 
-#: src/buttons-advanced.ui:66 src/buttons-programming.ui:2116
+#: src/ui/buttons-advanced.ui:72 src/ui/buttons-programming.ui:2283
 msgid "Factorial [!]"
 msgstr "Факториал [!]"
 
 #. Accessible name for the factorial button
-#: src/buttons-advanced.ui:71 src/buttons-programming.ui:2121
+#: src/ui/buttons-advanced.ui:77 src/ui/buttons-programming.ui:2288
 msgid "Factorial"
 msgstr "Факториал"
 
-#: src/buttons-advanced.ui:95
+#: src/ui/buttons-advanced.ui:104
 msgid "Imaginary Component"
 msgstr "Мнимая часть"
 
-#: src/buttons-advanced.ui:247 src/buttons-basic.ui:130
-#: src/buttons-financial.ui:2037 src/buttons-programming.ui:1377
+#: src/ui/buttons-advanced.ui:262 src/ui/buttons-basic.ui:136
+#: src/ui/buttons-financial.ui:2043 src/ui/buttons-programming.ui:1490
 msgid "Divide [/]"
 msgstr "Разделить [/]"
 
-#: src/buttons-advanced.ui:359 src/buttons-basic.ui:258
-#: src/buttons-financial.ui:2165 src/buttons-programming.ui:1414
+#: src/ui/buttons-advanced.ui:377 src/ui/buttons-basic.ui:277
+#: src/ui/buttons-financial.ui:2177 src/ui/buttons-programming.ui:1530
 msgid "Multiply [*]"
 msgstr "Умножить [*]"
 
-#: src/buttons-advanced.ui:376 src/buttons-basic.ui:275
-#: src/buttons-financial.ui:2182 src/buttons-programming.ui:1431
+#: src/ui/buttons-advanced.ui:397 src/ui/buttons-basic.ui:298
+#: src/ui/buttons-financial.ui:2197 src/ui/buttons-programming.ui:1550
 msgid "Subtract [-]"
 msgstr "Вычесть [-]"
 
-#: src/buttons-advanced.ui:392 src/buttons-basic.ui:291
-#: src/buttons-financial.ui:2198 src/buttons-programming.ui:1447
+#: src/ui/buttons-advanced.ui:416 src/ui/buttons-basic.ui:318
+#: src/ui/buttons-financial.ui:2216 src/ui/buttons-programming.ui:1569
 msgid "Add [+]"
 msgstr "Сложить [+]"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
-#: src/buttons-advanced.ui:403 src/buttons-basic.ui:302
-#: src/buttons-financial.ui:2209 src/buttons-programming.ui:1458
+#: src/ui/buttons-advanced.ui:430 src/ui/buttons-basic.ui:333
+#: src/ui/buttons-financial.ui:2230 src/ui/buttons-programming.ui:1583
 msgid "="
 msgstr "="
 
-#: src/buttons-advanced.ui:409 src/buttons-basic.ui:308
-#: src/buttons-financial.ui:2215 src/buttons-programming.ui:1464
+#: src/ui/buttons-advanced.ui:436 src/ui/buttons-basic.ui:339
+#: src/ui/buttons-financial.ui:2236 src/ui/buttons-programming.ui:1589
 msgid "Calculate Result"
 msgstr "Вычислить результат"
 
-#: src/buttons-advanced.ui:427 src/buttons-basic.ui:361
-#: src/buttons-financial.ui:2268 src/buttons-programming.ui:1482
+#: src/ui/buttons-advanced.ui:454 src/ui/buttons-basic.ui:401
+#: src/ui/buttons-financial.ui:2295 src/ui/buttons-programming.ui:1607
 msgid "Clear Display [Escape]"
 msgstr "Очистить дисплей [Escape]"
 
-#: src/buttons-advanced.ui:441 src/buttons-programming.ui:1782
+#: src/ui/buttons-advanced.ui:471 src/ui/buttons-programming.ui:1910
 msgid "Subscript mode [Alt]"
 msgstr "Подстрочный режим [Alt]"
 
 #. Accessible name for the subscript mode button
-#: src/buttons-advanced.ui:446 src/buttons-programming.ui:1787
+#: src/ui/buttons-advanced.ui:476 src/ui/buttons-programming.ui:1915
 msgid "Subscript"
 msgstr "Подстрочный индекс"
 
-#: src/buttons-advanced.ui:468 src/buttons-programming.ui:1809
+#: src/ui/buttons-advanced.ui:501 src/ui/buttons-programming.ui:1940
 msgid "Superscript mode [Ctrl]"
 msgstr "Надстрочный режим [Ctrl]"
 
 #. Accessible name for the superscript mode button
-#: src/buttons-advanced.ui:473 src/buttons-programming.ui:1814
+#: src/ui/buttons-advanced.ui:506 src/ui/buttons-programming.ui:1945
 msgid "Superscript"
 msgstr "Надстрочный индекс"
 
-#: src/buttons-advanced.ui:495
+#: src/ui/buttons-advanced.ui:532 src/ui/buttons-basic.ui:236
+#: src/ui/buttons-financial.ui:2138
+msgid "Percentage [%]"
+msgstr "Процент [%]"
+
+#: src/ui/buttons-advanced.ui:548
 msgid "Scientific exponent [Ctrl+E]"
 msgstr "Экспоненциальная запись [Ctrl+E]"
 
 #. Accessible name for the scientific exponent button
-#: src/buttons-advanced.ui:499
+#: src/ui/buttons-advanced.ui:552
 msgid "Scientific Exponent"
 msgstr "Экспоненциальная запись"
 
-#: src/buttons-advanced.ui:522 src/buttons-programming.ui:1947
+#: src/ui/buttons-advanced.ui:578 src/ui/buttons-programming.ui:2093
 msgid "Modulus divide"
 msgstr "Остаток от деления"
 
-#: src/buttons-advanced.ui:538 src/buttons-basic.ui:328
-#: src/buttons-financial.ui:2235 src/buttons-programming.ui:1964
+#: src/ui/buttons-advanced.ui:597 src/ui/buttons-basic.ui:360
+#: src/ui/buttons-financial.ui:2256 src/ui/buttons-programming.ui:2113
 msgid "Start Group [(]"
 msgstr "Начать блок [(]"
 
-#: src/buttons-advanced.ui:555 src/buttons-basic.ui:345
-#: src/buttons-financial.ui:2252 src/buttons-programming.ui:1980
+#: src/ui/buttons-advanced.ui:617 src/ui/buttons-basic.ui:381
+#: src/ui/buttons-financial.ui:2276 src/ui/buttons-programming.ui:2132
 msgid "End Group [)]"
 msgstr "Закончить блок [)]"
 
 #. Accessible name for the memory button
 #. Accessible name for the memory value button
-#: src/buttons-advanced.ui:570 src/buttons-advanced.ui:573
-#: src/buttons-financial.ui:1854 src/buttons-financial.ui:1857
-#: src/buttons-programming.ui:1852
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-advanced.ui:641
+#: src/ui/buttons-financial.ui:1854 src/ui/buttons-financial.ui:1860
+#: src/ui/buttons-programming.ui:1986
 msgid "Memory"
 msgstr "Память"
 
 #. The label on the memory button
-#: src/buttons-advanced.ui:582 src/buttons-financial.ui:1869
-#: src/buttons-programming.ui:1865
+#: src/ui/buttons-advanced.ui:650 src/ui/buttons-financial.ui:1872
+#: src/ui/buttons-programming.ui:1999
 msgid "x"
 msgstr "x"
 
-#: src/buttons-advanced.ui:617 src/buttons-programming.ui:1314
+#: src/ui/buttons-advanced.ui:685 src/ui/buttons-programming.ui:1392
 msgid "Absolute Value [|]"
 msgstr "Модуль [|]"
 
 #. Accessible name for the absolute value button
-#: src/buttons-advanced.ui:622 src/buttons-programming.ui:1319
+#: src/ui/buttons-advanced.ui:690 src/ui/buttons-programming.ui:1397
 msgid "Absolute Value"
 msgstr "Модуль"
 
-#: src/buttons-advanced.ui:646
+#: src/ui/buttons-advanced.ui:717
 msgid "Real Component"
 msgstr "Действительная часть"
 
-#: src/buttons-advanced.ui:663
+#: src/ui/buttons-advanced.ui:737
 msgid "Complex conjugate"
 msgstr "Комплексное сопряжение"
 
-#: src/buttons-advanced.ui:680
+#: src/ui/buttons-advanced.ui:757
 msgid "Complex argument"
 msgstr "Комплексный аргумент"
 
-#: src/buttons-advanced.ui:697
+#: src/ui/buttons-advanced.ui:777
 msgid "Natural Logarithm"
 msgstr "Натуральный логарифм"
 
-#: src/buttons-advanced.ui:713 src/buttons-financial.ui:1908
-#: src/buttons-programming.ui:1260
+#: src/ui/buttons-advanced.ui:796 src/ui/buttons-financial.ui:1911
+#: src/ui/buttons-programming.ui:1329
 msgid "Logarithm"
 msgstr "Логарифм"
 
-#: src/buttons-advanced.ui:728 src/buttons-financial.ui:2470
-#: src/buttons-programming.ui:2171
+#: src/ui/buttons-advanced.ui:814 src/ui/buttons-financial.ui:2533
+#: src/ui/buttons-programming.ui:2344
 msgid "Exponent [^ or **]"
 msgstr "Возвести в степень [^ или **]"
 
 #. Accessible name for the exponentiation (x to the power of y) button
-#: src/buttons-advanced.ui:733 src/buttons-basic.ui:396
-#: src/buttons-financial.ui:2475 src/buttons-programming.ui:2176
+#: src/ui/buttons-advanced.ui:819 src/ui/buttons-basic.ui:444
+#: src/ui/buttons-financial.ui:2538 src/ui/buttons-programming.ui:2349
 msgid "Exponent"
 msgstr "Возвести в степень"
 
-#: src/buttons-advanced.ui:757 src/buttons-financial.ui:2499
-#: src/buttons-programming.ui:1244
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:2565
+#: src/ui/buttons-programming.ui:1310
 msgid "Root [Ctrl+R]"
 msgstr "Корень [Ctrl+R]"
 
-#: src/buttons-advanced.ui:773 src/buttons-basic.ui:419
-#: src/buttons-financial.ui:2450
+#: src/ui/buttons-advanced.ui:865 src/ui/buttons-basic.ui:471
+#: src/ui/buttons-financial.ui:2510
 msgid "Undo [Ctrl+Z]"
 msgstr "Отменить [Ctrl+Z]"
 
-#: src/buttons-advanced.ui:793
+#: src/ui/buttons-advanced.ui:888 src/ui/buttons-programming.ui:1423
 msgid "Pi [Ctrl+P]"
 msgstr "Число Пи [Ctrl+P]"
 
-#: src/buttons-advanced.ui:816
+#: src/ui/buttons-advanced.ui:914
 msgid "Euler’s Number"
 msgstr "Число Эйлера"
 
-#: src/buttons-advanced.ui:846
+#: src/ui/buttons-advanced.ui:947
 msgid "Cosine"
 msgstr "Косинус"
 
-#: src/buttons-advanced.ui:861
+#: src/ui/buttons-advanced.ui:965
 msgid "Sine"
 msgstr "Синус"
 
-#: src/buttons-advanced.ui:876
+#: src/ui/buttons-advanced.ui:983
 msgid "Tangent"
 msgstr "Тангенс"
 
-#: src/buttons-advanced.ui:891
+#: src/ui/buttons-advanced.ui:1001
 msgid "Hyperbolic Sine"
 msgstr "Гиперболический синус"
 
-#: src/buttons-advanced.ui:907
+#: src/ui/buttons-advanced.ui:1020
 msgid "Hyperbolic Cosine"
 msgstr "Гиперболический косинус"
 
-#: src/buttons-advanced.ui:923
+#: src/ui/buttons-advanced.ui:1039
 msgid "Hyperbolic Tangent"
 msgstr "Гиперболический тангенс"
 
-#: src/buttons-advanced.ui:946
+#: src/ui/buttons-advanced.ui:1065
 msgid "Additional Functions"
 msgstr "Дополнительные функции"
 
 #. Accessible name for the store value button
-#: src/buttons-advanced.ui:949 src/buttons-programming.ui:1855
+#: src/ui/buttons-advanced.ui:1068 src/ui/buttons-programming.ui:1989
 msgid "Store"
 msgstr "X→П"
 
-#: src/buttons-basic.ui:222 src/buttons-financial.ui:2129
-msgid "Percentage [%]"
-msgstr "Процент [%]"
-
-#: src/buttons-basic.ui:377
+#: src/ui/buttons-basic.ui:421
 msgid "Square root [Ctrl+R]"
 msgstr "Квадратный корень [Ctrl+R]"
 
-#: src/buttons-basic.ui:392
+#: src/ui/buttons-basic.ui:440
 msgid "Square [Ctrl+2]"
 msgstr "Квадрат [Ctrl+2]"
 
 #. Title of Compounding Term dialog
-#: src/buttons-financial.ui:8 src/buttons-financial.ui:2284
+#: src/ui/buttons-financial.ui:8 src/ui/buttons-financial.ui:2314
 msgid "Compounding Term"
 msgstr "Составной период"
 
-#: src/buttons-financial.ui:22 src/buttons-financial.ui:205
-#: src/buttons-financial.ui:388 src/buttons-financial.ui:571
-#: src/buttons-financial.ui:723 src/buttons-financial.ui:907
-#: src/buttons-financial.ui:1091 src/buttons-financial.ui:1275
-#: src/buttons-financial.ui:1459 src/buttons-financial.ui:1674
-#: src/buttons-programming.ui:2301
+#: src/ui/buttons-financial.ui:22 src/ui/buttons-financial.ui:205
+#: src/ui/buttons-financial.ui:388 src/ui/buttons-financial.ui:571
+#: src/ui/buttons-financial.ui:723 src/ui/buttons-financial.ui:907
+#: src/ui/buttons-financial.ui:1091 src/ui/buttons-financial.ui:1275
+#: src/ui/buttons-financial.ui:1459 src/ui/buttons-financial.ui:1674
+#: src/ui/buttons-programming.ui:2518
 msgid "_Cancel"
 msgstr "_Отменить"
 
@@ -2232,17 +2503,17 @@ msgstr "_Отменить"
 #. Straight-Line Depreciation Dialog: Calculate button
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
 #. Payment Period Dialog: Button to calculate result
-#: src/buttons-financial.ui:37 src/buttons-financial.ui:220
-#: src/buttons-financial.ui:403 src/buttons-financial.ui:586
-#: src/buttons-financial.ui:738 src/buttons-financial.ui:922
-#: src/buttons-financial.ui:1106 src/buttons-financial.ui:1290
-#: src/buttons-financial.ui:1474 src/buttons-financial.ui:1689
+#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:220
+#: src/ui/buttons-financial.ui:403 src/ui/buttons-financial.ui:586
+#: src/ui/buttons-financial.ui:738 src/ui/buttons-financial.ui:922
+#: src/ui/buttons-financial.ui:1106 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-financial.ui:1474 src/ui/buttons-financial.ui:1689
 msgid "C_alculate"
 msgstr "В_ычислить"
 
 #. Compounding Term Dialog: Label before present value input
 #. Periodic Interest Rate Dialog: Label before present value input
-#: src/buttons-financial.ui:117 src/buttons-financial.ui:1172
+#: src/ui/buttons-financial.ui:117 src/ui/buttons-financial.ui:1172
 msgid "Present _Value:"
 msgstr "Текущее _значение:"
 
@@ -2251,14 +2522,14 @@ msgstr "Текущее _значение:"
 #. Periodic Payment Dialog: Label before periodic interest rate input
 #. Present Value Dialog: Label before periodic interest rate input
 #. Payment Period Dialog: Label before periodic interest rate input
-#: src/buttons-financial.ui:133 src/buttons-financial.ui:468
-#: src/buttons-financial.ui:804 src/buttons-financial.ui:988
-#: src/buttons-financial.ui:1769
+#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:468
+#: src/ui/buttons-financial.ui:804 src/ui/buttons-financial.ui:988
+#: src/ui/buttons-financial.ui:1769
 msgid "Periodic Interest _Rate:"
 msgstr "Периодическая проц_ентная ставка:"
 
 #. Compounding Term Dialog: Description of calculation
-#: src/buttons-financial.ui:149
+#: src/ui/buttons-financial.ui:149
 msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
@@ -2270,17 +2541,17 @@ msgstr ""
 
 #. Compounding Term Dialog: Label before future value input
 #. Periodic Interest Rate Dialog: Label before future value input
-#: src/buttons-financial.ui:163 src/buttons-financial.ui:1156
+#: src/ui/buttons-financial.ui:163 src/ui/buttons-financial.ui:1156
 msgid "_Future Value:"
 msgstr "_Будущая стоимость:"
 
 #. Title of Double-Declining Depreciation dialog
-#: src/buttons-financial.ui:191
+#: src/ui/buttons-financial.ui:191
 msgid "Double-Declining Depreciation"
 msgstr "Отброс двойного остатка"
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: src/buttons-financial.ui:255
+#: src/ui/buttons-financial.ui:255
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -2290,31 +2561,31 @@ msgstr ""
 
 #. Double-Declining Depreciation Dialog: Label before cost input
 #. Gross Profit Margin Dialog: Label before cost input
-#: src/buttons-financial.ui:269 src/buttons-financial.ui:635
+#: src/ui/buttons-financial.ui:269 src/ui/buttons-financial.ui:635
 msgid "C_ost:"
 msgstr "_Цена:"
 
 #. Double-Declining Depreciation Dialog: Label before life input
 #. Straight-Line Depreciation Dialog: Label before life input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/buttons-financial.ui:285 src/buttons-financial.ui:1357
-#: src/buttons-financial.ui:1525
+#: src/ui/buttons-financial.ui:285 src/ui/buttons-financial.ui:1357
+#: src/ui/buttons-financial.ui:1525
 msgid "_Life:"
 msgstr "_Жизненный цикл:"
 
 #. Double-Declining Depreciation Dialog: Label before period input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/buttons-financial.ui:331 src/buttons-financial.ui:1509
+#: src/ui/buttons-financial.ui:331 src/ui/buttons-financial.ui:1509
 msgid "_Period:"
 msgstr "_Период:"
 
 #. Title of Future Value dialog
-#: src/buttons-financial.ui:374 src/buttons-financial.ui:2316
+#: src/ui/buttons-financial.ui:374 src/ui/buttons-financial.ui:2352
 msgid "Future Value"
 msgstr "Будущая стоимость"
 
 #. Future Value Dialog: Description of calculation
-#: src/buttons-financial.ui:438
+#: src/ui/buttons-financial.ui:438
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -2326,24 +2597,24 @@ msgstr ""
 #. Future Value Dialog: Label before periodic payment input
 #. Present Value Dialog: Label before periodic payment input
 #. Payment Period Dialog: Label before periodic payment input
-#: src/buttons-financial.ui:452 src/buttons-financial.ui:972
-#: src/buttons-financial.ui:1801
+#: src/ui/buttons-financial.ui:452 src/ui/buttons-financial.ui:972
+#: src/ui/buttons-financial.ui:1801
 msgid "_Periodic Payment:"
 msgstr "Период_ическая оплата:"
 
 #. Future Value Dialog: Label before number of periods input
 #. Present Value Dialog: Label before number of periods input
-#: src/buttons-financial.ui:484 src/buttons-financial.ui:1004
+#: src/ui/buttons-financial.ui:484 src/ui/buttons-financial.ui:1004
 msgid "_Number of Periods:"
 msgstr "_Число периодов:"
 
 #. Title of Gross Profit Margin dialog
-#: src/buttons-financial.ui:557 src/buttons-financial.ui:2434
+#: src/ui/buttons-financial.ui:557 src/ui/buttons-financial.ui:2491
 msgid "Gross Profit Margin"
 msgstr "Валовый доход"
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: src/buttons-financial.ui:621
+#: src/ui/buttons-financial.ui:621
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -2352,17 +2623,17 @@ msgstr ""
 "необходимый валовой доход."
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: src/buttons-financial.ui:651
+#: src/ui/buttons-financial.ui:651
 msgid "_Margin:"
 msgstr "_Маржа:"
 
 #. Title of Periodic Payment dialog
-#: src/buttons-financial.ui:709 src/buttons-financial.ui:2417
+#: src/ui/buttons-financial.ui:709 src/ui/buttons-financial.ui:2471
 msgid "Periodic Payment"
 msgstr "Периодическая оплата"
 
 #. Periodic Payment Dialog: Description of calculation
-#: src/buttons-financial.ui:774
+#: src/ui/buttons-financial.ui:774
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -2371,23 +2642,23 @@ msgstr ""
 "каждого периода. "
 
 #. Periodic Payment Dialog: Label before principal input
-#: src/buttons-financial.ui:788
+#: src/ui/buttons-financial.ui:788
 msgid "_Principal:"
 msgstr "_Основной капитал:"
 
 #. Periodic Payment Dialog: Label before term input
 #. Periodic Interest Rate Dialog: Label before term input
-#: src/buttons-financial.ui:820 src/buttons-financial.ui:1188
+#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:1188
 msgid "_Term:"
 msgstr "_Срок:"
 
 #. Title of Present Value dialog
-#: src/buttons-financial.ui:893 src/buttons-financial.ui:2400
+#: src/ui/buttons-financial.ui:893 src/ui/buttons-financial.ui:2451
 msgid "Present Value"
 msgstr "Текущее значение"
 
 #. Present Value Dialog: Description of calculation
-#: src/buttons-financial.ui:958
+#: src/ui/buttons-financial.ui:958
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -2397,12 +2668,12 @@ msgstr ""
 "течение некоторого срока. "
 
 #. Title of Periodic Interest Rate dialog
-#: src/buttons-financial.ui:1077 src/buttons-financial.ui:2383
+#: src/ui/buttons-financial.ui:1077 src/ui/buttons-financial.ui:2431
 msgid "Periodic Interest Rate"
 msgstr "Периодическая процентная ставка"
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: src/buttons-financial.ui:1142
+#: src/ui/buttons-financial.ui:1142
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
@@ -2411,24 +2682,24 @@ msgstr ""
 "значения в течение нескольких последовательных периодов. "
 
 #. Title of Straight-Line Depreciation dialog
-#: src/buttons-financial.ui:1261
+#: src/ui/buttons-financial.ui:1261
 msgid "Straight-Line Depreciation"
 msgstr "Линейная амортизация"
 
 #. Straight-Line Depreciation Dialog: Label before cost input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/buttons-financial.ui:1325 src/buttons-financial.ui:1557
+#: src/ui/buttons-financial.ui:1325 src/ui/buttons-financial.ui:1557
 msgid "_Cost:"
 msgstr "Ц_ена:"
 
 #. Straight-Line Depreciation Dialog: Label before salvage input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/buttons-financial.ui:1341 src/buttons-financial.ui:1541
+#: src/ui/buttons-financial.ui:1341 src/ui/buttons-financial.ui:1541
 msgid "_Salvage:"
 msgstr "_Вторсырьё:"
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: src/buttons-financial.ui:1419
+#: src/ui/buttons-financial.ui:1419
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -2441,12 +2712,12 @@ msgstr ""
 "устаревает. "
 
 #. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/buttons-financial.ui:1445
+#: src/ui/buttons-financial.ui:1445
 msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Амортизация Сумма-Лет-Цифр"
 
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/buttons-financial.ui:1634
+#: src/ui/buttons-financial.ui:1634
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
@@ -2461,17 +2732,17 @@ msgstr ""
 "устаревает. "
 
 #. Title of Payment Period dialog
-#: src/buttons-financial.ui:1660
+#: src/ui/buttons-financial.ui:1660
 msgid "Payment Period"
 msgstr "Период оплаты"
 
 #. Payment Period Dialog: Label before future value input
-#: src/buttons-financial.ui:1785
+#: src/ui/buttons-financial.ui:1785
 msgid "Future _Value:"
 msgstr "Будущая _стоимость:"
 
 #. Payment Period Dialog: Description of calculation
-#: src/buttons-financial.ui:1818
+#: src/ui/buttons-financial.ui:1818
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -2481,191 +2752,219 @@ msgstr ""
 "периодической оплаты с фиксированной ставкой получить необходимое значение."
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/buttons-financial.ui:2278
+#: src/ui/buttons-financial.ui:2308
 msgid "Ctrm"
 msgstr "Ctrm"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/buttons-financial.ui:2294
+#: src/ui/buttons-financial.ui:2327
 msgid "Ddb"
 msgstr "Ddb"
 
-#: src/buttons-financial.ui:2300
+#: src/ui/buttons-financial.ui:2333
 msgid "Double Declining Depreciation"
 msgstr "Отброс двойного остатка"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/buttons-financial.ui:2310
+#: src/ui/buttons-financial.ui:2346
 msgid "Fv"
 msgstr "Fv"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/buttons-financial.ui:2326
+#: src/ui/buttons-financial.ui:2365
 msgid "Term"
 msgstr "Term"
 
-#: src/buttons-financial.ui:2332
+#: src/ui/buttons-financial.ui:2371
 msgid "Financial Term"
 msgstr "Финансовое условие"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/buttons-financial.ui:2343
+#: src/ui/buttons-financial.ui:2385
 msgid "Syd"
 msgstr "Syd"
 
-#: src/buttons-financial.ui:2349
+#: src/ui/buttons-financial.ui:2391
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Амортизация Сумма-Лет-Цифр"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/buttons-financial.ui:2360
+#: src/ui/buttons-financial.ui:2405
 msgid "Sln"
 msgstr "Sln"
 
-#: src/buttons-financial.ui:2366
+#: src/ui/buttons-financial.ui:2411
 msgid "Straight Line Depreciation"
 msgstr "Линейная амортизация"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/buttons-financial.ui:2377
+#: src/ui/buttons-financial.ui:2425
 msgid "Rate"
 msgstr "Rate"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/buttons-financial.ui:2394
+#: src/ui/buttons-financial.ui:2445
 msgid "Pv"
 msgstr "Pv"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/buttons-financial.ui:2411
+#: src/ui/buttons-financial.ui:2465
 msgid "Pmt"
 msgstr "Pmt"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/buttons-financial.ui:2428
+#: src/ui/buttons-financial.ui:2485
 msgid "Gpm"
 msgstr "Gpm"
 
-#: src/buttons-programming.ui:17
+#: src/ui/buttons-programming.ui:17
 msgid "Binary"
 msgstr "Двоичный"
 
-#: src/buttons-programming.ui:18
+#: src/ui/buttons-programming.ui:18
 msgid "Octal"
 msgstr "Восьмеричный"
 
-#: src/buttons-programming.ui:19
+#: src/ui/buttons-programming.ui:19
 msgid "Decimal"
 msgstr "Десятичный"
 
-#: src/buttons-programming.ui:20
+#: src/ui/buttons-programming.ui:20
 msgid "Hexadecimal"
 msgstr "Шестнадцатеричный"
 
-#: src/buttons-programming.ui:1298
+#: src/ui/buttons-programming.ui:1373
 msgid "Binary Logarithm"
 msgstr "Двоичный логарифм"
 
-#: src/buttons-programming.ui:1343
+#: src/ui/buttons-programming.ui:1450
 msgid "Integer Component"
 msgstr "Целая часть"
 
-#: src/buttons-programming.ui:1360
+#: src/ui/buttons-programming.ui:1470
 msgid "Fractional Component"
 msgstr "Дробная часть"
 
-#: src/buttons-programming.ui:1896
+#: src/ui/buttons-programming.ui:2033
 msgid "Boolean Exclusive OR"
 msgstr "Логическое исключающее ИЛИ"
 
-#: src/buttons-programming.ui:1913
+#: src/ui/buttons-programming.ui:2053
 msgid "Boolean OR"
 msgstr "Логическое побитовое ИЛИ"
 
-#: src/buttons-programming.ui:1930
+#: src/ui/buttons-programming.ui:2073
 msgid "Boolean AND"
 msgstr "Логическое побитовое И"
 
 #. Accessible name for the shift left button
-#: src/buttons-programming.ui:1994 src/buttons-programming.ui:1997
+#: src/ui/buttons-programming.ui:2149 src/ui/buttons-programming.ui:2152
 msgid "Shift Left"
 msgstr "Сдвинуть влево"
 
 #. Accessible name for the shift right button
-#: src/buttons-programming.ui:2037 src/buttons-programming.ui:2040
+#: src/ui/buttons-programming.ui:2195 src/ui/buttons-programming.ui:2198
 msgid "Shift Right"
 msgstr "Сдвинуть вправо"
 
 #. Title of insert character code dialog
-#: src/buttons-programming.ui:2081 src/buttons-programming.ui:2254
+#: src/ui/buttons-programming.ui:2242 src/ui/buttons-programming.ui:2471
 msgid "Insert Character Code"
 msgstr "Вставить код символа"
 
 #. Accessible name for the insert character button
-#: src/buttons-programming.ui:2085
+#: src/ui/buttons-programming.ui:2246
 msgid "Insert Character"
 msgstr "Вставить символ"
 
-#: src/buttons-programming.ui:2101
+#: src/ui/buttons-programming.ui:2265
 msgid "Boolean NOT"
 msgstr "Логическое побитовое НЕ"
 
-#: src/buttons-programming.ui:2200
+#: src/ui/buttons-programming.ui:2376
 msgid "Ones’ Complement"
 msgstr "Дополнение до единицы"
 
-#: src/buttons-programming.ui:2217
+#: src/ui/buttons-programming.ui:2396
 msgid "Two’s Complement"
 msgstr "Дополнение до двух"
 
+#: src/ui/buttons-programming.ui:2414
+msgid "Change word size"
+msgstr "Изменить размер слова"
+
+#: src/ui/buttons-programming.ui:2448
+msgid "Word Size"
+msgstr "Размер слова"
+
 #. Insert ASCII dialog: Label before character entry
-#: src/buttons-programming.ui:2267
+#: src/ui/buttons-programming.ui:2484
 msgid "Ch_aracter:"
 msgstr "С_имвол:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/buttons-programming.ui:2316
+#: src/ui/buttons-programming.ui:2533
 msgid "_Insert"
 msgstr "Вс_тавить"
 
-#: src/gnome-calculator.vala:24
-msgid "Start in given mode"
-msgstr "Запустить в указанном режиме"
-
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
 #: src/gnome-calculator.vala:25
+msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
+msgstr ""
+"Запуск в заданном режиме (основной, расширенный, финансовый, "
+"программирование, клавиатура)"
+
+#: src/gnome-calculator.vala:26
 msgid "Solve given equation"
 msgstr "Вычислить заданное выражение"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:27
 msgid "Start with given equation"
 msgstr "Запустить с заданным выражением"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:28
 msgid "Show release version"
 msgstr "Показать версию выпуска"
 
 #. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:297
+#: src/gnome-calculator.vala:309
 msgid "Unable to open help file"
 msgstr "Не удалось открыть файл справки"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:328
+#: src/gnome-calculator.vala:340
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2012-2015.\n"
 "Stas Solovey <whats_up@tut.by>, 2012-2019."
 
-#: src/gnome-calculator.vala:334 src/math-window.ui:71
+#: src/gnome-calculator.vala:346 src/ui/math-window.ui:101
 msgid "About Calculator"
 msgstr "О программе"
 
 #. Short description in the about dialog
-#: src/gnome-calculator.vala:342
+#: src/gnome-calculator.vala:355
 msgid "Calculator with financial and scientific modes."
 msgstr "Калькулятор с финансовым и научным режимами."
 
-#: src/math-buttons.vala:464
+#: src/gnome-calculator.vala:370
+msgid "Are you sure you want to close all open windows?"
+msgstr "Вы уверены, что хотите закрыть все открытые окна?"
+
+#: src/gnome-calculator.vala:371
+msgid "Close _All"
+msgstr "Закрыть _все"
+
+#: src/math-buttons.vala:210 src/math-buttons.vala:493
+#: src/math-buttons.vala:508
+#, c-format
+msgid "%d-bit"
+msgid_plural "%d-bit"
+msgstr[0] "%d-бит"
+msgstr[1] "%d-бита"
+msgstr[2] "%d-битов"
+
+#: src/math-buttons.vala:478
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2673,343 +2972,336 @@ msgstr[0] "%d разряд"
 msgstr[1] "%d разряда"
 msgstr[2] "%d разрядов"
 
-#: src/math-converter.ui:16
+#: src/ui/math-converter.ui:16
 msgid "Switch conversion units"
 msgstr "Поменять местами конвертируемые единицы"
 
-#: src/math-converter.ui:29
+#: src/ui/math-converter.ui:29
 msgid " to "
 msgstr " к "
 
-#: src/math-converter.ui:112
+#: src/ui/math-converter.ui:114
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:497
+#: src/math-display.vala:552
 msgid "Defined Functions"
 msgstr "Определенные функции"
 
-#: src/math-display.vala:554
+#: src/math-display.vala:609
 msgid "Defined Variables"
 msgstr "Определенные переменные"
 
-#: src/math-function-popover.ui:34
+#: src/ui/math-function-popover.ui:34
 msgid "New function"
 msgstr "Создать функцию"
 
-#: src/math-function-popover.ui:47
+#: src/ui/math-function-popover.ui:47
 msgid "Select no. of arguments"
 msgstr "Выберите количество аргументов"
 
-#. Title of preferences dialog
-#: src/math-preferences.vala:33 src/math-window.ui:57
+#: src/ui/math-preferences.ui:21 src/ui/math-window.ui:89
 msgid "Preferences"
 msgstr "Параметры"
 
-#. Preferences dialog: Label for number format combo box
-#: src/math-preferences.vala:46
-msgid "Number _Format:"
-msgstr "_Формат числа:"
-
-#. Number display mode combo: Automatic, e.g. 1234 (or scientific for large number 1.234×10^99)
-#: src/math-preferences.vala:63
-msgid "Automatic"
-msgstr "Автоматический"
-
-#. Number display mode combo: Fixed, e.g. 1234
-#: src/math-preferences.vala:67
-msgid "Fixed"
-msgstr "Фиксированный"
-
-#. Number display mode combo: Scientific, e.g. 1.234×10^3
-#: src/math-preferences.vala:71
-msgid "Scientific"
-msgstr "Научный"
-
-#. Number display mode combo: Engineering, e.g. 1.234k
-#: src/math-preferences.vala:75
-msgid "Engineering"
-msgstr "Инженерный"
-
-#. Preferences dialog: label for show trailing zeroes check button
-#: src/math-preferences.vala:92
+#: src/ui/math-preferences.ui:63
 msgid "Number of _decimals"
 msgstr "Количество _десятичных знаков"
 
-#. Preferences dialog: label for show trailing zeroes switch
-#: src/math-preferences.vala:104
+#: src/ui/math-preferences.ui:77
 msgid "Trailing _zeroes"
 msgstr "Незначащие _нули после запятой"
 
-#. Preferences dialog: label for show show thousands separator switch
-#: src/math-preferences.vala:117
+#: src/ui/math-preferences.ui:90
 msgid "_Thousands separators"
 msgstr "Разделители _тысяч"
 
-#. Preferences dialog: Label for angle unit combo box
-#: src/math-preferences.vala:131
-msgid "_Angle units:"
-msgstr "Единицы измерения _углов:"
+#: src/ui/math-preferences.ui:104
+msgid "_Angle units"
+msgstr "_Угловые единицы"
 
-#. Preferences dialog: Label for word size combo box
-#: src/math-preferences.vala:161
-msgid "Word _size:"
-msgstr "Размер _слова:"
+#: src/ui/math-preferences.ui:118
+msgid "Word _size"
+msgstr "_Размер слова"
 
-#. Word size combo: 8 bits
-#: src/math-preferences.vala:175
-msgid "8 bits"
-msgstr "8 бит"
-
-#. Word size combo: 16 bits
-#: src/math-preferences.vala:177
-msgid "16 bits"
-msgstr "16 бит"
-
-#. Word size combo: 32 bits
-#: src/math-preferences.vala:179
-msgid "32 bits"
-msgstr "32 бита"
-
-#. Word size combo: 64 bits
-#: src/math-preferences.vala:181
-msgid "64 bits"
-msgstr "64 бита"
-
-#. Preferences dialog: Label for exchange rate refresh interval combo box
-#: src/math-preferences.vala:187
+#: src/ui/math-preferences.ui:132
 msgid "E_xchange rate refresh interval"
 msgstr "_Интервал обновления обменного курса"
 
+#. Word size combo: 8 bit
+#: src/ui/math-preferences.ui:196
+msgid "8-bit"
+msgstr "8-бит"
+
+#. Word size combo: 16 bit
+#: src/ui/math-preferences.ui:197
+msgid "16-bit"
+msgstr "16-бит"
+
+#. Word size combo: 32 bit
+#: src/ui/math-preferences.ui:198
+msgid "32-bit"
+msgstr "32-бита"
+
+#. Word size combo: 64 bit
+#: src/ui/math-preferences.ui:199
+msgid "64-bit"
+msgstr "64-бит"
+
 #. Refresh interval combo: never
-#: src/math-preferences.vala:201
+#: src/ui/math-preferences.ui:212
 msgid "never"
 msgstr "никогда"
 
 #. Refresh interval combo: daily
-#: src/math-preferences.vala:203
+#: src/ui/math-preferences.ui:213
 msgid "daily"
 msgstr "ежедневно"
 
 #. Refresh interval combo: weekly
-#: src/math-preferences.vala:205
+#: src/ui/math-preferences.ui:214
 msgid "weekly"
 msgstr "еженедельно"
 
-#: src/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:15
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Общие"
 
-#: src/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:20
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Открыть новое окно"
 
-#: src/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:27
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Закрыть текущее окно"
 
-#: src/math-shortcuts.ui:34
-msgctxt "shortcut window"
-msgid "Open help"
-msgstr "Открыть справку"
-
-#: src/math-shortcuts.ui:41
-msgctxt "shortcut window"
-msgid "Clear history"
-msgstr "Очистить историю"
-
-#: src/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Закрыть приложение"
 
-#: src/math-shortcuts.ui:56
+#: src/ui/math-shortcuts.ui:41
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Показать справку"
+
+#: src/ui/math-shortcuts.ui:48
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Открыть меню"
+
+#: src/ui/math-shortcuts.ui:55
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Комбинации клавиш"
+
+#: src/ui/math-shortcuts.ui:62
+msgctxt "shortcut window"
+msgid "Clear history"
+msgstr "Очистить историю"
+
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Переключение режимов"
 
-#: src/math-shortcuts.ui:61
+#: src/ui/math-shortcuts.ui:75
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Перейти в простой режим"
 
-#: src/math-shortcuts.ui:68
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Перейти в расширенный режим"
 
-#: src/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:89
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Перейти в финансовый режим"
 
-#: src/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:96
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Перейти в режим программирования"
 
-#: src/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:103
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Перейти в клавиатурный режим"
 
-#: src/math-shortcuts.ui:97
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Ввод с клавиатуры"
 
-#: src/math-shortcuts.ui:102
+#: src/ui/math-shortcuts.ui:116
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Умножить (×)"
 
-#: src/math-shortcuts.ui:109
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Разделить (÷)"
 
-#: src/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:130
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Квадратный корень (√)"
 
-#: src/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:137
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Инвертировать"
 
-#: src/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:144
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Пи (π)"
 
-#: src/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:151
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Ввод чисел в экспоненциальном формате"
 
-#: src/math-shortcuts.ui:145
+#: src/ui/math-shortcuts.ui:159
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Режим программирования"
 
-#: src/math-shortcuts.ui:150
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Двоичный"
 
-#: src/math-shortcuts.ui:157
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Восьмеричный"
 
-#: src/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:178
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Десятичный"
 
-#: src/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:185
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Шестнадцатеричный"
 
-#: src/math-variable-popover.ui:38
+#: src/ui/math-shortcuts.ui:193
+msgctxt "shortcut window"
+msgid "Others"
+msgstr "Другие"
+
+#: src/ui/math-shortcuts.ui:198
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Скопировать"
+
+#: src/ui/math-shortcuts.ui:205
+msgctxt "shortcut window"
+msgid "Paste"
+msgstr "Вставить"
+
+#: src/ui/math-shortcuts.ui:212
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr "Отменить"
+
+#: src/ui/math-shortcuts.ui:219
+msgctxt "shortcut window"
+msgid "Redo"
+msgstr "Возвратить"
+
+#: src/ui/math-shortcuts.ui:226
+msgctxt "shortcut window"
+msgid "Previous result"
+msgstr "Предыдущий результат"
+
+#: src/ui/math-shortcuts.ui:233
+msgctxt "shortcut window"
+msgid "Next result"
+msgstr "Следующий результат"
+
+#: src/ui/math-shortcuts.ui:240
+msgctxt "shortcut window"
+msgid "Switch to Keyboard mode (alt.)"
+msgstr "Переключение в режим клавиатуры (alt.)"
+
+#: src/ui/math-variable-popover.ui:38
 msgid "Variable name"
 msgstr "Имя переменной"
 
-#: src/math-variable-popover.ui:52
+#: src/ui/math-variable-popover.ui:52
 msgid "Store value into existing or new variable"
 msgstr "Сохранить значение в новой или существующей переменной"
 
-#: src/math-window.ui:20 src/math-window.vala:92
+#: src/ui/math-window.ui:20 src/math-window.vala:90
 msgid "Basic Mode"
 msgstr "Простой режим"
 
-#: src/math-window.ui:25 src/math-window.vala:97
+#: src/ui/math-window.ui:25 src/math-window.vala:95
 msgid "Advanced Mode"
 msgstr "Расширенный режим"
 
-#: src/math-window.ui:30 src/math-window.vala:102
+#: src/ui/math-window.ui:30 src/math-window.vala:100
 msgid "Financial Mode"
 msgstr "Финансовый режим"
 
-#: src/math-window.ui:35 src/math-window.vala:107
+#: src/ui/math-window.ui:35 src/math-window.vala:105
 msgid "Programming Mode"
 msgstr "Программный режим"
 
-#: src/math-window.ui:40 src/math-window.vala:112
+#: src/ui/math-window.ui:40 src/math-window.vala:110
 msgid "Keyboard Mode"
 msgstr "Клавиатурный режим"
 
-#: src/math-window.ui:49
-msgid "New Window"
-msgstr "Создать окно"
+#: src/ui/math-window.ui:49
+msgid "_New Window"
+msgstr "_Создать окно"
 
-#: src/math-window.ui:61
-msgid "_Keyboard Shortcuts"
-msgstr "_Комбинации клавиш"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:61
+msgid "_Automatic"
+msgstr "_Автоматически"
 
-#: src/math-window.ui:66
-msgid "Help"
-msgstr "Справка"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:67
+msgid "_Fixed"
+msgstr "_Фиксированный"
 
-#: src/math-window.ui:118
-msgid "Menu"
-msgstr "Меню"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#: src/ui/math-window.ui:73
+msgid "_Scientific"
+msgstr "_Научный"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#: src/ui/math-window.ui:79
+msgid "_Engineering"
+msgstr "_Инженерный"
+
+#: src/ui/math-window.ui:93
+msgid "Keyboard Shortcuts"
+msgstr "Комбинации клавиш"
+
+#: src/ui/math-window.ui:97
+msgid "_Help"
+msgstr "Спра_вка"
+
+#: src/ui/math-window.ui:131
+msgid "Mode selection"
+msgstr "Выбор режима"
+
+#: src/ui/math-window.ui:178
+msgid "Primary menu"
+msgstr "Главное меню"
 
 #: src/math-window.vala:138
 msgid "_Quit"
 msgstr "_Закончить"
-
-#~ msgid " in "
-#~ msgstr " в "
-
-#~ msgid "About"
-#~ msgstr "О приложении"
-
-#~ msgid "Quit"
-#~ msgstr "Завершить"
-
-#~ msgid "Weight"
-#~ msgstr "Вес"
-
-#~ msgid "accessories-calculator"
-#~ msgstr "accessories-calculator"
-
-#~ msgid "Precision error"
-#~ msgstr "Ошибка точности"
-
-#~ msgid "Reciprocal of zero is undefined"
-#~ msgstr "Обратная величина нуля не определена"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "градусы Цельсия, ˚C"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "градусы Фаренгейта, ˚F"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "градусы Ранкина, ˚R, ˚Ra"
-
-#~ msgid "_%d place"
-#~ msgid_plural "_%d places"
-#~ msgstr[0] "_%d разряд"
-#~ msgstr[1] "_%d разряда"
-#~ msgstr[2] "_%d разрядов"
-
-#~ msgid "Show %d decimal _places"
-#~ msgstr "Показывать %d десятичных _разрядов"
-
-#~ msgid "Lithuanian Litas"
-#~ msgstr "Литовский лит"
