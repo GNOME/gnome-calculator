@@ -245,10 +245,13 @@ public class MathButtons : Gtk.Box
         var enabled = x != null;
         if (enabled)
         {
+            var min = new Number.integer (int64.MIN);
             var max = new Number.unsigned_integer (uint64.MAX);
             var fraction = x.fractional_part ();
-            if (x.is_negative () || x.compare (max) > 0 || !fraction.is_zero ())
+            if (x.compare (max) > 0 || x.compare (min) < 0 || !fraction.is_zero ())
                 enabled = false;
+            else if (x.is_negative ())
+                bits = x.to_integer ();
             else
                 bits = x.to_unsigned_integer ();
         }
@@ -639,10 +642,6 @@ public class MathButtons : Gtk.Box
         }
         else
         {
-            if (button.label == "1")
-            {
-            equation.toggle_bit (63-i);
-            }
             button.set_sensitive (false);
         }
             i++;
