@@ -14,6 +14,7 @@ if get_option('gcalc')
 				'--package-version='+meson.project_version(),
 				'--vapidir='+gcalc_sources_dir,
 				'--vapidir='+gcalc_build_dir,
+				'--vapidir='+libmpfr_vapi_dir,
 				'--pkg=glib-2.0',
 				'--pkg=gio-2.0',
 				'--pkg=gee-0.8',

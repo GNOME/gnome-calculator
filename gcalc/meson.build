@@ -116,6 +116,7 @@ gcalc_exported_deps = [
 	gee,
 	inc_rooth_dep,
 	gcalc_inc_libh_dep,
+	libmpfr_inc_libh_dep,
 ]
 
 gcalc_deps = [
