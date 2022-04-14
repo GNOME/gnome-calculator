@@ -38,23 +38,6 @@ confh.set_quoted('GETTEXT_PACKAGE', 'GCalc')
 configure_file(output : 'config.h',
 	configuration : confh)
 
-
-lib_mpfrg_sources = files([
-  'mpfr-glue.vala'
-])
-
-lib_mpfrg = static_library ('mpfrg',
-	lib_mpfrg_sources,
-	vala_header: 'mpfrg.h',
-	vala_vapi: 'mpfrg.vapi',
-	dependencies: [
-		gio,
-		mpc,
-		mpfr,
-	],
-	install: false,
-)
-
 gcalc_sources = files([
 	'gcalc-assign.vala',
 	'gcalc-constant.vala',

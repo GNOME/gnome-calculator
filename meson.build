@@ -84,6 +84,7 @@ config_h_dir = include_directories('.')
 # Subdirs
 subdir('po')
 subdir('vapi')
+subdir('libmpfr')
 if get_option ('gcalc')
 subdir('gcalc')
 endif

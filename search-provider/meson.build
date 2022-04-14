@@ -11,7 +11,7 @@ search_provider_deps = [
   mpc,
   mpfr,
   posix,
-  gcalc_inc_libh_dep
+  libmpfr_inc_libh_dep
 ]
 
 search_provider_vala_flags = [

@@ -28,8 +28,7 @@ gnome_calculator_deps = [
   libadwaita,
   mpc,
   mpfr,
-  posix,
-  gcalc_inc_libh_dep
+  posix
 ]
 
 gnome_calculator_vala_flags = [
@@ -73,7 +72,7 @@ gcalccmd_deps = [
   mpc,
   mpfr,
   posix,
-  gcalc_inc_libh_dep
+  libmpfr_inc_libh_dep
 ]
 
 gcalccmd_vala_flags = [

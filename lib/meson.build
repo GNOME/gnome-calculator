@@ -34,7 +34,7 @@ libcalculator_deps = [
   mpc,
   mpfr,
   posix,
-  gcalc_inc_libh_dep
+  libmpfr_inc_libh_dep
 ]
 
 libcalculator = static_library('calculator', libcalculator_sources,
