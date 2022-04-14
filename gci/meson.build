@@ -83,7 +83,6 @@ libgci = library(GCI_VERSIONED_PROJECT_NAME,
 	vala_gir : GCI_GIR_NAME,
 	dependencies : gci_deps,
 	vala_args: [
-		'--use-header',
 	],
 	c_args : [
 		'-include',

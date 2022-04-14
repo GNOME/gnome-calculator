@@ -161,7 +161,6 @@ libgcalc = library(VERSIONED_PROJECT_NAME,
 	vala_gir : GIR_NAME,
 	dependencies : gcalc_deps,
 	vala_args: [
-		'--use-header',
 		'--vapidir='+gcalc_vapi_dir,
 		'--pkg=mpc',
 		'--pkg=mpfr'
