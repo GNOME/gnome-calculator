@@ -3,6 +3,7 @@ if valadoc.found()
 	gtkdoc_outdir = CAMEL_CASE_NAME+'-'+API_VERSION
 	docsdir = join_paths (get_option ('datadir'), 'devhelp','books')
 
+if get_option('gcalc')
 	custom_target ('libgcalc_valadocs',
 			input : gcalc_sources,
 			output : CAMEL_CASE_NAME+'-'+API_VERSION,
@@ -27,6 +28,9 @@ if valadoc.found()
 			install_dir : docsdir,
 			depends: libgcalc
 			)
+endif
+
+if not get_option('disable-ui') and get_option('gci')
 	gtkdoc_outdir = GCI_CAMEL_CASE_NAME+'-'+GCI_API_VERSION
 	docsdir = join_paths (get_option ('datadir'), 'devhelp','books')
 
@@ -53,4 +57,6 @@ if valadoc.found()
 			install_dir : docsdir,
 			depends: libgcalc
 			)
+endif
+
 endif

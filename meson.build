@@ -81,25 +81,34 @@ configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
 # Extra scripts
+if not get_option('disable-ui')
 gnome.post_install(
   glib_compile_schemas: true,
   gtk_update_icon_cache: true,
 )
+endif
 
 # Subdirs
 subdir('vapi')
+if get_option ('gcalc')
 subdir('gcalc')
+endif
 if not get_option ('disable-ui')
 gtk = dependency('gtk4', version: '>= 4.4.1')
 libadwaita = dependency('libadwaita-1', version: '>= 1.0.0')
+
+if get_option('gci')
 subdir('gci')
+endif
+
 gtksourceview = dependency('gtksourceview-5', version: '>= 5.3.0')
 subdir('data')
 subdir('lib')
 subdir('src')
 subdir('search-provider')
 subdir('help')
-subdir('doc')
 subdir('po')
 endif
+
+subdir('doc')
 subdir('tests')
