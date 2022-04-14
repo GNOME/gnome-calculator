@@ -30,7 +30,7 @@ if get_option('gcalc')
 			)
 endif
 
-if not get_option('disable-ui') and get_option('gci')
+if not get_option('disable-ui') and get_option('gci')  and get_option('gcalc')
 	gtkdoc_outdir = GCI_CAMEL_CASE_NAME+'-'+GCI_API_VERSION
 	docsdir = join_paths (get_option ('datadir'), 'devhelp','books')
 

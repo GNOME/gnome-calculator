@@ -1,6 +1,6 @@
 project('gnome-calculator', ['c', 'vala'],
   version: '42.0',
-  meson_version: '>= 0.57.0',
+  meson_version: '>= 0.56.0',
   license: 'GPLv3+',
 )
 
@@ -80,34 +80,35 @@ conf.set10('DEVELOPMENT_BUILD', get_option('development'))
 configure_file(output: 'config.h', configuration: conf)
 config_h_dir = include_directories('.')
 
-# Extra scripts
-if not get_option('disable-ui')
-gnome.post_install(
-  glib_compile_schemas: true,
-  gtk_update_icon_cache: true,
-)
-endif
 
 # Subdirs
+subdir('po')
 subdir('vapi')
 if get_option ('gcalc')
 subdir('gcalc')
 endif
 if not get_option ('disable-ui')
 gtk = dependency('gtk4', version: '>= 4.4.1')
-libadwaita = dependency('libadwaita-1', version: '>= 1.0.0')
 
-if get_option('gci')
+if get_option('gci') and get_option('gcalc')
 subdir('gci')
 endif
 
+if get_option('app')
+# Extra scripts
+gnome.post_install(
+  glib_compile_schemas: true,
+  gtk_update_icon_cache: true,
+)
+
+libadwaita = dependency('libadwaita-1', version: '>= 1.0.0')
 gtksourceview = dependency('gtksourceview-5', version: '>= 5.3.0')
 subdir('data')
 subdir('lib')
 subdir('src')
 subdir('search-provider')
 subdir('help')
-subdir('po')
+endif
 endif
 
 subdir('doc')

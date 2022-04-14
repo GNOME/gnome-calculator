@@ -1,5 +1,7 @@
 if not get_option ('disable-ui')
 
+if get_option('app')
+
 # Common
 gnome_calculator_tests_deps = [
   gtk,
@@ -63,7 +65,9 @@ test_serializer = executable('test-serializer', test_serializer_sources,
 )
 test('Serializer test', test_serializer)
 
-if get_option('ui-tests')
+endif
+
+if get_option('ui-tests') and get_option('gci') and get_option('gcalc')
 gci_test_deps = [
 	gee,
 	gtk,
@@ -89,6 +93,7 @@ endif
 
 endif
 
+if get_option('gcalc')
 tests_deps = [
   gio,
   glib,
@@ -121,3 +126,5 @@ test_solve_basic = executable('gcalc-solve-basic', test_solve_basic_sources,
   link_with: [libgcalc, lib_mpfrg],
 )
 test('gcalc-solve-basic', test_solve_basic)
+
+endif
