@@ -40,6 +40,7 @@ configure_file(output : 'config.h',
 
 gcalc_sources = files([
 	'gcalc-assign.vala',
+	'gcalc-calculator.vala',
 	'gcalc-constant.vala',
 	'gcalc-division.vala',
 	'gcalc-equation.vala',
@@ -71,6 +72,7 @@ gcalc_sources = files([
 	'gcalc-math-constant.vala',
 	'gcalc-math-constant-complex.vala',
 	'gcalc-math-constant-number.vala',
+	'gcalc-math-constant-vector.vala',
 	'gcalc-math-division.vala',
 	'gcalc-math-equation.vala',
 	'gcalc-math-equation-manager.vala',
@@ -98,6 +100,7 @@ gcalc_sources = files([
 	'gcalc-result.vala',
 	'gcalc-solver.vala',
 	'gcalc-term.vala',
+	'gcalc-units.vala',
 	'gcalc-variable.vala',
 ])
 

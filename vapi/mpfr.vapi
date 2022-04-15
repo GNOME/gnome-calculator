@@ -67,6 +67,12 @@ namespace MPFR {
         public double get_double (Round rnd = Round.NEAREST);
 
         public int const_pi (Round rnd = Round.NEAREST);
+
+        public int const_log2 (Round rnd = Round.NEAREST);
+
+        public int const_euler (Round rnd = Round.NEAREST);
+
+        public int const_catalan (Round rnd = Round.NEAREST);
         
         public int const_tau (Round rnd = Round.NEAREST) {
             int i = const_pi (rnd);
@@ -118,6 +124,7 @@ namespace MPFR {
         public int ceil (Real op);
         public int trunc (Real op);
         public int round (Real op);
+        public int log10 (Real op, Round rnd = Round.NEAREST);
         [CCode (cname="mpfr_integer_p")]
         public int is_integer ();
         public int gamma (Real op, Round rnd = Round.NEAREST);

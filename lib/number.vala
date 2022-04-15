@@ -38,7 +38,7 @@ public enum AngleUnit
 }
 
 /* Object for a high precision floating point number representation */
-public class Number : Object
+public class Number : GLib.Object
 {
     /* real and imaginary part of a Number */
     private Complex num = Complex (precision);

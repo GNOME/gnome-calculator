@@ -24,14 +24,15 @@
 public class GCalc.Constant : Expression,
                               MathConstant,
                               MathConstantNumber,
-                              MathConstantComplex
+                              MathConstantComplex,
+                              MathConstantVector
 {
   private MPC.Complex _complex = MPC.Complex (1000);
 
   internal unowned MPC.Complex get_complex () { return _complex; }
 
   construct {
-    _complex.set_double (0.0);
+    _complex.set_double (0.0, 0.0);
   }
   internal Constant.internal_complex (MPC.Complex complex) {
     _complex.set (complex);
@@ -49,6 +50,12 @@ public class GCalc.Constant : Expression,
     _complex.set_double (real, imag);
   }
 
+  public Constant.assign (MathConstant c) {
+    if (!(c is Constant)) {
+        return;
+    }
+    _complex.set (((Constant) c).get_complex ());
+  }
   // MathConstantComplex Interface
   internal double real () {
     return _complex.get_real_double ();
@@ -122,6 +129,30 @@ public class GCalc.Constant : Expression,
     p1.set (((Constant) c).get_complex ());
     res.power (_complex, p1);
     return new Constant.internal_complex (res);
+  }
+
+  internal MathConstant mag () {
+    var x = this.x ();
+    var y = this.y ();
+    x = x.pow (new Constant.@double (2.0));
+    y = y.pow (new Constant.@double (2.0));
+    var a = x.add (y);
+    return Calculator.sqrt (a);
+  }
+  internal MathConstant ang () {
+    var x = this.x ();
+    var y = this.y ();
+    return Calculator.atan (y.divide (x));
+  }
+  internal MathConstant x () {
+    var rc = new Constant ();
+    rc.get_complex ().get_real ().val.set (_complex.get_real ().val);
+    return rc;
+  }
+  internal MathConstant y () {
+    var rc = new Constant ();
+    rc.get_complex ().get_real ().val.set (_complex.get_real ().val);
+    return rc;
   }
 
   // Expression interface
