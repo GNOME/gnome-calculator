@@ -75,7 +75,7 @@ class Tests {
         parser.parse ("=", eqman);
         assert_not_reached ();
       } catch (GLib.Error error) {
-        message ("Error catched correctly: %s", error.message);
+        message ("Error caught correctly: %s", error.message);
       }
     });
     Test.add_func ("/gcalc/parser/assign/variable/constant",
@@ -576,25 +576,25 @@ class Tests {
       try {
         parser.parse ("(", eqman1);
       } catch (GLib.Error error) {
-        message ("Correctly catched grouping error: %s", error.message);
+        message ("Correctly caught grouping error: %s", error.message);
       }
       var eqman2 = new EquationManager ();
       try {
         parser.parse ("1)", eqman2);
       } catch (GLib.Error error) {
-        message ("Correctly catched grouping error: %s", error.message);
+        message ("Correctly caught grouping error: %s", error.message);
       }
       var eqman3 = new EquationManager ();
       try {
         parser.parse ("(1))", eqman3);
       } catch (GLib.Error error) {
-        message ("Correctly catched grouping error: %s", error.message);
+        message ("Correctly caught grouping error: %s", error.message);
       }
       var eqman4 = new EquationManager ();
       try {
         parser.parse ("(((1))))", eqman4);
       } catch (GLib.Error error) {
-        message ("Correctly catched grouping error: %s", error.message);
+        message ("Correctly caught grouping error: %s", error.message);
       }
     });
     Test.add_func ("/gcalc/parser/term/parenthesis/grouping",
