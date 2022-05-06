@@ -108,6 +108,11 @@ clamp > .small .bit-panel button {
   padding: 2px 4px 2px 4px;
 }
 
+.math-buttons grid > button,
+.math-buttons grid > menubutton > button {
+  font-weight: inherit;
+}
+
 .math-buttons .number-button {
   font-size: 1.2em;
   font-weight: bolder;
@@ -121,10 +126,6 @@ clamp > .small .bit-panel button {
 .math-buttons .number-button:hover:active,
 .math-buttons .number-button.keyboard-activating {
   background-color: alpha(currentColor, .35);
-}
-
-.math-buttons .operator-button, .procent-button, .numeric-point-button, .parenthesis-button, .function-button {
-  font-weight: normal;
 }
 
 .bit-toggle-button {
