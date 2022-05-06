@@ -38,6 +38,7 @@ public class MathDisplay : Gtk.Box
     {
         _equation = equation;
         orientation = Gtk.Orientation.VERTICAL;
+        this.add_css_class ("math-display");
 
         var scrolled_window = new Gtk.ScrolledWindow ();
         scrolled_window.add_css_class ("display-scrolled");
