@@ -1025,20 +1025,6 @@ public class MathEquation : GtkSource.Buffer
         var solvedata = new SolveData ();
 
         var text = equation;
-        /* Count the number of brackets and automatically add missing closing brackets */
-        var n_brackets = 0;
-        for (var i = 0; text[i] != '\0'; i++)
-        {
-            if (text[i] == '(')
-                n_brackets++;
-            else if (text[i] == ')')
-                n_brackets--;
-        }
-        while (n_brackets > 0)
-        {
-            text += ")";
-            n_brackets--;
-        }
 
         ErrorCode error_code;
         string error_token;
