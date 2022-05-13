@@ -1,6 +1,6 @@
 project('gnome-calculator', ['c', 'vala'],
   version: '43.alpha',
-  meson_version: '>= 0.56.0',
+  meson_version: '>= 0.57.0',
   license: 'GPLv3+',
 )
 
@@ -24,7 +24,7 @@ endif
 # Some variables
 libexec_dir = join_paths(get_option('prefix'), get_option('libexecdir'))
 locale_dir = join_paths(get_option('prefix'), get_option('localedir'))
-po_dir = join_paths(meson.source_root(), 'po')
+po_dir = join_paths(meson.project_source_root(), 'po')
 gcalc_vapi_dir = join_paths(meson.current_source_dir(), 'vapi')
 
 # Dependencies
