@@ -1177,6 +1177,8 @@ public class Parser
             return Precedence.CONVERT;
         if (type == LexerTokenType.SHIFT_LEFT || type == LexerTokenType.SHIFT_RIGHT)
             return Precedence.SHIFT;
+        if (type == LexerTokenType.L_R_BRACKET || type == LexerTokenType.R_R_BRACKET)
+            return Precedence.DEPTH;
         return Precedence.TOP;
     }
 
@@ -1889,7 +1891,7 @@ public class Parser
                             return true;
                     }
 
-                    node.precedence = Precedence.PERCENTAGE;
+                    node.precedence = make_precedence_p (Precedence.PERCENTAGE);
                     node.do_percentage = true;
                     return true;
                 }
@@ -1932,7 +1934,7 @@ public class Parser
                             return true;
                     }
 
-                    node.precedence = Precedence.PERCENTAGE;
+                    node.precedence = make_precedence_p (Precedence.PERCENTAGE);
                     node.do_percentage = true;
                     return true;
                 }
