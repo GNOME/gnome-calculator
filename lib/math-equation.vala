@@ -535,7 +535,7 @@ public class MathEquation : GtkSource.Buffer
             insert (text.delimit ("\n", ' '));
     }
 
-    public override void undo ()
+    public new void undo ()
     {
         if (undo_stack == null)
         {
@@ -556,7 +556,7 @@ public class MathEquation : GtkSource.Buffer
         apply_state (state);
     }
 
-    public override void redo ()
+    public new void redo ()
     {
         if (redo_stack == null)
         {
