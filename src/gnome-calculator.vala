@@ -326,7 +326,7 @@ public class Calculator : Adw.Application
                                "version", VERSION,
                                "website", "https://wiki.gnome.org/Apps/Calculator",
                                "copyright",
-                               "\xc2\xa9 1986–2016 The Calculator authors",
+                               "\xc2\xa9 1986–2022 The Calculator authors",
                                /* We link to MPFR and MPC which are  LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
                                "license-type", Gtk.License.GPL_3_0,
                                "comments",
