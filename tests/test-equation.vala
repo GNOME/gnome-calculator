@@ -476,6 +476,9 @@ private void test_equations ()
     test ("₁₀√1024", "2", 0);
     test ("√(2+2)", "2", 0);
     test ("2√4", "4", 0);
+    test ("x", "2", 0);
+    test ("x√4", "4", 0);
+    test ("x∛8", "4", 0);
     test ("2×√4", "4", 0);
     test ("Sqrt (4)", "2", 0);
     test ("Sqrt (2)", "1.414213562", 0);

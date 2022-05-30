@@ -2155,14 +2155,12 @@ public class Parser
         if (token.type == LexerTokenType.PL_EOS || token.type == LexerTokenType.ASSIGN)
             return true;
 
-        if (token.type == LexerTokenType.VARIABLE)
+        if (token.type == LexerTokenType.FUNCTION || token.type == LexerTokenType.VARIABLE || token.type == LexerTokenType.SUB_NUMBER || token.type == LexerTokenType.ROOT || token.type == LexerTokenType.ROOT_3 || token.type == LexerTokenType.ROOT_4)
         {
-            /* Insert multiply in between two distinct (variable). */
+            /* Insert multiply in between variable and (function, variable, root) */
             insert_into_tree (new MultiplyNode (this, null, make_precedence_p (Precedence.MULTIPLY), get_associativity_p (Precedence.MULTIPLY)));
-
-            if (!term ())
+            if (!variable ())
                 return false;
-
             return true;
         }
         else
