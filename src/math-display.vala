@@ -212,8 +212,8 @@ public class MathDisplay : Gtk.Box
         /* Solve on [=] if the input is not a variable name */
         if (keyval == Gdk.Key.equal || keyval == Gdk.Key.KP_Equal)
         {
-            if (!(only_variable_name.match((string) equation.equation)
-                || only_function_definition.match((string) equation.equation)))
+            if (!(only_variable_name.match((string) equation.equation.strip())
+                || only_function_definition.match((string) equation.equation.strip())))
             {
                 keyval = Gdk.Key.KP_Enter;
             }
