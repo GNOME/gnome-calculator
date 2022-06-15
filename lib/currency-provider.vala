@@ -428,7 +428,6 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
                 node = null;
         }
 
-        Xml.Parser.cleanup ();
         base.do_load_rates ();
     }
 
