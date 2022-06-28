@@ -112,5 +112,8 @@ subdir('help')
 endif
 endif
 
+if get_option('doc')
 subdir('doc')
+endif
+
 subdir('tests')
