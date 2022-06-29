@@ -808,7 +808,7 @@ public class MathEquation : GtkSource.Buffer
         clear_ans (false);
     }
 
-    public void set_number (Number x, uint representation_base = 0)
+    public void set_number (Number x, bool history = true, uint representation_base = 0)
     {
         if (representation_base != 0)
             serializer.set_representation_base (representation_base);
@@ -816,7 +816,9 @@ public class MathEquation : GtkSource.Buffer
         /* Show the number in the user chosen format */
         var text = serializer.to_string (x);
 
-        this.history_signal (get_current_state ().expression.replace ("\\cdot", "×"), x, number_base, representation_base); /*emits signal to enter a new entry into history-view */
+        if (history) { /*emits signal to enter a new entry into history-view */
+            this.history_signal (get_current_state ().expression.replace ("\\cdot", "×"), x, number_base, representation_base);
+        }
         set_text (text, -1);
         state.ans = x;
 
@@ -1120,7 +1122,7 @@ public class MathEquation : GtkSource.Buffer
             notify_property ("error-token-end");
         }
         else if (result.number_result != null)
-            set_number (result.number_result, result.representation_base);
+            set_number (result.number_result, true, result.representation_base);
         else if (result.text_result != null)
             set (result.text_result);
 
@@ -1377,7 +1379,7 @@ public class MathEquation : GtkSource.Buffer
         x = new Number.unsigned_integer (bits);
 
         // FIXME: Only do this if in ans format, otherwise set text in same format as previous number
-        set_number (x);
+        set_number (x, false);
     }
 
     protected override void insert_text (ref Gtk.TextIter location, string text, int len)
