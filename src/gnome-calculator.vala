@@ -300,7 +300,7 @@ public class Calculator : Adw.Application
 
     private void about_cb ()
     {
-        string[] authors =
+        string[] developers =
         {
             "Robert Roth <robert.roth.off@gmail.com>",
             "Robert Ancell",
@@ -315,27 +315,24 @@ public class Calculator : Adw.Application
             null
         };
 
-        /* The translator credits. Please translate this with your name (s). */
-        var translator_credits = _("translator-credits");
+        var about = new Adw.AboutWindow () {
+            transient_for = get_active_window (),
+            application_name = _("Calculator"),
+            application_icon = APP_ID,
+            developer_name = _("The GNOME Project"),
+            version =  VERSION,
+            website = "https://wiki.gnome.org/Apps/Calculator",
+            issue_url = "https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/new",
+            copyright = "\xc2\xa9 1986–2022 The Calculator authors",
+            /* We link to MPFR and MPC which are  LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
+            license_type = Gtk.License.GPL_3_0,
+            developers = developers,
+            documenters = documenters,
+            /* The translator credits. Please translate this with your name (s). */
+            translator_credits = _("translator-credits")
+        };
 
-        Gtk.show_about_dialog (get_active_window (),
-                               "program-name",
-                               /* Program name in the about dialog */
-                               NAME_PREFIX + _("Calculator"),
-                               "title", _("About Calculator"),
-                               "version", VERSION,
-                               "website", "https://wiki.gnome.org/Apps/Calculator",
-                               "copyright",
-                               "\xc2\xa9 1986–2022 The Calculator authors",
-                               /* We link to MPFR and MPC which are  LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
-                               "license-type", Gtk.License.GPL_3_0,
-                               "comments",
-                               /* Short description in the about dialog */
-                               _("Calculator with financial and scientific modes."),
-                               "authors", authors,
-                               "documenters", documenters,
-                               "translator_credits", translator_credits,
-                               "logo-icon-name", APP_ID);
+        about.present ();
     }
 
     private void quit_cb ()
