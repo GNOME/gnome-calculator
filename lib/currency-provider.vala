@@ -123,7 +123,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         var message = new Soup.Message ("GET", uri);
         try
         {
-            var bodyinput = session.send (message);
+            var bodyinput = session.send (message, new GLib.Cancellable());
             var output = dest.replace (null, false, FileCreateFlags.REPLACE_DESTINATION);
             output.splice (bodyinput, OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET);
             loading = false;
@@ -147,7 +147,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         var message = new Soup.Message ("GET", uri);
         try
         {
-            var bodyinput = yield session.send_async (message);
+            var bodyinput = yield session.send_async (message, 1, new GLib.Cancellable());
             var output = yield dest.replace_async (null, false, FileCreateFlags.REPLACE_DESTINATION, Priority.DEFAULT);
             yield output.splice_async (bodyinput,
                                        OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET,
