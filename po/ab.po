@@ -1,17 +1,10 @@
-# Copyright (C) 2022 The Abkhazian language development fund named after Bagrat Shinkuba
-# This file is distributed under the same license as the gnome-calculator package.
-# Нанба Наала <naala-nanba@rambler.ru>, 2022.
-#
-
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
 "POT-Creation-Date: 2022-07-19 07:20+0000\n"
-"PO-Revision-Date: 2022-07-22 16:00+0000\n"
 "Last-Translator: Нанба Наала <naala-nanba@rambler.ru>\n"
-"Language-Team: Abkhazian <LL@li.org>\n"
+"Language-Team: Abkhazian <ab@li.org>\n"
 "Language: ab\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -61,7 +54,7 @@ msgstr ""
 
 #: data/org.gnome.Calculator.appdata.xml.in:66 src/gnome-calculator.vala:322
 msgid "The GNOME Project"
-msgstr ""
+msgstr "The GNOME Project"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
@@ -432,7 +425,8 @@ msgstr ""
 msgid "South African Rand"
 msgstr ""
 
-#: lib/equation-lexer.vala:734+src/math-converter.vala:231
+#. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
+#: lib/equation-lexer.vala:734 src/math-converter.vala:231
 msgid "in"
 msgstr "аҟны"
 
@@ -448,6 +442,7 @@ msgstr ""
 msgid "Error: the number of periods must be positive"
 msgstr ""
 
+#. Digits localized for the given language
 #: lib/math-equation.vala:176
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
@@ -488,7 +483,9 @@ msgstr ""
 msgid "Unknown conversion"
 msgstr ""
 
-#: lib/math-equation.vala:1085
+#. should always be run
+#: lib/math-equation.vala:1073
+#, c-format
 msgid "%s"
 msgstr "%s"
 
@@ -2166,7 +2163,9 @@ msgstr ""
 msgid "Currency"
 msgstr ""
 
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
 #: lib/unit.vala:151
+#, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
 
@@ -2241,7 +2240,7 @@ msgstr ""
 #: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
 #: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
 msgid "="
-msgstr ""
+msgstr "="
 
 #: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
 #: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
@@ -2339,7 +2338,9 @@ msgstr ""
 msgid "Memory"
 msgstr ""
 
-#: src/ui/buttons-advanced.ui:845+src/ui/buttons-financial.ui:1603+src/ui/buttons-programming.ui:2062
+#. The label on the memory button
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
@@ -2593,10 +2594,12 @@ msgid ""
 "rate."
 msgstr ""
 
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
 #: src/ui/buttons-financial.ui:1616
 msgid "Ctrm"
 msgstr "Ctrm"
 
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.ui:1632
 msgid "Ddb"
 msgstr "Ddb"
@@ -2605,10 +2608,12 @@ msgstr "Ddb"
 msgid "Double Declining Depreciation"
 msgstr ""
 
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
 #: src/ui/buttons-financial.ui:1648
 msgid "Fv"
 msgstr "Fv"
 
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
 #: src/ui/buttons-financial.ui:1664
 msgid "Term"
 msgstr "Term"
@@ -2617,6 +2622,7 @@ msgstr "Term"
 msgid "Financial Term"
 msgstr ""
 
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.ui:1681
 msgid "Syd"
 msgstr "Syd"
@@ -2625,6 +2631,7 @@ msgstr "Syd"
 msgid "Sum of the Years Digits Depreciation"
 msgstr ""
 
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.ui:1698
 msgid "Sln"
 msgstr "Sln"
@@ -2633,18 +2640,22 @@ msgstr "Sln"
 msgid "Straight Line Depreciation"
 msgstr ""
 
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
 #: src/ui/buttons-financial.ui:1715
 msgid "Rate"
 msgstr "Rate"
 
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
 #: src/ui/buttons-financial.ui:1732
 msgid "Pv"
 msgstr "Pv"
 
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
 #: src/ui/buttons-financial.ui:1749
 msgid "Pmt"
 msgstr "Pmt"
 
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
 #: src/ui/buttons-financial.ui:1766
 msgid "Gpm"
 msgstr "Gpm"
@@ -2745,7 +2756,8 @@ msgstr ""
 msgid "Show release version"
 msgstr ""
 
-#: src/gnome-calculator.vala:319
+#. The translator credits. Please translate this with your name (s).
+#: src/gnome-calculator.vala:332
 msgid "translator-credits"
 msgstr "Нанба Наала <naala-nanba@rambler.ru>, 2022"
 
@@ -3063,6 +3075,7 @@ msgstr ""
 msgid "_New Window"
 msgstr ""
 
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
 msgid "_Automatic"
 msgstr "_Автоматикла"
@@ -3108,7 +3121,7 @@ msgstr ""
 
 #: src/ui/math-window.ui:132
 msgid "Undo"
-msgstr ""
+msgstr "Архынҳәра"
 
 #: src/ui/math-window.ui:143
 msgid "Primary menu"
@@ -3117,79 +3130,3 @@ msgstr ""
 #: src/math-window.vala:166
 msgid "_Quit"
 msgstr ""
-
-#: lib/unit.vala:46
-msgid "%s au"
-msgstr "%s а. е."
-
-#: lib/unit.vala:46
-msgid "au"
-msgstr "а. е."
-
-#: lib/unit.vala:47
-msgid "%sU"
-msgstr "%sU"
-
-#: lib/unit.vala:47
-msgid "U"
-msgstr "U"
-
-#: lib/unit.vala:68
-msgid "%s acres"
-msgstr "%s акрқәа"
-
-#: lib/unit.vala:68
-msgid "acre,acres"
-msgstr "акр, акрқәа"
-
-#: lib/unit.vala:89
-msgid "%s years"
-msgstr "%s years"
-
-#: lib/unit.vala:98
-msgid "%s ˚C"
-msgstr "%s ˚C"
-
-#: lib/unit.vala:98
-msgid "degC,˚C,C,c,Celsius,celsius"
-msgstr "˚C,C,c,Цельси,цельси"
-
-#: lib/unit.vala:99
-msgid "%s ˚F"
-msgstr "%s ˚F"
-
-#: lib/unit.vala:99
-msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
-msgstr "˚F,F,f,Фаренгеит,фаренгеит"
-
-#: lib/unit.vala:100
-msgid "%s K"
-msgstr "%s K"
-
-#: lib/unit.vala:101
-msgid "%s ˚R"
-msgstr "%s ˚R"
-
-#: lib/unit.vala:101
-msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
-msgstr "˚R,˚Ra,r,R,Ранкин,ранкин"
-
-#: lib/unit.vala:104
-msgid "%s B"
-msgstr "%s Б"
-
-#: lib/unit.vala:139
-msgid "%s Hz"
-msgstr "%s Hz"
-
-#: src/ui/buttons-advanced.ui:407+src/ui/buttons-basic.ui:428+src/ui/buttons-financial.ui:1533+src/ui/buttons-programming.ui:1333
-msgctxt ""
-"src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428 src/ui/buttons-"
-"financial.ui:1533 src/ui/buttons-programming.ui:1333"
-msgid "="
-msgstr "="
-
-#: src/ui/math-converter.ui:98
-msgctxt "src/ui/math-converter.ui:98"
-msgid "="
-msgstr "="
