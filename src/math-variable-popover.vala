@@ -47,7 +47,6 @@ public class MathVariablePopover : MathPopover<MathVariable>
         base(equation, model, (a,b) => MathVariable.name_compare_func(a as MathVariable,b as MathVariable));
 
         variable_list.bind_model (model, (variable) => make_item_row (variable as MathVariable));
-        changed_handler = variable_name_entry.changed.connect (variable_name_changed_cb);
         equation.history_signal.connect (this.handler);
         item_deleted.connect (delete_variable_cb);
     }
