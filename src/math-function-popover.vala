@@ -41,12 +41,12 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         item_deleted.connect (function_deleted_cb);
     }
     
-    protected new Gtk.Entry name_entry ()
+    protected override Gtk.Entry name_entry ()
     {
         return function_name_entry;
     }
     
-    protected new Gtk.Button add_button ()
+    protected override Gtk.Button add_button ()
     {
     	return add_function_button;
     }

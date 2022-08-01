@@ -52,12 +52,12 @@ public class MathVariablePopover : MathPopover<MathVariable>
         item_deleted.connect (delete_variable_cb);
     }
 
-    protected new Gtk.Entry name_entry ()
+    protected override Gtk.Entry name_entry ()
     {
         return variable_name_entry;
     }
     
-    protected new Gtk.Button add_button ()
+    protected override Gtk.Button add_button ()
     {
     	return store_variable_button;
     }
