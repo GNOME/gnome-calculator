@@ -23,7 +23,7 @@ public abstract class MathPopover<T> : Gtk.Popover
         this.equation = equation;
         this.model = model;
         this.compare_func = (a,b) => compare_func(a,b);
-        this.changed_handler = function_name_entry.changed.connect (name_entry_changed_cb);
+        this.changed_handler = name_entry ().changed.connect (name_entry_changed_cb);
     }
 
     protected abstract Gtk.Entry name_entry ();
