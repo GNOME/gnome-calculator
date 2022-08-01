@@ -23,7 +23,6 @@ public class MathFunctionPopover : MathPopover<MathFunction>
 
     [GtkChild]
     private unowned Gtk.Entry function_name_entry;
-    private bool function_name_entry_placeholder_reseted = false;
 
     [GtkChild]
     private unowned Gtk.Button add_function_button;
@@ -40,6 +39,16 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         add_arguments_button.set_increments (1, 1);
         item_edited.connect (function_edited_cb);
         item_deleted.connect (function_deleted_cb);
+    }
+    
+    protected abstract Gtk.Entry name_entry ()
+    {
+        return function_name_entry;
+    }
+    
+    protected abstract Gtk.Button add_button ()
+    {
+    	return add_function_button;
     }
 
     private void function_edited_cb (MathFunction function)
@@ -69,29 +78,6 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         equation.get_iter_at_mark (out end, equation.get_insert ());
         end.backward_chars (1);
         equation.place_cursor (end);
-    }
-
-    /*
-    [GtkCallback]
-    private bool function_name_focus_cb (Gtk.Widget widget, Gtk.DirectionType direction)
-    {
-        if (!this.function_name_entry_placeholder_reseted)
-        {
-            this.function_name_entry_placeholder_reseted = true;
-            this.function_name_entry.text = "";
-        }
-
-        return false;
-    }
-    */
-
-    [GtkCallback]
-    private void function_name_entry_changed_cb (Gtk.Editable editable)
-    {
-        this.function_name_entry_placeholder_reseted = true;
-        var entry = editable as Gtk.Entry;
-        entry.text = entry.text.replace (" ", "_");
-        add_function_button.sensitive = entry.text != "";
     }
 
     [GtkCallback]

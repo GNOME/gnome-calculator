@@ -42,8 +42,6 @@ public class MathVariablePopover : MathPopover<MathVariable>
     [GtkChild]
     private unowned Gtk.Button store_variable_button;
 
-    private ulong changed_handler;
-
     public MathVariablePopover (MathEquation equation, ListStore model, CompareDataFunc compare_func)
     {
         base(equation, model, (a,b) => MathVariable.name_compare_func(a as MathVariable,b as MathVariable));
@@ -52,6 +50,16 @@ public class MathVariablePopover : MathPopover<MathVariable>
         changed_handler = variable_name_entry.changed.connect (variable_name_changed_cb);
         equation.history_signal.connect (this.handler);
         item_deleted.connect (delete_variable_cb);
+    }
+
+    protected abstract Gtk.Entry name_entry ()
+    {
+        return variable_name_entry;
+    }
+    
+    protected abstract Gtk.Button add_button ()
+    {
+    	return store_variable_button;
     }
 
     protected override int get_item_index (MathVariable item)
@@ -73,15 +81,6 @@ public class MathVariablePopover : MathPopover<MathVariable>
     {
         var variable = model.get_item (row.get_index ()) as MathVariable;
         equation.insert (variable.name);
-    }
-
-    private void variable_name_changed_cb (Gtk.Editable editable)
-    {
-        var entry = editable as Gtk.Entry;
-        SignalHandler.block (entry, changed_handler);
-        entry.text = entry.text.replace (" ", "_");
-        SignalHandler.unblock (entry, changed_handler);
-        store_variable_button.sensitive = (entry.text != "");
     }
 
     [GtkCallback]

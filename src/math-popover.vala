@@ -16,11 +16,26 @@ public abstract class MathPopover<T> : Gtk.Popover
 
     private CompareDataFunc<T> compare_func;
 
+    private ulong changed_handler;
+
     protected MathPopover (MathEquation equation, ListStore model, CompareDataFunc<T> compare_func)
     {
         this.equation = equation;
         this.model = model;
         this.compare_func = (a,b) => compare_func(a,b);
+        this.changed_handler = function_name_entry.changed.connect (name_entry_changed_cb);
+    }
+
+    protected abstract Gtk.Entry name_entry ();
+    protected abstract Gtk.Button add_button ();
+
+    private void name_entry_changed_cb (Gtk.Editable editable)
+    {
+        var entry = editable as Gtk.Entry;
+	SignalHandler.block (entry, changed_handler);
+        entry.text = entry.text.replace (" ", "_");
+        SignalHandler.unblock (entry, changed_handler);
+        add_button ().sensitive = entry.text != "";
     }
 
     public void item_added_cb (T item)
