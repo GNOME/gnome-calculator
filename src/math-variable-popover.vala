@@ -42,7 +42,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
     [GtkChild]
     private unowned Gtk.Button store_variable_button;
 
-    public MathVariablePopover (MathEquation equation, ListStore model, CompareDataFunc compare_func)
+    public MathVariablePopover (MathEquation equation, ListStore model)
     {
         base(equation, model, (a,b) => MathVariable.name_compare_func(a as MathVariable,b as MathVariable));
 

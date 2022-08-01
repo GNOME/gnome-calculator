@@ -434,7 +434,7 @@ public class MathButtons : Gtk.Box
         if (menu_button != null)
         {
             var model = new ListStore(typeof(MathVariable));
-            MathVariablePopover math_popover = new MathVariablePopover (equation, model, (a,b) => MathVariable.name_compare_func(a as MathVariable, b as MathVariable));
+            MathVariablePopover math_popover = new MathVariablePopover (equation, model);
             fill_variables_model (model, math_popover, equation);
             menu_button.popover = math_popover;
         }
