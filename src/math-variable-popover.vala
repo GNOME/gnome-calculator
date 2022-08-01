@@ -52,12 +52,12 @@ public class MathVariablePopover : MathPopover<MathVariable>
         item_deleted.connect (delete_variable_cb);
     }
 
-    protected abstract Gtk.Entry name_entry ()
+    protected Gtk.Entry name_entry ()
     {
         return variable_name_entry;
     }
     
-    protected abstract Gtk.Button add_button ()
+    protected Gtk.Button add_button ()
     {
     	return store_variable_button;
     }
