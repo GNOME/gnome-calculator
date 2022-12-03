@@ -99,6 +99,7 @@ public class Calculator : Adw.Application
         set_accels_for_action ("app.quit", {"<control>Q"});
         set_accels_for_action ("app.new-window", {"<control>N"});
         set_accels_for_action ("app.help", {"F1"});
+        set_accels_for_action ("app.preferences", {"<control>comma"});
         set_accels_for_action ("app.shortcuts", {"<control>question"});
         return current_window;
     }
