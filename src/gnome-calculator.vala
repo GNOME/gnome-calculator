@@ -349,6 +349,7 @@ public class Calculator : Adw.Application
             dialog.response.connect ((result) => {
                 if (result == Gtk.ResponseType.CLOSE)
                     this.quit ();
+                dialog.destroy ();
             });
 
             dialog.show ();
