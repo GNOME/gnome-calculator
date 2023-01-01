@@ -13,25 +13,25 @@
             <property name="title" translatable="yes" context="shortcut window">General</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;n</property>
+                <property name="action-name">app.new-window</property>
                 <property name="title" translatable="yes" context="shortcut window">Open a new window</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;w</property>
+                <property name="action-name">win.close</property>
                 <property name="title" translatable="yes" context="shortcut window">Close current window</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;q</property>
+                <property name="action-name">app.quit</property>
                 <property name="title" translatable="yes" context="shortcut window">Quit the application</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">F1</property>
+                <property name="action-name">app.help</property>
                 <property name="title" translatable="yes" context="shortcut window">Show help</property>
               </object>
             </child>
@@ -43,7 +43,7 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;comma</property>
+                <property name="action-name">app.preferences</property>
                 <property name="title" translatable="yes" context="shortcut window">Show preferences</property>
               </object>
             </child>
@@ -55,7 +55,7 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;Escape</property>
+                <property name="action-name">win.clear</property>
                 <property name="title" translatable="yes" context="shortcut window">Clear history</property>
               </object>
             </child>
@@ -66,25 +66,25 @@
             <property name="title" translatable="yes" context="shortcut window">Switching modes</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;control&gt;&lt;alt&gt;b</property>
+                <property name="action-name">win.mode::basic</property>
                 <property name="title" translatable="yes" context="shortcut window">Switch to Basic mode</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;control&gt;&lt;alt&gt;a</property>
+                <property name="action-name">win.mode::advanced</property>
                 <property name="title" translatable="yes" context="shortcut window">Switch to Advanced mode</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;control&gt;&lt;alt&gt;f</property>
+                <property name="action-name">win.mode::financial</property>
                 <property name="title" translatable="yes" context="shortcut window">Switch to Financial mode</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;control&gt;&lt;alt&gt;p</property>
+                <property name="action-name">win.mode::programming</property>
                 <property name="title" translatable="yes" context="shortcut window">Switch to Programming mode</property>
               </object>
             </child>
@@ -171,25 +171,25 @@
             <property name="title" translatable="yes" context="shortcut window">Others</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;C</property>
+                <property name="action-name">win.copy</property>
                 <property name="title" translatable="yes" context="shortcut window">Copy</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;V</property>
+                <property name="action-name">win.paste</property>
                 <property name="title" translatable="yes" context="shortcut window">Paste</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;Z</property>
+                <property name="action-name">win.undo</property>
                 <property name="title" translatable="yes" context="shortcut window">Undo</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;&lt;shift&gt;Z</property>
+                <property name="action-name">win.redo</property>
                 <property name="title" translatable="yes" context="shortcut window">Redo</property>
               </object>
             </child>
