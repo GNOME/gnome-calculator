@@ -14,7 +14,6 @@ public class Calculator : Adw.Application
     private Settings settings;
     private MathWindow last_opened_window;
     private MathPreferencesDialog preferences_dialog;
-    private Gtk.ShortcutsWindow shortcuts_window;
     private static string program_name = null;
     private static string equation_string = null;
     private static string mode_string = null;
@@ -32,7 +31,6 @@ public class Calculator : Adw.Application
     {
         { "new-window", new_window_cb, null, null, null },
         { "preferences", show_preferences_cb, null, null, null },
-        { "shortcuts", keyboard_shortcuts_cb, null, null, null },
         { "help", help_cb, null, null, null },
         { "about", about_cb, null, null, null },
         { "quit", quit_cb, null, null, null },
@@ -266,32 +264,6 @@ public class Calculator : Adw.Application
             preferences_dialog.set_transient_for (get_active_window ());
         }
         preferences_dialog.present ();
-    }
-
-    private void keyboard_shortcuts_cb ()
-    {
-        if (shortcuts_window == null)
-        {
-            var builder = new Gtk.Builder ();
-            try
-            {
-                builder.add_from_resource ("/org/gnome/calculator/math-shortcuts.ui");
-            }
-            catch (Error e)
-            {
-                error ("Error loading shortcuts window UI: %s", e.message);
-            }
-
-            shortcuts_window = builder.get_object ("shortcuts-calculator") as Gtk.ShortcutsWindow;
-            shortcuts_window.close_request.connect (() => {
-                shortcuts_window = null;
-                return false;
-            });
-        }
-
-        if (get_active_window () != shortcuts_window.get_transient_for ())
-            shortcuts_window.set_transient_for (get_active_window ());
-        shortcuts_window.present ();
     }
 
     private void help_cb ()

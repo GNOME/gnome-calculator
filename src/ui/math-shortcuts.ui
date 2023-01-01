@@ -2,7 +2,7 @@
 <interface>
   <!-- interface-requires gtk+ 3.17 -->
 
-  <object class="GtkShortcutsWindow" id="shortcuts-calculator">
+  <object class="GtkShortcutsWindow" id="help_overlay">
     <property name="modal">1</property>
     <child>
       <object class="GtkShortcutsSection">
@@ -49,7 +49,7 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;question</property>
+                <property name="action-name">win.show-help-overlay</property>
                 <property name="title" translatable="yes" context="shortcut window">Keyboard shortcuts</property>
               </object>
             </child>
