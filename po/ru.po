@@ -27,22 +27,21 @@ msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2022-02-09 20:21+0000\n"
-"PO-Revision-Date: 2022-02-13 20:07+0300\n"
+"POT-Creation-Date: 2022-07-19 07:20+0000\n"
+"PO-Revision-Date: 2023-01-09 14:33+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
+#: src/gnome-calculator.vala:320 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Калькулятор"
 
@@ -91,30 +90,14 @@ msgid ""
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
 "character to character code conversion, and more."
 msgstr ""
-"Программный режим поддерживает преобразования между распространёнными "
+"Режим программирования поддерживает преобразования между распространёнными "
 "системами счисления (двоичной, восьмеричной, десятичной и "
 "шестнадцатиричной), булеву алгебру, обратный и дополнительный код числа, "
 "преобразование кодов символов и другие возможности."
 
-#: data/org.gnome.Calculator.appdata.xml.in:36
-msgid "GNOME Calculator in Basic Mode"
-msgstr "Калькулятор GNOME в обычном режиме"
-
-#: data/org.gnome.Calculator.appdata.xml.in:40
-msgid "GNOME Calculator in Advanced Mode"
-msgstr "Калькулятор GNOME в расширенном режиме"
-
-#: data/org.gnome.Calculator.appdata.xml.in:44
-msgid "GNOME Calculator in Financial Mode"
-msgstr "Калькулятор GNOME в финансовом режиме"
-
-#: data/org.gnome.Calculator.appdata.xml.in:48
-msgid "GNOME Calculator in Programming Mode"
-msgstr "Калькулятор GNOME в режиме программирования"
-
-#: data/org.gnome.Calculator.appdata.xml.in:67
+#: data/org.gnome.Calculator.appdata.xml.in:66 src/gnome-calculator.vala:322
 msgid "The GNOME Project"
-msgstr "Проект GNOME"
+msgstr "The GNOME Project"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
@@ -524,55 +507,55 @@ msgid "No sane value to store"
 msgstr "Отсутствует разумное значение для сохранения"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1044
 msgid "Overflow. Try a bigger word size"
 msgstr "Переполнение. Попробуйте установить большее значение размера слова"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1049
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Неизвестная переменная «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1056
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Функция «%s» не определена"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1063
 msgid "Unknown conversion"
 msgstr "Неизвестное преобразование"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1073
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1078 lib/math-equation.vala:1083
 msgid "Malformed expression"
 msgstr "Некорректное выражение"
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1094
 msgid "Calculating"
 msgstr "Вычисление"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1287
 msgid "Need an integer to factorize"
 msgstr "Для разложения на простые множители необходимо целое число"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#: lib/math-equation.vala:1351
 msgid "No sane value to bitwise shift"
 msgstr "Отсутствует разумное значение для побитового сдвига"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
+#: lib/math-equation.vala:1373
 msgid "Displayed value not an integer"
 msgstr "Значение не является целым числом"
 
@@ -2859,26 +2842,18 @@ msgid "Show release version"
 msgstr "Показать версию выпуска"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:332
 msgid "translator-credits"
 msgstr ""
 "Yuri Myasoedov <ymyasoedov@yandex.ru>, 2012-2015.\n"
-"Stas Solovey <whats_up@tut.by>, 2012-2019."
+"Stas Solovey <whats_up@tut.by>, 2012-2019.\n"
+"Aleksandr Melman, 2023"
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "О программе"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Калькулятор с финансовым и научным режимами."
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:344
 msgid "Are you sure you want to close all open windows?"
 msgstr "Вы уверены, что хотите закрыть все открытые окна?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:345
 msgid "Close _All"
 msgstr "Закрыть _все"
 
@@ -3126,7 +3101,7 @@ msgstr "Другие"
 #: src/ui/math-shortcuts.ui:198
 msgctxt "shortcut window"
 msgid "Copy"
-msgstr "Скопировать"
+msgstr "Копировать"
 
 #: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
@@ -3162,27 +3137,27 @@ msgstr "Переключение в режим клавиатуры (alt.)"
 msgid "Variable name"
 msgstr "Имя переменной"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Сохранить значение в новой или существующей переменной"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:110
+#: src/ui/math-window.ui:20 src/math-window.vala:113
 msgid "Basic"
 msgstr "Базовый"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:116
+#: src/ui/math-window.ui:25 src/math-window.vala:119
 msgid "Advanced"
 msgstr "Расширенный"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:122
+#: src/ui/math-window.ui:30 src/math-window.vala:125
 msgid "Financial"
 msgstr "Финансы"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:128
+#: src/ui/math-window.ui:35 src/math-window.vala:131
 msgid "Programming"
-msgstr "Программированние"
+msgstr "Программирование"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:134
+#: src/ui/math-window.ui:40 src/math-window.vala:137
 msgid "Keyboard"
 msgstr "Клавиатурный режим"
 
@@ -3222,6 +3197,10 @@ msgstr "Комбинации клавиш"
 msgid "_Help"
 msgstr "Спра_вка"
 
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "О приложении"
+
 #: src/ui/math-window.ui:117
 msgid "Mode selection"
 msgstr "Выбор режима"
@@ -3238,9 +3217,24 @@ msgstr "Отменить"
 msgid "Primary menu"
 msgstr "Главное меню"
 
-#: src/math-window.vala:163
+#: src/math-window.vala:166
 msgid "_Quit"
-msgstr "_Закончить"
+msgstr "_Закрыть"
+
+#~ msgid "GNOME Calculator in Basic Mode"
+#~ msgstr "Калькулятор GNOME в обычном режиме"
+
+#~ msgid "GNOME Calculator in Advanced Mode"
+#~ msgstr "Калькулятор GNOME в расширенном режиме"
+
+#~ msgid "GNOME Calculator in Financial Mode"
+#~ msgstr "Калькулятор GNOME в финансовом режиме"
+
+#~ msgid "GNOME Calculator in Programming Mode"
+#~ msgstr "Калькулятор GNOME в режиме программирования"
+
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Калькулятор с финансовым и научным режимами."
 
 #~ msgid "GNOME Calculator"
 #~ msgstr "Калькулятор GNOME"
@@ -3319,9 +3313,6 @@ msgstr "_Закончить"
 
 #~ msgid "About"
 #~ msgstr "О приложении"
-
-#~ msgid "Quit"
-#~ msgstr "Завершить"
 
 #~ msgid "Weight"
 #~ msgstr "Вес"
