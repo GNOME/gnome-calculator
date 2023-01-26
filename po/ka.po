@@ -1,28 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Ekaterine Papava <papava.e@gtu.ge>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2022-03-25 14:26+0000\n"
-"PO-Revision-Date: 2022-10-08 12:44+0200\n"
-"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"POT-Creation-Date: 2023-01-25 18:21+0000\n"
+"PO-Revision-Date: 2023-01-26 15:51+0100\n"
+"Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: \n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "კალკულატორი"
 
@@ -61,7 +60,27 @@ msgid ""
 "character to character code conversion, and more."
 msgstr ""
 
-#: data/org.gnome.Calculator.appdata.xml.in:66
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "ძირითადი რეჟიმი"
+
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "დამატებითი პარამეტრები"
+
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "ფინანსური რეჟიმი"
+
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "პროგრამირების რეჟიმი"
+
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "კლავიატურის რეჟმი"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "პროექტი \"GNOME\""
 
@@ -114,7 +133,7 @@ msgstr ""
 
 #: data/org.gnome.calculator.gschema.xml:52 src/ui/math-window.ui:56
 msgid "Number format"
-msgstr ""
+msgstr "რიცხვის ფორმატი"
 
 #: data/org.gnome.calculator.gschema.xml:53
 msgid "The format to display numbers in"
@@ -122,7 +141,7 @@ msgstr ""
 
 #: data/org.gnome.calculator.gschema.xml:57
 msgid "Angle units"
-msgstr ""
+msgstr "კუთხის ერთეული"
 
 #: data/org.gnome.calculator.gschema.xml:58
 msgid "The angle units to use"
@@ -292,7 +311,7 @@ msgstr "ინდონეზიური რუპია"
 
 #: lib/currency.vala:79
 msgid "Israeli New Shekel"
-msgstr ""
+msgstr "ისრაელის ახალი შეკელი"
 
 #: lib/currency.vala:80
 msgid "Indian Rupee"
@@ -451,76 +470,76 @@ msgstr ""
 msgid "Error: the number of periods must be positive"
 msgstr ""
 
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+msgid "Displayed value not an integer"
+msgstr ""
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:210
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:577
 msgid "No undo history"
 msgstr ""
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:598
 msgid "No redo history"
 msgstr ""
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:829
 msgid "No sane value to store"
 msgstr ""
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1078
 msgid "Overflow. Try a bigger word size"
 msgstr ""
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1083
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr ""
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr ""
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1097
 msgid "Unknown conversion"
 msgstr ""
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1107
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
 msgid "Malformed expression"
 msgstr ""
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1128
 msgid "Calculating"
 msgstr "გამოთვლა"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1321
 msgid "Need an integer to factorize"
 msgstr ""
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
-msgid "No sane value to bitwise shift"
-msgstr ""
-
-#. Message displayed when cannot toggle bit in display
 #: lib/math-equation.vala:1385
-msgid "Displayed value not an integer"
+msgid "No sane value to bitwise shift"
 msgstr ""
 
 #. Translators: Error displayed when underflow error occured
@@ -677,7 +696,7 @@ msgstr "გრადუსი"
 #, c-format
 msgctxt "unit-format"
 msgid "%s degrees"
-msgstr ""
+msgstr "%s გრადუსი"
 
 #: lib/unit.vala:41
 msgctxt "unit-symbols"
@@ -692,7 +711,7 @@ msgstr "რადიანები"
 #, c-format
 msgctxt "unit-format"
 msgid "%s radians"
-msgstr ""
+msgstr "%s რადიანი"
 
 #: lib/unit.vala:42
 msgctxt "unit-symbols"
@@ -707,7 +726,7 @@ msgstr "გრადიანები"
 #, c-format
 msgctxt "unit-format"
 msgid "%s gradians"
-msgstr ""
+msgstr "%s გრადიანი"
 
 #: lib/unit.vala:43
 msgctxt "unit-symbols"
@@ -722,7 +741,7 @@ msgstr "პარსეკი"
 #, c-format
 msgctxt "unit-format"
 msgid "%s pc"
-msgstr ""
+msgstr "%s პ"
 
 #: lib/unit.vala:44
 msgctxt "unit-symbols"
@@ -731,13 +750,13 @@ msgstr ""
 
 #: lib/unit.vala:45
 msgid "Light Years"
-msgstr ""
+msgstr "სინათლის წელი"
 
 #: lib/unit.vala:45
 #, c-format
 msgctxt "unit-format"
 msgid "%s ly"
-msgstr ""
+msgstr "%s სწ"
 
 #: lib/unit.vala:45
 msgctxt "unit-symbols"
@@ -746,13 +765,13 @@ msgstr ""
 
 #: lib/unit.vala:46
 msgid "Astronomical Units"
-msgstr ""
+msgstr "ასტრონომიული ერთეულები"
 
 #: lib/unit.vala:46
 #, c-format
 msgctxt "unit-format"
 msgid "%s au"
-msgstr ""
+msgstr "%s აე"
 
 #: lib/unit.vala:46
 msgctxt "unit-symbols"
@@ -767,7 +786,7 @@ msgstr ""
 #, c-format
 msgctxt "unit-format"
 msgid "%sU"
-msgstr ""
+msgstr "%sუ"
 
 #: lib/unit.vala:47
 msgctxt "unit-symbols"
@@ -776,18 +795,18 @@ msgstr "U"
 
 #: lib/unit.vala:48
 msgid "Nautical Miles"
-msgstr ""
+msgstr "საზღვაო მილები"
 
 #: lib/unit.vala:48
 #, c-format
 msgctxt "unit-format"
 msgid "%s nmi"
-msgstr ""
+msgstr "%s სმ"
 
 #: lib/unit.vala:48
 msgctxt "unit-symbols"
 msgid "nmi"
-msgstr ""
+msgstr "სმ"
 
 #: lib/unit.vala:49
 msgid "Miles"
@@ -902,7 +921,7 @@ msgstr "დუიმი"
 #, c-format
 msgctxt "unit-format"
 msgid "%s in"
-msgstr ""
+msgstr "%s დუიმ"
 
 #: lib/unit.vala:56
 msgctxt "unit-symbols"
@@ -917,7 +936,7 @@ msgstr "სანტიმეტრი"
 #, c-format
 msgctxt "unit-format"
 msgid "%s cm"
-msgstr ""
+msgstr "%s სმ"
 
 #: lib/unit.vala:57
 msgctxt "unit-symbols"
@@ -932,7 +951,7 @@ msgstr "მილიმეტრი"
 #, c-format
 msgctxt "unit-format"
 msgid "%s mm"
-msgstr ""
+msgstr "%s მმ"
 
 #: lib/unit.vala:58
 msgctxt "unit-symbols"
@@ -947,7 +966,7 @@ msgstr ""
 #, c-format
 msgctxt "unit-format"
 msgid "%s μm"
-msgstr ""
+msgstr "%s μმ"
 
 #: lib/unit.vala:59
 msgctxt "unit-symbols"
@@ -962,7 +981,7 @@ msgstr ""
 #, c-format
 msgctxt "unit-format"
 msgid "%s nm"
-msgstr ""
+msgstr "%s ნმ"
 
 #: lib/unit.vala:60
 msgctxt "unit-symbols"
@@ -992,7 +1011,7 @@ msgstr ""
 #, c-format
 msgctxt "unit-format"
 msgid "%s km/h"
-msgstr ""
+msgstr "%s კმ/სთ"
 
 #: lib/unit.vala:62
 msgctxt "unit-symbols"
@@ -1007,7 +1026,7 @@ msgstr ""
 #, c-format
 msgctxt "unit-format"
 msgid "%s miles/h"
-msgstr ""
+msgstr "%s მილი/სთ"
 
 #: lib/unit.vala:63
 msgctxt "unit-symbols"
@@ -1022,7 +1041,7 @@ msgstr ""
 #, c-format
 msgctxt "unit-format"
 msgid "%s m/s"
-msgstr ""
+msgstr "%s მ/წმ"
 
 #: lib/unit.vala:64
 msgctxt "unit-symbols"
@@ -1822,7 +1841,7 @@ msgstr ""
 
 #: lib/unit.vala:120
 msgid "Terabytes"
-msgstr ""
+msgstr "ტერაბაიტი"
 
 #: lib/unit.vala:120
 #, c-format
@@ -2186,8 +2205,8 @@ msgstr "დააკოპირე"
 msgid "Copy result to clipboard"
 msgstr ""
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr ""
 
@@ -2256,12 +2275,12 @@ msgstr ""
 msgid "Calculate Result"
 msgstr ""
 
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
 msgstr ""
 
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
 msgstr ""
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
@@ -2269,7 +2288,7 @@ msgid "Factorize [Ctrl+F]"
 msgstr ""
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr ""
 
 #: src/ui/buttons-advanced.ui:519
@@ -2286,15 +2305,15 @@ msgstr "ტანგენსი"
 
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
-msgstr ""
+msgstr "ჰიპერბოლური კოსინუსი"
 
 #: src/ui/buttons-advanced.ui:583
 msgid "Hyperbolic Sine"
-msgstr ""
+msgstr "ჰიპერბოლური სინუსი"
 
 #: src/ui/buttons-advanced.ui:599
 msgid "Hyperbolic Tangent"
-msgstr ""
+msgstr "ჰიპერბოლური ტანგენსი"
 
 #: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
 #: src/ui/buttons-programming.ui:1877
@@ -2311,12 +2330,12 @@ msgstr ""
 
 #: src/ui/buttons-advanced.ui:681
 msgid "Natural Logarithm"
-msgstr ""
+msgstr "ნატურალური ალგორითმი"
 
 #: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
 #: src/ui/buttons-programming.ui:1921
 msgid "Logarithm"
-msgstr ""
+msgstr "ლოგარითმი"
 
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
@@ -2326,35 +2345,43 @@ msgstr ""
 msgid "Absolute Value [|]"
 msgstr ""
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr ""
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr ""
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
 msgstr ""
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
 msgstr ""
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "მეხსიერება"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
+msgstr ""
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
 msgstr ""
 
 #. Title of Compounding Term dialog
@@ -2436,7 +2463,7 @@ msgstr ""
 #. Gross Profit Margin Dialog: Label before cost input
 #: src/ui/buttons-financial.ui:154 src/ui/buttons-financial.ui:386
 msgid "C_ost:"
-msgstr ""
+msgstr "_ღირებულება:"
 
 #. Double-Declining Depreciation Dialog: Label before life input
 #. Straight-Line Depreciation Dialog: Label before life input
@@ -2620,7 +2647,7 @@ msgstr ""
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
 #: src/ui/buttons-financial.ui:1648
 msgid "Fv"
-msgstr ""
+msgstr "Fv"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
 #: src/ui/buttons-financial.ui:1664
@@ -2657,7 +2684,7 @@ msgstr "სიხშირე"
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
 #: src/ui/buttons-financial.ui:1732
 msgid "Pv"
-msgstr ""
+msgstr "Pv"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
 #: src/ui/buttons-financial.ui:1749
@@ -2684,6 +2711,14 @@ msgstr "ათობითი"
 #: src/ui/buttons-programming.ui:19
 msgid "Hexadecimal"
 msgstr "თექვსმეტობითი"
+
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr ""
 
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
@@ -2719,7 +2754,7 @@ msgstr ""
 
 #: src/ui/buttons-programming.ui:1938
 msgid "Binary Logarithm"
-msgstr ""
+msgstr "ბინარული ალგორითმი"
 
 #: src/ui/buttons-programming.ui:1998
 msgid "Integer Component"
@@ -2749,53 +2784,44 @@ msgid "_Insert"
 msgstr "_ჩასმა"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr ""
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr ""
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "ვერსიის ჩვენება"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr "თემური დოღონაძე"
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr ""
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr ""
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr ""
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr ""
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:609
-#: src/math-buttons.vala:625
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/math-buttons.vala:594
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2806,11 +2832,11 @@ msgstr[1] ""
 msgid " to "
 msgstr ""
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr ""
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr ""
@@ -2835,7 +2861,7 @@ msgstr ""
 msgid "New function"
 msgstr ""
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr ""
 
@@ -2891,172 +2917,177 @@ msgstr ""
 msgid "E_xchange rate refresh interval"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "ძირითადი"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "ახალ ფანჯრის გახსნა"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "მიმდინარე ფანჯრის დახურვა"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "აპლიკაციიდან გასვლა"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "დახმარების ჩვენება"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "მენიუს გახსნა"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "პარამეტრების ფანჯრის ჩვენება"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "კლავიატურის ბმულები"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "ისტორიის გაწმენდა"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "ინვერსია"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "სხვები"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "დააკოპირე"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "ჩასმა"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "დაბრუნება"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "ბრძანების აღდგენა"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr ""
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr ""
@@ -3065,7 +3096,7 @@ msgstr ""
 msgid "Variable name"
 msgstr "ცვლადის სახელი"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr ""
 
@@ -3125,22 +3156,25 @@ msgstr "კლავიატურის მალსახმობები"
 msgid "_Help"
 msgstr "_დახმარება"
 
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr ""
+
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
+msgid "Mode Selection"
 msgstr ""
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr ""
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "დაბრუნება"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
-msgstr "ძირითადი მენიუ"
+msgid "Main Menu"
+msgstr "მთავარი მენიუ"
 
 #: src/math-window.vala:166
 msgid "_Quit"
 msgstr "_გასვლა"
+
+#~ msgid "Primary menu"
+#~ msgstr "ძირითადი მენიუ"
