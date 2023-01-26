@@ -11,24 +11,23 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2022-01-26 18:34+0000\n"
-"PO-Revision-Date: 2022-01-26 22:15+0100\n"
-"Last-Translator: Matej Urbančič <mateju@src.gnome.org>\n"
+"POT-Creation-Date: 2023-01-25 18:21+0000\n"
+"PO-Revision-Date: 2023-01-26 19:24+0100\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.2.2\n"
 
 # G:1 K:0 O:0
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Računalo"
 
@@ -80,23 +79,30 @@ msgstr ""
 "(dvojiško, osmiško, desetiško, šestnajstiško), Boolovo algebro, znakovno "
 "pretvarjanje in še mnogo več."
 
-#: data/org.gnome.Calculator.appdata.xml.in:36
-msgid "GNOME Calculator in Basic Mode"
-msgstr "Računalo GNOME v osnovnem načinu"
+# G:0 K:1 O:0
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Osnovni način"
 
-#: data/org.gnome.Calculator.appdata.xml.in:40
-msgid "GNOME Calculator in Advanced Mode"
-msgstr "Računalo GNOME v znanstvenem načinu"
+# G:0 K:1 O:0
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "Napredni način"
 
-#: data/org.gnome.Calculator.appdata.xml.in:44
-msgid "GNOME Calculator in Financial Mode"
-msgstr "Računalo GNOME v finančnem načinu"
+# G:0 K:1 O:0
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Finančni"
 
-#: data/org.gnome.Calculator.appdata.xml.in:48
-msgid "GNOME Calculator in Programming Mode"
-msgstr "Računalo GNOME v programerskem načinu"
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Programerski način"
 
-#: data/org.gnome.Calculator.appdata.xml.in:67
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Način tipkovnice"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
@@ -494,78 +500,78 @@ msgstr "Ničti koren števila ni določen"
 msgid "Error: the number of periods must be positive"
 msgstr "Napaka: število obdobij mora biti določeno s pozitivno vrednostjo"
 
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+msgid "Displayed value not an integer"
+msgstr "Prikazana vrednost ni celoštevilska vrednost"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:210
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:577
 msgid "No undo history"
 msgstr "Ni zgodovine razveljavitev"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:598
 msgid "No redo history"
 msgstr "Ni zgodovine razveljavitve"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:829
 msgid "No sane value to store"
 msgstr "Ni razumne vrednosti za shranjevanje"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1078
 msgid "Overflow. Try a bigger word size"
 msgstr "Prekoračitev. Poskusite z večjo besedo"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1083
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Neznana spremenljivka »%s«"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funkcija »%s« ni določena"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1097
 msgid "Unknown conversion"
 msgstr "Neznana pretvorba"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1107
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
 msgid "Malformed expression"
 msgstr "Napačen izraz"
 
 # G:1 K:0 O:0
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1128
 msgid "Calculating"
 msgstr "Preračunavanje"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1321
 msgid "Need an integer to factorize"
 msgstr "Za faktorizacijo je zahtevana celoštevilčna vrednost"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#: lib/math-equation.vala:1385
 msgid "No sane value to bitwise shift"
 msgstr "Ni razumne vrednosti za premestitev bitov"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
-msgid "Displayed value not an integer"
-msgstr "Prikazana vrednost ni celoštevilska vrednost"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -2272,8 +2278,8 @@ msgstr "Kopiraj"
 msgid "Copy result to clipboard"
 msgstr "Kopira rezultat v odložišče"
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Ostanek pri deljenju"
 
@@ -2346,13 +2352,13 @@ msgid "Calculate Result"
 msgstr "Izračunaj rezultat"
 
 # G:12 K:31 O:8
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
 msgstr "Podpisni način števil [Alt+številka]"
 
 # G:12 K:31 O:8
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
 msgstr "Nadpisni način števil [Ctrl]"
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
@@ -2360,7 +2366,7 @@ msgid "Factorize [Ctrl+F]"
 msgstr "Fakulteta [Ctrl+I]"
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Znanstvena potenca [Ctrl+E]"
 
 #: src/ui/buttons-advanced.ui:519
@@ -2420,36 +2426,45 @@ msgstr "Fakulteta [ ! ]"
 msgid "Absolute Value [|]"
 msgstr "Absolutna vrednost [  |  ]"
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+#, fuzzy
+msgid "Imaginary Unit"
+msgstr "Imaginarna enota"
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "Realna komponenta"
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "Imaginarna komponenta"
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
 msgstr "Kompleksni konjugat"
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
 msgstr "Argument kompleksnega števila"
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Pomnilnik"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "Dodatne funkcije"
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "Ostanek pri deljenju"
 
 #. Title of Compounding Term dialog
 #: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
@@ -2828,6 +2843,16 @@ msgstr "Desetiško"
 msgid "Hexadecimal"
 msgstr "Šestnajstiško"
 
+# G:12 K:31 O:8
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Podpisni način števil [Alt+številka]"
+
+# G:12 K:31 O:8
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Nadpisni način števil [Ctrl]"
+
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Premakni levo"
@@ -2893,51 +2918,41 @@ msgid "_Insert"
 msgstr "_Vstavi"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Začni v podanem načinu (basic, advanced, financial, programming, keyboard)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Razreši podano enačbo"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Začni s podano enačbo"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Pokaži različico objave"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
 "Andraž Tori\n"
 "Matic Žgur"
 
-# G:1 K:0 O:0
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "O programu"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Računalo z različnimi načini vmesnika."
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Ali res želite zapreti vsa odprta okna?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "Zapri _vse"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:608
-#: src/math-buttons.vala:624
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -2946,7 +2961,7 @@ msgstr[1] "%d-bitna"
 msgstr[2] "%d-bitna"
 msgstr[3] "%d-bitna"
 
-#: src/math-buttons.vala:593
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2959,11 +2974,11 @@ msgstr[3] "%d mesta"
 msgid " to "
 msgstr " pretvori v"
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Preklopi enote pretvarjanja"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2988,7 +3003,7 @@ msgstr "Definirane spremenljivke"
 msgid "New function"
 msgstr "Nova funkcija"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Izbor števila argumentov"
 
@@ -3045,177 +3060,182 @@ msgstr "Velikost _besede"
 msgid "E_xchange rate refresh interval"
 msgstr "Pogostost osvežitev _menjalnih tečajev"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Splošno"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Odpre novo okno"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Zapre trenutno okno"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Konča program"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Pokaže pomoč"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Odpre meni"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Pokaži možnosti"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Tipkovne bližnjice‫"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Počisti zgodovino"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Preklapljanje načina"
 
 # G:0 K:1 O:0
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Preklopi na osnovni način"
 
 # G:0 K:1 O:0
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Preklopi na znanstveni način"
 
 # G:0 K:1 O:0
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Preklopi na finančni način"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Preklopi na programerski način"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Preklopi na vpisni način"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Vpis s tipkovnico"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Pomnoži (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Deli (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Kvadratno koreni (√)"
 
 # G:1 K:0 O:1
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Preobrne"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Vpiše vrednost pi (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Omogoči vpis v znanstveni obliki"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Programerski način"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Preklopi na dvojiški sistem"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Preklopi na osmiški sistem"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Preklopi na desetiški sistem"
 
 # G:0 K:2 O:1
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Preklopi na šestnajstiški sistem"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Ostalo"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Kopira"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Prilepi"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Ponovno uveljavi"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Skoči na predhodni rezultat"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Skoči na naslednji rezultat"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Preklopi na vpisni način"
@@ -3224,30 +3244,30 @@ msgstr "Preklopi na vpisni način"
 msgid "Variable name"
 msgstr "Ime spremenljivke"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Shrani vrednost v obstoječo ali pa novo spremenljivko"
 
 # G:0 K:1 O:0
-#: src/ui/math-window.ui:20 src/math-window.vala:110
+#: src/ui/math-window.ui:20 src/math-window.vala:113
 msgid "Basic"
 msgstr "Osnovni"
 
 # G:0 K:1 O:0
-#: src/ui/math-window.ui:25 src/math-window.vala:116
+#: src/ui/math-window.ui:25 src/math-window.vala:119
 msgid "Advanced"
 msgstr "Znanstveni"
 
 # G:0 K:1 O:0
-#: src/ui/math-window.ui:30 src/math-window.vala:122
+#: src/ui/math-window.ui:30 src/math-window.vala:125
 msgid "Financial"
 msgstr "Finančni"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:128
+#: src/ui/math-window.ui:35 src/math-window.vala:131
 msgid "Programming"
 msgstr "Programerski"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:134
+#: src/ui/math-window.ui:40 src/math-window.vala:137
 msgid "Keyboard"
 msgstr "Tipkovnica"
 
@@ -3287,177 +3307,23 @@ msgstr "Tipkovne bližnjice"
 msgid "_Help"
 msgstr "Pomo_č"
 
+# G:1 K:0 O:0
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "O programu"
+
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
-msgstr "Način izbire"
+msgid "Mode Selection"
+msgstr "Izbor načina"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "Razveljavi [CTRL+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Razveljavi"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
-msgstr "Osnovni meni"
+msgid "Main Menu"
+msgstr "Glavni meni"
 
-#: src/math-window.vala:163
+#: src/math-window.vala:166
 msgid "_Quit"
 msgstr "_Končaj"
-
-# G:1 K:0 O:0
-#~ msgid "GNOME Calculator"
-#~ msgstr "Računalo"
-
-#~ msgid "Exponent"
-#~ msgstr "Potenca"
-
-# G:12 K:31 O:8
-#~ msgid "Subscript"
-#~ msgstr "Podpisano"
-
-# G:12 K:31 O:8
-#~ msgid "Superscript"
-#~ msgstr "Nadpisano"
-
-#~ msgid "Factorize"
-#~ msgstr "Faktorizacija"
-
-#~ msgid "Scientific Exponent"
-#~ msgstr "Znanstvena potenca"
-
-# G:1 K:0 O:1
-#~ msgid "Inverse"
-#~ msgstr "Inverzno"
-
-# G:0 K:1 O:0
-#~ msgid "Factorial"
-#~ msgstr "Fakulteta"
-
-# G:0 K:0 O:2
-#~ msgid "Absolute Value"
-#~ msgstr "Absolutna vrednost"
-
-#~ msgid "Store"
-#~ msgstr "Shrani"
-
-#~ msgid "Insert Character"
-#~ msgstr "Vstavi znak"
-
-#~ msgid "Word Size"
-#~ msgstr "Velikost besede"
-
-#~ msgid "Unable to open help file"
-#~ msgstr "Ni mogoče odpreti datoteke pomoči"
-
-#~ msgid "How often the currency exchange rates should be updated"
-#~ msgstr "Kako pogosto naj bodo osveženi valutni menjalni tečaji."
-
-#~ msgid "Square root [Ctrl+R]"
-#~ msgstr "Kvadratni koren [Ctrl+R]"
-
-# G:0 K:1 O:0
-#~ msgid "Financial Mode"
-#~ msgstr "Finančni"
-
-#~ msgid "8 bits"
-#~ msgstr "8 bitna"
-
-#~ msgid "16 bits"
-#~ msgstr "16 bitna"
-
-#~ msgid "32 bits"
-#~ msgstr "32 bitna"
-
-#~ msgid "64 bits"
-#~ msgstr "64 bitna"
-
-#~ msgid "Number _Format:"
-#~ msgstr "Zapis _števil:"
-
-#~ msgid "Start in given mode"
-#~ msgstr "Začni v podanem načinu"
-
-#~ msgid "_Preferences"
-#~ msgstr "_Možnosti"
-
-# G:1 K:0 O:0
-#~ msgid "_About Calculator"
-#~ msgstr "_O programu"
-
-#~ msgid "Menu"
-#~ msgstr "Meni"
-
-# G:1 K:0 O:0
-#~ msgid "org.gnome.Calculator"
-#~ msgstr "org.gnome.Calculator"
-
-#~ msgid " in "
-#~ msgstr " v "
-
-#~ msgid "About"
-#~ msgstr "O programu"
-
-#~ msgid "Quit"
-#~ msgstr "Končaj"
-
-#~ msgid "Weight"
-#~ msgstr "Teža"
-
-#~ msgid "accessories-calculator"
-#~ msgstr "accessories-calculator"
-
-#~ msgid "Precision error"
-#~ msgstr "Napaka natančnosti"
-
-#~ msgid "Reciprocal of zero is undefined"
-#~ msgstr "Obratna vrednost števila nič ni določena"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "stopinj C, ˚C"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "stopinj F, ˚F"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "stopinj R, ˚R,˚Ra"
-
-#~ msgid "_%d place"
-#~ msgid_plural "_%d places"
-#~ msgstr[0] "_%d mest"
-#~ msgstr[1] "_%d mesto"
-#~ msgstr[2] "_%d mesti"
-#~ msgstr[3] "_%d mesta"
-
-#~ msgid "Show %d decimal _places"
-#~ msgstr "Pokaži %d decimalnih _mest"
-
-#~ msgid "Lithuanian Litas"
-#~ msgstr "litvanska lita"
-
-#~ msgid "Latvian Lats"
-#~ msgstr "latvijski lat"
-
-#~ msgid "Truncate"
-#~ msgstr "Razdeli"
-
-#~ msgid "Malformed expression at token '%s'"
-#~ msgstr "Nepravilno oblikovan izraz pri žetonu '%s'"
-
-#~ msgid "Root must be non-zero"
-#~ msgstr "Koren ne sme biti vrednosti nič"
-
-#~ msgid "Negative root of zero is undefined"
-#~ msgstr "Negativni koren vrednosti nič ni določen"
-
-#~ msgid "Mode"
-#~ msgstr "Način"
