@@ -6,27 +6,28 @@
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2003-2010.
 # wanderlust <wanderlust@ukr.net>, 2009.
 # Daniel Korostil <ted.korostiled@gmail.com>, 2013, 2014, 2015, 2016, 2017.
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2021, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2021-11-30 01:08+0000\n"
-"PO-Revision-Date: 2021-11-30 09:56+0200\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues"
+"\n"
+"POT-Creation-Date: 2023-01-25 18:21+0000\n"
+"PO-Revision-Date: 2023-01-27 21:18+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 20.12.0\n"
 "X-Project-Style: gnome\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Калькулятор"
 
@@ -79,23 +80,32 @@ msgstr ""
 "вісімкова, десяткова, шістнадцяткова), булева алгебра, зворотний і "
 "доповняльний код, перетворення символів у код символу, тощо."
 
-#: data/org.gnome.Calculator.appdata.xml.in:36
-msgid "GNOME Calculator in Basic Mode"
-msgstr "Калькулятор GNOME у простому режимі"
+#: data/org.gnome.Calculator.appdata.xml.in:35
+#| msgid "Basic"
+msgid "Basic Mode"
+msgstr "Простий режим"
 
-#: data/org.gnome.Calculator.appdata.xml.in:40
-msgid "GNOME Calculator in Advanced Mode"
-msgstr "Калькулятор GNOME у розширеному режимі"
+#: data/org.gnome.Calculator.appdata.xml.in:39
+#| msgid "Advanced"
+msgid "Advanced Mode"
+msgstr "Розширений режим"
 
-#: data/org.gnome.Calculator.appdata.xml.in:44
-msgid "GNOME Calculator in Financial Mode"
-msgstr "Калькулятор GNOME у фінансовому режимі"
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Фінансовий режим"
 
-#: data/org.gnome.Calculator.appdata.xml.in:48
-msgid "GNOME Calculator in Programming Mode"
-msgstr "Калькулятор GNOME у програмувальному режимі"
+#: data/org.gnome.Calculator.appdata.xml.in:47
+#| msgctxt "shortcut window"
+#| msgid "Programming mode"
+msgid "Programming Mode"
+msgstr "Програмувальний режим"
 
-#: data/org.gnome.Calculator.appdata.xml.in:67
+#: data/org.gnome.Calculator.appdata.xml.in:51
+#| msgid "Keyboard"
+msgid "Keyboard Mode"
+msgstr "Клавіатурний режим"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "Проект GNOME"
 
@@ -487,77 +497,77 @@ msgstr "Корінь нульового степеня не визначено"
 msgid "Error: the number of periods must be positive"
 msgstr "Помилка: кількість періодів має бути додатною"
 
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+msgid "Displayed value not an integer"
+msgstr "Показане значення не є цілим числом"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:210
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:577
 msgid "No undo history"
 msgstr "Немає історії повернень"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:598
 msgid "No redo history"
 msgstr "Нема історії повторень"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:829
 msgid "No sane value to store"
 msgstr "Немає нормального значення для зберігання"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1078
 msgid "Overflow. Try a bigger word size"
 msgstr "Переповнення. Спробуйте більший розмір слова"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1083
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Невідома змінна «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Функцію «%s» не визначено"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1097
 msgid "Unknown conversion"
 msgstr "Невідоме перетворення"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1107
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
 msgid "Malformed expression"
 msgstr "Неправильний вираз"
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1128
 msgid "Calculating"
 msgstr "Обчислення"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1321
 msgid "Need an integer to factorize"
 msgstr "Для розкладання на множники вкажіть ціле число"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#: lib/math-equation.vala:1385
 msgid "No sane value to bitwise shift"
 msgstr "Немає нормального значення для побітового зсуву"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
-msgid "Displayed value not an integer"
-msgstr "Показане значення не є цілим числом"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -708,7 +718,7 @@ msgid "Digital Storage"
 msgstr "Цифрова пам'ять"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:41 src/math-preferences.vala:106
+#: lib/unit.vala:41 src/math-preferences.vala:110
 msgid "Degrees"
 msgstr "Градуси"
 
@@ -723,7 +733,7 @@ msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "градус,градусів,гр"
 
-#: lib/unit.vala:42 src/math-preferences.vala:108
+#: lib/unit.vala:42 src/math-preferences.vala:112
 msgid "Radians"
 msgstr "Радіани"
 
@@ -738,7 +748,7 @@ msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "радіан,радіани,рад"
 
-#: lib/unit.vala:43 src/math-preferences.vala:110
+#: lib/unit.vala:43 src/math-preferences.vala:114
 msgid "Gradians"
 msgstr "Гради"
 
@@ -2225,9 +2235,532 @@ msgstr "Копіювати"
 msgid "Copy result to clipboard"
 msgstr "Копіювати результат до буфера обміну даними"
 
-#: src/ui/buttons-advanced.ui:844
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
+msgid "Modulus divide"
+msgstr "Залишок від цілочислового ділення"
+
+#: src/ui/buttons-advanced.ui:139 src/ui/buttons-basic.ui:145
+#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1269
+msgid "Divide [/]"
+msgstr "Поділити [/]"
+
+#: src/ui/buttons-advanced.ui:235 src/ui/buttons-basic.ui:247
+#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1286
+msgid "Multiply [*]"
+msgstr "Помножити [*]"
+
+#: src/ui/buttons-advanced.ui:252 src/ui/buttons-basic.ui:265
+#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1303
+msgid "Subtract [-]"
+msgstr "Відняти [-]"
+
+#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:282
+#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1319
+msgid "Add [+]"
+msgstr "Додати [+]"
+
+#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:299
+#: src/ui/buttons-programming.ui:1247
+msgid "Pi [Ctrl+P]"
+msgstr "Пі [Ctrl+P]"
+
+#: src/ui/buttons-advanced.ui:307 src/ui/buttons-basic.ui:323
+#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1231
+msgid "Root [Ctrl+R]"
+msgstr "Корінь [Ctrl+R]"
+
+#: src/ui/buttons-advanced.ui:322 src/ui/buttons-basic.ui:339
+msgid "Square [Ctrl+2]"
+msgstr "Квадрат [Ctrl+2]"
+
+#: src/ui/buttons-advanced.ui:343 src/ui/buttons-basic.ui:361
+#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1352
+msgid "Clear Display [Escape]"
+msgstr "Очистити екран [Escape]"
+
+#: src/ui/buttons-advanced.ui:359 src/ui/buttons-basic.ui:378
+#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1665
+msgid "Start Group [(]"
+msgstr "Початок групи [(]"
+
+#: src/ui/buttons-advanced.ui:376 src/ui/buttons-basic.ui:396
+#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1681
+msgid "End Group [)]"
+msgstr "Кінець групи [)]"
+
+#: src/ui/buttons-advanced.ui:393 src/ui/buttons-basic.ui:414
+#: src/ui/buttons-financial.ui:1519
+msgid "Percentage [%]"
+msgstr "Відсоток  [%]"
+
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
+#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
+#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
+msgid "Calculate Result"
+msgstr "Обчислити результат"
+
+#: src/ui/buttons-advanced.ui:439
+#| msgid "Subscript mode [Alt]"
+msgid "Subscript Mode [Alt]"
+msgstr "Нижній індекс [Alt+цифра]"
+
+#: src/ui/buttons-advanced.ui:460
+#| msgid "Superscript mode [Ctrl]"
+msgid "Superscript Mode [Ctrl]"
+msgstr "Верхній індекс [Alt+цифра]"
+
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
+msgid "Factorize [Ctrl+F]"
+msgstr "Розкласти на множники [Ctrl+F]"
+
+#: src/ui/buttons-advanced.ui:498
+#| msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
+msgstr "Наукова експонента [Ctrl+E]"
+
+#: src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Косинус"
+
+#: src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Синус"
+
+#: src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Тангенс"
+
+#: src/ui/buttons-advanced.ui:567
+msgid "Hyperbolic Cosine"
+msgstr "Гіперболічний косинус"
+
+#: src/ui/buttons-advanced.ui:583
+msgid "Hyperbolic Sine"
+msgstr "Гіперболічний синус"
+
+#: src/ui/buttons-advanced.ui:599
+msgid "Hyperbolic Tangent"
+msgstr "Гіперболічний тангенс"
+
+#: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
+#: src/ui/buttons-programming.ui:1877
+msgid "Exponent [^ or **]"
+msgstr "Експонента [^ або **]"
+
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
+msgid "Inverse [Ctrl+I]"
+msgstr "Інверсія [Ctrl+I]"
+
+#: src/ui/buttons-advanced.ui:658
+msgid "Euler’s Number"
+msgstr "Число Ойлера"
+
+#: src/ui/buttons-advanced.ui:681
+msgid "Natural Logarithm"
+msgstr "Натуральний логарифм"
+
+#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
+#: src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Логарифм"
+
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
+msgid "Factorial [!]"
+msgstr "Факторіал [!]"
+
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
+msgid "Absolute Value [|]"
+msgstr "Абсолютне значення [|]"
+
+#: src/ui/buttons-advanced.ui:756
+#| msgid "Imaginary Component"
+msgid "Imaginary Unit"
+msgstr "Уявна одиниця"
+
+#: src/ui/buttons-advanced.ui:779
+msgid "Real Component"
+msgstr "Дійсна частина"
+
+#: src/ui/buttons-advanced.ui:796
+msgid "Imaginary Component"
+msgstr "Припустимий компонент"
+
+#: src/ui/buttons-advanced.ui:813
+#| msgid "Complex conjugate"
+msgid "Complex Conjugate"
+msgstr "Комплексне спряження"
+
+#: src/ui/buttons-advanced.ui:830
+#| msgid "Complex argument"
+msgid "Complex Argument"
+msgstr "Комплексний аргумент"
+
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Пам'ять"
+
+#. The label on the memory button
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-programming.ui:2062
+msgid "x"
+msgstr "x"
+
+#: src/ui/buttons-advanced.ui:860
+msgid "Additional Functions"
+msgstr "Додаткові функції"
+
+#: src/ui/buttons-basic.ui:127
+#| msgid "Modulus divide"
+msgid "Modulus Divide"
+msgstr "Залишок від цілочислового ділення"
+
+#. Title of Compounding Term dialog
+#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
+msgid "Compounding Term"
+msgstr "Термін складного відсотка"
+
+#. Compounding Term Dialog: Label before present value input
+#. Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.ui:55 src/ui/buttons-financial.ui:727
+msgid "Present _Value:"
+msgstr "Поточна _вартість:"
+
+#. Compounding Term Dialog: Label before periodic interest rate input
+#. Future Value Dialog: Label before periodic interest rate input
+#. Periodic Payment Dialog: Label before periodic interest rate input
+#. Present Value Dialog: Label before periodic interest rate input
+#. Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.ui:67 src/ui/buttons-financial.ui:282
+#: src/ui/buttons-financial.ui:493 src/ui/buttons-financial.ui:610
+#: src/ui/buttons-financial.ui:1106
+msgid "Periodic Interest _Rate:"
+msgstr "Ставка відсотка за пе_ріод"
+
+#. Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:80
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Обчислює кількість періодів приросту, потрібних для збільшення поточних "
+"інвестицій у майбутні, при фіксованій відсотковій ставці за період приросту."
+
+#. Compounding Term Dialog: Label before future value input
+#. Periodic Interest Rate Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:91 src/ui/buttons-financial.ui:715
+msgid "_Future Value:"
+msgstr "_Майбутня сума:"
+
+#: src/ui/buttons-financial.ui:110 src/ui/buttons-financial.ui:227
+#: src/ui/buttons-financial.ui:343 src/ui/buttons-financial.ui:437
+#: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
+#: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
+#: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
+#: src/ui/buttons-programming.ui:2139
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#. Compounding Term Dialog: Calculate button
+#. Double-Declining Depreciation Dialog: Calculate button
+#. Future Value Dialog: Calculate button
+#. Gross Profit Margin Dialog: Calculate button
+#. Periodic Payment Dialog: Calculate button
+#. Present Value Dialog: Calculate button
+#. Periodic Interest Rate Dialog: Calculate button
+#. Straight-Line Depreciation Dialog: Calculate button
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
+#. Payment Period Dialog: Button to calculate result
+#: src/ui/buttons-financial.ui:116 src/ui/buttons-financial.ui:233
+#: src/ui/buttons-financial.ui:349 src/ui/buttons-financial.ui:443
+#: src/ui/buttons-financial.ui:560 src/ui/buttons-financial.ui:677
+#: src/ui/buttons-financial.ui:794 src/ui/buttons-financial.ui:911
+#: src/ui/buttons-financial.ui:1050 src/ui/buttons-financial.ui:1167
+msgid "C_alculate"
+msgstr "_Обчислити"
+
+#. Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.ui:122
+msgid "Double-Declining Depreciation"
+msgstr "Подвійне нарахування амортизації"
+
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:143
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"Обчислює амортизацію ресурсу протягом вказаного періоду часу використовуючи "
+"метод подвійного зменшення залишку."
+
+#. Double-Declining Depreciation Dialog: Label before cost input
+#. Gross Profit Margin Dialog: Label before cost input
+#: src/ui/buttons-financial.ui:154 src/ui/buttons-financial.ui:386
+msgid "C_ost:"
+msgstr "_Ціна:"
+
+#. Double-Declining Depreciation Dialog: Label before life input
+#. Straight-Line Depreciation Dialog: Label before life input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.ui:166 src/ui/buttons-financial.ui:844
+#: src/ui/buttons-financial.ui:949
+msgid "_Life:"
+msgstr "_Життя:"
+
+#. Double-Declining Depreciation Dialog: Label before period input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.ui:198 src/ui/buttons-financial.ui:937
+msgid "_Period:"
+msgstr "_Період:"
+
+#. Title of Future Value dialog
+#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:1651
+msgid "Future Value"
+msgstr "Майбутня сума"
+
+#. Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:259
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Обчислює майбутню вартість інвестицій, яке базується на ряді однакових "
+"платежів при періодичній відсотковій ставці для кількості платіжних етапів "
+"впродовж заданого терміну."
+
+#. Future Value Dialog: Label before periodic payment input
+#. Present Value Dialog: Label before periodic payment input
+#. Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.ui:270 src/ui/buttons-financial.ui:598
+#: src/ui/buttons-financial.ui:1130
+msgid "_Periodic Payment:"
+msgstr "_Регулярні платежі:"
+
+#. Future Value Dialog: Label before number of periods input
+#. Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.ui:294 src/ui/buttons-financial.ui:622
+msgid "_Number of Periods:"
+msgstr "_Кількість періодів:"
+
+#. Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.ui:355 src/ui/buttons-financial.ui:1769
+msgid "Gross Profit Margin"
+msgstr "Коефіцієнт валового прибутку"
+
+#. Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:375
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Обчислює вартість перепродажу продукту, залежно від його ціни та бажаної "
+"рентабельності."
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.ui:398
+msgid "_Margin:"
+msgstr "_Запас:"
+
+#. Title of Periodic Payment dialog
+#: src/ui/buttons-financial.ui:449 src/ui/buttons-financial.ui:1752
+msgid "Periodic Payment"
+msgstr "Регулярні платежі"
+
+#. Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:470
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
+msgstr ""
+"Обчислює кількість періодичної оплати позики, де платежі робляться в кінці "
+"кожного періоду оплати."
+
+#. Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.ui:481
+msgid "_Principal:"
+msgstr "_Принциповий:"
+
+#. Periodic Payment Dialog: Label before term input
+#. Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.ui:505 src/ui/buttons-financial.ui:739
+msgid "_Term:"
+msgstr "_Т.опл:"
+
+#. Title of Present Value dialog
+#: src/ui/buttons-financial.ui:566 src/ui/buttons-financial.ui:1735
+msgid "Present Value"
+msgstr "Поточна вартість:"
+
+#. Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:587
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
+"Обчислює поточну вартість інвестицій, яке базується на ряді однакових "
+"платежів при періодичній відсотковій ставці для кількості платіжних етапів "
+"впродовж заданого терміну."
+
+#. Title of Periodic Interest Rate dialog
+#: src/ui/buttons-financial.ui:683 src/ui/buttons-financial.ui:1718
+msgid "Periodic Interest Rate"
+msgstr "Ставка відсотка за період"
+
+#. Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:704
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
+"Обчислює періодичну ставку, на яку зростає майбутня вартість інвестицій, "
+"протягом вказаних періодів приросту."
+
+#. Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.ui:800
+msgid "Straight-Line Depreciation"
+msgstr "Лінійна амортизація"
+
+#. Straight-Line Depreciation Dialog: Label before cost input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:973
+msgid "_Cost:"
+msgstr "_Ціна:"
+
+#. Straight-Line Depreciation Dialog: Label before salvage input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.ui:832 src/ui/buttons-financial.ui:961
+msgid "_Salvage:"
+msgstr "_Порятунок:"
+
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:887
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+"Обчислює величину витрат на амортизацію власності методом лінійного "
+"(пропорційного) списування за один період. Цей метод ділить вартість "
+"амортизаційних витрат порівну між всіма етапами терміну використання. "
+"Терміном використання називається кількість періодів, зазвичай років, "
+"протягом якого власність знецінюється."
+
+#. Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.ui:917
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "Амортизація Сума-Років-Цифр"
+
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:1026
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
+msgstr ""
+"Обчислити амортизацію ресурсу за допомогою методу Сума-Років-Цифр за "
+"вказаний період часу. Цей метод оцінки старості враховує прискорення "
+"амортизації, тобто вартість у ранній період більша, ніж у пізніший. Корисне "
+"життя ресурсу — це число періодів, зазвичай років, протягом яких ресурс "
+"застаріває."
+
+#. Title of Payment Period dialog
+#: src/ui/buttons-financial.ui:1056
+msgid "Payment Period"
+msgstr "Термін оплати"
+
+#. Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:1118
+msgid "Future _Value:"
+msgstr "Майбутня _сума:"
+
+#. Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:1143
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Обчислює кількість платіжних періодів, потрібних протягом терміну звичайної "
+"ренти, для накопичення майбутньої вартості для періодичної відсоткової "
+"ставки."
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.ui:1616
+msgid "Ctrm"
+msgstr "Тсв"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1632
+msgid "Ddb"
+msgstr "Пна"
+
+#: src/ui/buttons-financial.ui:1635
+msgid "Double Declining Depreciation"
+msgstr "Подвійне нарахування амортизації"
+
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.ui:1648
+msgid "Fv"
+msgstr "Мсум"
+
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: src/ui/buttons-financial.ui:1664
+msgid "Term"
+msgstr "Т.опл"
+
+#: src/ui/buttons-financial.ui:1667
+msgid "Financial Term"
+msgstr "Фінансові строки"
+
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1681
+msgid "Syd"
+msgstr "Ам.сум.рок"
+
+#: src/ui/buttons-financial.ui:1684
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Амортизація суми чисел року"
+
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1698
+msgid "Sln"
+msgstr "Рна"
+
+#: src/ui/buttons-financial.ui:1701
+msgid "Straight Line Depreciation"
+msgstr "Лінійна амортизація"
+
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.ui:1715
+msgid "Rate"
+msgstr "Ставк"
+
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.ui:1732
+msgid "Pv"
+msgstr "Пот.варт"
+
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.ui:1749
+msgid "Pmt"
+msgstr "Рег.пл"
+
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.ui:1766
+msgid "Gpm"
+msgstr "Квп"
 
 #: src/ui/buttons-programming.ui:16
 msgid "Binary"
@@ -2245,52 +2778,115 @@ msgstr "Десятковий"
 msgid "Hexadecimal"
 msgstr "Шістнадцятковий"
 
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Нижній індекс [Alt+цифра]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Верхній індекс [Alt+цифра]"
+
+#: src/ui/buttons-programming.ui:1751
+msgid "Shift Left"
+msgstr "Зсув ліворуч"
+
+#: src/ui/buttons-programming.ui:1764
+msgid "Shift Right"
+msgstr "Зсув праворуч"
+
+#: src/ui/buttons-programming.ui:1778
+msgid "Boolean Exclusive OR"
+msgstr "Булеве виняткове АБО"
+
+#: src/ui/buttons-programming.ui:1794
+msgid "Boolean OR"
+msgstr "Логічне АБО"
+
+#: src/ui/buttons-programming.ui:1811
+msgid "Boolean AND"
+msgstr "Логічне ТА"
+
+#: src/ui/buttons-programming.ui:1828
+msgid "Boolean NOT"
+msgstr "Булеве НІ"
+
+#: src/ui/buttons-programming.ui:1845
+msgid "Ones’ Complement"
+msgstr "Однорозрядне доповнення"
+
+#: src/ui/buttons-programming.ui:1862
+msgid "Two’s Complement"
+msgstr "Дворозрядне доповнення"
+
+#: src/ui/buttons-programming.ui:1938
+msgid "Binary Logarithm"
+msgstr "Двійковий логарифм"
+
+#: src/ui/buttons-programming.ui:1998
+msgid "Integer Component"
+msgstr "Цілий компонент"
+
+#: src/ui/buttons-programming.ui:2015
+msgid "Fractional Component"
+msgstr "Дробовий компонент"
+
+#. Title of insert character code dialog
+#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
+msgid "Insert Character Code"
+msgstr "Вставити код символу"
+
+#: src/ui/buttons-programming.ui:2078
+msgid "Change word size"
+msgstr "Змінити розмір слова"
+
+#. Insert ASCII dialog: Label before character entry
+#: src/ui/buttons-programming.ui:2115
+msgid "Ch_aracter:"
+msgstr "_Символ:"
+
+#. Insert ASCII dialog: Button to insert selected character
+#: src/ui/buttons-programming.ui:2145
+msgid "_Insert"
+msgstr "_Вставити"
+
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
-msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
+#: src/gnome-calculator.vala:23
+msgid ""
+"Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Запустити у вказаному режимі (basic, advanced, financial, programming, "
 "keyboard)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Розв'язати задане рівняння"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Почати із заданого рівняння"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Показати версію випуску"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
 "Кирило Полежаєв <polezhajev@ukr.net>\n"
 "Максим Дзюманенко <dziumanenko@gmail.com>\n"
 "Daniel Korostil <ted.korostiled@gmail.com>"
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "Про програму"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Калькулятор з фінансовими і науковими функціями."
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Ви справді хочете закрити усі відкриті вікна?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "Закрити _всі"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:608
-#: src/math-buttons.vala:624
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -2298,7 +2894,7 @@ msgstr[0] "%d-бітовий"
 msgstr[1] "%d-бітовий"
 msgstr[2] "%d-бітовий"
 
-#: src/math-buttons.vala:593
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2310,11 +2906,11 @@ msgstr[2] "%d місць"
 msgid " to "
 msgstr " у "
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Змінити одиницю перетворення"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2325,11 +2921,9 @@ msgstr "Визначені функції"
 
 #: src/math-display.vala:651
 msgid "Built-in keywords"
-msgstr ""
-"Вбудовані ключові слова"
+msgstr "Вбудовані ключові слова"
 
 #: src/math-display.vala:695
-#| msgid "Defined Functions"
 msgid "Defined currencies"
 msgstr "Визначені валюти"
 
@@ -2341,35 +2935,35 @@ msgstr "Визначені змінні"
 msgid "New function"
 msgstr "Створити функцію"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Виберіть кількість аргументів"
 
-#: src/math-preferences.vala:119
+#: src/math-preferences.vala:123
 msgid "8-bit"
 msgstr "8-бітове"
 
-#: src/math-preferences.vala:121
+#: src/math-preferences.vala:125
 msgid "16-bit"
 msgstr "16-бітове"
 
-#: src/math-preferences.vala:123
+#: src/math-preferences.vala:127
 msgid "32-bit"
 msgstr "32-бітове"
 
-#: src/math-preferences.vala:125
+#: src/math-preferences.vala:129
 msgid "64-bit"
 msgstr "64-бітове"
 
-#: src/math-preferences.vala:134
+#: src/math-preferences.vala:138
 msgid "Never"
 msgstr "Ніколи"
 
-#: src/math-preferences.vala:136
+#: src/math-preferences.vala:140
 msgid "Daily"
 msgstr "Щоденно"
 
-#: src/math-preferences.vala:138
+#: src/math-preferences.vala:142
 msgid "Weekly"
 msgstr "Щотижня"
 
@@ -2397,172 +2991,178 @@ msgstr "_Розмір слова"
 msgid "E_xchange rate refresh interval"
 msgstr "Інтервал оновлення об_мінних курсів"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Загальне"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Відкрити нове вікно"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Закрити поточне вікно"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Вийти з програми"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Показати довідку"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Відкрити меню"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+#| msgid "Preferences"
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Показати налаштування"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Клавіатурні скорочення"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Спорожнити журнал"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Режими перемикання"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Перемкнутись у простий режим"
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Перемкнутись у розширений режим"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Перемкнутись у фінансовий режим"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Перемкнутись у програмувальний режим"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Перемкнутись у клавіатурний режим"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Запис клавіатури"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Помножити (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Поділити (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Квадратний корінь (√)"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Інверсія"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Пі (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Введіть числа в науковому форматі"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Програмувальний режим"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Перемкнути в двійковий формат"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Перемкнути в вісімковий формат"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Перемкнути в десятковий формат"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Перемкнути у шістнадцятковий формат"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Інші"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Копіювати"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Вставити"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Повторити"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Попередній результат"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Наступний результат"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Перемкнутись у клавіатурний режим (альтернативне)"
@@ -2571,27 +3171,27 @@ msgstr "Перемкнутись у клавіатурний режим (аль�
 msgid "Variable name"
 msgstr "Назва змінної"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Зберігати значення в наявній або новій змінній"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:105
+#: src/ui/math-window.ui:20 src/math-window.vala:113
 msgid "Basic"
 msgstr "Базовий"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:111
+#: src/ui/math-window.ui:25 src/math-window.vala:119
 msgid "Advanced"
 msgstr "Розширений"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:117
+#: src/ui/math-window.ui:30 src/math-window.vala:125
 msgid "Financial"
 msgstr "Фінансовий"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:123
+#: src/ui/math-window.ui:35 src/math-window.vala:131
 msgid "Programming"
 msgstr "Програмувальний"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:129
+#: src/ui/math-window.ui:40 src/math-window.vala:137
 msgid "Keyboard"
 msgstr "Клавіатура"
 
@@ -2631,424 +3231,80 @@ msgstr "Клавіатурні скорочення"
 msgid "_Help"
 msgstr "_Довідка"
 
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "Про програму"
+
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
+#| msgid "Mode selection"
+msgid "Mode Selection"
 msgstr "Вибір режиму"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "Повернути [Ctrl+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Скасувати"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
-msgstr "Основне меню"
+msgid "Main Menu"
+msgstr "Головне меню"
 
-#: src/math-window.vala:158
+#: src/math-window.vala:166
 msgid "_Quit"
 msgstr "Ви_йти"
 
-#~ msgid "Modulus divide"
-#~ msgstr "Залишок від цілочислового ділення"
+#~ msgid "GNOME Calculator in Basic Mode"
+#~ msgstr "Калькулятор GNOME у простому режимі"
 
-#~ msgid "Divide [/]"
-#~ msgstr "Поділити [/]"
+#~ msgid "GNOME Calculator in Advanced Mode"
+#~ msgstr "Калькулятор GNOME у розширеному режимі"
 
-#~ msgid "Multiply [*]"
-#~ msgstr "Помножити [*]"
+#~ msgid "GNOME Calculator in Financial Mode"
+#~ msgstr "Калькулятор GNOME у фінансовому режимі"
 
-#~ msgid "Subtract [-]"
-#~ msgstr "Відняти [-]"
+#~ msgid "GNOME Calculator in Programming Mode"
+#~ msgstr "Калькулятор GNOME у програмувальному режимі"
 
-#~ msgid "Add [+]"
-#~ msgstr "Додати [+]"
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Калькулятор з фінансовими і науковими функціями."
 
-#~ msgid "Pi [Ctrl+P]"
-#~ msgstr "Пі [Ctrl+P]"
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "Повернути [Ctrl+Z]"
 
-#~ msgid "Root [Ctrl+R]"
-#~ msgstr "Корінь [Ctrl+R]"
-
-#~ msgid "Square [Ctrl+2]"
-#~ msgstr "Квадрат [Ctrl+2]"
+#~ msgid "Primary menu"
+#~ msgstr "Основне меню"
 
 #~ msgid "Exponent"
 #~ msgstr "Експонента"
 
-#~ msgid "Clear Display [Escape]"
-#~ msgstr "Очистити екран [Escape]"
-
-#~ msgid "Start Group [(]"
-#~ msgstr "Початок групи [(]"
-
-#~ msgid "End Group [)]"
-#~ msgstr "Кінець групи [)]"
-
-#~ msgid "Percentage [%]"
-#~ msgstr "Відсоток  [%]"
-
-#~ msgid "="
-#~ msgstr "="
-
-#~ msgid "Calculate Result"
-#~ msgstr "Обчислити результат"
-
-#~ msgid "Subscript mode [Alt]"
-#~ msgstr "Нижній індекс [Alt+цифра]"
-
 #~ msgid "Subscript"
 #~ msgstr "Нижн інд"
-
-#~ msgid "Superscript mode [Ctrl]"
-#~ msgstr "Верхній індекс [Alt+цифра]"
 
 #~ msgid "Superscript"
 #~ msgstr "Верх інд"
 
-#~ msgid "Factorize [Ctrl+F]"
-#~ msgstr "Розкласти на множники [Ctrl+F]"
-
 #~ msgid "Factorize"
 #~ msgstr "Факторизація"
-
-#~ msgid "Scientific exponent [Ctrl+E]"
-#~ msgstr "Наукова експонента [Ctrl+E]"
 
 #~ msgid "Scientific Exponent"
 #~ msgstr "Наукова експонента"
 
-#~ msgid "Cosine"
-#~ msgstr "Косинус"
-
-#~ msgid "Sine"
-#~ msgstr "Синус"
-
-#~ msgid "Tangent"
-#~ msgstr "Тангенс"
-
-#~ msgid "Hyperbolic Cosine"
-#~ msgstr "Гіперболічний косинус"
-
-#~ msgid "Hyperbolic Sine"
-#~ msgstr "Гіперболічний синус"
-
-#~ msgid "Hyperbolic Tangent"
-#~ msgstr "Гіперболічний тангенс"
-
-#~ msgid "Exponent [^ or **]"
-#~ msgstr "Експонента [^ або **]"
-
-#~ msgid "Inverse [Ctrl+I]"
-#~ msgstr "Інверсія [Ctrl+I]"
-
 #~ msgid "Inverse"
 #~ msgstr "Інверсія"
-
-#~ msgid "Euler’s Number"
-#~ msgstr "Число Ойлера"
-
-#~ msgid "Natural Logarithm"
-#~ msgstr "Натуральний логарифм"
-
-#~ msgid "Logarithm"
-#~ msgstr "Логарифм"
-
-#~ msgid "Factorial [!]"
-#~ msgstr "Факторіал [!]"
 
 #~ msgid "Factorial"
 #~ msgstr "Факторіал"
 
-#~ msgid "Absolute Value [|]"
-#~ msgstr "Абсолютне значення [|]"
-
 #~ msgid "Absolute Value"
 #~ msgstr "Абсолютне значення"
-
-#~ msgid "Real Component"
-#~ msgstr "Дійсна частина"
-
-#~ msgid "Imaginary Component"
-#~ msgstr "Припустимий компонент"
-
-#~ msgid "Complex conjugate"
-#~ msgstr "Комплексне відмінювання"
-
-#~ msgid "Complex argument"
-#~ msgstr "Комплексний аргумент"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "Additional Functions"
-#~ msgstr "Додаткові функції"
 
 #~ msgid "Store"
 #~ msgstr "Зап"
 
-#~ msgid "Compounding Term"
-#~ msgstr "Термін складного відсотка"
-
-#~ msgid "_Cancel"
-#~ msgstr "_Скасувати"
-
-#~ msgid "C_alculate"
-#~ msgstr "_Обчислити"
-
-#~ msgid "Present _Value:"
-#~ msgstr "Поточна _вартість:"
-
-#~ msgid "Periodic Interest _Rate:"
-#~ msgstr "Ставка відсотка за пе_ріод"
-
-#~ msgid ""
-#~ "Calculates the number of compounding periods necessary to increase an "
-#~ "investment of present value to a future value, at a fixed interest rate "
-#~ "per compounding period."
-#~ msgstr ""
-#~ "Обчислює кількість періодів приросту, потрібних для збільшення поточних "
-#~ "інвестицій у майбутні, при фіксованій відсотковій ставці за період "
-#~ "приросту."
-
-#~ msgid "_Future Value:"
-#~ msgstr "_Майбутня сума:"
-
-#~ msgid "Double-Declining Depreciation"
-#~ msgstr "Подвійне нарахування амортизації"
-
-#~ msgid ""
-#~ "Calculates the depreciation allowance on an asset for a specified period "
-#~ "of time, using the double-declining balance method."
-#~ msgstr ""
-#~ "Обчислює амортизацію ресурсу протягом вказаного періоду часу "
-#~ "використовуючи метод подвійного зменшення залишку."
-
-#~ msgid "C_ost:"
-#~ msgstr "_Ціна:"
-
-#~ msgid "_Life:"
-#~ msgstr "_Життя:"
-
-#~ msgid "_Period:"
-#~ msgstr "_Період:"
-
-#~ msgid "Future Value"
-#~ msgstr "Майбутня сума"
-
-#~ msgid ""
-#~ "Calculates the future value of an investment based on a series of equal "
-#~ "payments at a periodic interest rate over the number of payment periods "
-#~ "in the term."
-#~ msgstr ""
-#~ "Обчислює майбутню вартість інвестицій, яке базується на ряді однакових "
-#~ "платежів при періодичній відсотковій ставці для кількості платіжних "
-#~ "етапів впродовж заданого терміну."
-
-#~ msgid "_Periodic Payment:"
-#~ msgstr "_Регулярні платежі:"
-
-#~ msgid "_Number of Periods:"
-#~ msgstr "_Кількість періодів:"
-
-#~ msgid "Gross Profit Margin"
-#~ msgstr "Коефіцієнт валового прибутку"
-
-#~ msgid ""
-#~ "Calculates the resale price of a product, based on the product cost and "
-#~ "the wanted gross profit margin."
-#~ msgstr ""
-#~ "Обчислює вартість перепродажу продукту, залежно від його ціни та бажаної "
-#~ "рентабельності."
-
-#~ msgid "_Margin:"
-#~ msgstr "_Запас:"
-
-#~ msgid "Periodic Payment"
-#~ msgstr "Регулярні платежі"
-
-#~ msgid ""
-#~ "Calculates the amount of the periodic payment of a loan, where payments "
-#~ "are made at the end of each payment period. "
-#~ msgstr ""
-#~ "Обчислює кількість періодичної оплати позики, де платежі робляться в "
-#~ "кінці кожного періоду оплати."
-
-#~ msgid "_Principal:"
-#~ msgstr "_Принциповий:"
-
-#~ msgid "_Term:"
-#~ msgstr "_Т.опл:"
-
-#~ msgid "Present Value"
-#~ msgstr "Поточна вартість:"
-
-#~ msgid ""
-#~ "Calculates the present value of an investment based on a series of equal "
-#~ "payments discounted at a periodic interest rate over the number of "
-#~ "payment periods in the term. "
-#~ msgstr ""
-#~ "Обчислює поточну вартість інвестицій, яке базується на ряді однакових "
-#~ "платежів при періодичній відсотковій ставці для кількості платіжних "
-#~ "етапів впродовж заданого терміну."
-
-#~ msgid "Periodic Interest Rate"
-#~ msgstr "Ставка відсотка за період"
-
-#~ msgid ""
-#~ "Calculates the periodic interest necessary to increase an investment to a "
-#~ "future value, over the number of compounding periods. "
-#~ msgstr ""
-#~ "Обчислює періодичну ставку, на яку зростає майбутня вартість інвестицій, "
-#~ "протягом вказаних періодів приросту."
-
-#~ msgid "Straight-Line Depreciation"
-#~ msgstr "Лінійна амортизація"
-
-#~ msgid "_Cost:"
-#~ msgstr "_Ціна:"
-
-#~ msgid "_Salvage:"
-#~ msgstr "_Порятунок:"
-
-#~ msgid ""
-#~ "Calculates the straight-line depreciation of an asset for one period. The "
-#~ "straight-line method of depreciation divides the depreciable cost evenly "
-#~ "over the useful life of an asset. The useful life is the number of "
-#~ "periods, typically years, over which an asset is depreciated. "
-#~ msgstr ""
-#~ "Обчислює величину витрат на амортизацію власності методом лінійного "
-#~ "(пропорційного) списування за один період. Цей метод ділить вартість "
-#~ "амортизаційних витрат порівну між всіма етапами терміну використання. "
-#~ "Терміном використання називається кількість періодів, зазвичай років, "
-#~ "протягом якого власність знецінюється."
-
-#~ msgid "Sum-of-the-Years’-Digits Depreciation"
-#~ msgstr "Амортизація Сума-Років-Цифр"
-
-#~ msgid ""
-#~ "Calculates the depreciation allowance on an asset for a specified period "
-#~ "of time, using the Sum-of-the-Years’-Digits method. This method of "
-#~ "depreciation accelerates the rate of depreciation, so that more "
-#~ "depreciation expense occurs in earlier periods than in later ones. The "
-#~ "useful life is the number of periods, typically years, over which an "
-#~ "asset is depreciated. "
-#~ msgstr ""
-#~ "Обчислити амортизацію ресурсу за допомогою методу Сума-Років-Цифр за "
-#~ "вказаний період часу. Цей метод оцінки старості враховує прискорення "
-#~ "амортизації, тобто вартість у ранній період більша, ніж у пізніший. "
-#~ "Корисне життя ресурсу — це число періодів, зазвичай років, протягом яких "
-#~ "ресурс застаріває."
-
-#~ msgid "Payment Period"
-#~ msgstr "Термін оплати"
-
-#~ msgid "Future _Value:"
-#~ msgstr "Майбутня _сума:"
-
-#~ msgid ""
-#~ "Calculates the number of payment periods that are necessary during the "
-#~ "term of an ordinary annuity, to accumulate a future value, at a periodic "
-#~ "interest rate."
-#~ msgstr ""
-#~ "Обчислює кількість платіжних періодів, потрібних протягом терміну "
-#~ "звичайної ренти, для накопичення майбутньої вартості для періодичної "
-#~ "відсоткової ставки."
-
-#~ msgid "Ctrm"
-#~ msgstr "Тсв"
-
-#~ msgid "Ddb"
-#~ msgstr "Пна"
-
-#~ msgid "Double Declining Depreciation"
-#~ msgstr "Подвійне нарахування амортизації"
-
-#~ msgid "Fv"
-#~ msgstr "Мсум"
-
-#~ msgid "Term"
-#~ msgstr "Т.опл"
-
-#~ msgid "Financial Term"
-#~ msgstr "Фінансові строки"
-
-#~ msgid "Syd"
-#~ msgstr "Ам.сум.рок"
-
-#~ msgid "Sum of the Years Digits Depreciation"
-#~ msgstr "Амортизація суми чисел року"
-
-#~ msgid "Sln"
-#~ msgstr "Рна"
-
-#~ msgid "Straight Line Depreciation"
-#~ msgstr "Лінійна амортизація"
-
-#~ msgid "Rate"
-#~ msgstr "Ставк"
-
-#~ msgid "Pv"
-#~ msgstr "Пот.варт"
-
-#~ msgid "Pmt"
-#~ msgstr "Рег.пл"
-
-#~ msgid "Gpm"
-#~ msgstr "Квп"
-
-#~ msgid "Shift Left"
-#~ msgstr "Зсув ліворуч"
-
-#~ msgid "Shift Right"
-#~ msgstr "Зсув праворуч"
-
-#~ msgid "Boolean Exclusive OR"
-#~ msgstr "Булеве виняткове АБО"
-
-#~ msgid "Boolean OR"
-#~ msgstr "Логічне АБО"
-
-#~ msgid "Boolean AND"
-#~ msgstr "Логічне ТА"
-
-#~ msgid "Boolean NOT"
-#~ msgstr "Булеве НІ"
-
-#~ msgid "Ones’ Complement"
-#~ msgstr "Однорозрядне доповнення"
-
-#~ msgid "Two’s Complement"
-#~ msgstr "Дворозрядне доповнення"
-
-#~ msgid "Binary Logarithm"
-#~ msgstr "Двійковий логарифм"
-
-#~ msgid "Integer Component"
-#~ msgstr "Цілий компонент"
-
-#~ msgid "Fractional Component"
-#~ msgstr "Дробовий компонент"
-
-#~ msgid "Insert Character Code"
-#~ msgstr "Вставити код символу"
-
 #~ msgid "Insert Character"
 #~ msgstr "Вставити символ"
 
-#~ msgid "Change word size"
-#~ msgstr "Змінити розмір слова"
-
 #~ msgid "Word Size"
 #~ msgstr "Розмір слова"
-
-#~ msgid "Ch_aracter:"
-#~ msgstr "_Символ:"
-
-#~ msgid "_Insert"
-#~ msgstr "_Вставити"
 
 #~ msgid "Unable to open help file"
 #~ msgstr "Неможливо відкрити файл довідки"
@@ -3061,9 +3317,6 @@ msgstr "Ви_йти"
 
 #~ msgid "Square root [Ctrl+R]"
 #~ msgstr "Квадратний корінь [Ctrl+R]"
-
-#~ msgid "Financial Mode"
-#~ msgstr "Фінансовий режим"
 
 #~ msgid "8 bits"
 #~ msgstr "8 бітів"
