@@ -4,15 +4,15 @@
 # Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2003
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2010.
 # יוסף אור בוצ׳קו <yoseforb@gnome.org>, 2015.
-# Yosef Or Boczko <yoseforb@gmail.com>, 2013-2022.
+# Yosef Or Boczko <yoseforb@gmail.com>, 2013-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2022-07-19 07:20+0000\n"
-"PO-Revision-Date: 2022-10-23 20:02+0300\n"
+"POT-Creation-Date: 2023-01-25 18:21+0000\n"
+"PO-Revision-Date: 2023-01-27 10:22+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -24,8 +24,8 @@ msgstr ""
 "X-Generator: Gtranslator 42.0\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:320 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "מחשבון"
 
@@ -74,7 +74,27 @@ msgstr ""
 "מצב תכנות תומך בהמרה בין בסיסים נפוצים (בינרי, אוקטלי, עשרוני והקסדצימלי), "
 "אלגברה בוליאנית, משלים ל־1 ומשלים ל־2, המרת תו לקוד תו ועוד."
 
-#: data/org.gnome.Calculator.appdata.xml.in:66 src/gnome-calculator.vala:322
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "מצב בסיסי"
+
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "מצב מתקדם"
+
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "מצב פיננסי"
+
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "מצב תכנות"
+
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "מצב הקלדה"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "מיזם GNOME"
 
@@ -468,77 +488,77 @@ msgstr "שורש בבסיס אפס של מספר אינו מוגדר"
 msgid "Error: the number of periods must be positive"
 msgstr "שגיאה: מספר התקופות חייב להיות ערך חיובי"
 
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+msgid "Displayed value not an integer"
+msgstr "הערך המוצג איננו שלם חיובי"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:210
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:577
 msgid "No undo history"
 msgstr "אין היסטוריית ביטול"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:598
 msgid "No redo history"
 msgstr "אין היסטוריית שחזור"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:829
 msgid "No sane value to store"
 msgstr "אין ערך שפוי לשמירה"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1044
+#: lib/math-equation.vala:1078
 msgid "Overflow. Try a bigger word size"
 msgstr "הצפה, יש לנסות גודל word גדול יותר"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1049
+#: lib/math-equation.vala:1083
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "המשתנה „%s” אינו מוכר"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "הפונקציה „%s” אינה מוגדרת"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1063
+#: lib/math-equation.vala:1097
 msgid "Unknown conversion"
 msgstr "המרה בלתי מוכרת"
 
 #. should always be run
-#: lib/math-equation.vala:1073
+#: lib/math-equation.vala:1107
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1078 lib/math-equation.vala:1083
+#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
 msgid "Malformed expression"
 msgstr "ביטוי שגוי"
 
-#: lib/math-equation.vala:1094
+#: lib/math-equation.vala:1128
 msgid "Calculating"
 msgstr "מתבצע חישוב"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1287
+#: lib/math-equation.vala:1321
 msgid "Need an integer to factorize"
 msgstr "נדרש שלם חיובי כדי לפרק לגורמים"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1351
+#: lib/math-equation.vala:1385
 msgid "No sane value to bitwise shift"
 msgstr "אין ערך שפוי לביצוע הזזת סיביות"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1373
-msgid "Displayed value not an integer"
-msgstr "הערך המוצג איננו שלם חיובי"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -2203,8 +2223,8 @@ msgstr "העתקה"
 msgid "Copy result to clipboard"
 msgstr "העתקה ללוח הגזירים"
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "חילוק עם שארית"
 
@@ -2273,12 +2293,12 @@ msgstr "="
 msgid "Calculate Result"
 msgstr "חישוב תוצאה"
 
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
 msgstr "מצב כתב תחתי [Alt]"
 
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
 msgstr "מצב כתב עילי [Ctrl]"
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
@@ -2286,7 +2306,7 @@ msgid "Factorize [Ctrl+F]"
 msgstr "פירוק לגורמים [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr "מעריך מדעי [Ctrl+E]"
 
 #: src/ui/buttons-advanced.ui:519
@@ -2343,36 +2363,44 @@ msgstr "עצרת [!]"
 msgid "Absolute Value [|]"
 msgstr "ערך מוחלט [|]"
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr "יחידת המספר המדומה"
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "רכיב ממשי"
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "רכיב מדומה"
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
 msgstr "צמוד של מרוכב"
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
 msgstr "הארגומנט המרוכב"
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "זיכרון"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "פונקציות נוספות"
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "חילוק עם שארית"
 
 #. Title of Compounding Term dialog
 #: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
@@ -2723,6 +2751,14 @@ msgstr "עשרוני"
 msgid "Hexadecimal"
 msgstr "הקסדצימלי"
 
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "מצב כתב תחתי [Alt]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "מצב כתב עילי [Ctrl]"
+
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "הזזה שמאלה"
@@ -2787,25 +2823,25 @@ msgid "_Insert"
 msgstr "הו_ספה"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Start in given mode (basic, advanced, financial, programming, keyboard)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Solve given equation"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Start with given equation"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Show release version"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:332
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
 "גיל אשר <dolfin@rpg.org.il>\n"
@@ -2814,16 +2850,16 @@ msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: src/gnome-calculator.vala:344
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "לסגור את כל החלונות הפתוחים?"
 
-#: src/gnome-calculator.vala:345
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "לסגור ה_כול"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:609
-#: src/math-buttons.vala:625
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -2832,7 +2868,7 @@ msgstr[1] "‫%d-סיביות"
 msgstr[2] "‫%d-סיביות"
 msgstr[3] "‫%d-סיביות"
 
-#: src/math-buttons.vala:594
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2845,11 +2881,11 @@ msgstr[3] "‫%d מקומות"
 msgid " to "
 msgstr " אל "
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "החלפת יחידות ההמרה"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2874,7 +2910,7 @@ msgstr "הקצאת משתנה"
 msgid "New function"
 msgstr "פונקציה חדשה"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "בחירת מספר פרמטרים"
 
@@ -2930,172 +2966,177 @@ msgstr "_גודל Word"
 msgid "E_xchange rate refresh interval"
 msgstr "מרווח זמן לשינוי שער _חליפין"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "כללי"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "פתיחת חלון חדש"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "סגירת החלון הנוכחי"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "יציאה מהיישום"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "הצגת עזרה"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "פתיחת תפריט"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "הצגת העדפות"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "צירופי מקשים"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "ניקוי היסטוריה"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "מעבר בין מצבים"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "מעבר למצב בסיסי"
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "מעבר למצב מתקדם"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "מעבר למצב פיננסי"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "מעבר למצב תכנות"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "מעבר למצב הקלדה"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "רשום הקלדה"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "כפל (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "חילוק (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "שורש ריבועי (√)"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "הופכי"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "פאי (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "הזנת מספרים בתבנית מדעית"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "מצב תכנות"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "מעבר לבינארי"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "מעבר לאוקטלי"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "מעבר לעשרוני"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "מעבר להקסדצימלי"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "אחרים"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "העתקה"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "הדבקה"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "ביטול"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "ביצוע חוזר"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "תוצאה קודמת"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "תוצאה הבאה"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "מעבר למצב הקלדה (חלופי)"
@@ -3169,24 +3210,26 @@ msgid "About Calculator"
 msgstr "על המחשבון"
 
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
-msgstr "בחירת מצב"
+msgid "Mode Selection"
+msgstr "מצב בחירה"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "ביטול [Ctrl+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "ביטול"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
-msgstr "תפריט עיקרי"
+msgid "Main Menu"
+msgstr "תפריט ראשי"
 
 #: src/math-window.vala:166
 msgid "_Quit"
 msgstr "י_ציאה"
+
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "ביטול [Ctrl+Z]"
+
+#~ msgid "Primary menu"
+#~ msgstr "תפריט עיקרי"
 
 #~ msgid "GNOME Calculator in Basic Mode"
 #~ msgstr "מחשבון GNOME במצב בסיסי"
@@ -3248,18 +3291,6 @@ msgstr "י_ציאה"
 #~ msgid "Square root [Ctrl+R]"
 #~ msgstr "שורש ריבועי [Ctrl+R]"
 
-#~ msgid "Basic Mode"
-#~ msgstr "מצב בסיסי"
-
-#~ msgid "Advanced Mode"
-#~ msgstr "מצב מתקדם"
-
-#~ msgid "Financial Mode"
-#~ msgstr "מצב פיננסי"
-
-#~ msgid "Programming Mode"
-#~ msgstr "מצב תכנות"
-
 #~ msgid "8 bits"
 #~ msgstr "8 סיביות"
 
@@ -3277,9 +3308,6 @@ msgstr "י_ציאה"
 
 #~ msgid "Scientific"
 #~ msgstr "מדעי"
-
-#~ msgid "Menu"
-#~ msgstr "תפריט"
 
 #~ msgid "About"
 #~ msgstr "על אודות"
