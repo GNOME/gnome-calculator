@@ -7,13 +7,13 @@
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2010, 2011, 2013, 2014, 2015, 2016, 2017.
 # Hizkuntza Politikarako Sailburuordetza <hizkpol@ej-gv.es>, 2011.
 # Ibai Oihanguren Sala <ibai@oihanguren.com>, 2020.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2019, 2020, 2021, 2022.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2019, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2022-01-18 18:04+0000\n"
-"PO-Revision-Date: 2022-02-13 16:05+0100\n"
+"POT-Creation-Date: 2023-01-25 18:21+0000\n"
+"PO-Revision-Date: 2023-01-29 16:05+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -22,10 +22,9 @@ msgstr "Project-Id-Version: gnome-calculator master\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Kalkulagailua"
 
@@ -64,23 +63,27 @@ msgid ""
 "character to character code conversion, and more."
 msgstr "Programazioaren modak ohiko oinarrien (bitarra, zortzitarra, hamartarra eta hamaseitarra) arteko bihurketa, algebra lineala, bat eta biren osagarria, karakterez karaktereko kode bihurketa, eta gehiago onartzen ditu."
 
-#: data/org.gnome.Calculator.appdata.xml.in:36
-msgid "GNOME Calculator in Basic Mode"
-msgstr "GNOMEren Kalkulagailua oinarrizko moduan"
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Oinarrizko modua"
 
-#: data/org.gnome.Calculator.appdata.xml.in:40
-msgid "GNOME Calculator in Advanced Mode"
-msgstr "GNOMEren Kalkulagailua modu aurreratuan"
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "Modu aurreratua"
 
-#: data/org.gnome.Calculator.appdata.xml.in:44
-msgid "GNOME Calculator in Financial Mode"
-msgstr "GNOMEren Kalkulagailua modu finantzarioan"
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Modu finantzarioa"
 
-#: data/org.gnome.Calculator.appdata.xml.in:48
-msgid "GNOME Calculator in Programming Mode"
-msgstr "GNOMEren Kalkulagailua programazio moduan"
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Programatzeko modua"
 
-#: data/org.gnome.Calculator.appdata.xml.in:67
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Teklatu modua"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "GNOME proiektua"
 
@@ -470,77 +473,77 @@ msgstr "Zenbaki baten 'erro zero' ez dago definituta"
 msgid "Error: the number of periods must be positive"
 msgstr "Errorea: denboraldien kopurua positiboa izan behar du"
 
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+msgid "Displayed value not an integer"
+msgstr "Bistaratutako balioa ez da osoko bat"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:210
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:577
 msgid "No undo history"
 msgstr "Ez dago desegiteko historiarik"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:598
 msgid "No redo history"
 msgstr "Ez dago desegiteko historiarik"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:829
 msgid "No sane value to store"
 msgstr "Ez dago zentzuzko baliorik biltegiratzeko"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1078
 msgid "Overflow. Try a bigger word size"
 msgstr "Gainezkatzea. Saiatu hitz-tamaina handiago batekin"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1083
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Aldagai ezezaguna: ”%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "”%s” funtzioa ez dago definituta"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1097
 msgid "Unknown conversion"
 msgstr "Bihurketa ezezaguna"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1107
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
 msgid "Malformed expression"
 msgstr "Hondatutako adierazpena"
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1128
 msgid "Calculating"
 msgstr "Kalkulatzen"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1321
 msgid "Need an integer to factorize"
 msgstr "Osoko zenbaki bat behar da faktorizatzeko"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#: lib/math-equation.vala:1385
 msgid "No sane value to bitwise shift"
 msgstr "Ez dago zentzuzko baliorik bit mailan desplazatzeko"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
-msgid "Displayed value not an integer"
-msgstr "Bistaratutako balioa ez da osoko bat"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -2206,8 +2209,8 @@ msgstr "Kopiatu"
 msgid "Copy result to clipboard"
 msgstr "Kopiatu emaitza arbelera"
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Moduluaren zatiketa"
 
@@ -2276,12 +2279,12 @@ msgstr "="
 msgid "Calculate Result"
 msgstr "Kalkulatu emaitza"
 
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
 msgstr "Azpiindizeen modua [Alt]"
 
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
 msgstr "Goi-indizeen modua [Ctrl]"
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
@@ -2289,7 +2292,7 @@ msgid "Factorize [Ctrl+F]"
 msgstr "Faktorizatu [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Berretzaile zientifikoa [Ctrl+E]"
 
 #: src/ui/buttons-advanced.ui:519
@@ -2346,36 +2349,44 @@ msgstr "Faktoriala [!]"
 msgid "Absolute Value [|]"
 msgstr "Balio absolutua [|]"
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr "Unitate irudikaria"
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "Zati erreala"
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "Zati irudikaria"
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
-msgstr "Konplexu konjugatua"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
+msgstr "Konjugatu konplexua"
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
 msgstr "Argumentu konplexua"
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Memoria"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "Funtzio gehigarriak"
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "Moduluaren zatiketa"
 
 #. Title of Compounding Term dialog
 #: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
@@ -2705,6 +2716,14 @@ msgstr "Dezimala"
 msgid "Hexadecimal"
 msgstr "Hamaseitarra"
 
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Azpiindizeen modua [Alt]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Goi-indizeen modua [Ctrl]"
+
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Lerratu ezkerrera"
@@ -2769,53 +2788,44 @@ msgid "_Insert"
 msgstr "_Txertatu"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr "Hasi emandako moduan (oinarrizkoa, aurreratua, finantzarioa, programazioa, teklatua)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Ebatzi emandako ekuazioa"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Hasi emandako ekuazioarekin"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Erakutsi argitaratze-bertsioa"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "Kalkulagailuari buruz"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Modu finantzarioa eta zientifikoa dituen kalkulagailua."
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Ziur zaude leiho ireki guztiak itxi nahi dituzula?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "Itxi _denak"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:608
-#: src/math-buttons.vala:624
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d bit"
 msgstr[1] "%d bit"
 
-#: src/math-buttons.vala:593
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2826,11 +2836,11 @@ msgstr[1] "%d. posizioa"
 msgid " to "
 msgstr " - "
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Trukatu bihurketako unitateak"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2855,7 +2865,7 @@ msgstr "Definitutako aldagaiak"
 msgid "New function"
 msgstr "Funtzio berria"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Hautatu argumentu kopurua"
 
@@ -2911,172 +2921,177 @@ msgstr "Hitz-_tamaina"
 msgid "E_xchange rate refresh interval"
 msgstr "T_ruke-tasaren freskatze-tartea"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Orokorra"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Ireki leiho berria"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Itxi uneko leihoa"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Irten aplikaziotik"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Erakutsi laguntza"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Ireki menua"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Erakutsi hobespenak"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Laster-teklak"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Garbitu historia"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Moduen aldaketak"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Aldatu oinarrizko modura"
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Aldatu modu aurreratura"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Aldatu modu finantzariora"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Aldatu programazio modura"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Aldatu teklatu modura"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Teklatuaren sarrera"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Biderkatu (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Zatitu (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Erro karratua (√)"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Alderantzikatu"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Pi (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Sartu zenbakiak formatu zientifikoan"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Programazioa modua"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Aldatu bitarrera"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Aldatu zortzitarrera"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Aldatu hamartarrera"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Aldatu hamaseitarrera"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Bestelakoak"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Kopiatu"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Itsatsi"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Desegin"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Berregin"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Aurreko emaitza"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Hurrengo emaitza"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Aldatu teklatu modura (alt.)"
@@ -3085,27 +3100,27 @@ msgstr "Aldatu teklatu modura (alt.)"
 msgid "Variable name"
 msgstr "Aldagaiaren izena"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Gorde balioa existitzen edo berria den aldagaian"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:110
+#: src/ui/math-window.ui:20 src/math-window.vala:113
 msgid "Basic"
 msgstr "Oinarrizkoa"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:116
+#: src/ui/math-window.ui:25 src/math-window.vala:119
 msgid "Advanced"
 msgstr "Aurreratua"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:122
+#: src/ui/math-window.ui:30 src/math-window.vala:125
 msgid "Financial"
 msgstr "Finantzarioa"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:128
+#: src/ui/math-window.ui:35 src/math-window.vala:131
 msgid "Programming"
 msgstr "Programazioa"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:134
+#: src/ui/math-window.ui:40 src/math-window.vala:137
 msgid "Keyboard"
 msgstr "Teklatua"
 
@@ -3145,25 +3160,46 @@ msgstr "Laster-teklak"
 msgid "_Help"
 msgstr "_Laguntza"
 
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "Kalkulagailuari buruz"
+
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
+msgid "Mode Selection"
 msgstr "Moduaren hautapena"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "Desegin [Ctrl+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Desegin"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
+msgid "Main Menu"
 msgstr "Menu nagusia"
 
-#: src/math-window.vala:163
+#: src/math-window.vala:166
 msgid "_Quit"
 msgstr "I_rten"
+
+#~ msgid "GNOME Calculator in Basic Mode"
+#~ msgstr "GNOMEren Kalkulagailua oinarrizko moduan"
+
+#~ msgid "GNOME Calculator in Advanced Mode"
+#~ msgstr "GNOMEren Kalkulagailua modu aurreratuan"
+
+#~ msgid "GNOME Calculator in Financial Mode"
+#~ msgstr "GNOMEren Kalkulagailua modu finantzarioan"
+
+#~ msgid "GNOME Calculator in Programming Mode"
+#~ msgstr "GNOMEren Kalkulagailua programazio moduan"
+
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Modu finantzarioa eta zientifikoa dituen kalkulagailua."
+
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "Desegin [Ctrl+Z]"
+
+#~ msgid "Primary menu"
+#~ msgstr "Menu nagusia"
 
 #~ msgid "GNOME Calculator"
 #~ msgstr "GNOMEren Kalkulagailua"
@@ -3210,9 +3246,6 @@ msgstr "I_rten"
 #~ msgid "Square root [Ctrl+R]"
 #~ msgstr "Erro karratua [Ctrl+R]"
 
-#~ msgid "Financial Mode"
-#~ msgstr "Modu finantzarioa"
-
 #~ msgid "8 bits"
 #~ msgstr "8 bit"
 
@@ -3236,6 +3269,3 @@ msgstr "I_rten"
 
 #~ msgid "_About Calculator"
 #~ msgstr "Kalkulagailua aplikazioari _buruz"
-
-#~ msgid "Menu"
-#~ msgstr "Menua"
