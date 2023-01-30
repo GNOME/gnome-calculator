@@ -1,5 +1,5 @@
 # Turkish translation of gnome-calculator
-# Copyright (C) 2005-2022 gnome-calculator's COPYRIGHT HOLDER
+# Copyright (C) 2005-2023 gnome-calculator's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-calculator package.
 #
 # Baris Cicek <baris@teamforce.name.tr>, 2005, 2006, 2008, 2009.
@@ -10,15 +10,15 @@
 # Çağatay Yiğit Şahin <cyigitsahin@outlook.com>, 2017.
 # Çağrı Dolaz <dolazcagri@gmail.com>, 2018.
 # Ahmet Elgun <ahmetelgn@gmail.com>, 2019.
-# Sabri Ünal <libreajans@gmail.com, 2019.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2017, 2018, 2019, 2020, 2021, 2022..
+# Sabri Ünal <libreajans@gmail.com, 2019, 2023.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2017, 2018, 2019, 2020, 2021, 2022. 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2022-10-02 17:24+0000\n"
-"PO-Revision-Date: 2023-01-02 01:27+0300\n"
+"POT-Creation-Date: 2023-01-25 18:21+0000\n"
+"PO-Revision-Date: 2023-01-26 02:04+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -30,8 +30,8 @@ msgstr ""
 "X-POOTLE-MTIME: 1420643354.000000\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:320 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Hesap Makinesi"
 
@@ -83,7 +83,27 @@ msgstr ""
 "arasında dönüşüm, mantıksal cebir, bir ve ikinin tümleyenleri, karakterden "
 "karaktere kod dönüşümü ve daha fazlasını destekler."
 
-#: data/org.gnome.Calculator.appdata.xml.in:66 src/gnome-calculator.vala:322
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Temel Kip"
+
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "Gelişmiş Kip"
+
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Finansal Kip"
+
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Programlama Kipi"
+
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Klavye Kipi"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "GNOME Projesi"
 
@@ -477,77 +497,77 @@ msgstr "Sayıların sıfırıncı kökleri tanımsızdır"
 msgid "Error: the number of periods must be positive"
 msgstr "Hata: Periyotların toplamı sıfırdan büyük olmalıdır"
 
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+msgid "Displayed value not an integer"
+msgstr "Gösterilen değer tam sayı değil"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:210
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:577
 msgid "No undo history"
 msgstr "Geri al geçmişi yok"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:598
 msgid "No redo history"
 msgstr "Yineleme geçmişi yok"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:829
 msgid "No sane value to store"
 msgstr "Saklanacak mantıklı bir değer yok"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1044
+#: lib/math-equation.vala:1078
 msgid "Overflow. Try a bigger word size"
 msgstr "Taşma. Daha büyük bir sözcük boyutu deneyin"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1049
+#: lib/math-equation.vala:1083
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Bilinmeyen “%s” değişkeni"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "“%s” fonksiyonu tanımlı değil"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1063
+#: lib/math-equation.vala:1097
 msgid "Unknown conversion"
 msgstr "Bilinmeyen dönüşüm"
 
 #. should always be run
-#: lib/math-equation.vala:1073
+#: lib/math-equation.vala:1107
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1078 lib/math-equation.vala:1083
+#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
 msgid "Malformed expression"
 msgstr "Hatalı kurulan ifade"
 
-#: lib/math-equation.vala:1094
+#: lib/math-equation.vala:1128
 msgid "Calculating"
 msgstr "Hesaplanıyor"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1287
+#: lib/math-equation.vala:1321
 msgid "Need an integer to factorize"
 msgstr "Çarpanlara ayırmak için bir tamsayıya ihtiyaç var"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1351
+#: lib/math-equation.vala:1385
 msgid "No sane value to bitwise shift"
 msgstr "Bit kaydırma için mantıklı bir değer yok"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1373
-msgid "Displayed value not an integer"
-msgstr "Gösterilen değer tam sayı değil"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -2215,8 +2235,8 @@ msgstr "Kopyala"
 msgid "Copy result to clipboard"
 msgstr "Sonucu panoya kopyala"
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Modül bölümü"
 
@@ -2285,21 +2305,21 @@ msgstr "="
 msgid "Calculate Result"
 msgstr "Sonucu Hesapla"
 
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
-msgstr "Altsimge kipi [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
+msgstr "Altsimge Kipi [Alt]"
 
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
-msgstr "Üstsimge kipi [Ctrl]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
+msgstr "Üstsimge Kipi [Ctrl]"
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
 msgid "Factorize [Ctrl+F]"
 msgstr "Çarpanlara Ayır [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
-msgstr "Bilimsel üs [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
+msgstr "Bilimsel Üs [Ctrl+E]"
 
 #: src/ui/buttons-advanced.ui:519
 msgid "Cosine"
@@ -2355,36 +2375,44 @@ msgstr "Faktöriyel [!]"
 msgid "Absolute Value [|]"
 msgstr "Mutlak Değer [|]"
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr "Sanal Birim"
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "Gerçel Bileşen"
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "Sanal Bileşen"
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
-msgstr "Karmaşık eşlenik"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
+msgstr "Karmaşık Eşlenik"
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
-msgstr "Karmaşık değişken"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
+msgstr "Karmaşık Değişken"
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Hafıza"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "Ek İşlevler"
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "Modül Bölümü"
 
 #. Title of Compounding Term dialog
 #: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
@@ -2738,6 +2766,14 @@ msgstr "Ondalık"
 msgid "Hexadecimal"
 msgstr "Onaltılık"
 
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Altsimge kipi [Alt]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Üstsimge kipi [Ctrl]"
+
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Sola Kaydır"
@@ -2802,26 +2838,26 @@ msgid "_Insert"
 msgstr "_Ekle"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Belirli bir kipte başlat (basic [basit], advanced [gelişmiş], financial "
 "[finansal], programming [programlama], keyboard [klavye])"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Verilen denklemi çöz"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Verilen denklem ile başla"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Dağıtım sürümünü göster"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:332
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
 "Muhammet Kara <muhammet.k@gmail.com>\n"
@@ -2829,21 +2865,21 @@ msgstr ""
 "Barış Çiçek <baris@teamforce.name.tr>\n"
 "Burçin Dönmez <bdonmez@cisunix.unh.edu>"
 
-#: src/gnome-calculator.vala:344
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Tüm açık pencereleri kapatmak istediğinize emin misiniz?"
 
-#: src/gnome-calculator.vala:345
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "Tümünü K_apat"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:609 src/math-buttons.vala:625
+#: src/math-buttons.vala:227 src/math-buttons.vala:612 src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-bit"
 
-#: src/math-buttons.vala:594
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2853,11 +2889,11 @@ msgstr[0] "%d basamak"
 msgid " to "
 msgstr " şuna "
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Dönüştürme birimlerini yer değiştir"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2938,172 +2974,177 @@ msgstr "Sözcük _boyutu"
 msgid "E_xchange rate refresh interval"
 msgstr "D_öviz kuru yenileme aralığı"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Genel"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Yeni pencere aç"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Geçerli pencereyi kapat"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Uygulamadan çık"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Yardım göster"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Menüyü aç"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Tercihleri göster"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Klavye kısayolları"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Geçmişi temizle"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Kip değiştirme"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Basit kipe geç"
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Gelişmiş kipe geç"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Finansal kipe geç"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Programlama kipine geç"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Klavye kipine geç"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Klavye girişi"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Çarp (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Böl (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Karekök (√)"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Tersini al"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Pi (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Sayıları bilimsel biçemde gir"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Programlama kipi"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "İkilik tabana geç"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Sekizlik tabana geç"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Onluk tabana geç"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Onaltılık tabana geç"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Diğerleri"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Kopyala"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Geri al"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Yinele"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Önceki sonuç"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Sonraki sonuç"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Klavye kipine geç (alt.)"
@@ -3177,20 +3218,16 @@ msgid "About Calculator"
 msgstr "Hesap Makinesi Hakkında"
 
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
-msgstr "Kip seçimi"
+msgid "Mode Selection"
+msgstr "Kip Seçimi"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "Geri Al [Ctrl+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Geri al"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
-msgstr "Birincil menü"
+msgid "Main Menu"
+msgstr "Ana Menü"
 
 #: src/math-window.vala:166
 msgid "_Quit"
