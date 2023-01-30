@@ -56,7 +56,8 @@ public class MathEquation : GtkSource.Buffer
             if (_word_size == value)
                 return;
             _word_size = value;
-            apply_word_size(_word_size);
+            if (status != "")
+                apply_word_size(_word_size);
         }
     }
 
@@ -223,7 +224,6 @@ public class MathEquation : GtkSource.Buffer
 
         state = new MathEquationState ();
         state.status = "";
-        word_size = 32;
         _angle_units = AngleUnit.DEGREES;
         // FIXME: Pick based on locale
         source_currency = "";
@@ -237,6 +237,8 @@ public class MathEquation : GtkSource.Buffer
         state.ans_base = 10;
 
         ans_tag = create_tag (null, "weight", Pango.Weight.BOLD, null);
+
+        word_size = 32;
 
         var style_manager = Adw.StyleManager.get_default ();
         var style_scheme_manager = GtkSource.StyleSchemeManager.get_default ();
