@@ -6,23 +6,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
-"issues\n"
-"POT-Creation-Date: 2022-04-07 15:55+0000\n"
-"PO-Revision-Date: 2022-05-07 15:51+0200\n"
-"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
-"Language-Team: Friulian <fur@li.org>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
+"POT-Creation-Date: 2023-01-25 18:21+0000\n"
+"PO-Revision-Date: 2023-02-02 13:44+0000\n"
+"Last-Translator: Fabio T. <f.t.public@gmail.com>\n"
+"Language-Team: Friulian <f.t.public@gmail.com>\n"
 "Language: fur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Editor: HaiPO 1.4 beta\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Calcoladorie"
 
@@ -39,8 +38,8 @@ msgid ""
 "find a surprising set of capabilities."
 msgstr ""
 "Calcoladorie e je une aplicazion che e risolf ecuazions matematichis. Ancje "
-"se in prime batude e somee a une semplice calcoladorie adate nome a basilârs "
-"operazions aritmetichis, al è pussibil passâ ae modalitât Avanzade, "
+"se in prime batude e somee a une semplice calcoladorie adate nome a basilârs"
+" operazions aritmetichis, al è pussibil passâ ae modalitât Avanzade, "
 "Finanziarie o Programazion par scuvierzi straordenariis funzionalitâts."
 
 #: data/org.gnome.Calculator.appdata.xml.in:16
@@ -51,9 +50,9 @@ msgid ""
 "conversions."
 msgstr ""
 "La calcoladorie Avanzade e supuarte une vore di operazions, includût: "
-"funzions logaritmichis, fatoriâi, trigonometrichis e iperbolichis, divisions "
-"modul, numars complès, gjenerazion di numars casuâi, fatorizazions primis e "
-"conversions di unitât."
+"funzions logaritmichis, fatoriâi, trigonometrichis e iperbolichis, divisions"
+" modul, numars complès, gjenerazion di numars casuâi, fatorizazions primis e"
+" conversions di unitât."
 
 #: data/org.gnome.Calculator.appdata.xml.in:22
 msgid ""
@@ -62,24 +61,45 @@ msgid ""
 "depreciation, and many others."
 msgstr ""
 "La modalitât Finanziarie e supuarte diviers calcui, includût il tas di "
-"interès sul periodi, valôr present e futûr, amortament lineâr e a smiezament "
-"anuâl e une vore di altris."
+"interès sul periodi, valôr present e futûr, amortament lineâr e a smiezament"
+" anuâl e une vore di altris."
 
 #: data/org.gnome.Calculator.appdata.xml.in:27
 msgid ""
 "Programming mode supports conversion between common bases (binary, octal, "
-"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
-"character to character code conversion, and more."
+"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation,"
+" character to character code conversion, and more."
 msgstr ""
 "La modalitât Programazion e supuarte la conversion tra basis comuns "
 "(binarie, otâl, decimâl e esadecimâl), algjebre booleane, complement a un e "
 "a doi, conversion di codiç caratar a caratar e altri."
 
-#: data/org.gnome.Calculator.appdata.xml.in:66
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Modalitât basiche"
+
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "Modalitât avanzade"
+
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Modalitât finanziarie"
+
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Modalitât programazion"
+
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Modalitât tastiere"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "Il progjet GNOME"
 
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or
+#. localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "calcui;calcoladorie;aritmetic;sientific;finanziari;"
@@ -155,8 +175,8 @@ msgid ""
 "the currency exchange rates won't be fetched from the network at all."
 msgstr ""
 "Trop dispès che si à di inzornâ i tas di scambi des valudis. Un valôr di 0 "
-"al significhe che i tas di scambi des valudis no vignaran recuperâts dal dut "
-"de rêt."
+"al significhe che i tas di scambi des valudis no vignaran recuperâts dal dut"
+" de rêt."
 
 #: data/org.gnome.calculator.gschema.xml:67
 msgid "Button mode"
@@ -471,77 +491,79 @@ msgstr "La lidrîs zeresime di un numar e je indefinide"
 msgid "Error: the number of periods must be positive"
 msgstr "Erôr: il numar di periodis al à di jessi positîf"
 
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+msgid "Displayed value not an integer"
+msgstr "Il valôr mostrât nol è un intîr"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:210
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:577
 msgid "No undo history"
 msgstr "Nissune cronologjie par anulâ"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:598
 msgid "No redo history"
 msgstr "Nissune cronologjie par ripeti"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:829
 msgid "No sane value to store"
 msgstr "Nissun valôr just di memorizâ"
 
-#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#. Error displayed to user when they perform a bitwise operation on numbers
+#. greater than the current word
+#: lib/math-equation.vala:1078
 msgid "Overflow. Try a bigger word size"
 msgstr "Overflow. Provâ une dimension plui grande pe peraule"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1083
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Variabil “%s” no cognossude"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "La funzion “%s” no je definide"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1097
 msgid "Unknown conversion"
 msgstr "Conversion no cognossude"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1107
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
 msgid "Malformed expression"
 msgstr "Espression malfate"
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1128
 msgid "Calculating"
 msgstr "Calcul in vore"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1321
 msgid "Need an integer to factorize"
 msgstr "Par fatorizâ al covente un numar intîr"
 
-#. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#. This message is displayed in the status bar when a bit shift operation is
+#. performed and the display does not contain a number
+#: lib/math-equation.vala:1385
 msgid "No sane value to bitwise shift"
 msgstr "Nissun valôr just par eseguî il spostament bit par bit"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
-msgid "Displayed value not an integer"
-msgstr "Il valôr mostrât nol è un intîr"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -558,7 +580,8 @@ msgstr "Erôr di overflow"
 msgid "Argument not defined for zero"
 msgstr "Argoment no definît par zero"
 
-#. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
+#. Translators: Error displayed when attempted to raise 0 to a negative
+#. re_exponent
 #: lib/number.vala:372 lib/number.vala:402
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "La potence di zero no je definide par un esponent negatîf"
@@ -573,7 +596,8 @@ msgstr "Zero elevât a zero nol è definît"
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritmi di zero nol è definît"
 
-#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#. Translators: Error displayed when attempted take the factorial of a
+#. negative or complex number
 #: lib/number.vala:517
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Il fatoriâl al è definît nome pai numars reâi no negatîfs"
@@ -583,7 +607,8 @@ msgstr "Il fatoriâl al è definît nome pai numars reâi no negatîfs"
 msgid "Division by zero is undefined"
 msgstr "La division par zero no je definide"
 
-#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#. Translators: Error displayed when attemping to do a modulus division on
+#. non-integer numbers
 #: lib/number.vala:598
 msgid "Modulus division is only defined for integers"
 msgstr "La division modul e je definide nome pai numars intîrs"
@@ -591,10 +616,11 @@ msgstr "La division modul e je definide nome pai numars intîrs"
 #. Translators: Error displayed when tangent value is undefined
 #: lib/number.vala:671
 msgid ""
-"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 "
+"(90°)"
 msgstr ""
-"La tangjente no je definide par angui che a son multiplis di π (180°) tacant "
-"di π∕2 (90°)"
+"La tangjente no je definide par angui che a son multiplis di π (180°) tacant"
+" di π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: lib/number.vala:690
@@ -606,38 +632,46 @@ msgstr "L'inviers dal sen nol è definît par valôrs fûr di [-1, 1]"
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "L'inviers dal cosen nol è definît par valôrs fûr di [-1, 1]"
 
-#. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
+#. Translators: Error displayed when trying to calculate undefined atan(i) or
+#. atan (-i)
 #: lib/number.vala:725
 msgid "Arctangent function is undefined for values i and -i"
 msgstr "La funzion arctangjent e je indefinide pai valôrs i e -i"
 
-#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#. Translators: Error displayed when inverse hyperbolic cosine value is
+#. undefined
 #: lib/number.vala:775
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
-msgstr "L'inviers dal cosen iperbolic nol è definît par valôrs inferiôrs di un"
+msgstr ""
+"L'inviers dal cosen iperbolic nol è definît par valôrs inferiôrs di un"
 
-#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#. Translators: Error displayed when inverse hyperbolic tangent value is
+#. undefined
 #: lib/number.vala:791
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "L'inviers de tangjente iperboliche no je definide par valôrs fûr di [-1, 1]"
 
-#. Translators: Error displayed when boolean AND attempted on non-integer values
+#. Translators: Error displayed when boolean AND attempted on non-integer
+#. values
 #: lib/number.vala:807
 msgid "Boolean AND is only defined for positive integers"
 msgstr "Il AND boolean al è definît nome pai intîrs positîfs"
 
-#. Translators: Error displayed when boolean OR attempted on non-integer values
+#. Translators: Error displayed when boolean OR attempted on non-integer
+#. values
 #: lib/number.vala:819
 msgid "Boolean OR is only defined for positive integers"
 msgstr "Il OR boolean al è definît nome pai intîrs positîfs"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#. Translators: Error displayed when boolean XOR attempted on non-integer
+#. values
 #: lib/number.vala:831
 msgid "Boolean XOR is only defined for positive integers"
 msgstr "Il XOR boolean al è definît nome pai intîrs positîfs"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#. Translators: Error displayed when boolean XOR attempted on non-integer
+#. values
 #: lib/number.vala:843
 msgid "Boolean NOT is only defined for positive integers"
 msgstr "Il NOT boolean al è definît nome pai intîrs positîfs"
@@ -691,7 +725,8 @@ msgstr "Temperadure"
 msgid "Digital Storage"
 msgstr "Archivi digjitâl"
 
-#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400
+#. grads
 #: lib/unit.vala:41 src/math-preferences.vala:110
 msgid "Degrees"
 msgstr "Grâts"
@@ -1601,7 +1636,8 @@ msgctxt "unit-symbols"
 msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
 msgstr "degR,˚R,˚Ra,r,R,Rankine,rankine"
 
-#. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
+#. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000
+#. bytes, and 1 KiB = 1 kibiByte = 1024 bytes
 #: lib/unit.vala:103
 msgid "Bits"
 msgstr "Bits"
@@ -1647,7 +1683,8 @@ msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "nibble"
 
-#. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
+#. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they
+#. are widely used and accepted.
 #: lib/unit.vala:107
 msgid "Kilobits"
 msgstr "Kilobits"
@@ -2195,7 +2232,8 @@ msgstr "terahertz,THz"
 msgid "Currency"
 msgstr "Valude"
 
-#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#. Translators: result of currency conversion, %s is the symbol, %%s is the
+#. placeholder for amount, i.e.: USD100
 #: lib/unit.vala:151
 #, c-format
 msgid "%s%%s"
@@ -2209,8 +2247,8 @@ msgstr "Copie"
 msgid "Copy result to clipboard"
 msgstr "Copie il risultât intes notis"
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Division modul"
 
@@ -2279,12 +2317,12 @@ msgstr "="
 msgid "Calculate Result"
 msgstr "Calcole il risultât"
 
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
 msgstr "Modalitât deponent [Alt]"
 
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
 msgstr "Modalitât esponent [Ctrl]"
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
@@ -2292,7 +2330,7 @@ msgid "Factorize [Ctrl+F]"
 msgstr "Fatorize [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Esponent sientific [Ctrl+E]"
 
 #: src/ui/buttons-advanced.ui:519
@@ -2349,36 +2387,44 @@ msgstr "Fatoriâl [!]"
 msgid "Absolute Value [|]"
 msgstr "Valôr Assolût [|]"
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr "Unitât imagjinarie"
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "Part reâl"
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "Part imagjinarie"
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
 msgstr "Complès coniugât"
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
 msgstr "Argoment complès"
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Memorie"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "Funzions in plui"
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "Division modul"
 
 #. Title of Compounding Term dialog
 #: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
@@ -2491,8 +2537,9 @@ msgid ""
 "payments at a periodic interest rate over the number of payment periods in "
 "the term."
 msgstr ""
-"Al calcole il montant di un investiment considerant une schirie di paiaments "
-"compagns par un ciert numar di periodis a un dât tas di interès sul periodi."
+"Al calcole il montant di un investiment considerant une schirie di paiaments"
+" compagns par un ciert numar di periodis a un dât tas di interès sul "
+"periodi."
 
 #. Future Value Dialog: Label before periodic payment input
 #. Present Value Dialog: Label before periodic payment input
@@ -2564,8 +2611,8 @@ msgid ""
 "payments discounted at a periodic interest rate over the number of payment "
 "periods in the term. "
 msgstr ""
-"Al calcole il valôr atuâl di un investiment basât suntune serie di paiaments "
-"compagns scontâts a un interès periodic par dute la durade esprimude in "
+"Al calcole il valôr atuâl di un investiment basât suntune serie di paiaments"
+" compagns scontâts a un interès periodic par dute la durade esprimude in "
 "numars di periodis di paiament tai tiermins. "
 
 #. Title of Periodic Interest Rate dialog
@@ -2621,8 +2668,8 @@ msgstr "Amortament basât sore la cifre dal an"
 #: src/ui/buttons-financial.ui:1026
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation"
+" accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
@@ -2646,19 +2693,24 @@ msgstr "Mon_tant:"
 #: src/ui/buttons-financial.ui:1143
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
-"of an ordinary annuity, to accumulate a future value, at a periodic interest "
-"rate."
+"of an ordinary annuity, to accumulate a future value, at a periodic interest"
+" rate."
 msgstr ""
 "Al calcole il numar dai periodis di paiament che a son necessaris dilunc i "
 "tiermins i une ordenarie rendite anuâl par ingrumâ un montant, a un tas di "
 "interès periodic."
 
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#. Calculates the number of compounding periods necessary to increase an
+#. investment of present value pv to a future value of fv, at a fixed interest
+#. rate of int per compounding period. See also:
+#. http://en.wikipedia.org/wiki/Compound_interest
 #: src/ui/buttons-financial.ui:1616
 msgid "Ctrm"
 msgstr "Ctrm"
 
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#. Calculates the depreciation allowance on an asset for a specified period of
+#. time, using the double-declining balance method. See also:
+#. http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.ui:1632
 msgid "Ddb"
 msgstr "Ddb"
@@ -2667,12 +2719,18 @@ msgstr "Ddb"
 msgid "Double Declining Depreciation"
 msgstr "Amortament a smiezament anuâl"
 
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#. Calculates the future value of an investment based on a series of equal
+#. payments, each of amount pmt, at a periodic interest rate of int, over the
+#. number of payment periods in the term. See also:
+#. http://en.wikipedia.org/wiki/Future_value
 #: src/ui/buttons-financial.ui:1648
 msgid "Fv"
 msgstr "Fv"
 
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#. Calculates the number of payment periods that are necessary during the term
+#. of an ordinary annuity, to accumulate a future value of fv, at a periodic
+#. interest rate of int. Each payment is equal to amount pmt. See also:
+#. http://en.wikipedia.org/wiki/Annuity_(finance_theory)
 #: src/ui/buttons-financial.ui:1664
 msgid "Term"
 msgstr "Tiermin"
@@ -2681,7 +2739,13 @@ msgstr "Tiermin"
 msgid "Financial Term"
 msgstr "Tiermin finanziari"
 
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#. Calculates the depreciation allowance on an asset for a specified period of
+#. time, using the Sum-Of-The-Years’-Digits method. This method of
+#. depreciation accelerates the rate of depreciation, so that more
+#. depreciation expense occurs in earlier periods than in later ones. The
+#. depreciable cost is cost - salvage. The useful life is the number of
+#. periods, typically years, over which an asset is depreciated. See also:
+#. http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.ui:1681
 msgid "Syd"
 msgstr "Syd"
@@ -2690,7 +2754,12 @@ msgstr "Syd"
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Amortament basât sore la cifre dal an"
 
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#. Calculates the straight-line depreciation of an asset for one period. The
+#. depreciable cost is cost - salvage. The straight-line method of
+#. depreciation divides the depreciable cost evenly over the useful life of an
+#. asset. The useful life is the number of periods, typically years, over
+#. which an asset is depreciated. See also:
+#. http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.ui:1698
 msgid "Sln"
 msgstr "Sln"
@@ -2699,22 +2768,31 @@ msgstr "Sln"
 msgid "Straight Line Depreciation"
 msgstr "Amortament lineâr"
 
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#. Calculates the periodic interest necessary to increase an investment of
+#. present value pv to a future value of fv, over the number of compounding
+#. periods in term. See also: http://en.wikipedia.org/wiki/Interest
 #: src/ui/buttons-financial.ui:1715
 msgid "Rate"
 msgstr "Tas"
 
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#. Calculates the present value of an investment based on a series of equal
+#. payments, each of amount pmt, discounted at a periodic interest rate of
+#. int, over the number of payment periods in the term. See also:
+#. http://en.wikipedia.org/wiki/Present_value
 #: src/ui/buttons-financial.ui:1732
 msgid "Pv"
 msgstr "Pv"
 
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#. Calculates the amount of the periodic payment of a loan, where payments are
+#. made at the end of each payment period. See also:
+#. http://en.wikipedia.org/wiki/Amortization_schedule
 #: src/ui/buttons-financial.ui:1749
 msgid "Pmt"
 msgstr "Pmt"
 
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#. Calculates the resale price of a product, based on the product cost and the
+#. wanted gross profit margin. See also:
+#. http://en.wikipedia.org/wiki/Gross_profit_margin
 #: src/ui/buttons-financial.ui:1766
 msgid "Gpm"
 msgstr "Mlp"
@@ -2734,6 +2812,14 @@ msgstr "Decimâl"
 #: src/ui/buttons-programming.ui:19
 msgid "Hexadecimal"
 msgstr "Esadecimâl"
+
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Modalitât deponent [Alt]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Modalitât esponent [Ctrl]"
 
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
@@ -2798,56 +2884,49 @@ msgstr "C_aratar:"
 msgid "_Insert"
 msgstr "_Inserìs"
 
-#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
-msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
+#. Translators: Do not translate possible mode names basic, advanced,
+#. financial, programming and keyboard
+#: src/gnome-calculator.vala:23
+msgid ""
+"Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Invie te modalitât indicade (base, avanzade, finanziarie, programazion, "
 "tastiere)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Risolf la ecuazion dade"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Tache cun la ecuazion dade"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Mostre il numar di version"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr "Fabio Tomat, <f.t.public@gmail.com>"
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "Informazions su Calcoladorie"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Calcoladorie cun modalitât finanziarie e sientifiche."
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Sigûrs di sierâ ducj i barcons vierts?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "Siere _dut"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:609
-#: src/math-buttons.vala:625
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-bit"
 msgstr[1] "%d-bits"
 
-#: src/math-buttons.vala:594
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2858,11 +2937,11 @@ msgstr[1] "%d puescj"
 msgid " to "
 msgstr " a "
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Invertìs unitâts di conversion"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2887,7 +2966,7 @@ msgstr "Variabilis definidis"
 msgid "New function"
 msgstr "Gnove funzion"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Selezione il n. di argoments"
 
@@ -2943,172 +3022,177 @@ msgstr "_Dimension de peraule"
 msgid "E_xchange rate refresh interval"
 msgstr "Interval di inzornament dal tas di _scambi"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Gjenerâl"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Vierç un gnûf barcon"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Siere il barcon atuâl"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Jes de aplicazion"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Mostre jutori"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Vierç menù"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Mostre lis preferencis"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Scurte di tastiere"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Nete cronologjie"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Modalitâts di cambiament"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Passe ae modalitât base"
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Passe ae modalitât avanzade"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Passe ae modalitât finanziarie"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Passe ae modalitât programazion"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Passe ae modalitât tastiere"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Jentrade de tastiere"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Moltiplicazion (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Division (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Lidrîs cuadrade (√)"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Inviers"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Pi grêc (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Inserìs numars in formât sientific"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Modalitât Programazion"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Passe a binari"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Passe a otâl"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Passe a decimâl"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Passe a esadecimâl"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Altris"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Copie"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Tache"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Disfe"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Torne fâs"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Risultât precedent"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Prossim risultât"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Passe aes modalitât tastiere (alt.)"
@@ -3117,7 +3201,7 @@ msgstr "Passe aes modalitât tastiere (alt.)"
 msgid "Variable name"
 msgstr "Non variabile"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Archivie il valôr intune esistente o gnove variabile"
 
@@ -3145,22 +3229,32 @@ msgstr "Tastiere"
 msgid "_New Window"
 msgstr "_Gnûf Barcon"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a
+#. mnemonic that appears when pressing Alt); set number format to "automatic";
+#. other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
 msgid "_Automatic"
 msgstr "_Automatic"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a
+#. mnemonic that appears when pressing Alt); set number format to "fixed";
+#. other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
 msgid "_Fixed"
 msgstr "_Fis"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a
+#. mnemonic that appears when pressing Alt); set number format to
+#. "scientific"; other possible options are "_Fixed", "_Automatic" and
+#. "_Engineering"
 #: src/ui/math-window.ui:73
 msgid "_Scientific"
 msgstr "_Sientific"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a
+#. mnemonic that appears when pressing Alt); set number format to
+#. "engineering"; other possible options are "_Fixed", "_Scientific" and
+#. "_Automatic"
 #: src/ui/math-window.ui:79
 msgid "_Engineering"
 msgstr "Di _inzegnerie"
@@ -3177,25 +3271,34 @@ msgstr "Scurte di tastiere"
 msgid "_Help"
 msgstr "_Jutori"
 
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "Informazions su Calcoladorie"
+
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
+msgid "Mode Selection"
 msgstr "Selezion modalitât"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "Anule [Ctrl+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Disfe"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
-msgstr "Menù primari"
+msgid "Main Menu"
+msgstr "Menù principâl"
 
 #: src/math-window.vala:166
 msgid "_Quit"
 msgstr "_Jes"
+
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Calcoladorie cun modalitât finanziarie e sientifiche."
+
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "Anule [Ctrl+Z]"
+
+#~ msgid "Primary menu"
+#~ msgstr "Menù primari"
 
 #~ msgid "GNOME Calculator in Basic Mode"
 #~ msgstr "Calcoladorie GNOME in modalitât base"
@@ -3254,9 +3357,6 @@ msgstr "_Jes"
 #~ msgid "Square root [Ctrl+R]"
 #~ msgstr "Lidrîs cuadrade [Ctrl+R]"
 
-#~ msgid "Financial Mode"
-#~ msgstr "Modalitât finanziarie"
-
 #~ msgid "8 bits"
 #~ msgstr "8 bits"
 
@@ -3281,9 +3381,6 @@ msgstr "_Jes"
 
 #~ msgid "_About Calculator"
 #~ msgstr "_Informazions su Calcoladorie"
-
-#~ msgid "Menu"
-#~ msgstr "Menù"
 
 #~ msgid "Start in given mode"
 #~ msgstr "Tache inte modalitât dade"
