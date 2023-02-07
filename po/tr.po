@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2023-01-25 18:21+0000\n"
-"PO-Revision-Date: 2023-01-26 02:04+0300\n"
+"POT-Creation-Date: 2023-02-02 13:45+0000\n"
+"PO-Revision-Date: 2023-02-06 16:45+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -198,7 +198,7 @@ msgstr "Kaynak para birimi"
 
 #: data/org.gnome.calculator.gschema.xml:73
 msgid "Currency of the current calculation"
-msgstr "Mevcut hesaplamanın para birimi"
+msgstr "Geçerli hesaplamanın para birimi"
 
 #: data/org.gnome.calculator.gschema.xml:77
 msgid "Target currency"
@@ -206,7 +206,7 @@ msgstr "Hedef para birimi"
 
 #: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency to convert the current calculation into"
-msgstr "Mevcut hesaplamanın dönüştürüleceği birim"
+msgstr "Geçerli hesaplamanın dönüştürüleceği birim"
 
 #: data/org.gnome.calculator.gschema.xml:82
 msgid "Source units"
@@ -495,77 +495,77 @@ msgstr "Sayıların sıfırıncı kökleri tanımsızdır"
 
 #: lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
-msgstr "Hata: Periyotların toplamı sıfırdan büyük olmalıdır"
+msgstr "Hata: Dönemlerin toplamı sıfırdan büyük olmalıdır"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
 msgid "Displayed value not an integer"
 msgstr "Gösterilen değer tam sayı değil"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:210
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:577
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Geri al geçmişi yok"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:598
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Yineleme geçmişi yok"
 
-#: lib/math-equation.vala:829
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Saklanacak mantıklı bir değer yok"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1078
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Taşma. Daha büyük bir sözcük boyutu deneyin"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1083
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Bilinmeyen “%s” değişkeni"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1090
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "“%s” fonksiyonu tanımlı değil"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1097
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Bilinmeyen dönüşüm"
 
 #. should always be run
-#: lib/math-equation.vala:1107
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "Hatalı kurulan ifade"
 
-#: lib/math-equation.vala:1128
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Hesaplanıyor"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1321
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "Çarpanlara ayırmak için bir tamsayıya ihtiyaç var"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1385
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Bit kaydırma için mantıklı bir değer yok"
 
@@ -2534,13 +2534,13 @@ msgstr ""
 #: src/ui/buttons-financial.ui:270 src/ui/buttons-financial.ui:598
 #: src/ui/buttons-financial.ui:1130
 msgid "_Periodic Payment:"
-msgstr "Dö_nemsel Özdeme:"
+msgstr "Dö_nemsel Ödeme:"
 
 #. Future Value Dialog: Label before number of periods input
 #. Present Value Dialog: Label before number of periods input
 #: src/ui/buttons-financial.ui:294 src/ui/buttons-financial.ui:622
 msgid "_Number of Periods:"
-msgstr "Periyot _Sayısı:"
+msgstr "Dönem _Sayısı:"
 
 #. Title of Gross Profit Margin dialog
 #: src/ui/buttons-financial.ui:355 src/ui/buttons-financial.ui:1769
@@ -2681,8 +2681,8 @@ msgid ""
 "Calculates the number of payment periods that are necessary during the term of "
 "an ordinary annuity, to accumulate a future value, at a periodic interest rate."
 msgstr ""
-"Periyodik bir faiz oranıyla, gelecekteki bir değere ulaşması için sıradan bir "
-"rant dönemi süresince gereken ödeme periyotlarının sayısını hesaplar."
+"Dönemsel faiz oranıyla, gelecekteki bir değere ulaşması için, sıradan bir rant "
+"dönemi süresince gereken ödeme dönemlerinin sayısını hesaplar."
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
 #: src/ui/buttons-financial.ui:1616
@@ -2710,7 +2710,7 @@ msgstr "Vade"
 
 #: src/ui/buttons-financial.ui:1667
 msgid "Financial Term"
-msgstr "Mali Vade"
+msgstr "Finansal Vade"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.ui:1681
@@ -3167,7 +3167,7 @@ msgstr "Gelişmiş"
 
 #: src/ui/math-window.ui:30 src/math-window.vala:125
 msgid "Financial"
-msgstr "Malî"
+msgstr "Finansal"
 
 #: src/ui/math-window.ui:35 src/math-window.vala:131
 msgid "Programming"
