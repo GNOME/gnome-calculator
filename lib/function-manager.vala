@@ -45,73 +45,73 @@ public class FunctionManager : Object
 
     private void reload_builtin_functions ()
     {
-        add (new BuiltInMathFunction ("log", "Logarithm"));
+        add (new BuiltInMathFunction ("log", _("Logarithm")));
 
-        add (new BuiltInMathFunction ("ln", "Natural logarithm"));
+        add (new BuiltInMathFunction ("ln", _("Natural logarithm")));
 
-        add (new BuiltInMathFunction ("sqrt", "Square root"));
+        add (new BuiltInMathFunction ("sqrt", _("Square root")));
 
-        add (new BuiltInMathFunction ("abs", "Absolute value"));
+        add (new BuiltInMathFunction ("abs", _("Absolute value")));
 
-        add (new BuiltInMathFunction ("sgn", "Signum"));
+        add (new BuiltInMathFunction ("sgn", _("Signum")));
 
-        add (new BuiltInMathFunction ("arg", "Argument"));
+        add (new BuiltInMathFunction ("arg", _("Argument")));
 
-        add (new BuiltInMathFunction ("conj", "Conjugate"));
+        add (new BuiltInMathFunction ("conj", _("Conjugate")));
 
-        add (new BuiltInMathFunction ("int", "Integer"));
+        add (new BuiltInMathFunction ("int", _("Integer")));
 
-        add (new BuiltInMathFunction ("frac", "Fraction"));
+        add (new BuiltInMathFunction ("frac", _("Fraction")));
 
-        add (new BuiltInMathFunction ("floor", "Floor"));
+        add (new BuiltInMathFunction ("floor", _("Floor")));
 
-        add (new BuiltInMathFunction ("ceil", "Ceiling"));
+        add (new BuiltInMathFunction ("ceil", _("Ceiling")));
 
-        add (new BuiltInMathFunction ("round", "Round"));
+        add (new BuiltInMathFunction ("round", _("Round")));
 
-        add (new BuiltInMathFunction ("re", "Real"));
+        add (new BuiltInMathFunction ("re", _("Real")));
 
-        add (new BuiltInMathFunction ("im", "Imaginary"));
+        add (new BuiltInMathFunction ("im", _("Imaginary")));
 
-        add (new BuiltInMathFunction ("sin", "Sine"));
+        add (new BuiltInMathFunction ("sin", _("Sine")));
 
-        add (new BuiltInMathFunction ("cos", "Cosine"));
+        add (new BuiltInMathFunction ("cos", _("Cosine")));
 
-        add (new BuiltInMathFunction ("tan", "Tangent"));
+        add (new BuiltInMathFunction ("tan", _("Tangent")));
 
-        add (new BuiltInMathFunction ("asin", "Arc sine"));
+        add (new BuiltInMathFunction ("asin", _("Arc sine")));
 
-        add (new BuiltInMathFunction ("acos", "Arc cosine"));
+        add (new BuiltInMathFunction ("acos", _("Arc cosine")));
 
-        add (new BuiltInMathFunction ("atan", "Arc tangent"));
+        add (new BuiltInMathFunction ("atan", _("Arc tangent")));
 
-        add (new BuiltInMathFunction ("sin⁻¹", "Inverse sine"));
+        add (new BuiltInMathFunction ("sin⁻¹", _("Inverse sine")));
 
-        add (new BuiltInMathFunction ("cos⁻¹", "Inverse cosine"));
+        add (new BuiltInMathFunction ("cos⁻¹", _("Inverse cosine")));
 
-        add (new BuiltInMathFunction ("tan⁻¹", "Inverse tangent"));
+        add (new BuiltInMathFunction ("tan⁻¹", _("Inverse tangent")));
 
-        add (new BuiltInMathFunction ("sinh", "Hyperbolic sine"));
+        add (new BuiltInMathFunction ("sinh", _("Hyperbolic sine")));
 
-        add (new BuiltInMathFunction ("cosh", "Hyperbolic cosine"));
+        add (new BuiltInMathFunction ("cosh", _("Hyperbolic cosine")));
 
-        add (new BuiltInMathFunction ("tanh", "Hyperbolic tangent"));
+        add (new BuiltInMathFunction ("tanh", _("Hyperbolic tangent")));
 
-        add (new BuiltInMathFunction ("sinh⁻¹", "Hyperbolic arcsine"));
+        add (new BuiltInMathFunction ("sinh⁻¹", _("Hyperbolic arcsine")));
 
-        add (new BuiltInMathFunction ("cosh⁻¹", "Hyperbolic arccosine"));
+        add (new BuiltInMathFunction ("cosh⁻¹", _("Hyperbolic arccosine")));
 
-        add (new BuiltInMathFunction ("tanh⁻¹", "Hyperbolic arctangent"));
+        add (new BuiltInMathFunction ("tanh⁻¹", _("Hyperbolic arctangent")));
 
-        add (new BuiltInMathFunction ("asinh", "Inverse hyperbolic sine"));
+        add (new BuiltInMathFunction ("asinh", _("Inverse hyperbolic sine")));
 
-        add (new BuiltInMathFunction ("acosh", "Inverse hyperbolic cosine"));
+        add (new BuiltInMathFunction ("acosh", _("Inverse hyperbolic cosine")));
 
-        add (new BuiltInMathFunction ("atanh", "Inverse hyperbolic tangent"));
+        add (new BuiltInMathFunction ("atanh", _("Inverse hyperbolic tangent")));
 
-        add (new BuiltInMathFunction ("ones", "One's complement"));
+        add (new BuiltInMathFunction ("ones", _("One's complement")));
 
-        add (new BuiltInMathFunction ("twos", "Two's complement"));
+        add (new BuiltInMathFunction ("twos", _("Two's complement")));
     }
 
     private void reload_custom_functions ()
