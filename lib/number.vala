@@ -895,6 +895,86 @@ public class Number : GLib.Object
         return ones_complement (wordlen).add (new Number.integer (1));
     }
 
+/* In: An p := p \in 2Z+1; An b := gcd(b,p) = 1
+      Out:  A boolean showing that p is probably prime */
+    private bool is_sprp (Number p, int64 b)
+    {
+      var unit = new Number.integer(1);
+      var pminus = p.subtract(unit);
+      var d = pminus;
+      var two = new Number.integer(2);
+      
+      uint64 twofactor = 0;
+         // Strip out factors of two
+        while (true)
+        {
+            var tmp = d.divide (two);
+            if (tmp.is_integer ())
+            {
+                d = tmp;
+                twofactor = twofactor + 1;
+            }
+            else
+                break;
+        }
+
+       var x = new Number.integer(b).modular_exponentiation(d,p);
+
+       if ((x.equals(unit)) || (x.equals(pminus))){
+          return true;
+       }
+       
+     for (var i = 1; i < twofactor; i++)   
+     {
+        x = x.multiply (x);
+        x = x.modulus_divide(p);
+
+        if (x.equals(pminus))
+        {
+          return true;
+        }
+     }
+      return false;
+    }
+    
+    /* In : An x := x \in 2Z+1 and gcd(x,[2,..,2ln(2)**2])=1 
+       Out: A boolean correctly evaluating x as composite or prime assuming the GRH
+    
+     Even if the GRH is false, the probability of number-theoretic error is far lower than 
+     machine error */
+     
+    private bool is_prime(Number x)
+    {
+      const int64 BASES[13] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,41};
+         
+      var sup = x.ln().to_integer() + 1;
+      /* J.Sorenson & J.Webster's  optimization */
+      if (sup <  56)
+      {
+        for (var i = 0; i < 13; i++)
+        {
+          if (!is_sprp(x,BASES[i])){
+            return false;
+          }
+        }     
+        return true;
+      }
+      else
+      {
+        sup = sup*sup*2;
+    
+        for (var i = 0; i < sup; i++)
+         {
+           if (!is_sprp(x,i))
+           {
+            return false;
+           }
+         }
+        return true;
+       }
+    }
+    
+
     /* Returns a list of all prime factors in x as Numbers */
     public List<Number?> factorize ()
     {
@@ -913,13 +993,18 @@ public class Number : GLib.Object
             factors.append (this);
             return factors;
         }
-
+        
+        if (value.compare(Number.integer(0xFFFFFFFF)) > 0)
+        {
+        if (is_prime(value))
+        {
+          factors.append (value);
+          return factors;
+        }
+        }
         // if value < 2^64-1, call for factorize_uint64 function which deals in integers
-
-        uint64 num = 1;
-        num = num << 63;
-        num += (num - 1);
-        var int_max = new Number.unsigned_integer (num);
+        
+        var int_max = new Number.unsigned_integer (0xFFFFFFFFFFFFFFFF);
 
         if (value.compare (int_max) <= 0)
         {
@@ -968,6 +1053,7 @@ public class Number : GLib.Object
 
         return factors;
     }
+
 
     public List<Number?> factorize_uint64 (uint64 n)
     {
