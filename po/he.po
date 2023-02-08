@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2023-01-25 18:21+0000\n"
-"PO-Revision-Date: 2023-01-27 10:22+0200\n"
+"POT-Creation-Date: 2023-02-07 21:57+0000\n"
+"PO-Revision-Date: 2023-02-08 20:27+0200\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -488,75 +488,212 @@ msgstr "שורש בבסיס אפס של מספר אינו מוגדר"
 msgid "Error: the number of periods must be positive"
 msgstr "שגיאה: מספר התקופות חייב להיות ערך חיובי"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "לוגריתם"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "לוגוריתם טבעי"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "שורש ריבועי"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "ערך מוחלט"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "סימן"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
+msgstr "ארגומנט"
+
+#: lib/function-manager.vala:60
+msgid "Conjugate"
+msgstr "צמוד"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "מספר שלם"
+
+#: lib/function-manager.vala:64
+msgid "Fraction"
+msgstr "שבר"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "רצפה"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "תקרה"
+
+#: lib/function-manager.vala:70
+msgid "Round"
+msgstr "עיגול"
+
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "מספר ממשי"
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr "מספר מדומה"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "סינוס"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "קוסינוס"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "טנגנס"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "ארקסינוס"
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr "ארקקוסינוס"
+
+#: lib/function-manager.vala:86
+msgid "Arc tangent"
+msgstr "ארקטנגנס"
+
+#: lib/function-manager.vala:88
+msgid "Inverse sine"
+msgstr "סינוס הפוך"
+
+#: lib/function-manager.vala:90
+msgid "Inverse cosine"
+msgstr "קוסינוס הפוך"
+
+#: lib/function-manager.vala:92
+msgid "Inverse tangent"
+msgstr "טנגנס הפוך"
+
+#: lib/function-manager.vala:94
+msgid "Hyperbolic sine"
+msgstr "סינוס היפרבולי"
+
+#: lib/function-manager.vala:96
+msgid "Hyperbolic cosine"
+msgstr "קוסינוס היפרבולי"
+
+#: lib/function-manager.vala:98
+msgid "Hyperbolic tangent"
+msgstr "טנגנס היפרבולי"
+
+#: lib/function-manager.vala:100
+msgid "Hyperbolic arcsine"
+msgstr "ארקסינוס היפרבולי"
+
+#: lib/function-manager.vala:102
+msgid "Hyperbolic arccosine"
+msgstr "ארקקוסינוס היפרבולי"
+
+#: lib/function-manager.vala:104
+msgid "Hyperbolic arctangent"
+msgstr "ארקטנגנס היפרבולי"
+
+#: lib/function-manager.vala:106
+msgid "Inverse hyperbolic sine"
+msgstr "סינוס היפרבולי הפוך"
+
+#: lib/function-manager.vala:108
+msgid "Inverse hyperbolic cosine"
+msgstr "קוסינוס היפרבולי הפוך"
+
+#: lib/function-manager.vala:110
+msgid "Inverse hyperbolic tangent"
+msgstr "טנגנס היפרבולי הפוך"
+
+#: lib/function-manager.vala:112
+msgid "One's complement"
+msgstr "משלים לאחד"
+
+#: lib/function-manager.vala:114
+msgid "Two's complement"
+msgstr "משלים לשתיים"
+
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
 msgid "Displayed value not an integer"
 msgstr "הערך המוצג איננו שלם חיובי"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:210
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:577
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "אין היסטוריית ביטול"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:598
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "אין היסטוריית שחזור"
 
-#: lib/math-equation.vala:829
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "אין ערך שפוי לשמירה"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1078
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "הצפה, יש לנסות גודל word גדול יותר"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1083
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "המשתנה „%s” אינו מוכר"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1090
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "הפונקציה „%s” אינה מוגדרת"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1097
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "המרה בלתי מוכרת"
 
 #. should always be run
-#: lib/math-equation.vala:1107
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "ביטוי שגוי"
 
-#: lib/math-equation.vala:1128
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "מתבצע חישוב"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1321
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "נדרש שלם חיובי כדי לפרק לגורמים"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1385
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "אין ערך שפוי לביצוע הזזת סיביות"
 
@@ -2309,18 +2446,6 @@ msgstr "פירוק לגורמים [Ctrl+F]"
 msgid "Scientific Exponent [Ctrl+E]"
 msgstr "מעריך מדעי [Ctrl+E]"
 
-#: src/ui/buttons-advanced.ui:519
-msgid "Cosine"
-msgstr "קוסינוס"
-
-#: src/ui/buttons-advanced.ui:535
-msgid "Sine"
-msgstr "סינוס"
-
-#: src/ui/buttons-advanced.ui:551
-msgid "Tangent"
-msgstr "טנגנס"
-
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
 msgstr "קוסינוס היפרבולי"
@@ -2349,11 +2474,6 @@ msgstr "קבוע אוילר"
 #: src/ui/buttons-advanced.ui:681
 msgid "Natural Logarithm"
 msgstr "לוגוריתם טבעי"
-
-#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
-#: src/ui/buttons-programming.ui:1921
-msgid "Logarithm"
-msgstr "לוגריתם"
 
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
@@ -3261,14 +3381,8 @@ msgstr "י_ציאה"
 #~ msgid "Scientific Exponent"
 #~ msgstr "מעריך מדעי"
 
-#~ msgid "Inverse"
-#~ msgstr "היפוך"
-
 #~ msgid "Factorial"
 #~ msgstr "עצרת"
-
-#~ msgid "Absolute Value"
-#~ msgstr "ערך מוחלט"
 
 #~ msgid "Store"
 #~ msgstr "שמירה"
@@ -3368,18 +3482,6 @@ msgstr "י_ציאה"
 
 #~ msgid "Mode"
 #~ msgstr "מצב"
-
-#~ msgid "Round"
-#~ msgstr "עיגול"
-
-#~ msgid "Floor"
-#~ msgstr "רצפה"
-
-#~ msgid "Ceiling"
-#~ msgstr "תקרה"
-
-#~ msgid "Sign"
-#~ msgstr "סימן"
 
 #~ msgid "Litres"
 #~ msgstr "ליטרים"
