@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues"
 "\n"
-"POT-Creation-Date: 2023-01-25 18:21+0000\n"
-"PO-Revision-Date: 2023-01-27 21:18+0200\n"
+"POT-Creation-Date: 2023-02-07 21:57+0000\n"
+"PO-Revision-Date: 2023-02-08 20:14+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
@@ -81,12 +81,10 @@ msgstr ""
 "доповняльний код, перетворення символів у код символу, тощо."
 
 #: data/org.gnome.Calculator.appdata.xml.in:35
-#| msgid "Basic"
 msgid "Basic Mode"
 msgstr "Простий режим"
 
 #: data/org.gnome.Calculator.appdata.xml.in:39
-#| msgid "Advanced"
 msgid "Advanced Mode"
 msgstr "Розширений режим"
 
@@ -95,13 +93,10 @@ msgid "Financial Mode"
 msgstr "Фінансовий режим"
 
 #: data/org.gnome.Calculator.appdata.xml.in:47
-#| msgctxt "shortcut window"
-#| msgid "Programming mode"
 msgid "Programming Mode"
 msgstr "Програмувальний режим"
 
 #: data/org.gnome.Calculator.appdata.xml.in:51
-#| msgid "Keyboard"
 msgid "Keyboard Mode"
 msgstr "Клавіатурний режим"
 
@@ -497,75 +492,236 @@ msgstr "Корінь нульового степеня не визначено"
 msgid "Error: the number of periods must be positive"
 msgstr "Помилка: кількість періодів має бути додатною"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Логарифм"
+
+#: lib/function-manager.vala:50
+#| msgid "Natural Logarithm"
+msgid "Natural logarithm"
+msgstr "Натуральний логарифм"
+
+#: lib/function-manager.vala:52
+#| msgid "Square Foot"
+msgid "Square root"
+msgstr "Квадратний корінь"
+
+#: lib/function-manager.vala:54
+#| msgid "Absolute Value"
+msgid "Absolute value"
+msgstr "Модуль"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "Знак"
+
+#: lib/function-manager.vala:58
+#| msgid "Complex Argument"
+msgid "Argument"
+msgstr "Комплексний аргумент"
+
+#: lib/function-manager.vala:60
+#| msgid "Complex Conjugate"
+msgid "Conjugate"
+msgstr "Спряження"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "Ціла частина"
+
+#: lib/function-manager.vala:64
+#| msgid "Duration"
+msgid "Fraction"
+msgstr "Дробова частина"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "Підлога"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "Стеля"
+
+#: lib/function-manager.vala:70
+#| msgid "Pounds"
+msgid "Round"
+msgstr "Округлення"
+
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "Дійсна частина"
+
+#: lib/function-manager.vala:74
+#| msgid "Imaginary Unit"
+msgid "Imaginary"
+msgstr "Уявна частина"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Синус"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Косинус"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Тангенс"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "Арксинус"
+
+#: lib/function-manager.vala:84
+#| msgid "Cosine"
+msgid "Arc cosine"
+msgstr "Арккосинус"
+
+#: lib/function-manager.vala:86
+#| msgid "Tangent"
+msgid "Arc tangent"
+msgstr "Обернений тангенс"
+
+#: lib/function-manager.vala:88
+#| msgid "Inverse"
+msgid "Inverse sine"
+msgstr "Арксинус"
+
+#: lib/function-manager.vala:90
+#| msgid "Inverse"
+msgid "Inverse cosine"
+msgstr "Арккосинус"
+
+#: lib/function-manager.vala:92
+#| msgid "Inverse"
+msgid "Inverse tangent"
+msgstr "Арктангенс"
+
+#: lib/function-manager.vala:94
+#| msgid "Hyperbolic Cosine"
+msgid "Hyperbolic sine"
+msgstr "Гіперболічний синус"
+
+#: lib/function-manager.vala:96
+#| msgid "Hyperbolic Cosine"
+msgid "Hyperbolic cosine"
+msgstr "Гіперболічний косинус"
+
+#: lib/function-manager.vala:98
+#| msgid "Hyperbolic Tangent"
+msgid "Hyperbolic tangent"
+msgstr "Гіперболічний тангенс"
+
+#: lib/function-manager.vala:100
+#| msgid "Hyperbolic Cosine"
+msgid "Hyperbolic arcsine"
+msgstr "Гіперболічний ареасинус"
+
+#: lib/function-manager.vala:102
+#| msgid "Hyperbolic Cosine"
+msgid "Hyperbolic arccosine"
+msgstr "Гіперболічний ареакосинус"
+
+#: lib/function-manager.vala:104
+#| msgid "Hyperbolic Tangent"
+msgid "Hyperbolic arctangent"
+msgstr "Гіперболічний ареатангенс"
+
+#: lib/function-manager.vala:106
+#| msgid "Hyperbolic Cosine"
+msgid "Inverse hyperbolic sine"
+msgstr "Обернений гіперболічний синус"
+
+#: lib/function-manager.vala:108
+#| msgid "Hyperbolic Cosine"
+msgid "Inverse hyperbolic cosine"
+msgstr "Обернений гіперболічний косинус"
+
+#: lib/function-manager.vala:110
+#| msgid "Hyperbolic Tangent"
+msgid "Inverse hyperbolic tangent"
+msgstr "Гіперболічний арктангенс"
+
+#: lib/function-manager.vala:112
+#| msgid "Ones’ Complement"
+msgid "One's complement"
+msgstr "Доповнення до одиниці"
+
+#: lib/function-manager.vala:114
+#| msgid "Two’s Complement"
+msgid "Two's complement"
+msgstr "Дворозрядне доповнення"
+
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
 msgid "Displayed value not an integer"
 msgstr "Показане значення не є цілим числом"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:210
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:577
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Немає історії повернень"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:598
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Нема історії повторень"
 
-#: lib/math-equation.vala:829
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Немає нормального значення для зберігання"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1078
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Переповнення. Спробуйте більший розмір слова"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1083
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Невідома змінна «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1090
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Функцію «%s» не визначено"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1097
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Невідоме перетворення"
 
 #. should always be run
-#: lib/math-equation.vala:1107
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "Неправильний вираз"
 
-#: lib/math-equation.vala:1128
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Обчислення"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1321
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "Для розкладання на множники вкажіть ціле число"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1385
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Немає нормального значення для побітового зсуву"
 
@@ -2306,12 +2462,10 @@ msgid "Calculate Result"
 msgstr "Обчислити результат"
 
 #: src/ui/buttons-advanced.ui:439
-#| msgid "Subscript mode [Alt]"
 msgid "Subscript Mode [Alt]"
 msgstr "Нижній індекс [Alt+цифра]"
 
 #: src/ui/buttons-advanced.ui:460
-#| msgid "Superscript mode [Ctrl]"
 msgid "Superscript Mode [Ctrl]"
 msgstr "Верхній індекс [Alt+цифра]"
 
@@ -2320,21 +2474,8 @@ msgid "Factorize [Ctrl+F]"
 msgstr "Розкласти на множники [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-#| msgid "Scientific exponent [Ctrl+E]"
 msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Наукова експонента [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:519
-msgid "Cosine"
-msgstr "Косинус"
-
-#: src/ui/buttons-advanced.ui:535
-msgid "Sine"
-msgstr "Синус"
-
-#: src/ui/buttons-advanced.ui:551
-msgid "Tangent"
-msgstr "Тангенс"
 
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
@@ -2365,11 +2506,6 @@ msgstr "Число Ойлера"
 msgid "Natural Logarithm"
 msgstr "Натуральний логарифм"
 
-#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
-#: src/ui/buttons-programming.ui:1921
-msgid "Logarithm"
-msgstr "Логарифм"
-
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
 msgstr "Факторіал [!]"
@@ -2379,7 +2515,6 @@ msgid "Absolute Value [|]"
 msgstr "Абсолютне значення [|]"
 
 #: src/ui/buttons-advanced.ui:756
-#| msgid "Imaginary Component"
 msgid "Imaginary Unit"
 msgstr "Уявна одиниця"
 
@@ -2392,12 +2527,10 @@ msgid "Imaginary Component"
 msgstr "Припустимий компонент"
 
 #: src/ui/buttons-advanced.ui:813
-#| msgid "Complex conjugate"
 msgid "Complex Conjugate"
 msgstr "Комплексне спряження"
 
 #: src/ui/buttons-advanced.ui:830
-#| msgid "Complex argument"
 msgid "Complex Argument"
 msgstr "Комплексний аргумент"
 
@@ -2417,7 +2550,6 @@ msgid "Additional Functions"
 msgstr "Додаткові функції"
 
 #: src/ui/buttons-basic.ui:127
-#| msgid "Modulus divide"
 msgid "Modulus Divide"
 msgstr "Залишок від цілочислового ділення"
 
@@ -3022,7 +3154,6 @@ msgid "Open menu"
 msgstr "Відкрити меню"
 
 #: src/ui/math-shortcuts.ui:47
-#| msgid "Preferences"
 msgctxt "shortcut window"
 msgid "Show preferences"
 msgstr "Показати налаштування"
@@ -3236,7 +3367,6 @@ msgid "About Calculator"
 msgstr "Про програму"
 
 #: src/ui/math-window.ui:117
-#| msgid "Mode selection"
 msgid "Mode Selection"
 msgstr "Вибір режиму"
 
@@ -3288,14 +3418,8 @@ msgstr "Ви_йти"
 #~ msgid "Scientific Exponent"
 #~ msgstr "Наукова експонента"
 
-#~ msgid "Inverse"
-#~ msgstr "Інверсія"
-
 #~ msgid "Factorial"
 #~ msgstr "Факторіал"
-
-#~ msgid "Absolute Value"
-#~ msgstr "Абсолютне значення"
 
 #~ msgid "Store"
 #~ msgstr "Зап"
