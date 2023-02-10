@@ -897,7 +897,7 @@ public class Number : GLib.Object
 
 /* In: An p := p \in 2Z+1; An b := gcd(b,p) = 1
       Out:  A boolean showing that p is probably prime */
-    public bool is_sprp (Number p, int64 b)
+    private bool is_sprp (Number p, int64 b)
     {
       var unit = new Number.integer(1);
       var pminus = p.subtract(unit);
@@ -943,7 +943,7 @@ public class Number : GLib.Object
      Even if the GRH is false, the probability of number-theoretic error is far lower than 
      machine error */
      
-    public bool is_prime(Number x)
+    private bool is_prime(Number x)
     {
       const int64 BASES[13] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,41};
          
