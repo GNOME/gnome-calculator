@@ -994,7 +994,7 @@ public class Number : GLib.Object
             return factors;
         }
         
-        if (value.compare(Number.integer(0xFFFFFFFF)) > 0)
+        if (value.compare(new Number.integer(0xFFFFFFFF)) > 0)
         {
         if (is_prime(value))
         {
