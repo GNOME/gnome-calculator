@@ -877,7 +877,6 @@ public class Number : GLib.Object
         /* If negative return floor ( x/operand ) */
         else
         {
-         //  var multiplier = new Number.unsigned_integer(2).xpowy_integer(count.abs());
             if (compare(operand) < 0){
                return new Number.integer(0);
             }
