@@ -866,20 +866,22 @@ public class Number : GLib.Object
             error = _("Shift is only possible on integer values");
             return new Number.integer (0);
         }
-
+            
+          /* Initialize an integer 2^count */
+        var operand = new Number.unsigned_integer(2).xpowy_integer(count.abs());
+        /* If positive shift return x*operand */
         if (count >= 0)
         {
-            var multiplier = 1;
-            for (var i = 0; i < count; i++)
-                multiplier *= 2;
-            return multiply_integer (multiplier);
+            return multiply(operand);
         }
+        /* If negative return floor ( x/operand ) */
         else
         {
-            var multiplier = 1;
-            for (var i = 0; i < -count; i++)
-                multiplier *= 2;
-            return divide_integer (multiplier).floor ();
+         //  var multiplier = new Number.unsigned_integer(2).xpowy_integer(count.abs());
+            if (compare(operand) < 0){
+               return new Number.integer(0);
+            }
+            return divide(operand).floor ();
         }
     }
 
@@ -895,15 +897,15 @@ public class Number : GLib.Object
         return ones_complement (wordlen).add (new Number.integer (1));
     }
 
-/* In: An p := p \in 2Z+1; An b := gcd(b,p) = 1
+    /* In: An p := p \in 2Z+1; An b := gcd(b,p) = 1
       Out:  A boolean showing that p is probably prime */
-    private bool is_sprp (Number p, int64 b)
+    private bool is_sprp (Number p, uint64 b)
     {
-      var unit = new Number.integer(1);
+      var unit = new Number.unsigned_integer(1);
       var pminus = p.subtract(unit);
       var d = pminus;
-      var two = new Number.integer(2);
-      
+      var two = new Number.unsigned_integer(2);
+
       uint64 twofactor = 0;
          // Strip out factors of two
         while (true)
@@ -918,13 +920,13 @@ public class Number : GLib.Object
                 break;
         }
 
-       var x = new Number.integer(b).modular_exponentiation(d,p);
+       var x = new Number.unsigned_integer(b).modular_exponentiation(d,p);
 
        if ((x.equals(unit)) || (x.equals(pminus))){
           return true;
        }
-       
-     for (var i = 1; i < twofactor; i++)   
+
+     for (var i = 1; i < twofactor; i++)
      {
         x = x.multiply (x);
         x = x.modulus_divide(p);
@@ -936,18 +938,18 @@ public class Number : GLib.Object
      }
       return false;
     }
-    
-    /* In : An x := x \in 2Z+1 and gcd(x,[2,..,2ln(2)**2])=1 
+
+    /* In : An x := x \in 2Z+1 and gcd(x,[2,..,2ln(2)**2])=1
        Out: A boolean correctly evaluating x as composite or prime assuming the GRH
-    
-     Even if the GRH is false, the probability of number-theoretic error is far lower than 
+
+     Even if the GRH is false, the probability of number-theoretic error is far lower than
      machine error */
-     
+
     private bool is_prime(Number x)
     {
-      const int64 BASES[13] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,41};
-         
-      var sup = x.ln().to_integer() + 1;
+      const uint64 BASES[13] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,41};
+
+      var sup = x.ln().to_unsigned_integer() + 1;
       /* J.Sorenson & J.Webster's  optimization */
       if (sup <  56)
       {
@@ -956,13 +958,13 @@ public class Number : GLib.Object
           if (!is_sprp(x,BASES[i])){
             return false;
           }
-        }     
+        }
         return true;
       }
       else
       {
         sup = sup*sup*2;
-    
+
         for (var i = 0; i < sup; i++)
          {
            if (!is_sprp(x,i))
@@ -973,7 +975,7 @@ public class Number : GLib.Object
         return true;
        }
     }
-    
+
 
     /* Returns a list of all prime factors in x as Numbers */
     public List<Number?> factorize ()
@@ -993,7 +995,7 @@ public class Number : GLib.Object
             factors.append (this);
             return factors;
         }
-        
+
         if (value.compare(new Number.integer(0xFFFFFFFF)) > 0)
         {
         if (is_prime(value))
@@ -1003,7 +1005,7 @@ public class Number : GLib.Object
         }
         }
         // if value < 2^64-1, call for factorize_uint64 function which deals in integers
-        
+
         var int_max = new Number.unsigned_integer (0xFFFFFFFFFFFFFFFF);
 
         if (value.compare (int_max) <= 0)
@@ -1053,7 +1055,6 @@ public class Number : GLib.Object
 
         return factors;
     }
-
 
     public List<Number?> factorize_uint64 (uint64 n)
     {
@@ -1423,3 +1424,4 @@ public bool mp_is_overflow (Number x, int wordlen)
     var t2 = new Number.integer (2).xpowy_integer (wordlen);
     return t2.compare (x) > 0;
 }
+
