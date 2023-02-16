@@ -28,13 +28,14 @@ public class UnitManager : Object
 
         var angle_category = default_unit_manager.add_category ("angle", _("Angle"));
         var length_category = default_unit_manager.add_category ("length", _("Length"));
-        var speed_category = default_unit_manager.add_category ("speed", _("Speed"));
         var area_category = default_unit_manager.add_category ("area", _("Area"));
         var volume_category = default_unit_manager.add_category ("volume", _("Volume"));
         var weight_category = default_unit_manager.add_category ("weight", _("Mass"));
+        var speed_category = default_unit_manager.add_category ("speed", _("Speed"));
         var duration_category = default_unit_manager.add_category ("duration", _("Duration"));
         var frequency_category = default_unit_manager.add_category ("frequency", _("Frequency"));
         var temperature_category = default_unit_manager.add_category ("temperature", _("Temperature"));
+        var energy_category = default_unit_manager.add_category("energy",_("Energy"));
         var digitalstorage_category = default_unit_manager.add_category ("digitalstorage", _("Digital Storage"));
 
         /* FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads */
@@ -141,6 +142,12 @@ public class UnitManager : Object
         frequency_category.add_unit (new Unit ("megahertz", _("Megahertz"), dpgettext2 (null, "unit-format", "%s MHz"), "1000000x", "x/1000000", dpgettext2 (null, "unit-symbols", "megahertz,MHz")));
         frequency_category.add_unit (new Unit ("gigahertz", _("Gigahertz"), dpgettext2 (null, "unit-format", "%s GHz"), "1000000000x", "x/1000000000", dpgettext2 (null, "unit-symbols", "gigahertz,GHz")));
         frequency_category.add_unit (new Unit ("terahertz", _("Terahertz"), dpgettext2 (null, "unit-format", "%s THz"), "1000000000000x", "x/1000000000000" ,dpgettext2 (null, "unit-symbols", "terahertz,THz")));
+        energy_category.add_unit (new Unit ("joule", _("Joule"), dpgettext2 (null, "unit-format", "%s J"), "x", "x" ,dpgettext2 (null, "unit-symbols", "Joule,J, joule,joules")));
+        energy_category.add_unit (new Unit ("btu", _("BTU"), dpgettext2 (null, "unit-format", "%s BTU"), "x*1054.350264489", "x/1054.350264489" ,dpgettext2 (null, "unit-symbols", "btu,BTU")));
+        energy_category.add_unit(new Unit ("calorie", _("Calorie"), dpgettext2 (null, "unit-format", "%s cal"), "x*4.184", "x/4.184", dpgettext2 (null, "unit-symbols", "calories,calorie,cal")));
+        energy_category.add_unit(new Unit ("erg", _("Erg"), dpgettext2 (null, "unit-format", "%s erg"), "x/10000000", "x*10000000", dpgettext2 (null, "unit-symbols", "ergs,erg")));
+        energy_category.add_unit(new Unit ("ev", _("Ev"), dpgettext2 (null, "unit-format", "%s ev"), "x*1.602176634/10000000000000000000", "x*1.602176634*10000000000000000000", dpgettext2 (null, "unit-symbols", "electronvolt,electronvolts,ev")));
+        energy_category.add_unit(new Unit ("ftlb", _("Ft-lb"), dpgettext2 (null, "unit-format", "%s ft-lb"), "x*1.3558179483314004", "x/1.3558179483314004", dpgettext2 (null, "unit-symbols", "foot-pound,foot-pounds,ft-lb,ft-lbs"))); 
 
         var currency_category = default_unit_manager.add_category ("currency", _("Currency"));
         var currencies = CurrencyManager.get_default ().get_currencies ();
