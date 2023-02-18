@@ -8,29 +8,28 @@
 # Gintautas Miliauskas <gintas@akl.lt>, 2006, 2007, 2008.
 # Rimas Kudelis <rq@akl.lt>, 2010.
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012.
-# Aurimas Černius <aurisc4@gmail.com>, 2010-2022.
+# Aurimas Černius <aurisc4@gmail.com>, 2010-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2022-01-18 18:04+0000\n"
-"PO-Revision-Date: 2022-02-20 14:54+0200\n"
+"POT-Creation-Date: 2023-02-07 21:57+0000\n"
+"PO-Revision-Date: 2023-02-18 22:41+0200\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2)\n"
-"X-Generator: Gtranslator 40.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2)\n"
+"X-Generator: Gtranslator 42.0\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Skaičiuotuvas"
 
@@ -40,11 +39,6 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Atlikti aritmetinius, mokslinius ar finansinius skaičiavimus"
 
 #: data/org.gnome.Calculator.appdata.xml.in:10
-#| msgid ""
-#| "GNOME Calculator is an application that solves mathematical equations. "
-#| "Though it at first appears to be a simple calculator with only basic "
-#| "arithmetic operations, you can switch into Advanced, Financial, or "
-#| "Programming mode to find a surprising set of capabilities."
 msgid ""
 "Calculator is an application that solves mathematical equations. Though it "
 "at first appears to be a simple calculator with only basic arithmetic "
@@ -88,23 +82,27 @@ msgstr ""
 "sistemų (dvejetainės, aštuonetainės, dešimtainės ir šešioliktainės), bulio "
 "algebrą, vienetų dvejetų papildinys, simbolių kodų konvertavimas ir kt."
 
-#: data/org.gnome.Calculator.appdata.xml.in:36
-msgid "GNOME Calculator in Basic Mode"
-msgstr "GNOME skaičiuotuvas paprastoje veiksenoje"
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Paprasta veiksena"
 
-#: data/org.gnome.Calculator.appdata.xml.in:40
-msgid "GNOME Calculator in Advanced Mode"
-msgstr "GNOME skaičiuotuvas išplėstinėje veiksenoje"
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "Išplėstinė veiksena"
 
-#: data/org.gnome.Calculator.appdata.xml.in:44
-msgid "GNOME Calculator in Financial Mode"
-msgstr "GNOME skaičiuotuvas finansinėje veiksenoje"
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Finansinė veiksena"
 
-#: data/org.gnome.Calculator.appdata.xml.in:48
-msgid "GNOME Calculator in Programming Mode"
-msgstr "GNOME skaičiuotuvas programavimo veiksenoje"
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Programavimo veiksena"
 
-#: data/org.gnome.Calculator.appdata.xml.in:67
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Klaviatūros veiksena"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
@@ -496,77 +494,214 @@ msgstr "Skaičiaus nulinio laipsnio šaknis yra neapibrėžta"
 msgid "Error: the number of periods must be positive"
 msgstr "Klaida, pasikartojimų skaičius turi būti teigiamas"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Logaritmas"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "Natūrinis logaritmas"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "Kvadratinė pėda"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "Modulis"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "Ženklas"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
+msgstr "Argumentas"
+
+#: lib/function-manager.vala:60
+msgid "Conjugate"
+msgstr "Konjunkcija"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "Sveikasis skaičius"
+
+#: lib/function-manager.vala:64
+msgid "Fraction"
+msgstr "Trupmena"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "Apačia"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "Viršus"
+
+#: lib/function-manager.vala:70
+msgid "Round"
+msgstr "Apvalinti"
+
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "Realusis"
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr "Menamoji dalis"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Sinusas"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Kosinusas"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Tangentas"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "Arksinusas"
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr "Arkkosinusas"
+
+#: lib/function-manager.vala:86
+msgid "Arc tangent"
+msgstr "Arktangentas"
+
+#: lib/function-manager.vala:88
+msgid "Inverse sine"
+msgstr "Invertuotas sinusas"
+
+#: lib/function-manager.vala:90
+msgid "Inverse cosine"
+msgstr "Invertuotas kosinusas"
+
+#: lib/function-manager.vala:92
+msgid "Inverse tangent"
+msgstr "Invertuotas tangentas"
+
+#: lib/function-manager.vala:94
+msgid "Hyperbolic sine"
+msgstr "Hiperbolinis sinusas"
+
+#: lib/function-manager.vala:96
+msgid "Hyperbolic cosine"
+msgstr "Hiperbolinis kosinusas"
+
+#: lib/function-manager.vala:98
+msgid "Hyperbolic tangent"
+msgstr "Hiperbolinis tangentas"
+
+#: lib/function-manager.vala:100
+msgid "Hyperbolic arcsine"
+msgstr "Hiperbolinis arksinusas"
+
+#: lib/function-manager.vala:102
+msgid "Hyperbolic arccosine"
+msgstr "Hiperbolinis arkkosinusas"
+
+#: lib/function-manager.vala:104
+msgid "Hyperbolic arctangent"
+msgstr "Hiperbolinis arktangentas"
+
+#: lib/function-manager.vala:106
+msgid "Inverse hyperbolic sine"
+msgstr "Invertuotas hiperbolinis sinusas"
+
+#: lib/function-manager.vala:108
+msgid "Inverse hyperbolic cosine"
+msgstr "Invertuotas hiperbolinis kosinusas"
+
+#: lib/function-manager.vala:110
+msgid "Inverse hyperbolic tangent"
+msgstr "Invertuotas hiperbolinis tangentas"
+
+#: lib/function-manager.vala:112
+msgid "One's complement"
+msgstr "Vieneto papildymas"
+
+#: lib/function-manager.vala:114
+msgid "Two's complement"
+msgstr "Dvejeto papildymas"
+
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+msgid "Displayed value not an integer"
+msgstr "Rodoma reikšmė nėra sveikas skaičius"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Nėra atšaukimo istorijos"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Nėra atšaukimo istorijos"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Nėra sveikos reikšmės saugojimui"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Perpildymas. Mėginkite didesnį žodžio ilgį"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Nežinomas kintamasis „%s“"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Neapibrėžta funkcija „%s“"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Nežinoma konversija"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "Blogai suformuota išraiška"
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Skaičiuojama"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "Skaidymui reikalingas sveikas skaičius"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Nėra tinkamos reikšmės bitų pastūmimui"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
-msgid "Displayed value not an integer"
-msgstr "Rodoma reikšmė nėra sveikas skaičius"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -2235,8 +2370,8 @@ msgstr "Kopijuoti"
 msgid "Copy result to clipboard"
 msgstr "Kopijuoti rezultatą į iškarpinę"
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Dalyba su liekana"
 
@@ -2305,33 +2440,21 @@ msgstr "="
 msgid "Calculate Result"
 msgstr "Skaičiuoti rezultatą"
 
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
-msgstr "Skaičiaus apatinio indekso veiksena [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
+msgstr "Apatinio indekso veiksena [Alt]"
 
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
-msgstr "Skaičiaus viršutinio indekso veiksena [Vald]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
+msgstr "Viršutinio indekso veiksena [Vald]"
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
 msgid "Factorize [Ctrl+F]"
 msgstr "Išskaidyti [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Mokslinė eksponentė [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:519
-msgid "Cosine"
-msgstr "Kosinusas"
-
-#: src/ui/buttons-advanced.ui:535
-msgid "Sine"
-msgstr "Sinusas"
-
-#: src/ui/buttons-advanced.ui:551
-msgid "Tangent"
-msgstr "Tangentas"
 
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
@@ -2362,11 +2485,6 @@ msgstr "Oilerio skaičius"
 msgid "Natural Logarithm"
 msgstr "Natūrinis logaritmas"
 
-#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
-#: src/ui/buttons-programming.ui:1921
-msgid "Logarithm"
-msgstr "Logaritmas"
-
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
 msgstr "Faktorialas [!]"
@@ -2375,36 +2493,44 @@ msgstr "Faktorialas [!]"
 msgid "Absolute Value [|]"
 msgstr "Modulis [|]"
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr "Menamoji dalis"
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "Realioji dalis"
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "Menamoji dalis"
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
 msgstr "Kompleksinė konjunkcija"
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
 msgstr "Kompleksinis argumentas"
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Atmintis"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "Papildomos funkcijos"
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "Dalyba su liekana"
 
 #. Title of Compounding Term dialog
 #: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
@@ -2761,6 +2887,14 @@ msgstr "Dešimtainė"
 msgid "Hexadecimal"
 msgstr "Šešioliktainis"
 
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Skaičiaus apatinio indekso veiksena [Alt]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Skaičiaus viršutinio indekso veiksena [Vald]"
+
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Postūmis kairiau"
@@ -2825,26 +2959,26 @@ msgid "_Insert"
 msgstr "Įterpt_i"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Paleisti pateikta veiksena (basic, advanced, financial, programming, "
 "keyboard)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Išspręsti lygtį"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Pradėti lygtimi"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
 "Algimantas Markevičius <margevicius.algimantas@gmail.com>\n"
@@ -2856,25 +2990,16 @@ msgstr ""
 "Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Gediminas Paulauskas <menesis@chatsubo.lt>"
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "Apie skaičiuotuvą"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Skaičiuotuvas su finansiniais bei moksliniais priedais"
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Ar tikrai norite užverti visus atvertus langus?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "Užverti _visus"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:608
-#: src/math-buttons.vala:624
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -2882,7 +3007,7 @@ msgstr[0] "%d-bito"
 msgstr[1] "%d-bitų"
 msgstr[2] "%d-bitų"
 
-#: src/math-buttons.vala:593
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2894,11 +3019,11 @@ msgstr[2] "%d vietų"
 msgid " to "
 msgstr " į "
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Sukeisti vertimo vienetus"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2912,7 +3037,6 @@ msgid "Built-in keywords"
 msgstr "Integruoti raktažodžiai"
 
 #: src/math-display.vala:695
-#| msgid "Defined Functions"
 msgid "Defined currencies"
 msgstr "Apibrėžtos valiutos"
 
@@ -2924,7 +3048,7 @@ msgstr "Apibrėžti kintamieji"
 msgid "New function"
 msgstr "Nauja funkcija"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Pasirinkite argumentų skaičių"
 
@@ -2945,17 +3069,14 @@ msgid "64-bit"
 msgstr "64-bitų"
 
 #: src/math-preferences.vala:138
-#| msgid "never"
 msgid "Never"
 msgstr "Niekada"
 
 #: src/math-preferences.vala:140
-#| msgid "daily"
 msgid "Daily"
 msgstr "Kasdien"
 
 #: src/math-preferences.vala:142
-#| msgid "weekly"
 msgid "Weekly"
 msgstr "Kas savaitę"
 
@@ -2983,172 +3104,177 @@ msgstr "Žodžio _ilgis"
 msgid "E_xchange rate refresh interval"
 msgstr "_Keitimo santykių atnaujinimo intervalas"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Bendra"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Atverti naują langą"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Užverti dabartinį langą"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Užverti programą"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Rodyti žinyną"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Atverti meniu"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Rodyti nuostatas"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Klaviatūros trumpiniai"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Išvalyti istoriją"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Keisti veiksenas"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Įjungti paprastą veikseną"
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Įjungti išplėstinę veikseną"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Įjungti finansinę veikseną"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Įjungti programavimo veikseną"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Įjungti klaviatūros veikseną"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Klaviatūros įvedimo laukas"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Dauginti (*)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Dalinti (/)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Kvadratinė šaknis (√)"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Apsukti"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Pi (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Įveskite skaičius moksline forma"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Programavimo veiksena"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Įjungti dvejetainę"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Įjungti aštuonetainę"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Įjungti dešimtainę"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Įjungti šešioliktainę"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Kita"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Kopijuoti"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Įdėti"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Atšaukti"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Pakartoti"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Ankstesnis rezultatas"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Kitas rezultatas"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Pakeisti klaviatūros veikseną (alt.)"
@@ -3157,27 +3283,27 @@ msgstr "Pakeisti klaviatūros veikseną (alt.)"
 msgid "Variable name"
 msgstr "Kintamojo vardas"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Įrašyti reikšmę į esamą ar naują kintamąjį"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:110
+#: src/ui/math-window.ui:20 src/math-window.vala:113
 msgid "Basic"
 msgstr "Paprastas"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:116
+#: src/ui/math-window.ui:25 src/math-window.vala:119
 msgid "Advanced"
 msgstr "Išplėstinis"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:122
+#: src/ui/math-window.ui:30 src/math-window.vala:125
 msgid "Financial"
 msgstr "Finansinis"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:128
+#: src/ui/math-window.ui:35 src/math-window.vala:131
 msgid "Programming"
 msgstr "Programavimo"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:134
+#: src/ui/math-window.ui:40 src/math-window.vala:137
 msgid "Keyboard"
 msgstr "Klaviatūra"
 
@@ -3217,25 +3343,46 @@ msgstr "Klaviatūros trumpiniai"
 msgid "_Help"
 msgstr "_Žinynas"
 
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "Apie skaičiuotuvą"
+
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
+msgid "Mode Selection"
 msgstr "Veiksenos pasirinkimas"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "Atšaukti [Vald+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Atšaukti"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
+msgid "Main Menu"
 msgstr "Pagrindinis meniu"
 
-#: src/math-window.vala:163
+#: src/math-window.vala:166
 msgid "_Quit"
 msgstr "_Išeiti"
+
+#~ msgid "GNOME Calculator in Basic Mode"
+#~ msgstr "GNOME skaičiuotuvas paprastoje veiksenoje"
+
+#~ msgid "GNOME Calculator in Advanced Mode"
+#~ msgstr "GNOME skaičiuotuvas išplėstinėje veiksenoje"
+
+#~ msgid "GNOME Calculator in Financial Mode"
+#~ msgstr "GNOME skaičiuotuvas finansinėje veiksenoje"
+
+#~ msgid "GNOME Calculator in Programming Mode"
+#~ msgstr "GNOME skaičiuotuvas programavimo veiksenoje"
+
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Skaičiuotuvas su finansiniais bei moksliniais priedais"
+
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "Atšaukti [Vald+Z]"
+
+#~ msgid "Primary menu"
+#~ msgstr "Pagrindinis meniu"
 
 #~ msgid "GNOME Calculator"
 #~ msgstr "GNOME skaičiuotuvas"
@@ -3255,14 +3402,8 @@ msgstr "_Išeiti"
 #~ msgid "Scientific Exponent"
 #~ msgstr "Mokslinis"
 
-#~ msgid "Inverse"
-#~ msgstr "Apversti"
-
 #~ msgid "Factorial"
 #~ msgstr "Faktorialas"
-
-#~ msgid "Absolute Value"
-#~ msgstr "Modulis"
 
 #~ msgid "Store"
 #~ msgstr "Įraš"
@@ -3281,9 +3422,6 @@ msgstr "_Išeiti"
 
 #~ msgid "Square root [Ctrl+R]"
 #~ msgstr "Kvadratinė šaknis [Ctrl+R]"
-
-#~ msgid "Financial Mode"
-#~ msgstr "Finansinė veiksena"
 
 #~ msgid "8 bits"
 #~ msgstr "8 bitai"
@@ -3315,9 +3453,6 @@ msgstr "_Išeiti"
 #~| msgid "About Calculator"
 #~ msgid "_About Calculator"
 #~ msgstr "_Apie skaičiuotuvą"
-
-#~ msgid "Menu"
-#~ msgstr "Meniu"
 
 #~| msgid "gnome-calculator"
 #~ msgid "org.gnome.Calculator"
