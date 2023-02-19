@@ -29,7 +29,7 @@
 # Simon Linden <xhi2018@gmail.com>, 2013-2014.
 # Mario Blättermann <mario.blaettermann@gmail.com>, 2010-2011, 2016-2018.
 # Wolfgang Stöggl <c72578@yahoo.de>, 2012-2014, 2017, 2020.
-# Tim Sabsch <tim@sabsch.com>, 2019-2021.
+# Tim Sabsch <tim@sabsch.com>, 2019-2021, 2023.
 # Philipp Kiemle <philipp.kiemle@gmail.com>, 2021-2022.
 # Jürgen Benvenuti <gastornis@posteo.org>, 2023.
 #
@@ -38,16 +38,16 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2023-01-25 18:21+0000\n"
-"PO-Revision-Date: 2023-01-25 19:59+0100\n"
-"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
+"POT-Creation-Date: 2023-02-07 21:57+0000\n"
+"PO-Revision-Date: 2023-02-19 20:53+0100\n"
+"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
@@ -524,75 +524,212 @@ msgstr "Die 0-te Wurzel einer Zahl ist nicht definiert"
 msgid "Error: the number of periods must be positive"
 msgstr "Fehler: Die Zahl der Perioden muss positiv sein"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Logarithmus"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "Natürlicher Logarithmus"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "Quadratwurzel"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "Absoluter Wert"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "Vorzeichen"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
+msgstr "Argument"
+
+#: lib/function-manager.vala:60
+msgid "Conjugate"
+msgstr "Konjugation"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "Ganzzahl"
+
+#: lib/function-manager.vala:64
+msgid "Fraction"
+msgstr "Bruch"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "Abrundung"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "Aufrundung"
+
+#: lib/function-manager.vala:70
+msgid "Round"
+msgstr "Rundung"
+
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "Reell"
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr "Imaginär"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Sinus"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Kosinus"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Tangens"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "Arkussinus"
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr "Arkuskosinus"
+
+#: lib/function-manager.vala:86
+msgid "Arc tangent"
+msgstr "Arkustangens"
+
+#: lib/function-manager.vala:88
+msgid "Inverse sine"
+msgstr "Inverser Sinus"
+
+#: lib/function-manager.vala:90
+msgid "Inverse cosine"
+msgstr "Inverser Kosinus"
+
+#: lib/function-manager.vala:92
+msgid "Inverse tangent"
+msgstr "Inverser Tangens"
+
+#: lib/function-manager.vala:94
+msgid "Hyperbolic sine"
+msgstr "Hyperbolischer Sinus"
+
+#: lib/function-manager.vala:96
+msgid "Hyperbolic cosine"
+msgstr "Hyperbolischer Kosinus"
+
+#: lib/function-manager.vala:98
+msgid "Hyperbolic tangent"
+msgstr "Hyperbolischer Tangens"
+
+#: lib/function-manager.vala:100
+msgid "Hyperbolic arcsine"
+msgstr "Hyperbolischer Arkussinus"
+
+#: lib/function-manager.vala:102
+msgid "Hyperbolic arccosine"
+msgstr "Hyperbolischer Arkuskosinus"
+
+#: lib/function-manager.vala:104
+msgid "Hyperbolic arctangent"
+msgstr "Hyperbolischer Arkustangens"
+
+#: lib/function-manager.vala:106
+msgid "Inverse hyperbolic sine"
+msgstr "Inverser hyperbolischer Sinus"
+
+#: lib/function-manager.vala:108
+msgid "Inverse hyperbolic cosine"
+msgstr "Inverser hyperbolischer Kosinus"
+
+#: lib/function-manager.vala:110
+msgid "Inverse hyperbolic tangent"
+msgstr "Inverser hyperbolischer Tangens"
+
+#: lib/function-manager.vala:112
+msgid "One's complement"
+msgstr "Einerkomplement"
+
+#: lib/function-manager.vala:114
+msgid "Two's complement"
+msgstr "Zweierkomplement"
+
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
 msgid "Displayed value not an integer"
 msgstr "Angezeigter Wert ist keine Ganzzahl"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:210
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:577
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Keine Rückgängig-Chronik"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:598
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Keine Wiederherstell-Chronik"
 
-#: lib/math-equation.vala:829
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Kein vernünftiger Wert zum Speichern"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1078
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Überlauf. Versuchen Sie eine höhere Wortlänge zu verwenden"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1083
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Unbekannte Variable »%s«"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1090
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Die Funktion »%s« ist nicht definiert"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1097
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Unbekannte Umrechnung"
 
 #. should always be run
-#: lib/math-equation.vala:1107
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "Fehlerhafter Ausdruck"
 
-#: lib/math-equation.vala:1128
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Berechnung läuft"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1321
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "Es können nur Ganzzahlen faktorisiert werden"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1385
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Kein vernünftiger Wert zum bitweisen Verschieben"
 
@@ -2380,18 +2517,6 @@ msgstr "Faktorisieren [Strg+F]"
 msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Wissenschaftlicher Exponent [Strg+E]"
 
-#: src/ui/buttons-advanced.ui:519
-msgid "Cosine"
-msgstr "Kosinus"
-
-#: src/ui/buttons-advanced.ui:535
-msgid "Sine"
-msgstr "Sinus"
-
-#: src/ui/buttons-advanced.ui:551
-msgid "Tangent"
-msgstr "Tangens"
-
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
 msgstr "Hyperbolischer Cosinus"
@@ -2420,11 +2545,6 @@ msgstr "Eulersche Zahl"
 #: src/ui/buttons-advanced.ui:681
 msgid "Natural Logarithm"
 msgstr "Natürlicher Logarithmus"
-
-#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
-#: src/ui/buttons-programming.ui:1921
-msgid "Logarithm"
-msgstr "Logarithmus"
 
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
@@ -3351,14 +3471,8 @@ msgstr "_Beenden"
 #~ msgid "Scientific Exponent"
 #~ msgstr "Wissenschaftlicher Exponent"
 
-#~ msgid "Inverse"
-#~ msgstr "Kehrwert"
-
 #~ msgid "Factorial"
 #~ msgstr "Fakultät"
-
-#~ msgid "Absolute Value"
-#~ msgstr "Absoluter Wert"
 
 #~ msgid "Store"
 #~ msgstr "Speichern"
