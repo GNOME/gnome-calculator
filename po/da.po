@@ -7,7 +7,7 @@
 # Peter Bach <bach.peter@gmail.com>, 2007.
 # Kenneth Nielsen <k.nielsen81@gmail.com>, 2011, 2013-2014.
 # Ask Hjorth Larsen <asklarsen@gmail.com>, 2008, 09, 10, 11, 12, 15, 16, 17, 18, 19, 22.
-# Alan Mortensen <alanmortensen.am@gmail.com>, 2019-20.
+# Alan Mortensen <alanmortensen.am@gmail.com>, 2019-20, 23.
 # scootergrisen, 2020-2021.
 #
 # Husk at tilføje dig i credit-listen (besked id "translator-credits")
@@ -26,21 +26,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2022-02-24 20:28+0000\n"
-"PO-Revision-Date: 2022-03-06 13:00+0100\n"
-"Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2023-02-07 21:57+0000\n"
+"PO-Revision-Date: 2023-02-26 11:42+0100\n"
+"Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Lommeregner"
 
@@ -55,7 +56,11 @@ msgid ""
 "at first appears to be a simple calculator with only basic arithmetic "
 "operations, you can switch into Advanced, Financial, or Programming mode to "
 "find a surprising set of capabilities."
-msgstr "Lommeregner er et program, som kan løse matematiske ligninger. Selvom det ved første øjekast ligner en simpel lommeregner med simple aritmetiske operationer, vil du med et skift til tilstanden avanceret, finansiel eller programmering finde et imponerende sæt funktioner."
+msgstr ""
+"Lommeregner er et program, som kan løse matematiske ligninger. Selvom det "
+"ved første øjekast ligner en simpel lommeregner med simple aritmetiske "
+"operationer, vil du med et skift til tilstanden avanceret, finansiel eller "
+"programmering finde et imponerende sæt funktioner."
 
 #: data/org.gnome.Calculator.appdata.xml.in:16
 msgid ""
@@ -89,7 +94,27 @@ msgstr ""
 "grundtal (binær, oktal, decimal og heksadecimal), boolesk algebra, etter- og "
 "toer-kompliment, tegn til tegnkode-konvertering med mere."
 
-#: data/org.gnome.Calculator.appdata.xml.in:66
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Basistilstand"
+
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "Avanceret tilstand"
+
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Finanstilstand"
+
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Programmeringstilstand"
+
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Tastaturtilstand"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
@@ -485,77 +510,217 @@ msgstr "Den nulte rod af et negativt tal er ikke defineret"
 msgid "Error: the number of periods must be positive"
 msgstr "Fejl: Antallet af perioder skal være positivt"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Logaritme"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "Naturlig logaritme"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "Kvadratrod"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "Absolut værdi"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "Fortegnsfunktion"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
+msgstr "Argument"
+
+#: lib/function-manager.vala:60
+msgid "Conjugate"
+msgstr "Konjugeret"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "Heltal"
+
+#: lib/function-manager.vala:64
+msgid "Fraction"
+msgstr "Brøkdel"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "Gulv"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "Loft"
+
+#: lib/function-manager.vala:70
+msgid "Round"
+msgstr "Afrund"
+
+# Mest sandsynligt at det er Real og ikke Realdel eller Reelt tal
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "Real"
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr "Imaginær"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Sinus"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Cosinus"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Tangens"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "Arcsinus"
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr "Arccosinus"
+
+#: lib/function-manager.vala:86
+msgid "Arc tangent"
+msgstr "Arctangens"
+
+#: lib/function-manager.vala:88
+msgid "Inverse sine"
+msgstr "Invers sinus"
+
+#: lib/function-manager.vala:90
+msgid "Inverse cosine"
+msgstr "Invers cosinus"
+
+#: lib/function-manager.vala:92
+msgid "Inverse tangent"
+msgstr "Invers tangens"
+
+# https://denstoredanske.lex.dk/hyperbolske_funktioner
+#: lib/function-manager.vala:94
+msgid "Hyperbolic sine"
+msgstr "Sinus hyperbolsk"
+
+#: lib/function-manager.vala:96
+msgid "Hyperbolic cosine"
+msgstr "Cosinus hyperbolsk"
+
+#: lib/function-manager.vala:98
+msgid "Hyperbolic tangent"
+msgstr "Tangens hyperbolsk"
+
+#: lib/function-manager.vala:100
+msgid "Hyperbolic arcsine"
+msgstr "Arcsinus hyperbolsk"
+
+#: lib/function-manager.vala:102
+msgid "Hyperbolic arccosine"
+msgstr "Area cosinus hyperbolsk"
+
+#: lib/function-manager.vala:104
+msgid "Hyperbolic arctangent"
+msgstr "Arctangens hyperbolsk"
+
+# https://da.wikipedia.org/wiki/Hyperbolske_funktioner#Inverse_hyperbolske_funktioner
+#: lib/function-manager.vala:106
+msgid "Inverse hyperbolic sine"
+msgstr "Area sinus hyperbolsk"
+
+#: lib/function-manager.vala:108
+msgid "Inverse hyperbolic cosine"
+msgstr "Area cosinus hyperbolsk"
+
+#: lib/function-manager.vala:110
+msgid "Inverse hyperbolic tangent"
+msgstr "Area tangens hyperbolsk"
+
+#: lib/function-manager.vala:112
+msgid "One's complement"
+msgstr "1'er-komplement"
+
+#: lib/function-manager.vala:114
+msgid "Two's complement"
+msgstr "2'er-komplement"
+
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+msgid "Displayed value not an integer"
+msgstr "Den viste værdi er ikke et heltal"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Ingen fortrydelseshistorik"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Ingen fortrydelseshistorik"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Ingen gyldig værdi til at lagre"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Overløb. Prøv at øge word-størrelsen"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Ukendt variabel “%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funktionen “%s” er ikke defineret"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Ukendt konvertering"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
-msgstr "Misdannet udtryk"
+msgstr "Forkert udformet udtryk"
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Udregner"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "Kræver et heltal at faktorisere"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Ingen gyldig værdi til at udføre bitvis-skift"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
-msgid "Displayed value not an integer"
-msgstr "Den viste værdi er ikke et heltal"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -2232,8 +2397,8 @@ msgstr "Kopiér"
 msgid "Copy result to clipboard"
 msgstr "Kopiér resultatet til udklipsholderen"
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Modulo-division"
 
@@ -2302,12 +2467,12 @@ msgstr "="
 msgid "Calculate Result"
 msgstr "Udregn resultat"
 
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
 msgstr "Sænket skrifttilstand [Alt]"
 
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
 msgstr "Hævet skrifttilstand [Ctrl]"
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
@@ -2315,20 +2480,8 @@ msgid "Factorize [Ctrl+F]"
 msgstr "Faktorisér [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Videnskabelig eksponent [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:519
-msgid "Cosine"
-msgstr "Cosinus"
-
-#: src/ui/buttons-advanced.ui:535
-msgid "Sine"
-msgstr "Sinus"
-
-#: src/ui/buttons-advanced.ui:551
-msgid "Tangent"
-msgstr "Tangens"
 
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
@@ -2359,11 +2512,6 @@ msgstr "Eulers tal"
 msgid "Natural Logarithm"
 msgstr "Naturlig logaritme"
 
-#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
-#: src/ui/buttons-programming.ui:1921
-msgid "Logarithm"
-msgstr "Logaritme"
-
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
 msgstr "Fakultet [!]"
@@ -2372,36 +2520,44 @@ msgstr "Fakultet [!]"
 msgid "Absolute Value [|]"
 msgstr "Absolut værdi [|]"
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr "Imaginær enhed"
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "Realdel"
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "Imaginærdel"
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
 msgstr "Kompleks konjugeret"
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
 msgstr "Komplekst argument"
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Hukommelse"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "Flere funktioner"
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "Modulo-division"
 
 #. Title of Compounding Term dialog
 #: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
@@ -2761,6 +2917,14 @@ msgstr "Titalssystem"
 msgid "Hexadecimal"
 msgstr "Heksadecimal"
 
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Sænket skrifttilstand [Alt]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Hævet skrifttilstand [Ctrl]"
+
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Forskyd til venstre"
@@ -2825,25 +2989,25 @@ msgid "_Insert"
 msgstr "_Indsæt"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Start i given tilstand (basis, avanceret, finansiel, programmering, tastatur)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Løs given ligning"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Start med given ligning"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Vis udgivelsesversion"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
 "Ole Laursen\n"
@@ -2858,25 +3022,16 @@ msgstr ""
 "Websted http://dansk-gruppen.dk\n"
 "E-mail <dansk@dansk-gruppen.dk>"
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "Om Lommeregner"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Lommeregner med tilstandene finansiel og videnskabelig."
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Er du sikker på, at du vil lukke alle åbne vinduer?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "Luk _alle"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:609
-#: src/math-buttons.vala:625
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -2884,7 +3039,7 @@ msgstr[0] "%d-bit"
 msgstr[1] "%d-bit"
 
 # right og left shift er bitvise operatorer, der forskyder N bit til højre eller venstre.  Places og bit er derfor det samme i denne sammenhæng
-#: src/math-buttons.vala:594
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2895,11 +3050,11 @@ msgstr[1] "%d bit"
 msgid " to "
 msgstr " til "
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Byt om på konverteringsenheder"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2924,7 +3079,7 @@ msgstr "Definerede variable"
 msgid "New function"
 msgstr "Ny funktion"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Vælg antallet af argumenter"
 
@@ -2981,172 +3136,177 @@ msgstr "Word-_størrelse"
 msgid "E_xchange rate refresh interval"
 msgstr "O_pdateringsinterval for valutakurser"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Generelt"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Åbn et nyt vindue"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Luk nuværende vindue"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Afslut programmet"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Vis hjælp"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Åbn menu"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Vis indstillinger"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Tastaturgenveje"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Ryd historik"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Skift af tilstande"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Skift til tilstanden Basis"
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Skift til tilstanden Avanceret"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Skift til tilstanden Finansiel"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Skift til tilstanden Programmering"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Skift til tilstanden Tastatur"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Tastaturindtastning"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Multiplicér (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Dividér (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Kvadratrod (√)"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Reciprok"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Pi (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Indtast tal i videnskabeligt format"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Tilstanden Programmering"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Skift til binær"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Skift til oktal"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Skift til decimal"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Skift til heksadecimal"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Andre"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Kopiér"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Indsæt"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Fortryd"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Omgør"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Forrige resultat"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Næste resultat"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Skift til tilstanden Tastatur (alt.)"
@@ -3155,7 +3315,7 @@ msgstr "Skift til tilstanden Tastatur (alt.)"
 msgid "Variable name"
 msgstr "Variabelnavn"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Gem værdi i eksisterende eller ny variabel"
 
@@ -3215,25 +3375,34 @@ msgstr "Tastaturgenveje"
 msgid "_Help"
 msgstr "_Hjælp"
 
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "Om Lommeregner"
+
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
+msgid "Mode Selection"
 msgstr "Valg af tilstand"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "Fortryd [Ctrl+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Fortryd"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
-msgstr "Primær menu"
+msgid "Main Menu"
+msgstr "Hovedmenu"
 
 #: src/math-window.vala:166
 msgid "_Quit"
 msgstr "_Afslut"
+
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Lommeregner med tilstandene finansiel og videnskabelig."
+
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "Fortryd [Ctrl+Z]"
+
+#~ msgid "Primary menu"
+#~ msgstr "Primær menu"
 
 #~ msgid "GNOME Calculator"
 #~ msgstr "GNOME Lommeregner"
@@ -3265,14 +3434,8 @@ msgstr "_Afslut"
 #~ msgid "Scientific Exponent"
 #~ msgstr "Videnskabelig eksponent"
 
-#~ msgid "Inverse"
-#~ msgstr "Reciprok"
-
 #~ msgid "Factorial"
 #~ msgstr "Fakultet"
-
-#~ msgid "Absolute Value"
-#~ msgstr "Absolut værdi"
 
 #~ msgid "Store"
 #~ msgstr "Gem"
