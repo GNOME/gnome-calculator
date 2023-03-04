@@ -27,8 +27,8 @@ msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2023-01-25 18:03+0000\n"
-"PO-Revision-Date: 2023-01-25 21:36+0300\n"
+"POT-Creation-Date: 2023-02-08 07:57+0000\n"
+"PO-Revision-Date: 2023-02-08 12:19+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -507,75 +507,212 @@ msgstr "Корень нулевой степени из числа не опре
 msgid "Error: the number of periods must be positive"
 msgstr "Ошибка: количество периодов, должно быть положительным"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Логарифм"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "Натуральный логарифм"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "Квадратный корень"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "Модуль"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "Сигнум"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
+msgstr "Аргумент"
+
+#: lib/function-manager.vala:60
+msgid "Conjugate"
+msgstr "Сопряжение"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "Целое число"
+
+#: lib/function-manager.vala:64
+msgid "Fraction"
+msgstr "Дробь"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "Нижнее округление"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "Верхнее округление"
+
+#: lib/function-manager.vala:70
+msgid "Round"
+msgstr "Округление"
+
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "Real"
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr "Мнимая единица"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Синус"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Косинус"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Тангенс"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "Арксинус"
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr "Арккосинус"
+
+#: lib/function-manager.vala:86
+msgid "Arc tangent"
+msgstr "Арктангенс"
+
+#: lib/function-manager.vala:88
+msgid "Inverse sine"
+msgstr "Обратный синус"
+
+#: lib/function-manager.vala:90
+msgid "Inverse cosine"
+msgstr "Обратный косинус"
+
+#: lib/function-manager.vala:92
+msgid "Inverse tangent"
+msgstr "Обратный тангенс"
+
+#: lib/function-manager.vala:94
+msgid "Hyperbolic sine"
+msgstr "Гиперболический синус"
+
+#: lib/function-manager.vala:96
+msgid "Hyperbolic cosine"
+msgstr "Гиперболический косинус"
+
+#: lib/function-manager.vala:98
+msgid "Hyperbolic tangent"
+msgstr "Гиперболический тангенс"
+
+#: lib/function-manager.vala:100
+msgid "Hyperbolic arcsine"
+msgstr "Гиперболический арксинус"
+
+#: lib/function-manager.vala:102
+msgid "Hyperbolic arccosine"
+msgstr "Гиперболический арккосинус"
+
+#: lib/function-manager.vala:104
+msgid "Hyperbolic arctangent"
+msgstr "Гиперболический арктангенс"
+
+#: lib/function-manager.vala:106
+msgid "Inverse hyperbolic sine"
+msgstr "Обратный гиперболический синус"
+
+#: lib/function-manager.vala:108
+msgid "Inverse hyperbolic cosine"
+msgstr "Обратный гиперболический косинус"
+
+#: lib/function-manager.vala:110
+msgid "Inverse hyperbolic tangent"
+msgstr "Обратный гиперболический тангенс"
+
+#: lib/function-manager.vala:112
+msgid "One's complement"
+msgstr "Обратный код"
+
+#: lib/function-manager.vala:114
+msgid "Two's complement"
+msgstr "Дополнительный код"
+
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
 msgid "Displayed value not an integer"
 msgstr "Значение не является целым числом"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:210
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:577
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Нет истории отмены изменений"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:598
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Нет истории отмены изменений"
 
-#: lib/math-equation.vala:829
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Отсутствует разумное значение для сохранения"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1078
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Переполнение. Попробуйте установить большее значение размера слова"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1083
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Неизвестная переменная «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1090
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Функция «%s» не определена"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1097
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Неизвестное преобразование"
 
 #. should always be run
-#: lib/math-equation.vala:1107
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "Некорректное выражение"
 
-#: lib/math-equation.vala:1128
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Вычисление"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1321
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "Для разложения на простые множители необходимо целое число"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1385
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Отсутствует разумное значение для побитового сдвига"
 
@@ -2340,18 +2477,6 @@ msgstr "Разложить на множители [Ctrl+F]"
 msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Экспоненциальная запись [Ctrl+E]"
 
-#: src/ui/buttons-advanced.ui:519
-msgid "Cosine"
-msgstr "Косинус"
-
-#: src/ui/buttons-advanced.ui:535
-msgid "Sine"
-msgstr "Синус"
-
-#: src/ui/buttons-advanced.ui:551
-msgid "Tangent"
-msgstr "Тангенс"
-
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
 msgstr "Гиперболический косинус"
@@ -2380,11 +2505,6 @@ msgstr "Число Эйлера"
 #: src/ui/buttons-advanced.ui:681
 msgid "Natural Logarithm"
 msgstr "Натуральный логарифм"
-
-#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
-#: src/ui/buttons-programming.ui:1921
-msgid "Logarithm"
-msgstr "Логарифм"
 
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
@@ -3297,14 +3417,8 @@ msgstr "_Закрыть"
 #~ msgid "Scientific Exponent"
 #~ msgstr "Экспоненциальная запись"
 
-#~ msgid "Inverse"
-#~ msgstr "Инвертировать"
-
 #~ msgid "Factorial"
 #~ msgstr "Факториал"
-
-#~ msgid "Absolute Value"
-#~ msgstr "Модуль"
 
 #~ msgid "Store"
 #~ msgstr "X→П"
