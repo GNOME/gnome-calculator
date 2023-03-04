@@ -2,11 +2,12 @@
 # Copyright (C) 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
 # Copyright (C) 2010, 2011, 2013, 2017 Free Software Foundation, Inc.
 # Copyright (C) 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2023 Alexander Shopov <ash@kambanaria.org>.
 # Rostislav Raikov <zbrox@dir.bg>, 2004.
 # Atanas Kosharov <webcrusader@gmail.com>, 2005.
 # Alexander Shopov <ash@kambanaria.org>, 2005, 2006, 2007, 2008, 2009.
 # Alexander Shopov <ash@kambanaria.org>, 2010, 2011, 2012, 2013, 2021.
-# Alexander Shopov <ash@kambanaria.org>, 2022.
+# Alexander Shopov <ash@kambanaria.org>, 2022, 2023.
 # Yavor Doganov <yavor@gnu.org>, 2008, 2009.
 # Ivaylo Valkov <ivaylo@e-valkov.org>, 2010, 2011.
 # Krasimir Chonov <mk2616@abv.bg>, 2014.
@@ -17,8 +18,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2022-03-08 19:42+0000\n"
-"PO-Revision-Date: 2022-03-10 18:52+0100\n"
+"POT-Creation-Date: 2023-03-04 13:50+0000\n"
+"PO-Revision-Date: 2023-03-04 22:10+0200\n"
 "Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "Language: bg\n"
@@ -27,10 +28,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Калкулатор"
 
@@ -84,7 +84,27 @@ msgstr ""
 "системи (двоична, осмична, десетична и шестнайсетична), булева алгебра, "
 "преобразуване в обратен и допълнителен код, преобразуване на знак в код и др."
 
-#: data/org.gnome.Calculator.appdata.xml.in:66
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Основен режим"
+
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "Разширен режим"
+
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Финансов режим"
+
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Програмистки режим"
+
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Клавиатурен режим"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "Проектът GNOME"
 
@@ -480,77 +500,214 @@ msgstr "Корен нулев е неопределена операция"
 msgid "Error: the number of periods must be positive"
 msgstr "Грешка: броят на периодите трябва да е положителен"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Логаритъм"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "Натурален логаритъм"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "Корен квадратен"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "Абсолютна стойност"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "Знак"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
+msgstr "Аргумент"
+
+#: lib/function-manager.vala:60
+msgid "Conjugate"
+msgstr "Спрегнато"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "Цяло число"
+
+#: lib/function-manager.vala:64
+msgid "Fraction"
+msgstr "Дроб"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "Долна скобка"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "Горна скобка"
+
+#: lib/function-manager.vala:70
+msgid "Round"
+msgstr "Закръгляне"
+
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "Реална част"
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr "Имагинерна част"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Синус"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Косинус"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Тангенс"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "Аркуссинус"
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr "Аркускосинус"
+
+#: lib/function-manager.vala:86
+msgid "Arc tangent"
+msgstr "Аркустангенс"
+
+#: lib/function-manager.vala:88
+msgid "Inverse sine"
+msgstr "Обратнен синус"
+
+#: lib/function-manager.vala:90
+msgid "Inverse cosine"
+msgstr "Обратен косинус"
+
+#: lib/function-manager.vala:92
+msgid "Inverse tangent"
+msgstr "Обратен тангенс"
+
+#: lib/function-manager.vala:94
+msgid "Hyperbolic sine"
+msgstr "Хиперболичен синус"
+
+#: lib/function-manager.vala:96
+msgid "Hyperbolic cosine"
+msgstr "Хиперболичен косинус"
+
+#: lib/function-manager.vala:98
+msgid "Hyperbolic tangent"
+msgstr "Хиперболичен тангенс"
+
+#: lib/function-manager.vala:100
+msgid "Hyperbolic arcsine"
+msgstr "Хиперболичен аркуссинус"
+
+#: lib/function-manager.vala:102
+msgid "Hyperbolic arccosine"
+msgstr "Хиперболичен аркускосинус"
+
+#: lib/function-manager.vala:104
+msgid "Hyperbolic arctangent"
+msgstr "Хиперболичен аркустангенс"
+
+#: lib/function-manager.vala:106
+msgid "Inverse hyperbolic sine"
+msgstr "Обратен хиперболичен синус"
+
+#: lib/function-manager.vala:108
+msgid "Inverse hyperbolic cosine"
+msgstr "Обратен хиперболичен косинус"
+
+#: lib/function-manager.vala:110
+msgid "Inverse hyperbolic tangent"
+msgstr "Обратен хиперболичен тангенс"
+
+#: lib/function-manager.vala:112
+msgid "One's complement"
+msgstr "Обратен код"
+
+#: lib/function-manager.vala:114
+msgid "Two's complement"
+msgstr "Допълнителен код"
+
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+msgid "Displayed value not an integer"
+msgstr "Показваната стойност не е цяло число"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Няма история за отмяна на действие"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Няма история за повтаряне на отменено действие"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Тази стойност не може да се запази"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Препълване. Опитайте с по-голям размер на думата"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Неизвестна променлива „%s“"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Функцията „%s“ не е дефинирана"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Неизвестна мерна единица"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "Неправилен израз"
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Изчисляване"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "За разлагането на множители е необходимо цяло число"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Тази стойност не може да се отмести побитово"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
-msgid "Displayed value not an integer"
-msgstr "Показваната стойност не е цяло число"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -2233,8 +2390,8 @@ msgstr "Копиране"
 msgid "Copy result to clipboard"
 msgstr "Копиране на резултата в буфера за обмен"
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Остатък от делене"
 
@@ -2303,33 +2460,21 @@ msgstr "="
 msgid "Calculate Result"
 msgstr "Смятане на резултат"
 
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
 msgstr "Режим за долен индекс [Alt]"
 
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
-msgstr "Режим за горен индекс [Crl]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
+msgstr "Режим за горен индекс [Ctrl]"
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
 msgid "Factorize [Ctrl+F]"
 msgstr "Разлагане на прости множители [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Експоненциален запис [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:519
-msgid "Cosine"
-msgstr "Косинус"
-
-#: src/ui/buttons-advanced.ui:535
-msgid "Sine"
-msgstr "Синус"
-
-#: src/ui/buttons-advanced.ui:551
-msgid "Tangent"
-msgstr "Тангенс"
 
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
@@ -2360,11 +2505,6 @@ msgstr "Неперово число"
 msgid "Natural Logarithm"
 msgstr "Натурален логаритъм"
 
-#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
-#: src/ui/buttons-programming.ui:1921
-msgid "Logarithm"
-msgstr "Логаритъм"
-
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
 msgstr "Факториел [!]"
@@ -2373,36 +2513,44 @@ msgstr "Факториел [!]"
 msgid "Absolute Value [|]"
 msgstr "Абсолютна стойност [|]"
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr "Имагинерна единица"
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "Реална част"
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "Имагинерна част"
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
 msgstr "Спрегнато на комплексно число"
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
-msgstr "Аргумент на комплексно число"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
+msgstr "Аргумент — комплексно число"
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Памет"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "памет"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "Допълнителни функции"
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "Остатък от делене"
 
 #. Title of Compounding Term dialog
 #: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
@@ -2760,6 +2908,14 @@ msgstr "Десетична"
 msgid "Hexadecimal"
 msgstr "Шестнайсетична"
 
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Режим за долен индекс [Alt]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Режим за горен индекс [Crl]"
+
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Отместване наляво"
@@ -2824,27 +2980,27 @@ msgid "_Insert"
 msgstr "_Вмъкване"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Стартиране в този режим („basic“ — основен, „advanced“ — разширен, "
 "„financial“ — финансов, „programming“ — програмиране, „keyboard“ — "
 "клавиатура)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Решаване на уравнение"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Започване с даденото уравнение"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Показване на версията"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
 "Атанас Кошаров &lt;<a href='mailto:webcrusader@gmail.com'>webcrusader@gmail."
@@ -2867,32 +3023,23 @@ msgstr ""
 "Докладвайте за грешки в превода в <a href='https://fsa-bg.org/project/gtp/"
 "newticket'>съответния раздел</a>."
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "Относно „Калкулатор“"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Калкулатор с финансов и научен режим."
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Сигурни ли сте, че искате да затворите всички прозорци?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "Затваряне на _всички"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:609
-#: src/math-buttons.vala:625
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-бит"
 msgstr[1] "%d-бита"
 
-#: src/math-buttons.vala:594
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2903,11 +3050,11 @@ msgstr[1] "%d знака"
 msgid " to "
 msgstr " към "
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Размяна на единиците за преобразуване"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2932,7 +3079,7 @@ msgstr "Дефинирани променливи"
 msgid "New function"
 msgstr "Нова функция"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Брой аргументи"
 
@@ -2988,172 +3135,177 @@ msgstr "_Размер на думата:"
 msgid "E_xchange rate refresh interval"
 msgstr "_Интервал зо опресняване на валутните курсове"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Общи"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Отваряне на нов прозорец"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Затваряне на текущия прозорец"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Спиране на програмата"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Извеждане на помощта"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Отваряне на менюто"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Настройки"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Клавишни комбинации"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Изчистване на историята"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Превключване между режимите"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Основен"
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Разширен"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Финансов"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Програмиране"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Клавиатура"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Въвеждане от клавиатурата"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Умножение (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Деление (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Корен квадратен (√))"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Обратна функция"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Пи (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Въвеждане на числа в научен формат"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Програмиране"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Двоичен запис"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Осмичен запис"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Десетичен запис"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Шестнайсетичен запис"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Други"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Копиране"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Поставяне"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Отмяна"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Повтаряне"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Предишен резултат"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Следващ резултат"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Клавиатура (алт.)"
@@ -3162,7 +3314,7 @@ msgstr "Клавиатура (алт.)"
 msgid "Variable name"
 msgstr "Име на променлива"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Запазване на стойността в съществуваща или нова променлива"
 
@@ -3222,20 +3374,20 @@ msgstr "Клавишни комбинации"
 msgid "_Help"
 msgstr "Помо_щ"
 
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "Относно „Калкулатор“"
+
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
+msgid "Mode Selection"
 msgstr "Избор на режим"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "Отмяна [Ctrl+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Отмяна"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
+msgid "Main Menu"
 msgstr "Основно меню"
 
 #: src/math-window.vala:166
