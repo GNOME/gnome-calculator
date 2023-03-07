@@ -59,6 +59,9 @@ public class Calculator : Adw.Application
         var source_units = settings.get_string ("source-units");
         var target_units = settings.get_string ("target-units");
         var precision = settings.get_int ("precision");
+        var maximized = settings.get_boolean ("window-maximized");
+        int width, height;
+        settings.get ("window-size", "(ii)", out width, out height);
 
         var equation = new MathEquation ();
         equation.accuracy = accuracy;
@@ -77,6 +80,10 @@ public class Calculator : Adw.Application
 
         var current_window = new MathWindow (this, equation);
         current_window.set_title (_("Calculator"));
+        if(maximized)
+            current_window.maximize();
+        else
+            current_window.set_size_request (width, height);
 
         var buttons = current_window.buttons;
         buttons.programming_base = number_base;
@@ -187,6 +194,10 @@ public class Calculator : Adw.Application
         settings.set_string ("source-units", equation.source_units);
         settings.set_string ("target-units", equation.target_units);
         settings.set_int ("base", buttons.programming_base);
+        settings.set_boolean ("window-maximized", window.maximized);
+        int width, height;
+        window.get_default_size(out width, out height);
+        settings.set ("window-size", "(ii)", width, height);
         settings.apply ();
     }
 
