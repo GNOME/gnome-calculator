@@ -50,7 +50,7 @@ if not get_option('disable-ui') and get_option('gci')  and get_option('gcalc')
 				'--pkg=gee-0.8',
 				'--vapidir='+vapis_dir,
 				'--pkg=gcalc-'+API_VERSION,
-				'--pkg=gtk+-3.0',
+				'--pkg=gtk4',
 				'--directory=@OUTDIR@',
 				'@INPUT@'
 				],
