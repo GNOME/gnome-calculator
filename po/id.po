@@ -5,17 +5,17 @@
 # Mohammad DAMT <mdamt@bisnisweb.com> 20031216, 2005.
 # Ahmad Riza H Nst <ari@160c.afraid.org>, 20031210, 20050301.
 # Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2011, 2012.
-# Andika Triwidada <andika@gmail.com>, 2011, 2012, 2013, 2014.
+# Andika Triwidada <andika@gmail.com>, 2011-2014, 2023.
 # Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2021, 2023.
 # Sucipto <sucipto@pm.me>, 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-calculator gnome-3-20\n"
+"Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2023-01-25 18:21+0000\n"
-"PO-Revision-Date: 2023-01-30 11:48+0700\n"
+"POT-Creation-Date: 2023-02-08 10:53+0000\n"
+"PO-Revision-Date: 2023-03-09 10:52+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
@@ -488,81 +488,218 @@ msgstr "ke"
 
 #: lib/equation-parser.vala:735 lib/number.vala:434
 msgid "The zeroth root of a number is undefined"
-msgstr "Akar nol dari sebuah angka tidak didefinisikan"
+msgstr "Akar ke-nol dari sebuah angka tidak didefinisikan"
 
 #: lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "Galat: cacah perioda mesti positif"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Logaritma"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "Logaritma natural"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "Akar kuadrat"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "Nilai absolut"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "Tanda"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
+msgstr "Argumen"
+
+#: lib/function-manager.vala:60
+msgid "Conjugate"
+msgstr "Konjugasi"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "Bilangan bulat"
+
+#: lib/function-manager.vala:64
+msgid "Fraction"
+msgstr "Pecahan"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "Floor"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "Ceiling"
+
+#: lib/function-manager.vala:70
+msgid "Round"
+msgstr "Pembulatan"
+
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "Riil"
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr "Imajiner"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Sinus"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Cosinus"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Tangen"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "Arc sinus"
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr "Arc Kosinus"
+
+#: lib/function-manager.vala:86
+msgid "Arc tangent"
+msgstr "Arc tangen"
+
+#: lib/function-manager.vala:88
+msgid "Inverse sine"
+msgstr "Sinus inverse"
+
+#: lib/function-manager.vala:90
+msgid "Inverse cosine"
+msgstr "Kosinus inverse"
+
+#: lib/function-manager.vala:92
+msgid "Inverse tangent"
+msgstr "Tangen inverse"
+
+#: lib/function-manager.vala:94
+msgid "Hyperbolic sine"
+msgstr "Sinus hiperbola"
+
+#: lib/function-manager.vala:96
+msgid "Hyperbolic cosine"
+msgstr "Kosinus hiperbola"
+
+#: lib/function-manager.vala:98
+msgid "Hyperbolic tangent"
+msgstr "Tangen hiperbola"
+
+#: lib/function-manager.vala:100
+msgid "Hyperbolic arcsine"
+msgstr "Arcsinus hiperbola"
+
+#: lib/function-manager.vala:102
+msgid "Hyperbolic arccosine"
+msgstr "Arckosinus hiperbola"
+
+#: lib/function-manager.vala:104
+msgid "Hyperbolic arctangent"
+msgstr "Arctangen hiperbola"
+
+#: lib/function-manager.vala:106
+msgid "Inverse hyperbolic sine"
+msgstr "Sinus hiperbola inverse"
+
+#: lib/function-manager.vala:108
+msgid "Inverse hyperbolic cosine"
+msgstr "Kosinus hiperbola inverse"
+
+#: lib/function-manager.vala:110
+msgid "Inverse hyperbolic tangent"
+msgstr "Tangen hiperbola inverse"
+
+#: lib/function-manager.vala:112
+msgid "One's complement"
+msgstr "Komplemen Satu"
+
+#: lib/function-manager.vala:114
+msgid "Two's complement"
+msgstr "Komplemen Dua"
+
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:72 lib/math-equation.vala:1409
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
 msgid "Displayed value not an integer"
 msgstr "Nilai yang ditampilkan bukan integer"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:210
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:577
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Tidak ada riwayat \"tak jadi\""
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:598
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Tidak ada riwayat \"jadi lagi\""
 
-#: lib/math-equation.vala:829
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Belum ada nilai untuk disimpan"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1078
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Kelebihan data. Cobalah ukuran huruf yang lebih besar"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1083
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Variabel tak dikenal \"%s\""
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1090
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Fungsi \"%s\" belum didefinisikan"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1097
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Konversi tak dikenal"
 
 #. should always be run
-#: lib/math-equation.vala:1107
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1112 lib/math-equation.vala:1117
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "Ekspresi salah"
 
-#: lib/math-equation.vala:1128
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Sedang menghitung"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1321
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "Perlu nilai integer untuk difaktorkan"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1385
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Tidak ada nilai yang wajar untuk mengeser bit"
 
@@ -758,7 +895,7 @@ msgstr "%s gradian"
 #: lib/unit.vala:43
 msgctxt "unit-symbols"
 msgid "gradian,gradians,grad"
-msgstr "gradien,grad"
+msgstr "gradian,grad"
 
 #: lib/unit.vala:44
 msgid "Parsecs"
@@ -867,7 +1004,7 @@ msgstr "kilometer,km"
 
 #: lib/unit.vala:51
 msgid "Cables"
-msgstr "Cables"
+msgstr "Cable"
 
 #: lib/unit.vala:51
 #, c-format
@@ -1577,7 +1714,7 @@ msgstr "%s ˚C"
 #: lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "degC,˚C,C,c,Celsius,celsius"
-msgstr "erajatC,˚C,C,c,Celsius,celsius"
+msgstr "derajatC,˚C,C,c,Celsius,celsius"
 
 #: lib/unit.vala:99
 msgid "Fahrenheit"
@@ -1642,7 +1779,7 @@ msgstr "bit,b"
 
 #: lib/unit.vala:104
 msgid "Bytes"
-msgstr "Byte"
+msgstr "Bita"
 
 #: lib/unit.vala:104
 #, c-format
@@ -1653,7 +1790,7 @@ msgstr "%s B"
 #: lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
-msgstr "byte,B"
+msgstr "bita,B"
 
 #: lib/unit.vala:105
 msgid "Nibbles"
@@ -1688,7 +1825,7 @@ msgstr "kilobit,kb,Kb"
 
 #: lib/unit.vala:108
 msgid "Kilobytes"
-msgstr "Kilobyte"
+msgstr "Kilobita"
 
 #: lib/unit.vala:108
 #, c-format
@@ -1699,7 +1836,7 @@ msgstr "%s kB"
 #: lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
-msgstr "kilobyte,kB,KB"
+msgstr "kilobita,kB,KB"
 
 #: lib/unit.vala:109
 msgid "Kibibits"
@@ -1718,7 +1855,7 @@ msgstr "kibibit,Kib"
 
 #: lib/unit.vala:110
 msgid "Kibibytes"
-msgstr "Kibibyte"
+msgstr "Kibibita"
 
 #: lib/unit.vala:110
 #, c-format
@@ -1729,7 +1866,7 @@ msgstr "%s KiB"
 #: lib/unit.vala:110
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
-msgstr "kibibyte,KiB"
+msgstr "kibibita,KiB"
 
 #: lib/unit.vala:111
 msgid "Megabits"
@@ -1748,7 +1885,7 @@ msgstr "megabit,Mb"
 
 #: lib/unit.vala:112
 msgid "Megabytes"
-msgstr "Megabyte"
+msgstr "Megabita"
 
 #: lib/unit.vala:112
 #, c-format
@@ -1759,7 +1896,7 @@ msgstr "%s MB"
 #: lib/unit.vala:112
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
-msgstr "megabyte,MB"
+msgstr "megabita,MB"
 
 #: lib/unit.vala:113
 msgid "Mebibits"
@@ -1778,7 +1915,7 @@ msgstr "mebibit,Mib"
 
 #: lib/unit.vala:114
 msgid "Mebibytes"
-msgstr "Mebibyte"
+msgstr "Mebibita"
 
 #: lib/unit.vala:114
 #, c-format
@@ -1789,7 +1926,7 @@ msgstr "%s MiB"
 #: lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
-msgstr "mebibyte,MiB"
+msgstr "mebibita,MiB"
 
 #: lib/unit.vala:115
 msgid "Gigabits"
@@ -1808,7 +1945,7 @@ msgstr "gigabit,Gb"
 
 #: lib/unit.vala:116
 msgid "Gigabytes"
-msgstr "Gigabyte"
+msgstr "Gigabita"
 
 #: lib/unit.vala:116
 #, c-format
@@ -1819,7 +1956,7 @@ msgstr "%s GB"
 #: lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
-msgstr "gigabyte,GB"
+msgstr "gigabita,GB"
 
 #: lib/unit.vala:117
 msgid "Gibibits"
@@ -1838,7 +1975,7 @@ msgstr "gibibit,Gib"
 
 #: lib/unit.vala:118
 msgid "Gibibytes"
-msgstr "Gibibyte"
+msgstr "Gibibita"
 
 #: lib/unit.vala:118
 #, c-format
@@ -1849,7 +1986,7 @@ msgstr "%s GiB"
 #: lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
-msgstr "gibibyte,GiB"
+msgstr "gibibita,GiB"
 
 #: lib/unit.vala:119
 msgid "Terabits"
@@ -1868,7 +2005,7 @@ msgstr "terabit,Tb"
 
 #: lib/unit.vala:120
 msgid "Terabytes"
-msgstr "Terabyte"
+msgstr "Terabita"
 
 #: lib/unit.vala:120
 #, c-format
@@ -1879,7 +2016,7 @@ msgstr "%s TB"
 #: lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
-msgstr "terabyte,TB"
+msgstr "terabita,TB"
 
 #: lib/unit.vala:121
 msgid "Tebibits"
@@ -1898,7 +2035,7 @@ msgstr "tebibit,Tib"
 
 #: lib/unit.vala:122
 msgid "Tebibytes"
-msgstr "Tebibyte"
+msgstr "Tebibita"
 
 #: lib/unit.vala:122
 #, c-format
@@ -1909,7 +2046,7 @@ msgstr "%s TiB"
 #: lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
-msgstr "tebibyte,TiB"
+msgstr "tebibita,TiB"
 
 #: lib/unit.vala:123
 msgid "Petabits"
@@ -1928,7 +2065,7 @@ msgstr "petabit,Pb"
 
 #: lib/unit.vala:124
 msgid "Petabytes"
-msgstr "Petabyte"
+msgstr "Petabita"
 
 #: lib/unit.vala:124
 #, c-format
@@ -1939,7 +2076,7 @@ msgstr "%s PB"
 #: lib/unit.vala:124
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
-msgstr "petabyte,PB"
+msgstr "petabita,PB"
 
 #: lib/unit.vala:125
 msgid "Pebibits"
@@ -1958,7 +2095,7 @@ msgstr "pebibit,Pib"
 
 #: lib/unit.vala:126
 msgid "Pebibytes"
-msgstr "Pebibyte"
+msgstr "Pebibita"
 
 #: lib/unit.vala:126
 #, c-format
@@ -1969,7 +2106,7 @@ msgstr "%s PiB"
 #: lib/unit.vala:126
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
-msgstr "pebibyte,PiB"
+msgstr "pebibita,PiB"
 
 #: lib/unit.vala:127
 msgid "Exabits"
@@ -1988,7 +2125,7 @@ msgstr "exabit,Eb"
 
 #: lib/unit.vala:128
 msgid "Exabytes"
-msgstr "Exabyte"
+msgstr "Exabita"
 
 #: lib/unit.vala:128 lib/unit.vala:132
 #, c-format
@@ -1999,7 +2136,7 @@ msgstr "%s EB"
 #: lib/unit.vala:128
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
-msgstr "exabyte,EB"
+msgstr "exabita,EB"
 
 #: lib/unit.vala:129
 msgid "Exbibits"
@@ -2018,7 +2155,7 @@ msgstr "exbibit,Eib"
 
 #: lib/unit.vala:130
 msgid "Exbibytes"
-msgstr "Exbibyte"
+msgstr "Exbibita"
 
 #: lib/unit.vala:130
 #, c-format
@@ -2029,7 +2166,7 @@ msgstr "%s EiB"
 #: lib/unit.vala:130
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
-msgstr "exbibyte,EiB"
+msgstr "exbibita,EiB"
 
 #: lib/unit.vala:131
 msgid "Zettabits"
@@ -2042,12 +2179,12 @@ msgstr "zettabit,Zb"
 
 #: lib/unit.vala:132
 msgid "Zettabytes"
-msgstr "Zettabyte"
+msgstr "Zettabita"
 
 #: lib/unit.vala:132
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
-msgstr "zettabyte,ZB"
+msgstr "zettabita,ZB"
 
 #: lib/unit.vala:133
 msgid "Zebibits"
@@ -2066,7 +2203,7 @@ msgstr "zebibit,Zib"
 
 #: lib/unit.vala:134
 msgid "Zebibytes"
-msgstr "Zebibyte"
+msgstr "Zebibita"
 
 #: lib/unit.vala:134
 #, c-format
@@ -2077,7 +2214,7 @@ msgstr "%s ZiB"
 #: lib/unit.vala:134
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
-msgstr "zebibyte,ZiB"
+msgstr "zebibita,ZiB"
 
 #: lib/unit.vala:135
 msgid "Yottabits"
@@ -2096,7 +2233,7 @@ msgstr "yottabit,Yb"
 
 #: lib/unit.vala:136
 msgid "Yottabytes"
-msgstr "Yottabyte"
+msgstr "Yottabita"
 
 #: lib/unit.vala:136
 #, c-format
@@ -2107,7 +2244,7 @@ msgstr "%s YB"
 #: lib/unit.vala:136
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
-msgstr "yottabyte,YB"
+msgstr "yottabita,YB"
 
 #: lib/unit.vala:137
 msgid "Yobibits"
@@ -2126,7 +2263,7 @@ msgstr "yobibit,Yib"
 
 #: lib/unit.vala:138
 msgid "Yobibytes"
-msgstr "Yobibyte"
+msgstr "Yobibita"
 
 #: lib/unit.vala:138
 #, c-format
@@ -2137,7 +2274,7 @@ msgstr "%s YiB"
 #: lib/unit.vala:138
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
-msgstr "yobibyte,YiB"
+msgstr "yobibita,YiB"
 
 #: lib/unit.vala:139
 msgid "Hertz"
@@ -2319,18 +2456,6 @@ msgstr "Pemfaktoran [Ctrl+F]"
 msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Eksponen Ilmiah [Ctrl+E]"
 
-#: src/ui/buttons-advanced.ui:519
-msgid "Cosine"
-msgstr "Cosinus"
-
-#: src/ui/buttons-advanced.ui:535
-msgid "Sine"
-msgstr "Sinus"
-
-#: src/ui/buttons-advanced.ui:551
-msgid "Tangent"
-msgstr "Tangen"
-
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
 msgstr "Cosinus Hiperbola"
@@ -2359,11 +2484,6 @@ msgstr "Bilangan Euler"
 #: src/ui/buttons-advanced.ui:681
 msgid "Natural Logarithm"
 msgstr "Logaritma Natural"
-
-#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
-#: src/ui/buttons-programming.ui:1921
-msgid "Logarithm"
-msgstr "Logaritma"
 
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
@@ -2863,12 +2983,9 @@ msgstr "Tampilkan versi rilis"
 #: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
-"Ahmad Riza H Nst <rizahnst@gnome.org>, 2003, 2005.\n"
-"Mohammad DAMT <mdamt@bisnisweb.com>, 2005.\n"
-"Dirgita <dirgitadevina@yahoo.co.id>, 2010, 2011, 2012.\n"
-"Andika Triwidada <andika@gmail.com>, 2011, 2012, 2013, 2014.\n"
-"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2017-2021, 2023.\n"
-"Sucipto <sucipto@pm.me>, 2020."
+"Arief Mulya Utama <arief_mulya@yahoo.com>, 2003.\n"
+"Andika Triwidada <andika@gmail.com>, 2012, 2013, 2021.\n"
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022-2023."
 
 #: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
@@ -3238,144 +3355,3 @@ msgstr "Menu Utama"
 #: src/math-window.vala:166
 msgid "_Quit"
 msgstr "_Keluar"
-
-#~ msgid "GNOME Calculator in Basic Mode"
-#~ msgstr "GNOME Kalkulator dalam Mode Dasar"
-
-#~ msgid "GNOME Calculator in Advanced Mode"
-#~ msgstr "GNOME Kalkulator dalam Mode Tingkat Lanjut"
-
-#~ msgid "GNOME Calculator in Financial Mode"
-#~ msgstr "GNOME Kalkulator dalam Mode Keuangan"
-
-#~ msgid "GNOME Calculator in Programming Mode"
-#~ msgstr "GNOME Kalkulator dalam Mode Pemrograman"
-
-#~ msgid "Calculator with financial and scientific modes."
-#~ msgstr "Kalkulator dengan model keuangan dan ilmuwan."
-
-#~ msgid "Undo [Ctrl+Z]"
-#~ msgstr "Tak Jadi [Ctrl+Z]"
-
-#~ msgid "Primary menu"
-#~ msgstr "Menu utama"
-
-#~ msgid "GNOME Calculator"
-#~ msgstr "GNOME Kalkulator"
-
-#~ msgid "Exponent"
-#~ msgstr "Eksponen"
-
-#~ msgid "Subscript"
-#~ msgstr "Subskrip"
-
-#~ msgid "Superscript"
-#~ msgstr "Superskrip"
-
-#~ msgid "Factorize"
-#~ msgstr "Pemfaktoran"
-
-#~ msgid "Scientific Exponent"
-#~ msgstr "Eksponen Ilmiah"
-
-#~ msgid "Inverse"
-#~ msgstr "Inverse"
-
-#~ msgid "Factorial"
-#~ msgstr "Faktorial"
-
-#~ msgid "Absolute Value"
-#~ msgstr "Nilai Absolut"
-
-#~ msgid "Store"
-#~ msgstr "Simpan"
-
-#~ msgid "Insert Character"
-#~ msgstr "Sisip Karakter"
-
-#~ msgid "Word Size"
-#~ msgstr "Ukuran Huruf"
-
-#~ msgid "Unable to open help file"
-#~ msgstr "Tidak dapat membuka berkas bantuan"
-
-#~ msgid "How often the currency exchange rates should be updated"
-#~ msgstr "Seberapa sering nilai tukar mata uang harus diperbarui"
-
-#~ msgid "Square root [Ctrl+R]"
-#~ msgstr "Akar kuadrat [Ctrl+2]"
-
-#~ msgid "8 bits"
-#~ msgstr "8 bit"
-
-#~ msgid "16 bits"
-#~ msgstr "16 bit"
-
-#~ msgid "32 bits"
-#~ msgstr "32 bit"
-
-#~ msgid "64 bits"
-#~ msgstr "64 bit"
-
-#~ msgid "Number _Format:"
-#~ msgstr "_Format Angka:"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Keyboard shortcuts (alt.)"
-#~ msgstr "Pintasan papan tik (alt.)"
-
-#~ msgid "_Preferences"
-#~ msgstr "_Preferensi"
-
-#~ msgid "_About Calculator"
-#~ msgstr "Tent_ang Kalkulator"
-
-#~ msgid "Start in given mode"
-#~ msgstr "Mulai dengan mode yang diberikan"
-
-#~ msgid "org.gnome.Calculator"
-#~ msgstr "org.gnome.Calculator"
-
-#~ msgid " in "
-#~ msgstr " dalam "
-
-#~ msgid "About"
-#~ msgstr "Tentang"
-
-#~ msgid "Quit"
-#~ msgstr "Keluar"
-
-#~ msgid "Weight"
-#~ msgstr "Massa"
-
-#~ msgid "accessories-calculator"
-#~ msgstr "accessories-calculator"
-
-#~ msgid "Precision error"
-#~ msgstr "Kesalahan presisi"
-
-#~ msgid "Reciprocal of zero is undefined"
-#~ msgstr "Resiprok nol tidak didefinisikan"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degC,˚C"
-#~ msgstr "degC,˚C"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degF,˚F"
-#~ msgstr "degF,˚F"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "K"
-#~ msgstr "K"
-
-#~ msgctxt "unit-symbols"
-#~ msgid "degR,˚R,˚Ra"
-#~ msgstr "degR,˚R,˚Ra"
-
-#~ msgid "_%d place"
-#~ msgid_plural "_%d places"
-#~ msgstr[0] "_%d langkah"
-
-#~ msgid "Show %d decimal _places"
-#~ msgstr "Tam_pilkan %d angka di belakang koma"
