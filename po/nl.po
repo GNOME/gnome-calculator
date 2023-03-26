@@ -10,28 +10,28 @@
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2010–20, 2011, 2018.
 # Erwin Poeze <donnut@outlook.com>, 2013.
 # Reinout van Schouwen <reinouts@gnome.org>, 2013.
-# Nathan Follens <nfollens@gnome.org>, 2015-2022.
+# Nathan Follens <nfollens@gnome.org>, 2015-2023.
 # Justin van Steijn <jvs@fsfe.org>, 2017.
+# Philip Goto <philip.goto@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2022-05-06 20:18+0000\n"
-"PO-Revision-Date: 2022-06-27 14:54+0200\n"
+"POT-Creation-Date: 2023-02-07 21:57+0000\n"
+"PO-Revision-Date: 2023-03-26 15:37+0200\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
-"Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
+"Language-Team: Dutch <https://matrix.to/#/#nl:gnome.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Rekenmachine"
 
@@ -85,9 +85,29 @@ msgstr ""
 "octaal, decimaal en hexadecimaal), booleaanse algebra, 1- en 2-complement, "
 "teken-naar-tekencodeconversie en meer."
 
-#: data/org.gnome.Calculator.appdata.xml.in:66
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Eenvoudige modus"
+
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "Geavanceerde modus"
+
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Financiële modus"
+
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Programmeermodus"
+
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Toetsenbordmodus"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
-msgstr "Het Gnome-project"
+msgstr "Het GNOME-project"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
@@ -483,78 +503,215 @@ msgstr "De nulde wortel van een getal is niet gedefinieerd"
 msgid "Error: the number of periods must be positive"
 msgstr "Fout: het aantal perioden moet positief zijn"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Logaritme"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "Natuurlijk logaritme"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "Vierkantswortel"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "Absolute waarde"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "Signum"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
+msgstr "Argument"
+
+#: lib/function-manager.vala:60
+msgid "Conjugate"
+msgstr "Conjugaat"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "Geheel"
+
+#: lib/function-manager.vala:64
+msgid "Fraction"
+msgstr "Breuk"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "Floor"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "Ceiling"
+
+#: lib/function-manager.vala:70
+msgid "Round"
+msgstr "Rond"
+
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "Reëel"
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr "Imaginair"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Sinus"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Cosinus"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Tangens"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "Boogsinus"
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr "Boogcosinus"
+
+#: lib/function-manager.vala:86
+msgid "Arc tangent"
+msgstr "Boogtangens"
+
+#: lib/function-manager.vala:88
+msgid "Inverse sine"
+msgstr "Omgekeerde sinus"
+
+#: lib/function-manager.vala:90
+msgid "Inverse cosine"
+msgstr "Omgekeerde cosinus"
+
+#: lib/function-manager.vala:92
+msgid "Inverse tangent"
+msgstr "Omgekeerde tangens"
+
+#: lib/function-manager.vala:94
+msgid "Hyperbolic sine"
+msgstr "Hyperbolische sinus"
+
+#: lib/function-manager.vala:96
+msgid "Hyperbolic cosine"
+msgstr "Hyperbolische cosinus"
+
+#: lib/function-manager.vala:98
+msgid "Hyperbolic tangent"
+msgstr "Hyperbolische tangens"
+
+#: lib/function-manager.vala:100
+msgid "Hyperbolic arcsine"
+msgstr "Hyperbolische boogsinus"
+
+#: lib/function-manager.vala:102
+msgid "Hyperbolic arccosine"
+msgstr "Hyperbolische boogcosinus"
+
+#: lib/function-manager.vala:104
+msgid "Hyperbolic arctangent"
+msgstr "Hyperbolische boogtangens"
+
+#: lib/function-manager.vala:106
+msgid "Inverse hyperbolic sine"
+msgstr "Omgekeerde hyperbolische sinus"
+
+#: lib/function-manager.vala:108
+msgid "Inverse hyperbolic cosine"
+msgstr "Omgekeerde hyperbolische cosinus"
+
+#: lib/function-manager.vala:110
+msgid "Inverse hyperbolic tangent"
+msgstr "Omgekeerde hyperbolische tangens"
+
+#: lib/function-manager.vala:112
+msgid "One's complement"
+msgstr "1-complement"
+
+#: lib/function-manager.vala:114
+msgid "Two's complement"
+msgstr "2-complement"
+
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+msgid "Displayed value not an integer"
+msgstr "Weergegeven waarde is niet een geheel getal"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:176
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 # herstelhistorie
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:543
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Herstelgeschiedenis leeg"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:564
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Geen geschiedenis om te herhalen"
 
-#: lib/math-equation.vala:795
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Geen geldige waarde om op te slaan"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Overloop. Probeer een groter formaat woord"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Onbekende variable “%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Functie “%s” is niet gedefinieerd"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Onbekende conversie"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "Ongeldige uitdrukking"
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Uitrekenen"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "Geheel getal nodig om te kunnen ontbinden"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Waarde kan niet bitsgewijs worden verschoven"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
-msgid "Displayed value not an integer"
-msgstr "Weergegeven waarde is niet een geheel getal"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -2225,8 +2382,8 @@ msgstr "Kopiëren"
 msgid "Copy result to clipboard"
 msgstr "Resultaat kopiëren naar klembord"
 
-#: src/ui/buttons-advanced.ui:122 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:1290 src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Modulair delen"
 
@@ -2295,12 +2452,12 @@ msgstr "="
 msgid "Calculate Result"
 msgstr "Bereken antwoord"
 
-#: src/ui/buttons-advanced.ui:439 src/ui/buttons-programming.ui:1709
-msgid "Subscript mode [Alt]"
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
 msgstr "Subscriptmodus [Alt]"
 
-#: src/ui/buttons-advanced.ui:460 src/ui/buttons-programming.ui:1730
-msgid "Superscript mode [Ctrl]"
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
 msgstr "Superscriptmodus [Ctrl]"
 
 #: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
@@ -2308,20 +2465,8 @@ msgid "Factorize [Ctrl+F]"
 msgstr "Ontbinden [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Wetenschappelijke notatie [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:519
-msgid "Cosine"
-msgstr "Cosinus"
-
-#: src/ui/buttons-advanced.ui:535
-msgid "Sine"
-msgstr "Sinus"
-
-#: src/ui/buttons-advanced.ui:551
-msgid "Tangent"
-msgstr "Tangens"
 
 #: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
@@ -2352,11 +2497,6 @@ msgstr "Het getal van Euler"
 msgid "Natural Logarithm"
 msgstr "Natuurlijke logaritme"
 
-#: src/ui/buttons-advanced.ui:697 src/ui/buttons-financial.ui:1573
-#: src/ui/buttons-programming.ui:1921
-msgid "Logarithm"
-msgstr "Logaritme"
-
 #: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
 msgstr "Faculteit [!]"
@@ -2365,36 +2505,44 @@ msgstr "Faculteit [!]"
 msgid "Absolute Value [|]"
 msgstr "Absolute waarde [|]"
 
-#: src/ui/buttons-advanced.ui:778
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr "Imaginaire eenheid"
+
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "Reële deel"
 
-#: src/ui/buttons-advanced.ui:795
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "Imaginaire deel"
 
-#: src/ui/buttons-advanced.ui:812
-msgid "Complex conjugate"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
 msgstr "Complex toegevoegd"
 
-#: src/ui/buttons-advanced.ui:829
-msgid "Complex argument"
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
 msgstr "Complex argument"
 
-#: src/ui/buttons-advanced.ui:844 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
 #: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Geheugen"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
 #: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:859
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "Aanvullende functies"
+
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "Modulair delen"
 
 #. Title of Compounding Term dialog
 #: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
@@ -2758,6 +2906,14 @@ msgstr "Decimaal"
 msgid "Hexadecimal"
 msgstr "Hexadecimaal"
 
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Subscriptmodus [Alt]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Superscriptmodus [Ctrl]"
+
 #: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Shift links"
@@ -2823,26 +2979,27 @@ msgid "_Insert"
 msgstr "_Invoegen"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Opstarten in gegeven modus (basic, advanced, financial, programming, "
 "keyboard)"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Opgegeven vergelijking oplossen"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Met opgegeven vergelijking starten"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Uitgaveversie tonen"
 
+# Deze indeling werkt niet zo goed met het nieuwe over-venster. Ik heb de lege regels weggehaald, maar de tussenkopjes ogen wat vreemd.
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
 "Wouter Bolsterlee\n"
@@ -2852,67 +3009,57 @@ msgstr ""
 "Hannie Dumoleyn\n"
 "Erwin Poeze\n"
 "Nathan Follens <nfollens@gnome.org>\n"
-"\n"
-"Meer info over Gnome-NL http://nl.gnome.org/\n"
-"\n"
+"Philip Goto <philip.goto@gmail.com>\n"
+"Meer info over GNOME-NL https://nl.gnome.org/\n"
 "Launchpad-vertalers:\n"
-"  Bert Van de Poel https://launchpad.net/~bhack\n"
-"  Dennis Groenveld https://launchpad.net/~d3nn1s\n"
-"  Faperdaper https://launchpad.net/~faperdaper\n"
-"  Peter Eijlander https://launchpad.net/~peter-eijlander\n"
-"  Redmar https://launchpad.net/~redmar\n"
-"  SamuelVH https://launchpad.net/~samuel-van-hecken\n"
-"  Thomas Rinsma https://launchpad.net/~rinsmaster\n"
-"  Tino Meinen https://launchpad.net/~a-t-meinen\n"
-"  UndiFineD https://launchpad.net/~k.dejong\n"
-"  cschutijser https://launchpad.net/~cschutijser\n"
-"  koen noens https://launchpad.net/~knpa01\n"
-"  rob https://launchpad.net/~rvdb\n"
-"  Bert Van de Poel https://launchpad.net/~bhack\n"
-"  Dennis Groenveld https://launchpad.net/~d3nn1s\n"
-"  Faperdaper https://launchpad.net/~faperdaper\n"
-"  Hannie Dumoleyn https://launchpad.net/~lafeber-dumoleyn\n"
-"  Jaap Woldringh https://launchpad.net/~jjh-woldringh\n"
-"  Jitse https://launchpad.net/~jitseklomp\n"
-"  Kenneth Venken https://launchpad.net/~kenneth-venken\n"
-"  Peter Eijlander https://launchpad.net/~peter-eijlander\n"
-"  Redmar https://launchpad.net/~redmar\n"
-"  Reinout van Schouwen https://launchpad.net/~reinouts\n"
-"  SamVH https://launchpad.net/~samvh\n"
-"  Thomas Rinsma https://launchpad.net/~rinsmaster\n"
-"  Tino Meinen https://launchpad.net/~a-t-meinen\n"
-"  UndiFineD https://launchpad.net/~k.dejong\n"
-"  Volleybal4life https://launchpad.net/~volleybal4life\n"
-"  cschutijser https://launchpad.net/~cschutijser\n"
-"  koen noens https://launchpad.net/~knpa01\n"
-"  rob https://launchpad.net/~rvdb"
+"Bert Van de Poel https://launchpad.net/~bhack\n"
+"Dennis Groenveld https://launchpad.net/~d3nn1s\n"
+"Faperdaper https://launchpad.net/~faperdaper\n"
+"Peter Eijlander https://launchpad.net/~peter-eijlander\n"
+"Redmar https://launchpad.net/~redmar\n"
+"SamuelVH https://launchpad.net/~samuel-van-hecken\n"
+"Thomas Rinsma https://launchpad.net/~rinsmaster\n"
+"Tino Meinen https://launchpad.net/~a-t-meinen\n"
+"UndiFineD https://launchpad.net/~k.dejong\n"
+"cschutijser https://launchpad.net/~cschutijser\n"
+"koen noens https://launchpad.net/~knpa01\n"
+"rob https://launchpad.net/~rvdb\n"
+"Bert Van de Poel https://launchpad.net/~bhack\n"
+"Dennis Groenveld https://launchpad.net/~d3nn1s\n"
+"Faperdaper https://launchpad.net/~faperdaper\n"
+"Hannie Dumoleyn https://launchpad.net/~lafeber-dumoleyn\n"
+"Jaap Woldringh https://launchpad.net/~jjh-woldringh\n"
+"Jitse https://launchpad.net/~jitseklomp\n"
+"Kenneth Venken https://launchpad.net/~kenneth-venken\n"
+"Peter Eijlander https://launchpad.net/~peter-eijlander\n"
+"Redmar https://launchpad.net/~redmar\n"
+"Reinout van Schouwen https://launchpad.net/~reinouts\n"
+"SamVH https://launchpad.net/~samvh\n"
+"Thomas Rinsma https://launchpad.net/~rinsmaster\n"
+"Tino Meinen https://launchpad.net/~a-t-meinen\n"
+"UndiFineD https://launchpad.net/~k.dejong\n"
+"Volleybal4life https://launchpad.net/~volleybal4life\n"
+"cschutijser https://launchpad.net/~cschutijser\n"
+"koen noens https://launchpad.net/~knpa01\n"
+"rob https://launchpad.net/~rvdb"
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "Over Rekenmachine"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Rekenmachine met financiële en wetenschappelijke standen."
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Weet u zeker dat u alle geopende vensters wilt sluiten?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "_Alles sluiten"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:609
-#: src/math-buttons.vala:625
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-bit"
 msgstr[1] "%d-bits"
 
-#: src/math-buttons.vala:594
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
@@ -2923,11 +3070,11 @@ msgstr[1] "%d plaatsverschuivingen"
 msgid " to "
 msgstr " tot "
 
-#: src/ui/math-converter.ui:59
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Conversie-eenheid omschakelen"
 
-#: src/ui/math-converter.ui:98
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
@@ -2952,7 +3099,7 @@ msgstr "Gedefinieerde variabelen"
 msgid "New function"
 msgstr "Nieuwe functie"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Selecteer het aantal parameters"
 
@@ -3008,173 +3155,178 @@ msgstr "Woord_grootte"
 msgid "E_xchange rate refresh interval"
 msgstr "Vernieuwinterval voor wissel_koersen"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Algemeen"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Een nieuw venster openen"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Huidig venster sluiten"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "De toepassing afsluiten"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Hulp tonen"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Menu openen"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Voorkeuren tonen"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Sneltoetsen"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Geschiedenis wissen"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Omschakelen tussen modi"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Omschakelen naar eenvoudige modus"
 
 # sneltoets is Ctrl + a en de _G wordt gebruikt voor geheugenregisters
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Omschakelen naar geavanceerde modus"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Omschakelen naar financiële modus"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Omschakelen naar programmeermodus"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Omschakelen naar toetsenbordmodus"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Toetsenbordinvoer"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Vermenigvuldigen (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Delen (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Vierkantswortel (√)"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Omgekeerde waarde"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Pi (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Cijfers invoeren in wetenschappelijke notatie"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Programmeermodus"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Omschakelen naar binair"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Omschakelen naar octaal"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Omschakelen naar decimaal"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Omschakelen naar hexadecimaal"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Overige"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Kopiëren"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Plakken"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Opnieuw"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Vorig resultaat"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Volgend resultaat"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Omschakelen naar toetsenbordmodus (alt.)"
@@ -3183,7 +3335,7 @@ msgstr "Omschakelen naar toetsenbordmodus (alt.)"
 msgid "Variable name"
 msgstr "Naam van variabele"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Waarde opslaan in bestaande of nieuwe variabele"
 
@@ -3244,25 +3396,34 @@ msgstr "Sneltoetsen"
 msgid "_Help"
 msgstr "_Hulp"
 
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "Over Rekenmachine"
+
 #: src/ui/math-window.ui:117
-msgid "Mode selection"
+msgid "Mode Selection"
 msgstr "Modusselectie"
 
-#: src/ui/math-window.ui:128
-msgid "Undo [Ctrl+Z]"
-msgstr "Ongedaan maken [Ctrl+Z]"
-
-#: src/ui/math-window.ui:132
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Ongedaan maken"
 
 #: src/ui/math-window.ui:143
-msgid "Primary menu"
-msgstr "Primair menu"
+msgid "Main Menu"
+msgstr "Hoofdmenu"
 
 #: src/math-window.vala:166
 msgid "_Quit"
 msgstr "_Afsluiten"
+
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Rekenmachine met financiële en wetenschappelijke standen."
+
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "Ongedaan maken [Ctrl+Z]"
+
+#~ msgid "Primary menu"
+#~ msgstr "Primair menu"
 
 #~ msgid "GNOME Calculator"
 #~ msgstr "Gnome Rekenmachine"
@@ -3295,14 +3456,8 @@ msgstr "_Afsluiten"
 #~ msgid "Scientific Exponent"
 #~ msgstr "Wetenschappelijke exponent"
 
-#~ msgid "Inverse"
-#~ msgstr "Omgekeerde waarde"
-
 #~ msgid "Factorial"
 #~ msgstr "Faculteit"
-
-#~ msgid "Absolute Value"
-#~ msgstr "Absolute waarde"
 
 #~ msgid "Store"
 #~ msgstr "Opslaan"
@@ -3321,12 +3476,6 @@ msgstr "_Afsluiten"
 
 #~ msgid "Square root [Ctrl+R]"
 #~ msgstr "Vierkantswortel [Ctrl+R]"
-
-#~ msgid "Basic Mode"
-#~ msgstr "Eenvoudige modus"
-
-#~ msgid "Financial Mode"
-#~ msgstr "Financiële modus"
 
 #~ msgid "8 bits"
 #~ msgstr "8-bits"
@@ -3351,9 +3500,6 @@ msgstr "_Afsluiten"
 
 #~ msgid "_About Calculator"
 #~ msgstr "Ove_r Rekenmachine"
-
-#~ msgid "Menu"
-#~ msgstr "Menu"
 
 #~| msgid "gnome-calculator"
 #~ msgid "org.gnome.Calculator"
