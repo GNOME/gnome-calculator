@@ -123,6 +123,8 @@ public class Calculator : Adw.Application
             CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
             CurrencyManager.get_default ().refresh_async ();
         });
+
+        style_manager.set_accent_color (Adw.AccentColor.ORANGE);
     }
 
     private MathWindow get_active_math_window ()
