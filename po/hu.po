@@ -1,5 +1,5 @@
 # Hungarian translation for gnome-calculator.
-# Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2018, 2019, 2020, 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016, 2018, 2019, 2020, 2021, 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-calculator package.
 #
 # Andras Timar <timar at gnome dot hu>, 2003.
@@ -7,27 +7,26 @@
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2006, 2007, 2008, 2009.
 # Mate ORY <orymate at gmail d0t com>, 2006.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2009, 2010, 2011, 2012, 2013, 2016.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2018, 2019, 2020, 2021, 2022.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2018, 2019, 2020, 2021, 2022, 2023.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2020, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2022-02-24 20:28+0000\n"
-"PO-Revision-Date: 2022-03-11 00:31+0100\n"
+"POT-Creation-Date: 2023-01-27 13:53+0000\n"
+"PO-Revision-Date: 2023-03-30 00:07+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 22.08.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Program name in the about dialog
 #: data/org.gnome.Calculator.appdata.xml.in:7
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:324 src/ui/math-window.ui:107
+#: src/gnome-calculator.vala:320 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Számológép"
 
@@ -37,11 +36,6 @@ msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Aritmetikai, tudományos vagy pénzügyi számítások végrehajtása"
 
 #: data/org.gnome.Calculator.appdata.xml.in:10
-#| msgid ""
-#| "GNOME Calculator is an application that solves mathematical equations. "
-#| "Though it at first appears to be a simple calculator with only basic "
-#| "arithmetic operations, you can switch into Advanced, Financial, or "
-#| "Programming mode to find a surprising set of capabilities."
 msgid ""
 "Calculator is an application that solves mathematical equations. Though it "
 "at first appears to be a simple calculator with only basic arithmetic "
@@ -85,7 +79,7 @@ msgstr ""
 "tízes, tizenhatos) közötti átváltást, a boole-algebrát, egyes és kettes "
 "komplemenseket, karakterből karakterkódra váltásokat, és még sok mást."
 
-#: data/org.gnome.Calculator.appdata.xml.in:66
+#: data/org.gnome.Calculator.appdata.xml.in:66 src/gnome-calculator.vala:322
 msgid "The GNOME Project"
 msgstr "A GNOME projekt"
 
@@ -465,11 +459,11 @@ msgstr "Dél-afrikai rand"
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
 #: lib/equation-lexer.vala:734 src/math-converter.vala:231
 msgid "in"
-msgstr "ebben:"
+msgstr "hány"
 
 #: lib/equation-lexer.vala:734
 msgid "to"
-msgstr "erre: "
+msgstr "hány"
 
 #: lib/equation-parser.vala:735 lib/number.vala:434
 msgid "The zeroth root of a number is undefined"
@@ -499,55 +493,55 @@ msgid "No sane value to store"
 msgstr "Nincs tárolható ép kifejezés"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1056
+#: lib/math-equation.vala:1044
 msgid "Overflow. Try a bigger word size"
 msgstr "Túlcsordulás. Próbálja nagyobb szóhosszal."
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1061
+#: lib/math-equation.vala:1049
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Ismeretlen változó: „%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1068
+#: lib/math-equation.vala:1056
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "A(z)„%s” függvény nincs meghatározva"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1075
+#: lib/math-equation.vala:1063
 msgid "Unknown conversion"
 msgstr "Ismeretlen konverzió"
 
 #. should always be run
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1073
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1090 lib/math-equation.vala:1095
+#: lib/math-equation.vala:1078 lib/math-equation.vala:1083
 msgid "Malformed expression"
 msgstr "Hibás kifejezés"
 
-#: lib/math-equation.vala:1106
+#: lib/math-equation.vala:1094
 msgid "Calculating"
 msgstr "Számítás"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1299
+#: lib/math-equation.vala:1287
 msgid "Need an integer to factorize"
 msgstr "A faktorizáláshoz egész szám szükséges"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1363
+#: lib/math-equation.vala:1351
 msgid "No sane value to bitwise shift"
 msgstr "Nincs ép érték a bitenkénti eltoláshoz"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1385
+#: lib/math-equation.vala:1373
 msgid "Displayed value not an integer"
 msgstr "A megjelenített érték nem egész"
 
@@ -2834,7 +2828,7 @@ msgid "Show release version"
 msgstr "Verziószám megjelenítése"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:332
 msgid "translator-credits"
 msgstr ""
 "Dvornik László <dvornik at gnome dot hu>\n"
@@ -2843,20 +2837,11 @@ msgstr ""
 "Tímár András <timar at gnome dot hu>\n"
 "Úr Balázs <ur dot balazs at fsf dot hu>"
 
-#: src/gnome-calculator.vala:325 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "Számológép névjegye"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:334
-msgid "Calculator with financial and scientific modes."
-msgstr "Számológép pénzügyi és tudományos üzemmódokkal."
-
-#: src/gnome-calculator.vala:347
+#: src/gnome-calculator.vala:344
 msgid "Are you sure you want to close all open windows?"
 msgstr "Biztosan be szeretné zárni az összes nyitott ablakot?"
 
-#: src/gnome-calculator.vala:348
+#: src/gnome-calculator.vala:345
 msgid "Close _All"
 msgstr "Ö_sszes bezárása"
 
@@ -2877,7 +2862,7 @@ msgstr[1] "%d jegy"
 
 #: src/ui/math-converter.ui:41
 msgid " to "
-msgstr " erre: "
+msgstr " hány "
 
 #: src/ui/math-converter.ui:59
 msgid "Switch conversion units"
@@ -2897,7 +2882,6 @@ msgid "Built-in keywords"
 msgstr "Beépített kulcsszavak"
 
 #: src/math-display.vala:695
-#| msgid "Defined Functions"
 msgid "Defined currencies"
 msgstr "Definiált pénznemek"
 
@@ -2909,7 +2893,7 @@ msgstr "Definiált változók"
 msgid "New function"
 msgstr "Új függvény"
 
-#: src/ui/math-function-popover.ui:37
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Válassza ki az argumentumok számát"
 
@@ -2930,17 +2914,14 @@ msgid "64-bit"
 msgstr "64 bites"
 
 #: src/math-preferences.vala:138
-#| msgid "never"
 msgid "Never"
 msgstr "Soha"
 
 #: src/math-preferences.vala:140
-#| msgid "daily"
 msgid "Daily"
 msgstr "Naponta"
 
 #: src/math-preferences.vala:142
-#| msgid "weekly"
 msgid "Weekly"
 msgstr "Hetente"
 
@@ -3142,7 +3123,7 @@ msgstr "Váltás a Billentyűzet módra (alt.)"
 msgid "Variable name"
 msgstr "Változónév"
 
-#: src/ui/math-variable-popover.ui:40
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Érték tárolása meglévő vagy új változóban"
 
@@ -3201,6 +3182,10 @@ msgstr "Gyorsbillentyűk"
 #: src/ui/math-window.ui:97
 msgid "_Help"
 msgstr "_Súgó"
+
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "Számológép névjegye"
 
 #: src/ui/math-window.ui:117
 msgid "Mode selection"
