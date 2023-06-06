@@ -472,3 +472,67 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
         _currency_manager.add_provider (this);
     }
 }
+
+public class BCProvider : AbstractCurrencyProvider {
+    public override string rate_filepath { owned get {
+        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "fxtwdcad.xml"); } }
+
+    public override string rate_source_url { get {
+        return "https://www.bankofcanada.ca/valet/observations/FXTWDCAD/xml?recent=1"; } }
+
+    public override string source_name { get { return "BC";} }
+
+    protected override void do_load_rates ()
+    {
+        Xml.Parser.init ();
+        var document = Xml.Parser.read_file (rate_filepath);
+        if (document == null)
+        {
+            warning ("Couldn't parse rate file %s", rate_filepath);
+            return;
+        }
+
+        var xpath_ctx = new Xml.XPath.Context (document);
+        if (xpath_ctx == null)
+        {
+            warning ("Couldn't create XPath context");
+            return;
+        }
+
+        var xpath_obj = xpath_ctx.eval_expression ("//observations/o[last()]/v");
+        if (xpath_obj == null)
+        {
+            warning ("Couldn't create XPath object");
+            return;
+        }
+        var node = xpath_obj->nodesetval->item (0);
+        var rate = node->get_content ();
+
+        var cad_rate = get_currency ("CAD");
+        if (cad_rate == null)
+        {
+            warning ("Cannot use BC rates as don't have CAD rate");
+            return;
+        }
+
+        set_rate ("TWD", rate, cad_rate);
+
+        base.do_load_rates ();
+    }
+
+    private void set_rate (string name, string value, Currency cad_rate)
+    {
+        debug ("Using BC rate of %s for %s", value, name);
+        var c = register_currency (name, source_name);
+        var r = mp_set_from_string (value);
+        var v = cad_rate.get_value ();
+        v = v.divide (r);
+        c.set_value (v);
+    }
+
+    public BCProvider (CurrencyManager _currency_manager)
+    {
+       Object(currency_manager: _currency_manager);
+       _currency_manager.add_provider (this);
+    }
+}
