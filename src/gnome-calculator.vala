@@ -80,10 +80,8 @@ public class Calculator : Adw.Application
 
         var current_window = new MathWindow (this, equation);
         current_window.set_title (_("Calculator"));
-        if(maximized)
-            current_window.maximize();
-        else
-            current_window.set_size_request (width, height);
+        current_window.maximized = maximized;
+        current_window.set_default_size (width, height);
 
         var buttons = current_window.buttons;
         buttons.programming_base = number_base;
