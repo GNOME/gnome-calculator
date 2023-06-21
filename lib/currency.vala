@@ -28,6 +28,15 @@ public class CurrencyManager : Object
 
     public bool loaded { get; private set; }
 
+    public string[] get_provider_links () {
+        var links = new string [providers.length ()];
+        var i = 0;
+        foreach (var p in providers) {
+            links[i++] = "<a href=\"%s\">%s</a>".printf (p.attribution_link, p.provider_name);
+        }
+        return links;
+    }
+
     public void add_provider (CurrencyProvider provider) {
         providers.append (provider);
     }

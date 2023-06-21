@@ -9,15 +9,23 @@ public interface CurrencyProvider : Object {
     public abstract void clear ();
 
     public abstract bool is_loaded();
+
+    public abstract string attribution_link { get ; }
+
+    public abstract string provider_name { get ; }
 }
 
 public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
-    public abstract string rate_filepath {owned get ;}
+    public abstract string attribution_link { get ; }
 
-    public abstract string rate_source_url {get;}
+    public abstract string provider_name { get ; }
 
-    public abstract string source_name {get;}
+    public abstract string rate_filepath { owned get ; }
+
+    public abstract string rate_source_url { get; }
+
+    public abstract string source_name { get; }
 
     public int refresh_interval { get; private set; }
 
@@ -36,13 +44,13 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     protected bool loading;
     protected bool loaded;
     protected List<Currency> currencies;
-    public CurrencyManager currency_manager {get; construct;}
+    public CurrencyManager currency_manager { get; construct; }
 
     public void clear () {
         FileUtils.remove (rate_filepath);
     }
 
-    public Currency register_currency(string symbol, string source) {
+    public Currency register_currency (string symbol, string source) {
         Currency currency = currency_manager.add_currency (symbol, source);
         currencies.append(currency);
         return currency;
@@ -170,6 +178,12 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
 
     public override string rate_source_url { get {
         return "https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"; } }
+
+    public override string attribution_link { get {
+        return "https://www.imf.org/external/np/fin/data/rms_five.aspx"; } }
+
+    public override string provider_name { get {
+        return _("International Monetary Fund"); } }
 
     public override string source_name { get { return "IMF";} }
 
@@ -374,6 +388,12 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
 
     public override string rate_source_url { get {
         return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
+
+    public override string attribution_link { get {
+        return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
+
+    public override string provider_name { get {
+        return _("European Central Bank"); } }
 
     public override string source_name { get { return "ECB";} }
 
