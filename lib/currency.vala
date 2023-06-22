@@ -90,6 +90,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("IRR", _("Iranian Rial"), "﷼"));
         default_currency_manager.currencies.append (new Currency ("ISK", _("Icelandic Krona"), "kr"));
         default_currency_manager.currencies.append (new Currency ("JPY", _("Japanese Yen"), "¥"));
+        default_currency_manager.currencies.append (new Currency ("JMD", _("Jamaican Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("KRW", _("South Korean Won"), "₩"));
         default_currency_manager.currencies.append (new Currency ("KWD", _("Kuwaiti Dinar"), "ك.د"));
         default_currency_manager.currencies.append (new Currency ("KZT", _("Kazakhstani Tenge"), "₸"));
@@ -125,6 +126,7 @@ public class CurrencyManager : Object
         if (defaultProviders) {
             new ImfCurrencyProvider (default_currency_manager);
             new EcbCurrencyProvider (default_currency_manager);
+            new UnCurrencyProvider  (default_currency_manager);
             default_currency_manager.initialize_providers (asyncLoad);
         }
 
