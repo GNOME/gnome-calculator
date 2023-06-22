@@ -118,6 +118,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("TND", _("Tunisian Dinar"), "ت.د"));
         default_currency_manager.currencies.append (new Currency ("TRY", _("Turkish Lira"), "₺"));
         default_currency_manager.currencies.append (new Currency ("TTD", _("T&T Dollar (TTD)"), "$"));
+        default_currency_manager.currencies.append (new Currency ("UAH", _("Ukrainian Hryvnia"), "₴"));
         default_currency_manager.currencies.append (new Currency ("USD", _("US Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("UYU", _("Uruguayan Peso"), "$"));
         default_currency_manager.currencies.append (new Currency ("VEF", _("Venezuelan Bolívar"), "Bs F"));
