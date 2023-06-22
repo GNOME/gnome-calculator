@@ -492,3 +492,92 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
         _currency_manager.add_provider (this);
     }
 }
+
+public class UnCurrencyProvider : AbstractCurrencyProvider {
+    public override string rate_filepath { owned get {
+        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "un-daily.xls"); } }
+
+    public override string rate_source_url { get {
+        return "https://treasury.un.org/operationalrates/xsql2CSV.php"; } }
+
+    public override string attribution_link { get {
+        return "https://treasury.un.org/operationalrates/OperationalRates.php"; } }
+
+    public override string provider_name { get {
+        return _("United Nations Treasury"); } }
+
+    public override string source_name { get { return "UNT";} }
+
+    private HashTable <string, string> get_currency_map () {
+        HashTable <string, string> name_map = new HashTable <string, string> (str_hash, str_equal);
+        name_map.insert ("JMD", "Jamaican Dollar");
+        return name_map;
+    }
+
+    protected override void do_load_rates ()
+    {
+        var currency_map = get_currency_map ();
+        string data;
+        try
+        {
+            FileUtils.get_contents (rate_filepath, out data);
+        }
+        catch (Error e)
+        {
+            warning ("Failed to read exchange rates: %s", e.message);
+            return;
+        }
+
+        var lines = data.split ("\r\n", 0);
+
+        var in_data = false;
+        var usd_rate = get_currency ("USD");
+        if (usd_rate == null)
+        {
+            warning ("Cannot use UN rates as don't have USD rate");
+            return;
+        }
+        foreach (var line in lines)
+        {
+            line = line.chug ();
+
+            /* Start after first blank line, stop on next */
+            if (line == "")
+            {
+                if (!in_data)
+                {
+                   in_data = true;
+                   continue;
+                }
+                else
+                   break;
+            }
+            if (!in_data)
+                continue;
+
+            var tokens = line.split ("\t", 0);
+            int value_index = 4;
+            int symbol_index = 2;
+            if (value_index <= tokens.length && symbol_index <= tokens.length) 
+            {
+                var name = tokens [symbol_index];
+                var value = tokens [value_index].chug ();
+                if (name != null && value != null && get_currency (name) == null && currency_map.lookup (name) != null) {
+                    var c = register_currency (name, source_name);
+                    var r = mp_set_from_string (value);
+                    debug ("Registering %s with value '%s'\r\n", name, value);
+                    var v = usd_rate.get_value ();
+                    v = v.multiply (r);
+                    c.set_value (v);
+                }
+            }
+        }
+        base.do_load_rates ();
+    }
+
+    public UnCurrencyProvider (CurrencyManager _currency_manager)
+    {
+        Object(currency_manager: _currency_manager);
+        _currency_manager.add_provider (this);
+    }
+}
