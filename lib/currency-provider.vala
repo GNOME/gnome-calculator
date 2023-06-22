@@ -493,12 +493,18 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
     }
 }
 
-public class BCProvider : AbstractCurrencyProvider {
+public class BCCurrencyProvider : AbstractCurrencyProvider {
     public override string rate_filepath { owned get {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "fxtwdcad.xml"); } }
 
     public override string rate_source_url { get {
         return "https://www.bankofcanada.ca/valet/observations/FXTWDCAD/xml?recent=1"; } }
+
+    public override string attribution_link { get {
+        return "https://www.bankofcanada.ca/valet/observations/FXTWDCAD/xml?recent=1"; } }
+
+    public override string provider_name { get {
+        return _("Bank of Canada"); } }
 
     public override string source_name { get { return "BC";} }
 
@@ -550,10 +556,10 @@ public class BCProvider : AbstractCurrencyProvider {
         c.set_value (v);
     }
 
-    public BCProvider (CurrencyManager _currency_manager)
+    public BCCurrencyProvider (CurrencyManager _currency_manager)
     {
-       Object(currency_manager: _currency_manager);
-       _currency_manager.add_provider (this);
+        Object(currency_manager: _currency_manager);
+        _currency_manager.add_provider (this);
     }
 }
 public class UnCurrencyProvider : AbstractCurrencyProvider {

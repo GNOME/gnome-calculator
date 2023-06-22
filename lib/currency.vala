@@ -129,7 +129,7 @@ public class CurrencyManager : Object
         if (defaultProviders) {
             new ImfCurrencyProvider (default_currency_manager);
             new EcbCurrencyProvider (default_currency_manager);
-            new BCProvider(default_currency_manager);
+            new BCCurrencyProvider  (default_currency_manager);
             new UnCurrencyProvider  (default_currency_manager);
             default_currency_manager.initialize_providers (asyncLoad);
         }
