@@ -28,6 +28,15 @@ public class CurrencyManager : Object
 
     public bool loaded { get; private set; }
 
+    public string[] get_provider_links () {
+        var links = new string [providers.length ()];
+        var i = 0;
+        foreach (var p in providers) {
+            links[i++] = "<a href=\"%s\">%s</a>".printf (p.attribution_link, p.provider_name);
+        }
+        return links;
+    }
+
     public void add_provider (CurrencyProvider provider) {
         providers.append (provider);
     }
@@ -81,6 +90,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("IRR", _("Iranian Rial"), "﷼"));
         default_currency_manager.currencies.append (new Currency ("ISK", _("Icelandic Krona"), "kr"));
         default_currency_manager.currencies.append (new Currency ("JPY", _("Japanese Yen"), "¥"));
+        default_currency_manager.currencies.append (new Currency ("JMD", _("Jamaican Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("KRW", _("South Korean Won"), "₩"));
         default_currency_manager.currencies.append (new Currency ("KWD", _("Kuwaiti Dinar"), "ك.د"));
         default_currency_manager.currencies.append (new Currency ("KZT", _("Kazakhstani Tenge"), "₸"));
@@ -89,6 +99,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("MUR", _("Mauritian Rupee"), "Rs"));
         default_currency_manager.currencies.append (new Currency ("MXN", _("Mexican Peso"), "$"));
         default_currency_manager.currencies.append (new Currency ("MYR", _("Malaysian Ringgit"), "RM"));
+        default_currency_manager.currencies.append (new Currency ("NGN", _("Nigerian Naira"), "₦"));
         default_currency_manager.currencies.append (new Currency ("NOK", _("Norwegian Krone"), "kr"));
         default_currency_manager.currencies.append (new Currency ("NPR", _("Nepalese Rupee"), "Rs"));
         default_currency_manager.currencies.append (new Currency ("NZD", _("New Zealand Dollar"), "$"));
@@ -109,6 +120,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("TRY", _("Turkish Lira"), "₺"));
         default_currency_manager.currencies.append (new Currency ("TTD", _("T&T Dollar (TTD)"), "$"));
         default_currency_manager.currencies.append (new Currency ("TWD", _("New Taiwan Dollar"), "NT$"));
+        default_currency_manager.currencies.append (new Currency ("UAH", _("Ukrainian Hryvnia"), "₴"));
         default_currency_manager.currencies.append (new Currency ("USD", _("US Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("UYU", _("Uruguayan Peso"), "$"));
         default_currency_manager.currencies.append (new Currency ("VEF", _("Venezuelan Bolívar"), "Bs F"));
@@ -118,6 +130,7 @@ public class CurrencyManager : Object
             new ImfCurrencyProvider (default_currency_manager);
             new EcbCurrencyProvider (default_currency_manager);
             new BCProvider(default_currency_manager);
+            new UnCurrencyProvider  (default_currency_manager);
             default_currency_manager.initialize_providers (asyncLoad);
         }
 

@@ -9,15 +9,23 @@ public interface CurrencyProvider : Object {
     public abstract void clear ();
 
     public abstract bool is_loaded();
+
+    public abstract string attribution_link { get ; }
+
+    public abstract string provider_name { get ; }
 }
 
 public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
-    public abstract string rate_filepath {owned get ;}
+    public abstract string attribution_link { get ; }
 
-    public abstract string rate_source_url {get;}
+    public abstract string provider_name { get ; }
 
-    public abstract string source_name {get;}
+    public abstract string rate_filepath { owned get ; }
+
+    public abstract string rate_source_url { get; }
+
+    public abstract string source_name { get; }
 
     public int refresh_interval { get; private set; }
 
@@ -36,13 +44,13 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     protected bool loading;
     protected bool loaded;
     protected List<Currency> currencies;
-    public CurrencyManager currency_manager {get; construct;}
+    public CurrencyManager currency_manager { get; construct; }
 
     public void clear () {
         FileUtils.remove (rate_filepath);
     }
 
-    public Currency register_currency(string symbol, string source) {
+    public Currency register_currency (string symbol, string source) {
         Currency currency = currency_manager.add_currency (symbol, source);
         currencies.append(currency);
         return currency;
@@ -170,6 +178,12 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
 
     public override string rate_source_url { get {
         return "https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"; } }
+
+    public override string attribution_link { get {
+        return "https://www.imf.org/external/np/fin/data/rms_five.aspx"; } }
+
+    public override string provider_name { get {
+        return _("International Monetary Fund"); } }
 
     public override string source_name { get { return "IMF";} }
 
@@ -375,6 +389,12 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
     public override string rate_source_url { get {
         return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
 
+    public override string attribution_link { get {
+        return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
+
+    public override string provider_name { get {
+        return _("European Central Bank"); } }
+
     public override string source_name { get { return "ECB";} }
 
     protected override void do_load_rates ()
@@ -534,5 +554,95 @@ public class BCProvider : AbstractCurrencyProvider {
     {
        Object(currency_manager: _currency_manager);
        _currency_manager.add_provider (this);
+    }
+}
+public class UnCurrencyProvider : AbstractCurrencyProvider {
+    public override string rate_filepath { owned get {
+        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "un-daily.xls"); } }
+
+    public override string rate_source_url { get {
+        return "https://treasury.un.org/operationalrates/xsql2CSV.php"; } }
+
+    public override string attribution_link { get {
+        return "https://treasury.un.org/operationalrates/OperationalRates.php"; } }
+
+    public override string provider_name { get {
+        return _("United Nations Treasury"); } }
+
+    public override string source_name { get { return "UNT";} }
+
+    private HashTable <string, string> get_currency_map () {
+        HashTable <string, string> name_map = new HashTable <string, string> (str_hash, str_equal);
+        name_map.insert ("JMD", "Jamaican Dollar");
+        name_map.insert ("UAH", "Ukrainian hryvnia");
+        name_map.insert ("NGN", "Nigerian Naira");
+        return name_map;
+    }
+
+    protected override void do_load_rates ()
+    {
+        var currency_map = get_currency_map ();
+        string data;
+        try
+        {
+            FileUtils.get_contents (rate_filepath, out data);
+        }
+        catch (Error e)
+        {
+            warning ("Failed to read exchange rates: %s", e.message);
+            return;
+        }
+
+        var lines = data.split ("\r\n", 0);
+
+        var in_data = false;
+        var usd_rate = get_currency ("USD");
+        if (usd_rate == null)
+        {
+            warning ("Cannot use UN rates as don't have USD rate");
+            return;
+        }
+        foreach (var line in lines)
+        {
+            line = line.chug ();
+
+            /* Start after first blank line, stop on next */
+            if (line == "")
+            {
+                if (!in_data)
+                {
+                   in_data = true;
+                   continue;
+                }
+                else
+                   break;
+            }
+            if (!in_data)
+                continue;
+
+            var tokens = line.split ("\t", 0);
+            int value_index = 4;
+            int symbol_index = 2;
+            if (value_index <= tokens.length && symbol_index <= tokens.length) 
+            {
+                var name = tokens [symbol_index];
+                var value = tokens [value_index].chug ();
+                if (name != null && value != null && get_currency (name) == null && currency_map.lookup (name) != null) {
+                    var c = register_currency (name, source_name);
+                    var r = mp_set_from_string (value);
+                    debug ("Registering %s with value '%s'\r\n", name, value);
+                    var v = usd_rate.get_value ();
+                    v = v.multiply (r);
+                    c.set_value (v);
+                }
+            }
+        }
+        base.do_load_rates ();
+    }
+
+    public UnCurrencyProvider (CurrencyManager _currency_manager)
+    {
+        Object(currency_manager: _currency_manager);
+        _currency_manager.add_provider (this);
     }
 }

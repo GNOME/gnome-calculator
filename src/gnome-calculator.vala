@@ -80,10 +80,8 @@ public class Calculator : Adw.Application
 
         var current_window = new MathWindow (this, equation);
         current_window.set_title (_("Calculator"));
-        if(maximized)
-            current_window.maximize();
-        else
-            current_window.set_size_request (width, height);
+        current_window.maximized = maximized;
+        current_window.set_default_size (width, height);
 
         var buttons = current_window.buttons;
         buttons.programming_base = number_base;
@@ -307,7 +305,8 @@ public class Calculator : Adw.Application
             version =  VERSION,
             website = "https://wiki.gnome.org/Apps/Calculator",
             issue_url = "https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/new",
-            copyright = "\xc2\xa9 1986–2022 The Calculator authors",
+            /* Application Copyrights for the calculator authors */
+            copyright = _("\xc2\xa9 1986–2023 The Calculator authors"),
             /* We link to MPFR and MPC which are  LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
             license_type = Gtk.License.GPL_3_0,
             developers = developers,
@@ -316,6 +315,8 @@ public class Calculator : Adw.Application
             translator_credits = _("translator-credits")
         };
 
+        var providers = string.joinv(", ", CurrencyManager.get_default ().get_provider_links ());
+        about.add_legal_section ( _("Exchange rate data providers"), null, Gtk.License.CUSTOM, _("Exchange rates data by %s").printf(providers));
         about.present ();
     }
 
