@@ -99,6 +99,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("MUR", _("Mauritian Rupee"), "Rs"));
         default_currency_manager.currencies.append (new Currency ("MXN", _("Mexican Peso"), "$"));
         default_currency_manager.currencies.append (new Currency ("MYR", _("Malaysian Ringgit"), "RM"));
+        default_currency_manager.currencies.append (new Currency ("NGN", _("Nigerian Naira"), "₦"));
         default_currency_manager.currencies.append (new Currency ("NOK", _("Norwegian Krone"), "kr"));
         default_currency_manager.currencies.append (new Currency ("NPR", _("Nepalese Rupee"), "Rs"));
         default_currency_manager.currencies.append (new Currency ("NZD", _("New Zealand Dollar"), "$"));
