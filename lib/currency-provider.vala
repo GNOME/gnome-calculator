@@ -240,7 +240,6 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
         name_map.insert ("Tunisian dinar", "TND");
         name_map.insert ("U.A.E. dirham", "AED");
         name_map.insert ("Uruguayan peso", "UYU");
-        name_map.insert ("Bolivar Fuerte", "VEF");
         return name_map;
     }
 
