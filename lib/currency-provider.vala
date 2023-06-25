@@ -10,22 +10,22 @@ public interface CurrencyProvider : Object {
 
     public abstract bool is_loaded();
 
-    public abstract string attribution_link { get ; }
+    public abstract string attribution_link { owned get ; }
 
     public abstract string provider_name { get ; }
 }
 
 public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
-    public abstract string attribution_link { get ; }
+    public abstract string attribution_link { owned get ; }
 
     public abstract string provider_name { get ; }
 
     public abstract string rate_filepath { owned get ; }
 
-    public abstract string rate_source_url { get; }
+    public abstract string rate_source_url { owned get; }
 
-    public abstract string source_name { get; }
+    public abstract string source_name { owned get; }
 
     public int refresh_interval { get; private set; }
 
@@ -176,16 +176,16 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
     public override string rate_filepath { owned get {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "rms_five.xls"); } }
 
-    public override string rate_source_url { get {
+    public override string rate_source_url { owned get {
         return "https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"; } }
 
-    public override string attribution_link { get {
+    public override string attribution_link { owned get {
         return "https://www.imf.org/external/np/fin/data/rms_five.aspx"; } }
 
     public override string provider_name { get {
         return _("International Monetary Fund"); } }
 
-    public override string source_name { get { return "IMF";} }
+    public override string source_name { owned get { return "IMF";} }
 
     private HashTable <string, string> get_name_map () {
         HashTable <string, string> name_map = new HashTable <string, string> (str_hash, str_equal);
@@ -386,16 +386,16 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
     public override string rate_filepath { owned get {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "eurofxref-daily.xml"); } }
 
-    public override string rate_source_url { get {
+    public override string rate_source_url { owned get {
         return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
 
-    public override string attribution_link { get {
+    public override string attribution_link { owned get {
         return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
 
     public override string provider_name { get {
         return _("European Central Bank"); } }
 
-    public override string source_name { get { return "ECB";} }
+    public override string source_name { owned get { return "ECB";} }
 
     protected override void do_load_rates ()
     {
@@ -494,19 +494,22 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
 }
 
 public class BCCurrencyProvider : AbstractCurrencyProvider {
+    private string currency { get; private set; }
+    private string currency_filename { get; private set; }
+
     public override string rate_filepath { owned get {
-        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "fxtwdcad.xml"); } }
+        return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "%s.xml".printf (currency_filename)); } }
 
-    public override string rate_source_url { get {
-        return "https://www.bankofcanada.ca/valet/observations/FXTWDCAD/xml?recent=1"; } }
+    public override string rate_source_url { owned get {
+        return "https://www.bankofcanada.ca/valet/observations/%s/xml?recent=1".printf (currency_filename); } }
 
-    public override string attribution_link { get {
-        return "https://www.bankofcanada.ca/valet/observations/FXTWDCAD/xml?recent=1"; } }
+    public override string attribution_link { owned get {
+        return "https://www.bankofcanada.ca/valet/observations/%s/xml?recent=1".printf (currency_filename); } }
 
     public override string provider_name { get {
         return _("Bank of Canada"); } }
 
-    public override string source_name { get { return "BC";} }
+    public override string source_name { owned get { return "BC-%s".printf (currency);} }
 
     protected override void do_load_rates ()
     {
@@ -541,7 +544,7 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
             return;
         }
 
-        set_rate ("TWD", rate, cad_rate);
+        set_rate (currency, rate, cad_rate);
 
         base.do_load_rates ();
     }
@@ -556,9 +559,11 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
         c.set_value (v);
     }
 
-    public BCCurrencyProvider (CurrencyManager _currency_manager)
+    public BCCurrencyProvider (CurrencyManager _currency_manager, string currency, string currency_filename)
     {
         Object(currency_manager: _currency_manager);
+        this.currency = currency;
+        this.currency_filename = currency_filename;
         _currency_manager.add_provider (this);
     }
 }
@@ -566,16 +571,16 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
     public override string rate_filepath { owned get {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "un-daily.xls"); } }
 
-    public override string rate_source_url { get {
+    public override string rate_source_url { owned get {
         return "https://treasury.un.org/operationalrates/xsql2CSV.php"; } }
 
-    public override string attribution_link { get {
+    public override string attribution_link { owned get {
         return "https://treasury.un.org/operationalrates/OperationalRates.php"; } }
 
     public override string provider_name { get {
         return _("United Nations Treasury"); } }
 
-    public override string source_name { get { return "UNT";} }
+    public override string source_name { owned get { return "UNT";} }
 
     private HashTable <string, string> get_currency_map () {
         HashTable <string, string> name_map = new HashTable <string, string> (str_hash, str_equal);
