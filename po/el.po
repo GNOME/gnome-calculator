@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.gnome-2-26\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2021-08-25 09:56+0000\n"
-"PO-Revision-Date: 2021-09-02 23:47+0300\n"
+"POT-Creation-Date: 2023-04-01 11:29+0000\n"
+"PO-Revision-Date: 2023-07-03 02:51+0300\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: Greek, Modern (1453-) <gnome-el-list@gnome.org>\n"
 "Language: el\n"
@@ -30,12 +30,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.3.1\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
-msgid "GNOME Calculator"
-msgstr "Αριθμομηχανή GNOME"
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:79
+#: src/gnome-calculator.vala:293 src/ui/math-window.ui:107
+msgid "Calculator"
+msgstr "Αριθμομηχανή"
 
 #: data/org.gnome.Calculator.appdata.xml.in:8
 #: data/org.gnome.Calculator.desktop.in:4
@@ -44,14 +46,14 @@ msgstr "Εκτελεί αριθμητικούς, επιστημονικούς ή
 
 #: data/org.gnome.Calculator.appdata.xml.in:10
 msgid ""
-"GNOME Calculator is an application that solves mathematical equations. "
-"Though it at first appears to be a simple calculator with only basic "
-"arithmetic operations, you can switch into Advanced, Financial, or "
-"Programming mode to find a surprising set of capabilities."
+"Calculator is an application that solves mathematical equations. Though it "
+"at first appears to be a simple calculator with only basic arithmetic "
+"operations, you can switch into Advanced, Financial, or Programming mode to "
+"find a surprising set of capabilities."
 msgstr ""
-"Η Αριθμομηχανή του GNOME είναι μια εφαρμογή για να επιλύετε μαθηματικές "
-"εξισώσεις. Αν και εμφανίστηκε στην αρχή ως μια απλή αριθμομηχανή με μόνο τις "
-"βασικές αριθμητικές λειτουργίες, μπορείτε να το αλλάξετε σε κατάσταση για "
+"Η Αριθμομηχανή είναι μια εφαρμογή για να επιλύετε μαθηματικές εξισώσεις. Αν "
+"και εμφανίστηκε στην αρχή ως μια απλή αριθμομηχανή με μόνο τις βασικές "
+"αριθμητικές λειτουργίες, μπορείτε να κάνετε εναλλαγή σε κατάσταση για "
 "προχωρημένους, οικονομική ή προγραμματιστική κατάσταση ώστε να βρείτε ένα "
 "εκπληκτικό σύνολο δυνατοτήτων."
 
@@ -88,31 +90,29 @@ msgstr ""
 "συμπλήρωση ενός και δυο, μετατροπή κώδικα χαρακτήρα προς χαρακτήρα και πολλά "
 "άλλα."
 
-#: data/org.gnome.Calculator.appdata.xml.in:36
-msgid "GNOME Calculator in Basic Mode"
-msgstr "Αριθμομηχανή GNOME σε βασική λειτουργία"
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Βασική λειτουργία"
 
-#: data/org.gnome.Calculator.appdata.xml.in:40
-msgid "GNOME Calculator in Advanced Mode"
-msgstr "Αριθμομηχανή GNOME σε προχωρημένη λειτουργία"
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
+msgstr "Προχωρημένη λειτουργία"
 
-#: data/org.gnome.Calculator.appdata.xml.in:44
-msgid "GNOME Calculator in Financial Mode"
-msgstr "Αριθμομηχανή GNOME σε οικονομική λειτουργία"
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Οικονομική λειτουργία"
 
-#: data/org.gnome.Calculator.appdata.xml.in:48
-msgid "GNOME Calculator in Programming Mode"
-msgstr "Αριθμομηχανή GNOME σε προγραμματιστική λειτουργία"
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Προγραμματιστική λειτουργία"
 
-#: data/org.gnome.Calculator.appdata.xml.in:59
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Λειτουργία πληκτρολογίου"
+
+#: data/org.gnome.Calculator.appdata.xml.in:71 src/gnome-calculator.vala:295
 msgid "The GNOME Project"
 msgstr "Έργο GNOME"
-
-#. Program name in the about dialog
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:81
-#: src/gnome-calculator.vala:350 src/ui/math-window.ui:108
-msgid "Calculator"
-msgstr "Αριθμομηχανή"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
@@ -493,7 +493,7 @@ msgid "South African Rand"
 msgstr "Ραντ Νότιας Αφρικής"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:270
+#: lib/equation-lexer.vala:734 src/math-converter.vala:231
 msgid "in"
 msgstr "σε"
 
@@ -509,77 +509,246 @@ msgstr "Η μηδενική ρίζα ενός αριθμού είναι απρο
 msgid "Error: the number of periods must be positive"
 msgstr "Σφάλμα: ο αριθμός των περιόδων πρέπει να είναι θετικός"
 
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Λογάριθμος"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "Φυσικός λογάριθμος"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "Τετραγωνική ρίζα"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "Απόλυτη τιμή"
+
+#: lib/function-manager.vala:56
+#, fuzzy
+#| msgid "Sign"
+msgid "Signum"
+msgstr "Πρόσημο"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
+msgstr "Όρισμα"
+
+#: lib/function-manager.vala:60
+msgid "Conjugate"
+msgstr "Μιγαδικός"
+
+#: lib/function-manager.vala:62
+msgid "Integer"
+msgstr "Ακέραιος"
+
+#: lib/function-manager.vala:64
+msgid "Fraction"
+msgstr "Κλάσμα"
+
+#: lib/function-manager.vala:66
+msgid "Floor"
+msgstr "Στρογγυλοποίηση προς τα κάτω"
+
+#: lib/function-manager.vala:68
+msgid "Ceiling"
+msgstr "Στρογγυλοποίηση προς τα πάνω"
+
+#: lib/function-manager.vala:70
+msgid "Round"
+msgstr "Στρογγυλοποίηση προς τον πλησιέστερο ακέραιο"
+
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr "Πραγματικός"
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr "Φανταστικό μέρος"
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr "Ημίτονο"
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr "Συνημίτονο"
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr "Εφαπτομένη"
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr "Ημίτονο"
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr "Συνημίτονο"
+
+#: lib/function-manager.vala:86
+#, fuzzy
+#| msgid "Tangent"
+msgid "Arc tangent"
+msgstr "Εφαπτομένη"
+
+#: lib/function-manager.vala:88
+#, fuzzy
+#| msgid "Inverse"
+msgid "Inverse sine"
+msgstr "Αντιστροφή"
+
+#: lib/function-manager.vala:90
+#, fuzzy
+#| msgid "Inverse"
+msgid "Inverse cosine"
+msgstr "Αντιστροφή"
+
+#: lib/function-manager.vala:92
+#, fuzzy
+#| msgid "Inverse"
+msgid "Inverse tangent"
+msgstr "Αντιστροφή"
+
+#: lib/function-manager.vala:94
+#, fuzzy
+#| msgid "Hyperbolic Cosine"
+msgid "Hyperbolic sine"
+msgstr "Υπερβολικό συνημίτονο"
+
+#: lib/function-manager.vala:96
+#, fuzzy
+#| msgid "Hyperbolic Cosine"
+msgid "Hyperbolic cosine"
+msgstr "Υπερβολικό συνημίτονο"
+
+#: lib/function-manager.vala:98
+#, fuzzy
+#| msgid "Hyperbolic Tangent"
+msgid "Hyperbolic tangent"
+msgstr "Υπερβολική εφαπτομένη"
+
+#: lib/function-manager.vala:100
+#, fuzzy
+#| msgid "Hyperbolic Cosine"
+msgid "Hyperbolic arcsine"
+msgstr "Υπερβολικό συνημίτονο"
+
+#: lib/function-manager.vala:102
+#, fuzzy
+#| msgid "Hyperbolic Cosine"
+msgid "Hyperbolic arccosine"
+msgstr "Υπερβολικό συνημίτονο"
+
+#: lib/function-manager.vala:104
+#, fuzzy
+#| msgid "Hyperbolic Tangent"
+msgid "Hyperbolic arctangent"
+msgstr "Υπερβολική εφαπτομένη"
+
+#: lib/function-manager.vala:106
+#, fuzzy
+#| msgid "Hyperbolic Cosine"
+msgid "Inverse hyperbolic sine"
+msgstr "Υπερβολικό συνημίτονο"
+
+#: lib/function-manager.vala:108
+#, fuzzy
+#| msgid "Hyperbolic Cosine"
+msgid "Inverse hyperbolic cosine"
+msgstr "Υπερβολικό συνημίτονο"
+
+#: lib/function-manager.vala:110
+#, fuzzy
+#| msgid "Hyperbolic Tangent"
+msgid "Inverse hyperbolic tangent"
+msgstr "Υπερβολική εφαπτομένη"
+
+#: lib/function-manager.vala:112
+#, fuzzy
+#| msgid "Ones’ Complement"
+msgid "One's complement"
+msgstr "Συμπλήρωμα ως προς 1"
+
+#: lib/function-manager.vala:114
+#, fuzzy
+#| msgid "Two’s Complement"
+msgid "Two's complement"
+msgstr "Συμπλήρωμα ως προς 2"
+
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+msgid "Displayed value not an integer"
+msgstr "Η εμφανιζόμενη τιμή δεν είναι ακέραια"
+
 #. Digits localized for the given language
-#: lib/math-equation.vala:173
+#: lib/math-equation.vala:211
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:525
+#: lib/math-equation.vala:579
 msgid "No undo history"
 msgstr "Δεν υπάρχει ιστορικό για τις ενέργειες αναίρεσης"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:546
+#: lib/math-equation.vala:600
 msgid "No redo history"
 msgstr "Δεν υπάρχει ιστορικό για τις ενέργειες ανάκτησης"
 
-#: lib/math-equation.vala:777
+#: lib/math-equation.vala:831
 msgid "No sane value to store"
 msgstr "Δε δόθηκε θεμιτή τιμή για αποθήκευση"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1038
+#: lib/math-equation.vala:1080
 msgid "Overflow. Try a bigger word size"
 msgstr "Υπερχείλιση. Δοκιμάστε με ένα μεγαλύτερο μήκος λέξης"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1043
+#: lib/math-equation.vala:1085
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Άγνωστη μεταβλητή «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1050
+#: lib/math-equation.vala:1092
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Η συνάρτηση «%s» δεν έχει οριστεί"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1057
+#: lib/math-equation.vala:1099
 msgid "Unknown conversion"
 msgstr "Άγνωστη μετατροπή"
 
 #. should always be run
-#: lib/math-equation.vala:1067
+#: lib/math-equation.vala:1109
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1072 lib/math-equation.vala:1077
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 msgid "Malformed expression"
 msgstr "Λανθασμένη διατύπωση έκφρασης"
 
-#: lib/math-equation.vala:1088
+#: lib/math-equation.vala:1130
 msgid "Calculating"
 msgstr "Εκτελείται υπολογισμός"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1281
+#: lib/math-equation.vala:1323
 msgid "Need an integer to factorize"
 msgstr "Απαιτείται ακέραιος για την παραγοντοποίηση"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1345
+#: lib/math-equation.vala:1387
 msgid "No sane value to bitwise shift"
 msgstr "Χωρίς λογική τιμή για τη μετατόπιση κατά δυαδικό"
-
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:1367
-msgid "Displayed value not an integer"
-msgstr "Η εμφανιζόμενη τιμή δεν είναι ακέραια"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -734,7 +903,7 @@ msgid "Digital Storage"
 msgstr "Ψηφιακή αποθήκευση"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:41 src/math-preferences.vala:20
+#: lib/unit.vala:41 src/math-preferences.vala:110
 msgid "Degrees"
 msgstr "Μοίρες"
 
@@ -749,7 +918,7 @@ msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "μοίρα,μοίρες,deg"
 
-#: lib/unit.vala:42 src/math-preferences.vala:19
+#: lib/unit.vala:42 src/math-preferences.vala:112
 msgid "Radians"
 msgstr "Ακτίνια"
 
@@ -764,7 +933,7 @@ msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "ακτίνιο,ακτίνια,rad"
 
-#: lib/unit.vala:43 src/math-preferences.vala:21
+#: lib/unit.vala:43 src/math-preferences.vala:114
 msgid "Gradians"
 msgstr "Βαθμοί"
 
@@ -2184,7 +2353,6 @@ msgid "%s kHz"
 msgstr "%s kHz"
 
 #: lib/unit.vala:140
-#| msgid "Kilohertz"
 msgctxt "unit-symbols"
 msgid "kilohertz,kHz"
 msgstr "kilohertz,kHz"
@@ -2252,237 +2420,221 @@ msgstr "Αντιγραφή"
 msgid "Copy result to clipboard"
 msgstr "Αντιγραφή αποτελέσματος στο πρόχειρο"
 
-#: src/ui/buttons-advanced.ui:143 src/ui/buttons-basic.ui:143
-#: src/ui/buttons-financial.ui:1979 src/ui/buttons-programming.ui:1899
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
 msgid "Modulus divide"
 msgstr "Υπόλοιπο διαίρεσης ακεραίων"
 
-#: src/ui/buttons-advanced.ui:163 src/ui/buttons-basic.ui:163
-#: src/ui/buttons-financial.ui:1999 src/ui/buttons-programming.ui:1441
+#: src/ui/buttons-advanced.ui:139 src/ui/buttons-basic.ui:145
+#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1269
 msgid "Divide [/]"
 msgstr "Διαίρεση [/]"
 
-#: src/ui/buttons-advanced.ui:277 src/ui/buttons-basic.ui:277
-#: src/ui/buttons-financial.ui:2113 src/ui/buttons-programming.ui:1461
+#: src/ui/buttons-advanced.ui:235 src/ui/buttons-basic.ui:247
+#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1286
 msgid "Multiply [*]"
 msgstr "Πολλαπλασιασμός [*]"
 
-#: src/ui/buttons-advanced.ui:297 src/ui/buttons-basic.ui:297
-#: src/ui/buttons-financial.ui:2133 src/ui/buttons-programming.ui:1481
+#: src/ui/buttons-advanced.ui:252 src/ui/buttons-basic.ui:265
+#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1303
 msgid "Subtract [-]"
 msgstr "Αφαίρεση [-]"
 
-#: src/ui/buttons-advanced.ui:316 src/ui/buttons-basic.ui:316
-#: src/ui/buttons-financial.ui:2152 src/ui/buttons-programming.ui:1500
+#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:282
+#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1319
 msgid "Add [+]"
 msgstr "Πρόσθεση [+]"
 
-#: src/ui/buttons-advanced.ui:335 src/ui/buttons-basic.ui:335
-#: src/ui/buttons-programming.ui:1415
+#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:299
+#: src/ui/buttons-programming.ui:1247
 msgid "Pi [Ctrl+P]"
 msgstr "π [Ctrl+P]"
 
-#: src/ui/buttons-advanced.ui:362 src/ui/buttons-basic.ui:362
-#: src/ui/buttons-financial.ui:2172 src/ui/buttons-programming.ui:1396
+#: src/ui/buttons-advanced.ui:307 src/ui/buttons-basic.ui:323
+#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1231
 msgid "Root [Ctrl+R]"
 msgstr "Ρίζα [Ctrl+R]"
 
-#: src/ui/buttons-advanced.ui:380 src/ui/buttons-basic.ui:380
+#: src/ui/buttons-advanced.ui:322 src/ui/buttons-basic.ui:339
 msgid "Square [Ctrl+2]"
 msgstr "Τετράγωνο [Ctrl+2]"
 
-#. Accessible name for the exponentiation (x to the power of y) button
-#: src/ui/buttons-advanced.ui:384 src/ui/buttons-advanced.ui:761
-#: src/ui/buttons-basic.ui:384 src/ui/buttons-financial.ui:2301
-#: src/ui/buttons-programming.ui:2242
-msgid "Exponent"
-msgstr "Δύναμη"
-
-#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:410
-#: src/ui/buttons-financial.ui:2191 src/ui/buttons-programming.ui:1539
+#: src/ui/buttons-advanced.ui:343 src/ui/buttons-basic.ui:361
+#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1352
 msgid "Clear Display [Escape]"
 msgstr "Εκκαθάριση οθόνης [Escape]"
 
-#: src/ui/buttons-advanced.ui:437 src/ui/buttons-basic.ui:437
-#: src/ui/buttons-financial.ui:2218 src/ui/buttons-programming.ui:1918
+#: src/ui/buttons-advanced.ui:359 src/ui/buttons-basic.ui:378
+#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1665
 msgid "Start Group [(]"
 msgstr "Αρχή ομάδας [(]"
 
-#: src/ui/buttons-advanced.ui:457 src/ui/buttons-basic.ui:457
-#: src/ui/buttons-financial.ui:2238 src/ui/buttons-programming.ui:1937
+#: src/ui/buttons-advanced.ui:376 src/ui/buttons-basic.ui:396
+#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1681
 msgid "End Group [)]"
 msgstr "Τέλος ομάδας [)]"
 
-#: src/ui/buttons-advanced.ui:477 src/ui/buttons-basic.ui:477
-#: src/ui/buttons-financial.ui:2258
+#: src/ui/buttons-advanced.ui:393 src/ui/buttons-basic.ui:414
+#: src/ui/buttons-financial.ui:1519
 msgid "Percentage [%]"
 msgstr "Ποσοστό [%]"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:491 src/ui/buttons-basic.ui:491
-#: src/ui/buttons-financial.ui:2272 src/ui/buttons-programming.ui:1514
+#: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
+#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
 msgid "="
 msgstr "="
 
-#: src/ui/buttons-advanced.ui:497 src/ui/buttons-basic.ui:497
-#: src/ui/buttons-financial.ui:2278 src/ui/buttons-programming.ui:1520
+#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
+#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
 msgid "Calculate Result"
 msgstr "Υπολογισμός αποτελέσματος"
 
-#: src/ui/buttons-advanced.ui:528 src/ui/buttons-programming.ui:1967
-msgid "Subscript mode [Alt]"
+#: src/ui/buttons-advanced.ui:439
+#, fuzzy
+#| msgid "Subscript mode [Alt]"
+msgid "Subscript Mode [Alt]"
 msgstr "Λειτουργία δείκτη [Alt]"
 
-#. Accessible name for the subscript mode button
-#: src/ui/buttons-advanced.ui:533 src/ui/buttons-programming.ui:1972
-msgid "Subscript"
-msgstr "Δείκτης"
-
-#: src/ui/buttons-advanced.ui:558 src/ui/buttons-programming.ui:1997
-msgid "Superscript mode [Ctrl]"
+#: src/ui/buttons-advanced.ui:460
+#, fuzzy
+#| msgid "Superscript mode [Ctrl]"
+msgid "Superscript Mode [Ctrl]"
 msgstr "Λειτουργία εκθέτη [Ctrl]"
 
-#. Accessible name for the superscript mode button
-#: src/ui/buttons-advanced.ui:563 src/ui/buttons-programming.ui:2002
-msgid "Superscript"
-msgstr "Εκθέτης"
-
-#: src/ui/buttons-advanced.ui:590 src/ui/buttons-programming.ui:2440
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
 msgid "Factorize [Ctrl+F]"
 msgstr "Παραγοντοποίηση [Ctrl+F]"
 
-#. Accessible name for the factorize button
-#: src/ui/buttons-advanced.ui:594 src/ui/buttons-programming.ui:2444
-msgid "Factorize"
-msgstr "Παραγοντοποίηση"
-
-#: src/ui/buttons-advanced.ui:613
-msgid "Scientific exponent [Ctrl+E]"
+#: src/ui/buttons-advanced.ui:498
+#, fuzzy
+#| msgid "Scientific exponent [Ctrl+E]"
+msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Εκθετικός αριθμός [Ctrl+E]"
 
-#. Accessible name for the scientific exponent button
-#: src/ui/buttons-advanced.ui:617
-msgid "Scientific Exponent"
-msgstr "Εκθετικός αριθμός"
-
-#: src/ui/buttons-advanced.ui:643
-msgid "Cosine"
-msgstr "Συνημίτονο"
-
-#: src/ui/buttons-advanced.ui:662
-msgid "Sine"
-msgstr "Ημίτονο"
-
-#: src/ui/buttons-advanced.ui:681
-msgid "Tangent"
-msgstr "Εφαπτομένη"
-
-#: src/ui/buttons-advanced.ui:700
+#: src/ui/buttons-advanced.ui:567
 msgid "Hyperbolic Cosine"
 msgstr "Υπερβολικό συνημίτονο"
 
-#: src/ui/buttons-advanced.ui:719
+#: src/ui/buttons-advanced.ui:583
 msgid "Hyperbolic Sine"
 msgstr "Υπερβολικό ημίτονο"
 
-#: src/ui/buttons-advanced.ui:738
+#: src/ui/buttons-advanced.ui:599
 msgid "Hyperbolic Tangent"
 msgstr "Υπερβολική εφαπτομένη"
 
-#: src/ui/buttons-advanced.ui:756 src/ui/buttons-financial.ui:2296
-#: src/ui/buttons-programming.ui:2237
+#: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
+#: src/ui/buttons-programming.ui:1877
 msgid "Exponent [^ or **]"
 msgstr "Δύναμη [^ ή **]"
 
-#: src/ui/buttons-advanced.ui:786 src/ui/buttons-programming.ui:2267
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
 msgid "Inverse [Ctrl+I]"
 msgstr "Αντιστροφή [Ctrl+I]"
 
-#. Accessible name for the inverse button
-#: src/ui/buttons-advanced.ui:791 src/ui/buttons-programming.ui:2272
-msgid "Inverse"
-msgstr "Αντιστροφή"
-
-#: src/ui/buttons-advanced.ui:818
+#: src/ui/buttons-advanced.ui:658
 msgid "Euler’s Number"
 msgstr "Αριθμός του Euler"
 
-#: src/ui/buttons-advanced.ui:845
+#: src/ui/buttons-advanced.ui:681
 msgid "Natural Logarithm"
 msgstr "Φυσικός λογάριθμος"
 
-#: src/ui/buttons-advanced.ui:864 src/ui/buttons-financial.ui:2327
-#: src/ui/buttons-programming.ui:2299
-msgid "Logarithm"
-msgstr "Λογάριθμος"
-
-#: src/ui/buttons-advanced.ui:882 src/ui/buttons-programming.ui:2337
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
 msgid "Factorial [!]"
 msgstr "Παραγοντικό [!]"
 
-#. Accessible name for the factorial button
-#: src/ui/buttons-advanced.ui:887 src/ui/buttons-programming.ui:2342
-msgid "Factorial"
-msgstr "Παραγοντικό"
-
-#: src/ui/buttons-advanced.ui:913 src/ui/buttons-programming.ui:2368
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
 msgid "Absolute Value [|]"
 msgstr "Απόλυτη τιμή [|]"
 
-#. Accessible name for the absolute value button
-#: src/ui/buttons-advanced.ui:918 src/ui/buttons-programming.ui:2373
-msgid "Absolute Value"
-msgstr "Απόλυτη τιμή"
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr "Φανταστικό μέρος"
 
-#: src/ui/buttons-advanced.ui:970
+#: src/ui/buttons-advanced.ui:779
 msgid "Real Component"
 msgstr "Πραγματικό μέρος"
 
-#: src/ui/buttons-advanced.ui:990
+#: src/ui/buttons-advanced.ui:796
 msgid "Imaginary Component"
 msgstr "Φανταστικό μέρος"
 
-#: src/ui/buttons-advanced.ui:1010
-msgid "Complex conjugate"
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
 msgstr "Συζυγής μιγαδικός"
 
-#: src/ui/buttons-advanced.ui:1030
-msgid "Complex argument"
+#: src/ui/buttons-advanced.ui:830
+#, fuzzy
+#| msgid "Complex argument"
+msgid "Complex Argument"
 msgstr "Όρισμα μιγαδικού"
 
-#. Accessible name for the memory button
-#: src/ui/buttons-advanced.ui:1048 src/ui/buttons-advanced.ui:1051
-#: src/ui/buttons-financial.ui:2358 src/ui/buttons-financial.ui:2361
-#: src/ui/buttons-programming.ui:2486
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-programming.ui:2063
 msgid "Memory"
 msgstr "Μνήμη"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:1060 src/ui/buttons-financial.ui:2370
-#: src/ui/buttons-programming.ui:2499
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-programming.ui:2062
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:1097
+#: src/ui/buttons-advanced.ui:860
 msgid "Additional Functions"
 msgstr "Πρόσθετες συναρτήσεις"
 
-#. Accessible name for the store value button
-#: src/ui/buttons-advanced.ui:1100 src/ui/buttons-programming.ui:2489
-msgid "Store"
-msgstr "Αποθήκευση"
+#: src/ui/buttons-basic.ui:127
+msgid "Modulus Divide"
+msgstr "Υπόλοιπο διαίρεσης ακεραίω"
 
 #. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:8 src/ui/buttons-financial.ui:2409
+#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
 msgid "Compounding Term"
 msgstr "Διάρκεια ανατοκισμού"
 
-#: src/ui/buttons-financial.ui:22 src/ui/buttons-financial.ui:205
-#: src/ui/buttons-financial.ui:388 src/ui/buttons-financial.ui:571
-#: src/ui/buttons-financial.ui:723 src/ui/buttons-financial.ui:907
-#: src/ui/buttons-financial.ui:1091 src/ui/buttons-financial.ui:1275
-#: src/ui/buttons-financial.ui:1459 src/ui/buttons-financial.ui:1674
-#: src/ui/buttons-programming.ui:2644
+#. Compounding Term Dialog: Label before present value input
+#. Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.ui:55 src/ui/buttons-financial.ui:727
+msgid "Present _Value:"
+msgstr "Τρέχουσα _αξία:"
+
+#. Compounding Term Dialog: Label before periodic interest rate input
+#. Future Value Dialog: Label before periodic interest rate input
+#. Periodic Payment Dialog: Label before periodic interest rate input
+#. Present Value Dialog: Label before periodic interest rate input
+#. Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.ui:67 src/ui/buttons-financial.ui:282
+#: src/ui/buttons-financial.ui:493 src/ui/buttons-financial.ui:610
+#: src/ui/buttons-financial.ui:1106
+msgid "Periodic Interest _Rate:"
+msgstr "Περιοδικό επι_τόκιο:"
+
+#. Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:80
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Υπολογίζει τον αριθμό των περιόδων ανατοκισμού που απαιτούνται για να "
+"ανέλθει η τιμή μιας επένδυσης από την τρέχουσα στη μελλοντική αξία, αν το "
+"επιτόκιο είναι σταθερό ανά περίοδο ανατοκισμού."
+
+#. Compounding Term Dialog: Label before future value input
+#. Periodic Interest Rate Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:91 src/ui/buttons-financial.ui:715
+msgid "_Future Value:"
+msgstr "Μελλοντική α_ξία:"
+
+#: src/ui/buttons-financial.ui:110 src/ui/buttons-financial.ui:227
+#: src/ui/buttons-financial.ui:343 src/ui/buttons-financial.ui:437
+#: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
+#: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
+#: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
+#: src/ui/buttons-programming.ui:2139
 msgid "_Cancel"
 msgstr "Άκ_υρο"
 
@@ -2496,55 +2648,21 @@ msgstr "Άκ_υρο"
 #. Straight-Line Depreciation Dialog: Calculate button
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
 #. Payment Period Dialog: Button to calculate result
-#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:220
-#: src/ui/buttons-financial.ui:403 src/ui/buttons-financial.ui:586
-#: src/ui/buttons-financial.ui:738 src/ui/buttons-financial.ui:922
-#: src/ui/buttons-financial.ui:1106 src/ui/buttons-financial.ui:1290
-#: src/ui/buttons-financial.ui:1474 src/ui/buttons-financial.ui:1689
+#: src/ui/buttons-financial.ui:116 src/ui/buttons-financial.ui:233
+#: src/ui/buttons-financial.ui:349 src/ui/buttons-financial.ui:443
+#: src/ui/buttons-financial.ui:560 src/ui/buttons-financial.ui:677
+#: src/ui/buttons-financial.ui:794 src/ui/buttons-financial.ui:911
+#: src/ui/buttons-financial.ui:1050 src/ui/buttons-financial.ui:1167
 msgid "C_alculate"
 msgstr "_Υπολογισμός"
 
-#. Compounding Term Dialog: Label before present value input
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:117 src/ui/buttons-financial.ui:1172
-msgid "Present _Value:"
-msgstr "Τρέχουσα _αξία:"
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:468
-#: src/ui/buttons-financial.ui:804 src/ui/buttons-financial.ui:988
-#: src/ui/buttons-financial.ui:1769
-msgid "Periodic Interest _Rate:"
-msgstr "Περιοδικό επι_τόκιο:"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:149
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"Υπολογίζει τον αριθμό των περιόδων ανατοκισμού που απαιτούνται για να "
-"ανέλθει η τιμή μιας επένδυσης από την τρέχουσα στη μελλοντική αξία, αν το "
-"επιτόκιο είναι σταθερό ανά περίοδο ανατοκισμού."
-
-#. Compounding Term Dialog: Label before future value input
-#. Periodic Interest Rate Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:163 src/ui/buttons-financial.ui:1156
-msgid "_Future Value:"
-msgstr "Μελλοντική α_ξία:"
-
 #. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:191
+#: src/ui/buttons-financial.ui:122
 msgid "Double-Declining Depreciation"
 msgstr "Φθίνουσα απόσβεση διπλάσιου ρυθμού"
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:255
+#: src/ui/buttons-financial.ui:143
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -2554,31 +2672,31 @@ msgstr ""
 
 #. Double-Declining Depreciation Dialog: Label before cost input
 #. Gross Profit Margin Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:269 src/ui/buttons-financial.ui:635
+#: src/ui/buttons-financial.ui:154 src/ui/buttons-financial.ui:386
 msgid "C_ost:"
 msgstr "_Κόστος:"
 
 #. Double-Declining Depreciation Dialog: Label before life input
 #. Straight-Line Depreciation Dialog: Label before life input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:285 src/ui/buttons-financial.ui:1357
-#: src/ui/buttons-financial.ui:1525
+#: src/ui/buttons-financial.ui:166 src/ui/buttons-financial.ui:844
+#: src/ui/buttons-financial.ui:949
 msgid "_Life:"
 msgstr "_Ζωή:"
 
 #. Double-Declining Depreciation Dialog: Label before period input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:331 src/ui/buttons-financial.ui:1509
+#: src/ui/buttons-financial.ui:198 src/ui/buttons-financial.ui:937
 msgid "_Period:"
 msgstr "Πε_ρίοδος:"
 
 #. Title of Future Value dialog
-#: src/ui/buttons-financial.ui:374 src/ui/buttons-financial.ui:2447
+#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:1651
 msgid "Future Value"
 msgstr "Μελλοντική αξία"
 
 #. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:438
+#: src/ui/buttons-financial.ui:259
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -2591,24 +2709,24 @@ msgstr ""
 #. Future Value Dialog: Label before periodic payment input
 #. Present Value Dialog: Label before periodic payment input
 #. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:452 src/ui/buttons-financial.ui:972
-#: src/ui/buttons-financial.ui:1801
+#: src/ui/buttons-financial.ui:270 src/ui/buttons-financial.ui:598
+#: src/ui/buttons-financial.ui:1130
 msgid "_Periodic Payment:"
 msgstr "_Περιοδική πληρωμή:"
 
 #. Future Value Dialog: Label before number of periods input
 #. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:484 src/ui/buttons-financial.ui:1004
+#: src/ui/buttons-financial.ui:294 src/ui/buttons-financial.ui:622
 msgid "_Number of Periods:"
 msgstr "Αριθ_μός περιόδων:"
 
 #. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:557 src/ui/buttons-financial.ui:2586
+#: src/ui/buttons-financial.ui:355 src/ui/buttons-financial.ui:1769
 msgid "Gross Profit Margin"
 msgstr "Μικτό περιθώριο κέρδους"
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:621
+#: src/ui/buttons-financial.ui:375
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -2617,17 +2735,17 @@ msgstr ""
 "προϊόντος και το επιθυμητό μικτό περιθώριο κέρδους."
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:651
+#: src/ui/buttons-financial.ui:398
 msgid "_Margin:"
 msgstr "Περι_θώριο:"
 
 #. Title of Periodic Payment dialog
-#: src/ui/buttons-financial.ui:709 src/ui/buttons-financial.ui:2566
+#: src/ui/buttons-financial.ui:449 src/ui/buttons-financial.ui:1752
 msgid "Periodic Payment"
 msgstr "Περιοδική πληρωμή"
 
 #. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:774
+#: src/ui/buttons-financial.ui:470
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period. "
@@ -2636,23 +2754,23 @@ msgstr ""
 "πληρωμή των δόσεων γίνεται στο τέλος κάθε περιόδου. "
 
 #. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:788
+#: src/ui/buttons-financial.ui:481
 msgid "_Principal:"
 msgstr "Κύρ_ια:"
 
 #. Periodic Payment Dialog: Label before term input
 #. Periodic Interest Rate Dialog: Label before term input
-#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:1188
+#: src/ui/buttons-financial.ui:505 src/ui/buttons-financial.ui:739
 msgid "_Term:"
 msgstr "_Διάρκεια:"
 
 #. Title of Present Value dialog
-#: src/ui/buttons-financial.ui:893 src/ui/buttons-financial.ui:2546
+#: src/ui/buttons-financial.ui:566 src/ui/buttons-financial.ui:1735
 msgid "Present Value"
 msgstr "Τρέχουσα αξία"
 
 #. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:958
+#: src/ui/buttons-financial.ui:587
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -2662,12 +2780,12 @@ msgstr ""
 "ισόποσων πληρωμών με περιοδικό επιτόκιο για όλη τη διάρκεια των πληρωμών. "
 
 #. Title of Periodic Interest Rate dialog
-#: src/ui/buttons-financial.ui:1077 src/ui/buttons-financial.ui:2526
+#: src/ui/buttons-financial.ui:683 src/ui/buttons-financial.ui:1718
 msgid "Periodic Interest Rate"
 msgstr "Περιοδικό επιτόκιο"
 
 #. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1142
+#: src/ui/buttons-financial.ui:704
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods. "
@@ -2677,24 +2795,24 @@ msgstr ""
 "περιόδων ανατοκισμού. "
 
 #. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:1261
+#: src/ui/buttons-financial.ui:800
 msgid "Straight-Line Depreciation"
 msgstr "Σταθερή απόσβεση"
 
 #. Straight-Line Depreciation Dialog: Label before cost input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:1325 src/ui/buttons-financial.ui:1557
+#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:973
 msgid "_Cost:"
 msgstr "_Κόστος:"
 
 #. Straight-Line Depreciation Dialog: Label before salvage input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:1341 src/ui/buttons-financial.ui:1541
+#: src/ui/buttons-financial.ui:832 src/ui/buttons-financial.ui:961
 msgid "_Salvage:"
 msgstr "_Υπολειμματική αξία:"
 
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1419
+#: src/ui/buttons-financial.ui:887
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
@@ -2707,12 +2825,12 @@ msgstr ""
 "περιόδων, συνήθως ετών, κατά τη διάρκεια των οποίων συντελείται η απόσβεση. "
 
 #. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:1445
+#: src/ui/buttons-financial.ui:917
 msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Φθίνουσα απόσβεση συνολικού αριθμού ετών"
 
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1634
+#: src/ui/buttons-financial.ui:1026
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
@@ -2728,17 +2846,17 @@ msgstr ""
 "των οποίων συντελείται η απόσβεση. "
 
 #. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:1660
+#: src/ui/buttons-financial.ui:1056
 msgid "Payment Period"
 msgstr "Περίοδος πληρωμής"
 
 #. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:1785
+#: src/ui/buttons-financial.ui:1118
 msgid "Future _Value:"
 msgstr "Μελλοντική α_ξία:"
 
 #. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1818
+#: src/ui/buttons-financial.ui:1143
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -2749,187 +2867,179 @@ msgstr ""
 "συγκεκριμένο περιοδικό επιτόκιο."
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:2403
+#: src/ui/buttons-financial.ui:1616
 msgid "Ctrm"
 msgstr "Ctrm"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2422
+#: src/ui/buttons-financial.ui:1632
 msgid "Ddb"
 msgstr "Ddb"
 
-#: src/ui/buttons-financial.ui:2428
+#: src/ui/buttons-financial.ui:1635
 msgid "Double Declining Depreciation"
 msgstr "Φθίνουσα απόσβεση διπλάσιου ρυθμού"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:2441
+#: src/ui/buttons-financial.ui:1648
 msgid "Fv"
 msgstr "Fv"
 
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:2460
+#: src/ui/buttons-financial.ui:1664
 msgid "Term"
 msgstr "Περίοδος"
 
-#: src/ui/buttons-financial.ui:2466
+#: src/ui/buttons-financial.ui:1667
 msgid "Financial Term"
 msgstr "Οικονομική περίοδος"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2480
+#: src/ui/buttons-financial.ui:1681
 msgid "Syd"
 msgstr "Syd"
 
-#: src/ui/buttons-financial.ui:2486
+#: src/ui/buttons-financial.ui:1684
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Απόσβεση με συντελεστή τα έτη ζωής"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:2500
+#: src/ui/buttons-financial.ui:1698
 msgid "Sln"
 msgstr "Sln"
 
-#: src/ui/buttons-financial.ui:2506
+#: src/ui/buttons-financial.ui:1701
 msgid "Straight Line Depreciation"
 msgstr "Σταθερή απόσβεση"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:2520
+#: src/ui/buttons-financial.ui:1715
 msgid "Rate"
 msgstr "Rate"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:2540
+#: src/ui/buttons-financial.ui:1732
 msgid "Pv"
 msgstr "Pv"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:2560
+#: src/ui/buttons-financial.ui:1749
 msgid "Pmt"
 msgstr "Pmt"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:2580
+#: src/ui/buttons-financial.ui:1766
 msgid "Gpm"
 msgstr "Gpm"
 
-#: src/ui/buttons-programming.ui:19
+#: src/ui/buttons-programming.ui:16
 msgid "Binary"
 msgstr "Δυαδική"
 
-#: src/ui/buttons-programming.ui:20
+#: src/ui/buttons-programming.ui:17
 msgid "Octal"
 msgstr "Οκταδική"
 
-#: src/ui/buttons-programming.ui:21
+#: src/ui/buttons-programming.ui:18
 msgid "Decimal"
 msgstr "Δεκαδική"
 
-#: src/ui/buttons-programming.ui:22
+#: src/ui/buttons-programming.ui:19
 msgid "Hexadecimal"
 msgstr "Δεκαεξαδική"
 
-#. Accessible name for the shift left button
-#: src/ui/buttons-programming.ui:2026 src/ui/buttons-programming.ui:2029
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr "Λειτουργία δείκτη [Alt]"
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr "Λειτουργία εκθέτη [Ctrl]"
+
+#: src/ui/buttons-programming.ui:1751
 msgid "Shift Left"
 msgstr "Μετατόπιση αριστερά"
 
-#. Accessible name for the shift right button
-#: src/ui/buttons-programming.ui:2072 src/ui/buttons-programming.ui:2075
+#: src/ui/buttons-programming.ui:1764
 msgid "Shift Right"
 msgstr "Μετατόπιση δεξιά"
 
-#: src/ui/buttons-programming.ui:2120
+#: src/ui/buttons-programming.ui:1778
 msgid "Boolean Exclusive OR"
 msgstr "Λογικό αποκλειστικό OR"
 
-#: src/ui/buttons-programming.ui:2139
+#: src/ui/buttons-programming.ui:1794
 msgid "Boolean OR"
 msgstr "Λογικό OR"
 
-#: src/ui/buttons-programming.ui:2159
+#: src/ui/buttons-programming.ui:1811
 msgid "Boolean AND"
 msgstr "Λογικό AND"
 
-#: src/ui/buttons-programming.ui:2179
+#: src/ui/buttons-programming.ui:1828
 msgid "Boolean NOT"
 msgstr "Λογικό NOT"
 
-#: src/ui/buttons-programming.ui:2199
+#: src/ui/buttons-programming.ui:1845
 msgid "Ones’ Complement"
 msgstr "Συμπλήρωμα ως προς 1"
 
-#: src/ui/buttons-programming.ui:2219
+#: src/ui/buttons-programming.ui:1862
 msgid "Two’s Complement"
 msgstr "Συμπλήρωμα ως προς 2"
 
-#: src/ui/buttons-programming.ui:2319
+#: src/ui/buttons-programming.ui:1938
 msgid "Binary Logarithm"
 msgstr "Δυαδικός λογάριθμος"
 
-#: src/ui/buttons-programming.ui:2400
+#: src/ui/buttons-programming.ui:1998
 msgid "Integer Component"
 msgstr "Ακέραιο μέρος"
 
-#: src/ui/buttons-programming.ui:2420
+#: src/ui/buttons-programming.ui:2015
 msgid "Fractional Component"
 msgstr "Κλασματικό μέρος"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2463 src/ui/buttons-programming.ui:2597
+#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
 msgid "Insert Character Code"
 msgstr "Εισαγωγή κωδικού χαρακτήρα"
 
-#. Accessible name for the insert character button
-#: src/ui/buttons-programming.ui:2467
-msgid "Insert Character"
-msgstr "Εισαγωγή χαρακτήρα"
-
-#: src/ui/buttons-programming.ui:2533
+#: src/ui/buttons-programming.ui:2078
 msgid "Change word size"
 msgstr "Αλλαγή μήκους λέξης"
 
-#: src/ui/buttons-programming.ui:2567
-msgid "Word Size"
-msgstr "Μήκος λέξης"
-
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2610
+#: src/ui/buttons-programming.ui:2115
 msgid "Ch_aracter:"
 msgstr "Χα_ρακτήρας:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2659
+#: src/ui/buttons-programming.ui:2145
 msgid "_Insert"
 msgstr "_Εισαγωγή"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Έναρξη σε δεδομένη λειτουργία (βασική, προηγμένη, οικονομικά, "
 "προγραμματισμός, πληκτρολόγιο)"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:24
 msgid "Solve given equation"
 msgstr "Λύση δεδομένης εξίσωσης"
 
-#: src/gnome-calculator.vala:27
+#: src/gnome-calculator.vala:25
 msgid "Start with given equation"
 msgstr "Έναρξη με μια δεδομένη εξίσωση"
 
-#: src/gnome-calculator.vala:28
+#: src/gnome-calculator.vala:26
 msgid "Show release version"
 msgstr "Προβολή της έκδοσης"
 
-#. Translators: Error message displayed when unable to launch help browser
-#: src/gnome-calculator.vala:314
-msgid "Unable to open help file"
-msgstr "Αδύνατο το άνοιγμα του αρχείου βοήθειας"
-
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:345
+#: src/gnome-calculator.vala:305
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -2946,322 +3056,320 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
 "http://gnome.gr/"
 
-#: src/gnome-calculator.vala:351 src/ui/math-window.ui:101
-msgid "About Calculator"
-msgstr "Περί της Αριθμομηχανής"
-
-#. Short description in the about dialog
-#: src/gnome-calculator.vala:360
-msgid "Calculator with financial and scientific modes."
-msgstr "Αριθμομηχανή με χρηματο-οικονομικές και επιστημονικές λειτουργίες."
-
-#: src/gnome-calculator.vala:375
+#: src/gnome-calculator.vala:317
 msgid "Are you sure you want to close all open windows?"
 msgstr "Είστε βέβαιοι ότι θέλετε να κλείσετε όλα τα ανοιχτά παράθυρα;"
 
-#: src/gnome-calculator.vala:376
+#: src/gnome-calculator.vala:318
 msgid "Close _All"
 msgstr "_Κλείσιμο όλων"
 
-#: src/math-buttons.vala:223 src/math-buttons.vala:581
-#: src/math-buttons.vala:596
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
 #, c-format
-#| msgid "8-bit"
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-bit"
 msgstr[1] "%d-bit"
 
-#: src/math-buttons.vala:566
+#: src/math-buttons.vala:597
 #, c-format
 msgid "%d place"
 msgid_plural "%d places"
 msgstr[0] "%d θέση"
 msgstr[1] "%d θέσεις"
 
-#: src/ui/math-converter.ui:36
+#: src/ui/math-converter.ui:41
 msgid " to "
 msgstr " σε "
 
-#: src/ui/math-converter.ui:66
+#: src/ui/math-converter.ui:61
 msgid "Switch conversion units"
 msgstr "Αλλαγή μονάδων μετατροπής"
 
-#: src/ui/math-converter.ui:112
+#: src/ui/math-converter.ui:100
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:564
+#: src/math-display.vala:606
 msgid "Defined Functions"
 msgstr "Καθορισμένες συναρτήσεις"
 
-#: src/math-display.vala:621
+#: src/math-display.vala:651
+msgid "Built-in keywords"
+msgstr "Ενσωματωμένες λέξεις-κλειδιά"
+
+#: src/math-display.vala:695
+#, fuzzy
+#| msgid "Defined Functions"
+msgid "Defined currencies"
+msgstr "Καθορισμένες συναρτήσεις"
+
+#: src/math-display.vala:745
 msgid "Defined Variables"
 msgstr "Καθορισμένες μεταβλητές"
 
-#: src/ui/math-function-popover.ui:34
+#: src/ui/math-function-popover.ui:27
 msgid "New function"
 msgstr "Νέα συνάρτηση"
 
-#: src/ui/math-function-popover.ui:47
+#: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
 msgstr "Επιλογή αριθμού ορισμάτων"
 
-#. Translators: Word size combo: 8 bit
-#: src/math-preferences.vala:26
+#: src/math-preferences.vala:123
 msgid "8-bit"
 msgstr "8-bit"
 
-#. Translators: Word size combo: 16 bit
-#: src/math-preferences.vala:28
+#: src/math-preferences.vala:125
 msgid "16-bit"
 msgstr "16-bit"
 
-#. Translators: Word size combo: 32 bit
-#: src/math-preferences.vala:30
+#: src/math-preferences.vala:127
 msgid "32-bit"
 msgstr "32-bit"
 
-#. Translators: Word size combo: 64 bit
-#: src/math-preferences.vala:32
+#: src/math-preferences.vala:129
 msgid "64-bit"
 msgstr "64-bit"
 
-#. Translators: Refresh interval combo: never
-#: src/math-preferences.vala:37
-msgid "never"
-msgstr "ποτέ"
+#: src/math-preferences.vala:138
+msgid "Never"
+msgstr "Ποτέ"
 
-#. Translators: Refresh interval combo: daily
-#: src/math-preferences.vala:39
-msgid "daily"
-msgstr "ημερησίως"
+#: src/math-preferences.vala:140
+msgid "Daily"
+msgstr "Ημερισίως"
 
-#. Translators: Refresh interval combo: weekly
-#: src/math-preferences.vala:41
-msgid "weekly"
-msgstr "εβδομαδιαίως"
+#: src/math-preferences.vala:142
+msgid "Weekly"
+msgstr "Εβδομαδιαίως"
 
-#: src/ui/math-preferences.ui:22
+#: src/ui/math-preferences.ui:19
 msgid "Number of _decimals"
 msgstr "Αριθμός _δεκαδικών"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:34
 msgid "Trailing _zeroes"
 msgstr "_Μηδενικά στο τέλος"
 
-#: src/ui/math-preferences.ui:55
+#: src/ui/math-preferences.ui:46
 msgid "_Thousands separators"
 msgstr "Διαχωριστικό _χιλιάδων"
 
-#: src/ui/math-preferences.ui:70
+#: src/ui/math-preferences.ui:58
 msgid "_Angle units"
 msgstr "Μονάδες _γωνιών"
 
-#: src/ui/math-preferences.ui:77
+#: src/ui/math-preferences.ui:64
 msgid "Word _size"
 msgstr "Μήκος _λέξης"
 
-#: src/ui/math-preferences.ui:84
+#: src/ui/math-preferences.ui:70
 msgid "E_xchange rate refresh interval"
 msgstr "Εύρος ανανέωσης ρυθμού συναλλάγματος"
 
-#: src/ui/math-shortcuts.ui:15
+#: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
 msgstr "Γενικά"
 
-#: src/ui/math-shortcuts.ui:20
+#: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
 msgstr "Άνοιγμα νέου παραθύρου"
 
-#: src/ui/math-shortcuts.ui:27
+#: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
 msgstr "Κλείσιμο τρέχοντος παραθύρου"
 
-#: src/ui/math-shortcuts.ui:34
+#: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
 msgstr "Τερματισμός εφαρμογής"
 
-#: src/ui/math-shortcuts.ui:41
+#: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
 msgid "Show help"
 msgstr "Εμφάνιση βοήθειας"
 
-#: src/ui/math-shortcuts.ui:48
+#: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
 msgstr "Άνοιγμα μενού"
 
-#: src/ui/math-shortcuts.ui:55
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr "Εμφάνιση προτιμήσεων"
+
+#: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Συντομεύσεις πληκτρολογίου"
 
-#: src/ui/math-shortcuts.ui:62
+#: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
 msgid "Clear history"
 msgstr "Καθαρισμός ιστορικού"
 
-#: src/ui/math-shortcuts.ui:70
+#: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
 msgstr "Λειτουργίες εναλλαγής"
 
-#: src/ui/math-shortcuts.ui:75
+#: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
 msgstr "Εναλλαγή στη βασική λειτουργία"
 
-#: src/ui/math-shortcuts.ui:82
+#: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
 msgstr "Εναλλαγή στην προχωρημένη λειτουργία"
 
-#: src/ui/math-shortcuts.ui:89
+#: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
 msgstr "Μετάβαση σε λειτουργία οικονομικών"
 
-#: src/ui/math-shortcuts.ui:96
+#: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
 msgstr "Μετάβαση σε λειτουργία προγραμματισμού"
 
-#: src/ui/math-shortcuts.ui:103
+#: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
 msgstr "Μετάβαση σε λειτουργία πληκτρολογίου"
 
-#: src/ui/math-shortcuts.ui:111
+#: src/ui/math-shortcuts.ui:101
 msgctxt "shortcut window"
 msgid "Keyboard entry"
 msgstr "Καταχώριση πληκτρολογίου"
 
-#: src/ui/math-shortcuts.ui:116
+#: src/ui/math-shortcuts.ui:105
 msgctxt "shortcut window"
 msgid "Multiply (×)"
 msgstr "Πολλαπλασιασμός (×)"
 
-#: src/ui/math-shortcuts.ui:123
+#: src/ui/math-shortcuts.ui:111
 msgctxt "shortcut window"
 msgid "Divide (÷)"
 msgstr "Διαίρεση (÷)"
 
-#: src/ui/math-shortcuts.ui:130
+#: src/ui/math-shortcuts.ui:117
 msgctxt "shortcut window"
 msgid "Square root (√)"
 msgstr "Τετραγωνική ρίζα (√)"
 
-#: src/ui/math-shortcuts.ui:137
+#: src/ui/math-shortcuts.ui:123
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "Αναστροφή"
 
-#: src/ui/math-shortcuts.ui:144
+#: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
 msgstr "Pi (π)"
 
-#: src/ui/math-shortcuts.ui:151
+#: src/ui/math-shortcuts.ui:135
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
 msgstr "Εισάγετε αριθμούς σε επιστημονική μορφή"
 
-#: src/ui/math-shortcuts.ui:159
+#: src/ui/math-shortcuts.ui:142
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "Προγραμματιστική λειτουργία"
 
-#: src/ui/math-shortcuts.ui:164
+#: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
 msgstr "Εναλλαγή σε δυαδικό"
 
-#: src/ui/math-shortcuts.ui:171
+#: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
 msgstr "Εναλλαγή σε οκταδικό"
 
-#: src/ui/math-shortcuts.ui:178
+#: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
 msgstr "Εναλλαγή σε δεκαδικό"
 
-#: src/ui/math-shortcuts.ui:185
+#: src/ui/math-shortcuts.ui:164
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
 msgstr "Εναλλαγή σε δεκαεξαδικό"
 
-#: src/ui/math-shortcuts.ui:193
+#: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
 msgstr "Άλλοι"
 
-#: src/ui/math-shortcuts.ui:198
+#: src/ui/math-shortcuts.ui:175
 msgctxt "shortcut window"
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: src/ui/math-shortcuts.ui:205
+#: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
 msgstr "Επικόλληση"
 
-#: src/ui/math-shortcuts.ui:212
+#: src/ui/math-shortcuts.ui:187
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "Aναίρεση"
 
-#: src/ui/math-shortcuts.ui:219
+#: src/ui/math-shortcuts.ui:193
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "Επανάληψη"
 
-#: src/ui/math-shortcuts.ui:226
+#: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
 msgid "Previous result"
 msgstr "Προηγούμενο αποτέλεσμα"
 
-#: src/ui/math-shortcuts.ui:233
+#: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
 msgstr "Επόμενο αποτέλεσμα"
 
-#: src/ui/math-shortcuts.ui:240
+#: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Εναλλαγή σε λειτουργία πληκτρολογίου (alt.)"
 
-#: src/ui/math-variable-popover.ui:38
+#: src/ui/math-variable-popover.ui:31
 msgid "Variable name"
 msgstr "Όνομα μεταβλητής"
 
-#: src/ui/math-variable-popover.ui:52
+#: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Αποθηκεύστε την τιμή σε υπάρχουσα ή νέα μεταβλητή"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:90
+#: src/ui/math-window.ui:20 src/math-window.vala:113
 msgid "Basic"
 msgstr "Βασική"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:95
+#: src/ui/math-window.ui:25 src/math-window.vala:119
 msgid "Advanced"
 msgstr "Προχωρημένη"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:100
+#: src/ui/math-window.ui:30 src/math-window.vala:125
 msgid "Financial"
 msgstr "Εμπορική"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:105
+#: src/ui/math-window.ui:35 src/math-window.vala:131
 msgid "Programming"
 msgstr "Προγραμματιστική"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:110
+#: src/ui/math-window.ui:40 src/math-window.vala:137
 msgid "Keyboard"
 msgstr "Πληκτρολόγιο"
 
@@ -3301,43 +3409,85 @@ msgstr "Συντομεύσεις πληκτρολογίου"
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: src/ui/math-window.ui:132
-msgid "Mode selection"
+#: src/ui/math-window.ui:101
+msgid "About Calculator"
+msgstr "Περί της Αριθμομηχανής"
+
+#: src/ui/math-window.ui:117
+msgid "Mode Selection"
 msgstr "Επιλογή λειτουργίας"
 
-#: src/ui/math-window.ui:179
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
 msgid "Undo"
 msgstr "Aναίρεση"
 
-#: src/ui/math-window.ui:180
-msgid "Undo [Ctrl+Z]"
-msgstr "Αναίρεση [Ctrl+Z]"
+#: src/ui/math-window.ui:143
+msgid "Main Menu"
+msgstr "Κυρίως μενού"
 
-#: src/ui/math-window.ui:196
-msgid "Primary menu"
-msgstr "Πρωτεύον μενού"
-
-#: src/math-window.vala:138
+#: src/math-window.vala:166
 msgid "_Quit"
 msgstr "Έ_ξοδος"
+
+#~ msgid "GNOME Calculator"
+#~ msgstr "Αριθμομηχανή GNOME"
+
+#~ msgid "GNOME Calculator in Basic Mode"
+#~ msgstr "Αριθμομηχανή GNOME σε βασική λειτουργία"
+
+#~ msgid "GNOME Calculator in Advanced Mode"
+#~ msgstr "Αριθμομηχανή GNOME σε προχωρημένη λειτουργία"
+
+#~ msgid "GNOME Calculator in Financial Mode"
+#~ msgstr "Αριθμομηχανή GNOME σε οικονομική λειτουργία"
+
+#~ msgid "GNOME Calculator in Programming Mode"
+#~ msgstr "Αριθμομηχανή GNOME σε προγραμματιστική λειτουργία"
+
+#~ msgid "Exponent"
+#~ msgstr "Δύναμη"
+
+#~ msgid "Subscript"
+#~ msgstr "Δείκτης"
+
+#~ msgid "Superscript"
+#~ msgstr "Εκθέτης"
+
+#~ msgid "Factorize"
+#~ msgstr "Παραγοντοποίηση"
+
+#~ msgid "Scientific Exponent"
+#~ msgstr "Εκθετικός αριθμός"
+
+#~ msgid "Factorial"
+#~ msgstr "Παραγοντικό"
+
+#~ msgid "Store"
+#~ msgstr "Αποθήκευση"
+
+#~ msgid "Insert Character"
+#~ msgstr "Εισαγωγή χαρακτήρα"
+
+#~ msgid "Word Size"
+#~ msgstr "Μήκος λέξης"
+
+#~ msgid "Unable to open help file"
+#~ msgstr "Αδύνατο το άνοιγμα του αρχείου βοήθειας"
+
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Αριθμομηχανή με χρηματο-οικονομικές και επιστημονικές λειτουργίες."
+
+#~ msgid "Undo [Ctrl+Z]"
+#~ msgstr "Αναίρεση [Ctrl+Z]"
+
+#~ msgid "Primary menu"
+#~ msgstr "Πρωτεύον μενού"
 
 #~ msgid "How often the currency exchange rates should be updated"
 #~ msgstr "Πόσο συχνά πρέπει να ενημερώνονται οι συναλλαγματικές ισοτιμίες"
 
 #~ msgid "Square root [Ctrl+R]"
 #~ msgstr "Τετραγωνική ρίζα [Ctrl+R]"
-
-#~ msgid "Basic Mode"
-#~ msgstr "Βασική λειτουργία"
-
-#~ msgid "Advanced Mode"
-#~ msgstr "Προχωρημένη λειτουργία"
-
-#~ msgid "Financial Mode"
-#~ msgstr "Οικονομική λειτουργία"
-
-#~ msgid "Programming Mode"
-#~ msgstr "Προγραμματιστική λειτουργία"
 
 #~ msgid "8 bits"
 #~ msgstr "8 bits"
@@ -3362,9 +3512,6 @@ msgstr "Έ_ξοδος"
 
 #~ msgid "_About Calculator"
 #~ msgstr "_Περί της Αριθμομηχανής"
-
-#~ msgid "Menu"
-#~ msgstr "Μενού"
 
 #, fuzzy
 #~| msgid "Start with given equation"
@@ -3437,18 +3584,6 @@ msgstr "Έ_ξοδος"
 
 #~ msgid "Mode"
 #~ msgstr "Λειτουργία"
-
-#~ msgid "Round"
-#~ msgstr "Στρογγυλοποίηση προς τον πλησιέστερο ακέραιο"
-
-#~ msgid "Floor"
-#~ msgstr "Στρογγυλοποίηση προς τα κάτω"
-
-#~ msgid "Ceiling"
-#~ msgstr "Στρογγυλοποίηση προς τα πάνω"
-
-#~ msgid "Sign"
-#~ msgstr "Πρόσημο"
 
 #~ msgid "Litres"
 #~ msgstr "Λίτρα"
@@ -3719,23 +3854,24 @@ msgstr "Έ_ξοδος"
 #~ "The initial calculator mode. Valid values are \"BASIC\", \"FINANCIAL\", "
 #~ "\"LOGICAL\", \"SCIENTIFIC\" and \"PROGRAMMING\""
 #~ msgstr ""
-#~ "Η αρχική λειτουργία της αριθμομηχανής. Οι έγκυρες τιμές είναι \"BASIC"
-#~ "\" (βασική) \"FINANCIAL\" (εμπορική) \"LOGICAL\" (λογική) \"SCIENTIFIC"
-#~ "\" (επιστημονική) \"PROGRAMMING\" (προγραμματιστική)"
+#~ "Η αρχική λειτουργία της αριθμομηχανής. Οι έγκυρες τιμές είναι "
+#~ "\"BASIC\" (βασική) \"FINANCIAL\" (εμπορική) \"LOGICAL\" (λογική) "
+#~ "\"SCIENTIFIC\" (επιστημονική) \"PROGRAMMING\" (προγραμματιστική)"
 
 #~ msgid ""
-#~ "The initial display mode. Valid values are \"ENG\" (engineering), \"FIX"
-#~ "\" (fixed-point) and \"SCI\" (scientific)"
+#~ "The initial display mode. Valid values are \"ENG\" (engineering), "
+#~ "\"FIX\" (fixed-point) and \"SCI\" (scientific)"
 #~ msgstr ""
-#~ "Η αρχική λειτουργία εμφάνισης. Οι έγκυρες τιμές είναι \"ENG"
-#~ "\" (τεχνολογική) \"FIX\" (σταθερής υποδιαστολής) \"SCI\" (επιστημονική)"
+#~ "Η αρχική λειτουργία εμφάνισης. Οι έγκυρες τιμές είναι "
+#~ "\"ENG\" (τεχνολογική) \"FIX\" (σταθερής υποδιαστολής) "
+#~ "\"SCI\" (επιστημονική)"
 
 #~ msgid ""
-#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), \"GRAD"
-#~ "\" (gradians) and \"RAD\" (radians)."
+#~ "The initial trigonometric type. Valid values are \"DEG\" (degrees), "
+#~ "\"GRAD\" (gradians) and \"RAD\" (radians)."
 #~ msgstr ""
-#~ "Ο αρχικός τύπος τριγωνομετρικών υπολογισμών. Οι έγκυρες τιμές είναι \"DEG"
-#~ "\" (μοίρες) \"GRAD\" (βαθμοί) \"RAD\" (ακτίνια)."
+#~ "Ο αρχικός τύπος τριγωνομετρικών υπολογισμών. Οι έγκυρες τιμές είναι "
+#~ "\"DEG\" (μοίρες) \"GRAD\" (βαθμοί) \"RAD\" (ακτίνια)."
 
 #~ msgid "The initial x-coordinate for the window"
 #~ msgstr "Το αρχικό πλάτος του παραθύρου (στον άξονα Χ)"
