@@ -106,9 +106,9 @@
   <template class="MathWindow" parent="AdwApplicationWindow">
     <property name="title" translatable="yes">Calculator</property>
     <child>
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <child>
+      <object class="AdwToolbarView">
+        <property name="top-bar-style">ADW_TOOLBAR_RAISED</property>
+        <child type="top">
           <object class="AdwHeaderBar" id="headerbar">
             <child type="title">
               <object class="GtkMenuButton" id="menu_button">
@@ -146,7 +146,7 @@
             </child>
           </object>
         </child>
-        <child>
+        <property name="content">
           <object class="AdwClamp">
             <!-- (5*60px button width + 4*4px spacing + 12px margin) * 2 panels + 12px panel spacing = 668 width. -->
             <!-- Update the panel size in CSS accordingly. -->
@@ -164,7 +164,7 @@
               </object>
             </child>
           </object>
-        </child>
+        </property>
       </object>
     </child>
   </template>
