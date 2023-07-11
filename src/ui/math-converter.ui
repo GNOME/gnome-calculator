@@ -33,6 +33,7 @@
             <child>
               <object class="GtkDropDown" id="from_combo">
                 <property name="hexpand">True</property>
+                <property name="search-match-mode">substring</property>
                 <signal name="notify::selected" handler="to_combobox_changed_cb" swapped="no"/>
               </object>
             </child>
@@ -50,6 +51,7 @@
             <child>
               <object class="GtkDropDown" id="to_combo">
                 <property name="hexpand">True</property>
+                <property name="search-match-mode">substring</property>
                 <signal name="notify::selected" handler="to_combobox_changed_cb" swapped="no"/>
               </object>
             </child>

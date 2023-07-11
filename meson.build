@@ -89,7 +89,7 @@ if get_option ('gcalc')
 subdir('gcalc')
 endif
 if not get_option ('disable-ui')
-gtk = dependency('gtk4', version: '>= 4.4.1')
+gtk = dependency('gtk4', version: '>= 4.11.4')
 
 if get_option('gci') and get_option('gcalc')
 subdir('gci')
