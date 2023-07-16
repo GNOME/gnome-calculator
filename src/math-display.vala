@@ -124,6 +124,11 @@ public class MathDisplay : Gtk.Box
     private bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType mod_state)
     {
         info ("event\n");
+        if (keyval == Gdk.Key.Left || keyval == Gdk.Key.Right)
+        {
+            return false;
+        }
+
         /* Clear on escape */
         var state = mod_state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.ALT_MASK);
 
