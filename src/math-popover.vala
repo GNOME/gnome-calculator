@@ -23,6 +23,7 @@ public abstract class MathPopover<T> : Gtk.Popover
         this.equation = equation;
         this.model = model;
         this.compare_func = (a,b) => compare_func(a,b);
+        name_entry ().enable_undo = false;
         this.changed_handler = name_entry ().changed.connect (name_entry_changed_cb);
     }
 
@@ -32,8 +33,10 @@ public abstract class MathPopover<T> : Gtk.Popover
     private void name_entry_changed_cb (Gtk.Editable editable)
     {
         var entry = editable as Gtk.Entry;
-	SignalHandler.block (entry, changed_handler);
-        entry.text = entry.text.replace (" ", "_");
+        SignalHandler.block (entry, changed_handler);
+        var cursor = editable.get_position ();
+        editable.set_text (editable.text.replace (" ", "_"));
+        editable.set_position (cursor);
         SignalHandler.unblock (entry, changed_handler);
         add_button ().sensitive = entry.text != "";
     }
