@@ -273,8 +273,7 @@ public class SearchProviderApp : Application
 
 int main (string[] args)
 {
-    Gtk.init();
     Intl.setlocale (LocaleCategory.ALL, "");
 
-    return new SearchProviderApp ().run ();
+    return new SearchProviderApp ().run (args);
 }
