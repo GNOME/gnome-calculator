@@ -142,7 +142,7 @@ public class UnitManager : Object
         frequency_category.add_unit (new Unit ("megahertz", _("Megahertz"), dpgettext2 (null, "unit-format", "%s MHz"), "1000000x", "x/1000000", dpgettext2 (null, "unit-symbols", "megahertz,MHz")));
         frequency_category.add_unit (new Unit ("gigahertz", _("Gigahertz"), dpgettext2 (null, "unit-format", "%s GHz"), "1000000000x", "x/1000000000", dpgettext2 (null, "unit-symbols", "gigahertz,GHz")));
         frequency_category.add_unit (new Unit ("terahertz", _("Terahertz"), dpgettext2 (null, "unit-format", "%s THz"), "1000000000000x", "x/1000000000000" ,dpgettext2 (null, "unit-symbols", "terahertz,THz")));
-        energy_category.add_unit (new Unit ("joule", _("Joule"), dpgettext2 (null, "unit-format", "%s J"), "x", "x" ,dpgettext2 (null, "unit-symbols", "Joule,J, joule,joules")));
+        energy_category.add_unit (new Unit ("joule", _("Joule"), dpgettext2 (null, "unit-format", "%s J"), "x", "x" ,dpgettext2 (null, "unit-symbols", "Joule,J,joule,joules")));
         energy_category.add_unit (new Unit ("btu", _("BTU"), dpgettext2 (null, "unit-format", "%s BTU"), "x*1054.350264489", "x/1054.350264489" ,dpgettext2 (null, "unit-symbols", "btu,BTU")));
         energy_category.add_unit(new Unit ("calorie", _("Calorie"), dpgettext2 (null, "unit-format", "%s cal"), "x*4.184", "x/4.184", dpgettext2 (null, "unit-symbols", "calories,calorie,cal")));
         energy_category.add_unit(new Unit ("erg", _("Erg"), dpgettext2 (null, "unit-format", "%s erg"), "x/10000000", "x*10000000", dpgettext2 (null, "unit-symbols", "ergs,erg")));
