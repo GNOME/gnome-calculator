@@ -146,7 +146,7 @@ public class UnitManager : Object
         energy_category.add_unit (new Unit ("btu", _("BTU"), dpgettext2 (null, "unit-format", "%s BTU"), "x*1054.350264489", "x/1054.350264489" ,dpgettext2 (null, "unit-symbols", "btu,BTU")));
         energy_category.add_unit(new Unit ("calorie", _("Calorie"), dpgettext2 (null, "unit-format", "%s cal"), "x*4.184", "x/4.184", dpgettext2 (null, "unit-symbols", "calories,calorie,cal")));
         energy_category.add_unit(new Unit ("erg", _("Erg"), dpgettext2 (null, "unit-format", "%s erg"), "x/10000000", "x*10000000", dpgettext2 (null, "unit-symbols", "ergs,erg")));
-        energy_category.add_unit(new Unit ("ev", _("Ev"), dpgettext2 (null, "unit-format", "%s ev"), "x*1.602176634/10000000000000000000", "x*1.602176634*10000000000000000000", dpgettext2 (null, "unit-symbols", "electronvolt,electronvolts,ev")));
+        energy_category.add_unit(new Unit ("ev", _("eV"), dpgettext2 (null, "unit-format", "%s ev"), "x*1.602176634/10000000000000000000", "x*1.602176634*10000000000000000000", dpgettext2 (null, "unit-symbols", "electronvolt,electronvolts,ev")));
         energy_category.add_unit(new Unit ("ftlb", _("Ft-lb"), dpgettext2 (null, "unit-format", "%s ft-lb"), "x*1.3558179483314004", "x/1.3558179483314004", dpgettext2 (null, "unit-symbols", "foot-pound,foot-pounds,ft-lb,ft-lbs"))); 
 
         var currency_category = default_unit_manager.add_category ("currency", _("Currency"));
