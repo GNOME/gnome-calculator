@@ -13,7 +13,6 @@
 [DBus (name = "org.gnome.Shell.SearchProvider2")]
 public class SearchProvider : Object
 {
-    private Settings settings;
     private unowned SearchProviderApp application;
     private Cancellable cancellable;
 
@@ -29,8 +28,6 @@ public class SearchProvider : Object
 
         queued_equations = new Queue<string> ();
         cached_equations = new HashTable<string, string> (str_hash, str_equal);
-
-        settings = new Settings ("org.gnome.calculator");
     }
 
     ~SearchProvider ()
@@ -50,52 +47,44 @@ public class SearchProvider : Object
         return string.joinv (" ", terms);
     }
 
-    private string? solve (string solve_equation) {
-        var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
-        if (tsep_string == null || tsep_string == "")
-            tsep_string = " ";
+    private async Subprocess solve_subprocess (string equation) throws Error
+    {
+        Subprocess subprocess;
+        string[] argv = {"gnome-calculator", "--solve"};
+        argv += equation;
+        argv += null;
 
-        var decimal = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
-        if (decimal == null)
-            decimal = "";
+        debug (@"Trying to solve $(equation)");
 
-        settings = new Settings ("org.gnome.calculator");
-        var angle_units = (AngleUnit) settings.get_enum ("angle-units");
-        var e = new ConvertEquation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
-        e.base = 10;
-        e.wordlen = 32;
-        e.angle_units = angle_units;
-
-        ErrorCode error;
-        string? error_token = null;
-        uint representation_base;
-        var result = e.parse (out representation_base, out error, out error_token);
-
-        // if unknown conversion, try force reloading conversion rates and retry conversion
-        if (error == ErrorCode.UNKNOWN_CONVERSION) {
-            CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
-            CurrencyManager.get_default ().refresh_sync ();
-            result = e.parse (out representation_base, out error, out error_token);
-        }
-        if (result != null)
+        try
         {
-            var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
-            serializer.set_representation_base (representation_base);
-            var eq_result = serializer.to_string (result);
-            if (serializer.error != null) {
-                return null;
-            }
-
-            return "%s\n".printf (eq_result);
+            // Eat output so that it doesn't wind up in the journal. It's
+            // expected that most searches are not valid calculator input.
+            var flags = SubprocessFlags.STDOUT_PIPE | SubprocessFlags.STDERR_PIPE;
+            subprocess = new Subprocess.newv (argv, flags);
         }
-        else
+        catch (Error e)
         {
-            return null;
+            throw e;
         }
+
+        if (cancellable == null)
+            cancellable = new Cancellable ();
+
+        cancellable.cancelled.connect (() => {
+            subprocess.force_exit ();
+            cancellable = null;
+        });
+
+        application.renew_inactivity_timeout ();
+
+        return subprocess;
     }
 
     private async bool solve_equation (string equation) throws DBusError
     {
+        string? result;
+
         cancel();
 
         var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
@@ -117,12 +106,21 @@ public class SearchProvider : Object
         if (cached_equations.lookup (equation) != null)
             return true;
 
-        application.renew_inactivity_timeout ();
-
-        var result = solve (equation);
-
-        if (result == null)
+        try
+        {
+            var subprocess = yield solve_subprocess (equation);
+            yield subprocess.communicate_utf8_async (null, cancellable, out result, null);
+            subprocess.wait_check (cancellable);
+        }
+        catch (SpawnError e)
+        {
+            critical ("Failed to spawn Calculator: %s", e.message);
+            throw new DBusError.SPAWN_FAILED (e.message);
+        }
+        catch (Error e)
+        {
             return false;
+        }
 
         queued_equations.push_tail (equation);
         cached_equations.insert (equation, result.strip ());
