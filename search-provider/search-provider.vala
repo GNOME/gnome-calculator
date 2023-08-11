@@ -15,6 +15,7 @@ public class SearchProvider : Object
 {
     private unowned SearchProviderApp application;
     private Cancellable cancellable;
+    private Settings settings;
 
     private const int MAX_CACHED_EQUATIONS = 10;
     private Queue<string> queued_equations;
@@ -50,9 +51,18 @@ public class SearchProvider : Object
     private async Subprocess solve_subprocess (string equation) throws Error
     {
         Subprocess subprocess;
-        string[] argv = {"gnome-calculator", "--solve"};
-        argv += equation;
-        argv += null;
+
+        if (settings == null)
+            settings = new Settings ("org.gnome.calculator");
+
+        string[] argv = {
+            argv0,
+            "--solve",
+            equation,
+            "--angle-units",
+            settings.get_string ("angle-units"),
+            null
+        };
 
         debug (@"Trying to solve $(equation)");
 
@@ -237,11 +247,19 @@ public class SearchProvider : Object
 /* Based on GPLv2+ code from GNOME Contacts */
 public class SearchProviderApp : Application
 {
+    private const OptionEntry[] option_entries = {
+        { "solve", 0, 0, OptionArg.STRING },
+        { "angle-units", 0, 0, OptionArg.STRING },
+        { null }
+    };
+
     public SearchProviderApp ()
     {
         Object (application_id: "org.gnome.Calculator.SearchProvider",
                 flags: ApplicationFlags.IS_SERVICE,
                 inactivity_timeout: 20000);
+
+        add_main_option_entries (option_entries);
     }
 
     public void renew_inactivity_timeout ()
@@ -270,11 +288,82 @@ public class SearchProviderApp : Application
 
         return true;
     }
+
+    protected override int handle_local_options (GLib.VariantDict options)
+    {
+        AngleUnit angle_units = AngleUnit.DEGREES;
+
+        if (options.contains ("angle-units"))
+        {
+            var angle_units_str = (string) options.lookup_value ("angle-units", VariantType.STRING);
+            var enum_value = ((EnumClass)typeof (AngleUnit).class_ref ()).get_value_by_nick (angle_units_str);
+
+            if (enum_value != null)
+                angle_units = (AngleUnit)enum_value.value;
+        }
+        else
+        {
+            var settings = new Settings ("org.gnome.calculator");
+            angle_units = (AngleUnit) settings.get_enum ("angle-units");
+        }
+
+        if (options.contains ("solve"))
+        {
+            var solve_equation = (string) options.lookup_value ("solve", VariantType.STRING);
+            var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
+            if (tsep_string == null || tsep_string == "")
+                tsep_string = " ";
+
+            var decimal = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
+            if (decimal == null)
+                decimal = "";
+
+            var e = new ConvertEquation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
+            e.base = 10;
+            e.wordlen = 32;
+            e.angle_units = angle_units;
+
+            ErrorCode error;
+            string? error_token = null;
+            uint representation_base;
+            var result = e.parse (out representation_base, out error, out error_token);
+
+            if (result != null)
+            {
+                var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
+                serializer.set_representation_base (representation_base);
+                var eq_result = serializer.to_string (result);
+                if (serializer.error != null) {
+                    stderr.printf (serializer.error);
+                    return Posix.EXIT_FAILURE;
+                }
+
+                stdout.printf ("%s\n", eq_result);
+                return Posix.EXIT_SUCCESS;
+            }
+            else if (error == ErrorCode.MP)
+            {
+                stderr.printf ("Error: %s\n", (Number.error != null) ? Number.error : error_token);
+                return Posix.EXIT_FAILURE;
+            }
+            else
+            {
+                stderr.printf ("Error: %s\n", mp_error_code_to_string (error));
+                return Posix.EXIT_FAILURE;
+            }
+        }
+
+        return -1;
+    }
 }
+
+static string argv0;
 
 int main (string[] args)
 {
     Intl.setlocale (LocaleCategory.ALL, "");
+
+    argv0 = args[0];
 
     return new SearchProviderApp ().run (args);
 }
