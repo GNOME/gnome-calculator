@@ -257,7 +257,7 @@ public class SearchProviderApp : Application
     {
         Object (application_id: "org.gnome.Calculator.SearchProvider",
                 flags: ApplicationFlags.IS_SERVICE,
-                inactivity_timeout: 20000);
+                inactivity_timeout: 10000);
 
         add_main_option_entries (option_entries);
     }
