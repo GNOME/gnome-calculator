@@ -217,6 +217,7 @@ public class SearchProvider : Object
             if (yield solve_equation (equation))
             {
                 var equation_result = cached_equations.lookup (equation);
+                Gtk.init ();
                 Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
                 clipboard.set_text (equation_result);
             }
