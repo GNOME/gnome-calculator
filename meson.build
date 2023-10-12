@@ -29,13 +29,14 @@ gcalc_vapi_dir = join_paths(meson.current_source_dir(), 'vapi')
 
 # Dependencies
 glib_min_version = '2.40.0'
+libsoup_min_version = '3.4.0'
 
 gio = dependency('gio-2.0', version: '>= ' + glib_min_version)
 glib = dependency('glib-2.0', version: '>= ' + glib_min_version)
 gmodule_export = dependency('gmodule-export-2.0')
 gobject = dependency('gobject-2.0', version: '>= ' + glib_min_version)
 libxml = dependency('libxml-2.0')
-libsoup = dependency('libsoup-3.0')
+libsoup = dependency('libsoup-3.0', version: '>= ' + libsoup_min_version)
 gee = dependency('gee-0.8', version: '>= 0.20.0')
 gobject_introspection = dependency('gobject-introspection-1.0', required: false)
 

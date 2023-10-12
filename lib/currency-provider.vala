@@ -126,14 +126,16 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         var directory = Path.get_dirname (filename);
         DirUtils.create_with_parents (directory, 0755);
 
-        var dest = File.new_for_path (filename);
-        var session = new Soup.Session ();
-        var message = new Soup.Message ("GET", uri);
         try
         {
-            var bodyinput = session.send (message, new GLib.Cancellable());
+            var dest = File.new_for_path (filename);
+            var session = new Soup.Session ();
+            var message = new Soup.Message ("GET", uri);
             var output = dest.replace (null, false, FileCreateFlags.REPLACE_DESTINATION);
-            output.splice (bodyinput, OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET);
+            session.send_and_splice (message, output,
+                OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET,
+                new GLib.Cancellable());
+
             loading = false;
             do_load_rates ();
             debug ("%s rates updated", source);
@@ -150,16 +152,16 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         var directory = Path.get_dirname (filename);
         DirUtils.create_with_parents (directory, 0755);
 
-        var dest = File.new_for_path (filename);
-        var session = new Soup.Session ();
-        var message = new Soup.Message ("GET", uri);
         try
         {
-            var bodyinput = yield session.send_async (message, 1, new GLib.Cancellable());
+            var dest = File.new_for_path (filename);
+            var session = new Soup.Session ();
+            var message = new Soup.Message ("GET", uri);
             var output = yield dest.replace_async (null, false, FileCreateFlags.REPLACE_DESTINATION, Priority.DEFAULT);
-            yield output.splice_async (bodyinput,
-                                       OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET,
-                                       Priority.DEFAULT);
+            yield session.send_and_splice_async (message, output,
+                                                 OutputStreamSpliceFlags.CLOSE_SOURCE | OutputStreamSpliceFlags.CLOSE_TARGET,
+                                                 Priority.DEFAULT, new GLib.Cancellable());
+
             loading = false;
             do_load_rates ();
             debug ("%s rates updated", source);
