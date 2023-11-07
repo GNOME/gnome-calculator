@@ -32,7 +32,7 @@ public class MathPreferencesDialog : Adw.PreferencesWindow
     [GtkChild]
     private unowned Adw.ComboRow row_refresh_interval;
     [GtkChild]
-    private unowned Gtk.SpinButton spinbutton_decimals;
+    private unowned Adw.SpinRow row_decimals;
     [GtkChild]
     private unowned Gtk.Switch switch_thousands_separators;
     [GtkChild]
@@ -75,15 +75,15 @@ public class MathPreferencesDialog : Adw.PreferencesWindow
         row_refresh_interval.set_expression (expression);
         row_refresh_interval.set_model (model);
 
-        spinbutton_decimals.value_changed.connect (() => { equation.accuracy = spinbutton_decimals.get_value_as_int (); });
+        row_decimals.changed.connect (() => { equation.accuracy = (int)row_decimals.get_value (); });
         switch_trailing_zeroes.state_set.connect ((state) => { equation.show_trailing_zeroes = state; return false; });
         switch_thousands_separators.state_set.connect ((state) => { equation.show_thousands_separators = state; return false; });
         row_angle_units.notify["selected"].connect (row_angle_units_changed_cb);
         row_word_size.notify["selected"].connect (row_word_size_changed_cb);
         row_refresh_interval.notify["selected"].connect (row_refresh_interval_changed_cb);
 
-        spinbutton_decimals.set_value (equation.accuracy);
-        equation.notify["accuracy"].connect ((pspec) => { spinbutton_decimals.set_value (equation.accuracy); });
+        row_decimals.set_value (equation.accuracy);
+        equation.notify["accuracy"].connect ((pspec) => { row_decimals.set_value (equation.accuracy); });
 
         switch_thousands_separators.set_active (equation.show_thousands_separators);
         equation.notify["show-thousands-separators"].connect (() => { switch_thousands_separators.set_active (equation.show_thousands_separators); });

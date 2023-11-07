@@ -15,18 +15,12 @@
         <child>
           <object class="AdwPreferencesGroup">
             <child>
-              <object class="AdwActionRow">
+              <object class="AdwSpinRow" id="row_decimals">
                 <property name="title" translatable="yes">Number of _decimals</property>
                 <property name="use_underline">True</property>
-                <!-- <property name="mnemonic_widget">spinbutton_decimals</property> -->
-                <child>
-                  <object class="GtkSpinButton" id="spinbutton_decimals">
-                    <property name="valign">center</property>
-                    <property name="adjustment">adjustment_decimals</property>
-                    <property name="numeric">True</property>
-                    <property name="value">9</property>
-                  </object>
-                </child>
+                <property name="adjustment">adjustment_decimals</property>
+                <property name="numeric">True</property>
+                <property name="value">9</property>
               </object>
             </child>
             <child>
