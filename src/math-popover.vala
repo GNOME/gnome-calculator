@@ -81,7 +81,7 @@ public abstract class MathPopover<T> : Gtk.Popover
         if (is_editable (item))
         {
             var button = new Gtk.Button.from_icon_name ("document-edit-symbolic");
-            button.get_style_context ().add_class ("flat");
+            button.set_has_frame (false);
             button.set_data<Object> ("object", item as Object);
             button.clicked.connect (save_function_cb);
             hbox.append (button);
@@ -89,7 +89,7 @@ public abstract class MathPopover<T> : Gtk.Popover
         if (is_deletable (item))
         {
             var button = new Gtk.Button.from_icon_name ("list-remove-symbolic");
-            button.get_style_context ().add_class ("flat");
+            button.set_has_frame (false);
             button.set_data<Object> ("object", item as Object);
             button.clicked.connect (delete_function_cb);
             hbox.append (button);
