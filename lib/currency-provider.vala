@@ -586,6 +586,7 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
     private HashTable <string, string> get_currency_map () {
         HashTable <string, string> name_map = new HashTable <string, string> (str_hash, str_equal);
         name_map.insert ("JMD", "Jamaican Dollar");
+        name_map.insert ("ARS", "Argentine Peso");
         name_map.insert ("UAH", "Ukrainian hryvnia");
         name_map.insert ("NGN", "Nigerian Naira");
         return name_map;
