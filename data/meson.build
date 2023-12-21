@@ -47,6 +47,16 @@ appstream_file = i18n.merge_file(
     install_dir: join_paths(get_option('datadir'), 'metainfo')
 )
 
+# Validate Appdata
+appstreamcli = find_program('appstreamcli', required: false)
+if (appstreamcli.found())
+  test('Validating appdata',
+    appstreamcli,
+    args: ['validate', '--no-net', appstream_file],
+    workdir: meson.current_build_dir()
+  )
+endif
+
 # Gschema
 install_data('org.gnome.calculator.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas'),
