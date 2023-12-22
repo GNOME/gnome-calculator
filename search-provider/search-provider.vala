@@ -328,6 +328,14 @@ public class SearchProviderApp : Application
             uint representation_base;
             var result = e.parse (out representation_base, out error, out error_token);
 
+            // if unknown conversion, try force reloading conversion rates and retry conversion
+            if (error == ErrorCode.UNKNOWN_CONVERSION) {
+                var settings = new Settings ("org.gnome.calculator");
+                CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
+                CurrencyManager.get_default ().refresh_sync ();
+                result = e.parse (out representation_base, out error, out error_token);
+            }
+
             if (result != null)
             {
                 var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
