@@ -157,12 +157,7 @@ libgcalc = library(VERSIONED_PROJECT_NAME,
 		meson.current_build_dir() + '/config.h',
 	],
 	link_with: [ lib_mpfrg ],
-	install : [
-		true,
-		true,
-		true,
-		introspection,
-	],
+	install : true,
 	install_dir : [
 		true,
 		join_paths (get_option('includedir'), 'gcalc-@0@'.format (API_VERSION), 'gcalc'),

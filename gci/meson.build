@@ -89,12 +89,7 @@ libgci = library(GCI_VERSIONED_PROJECT_NAME,
 		meson.current_build_dir() + '/config.h',
 	],
 	link_with: [ libgcalc ],
-	install : [
-		true,
-		true,
-		true,
-		introspection,
-	],
+	install : true,
 	install_dir : [
 		true,
 		join_paths (get_option('includedir'), 'gci-@0@'.format (API_VERSION), 'gci'),
