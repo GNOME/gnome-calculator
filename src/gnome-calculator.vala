@@ -303,7 +303,7 @@ public class Calculator : Adw.Application
             application_icon = APP_ID,
             developer_name = _("The GNOME Project"),
             version =  VERSION,
-            website = "https://wiki.gnome.org/Apps/Calculator",
+            website = "https://apps.gnome.org/Calculator",
             issue_url = "https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/new",
             /* Application Copyrights for the calculator authors */
             copyright = _("\xc2\xa9 1986–2023 The Calculator authors"),
