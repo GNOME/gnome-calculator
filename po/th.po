@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2024-01-06 14:21+0000\n"
-"PO-Revision-Date: 2024-02-29 23:29+0700\n"
+"POT-Creation-Date: 2024-03-13 10:35+0000\n"
+"PO-Revision-Date: 2024-03-27 23:18+0700\n"
 "Last-Translator: Akom Chotiphantawanon <knight2000@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "Language: th\n"
@@ -160,13 +160,15 @@ msgstr "หน่วยมุมที่ใช้"
 
 #: data/org.gnome.calculator.gschema.xml:62
 msgid "Currency update interval"
-msgstr ""
+msgstr "ช่วงเวลาการปรับปรุงข้อมูลสกุลเงิน"
 
 #: data/org.gnome.calculator.gschema.xml:63
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means the currency "
 "exchange rates won't be fetched from the network at all."
 msgstr ""
+"ระบุความถี่ในการปรับปรุงข้อมูลเกี่ยวกับอัตราแลกเปลี่ยนสกุลเงิน ค่า 0 "
+"หมายความว่าจะไม่มีการดึงข้อมูลเกี่ยวกับอัตราแลกเปลี่ยนสกุลเงินจากเครือข่ายเลย"
 
 #: data/org.gnome.calculator.gschema.xml:67
 msgid "Button mode"
@@ -218,11 +220,11 @@ msgstr "ความละเอียดภายในที่ใช้กั
 
 #: data/org.gnome.calculator.gschema.xml:97
 msgid "Window position"
-msgstr ""
+msgstr "ตำแหน่งหน้าต่าง"
 
 #: data/org.gnome.calculator.gschema.xml:98
 msgid "Window position (x and y) of the last closed window."
-msgstr ""
+msgstr "ตำแหน่งหน้าต่างของหน้าต่างล่าสุดที่ปิดไป (แกน x และ y)"
 
 #: data/org.gnome.calculator.gschema.xml:102
 msgid "Window maximized"
@@ -866,11 +868,11 @@ msgstr "ปริมาตร"
 
 #: lib/unit.vala:33
 msgid "Mass"
-msgstr ""
+msgstr "มวล"
 
 #: lib/unit.vala:34
 msgid "Speed"
-msgstr ""
+msgstr "ความเร็ว"
 
 #: lib/unit.vala:35
 msgid "Duration"
@@ -878,7 +880,7 @@ msgstr "เวลา"
 
 #: lib/unit.vala:36
 msgid "Frequency"
-msgstr ""
+msgstr "ความถี่"
 
 #: lib/unit.vala:37
 msgid "Temperature"
@@ -985,19 +987,18 @@ msgstr "หน่วยดาราศาสตร์,au"
 
 #: lib/unit.vala:48
 msgid "Rack Units"
-msgstr ""
+msgstr "หน่วยแร็ค"
 
 #: lib/unit.vala:48
-#, fuzzy, c-format
-#| msgid "%s"
+#, c-format
 msgctxt "unit-format"
 msgid "%sU"
-msgstr "%s"
+msgstr "%sU"
 
 #: lib/unit.vala:48
 msgctxt "unit-symbols"
 msgid "U"
-msgstr ""
+msgstr "U"
 
 #: lib/unit.vala:49
 msgid "Nautical Miles"
@@ -1177,7 +1178,7 @@ msgstr "%s μm"
 #: lib/unit.vala:60
 msgctxt "unit-symbols"
 msgid "micrometer,micrometers,um"
-msgstr "ไมโครเมตร,ไมครอน,micrometer,micrometers,um"
+msgstr "ไมโครเมตร,ไมครอน,มคม.,micrometer,micrometers,um"
 
 #: lib/unit.vala:61
 msgid "Nanometers"
@@ -1192,114 +1193,97 @@ msgstr "%s nm"
 #: lib/unit.vala:61
 msgctxt "unit-symbols"
 msgid "nanometer,nanometers,nm"
-msgstr "นาโนเมตร,nanometer,nanometers,nm"
+msgstr "นาโนเมตร,นม.,nanometer,nanometers,nm"
 
 #: lib/unit.vala:62
 msgid "Desktop Publishing Point"
-msgstr ""
+msgstr "ขนาดพอยต์ในการทำสื่อสิ่งพิมพ์ด้วยคอมพิวเตอร์"
 
 #: lib/unit.vala:62 lib/unit.vala:78
 #, c-format
 msgctxt "unit-format"
 msgid "%s pt"
-msgstr "%s ไพนต์"
+msgstr "%s พอยต์"
 
 #: lib/unit.vala:62
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "pint,pints,pt"
 msgctxt "unit-symbols"
 msgid "point,pt,points,pts"
-msgstr "ไพนต์,pint,pints,pt"
+msgstr "พอยต์,point,pt,points,pts"
 
 #: lib/unit.vala:63
-#, fuzzy
-#| msgid "Kilometers"
 msgid "Kilometers per hour"
-msgstr "กิโลเมตร"
+msgstr "กิโลเมตรต่อชั่วโมง"
 
 #: lib/unit.vala:63
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
+#, c-format
 msgctxt "unit-format"
 msgid "%s km/h"
-msgstr "%s กม."
+msgstr "%s กม./ชม."
 
 #: lib/unit.vala:63
-#, fuzzy
-#| msgid "kilometers per hour or miles per hour"
 msgctxt "unit-symbols"
 msgid "kilometers per hour,kmph,kmh,kph"
-msgstr "กิโลเมตรต่อชั่วโมง หรือไมล์ต่อชั่วโมง"
+msgstr "กิโลเมตรต่อชั่วโมง,กม./ชม.,kilometers per hour,kmph,kmh,kph"
 
 #: lib/unit.vala:64
 msgid "Miles per hour"
-msgstr ""
+msgstr "ไมล์ต่อชั่วโมง"
 
 #: lib/unit.vala:64
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s minutes"
+#, c-format
 msgctxt "unit-format"
 msgid "%s miles/h"
-msgstr "%s นาที"
+msgstr "%s ไมล์/ชม."
 
 #: lib/unit.vala:64
 msgctxt "unit-symbols"
 msgid "milesph,miles per hour,mi/h,miph,mph"
-msgstr ""
+msgstr "ไมล์ต่อชั่วโมง,ไมล์/ชม.,milesph,miles per hour,mi/h,miph,mph"
 
 #: lib/unit.vala:65
 msgid "Meters per second"
-msgstr ""
+msgstr "เมตรต่อวินาที"
 
 #: lib/unit.vala:65
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s ms"
+#, c-format
 msgctxt "unit-format"
 msgid "%s m/s"
-msgstr "%s ms"
+msgstr "%s ม./วท."
 
 #: lib/unit.vala:65
 msgctxt "unit-symbols"
 msgid "meters per second,mps"
-msgstr ""
+msgstr "เมตรต่อวินาที,ม./วท.,meters per second,mps"
 
 #: lib/unit.vala:66
 msgid "Feet per second"
-msgstr ""
+msgstr "ฟุตต่อวินาที"
 
 #: lib/unit.vala:66
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s ft"
+#, c-format
 msgctxt "unit-format"
 msgid "%s feet/s"
-msgstr "%s ฟุต"
+msgstr "%s ฟุต/วท."
 
 #: lib/unit.vala:66
 msgctxt "unit-symbols"
 msgid "fps,feet per second,feetps"
-msgstr ""
+msgstr "ฟุตต่อวินาที,ฟุต/วท.,fps,feet per second,feetps"
 
 #: lib/unit.vala:67
 msgid "Knots"
-msgstr ""
+msgstr "น็อต"
 
 #: lib/unit.vala:67
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
+#, c-format
 msgctxt "unit-format"
 msgid "%s kt"
-msgstr "%s กม."
+msgstr "%s น็อต"
 
 #: lib/unit.vala:67
 msgctxt "unit-symbols"
 msgid "kt,kn,nd,knot,knots"
-msgstr ""
+msgstr "น็อต,kt,kn,nd,knot,knots"
 
 #: lib/unit.vala:68
 msgid "Hectares"
@@ -1332,23 +1316,19 @@ msgid "acre,acres"
 msgstr "เอเคอร์,acre,acres"
 
 #: lib/unit.vala:70
-#, fuzzy
-#| msgid "Square"
 msgid "Square Foot"
-msgstr "กำลังสอง"
+msgstr "ตารางฟุต"
 
 #: lib/unit.vala:70
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s ft"
+#, c-format
 msgctxt "unit-format"
 msgid "%s ft²"
-msgstr "%s ฟุต"
+msgstr "%s ฟุต²"
 
 #: lib/unit.vala:70
 msgctxt "unit-symbols"
 msgid "ft²"
-msgstr ""
+msgstr "ฟุต²,ตร.ฟุต,ft²"
 
 #: lib/unit.vala:71
 msgid "Square Meters"
@@ -1393,7 +1373,7 @@ msgstr "%s มม²"
 #: lib/unit.vala:73
 msgctxt "unit-symbols"
 msgid "mm²"
-msgstr "มม²,mm²"
+msgstr "มม²,ตร.มม.,mm²"
 
 #: lib/unit.vala:74
 msgid "Cubic Meters"
@@ -1411,10 +1391,8 @@ msgid "m³"
 msgstr "ม³,ลบ.ม.,m³"
 
 #: lib/unit.vala:75
-#, fuzzy
-#| msgid "Gallons"
 msgid "US Gallons"
-msgstr "แกลลอน"
+msgstr "แกลลอนสหรัฐ"
 
 #: lib/unit.vala:75
 #, c-format
@@ -1443,10 +1421,8 @@ msgid "litre,litres,liter,liters,L"
 msgstr "ลิตร,ล.,litre,litres,liter,liters,L"
 
 #: lib/unit.vala:77
-#, fuzzy
-#| msgid "Quarts"
 msgid "US Quarts"
-msgstr "ควอร์ต"
+msgstr "ควอร์ตสหรัฐ"
 
 #: lib/unit.vala:77
 #, c-format
@@ -1460,10 +1436,8 @@ msgid "quart,quarts,qt"
 msgstr "ควอร์ต,quart,quarts,qt"
 
 #: lib/unit.vala:78
-#, fuzzy
-#| msgid "Pints"
 msgid "US Pints"
-msgstr "ไพนต์"
+msgstr "ไพนต์สหรัฐ"
 
 #: lib/unit.vala:78
 msgctxt "unit-symbols"
@@ -1472,20 +1446,18 @@ msgstr "ไพนต์,pint,pints,pt"
 
 #: lib/unit.vala:79
 msgid "Metric Cups"
-msgstr ""
+msgstr "ถ้วยแบบเมตริก"
 
 #: lib/unit.vala:79
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s cb"
+#, c-format
 msgctxt "unit-format"
 msgid "%s cup"
-msgstr "%s cb"
+msgstr "%s ถ้วย"
 
 #: lib/unit.vala:79
 msgctxt "unit-symbols"
 msgid "cup,cups,cp"
-msgstr ""
+msgstr "ถ้วย,cup,cups,cp"
 
 #: lib/unit.vala:80
 msgid "Milliliters"
@@ -1558,12 +1530,9 @@ msgid "%s lb"
 msgstr "%s ปอนด์"
 
 #: lib/unit.vala:84
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "pound,pounds,lb"
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb,lbs"
-msgstr "ปอนด์,pound,pounds,lb"
+msgstr "ปอนด์,pound,pounds,lb,lbs"
 
 #: lib/unit.vala:85
 msgid "Ounces"
@@ -1619,20 +1588,18 @@ msgstr "กรัม,ก.,gram,grams,gramme,grammes,g"
 
 #: lib/unit.vala:88
 msgid "Stone"
-msgstr ""
+msgstr "สโตน"
 
 #: lib/unit.vala:88
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s s"
+#, c-format
 msgctxt "unit-format"
 msgid "%s st"
-msgstr "%s วินาที"
+msgstr "%s สโตน"
 
 #: lib/unit.vala:88
 msgctxt "unit-symbols"
 msgid "stone,st,stones"
-msgstr ""
+msgstr "สโตน,stone,st,stones"
 
 #: lib/unit.vala:89
 #, fuzzy
@@ -1685,35 +1652,33 @@ msgstr "ปี,year,years"
 
 #: lib/unit.vala:92
 msgid "Months"
-msgstr ""
+msgstr "เดือน"
 
 #: lib/unit.vala:92
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s minutes"
+#, c-format
 msgctxt "unit-format"
 msgid "%s months"
-msgstr "%s นาที"
+msgstr "%s เดือน"
 
 #: lib/unit.vala:92
 msgctxt "unit-symbols"
 msgid "month,months"
-msgstr ""
+msgstr "เดือน,month,months"
 
 #: lib/unit.vala:93
 msgid "Weeks"
-msgstr ""
+msgstr "สัปดาห์"
 
 #: lib/unit.vala:93
 #, c-format
 msgctxt "unit-format"
 msgid "%s weeks"
-msgstr ""
+msgstr "%s สัปดาห์"
 
 #: lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "week,weeks"
-msgstr ""
+msgstr "สัปดาห์,week,weeks"
 
 #: lib/unit.vala:94
 msgid "Days"
@@ -1818,7 +1783,7 @@ msgstr "%s ˚ซ"
 #: lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "degC,˚C,C,c,Celsius,celsius"
-msgstr ""
+msgstr "องศาเซลเซียส,เซลเซียส,˚ซ,degC,˚C,C,c,Celsius,celsius"
 
 #: lib/unit.vala:101
 msgid "Fahrenheit"
@@ -1833,7 +1798,7 @@ msgstr "%s ˚ฟ"
 #: lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
-msgstr ""
+msgstr "องศาฟาเรนไฮต์,ฟาเรนไฮต์,˚ฟ,degF,˚F,F,f,Fahrenheit,fahrenheit"
 
 #: lib/unit.vala:102
 msgid "Kelvin"
@@ -1848,7 +1813,7 @@ msgstr "%s K"
 #: lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
-msgstr ""
+msgstr "เคลวิน,k,K,Kelvin,kelvin"
 
 #: lib/unit.vala:103
 msgid "Rankine"
@@ -1863,7 +1828,7 @@ msgstr "%s ˚R"
 #: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
-msgstr ""
+msgstr "องศาแรงกิน,แรงกิน,degR,˚R,˚Ra,r,R,Rankine,rankine"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
 #: lib/unit.vala:105
@@ -2382,88 +2347,84 @@ msgstr "ยอบิไบต์,yobibyte,yobibytes,YiB"
 
 #: lib/unit.vala:141
 msgid "Hertz"
-msgstr ""
+msgstr "เฮิรตซ์"
 
 #: lib/unit.vala:141
 #, c-format
 msgctxt "unit-format"
 msgid "%s Hz"
-msgstr ""
+msgstr "%s Hz"
 
 #: lib/unit.vala:141
 msgctxt "unit-symbols"
 msgid "hertz,Hz"
-msgstr ""
+msgstr "เฮิรตซ์,hertz,Hz"
 
 #: lib/unit.vala:142
-#, fuzzy
-#| msgid "Kilometers"
 msgid "Kilohertz"
-msgstr "กิโลเมตร"
+msgstr "กิโลเฮิรตซ์"
 
 #: lib/unit.vala:142
-#, fuzzy, c-format
-#| msgctxt "unit-format"
-#| msgid "%s km"
+#, c-format
 msgctxt "unit-format"
 msgid "%s kHz"
-msgstr "%s กม."
+msgstr "%s kHz"
 
 #: lib/unit.vala:142
 msgctxt "unit-symbols"
 msgid "kilohertz,kHz"
-msgstr ""
+msgstr "กิโลเฮิรตซ์,kilohertz,kHz"
 
 #: lib/unit.vala:143
 msgid "Megahertz"
-msgstr ""
+msgstr "เมกะเฮิรตซ์"
 
 #: lib/unit.vala:143
-#, fuzzy, c-format
+#, c-format
 #| msgctxt "unit-format"
 #| msgid "%s Mb"
 msgctxt "unit-format"
 msgid "%s MHz"
-msgstr "%s Mb"
+msgstr "%s MHz"
 
 #: lib/unit.vala:143
 msgctxt "unit-symbols"
 msgid "megahertz,MHz"
-msgstr ""
+msgstr "เมกะเฮิรตซ์,megahertz,MHz"
 
 #: lib/unit.vala:144
 msgid "Gigahertz"
-msgstr ""
+msgstr "กิกะเฮิรตซ์"
 
 #: lib/unit.vala:144
-#, fuzzy, c-format
+#, c-format
 #| msgctxt "unit-format"
 #| msgid "%s Gb"
 msgctxt "unit-format"
 msgid "%s GHz"
-msgstr "%s Gb"
+msgstr "%s GHz"
 
 #: lib/unit.vala:144
 msgctxt "unit-symbols"
 msgid "gigahertz,GHz"
-msgstr ""
+msgstr "กิกะเฮิรตซ์,gigahertz,GHz"
 
 #: lib/unit.vala:145
 msgid "Terahertz"
-msgstr ""
+msgstr "เทราเฮิรตซ์"
 
 #: lib/unit.vala:145
-#, fuzzy, c-format
+#, c-format
 #| msgctxt "unit-format"
 #| msgid "%s T"
 msgctxt "unit-format"
 msgid "%s THz"
-msgstr "%s ตัน"
+msgstr "%s THz"
 
 #: lib/unit.vala:145
 msgctxt "unit-symbols"
 msgid "terahertz,THz"
-msgstr ""
+msgstr "เทราเฮิรตซ์,terahertz,THz"
 
 #: lib/unit.vala:146
 msgid "Joule"
@@ -2578,14 +2539,12 @@ msgid "%s%%s"
 msgstr "%s%%s"
 
 #: search-provider/search-provider.vala:199
-#, fuzzy
-#| msgid "_Copy"
 msgid "Copy"
-msgstr "_คัดลอก"
+msgstr "คัดลอก"
 
 #: search-provider/search-provider.vala:200
 msgid "Copy result to clipboard"
-msgstr ""
+msgstr "คัดลอกผลลัพธ์ไปยังคลิปบอร์ด"
 
 #: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
 #: src/ui/buttons-programming.ui:1649
@@ -2656,14 +2615,10 @@ msgid "Calculate Result"
 msgstr "คำนวณผลลัพธ์"
 
 #: src/ui/buttons-advanced.ui:439
-#, fuzzy
-#| msgid "Subscript mode [Alt]"
 msgid "Subscript Mode [Alt]"
 msgstr "โหมดเลขตัวห้อย [Alt]"
 
 #: src/ui/buttons-advanced.ui:460
-#, fuzzy
-#| msgid "Superscript mode [Ctrl]"
 msgid "Superscript Mode [Ctrl]"
 msgstr "โหมดเลขตัวยก [Ctrl]"
 
@@ -2672,8 +2627,6 @@ msgid "Factorize [Ctrl+F]"
 msgstr "แยกตัวประกอบ [Ctrl+F]"
 
 #: src/ui/buttons-advanced.ui:498
-#, fuzzy
-#| msgid "Scientific exponent [Ctrl+E]"
 msgid "Scientific Exponent [Ctrl+E]"
 msgstr "เลขชี้กำลังวิทยาศาสตร์ [Ctrl+E]"
 
@@ -2711,14 +2664,10 @@ msgid "Factorial [!]"
 msgstr "แฟกทอเรียล [!]"
 
 #: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
-#, fuzzy
-#| msgid "Absolute value [|]"
 msgid "Absolute Value [|]"
 msgstr "ค่าสัมบูรณ์ [|]"
 
 #: src/ui/buttons-advanced.ui:756
-#, fuzzy
-#| msgid "Imaginary Component"
 msgid "Imaginary Unit"
 msgstr "ส่วนจินตภาพ"
 
@@ -2731,14 +2680,10 @@ msgid "Imaginary Component"
 msgstr "ส่วนจินตภาพ"
 
 #: src/ui/buttons-advanced.ui:813
-#, fuzzy
-#| msgid "Complex conjugate"
 msgid "Complex Conjugate"
 msgstr "สังยุคของเลขเชิงซ้อน"
 
 #: src/ui/buttons-advanced.ui:830
-#, fuzzy
-#| msgid "Complex argument"
 msgid "Complex Argument"
 msgstr "อาร์กิวเมนต์ของเลขเชิงซ้อน"
 
@@ -2758,8 +2703,6 @@ msgid "Additional Functions"
 msgstr "ฟังก์ชันเพิ่มเติม"
 
 #: src/ui/buttons-basic.ui:127
-#, fuzzy
-#| msgid "Modulus divide"
 msgid "Modulus Divide"
 msgstr "หารเอาเศษ"
 
@@ -2905,7 +2848,7 @@ msgstr "เงินผ่อนต่องวด"
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are made at the end of "
 "each payment period. "
-msgstr "คำนวณปริมาณการผ่อนชำระหนี้แต่ละงวด โดยชำระเมื่อสิ้นสุดแต่ละรอบเวลาที่กำหนด"
+msgstr "คำนวณปริมาณการผ่อนชำระหนี้แต่ละงวด โดยชำระเมื่อสิ้นสุดแต่ละรอบเวลาที่กำหนด "
 
 #. Periodic Payment Dialog: Label before principal input
 #: src/ui/buttons-financial.ui:481
@@ -2928,7 +2871,7 @@ msgstr "มูลค่าปัจจุบัน"
 msgid ""
 "Calculates the present value of an investment based on a series of equal payments discounted at "
 "a periodic interest rate over the number of payment periods in the term. "
-msgstr "คำนวณมูลค่าปัจจุบันของการลงทุนที่ผ่อนชำระเป็นงวด งวดละเท่ากัน โดยหักดอกเบี้ยออกเป็นจำนวนงวดที่กำหนด"
+msgstr "คำนวณมูลค่าปัจจุบันของการลงทุนที่ผ่อนชำระเป็นงวด งวดละเท่ากัน โดยหักดอกเบี้ยออกเป็นจำนวนงวดที่กำหนด "
 
 #. Title of Periodic Interest Rate dialog
 #: src/ui/buttons-financial.ui:683 src/ui/buttons-financial.ui:1718
@@ -2940,7 +2883,8 @@ msgstr "อัตราดอกเบี้ยต่องวด"
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a future value, over the "
 "number of compounding periods. "
-msgstr "คำนวณอัตราดอกเบี้ยต่องวดที่ต้องใช้ในการเพิ่มมูลค่าเงินลงทุนให้เป็นค่าในอนาคตที่ต้องการ ในจำนวนงวดการทบต้นที่กำหนด"
+msgstr ""
+"คำนวณอัตราดอกเบี้ยต่องวดที่ต้องใช้ในการเพิ่มมูลค่าเงินลงทุนให้เป็นค่าในอนาคตที่ต้องการ ในจำนวนงวดการทบต้นที่กำหนด "
 
 #. Title of Straight-Line Depreciation dialog
 #: src/ui/buttons-financial.ui:800
@@ -2968,24 +2912,15 @@ msgid ""
 msgstr ""
 "คำนวณค่าเสื่อมราคาแบบเส้นตรงของทรัพย์สินในระยะเวลาที่กำหนด วิธีคำนวณค่าเสื่อมราคาแบบเส้นตรง "
 "จะแบ่งราคาที่เสื่อมออกเป็นช่วงเท่าๆ กันตลอดอายุการใช้งานของทรัพย์สิน "
-"อายุการใช้งานจะนับเป็นจำนวนรอบการคำนวณการเสื่อมราคาตลอดการใช้งานของทรัพย์สิน ซึ่งโดยปกติจะมีหน่วยเป็นปี"
+"อายุการใช้งานจะนับเป็นจำนวนรอบการคำนวณการเสื่อมราคาตลอดการใช้งานของทรัพย์สิน ซึ่งโดยปกติจะมีหน่วยเป็นปี "
 
 #. Title of Sum-of-the-Years’-Digits Depreciation dialog
 #: src/ui/buttons-financial.ui:917
-#, fuzzy
-#| msgid "Sum-of-the-Years'-Digits Depreciation"
 msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "ค่าเสื่อมราคาแบบผลรวมจำนวนปี"
 
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
 #: src/ui/buttons-financial.ui:1026
-#, fuzzy
-#| msgid ""
-#| "Calculates the depreciation allowance on an asset for a specified period of time, using the "
-#| "Sum-of-the-Years'-Digits method. This method of depreciation accelerates the rate of "
-#| "depreciation, so that more depreciation expense occurs in earlier periods than in later ones. "
-#| "The useful life is the number of periods, typically years, over which an asset is "
-#| "depreciated. "
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-"
 "of-the-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, "
@@ -2994,7 +2929,7 @@ msgid ""
 msgstr ""
 "คำนวณค่าเสื่อมราคาของทรัพย์สินในระยะเวลาที่กำหนด โดยใช้วิธีผลรวมจำนวนปี วิธีคิดค่าเสื่อมราคาแบบนี้ "
 "อัตราการเสื่อมราคาจะสูงในช่วงแรกๆ และจะลดลงในช่วงหลังๆ "
-"อายุการใช้งานจะนับเป็นจำนวนรอบการคำนวณการเสื่อมราคาตลอดการใช้งานของทรัพย์สิน ซึ่งโดยปกติจะมีหน่วยเป็นปี"
+"อายุการใช้งานจะนับเป็นจำนวนรอบการคำนวณการเสื่อมราคาตลอดการใช้งานของทรัพย์สิน ซึ่งโดยปกติจะมีหน่วยเป็นปี "
 
 #. Title of Payment Period dialog
 #: src/ui/buttons-financial.ui:1056
@@ -3128,22 +3063,16 @@ msgid "Boolean NOT"
 msgstr "NOT แบบบูลีน"
 
 #: src/ui/buttons-programming.ui:1845
-#, fuzzy
-#| msgid "Ones' Complement"
 msgid "Ones’ Complement"
 msgstr "ส่วนเติมเต็มหนึ่ง"
 
 #: src/ui/buttons-programming.ui:1862
-#, fuzzy
-#| msgid "Two's Complement"
 msgid "Two’s Complement"
 msgstr "ส่วนเติมเต็มสอง"
 
 #: src/ui/buttons-programming.ui:1938
-#, fuzzy
-#| msgid "Natural Logarithm"
 msgid "Binary Logarithm"
-msgstr "ลอการิทึมธรรมชาติ"
+msgstr "ลอการิทึมฐานสอง"
 
 #: src/ui/buttons-programming.ui:1998
 msgid "Integer Component"
@@ -3159,10 +3088,8 @@ msgid "Insert Character Code"
 msgstr "แทรกรหัสตัวอักษร"
 
 #: src/ui/buttons-programming.ui:2078
-#, fuzzy
-#| msgid "C_hange Mode"
 msgid "Change word size"
-msgstr "เ_ปลี่ยนโหมด"
+msgstr "เปลี่ยนขนาดเวิร์ด"
 
 #. Insert ASCII dialog: Label before character entry
 #: src/ui/buttons-programming.ui:2115
@@ -3177,7 +3104,7 @@ msgstr "แ_ทรก"
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
 #: src/gnome-calculator.vala:23
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
-msgstr ""
+msgstr "เริ่มทำงานในโหมดที่ระบุไว้ (พื้นฐาน, ขั้นสูง, การเงิน, เขียนโปรแกรม, แป้นพิมพ์)"
 
 #: src/gnome-calculator.vala:24
 msgid "Solve given equation"
@@ -3193,10 +3120,8 @@ msgstr "แสดงรุ่นของโปรแกรม"
 
 #. Application Copyrights for the calculator authors
 #: src/gnome-calculator.vala:309
-#, fuzzy
-#| msgid "© 1986–2010 The Gcalctool authors"
 msgid "© 1986–2023 The Calculator authors"
-msgstr "© 1986–2010 The Gcalctool authors"
+msgstr "© 1986–2023 The Calculator authors"
 
 #. The translator credits. Please translate this with your name (s).
 #: src/gnome-calculator.vala:315
@@ -3226,20 +3151,18 @@ msgstr ""
 
 #: src/gnome-calculator.vala:329
 msgid "Are you sure you want to close all open windows?"
-msgstr ""
+msgstr "แน่ใจหรือไม่ว่าจะปิดหน้าต่างที่เปิดอยู่ทั้งหมด"
 
 #: src/gnome-calculator.vala:330
-#, fuzzy
-#| msgid "_Close"
 msgid "Close _All"
-msgstr "ปิ_ด"
+msgstr "ปิด_ทั้งหมด"
 
 #: src/math-buttons.vala:227 src/math-buttons.vala:612 src/math-buttons.vala:628
-#, fuzzy, c-format
+#, c-format
 #| msgid "8-bit"
 msgid "%d-bit"
 msgid_plural "%d-bit"
-msgstr[0] "8 บิต"
+msgstr[0] "%d บิต"
 
 #: src/math-buttons.vala:597
 #, c-format
@@ -3249,50 +3172,40 @@ msgstr[0] "%d ตำแหน่ง"
 
 #: src/ui/math-converter.ui:42
 msgid " to "
-msgstr ""
+msgstr " เป็น "
 
 #: src/ui/math-converter.ui:63
 msgid "Switch conversion units"
 msgstr "สลับหน่วยการแปลง"
 
 #: src/ui/math-converter.ui:102
-#, fuzzy
-#| msgid "="
 msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
 #: src/math-display.vala:611
-#, fuzzy
-#| msgid "User-defined functions"
 msgid "Defined Functions"
-msgstr "ฟังก์ชันที่กำหนดโดยผู้ใช้"
+msgstr "ฟังก์ชันที่กำหนด"
 
 #: src/math-display.vala:656
 msgid "Built-in keywords"
-msgstr ""
+msgstr "คำสำคัญในตัว"
 
 #: src/math-display.vala:700
-#, fuzzy
-#| msgid "Preferences"
 msgid "Defined currencies"
-msgstr "ปรับแต่ง"
+msgstr "สกุลเงินที่กำหนด"
 
 #: src/math-display.vala:750
-#, fuzzy
-#| msgid "Assign Variable"
 msgid "Defined Variables"
-msgstr "ให้ค่ากับตัวแปร"
+msgstr "ตัวแปรที่กำหนด"
 
 #: src/ui/math-function-popover.ui:27
-#, fuzzy
-#| msgid "Malformed function"
 msgid "New function"
-msgstr "รูปแบบฟังก์ชันไม่ถูกต้อง"
+msgstr "ฟังก์ชันใหม่"
 
 #: src/ui/math-function-popover.ui:36
 msgid "Select no. of arguments"
-msgstr ""
+msgstr "เลือกจำนวนอาร์กิวเมนต์"
 
 #: src/math-preferences.vala:123
 msgid "8-bit"
@@ -3312,176 +3225,136 @@ msgstr "64 บิต"
 
 #: src/math-preferences.vala:138
 msgid "Never"
-msgstr ""
+msgstr "ไม่ต้อง"
 
 #: src/math-preferences.vala:140
 msgid "Daily"
-msgstr ""
+msgstr "ทุกวัน"
 
 #: src/math-preferences.vala:142
 msgid "Weekly"
-msgstr ""
+msgstr "ทุกสัปดาห์"
 
 #: src/ui/math-preferences.ui:19
-#, fuzzy
-#| msgid "_Number of Periods:"
 msgid "Number of _decimals"
-msgstr "_จำนวนงวด:"
+msgstr "จำนวน_ทศนิยม"
 
 #: src/ui/math-preferences.ui:28
-#, fuzzy
-#| msgid "Show trailing _zeroes"
 msgid "Trailing _zeroes"
-msgstr "แสดงเลขศู_นย์ต่อท้าย"
+msgstr "เลขศู_นย์ต่อท้าย"
 
 #: src/ui/math-preferences.ui:34
-#, fuzzy
-#| msgid "Show _thousands separators"
 msgid "_Thousands separators"
-msgstr "แสดงสัญลักษณ์แบ่งหลัก_พัน"
+msgstr "สัญลักษณ์แบ่งหลัก_พัน"
 
 #: src/ui/math-preferences.ui:40
-#, fuzzy
-#| msgid "_Angle units:"
 msgid "_Angle units"
-msgstr "หน่วยมุ_ม:"
+msgstr "หน่วยมุ_ม"
 
 #: src/ui/math-preferences.ui:46
-#, fuzzy
-#| msgid "Word _size:"
 msgid "Word _size"
-msgstr "_ขนาดเวิร์ด:"
+msgstr "_ขนาดเวิร์ด"
 
 #: src/ui/math-preferences.ui:52
-#, fuzzy
-#| msgid "Exchange with register"
 msgid "E_xchange rate refresh interval"
-msgstr "สลับกับหน่วยความจำเรจิสเตอร์"
+msgstr "ระยะเวลาปรับข้อมูลอัตราแ_ลกเปลี่ยนใหม่"
 
 #: src/ui/math-shortcuts.ui:13
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "ทั่วไป"
 
 #: src/ui/math-shortcuts.ui:17
 msgctxt "shortcut window"
 msgid "Open a new window"
-msgstr ""
+msgstr "เปิดในหน้าต่างใหม่"
 
 #: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
-msgstr ""
+msgstr "ปิดหน้าต่างปัจจุบัน"
 
 #: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
-msgstr ""
+msgstr "ออกจากแอปพลิเคชัน"
 
 #: src/ui/math-shortcuts.ui:35
-#, fuzzy
-#| msgid "Show help contents"
 msgctxt "shortcut window"
 msgid "Show help"
-msgstr "แสดงเนื้อหาวิธีใช้"
+msgstr "แสดงวิธีใช้"
 
 #: src/ui/math-shortcuts.ui:41
 msgctxt "shortcut window"
 msgid "Open menu"
-msgstr ""
+msgstr "เปิดเมนู"
 
 #: src/ui/math-shortcuts.ui:47
-#, fuzzy
-#| msgid "Preferences"
 msgctxt "shortcut window"
 msgid "Show preferences"
-msgstr "ปรับแต่ง"
+msgstr "แสดงการปรับแต่ง"
 
 #: src/ui/math-shortcuts.ui:53
-#, fuzzy
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
-msgstr "โหมดแป้นพิมพ์"
+msgstr "แป้นพิมพ์ลัด"
 
 #: src/ui/math-shortcuts.ui:59
-#, fuzzy
-#| msgid "Clear entry"
 msgctxt "shortcut window"
 msgid "Clear history"
-msgstr "ลบค่าที่แสดง"
+msgstr "ล้างประวัติ"
 
 #: src/ui/math-shortcuts.ui:66
 msgctxt "shortcut window"
 msgid "Switching modes"
-msgstr ""
+msgstr "การสลับโหมด"
 
 #: src/ui/math-shortcuts.ui:70
-#, fuzzy
-#| msgid "Basic Mode"
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
-msgstr "โหมดพื้นฐาน"
+msgstr "สลับไปเป็นโหมดพื้นฐาน"
 
 #: src/ui/math-shortcuts.ui:76
-#, fuzzy
-#| msgid "Advanced Mode"
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
-msgstr "โหมดพิเศษ"
+msgstr "สลับไปเป็นโหมดพิเศษ"
 
 #: src/ui/math-shortcuts.ui:82
-#, fuzzy
-#| msgid "Financial Mode"
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
-msgstr "โหมดการเงิน"
+msgstr "สลับไปเป็นโหมดการเงิน"
 
 #: src/ui/math-shortcuts.ui:88
-#, fuzzy
-#| msgid "Programming Mode"
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
-msgstr "โหมดการเขียนโปรแกรม"
+msgstr "สลับไปเป็นโหมดการเขียนโปรแกรม"
 
 #: src/ui/math-shortcuts.ui:94
-#, fuzzy
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
-msgstr "โหมดแป้นพิมพ์"
+msgstr "สลับไปเป็นโหมดแป้นพิมพ์"
 
 #: src/ui/math-shortcuts.ui:101
-#, fuzzy
-#| msgid "Keyboard Mode"
 msgctxt "shortcut window"
 msgid "Keyboard entry"
-msgstr "โหมดแป้นพิมพ์"
+msgstr "ป้อนด้วยแป้นพิมพ์"
 
 #: src/ui/math-shortcuts.ui:105
-#, fuzzy
-#| msgid "Multiply"
 msgctxt "shortcut window"
 msgid "Multiply (×)"
-msgstr "คูณ"
+msgstr "คูณ (×)"
 
 #: src/ui/math-shortcuts.ui:111
-#, fuzzy
-#| msgid "Divide"
 msgctxt "shortcut window"
 msgid "Divide (÷)"
-msgstr "หาร"
+msgstr "หาร (÷)"
 
 #: src/ui/math-shortcuts.ui:117
-#, fuzzy
-#| msgid "square root of 2"
 msgctxt "shortcut window"
 msgid "Square root (√)"
-msgstr "รากที่สองของ 2"
+msgstr "รากที่สอง (√)"
 
 #: src/ui/math-shortcuts.ui:123
-#, fuzzy
-#| msgid "Inverse"
 msgctxt "shortcut window"
 msgid "Inverse"
 msgstr "ส่วนกลับ"
@@ -3489,18 +3362,14 @@ msgstr "ส่วนกลับ"
 #: src/ui/math-shortcuts.ui:129
 msgctxt "shortcut window"
 msgid "Pi (π)"
-msgstr ""
+msgstr "พาย (π)"
 
 #: src/ui/math-shortcuts.ui:135
-#, fuzzy
-#| msgid "Set display type to scientific format"
 msgctxt "shortcut window"
 msgid "Enter numbers in scientific format"
-msgstr "แสดงผลในรูปแบบวิทยาศาสตร์"
+msgstr "ใส่ตัวเลขในรูปแบบวิทยาศาสตร์"
 
 #: src/ui/math-shortcuts.ui:142
-#, fuzzy
-#| msgid "Programming Mode"
 msgctxt "shortcut window"
 msgid "Programming mode"
 msgstr "โหมดการเขียนโปรแกรม"
@@ -3508,82 +3377,70 @@ msgstr "โหมดการเขียนโปรแกรม"
 #: src/ui/math-shortcuts.ui:146
 msgctxt "shortcut window"
 msgid "Switch to binary"
-msgstr ""
+msgstr "สลับไปเป็นฐานสอง"
 
 #: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
 msgid "Switch to octal"
-msgstr ""
+msgstr "สลับไปเป็นฐานแปด"
 
 #: src/ui/math-shortcuts.ui:158
 msgctxt "shortcut window"
 msgid "Switch to decimal"
-msgstr ""
+msgstr "สลับไปเป็นฐานสิบ"
 
 #: src/ui/math-shortcuts.ui:164
-#, fuzzy
-#| msgid "Hexadecimal"
 msgctxt "shortcut window"
 msgid "Switch to hexadecimal"
-msgstr "ฐานสิบหก"
+msgstr "สลับไปเป็นฐานสิบหก"
 
 #: src/ui/math-shortcuts.ui:171
 msgctxt "shortcut window"
 msgid "Others"
-msgstr ""
+msgstr "อื่นๆ"
 
 #: src/ui/math-shortcuts.ui:175
-#, fuzzy
-#| msgid "_Copy"
 msgctxt "shortcut window"
 msgid "Copy"
-msgstr "_คัดลอก"
+msgstr "คัดลอก"
 
 #: src/ui/math-shortcuts.ui:181
 msgctxt "shortcut window"
 msgid "Paste"
-msgstr ""
+msgstr "แปะ"
 
 #: src/ui/math-shortcuts.ui:187
-#, fuzzy
-#| msgid "Undo"
 msgctxt "shortcut window"
 msgid "Undo"
 msgstr "เรียกคืน"
 
 #: src/ui/math-shortcuts.ui:193
-#, fuzzy
-#| msgid "Redo"
 msgctxt "shortcut window"
 msgid "Redo"
 msgstr "ทำซ้ำ"
 
 #: src/ui/math-shortcuts.ui:199
-#, fuzzy
-#| msgid "Previous expression"
 msgctxt "shortcut window"
 msgid "Previous result"
-msgstr "นิพจน์ที่แล้ว"
+msgstr "ผลลัพธ์ที่แล้ว"
 
 #: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
 msgid "Next result"
-msgstr ""
+msgstr "ผลลัพธ์ถัดไป"
 
 #: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
-msgstr ""
+msgstr "สลับไปยังโหมดแป้นพิมพ์ (ทดแทน)"
 
 #: src/ui/math-variable-popover.ui:31
-#, fuzzy
-#| msgid "No variables defined"
 msgid "Variable name"
-msgstr "ไม่ได้กำหนดตัวแปรไว้"
+msgstr "ชื่อตัวแปร"
 
 #: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
-msgstr ""
+msgstr "เก็บค่าในตัวแปรที่มีอยู่แล้วหรือตัวแปรใหม่"
 
 #: src/ui/math-window.ui:20 src/math-window.vala:113
 msgid "Basic"
