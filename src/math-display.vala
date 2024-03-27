@@ -55,6 +55,7 @@ public class MathDisplay : Gtk.Box
         source_view.set_name ("displayitem");
         source_view.set_size_request (20, 20);
         event_controller = new Gtk.EventControllerKey ();
+        event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE)   ;
         event_controller.key_pressed.connect (key_press_cb);
         source_view.add_controller (event_controller);
         create_autocompletion ();
