@@ -124,6 +124,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("UAH", _("Ukrainian Hryvnia"), "₴"));
         default_currency_manager.currencies.append (new Currency ("USD", _("US Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("UYU", _("Uruguayan Peso"), "$"));
+        default_currency_manager.currencies.append (new Currency ("VND", _("Vietnamese Dong"), "₫"));
         default_currency_manager.currencies.append (new Currency ("ZAR", _("South African Rand"), "R"));
 
         if (defaultProviders) {
