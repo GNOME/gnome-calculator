@@ -424,13 +424,7 @@ public class MathButtons : Gtk.Box
         if (button != null)
             button.set_label (equation.serializer.get_radix ().to_string ());
 
-        var menu_button = builder.get_object ("calc_shift_left_button") as Gtk.MenuButton;
-        if (menu_button != null)
-            menu_button.menu_model = create_shift_menu (true);
-        menu_button = builder.get_object ("calc_shift_right_button") as Gtk.MenuButton;
-        if (menu_button != null)
-            menu_button.menu_model = create_shift_menu (false);
-        menu_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
+        var menu_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
         if (menu_button != null)
             menu_button.menu_model = create_word_size_menu ();
         menu_button = builder.get_object ("calc_memory_button") as Gtk.MenuButton;
@@ -586,23 +580,6 @@ public class MathButtons : Gtk.Box
             if (mode == ButtonMode.PROGRAMMING)
                 equation.number_base = value;
         }
-    }
-
-    private Menu create_shift_menu (bool shift_left)
-    {
-        var shift_menu = new Menu ();
-
-        for (var i = 1; i < 16; i++)
-        {
-            string format = ngettext ("%d place", "%d places", i);
-            if (i < 10) // Provide mnemonic for shifting [0..9] places
-                format = "_" + format;
-
-            var positions = (shift_left) ? i : -i;
-            shift_menu.append (format.printf (i), "cal.bitshift(%d)".printf (positions));
-        }
-
-        return shift_menu;
     }
 
     private Menu create_word_size_menu ()

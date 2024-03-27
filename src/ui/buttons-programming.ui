@@ -1745,10 +1745,12 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuButton" id="calc_shift_left_button">
+                  <object class="GtkButton" id="calc_shift_left_button">
                     <property name="focus_on_click">False</property>
                     <property name="label">&lt;&lt;</property>
                     <property name="tooltip_text" translatable="yes">Shift Left</property>
+                    <property name="action_name">cal.insert-general</property>
+                    <property name="action_target">&apos;«&apos;</property>
                     <style>
                       <class name="function-button"/>
                     </style>
@@ -1758,10 +1760,12 @@
                   </object>
                 </child>
                 <child>
-                  <object class="GtkMenuButton" id="calc_shift_right_button">
+                  <object class="GtkButton" id="calc_shift_right_button">
                     <property name="focus_on_click">False</property>
                     <property name="label">&gt;&gt;</property>
                     <property name="tooltip_text" translatable="yes">Shift Right</property>
+                    <property name="action_name">cal.insert-general</property>
+                    <property name="action_target">&apos;»&apos;</property>
                     <style>
                       <class name="function-button"/>
                     </style>
