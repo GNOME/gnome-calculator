@@ -70,12 +70,14 @@ public abstract class MathPopover<T> : Gtk.Popover
 
     protected Gtk.Widget make_item_row (T item)
     {
-        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
+        var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 2);
+        hbox.halign = Gtk.Align.FILL;
 
         var label = new Gtk.Label (get_item_text (item));
         label.set_margin_start (6);
         label.set_use_markup (true);
         label.halign = Gtk.Align.START;
+        label.hexpand = true;
         hbox.append (label);
 
         if (is_editable (item))
@@ -84,14 +86,16 @@ public abstract class MathPopover<T> : Gtk.Popover
             button.set_has_frame (false);
             button.set_data<Object> ("object", item as Object);
             button.clicked.connect (save_function_cb);
+            button.halign = Gtk.Align.END;
             hbox.append (button);
         }
         if (is_deletable (item))
         {
-            var button = new Gtk.Button.from_icon_name ("list-remove-symbolic");
+            var button = new Gtk.Button.from_icon_name ("user-trash-symbolic");
             button.set_has_frame (false);
             button.set_data<Object> ("object", item as Object);
             button.clicked.connect (delete_function_cb);
+            button.halign = Gtk.Align.END;
             hbox.append (button);
         }
         return hbox;
