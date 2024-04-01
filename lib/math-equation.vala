@@ -182,6 +182,11 @@ public class MathEquation : GtkSource.Buffer
     {
         get { return _in_solve; }
     }
+    
+    public bool has_undo_action
+    {
+       get { return undo_stack != null && !undo_stack.is_empty (); }
+    }
 
     private MathVariables _variables;
     public MathVariables variables

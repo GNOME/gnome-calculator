@@ -53,6 +53,10 @@ public class MathWindow : Adw.ApplicationWindow
         add_action_entries (window_entries, this);
         var settings = new Settings ("org.gnome.calculator");
         add_action (settings.create_action ("number-format"));
+        var undo_action = (SimpleAction) lookup_action ("undo");
+        undo_action.set_enabled (false);
+        
+        equation.notify["display"].connect(() => { undo_action.set_enabled (equation.has_undo_action);} );
         settings.bind ("number-format", _equation, "number_format", SettingsBindFlags.DEFAULT);
         converter.set_equation (_equation);
         converter.set_category (null);
