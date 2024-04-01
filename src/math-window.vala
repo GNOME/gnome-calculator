@@ -158,18 +158,13 @@ public class MathWindow : Adw.ApplicationWindow
 
     public void critical_error (string title, string contents)
     {
-        var dialog = new Gtk.MessageDialog (null, 0,
-                                            Gtk.MessageType.ERROR,
-                                            Gtk.ButtonsType.NONE,
-                                            "%s", title);
-        dialog.format_secondary_text ("%s", contents);
-        dialog.add_buttons (_("_Quit"), Gtk.ResponseType.ACCEPT);
+        var dialog = new Adw.MessageDialog (null, title, contents);
 
         dialog.response.connect (() => {
             destroy ();
         });
 
-        dialog.show ();
+        dialog.present ();
     }
 
     protected bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType state)

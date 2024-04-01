@@ -324,19 +324,21 @@ public class Calculator : Adw.Application
     {
         if (get_windows ().length () > 1)
         {
-            var dialog = new Gtk.MessageDialog.with_markup (get_active_math_window (), Gtk.DialogFlags.MODAL,
-                                                            Gtk.MessageType.QUESTION, Gtk.ButtonsType.CANCEL,
-                                                            _("Are you sure you want to close all open windows?"));
-            dialog.add_buttons (_("Close _All"), Gtk.ResponseType.CLOSE);
+            var dialog = new Adw.MessageDialog (get_active_math_window (), 
+                                                _("Close All?"), _("Are you sure you want to close all open windows?"));
+            dialog.add_responses ("close-all", _("Close _All"), 
+                                  "cancel", _("Cancel"));
 
-
+            dialog.set_response_appearance ("close-all", Adw.ResponseAppearance.DESTRUCTIVE);
+            dialog.set_default_response ("cancel");
+            dialog.set_close_response ("cancel");
             dialog.response.connect ((result) => {
-                if (result == Gtk.ResponseType.CLOSE)
+                if (result == "close-all")
                     this.quit ();
                 dialog.destroy ();
             });
 
-            dialog.show ();
+            dialog.present ();
         } else {
             this.quit ();
         }
