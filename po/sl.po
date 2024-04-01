@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2024-03-27 19:47+0000\n"
-"PO-Revision-Date: 2024-03-29 07:40+0100\n"
+"POT-Creation-Date: 2024-04-01 00:35+0000\n"
+"PO-Revision-Date: 2024-04-01 11:39+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -160,7 +160,7 @@ msgstr ""
 "Določa ali so prikazane sledeče ničle za decimalnim ločilnikom pri "
 "prikazovanju vrednosti."
 
-#: data/org.gnome.calculator.gschema.xml:52 src/ui/math-window.ui:56
+#: data/org.gnome.calculator.gschema.xml:52
 msgid "Number format"
 msgstr "Zapis števil"
 
@@ -3242,13 +3242,21 @@ msgstr "Ponudniki podatkov menjalniških tečajev"
 msgid "Exchange rates data by %s"
 msgstr "Podatke menjalnih tečajev omogoča %s"
 
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:328
+msgid "Close All?"
+msgstr "Ali želite zapreti vse?"
+
+#: src/gnome-calculator.vala:328
 msgid "Are you sure you want to close all open windows?"
 msgstr "Ali res želite zapreti vsa odprta okna?"
 
-#: src/gnome-calculator.vala:330
+#: src/gnome-calculator.vala:329
 msgid "Close _All"
 msgstr "Zapri _vse"
+
+#: src/gnome-calculator.vala:330
+msgid "Cancel"
+msgstr "Prekliči"
 
 #: src/math-buttons.vala:227 src/math-buttons.vala:589
 #: src/math-buttons.vala:605
@@ -3565,22 +3573,26 @@ msgstr "Tipkovnica"
 msgid "_New Window"
 msgstr "_Novo okno"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:56
+msgid "Result format"
+msgstr "Zapis rezultata"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
 msgid "_Automatic"
 msgstr "_Samodejni"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
 msgid "_Fixed"
 msgstr "_Določen"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:73
 msgid "_Scientific"
 msgstr "_Znanstveni"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.ui:79
 msgid "_Engineering"
 msgstr "_Inženirski"
@@ -3613,7 +3625,3 @@ msgstr "Razveljavi"
 #: src/ui/math-window.ui:144
 msgid "Main Menu"
 msgstr "Glavni meni"
-
-#: src/math-window.vala:166
-msgid "_Quit"
-msgstr "_Končaj"
