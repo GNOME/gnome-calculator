@@ -304,7 +304,7 @@ public class Calculator : Adw.Application
             developer_name = _("The GNOME Project"),
             version =  VERSION,
             website = "https://apps.gnome.org/Calculator",
-            issue_url = "https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/new",
+            issue_url = "https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/",
             /* Application Copyrights for the calculator authors */
             copyright = _("\xc2\xa9 1986–2023 The Calculator authors"),
             /* We link to MPFR and MPC which are  LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
