@@ -39,16 +39,20 @@ public class MathButtons : Gtk.Box
             load_buttons ();
 
             converter.set_visible (mode == ButtonMode.ADVANCED || mode == ButtonMode.FINANCIAL);
+            GLib.SignalHandler.block (converter, converter_changed);
+
             if (mode == ButtonMode.ADVANCED)
             {
-                converter.set_category (null);
+                converter.single_category = false;
                 converter.set_conversion (equation.source_units, equation.target_units);
             }
             else if (mode == ButtonMode.FINANCIAL)
             {
-                converter.set_category ("currency");
+                converter.single_category = true;
                 converter.set_conversion (equation.source_currency, equation.target_currency);
             }
+
+            GLib.SignalHandler.unblock (converter, converter_changed);
 
             update_view_more_visible ();
             converter.view_more_active = false;
@@ -90,6 +94,7 @@ public class MathButtons : Gtk.Box
 
     private Gtk.Dialog character_code_dialog;
     private Gtk.Entry character_code_entry;
+    private ulong converter_changed;
 
     /* The names of each field in the dialogs for the financial functions */
     private const string[] ctrm_entries =  {"ctrm_pint", "ctrm_fv", "ctrm_pv"};
@@ -543,7 +548,6 @@ public class MathButtons : Gtk.Box
         if (converter == null)
         {
             converter = new MathConverter (equation);
-            converter.changed.connect (converter_changed_cb);
             append (converter);
             converter.notify["view-more-active"].connect (() => {
                 if (adv_panel != null)
@@ -551,6 +555,7 @@ public class MathButtons : Gtk.Box
                 if (fin_panel != null)
                     (fin_panel as Adw.Leaflet).visible_child_name = converter.view_more_active ? "advanced" : "basic";
             });
+            converter_changed = converter.changed.connect (converter_changed_cb);
         }
 
         var panel = load_mode (mode);

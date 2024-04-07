@@ -15,8 +15,6 @@ public class MathConverter : Gtk.Grid
 
     private string category;
 
-    private bool single_category = false;
-
     [GtkChild]
     private unowned Gtk.DropDown category_combo;
     [GtkChild]
@@ -31,6 +29,7 @@ public class MathConverter : Gtk.Grid
     public bool outer_box_visible { set; get; default = false; }
     public bool view_more_visible { set; get; default = false; }
     public bool view_more_active { set; get; default = false; }
+    public bool single_category { set; get; default = false; }
 
     public signal void changed ();
 
@@ -76,23 +75,22 @@ public class MathConverter : Gtk.Grid
         category_combo.expression = expression;
     }
 
-    public void set_category (string? category)
+    public void set_category (bool single_category, string? category)
     {
         if (this.category == category)
             return;
         this.category = category;
+        this.single_category = single_category;
         if (this.category != null) {
-            this.single_category = true;
+
             UnitCategory? unit_category = UnitManager.get_default ().get_category (this.category);
             uint position = 0;
             var model = category_combo.get_model () as ListStore;
             model.find (unit_category, out position);
             category_combo.selected = position;
         } else {
-            this.single_category = false;
             category_combo.selected = 0;
         }
-        // from_combobox_changed_cb ();
 
     }
 
@@ -105,12 +103,14 @@ public class MathConverter : Gtk.Grid
     {
         var ua = UnitManager.get_default ().get_unit_by_name (unit_a);
         var ub = UnitManager.get_default ().get_unit_by_name (unit_b);
-        if (ua == null || ub == null)
+        var uc = UnitManager.get_default ().get_category_of_unit (unit_a);
+        if (ua == null || ub == null || uc == null)
         {
             from_combo.selected = 0;
             return;
         }
 
+        set_category (this.single_category, uc.name);
         set_active_unit (from_combo, ua);
         set_active_unit (to_combo, ub);
     }
