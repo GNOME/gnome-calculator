@@ -174,7 +174,6 @@ public class Calculator : Adw.Application
 
     protected override void shutdown ()
     {
-        base.shutdown ();
 
         var window = last_opened_window;
         var equation = window.equation;
@@ -197,6 +196,7 @@ public class Calculator : Adw.Application
         window.get_default_size(out width, out height);
         settings.set ("window-size", "(ii)", width, height);
         settings.apply ();
+        base.shutdown ();
     }
 
     protected override int handle_local_options (GLib.VariantDict options)

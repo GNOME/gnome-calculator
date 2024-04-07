@@ -188,6 +188,38 @@ public class UnitManager : Object
         return null;
     }
 
+    public UnitCategory? get_category_of_unit (string name)
+    {
+        int count = 0;
+        UnitCategory? return_category = null;
+        foreach (var c in categories)
+        {
+            var u = c.get_unit_by_name (name);
+            if (u != null)
+            {
+                return_category = c;
+                count++;
+            }
+        }
+        if (count > 1)
+            return null;
+        else if (count == 1)
+            return return_category;
+
+        foreach (var c in categories)
+        {
+            var u = c.get_unit_by_name (name, false);
+            if (u != null)
+            {
+                return_category = c;
+                count++;
+            }
+        }
+        if (count == 1)
+            return return_category;
+        return null;
+    }
+
     public Unit? get_unit_by_name (string name)
     {
         int count = 0;

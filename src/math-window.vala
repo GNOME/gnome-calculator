@@ -55,8 +55,7 @@ public class MathWindow : Adw.ApplicationWindow
         add_action (settings.create_action ("number-format"));
         settings.bind ("number-format", _equation, "number_format", SettingsBindFlags.DEFAULT);
         converter.set_equation (_equation);
-        converter.set_category (null);
-        converter.set_conversion (equation.source_units, equation.target_units);
+        //converter.set_category (null);
 
         event_controller = new Gtk.EventControllerKey ();
         (this as Gtk.Widget).add_controller (event_controller);
