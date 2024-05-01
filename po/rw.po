@@ -10,390 +10,734 @@
 # JEAN BAPTISTE NGENDAHAYO <ngenda_denis@yahoo.co.uk>, 2005.
 # Augustin KIBERWA  <akiberwa@yahoo.co.uk>, 2005.
 # Donatien NSENGIYUMVA <ndonatienuk@yahoo.co.uk>, 2005..
+# Angelo Verlain <hey@vixalien.com>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool 2.12\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-08 08:10-0700\n"
-"PO-Revision-Date: 2005-03-28 19:34-0700\n"
-"Last-Translator: Steve Murphy <murf@e-tools.com>\n"
-"Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
+"issues\n"
+"POT-Creation-Date: 2024-03-27 19:00+0000\n"
+"PO-Revision-Date: 2024-04-03 15:08+0200\n"
+"Last-Translator: Angelo Verlain <hey@vixalien.com>\n"
+"Language-Team: Kinyarwanda\n"
 "Language: rw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-DL-Lang: rw\n"
+"X-DL-Module: gnome-calculator\n"
+"X-DL-Branch: gnome-46\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
+"Plural-Forms: \n"
+"X-Generator: Gtranslator 46.0\n"
 
-#. Strings for each base value.
-#: gcalctool/calctool.c:41
-msgid "_Bin"
+#: data/org.gnome.Calculator.appdata.xml.in:7
+#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:82
+#: src/gnome-calculator.vala:302 src/ui/math-window.ui:107
+msgid "Calculator"
+msgstr "Mubazi"
+
+#: data/org.gnome.Calculator.appdata.xml.in:8
+#: data/org.gnome.Calculator.desktop.in:4
+msgid "Perform arithmetic, scientific or financial calculations"
+msgstr "Kubara imibare, kuyiteranya no gukora imibare mu bya siyansi"
+
+#: data/org.gnome.Calculator.appdata.xml.in:10
+msgid ""
+"Calculator is an application that solves mathematical equations. Though it "
+"at first appears to be a simple calculator with only basic arithmetic "
+"operations, you can switch into Advanced, Financial, or Programming mode to "
+"find a surprising set of capabilities."
 msgstr ""
+"Mubazi ni porogaramu ikemura ibigereranyo mu mibare. Nubwo igaragara nkaho "
+"ari mubazi isanzwe ifite imikorere isanzwe, ushobora guhindura ukajya mu "
+"idirishya ryo gukora imibare Ikomeye, Imari cyangwa mu byo Kwandika Kode "
+"ukabona ubushobozi butangaje"
 
-# 4370
-#: gcalctool/calctool.c:41
-#, fuzzy
-msgid "_Oct"
-msgstr "ukw."
-
-# 1483
-#: gcalctool/calctool.c:41
-#, fuzzy
-msgid "_Dec"
-msgstr "Ukub.( Ukuboza)"
-
-#: gcalctool/calctool.c:41
-msgid "He_x"
+#: data/org.gnome.Calculator.appdata.xml.in:16
+msgid ""
+"The Advanced calculator supports many operations, including: logarithms, "
+"factorials, trigonometric and hyperbolic functions, modulus division, "
+"complex numbers, random number generation, prime factorization and unit "
+"conversions."
 msgstr ""
+"Mubazi Iteye Imbere yemera ibikorwa byinshi harimo: logaritime, "
+"amafagitoriyari, tirigonometiri n'imikorere ya hayipaboli, kugabanya modulo, "
+"imibare igoye, gukora imibare iri random, fagitoriyari z'imibare y'ingenzi "
+"no guhindura ibipimo."
 
-#. Tooltips for each base value.
-#: gcalctool/calctool.c:45
-#, fuzzy
-msgid "Set numeric base to binary (base 2)"
-msgstr "Bikurikije umubare SHINGIRO Kuri Nyabibiri SHINGIRO 2."
-
-#: gcalctool/calctool.c:46
-#, fuzzy
-msgid "Set numeric base to octal (base 8)"
-msgstr "Bikurikije umubare SHINGIRO Kuri SHINGIRO 8"
-
-#: gcalctool/calctool.c:47
-#, fuzzy
-msgid "Set numeric base to decimal (base 10)"
-msgstr "Bikurikije umubare SHINGIRO Kuri NYACUMI SHINGIRO 10"
-
-#: gcalctool/calctool.c:48
-#, fuzzy
-msgid "Set numeric base to hexadecimal (base 16)"
-msgstr "Bikurikije umubare SHINGIRO Kuri SHINGIRO"
-
-#. Strings for each display mode value.
-#: gcalctool/calctool.c:59
-msgid "E_ng"
+#: data/org.gnome.Calculator.appdata.xml.in:22
+msgid ""
+"Financial mode supports several computations, including periodic interest "
+"rate, present and future value, double declining and straight line "
+"depreciation, and many others."
 msgstr ""
+"Mubazi y'Imari ishobora kubara ibitandukanye, harimo inyungu y'igihe runaka, "
+"imibare ikurikiza igihe, guta agaciro mu buryo bukubye kabiri cyangwa mu "
+"buryo bw'umurongo uringaniye n'ibindi"
 
-#: gcalctool/calctool.c:59
-msgid "_Fix"
+#: data/org.gnome.Calculator.appdata.xml.in:27
+msgid ""
+"Programming mode supports conversion between common bases (binary, octal, "
+"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"character to character code conversion, and more."
 msgstr ""
+"Mu Rwego rwo Gukorogarama ushobora guhindura hagati ya nshingiro "
+"zitandukanye (nyabubiri, nyamunani, nyacumi na nyacumi na gatandatu), "
+"aligebura nyabubiri, ishimwe rya rimwe n'irya kabiri, guhindura code "
+"y'inyuguti mu yindi, n'ibindi. "
 
-#: gcalctool/calctool.c:59
-msgid "_Sci"
-msgstr ""
+#: data/org.gnome.Calculator.appdata.xml.in:35
+msgid "Basic Mode"
+msgstr "Urwego bw'Ibanze"
 
-#. Tooltips for each display mode value.
-#: gcalctool/calctool.c:63
-#, fuzzy
-msgid "Set display type to engineering format"
-msgstr "Kugaragaza Ubwoko Kuri Imiterere"
-
-#: gcalctool/calctool.c:64
-#, fuzzy
-msgid "Set display type to fixed-point format"
-msgstr "Kugaragaza Ubwoko Kuri BIHAMYE Akadomo Imiterere"
-
-#: gcalctool/calctool.c:65
-#, fuzzy
-msgid "Set display type to scientific format"
-msgstr "Kugaragaza Ubwoko Kuri Cya gihanga Imiterere"
-
-#: gcalctool/calctool.c:68
-#, fuzzy
-msgid "Set hyperbolic option for trigonometric functions"
-msgstr "Ihitamo kugirango Imimaro"
-
-#: gcalctool/calctool.c:69
-#, fuzzy
-msgid "Set inverse option for trigonometric functions"
-msgstr "Ihitamo kugirango Imimaro"
-
-#. Mode titles to be added to the titlebar.
-#: gcalctool/calctool.c:72 gcalctool/gtk.c:351
-msgid "Basic"
-msgstr "By'ibanze"
-
-#: gcalctool/calctool.c:72 gcalctool/gtk.c:353
-msgid "Advanced"
+#: data/org.gnome.Calculator.appdata.xml.in:39
+msgid "Advanced Mode"
 msgstr "Urwego rwo hejuru"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\formdlg\dwfunctr.src:FID_FUNCTION_BOX.CB_CAT.5.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\formdlg\formdlgs.src:RID_SCTAB_FUNCTION.LB_CATEGORY.5.text
-#: gcalctool/calctool.c:72 gcalctool/gtk.c:355
-msgid "Financial"
-msgstr "Bijyanye n'umutungo"
+#: data/org.gnome.Calculator.appdata.xml.in:43
+msgid "Financial Mode"
+msgstr "Urwego rw'Imari"
 
-# svx/source\dialog\numfmt.src:RID_SVXPAGE_NUMBERFORMAT.LB_CATEGORY.8.text
-#: gcalctool/calctool.c:73 gcalctool/gtk.c:357
-msgid "Scientific"
-msgstr "Cya gihanga"
+#: data/org.gnome.Calculator.appdata.xml.in:47
+msgid "Programming Mode"
+msgstr "Urwego rwo Gukorogarama"
 
-# 2170
-#: gcalctool/calctool.c:73
-msgid "Expression"
-msgstr "imvugo"
+#: data/org.gnome.Calculator.appdata.xml.in:51
+msgid "Keyboard Mode"
+msgstr "Urwego rwa Mwanditsi"
 
-# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
-# sch/source\ui\dlg\attrib3.src:TP_ALIGNMENT.FT_DEGREES.text
-# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
-# sch/source\ui\dlg\tplabel.src:TP_AXIS_LABEL.FT_AXIS_LABEL_DEGREES.text
-#. Strings for each trig type value.
-#: gcalctool/calctool.c:77
-#, fuzzy
-msgid "De_grees"
-msgstr "Dogere"
+#. developer_name tag deprecated with Appstream 1.0
+#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:304
+msgid "The GNOME Project"
+msgstr "Gahunda ya GNOME"
 
-#: gcalctool/calctool.c:77
-msgid "Gr_adians"
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Calculator.desktop.in:6
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr "imibare;guteranya;siyansi;imari;"
+
+#: data/org.gnome.calculator.gschema.xml:25
+msgid "Accuracy value"
+msgstr "Igipimo cy'ukuri"
+
+#: data/org.gnome.calculator.gschema.xml:26
+msgid "The number of digits displayed after the numeric point"
+msgstr "Ingano y'imibare yerekanwa nyuma y'akadomo mu mibare"
+
+#: data/org.gnome.calculator.gschema.xml:31
+msgid "Word size"
+msgstr "Ingano y'ijambo"
+
+#: data/org.gnome.calculator.gschema.xml:32
+msgid "The size of the words used in bitwise operations"
+msgstr "Ingano y'amagambo ikoreshwa mu bikorwa by'inyabubiri"
+
+#: data/org.gnome.calculator.gschema.xml:37
+msgid "Numeric Base"
+msgstr "Nshingiro y'imibare"
+
+#: data/org.gnome.calculator.gschema.xml:38
+msgid "The numeric base"
+msgstr "Nshingiro y'imibare"
+
+#: data/org.gnome.calculator.gschema.xml:42
+msgid "Show Thousands Separators"
+msgstr "Kwerekana Mutandukanyabihumbi"
+
+#: data/org.gnome.calculator.gschema.xml:43
+msgid "Indicates whether thousands separators are shown in large numbers."
+msgstr "Gushyira inyuguti runaka hagati ya buri gihumbi mu mibare minini."
+
+#: data/org.gnome.calculator.gschema.xml:47
+msgid "Show Trailing Zeroes"
+msgstr "Kwerekana Amazeru Ahera"
+
+#: data/org.gnome.calculator.gschema.xml:48
+msgid ""
+"Indicates whether any trailing zeroes after the numeric point should be "
+"shown in the display value."
+msgstr "Niba amazeru ari nyuma y'akadomo yerekanwa"
+
+#: data/org.gnome.calculator.gschema.xml:52 src/ui/math-window.ui:56
+msgid "Number format"
+msgstr "Imiterere y'imibare"
+
+#: data/org.gnome.calculator.gschema.xml:53
+msgid "The format to display numbers in"
+msgstr "Imiterere imibare yerekanwamo"
+
+#: data/org.gnome.calculator.gschema.xml:57
+msgid "Angle units"
+msgstr "Igipimo cy'inguni"
+
+#: data/org.gnome.calculator.gschema.xml:58
+msgid "The angle units to use"
+msgstr "Igipimo gikoreshwa mu kwerekana inguni"
+
+#: data/org.gnome.calculator.gschema.xml:62
+msgid "Currency update interval"
+msgstr "Intera yo kuvugurura Amadevize"
+
+#: data/org.gnome.calculator.gschema.xml:63
+msgid ""
+"How often the currency exchange rates should be updated. A value of 0 means "
+"the currency exchange rates won't be fetched from the network at all."
+msgstr ""
+"Inshuro igipimo cy'ihindura ry'amadevize kivugururwa. Igiciro cya 0 kivuga "
+"ko igipimo kitazakururwa kuri murandasi na rimwe."
+
+#: data/org.gnome.calculator.gschema.xml:67
+msgid "Button mode"
+msgstr "Uburyo bwa buto"
+
+#: data/org.gnome.calculator.gschema.xml:68
+msgid "The button mode"
+msgstr "Uburyo bwa buto"
+
+#: data/org.gnome.calculator.gschema.xml:72
+msgid "Source currency"
+msgstr "Amadevize biturutsemo"
+
+#: data/org.gnome.calculator.gschema.xml:73
+msgid "Currency of the current calculation"
+msgstr "Imibare iri muri aya madevize"
+
+#: data/org.gnome.calculator.gschema.xml:77
+msgid "Target currency"
+msgstr "Amadevize bishyirwamo"
+
+#: data/org.gnome.calculator.gschema.xml:78
+msgid "Currency to convert the current calculation into"
+msgstr "Imibare irashyirwa muri aya madevize"
+
+#: data/org.gnome.calculator.gschema.xml:82
+msgid "Source units"
+msgstr "Igipimo biturutsemo"
+
+#: data/org.gnome.calculator.gschema.xml:83
+msgid "Units of the current calculation"
+msgstr "Imibare iri muri iki gipimo"
+
+#: data/org.gnome.calculator.gschema.xml:87
+msgid "Target units"
+msgstr "Igipimo bishyirwamo"
+
+#: data/org.gnome.calculator.gschema.xml:88
+msgid "Units to convert the current calculation into"
+msgstr "Imibare irashyirwa muri icyi gipimo"
+
+#: data/org.gnome.calculator.gschema.xml:92
+msgid "Internal precision"
+msgstr "Ubwitabweho bw'imbere"
+
+#: data/org.gnome.calculator.gschema.xml:93
+msgid "The internal precision used with the MPFR library"
+msgstr "Ubwitabweho bukoreshwa mu isomero MPFR"
+
+#: data/org.gnome.calculator.gschema.xml:97
+msgid "Window position"
+msgstr "Aho idirishya riri"
+
+#: data/org.gnome.calculator.gschema.xml:98
+msgid "Window position (x and y) of the last closed window."
+msgstr "Aho idirishya ryafunzwe nyuma riri (x na y)"
+
+#: data/org.gnome.calculator.gschema.xml:102
+msgid "Window maximized"
+msgstr "Idirishya riruzuye"
+
+#: data/org.gnome.calculator.gschema.xml:103
+msgid "Whether the last closed window was maximized."
+msgstr "Niba idirishya rya nyuma ryari ryuzuye."
+
+#: data/org.gnome.calculator.gschema.xml:107
+msgid "Window size"
+msgstr "Ingano y'Idirishya"
+
+#: data/org.gnome.calculator.gschema.xml:108
+msgid "Window size (width and height) of the last closed window."
+msgstr "Ingano y'idirishya ryafunzwe nyuma (ubugari n'uburebure)."
+
+#: lib/currency.vala:64
+msgid "UAE Dirham"
+msgstr "Amadirihamo yo muri UAE"
+
+#: lib/currency.vala:65
+msgid "Argentine Peso"
+msgstr "Amapeso yo muri Arigentina"
+
+#: lib/currency.vala:66
+msgid "Australian Dollar"
+msgstr "Amadolari yo muri Ositiraliya"
+
+#: lib/currency.vala:67
+msgid "Bangladeshi Taka"
+msgstr "Amataka yo muri Bangaladeshi"
+
+#: lib/currency.vala:68
+msgid "Bulgarian Lev"
+msgstr "Amalevi yo muri Bulugariya"
+
+#: lib/currency.vala:69
+msgid "Bahraini Dinar"
+msgstr "Amadinari yo muri Bahereni"
+
+#: lib/currency.vala:70
+msgid "Brunei Dollar"
+msgstr "Amadolari yo muri Buruneyi"
+
+#: lib/currency.vala:71
+msgid "Brazilian Real"
+msgstr "Amareyali yo muri Burezile"
+
+#: lib/currency.vala:72
+msgid "Botswana Pula"
+msgstr "Amapula yo muri Botusuwana"
+
+#: lib/currency.vala:73
+msgid "Canadian Dollar"
+msgstr "Amadolari yo muri Kanada"
+
+#: lib/currency.vala:74
+msgid "CFA Franc"
+msgstr "Amafaranga yo muri CFA"
+
+#: lib/currency.vala:75
+msgid "Swiss Franc"
+msgstr "Amafaranga yo mubusuwisi"
+
+#: lib/currency.vala:76
+msgid "Chilean Peso"
+msgstr "Amapeso yo muri Shili"
+
+#: lib/currency.vala:77
+msgid "Chinese Yuan"
+msgstr "Amayuwani yo mubushinwa"
+
+#: lib/currency.vala:78
+msgid "Colombian Peso"
+msgstr "Amapeso yo muri Kolombiya"
+
+#: lib/currency.vala:79
+msgid "Czech Koruna"
+msgstr "Amakoruna yo muri Sizekiya"
+
+#: lib/currency.vala:80
+msgid "Danish Krone"
+msgstr "Amakorone yo muri Danuwa"
+
+#: lib/currency.vala:81
+msgid "Algerian Dinar"
+msgstr "Amadinari yo muri Aligeriya"
+
+#: lib/currency.vala:82
+msgid "Estonian Kroon"
+msgstr "Amakurunu yo muri Esitoniya"
+
+#: lib/currency.vala:83
+msgid "Euro"
+msgstr "Amayero"
+
+#: lib/currency.vala:84
+msgid "British Pound Sterling"
+msgstr "Amapawundi yo mubwongereza"
+
+#: lib/currency.vala:85
+msgid "Hong Kong Dollar"
+msgstr "Amadolari yo muri Hongi Kongi"
+
+#: lib/currency.vala:86
+msgid "Croatian Kuna"
+msgstr "Amakuna yo muri Korowatiya"
+
+#: lib/currency.vala:87
+msgid "Hungarian Forint"
+msgstr "Amaforinti yo muri Hongiriya"
+
+#: lib/currency.vala:88
+msgid "Indonesian Rupiah"
+msgstr "Amarupiya yo muri Indoneziya"
+
+#: lib/currency.vala:89
+msgid "Israeli New Shekel"
+msgstr "Amashekeli mashya yo muri Isiraheli"
+
+#: lib/currency.vala:90
+msgid "Indian Rupee"
+msgstr "Amarupi yo mubuhindi"
+
+#: lib/currency.vala:91
+msgid "Iranian Rial"
+msgstr "Amariyali yo muri Irani"
+
+#: lib/currency.vala:92
+msgid "Icelandic Krona"
+msgstr "Amakorona yo muri Isilande"
+
+#: lib/currency.vala:93
+msgid "Japanese Yen"
+msgstr "Amayeni yo mubuyapani"
+
+#: lib/currency.vala:94
+msgid "Jamaican Dollar"
+msgstr "Amadolari yo muri Jamayika"
+
+#: lib/currency.vala:95
+msgid "South Korean Won"
+msgstr "Amawoni yo muri Koreya y'Epfo"
+
+#: lib/currency.vala:96
+msgid "Kuwaiti Dinar"
+msgstr "Amadinari yo muri Kuweti"
+
+#: lib/currency.vala:97
+msgid "Kazakhstani Tenge"
+msgstr "Amatenge yo muri Kazakisitani"
+
+#: lib/currency.vala:98
+msgid "Sri Lankan Rupee"
+msgstr "Amarupi yo muri Shiri Ranka"
+
+#: lib/currency.vala:99
+msgid "Libyan Dinar"
+msgstr "Amadinari yo muri Libiya"
+
+#: lib/currency.vala:100
+msgid "Mauritian Rupee"
+msgstr "Amarupi yo muri Morise"
+
+#: lib/currency.vala:101
+msgid "Mexican Peso"
+msgstr "Amapeso yo muri Megizike"
+
+#: lib/currency.vala:102
+msgid "Malaysian Ringgit"
+msgstr "Amaringiti yo muri Maleziya"
+
+#: lib/currency.vala:103
+msgid "Nigerian Naira"
+msgstr "Amanayira yo muri Nigeriya"
+
+#: lib/currency.vala:104
+msgid "Norwegian Krone"
+msgstr "Amakorone yo muri Noruvege"
+
+#: lib/currency.vala:105
+msgid "Nepalese Rupee"
+msgstr "Amarupi yo muri Nepali"
+
+#: lib/currency.vala:106
+msgid "New Zealand Dollar"
+msgstr "Amadolari yo muri Zelande Nshya"
+
+#: lib/currency.vala:107
+msgid "Omani Rial"
+msgstr "Amariyali yo muri Omani"
+
+#: lib/currency.vala:108
+msgid "Peruvian Nuevo Sol"
+msgstr "Amasolu yo muri Peru mashya"
+
+#: lib/currency.vala:109
+msgid "Philippine Peso"
+msgstr "Amapeso yo muri Filipine"
+
+#: lib/currency.vala:110
+msgid "Pakistani Rupee"
+msgstr "Amarupi yo muri Pakisitani"
+
+#: lib/currency.vala:111
+msgid "Polish Zloty"
+msgstr "Amazoloti yo muri Polonye"
+
+#: lib/currency.vala:112
+msgid "Qatari Riyal"
+msgstr "Amariyali yo muri Katari"
+
+#: lib/currency.vala:113
+msgid "New Romanian Leu"
+msgstr "Amalewu mashya yo muri Romaniya"
+
+#: lib/currency.vala:114
+msgid "Russian Rouble"
+msgstr "Amarubule yo muburusiya"
+
+#: lib/currency.vala:115
+msgid "Saudi Riyal"
+msgstr "Amariyali yo muri Arabiya Sawudite"
+
+#: lib/currency.vala:116
+msgid "Serbian Dinar"
+msgstr "Amadinari yo muri Seribiya"
+
+#: lib/currency.vala:117
+msgid "Swedish Krona"
+msgstr "Amakorona yo muri Suwede"
+
+#: lib/currency.vala:118
+msgid "Singapore Dollar"
+msgstr "Amadolari yo muri Singapore"
+
+#: lib/currency.vala:119
+msgid "Thai Baht"
+msgstr "Amabati yo muri Tayilandi"
+
+#: lib/currency.vala:120
+msgid "Tunisian Dinar"
+msgstr "Amadinari yo muri Tuniziya"
+
+#: lib/currency.vala:121
+msgid "Turkish Lira"
+msgstr "Amalira yo muri Turukiya"
+
+#: lib/currency.vala:122
+msgid "T&T Dollar (TTD)"
+msgstr "Amadolari ya T&T (TTD)"
+
+#: lib/currency.vala:123
+msgid "New Taiwan Dollar"
+msgstr "Amadolari mashya yo muri Tayiwani"
+
+#: lib/currency.vala:124
+msgid "Ukrainian Hryvnia"
+msgstr "Amahiriviniya yo muri Ukereni"
+
+#: lib/currency.vala:125
+msgid "US Dollar"
+msgstr "Amadolari yo muri Amerika"
+
+#: lib/currency.vala:126
+msgid "Uruguayan Peso"
+msgstr "Amapeso yo muri Urugwe"
+
+#: lib/currency.vala:127
+msgid "South African Rand"
+msgstr "Amarandi yo muri Afurika y'Epfo"
+
+#: lib/currency-provider.vala:188
+msgid "International Monetary Fund"
+msgstr "Ikigega Mpuzahamahanga cy'Imari"
+
+#: lib/currency-provider.vala:397
+msgid "European Central Bank"
+msgstr "Banki Nkuru yo Muburayi"
+
+#: lib/currency-provider.vala:511
+msgid "Bank of Canada"
+msgstr "Banki ya Kanada"
+
+#: lib/currency-provider.vala:582
+msgid "United Nations Treasury"
+msgstr "Ububiko bwa Loni"
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_SIN.text
+#. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
+#: lib/equation-lexer.vala:734 src/math-converter.vala:231
+msgid "in"
+msgstr "muri"
+
+#: lib/equation-lexer.vala:734
+msgid "to"
+msgstr "kujya mu"
+
+#: lib/equation-parser.vala:735 lib/number.vala:434
+msgid "The zeroth root of a number is undefined"
+msgstr "Umuzi wa zero w'umubare ntabwo ubaho"
+
+#: lib/financial.vala:114
+msgid "Error: the number of periods must be positive"
+msgstr "Ikosa: imibare y'utudomo igomba kuba iruta zeru"
+
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+msgid "Logarithm"
+msgstr "Logaritimi"
+
+#: lib/function-manager.vala:50
+msgid "Natural logarithm"
+msgstr "Logaritimi karemano"
+
+#: lib/function-manager.vala:52
+msgid "Square root"
+msgstr "Umuzi wa kare"
+
+#: lib/function-manager.vala:54
+msgid "Absolute value"
+msgstr "Agaciro kuzuye"
+
+#: lib/function-manager.vala:56
+msgid "Signum"
+msgstr "Signum"
+
+#: lib/function-manager.vala:58
+msgid "Argument"
 msgstr ""
 
-# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RAD.text
-#: gcalctool/calctool.c:77
-#, fuzzy
-msgid "_Radians"
-msgstr "RADIYA"
-
-#. Tooltips for each trig type value.
-#: gcalctool/calctool.c:81
-#, fuzzy
-msgid "Set trigonometric type to degrees"
-msgstr "Ubwoko Kuri Dogere"
-
-#: gcalctool/calctool.c:82
-#, fuzzy
-msgid "Set trigonometric type to gradians"
-msgstr "Ubwoko Kuri"
-
-#: gcalctool/calctool.c:83
-#, fuzzy
-msgid "Set trigonometric type to radians"
-msgstr "Ubwoko Kuri RADIYA"
-
-#: gcalctool/calctool.c:134
-msgid "7"
-msgstr "7"
-
-#: gcalctool/calctool.c:136
-#, fuzzy
-msgid "Numeric 7"
-msgstr "7"
-
-#: gcalctool/calctool.c:146
-msgid "8"
-msgstr "8"
-
-#: gcalctool/calctool.c:148
-#, fuzzy
-msgid "Numeric 8"
-msgstr "8"
-
-#: gcalctool/calctool.c:158
-msgid "9"
-msgstr "9"
-
-#: gcalctool/calctool.c:160
-#, fuzzy
-msgid "Numeric 9"
-msgstr "9"
-
-#: gcalctool/calctool.c:170 gcalctool/calctool.c:178
-msgid "/"
-msgstr "/"
-
-# 1714
-#: gcalctool/calctool.c:171
-msgid "Divide"
-msgstr "Igabanya"
-
-# svx/source\dialog\chardlg.src:RID_SVXPAGE_CHAR_TWOLINES.ED_STARTBRACKET.2.text
-#: gcalctool/calctool.c:182
-msgid "("
-msgstr "("
-
-#: gcalctool/calctool.c:183
-#, fuzzy
-msgid "Start group of calculations"
-msgstr "Gutangira Itsinda Bya"
-
-#: gcalctool/calctool.c:184
-#, fuzzy
-msgid "Left bracket"
-msgstr "Agakubo Ibumoso"
-
-#: gcalctool/calctool.c:194
-msgid "Bksp"
+#: lib/function-manager.vala:60
+msgid "Conjugate"
 msgstr ""
 
-#: gcalctool/calctool.c:195
-#, fuzzy
-msgid "Remove rightmost character from displayed value"
-msgstr "Inyuguti Bivuye Agaciro"
-
-# #-#-#-#-#  sw.pot (Gnome 2.12)  #-#-#-#-#
-# sw/sdi\swslots.src:FN_BACKSPACE.text
-# #-#-#-#-#  sw.pot (Gnome 2.12)  #-#-#-#-#
-# sw/sdi\swslots.src:FN_SHIFT_BACKSPACE.text
-#: gcalctool/calctool.c:196
-msgid "Backspace"
-msgstr "Gusiba usubira inyuma"
-
-#: gcalctool/calctool.c:206
-msgid "CE"
+#: lib/function-manager.vala:62
+msgid "Integer"
 msgstr ""
 
-#: gcalctool/calctool.c:207
-#, fuzzy
-msgid "Clear displayed value"
-msgstr "Agaciro"
-
-#: gcalctool/calctool.c:208
-#, fuzzy
-msgid "Clear entry"
-msgstr "Icyinjijwe"
-
-#: gcalctool/calctool.c:218
-msgid "Clr"
+#: lib/function-manager.vala:64
+msgid "Fraction"
 msgstr ""
 
-#: gcalctool/calctool.c:219
-#, fuzzy
-msgid "Clear displayed value and any partial calculation"
-msgstr "Agaciro Na Bituzuye Imibare"
-
-#: gcalctool/calctool.c:220
-msgid "Clear"
-msgstr "Gusiba"
-
-#: gcalctool/calctool.c:232
-msgid "4"
-msgstr "4"
-
-#: gcalctool/calctool.c:234
-#, fuzzy
-msgid "Numeric 4"
-msgstr "4."
-
-#: gcalctool/calctool.c:244
-msgid "5"
-msgstr "5"
-
-#: gcalctool/calctool.c:246
-#, fuzzy
-msgid "Numeric 5"
-msgstr "5"
-
-#: gcalctool/calctool.c:256
-msgid "6"
-msgstr "6"
-
-#: gcalctool/calctool.c:258
-#, fuzzy
-msgid "Numeric 6"
-msgstr "6"
-
-#: gcalctool/calctool.c:268 gcalctool/calctool.c:276
-msgid "*"
-msgstr "*"
-
-# 3984
-#: gcalctool/calctool.c:269
-msgid "Multiply"
-msgstr "kuba"
-
-# svx/source\dialog\chardlg.src:RID_SVXPAGE_CHAR_TWOLINES.ED_ENDBRACKET.2.text
-#: gcalctool/calctool.c:280
-msgid ")"
-msgstr ")"
-
-#: gcalctool/calctool.c:281
-#, fuzzy
-msgid "End group of calculations"
-msgstr "Impera Itsinda Bya"
-
-#: gcalctool/calctool.c:282
-#, fuzzy
-msgid "Right bracket"
-msgstr "Agakubo Iburyo"
-
-# desktop/source\app\ssodlg.src:DLG_SSOLOGIN.text
-#: gcalctool/calctool.c:292
-#, fuzzy
-msgid "+/-"
-msgstr "+/-"
-
-#: gcalctool/calctool.c:293
-#, fuzzy
-msgid "Change sign [c]"
-msgstr "IKIMENYETSO C"
-
-#: gcalctool/calctool.c:300
-msgid "Chs"
+#: lib/function-manager.vala:66
+msgid "Floor"
 msgstr ""
 
-# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_INT.text
-#: gcalctool/calctool.c:304
-#, fuzzy
-msgid "Int"
-msgstr "INT"
-
-#: gcalctool/calctool.c:305
-#, fuzzy
-msgid "Integer portion of displayed value [i]"
-msgstr "Bya Agaciro i"
-
-#: gcalctool/calctool.c:306
-msgid "Integer portion"
+#: lib/function-manager.vala:68
+msgid "Ceiling"
 msgstr ""
 
-#: gcalctool/calctool.c:316
-msgid "Sto"
+#: lib/function-manager.vala:70
+msgid "Round"
 msgstr ""
 
-#: gcalctool/calctool.c:317
+#: lib/function-manager.vala:72
+msgid "Real"
+msgstr ""
+
+#: lib/function-manager.vala:74
+msgid "Imaginary"
+msgstr ""
+
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:535
+msgid "Sine"
+msgstr ""
+
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:519
+msgid "Cosine"
+msgstr ""
+
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:551
+msgid "Tangent"
+msgstr ""
+
+#: lib/function-manager.vala:82
+msgid "Arc sine"
+msgstr ""
+
+#: lib/function-manager.vala:84
+msgid "Arc cosine"
+msgstr ""
+
+#: lib/function-manager.vala:86
+msgid "Arc tangent"
+msgstr ""
+
+#: lib/function-manager.vala:88
+msgid "Inverse sine"
+msgstr ""
+
+#: lib/function-manager.vala:90
+msgid "Inverse cosine"
+msgstr ""
+
+#: lib/function-manager.vala:92
+msgid "Inverse tangent"
+msgstr ""
+
+#: lib/function-manager.vala:94
+msgid "Hyperbolic sine"
+msgstr ""
+
+#: lib/function-manager.vala:96
+msgid "Hyperbolic cosine"
+msgstr ""
+
+#: lib/function-manager.vala:98
+msgid "Hyperbolic tangent"
+msgstr ""
+
+#: lib/function-manager.vala:100
+msgid "Hyperbolic arcsine"
+msgstr ""
+
+#: lib/function-manager.vala:102
+msgid "Hyperbolic arccosine"
+msgstr ""
+
+#: lib/function-manager.vala:104
+msgid "Hyperbolic arctangent"
+msgstr ""
+
+#: lib/function-manager.vala:106
+msgid "Inverse hyperbolic sine"
+msgstr ""
+
+#: lib/function-manager.vala:108
+msgid "Inverse hyperbolic cosine"
+msgstr ""
+
+#: lib/function-manager.vala:110
+msgid "Inverse hyperbolic tangent"
+msgstr ""
+
+#: lib/function-manager.vala:112
+msgid "One's complement"
+msgstr ""
+
+#: lib/function-manager.vala:114
+msgid "Two's complement"
+msgstr ""
+
+#. Message displayed when cannot toggle bit in display
+#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+msgid "Displayed value not an integer"
+msgstr ""
+
+#. Digits localized for the given language
+#: lib/math-equation.vala:211
+msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
+msgstr ""
+
+#. Error shown when trying to undo with no undo history
+#: lib/math-equation.vala:579
+msgid "No undo history"
+msgstr ""
+
+#. Error shown when trying to redo with no redo history
+#: lib/math-equation.vala:600
+msgid "No redo history"
+msgstr ""
+
+#: lib/math-equation.vala:831
 #, fuzzy
-msgid "Store displayed value in memory register [S]"
-msgstr "Agaciro in Ububiko Kwiyandikisha"
+msgid "No sane value to store"
+msgstr "Agaciro Kuri"
 
-#: gcalctool/calctool.c:318
-#, fuzzy
-msgid "Store to register"
-msgstr "Kuri Kwiyandikisha"
+#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
+#: lib/math-equation.vala:1080
+msgid "Overflow. Try a bigger word size"
+msgstr ""
 
-#: gcalctool/calctool.c:330
-msgid "1"
-msgstr "1"
+#. Error displayed to user when they an unknown variable is entered
+#: lib/math-equation.vala:1085
+#, c-format
+msgid "Unknown variable “%s”"
+msgstr ""
 
-#: gcalctool/calctool.c:332
-#, fuzzy
-msgid "Numeric 1"
-msgstr "1."
+#. Error displayed to user when an unknown function is entered
+#: lib/math-equation.vala:1092
+#, c-format
+msgid "Function “%s” is not defined"
+msgstr ""
 
-#: gcalctool/calctool.c:342
-msgid "2"
-msgstr "2"
-
-#: gcalctool/calctool.c:344
-#, fuzzy
-msgid "Numeric 2"
-msgstr "2."
-
-#: gcalctool/calctool.c:354
-msgid "3"
-msgstr "3"
-
-#: gcalctool/calctool.c:356
-#, fuzzy
-msgid "Numeric 3"
-msgstr "3."
-
-# basctl/source\basicide\basidesh.src:RID_IMGBTN_REMOVEWATCH.text
-#: gcalctool/calctool.c:366
-msgid "-"
-msgstr "-"
-
-# svx/sdi\svxslots.src:SID_POLY_SUBSTRACT.text
-#: gcalctool/calctool.c:367
-msgid "Subtract"
-msgstr "Gukuramo"
+#. Error displayed to user when an conversion with unknown units is attempted
+#: lib/math-equation.vala:1099
+msgid "Unknown conversion"
+msgstr ""
 
 # #-#-#-#-#  starmath.pot (Gnome 2.12)  #-#-#-#-#
 # starmath/source\smres.src:RID_DISTANCEDIALOG.1.text
@@ -401,130 +745,1877 @@ msgstr "Gukuramo"
 # starmath/source\smres.src:RID_DISTANCEDIALOG.2.text
 # #-#-#-#-#  starmath.pot (Gnome 2.12)  #-#-#-#-#
 # starmath/source\smres.src:RID_DISTANCEDIALOG.3.text
-#: gcalctool/calctool.c:378
-msgid "%"
+#. should always be run
+#: lib/math-equation.vala:1109
+#, fuzzy, c-format
+#| msgid "%"
+msgid "%s"
 msgstr "%"
 
-# 4643
-#: gcalctool/calctool.c:379
-msgid "Percentage"
-msgstr "ijanisha"
-
-# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_SQRT.text
-#: gcalctool/calctool.c:390
+#. Unknown error.
+#. Error displayed to user when they enter an invalid calculation
+#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
 #, fuzzy
-msgid "Sqrt"
-msgstr "SQRT"
+msgid "Malformed expression"
+msgstr "imvugo"
 
-#: gcalctool/calctool.c:391
+#: lib/math-equation.vala:1130
+msgid "Calculating"
+msgstr ""
+
+#. Error displayed when trying to factorize a non-integer value
+#: lib/math-equation.vala:1323
+msgid "Need an integer to factorize"
+msgstr ""
+
+#. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
+#: lib/math-equation.vala:1387
 #, fuzzy
-msgid "Square root [s]"
+msgid "No sane value to bitwise shift"
+msgstr "Agaciro Kuri"
+
+#. Translators: Error displayed when underflow error occured
+#: lib/number.vala:201
+msgid "Underflow error"
+msgstr ""
+
+#. Translators: Error displayed when overflow error occured
+#: lib/number.vala:206
+msgid "Overflow error"
+msgstr ""
+
+#. Translators: Error display when attempting to take argument of zero
+#: lib/number.vala:256
+msgid "Argument not defined for zero"
+msgstr ""
+
+#. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
+#: lib/number.vala:372 lib/number.vala:402
+msgid "The power of zero is undefined for a negative exponent"
+msgstr ""
+
+#. Translators: Error displayed when attempted to raise 0 to power of zero
+#: lib/number.vala:380 lib/number.vala:410
+msgid "Zero raised to zero is undefined"
+msgstr ""
+
+#. Translators: Error displayed when attempting to take logarithm of zero
+#: lib/number.vala:464 lib/number.vala:495
+msgid "Logarithm of zero is undefined"
+msgstr ""
+
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
+#: lib/number.vala:517
+msgid "Factorial is only defined for non-negative real numbers"
+msgstr ""
+
+#. Translators: Error displayed attempted to divide by zero
+#: lib/number.vala:577
+msgid "Division by zero is undefined"
+msgstr ""
+
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
+#: lib/number.vala:598
+msgid "Modulus division is only defined for integers"
+msgstr ""
+
+#. Translators: Error displayed when tangent value is undefined
+#: lib/number.vala:671
+msgid ""
+"Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
+msgstr ""
+
+#. Translators: Error displayed when inverse sine value is undefined
+#: lib/number.vala:690
+msgid "Inverse sine is undefined for values outside [-1, 1]"
+msgstr ""
+
+#. Translators: Error displayed when inverse cosine value is undefined
+#: lib/number.vala:707
+msgid "Inverse cosine is undefined for values outside [-1, 1]"
+msgstr ""
+
+#. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
+#: lib/number.vala:725
+msgid "Arctangent function is undefined for values i and -i"
+msgstr ""
+
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
+#: lib/number.vala:775
+msgid "Inverse hyperbolic cosine is undefined for values less than one"
+msgstr ""
+
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
+#: lib/number.vala:791
+msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
+msgstr ""
+
+#. Translators: Error displayed when boolean AND attempted on non-integer values
+#: lib/number.vala:807
+msgid "Boolean AND is only defined for positive integers"
+msgstr ""
+
+#. Translators: Error displayed when boolean OR attempted on non-integer values
+#: lib/number.vala:819
+msgid "Boolean OR is only defined for positive integers"
+msgstr ""
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: lib/number.vala:831
+msgid "Boolean XOR is only defined for positive integers"
+msgstr ""
+
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#: lib/number.vala:843
+msgid "Boolean NOT is only defined for positive integers"
+msgstr ""
+
+#. Translators: Error displayed when bit shift attempted on non-integer values
+#: lib/number.vala:866
+msgid "Shift is only possible on integer values"
+msgstr ""
+
+#: lib/serializer.vala:345
+msgid "Overflow: the result couldn’t be calculated"
+msgstr ""
+
+#: lib/unit.vala:29
+msgid "Angle"
+msgstr ""
+
+#: lib/unit.vala:30
+msgid "Length"
+msgstr ""
+
+#: lib/unit.vala:31
+msgid "Area"
+msgstr ""
+
+#: lib/unit.vala:32
+msgid "Volume"
+msgstr ""
+
+#: lib/unit.vala:33
+msgid "Mass"
+msgstr ""
+
+#: lib/unit.vala:34
+msgid "Speed"
+msgstr ""
+
+# #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
+# basctl/source\basicide\moptions.src:RID_MACROOPTIONS.RID_FT_DESCR.text
+# #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
+# basctl/source\basicide\moptions.src:RID_MACROOPTIONS.text
+#: lib/unit.vala:35
+#, fuzzy
+#| msgid "Description"
+msgid "Duration"
+msgstr "Isobanuramiterere"
+
+#: lib/unit.vala:36
+msgid "Frequency"
+msgstr ""
+
+#: lib/unit.vala:37
+msgid "Temperature"
+msgstr ""
+
+#: lib/unit.vala:38
+msgid "Energy"
+msgstr ""
+
+#: lib/unit.vala:39
+msgid "Digital Storage"
+msgstr ""
+
+# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
+# sch/source\ui\dlg\attrib3.src:TP_ALIGNMENT.FT_DEGREES.text
+# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
+# sch/source\ui\dlg\tplabel.src:TP_AXIS_LABEL.FT_AXIS_LABEL_DEGREES.text
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
+#: lib/unit.vala:42 src/math-preferences.vala:110
+#, fuzzy
+msgid "Degrees"
+msgstr "Dogere"
+
+# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
+# sch/source\ui\dlg\attrib3.src:TP_ALIGNMENT.FT_DEGREES.text
+# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
+# sch/source\ui\dlg\tplabel.src:TP_AXIS_LABEL.FT_AXIS_LABEL_DEGREES.text
+#: lib/unit.vala:42
+#, fuzzy, c-format
+msgctxt "unit-format"
+msgid "%s degrees"
+msgstr "Dogere"
+
+#: lib/unit.vala:42
+msgctxt "unit-symbols"
+msgid "degree,degrees,deg"
+msgstr ""
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RAD.text
+#: lib/unit.vala:43 src/math-preferences.vala:112
+#, fuzzy
+msgid "Radians"
+msgstr "RADIYA"
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RAD.text
+#: lib/unit.vala:43
+#, fuzzy, c-format
+msgctxt "unit-format"
+msgid "%s radians"
+msgstr "RADIYA"
+
+#: lib/unit.vala:43
+msgctxt "unit-symbols"
+msgid "radian,radians,rad"
+msgstr ""
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RAD.text
+#: lib/unit.vala:44 src/math-preferences.vala:114
+#, fuzzy
+msgid "Gradians"
+msgstr "RADIYA"
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RAD.text
+#: lib/unit.vala:44
+#, fuzzy, c-format
+msgctxt "unit-format"
+msgid "%s gradians"
+msgstr "RADIYA"
+
+#: lib/unit.vala:44
+msgctxt "unit-symbols"
+msgid "gradian,gradians,grad"
+msgstr ""
+
+#: lib/unit.vala:45
+msgid "Parsecs"
+msgstr ""
+
+#: lib/unit.vala:45
+#, c-format
+msgctxt "unit-format"
+msgid "%s pc"
+msgstr ""
+
+#: lib/unit.vala:45
+msgctxt "unit-symbols"
+msgid "parsec,parsecs,pc"
+msgstr ""
+
+#: lib/unit.vala:46
+msgid "Light Years"
+msgstr ""
+
+#: lib/unit.vala:46
+#, c-format
+msgctxt "unit-format"
+msgid "%s ly"
+msgstr ""
+
+#: lib/unit.vala:46
+msgctxt "unit-symbols"
+msgid "lightyear,lightyears,ly"
+msgstr ""
+
+#: lib/unit.vala:47
+msgid "Astronomical Units"
+msgstr ""
+
+#: lib/unit.vala:47
+#, c-format
+msgctxt "unit-format"
+msgid "%s au"
+msgstr ""
+
+#: lib/unit.vala:47
+msgctxt "unit-symbols"
+msgid "au"
+msgstr ""
+
+#: lib/unit.vala:48
+msgid "Rack Units"
+msgstr ""
+
+#: lib/unit.vala:48
+#, c-format
+msgctxt "unit-format"
+msgid "%sU"
+msgstr ""
+
+#: lib/unit.vala:48
+msgctxt "unit-symbols"
+msgid "U"
+msgstr ""
+
+#: lib/unit.vala:49
+msgid "Nautical Miles"
+msgstr ""
+
+#: lib/unit.vala:49
+#, c-format
+msgctxt "unit-format"
+msgid "%s nmi"
+msgstr ""
+
+#: lib/unit.vala:49
+msgctxt "unit-symbols"
+msgid "nmi"
+msgstr ""
+
+#: lib/unit.vala:50
+msgid "Miles"
+msgstr ""
+
+#: lib/unit.vala:50
+#, c-format
+msgctxt "unit-format"
+msgid "%s mi"
+msgstr ""
+
+#: lib/unit.vala:50
+msgctxt "unit-symbols"
+msgid "mile,miles,mi"
+msgstr ""
+
+#: lib/unit.vala:51
+msgid "Kilometers"
+msgstr ""
+
+#: lib/unit.vala:51
+#, c-format
+msgctxt "unit-format"
+msgid "%s km"
+msgstr ""
+
+#: lib/unit.vala:51
+msgctxt "unit-symbols"
+msgid "kilometer,kilometers,km,kms"
+msgstr ""
+
+#: lib/unit.vala:52
+msgid "Cables"
+msgstr ""
+
+#: lib/unit.vala:52
+#, c-format
+msgctxt "unit-format"
+msgid "%s cb"
+msgstr ""
+
+#: lib/unit.vala:52
+msgctxt "unit-symbols"
+msgid "cable,cables,cb"
+msgstr ""
+
+#: lib/unit.vala:53
+msgid "Fathoms"
+msgstr ""
+
+#: lib/unit.vala:53
+#, c-format
+msgctxt "unit-format"
+msgid "%s ftm"
+msgstr ""
+
+#: lib/unit.vala:53
+msgctxt "unit-symbols"
+msgid "fathom,fathoms,ftm"
+msgstr ""
+
+#: lib/unit.vala:54
+msgid "Meters"
+msgstr ""
+
+#: lib/unit.vala:54
+#, c-format
+msgctxt "unit-format"
+msgid "%s m"
+msgstr ""
+
+#: lib/unit.vala:54
+msgctxt "unit-symbols"
+msgid "meter,meters,m"
+msgstr ""
+
+#: lib/unit.vala:55
+msgid "Yards"
+msgstr ""
+
+#: lib/unit.vala:55
+#, c-format
+msgctxt "unit-format"
+msgid "%s yd"
+msgstr ""
+
+#: lib/unit.vala:55
+msgctxt "unit-symbols"
+msgid "yard,yards,yd"
+msgstr ""
+
+#: lib/unit.vala:56
+msgid "Feet"
+msgstr ""
+
+#: lib/unit.vala:56
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft"
+msgstr ""
+
+#: lib/unit.vala:56
+msgctxt "unit-symbols"
+msgid "foot,feet,ft"
+msgstr ""
+
+#: lib/unit.vala:57
+msgid "Inches"
+msgstr ""
+
+#: lib/unit.vala:57
+#, c-format
+msgctxt "unit-format"
+msgid "%s in"
+msgstr ""
+
+#: lib/unit.vala:57
+msgctxt "unit-symbols"
+msgid "inch,inches,in"
+msgstr ""
+
+#: lib/unit.vala:58
+msgid "Centimeters"
+msgstr ""
+
+#: lib/unit.vala:58
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm"
+msgstr ""
+
+#: lib/unit.vala:58
+msgctxt "unit-symbols"
+msgid "centimeter,centimeters,cm,cms"
+msgstr ""
+
+#: lib/unit.vala:59
+msgid "Millimeters"
+msgstr ""
+
+#: lib/unit.vala:59
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm"
+msgstr ""
+
+#: lib/unit.vala:59
+msgctxt "unit-symbols"
+msgid "millimeter,millimeters,mm"
+msgstr ""
+
+#: lib/unit.vala:60
+msgid "Micrometers"
+msgstr ""
+
+#: lib/unit.vala:60
+#, c-format
+msgctxt "unit-format"
+msgid "%s μm"
+msgstr ""
+
+#: lib/unit.vala:60
+msgctxt "unit-symbols"
+msgid "micrometer,micrometers,um"
+msgstr ""
+
+#: lib/unit.vala:61
+msgid "Nanometers"
+msgstr ""
+
+#: lib/unit.vala:61
+#, c-format
+msgctxt "unit-format"
+msgid "%s nm"
+msgstr ""
+
+#: lib/unit.vala:61
+msgctxt "unit-symbols"
+msgid "nanometer,nanometers,nm"
+msgstr ""
+
+#: lib/unit.vala:62
+msgid "Desktop Publishing Point"
+msgstr ""
+
+#: lib/unit.vala:62 lib/unit.vala:78
+#, c-format
+msgctxt "unit-format"
+msgid "%s pt"
+msgstr ""
+
+#: lib/unit.vala:62
+msgctxt "unit-symbols"
+msgid "point,pt,points,pts"
+msgstr ""
+
+#: lib/unit.vala:63
+msgid "Kilometers per hour"
+msgstr ""
+
+#: lib/unit.vala:63
+#, c-format
+msgctxt "unit-format"
+msgid "%s km/h"
+msgstr ""
+
+#: lib/unit.vala:63
+msgctxt "unit-symbols"
+msgid "kilometers per hour,kmph,kmh,kph"
+msgstr ""
+
+#: lib/unit.vala:64
+msgid "Miles per hour"
+msgstr ""
+
+#: lib/unit.vala:64
+#, c-format
+msgctxt "unit-format"
+msgid "%s miles/h"
+msgstr ""
+
+#: lib/unit.vala:64
+msgctxt "unit-symbols"
+msgid "milesph,miles per hour,mi/h,miph,mph"
+msgstr ""
+
+#: lib/unit.vala:65
+msgid "Meters per second"
+msgstr ""
+
+#: lib/unit.vala:65
+#, c-format
+msgctxt "unit-format"
+msgid "%s m/s"
+msgstr ""
+
+#: lib/unit.vala:65
+msgctxt "unit-symbols"
+msgid "meters per second,mps"
+msgstr ""
+
+#: lib/unit.vala:66
+msgid "Feet per second"
+msgstr ""
+
+#: lib/unit.vala:66
+#, c-format
+msgctxt "unit-format"
+msgid "%s feet/s"
+msgstr ""
+
+#: lib/unit.vala:66
+msgctxt "unit-symbols"
+msgid "fps,feet per second,feetps"
+msgstr ""
+
+#: lib/unit.vala:67
+msgid "Knots"
+msgstr ""
+
+#: lib/unit.vala:67
+#, c-format
+msgctxt "unit-format"
+msgid "%s kt"
+msgstr ""
+
+#: lib/unit.vala:67
+msgctxt "unit-symbols"
+msgid "kt,kn,nd,knot,knots"
+msgstr ""
+
+#: lib/unit.vala:68
+msgid "Hectares"
+msgstr ""
+
+#: lib/unit.vala:68
+#, c-format
+msgctxt "unit-format"
+msgid "%s ha"
+msgstr ""
+
+#: lib/unit.vala:68
+msgctxt "unit-symbols"
+msgid "hectare,hectares,ha"
+msgstr ""
+
+#: lib/unit.vala:69
+msgid "Acres"
+msgstr ""
+
+#: lib/unit.vala:69
+#, c-format
+msgctxt "unit-format"
+msgid "%s acres"
+msgstr ""
+
+#: lib/unit.vala:69
+msgctxt "unit-symbols"
+msgid "acre,acres"
+msgstr ""
+
+#: lib/unit.vala:70
+#, fuzzy
+msgid "Square Foot"
 msgstr "Imizi S"
 
-#: gcalctool/calctool.c:402
-msgid "Frac"
+#: lib/unit.vala:70
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft²"
 msgstr ""
 
-#: gcalctool/calctool.c:403
-#, fuzzy
-msgid "Fractional portion of displayed value [:]"
-msgstr "Bya Agaciro"
-
-#: gcalctool/calctool.c:404
-msgid "Fractional portion"
+#: lib/unit.vala:70
+msgctxt "unit-symbols"
+msgid "ft²"
 msgstr ""
 
-#: gcalctool/calctool.c:414
-msgid "Rcl"
+#: lib/unit.vala:71
+#, fuzzy
+msgid "Square Meters"
+msgstr "Imizi S"
+
+#: lib/unit.vala:71
+#, c-format
+msgctxt "unit-format"
+msgid "%s m²"
 msgstr ""
 
-#: gcalctool/calctool.c:415
-#, fuzzy
-msgid "Retrieve memory register to display [R]"
-msgstr "Ububiko Kwiyandikisha Kuri Kugaragaza"
-
-#: gcalctool/calctool.c:416
-#, fuzzy
-msgid "Retrieve from register"
-msgstr "Bivuye Kwiyandikisha"
-
-#: gcalctool/calctool.c:428
-msgid "0"
-msgstr "0"
-
-#: gcalctool/calctool.c:430
-#, fuzzy
-msgid "Numeric 0"
-msgstr "0"
-
-#: gcalctool/calctool.c:440
-msgid "."
-msgstr "."
-
-#: gcalctool/calctool.c:441
-#, fuzzy
-msgid "Numeric point"
-msgstr "Akadomo"
-
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND1.1.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND2.1.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND3.1.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND1.1.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND2.1.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND3.1.text
-#: gcalctool/calctool.c:452
-msgid "="
-msgstr "="
-
-#: gcalctool/calctool.c:453
-#, fuzzy
-msgid "Calculate result"
-msgstr "Igisubizo"
-
-# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
-# sch/source\ui\dlg\attrib4.src:TP_STAT.FT_PERCENT_PLUS.text
-# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
-# sch/source\ui\dlg\datstat.src:DLG_DATA_STAT.FT_PERCENT_PLUS.text
-#: gcalctool/calctool.c:464
-msgid "+"
-msgstr "+"
-
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\miscdlgs.src:RID_SCDLG_COL_OPT.FT_LABEL.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\miscdlgs.src:RID_SCDLG_ROW_OPT.FT_LABEL.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scstring.src:STR_OPT_ROWHEIGHT.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scstring.src:STR_OPT_COLWIDTH.text
-#: gcalctool/calctool.c:465
-msgid "Add"
-msgstr "Kongera"
-
-#: gcalctool/calctool.c:476
-#, fuzzy
-msgid "1/<i>x</i>"
-msgstr "1. i X i"
-
-#: gcalctool/calctool.c:477
-#, fuzzy
-msgid "Reciprocal [r]"
-msgstr "R"
-
-#: gcalctool/calctool.c:484
-msgid "Recip"
+#: lib/unit.vala:71
+msgctxt "unit-symbols"
+msgid "m²"
 msgstr ""
 
-#: gcalctool/calctool.c:488
+#: lib/unit.vala:72
+msgid "Square Centimeters"
+msgstr ""
+
+#: lib/unit.vala:72
+#, c-format
+msgctxt "unit-format"
+msgid "%s cm²"
+msgstr ""
+
+#: lib/unit.vala:72
+msgctxt "unit-symbols"
+msgid "cm²"
+msgstr ""
+
+#: lib/unit.vala:73
+msgid "Square Millimeters"
+msgstr ""
+
+#: lib/unit.vala:73
+#, c-format
+msgctxt "unit-format"
+msgid "%s mm²"
+msgstr ""
+
+#: lib/unit.vala:73
+msgctxt "unit-symbols"
+msgid "mm²"
+msgstr ""
+
+#: lib/unit.vala:74
+msgid "Cubic Meters"
+msgstr ""
+
+#: lib/unit.vala:74
+#, c-format
+msgctxt "unit-format"
+msgid "%s m³"
+msgstr ""
+
+#: lib/unit.vala:74
+msgctxt "unit-symbols"
+msgid "m³"
+msgstr ""
+
+#: lib/unit.vala:75
+msgid "US Gallons"
+msgstr ""
+
+#: lib/unit.vala:75
+#, c-format
+msgctxt "unit-format"
+msgid "%s gal"
+msgstr ""
+
+#: lib/unit.vala:75
+msgctxt "unit-symbols"
+msgid "gallon,gallons,gal"
+msgstr ""
+
+#: lib/unit.vala:76
+msgid "Liters"
+msgstr ""
+
+#: lib/unit.vala:76
+#, c-format
+msgctxt "unit-format"
+msgid "%s L"
+msgstr ""
+
+#: lib/unit.vala:76
+msgctxt "unit-symbols"
+msgid "litre,litres,liter,liters,L"
+msgstr ""
+
+#: lib/unit.vala:77
+msgid "US Quarts"
+msgstr ""
+
+#: lib/unit.vala:77
+#, c-format
+msgctxt "unit-format"
+msgid "%s qt"
+msgstr ""
+
+#: lib/unit.vala:77
+msgctxt "unit-symbols"
+msgid "quart,quarts,qt"
+msgstr ""
+
+#: lib/unit.vala:78
+msgid "US Pints"
+msgstr ""
+
+#: lib/unit.vala:78
+msgctxt "unit-symbols"
+msgid "pint,pints,pt"
+msgstr ""
+
+#: lib/unit.vala:79
+msgid "Metric Cups"
+msgstr ""
+
+#: lib/unit.vala:79
+#, c-format
+msgctxt "unit-format"
+msgid "%s cup"
+msgstr ""
+
+#: lib/unit.vala:79
+msgctxt "unit-symbols"
+msgid "cup,cups,cp"
+msgstr ""
+
+#: lib/unit.vala:80
+msgid "Milliliters"
+msgstr ""
+
+#: lib/unit.vala:80
+#, c-format
+msgctxt "unit-format"
+msgid "%s mL"
+msgstr ""
+
+#: lib/unit.vala:80
+msgctxt "unit-symbols"
+msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
+msgstr ""
+
+#: lib/unit.vala:81
+msgid "Microliters"
+msgstr ""
+
+#: lib/unit.vala:81
+#, c-format
+msgctxt "unit-format"
+msgid "%s μL"
+msgstr ""
+
+#: lib/unit.vala:81
+msgctxt "unit-symbols"
+msgid "mm³,μL,uL"
+msgstr ""
+
+#: lib/unit.vala:82
+msgid "Tonnes"
+msgstr ""
+
+#: lib/unit.vala:82
+#, c-format
+msgctxt "unit-format"
+msgid "%s T"
+msgstr ""
+
+#: lib/unit.vala:82
+msgctxt "unit-symbols"
+msgid "tonne,tonnes"
+msgstr ""
+
+#: lib/unit.vala:83
+msgid "Kilograms"
+msgstr ""
+
+#: lib/unit.vala:83
+#, c-format
+msgctxt "unit-format"
+msgid "%s kg"
+msgstr ""
+
+#: lib/unit.vala:83
+msgctxt "unit-symbols"
+msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgstr ""
+
+#: lib/unit.vala:84
+msgid "Pounds"
+msgstr ""
+
+#: lib/unit.vala:84
+#, c-format
+msgctxt "unit-format"
+msgid "%s lb"
+msgstr ""
+
+#: lib/unit.vala:84
+msgctxt "unit-symbols"
+msgid "pound,pounds,lb,lbs"
+msgstr ""
+
+#: lib/unit.vala:85
+msgid "Ounces"
+msgstr ""
+
+#: lib/unit.vala:85
+#, c-format
+msgctxt "unit-format"
+msgid "%s oz"
+msgstr ""
+
+#: lib/unit.vala:85
+msgctxt "unit-symbols"
+msgid "ounce,ounces,oz"
+msgstr ""
+
+#: lib/unit.vala:86
+msgid "Troy Ounces"
+msgstr ""
+
+#: lib/unit.vala:86
+#, c-format
+msgctxt "unit-format"
+msgid "%s ozt"
+msgstr ""
+
+#: lib/unit.vala:86
+msgctxt "unit-symbols"
+msgid "Troy ounce,Troy ounces,ozt"
+msgstr ""
+
+#: lib/unit.vala:87
+msgid "Grams"
+msgstr ""
+
+#: lib/unit.vala:87
+#, c-format
+msgctxt "unit-format"
+msgid "%s g"
+msgstr ""
+
+#: lib/unit.vala:87
+msgctxt "unit-symbols"
+msgid "gram,grams,gramme,grammes,g"
+msgstr ""
+
+#: lib/unit.vala:88
+msgid "Stone"
+msgstr ""
+
+#: lib/unit.vala:88
+#, c-format
+msgctxt "unit-format"
+msgid "%s st"
+msgstr ""
+
+#: lib/unit.vala:88
+msgctxt "unit-symbols"
+msgid "stone,st,stones"
+msgstr ""
+
+#: lib/unit.vala:89
+msgid "Centuries"
+msgstr ""
+
+#: lib/unit.vala:89
+#, c-format
+msgctxt "unit-format"
+msgid "%s centuries"
+msgstr ""
+
+#: lib/unit.vala:89
+msgctxt "unit-symbols"
+msgid "century,centuries"
+msgstr ""
+
+#: lib/unit.vala:90
+msgid "Decades"
+msgstr ""
+
+#: lib/unit.vala:90
+#, c-format
+msgctxt "unit-format"
+msgid "%s decades"
+msgstr ""
+
+#: lib/unit.vala:90
+msgctxt "unit-symbols"
+msgid "decade,decades"
+msgstr ""
+
+#: lib/unit.vala:91
+msgid "Years"
+msgstr ""
+
+#: lib/unit.vala:91
+#, c-format
+msgctxt "unit-format"
+msgid "%s years"
+msgstr ""
+
+#: lib/unit.vala:91
+msgctxt "unit-symbols"
+msgid "year,years"
+msgstr ""
+
+#: lib/unit.vala:92
+msgid "Months"
+msgstr ""
+
+#: lib/unit.vala:92
+#, c-format
+msgctxt "unit-format"
+msgid "%s months"
+msgstr ""
+
+#: lib/unit.vala:92
+msgctxt "unit-symbols"
+msgid "month,months"
+msgstr ""
+
+#: lib/unit.vala:93
+msgid "Weeks"
+msgstr ""
+
+#: lib/unit.vala:93
+#, c-format
+msgctxt "unit-format"
+msgid "%s weeks"
+msgstr ""
+
+#: lib/unit.vala:93
+msgctxt "unit-symbols"
+msgid "week,weeks"
+msgstr ""
+
+#: lib/unit.vala:94
+msgid "Days"
+msgstr ""
+
+#: lib/unit.vala:94
+#, c-format
+msgctxt "unit-format"
+msgid "%s days"
+msgstr ""
+
+#: lib/unit.vala:94
+msgctxt "unit-symbols"
+msgid "day,days"
+msgstr ""
+
+#: lib/unit.vala:95
+msgid "Hours"
+msgstr ""
+
+#: lib/unit.vala:95
+#, c-format
+msgctxt "unit-format"
+msgid "%s hours"
+msgstr ""
+
+#: lib/unit.vala:95
+msgctxt "unit-symbols"
+msgid "hour,hours"
+msgstr ""
+
+#: lib/unit.vala:96
+msgid "Minutes"
+msgstr ""
+
+#: lib/unit.vala:96
+#, c-format
+msgctxt "unit-format"
+msgid "%s minutes"
+msgstr ""
+
+#: lib/unit.vala:96
+msgctxt "unit-symbols"
+msgid "minute,minutes"
+msgstr ""
+
+#: lib/unit.vala:97
+msgid "Seconds"
+msgstr ""
+
+#: lib/unit.vala:97
+#, c-format
+msgctxt "unit-format"
+msgid "%s s"
+msgstr ""
+
+#: lib/unit.vala:97
+msgctxt "unit-symbols"
+msgid "second,seconds,s"
+msgstr ""
+
+#: lib/unit.vala:98
+msgid "Milliseconds"
+msgstr ""
+
+#: lib/unit.vala:98
+#, c-format
+msgctxt "unit-format"
+msgid "%s ms"
+msgstr ""
+
+#: lib/unit.vala:98
+msgctxt "unit-symbols"
+msgid "millisecond,milliseconds,ms"
+msgstr ""
+
+#: lib/unit.vala:99
+msgid "Microseconds"
+msgstr ""
+
+#: lib/unit.vala:99
+#, c-format
+msgctxt "unit-format"
+msgid "%s μs"
+msgstr ""
+
+#: lib/unit.vala:99
+msgctxt "unit-symbols"
+msgid "microsecond,microseconds,us,μs"
+msgstr ""
+
+#: lib/unit.vala:100
+msgid "Celsius"
+msgstr ""
+
+#: lib/unit.vala:100
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚C"
+msgstr ""
+
+#: lib/unit.vala:100
+msgctxt "unit-symbols"
+msgid "degC,˚C,C,c,Celsius,celsius"
+msgstr ""
+
+#: lib/unit.vala:101
+msgid "Fahrenheit"
+msgstr ""
+
+#: lib/unit.vala:101
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚F"
+msgstr ""
+
+#: lib/unit.vala:101
+msgctxt "unit-symbols"
+msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr ""
+
+#: lib/unit.vala:102
+msgid "Kelvin"
+msgstr ""
+
+#: lib/unit.vala:102
+#, c-format
+msgctxt "unit-format"
+msgid "%s K"
+msgstr ""
+
+#: lib/unit.vala:102
+msgctxt "unit-symbols"
+msgid "k,K,Kelvin,kelvin"
+msgstr ""
+
+#: lib/unit.vala:103
+msgid "Rankine"
+msgstr ""
+
+#: lib/unit.vala:103
+#, c-format
+msgctxt "unit-format"
+msgid "%s ˚R"
+msgstr ""
+
+#: lib/unit.vala:103
+msgctxt "unit-symbols"
+msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
+msgstr ""
+
+#. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
+#: lib/unit.vala:105
+msgid "Bits"
+msgstr ""
+
+#: lib/unit.vala:105
+#, c-format
+msgctxt "unit-format"
+msgid "%s b"
+msgstr ""
+
+#: lib/unit.vala:105
+msgctxt "unit-symbols"
+msgid "bit,bits,b"
+msgstr ""
+
+#: lib/unit.vala:106
+msgid "Bytes"
+msgstr ""
+
+#: lib/unit.vala:106
+#, c-format
+msgctxt "unit-format"
+msgid "%s B"
+msgstr ""
+
+#: lib/unit.vala:106
+msgctxt "unit-symbols"
+msgid "byte,bytes,B"
+msgstr ""
+
+#: lib/unit.vala:107
+msgid "Nibbles"
+msgstr ""
+
+#: lib/unit.vala:107
+#, c-format
+msgctxt "unit-format"
+msgid "%s nibble"
+msgstr ""
+
+#: lib/unit.vala:107
+msgctxt "unit-symbols"
+msgid "nibble,nibbles"
+msgstr ""
+
+#. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
+#: lib/unit.vala:109
+msgid "Kilobits"
+msgstr ""
+
+#: lib/unit.vala:109
+#, c-format
+msgctxt "unit-format"
+msgid "%s kb"
+msgstr ""
+
+#: lib/unit.vala:109
+msgctxt "unit-symbols"
+msgid "kilobit,kilobits,kb,Kb"
+msgstr ""
+
+#: lib/unit.vala:110
+msgid "Kilobytes"
+msgstr ""
+
+#: lib/unit.vala:110
+#, c-format
+msgctxt "unit-format"
+msgid "%s kB"
+msgstr ""
+
+#: lib/unit.vala:110
+msgctxt "unit-symbols"
+msgid "kilobyte,kilobytes,kB,KB"
+msgstr ""
+
+#: lib/unit.vala:111
+msgid "Kibibits"
+msgstr ""
+
+#: lib/unit.vala:111
+#, c-format
+msgctxt "unit-format"
+msgid "%s Kib"
+msgstr ""
+
+#: lib/unit.vala:111
+msgctxt "unit-symbols"
+msgid "kibibit,kibibits,Kib"
+msgstr ""
+
+#: lib/unit.vala:112
+msgid "Kibibytes"
+msgstr ""
+
+#: lib/unit.vala:112
+#, c-format
+msgctxt "unit-format"
+msgid "%s KiB"
+msgstr ""
+
+#: lib/unit.vala:112
+msgctxt "unit-symbols"
+msgid "kibibyte,kibibytes,KiB"
+msgstr ""
+
+#: lib/unit.vala:113
+msgid "Megabits"
+msgstr ""
+
+#: lib/unit.vala:113
+#, c-format
+msgctxt "unit-format"
+msgid "%s Mb"
+msgstr ""
+
+#: lib/unit.vala:113
+msgctxt "unit-symbols"
+msgid "megabit,megabits,Mb"
+msgstr ""
+
+#: lib/unit.vala:114
+msgid "Megabytes"
+msgstr ""
+
+#: lib/unit.vala:114
+#, c-format
+msgctxt "unit-format"
+msgid "%s MB"
+msgstr ""
+
+#: lib/unit.vala:114
+msgctxt "unit-symbols"
+msgid "megabyte,megabytes,MB"
+msgstr ""
+
+#: lib/unit.vala:115
+msgid "Mebibits"
+msgstr ""
+
+#: lib/unit.vala:115
+#, c-format
+msgctxt "unit-format"
+msgid "%s Mib"
+msgstr ""
+
+#: lib/unit.vala:115
+msgctxt "unit-symbols"
+msgid "mebibit,mebibits,Mib"
+msgstr ""
+
+#: lib/unit.vala:116
+msgid "Mebibytes"
+msgstr ""
+
+#: lib/unit.vala:116
+#, c-format
+msgctxt "unit-format"
+msgid "%s MiB"
+msgstr ""
+
+#: lib/unit.vala:116
+msgctxt "unit-symbols"
+msgid "mebibyte,mebibytes,MiB"
+msgstr ""
+
+#: lib/unit.vala:117
+msgid "Gigabits"
+msgstr ""
+
+#: lib/unit.vala:117
+#, c-format
+msgctxt "unit-format"
+msgid "%s Gb"
+msgstr ""
+
+#: lib/unit.vala:117
+msgctxt "unit-symbols"
+msgid "gigabit,gigabits,Gb"
+msgstr ""
+
+#: lib/unit.vala:118
+msgid "Gigabytes"
+msgstr ""
+
+#: lib/unit.vala:118
+#, c-format
+msgctxt "unit-format"
+msgid "%s GB"
+msgstr ""
+
+#: lib/unit.vala:118
+msgctxt "unit-symbols"
+msgid "gigabyte,gigabytes,GB"
+msgstr ""
+
+#: lib/unit.vala:119
+msgid "Gibibits"
+msgstr ""
+
+#: lib/unit.vala:119
+#, c-format
+msgctxt "unit-format"
+msgid "%s Gib"
+msgstr ""
+
+#: lib/unit.vala:119
+msgctxt "unit-symbols"
+msgid "gibibit,gibibits,Gib"
+msgstr ""
+
+#: lib/unit.vala:120
+msgid "Gibibytes"
+msgstr ""
+
+#: lib/unit.vala:120
+#, c-format
+msgctxt "unit-format"
+msgid "%s GiB"
+msgstr ""
+
+#: lib/unit.vala:120
+msgctxt "unit-symbols"
+msgid "gibibyte,gibibytes,GiB"
+msgstr ""
+
+#: lib/unit.vala:121
+msgid "Terabits"
+msgstr ""
+
+#: lib/unit.vala:121
+#, c-format
+msgctxt "unit-format"
+msgid "%s Tb"
+msgstr ""
+
+#: lib/unit.vala:121
+msgctxt "unit-symbols"
+msgid "terabit,terabits,Tb"
+msgstr ""
+
+#: lib/unit.vala:122
+msgid "Terabytes"
+msgstr ""
+
+#: lib/unit.vala:122
+#, c-format
+msgctxt "unit-format"
+msgid "%s TB"
+msgstr ""
+
+#: lib/unit.vala:122
+msgctxt "unit-symbols"
+msgid "terabyte,terabytes,TB"
+msgstr ""
+
+#: lib/unit.vala:123
+msgid "Tebibits"
+msgstr ""
+
+#: lib/unit.vala:123
+#, c-format
+msgctxt "unit-format"
+msgid "%s Tib"
+msgstr ""
+
+#: lib/unit.vala:123
+msgctxt "unit-symbols"
+msgid "tebibit,tebibits,Tib"
+msgstr ""
+
+#: lib/unit.vala:124
+msgid "Tebibytes"
+msgstr ""
+
+#: lib/unit.vala:124
+#, c-format
+msgctxt "unit-format"
+msgid "%s TiB"
+msgstr ""
+
+#: lib/unit.vala:124
+msgctxt "unit-symbols"
+msgid "tebibyte,tebibytes,TiB"
+msgstr ""
+
+#: lib/unit.vala:125
+msgid "Petabits"
+msgstr ""
+
+#: lib/unit.vala:125
+#, c-format
+msgctxt "unit-format"
+msgid "%s Pb"
+msgstr ""
+
+#: lib/unit.vala:125
+msgctxt "unit-symbols"
+msgid "petabit,petabits,Pb"
+msgstr ""
+
+#: lib/unit.vala:126
+msgid "Petabytes"
+msgstr ""
+
+#: lib/unit.vala:126
+#, c-format
+msgctxt "unit-format"
+msgid "%s PB"
+msgstr ""
+
+#: lib/unit.vala:126
+msgctxt "unit-symbols"
+msgid "petabyte,petabytes,PB"
+msgstr ""
+
+#: lib/unit.vala:127
+msgid "Pebibits"
+msgstr ""
+
+#: lib/unit.vala:127
+#, c-format
+msgctxt "unit-format"
+msgid "%s Pib"
+msgstr ""
+
+#: lib/unit.vala:127
+msgctxt "unit-symbols"
+msgid "pebibit,pebibits,Pib"
+msgstr ""
+
+#: lib/unit.vala:128
+msgid "Pebibytes"
+msgstr ""
+
+#: lib/unit.vala:128
+#, c-format
+msgctxt "unit-format"
+msgid "%s PiB"
+msgstr ""
+
+#: lib/unit.vala:128
+msgctxt "unit-symbols"
+msgid "pebibyte,pebibytes,PiB"
+msgstr ""
+
+#: lib/unit.vala:129
+msgid "Exabits"
+msgstr ""
+
+#: lib/unit.vala:129 lib/unit.vala:133
+#, c-format
+msgctxt "unit-format"
+msgid "%s Eb"
+msgstr ""
+
+#: lib/unit.vala:129
+msgctxt "unit-symbols"
+msgid "exabit,exabits,Eb"
+msgstr ""
+
+#: lib/unit.vala:130
+msgid "Exabytes"
+msgstr ""
+
+#: lib/unit.vala:130 lib/unit.vala:134
+#, c-format
+msgctxt "unit-format"
+msgid "%s EB"
+msgstr ""
+
+#: lib/unit.vala:130
+msgctxt "unit-symbols"
+msgid "exabyte,exabytes,EB"
+msgstr ""
+
+#: lib/unit.vala:131
+msgid "Exbibits"
+msgstr ""
+
+#: lib/unit.vala:131
+#, c-format
+msgctxt "unit-format"
+msgid "%s Eib"
+msgstr ""
+
+#: lib/unit.vala:131
+msgctxt "unit-symbols"
+msgid "exbibit,exbibits,Eib"
+msgstr ""
+
+#: lib/unit.vala:132
+msgid "Exbibytes"
+msgstr ""
+
+#: lib/unit.vala:132
+#, c-format
+msgctxt "unit-format"
+msgid "%s EiB"
+msgstr ""
+
+#: lib/unit.vala:132
+msgctxt "unit-symbols"
+msgid "exbibyte,exbibytes,EiB"
+msgstr ""
+
+#: lib/unit.vala:133
+msgid "Zettabits"
+msgstr ""
+
+#: lib/unit.vala:133
+msgctxt "unit-symbols"
+msgid "zettabit,zettabits,Zb"
+msgstr ""
+
+#: lib/unit.vala:134
+msgid "Zettabytes"
+msgstr ""
+
+#: lib/unit.vala:134
+msgctxt "unit-symbols"
+msgid "zettabyte,zettabytes,ZB"
+msgstr ""
+
+#: lib/unit.vala:135
+msgid "Zebibits"
+msgstr ""
+
+#: lib/unit.vala:135
+#, c-format
+msgctxt "unit-format"
+msgid "%s Zib"
+msgstr ""
+
+#: lib/unit.vala:135
+msgctxt "unit-symbols"
+msgid "zebibit,zebibits,Zib"
+msgstr ""
+
+#: lib/unit.vala:136
+msgid "Zebibytes"
+msgstr ""
+
+#: lib/unit.vala:136
+#, c-format
+msgctxt "unit-format"
+msgid "%s ZiB"
+msgstr ""
+
+#: lib/unit.vala:136
+msgctxt "unit-symbols"
+msgid "zebibyte,zebibytes,ZiB"
+msgstr ""
+
+#: lib/unit.vala:137
+msgid "Yottabits"
+msgstr ""
+
+#: lib/unit.vala:137
+#, c-format
+msgctxt "unit-format"
+msgid "%s Yb"
+msgstr ""
+
+#: lib/unit.vala:137
+msgctxt "unit-symbols"
+msgid "yottabit,yottabits,Yb"
+msgstr ""
+
+#: lib/unit.vala:138
+msgid "Yottabytes"
+msgstr ""
+
+#: lib/unit.vala:138
+#, c-format
+msgctxt "unit-format"
+msgid "%s YB"
+msgstr ""
+
+#: lib/unit.vala:138
+msgctxt "unit-symbols"
+msgid "yottabyte,yottabytes,YB"
+msgstr ""
+
+#: lib/unit.vala:139
+msgid "Yobibits"
+msgstr ""
+
+#: lib/unit.vala:139
+#, c-format
+msgctxt "unit-format"
+msgid "%s Yib"
+msgstr ""
+
+#: lib/unit.vala:139
+msgctxt "unit-symbols"
+msgid "yobibit,yobibits,Yib"
+msgstr ""
+
+#: lib/unit.vala:140
+msgid "Yobibytes"
+msgstr ""
+
+#: lib/unit.vala:140
+#, c-format
+msgctxt "unit-format"
+msgid "%s YiB"
+msgstr ""
+
+#: lib/unit.vala:140
+msgctxt "unit-symbols"
+msgid "yobibyte,yobibytes,YiB"
+msgstr ""
+
+#: lib/unit.vala:141
+msgid "Hertz"
+msgstr ""
+
+#: lib/unit.vala:141
+#, c-format
+msgctxt "unit-format"
+msgid "%s Hz"
+msgstr ""
+
+#: lib/unit.vala:141
+msgctxt "unit-symbols"
+msgid "hertz,Hz"
+msgstr ""
+
+#: lib/unit.vala:142
+msgid "Kilohertz"
+msgstr ""
+
+#: lib/unit.vala:142
+#, c-format
+msgctxt "unit-format"
+msgid "%s kHz"
+msgstr ""
+
+#: lib/unit.vala:142
+msgctxt "unit-symbols"
+msgid "kilohertz,kHz"
+msgstr ""
+
+#: lib/unit.vala:143
+msgid "Megahertz"
+msgstr ""
+
+#: lib/unit.vala:143
+#, c-format
+msgctxt "unit-format"
+msgid "%s MHz"
+msgstr ""
+
+#: lib/unit.vala:143
+msgctxt "unit-symbols"
+msgid "megahertz,MHz"
+msgstr ""
+
+#: lib/unit.vala:144
+msgid "Gigahertz"
+msgstr ""
+
+#: lib/unit.vala:144
+#, c-format
+msgctxt "unit-format"
+msgid "%s GHz"
+msgstr ""
+
+#: lib/unit.vala:144
+msgctxt "unit-symbols"
+msgid "gigahertz,GHz"
+msgstr ""
+
+#: lib/unit.vala:145
+msgid "Terahertz"
+msgstr ""
+
+#: lib/unit.vala:145
+#, c-format
+msgctxt "unit-format"
+msgid "%s THz"
+msgstr ""
+
+#: lib/unit.vala:145
+msgctxt "unit-symbols"
+msgid "terahertz,THz"
+msgstr ""
+
+#: lib/unit.vala:146
+msgid "Joule"
+msgstr ""
+
+#: lib/unit.vala:146
+#, c-format
+msgctxt "unit-format"
+msgid "%s J"
+msgstr ""
+
+#: lib/unit.vala:146
+msgctxt "unit-symbols"
+msgid "Joule,J,joule,joules"
+msgstr ""
+
+#: lib/unit.vala:147
+msgid "BTU"
+msgstr ""
+
+#: lib/unit.vala:147
+#, c-format
+msgctxt "unit-format"
+msgid "%s BTU"
+msgstr ""
+
+#: lib/unit.vala:147
+msgctxt "unit-symbols"
+msgid "btu,BTU"
+msgstr ""
+
+#: lib/unit.vala:148
+msgid "Calorie"
+msgstr ""
+
+#: lib/unit.vala:148
+#, c-format
+msgctxt "unit-format"
+msgid "%s cal"
+msgstr ""
+
+#: lib/unit.vala:148
+msgctxt "unit-symbols"
+msgid "calories,calorie,cal"
+msgstr ""
+
+#: lib/unit.vala:149
+msgid "Erg"
+msgstr ""
+
+#: lib/unit.vala:149
+#, c-format
+msgctxt "unit-format"
+msgid "%s erg"
+msgstr ""
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "ergs,erg"
+msgstr ""
+
+#: lib/unit.vala:150
 #, fuzzy
-msgid "<i>x</i><sup>2</sup>"
-msgstr "<i X i 2."
+#| msgid "e"
+msgid "eV"
+msgstr "e"
+
+#: lib/unit.vala:150
+#, c-format
+msgctxt "unit-format"
+msgid "%s ev"
+msgstr ""
+
+#: lib/unit.vala:150
+msgctxt "unit-symbols"
+msgid "electronvolt,electronvolts,ev"
+msgstr ""
+
+#: lib/unit.vala:151
+msgid "Ft-lb"
+msgstr ""
+
+#: lib/unit.vala:151
+#, c-format
+msgctxt "unit-format"
+msgid "%s ft-lb"
+msgstr ""
+
+#: lib/unit.vala:151
+msgctxt "unit-symbols"
+msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
+msgstr ""
+
+#: lib/unit.vala:153
+msgid "Currency"
+msgstr ""
+
+#. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
+#: lib/unit.vala:159
+#, c-format
+msgid "%s%%s"
+msgstr ""
+
+# dbaccess/source/ui/inc/toolbox.hrc:MID_SBA_QRY_COPY.text
+#: search-provider/search-provider.vala:199
+#, fuzzy
+msgid "Copy"
+msgstr "Gukoporora"
+
+#: search-provider/search-provider.vala:200
+msgid "Copy result to clipboard"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
+#: src/ui/buttons-programming.ui:1649
+msgid "Modulus divide"
+msgstr ""
+
+# 1714
+#: src/ui/buttons-advanced.ui:139 src/ui/buttons-basic.ui:145
+#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1269
+#, fuzzy
+#| msgid "Divide"
+msgid "Divide [/]"
+msgstr "Igabanya"
+
+# 3984
+#: src/ui/buttons-advanced.ui:235 src/ui/buttons-basic.ui:247
+#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1286
+#, fuzzy
+#| msgid "Multiply"
+msgid "Multiply [*]"
+msgstr "kuba"
+
+# svx/sdi\svxslots.src:SID_POLY_SUBSTRACT.text
+#: src/ui/buttons-advanced.ui:252 src/ui/buttons-basic.ui:265
+#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1303
+#, fuzzy
+#| msgid "Subtract"
+msgid "Subtract [-]"
+msgstr "Gukuramo"
+
+#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:282
+#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1319
+msgid "Add [+]"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:299
+#: src/ui/buttons-programming.ui:1247
+msgid "Pi [Ctrl+P]"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:307 src/ui/buttons-basic.ui:323
+#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1231
+msgid "Root [Ctrl+R]"
+msgstr ""
 
 # #-#-#-#-#  svx.pot (Gnome 2.12)  #-#-#-#-#
 # svx/sdi\svxslots.src:SID_DRAW_SQUARE.text
@@ -538,62 +2629,436 @@ msgstr "<i X i 2."
 # svx/source\dialog\tabarea.src:RID_SVXPAGE_GRADIENT.LB_GRADIENT_TYPES.5.text
 # #-#-#-#-#  svx.pot (Gnome 2.12)  #-#-#-#-#
 # svx/source\svdraw\svdstr.src:STR_ObjNameSingulQUAD.text
-#: gcalctool/calctool.c:489
+#: src/ui/buttons-advanced.ui:322 src/ui/buttons-basic.ui:339
 #, fuzzy
-msgid "Square [@]"
+msgid "Square [Ctrl+2]"
 msgstr "kare"
 
-#: gcalctool/calctool.c:496
+#: src/ui/buttons-advanced.ui:343 src/ui/buttons-basic.ui:361
+#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1352
 #, fuzzy
-msgid "^2"
-msgstr "^2."
+msgid "Clear Display [Escape]"
+msgstr "Agaciro"
 
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ABS.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_ADRESS.6.text
-#: gcalctool/calctool.c:500
-#, fuzzy
-msgid "Abs"
-msgstr "ABS"
-
-#: gcalctool/calctool.c:501
-#, fuzzy
-msgid "Absolute value [u]"
-msgstr "Agaciro u"
-
-#: gcalctool/calctool.c:512
-msgid "Exch"
+#: src/ui/buttons-advanced.ui:359 src/ui/buttons-basic.ui:378
+#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1665
+msgid "Start Group [(]"
 msgstr ""
 
-#: gcalctool/calctool.c:513
-#, fuzzy
-msgid "Exchange displayed value with memory register [X]"
-msgstr "Agaciro Na: Ububiko Kwiyandikisha"
+#: src/ui/buttons-advanced.ui:376 src/ui/buttons-basic.ui:396
+#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1681
+msgid "End Group [)]"
+msgstr ""
 
-#: gcalctool/calctool.c:514
+# 4643
+#: src/ui/buttons-advanced.ui:393 src/ui/buttons-basic.ui:414
+#: src/ui/buttons-financial.ui:1519
 #, fuzzy
-msgid "Exchange with register"
-msgstr "Na: Kwiyandikisha"
+#| msgid "Percentage"
+msgid "Percentage [%]"
+msgstr "ijanisha"
 
-#: gcalctool/calctool.c:540
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND1.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND2.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND3.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND1.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND2.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND3.1.text
+#. Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
+#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
+#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
+#, fuzzy
+msgid "Calculate Result"
+msgstr "Igisubizo"
+
+#: src/ui/buttons-advanced.ui:439
+msgid "Subscript Mode [Alt]"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:460
+msgid "Superscript Mode [Ctrl]"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
+msgid "Factorize [Ctrl+F]"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:498
+msgid "Scientific Exponent [Ctrl+E]"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:567
+msgid "Hyperbolic Cosine"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:583
+msgid "Hyperbolic Sine"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:599
+msgid "Hyperbolic Tangent"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
+#: src/ui/buttons-programming.ui:1877
+msgid "Exponent [^ or **]"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
+msgid "Inverse [Ctrl+I]"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:658
+msgid "Euler’s Number"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:681
+#, fuzzy
+msgid "Natural Logarithm"
+msgstr "LOG"
+
+# starmath/source\smres.src:RID_TOOLBOXWINDOW.4.RID_FACTX.text
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
+#, fuzzy
+#| msgid "Factorial"
+msgid "Factorial [!]"
+msgstr "Fagitoriyeri"
+
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
+#, fuzzy
+msgid "Absolute Value [|]"
+msgstr "Agaciro u"
+
+#: src/ui/buttons-advanced.ui:756
+msgid "Imaginary Unit"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:779
+msgid "Real Component"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:796
+msgid "Imaginary Component"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:813
+msgid "Complex Conjugate"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:830
+msgid "Complex Argument"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
+#: src/ui/buttons-programming.ui:2063
+msgid "Memory"
+msgstr ""
+
+#. The label on the memory button
+#: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
+#: src/ui/buttons-programming.ui:2062
+msgid "x"
+msgstr ""
+
+#: src/ui/buttons-advanced.ui:860
+msgid "Additional Functions"
+msgstr ""
+
+# 1714
+#: src/ui/buttons-basic.ui:127
+#, fuzzy
+#| msgid "Divide"
+msgid "Modulus Divide"
+msgstr "Igabanya"
+
+#. Title of Compounding Term dialog
+#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1619
+#, fuzzy
+msgid "Compounding Term"
+msgstr "Ijambo M"
+
+#. Compounding Term Dialog: Label before present value input
+#. Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.ui:55 src/ui/buttons-financial.ui:727
+#, fuzzy
+msgid "Present _Value:"
+msgstr "Agaciro P"
+
+#. Compounding Term Dialog: Label before periodic interest rate input
+#. Future Value Dialog: Label before periodic interest rate input
+#. Periodic Payment Dialog: Label before periodic interest rate input
+#. Present Value Dialog: Label before periodic interest rate input
+#. Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.ui:67 src/ui/buttons-financial.ui:282
+#: src/ui/buttons-financial.ui:493 src/ui/buttons-financial.ui:610
+#: src/ui/buttons-financial.ui:1106
+#, fuzzy
+msgid "Periodic Interest _Rate:"
+msgstr "Igipimo"
+
+#. Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:80
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+
+#. Compounding Term Dialog: Label before future value input
+#. Periodic Interest Rate Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:91 src/ui/buttons-financial.ui:715
+#, fuzzy
+msgid "_Future Value:"
+msgstr "Agaciro v"
+
+#: src/ui/buttons-financial.ui:110 src/ui/buttons-financial.ui:227
+#: src/ui/buttons-financial.ui:343 src/ui/buttons-financial.ui:437
+#: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
+#: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
+#: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
+#: src/ui/buttons-programming.ui:2139
+#, fuzzy
+msgid "_Cancel"
+msgstr "Urwego rwo hejuru"
+
+#. Compounding Term Dialog: Calculate button
+#. Double-Declining Depreciation Dialog: Calculate button
+#. Future Value Dialog: Calculate button
+#. Gross Profit Margin Dialog: Calculate button
+#. Periodic Payment Dialog: Calculate button
+#. Present Value Dialog: Calculate button
+#. Periodic Interest Rate Dialog: Calculate button
+#. Straight-Line Depreciation Dialog: Calculate button
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
+#. Payment Period Dialog: Button to calculate result
+#: src/ui/buttons-financial.ui:116 src/ui/buttons-financial.ui:233
+#: src/ui/buttons-financial.ui:349 src/ui/buttons-financial.ui:443
+#: src/ui/buttons-financial.ui:560 src/ui/buttons-financial.ui:677
+#: src/ui/buttons-financial.ui:794 src/ui/buttons-financial.ui:911
+#: src/ui/buttons-financial.ui:1050 src/ui/buttons-financial.ui:1167
+#, fuzzy
+msgid "C_alculate"
+msgstr "Igisubizo"
+
+#. Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.ui:122
+#, fuzzy
+msgid "Double-Declining Depreciation"
+msgstr "D"
+
+#. Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:143
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+
+#. Double-Declining Depreciation Dialog: Label before cost input
+#. Gross Profit Margin Dialog: Label before cost input
+#: src/ui/buttons-financial.ui:154 src/ui/buttons-financial.ui:386
+msgid "C_ost:"
+msgstr ""
+
+#. Double-Declining Depreciation Dialog: Label before life input
+#. Straight-Line Depreciation Dialog: Label before life input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.ui:166 src/ui/buttons-financial.ui:844
+#: src/ui/buttons-financial.ui:949
+msgid "_Life:"
+msgstr ""
+
+#. Double-Declining Depreciation Dialog: Label before period input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.ui:198 src/ui/buttons-financial.ui:937
+msgid "_Period:"
+msgstr ""
+
+#. Title of Future Value dialog
+#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:1651
+#, fuzzy
+msgid "Future Value"
+msgstr "Agaciro v"
+
+#. Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:259
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+
+#. Future Value Dialog: Label before periodic payment input
+#. Present Value Dialog: Label before periodic payment input
+#. Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.ui:270 src/ui/buttons-financial.ui:598
+#: src/ui/buttons-financial.ui:1130
+msgid "_Periodic Payment:"
+msgstr ""
+
+#. Future Value Dialog: Label before number of periods input
+#. Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.ui:294 src/ui/buttons-financial.ui:622
+msgid "_Number of Periods:"
+msgstr ""
+
+#. Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.ui:355 src/ui/buttons-financial.ui:1769
+msgid "Gross Profit Margin"
+msgstr ""
+
+#. Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:375
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+
+#. Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.ui:398
+msgid "_Margin:"
+msgstr ""
+
+#. Title of Periodic Payment dialog
+#: src/ui/buttons-financial.ui:449 src/ui/buttons-financial.ui:1752
+msgid "Periodic Payment"
+msgstr ""
+
+#. Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:470
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period. "
+msgstr ""
+
+#. Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.ui:481
+msgid "_Principal:"
+msgstr ""
+
+#. Periodic Payment Dialog: Label before term input
+#. Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.ui:505 src/ui/buttons-financial.ui:739
+#, fuzzy
+#| msgid "Term"
+msgid "_Term:"
+msgstr "Ijambo"
+
+#. Title of Present Value dialog
+#: src/ui/buttons-financial.ui:566 src/ui/buttons-financial.ui:1735
+#, fuzzy
+msgid "Present Value"
+msgstr "Agaciro P"
+
+#. Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:587
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term. "
+msgstr ""
+
+#. Title of Periodic Interest Rate dialog
+#: src/ui/buttons-financial.ui:683 src/ui/buttons-financial.ui:1718
+#, fuzzy
+msgid "Periodic Interest Rate"
+msgstr "Igipimo"
+
+#. Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:704
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods. "
+msgstr ""
+
+#. Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.ui:800
+#, fuzzy
+msgid "Straight-Line Depreciation"
+msgstr "Umurongo L"
+
+#. Straight-Line Depreciation Dialog: Label before cost input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:973
+msgid "_Cost:"
+msgstr ""
+
+#. Straight-Line Depreciation Dialog: Label before salvage input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.ui:832 src/ui/buttons-financial.ui:961
+msgid "_Salvage:"
+msgstr ""
+
+#. Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:887
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated. "
+msgstr ""
+
+#. Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.ui:917
+#, fuzzy
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "Bya"
+
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:1026
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated. "
+msgstr ""
+
+#. Title of Payment Period dialog
+#: src/ui/buttons-financial.ui:1056
+#, fuzzy
+msgid "Payment Period"
+msgstr "Igihe"
+
+#. Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:1118
+#, fuzzy
+msgid "Future _Value:"
+msgstr "Agaciro v"
+
+#. Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:1143
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+
+#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.ui:1616
 msgid "Ctrm"
 msgstr ""
 
-#: gcalctool/calctool.c:541
-#, fuzzy
-msgid "Compounding term [m]"
-msgstr "Ijambo M"
-
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_GDA.text
-#: gcalctool/calctool.c:552
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1632
 #, fuzzy
 msgid "Ddb"
 msgstr "DDB"
 
-#: gcalctool/calctool.c:553
+#: src/ui/buttons-financial.ui:1635
 #, fuzzy
-msgid "Double-declining depreciation [d]"
+msgid "Double Declining Depreciation"
 msgstr "D"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
@@ -614,47 +3079,50 @@ msgstr "D"
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_LAUFZ.6.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZGZ.6.text
-#: gcalctool/calctool.c:564
+#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.ui:1648
 #, fuzzy
 msgid "Fv"
 msgstr "FV"
 
-#: gcalctool/calctool.c:565
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: src/ui/buttons-financial.ui:1664
+msgid "Term"
+msgstr "Ijambo"
+
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\formdlg\dwfunctr.src:FID_FUNCTION_BOX.CB_CAT.5.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\formdlg\formdlgs.src:RID_SCTAB_FUNCTION.LB_CATEGORY.5.text
+#: src/ui/buttons-financial.ui:1667
 #, fuzzy
-msgid "Future value [v]"
-msgstr "Agaciro v"
+#| msgid "Financial"
+msgid "Financial Term"
+msgstr "Bijyanye n'umutungo"
 
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RMZ.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_BW.6.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZW.6.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZZR.4.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZINS.4.text
-#: gcalctool/calctool.c:576
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_DIA.text
+#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1681
 #, fuzzy
-msgid "Pmt"
-msgstr "PMT"
+msgid "Syd"
+msgstr "SYD"
 
-#: gcalctool/calctool.c:577
-msgid "Periodic payment [P]"
-msgstr ""
-
-# #-#-#-#-#  scaddins.pot (Gnome 2.12)  #-#-#-#-#
-# scaddins/source\analysis\analysis.src:RID_ANALYSIS_FUNCTION_DESCRIPTIONS.ANALYSIS_Cumprinc.6.text
-# #-#-#-#-#  scaddins.pot (Gnome 2.12)  #-#-#-#-#
-# scaddins/source\analysis\analysis.src:RID_ANALYSIS_FUNCTION_DESCRIPTIONS.ANALYSIS_Cumipmt.6.text
-#: gcalctool/calctool.c:588
-msgid "Pv"
-msgstr "Agaciro k'iki gihe"
-
-#: gcalctool/calctool.c:589
+#: src/ui/buttons-financial.ui:1684
 #, fuzzy
-msgid "Present value [p]"
-msgstr "Agaciro P"
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Bya"
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_LIA.text
+#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.ui:1698
+#, fuzzy
+msgid "Sln"
+msgstr "SLN"
+
+#: src/ui/buttons-financial.ui:1701
+#, fuzzy
+msgid "Straight Line Depreciation"
+msgstr "Umurongo L"
 
 # #-#-#-#-#  scaddins.pot (Gnome 2.12)  #-#-#-#-#
 # scaddins/source\analysis\analysis.src:RID_ANALYSIS_FUNCTION_DESCRIPTIONS.ANALYSIS_Amordegrc.12.text
@@ -686,45 +3154,875 @@ msgstr "Agaciro P"
 # scaddins/source\analysis\analysis.src:RID_ANALYSIS_FUNCTION_DESCRIPTIONS.ANALYSIS_Oddlyield.8.text
 # #-#-#-#-#  scaddins.pot (Gnome 2.12)  #-#-#-#-#
 # scaddins/source\analysis\analysis.src:RID_ANALYSIS_FUNCTION_DESCRIPTIONS.ANALYSIS_Xnpv.2.text
-#: gcalctool/calctool.c:600
+#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.ui:1715
 msgid "Rate"
 msgstr "Igipimo"
 
-#: gcalctool/calctool.c:601
-#, fuzzy
-msgid "Periodic interest rate [T]"
-msgstr "Igipimo"
+# #-#-#-#-#  scaddins.pot (Gnome 2.12)  #-#-#-#-#
+# scaddins/source\analysis\analysis.src:RID_ANALYSIS_FUNCTION_DESCRIPTIONS.ANALYSIS_Cumprinc.6.text
+# #-#-#-#-#  scaddins.pot (Gnome 2.12)  #-#-#-#-#
+# scaddins/source\analysis\analysis.src:RID_ANALYSIS_FUNCTION_DESCRIPTIONS.ANALYSIS_Cumipmt.6.text
+#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.ui:1732
+msgid "Pv"
+msgstr "Agaciro k'iki gihe"
 
-# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_LIA.text
-#: gcalctool/calctool.c:612
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RMZ.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_BW.6.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZW.6.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZZR.4.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZINS.4.text
+#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.ui:1749
 #, fuzzy
-msgid "Sln"
-msgstr "SLN"
+msgid "Pmt"
+msgstr "PMT"
 
-#: gcalctool/calctool.c:613
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RMZ.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_BW.6.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZW.6.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZZR.4.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZINS.4.text
+#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.ui:1766
 #, fuzzy
-msgid "Straight-line depreciation [l]"
-msgstr "Umurongo L"
+msgid "Gpm"
+msgstr "PMT"
 
-# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_DIA.text
-#: gcalctool/calctool.c:624
+#: src/ui/buttons-programming.ui:16
+msgid "Binary"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:17
+msgid "Octal"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:18
+msgid "Decimal"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:19
 #, fuzzy
-msgid "Syd"
-msgstr "SYD"
+msgid "Hexadecimal"
+msgstr "E"
 
-#: gcalctool/calctool.c:625
+#: src/ui/buttons-programming.ui:1709
+msgid "Subscript mode [Alt]"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1730
+msgid "Superscript mode [Ctrl]"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1751
 #, fuzzy
-msgid "Sum-of-the years'-digits depreciation [Y]"
-msgstr "Bya"
+msgid "Shift Left"
+msgstr "Ibumoso:"
 
-#: gcalctool/calctool.c:638
-msgid "Term"
-msgstr "Ijambo"
-
-#: gcalctool/calctool.c:639
+# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Envelope.Print.Right.text
+#: src/ui/buttons-programming.ui:1764
 #, fuzzy
-msgid "Payment period [T]"
-msgstr "Igihe"
+#| msgid "Shift right"
+msgid "Shift Right"
+msgstr "Kugana iburyo"
+
+#: src/ui/buttons-programming.ui:1778
+msgid "Boolean Exclusive OR"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1794
+msgid "Boolean OR"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1811
+msgid "Boolean AND"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1828
+msgid "Boolean NOT"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1845
+msgid "Ones’ Complement"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1862
+msgid "Two’s Complement"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1938
+msgid "Binary Logarithm"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:1998
+msgid "Integer Component"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:2015
+msgid "Fractional Component"
+msgstr ""
+
+#. Title of insert character code dialog
+#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
+msgid "Insert Character Code"
+msgstr ""
+
+#: src/ui/buttons-programming.ui:2078
+msgid "Change word size"
+msgstr ""
+
+#. Insert ASCII dialog: Label before character entry
+#: src/ui/buttons-programming.ui:2115
+#, fuzzy
+msgid "Ch_aracter:"
+msgstr "Inyuguti..."
+
+# basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.RID_INSERT.text
+#. Insert ASCII dialog: Button to insert selected character
+#: src/ui/buttons-programming.ui:2145
+#, fuzzy
+msgid "_Insert"
+msgstr "Kongeramo"
+
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
+#: src/gnome-calculator.vala:23
+msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
+msgstr ""
+
+#: src/gnome-calculator.vala:24
+msgid "Solve given equation"
+msgstr ""
+
+#: src/gnome-calculator.vala:25
+msgid "Start with given equation"
+msgstr ""
+
+#: src/gnome-calculator.vala:26
+msgid "Show release version"
+msgstr ""
+
+#. Application Copyrights for the calculator authors
+#: src/gnome-calculator.vala:309
+msgid "© 1986–2023 The Calculator authors"
+msgstr ""
+
+#. The translator credits. Please translate this with your name (s).
+#: src/gnome-calculator.vala:315
+msgid "translator-credits"
+msgstr ""
+
+#: src/gnome-calculator.vala:319
+#, fuzzy
+msgid "Exchange rate data providers"
+msgstr "Na: Kwiyandikisha"
+
+#: src/gnome-calculator.vala:319
+#, c-format
+msgid "Exchange rates data by %s"
+msgstr ""
+
+#: src/gnome-calculator.vala:329
+msgid "Are you sure you want to close all open windows?"
+msgstr ""
+
+#: src/gnome-calculator.vala:330
+msgid "Close _All"
+msgstr ""
+
+#: src/math-buttons.vala:227 src/math-buttons.vala:612
+#: src/math-buttons.vala:628
+#, c-format
+msgid "%d-bit"
+msgid_plural "%d-bit"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/math-buttons.vala:597
+#, fuzzy, c-format
+msgid "%d place"
+msgid_plural "%d places"
+msgstr[0] "1."
+msgstr[1] "1."
+
+#: src/ui/math-converter.ui:42
+msgid " to "
+msgstr ""
+
+#: src/ui/math-converter.ui:63
+msgid "Switch conversion units"
+msgstr ""
+
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND1.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND2.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND3.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND1.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND2.1.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND3.1.text
+#: src/ui/math-converter.ui:102
+#, fuzzy
+#| msgid "="
+msgctxt "convertion equals label"
+msgid "="
+msgstr "="
+
+#: src/math-display.vala:611
+#, fuzzy
+msgid "Defined Functions"
+msgstr "Imimaro F"
+
+#: src/math-display.vala:656
+msgid "Built-in keywords"
+msgstr ""
+
+#: src/math-display.vala:700
+msgid "Defined currencies"
+msgstr ""
+
+#: src/math-display.vala:750
+msgid "Defined Variables"
+msgstr ""
+
+#: src/ui/math-function-popover.ui:27
+#, fuzzy
+msgid "New function"
+msgstr "Umumaro"
+
+#: src/ui/math-function-popover.ui:36
+msgid "Select no. of arguments"
+msgstr ""
+
+#: src/math-preferences.vala:123
+msgid "8-bit"
+msgstr ""
+
+#: src/math-preferences.vala:125
+msgid "16-bit"
+msgstr ""
+
+#: src/math-preferences.vala:127
+msgid "32-bit"
+msgstr ""
+
+#: src/math-preferences.vala:129
+msgid "64-bit"
+msgstr ""
+
+#: src/math-preferences.vala:138
+msgid "Never"
+msgstr ""
+
+#: src/math-preferences.vala:140
+msgid "Daily"
+msgstr ""
+
+#: src/math-preferences.vala:142
+msgid "Weekly"
+msgstr ""
+
+#: src/ui/math-preferences.ui:19
+msgid "Number of _decimals"
+msgstr ""
+
+#: src/ui/math-preferences.ui:28
+msgid "Trailing _zeroes"
+msgstr ""
+
+#: src/ui/math-preferences.ui:34
+#, fuzzy
+msgid "_Thousands separators"
+msgstr "Mutandukanya"
+
+#: src/ui/math-preferences.ui:40
+msgid "_Angle units"
+msgstr ""
+
+#: src/ui/math-preferences.ui:46
+msgid "Word _size"
+msgstr ""
+
+#: src/ui/math-preferences.ui:52
+#, fuzzy
+msgid "E_xchange rate refresh interval"
+msgstr "Na: Kwiyandikisha"
+
+#: src/ui/math-shortcuts.ui:13
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:17
+msgctxt "shortcut window"
+msgid "Open a new window"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:23
+msgctxt "shortcut window"
+msgid "Close current window"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:29
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Quit the application"
+msgstr "i"
+
+#: src/ui/math-shortcuts.ui:35
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Ifashayobora Ibigize"
+
+#: src/ui/math-shortcuts.ui:41
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:47
+msgctxt "shortcut window"
+msgid "Show preferences"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:53
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:59
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Clear history"
+msgstr "Icyinjijwe"
+
+#: src/ui/math-shortcuts.ui:66
+msgctxt "shortcut window"
+msgid "Switching modes"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:70
+msgctxt "shortcut window"
+msgid "Switch to Basic mode"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:76
+msgctxt "shortcut window"
+msgid "Switch to Advanced mode"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:82
+msgctxt "shortcut window"
+msgid "Switch to Financial mode"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:88
+msgctxt "shortcut window"
+msgid "Switch to Programming mode"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:94
+msgctxt "shortcut window"
+msgid "Switch to Keyboard mode"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:101
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Keyboard entry"
+msgstr "Icyinjijwe"
+
+# 3984
+#: src/ui/math-shortcuts.ui:105
+#, fuzzy
+#| msgid "Multiply"
+msgctxt "shortcut window"
+msgid "Multiply (×)"
+msgstr "kuba"
+
+# 1714
+#: src/ui/math-shortcuts.ui:111
+#, fuzzy
+#| msgid "Divide"
+msgctxt "shortcut window"
+msgid "Divide (÷)"
+msgstr "Igabanya"
+
+#: src/ui/math-shortcuts.ui:117
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Square root (√)"
+msgstr "Imizi S"
+
+#: src/ui/math-shortcuts.ui:123
+msgctxt "shortcut window"
+msgid "Inverse"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:129
+msgctxt "shortcut window"
+msgid "Pi (π)"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:135
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Enter numbers in scientific format"
+msgstr "Kugaragaza Ubwoko Kuri Cya gihanga Imiterere"
+
+#: src/ui/math-shortcuts.ui:142
+msgctxt "shortcut window"
+msgid "Programming mode"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:146
+msgctxt "shortcut window"
+msgid "Switch to binary"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:152
+msgctxt "shortcut window"
+msgid "Switch to octal"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:158
+msgctxt "shortcut window"
+msgid "Switch to decimal"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:164
+msgctxt "shortcut window"
+msgid "Switch to hexadecimal"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:171
+msgctxt "shortcut window"
+msgid "Others"
+msgstr ""
+
+# dbaccess/source/ui/inc/toolbox.hrc:MID_SBA_QRY_COPY.text
+#: src/ui/math-shortcuts.ui:175
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Copy"
+msgstr "Gukoporora"
+
+# dbaccess/source/ui/inc/toolbox.hrc:MID_SBA_QRY_PASTE.text
+#: src/ui/math-shortcuts.ui:181
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Paste"
+msgstr "Komeka"
+
+#: src/ui/math-shortcuts.ui:187
+msgctxt "shortcut window"
+msgid "Undo"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:193
+msgctxt "shortcut window"
+msgid "Redo"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:199
+#, fuzzy
+msgctxt "shortcut window"
+msgid "Previous result"
+msgstr "imvugo"
+
+#: src/ui/math-shortcuts.ui:205
+msgctxt "shortcut window"
+msgid "Next result"
+msgstr ""
+
+#: src/ui/math-shortcuts.ui:211
+msgctxt "shortcut window"
+msgid "Switch to Keyboard mode (alt.)"
+msgstr ""
+
+#: src/ui/math-variable-popover.ui:31
+msgid "Variable name"
+msgstr ""
+
+#: src/ui/math-variable-popover.ui:39
+msgid "Store value into existing or new variable"
+msgstr ""
+
+#: src/ui/math-window.ui:20 src/math-window.vala:113
+msgid "Basic"
+msgstr "By'ibanze"
+
+#: src/ui/math-window.ui:25 src/math-window.vala:119
+msgid "Advanced"
+msgstr "Urwego rwo hejuru"
+
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\formdlg\dwfunctr.src:FID_FUNCTION_BOX.CB_CAT.5.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\formdlg\formdlgs.src:RID_SCTAB_FUNCTION.LB_CATEGORY.5.text
+#: src/ui/math-window.ui:30 src/math-window.vala:125
+msgid "Financial"
+msgstr "Bijyanye n'umutungo"
+
+#: src/ui/math-window.ui:35 src/math-window.vala:131
+msgid "Programming"
+msgstr ""
+
+#: src/ui/math-window.ui:40 src/math-window.vala:137
+msgid "Keyboard"
+msgstr ""
+
+#: src/ui/math-window.ui:49
+msgid "_New Window"
+msgstr ""
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:61
+msgid "_Automatic"
+msgstr ""
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:67
+msgid "_Fixed"
+msgstr ""
+
+# svx/source\dialog\numfmt.src:RID_SVXPAGE_NUMBERFORMAT.LB_CATEGORY.8.text
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#: src/ui/math-window.ui:73
+#, fuzzy
+msgid "_Scientific"
+msgstr "Cya gihanga"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#: src/ui/math-window.ui:79
+msgid "_Engineering"
+msgstr ""
+
+#: src/ui/math-window.ui:89
+msgid "Preferences"
+msgstr ""
+
+#: src/ui/math-window.ui:93
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/ui/math-window.ui:97
+#, fuzzy
+msgid "_Help"
+msgstr "Ifashayobora"
+
+#: src/ui/math-window.ui:101
+#, fuzzy
+msgid "About Calculator"
+msgstr "i"
+
+#: src/ui/math-window.ui:117
+#, fuzzy
+msgid "Mode Selection"
+msgstr "Ihitamo"
+
+#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
+msgid "Undo"
+msgstr ""
+
+#: src/ui/math-window.ui:144
+msgid "Main Menu"
+msgstr ""
+
+#: src/math-window.vala:166
+#, fuzzy
+msgid "_Quit"
+msgstr "Kuvamo"
+
+# 4370
+#, fuzzy
+#~ msgid "_Oct"
+#~ msgstr "ukw."
+
+# 1483
+#, fuzzy
+#~ msgid "_Dec"
+#~ msgstr "Ukub.( Ukuboza)"
+
+#, fuzzy
+#~ msgid "Set numeric base to binary (base 2)"
+#~ msgstr "Bikurikije umubare SHINGIRO Kuri Nyabibiri SHINGIRO 2."
+
+#, fuzzy
+#~ msgid "Set numeric base to octal (base 8)"
+#~ msgstr "Bikurikije umubare SHINGIRO Kuri SHINGIRO 8"
+
+#, fuzzy
+#~ msgid "Set numeric base to decimal (base 10)"
+#~ msgstr "Bikurikije umubare SHINGIRO Kuri NYACUMI SHINGIRO 10"
+
+#, fuzzy
+#~ msgid "Set numeric base to hexadecimal (base 16)"
+#~ msgstr "Bikurikije umubare SHINGIRO Kuri SHINGIRO"
+
+#, fuzzy
+#~ msgid "Set display type to engineering format"
+#~ msgstr "Kugaragaza Ubwoko Kuri Imiterere"
+
+#, fuzzy
+#~ msgid "Set display type to fixed-point format"
+#~ msgstr "Kugaragaza Ubwoko Kuri BIHAMYE Akadomo Imiterere"
+
+#, fuzzy
+#~ msgid "Set hyperbolic option for trigonometric functions"
+#~ msgstr "Ihitamo kugirango Imimaro"
+
+#, fuzzy
+#~ msgid "Set inverse option for trigonometric functions"
+#~ msgstr "Ihitamo kugirango Imimaro"
+
+# svx/source\dialog\numfmt.src:RID_SVXPAGE_NUMBERFORMAT.LB_CATEGORY.8.text
+#~ msgid "Scientific"
+#~ msgstr "Cya gihanga"
+
+# 2170
+#~ msgid "Expression"
+#~ msgstr "imvugo"
+
+#, fuzzy
+#~ msgid "Set trigonometric type to degrees"
+#~ msgstr "Ubwoko Kuri Dogere"
+
+#, fuzzy
+#~ msgid "Set trigonometric type to gradians"
+#~ msgstr "Ubwoko Kuri"
+
+#, fuzzy
+#~ msgid "Set trigonometric type to radians"
+#~ msgstr "Ubwoko Kuri RADIYA"
+
+#~ msgid "7"
+#~ msgstr "7"
+
+#~ msgid "8"
+#~ msgstr "8"
+
+#, fuzzy
+#~ msgid "Numeric 8"
+#~ msgstr "8"
+
+#~ msgid "9"
+#~ msgstr "9"
+
+#, fuzzy
+#~ msgid "Numeric 9"
+#~ msgstr "9"
+
+#~ msgid "/"
+#~ msgstr "/"
+
+# svx/source\dialog\chardlg.src:RID_SVXPAGE_CHAR_TWOLINES.ED_STARTBRACKET.2.text
+#~ msgid "("
+#~ msgstr "("
+
+#, fuzzy
+#~ msgid "Start group of calculations"
+#~ msgstr "Gutangira Itsinda Bya"
+
+#, fuzzy
+#~ msgid "Left bracket"
+#~ msgstr "Agakubo Ibumoso"
+
+#, fuzzy
+#~ msgid "Remove rightmost character from displayed value"
+#~ msgstr "Inyuguti Bivuye Agaciro"
+
+# #-#-#-#-#  sw.pot (Gnome 2.12)  #-#-#-#-#
+# sw/sdi\swslots.src:FN_BACKSPACE.text
+# #-#-#-#-#  sw.pot (Gnome 2.12)  #-#-#-#-#
+# sw/sdi\swslots.src:FN_SHIFT_BACKSPACE.text
+#~ msgid "Backspace"
+#~ msgstr "Gusiba usubira inyuma"
+
+#, fuzzy
+#~ msgid "Clear displayed value and any partial calculation"
+#~ msgstr "Agaciro Na Bituzuye Imibare"
+
+#~ msgid "Clear"
+#~ msgstr "Gusiba"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#, fuzzy
+#~ msgid "Numeric 4"
+#~ msgstr "4."
+
+#~ msgid "5"
+#~ msgstr "5"
+
+#, fuzzy
+#~ msgid "Numeric 5"
+#~ msgstr "5"
+
+#~ msgid "6"
+#~ msgstr "6"
+
+#, fuzzy
+#~ msgid "Numeric 6"
+#~ msgstr "6"
+
+#~ msgid "*"
+#~ msgstr "*"
+
+# svx/source\dialog\chardlg.src:RID_SVXPAGE_CHAR_TWOLINES.ED_ENDBRACKET.2.text
+#~ msgid ")"
+#~ msgstr ")"
+
+#, fuzzy
+#~ msgid "End group of calculations"
+#~ msgstr "Impera Itsinda Bya"
+
+#, fuzzy
+#~ msgid "Right bracket"
+#~ msgstr "Agakubo Iburyo"
+
+# desktop/source\app\ssodlg.src:DLG_SSOLOGIN.text
+#, fuzzy
+#~ msgid "+/-"
+#~ msgstr "+/-"
+
+#, fuzzy
+#~ msgid "Change sign [c]"
+#~ msgstr "IKIMENYETSO C"
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_INT.text
+#, fuzzy
+#~ msgid "Int"
+#~ msgstr "INT"
+
+#, fuzzy
+#~ msgid "Integer portion of displayed value [i]"
+#~ msgstr "Bya Agaciro i"
+
+#, fuzzy
+#~ msgid "Store displayed value in memory register [S]"
+#~ msgstr "Agaciro in Ububiko Kwiyandikisha"
+
+#, fuzzy
+#~ msgid "Store to register"
+#~ msgstr "Kuri Kwiyandikisha"
+
+#~ msgid "1"
+#~ msgstr "1"
+
+#, fuzzy
+#~ msgid "Numeric 1"
+#~ msgstr "1."
+
+#~ msgid "2"
+#~ msgstr "2"
+
+#, fuzzy
+#~ msgid "Numeric 2"
+#~ msgstr "2."
+
+#~ msgid "3"
+#~ msgstr "3"
+
+#, fuzzy
+#~ msgid "Numeric 3"
+#~ msgstr "3."
+
+# basctl/source\basicide\basidesh.src:RID_IMGBTN_REMOVEWATCH.text
+#~ msgid "-"
+#~ msgstr "-"
+
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_SQRT.text
+#, fuzzy
+#~ msgid "Sqrt"
+#~ msgstr "SQRT"
+
+#, fuzzy
+#~ msgid "Fractional portion of displayed value [:]"
+#~ msgstr "Bya Agaciro"
+
+#, fuzzy
+#~ msgid "Retrieve memory register to display [R]"
+#~ msgstr "Ububiko Kwiyandikisha Kuri Kugaragaza"
+
+#, fuzzy
+#~ msgid "Retrieve from register"
+#~ msgstr "Bivuye Kwiyandikisha"
+
+#~ msgid "0"
+#~ msgstr "0"
+
+#, fuzzy
+#~ msgid "Numeric 0"
+#~ msgstr "0"
+
+#~ msgid "."
+#~ msgstr "."
+
+#, fuzzy
+#~ msgid "Numeric point"
+#~ msgstr "Akadomo"
+
+# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
+# sch/source\ui\dlg\attrib4.src:TP_STAT.FT_PERCENT_PLUS.text
+# #-#-#-#-#  sch.pot (Gnome 2.12)  #-#-#-#-#
+# sch/source\ui\dlg\datstat.src:DLG_DATA_STAT.FT_PERCENT_PLUS.text
+#~ msgid "+"
+#~ msgstr "+"
+
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\miscdlgs.src:RID_SCDLG_COL_OPT.FT_LABEL.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\miscdlgs.src:RID_SCDLG_ROW_OPT.FT_LABEL.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scstring.src:STR_OPT_ROWHEIGHT.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scstring.src:STR_OPT_COLWIDTH.text
+#~ msgid "Add"
+#~ msgstr "Kongera"
+
+#, fuzzy
+#~ msgid "1/<i>x</i>"
+#~ msgstr "1. i X i"
+
+#, fuzzy
+#~ msgid "Reciprocal [r]"
+#~ msgstr "R"
+
+#, fuzzy
+#~ msgid "<i>x</i><sup>2</sup>"
+#~ msgstr "<i X i 2."
+
+#, fuzzy
+#~ msgid "^2"
+#~ msgstr "^2."
+
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ABS.text
+# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
+# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_ADRESS.6.text
+#, fuzzy
+#~ msgid "Abs"
+#~ msgstr "ABS"
+
+#, fuzzy
+#~ msgid "Exchange displayed value with memory register [X]"
+#~ msgstr "Agaciro Na: Ububiko Kwiyandikisha"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND1.2.text
@@ -738,19 +4036,12 @@ msgstr "Igihe"
 # sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND2.2.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND3.2.text
-#: gcalctool/calctool.c:750
-msgid "<"
-msgstr "<"
+#~ msgid "<"
+#~ msgstr "<"
 
-#: gcalctool/calctool.c:751
 #, fuzzy
-msgid "Shift displayed value 1-15 places to the left"
-msgstr "Agaciro 1. 15 Imyanya Kuri Ibumoso:"
-
-#: gcalctool/calctool.c:752
-#, fuzzy
-msgid "Shift left"
-msgstr "Ibumoso:"
+#~ msgid "Shift displayed value 1-15 places to the left"
+#~ msgstr "Agaciro 1. 15 Imyanya Kuri Ibumoso:"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\filter.src:RID_SCDLG_FILTER.LB_COND1.3.text
@@ -764,306 +4055,170 @@ msgstr "Ibumoso:"
 # sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND2.3.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\filter.src:RID_SCDLG_PIVOTFILTER.LB_COND3.3.text
-#: gcalctool/calctool.c:762
-msgid ">"
-msgstr ">"
+#~ msgid ">"
+#~ msgstr ">"
 
-#: gcalctool/calctool.c:763
 #, fuzzy
-msgid "Shift displayed value 1-15 places to the right"
-msgstr "Agaciro 1. 15 Imyanya Kuri Iburyo:"
+#~ msgid "Shift displayed value 1-15 places to the right"
+#~ msgstr "Agaciro 1. 15 Imyanya Kuri Iburyo:"
 
-# officecfg/registry\schema\org\openoffice\Office\Writer.xcs:....Envelope.Print.Right.text
-#: gcalctool/calctool.c:764
-msgid "Shift right"
-msgstr "Kugana iburyo"
-
-#: gcalctool/calctool.c:774
-msgid "&amp;16"
-msgstr ""
-
-#: gcalctool/calctool.c:775
 #, fuzzy
-msgid "16-bit unsigned integer value of display (])"
-msgstr "Bitashizweho umukono Umubare wuzuye Agaciro Bya Kugaragaza"
+#~ msgid "16-bit unsigned integer value of display (])"
+#~ msgstr "Bitashizweho umukono Umubare wuzuye Agaciro Bya Kugaragaza"
 
-#: gcalctool/calctool.c:776
 #, fuzzy
-msgid "16 bit unsigned integer"
-msgstr "Bitashizweho umukono Umubare wuzuye"
+#~ msgid "16 bit unsigned integer"
+#~ msgstr "Bitashizweho umukono Umubare wuzuye"
 
-#. 16-bit unsigned integer value
-#: gcalctool/calctool.c:782 gcalctool/syntax_translation.c:73
-msgid "u16"
-msgstr ""
-
-#: gcalctool/calctool.c:786
-msgid "&amp;32"
-msgstr ""
-
-#: gcalctool/calctool.c:787
 #, fuzzy
-msgid "32-bit unsigned integer value of display ([)"
-msgstr "Bitashizweho umukono Umubare wuzuye Agaciro Bya Kugaragaza"
+#~ msgid "32-bit unsigned integer value of display ([)"
+#~ msgstr "Bitashizweho umukono Umubare wuzuye Agaciro Bya Kugaragaza"
 
-#: gcalctool/calctool.c:788
 #, fuzzy
-msgid "32 bit unsigned integer"
-msgstr "Bitashizweho umukono Umubare wuzuye"
+#~ msgid "32 bit unsigned integer"
+#~ msgstr "Bitashizweho umukono Umubare wuzuye"
 
-#. 32-bit unsigned integer value
-#: gcalctool/calctool.c:794 gcalctool/syntax_translation.c:74
-msgid "u32"
-msgstr ""
-
-#: gcalctool/calctool.c:834
-msgid "Acc"
-msgstr ""
-
-#: gcalctool/calctool.c:835
 #, fuzzy
-msgid "Set accuracy from 0 to 9 numeric places [a]"
-msgstr "Bivuye 0 Kuri 9 Bikurikije umubare Imyanya a"
-
-#: gcalctool/calctool.c:836
-msgid "Accuracy"
-msgstr ""
-
-#: gcalctool/calctool.c:848
-msgid "Con"
-msgstr ""
-
-#: gcalctool/calctool.c:849
-msgid "Constants [#]"
-msgstr ""
-
-#: gcalctool/calctool.c:860
-msgid "Fun"
-msgstr ""
-
-#: gcalctool/calctool.c:861
-#, fuzzy
-msgid "User-defined functions [f]"
-msgstr "Imimaro F"
+#~ msgid "Set accuracy from 0 to 9 numeric places [a]"
+#~ msgstr "Bivuye 0 Kuri 9 Bikurikije umubare Imyanya a"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_EXP.text
-#: gcalctool/calctool.c:872
 #, fuzzy
-msgid "Exp"
-msgstr "EXP"
+#~ msgid "Exp"
+#~ msgstr "EXP"
 
-#: gcalctool/calctool.c:873
 #, fuzzy
-msgid "Enter an exponential number [e]"
-msgstr "Umubare E"
+#~ msgid "Enter an exponential number [e]"
+#~ msgstr "Umubare E"
 
-#: gcalctool/calctool.c:874
-msgid "Exponential"
-msgstr ""
-
-#: gcalctool/calctool.c:880
 #, fuzzy
-msgid "*10^"
-msgstr "*10"
+#~ msgid "*10^"
+#~ msgstr "*10"
 
-#: gcalctool/calctool.c:884
 #, fuzzy
-msgid "e<sup><i>x</i></sup>"
-msgstr "E i X i"
+#~ msgid "e<sup><i>x</i></sup>"
+#~ msgstr "E i X i"
 
-#: gcalctool/calctool.c:885
 #, fuzzy
-msgid "e to the power of displayed value [{]"
-msgstr "E Kuri UMWIKUBE Bya Agaciro"
+#~ msgid "e to the power of displayed value [{]"
+#~ msgstr "E Kuri UMWIKUBE Bya Agaciro"
 
-#: gcalctool/calctool.c:886
 #, fuzzy
-msgid "E to the x"
-msgstr "E Kuri X"
+#~ msgid "E to the x"
+#~ msgstr "E Kuri X"
 
 # sw/source\ui\index\cnttab.src:TP_TOX_ENTRY.WIN_TOKEN.STR_TOKEN_ENTRY_NO.text
-#: gcalctool/calctool.c:892
 #, fuzzy
-msgid "e^"
-msgstr "E#"
+#~ msgid "e^"
+#~ msgstr "E#"
 
-#: gcalctool/calctool.c:896
 #, fuzzy
-msgid "10<sup><i>x</i></sup>"
-msgstr "10 i X i"
+#~ msgid "10<sup><i>x</i></sup>"
+#~ msgstr "10 i X i"
 
-#: gcalctool/calctool.c:897
 #, fuzzy
-msgid "10 to the power of displayed value [}]"
-msgstr "10 Kuri UMWIKUBE Bya Agaciro"
+#~ msgid "10 to the power of displayed value [}]"
+#~ msgstr "10 Kuri UMWIKUBE Bya Agaciro"
 
-#: gcalctool/calctool.c:898
 #, fuzzy
-msgid "Ten to the x"
-msgstr "Kuri X"
+#~ msgid "Ten to the x"
+#~ msgstr "Kuri X"
 
 # officecfg/registry\data\org\openoffice\Office\Common.xcu:..Common.View.Localisation.DialogScale.text
-#: gcalctool/calctool.c:904
 #, fuzzy
-msgid "10^"
-msgstr "10"
+#~ msgid "10^"
+#~ msgstr "10"
 
-#: gcalctool/calctool.c:908
 #, fuzzy
-msgid "<i>x</i><sup><i>y</i></sup>"
-msgstr "<i X i i Y i"
+#~ msgid "<i>x</i><sup><i>y</i></sup>"
+#~ msgstr "<i X i i Y i"
 
-#: gcalctool/calctool.c:909
 #, fuzzy
-msgid "Raise displayed value to the power of y [^]"
-msgstr "Agaciro Kuri UMWIKUBE Bya Y Y"
+#~ msgid "Raise displayed value to the power of y [^]"
+#~ msgstr "Agaciro Kuri UMWIKUBE Bya Y Y"
 
-#: gcalctool/calctool.c:910
 #, fuzzy
-msgid "X to the y"
-msgstr "Kuri Y"
+#~ msgid "X to the y"
+#~ msgstr "Kuri Y"
 
 # basctl/source\basicide\basidesh.src:RID_IMGBTN_REMOVEWATCH.text
-#: gcalctool/calctool.c:916
 #, fuzzy
-msgid "^"
-msgstr "^"
+#~ msgid "^"
+#~ msgstr "^"
 
-#: gcalctool/calctool.c:920
 #, fuzzy
-msgid "<i>x</i>!"
-msgstr "<i X i"
+#~ msgid "<i>x</i>!"
+#~ msgstr "<i X i"
 
-#: gcalctool/calctool.c:921
 #, fuzzy
-msgid "Factorial of displayed value [!]"
-msgstr "Bya Agaciro"
-
-# starmath/source\smres.src:RID_TOOLBOXWINDOW.4.RID_FACTX.text
-#: gcalctool/calctool.c:922
-msgid "Factorial"
-msgstr "Fagitoriyeri"
+#~ msgid "Factorial of displayed value [!]"
+#~ msgstr "Bya Agaciro"
 
 # basctl/source\basicide\basidesh.src:RID_IMGBTN_REMOVEWATCH.text
-#: gcalctool/calctool.c:928
 #, fuzzy
-msgid "!"
-msgstr "!"
+#~ msgid "!"
+#~ msgstr "!"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RANDOM.text
-#: gcalctool/calctool.c:932
 #, fuzzy
-msgid "Rand"
-msgstr "NTA HITAMO"
+#~ msgid "Rand"
+#~ msgstr "NTA HITAMO"
 
-#: gcalctool/calctool.c:933
 #, fuzzy
-msgid "Random number in the range 0.0 to 1.0 [?]"
-msgstr "0."
+#~ msgid "Random number in the range 0.0 to 1.0 [?]"
+#~ msgstr "0."
 
-#: gcalctool/calctool.c:934
 #, fuzzy
-msgid "Random number"
-msgstr "Umubare"
+#~ msgid "Random number"
+#~ msgstr "Umubare"
 
-#: gcalctool/calctool.c:946
-msgid "D"
-msgstr "D"
-
-#: gcalctool/calctool.c:947
-msgid "Hexadecimal digit D"
-msgstr ""
+#~ msgid "D"
+#~ msgstr "D"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_KUM_KAP_Z.10.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_KUM_ZINS_Z.10.text
-#: gcalctool/calctool.c:958
-msgid "E"
-msgstr "E"
+#~ msgid "E"
+#~ msgstr "E"
 
-#: gcalctool/calctool.c:959
-#, fuzzy
-msgid "Hexadecimal digit E"
-msgstr "E"
-
-#: gcalctool/calctool.c:970 gcalctool/gtk.c:1708
-msgid "F"
-msgstr "F"
-
-#: gcalctool/calctool.c:971
-msgid "Hexadecimal digit F"
-msgstr ""
+#~ msgid "F"
+#~ msgstr "F"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_COS.text
-#: gcalctool/calctool.c:982
 #, fuzzy
-msgid "Cos"
-msgstr "COS"
-
-#: gcalctool/calctool.c:983
-msgid "Cosine [J]"
-msgstr ""
-
-# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_SIN.text
-#: gcalctool/calctool.c:994
-#, fuzzy
-msgid "Sin"
-msgstr "SIN"
-
-#: gcalctool/calctool.c:995
-msgid "Sine [K]"
-msgstr ""
+#~ msgid "Cos"
+#~ msgstr "COS"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_TAN.text
-#: gcalctool/calctool.c:1006
 #, fuzzy
-msgid "Tan"
-msgstr "TAN"
-
-#: gcalctool/calctool.c:1007
-msgid "Tangent [L]"
-msgstr ""
+#~ msgid "Tan"
+#~ msgstr "TAN"
 
 # basctl/source\basicide\basidesh.src:RID_STR_LINE.text
-#: gcalctool/calctool.c:1018
-msgid "Ln"
-msgstr "Ln"
-
-#: gcalctool/calctool.c:1019
-#, fuzzy
-msgid "Natural log [N]"
-msgstr "LOG"
+#~ msgid "Ln"
+#~ msgstr "Ln"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_LOG.text
-#: gcalctool/calctool.c:1030
 #, fuzzy
-msgid "Log"
-msgstr "LOG"
+#~ msgid "Log"
+#~ msgstr "LOG"
 
-#: gcalctool/calctool.c:1031
 #, fuzzy
-msgid "Base 10 log [G]"
-msgstr "Base 10 LOG"
+#~ msgid "Base 10 log [G]"
+#~ msgstr "Base 10 LOG"
 
 # sw/source\ui\index\cnttab.src:TP_TOX_ENTRY.WIN_TOKEN.STR_TOKEN_AUTHORITY.text
-#: gcalctool/calctool.c:1044
-msgid "A"
-msgstr "A"
+#~ msgid "A"
+#~ msgstr "A"
 
-#: gcalctool/calctool.c:1045
 #, fuzzy
-msgid "Hexadecimal digit A"
-msgstr "A"
+#~ msgid "Hexadecimal digit A"
+#~ msgstr "A"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_B.text
-#: gcalctool/calctool.c:1056
-msgid "B"
-msgstr "B"
-
-#: gcalctool/calctool.c:1057
-msgid "Hexadecimal digit B"
-msgstr ""
+#~ msgid "B"
+#~ msgstr "B"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_BINOM_DIST.8.text
@@ -1077,265 +4232,152 @@ msgstr ""
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_GAMMA_DIST.8.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_WEIBULL.8.text
-#: gcalctool/calctool.c:1068 gcalctool/gtk.c:1700
-msgid "C"
-msgstr "C"
+#~ msgid "C"
+#~ msgstr "C"
 
-#: gcalctool/calctool.c:1069
 #, fuzzy
-msgid "Hexadecimal digit C"
-msgstr "C"
+#~ msgid "Hexadecimal digit C"
+#~ msgstr "C"
 
 # svx/source\form\fmstring.src:RID_STR_FILTER_FILTER_OR.text
-#: gcalctool/calctool.c:1080
-msgid "Or"
-msgstr "Cyangwa"
+#~ msgid "Or"
+#~ msgstr "Cyangwa"
 
-#: gcalctool/calctool.c:1081
-msgid "Bitwise OR"
-msgstr ""
-
-#: gcalctool/calctool.c:1088
 #, fuzzy
-msgid " Or "
-msgstr "Cyangwa"
+#~ msgid " Or "
+#~ msgstr "Cyangwa"
 
 # svx/source\options\optinet2.src:RID_SVXPAGE_INET_SEARCH.RB_AND.text
-#: gcalctool/calctool.c:1092
-msgid "And"
-msgstr "Na"
+#~ msgid "And"
+#~ msgstr "Na"
 
-#: gcalctool/calctool.c:1093
-msgid "Bitwise AND [&]"
-msgstr ""
-
-#: gcalctool/calctool.c:1100
 #, fuzzy
-msgid " And "
-msgstr "Na"
+#~ msgid " And "
+#~ msgstr "Na"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_NOT.text
-#: gcalctool/calctool.c:1104
 #, fuzzy
-msgid "Not"
-msgstr "OYA"
-
-#: gcalctool/calctool.c:1105
-msgid "Bitwise NOT [~]"
-msgstr ""
+#~ msgid "Not"
+#~ msgstr "OYA"
 
 # basctl/source\basicide\basidesh.src:RID_IMGBTN_REMOVEWATCH.text
-#: gcalctool/calctool.c:1112
 #, fuzzy
-msgid "~"
-msgstr "~"
+#~ msgid "~"
+#~ msgstr "~"
 
-#: gcalctool/calctool.c:1116
-msgid "Xor"
-msgstr ""
-
-#: gcalctool/calctool.c:1117
 #, fuzzy
-msgid "Bitwise XOR [x]"
-msgstr "N"
+#~ msgid "Bitwise XOR [x]"
+#~ msgstr "N"
 
-#: gcalctool/calctool.c:1124
-msgid " Xor "
-msgstr ""
-
-#: gcalctool/calctool.c:1128
-msgid "Xnor"
-msgstr ""
-
-#: gcalctool/calctool.c:1129
 #, fuzzy
-msgid "Bitwise XNOR [n]"
-msgstr "N"
+#~ msgid "Bitwise XNOR [n]"
+#~ msgstr "N"
 
-#: gcalctool/calctool.c:1136
-msgid " Xnor "
-msgstr ""
-
-#: gcalctool/calctool.c:1258
 #, fuzzy
-msgid "Kilometer-to-mile conversion factor"
-msgstr "Kuri mayili Ihindurangero Umubarwa"
+#~ msgid "Kilometer-to-mile conversion factor"
+#~ msgstr "Kuri mayili Ihindurangero Umubarwa"
 
-#: gcalctool/calctool.c:1259
 #, fuzzy
-msgid "square root of 2"
-msgstr "kare Imizi Bya 2."
-
-#: gcalctool/calctool.c:1260
-msgid "e"
-msgstr "e"
+#~ msgid "square root of 2"
+#~ msgstr "kare Imizi Bya 2."
 
 # starmath/source\symbol.src:RID_LOCALIZED_NAMES.RID_UI_SYMBOL_NAMES.31.text
-#. PI
-#: gcalctool/calctool.c:1261 gcalctool/syntax_translation.c:58
-msgid "pi"
-msgstr "pi"
+#~ msgid "pi"
+#~ msgstr "pi"
 
-#: gcalctool/calctool.c:1262
 #, fuzzy
-msgid "Centimeter-to-inch conversion factor"
-msgstr "Kuri Inci Ihindurangero Umubarwa"
+#~ msgid "Centimeter-to-inch conversion factor"
+#~ msgstr "Kuri Inci Ihindurangero Umubarwa"
 
-#: gcalctool/calctool.c:1263
 #, fuzzy
-msgid "degrees in a radian"
-msgstr "Dogere in a"
+#~ msgid "degrees in a radian"
+#~ msgstr "Dogere in a"
 
-#: gcalctool/calctool.c:1264
 #, fuzzy
-msgid "2 ^ 20"
-msgstr "2. 20"
+#~ msgid "2 ^ 20"
+#~ msgstr "2. 20"
 
-#: gcalctool/calctool.c:1265
 #, fuzzy
-msgid "Gram-to-ounce conversion factor"
-msgstr "Kuri Ihindurangero Umubarwa"
+#~ msgid "Gram-to-ounce conversion factor"
+#~ msgstr "Kuri Ihindurangero Umubarwa"
 
-#: gcalctool/calctool.c:1267
 #, fuzzy
-msgid "Kilojoule-to-British-thermal-unit conversion factor"
-msgstr "Kuri Igice: Ihindurangero Umubarwa"
+#~ msgid "Kilojoule-to-British-thermal-unit conversion factor"
+#~ msgstr "Kuri Igice: Ihindurangero Umubarwa"
 
-#: gcalctool/calctool.c:1269
 #, fuzzy
-msgid "Cubic-centimeter-to-cubic-inch conversion factor"
-msgstr "Santimetero Kuri Inci Ihindurangero Umubarwa"
+#~ msgid "Cubic-centimeter-to-cubic-inch conversion factor"
+#~ msgstr "Santimetero Kuri Inci Ihindurangero Umubarwa"
 
-#. THIS ROUTINE IS CALLED WHEN AN ERROR CONDITION IS ENCOUNTERED, AND
-#. *  AFTER A MESSAGE HAS BEEN WRITTEN TO STDERR.
-#.
-#: gcalctool/calctool.c:1280 gcalctool/display.c:267 gcalctool/mp.c:1966
-#: gcalctool/mpmath.c:412 gcalctool/mpmath.c:451 gcalctool/mpmath.c:506
-msgid "Error"
-msgstr "Ikosa"
+#~ msgid "Error"
+#~ msgstr "Ikosa"
 
-#: gcalctool/functions.c:339
 #, fuzzy
-msgid "Previous expression"
-msgstr "imvugo"
+#~ msgid "No sane value to convert"
+#~ msgstr "Agaciro Kuri GUHINDURA"
 
-#: gcalctool/functions.c:419
 #, fuzzy
-msgid "Malformed expression"
-msgstr "imvugo"
+#~ msgid "Cleared display, prefix without an operator is not allowed"
+#~ msgstr "Kugaragaza Imbanziriza Mukoresha ni OYA"
 
-#: gcalctool/functions.c:630 gcalctool/functions.c:1006
 #, fuzzy
-msgid "No sane value to convert"
-msgstr "Agaciro Kuri GUHINDURA"
+#~ msgid "Malformed parenthesis expression"
+#~ msgstr "imvugo"
 
-#: gcalctool/functions.c:729 gcalctool/functions.c:1083
-#: gcalctool/functions.c:1311
 #, fuzzy
-msgid "No sane value to store"
-msgstr "Agaciro Kuri"
+#~ msgid "Numeric stack error"
+#~ msgstr "Ikosa"
 
-#: gcalctool/functions.c:857
 #, fuzzy
-msgid "Malformed function"
-msgstr "Umumaro"
+#~ msgid "Operand stack error"
+#~ msgstr "Ikosa"
 
-#: gcalctool/functions.c:1036
-#, fuzzy
-msgid "Cleared display, prefix without an operator is not allowed"
-msgstr "Kugaragaza Imbanziriza Mukoresha ni OYA"
-
-#: gcalctool/functions.c:1060
-#, fuzzy
-msgid "Malformed parenthesis expression"
-msgstr "imvugo"
-
-#: gcalctool/functions.c:1359
-#, fuzzy
-msgid "Numeric stack error"
-msgstr "Ikosa"
-
-#: gcalctool/functions.c:1380
-#, fuzzy
-msgid "Operand stack error"
-msgstr "Ikosa"
-
-#: gcalctool/get.c:153
-#, fuzzy
-msgid "-a needs accuracy value"
-msgstr "-a Agaciro"
-
-#: gcalctool/get.c:157 gcalctool/get.c:311
 #, fuzzy, c-format
-msgid "%s: accuracy should be in the range 0-%d\n"
-msgstr "%s:in Urutonde 0"
+#~ msgid "%s: accuracy should be in the range 0-%d\n"
+#~ msgstr "%s:in Urutonde 0"
 
-#: gcalctool/get.c:182
 #, fuzzy, c-format
-msgid "%s: %s as next argument.\n"
-msgstr "%s:%sNka Komeza>>"
+#~ msgid "%s: %s as next argument.\n"
+#~ msgstr "%s:%sNka Komeza>>"
 
-#. No calculator error initially.
-#. Not entering an exponent number.
-#. No pending arithmetic operation.
-#. No User supplied title line.
-#: gcalctool/get.c:269
-msgid "calculator"
-msgstr ""
-
-#: gcalctool/get.c:331
 #, fuzzy, c-format
-msgid "%s: base should be 2, 8, 10 or 16\n"
-msgstr "%s:SHINGIRO 2. 8 10 Cyangwa"
+#~ msgid "%s: base should be 2, 8, 10 or 16\n"
+#~ msgstr "%s:SHINGIRO 2. 8 10 Cyangwa"
 
-#: gcalctool/get.c:346
 #, fuzzy, c-format
-msgid "%s: invalid display mode [%s]\n"
-msgstr "%s:Sibyo Kugaragaza Ubwoko"
+#~ msgid "%s: invalid display mode [%s]\n"
+#~ msgstr "%s:Sibyo Kugaragaza Ubwoko"
 
-#: gcalctool/get.c:361
 #, fuzzy, c-format
-msgid "%s: invalid mode [%s]\n"
-msgstr "%s:Sibyo Ubwoko"
+#~ msgid "%s: invalid mode [%s]\n"
+#~ msgstr "%s:Sibyo Ubwoko"
 
-#: gcalctool/get.c:375
 #, fuzzy, c-format
-msgid "%s: invalid trigonometric mode [%s]\n"
-msgstr "%s:Sibyo Ubwoko"
+#~ msgid "%s: invalid trigonometric mode [%s]\n"
+#~ msgstr "%s:Sibyo Ubwoko"
 
-#: gcalctool/get.c:393
 #, fuzzy, c-format
-msgid "%s: invalid syntax mode [%s]\n"
-msgstr "%s:Sibyo Ubwoko"
+#~ msgid "%s: invalid syntax mode [%s]\n"
+#~ msgstr "%s:Sibyo Ubwoko"
 
-#: gcalctool/get.c:440
 #, fuzzy, c-format
-msgid ""
-"%s version %s\n"
-"\n"
-msgstr "%sVerisiyo"
+#~ msgid ""
+#~ "%s version %s\n"
+#~ "\n"
+#~ msgstr "%sVerisiyo"
 
-#: gcalctool/get.c:441
 #, fuzzy, c-format
-msgid "Usage: %s: [-D] [-E] [-a accuracy] "
-msgstr "E a"
+#~ msgid "Usage: %s: [-D] [-E] [-a accuracy] "
+#~ msgstr "E a"
 
 # setup2/source\ui\error.src:STR_PAR_VERBOSE.text
-#: gcalctool/get.c:442
 #, fuzzy
-msgid "\t\t [-?] [-v] [-?]\n"
-msgstr "[-][-v"
+#~ msgid "\t\t [-?] [-v] [-?]\n"
+#~ msgstr "[-][-v"
 
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_NEG_BINOM_VERT.4.text
-#. translators: R is the short form of register used inter alia
-#. in popup menus
-#: gcalctool/graphics.c:61 gcalctool/gtk.c:1488 gcalctool/gtk.c:1620
-msgid "R"
-msgstr "R"
-
-#: gcalctool/gtk.c:226
-msgid "_Calculator"
-msgstr ""
+#~ msgid "R"
+#~ msgstr "R"
 
 # #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
 # basctl/source\basicide\basidesh.src:RID_BASICMENU.MN_EDIT.text
@@ -1347,546 +4389,308 @@ msgstr ""
 # basctl/source\basicide\moduldlg.src:RID_TP_MODULS.RID_PB_EDIT.text
 # #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
 # basctl/source\basicide\moduldlg.src:RID_TP_LIBS.RID_PB_EDIT.text
-#: gcalctool/gtk.c:227
 #, fuzzy
-msgid "_Edit"
-msgstr "Guhindura"
+#~ msgid "_Edit"
+#~ msgstr "Guhindura"
 
 # #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
 # basctl/source\basicide\basidesh.src:RID_BASICMENU.MN_VIEW.text
 # #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
 # basctl/source\basicide\basidesh.src:RID_BASICPLUGINMENU.MN_PLVIEW.text
-#: gcalctool/gtk.c:228
 #, fuzzy
-msgid "_View"
-msgstr "Kureba"
-
-#: gcalctool/gtk.c:229
-#, fuzzy
-msgid "_Help"
-msgstr "Ifashayobora"
-
-#: gcalctool/gtk.c:232
-#, fuzzy
-msgid "Quit the calculator"
-msgstr "i"
-
-#: gcalctool/gtk.c:235
-#, fuzzy
-msgid "Copy selection"
-msgstr "Ihitamo"
+#~ msgid "_View"
+#~ msgstr "Kureba"
 
 # officecfg/registry\schema\org\openoffice\Office\Common.xcs:....View.Dialog.MiddleMouseButton..2.text
-#: gcalctool/gtk.c:237
-msgid "Paste selection"
-msgstr "Komeka ihitamo"
+#~ msgid "Paste selection"
+#~ msgstr "Komeka ihitamo"
 
-#: gcalctool/gtk.c:238
-msgid "_Insert ASCII Value..."
-msgstr ""
-
-#: gcalctool/gtk.c:239
 #, fuzzy
-msgid "Insert ASCII value"
-msgstr "Agaciro"
+#~ msgid "Insert ASCII value"
+#~ msgstr "Agaciro"
 
-#: gcalctool/gtk.c:243
 #, fuzzy
-msgid "Show help contents"
-msgstr "Ifashayobora Ibigize"
+#~ msgid "Show the About Gcalctool dialog"
+#~ msgstr "Ikiganiro"
 
-#: gcalctool/gtk.c:246
 #, fuzzy
-msgid "Show the About Gcalctool dialog"
-msgstr "Ikiganiro"
+#~ msgid "_1 place"
+#~ msgstr "1."
 
-#: gcalctool/gtk.c:248 gcalctool/gtk.c:279
 #, fuzzy
-msgid "_1 place"
-msgstr "1."
+#~ msgid "_2 places"
+#~ msgstr "2. Imyanya"
 
-#: gcalctool/gtk.c:249 gcalctool/gtk.c:280
 #, fuzzy
-msgid "1 place"
-msgstr "1."
+#~ msgid "2 places"
+#~ msgstr "2. Imyanya"
 
-#: gcalctool/gtk.c:250 gcalctool/gtk.c:281
 #, fuzzy
-msgid "_2 places"
-msgstr "2. Imyanya"
+#~ msgid "_3 places"
+#~ msgstr "3. Imyanya"
 
-#: gcalctool/gtk.c:251 gcalctool/gtk.c:282
 #, fuzzy
-msgid "2 places"
-msgstr "2. Imyanya"
+#~ msgid "3 places"
+#~ msgstr "3. Imyanya"
 
-#: gcalctool/gtk.c:252 gcalctool/gtk.c:283
 #, fuzzy
-msgid "_3 places"
-msgstr "3. Imyanya"
+#~ msgid "_4 places"
+#~ msgstr "4. Imyanya"
 
-#: gcalctool/gtk.c:253 gcalctool/gtk.c:284
 #, fuzzy
-msgid "3 places"
-msgstr "3. Imyanya"
+#~ msgid "4 places"
+#~ msgstr "4. Imyanya"
 
-#: gcalctool/gtk.c:254 gcalctool/gtk.c:285
 #, fuzzy
-msgid "_4 places"
-msgstr "4. Imyanya"
+#~ msgid "_5 places"
+#~ msgstr "5 Imyanya"
 
-#: gcalctool/gtk.c:255 gcalctool/gtk.c:286
 #, fuzzy
-msgid "4 places"
-msgstr "4. Imyanya"
+#~ msgid "5 places"
+#~ msgstr "5 Imyanya"
 
-#: gcalctool/gtk.c:256 gcalctool/gtk.c:287
 #, fuzzy
-msgid "_5 places"
-msgstr "5 Imyanya"
+#~ msgid "_6 places"
+#~ msgstr "6 Imyanya"
 
-#: gcalctool/gtk.c:257 gcalctool/gtk.c:288
 #, fuzzy
-msgid "5 places"
-msgstr "5 Imyanya"
+#~ msgid "6 places"
+#~ msgstr "6 Imyanya"
 
-#: gcalctool/gtk.c:258 gcalctool/gtk.c:289
 #, fuzzy
-msgid "_6 places"
-msgstr "6 Imyanya"
+#~ msgid "_7 places"
+#~ msgstr "7 Imyanya"
 
-#: gcalctool/gtk.c:259 gcalctool/gtk.c:290
 #, fuzzy
-msgid "6 places"
-msgstr "6 Imyanya"
+#~ msgid "7 places"
+#~ msgstr "7 Imyanya"
 
-#: gcalctool/gtk.c:260 gcalctool/gtk.c:291
 #, fuzzy
-msgid "_7 places"
-msgstr "7 Imyanya"
+#~ msgid "_8 places"
+#~ msgstr "8 Imyanya"
 
-#: gcalctool/gtk.c:261 gcalctool/gtk.c:292
 #, fuzzy
-msgid "7 places"
-msgstr "7 Imyanya"
+#~ msgid "8 places"
+#~ msgstr "8 Imyanya"
 
-#: gcalctool/gtk.c:262 gcalctool/gtk.c:293
 #, fuzzy
-msgid "_8 places"
-msgstr "8 Imyanya"
+#~ msgid "_9 places"
+#~ msgstr "9 Imyanya"
 
-#: gcalctool/gtk.c:263 gcalctool/gtk.c:294
 #, fuzzy
-msgid "8 places"
-msgstr "8 Imyanya"
+#~ msgid "9 places"
+#~ msgstr "9 Imyanya"
 
-#: gcalctool/gtk.c:264 gcalctool/gtk.c:295
 #, fuzzy
-msgid "_9 places"
-msgstr "9 Imyanya"
+#~ msgid "10 places"
+#~ msgstr "10 Imyanya"
 
-#: gcalctool/gtk.c:265 gcalctool/gtk.c:296
 #, fuzzy
-msgid "9 places"
-msgstr "9 Imyanya"
+#~ msgid "11 places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:266 gcalctool/gtk.c:267 gcalctool/gtk.c:297
-#: gcalctool/gtk.c:298
 #, fuzzy
-msgid "10 places"
-msgstr "10 Imyanya"
+#~ msgid "12 places"
+#~ msgstr "12 Imyanya"
 
-#: gcalctool/gtk.c:268 gcalctool/gtk.c:269 gcalctool/gtk.c:299
-#: gcalctool/gtk.c:300
 #, fuzzy
-msgid "11 places"
-msgstr "Imyanya"
+#~ msgid "13 places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:270 gcalctool/gtk.c:271 gcalctool/gtk.c:301
-#: gcalctool/gtk.c:302
 #, fuzzy
-msgid "12 places"
-msgstr "12 Imyanya"
+#~ msgid "14 places"
+#~ msgstr "14 Imyanya"
 
-#: gcalctool/gtk.c:272 gcalctool/gtk.c:273 gcalctool/gtk.c:303
-#: gcalctool/gtk.c:304
 #, fuzzy
-msgid "13 places"
-msgstr "Imyanya"
+#~ msgid "15 places"
+#~ msgstr "15 Imyanya"
 
-#: gcalctool/gtk.c:274 gcalctool/gtk.c:275 gcalctool/gtk.c:305
-#: gcalctool/gtk.c:306
 #, fuzzy
-msgid "14 places"
-msgstr "14 Imyanya"
+#~ msgid "Show memory registers"
+#~ msgstr "Ububiko"
 
-#: gcalctool/gtk.c:276 gcalctool/gtk.c:277 gcalctool/gtk.c:307
-#: gcalctool/gtk.c:308
 #, fuzzy
-msgid "15 places"
-msgstr "15 Imyanya"
+#~ msgid "_0 significant places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:312 gcalctool/gtk.c:318
-msgid "Show _Trailing Zeroes"
-msgstr ""
-
-#: gcalctool/gtk.c:313 gcalctool/gtk.c:319
-msgid "Show trailing zeroes"
-msgstr ""
-
-#: gcalctool/gtk.c:314
-msgid "Show T_housands Separator"
-msgstr ""
-
-#: gcalctool/gtk.c:315
 #, fuzzy
-msgid "Show thousands separator"
-msgstr "Mutandukanya"
+#~ msgid "0 significant places"
+#~ msgstr "0 Imyanya"
 
-#: gcalctool/gtk.c:316
-msgid "_Memory Registers"
-msgstr ""
-
-#: gcalctool/gtk.c:317
 #, fuzzy
-msgid "Show memory registers"
-msgstr "Ububiko"
+#~ msgid "1 significant place"
+#~ msgstr "1."
 
-#: gcalctool/gtk.c:320
-msgid "_Use Arithmetic Precedence"
-msgstr ""
-
-#: gcalctool/gtk.c:321
-msgid "Use Arithmetic Precedence"
-msgstr ""
-
-#: gcalctool/gtk.c:325
 #, fuzzy
-msgid "_0 significant places"
-msgstr "Imyanya"
+#~ msgid "_2 significant places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:326
 #, fuzzy
-msgid "0 significant places"
-msgstr "0 Imyanya"
+#~ msgid "2 significant places"
+#~ msgstr "2. Imyanya"
 
-#: gcalctool/gtk.c:327
-msgid "_1 significant place"
-msgstr ""
-
-#: gcalctool/gtk.c:328
 #, fuzzy
-msgid "1 significant place"
-msgstr "1."
+#~ msgid "_3 significant places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:329
 #, fuzzy
-msgid "_2 significant places"
-msgstr "Imyanya"
+#~ msgid "3 significant places"
+#~ msgstr "3. Imyanya"
 
-#: gcalctool/gtk.c:330
 #, fuzzy
-msgid "2 significant places"
-msgstr "2. Imyanya"
+#~ msgid "_4 significant places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:331
 #, fuzzy
-msgid "_3 significant places"
-msgstr "Imyanya"
+#~ msgid "4 significant places"
+#~ msgstr "4. Imyanya"
 
-#: gcalctool/gtk.c:332
 #, fuzzy
-msgid "3 significant places"
-msgstr "3. Imyanya"
+#~ msgid "_5 significant places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:333
 #, fuzzy
-msgid "_4 significant places"
-msgstr "Imyanya"
+#~ msgid "5 significant places"
+#~ msgstr "5 Imyanya"
 
-#: gcalctool/gtk.c:334
 #, fuzzy
-msgid "4 significant places"
-msgstr "4. Imyanya"
+#~ msgid "_6 significant places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:335
 #, fuzzy
-msgid "_5 significant places"
-msgstr "Imyanya"
+#~ msgid "6 significant places"
+#~ msgstr "6 Imyanya"
 
-#: gcalctool/gtk.c:336
 #, fuzzy
-msgid "5 significant places"
-msgstr "5 Imyanya"
+#~ msgid "_7 significant places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:337
 #, fuzzy
-msgid "_6 significant places"
-msgstr "Imyanya"
+#~ msgid "7 significant places"
+#~ msgstr "7 Imyanya"
 
-#: gcalctool/gtk.c:338
 #, fuzzy
-msgid "6 significant places"
-msgstr "6 Imyanya"
+#~ msgid "_8 significant places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:339
 #, fuzzy
-msgid "_7 significant places"
-msgstr "Imyanya"
+#~ msgid "8 significant places"
+#~ msgstr "8 Imyanya"
 
-#: gcalctool/gtk.c:340
 #, fuzzy
-msgid "7 significant places"
-msgstr "7 Imyanya"
+#~ msgid "_9 significant places"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:341
 #, fuzzy
-msgid "_8 significant places"
-msgstr "Imyanya"
+#~ msgid "9 significant places"
+#~ msgstr "9 Imyanya"
 
-#: gcalctool/gtk.c:342
 #, fuzzy
-msgid "8 significant places"
-msgstr "8 Imyanya"
-
-#: gcalctool/gtk.c:343
-#, fuzzy
-msgid "_9 significant places"
-msgstr "Imyanya"
-
-#: gcalctool/gtk.c:344
-#, fuzzy
-msgid "9 significant places"
-msgstr "9 Imyanya"
-
-#: gcalctool/gtk.c:345
-#, fuzzy
-msgid "_Other (10) ..."
-msgstr "10"
-
-#: gcalctool/gtk.c:346
-#, fuzzy
-msgid "Set other precision"
-msgstr "Ikindi"
+#~ msgid "_Other (10) ..."
+#~ msgstr "10"
 
 # #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
 # basctl/source\basicide\basidesh.src:RID_STR_BASIC.text
 # #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
 # basctl/source\basicide\basidesh.src:RID_BASICIDE_OBJECTBAR.text
-#: gcalctool/gtk.c:350
 #, fuzzy
-msgid "_Basic"
-msgstr "BASIC"
-
-#: gcalctool/gtk.c:352
-#, fuzzy
-msgid "_Advanced"
-msgstr "Urwego rwo hejuru"
+#~ msgid "_Basic"
+#~ msgstr "BASIC"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\formdlg\dwfunctr.src:FID_FUNCTION_BOX.CB_CAT.5.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\formdlg\formdlgs.src:RID_SCTAB_FUNCTION.LB_CATEGORY.5.text
-#: gcalctool/gtk.c:354
 #, fuzzy
-msgid "_Financial"
-msgstr "Bijyanye n'umutungo"
+#~ msgid "_Financial"
+#~ msgstr "Bijyanye n'umutungo"
 
-# svx/source\dialog\numfmt.src:RID_SVXPAGE_NUMBERFORMAT.LB_CATEGORY.8.text
-#: gcalctool/gtk.c:356
 #, fuzzy
-msgid "_Scientific"
-msgstr "Cya gihanga"
-
-#: gcalctool/gtk.c:516
-msgid "translator-credits"
-msgstr ""
-
-#: gcalctool/gtk.c:519
-msgid "Gcalctool"
-msgstr ""
-
-#: gcalctool/gtk.c:522
-#, fuzzy
-msgid "Calculator with financial and scientific modes."
-msgstr "Na: Bijyanye n'umutungo Na Cya gihanga"
-
-#: gcalctool/gtk.c:776
-msgid "Insert ASCII Value"
-msgstr ""
-
-#: gcalctool/gtk.c:791
-#, fuzzy
-msgid "Ch_aracter:"
-msgstr "Inyuguti..."
-
-# basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.RID_INSERT.text
-#: gcalctool/gtk.c:816
-#, fuzzy
-msgid "_Insert"
-msgstr "Kongeramo"
-
-#: gcalctool/gtk.c:895
-msgid "Edit Constants"
-msgstr ""
-
-#: gcalctool/gtk.c:895
-msgid "Edit Functions"
-msgstr ""
+#~ msgid "Calculator with financial and scientific modes."
+#~ msgstr "Na: Bijyanye n'umutungo Na Cya gihanga"
 
 # scp/source\cde\unxbasic_cde.lng:STR_BASIC_CDEINT_NETWORK_STRING2.text
-#: gcalctool/gtk.c:919
-msgid "Note:"
-msgstr "Ibisobanuro:"
+#~ msgid "Note:"
+#~ msgstr "Ibisobanuro:"
 
-#: gcalctool/gtk.c:920
 #, fuzzy
-msgid "All constant values are specified in the decimal numeric base."
-msgstr "Uduciro in NYACUMI Bikurikije umubare SHINGIRO"
+#~ msgid "All constant values are specified in the decimal numeric base."
+#~ msgstr "Uduciro in NYACUMI Bikurikije umubare SHINGIRO"
 
-#: gcalctool/gtk.c:930
 #, fuzzy
-msgid "Click a _value or description to edit it:"
-msgstr "a Agaciro Cyangwa Isobanuramiterere Kuri Guhindura"
+#~ msgid "Click a _value or description to edit it:"
+#~ msgstr "a Agaciro Cyangwa Isobanuramiterere Kuri Guhindura"
 
-#: gcalctool/gtk.c:953
-msgid "No."
-msgstr "Oya."
+#~ msgid "No."
+#~ msgstr "Oya."
 
-#: gcalctool/gtk.c:955
-msgid "Value"
-msgstr "Agaciro"
+#~ msgid "Value"
+#~ msgstr "Agaciro"
 
-# #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
-# basctl/source\basicide\moptions.src:RID_MACROOPTIONS.RID_FT_DESCR.text
-# #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
-# basctl/source\basicide\moptions.src:RID_MACROOPTIONS.text
-#: gcalctool/gtk.c:957
-msgid "Description"
-msgstr "Isobanuramiterere"
-
-#: gcalctool/gtk.c:1067
-msgid "_Do not warn me again"
-msgstr ""
-
-#: gcalctool/gtk.c:1073
-msgid ""
-"<big><b>Changing Modes Clears Calculation</b></big>\n"
-"\n"
-"When you change modes, the current calculation will be cleared, and the base "
-"will be reset to decimal."
-msgstr ""
-
-#: gcalctool/gtk.c:1112
-msgid "C_hange Mode"
-msgstr ""
-
-#: gcalctool/gtk.c:1149
-msgid "Set Precision"
-msgstr ""
-
-#: gcalctool/gtk.c:1164
 #, fuzzy
-msgid "Significant _places:"
-msgstr "Imyanya"
+#~ msgid "Significant _places:"
+#~ msgstr "Imyanya"
 
-#: gcalctool/gtk.c:1190
 #, fuzzy
-msgid "_Set"
-msgstr "Gushyiraho"
-
-#: gcalctool/gtk.c:1296 gcalctool/gtk.c:1298 gcalctool.desktop.in.h:1
-msgid "Calculator"
-msgstr ""
-
-#. Make Hyp and Inv trigonometric check boxes.
-#: gcalctool/gtk.c:1556
-msgid "_Inv"
-msgstr ""
+#~ msgid "_Set"
+#~ msgstr "Gushyiraho"
 
 # sw/source\ui\utlui\utlui.src:STR_HYPERCTRL_HYP.text
-#: gcalctool/gtk.c:1564
 #, fuzzy
-msgid "H_yp"
-msgstr "HYP"
+#~ msgid "H_yp"
+#~ msgstr "HYP"
 
-#: gcalctool/gtk.c:1612
-msgid "Memory Registers"
-msgstr ""
-
-#: gcalctool/gtk.c:1689
-msgid "Edit Constants..."
-msgstr ""
-
-#: gcalctool/gtk.c:1689
-msgid "Edit Functions..."
-msgstr ""
-
-#: gcalctool/gtk.c:1858
 #, fuzzy
-msgid "Clipboard contained malformed calculation"
-msgstr "Imibare"
+#~ msgid "Clipboard contained malformed calculation"
+#~ msgstr "Imibare"
 
 # framework/source\classes\fltdlg.src:STR_FILTER_OTHERS.text
-#: gcalctool/gtk.c:2126
 #, fuzzy, c-format
-msgid "Other (%d) ..."
-msgstr "Ikindi"
+#~ msgid "Other (%d) ..."
+#~ msgstr "Ikindi"
 
-#: gcalctool/gtk.c:2137
 #, fuzzy, c-format
-msgid ""
-"Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
-msgstr "Bivuye 0 Kuri Bikurikije umubare Imyanya Gushyiraho Kuri Imyanya a"
+#~ msgid ""
+#~ "Set accuracy from 0 to %d numeric places. Currently set to %d places. [a]"
+#~ msgstr "Bivuye 0 Kuri Bikurikije umubare Imyanya Gushyiraho Kuri Imyanya a"
 
-#: gcalctool/gtk.c:2368
 #, fuzzy
-msgid "Activated no operator precedence mode"
-msgstr "Oya Mukoresha Ubwoko"
+#~ msgid "Activated no operator precedence mode"
+#~ msgstr "Oya Mukoresha Ubwoko"
 
-#: gcalctool/gtk.c:2378
 #, fuzzy
-msgid "Activated expression mode with operator precedence"
-msgstr "imvugo Ubwoko Na: Mukoresha"
+#~ msgid "Activated expression mode with operator precedence"
+#~ msgstr "imvugo Ubwoko Na: Mukoresha"
 
-#: gcalctool/gtk.c:2594
 #, fuzzy
-msgid "Accuracy value out of range"
-msgstr "Agaciro Inyuma Bya Urutonde"
+#~ msgid "Accuracy value out of range"
+#~ msgstr "Agaciro Inyuma Bya Urutonde"
 
-#: gcalctool/mp.c:3349
 #, fuzzy
-msgid "Negative X and non-integer Y not supported"
-msgstr "Na Umubare wuzuye OYA"
+#~ msgid "Negative X and non-integer Y not supported"
+#~ msgstr "Na Umubare wuzuye OYA"
 
-#: gcalctool/mpmath.c:248
 #, fuzzy
-msgid "Error, cannot calculate cosine"
-msgstr "Kubara Cosinisi"
+#~ msgid "Error, cannot calculate cosine"
+#~ msgstr "Kubara Cosinisi"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ABS.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS2.SC_OPCODE_ADRESS.6.text
-#. Absolute value
-#: gcalctool/syntax_translation.c:36
 #, fuzzy
-msgid "abs"
-msgstr "ABS"
+#~ msgid "abs"
+#~ msgstr "ABS"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ARC_COS_HYP.text
-#. Inversion of hyperbolic cosine
-#: gcalctool/syntax_translation.c:37
 #, fuzzy
-msgid "acosh"
-msgstr "ACOSH"
+#~ msgid "acosh"
+#~ msgstr "ACOSH"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ARC_COS.text
-#. Inversion of cosine
-#: gcalctool/syntax_translation.c:38
 #, fuzzy
-msgid "acos"
-msgstr "ACOS"
+#~ msgid "acos"
+#~ msgstr "ACOS"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\condfrmt.src:RID_SCDLG_CONDFORMAT.FT_COND1_AND.text
@@ -1894,86 +4698,48 @@ msgstr "ACOS"
 # sc/source\ui\src\condfrmt.src:RID_SCDLG_CONDFORMAT.FT_COND2_AND.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\condfrmt.src:RID_SCDLG_CONDFORMAT.FT_COND3_AND.text
-#. Bitwise AND
-#: gcalctool/syntax_translation.c:39
-msgid "and"
-msgstr "na"
+#~ msgid "and"
+#~ msgstr "na"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ARC_SIN_HYP.text
-#. Inversion of hyperbolic sine
-#: gcalctool/syntax_translation.c:40
 #, fuzzy
-msgid "asinh"
-msgstr "ASINH"
+#~ msgid "asinh"
+#~ msgstr "ASINH"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ARC_SIN.text
-#. Hyperbolic sine
-#: gcalctool/syntax_translation.c:41
 #, fuzzy
-msgid "asin"
-msgstr "ASIN"
+#~ msgid "asin"
+#~ msgstr "ASIN"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ARC_TAN_HYP.text
-#. Inversion of hyperbolic tangent
-#: gcalctool/syntax_translation.c:42
 #, fuzzy
-msgid "atanh"
-msgstr "ATANH"
+#~ msgid "atanh"
+#~ msgstr "ATANH"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ARC_TAN.text
-#. Inversion of tangent
-#: gcalctool/syntax_translation.c:43
 #, fuzzy
-msgid "atan"
-msgstr "ATAN"
-
-#. Cubic root
-#: gcalctool/syntax_translation.c:44
-msgid "cbrt"
-msgstr ""
-
-#. Change sign
-#: gcalctool/syntax_translation.c:45
-msgid "chs"
-msgstr ""
-
-#. Clear (display)
-#: gcalctool/syntax_translation.c:46
-msgid "clr"
-msgstr ""
+#~ msgid "atan"
+#~ msgstr "ATAN"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_COS_HYP.text
-#. Hyperbolic cosine
-#: gcalctool/syntax_translation.c:47
 #, fuzzy
-msgid "cosh"
-msgstr "COSH"
+#~ msgid "cosh"
+#~ msgstr "COSH"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_COS.text
-#. Cosine
-#: gcalctool/syntax_translation.c:48
 #, fuzzy
-msgid "cos"
-msgstr "COS"
+#~ msgid "cos"
+#~ msgstr "COS"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_GDA.text
-#. Double-declining deprecation
-#: gcalctool/syntax_translation.c:49
 #, fuzzy
-msgid "ddb"
-msgstr "DDB"
+#~ msgid "ddb"
+#~ msgstr "DDB"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_EXP.text
-#. x*10^y
-#: gcalctool/syntax_translation.c:50
 #, fuzzy
-msgid "exp"
-msgstr "EXP"
-
-#. Fraction of a decimal number
-#: gcalctool/syntax_translation.c:51
-msgid "frac"
-msgstr ""
+#~ msgid "exp"
+#~ msgstr "EXP"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_ZW.text
@@ -1993,61 +4759,33 @@ msgstr ""
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_LAUFZ.6.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZGZ.6.text
-#. Future value
-#: gcalctool/syntax_translation.c:52
 #, fuzzy
-msgid "fv"
-msgstr "FV"
+#~ msgid "fv"
+#~ msgstr "FV"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_INT.text
-#. Integer part of a decimal number
-#: gcalctool/syntax_translation.c:53
 #, fuzzy
-msgid "int"
-msgstr "INT"
+#~ msgid "int"
+#~ msgstr "INT"
 
 # basctl/source\basicide\basidesh.src:RID_STR_LINE.text
-#. Natural logarithm
-#: gcalctool/syntax_translation.c:54
 #, fuzzy
-msgid "ln"
-msgstr "Ln"
+#~ msgid "ln"
+#~ msgstr "Ln"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_LOG.text
-#. Logarithm with 10 as a base number
-#: gcalctool/syntax_translation.c:55
 #, fuzzy
-msgid "log"
-msgstr "LOG"
+#~ msgid "log"
+#~ msgstr "LOG"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_NOT.text
-#. Bitwise NOT
-#: gcalctool/syntax_translation.c:56
 #, fuzzy
-msgid "not"
-msgstr "OYA"
+#~ msgid "not"
+#~ msgstr "OYA"
 
 # starmath/source\symbol.src:RID_LOCALIZED_NAMES.RID_UI_SYMBOL_NAMES.66.text
-#. Bitwise OR
-#: gcalctool/syntax_translation.c:57
-msgid "or"
-msgstr "cyangwa"
-
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RMZ.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_BW.6.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZW.6.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZZR.4.text
-# #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
-# sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZINS.4.text
-#. Periodic payment
-#: gcalctool/syntax_translation.c:59
-#, fuzzy
-msgid "pmt"
-msgstr "PMT"
+#~ msgid "or"
+#~ msgstr "cyangwa"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZINS_Z.8.text
@@ -2057,116 +4795,56 @@ msgstr "PMT"
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_LAUFZ.4.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ZGZ.4.text
-#. Present value
-#: gcalctool/syntax_translation.c:60
-msgid "pv"
-msgstr "pv"
+#~ msgid "pv"
+#~ msgstr "pv"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_RANDOM.text
-#. A random number
-#: gcalctool/syntax_translation.c:61
 #, fuzzy
-msgid "rand"
-msgstr "NTA HITAMO"
+#~ msgid "rand"
+#~ msgstr "NTA HITAMO"
 
 # sc/source\ui\src\scfuncs.src:RID_SC_FUNCTION_DESCRIPTIONS1.SC_OPCODE_ISPMT.2.text
-#. Periodic interest rate
-#: gcalctool/syntax_translation.c:62
-msgid "rate"
-msgstr "Igipimo"
-
-#. Recall number from memory register
-#: gcalctool/syntax_translation.c:63
-msgid "rcl"
-msgstr ""
+#~ msgid "rate"
+#~ msgstr "Igipimo"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_SIN_HYP.text
-#. Hyperbolic sine
-#: gcalctool/syntax_translation.c:64
 #, fuzzy
-msgid "sinh"
-msgstr "SINH"
+#~ msgid "sinh"
+#~ msgstr "SINH"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_SIN.text
-#. Sine
-#: gcalctool/syntax_translation.c:65
 #, fuzzy
-msgid "sin"
-msgstr "SIN"
+#~ msgid "sin"
+#~ msgstr "SIN"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_LIA.text
-#. Straight-line depreciation
-#: gcalctool/syntax_translation.c:66
 #, fuzzy
-msgid "sln"
-msgstr "SLN"
+#~ msgid "sln"
+#~ msgstr "SLN"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_SQRT.text
-#. Square root
-#: gcalctool/syntax_translation.c:67
 #, fuzzy
-msgid "sqrt"
-msgstr "SQRT"
-
-#. Store number at memory register
-#: gcalctool/syntax_translation.c:68
-msgid "sto"
-msgstr ""
+#~ msgid "sqrt"
+#~ msgstr "SQRT"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_DIA.text
-#. Sum-of-the years'-digits depreciation
-#: gcalctool/syntax_translation.c:69
 #, fuzzy
-msgid "syd"
-msgstr "SYD"
+#~ msgid "syd"
+#~ msgstr "SYD"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_TAN_HYP.text
-#. Hyperbolic tangent
-#: gcalctool/syntax_translation.c:70
 #, fuzzy
-msgid "tanh"
-msgstr "TANH"
+#~ msgid "tanh"
+#~ msgstr "TANH"
 
 # sc/source\core\src\compiler.src:RID_SC_FUNCTION_NAMES.SC_OPCODE_TAN.text
-#. Tangent
-#: gcalctool/syntax_translation.c:71
 #, fuzzy
-msgid "tan"
-msgstr "TAN"
-
-#. Payment period
-#: gcalctool/syntax_translation.c:72
-#, fuzzy
-msgid "term"
-msgstr "Ijambo"
-
-#. Bitwise XNOR
-#: gcalctool/syntax_translation.c:75
-msgid "xnor"
-msgstr ""
-
-#. Bitwise XOR
-#: gcalctool/syntax_translation.c:76
-msgid "xor"
-msgstr ""
-
-#: gcalctool.desktop.in.h:2
-msgid "Perform calculations"
-msgstr ""
+#~ msgid "tan"
+#~ msgstr "TAN"
 
 #, fuzzy
-#~ msgid "_Quit"
-#~ msgstr "Kuvamo"
-
-# dbaccess/source/ui/inc/toolbox.hrc:MID_SBA_QRY_COPY.text
-#, fuzzy
-#~ msgid "_Copy"
-#~ msgstr "Gukoporora"
-
-# dbaccess/source/ui/inc/toolbox.hrc:MID_SBA_QRY_PASTE.text
-#, fuzzy
-#~ msgid "_Paste"
-#~ msgstr "Komeka"
+#~ msgid "term"
+#~ msgstr "Ijambo"
 
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\dbgui\validate.src:TP_VALIDATION_INPUTHELP.FL_CONTENT.text
