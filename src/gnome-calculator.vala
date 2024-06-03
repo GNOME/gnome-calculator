@@ -270,9 +270,8 @@ public class Calculator : Adw.Application
         if (preferences_dialog == null)
         {
             preferences_dialog = new MathPreferencesDialog (get_active_math_window ().equation);
-            preferences_dialog.set_transient_for (get_active_window ());
         }
-        preferences_dialog.present ();
+        preferences_dialog.present (get_active_window ());
     }
 
     private void help_cb ()
@@ -297,8 +296,7 @@ public class Calculator : Adw.Application
             null
         };
 
-        var about = new Adw.AboutWindow () {
-            transient_for = get_active_window (),
+        var about = new Adw.AboutDialog () {
             application_name = _("Calculator"),
             application_icon = APP_ID,
             developer_name = _("The GNOME Project"),
@@ -317,17 +315,16 @@ public class Calculator : Adw.Application
 
         var providers = string.joinv(", ", CurrencyManager.get_default ().get_provider_links ());
         about.add_legal_section ( _("Exchange rate data providers"), null, Gtk.License.CUSTOM, _("Exchange rates data by %s").printf(providers));
-        about.present ();
+        about.present (get_active_window ());
     }
 
     private void quit_cb ()
     {
         if (get_windows ().length () > 1)
         {
-            var dialog = new Adw.MessageDialog (get_active_math_window (), 
-                                                _("Close All?"), _("Are you sure you want to close all open windows?"));
-            dialog.add_responses ("close-all", _("Close _All"), 
-                                  "cancel", _("Cancel"));
+            var dialog = new Adw.AlertDialog (_("Close All?"), _("Are you sure you want to close all open windows?"));
+            dialog.add_responses ("cancel", _("_Cancel"),
+                                  "close-all", _("Close _All"));
 
             dialog.set_response_appearance ("close-all", Adw.ResponseAppearance.DESTRUCTIVE);
             dialog.set_default_response ("cancel");
@@ -335,10 +332,9 @@ public class Calculator : Adw.Application
             dialog.response.connect ((result) => {
                 if (result == "close-all")
                     this.quit ();
-                dialog.destroy ();
             });
 
-            dialog.present ();
+            dialog.present (get_active_math_window ());
         } else {
             this.quit ();
         }

@@ -159,17 +159,6 @@ public class MathWindow : Adw.ApplicationWindow
         _display.set_enable_osk (remove_buttons);
     }
 
-    public void critical_error (string title, string contents)
-    {
-        var dialog = new Adw.MessageDialog (null, title, contents);
-
-        dialog.response.connect (() => {
-            destroy ();
-        });
-
-        dialog.present ();
-    }
-
     protected bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType state)
     {
         if (buttons.mode == ButtonMode.PROGRAMMING && (state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK)

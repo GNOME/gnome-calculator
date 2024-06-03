@@ -8,7 +8,7 @@
  * license.
  */
 [GtkTemplate (ui = "/org/gnome/calculator/math-preferences.ui")]
-public class MathPreferencesDialog : Adw.PreferencesWindow
+public class MathPreferencesDialog : Adw.PreferencesDialog
 {
     public enum WordSize {
         8_BIT = 8,
@@ -165,10 +165,9 @@ public class MathPreferencesDialog : Adw.PreferencesWindow
         CurrencyManager.get_default ().refresh_interval = value;
     }
 
-    protected override bool close_request ()
+    protected override void close_attempt ()
     {
         hide ();
-        return true;
     }
 
     private void set_combo_row_from_int (Adw.ComboRow row, int value)
