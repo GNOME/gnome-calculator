@@ -340,6 +340,49 @@ public class MathButtons : Gtk.Box
             prog_view_more_button.visible = visible;
     }
 
+    private void correct_text_direction (Gtk.Builder builder)
+    {
+        var panel = builder.get_object ("button_panel") as Gtk.Widget;
+        var basic_grid = builder.get_object ("basic") as Gtk.Widget;
+        var calc_start_group_button = builder.get_object ("calc_start_group_button") as Gtk.Button;
+        var calc_end_group_button = builder.get_object ("calc_end_group_button") as Gtk.Button;
+
+        panel.set_direction (Gtk.TextDirection.LTR);
+        basic_grid.set_direction (Gtk.TextDirection.LTR);
+        calc_start_group_button.get_child().set_direction (Gtk.TextDirection.LTR);
+        calc_end_group_button.get_child().set_direction (Gtk.TextDirection.LTR);
+
+        switch (mode)
+        {
+        default:
+        case ButtonMode.BASIC:
+            break;
+        case ButtonMode.ADVANCED:
+            var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
+
+            advanced_grid.set_direction (Gtk.TextDirection.LTR);
+            break;
+        case ButtonMode.FINANCIAL:
+            var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
+
+            advanced_grid.set_direction (Gtk.TextDirection.LTR);
+            break;
+        case ButtonMode.PROGRAMMING:
+            prog_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
+            var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
+            var hex_buttons = builder.get_object ("hex_buttons") as Gtk.Widget;
+            var calc_shift_left_button = builder.get_object ("calc_shift_left_button") as Gtk.Button;
+            var calc_shift_right_button = builder.get_object ("calc_shift_right_button") as Gtk.Button;
+
+            prog_leaflet.set_direction (Gtk.TextDirection.LTR);
+            advanced_grid.set_direction (Gtk.TextDirection.LTR);
+            hex_buttons.set_direction (Gtk.TextDirection.LTR);
+            calc_shift_left_button.get_child().set_direction (Gtk.TextDirection.LTR);
+            calc_shift_right_button.get_child().set_direction (Gtk.TextDirection.LTR);
+            break;
+        }
+    }
+
     private Gtk.Widget load_mode (ButtonMode mode)
     {
         Gtk.Builder builder;
@@ -386,6 +429,8 @@ public class MathButtons : Gtk.Box
 
         var panel = builder.get_object ("button_panel") as Gtk.Widget;
         append (panel);
+
+        correct_text_direction (builder);
 
         switch (mode)
         {
