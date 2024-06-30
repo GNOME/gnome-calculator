@@ -358,10 +358,6 @@ public class MathButtons : Gtk.Box
         case ButtonMode.BASIC:
             break;
         case ButtonMode.ADVANCED:
-            var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
-
-            advanced_grid.set_direction (Gtk.TextDirection.LTR);
-            break;
         case ButtonMode.FINANCIAL:
             var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
 
