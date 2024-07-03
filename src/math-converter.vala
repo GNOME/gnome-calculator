@@ -62,16 +62,19 @@ public class MathConverter : Gtk.Grid
 
     private void build_category_model () {
         var category_model = new ListStore (typeof (UnitCategory));
+        var expression = new Gtk.PropertyExpression (typeof (UnitCategory),
+                                                     null,
+                                                     "display_name");
+
+        var alphabetical_sorter = new Gtk.StringSorter (expression);
+        var sorted_model = new Gtk.SortListModel (category_model, alphabetical_sorter);
         var categories = UnitManager.get_default ().get_categories ();
         foreach (var category in categories)
         {
             category_model.append (category);
         }
-        category_combo.model = category_model;
+        category_combo.model = sorted_model;
 
-        var expression = new Gtk.PropertyExpression (typeof (UnitCategory),
-                                                     null,
-                                                     "display_name");
         category_combo.expression = expression;
     }
 
