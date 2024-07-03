@@ -152,6 +152,11 @@ private void test_conversions ()
     test ("1 minute in seconds", "60", 0);
     test ("1s in ms", "1000", 0);
 
+    /* Energy */
+    test ("1000 Joule in kJ", "1", 0);
+    test ("3.6 MJ in kilowatthour", "1", 0);
+    test ("1 kWh in Megajoules", "3.6", 0);
+
     /* Temperature */
     //test ("100˚C in ˚F", "", 0);
     //test ("0 ˚C in ˚F", "32", 0);
