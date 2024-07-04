@@ -90,6 +90,14 @@ public class MathVariablePopover : MathPopover<MathVariable>
             return;
 
         var z = equation.number;
+        if (!Regex.match_simple("^\\D", name)) {
+            equation.status = _("%s: Invalid variable name, can not start with a digit").printf (name);
+            return;
+        }
+        if (!Regex.match_simple("^\\w*$", name)) {
+            equation.status = _("%s: Invalid variable name, can only contain digits, letters and underscores").printf (name);
+            return;
+        }
         if (z != null)
             equation.variables[name] = z;
         else if (equation.is_result)
