@@ -27,10 +27,26 @@
             <property name="transition-type">crossfade</property>
             <property name="xalign">0</property>
             <child>
-              <object class="GtkLabel" id="base_label">
-                <property name="selectable">1</property>
+              <object class="GtkBox">
                 <property name="halign">2</property>
-                <property name="label" comments="Example content">FF₁₆ 256₁₀</property>
+                <style>
+                  <class name="conversion-buttons"/>
+                </style>
+                <child>
+                  <object class="GtkButton" id="hex_base_button">
+                    <property name="tooltip_text" translatable="yes">Copy</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="dec_base_button">
+                    <property name="tooltip_text" translatable="yes">Copy</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="oct_base_button">
+                    <property name="tooltip_text" translatable="yes">Copy</property>
+                  </object>
+                </child>
               </object>
             </child>
             <child>

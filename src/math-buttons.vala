@@ -87,7 +87,9 @@ public class MathButtons : Gtk.Box
     private Gtk.ToggleButton prog_view_more_button;
 
     private Gtk.ComboBox base_combo;
-    private Gtk.Label base_label;
+    private Gtk.Button hex_base_button;
+    private Gtk.Button dec_base_button;
+    private Gtk.Button oct_base_button;
     private Gtk.MenuButton word_size_button;
     private Gtk.Widget bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
@@ -239,6 +241,12 @@ public class MathButtons : Gtk.Box
         equation.insert_numeric_point ();
     }
 
+    private void update_base_button (Gtk.Button button, string value, string base_suffix)
+    {
+        button.set_label ("%s%s".printf (value, base_suffix));
+        button.set_data<string> ("value", value);
+    }
+
     private void update_bit_panel ()
     {
         if (bit_panel == null)
@@ -262,7 +270,9 @@ public class MathButtons : Gtk.Box
         }
 
         bit_panel.set_sensitive (enabled);
-        base_label.set_sensitive (enabled);
+        hex_base_button.set_sensitive (enabled);
+        dec_base_button.set_sensitive (enabled);
+        oct_base_button.set_sensitive (enabled);
 
         if (!enabled)
             return;
@@ -278,23 +288,13 @@ public class MathButtons : Gtk.Box
         }
 
         var number_base = equation.number_base;
-        var label = "";
-        if (number_base != 8)
-            label += "%llo₈".printf (bits);
-        if (number_base != 10)
-        {
-            if (label != "")
-                label += " = ";
-            label += "%llu₁₀".printf (bits);
-        }
-        if (number_base != 16)
-        {
-            if (label != "")
-                label += " = ";
-            label += "%llX₁₆".printf (bits);
-        }
+        hex_base_button.set_visible (number_base != 16);
+        dec_base_button.set_visible (number_base != 10);
+        oct_base_button.set_visible (number_base != 8);
 
-        base_label.set_text (label);
+        update_base_button(hex_base_button, "%llx".printf (bits), "₁₆");
+        update_base_button(dec_base_button, "%llu".printf (bits), "₁₀");
+        update_base_button(oct_base_button, "%llo".printf (bits), "₈");
     }
 
     private void base_combobox_changed_cb (Gtk.ComboBox combo)
@@ -312,6 +312,12 @@ public class MathButtons : Gtk.Box
         base_combo.active_id = _programming_base.to_string ();
         update_bit_panel ();
         
+    }
+
+    private void copy_conv_base_to_clipboard (Gtk.Button button)
+    {
+        Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
+        clipboard.set_text (button.get_data<string> ("value"));
     }
 
     private void update_view_more_visible ()
@@ -494,12 +500,14 @@ public class MathButtons : Gtk.Box
 
         if (mode == ButtonMode.PROGRAMMING)
         {
-            base_label = builder.get_object ("base_label") as Gtk.Label;
             character_code_dialog = builder.get_object ("character_code_dialog") as Gtk.Dialog;
             character_code_dialog.response.connect (character_code_dialog_response_cb);
             character_code_dialog.close_request.connect (character_code_dialog_close_request);
             character_code_entry = builder.get_object ("character_code_entry") as Gtk.Entry;
             character_code_entry.activate.connect (character_code_dialog_activate_cb);
+            hex_base_button = builder.get_object ("hex_base_button") as Gtk.Button;
+            dec_base_button = builder.get_object ("dec_base_button") as Gtk.Button;
+            oct_base_button = builder.get_object ("oct_base_button") as Gtk.Button;
 
             bit_panel = builder.get_object ("bit_table") as Gtk.Widget;
             bit_panel.set_direction (Gtk.TextDirection.LTR);
@@ -518,6 +526,9 @@ public class MathButtons : Gtk.Box
             word_size_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
             base_combo = builder.get_object ("base_combo") as Gtk.ComboBox;
             base_combo.changed.connect (base_combobox_changed_cb);
+            hex_base_button.clicked.connect (copy_conv_base_to_clipboard);
+            dec_base_button.clicked.connect (copy_conv_base_to_clipboard);
+            oct_base_button.clicked.connect (copy_conv_base_to_clipboard);
             equation.notify["number-base"].connect ((pspec) => { base_changed_cb (); } );
             base_changed_cb ();
             word_size_changed_cb ();
