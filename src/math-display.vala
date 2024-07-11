@@ -23,7 +23,7 @@ public class MathDisplay : Gtk.Box
     Gtk.EventControllerKey event_controller;
 
     /* Spinner widget that shows if we're calculating a response */
-    Gtk.Spinner spinner;
+    Adw.Spinner spinner;
     public bool completion_visible { get; set;}
     public bool completion_selected { get; set;}
 
@@ -79,7 +79,7 @@ public class MathDisplay : Gtk.Box
         info_box.append (info_view);
         info_buffer = info_view.get_buffer ();
 
-        spinner = new Gtk.Spinner ();
+        spinner = new Adw.Spinner ();
         info_box.append (spinner);
 
         equation.notify["status"].connect ((pspec) => { status_changed_cb (); });
@@ -438,12 +438,10 @@ public class MathDisplay : Gtk.Box
         if (equation.in_solve && !spinner.get_visible ())
         {
             spinner.show ();
-            spinner.start ();
         }
         else if (!equation.in_solve && spinner.get_visible ())
         {
             spinner.hide ();
-            spinner.stop ();
         }
     }
 
