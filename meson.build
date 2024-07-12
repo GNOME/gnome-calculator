@@ -90,7 +90,7 @@ if get_option ('gcalc')
 subdir('gcalc')
 endif
 if not get_option ('disable-ui')
-gtk = dependency('gtk4', version: '>= 4.11.4')
+gtk = dependency('gtk4', version: '>= 4.15.2')
 
 if get_option('gci') and get_option('gcalc')
 subdir('gci')
@@ -103,7 +103,7 @@ gnome.post_install(
   gtk_update_icon_cache: true,
 )
 
-libadwaita = dependency('libadwaita-1', version: '>= 1.5')
+libadwaita = dependency('libadwaita-1', version: '>= 1.6.beta')
 gtksourceview = dependency('gtksourceview-5', version: '>= 5.3.0')
 subdir('data')
 subdir('lib')
