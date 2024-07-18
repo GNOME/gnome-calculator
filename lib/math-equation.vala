@@ -1111,7 +1111,7 @@ public class MathEquation : GtkSource.Buffer
                 }
                 else if (error_token != null) // should always be run
                 {
-                    solvedata.error = _("%s").printf (error_token);
+                    solvedata.error = "%s".printf (error_token);
                     solvedata.error_start = error_start;
                     solvedata.error_end = error_end;
                 }
