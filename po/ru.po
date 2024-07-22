@@ -27,8 +27,8 @@ msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2024-06-03 21:35+0000\n"
-"PO-Revision-Date: 2024-06-22 13:21+0300\n"
+"POT-Creation-Date: 2024-07-05 21:57+0000\n"
+"PO-Revision-Date: 2024-07-06 12:28+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -544,7 +544,7 @@ msgid "United Nations Treasury"
 msgstr "Казначейство ООН"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:231
+#: lib/equation-lexer.vala:734 src/math-converter.vala:234
 msgid "in"
 msgstr "в"
 
@@ -2461,86 +2461,131 @@ msgid "Joule,J,joule,joules"
 msgstr "Джоуль, Дж, джоуль, джоули"
 
 #: lib/unit.vala:147
+msgid "Kilojoules"
+msgstr "Килоджоули"
+
+#: lib/unit.vala:147
+#, c-format
+msgctxt "unit-format"
+msgid "%s KJ"
+msgstr "%s кДж"
+
+#: lib/unit.vala:147
+msgctxt "unit-symbols"
+msgid "KJ,kilojoules,kilojoule"
+msgstr "кДж, килоджоули, килоджоуль"
+
+#: lib/unit.vala:148
+msgid "Megajoules"
+msgstr "Мегаджоули"
+
+#: lib/unit.vala:148
+#, c-format
+msgctxt "unit-format"
+msgid "%s MJ"
+msgstr "%s МДж"
+
+#: lib/unit.vala:148
+msgctxt "unit-symbols"
+msgid "MJ,megajoules,megajoule"
+msgstr "МДж, мегаджоули, мегаджоуль"
+
+#: lib/unit.vala:149
+msgid "KilowattHour"
+msgstr "Киловатт-час"
+
+#: lib/unit.vala:149
+#, c-format
+msgctxt "unit-format"
+msgid "%s kWh"
+msgstr "%s кВтч"
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "kwh,kWh,kilowatt-hour,kilowatthour"
+msgstr "кВтч, киловатт-час, кВт⋅ч"
+
+#: lib/unit.vala:150
 msgid "BTU"
 msgstr "БТЕ"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 #, c-format
 msgctxt "unit-format"
 msgid "%s BTU"
 msgstr "%s БТЕ"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "бте, БТЕ"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgid "Calorie"
 msgstr "Калорийность"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 #, c-format
 msgctxt "unit-format"
 msgid "%s cal"
 msgstr "%s кал"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "калории, калорийность, кал"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgid "Erg"
 msgstr "Эрг"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 #, c-format
 msgctxt "unit-format"
 msgid "%s erg"
 msgstr "%s эрг"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "эрг"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgid "eV"
 msgstr "эВ"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 #, c-format
 msgctxt "unit-format"
 msgid "%s ev"
 msgstr "%s эВ"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "электронвольт, электронвольты, эВ"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgid "Ft-lb"
 msgstr "Фут-фунт"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft-lb"
 msgstr "%s фут-фунт"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "фут-фунт, фут-фунты"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:156
 msgid "Currency"
 msgstr "Валюта"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:159
+#: lib/unit.vala:162
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
@@ -3193,8 +3238,8 @@ msgstr "Вы уверены, что хотите закрыть все откр�
 msgid "Close _All"
 msgstr "Закрыть _все"
 
-#: src/math-buttons.vala:232 src/math-buttons.vala:594
-#: src/math-buttons.vala:610
+#: src/math-buttons.vala:232 src/math-buttons.vala:635
+#: src/math-buttons.vala:651
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -3215,19 +3260,19 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:612
+#: src/math-display.vala:613
 msgid "Defined Functions"
 msgstr "Определенные функции"
 
-#: src/math-display.vala:657
+#: src/math-display.vala:658
 msgid "Built-in keywords"
 msgstr "Встроенные ключевые слова"
 
-#: src/math-display.vala:701
+#: src/math-display.vala:702
 msgid "Defined currencies"
 msgstr "Определенные валюты"
 
-#: src/math-display.vala:751
+#: src/math-display.vala:752
 msgid "Defined Variables"
 msgstr "Определенные переменные"
 
@@ -3473,6 +3518,19 @@ msgstr "Имя переменной"
 #: src/ui/math-variable-popover.ui:39
 msgid "Store value into existing or new variable"
 msgstr "Сохранить значение в новой или существующей переменной"
+
+#: src/math-variable-popover.vala:94
+#, c-format
+msgid "%s: Invalid variable name, can not start with a digit"
+msgstr "%s: Недопустимое имя переменной, не может начинаться с цифры"
+
+#: src/math-variable-popover.vala:98
+#, c-format
+msgid ""
+"%s: Invalid variable name, can only contain digits, letters and underscores"
+msgstr ""
+"%s: Недопустимое имя переменной, может содержать только цифры, буквы и "
+"символы подчеркивания"
 
 #: src/ui/math-window.ui:20 src/math-window.vala:116
 msgid "Basic"
