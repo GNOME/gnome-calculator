@@ -854,7 +854,7 @@ public class Number : GLib.Object
         var len = text.length;
         var offset = wordlen / 4;
         offset = len > offset ? (int) len - offset: 0;
-        return mp_set_from_string (text.substring (offset), 16);
+        return mp_set_from_string (text.substring (offset), 16, false);
     }
 
     /* Sets z = x shifted by 'count' bits.  Positive shift increases the value, negative decreases */
@@ -1182,7 +1182,7 @@ public class Number : GLib.Object
             text_out[offset_out] = digits[bitwise_operator (v1, v2)];
         }
 
-        return mp_set_from_string ((string) text_out, 16);
+        return mp_set_from_string ((string) text_out, 16, false);
     }
 
     private int hex_to_int (char digit)
@@ -1230,7 +1230,7 @@ private static int parse_literal_prefix (string str, ref int prefix_len)
 // FIXME: Re-add overflow and underflow detection
 
 /* Sets z from a string representation in 'text'. */
-public Number? mp_set_from_string (string str, int default_base = 10)
+public Number? mp_set_from_string (string str, int default_base = 10, bool may_have_prefix = true)
 {
     if (str.index_of_char ('°') >= 0)
         return set_from_sexagesimal (str);
@@ -1264,7 +1264,8 @@ public Number? mp_set_from_string (string str, int default_base = 10)
         base_multiplier *= 10;
     }
 
-    literal_base = parse_literal_prefix (str, ref base_prefix);
+    if (may_have_prefix)
+        literal_base = parse_literal_prefix (str, ref base_prefix);
 
     if (number_base != 0 && literal_base != 0 && literal_base != number_base)
         return null;
