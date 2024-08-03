@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2024-06-03 21:35+0000\n"
-"PO-Revision-Date: 2024-06-28 15:20+0200\n"
+"POT-Creation-Date: 2024-08-03 07:53+0000\n"
+"PO-Revision-Date: 2024-08-03 16:04+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -530,7 +530,7 @@ msgid "United Nations Treasury"
 msgstr "Egyesült Nemzetek Kincstára"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:231
+#: lib/equation-lexer.vala:734 src/math-converter.vala:234
 msgid "in"
 msgstr "hány"
 
@@ -547,7 +547,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Hiba: a periódusok számának pozitívnak kell lennie"
 
 #: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
-#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1925
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1941
 msgid "Logarithm"
 msgstr "Logaritmus"
 
@@ -2444,91 +2444,149 @@ msgid "Joule,J,joule,joules"
 msgstr "Joule,J,joule"
 
 #: lib/unit.vala:147
+#| msgid "Kilobytes"
+msgid "Kilojoules"
+msgstr "Kilojoule"
+
+#: lib/unit.vala:147
+#, c-format
+#| msgctxt "unit-format"
+#| msgid "%s K"
+msgctxt "unit-format"
+msgid "%s KJ"
+msgstr "%s KJ"
+
+#: lib/unit.vala:147
+#| msgctxt "unit-symbols"
+#| msgid "Joule,J,joule,joules"
+msgctxt "unit-symbols"
+msgid "KJ,kilojoules,kilojoule"
+msgstr "KJ,Kilojoule,kilojoule"
+
+#: lib/unit.vala:148
+#| msgid "Megabytes"
+msgid "Megajoules"
+msgstr "Megajoule"
+
+#: lib/unit.vala:148
+#, c-format
+#| msgctxt "unit-format"
+#| msgid "%s Mb"
+msgctxt "unit-format"
+msgid "%s MJ"
+msgstr "%s MJ"
+
+#: lib/unit.vala:148
+#| msgctxt "unit-symbols"
+#| msgid "Joule,J,joule,joules"
+msgctxt "unit-symbols"
+msgid "MJ,megajoules,megajoule"
+msgstr "MJ,Megajoule,megajoule"
+
+#: lib/unit.vala:149
+msgid "KilowattHour"
+msgstr "Kilowattóra"
+
+#: lib/unit.vala:149
+#, c-format
+#| msgctxt "unit-format"
+#| msgid "%s km/h"
+msgctxt "unit-format"
+msgid "%s kWh"
+msgstr "%s kWh"
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "kwh,kWh,kilowatt-hour,kilowatthour"
+msgstr "kwh,kWh,kilowattóra"
+
+#: lib/unit.vala:150
 msgid "BTU"
 msgstr "BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 #, c-format
 msgctxt "unit-format"
 msgid "%s BTU"
 msgstr "%s BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU,brit hőegység"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgid "Calorie"
 msgstr "Kalória"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 #, c-format
 msgctxt "unit-format"
 msgid "%s cal"
 msgstr "%s cal"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "kalória,cal"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgid "Erg"
 msgstr "Erg"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 #, c-format
 msgctxt "unit-format"
 msgid "%s erg"
 msgstr "%s erg"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "erg"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgid "eV"
 msgstr "eV"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 #, c-format
 msgctxt "unit-format"
 msgid "%s ev"
 msgstr "%s eV"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "elektronvolt,eV"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgid "Ft-lb"
 msgstr "Ft-lb"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft-lb"
 msgstr "%s ft-lb"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "láb-font,ft-lb,ft-lbs"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:156
 msgid "Currency"
 msgstr "Pénznem"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:159
+#: lib/unit.vala:162
 #, c-format
 msgid "%s%%s"
 msgstr "%%s %s"
 
-#: search-provider/search-provider.vala:199
+#: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:37
+#: src/ui/buttons-programming.ui:42 src/ui/buttons-programming.ui:47
 msgid "Copy"
 msgstr "Másolás"
 
@@ -2537,37 +2595,37 @@ msgid "Copy result to clipboard"
 msgstr "Eredmény másolása a vágólapra"
 
 #: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
-#: src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-programming.ui:1665
 msgid "Modulus divide"
 msgstr "Maradékos osztás"
 
 #: src/ui/buttons-advanced.ui:139 src/ui/buttons-basic.ui:145
-#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1269
+#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1285
 msgid "Divide [/]"
 msgstr "Osztás [/]"
 
 #: src/ui/buttons-advanced.ui:235 src/ui/buttons-basic.ui:247
-#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1286
+#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1302
 msgid "Multiply [*]"
 msgstr "Szorzás [*]"
 
 #: src/ui/buttons-advanced.ui:252 src/ui/buttons-basic.ui:265
-#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1303
+#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1319
 msgid "Subtract [-]"
 msgstr "Kivonás [-]"
 
 #: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:282
-#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1319
+#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1335
 msgid "Add [+]"
 msgstr "Összeadás [+]"
 
 #: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:299
-#: src/ui/buttons-programming.ui:1247
+#: src/ui/buttons-programming.ui:1263
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Ctrl+P]"
 
 #: src/ui/buttons-advanced.ui:307 src/ui/buttons-basic.ui:323
-#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1231
+#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1247
 msgid "Root [Ctrl+R]"
 msgstr "Gyök [Ctrl+R]"
 
@@ -2576,17 +2634,17 @@ msgid "Square [Ctrl+2]"
 msgstr "Négyzet [Ctrl+2]"
 
 #: src/ui/buttons-advanced.ui:343 src/ui/buttons-basic.ui:361
-#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1352
+#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1368
 msgid "Clear Display [Escape]"
 msgstr "A kijelző törlése [Esc]"
 
 #: src/ui/buttons-advanced.ui:359 src/ui/buttons-basic.ui:378
-#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1665
+#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1681
 msgid "Start Group [(]"
 msgstr "Csoport kezdete [(]"
 
 #: src/ui/buttons-advanced.ui:376 src/ui/buttons-basic.ui:396
-#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1681
+#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1697
 msgid "End Group [)]"
 msgstr "Csoport vége [)]"
 
@@ -2597,12 +2655,12 @@ msgstr "Százalék [%]"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 #: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
-#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
+#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1349
 msgid "="
 msgstr "="
 
 #: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
-#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
+#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1352
 msgid "Calculate Result"
 msgstr "Számítás elvégzése"
 
@@ -2614,7 +2672,7 @@ msgstr "Alsó index mód [Alt]"
 msgid "Superscript Mode [Ctrl]"
 msgstr "Felső index mód [Ctrl]"
 
-#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2036
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2052
 msgid "Factorize [Ctrl+F]"
 msgstr "Faktorizálás [Ctrl+F]"
 
@@ -2635,11 +2693,11 @@ msgid "Hyperbolic Tangent"
 msgstr "Tangens hiperbolikusz"
 
 #: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
-#: src/ui/buttons-programming.ui:1881
+#: src/ui/buttons-programming.ui:1897
 msgid "Exponent [^ or **]"
 msgstr "Kitevő [^ vagy **]"
 
-#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1902
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1918
 msgid "Inverse [Ctrl+I]"
 msgstr "Invertálás [Ctrl+I]"
 
@@ -2651,11 +2709,11 @@ msgstr "Euler-szám"
 msgid "Natural Logarithm"
 msgstr "Természetes alapú logaritmus"
 
-#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1957
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1973
 msgid "Factorial [!]"
 msgstr "Faktoriális [!]"
 
-#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1979
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1995
 msgid "Absolute Value [|]"
 msgstr "Abszolút érték [|]"
 
@@ -2680,13 +2738,13 @@ msgid "Complex Argument"
 msgstr "Komplex argumentum"
 
 #: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
-#: src/ui/buttons-programming.ui:2067
+#: src/ui/buttons-programming.ui:2083
 msgid "Memory"
 msgstr "Memória"
 
 #. The label on the memory button
 #: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
-#: src/ui/buttons-programming.ui:2066
+#: src/ui/buttons-programming.ui:2082
 msgid "x"
 msgstr "x"
 
@@ -2742,7 +2800,7 @@ msgstr "Jö_vőérték:"
 #: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
 #: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
 #: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
-#: src/ui/buttons-programming.ui:2143 src/gnome-calculator.vala:326
+#: src/ui/buttons-programming.ui:2159 src/gnome-calculator.vala:326
 msgid "_Cancel"
 msgstr "_Mégse"
 
@@ -3056,74 +3114,74 @@ msgstr "Decimális"
 msgid "Hexadecimal"
 msgstr "Hexadecimális"
 
-#: src/ui/buttons-programming.ui:1709
+#: src/ui/buttons-programming.ui:1725
 msgid "Subscript mode [Alt]"
 msgstr "Alsó index mód [Alt]"
 
-#: src/ui/buttons-programming.ui:1730
+#: src/ui/buttons-programming.ui:1746
 msgid "Superscript mode [Ctrl]"
 msgstr "Felső index mód [Ctrl]"
 
-#: src/ui/buttons-programming.ui:1751
+#: src/ui/buttons-programming.ui:1767
 msgid "Shift Left"
 msgstr "Balra csúsztatás"
 
-#: src/ui/buttons-programming.ui:1766
+#: src/ui/buttons-programming.ui:1782
 msgid "Shift Right"
 msgstr "Jobbra csúsztatás"
 
-#: src/ui/buttons-programming.ui:1782
+#: src/ui/buttons-programming.ui:1798
 msgid "Boolean Exclusive OR"
 msgstr "Logikai kizáró VAGY"
 
-#: src/ui/buttons-programming.ui:1798
+#: src/ui/buttons-programming.ui:1814
 msgid "Boolean OR"
 msgstr "Logikai VAGY"
 
-#: src/ui/buttons-programming.ui:1815
+#: src/ui/buttons-programming.ui:1831
 msgid "Boolean AND"
 msgstr "Logikai ÉS"
 
-#: src/ui/buttons-programming.ui:1832
+#: src/ui/buttons-programming.ui:1848
 msgid "Boolean NOT"
 msgstr "Logikai NEM"
 
-#: src/ui/buttons-programming.ui:1849
+#: src/ui/buttons-programming.ui:1865
 msgid "Ones’ Complement"
 msgstr "1-es komplemens"
 
-#: src/ui/buttons-programming.ui:1866
+#: src/ui/buttons-programming.ui:1882
 msgid "Two’s Complement"
 msgstr "2-es komplemens"
 
-#: src/ui/buttons-programming.ui:1942
+#: src/ui/buttons-programming.ui:1958
 msgid "Binary Logarithm"
 msgstr "Kettes alapú logaritmus"
 
-#: src/ui/buttons-programming.ui:2002
+#: src/ui/buttons-programming.ui:2018
 msgid "Integer Component"
 msgstr "Egész rész"
 
-#: src/ui/buttons-programming.ui:2019
+#: src/ui/buttons-programming.ui:2035
 msgid "Fractional Component"
 msgstr "Törtrész"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2051 src/ui/buttons-programming.ui:2105
+#: src/ui/buttons-programming.ui:2067 src/ui/buttons-programming.ui:2121
 msgid "Insert Character Code"
 msgstr "Karakterkód beszúrása"
 
-#: src/ui/buttons-programming.ui:2082
+#: src/ui/buttons-programming.ui:2098
 msgid "Change word size"
 msgstr "Szóhossz módosítása"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2119
+#: src/ui/buttons-programming.ui:2135
 msgid "Ch_aracter:"
 msgstr "K_arakter:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2149
+#: src/ui/buttons-programming.ui:2165
 msgid "_Insert"
 msgstr "_Beszúrás"
 
@@ -3170,7 +3228,6 @@ msgid "Exchange rates data by %s"
 msgstr "Árfolyamadatok – %s"
 
 #: src/gnome-calculator.vala:325
-#| msgid "Close _All"
 msgid "Close All?"
 msgstr "Az összeset bezárja?"
 
@@ -3182,8 +3239,8 @@ msgstr "Biztosan be szeretné zárni az összes nyitott ablakot?"
 msgid "Close _All"
 msgstr "Ö_sszes bezárása"
 
-#: src/math-buttons.vala:232 src/math-buttons.vala:594
-#: src/math-buttons.vala:610
+#: src/math-buttons.vala:234 src/math-buttons.vala:646
+#: src/math-buttons.vala:662
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -3203,19 +3260,19 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:612
+#: src/math-display.vala:611
 msgid "Defined Functions"
 msgstr "Definiált függvények"
 
-#: src/math-display.vala:657
+#: src/math-display.vala:656
 msgid "Built-in keywords"
 msgstr "Beépített kulcsszavak"
 
-#: src/math-display.vala:701
+#: src/math-display.vala:700
 msgid "Defined currencies"
 msgstr "Definiált pénznemek"
 
-#: src/math-display.vala:751
+#: src/math-display.vala:750
 msgid "Defined Variables"
 msgstr "Definiált változók"
 
@@ -3462,6 +3519,19 @@ msgstr "Változónév"
 msgid "Store value into existing or new variable"
 msgstr "Érték tárolása meglévő vagy új változóban"
 
+#: src/math-variable-popover.vala:94
+#, c-format
+msgid "%s: Invalid variable name, can not start with a digit"
+msgstr "%s: érvénytelen változónév, nem kezdődhet számjeggyel"
+
+#: src/math-variable-popover.vala:98
+#, c-format
+msgid ""
+"%s: Invalid variable name, can only contain digits, letters and underscores"
+msgstr ""
+"%s: érvénytelen változónév, csak számjegyeket, betűket és aláhúzás"
+" karaktereket tartalmazhat"
+
 #: src/ui/math-window.ui:20 src/math-window.vala:116
 msgid "Basic"
 msgstr "Alap"
@@ -3487,7 +3557,6 @@ msgid "_New Window"
 msgstr "Ú_j ablak"
 
 #: src/ui/math-window.ui:56
-#| msgid "Number format"
 msgid "Result format"
 msgstr "Eredmény formátuma"
 
@@ -3532,7 +3601,6 @@ msgid "Mode Selection"
 msgstr "Módválasztás"
 
 #: src/ui/math-window.ui:130
-#| msgid "Undo"
 msgid "_Undo"
 msgstr "_Visszavonás"
 
