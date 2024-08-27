@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2024-01-06 14:21+0000\n"
-"PO-Revision-Date: 2024-01-18 04:22+0330\n"
+"POT-Creation-Date: 2024-07-05 21:57+0000\n"
+"PO-Revision-Date: 2024-08-27 14:34+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -20,12 +20,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-DamnedLies-Scope: partial\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:82
-#: src/gnome-calculator.vala:302 src/ui/math-window.ui:107
+#: src/gnome-calculator.vala:300 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "ماشین‌حساب"
 
@@ -96,7 +96,7 @@ msgid "Keyboard Mode"
 msgstr "حالت صفحه‌کلید"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:304
+#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:302
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
@@ -149,7 +149,7 @@ msgstr ""
 "اینکه آیا صفرهای انتهایی بعد از اعشار باید در مقدار نمایش داده شده نشان داده "
 "شود یا خیر."
 
-#: data/org.gnome.calculator.gschema.xml:52 src/ui/math-window.ui:56
+#: data/org.gnome.calculator.gschema.xml:52
 msgid "Number format"
 msgstr "قالب عدد"
 
@@ -502,6 +502,10 @@ msgid "Uruguayan Peso"
 msgstr "پزوی اروگوئه"
 
 #: lib/currency.vala:127
+msgid "Vietnamese Dong"
+msgstr "دونگ ویتنام"
+
+#: lib/currency.vala:128
 msgid "South African Rand"
 msgstr "رند آفریقای جنوبی"
 
@@ -522,7 +526,7 @@ msgid "United Nations Treasury"
 msgstr "خزانه‌داری ملل متّحد"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:231
+#: lib/equation-lexer.vala:734 src/math-converter.vala:234
 msgid "in"
 msgstr "به,in"
 
@@ -539,7 +543,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "خطا: تعداد دوره‌ها باید مثبت باشند"
 
 #: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
-#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1925
 msgid "Logarithm"
 msgstr "لگاریتم"
 
@@ -676,74 +680,74 @@ msgid "Two's complement"
 msgstr "مکمل دو"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+#: lib/math-equation.vala:73 lib/math-equation.vala:1416
 msgid "Displayed value not an integer"
 msgstr "مقدار نمایش داده شده عددی نیست"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:211
+#: lib/math-equation.vala:216
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "۰,۱,۲,۳,۴,۵,۶,۷,۸,۹,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:579
+#: lib/math-equation.vala:584
 msgid "No undo history"
 msgstr "بدون تاریخچهٔ برگردان"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:600
+#: lib/math-equation.vala:605
 msgid "No redo history"
 msgstr "بدون تاریخچهٔ انجام دوباره"
 
-#: lib/math-equation.vala:831
+#: lib/math-equation.vala:836
 msgid "No sane value to store"
 msgstr "مقدار معقولی برای ذخیره کردن موجود نیست"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1080
+#: lib/math-equation.vala:1085
 msgid "Overflow. Try a bigger word size"
 msgstr "سرریز. یک کلمه با اندازهٔ بزرگ‌تر امتحان کنید"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "متغیر ناشناس «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1092
+#: lib/math-equation.vala:1097
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "تابع «%s» تعریف نشد است"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1099
+#: lib/math-equation.vala:1104
 msgid "Unknown conversion"
 msgstr "تبدیل ناشناس"
 
 #. should always be run
-#: lib/math-equation.vala:1109
+#: lib/math-equation.vala:1114
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
+#: lib/math-equation.vala:1119 lib/math-equation.vala:1124
 msgid "Malformed expression"
 msgstr "عبارت معیوب"
 
-#: lib/math-equation.vala:1130
+#: lib/math-equation.vala:1135
 msgid "Calculating"
 msgstr "در حال محاسبه"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1323
+#: lib/math-equation.vala:1328
 msgid "Need an integer to factorize"
 msgstr "یک عدد صحیح جهت فاکتورگیری لازم است"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1387
+#: lib/math-equation.vala:1392
 msgid "No sane value to bitwise shift"
 msgstr "مقدار معقولی برای تبدیل عملگر بیتی نیست"
 
@@ -2430,86 +2434,131 @@ msgid "Joule,J,joule,joules"
 msgstr "Joule,J,joule,joules,ژول"
 
 #: lib/unit.vala:147
+msgid "Kilojoules"
+msgstr "کیلوژولکیلوبایت"
+
+#: lib/unit.vala:147
+#, c-format
+msgctxt "unit-format"
+msgid "%s KJ"
+msgstr "%s KJ"
+
+#: lib/unit.vala:147
+msgctxt "unit-symbols"
+msgid "KJ,kilojoules,kilojoule"
+msgstr "KJ,kilojoules,kilojoule,کیلوژول"
+
+#: lib/unit.vala:148
+msgid "Megajoules"
+msgstr "مگاژول"
+
+#: lib/unit.vala:148
+#, c-format
+msgctxt "unit-format"
+msgid "%s MJ"
+msgstr "%s MJ"
+
+#: lib/unit.vala:148
+msgctxt "unit-symbols"
+msgid "MJ,megajoules,megajoule"
+msgstr "MJ,megajoules,megajoule,مگاژول"
+
+#: lib/unit.vala:149
+msgid "KilowattHour"
+msgstr "کیلووات‌ساعت"
+
+#: lib/unit.vala:149
+#, c-format
+msgctxt "unit-format"
+msgid "%s kWh"
+msgstr "%s kWh"
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "kwh,kWh,kilowatt-hour,kilowatthour"
+msgstr "kwh,kWh,kilowatt-hour,kilowatthour,ک‌وس,کیلووات-ساعت"
+
+#: lib/unit.vala:150
 msgid "BTU"
 msgstr "واحد گرمایی بریتانیا"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 #, c-format
 msgctxt "unit-format"
 msgid "%s BTU"
 msgstr "%s BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgid "Calorie"
 msgstr "کالری"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 #, c-format
 msgctxt "unit-format"
 msgid "%s cal"
 msgstr "%s cal"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "calories,calorie,cal,کالری"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgid "Erg"
 msgstr "اِرگ"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 #, c-format
 msgctxt "unit-format"
 msgid "%s erg"
 msgstr "%s erg"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "ergs,erg,ارگ"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgid "eV"
 msgstr "eV"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 #, c-format
 msgctxt "unit-format"
 msgid "%s ev"
 msgstr "%s ev"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "electronvolt,electronvolts,ev,الکترون‌ولت"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgid "Ft-lb"
 msgstr "پا-پوند"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft-lb"
 msgstr "%s ft-lb"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "foot-pound,foot-pounds,ft-lb,ft-lbs,پا-پوند"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:156
 msgid "Currency"
 msgstr "ارز"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:159
+#: lib/unit.vala:162
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
@@ -2600,7 +2649,7 @@ msgstr "حالت زیرنویس [Alt]"
 msgid "Superscript Mode [Ctrl]"
 msgstr "حالت بالانویس [Ctrl]"
 
-#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2036
 msgid "Factorize [Ctrl+F]"
 msgstr "فاکتور [Ctrl+F]"
 
@@ -2621,11 +2670,11 @@ msgid "Hyperbolic Tangent"
 msgstr "تانژانت هذلولی"
 
 #: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
-#: src/ui/buttons-programming.ui:1877
+#: src/ui/buttons-programming.ui:1881
 msgid "Exponent [^ or **]"
 msgstr "توان [^ یا **]"
 
-#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1902
 msgid "Inverse [Ctrl+I]"
 msgstr "وارون [Ctrl+I]"
 
@@ -2637,11 +2686,11 @@ msgstr "عدد اویلر"
 msgid "Natural Logarithm"
 msgstr "لگاریتم طبیعی"
 
-#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1957
 msgid "Factorial [!]"
 msgstr "فاکتوریل [!]"
 
-#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1979
 msgid "Absolute Value [|]"
 msgstr "قدر مطلق [|]"
 
@@ -2666,13 +2715,13 @@ msgid "Complex Argument"
 msgstr "شناسهٔ مختلط"
 
 #: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
-#: src/ui/buttons-programming.ui:2063
+#: src/ui/buttons-programming.ui:2067
 msgid "Memory"
 msgstr "حافظه"
 
 #. The label on the memory button
 #: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
-#: src/ui/buttons-programming.ui:2062
+#: src/ui/buttons-programming.ui:2066
 msgid "x"
 msgstr "x"
 
@@ -2727,7 +2776,7 @@ msgstr "مقدار آ_ینده:"
 #: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
 #: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
 #: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
-#: src/ui/buttons-programming.ui:2139
+#: src/ui/buttons-programming.ui:2143 src/gnome-calculator.vala:326
 msgid "_Cancel"
 msgstr "_لغو"
 
@@ -3048,62 +3097,62 @@ msgstr "حالت بالانویس [Ctrl]"
 msgid "Shift Left"
 msgstr "انتقال به چپ"
 
-#: src/ui/buttons-programming.ui:1764
+#: src/ui/buttons-programming.ui:1766
 msgid "Shift Right"
 msgstr "انتقال به راست"
 
-#: src/ui/buttons-programming.ui:1778
+#: src/ui/buttons-programming.ui:1782
 msgid "Boolean Exclusive OR"
 msgstr "مقدار بولی Exclusive OR"
 
-#: src/ui/buttons-programming.ui:1794
+#: src/ui/buttons-programming.ui:1798
 msgid "Boolean OR"
 msgstr "مقدار بولی OR"
 
-#: src/ui/buttons-programming.ui:1811
+#: src/ui/buttons-programming.ui:1815
 msgid "Boolean AND"
 msgstr "مقدار بولی AND"
 
-#: src/ui/buttons-programming.ui:1828
+#: src/ui/buttons-programming.ui:1832
 msgid "Boolean NOT"
 msgstr "مقدار بولی NOT"
 
-#: src/ui/buttons-programming.ui:1845
+#: src/ui/buttons-programming.ui:1849
 msgid "Ones’ Complement"
 msgstr "مکمل یک"
 
-#: src/ui/buttons-programming.ui:1862
+#: src/ui/buttons-programming.ui:1866
 msgid "Two’s Complement"
 msgstr "مکمل دو"
 
-#: src/ui/buttons-programming.ui:1938
+#: src/ui/buttons-programming.ui:1942
 msgid "Binary Logarithm"
 msgstr "لگاریتم دودویی"
 
-#: src/ui/buttons-programming.ui:1998
+#: src/ui/buttons-programming.ui:2002
 msgid "Integer Component"
 msgstr "جزء صحیح"
 
-#: src/ui/buttons-programming.ui:2015
+#: src/ui/buttons-programming.ui:2019
 msgid "Fractional Component"
 msgstr "جزء کسری"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
+#: src/ui/buttons-programming.ui:2051 src/ui/buttons-programming.ui:2105
 msgid "Insert Character Code"
 msgstr "درج کد نویسه"
 
-#: src/ui/buttons-programming.ui:2078
+#: src/ui/buttons-programming.ui:2082
 msgid "Change word size"
 msgstr "تغییر اندازهٔ واژه"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2115
+#: src/ui/buttons-programming.ui:2119
 msgid "Ch_aracter:"
 msgstr "_نویسه:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2145
+#: src/ui/buttons-programming.ui:2149
 msgid "_Insert"
 msgstr "_درج"
 
@@ -3125,12 +3174,12 @@ msgid "Show release version"
 msgstr "نمایش نگارش انتشار"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:307
 msgid "© 1986–2023 The Calculator authors"
 msgstr "© ۱۹۸۶-۲۰۲۳ نگارندگان ماشین‌حساب"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:315
+#: src/gnome-calculator.vala:313
 msgid "translator-credits"
 msgstr ""
 "آرش موسوی <mousavi.arash@gmail.com>\n"
@@ -3138,36 +3187,33 @@ msgstr ""
 "روزبه پورنادر <roozbeh@farsiweb.info> \n"
 "میلاد زکریا <meelad@farsiweb.info>"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 msgid "Exchange rate data providers"
 msgstr "فراهم کنندگان داده‌های نرخ تبادل"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "داده‌های نرخ تبادل از سوی %s"
 
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:325
+msgid "Close All?"
+msgstr "بستن همه؟"
+
+#: src/gnome-calculator.vala:325
 msgid "Are you sure you want to close all open windows?"
 msgstr "مطمئنید که می‌خواهید همهٔ پنجره‌های باز را ببندید؟"
 
-#: src/gnome-calculator.vala:330
+#: src/gnome-calculator.vala:327
 msgid "Close _All"
 msgstr "خروج _همه"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:612 src/math-buttons.vala:628
+#: src/math-buttons.vala:232 src/math-buttons.vala:635 src/math-buttons.vala:651
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%Idبیتی"
 msgstr[1] "%Idبیتی"
-
-#: src/math-buttons.vala:597
-#, c-format
-msgid "%d place"
-msgid_plural "%d places"
-msgstr[0] "%Id رقم"
-msgstr[1] "%Id رقم"
 
 #: src/ui/math-converter.ui:42
 msgid " to "
@@ -3182,19 +3228,19 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:611
+#: src/math-display.vala:613
 msgid "Defined Functions"
 msgstr "توابع تعریفی"
 
-#: src/math-display.vala:656
+#: src/math-display.vala:658
 msgid "Built-in keywords"
 msgstr "کلیدواژگان توکار"
 
-#: src/math-display.vala:700
+#: src/math-display.vala:702
 msgid "Defined currencies"
 msgstr "ارزهای تعریفی"
 
-#: src/math-display.vala:750
+#: src/math-display.vala:752
 msgid "Defined Variables"
 msgstr "متغیّرهای تعریف‌شده"
 
@@ -3234,27 +3280,27 @@ msgstr "روزانه"
 msgid "Weekly"
 msgstr "هفتگی"
 
-#: src/ui/math-preferences.ui:19
+#: src/ui/math-preferences.ui:18
 msgid "Number of _decimals"
 msgstr "_تعداد اعشارها"
 
-#: src/ui/math-preferences.ui:28
+#: src/ui/math-preferences.ui:27
 msgid "Trailing _zeroes"
 msgstr "_صفرهای انتهایی"
 
-#: src/ui/math-preferences.ui:34
+#: src/ui/math-preferences.ui:33
 msgid "_Thousands separators"
 msgstr "جداساز _هزارها"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:39
 msgid "_Angle units"
 msgstr "یکاهای _زاویه"
 
-#: src/ui/math-preferences.ui:46
+#: src/ui/math-preferences.ui:45
 msgid "Word _size"
 msgstr "اندازهٔ _واژه"
 
-#: src/ui/math-preferences.ui:52
+#: src/ui/math-preferences.ui:51
 msgid "E_xchange rate refresh interval"
 msgstr "دورهٔ نوسازی نرخ تبادلی"
 
@@ -3441,23 +3487,34 @@ msgstr "نام متغیر"
 msgid "Store value into existing or new variable"
 msgstr "ذخیره مقدار در یک متغیر جدید یا موجود"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:113
+#: src/math-variable-popover.vala:94
+#, c-format
+msgid "%s: Invalid variable name, can not start with a digit"
+msgstr "%s: نام متغیّر نامعتبر. نمی‌تواند با رقم آغاز شود"
+
+#: src/math-variable-popover.vala:98
+#, c-format
+msgid ""
+"%s: Invalid variable name, can only contain digits, letters and underscores"
+msgstr "%s: نام متغیّر نامعتبر. فقط می‌تواند رقم، حرف و زیرخط داشته باشد"
+
+#: src/ui/math-window.ui:20 src/math-window.vala:116
 msgid "Basic"
 msgstr "ساده"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:119
+#: src/ui/math-window.ui:25 src/math-window.vala:122
 msgid "Advanced"
 msgstr "پیش‌رفته"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:125
+#: src/ui/math-window.ui:30 src/math-window.vala:128
 msgid "Financial"
 msgstr "مالی"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:131
+#: src/ui/math-window.ui:35 src/math-window.vala:134
 msgid "Programming"
 msgstr "برنامه‌نویسی"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:137
+#: src/ui/math-window.ui:40 src/math-window.vala:140
 msgid "Keyboard"
 msgstr "صفحه‌کلید"
 
@@ -3465,22 +3522,26 @@ msgstr "صفحه‌کلید"
 msgid "_New Window"
 msgstr "پنجرهٔ _جدید"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:56
+msgid "Result format"
+msgstr "قالب نتیجه"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
 msgid "_Automatic"
 msgstr "_خودکار"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
 msgid "_Fixed"
 msgstr "_ثابت"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:73
 msgid "_Scientific"
 msgstr "_علمی"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.ui:79
 msgid "_Engineering"
 msgstr "_مهندسی"
@@ -3505,17 +3566,25 @@ msgstr "دربارهٔ ماشین‌حساب"
 msgid "Mode Selection"
 msgstr "گزینش حالت"
 
-#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
-msgid "Undo"
-msgstr "برگردان"
+#: src/ui/math-window.ui:130
+msgid "_Undo"
+msgstr "_برگردان"
 
-#: src/ui/math-window.ui:144
+#: src/ui/math-window.ui:143
 msgid "Main Menu"
 msgstr "فهرست اصلی"
 
-#: src/math-window.vala:166
-msgid "_Quit"
-msgstr "_خروج"
+#, c-format
+#~ msgid "%d place"
+#~ msgid_plural "%d places"
+#~ msgstr[0] "%Id رقم"
+#~ msgstr[1] "%Id رقم"
+
+#~ msgid "Undo"
+#~ msgstr "برگردان"
+
+#~ msgid "_Quit"
+#~ msgstr "_خروج"
 
 #~ msgid "Ev"
 #~ msgstr "الکترون‌ولت"
@@ -4303,9 +4372,6 @@ msgstr "_خروج"
 
 #~ msgid "Insert ASCII value"
 #~ msgstr "درج مقدار ASCII"
-
-#~ msgid "_Undo"
-#~ msgstr "_برگردان"
 
 #~ msgid "_Redo"
 #~ msgstr "_دوباره"
