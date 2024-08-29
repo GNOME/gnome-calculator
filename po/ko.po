@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2024-01-22 07:53+0000\n"
-"PO-Revision-Date: 2024-03-10 22:36+0900\n"
+"POT-Creation-Date: 2024-07-05 21:57+0000\n"
+"PO-Revision-Date: 2024-08-29 20:53+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:82
-#: src/gnome-calculator.vala:302 src/ui/math-window.ui:107
+#: src/gnome-calculator.vala:300 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "계산기"
 
@@ -102,7 +102,7 @@ msgid "Keyboard Mode"
 msgstr "키보드 모드"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:304
+#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:302
 msgid "The GNOME Project"
 msgstr "그놈 프로젝트"
 
@@ -154,7 +154,7 @@ msgid ""
 "shown in the display value."
 msgstr "표시하는 값에서 소수점 뒤에 0을 표시할지 여부."
 
-#: data/org.gnome.calculator.gschema.xml:52 src/ui/math-window.ui:56
+#: data/org.gnome.calculator.gschema.xml:52
 msgid "Number format"
 msgstr "숫자 형식"
 
@@ -508,6 +508,10 @@ msgid "Uruguayan Peso"
 msgstr "우루과이 페소"
 
 #: lib/currency.vala:127
+msgid "Vietnamese Dong"
+msgstr "베트남 동"
+
+#: lib/currency.vala:128
 msgid "South African Rand"
 msgstr "남아프리카공화국 랜드"
 
@@ -529,7 +533,7 @@ msgstr "국제연합 재무부"
 
 # 번역할 수 없음: 이런 식으로 번역하게 만든 업스트림 잘못.
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:231
+#: lib/equation-lexer.vala:734 src/math-converter.vala:234
 msgid "in"
 msgstr "in"
 
@@ -547,7 +551,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "오류: 기간은 0보다 커야 합니다"
 
 #: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
-#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1925
 msgid "Logarithm"
 msgstr "로그"
 
@@ -684,75 +688,75 @@ msgid "Two's complement"
 msgstr "2의 보수"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+#: lib/math-equation.vala:73 lib/math-equation.vala:1416
 msgid "Displayed value not an integer"
 msgstr "표시 중인 값이 정수가 아닙니다"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:211
+#: lib/math-equation.vala:216
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:579
+#: lib/math-equation.vala:584
 msgid "No undo history"
 msgstr "실행 취소 기록 없음"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:600
+#: lib/math-equation.vala:605
 msgid "No redo history"
 msgstr "다시 실행 기록 없음"
 
-#: lib/math-equation.vala:831
+#: lib/math-equation.vala:836
 msgid "No sane value to store"
 msgstr "제대로 된 값을 저장할 수 없습니다"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1080
+#: lib/math-equation.vala:1085
 msgid "Overflow. Try a bigger word size"
 msgstr "오버플로우. 워드 크기를 늘려 보십시오"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "알 수 없는 변수 “%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1092
+#: lib/math-equation.vala:1097
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "“%s” 함수가 정의되지 않았습니다"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1099
+#: lib/math-equation.vala:1104
 msgid "Unknown conversion"
 msgstr "변환 불가"
 
 #. should always be run
-#: lib/math-equation.vala:1109
+#: lib/math-equation.vala:1114
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
+#: lib/math-equation.vala:1119 lib/math-equation.vala:1124
 msgid "Malformed expression"
 msgstr "수식 형식이 틀렸습니다"
 
 # status
-#: lib/math-equation.vala:1130
+#: lib/math-equation.vala:1135
 msgid "Calculating"
 msgstr "계산 중"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1323
+#: lib/math-equation.vala:1328
 msgid "Need an integer to factorize"
 msgstr "소인수 분해에는 정수 값이 필요합니다"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1387
+#: lib/math-equation.vala:1392
 msgid "No sane value to bitwise shift"
 msgstr "비트 쉬프트의 값이 올바르지 않습니다"
 
@@ -2441,86 +2445,131 @@ msgid "Joule,J,joule,joules"
 msgstr "Joule,J,joule,joules,줄"
 
 #: lib/unit.vala:147
+msgid "Kilojoules"
+msgstr "킬로줄"
+
+#: lib/unit.vala:147
+#, c-format
+msgctxt "unit-format"
+msgid "%s KJ"
+msgstr "%s KJ"
+
+#: lib/unit.vala:147
+msgctxt "unit-symbols"
+msgid "KJ,kilojoules,kilojoule"
+msgstr "KJ,kilojoules,kilojoule,킬로줄"
+
+#: lib/unit.vala:148
+msgid "Megajoules"
+msgstr "메가줄"
+
+#: lib/unit.vala:148
+#, c-format
+msgctxt "unit-format"
+msgid "%s MJ"
+msgstr "%s MJ"
+
+#: lib/unit.vala:148
+msgctxt "unit-symbols"
+msgid "MJ,megajoules,megajoule"
+msgstr "MJ,megajoules,megajoule,메가줄"
+
+#: lib/unit.vala:149
+msgid "KilowattHour"
+msgstr "킬로와트시"
+
+#: lib/unit.vala:149
+#, c-format
+msgctxt "unit-format"
+msgid "%s kWh"
+msgstr "%s kWh"
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "kwh,kWh,kilowatt-hour,kilowatthour"
+msgstr "kwh,kWh,kilowatt-hour,kilowatthour,킬로와트시"
+
+#: lib/unit.vala:150
 msgid "BTU"
 msgstr "BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 #, c-format
 msgctxt "unit-format"
 msgid "%s BTU"
 msgstr "%s BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgid "Calorie"
 msgstr "칼로리"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 #, c-format
 msgctxt "unit-format"
 msgid "%s cal"
 msgstr "%s cal"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "calories,calorie,cal,칼로리"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgid "Erg"
 msgstr "Erg"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 #, c-format
 msgctxt "unit-format"
 msgid "%s erg"
 msgstr "%s erg"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "ergs,erg"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgid "eV"
 msgstr "eV"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 #, c-format
 msgctxt "unit-format"
 msgid "%s ev"
 msgstr "%s ev"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "electronvolt,electronvolts,ev"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgid "Ft-lb"
 msgstr "Ft-lb"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft-lb"
 msgstr "%s ft-lb"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "foot-pound,foot-pounds,ft-lb,ft-lbs"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:156
 msgid "Currency"
 msgstr "통화"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:159
+#: lib/unit.vala:162
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
@@ -2612,7 +2661,7 @@ msgstr "아래 첨자 모드 [Alt]"
 msgid "Superscript Mode [Ctrl]"
 msgstr "위 첨자 모드 [Ctrl]"
 
-#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2036
 msgid "Factorize [Ctrl+F]"
 msgstr "소인수 분해 [Ctrl+F]"
 
@@ -2633,11 +2682,11 @@ msgid "Hyperbolic Tangent"
 msgstr "하이퍼볼릭 탄젠트"
 
 #: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
-#: src/ui/buttons-programming.ui:1877
+#: src/ui/buttons-programming.ui:1881
 msgid "Exponent [^ or **]"
 msgstr "지수 [^ 또는 **]"
 
-#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1902
 msgid "Inverse [Ctrl+I]"
 msgstr "역 삼각함수 [Ctrl+I]"
 
@@ -2649,11 +2698,11 @@ msgstr "오일러 수"
 msgid "Natural Logarithm"
 msgstr "자연로그"
 
-#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1957
 msgid "Factorial [!]"
 msgstr "팩토리얼 [!]"
 
-#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1979
 msgid "Absolute Value [|]"
 msgstr "절대값 [|]"
 
@@ -2679,13 +2728,13 @@ msgid "Complex Argument"
 msgstr "복소수 편각"
 
 #: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
-#: src/ui/buttons-programming.ui:2063
+#: src/ui/buttons-programming.ui:2067
 msgid "Memory"
 msgstr "기억"
 
 #. The label on the memory button
 #: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
-#: src/ui/buttons-programming.ui:2062
+#: src/ui/buttons-programming.ui:2066
 msgid "x"
 msgstr "x"
 
@@ -2740,7 +2789,7 @@ msgstr "미래 가치(_F):"
 #: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
 #: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
 #: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
-#: src/ui/buttons-programming.ui:2139
+#: src/ui/buttons-programming.ui:2143 src/gnome-calculator.vala:326
 msgid "_Cancel"
 msgstr "취소(_C)"
 
@@ -3059,62 +3108,62 @@ msgstr "위 첨자 모드 [Ctrl]"
 msgid "Shift Left"
 msgstr "왼쪽으로 쉬프트"
 
-#: src/ui/buttons-programming.ui:1764
+#: src/ui/buttons-programming.ui:1766
 msgid "Shift Right"
 msgstr "오른쪽으로 쉬프트"
 
-#: src/ui/buttons-programming.ui:1778
+#: src/ui/buttons-programming.ui:1782
 msgid "Boolean Exclusive OR"
 msgstr "불리언 XOR"
 
-#: src/ui/buttons-programming.ui:1794
+#: src/ui/buttons-programming.ui:1798
 msgid "Boolean OR"
 msgstr "불리언 OR"
 
-#: src/ui/buttons-programming.ui:1811
+#: src/ui/buttons-programming.ui:1815
 msgid "Boolean AND"
 msgstr "불리언 AND"
 
-#: src/ui/buttons-programming.ui:1828
+#: src/ui/buttons-programming.ui:1832
 msgid "Boolean NOT"
 msgstr "불리언 NOT"
 
-#: src/ui/buttons-programming.ui:1845
+#: src/ui/buttons-programming.ui:1849
 msgid "Ones’ Complement"
 msgstr "1의 보수"
 
-#: src/ui/buttons-programming.ui:1862
+#: src/ui/buttons-programming.ui:1866
 msgid "Two’s Complement"
 msgstr "2의 보수"
 
-#: src/ui/buttons-programming.ui:1938
+#: src/ui/buttons-programming.ui:1942
 msgid "Binary Logarithm"
 msgstr "이진로그"
 
-#: src/ui/buttons-programming.ui:1998
+#: src/ui/buttons-programming.ui:2002
 msgid "Integer Component"
 msgstr "정수 부분"
 
-#: src/ui/buttons-programming.ui:2015
+#: src/ui/buttons-programming.ui:2019
 msgid "Fractional Component"
 msgstr "분수 부분"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
+#: src/ui/buttons-programming.ui:2051 src/ui/buttons-programming.ui:2105
 msgid "Insert Character Code"
 msgstr "문자 코드 입력"
 
-#: src/ui/buttons-programming.ui:2078
+#: src/ui/buttons-programming.ui:2082
 msgid "Change word size"
 msgstr "워드 크기 바꾸기"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2115
+#: src/ui/buttons-programming.ui:2119
 msgid "Ch_aracter:"
 msgstr "문자(_A):"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2145
+#: src/ui/buttons-programming.ui:2149
 msgid "_Insert"
 msgstr "넣기(_I)"
 
@@ -3136,47 +3185,45 @@ msgid "Show release version"
 msgstr "릴리스 버전을 표시합니다"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:307
 msgid "© 1986–2023 The Calculator authors"
 msgstr "© 1986–2023 The Calculator authors"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:315
+#: src/gnome-calculator.vala:313
 msgid "translator-credits"
 msgstr ""
 "차영호 <ganadist at gmail dot com>\n"
 "류창우 <cwryu@debian.org>\n"
 "박열 <peary2@gmail.com>"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 msgid "Exchange rate data providers"
 msgstr "환율 데이터 제공자"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "환율 데이터 제공: %s"
 
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:325
+msgid "Close All?"
+msgstr "모두 닫습니까?"
+
+#: src/gnome-calculator.vala:325
 msgid "Are you sure you want to close all open windows?"
 msgstr "정말로 열려 있는 모든 창을 닫으시겠습니까?"
 
-#: src/gnome-calculator.vala:330
+#: src/gnome-calculator.vala:327
 msgid "Close _All"
 msgstr "모두 닫기(_A)"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:612
-#: src/math-buttons.vala:628
+#: src/math-buttons.vala:232 src/math-buttons.vala:635
+#: src/math-buttons.vala:651
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-비트"
-
-#: src/math-buttons.vala:597
-#, c-format
-msgid "%d place"
-msgid_plural "%d places"
-msgstr[0] "%d번"
 
 # 번역할 수 없음: 이런 식으로 번역하게 만든 업스트림 잘못.
 #: src/ui/math-converter.ui:42
@@ -3192,19 +3239,19 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:611
+#: src/math-display.vala:613
 msgid "Defined Functions"
 msgstr "정의된 기능"
 
-#: src/math-display.vala:656
+#: src/math-display.vala:658
 msgid "Built-in keywords"
 msgstr "내장 키워드"
 
-#: src/math-display.vala:700
+#: src/math-display.vala:702
 msgid "Defined currencies"
 msgstr "정의된 통화"
 
-#: src/math-display.vala:750
+#: src/math-display.vala:752
 msgid "Defined Variables"
 msgstr "정의된 변수"
 
@@ -3244,27 +3291,27 @@ msgstr "매일"
 msgid "Weekly"
 msgstr "매주"
 
-#: src/ui/math-preferences.ui:19
+#: src/ui/math-preferences.ui:18
 msgid "Number of _decimals"
 msgstr "소수점 개수(_D)"
 
-#: src/ui/math-preferences.ui:28
+#: src/ui/math-preferences.ui:27
 msgid "Trailing _zeroes"
 msgstr "마지막 0(_Z)"
 
-#: src/ui/math-preferences.ui:34
+#: src/ui/math-preferences.ui:33
 msgid "_Thousands separators"
 msgstr "천단위 자리수 구분(_T)"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:39
 msgid "_Angle units"
 msgstr "각도 단위(_A)"
 
-#: src/ui/math-preferences.ui:46
+#: src/ui/math-preferences.ui:45
 msgid "Word _size"
 msgstr "워드 크기(_S)"
 
-#: src/ui/math-preferences.ui:52
+#: src/ui/math-preferences.ui:51
 msgid "E_xchange rate refresh interval"
 msgstr "환율 새로고침 주기(_X)"
 
@@ -3451,23 +3498,34 @@ msgstr "변수 이름"
 msgid "Store value into existing or new variable"
 msgstr "값을 기존 값 또는 새 값에 저장"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:113
+#: src/math-variable-popover.vala:94
+#, c-format
+msgid "%s: Invalid variable name, can not start with a digit"
+msgstr "%s: 잘못된 변수 이름, 숫자로 시작할 수 없습니다"
+
+#: src/math-variable-popover.vala:98
+#, c-format
+msgid ""
+"%s: Invalid variable name, can only contain digits, letters and underscores"
+msgstr "%s: 잘못된 변수 이름, 이름에는 숫자, 문자, 밑줄만 사용할 수 있습니다."
+
+#: src/ui/math-window.ui:20 src/math-window.vala:116
 msgid "Basic"
 msgstr "기본"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:119
+#: src/ui/math-window.ui:25 src/math-window.vala:122
 msgid "Advanced"
 msgstr "고급"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:125
+#: src/ui/math-window.ui:30 src/math-window.vala:128
 msgid "Financial"
 msgstr "재무"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:131
+#: src/ui/math-window.ui:35 src/math-window.vala:134
 msgid "Programming"
 msgstr "프로그래밍"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:137
+#: src/ui/math-window.ui:40 src/math-window.vala:140
 msgid "Keyboard"
 msgstr "키보드"
 
@@ -3475,22 +3533,26 @@ msgstr "키보드"
 msgid "_New Window"
 msgstr "새 창(_N)"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:56
+msgid "Result format"
+msgstr "결과 형식"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
 msgid "_Automatic"
 msgstr "자동(_A)"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
 msgid "_Fixed"
 msgstr "고정(_F)"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:73
 msgid "_Scientific"
 msgstr "과학(_S)"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.ui:79
 msgid "_Engineering"
 msgstr "공학(_E)"
@@ -3515,14 +3577,18 @@ msgstr "계산기 정보"
 msgid "Mode Selection"
 msgstr "모드 선택"
 
-#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
-msgid "Undo"
-msgstr "실행 취소"
+#: src/ui/math-window.ui:130
+msgid "_Undo"
+msgstr "실행 취소(_U)"
 
-#: src/ui/math-window.ui:144
+#: src/ui/math-window.ui:143
 msgid "Main Menu"
 msgstr "주 메뉴"
 
-#: src/math-window.vala:166
-msgid "_Quit"
-msgstr "끝내기(_Q)"
+#, c-format
+#~ msgid "%d place"
+#~ msgid_plural "%d places"
+#~ msgstr[0] "%d번"
+
+#~ msgid "_Quit"
+#~ msgstr "끝내기(_Q)"
