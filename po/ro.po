@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2024-05-23 20:43+0000\n"
-"PO-Revision-Date: 2024-08-04 12:52+0300\n"
+"POT-Creation-Date: 2024-08-04 18:12+0000\n"
+"PO-Revision-Date: 2024-08-23 08:22+0300\n"
 "Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
 "gmail [dot] com>\n"
 "Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:82
-#: src/gnome-calculator.vala:302 src/ui/math-window.ui:107
+#: src/gnome-calculator.vala:300 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Calculator"
 
@@ -99,7 +99,7 @@ msgid "Keyboard Mode"
 msgstr "Mod de tastatură"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:304
+#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:302
 msgid "The GNOME Project"
 msgstr "Proiectul GNOME"
 
@@ -152,7 +152,7 @@ msgid ""
 "shown in the display value."
 msgstr "Indică dacă se afișează zerouri după virgulă."
 
-#: data/org.gnome.calculator.gschema.xml:52 src/ui/math-window.ui:56
+#: data/org.gnome.calculator.gschema.xml:52
 msgid "Number format"
 msgstr "Format număr"
 
@@ -505,6 +505,10 @@ msgid "Uruguayan Peso"
 msgstr "Peso uruguayan"
 
 #: lib/currency.vala:127
+msgid "Vietnamese Dong"
+msgstr "Dong vietnamez"
+
+#: lib/currency.vala:128
 msgid "South African Rand"
 msgstr "Rand sud african"
 
@@ -525,7 +529,7 @@ msgid "United Nations Treasury"
 msgstr "Trezoreria Națiunilor Unite"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:231
+#: lib/equation-lexer.vala:734 src/math-converter.vala:234
 msgid "in"
 msgstr "în"
 
@@ -542,7 +546,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Eroare: numărul de perioade trebuie să fie pozitiv"
 
 #: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
-#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1941
 msgid "Logarithm"
 msgstr "Logaritm"
 
@@ -1577,7 +1581,7 @@ msgstr "%s ozt"
 #: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "Troy ounce,Troy ounces,ozt"
-msgstr "uncie troy,uncii troy,ozt"
+msgstr "Uncie troy,uncii troy,ozt"
 
 #: lib/unit.vala:87
 msgid "Grams"
@@ -2440,91 +2444,137 @@ msgid "Joule,J,joule,joules"
 msgstr "Joule,J,joule,joules;Joul;joul;jouli"
 
 #: lib/unit.vala:147
+msgid "Kilojoules"
+msgstr "Kilojouli"
+
+#: lib/unit.vala:147
+#, c-format
+msgctxt "unit-format"
+msgid "%s KJ"
+msgstr "%s KJ"
+
+#: lib/unit.vala:147
+msgctxt "unit-symbols"
+msgid "KJ,kilojoules,kilojoule"
+msgstr "KJ,kilojouli,kilojoul"
+
+#: lib/unit.vala:148
+msgid "Megajoules"
+msgstr "Megajouli"
+
+#: lib/unit.vala:148
+#, c-format
+msgctxt "unit-format"
+msgid "%s MJ"
+msgstr "%s MJ"
+
+#: lib/unit.vala:148
+msgctxt "unit-symbols"
+msgid "MJ,megajoules,megajoule"
+msgstr "MJ,megajouli,megajoul"
+
+#: lib/unit.vala:149
+msgid "KilowattHour"
+msgstr "KilowattOră"
+
+#: lib/unit.vala:149
+#, c-format
+msgctxt "unit-format"
+msgid "%s kWh"
+msgstr "%s kWh"
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "kwh,kWh,kilowatt-hour,kilowatthour"
+msgstr "kwh,kWh,kilowatt-oră,kilowattoră"
+
+#: lib/unit.vala:150
 msgid "BTU"
 msgstr "BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 #, c-format
 msgctxt "unit-format"
 msgid "%s BTU"
 msgstr "%s BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgid "Calorie"
 msgstr "Calorie"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 #, c-format
 msgctxt "unit-format"
 msgid "%s cal"
 msgstr "%s cal"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "calories,calorie,cal;calorii"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgid "Erg"
 msgstr "Erg"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 #, c-format
 msgctxt "unit-format"
 msgid "%s erg"
 msgstr "%s erg"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "ergs,erg"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgid "eV"
 msgstr "eV"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 #, c-format
 msgctxt "unit-format"
 msgid "%s ev"
 msgstr "%s ev"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "electronvolt,electronvolts,ev;electrovolți"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgid "Ft-lb"
 msgstr "Ft-lb"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft-lb"
 msgstr "%s ft-lb"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "foot-pound,foot-pounds,ft-lb,ft-lbs;picior-liră;picior-lire"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:156
 msgid "Currency"
 msgstr "Monedă"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:159
+#: lib/unit.vala:162
 #, c-format
 msgid "%s%%s"
 msgstr "%%s%s"
 
-#: search-provider/search-provider.vala:199
+#: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:37
+#: src/ui/buttons-programming.ui:42 src/ui/buttons-programming.ui:47
 msgid "Copy"
 msgstr "Copiază"
 
@@ -2533,37 +2583,37 @@ msgid "Copy result to clipboard"
 msgstr "Copiază rezultatul în clipboard"
 
 #: src/ui/buttons-advanced.ui:122 src/ui/buttons-financial.ui:1290
-#: src/ui/buttons-programming.ui:1649
+#: src/ui/buttons-programming.ui:1665
 msgid "Modulus divide"
 msgstr "Împărțire modulo"
 
 #: src/ui/buttons-advanced.ui:139 src/ui/buttons-basic.ui:145
-#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1269
+#: src/ui/buttons-financial.ui:1307 src/ui/buttons-programming.ui:1285
 msgid "Divide [/]"
 msgstr "Împărțire [/]"
 
 #: src/ui/buttons-advanced.ui:235 src/ui/buttons-basic.ui:247
-#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1286
+#: src/ui/buttons-financial.ui:1403 src/ui/buttons-programming.ui:1302
 msgid "Multiply [*]"
 msgstr "Înmulțire [*]"
 
 #: src/ui/buttons-advanced.ui:252 src/ui/buttons-basic.ui:265
-#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1303
+#: src/ui/buttons-financial.ui:1420 src/ui/buttons-programming.ui:1319
 msgid "Subtract [-]"
 msgstr "Scădere [-]"
 
 #: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:282
-#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1319
+#: src/ui/buttons-financial.ui:1436 src/ui/buttons-programming.ui:1335
 msgid "Add [+]"
 msgstr "Adunare [+]"
 
 #: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:299
-#: src/ui/buttons-programming.ui:1247
+#: src/ui/buttons-programming.ui:1263
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Ctrl+P]"
 
 #: src/ui/buttons-advanced.ui:307 src/ui/buttons-basic.ui:323
-#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1231
+#: src/ui/buttons-financial.ui:1453 src/ui/buttons-programming.ui:1247
 msgid "Root [Ctrl+R]"
 msgstr "Rădăcină [Ctrl+R]"
 
@@ -2572,17 +2622,17 @@ msgid "Square [Ctrl+2]"
 msgstr "Pătrat [Ctrl+2]"
 
 #: src/ui/buttons-advanced.ui:343 src/ui/buttons-basic.ui:361
-#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1352
+#: src/ui/buttons-financial.ui:1469 src/ui/buttons-programming.ui:1368
 msgid "Clear Display [Escape]"
 msgstr "Șterge afișajul [Escape]"
 
 #: src/ui/buttons-advanced.ui:359 src/ui/buttons-basic.ui:378
-#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1665
+#: src/ui/buttons-financial.ui:1485 src/ui/buttons-programming.ui:1681
 msgid "Start Group [(]"
 msgstr "Începutul grupului [(]"
 
 #: src/ui/buttons-advanced.ui:376 src/ui/buttons-basic.ui:396
-#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1681
+#: src/ui/buttons-financial.ui:1502 src/ui/buttons-programming.ui:1697
 msgid "End Group [)]"
 msgstr "Sfârșitul grupului [)]"
 
@@ -2593,12 +2643,12 @@ msgstr "Procentaj [%]"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 #: src/ui/buttons-advanced.ui:407 src/ui/buttons-basic.ui:428
-#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1333
+#: src/ui/buttons-financial.ui:1533 src/ui/buttons-programming.ui:1349
 msgid "="
 msgstr "="
 
 #: src/ui/buttons-advanced.ui:410 src/ui/buttons-basic.ui:432
-#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1336
+#: src/ui/buttons-financial.ui:1536 src/ui/buttons-programming.ui:1352
 msgid "Calculate Result"
 msgstr "Calculează rezultatul"
 
@@ -2610,7 +2660,7 @@ msgstr "Mod indice [Alt]"
 msgid "Superscript Mode [Ctrl]"
 msgstr "Mod exponent [Ctrl]"
 
-#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2052
 msgid "Factorize [Ctrl+F]"
 msgstr "Factorizează [Ctrl+F]"
 
@@ -2631,11 +2681,11 @@ msgid "Hyperbolic Tangent"
 msgstr "Tangentă hiperbolică"
 
 #: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
-#: src/ui/buttons-programming.ui:1877
+#: src/ui/buttons-programming.ui:1897
 msgid "Exponent [^ or **]"
 msgstr "Exponent [^ sau **]"
 
-#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1918
 msgid "Inverse [Ctrl+I]"
 msgstr "Inversa [Ctrl+I]"
 
@@ -2647,11 +2697,11 @@ msgstr "Numărul lui Euler"
 msgid "Natural Logarithm"
 msgstr "Logaritm natural"
 
-#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1973
 msgid "Factorial [!]"
 msgstr "Factorial [!]"
 
-#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1995
 msgid "Absolute Value [|]"
 msgstr "Modul [|]"
 
@@ -2676,13 +2726,13 @@ msgid "Complex Argument"
 msgstr "Argumentul complex"
 
 #: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
-#: src/ui/buttons-programming.ui:2063
+#: src/ui/buttons-programming.ui:2083
 msgid "Memory"
 msgstr "Memorie"
 
 #. The label on the memory button
 #: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
-#: src/ui/buttons-programming.ui:2062
+#: src/ui/buttons-programming.ui:2082
 msgid "x"
 msgstr "x"
 
@@ -2738,7 +2788,7 @@ msgstr "Valoare _viitoare:"
 #: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
 #: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
 #: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
-#: src/ui/buttons-programming.ui:2139
+#: src/ui/buttons-programming.ui:2159 src/gnome-calculator.vala:326
 msgid "_Cancel"
 msgstr "_Anulează"
 
@@ -3053,74 +3103,74 @@ msgstr "Zecimal"
 msgid "Hexadecimal"
 msgstr "Hexazecimal"
 
-#: src/ui/buttons-programming.ui:1709
+#: src/ui/buttons-programming.ui:1725
 msgid "Subscript mode [Alt]"
 msgstr "Mod indice [Alt]"
 
-#: src/ui/buttons-programming.ui:1730
+#: src/ui/buttons-programming.ui:1746
 msgid "Superscript mode [Ctrl]"
 msgstr "Mod exponent [Ctrl]"
 
-#: src/ui/buttons-programming.ui:1751
+#: src/ui/buttons-programming.ui:1767
 msgid "Shift Left"
 msgstr "Deplasează la stânga"
 
-#: src/ui/buttons-programming.ui:1764
+#: src/ui/buttons-programming.ui:1782
 msgid "Shift Right"
 msgstr "Deplasează la dreapta"
 
-#: src/ui/buttons-programming.ui:1778
+#: src/ui/buttons-programming.ui:1798
 msgid "Boolean Exclusive OR"
 msgstr "SAU exclusiv logic"
 
-#: src/ui/buttons-programming.ui:1794
+#: src/ui/buttons-programming.ui:1814
 msgid "Boolean OR"
 msgstr "SAU logic"
 
-#: src/ui/buttons-programming.ui:1811
+#: src/ui/buttons-programming.ui:1831
 msgid "Boolean AND"
 msgstr "ȘI logic"
 
-#: src/ui/buttons-programming.ui:1828
+#: src/ui/buttons-programming.ui:1848
 msgid "Boolean NOT"
 msgstr "NU logic"
 
-#: src/ui/buttons-programming.ui:1845
+#: src/ui/buttons-programming.ui:1865
 msgid "Ones’ Complement"
 msgstr "Complement față de 1"
 
-#: src/ui/buttons-programming.ui:1862
+#: src/ui/buttons-programming.ui:1882
 msgid "Two’s Complement"
 msgstr "Complement față de 2"
 
-#: src/ui/buttons-programming.ui:1938
+#: src/ui/buttons-programming.ui:1958
 msgid "Binary Logarithm"
 msgstr "Logaritm binar"
 
-#: src/ui/buttons-programming.ui:1998
+#: src/ui/buttons-programming.ui:2018
 msgid "Integer Component"
 msgstr "Partea întreagă"
 
-#: src/ui/buttons-programming.ui:2015
+#: src/ui/buttons-programming.ui:2035
 msgid "Fractional Component"
 msgstr "Partea fracționară"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
+#: src/ui/buttons-programming.ui:2067 src/ui/buttons-programming.ui:2121
 msgid "Insert Character Code"
 msgstr "Introducere cod caracter"
 
-#: src/ui/buttons-programming.ui:2078
+#: src/ui/buttons-programming.ui:2098
 msgid "Change word size"
 msgstr "Modifică dimensiunea cuvântului"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2115
+#: src/ui/buttons-programming.ui:2135
 msgid "Ch_aracter:"
 msgstr "C_aracter:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2145
+#: src/ui/buttons-programming.ui:2165
 msgid "_Insert"
 msgstr "_Introdu"
 
@@ -3143,12 +3193,12 @@ msgid "Show release version"
 msgstr "Afișează versiunea de lansare"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:307
 msgid "© 1986–2023 The Calculator authors"
 msgstr "© 1986–2023 Autorii Calculator"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:315
+#: src/gnome-calculator.vala:313
 msgid "translator-credits"
 msgstr ""
 "Mișu Moldovan <dumol@gnome.ro>\n"
@@ -3165,39 +3215,35 @@ msgstr ""
 "  Mircea MITU https://launchpad.net/~mache\n"
 "  Mișu Moldovan https://launchpad.net/~dumol-gnome"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 msgid "Exchange rate data providers"
 msgstr "Furnizorii de date privind cursul de schimb"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Date privind cursul de schimb de %s"
 
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:325
+msgid "Close All?"
+msgstr "Închideți toate?"
+
+#: src/gnome-calculator.vala:325
 msgid "Are you sure you want to close all open windows?"
 msgstr "Sigur doriți să închideți toate ferestrele deschise?"
 
-#: src/gnome-calculator.vala:330
+#: src/gnome-calculator.vala:327
 msgid "Close _All"
 msgstr "Închide to_ate"
 
-#: src/math-buttons.vala:232 src/math-buttons.vala:617
-#: src/math-buttons.vala:633
+#: src/math-buttons.vala:234 src/math-buttons.vala:646
+#: src/math-buttons.vala:662
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-bit"
 msgstr[1] "%d-biți"
 msgstr[2] "%d-de-biți"
-
-#: src/math-buttons.vala:602
-#, c-format
-msgid "%d place"
-msgid_plural "%d places"
-msgstr[0] "o poziție"
-msgstr[1] "%d poziții"
-msgstr[2] "%d de poziții"
 
 #: src/ui/math-converter.ui:42
 msgid " to "
@@ -3212,19 +3258,19 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:612
+#: src/math-display.vala:611
 msgid "Defined Functions"
 msgstr "Funcții definite"
 
-#: src/math-display.vala:657
+#: src/math-display.vala:656
 msgid "Built-in keywords"
 msgstr "Cuvinte cheie încorporate"
 
-#: src/math-display.vala:701
+#: src/math-display.vala:700
 msgid "Defined currencies"
 msgstr "Valute definite"
 
-#: src/math-display.vala:751
+#: src/math-display.vala:750
 msgid "Defined Variables"
 msgstr "Variabile definite"
 
@@ -3264,27 +3310,27 @@ msgstr "Zilnic"
 msgid "Weekly"
 msgstr "Săptămânal"
 
-#: src/ui/math-preferences.ui:19
+#: src/ui/math-preferences.ui:18
 msgid "Number of _decimals"
 msgstr "Număr de _zecimale"
 
-#: src/ui/math-preferences.ui:28
+#: src/ui/math-preferences.ui:27
 msgid "Trailing _zeroes"
 msgstr "_Zerouri după virgulă"
 
-#: src/ui/math-preferences.ui:34
+#: src/ui/math-preferences.ui:33
 msgid "_Thousands separators"
 msgstr "Separa_tori de mii"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:39
 msgid "_Angle units"
 msgstr "Unități ung_hi"
 
-#: src/ui/math-preferences.ui:46
+#: src/ui/math-preferences.ui:45
 msgid "Word _size"
 msgstr "Dimen_siunea cuvântului"
 
-#: src/ui/math-preferences.ui:52
+#: src/ui/math-preferences.ui:51
 msgid "E_xchange rate refresh interval"
 msgstr "Intervalul de reîmprospătare a cursului _valutar"
 
@@ -3471,6 +3517,19 @@ msgstr "Nume variabilă"
 msgid "Store value into existing or new variable"
 msgstr "Stochează valoarea într-o variabilă existentă sau nouă"
 
+#: src/math-variable-popover.vala:94
+#, c-format
+msgid "%s: Invalid variable name, can not start with a digit"
+msgstr "%s: nume de variabilă nevalid, nu poate începe cu o cifră"
+
+#: src/math-variable-popover.vala:98
+#, c-format
+msgid ""
+"%s: Invalid variable name, can only contain digits, letters and underscores"
+msgstr ""
+"%s: nume de variabilă nevalid, poate să conțină doar cifre, litere și "
+"liniuțe de subliniere"
+
 #: src/ui/math-window.ui:20 src/math-window.vala:116
 msgid "Basic"
 msgstr "De bază"
@@ -3495,22 +3554,26 @@ msgstr "Tastatură"
 msgid "_New Window"
 msgstr "Fereastră _nouă"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:56
+msgid "Result format"
+msgstr "Formatul rezultatului"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
 msgid "_Automatic"
 msgstr "_Automat"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
 msgid "_Fixed"
 msgstr "_Fixat"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:73
 msgid "_Scientific"
 msgstr "Ș_tiințific"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.ui:79
 msgid "_Engineering"
 msgstr "Ingin_erie"
@@ -3535,17 +3598,26 @@ msgstr "Despre calculator"
 msgid "Mode Selection"
 msgstr "Selecție de mod"
 
-#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
-msgid "Undo"
-msgstr "Refă"
+#: src/ui/math-window.ui:130
+msgid "_Undo"
+msgstr "An_ulează ultima acțiune"
 
-#: src/ui/math-window.ui:144
+#: src/ui/math-window.ui:143
 msgid "Main Menu"
 msgstr "Meniu principal"
 
-#: src/math-window.vala:169
-msgid "_Quit"
-msgstr "_Ieșire"
+#, c-format
+#~ msgid "%d place"
+#~ msgid_plural "%d places"
+#~ msgstr[0] "o poziție"
+#~ msgstr[1] "%d poziții"
+#~ msgstr[2] "%d de poziții"
+
+#~ msgid "Undo"
+#~ msgstr "Refă"
+
+#~ msgid "_Quit"
+#~ msgstr "_Ieșire"
 
 #~ msgid "Ev"
 #~ msgstr "Ev"
@@ -4611,9 +4683,6 @@ msgstr "_Ieșire"
 
 #~ msgid "_Set"
 #~ msgstr "_Aplică"
-
-#~ msgid "_Undo"
-#~ msgstr "An_ulează ultima acțiune"
 
 #~ msgid "register 0"
 #~ msgstr "registrul 0"
