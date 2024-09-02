@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2024-01-22 07:53+0000\n"
-"PO-Revision-Date: 2024-02-12 23:37+0200\n"
+"POT-Creation-Date: 2024-07-05 21:57+0000\n"
+"PO-Revision-Date: 2024-09-02 22:55+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -25,11 +25,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:82
-#: src/gnome-calculator.vala:302 src/ui/math-window.ui:107
+#: src/gnome-calculator.vala:300 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Skaičiuotuvas"
 
@@ -103,7 +103,7 @@ msgid "Keyboard Mode"
 msgstr "Klaviatūros veiksena"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:304
+#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:302
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
@@ -154,7 +154,7 @@ msgid ""
 "shown in the display value."
 msgstr "Nurodo, ar turėtų būti rodomi nuliai pabaigoje po kablelio."
 
-#: data/org.gnome.calculator.gschema.xml:52 src/ui/math-window.ui:56
+#: data/org.gnome.calculator.gschema.xml:52
 msgid "Number format"
 msgstr "Skaičiaus formatas"
 
@@ -507,6 +507,10 @@ msgid "Uruguayan Peso"
 msgstr "Urugvajaus pesas"
 
 #: lib/currency.vala:127
+msgid "Vietnamese Dong"
+msgstr "Vietnamiečių dong"
+
+#: lib/currency.vala:128
 msgid "South African Rand"
 msgstr "Pietų Afrikos Respublikos randas"
 
@@ -527,7 +531,7 @@ msgid "United Nations Treasury"
 msgstr "Jungtinių valstijų iždas"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:231
+#: lib/equation-lexer.vala:734 src/math-converter.vala:234
 msgid "in"
 msgstr "valiuta"
 
@@ -544,7 +548,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Klaida, pasikartojimų skaičius turi būti teigiamas"
 
 #: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
-#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1925
 msgid "Logarithm"
 msgstr "Logaritmas"
 
@@ -681,74 +685,74 @@ msgid "Two's complement"
 msgstr "Dvejeto papildymas"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+#: lib/math-equation.vala:73 lib/math-equation.vala:1416
 msgid "Displayed value not an integer"
 msgstr "Rodoma reikšmė nėra sveikas skaičius"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:211
+#: lib/math-equation.vala:216
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:579
+#: lib/math-equation.vala:584
 msgid "No undo history"
 msgstr "Nėra atšaukimo istorijos"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:600
+#: lib/math-equation.vala:605
 msgid "No redo history"
 msgstr "Nėra atšaukimo istorijos"
 
-#: lib/math-equation.vala:831
+#: lib/math-equation.vala:836
 msgid "No sane value to store"
 msgstr "Nėra sveikos reikšmės saugojimui"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1080
+#: lib/math-equation.vala:1085
 msgid "Overflow. Try a bigger word size"
 msgstr "Perpildymas. Mėginkite didesnį žodžio ilgį"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Nežinomas kintamasis „%s“"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1092
+#: lib/math-equation.vala:1097
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Neapibrėžta funkcija „%s“"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1099
+#: lib/math-equation.vala:1104
 msgid "Unknown conversion"
 msgstr "Nežinoma konversija"
 
 #. should always be run
-#: lib/math-equation.vala:1109
+#: lib/math-equation.vala:1114
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
+#: lib/math-equation.vala:1119 lib/math-equation.vala:1124
 msgid "Malformed expression"
 msgstr "Blogai suformuota išraiška"
 
-#: lib/math-equation.vala:1130
+#: lib/math-equation.vala:1135
 msgid "Calculating"
 msgstr "Skaičiuojama"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1323
+#: lib/math-equation.vala:1328
 msgid "Need an integer to factorize"
 msgstr "Skaidymui reikalingas sveikas skaičius"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1387
+#: lib/math-equation.vala:1392
 msgid "No sane value to bitwise shift"
 msgstr "Nėra tinkamos reikšmės bitų pastūmimui"
 
@@ -2436,86 +2440,131 @@ msgid "Joule,J,joule,joules"
 msgstr "Džaulis,J,džaulis,džauliai"
 
 #: lib/unit.vala:147
+msgid "Kilojoules"
+msgstr "Kilodžauliai"
+
+#: lib/unit.vala:147
+#, c-format
+msgctxt "unit-format"
+msgid "%s KJ"
+msgstr "%s KJ"
+
+#: lib/unit.vala:147
+msgctxt "unit-symbols"
+msgid "KJ,kilojoules,kilojoule"
+msgstr "KJ,kilodžaulis,kilodžauliai"
+
+#: lib/unit.vala:148
+msgid "Megajoules"
+msgstr "Megadžauliai"
+
+#: lib/unit.vala:148
+#, c-format
+msgctxt "unit-format"
+msgid "%s MJ"
+msgstr "%s MJ"
+
+#: lib/unit.vala:148
+msgctxt "unit-symbols"
+msgid "MJ,megajoules,megajoule"
+msgstr "MJ,megadžaulis,megadžauliai"
+
+#: lib/unit.vala:149
+msgid "KilowattHour"
+msgstr "Kilovatvalandė"
+
+#: lib/unit.vala:149
+#, c-format
+msgctxt "unit-format"
+msgid "%s kWh"
+msgstr "%s kWh"
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "kwh,kWh,kilowatt-hour,kilowatthour"
+msgstr "kwh,kWh,kilovatvalandė"
+
+#: lib/unit.vala:150
 msgid "BTU"
 msgstr "BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 #, c-format
 msgctxt "unit-format"
 msgid "%s BTU"
 msgstr "%s BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgid "Calorie"
 msgstr "Kalorija"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 #, c-format
 msgctxt "unit-format"
 msgid "%s cal"
 msgstr "%s kal"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "kalorijos,kalorija,kal"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgid "Erg"
 msgstr "Erg"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 #, c-format
 msgctxt "unit-format"
 msgid "%s erg"
 msgstr "%s erg"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "erg"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgid "eV"
 msgstr "eV"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 #, c-format
 msgctxt "unit-format"
 msgid "%s ev"
 msgstr "%s ev"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "elektronvoltas,elektronvoltai,ev"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgid "Ft-lb"
 msgstr "Pėd-sv"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft-lb"
 msgstr "%s pėd-sv"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "pėda-svaras,pėdos-svarai,pėd-sv"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:156
 msgid "Currency"
 msgstr "Valiutų"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:159
+#: lib/unit.vala:162
 #, c-format
 msgid "%s%%s"
 msgstr "%%s%s"
@@ -2606,7 +2655,7 @@ msgstr "Apatinio indekso veiksena [Alt]"
 msgid "Superscript Mode [Ctrl]"
 msgstr "Viršutinio indekso veiksena [Vald]"
 
-#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2036
 msgid "Factorize [Ctrl+F]"
 msgstr "Išskaidyti [Ctrl+F]"
 
@@ -2627,11 +2676,11 @@ msgid "Hyperbolic Tangent"
 msgstr "Hiperbolinis tangentas"
 
 #: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
-#: src/ui/buttons-programming.ui:1877
+#: src/ui/buttons-programming.ui:1881
 msgid "Exponent [^ or **]"
 msgstr "Eksponentinis [^ arba **]"
 
-#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1902
 msgid "Inverse [Ctrl+I]"
 msgstr "Apversti [Vald+I]"
 
@@ -2643,11 +2692,11 @@ msgstr "Oilerio skaičius"
 msgid "Natural Logarithm"
 msgstr "Natūrinis logaritmas"
 
-#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1957
 msgid "Factorial [!]"
 msgstr "Faktorialas [!]"
 
-#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1979
 msgid "Absolute Value [|]"
 msgstr "Modulis [|]"
 
@@ -2672,13 +2721,13 @@ msgid "Complex Argument"
 msgstr "Kompleksinis argumentas"
 
 #: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
-#: src/ui/buttons-programming.ui:2063
+#: src/ui/buttons-programming.ui:2067
 msgid "Memory"
 msgstr "Atmintis"
 
 #. The label on the memory button
 #: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
-#: src/ui/buttons-programming.ui:2062
+#: src/ui/buttons-programming.ui:2066
 msgid "x"
 msgstr "x"
 
@@ -2734,7 +2783,7 @@ msgstr "_Būsimoji vertė:"
 #: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
 #: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
 #: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
-#: src/ui/buttons-programming.ui:2139
+#: src/ui/buttons-programming.ui:2143 src/gnome-calculator.vala:326
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
@@ -3057,62 +3106,62 @@ msgstr "Skaičiaus viršutinio indekso veiksena [Vald]"
 msgid "Shift Left"
 msgstr "Postūmis kairiau"
 
-#: src/ui/buttons-programming.ui:1764
+#: src/ui/buttons-programming.ui:1766
 msgid "Shift Right"
 msgstr "Postūmis dešiniau"
 
-#: src/ui/buttons-programming.ui:1778
+#: src/ui/buttons-programming.ui:1782
 msgid "Boolean Exclusive OR"
 msgstr "Loginė griežta disjunkcija"
 
-#: src/ui/buttons-programming.ui:1794
+#: src/ui/buttons-programming.ui:1798
 msgid "Boolean OR"
 msgstr "Loginis ARBA"
 
-#: src/ui/buttons-programming.ui:1811
+#: src/ui/buttons-programming.ui:1815
 msgid "Boolean AND"
 msgstr "Loginis IR"
 
-#: src/ui/buttons-programming.ui:1828
+#: src/ui/buttons-programming.ui:1832
 msgid "Boolean NOT"
 msgstr "Loginis NE"
 
-#: src/ui/buttons-programming.ui:1845
+#: src/ui/buttons-programming.ui:1849
 msgid "Ones’ Complement"
 msgstr "Vieneto papildymas"
 
-#: src/ui/buttons-programming.ui:1862
+#: src/ui/buttons-programming.ui:1866
 msgid "Two’s Complement"
 msgstr "Dvejetainis papildymas"
 
-#: src/ui/buttons-programming.ui:1938
+#: src/ui/buttons-programming.ui:1942
 msgid "Binary Logarithm"
 msgstr "Dvejetainis logaritmas"
 
-#: src/ui/buttons-programming.ui:1998
+#: src/ui/buttons-programming.ui:2002
 msgid "Integer Component"
 msgstr "Sveikoji dalis"
 
-#: src/ui/buttons-programming.ui:2015
+#: src/ui/buttons-programming.ui:2019
 msgid "Fractional Component"
 msgstr "Trupmeninė dalis"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
+#: src/ui/buttons-programming.ui:2051 src/ui/buttons-programming.ui:2105
 msgid "Insert Character Code"
 msgstr "Įterpti simbolio kodą"
 
-#: src/ui/buttons-programming.ui:2078
+#: src/ui/buttons-programming.ui:2082
 msgid "Change word size"
 msgstr "Keisti žodžio ilgį"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2115
+#: src/ui/buttons-programming.ui:2119
 msgid "Ch_aracter:"
 msgstr "_Simbolis:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2145
+#: src/ui/buttons-programming.ui:2149
 msgid "_Insert"
 msgstr "Įterpt_i"
 
@@ -3136,12 +3185,12 @@ msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:307
 msgid "© 1986–2023 The Calculator authors"
 msgstr "© 1986–2023 Skaičiuotuvo autoriai"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:315
+#: src/gnome-calculator.vala:313
 msgid "translator-credits"
 msgstr ""
 "Algimantas Markevičius <margevicius.algimantas@gmail.com>\n"
@@ -3153,39 +3202,35 @@ msgstr ""
 "Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Gediminas Paulauskas <menesis@chatsubo.lt>"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 msgid "Exchange rate data providers"
 msgstr "Keitimo santykių duomenų tiekėjai"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Keitimo santykių duomenys iš %s"
 
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:325
+msgid "Close All?"
+msgstr "Užverti visus?"
+
+#: src/gnome-calculator.vala:325
 msgid "Are you sure you want to close all open windows?"
 msgstr "Ar tikrai norite užverti visus atvertus langus?"
 
-#: src/gnome-calculator.vala:330
+#: src/gnome-calculator.vala:327
 msgid "Close _All"
 msgstr "Užverti _visus"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:612
-#: src/math-buttons.vala:628
+#: src/math-buttons.vala:232 src/math-buttons.vala:635
+#: src/math-buttons.vala:651
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-bito"
 msgstr[1] "%d-bitų"
 msgstr[2] "%d-bitų"
-
-#: src/math-buttons.vala:597
-#, c-format
-msgid "%d place"
-msgid_plural "%d places"
-msgstr[0] "%d vieta"
-msgstr[1] "%d vietos"
-msgstr[2] "%d vietų"
 
 #: src/ui/math-converter.ui:42
 msgid " to "
@@ -3200,19 +3245,19 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:611
+#: src/math-display.vala:613
 msgid "Defined Functions"
 msgstr "Apibrėžtos funkcijos"
 
-#: src/math-display.vala:656
+#: src/math-display.vala:658
 msgid "Built-in keywords"
 msgstr "Integruoti raktažodžiai"
 
-#: src/math-display.vala:700
+#: src/math-display.vala:702
 msgid "Defined currencies"
 msgstr "Apibrėžtos valiutos"
 
-#: src/math-display.vala:750
+#: src/math-display.vala:752
 msgid "Defined Variables"
 msgstr "Apibrėžti kintamieji"
 
@@ -3252,27 +3297,27 @@ msgstr "Kasdien"
 msgid "Weekly"
 msgstr "Kas savaitę"
 
-#: src/ui/math-preferences.ui:19
+#: src/ui/math-preferences.ui:18
 msgid "Number of _decimals"
 msgstr "_Skaitmenų po kablelio"
 
-#: src/ui/math-preferences.ui:28
+#: src/ui/math-preferences.ui:27
 msgid "Trailing _zeroes"
 msgstr "Rodyti _nulius skaičiaus gale"
 
-#: src/ui/math-preferences.ui:34
+#: src/ui/math-preferences.ui:33
 msgid "_Thousands separators"
 msgstr "Rodyti _tūkstančių skyriklį"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:39
 msgid "_Angle units"
 msgstr "_Kampų matavimo vienetai"
 
-#: src/ui/math-preferences.ui:46
+#: src/ui/math-preferences.ui:45
 msgid "Word _size"
 msgstr "Žodžio _ilgis"
 
-#: src/ui/math-preferences.ui:52
+#: src/ui/math-preferences.ui:51
 msgid "E_xchange rate refresh interval"
 msgstr "_Keitimo santykių atnaujinimo intervalas"
 
@@ -3459,23 +3504,36 @@ msgstr "Kintamojo vardas"
 msgid "Store value into existing or new variable"
 msgstr "Įrašyti reikšmę į esamą ar naują kintamąjį"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:113
+#: src/math-variable-popover.vala:94
+#, c-format
+msgid "%s: Invalid variable name, can not start with a digit"
+msgstr "%s: netinkamas kintamojo pavadinimas, negali prasidėti skaitmeniu"
+
+#: src/math-variable-popover.vala:98
+#, c-format
+msgid ""
+"%s: Invalid variable name, can only contain digits, letters and underscores"
+msgstr ""
+"%s: netinkamas kintamojo pavadinimas, gali susidėti tik iš skaitmenų, "
+"raidžių bei pabraukimų"
+
+#: src/ui/math-window.ui:20 src/math-window.vala:116
 msgid "Basic"
 msgstr "Paprastas"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:119
+#: src/ui/math-window.ui:25 src/math-window.vala:122
 msgid "Advanced"
 msgstr "Išplėstinis"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:125
+#: src/ui/math-window.ui:30 src/math-window.vala:128
 msgid "Financial"
 msgstr "Finansinis"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:131
+#: src/ui/math-window.ui:35 src/math-window.vala:134
 msgid "Programming"
 msgstr "Programavimo"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:137
+#: src/ui/math-window.ui:40 src/math-window.vala:140
 msgid "Keyboard"
 msgstr "Klaviatūra"
 
@@ -3483,22 +3541,26 @@ msgstr "Klaviatūra"
 msgid "_New Window"
 msgstr "Naujas _langas"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:56
+msgid "Result format"
+msgstr "Rezultato formatas"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
 msgid "_Automatic"
 msgstr "_Automatinis"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
 msgid "_Fixed"
 msgstr "_Fiksuotas"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:73
 msgid "_Scientific"
 msgstr "_Mokslinis"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.ui:79
 msgid "_Engineering"
 msgstr "_Inžinerinis"
@@ -3523,17 +3585,23 @@ msgstr "Apie skaičiuotuvą"
 msgid "Mode Selection"
 msgstr "Veiksenos pasirinkimas"
 
-#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
-msgid "Undo"
-msgstr "Atšaukti"
+#: src/ui/math-window.ui:130
+msgid "_Undo"
+msgstr "_Atšaukti"
 
-#: src/ui/math-window.ui:144
+#: src/ui/math-window.ui:143
 msgid "Main Menu"
 msgstr "Pagrindinis meniu"
 
-#: src/math-window.vala:166
-msgid "_Quit"
-msgstr "_Išeiti"
+#, c-format
+#~ msgid "%d place"
+#~ msgid_plural "%d places"
+#~ msgstr[0] "%d vieta"
+#~ msgstr[1] "%d vietos"
+#~ msgstr[2] "%d vietų"
+
+#~ msgid "_Quit"
+#~ msgstr "_Išeiti"
 
 #~ msgid "Venezuelan Bolívar"
 #~ msgstr "Venesuelos bolivaras"
