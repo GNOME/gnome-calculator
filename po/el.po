@@ -21,8 +21,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.gnome-2-26\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2024-03-27 19:00+0000\n"
-"PO-Revision-Date: 2024-04-29 03:00+0300\n"
+"POT-Creation-Date: 2024-07-05 21:57+0000\n"
+"PO-Revision-Date: 2024-09-03 23:03+0300\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: Greek, Modern (1453-) <gnome-el-list@gnome.org>\n"
 "Language: el\n"
@@ -30,12 +30,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Project-Style: gnome\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:82
-#: src/gnome-calculator.vala:302 src/ui/math-window.ui:107
+#: src/gnome-calculator.vala:300 src/ui/math-window.ui:107
 msgid "Calculator"
 msgstr "Αριθμομηχανή"
 
@@ -111,7 +111,7 @@ msgid "Keyboard Mode"
 msgstr "Λειτουργία πληκτρολογίου"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:304
+#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:302
 msgid "The GNOME Project"
 msgstr "Έργο GNOME"
 
@@ -168,7 +168,7 @@ msgstr ""
 "Καθορίζει το αν θα εμφανίζονται στην οθόνη μηδενικά στο τέλος του "
 "κλασματικού μέρους των δεκαδικών αριθμών."
 
-#: data/org.gnome.calculator.gschema.xml:52 src/ui/math-window.ui:56
+#: data/org.gnome.calculator.gschema.xml:52
 msgid "Number format"
 msgstr "Μορφή αριθμών"
 
@@ -522,6 +522,10 @@ msgid "Uruguayan Peso"
 msgstr "Πέσο Ουρουγουάης"
 
 #: lib/currency.vala:127
+msgid "Vietnamese Dong"
+msgstr "Βιετναμέζικος ντονγκ"
+
+#: lib/currency.vala:128
 msgid "South African Rand"
 msgstr "Ραντ Νότιας Αφρικής"
 
@@ -542,7 +546,7 @@ msgid "United Nations Treasury"
 msgstr "Υπουργείο Οικονομικών των Ηνωμένων Εθνών"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734 src/math-converter.vala:231
+#: lib/equation-lexer.vala:734 src/math-converter.vala:234
 msgid "in"
 msgstr "σε"
 
@@ -559,7 +563,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Σφάλμα: ο αριθμός των περιόδων πρέπει να είναι θετικός"
 
 #: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:697
-#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1921
+#: src/ui/buttons-financial.ui:1573 src/ui/buttons-programming.ui:1925
 msgid "Logarithm"
 msgstr "Λογάριθμος"
 
@@ -696,74 +700,74 @@ msgid "Two's complement"
 msgstr "Συμπλήρωμα ως προς 2"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:73 lib/math-equation.vala:1411
+#: lib/math-equation.vala:73 lib/math-equation.vala:1416
 msgid "Displayed value not an integer"
 msgstr "Η εμφανιζόμενη τιμή δεν είναι ακέραια"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:211
+#: lib/math-equation.vala:216
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:579
+#: lib/math-equation.vala:584
 msgid "No undo history"
 msgstr "Δεν υπάρχει ιστορικό για τις ενέργειες αναίρεσης"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:600
+#: lib/math-equation.vala:605
 msgid "No redo history"
 msgstr "Δεν υπάρχει ιστορικό για τις ενέργειες ανάκτησης"
 
-#: lib/math-equation.vala:831
+#: lib/math-equation.vala:836
 msgid "No sane value to store"
 msgstr "Δε δόθηκε θεμιτή τιμή για αποθήκευση"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1080
+#: lib/math-equation.vala:1085
 msgid "Overflow. Try a bigger word size"
 msgstr "Υπερχείλιση. Δοκιμάστε με ένα μεγαλύτερο μήκος λέξης"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1090
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Άγνωστη μεταβλητή «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1092
+#: lib/math-equation.vala:1097
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Η συνάρτηση «%s» δεν έχει οριστεί"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1099
+#: lib/math-equation.vala:1104
 msgid "Unknown conversion"
 msgstr "Άγνωστη μετατροπή"
 
 #. should always be run
-#: lib/math-equation.vala:1109
+#: lib/math-equation.vala:1114
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1114 lib/math-equation.vala:1119
+#: lib/math-equation.vala:1119 lib/math-equation.vala:1124
 msgid "Malformed expression"
 msgstr "Λανθασμένη διατύπωση έκφρασης"
 
-#: lib/math-equation.vala:1130
+#: lib/math-equation.vala:1135
 msgid "Calculating"
 msgstr "Εκτελείται υπολογισμός"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1323
+#: lib/math-equation.vala:1328
 msgid "Need an integer to factorize"
 msgstr "Απαιτείται ακέραιος για την παραγοντοποίηση"
 
 #. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1387
+#: lib/math-equation.vala:1392
 msgid "No sane value to bitwise shift"
 msgstr "Χωρίς λογική τιμή για τη μετατόπιση κατά δυαδικό"
 
@@ -1584,8 +1588,6 @@ msgstr "Ουγκιές Troy"
 
 #: lib/unit.vala:86
 #, c-format
-#| msgctxt "unit-format"
-#| msgid "%s oz"
 msgctxt "unit-format"
 msgid "%s ozt"
 msgstr "%s ozt"
@@ -2456,86 +2458,143 @@ msgid "Joule,J,joule,joules"
 msgstr "Τζάουλ,Τζ,τζάουλ,τζάουλς"
 
 #: lib/unit.vala:147
+#| msgid "Kilobytes"
+msgid "Kilojoules"
+msgstr "Kilojoules"
+
+#: lib/unit.vala:147
+#, c-format
+#| msgctxt "unit-format"
+#| msgid "%s K"
+msgctxt "unit-format"
+msgid "%s KJ"
+msgstr "%s KJ"
+
+#: lib/unit.vala:147
+#| msgctxt "unit-symbols"
+#| msgid "Joule,J,joule,joules"
+msgctxt "unit-symbols"
+msgid "KJ,kilojoules,kilojoule"
+msgstr "KJ,kilojoules,kilojoule"
+
+#: lib/unit.vala:148
+#| msgid "Megabytes"
+msgid "Megajoules"
+msgstr "Megajoules"
+
+#: lib/unit.vala:148
+#, c-format
+#| msgctxt "unit-format"
+#| msgid "%s Mb"
+msgctxt "unit-format"
+msgid "%s MJ"
+msgstr "%s MJ"
+
+#: lib/unit.vala:148
+#| msgctxt "unit-symbols"
+#| msgid "Joule,J,joule,joules"
+msgctxt "unit-symbols"
+msgid "MJ,megajoules,megajoule"
+msgstr "MJ,megajoules,megajoule"
+
+#: lib/unit.vala:149
+msgid "KilowattHour"
+msgstr "Κιλοβατώρα"
+
+#: lib/unit.vala:149
+#, c-format
+#| msgctxt "unit-format"
+#| msgid "%s km/h"
+msgctxt "unit-format"
+msgid "%s kWh"
+msgstr "%s kWh"
+
+#: lib/unit.vala:149
+msgctxt "unit-symbols"
+msgid "kwh,kWh,kilowatt-hour,kilowatthour"
+msgstr "kwh, kWh, κιλοβατώρα, κιλοβατώρα"
+
+#: lib/unit.vala:150
 msgid "BTU"
 msgstr "BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 #, c-format
 msgctxt "unit-format"
 msgid "%s BTU"
 msgstr "%s BTU"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgid "Calorie"
 msgstr "Θερμίδα"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 #, c-format
 msgctxt "unit-format"
 msgid "%s cal"
 msgstr "%s θερμ"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "θερμίδες,θερμίδα,θερμ"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgid "Erg"
 msgstr "Εργιο"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 #, c-format
 msgctxt "unit-format"
 msgid "%s erg"
 msgstr "%s έργιο"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "έργια,έργιο"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgid "eV"
 msgstr "eV"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 #, c-format
 msgctxt "unit-format"
 msgid "%s ev"
 msgstr "%s ev"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "ηλεκτροβολτ,ηλεκτροβολτς,ev"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgid "Ft-lb"
 msgstr "Ft-lb"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 #, c-format
 msgctxt "unit-format"
 msgid "%s ft-lb"
 msgstr "%s ft-lb"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "πόδι-λίβρα,πόδια-λίβρες,ft-lb,ft-lbs"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:156
 msgid "Currency"
 msgstr "Νόμισμα"
 
 #. Translators: result of currency conversion, %s is the symbol, %%s is the placeholder for amount, i.e.: USD100
-#: lib/unit.vala:159
+#: lib/unit.vala:162
 #, c-format
 msgid "%s%%s"
 msgstr "%s%%s"
@@ -2626,7 +2685,7 @@ msgstr "Λειτουργία δείκτη [Alt]"
 msgid "Superscript Mode [Ctrl]"
 msgstr "Λειτουργία εκθέτη [Ctrl]"
 
-#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2032
+#: src/ui/buttons-advanced.ui:483 src/ui/buttons-programming.ui:2036
 msgid "Factorize [Ctrl+F]"
 msgstr "Παραγοντοποίηση [Ctrl+F]"
 
@@ -2647,11 +2706,11 @@ msgid "Hyperbolic Tangent"
 msgstr "Υπερβολική εφαπτομένη"
 
 #: src/ui/buttons-advanced.ui:614 src/ui/buttons-financial.ui:1551
-#: src/ui/buttons-programming.ui:1877
+#: src/ui/buttons-programming.ui:1881
 msgid "Exponent [^ or **]"
 msgstr "Δύναμη [^ ή **]"
 
-#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1898
+#: src/ui/buttons-advanced.ui:635 src/ui/buttons-programming.ui:1902
 msgid "Inverse [Ctrl+I]"
 msgstr "Αντιστροφή [Ctrl+I]"
 
@@ -2663,11 +2722,11 @@ msgstr "Αριθμός του Euler"
 msgid "Natural Logarithm"
 msgstr "Φυσικός λογάριθμος"
 
-#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1953
+#: src/ui/buttons-advanced.ui:712 src/ui/buttons-programming.ui:1957
 msgid "Factorial [!]"
 msgstr "Παραγοντικό [!]"
 
-#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1975
+#: src/ui/buttons-advanced.ui:734 src/ui/buttons-programming.ui:1979
 msgid "Absolute Value [|]"
 msgstr "Απόλυτη τιμή [|]"
 
@@ -2692,13 +2751,13 @@ msgid "Complex Argument"
 msgstr "Όρισμα μιγαδικού"
 
 #: src/ui/buttons-advanced.ui:845 src/ui/buttons-financial.ui:1602
-#: src/ui/buttons-programming.ui:2063
+#: src/ui/buttons-programming.ui:2067
 msgid "Memory"
 msgstr "Μνήμη"
 
 #. The label on the memory button
 #: src/ui/buttons-advanced.ui:846 src/ui/buttons-financial.ui:1603
-#: src/ui/buttons-programming.ui:2062
+#: src/ui/buttons-programming.ui:2066
 msgid "x"
 msgstr "x"
 
@@ -2754,7 +2813,7 @@ msgstr "Μελλοντική α_ξία:"
 #: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
 #: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
 #: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
-#: src/ui/buttons-programming.ui:2139
+#: src/ui/buttons-programming.ui:2143 src/gnome-calculator.vala:326
 msgid "_Cancel"
 msgstr "Άκ_υρο"
 
@@ -3080,62 +3139,62 @@ msgstr "Λειτουργία εκθέτη [Ctrl]"
 msgid "Shift Left"
 msgstr "Μετατόπιση αριστερά"
 
-#: src/ui/buttons-programming.ui:1764
+#: src/ui/buttons-programming.ui:1766
 msgid "Shift Right"
 msgstr "Μετατόπιση δεξιά"
 
-#: src/ui/buttons-programming.ui:1778
+#: src/ui/buttons-programming.ui:1782
 msgid "Boolean Exclusive OR"
 msgstr "Λογικό αποκλειστικό OR"
 
-#: src/ui/buttons-programming.ui:1794
+#: src/ui/buttons-programming.ui:1798
 msgid "Boolean OR"
 msgstr "Λογικό OR"
 
-#: src/ui/buttons-programming.ui:1811
+#: src/ui/buttons-programming.ui:1815
 msgid "Boolean AND"
 msgstr "Λογικό AND"
 
-#: src/ui/buttons-programming.ui:1828
+#: src/ui/buttons-programming.ui:1832
 msgid "Boolean NOT"
 msgstr "Λογικό NOT"
 
-#: src/ui/buttons-programming.ui:1845
+#: src/ui/buttons-programming.ui:1849
 msgid "Ones’ Complement"
 msgstr "Συμπλήρωμα ως προς 1"
 
-#: src/ui/buttons-programming.ui:1862
+#: src/ui/buttons-programming.ui:1866
 msgid "Two’s Complement"
 msgstr "Συμπλήρωμα ως προς 2"
 
-#: src/ui/buttons-programming.ui:1938
+#: src/ui/buttons-programming.ui:1942
 msgid "Binary Logarithm"
 msgstr "Δυαδικός λογάριθμος"
 
-#: src/ui/buttons-programming.ui:1998
+#: src/ui/buttons-programming.ui:2002
 msgid "Integer Component"
 msgstr "Ακέραιο μέρος"
 
-#: src/ui/buttons-programming.ui:2015
+#: src/ui/buttons-programming.ui:2019
 msgid "Fractional Component"
 msgstr "Κλασματικό μέρος"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2047 src/ui/buttons-programming.ui:2101
+#: src/ui/buttons-programming.ui:2051 src/ui/buttons-programming.ui:2105
 msgid "Insert Character Code"
 msgstr "Εισαγωγή κωδικού χαρακτήρα"
 
-#: src/ui/buttons-programming.ui:2078
+#: src/ui/buttons-programming.ui:2082
 msgid "Change word size"
 msgstr "Αλλαγή μήκους λέξης"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2115
+#: src/ui/buttons-programming.ui:2119
 msgid "Ch_aracter:"
 msgstr "Χα_ρακτήρας:"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2145
+#: src/ui/buttons-programming.ui:2149
 msgid "_Insert"
 msgstr "_Εισαγωγή"
 
@@ -3159,12 +3218,12 @@ msgid "Show release version"
 msgstr "Προβολή της έκδοσης"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:307
 msgid "© 1986–2023 The Calculator authors"
 msgstr "© 1986–2023 Οι συγγραφείς της Αριθμομηχανής"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:315
+#: src/gnome-calculator.vala:313
 msgid "translator-credits"
 msgstr ""
 "Ελληνική μεταφραστική ομάδα GNOME\n"
@@ -3181,37 +3240,34 @@ msgstr ""
 "Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα\n"
 "http://gnome.gr/"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 msgid "Exchange rate data providers"
 msgstr "Πάροχοι δεδομένων συναλλαγματικών ισοτιμιών"
 
-#: src/gnome-calculator.vala:319
+#: src/gnome-calculator.vala:317
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Δεδομένα συναλλαγματικών ισοτιμιών από %s"
 
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:325
+msgid "Close All?"
+msgstr "Κλείσιμο όλων;"
+
+#: src/gnome-calculator.vala:325
 msgid "Are you sure you want to close all open windows?"
 msgstr "Είστε βέβαιοι ότι θέλετε να κλείσετε όλα τα ανοιχτά παράθυρα;"
 
-#: src/gnome-calculator.vala:330
+#: src/gnome-calculator.vala:327
 msgid "Close _All"
 msgstr "_Κλείσιμο όλων"
 
-#: src/math-buttons.vala:227 src/math-buttons.vala:612
-#: src/math-buttons.vala:628
+#: src/math-buttons.vala:232 src/math-buttons.vala:635
+#: src/math-buttons.vala:651
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-bit"
 msgstr[1] "%d-bit"
-
-#: src/math-buttons.vala:597
-#, c-format
-msgid "%d place"
-msgid_plural "%d places"
-msgstr[0] "%d θέση"
-msgstr[1] "%d θέσεις"
 
 #: src/ui/math-converter.ui:42
 msgid " to "
@@ -3226,19 +3282,19 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:611
+#: src/math-display.vala:613
 msgid "Defined Functions"
 msgstr "Καθορισμένες συναρτήσεις"
 
-#: src/math-display.vala:656
+#: src/math-display.vala:658
 msgid "Built-in keywords"
 msgstr "Ενσωματωμένες λέξεις-κλειδιά"
 
-#: src/math-display.vala:700
+#: src/math-display.vala:702
 msgid "Defined currencies"
 msgstr "Καθορισμένα νομίσματα"
 
-#: src/math-display.vala:750
+#: src/math-display.vala:752
 msgid "Defined Variables"
 msgstr "Καθορισμένες μεταβλητές"
 
@@ -3278,27 +3334,27 @@ msgstr "Ημερισίως"
 msgid "Weekly"
 msgstr "Εβδομαδιαίως"
 
-#: src/ui/math-preferences.ui:19
+#: src/ui/math-preferences.ui:18
 msgid "Number of _decimals"
 msgstr "Αριθμός _δεκαδικών"
 
-#: src/ui/math-preferences.ui:28
+#: src/ui/math-preferences.ui:27
 msgid "Trailing _zeroes"
 msgstr "_Μηδενικά στο τέλος"
 
-#: src/ui/math-preferences.ui:34
+#: src/ui/math-preferences.ui:33
 msgid "_Thousands separators"
 msgstr "Διαχωριστικό _χιλιάδων"
 
-#: src/ui/math-preferences.ui:40
+#: src/ui/math-preferences.ui:39
 msgid "_Angle units"
 msgstr "Μονάδες _γωνιών"
 
-#: src/ui/math-preferences.ui:46
+#: src/ui/math-preferences.ui:45
 msgid "Word _size"
 msgstr "Μήκος _λέξης"
 
-#: src/ui/math-preferences.ui:52
+#: src/ui/math-preferences.ui:51
 msgid "E_xchange rate refresh interval"
 msgstr "Εύρος ανανέωσης ρυθμού συναλλάγματος"
 
@@ -3485,23 +3541,36 @@ msgstr "Όνομα μεταβλητής"
 msgid "Store value into existing or new variable"
 msgstr "Αποθηκεύστε την τιμή σε υπάρχουσα ή νέα μεταβλητή"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:113
+#: src/math-variable-popover.vala:94
+#, c-format
+msgid "%s: Invalid variable name, can not start with a digit"
+msgstr "%s: Μη έγκυρο όνομα μεταβλητής, δεν μπορεί να ξεκινά με ψηφίο"
+
+#: src/math-variable-popover.vala:98
+#, c-format
+msgid ""
+"%s: Invalid variable name, can only contain digits, letters and underscores"
+msgstr ""
+"%s: Μη έγκυρο όνομα μεταβλητής, μπορεί να περιέχει μόνο ψηφία, γράμματα και "
+"κάτω παύλες"
+
+#: src/ui/math-window.ui:20 src/math-window.vala:116
 msgid "Basic"
 msgstr "Βασική"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:119
+#: src/ui/math-window.ui:25 src/math-window.vala:122
 msgid "Advanced"
 msgstr "Προχωρημένη"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:125
+#: src/ui/math-window.ui:30 src/math-window.vala:128
 msgid "Financial"
 msgstr "Εμπορική"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:131
+#: src/ui/math-window.ui:35 src/math-window.vala:134
 msgid "Programming"
 msgstr "Προγραμματιστική"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:137
+#: src/ui/math-window.ui:40 src/math-window.vala:140
 msgid "Keyboard"
 msgstr "Πληκτρολόγιο"
 
@@ -3509,22 +3578,26 @@ msgstr "Πληκτρολόγιο"
 msgid "_New Window"
 msgstr "_Νέο παράθυρο"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#: src/ui/math-window.ui:56
+msgid "Result format"
+msgstr "Μορφή αποτελέσματος"
+
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:61
 msgid "_Automatic"
 msgstr "_Αυτόματα"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:67
 msgid "_Fixed"
 msgstr "_Σταθερά"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:73
 msgid "_Scientific"
 msgstr "Επι_στημονική"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set number format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.ui:79
 msgid "_Engineering"
 msgstr "_Τεχνολογική"
@@ -3549,17 +3622,22 @@ msgstr "Περί της Αριθμομηχανής"
 msgid "Mode Selection"
 msgstr "Επιλογή λειτουργίας"
 
-#: src/ui/math-window.ui:128 src/ui/math-window.ui:132
-msgid "Undo"
-msgstr "Aναίρεση"
+#: src/ui/math-window.ui:130
+msgid "_Undo"
+msgstr "Α_ναίρεση"
 
-#: src/ui/math-window.ui:144
+#: src/ui/math-window.ui:143
 msgid "Main Menu"
 msgstr "Κυρίως μενού"
 
-#: src/math-window.vala:166
-msgid "_Quit"
-msgstr "Έ_ξοδος"
+#, c-format
+#~ msgid "%d place"
+#~ msgid_plural "%d places"
+#~ msgstr[0] "%d θέση"
+#~ msgstr[1] "%d θέσεις"
+
+#~ msgid "_Quit"
+#~ msgstr "Έ_ξοδος"
 
 #~ msgid "Ev"
 #~ msgstr "Ev"
