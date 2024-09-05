@@ -36,6 +36,7 @@ public class UnitManager : Object
         var frequency_category = default_unit_manager.add_category ("frequency", _("Frequency"));
         var temperature_category = default_unit_manager.add_category ("temperature", _("Temperature"));
         var energy_category = default_unit_manager.add_category("energy",_("Energy"));
+        var pressure_category = default_unit_manager.add_category("pressure",_("Pressure"));
         var digitalstorage_category = default_unit_manager.add_category ("digitalstorage", _("Digital Storage"));
 
         /* FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads */
@@ -153,6 +154,14 @@ public class UnitManager : Object
         energy_category.add_unit(new Unit ("erg", _("Erg"), dpgettext2 (null, "unit-format", "%s erg"), "x/10000000", "x*10000000", dpgettext2 (null, "unit-symbols", "ergs,erg")));
         energy_category.add_unit(new Unit ("ev", _("eV"), dpgettext2 (null, "unit-format", "%s ev"), "x*1.602176634/10000000000000000000", "x*1.602176634*10000000000000000000", dpgettext2 (null, "unit-symbols", "electronvolt,electronvolts,ev")));
         energy_category.add_unit(new Unit ("ftlb", _("Ft-lb"), dpgettext2 (null, "unit-format", "%s ft-lb"), "x*1.3558179483314004", "x/1.3558179483314004", dpgettext2 (null, "unit-symbols", "foot-pound,foot-pounds,ft-lb,ft-lbs"))); 
+        pressure_category.add_unit(new Unit ("pascal", _("Pascal"), dpgettext2 (null, "unit-format", "%s Pa"), "x", "x", dpgettext2 (null, "unit-symbols", "Pascal,pascal,Pa")));
+        pressure_category.add_unit(new Unit ("kilopascal", _("Kilopascal"), dpgettext2 (null, "unit-format", "%s kPa"), "1000x", "x/1000", dpgettext2 (null, "unit-symbols", "Kilopascal,kilopascal,kPa")));
+        pressure_category.add_unit(new Unit ("hectopascal", _("Hectopascal"), dpgettext2 (null, "unit-format", "%s hPa"), "100x", "x/100", dpgettext2 (null, "unit-symbols", "Hectopascal,hectopascal,hPa")));
+        pressure_category.add_unit(new Unit ("bar", _("Bar"), dpgettext2 (null, "unit-format", "%s bar"), "100000x", "x/100000", dpgettext2 (null, "unit-symbols", "Bar,bar")));
+        pressure_category.add_unit(new Unit ("atm", _("Standard Atmoshphere"), dpgettext2 (null, "unit-format", "%s atm"), "101325x", "x/101325", dpgettext2 (null, "unit-symbols", "Standard Atmoshphere,Standard atmoshphere,standard atmoshphere,Atm,atm")));
+        pressure_category.add_unit(new Unit ("mmhg", _("Millimetre of Mercury"), dpgettext2 (null, "unit-format", "%s mmHg"), "133.322387415x", "x/133.322387415", dpgettext2 (null, "unit-symbols", "Millimetre of Mercury,millimetre of mercury,mmHg")));
+        pressure_category.add_unit(new Unit ("inhg", _("Inch of Mercury"), dpgettext2 (null, "unit-format", "%s inHg"), "3376.85x", "x/3376.85", dpgettext2 (null, "unit-symbols", "Inch of Mercury,inch of mercury,inHg")));
+        pressure_category.add_unit(new Unit ("psi", _("Pound per Square Inch"), dpgettext2 (null, "unit-format", "%s psi"), "6894.757x", "x/6894.757", dpgettext2 (null, "unit-symbols", "Pound per Square Inch,pound per square inch,psi")));
 
         var currency_category = default_unit_manager.add_category ("currency", _("Currency"));
         var currencies = CurrencyManager.get_default ().get_currencies ();
