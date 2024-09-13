@@ -27,6 +27,8 @@ public class MathDisplay : Gtk.Box
     public bool completion_visible { get; set;}
     public bool completion_selected { get; set;}
 
+    public signal void arr_key_pressed (uint keyval);
+
     Regex only_variable_name = /^_*\p{L}+(_|\p{L})*$/;
     Regex only_function_definition = /^[a-zA-Z0-9 ]*\(([a-zA-z0-9;]*)?\)[ ]*$/;
 
@@ -125,10 +127,6 @@ public class MathDisplay : Gtk.Box
     private bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType mod_state)
     {
         info ("event\n");
-        if (keyval == Gdk.Key.Left || keyval == Gdk.Key.Right)
-        {
-            return false;
-        }
 
         /* Clear on escape */
         var state = mod_state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.ALT_MASK);
@@ -145,23 +143,6 @@ public class MathDisplay : Gtk.Box
             GtkSource.Completion completion = source_view.get_completion ();
             completion.hide ();
             return true;
-        } else if (state == Gdk.ModifierType.ALT_MASK && (keyval == Gdk.Key.Left || keyval == Gdk.Key.Right))
-        {
-            /*switch (keyval)
-            {
-            case Gdk.Key.Left:
-                history.current -= 1;
-                break;
-            case Gdk.Key.Right:
-                history.current += 1;
-                break;
-            }
-            HistoryEntry? entry = history.get_entry_at (history.current);
-            if (entry != null) {
-                equation.clear();
-                insert_text (entry.answer_label.get_text ());
-            }
-            return true;*/
         }
 
         /* Ignore keypresses while calculating */
@@ -327,6 +308,10 @@ public class MathDisplay : Gtk.Box
                 return true;
             case Gdk.Key.bracketright:
                 equation.insert ("⌋");
+                return true;
+            case Gdk.Key.Left:
+            case Gdk.Key.Right:
+                arr_key_pressed (keyval);
                 return true;
             }
         }

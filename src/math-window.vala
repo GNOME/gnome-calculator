@@ -17,12 +17,16 @@ public class MathWindow : Adw.ApplicationWindow
 
     private HistoryView history;
 
+    private ulong changed_handler;
+
     private MathDisplay _display;
     public MathDisplay math_display { get { return _display; } }
     private MathButtons _buttons;
     public MathButtons buttons { get { return _buttons; } }
     private bool right_aligned;
     private bool remove_buttons;
+    private int forked_row_index = 0;
+    private string saved_eq = null;
 
     [GtkChild]
     private unowned Gtk.MenuButton menu_button;
@@ -80,7 +84,11 @@ public class MathWindow : Adw.ApplicationWindow
         history = new HistoryView ();
         history.answer_clicked.connect ((ans) => { _display.insert_text (ans); });
         history.equation_clicked.connect ((eq) => { _display.display_text (eq); });
+        history.row_added.connect (this.eq_changed_cb);
         history.set_serializer (_display.equation.serializer);
+
+        _display.arr_key_pressed.connect (this.arr_key_pressed_cb);
+        changed_handler = _display.equation.changed.connect (this.eq_changed_cb);
 
         box.append (history);
         box.append (_display);
@@ -246,6 +254,68 @@ public class MathWindow : Adw.ApplicationWindow
         else assert_not_reached ();
 
         buttons.mode = mode;
+    }
+
+    private void arr_key_pressed_cb (uint keyval)
+    {
+        switch (keyval)
+        {
+        case Gdk.Key.Left:
+            previous_in_history ();
+            break;
+        case Gdk.Key.Right:
+            next_in_history ();
+            break;
+        }
+    }
+
+    private void eq_changed_cb ()
+    {
+        forked_row_index = history.current + 1;
+        saved_eq = null;
+    }
+
+    private void previous_in_history ()
+    {
+        var entry = history.get_entry_at (forked_row_index - 1);
+        if (entry == null)
+        {
+            _display.keynav_failed (Gtk.DirectionType.UP);
+            return;
+        }
+        else if (saved_eq == null)
+        {
+            Gtk.TextIter start, end;
+            if (!_equation.get_selection_bounds (out start, out end))
+                _equation.get_bounds (out start, out end);
+
+            saved_eq = _equation.get_text (start, end, false);
+        }
+        forked_row_index--;
+        set_display_text (entry.equation_label.get_text ());
+    }
+
+    private void next_in_history ()
+    {
+        var entry = history.get_entry_at (forked_row_index + 1);
+        if (entry == null)
+        {
+            if (saved_eq != null)
+            {
+                set_display_text (saved_eq);
+                eq_changed_cb ();
+            } else _display.keynav_failed (Gtk.DirectionType.DOWN);
+            return;
+        }
+        set_display_text (entry.equation_label.get_text ());
+        forked_row_index++;
+    }
+
+    private void set_display_text (string text)
+    {
+        SignalHandler.block (_display.equation, changed_handler);
+        _display.display_text (text);
+        SignalHandler.unblock (_display.equation, changed_handler);
     }
 
     public void update_history (string answer, Number number, int number_base, uint representation_base)

@@ -87,7 +87,7 @@ public class HistoryView : Adw.Bin
 public class HistoryEntry : Gtk.ListBoxRow
 {
     [GtkChild]
-    unowned Gtk.Label equation_label;
+    public unowned Gtk.Label equation_label;
     [GtkChild]
     public unowned Gtk.Label answer_label;
     [GtkChild]
