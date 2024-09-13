@@ -359,7 +359,7 @@ public class Calculator : Adw.Application
 
         program_name = Path.get_basename (args [0]);
 
-        Gtk.Window.set_default_icon_name (APP_ID + "-symbolic");
+        Gtk.Window.set_default_icon_name (APP_ID);
 
         var app = new Calculator ();
 
