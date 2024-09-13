@@ -2117,10 +2117,22 @@
       </object>
     </child>
   </object>
-  <object class="GtkDialog" id="character_code_dialog">
+  <object class="GtkWindow" id="character_code_dialog">
     <property name="title" translatable="yes" comments="Title of insert character code dialog">Insert Character Code</property>
+    <property name="hide_on_close">True</property>
+    <property name="default_widget">insert_button</property>
     <property name="resizable">0</property>
-    <child internal-child="content_area">
+    <child>
+      <object class="GtkShortcutController">
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">Escape</property>
+            <property name="action">action(window.close)</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <property name="child">
       <object class="GtkBox" id="dialog-vbox3">
         <property name="orientation">vertical</property>
         <child>
@@ -2145,29 +2157,31 @@
             </child>
           </object>
         </child>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="-6">button8</action-widget>
-      <action-widget response="-5">button9</action-widget>
-    </action-widgets>
-    <child internal-child="action_area">
-      <object class="GtkBox" id="dialog-action_area3">
-        <property name="halign">2</property>
         <child>
-          <object class="GtkButton" id="button8">
-            <property name="label" translatable="yes">_Cancel</property>
-            <property name="use_underline">True</property>
+          <object class="GtkBox" id="dialog-action_area3">
+            <property name="margin-top">6</property>
+            <property name="margin-bottom">6</property>
+            <property name="margin-start">6</property>
+            <property name="margin-end">6</property>
+            <property name="spacing">6</property>
+            <property name="halign">2</property>
+            <child>
+              <object class="GtkButton">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use_underline">True</property>
+                <signal name="clicked" handler="gtk_window_close" object="character_code_dialog" swapped="yes"/>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="insert_button">
+                <property name="label" translatable="yes" comments="Insert ASCII dialog: Button to insert selected character">_Insert</property>
+                <property name="use_underline">True</property>
+              </object>
+            </child>
           </object>
         </child>
-        <child>
-          <object class="GtkButton" id="button9">
-            <property name="label" translatable="yes" comments="Insert ASCII dialog: Button to insert selected character">_Insert</property>
-            <property name="use_underline">True</property>
-          </object>
-        </child>
       </object>
-    </child>
+    </property>
   </object>
   <object class="GtkSizeGroup">
     <property name="mode">3</property>

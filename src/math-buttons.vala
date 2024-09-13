@@ -94,7 +94,8 @@ public class MathButtons : Gtk.Box
     private Gtk.Widget bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
 
-    private Gtk.Dialog character_code_dialog;
+    private Gtk.Window character_code_dialog;
+    private Gtk.Button insert_button;
     private Gtk.Entry character_code_entry;
     private ulong converter_changed;
 
@@ -514,11 +515,11 @@ private void equation_display_changed_cb ()
 
         if (mode == ButtonMode.PROGRAMMING)
         {
-            character_code_dialog = builder.get_object ("character_code_dialog") as Gtk.Dialog;
-            character_code_dialog.response.connect (character_code_dialog_response_cb);
-            character_code_dialog.close_request.connect (character_code_dialog_close_request);
+            character_code_dialog = builder.get_object ("character_code_dialog") as Gtk.Window;
+            character_code_dialog.set_transient_for (window);
+            insert_button = builder.get_object ("insert_button") as Gtk.Button;
+            insert_button.clicked.connect (() => { insert_char_code (); });
             character_code_entry = builder.get_object ("character_code_entry") as Gtk.Entry;
-            character_code_entry.activate.connect (character_code_dialog_activate_cb);
             hex_base_button = builder.get_object ("hex_base_button") as Gtk.Button;
             dec_base_button = builder.get_object ("dec_base_button") as Gtk.Button;
             oct_base_button = builder.get_object ("oct_base_button") as Gtk.Button;
@@ -698,7 +699,7 @@ private void equation_display_changed_cb ()
     private void on_launch_finc_dialog (SimpleAction action, Variant? param)
     {
         var name = param.get_string ();
-        var dialog = financial_ui.get_object (name) as Gtk.Dialog;
+        var dialog = financial_ui.get_object (name) as Gtk.Window;
         dialog.transient_for = this.window as Gtk.Window;
         dialog.show ();
     }
@@ -713,10 +714,10 @@ private void equation_display_changed_cb ()
         var next_entry = widget.get_data<Gtk.Entry> ("next-entry");
         if (next_entry == null)
         {
-            var dialog = widget.get_root () as Gtk.Dialog;
+            var dialog = widget.get_root ();
             if (dialog != null)
             {
-                dialog.response (Gtk.ResponseType.OK);
+                insert_char_code ();
                 return;
             }
         }
@@ -779,37 +780,23 @@ private void equation_display_changed_cb ()
         do_finc_expression (equation, function, arg[0], arg[1], arg[2], arg[3]);
     }
 
-    private void character_code_dialog_response_cb (Gtk.Widget dialog, int response_id)
+    private void insert_char_code ()
     {
         string text = character_code_entry.get_text ();
-        if (response_id == Gtk.ResponseType.OK)
+        var x = new Number.integer (0);
+        var decoded = text.data;
+        var len = decoded.length;
+        for (var i = 0; i < len; i++)
         {
-            var x = new Number.integer (0);
-            var decoded = text.data;
-            var len = decoded.length;
-            for (var i = 0; i < len; i++)
+            x = x.add (new Number.integer (decoded[i]));
+            if(i != (len - 1))
             {
-                x = x.add (new Number.integer (decoded[i]));
-                if(i != (len - 1))
-                {
-                    x = x.shift (8);
-                }
+                x = x.shift (8);
             }
-            equation.insert_number (x);
         }
+        equation.insert_number (x);
 
-        dialog.hide ();
-    }
-
-    private void character_code_dialog_activate_cb (Gtk.Widget entry)
-    {
-        character_code_dialog_response_cb (character_code_dialog, Gtk.ResponseType.OK);
-    }
-
-    private bool character_code_dialog_close_request (Gtk.Widget dialog)
-    {
-        character_code_dialog_response_cb (dialog, Gtk.ResponseType.CANCEL);
-        return true;
+        character_code_dialog.close ();
     }
 
     private void on_toggle_bit (SimpleAction action, Variant? param)
