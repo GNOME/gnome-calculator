@@ -96,7 +96,7 @@ public class MathButtons : Gtk.Box
 
     private Adw.Dialog character_code_dialog;
     private Gtk.Button insert_button;
-    private Gtk.Entry character_code_entry;
+    private Adw.EntryRow character_code_entry;
     private ulong converter_changed;
 
     /* The names of each field in the dialogs for the financial functions */
@@ -518,7 +518,7 @@ private void equation_display_changed_cb ()
             character_code_dialog = builder.get_object ("character_code_dialog") as Adw.Dialog;
             insert_button = builder.get_object ("insert_button") as Gtk.Button;
             insert_button.clicked.connect (() => { insert_char_code (); });
-            character_code_entry = builder.get_object ("character_code_entry") as Gtk.Entry;
+            character_code_entry = builder.get_object ("character_code_entry") as Adw.EntryRow;
             hex_base_button = builder.get_object ("hex_base_button") as Gtk.Button;
             dec_base_button = builder.get_object ("dec_base_button") as Gtk.Button;
             oct_base_button = builder.get_object ("oct_base_button") as Gtk.Button;
