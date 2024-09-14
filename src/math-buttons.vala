@@ -94,7 +94,7 @@ public class MathButtons : Gtk.Box
     private Gtk.Widget bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
 
-    private Gtk.Window character_code_dialog;
+    private Adw.Dialog character_code_dialog;
     private Gtk.Button insert_button;
     private Gtk.Entry character_code_entry;
     private ulong converter_changed;
@@ -515,8 +515,7 @@ private void equation_display_changed_cb ()
 
         if (mode == ButtonMode.PROGRAMMING)
         {
-            character_code_dialog = builder.get_object ("character_code_dialog") as Gtk.Window;
-            character_code_dialog.set_transient_for (window);
+            character_code_dialog = builder.get_object ("character_code_dialog") as Adw.Dialog;
             insert_button = builder.get_object ("insert_button") as Gtk.Button;
             insert_button.clicked.connect (() => { insert_char_code (); });
             character_code_entry = builder.get_object ("character_code_entry") as Gtk.Entry;
@@ -706,7 +705,7 @@ private void equation_display_changed_cb ()
 
     private void on_insert_character (SimpleAction action, Variant? param)
     {
-        character_code_dialog.present ();
+        character_code_dialog.present (window);
     }
 
     private void finc_activate_cb (Gtk.Widget widget)
