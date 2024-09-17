@@ -130,6 +130,8 @@ public class MathButtons : Gtk.Box
         {"launch-finc-dialog",   on_launch_finc_dialog,   "s"                }
     };
 
+    private bool solved_using_button;
+
     public MathButtons (MathEquation equation, MathWindow window)
     {
         Object (orientation: Gtk.Orientation.VERTICAL, vexpand_set: true);
@@ -140,7 +142,7 @@ public class MathButtons : Gtk.Box
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
 
-        equation.notify["display"].connect ((pspec) => { update_bit_panel (); });
+        equation.notify["display"].connect ((pspec) => { equation_display_changed_cb (); });
         equation.notify["number-mode"].connect ((pspec) => { number_mode_changed_cb (); });
         equation.notify["angle-units"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["number-format"].connect ((pspec) => { update_bit_panel (); });
@@ -205,6 +207,7 @@ public class MathButtons : Gtk.Box
     private void on_solve (SimpleAction action, Variant? param)
     {
         equation.solve ();
+        solved_using_button = true;
     }
 
     private void on_clear (SimpleAction action, Variant? param)
@@ -296,6 +299,17 @@ public class MathButtons : Gtk.Box
         update_base_button(dec_base_button, "%llu".printf (bits), "₁₀");
         update_base_button(oct_base_button, "%llo".printf (bits), "₈");
     }
+
+private void equation_display_changed_cb ()
+{
+    update_bit_panel ();
+
+    if (equation.display != "" && solved_using_button)
+    {
+        announce (equation.display, Gtk.AccessibleAnnouncementPriority.MEDIUM);
+        solved_using_button = false;
+    }
+}
 
     private void base_combobox_changed_cb (Gtk.ComboBox combo)
     {

@@ -434,7 +434,10 @@ public class MathDisplay : Gtk.Box
     private void status_changed_cb ()
     {
         info_buffer.set_text (equation.status, -1);
-        announce (equation.status, Gtk.AccessibleAnnouncementPriority.MEDIUM);
+        if (equation.status != "")
+        {
+            announce (equation.status, Gtk.AccessibleAnnouncementPriority.MEDIUM);
+        }
         if (equation.in_solve && !spinner.get_visible ())
         {
             spinner.show ();
