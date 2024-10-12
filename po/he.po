@@ -11,9 +11,9 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD.he\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2024-07-13 18:13+0000\n"
-"PO-Revision-Date: 2024-07-17 12:27+0300\n"
-"Last-Translator: Avi Markovitz <avi.markovitz@gmail.com>\n"
+"POT-Creation-Date: 2024-10-01 08:14+0000\n"
+"PO-Revision-Date: 2024-10-12 15:01+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: data/org.gnome.Calculator.appdata.xml.in:7
 #: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:82
@@ -74,28 +74,28 @@ msgstr ""
 "מצב תכנות תומך בהמרה בין בסיסים נפוצים (בינרי, אוקטלי, עשרוני והקסדצימלי), "
 "אלגברה בוליאנית, משלים ל־1 ומשלים ל־2, המרת תו לקוד תו ועוד."
 
-#: data/org.gnome.Calculator.appdata.xml.in:35
+#: data/org.gnome.Calculator.appdata.xml.in:39
 msgid "Basic Mode"
 msgstr "מצב בסיסי"
 
-#: data/org.gnome.Calculator.appdata.xml.in:39
+#: data/org.gnome.Calculator.appdata.xml.in:43
 msgid "Advanced Mode"
 msgstr "מצב מתקדם"
 
-#: data/org.gnome.Calculator.appdata.xml.in:43
+#: data/org.gnome.Calculator.appdata.xml.in:47
 msgid "Financial Mode"
 msgstr "מצב פיננסי"
 
-#: data/org.gnome.Calculator.appdata.xml.in:47
+#: data/org.gnome.Calculator.appdata.xml.in:51
 msgid "Programming Mode"
 msgstr "מצב תכנות"
 
-#: data/org.gnome.Calculator.appdata.xml.in:51
+#: data/org.gnome.Calculator.appdata.xml.in:55
 msgid "Keyboard Mode"
 msgstr "מצב הקלדה"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.appdata.xml.in:72 src/gnome-calculator.vala:302
+#: data/org.gnome.Calculator.appdata.xml.in:76 src/gnome-calculator.vala:302
 msgid "The GNOME Project"
 msgstr "מיזם GNOME"
 
@@ -2773,7 +2773,7 @@ msgstr "ערך _עתידי:"
 #: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
 #: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
 #: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
-#: src/ui/buttons-programming.ui:2159 src/gnome-calculator.vala:326
+#: src/ui/buttons-programming.ui:2171 src/gnome-calculator.vala:326
 msgid "_Cancel"
 msgstr "_ביטול"
 
@@ -2973,9 +2973,9 @@ msgid ""
 "of periods, typically years, over which an asset is depreciated. "
 msgstr ""
 "חישוב ההפרשה לפחת על נכס לתקופה מוגדרת, תוך שימוש בשיטת סכום ספרות השנים. "
-"שיטת ההפחתה הזאת מאיצה את קצב ההפחתה, כך שהפחתות חשבונאיות מתרחשות יותר בתקופות "
-"המוקדמות מאשר בתקופות המאוחרות. אורך החיים השימושיים הוא מספר התקופות, בדרך "
-"כלל שנים, אשר בהם נכס זה מופחת. "
+"שיטת ההפחתה הזאת מאיצה את קצב ההפחתה, כך שהפחתות חשבונאיות מתרחשות יותר "
+"בתקופות המוקדמות מאשר בתקופות המאוחרות. אורך החיים השימושיים הוא מספר "
+"התקופות, בדרך כלל שנים, אשר בהם נכס זה מופחת. "
 
 #. Title of Payment Period dialog
 #: src/ui/buttons-financial.ui:1056
@@ -3141,12 +3141,12 @@ msgid "Change word size"
 msgstr "שינוי גודל מילה"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2135
-msgid "Ch_aracter:"
-msgstr "_תו:"
+#: src/ui/buttons-programming.ui:2153
+msgid "Character"
+msgstr "תו"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2165
+#: src/ui/buttons-programming.ui:2181
 msgid "_Insert"
 msgstr "הו_ספה"
 
@@ -3203,8 +3203,8 @@ msgstr "לסגור את כל החלונות הפתוחים?"
 msgid "Close _All"
 msgstr "לסגור ה_כול"
 
-#: src/math-buttons.vala:234 src/math-buttons.vala:646
-#: src/math-buttons.vala:662
+#: src/math-buttons.vala:238 src/math-buttons.vala:660
+#: src/math-buttons.vala:676
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -3226,19 +3226,19 @@ msgctxt "convertion equals label"
 msgid "="
 msgstr "="
 
-#: src/math-display.vala:611
+#: src/math-display.vala:599
 msgid "Defined Functions"
 msgstr "הגדרת פונקציות"
 
-#: src/math-display.vala:656
+#: src/math-display.vala:644
 msgid "Built-in keywords"
 msgstr "מילות מפתח מובנות"
 
-#: src/math-display.vala:700
+#: src/math-display.vala:688
 msgid "Defined currencies"
 msgstr "מטבעות מוגדרים"
 
-#: src/math-display.vala:750
+#: src/math-display.vala:738
 msgid "Defined Variables"
 msgstr "הקצאת משתנה"
 
@@ -3464,13 +3464,13 @@ msgstr "ביצוע חוזר"
 
 #: src/ui/math-shortcuts.ui:199
 msgctxt "shortcut window"
-msgid "Previous result"
-msgstr "תוצאה קודמת"
+msgid "Previous equation"
+msgstr "המשוואה הקודמת"
 
 #: src/ui/math-shortcuts.ui:205
 msgctxt "shortcut window"
-msgid "Next result"
-msgstr "תוצאה הבאה"
+msgid "Next equation"
+msgstr "המשוואה הבאה"
 
 #: src/ui/math-shortcuts.ui:211
 msgctxt "shortcut window"
@@ -3496,23 +3496,23 @@ msgid ""
 "%s: Invalid variable name, can only contain digits, letters and underscores"
 msgstr "%s: שם משתנה לא תקין, יכול להכיל ספרות, אותיות וקו תחתי"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:116
+#: src/ui/math-window.ui:20 src/math-window.vala:124
 msgid "Basic"
 msgstr "בסיסי"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:122
+#: src/ui/math-window.ui:25 src/math-window.vala:130
 msgid "Advanced"
 msgstr "מתקדם"
 
-#: src/ui/math-window.ui:30 src/math-window.vala:128
+#: src/ui/math-window.ui:30 src/math-window.vala:136
 msgid "Financial"
 msgstr "פיננסי"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:134
+#: src/ui/math-window.ui:35 src/math-window.vala:142
 msgid "Programming"
 msgstr "תכנות"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:140
+#: src/ui/math-window.ui:40 src/math-window.vala:148
 msgid "Keyboard"
 msgstr "מקלדת"
 
