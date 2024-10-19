@@ -705,6 +705,7 @@ private void equation_display_changed_cb ()
 
     private void on_insert_character (SimpleAction action, Variant? param)
     {
+        character_code_dialog.transient_for = this.window as Gtk.Window;
         character_code_dialog.present ();
     }
 
