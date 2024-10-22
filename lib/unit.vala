@@ -144,7 +144,7 @@ public class UnitManager : Object
         frequency_category.add_unit (new Unit ("gigahertz", _("Gigahertz"), dpgettext2 (null, "unit-format", "%s GHz"), "1000000000x", "x/1000000000", dpgettext2 (null, "unit-symbols", "gigahertz,GHz")));
         frequency_category.add_unit (new Unit ("terahertz", _("Terahertz"), dpgettext2 (null, "unit-format", "%s THz"), "1000000000000x", "x/1000000000000" ,dpgettext2 (null, "unit-symbols", "terahertz,THz")));
         energy_category.add_unit (new Unit ("joule", _("Joule"), dpgettext2 (null, "unit-format", "%s J"), "x", "x" ,dpgettext2 (null, "unit-symbols", "Joule,J,joule,joules")));
-        energy_category.add_unit (new Unit ("kilojoule", _("Kilojoules"), dpgettext2 (null, "unit-format", "%s KJ"), "1000x", "x/1000" ,dpgettext2 (null, "unit-symbols", "KJ,kilojoules,kilojoule")));
+        energy_category.add_unit (new Unit ("kilojoule", _("Kilojoules"), dpgettext2 (null, "unit-format", "%s kJ"), "1000x", "x/1000" ,dpgettext2 (null, "unit-symbols", "KJ,kilojoules,kilojoule")));
         energy_category.add_unit (new Unit ("megajoule", _("Megajoules"), dpgettext2 (null, "unit-format", "%s MJ"), "100000x", "x/100000" ,dpgettext2 (null, "unit-symbols", "MJ,megajoules,megajoule")));
         energy_category.add_unit (new Unit ("kilowatthour", _("KilowattHour"), dpgettext2 (null, "unit-format", "%s kWh"), "360000x", "x/360000" ,dpgettext2 (null, "unit-symbols", "kwh,kWh,kilowatt-hour,kilowatthour")));
         energy_category.add_unit (new Unit ("btu", _("BTU"), dpgettext2 (null, "unit-format", "%s BTU"), "x*1054.350264489", "x/1054.350264489" ,dpgettext2 (null, "unit-symbols", "btu,BTU")));
