@@ -66,15 +66,12 @@ public class MathConverter : Gtk.Grid
                                                      null,
                                                      "display_name");
 
-        var alphabetical_sorter = new Gtk.StringSorter (expression);
-        var sorted_model = new Gtk.SortListModel (category_model, alphabetical_sorter);
         var categories = UnitManager.get_default ().get_categories ();
         foreach (var category in categories)
         {
-            category_model.append (category);
+            category_model.insert_sorted (category, (c1, c2) => { return (c1 as UnitCategory).display_name.collate ((c2 as UnitCategory).display_name); } );
         }
-        category_combo.model = sorted_model;
-
+        category_combo.model = category_model;
         category_combo.expression = expression;
     }
 
