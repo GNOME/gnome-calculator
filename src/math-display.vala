@@ -53,7 +53,7 @@ public class MathDisplay : Gtk.Box
         set_enable_osk (false);
 
         source_view.set_name ("displayitem");
-        source_view.set_size_request (20, 20);
+        source_view.set_size_request (20, 45);
         event_controller = new Gtk.EventControllerKey ();
         event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE)   ;
         event_controller.key_pressed.connect (key_press_cb);
