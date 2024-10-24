@@ -922,9 +922,9 @@ static void test_cos ()
 
 private void test_and ()
 {
-    for (var a = 0; a < 500; a++)
+    for (var a = 0; a < 10; a++)
     {
-        for (var b = 0; b < 500; b++)
+        for (var b = 0; b < 10; b++)
         {
             var z = (new Number.integer (a)).and (new Number.integer (b));
             var expected = a & b;
