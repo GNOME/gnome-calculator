@@ -1,4 +1,14 @@
-include: 'https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml'
+include:
+  - project: 'gnome/citemplates'
+    file: 'flatpak/flatpak_ci_initiative.yml'
+  - component: gitlab.gnome.org/GNOME/citemplates/release-service@release-service-sandbox # <-- instead of @master
+    inputs: dist-job-name: "flatpak"
+    tarball-artifact-path: "${TARBALL_ARTIFACT_PATH}"
+
+variables:
+  FLATPAK_MODULE: 'gnome-calculator'
+  TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
+
 
 flatpak:
   variables:
