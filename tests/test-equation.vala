@@ -154,6 +154,7 @@ private void test_conversions ()
 
     /* Energy */
     test ("1000 Joule in kJ", "1", 0);
+    test ("1 MJ in Joule", "1000000", 0);
     test ("3.6 MJ in kilowatthour", "1", 0);
     test ("1 kWh in Megajoules", "3.6", 0);
 
