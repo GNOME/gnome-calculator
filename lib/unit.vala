@@ -147,8 +147,8 @@ public class UnitManager : Object
         frequency_category.add_unit (new Unit ("terahertz", _("Terahertz"), dpgettext2 (null, "unit-format", "%s THz"), "1000000000000x", "x/1000000000000" ,dpgettext2 (null, "unit-symbols", "terahertz,THz")));
         energy_category.add_unit (new Unit ("joule", _("Joule"), dpgettext2 (null, "unit-format", "%s J"), "x", "x" ,dpgettext2 (null, "unit-symbols", "Joule,J,joule,joules")));
         energy_category.add_unit (new Unit ("kilojoule", _("Kilojoules"), dpgettext2 (null, "unit-format", "%s kJ"), "1000x", "x/1000" ,dpgettext2 (null, "unit-symbols", "KJ,kilojoules,kilojoule")));
-        energy_category.add_unit (new Unit ("megajoule", _("Megajoules"), dpgettext2 (null, "unit-format", "%s MJ"), "100000x", "x/100000" ,dpgettext2 (null, "unit-symbols", "MJ,megajoules,megajoule")));
-        energy_category.add_unit (new Unit ("kilowatthour", _("KilowattHour"), dpgettext2 (null, "unit-format", "%s kWh"), "360000x", "x/360000" ,dpgettext2 (null, "unit-symbols", "kwh,kWh,kilowatt-hour,kilowatthour")));
+        energy_category.add_unit (new Unit ("megajoule", _("Megajoules"), dpgettext2 (null, "unit-format", "%s MJ"), "1000000x", "x/1000000" ,dpgettext2 (null, "unit-symbols", "MJ,megajoules,megajoule")));
+        energy_category.add_unit (new Unit ("kilowatthour", _("KilowattHour"), dpgettext2 (null, "unit-format", "%s kWh"), "3600000x", "x/3600000" ,dpgettext2 (null, "unit-symbols", "kwh,kWh,kilowatt-hour,kilowatthour")));
         energy_category.add_unit (new Unit ("btu", _("BTU"), dpgettext2 (null, "unit-format", "%s BTU"), "x*1054.350264489", "x/1054.350264489" ,dpgettext2 (null, "unit-symbols", "btu,BTU")));
         energy_category.add_unit(new Unit ("calorie", _("Calorie"), dpgettext2 (null, "unit-format", "%s cal"), "x*4.184", "x/4.184", dpgettext2 (null, "unit-symbols", "calories,calorie,cal")));
         energy_category.add_unit(new Unit ("erg", _("Erg"), dpgettext2 (null, "unit-format", "%s erg"), "x/10000000", "x*10000000", dpgettext2 (null, "unit-symbols", "ergs,erg")));
