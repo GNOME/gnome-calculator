@@ -125,6 +125,10 @@ public class MathConverter : Gtk.Grid
     private void update_visibility ()
     {
         this.category_combo.visible = !this.single_category;
+        this.from_combo.visible = !this.single_category;
+        this.to_combo.visible = !this.single_category;
+        this.from_label.visible = !this.single_category;
+        this.to_label.visible = !this.single_category;
         if (category != "currency") {
             this.outer_box_visible = true;
             return;
@@ -207,8 +211,7 @@ public class MathConverter : Gtk.Grid
         changed ();
     }
 
-    [GtkCallback]
-    private void swap_button_clicked_cb ()
+    public void swap_button_clicked_cb ()
     {
         Unit? from_unit, to_unit;
         get_conversion (out from_unit, out to_unit);
@@ -232,15 +235,6 @@ public class MathConverter : Gtk.Grid
                 equation.solve ();
             }
         }
-    }
-
-    [GtkCallback]
-    private void convert_button_clicked_cb ()
-    {
-        Unit? from_unit, to_unit;
-        do_convert (out from_unit, out to_unit);
-
-        update_result_label ();
     }
 
     private Number?  convert_equation (Number x,

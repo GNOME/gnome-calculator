@@ -41,6 +41,11 @@
         <attribute name="action">win.mode</attribute>
         <attribute name="target">keyboard</attribute>
       </item>
+      <item>
+        <attribute name="label" translatable="yes">Conversion</attribute>
+        <attribute name="action">win.mode</attribute>
+        <attribute name="target">conversion</attribute>
+      </item>
     </section>
   </menu>
   <menu id="primary_menu">
@@ -163,11 +168,6 @@
               <object class="GtkGrid" id="grid">
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
-                <child>
-                  <object class="MathConverter" id="converter">
-                    <property name="visible">False</property>
-                  </object>
-                </child>
               </object>
             </child>
           </object>

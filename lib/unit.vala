@@ -417,8 +417,8 @@ public class Unit : Object
 
     public Unit (string name, string display_name, string format, string? from_function, string? to_function, string symbols)
     {
-        serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 4);
-        serializer.set_leading_digits (6);
+        serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 12);
+        serializer.set_leading_digits (12);
         serializer.set_show_thousands_separators (true);
 
         _name = name;
@@ -483,7 +483,7 @@ public class Unit : Object
     public string format (Number x)
     {
         var number_text = serializer.to_string (x);
-        return _format.printf (number_text);
+        return number_text;
     }
 
     private Number? solve_function (string function, Number x)

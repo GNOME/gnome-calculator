@@ -32,8 +32,9 @@ public class MathWindow : Adw.ApplicationWindow
     private unowned Gtk.MenuButton menu_button;
     [GtkChild]
     private unowned Gtk.Grid grid;
-    [GtkChild]
-    private unowned MathConverter converter;
+
+    private MathConverter converter;
+    public MathConverter math_converter { get { return converter; } }
 
     private Gtk.EventControllerKey event_controller;
 
@@ -62,8 +63,10 @@ public class MathWindow : Adw.ApplicationWindow
         
         equation.notify["display"].connect(() => { undo_action.set_enabled (equation.has_undo_action);} );
         settings.bind ("number-format", _equation, "number_format", SettingsBindFlags.DEFAULT);
-        converter.set_equation (_equation);
+        converter = new MathConverter (_equation);
         //converter.set_category (null);
+        converter.set_visible(false);
+        converter.add_css_class ("converter");
 
         event_controller = new Gtk.EventControllerKey ();
         (this as Gtk.Widget).add_controller (event_controller);
@@ -90,6 +93,7 @@ public class MathWindow : Adw.ApplicationWindow
         _display.arr_key_pressed.connect (this.arr_key_pressed_cb);
         changed_handler = _display.equation.changed.connect (this.eq_changed_cb);
 
+        box.append (converter);
         box.append (history);
         box.append (_display);
 
@@ -149,20 +153,26 @@ public class MathWindow : Adw.ApplicationWindow
             this.default_width = 680;
             action.set_state (new Variant.string ("keyboard"));
             break;
+
+        case ButtonMode.CONVERSION:
+            menu_button.label = _("Conversion");
+            this.default_width = 360;
+            action.set_state (new Variant.string ("conversion"));
+            break;
         }
 
         if (remove_buttons == true && _buttons.mode != ButtonMode.KEYBOARD)
         {
             _buttons.show ();
             remove_buttons = false;
-            converter.hide ();
         }
         else if (remove_buttons == false && _buttons.mode == ButtonMode.KEYBOARD)
         {
             _buttons.hide ();
             remove_buttons = true;
-            converter.show ();
         }
+        converter.set_visible(_buttons.mode == ButtonMode.CONVERSION);
+        history.set_visible(_buttons.mode != ButtonMode.CONVERSION);
 
         _display.set_enable_osk (remove_buttons);
     }
@@ -251,6 +261,8 @@ public class MathWindow : Adw.ApplicationWindow
             mode = ButtonMode.PROGRAMMING;
         else if (mode_str == "keyboard")
             mode = ButtonMode.KEYBOARD;
+        else if (mode_str == "conversion")
+            mode = ButtonMode.CONVERSION;
         else assert_not_reached ();
 
         buttons.mode = mode;

@@ -93,6 +93,7 @@ public class Calculator : Adw.Application
         set_accels_for_action ("win.mode::financial", {"<control><alt>F"});
         set_accels_for_action ("win.mode::programming", {"<control><alt>P"});
         set_accels_for_action ("win.mode::keyboard", {"<control><alt>K", "<control><alt>T"});
+        set_accels_for_action ("win.mode::conversion", {"<control><alt>C"});
         set_accels_for_action ("win.copy", {"<control>C"});
         set_accels_for_action ("win.paste", {"<control>V"});
         set_accels_for_action ("win.undo", {"<control>Z"});
@@ -168,6 +169,9 @@ public class Calculator : Adw.Application
                 break;
             case "keyboard":
                 mode = ButtonMode.KEYBOARD;
+                break;
+            case "conversion":
+                mode = ButtonMode.CONVERSION;
                 break;
             }
             last_opened_window.buttons.mode = mode;
