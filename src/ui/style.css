@@ -89,24 +89,33 @@ mathconverter > squeezer:not(:first-child) > :first-child {
   margin-left: 6px;
 }
 
-mathconverter.converter {
+mathconverter.display-container {
+  margin-top: 0;
   background-color: shade(@card_bg_color, .95);
 }
 
+.converter > .view-more-button:only-child,
 mathconverter > box {
   margin-top: 6px;
 }
 
-mathconverter dropdown > button:not(:hover):not(:active):not(:checked) {
+mathconverter dropdown > button:not(:hover):not(:active):not(:checked),
+mathconverter textview:not(:hover):not(:focus) {
   background: transparent;
 }
 
-mathconverter label.title-1 {
-  margin-left: 10px;
+mathconverter textview {
+  min-height: 1.25em;
+  margin-bottom: 4px;
+  padding: 0 10px;
+  font-weight: 800;
+  font-size: 181%;
+  border-radius: 9px;
+  transition: background 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-mathconverter label.title-1:not(:first-child) {
-  margin-top: 24px;
+mathconverter textview:not(:first-child) {
+  margin-top: 36px;
 }
 
 .conversion-buttons > * {

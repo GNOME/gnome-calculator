@@ -60,6 +60,7 @@
       <item>
         <attribute name="label">_Clear history</attribute>
         <attribute name="action">app.clear-history</attribute>
+        <attribute name="hidden-when">action-disabled</attribute>
       </item>
     </section>
 
@@ -145,6 +146,13 @@
                     <property name="use_underline">True</property>
                   </object>
                 </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="back_button">
+                <property name="icon_name">go-previous-symbolic</property>
+                <property name="action_name">win.back</property>
+                <property name="tooltip_text" translatable="yes">Financial</property>
               </object>
             </child>
             <child type="end">

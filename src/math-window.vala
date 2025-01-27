@@ -31,10 +31,11 @@ public class MathWindow : Adw.ApplicationWindow
     [GtkChild]
     private unowned Gtk.MenuButton menu_button;
     [GtkChild]
+    private unowned Gtk.Button undo_button;
+    [GtkChild]
+    public unowned Gtk.Button back_button;
+    [GtkChild]
     private unowned Gtk.Grid grid;
-
-    private MathConverter converter;
-    public MathConverter math_converter { get { return converter; } }
 
     private Gtk.EventControllerKey event_controller;
 
@@ -46,6 +47,7 @@ public class MathWindow : Adw.ApplicationWindow
         { "redo", redo_cb, null, null, null },
         { "mode", mode_cb, "s", "\"basic\"", null },
         { "clear", clear_cb, null, null, null },
+        { "back", back_cb, null, null, null },
         { "close",close, null, null, null },
     };
 
@@ -63,10 +65,6 @@ public class MathWindow : Adw.ApplicationWindow
         
         equation.notify["display"].connect(() => { undo_action.set_enabled (equation.has_undo_action);} );
         settings.bind ("number-format", _equation, "number_format", SettingsBindFlags.DEFAULT);
-        converter = new MathConverter (_equation);
-        //converter.set_category (null);
-        converter.set_visible(false);
-        converter.add_css_class ("converter");
 
         event_controller = new Gtk.EventControllerKey ();
         (this as Gtk.Widget).add_controller (event_controller);
@@ -93,7 +91,6 @@ public class MathWindow : Adw.ApplicationWindow
         _display.arr_key_pressed.connect (this.arr_key_pressed_cb);
         changed_handler = _display.equation.changed.connect (this.eq_changed_cb);
 
-        box.append (converter);
         box.append (history);
         box.append (_display);
 
@@ -171,8 +168,13 @@ public class MathWindow : Adw.ApplicationWindow
             _buttons.hide ();
             remove_buttons = true;
         }
-        converter.set_visible(_buttons.mode == ButtonMode.CONVERSION);
-        history.set_visible(_buttons.mode != ButtonMode.CONVERSION);
+        _buttons.set_vexpand (_buttons.mode == ButtonMode.CONVERSION);
+        history.set_visible (_buttons.mode != ButtonMode.CONVERSION);
+        _display.set_visible (_buttons.mode != ButtonMode.CONVERSION);
+        undo_button.set_visible (_buttons.mode != ButtonMode.CONVERSION);
+        var clear_action = (SimpleAction) get_application ().lookup_action ("clear-history");
+        clear_action.set_enabled (_buttons.mode != ButtonMode.CONVERSION);
+        back_button.hide ();
 
         _display.set_enable_osk (remove_buttons);
     }
@@ -334,6 +336,11 @@ public class MathWindow : Adw.ApplicationWindow
     {
         /* Recieves signal emitted by a MathEquation object for updating history-view */
         history.insert_entry (answer, number, number_base, representation_base); /* Sends current equation and answer for updating History-View */
+    }
+
+    private void back_cb ()
+    {
+        buttons.mode = ButtonMode.FINANCIAL;
     }
 
 }

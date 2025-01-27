@@ -39,30 +39,27 @@ public class MathButtons : Gtk.Box
 
             load_buttons ();
 
-            converter.set_visible (mode == ButtonMode.ADVANCED || mode == ButtonMode.FINANCIAL);
+            converter.set_visible (mode == ButtonMode.CONVERSION);
             GLib.SignalHandler.block (converter, converter_changed);
 
-            if (mode == ButtonMode.ADVANCED)
+            if (mode == ButtonMode.CONVERSION)
             {
-                converter.single_category = true;
                 converter.set_conversion (equation.source_units, equation.target_units);
-            }
-            else if (mode == ButtonMode.FINANCIAL)
-            {
-                converter.single_category = true;
-                converter.set_conversion (equation.source_currency, equation.target_currency);
             }
 
             GLib.SignalHandler.unblock (converter, converter_changed);
 
             update_view_more_visible ();
-            converter.view_more_active = false;
+            if (adv_view_more_button != null)
+                adv_view_more_button.active = false;
+            if (fin_view_more_button != null)
+                fin_view_more_button.active = false;
             if (prog_view_more_button != null)
                 prog_view_more_button.active = false;
-            if (adv_panel != null)
-                (adv_panel as Adw.Leaflet).visible_child_name = "basic";
-            if (fin_panel != null)
-                (fin_panel as Adw.Leaflet).visible_child_name = "basic";
+            if (adv_leaflet != null)
+                adv_leaflet.visible_child_name = "basic";
+            if (fin_leaflet != null)
+                fin_leaflet.visible_child_name = "basic";
             if (prog_leaflet != null)
                 prog_leaflet.visible_child_name = "basic";
         }
@@ -86,6 +83,10 @@ public class MathButtons : Gtk.Box
     private Gtk.Widget conv_panel;
     private Gtk.Widget? active_panel = null;
 
+    private Adw.Leaflet adv_leaflet;
+    private Gtk.ToggleButton adv_view_more_button;
+    private Adw.Leaflet fin_leaflet;
+    private Gtk.ToggleButton fin_view_more_button;
     private Adw.Leaflet prog_leaflet;
     private Gtk.ToggleButton prog_view_more_button;
 
@@ -132,7 +133,9 @@ public class MathButtons : Gtk.Box
         {"insert-numeric-point", on_insert_numeric_point                     },
         {"set-number-mode",      on_set_number_mode,      "s", "'normal'"    },
         {"launch-finc-dialog",   on_launch_finc_dialog,   "s"                },
-        {"swap-units",           on_swap_units                               }
+        {"currency-conversion",  on_currency_conversion                      },
+        {"swap-units",           on_swap_units                               },
+        {"backspace",            on_backspace                                }
     };
 
     private bool solved_using_button;
@@ -191,12 +194,18 @@ public class MathButtons : Gtk.Box
 
     private void on_insert_digit (SimpleAction action, Variant? param)
     {
-        equation.insert_digit (param.get_int32 ());
+        if (mode != ButtonMode.CONVERSION)
+            equation.insert_digit (param.get_int32 ());
+        else
+            converter.insert_text (param.get_int32 ().to_string ());
     }
 
     private void on_subtract (SimpleAction action, Variant? param)
     {
-        equation.insert_subtract ();
+        if (mode != ButtonMode.CONVERSION)
+            equation.insert_subtract ();
+        else
+            converter.insert_text ("−");
     }
 
     private void on_square (SimpleAction action, Variant? param)
@@ -217,7 +226,10 @@ public class MathButtons : Gtk.Box
 
     private void on_clear (SimpleAction action, Variant? param)
     {
-        equation.clear ();
+        if (mode != ButtonMode.CONVERSION)
+            equation.clear ();
+        else
+            converter.clear ();
     }
 
     private void on_factorize (SimpleAction action, Variant? param)
@@ -246,7 +258,10 @@ public class MathButtons : Gtk.Box
 
     private void on_insert_numeric_point (SimpleAction action, Variant? param)
     {
-        equation.insert_numeric_point ();
+        if (mode != ButtonMode.CONVERSION)
+            equation.insert_numeric_point ();
+        else
+            converter.insert_numeric_point ();
     }
 
     private void update_base_button (Gtk.Button button, string value, string base_suffix)
@@ -350,19 +365,22 @@ private void equation_display_changed_cb ()
             visible = false;
             break;
         case ButtonMode.ADVANCED:
-            visible = adv_panel != null && (adv_panel as Adw.Leaflet).folded;
-            converter.set_visible(visible);
+            visible = adv_leaflet != null && adv_leaflet.folded;
+            adv_view_more_button.parent.set_visible (visible);
             break;
         case ButtonMode.FINANCIAL:
-            visible = fin_panel != null && (fin_panel as Adw.Leaflet).folded;
-            converter.set_visible(visible);
+            visible = fin_leaflet != null && fin_leaflet.folded;
+            fin_view_more_button.parent.set_visible (visible);
             break;
         case ButtonMode.PROGRAMMING:
             visible = prog_leaflet != null && prog_leaflet.folded;
             break;
         }
 
-        converter.view_more_visible = visible;
+        if (adv_view_more_button != null)
+            adv_view_more_button.visible = visible;
+        if (fin_view_more_button != null)
+            fin_view_more_button.visible = visible;
         if (prog_view_more_button != null)
             prog_view_more_button.visible = visible;
     }
@@ -388,9 +406,17 @@ private void equation_display_changed_cb ()
         case ButtonMode.BASIC:
             break;
         case ButtonMode.ADVANCED:
-        case ButtonMode.FINANCIAL:
+            adv_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
             var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
 
+            adv_leaflet.set_direction (Gtk.TextDirection.LTR);
+            advanced_grid.set_direction (Gtk.TextDirection.LTR);
+            break;
+        case ButtonMode.FINANCIAL:
+            fin_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
+            var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
+
+            fin_leaflet.set_direction (Gtk.TextDirection.LTR);
             advanced_grid.set_direction (Gtk.TextDirection.LTR);
             break;
         case ButtonMode.PROGRAMMING:
@@ -472,21 +498,25 @@ private void equation_display_changed_cb ()
             break;
         case ButtonMode.ADVANCED:
             adv_panel = panel;
+            adv_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
 
-            converter.bind_property ("view-more-active", panel, "visible-child-name",
-                                     BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL,
-                                     (binding, from, ref to) => { to.set_string (from.get_boolean () ? "advanced" : "basic"); return true; },
-                                     (binding, from, ref to) => { to.set_boolean (from.get_string () == "advanced"); return true; });
-            adv_panel.notify["folded"].connect (update_view_more_visible);
+            adv_view_more_button = builder.get_object ("view_more_button") as Gtk.ToggleButton;
+            adv_view_more_button.bind_property ("active", adv_leaflet, "visible-child-name",
+                                                BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL,
+                                                (binding, from, ref to) => { to.set_string (from.get_boolean () ? "advanced" : "basic"); return true; },
+                                                (binding, from, ref to) => { to.set_boolean (from.get_string () == "advanced"); return true; });
+            adv_leaflet.notify["folded"].connect (update_view_more_visible);
             break;
         case ButtonMode.FINANCIAL:
             fin_panel = panel;
+            fin_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
 
-            converter.bind_property ("view-more-active", panel, "visible-child-name",
-                                     BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL,
-                                     (binding, from, ref to) => { to.set_string (from.get_boolean () ? "advanced" : "basic"); return true; },
-                                     (binding, from, ref to) => { to.set_boolean (from.get_string () == "advanced"); return true; });
-            fin_panel.notify["folded"].connect (update_view_more_visible);
+            fin_view_more_button = builder.get_object ("view_more_button") as Gtk.ToggleButton;
+            fin_view_more_button.bind_property ("active", fin_leaflet, "visible-child-name",
+                                                BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL,
+                                                (binding, from, ref to) => { to.set_string (from.get_boolean () ? "advanced" : "basic"); return true; },
+                                                (binding, from, ref to) => { to.set_boolean (from.get_string () == "advanced"); return true; });
+            fin_leaflet.notify["folded"].connect (update_view_more_visible);
             break;
         case ButtonMode.PROGRAMMING:
             prog_panel = panel;
@@ -612,16 +642,13 @@ private void equation_display_changed_cb ()
     {
         Unit from_unit, to_unit;
         converter.get_conversion (out from_unit, out to_unit);
-        if (mode == ButtonMode.FINANCIAL)
+        if (converter.get_category () == "currency")
         {
             equation.source_currency = from_unit.name;
             equation.target_currency = to_unit.name;
         }
-        else
-        {
-            equation.source_units = from_unit.name;
-            equation.target_units = to_unit.name;
-        }
+        equation.source_units = from_unit.name;
+        equation.target_units = to_unit.name;
     }
 
     private void load_buttons ()
@@ -632,13 +659,9 @@ private void equation_display_changed_cb ()
         if (converter == null)
         {
             converter = new MathConverter (equation);
+            converter.add_css_class ("display-container");
+            converter.add_css_class ("card");
             append (converter);
-            converter.notify["view-more-active"].connect (() => {
-                if (adv_panel != null)
-                    (adv_panel as Adw.Leaflet).visible_child_name = converter.view_more_active ? "advanced" : "basic";
-                if (fin_panel != null)
-                    (fin_panel as Adw.Leaflet).visible_child_name = converter.view_more_active ? "advanced" : "basic";
-            });
             converter_changed = converter.changed.connect (converter_changed_cb);
         }
 
@@ -849,8 +872,20 @@ private void equation_display_changed_cb ()
             action_group.change_action_state ("set-number-mode", "normal");
     }
 
+    private void on_currency_conversion (SimpleAction action, Variant? param)
+    {
+        mode = ButtonMode.CONVERSION;
+        converter.set_category ("currency");
+        window.back_button.show ();
+    }
+
     private void on_swap_units (SimpleAction action, Variant? param)
     {
-        window.math_converter.swap_button_clicked_cb ();
+        converter.swap_units ();
+    }
+
+    private void on_backspace (SimpleAction action, Variant? param)
+    {
+        converter.backspace ();
     }
 }

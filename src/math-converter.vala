@@ -14,6 +14,8 @@ public class MathConverter : Gtk.Grid
     private MathEquation equation = null;
 
     private string category;
+    private Number from_number;
+    private Number to_number;
 
     [GtkChild]
     private unowned Gtk.DropDown category_combo;
@@ -22,14 +24,19 @@ public class MathConverter : Gtk.Grid
     [GtkChild]
     private unowned Gtk.DropDown to_combo;
     [GtkChild]
-    private unowned Gtk.Label from_label;
+    private unowned Gtk.TextView from_entry;
     [GtkChild]
-    private unowned Gtk.Label to_label;
+    private unowned Gtk.TextView to_entry;
+
+    private Serializer fixed_serializer;
+    private Serializer automatic_serializer;
+    private Gtk.EventControllerKey from_event_controller;
+    private Gtk.EventControllerKey to_event_controller;
+    private ulong from_combobox_changed = 0;
+    private ulong from_entry_changed;
+    private ulong to_entry_changed;
 
     public bool outer_box_visible { set; get; default = false; }
-    public bool view_more_visible { set; get; default = false; }
-    public bool view_more_active { set; get; default = false; }
-    public bool single_category { set; get; default = false; }
 
     public signal void changed ();
 
@@ -41,7 +48,6 @@ public class MathConverter : Gtk.Grid
     {
         CurrencyManager.get_default ().updated.connect (() => {
             update_visibility ();
-            update_result_label ();
         });
 
         build_category_model ();
@@ -51,13 +57,26 @@ public class MathConverter : Gtk.Grid
 
     public MathConverter (MathEquation equation)
     {
-      set_equation (equation);
-    }
-
-    public void set_equation (MathEquation equation)
-    {
         this.equation = equation;
-        equation.notify["display"].connect ((pspec) => { update_result_label (); });
+        from_combobox_changed = from_combo.notify["selected"].connect (from_combobox_changed_cb);
+        from_entry.buffer.text = "0";
+        to_entry.buffer.text = "0";
+        from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
+        to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
+        fixed_serializer = new Serializer (DisplayFormat.FIXED, 10, 12);
+        from_number = fixed_serializer.from_string ("0");
+        to_number = fixed_serializer.from_string ("0");
+        automatic_serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 12);
+        automatic_serializer.set_leading_digits (12);
+        automatic_serializer.set_show_thousands_separators (true);
+        from_event_controller = new Gtk.EventControllerKey ();
+        from_event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE);
+        from_event_controller.key_pressed.connect (key_press_cb);
+        from_entry.add_controller (from_event_controller);
+        to_event_controller = new Gtk.EventControllerKey ();
+        to_event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE);
+        to_event_controller.key_pressed.connect (key_press_cb);
+        to_entry.add_controller (to_event_controller);
     }
 
     private void build_category_model () {
@@ -75,12 +94,11 @@ public class MathConverter : Gtk.Grid
         category_combo.expression = expression;
     }
 
-    public void set_category (bool single_category, string? category)
+    public void set_category (string? category)
     {
         if (this.category == category)
             return;
         this.category = category;
-        this.single_category = single_category;
         if (this.category != null) {
 
             UnitCategory? unit_category = UnitManager.get_default ().get_category (this.category);
@@ -99,7 +117,7 @@ public class MathConverter : Gtk.Grid
         return category;
     }
 
-    public void set_conversion (/*string category,*/ string unit_a, string unit_b)
+    public void set_conversion (string unit_a, string unit_b)
     {
         var ua = UnitManager.get_default ().get_unit_by_name (unit_a);
         var ub = UnitManager.get_default ().get_unit_by_name (unit_b);
@@ -110,7 +128,7 @@ public class MathConverter : Gtk.Grid
             return;
         }
 
-        set_category (this.single_category, uc.name);
+        set_category (uc.name);
         set_active_unit (from_combo, ua);
         set_active_unit (to_combo, ub);
     }
@@ -122,13 +140,56 @@ public class MathConverter : Gtk.Grid
         to_unit = to_combo.selected_item as Unit;
     }
 
+    public void insert_text (string text)
+    {
+        var entry = to_entry.has_focus ? to_entry : from_entry;
+        if (entry == from_entry)
+            from_entry.grab_focus ();
+        if (entry.buffer.text == "0")
+        {
+            Gtk.TextIter iter;
+            entry.buffer.get_iter_at_mark (out iter, entry.buffer.get_insert ());
+            if (iter.is_end ())
+                entry.buffer.text = "";
+        }
+        entry.buffer.delete_selection (true, true);
+        entry.buffer.insert_at_cursor (text, text.length);
+    }
+
+    public void insert_numeric_point ()
+    {
+        var entry = to_entry.has_focus ? to_entry : from_entry;
+        if (entry == from_entry)
+            from_entry.grab_focus ();
+        var text = fixed_serializer.get_radix ().to_string ();
+        entry.buffer.delete_selection (true, true);
+        entry.buffer.insert_at_cursor (text, text.length);
+    }
+
+    public void clear ()
+    {
+        from_entry.buffer.text = "0";
+    }
+
+    public void backspace ()
+    {
+        var entry = to_entry.has_focus ? to_entry : from_entry;
+        if (entry == from_entry)
+            from_entry.grab_focus ();
+        if (entry.buffer.has_selection)
+        {
+            entry.buffer.delete_selection (true, true);
+        }
+        else
+        {
+            Gtk.TextIter iter;
+            entry.buffer.get_iter_at_mark (out iter, entry.buffer.get_insert ());
+            entry.buffer.backspace (ref iter, true, true);
+        }
+    }
+
     private void update_visibility ()
     {
-        this.category_combo.visible = !this.single_category;
-        this.from_combo.visible = !this.single_category;
-        this.to_combo.visible = !this.single_category;
-        this.from_label.visible = !this.single_category;
-        this.to_label.visible = !this.single_category;
         if (category != "currency") {
             this.outer_box_visible = true;
             return;
@@ -136,25 +197,6 @@ public class MathConverter : Gtk.Grid
 
         this.outer_box_visible = CurrencyManager.get_default ().loaded;
 
-    }
-
-    private void update_result_label ()
-    {
-        if (equation == null)
-            return;
-        var x = equation.number;
-        if (x == null)
-            return;
-
-        Unit source_unit, target_unit;
-        var z = convert_equation (x, out source_unit, out target_unit);
-        if (z != null)
-        {
-            var source_text = source_unit.format (x);
-            var target_text = target_unit.format (z);
-            from_label.set_text (source_text);
-            to_label.set_text (target_text);
-        }
     }
 
     private void build_units_model ()
@@ -199,42 +241,236 @@ public class MathConverter : Gtk.Grid
         this.category = category.name;
 
         update_visibility ();
+        if (from_combobox_changed > 0)
+            GLib.SignalHandler.block (from_combo, from_combobox_changed);
+        var source_currency = "", target_currency = "";
+        if (equation != null)
+        {
+            source_currency = equation.source_currency;
+            target_currency = equation.target_currency;
+        }
         build_units_model ();
-        from_combo.selected = 0;
+        if (category.name != "currency")
+        {
+            from_combo.selected = 0;
+        }
+        else
+        {
+            var ua = UnitManager.get_default ().get_unit_by_name (source_currency);
+            var ub = UnitManager.get_default ().get_unit_by_name (target_currency);
+            if (ua == null || ub == null)
+            {
+                from_combo.selected = 0;
+            }
+            else
+            {
+                set_active_unit (from_combo, ua);
+                set_active_unit (to_combo, ub);
+            }
+        }
+        if (from_combobox_changed > 0)
+            GLib.SignalHandler.unblock (from_combo, from_combobox_changed);
+        to_combobox_changed_cb ();
+    }
+
+    private void from_combobox_changed_cb ()
+    {
+        /* Conversion must have changed */
+        if (to_number == null)
+            return;
+        Unit source_unit, target_unit;
+        from_number = convert_equation (to_number, out source_unit, out target_unit);
+        if (from_number == null)
+            from_number = fixed_serializer.from_string("0");
+        GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
+        from_entry.buffer.text = automatic_serializer.to_string (from_number);
+        GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
+        changed ();
     }
 
     [GtkCallback]
     private void to_combobox_changed_cb ()
     {
         /* Conversion must have changed */
-        update_result_label ();
+        if (from_number == null)
+            return;
+        Unit source_unit, target_unit;
+        to_number = convert_equation (from_number, out source_unit, out target_unit);
+        if (to_number == null)
+            to_number = fixed_serializer.from_string("0");
+        GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
+        if (to_entry.has_focus)
+            to_entry.buffer.text = fixed_serializer.to_string (to_number);
+        else
+            to_entry.buffer.text = automatic_serializer.to_string (to_number);
+        GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
         changed ();
     }
 
-    public void swap_button_clicked_cb ()
+    [GtkCallback]
+    private void from_entry_focus_cb ()
+    {
+        GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
+        if (from_entry.has_focus)
+        {
+            from_entry.buffer.text = fixed_serializer.to_string (from_number);
+        }
+        else
+        {
+            from_number = fixed_serializer.from_string (from_entry.buffer.text);
+            if (from_number == null)
+                from_number = fixed_serializer.from_string("0");
+            from_entry.buffer.text = automatic_serializer.to_string (from_number);
+        }
+        GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
+    }
+
+    [GtkCallback]
+    private void to_entry_focus_cb ()
+    {
+        GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
+        if (to_entry.has_focus)
+        {
+            to_entry.buffer.text = fixed_serializer.to_string (to_number);
+        }
+        else
+        {
+            to_number = fixed_serializer.from_string (to_entry.buffer.text);
+            if (to_number == null)
+                to_number = fixed_serializer.from_string("0");
+            to_entry.buffer.text = automatic_serializer.to_string (to_number);
+        }
+        GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
+    }
+
+    private void from_entry_changed_cb ()
+    {
+        from_number = fixed_serializer.from_string (from_entry.buffer.text);
+        if (from_number == null)
+            from_number = fixed_serializer.from_string("0");
+        Unit source_unit, target_unit;
+        to_number = convert_equation (from_number, out source_unit, out target_unit);
+        if (to_number == null)
+            to_number = fixed_serializer.from_string("0");
+        GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
+        to_entry.buffer.text = automatic_serializer.to_string (to_number);
+        GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
+    }
+
+    private void to_entry_changed_cb ()
+    {
+        to_number = fixed_serializer.from_string (to_entry.buffer.text);
+        if (to_number == null)
+            to_number = fixed_serializer.from_string("0");
+        Unit source_unit, target_unit;
+        from_number = convert_equation (to_number, out source_unit, out target_unit);
+        if (from_number == null)
+            from_number = fixed_serializer.from_string("0");
+        GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
+        from_entry.buffer.text = automatic_serializer.to_string (from_number);
+        GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
+    }
+
+    private bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType mod_state)
+    {
+        /* Clear on escape */
+        var state = mod_state & (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.ALT_MASK);
+
+        if ((keyval == Gdk.Key.Escape && state == 0) ||
+            (keyval == Gdk.Key.Delete && (mod_state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK))
+        {
+            clear ();
+            return true;
+        }
+
+        /* Treat keypad keys as numbers even when numlock is off */
+        uint new_keyval = 0;
+        switch (keyval)
+        {
+        case Gdk.Key.KP_Insert:
+            new_keyval = Gdk.Key.@0;
+            break;
+        case Gdk.Key.KP_End:
+            new_keyval = Gdk.Key.@1;
+            break;
+        case Gdk.Key.KP_Down:
+            new_keyval = Gdk.Key.@2;
+            break;
+        case Gdk.Key.KP_Page_Down:
+            new_keyval = Gdk.Key.@3;
+            break;
+        case Gdk.Key.KP_Left:
+            new_keyval = Gdk.Key.@4;
+            break;
+        case Gdk.Key.KP_Begin: /* This is apparently what "5" does when numlock is off. */
+            new_keyval = Gdk.Key.@5;
+            break;
+        case Gdk.Key.KP_Right:
+            new_keyval = Gdk.Key.@6;
+            break;
+        case Gdk.Key.KP_Home:
+            new_keyval = Gdk.Key.@7;
+            break;
+        case Gdk.Key.KP_Up:
+            new_keyval = Gdk.Key.@8;
+            break;
+        case Gdk.Key.KP_Page_Up:
+            new_keyval = Gdk.Key.@9;
+            break;
+        case Gdk.Key.KP_Delete:
+            new_keyval = Gdk.Key.period;
+            break;
+        }
+
+        if (new_keyval != 0)
+        {
+            info ("forwarding\n");
+            return key_press_cb (controller, new_keyval, keycode, mod_state);
+        }
+
+        var c = Gdk.keyval_to_unicode (keyval);
+
+        if (keyval == Gdk.Key.Return || keyval == Gdk.Key.KP_Enter)
+            return true;
+
+        /* Numeric keypad will insert '.' or ',' depending on layout */
+        if ((keyval == Gdk.Key.KP_Decimal) ||
+            (keyval == Gdk.Key.KP_Separator) ||
+            (keyval == Gdk.Key.period) ||
+            (keyval == Gdk.Key.decimalpoint) ||
+            (keyval == Gdk.Key.comma))
+        {
+            insert_numeric_point ();
+            return true;
+        }
+
+        /* Substitute */
+        if (state == 0)
+        {
+            if (c >= '0' && c <= '9')
+            {
+                insert_text (c.to_string ("%c"));
+                return true;
+            }
+            if (c == '-')
+            {
+                insert_text ("−");
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void swap_units ()
     {
         Unit? from_unit, to_unit;
         get_conversion (out from_unit, out to_unit);
 
+        GLib.SignalHandler.block (from_combo, from_combobox_changed);
         set_active_unit (from_combo, to_unit);
+        GLib.SignalHandler.unblock (from_combo, from_combobox_changed);
         set_active_unit (to_combo, from_unit);
-
-        update_result_label ();
-    }
-
-    private void do_convert (out Unit? from_unit, out Unit? to_unit) {
-        var x = equation.number;
-        from_unit = null;
-        to_unit = null;
-        if (x != null)
-        {
-            var z = convert_equation (x, out from_unit, out to_unit);
-            if (z != null && from_unit != null && to_unit != null)
-            {
-                equation.set ("%s %s %s %s".printf(equation.serializer.to_string (x), from_unit.get_symbol_from_format (), _("in"), to_unit.get_symbol_from_format ()));
-                equation.solve ();
-            }
-        }
     }
 
     private Number?  convert_equation (Number x,
@@ -249,6 +485,9 @@ public class MathConverter : Gtk.Grid
 
         if (category == null || source_unit == null || target_unit == null)
             return null;
-        return category.convert (x, source_unit, target_unit);
+        if (x == from_number)
+            return category.convert (x, source_unit, target_unit);
+        else
+            return category.convert (x, target_unit, source_unit);
   }
 }

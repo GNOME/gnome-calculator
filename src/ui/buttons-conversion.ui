@@ -244,11 +244,26 @@
             <property name="action_name">cal.swap-units</property>
             <property name="label">⇆</property>
             <style>
-              <class name="operator-button"/>
+              <class name="function-button"/>
             </style>
             <layout>
               <property name="column">1</property>
-              <property name="column-span">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_backspace_button">
+            <property name="receives_default">1</property>
+            <property name="use_underline">1</property>
+            <property name="focus_on_click">0</property>
+            <property name="tooltip_text" translatable="yes">Backspace</property>
+            <property name="action_name">cal.backspace</property>
+            <property name="icon-name">edit-clear-symbolic</property>
+            <style>
+              <class name="function-button"/>
+            </style>
+            <layout>
+              <property name="column">2</property>
             </layout>
           </object>
         </child>
