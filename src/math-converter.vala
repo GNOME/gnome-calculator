@@ -27,14 +27,24 @@ public class MathConverter : Gtk.Grid
     private unowned Gtk.TextView from_entry;
     [GtkChild]
     private unowned Gtk.TextView to_entry;
+    [GtkChild]
+    private unowned Gtk.PopoverMenu from_context_menu;
+    [GtkChild]
+    private unowned Gtk.PopoverMenu to_context_menu;
 
     private Serializer fixed_serializer;
-    private Serializer automatic_serializer;
     private Gtk.EventControllerKey from_event_controller;
     private Gtk.EventControllerKey to_event_controller;
     private ulong from_combobox_changed = 0;
     private ulong from_entry_changed;
     private ulong to_entry_changed;
+
+    private SimpleActionGroup action_group = new SimpleActionGroup ();
+    private const ActionEntry[] action_entries = {
+        {"popup", popup_cb},
+        {"copy",  copy_cb },
+        {"paste", paste_cb}
+    };
 
     public bool outer_box_visible { set; get; default = false; }
 
@@ -58,17 +68,15 @@ public class MathConverter : Gtk.Grid
     public MathConverter (MathEquation equation)
     {
         this.equation = equation;
+        equation.display_changed.connect (reformat_display);
         from_combobox_changed = from_combo.notify["selected"].connect (from_combobox_changed_cb);
         from_entry.buffer.text = "0";
         to_entry.buffer.text = "0";
         from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
         to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
-        fixed_serializer = new Serializer (DisplayFormat.FIXED, 10, 12);
+        fixed_serializer = new Serializer (DisplayFormat.FIXED, 10, equation.accuracy);
         from_number = fixed_serializer.from_string ("0");
         to_number = fixed_serializer.from_string ("0");
-        automatic_serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 12);
-        automatic_serializer.set_leading_digits (12);
-        automatic_serializer.set_show_thousands_separators (true);
         from_event_controller = new Gtk.EventControllerKey ();
         from_event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE);
         from_event_controller.key_pressed.connect (key_press_cb);
@@ -77,6 +85,8 @@ public class MathConverter : Gtk.Grid
         to_event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE);
         to_event_controller.key_pressed.connect (key_press_cb);
         to_entry.add_controller (to_event_controller);
+        action_group.add_action_entries (action_entries, this);
+        insert_action_group ("context-menu", action_group);
     }
 
     private void build_category_model () {
@@ -129,8 +139,11 @@ public class MathConverter : Gtk.Grid
         }
 
         set_category (uc.name);
+        GLib.SignalHandler.block (from_combo, from_combobox_changed);
         set_active_unit (from_combo, ua);
+        GLib.SignalHandler.unblock (from_combo, from_combobox_changed);
         set_active_unit (to_combo, ub);
+        to_combobox_changed_cb ();
     }
 
     public void get_conversion (out Unit from_unit, out Unit to_unit)
@@ -186,6 +199,27 @@ public class MathConverter : Gtk.Grid
             entry.buffer.get_iter_at_mark (out iter, entry.buffer.get_insert ());
             entry.buffer.backspace (ref iter, true, true);
         }
+    }
+
+    public void paste ()
+    {
+        if (!from_entry.has_focus && !to_entry.has_focus)
+            return;
+        Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
+        clipboard.read_text_async.begin (null, (obj, res) => {
+            try {
+                on_paste (clipboard.read_text_async.end (res));
+            } catch (GLib.Error err) {
+                print (err.message);
+            }
+        });
+    }
+
+    private void on_paste (string? text)
+    {
+        if (text != null)
+            /* Replaces '\n' characters by ' ' in text before pasting it. */
+            insert_text (text.delimit ("\n", ' '));
     }
 
     private void update_visibility ()
@@ -283,7 +317,7 @@ public class MathConverter : Gtk.Grid
         if (from_number == null)
             from_number = fixed_serializer.from_string("0");
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
-        from_entry.buffer.text = automatic_serializer.to_string (from_number);
+        from_entry.buffer.text = equation.serializer.to_string (from_number);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
         changed ();
     }
@@ -302,7 +336,7 @@ public class MathConverter : Gtk.Grid
         if (to_entry.has_focus)
             to_entry.buffer.text = fixed_serializer.to_string (to_number);
         else
-            to_entry.buffer.text = automatic_serializer.to_string (to_number);
+            to_entry.buffer.text = equation.serializer.to_string (to_number);
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
         changed ();
     }
@@ -320,7 +354,7 @@ public class MathConverter : Gtk.Grid
             from_number = fixed_serializer.from_string (from_entry.buffer.text);
             if (from_number == null)
                 from_number = fixed_serializer.from_string("0");
-            from_entry.buffer.text = automatic_serializer.to_string (from_number);
+            from_entry.buffer.text = equation.serializer.to_string (from_number);
         }
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
     }
@@ -338,7 +372,7 @@ public class MathConverter : Gtk.Grid
             to_number = fixed_serializer.from_string (to_entry.buffer.text);
             if (to_number == null)
                 to_number = fixed_serializer.from_string("0");
-            to_entry.buffer.text = automatic_serializer.to_string (to_number);
+            to_entry.buffer.text = equation.serializer.to_string (to_number);
         }
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
     }
@@ -353,7 +387,7 @@ public class MathConverter : Gtk.Grid
         if (to_number == null)
             to_number = fixed_serializer.from_string("0");
         GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
-        to_entry.buffer.text = automatic_serializer.to_string (to_number);
+        to_entry.buffer.text = equation.serializer.to_string (to_number);
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
     }
 
@@ -367,7 +401,7 @@ public class MathConverter : Gtk.Grid
         if (from_number == null)
             from_number = fixed_serializer.from_string("0");
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
-        from_entry.buffer.text = automatic_serializer.to_string (from_number);
+        from_entry.buffer.text = equation.serializer.to_string (from_number);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
     }
 
@@ -460,6 +494,89 @@ public class MathConverter : Gtk.Grid
         }
 
         return false;
+    }
+
+    [GtkCallback]
+    private void from_entry_click_cb (Gtk.GestureClick gesture, int n_click, double x, double y)
+    {
+        var event = gesture.get_last_event (gesture.get_current_sequence ());
+        if (event.triggers_context_menu ())
+        {
+            show_context_menu (from_entry, x, y);
+            gesture.set_state (Gtk.EventSequenceState.CLAIMED);
+        }
+    }
+
+    [GtkCallback]
+    private void to_entry_click_cb (Gtk.GestureClick gesture, int n_click, double x, double y)
+    {
+        var event = gesture.get_last_event (gesture.get_current_sequence ());
+        if (event.triggers_context_menu ())
+        {
+            show_context_menu (to_entry, x, y);
+            gesture.set_state (Gtk.EventSequenceState.CLAIMED);
+        }
+    }
+
+    private void show_context_menu (Gtk.TextView entry, double x, double y)
+    {
+        Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
+        var can_paste = clipboard.get_formats ().contain_gtype (GLib.Type.STRING);
+        action_set_enabled ("context-menu.paste", can_paste);
+        get_root ().set_focus (null);
+        Gtk.TextIter start, end;
+        entry.buffer.get_bounds (out start, out end);
+        entry.buffer.select_range (start, end);
+        var context_menu = entry == from_entry ? from_context_menu : to_context_menu;
+        if (x != -1 && y != -1)
+            context_menu.set_pointing_to ( { (int) x, (int) y, 1, 1 } );
+        else
+            context_menu.set_pointing_to (null);
+        context_menu.popup ();
+    }
+
+    private void popup_cb (SimpleAction action, Variant? param)
+    {
+        var entry = from_entry.has_focus ? from_entry : to_entry;
+        show_context_menu (entry, -1, -1);
+    }
+
+    private void copy_cb (SimpleAction action, Variant? param)
+    {
+        var number = from_entry.has_focus ? from_number : to_number;
+        var text = equation.serializer.to_string (number);
+        var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
+        if (tsep_string == null || tsep_string == "")
+            tsep_string = " ";
+        text = text.replace (tsep_string, "");
+        Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
+        clipboard.set_text (text);
+        get_root ().set_focus (null);
+    }
+
+    private void paste_cb (SimpleAction action, Variant? param)
+    {
+        var entry = from_entry.has_focus ? from_entry : to_entry;
+        entry.buffer.text = "";
+        paste ();
+    }
+
+    private void reformat_display ()
+    {
+        if (fixed_serializer.get_trailing_digits () != equation.accuracy)
+            fixed_serializer.set_trailing_digits (equation.accuracy);
+        if (!from_entry.has_focus)
+        {
+            GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
+            from_entry.buffer.text = equation.serializer.to_string (from_number);
+            GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
+        }
+        if (!to_entry.has_focus)
+        {
+            GLib.SignalHandler.block (to_entry.buffer, to_entry_changed);
+            to_entry.buffer.text = equation.serializer.to_string (to_number);
+            GLib.SignalHandler.unblock (to_entry.buffer, to_entry_changed);
+        }
     }
 
     public void swap_units ()

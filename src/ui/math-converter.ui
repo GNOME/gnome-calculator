@@ -34,6 +34,38 @@
                 <property name="accepts-tab">False</property>
                 <property name="input-hints">no-emoji | no-spellcheck | inhibit-osk</property>
                 <signal name="notify::has-focus" handler="from_entry_focus_cb" swapped="no"/>
+                <child>
+                  <object class="GtkGestureClick">
+                    <property name="button">0</property>
+                    <property name="exclusive">True</property>
+                    <property name="propagation-phase">capture</property>
+                    <signal name="pressed" handler="from_entry_click_cb" swapped="no"/>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkShortcutController">
+                    <property name="scope">local</property>
+                    <child>
+                      <object class="GtkShortcut">
+                        <property name="trigger">Menu</property>
+                        <property name="action">action(context-menu.popup)</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkShortcut">
+                        <property name="trigger">&lt;Shift&gt;F10</property>
+                        <property name="action">action(context-menu.popup)</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkPopoverMenu" id="from_context_menu">
+                    <property name="menu-model">context_menu_model</property>
+                    <property name="halign">start</property>
+                    <property name="has-arrow">False</property>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
@@ -48,6 +80,38 @@
                 <property name="accepts-tab">False</property>
                 <property name="input-hints">no-emoji | no-spellcheck | inhibit-osk</property>
                 <signal name="notify::has-focus" handler="to_entry_focus_cb" swapped="no"/>
+                <child>
+                  <object class="GtkGestureClick">
+                    <property name="button">0</property>
+                    <property name="exclusive">True</property>
+                    <property name="propagation-phase">capture</property>
+                    <signal name="pressed" handler="to_entry_click_cb" swapped="no"/>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkShortcutController">
+                    <property name="scope">local</property>
+                    <child>
+                      <object class="GtkShortcut">
+                        <property name="trigger">Menu</property>
+                        <property name="action">action(context-menu.popup)</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkShortcut">
+                        <property name="trigger">&lt;Shift&gt;F10</property>
+                        <property name="action">action(context-menu.popup)</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkPopoverMenu" id="to_context_menu">
+                    <property name="menu-model">context_menu_model</property>
+                    <property name="halign">start</property>
+                    <property name="has-arrow">False</property>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
@@ -68,5 +132,17 @@
       </object>
     </child>
   </template>
+  <menu id="context_menu_model">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Copy</attribute>
+        <attribute name="action">context-menu.copy</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Paste</attribute>
+        <attribute name="action">context-menu.paste</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>
 

@@ -67,6 +67,7 @@ public class MathButtons : Gtk.Box
     private int _programming_base = 10;
 
     private MathConverter converter;
+    public MathConverter math_converter { get { return converter; } }
 
     private MathWindow window;
 
@@ -320,16 +321,16 @@ public class MathButtons : Gtk.Box
         update_base_button(oct_base_button, "%llo".printf (bits), "₈");
     }
 
-private void equation_display_changed_cb ()
-{
-    update_bit_panel ();
-
-    if (equation.display != "" && solved_using_button)
+    private void equation_display_changed_cb ()
     {
-        announce (equation.display, Gtk.AccessibleAnnouncementPriority.MEDIUM);
-        solved_using_button = false;
+        update_bit_panel ();
+
+        if (equation.display != "" && solved_using_button)
+        {
+            announce (equation.display, Gtk.AccessibleAnnouncementPriority.MEDIUM);
+            solved_using_button = false;
+        }
     }
-}
 
     private void base_combobox_changed_cb (Gtk.ComboBox combo)
     {

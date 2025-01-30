@@ -172,9 +172,13 @@ public class MathWindow : Adw.ApplicationWindow
         history.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         _display.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         undo_button.set_visible (_buttons.mode != ButtonMode.CONVERSION);
-        var clear_action = (SimpleAction) get_application ().lookup_action ("clear-history");
+        var copy_action = (SimpleAction) lookup_action ("copy");
+        copy_action.set_enabled (_buttons.mode != ButtonMode.CONVERSION);
+        var clear_action = (SimpleAction) lookup_action ("clear");
         clear_action.set_enabled (_buttons.mode != ButtonMode.CONVERSION);
-        back_button.hide ();
+        clear_action = (SimpleAction) get_application ().lookup_action ("clear-history");
+        clear_action.set_enabled (_buttons.mode != ButtonMode.CONVERSION);
+        back_button.set_visible (false);
 
         _display.set_enable_osk (remove_buttons);
     }
@@ -229,17 +233,22 @@ public class MathWindow : Adw.ApplicationWindow
 
     private void paste_cb ()
     {
-        equation.paste ();
+        if (buttons.mode != ButtonMode.CONVERSION)
+            equation.paste ();
+        else
+            buttons.math_converter.paste ();
     }
 
     private void undo_cb ()
     {
-        equation.undo ();
+        if (buttons.mode != ButtonMode.CONVERSION)
+            equation.undo ();
     }
 
     private void redo_cb ()
     {
-        equation.redo ();
+        if (buttons.mode != ButtonMode.CONVERSION)
+            equation.redo ();
     }
 
     private void mode_cb (SimpleAction action, Variant? parameter)
