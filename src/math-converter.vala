@@ -70,13 +70,13 @@ public class MathConverter : Gtk.Grid
         this.equation = equation;
         equation.display_changed.connect (reformat_display);
         from_combobox_changed = from_combo.notify["selected"].connect (from_combobox_changed_cb);
-        from_entry.buffer.text = "0";
-        to_entry.buffer.text = "0";
-        from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
-        to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
         fixed_serializer = new Serializer (DisplayFormat.FIXED, 10, equation.accuracy);
         from_number = fixed_serializer.from_string ("0");
         to_number = fixed_serializer.from_string ("0");
+        from_entry.buffer.text = equation.serializer.to_string (from_number);
+        to_entry.buffer.text = equation.serializer.to_string (to_number);
+        from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
+        to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
         from_event_controller = new Gtk.EventControllerKey ();
         from_event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE);
         from_event_controller.key_pressed.connect (key_press_cb);
@@ -181,7 +181,10 @@ public class MathConverter : Gtk.Grid
 
     public void clear ()
     {
-        from_entry.buffer.text = "0";
+        if (from_entry.has_focus)
+            from_entry.buffer.text = "0";
+        else
+            from_entry.buffer.text = equation.serializer.to_string (fixed_serializer.from_string ("0"));
     }
 
     public void backspace ()
@@ -387,7 +390,10 @@ public class MathConverter : Gtk.Grid
         if (to_number == null)
             to_number = fixed_serializer.from_string("0");
         GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
-        to_entry.buffer.text = equation.serializer.to_string (to_number);
+        if (to_entry.has_focus)
+            to_entry.buffer.text = fixed_serializer.to_string (to_number);
+        else
+            to_entry.buffer.text = equation.serializer.to_string (to_number);
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
     }
 
