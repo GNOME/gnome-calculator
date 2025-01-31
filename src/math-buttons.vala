@@ -98,6 +98,7 @@ public class MathButtons : Gtk.Box
     private Gtk.MenuButton word_size_button;
     private Gtk.Widget bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
+    private List<Gtk.Button> hex_number_buttons;
 
     private Adw.Dialog character_code_dialog;
     private Gtk.Button insert_button;
@@ -355,6 +356,12 @@ public class MathButtons : Gtk.Box
         base_combo.active_id = _programming_base.to_string ();
         update_bit_panel ();
         
+        var i = 0;
+        foreach (var button in hex_number_buttons)
+        {
+            button.set_sensitive (i < _programming_base);
+            i++;
+        }
     }
 
     private void copy_conv_base_to_clipboard (Gtk.Button button)
@@ -594,6 +601,13 @@ public class MathButtons : Gtk.Box
                 i++;
             }
             toggle_bit_buttons.reverse ();
+            hex_number_buttons = new List<Gtk.Button> ();
+            for (i = 0; i <= 15; i++)
+            {
+                var name = "calc_%d_button".printf (i);
+                var hex_number_button = builder.get_object (name) as Gtk.Button;
+                hex_number_buttons.append (hex_number_button);
+            }
             word_size_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
             base_combo = builder.get_object ("base_combo") as Gtk.ComboBox;
             base_combo.changed.connect (base_combobox_changed_cb);
