@@ -33,7 +33,10 @@ public class MathButtons : Gtk.Box
             _mode = value;
 
             if (mode == ButtonMode.PROGRAMMING)
+            {
                 equation.number_base = _programming_base;
+                update_hex_number_button_sensitivities ();
+            }
             else
                 equation.number_base = 10;
 
@@ -355,7 +358,11 @@ public class MathButtons : Gtk.Box
 
         base_combo.active_id = _programming_base.to_string ();
         update_bit_panel ();
-        
+        update_hex_number_button_sensitivities ();
+    }
+
+    private void update_hex_number_button_sensitivities ()
+    {
         var i = 0;
         foreach (var button in hex_number_buttons)
         {
@@ -748,17 +755,18 @@ public class MathButtons : Gtk.Box
         var i = 0;
         foreach (var button in toggle_bit_buttons)
         {
-        if (i < equation.word_size)
-        {
-            button.set_sensitive (true);
-        }
-        else
-        {
-            button.set_sensitive (false);
-        }
+            if (i < equation.word_size)
+            {
+                button.set_sensitive (true);
+            }
+            else
+            {
+                button.set_sensitive (false);
+            }
             i++;
         }
     }
+
     private void on_launch_finc_dialog (SimpleAction action, Variant? param)
     {
         var name = param.get_string ();
