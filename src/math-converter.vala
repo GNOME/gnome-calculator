@@ -71,8 +71,8 @@ public class MathConverter : Gtk.Grid
         equation.display_changed.connect (reformat_display);
         from_combobox_changed = from_combo.notify["selected"].connect (from_combobox_changed_cb);
         fixed_serializer = new Serializer (DisplayFormat.FIXED, 10, equation.accuracy);
-        from_number = fixed_serializer.from_string ("0");
-        to_number = fixed_serializer.from_string ("0");
+        from_number = new Number.integer (0);
+        to_number = new Number.integer (0);
         from_entry.buffer.text = equation.serializer.to_string (from_number);
         to_entry.buffer.text = equation.serializer.to_string (to_number);
         from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
@@ -184,7 +184,7 @@ public class MathConverter : Gtk.Grid
         if (from_entry.has_focus)
             from_entry.buffer.text = "0";
         else
-            from_entry.buffer.text = equation.serializer.to_string (fixed_serializer.from_string ("0"));
+            from_entry.buffer.text = equation.serializer.to_string (new Number.integer (0));
     }
 
     public void backspace ()
@@ -318,7 +318,7 @@ public class MathConverter : Gtk.Grid
         Unit source_unit, target_unit;
         from_number = convert_equation (to_number, out source_unit, out target_unit);
         if (from_number == null)
-            from_number = fixed_serializer.from_string("0");
+            from_number = new Number.integer (0);
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
         from_entry.buffer.text = equation.serializer.to_string (from_number);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
@@ -334,7 +334,7 @@ public class MathConverter : Gtk.Grid
         Unit source_unit, target_unit;
         to_number = convert_equation (from_number, out source_unit, out target_unit);
         if (to_number == null)
-            to_number = fixed_serializer.from_string("0");
+            to_number = new Number.integer (0);
         GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
         if (to_entry.has_focus)
             to_entry.buffer.text = fixed_serializer.to_string (to_number);
@@ -356,7 +356,7 @@ public class MathConverter : Gtk.Grid
         {
             from_number = fixed_serializer.from_string (from_entry.buffer.text);
             if (from_number == null)
-                from_number = fixed_serializer.from_string("0");
+                from_number = new Number.integer (0);
             from_entry.buffer.text = equation.serializer.to_string (from_number);
         }
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
@@ -374,7 +374,7 @@ public class MathConverter : Gtk.Grid
         {
             to_number = fixed_serializer.from_string (to_entry.buffer.text);
             if (to_number == null)
-                to_number = fixed_serializer.from_string("0");
+                to_number = new Number.integer (0);
             to_entry.buffer.text = equation.serializer.to_string (to_number);
         }
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
@@ -384,11 +384,11 @@ public class MathConverter : Gtk.Grid
     {
         from_number = fixed_serializer.from_string (from_entry.buffer.text);
         if (from_number == null)
-            from_number = fixed_serializer.from_string("0");
+            from_number = new Number.integer (0);
         Unit source_unit, target_unit;
         to_number = convert_equation (from_number, out source_unit, out target_unit);
         if (to_number == null)
-            to_number = fixed_serializer.from_string("0");
+            to_number = new Number.integer (0);
         GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
         if (to_entry.has_focus)
             to_entry.buffer.text = fixed_serializer.to_string (to_number);
@@ -401,11 +401,11 @@ public class MathConverter : Gtk.Grid
     {
         to_number = fixed_serializer.from_string (to_entry.buffer.text);
         if (to_number == null)
-            to_number = fixed_serializer.from_string("0");
+            to_number = new Number.integer (0);
         Unit source_unit, target_unit;
         from_number = convert_equation (to_number, out source_unit, out target_unit);
         if (from_number == null)
-            from_number = fixed_serializer.from_string("0");
+            from_number = new Number.integer (0);
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
         from_entry.buffer.text = equation.serializer.to_string (from_number);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);

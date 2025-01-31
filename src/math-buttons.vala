@@ -162,29 +162,37 @@ public class MathButtons : Gtk.Box
 
     private void load_finc_dialogs ()
     {
-        load_finc_dialog ("ctrm_dialog", ctrm_entries, FinancialDialog.CTRM_DIALOG);
-        load_finc_dialog ("ddb_dialog", ddb_entries, FinancialDialog.DDB_DIALOG);
-        load_finc_dialog ("fv_dialog", fv_entries, FinancialDialog.FV_DIALOG);
-        load_finc_dialog ("gpm_dialog", gpm_entries, FinancialDialog.GPM_DIALOG);
-        load_finc_dialog ("pmt_dialog", pmt_entries, FinancialDialog.PMT_DIALOG);
-        load_finc_dialog ("pv_dialog", pv_entries, FinancialDialog.PV_DIALOG);
-        load_finc_dialog ("rate_dialog", rate_entries, FinancialDialog.RATE_DIALOG);
-        load_finc_dialog ("sln_dialog", sln_entries, FinancialDialog.SLN_DIALOG);
-        load_finc_dialog ("syd_dialog", syd_entries, FinancialDialog.SYD_DIALOG);
-        load_finc_dialog ("term_dialog", term_entries, FinancialDialog.TERM_DIALOG);
+        load_finc_dialog ("ctrm", ctrm_entries, FinancialDialog.CTRM_DIALOG);
+        load_finc_dialog ("ddb", ddb_entries, FinancialDialog.DDB_DIALOG);
+        load_finc_dialog ("fv", fv_entries, FinancialDialog.FV_DIALOG);
+        load_finc_dialog ("gpm", gpm_entries, FinancialDialog.GPM_DIALOG);
+        load_finc_dialog ("pmt", pmt_entries, FinancialDialog.PMT_DIALOG);
+        load_finc_dialog ("pv", pv_entries, FinancialDialog.PV_DIALOG);
+        load_finc_dialog ("rate", rate_entries, FinancialDialog.RATE_DIALOG);
+        load_finc_dialog ("sln", sln_entries, FinancialDialog.SLN_DIALOG);
+        load_finc_dialog ("syd", syd_entries, FinancialDialog.SYD_DIALOG);
+        load_finc_dialog ("term", term_entries, FinancialDialog.TERM_DIALOG);
     }
 
     private void load_finc_dialog (string name, string[] entry_names, FinancialDialog function)
     {
-        var dialog = financial_ui.get_object (name) as Gtk.Dialog;
-        dialog.set_data<int> ("finc-function", function);
-        dialog.response.connect (finc_response_cb);
+        var dialog = financial_ui.get_object (name + "_dialog") as Adw.Dialog;
+        dialog.set_data<Adw.EntryRow> ("first-entry", financial_ui.get_object (entry_names[0]) as Adw.EntryRow);
+        var cancel_button = financial_ui.get_object ("button_" + name + "_cancel") as Gtk.Button;
+        cancel_button.set_data<Adw.Dialog> ("dialog", dialog);
+        cancel_button.clicked.connect (finc_cancel_cb);
+        var calculate_button = financial_ui.get_object ("button_" + name + "_calculate") as Gtk.Button;
+        calculate_button.set_data<Adw.Dialog> ("dialog", dialog);
+        calculate_button.set_data<int> ("finc-function", function);
+        calculate_button.clicked.connect (finc_calculate_cb);
         for (var i = 0; i < entry_names.length; i++)
         {
-            var entry = financial_ui.get_object (entry_names[i]) as Gtk.Entry;
+            var entry = financial_ui.get_object (entry_names[i]) as Adw.EntryRow;
             if (i != entry_names.length - 1)
-                entry.set_data<Gtk.Entry> ("next-entry", financial_ui.get_object (entry_names[i+1]) as Gtk.Entry);
-            entry.activate.connect (finc_activate_cb);
+                entry.set_data<Adw.EntryRow> ("next-entry", financial_ui.get_object (entry_names[i+1]) as Adw.EntryRow);
+            else
+                entry.set_data<Gtk.Button> ("calculate-button", calculate_button);
+            entry.entry_activated.connect (finc_activate_cb);
         }
     }
 
@@ -740,9 +748,12 @@ public class MathButtons : Gtk.Box
     private void on_launch_finc_dialog (SimpleAction action, Variant? param)
     {
         var name = param.get_string ();
-        var dialog = financial_ui.get_object (name) as Gtk.Window;
-        dialog.transient_for = this.window as Gtk.Window;
-        dialog.show ();
+        var dialog = financial_ui.get_object (name) as Adw.Dialog;
+        var first_entry = dialog.get_data<Adw.EntryRow> ("first-entry");
+        for (var entry = first_entry; entry != null; entry = entry.get_data<Adw.EntryRow> ("next-entry"))
+            entry.set_text ("0");
+        dialog.present (this.window);
+        first_entry.grab_focus ();
     }
 
     private void on_insert_character (SimpleAction action, Variant? param)
@@ -752,25 +763,24 @@ public class MathButtons : Gtk.Box
 
     private void finc_activate_cb (Gtk.Widget widget)
     {
-        var next_entry = widget.get_data<Gtk.Entry> ("next-entry");
+        var next_entry = widget.get_data<Adw.EntryRow> ("next-entry");
         if (next_entry == null)
         {
-            var dialog = widget.get_root ();
-            if (dialog != null)
-            {
-                insert_char_code ();
-                return;
-            }
+            var calculate_button = widget.get_data<Gtk.Button> ("calculate-button");
+            finc_calculate_cb (calculate_button);
         }
         else
             next_entry.grab_focus ();
     }
 
-    private void finc_response_cb (Gtk.Widget widget, int response_id)
+    private void finc_cancel_cb (Gtk.Widget widget)
     {
-        (widget as Gtk.Window).hide ();
-        if (response_id != Gtk.ResponseType.OK)
-            return;
+        (widget.get_data<Adw.Dialog> ("dialog")).close ();
+    }
+
+    private void finc_calculate_cb (Gtk.Widget widget)
+    {
+        (widget.get_data<Adw.Dialog> ("dialog")).close ();
 
         var function = (FinancialDialog) widget.get_data<int> ("finc-function");
         var entries = new string[0];
@@ -811,12 +821,9 @@ public class MathButtons : Gtk.Box
         Number arg[4] = { new Number.integer (0), new Number.integer (0), new Number.integer (0), new Number.integer (0) };
         for (var i = 0; i < entries.length; i++)
         {
-            var entry = financial_ui.get_object (entries[i]) as Gtk.Entry;
+            var entry = financial_ui.get_object (entries[i]) as Adw.EntryRow;
             arg[i] = mp_set_from_string (entry.get_text ());
-            entry.set_text ("0");
         }
-        var first_entry = financial_ui.get_object (entries[0]) as Gtk.Entry;
-        first_entry.grab_focus ();
 
         do_finc_expression (equation, function, arg[0], arg[1], arg[2], arg[3]);
     }

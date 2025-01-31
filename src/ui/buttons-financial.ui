@@ -1,1173 +1,565 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <object class="GtkDialog" id="ctrm_dialog">
+  <object class="AdwDialog" id="ctrm_dialog">
     <property name="title" translatable="yes" comments="Title of Compounding Term dialog">Compounding Term</property>
-    <property name="default_width">462</property>
-    <property name="default_height">234</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox1">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkEntry" id="ctrm_pint">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
+              <object class="GtkButton" id="button_ctrm_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkEntry" id="ctrm_fv">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="ctrm_pv">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label5">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Compounding Term Dialog: Label before present value input">Present _Value:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">ctrm_pv</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label6">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Compounding Term Dialog: Label before periodic interest rate input">Periodic Interest _Rate:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">ctrm_pint</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label9">
-                <property name="halign">3</property>
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Compounding Term Dialog: Description of calculation">Calculates the number of compounding periods necessary to increase an investment of present value to a future value, at a fixed interest rate per compounding period.</property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label16">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Compounding Term Dialog: Label before future value input">_Future Value:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">ctrm_fv</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_ctrm_calculate">
+                <property name="label" translatable="yes" comments="Compounding Term Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Compounding Term Dialog: Description of calculation">Calculates the number of compounding periods necessary to increase an investment of present value to a future value, at a fixed interest rate per compounding period.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="ctrm_pint">
+                    <property name="title" translatable="yes" comments="Compounding Term Dialog: Label before periodic interest rate input">Periodic Interest Rate</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="ctrm_fv">
+                    <property name="title" translatable="yes" comments="Compounding Term Dialog: Label before future value input">Future Value</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="ctrm_pv">
+                    <property name="title" translatable="yes" comments="Compounding Term Dialog: Label before present value input">Present Value</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_ctrm_cancel</action-widget>
-      <action-widget response="ok" default="true">button_ctrm_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_ctrm_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_ctrm_calculate">
-        <property name="label" translatable="yes" comments="Compounding Term Dialog: Calculate button">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
-  <object class="GtkDialog" id="ddb_dialog">
+  <object class="AdwDialog" id="ddb_dialog">
     <property name="title" translatable="yes" comments="Title of Double-Declining Depreciation dialog">Double-Declining Depreciation</property>
-    <property name="default_width">462</property>
-    <property name="default_height">220</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox2">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkLabel" id="label7">
-                <property name="halign">3</property>
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Double-Declining Depreciation Dialog: Description of calculation">Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method.</property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
+              <object class="GtkButton" id="button_ddb_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel" id="label8">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Double-Declining Depreciation Dialog: Label before cost input">C_ost:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">ddb_cost</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label10">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Double-Declining Depreciation Dialog: Label before life input">_Life:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">ddb_life</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="ddb_life">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="ddb_cost">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label11">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Double-Declining Depreciation Dialog: Label before period input">_Period:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">ddb_period</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="ddb_period">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_ddb_calculate">
+                <property name="label" translatable="yes" comments="Double-Declining Depreciation Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Double-Declining Depreciation Dialog: Description of calculation">Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="ddb_cost">
+                    <property name="title" translatable="yes" comments="Double-Declining Depreciation Dialog: Label before cost input">Cost</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="ddb_life">
+                    <property name="title" translatable="yes" comments="Double-Declining Depreciation Dialog: Label before life input">Life</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="ddb_period">
+                    <property name="title" translatable="yes" comments="Double-Declining Depreciation Dialog: Label before period input">Period</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_ddb_cancel</action-widget>
-      <action-widget response="ok" default="true">button_ddb_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_ddb_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_ddb_calculate">
-        <property name="label" translatable="yes" comments="Double-Declining Depreciation Dialog: Calculate button">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
-  <object class="GtkDialog" id="fv_dialog">
+  <object class="AdwDialog" id="fv_dialog">
     <property name="title" translatable="yes" comments="Title of Future Value dialog">Future Value</property>
-    <property name="default_width">462</property>
-    <property name="default_height">234</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox3">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkLabel" id="label12">
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Future Value Dialog: Description of calculation">Calculates the future value of an investment based on a series of equal payments at a periodic interest rate over the number of payment periods in the term.</property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
+              <object class="GtkButton" id="button_fv_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel" id="label13">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Future Value Dialog: Label before periodic payment input">_Periodic Payment:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">fv_pmt</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label14">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Future Value Dialog: Label before periodic interest rate input">Periodic Interest _Rate:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">fv_pint</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label15">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Future Value Dialog: Label before number of periods input">_Number of Periods:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">fv_n</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="fv_n">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="fv_pint">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="fv_pmt">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_fv_calculate">
+                <property name="label" translatable="yes" comments="Future Value Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Future Value Dialog: Description of calculation">Calculates the future value of an investment based on a series of equal payments at a periodic interest rate over the number of payment periods in the term.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="fv_pmt">
+                    <property name="title" translatable="yes" comments="Future Value Dialog: Label before periodic payment input">Periodic Payment</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="fv_pint">
+                    <property name="title" translatable="yes" comments="Future Value Dialog: Label before periodic interest rate input">Periodic Interest Rate</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="fv_n">
+                    <property name="title" translatable="yes" comments="Future Value Dialog: Label before number of periods input">Number of Periods</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_fv_cancel</action-widget>
-      <action-widget response="ok" default="true">button_fv_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_fv_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_fv_calculate">
-        <property name="label" translatable="yes" comments="Future Value Dialog: Calculate button">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
-  <object class="GtkDialog" id="gpm_dialog">
+  <object class="AdwDialog" id="gpm_dialog">
     <property name="title" translatable="yes" comments="Title of Gross Profit Margin dialog">Gross Profit Margin</property>
-    <property name="default_width">462</property>
-    <property name="default_height">180</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox10">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkLabel" id="label47">
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Gross Profit Margin Dialog: Description of calculation">Calculates the resale price of a product, based on the product cost and the wanted gross profit margin.</property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
+              <object class="GtkButton" id="button_gpm_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel" id="label48">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Gross Profit Margin Dialog: Label before cost input">C_ost:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">gpm_cost</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label49">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Gross Profit Margin Dialog: Label before margin input">_Margin:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">gpm_margin</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="gpm_cost">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="gpm_margin">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_gpm_calculate">
+                <property name="label" translatable="yes" comments="Gross Profit Margin Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Gross Profit Margin Dialog: Description of calculation">Calculates the resale price of a product, based on the product cost and the wanted gross profit margin.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="gpm_cost">
+                    <property name="title" translatable="yes" comments="Gross Profit Margin Dialog: Label before cost input">Cost</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="gpm_margin">
+                    <property name="title" translatable="yes" comments="Gross Profit Margin Dialog: Label before margin input">Margin</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_gpm_cancel</action-widget>
-      <action-widget response="ok" default="true">button_gpm_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_gpm_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_gpm_calculate">
-        <property name="label" translatable="yes" comments="Gross Profit Margin Dialog: Calculate button">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
-  <object class="GtkDialog" id="pmt_dialog">
+  <object class="AdwDialog" id="pmt_dialog">
     <property name="title" translatable="yes" comments="Title of Periodic Payment dialog">Periodic Payment</property>
-    <property name="default_width">462</property>
-    <property name="default_height">218</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox4">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkLabel" id="label17">
-                <property name="halign">1</property>
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Periodic Payment Dialog: Description of calculation">Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. </property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
+              <object class="GtkButton" id="button_pmt_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel" id="label18">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Periodic Payment Dialog: Label before principal input">_Principal:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">pmt_prin</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label19">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Periodic Payment Dialog: Label before periodic interest rate input">Periodic Interest _Rate:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">pmt_pint</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label21">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Periodic Payment Dialog: Label before term input">_Term:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">pmt_n</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="pmt_prin">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="pmt_pint">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="pmt_n">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_pmt_calculate">
+                <property name="label" translatable="yes" comments="Periodic Payment Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Periodic Payment Dialog: Description of calculation">Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="pmt_prin">
+                    <property name="title" translatable="yes" comments="Periodic Payment Dialog: Label before principal input">Principal</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="pmt_pint">
+                    <property name="title" translatable="yes" comments="Periodic Payment Dialog: Label before periodic interest rate input">Periodic Interest Rate</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="pmt_n">
+                    <property name="title" translatable="yes" comments="Periodic Payment Dialog: Label before term input">Term</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_pmt_cancel</action-widget>
-      <action-widget response="ok" default="true">button_pmt_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_pmt_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_pmt_calculate">
-        <property name="label" translatable="yes" comments="Periodic Payment Dialog: Calculate button">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
-  <object class="GtkDialog" id="pv_dialog">
+  <object class="AdwDialog" id="pv_dialog">
     <property name="title" translatable="yes" comments="Title of Present Value dialog">Present Value</property>
-    <property name="default_width">462</property>
-    <property name="default_height">234</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox5">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkLabel" id="label36">
-                <property name="halign">1</property>
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Present Value Dialog: Description of calculation">Calculates the present value of an investment based on a series of equal payments discounted at a periodic interest rate over the number of payment periods in the term. </property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
+              <object class="GtkButton" id="button_pv_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel" id="label24">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Present Value Dialog: Label before periodic payment input">_Periodic Payment:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">pv_pmt</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label25">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Present Value Dialog: Label before periodic interest rate input">Periodic Interest _Rate:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">pv_pint</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label26">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Present Value Dialog: Label before number of periods input">_Number of Periods:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">pv_n</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="pv_pmt">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="pv_pint">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="pv_n">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_pv_calculate">
+                <property name="label" translatable="yes" comments="Present Value Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Present Value Dialog: Description of calculation">Calculates the present value of an investment based on a series of equal payments discounted at a periodic interest rate over the number of payment periods in the term.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="pv_pmt">
+                    <property name="title" translatable="yes" comments="Present Value Dialog: Label before periodic payment input">Periodic Payment</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="pv_pint">
+                    <property name="title" translatable="yes" comments="Present Value Dialog: Label before periodic interest rate input">Periodic Interest Rate</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="pv_n">
+                    <property name="title" translatable="yes" comments="Present Value Dialog: Label before number of periods input">Number of Periods</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_pv_cancel</action-widget>
-      <action-widget response="ok" default="true">button_pv_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_pv_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_pv_calculate">
-        <property name="label" translatable="yes" comments="Present Value Dialog: Calculate button">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
-  <object class="GtkDialog" id="rate_dialog">
+  <object class="AdwDialog" id="rate_dialog">
     <property name="title" translatable="yes" comments="Title of Periodic Interest Rate dialog">Periodic Interest Rate</property>
-    <property name="default_width">462</property>
-    <property name="default_height">218</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox6">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkLabel" id="label28">
-                <property name="halign">1</property>
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Periodic Interest Rate Dialog: Description of calculation">Calculates the periodic interest necessary to increase an investment to a future value, over the number of compounding periods. </property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
+              <object class="GtkButton" id="button_rate_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel" id="label29">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Periodic Interest Rate Dialog: Label before future value input">_Future Value:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">rate_fv</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label30">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Periodic Interest Rate Dialog: Label before present value input">Present _Value:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">rate_pv</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label31">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Periodic Interest Rate Dialog: Label before term input">_Term:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">rate_n</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="rate_fv">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="rate_pv">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="rate_n">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_rate_calculate">
+                <property name="label" translatable="yes" comments="Periodic Interest Rate Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Periodic Interest Rate Dialog: Description of calculation">Calculates the periodic interest necessary to increase an investment to a future value, over the number of compounding periods.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="rate_fv">
+                    <property name="title" translatable="yes" comments="Periodic Interest Rate Dialog: Label before future value input">Future Value</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="rate_pv">
+                    <property name="title" translatable="yes" comments="Periodic Interest Rate Dialog: Label before present value input">Present Value</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="rate_n">
+                    <property name="title" translatable="yes" comments="Periodic Interest Rate Dialog: Label before term input">Term</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_rate_cancel</action-widget>
-      <action-widget response="ok" default="true">button_rate_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_rate_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_rate_calculate">
-        <property name="label" translatable="yes" comments="Periodic Interest Rate Dialog: Calculate button">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
-  <object class="GtkDialog" id="sln_dialog">
+  <object class="AdwDialog" id="sln_dialog">
     <property name="title" translatable="yes" comments="Title of Straight-Line Depreciation dialog">Straight-Line Depreciation</property>
-    <property name="default_width">462</property>
-    <property name="default_height">254</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox7">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkLabel" id="label33">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Straight-Line Depreciation Dialog: Label before cost input">_Cost:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">sln_cost</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
+              <object class="GtkButton" id="button_sln_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel" id="label34">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Straight-Line Depreciation Dialog: Label before salvage input">_Salvage:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">sln_salvage</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label35">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Straight-Line Depreciation Dialog: Label before life input">_Life:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">sln_life</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="sln_life">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="sln_salvage">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="sln_cost">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label32">
-                <property name="halign">1</property>
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Straight-Line Depreciation Dialog: Description of calculation">Calculates the straight-line depreciation of an asset for one period. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. </property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_sln_calculate">
+                <property name="label" translatable="yes" comments="Straight-Line Depreciation Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Straight-Line Depreciation Dialog: Description of calculation">Calculates the straight-line depreciation of an asset for one period. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="sln_cost">
+                    <property name="title" translatable="yes" comments="Straight-Line Depreciation Dialog: Label before cost input">Cost</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="sln_salvage">
+                    <property name="title" translatable="yes" comments="Straight-Line Depreciation Dialog: Label before salvage input">Salvage</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="sln_life">
+                    <property name="title" translatable="yes" comments="Straight-Line Depreciation Dialog: Label before life input">Life</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_sln_cancel</action-widget>
-      <action-widget response="ok" default="true">button_sln_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_sln_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_sln_calculate">
-        <property name="label" translatable="yes" comments="Straight-Line Depreciation Dialog: Calculate button">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
-  <object class="GtkDialog" id="syd_dialog">
+  <object class="AdwDialog" id="syd_dialog">
     <property name="title" translatable="yes" comments="Title of Sum-of-the-Years’-Digits Depreciation dialog">Sum-of-the-Years’-Digits Depreciation</property>
-    <property name="default_width">462</property>
-    <property name="default_height">326</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox8">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkLabel" id="label37">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input">_Period:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">syd_period</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">4</property>
-                </layout>
+              <object class="GtkButton" id="button_syd_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkLabel" id="label38">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input">_Life:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">syd_life</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label39">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input">_Salvage:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">syd_salvage</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label40">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input">_Cost:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">syd_cost</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="syd_cost">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="syd_salvage">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="syd_life">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="syd_period">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">4</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label41">
-                <property name="halign">1</property>
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation">Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-of-the-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The useful life is the number of periods, typically years, over which an asset is depreciated. </property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_syd_calculate">
+                <property name="label" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation">Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-of-the-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The useful life is the number of periods, typically years, over which an asset is depreciated.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="syd_cost">
+                    <property name="title" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input">Cost</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="syd_salvage">
+                    <property name="title" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input">Salvage</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="syd_life">
+                    <property name="title" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input">Life</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="syd_period">
+                    <property name="title" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input">Period</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_syd_cancel</action-widget>
-      <action-widget response="ok" default="true">button_syd_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_syd_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_syd_calculate">
-        <property name="label" translatable="yes" comments="Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
-  <object class="GtkDialog" id="term_dialog">
+  <object class="AdwDialog" id="term_dialog">
     <property name="title" translatable="yes" comments="Title of Payment Period dialog">Payment Period</property>
-    <property name="default_width">462</property>
-    <property name="default_height">234</property>
-    <property name="use_header_bar">1</property>
-    <property name="modal">True</property>
-    <property name="destroy_with_parent">True</property>
-    <child internal-child="content_area">
-      <object class="GtkBox" id="dialog-vbox9">
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkGrid">
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="margin_top">6</property>
-            <property name="margin_bottom">6</property>
-            <property name="column_spacing">6</property>
-            <property name="row_spacing">6</property>
+    <property name="content-width">462</property>
+    <property name="child">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <property name="show-start-title-buttons">False</property>
+            <property name="show-end-title-buttons">False</property>
             <child>
-              <object class="GtkEntry" id="term_pint">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
+              <object class="GtkButton" id="button_term_cancel">
+                <property name="label" translatable="yes">_Cancel</property>
+                <property name="use-underline">True</property>
               </object>
             </child>
-            <child>
-              <object class="GtkEntry" id="term_fv">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkEntry" id="term_pmt">
-                <property name="hexpand">True</property>
-                <property name="text">0</property>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label43">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Payment Period Dialog: Label before periodic interest rate input">Periodic Interest _Rate:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">term_pint</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label44">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Payment Period Dialog: Label before future value input">Future _Value:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">term_fv</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label45">
-                <property name="halign">1</property>
-                <property name="label" translatable="yes" comments="Payment Period Dialog: Label before periodic payment input">_Periodic Payment:</property>
-                <property name="use_underline">True</property>
-                <property name="mnemonic_widget">term_pmt</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel" id="label46">
-                <property name="halign">1</property>
-                <property name="width-chars">50</property>
-                <property name="label" translatable="yes" comments="Payment Period Dialog: Description of calculation">Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value, at a periodic interest rate.</property>
-                <property name="wrap">1</property>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="column-span">2</property>
-                </layout>
+            <child type="end">
+              <object class="GtkButton" id="button_term_calculate">
+                <property name="label" translatable="yes" comments="Payment Period Dialog: Calculate button">C_alculate</property>
+                <property name="use-underline">True</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
               </object>
             </child>
           </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+            <property name="description" translatable="yes" comments="Payment Period Dialog: Description of calculation">Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value, at a periodic interest rate.</property>
+            <child>
+              <object class="AdwPreferencesGroup">
+                <child>
+                  <object class="AdwEntryRow" id="term_pmt">
+                    <property name="title" translatable="yes" comments="Payment Period Dialog: Label before periodic payment input">Periodic Payment</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="term_fv">
+                    <property name="title" translatable="yes" comments="Payment Period Dialog: Label before future value input">Future Value</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwEntryRow" id="term_pint">
+                    <property name="title" translatable="yes" comments="Payment Period Dialog: Label before periodic interest rate input">Periodic Interest Rate</property>
+                    <property name="text">0</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </property>
       </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">button_term_cancel</action-widget>
-      <action-widget response="ok" default="true">button_term_calculate</action-widget>
-    </action-widgets>
-    <child type="action">
-      <object class="GtkButton" id="button_term_cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="button_term_calculate">
-        <property name="label" translatable="yes" comments="Payment Period Dialog: Button to calculate result">C_alculate</property>
-        <property name="use_underline">True</property>
-      </object>
-    </child>
+    </property>
   </object>
   <object class="GtkBox" id="button_panel">
     <property name="orientation">vertical</property>
@@ -1311,7 +703,7 @@
                     <property name="label">mod</property>
                     <property name="use_underline">True</property>
                     <property name="focus_on_click">False</property>
-                    <property name="tooltip_text" translatable="yes">Modulus divide</property>
+                    <property name="tooltip_text" translatable="yes">Modulus Divide</property>
                     <property name="action_name">cal.insert-general</property>
                     <property name="action_target">&apos; mod &apos;</property>
                     <style>

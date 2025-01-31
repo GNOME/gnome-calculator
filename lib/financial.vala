@@ -63,7 +63,7 @@ public void do_finc_expression (MathEquation equation, FinancialDialog function,
         break;
     }
 
-    equation.set_number (result);
+    equation.set_number (result, false);
 }
 
 private Number calc_ctrm (MathEquation equation, Number pint, Number fv, Number pv)
