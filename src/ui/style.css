@@ -210,10 +210,27 @@ clamp > grid.small > widget > .history-view {
   /* word-spacing: 2px; Doesn't work (yet) in GTK */
 }
 
-/* Used for MathVariablePopover */
-row.popover-row {
-  border-bottom: 1px solid @borders;
-  min-height: 35px;
+/* Used for MathPopover */
+.math-popover > contents {
+  padding: 0;
+}
+
+.math-popover scrolledwindow {
+  border-bottom: 1px solid @card_shade_color;
+}
+
+.math-popover list {
+  padding: 6px;
+  background: @popover_bg_color;
+}
+
+.math-popover list > row {
+  border-radius: 9px;
+  min-height: 28px;
+}
+
+.math-popover scrolledwindow + entry {
+  margin: 0 6px;
 }
 
 window > leaflet > * {
