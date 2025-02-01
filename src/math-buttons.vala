@@ -98,6 +98,10 @@ public class MathButtons : Gtk.Box
     private Gtk.Button hex_base_button;
     private Gtk.Button dec_base_button;
     private Gtk.Button oct_base_button;
+    private Gtk.MenuButton base_popover_button;
+    private Gtk.Button hex_base_popover_button;
+    private Gtk.Button dec_base_popover_button;
+    private Gtk.Button oct_base_popover_button;
     private Gtk.MenuButton word_size_button;
     private Gtk.Widget bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
@@ -309,6 +313,7 @@ public class MathButtons : Gtk.Box
         hex_base_button.set_sensitive (enabled);
         dec_base_button.set_sensitive (enabled);
         oct_base_button.set_sensitive (enabled);
+        base_popover_button.set_sensitive (enabled);
 
         if (!enabled)
             return;
@@ -327,10 +332,16 @@ public class MathButtons : Gtk.Box
         hex_base_button.set_visible (number_base != 16);
         dec_base_button.set_visible (number_base != 10);
         oct_base_button.set_visible (number_base != 8);
+        hex_base_popover_button.set_visible (number_base != 16);
+        dec_base_popover_button.set_visible (number_base != 10);
+        oct_base_popover_button.set_visible (number_base != 8);
 
         update_base_button(hex_base_button, "%llx".printf (bits), "₁₆");
         update_base_button(dec_base_button, "%llu".printf (bits), "₁₀");
         update_base_button(oct_base_button, "%llo".printf (bits), "₈");
+        update_base_button(hex_base_popover_button, "%llx".printf (bits), "₁₆");
+        update_base_button(dec_base_popover_button, "%llu".printf (bits), "₁₀");
+        update_base_button(oct_base_popover_button, "%llo".printf (bits), "₈");
     }
 
     private void equation_display_changed_cb ()
@@ -593,6 +604,10 @@ public class MathButtons : Gtk.Box
             hex_base_button = builder.get_object ("hex_base_button") as Gtk.Button;
             dec_base_button = builder.get_object ("dec_base_button") as Gtk.Button;
             oct_base_button = builder.get_object ("oct_base_button") as Gtk.Button;
+            base_popover_button = builder.get_object ("base_popover_button") as Gtk.MenuButton;
+            hex_base_popover_button = builder.get_object ("hex_base_popover_button") as Gtk.Button;
+            dec_base_popover_button = builder.get_object ("dec_base_popover_button") as Gtk.Button;
+            oct_base_popover_button = builder.get_object ("oct_base_popover_button") as Gtk.Button;
 
             bit_panel = builder.get_object ("bit_table") as Gtk.Widget;
             bit_panel.set_direction (Gtk.TextDirection.LTR);
@@ -621,6 +636,9 @@ public class MathButtons : Gtk.Box
             hex_base_button.clicked.connect (copy_conv_base_to_clipboard);
             dec_base_button.clicked.connect (copy_conv_base_to_clipboard);
             oct_base_button.clicked.connect (copy_conv_base_to_clipboard);
+            hex_base_popover_button.clicked.connect (copy_conv_base_to_clipboard);
+            dec_base_popover_button.clicked.connect (copy_conv_base_to_clipboard);
+            oct_base_popover_button.clicked.connect (copy_conv_base_to_clipboard);
             equation.notify["number-base"].connect ((pspec) => { base_changed_cb (); } );
             base_changed_cb ();
             word_size_changed_cb ();

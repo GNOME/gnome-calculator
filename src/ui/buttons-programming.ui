@@ -51,6 +51,46 @@
             </child>
             <child>
               <object class="GtkBox">
+                <property name="halign">2</property>
+                <style>
+                  <class name="conversion-buttons"/>
+                </style>
+                <child>
+                  <object class="GtkMenuButton" id="base_popover_button">
+                    <property name="popover">base_popover</property>
+                    <property name="tooltip_text" translatable="yes">Number Base Conversion</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label">⇆</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkPopover" id="base_popover">
+                    <child>
+                      <object class="GtkBox">
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <child>
+                          <object class="GtkButton" id="hex_base_popover_button">
+                            <property name="tooltip_text" translatable="yes">Copy</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="dec_base_popover_button">
+                            <property name="tooltip_text" translatable="yes">Copy</property>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="oct_base_popover_button">
+                            <property name="tooltip_text" translatable="yes">Copy</property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
