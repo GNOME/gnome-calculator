@@ -12,30 +12,37 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-01-29 08:31+0000\n"
-"PO-Revision-Date: 2025-01-29 17:51+0100\n"
+"POT-Creation-Date: 2025-02-01 06:19+0000\n"
+"PO-Revision-Date: 2025-02-01 10:01+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
-"n%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 2.2.1\n"
 
 # G:1 K:0 O:0
-#: data/org.gnome.Calculator.metainfo.xml.in:7
-#: data/org.gnome.Calculator.desktop.in:3 src/gnome-calculator.vala:83
-#: src/gnome-calculator.vala:306 src/ui/math-window.ui:120
+#: data/org.gnome.Calculator.desktop.in:3
+#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:83
+#: src/gnome-calculator.vala:306 src/ui/math-window.ui:117
 msgid "Calculator"
 msgstr "Računalo"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:8
 #: data/org.gnome.Calculator.desktop.in:4
+#: data/org.gnome.Calculator.metainfo.xml.in:8
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Izvajanje aritmetičnih, znanstvenih ali finančnih izračunov"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/org.gnome.Calculator.desktop.in:6
+msgid "calculation;arithmetic;scientific;financial;"
+msgstr ""
+"računanje;izračunavanje;aritmetika;znanstveni izračuni;finančni izračuni;"
+"računalo;kalkulator;abakus;"
 
 #: data/org.gnome.Calculator.metainfo.xml.in:10
 msgid ""
@@ -107,13 +114,6 @@ msgstr "Vpisni način"
 #: data/org.gnome.Calculator.metainfo.xml.in:76 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
-
-#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Calculator.desktop.in:6
-msgid "calculation;arithmetic;scientific;financial;"
-msgstr ""
-"računanje;izračunavanje;aritmetika;znanstveni izračuni;finančni izračuni;"
-"računalo;kalkulator;abakus;"
 
 # G:0 K:0 O:9
 #: data/org.gnome.calculator.gschema.xml:26
@@ -555,7 +555,7 @@ msgid "Error: the number of periods must be positive"
 msgstr "Napaka: število obdobij mora biti določeno s pozitivno vrednostjo"
 
 #: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:721
-#: src/ui/buttons-financial.ui:1597 src/ui/buttons-programming.ui:1941
+#: src/ui/buttons-financial.ui:989 src/ui/buttons-programming.ui:1956
 msgid "Logarithm"
 msgstr "Logaritem"
 
@@ -2054,6 +2054,8 @@ msgstr "Valuta"
 
 #: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:37
 #: src/ui/buttons-programming.ui:42 src/ui/buttons-programming.ui:47
+#: src/ui/buttons-programming.ui:2142 src/ui/buttons-programming.ui:2147
+#: src/ui/buttons-programming.ui:2152
 msgid "Copy"
 msgstr "Kopiraj"
 
@@ -2061,39 +2063,39 @@ msgstr "Kopiraj"
 msgid "Copy result to clipboard"
 msgstr "Kopira rezultat v odložišče"
 
-#: src/ui/buttons-advanced.ui:146 src/ui/buttons-financial.ui:1314
-#: src/ui/buttons-programming.ui:1665
-msgid "Modulus divide"
+#: src/ui/buttons-advanced.ui:146 src/ui/buttons-basic.ui:127
+#: src/ui/buttons-financial.ui:706 src/ui/buttons-programming.ui:1680
+msgid "Modulus Divide"
 msgstr "Ostanek pri deljenju"
 
 #: src/ui/buttons-advanced.ui:163 src/ui/buttons-basic.ui:145
-#: src/ui/buttons-financial.ui:1331 src/ui/buttons-programming.ui:1285
+#: src/ui/buttons-financial.ui:723 src/ui/buttons-programming.ui:1300
 msgid "Divide [/]"
 msgstr "Deli [ / ]"
 
 #: src/ui/buttons-advanced.ui:259 src/ui/buttons-basic.ui:247
-#: src/ui/buttons-financial.ui:1427 src/ui/buttons-programming.ui:1302
+#: src/ui/buttons-financial.ui:819 src/ui/buttons-programming.ui:1317
 msgid "Multiply [*]"
 msgstr "Pomnoži [ * ]"
 
 #: src/ui/buttons-advanced.ui:276 src/ui/buttons-basic.ui:265
-#: src/ui/buttons-financial.ui:1444 src/ui/buttons-programming.ui:1319
+#: src/ui/buttons-financial.ui:836 src/ui/buttons-programming.ui:1334
 msgid "Subtract [-]"
 msgstr "Odštej [ – ]"
 
 # G:1 K:4 O:2
 #: src/ui/buttons-advanced.ui:292 src/ui/buttons-basic.ui:282
-#: src/ui/buttons-financial.ui:1460 src/ui/buttons-programming.ui:1335
+#: src/ui/buttons-financial.ui:852 src/ui/buttons-programming.ui:1350
 msgid "Add [+]"
 msgstr "Prištej [ + ]"
 
 #: src/ui/buttons-advanced.ui:308 src/ui/buttons-basic.ui:299
-#: src/ui/buttons-programming.ui:1263
+#: src/ui/buttons-programming.ui:1278
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Ctrl+P]"
 
 #: src/ui/buttons-advanced.ui:331 src/ui/buttons-basic.ui:323
-#: src/ui/buttons-financial.ui:1477 src/ui/buttons-programming.ui:1247
+#: src/ui/buttons-financial.ui:869 src/ui/buttons-programming.ui:1262
 msgid "Root [Ctrl+R]"
 msgstr "Koren [Ctrl+R]"
 
@@ -2102,49 +2104,50 @@ msgid "Square [Ctrl+2]"
 msgstr "Kvadrat [Ctrl+2]"
 
 #: src/ui/buttons-advanced.ui:367 src/ui/buttons-basic.ui:361
-#: src/ui/buttons-financial.ui:1493 src/ui/buttons-programming.ui:1368
+#: src/ui/buttons-conversion.ui:227 src/ui/buttons-financial.ui:885
+#: src/ui/buttons-programming.ui:1383
 msgid "Clear Display [Escape]"
 msgstr "Počisti zaslon [Esc]"
 
 #: src/ui/buttons-advanced.ui:383 src/ui/buttons-basic.ui:378
-#: src/ui/buttons-financial.ui:1509 src/ui/buttons-programming.ui:1681
+#: src/ui/buttons-financial.ui:901 src/ui/buttons-programming.ui:1696
 msgid "Start Group [(]"
 msgstr "Začetek skupine [ ( ]"
 
 #: src/ui/buttons-advanced.ui:400 src/ui/buttons-basic.ui:396
-#: src/ui/buttons-financial.ui:1526 src/ui/buttons-programming.ui:1697
+#: src/ui/buttons-financial.ui:918 src/ui/buttons-programming.ui:1712
 msgid "End Group [)]"
 msgstr "Konec skupine [ ) ]"
 
 # G:5 K:12 O:5
 #: src/ui/buttons-advanced.ui:417 src/ui/buttons-basic.ui:414
-#: src/ui/buttons-financial.ui:1543
+#: src/ui/buttons-financial.ui:935
 msgid "Percentage [%]"
 msgstr "Odstotek [ % ]"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
 #: src/ui/buttons-advanced.ui:431 src/ui/buttons-basic.ui:428
-#: src/ui/buttons-financial.ui:1557 src/ui/buttons-programming.ui:1349
+#: src/ui/buttons-financial.ui:949 src/ui/buttons-programming.ui:1364
 msgid "="
 msgstr "="
 
 # G:1 K:0 O:6
 #: src/ui/buttons-advanced.ui:434 src/ui/buttons-basic.ui:432
-#: src/ui/buttons-financial.ui:1560 src/ui/buttons-programming.ui:1352
+#: src/ui/buttons-financial.ui:952 src/ui/buttons-programming.ui:1367
 msgid "Calculate Result"
 msgstr "Izračunaj rezultat"
 
 # G:12 K:31 O:8
-#: src/ui/buttons-advanced.ui:463
+#: src/ui/buttons-advanced.ui:463 src/ui/buttons-programming.ui:1740
 msgid "Subscript Mode [Alt]"
 msgstr "Podpisni način števil [Alt+številka]"
 
 # G:12 K:31 O:8
-#: src/ui/buttons-advanced.ui:484
+#: src/ui/buttons-advanced.ui:484 src/ui/buttons-programming.ui:1761
 msgid "Superscript Mode [Ctrl]"
 msgstr "Nadpisni način števil [Ctrl]"
 
-#: src/ui/buttons-advanced.ui:507 src/ui/buttons-programming.ui:2052
+#: src/ui/buttons-advanced.ui:507 src/ui/buttons-programming.ui:2067
 msgid "Factorize [Ctrl+F]"
 msgstr "Fakulteta [Ctrl+I]"
 
@@ -2164,13 +2167,13 @@ msgstr "Hiperbolični sinus"
 msgid "Hyperbolic Tangent"
 msgstr "Hiperbolični tangens"
 
-#: src/ui/buttons-advanced.ui:638 src/ui/buttons-financial.ui:1575
-#: src/ui/buttons-programming.ui:1897
+#: src/ui/buttons-advanced.ui:638 src/ui/buttons-financial.ui:967
+#: src/ui/buttons-programming.ui:1912
 msgid "Exponent [^ or **]"
 msgstr "Potenca [ ^ ali ** ]"
 
 # G:1 K:0 O:1
-#: src/ui/buttons-advanced.ui:659 src/ui/buttons-programming.ui:1918
+#: src/ui/buttons-advanced.ui:659 src/ui/buttons-programming.ui:1933
 msgid "Inverse [Ctrl+I]"
 msgstr "Preobrni [Ctrl+I]"
 
@@ -2183,12 +2186,12 @@ msgid "Natural Logarithm"
 msgstr "Naravni logaritem"
 
 # G:0 K:1 O:0
-#: src/ui/buttons-advanced.ui:736 src/ui/buttons-programming.ui:1973
+#: src/ui/buttons-advanced.ui:736 src/ui/buttons-programming.ui:1988
 msgid "Factorial [!]"
 msgstr "Fakulteta [ ! ]"
 
 # G:0 K:0 O:2
-#: src/ui/buttons-advanced.ui:758 src/ui/buttons-programming.ui:1995
+#: src/ui/buttons-advanced.ui:758 src/ui/buttons-programming.ui:2010
 msgid "Absolute Value [|]"
 msgstr "Absolutna vrednost [  |  ]"
 
@@ -2212,14 +2215,14 @@ msgstr "Kompleksni konjugat"
 msgid "Complex Argument"
 msgstr "Argument kompleksnega števila"
 
-#: src/ui/buttons-advanced.ui:869 src/ui/buttons-financial.ui:1641
-#: src/ui/buttons-programming.ui:2083
+#: src/ui/buttons-advanced.ui:869 src/ui/buttons-financial.ui:1033
+#: src/ui/buttons-programming.ui:2098
 msgid "Memory"
 msgstr "Pomnilnik"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:870 src/ui/buttons-financial.ui:1642
-#: src/ui/buttons-programming.ui:2082
+#: src/ui/buttons-advanced.ui:870 src/ui/buttons-financial.ui:1034
+#: src/ui/buttons-programming.ui:2097
 msgid "x"
 msgstr "x"
 
@@ -2227,58 +2230,30 @@ msgstr "x"
 msgid "Additional Functions"
 msgstr "Dodatne funkcije"
 
-#: src/ui/buttons-basic.ui:127
-msgid "Modulus Divide"
-msgstr "Ostanek pri deljenju"
+#: src/ui/buttons-conversion.ui:211
+msgid "Negative [-]"
+msgstr "Negativno [-]"
+
+# G:0 K:1 O:0
+#: src/ui/buttons-conversion.ui:243
+msgid "Switch Conversion Units"
+msgstr "Preklopi enote pretvorbe"
+
+#: src/ui/buttons-conversion.ui:259
+msgid "Backspace"
+msgstr "Brisalka"
 
 #. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1658
+#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1050
 msgid "Compounding Term"
 msgstr "Sestavljanje izraza"
 
-# G:0 K:0 O:2
-#. Compounding Term Dialog: Label before present value input
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:55 src/ui/buttons-financial.ui:727
-msgid "Present _Value:"
-msgstr "Sedanja _vrednost:"
-
-# G:1 K:1 O:15
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:67 src/ui/buttons-financial.ui:282
-#: src/ui/buttons-financial.ui:493 src/ui/buttons-financial.ui:610
-#: src/ui/buttons-financial.ui:1106
-msgid "Periodic Interest _Rate:"
-msgstr "Obročna obrestna _mera:"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:80
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"Izračuna število obrestnih obdobij, ki morajo preteči za povečanje vrednosti "
-"investicije s sedanje na prihodnjo vrednost po fiksni obrestni meri za "
-"obrestno obdobje."
-
-# G:0 K:0 O:9
-#. Compounding Term Dialog: Label before future value input
-#. Periodic Interest Rate Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:91 src/ui/buttons-financial.ui:715
-msgid "_Future Value:"
-msgstr "_Prihodnja vrednost:"
-
-#: src/ui/buttons-financial.ui:110 src/ui/buttons-financial.ui:227
-#: src/ui/buttons-financial.ui:343 src/ui/buttons-financial.ui:437
-#: src/ui/buttons-financial.ui:554 src/ui/buttons-financial.ui:671
-#: src/ui/buttons-financial.ui:788 src/ui/buttons-financial.ui:905
-#: src/ui/buttons-financial.ui:1044 src/ui/buttons-financial.ui:1161
-#: src/ui/buttons-programming.ui:2171 src/gnome-calculator.vala:337
+#: src/ui/buttons-financial.ui:15 src/ui/buttons-financial.ui:71
+#: src/ui/buttons-financial.ui:127 src/ui/buttons-financial.ui:183
+#: src/ui/buttons-financial.ui:233 src/ui/buttons-financial.ui:289
+#: src/ui/buttons-financial.ui:345 src/ui/buttons-financial.ui:401
+#: src/ui/buttons-financial.ui:457 src/ui/buttons-financial.ui:519
+#: src/ui/buttons-programming.ui:2209 src/gnome-calculator.vala:337
 msgid "_Cancel"
 msgstr "_Prekliči"
 
@@ -2291,24 +2266,69 @@ msgstr "_Prekliči"
 #. Present Value Dialog: Calculate button
 #. Periodic Interest Rate Dialog: Calculate button
 #. Straight-Line Depreciation Dialog: Calculate button
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate result button
-#. Payment Period Dialog: Button to calculate result
-#: src/ui/buttons-financial.ui:116 src/ui/buttons-financial.ui:233
-#: src/ui/buttons-financial.ui:349 src/ui/buttons-financial.ui:443
-#: src/ui/buttons-financial.ui:560 src/ui/buttons-financial.ui:677
-#: src/ui/buttons-financial.ui:794 src/ui/buttons-financial.ui:911
-#: src/ui/buttons-financial.ui:1050 src/ui/buttons-financial.ui:1167
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
+#. Payment Period Dialog: Calculate button
+#: src/ui/buttons-financial.ui:21 src/ui/buttons-financial.ui:77
+#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:189
+#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:295
+#: src/ui/buttons-financial.ui:351 src/ui/buttons-financial.ui:407
+#: src/ui/buttons-financial.ui:463 src/ui/buttons-financial.ui:525
 msgid "C_alculate"
 msgstr "_Izračunaj"
 
+#. Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.ui:32
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Izračuna število obrestnih obdobij, ki morajo preteči za povečanje vrednosti "
+"investicije s sedanje na prihodnjo vrednost po fiksni obrestni meri za "
+"obrestno obdobje."
+
+# G:1 K:1 O:15
+#. Compounding Term Dialog: Label before periodic interest rate input
+#. Future Value Dialog: Label before periodic interest rate input
+#. Periodic Payment Dialog: Label before periodic interest rate input
+#. Present Value Dialog: Label before periodic interest rate input
+#. Title of Periodic Interest Rate dialog
+#. Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:155
+#: src/ui/buttons-financial.ui:261 src/ui/buttons-financial.ui:317
+#: src/ui/buttons-financial.ui:335 src/ui/buttons-financial.ui:553
+#: src/ui/buttons-financial.ui:1152
+msgid "Periodic Interest Rate"
+msgstr "Obročna obrestna mera"
+
+# G:0 K:0 O:9
+#. Compounding Term Dialog: Label before future value input
+#. Title of Future Value dialog
+#. Periodic Interest Rate Dialog: Label before future value input
+#. Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.ui:43 src/ui/buttons-financial.ui:117
+#: src/ui/buttons-financial.ui:367 src/ui/buttons-financial.ui:547
+#: src/ui/buttons-financial.ui:1084
+msgid "Future Value"
+msgstr "Prihodnja vrednost"
+
+# G:0 K:0 O:2
+#. Compounding Term Dialog: Label before present value input
+#. Title of Present Value dialog
+#. Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.ui:49 src/ui/buttons-financial.ui:279
+#: src/ui/buttons-financial.ui:373 src/ui/buttons-financial.ui:1169
+msgid "Present Value"
+msgstr "Sedanja vrednost"
+
 # G:0 K:0 O:1
 #. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:122
+#: src/ui/buttons-financial.ui:61
 msgid "Double-Declining Depreciation"
 msgstr "Dvojno znižanje vrednosti"
 
 #. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:143
+#: src/ui/buttons-financial.ui:88
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
@@ -2318,32 +2338,29 @@ msgstr ""
 
 #. Double-Declining Depreciation Dialog: Label before cost input
 #. Gross Profit Margin Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:154 src/ui/buttons-financial.ui:386
-msgid "C_ost:"
-msgstr "Str_oški:"
+#. Straight-Line Depreciation Dialog: Label before cost input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.ui:93 src/ui/buttons-financial.ui:205
+#: src/ui/buttons-financial.ui:423 src/ui/buttons-financial.ui:479
+msgid "Cost"
+msgstr "Strošek"
 
 #. Double-Declining Depreciation Dialog: Label before life input
 #. Straight-Line Depreciation Dialog: Label before life input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:166 src/ui/buttons-financial.ui:844
-#: src/ui/buttons-financial.ui:949
-msgid "_Life:"
-msgstr "_Življenje:"
+#: src/ui/buttons-financial.ui:99 src/ui/buttons-financial.ui:435
+#: src/ui/buttons-financial.ui:491
+msgid "Life"
+msgstr "Življenje"
 
 #. Double-Declining Depreciation Dialog: Label before period input
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:198 src/ui/buttons-financial.ui:937
-msgid "_Period:"
-msgstr "_Obdobje:"
-
-# G:0 K:0 O:9
-#. Title of Future Value dialog
-#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:1692
-msgid "Future Value"
-msgstr "Prihodnja vrednost"
+#: src/ui/buttons-financial.ui:105 src/ui/buttons-financial.ui:497
+msgid "Period"
+msgstr "Obdobje"
 
 #. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:259
+#: src/ui/buttons-financial.ui:144
 msgid ""
 "Calculates the future value of an investment based on a series of equal "
 "payments at a periodic interest rate over the number of payment periods in "
@@ -2354,26 +2371,28 @@ msgstr ""
 
 # G:0 K:0 O:5
 #. Future Value Dialog: Label before periodic payment input
+#. Title of Periodic Payment dialog
 #. Present Value Dialog: Label before periodic payment input
 #. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:270 src/ui/buttons-financial.ui:598
-#: src/ui/buttons-financial.ui:1130
-msgid "_Periodic Payment:"
-msgstr "_Obročno plačevanje:"
+#: src/ui/buttons-financial.ui:149 src/ui/buttons-financial.ui:223
+#: src/ui/buttons-financial.ui:311 src/ui/buttons-financial.ui:541
+#: src/ui/buttons-financial.ui:1186
+msgid "Periodic Payment"
+msgstr "Obročno plačevanje"
 
 #. Future Value Dialog: Label before number of periods input
 #. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:294 src/ui/buttons-financial.ui:622
-msgid "_Number of Periods:"
-msgstr "_Število obdobij:"
+#: src/ui/buttons-financial.ui:161 src/ui/buttons-financial.ui:323
+msgid "Number of Periods"
+msgstr "Število obdobij"
 
 #. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:355 src/ui/buttons-financial.ui:1811
+#: src/ui/buttons-financial.ui:173 src/ui/buttons-financial.ui:1203
 msgid "Gross Profit Margin"
 msgstr "Dobičkonosnost prodaje"
 
 #. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:375
+#: src/ui/buttons-financial.ui:200
 msgid ""
 "Calculates the resale price of a product, based on the product cost and the "
 "wanted gross profit margin."
@@ -2382,135 +2401,107 @@ msgstr ""
 "dobičkonosnosti od prodaje."
 
 #. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:398
-msgid "_Margin:"
-msgstr "_Marža:"
-
-# G:0 K:0 O:5
-#. Title of Periodic Payment dialog
-#: src/ui/buttons-financial.ui:449 src/ui/buttons-financial.ui:1794
-msgid "Periodic Payment"
-msgstr "Obročno plačevanje"
+#: src/ui/buttons-financial.ui:211
+msgid "Margin"
+msgstr "Marža"
 
 #. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:470
+#: src/ui/buttons-financial.ui:250
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period. "
+"made at the end of each payment period."
 msgstr ""
 "Izračuna vrednost obročnega plačevanja posojila, kjer se plačila izvajajo ob "
 "koncu vsakega obročnega obdobja."
 
 # G:0 K:1 O:0
 #. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:481
-msgid "_Principal:"
-msgstr "_Glavnica:"
+#: src/ui/buttons-financial.ui:255
+msgid "Principal"
+msgstr "Glavnica"
 
 #. Periodic Payment Dialog: Label before term input
 #. Periodic Interest Rate Dialog: Label before term input
-#: src/ui/buttons-financial.ui:505 src/ui/buttons-financial.ui:739
-msgid "_Term:"
-msgstr "_Obdobje:"
-
-# G:0 K:0 O:2
-#. Title of Present Value dialog
-#: src/ui/buttons-financial.ui:566 src/ui/buttons-financial.ui:1777
-msgid "Present Value"
-msgstr "Sedanja vrednost"
+#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#: src/ui/buttons-financial.ui:267 src/ui/buttons-financial.ui:379
+#: src/ui/buttons-financial.ui:1098
+msgid "Term"
+msgstr "Term"
 
 #. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:587
+#: src/ui/buttons-financial.ui:306
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
-"periods in the term. "
+"periods in the term."
 msgstr ""
 "Izračuna sedanjo vrednost investicije na podlagi niza enakih plačil, "
 "diskontiranih po periodični obrestni meri v določenem številu plačilnih "
 "obdobij."
 
-# G:1 K:1 O:15
-#. Title of Periodic Interest Rate dialog
-#: src/ui/buttons-financial.ui:683 src/ui/buttons-financial.ui:1760
-msgid "Periodic Interest Rate"
-msgstr "Obročna obrestna mera"
-
 #. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:704
+#: src/ui/buttons-financial.ui:362
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods. "
+"future value, over the number of compounding periods."
 msgstr ""
 "Izračuna periodične obrestne mere za povečanje investicije na prihodnjo "
 "vrednost v določenem številu obrestnih obdobij."
 
 # G:0 K:0 O:1
 #. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:800
+#: src/ui/buttons-financial.ui:391
 msgid "Straight-Line Depreciation"
 msgstr "Znižanje ocene ravne črte"
 
-#. Straight-Line Depreciation Dialog: Label before cost input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:820 src/ui/buttons-financial.ui:973
-msgid "_Cost:"
-msgstr "_Stroški:"
-
-#. Straight-Line Depreciation Dialog: Label before salvage input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:832 src/ui/buttons-financial.ui:961
-msgid "_Salvage:"
-msgstr "_Reševanje:"
-
 #. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:887
+#: src/ui/buttons-financial.ui:418
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
 "over the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated. "
+"typically years, over which an asset is depreciated."
 msgstr ""
 "Izračuna metodo enakomernega časovnega amortiziranja v določenem obdobju. Ta "
 "metoda enakomerno razdeli strošek skozi vso uporabno življenjsko dobo "
 "sredstva. Za uporabno življenjsko dobo šteje vsota obdobij, navadno let, v "
 "katerih se sredstvo amortizira."
 
+#. Straight-Line Depreciation Dialog: Label before salvage input
+#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.ui:429 src/ui/buttons-financial.ui:485
+msgid "Salvage"
+msgstr "Reševanje"
+
 # G:0 K:0 O:1
 #. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:917
+#: src/ui/buttons-financial.ui:447
 msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Znižanje vsote vseh letnic"
 
 #. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1026
+#: src/ui/buttons-financial.ui:474
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated. "
+"of periods, typically years, over which an asset is depreciated."
 msgstr ""
 "Izračuna amortizacijo osnovnega sredstva v določenem časovnem obdobju z "
-"metodo vsote letnih številk (SYD). Pri tej metodi je raven amortizacija "
+"metodo vsote letnih števk (SYD). Pri tej metodi je raven amortizacija "
 "hitrejša, saj je strošek amortizacije večji na začetku. Za uporabno "
 "življenjsko dobo šteje vsota obdobij, navadno let, v katerih se sredstvo "
 "amortizira. "
 
 # G:0 K:1 O:0
 #. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:1056
+#: src/ui/buttons-financial.ui:509
 msgid "Payment Period"
 msgstr "Obdobje plačila"
 
-# G:0 K:0 O:9
-#. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:1118
-msgid "Future _Value:"
-msgstr "Prihodnja _vrednost:"
-
 #. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:1143
+#: src/ui/buttons-financial.ui:536
 msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
@@ -2519,79 +2510,74 @@ msgstr ""
 "Izračuna število plačilnih obdobij, ki morajo preteči v obdobju običajne "
 "anuitete za akumulacijo prihodnje vrednosti po periodični obrestni meri."
 
-#: src/ui/buttons-financial.ui:1625
+#: src/ui/buttons-financial.ui:1017
 msgid "Currency Conversion"
 msgstr "Pretvorba valut"
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:1655
+#: src/ui/buttons-financial.ui:1047
 msgid "Ctrm"
 msgstr "Ctrm"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1672
+#: src/ui/buttons-financial.ui:1064
 msgid "Ddb"
 msgstr "Ddb"
 
 # G:0 K:0 O:1
-#: src/ui/buttons-financial.ui:1675
+#: src/ui/buttons-financial.ui:1067
 msgid "Double Declining Depreciation"
 msgstr "Dvojno znižanje vrednosti"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:1689
+#: src/ui/buttons-financial.ui:1081
 msgid "Fv"
 msgstr "Fv"
 
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:1706
-msgid "Term"
-msgstr "Term"
-
 # G:0 K:1 O:0
-#: src/ui/buttons-financial.ui:1709
+#: src/ui/buttons-financial.ui:1101
 msgid "Financial Term"
 msgstr "Finančni izraz"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1723
+#: src/ui/buttons-financial.ui:1115
 msgid "Syd"
 msgstr "Syd"
 
 # G:0 K:0 O:1
-#: src/ui/buttons-financial.ui:1726
+#: src/ui/buttons-financial.ui:1118
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Znižanje vsote vseh letnic"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1740
+#: src/ui/buttons-financial.ui:1132
 msgid "Sln"
 msgstr "Sln"
 
 # G:0 K:0 O:1
-#: src/ui/buttons-financial.ui:1743
+#: src/ui/buttons-financial.ui:1135
 msgid "Straight Line Depreciation"
 msgstr "Znižanje ocene ravne črte"
 
 # G:0 K:1 O:0
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:1757
+#: src/ui/buttons-financial.ui:1149
 msgid "Rate"
 msgstr "Obrestna mera"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:1774
+#: src/ui/buttons-financial.ui:1166
 msgid "Pv"
 msgstr "Pv"
 
 # G:0 K:1 O:0
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:1791
+#: src/ui/buttons-financial.ui:1183
 msgid "Pmt"
 msgstr "Pmt"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:1808
+#: src/ui/buttons-financial.ui:1200
 msgid "Gpm"
 msgstr "Dobičkonosnost"
 
@@ -2612,77 +2598,71 @@ msgstr "Desetiško"
 msgid "Hexadecimal"
 msgstr "Šestnajstiško"
 
-# G:12 K:31 O:8
-#: src/ui/buttons-programming.ui:1725
-msgid "Subscript mode [Alt]"
-msgstr "Podpisni način števil [Alt+številka]"
+#: src/ui/buttons-programming.ui:61
+msgid "Number Base Conversion"
+msgstr "Pretvorba številske osnove"
 
-# G:12 K:31 O:8
-#: src/ui/buttons-programming.ui:1746
-msgid "Superscript mode [Ctrl]"
-msgstr "Nadpisni način števil [Ctrl]"
-
-#: src/ui/buttons-programming.ui:1767
+#: src/ui/buttons-programming.ui:1782
 msgid "Shift Left"
 msgstr "Premakni levo"
 
-#: src/ui/buttons-programming.ui:1782
+#: src/ui/buttons-programming.ui:1797
 msgid "Shift Right"
 msgstr "Premakni desno"
 
-#: src/ui/buttons-programming.ui:1798
+#: src/ui/buttons-programming.ui:1813
 msgid "Boolean Exclusive OR"
 msgstr "Posebni logični OR"
 
-#: src/ui/buttons-programming.ui:1814
+#: src/ui/buttons-programming.ui:1829
 msgid "Boolean OR"
 msgstr "Logični OR"
 
-#: src/ui/buttons-programming.ui:1831
+#: src/ui/buttons-programming.ui:1846
 msgid "Boolean AND"
 msgstr "Logični AND"
 
-#: src/ui/buttons-programming.ui:1848
+#: src/ui/buttons-programming.ui:1863
 msgid "Boolean NOT"
 msgstr "Logični NOT"
 
-#: src/ui/buttons-programming.ui:1865
-msgid "Ones’ Complement"
+#: src/ui/buttons-programming.ui:1880
+msgid "One’s Complement"
 msgstr "Eniški komplement"
 
-#: src/ui/buttons-programming.ui:1882
+#: src/ui/buttons-programming.ui:1897
 msgid "Two’s Complement"
 msgstr "Dvojiški komplement"
 
-#: src/ui/buttons-programming.ui:1958
+#: src/ui/buttons-programming.ui:1973
 msgid "Binary Logarithm"
 msgstr "Dvojiški logaritem"
 
-#: src/ui/buttons-programming.ui:2018
+#: src/ui/buttons-programming.ui:2033
 msgid "Integer Component"
 msgstr "Celoštevilčna enota"
 
-#: src/ui/buttons-programming.ui:2035
+#: src/ui/buttons-programming.ui:2050
 msgid "Fractional Component"
 msgstr "Enota ulomka"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2067 src/ui/buttons-programming.ui:2121
+#: src/ui/buttons-programming.ui:2082 src/ui/buttons-programming.ui:2159
 msgid "Insert Character Code"
 msgstr "Vstavi znakovno kodo"
 
-#: src/ui/buttons-programming.ui:2098
-msgid "Change word size"
+#: src/ui/buttons-programming.ui:2113
+msgid "Change Word Size"
 msgstr "Spremeni velikost besede"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2153
+#: src/ui/buttons-programming.ui:2191
 msgid "Character"
 msgstr "Znak"
 
 # G:1 K:3 O:16
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2181
+#: src/ui/buttons-programming.ui:2219
 msgid "_Insert"
 msgstr "_Vstavi"
 
@@ -2738,8 +2718,8 @@ msgstr "Ali res želite zapreti vsa odprta okna?"
 msgid "Close _All"
 msgstr "Zapri _vse"
 
-#: src/math-buttons.vala:254 src/math-buttons.vala:701
-#: src/math-buttons.vala:717
+#: src/math-buttons.vala:271 src/math-buttons.vala:749
+#: src/math-buttons.vala:765
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
@@ -2747,6 +2727,14 @@ msgstr[0] "%d-bitna"
 msgstr[1] "%d-bitna"
 msgstr[2] "%d-bitna"
 msgstr[3] "%d-bitna"
+
+#: src/ui/math-converter.ui:138
+msgid "_Copy"
+msgstr "_Kopiraj"
+
+#: src/ui/math-converter.ui:142
+msgid "_Paste"
+msgstr "_Prilepi"
 
 #: src/math-display.vala:599
 msgid "Defined Functions"
@@ -3042,7 +3030,7 @@ msgid "Advanced"
 msgstr "Znanstveni"
 
 # G:0 K:1 O:0
-#: src/ui/math-window.ui:30 src/ui/math-window.ui:155 src/math-window.vala:137
+#: src/ui/math-window.ui:30 src/ui/math-window.ui:152 src/math-window.vala:137
 msgid "Financial"
 msgstr "Finančni"
 
@@ -3062,55 +3050,59 @@ msgstr "Pretvorba"
 msgid "_New Window"
 msgstr "_Novo okno"
 
-#: src/ui/math-window.ui:69
-msgid "Result format"
-msgstr "Zapis rezultata"
+#: src/ui/math-window.ui:61
+msgid "_Clear History"
+msgstr "_Počisti zgodovino"
+
+#: src/ui/math-window.ui:68
+msgid "Result Format"
+msgstr "Oblika rezultata"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:74
+#: src/ui/math-window.ui:71
 msgid "_Automatic"
 msgstr "_Samodejni"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:80
+#: src/ui/math-window.ui:77
 msgid "_Fixed"
 msgstr "_Določen"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
-#: src/ui/math-window.ui:86
+#: src/ui/math-window.ui:83
 msgid "_Scientific"
 msgstr "_Znanstveni"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
-#: src/ui/math-window.ui:92
+#: src/ui/math-window.ui:89
 msgid "_Engineering"
 msgstr "_Inženirski"
 
-#: src/ui/math-window.ui:102
+#: src/ui/math-window.ui:99
 msgid "Preferences"
 msgstr "Možnosti"
 
-#: src/ui/math-window.ui:106
+#: src/ui/math-window.ui:103
 msgid "Keyboard Shortcuts"
 msgstr "Tipkovne bližnjice"
 
-#: src/ui/math-window.ui:110
+#: src/ui/math-window.ui:107
 msgid "_Help"
 msgstr "Pomo_č"
 
 # G:1 K:0 O:0
-#: src/ui/math-window.ui:114
+#: src/ui/math-window.ui:111
 msgid "About Calculator"
 msgstr "O programu"
 
-#: src/ui/math-window.ui:131
+#: src/ui/math-window.ui:128
 msgid "Mode Selection"
 msgstr "Način izbire"
 
-#: src/ui/math-window.ui:144
+#: src/ui/math-window.ui:141
 msgid "_Undo"
 msgstr "_Razveljavi"
 
-#: src/ui/math-window.ui:164
+#: src/ui/math-window.ui:161
 msgid "Main Menu"
 msgstr "Glavni meni"
