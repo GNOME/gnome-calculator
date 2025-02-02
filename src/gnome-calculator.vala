@@ -34,7 +34,6 @@ public class Calculator : Adw.Application
         { "help", help_cb, null, null, null },
         { "about", about_cb, null, null, null },
         { "quit", quit_cb, null, null, null },
-        { "clear-history", clear_window_history_cb, null, null, null },
     };
 
     public Calculator ()
@@ -99,9 +98,8 @@ public class Calculator : Adw.Application
         set_accels_for_action ("win.undo", {"<control>Z"});
         set_accels_for_action ("win.close", {"<control>W"});
         set_accels_for_action ("win.redo", {"<control><shift>Z"});
-        set_accels_for_action ("win.clear", {"<Primary>Escape"});
+        set_accels_for_action ("win.clear", {"<control>Escape"});
 
-        set_accels_for_action ("app.clear-history", {"<control>Escape"});
         set_accels_for_action ("app.quit", {"<control>Q"});
         set_accels_for_action ("app.new-window", {"<control>N"});
         set_accels_for_action ("app.help", {"F1"});
@@ -322,11 +320,6 @@ public class Calculator : Adw.Application
         var providers = string.joinv(", ", CurrencyManager.get_default ().get_provider_links ());
         about.add_legal_section ( _("Exchange rate data providers"), null, Gtk.License.CUSTOM, _("Exchange rates data by %s").printf(providers));
         about.present (get_active_window ());
-    }
-
-    private void clear_window_history_cb ()
-    {
-        last_opened_window.clear_cb ();
     }
 
     private void quit_cb ()

@@ -176,8 +176,6 @@ public class MathWindow : Adw.ApplicationWindow
         copy_action.set_enabled (_buttons.mode != ButtonMode.CONVERSION);
         var clear_action = (SimpleAction) lookup_action ("clear");
         clear_action.set_enabled (_buttons.mode != ButtonMode.CONVERSION);
-        clear_action = (SimpleAction) get_application ().lookup_action ("clear-history");
-        clear_action.set_enabled (_buttons.mode != ButtonMode.CONVERSION);
         back_button.set_visible (false);
 
         _display.set_enable_osk (remove_buttons);
