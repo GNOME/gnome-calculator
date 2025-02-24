@@ -794,13 +794,13 @@ public class MathButtons : Gtk.Box
         var first_entry = dialog.get_data<Adw.EntryRow> ("first-entry");
         for (var entry = first_entry; entry != null; entry = entry.get_data<Adw.EntryRow> ("next-entry"))
             entry.set_text ("0");
-        dialog.present (this.window);
+        dialog.present (this);
         first_entry.grab_focus ();
     }
 
     private void on_insert_character (SimpleAction action, Variant? param)
     {
-        character_code_dialog.present (window);
+        character_code_dialog.present (this);
     }
 
     private void finc_activate_cb (Gtk.Widget widget)
