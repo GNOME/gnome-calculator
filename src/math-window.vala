@@ -90,7 +90,7 @@ public class MathWindow : Adw.ApplicationWindow
         display_box.append (history);
         display_box.append (_display);
 
-        _buttons = new MathButtons (equation, this);
+        _buttons = new MathButtons (equation);
         grid.attach_next_to(_buttons, display_box, Gtk.PositionType.BOTTOM);
 
         remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;

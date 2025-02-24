@@ -72,8 +72,6 @@ public class MathButtons : Gtk.Box
     private MathConverter converter;
     public MathConverter math_converter { get { return converter; } }
 
-    private MathWindow window;
-
     private Gtk.Builder basic_ui;
     private Gtk.Builder advanced_ui;
     private Gtk.Builder financial_ui;
@@ -151,12 +149,11 @@ public class MathButtons : Gtk.Box
 
     public signal void currency_conversion();
 
-    public MathButtons (MathEquation equation, MathWindow window)
+    public MathButtons (MathEquation equation)
     {
         Object (orientation: Gtk.Orientation.VERTICAL, vexpand_set: true);
         show.connect (load_buttons);
         this.equation = equation;
-        this.window = window;
 
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
