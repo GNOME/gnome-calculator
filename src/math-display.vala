@@ -11,8 +11,7 @@
 public class MathDisplay : Gtk.Box
 {
     /* Equation being displayed */
-    private MathEquation _equation;
-    public MathEquation equation { get { return _equation; } }
+    public MathEquation equation { get; construct set; }
 
     /* Display widget */
     GtkSource.View source_view;
@@ -38,7 +37,19 @@ public class MathDisplay : Gtk.Box
 
     public MathDisplay (MathEquation equation)
     {
-        _equation = equation;
+        Object (equation: equation);
+    }
+
+    construct
+    {
+        notify["equation"].connect (construct_finish);
+    }
+
+    private void construct_finish ()
+    {
+        if (equation == null)
+            return;
+
         orientation = Gtk.Orientation.VERTICAL;
 
         var scrolled_window = new Gtk.ScrolledWindow ();
@@ -103,12 +114,12 @@ public class MathDisplay : Gtk.Box
 
     public void display_text (string prev_eq)
     {
-        _equation.display_selected (prev_eq);
+        equation.display_selected (prev_eq);
     }
 
     public void insert_text (string answer)
     {
-        _equation.insert_selected (answer);
+        equation.insert_selected (answer);
     }
 
     public void set_enable_autocompletion (bool enable_autocompletion)
