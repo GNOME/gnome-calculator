@@ -20,7 +20,7 @@ public enum ButtonMode
 
 public class MathButtons : Adw.BreakpointBin
 {
-    private MathEquation equation;
+    public MathEquation equation { get; construct set; }
 
     private ButtonMode _mode;
     public ButtonMode mode
@@ -36,7 +36,7 @@ public class MathButtons : Adw.BreakpointBin
     }
     private int _programming_base = 10;
 
-    private MathConverter converter;
+    public MathConverter converter { get; construct set; }
 
     private Gtk.Builder basic_ui;
     private Gtk.Builder advanced_ui;
@@ -118,10 +118,22 @@ public class MathButtons : Adw.BreakpointBin
 
     public MathButtons (MathEquation equation, MathConverter converter)
     {
-        Object (vexpand_set: true);
+        Object (equation: equation, converter: converter);
+    }
+
+    construct
+    {
+        notify["equation"].connect (construct_finish);
+        notify["converter"].connect (construct_finish);
+    }
+
+    private void construct_finish ()
+    {
+        if (equation == null || converter == null)
+            return;
+
+        vexpand_set = true;
         show.connect (load_buttons);
-        this.equation = equation;
-        this.converter = converter;
 
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
