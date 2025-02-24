@@ -169,6 +169,31 @@
                       <class name="card"/>
                       <class name="display-container"/>
                     </style>
+                    <child>
+                      <object class="HistoryView" id="history">
+                        <property name="overflow">hidden</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="MathDisplay" id="_display">
+                        <property name="equation" bind-source="MathWindow" bind-property="equation" bind-flags="sync-create"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="MathConverter" id="converter">
+                    <property name="equation" bind-source="MathWindow" bind-property="equation" bind-flags="sync-create"/>
+                    <style>
+                      <class name="card"/>
+                      <class name="display-container"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="MathButtons" id="_buttons">
+                    <property name="equation" bind-source="MathWindow" bind-property="equation" bind-flags="sync-create"/>
+                    <property name="converter">converter</property>
                   </object>
                 </child>
               </object>

@@ -14,17 +14,21 @@ public class MathWindow : Adw.ApplicationWindow
 {
     public MathEquation equation { get; construct set; }
 
+    [GtkChild]
     private HistoryView history;
 
     private ulong changed_handler;
 
+    [GtkChild]
     private MathDisplay _display;
     public MathDisplay math_display { get { return _display; } }
+    [GtkChild]
     private MathButtons _buttons;
     public MathButtons buttons { get { return _buttons; } }
     private int forked_row_index = 0;
     private string saved_eq = null;
 
+    [GtkChild]
     private MathConverter converter;
 
     [GtkChild]
@@ -56,6 +60,10 @@ public class MathWindow : Adw.ApplicationWindow
 
     public MathWindow (Gtk.Application app, MathEquation equation)
     {
+        typeof(HistoryView).ensure();
+        typeof(MathDisplay).ensure();
+        typeof(MathConverter).ensure();
+        typeof(MathButtons).ensure();
         Object (application: app, equation: equation);
     }
 
@@ -87,10 +95,6 @@ public class MathWindow : Adw.ApplicationWindow
         (this as Gtk.Widget).add_controller (event_controller);
         event_controller.key_pressed.connect (key_press_cb);
 
-        _display = new MathDisplay (equation);
-        _display.show ();
-
-        history = new HistoryView ();
         _display.equation.display_changed.connect (history.set_serializer);
         _display.equation.history_signal.connect (this.update_history);
 
@@ -101,17 +105,6 @@ public class MathWindow : Adw.ApplicationWindow
 
         _display.arr_key_pressed.connect (this.arr_key_pressed_cb);
         changed_handler = _display.equation.changed.connect (this.eq_changed_cb);
-
-        display_box.append (history);
-        display_box.append (_display);
-
-        converter = new MathConverter (equation);
-        converter.add_css_class ("display-container");
-        converter.add_css_class ("card");
-        box.append(converter);
-
-        _buttons = new MathButtons (equation, converter);
-        box.append(_buttons);
 
         _buttons.currency_conversion.connect (() => back_button.visible = true);
         _buttons.notify["mode"].connect (mode_changed_cb);
