@@ -12,8 +12,7 @@
 [GtkTemplate (ui = "/org/gnome/calculator/math-window.ui")]
 public class MathWindow : Adw.ApplicationWindow
 {
-    private MathEquation _equation;
-    public MathEquation equation { get { return _equation; } }
+    public MathEquation equation { get; construct set; }
 
     private HistoryView history;
 
@@ -57,8 +56,18 @@ public class MathWindow : Adw.ApplicationWindow
 
     public MathWindow (Gtk.Application app, MathEquation equation)
     {
-        Object (application: app);
-        _equation = equation;
+        Object (application: app, equation: equation);
+    }
+
+    construct
+    {
+        notify["equation"].connect (construct_finish);
+    }
+
+    private void construct_finish ()
+    {
+        if (equation == null)
+            return;
 
         add_action_entries (window_entries, this);
         var settings = new Settings ("org.gnome.calculator");
@@ -67,12 +76,12 @@ public class MathWindow : Adw.ApplicationWindow
         undo_action.set_enabled (false);
 
         equation.notify["display"].connect(() => { undo_action.set_enabled (equation.has_undo_action);} );
-        settings.bind ("number-format", _equation, "number_format", SettingsBindFlags.DEFAULT);
-        settings.bind ("accuracy", _equation, "accuracy", SettingsBindFlags.DEFAULT);
-        settings.bind ("show-zeroes", _equation, "show_trailing_zeroes", SettingsBindFlags.DEFAULT);
-        settings.bind ("show-thousands", _equation, "show_thousands_separators", SettingsBindFlags.DEFAULT);
-        settings.bind ("angle-units", _equation, "angle_units", SettingsBindFlags.DEFAULT);
-        settings.bind ("word-size", _equation, "word_size", SettingsBindFlags.DEFAULT);
+        settings.bind ("number-format", equation, "number_format", SettingsBindFlags.DEFAULT);
+        settings.bind ("accuracy", equation, "accuracy", SettingsBindFlags.DEFAULT);
+        settings.bind ("show-zeroes", equation, "show_trailing_zeroes", SettingsBindFlags.DEFAULT);
+        settings.bind ("show-thousands", equation, "show_thousands_separators", SettingsBindFlags.DEFAULT);
+        settings.bind ("angle-units", equation, "angle_units", SettingsBindFlags.DEFAULT);
+        settings.bind ("word-size", equation, "word_size", SettingsBindFlags.DEFAULT);
 
         event_controller = new Gtk.EventControllerKey ();
         (this as Gtk.Widget).add_controller (event_controller);
@@ -286,10 +295,10 @@ public class MathWindow : Adw.ApplicationWindow
         else if (saved_eq == null)
         {
             Gtk.TextIter start, end;
-            if (!_equation.get_selection_bounds (out start, out end))
-                _equation.get_bounds (out start, out end);
+            if (!equation.get_selection_bounds (out start, out end))
+                equation.get_bounds (out start, out end);
 
-            saved_eq = _equation.get_text (start, end, false);
+            saved_eq = equation.get_text (start, end, false);
         }
         forked_row_index--;
         set_display_text (entry.equation_label.get_text ());
