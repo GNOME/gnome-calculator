@@ -205,13 +205,19 @@ public class MathButtons : Gtk.Box
 
     private void on_insert (SimpleAction action, Variant? param)
     {
+        window.math_display.set_enable_autocompletion (false);
         equation.insert (param.get_string ());
+        window.math_display.set_enable_autocompletion (true);
     }
 
     private void on_insert_digit (SimpleAction action, Variant? param)
     {
         if (mode != ButtonMode.CONVERSION)
+        {
+            window.math_display.set_enable_autocompletion (false);
             equation.insert_digit (param.get_int32 ());
+            window.math_display.set_enable_autocompletion (true);
+        }
         else
             converter.insert_text (param.get_int32 ().to_string ());
     }

@@ -111,6 +111,14 @@ public class MathDisplay : Gtk.Box
         _equation.insert_selected (answer);
     }
 
+    public void set_enable_autocompletion (bool enable_autocompletion)
+    {
+        if (enable_autocompletion)
+            source_view.get_completion ().unblock_interactive ();
+        else
+            source_view.get_completion ().block_interactive ();
+    }
+
     private void create_autocompletion ()
     {
         GtkSource.Completion completion = source_view.get_completion ();
@@ -252,6 +260,23 @@ public class MathDisplay : Gtk.Box
             if (c == '-')
             {
                 equation.insert_subtract ();
+                return true;
+            }
+        }
+
+        /* Disable auto-completion when inputting hex numbers */
+        if (state == 0 && equation.number_base == 16)
+        {
+            uint digit = 0;
+            if (c >= 'A' && c <= 'F')
+                digit = c - 'A' + 10;
+            if (c >= 'a' && c <= 'f')
+                digit = c - 'a' + 10;
+            if (digit != 0)
+            {
+                set_enable_autocompletion (false);
+                equation.insert_digit (digit);
+                set_enable_autocompletion (true);
                 return true;
             }
         }
