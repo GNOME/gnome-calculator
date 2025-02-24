@@ -75,10 +75,10 @@ public class MathWindow : Adw.ApplicationWindow
         _display = new MathDisplay (equation);
         _display.show ();
 
+        history = new HistoryView ();
         _display.equation.display_changed.connect (history.set_serializer);
         _display.equation.history_signal.connect (this.update_history);
 
-        history = new HistoryView ();
         history.answer_clicked.connect ((ans) => { _display.insert_text (ans); });
         history.equation_clicked.connect ((eq) => { _display.display_text (eq); });
         history.row_added.connect (this.eq_changed_cb);
