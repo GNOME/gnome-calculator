@@ -35,7 +35,7 @@ public class MathWindow : Adw.ApplicationWindow
     [GtkChild]
     public unowned Gtk.Button back_button;
     [GtkChild]
-    private unowned Gtk.Grid grid;
+    private unowned Gtk.Box box;
     [GtkChild]
     private unowned Gtk.Box display_box;
 
@@ -91,7 +91,7 @@ public class MathWindow : Adw.ApplicationWindow
         display_box.append (_display);
 
         _buttons = new MathButtons (equation);
-        grid.attach_next_to(_buttons, display_box, Gtk.PositionType.BOTTOM);
+        box.append(_buttons);
 
         remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;
 
