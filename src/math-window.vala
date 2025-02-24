@@ -28,6 +28,9 @@ public class MathWindow : Adw.ApplicationWindow
     private int forked_row_index = 0;
     private string saved_eq = null;
 
+    private MathConverter converter;
+    private ulong converter_changed;
+
     [GtkChild]
     private unowned Gtk.MenuButton menu_button;
     [GtkChild]
@@ -90,7 +93,12 @@ public class MathWindow : Adw.ApplicationWindow
         display_box.append (history);
         display_box.append (_display);
 
-        _buttons = new MathButtons (equation);
+        converter = new MathConverter (equation);
+        converter.add_css_class ("display-container");
+        converter.add_css_class ("card");
+        box.append(converter);
+
+        _buttons = new MathButtons (equation, converter);
         box.append(_buttons);
 
         remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;
@@ -165,7 +173,6 @@ public class MathWindow : Adw.ApplicationWindow
             _buttons.hide ();
             remove_buttons = true;
         }
-        _buttons.set_vexpand (_buttons.mode == ButtonMode.CONVERSION);
         display_box.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         undo_button.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         var copy_action = (SimpleAction) lookup_action ("copy");
@@ -230,7 +237,7 @@ public class MathWindow : Adw.ApplicationWindow
         if (buttons.mode != ButtonMode.CONVERSION)
             equation.paste ();
         else
-            buttons.math_converter.paste ();
+            converter.paste ();
     }
 
     private void undo_cb ()

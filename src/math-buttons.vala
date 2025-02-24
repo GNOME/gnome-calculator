@@ -149,11 +149,12 @@ public class MathButtons : Gtk.Box
 
     public signal void currency_conversion();
 
-    public MathButtons (MathEquation equation)
+    public MathButtons (MathEquation equation, MathConverter converter)
     {
         Object (orientation: Gtk.Orientation.VERTICAL, vexpand_set: true);
         show.connect (load_buttons);
         this.equation = equation;
+        this.converter = converter;
 
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
@@ -163,6 +164,7 @@ public class MathButtons : Gtk.Box
         equation.notify["angle-units"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["number-format"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["word-size"].connect ((pspec) => { word_size_changed_cb (); });
+        converter_changed = converter.changed.connect (converter_changed_cb);
         number_mode_changed_cb ();
         update_bit_panel ();
     }
@@ -710,15 +712,6 @@ public class MathButtons : Gtk.Box
     {
         if (!get_visible ())
             return;
-
-        if (converter == null)
-        {
-            converter = new MathConverter (equation);
-            converter.add_css_class ("display-container");
-            converter.add_css_class ("card");
-            append (converter);
-            converter_changed = converter.changed.connect (converter_changed_cb);
-        }
 
         var panel = load_mode (mode);
         if (active_panel == panel)

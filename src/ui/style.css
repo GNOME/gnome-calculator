@@ -17,30 +17,22 @@
 }
 
 .display-container {
-  margin: 6px 12px 0 12px;
+  margin: 12px 12px 0 12px;
   transition: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-clamp > .small .display-container {
-  margin-left: 0;
-  margin-right: 0;
-  border-radius: 0;
 }
 
 .display-container:last-child {
   margin-bottom: 12px;
 }
 
-clamp > * > :first-child {
-  transition: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  margin-top: 12px;
-}
-
-clamp > .small > :first-child {
+clamp > .small .display-container {
   margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
 }
 
-clamp > .small > .display-container:last-child {
+clamp > .small .display-container:last-child {
   margin-bottom: 0;
 }
 
@@ -90,7 +82,6 @@ mathconverter > squeezer:not(:first-child) > :first-child {
 }
 
 mathconverter.display-container {
-  margin-top: 0;
   background-color: shade(@card_bg_color, .95);
 }
 
