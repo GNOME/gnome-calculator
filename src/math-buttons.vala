@@ -149,6 +149,8 @@ public class MathButtons : Gtk.Box
 
     private bool solved_using_button;
 
+    public signal void currency_conversion();
+
     public MathButtons (MathEquation equation, MathWindow window)
     {
         Object (orientation: Gtk.Orientation.VERTICAL, vexpand_set: true);
@@ -924,7 +926,7 @@ public class MathButtons : Gtk.Box
     {
         mode = ButtonMode.CONVERSION;
         converter.set_category ("currency");
-        window.back_button.show ();
+        currency_conversion ();
     }
 
     private void on_swap_units (SimpleAction action, Variant? param)

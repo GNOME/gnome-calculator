@@ -95,6 +95,7 @@ public class MathWindow : Adw.ApplicationWindow
 
         remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;
 
+        _buttons.currency_conversion.connect (() => back_button.visible = true);
         _buttons.notify["mode"].connect (mode_changed_cb);
         mode_changed_cb ();
 
