@@ -173,6 +173,16 @@
               <object class="GtkGrid" id="grid">
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkBox" id="display_box">
+                    <property name="overflow">hidden</property>
+                    <property name="orientation">vertical</property>
+                    <style>
+                      <class name="card"/>
+                      <class name="display-container"/>
+                    </style>
+                  </object>
+                </child>
               </object>
             </child>
           </object>

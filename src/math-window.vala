@@ -36,6 +36,8 @@ public class MathWindow : Adw.ApplicationWindow
     public unowned Gtk.Button back_button;
     [GtkChild]
     private unowned Gtk.Grid grid;
+    [GtkChild]
+    private unowned Gtk.Box display_box;
 
     private Gtk.EventControllerKey event_controller;
 
@@ -70,12 +72,6 @@ public class MathWindow : Adw.ApplicationWindow
         (this as Gtk.Widget).add_controller (event_controller);
         event_controller.key_pressed.connect (key_press_cb);
 
-        var box = new Gtk.Box (VERTICAL, 0);
-        box.overflow = HIDDEN;
-        box.add_css_class ("display-container");
-        box.add_css_class ("card");
-        grid.attach (box, 0, 1, 1, 1);
-
         _display = new MathDisplay (equation);
         _display.show ();
 
@@ -91,11 +87,11 @@ public class MathWindow : Adw.ApplicationWindow
         _display.arr_key_pressed.connect (this.arr_key_pressed_cb);
         changed_handler = _display.equation.changed.connect (this.eq_changed_cb);
 
-        box.append (history);
-        box.append (_display);
+        display_box.append (history);
+        display_box.append (_display);
 
         _buttons = new MathButtons (equation, this);
-        grid.attach_next_to(_buttons, box, Gtk.PositionType.BOTTOM);
+        grid.attach_next_to(_buttons, display_box, Gtk.PositionType.BOTTOM);
 
         remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;
 
