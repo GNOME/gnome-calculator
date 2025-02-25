@@ -786,6 +786,11 @@ private void test_precedence ()
     test ("100 + 20% * 100", "120", 0);
     test ("100 + 100 * 20%", "120", 0);
 
+    test ("(50+50)+10%", "110", 0);
+    test ("(50+50)-10%", "90", 0);
+    test ("(50+50)+10%=", "110", 0);
+    test ("(50+50)-10%=", "90", 0);
+    test ("x=110", "110", 0);
 }
 
 private void test_custom_functions ()

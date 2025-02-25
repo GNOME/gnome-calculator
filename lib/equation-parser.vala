@@ -1884,7 +1884,7 @@ public class Parser
                     var next_token  = lexer.get_next_token ();
                     lexer.roll_back ();
 
-                    if (next_token.text != "" && get_precedence (next_token.type) < Precedence.PERCENTAGE)
+                    if (next_token.text != "" && next_token.text != "=" && get_precedence (next_token.type) < Precedence.PERCENTAGE)
                     {
                         lexer.roll_back ();
                         if (!expression_2 ())
@@ -1927,7 +1927,7 @@ public class Parser
                     var next_token  = lexer.get_next_token ();
                     lexer.roll_back ();
 
-                    if (next_token.text != "" && get_precedence (next_token.type) < Precedence.PERCENTAGE)
+                    if (next_token.text != "" && next_token.text != "=" && get_precedence (next_token.type) < Precedence.PERCENTAGE)
                     {
                         lexer.roll_back ();
                         if (!expression_2 ())
