@@ -205,6 +205,7 @@ public class MathButtons : Gtk.Box
 
     private void on_insert (SimpleAction action, Variant? param)
     {
+        var window = root as MathWindow;
         window.math_display.set_enable_autocompletion (false);
         equation.insert (param.get_string ());
         window.math_display.set_enable_autocompletion (true);
@@ -214,6 +215,7 @@ public class MathButtons : Gtk.Box
     {
         if (mode != ButtonMode.CONVERSION)
         {
+            var window = root as MathWindow;
             window.math_display.set_enable_autocompletion (false);
             equation.insert_digit (param.get_int32 ());
             window.math_display.set_enable_autocompletion (true);
