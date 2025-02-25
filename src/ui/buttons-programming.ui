@@ -688,7 +688,14 @@
             </child>
             <child>
               <object class="GtkLabel" id="bit_marker_label_0">
-                <property name="label"> 0</property>
+                <!-- U+2007 is the tabular space, a space the size of a tabular
+                     number, and U+200E is the left-to-right mark, which tells
+                     that what follows should allways be deiplayed
+                     right-to-left.
+                     We could set width-chars to 2 and xalign to 1 on LTR and 0
+                     on RTL, but using these two charaters give us the same
+                     result for free. -->
+                <property name="label">&#x200E;&#x2007;0</property>
                 <style>
                   <class name="dim-label"/>
                   <class name="bit-marker-label"/>
