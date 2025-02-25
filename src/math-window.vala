@@ -36,13 +36,14 @@ public class MathWindow : Adw.ApplicationWindow
     [GtkChild]
     private unowned Gtk.Button undo_button;
     [GtkChild]
-    public unowned Gtk.Button back_button;
+    private unowned Gtk.Button back_button;
     [GtkChild]
     private unowned Gtk.Box box;
     [GtkChild]
     private unowned Gtk.Box display_box;
 
     private Gtk.EventControllerKey event_controller;
+    private MathPreferencesDialog preferences_dialog;
 
     private const ActionEntry[] window_entries =
     {
@@ -53,6 +54,7 @@ public class MathWindow : Adw.ApplicationWindow
         { "mode", mode_cb, "s", "\"basic\"", null },
         { "clear", clear_cb, null, null, null },
         { "back", back_cb, null, null, null },
+        { "preferences", show_preferences_cb, null, null, null },
         { "close",close, null, null, null },
     };
 
@@ -67,9 +69,14 @@ public class MathWindow : Adw.ApplicationWindow
         add_action (settings.create_action ("number-format"));
         var undo_action = (SimpleAction) lookup_action ("undo");
         undo_action.set_enabled (false);
-        
+
         equation.notify["display"].connect(() => { undo_action.set_enabled (equation.has_undo_action);} );
         settings.bind ("number-format", _equation, "number_format", SettingsBindFlags.DEFAULT);
+        settings.bind ("accuracy", _equation, "accuracy", SettingsBindFlags.DEFAULT);
+        settings.bind ("show-zeroes", _equation, "show_trailing_zeroes", SettingsBindFlags.DEFAULT);
+        settings.bind ("show-thousands", _equation, "show_thousands_separators", SettingsBindFlags.DEFAULT);
+        settings.bind ("angle-units", _equation, "angle_units", SettingsBindFlags.DEFAULT);
+        settings.bind ("word-size", _equation, "word_size", SettingsBindFlags.DEFAULT);
 
         event_controller = new Gtk.EventControllerKey ();
         (this as Gtk.Widget).add_controller (event_controller);
@@ -353,4 +360,10 @@ public class MathWindow : Adw.ApplicationWindow
         buttons.mode = ButtonMode.FINANCIAL;
     }
 
+    private void show_preferences_cb ()
+    {
+        if (preferences_dialog == null)
+            preferences_dialog = new MathPreferencesDialog (equation);
+        preferences_dialog.present (this);
+    }
 }

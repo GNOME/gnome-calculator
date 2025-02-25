@@ -75,21 +75,13 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         row_refresh_interval.set_expression (expression);
         row_refresh_interval.set_model (model);
 
-        row_decimals.changed.connect (() => { equation.accuracy = (int)row_decimals.get_value (); });
-        row_trailing_zeroes.notify["active"].connect ((psec) => { equation.show_trailing_zeroes = row_trailing_zeroes.get_active (); });
-        row_thousands_separators.notify["active"].connect ((pspec) => { equation.show_thousands_separators = row_thousands_separators.get_active (); });
+        settings.bind ("accuracy", row_decimals, "value", SettingsBindFlags.DEFAULT);
+        settings.bind ("show-zeroes", row_trailing_zeroes, "active", SettingsBindFlags.DEFAULT);
+        settings.bind ("show-thousands", row_thousands_separators, "active", SettingsBindFlags.DEFAULT);
+
         row_angle_units.notify["selected"].connect (row_angle_units_changed_cb);
         row_word_size.notify["selected"].connect (row_word_size_changed_cb);
         row_refresh_interval.notify["selected"].connect (row_refresh_interval_changed_cb);
-
-        row_decimals.set_value (equation.accuracy);
-        equation.notify["accuracy"].connect ((pspec) => { row_decimals.set_value (equation.accuracy); });
-
-        row_thousands_separators.set_active (equation.show_thousands_separators);
-        equation.notify["show-thousands-separators"].connect (() => { row_thousands_separators.set_active (equation.show_thousands_separators); });
-
-        row_trailing_zeroes.set_active (equation.show_trailing_zeroes);
-        equation.notify["show-trailing_zeroes"].connect (() => { row_trailing_zeroes.set_active (equation.show_trailing_zeroes); });
 
         set_combo_row_from_int (row_word_size, equation.word_size);
         equation.notify["word-size"].connect ((pspec) => { set_combo_row_from_int (row_word_size, equation.word_size); });
@@ -98,6 +90,7 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         equation.notify["angle-units"].connect ((pspec) => { set_combo_row_from_int (row_angle_units, equation.angle_units); });
 
         set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval"));
+        settings.changed["refresh-interval"].connect ((pspec) => { set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval")); });
 
         if (DEVELOPMENT_BUILD) {
             add_css_class ("devel");

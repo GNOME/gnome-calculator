@@ -13,7 +13,6 @@ public class Calculator : Adw.Application
 {
     private Settings settings;
     private MathWindow last_opened_window;
-    private MathPreferencesDialog preferences_dialog;
     private static string program_name = null;
     private static string equation_string = null;
     private static string mode_string = null;
@@ -30,7 +29,6 @@ public class Calculator : Adw.Application
     private const ActionEntry[] app_entries =
     {
         { "new-window", new_window_cb, null, null, null },
-        { "preferences", show_preferences_cb, null, null, null },
         { "help", help_cb, null, null, null },
         { "about", about_cb, null, null, null },
         { "quit", quit_cb, null, null, null },
@@ -126,11 +124,6 @@ public class Calculator : Adw.Application
         });
     }
 
-    private MathWindow get_active_math_window ()
-    {
-        return (MathWindow) get_active_window ();
-    }
-
     protected override void activate ()
     {
         base.activate ();
@@ -184,12 +177,6 @@ public class Calculator : Adw.Application
         var buttons = window.buttons;
 
         settings.set_enum ("button-mode", buttons.mode);
-        settings.set_int ("accuracy", equation.accuracy);
-        settings.set_int ("word-size", equation.word_size);
-        settings.set_boolean ("show-thousands", equation.show_thousands_separators);
-        settings.set_boolean ("show-zeroes", equation.show_trailing_zeroes);
-        settings.set_enum ("number-format", equation.number_format);
-        settings.set_enum ("angle-units", equation.angle_units);
         settings.set_string ("source-currency", equation.source_currency);
         settings.set_string ("target-currency", equation.target_currency);
         settings.set_string ("source-units", equation.source_units);
@@ -269,15 +256,6 @@ public class Calculator : Adw.Application
         return -1;
     }
 
-    private void show_preferences_cb ()
-    {
-        if (preferences_dialog == null)
-        {
-            preferences_dialog = new MathPreferencesDialog (get_active_math_window ().equation);
-        }
-        preferences_dialog.present (get_active_window ());
-    }
-
     private void help_cb ()
     {
         Gtk.show_uri (get_active_window (), "help:gnome-calculator", Gdk.CURRENT_TIME);
@@ -338,7 +316,7 @@ public class Calculator : Adw.Application
                     this.quit ();
             });
 
-            dialog.present (get_active_math_window ());
+            dialog.present (get_active_window ());
         } else {
             this.quit ();
         }
