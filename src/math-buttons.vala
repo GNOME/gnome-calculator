@@ -37,7 +37,6 @@ public class MathButtons : Gtk.Box
     private int _programming_base = 10;
 
     private MathConverter converter;
-    public MathConverter math_converter { get { return converter; } }
 
     private Gtk.Builder basic_ui;
     private Gtk.Builder advanced_ui;
