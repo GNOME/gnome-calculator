@@ -28,43 +28,10 @@ public class MathButtons : Gtk.Box
         get { return _mode; }
         set
         {
-            if (_mode == value && converter != null )
+            if (_mode == value)
                 return;
             _mode = value;
-
-            if (mode == ButtonMode.PROGRAMMING)
-            {
-                equation.number_base = _programming_base;
-                update_hex_number_button_sensitivities ();
-            }
-            else
-                equation.number_base = 10;
-
-            load_buttons ();
-
-            converter.set_visible (mode == ButtonMode.CONVERSION);
-            GLib.SignalHandler.block (converter, converter_changed);
-
-            if (mode == ButtonMode.CONVERSION)
-            {
-                converter.set_conversion (equation.source_units, equation.target_units);
-            }
-
-            GLib.SignalHandler.unblock (converter, converter_changed);
-
-            update_view_more_visible ();
-            if (adv_view_more_button != null)
-                adv_view_more_button.active = false;
-            if (fin_view_more_button != null)
-                fin_view_more_button.active = false;
-            if (prog_view_more_button != null)
-                prog_view_more_button.active = false;
-            if (adv_leaflet != null)
-                adv_leaflet.visible_child_name = "basic";
-            if (fin_leaflet != null)
-                fin_leaflet.visible_child_name = "basic";
-            if (prog_leaflet != null)
-                prog_leaflet.visible_child_name = "basic";
+            update_buttons ();
         }
     }
     private int _programming_base = 10;
@@ -167,6 +134,44 @@ public class MathButtons : Gtk.Box
         converter_changed = converter.changed.connect (converter_changed_cb);
         number_mode_changed_cb ();
         update_bit_panel ();
+        update_buttons ();
+    }
+
+    private void update_buttons ()
+    {
+        if (mode == ButtonMode.PROGRAMMING)
+        {
+            equation.number_base = _programming_base;
+            update_hex_number_button_sensitivities ();
+        }
+        else
+            equation.number_base = 10;
+
+        load_buttons ();
+
+        converter.set_visible (mode == ButtonMode.CONVERSION);
+        GLib.SignalHandler.block (converter, converter_changed);
+
+        if (mode == ButtonMode.CONVERSION)
+        {
+            converter.set_conversion (equation.source_units, equation.target_units);
+        }
+
+        GLib.SignalHandler.unblock (converter, converter_changed);
+
+        update_view_more_visible ();
+        if (adv_view_more_button != null)
+            adv_view_more_button.active = false;
+        if (fin_view_more_button != null)
+            fin_view_more_button.active = false;
+        if (prog_view_more_button != null)
+            prog_view_more_button.active = false;
+        if (adv_leaflet != null)
+            adv_leaflet.visible_child_name = "basic";
+        if (fin_leaflet != null)
+            fin_leaflet.visible_child_name = "basic";
+        if (prog_leaflet != null)
+            prog_leaflet.visible_child_name = "basic";
     }
 
     private void load_finc_dialogs ()
