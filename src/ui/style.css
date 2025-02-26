@@ -73,14 +73,6 @@ mathconverter {
   padding: 6px 12px 0 12px;
 }
 
-.converter > :not(squeezer):not(:first-child),
-mathconverter > :not(squeezer):not(:first-child),
-.converter > squeezer:not(:first-child) > :first-child,
-mathconverter > squeezer:not(:first-child) > :first-child {
-  /* Prevents the squeezer transition from being cut 12px away from the border */
-  margin-left: 6px;
-}
-
 mathconverter.display-container {
   background-color: shade(@card_bg_color, .95);
 }
@@ -105,10 +97,6 @@ mathconverter textview {
 
 mathconverter textview:not(:first-child) {
   margin-top: 36px;
-}
-
-.conversion-buttons > * {
-  margin-left: 6px;
 }
 
 .bit-panel {

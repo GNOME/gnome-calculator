@@ -6,6 +6,7 @@
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkBox" id="hbox1">
+        <property name="spacing">6</property>
         <style>
           <class name="converter"/>
         </style>
@@ -33,9 +34,7 @@
             <child>
               <object class="GtkBox">
                 <property name="halign">2</property>
-                <style>
-                  <class name="conversion-buttons"/>
-                </style>
+                <property name="spacing">6</property>
                 <child>
                   <object class="GtkButton" id="hex_base_button">
                     <property name="tooltip_text" translatable="yes">Copy</property>
@@ -56,9 +55,6 @@
             <child>
               <object class="GtkBox">
                 <property name="halign">2</property>
-                <style>
-                  <class name="conversion-buttons"/>
-                </style>
                 <child>
                   <object class="GtkMenuButton" id="base_popover_button">
                     <property name="popover">base_popover</property>
