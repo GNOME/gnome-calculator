@@ -349,10 +349,10 @@ public class MathButtons : Gtk.Box
         dec_base_popover_button.set_visible (number_base != 10);
         oct_base_popover_button.set_visible (number_base != 8);
 
-        update_base_button(hex_base_button, "%llx".printf (bits), "₁₆");
+        update_base_button(hex_base_button, "%llX".printf (bits), "₁₆");
         update_base_button(dec_base_button, "%llu".printf (bits), "₁₀");
         update_base_button(oct_base_button, "%llo".printf (bits), "₈");
-        update_base_button(hex_base_popover_button, "%llx".printf (bits), "₁₆");
+        update_base_button(hex_base_popover_button, "%llX".printf (bits), "₁₆");
         update_base_button(dec_base_popover_button, "%llu".printf (bits), "₁₀");
         update_base_button(oct_base_popover_button, "%llo".printf (bits), "₈");
     }
