@@ -810,6 +810,7 @@ public class MathButtons : Gtk.Box
     private void on_insert_character (SimpleAction action, Variant? param)
     {
         character_code_dialog.present (this);
+        character_code_entry.grab_focus ();
     }
 
     private void finc_activate_cb (Gtk.Widget widget)
