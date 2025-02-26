@@ -74,7 +74,7 @@ public abstract class MathPopover<T> : Gtk.Popover
         hbox.halign = Gtk.Align.FILL;
 
         var label = new Gtk.Label (get_item_text (item));
-        label.set_margin_start (6);
+        label.set_margin_start (10);
         label.set_use_markup (true);
         label.halign = Gtk.Align.START;
         label.hexpand = true;
