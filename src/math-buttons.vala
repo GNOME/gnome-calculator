@@ -58,7 +58,7 @@ public class MathButtons : Gtk.Box
     private Adw.Leaflet prog_leaflet;
     private Gtk.ToggleButton prog_view_more_button;
 
-    private Gtk.ComboBox base_combo;
+    private Gtk.DropDown base_combo;
     private Gtk.Button hex_base_button;
     private Gtk.Button dec_base_button;
     private Gtk.Button oct_base_button;
@@ -368,9 +368,10 @@ public class MathButtons : Gtk.Box
         }
     }
 
-    private void base_combobox_changed_cb (Gtk.ComboBox combo)
+    private void base_combobox_changed_cb ()
     {
-        programming_base = int.parse (combo.active_id);
+        int[] bases = {2, 8, 10, 16};
+        programming_base = bases[base_combo.selected];
     }
 
     private void base_changed_cb ()
@@ -380,7 +381,13 @@ public class MathButtons : Gtk.Box
 
         _programming_base = equation.number_base;
 
-        base_combo.active_id = _programming_base.to_string ();
+        switch (_programming_base)
+        {
+            case 2: base_combo.selected = 0; break;
+            case 8: base_combo.selected = 1; break;
+            case 10: base_combo.selected = 2; break;
+            case 16: base_combo.selected = 3; break;
+        }
         update_bit_panel ();
         update_hex_number_button_sensitivities ();
     }
@@ -644,8 +651,8 @@ public class MathButtons : Gtk.Box
                 hex_number_buttons.append (hex_number_button);
             }
             word_size_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
-            base_combo = builder.get_object ("base_combo") as Gtk.ComboBox;
-            base_combo.changed.connect (base_combobox_changed_cb);
+            base_combo = builder.get_object ("base_combo") as Gtk.DropDown;
+            base_combo.notify["selected"].connect (base_combobox_changed_cb);
             hex_base_button.clicked.connect (copy_conv_base_to_clipboard);
             dec_base_button.clicked.connect (copy_conv_base_to_clipboard);
             oct_base_button.clicked.connect (copy_conv_base_to_clipboard);

@@ -10,14 +10,18 @@
           <class name="converter"/>
         </style>
         <child>
-          <object class="GtkComboBoxText" id="base_combo">
+          <object class="GtkDropDown" id="base_combo">
             <property name="focus_on_click">False</property>
-            <items>
-              <item id="2" translatable="yes">Binary</item>
-              <item id="8" translatable="yes">Octal</item>
-              <item id="10" translatable="yes">Decimal</item>
-              <item id="16" translatable="yes">Hexadecimal</item>
-            </items>
+            <property name="model">
+              <object class="GtkStringList">
+                <items>
+                  <item translatable="yes">Binary</item>
+                  <item translatable="yes">Octal</item>
+                  <item translatable="yes">Decimal</item>
+                  <item translatable="yes">Hexadecimal</item>
+                </items>
+              </object>
+            </property>
           </object>
         </child>
         <child>
