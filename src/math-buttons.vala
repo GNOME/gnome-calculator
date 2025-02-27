@@ -51,9 +51,10 @@ public class MathButtons : Gtk.Box
     private Gtk.Widget conv_panel;
     private Gtk.Widget? active_panel = null;
 
-    private Adw.Leaflet adv_leaflet;
-    private Adw.Leaflet fin_leaflet;
-    private Adw.Leaflet prog_leaflet;
+    private Adw.Breakpoint breakpoint;
+    private Adw.Carousel adv_carousel;
+    private Adw.Carousel fin_carousel;
+    private Adw.Carousel prog_carousel;
 
     private Gtk.DropDown base_combo;
     private Gtk.Button hex_base_button;
@@ -123,6 +124,9 @@ public class MathButtons : Gtk.Box
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
 
+        breakpoint = new Adw.Breakpoint (Adw.BreakpointCondition.parse ("max-width: 667sp"));
+        (converter.root as MathWindow).add_breakpoint (breakpoint);
+
         equation.notify["display"].connect ((pspec) => { equation_display_changed_cb (); });
         equation.notify["number-mode"].connect ((pspec) => { number_mode_changed_cb (); });
         equation.notify["angle-units"].connect ((pspec) => { update_bit_panel (); });
@@ -157,12 +161,12 @@ public class MathButtons : Gtk.Box
 
         GLib.SignalHandler.unblock (converter, converter_changed);
 
-        if (adv_leaflet != null)
-            adv_leaflet.visible_child_name = "basic";
-        if (fin_leaflet != null)
-            fin_leaflet.visible_child_name = "basic";
-        if (prog_leaflet != null)
-            prog_leaflet.visible_child_name = "basic";
+        if (adv_carousel != null)
+            adv_carousel.scroll_to (adv_carousel.get_nth_page (0), false);
+        if (fin_carousel != null)
+            fin_carousel.scroll_to (fin_carousel.get_nth_page (0), false);
+        if (prog_carousel != null)
+            prog_carousel.scroll_to (prog_carousel.get_nth_page (0), false);
     }
 
     private void load_finc_dialogs ()
@@ -423,27 +427,39 @@ public class MathButtons : Gtk.Box
         case ButtonMode.BASIC:
             break;
         case ButtonMode.ADVANCED:
-            adv_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
+            adv_carousel = builder.get_object ("carousel") as Adw.Carousel;
+            var carousel_dots = builder.get_object ("carousel_dots") as Gtk.Widget;
+            var math_box = builder.get_object ("math_box") as Gtk.Widget;
             var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
 
-            adv_leaflet.set_direction (Gtk.TextDirection.LTR);
+            adv_carousel.set_direction (Gtk.TextDirection.LTR);
+            carousel_dots.set_direction (Gtk.TextDirection.LTR);
+            math_box.set_direction (Gtk.TextDirection.LTR);
             advanced_grid.set_direction (Gtk.TextDirection.LTR);
             break;
         case ButtonMode.FINANCIAL:
-            fin_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
+            fin_carousel = builder.get_object ("carousel") as Adw.Carousel;
+            var carousel_dots = builder.get_object ("carousel_dots") as Gtk.Widget;
+            var math_box = builder.get_object ("math_box") as Gtk.Widget;
             var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
 
-            fin_leaflet.set_direction (Gtk.TextDirection.LTR);
+            fin_carousel.set_direction (Gtk.TextDirection.LTR);
+            carousel_dots.set_direction (Gtk.TextDirection.LTR);
+            math_box.set_direction (Gtk.TextDirection.LTR);
             advanced_grid.set_direction (Gtk.TextDirection.LTR);
             break;
         case ButtonMode.PROGRAMMING:
-            prog_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
+            prog_carousel = builder.get_object ("carousel") as Adw.Carousel;
+            var carousel_dots = builder.get_object ("carousel_dots") as Gtk.Widget;
+            var math_box = builder.get_object ("math_box") as Gtk.Widget;
             var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
             var hex_buttons = builder.get_object ("hex_buttons") as Gtk.Widget;
             var calc_shift_left_button = builder.get_object ("calc_shift_left_button") as Gtk.Button;
             var calc_shift_right_button = builder.get_object ("calc_shift_right_button") as Gtk.Button;
 
-            prog_leaflet.set_direction (Gtk.TextDirection.LTR);
+            prog_carousel.set_direction (Gtk.TextDirection.LTR);
+            carousel_dots.set_direction (Gtk.TextDirection.LTR);
+            math_box.set_direction (Gtk.TextDirection.LTR);
             advanced_grid.set_direction (Gtk.TextDirection.LTR);
             hex_buttons.set_direction (Gtk.TextDirection.LTR);
             calc_shift_left_button.get_child().set_direction (Gtk.TextDirection.LTR);
@@ -515,15 +531,16 @@ public class MathButtons : Gtk.Box
             break;
         case ButtonMode.ADVANCED:
             adv_panel = panel;
-            adv_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
+            breakpoint.add_setter (adv_panel, "layout-name", "carousel");
             break;
         case ButtonMode.FINANCIAL:
             fin_panel = panel;
-            fin_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
+            breakpoint.add_setter (fin_panel, "layout-name", "carousel");
             break;
         case ButtonMode.PROGRAMMING:
             prog_panel = panel;
-            prog_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
+            var prog_layout_view = builder.get_object ("multi_layout_view");
+            breakpoint.add_setter (prog_layout_view, "layout-name", "carousel");
             break;
         case ButtonMode.CONVERSION:
             conv_panel = panel;
