@@ -23,7 +23,6 @@ public class MathWindow : Adw.ApplicationWindow
     public MathDisplay math_display { get { return _display; } }
     private MathButtons _buttons;
     public MathButtons buttons { get { return _buttons; } }
-    private bool right_aligned;
     private bool remove_buttons;
     private int forked_row_index = 0;
     private string saved_eq = null;
@@ -62,7 +61,6 @@ public class MathWindow : Adw.ApplicationWindow
     {
         Object (application: app);
         _equation = equation;
-        right_aligned = true;
 
         add_action_entries (window_entries, this);
         var settings = new Settings ("org.gnome.calculator");
@@ -216,22 +214,6 @@ public class MathWindow : Adw.ApplicationWindow
             }
         }
         return false;
-    }
-
-    [GtkCallback]
-    private void scroll_changed_cb (Gtk.Adjustment adjustment)
-    {
-        if (right_aligned)
-            adjustment.set_value (adjustment.get_upper () - adjustment.get_page_size ());
-    }
-
-    [GtkCallback]
-    private void scroll_value_changed_cb (Gtk.Adjustment adjustment)
-    {
-        if (adjustment.get_value () == adjustment.get_upper () - adjustment.get_page_size ())
-            right_aligned = true;
-        else
-            right_aligned = false;
     }
 
     private void copy_cb ()
