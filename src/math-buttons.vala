@@ -52,11 +52,8 @@ public class MathButtons : Gtk.Box
     private Gtk.Widget? active_panel = null;
 
     private Adw.Leaflet adv_leaflet;
-    private Gtk.ToggleButton adv_view_more_button;
     private Adw.Leaflet fin_leaflet;
-    private Gtk.ToggleButton fin_view_more_button;
     private Adw.Leaflet prog_leaflet;
-    private Gtk.ToggleButton prog_view_more_button;
 
     private Gtk.DropDown base_combo;
     private Gtk.Button hex_base_button;
@@ -160,13 +157,6 @@ public class MathButtons : Gtk.Box
 
         GLib.SignalHandler.unblock (converter, converter_changed);
 
-        update_view_more_visible ();
-        if (adv_view_more_button != null)
-            adv_view_more_button.active = false;
-        if (fin_view_more_button != null)
-            fin_view_more_button.active = false;
-        if (prog_view_more_button != null)
-            prog_view_more_button.active = false;
         if (adv_leaflet != null)
             adv_leaflet.visible_child_name = "basic";
         if (fin_leaflet != null)
@@ -412,37 +402,6 @@ public class MathButtons : Gtk.Box
         clipboard.set_text (button.get_data<string> ("value"));
     }
 
-    private void update_view_more_visible ()
-    {
-        bool visible;
-
-        switch (mode)
-        {
-        default:
-        case ButtonMode.BASIC:
-            visible = false;
-            break;
-        case ButtonMode.ADVANCED:
-            visible = adv_leaflet != null && adv_leaflet.folded;
-            adv_view_more_button.parent.set_visible (visible);
-            break;
-        case ButtonMode.FINANCIAL:
-            visible = fin_leaflet != null && fin_leaflet.folded;
-            fin_view_more_button.parent.set_visible (visible);
-            break;
-        case ButtonMode.PROGRAMMING:
-            visible = prog_leaflet != null && prog_leaflet.folded;
-            break;
-        }
-
-        if (adv_view_more_button != null)
-            adv_view_more_button.visible = visible;
-        if (fin_view_more_button != null)
-            fin_view_more_button.visible = visible;
-        if (prog_view_more_button != null)
-            prog_view_more_button.visible = visible;
-    }
-
     private void correct_text_direction (Gtk.Builder builder)
     {
         var panel = builder.get_object ("button_panel") as Gtk.Widget;
@@ -557,35 +516,14 @@ public class MathButtons : Gtk.Box
         case ButtonMode.ADVANCED:
             adv_panel = panel;
             adv_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
-
-            adv_view_more_button = builder.get_object ("view_more_button") as Gtk.ToggleButton;
-            adv_view_more_button.bind_property ("active", adv_leaflet, "visible-child-name",
-                                                BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL,
-                                                (binding, from, ref to) => { to.set_string (from.get_boolean () ? "advanced" : "basic"); return true; },
-                                                (binding, from, ref to) => { to.set_boolean (from.get_string () == "advanced"); return true; });
-            adv_leaflet.notify["folded"].connect (update_view_more_visible);
             break;
         case ButtonMode.FINANCIAL:
             fin_panel = panel;
             fin_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
-
-            fin_view_more_button = builder.get_object ("view_more_button") as Gtk.ToggleButton;
-            fin_view_more_button.bind_property ("active", fin_leaflet, "visible-child-name",
-                                                BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL,
-                                                (binding, from, ref to) => { to.set_string (from.get_boolean () ? "advanced" : "basic"); return true; },
-                                                (binding, from, ref to) => { to.set_boolean (from.get_string () == "advanced"); return true; });
-            fin_leaflet.notify["folded"].connect (update_view_more_visible);
             break;
         case ButtonMode.PROGRAMMING:
             prog_panel = panel;
             prog_leaflet = builder.get_object ("leaflet") as Adw.Leaflet;
-
-            prog_view_more_button = builder.get_object ("view_more_button") as Gtk.ToggleButton;
-            prog_view_more_button.bind_property ("active", prog_leaflet, "visible-child-name",
-                                                 BindingFlags.SYNC_CREATE | BindingFlags.BIDIRECTIONAL,
-                                                 (binding, from, ref to) => { to.set_string (from.get_boolean () ? "advanced" : "basic"); return true; },
-                                                 (binding, from, ref to) => { to.set_boolean (from.get_string () == "advanced"); return true; });
-            prog_leaflet.notify["folded"].connect (update_view_more_visible);
             break;
         case ButtonMode.CONVERSION:
             conv_panel = panel;
@@ -679,7 +617,6 @@ public class MathButtons : Gtk.Box
             load_finc_dialogs ();
 
         update_bit_panel ();
-        update_view_more_visible ();
 
         return panel;
     }
