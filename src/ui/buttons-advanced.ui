@@ -2,14 +2,14 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <object class="AdwMultiLayoutView" id="button_panel">
-    <style>
-      <class name="math-buttons"/>
-    </style>
     <child>
       <object class="AdwLayout">
         <property name="name">box</property>
         <property name="content">
           <object class="GtkBox" id="math_box">
+            <style>
+              <class name="math-buttons"/>
+            </style>
             <child>
               <object class="AdwLayoutSlot">
                 <property name="id">basic</property>
@@ -32,14 +32,19 @@
             <property name="orientation">vertical</property>
             <child>
               <object class="AdwCarousel" id="carousel">
+                <style>
+                  <class name="math-buttons"/>
+                </style>
                 <child>
                   <object class="AdwLayoutSlot">
                     <property name="id">basic</property>
+                    <property name="hexpand">True</property>
                   </object>
                 </child>
                 <child>
                   <object class="AdwLayoutSlot">
                     <property name="id">advanced</property>
+                    <property name="hexpand">True</property>
                   </object>
                 </child>
               </object>
