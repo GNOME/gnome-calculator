@@ -48,6 +48,7 @@ public class MathConverter : Gtk.Grid
 
     public bool outer_box_visible { set; get; default = false; }
 
+    public signal void category_changed ();
     public signal void changed ();
 
     static construct {
@@ -308,6 +309,7 @@ public class MathConverter : Gtk.Grid
         if (from_combobox_changed > 0)
             GLib.SignalHandler.unblock (from_combo, from_combobox_changed);
         to_combobox_changed_cb ();
+        category_changed ();
     }
 
     private void from_combobox_changed_cb ()
@@ -354,7 +356,7 @@ public class MathConverter : Gtk.Grid
         }
         else
         {
-            from_number = fixed_serializer.from_string (from_entry.buffer.text);
+            from_number = get_number_from_string (from_entry.buffer.text.strip ());
             if (from_number == null)
                 from_number = new Number.integer (0);
             from_entry.buffer.text = equation.serializer.to_string (from_number);
@@ -372,7 +374,7 @@ public class MathConverter : Gtk.Grid
         }
         else
         {
-            to_number = fixed_serializer.from_string (to_entry.buffer.text);
+            to_number = get_number_from_string (to_entry.buffer.text.strip ());
             if (to_number == null)
                 to_number = new Number.integer (0);
             to_entry.buffer.text = equation.serializer.to_string (to_number);
@@ -382,7 +384,7 @@ public class MathConverter : Gtk.Grid
 
     private void from_entry_changed_cb ()
     {
-        from_number = fixed_serializer.from_string (from_entry.buffer.text);
+        from_number = get_number_from_string (from_entry.buffer.text.strip ());
         if (from_number == null)
             from_number = new Number.integer (0);
         Unit source_unit, target_unit;
@@ -399,7 +401,7 @@ public class MathConverter : Gtk.Grid
 
     private void to_entry_changed_cb ()
     {
-        to_number = fixed_serializer.from_string (to_entry.buffer.text);
+        to_number = get_number_from_string (to_entry.buffer.text.strip ());
         if (to_number == null)
             to_number = new Number.integer (0);
         Unit source_unit, target_unit;
@@ -409,6 +411,22 @@ public class MathConverter : Gtk.Grid
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
         from_entry.buffer.text = equation.serializer.to_string (from_number);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
+    }
+
+    private Number? get_number_from_string (string str)
+    {
+        if (str == "π")
+            return new Number.pi ();
+        if (str == "−π" || str == "-π")
+            return new Number.pi ().invert_sign ();
+        if (str.has_suffix ("π"))
+        {
+            var number = fixed_serializer.from_string (str.slice (0, -"π".length));
+            if (number == null)
+                return null;
+            return new Number.pi ().multiply (number);
+        }
+        return fixed_serializer.from_string (str);
     }
 
     private bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType mod_state)
@@ -497,6 +515,13 @@ public class MathConverter : Gtk.Grid
                 insert_text ("−");
                 return true;
             }
+        }
+
+        /* Shortcut */
+        if (state == Gdk.ModifierType.CONTROL_MASK && keyval == Gdk.Key.p)
+        {
+            insert_text ("π");
+            return true;
         }
 
         return false;

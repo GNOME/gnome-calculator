@@ -70,6 +70,7 @@ public class MathButtons : Gtk.Box
     private Gtk.Widget bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
     private List<Gtk.Button> hex_number_buttons;
+    private Gtk.Button calc_pi_negative_button;
 
     private Adw.Dialog character_code_dialog;
     private Gtk.Button insert_button;
@@ -130,6 +131,7 @@ public class MathButtons : Gtk.Box
         equation.notify["angle-units"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["number-format"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["word-size"].connect ((pspec) => { word_size_changed_cb (); });
+        converter.category_changed.connect (converter_category_changed_cb);
         converter_changed = converter.changed.connect (converter_changed_cb);
         number_mode_changed_cb ();
         update_bit_panel ();
@@ -211,10 +213,15 @@ public class MathButtons : Gtk.Box
 
     private void on_insert (SimpleAction action, Variant? param)
     {
-        var window = root as MathWindow;
-        window.math_display.set_enable_autocompletion (false);
-        equation.insert (param.get_string ());
-        window.math_display.set_enable_autocompletion (true);
+        if (mode != ButtonMode.CONVERSION)
+        {
+            var window = root as MathWindow;
+            window.math_display.set_enable_autocompletion (false);
+            equation.insert (param.get_string ());
+            window.math_display.set_enable_autocompletion (true);
+        }
+        else
+            converter.insert_text (param.get_string ());
     }
 
     private void on_insert_digit (SimpleAction action, Variant? param)
@@ -232,10 +239,7 @@ public class MathButtons : Gtk.Box
 
     private void on_subtract (SimpleAction action, Variant? param)
     {
-        if (mode != ButtonMode.CONVERSION)
-            equation.insert_subtract ();
-        else
-            converter.insert_text ("−");
+        equation.insert_subtract ();
     }
 
     private void on_square (SimpleAction action, Variant? param)
@@ -664,6 +668,12 @@ public class MathButtons : Gtk.Box
             word_size_changed_cb ();
         }
 
+        if (mode == ButtonMode.CONVERSION)
+        {
+            calc_pi_negative_button = builder.get_object ("calc_pi_negative_button") as Gtk.Button;
+            converter_category_changed_cb ();
+        }
+
         /* Setup financial functions */
         if (mode == ButtonMode.FINANCIAL)
             load_finc_dialogs ();
@@ -704,6 +714,28 @@ public class MathButtons : Gtk.Box
         equation.variables.variable_added.connect ((name, value) => math_popover.item_added_cb (new MathVariable (name, value)));
         equation.variables.variable_edited.connect ((name, value) => math_popover.item_edited_cb (new MathVariable (name, value)));
         equation.variables.variable_deleted.connect ((name) => math_popover.item_deleted_cb (new MathVariable (name, null)));
+    }
+
+    private void converter_category_changed_cb ()
+    {
+        if (converter.get_category () == "angle")
+        {
+            calc_pi_negative_button.action_target = calc_pi_negative_button.label = "π";
+            calc_pi_negative_button.tooltip_text = _("Pi [Ctrl+P]");
+            calc_pi_negative_button.action_name = "cal.insert-general";
+        }
+        else if (converter.get_category () == "temperature")
+        {
+            calc_pi_negative_button.action_target = calc_pi_negative_button.label = "−";
+            calc_pi_negative_button.tooltip_text = _("Negative [-]");
+            calc_pi_negative_button.action_name = "cal.insert-general";
+        }
+        else
+        {
+            calc_pi_negative_button.label = null;
+            calc_pi_negative_button.tooltip_text = null;
+            calc_pi_negative_button.action_name = null;
+        }
     }
 
     private void converter_changed_cb ()
