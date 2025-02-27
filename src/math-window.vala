@@ -28,7 +28,6 @@ public class MathWindow : Adw.ApplicationWindow
     private string saved_eq = null;
 
     private MathConverter converter;
-    private ulong converter_changed;
 
     [GtkChild]
     private unowned Gtk.MenuButton menu_button;
