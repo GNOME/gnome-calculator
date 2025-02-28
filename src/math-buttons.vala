@@ -44,6 +44,7 @@ public class MathButtons : Adw.BreakpointBin
     private Gtk.Builder programming_ui;
     private Gtk.Builder conversion_ui;
 
+    private Gtk.Box panel_box;
     private Gtk.Widget bas_panel;
     private Gtk.Widget adv_panel;
     private Gtk.Widget fin_panel;
@@ -125,6 +126,9 @@ public class MathButtons : Adw.BreakpointBin
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
 
+        panel_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+        set_child (panel_box);
+        set_size_request (360, 260);
         breakpoint = new Adw.Breakpoint (Adw.BreakpointCondition.parse ("max-width: 667sp"));
         add_breakpoint (breakpoint);
 
@@ -534,7 +538,7 @@ public class MathButtons : Adw.BreakpointBin
         }
 
         var panel = builder.get_object ("button_panel") as Gtk.Widget;
-        set_child (panel);
+        panel_box.append (panel);
 
         correct_text_direction (builder);
 
