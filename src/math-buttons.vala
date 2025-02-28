@@ -57,6 +57,7 @@ public class MathButtons : Gtk.Box
     private Adw.Carousel prog_carousel;
 
     private Gtk.DropDown base_combo;
+    private Gtk.ScrolledWindow base_scrolled;
     private Gtk.Button hex_base_button;
     private Gtk.Button dec_base_button;
     private Gtk.Button oct_base_button;
@@ -400,6 +401,20 @@ public class MathButtons : Gtk.Box
         }
     }
 
+    private bool base_scrolled_cb (Gtk.EventControllerScroll controller, double dx, double dy)
+    {
+        if (dy == 0)
+            return Gdk.EVENT_PROPAGATE;
+
+        /* Scroll horizontally when vertically scrolled */
+        Gtk.Adjustment hadjustment = base_scrolled.get_hadjustment ();
+        double step = hadjustment.get_step_increment ();
+        double new_value = hadjustment.get_value () + dy * step;
+        hadjustment.set_value (new_value);
+
+        return Gdk.EVENT_STOP;
+    }
+
     private void copy_conv_base_to_clipboard (Gtk.Button button)
     {
         Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
@@ -540,7 +555,10 @@ public class MathButtons : Gtk.Box
         case ButtonMode.PROGRAMMING:
             prog_panel = panel;
             var prog_layout_view = builder.get_object ("multi_layout_view");
+            var base_stack = builder.get_object ("base_stack");
+            base_popover_button = builder.get_object ("base_popover_button") as Gtk.MenuButton;
             breakpoint.add_setter (prog_layout_view, "layout-name", "carousel");
+            breakpoint.add_setter (base_stack, "visible-child", base_popover_button);
             break;
         case ButtonMode.CONVERSION:
             conv_panel = panel;
@@ -583,7 +601,6 @@ public class MathButtons : Gtk.Box
             hex_base_button = builder.get_object ("hex_base_button") as Gtk.Button;
             dec_base_button = builder.get_object ("dec_base_button") as Gtk.Button;
             oct_base_button = builder.get_object ("oct_base_button") as Gtk.Button;
-            base_popover_button = builder.get_object ("base_popover_button") as Gtk.MenuButton;
             hex_base_popover_button = builder.get_object ("hex_base_popover_button") as Gtk.Button;
             dec_base_popover_button = builder.get_object ("dec_base_popover_button") as Gtk.Button;
             oct_base_popover_button = builder.get_object ("oct_base_popover_button") as Gtk.Button;
@@ -612,6 +629,10 @@ public class MathButtons : Gtk.Box
             word_size_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
             base_combo = builder.get_object ("base_combo") as Gtk.DropDown;
             base_combo.notify["selected"].connect (base_combobox_changed_cb);
+            base_scrolled = builder.get_object ("base_scrolled") as Gtk.ScrolledWindow;
+            var controller = new Gtk.EventControllerScroll (Gtk.EventControllerScrollFlags.VERTICAL);
+            controller.scroll.connect (base_scrolled_cb);
+            base_scrolled.add_controller (controller);
             hex_base_button.clicked.connect (copy_conv_base_to_clipboard);
             dec_base_button.clicked.connect (copy_conv_base_to_clipboard);
             oct_base_button.clicked.connect (copy_conv_base_to_clipboard);

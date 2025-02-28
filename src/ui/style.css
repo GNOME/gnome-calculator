@@ -72,9 +72,7 @@ button.action-button {
     border-radius: 18px;
 }
 
-.converter,
-mathconverter {
-  /* Prevents the squeezer transition from being cut 12px away from the border */
+.converter {
   padding: 6px 12px 0 12px;
 }
 
@@ -83,12 +81,25 @@ mathconverter {
   border-spacing: 6px;
 }
 
-mathconverter.display-container {
-  background-color: shade(@card_bg_color, .95);
+.converter scrolledwindow > undershoot.left {
+  background: linear-gradient(to right, var(--headerbar-shade-color) 6px, transparent 24px);
+  border-left: solid 1px var(--border-color);
+  border-radius: 9px 0px 0px 9px;
 }
 
-mathconverter > box {
-  margin-top: 6px;
+.converter scrolledwindow > undershoot.right {
+  background: linear-gradient(to left, var(--headerbar-shade-color) 6px, transparent 24px);
+  border-right: solid 1px var(--border-color);
+  border-radius: 0px 9px 9px 0px;
+}
+
+.converter scrolledwindow > viewport {
+  border-radius: 9px;
+}
+
+mathconverter {
+  padding: 12px 12px 0 12px;
+  background-color: shade(@card_bg_color, .95);
 }
 
 mathconverter dropdown > button:not(:hover):not(:active):not(:checked) {
