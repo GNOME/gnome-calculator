@@ -325,17 +325,12 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_pi_button">
+            <property name="label">π</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Pi [Ctrl+P]</property>
             <property name="action_name">cal.insert-general</property>
             <property name="action_target">&apos;π&apos;</property>
-            <child>
-              <object class="GtkLabel" id="pi_label">
-                <property name="label">π</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
             <style>
               <class name="function-button"/>
             </style>
@@ -476,16 +471,11 @@
         <property name="column_spacing">4</property>
         <child>
           <object class="GtkToggleButton" id="calc_subscript_button">
+            <property name="label">↓n</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Subscript Mode [Alt]</property>
             <property name="action_name">cal.set-number-mode</property>
             <property name="action_target">&apos;subscript&apos;</property>
-            <child>
-              <object class="GtkLabel" id="label4">
-                <property name="label">↓n</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
             <style>
               <class name="function-button"/>
             </style>
@@ -497,16 +487,11 @@
         </child>
         <child>
           <object class="GtkToggleButton" id="calc_superscript_button">
+            <property name="label">↑n</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Superscript Mode [Ctrl]</property>
             <property name="action_name">cal.set-number-mode</property>
             <property name="action_target">&apos;superscript&apos;</property>
-            <child>
-              <object class="GtkLabel" id="label3">
-                <property name="label">↑n</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
             <style>
               <class name="function-button"/>
             </style>
@@ -694,17 +679,12 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_eulers_number_button">
+            <property name="label">e</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Euler’s Number</property>
             <property name="action_name">cal.insert-general</property>
             <property name="action_target">&apos;e&apos;</property>
-            <child>
-              <object class="GtkLabel" id="eulers_number_label">
-                <property name="label">e</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
             <style>
               <class name="function-button"/>
             </style>
@@ -792,17 +772,12 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_imaginary_button">
+            <property name="label">i</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Imaginary Unit</property>
             <property name="action_name">cal.insert-general</property>
             <property name="action_target">&apos;i&apos;</property>
-            <child>
-              <object class="GtkLabel" id="imaginary_label">
-                <property name="label">i</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
             <style>
               <class name="function-button"/>
             </style>

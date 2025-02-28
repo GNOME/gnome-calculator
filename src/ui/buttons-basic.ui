@@ -272,17 +272,12 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_pi_button">
+            <property name="label">π</property>
             <property name="use_underline">True</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Pi [Ctrl+P]</property>
             <property name="action_name">cal.insert-general</property>
             <property name="action_target">&apos;π&apos;</property>
-            <child>
-              <object class="GtkLabel" id="pi_label">
-                <property name="label">π</property>
-                <property name="use_markup">True</property>
-              </object>
-            </child>
             <style>
               <class name="function-button"/>
             </style>
