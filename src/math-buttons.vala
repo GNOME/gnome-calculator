@@ -44,7 +44,7 @@ public class MathButtons : Adw.BreakpointBin
     private Gtk.Builder programming_ui;
     private Gtk.Builder conversion_ui;
 
-    private Gtk.Box panel_box;
+    private Gtk.Stack panel_stack;
     private Gtk.Widget bas_panel;
     private Gtk.Widget adv_panel;
     private Gtk.Widget fin_panel;
@@ -126,8 +126,10 @@ public class MathButtons : Adw.BreakpointBin
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
 
-        panel_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        set_child (panel_box);
+        panel_stack = new Gtk.Stack ();
+        panel_stack.hhomogeneous = false;
+        panel_stack.vhomogeneous = false;
+        set_child (panel_stack);
         set_size_request (360, 260);
         breakpoint = new Adw.Breakpoint (Adw.BreakpointCondition.parse ("max-width: 667sp"));
         add_breakpoint (breakpoint);
@@ -538,7 +540,7 @@ public class MathButtons : Adw.BreakpointBin
         }
 
         var panel = builder.get_object ("button_panel") as Gtk.Widget;
-        panel_box.append (panel);
+        panel_stack.add_child (panel);
 
         correct_text_direction (builder);
 
@@ -735,18 +737,7 @@ public class MathButtons : Adw.BreakpointBin
         if (!get_visible ())
             return;
 
-        var panel = load_mode (mode);
-        if (active_panel == panel)
-            return;
-
-        /* Hide old buttons */
-        if (active_panel != null)
-            active_panel.hide ();
-
-        /* Load and display new buttons */
-        active_panel = panel;
-        if (panel != null)
-            panel.show ();
+        panel_stack.visible_child = load_mode (mode);
     }
 
     public int programming_base
