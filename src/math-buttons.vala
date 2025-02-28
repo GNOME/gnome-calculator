@@ -18,7 +18,7 @@ public enum ButtonMode
     CONVERSION
 }
 
-public class MathButtons : Gtk.Box
+public class MathButtons : Adw.BreakpointBin
 {
     private MathEquation equation;
 
@@ -117,7 +117,7 @@ public class MathButtons : Gtk.Box
 
     public MathButtons (MathEquation equation, MathConverter converter)
     {
-        Object (orientation: Gtk.Orientation.VERTICAL, vexpand_set: true);
+        Object (vexpand_set: true);
         show.connect (load_buttons);
         this.equation = equation;
         this.converter = converter;
@@ -126,7 +126,7 @@ public class MathButtons : Gtk.Box
         insert_action_group ("cal", action_group);
 
         breakpoint = new Adw.Breakpoint (Adw.BreakpointCondition.parse ("max-width: 667sp"));
-        (converter.root as MathWindow).add_breakpoint (breakpoint);
+        add_breakpoint (breakpoint);
 
         equation.notify["display"].connect ((pspec) => { equation_display_changed_cb (); });
         equation.notify["number-mode"].connect ((pspec) => { number_mode_changed_cb (); });
@@ -534,7 +534,7 @@ public class MathButtons : Gtk.Box
         }
 
         var panel = builder.get_object ("button_panel") as Gtk.Widget;
-        append (panel);
+        set_child (panel);
 
         correct_text_direction (builder);
 
