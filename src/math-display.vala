@@ -8,20 +8,25 @@
  * license.
  */
 
+[GtkTemplate (ui = "/org/gnome/calculator/math-display.ui")]
 public class MathDisplay : Gtk.Box
 {
     /* Equation being displayed */
     public MathEquation equation { get; construct set; }
 
     /* Display widget */
+    [GtkChild]
     GtkSource.View source_view;
 
     /* Buffer that shows errors etc */
-    Gtk.TextBuffer info_buffer;
+    [GtkChild]
+    Gtk.TextView info_view;
 
+    [GtkChild]
     Gtk.EventControllerKey event_controller;
 
     /* Spinner widget that shows if we're calculating a response */
+    [GtkChild]
     Adw.Spinner spinner;
     public bool completion_visible { get; set;}
     public bool completion_selected { get; set;}
@@ -50,50 +55,7 @@ public class MathDisplay : Gtk.Box
         if (equation == null)
             return;
 
-        orientation = Gtk.Orientation.VERTICAL;
-
-        var scrolled_window = new Gtk.ScrolledWindow ();
-        scrolled_window.add_css_class ("display-scrolled");
-
-        scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
-        source_view = new GtkSource.View.with_buffer (equation);
-        source_view.set_accepts_tab (false);
-        source_view.set_left_margin (14);
-        source_view.set_pixels_above_lines (8);
-        source_view.set_pixels_below_lines (2);
-        source_view.set_justification (Gtk.Justification.LEFT);
-
-        set_enable_osk (false);
-
-        source_view.set_name ("displayitem");
-        source_view.set_size_request (20, 45);
-        event_controller = new Gtk.EventControllerKey ();
-        event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE)   ;
-        event_controller.key_pressed.connect (key_press_cb);
-        source_view.add_controller (event_controller);
         create_autocompletion ();
-        completion_visible = false;
-        completion_selected = false;
-
-        append (scrolled_window);
-        scrolled_window.set_child (source_view); /* Adds ScrolledWindow to source_view for displaying long equations */
-
-        var info_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
-        append (info_box);
-
-        var info_view = new Gtk.TextView ();
-        info_view.set_wrap_mode (Gtk.WrapMode.WORD);
-        info_view.set_can_focus (false);
-        info_view.set_editable (false);
-        info_view.set_left_margin (12);
-        info_view.set_right_margin (12);
-        info_view.set_hexpand (true);
-        info_view.add_css_class ("info-view");
-        info_box.append (info_view);
-        info_buffer = info_view.get_buffer ();
-
-        spinner = new Adw.Spinner ();
-        info_box.append (spinner);
 
         equation.notify["status"].connect ((pspec) => { status_changed_cb (); });
         status_changed_cb ();
@@ -103,8 +65,10 @@ public class MathDisplay : Gtk.Box
 
     public void set_enable_osk (bool enable_osk)
     {
-        const Gtk.InputHints hints = Gtk.InputHints.NO_EMOJI | Gtk.InputHints.NO_SPELLCHECK;
-        source_view.set_input_hints (enable_osk ? hints : hints | Gtk.InputHints.INHIBIT_OSK);
+        if (enable_osk)
+            source_view.input_hints &= ~Gtk.InputHints.INHIBIT_OSK;
+        else
+            source_view.input_hints |= Gtk.InputHints.INHIBIT_OSK;
     }
 
     public void grabfocus () /* Editbar grabs focus when an instance of gnome-calculator is created */
@@ -143,6 +107,7 @@ public class MathDisplay : Gtk.Box
         completion.add_provider (new VariableCompletionProvider (equation));
     }
 
+    [GtkCallback]
     private bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType mod_state)
     {
         info ("event\n");
@@ -454,7 +419,7 @@ public class MathDisplay : Gtk.Box
 
     private void status_changed_cb ()
     {
-        info_buffer.set_text (equation.status, -1);
+        info_view.buffer.text = equation.status;
         if (equation.status != "")
         {
             announce (equation.status, Gtk.AccessibleAnnouncementPriority.MEDIUM);
