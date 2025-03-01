@@ -23,7 +23,6 @@ public class MathWindow : Adw.ApplicationWindow
     public MathDisplay math_display { get { return _display; } }
     private MathButtons _buttons;
     public MathButtons buttons { get { return _buttons; } }
-    private bool remove_buttons;
     private int forked_row_index = 0;
     private string saved_eq = null;
 
@@ -105,8 +104,6 @@ public class MathWindow : Adw.ApplicationWindow
         _buttons = new MathButtons (equation, converter);
         box.append(_buttons);
 
-        remove_buttons = (_buttons.mode != ButtonMode.KEYBOARD) ? true : false;
-
         _buttons.currency_conversion.connect (() => back_button.visible = true);
         _buttons.notify["mode"].connect (mode_changed_cb);
         mode_changed_cb ();
@@ -167,16 +164,9 @@ public class MathWindow : Adw.ApplicationWindow
             break;
         }
 
-        if (remove_buttons == true && _buttons.mode != ButtonMode.KEYBOARD)
-        {
-            _buttons.show ();
-            remove_buttons = false;
-        }
-        else if (remove_buttons == false && _buttons.mode == ButtonMode.KEYBOARD)
-        {
-            _buttons.hide ();
-            remove_buttons = true;
-        }
+        _display.set_enable_osk (_buttons.mode == ButtonMode.KEYBOARD);
+        _buttons.set_visible (_buttons.mode != ButtonMode.KEYBOARD);
+
         display_box.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         undo_button.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         var copy_action = (SimpleAction) lookup_action ("copy");
@@ -184,8 +174,6 @@ public class MathWindow : Adw.ApplicationWindow
         var clear_action = (SimpleAction) lookup_action ("clear");
         clear_action.set_enabled (_buttons.mode != ButtonMode.CONVERSION);
         back_button.set_visible (false);
-
-        _display.set_enable_osk (remove_buttons);
     }
 
     protected bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType state)
