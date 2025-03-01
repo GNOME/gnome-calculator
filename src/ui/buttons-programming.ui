@@ -5,7 +5,7 @@
   <object class="GtkBox" id="button_panel">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkBox" id="hbox1">
+      <object class="GtkBox">
         <style>
           <class name="converter"/>
         </style>
@@ -25,47 +25,69 @@
           </object>
         </child>
         <child>
-          <object class="GtkStack" id="base_stack">
+          <object class="AdwMultiLayoutView" id="base_layout_view">
             <property name="hexpand">True</property>
-            <property name="hhomogeneous">False</property>
             <child>
-              <object class="GtkScrolledWindow" id="base_scrolled">
-                <property name="hscrollbar-policy">external</property>
-                <property name="vscrollbar-policy">never</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="halign">2</property>
-                    <style>
-                      <class name="conversion-buttons"/>
-                    </style>
+              <object class="AdwLayout">
+                <property name="name">scrolled</property>
+                <property name="content">
+                  <object class="GtkScrolledWindow" id="base_scrolled">
+                    <property name="hscrollbar-policy">external</property>
+                    <property name="vscrollbar-policy">never</property>
                     <child>
-                      <object class="GtkButton" id="hex_base_button">
-                        <property name="label">0₁₆</property>
-                        <property name="tooltip_text" translatable="yes">Copy</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="dec_base_button">
-                        <property name="label">0₁₀</property>
-                        <property name="tooltip_text" translatable="yes">Copy</property>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="oct_base_button">
-                        <property name="label">0₈</property>
-                        <property name="tooltip_text" translatable="yes">Copy</property>
+                      <object class="AdwLayoutSlot">
+                        <property name="id">base_box</property>
                       </object>
                     </child>
                   </object>
-                </child>
+                </property>
               </object>
             </child>
             <child>
-              <object class="GtkMenuButton" id="base_popover_button">
-                <property name="label">⇆</property>
-                <property name="popover">base_popover</property>
-                <property name="tooltip_text" translatable="yes">Number Base Conversion</property>
-                <property name="halign">2</property>
+              <object class="AdwLayout">
+                <property name="name">popover</property>
+                <property name="content">
+                  <object class="GtkMenuButton" id="base_popover_button">
+                    <property name="label">⇆</property>
+                    <property name="popover">
+                      <object class="GtkPopover">
+                        <child>
+                          <object class="AdwLayoutSlot">
+                            <property name="id">base_box</property>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                    <property name="tooltip_text" translatable="yes">Number Base Conversion</property>
+                    <property name="halign">end</property>
+                  </object>
+                </property>
+              </object>
+            </child>
+            <child type="base_box">
+              <object class="GtkBox" id="base_box">
+                <property name="halign">end</property>
+                <style>
+                  <class name="conversion-buttons"/>
+                </style>
+                <child>
+                  <object class="GtkButton" id="hex_base_button">
+                    <property name="label">0₁₆</property>
+                    <property name="tooltip_text" translatable="yes">Copy</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="dec_base_button">
+                    <property name="label">0₁₀</property>
+                    <property name="tooltip_text" translatable="yes">Copy</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="oct_base_button">
+                    <property name="label">0₈</property>
+                    <property name="tooltip_text" translatable="yes">Copy</property>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
@@ -81,7 +103,7 @@
         </style>
         <child>
           <object class="GtkGrid" id="bit_table">
-            <property name="halign">3</property>
+            <property name="halign">center</property>
             <child>
               <object class="GtkButton" id="toggle_bit_0_button">
                 <property name="label">0</property>
@@ -2129,29 +2151,6 @@
                 </layout>
               </object>
             </child>
-          </object>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkPopover" id="base_popover">
-    <child>
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <property name="spacing">6</property>
-        <child>
-          <object class="GtkButton" id="hex_base_popover_button">
-            <property name="tooltip_text" translatable="yes">Copy</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="dec_base_popover_button">
-            <property name="tooltip_text" translatable="yes">Copy</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkButton" id="oct_base_popover_button">
-            <property name="tooltip_text" translatable="yes">Copy</property>
           </object>
         </child>
       </object>
