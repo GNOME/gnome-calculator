@@ -106,8 +106,8 @@ public class MathConverter : Gtk.Grid
         {
             category_model.insert_sorted (category, (c1, c2) => { return (c1 as UnitCategory).display_name.collate ((c2 as UnitCategory).display_name); } );
         }
-        category_combo.model = category_model;
         category_combo.expression = expression;
+        category_combo.model = category_model;
     }
 
     public void set_category (string? category)
