@@ -169,6 +169,7 @@ public class MathWindow : Adw.ApplicationWindow
         _display.set_enable_osk (_buttons.mode == ButtonMode.KEYBOARD);
         _buttons.set_visible (_buttons.mode != ButtonMode.KEYBOARD);
 
+        converter.set_visible (_buttons.mode == ButtonMode.CONVERSION);
         display_box.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         undo_button.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         var copy_action = (SimpleAction) lookup_action ("copy");

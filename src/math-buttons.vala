@@ -63,9 +63,6 @@ public class MathButtons : Adw.BreakpointBin
     private Gtk.Button dec_base_button;
     private Gtk.Button oct_base_button;
     private Gtk.MenuButton base_popover_button;
-    private Gtk.Button hex_base_popover_button;
-    private Gtk.Button dec_base_popover_button;
-    private Gtk.Button oct_base_popover_button;
     private Gtk.MenuButton word_size_button;
     private Gtk.Widget bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
@@ -75,7 +72,6 @@ public class MathButtons : Adw.BreakpointBin
     private Adw.Dialog character_code_dialog;
     private Gtk.Button insert_button;
     private Adw.EntryRow character_code_entry;
-    private ulong converter_changed;
 
     /* The names of each field in the dialogs for the financial functions */
     private const string[] ctrm_entries =  {"ctrm_pint", "ctrm_fv", "ctrm_pv"};
@@ -152,7 +148,6 @@ public class MathButtons : Adw.BreakpointBin
         equation.notify["number-format"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["word-size"].connect ((pspec) => { word_size_changed_cb (); });
         converter.category_changed.connect (converter_category_changed_cb);
-        converter_changed = converter.changed.connect (converter_changed_cb);
         number_mode_changed_cb ();
         update_bit_panel ();
         update_buttons ();
@@ -169,16 +164,6 @@ public class MathButtons : Adw.BreakpointBin
             equation.number_base = 10;
 
         load_buttons ();
-
-        converter.set_visible (mode == ButtonMode.CONVERSION);
-        GLib.SignalHandler.block (converter, converter_changed);
-
-        if (mode == ButtonMode.CONVERSION)
-        {
-            converter.set_conversion (equation.source_units, equation.target_units);
-        }
-
-        GLib.SignalHandler.unblock (converter, converter_changed);
 
         if (adv_carousel != null)
             adv_carousel.scroll_to (adv_carousel.get_nth_page (0), false);
@@ -340,9 +325,7 @@ public class MathButtons : Adw.BreakpointBin
         }
 
         bit_panel.set_sensitive (enabled);
-        hex_base_button.set_sensitive (enabled);
-        dec_base_button.set_sensitive (enabled);
-        oct_base_button.set_sensitive (enabled);
+        base_scrolled.set_sensitive (enabled);
         base_popover_button.set_sensitive (enabled);
 
         if (!enabled)
@@ -362,16 +345,10 @@ public class MathButtons : Adw.BreakpointBin
         hex_base_button.set_visible (number_base != 16);
         dec_base_button.set_visible (number_base != 10);
         oct_base_button.set_visible (number_base != 8);
-        hex_base_popover_button.set_visible (number_base != 16);
-        dec_base_popover_button.set_visible (number_base != 10);
-        oct_base_popover_button.set_visible (number_base != 8);
 
         update_base_button(hex_base_button, "%llX".printf (bits), "₁₆");
         update_base_button(dec_base_button, "%llu".printf (bits), "₁₀");
         update_base_button(oct_base_button, "%llo".printf (bits), "₈");
-        update_base_button(hex_base_popover_button, "%llX".printf (bits), "₁₆");
-        update_base_button(dec_base_popover_button, "%llu".printf (bits), "₁₀");
-        update_base_button(oct_base_popover_button, "%llo".printf (bits), "₈");
     }
 
     private void equation_display_changed_cb ()
@@ -414,7 +391,7 @@ public class MathButtons : Adw.BreakpointBin
         var i = 0;
         foreach (var button in hex_number_buttons)
         {
-            button.set_sensitive (i < _programming_base);
+            button.sensitive = i < _programming_base;
             i++;
         }
     }
@@ -573,10 +550,11 @@ public class MathButtons : Adw.BreakpointBin
         case ButtonMode.PROGRAMMING:
             prog_panel = panel;
             var prog_layout_view = builder.get_object ("multi_layout_view");
-            var base_stack = builder.get_object ("base_stack");
-            base_popover_button = builder.get_object ("base_popover_button") as Gtk.MenuButton;
+            var base_layout_view = builder.get_object ("base_layout_view");
+            var base_box = builder.get_object ("base_box");
             breakpoint.add_setter (prog_layout_view, "layout-name", "carousel");
-            breakpoint.add_setter (base_stack, "visible-child", base_popover_button);
+            breakpoint.add_setter (base_layout_view, "layout-name", "popover");
+            breakpoint.add_setter (base_box, "orientation", Gtk.Orientation.VERTICAL);
             break;
         case ButtonMode.CONVERSION:
             conv_panel = panel;
@@ -619,9 +597,7 @@ public class MathButtons : Adw.BreakpointBin
             hex_base_button = builder.get_object ("hex_base_button") as Gtk.Button;
             dec_base_button = builder.get_object ("dec_base_button") as Gtk.Button;
             oct_base_button = builder.get_object ("oct_base_button") as Gtk.Button;
-            hex_base_popover_button = builder.get_object ("hex_base_popover_button") as Gtk.Button;
-            dec_base_popover_button = builder.get_object ("dec_base_popover_button") as Gtk.Button;
-            oct_base_popover_button = builder.get_object ("oct_base_popover_button") as Gtk.Button;
+            base_popover_button = builder.get_object ("base_popover_button") as Gtk.MenuButton;
 
             bit_panel = builder.get_object ("bit_table") as Gtk.Widget;
             bit_panel.set_direction (Gtk.TextDirection.LTR);
@@ -654,9 +630,6 @@ public class MathButtons : Adw.BreakpointBin
             hex_base_button.clicked.connect (copy_conv_base_to_clipboard);
             dec_base_button.clicked.connect (copy_conv_base_to_clipboard);
             oct_base_button.clicked.connect (copy_conv_base_to_clipboard);
-            hex_base_popover_button.clicked.connect (copy_conv_base_to_clipboard);
-            dec_base_popover_button.clicked.connect (copy_conv_base_to_clipboard);
-            oct_base_popover_button.clicked.connect (copy_conv_base_to_clipboard);
             equation.notify["number-base"].connect ((pspec) => { base_changed_cb (); } );
             base_changed_cb ();
             word_size_changed_cb ();
@@ -728,20 +701,8 @@ public class MathButtons : Adw.BreakpointBin
             calc_pi_negative_button.label = null;
             calc_pi_negative_button.tooltip_text = null;
             calc_pi_negative_button.action_name = null;
+            calc_pi_negative_button.sensitive = false;
         }
-    }
-
-    private void converter_changed_cb ()
-    {
-        Unit from_unit, to_unit;
-        converter.get_conversion (out from_unit, out to_unit);
-        if (converter.get_category () == "currency")
-        {
-            equation.source_currency = from_unit.name;
-            equation.target_currency = to_unit.name;
-        }
-        equation.source_units = from_unit.name;
-        equation.target_units = to_unit.name;
     }
 
     private void load_buttons ()
@@ -798,14 +759,7 @@ public class MathButtons : Adw.BreakpointBin
         var i = 0;
         foreach (var button in toggle_bit_buttons)
         {
-            if (i < equation.word_size)
-            {
-                button.set_sensitive (true);
-            }
-            else
-            {
-                button.set_sensitive (false);
-            }
+            button.sensitive = i < equation.word_size;
             i++;
         }
     }

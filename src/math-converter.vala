@@ -51,7 +51,6 @@ public class MathConverter : Gtk.Grid
     public bool outer_box_visible { set; get; default = false; }
 
     public signal void category_changed ();
-    public signal void changed ();
 
     static construct {
         set_css_name ("mathconverter");
@@ -83,6 +82,7 @@ public class MathConverter : Gtk.Grid
         equation.display_changed.connect (reformat_display);
         from_combobox_changed = from_combo.notify["selected"].connect (from_combobox_changed_cb);
         fixed_serializer = new Serializer (DisplayFormat.FIXED, 10, equation.accuracy);
+
         from_number = new Number.integer (0);
         to_number = new Number.integer (0);
         from_entry.buffer.text = equation.serializer.to_string (from_number);
@@ -91,6 +91,8 @@ public class MathConverter : Gtk.Grid
         to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("context-menu", action_group);
+
+        set_conversion (equation.source_units, equation.target_units);
     }
 
     private void build_category_model () {
@@ -317,7 +319,6 @@ public class MathConverter : Gtk.Grid
 
     private void from_combobox_changed_cb ()
     {
-        /* Conversion must have changed */
         if (to_number == null)
             return;
         Unit source_unit, target_unit;
@@ -327,13 +328,12 @@ public class MathConverter : Gtk.Grid
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
         from_entry.buffer.text = equation.serializer.to_string (from_number);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
-        changed ();
+        save_selected_units ();
     }
 
     [GtkCallback]
     private void to_combobox_changed_cb ()
     {
-        /* Conversion must have changed */
         if (from_number == null)
             return;
         Unit source_unit, target_unit;
@@ -346,7 +346,20 @@ public class MathConverter : Gtk.Grid
         else
             to_entry.buffer.text = equation.serializer.to_string (to_number);
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
-        changed ();
+        save_selected_units ();
+    }
+
+    private void save_selected_units ()
+    {
+        Unit from_unit, to_unit;
+        get_conversion (out from_unit, out to_unit);
+        if (category == "currency")
+        {
+            equation.source_currency = from_unit.name;
+            equation.target_currency = to_unit.name;
+        }
+        equation.source_units = from_unit.name;
+        equation.target_units = to_unit.name;
     }
 
     [GtkCallback]
