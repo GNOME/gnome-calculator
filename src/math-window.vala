@@ -115,7 +115,7 @@ public class MathWindow : Adw.ApplicationWindow
 
     }
 
-    public void clear_cb ()
+    private void clear_cb ()
     {
         history.clear ();
     }
