@@ -131,7 +131,7 @@ public class MathButtons : Adw.BreakpointBin
         panel_stack.vhomogeneous = false;
         set_child (panel_stack);
         set_size_request (360, 260);
-        breakpoint = new Adw.Breakpoint (Adw.BreakpointCondition.parse ("max-width: 667sp"));
+        breakpoint = new Adw.Breakpoint (Adw.BreakpointCondition.parse ("max-width: 699sp"));
         add_breakpoint (breakpoint);
 
         equation.notify["display"].connect ((pspec) => { equation_display_changed_cb (); });

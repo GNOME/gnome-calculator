@@ -138,25 +138,25 @@ public class MathWindow : Adw.ApplicationWindow
 
         case ButtonMode.ADVANCED:
             menu_button.label = _("Advanced");
-            this.default_width = 680;
+            this.default_width = 700;
             action.set_state (new Variant.string ("advanced"));
             break;
 
         case ButtonMode.FINANCIAL:
             menu_button.label = _("Financial");
-            this.default_width = 680;
+            this.default_width = 700;
             action.set_state (new Variant.string ("financial"));
             break;
 
         case ButtonMode.PROGRAMMING:
             menu_button.label = _("Programming");
-            this.default_width = 680;
+            this.default_width = 700;
             action.set_state (new Variant.string ("programming"));
             break;
 
         case ButtonMode.KEYBOARD:
             menu_button.label = _("Keyboard");
-            this.default_width = 680;
+            this.default_width = 700;
             action.set_state (new Variant.string ("keyboard"));
             break;
 
