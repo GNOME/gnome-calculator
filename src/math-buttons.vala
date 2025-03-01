@@ -390,7 +390,7 @@ public class MathButtons : Adw.BreakpointBin
         var i = 0;
         foreach (var button in hex_number_buttons)
         {
-            button.set_sensitive (i < _programming_base);
+            button.sensitive = i < _programming_base;
             i++;
         }
     }
@@ -762,7 +762,7 @@ public class MathButtons : Adw.BreakpointBin
         var i = 0;
         foreach (var button in toggle_bit_buttons)
         {
-            button.set_sensitive (i < equation.word_size);
+            button.sensitive = i < equation.word_size;
             i++;
         }
     }
