@@ -11,7 +11,7 @@
 [GtkTemplate (ui = "/org/gnome/calculator/math-converter.ui")]
 public class MathConverter : Gtk.Grid
 {
-    private MathEquation equation = null;
+    public MathEquation equation { get; construct set; }
 
     private string category;
     private Number from_number;
@@ -55,8 +55,21 @@ public class MathConverter : Gtk.Grid
         set_css_name ("mathconverter");
     }
 
+    public MathConverter (MathEquation equation)
+    {
+        Object (equation: equation);
+    }
+
     construct
     {
+        notify["equation"].connect (construct_finish);
+    }
+
+    private void construct_finish ()
+    {
+        if (equation == null)
+            return;
+
         CurrencyManager.get_default ().updated.connect (() => {
             update_visibility ();
         });
@@ -64,11 +77,7 @@ public class MathConverter : Gtk.Grid
         build_category_model ();
         update_visibility ();
         build_units_model ();
-    }
 
-    public MathConverter (MathEquation equation)
-    {
-        this.equation = equation;
         equation.display_changed.connect (reformat_display);
         from_combobox_changed = from_combo.notify["selected"].connect (from_combobox_changed_cb);
         fixed_serializer = new Serializer (DisplayFormat.FIXED, 10, equation.accuracy);
