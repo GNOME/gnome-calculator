@@ -33,7 +33,9 @@ public class MathConverter : Gtk.Grid
     private unowned Gtk.PopoverMenu to_context_menu;
 
     private Serializer fixed_serializer;
+    [GtkChild]
     private Gtk.EventControllerKey from_event_controller;
+    [GtkChild]
     private Gtk.EventControllerKey to_event_controller;
     private ulong from_combobox_changed = 0;
     private ulong from_entry_changed;
@@ -87,14 +89,6 @@ public class MathConverter : Gtk.Grid
         to_entry.buffer.text = equation.serializer.to_string (to_number);
         from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
         to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
-        from_event_controller = new Gtk.EventControllerKey ();
-        from_event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE);
-        from_event_controller.key_pressed.connect (key_press_cb);
-        from_entry.add_controller (from_event_controller);
-        to_event_controller = new Gtk.EventControllerKey ();
-        to_event_controller.set_propagation_phase (Gtk.PropagationPhase.CAPTURE);
-        to_event_controller.key_pressed.connect (key_press_cb);
-        to_entry.add_controller (to_event_controller);
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("context-menu", action_group);
     }
@@ -438,6 +432,7 @@ public class MathConverter : Gtk.Grid
         return fixed_serializer.from_string (str);
     }
 
+    [GtkCallback]
     private bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType mod_state)
     {
         /* Clear on escape */

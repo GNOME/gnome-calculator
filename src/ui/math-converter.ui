@@ -66,6 +66,12 @@
                     <property name="has-arrow">False</property>
                   </object>
                 </child>
+                <child>
+                  <object class="GtkEventControllerKey" id="from_event_controller">
+                    <property name="propagation-phase">capture</property>
+                    <signal name="key_pressed" handler="key_press_cb" swapped="no"/>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
@@ -110,6 +116,12 @@
                     <property name="menu-model">context_menu_model</property>
                     <property name="halign">start</property>
                     <property name="has-arrow">False</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEventControllerKey" id="to_event_controller">
+                    <property name="propagation-phase">capture</property>
+                    <signal name="key_pressed" handler="key_press_cb" swapped="no"/>
                   </object>
                 </child>
               </object>
