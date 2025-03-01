@@ -177,6 +177,7 @@ public class MathWindow : Adw.ApplicationWindow
             _buttons.hide ();
             remove_buttons = true;
         }
+        converter.set_visible (_buttons.mode == ButtonMode.CONVERSION);
         display_box.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         undo_button.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         var copy_action = (SimpleAction) lookup_action ("copy");

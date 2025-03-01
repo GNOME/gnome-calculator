@@ -75,7 +75,6 @@ public class MathButtons : Adw.BreakpointBin
     private Adw.Dialog character_code_dialog;
     private Gtk.Button insert_button;
     private Adw.EntryRow character_code_entry;
-    private ulong converter_changed;
 
     /* The names of each field in the dialogs for the financial functions */
     private const string[] ctrm_entries =  {"ctrm_pint", "ctrm_fv", "ctrm_pv"};
@@ -140,7 +139,6 @@ public class MathButtons : Adw.BreakpointBin
         equation.notify["number-format"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["word-size"].connect ((pspec) => { word_size_changed_cb (); });
         converter.category_changed.connect (converter_category_changed_cb);
-        converter_changed = converter.changed.connect (converter_changed_cb);
         number_mode_changed_cb ();
         update_bit_panel ();
         update_buttons ();
@@ -157,16 +155,6 @@ public class MathButtons : Adw.BreakpointBin
             equation.number_base = 10;
 
         load_buttons ();
-
-        converter.set_visible (mode == ButtonMode.CONVERSION);
-        GLib.SignalHandler.block (converter, converter_changed);
-
-        if (mode == ButtonMode.CONVERSION)
-        {
-            converter.set_conversion (equation.source_units, equation.target_units);
-        }
-
-        GLib.SignalHandler.unblock (converter, converter_changed);
 
         if (adv_carousel != null)
             adv_carousel.scroll_to (adv_carousel.get_nth_page (0), false);
@@ -716,20 +704,8 @@ public class MathButtons : Adw.BreakpointBin
             calc_pi_negative_button.label = null;
             calc_pi_negative_button.tooltip_text = null;
             calc_pi_negative_button.action_name = null;
+            calc_pi_negative_button.set_sensitive (false);
         }
-    }
-
-    private void converter_changed_cb ()
-    {
-        Unit from_unit, to_unit;
-        converter.get_conversion (out from_unit, out to_unit);
-        if (converter.get_category () == "currency")
-        {
-            equation.source_currency = from_unit.name;
-            equation.target_currency = to_unit.name;
-        }
-        equation.source_units = from_unit.name;
-        equation.target_units = to_unit.name;
     }
 
     private void load_buttons ()
