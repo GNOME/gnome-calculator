@@ -762,14 +762,7 @@ public class MathButtons : Adw.BreakpointBin
         var i = 0;
         foreach (var button in toggle_bit_buttons)
         {
-            if (i < equation.word_size)
-            {
-                button.set_sensitive (true);
-            }
-            else
-            {
-                button.set_sensitive (false);
-            }
+            button.set_sensitive (i < equation.word_size);
             i++;
         }
     }
