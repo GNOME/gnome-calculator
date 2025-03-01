@@ -704,7 +704,7 @@ public class MathButtons : Adw.BreakpointBin
             calc_pi_negative_button.label = null;
             calc_pi_negative_button.tooltip_text = null;
             calc_pi_negative_button.action_name = null;
-            calc_pi_negative_button.set_sensitive (false);
+            calc_pi_negative_button.sensitive = false;
         }
     }
 
