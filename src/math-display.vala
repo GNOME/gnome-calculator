@@ -30,6 +30,9 @@ public class MathDisplay : Gtk.Box
     /* Spinner widget that shows if we're calculating a response */
     [GtkChild]
     Adw.Spinner spinner;
+    [GtkChild]
+    Gtk.Button backspace_button;
+
     public bool completion_visible { get; set;}
     public bool completion_selected { get; set;}
 
@@ -92,6 +95,7 @@ public class MathDisplay : Gtk.Box
             source_view.input_hints &= ~Gtk.InputHints.INHIBIT_OSK;
         else
             source_view.input_hints |= Gtk.InputHints.INHIBIT_OSK;
+        backspace_button.visible = !enable_osk;
     }
 
     public void grabfocus () /* Editbar grabs focus when an instance of gnome-calculator is created */
@@ -499,6 +503,12 @@ public class MathDisplay : Gtk.Box
     public new void grab_focus ()
     {
         source_view.grab_focus ();
+    }
+
+    [GtkCallback]
+    private void backspace_cb ()
+    {
+        equation.backspace ();
     }
 }
 
