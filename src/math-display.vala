@@ -61,6 +61,20 @@ public class MathDisplay : Gtk.Box
         status_changed_cb ();
 
         equation.notify["error-token-end"].connect ((pspec) => { error_status_changed_cb (); });
+
+        /* This scrolls to the cursor's new position including the source view's
+         * margins when the cursor moves, preventing the cursor from being on an
+         * end, and ensuring the margins are visible without manually scrolling. */
+        source_view.move_cursor.connect_after ((step, count, extend_selection) => {
+            Gtk.TextIter cursor_iter;
+            equation.get_iter_at_offset (out cursor_iter, equation.cursor_position);
+            double width = source_view.hadjustment.page_size;
+            /* Ensure we can use the width as a divisor */
+            assert (width > 0);
+            double margin = count > 0 ? source_view.right_margin : source_view.left_margin;
+            double within_margin = double.clamp (margin / width,  0.5 - double.EPSILON);
+            source_view.scroll_to_iter (cursor_iter, within_margin, false, 0, 0);
+        });
     }
 
     public void set_enable_osk (bool enable_osk)
