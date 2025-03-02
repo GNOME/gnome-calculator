@@ -423,9 +423,11 @@ public class MathDisplay : Gtk.Box
         if (equation.status != "")
         {
             announce (equation.status, Gtk.AccessibleAnnouncementPriority.MEDIUM);
-            add_css_class ("error");
+            if (!equation.in_solve)
+                add_css_class ("error");
         }
-        else {
+        else
+        {
             remove_css_class ("error");
         }
         if (equation.in_solve && !spinner.get_visible ())
