@@ -72,7 +72,7 @@ public class MathDisplay : Gtk.Box
             /* Ensure we can use the width as a divisor */
             assert (width > 0);
             double margin = count > 0 ? source_view.right_margin : source_view.left_margin;
-            double within_margin = double.clamp (margin / width,  0.5 - double.EPSILON);
+            double within_margin = (margin / width).clamp (0.0,  0.5 - double.EPSILON);
             source_view.scroll_to_iter (cursor_iter, within_margin, false, 0, 0);
         });
     }
