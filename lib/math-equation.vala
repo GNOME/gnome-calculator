@@ -947,6 +947,22 @@ public class MathEquation : GtkSource.Buffer
         insert_at_cursor (text, -1);
     }
 
+    public void insert_between (string start, string end)
+    {
+        Gtk.TextIter start_iter, middle_iter, end_iter;
+
+        get_selection_bounds (out start_iter, out end_iter);
+        (this as Gtk.TextBuffer).insert (ref start_iter, start, -1);
+
+        get_selection_bounds (out start_iter, out end_iter);
+        var middle_mark = create_mark (null, end_iter, true);
+        (this as Gtk.TextBuffer).insert (ref end_iter, end, -1);
+
+        get_iter_at_mark (out middle_iter, middle_mark);
+        place_cursor (middle_iter);
+        delete_mark (middle_mark);
+    }
+
     public void insert_selected (string answer)
     {
         insert (answer);
