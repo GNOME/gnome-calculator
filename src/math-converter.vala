@@ -63,6 +63,8 @@ public class MathConverter : Gtk.Grid
 
     construct
     {
+        action_group.add_action_entries (action_entries, this);
+        insert_action_group ("context-menu", action_group);
         notify["equation"].connect (construct_finish);
     }
 
@@ -89,8 +91,6 @@ public class MathConverter : Gtk.Grid
         to_entry.buffer.text = equation.serializer.to_string (to_number);
         from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
         to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
-        action_group.add_action_entries (action_entries, this);
-        insert_action_group ("context-menu", action_group);
 
         set_conversion (equation.source_units, equation.target_units);
     }
