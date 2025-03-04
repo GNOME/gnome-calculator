@@ -89,6 +89,7 @@ public class MathButtons : Adw.BreakpointBin
     private const ActionEntry[] action_entries = {
         {"insert-general",       on_insert,               "s"                },
         {"insert-digit",         on_insert_digit,         "i"                },
+        {"insert-function",      on_insert_function,      "s"                },
         {"subtract",             on_subtract                                 },
         {"square",               on_square                                   },
         {"undo",                 on_undo                                     },
@@ -232,6 +233,19 @@ public class MathButtons : Adw.BreakpointBin
         }
         else
             converter.insert_text (param.get_int32 ().to_string ());
+    }
+
+    private void on_insert_function (SimpleAction action, Variant? param)
+    {
+        if (mode != ButtonMode.CONVERSION)
+        {
+            var window = root as MathWindow;
+            window.math_display.set_enable_autocompletion (false);
+            equation.insert_function (param.get_string ());
+            window.math_display.set_enable_autocompletion (true);
+        }
+        else
+            converter.insert_text (param.get_string ().to_string () + " ");
     }
 
     private void on_subtract (SimpleAction action, Variant? param)
