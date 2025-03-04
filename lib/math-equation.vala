@@ -963,6 +963,42 @@ public class MathEquation : GtkSource.Buffer
         delete_mark (middle_mark);
     }
 
+    public void insert_brackets (unichar opening, unichar closing)
+    {
+        if (has_selection)
+        {
+            insert_between (opening.to_string (), closing.to_string ());
+        }
+        else
+        {
+            bool is_closing = false;
+            Gtk.TextIter iter;
+
+            get_iter_at_mark (out iter, get_insert ());
+
+            /* The cursor isn't at the start of the buffer */
+            if (iter.backward_char ())
+            {
+                /* The cursor isn't after the opening bracket */
+                if (iter.get_char () != opening)
+                {
+                    size_t opening_count = 0;
+                    size_t closing_count = 0;
+
+                    do {
+                        unichar character = iter.get_char ();
+                        opening_count += (size_t) (character == opening);
+                        closing_count += (size_t) (character == closing);
+                    } while (iter.backward_char ());
+
+                    is_closing = opening_count > closing_count;
+                }
+            }
+
+            insert (is_closing ? closing.to_string () : opening.to_string ());
+        }
+    }
+
     public void insert_function (string name)
     {
         if (has_selection)
