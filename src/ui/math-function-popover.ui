@@ -40,16 +40,17 @@
             <property name="margin_end">6</property>
             <property name="orientation">horizontal</property>
             <property name="spacing">6</property>
-            <property name="tooltip_text" translatable="yes">Select no. of arguments</property>
             <child>
               <object class="GtkSpinButton" id="add_arguments_button">
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
+                <property name="tooltip_text" translatable="yes">Select no. of arguments</property>
               </object>
             </child>
             <child>
               <object class="GtkButton" id="add_function_button">
                 <property name="sensitive">False</property>
+                <property name="tooltip_text" translatable="yes">Add function</property>
                 <property name="icon_name">list-add-symbolic</property>
                 <signal name="clicked" handler="add_function_cb" swapped="no"/>
               </object>
@@ -60,4 +61,3 @@
     </child>
   </template>
 </interface>
-
