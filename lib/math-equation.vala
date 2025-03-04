@@ -1383,27 +1383,6 @@ public class MathEquation : GtkSource.Buffer
         }
     }
 
-    public void insert_shift (int count)
-    {
-        var z = number;
-        if (z == null)
-        {
-            /* This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number */
-            status = _("No sane value to bitwise shift");
-            return;
-        }
-
-        if (count > 0)
-            insert ("«");
-        else {
-            insert ("»");
-            count *= -1;
-        }
-
-        insert_number (new Number.integer(count));
-        // set_number (z.shift (count));
-    }
-
     public void toggle_bit (uint bit)
     {
         var x = number;

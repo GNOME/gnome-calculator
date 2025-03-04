@@ -96,7 +96,6 @@ public class MathButtons : Adw.BreakpointBin
         {"clear",                on_clear                                    },
         {"factorize",            on_factorize                                },
         {"insert-exponent",      on_insert_exponent                          },
-        {"bitshift",             on_bitshift,             "i"                },
         {"set-word-size",        on_set_word_size,        "i"                },
         {"toggle-bit",           on_toggle_bit,           "i"                },
         {"insert-character",     on_insert_character                         },
@@ -272,11 +271,6 @@ public class MathButtons : Adw.BreakpointBin
     private void on_insert_exponent (SimpleAction action, Variant? param)
     {
         equation.insert_exponent ();
-    }
-
-    private void on_bitshift (SimpleAction action, Variant? param)
-    {
-        equation.insert_shift (param.get_int32 ());
     }
 
     private void on_set_word_size (SimpleAction action, Variant? param)
