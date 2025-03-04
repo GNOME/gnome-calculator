@@ -71,13 +71,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     private void insert_function_cb (Gtk.ListBoxRow row)
     {
         var function = model.get_item (row.get_index ()) as MathFunction;
-        equation.insert (function.name + "()");
-
-        // Place the cursor between the parentheses after inserting the function
-        Gtk.TextIter end;
-        equation.get_iter_at_mark (out end, equation.get_insert ());
-        end.backward_chars (1);
-        equation.place_cursor (end);
+        equation.insert_between (function.name + "(", ")");
     }
 
     [GtkCallback]
