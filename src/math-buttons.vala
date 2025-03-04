@@ -370,23 +370,23 @@ public class MathButtons : Adw.BreakpointBin
 
     private void set_bit_panel_narrow ()
     {
-        bit_panel.get_child_at (0, 1).set_visible (true);
-        bit_panel.get_child_at (0, 3).set_visible (true);
-        for (var i = 1; i <= 17; i++)
+        bit_panel.get_child_at (17, 0).set_visible (true);
+        bit_panel.get_child_at (17, 2).set_visible (true);
+        for (var i = 0; i <= 17; i++)
         {
-            move_bit_panel_child (i + 17, 0, i, 1);
-            move_bit_panel_child (i + 17, 2, i, 3);
+            move_bit_panel_child (i + 18, 0, i, 1);
+            move_bit_panel_child (i + 18, 2, i, 3);
         }
     }
 
     private void set_bit_panel_wide ()
     {
-        bit_panel.get_child_at (0, 1).set_visible (false);
-        bit_panel.get_child_at (0, 3).set_visible (false);
-        for (var i = 1; i <= 17; i++)
+        bit_panel.get_child_at (17, 0).set_visible (false);
+        bit_panel.get_child_at (17, 2).set_visible (false);
+        for (var i = 0; i <= 17; i++)
         {
-            move_bit_panel_child (i, 1, i + 17, 0);
-            move_bit_panel_child (i, 3, i + 17, 2);
+            move_bit_panel_child (i, 1, i + 18, 0);
+            move_bit_panel_child (i, 3, i + 18, 2);
         }
     }
 
