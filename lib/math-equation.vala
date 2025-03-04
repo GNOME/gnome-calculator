@@ -963,6 +963,18 @@ public class MathEquation : GtkSource.Buffer
         delete_mark (middle_mark);
     }
 
+    public void insert_function (string name)
+    {
+        if (has_selection)
+        {
+            insert_between (name + "(", ")");
+        }
+        else
+        {
+            insert (name + " ");
+        }
+    }
+
     public void insert_selected (string answer)
     {
         insert (answer);
