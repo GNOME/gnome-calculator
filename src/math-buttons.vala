@@ -36,6 +36,8 @@ public class MathButtons : Adw.BreakpointBin
     }
     private int _programming_base = 10;
 
+    public bool inverse { get; set; }
+
     public MathConverter converter { get; construct set; }
 
     private Gtk.Builder basic_ui;
@@ -629,6 +631,10 @@ public class MathButtons : Adw.BreakpointBin
         }
 
         /* Configure buttons */
+        var toggle_button = builder.get_object ("calc_inverse_modifier_button") as Gtk.Button;
+        if (toggle_button != null)
+            bind_property ("inverse", toggle_button, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+
         var button = builder.get_object ("calc_numeric_point_button") as Gtk.Button;
         if (button != null)
             button.set_label (equation.serializer.get_radix ().to_string ());
