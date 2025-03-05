@@ -1042,13 +1042,27 @@ public class MathEquation : GtkSource.Buffer
 
     public void insert_function (string name)
     {
+        var space = "";
+        Gtk.TextIter iter;
+        get_iter_at_mark (out iter, get_insert ());
+
+        /*if it is not the first character in the buffer*/
+        if (iter.backward_char ())
+        {
+            unichar previous_character = iter.get_char ();
+            if (previous_character.isalpha ())
+            {
+                space = " ";
+            }
+        }
+
         if (has_selection)
         {
-            insert_between (name + "(", ")");
+            insert_between (space + name + "(", ")");
         }
         else
         {
-            insert (name + " ");
+            insert (space + name + " ");
         }
     }
 
