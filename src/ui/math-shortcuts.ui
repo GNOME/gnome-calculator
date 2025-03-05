@@ -153,14 +153,30 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;ctrl&gt;bracketleft bracketright</property>
+                <property name="accelerator">&lt;ctrl&gt;bracketleft+bracketright</property>
                 <property name="title" translatable="yes" context="shortcut window">Ceiling (⌈⌉)</property>
+                <property name="direction">ltr</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;alt&gt;bracketleft bracketright</property>
+                <property name="accelerator">&lt;alt&gt;bracketleft+bracketright</property>
                 <property name="title" translatable="yes" context="shortcut window">Floor (⌊⌋)</property>
+                <property name="direction">ltr</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;bracketright+bracketleft</property>
+                <property name="title" translatable="yes" context="shortcut window">Ceiling (⌈⌉)</property>
+                <property name="direction">rtl</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;alt&gt;bracketright+bracketleft</property>
+                <property name="title" translatable="yes" context="shortcut window">Floor (⌊⌋)</property>
+                <property name="direction">rtl</property>
               </object>
             </child>
             <child>
