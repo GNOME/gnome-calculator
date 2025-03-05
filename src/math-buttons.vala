@@ -98,7 +98,7 @@ public class MathButtons : Adw.BreakpointBin
         {"solve",                on_solve                                    },
         {"clear",                on_clear                                    },
         {"factorize",            on_factorize                                },
-        {"insert-exponent",      on_insert_exponent                          },
+        {"insert-exponent",      on_insert_exponent,      "s"                },
         {"set-angle-units",      on_set_angle_units                          },
         {"set-word-size",        on_set_word_size,        "i"                },
         {"toggle-bit",           on_toggle_bit,           "i"                },
@@ -295,7 +295,10 @@ public class MathButtons : Adw.BreakpointBin
 
     private void on_insert_exponent (SimpleAction action, Variant? param)
     {
-        equation.insert_exponent ();
+        var window = root as MathWindow;
+        window.math_display.set_enable_autocompletion (false);
+        equation.insert_exponent (param.get_string ());
+        window.math_display.set_enable_autocompletion (true);
     }
 
     private void on_set_angle_units ()

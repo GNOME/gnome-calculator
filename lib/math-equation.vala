@@ -1102,9 +1102,9 @@ public class MathEquation : GtkSource.Buffer
         insert (serializer.to_string (x));
     }
 
-    public void insert_exponent ()
+    public void insert_exponent (string text)
     {
-        insert ("×10");
+        insert (text);
         number_mode = NumberMode.SUPERSCRIPT;
     }
 
