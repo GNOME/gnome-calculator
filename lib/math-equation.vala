@@ -16,6 +16,14 @@ public enum NumberMode
     SUBSCRIPT
 }
 
+public enum CursorGravity
+{
+    BEFORE,
+    START,
+    END,
+    AFTER,
+}
+
 /* Expression mode state */
 private class MathEquationState : Object
 {
@@ -948,9 +956,9 @@ public class MathEquation : GtkSource.Buffer
         insert_at_cursor (text, -1);
     }
 
-    public void insert_between (string start, string end)
+    public void insert_between (string start, string end, CursorGravity cursor_gravity = CursorGravity.END)
     {
-        Gtk.TextIter start_iter, middle_iter, end_iter;
+        Gtk.TextIter start_iter, end_iter, cursor_iter;
 
         push_undo_stack ();
 
@@ -958,15 +966,39 @@ public class MathEquation : GtkSource.Buffer
         in_reformat = true;
 
         get_selection_bounds (out start_iter, out end_iter);
+        var before_mark = create_mark (null, start_iter, true);
+        var start_mark = create_mark (null, start_iter, false);
         base.insert (ref start_iter, start, -1);
 
         get_selection_bounds (out start_iter, out end_iter);
-        var middle_mark = create_mark (null, end_iter, true);
+        var end_mark = create_mark (null, end_iter, true);
+        var after_mark = create_mark (null, end_iter, false);
         base.insert (ref end_iter, end, -1);
 
-        get_iter_at_mark (out middle_iter, middle_mark);
-        place_cursor (middle_iter);
-        delete_mark (middle_mark);
+        switch (cursor_gravity)
+        {
+            case CursorGravity.BEFORE:
+                get_iter_at_mark (out cursor_iter, before_mark);
+                break;
+            case CursorGravity.START:
+                get_iter_at_mark (out cursor_iter, start_mark);
+                break;
+            case CursorGravity.END:
+                get_iter_at_mark (out cursor_iter, end_mark);
+                break;
+            case CursorGravity.AFTER:
+                get_iter_at_mark (out cursor_iter, after_mark);
+                break;
+            default:
+                assert_not_reached ();
+                break;
+        }
+        place_cursor (cursor_iter);
+
+        delete_mark (after_mark);
+        delete_mark (end_mark);
+        delete_mark (start_mark);
+        delete_mark (before_mark);
 
         in_reformat = false;
         in_undo_operation = false;
