@@ -94,6 +94,7 @@ public class MathButtons : Adw.BreakpointBin
         {"insert-digit",         on_insert_digit,         "i"                },
         {"insert-brackets",      on_insert_brackets,      "(ss)"             },
         {"insert-function",      on_insert_function,      "s"                },
+        {"insert-symbol-after",  on_insert_symbol_after,  "s"                },
         {"subtract",             on_subtract                                 },
         {"square",               on_square                                   },
         {"undo",                 on_undo                                     },
@@ -259,6 +260,14 @@ public class MathButtons : Adw.BreakpointBin
     private void on_insert_function (SimpleAction action, Variant? param)
     {
         equation.insert_function (param.get_string ());
+    }
+
+    private void on_insert_symbol_after (SimpleAction action, Variant? param)
+    {
+        var window = root as MathWindow;
+        window.math_display.set_enable_autocompletion (false);
+        equation.insert_symbol (param.get_string (), CursorGravity.AFTER);
+        window.math_display.set_enable_autocompletion (true);
     }
 
     private void on_subtract (SimpleAction action, Variant? param)
