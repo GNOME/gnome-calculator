@@ -449,6 +449,20 @@
           <class name="buttons"/>
         </style>
         <child>
+          <object class="GtkToggleButton" id="calc_inverse_modifier_button">
+            <property name="label">⇧⁻¹</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Inverse Modifier</property>
+            <style>
+              <class name="inverse-button"/>
+            </style>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
           <object class="GtkToggleButton" id="calc_subscript_button">
             <property name="label">↓n</property>
             <property name="focus_on_click">False</property>
@@ -459,8 +473,8 @@
               <class name="function-button"/>
             </style>
             <layout>
-              <property name="column">0</property>
-              <property name="row">0</property>
+              <property name="column">1</property>
+              <property name="row">1</property>
             </layout>
           </object>
         </child>
@@ -497,6 +511,7 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_exponential_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Scientific Exponent [Ctrl+E]</property>
             <property name="action_name">cal.insert-exponent</property>
@@ -509,15 +524,17 @@
             </child>
             <style>
               <class name="function-button"/>
+              <class name="inverse-button"/>
             </style>
             <layout>
-              <property name="column">1</property>
-              <property name="row">1</property>
+              <property name="column">4</property>
+              <property name="row">2</property>
             </layout>
           </object>
         </child>
         <child>
           <object class="GtkButton" id="calc_cosine_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
             <property name="label">cos</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Cosine</property>
@@ -533,7 +550,26 @@
           </object>
         </child>
         <child>
+          <object class="GtkButton" id="calc_inverse_cosine_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+            <property name="label">cos⁻¹</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Inverse Cosine</property>
+            <property name="action_name">cal.insert-function</property>
+            <property name="action_target">&apos;cos⁻¹&apos;</property>
+            <style>
+              <class name="function-button"/>
+              <class name="inverse-button"/>
+            </style>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="calc_sine_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
             <property name="label">sin</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Sine</property>
@@ -549,7 +585,26 @@
           </object>
         </child>
         <child>
+          <object class="GtkButton" id="calc_inverse_sine_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+            <property name="label">sin⁻¹</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Inverse Sine</property>
+            <property name="action_name">cal.insert-function</property>
+            <property name="action_target">&apos;sin⁻¹&apos;</property>
+            <style>
+              <class name="function-button"/>
+              <class name="inverse-button"/>
+            </style>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="calc_tangent_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
             <property name="label">tan</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Tangent</property>
@@ -565,7 +620,26 @@
           </object>
         </child>
         <child>
+          <object class="GtkButton" id="calc_inverse_tangent_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+            <property name="label">tan⁻¹</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Inverse Tangent</property>
+            <property name="action_name">cal.insert-function</property>
+            <property name="action_target">&apos;tan⁻¹&apos;</property>
+            <style>
+              <class name="function-button"/>
+              <class name="inverse-button"/>
+            </style>
+            <layout>
+              <property name="column">4</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="calc_hyperbolic_cosine_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
             <property name="label">cosh</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Hyperbolic Cosine</property>
@@ -581,7 +655,26 @@
           </object>
         </child>
         <child>
+          <object class="GtkButton" id="calc_inverse_hyperbolic_cosine_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+            <property name="label">cosh⁻¹</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Inverse Hyperbolic Cosine</property>
+            <property name="action_name">cal.insert-function</property>
+            <property name="action_target">&apos;cosh⁻¹&apos;</property>
+            <style>
+              <class name="function-button"/>
+              <class name="inverse-button"/>
+            </style>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="calc_hyperbolic_sine_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
             <property name="label">sinh</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Hyperbolic Sine</property>
@@ -597,7 +690,26 @@
           </object>
         </child>
         <child>
+          <object class="GtkButton" id="calc_inverse_hyperbolic_sine_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+            <property name="label">sinh⁻¹</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Inverse Hyperbolic Sine</property>
+            <property name="action_name">cal.insert-function</property>
+            <property name="action_target">&apos;sinh⁻¹&apos;</property>
+            <style>
+              <class name="function-button"/>
+              <class name="inverse-button"/>
+            </style>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="calc_hyperbolic_tangent_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
             <property name="label">tanh</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Hyperbolic Tangent</property>
@@ -605,6 +717,24 @@
             <property name="action_target">&apos;tanh&apos;</property>
             <style>
               <class name="function-button"/>
+            </style>
+            <layout>
+              <property name="column">4</property>
+              <property name="row">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="calc_inverse_hyperbolic_tangent_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+            <property name="label">tanh⁻¹</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Inverse Hyperbolic Tangent</property>
+            <property name="action_name">cal.insert-function</property>
+            <property name="action_target">&apos;tanh⁻¹&apos;</property>
+            <style>
+              <class name="function-button"/>
+              <class name="inverse-button"/>
             </style>
             <layout>
               <property name="column">4</property>
@@ -672,6 +802,7 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_natural_logarithm_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
             <property name="label">ln</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Natural Logarithm</property>
@@ -687,7 +818,31 @@
           </object>
         </child>
         <child>
+          <object class="GtkButton" id="calc_natural_exponential_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Natural Exponential</property>
+            <property name="action_name">cal.insert-exponent</property>
+            <property name="action_target">&apos;e&apos;</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">e&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
+                <property name="use_markup">True</property>
+              </object>
+            </child>
+            <style>
+              <class name="function-button"/>
+              <class name="inverse-button"/>
+            </style>
+            <layout>
+              <property name="column">3</property>
+              <property name="row">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
           <object class="GtkButton" id="calc_logarithm_button">
+            <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
             <property name="label">log</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Logarithm</property>
