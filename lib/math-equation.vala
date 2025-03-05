@@ -1078,6 +1078,25 @@ public class MathEquation : GtkSource.Buffer
         }
     }
 
+    public void insert_alpha (string text)
+    {
+        var space = "";
+        Gtk.TextIter iter;
+        get_iter_at_mark (out iter, get_insert ());
+
+        /*if it is not the first character in the buffer*/
+        if (iter.backward_char ())
+        {
+            unichar previous_character = iter.get_char ();
+            if (previous_character.isalpha ())
+            {
+                space = " ";
+            }
+        }
+
+        insert (space + text + " ");
+    }
+
     public void insert_selected (string answer)
     {
         insert (answer);
@@ -1663,3 +1682,4 @@ private class MEquation : Equation
         return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units);
     }
 }
+
