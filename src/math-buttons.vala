@@ -64,7 +64,7 @@ public class MathButtons : Adw.BreakpointBin
     private Gtk.Button oct_base_button;
     private Gtk.MenuButton base_popover_button;
     private Gtk.MenuButton word_size_button;
-    private Gtk.Grid bit_panel;
+    private Gtk.FlowBox bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
     private List<Gtk.Button> hex_number_buttons;
     private Gtk.Button calc_pi_negative_button;
@@ -368,36 +368,6 @@ public class MathButtons : Adw.BreakpointBin
         update_base_button(oct_base_button, "%llo".printf (bits), "₈");
     }
 
-    private void set_bit_panel_narrow ()
-    {
-        bit_panel.get_child_at (17, 0).set_visible (true);
-        bit_panel.get_child_at (17, 2).set_visible (true);
-        for (var i = 0; i <= 17; i++)
-        {
-            move_bit_panel_child (i + 18, 0, i, 1);
-            move_bit_panel_child (i + 18, 2, i, 3);
-        }
-    }
-
-    private void set_bit_panel_wide ()
-    {
-        bit_panel.get_child_at (17, 0).set_visible (false);
-        bit_panel.get_child_at (17, 2).set_visible (false);
-        for (var i = 0; i <= 17; i++)
-        {
-            move_bit_panel_child (i, 1, i + 18, 0);
-            move_bit_panel_child (i, 3, i + 18, 2);
-        }
-    }
-
-    private void move_bit_panel_child (int column, int row, int new_column, int new_row)
-    {
-        var child = bit_panel.get_child_at (column, row);
-        var layout = bit_panel.layout_manager.get_layout_child (child) as Gtk.GridLayoutChild;
-        layout.column = new_column;
-        layout.row = new_row;
-    }
-
     private void equation_display_changed_cb ()
     {
         update_bit_panel ();
@@ -513,6 +483,7 @@ public class MathButtons : Adw.BreakpointBin
             var hex_buttons = builder.get_object ("hex_buttons") as Gtk.Widget;
             var calc_shift_left_button = builder.get_object ("calc_shift_left_button") as Gtk.Button;
             var calc_shift_right_button = builder.get_object ("calc_shift_right_button") as Gtk.Button;
+            bit_panel = builder.get_object ("bit_table") as Gtk.FlowBox;
 
             prog_carousel.set_direction (Gtk.TextDirection.LTR);
             carousel_dots.set_direction (Gtk.TextDirection.LTR);
@@ -521,6 +492,7 @@ public class MathButtons : Adw.BreakpointBin
             hex_buttons.set_direction (Gtk.TextDirection.LTR);
             calc_shift_left_button.get_child().set_direction (Gtk.TextDirection.LTR);
             calc_shift_right_button.get_child().set_direction (Gtk.TextDirection.LTR);
+            bit_panel.set_direction (Gtk.TextDirection.LTR);
             break;
         }
     }
@@ -602,8 +574,10 @@ public class MathButtons : Adw.BreakpointBin
             breakpoint.add_setter (prog_layout_view, "layout-name", "carousel");
             breakpoint.add_setter (base_layout_view, "layout-name", "popover");
             breakpoint.add_setter (base_box, "orientation", Gtk.Orientation.VERTICAL);
-            breakpoint.apply.connect (set_bit_panel_narrow);
-            breakpoint.unapply.connect (set_bit_panel_wide);
+            breakpoint.add_setter (bit_panel, "min-children-per-line", 18);
+            breakpoint.add_setter (bit_panel, "max-children-per-line", 18);
+            breakpoint.add_setter (bit_panel.get_child_at_index (17).child, "visible", true);
+            breakpoint.add_setter (bit_panel.get_child_at_index (53).child, "visible", true);
             break;
         case ButtonMode.CONVERSION:
             conv_panel = panel;
@@ -648,10 +622,6 @@ public class MathButtons : Adw.BreakpointBin
             oct_base_button = builder.get_object ("oct_base_button") as Gtk.Button;
             base_popover_button = builder.get_object ("base_popover_button") as Gtk.MenuButton;
 
-            bit_panel = builder.get_object ("bit_table") as Gtk.Grid;
-            bit_panel.set_direction (Gtk.TextDirection.LTR);
-            if (current_breakpoint == null)
-                set_bit_panel_wide ();
             toggle_bit_buttons = new List<Gtk.Button> ();
             var i = 0;
             while (true)
