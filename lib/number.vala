@@ -809,6 +809,18 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 & v2; }, 0);
     }
 
+    /* Sets z = boolean NAND for each bit in x and z */
+    public Number nand (Number y, int wordlen)
+    {
+        if (!is_positive_integer () || !y.is_positive_integer ())
+        {
+            /* Translators: Error displayed when boolean NAND attempted on non-integer values */
+            error = _("Boolean NAND is only defined for positive integers");
+        }
+
+        return bitwise (y, (v1, v2) => { return v1 & v2; }, wordlen).not (wordlen);
+    }
+
     /* Sets z = boolean OR for each bit in x and z */
     public Number or (Number y)
     {
@@ -821,6 +833,18 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 | v2; }, 0);
     }
 
+    /* Sets z = boolean NOR for each bit in x and z */
+    public Number nor (Number y, int wordlen)
+    {
+        if (!is_positive_integer () || !y.is_positive_integer ())
+        {
+            /* Translators: Error displayed when boolean NOR attempted on non-integer values */
+            error = _("Boolean NOR is only defined for positive integers");
+        }
+
+        return bitwise (y, (v1, v2) => { return v1 | v2; }, wordlen).not (wordlen);
+    }
+
     /* Sets z = boolean XOR for each bit in x and z */
     public Number xor (Number y)
     {
@@ -831,6 +855,18 @@ public class Number : GLib.Object
         }
 
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, 0);
+    }
+
+    /* Sets z = boolean XNOR for each bit in x and z */
+    public Number xnor (Number y, int wordlen)
+    {
+        if (!is_positive_integer () || !y.is_positive_integer ())
+        {
+            /* Translators: Error displayed when boolean XNOR attempted on non-integer values */
+            error = _("Boolean XNOR is only defined for positive integers");
+        }
+
+        return bitwise (y, (v1, v2) => { return v1 ^ v2; }, wordlen).not (wordlen);
     }
 
     /* Sets z = boolean NOT for each bit in x and z for word of length 'wordlen' */
