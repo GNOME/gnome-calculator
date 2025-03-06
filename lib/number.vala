@@ -800,8 +800,7 @@ public class Number : GLib.Object
     /* Sets z = boolean AND for each bit in x and z */
     public Number and (Number y)
     {
-        if (!
-        is_positive_integer () || !y.is_positive_integer ())
+        if (!is_positive_integer () || !y.is_positive_integer ())
         {
             /* Translators: Error displayed when boolean AND attempted on non-integer values */
             error = _("Boolean AND is only defined for positive integers");
@@ -839,7 +838,7 @@ public class Number : GLib.Object
     {
         if (!is_positive_integer ())
         {
-            /* Translators: Error displayed when boolean XOR attempted on non-integer values */
+            /* Translators: Error displayed when boolean NOT attempted on non-integer values */
             error = _("Boolean NOT is only defined for positive integers");
         }
 
