@@ -630,10 +630,7 @@ public class MathButtons : Adw.BreakpointBin
         if (button != null)
             button.set_label (equation.serializer.get_radix ().to_string ());
 
-        var menu_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
-        if (menu_button != null)
-            menu_button.menu_model = create_word_size_menu ();
-        menu_button = builder.get_object ("calc_memory_button") as Gtk.MenuButton;
+        var menu_button = builder.get_object ("calc_memory_button") as Gtk.MenuButton;
         if (menu_button != null)
         {
             var model = new ListStore(typeof(MathVariable));
@@ -799,22 +796,6 @@ public class MathButtons : Adw.BreakpointBin
             if (mode == ButtonMode.PROGRAMMING)
                 equation.number_base = value;
         }
-    }
-
-    private Menu create_word_size_menu ()
-    {
-        var word_size_menu = new Menu ();
-        var i = 64;
-        string format = ngettext ("%d-bit", "%d-bit", i);
-        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
-        i = 32;
-        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
-        i = 16;
-        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
-        i = 8;
-        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
-
-        return word_size_menu;
     }
 
     private void word_size_changed_cb ()
