@@ -6,25 +6,63 @@
         <link type="guide" xref="index#equation"/>
     </info>
 
-	<title>Boolean Algebra</title>
-    
+    <title>Boolean Algebra</title>
+
     <p>
-    Boolean algebra can be calculated using the AND, OR and XOR operators.
+    Boolean algebra can be calculated using the following operators and functions.
+    </p>
+    <p>
+    The result of some operations depend on the word size.
+    To set the word size, press the menu button in the top-right corner of the
+    window and select <gui style="menuitem">Preferences</gui>.
+    </p>
+    <p>
+    Buttons for the following symbols and to set the word size are available in <link xref="mouse">programming mode</link>.
+    </p>
+
+    <p>
+    Bitwise conjunction can be calculated using the ∧ or AND operators.
     </p>
     <example>
+    <p>
+    010011₂ ∧ 110101₂
+    </p>
     <p>
     010011₂ AND 110101₂
     </p>
     </example>
+
     <p>
-    Buttons for these symbols are available in <link xref="mouse">programming mode</link>.
-    </p>
-    <p>
-    The NOT <link xref="function">function</link> inverts the bits in a number.
-    To set the word size, press the menu button in the top-right corner of the
-    window and select <gui style="menuitem">Preferences</gui>.
+    Bitwise disjunction can be calculated using the ∨ or OR operators.
     </p>
     <example>
+    <p>
+    010011₂ ∨ 110101₂
+    </p>
+    <p>
+    010011₂ OR 110101₂
+    </p>
+    </example>
+
+    <p>
+    Bitwise exclusive disjunction can be calculated using the ⊻, ⊕ or XOR operators.
+    </p>
+    <example>
+    <p>
+    010011₂ ⊻ 110101₂
+    </p>
+    <p>
+    010011₂ XOR 110101₂
+    </p>
+    </example>
+
+    <p>
+    Bitwise complement for the set word size can be calculated using the ¬ or ~ operators or the NOT <link xref="function">function</link>.
+    </p>
+    <example>
+    <p>
+    ¬ 010011₂
+    </p>
     <p>
     NOT 010011₂
     </p>
