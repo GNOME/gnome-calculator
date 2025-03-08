@@ -53,7 +53,6 @@ public class HistoryView : Adw.Bin
         var entry = new HistoryEntry (equation, answer, serializer);
 
         listbox.insert (entry, -1);
-        entry.show ();
 
         entry.answer_clicked.connect ((ans) => { this.answer_clicked (ans); });
         entry.equation_clicked.connect ((eq) => { this.equation_clicked (eq); });

@@ -325,7 +325,7 @@ public class Calculator : Adw.Application
     private void new_window_cb ()
     {
         var window = create_new_window (settings);
-        window.show ();
+        window.set_visible (true);
     }
 
     public static int main (string[] args)
