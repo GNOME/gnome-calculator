@@ -158,11 +158,6 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         CurrencyManager.get_default ().refresh_interval = value;
     }
 
-    protected override void close_attempt ()
-    {
-        hide ();
-    }
-
     private void set_combo_row_from_int (Adw.ComboRow row, int value)
     {
         for (int i = 0; i < row.model.get_n_items (); i++) {
