@@ -80,6 +80,8 @@ public class MathVariablePopover : MathPopover<MathVariable>
     {
         var variable = model.get_item (row.get_index ()) as MathVariable;
         equation.insert (variable.name);
+        popdown ();
+        ((MathWindow) root).math_display.grab_focus ();
     }
 
     [GtkCallback]
