@@ -59,6 +59,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
                                                       function.description);
         equation.clear ();
         equation.insert (function_to_edit);
+        close_popover ();
     }
 
     private void function_deleted_cb (MathFunction function)
@@ -72,6 +73,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     {
         var function = model.get_item (row.get_index ()) as MathFunction;
         equation.insert_between (function.name + "(", ")");
+        close_popover ();
     }
 
     [GtkCallback]
@@ -89,6 +91,16 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         name += "(%s)=".printf(formatted_args);
         equation.clear ();
         equation.insert (name);
+
+        function_name_entry.text = "";
+        add_arguments_button.value = 1;
+        close_popover ();
+    }
+
+    private void close_popover ()
+    {
+        popdown ();
+        ((MathWindow) root).math_display.grab_focus ();
     }
 
     protected override bool is_deletable (MathFunction function)
