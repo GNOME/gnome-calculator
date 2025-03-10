@@ -67,7 +67,7 @@ button.action-button {
 }
 
 .action-dialog floating-sheet sheet {
-    border-radius: 18px;
+  border-radius: 18px;
 }
 
 .converter {
@@ -218,6 +218,32 @@ clamp  > .small .bit-panel {
 .math-popover list > row {
   border-radius: 9px;
   min-height: 28px;
+}
+
+.math-popover list + separator {
+  margin: 0 6px;
+}
+
+.math-popover list + separator + label {
+  margin: 10px 18px 0 18px;
+  font-weight: bold;
+}
+
+.math-popover .constant-list > row > box {
+  padding: 0 10px;
+  border-spacing: 12px;
+}
+
+.math-popover .constant-list .forward-arrow:dir(ltr),
+.math-popover .constant-list .back-arrow:dir(rtl) {
+  opacity: 30%;
+  margin-right: -2px;
+}
+
+.math-popover .constant-list .back-arrow:dir(ltr),
+.math-popover .constant-list .forward-arrow:dir(rtl) {
+  opacity: 30%;
+  margin-left: -2px;
 }
 
 .italic {

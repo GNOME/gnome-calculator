@@ -6,45 +6,79 @@
       <class name="math-popover"/>
     </style>
     <child>
-      <object class="GtkBox" id="content">
-        <property name="orientation">vertical</property>
-        <property name="spacing">6</property>
+      <object class="GtkStack" id="stack">
+        <property name="transition_type">slide-left-right</property>
+        <property name="interpolate_size">True</property>
+        <property name="vhomogeneous">False</property>
         <child>
-          <object class="GtkScrolledWindow" id="variable_list_scrolled">
-            <property name="propagate_natural_height">True</property>
-            <property name="max_content_height">200</property>
-            <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
-            <style>
-              <class name="undershoot-bottom"/>
-            </style>
-            <child>
-              <object class="GtkListBox" id="variable_list">
-                <property name="selection_mode">none</property>
-                <signal name="row_activated" handler="insert_variable_cb" swapped="no"/>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="GtkBox" id="add_variable_box">
-            <property name="margin_bottom">6</property>
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
+          <object class="GtkBox" id="content">
+            <property name="orientation">vertical</property>
             <property name="spacing">6</property>
-            <property name="orientation">horizontal</property>
             <child>
-              <object class="GtkEntry" id="variable_name_entry">
-                <property name="placeholder_text" translatable="yes">Variable name</property>
-                <property name="receives_default">True</property>
-                <signal name="activate" handler="store_variable_cb" swapped="no"/>
+              <object class="GtkScrolledWindow" id="variable_list_scrolled">
+                <property name="propagate_natural_height">True</property>
+                <property name="max_content_height">290</property>
+                <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
+                <style>
+                  <class name="undershoot-bottom"/>
+                </style>
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkListBox" id="variable_list">
+                        <property name="selection_mode">none</property>
+                        <signal name="row_activated" handler="insert_variable_cb" swapped="no"/>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkSeparator"></object>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Constants</property>
+                        <property name="xalign">0</property>
+                        <style>
+                          <class name="dimmed"/>
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkListBox" id="constant_list">
+                        <property name="selection_mode">none</property>
+                        <signal name="row_activated" handler="open_submenu_cb" swapped="no"/>
+                        <style>
+                          <class name="constant-list"/>
+                        </style>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="store_variable_button">
-                <property name="sensitive">False</property>
-                <property name="tooltip_text" translatable="yes">Store value into existing or new variable</property>
-                <property name="icon_name">document-save-symbolic</property>
-                <signal name="clicked" handler="store_variable_cb" swapped="no"/>
+              <object class="GtkBox" id="add_variable_box">
+                <property name="margin_bottom">6</property>
+                <property name="margin_start">6</property>
+                <property name="margin_end">6</property>
+                <property name="spacing">6</property>
+                <property name="orientation">horizontal</property>
+                <child>
+                  <object class="GtkEntry" id="variable_name_entry">
+                    <property name="placeholder_text" translatable="yes">Variable name</property>
+                    <property name="receives_default">True</property>
+                    <property name="hexpand">True</property>
+                    <signal name="activate" handler="store_variable_cb" swapped="no"/>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="store_variable_button">
+                    <property name="sensitive">False</property>
+                    <property name="tooltip_text" translatable="yes">Store value into existing or new variable</property>
+                    <property name="icon_name">document-save-symbolic</property>
+                    <signal name="clicked" handler="store_variable_cb" swapped="no"/>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
@@ -53,4 +87,3 @@
     </child>
   </template>
 </interface>
-

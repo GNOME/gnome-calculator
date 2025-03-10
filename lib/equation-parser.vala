@@ -46,6 +46,19 @@ private enum Precedence
     DEPTH
 }
 
+public struct ConstantCategory
+{
+    public string name;
+    public Constant[] constants;
+}
+
+public struct Constant
+{
+    public string name;
+    public string symbol;
+    public Number number;
+}
+
 /* ParseNode structure for parse tree. */
 public class ParseNode : Object
 {
@@ -983,15 +996,48 @@ public class Parser
     private uint representation_base;
 
     public static HashTable<string, Number> CONSTANTS;
+    public static ConstantCategory[] CONSTANT_CATEGORIES = {
+        {_("Mathematics"), {
+            {_("Euler‘s Number"), "e", new Number.eulers ()},
+            {_("Pi"), "π", new Number.pi ()},
+            {_("Tau"), "τ", new Number.tau ()},
+            {_("Golden Ratio"), "φ", new Number.integer (1).add (new Number.integer (5).sqrt ()).divide (new Number.integer (2))},
+        }},
+        {_("Electromagnetism"), {
+            {_("Light Speed"), "c₀", new Number.integer (299792458)},
+            {_("Elementary Charge"), "е", new Number.double (1.602176634e-19)},
+            {_("Impedance of Vacuum"), "Z₀", new Number.double (376.730313668)},
+            {_("Permeability of Vacuum"), "μ₀", new Number.double (1.25663706212e-6)},
+            {_("Permittivity of Vacuum"), "ε₀", new Number.double (8.8541878128e-12)},
+        }},
+        {_("Atomic & Nuclear"), {
+            {_("Plank‘s Constant"), "h", new Number.double (6.62607015e-34)},
+            {_("Fine-Structure Constant"), "α", new Number.double (0.0072973525693)},
+            {_("Electron Mass"), "mₑ", new Number.double (9.10938356e-31)},
+            {_("Proton Mass"), "mₚ", new Number.double (1.672621898e-27)},
+        }},
+        {_("Thermodynamics"), {
+            {_("Boltzmann Constant"), "k", new Number.double (1.380649e-23)},
+            {_("Atomic Mass Unit"), "mₐ", new Number.double (1.6605390666e-27)},
+            {_("Molar Gas Constant"), "R", new Number.double (8.31446261815324)},
+            {_("Stefan-Boltzmann Constant"), "σ", new Number.double (5.670374419e-8)},
+            {_("Avogadro‘s Number"), "Nₐ", new Number.double (6.02214076e23)},
+        }},
+        {_("Gravitation"), {
+            {_("Gravitational Constant"), "G", new Number.double (6.6743e-11)},
+            {_("Earth Acceleration"), "g", new Number.double (9.80665)},
+        }},
+    };
 
     static construct {
         CONSTANTS = new HashTable<string, Number> (str_hash, str_equal);
-        CONSTANTS.insert ("e", new Number.eulers ());
         CONSTANTS.insert ("pi", new Number.pi ());
         CONSTANTS.insert ("tau", new Number.tau ());
-        CONSTANTS.insert ("π", new Number.pi ());
-        CONSTANTS.insert ("τ", new Number.tau ());
         CONSTANTS.insert ("i", new Number.i ());
+
+        foreach (var categoty in CONSTANT_CATEGORIES)
+            foreach (var constant in categoty.constants)
+                CONSTANTS.insert (constant.symbol, constant.number);
     }
 
     public Parser (string input, int number_base, int wordlen, AngleUnit angle_units)

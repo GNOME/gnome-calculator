@@ -11,7 +11,8 @@
         <property name="spacing">6</property>
         <child>
           <object class="GtkScrolledWindow" id="function_list_scrolled">
-            <property name="height_request">250</property>
+            <property name="propagate_natural_height">True</property>
+            <property name="max_content_height">250</property>
             <property name="hscrollbar_policy">GTK_POLICY_NEVER</property>
             <style>
               <class name="undershoot-bottom"/>
@@ -60,4 +61,3 @@
     </child>
   </template>
 </interface>
-
