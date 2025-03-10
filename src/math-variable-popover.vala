@@ -47,7 +47,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
         base(equation, model, (a,b) => MathVariable.name_compare_func(a as MathVariable,b as MathVariable));
 
         variable_list.bind_model (model, (variable) => make_item_row (variable as MathVariable));
-        equation.history_signal.connect (this.handler);
+        equation.history_signal.connect (history_cb);
         item_deleted.connect (delete_variable_cb);
     }
 
@@ -70,7 +70,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
             return -1;
     }
 
-    private void handler (string answer, Number number, int number_base, uint representation_base)
+    private void history_cb (string answer, Number number, int number_base, uint representation_base)
     {
         item_edited_cb (new MathVariable("_", number));
     }
@@ -86,9 +86,10 @@ public class MathVariablePopover : MathPopover<MathVariable>
     private void store_variable_cb (Gtk.Widget widget)
     {
         var name = variable_name_entry.get_text ();
-        if (name == "" || name in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS)
+        if (name == "" || name in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS) {
+            equation.status = _("%s: Invalid variable name, can not use built-in variable or constant names").printf (name);
             return;
-
+        }
         var z = equation.number;
         if (!Regex.match_simple("^\\D", name)) {
             equation.status = _("%s: Invalid variable name, can not start with a digit").printf (name);
@@ -103,7 +104,22 @@ public class MathVariablePopover : MathPopover<MathVariable>
         else if (equation.is_result)
             equation.variables[name] = equation.answer;
         else
-            warning ("Can't add variable %s, the display is not a number", name);
+        {
+            ulong answer_handler = 0;
+            ulong error_handler = 0;
+            answer_handler = equation.history_signal.connect ((answer, number, number_base, representation_base) =>
+            {
+                equation.variables[name] = number;
+                equation.disconnect (answer_handler);
+                equation.disconnect (error_handler);
+            });
+            error_handler = equation.notify["error-token-end"].connect (() =>
+            {
+                equation.disconnect (answer_handler);
+                equation.disconnect (error_handler);
+            });
+            equation.solve ();
+        }
 
         variable_name_entry.set_text ("");
     }
