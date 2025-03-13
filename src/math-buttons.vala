@@ -254,15 +254,7 @@ public class MathButtons : Adw.BreakpointBin
 
     private void on_insert_function (SimpleAction action, Variant? param)
     {
-        if (mode != ButtonMode.CONVERSION)
-        {
-            var window = root as MathWindow;
-            window.math_display.set_enable_autocompletion (false);
-            equation.insert_function (param.get_string ());
-            window.math_display.set_enable_autocompletion (true);
-        }
-        else
-            converter.insert_text (param.get_string ().to_string () + " ");
+        equation.insert_function (param.get_string ());
     }
 
     private void on_subtract (SimpleAction action, Variant? param)
