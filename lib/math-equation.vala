@@ -951,6 +951,11 @@ public class MathEquation : GtkSource.Buffer
     {
         Gtk.TextIter start_iter, middle_iter, end_iter;
 
+        push_undo_stack ();
+
+        in_undo_operation = true;
+        in_reformat = true;
+
         get_selection_bounds (out start_iter, out end_iter);
         (this as Gtk.TextBuffer).insert (ref start_iter, start, -1);
 
@@ -961,6 +966,9 @@ public class MathEquation : GtkSource.Buffer
         get_iter_at_mark (out middle_iter, middle_mark);
         place_cursor (middle_iter);
         delete_mark (middle_mark);
+
+        in_reformat = false;
+        in_undo_operation = false;
     }
 
     public void insert_brackets (unichar opening, unichar closing)
