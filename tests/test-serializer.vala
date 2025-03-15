@@ -58,6 +58,7 @@ private void test_automatic (Serializer s)
     test_number (s, "0.12345678901234567890", 10, 10, "0.123456789");
     test_number (s, "123456789012", 10, 10, "123,456,789,012");
     test_number (s, "12345678901234567890", 10, 10, "1.23456789×10¹⁹");
+    test_number (s, "9999999999500", 10, 10, "1×10¹³");
 
     test_number (s, ".10", 2, 2, "0.1");
     test_number (s, "0.10101010101010101010", 2, 2, "0.101010101");
@@ -84,6 +85,7 @@ private void test_scientific (Serializer s)
     test_number (s, "1234567890", 10, 10, "1.23456789×10⁹");
     test_number (s, "0.1", 10, 10, "1×10⁻¹");
     test_number (s, "0.1234567890", 10, 10, "1.23456789×10⁻¹");
+    test_number (s, "9999999999500", 10, 10, "1×10¹³");
     //Make sure other bases are represented using FIXED method.
     test_number (s, "101010", 2, 2, "101010");
     test_number (s, "12345670", 8, 8, "12345670");
@@ -102,6 +104,7 @@ private void test_engineering (Serializer s)
     test_number (s, "1234567890", 10, 10, "1.23456789×10⁹");
     test_number (s, "0.1", 10, 10, "100×10⁻³");
     test_number (s, "0.1234567890", 10, 10, "123.456789×10⁻³");
+    test_number (s, "999999999999500", 10, 10, "1×10¹⁵");
     //Make sure other bases are represented using FIXED method.
     test_number (s, "101010", 2, 2, "101010");
     test_number (s, "12345670", 8, 8, "12345670");
