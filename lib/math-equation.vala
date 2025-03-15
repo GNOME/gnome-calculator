@@ -957,11 +957,11 @@ public class MathEquation : GtkSource.Buffer
         in_reformat = true;
 
         get_selection_bounds (out start_iter, out end_iter);
-        (this as Gtk.TextBuffer).insert (ref start_iter, start, -1);
+        base.insert (ref start_iter, start, -1);
 
         get_selection_bounds (out start_iter, out end_iter);
         var middle_mark = create_mark (null, end_iter, true);
-        (this as Gtk.TextBuffer).insert (ref end_iter, end, -1);
+        base.insert (ref end_iter, end, -1);
 
         get_iter_at_mark (out middle_iter, middle_mark);
         place_cursor (middle_iter);
