@@ -89,6 +89,7 @@ public class MathButtons : Adw.BreakpointBin
     private const ActionEntry[] action_entries = {
         {"insert-general",       on_insert,               "s"                },
         {"insert-digit",         on_insert_digit,         "i"                },
+        {"insert-brackets",      on_insert_brackets,      "(ss)"             },
         {"insert-function",      on_insert_function,      "s"                },
         {"subtract",             on_subtract                                 },
         {"square",               on_square                                   },
@@ -235,17 +236,25 @@ public class MathButtons : Adw.BreakpointBin
             converter.insert_text (param.get_int32 ().to_string ());
     }
 
+    private void on_insert_brackets (SimpleAction action, Variant? param)
+    {
+        var param_iter = param.iterator ();
+        var opening = param_iter.next_value ().get_string ();
+        var closing = param_iter.next_value ().get_string ();
+
+        /* Explicitely only support 1 unichar brackets */
+        assert (opening.char_count () == 1);
+        assert (closing.char_count () == 1);
+
+        var window = root as MathWindow;
+        window.math_display.set_enable_autocompletion (false);
+        equation.insert_brackets (opening.get_char (), closing.get_char ());
+        window.math_display.set_enable_autocompletion (true);
+    }
+
     private void on_insert_function (SimpleAction action, Variant? param)
     {
-        if (mode != ButtonMode.CONVERSION)
-        {
-            var window = root as MathWindow;
-            window.math_display.set_enable_autocompletion (false);
-            equation.insert_function (param.get_string ());
-            window.math_display.set_enable_autocompletion (true);
-        }
-        else
-            converter.insert_text (param.get_string ().to_string () + " ");
+        equation.insert_function (param.get_string ());
     }
 
     private void on_subtract (SimpleAction action, Variant? param)

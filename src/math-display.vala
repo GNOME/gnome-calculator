@@ -446,11 +446,11 @@ public class MathDisplay : Gtk.Box
         }
         if (equation.in_solve && !spinner.get_visible ())
         {
-            spinner.show ();
+            spinner.set_visible (true);
         }
         else if (!equation.in_solve && spinner.get_visible ())
         {
-            spinner.hide ();
+            spinner.set_visible (false);
         }
     }
 

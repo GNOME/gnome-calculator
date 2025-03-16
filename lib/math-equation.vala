@@ -45,6 +45,7 @@ private class SolveData : Object
 public class MathEquation : GtkSource.Buffer
 {
     private Gtk.TextTag ans_tag;
+    private const string ANS_STRING = "_ ";
 
     /* Word size in bits */
     private int _word_size;
@@ -722,11 +723,11 @@ public class MathEquation : GtkSource.Buffer
         get
         {
             /* Check if the previous answer is before start of error token.
-             * If so, subtract 1 (the length of string "_") and add actual answer length (ans_end - ans_start) into it. */
+             * If so, subtract 2 (the length of string "_ ") and add actual answer length (ans_end - ans_start) into it. */
             int ans_start, ans_end;
             get_ans_offsets (out ans_start, out ans_end);
             if (ans_start != -1 && ans_start < state.error_token_start)
-                return state.error_token_start + ans_end - ans_start - 1;
+                return state.error_token_start + ans_end - ans_start - ANS_STRING.length;
 
             return state.error_token_start;
         }
@@ -737,11 +738,11 @@ public class MathEquation : GtkSource.Buffer
         get
         {
             /* Check if the previous answer is before end of error token.
-             * If so, subtract 1 (the length of string "_") and add actual answer length (ans_end - ans_start) into it. */
+             * If so, subtract 2 (the length of string "_ ") and add actual answer length (ans_end - ans_start) into it. */
             int ans_start, ans_end;
             get_ans_offsets (out ans_start, out ans_end);
             if (ans_start != -1 && ans_start < state.error_token_end)
-                return state.error_token_end + ans_end - ans_start - 1;
+                return state.error_token_end + ans_end - ans_start - ANS_STRING.length;
 
             return state.error_token_end;
         }
@@ -754,7 +755,7 @@ public class MathEquation : GtkSource.Buffer
 
     public bool is_result
     {
-        get { return equation == "_"; }
+        get { return equation == ANS_STRING; }
     }
 
     public string equation
@@ -768,7 +769,7 @@ public class MathEquation : GtkSource.Buffer
             if (ans_start_mark != null)
                 get_ans_offsets (out ans_start, out ans_end);
             if (ans_start >= 0)
-                text = text.splice (text.index_of_nth_char (ans_start), text.index_of_nth_char (ans_end), "_");
+                text = text.splice (text.index_of_nth_char (ans_start), text.index_of_nth_char (ans_end), ANS_STRING);
 
             var last_is_digit = false;
             var index = 0;
@@ -951,16 +952,60 @@ public class MathEquation : GtkSource.Buffer
     {
         Gtk.TextIter start_iter, middle_iter, end_iter;
 
+        push_undo_stack ();
+
+        in_undo_operation = true;
+        in_reformat = true;
+
         get_selection_bounds (out start_iter, out end_iter);
-        (this as Gtk.TextBuffer).insert (ref start_iter, start, -1);
+        base.insert (ref start_iter, start, -1);
 
         get_selection_bounds (out start_iter, out end_iter);
         var middle_mark = create_mark (null, end_iter, true);
-        (this as Gtk.TextBuffer).insert (ref end_iter, end, -1);
+        base.insert (ref end_iter, end, -1);
 
         get_iter_at_mark (out middle_iter, middle_mark);
         place_cursor (middle_iter);
         delete_mark (middle_mark);
+
+        in_reformat = false;
+        in_undo_operation = false;
+    }
+
+    public void insert_brackets (unichar opening, unichar closing)
+    {
+        if (has_selection)
+        {
+            insert_between (opening.to_string (), closing.to_string ());
+        }
+        else
+        {
+            bool is_closing = false;
+            Gtk.TextIter iter;
+
+            get_iter_at_mark (out iter, get_insert ());
+
+            /* The cursor isn't at the start of the buffer */
+            if (iter.backward_char ())
+            {
+                /* The cursor isn't after the opening bracket */
+                if (iter.get_char () != opening)
+                {
+                    size_t opening_count = 0;
+                    size_t closing_count = 0;
+
+                    do {
+                        unichar character = iter.get_char ();
+                        opening_count += (size_t) (character == opening);
+                        closing_count += (size_t) (character == closing);
+                    } while (iter.backward_char ());
+
+                    is_closing = opening_count > closing_count;
+                }
+            }
+
+            insert (is_closing ? closing.to_string () : opening.to_string ());
+        }
     }
 
     public void insert_function (string name)
