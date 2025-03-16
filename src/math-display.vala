@@ -477,10 +477,12 @@ public class MathDisplay : Gtk.Box
         if (equation.in_solve && !spinner.get_visible ())
         {
             spinner.set_visible (true);
+            info_view.left_margin = info_view.right_margin = 0;
         }
         else if (!equation.in_solve && spinner.get_visible ())
         {
             spinner.set_visible (false);
+            info_view.left_margin = info_view.right_margin = 12;
         }
     }
 

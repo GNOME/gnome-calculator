@@ -60,6 +60,11 @@
       <object class="GtkBox" id="info_box">
         <property name="spacing">6</property>
         <child>
+          <object class="AdwSpinner" id="spinner">
+            <property name="margin_start">12</property>
+          </object>
+        </child>
+        <child>
           <object class="GtkTextView" id="info_view">
             <property name="wrap_mode">word</property>
             <property name="can_focus">False</property>
@@ -71,9 +76,6 @@
               <class name="info-view"/>
             </style>
           </object>
-        </child>
-        <child>
-          <object class="AdwSpinner" id="spinner"/>
         </child>
       </object>
     </child>
