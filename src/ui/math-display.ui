@@ -3,7 +3,7 @@
   <template class="MathDisplay" parent="GtkBox">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkScrolledWindow">
+      <object class="GtkScrolledWindow" id="display_scrolled">
         <property name="vscrollbar_policy">never</property>
         <style>
           <class name="display-scrolled"/>
@@ -27,6 +27,12 @@
                 <signal name="key_pressed" handler="key_press_cb" swapped="no"/>
               </object>
             </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkEventControllerScroll">
+            <property name="flags">both-axes</property>
+            <signal name="scroll" handler="scroll_cb" swapped="no"/>
           </object>
         </child>
       </object>

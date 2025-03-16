@@ -16,6 +16,8 @@ public class MathDisplay : Gtk.Box
 
     /* Display widget */
     [GtkChild]
+    Gtk.ScrolledWindow display_scrolled;
+    [GtkChild]
     GtkSource.View source_view;
 
     /* Buffer that shows errors etc */
@@ -438,6 +440,21 @@ public class MathDisplay : Gtk.Box
         }
 
         return false;
+    }
+
+    [GtkCallback]
+    private bool scroll_cb (Gtk.EventControllerScroll controller, double dx, double dy)
+    {
+        if (dy == 0 || dx != 0)
+            return Gdk.EVENT_PROPAGATE;
+
+        /* Scroll horizontally when vertically scrolled */
+        Gtk.Adjustment hadjustment = display_scrolled.get_hadjustment ();
+        double step = hadjustment.get_step_increment ();
+        double new_value = hadjustment.get_value () + dy * step;
+        hadjustment.set_value (new_value);
+
+        return Gdk.EVENT_STOP;
     }
 
     private void status_changed_cb ()
