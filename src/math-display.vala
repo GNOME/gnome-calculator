@@ -75,6 +75,13 @@ public class MathDisplay : Gtk.Box
             double within_margin = (margin / width).clamp (0.0,  0.5 - double.EPSILON);
             source_view.scroll_to_iter (cursor_iter, within_margin, false, 0, 0);
         });
+
+        /* Use equation.paste () instead of the default handler, to replace '\n'
+         * characters by ' ' in text before pasting it. */
+        source_view.paste_clipboard.connect (() => {
+            equation.paste ();
+            Signal.stop_emission_by_name (source_view, "paste-clipboard");
+        });
     }
 
     public void set_enable_osk (bool enable_osk)
