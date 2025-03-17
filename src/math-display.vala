@@ -16,6 +16,8 @@ public class MathDisplay : Gtk.Box
 
     /* Display widget */
     [GtkChild]
+    Gtk.ScrolledWindow display_scrolled;
+    [GtkChild]
     GtkSource.View source_view;
 
     /* Buffer that shows errors etc */
@@ -28,6 +30,9 @@ public class MathDisplay : Gtk.Box
     /* Spinner widget that shows if we're calculating a response */
     [GtkChild]
     Adw.Spinner spinner;
+    [GtkChild]
+    Gtk.Button backspace_button;
+
     public bool completion_visible { get; set;}
     public bool completion_selected { get; set;}
 
@@ -75,6 +80,13 @@ public class MathDisplay : Gtk.Box
             double within_margin = (margin / width).clamp (0.0,  0.5 - double.EPSILON);
             source_view.scroll_to_iter (cursor_iter, within_margin, false, 0, 0);
         });
+
+        /* Use equation.paste () instead of the default handler, to replace '\n'
+         * characters by ' ' in text before pasting it. */
+        source_view.paste_clipboard.connect (() => {
+            equation.paste ();
+            Signal.stop_emission_by_name (source_view, "paste-clipboard");
+        });
     }
 
     public void set_enable_osk (bool enable_osk)
@@ -83,6 +95,7 @@ public class MathDisplay : Gtk.Box
             source_view.input_hints &= ~Gtk.InputHints.INHIBIT_OSK;
         else
             source_view.input_hints |= Gtk.InputHints.INHIBIT_OSK;
+        backspace_button.visible = !enable_osk;
     }
 
     public void grabfocus () /* Editbar grabs focus when an instance of gnome-calculator is created */
@@ -294,24 +307,26 @@ public class MathDisplay : Gtk.Box
             case Gdk.Key.p:
                 equation.insert ("π");
                 return true;
-    	    case Gdk.Key.t:
+            case Gdk.Key.t:
                 equation.insert ("τ");
                 return true;
             case Gdk.Key.r:
                 equation.insert ("√");
                 return true;
             case Gdk.Key.o:
-                equation.insert("˚");
+                if (((MathWindow) root).buttons.mode == ButtonMode.PROGRAMMING)
+                    return false;
+                equation.insert("°");
                 return true;
             case Gdk.Key.u:
                 equation.insert ("µ");
                 return true;
             case Gdk.Key.minus:
-                 equation.insert ("⁻");
-                 return true;
+                equation.insert ("⁻");
+                return true;
             case Gdk.Key.apostrophe:
-                 equation.insert ("°");
-                 return true;
+                equation.insert ("°");
+                return true;
             }
         }
         if (state == Gdk.ModifierType.ALT_MASK)
@@ -431,6 +446,21 @@ public class MathDisplay : Gtk.Box
         return false;
     }
 
+    [GtkCallback]
+    private bool scroll_cb (Gtk.EventControllerScroll controller, double dx, double dy)
+    {
+        if (dy == 0 || dx != 0)
+            return Gdk.EVENT_PROPAGATE;
+
+        /* Scroll horizontally when vertically scrolled */
+        Gtk.Adjustment hadjustment = display_scrolled.get_hadjustment ();
+        double step = hadjustment.get_step_increment ();
+        double new_value = hadjustment.get_value () + dy * step;
+        hadjustment.set_value (new_value);
+
+        return Gdk.EVENT_STOP;
+    }
+
     private void status_changed_cb ()
     {
         info_view.buffer.text = equation.status;
@@ -447,10 +477,12 @@ public class MathDisplay : Gtk.Box
         if (equation.in_solve && !spinner.get_visible ())
         {
             spinner.set_visible (true);
+            info_view.left_margin = info_view.right_margin = 0;
         }
         else if (!equation.in_solve && spinner.get_visible ())
         {
             spinner.set_visible (false);
+            info_view.left_margin = info_view.right_margin = 12;
         }
     }
 
@@ -474,6 +506,12 @@ public class MathDisplay : Gtk.Box
     {
         source_view.grab_focus ();
     }
+
+    [GtkCallback]
+    private void backspace_cb ()
+    {
+        equation.backspace ();
+    }
 }
 
 public class CompletionProposal : GLib.Object, GtkSource.CompletionProposal
@@ -484,22 +522,15 @@ public class CompletionProposal : GLib.Object, GtkSource.CompletionProposal
         get { return _label; }
     }
 
-    private string _text;
-    public string text
-    {
-        get { return _text; }
-    }
-
     private string _details;
     public string details
     {
         get { return _details; }
     }
 
-    public CompletionProposal (string label, string text, string details)
+    public CompletionProposal (string label, string details)
     {
         _label = label;
-        _text = text;
         _details = details;
     }
 }
@@ -527,12 +558,9 @@ public abstract class CompletionProvider : GLib.Object, GtkSource.CompletionProv
         switch (cell.column)
         {
             case GtkSource.CompletionColumn.TYPED_TEXT:
-                cell.text = item.text;
-                break;
-            case GtkSource.CompletionColumn.COMMENT:
                 cell.text = item.label;
                 break;
-            case GtkSource.CompletionColumn.DETAILS:
+            case GtkSource.CompletionColumn.COMMENT:
                 cell.text = item.details;
                 break;
             default:
@@ -561,7 +589,7 @@ public abstract class CompletionProvider : GLib.Object, GtkSource.CompletionProv
 
     public static Gtk.StringFilter create_filter (string word)
     {
-        Gtk.Expression expr = new Gtk.PropertyExpression (typeof (CompletionProposal), null, "text");
+        Gtk.Expression expr = new Gtk.PropertyExpression (typeof (CompletionProposal), null, "label");
         Gtk.StringFilter filter = new Gtk.StringFilter (expr);
         filter.set_match_mode (Gtk.StringFilterMatchMode.PREFIX);
         filter.set_ignore_case (true);
@@ -580,7 +608,7 @@ public abstract class CompletionProvider : GLib.Object, GtkSource.CompletionProv
 
     public void activate (GtkSource.CompletionContext context, GtkSource.CompletionProposal proposal)
     {
-        string proposed_string = ((CompletionProposal) proposal).text;
+        string proposed_string = ((CompletionProposal) proposal).label;
         string word;
         Gtk.TextIter start_iter, end_iter;
 
@@ -643,14 +671,17 @@ public class FunctionCompletionProvider : CompletionProvider, GtkSource.Completi
         {
             foreach (var function in functions)
             {
-                string display_text = "%s(%s)".printf (function.name, string.joinv (";", function.arguments));
-                string details_text = "%s".printf (function.description);
                 string label_text = function.name + "()";
+                string details_text = "%s".printf (function.description);
                 if (function.is_custom_function ())
-                    details_text = "%s(%s)=%s\n%s".printf (function.name, string.joinv (";", function.arguments),
-                                                           function.expression, function.description);
+                {
+                    details_text = "%s(%s)=%s".printf (function.name, string.joinv (";", function.arguments),
+                                                       function.expression);
+                    if (function.description != "")
+                        details_text += "\n%s".printf (function.description);
+                }
 
-                proposals.append (new CompletionProposal (display_text, label_text, details_text));
+                proposals.append (new CompletionProposal (label_text, details_text));
             }
         }
 
@@ -694,7 +725,7 @@ public class BuiltinCompletionProvider : CompletionProvider, GtkSource.Completio
         {
             foreach (var keyword in keywords)
             {
-                proposals.append (new CompletionProposal (keyword, keyword, ""));
+                proposals.append (new CompletionProposal (keyword, keyword));
             }
         }
 
@@ -734,10 +765,9 @@ public class CurrencyCompletionProvider : CompletionProvider, GtkSource.Completi
         {
             foreach (var currency in currencies)
             {
-                string display_text = "%s (%s)".printf (currency.name, currency.display_name);
                 string label_text = "%s".printf (currency.name);
                 string details_text = "%s - %s".printf (currency.display_name, currency.symbol);
-                proposals.append (new CompletionProposal (display_text, label_text, details_text));
+                proposals.append (new CompletionProposal (label_text, details_text));
             }
         }
 
@@ -783,11 +813,11 @@ public class VariableCompletionProvider : CompletionProvider, GtkSource.Completi
         {
             foreach (var variable in variables)
             {
-                string display_text = "%s".printf (variable);
-                string details_text = _equation.serializer.to_string (_equation.variables.get (variable));
                 string label_text = variable;
+                string value_text = _equation.serializer.to_string (_equation.variables.get (variable));
+                string details_text = "%s=%s".printf (variable, value_text);
 
-                proposals.append (new CompletionProposal (display_text, label_text, details_text));
+                proposals.append (new CompletionProposal (label_text, details_text));
             }
         }
 

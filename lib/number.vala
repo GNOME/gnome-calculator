@@ -800,14 +800,25 @@ public class Number : GLib.Object
     /* Sets z = boolean AND for each bit in x and z */
     public Number and (Number y)
     {
-        if (!
-        is_positive_integer () || !y.is_positive_integer ())
+        if (!is_positive_integer () || !y.is_positive_integer ())
         {
             /* Translators: Error displayed when boolean AND attempted on non-integer values */
             error = _("Boolean AND is only defined for positive integers");
         }
 
         return bitwise (y, (v1, v2) => { return v1 & v2; }, 0);
+    }
+
+    /* Sets z = boolean NAND for each bit in x and z */
+    public Number nand (Number y, int wordlen)
+    {
+        if (!is_positive_integer () || !y.is_positive_integer ())
+        {
+            /* Translators: Error displayed when boolean NAND attempted on non-integer values */
+            error = _("Boolean NAND is only defined for positive integers");
+        }
+
+        return bitwise (y, (v1, v2) => { return v1 & v2; }, wordlen).not (wordlen);
     }
 
     /* Sets z = boolean OR for each bit in x and z */
@@ -822,6 +833,18 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 | v2; }, 0);
     }
 
+    /* Sets z = boolean NOR for each bit in x and z */
+    public Number nor (Number y, int wordlen)
+    {
+        if (!is_positive_integer () || !y.is_positive_integer ())
+        {
+            /* Translators: Error displayed when boolean NOR attempted on non-integer values */
+            error = _("Boolean NOR is only defined for positive integers");
+        }
+
+        return bitwise (y, (v1, v2) => { return v1 | v2; }, wordlen).not (wordlen);
+    }
+
     /* Sets z = boolean XOR for each bit in x and z */
     public Number xor (Number y)
     {
@@ -834,12 +857,24 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, 0);
     }
 
+    /* Sets z = boolean XNOR for each bit in x and z */
+    public Number xnor (Number y, int wordlen)
+    {
+        if (!is_positive_integer () || !y.is_positive_integer ())
+        {
+            /* Translators: Error displayed when boolean XNOR attempted on non-integer values */
+            error = _("Boolean XNOR is only defined for positive integers");
+        }
+
+        return bitwise (y, (v1, v2) => { return v1 ^ v2; }, wordlen).not (wordlen);
+    }
+
     /* Sets z = boolean NOT for each bit in x and z for word of length 'wordlen' */
     public Number not (int wordlen)
     {
         if (!is_positive_integer ())
         {
-            /* Translators: Error displayed when boolean XOR attempted on non-integer values */
+            /* Translators: Error displayed when boolean NOT attempted on non-integer values */
             error = _("Boolean NOT is only defined for positive integers");
         }
 
@@ -894,6 +929,49 @@ public class Number : GLib.Object
     public Number twos_complement (int wordlen)
     {
         return ones_complement (wordlen).add (new Number.integer (1));
+    }
+
+    /* Sets z = xCr */
+    public Number combination (Number r)
+    {
+        if (!is_positive_integer () || !r.is_positive_integer ())
+        {
+            error = _("Combination is only defined for non-negative integers");
+            return new Number.integer (0);
+        }
+        if (compare (r) < 0)
+        {
+            error = _("Combination is undefined if n is less than r");
+            return new Number.integer (0);
+        }
+
+        var r1 = r.compare (divide_integer (2)) <= 0 ? r : subtract (r);
+        return permutation (r1).divide (r1.factorial ());
+    }
+
+    /* Sets z = xPr */
+    public Number permutation (Number r)
+    {
+        if (!is_positive_integer () || !r.is_positive_integer ())
+        {
+            error = _("Permutation is only defined for non-negative integers");
+            return new Number.integer (0);
+        }
+        if (compare (r) < 0)
+        {
+            error = _("Permutation is undefined if n is less than r");
+            return new Number.integer (0);
+        }
+
+        if (r.is_zero ())
+            return new Number.integer (1);
+
+        var value = to_integer ();
+        var z = this;
+        for (var i = value - r.to_integer () + 1; i < value; i++)
+            z = z.multiply_integer (i);
+
+        return z;
     }
 
     /* In: An p := p \in 2Z+1; An b := gcd(b,p) = 1

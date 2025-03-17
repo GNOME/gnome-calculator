@@ -18,8 +18,8 @@ public class Calculator : Adw.Application
     private static string mode_string = null;
 
     private const OptionEntry[] option_entries = {
-        /* Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard */
-        { "mode", 'm', 0, OptionArg.STRING, ref mode_string, N_("Start in given mode (basic, advanced, financial, programming, keyboard)"), "mode" },
+        /* Translators: Do not translate possible mode names basic, advanced, financial, programming, keyboard and conversion */
+        { "mode", 'm', 0, OptionArg.STRING, ref mode_string, N_("Start in given mode (basic, advanced, financial, programming, keyboard, conversion)"), "mode" },
         { "solve", 's', 0, OptionArg.STRING, null, N_("Solve given equation"), "equation" },
         { "equation", 'e', 0, OptionArg.STRING, ref equation_string, N_("Start with given equation"), "equation"},
         { "version", 'v', 0, OptionArg.NONE, null, N_("Show release version"), null },

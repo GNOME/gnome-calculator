@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.17 -->
-
   <object class="GtkShortcutsWindow" id="help_overlay">
-    <property name="modal">1</property>
+    <property name="modal">True</property>
     <child>
       <object class="GtkShortcutsSection">
         <property name="section-name">shortcuts</property>
@@ -96,6 +94,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;control&gt;&lt;alt&gt;t</property>
+                <property name="title" translatable="yes" context="shortcut window">Switch to Keyboard mode (alt.)</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.mode::conversion</property>
                 <property name="title" translatable="yes" context="shortcut window">Switch to Conversion mode</property>
               </object>
@@ -119,6 +123,12 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;2</property>
+                <property name="title" translatable="yes" context="shortcut window">Square (²)</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;ctrl&gt;R</property>
                 <property name="title" translatable="yes" context="shortcut window">Square root (√)</property>
               </object>
@@ -126,7 +136,7 @@
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;ctrl&gt;I</property>
-                <property name="title" translatable="yes" context="shortcut window">Inverse</property>
+                <property name="title" translatable="yes" context="shortcut window">Inverse (⁻¹)</property>
               </object>
             </child>
             <child>
@@ -137,8 +147,70 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;T</property>
+                <property name="title" translatable="yes" context="shortcut window">Tau (τ)</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcutsGroup">
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;apostrophe</property>
+                <property name="title" translatable="yes" context="shortcut window">Degree (°)</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;alt&gt;bracketleft+bracketright</property>
+                <property name="title" translatable="yes" context="shortcut window">Floor (⌊⌋)</property>
+                <property name="direction">ltr</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;bracketleft+bracketright</property>
+                <property name="title" translatable="yes" context="shortcut window">Ceiling (⌈⌉)</property>
+                <property name="direction">ltr</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;alt&gt;bracketright+bracketleft</property>
+                <property name="title" translatable="yes" context="shortcut window">Floor (⌊⌋)</property>
+                <property name="direction">rtl</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;bracketright+bracketleft</property>
+                <property name="title" translatable="yes" context="shortcut window">Ceiling (⌈⌉)</property>
+                <property name="direction">rtl</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;ctrl&gt;E</property>
                 <property name="title" translatable="yes" context="shortcut window">Enter numbers in scientific format</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;alt&gt;0...9</property>
+                <property name="title" translatable="yes" context="shortcut window">Enter subscript numbers</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;0...9</property>
+                <property name="title" translatable="yes" context="shortcut window">Enter superscript numbers</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;minus</property>
+                <property name="title" translatable="yes" context="shortcut window">Enter superscript minus sign</property>
               </object>
             </child>
           </object>
@@ -174,7 +246,7 @@
         </child>
         <child>
           <object class="GtkShortcutsGroup">
-            <property name="title" translatable="yes" context="shortcut window">Others</property>
+            <property name="title" translatable="yes" context="shortcut window">Equation</property>
             <child>
               <object class="GtkShortcutsShortcut">
                 <property name="action-name">win.copy</property>
@@ -213,8 +285,14 @@
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;control&gt;&lt;alt&gt;t</property>
-                <property name="title" translatable="yes" context="shortcut window">Switch to Keyboard mode (alt.)</property>
+                <property name="accelerator">Escape</property>
+                <property name="title" translatable="yes" context="shortcut window">Clear display</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="accelerator">&lt;ctrl&gt;F</property>
+                <property name="title" translatable="yes" context="shortcut window">Factorize</property>
               </object>
             </child>
           </object>

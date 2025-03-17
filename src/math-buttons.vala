@@ -57,6 +57,7 @@ public class MathButtons : Adw.BreakpointBin
     private Adw.Carousel fin_carousel;
     private Adw.Carousel prog_carousel;
 
+    private Gtk.Button angle_units_button;
     private Gtk.DropDown base_combo;
     private Gtk.ScrolledWindow base_scrolled;
     private Gtk.Button hex_base_button;
@@ -64,7 +65,7 @@ public class MathButtons : Adw.BreakpointBin
     private Gtk.Button oct_base_button;
     private Gtk.MenuButton base_popover_button;
     private Gtk.MenuButton word_size_button;
-    private Gtk.Widget bit_panel;
+    private Gtk.Grid bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
     private List<Gtk.Button> hex_number_buttons;
     private Gtk.Button calc_pi_negative_button;
@@ -98,6 +99,7 @@ public class MathButtons : Adw.BreakpointBin
         {"clear",                on_clear                                    },
         {"factorize",            on_factorize                                },
         {"insert-exponent",      on_insert_exponent                          },
+        {"set-angle-units",      on_set_angle_units                          },
         {"set-word-size",        on_set_word_size,        "i"                },
         {"toggle-bit",           on_toggle_bit,           "i"                },
         {"insert-character",     on_insert_character                         },
@@ -296,6 +298,19 @@ public class MathButtons : Adw.BreakpointBin
         equation.insert_exponent ();
     }
 
+    private void on_set_angle_units ()
+    {
+        equation.angle_units = (equation.angle_units + 2) % 3;
+    }
+
+    private void update_angle_units_button ()
+    {
+        string[] unit_symbols = {"Rad", "Deg", "Grad"};
+        string[] unit_names = {_("Radians"), _("Degrees"), _("Gradians")};
+        angle_units_button.label = unit_symbols[equation.angle_units];
+        angle_units_button.tooltip_text = _("Angle Unit: %s").printf (unit_names[equation.angle_units]);
+    }
+
     private void on_set_word_size (SimpleAction action, Variant? param)
     {
         if (word_size_button != null) {
@@ -366,6 +381,36 @@ public class MathButtons : Adw.BreakpointBin
         update_base_button(hex_base_button, "%llX".printf (bits), "₁₆");
         update_base_button(dec_base_button, "%llu".printf (bits), "₁₀");
         update_base_button(oct_base_button, "%llo".printf (bits), "₈");
+    }
+
+    private void set_bit_panel_narrow ()
+    {
+        bit_panel.get_child_at (17, 0).set_visible (true);
+        bit_panel.get_child_at (17, 2).set_visible (true);
+        for (var i = 0; i <= 17; i++)
+        {
+            move_bit_panel_child (i + 18, 0, i, 1);
+            move_bit_panel_child (i + 18, 2, i, 3);
+        }
+    }
+
+    private void set_bit_panel_wide ()
+    {
+        bit_panel.get_child_at (17, 0).set_visible (false);
+        bit_panel.get_child_at (17, 2).set_visible (false);
+        for (var i = 0; i <= 17; i++)
+        {
+            move_bit_panel_child (i, 1, i + 18, 0);
+            move_bit_panel_child (i, 3, i + 18, 2);
+        }
+    }
+
+    private void move_bit_panel_child (int column, int row, int new_column, int new_row)
+    {
+        var child = bit_panel.get_child_at (column, row);
+        var layout = bit_panel.layout_manager.get_layout_child (child) as Gtk.GridLayoutChild;
+        layout.column = new_column;
+        layout.row = new_row;
     }
 
     private void equation_display_changed_cb ()
@@ -572,6 +617,8 @@ public class MathButtons : Adw.BreakpointBin
             breakpoint.add_setter (prog_layout_view, "layout-name", "carousel");
             breakpoint.add_setter (base_layout_view, "layout-name", "popover");
             breakpoint.add_setter (base_box, "orientation", Gtk.Orientation.VERTICAL);
+            breakpoint.apply.connect (set_bit_panel_narrow);
+            breakpoint.unapply.connect (set_bit_panel_wide);
             break;
         case ButtonMode.CONVERSION:
             conv_panel = panel;
@@ -583,10 +630,7 @@ public class MathButtons : Adw.BreakpointBin
         if (button != null)
             button.set_label (equation.serializer.get_radix ().to_string ());
 
-        var menu_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
-        if (menu_button != null)
-            menu_button.menu_model = create_word_size_menu ();
-        menu_button = builder.get_object ("calc_memory_button") as Gtk.MenuButton;
+        var menu_button = builder.get_object ("calc_memory_button") as Gtk.MenuButton;
         if (menu_button != null)
         {
             var model = new ListStore(typeof(MathVariable));
@@ -605,6 +649,13 @@ public class MathButtons : Adw.BreakpointBin
             menu_button.popover = math_popover;
         }
 
+        if (mode == ButtonMode.ADVANCED)
+        {
+            angle_units_button = builder.get_object("calc_angle_units_button") as Gtk.Button;
+            equation.notify["angle-units"].connect (update_angle_units_button);
+            update_angle_units_button ();
+        }
+
         if (mode == ButtonMode.PROGRAMMING)
         {
             character_code_dialog = builder.get_object ("character_code_dialog") as Adw.Dialog;
@@ -616,8 +667,10 @@ public class MathButtons : Adw.BreakpointBin
             oct_base_button = builder.get_object ("oct_base_button") as Gtk.Button;
             base_popover_button = builder.get_object ("base_popover_button") as Gtk.MenuButton;
 
-            bit_panel = builder.get_object ("bit_table") as Gtk.Widget;
+            bit_panel = builder.get_object ("bit_table") as Gtk.Grid;
             bit_panel.set_direction (Gtk.TextDirection.LTR);
+            if (current_breakpoint == null)
+                set_bit_panel_wide ();
             toggle_bit_buttons = new List<Gtk.Button> ();
             var i = 0;
             while (true)
@@ -743,22 +796,6 @@ public class MathButtons : Adw.BreakpointBin
             if (mode == ButtonMode.PROGRAMMING)
                 equation.number_base = value;
         }
-    }
-
-    private Menu create_word_size_menu ()
-    {
-        var word_size_menu = new Menu ();
-        var i = 64;
-        string format = ngettext ("%d-bit", "%d-bit", i);
-        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
-        i = 32;
-        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
-        i = 16;
-        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
-        i = 8;
-        word_size_menu.append(format.printf (i), "cal.set-word-size(%d)".printf (i));
-
-        return word_size_menu;
     }
 
     private void word_size_changed_cb ()

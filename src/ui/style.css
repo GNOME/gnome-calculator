@@ -1,7 +1,33 @@
+.display-scrolled > scrollbar {
+  transition: margin-bottom 200ms linear;
+}
+
+.display-scrolled > scrollbar.hovering {
+  margin-bottom: -8px;
+}
+
 .sourceview {
   padding-bottom: 8px;
   font-size: 1.4em;
-  border-top: 1px solid @card_shade_color;
+}
+
+.sourceview > .completion cell.icon {
+  padding-right: 0;
+}
+
+.sourceview > .completion box.details {
+  padding: 0 4px;
+}
+
+.sourceview > .completion cell.comment:dir(rtl) {
+  margin: 0 24px 8px 0;
+}
+
+.sourceview > .completion button.toggle {
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  font-size: 0;
 }
 
 .info-view {
@@ -257,6 +283,7 @@ mathdisplay textview text {
 }
 
 mathdisplay {
+  border-top: 1px solid @card_shade_color;
   min-height: 52px;
 }
 
@@ -266,4 +293,8 @@ mathdisplay {
 
 mathdisplay textview:not(:last-child) {
   font-feature-settings: "tnum";
+}
+
+mathdisplay button {
+  margin: 6px;
 }

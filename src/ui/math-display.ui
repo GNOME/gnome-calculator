@@ -3,30 +3,55 @@
   <template class="MathDisplay" parent="GtkBox">
     <property name="orientation">vertical</property>
     <child>
-      <object class="GtkScrolledWindow">
-        <property name="vscrollbar_policy">never</property>
-        <style>
-          <class name="display-scrolled"/>
-        </style>
+      <object class="GtkBox">
         <child>
-          <object class="GtkSourceView" id="source_view">
-            <property name="accepts_tab">False</property>
-            <property name="left_margin">14</property>
-            <property name="right_margin">14</property>
-            <property name="pixels_above_lines">8</property>
-            <property name="pixels_below_lines">2</property>
-            <property name="justification">left</property>
-            <property name="name">displayitem</property>
-            <property name="width_request">20</property>
-            <property name="height_request">45</property>
-            <property name="input_hints">no-emoji|no-spellcheck|inhibit-osk</property>
-            <property name="buffer" bind-source="MathDisplay" bind-property="equation" bind-flags="sync-create"/>
+          <object class="GtkScrolledWindow" id="display_scrolled">
+            <property name="hexpand">True</property>
+            <property name="vscrollbar_policy">never</property>
+            <style>
+              <class name="display-scrolled"/>
+            </style>
             <child>
-              <object class="GtkEventControllerKey" id="event_controller">
-                <property name="propagation_phase">capture</property>
-                <signal name="key_pressed" handler="key_press_cb" swapped="no"/>
+              <object class="GtkSourceView" id="source_view">
+                <property name="accepts_tab">False</property>
+                <property name="left_margin">14</property>
+                <property name="right_margin">14</property>
+                <property name="pixels_above_lines">8</property>
+                <property name="pixels_below_lines">2</property>
+                <property name="justification">left</property>
+                <property name="name">displayitem</property>
+                <property name="width_request">20</property>
+                <property name="height_request">45</property>
+                <property name="input_hints">no-emoji|no-spellcheck|inhibit-osk</property>
+                <property name="buffer" bind-source="MathDisplay" bind-property="equation" bind-flags="sync-create"/>
+                <child>
+                  <object class="GtkEventControllerKey" id="event_controller">
+                    <property name="propagation_phase">capture</property>
+                    <signal name="key_pressed" handler="key_press_cb" swapped="no"/>
+                  </object>
+                </child>
               </object>
             </child>
+             <child>
+               <object class="GtkEventControllerScroll">
+                 <property name="flags">both-axes</property>
+                 <signal name="scroll" handler="scroll_cb" swapped="no"/>
+               </object>
+             </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="backspace_button">
+            <property name="valign">center</property>
+            <property name="use_underline">True</property>
+            <property name="focus_on_click">False</property>
+            <property name="tooltip_text" translatable="yes">Backspace</property>
+            <property name="icon-name">edit-clear-symbolic</property>
+            <signal name="clicked" handler="backspace_cb" swapped="no"/>
+            <style>
+              <class name="circular"/>
+              <class name="flat"/>
+            </style>
           </object>
         </child>
       </object>
@@ -34,6 +59,11 @@
     <child>
       <object class="GtkBox" id="info_box">
         <property name="spacing">6</property>
+        <child>
+          <object class="AdwSpinner" id="spinner">
+            <property name="margin_start">12</property>
+          </object>
+        </child>
         <child>
           <object class="GtkTextView" id="info_view">
             <property name="wrap_mode">word</property>
@@ -46,9 +76,6 @@
               <class name="info-view"/>
             </style>
           </object>
-        </child>
-        <child>
-          <object class="AdwSpinner" id="spinner"/>
         </child>
       </object>
     </child>

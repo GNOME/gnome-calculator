@@ -24,6 +24,7 @@ gnome_calculator_help_pages = [
   'number-display.page',
   'percentage.page',
   'power.page',
+  'rounding.page',
   'scientific.page',
   'superscript.page',
   'trigonometry.page',

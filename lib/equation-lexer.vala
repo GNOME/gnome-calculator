@@ -44,8 +44,11 @@ public enum LexerTokenType
     ROOT_4,             /* Fourth root */
     NOT,                /* Bitwise NOT */
     AND,                /* Bitwise AND */
+    NAND,               /* Bitwise NAND */
     OR,                 /* Bitwise OR */
+    NOR,                /* Bitwise NOR */
     XOR,                /* Bitwise XOR */
+    XNOR,               /* Bitwise XNOR */
     IN,                 /* IN ( for converter e.g. 1 EUR in USD / 1 EUR to USD) */
     NUMBER,             /* Number */
     SUP_NUMBER,         /* Super Number */
@@ -158,11 +161,20 @@ public class PreLexer : Object
         if (c == '∧')
             return LexerTokenType.AND;
 
+        if (c == '⊼')
+            return LexerTokenType.NAND;
+
         if (c == '∨')
             return LexerTokenType.OR;
 
+        if (c == '⊽')
+            return LexerTokenType.NOR;
+
         if (c == '⊻' || c == '⊕')
             return LexerTokenType.XOR;
+
+        if (c == '⊙')
+            return LexerTokenType.XNOR;
 
         if (c == '¬' || c == '~')
             return LexerTokenType.NOT;
@@ -393,6 +405,7 @@ public class Lexer : Object
         }
 
         if (type == LexerTokenType.AND || type == LexerTokenType.OR || type == LexerTokenType.XOR || type == LexerTokenType.NOT
+            || type == LexerTokenType.NAND || type == LexerTokenType.NOR || type == LexerTokenType.XNOR
             || type == LexerTokenType.ADD || type == LexerTokenType.SUBTRACT || type == LexerTokenType.MULTIPLY || type == LexerTokenType.DIVIDE
             || type == LexerTokenType.L_FLOOR || type == LexerTokenType.R_FLOOR || type == LexerTokenType.L_CEILING || type == LexerTokenType.R_CEILING
             || type == LexerTokenType.ROOT || type == LexerTokenType.ROOT_3 || type == LexerTokenType.ROOT_4 || type == LexerTokenType.ASSIGN
@@ -722,12 +735,18 @@ public class Lexer : Object
             return insert_token (LexerTokenType.MOD);
         if (name == "and")
             return insert_token (LexerTokenType.AND);
+        if (name == "nand")
+            return insert_token (LexerTokenType.NAND);
         if (name == "\\cdot")
             return insert_token (LexerTokenType.MULTIPLY);
         if (name == "or")
             return insert_token (LexerTokenType.OR);
+        if (name == "nor")
+            return insert_token (LexerTokenType.NOR);
         if (name == "xor")
             return insert_token (LexerTokenType.XOR);
+        if (name == "xnor" || name == "nxor")
+            return insert_token (LexerTokenType.XNOR);
         if (name == "not")
             return insert_token (LexerTokenType.NOT);
         // Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD

@@ -290,5 +290,9 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
         return x.ones_complement (root_parser.wordlen);
     else if (lower_name == "twos")
         return x.twos_complement (root_parser.wordlen);
+    else if (lower_name == "ncr")
+        return x.combination (args.length <= 1 ? x : args[1]);
+    else if (lower_name == "npr")
+        return x.permutation (args.length <= 1 ? x : args[1]);
     return null;
 }

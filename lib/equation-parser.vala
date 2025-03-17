@@ -846,6 +846,19 @@ public class AndNode : LRNode
     }
 }
 
+public class NandNode : LRNode
+{
+    public NandNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    {
+        base (parser, token, precedence, associativity);
+    }
+
+    public override Number solve_lr (Number l, Number r)
+    {
+        return l.nand (r, parser.wordlen);
+    }
+}
+
 public class OrNode : LRNode
 {
     public OrNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
@@ -859,6 +872,19 @@ public class OrNode : LRNode
     }
 }
 
+public class NorNode : LRNode
+{
+    public NorNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    {
+        base (parser, token, precedence, associativity);
+    }
+
+    public override Number solve_lr (Number l, Number r)
+    {
+        return l.nor (r, parser.wordlen);
+    }
+}
+
 public class XorNode : LRNode
 {
     public XorNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
@@ -869,6 +895,19 @@ public class XorNode : LRNode
     public override Number solve_lr (Number l, Number r)
     {
         return l.xor (r);
+    }
+}
+
+public class XnorNode : LRNode
+{
+    public XnorNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    {
+        base (parser, token, precedence, associativity);
+    }
+
+    public override Number solve_lr (Number l, Number r)
+    {
+        return l.xnor (r, parser.wordlen);
     }
 }
 
@@ -1207,7 +1246,7 @@ public class Parser
             return Precedence.ROOT;
         if (type == LexerTokenType.FUNCTION)
             return Precedence.FUNCTION;
-        if (type == LexerTokenType.AND || type == LexerTokenType.OR || type == LexerTokenType.XOR)
+        if (type == LexerTokenType.AND || type == LexerTokenType.NAND || type == LexerTokenType.OR || type == LexerTokenType.NOR || type == LexerTokenType.XOR || type == LexerTokenType.XNOR)
             return Precedence.BOOLEAN;
         if (type == LexerTokenType.PERCENTAGE)
             return Precedence.PERCENTAGE;
@@ -1858,6 +1897,17 @@ public class Parser
 
             return true;
         }
+        else if (token.type == LexerTokenType.NAND)
+        {
+            insert_into_tree (new NandNode (this, token, make_precedence_t (token.type), get_associativity (token)));
+
+            if (!expression_1 ())
+                return false;
+            if (!expression_2 ())
+                return false;
+
+            return true;
+        }
         else if (token.type == LexerTokenType.OR)
         {
             insert_into_tree (new OrNode (this, token, make_precedence_t (token.type), get_associativity (token)));
@@ -1869,9 +1919,31 @@ public class Parser
 
             return true;
         }
+        else if (token.type == LexerTokenType.NOR)
+        {
+            insert_into_tree (new NorNode (this, token, make_precedence_t (token.type), get_associativity (token)));
+
+            if (!expression_1 ())
+                return false;
+            if (!expression_2 ())
+                return false;
+
+            return true;
+        }
         else if (token.type == LexerTokenType.XOR)
         {
             insert_into_tree (new XorNode (this, token, make_precedence_t (token.type), get_associativity (token)));
+
+            if (!expression_1 ())
+                return false;
+            if (!expression_2 ())
+                return false;
+
+            return true;
+        }
+        else if (token.type == LexerTokenType.XNOR)
+        {
+            insert_into_tree (new XnorNode (this, token, make_precedence_t (token.type), get_associativity (token)));
 
             if (!expression_1 ())
                 return false;

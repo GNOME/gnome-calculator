@@ -617,6 +617,17 @@ private void test_equations ()
     angle_units = AngleUnit.GRADIANS;
     test ("sin 100", "1", 0);
 
+    test ("ncr (9;5)", "126", 0);
+    test ("ncr (9;9)", "1", 0);
+    test ("ncr (9;0)", "1", 0);
+    test ("ncr (9;-5)", "", ErrorCode.MP);
+    test ("ncr (9;10)", "", ErrorCode.MP);
+    test ("npr (9;5)", "15120", 0);
+    test ("npr (9;9)", "362880", 0);
+    test ("npr (9;0)", "1", 0);
+    test ("npr (9;-5)", "", ErrorCode.MP);
+    test ("npr (9;10)", "", ErrorCode.MP);
+
     /* Complex numbers */
     angle_units = AngleUnit.DEGREES;
     test ("i", "i", 0);
@@ -682,11 +693,12 @@ private void test_equations ()
     number_base = 2;
     wordlen = 4;
     test ("1100∧1010", "1000", 0);
+    test ("1100⊼1010",  "111", 0);
     test ("1100∨1010", "1110", 0);
-    test ("1100⊻1010", "110", 0);
-    test ("1100⊕1010", "110", 0);
-    //test ("1100⊼1010", "0111", 0);
-    //test ("1100⊽1010", "0001", 0);
+    test ("1100⊽1010",    "1", 0);
+    test ("1100⊻1010",  "110", 0);
+    test ("1100⊕1010",  "110", 0);
+    test ("1100⊙1010", "1001", 0);
     //wordlen = 2;
     //test ("¬01₂", "10₂", 0);
     //test ("¬¬10₂", "10₂", 0);

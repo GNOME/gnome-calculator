@@ -112,6 +112,10 @@ public class FunctionManager : Object
         add (new BuiltInMathFunction ("ones", _("One's complement")));
 
         add (new BuiltInMathFunction ("twos", _("Two's complement")));
+
+        add (new BuiltInMathFunction ("ncr", _("Combination")));
+
+        add (new BuiltInMathFunction ("npr", _("Permutation")));
     }
 
     private void reload_custom_functions ()
