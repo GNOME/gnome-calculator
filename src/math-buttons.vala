@@ -36,6 +36,8 @@ public class MathButtons : Adw.BreakpointBin
     }
     private int _programming_base = 10;
 
+    public bool inverse { get; set; }
+
     public MathConverter converter { get; construct set; }
 
     private Gtk.Builder basic_ui;
@@ -91,14 +93,16 @@ public class MathButtons : Adw.BreakpointBin
         {"insert-general",       on_insert,               "s"                },
         {"insert-digit",         on_insert_digit,         "i"                },
         {"insert-brackets",      on_insert_brackets,      "(ss)"             },
+        {"insert-alpha",         on_insert_alpha,         "s"                },
         {"insert-function",      on_insert_function,      "s"                },
+        {"insert-symbol-after",  on_insert_symbol_after,  "s"                },
         {"subtract",             on_subtract                                 },
         {"square",               on_square                                   },
         {"undo",                 on_undo                                     },
         {"solve",                on_solve                                    },
         {"clear",                on_clear                                    },
         {"factorize",            on_factorize                                },
-        {"insert-exponent",      on_insert_exponent                          },
+        {"insert-exponent",      on_insert_exponent,      "s"                },
         {"set-angle-units",      on_set_angle_units                          },
         {"set-word-size",        on_set_word_size,        "i"                },
         {"toggle-bit",           on_toggle_bit,           "i"                },
@@ -254,9 +258,30 @@ public class MathButtons : Adw.BreakpointBin
         window.math_display.set_enable_autocompletion (true);
     }
 
+    private void on_insert_alpha (SimpleAction action, Variant? param)
+    {
+        if (mode != ButtonMode.CONVERSION)
+        {
+            var window = root as MathWindow;
+            window.math_display.set_enable_autocompletion (false);
+            equation.insert_alpha (param.get_string ());
+            window.math_display.set_enable_autocompletion (true);
+        }
+        else
+            converter.insert_text (param.get_string ().to_string () + " ");
+    }
+
     private void on_insert_function (SimpleAction action, Variant? param)
     {
         equation.insert_function (param.get_string ());
+    }
+
+    private void on_insert_symbol_after (SimpleAction action, Variant? param)
+    {
+        var window = root as MathWindow;
+        window.math_display.set_enable_autocompletion (false);
+        equation.insert_symbol (param.get_string (), CursorGravity.AFTER);
+        window.math_display.set_enable_autocompletion (true);
     }
 
     private void on_subtract (SimpleAction action, Variant? param)
@@ -295,7 +320,10 @@ public class MathButtons : Adw.BreakpointBin
 
     private void on_insert_exponent (SimpleAction action, Variant? param)
     {
-        equation.insert_exponent ();
+        var window = root as MathWindow;
+        window.math_display.set_enable_autocompletion (false);
+        equation.insert_exponent (param.get_string ());
+        window.math_display.set_enable_autocompletion (true);
     }
 
     private void on_set_angle_units ()
@@ -626,6 +654,10 @@ public class MathButtons : Adw.BreakpointBin
         }
 
         /* Configure buttons */
+        var toggle_button = builder.get_object ("calc_inverse_modifier_button") as Gtk.Button;
+        if (toggle_button != null)
+            bind_property ("inverse", toggle_button, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+
         var button = builder.get_object ("calc_numeric_point_button") as Gtk.Button;
         if (button != null)
             button.set_label (equation.serializer.get_radix ().to_string ());

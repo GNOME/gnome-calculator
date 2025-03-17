@@ -1306,10 +1306,10 @@
               <class name="buttons"/>
             </style>
             <child>
-              <object class="GtkButton" id="calc_root_button">
+              <object class="GtkButton" id="calc_square_root_button">
                 <property name="label">√</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Root [Ctrl+R]</property>
+                <property name="tooltip_text" translatable="yes">Square Root [Ctrl+R]</property>
                 <property name="action_name">cal.insert-general</property>
                 <property name="action_target">&apos;√&apos;</property>
                 <style>
@@ -1696,8 +1696,8 @@
                 <property name="label">mod</property>
                 <property name="focus_on_click">False</property>
                 <property name="tooltip_text" translatable="yes">Modulus Divide</property>
-                <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos; mod &apos;</property>
+                <property name="action_name">cal.insert-alpha</property>
+                <property name="action_target">&apos;mod&apos;</property>
                 <style>
                   <class name="operator-button"/>
                 </style>
@@ -1757,8 +1757,8 @@
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">0</property>
-                  <property name="row">0</property>
+                  <property name="column">1</property>
+                  <property name="row">1</property>
                 </layout>
               </object>
             </child>
@@ -1809,7 +1809,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_xor_button">
-                <property name="label">XOR</property>
+                <property name="label">⊻</property>
                 <property name="focus_on_click">False</property>
                 <property name="tooltip_text" translatable="yes">Boolean Exclusive OR</property>
                 <property name="action_name">cal.insert-general</property>
@@ -1824,7 +1824,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_or_button">
-                <property name="label">OR</property>
+                <property name="label">∨</property>
                 <property name="focus_on_click">False</property>
                 <property name="tooltip_text" translatable="yes">Boolean OR</property>
                 <property name="action_name">cal.insert-general</property>
@@ -1840,7 +1840,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_and_button">
-                <property name="label">AND</property>
+                <property name="label">∧</property>
                 <property name="focus_on_click">False</property>
                 <property name="tooltip_text" translatable="yes">Boolean AND</property>
                 <property name="action_name">cal.insert-general</property>
@@ -1856,7 +1856,7 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_not_button">
-                <property name="label">NOT</property>
+                <property name="label">¬</property>
                 <property name="focus_on_click">False</property>
                 <property name="tooltip_text" translatable="yes">Boolean NOT</property>
                 <property name="action_name">cal.insert-general</property>
@@ -1882,7 +1882,7 @@
                 </style>
                 <layout>
                   <property name="column">0</property>
-                  <property name="row">1</property>
+                  <property name="row">0</property>
                 </layout>
               </object>
             </child>
@@ -1897,7 +1897,7 @@
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">1</property>
+                  <property name="column">0</property>
                   <property name="row">1</property>
                 </layout>
               </object>
@@ -1909,7 +1909,7 @@
                 <property name="action_name">cal.insert-general</property>
                 <property name="action_target">&apos;^&apos;</property>
                 <child>
-                  <object class="GtkLabel" id="x_pow_y_label">
+                  <object class="GtkLabel">
                     <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&lt;i&gt;y&lt;/i&gt;&lt;/sup&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
@@ -1930,7 +1930,7 @@
                 <property name="action_name">cal.insert-general</property>
                 <property name="action_target">&apos;⁻¹&apos;</property>
                 <child>
-                  <object class="GtkLabel" id="label20">
+                  <object class="GtkLabel">
                     <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;−1&lt;/sup&gt;</property>
                     <property name="use_markup">True</property>
                   </object>
@@ -1983,7 +1983,7 @@
                 <property name="action_name">cal.insert-general</property>
                 <property name="action_target">&apos;!&apos;</property>
                 <child>
-                  <object class="GtkLabel" id="label14">
+                  <object class="GtkLabel">
                     <property name="label">&lt;i&gt;x&lt;/i&gt;!</property>
                     <property name="use_markup">True</property>
                   </object>
@@ -2004,7 +2004,7 @@
                 <property name="action_name">cal.insert-brackets</property>
                 <property name="action_target">(&apos;|&apos;,&apos;|&apos;)</property>
                 <child>
-                  <object class="GtkLabel" id="label1">
+                  <object class="GtkLabel">
                     <property name="label">|&lt;i&gt;x&lt;/i&gt;|</property>
                     <property name="use_markup">True</property>
                   </object>

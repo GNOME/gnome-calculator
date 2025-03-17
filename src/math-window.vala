@@ -94,6 +94,7 @@ public class MathWindow : Adw.ApplicationWindow
         event_controller = new Gtk.EventControllerKey ();
         (this as Gtk.Widget).add_controller (event_controller);
         event_controller.key_pressed.connect (key_press_cb);
+        event_controller.key_released.connect (key_release_cb);
 
         _display.equation.display_changed.connect (history.set_serializer);
         _display.equation.history_signal.connect (this.update_history);
@@ -181,6 +182,9 @@ public class MathWindow : Adw.ApplicationWindow
 
     protected bool key_press_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType state)
     {
+        if (keyval == Gdk.Key.Shift_L || keyval == Gdk.Key.Shift_R)
+            buttons.inverse = true;
+
         if (buttons.mode == ButtonMode.PROGRAMMING && (state & Gdk.ModifierType.CONTROL_MASK) == Gdk.ModifierType.CONTROL_MASK)
         {
             switch (keyval)
@@ -204,6 +208,12 @@ public class MathWindow : Adw.ApplicationWindow
             }
         }
         return false;
+    }
+
+    protected void key_release_cb (Gtk.EventControllerKey controller, uint keyval, uint keycode, Gdk.ModifierType state)
+    {
+        if (keyval == Gdk.Key.Shift_L || keyval == Gdk.Key.Shift_R)
+            buttons.inverse = false;
     }
 
     private void copy_cb ()

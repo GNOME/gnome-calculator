@@ -720,8 +720,8 @@
             <property name="label">mod</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Modulus Divide</property>
-            <property name="action_name">cal.insert-general</property>
-            <property name="action_target">&apos; mod &apos;</property>
+            <property name="action_name">cal.insert-alpha</property>
+            <property name="action_target">&apos;mod&apos;</property>
             <style>
               <class name="operator-button"/>
             </style>
@@ -869,10 +869,10 @@
           </object>
         </child>
         <child>
-          <object class="GtkButton" id="calc_root_button">
+          <object class="GtkButton" id="calc_square_root_button">
             <property name="label">√</property>
             <property name="focus_on_click">False</property>
-            <property name="tooltip_text" translatable="yes">Root [Ctrl+R]</property>
+            <property name="tooltip_text" translatable="yes">Square Root [Ctrl+R]</property>
             <property name="action_name">cal.insert-general</property>
             <property name="action_target">&apos;√&apos;</property>
             <style>
@@ -969,7 +969,7 @@
             <property name="action_name">cal.insert-general</property>
             <property name="action_target">&apos;^&apos;</property>
             <child>
-              <object class="GtkLabel" id="x_pow_y_label">
+              <object class="GtkLabel">
                 <property name="label">&lt;i&gt;x&lt;/i&gt;&lt;sup&gt;&lt;i&gt;y&lt;/i&gt;&lt;/sup&gt;</property>
                 <property name="use_markup">1</property>
               </object>

@@ -296,7 +296,7 @@ public class MathDisplay : Gtk.Box
                 equation.insert ("⌉");
                 return true;
             case Gdk.Key.e:
-                equation.insert_exponent ();
+                equation.insert_exponent ("10");
                 return true;
             case Gdk.Key.f:
                 equation.factorize ();
