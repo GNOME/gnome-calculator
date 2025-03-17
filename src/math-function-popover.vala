@@ -120,6 +120,8 @@ public class MathFunctionPopover : MathPopover<MathFunction>
             expression = "(%s)".printf (string.joinv (";", function.arguments));
         else if (function.name == "ncr" || function.name == "npr")
             expression = "(n;r)";
+        else if (function.name == "gcd" || function.name == "lcm")
+            expression = "(x;y;…)";
 
         string text = "<b>%s</b>%s".printf (function.name, expression);
         return text;

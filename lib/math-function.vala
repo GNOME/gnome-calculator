@@ -294,5 +294,9 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
         return x.combination (args.length <= 1 ? x : args[1]);
     else if (lower_name == "npr")
         return x.permutation (args.length <= 1 ? x : args[1]);
+    else if (lower_name == "gcd")
+        return Number.gcd (args);
+    else if (lower_name == "lcm")
+        return Number.lcm (args);
     return null;
 }

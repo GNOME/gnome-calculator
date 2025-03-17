@@ -116,6 +116,10 @@ public class FunctionManager : Object
         add (new BuiltInMathFunction ("ncr", _("Combination")));
 
         add (new BuiltInMathFunction ("npr", _("Permutation")));
+
+        add (new BuiltInMathFunction ("gcd", _("Greatest Common Divisor")));
+
+        add (new BuiltInMathFunction ("lcm", _("Least Common Multiple")));
     }
 
     private void reload_custom_functions ()

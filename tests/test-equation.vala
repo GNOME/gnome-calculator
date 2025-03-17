@@ -628,6 +628,13 @@ private void test_equations ()
     test ("npr (9;-5)", "", ErrorCode.MP);
     test ("npr (9;10)", "", ErrorCode.MP);
 
+    test ("gcd (456;1584)", "24", 0);
+    test ("gcd (456;1584;40;60)", "4", 0);
+    test ("gcd (456;15.84)", "", ErrorCode.MP);
+    test ("lcm (456;1584)", "30096", 0);
+    test ("lcm (456;1584;40;60)", "150480", 0);
+    test ("lcm (456;15.84)", "", ErrorCode.MP);
+
     /* Complex numbers */
     angle_units = AngleUnit.DEGREES;
     test ("i", "i", 0);

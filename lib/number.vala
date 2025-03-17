@@ -974,6 +974,65 @@ public class Number : GLib.Object
         return z;
     }
 
+    /* Sets z to be the greatest common divisor of 'args' */
+    public static Number gcd (Number[] args)
+    {
+        for (var i = 0; i < args.length; i++)
+            if (!args[i].is_integer ())
+            {
+                error = _("Greatest common divisor is only defined for integers");
+                return new Number.integer (0);
+            }
+
+        if (args.length == 1)
+            return args[0].abs ();
+
+        var z = gcd_x_y (args[0], args[1]);
+        for (var i = 2; i < args.length; i++)
+            z = gcd_x_y (z, args[i]);
+
+        return z.abs ();
+    }
+
+    /* Sets z to be the least common multiple of 'args' */
+    public static Number lcm (Number[] args)
+    {
+        for (var i = 0; i < args.length; i++)
+            if (!args[i].is_integer ())
+            {
+                error = _("Least common multiple is only defined for integers");
+                return new Number.integer (0);
+            }
+
+        if (args.length == 1)
+            return args[0].abs ();
+
+        var z = lcm_x_y (args[0], args[1]);
+        for (var i = 2; i < args.length; i++)
+            z = lcm_x_y (z, args[i]);
+
+        return z.abs ();
+    }
+
+    private static Number gcd_x_y (Number x, Number y)
+    {
+        var a = x, b = y;
+        while (!b.is_zero ())
+        {
+            var remainder = a.modulus_divide (b);
+            a = b;
+            b = remainder;
+        }
+        return a;
+    }
+
+    private static Number lcm_x_y (Number x, Number y)
+    {
+        if (x.is_zero () || y.is_zero ())
+            return new Number.integer (0);
+        return x.divide (gcd_x_y (x, y)).multiply (y);
+    }
+
     /* In: An p := p \in 2Z+1; An b := gcd(b,p) = 1
       Out:  A boolean showing that p is probably prime */
     private bool is_sprp (Number p, uint64 b)
