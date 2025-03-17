@@ -294,24 +294,26 @@ public class MathDisplay : Gtk.Box
             case Gdk.Key.p:
                 equation.insert ("π");
                 return true;
-    	    case Gdk.Key.t:
+            case Gdk.Key.t:
                 equation.insert ("τ");
                 return true;
             case Gdk.Key.r:
                 equation.insert ("√");
                 return true;
             case Gdk.Key.o:
-                equation.insert("˚");
+                if (((MathWindow) root).buttons.mode == ButtonMode.PROGRAMMING)
+                    return false;
+                equation.insert("°");
                 return true;
             case Gdk.Key.u:
                 equation.insert ("µ");
                 return true;
             case Gdk.Key.minus:
-                 equation.insert ("⁻");
-                 return true;
+                equation.insert ("⁻");
+                return true;
             case Gdk.Key.apostrophe:
-                 equation.insert ("°");
-                 return true;
+                equation.insert ("°");
+                return true;
             }
         }
         if (state == Gdk.ModifierType.ALT_MASK)
