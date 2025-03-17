@@ -19,6 +19,11 @@
     <value value="1" nick="degrees"/>
     <value value="2" nick="gradians"/>
   </enum>
+  <enum id="org.gnome.calculator.CurrencyDisplay">
+    <value value="0" nick="code"/>
+    <value value="1" nick="name"/>
+    <value value="2" nick="both"/>
+  </enum>
 
   <schema path="/org/gnome/calculator/" id="org.gnome.calculator" gettext-domain="gnome-calculator">
     <key type="i" name="accuracy">
@@ -62,6 +67,11 @@
       <default>604800</default>
       <summary>Currency update interval</summary>
       <description>How often the currency exchange rates should be updated. A value of 0 means the currency exchange rates won't be fetched from the network at all.</description>
+    </key>
+    <key name="currency-display" enum="org.gnome.calculator.CurrencyDisplay">
+      <default>'name'</default>
+      <summary>Currency display</summary>
+      <description>Indicates whether to show currency code, currency name or both of them in the converter.</description>
     </key>
     <key name="button-mode" enum="org.gnome.calculator.ButtonMode">
       <default>'basic'</default>

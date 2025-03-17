@@ -32,6 +32,8 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
     [GtkChild]
     private unowned Adw.ComboRow row_refresh_interval;
     [GtkChild]
+    private unowned Adw.ComboRow row_currency_display;
+    [GtkChild]
     private unowned Adw.SpinRow row_decimals;
     [GtkChild]
     private unowned Adw.SwitchRow row_thousands_separators;
@@ -75,6 +77,14 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         row_refresh_interval.set_expression (expression);
         row_refresh_interval.set_model (model);
 
+        model = new Adw.EnumListModel (typeof (CurrencyDisplay));
+        expression = new Gtk.CClosureExpression (typeof (string),
+                                                 null, {},
+                                                 (Callback) currency_display_name,
+                                                 null, null);
+        row_currency_display.set_expression (expression);
+        row_currency_display.set_model (model);
+
         settings.bind ("accuracy", row_decimals, "value", SettingsBindFlags.DEFAULT);
         settings.bind ("show-zeroes", row_trailing_zeroes, "active", SettingsBindFlags.DEFAULT);
         settings.bind ("show-thousands", row_thousands_separators, "active", SettingsBindFlags.DEFAULT);
@@ -82,6 +92,7 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         row_angle_units.notify["selected"].connect (row_angle_units_changed_cb);
         row_word_size.notify["selected"].connect (row_word_size_changed_cb);
         row_refresh_interval.notify["selected"].connect (row_refresh_interval_changed_cb);
+        row_currency_display.notify["selected"].connect (row_currency_display_changed_cb);
 
         set_combo_row_from_int (row_word_size, equation.word_size);
         equation.notify["word-size"].connect ((pspec) => { set_combo_row_from_int (row_word_size, equation.word_size); });
@@ -91,6 +102,9 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
 
         set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval"));
         settings.changed["refresh-interval"].connect ((pspec) => { set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval")); });
+
+        set_combo_row_from_int (row_currency_display, settings.get_enum ("currency-display"));
+        settings.changed["currency-display"].connect ((pspec) => { set_combo_row_from_int (row_currency_display, settings.get_enum ("currency-display")); });
 
         if (DEVELOPMENT_BUILD) {
             add_css_class ("devel");
@@ -138,6 +152,19 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         }
     }
 
+    private static string currency_display_name (Adw.EnumListItem item) {
+        switch (item.value) {
+            case CurrencyDisplay.CODE:
+                return _("Currency Code");
+            case CurrencyDisplay.NAME:
+                return _("Currency Name");
+            case CurrencyDisplay.BOTH:
+                return _("Both");
+            default:
+                return "";
+        }
+    }
+
     private void row_angle_units_changed_cb ()
     {
         Adw.EnumListItem item = (Adw.EnumListItem) row_angle_units.selected_item;
@@ -156,6 +183,13 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         RefreshInterval value = (RefreshInterval) item.value;
         settings.set_int ("refresh-interval", value);
         CurrencyManager.get_default ().refresh_interval = value;
+    }
+
+    private void row_currency_display_changed_cb ()
+    {
+        Adw.EnumListItem item = (Adw.EnumListItem) row_currency_display.selected_item;
+        CurrencyDisplay value = (CurrencyDisplay) item.value;
+        settings.set_enum ("currency-display", value);
     }
 
     private void set_combo_row_from_int (Adw.ComboRow row, int value)

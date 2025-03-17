@@ -8,6 +8,13 @@
  * license.
  */
 
+public enum CurrencyDisplay
+{
+    CODE,
+    NAME,
+    BOTH
+}
+
 [GtkTemplate (ui = "/org/gnome/calculator/math-converter.ui")]
 public class MathConverter : Gtk.Grid
 {
@@ -16,6 +23,18 @@ public class MathConverter : Gtk.Grid
     private string category;
     private Number from_number;
     private Number to_number;
+    private CurrencyDisplay _currency_display;
+    public CurrencyDisplay currency_display
+    {
+        set
+        {
+            if (_currency_display == value)
+                return;
+            _currency_display = value;
+            if (category == "currency")
+                category_combobox_changed_cb ();
+        }
+    }
 
     [GtkChild]
     private unowned Gtk.DropDown category_combo;
@@ -92,6 +111,8 @@ public class MathConverter : Gtk.Grid
         from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
         to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
 
+        var settings = new Settings ("org.gnome.calculator");
+        settings.bind ("currency-display", this, "currency_display", SettingsBindFlags.GET);
         set_conversion (equation.source_units, equation.target_units);
     }
 
@@ -246,9 +267,16 @@ public class MathConverter : Gtk.Grid
     {
         var unit_model = new ListStore (typeof (Unit));
 
-        var expression = new Gtk.PropertyExpression (typeof (Unit),
-                                                     null,
-                                                     "display_name");
+        Gtk.Expression expression = null;
+        if (category != "currency" || _currency_display == CurrencyDisplay.NAME)
+            expression = new Gtk.PropertyExpression (typeof (Unit), null, "display_name");
+        else if (_currency_display == CurrencyDisplay.CODE)
+            expression = new Gtk.PropertyExpression (typeof (Unit), null, "name");
+        else
+            expression = new Gtk.CClosureExpression (typeof (string),
+                                                     null, {},
+                                                     (Callback) currency_item,
+                                                     null, null);
         from_combo.expression = expression;
         to_combo.expression = expression;
 
@@ -257,12 +285,19 @@ public class MathConverter : Gtk.Grid
         {
             unit_model.append (unit);
         }
+        if (category == "currency" && _currency_display != CurrencyDisplay.NAME)
+            unit_model.sort ((a, b) => { return ((Unit) a).name.ascii_casecmp (((Unit) b).name); });
 
         uint model_size = unit_model.get_n_items ();
         to_combo.model = unit_model;
         to_combo.enable_search = model_size > 10;
         from_combo.model = unit_model;
         from_combo.enable_search = model_size > 10;
+    }
+
+    private static string currency_item (Unit unit)
+    {
+        return "%s (%s)".printf (unit.name, unit.display_name);
     }
 
     private bool set_active_unit (Gtk.DropDown combo, Unit unit)
