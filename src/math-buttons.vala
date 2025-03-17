@@ -57,6 +57,7 @@ public class MathButtons : Adw.BreakpointBin
     private Adw.Carousel fin_carousel;
     private Adw.Carousel prog_carousel;
 
+    private Gtk.Button angle_units_button;
     private Gtk.DropDown base_combo;
     private Gtk.ScrolledWindow base_scrolled;
     private Gtk.Button hex_base_button;
@@ -98,6 +99,7 @@ public class MathButtons : Adw.BreakpointBin
         {"clear",                on_clear                                    },
         {"factorize",            on_factorize                                },
         {"insert-exponent",      on_insert_exponent                          },
+        {"set-angle-units",      on_set_angle_units                          },
         {"set-word-size",        on_set_word_size,        "i"                },
         {"toggle-bit",           on_toggle_bit,           "i"                },
         {"insert-character",     on_insert_character                         },
@@ -294,6 +296,19 @@ public class MathButtons : Adw.BreakpointBin
     private void on_insert_exponent (SimpleAction action, Variant? param)
     {
         equation.insert_exponent ();
+    }
+
+    private void on_set_angle_units ()
+    {
+        equation.angle_units = (equation.angle_units + 2) % 3;
+    }
+
+    private void update_angle_units_button ()
+    {
+        string[] unit_symbols = {"Rad", "Deg", "Grad"};
+        string[] unit_names = {_("Radians"), _("Degrees"), _("Gradians")};
+        angle_units_button.label = unit_symbols[equation.angle_units];
+        angle_units_button.tooltip_text = _("Angle Unit: %s").printf (unit_names[equation.angle_units]);
     }
 
     private void on_set_word_size (SimpleAction action, Variant? param)
@@ -635,6 +650,13 @@ public class MathButtons : Adw.BreakpointBin
             MathFunctionPopover math_popover = new MathFunctionPopover (equation, model);
             fill_functions_model (model, math_popover, function_manager);
             menu_button.popover = math_popover;
+        }
+
+        if (mode == ButtonMode.ADVANCED)
+        {
+            angle_units_button = builder.get_object("calc_angle_units_button") as Gtk.Button;
+            equation.notify["angle-units"].connect (update_angle_units_button);
+            update_angle_units_button ();
         }
 
         if (mode == ButtonMode.PROGRAMMING)
