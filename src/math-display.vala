@@ -16,6 +16,8 @@ public class MathDisplay : Gtk.Box
 
     /* Display widget */
     [GtkChild]
+    Gtk.ScrolledWindow display_scrolled;
+    [GtkChild]
     GtkSource.View source_view;
 
     /* Buffer that shows errors etc */
@@ -74,6 +76,13 @@ public class MathDisplay : Gtk.Box
             double margin = count > 0 ? source_view.right_margin : source_view.left_margin;
             double within_margin = (margin / width).clamp (0.0,  0.5 - double.EPSILON);
             source_view.scroll_to_iter (cursor_iter, within_margin, false, 0, 0);
+        });
+
+        /* Use equation.paste () instead of the default handler, to replace '\n'
+         * characters by ' ' in text before pasting it. */
+        source_view.paste_clipboard.connect (() => {
+            equation.paste ();
+            Signal.stop_emission_by_name (source_view, "paste-clipboard");
         });
     }
 
@@ -294,24 +303,26 @@ public class MathDisplay : Gtk.Box
             case Gdk.Key.p:
                 equation.insert ("π");
                 return true;
-    	    case Gdk.Key.t:
+            case Gdk.Key.t:
                 equation.insert ("τ");
                 return true;
             case Gdk.Key.r:
                 equation.insert ("√");
                 return true;
             case Gdk.Key.o:
-                equation.insert("˚");
+                if (((MathWindow) root).buttons.mode == ButtonMode.PROGRAMMING)
+                    return false;
+                equation.insert("°");
                 return true;
             case Gdk.Key.u:
                 equation.insert ("µ");
                 return true;
             case Gdk.Key.minus:
-                 equation.insert ("⁻");
-                 return true;
+                equation.insert ("⁻");
+                return true;
             case Gdk.Key.apostrophe:
-                 equation.insert ("°");
-                 return true;
+                equation.insert ("°");
+                return true;
             }
         }
         if (state == Gdk.ModifierType.ALT_MASK)
@@ -429,6 +440,21 @@ public class MathDisplay : Gtk.Box
         }
 
         return false;
+    }
+
+    [GtkCallback]
+    private bool scroll_cb (Gtk.EventControllerScroll controller, double dx, double dy)
+    {
+        if (dy == 0 || dx != 0)
+            return Gdk.EVENT_PROPAGATE;
+
+        /* Scroll horizontally when vertically scrolled */
+        Gtk.Adjustment hadjustment = display_scrolled.get_hadjustment ();
+        double step = hadjustment.get_step_increment ();
+        double new_value = hadjustment.get_value () + dy * step;
+        hadjustment.set_value (new_value);
+
+        return Gdk.EVENT_STOP;
     }
 
     private void status_changed_cb ()
