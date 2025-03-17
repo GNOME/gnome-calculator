@@ -931,6 +931,49 @@ public class Number : GLib.Object
         return ones_complement (wordlen).add (new Number.integer (1));
     }
 
+    /* Sets z = xCr */
+    public Number combination (Number r)
+    {
+        if (!is_positive_integer () || !r.is_positive_integer ())
+        {
+            error = _("Combination is only defined for non-negative integers");
+            return new Number.integer (0);
+        }
+        if (compare (r) < 0)
+        {
+            error = _("Combination is undefined if n is less than r");
+            return new Number.integer (0);
+        }
+
+        var r1 = r.compare (divide_integer (2)) <= 0 ? r : subtract (r);
+        return permutation (r1).divide (r1.factorial ());
+    }
+
+    /* Sets z = xPr */
+    public Number permutation (Number r)
+    {
+        if (!is_positive_integer () || !r.is_positive_integer ())
+        {
+            error = _("Permutation is only defined for non-negative integers");
+            return new Number.integer (0);
+        }
+        if (compare (r) < 0)
+        {
+            error = _("Permutation is undefined if n is less than r");
+            return new Number.integer (0);
+        }
+
+        if (r.is_zero ())
+            return new Number.integer (1);
+
+        var value = to_integer ();
+        var z = this;
+        for (var i = value - r.to_integer () + 1; i < value; i++)
+            z = z.multiply_integer (i);
+
+        return z;
+    }
+
     /* In: An p := p \in 2Z+1; An b := gcd(b,p) = 1
       Out:  A boolean showing that p is probably prime */
     private bool is_sprp (Number p, uint64 b)

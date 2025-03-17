@@ -617,6 +617,17 @@ private void test_equations ()
     angle_units = AngleUnit.GRADIANS;
     test ("sin 100", "1", 0);
 
+    test ("ncr (9;5)", "126", 0);
+    test ("ncr (9;9)", "1", 0);
+    test ("ncr (9;0)", "1", 0);
+    test ("ncr (9;-5)", "", ErrorCode.MP);
+    test ("ncr (9;10)", "", ErrorCode.MP);
+    test ("npr (9;5)", "15120", 0);
+    test ("npr (9;9)", "362880", 0);
+    test ("npr (9;0)", "1", 0);
+    test ("npr (9;-5)", "", ErrorCode.MP);
+    test ("npr (9;10)", "", ErrorCode.MP);
+
     /* Complex numbers */
     angle_units = AngleUnit.DEGREES;
     test ("i", "i", 0);

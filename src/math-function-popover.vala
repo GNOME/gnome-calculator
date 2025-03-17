@@ -118,6 +118,8 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         var expression = "(x)";
         if (function.is_custom_function ())
             expression = "(%s)".printf (string.joinv (";", function.arguments));
+        else if (function.name == "ncr" || function.name == "npr")
+            expression = "(n;r)";
 
         string text = "<b>%s</b>%s".printf (function.name, expression);
         return text;
