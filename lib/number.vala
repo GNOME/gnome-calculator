@@ -192,6 +192,55 @@ public class Number : GLib.Object
         return !num.get_imag ().val.is_zero ();
     }
 
+    /* Return true if x is 180 × n degrees */
+    public bool is_180n_degrees (AngleUnit unit)
+    {
+        if (is_complex ())
+            return false;
+
+        Number check;
+        switch (unit)
+        {
+        case AngleUnit.RADIANS:
+            check = divide (new Number.pi ());
+            break;
+        case AngleUnit.DEGREES:
+            check = divide (new Number.integer (180));
+            break;
+        case AngleUnit.GRADIANS:
+            check = divide (new Number.integer (200));
+            break;
+        default:
+            error = _("Unknown angle unit");
+            return true;
+        }
+
+        bool is_180n = check.is_integer ();
+        if (!is_180n && unit == AngleUnit.RADIANS)
+        {
+            var eps = multiply (new Number.integer (2).xpowy_integer (-precision)).abs ();
+            is_180n = check.subtract (check.round ()).abs ().compare (eps) < 0;
+        }
+        return is_180n;
+    }
+
+    /* Return true if x is 180 × n + 90 degrees */
+    public bool is_180n_plus_90_degrees (AngleUnit unit)
+    {
+        switch (unit)
+        {
+        case AngleUnit.RADIANS:
+            return subtract (new Number.pi ().divide_integer (2)).is_180n_degrees (unit);
+        case AngleUnit.DEGREES:
+            return subtract (new Number.integer (90)).is_180n_degrees (unit);
+        case AngleUnit.GRADIANS:
+            return subtract (new Number.integer (100)).is_180n_degrees (unit);
+        default:
+            error = _("Unknown angle unit");
+            return true;
+        }
+    }
+
     /* Return error if overflow or underflow */
     public static void check_flags ()
     {
@@ -637,6 +686,10 @@ public class Number : GLib.Object
     /* Sets z = sin x */
     public Number sin (AngleUnit unit = AngleUnit.RADIANS)
     {
+        /* Check for zero values */
+        if (is_180n_degrees (unit))
+            return new Number.integer (0);
+
         var z = new Number ();
         if (is_complex ())
           z.num.@set (num);
@@ -649,6 +702,10 @@ public class Number : GLib.Object
     /* Sets z = cos x */
     public Number cos (AngleUnit unit = AngleUnit.RADIANS)
     {
+        /* Check for zero values */
+        if (is_180n_plus_90_degrees (unit))
+            return new Number.integer (0);
+
         var z = new Number ();
         if (is_complex ())
           z.num.@set (num);
@@ -661,11 +718,10 @@ public class Number : GLib.Object
     /* Sets z = tan x */
     public Number tan (AngleUnit unit = AngleUnit.RADIANS)
     {
-        /* Check for undefined values */
-        var x_radians = to_radians (unit);
-        var check = x_radians.subtract (new Number.pi ().divide_integer (2)).divide (new Number.pi ());
-
-        if (check.is_integer ())
+        /* Check for zero and undefined values */
+        if (is_180n_degrees (unit))
+            return new Number.integer (0);
+        else if (is_180n_plus_90_degrees (unit))
         {
             /* Translators: Error displayed when tangent value is undefined */
             error = _("Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)");
@@ -1266,21 +1322,13 @@ public class Number : GLib.Object
                 break;
 
             case AngleUnit.GRADIANS:
-                i=200;
+                i = 200;
                 break;
         }
         var scale = MPFR.Real (precision);
         scale.const_pi ();
         scale.divide_signed_integer (scale, i);
         res.multiply_mpreal (op, scale);
-    }
-
-    /* Convert x to radians */
-    private Number to_radians (AngleUnit unit)
-    {
-        var z = new Number ();
-        mpc_to_radians (z.num, num, unit);
-        return z;
     }
 
     private Number bitwise (Number y, BitwiseFunc bitwise_operator, int wordlen)
@@ -1561,4 +1609,3 @@ public bool mp_is_overflow (Number x, int wordlen)
     var t2 = new Number.integer (2).xpowy_integer (wordlen);
     return t2.compare (x) > 0;
 }
-
