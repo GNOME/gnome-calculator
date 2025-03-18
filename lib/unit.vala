@@ -68,7 +68,9 @@ public class UnitManager : Object
         speed_category.add_unit (new Unit ("knot", _("Knots"), "x/1.94384449", "1.94384449x", dpgettext2 (null, "unit-symbols", "kt,kn,nd,knot,knots")));
         area_category.add_unit (new Unit ("hectare", _("Hectares"), "10000x", "x/10000", dpgettext2 (null, "unit-symbols", "hectare,hectares,ha")));
         area_category.add_unit (new Unit ("acre", _("Acres"), "4046.8564224x", "x/4046.8564224", dpgettext2 (null, "unit-symbols", "acre,acres")));
+        area_category.add_unit (new Unit ("square-mile", _("Square Miles"), "2589988.110336x", "x/2589988.110336", dpgettext2 (null, "unit-symbols", "mi²")));
         area_category.add_unit (new Unit ("square-foot", _("Square Feet"), "x/10.763910417", "10.763910417x", dpgettext2 (null, "unit-symbols", "ft²")));
+        area_category.add_unit (new Unit ("square-kilometer", _("Square Kilometers"), "1000000x", "0.000001x", dpgettext2 (null, "unit-symbols", "km²")));
         area_category.add_unit (new Unit ("square-meter", _("Square Meters"), "x", "x", dpgettext2 (null, "unit-symbols", "m²")));
         area_category.add_unit (new Unit ("square-centimeter", _("Square Centimeters"), "0.0001x", "10000x", dpgettext2 (null, "unit-symbols", "cm²")));
         area_category.add_unit (new Unit ("square-millimeter", _("Square Millimeters"), "0.000001x", "1000000x", dpgettext2 (null, "unit-symbols", "mm²")));
@@ -86,6 +88,8 @@ public class UnitManager : Object
         weight_category.add_unit (new Unit ("ounce", _("Ounces"), "0.02834952x", "x/0.02834952", dpgettext2 (null, "unit-symbols", "ounce,ounces,oz")));
         weight_category.add_unit (new Unit ("troy-ounce", _("Troy Ounces"), "0.0311034768x", "x/0.0311034768", dpgettext2 (null, "unit-symbols", "Troy ounce,Troy ounces,ozt")));
         weight_category.add_unit (new Unit ("gram", _("Grams"), "0.001x", "1000x", dpgettext2 (null, "unit-symbols", "gram,grams,gramme,grammes,g")));
+        weight_category.add_unit (new Unit ("milligram", _("Milligrams"), "0.000001x", "1000000x", dpgettext2 (null, "unit-symbols", "milligram,milligrams,milligramme,milligrammes,mg")));
+        weight_category.add_unit (new Unit ("microgram", _("Micrograms"), "0.000000001x", "1000000000x", dpgettext2 (null, "unit-symbols", "microgram,micrograms,microgramme,microgrammes,μg,ug")));
         weight_category.add_unit (new Unit ("stone", _("Stone"), "6.350293x", "x/6.350293", dpgettext2 (null, "unit-symbols", "stone,st,stones")));
         duration_category.add_unit (new Unit ("century", _("Centuries"), "3155760000x", "x/3155760000", dpgettext2 (null, "unit-symbols", "century,centuries")));
         duration_category.add_unit (new Unit ("decade", _("Decades"), "315576000x", "x/315576000", dpgettext2 (null, "unit-symbols", "decade,decades")));
@@ -151,6 +155,7 @@ public class UnitManager : Object
         energy_category.add_unit (new Unit ("kilowatthour", _("Kilowatt-Hours"), "3600000x", "x/3600000" ,dpgettext2 (null, "unit-symbols", "kwh,kWh,kilowatt-hour,kilowatthour")));
         energy_category.add_unit (new Unit ("btu", _("BTU"), "x*1054.350264489", "x/1054.350264489" ,dpgettext2 (null, "unit-symbols", "btu,BTU")));
         energy_category.add_unit(new Unit ("calorie", _("Calories"), "x*4.184", "x/4.184", dpgettext2 (null, "unit-symbols", "calories,calorie,cal")));
+        energy_category.add_unit(new Unit ("kilocalorie", _("Kilocalories"), "x*4184", "x/4184", dpgettext2 (null, "unit-symbols", "kilocalories,kilocalorie,kcal")));
         energy_category.add_unit(new Unit ("erg", _("Ergs"), "x/10000000", "x*10000000", dpgettext2 (null, "unit-symbols", "ergs,erg")));
         energy_category.add_unit(new Unit ("ev", _("eV"), "x*1.602176634/10000000000000000000", "x*1.602176634*10000000000000000000", dpgettext2 (null, "unit-symbols", "electronvolt,electronvolts,ev")));
         energy_category.add_unit(new Unit ("ftlb", _("Ft-lbs"), "x*1.3558179483314004", "x/1.3558179483314004", dpgettext2 (null, "unit-symbols", "foot-pound,foot-pounds,ft-lb,ft-lbs")));
