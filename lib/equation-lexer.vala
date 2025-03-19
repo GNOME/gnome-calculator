@@ -300,6 +300,16 @@ public class Lexer : Object
             if (token.type == LexerTokenType.PL_EOS)
                 break;
         }
+
+        for (unowned var element = tokens.first (); element != null; element = element.next)
+        {
+            if (element.data.type == LexerTokenType.UNIT
+                && (element.prev == null || element.prev.data.type != LexerTokenType.IN)
+                && (element.next == null || element.next.data.type != LexerTokenType.IN))
+            {
+                element.data.type = LexerTokenType.VARIABLE;
+            }
+        }
     }
 
     /* Get next token interface. Will be called by parser to get pointer to next token in token stream. */
