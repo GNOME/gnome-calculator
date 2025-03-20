@@ -70,7 +70,7 @@ public class MathButtons : Adw.BreakpointBin
     private Gtk.Grid bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
     private List<Gtk.Button> hex_number_buttons;
-    private Gtk.Button calc_pi_negative_button;
+    private Gtk.Button calc_mutable_button;
 
     private Adw.Dialog character_code_dialog;
     private Gtk.Button insert_button;
@@ -108,6 +108,7 @@ public class MathButtons : Adw.BreakpointBin
         {"toggle-bit",           on_toggle_bit,           "i"                },
         {"insert-character",     on_insert_character                         },
         {"insert-numeric-point", on_insert_numeric_point                     },
+        {"insert-dms",           on_insert_dms,           "s"                },
         {"set-number-mode",      on_set_number_mode,      "s", "'normal'"    },
         {"launch-finc-dialog",   on_launch_finc_dialog,   "s"                },
         {"currency-conversion",  on_currency_conversion                      },
@@ -353,6 +354,11 @@ public class MathButtons : Adw.BreakpointBin
             equation.insert_numeric_point ();
         else
             converter.insert_numeric_point ();
+    }
+
+    private void on_insert_dms (SimpleAction action, Variant? param)
+    {
+        converter.insert_dms ();
     }
 
     private void update_base_button (Gtk.Button button, string value, string base_suffix)
@@ -738,9 +744,9 @@ public class MathButtons : Adw.BreakpointBin
 
         if (mode == ButtonMode.CONVERSION)
         {
-            calc_pi_negative_button = builder.get_object ("calc_pi_negative_button") as Gtk.Button;
-            converter.category_changed.connect (converter_category_changed_cb);
-            converter_category_changed_cb ();
+            calc_mutable_button = builder.get_object ("calc_mutable_button") as Gtk.Button;
+            converter.changed.connect (converter_changed_cb);
+            converter_changed_cb ();
         }
 
         /* Setup financial functions */
@@ -784,26 +790,34 @@ public class MathButtons : Adw.BreakpointBin
         equation.variables.variable_deleted.connect ((name) => math_popover.item_deleted_cb (new MathVariable (name, null)));
     }
 
-    private void converter_category_changed_cb ()
+    private void converter_changed_cb ()
     {
-        if (converter.get_category () == "angle")
+        string category, unit;
+        converter.get_conversion (out category, out unit);
+        if (category == "angle" && unit == "degree")
         {
-            calc_pi_negative_button.action_target = calc_pi_negative_button.label = "π";
-            calc_pi_negative_button.tooltip_text = _("Pi [Ctrl+P]");
-            calc_pi_negative_button.action_name = "cal.insert-general";
+            calc_mutable_button.action_target = calc_mutable_button.label = "° ' \"";
+            calc_mutable_button.tooltip_text = _("Degrees, Minutes, Seconds");
+            calc_mutable_button.action_name = "cal.insert-dms";
         }
-        else if (converter.get_category () == "temperature")
+        else if (category == "angle" && unit == "radian")
         {
-            calc_pi_negative_button.action_target = calc_pi_negative_button.label = "−";
-            calc_pi_negative_button.tooltip_text = _("Negative [-]");
-            calc_pi_negative_button.action_name = "cal.insert-general";
+            calc_mutable_button.action_target = calc_mutable_button.label = "π";
+            calc_mutable_button.tooltip_text = _("Pi [Ctrl+P]");
+            calc_mutable_button.action_name = "cal.insert-general";
+        }
+        else if (category == "temperature")
+        {
+            calc_mutable_button.action_target = calc_mutable_button.label = "−";
+            calc_mutable_button.tooltip_text = _("Negative [-]");
+            calc_mutable_button.action_name = "cal.insert-general";
         }
         else
         {
-            calc_pi_negative_button.label = null;
-            calc_pi_negative_button.tooltip_text = null;
-            calc_pi_negative_button.action_name = null;
-            calc_pi_negative_button.sensitive = false;
+            calc_mutable_button.label = null;
+            calc_mutable_button.tooltip_text = null;
+            calc_mutable_button.action_name = null;
+            calc_mutable_button.sensitive = false;
         }
     }
 
@@ -943,7 +957,7 @@ public class MathButtons : Adw.BreakpointBin
         for (var i = 0; i < len; i++)
         {
             x = x.add (new Number.integer (decoded[i]));
-            if(i != (len - 1))
+            if (i != (len - 1))
             {
                 x = x.shift (8);
             }
