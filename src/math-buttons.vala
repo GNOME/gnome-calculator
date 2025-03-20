@@ -154,7 +154,6 @@ public class MathButtons : Adw.BreakpointBin
         equation.notify["angle-units"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["number-format"].connect ((pspec) => { update_bit_panel (); });
         equation.notify["word-size"].connect ((pspec) => { word_size_changed_cb (); });
-        converter.category_changed.connect (converter_category_changed_cb);
         number_mode_changed_cb ();
         update_bit_panel ();
         update_buttons ();
@@ -740,6 +739,7 @@ public class MathButtons : Adw.BreakpointBin
         if (mode == ButtonMode.CONVERSION)
         {
             calc_pi_negative_button = builder.get_object ("calc_pi_negative_button") as Gtk.Button;
+            converter.category_changed.connect (converter_category_changed_cb);
             converter_category_changed_cb ();
         }
 

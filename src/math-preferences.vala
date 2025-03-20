@@ -39,6 +39,17 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
     private unowned Adw.SwitchRow row_thousands_separators;
     [GtkChild]
     private unowned Adw.SwitchRow row_trailing_zeroes;
+    [GtkChild]
+    private unowned Adw.NavigationPage page_favorite_currencies;
+    [GtkChild]
+    private unowned Adw.PreferencesGroup group_favorite_currencies;
+    [GtkChild]
+    private unowned Gtk.SearchEntry search_entry;
+    [GtkChild]
+    private unowned Gtk.Stack search_stack;
+
+    private HashTable<string, Adw.SwitchRow> currency_rows;
+    private ulong favorites_changed;
 
     private Settings settings;
 
@@ -190,6 +201,87 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         Adw.EnumListItem item = (Adw.EnumListItem) row_currency_display.selected_item;
         CurrencyDisplay value = (CurrencyDisplay) item.value;
         settings.set_enum ("currency-display", value);
+    }
+
+    [GtkCallback]
+    private void row_favorite_currencies_activated_cb ()
+    {
+        if (currency_rows == null)
+            load_currencies ();
+        ((Adw.PreferencesPage) search_stack.get_first_child ()).scroll_to_top ();
+        push_subpage (page_favorite_currencies);
+        search_entry.text = "";
+        search_entry.grab_focus ();
+    }
+
+    private void load_currencies ()
+    {
+        currency_rows = new HashTable<string, Adw.SwitchRow> (str_hash, str_equal);
+        var category = UnitManager.get_default ().get_category ("currency");
+        foreach (var unit in category.get_units ())
+        {
+            var row = new Adw.SwitchRow ();
+            row.use_markup = false;
+            row.title = unit.display_name;
+            row.subtitle = unit.name;
+            var handler = row.notify["active"].connect (currency_row_active_cb);
+            row.set_data<ulong> ("handler", handler);
+            group_favorite_currencies.add (row);
+            currency_rows.insert (unit.name, row);
+        }
+        favorites_changed = settings.changed["favorite-currencies"].connect (favorites_changed_cb);
+        favorites_changed_cb ();
+    }
+
+    private void currency_row_active_cb ()
+    {
+        var favorites = new Array<string> ();
+        currency_rows.foreach ((name, row) =>
+        {
+            if (row.active)
+                favorites.append_val (name);
+        });
+        SignalHandler.block (settings, favorites_changed);
+        settings.set_strv ("favorite-currencies", favorites.data);
+        SignalHandler.unblock (settings, favorites_changed);
+    }
+
+    private void favorites_changed_cb ()
+    {
+        currency_rows.foreach ((name, row) =>
+        {
+            if (row.active)
+            {
+                SignalHandler.block (row, row.get_data<ulong> ("handler"));
+                row.active = false;
+                SignalHandler.unblock (row, row.get_data<ulong> ("handler"));
+            }
+        });
+        var favorites = settings.get_strv ("favorite-currencies");
+        foreach (var name in favorites)
+        {
+            var row = currency_rows.get (name);
+            SignalHandler.block (row, row.get_data<ulong> ("handler"));
+            row.active = true;
+            SignalHandler.unblock (row, row.get_data<ulong> ("handler"));
+        }
+    }
+
+    [GtkCallback]
+    private void search_changed_cb (Gtk.SearchEntry entry)
+    {
+        var search = entry.text.normalize ().casefold ();
+        var found = false;
+        currency_rows.foreach ((name, row) =>
+        {
+            var currency_code = name.casefold ();
+            var currency_name = row.title.normalize ().casefold ();
+            if (currency_code.contains (search) || currency_name.contains (search))
+                row.visible = found = true;
+            else
+                row.visible = false;
+        });
+        search_stack.pages.select_item (found ? 0 : 1, true);
     }
 
     private void set_combo_row_from_int (Adw.ComboRow row, int value)

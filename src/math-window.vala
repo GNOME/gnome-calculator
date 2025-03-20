@@ -346,6 +346,8 @@ public class MathWindow : Adw.ApplicationWindow
     {
         if (preferences_dialog == null)
             preferences_dialog = new MathPreferencesDialog (equation);
+        preferences_dialog.pop_subpage ();
+        preferences_dialog.get_visible_page ().scroll_to_top ();
         preferences_dialog.present (this);
     }
 }

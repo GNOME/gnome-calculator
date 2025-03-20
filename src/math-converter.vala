@@ -35,6 +35,18 @@ public class MathConverter : Gtk.Grid
                 category_combobox_changed_cb ();
         }
     }
+    private GenericSet<string> favorites = new GenericSet<string> (str_hash, str_equal);
+    public string[] favorite_currencies
+    {
+        set
+        {
+            favorites.remove_all ();
+            foreach (var currency in value)
+                favorites.add (currency);
+            if (category == "currency")
+                category_combobox_changed_cb ();
+        }
+    }
 
     [GtkChild]
     private unowned Gtk.DropDown category_combo;
@@ -52,6 +64,8 @@ public class MathConverter : Gtk.Grid
     private unowned Gtk.PopoverMenu to_context_menu;
 
     private Serializer fixed_serializer;
+    private Gtk.SignalListItemFactory from_currency_factory;
+    private Gtk.SignalListItemFactory to_currency_factory;
     [GtkChild]
     private Gtk.EventControllerKey from_event_controller;
     [GtkChild]
@@ -111,8 +125,19 @@ public class MathConverter : Gtk.Grid
         from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
         to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
 
+        from_currency_factory = new Gtk.SignalListItemFactory ();
+        from_currency_factory.setup.connect ((factory, item) => { setup_currency (item); });
+        from_currency_factory.bind.connect ((factory, item) => { bind_currency (item, from_combo); });
+        from_currency_factory.unbind.connect ((factory, item) => { unbind_currency (item, from_combo); });
+
+        to_currency_factory = new Gtk.SignalListItemFactory ();
+        to_currency_factory.setup.connect ((factory, item) => { setup_currency (item); });
+        to_currency_factory.bind.connect ((factory, item) => { bind_currency (item, to_combo); });
+        to_currency_factory.unbind.connect ((factory, item) => { unbind_currency (item, to_combo); });
+
         var settings = new Settings ("org.gnome.calculator");
         settings.bind ("currency-display", this, "currency_display", SettingsBindFlags.GET);
+        settings.bind ("favorite-currencies", this, "favorite_currencies", SettingsBindFlags.GET);
         set_conversion (equation.source_units, equation.target_units);
     }
 
@@ -280,13 +305,42 @@ public class MathConverter : Gtk.Grid
         from_combo.expression = expression;
         to_combo.expression = expression;
 
-        var c = UnitManager.get_default ().get_category (category);
-        foreach (var unit in c.get_units ())
+        if (category == "currency")
         {
-            unit_model.append (unit);
+            from_combo.list_factory = from_currency_factory;
+            to_combo.list_factory = to_currency_factory;
+        }
+
+        var c = UnitManager.get_default ().get_category (category);
+        if (category != "currency" || _currency_display != CurrencyDisplay.NAME)
+            foreach (var unit in c.get_units ())
+            {
+                unit_model.append (unit);
+            }
+        else
+        {
+            var i = 0;
+            foreach (var unit in c.get_units ())
+            {
+                if (favorites.contains (unit.name))
+                {
+                    unit_model.insert (i, unit);
+                    i++;
+                }
+                else
+                    unit_model.append (unit);
+            }
         }
         if (category == "currency" && _currency_display != CurrencyDisplay.NAME)
-            unit_model.sort ((a, b) => { return ((Unit) a).name.ascii_casecmp (((Unit) b).name); });
+            unit_model.sort ((a, b) => {
+                bool a_is_favorite = favorites.contains (((Unit) a).name);
+                bool b_is_favorite = favorites.contains (((Unit) b).name);
+                if (a_is_favorite && !b_is_favorite)
+                    return -1;
+                if (!a_is_favorite && b_is_favorite)
+                    return 1;
+                return ((Unit) a).name.ascii_casecmp (((Unit) b).name);
+            });
 
         uint model_size = unit_model.get_n_items ();
         to_combo.model = unit_model;
@@ -298,6 +352,48 @@ public class MathConverter : Gtk.Grid
     private static string currency_item (Unit unit)
     {
         return "%s (%s)".printf (unit.name, unit.display_name);
+    }
+
+    private void setup_currency (Object item)
+    {
+        var box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        box.append (new Gtk.Image.from_icon_name ("starred-symbolic"));
+        var label = new Gtk.Label ("");
+        item.set_data<Gtk.Label> ("label", label);
+        box.append (label);
+        box.append (new Gtk.Image.from_icon_name ("object-select-symbolic"));
+        (item as Gtk.ListItem).child = box;
+    }
+
+    private void bind_currency (Object item, Gtk.DropDown combo)
+    {
+        var box = (item as Gtk.ListItem).child;
+        var unit = (item as Gtk.ListItem).item as Unit;
+        box.get_first_child ().visible = favorites.contains (unit.name);
+
+        switch (_currency_display)
+        {
+        case CurrencyDisplay.CODE:
+            item.get_data<Gtk.Label> ("label").label = unit.name;
+            break;
+        case CurrencyDisplay.BOTH:
+            item.get_data<Gtk.Label> ("label").label = currency_item (unit);
+            break;
+        default:
+            item.get_data<Gtk.Label> ("label").label = unit.display_name;
+            break;
+        }
+
+        ulong handler = combo.notify["selected"].connect (() => {
+            box.get_last_child ().opacity = combo.selected_item == unit ? 1 : 0;
+        });
+        item.set_data<ulong> ("handler", handler);
+        box.get_last_child ().opacity = combo.selected_item == unit ? 1 : 0;
+    }
+
+    private void unbind_currency (Object item, Gtk.DropDown combo)
+    {
+        combo.disconnect (item.get_data<ulong> ("handler"));
     }
 
     private bool set_active_unit (Gtk.DropDown combo, Unit unit)
