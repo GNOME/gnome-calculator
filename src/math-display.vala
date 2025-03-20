@@ -33,8 +33,22 @@ public class MathDisplay : Gtk.Box
     [GtkChild]
     Gtk.Button backspace_button;
 
-    public bool completion_visible { get; set;}
-    public bool completion_selected { get; set;}
+    private HashTable<string, GtkSource.CompletionProvider> providers;
+    private string[] _enabled_completions = {};
+    public string[] enabled_completions
+    {
+        set
+        {
+            var completion = source_view.get_completion ();
+            foreach (var name in _enabled_completions)
+                completion.remove_provider (providers.get (name));
+            foreach (var name in value)
+                completion.add_provider (providers.get (name));
+            _enabled_completions = value;
+        }
+    }
+    public bool completion_visible { get; set; }
+    public bool completion_selected { get; set; }
 
     public signal void arr_key_pressed (uint keyval);
 
@@ -128,10 +142,14 @@ public class MathDisplay : Gtk.Box
         completion.show.connect ((completion) => { this.completion_visible = true; this.completion_selected = false;} );
         completion.hide.connect ((completion) => { this.completion_visible = false; this.completion_selected = false; } );
         // completion.move_cursor.connect ((completion) => {this.completion_selected = true;});
-        completion.add_provider (new BuiltinCompletionProvider ());
-        completion.add_provider (new FunctionCompletionProvider ());
-        completion.add_provider (new CurrencyCompletionProvider ());
-        completion.add_provider (new VariableCompletionProvider (equation));
+        providers = new HashTable<string, GtkSource.CompletionProvider> (str_hash, str_equal);
+        providers.insert ("builtin", new BuiltinCompletionProvider ());
+        providers.insert ("function", new FunctionCompletionProvider ());
+        providers.insert ("currency", new CurrencyCompletionProvider ());
+        providers.insert ("variable", new VariableCompletionProvider (equation));
+
+        var settings = new Settings ("org.gnome.calculator");
+        settings.bind ("enabled-completions", this, "enabled_completions", SettingsBindFlags.GET);
     }
 
     [GtkCallback]

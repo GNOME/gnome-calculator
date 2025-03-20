@@ -40,6 +40,8 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
     [GtkChild]
     private unowned Adw.SwitchRow row_trailing_zeroes;
     [GtkChild]
+    private unowned Adw.SwitchRow row_currency_completion;
+    [GtkChild]
     private unowned Adw.NavigationPage page_favorite_currencies;
     [GtkChild]
     private unowned Adw.PreferencesGroup group_favorite_currencies;
@@ -104,18 +106,22 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         row_word_size.notify["selected"].connect (row_word_size_changed_cb);
         row_refresh_interval.notify["selected"].connect (row_refresh_interval_changed_cb);
         row_currency_display.notify["selected"].connect (row_currency_display_changed_cb);
+        row_currency_completion.notify["active"].connect (row_currency_completion_changed_cb);
 
         set_combo_row_from_int (row_word_size, equation.word_size);
-        equation.notify["word-size"].connect ((pspec) => { set_combo_row_from_int (row_word_size, equation.word_size); });
+        equation.notify["word-size"].connect (() => { set_combo_row_from_int (row_word_size, equation.word_size); });
 
         set_combo_row_from_int (row_angle_units, equation.angle_units);
-        equation.notify["angle-units"].connect ((pspec) => { set_combo_row_from_int (row_angle_units, equation.angle_units); });
+        equation.notify["angle-units"].connect (() => { set_combo_row_from_int (row_angle_units, equation.angle_units); });
 
         set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval"));
-        settings.changed["refresh-interval"].connect ((pspec) => { set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval")); });
+        settings.changed["refresh-interval"].connect (() => { set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval")); });
 
         set_combo_row_from_int (row_currency_display, settings.get_enum ("currency-display"));
-        settings.changed["currency-display"].connect ((pspec) => { set_combo_row_from_int (row_currency_display, settings.get_enum ("currency-display")); });
+        settings.changed["currency-display"].connect (() => { set_combo_row_from_int (row_currency_display, settings.get_enum ("currency-display")); });
+
+        set_currency_completion_row_active ();
+        settings.changed["enabled-completions"].connect (set_currency_completion_row_active);
 
         if (DEVELOPMENT_BUILD) {
             add_css_class ("devel");
@@ -201,6 +207,28 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         Adw.EnumListItem item = (Adw.EnumListItem) row_currency_display.selected_item;
         CurrencyDisplay value = (CurrencyDisplay) item.value;
         settings.set_enum ("currency-display", value);
+    }
+
+    private void row_currency_completion_changed_cb ()
+    {
+        var completions = new Array<string> ();
+        if (row_currency_completion.active)
+            completions.append_val ("currency");
+        foreach (var name in settings.get_strv ("enabled-completions"))
+            if (name != "currency")
+                completions.append_val (name);
+        settings.set_strv ("enabled-completions", completions.data);
+    }
+
+    private void set_currency_completion_row_active ()
+    {
+        foreach (var name in settings.get_strv ("enabled-completions"))
+            if (name == "currency")
+            {
+                row_currency_completion.active = true;
+                return;
+            }
+        row_currency_completion.active = false;
     }
 
     [GtkCallback]
