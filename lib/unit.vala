@@ -75,9 +75,11 @@ public class UnitManager : Object
         area_category.add_unit (new Unit ("square-centimeter", _("Square Centimeters"), "0.0001x", "10000x", dpgettext2 (null, "unit-symbols", "cm²")));
         area_category.add_unit (new Unit ("square-millimeter", _("Square Millimeters"), "0.000001x", "1000000x", dpgettext2 (null, "unit-symbols", "mm²")));
         volume_category.add_unit (new Unit ("cubic-meter", _("Cubic Meters"), "1000x", "x/1000", dpgettext2 (null, "unit-symbols", "m³")));
+        volume_category.add_unit (new Unit ("imperial-gallon", _("British Gallons"), "4.54609x", "x/4.54609", dpgettext2 (null, "unit-symbols", "imp_gallon,imp_gallons,imp_gal")));
         volume_category.add_unit (new Unit ("gallon", _("US Gallons"), "3.785412x", "x/3.785412", dpgettext2 (null, "unit-symbols", "gallon,gallons,gal")));
         volume_category.add_unit (new Unit ("litre", _("Liters"), "x", "x", dpgettext2 (null, "unit-symbols", "litre,litres,liter,liters,L")));
         volume_category.add_unit (new Unit ("quart", _("US Quarts"), "0.9463529x", "x/0.9463529", dpgettext2 (null, "unit-symbols", "quart,quarts,qt")));
+        volume_category.add_unit (new Unit ("imperial-pint", _("British Pints"), "0.56826125x", "x/0.56826125", dpgettext2 (null, "unit-symbols", "imp_pint,imp_pints,imp_pt")));
         volume_category.add_unit (new Unit ("pint", _("US Pints"), "0.4731765x", "x/0.4731765", dpgettext2 (null, "unit-symbols", "pint,pints,pt")));
         volume_category.add_unit (new Unit ("cup", _("Metric Cups"), "0.25x", "4x", dpgettext2 (null, "unit-symbols", "cup,cups,cp")));
         volume_category.add_unit (new Unit ("millilitre", _("Milliliters"), "0.001x", "1000x", dpgettext2 (null, "unit-symbols", "millilitre,millilitres,milliliter,milliliters,mL,cm³")));
@@ -164,7 +166,7 @@ public class UnitManager : Object
         pressure_category.add_unit(new Unit ("hectopascal", _("Hectopascals"), "100x", "x/100", dpgettext2 (null, "unit-symbols", "Hectopascal,hectopascal,hPa")));
         pressure_category.add_unit(new Unit ("bar", _("Bars"), "100000x", "x/100000", dpgettext2 (null, "unit-symbols", "Bar,bar")));
         pressure_category.add_unit(new Unit ("atm", _("Standard Atmospheres"), "101325x", "x/101325", dpgettext2 (null, "unit-symbols", "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm")));
-        pressure_category.add_unit(new Unit ("mmhg", _("Millimeters of Mercury"), "133.322387415x", "x/133.322387415", dpgettext2 (null, "unit-symbols", "Millimetre of Mercury,millimetre of mercury,mmHg")));
+        pressure_category.add_unit(new Unit ("mmhg", _("Millimeters of Mercury"), "133.322387415x", "x/133.322387415", dpgettext2 (null, "unit-symbols", "Millimeter of Mercury,millimeter of mercury,mmHg")));
         pressure_category.add_unit(new Unit ("inhg", _("Inches of Mercury"), "3376.85x", "x/3376.85", dpgettext2 (null, "unit-symbols", "Inch of Mercury,inch of mercury,inHg")));
         pressure_category.add_unit(new Unit ("psi", _("Pounds per Square Inch"), "6894.757x", "x/6894.757", dpgettext2 (null, "unit-symbols", "Pound per Square Inch,pound per square inch,psi")));
 
