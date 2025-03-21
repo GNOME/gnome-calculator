@@ -45,7 +45,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     protected bool loaded;
     protected List<Currency> currencies;
     public CurrencyManager currency_manager { get; construct; }
-    public string user_agent { get; construct; default = "curl/GNOME Calculator"; }
+    public string user_agent { get; construct; default = "GNOME Calculator"; }
 
     public void clear () {
         FileUtils.remove (rate_filepath);
@@ -127,7 +127,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     private Soup.Session build_session()
     {
         var session = new Soup.Session ();
-        session.set_user_agent ("%s".printf (user_agent));
+        session.set_user_agent ("curl/%s".printf (user_agent));
         return session;
     }
 
