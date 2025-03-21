@@ -45,6 +45,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     protected bool loaded;
     protected List<Currency> currencies;
     public CurrencyManager currency_manager { get; construct; }
+    public string user_agent { get; construct; default = "curl/GNOME Calculator"; }
 
     public void clear () {
         FileUtils.remove (rate_filepath);
@@ -117,7 +118,17 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         if (now - modify_time > max_age)
             return true;
 
+        if (buf.st_size == 0)
+            return true;
+
         return false;
+    }
+
+    private Soup.Session build_session()
+    {
+        var session = new Soup.Session ();
+        session.set_user_agent ("%s".printf (user_agent));
+        return session;
     }
 
     protected virtual void download_file_sync (string uri, string filename, string source)
@@ -129,7 +140,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         try
         {
             var dest = File.new_for_path (filename);
-            var session = new Soup.Session ();
+            var session = build_session ();
             var message = new Soup.Message ("GET", uri);
             var output = dest.replace (null, false, FileCreateFlags.REPLACE_DESTINATION);
             session.send_and_splice (message, output,
@@ -155,7 +166,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         try
         {
             var dest = File.new_for_path (filename);
-            var session = new Soup.Session ();
+            var session = build_session ();
             var message = new Soup.Message ("GET", uri);
             var output = yield dest.replace_async (null, false, FileCreateFlags.REPLACE_DESTINATION, Priority.DEFAULT);
             yield session.send_and_splice_async (message, output,
