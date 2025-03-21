@@ -449,24 +449,7 @@ public class Serializer : Object
             }
         }
 
-        var mantissa_string = cast_to_string (mantissa, ref n_digits);
-        if (eng_format)
-        {
-            mantissa_string = mantissa_string.replace (tsep.to_string (), "", 1);
-            if (mantissa_string.has_prefix ("1000"))
-            {
-                exponent += 3;
-                mantissa_string = mantissa_string.splice (0, 4, "1");
-                n_digits = 1;
-            }
-        }
-        else if (mantissa_string.has_prefix ("10"))
-        {
-            exponent += 1;
-            mantissa_string = mantissa_string.splice (0, 2, "1");
-            n_digits = 1;
-        }
-        string.append (mantissa_string);
+        string.append (cast_to_string (mantissa, ref n_digits));
 
         return exponent;
     }
