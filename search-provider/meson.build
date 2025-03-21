@@ -35,9 +35,9 @@ executable('gnome-calculator-search-provider', search_provider_sources,
   install_dir: get_option('libexecdir'),
   include_directories: search_provider_includes,
   vala_args: [
-  	search_provider_vala_flags,
-  	'--vapidir='+gcalc_vapi_dir
-  	],
+    search_provider_vala_flags,
+    '--vapidir=' + gcalc_vapi_dir
+  ],
   c_args: search_provider_c_flags,
   install: true,
 )
