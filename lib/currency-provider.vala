@@ -127,7 +127,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     private Soup.Session build_session()
     {
         var session = new Soup.Session ();
-        session.set_user_agent ("curl/%s".printf (user_agent));
+        session.set_user_agent ("%s".printf (user_agent));
         return session;
     }
 
