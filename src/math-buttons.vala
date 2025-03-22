@@ -515,16 +515,9 @@ public class MathButtons : Adw.BreakpointBin
     {
         var panel = builder.get_object ("button_panel") as Gtk.Widget;
         var basic_grid = builder.get_object ("basic") as Gtk.Widget;
-        var calc_start_group_button = builder.get_object ("calc_start_group_button") as Gtk.Button;
-        var calc_end_group_button = builder.get_object ("calc_end_group_button") as Gtk.Button;
 
         panel.set_direction (Gtk.TextDirection.LTR);
         basic_grid.set_direction (Gtk.TextDirection.LTR);
-        if (mode != ButtonMode.CONVERSION)
-        {
-            calc_start_group_button.get_child().set_direction (Gtk.TextDirection.LTR);
-            calc_end_group_button.get_child().set_direction (Gtk.TextDirection.LTR);
-        }
 
         switch (mode)
         {
@@ -559,16 +552,12 @@ public class MathButtons : Adw.BreakpointBin
             var math_box = builder.get_object ("math_box") as Gtk.Widget;
             var advanced_grid = builder.get_object ("advanced") as Gtk.Widget;
             var hex_buttons = builder.get_object ("hex_buttons") as Gtk.Widget;
-            var calc_shift_left_button = builder.get_object ("calc_shift_left_button") as Gtk.Button;
-            var calc_shift_right_button = builder.get_object ("calc_shift_right_button") as Gtk.Button;
 
             prog_carousel.set_direction (Gtk.TextDirection.LTR);
             carousel_dots.set_direction (Gtk.TextDirection.LTR);
             math_box.set_direction (Gtk.TextDirection.LTR);
             advanced_grid.set_direction (Gtk.TextDirection.LTR);
             hex_buttons.set_direction (Gtk.TextDirection.LTR);
-            calc_shift_left_button.get_child().set_direction (Gtk.TextDirection.LTR);
-            calc_shift_right_button.get_child().set_direction (Gtk.TextDirection.LTR);
             break;
         }
     }
