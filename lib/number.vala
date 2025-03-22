@@ -168,22 +168,13 @@ public class Number : GLib.Object
         return num.get_real ().val.is_integer () != 0;
     }
 
-    /* Return true if x is a positive integer */
-    public bool is_positive_integer ()
-    {
-        if (is_complex ())
-            return false;
-        else
-            return num.get_real ().val.sgn () >= 0 && is_integer ();
-    }
-
     /* Return true if x is a natural number (an integer ≥ 0) */
     public bool is_natural ()
     {
         if (is_complex ())
             return false;
         else
-            return num.get_real ().val.sgn () > 0 && is_integer ();
+            return num.get_real ().val.sgn () >= 0 && is_integer ();
     }
 
     /* Return true if x has an imaginary component */
@@ -856,10 +847,10 @@ public class Number : GLib.Object
     /* Sets z = boolean AND for each bit in x and z */
     public Number and (Number y)
     {
-        if (!is_positive_integer () || !y.is_positive_integer ())
+        if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when boolean AND attempted on non-integer values */
-            error = _("Boolean AND is only defined for positive integers");
+            error = _("Boolean AND is only defined for non-negative integers");
         }
 
         return bitwise (y, (v1, v2) => { return v1 & v2; }, 0);
@@ -868,10 +859,10 @@ public class Number : GLib.Object
     /* Sets z = boolean NAND for each bit in x and z */
     public Number nand (Number y, int wordlen)
     {
-        if (!is_positive_integer () || !y.is_positive_integer ())
+        if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when boolean NAND attempted on non-integer values */
-            error = _("Boolean NAND is only defined for positive integers");
+            error = _("Boolean NAND is only defined for non-negative integers");
         }
 
         return bitwise (y, (v1, v2) => { return v1 & v2; }, wordlen).not (wordlen);
@@ -880,10 +871,10 @@ public class Number : GLib.Object
     /* Sets z = boolean OR for each bit in x and z */
     public Number or (Number y)
     {
-        if (!is_positive_integer () || !y.is_positive_integer ())
+        if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when boolean OR attempted on non-integer values */
-            error = _("Boolean OR is only defined for positive integers");
+            error = _("Boolean OR is only defined for non-negative integers");
         }
 
         return bitwise (y, (v1, v2) => { return v1 | v2; }, 0);
@@ -892,10 +883,10 @@ public class Number : GLib.Object
     /* Sets z = boolean NOR for each bit in x and z */
     public Number nor (Number y, int wordlen)
     {
-        if (!is_positive_integer () || !y.is_positive_integer ())
+        if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when boolean NOR attempted on non-integer values */
-            error = _("Boolean NOR is only defined for positive integers");
+            error = _("Boolean NOR is only defined for non-negative integers");
         }
 
         return bitwise (y, (v1, v2) => { return v1 | v2; }, wordlen).not (wordlen);
@@ -904,10 +895,10 @@ public class Number : GLib.Object
     /* Sets z = boolean XOR for each bit in x and z */
     public Number xor (Number y)
     {
-        if (!is_positive_integer () || !y.is_positive_integer ())
+        if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when boolean XOR attempted on non-integer values */
-            error = _("Boolean XOR is only defined for positive integers");
+            error = _("Boolean XOR is only defined for non-negative integers");
         }
 
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, 0);
@@ -916,10 +907,10 @@ public class Number : GLib.Object
     /* Sets z = boolean XNOR for each bit in x and z */
     public Number xnor (Number y, int wordlen)
     {
-        if (!is_positive_integer () || !y.is_positive_integer ())
+        if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when boolean XNOR attempted on non-integer values */
-            error = _("Boolean XNOR is only defined for positive integers");
+            error = _("Boolean XNOR is only defined for non-negative integers");
         }
 
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, wordlen).not (wordlen);
@@ -928,10 +919,10 @@ public class Number : GLib.Object
     /* Sets z = boolean NOT for each bit in x and z for word of length 'wordlen' */
     public Number not (int wordlen)
     {
-        if (!is_positive_integer ())
+        if (!is_natural ())
         {
             /* Translators: Error displayed when boolean NOT attempted on non-integer values */
-            error = _("Boolean NOT is only defined for positive integers");
+            error = _("Boolean NOT is only defined for non-negative integers");
         }
 
         return bitwise (new Number.integer (0), (v1, v2) => { return v1 ^ 0xF; }, wordlen);
@@ -990,7 +981,7 @@ public class Number : GLib.Object
     /* Sets z = xCr */
     public Number combination (Number r)
     {
-        if (!is_positive_integer () || !r.is_positive_integer ())
+        if (!is_natural () || !r.is_natural ())
         {
             error = _("Combination is only defined for non-negative integers");
             return new Number.integer (0);
@@ -1008,7 +999,7 @@ public class Number : GLib.Object
     /* Sets z = xPr */
     public Number permutation (Number r)
     {
-        if (!is_positive_integer () || !r.is_positive_integer ())
+        if (!is_natural () || !r.is_natural ())
         {
             error = _("Permutation is only defined for non-negative integers");
             return new Number.integer (0);

@@ -680,28 +680,12 @@ private void test_is_integer ()
     pass ();
 }
 
-private void test_is_positive_integer ()
-{
-    for (var a = -10; a <= 10; a++)
-    {
-        var z = new Number.integer (a);
-        var expected = a >= 0;
-        if (z.is_positive_integer () != expected)
-        {
-            fail ("(%d).is_positive_integer () -> %s, expected %s".printf (a, z.is_positive_integer () ? "true" : "false", expected ? "true" : "false"));
-            return;
-        }
-    }
-
-    pass ();
-}
-
 private void test_is_natural ()
 {
     for (var a = -10; a <= 10; a++)
     {
         var z = new Number.integer (a);
-        var expected = a > 0;
+        var expected = a >= 0;
         if (z.is_natural () != expected)
         {
             fail ("(%d).is_natural () -> %s, expected %s".printf (a, z.is_natural () ? "true" : "false", expected ? "true" : "false"));
@@ -1099,7 +1083,6 @@ static int main (string[] args)
     test_is_zero ();
     test_is_negative ();
     test_is_integer ();
-    test_is_positive_integer ();
     test_is_natural ();
     test_is_complex ();
     test_sgn ();
