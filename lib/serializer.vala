@@ -31,6 +31,7 @@ public class Serializer : Object
     private unichar radix;           /* Locale specific radix string. */
     private unichar tsep;            /* Locale specific thousands separator. */
     private int tsep_count;          /* Number of digits between separator. */
+    private string zero_string;      /* String of zero in current format */
 
     /* is set when an error (for example precision error while converting) occurs */
     public string? error { get; set; default = null; }
@@ -66,6 +67,7 @@ public class Serializer : Object
         show_zeroes = false;
         show_tsep = false;
         this.format = format;
+        update_zero_string ();
     }
 
     public string to_string (Number x)
@@ -87,29 +89,32 @@ public class Serializer : Object
             {
                 /* 64 digits for binary mode. */
                 case 2:
-                    if (n_digits <= 64)
+                    if (n_digits <= 64 && s0 != zero_string)
                         return s0;
                     else
                         return cast_to_exponential_string (x, false, ref n_digits);
                 /* 22 digis for octal mode. */
                 case 8:
-                    if (n_digits <= 22)
+                    if (n_digits <= 22 && s0 != zero_string)
                         return s0;
                     else
                         return cast_to_exponential_string (x, false, ref n_digits);
                 /* 16 digits for hexadecimal mode. */
                 case 16:
-                    if(n_digits <= 16)
+                    if(n_digits <= 16 && s0 != zero_string)
                         return s0;
                     else
                         return cast_to_exponential_string (x, false, ref n_digits);
                 /* Use default leading_digits for base 10 numbers. */
                 case 10:
                 default:
-                    if (n_digits <= leading_digits)
+                    if (n_digits <= leading_digits && s0 != zero_string)
                         return s0;
                     else
+                    {
+                        error = null;
                         return cast_to_exponential_string (x, false, ref n_digits);
+                    }
             }
         case DisplayFormat.FIXED:
             int n_digits = 0;
@@ -168,6 +173,7 @@ public class Serializer : Object
     public void set_radix (unichar radix)
     {
         this.radix = radix;
+        update_zero_string ();
     }
 
     public unichar get_radix ()
@@ -208,6 +214,7 @@ public class Serializer : Object
     public void set_show_trailing_zeroes (bool visible)
     {
         show_zeroes = visible;
+        update_zero_string ();
     }
 
     public bool get_show_trailing_zeroes ()
@@ -233,6 +240,7 @@ public class Serializer : Object
     public void set_trailing_digits (int trailing_digits)
     {
         this.trailing_digits = trailing_digits;
+        update_zero_string ();
     }
 
     public DisplayFormat get_number_format ()
@@ -243,6 +251,12 @@ public class Serializer : Object
     public void set_number_format (DisplayFormat format)
     {
         this.format = format;
+    }
+
+    private void update_zero_string ()
+    {
+        int n_digits = 0;
+        zero_string = cast_to_string (new Number.integer (0), ref n_digits);
     }
 
     private string cast_to_string (Number x, ref int n_digits)
@@ -342,9 +356,9 @@ public class Serializer : Object
             else
             {
                 string.prepend_c ('?');
-                error = _("Overflow: the result couldn’t be calculated");
-                string.assign ("0");
-                break;
+                error = _("The result is too long to display in fixed format. Try other result formats");
+                string.assign (zero_string);
+                return;
             }
             n_digits++;
 

@@ -323,6 +323,14 @@ public class MathEquation : GtkSource.Buffer
         }
         get_iter_at_mark (out ans_start, ans_start_mark);
         get_iter_at_mark (out ans_end, ans_end_mark);
+
+        if (serializer.error != null)
+        {
+            status = serializer.error;
+            serializer.error = null;
+        }
+        else
+            status = "";
     }
 
     public void remove_trailing_spaces ()
