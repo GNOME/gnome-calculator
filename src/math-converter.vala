@@ -9,7 +9,7 @@
  */
 
 [GtkTemplate (ui = "/org/gnome/calculator/math-converter.ui")]
-public class MathConverter : Gtk.Grid
+public class MathConverter : Gtk.Box
 {
     public MathEquation equation { get; construct set; }
 
@@ -48,7 +48,7 @@ public class MathConverter : Gtk.Grid
         {"paste", paste_cb}
     };
 
-    public bool outer_box_visible { set; get; default = false; }
+    public bool box_visible { set; get; default = false; }
 
     public signal void category_changed ();
 
@@ -95,7 +95,8 @@ public class MathConverter : Gtk.Grid
         set_conversion (equation.source_units, equation.target_units);
     }
 
-    private void build_category_model () {
+    private void build_category_model ()
+    {
         var category_model = new ListStore (typeof (UnitCategory));
         var expression = new Gtk.PropertyExpression (typeof (UnitCategory),
                                                      null,
@@ -115,17 +116,16 @@ public class MathConverter : Gtk.Grid
         if (this.category == category)
             return;
         this.category = category;
-        if (this.category != null) {
-
+        if (this.category != null)
+        {
             UnitCategory? unit_category = UnitManager.get_default ().get_category (this.category);
             uint position = 0;
             var model = category_combo.get_model () as ListStore;
             model.find (unit_category, out position);
             category_combo.selected = position;
-        } else {
-            category_combo.selected = 0;
         }
-
+		else
+            category_combo.selected = 0;
     }
 
     public string get_category ()
@@ -161,6 +161,9 @@ public class MathConverter : Gtk.Grid
 
     public void insert_text (string text)
     {
+        if (!box_visible)
+            return;
+
         var entry = to_entry.has_focus ? to_entry : from_entry;
         if (entry == from_entry)
             from_entry.grab_focus ();
@@ -187,14 +190,34 @@ public class MathConverter : Gtk.Grid
 
     public void clear ()
     {
+        if (!box_visible)
+            return;
+
         if (from_entry.has_focus)
             from_entry.buffer.text = "0";
         else
             from_entry.buffer.text = equation.serializer.to_string (new Number.integer (0));
     }
 
+    public void swap_units ()
+    {
+        if (!box_visible)
+            return;
+
+        var from_unit = from_combo.selected_item as Unit;
+        var to_unit = to_combo.selected_item as Unit;
+
+        GLib.SignalHandler.block (from_combo, from_combobox_changed);
+        set_active_unit (from_combo, to_unit);
+        GLib.SignalHandler.unblock (from_combo, from_combobox_changed);
+        set_active_unit (to_combo, from_unit);
+    }
+
     public void backspace ()
     {
+        if (!box_visible)
+            return;
+
         var entry = to_entry.has_focus ? to_entry : from_entry;
         if (entry == from_entry)
             from_entry.grab_focus ();
@@ -233,13 +256,13 @@ public class MathConverter : Gtk.Grid
 
     private void update_visibility ()
     {
-        if (category != "currency") {
-            this.outer_box_visible = true;
+        if (category != "currency")
+        {
+            this.box_visible = true;
             return;
         }
 
-        this.outer_box_visible = CurrencyManager.get_default ().loaded;
-
+        this.box_visible = CurrencyManager.get_default ().loaded;
     }
 
     private void build_units_model ()
@@ -625,17 +648,6 @@ public class MathConverter : Gtk.Grid
             to_entry.buffer.text = equation.serializer.to_string (to_number);
             GLib.SignalHandler.unblock (to_entry.buffer, to_entry_changed);
         }
-    }
-
-    public void swap_units ()
-    {
-        Unit? from_unit, to_unit;
-        get_conversion (out from_unit, out to_unit);
-
-        GLib.SignalHandler.block (from_combo, from_combobox_changed);
-        set_active_unit (from_combo, to_unit);
-        GLib.SignalHandler.unblock (from_combo, from_combobox_changed);
-        set_active_unit (to_combo, from_unit);
     }
 
     private Number?  convert_equation (Number x,
