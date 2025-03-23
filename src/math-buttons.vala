@@ -150,11 +150,11 @@ public class MathButtons : Adw.BreakpointBin
         breakpoint = new Adw.Breakpoint (Adw.BreakpointCondition.parse ("max-width: 699sp"));
         add_breakpoint (breakpoint);
 
-        equation.notify["display"].connect ((pspec) => { equation_display_changed_cb (); });
-        equation.notify["number-mode"].connect ((pspec) => { number_mode_changed_cb (); });
-        equation.notify["angle-units"].connect ((pspec) => { update_bit_panel (); });
-        equation.notify["number-format"].connect ((pspec) => { update_bit_panel (); });
-        equation.notify["word-size"].connect ((pspec) => { word_size_changed_cb (); });
+        equation.notify["display"].connect (equation_display_changed_cb);
+        equation.notify["number-mode"].connect (number_mode_changed_cb);
+        equation.notify["angle-units"].connect (update_bit_panel);
+        equation.notify["number-format"].connect (update_bit_panel);
+        equation.notify["word-size"].connect (word_size_changed_cb);
         number_mode_changed_cb ();
         update_bit_panel ();
         update_buttons ();
@@ -686,7 +686,7 @@ public class MathButtons : Adw.BreakpointBin
         {
             character_code_dialog = builder.get_object ("character_code_dialog") as Adw.Dialog;
             insert_button = builder.get_object ("insert_button") as Gtk.Button;
-            insert_button.clicked.connect (() => { insert_char_code (); });
+            insert_button.clicked.connect (insert_char_code);
             character_code_entry = builder.get_object ("character_code_entry") as Adw.EntryRow;
             hex_base_button = builder.get_object ("hex_base_button") as Gtk.Button;
             dec_base_button = builder.get_object ("dec_base_button") as Gtk.Button;
@@ -726,7 +726,7 @@ public class MathButtons : Adw.BreakpointBin
             hex_base_button.clicked.connect (copy_conv_base_to_clipboard);
             dec_base_button.clicked.connect (copy_conv_base_to_clipboard);
             oct_base_button.clicked.connect (copy_conv_base_to_clipboard);
-            equation.notify["number-base"].connect ((pspec) => { base_changed_cb (); } );
+            equation.notify["number-base"].connect (base_changed_cb);
             base_changed_cb ();
             word_size_changed_cb ();
         }
@@ -757,9 +757,9 @@ public class MathButtons : Adw.BreakpointBin
             math_popover.item_added_cb (function);
         }
 
-        function_manager.function_added.connect (f=>math_popover.item_added_cb(f as MathFunction));
-        function_manager.function_edited.connect (f=>math_popover.item_edited_cb(f as MathFunction));
-        function_manager.function_deleted.connect (f=>math_popover.item_deleted_cb(f as MathFunction));
+        function_manager.function_added.connect (f => math_popover.item_added_cb (f as MathFunction));
+        function_manager.function_edited.connect (f => math_popover.item_edited_cb (f as MathFunction));
+        function_manager.function_deleted.connect (f => math_popover.item_deleted_cb (f as MathFunction));
     }
 
     private void fill_variables_model (ListStore model, MathPopover<MathVariable> math_popover, MathEquation equation)

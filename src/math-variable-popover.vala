@@ -48,7 +48,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
 
     public MathVariablePopover (MathEquation equation, ListStore model)
     {
-        base(equation, model, (a,b) => MathVariable.name_compare_func(a as MathVariable,b as MathVariable));
+        base (equation, model, MathVariable.name_compare_func);
 
         variable_list.bind_model (model, (variable) => make_item_row (variable as MathVariable));
         equation.history_signal.connect (history_cb);
@@ -174,7 +174,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
         {
             ulong answer_handler = 0;
             ulong error_handler = 0;
-            answer_handler = equation.history_signal.connect ((answer, number, number_base, representation_base) =>
+            answer_handler = equation.history_signal.connect ((answer, number) =>
             {
                 equation.variables[name] = number;
                 equation.disconnect (answer_handler);

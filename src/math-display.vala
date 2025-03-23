@@ -76,10 +76,10 @@ public class MathDisplay : Gtk.Box
 
         create_autocompletion ();
 
-        equation.notify["status"].connect ((pspec) => { status_changed_cb (); });
+        equation.notify["status"].connect (status_changed_cb);
         status_changed_cb ();
 
-        equation.notify["error-token-end"].connect ((pspec) => { error_status_changed_cb (); });
+        equation.notify["error-token-end"].connect (error_status_changed_cb);
 
         /* This scrolls to the cursor's new position including the source view's
          * margins when the cursor moves, preventing the cursor from being on an

@@ -22,7 +22,7 @@ public abstract class MathPopover<T> : Gtk.Popover
     {
         this.equation = equation;
         this.model = model;
-        this.compare_func = (a,b) => compare_func(a,b);
+        this.compare_func = compare_func;
         name_entry ().enable_undo = false;
         this.changed_handler = name_entry ().changed.connect (name_entry_changed_cb);
     }
@@ -43,7 +43,7 @@ public abstract class MathPopover<T> : Gtk.Popover
 
     public void item_added_cb (T item)
     {
-        model.insert_sorted (item as Object, (a,b) => compare_func(a, b));
+        model.insert_sorted (item as Object, compare_func);
     }
 
     public void item_edited_cb (T item)

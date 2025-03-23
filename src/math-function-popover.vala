@@ -8,10 +8,6 @@
  * license.
  */
 
-class Something
-{
-
-}
 [GtkTemplate (ui = "/org/gnome/calculator/math-function-popover.ui")]
 public class MathFunctionPopover : MathPopover<MathFunction>
 {
@@ -31,21 +27,21 @@ public class MathFunctionPopover : MathPopover<MathFunction>
 
     public MathFunctionPopover (MathEquation equation, ListStore model)
     {
-        base (equation, model, (a,b) => MathFunction.name_compare_func (a as MathFunction,b as MathFunction));
+        base (equation, model, MathFunction.name_compare_func);
 
-        function_list.bind_model (model, (item) => make_item_row(item as MathFunction));
+        function_list.bind_model (model, (item) => make_item_row (item as MathFunction));
 
         add_arguments_button.set_range (1, 10);
         add_arguments_button.set_increments (1, 1);
         item_edited.connect (function_edited_cb);
         item_deleted.connect (function_deleted_cb);
     }
-    
+
     protected override Gtk.Entry name_entry ()
     {
         return function_name_entry;
     }
-    
+
     protected override Gtk.Button add_button ()
     {
     	return add_function_button;
@@ -135,5 +131,4 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         else
             return -1;
     }
-
 }

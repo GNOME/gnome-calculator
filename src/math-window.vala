@@ -83,7 +83,7 @@ public class MathWindow : Adw.ApplicationWindow
         var undo_action = (SimpleAction) lookup_action ("undo");
         undo_action.set_enabled (false);
 
-        equation.notify["display"].connect(() => { undo_action.set_enabled (equation.has_undo_action);} );
+        equation.notify["display"].connect(() => { undo_action.set_enabled (equation.has_undo_action); });
         settings.bind ("number-format", equation, "number_format", SettingsBindFlags.DEFAULT);
         settings.bind ("accuracy", equation, "accuracy", SettingsBindFlags.DEFAULT);
         settings.bind ("show-zeroes", equation, "show_trailing_zeroes", SettingsBindFlags.DEFAULT);
@@ -99,8 +99,8 @@ public class MathWindow : Adw.ApplicationWindow
         _display.equation.display_changed.connect (history.set_serializer);
         _display.equation.history_signal.connect (this.update_history);
 
-        history.answer_clicked.connect ((ans) => { _display.insert_text (ans); });
-        history.equation_clicked.connect ((eq) => { _display.display_text (eq); });
+        history.answer_clicked.connect (_display.insert_text);
+        history.equation_clicked.connect (_display.display_text);
         history.row_added.connect (this.eq_changed_cb);
         history.set_serializer (_display.equation.serializer);
 

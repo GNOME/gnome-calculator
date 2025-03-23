@@ -106,9 +106,7 @@ public class MathConverter : Gtk.Grid
         if (equation == null)
             return;
 
-        CurrencyManager.get_default ().updated.connect (() => {
-            update_visibility ();
-        });
+        CurrencyManager.get_default ().updated.connect (update_visibility);
 
         build_category_model ();
         update_visibility ();
@@ -126,14 +124,14 @@ public class MathConverter : Gtk.Grid
         to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
 
         from_currency_factory = new Gtk.SignalListItemFactory ();
-        from_currency_factory.setup.connect ((factory, item) => { setup_currency (item); });
-        from_currency_factory.bind.connect ((factory, item) => { bind_currency (item, from_combo); });
-        from_currency_factory.unbind.connect ((factory, item) => { unbind_currency (item, from_combo); });
+        from_currency_factory.setup.connect (setup_currency);
+        from_currency_factory.bind.connect ((item) => { bind_currency (item, from_combo); });
+        from_currency_factory.unbind.connect ((item) => { unbind_currency (item, from_combo); });
 
         to_currency_factory = new Gtk.SignalListItemFactory ();
-        to_currency_factory.setup.connect ((factory, item) => { setup_currency (item); });
-        to_currency_factory.bind.connect ((factory, item) => { bind_currency (item, to_combo); });
-        to_currency_factory.unbind.connect ((factory, item) => { unbind_currency (item, to_combo); });
+        to_currency_factory.setup.connect (setup_currency);
+        to_currency_factory.bind.connect ((item) => { bind_currency (item, to_combo); });
+        to_currency_factory.unbind.connect ((item) => { unbind_currency (item, to_combo); });
 
         var settings = new Settings ("org.gnome.calculator");
         settings.bind ("currency-display", this, "currency_display", SettingsBindFlags.GET);
