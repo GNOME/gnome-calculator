@@ -16,22 +16,22 @@ public class MathDisplay : Gtk.Box
 
     /* Display widget */
     [GtkChild]
-    Gtk.ScrolledWindow display_scrolled;
+    unowned Gtk.ScrolledWindow display_scrolled;
     [GtkChild]
-    GtkSource.View source_view;
+    unowned GtkSource.View source_view;
 
     /* Buffer that shows errors etc */
     [GtkChild]
-    Gtk.TextView info_view;
+    unowned Gtk.TextView info_view;
 
     [GtkChild]
-    Gtk.EventControllerKey event_controller;
+    unowned Gtk.EventControllerKey event_controller;
 
     /* Spinner widget that shows if we're calculating a response */
     [GtkChild]
-    Adw.Spinner spinner;
+    unowned Adw.Spinner spinner;
     [GtkChild]
-    Gtk.Button backspace_button;
+    unowned Gtk.Button backspace_button;
 
     private HashTable<string, GtkSource.CompletionProvider> providers;
     private string[] _enabled_completions = {};

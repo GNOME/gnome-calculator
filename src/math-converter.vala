@@ -67,9 +67,9 @@ public class MathConverter : Gtk.Grid
     private Gtk.SignalListItemFactory from_currency_factory;
     private Gtk.SignalListItemFactory to_currency_factory;
     [GtkChild]
-    private Gtk.EventControllerKey from_event_controller;
+    private unowned Gtk.EventControllerKey from_event_controller;
     [GtkChild]
-    private Gtk.EventControllerKey to_event_controller;
+    private unowned Gtk.EventControllerKey to_event_controller;
     private ulong from_combobox_changed = 0;
     private ulong from_entry_changed;
     private ulong to_entry_changed;

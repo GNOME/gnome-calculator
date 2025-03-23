@@ -15,21 +15,21 @@ public class MathWindow : Adw.ApplicationWindow
     public MathEquation equation { get; construct set; }
 
     [GtkChild]
-    private HistoryView history;
+    private unowned HistoryView history;
 
     private ulong changed_handler;
 
     [GtkChild]
-    private MathDisplay _display;
+    private unowned MathDisplay _display;
     public MathDisplay math_display { get { return _display; } }
     [GtkChild]
-    private MathButtons _buttons;
+    private unowned MathButtons _buttons;
     public MathButtons buttons { get { return _buttons; } }
     private int forked_row_index = 0;
     private string saved_eq = null;
 
     [GtkChild]
-    private MathConverter converter;
+    private unowned MathConverter converter;
 
     [GtkChild]
     private unowned Gtk.MenuButton menu_button;
