@@ -243,6 +243,9 @@ public class Currency : Object
     private string _source;
     public string source { owned get { return _source; } owned set { _source = value; }}
 
+    private string? _date;
+    public string? date { owned get { return _date; } owned set { _date = value; }}
+
     public Currency (string name, string display_name, string symbol)
     {
         _name = name;

@@ -13,6 +13,8 @@ public interface CurrencyProvider : Object {
     public abstract string attribution_link { owned get ; }
 
     public abstract string provider_name { get ; }
+
+    public abstract Date? parse_date (string? date);
 }
 
 public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
@@ -28,6 +30,10 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     public abstract string source_name { owned get; }
 
     public int refresh_interval { get; private set; }
+
+    protected string[] MONTHS_ABBREVIATED = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+    protected string[] MONTHS_FULL = {"January", "February", "March", "April", "May", "June",
+                                      "July", "August", "September", "October", "November", "December"};
 
     public void set_refresh_interval (int interval, bool asyncLoad = true) {
         loaded = false;
@@ -45,16 +51,21 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     protected bool loaded;
     protected List<Currency> currencies;
     public CurrencyManager currency_manager { get; construct; }
-    public string user_agent { get; construct; default = "GNOME Calculator"; }
 
     public void clear () {
         FileUtils.remove (rate_filepath);
     }
 
-    public Currency register_currency (string symbol, string source) {
+    public Currency register_currency (string symbol, string source, Number? value, string? date) {
         Currency currency = currency_manager.add_currency (symbol, source);
+        currency.set_value (value);
+        currency.date = date;
         currencies.append(currency);
         return currency;
+    }
+
+    public virtual Date? parse_date (string? date) {
+        return null;
     }
 
     public void update_rates (bool asyncLoad = true) {
@@ -76,14 +87,13 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         loading = true;
 
         if (asyncLoad) {
-            debug ("Downloading %s rates async".printf(source_name));
+            debug ("Downloading %s rates async from %s".printf(source_name, rate_source_url));
             this.download_file_async.begin (rate_source_url, rate_filepath, source_name);
         } else {
-            debug ("Downloading %s rates sync".printf(source_name));
+            debug ("Downloading %s rates sync from %s".printf(source_name, rate_source_url));
             this.download_file_sync (rate_source_url, rate_filepath, source_name);
             do_load_rates ();
         }
-            
 
     }
 
@@ -124,13 +134,6 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         return false;
     }
 
-    private Soup.Session build_session()
-    {
-        var session = new Soup.Session ();
-        session.set_user_agent ("curl/%s".printf (user_agent));
-        return session;
-    }
-
     protected virtual void download_file_sync (string uri, string filename, string source)
     {
 
@@ -140,7 +143,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         try
         {
             var dest = File.new_for_path (filename);
-            var session = build_session ();
+            var session = new Soup.Session ();
             var message = new Soup.Message ("GET", uri);
             var output = dest.replace (null, false, FileCreateFlags.REPLACE_DESTINATION);
             session.send_and_splice (message, output,
@@ -166,7 +169,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         try
         {
             var dest = File.new_for_path (filename);
-            var session = build_session ();
+            var session = new Soup.Session ();
             var message = new Soup.Message ("GET", uri);
             var output = yield dest.replace_async (null, false, FileCreateFlags.REPLACE_DESTINATION, Priority.DEFAULT);
             yield session.send_and_splice_async (message, output,
@@ -190,7 +193,7 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "rms_five.xls"); } }
 
     public override string rate_source_url { owned get {
-        return "https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"; } }
+        return "https://exchange-api.gnome.org/imf/rms_five.xls"; } }
 
     public override string attribution_link { owned get {
         return "https://www.imf.org/external/np/fin/data/rms_five.aspx"; } }
@@ -274,6 +277,7 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
         var lines = data.split ("\n", 0);
 
         var in_data = false;
+        string[] headers = null;
         foreach (var line in lines)
         {
             line = line.chug ();
@@ -293,7 +297,7 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
                 continue;
 
             var tokens = line.split ("\t", 0);
-            if (tokens[0] != "Currency")
+            if (tokens[0] != "Currency" && headers != null)
             {
                 int value_index;
                 for (value_index = 1; value_index < tokens.length; value_index++)
@@ -314,15 +318,14 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
                         if (c == null && value != null)
                         {
                             debug ("Using IMF rate of %s for %s", tokens[value_index], symbol);
-                            c = register_currency (symbol, source_name);
-                            value = value.reciprocal ();
-                            if (c != null)
-                                c.set_value (value);
+                            c = register_currency (symbol, source_name, value.reciprocal (), headers != null ? headers[value_index] : null);
                         }
                     }
                     else
                         warning ("Unknown currency '%s'", tokens[0]);
                 }
+            } else {
+                headers = tokens;
             }
         }
         base.do_load_rates ();
@@ -399,7 +402,7 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "eurofxref-daily.xml"); } }
 
     public override string rate_source_url { owned get {
-        return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
+        return "https://exchange-api.gnome.org/ecb/eurofxref-daily.xml"; } }
 
     public override string attribution_link { owned get {
         return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
@@ -412,18 +415,13 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
     protected override void do_load_rates ()
     {
         /* Scale rates to the EUR value */
-        var eur_rate = get_currency ("EUR");
-        if (eur_rate == null)
+        var eur_currency = get_currency ("EUR");
+        if (eur_currency == null)
         {
             warning ("Cannot use ECB rates as don't have EUR rate");
             return;
         }
-
-        /* Set some fixed rates */
-        set_ecb_fixed_rate ("BDT", "0.0099", eur_rate);
-        set_ecb_fixed_rate ("RSD", "0.0085", eur_rate);
-        set_ecb_fixed_rate ("EEK", "0.06391", eur_rate);
-        set_ecb_fixed_rate ("CFA", "0.00152449", eur_rate);
+        var eur_rate = eur_currency.get_value ();
 
         Xml.Parser.init ();
         var document = Xml.Parser.read_file (rate_filepath);
@@ -447,23 +445,32 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
             warning ("Couldn't create XPath object");
             return;
         }
+
+        var xpath_date = xpath_ctx.eval_expression("//xref:Cube/@time");
+        var date = xpath_date->nodesetval != null ? xpath_date->nodesetval->item(0)->get_content () : null;
         var len = (xpath_obj->nodesetval != null) ? xpath_obj->nodesetval->length () : 0;
         for (var i = 0; i < len; i++)
         {
             var node = xpath_obj->nodesetval->item (i);
 
             if (node->type == Xml.ElementType.ELEMENT_NODE)
-                set_ecb_rate (node, eur_rate);
+                set_ecb_rate (node, eur_rate, date);
 
             /* Avoid accessing removed elements */
             if (node->type != Xml.ElementType.NAMESPACE_DECL)
                 node = null;
         }
 
+        /* Set some fixed rates */
+        set_ecb_fixed_rate ("BDT", "0.0099", eur_rate, date);
+        set_ecb_fixed_rate ("RSD", "0.0085", eur_rate, date);
+        set_ecb_fixed_rate ("EEK", "0.06391", eur_rate, date);
+        set_ecb_fixed_rate ("CFA", "0.00152449", eur_rate, date);
+
         base.do_load_rates ();
     }
 
-    private void set_ecb_rate (Xml.Node node, Currency eur_rate)
+    private void set_ecb_rate (Xml.Node node, Number eur_rate, string? date)
     {
         string? name = null, value = null;
 
@@ -480,22 +487,16 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
         if (name != null && value != null && get_currency (name) == null)
         {
             debug ("Using ECB rate of %s for %s", value, name);
-            var c = register_currency (name, source_name);
             var r = mp_set_from_string (value);
-            var v = eur_rate.get_value ();
-            v = v.multiply (r);
-            c.set_value (v);
+            var c = register_currency (name, source_name, eur_rate.multiply (r), date);
         }
     }
 
-    private void set_ecb_fixed_rate (string name, string value, Currency eur_rate)
+    private void set_ecb_fixed_rate (string name, string value, Number eur_rate, string? date)
     {
         debug ("Using ECB fixed rate of %s for %s", value, name);
-        var c = register_currency (name, source_name + "#fixed");
         var r = mp_set_from_string (value);
-        var v = eur_rate.get_value ();
-        v = v.divide (r);
-        c.set_value (v);
+        var c = register_currency (name, source_name + "#fixed", eur_rate.divide (r), date);
     }
 
     public EcbCurrencyProvider (CurrencyManager _currency_manager)
@@ -513,7 +514,7 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "%s.xml".printf (currency_filename)); } }
 
     public override string rate_source_url { owned get {
-        return "https://www.bankofcanada.ca/valet/observations/%s/xml?recent=1".printf (currency_filename); } }
+        return "https://exchange-api.gnome.org/boc/fxtwdcad.xml"; } }
 
     public override string attribution_link { owned get {
         return "https://www.bankofcanada.ca/valet/observations/%s/xml?recent=1".printf (currency_filename); } }
@@ -546,6 +547,8 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
             warning ("Couldn't create XPath object");
             return;
         }
+        var xpath_date = xpath_ctx.eval_expression ("//observations/o[last()]/@d");
+        var date = xpath_date->nodesetval != null ? xpath_date->nodesetval->item(0)->get_content () : null;
         var node = xpath_obj->nodesetval->item (0);
         var rate = node->get_content ();
 
@@ -556,19 +559,16 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
             return;
         }
 
-        set_rate (currency, rate, cad_rate);
+        set_rate (currency, rate, cad_rate.get_value (), date);
 
         base.do_load_rates ();
     }
 
-    private void set_rate (string name, string value, Currency cad_rate)
+    private void set_rate (string name, string value, Number cad_rate, string? date)
     {
         debug ("Using BC rate of %s for %s", value, name);
-        var c = register_currency (name, source_name);
         var r = mp_set_from_string (value);
-        var v = cad_rate.get_value ();
-        v = v.divide (r);
-        c.set_value (v);
+        var c = register_currency (name, source_name, cad_rate.divide (r), date);
     }
 
     public BCCurrencyProvider (CurrencyManager _currency_manager, string currency, string currency_filename)
@@ -584,7 +584,7 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "un-daily.xls"); } }
 
     public override string rate_source_url { owned get {
-        return "https://treasury.un.org/operationalrates/xsql2CSV.php"; } }
+        return "https://exchange-api.gnome.org/unt/un-daily.xls"; } }
 
     public override string attribution_link { owned get {
         return "https://treasury.un.org/operationalrates/OperationalRates.php"; } }
@@ -622,12 +622,13 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
         var lines = data.split ("\r\n", 0);
 
         var in_data = false;
-        var usd_rate = get_currency ("USD");
-        if (usd_rate == null)
+        var usd_currency = get_currency ("USD");
+        if (usd_currency == null)
         {
             warning ("Cannot use UN rates as don't have USD rate");
             return;
         }
+        var usd_rate = usd_currency.get_value ();
         foreach (var line in lines)
         {
             line = line.chug ();
@@ -648,18 +649,17 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
 
             var tokens = line.split ("\t", 0);
             int value_index = 4;
+            int date_index = 3;
             int symbol_index = 2;
             if (value_index <= tokens.length && symbol_index <= tokens.length) 
             {
                 var name = tokens [symbol_index];
                 var value = tokens [value_index].chug ();
                 if (name != null && value != null && get_currency (name) == null && currency_map.lookup (name) != null) {
-                    var c = register_currency (name, source_name);
                     var r = mp_set_from_string (value);
                     debug ("Registering %s with value '%s'\r\n", name, value);
-                    var v = usd_rate.get_value ();
-                    v = v.multiply (r);
-                    c.set_value (v);
+                    var v = usd_rate.multiply (r);
+                    var c = register_currency (name, source_name, v, tokens[date_index]);
                 }
             }
         }
