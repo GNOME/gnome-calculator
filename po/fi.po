@@ -17,8 +17,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-03-14 19:27+0000\n"
-"PO-Revision-Date: 2025-03-15 10:26+0200\n"
+"POT-Creation-Date: 2025-03-23 17:33+0000\n"
+"PO-Revision-Date: 2025-03-24 20:24+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -518,19 +518,19 @@ msgstr "Vietnamin dong"
 msgid "South African Rand"
 msgstr "Etelä-Afrikan randi"
 
-#: lib/currency-provider.vala:188
+#: lib/currency-provider.vala:199
 msgid "International Monetary Fund"
 msgstr "Kansainvälinen valuuttarahasto"
 
-#: lib/currency-provider.vala:397
+#: lib/currency-provider.vala:408
 msgid "European Central Bank"
 msgstr "Euroopan keskuspankki"
 
-#: lib/currency-provider.vala:511
+#: lib/currency-provider.vala:522
 msgid "Bank of Canada"
 msgstr "Kanadan keskuspankki"
 
-#: lib/currency-provider.vala:582
+#: lib/currency-provider.vala:593
 msgid "United Nations Treasury"
 msgstr "Yhdistyneiden kansakuntien rahasto"
 
@@ -689,69 +689,69 @@ msgid "Two's complement"
 msgstr "Kahden komplementti"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:73 lib/math-equation.vala:1459
+#: lib/math-equation.vala:74 lib/math-equation.vala:1468
 msgid "Displayed value not an integer"
 msgstr "Esitettävä arvo ei ole kokonaisluku"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:216
+#: lib/math-equation.vala:217
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:584
+#: lib/math-equation.vala:585
 msgid "No undo history"
 msgstr "Ei perumishistoriaa"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:605
+#: lib/math-equation.vala:606
 msgid "No redo history"
 msgstr "Ei palautettavaa historiaa"
 
-#: lib/math-equation.vala:836
+#: lib/math-equation.vala:837
 msgid "No sane value to store"
 msgstr "Ei kelpoa arvoa tallennettavaksi"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1149
+#: lib/math-equation.vala:1158
 msgid "Overflow. Try a bigger word size"
 msgstr "Ylivuoto. Kokeile suurempaa sanakokoa"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1154
+#: lib/math-equation.vala:1163
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Tuntematon muuttuja “%s”"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1161
+#: lib/math-equation.vala:1170
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funktiota “%s” ei ole määritelty"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1168
+#: lib/math-equation.vala:1177
 msgid "Unknown conversion"
 msgstr "Tuntematon muunnos"
 
 #. should always be run
-#: lib/math-equation.vala:1178
+#: lib/math-equation.vala:1187
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1183 lib/math-equation.vala:1188
+#: lib/math-equation.vala:1192 lib/math-equation.vala:1197
 msgid "Malformed expression"
 msgstr "Virheellinen lauseke"
 
-#: lib/math-equation.vala:1199
+#: lib/math-equation.vala:1208
 msgid "Calculating"
 msgstr "Lasketaan"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1392
+#: lib/math-equation.vala:1401
 msgid "Need an integer to factorize"
 msgstr "Tekijöihin jakamiseen vaaditaan kokonaisluku"
 
@@ -2036,7 +2036,7 @@ msgid "Add [+]"
 msgstr "Lisää [+]"
 
 #: src/ui/buttons-advanced.ui:315 src/ui/buttons-basic.ui:262
-#: src/ui/buttons-programming.ui:1328 src/math-buttons.vala:715
+#: src/ui/buttons-programming.ui:1328 src/math-buttons.vala:707
 msgid "Pi [Ctrl+P]"
 msgstr "Pii [Ctrl+P]"
 
@@ -2131,7 +2131,6 @@ msgid "Factorial [!]"
 msgstr "Kertoma [!]"
 
 #: src/ui/buttons-advanced.ui:728 src/ui/buttons-programming.ui:2003
-#| msgid "Absolute Value [||]"
 msgid "Absolute Value [|]"
 msgstr "Itseisarvo [|]"
 
@@ -2650,39 +2649,47 @@ msgstr "Haluatko varmasti sulkea kaikki avoimet ikkunat?"
 msgid "Close _All"
 msgstr "Sulje _kaikki"
 
-#: src/math-buttons.vala:311 src/math-buttons.vala:760
-#: src/math-buttons.vala:776
+#: src/math-buttons.vala:303 src/math-buttons.vala:752
+#: src/math-buttons.vala:768
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d-bit"
 msgstr[1] "%d-bit"
 
-#: src/math-buttons.vala:721
+#: src/math-buttons.vala:713
 msgid "Negative [-]"
 msgstr "Negatiivinen [-]"
 
-#: src/ui/math-converter.ui:146
+#: src/ui/math-converter.ui:134
+msgid "Currency Conversion Disabled"
+msgstr "Valuuttamuunnos poistettu käytöstä"
+
+#: src/ui/math-converter.ui:135
+msgid "Enable in preferences to convert currencies"
+msgstr "Ota käyttöön asetuksissa muuntaaksesi valuuttoja"
+
+#: src/ui/math-converter.ui:145
 msgid "_Copy"
 msgstr "_Kopioi"
 
-#: src/ui/math-converter.ui:150
+#: src/ui/math-converter.ui:149
 msgid "_Paste"
 msgstr "_Liitä"
 
-#: src/math-display.vala:620
+#: src/math-display.vala:646
 msgid "Defined Functions"
 msgstr "Määritetyt funktiot"
 
-#: src/math-display.vala:665
+#: src/math-display.vala:691
 msgid "Built-in keywords"
 msgstr "Sisäänrakennetut avainsanat"
 
-#: src/math-display.vala:709
+#: src/math-display.vala:735
 msgid "Defined currencies"
 msgstr "Määritetyt valuutat"
 
-#: src/math-display.vala:759
+#: src/math-display.vala:785
 msgid "Defined Variables"
 msgstr "Määritetyt muuttujat"
 
