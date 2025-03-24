@@ -1552,8 +1552,11 @@ private int char_val (unichar c, int number_base)
     return value;
 }
 
-private Number? set_from_sexagesimal (string str)
+private Number? set_from_sexagesimal (string s)
 {
+    var str = s.replace ("′", "'").replace ("’", "'");
+    str = str.replace ("''", "\"").replace ("″", "\"").replace ("”", "\"");
+
     var degree_index = str.index_of_char ('°');
     if (degree_index < 0)
         return null;
@@ -1568,7 +1571,7 @@ private Number? set_from_sexagesimal (string str)
         return degrees;
     var minute_index = str.index_of_char ('\'', minute_start);
     if (minute_index < 0)
-        return null;
+        minute_index = str.length;
     var minutes = mp_set_from_string (str.substring (minute_start, minute_index - minute_start));
     if (minutes == null)
         return null;
@@ -1580,7 +1583,7 @@ private Number? set_from_sexagesimal (string str)
         return degrees;
     var second_index = str.index_of_char ('"', second_start);
     if (second_index < 0)
-        return null;
+        second_index = str.length;
     var seconds = mp_set_from_string (str.substring (second_start, second_index - second_start));
     if (seconds == null)
         return null;

@@ -40,7 +40,8 @@ public class UnitManager : Object
         var digitalstorage_category = default_unit_manager.add_category ("digitalstorage", _("Digital Storage"));
 
         /* FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads */
-        angle_category.add_unit (new Unit ("degree", _("Degrees"), "π*x/180", "180x/π", dpgettext2 (null, "unit-symbols", "degree,degrees,deg")));
+        angle_category.add_unit (new Unit ("degree", _("Degrees (Decimal)"), "π*x/180", "180x/π", dpgettext2 (null, "unit-symbols", "degree,degrees,deg")));
+        angle_category.add_unit (new Unit ("dms", _("Degrees (D°M′S″)"), "π*x/180", "180x/π", ""));
         angle_category.add_unit (new Unit ("radian", _("Radians"), "x", "x", dpgettext2 (null, "unit-symbols", "radian,radians,rad")));
         angle_category.add_unit (new Unit ("gradian", _("Gradians"), "π*x/200", "200x/π", dpgettext2 (null, "unit-symbols", "gradian,gradians,grad")));
         length_category.add_unit (new Unit ("parsec", _("Parsecs"), "30857000000000000x", "x/30857000000000000", dpgettext2 (null, "unit-symbols", "parsec,parsecs,pc")));

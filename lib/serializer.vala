@@ -122,6 +122,7 @@ public class Serializer : Object
         case DisplayFormat.SCIENTIFIC:
             if (representation_base == 10)
             {
+                error = null;
                 int n_digits = 0;
                 return cast_to_exponential_string (x, false, ref n_digits);
             }
@@ -133,6 +134,7 @@ public class Serializer : Object
         case DisplayFormat.ENGINEERING:
             if (representation_base == 10)
             {
+                error = null;
                 int n_digits = 0;
                 return cast_to_exponential_string (x, true, ref n_digits);
             }
@@ -142,6 +144,35 @@ public class Serializer : Object
                 return cast_to_string (x, ref n_digits);
             }
         }
+    }
+
+    public string to_dms_string (Number number)
+    {
+        var eps = number.multiply (new Number.integer (2).xpowy_integer (8 - Number.precision)).abs ();
+        var rounded_number = number.round ();
+        if (number.subtract (rounded_number).abs ().compare (eps) < 0)
+            number = rounded_number;
+
+        var minute = number.fractional_component ().multiply_integer (60);
+        var rounded_minute = minute.round ();
+        if (minute.subtract (rounded_minute).abs ().compare (eps) < 0)
+            minute = rounded_minute;
+
+        var d = to_string (number.integer_component ());
+        var m = to_string (minute.integer_component ());
+        var s = to_string (minute.fractional_component ().multiply_integer (60));
+        if (s.has_prefix ("60"))
+        {
+            s = zero_string;
+            if (m.has_prefix ("59"))
+            {
+                m = zero_string;
+                d = to_string (number.integer_component ().add (new Number.integer (1)));
+            }
+            else
+                m = to_string (minute.integer_component ().add (new Number.integer (1)));
+        }
+        return "%s°%s′%s″".printf (d, m, s);
     }
 
     public Number? from_string (string str)

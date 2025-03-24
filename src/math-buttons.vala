@@ -783,9 +783,9 @@ public class MathButtons : Adw.BreakpointBin
     {
         string category, unit;
         converter.get_conversion (out category, out unit);
-        if (category == "angle" && unit == "degree")
+        if (category == "angle" && (unit == "degree" || unit == "dms"))
         {
-            calc_mutable_button.action_target = calc_mutable_button.label = "° ' \"";
+            calc_mutable_button.action_target = calc_mutable_button.label = "° ′ ″";
             calc_mutable_button.tooltip_text = _("Degrees, Minutes, Seconds");
             calc_mutable_button.action_name = "cal.insert-dms";
         }
