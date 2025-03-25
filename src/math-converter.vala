@@ -92,6 +92,12 @@ public class MathConverter : Gtk.Box
         from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
         to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
 
+        if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
+        {
+            from_entry.justification = Gtk.Justification.RIGHT;
+            to_entry.justification = Gtk.Justification.RIGHT;
+        }
+
         set_conversion (equation.source_units, equation.target_units);
     }
 
