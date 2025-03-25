@@ -80,6 +80,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("DKK", _("Danish Krone"), "kr"));
         default_currency_manager.currencies.append (new Currency ("DZD", _("Algerian Dinar"), "ج.د"));
         default_currency_manager.currencies.append (new Currency ("EEK", _("Estonian Kroon"), "KR"));
+        default_currency_manager.currencies.append (new Currency ("EGP", _("Egyptian Pound"), "£E"));
         default_currency_manager.currencies.append (new Currency ("EUR", _("Euro"), "€"));
         default_currency_manager.currencies.append (new Currency ("GBP", _("British Pound Sterling"), "£"));
         default_currency_manager.currencies.append (new Currency ("HKD", _("Hong Kong Dollar"), "$"));
