@@ -78,6 +78,23 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         var name = function_name_entry.text;
         if (name == "")
             return;
+        var function = FunctionManager.get_default_function_manager ().get (name);
+        if (function != null && !function.is_custom_function () || name.down () in OPERATORS) {
+            equation.status = _("%s: Invalid function name, can not use built-in function or operator names").printf (name);
+            return;
+        }
+        if (name.down () in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS || equation.variables.get (name) != null) {
+            equation.status = _("%s: Invalid function name, can not use defined variable or constant names").printf (name);
+            return;
+        }
+        if (!Regex.match_simple("^\\D", name)) {
+            equation.status = _("%s: Invalid function name, can not start with a digit").printf (name);
+            return;
+        }
+        if (!Regex.match_simple("^\\w*$", name)) {
+            equation.status = _("%s: Invalid function name, can only contain digits, letters and underscores").printf (name);
+            return;
+        }
 
         var arguments = add_arguments_button.get_value_as_int ();
         string formatted_args = "";

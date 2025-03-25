@@ -10,6 +10,9 @@
 
 public abstract class MathPopover<T> : Gtk.Popover
 {
+    protected static string[] RESERVED_VARIABLE_NAMES = {"_", "rand"};
+    protected static string[] OPERATORS = {"mod", "and", "nand", "or", "nor", "xor", "xnor", "nxor", "not", _("in"), _("to")};
+
     protected MathEquation equation;
 
     protected ListStore model;

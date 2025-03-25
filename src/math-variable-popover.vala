@@ -33,8 +33,6 @@ public class MathVariable : Object
 [GtkTemplate (ui = "/org/gnome/calculator/math-variable-popover.ui")]
 public class MathVariablePopover : MathPopover<MathVariable>
 {
-    private static string[] RESERVED_VARIABLE_NAMES = {"_", "rand"};
-
     [GtkChild]
     private unowned Gtk.Stack stack;
     [GtkChild]
@@ -153,11 +151,14 @@ public class MathVariablePopover : MathPopover<MathVariable>
     private void store_variable_cb (Gtk.Widget widget)
     {
         var name = variable_name_entry.get_text ();
-        if (name == "" || name in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS) {
+        if (name == "" || name.down () in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS) {
             equation.status = _("%s: Invalid variable name, can not use built-in variable or constant names").printf (name);
             return;
         }
-        var z = equation.number;
+        if (FunctionManager.get_default_function_manager ().is_function_defined (name) || name.down () in OPERATORS) {
+            equation.status = _("%s: Invalid variable name, can not use defined function or operator names").printf (name);
+            return;
+        }
         if (!Regex.match_simple("^\\D", name)) {
             equation.status = _("%s: Invalid variable name, can not start with a digit").printf (name);
             return;
@@ -166,6 +167,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
             equation.status = _("%s: Invalid variable name, can only contain digits, letters and underscores").printf (name);
             return;
         }
+        var z = equation.number;
         if (z != null)
             equation.variables[name] = z;
         else if (equation.is_result)

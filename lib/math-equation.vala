@@ -1539,6 +1539,7 @@ public class MathEquation : GtkSource.Buffer
             Source.remove (looking_for_answer_timeout);
             Source.remove (in_progress_timeout);
         }
+        status = "";
     }
 
     public void toggle_bit (uint bit)
