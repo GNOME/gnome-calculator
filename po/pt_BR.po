@@ -25,21 +25,22 @@
 # Samuel Schlemper <samuelschlemper2006@gmail.com>, 2024.
 # Juliano de Souza Camargo <julianosc@pm.me>, 2024.
 # Rafael Fontenelle <rafaelff@gnome.org>, 2013-2025.
+# Álvaro Burns, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-02-12 20:25+0000\n"
-"PO-Revision-Date: 2025-02-13 13:10-0300\n"
-"Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
-"Language-Team: Brazilian Portuguese <https://br.gnome.org/traducao>\n"
+"POT-Creation-Date: 2025-03-23 21:05+0000\n"
+"PO-Revision-Date: 2025-03-23 19:28-0300\n"
+"Last-Translator: Álvaro Burns\n"
+"Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Gtranslator 47.1\n"
 "X-Project-Style: gnome\n"
 "X-DL-Team: pt_BR\n"
@@ -49,8 +50,8 @@ msgstr ""
 "X-DL-State: Translating\n"
 
 #: data/org.gnome.Calculator.desktop.in:3
-#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:82
-#: src/gnome-calculator.vala:304 src/ui/math-window.ui:117
+#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:80
+#: src/gnome-calculator.vala:282 src/ui/math-window.ui:105
 msgid "Calculator"
 msgstr "Calculadora"
 
@@ -62,7 +63,9 @@ msgstr "Efetue cálculos aritméticos, científicos ou financeiros"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:6
 msgid "calculation;arithmetic;scientific;financial;"
-msgstr "cálculo;cálculos;aritmético;científico;científica;financeiro;financeira;aritmética;"
+msgstr ""
+"cálculo;cálculos;aritmético;científico;científica;financeiro;financeira;"
+"aritmética;"
 
 #: data/org.gnome.Calculator.metainfo.xml.in:10
 msgid ""
@@ -129,7 +132,7 @@ msgid "Keyboard Mode"
 msgstr "Modo teclado"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:76 src/gnome-calculator.vala:306
+#: data/org.gnome.Calculator.metainfo.xml.in:76 src/gnome-calculator.vala:284
 msgid "The GNOME Project"
 msgstr "O Projeto GNOME"
 
@@ -549,19 +552,19 @@ msgstr "Dongue vietnamita "
 msgid "South African Rand"
 msgstr "Rand sul-africano"
 
-#: lib/currency-provider.vala:188
+#: lib/currency-provider.vala:199
 msgid "International Monetary Fund"
 msgstr "Fundo Monetário Internacional"
 
-#: lib/currency-provider.vala:397
+#: lib/currency-provider.vala:408
 msgid "European Central Bank"
 msgstr "Banco Central Europeu"
 
-#: lib/currency-provider.vala:511
+#: lib/currency-provider.vala:522
 msgid "Bank of Canada"
 msgstr "Banco do Canadá"
 
-#: lib/currency-provider.vala:582
+#: lib/currency-provider.vala:593
 msgid "United Nations Treasury"
 msgstr "Tesouro das Nações Unidas"
 
@@ -582,8 +585,8 @@ msgstr "A raiz de zero de um número é indefinida"
 msgid "Error: the number of periods must be positive"
 msgstr "Erro: o número de períodos deve ser positivo"
 
-#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:721
-#: src/ui/buttons-financial.ui:989 src/ui/buttons-programming.ui:1956
+#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:692
+#: src/ui/buttons-financial.ui:990 src/ui/buttons-programming.ui:1951
 msgid "Logarithm"
 msgstr "Logaritmo"
 
@@ -641,15 +644,15 @@ msgstr "Real"
 msgid "Imaginary"
 msgstr "Imaginário"
 
-#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:559
+#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:538
 msgid "Sine"
 msgstr "Seno"
 
-#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:543
+#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:522
 msgid "Cosine"
 msgstr "Cosseno"
 
-#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:575
+#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:554
 msgid "Tangent"
 msgstr "Tangente"
 
@@ -722,76 +725,71 @@ msgid "Two's complement"
 msgstr "Complemento de dois"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:73 lib/math-equation.vala:1416
+#: lib/math-equation.vala:74 lib/math-equation.vala:1468
 msgid "Displayed value not an integer"
 msgstr "Valor exibido não é um inteiro"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:216
+#: lib/math-equation.vala:217
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:584
+#: lib/math-equation.vala:585
 msgid "No undo history"
 msgstr "Sem histórico para desfazer"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:605
+#: lib/math-equation.vala:606
 msgid "No redo history"
 msgstr "Sem histórico para refazer"
 
-#: lib/math-equation.vala:836
+#: lib/math-equation.vala:837
 msgid "No sane value to store"
 msgstr "Não há um valor razoável para armazenar"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1085
+#: lib/math-equation.vala:1158
 msgid "Overflow. Try a bigger word size"
 msgstr "Estouro de capacidade. Tente um tamanho de palavra maior"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1090
+#: lib/math-equation.vala:1163
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "A variável “%s” é desconhecida"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1097
+#: lib/math-equation.vala:1170
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "A função “%s” não está definida"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1104
+#: lib/math-equation.vala:1177
 msgid "Unknown conversion"
 msgstr "Conversão desconhecida"
 
 #. should always be run
-#: lib/math-equation.vala:1114
+#: lib/math-equation.vala:1187
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1119 lib/math-equation.vala:1124
+#: lib/math-equation.vala:1192 lib/math-equation.vala:1197
 msgid "Malformed expression"
 msgstr "Expressão mal formada"
 
-#: lib/math-equation.vala:1135
+#: lib/math-equation.vala:1208
 msgid "Calculating"
 msgstr "Calculando"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1328
+#: lib/math-equation.vala:1401
 msgid "Need an integer to factorize"
 msgstr "É necessário um valor inteiro para fatorar"
-
-#. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1392
-msgid "No sane value to bitwise shift"
-msgstr "Não há um valor razoável para alternar bit a bit"
 
 #. Translators: Error displayed when underflow error occured
 #: lib/number.vala:201
@@ -956,7 +954,7 @@ msgid "Digital Storage"
 msgstr "Armazenamento digital"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:43 src/math-preferences.vala:110
+#: lib/unit.vala:43 src/math-preferences.vala:103
 msgid "Degrees"
 msgstr "Graus"
 
@@ -965,7 +963,7 @@ msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "grau,graus,grau"
 
-#: lib/unit.vala:44 src/math-preferences.vala:112
+#: lib/unit.vala:44 src/math-preferences.vala:105
 msgid "Radians"
 msgstr "Radianos"
 
@@ -974,7 +972,7 @@ msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radiano,radianos,rad"
 
-#: lib/unit.vala:45 src/math-preferences.vala:114
+#: lib/unit.vala:45 src/math-preferences.vala:107
 msgid "Gradians"
 msgstr "Grados"
 
@@ -2064,10 +2062,8 @@ msgstr ""
 msgid "Currency"
 msgstr "Moeda"
 
-#: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:37
-#: src/ui/buttons-programming.ui:42 src/ui/buttons-programming.ui:47
-#: src/ui/buttons-programming.ui:2142 src/ui/buttons-programming.ui:2147
-#: src/ui/buttons-programming.ui:2152
+#: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:76
+#: src/ui/buttons-programming.ui:82 src/ui/buttons-programming.ui:88
 msgid "Copy"
 msgstr "Copiar"
 
@@ -2075,180 +2071,176 @@ msgstr "Copiar"
 msgid "Copy result to clipboard"
 msgstr "Copia o resultado para a área de transferência"
 
-#: src/ui/buttons-advanced.ui:146 src/ui/buttons-basic.ui:127
-#: src/ui/buttons-financial.ui:706 src/ui/buttons-programming.ui:1680
+#: src/ui/buttons-advanced.ui:162 src/ui/buttons-basic.ui:109
+#: src/ui/buttons-financial.ui:722 src/ui/buttons-programming.ui:1698
 msgid "Modulus Divide"
 msgstr "Resto da divisão"
 
-#: src/ui/buttons-advanced.ui:163 src/ui/buttons-basic.ui:145
-#: src/ui/buttons-financial.ui:723 src/ui/buttons-programming.ui:1300
+#: src/ui/buttons-advanced.ui:178 src/ui/buttons-basic.ui:125
+#: src/ui/buttons-financial.ui:738 src/ui/buttons-programming.ui:1343
 msgid "Divide [/]"
 msgstr "Dividir [/]"
 
-#: src/ui/buttons-advanced.ui:259 src/ui/buttons-basic.ui:247
-#: src/ui/buttons-financial.ui:819 src/ui/buttons-programming.ui:1317
+#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:215
+#: src/ui/buttons-financial.ui:828 src/ui/buttons-programming.ui:1359
 msgid "Multiply [*]"
 msgstr "Multiplicar [*]"
 
-#: src/ui/buttons-advanced.ui:276 src/ui/buttons-basic.ui:265
-#: src/ui/buttons-financial.ui:836 src/ui/buttons-programming.ui:1334
+#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:231
+#: src/ui/buttons-financial.ui:844 src/ui/buttons-programming.ui:1375
 msgid "Subtract [-]"
 msgstr "Subtrair [-]"
 
-#: src/ui/buttons-advanced.ui:292 src/ui/buttons-basic.ui:282
-#: src/ui/buttons-financial.ui:852 src/ui/buttons-programming.ui:1350
+#: src/ui/buttons-advanced.ui:299 src/ui/buttons-basic.ui:246
+#: src/ui/buttons-financial.ui:859 src/ui/buttons-programming.ui:1390
 msgid "Add [+]"
 msgstr "Adicionar [+]"
 
-#: src/ui/buttons-advanced.ui:308 src/ui/buttons-basic.ui:299
-#: src/ui/buttons-programming.ui:1278
+#: src/ui/buttons-advanced.ui:315 src/ui/buttons-basic.ui:262
+#: src/ui/buttons-programming.ui:1328 src/math-buttons.vala:707
 msgid "Pi [Ctrl+P]"
 msgstr "Pi [Ctrl+P]"
 
-#: src/ui/buttons-advanced.ui:331 src/ui/buttons-basic.ui:323
-#: src/ui/buttons-financial.ui:869 src/ui/buttons-programming.ui:1262
+#: src/ui/buttons-advanced.ui:331 src/ui/buttons-basic.ui:278
+#: src/ui/buttons-financial.ui:875 src/ui/buttons-programming.ui:1312
 msgid "Root [Ctrl+R]"
 msgstr "Raiz [Ctrl+R]"
 
-#: src/ui/buttons-advanced.ui:346 src/ui/buttons-basic.ui:339
+#: src/ui/buttons-advanced.ui:346 src/ui/buttons-basic.ui:293
 msgid "Square [Ctrl+2]"
 msgstr "Quadrado [Ctrl+2]"
 
-#: src/ui/buttons-advanced.ui:367 src/ui/buttons-basic.ui:361
-#: src/ui/buttons-conversion.ui:227 src/ui/buttons-financial.ui:885
-#: src/ui/buttons-programming.ui:1383
+#: src/ui/buttons-advanced.ui:366 src/ui/buttons-basic.ui:313
+#: src/ui/buttons-conversion.ui:194 src/ui/buttons-financial.ui:890
+#: src/ui/buttons-programming.ui:1421
 msgid "Clear Display [Escape]"
 msgstr "Limpar o visor [Tecla Esc]"
 
-#: src/ui/buttons-advanced.ui:383 src/ui/buttons-basic.ui:378
-#: src/ui/buttons-financial.ui:901 src/ui/buttons-programming.ui:1696
+#: src/ui/buttons-advanced.ui:381 src/ui/buttons-basic.ui:328
+#: src/ui/buttons-financial.ui:905 src/ui/buttons-programming.ui:1713
 msgid "Start Group [(]"
 msgstr "Início do grupo [(]"
 
-#: src/ui/buttons-advanced.ui:400 src/ui/buttons-basic.ui:396
-#: src/ui/buttons-financial.ui:918 src/ui/buttons-programming.ui:1712
+#: src/ui/buttons-advanced.ui:397 src/ui/buttons-basic.ui:344
+#: src/ui/buttons-financial.ui:921 src/ui/buttons-programming.ui:1728
 msgid "End Group [)]"
 msgstr "Fim do grupo [)]"
 
-#: src/ui/buttons-advanced.ui:417 src/ui/buttons-basic.ui:414
-#: src/ui/buttons-financial.ui:935
+#: src/ui/buttons-advanced.ui:413 src/ui/buttons-basic.ui:360
+#: src/ui/buttons-financial.ui:937
 msgid "Percentage [%]"
 msgstr "Porcentagem [%]"
 
 #. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:431 src/ui/buttons-basic.ui:428
-#: src/ui/buttons-financial.ui:949 src/ui/buttons-programming.ui:1364
+#: src/ui/buttons-advanced.ui:427 src/ui/buttons-basic.ui:374
+#: src/ui/buttons-financial.ui:951 src/ui/buttons-programming.ui:1404
 msgid "="
 msgstr "="
 
-#: src/ui/buttons-advanced.ui:434 src/ui/buttons-basic.ui:432
-#: src/ui/buttons-financial.ui:952 src/ui/buttons-programming.ui:1367
+#: src/ui/buttons-advanced.ui:429 src/ui/buttons-basic.ui:376
+#: src/ui/buttons-financial.ui:953 src/ui/buttons-programming.ui:1406
 msgid "Calculate Result"
 msgstr "Calcula o resultado"
 
-#: src/ui/buttons-advanced.ui:463 src/ui/buttons-programming.ui:1740
+#: src/ui/buttons-advanced.ui:455 src/ui/buttons-programming.ui:1753
 msgid "Subscript Mode [Alt]"
 msgstr "Modo subscrito [Alt]"
 
-#: src/ui/buttons-advanced.ui:484 src/ui/buttons-programming.ui:1761
+#: src/ui/buttons-advanced.ui:471 src/ui/buttons-programming.ui:1769
 msgid "Superscript Mode [Ctrl]"
 msgstr "Modo sobrescrito [Ctrl]"
 
-#: src/ui/buttons-advanced.ui:507 src/ui/buttons-programming.ui:2067
+#: src/ui/buttons-advanced.ui:487 src/ui/buttons-programming.ui:2057
 msgid "Factorize [Ctrl+F]"
 msgstr "Fatorar [Ctrl+F]"
 
-#: src/ui/buttons-advanced.ui:522
+#: src/ui/buttons-advanced.ui:501
 msgid "Scientific Exponent [Ctrl+E]"
 msgstr "Expoente científico [Ctrl+E]"
 
-#: src/ui/buttons-advanced.ui:591
+#: src/ui/buttons-advanced.ui:570
 msgid "Hyperbolic Cosine"
 msgstr "Cosseno hiperbólico"
 
-#: src/ui/buttons-advanced.ui:607
+#: src/ui/buttons-advanced.ui:586
 msgid "Hyperbolic Sine"
 msgstr "Seno hiperbólico"
 
-#: src/ui/buttons-advanced.ui:623
+#: src/ui/buttons-advanced.ui:602
 msgid "Hyperbolic Tangent"
 msgstr "Tangente hiperbólica"
 
-#: src/ui/buttons-advanced.ui:638 src/ui/buttons-financial.ui:967
-#: src/ui/buttons-programming.ui:1912
+#: src/ui/buttons-advanced.ui:617 src/ui/buttons-financial.ui:968
+#: src/ui/buttons-programming.ui:1908
 msgid "Exponent [^ or **]"
 msgstr "Expoente [^ ou **]"
 
-#: src/ui/buttons-advanced.ui:659 src/ui/buttons-programming.ui:1933
+#: src/ui/buttons-advanced.ui:638 src/ui/buttons-programming.ui:1929
 msgid "Inverse [Ctrl+I]"
 msgstr "Inverso [Ctrl+I]"
 
-#: src/ui/buttons-advanced.ui:682
+#: src/ui/buttons-advanced.ui:660
 msgid "Euler’s Number"
 msgstr "Número de Euler"
 
-#: src/ui/buttons-advanced.ui:705
+#: src/ui/buttons-advanced.ui:676
 msgid "Natural Logarithm"
 msgstr "Logaritmo natural"
 
-#: src/ui/buttons-advanced.ui:736 src/ui/buttons-programming.ui:1988
+#: src/ui/buttons-advanced.ui:707 src/ui/buttons-programming.ui:1982
 msgid "Factorial [!]"
 msgstr "Fatorial [!]"
 
-#: src/ui/buttons-advanced.ui:758 src/ui/buttons-programming.ui:2010
+#: src/ui/buttons-advanced.ui:728 src/ui/buttons-programming.ui:2003
 msgid "Absolute Value [|]"
 msgstr "Valor absoluto [|]"
 
-#: src/ui/buttons-advanced.ui:780
+#: src/ui/buttons-advanced.ui:750
 msgid "Imaginary Unit"
 msgstr "Unidade imaginária"
 
 # Em Matemática, a parte real é o primeiro elemento do par ordenado de números reais que representam um número complexo.
-#: src/ui/buttons-advanced.ui:803
+#: src/ui/buttons-advanced.ui:766
 msgid "Real Component"
 msgstr "Parte real"
 
-#: src/ui/buttons-advanced.ui:820
+#: src/ui/buttons-advanced.ui:782
 msgid "Imaginary Component"
 msgstr "Parte imaginária"
 
-#: src/ui/buttons-advanced.ui:837
+#: src/ui/buttons-advanced.ui:798
 msgid "Complex Conjugate"
 msgstr "Conjugação de número complexo"
 
-#: src/ui/buttons-advanced.ui:854
+#: src/ui/buttons-advanced.ui:814
 msgid "Complex Argument"
 msgstr "Argumento de número complexo"
 
-#: src/ui/buttons-advanced.ui:869 src/ui/buttons-financial.ui:1033
-#: src/ui/buttons-programming.ui:2098
+#: src/ui/buttons-advanced.ui:830 src/ui/buttons-financial.ui:1030
+#: src/ui/buttons-programming.ui:2089
 msgid "Memory"
 msgstr "Memória"
 
 #. The label on the memory button
-#: src/ui/buttons-advanced.ui:870 src/ui/buttons-financial.ui:1034
-#: src/ui/buttons-programming.ui:2097
+#: src/ui/buttons-advanced.ui:831 src/ui/buttons-financial.ui:1032
+#: src/ui/buttons-programming.ui:2087
 msgid "x"
 msgstr "x"
 
-#: src/ui/buttons-advanced.ui:884
+#: src/ui/buttons-advanced.ui:846
 msgid "Additional Functions"
 msgstr "Funções adicionais"
 
-#: src/ui/buttons-conversion.ui:211
-msgid "Negative [-]"
-msgstr "Negativo [-]"
-
-#: src/ui/buttons-conversion.ui:243
+#: src/ui/buttons-conversion.ui:208
 msgid "Switch Conversion Units"
 msgstr "Mudar unidades de conversão"
 
-#: src/ui/buttons-conversion.ui:259
+#: src/ui/buttons-conversion.ui:222
 msgid "Backspace"
 msgstr "Backspace"
 
 #. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1050
+#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1048
 msgid "Compounding Term"
 msgstr "Prazo composto"
 
@@ -2257,7 +2249,7 @@ msgstr "Prazo composto"
 #: src/ui/buttons-financial.ui:233 src/ui/buttons-financial.ui:289
 #: src/ui/buttons-financial.ui:345 src/ui/buttons-financial.ui:401
 #: src/ui/buttons-financial.ui:457 src/ui/buttons-financial.ui:519
-#: src/ui/buttons-programming.ui:2209 src/gnome-calculator.vala:330
+#: src/ui/buttons-programming.ui:2172 src/gnome-calculator.vala:308
 msgid "_Cancel"
 msgstr "_Cancelar"
 
@@ -2299,7 +2291,7 @@ msgstr ""
 #: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:155
 #: src/ui/buttons-financial.ui:261 src/ui/buttons-financial.ui:317
 #: src/ui/buttons-financial.ui:335 src/ui/buttons-financial.ui:553
-#: src/ui/buttons-financial.ui:1152
+#: src/ui/buttons-financial.ui:1150
 msgid "Periodic Interest Rate"
 msgstr "Taxa de juro periódica"
 
@@ -2309,7 +2301,7 @@ msgstr "Taxa de juro periódica"
 #. Payment Period Dialog: Label before future value input
 #: src/ui/buttons-financial.ui:43 src/ui/buttons-financial.ui:117
 #: src/ui/buttons-financial.ui:367 src/ui/buttons-financial.ui:547
-#: src/ui/buttons-financial.ui:1084
+#: src/ui/buttons-financial.ui:1082
 msgid "Future Value"
 msgstr "Valor futuro"
 
@@ -2317,7 +2309,7 @@ msgstr "Valor futuro"
 #. Title of Present Value dialog
 #. Periodic Interest Rate Dialog: Label before present value input
 #: src/ui/buttons-financial.ui:49 src/ui/buttons-financial.ui:279
-#: src/ui/buttons-financial.ui:373 src/ui/buttons-financial.ui:1169
+#: src/ui/buttons-financial.ui:373 src/ui/buttons-financial.ui:1167
 msgid "Present Value"
 msgstr "Valor presente"
 
@@ -2378,7 +2370,7 @@ msgstr ""
 #. Payment Period Dialog: Label before periodic payment input
 #: src/ui/buttons-financial.ui:149 src/ui/buttons-financial.ui:223
 #: src/ui/buttons-financial.ui:311 src/ui/buttons-financial.ui:541
-#: src/ui/buttons-financial.ui:1186
+#: src/ui/buttons-financial.ui:1184
 msgid "Periodic Payment"
 msgstr "Pagamento periódico"
 
@@ -2389,7 +2381,7 @@ msgid "Number of Periods"
 msgstr "Número de períodos"
 
 #. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:173 src/ui/buttons-financial.ui:1203
+#: src/ui/buttons-financial.ui:173 src/ui/buttons-financial.ui:1201
 msgid "Gross Profit Margin"
 msgstr "Margem de lucro bruto"
 
@@ -2425,7 +2417,7 @@ msgstr "Principal"
 #. Periodic Interest Rate Dialog: Label before term input
 #. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
 #: src/ui/buttons-financial.ui:267 src/ui/buttons-financial.ui:379
-#: src/ui/buttons-financial.ui:1098
+#: src/ui/buttons-financial.ui:1096
 msgid "Term"
 msgstr "Prazo"
 
@@ -2512,85 +2504,85 @@ msgstr ""
 "prazo de uma anuidade ordinária para acumular um valor futuro, sob uma taxa "
 "de juros periódica."
 
-#: src/ui/buttons-financial.ui:1017
+#: src/ui/buttons-financial.ui:1014
 msgid "Currency Conversion"
 msgstr "Conversão de moeda"
 
 #. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:1047
+#: src/ui/buttons-financial.ui:1045
 msgid "Ctrm"
 msgstr "Ctrm"
 
 # Abreviação de balanço de duplo declínio
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1064
+#: src/ui/buttons-financial.ui:1062
 msgid "Ddb"
 msgstr "Bdd"
 
-#: src/ui/buttons-financial.ui:1067
+#: src/ui/buttons-financial.ui:1065
 msgid "Double Declining Depreciation"
 msgstr "Depreciação de declínio duplo"
 
 #. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:1081
+#: src/ui/buttons-financial.ui:1079
 msgid "Fv"
 msgstr "Vf"
 
-#: src/ui/buttons-financial.ui:1101
+#: src/ui/buttons-financial.ui:1099
 msgid "Financial Term"
 msgstr "Termo financeiro"
 
 #. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1115
+#: src/ui/buttons-financial.ui:1113
 msgid "Syd"
 msgstr "Saa"
 
-#: src/ui/buttons-financial.ui:1118
+#: src/ui/buttons-financial.ui:1116
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Depreciação da soma dos algarismos dos anos"
 
 #. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1132
+#: src/ui/buttons-financial.ui:1130
 msgid "Sln"
 msgstr "Cdl"
 
-#: src/ui/buttons-financial.ui:1135
+#: src/ui/buttons-financial.ui:1133
 msgid "Straight Line Depreciation"
 msgstr "Depreciação linear"
 
 #. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:1149
+#: src/ui/buttons-financial.ui:1147
 msgid "Rate"
 msgstr "Taxa"
 
 #. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:1166
+#: src/ui/buttons-financial.ui:1164
 msgid "Pv"
 msgstr "Vp"
 
 #. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:1183
+#: src/ui/buttons-financial.ui:1181
 msgid "Pmt"
 msgstr "Pgt"
 
 #. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:1200
+#: src/ui/buttons-financial.ui:1198
 msgid "Gpm"
 msgstr "Mlb"
 
-#: src/ui/buttons-programming.ui:16
+#: src/ui/buttons-programming.ui:17
 msgid "Binary"
 msgstr "Binário"
 
-#: src/ui/buttons-programming.ui:17
+#: src/ui/buttons-programming.ui:18
 msgid "Octal"
 msgstr "Octal"
 
-#: src/ui/buttons-programming.ui:18
+#: src/ui/buttons-programming.ui:19
 msgid "Decimal"
 msgstr "Decimal"
 
-#: src/ui/buttons-programming.ui:19
+#: src/ui/buttons-programming.ui:20
 msgid "Hexadecimal"
 msgstr "Hexadecimal"
 
@@ -2598,15 +2590,15 @@ msgstr "Hexadecimal"
 msgid "Number Base Conversion"
 msgstr "Conversão de base numérica"
 
-#: src/ui/buttons-programming.ui:1782
+#: src/ui/buttons-programming.ui:1784
 msgid "Shift Left"
 msgstr "Mover para a esquerda"
 
-#: src/ui/buttons-programming.ui:1797
+#: src/ui/buttons-programming.ui:1799
 msgid "Shift Right"
 msgstr "Mover para a direita"
 
-#: src/ui/buttons-programming.ui:1813
+#: src/ui/buttons-programming.ui:1814
 msgid "Boolean Exclusive OR"
 msgstr "OU Exclusivo booleano (XOR)"
 
@@ -2615,78 +2607,78 @@ msgid "Boolean OR"
 msgstr "OU booleano (OR)"
 
 # Para não confundir o pessoal que estuda circuitos digitais, coloquei a sigla entre parênteses em cada termo booleano.
-#: src/ui/buttons-programming.ui:1846
+#: src/ui/buttons-programming.ui:1845
 msgid "Boolean AND"
 msgstr "E booleano (AND)"
 
-#: src/ui/buttons-programming.ui:1863
+#: src/ui/buttons-programming.ui:1861
 msgid "Boolean NOT"
 msgstr "NÃO booleano (NOT)"
 
-#: src/ui/buttons-programming.ui:1880
+#: src/ui/buttons-programming.ui:1877
 msgid "One’s Complement"
 msgstr "Complemento de um"
 
-#: src/ui/buttons-programming.ui:1897
+#: src/ui/buttons-programming.ui:1893
 msgid "Two’s Complement"
 msgstr "Complemento de dois"
 
-#: src/ui/buttons-programming.ui:1973
+#: src/ui/buttons-programming.ui:1967
 msgid "Binary Logarithm"
 msgstr "Logaritmo binário"
 
-#: src/ui/buttons-programming.ui:2033
+#: src/ui/buttons-programming.ui:2025
 msgid "Integer Component"
 msgstr "Porção inteira"
 
-#: src/ui/buttons-programming.ui:2050
+#: src/ui/buttons-programming.ui:2041
 msgid "Fractional Component"
 msgstr "Porção fracionária"
 
 #. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2082 src/ui/buttons-programming.ui:2159
+#: src/ui/buttons-programming.ui:2072 src/ui/buttons-programming.ui:2122
 msgid "Insert Character Code"
 msgstr "Inserir código de caractere"
 
-#: src/ui/buttons-programming.ui:2113
+#: src/ui/buttons-programming.ui:2105
 msgid "Change Word Size"
 msgstr "Alterar tamanho da palavra"
 
 #. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2191
+#: src/ui/buttons-programming.ui:2154
 msgid "Character"
 msgstr "Caractere"
 
 #. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2219
+#: src/ui/buttons-programming.ui:2182
 msgid "_Insert"
 msgstr "_Inserir"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
-#: src/gnome-calculator.vala:23
+#: src/gnome-calculator.vala:22
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
 "Inicia no modo dado (basic, advanced, financial, programming, keyboard)"
 
-#: src/gnome-calculator.vala:24
+#: src/gnome-calculator.vala:23
 msgid "Solve given equation"
 msgstr "Resolve a equação dada"
 
-#: src/gnome-calculator.vala:25
+#: src/gnome-calculator.vala:24
 msgid "Start with given equation"
 msgstr "Inicia com a equação dada"
 
-#: src/gnome-calculator.vala:26
+#: src/gnome-calculator.vala:25
 msgid "Show release version"
 msgstr "Mostra a versão de lançamento"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:311
+#: src/gnome-calculator.vala:289
 msgid "© 1986–2023 The Calculator authors"
 msgstr "© 1986–2023 Os autores da Calculadora"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:317
+#: src/gnome-calculator.vala:295
 msgid "translator-credits"
 msgstr ""
 "Alexandre Folle de Menezes <afmenez@terra.com.br>\n"
@@ -2710,92 +2702,104 @@ msgstr ""
 "Samuel Schlemper <samuelschlemper2006@gmail.com>\n"
 "Juliano de Souza Camargo <julianosc@pm.me>"
 
-#: src/gnome-calculator.vala:321
+#: src/gnome-calculator.vala:299
 msgid "Exchange rate data providers"
 msgstr "Provedores de dados de taxa de câmbio"
 
-#: src/gnome-calculator.vala:321
+#: src/gnome-calculator.vala:299
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Dados de taxas de câmbio por %s"
 
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:307
 msgid "Close All?"
 msgstr "Fechar tudo?"
 
-#: src/gnome-calculator.vala:329
+#: src/gnome-calculator.vala:307
 msgid "Are you sure you want to close all open windows?"
 msgstr "Tem certeza que você deseja fechar todas as janelas abertas?"
 
-#: src/gnome-calculator.vala:331
+#: src/gnome-calculator.vala:309
 msgid "Close _All"
 msgstr "Fechar tod_as"
 
-#: src/math-buttons.vala:271 src/math-buttons.vala:749
-#: src/math-buttons.vala:765
+#: src/math-buttons.vala:303 src/math-buttons.vala:752
+#: src/math-buttons.vala:768
 #, c-format
 msgid "%d-bit"
 msgid_plural "%d-bit"
 msgstr[0] "%d bit"
 msgstr[1] "%d bits"
 
-#: src/ui/math-converter.ui:138
+#: src/math-buttons.vala:713
+msgid "Negative [-]"
+msgstr "Negativo [-]"
+
+#: src/ui/math-converter.ui:134
+msgid "Currency Conversion Disabled"
+msgstr "Conversão de moeda desabilitada"
+
+#: src/ui/math-converter.ui:135
+msgid "Enable in preferences to convert currencies"
+msgstr "Habilite nas preferências para converter moedas"
+
+#: src/ui/math-converter.ui:145
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: src/ui/math-converter.ui:142
+#: src/ui/math-converter.ui:149
 msgid "_Paste"
 msgstr "C_olar"
 
-#: src/math-display.vala:599
+#: src/math-display.vala:646
 msgid "Defined Functions"
 msgstr "Funções definidas"
 
-#: src/math-display.vala:644
+#: src/math-display.vala:691
 msgid "Built-in keywords"
 msgstr "Palavras-chave embutidas"
 
-#: src/math-display.vala:688
+#: src/math-display.vala:735
 msgid "Defined currencies"
 msgstr "Moedas definidas"
 
-#: src/math-display.vala:738
+#: src/math-display.vala:785
 msgid "Defined Variables"
 msgstr "Variáveis definidas"
 
-#: src/ui/math-function-popover.ui:26
+#: src/ui/math-function-popover.ui:29
 msgid "New function"
 msgstr "Nova função"
 
-#: src/ui/math-function-popover.ui:38
+#: src/ui/math-function-popover.ui:43
 msgid "Select no. of arguments"
 msgstr "Selecione o nº de argumentos"
 
-#: src/math-preferences.vala:123
+#: src/math-preferences.vala:116
 msgid "8-bit"
 msgstr "8 bits"
 
-#: src/math-preferences.vala:125
+#: src/math-preferences.vala:118
 msgid "16-bit"
 msgstr "16 bits"
 
-#: src/math-preferences.vala:127
+#: src/math-preferences.vala:120
 msgid "32-bit"
 msgstr "32 bits"
 
-#: src/math-preferences.vala:129
+#: src/math-preferences.vala:122
 msgid "64-bit"
 msgstr "64 bits"
 
-#: src/math-preferences.vala:138
+#: src/math-preferences.vala:131
 msgid "Never"
 msgstr "Nunca"
 
-#: src/math-preferences.vala:140
+#: src/math-preferences.vala:133
 msgid "Daily"
 msgstr "Diariamente"
 
-#: src/math-preferences.vala:142
+#: src/math-preferences.vala:135
 msgid "Weekly"
 msgstr "Semanalmente"
 
@@ -3003,11 +3007,11 @@ msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
 msgstr "Alterna para o Modo Teclado (alt.)"
 
-#: src/ui/math-variable-popover.ui:33
+#: src/ui/math-variable-popover.ui:37
 msgid "Variable name"
 msgstr "Nome da variável"
 
-#: src/ui/math-variable-popover.ui:41
+#: src/ui/math-variable-popover.ui:45
 msgid "Store value into existing or new variable"
 msgstr "Armazena valor em uma variável existente ou nova"
 
@@ -3024,89 +3028,92 @@ msgstr ""
 "%s: nome de variável inválido, pode conter apenas dígitos, letras e "
 "sublinhados"
 
-#: src/ui/math-window.ui:20 src/math-window.vala:125
+#: src/ui/math-window.ui:8 src/math-window.vala:133
 msgid "Basic"
 msgstr "Básico"
 
-#: src/ui/math-window.ui:25 src/math-window.vala:131
+#: src/ui/math-window.ui:13 src/math-window.vala:139
 msgid "Advanced"
 msgstr "Avançado"
 
-#: src/ui/math-window.ui:30 src/ui/math-window.ui:152 src/math-window.vala:137
+#: src/ui/math-window.ui:18 src/ui/math-window.ui:140 src/math-window.vala:145
 msgid "Financial"
 msgstr "Financeiro"
 
-#: src/ui/math-window.ui:35 src/math-window.vala:143
+#: src/ui/math-window.ui:23 src/math-window.vala:151
 msgid "Programming"
 msgstr "Programável"
 
-#: src/ui/math-window.ui:40 src/math-window.vala:149
+#: src/ui/math-window.ui:28 src/math-window.vala:157
 msgid "Keyboard"
 msgstr "Teclado"
 
-#: src/ui/math-window.ui:45 src/math-window.vala:155
+#: src/ui/math-window.ui:33 src/math-window.vala:163
 msgid "Conversion"
 msgstr "Conversão"
 
-#: src/ui/math-window.ui:54
+#: src/ui/math-window.ui:42
 msgid "_New Window"
 msgstr "_Nova janela"
 
-#: src/ui/math-window.ui:61
+#: src/ui/math-window.ui:49
 msgid "_Clear History"
 msgstr "_Limpar histórico"
 
-#: src/ui/math-window.ui:68
+#: src/ui/math-window.ui:56
 msgid "Result Format"
 msgstr "Formato do resultado"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:71
+#: src/ui/math-window.ui:59
 msgid "_Automatic"
 msgstr "_Automático"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:77
+#: src/ui/math-window.ui:65
 msgid "_Fixed"
 msgstr "_Fixo"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
-#: src/ui/math-window.ui:83
+#: src/ui/math-window.ui:71
 msgid "_Scientific"
 msgstr "_Científico"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
-#: src/ui/math-window.ui:89
+#: src/ui/math-window.ui:77
 msgid "_Engineering"
 msgstr "_Engenharia"
 
-#: src/ui/math-window.ui:99
+#: src/ui/math-window.ui:87
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/ui/math-window.ui:103
+#: src/ui/math-window.ui:91
 msgid "Keyboard Shortcuts"
 msgstr "Atalhos de teclado"
 
-#: src/ui/math-window.ui:107
+#: src/ui/math-window.ui:95
 msgid "_Help"
 msgstr "Aj_uda"
 
-#: src/ui/math-window.ui:111
+#: src/ui/math-window.ui:99
 msgid "About Calculator"
 msgstr "Sobre a calculadora"
 
-#: src/ui/math-window.ui:128
+#: src/ui/math-window.ui:118
 msgid "Mode Selection"
 msgstr "Modo de Seleção"
 
-#: src/ui/math-window.ui:141
+#: src/ui/math-window.ui:128
 msgid "_Undo"
 msgstr "Des_fazer"
 
-#: src/ui/math-window.ui:161
+#: src/ui/math-window.ui:149
 msgid "Main Menu"
 msgstr "Menu principal"
+
+#~ msgid "No sane value to bitwise shift"
+#~ msgstr "Não há um valor razoável para alternar bit a bit"
 
 #, c-format
 #~ msgctxt "unit-format"
