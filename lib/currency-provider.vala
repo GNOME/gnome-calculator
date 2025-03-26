@@ -514,7 +514,7 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "%s.xml".printf (currency_filename)); } }
 
     public override string rate_source_url { owned get {
-        return "https://exchange-api.gnome.org/boc/fxtwdcad.xml"; } }
+        return "https://exchange-api.gnome.org/boc/%s.xml".printf (currency_filename); } }
 
     public override string attribution_link { owned get {
         return "https://www.bankofcanada.ca/valet/observations/%s/xml?recent=1".printf (currency_filename); } }
