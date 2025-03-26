@@ -1343,7 +1343,7 @@ public class MathEquation : GtkSource.Buffer
         equation.parse (out representation_base, out error_code, out error_token, out error_start, out error_end);
         var last_operator = equation.get_last_operation (out last_operand);
 
-        if (last_operator != "" && last_operand != null)
+        if (last_operator != "" && last_operand != null && serializer != null)
         {
             insert (last_operator + serializer.to_string (last_operand));
         }
