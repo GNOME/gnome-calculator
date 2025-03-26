@@ -22,6 +22,7 @@
         <child>
           <object class="GtkTextView" id="from_entry">
             <property name="accepts-tab">False</property>
+            <property name="wrap-mode">char</property>
             <property name="input-hints">no-emoji | no-spellcheck | inhibit-osk</property>
             <signal name="notify::has-focus" handler="from_entry_focus_cb" swapped="no"/>
             <child>
@@ -74,6 +75,7 @@
         <child>
           <object class="GtkTextView" id="to_entry">
             <property name="accepts-tab">False</property>
+            <property name="wrap-mode">char</property>
             <property name="input-hints">no-emoji | no-spellcheck | inhibit-osk</property>
             <signal name="notify::has-focus" handler="to_entry_focus_cb" swapped="no"/>
             <child>
