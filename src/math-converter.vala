@@ -640,11 +640,13 @@ public class MathConverter : Gtk.Box
         else if (category == "numberbase")
         {
             var number_base = int.parse ((combo.selected_item as Unit).name);
+            var original_base = serializer.get_base ();
+            var original_representation_base = serializer.get_representation_base ();
             serializer.set_base (number_base);
             serializer.set_representation_base (number_base);
             var str = serializer.to_string (number);
-            serializer.set_base (10);
-            serializer.set_representation_base (10);
+            serializer.set_base (original_base);
+            serializer.set_representation_base (original_representation_base);
             entry.buffer.text = str;
         }
         else

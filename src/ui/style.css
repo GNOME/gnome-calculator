@@ -49,6 +49,10 @@
   margin-bottom: 12px;
 }
 
+.display-container.programming {
+  border-radius: 12px 12px 0 0;
+}
+
 clamp > .small .display-container {
   margin-top: 0;
   margin-left: 0;
@@ -70,7 +74,8 @@ clamp > .small .display-container:last-child {
 }
 
 box.math-buttons,
-.math-buttons grid {
+.math-buttons grid.buttons,
+.math-buttons grid.buttons > grid {
   border-spacing: 4px;
 }
 
@@ -82,7 +87,7 @@ box.math-buttons {
 }
 
 /* Collapsed multi grid modes */
-carousel.math-buttons > widget > grid {
+carousel.math-buttons > widget > grid.buttons {
   margin: 12px 12px 0 12px;
 }
 
@@ -94,31 +99,6 @@ button.action-button {
 
 .action-dialog floating-sheet sheet {
   border-radius: 18px;
-}
-
-.converter {
-  padding: 6px 12px 0 12px;
-}
-
-.converter,
-.conversion-buttons {
-  border-spacing: 6px;
-}
-
-.converter scrolledwindow > undershoot.left {
-  background: linear-gradient(to right, var(--headerbar-shade-color) 6px, transparent 24px);
-  border-left: solid 1px var(--border-color);
-  border-radius: 9px 0px 0px 9px;
-}
-
-.converter scrolledwindow > undershoot.right {
-  background: linear-gradient(to left, var(--headerbar-shade-color) 6px, transparent 24px);
-  border-right: solid 1px var(--border-color);
-  border-radius: 0px 9px 9px 0px;
-}
-
-.converter scrolledwindow > viewport {
-  border-radius: 9px;
 }
 
 mathconverter {
@@ -150,15 +130,21 @@ mathconverter statuspage > scrolledwindow > viewport > box {
 .bit-panel {
   padding: 6px;
   transition: 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  margin: 6px 0 0 0;
+  border-top: 1px solid @card_shade_color;
 }
 
 clamp > :not(.small) .bit-panel {
-  margin: 6px 12px 0 12px;
+  margin: 0 12px;
+  border-radius: 0 0 12px 12px;
 }
 
 clamp  > .small .bit-panel {
   border-radius: 0;
+}
+
+.math-buttons .bit-panel {
+  padding: 12px 6px 0 6px;
+  border-top: none;
 }
 
 .math-buttons button {
@@ -206,6 +192,21 @@ clamp  > .small .bit-panel {
 .bit-marker-label {
   font-feature-settings: "tnum";
   margin: 0 12px;
+}
+
+.math-buttons .bit-toggle-button {
+  font-size: 1.2em;
+  font-weight: bolder;
+  padding: 0;
+  min-width: 20px;
+}
+
+.math-buttons .bit-toggle-separator {
+  margin-right: 9px;
+}
+
+.math-buttons .bit-marker-label {
+  margin: 0;
 }
 
 .history-view {

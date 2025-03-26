@@ -167,6 +167,11 @@ public class MathWindow : Adw.ApplicationWindow
             break;
         }
 
+        if (_buttons.mode == ButtonMode.PROGRAMMING)
+            display_box.add_css_class ("programming");
+        else
+            display_box.remove_css_class ("programming");
+
         _display.set_enable_osk (_buttons.mode == ButtonMode.KEYBOARD);
         _buttons.set_visible (_buttons.mode != ButtonMode.KEYBOARD);
 

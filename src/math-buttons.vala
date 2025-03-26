@@ -60,12 +60,7 @@ public class MathButtons : Adw.BreakpointBin
     private Adw.Carousel prog_carousel;
 
     private Gtk.Button angle_units_button;
-    private Gtk.DropDown base_combo;
-    private Gtk.ScrolledWindow base_scrolled;
-    private Gtk.Button hex_base_button;
-    private Gtk.Button dec_base_button;
-    private Gtk.Button oct_base_button;
-    private Gtk.MenuButton base_popover_button;
+    private Gtk.MenuButton base_button;
     private Gtk.MenuButton word_size_button;
     private Gtk.Grid bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
@@ -107,6 +102,7 @@ public class MathButtons : Adw.BreakpointBin
         {"insert-exponent",      on_insert_exponent,      "s"                },
         {"set-angle-units",      on_set_angle_units                          },
         {"set-word-size",        on_set_word_size,        "i"                },
+        {"set-base",             on_set_base,             "i"                },
         {"toggle-bit",           on_toggle_bit,           "i"                },
         {"insert-character",     on_insert_character                         },
         {"insert-numeric-point", on_insert_numeric_point                     },
@@ -182,7 +178,7 @@ public class MathButtons : Adw.BreakpointBin
         if (fin_carousel != null)
             fin_carousel.scroll_to (fin_carousel.get_nth_page (0), false);
         if (prog_carousel != null)
-            prog_carousel.scroll_to (prog_carousel.get_nth_page (0), false);
+            prog_carousel.scroll_to (prog_carousel.get_nth_page (1), false);
     }
 
     private void load_finc_dialogs ()
@@ -353,6 +349,11 @@ public class MathButtons : Adw.BreakpointBin
         }
     }
 
+    private void on_set_base (SimpleAction action, Variant? param)
+    {
+        programming_base = param.get_int32 ();
+    }
+
     private void on_insert_numeric_point (SimpleAction action, Variant? param)
     {
         if (mode != ButtonMode.CONVERSION)
@@ -364,12 +365,6 @@ public class MathButtons : Adw.BreakpointBin
     private void on_insert_dms (SimpleAction action, Variant? param)
     {
         converter.insert_dms ();
-    }
-
-    private void update_base_button (Gtk.Button button, string value, string base_suffix)
-    {
-        button.set_label ("%s%s".printf (value, base_suffix));
-        button.set_data<string> ("value", value);
     }
 
     private void update_bit_panel ()
@@ -395,8 +390,6 @@ public class MathButtons : Adw.BreakpointBin
         }
 
         bit_panel.set_sensitive (enabled);
-        base_scrolled.set_sensitive (enabled);
-        base_popover_button.set_sensitive (enabled);
 
         if (!enabled)
             return;
@@ -410,36 +403,39 @@ public class MathButtons : Adw.BreakpointBin
             button.label = text;
             i++;
         }
-
-        var number_base = equation.number_base;
-        hex_base_button.set_visible (number_base != 16);
-        dec_base_button.set_visible (number_base != 10);
-        oct_base_button.set_visible (number_base != 8);
-
-        update_base_button(hex_base_button, "%llX".printf (bits), "₁₆");
-        update_base_button(dec_base_button, "%llu".printf (bits), "₁₀");
-        update_base_button(oct_base_button, "%llo".printf (bits), "₈");
     }
 
     private void set_bit_panel_narrow ()
     {
-        bit_panel.get_child_at (17, 0).set_visible (true);
-        bit_panel.get_child_at (17, 2).set_visible (true);
-        for (var i = 0; i <= 17; i++)
+        move_bit_panel_child (0, 0, 2, 1);
+        move_bit_panel_child (18, 0, 2, 3);
+        move_bit_panel_child (0, 4, 2, 5);
+        move_bit_panel_child (18, 4, 2, 7);
+        bit_panel.get_child_at (16, 1).set_visible (true);
+        move_bit_panel_child (36, 0, 16, 3);
+        bit_panel.get_child_at (16, 5).set_visible (true);
+        move_bit_panel_child (36, 4, 16, 7);
+        for (var i = 2; i <= 17; i++)
         {
-            move_bit_panel_child (i + 18, 0, i, 1);
-            move_bit_panel_child (i + 18, 2, i, 3);
+            move_bit_panel_child (i + 18, 0, i, 2);
+            move_bit_panel_child (i + 18, 4, i, 6);
         }
     }
 
     private void set_bit_panel_wide ()
     {
-        bit_panel.get_child_at (17, 0).set_visible (false);
-        bit_panel.get_child_at (17, 2).set_visible (false);
-        for (var i = 0; i <= 17; i++)
+        move_bit_panel_child (2, 1, 0, 0);
+        move_bit_panel_child (2, 3, 18, 0);
+        move_bit_panel_child (2, 5, 0, 4);
+        move_bit_panel_child (2, 7, 18, 4);
+        bit_panel.get_child_at (16, 1).set_visible (false);
+        move_bit_panel_child (16, 3, 36, 0);
+        bit_panel.get_child_at (16, 5).set_visible (false);
+        move_bit_panel_child (16, 7, 36, 4);
+        for (var i = 2; i <= 17; i++)
         {
-            move_bit_panel_child (i, 1, i + 18, 0);
-            move_bit_panel_child (i, 3, i + 18, 2);
+            move_bit_panel_child (i, 2, i + 18, 0);
+            move_bit_panel_child (i, 6, i + 18, 4);
         }
     }
 
@@ -462,12 +458,6 @@ public class MathButtons : Adw.BreakpointBin
         }
     }
 
-    private void base_combobox_changed_cb ()
-    {
-        int[] bases = {2, 8, 10, 16};
-        programming_base = bases[base_combo.selected];
-    }
-
     private void base_changed_cb ()
     {
         if (mode != ButtonMode.PROGRAMMING)
@@ -477,10 +467,10 @@ public class MathButtons : Adw.BreakpointBin
 
         switch (_programming_base)
         {
-            case 2: base_combo.selected = 0; break;
-            case 8: base_combo.selected = 1; break;
-            case 10: base_combo.selected = 2; break;
-            case 16: base_combo.selected = 3; break;
+            case 2: base_button.set_label (_("Binary")); break;
+            case 8: base_button.set_label (_("Octal")); break;
+            case 10: base_button.set_label (_("Decimal")); break;
+            case 16: base_button.set_label (_("Hexadecimal")); break;
         }
         update_bit_panel ();
         update_hex_number_button_sensitivities ();
@@ -494,26 +484,6 @@ public class MathButtons : Adw.BreakpointBin
             button.sensitive = i < _programming_base;
             i++;
         }
-    }
-
-    private bool base_scrolled_cb (Gtk.EventControllerScroll controller, double dx, double dy)
-    {
-        if (dy == 0)
-            return Gdk.EVENT_PROPAGATE;
-
-        /* Scroll horizontally when vertically scrolled */
-        Gtk.Adjustment hadjustment = base_scrolled.get_hadjustment ();
-        double step = hadjustment.get_step_increment ();
-        double new_value = hadjustment.get_value () + dy * step;
-        hadjustment.set_value (new_value);
-
-        return Gdk.EVENT_STOP;
-    }
-
-    private void copy_conv_base_to_clipboard (Gtk.Button button)
-    {
-        Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
-        clipboard.set_text (button.get_data<string> ("value"));
     }
 
     private void correct_text_direction (Gtk.Builder builder)
@@ -563,6 +533,13 @@ public class MathButtons : Adw.BreakpointBin
             math_box.set_direction (Gtk.TextDirection.LTR);
             advanced_grid.set_direction (Gtk.TextDirection.LTR);
             hex_buttons.set_direction (Gtk.TextDirection.LTR);
+
+            int[] bit_markers = {0, 15, 16, 31, 32, 47, 48, 63};
+            for (var i = 0; i < 8; i++)
+            {
+                var bit_marker = builder.get_object ("bit_marker_label_%d".printf (bit_markers[i]));
+                (bit_marker as Gtk.Widget).set_direction (Gtk.TextDirection.LTR);
+            }
             break;
         }
     }
@@ -638,14 +615,16 @@ public class MathButtons : Adw.BreakpointBin
             break;
         case ButtonMode.PROGRAMMING:
             prog_panel = panel;
-            var prog_layout_view = builder.get_object ("multi_layout_view");
-            var base_layout_view = builder.get_object ("base_layout_view");
-            var base_box = builder.get_object ("base_box");
-            breakpoint.add_setter (prog_layout_view, "layout-name", "carousel");
-            breakpoint.add_setter (base_layout_view, "layout-name", "popover");
-            breakpoint.add_setter (base_box, "orientation", Gtk.Orientation.VERTICAL);
+            breakpoint.add_setter (prog_panel, "layout-name", "carousel");
             breakpoint.apply.connect (set_bit_panel_narrow);
             breakpoint.unapply.connect (set_bit_panel_wide);
+
+            ulong prog_carousel_mapped = 0;
+            prog_carousel_mapped = prog_carousel.map.connect (() =>
+            {
+                prog_carousel.scroll_to (prog_carousel.get_nth_page (1), false);
+                prog_carousel.disconnect (prog_carousel_mapped);
+            });
             break;
         case ButtonMode.CONVERSION:
             conv_panel = panel;
@@ -693,12 +672,8 @@ public class MathButtons : Adw.BreakpointBin
             insert_button = builder.get_object ("insert_button") as Gtk.Button;
             insert_button.clicked.connect (insert_char_code);
             character_code_entry = builder.get_object ("character_code_entry") as Adw.EntryRow;
-            hex_base_button = builder.get_object ("hex_base_button") as Gtk.Button;
-            dec_base_button = builder.get_object ("dec_base_button") as Gtk.Button;
-            oct_base_button = builder.get_object ("oct_base_button") as Gtk.Button;
-            base_popover_button = builder.get_object ("base_popover_button") as Gtk.MenuButton;
 
-            bit_panel = builder.get_object ("bit_table") as Gtk.Grid;
+            bit_panel = builder.get_object ("bit_panel") as Gtk.Grid;
             bit_panel.set_direction (Gtk.TextDirection.LTR);
             if (current_breakpoint == null)
                 set_bit_panel_wide ();
@@ -722,15 +697,7 @@ public class MathButtons : Adw.BreakpointBin
                 hex_number_buttons.append (hex_number_button);
             }
             word_size_button = builder.get_object ("calc_word_size_button") as Gtk.MenuButton;
-            base_combo = builder.get_object ("base_combo") as Gtk.DropDown;
-            base_combo.notify["selected"].connect (base_combobox_changed_cb);
-            base_scrolled = builder.get_object ("base_scrolled") as Gtk.ScrolledWindow;
-            var controller = new Gtk.EventControllerScroll (Gtk.EventControllerScrollFlags.VERTICAL);
-            controller.scroll.connect (base_scrolled_cb);
-            base_scrolled.add_controller (controller);
-            hex_base_button.clicked.connect (copy_conv_base_to_clipboard);
-            dec_base_button.clicked.connect (copy_conv_base_to_clipboard);
-            oct_base_button.clicked.connect (copy_conv_base_to_clipboard);
+            base_button = builder.get_object ("calc_base_button") as Gtk.MenuButton;
             equation.notify["number-base"].connect (base_changed_cb);
             base_changed_cb ();
             word_size_changed_cb ();
