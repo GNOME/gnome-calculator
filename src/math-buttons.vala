@@ -70,7 +70,9 @@ public class MathButtons : Adw.BreakpointBin
     private Gtk.Grid bit_panel;
     private List<Gtk.Button> toggle_bit_buttons;
     private List<Gtk.Button> hex_number_buttons;
-    private Gtk.Button calc_mutable_button;
+    private Gtk.Grid conv_hex_panel;
+    private List<Gtk.Button> conv_hex_buttons;
+    private Gtk.Stack conv_mutable_button;
 
     private Adw.Dialog character_code_dialog;
     private Gtk.Button insert_button;
@@ -108,7 +110,7 @@ public class MathButtons : Adw.BreakpointBin
         {"toggle-bit",           on_toggle_bit,           "i"                },
         {"insert-character",     on_insert_character                         },
         {"insert-numeric-point", on_insert_numeric_point                     },
-        {"insert-dms",           on_insert_dms,           "s"                },
+        {"insert-dms",           on_insert_dms                               },
         {"set-number-mode",      on_set_number_mode,      "s", "'normal'"    },
         {"launch-finc-dialog",   on_launch_finc_dialog,   "s"                },
         {"currency-conversion",  on_currency_conversion                      },
@@ -171,6 +173,9 @@ public class MathButtons : Adw.BreakpointBin
             equation.number_base = 10;
 
         load_buttons ();
+
+        if (mode == ButtonMode.CONVERSION)
+            converter_changed_cb ();
 
         if (adv_carousel != null)
             adv_carousel.scroll_to (adv_carousel.get_nth_page (0), false);
@@ -239,7 +244,7 @@ public class MathButtons : Adw.BreakpointBin
             window.math_display.set_enable_autocompletion (true);
         }
         else
-            converter.insert_text (param.get_int32 ().to_string ());
+            converter.insert_text (param.get_int32 ().to_string ("%X"));
     }
 
     private void on_insert_brackets (SimpleAction action, Variant? param)
@@ -733,7 +738,15 @@ public class MathButtons : Adw.BreakpointBin
 
         if (mode == ButtonMode.CONVERSION)
         {
-            calc_mutable_button = builder.get_object ("calc_mutable_button") as Gtk.Button;
+            conv_hex_panel = builder.get_object ("hex_buttons") as Gtk.Grid;
+            conv_hex_buttons = new List<Gtk.Button> ();
+            for (var i = 1; i <= 15; i++)
+            {
+                var name = "calc_hex_%d_button".printf (i);
+                var hex_number_button = builder.get_object (name) as Gtk.Button;
+                conv_hex_buttons.append (hex_number_button);
+            }
+            conv_mutable_button = builder.get_object ("calc_mutable_button") as Gtk.Stack;
             converter.changed.connect (converter_changed_cb);
             converter_changed_cb ();
         }
@@ -783,31 +796,29 @@ public class MathButtons : Adw.BreakpointBin
     {
         string category, unit;
         converter.get_conversion (out category, out unit);
-        if (category == "angle" && (unit == "degree" || unit == "dms"))
+
+        if (category == "numberbase")
         {
-            calc_mutable_button.action_target = calc_mutable_button.label = "° ′ ″";
-            calc_mutable_button.tooltip_text = _("Degrees, Minutes, Seconds");
-            calc_mutable_button.action_name = "cal.insert-dms";
-        }
-        else if (category == "angle" && unit == "radian")
-        {
-            calc_mutable_button.action_target = calc_mutable_button.label = "π";
-            calc_mutable_button.tooltip_text = _("Pi [Ctrl+P]");
-            calc_mutable_button.action_name = "cal.insert-general";
-        }
-        else if (category == "temperature")
-        {
-            calc_mutable_button.action_target = calc_mutable_button.label = "−";
-            calc_mutable_button.tooltip_text = _("Negative [-]");
-            calc_mutable_button.action_name = "cal.insert-general";
+            conv_hex_panel.visible = true;
+            var number_base = int.parse (unit);
+            var i = 1;
+            foreach (var button in conv_hex_buttons)
+            {
+                button.sensitive = i < number_base;
+                i++;
+            }
         }
         else
-        {
-            calc_mutable_button.label = null;
-            calc_mutable_button.tooltip_text = null;
-            calc_mutable_button.action_name = null;
-            calc_mutable_button.sensitive = false;
-        }
+            conv_hex_panel.visible = false;
+
+        if (category == "angle" && (unit == "degree" || unit == "dms"))
+            conv_mutable_button.pages.select_item (0, true);
+        else if (category == "angle" && unit == "radian")
+            conv_mutable_button.pages.select_item (1, true);
+        else if (category == "temperature" || category == "numberbase")
+            conv_mutable_button.pages.select_item (2, true);
+        else
+            conv_mutable_button.pages.select_item (3, true);
     }
 
     private void load_buttons ()

@@ -180,6 +180,12 @@ public class UnitManager : Object
             currency_category.add_unit ( unit);
         }
 
+        var numberbase_category = default_unit_manager.add_category ("numberbase", _("Number Base"));
+        numberbase_category.add_unit (new Unit ("2", _("Binary"), "x", "x", ""));
+        numberbase_category.add_unit (new Unit ("8", _("Octal"), "x", "x", ""));
+        numberbase_category.add_unit (new Unit ("10", _("Decimal"), "x", "x", ""));
+        numberbase_category.add_unit (new Unit ("16", _("Hexadecimal"), "x", "x", ""));
+
         return default_unit_manager;
     }
 

@@ -118,8 +118,8 @@ public class MathConverter : Gtk.Box
 
         from_number = new Number.integer (0);
         to_number = new Number.integer (0);
-        from_entry.buffer.text = to_string (equation.serializer, from_number);
-        to_entry.buffer.text = to_string (equation.serializer, to_number);
+        update_entry (from_entry, equation.serializer);
+        update_entry (to_entry, equation.serializer);
         from_entry_changed = from_entry.buffer.changed.connect (from_entry_changed_cb);
         to_entry_changed = to_entry.buffer.changed.connect (to_entry_changed_cb);
 
@@ -258,7 +258,7 @@ public class MathConverter : Gtk.Box
         else
         {
             from_number = new Number.integer (0);
-            from_entry.buffer.text = to_string (equation.serializer, from_number);
+            update_entry (from_entry, equation.serializer);
         }
     }
 
@@ -498,7 +498,7 @@ public class MathConverter : Gtk.Box
         if (from_number == null)
             from_number = new Number.integer (0);
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
-        from_entry.buffer.text = to_string (equation.serializer, from_number);
+        update_entry (from_entry, equation.serializer);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
         save_selected_units (source_unit, target_unit);
         changed ();
@@ -515,9 +515,9 @@ public class MathConverter : Gtk.Box
             to_number = new Number.integer (0);
         GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
         if (to_entry.has_focus)
-            to_entry.buffer.text = to_string (fixed_serializer, to_number);
+            update_entry (to_entry, fixed_serializer);
         else
-            to_entry.buffer.text = to_string (equation.serializer, to_number);
+            update_entry (to_entry, equation.serializer);
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
         save_selected_units (source_unit, target_unit);
         changed ();
@@ -540,14 +540,14 @@ public class MathConverter : Gtk.Box
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
         if (from_entry.has_focus)
         {
-            from_entry.buffer.text = to_string (fixed_serializer, from_number);
+            update_entry (from_entry, fixed_serializer);
         }
         else
         {
-            from_number = get_number_from_string (from_entry.buffer.text.strip ());
+            from_number = get_number_from_entry (from_entry);
             if (from_number == null)
                 from_number = new Number.integer (0);
-            from_entry.buffer.text = to_string (equation.serializer, from_number);
+            update_entry (from_entry, equation.serializer);
         }
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
         changed ();
@@ -559,14 +559,14 @@ public class MathConverter : Gtk.Box
         GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
         if (to_entry.has_focus)
         {
-            to_entry.buffer.text = to_string (fixed_serializer, to_number);
+            update_entry (to_entry, fixed_serializer);
         }
         else
         {
-            to_number = get_number_from_string (to_entry.buffer.text.strip ());
+            to_number = get_number_from_entry (to_entry);
             if (to_number == null)
                 to_number = new Number.integer (0);
-            to_entry.buffer.text = to_string (equation.serializer, to_number);
+            update_entry (to_entry, equation.serializer);
         }
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
         changed ();
@@ -574,7 +574,7 @@ public class MathConverter : Gtk.Box
 
     private void from_entry_changed_cb ()
     {
-        from_number = get_number_from_string (from_entry.buffer.text.strip ());
+        from_number = get_number_from_entry (from_entry);
         if (from_number == null)
             from_number = new Number.integer (0);
         Unit source_unit, target_unit;
@@ -583,15 +583,15 @@ public class MathConverter : Gtk.Box
             to_number = new Number.integer (0);
         GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
         if (to_entry.has_focus)
-            to_entry.buffer.text = to_string (fixed_serializer, to_number);
+            update_entry (to_entry, fixed_serializer);
         else
-            to_entry.buffer.text = to_string (equation.serializer, to_number);
+            update_entry (to_entry, equation.serializer);
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
     }
 
     private void to_entry_changed_cb ()
     {
-        to_number = get_number_from_string (to_entry.buffer.text.strip ());
+        to_number = get_number_from_entry (to_entry);
         if (to_number == null)
             to_number = new Number.integer (0);
         Unit source_unit, target_unit;
@@ -599,36 +599,56 @@ public class MathConverter : Gtk.Box
         if (from_number == null)
             from_number = new Number.integer (0);
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
-        from_entry.buffer.text = to_string (equation.serializer, from_number);
+        update_entry (from_entry, equation.serializer);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
     }
 
-    private Number? get_number_from_string (string str)
+    private Number? get_number_from_entry (Gtk.TextView entry)
     {
+        var str = entry.buffer.text.strip ();
+        var number_base = 10;
+        if (category == "numberbase")
+        {
+            var combo = entry == from_entry ? from_combo : to_combo;
+            number_base = int.parse ((combo.selected_item as Unit).name);
+        }
         if (str.has_suffix ("π"))
         {
             if (str == "π")
                 return new Number.pi ();
             if (str == "−π" || str == "-π")
                 return new Number.pi ().invert_sign ();
-            var number = fixed_serializer.from_string (str.slice (0, -"π".length));
+            var number = mp_set_from_string (str.slice (0, -"π".length), number_base);
             if (number == null)
                 return null;
             return new Number.pi ().multiply (number);
         }
-        return fixed_serializer.from_string (str);
+        return mp_set_from_string (str, number_base);
     }
 
-    private string to_string (Serializer serializer, Number number)
+    private void update_entry (Gtk.TextView entry, Serializer serializer)
     {
-        var combo = number == from_number ? from_combo : to_combo;
+        var number = entry == from_entry ? from_number : to_number;
+        var combo = entry == from_entry ? from_combo : to_combo;
         if ((combo.selected_item as Unit).name == "dms")
         {
             if (serializer == fixed_serializer && number.is_zero ())
-                return serializer.to_string (number);
-            return serializer.to_dms_string (number);
+                entry.buffer.text = serializer.to_string (number);
+            else
+                entry.buffer.text = serializer.to_dms_string (number);
         }
-        return serializer.to_string (number);
+        else if (category == "numberbase")
+        {
+            var number_base = int.parse ((combo.selected_item as Unit).name);
+            serializer.set_base (number_base);
+            serializer.set_representation_base (number_base);
+            var str = serializer.to_string (number);
+            serializer.set_base (10);
+            serializer.set_representation_base (10);
+            entry.buffer.text = str;
+        }
+        else
+            entry.buffer.text = serializer.to_string (number);
     }
 
     [GtkCallback]
@@ -689,8 +709,6 @@ public class MathConverter : Gtk.Box
             return key_press_cb (controller, new_keyval, keycode, mod_state);
         }
 
-        var c = Gdk.keyval_to_unicode (keyval);
-
         if (keyval == Gdk.Key.Return || keyval == Gdk.Key.KP_Enter)
             return true;
 
@@ -708,10 +726,21 @@ public class MathConverter : Gtk.Box
         /* Substitute */
         if (state == 0)
         {
+            var c = Gdk.keyval_to_unicode (keyval);
             if (c >= '0' && c <= '9')
             {
                 insert_text (c.to_string ("%c"));
                 return true;
+            }
+            if (category == "numberbase")
+            {
+                if (c >= 'a' && c <= 'f')
+                    c = c - 'a' + 'A';
+                if (c >= 'A' && c <= 'F')
+                {
+                    insert_text (c.to_string ("%c"));
+                    return true;
+                }
             }
             if (c == '-')
             {
@@ -795,15 +824,14 @@ public class MathConverter : Gtk.Box
 
     private void copy_cb (SimpleAction action, Variant? param)
     {
-        var number = from_entry.has_focus ? from_number : to_number;
-        var text = to_string (equation.serializer, number);
+        var entry = from_entry.has_focus ? from_entry : to_entry;
         var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
         if (tsep_string == null || tsep_string == "")
             tsep_string = " ";
-        text = text.replace (tsep_string, "");
+        root.set_focus (null);
+        var text = entry.buffer.text.replace (tsep_string, "");
         Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
         clipboard.set_text (text);
-        get_root ().set_focus (null);
     }
 
     private void paste_cb (SimpleAction action, Variant? param)
@@ -820,13 +848,13 @@ public class MathConverter : Gtk.Box
         if (!from_entry.has_focus)
         {
             GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
-            from_entry.buffer.text = to_string (equation.serializer, from_number);
+            update_entry (from_entry, equation.serializer);
             GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
         }
         if (!to_entry.has_focus)
         {
             GLib.SignalHandler.block (to_entry.buffer, to_entry_changed);
-            to_entry.buffer.text = to_string (equation.serializer, to_number);
+            update_entry (to_entry, equation.serializer);
             GLib.SignalHandler.unblock (to_entry.buffer, to_entry_changed);
         }
     }
@@ -837,9 +865,9 @@ public class MathConverter : Gtk.Box
             return;
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
         if (from_entry.has_focus)
-            from_entry.buffer.text = to_string (fixed_serializer, from_number);
+            update_entry (from_entry, fixed_serializer);
         else
-            from_entry.buffer.text = to_string (equation.serializer, from_number);
+            update_entry (from_entry, equation.serializer);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
     }
 
