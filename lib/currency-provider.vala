@@ -190,7 +190,7 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "rms_five.xls"); } }
 
     public override string rate_source_url { owned get {
-        return "https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"; } }
+        return "https://exchange-api.gnome.org/imf/rms_five.xls"; } }
 
     public override string attribution_link { owned get {
         return "https://www.imf.org/external/np/fin/data/rms_five.aspx"; } }
@@ -399,7 +399,7 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "eurofxref-daily.xml"); } }
 
     public override string rate_source_url { owned get {
-        return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
+        return "https://exchange-api.gnome.org/ecb/eurofxref-daily.xml"; } }
 
     public override string attribution_link { owned get {
         return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
@@ -513,7 +513,7 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "%s.xml".printf (currency_filename)); } }
 
     public override string rate_source_url { owned get {
-        return "https://www.bankofcanada.ca/valet/observations/%s/xml?recent=1".printf (currency_filename); } }
+        return "https://exchange-api.gnome.org/boc/%s.xml".printf (currency_filename); } }
 
     public override string attribution_link { owned get {
         return "https://www.bankofcanada.ca/valet/observations/%s/xml?recent=1".printf (currency_filename); } }
@@ -584,7 +584,7 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "un-daily.xls"); } }
 
     public override string rate_source_url { owned get {
-        return "https://treasury.un.org/operationalrates/xsql2CSV.php"; } }
+        return "https://exchange-api.gnome.org/unt/un-daily.xls"; } }
 
     public override string attribution_link { owned get {
         return "https://treasury.un.org/operationalrates/OperationalRates.php"; } }
