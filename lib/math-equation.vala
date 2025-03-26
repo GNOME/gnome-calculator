@@ -1328,6 +1328,28 @@ public class MathEquation : GtkSource.Buffer
         return false;
     }
 
+    public void repeat_last_operation () {
+        var text = equation;
+
+        ErrorCode error_code;
+        string error_token;
+        uint error_start, error_end, representation_base;
+        Number? last_operand = null;
+        var equation = new MEquation (this, text);
+        equation.base = number_base;
+        equation.wordlen = word_size;
+        equation.angle_units = angle_units;
+
+        equation.parse (out representation_base, out error_code, out error_token, out error_start, out error_end);
+        var last_operator = equation.get_last_operation (out last_operand);
+
+        if (last_operator != "" && last_operand != null)
+        {
+            insert (last_operator + serializer.to_string (last_operand));
+        }
+
+    }
+
     public void solve ()
     {
         // FIXME: should replace calculation or give error message
@@ -1342,6 +1364,8 @@ public class MathEquation : GtkSource.Buffer
         if (is_result)
         {
             undo ();
+            repeat_last_operation ();
+            solve ();
             return;
         }
 

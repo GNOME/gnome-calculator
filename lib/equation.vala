@@ -90,6 +90,8 @@ public class Equation : Object
     public int wordlen;
     public AngleUnit angle_units;
     private string expression;
+    private Number? last_operand;
+    private string last_token;
 
     public Equation (string expression)
     {
@@ -102,6 +104,8 @@ public class Equation : Object
         Number.error = null;
 
         var z = parser.parse (out representation_base, out error_code, out error_token, out error_start, out error_end);
+
+        last_token = parser.get_last_operation (out last_operand);
 
         /* Error during parsing */
         if (error_code != ErrorCode.NONE)
@@ -151,6 +155,13 @@ public class Equation : Object
     {
         return null;
     }
+
+    public virtual string get_last_operation (out Number? operand)
+    {
+        operand = last_operand;
+        return last_token;
+    }
+
 }
 
 public class ConvertEquation : Equation

@@ -146,9 +146,16 @@ public abstract class RNode : ParseNode
 
 public abstract class LRNode : ParseNode
 {
+    protected bool repeatable = false;
+
     protected LRNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
+    }
+
+    public bool is_repeatable ()
+    {
+        return repeatable;
     }
 
     public override Number? solve ()
@@ -562,6 +569,7 @@ public class AddNode : LRNode
     public AddNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
+        repeatable = true;
     }
 
     public override Number solve_lr (Number l, Number r)
@@ -585,6 +593,7 @@ public class SubtractNode : LRNode
     public SubtractNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
+        repeatable = true;
     }
 
     public override Number solve_lr (Number l, Number r)
@@ -605,6 +614,7 @@ public class MultiplyNode : LRNode
     public MultiplyNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
+        repeatable = true;
     }
 
     public override Number solve_lr (Number l, Number r)
@@ -634,6 +644,7 @@ public class DivideNode : LRNode
     public DivideNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
+        repeatable = true;
     }
 
     public override Number solve_lr (Number l, Number r)
@@ -1201,6 +1212,14 @@ public class Parser
     public virtual Number? convert (Number x, string x_units, string z_units)
     {
         return null;
+    }
+
+    public string get_last_operation (out Number? operand)
+    {
+        if (root == null || !(root is LRNode) || !(root as LRNode).is_repeatable ())
+            return "";
+        operand = (root as LRNode).right.solve ();
+        return root.last_token().text;
     }
 
     /* Start parsing input string. And call evaluate on success. */
@@ -2285,3 +2304,4 @@ public class Parser
             return true;
     }
 }
+
