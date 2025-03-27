@@ -56,6 +56,7 @@ public enum LexerTokenType
     SUB_NUMBER,         /* Sub Number */
     FUNCTION,           /* Function */
     UNIT,               /* Unit of conversion */
+    CURRENCY,           /* Currency */
     VARIABLE,           /* Variable name */
     SHIFT_LEFT,         /* Shift left */
     SHIFT_RIGHT,        /* Shift right */
@@ -303,7 +304,7 @@ public class Lexer : Object
 
         for (unowned var element = tokens.first (); element != null; element = element.next)
         {
-            if (element.data.type == LexerTokenType.UNIT
+            if ((element.data.type == LexerTokenType.UNIT || element.data.type == LexerTokenType.CURRENCY)
                 && (element.prev == null || element.prev.data.type != LexerTokenType.IN)
                 && (element.next == null || element.next.data.type != LexerTokenType.IN))
             {
@@ -351,6 +352,28 @@ public class Lexer : Object
         name = prelexer.get_marked_substring ();
         return parser.unit_is_defined (name);
     }
+
+    private bool check_if_currency ()
+    {
+        int super_count = 0;
+        while (prelexer.get_next_token () == LexerTokenType.PL_SUPER_DIGIT)
+            super_count++;
+
+        prelexer.roll_back ();
+
+        var name = prelexer.get_marked_substring ();
+
+        if (parser.currency_is_defined (name))
+            return true;
+
+        while (super_count-- > 0)
+            prelexer.roll_back ();
+
+        name = prelexer.get_marked_substring ();
+
+        return parser.currency_is_defined (name);
+    }
+
 
     private bool check_if_literal_base ()
     {
@@ -662,6 +685,8 @@ public class Lexer : Object
             {
                 if (check_if_function ())
                     return insert_token (LexerTokenType.FUNCTION);
+                else if (check_if_currency ())
+                    return insert_token (LexerTokenType.CURRENCY);
                 else if (check_if_unit ())
                     return insert_token (LexerTokenType.UNIT);
                 else
@@ -679,6 +704,8 @@ public class Lexer : Object
             {
                 if (check_if_function ())
                     return insert_token (LexerTokenType.FUNCTION);
+                else if (check_if_currency ())
+                    return insert_token (LexerTokenType.CURRENCY);
                 else if (check_if_unit ())
                     return insert_token (LexerTokenType.UNIT);
                 else
@@ -764,6 +791,8 @@ public class Lexer : Object
             return insert_token (LexerTokenType.IN);
         if (check_if_function ())
             return insert_token (LexerTokenType.FUNCTION);
+        if (check_if_currency ())
+            return insert_token (LexerTokenType.CURRENCY);
         if (check_if_unit ())
             return insert_token (LexerTokenType.UNIT);
         else

@@ -1249,6 +1249,13 @@ public class MathEquation : GtkSource.Buffer
                 solvedata.error_start = error_start;
                 solvedata.error_end = error_end;
                 break;
+            case ErrorCode.UNKNOWN_RATE:
+                solvedata.error = /* Error displayed to user when an conversion with unknown units is attempted */
+                                  _("Unknown exchange rate for %s").printf (error_token);
+                solvedata.error_start = error_start;
+                solvedata.error_end = error_end;
+                break;
+
 
             case ErrorCode.UNKNOWN_FUNCTION:
                 solvedata.error = /* Error displayed to user when an unknown function is entered */

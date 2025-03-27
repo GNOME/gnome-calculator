@@ -177,7 +177,7 @@ public class UnitManager : Object
         foreach (var currency in currencies)
         {
             var unit = new Unit (currency.name, currency.display_name, null, null, currency.name);
-            currency_category.add_unit ( unit);
+            currency_category.add_unit ( unit );
         }
 
         var numberbase_category = default_unit_manager.add_category ("numberbase", _("Number Base"));
@@ -309,13 +309,9 @@ public class UnitManager : Object
         return null;
     }
 
-    public bool unit_is_defined (string name)
+    public Unit? get_defined_unit (string name)
     {
-        var unit = get_unit_by_symbol (name);
-        if (unit != null)
-            return true;
-        else
-            return false;
+        return get_unit_by_symbol (name);
     }
 
     public Number? convert_by_symbol (Number x, string x_symbol, string z_symbol)
@@ -457,6 +453,7 @@ public class Unit : Object
             return solve_function (from_function, x);
         else
         {
+            stdout.printf ("Currency hack\n");
             // FIXME: Hack to make currency work
             var r = CurrencyManager.get_default ().get_value (name);
             if (r == null)

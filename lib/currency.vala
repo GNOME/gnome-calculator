@@ -48,6 +48,10 @@ public class CurrencyManager : Object
         }
     }
 
+    public bool currency_is_defined (string name) {
+        return get_declared_currency (name) != null;
+    }
+
     public void refresh_async () {
         loaded = false;
         foreach (var p in providers) {
@@ -168,21 +172,28 @@ public class CurrencyManager : Object
         return r;
     }
 
-    public Currency? get_currency (string name)
+    public Currency? get_declared_currency (string name)
     {
         foreach (var c in currencies)
         {
-            if (name == c.name)
+            if (name.up () == c.name.up ())
             {
-                var value = c.get_value ();
-                if (value == null || value.is_negative () || value.is_zero ())
-                    return null;
-                else
-                    return c;
+                return c;
             }
         }
-
         return null;
+    }
+
+    public Currency? get_currency (string name)
+    {
+        var c = get_declared_currency (name);
+        if (c == null)
+            return null;
+        var value = c.get_value ();
+        if (value == null || value.is_negative () || value.is_zero ())
+            return null;
+        else
+            return c;
     }
 
     public Number? get_value (string currency)

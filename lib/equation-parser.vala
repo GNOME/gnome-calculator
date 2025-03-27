@@ -981,8 +981,7 @@ public class ConvertBaseNode : ParseNode
             parser.set_representation_base (8);
         else if (name == "bin" || name == "binary")
             parser.set_representation_base (2);
-        else
-        {
+        else {
             parser.set_error (ErrorCode.UNKNOWN_CONVERSION, token().text, first_token().start_index, last_token().end_index);
             return null;
         }
@@ -992,9 +991,11 @@ public class ConvertBaseNode : ParseNode
 
 public class ConvertNumberNode : ParseNode
 {
-    public ConvertNumberNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    private bool _is_currency;
+    public ConvertNumberNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, bool is_currency)
     {
         base (parser, token, precedence, associativity);
+        _is_currency = is_currency;
     }
 
     public override Number? solve ()
@@ -1023,7 +1024,10 @@ public class ConvertNumberNode : ParseNode
 
         var ans = parser.convert (tmp, from, to);
         if (ans == null)
-            parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
+            if (_is_currency) {
+                parser.set_error (ErrorCode.UNKNOWN_RATE, left.token ().text, left.token ().start_index, left.token ().end_index);
+            } else
+                parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
 
         return ans;
     }
@@ -1200,6 +1204,16 @@ public class Parser
     }
 
     public virtual bool unit_is_defined (string name)
+    {
+        return false;
+    }
+
+    public virtual bool currency_is_defined (string name)
+    {
+        return false;
+    }
+
+    public virtual bool currency_has_rate (string name)
     {
         return false;
     }
@@ -1572,18 +1586,19 @@ public class Parser
                 return false;
             }
         }
-        else if (token.type == LexerTokenType.UNIT)
+        else if (token.type == LexerTokenType.UNIT || token.type == LexerTokenType.CURRENCY)
         {
+            var first_type = token.type;
             var token_from = token;
             token = lexer.get_next_token ();
             if (token.type == LexerTokenType.IN)
             {
                 var token_in = token;
                 token = lexer.get_next_token ();
-                if (token.type == LexerTokenType.UNIT)
+                if ( (token.type == LexerTokenType.UNIT || token.type == LexerTokenType.CURRENCY) && token.type == first_type)
                 {
                     insert_into_tree (new NameNode (this, token_from, make_precedence_p (Precedence.UNIT), get_associativity (token_from)));
-                    insert_into_tree (new ConvertNumberNode (this, token_in, make_precedence_p (Precedence.CONVERT), get_associativity (token_in)));
+                    insert_into_tree (new ConvertNumberNode (this, token_in, make_precedence_p (Precedence.CONVERT), get_associativity (token_in), token.type == LexerTokenType.CURRENCY));
                     insert_into_tree (new NameNode (this, token, make_precedence_p (Precedence.UNIT), get_associativity (token)));
                     return true;
                 }
