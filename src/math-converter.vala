@@ -274,6 +274,7 @@ public class MathConverter : Gtk.Box
         set_active_unit (from_combo, to_unit);
         GLib.SignalHandler.unblock (from_combo, from_combobox_changed);
         set_active_unit (to_combo, from_unit);
+        to_combobox_changed_cb ();
         reformat_from_entry ();
     }
 
@@ -452,7 +453,6 @@ public class MathConverter : Gtk.Box
     private void category_combobox_changed_cb ()
     {
         UnitCategory? category  = category_combo.selected_item as UnitCategory;
-
         this.category = category.name;
 
         update_visibility ();
@@ -546,7 +546,10 @@ public class MathConverter : Gtk.Box
         {
             from_number = get_number_from_entry (from_entry);
             if (from_number == null)
+            {
                 from_number = new Number.integer (0);
+                to_combobox_changed_cb ();
+            }
             update_entry (from_entry, equation.serializer);
         }
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
@@ -565,7 +568,10 @@ public class MathConverter : Gtk.Box
         {
             to_number = get_number_from_entry (to_entry);
             if (to_number == null)
+            {
                 to_number = new Number.integer (0);
+                from_combobox_changed_cb ();
+            }
             update_entry (to_entry, equation.serializer);
         }
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
@@ -575,7 +581,8 @@ public class MathConverter : Gtk.Box
     private void from_entry_changed_cb ()
     {
         from_number = get_number_from_entry (from_entry);
-        if (from_number == null)
+        bool error = from_number == null;
+        if (error)
             from_number = new Number.integer (0);
         Unit source_unit, target_unit;
         to_number = convert_equation (from_number, out source_unit, out target_unit);
@@ -584,22 +591,28 @@ public class MathConverter : Gtk.Box
         GLib.SignalHandler.block(to_entry.buffer, to_entry_changed);
         if (to_entry.has_focus)
             update_entry (to_entry, fixed_serializer);
-        else
+        else if (!error)
             update_entry (to_entry, equation.serializer);
+        else
+            to_entry.buffer.text = _("Error");
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
     }
 
     private void to_entry_changed_cb ()
     {
         to_number = get_number_from_entry (to_entry);
-        if (to_number == null)
+        bool error = to_number == null;
+        if (error)
             to_number = new Number.integer (0);
         Unit source_unit, target_unit;
         from_number = convert_equation (to_number, out source_unit, out target_unit);
         if (from_number == null)
             from_number = new Number.integer (0);
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
-        update_entry (from_entry, equation.serializer);
+        if (!error)
+            update_entry (from_entry, equation.serializer);
+        else
+            from_entry.buffer.text = _("Error");
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
     }
 
