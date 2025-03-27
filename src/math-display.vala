@@ -101,6 +101,9 @@ public class MathDisplay : Gtk.Box
             equation.paste ();
             Signal.stop_emission_by_name (source_view, "paste-clipboard");
         });
+
+        if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
+            source_view.justification = Gtk.Justification.RIGHT;
     }
 
     public void set_enable_osk (bool enable_osk)
