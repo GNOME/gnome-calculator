@@ -1250,12 +1250,17 @@ public class MathEquation : GtkSource.Buffer
                 solvedata.error_end = error_end;
                 break;
             case ErrorCode.UNKNOWN_RATE:
-                solvedata.error = /* Error displayed to user when an conversion with unknown units is attempted */
+                solvedata.error = /* Error displayed to user when a currency conversion with unknown exchange rate is attempted */
                                   _("Exchange rate for '%s' is not available").printf (error_token);
                 solvedata.error_start = error_start;
                 solvedata.error_end = error_end;
                 break;
-
+            case ErrorCode.UNKNOWN_UNIT:
+                solvedata.error = /* Error displayed to user when an conversion with unknown units is attempted */
+                                  _("Unknown unit '%s'").printf (error_token);
+                solvedata.error_start = error_start;
+                solvedata.error_end = error_end;
+                break;
 
             case ErrorCode.UNKNOWN_FUNCTION:
                 solvedata.error = /* Error displayed to user when an unknown function is entered */
@@ -1265,7 +1270,7 @@ public class MathEquation : GtkSource.Buffer
                 break;
 
             case ErrorCode.UNKNOWN_CONVERSION:
-                solvedata.error = /* Error displayed to user when an conversion with unknown units is attempted */
+                solvedata.error = /* Error displayed to user when an invalid conversion (e.g. units of different categories) */
                                   _("Unknown conversion");
                 break;
 

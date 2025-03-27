@@ -81,6 +81,7 @@ public enum ErrorCode
     UNKNOWN_VARIABLE,
     UNKNOWN_FUNCTION,
     UNKNOWN_CONVERSION,
+    UNKNOWN_UNIT,
     UNKNOWN_RATE,
     MP
 }

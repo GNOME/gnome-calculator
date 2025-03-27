@@ -991,11 +991,9 @@ public class ConvertBaseNode : ParseNode
 
 public class ConvertNumberNode : ParseNode
 {
-    private bool _is_currency;
-    public ConvertNumberNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity, bool is_currency)
+    public ConvertNumberNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
-        _is_currency = is_currency;
     }
 
     public override Number? solve ()
@@ -1022,18 +1020,19 @@ public class ConvertNumberNode : ParseNode
         if (tmp == null)
             return null;
 
-        Unit? from_unit;
-        Unit? to_unit;
+        Unit? from_unit = null;
+        Unit? to_unit = null;
         var ans = parser.convert (tmp, from, to, out from_unit, out to_unit);
         if (ans == null)
-            if (_is_currency) {
-                if (from_unit != null && !parser.currency_has_rate (left.token ().text))
-                    parser.set_error (ErrorCode.UNKNOWN_RATE, from_unit.display_name, left.token ().start_index, left.token ().end_index);
-                else if (to_unit != null && !parser.currency_has_rate (right.token ().text))
-                    parser.set_error (ErrorCode.UNKNOWN_RATE, to_unit.display_name, right.token ().start_index, right.token ().end_index);
-                else
-                    parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
-            } else
+            if (from_unit == null)
+                parser.set_error (ErrorCode.UNKNOWN_UNIT, from, left.token ().start_index, left.token ().end_index);
+            else if (to_unit == null)
+                parser.set_error (ErrorCode.UNKNOWN_UNIT, to, right.token ().start_index, right.token ().end_index);
+            else if (from_unit != null && !parser.currency_has_rate (left.token ().text))
+                parser.set_error (ErrorCode.UNKNOWN_RATE, from_unit.display_name, left.token ().start_index, left.token ().end_index);
+            else if (to_unit != null && !parser.currency_has_rate (right.token ().text))
+                parser.set_error (ErrorCode.UNKNOWN_RATE, to_unit.display_name, right.token ().start_index, right.token ().end_index);
+            else
                 parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
 
         return ans;
@@ -1603,10 +1602,10 @@ public class Parser
             {
                 var token_in = token;
                 token = lexer.get_next_token ();
-                if ( (token.type == LexerTokenType.UNIT || token.type == LexerTokenType.CURRENCY) && token.type == first_type)
+                if ( (token.type == LexerTokenType.UNIT || token.type == LexerTokenType.CURRENCY))
                 {
                     insert_into_tree (new NameNode (this, token_from, make_precedence_p (Precedence.UNIT), get_associativity (token_from)));
-                    insert_into_tree (new ConvertNumberNode (this, token_in, make_precedence_p (Precedence.CONVERT), get_associativity (token_in), token.type == LexerTokenType.CURRENCY));
+                    insert_into_tree (new ConvertNumberNode (this, token_in, make_precedence_p (Precedence.CONVERT), get_associativity (token_in)));
                     insert_into_tree (new NameNode (this, token, make_precedence_p (Precedence.UNIT), get_associativity (token)));
                     return true;
                 }
