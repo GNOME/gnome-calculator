@@ -174,8 +174,6 @@ public class CurrencyManager : Object
         {
             if (name == c.name)
             {
-                if (c == null)
-                    return null;
                 var value = c.get_value ();
                 if (value == null || value.is_negative () || value.is_zero ())
                     return null;
@@ -183,6 +181,7 @@ public class CurrencyManager : Object
                     return c;
             }
         }
+
         return null;
     }
 
