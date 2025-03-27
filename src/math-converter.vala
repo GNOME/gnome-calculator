@@ -246,6 +246,22 @@ public class MathConverter : Gtk.Box
             }
     }
 
+    public void change_sign ()
+    {
+        var entry = to_entry.has_focus ? to_entry : from_entry;
+        if (entry == from_entry)
+            from_entry.grab_focus ();
+        var text = entry.buffer.text;
+        if (text == "0")
+            entry.buffer.text = "−";
+        else if (text.has_prefix ("−"))
+            entry.buffer.text = text["−".length:];
+        else if (text.has_prefix ("-"))
+            entry.buffer.text = text["-".length:];
+        else
+            entry.buffer.text = "−" + text;
+    }
+
     public void clear ()
     {
         if (!box_visible)

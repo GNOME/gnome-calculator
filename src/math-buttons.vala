@@ -107,6 +107,7 @@ public class MathButtons : Adw.BreakpointBin
         {"insert-character",     on_insert_character                         },
         {"insert-numeric-point", on_insert_numeric_point                     },
         {"insert-dms",           on_insert_dms                               },
+        {"change-sign",          on_change_sign                              },
         {"set-number-mode",      on_set_number_mode,      "s", "'normal'"    },
         {"launch-finc-dialog",   on_launch_finc_dialog,   "s"                },
         {"currency-conversion",  on_currency_conversion                      },
@@ -365,6 +366,11 @@ public class MathButtons : Adw.BreakpointBin
     private void on_insert_dms (SimpleAction action, Variant? param)
     {
         converter.insert_dms ();
+    }
+
+    private void on_change_sign (SimpleAction action, Variant? param)
+    {
+        converter.change_sign ();
     }
 
     private void update_bit_panel ()
