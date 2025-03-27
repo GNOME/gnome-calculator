@@ -951,7 +951,7 @@ public class ConvertNode : LRNode
 
         var tmp = new Number.integer (1);
 
-        var ans = parser.convert (tmp, from, to);
+        var ans = parser.convert (tmp, from, to, null, null);
         if (ans == null)
             parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
 
@@ -1022,10 +1022,17 @@ public class ConvertNumberNode : ParseNode
         if (tmp == null)
             return null;
 
-        var ans = parser.convert (tmp, from, to);
+        Unit? from_unit;
+        Unit? to_unit;
+        var ans = parser.convert (tmp, from, to, out from_unit, out to_unit);
         if (ans == null)
             if (_is_currency) {
-                parser.set_error (ErrorCode.UNKNOWN_RATE, left.token ().text, left.token ().start_index, left.token ().end_index);
+                if (from_unit != null && !parser.currency_has_rate (left.token ().text))
+                    parser.set_error (ErrorCode.UNKNOWN_RATE, from_unit.display_name, left.token ().start_index, left.token ().end_index);
+                else if (to_unit != null && !parser.currency_has_rate (right.token ().text))
+                    parser.set_error (ErrorCode.UNKNOWN_RATE, to_unit.display_name, right.token ().start_index, right.token ().end_index);
+                else
+                    parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
             } else
                 parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
 
@@ -1223,7 +1230,8 @@ public class Parser
         return false;
     }
 
-    public virtual Number? convert (Number x, string x_units, string z_units)
+    public virtual Number? convert (Number x, string x_units, string z_units,
+                                    out Unit? x_unit, out Unit? z_unit)
     {
         return null;
     }

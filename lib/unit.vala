@@ -314,16 +314,19 @@ public class UnitManager : Object
         return get_unit_by_symbol (name);
     }
 
-    public Number? convert_by_symbol (Number x, string x_symbol, string z_symbol)
+    public Number? convert_by_symbol (Number x, string x_symbol, string z_symbol,
+                                      out Unit? x_unit, out Unit? z_unit)
     {
         foreach (var c in categories)
         {
             var x_units = c.get_unit_by_symbol (x_symbol);
             if (x_units == null)
                 x_units = c.get_unit_by_symbol (x_symbol, false);
+            x_unit = x_units;
             var z_units = c.get_unit_by_symbol (z_symbol);
             if (z_units == null)
                 z_units = c.get_unit_by_symbol (z_symbol, false);
+            z_unit = z_units;
             if (x_units != null && z_units != null)
                 return c.convert (x, x_units, z_units);
         }
@@ -453,7 +456,6 @@ public class Unit : Object
             return solve_function (from_function, x);
         else
         {
-            stdout.printf ("Currency hack\n");
             // FIXME: Hack to make currency work
             var r = CurrencyManager.get_default ().get_value (name);
             if (r == null)

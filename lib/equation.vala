@@ -152,9 +152,11 @@ public class Equation : Object
         return false;
     }
 
-    public virtual Number? convert (Number x, string x_units, string z_units)
+    public virtual Number? convert (Number x, string x_units, string z_units,
+                                    out Unit? x_unit, out Unit? z_unit)
     {
-        return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units);
+        return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units,
+                                        out x_unit, out z_unit);
     }
 
     public virtual string get_last_operation (out Number? operand)
@@ -246,9 +248,10 @@ private class EquationParser : Parser
         return false;
     }
 
-    protected override Number? convert (Number x, string x_units, string z_units)
+    protected override Number? convert (Number x, string x_units, string z_units,
+                                        out Unit? x_unit, out Unit? z_unit)
     {
-        return equation.convert (x, x_units, z_units);
+        return equation.convert (x, x_units, z_units, out x_unit, out z_unit);
     }
 
     protected override bool literal_base_is_defined (string name)

@@ -111,12 +111,14 @@ private class TestEquation : Equation
         return null;
     }
 
-    public override Number? convert (Number x, string x_units, string z_units)
+    public override Number? convert (Number x, string x_units, string z_units,
+                                     out Unit? x_unit, out Unit? z_unit)
     {
         if (!enable_conversions)
             return null;
 
-        return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units);
+        return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units,
+                                        out x_unit, out z_unit);
     }
 }
 
