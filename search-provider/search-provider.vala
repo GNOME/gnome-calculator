@@ -318,7 +318,7 @@ public class SearchProviderApp : Application
             if (decimal == null)
                 decimal = "";
 
-            var e = new ConvertEquation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
+            var e = new Equation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
             e.base = 10;
             e.wordlen = 32;
             e.angle_units = angle_units;

@@ -81,6 +81,8 @@ public enum ErrorCode
     UNKNOWN_VARIABLE,
     UNKNOWN_FUNCTION,
     UNKNOWN_CONVERSION,
+    UNKNOWN_UNIT,
+    UNKNOWN_RATE,
     MP
 }
 
@@ -151,9 +153,11 @@ public class Equation : Object
         return false;
     }
 
-    public virtual Number? convert (Number x, string x_units, string z_units)
+    public virtual Number? convert (Number x, string x_units, string z_units,
+                                    out Unit? x_unit, out Unit? z_unit)
     {
-        return null;
+        return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units,
+                                        out x_unit, out z_unit);
     }
 
     public virtual string get_last_operation (out Number? operand)
@@ -162,19 +166,6 @@ public class Equation : Object
         return last_token;
     }
 
-}
-
-public class ConvertEquation : Equation
-{
-    public ConvertEquation (string text)
-    {
-        base (text);
-    }
-
-    public override Number? convert (Number x, string x_units, string z_units)
-    {
-        return UnitManager.get_default ().convert_by_symbol (x, x_units, z_units);
-    }
 }
 
 private class EquationParser : Parser
@@ -234,15 +225,32 @@ private class EquationParser : Parser
 
         var unit_manager = UnitManager.get_default ();
 
-        if (unit_manager.unit_is_defined (name))
+        if (unit_manager.get_defined_unit (name) != null)
             return true;
 
         return equation.unit_is_defined (name);
     }
 
-    protected override Number? convert (Number x, string x_units, string z_units)
+    protected override bool currency_is_defined (string name)
     {
-        return equation.convert (x, x_units, z_units);
+        var unit_manager = UnitManager.get_default ();
+        var found_unit = unit_manager.get_defined_unit (name);
+        return found_unit != null && unit_manager.get_category_of_unit (found_unit.name)?.name == "currency";
+    }
+
+    protected override bool currency_has_rate (string name)
+    {
+        var currency_manager = CurrencyManager.get_default ();
+
+        if (currency_manager.get_currency (name) != null)
+            return true;
+        return false;
+    }
+
+    protected override Number? convert (Number x, string x_units, string z_units,
+                                        out Unit? x_unit, out Unit? z_unit)
+    {
+        return equation.convert (x, x_units, z_units, out x_unit, out z_unit);
     }
 
     protected override bool literal_base_is_defined (string name)

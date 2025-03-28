@@ -212,7 +212,7 @@ public class Calculator : Adw.Application
 
             settings = new Settings ("org.gnome.calculator");
             var angle_units = (AngleUnit) settings.get_enum ("angle-units");
-            var e = new ConvertEquation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
+            var e = new Equation (solve_equation.replace (tsep_string, "").replace (decimal, "."));
             e.base = 10;
             e.wordlen = 32;
             e.angle_units = angle_units;
@@ -223,7 +223,7 @@ public class Calculator : Adw.Application
             var result = e.parse (out representation_base, out error, out error_token);
 
             // if unknown conversion, try force reloading conversion rates and retry conversion
-            if (error == ErrorCode.UNKNOWN_CONVERSION) {
+            if (error == ErrorCode.UNKNOWN_RATE) {
                 CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
                 CurrencyManager.get_default ().refresh_sync ();
                 result = e.parse (out representation_base, out error, out error_token);

@@ -177,7 +177,7 @@ public class UnitManager : Object
         foreach (var currency in currencies)
         {
             var unit = new Unit (currency.name, currency.display_name, null, null, currency.name);
-            currency_category.add_unit ( unit);
+            currency_category.add_unit ( unit );
         }
 
         var numberbase_category = default_unit_manager.add_category ("numberbase", _("Number Base"));
@@ -309,25 +309,24 @@ public class UnitManager : Object
         return null;
     }
 
-    public bool unit_is_defined (string name)
+    public Unit? get_defined_unit (string name)
     {
-        var unit = get_unit_by_symbol (name);
-        if (unit != null)
-            return true;
-        else
-            return false;
+        return get_unit_by_symbol (name);
     }
 
-    public Number? convert_by_symbol (Number x, string x_symbol, string z_symbol)
+    public Number? convert_by_symbol (Number x, string x_symbol, string z_symbol,
+                                      out Unit? x_unit, out Unit? z_unit)
     {
         foreach (var c in categories)
         {
             var x_units = c.get_unit_by_symbol (x_symbol);
             if (x_units == null)
                 x_units = c.get_unit_by_symbol (x_symbol, false);
+            x_unit = x_units;
             var z_units = c.get_unit_by_symbol (z_symbol);
             if (z_units == null)
                 z_units = c.get_unit_by_symbol (z_symbol, false);
+            z_unit = z_units;
             if (x_units != null && z_units != null)
                 return c.convert (x, x_units, z_units);
         }

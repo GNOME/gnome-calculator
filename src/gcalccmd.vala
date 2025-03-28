@@ -24,7 +24,7 @@ static void solve (string equation)
         decimal = "";
 
     string? error_token = null;
-    var e = new ConvertEquation (equation.replace (tsep_string, "").replace (decimal, "."));
+    var e = new Equation (equation.replace (tsep_string, "").replace (decimal, "."));
     e.base = 10;
     e.wordlen = 32;
     e.angle_units = AngleUnit.DEGREES;

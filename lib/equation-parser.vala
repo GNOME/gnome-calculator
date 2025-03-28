@@ -951,7 +951,7 @@ public class ConvertNode : LRNode
 
         var tmp = new Number.integer (1);
 
-        var ans = parser.convert (tmp, from, to);
+        var ans = parser.convert (tmp, from, to, null, null);
         if (ans == null)
             parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
 
@@ -981,8 +981,7 @@ public class ConvertBaseNode : ParseNode
             parser.set_representation_base (8);
         else if (name == "bin" || name == "binary")
             parser.set_representation_base (2);
-        else
-        {
+        else {
             parser.set_error (ErrorCode.UNKNOWN_CONVERSION, token().text, first_token().start_index, last_token().end_index);
             return null;
         }
@@ -1021,10 +1020,21 @@ public class ConvertNumberNode : ParseNode
         if (tmp == null)
             return null;
 
-        var ans = parser.convert (tmp, from, to);
-        if (ans == null)
-            parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
-
+        Unit? from_unit = null;
+        Unit? to_unit = null;
+        var ans = parser.convert (tmp, from, to, out from_unit, out to_unit);
+        if (ans == null) {
+            if (from_unit == null)
+                parser.set_error (ErrorCode.UNKNOWN_UNIT, from, left.token ().start_index, left.token ().end_index);
+            else if (to_unit == null)
+                parser.set_error (ErrorCode.UNKNOWN_UNIT, to, right.token ().start_index, right.token ().end_index);
+            else if (from_unit != null && !parser.currency_has_rate (from_unit.name))
+                parser.set_error (ErrorCode.UNKNOWN_RATE, from_unit.display_name, left.token ().start_index, left.token ().end_index);
+            else if (to_unit != null && !parser.currency_has_rate (to_unit.name))
+                parser.set_error (ErrorCode.UNKNOWN_RATE, to_unit.display_name, right.token ().start_index, right.token ().end_index);
+            else
+                parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
+        }
         return ans;
     }
 }
@@ -1204,12 +1214,23 @@ public class Parser
         return false;
     }
 
+    public virtual bool currency_is_defined (string name)
+    {
+        return false;
+    }
+
+    public virtual bool currency_has_rate (string name)
+    {
+        return false;
+    }
+
     public virtual bool literal_base_is_defined (string name)
     {
         return false;
     }
 
-    public virtual Number? convert (Number x, string x_units, string z_units)
+    public virtual Number? convert (Number x, string x_units, string z_units,
+                                    out Unit? x_unit, out Unit? z_unit)
     {
         return null;
     }
@@ -1572,15 +1593,16 @@ public class Parser
                 return false;
             }
         }
-        else if (token.type == LexerTokenType.UNIT)
+        else if (token.type == LexerTokenType.UNIT || token.type == LexerTokenType.CURRENCY)
         {
+            var first_type = token.type;
             var token_from = token;
             token = lexer.get_next_token ();
             if (token.type == LexerTokenType.IN)
             {
                 var token_in = token;
                 token = lexer.get_next_token ();
-                if (token.type == LexerTokenType.UNIT)
+                if ( (token.type == LexerTokenType.UNIT || token.type == LexerTokenType.CURRENCY))
                 {
                     insert_into_tree (new NameNode (this, token_from, make_precedence_p (Precedence.UNIT), get_associativity (token_from)));
                     insert_into_tree (new ConvertNumberNode (this, token_in, make_precedence_p (Precedence.CONVERT), get_associativity (token_in)));
