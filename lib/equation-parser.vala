@@ -1023,18 +1023,18 @@ public class ConvertNumberNode : ParseNode
         Unit? from_unit = null;
         Unit? to_unit = null;
         var ans = parser.convert (tmp, from, to, out from_unit, out to_unit);
-        if (ans == null)
+        if (ans == null) {
             if (from_unit == null)
                 parser.set_error (ErrorCode.UNKNOWN_UNIT, from, left.token ().start_index, left.token ().end_index);
             else if (to_unit == null)
                 parser.set_error (ErrorCode.UNKNOWN_UNIT, to, right.token ().start_index, right.token ().end_index);
-            else if (from_unit != null && !parser.currency_has_rate (left.token ().text))
+            else if (from_unit != null && !parser.currency_has_rate (from_unit.name))
                 parser.set_error (ErrorCode.UNKNOWN_RATE, from_unit.display_name, left.token ().start_index, left.token ().end_index);
-            else if (to_unit != null && !parser.currency_has_rate (right.token ().text))
+            else if (to_unit != null && !parser.currency_has_rate (to_unit.name))
                 parser.set_error (ErrorCode.UNKNOWN_RATE, to_unit.display_name, right.token ().start_index, right.token ().end_index);
             else
                 parser.set_error (ErrorCode.UNKNOWN_CONVERSION);
-
+        }
         return ans;
     }
 }

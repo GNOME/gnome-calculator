@@ -234,7 +234,6 @@ private class EquationParser : Parser
     protected override bool currency_is_defined (string name)
     {
         var unit_manager = UnitManager.get_default ();
-
         var found_unit = unit_manager.get_defined_unit (name);
         return found_unit != null && unit_manager.get_category_of_unit (found_unit.name)?.name == "currency";
     }
@@ -245,7 +244,6 @@ private class EquationParser : Parser
 
         if (currency_manager.get_currency (name) != null)
             return true;
-
         return false;
     }
 
