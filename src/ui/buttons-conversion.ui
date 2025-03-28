@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <object class="AdwBin" id="button_panel">
+  <template class="ConversionButtonPanel" parent="AdwBin">
     <style>
       <class name="math-buttons"/>
     </style>
@@ -59,7 +59,7 @@
           </object>
         </child>
         <child>
-          <object class="GtkGrid">
+          <object class="GtkGrid" id="dec_buttons">
             <property name="visible" bind-source="hex_buttons" bind-property="visible" bind-flags="sync-create|invert-boolean"/>
             <property name="row-homogeneous">True</property>
             <property name="column-homogeneous">True</property>
@@ -524,5 +524,5 @@
         </child>
       </object>
     </child>
-  </object>
+  </template>
 </interface>

@@ -51,7 +51,6 @@ public class MathVariablePopover : MathPopover<MathVariable>
         variable_list.bind_model (model, (variable) => make_item_row (variable as MathVariable));
         equation.history_signal.connect (history_cb);
         item_deleted.connect (delete_variable_cb);
-        item_edited_cb (new MathVariable ("_", equation.answer));
         load_constants ();
     }
 

@@ -1,5 +1,10 @@
 # gnome-calculator executable
 gnome_calculator_vala_sources = [
+  'buttons-advanced.vala',
+  'buttons-basic.vala',
+  'buttons-conversion.vala',
+  'buttons-financial.vala',
+  'buttons-programming.vala',
   'gnome-calculator.vala',
   'math-buttons.vala',
   'math-converter.vala',
