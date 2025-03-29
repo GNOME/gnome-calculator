@@ -106,10 +106,10 @@ public class UnitManager : Object
         duration_category.add_unit (new Unit ("millisecond", _("Milliseconds"), "0.001x", "1000x", dpgettext2 (null, "unit-symbols", "millisecond,milliseconds,ms")));
         duration_category.add_unit (new Unit ("microsecond", _("Microseconds"), "0.000001x", "1000000x", dpgettext2 (null, "unit-symbols", "microsecond,microseconds,us,μs")));
         duration_category.add_unit (new Unit ("nanosecond", _("Nanoseconds"), "0.000000001x", "1000000000x", dpgettext2 (null, "unit-symbols", "nanosecond,nanoseconds,ns")));
-        temperature_category.add_unit (new Unit ("degree-celsius", _("Celsius"), "x+273.15", "x-273.15", dpgettext2 (null, "unit-symbols", "degC,˚C,C,c,Celsius,celsius")));
-        temperature_category.add_unit (new Unit ("degree-fahrenheit", _("Fahrenheit"), "(x+459.67)*5/9", "x*9/5-459.67", dpgettext2 (null, "unit-symbols", "degF,˚F,F,f,Fahrenheit,fahrenheit")));
+        temperature_category.add_unit (new Unit ("degree-celsius", _("Celsius"), "x+273.15", "x-273.15", dpgettext2 (null, "unit-symbols", "degC,°C,˚C,C,c,Celsius,celsius")));
+        temperature_category.add_unit (new Unit ("degree-fahrenheit", _("Fahrenheit"), "(x+459.67)*5/9", "x*9/5-459.67", dpgettext2 (null, "unit-symbols", "degF,°F,˚F,F,f,Fahrenheit,fahrenheit")));
         temperature_category.add_unit (new Unit ("degree-kelvin", _("Kelvin"), "x", "x", dpgettext2 (null, "unit-symbols", "k,K,Kelvin,kelvin")));
-        temperature_category.add_unit (new Unit ("degree-rankine", _("Rankine"), "x*5/9", "x*9/5", dpgettext2 (null, "unit-symbols", "degR,˚R,˚Ra,r,R,Rankine,rankine")));
+        temperature_category.add_unit (new Unit ("degree-rankine", _("Rankine"), "x*5/9", "x*9/5", dpgettext2 (null, "unit-symbols", "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine")));
         /* We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes */
         digitalstorage_category.add_unit (new Unit ("bit", _("Bits"), "x/8", "8x", dpgettext2 (null, "unit-symbols", "bit,bits,b")));
         digitalstorage_category.add_unit (new Unit ("byte", _("Bytes"), "x", "x", dpgettext2 (null, "unit-symbols", "byte,bytes,B")));
