@@ -1340,7 +1340,8 @@ public class MathEquation : GtkSource.Buffer
         return false;
     }
 
-    public void repeat_last_operation () {
+    private void repeat_last_operation ()
+    {
         var text = equation;
 
         ErrorCode error_code;
@@ -1357,9 +1358,10 @@ public class MathEquation : GtkSource.Buffer
 
         if (last_operator != "" && last_operand != null && serializer != null)
         {
+            redo ();
             insert (last_operator + serializer.to_string (last_operand));
+            solve ();
         }
-
     }
 
     public void solve ()
@@ -1377,7 +1379,6 @@ public class MathEquation : GtkSource.Buffer
         {
             undo ();
             repeat_last_operation ();
-            solve ();
             return;
         }
 
