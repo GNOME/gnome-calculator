@@ -1,6 +1,6 @@
 public interface CurrencyProvider : Object {
 
-    public signal void updated ();
+    public signal void updated (string? currency = null);
 
     public abstract void update_rates (bool asyncLoad = true, bool force = false);
 
@@ -8,13 +8,13 @@ public interface CurrencyProvider : Object {
 
     public abstract void clear ();
 
-    public abstract bool is_loaded();
-
     public abstract string attribution_link { owned get ; }
 
     public abstract string provider_name { get ; }
 
     public abstract Date? parse_date (string? date);
+
+    public abstract bool loaded { get; protected set; }
 }
 
 public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
@@ -29,28 +29,25 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
     public abstract string source_name { owned get; }
 
+    public string? base_currency_symbol { get; construct set; }
+
     public int refresh_interval { get; private set; }
+
+	public bool loaded { get; protected set; }
 
     protected string[] MONTHS_ABBREVIATED = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     protected string[] MONTHS_FULL = {"January", "February", "March", "April", "May", "June",
                                       "July", "August", "September", "October", "November", "December"};
 
     public void set_refresh_interval (int interval, bool asyncLoad = true) {
-        loaded = false;
-        updated ();
-
         this.refresh_interval = interval;
         if (refresh_interval == 0) return;
         update_rates (asyncLoad);
     }
 
-    public bool is_loaded() {
-        return loaded;
-    }
-
     protected bool loading;
-    protected bool loaded;
     protected List<Currency> currencies;
+    protected uint update_callback = 0;
     public CurrencyManager currency_manager { get; construct; }
 
     public void clear () {
@@ -61,7 +58,8 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         Currency currency = currency_manager.add_currency (symbol, source);
         currency.set_value (value);
         currency.date = date;
-        currencies.append(currency);
+        currencies.append (currency);
+        updated (symbol);
         return currency;
     }
 
@@ -71,19 +69,21 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
     public void update_rates (bool asyncLoad = true, bool force = false) {
         debug ("Updating %s rates ".printf(source_name));
+        loaded = false;
 
-        if (loading || loaded) return;
+        if (loading) return;
+
+        loading = true;
 
         debug ("Checking %s rates ".printf(source_name));
 
         if (!force && !file_needs_update (rate_filepath, refresh_interval )) {
+            loading = false;
             do_load_rates ();
             return;
         }
 
         debug ("Loading %s rates ".printf(source_name));
-
-        loading = true;
 
         if (asyncLoad) {
             debug ("Downloading %s rates async from %s".printf(source_name, rate_source_url));
@@ -91,9 +91,34 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         } else {
             debug ("Downloading %s rates sync from %s".printf(source_name, rate_source_url));
             this.download_file_sync (rate_source_url, rate_filepath, source_name);
+            loading = false;
             do_load_rates ();
         }
 
+    }
+
+    protected Currency? get_base_currency ()
+    {
+        if (base_currency_symbol == null)
+            return null;
+        var base_rate = get_currency (base_currency_symbol);
+        if (base_rate == null)
+        {
+            warning ("Cannot use %s rates as we don't have %s rate yet, retrying".printf (provider_name, base_currency_symbol));
+            currency_manager.updated.connect ((symbol) => {
+                if (symbol == base_currency_symbol) {
+                    if (update_callback > 0)
+                        Source.remove (update_callback);
+
+                    update_callback = Timeout.add (1000, () => {
+                        loading = false;
+                        return !do_load_rates ();
+                    });
+                }
+            });
+            return null;
+        }
+        return base_rate;
     }
 
     protected Currency? get_currency (string name)
@@ -101,10 +126,11 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         return currency_manager.get_currency (name);
     }
 
-    protected virtual void do_load_rates () {
+    protected virtual bool do_load_rates () {
         debug ("Loaded %s rates ".printf(source_name));
         loaded = true;
         updated ();
+        return loaded;
     }
 
     /* A file needs to be redownloaded if it doesn't exist, or is too old.
@@ -258,7 +284,7 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
         return name_map;
     }
 
-    protected override void do_load_rates ()
+    protected override bool do_load_rates ()
     {
         var name_map = get_name_map ();
 
@@ -270,7 +296,7 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
         catch (Error e)
         {
             warning ("Failed to read exchange rates: %s", e.message);
-            return;
+            return false;
         }
 
         var lines = data.split ("\n", 0);
@@ -327,7 +353,7 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
                 headers = tokens;
             }
         }
-        base.do_load_rates ();
+        return base.do_load_rates ();
     }
 
     public ImfCurrencyProvider (CurrencyManager _currency_manager)
@@ -411,30 +437,26 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
 
     public override string source_name { owned get { return "ECB";} }
 
-    protected override void do_load_rates ()
+    protected override bool do_load_rates ()
     {
         /* Scale rates to the EUR value */
-        var eur_currency = get_currency ("EUR");
-        if (eur_currency == null)
-        {
-            warning ("Cannot use ECB rates as don't have EUR rate");
-            return;
-        }
-        var eur_rate = eur_currency.get_value ();
+        var eur_rate = get_base_currency (); // based on EUR
+        if (eur_rate == null)
+            return false;
 
         Xml.Parser.init ();
         var document = Xml.Parser.read_file (rate_filepath);
         if (document == null)
         {
             warning ("Couldn't parse ECB rate file %s", rate_filepath);
-            return;
+            return false;
         }
 
         var xpath_ctx = new Xml.XPath.Context (document);
         if (xpath_ctx == null)
         {
             warning ("Couldn't create XPath context");
-            return;
+            return false;
         }
 
         xpath_ctx.register_ns ("xref", "http://www.ecb.int/vocabulary/2002-08-01/eurofxref");
@@ -442,7 +464,7 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
         if (xpath_obj == null)
         {
             warning ("Couldn't create XPath object");
-            return;
+            return false;
         }
 
         var xpath_date = xpath_ctx.eval_expression("//xref:Cube/@time");
@@ -453,20 +475,19 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
             var node = xpath_obj->nodesetval->item (i);
 
             if (node->type == Xml.ElementType.ELEMENT_NODE)
-                set_ecb_rate (node, eur_rate, date);
+                set_ecb_rate (node, eur_rate.get_value (), date);
 
             /* Avoid accessing removed elements */
             if (node->type != Xml.ElementType.NAMESPACE_DECL)
                 node = null;
         }
-
         /* Set some fixed rates */
-        set_ecb_fixed_rate ("BDT", "0.0099", eur_rate, date);
-        set_ecb_fixed_rate ("RSD", "0.0085", eur_rate, date);
-        set_ecb_fixed_rate ("EEK", "0.06391", eur_rate, date);
-        set_ecb_fixed_rate ("CFA", "0.00152449", eur_rate, date);
+        set_ecb_fixed_rate ("BDT", "0.0099", eur_rate.get_value (), date);
+        set_ecb_fixed_rate ("RSD", "0.0085", eur_rate.get_value (), date);
+        set_ecb_fixed_rate ("EEK", "0.06391", eur_rate.get_value (), date);
+        set_ecb_fixed_rate ("CFA", "0.00152449", eur_rate.get_value (), date);
 
-        base.do_load_rates ();
+        return base.do_load_rates ();
     }
 
     private void set_ecb_rate (Xml.Node node, Number eur_rate, string? date)
@@ -500,7 +521,7 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
 
     public EcbCurrencyProvider (CurrencyManager _currency_manager)
     {
-        Object(currency_manager: _currency_manager);
+        Object(currency_manager: _currency_manager, base_currency_symbol: "EUR");
         _currency_manager.add_provider (this);
     }
 }
@@ -523,44 +544,41 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
 
     public override string source_name { owned get { return "BC-%s".printf (currency);} }
 
-    protected override void do_load_rates ()
+    protected override bool do_load_rates ()
     {
+        var cad_rate = get_base_currency (); // based on CAD
+        if (cad_rate == null)
+            return false;
+
         Xml.Parser.init ();
         var document = Xml.Parser.read_file (rate_filepath);
         if (document == null)
         {
             warning ("Couldn't parse rate file %s", rate_filepath);
-            return;
+            return false;
         }
 
         var xpath_ctx = new Xml.XPath.Context (document);
         if (xpath_ctx == null)
         {
             warning ("Couldn't create XPath context");
-            return;
+            return false;
         }
 
         var xpath_obj = xpath_ctx.eval_expression ("//observations/o[last()]/v");
         if (xpath_obj == null)
         {
             warning ("Couldn't create XPath object");
-            return;
+            return false;
         }
         var xpath_date = xpath_ctx.eval_expression ("//observations/o[last()]/@d");
         var date = xpath_date->nodesetval != null ? xpath_date->nodesetval->item(0)->get_content () : null;
         var node = xpath_obj->nodesetval->item (0);
         var rate = node->get_content ();
 
-        var cad_rate = get_currency ("CAD");
-        if (cad_rate == null)
-        {
-            warning ("Cannot use BC rates as don't have CAD rate");
-            return;
-        }
-
         set_rate (currency, rate, cad_rate.get_value (), date);
 
-        base.do_load_rates ();
+        return base.do_load_rates ();
     }
 
     private void set_rate (string name, string value, Number cad_rate, string? date)
@@ -572,7 +590,7 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
 
     public BCCurrencyProvider (CurrencyManager _currency_manager, string currency, string currency_filename)
     {
-        Object(currency_manager: _currency_manager);
+        Object(currency_manager: _currency_manager, base_currency_symbol: "CAD");
         this.currency = currency;
         this.currency_filename = currency_filename;
         _currency_manager.add_provider (this);
@@ -604,8 +622,12 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
         return name_map;
     }
 
-    protected override void do_load_rates ()
+    protected override bool do_load_rates ()
     {
+        var usd_currency = get_base_currency (); // based on USD
+        if (usd_currency == null)
+            return false;
+
         var currency_map = get_currency_map ();
         string data;
         try
@@ -615,19 +637,14 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
         catch (Error e)
         {
             warning ("Failed to read exchange rates: %s", e.message);
-            return;
+            return false;
         }
 
         var lines = data.split ("\r\n", 0);
 
         var in_data = false;
-        var usd_currency = get_currency ("USD");
-        if (usd_currency == null)
-        {
-            warning ("Cannot use UN rates as don't have USD rate");
-            return;
-        }
         var usd_rate = usd_currency.get_value ();
+
         foreach (var line in lines)
         {
             line = line.chug ();
@@ -662,12 +679,12 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
                 }
             }
         }
-        base.do_load_rates ();
+        return base.do_load_rates ();
     }
 
     public UnCurrencyProvider (CurrencyManager _currency_manager)
     {
-        Object(currency_manager: _currency_manager);
+        Object(currency_manager: _currency_manager, base_currency_symbol: "USD");
         _currency_manager.add_provider (this);
     }
 }
