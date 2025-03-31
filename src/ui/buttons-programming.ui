@@ -2084,32 +2084,7 @@
                 <property name="can_shrink">True</property>
                 <property name="tooltip_text" translatable="yes">Change Base</property>
                 <property name="direction">up</property>
-                <property name="menu_model">
-                  <menu id="menu">
-                    <section>
-                      <item>
-                        <attribute name="label" translatable="yes">Binary</attribute>
-                        <attribute name="action">cal.set-base</attribute>
-                        <attribute name="target" type="i">2</attribute>
-                      </item>
-                      <item>
-                        <attribute name="label" translatable="yes">Octal</attribute>
-                        <attribute name="action">cal.set-base</attribute>
-                        <attribute name="target" type="i">8</attribute>
-                      </item>
-                      <item>
-                        <attribute name="label" translatable="yes">Decimal</attribute>
-                        <attribute name="action">cal.set-base</attribute>
-                        <attribute name="target" type="i">10</attribute>
-                      </item>
-                      <item>
-                        <attribute name="label" translatable="yes">Hexadecimal</attribute>
-                        <attribute name="action">cal.set-base</attribute>
-                        <attribute name="target" type="i">16</attribute>
-                      </item>
-                    </section>
-                  </menu>
-                </property>
+                <property name="menu_model">base_menu</property>
                 <style>
                   <class name="function-button"/>
                 </style>
@@ -2127,32 +2102,7 @@
                 <property name="can_shrink">True</property>
                 <property name="tooltip_text" translatable="yes">Change Word Size</property>
                 <property name="direction">up</property>
-                <property name="menu_model">
-                  <menu id="menu">
-                    <section>
-                      <item>
-                        <attribute name="label" translatable="yes">8-bit</attribute>
-                        <attribute name="action">cal.set-word-size</attribute>
-                        <attribute name="target" type="i">8</attribute>
-                      </item>
-                      <item>
-                        <attribute name="label" translatable="yes">16-bit</attribute>
-                        <attribute name="action">cal.set-word-size</attribute>
-                        <attribute name="target" type="i">16</attribute>
-                      </item>
-                      <item>
-                        <attribute name="label" translatable="yes">32-bit</attribute>
-                        <attribute name="action">cal.set-word-size</attribute>
-                        <attribute name="target" type="i">32</attribute>
-                      </item>
-                      <item>
-                        <attribute name="label" translatable="yes">64-bit</attribute>
-                        <attribute name="action">cal.set-word-size</attribute>
-                        <attribute name="target" type="i">64</attribute>
-                      </item>
-                    </section>
-                  </menu>
-                </property>
+                <property name="menu_model">word_size_menu</property>
                 <style>
                   <class name="function-button"/>
                 </style>
@@ -2243,6 +2193,54 @@
       </object>
     </property>
   </object>
+  <menu id="base_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Binary</attribute>
+        <attribute name="action">cal.set-base</attribute>
+        <attribute name="target" type="i">2</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Octal</attribute>
+        <attribute name="action">cal.set-base</attribute>
+        <attribute name="target" type="i">8</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Decimal</attribute>
+        <attribute name="action">cal.set-base</attribute>
+        <attribute name="target" type="i">10</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Hexadecimal</attribute>
+        <attribute name="action">cal.set-base</attribute>
+        <attribute name="target" type="i">16</attribute>
+      </item>
+    </section>
+  </menu>
+  <menu id="word_size_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">8-bit</attribute>
+        <attribute name="action">cal.set-word-size</attribute>
+        <attribute name="target" type="i">8</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">16-bit</attribute>
+        <attribute name="action">cal.set-word-size</attribute>
+        <attribute name="target" type="i">16</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">32-bit</attribute>
+        <attribute name="action">cal.set-word-size</attribute>
+        <attribute name="target" type="i">32</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">64-bit</attribute>
+        <attribute name="action">cal.set-word-size</attribute>
+        <attribute name="target" type="i">64</attribute>
+      </item>
+    </section>
+  </menu>
   <object class="GtkSizeGroup">
     <property name="mode">both</property>
     <widgets>
