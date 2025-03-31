@@ -24,7 +24,7 @@ public class CurrencyManager : Object
         }
     }
 
-    public signal void updated ();
+    public signal void updated (string? symbol = null);
 
     public bool loaded { get; private set; }
 
@@ -129,33 +129,31 @@ public class CurrencyManager : Object
 
         if (defaultProviders) {
             new ImfCurrencyProvider (default_currency_manager);
+            new UnCurrencyProvider  (default_currency_manager);
             new EcbCurrencyProvider (default_currency_manager);
             new BCCurrencyProvider  (default_currency_manager, "TWD", "fxtwdcad");
-            new UnCurrencyProvider  (default_currency_manager);
             default_currency_manager.initialize_providers (asyncLoad);
         }
 
         return default_currency_manager;
     }
 
-    private void update ()
+    private void update (string? symbol = null)
     {
         loaded = false;
         foreach (var p in providers) {
-            if (p.is_loaded ()) {
-                loaded = true;
-                break;
-            }
+            loaded = p.loaded;
+            break;
         }
-        updated ();
+        updated (symbol);
     }
 
     public void initialize_providers (bool asyncLoad = true)
     {
         /* Start downloading the rates if they are outdated. */
         foreach (var p in providers) {
-            p.updated.connect ( () => { update (); });
-            p.update_rates (asyncLoad);
+            p.updated.connect ( (symbol) => { update (symbol); });
+            p.update_rates (false);
         }
     }
 
