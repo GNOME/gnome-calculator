@@ -1134,10 +1134,53 @@ public class MathEquation : GtkSource.Buffer
         insert (serializer.to_string (x));
     }
 
-    public void insert_exponent (string text)
+    public void insert_exponent (string base_number)
     {
-        insert (text);
-        number_mode = NumberMode.SUPERSCRIPT;
+        if (!has_selection)
+        {
+            if (base_number != "")
+            {
+                insert (base_number);
+                number_mode = NumberMode.SUPERSCRIPT;
+            }
+            else
+                insert ("^");
+            return;
+        }
+
+        Gtk.TextIter start, end;
+        get_selection_bounds (out start, out end);
+        var text = get_text (start, end, false);
+        if (!Regex.match_simple ("^[−\\-]?\\d+$", text))
+        {
+            if (base_number != "")
+                insert_between (base_number + "^(", ")");
+            else
+                insert_between ("^(", ")", CursorGravity.BEFORE);
+            return;
+        }
+
+        var exponent = new StringBuilder (base_number);
+        var i = 0;
+        if (text.has_prefix ("−") || text.has_prefix ("-"))
+        {
+            exponent.append ("⁻");
+            i = text.get_char ().to_string ().length;
+        }
+        const unichar superscript_digits[] = {'⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'};
+        for (; i < text.length; i++)
+            exponent.append_unichar (superscript_digits[text[i] - '0']);
+
+        var before_mark = create_mark (null, start, true);
+        delete_selection (true, true);
+        insert (exponent.str);
+        if (base_number == "")
+        {
+            Gtk.TextIter cursor_iter;
+            get_iter_at_mark (out cursor_iter, before_mark);
+            place_cursor (cursor_iter);
+        }
+        delete_mark (before_mark);
     }
 
     public void insert_subtract ()
