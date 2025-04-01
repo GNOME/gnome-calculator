@@ -1021,16 +1021,14 @@ public class MathEquation : GtkSource.Buffer
         }
     }
 
-    public void insert_symbol (string symbol, CursorGravity cursor_gravity)
+    public void insert_symbol (string symbol, bool after)
     {
-        if (has_selection)
-        {
-            insert_between ("(", ")" + symbol, cursor_gravity);
-        }
-        else
-        {
+        if (!has_selection)
             insert (symbol);
-        }
+        else if (after)
+            insert_between ("(", ")" + symbol, CursorGravity.AFTER);
+        else
+            insert_between (symbol + "(", ")");
     }
 
     public void insert_alpha (string text)

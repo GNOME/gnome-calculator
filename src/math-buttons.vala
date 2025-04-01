@@ -62,21 +62,22 @@ public class MathButtons : Adw.Bin
 
     private SimpleActionGroup action_group = new SimpleActionGroup ();
     private const ActionEntry[] action_entries = {
-        {"insert-general",       on_insert,              "s"            },
-        {"insert-digit",         on_insert_digit,        "i"            },
-        {"insert-brackets",      on_insert_brackets,     "(ss)"         },
-        {"insert-alpha",         on_insert_alpha,        "s"            },
-        {"insert-function",      on_insert_function,     "s"            },
-        {"insert-symbol-after",  on_insert_symbol_after, "s"            },
-        {"insert-exponent",      on_insert_exponent,     "s"            },
-        {"insert-numeric-point", on_insert_numeric_point                },
-        {"subtract",             on_subtract                            },
-        {"square",               on_square                              },
-        {"undo",                 on_undo                                },
-        {"clear",                on_clear                               },
-        {"solve",                on_solve                               },
-        {"factorize",            on_factorize                           },
-        {"set-number-mode",      on_set_number_mode,     "s", "'normal'"},
+        {"insert-general",       on_insert,               "s"            },
+        {"insert-digit",         on_insert_digit,         "i"            },
+        {"insert-brackets",      on_insert_brackets,      "(ss)"         },
+        {"insert-alpha",         on_insert_alpha,         "s"            },
+        {"insert-function",      on_insert_function,      "s"            },
+        {"insert-symbol-before", on_insert_symbol_before, "s"            },
+        {"insert-symbol-after",  on_insert_symbol_after,  "s"            },
+        {"insert-exponent",      on_insert_exponent,      "s"            },
+        {"insert-numeric-point", on_insert_numeric_point                 },
+        {"subtract",             on_subtract                             },
+        {"square",               on_square                               },
+        {"undo",                 on_undo                                 },
+        {"clear",                on_clear                                },
+        {"solve",                on_solve                                },
+        {"factorize",            on_factorize                            },
+        {"set-number-mode",      on_set_number_mode,      "s", "'normal'"},
     };
 
     public signal void currency_conversion();
@@ -229,9 +230,14 @@ public class MathButtons : Adw.Bin
         equation.insert_function (param.get_string ());
     }
 
+    private void on_insert_symbol_before (SimpleAction action, Variant? param)
+    {
+        equation.insert_symbol (param.get_string (), false);
+    }
+
     private void on_insert_symbol_after (SimpleAction action, Variant? param)
     {
-        equation.insert_symbol (param.get_string (), CursorGravity.AFTER);
+        equation.insert_symbol (param.get_string (), true);
     }
 
     private void on_insert_exponent (SimpleAction action, Variant? param)
