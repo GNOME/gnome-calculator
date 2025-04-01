@@ -10,12 +10,13 @@
         <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkLabel" id="equation_label">
-            <property name="ellipsize">end</property>
+            <property name="ellipsize">none</property>
             <property name="xalign">0.0</property>
             <property name="yalign">0.5</property>
             <property name="selectable">true</property>
             <property name="focusable">false</property>
-            <property name="max_width_chars">1</property>
+            <property name="wrap">true</property>
+            <property name="wrap-mode">word-char</property>
             <layout>
               <property name="column">0</property>
               <property name="row">0</property>
