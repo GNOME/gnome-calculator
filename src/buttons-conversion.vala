@@ -107,8 +107,8 @@ public class ConversionButtonPanel : Adw.Bin
 
     private void converter_changed_cb ()
     {
-        string category, unit;
-        converter.get_conversion (out category, out unit);
+        string category = converter.get_category ();
+        string unit = converter.get_focus_unit ();
 
         if (category == "numberbase")
         {

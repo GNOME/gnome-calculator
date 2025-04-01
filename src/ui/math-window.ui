@@ -157,7 +157,7 @@
             <property name="maximum-size">700</property>
             <property name="tightening-threshold">700</property>
             <child>
-              <object class="GtkBox" id="box">
+              <object class="GtkBox">
                 <property name="vexpand">True</property>
                 <property name="orientation">vertical</property>
                 <child>
@@ -181,7 +181,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="MathConverter" id="converter">
+                  <object class="MathConverter" id="_converter">
                     <property name="equation" bind-source="MathWindow" bind-property="equation" bind-flags="sync-create"/>
                     <style>
                       <class name="card"/>
@@ -192,7 +192,7 @@
                 <child>
                   <object class="MathButtons" id="_buttons">
                     <property name="equation" bind-source="MathWindow" bind-property="equation" bind-flags="sync-create"/>
-                    <property name="converter">converter</property>
+                    <property name="converter">_converter</property>
                   </object>
                 </child>
               </object>

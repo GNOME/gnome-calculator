@@ -52,10 +52,9 @@ public class Calculator : Adw.Application
         var number_format = (DisplayFormat) settings.get_enum ("number-format");
         var angle_units = (AngleUnit) settings.get_enum ("angle-units");
         var button_mode = (ButtonMode) settings.get_enum ("button-mode");
-        var source_currency = settings.get_string ("source-currency");
-        var target_currency = settings.get_string ("target-currency");
-        var source_units = settings.get_string ("source-units");
-        var target_units = settings.get_string ("target-units");
+        var unit_category = settings.get_string ("unit-category");
+        var source_units = settings.get_strv ("source-units");
+        var target_units = settings.get_strv ("target-units");
         var precision = settings.get_int ("precision");
         var maximized = settings.get_boolean ("window-maximized");
         int width, height;
@@ -68,10 +67,6 @@ public class Calculator : Adw.Application
         equation.show_trailing_zeroes = show_zeroes;
         equation.number_format = number_format;
         equation.angle_units = angle_units;
-        equation.source_currency = source_currency;
-        equation.target_currency = target_currency;
-        equation.source_units = source_units;
-        equation.target_units = target_units;
         Number.precision = precision;
 
         add_action_entries (app_entries, this);
@@ -80,6 +75,11 @@ public class Calculator : Adw.Application
         current_window.set_title (_("Calculator"));
         current_window.maximized = maximized;
         current_window.set_default_size (width, height);
+
+        var converter = current_window.converter;
+        converter.source_units = source_units;
+        converter.target_units = target_units;
+        converter.set_category (unit_category);
 
         var buttons = current_window.buttons;
         buttons.programming_base = number_base;
@@ -171,16 +171,14 @@ public class Calculator : Adw.Application
 
     protected override void shutdown ()
     {
-
         var window = last_opened_window;
-        var equation = window.equation;
+        var converter = window.converter;
         var buttons = window.buttons;
 
         settings.set_enum ("button-mode", buttons.mode);
-        settings.set_string ("source-currency", equation.source_currency);
-        settings.set_string ("target-currency", equation.target_currency);
-        settings.set_string ("source-units", equation.source_units);
-        settings.set_string ("target-units", equation.target_units);
+        settings.set_string ("unit-category", converter.get_category ());
+        settings.set_strv ("source-units", converter.source_units);
+        settings.set_strv ("target-units", converter.target_units);
         settings.set_int ("base", buttons.programming_base);
         settings.set_boolean ("window-maximized", window.maximized);
         int width, height;

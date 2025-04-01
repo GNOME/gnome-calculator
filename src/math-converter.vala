@@ -23,6 +23,20 @@ public class MathConverter : Gtk.Box
     private string category;
     private Number from_number;
     private Number to_number;
+
+    private HashTable<string, string> _source_units = new HashTable<string, string> (str_hash, str_equal);
+    public string[] source_units
+    {
+        owned get { return _source_units.get_values_as_ptr_array ().data; }
+        set { load_selected_units (_source_units, value); }
+    }
+    private HashTable<string, string> _target_units = new HashTable<string, string> (str_hash, str_equal);
+    public string[] target_units
+    {
+        owned get { return _target_units.get_values_as_ptr_array ().data; }
+        set { load_selected_units (_target_units, value); }
+    }
+
     private CurrencyDisplay _currency_display;
     public CurrencyDisplay currency_display
     {
@@ -142,7 +156,6 @@ public class MathConverter : Gtk.Box
         var settings = new Settings ("org.gnome.calculator");
         settings.bind ("currency-display", this, "currency_display", SettingsBindFlags.GET);
         settings.bind ("favorite-currencies", this, "favorite_currencies", SettingsBindFlags.GET);
-        set_conversion (equation.source_units, equation.target_units);
     }
 
     private void build_category_model ()
@@ -163,14 +176,28 @@ public class MathConverter : Gtk.Box
         category_combo.model = category_model;
     }
 
-    public void set_category (string? category)
+    private void load_selected_units (HashTable<string, string> units, string[] value)
+    {
+        // FIXME: Pick default currency based on locale
+        foreach (var unit in value)
+        {
+            var category = UnitManager.get_default ().get_category_of_unit (unit);
+            if (category != null)
+                units.insert (category.name, unit);
+        }
+    }
+
+    public void set_category (string category)
     {
         if (this.category == category)
-            return;
-        this.category = category;
-        if (this.category != null)
         {
-            UnitCategory? unit_category = UnitManager.get_default ().get_category (this.category);
+            category_combobox_changed_cb ();
+            return;
+        }
+        UnitCategory? unit_category = UnitManager.get_default ().get_category (category);
+        if (unit_category != null)
+        {
+            this.category = category;
             uint position = 0;
             var model = category_combo.get_model () as ListStore;
             model.find (unit_category, out position);
@@ -180,31 +207,15 @@ public class MathConverter : Gtk.Box
             category_combo.selected = 0;
     }
 
-    public void set_conversion (string unit_a, string unit_b)
+    public string get_category ()
     {
-        var ua = UnitManager.get_default ().get_unit_by_name (unit_a);
-        var ub = UnitManager.get_default ().get_unit_by_name (unit_b);
-        var uc = UnitManager.get_default ().get_category_of_unit (unit_a);
-        if (ua == null || ub == null || uc == null)
-        {
-            from_combo.selected = 0;
-            return;
-        }
-
-        set_category (uc.name);
-        GLib.SignalHandler.block (from_combo, from_combobox_changed);
-        set_active_unit (from_combo, ua);
-        GLib.SignalHandler.unblock (from_combo, from_combobox_changed);
-        set_active_unit (to_combo, ub);
-        to_combobox_changed_cb ();
-        reformat_from_entry ();
+        return category;
     }
 
-    public void get_conversion (out string category, out string unit)
+    public string get_focus_unit ()
     {
         var combo = to_entry.has_focus ? to_combo : from_combo;
-        category = this.category;
-        unit = (combo.selected_item as Unit).name;
+        return (combo.selected_item as Unit).name;
     }
 
     public void insert_text (string text, bool replace_zero = true)
@@ -474,31 +485,17 @@ public class MathConverter : Gtk.Box
         update_visibility ();
         if (from_combobox_changed > 0)
             GLib.SignalHandler.block (from_combo, from_combobox_changed);
-        var source_currency = "", target_currency = "";
-        if (equation != null)
-        {
-            source_currency = equation.source_currency;
-            target_currency = equation.target_currency;
-        }
+        var source_unit = _source_units.get (category.name);
+        var target_unit = _target_units.get (category.name);
         build_units_model ();
-        if (category.name != "currency")
-        {
+        if (source_unit == null)
             from_combo.selected = 0;
-        }
         else
-        {
-            var ua = UnitManager.get_default ().get_unit_by_name (source_currency);
-            var ub = UnitManager.get_default ().get_unit_by_name (target_currency);
-            if (ua == null || ub == null)
-            {
-                from_combo.selected = 0;
-            }
-            else
-            {
-                set_active_unit (from_combo, ua);
-                set_active_unit (to_combo, ub);
-            }
-        }
+            set_active_unit (from_combo, UnitManager.get_default ().get_unit_by_name (source_unit));
+        if (target_unit == null)
+            to_combo.selected = 0;
+        else
+            set_active_unit (to_combo, UnitManager.get_default ().get_unit_by_name (target_unit));
         if (from_combobox_changed > 0)
             GLib.SignalHandler.unblock (from_combo, from_combobox_changed);
         to_combobox_changed_cb ();
@@ -516,7 +513,7 @@ public class MathConverter : Gtk.Box
         GLib.SignalHandler.block (from_entry.buffer, from_entry_changed);
         update_entry (from_entry, equation.serializer);
         GLib.SignalHandler.unblock (from_entry.buffer, from_entry_changed);
-        save_selected_units (source_unit, target_unit);
+        _source_units.set (category, source_unit.name);
         changed ();
     }
 
@@ -535,19 +532,8 @@ public class MathConverter : Gtk.Box
         else
             update_entry (to_entry, equation.serializer);
         GLib.SignalHandler.unblock(to_entry.buffer, to_entry_changed);
-        save_selected_units (source_unit, target_unit);
+         _target_units.set (category, target_unit.name);
         changed ();
-    }
-
-    private void save_selected_units (Unit source_unit, Unit target_unit)
-    {
-        if (category == "currency")
-        {
-            equation.source_currency = source_unit.name;
-            equation.target_currency = target_unit.name;
-        }
-        equation.source_units = source_unit.name;
-        equation.target_units = target_unit.name;
     }
 
     [GtkCallback]

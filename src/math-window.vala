@@ -14,22 +14,21 @@ public class MathWindow : Adw.ApplicationWindow
 {
     public MathEquation equation { get; construct set; }
 
-    [GtkChild]
-    private unowned HistoryView history;
-
     private ulong changed_handler;
-
-    [GtkChild]
-    private unowned MathDisplay _display;
-    public MathDisplay math_display { get { return _display; } }
-    [GtkChild]
-    private unowned MathButtons _buttons;
-    public MathButtons buttons { get { return _buttons; } }
     private int forked_row_index = 0;
     private string saved_eq = null;
 
     [GtkChild]
-    private unowned MathConverter converter;
+    private unowned HistoryView history;
+    [GtkChild]
+    private unowned MathDisplay _display;
+    public MathDisplay math_display { get { return _display; } }
+    [GtkChild]
+    private unowned MathConverter _converter;
+    public MathConverter converter { get { return _converter; } }
+    [GtkChild]
+    private unowned MathButtons _buttons;
+    public MathButtons buttons { get { return _buttons; } }
 
     [GtkChild]
     private unowned Gtk.MenuButton menu_button;
@@ -37,8 +36,6 @@ public class MathWindow : Adw.ApplicationWindow
     private unowned Gtk.Button undo_button;
     [GtkChild]
     private unowned Gtk.Button back_button;
-    [GtkChild]
-    private unowned Gtk.Box box;
     [GtkChild]
     private unowned Gtk.Box display_box;
 
@@ -115,7 +112,6 @@ public class MathWindow : Adw.ApplicationWindow
             add_css_class ("devel");
         }
         _display.grabfocus ();
-
     }
 
     private void clear_cb ()

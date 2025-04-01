@@ -103,54 +103,6 @@ public class MathEquation : GtkSource.Buffer
       set_number (x);
     }
 
-    private string _source_currency;
-    public string source_currency
-    {
-        owned get { return _source_currency; }
-        set
-        {
-            if (_source_currency == value)
-                return;
-            _source_currency = value;
-        }
-    }
-
-    private string _target_currency;
-    public string target_currency
-    {
-        owned get { return _target_currency; }
-        set
-        {
-            if (_target_currency == value)
-                return;
-            _target_currency = value;
-        }
-    }
-
-    private string _source_units;
-    public string source_units
-    {
-        owned get { return _source_units; }
-        set
-        {
-            if (_source_units == value)
-                return;
-            _source_units = value;
-        }
-    }
-
-    private string _target_units;
-    public string target_units
-    {
-        owned get { return _target_units; }
-        set
-        {
-            if (_target_units == value)
-                return;
-            _target_units = value;
-        }
-    }
-
     public string display
     {
         owned get
@@ -239,11 +191,6 @@ public class MathEquation : GtkSource.Buffer
         state = new MathEquationState ();
         state.status = "";
         _angle_units = AngleUnit.DEGREES;
-        // FIXME: Pick based on locale
-        source_currency = "";
-        target_currency = "";
-        source_units = "";
-        target_units = "";
         _serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
         queue = new AsyncQueue<SolveData> ();
 
