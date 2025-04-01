@@ -40,15 +40,15 @@ public class AdvancedButtonPanel : Adw.BreakpointBin
         {"set-angle-units", on_set_angle_units},
     };
 
-    public AdvancedButtonPanel (MathButtons buttons, Gtk.Popover memory)
+    public AdvancedButtonPanel (MathButtons buttons)
     {
         equation = buttons.equation;
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
         correct_text_direction ();
         calc_numeric_point_button.set_label (equation.serializer.get_radix ().to_string ());
-        calc_memory_button.popover = memory;
-        calc_function_button.popover = load_function_popover ();
+        calc_memory_button.popover = new MathVariablePopover (equation);
+        calc_function_button.popover = new MathFunctionPopover (equation);
 
         buttons.notify["mode"].connect (() => carousel.scroll_to (carousel.get_nth_page (0), false));
         buttons.bind_property ("inverse", calc_inverse_modifier_button, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
@@ -63,25 +63,6 @@ public class AdvancedButtonPanel : Adw.BreakpointBin
         math_box.set_direction (Gtk.TextDirection.LTR);
         basic.set_direction (Gtk.TextDirection.LTR);
         advanced.set_direction (Gtk.TextDirection.LTR);
-    }
-
-    private Gtk.Popover load_function_popover ()
-    {
-        var model = new ListStore (typeof (MathFunction));
-        MathFunctionPopover math_popover = new MathFunctionPopover (equation, model);
-        FunctionManager function_manager = FunctionManager.get_default_function_manager ();
-        var names = function_manager.get_names ();
-
-        for (var i = 0; names[i] != null; i++)
-        {
-            var function = function_manager[names[i]];
-            math_popover.item_added_cb (function);
-        }
-
-        function_manager.function_added.connect (f => math_popover.item_added_cb (f as MathFunction));
-        function_manager.function_edited.connect (f => math_popover.item_edited_cb (f as MathFunction));
-        function_manager.function_deleted.connect (f => math_popover.item_deleted_cb (f as MathFunction));
-        return math_popover;
     }
 
     private void on_set_angle_units ()

@@ -66,14 +66,14 @@ public class FinancialButtonPanel : Adw.BreakpointBin
         }
     }
 
-    public FinancialButtonPanel (MathButtons buttons, Gtk.Popover memory)
+    public FinancialButtonPanel (MathButtons buttons)
     {
         this.buttons = buttons;
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
         correct_text_direction ();
         calc_numeric_point_button.set_label (buttons.equation.serializer.get_radix ().to_string ());
-        calc_memory_button.popover = memory;
+        calc_memory_button.popover = new MathVariablePopover (buttons.equation);
 
         var i = 0;
         foreach (var dialog in finc_dialogs)

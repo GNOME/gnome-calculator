@@ -53,7 +53,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         {"insert-character", on_insert_character  },
     };
 
-    public ProgrammingButtonPanel (MathButtons buttons, Gtk.Popover memory)
+    public ProgrammingButtonPanel (MathButtons buttons)
     {
         this.buttons = buttons;
         equation = buttons.equation;
@@ -61,7 +61,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         insert_action_group ("cal", action_group);
         correct_text_direction ();
         calc_numeric_point_button.set_label (equation.serializer.get_radix ().to_string ());
-        calc_memory_button.popover = memory;
+        calc_memory_button.popover = new MathVariablePopover (equation);
 
         for (var row = 3; row >= 0; row--)
             for (var column = 0; column <= 3; column++)

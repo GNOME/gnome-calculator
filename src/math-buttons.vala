@@ -141,21 +141,21 @@ public class MathButtons : Adw.Bin
         case ButtonMode.ADVANCED:
             if (adv_panel == null)
             {
-                adv_panel = new AdvancedButtonPanel (this, load_variable_popover ());
+                adv_panel = new AdvancedButtonPanel (this);
                 panel_stack.add_child (adv_panel);
             }
             return adv_panel;
         case ButtonMode.FINANCIAL:
             if (fin_panel == null)
             {
-                fin_panel = new FinancialButtonPanel (this, load_variable_popover ());
+                fin_panel = new FinancialButtonPanel (this);
                 panel_stack.add_child (fin_panel);
             }
             return fin_panel;
         case ButtonMode.PROGRAMMING:
             if (prog_panel == null)
             {
-                prog_panel = new ProgrammingButtonPanel (this, load_variable_popover ());
+                prog_panel = new ProgrammingButtonPanel (this);
                 panel_stack.add_child (prog_panel);
             }
             return prog_panel;
@@ -167,28 +167,6 @@ public class MathButtons : Adw.Bin
             }
             return conv_panel;
         }
-    }
-
-    private Gtk.Popover load_variable_popover ()
-    {
-        var model = new ListStore (typeof (MathVariable));
-        MathVariablePopover math_popover = new MathVariablePopover (equation, model);
-
-        // Fill variable list
-        var names = equation.variables.get_names ();
-        for (var i = 0; names[i] != null; i++)
-        {
-            var value = equation.variables[names[i]];
-            math_popover.item_added_cb (new MathVariable(names[i], value));
-        }
-        math_popover.item_added_cb (new MathVariable ("rand", null));
-        math_popover.item_edited_cb (new MathVariable ("_", equation.answer));
-
-        // Listen for variable changes
-        equation.variables.variable_added.connect ((name, value) => math_popover.item_added_cb (new MathVariable (name, value)));
-        equation.variables.variable_edited.connect ((name, value) => math_popover.item_edited_cb (new MathVariable (name, value)));
-        equation.variables.variable_deleted.connect ((name) => math_popover.item_deleted_cb (new MathVariable (name, null)));
-        return math_popover;
     }
 
     private void on_insert (SimpleAction action, Variant? param)

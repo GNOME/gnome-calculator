@@ -25,9 +25,9 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     [GtkChild]
     private unowned Gtk.SpinButton add_arguments_button;
 
-    public MathFunctionPopover (MathEquation equation, ListStore model)
+    public MathFunctionPopover (MathEquation equation)
     {
-        base (equation, model, MathFunction.name_compare_func);
+        base (equation, new ListStore (typeof (MathFunction)), MathFunction.name_compare_func);
 
         function_list.bind_model (model, (item) => make_item_row (item as MathFunction));
 
@@ -35,6 +35,23 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         add_arguments_button.set_increments (1, 1);
         item_edited.connect (function_edited_cb);
         item_deleted.connect (function_deleted_cb);
+        load_functions ();
+    }
+
+    private void load_functions ()
+    {
+        FunctionManager function_manager = FunctionManager.get_default_function_manager ();
+        var names = function_manager.get_names ();
+
+        for (var i = 0; names[i] != null; i++)
+        {
+            var function = function_manager[names[i]];
+            item_added_cb (function);
+        }
+
+        function_manager.function_added.connect (f => item_added_cb (f as MathFunction));
+        function_manager.function_edited.connect (f => item_edited_cb (f as MathFunction));
+        function_manager.function_deleted.connect (f => item_deleted_cb (f as MathFunction));
     }
 
     protected override Gtk.Entry name_entry ()

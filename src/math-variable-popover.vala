@@ -44,14 +44,33 @@ public class MathVariablePopover : MathPopover<MathVariable>
     [GtkChild]
     private unowned Gtk.Button store_variable_button;
 
-    public MathVariablePopover (MathEquation equation, ListStore model)
+    public MathVariablePopover (MathEquation equation)
     {
-        base (equation, model, MathVariable.name_compare_func);
+        base (equation, new ListStore (typeof (MathVariable)), MathVariable.name_compare_func);
 
         variable_list.bind_model (model, (variable) => make_item_row (variable as MathVariable));
         equation.history_signal.connect (history_cb);
         item_deleted.connect (delete_variable_cb);
+        load_variables ();
         load_constants ();
+    }
+
+    private void load_variables ()
+    {
+        // Fill variable list
+        var names = equation.variables.get_names ();
+        for (var i = 0; names[i] != null; i++)
+        {
+            var value = equation.variables[names[i]];
+            item_added_cb (new MathVariable(names[i], value));
+        }
+        item_added_cb (new MathVariable ("rand", null));
+        item_added_cb (new MathVariable ("_", equation.answer));
+
+        // Listen for variable changes
+        equation.variables.variable_added.connect ((name, value) => item_added_cb (new MathVariable (name, value)));
+        equation.variables.variable_edited.connect ((name, value) => item_edited_cb (new MathVariable (name, value)));
+        equation.variables.variable_deleted.connect ((name) => item_deleted_cb (new MathVariable (name, null)));
     }
 
     private void load_constants ()
