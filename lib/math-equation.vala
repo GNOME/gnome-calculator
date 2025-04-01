@@ -1087,6 +1087,16 @@ public class MathEquation : GtkSource.Buffer
         }
     }
 
+    public void insert_logarithm ()
+    {
+        if (has_selection)
+        {
+            insert_between ("(", ")", CursorGravity.BEFORE);
+        }
+        insert ("log");
+        number_mode = NumberMode.SUBSCRIPT;
+    }
+
     public void insert_digit (uint digit)
     {
         const unichar subscript_digits[] = {'₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'};
