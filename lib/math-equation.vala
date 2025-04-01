@@ -1059,6 +1059,12 @@ public class MathEquation : GtkSource.Buffer
 
     public new void insert_square ()
     {
+        if (has_selection)
+        {
+            insert_between ("(", ")²", CursorGravity.AFTER);
+            return;
+        }
+
         var space_required = false;
         Gtk.TextIter iter;
         get_iter_at_mark (out iter, get_insert ());
