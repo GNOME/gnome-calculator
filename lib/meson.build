@@ -12,6 +12,10 @@ libcalculator_sources = [
   'number.vala',
   'serializer.vala',
   'unit.vala',
+  'providers/imf-provider.vala',
+  'providers/ecb-provider.vala',
+  'providers/unt-provider.vala',
+  'providers/boc-provider.vala',
 ]
 
 libcalculator_vala_flags = [
