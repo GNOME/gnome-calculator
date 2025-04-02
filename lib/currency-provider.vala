@@ -109,6 +109,9 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         if (now - modify_time > max_age)
             return true;
 
+        if (buf.st_size == 0)
+            return true;
+
         return false;
     }
 
