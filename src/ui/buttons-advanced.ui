@@ -523,7 +523,7 @@
               <object class="GtkButton" id="calc_exponential_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Scientific Exponent [Ctrl+E]</property>
+                <property name="tooltip_text" translatable="yes">Base-10 Exponential</property>
                 <property name="action_name">cal.insert-exponent</property>
                 <property name="action_target">&apos;10&apos;</property>
                 <child>
@@ -851,11 +851,11 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_logarithm_button">
+              <object class="GtkButton" id="calc_common_logarithm_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
                 <property name="label">log</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Logarithm</property>
+                <property name="tooltip_text" translatable="yes">Common Logarithm</property>
                 <property name="action_name">cal.insert-function</property>
                 <property name="action_target">&apos;log&apos;</property>
                 <style>
