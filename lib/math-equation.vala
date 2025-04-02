@@ -645,9 +645,21 @@ public class MathEquation : GtkSource.Buffer
             if (serializer.get_base () == value && serializer.get_representation_base () == value)
                 return;
 
+            var number = this.number;
             serializer.set_base (value);
             serializer.set_representation_base (value);
             reformat_display ();
+
+            if (!is_result && number != null && display != "")
+            {
+                var number_format = this.number_format;
+                var show_trailing_zeroes = this.show_trailing_zeroes;
+                serializer.set_number_format (DisplayFormat.FIXED);
+                serializer.set_show_trailing_zeroes (false);
+                set_text (serializer.to_string (number));
+                serializer.set_number_format (number_format);
+                serializer.set_show_trailing_zeroes (show_trailing_zeroes);
+            }
         }
     }
 
