@@ -306,7 +306,8 @@ public class Lexer : Object
         {
             if ((element.data.type == LexerTokenType.UNIT || element.data.type == LexerTokenType.CURRENCY)
                 && (element.prev == null || element.prev.data.type != LexerTokenType.IN)
-                && (element.next == null || element.next.data.type != LexerTokenType.IN))
+                && (element.next == null || element.next.data.type != LexerTokenType.IN)
+                && !element.data.text.has_prefix ("°") && !element.data.text.has_prefix ("˚"))
             {
                 element.data.type = LexerTokenType.VARIABLE;
             }
