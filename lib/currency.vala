@@ -44,14 +44,16 @@ public class CurrencyManager : Object
     public void refresh_sync () {
         loaded = false;
         foreach (var p in providers) {
-            p.set_refresh_interval(_refresh_interval, false);
+            p.refresh_interval = _refresh_interval;
+            if (_refresh_interval > 0) p.update_rates (false);
         }
     }
 
     public void refresh_async () {
         loaded = false;
         foreach (var p in providers) {
-            p.set_refresh_interval(_refresh_interval, true);
+            p.refresh_interval = _refresh_interval;
+            if (_refresh_interval > 0) p.update_rates (false);
         }
     }
 

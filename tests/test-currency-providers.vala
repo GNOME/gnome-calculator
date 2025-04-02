@@ -143,7 +143,8 @@ private void test_imf_provider ()
     imf_provider.clear ();
     test_currency (currency_manager, "EUR", null, 0);
     // set refresh interval and sync update
-    imf_provider.set_refresh_interval (3600, false);
+    imf_provider.refresh_interval = 3600;
+    imf_provider.update_rates (false);
 
 }
 
