@@ -4,7 +4,7 @@ public interface CurrencyProvider : Object {
 
     public abstract void update_rates (bool asyncLoad = true, bool force = false);
 
-    public abstract void set_refresh_interval (int interval, bool asyncLoad = true);
+    public abstract int refresh_interval { get; set; }
 
     public abstract void clear ();
 
@@ -31,19 +31,13 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
     public string? base_currency_symbol { get; construct set; }
 
-    public int refresh_interval { get; private set; }
+    public int refresh_interval { get; set; }
 
 	public bool loaded { get; protected set; }
 
     protected string[] MONTHS_ABBREVIATED = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     protected string[] MONTHS_FULL = {"January", "February", "March", "April", "May", "June",
                                       "July", "August", "September", "October", "November", "December"};
-
-    public void set_refresh_interval (int interval, bool asyncLoad = true) {
-        this.refresh_interval = interval;
-        if (refresh_interval == 0) return;
-        update_rates (asyncLoad);
-    }
 
     protected bool loading;
     protected List<Currency> currencies;
