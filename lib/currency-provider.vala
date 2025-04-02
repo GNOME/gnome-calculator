@@ -172,7 +172,7 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "rms_five.xls"); } }
 
     public override string rate_source_url { get {
-        return "https://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"; } }
+        return "https://exchange-api.gnome.org/imf/rms_five.xls"; } }
 
     public override string source_name { get { return "IMF";} }
 
@@ -376,7 +376,7 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
         return Path.build_filename (Environment.get_user_cache_dir (), "gnome-calculator", "eurofxref-daily.xml"); } }
 
     public override string rate_source_url { get {
-        return "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; } }
+        return "https://exchange-api.gnome.org/ecb/eurofxref-daily.xml"; } }
 
     public override string source_name { get { return "ECB";} }
 
