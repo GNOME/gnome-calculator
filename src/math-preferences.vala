@@ -34,13 +34,13 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
     [GtkChild]
     private unowned Adw.ComboRow row_currency_display;
     [GtkChild]
-    private unowned Adw.SpinRow row_decimals;
+    private unowned Adw.ComboRow row_currency_completion;
     [GtkChild]
-    private unowned Adw.SwitchRow row_thousands_separators;
+    private unowned Adw.SpinRow row_decimals;
     [GtkChild]
     private unowned Adw.SwitchRow row_trailing_zeroes;
     [GtkChild]
-    private unowned Adw.SwitchRow row_currency_completion;
+    private unowned Adw.SwitchRow row_thousands_separators;
     [GtkChild]
     private unowned Adw.NavigationPage page_favorite_currencies;
     [GtkChild]
@@ -106,13 +106,13 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         row_word_size.notify["selected"].connect (row_word_size_changed_cb);
         row_refresh_interval.notify["selected"].connect (row_refresh_interval_changed_cb);
         row_currency_display.notify["selected"].connect (row_currency_display_changed_cb);
-        row_currency_completion.notify["active"].connect (row_currency_completion_changed_cb);
-
-        set_combo_row_from_int (row_word_size, equation.word_size);
-        equation.notify["word-size"].connect (() => { set_combo_row_from_int (row_word_size, equation.word_size); });
+        row_currency_completion.notify["selected"].connect (row_currency_completion_changed_cb);
 
         set_combo_row_from_int (row_angle_units, equation.angle_units);
         equation.notify["angle-units"].connect (() => { set_combo_row_from_int (row_angle_units, equation.angle_units); });
+
+        set_combo_row_from_int (row_word_size, equation.word_size);
+        equation.notify["word-size"].connect (() => { set_combo_row_from_int (row_word_size, equation.word_size); });
 
         set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval"));
         settings.changed["refresh-interval"].connect (() => { set_combo_row_from_int (row_refresh_interval, settings.get_int ("refresh-interval")); });
@@ -120,8 +120,8 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
         set_combo_row_from_int (row_currency_display, settings.get_enum ("currency-display"));
         settings.changed["currency-display"].connect (() => { set_combo_row_from_int (row_currency_display, settings.get_enum ("currency-display")); });
 
-        set_currency_completion_row_active ();
-        settings.changed["enabled-completions"].connect (set_currency_completion_row_active);
+        set_currency_completion_row ();
+        settings.changed["enabled-completions"].connect (set_currency_completion_row);
 
         if (DEVELOPMENT_BUILD) {
             add_css_class ("devel");
@@ -211,24 +211,26 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
 
     private void row_currency_completion_changed_cb ()
     {
-        var completions = new Array<string> ();
-        if (row_currency_completion.active)
-            completions.append_val ("currency");
+        string[] completions = {};
+        if (row_currency_completion.selected == 0)
+            completions += "currency";
+        if (row_currency_completion.selected != 2)
+            completions += "favorite";
         foreach (var name in settings.get_strv ("enabled-completions"))
-            if (name != "currency")
-                completions.append_val (name);
-        settings.set_strv ("enabled-completions", completions.data);
+            if (name != "currency" && name != "favorite")
+                completions += name;
+        settings.set_strv ("enabled-completions", completions);
     }
 
-    private void set_currency_completion_row_active ()
+    private void set_currency_completion_row ()
     {
-        foreach (var name in settings.get_strv ("enabled-completions"))
-            if (name == "currency")
-            {
-                row_currency_completion.active = true;
-                return;
-            }
-        row_currency_completion.active = false;
+        var completions = settings.get_strv ("enabled-completions");
+        if ("currency" in completions)
+            row_currency_completion.selected = 0;
+        else if ("favorite" in completions)
+            row_currency_completion.selected = 1;
+        else
+            row_currency_completion.selected = 2;
     }
 
     [GtkCallback]

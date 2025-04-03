@@ -122,6 +122,7 @@ public class Calculator : Adw.Application
             CurrencyManager.get_default ().refresh_interval = settings.get_int ("refresh-interval");
             CurrencyManager.get_default ().refresh_async ();
         });
+        settings.bind ("favorite-currencies", CurrencyManager.get_default (), "favorite_currencies", SettingsBindFlags.GET);
     }
 
     protected override void activate ()

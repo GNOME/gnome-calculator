@@ -105,9 +105,18 @@
               </object>
             </child>
             <child>
-              <object class="AdwSwitchRow" id="row_currency_completion">
+              <object class="AdwComboRow" id="row_currency_completion">
                 <property name="title" translatable="yes">_Show Currencies in Auto-Completion List</property>
                 <property name="use_underline">True</property>
+                <property name="model">
+                  <object class="GtkStringList">
+                    <items>
+                      <item translatable="yes">All</item>
+                      <item translatable="yes">Favorites Only</item>
+                      <item translatable="yes">None</item>
+                    </items>
+                  </object>
+                </property>
               </object>
             </child>
             <child>

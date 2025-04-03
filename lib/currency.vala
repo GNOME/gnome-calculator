@@ -24,6 +24,19 @@ public class CurrencyManager : Object
         }
     }
 
+    private GenericSet<string> favorites = new GenericSet<string> (str_hash, str_equal);
+    public string[] favorite_currencies
+    {
+        set
+        {
+            favorites.remove_all ();
+            foreach (var currency in value)
+                favorites.add (currency);
+            favorites_changed ();
+        }
+    }
+    public signal void favorites_changed ();
+
     public signal void updated (string? symbol = null);
 
     public bool loaded { get; private set; }
@@ -210,7 +223,7 @@ public class CurrencyManager : Object
         return c;
     }
 
-    public Currency[] currencies_eligible_for_autocompletion_for_text (string display_text)
+    public Currency[] currencies_eligible_for_autocompletion_for_text (string display_text, bool favorite)
     {
         Currency[] eligible_currencies = {};
 
@@ -218,13 +231,18 @@ public class CurrencyManager : Object
         foreach (Currency currency in currencies)
         {
             string currency_name_case_insensitive = currency.name.up ();
-            if (currency_name_case_insensitive.has_prefix (display_text_case_insensitive))
+            if (currency_name_case_insensitive.has_prefix (display_text_case_insensitive)
+                && favorite == is_favorite (currency.name))
                 eligible_currencies += currency;
         }
 
         return eligible_currencies;
     }
 
+    public bool is_favorite (string name)
+    {
+        return favorites.contains (name);
+    }
 }
 
 public class Currency : Object
@@ -262,5 +280,4 @@ public class Currency : Object
     {
         return value;
     }
-
 }

@@ -49,18 +49,6 @@ public class MathConverter : Gtk.Box
                 category_combobox_changed_cb ();
         }
     }
-    private GenericSet<string> favorites = new GenericSet<string> (str_hash, str_equal);
-    public string[] favorite_currencies
-    {
-        set
-        {
-            favorites.remove_all ();
-            foreach (var currency in value)
-                favorites.add (currency);
-            if (category == "currency")
-                category_combobox_changed_cb ();
-        }
-    }
 
     [GtkChild]
     private unowned Gtk.DropDown category_combo;
@@ -121,6 +109,10 @@ public class MathConverter : Gtk.Box
             return;
 
         CurrencyManager.get_default ().updated.connect (update_visibility);
+        CurrencyManager.get_default ().favorites_changed.connect (() => {
+            if (category == "currency")
+                category_combobox_changed_cb ();
+        });
 
         build_category_model ();
         update_visibility ();
@@ -155,7 +147,6 @@ public class MathConverter : Gtk.Box
 
         var settings = new Settings ("org.gnome.calculator");
         settings.bind ("currency-display", this, "currency_display", SettingsBindFlags.GET);
-        settings.bind ("favorite-currencies", this, "favorite_currencies", SettingsBindFlags.GET);
     }
 
     private void build_category_model ()
@@ -380,6 +371,7 @@ public class MathConverter : Gtk.Box
             to_combo.list_factory = to_currency_factory;
         }
 
+        var currency_manager = CurrencyManager.get_default ();
         var c = UnitManager.get_default ().get_category (category);
         if (category != "currency" || _currency_display != CurrencyDisplay.NAME)
             foreach (var unit in c.get_units ())
@@ -391,7 +383,7 @@ public class MathConverter : Gtk.Box
             var i = 0;
             foreach (var unit in c.get_units ())
             {
-                if (favorites.contains (unit.name))
+                if (currency_manager.is_favorite (unit.name))
                 {
                     unit_model.insert (i, unit);
                     i++;
@@ -402,8 +394,8 @@ public class MathConverter : Gtk.Box
         }
         if (category == "currency" && _currency_display != CurrencyDisplay.NAME)
             unit_model.sort ((a, b) => {
-                bool a_is_favorite = favorites.contains (((Unit) a).name);
-                bool b_is_favorite = favorites.contains (((Unit) b).name);
+                bool a_is_favorite = currency_manager.is_favorite (((Unit) a).name);
+                bool b_is_favorite = currency_manager.is_favorite (((Unit) b).name);
                 if (a_is_favorite && !b_is_favorite)
                     return -1;
                 if (!a_is_favorite && b_is_favorite)
@@ -438,7 +430,7 @@ public class MathConverter : Gtk.Box
     {
         var box = (item as Gtk.ListItem).child;
         var unit = (item as Gtk.ListItem).item as Unit;
-        box.get_first_child ().visible = favorites.contains (unit.name);
+        box.get_first_child ().visible = CurrencyManager.get_default ().is_favorite (unit.name);
 
         switch (_currency_display)
         {

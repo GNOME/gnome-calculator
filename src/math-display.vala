@@ -148,7 +148,8 @@ public class MathDisplay : Gtk.Box
         providers = new HashTable<string, GtkSource.CompletionProvider> (str_hash, str_equal);
         providers.insert ("builtin", new BuiltinCompletionProvider ());
         providers.insert ("function", new FunctionCompletionProvider ());
-        providers.insert ("currency", new CurrencyCompletionProvider ());
+        providers.insert ("currency", new CurrencyCompletionProvider (false));
+        providers.insert ("favorite", new CurrencyCompletionProvider (true));
         providers.insert ("variable", new VariableCompletionProvider (equation));
 
         var settings = new Settings ("org.gnome.calculator");
@@ -717,7 +718,7 @@ public class BuiltinCompletionProvider : CompletionProvider, GtkSource.Completio
         return _("Built-in keywords");
     }
 
-    public new int get_priority (GtkSource.CompletionContext context) { return 3; }
+    public new int get_priority (GtkSource.CompletionContext context) { return 4; }
 
     public static string[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context)
     {
@@ -756,14 +757,21 @@ public class BuiltinCompletionProvider : CompletionProvider, GtkSource.Completio
 
 public class CurrencyCompletionProvider : CompletionProvider, GtkSource.CompletionProvider
 {
+    private bool favorite;
+
+    public CurrencyCompletionProvider (bool favorite)
+    {
+        this.favorite = favorite;
+    }
+
     public override string? get_title ()
     {
         return _("Defined currencies");
     }
 
-    public new int get_priority (GtkSource.CompletionContext context) { return 1; }
+    public new int get_priority (GtkSource.CompletionContext context) { return favorite ? 2 : 1; }
 
-    public static Currency[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context)
+    public Currency[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context)
     {
         Gtk.TextIter start_iter, end_iter;
 
@@ -771,7 +779,7 @@ public class CurrencyCompletionProvider : CompletionProvider, GtkSource.Completi
         string search_pattern = start_iter.get_slice (end_iter);
 
         CurrencyManager currency_manager = CurrencyManager.get_default ();
-        Currency[] currencies = currency_manager.currencies_eligible_for_autocompletion_for_text (search_pattern);
+        Currency[] currencies = currency_manager.currencies_eligible_for_autocompletion_for_text (search_pattern, favorite);
         return currencies;
     }
 
@@ -810,7 +818,7 @@ public class VariableCompletionProvider : CompletionProvider, GtkSource.Completi
         return _("Defined Variables");
     }
 
-    public new int get_priority (GtkSource.CompletionContext context) { return 2; }
+    public new int get_priority (GtkSource.CompletionContext context) { return 3; }
 
     public static string[] get_matches_for_completion_at_cursor (GtkSource.CompletionContext context, MathVariables variables)
     {
