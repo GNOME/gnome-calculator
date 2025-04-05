@@ -192,6 +192,10 @@ private void test_conversions ()
     test ("10 zebibytes in EiB", "10240", 0);
     test ("10 yobibytes in ZiB", "10240", 0);
 
+    /* Treat unit names as variable names */
+    test ("g", "9.80665", 0);
+    test ("m", "", ErrorCode.UNKNOWN_VARIABLE);
+    test ("˚C", "", ErrorCode.INVALID);
 }
 
 private void test_equations ()
