@@ -76,11 +76,17 @@ public abstract class MathPopover<T> : Gtk.Popover
         var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 2);
         hbox.halign = Gtk.Align.FILL;
 
-        var label = new Gtk.Label (get_item_text (item));
+        var label = new Gtk.Label ("\u200E" + get_item_text (item));
+        if (label.get_direction () == Gtk.TextDirection.RTL)
+            label.justify = Gtk.Justification.RIGHT;
         label.set_margin_start (10);
+        label.set_margin_top (4);
+        label.set_margin_bottom (4);
         label.set_use_markup (true);
-        label.halign = Gtk.Align.START;
+        label.xalign = 0;
         label.hexpand = true;
+        label.wrap = true;
+        label.wrap_mode = Pango.WrapMode.WORD_CHAR;
         hbox.append (label);
 
         if (is_editable (item))

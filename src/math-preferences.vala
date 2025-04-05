@@ -265,14 +265,14 @@ public class MathPreferencesDialog : Adw.PreferencesDialog
 
     private void currency_row_active_cb ()
     {
-        var favorites = new Array<string> ();
+        string[] favorites = {};
         currency_rows.foreach ((name, row) =>
         {
             if (row.active)
-                favorites.append_val (name);
+                favorites += name;
         });
         SignalHandler.block (settings, favorites_changed);
-        settings.set_strv ("favorite-currencies", favorites.data);
+        settings.set_strv ("favorite-currencies", favorites);
         SignalHandler.unblock (settings, favorites_changed);
     }
 
