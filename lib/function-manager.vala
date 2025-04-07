@@ -120,6 +120,12 @@ public class FunctionManager : Object
         add (new BuiltInMathFunction ("gcd", _("Greatest Common Divisor")));
 
         add (new BuiltInMathFunction ("lcm", _("Least Common Multiple")));
+
+        add (new BuiltInMathFunction ("modulus", _("Modulus Divide")));
+
+        add (new BuiltInMathFunction ("modexp", _("Modular Expomentiation")));
+
+        add (new BuiltInMathFunction ("cmp", _("Comparison")));
     }
 
     private void reload_custom_functions ()

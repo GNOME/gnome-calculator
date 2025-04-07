@@ -263,6 +263,27 @@ public class Number : GLib.Object
         return num.get_real ().val.cmp (y.num.get_real ().val);
     }
 
+     /* Kronecker Delta function
+       
+       1 if x ==y
+       0 if x!=y
+     
+    */
+    
+    public Number kronecker_delta (Number y)
+    {
+        var val = compare(y);
+        
+        switch (val){
+            case  0:
+              return new Number.integer(1);
+            default:
+              return new Number.integer(0);
+              
+        }
+    }
+
+
     /* Sets z = sgn (x) */
     public Number sgn ()
     {

@@ -236,67 +236,93 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
                 return x.logarithm (log_base);
         }
     }
-    else if (lower_name == "ln")
-        return x.ln ();
-    else if (lower_name == "sqrt") // √x
-        return x.sqrt ();
-    else if (lower_name == "abs") // |x|
-        return x.abs ();
-    else if (lower_name == "sgn") //signum function
-        return x.sgn ();
-    else if (lower_name == "arg")
-        return x.arg (root_parser.angle_units);
-    else if (lower_name == "conj")
-        return x.conjugate ();
-    else if (lower_name == "int")
-        return x.integer_component ();
-    else if (lower_name == "frac")
-        return x.fractional_component ();
-    else if (lower_name == "floor")
-        return x.floor ();
-    else if (lower_name == "ceil")
-        return x.ceiling ();
-    else if (lower_name == "round")
-        return x.round ();
-    else if (lower_name == "re")
-        return x.real_component ();
-    else if (lower_name == "im")
-        return x.imaginary_component ();
-    else if (lower_name == "sin")
-        return x.sin (root_parser.angle_units);
-    else if (lower_name == "cos")
-        return x.cos (root_parser.angle_units);
-    else if (lower_name == "tan")
-        return x.tan (root_parser.angle_units);
-    else if (lower_name == "sin⁻¹" || lower_name == "asin")
-        return x.asin (root_parser.angle_units);
-    else if (lower_name == "cos⁻¹" || lower_name == "acos")
-        return x.acos (root_parser.angle_units);
-    else if (lower_name == "tan⁻¹" || lower_name == "atan")
-        return x.atan (root_parser.angle_units);
-    else if (lower_name == "sinh")
-        return x.sinh ();
-    else if (lower_name == "cosh")
-        return x.cosh ();
-    else if (lower_name == "tanh")
-        return x.tanh ();
-    else if (lower_name == "sinh⁻¹" || lower_name == "asinh")
-        return x.asinh ();
-    else if (lower_name == "cosh⁻¹" || lower_name == "acosh")
-        return x.acosh ();
-    else if (lower_name == "tanh⁻¹" || lower_name == "atanh")
-        return x.atanh ();
-    else if (lower_name == "ones")
-        return x.ones_complement (root_parser.wordlen);
-    else if (lower_name == "twos")
-        return x.twos_complement (root_parser.wordlen);
-    else if (lower_name == "ncr")
-        return x.combination (args.length <= 1 ? x : args[1]);
-    else if (lower_name == "npr")
-        return x.permutation (args.length <= 1 ? x : args[1]);
-    else if (lower_name == "gcd")
-        return Number.gcd (args);
-    else if (lower_name == "lcm")
-        return Number.lcm (args);
-    return null;
+
+        
+    switch (lower_name)
+        {
+            default:
+              return null;
+            case "ln":
+            		return x.ln ();
+            case "sqrt":
+            		return x.sqrt ();
+            case "abs":
+            		return x.abs ();
+            case "sgn":
+            		return x.sgn ();
+            case "arg":
+            		return  x.arg (root_parser.angle_units);
+            case "conj":
+            		return  x.conjugate ();
+            case "int":
+            		return x.integer_component ();
+            case "frac":
+            		return x.fractional_component ();
+            case "floor":
+            		return x.floor ();
+            case "ceil":
+            		return x.ceiling ();
+            case "round":
+            		return x.round ();
+            case "re":
+            		return x.real_component ();
+            case "im":
+            		return  x.imaginary_component ();
+            case "sin":
+            		return x.sin (root_parser.angle_units);
+            case "cos":
+            		return x.cos (root_parser.angle_units);
+            case "tan":
+            		return x.tan (root_parser.angle_units);
+            case "sin⁻¹":
+            		return x.asin (root_parser.angle_units);
+            case "asin":
+            		return x.asin (root_parser.angle_units);		
+            case "cos⁻¹":
+            		return x.acos (root_parser.angle_units);
+            case "acos":
+            		return x.acos (root_parser.angle_units);
+            case "tan⁻¹":
+            		return x.atan (root_parser.angle_units);
+            case "atan":
+            		return x.atan (root_parser.angle_units);
+            case "sinh":
+            		return x.sinh ();
+            case "cosh":
+            		return x.cosh ();
+            case "tanh":
+            		return x.tanh ();
+            case "sinh⁻¹":
+            		return x.asinh ();
+            case "cosh⁻¹":
+            		return x.acosh ();
+            case "tanh⁻¹":
+            		return x.atanh ();
+            case "asinh":
+            		return x.asinh ();
+            case "acosh":
+            		return x.acosh ();
+            case "atanh":
+            		return x.atanh ();
+            case "ones":
+            		return x.ones_complement (root_parser.wordlen);
+            case "twos":
+                return x.twos_complement (root_parser.wordlen);
+            case "ncr":
+            		return x.combination (args.length <= 1 ? x : args[1]);
+            case "npr":
+                return x.permutation (args.length <= 1 ? x : args[1]);
+            case "gcd":
+                return Number.gcd (args);
+            case "lcm":
+            	return Number.lcm (args);
+            case "modulus":
+                return x.modulus_divide(args.length <= 1 ? x : args[1]);
+            case "modexp":
+                return x.modular_exponentiation(args[1],args[2]);
+            case "cmp":
+                return  x.kronecker_delta(args.length <= 1 ? x : args[1]);
+        }
+        return null;
+
 }
