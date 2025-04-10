@@ -13,12 +13,13 @@ public abstract class MathPopover<T> : Gtk.Popover
     protected static string[] RESERVED_VARIABLE_NAMES = {"_", "rand"};
     protected static string[] OPERATORS = {"mod", "and", "nand", "or", "nor", "xor", "xnor", "nxor", "not", _("in"), _("to")};
 
+    protected abstract Gtk.Entry name_entry { get; }
+    protected abstract Gtk.Button add_button { get; }
+    protected abstract Gtk.Label error_label { get; }
+
     protected MathEquation equation;
-
     protected ListStore model;
-
     private CompareDataFunc<T> compare_func;
-
     private ulong changed_handler;
 
     protected MathPopover (MathEquation equation, ListStore model, CompareDataFunc<T> compare_func)
@@ -26,12 +27,9 @@ public abstract class MathPopover<T> : Gtk.Popover
         this.equation = equation;
         this.model = model;
         this.compare_func = compare_func;
-        name_entry ().enable_undo = false;
-        this.changed_handler = name_entry ().changed.connect (name_entry_changed_cb);
+        name_entry.enable_undo = false;
+        this.changed_handler = name_entry.changed.connect (name_entry_changed_cb);
     }
-
-    protected abstract Gtk.Entry name_entry ();
-    protected abstract Gtk.Button add_button ();
 
     private void name_entry_changed_cb (Gtk.Editable editable)
     {
@@ -41,7 +39,17 @@ public abstract class MathPopover<T> : Gtk.Popover
         editable.set_text (editable.text.replace (" ", "_"));
         editable.set_position (cursor);
         SignalHandler.unblock (entry, changed_handler);
-        add_button ().sensitive = entry.text != "";
+
+        string error = null;
+        if (entry.text != "")
+            error = validate_name (entry.text);
+        if (error != null)
+            name_entry.add_css_class ("error");
+        else
+            name_entry.remove_css_class ("error");
+        add_button.sensitive = entry.text != "" && error == null;
+        error_label.label = error;
+        ((Gtk.Revealer) error_label.parent).reveal_child = error != null;
     }
 
     public void item_added_cb (T item)
@@ -62,11 +70,11 @@ public abstract class MathPopover<T> : Gtk.Popover
             model.remove (position);
     }
 
-    protected abstract int get_item_index (T item);
-
     protected abstract bool is_deletable (T item);
     protected abstract bool is_editable (T item);
     protected abstract string get_item_text (T item);
+    protected abstract int get_item_index (T item);
+    protected abstract string? validate_name (string name);
 
     public signal void item_edited(T item);
     public signal void item_deleted(T item);
@@ -80,6 +88,7 @@ public abstract class MathPopover<T> : Gtk.Popover
         if (label.get_direction () == Gtk.TextDirection.RTL)
             label.justify = Gtk.Justification.RIGHT;
         label.set_margin_start (10);
+        label.set_margin_end (8);
         label.set_margin_top (4);
         label.set_margin_bottom (4);
         label.set_use_markup (true);
@@ -92,6 +101,7 @@ public abstract class MathPopover<T> : Gtk.Popover
         if (is_editable (item))
         {
             var button = new Gtk.Button.from_icon_name ("document-edit-symbolic");
+            button.tooltip_text = _("Edit");
             button.set_has_frame (false);
             button.set_data<Object> ("object", item as Object);
             button.clicked.connect (save_function_cb);
@@ -101,6 +111,7 @@ public abstract class MathPopover<T> : Gtk.Popover
         if (is_deletable (item))
         {
             var button = new Gtk.Button.from_icon_name ("user-trash-symbolic");
+            button.tooltip_text = _("Delete");
             button.set_has_frame (false);
             button.set_data<Object> ("object", item as Object);
             button.clicked.connect (delete_function_cb);
@@ -112,11 +123,11 @@ public abstract class MathPopover<T> : Gtk.Popover
 
     private void save_function_cb (Gtk.Widget widget)
     {
-        item_edited((T)widget.get_data<Object> ("object"));
+        item_edited ((T) widget.get_data<Object> ("object"));
     }
 
     private void delete_function_cb (Gtk.Widget widget)
     {
-        item_deleted((T)widget.get_data<Object> ("object"));
+        item_deleted ((T) widget.get_data<Object> ("object"));
     }
 }

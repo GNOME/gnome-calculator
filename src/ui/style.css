@@ -1,44 +1,4 @@
-.display-scrolled > scrollbar {
-  transition: margin-bottom 200ms linear;
-}
-
-.display-scrolled > scrollbar.hovering {
-  margin-bottom: -8px;
-}
-
-.sourceview {
-  padding-bottom: 8px;
-  font-size: 1.4em;
-}
-
-.sourceview > .completion cell.icon {
-  padding-right: 0;
-}
-
-.sourceview > .completion box.details {
-  padding: 0 4px;
-}
-
-.sourceview > .completion cell.comment:dir(rtl) {
-  margin: 0 24px 8px 0;
-}
-
-.sourceview > .completion button.toggle {
-  padding: 0;
-  min-width: 0;
-  min-height: 0;
-  font-size: 0;
-}
-
-.info-view {
-  padding: 0px;
-  padding-bottom: 4px;
-  min-height: 18px;
-}
-
-.equation-symbol {
-  padding: 0px 12px;
-}
+/* Display container */
 
 .display-container {
   margin: 12px 12px 0 12px;
@@ -63,6 +23,123 @@ clamp > .small .display-container {
 clamp > .small .display-container:last-child {
   margin-bottom: 0;
 }
+
+/* History view */
+
+.history-view {
+  background-color: shade(@card_bg_color, .95);
+  color: inherit;
+}
+
+.history-view list {
+  background: none;
+  color: inherit;
+}
+
+.history-entry {
+  border-top: 1px solid @card_shade_color;
+  padding: 6px 3px;
+  font-size: 1.3em;
+  font-feature-settings: "tnum";
+}
+
+.history-entry:first-child {
+  margin-top: -1px;
+}
+
+.history-entry .equation-label {
+  /* word-spacing: 2px; Doesn't work (yet) in GTK */
+}
+
+.history-entry .equation-symbol {
+  padding: 0px 12px;
+}
+
+/* Math display */
+
+mathdisplay {
+  border-top: 1px solid @card_shade_color;
+  min-height: 52px;
+}
+
+mathdisplay textview,
+mathdisplay textview text {
+  background: none;
+  color: inherit;
+}
+
+.display-scrolled > scrollbar {
+  transition: margin-bottom 200ms linear;
+}
+
+.display-scrolled > scrollbar.hovering {
+  margin-bottom: -8px;
+}
+
+.sourceview {
+  padding-bottom: 8px;
+  font-size: 1.4em;
+  font-feature-settings: "tnum";
+}
+
+.sourceview > .completion cell.icon {
+  padding-right: 0;
+}
+
+.sourceview > .completion box.details {
+  padding: 0 4px;
+}
+
+.sourceview > .completion cell.comment:dir(rtl) {
+  margin: 0 24px 8px 0;
+}
+
+.sourceview > .completion button.toggle {
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  font-size: 0;
+}
+
+.display-scrolled + button {
+  margin: 6px;
+}
+
+.info-view {
+  padding: 0px;
+  padding-bottom: 4px;
+  min-height: 18px;
+}
+
+/* Math converter */
+
+mathconverter {
+  padding: 12px 12px 0 12px;
+  background-color: shade(@card_bg_color, .95);
+}
+
+mathconverter dropdown > button:not(:hover):not(:active):not(:checked) {
+  background: transparent;
+}
+
+mathconverter textview {
+  min-height: 1.25em;
+  margin-bottom: 4px;
+  padding: 2px 10px 0 10px;
+  font-weight: 800;
+  font-size: 181%;
+  background: transparent;
+}
+
+mathconverter textview:not(:first-child) {
+  margin-top: 36px;
+}
+
+mathconverter statuspage > scrolledwindow > viewport > box {
+  margin: 0 12px;
+}
+
+/* Math buttons */
 
 .math-buttons grid.buttons {
   /* 5 44px high buttons and 4px spacing. */
@@ -91,41 +168,40 @@ carousel.math-buttons > widget > grid.buttons {
   margin: 12px 12px 0 12px;
 }
 
-button.action-button {
-  min-height: 24px;
-  padding: 10px 20px;
-  border-radius: 12px;
+.math-buttons grid > button,
+.math-buttons grid > menubutton > button,
+.math-buttons grid > stack > button {
+  font-weight: inherit;
+  font-size: 1.1em;
+  /* Counter the button.text-button style. */
+  padding: 2px 4px 2px 4px;
 }
 
-.action-dialog floating-sheet sheet {
-  border-radius: 18px;
+.math-buttons .clear-button {
+  font-size: 1.2em;
+  font-weight: bolder;
 }
 
-mathconverter {
-  padding: 12px 12px 0 12px;
-  background-color: shade(@card_bg_color, .95);
+.math-buttons .number-button {
+  font-size: 1.2em;
+  font-weight: bolder;
+  background-color: alpha(currentColor, .2);
 }
 
-mathconverter dropdown > button:not(:hover):not(:active):not(:checked) {
-  background: transparent;
+.math-buttons .number-button:hover {
+  background-color: alpha(currentColor, .25);
 }
 
-mathconverter textview {
-  min-height: 1.25em;
-  margin-bottom: 4px;
-  padding: 2px 10px 0 10px;
-  font-weight: 800;
-  font-size: 181%;
-  background: transparent;
+.math-buttons .number-button:active,
+.math-buttons .number-button.keyboard-activating {
+  background-color: alpha(currentColor, .35);
 }
 
-mathconverter textview:not(:first-child) {
-  margin-top: 36px;
+.math-buttons .arrow-button arrow {
+  transform: scaleY(-1);
 }
 
-mathconverter statuspage > scrolledwindow > viewport > box {
-  margin: 0 12px;
-}
+/* Bit panel */
 
 .bit-panel {
   padding: 6px;
@@ -145,38 +221,6 @@ clamp  > .small .bit-panel {
 .math-buttons .bit-panel {
   padding: 12px 6px 0 6px;
   border-top: none;
-}
-
-.math-buttons button {
-  font-size: 1.1em;
-  /* Counter the button.text-button style. */
-  padding: 2px 4px 2px 4px;
-}
-
-.math-buttons grid > button,
-.math-buttons grid > menubutton > button,
-.math-buttons grid > stack > button {
-  font-weight: inherit;
-}
-
-.math-buttons .number-button {
-  font-size: 1.2em;
-  font-weight: bolder;
-  background-color: alpha(currentColor, .2);
-}
-
-.math-buttons .clear-button {
-  font-size: 1.2em;
-  font-weight: bolder;
-}
-
-.math-buttons .number-button:hover {
-  background-color: alpha(currentColor, .25);
-}
-
-.math-buttons .number-button:active,
-.math-buttons .number-button.keyboard-activating {
-  background-color: alpha(currentColor, .35);
 }
 
 .bit-toggle-button {
@@ -209,31 +253,8 @@ clamp  > .small .bit-panel {
   margin: 0;
 }
 
-.history-view {
-  background-color: shade(@card_bg_color, .95);
-  color: inherit;
-}
+/* Math popover */
 
-.history-view list {
-  background: none;
-  color: inherit;
-}
-
-.history-entry {
-  border-top: 1px solid @card_shade_color;
-  padding: 6px 3px;
-  font-size: 1.3em;
-}
-
-.history-entry:first-child {
-  border-top-width: 0px;
-}
-
-.history-entry .equation-label {
-  /* word-spacing: 2px; Doesn't work (yet) in GTK */
-}
-
-/* Used for MathPopover */
 .math-popover > contents {
   padding: 0;
 }
@@ -250,6 +271,10 @@ clamp  > .small .bit-panel {
 .math-popover list > row {
   border-radius: 9px;
   min-height: 28px;
+}
+
+.math-popover list > row button {
+  padding: 2px 4px;
 }
 
 .math-popover list + separator {
@@ -278,32 +303,34 @@ clamp  > .small .bit-panel {
   margin-left: -2px;
 }
 
-.italic {
-  font-style: italic;
+.math-popover > contents > box,
+.math-popover > contents > stack > box,
+.math-popover scrolledwindow ~ box {
+  border-spacing: 6px;
 }
 
-mathdisplay textview,
-mathdisplay textview text {
-  background: none;
-  color: inherit;
+.math-popover scrolledwindow + entry,
+.math-popover scrolledwindow ~ box {
+  margin: 0 6px;
 }
 
-mathdisplay {
-  border-top: 1px solid @card_shade_color;
-  min-height: 52px;
+.math-popover revealer > label {
+  margin: 0 6px 6px 6px;
 }
 
-.history-entry {
-  font-feature-settings: "tnum";
+/* Character code dialog */
+
+.action-dialog floating-sheet sheet {
+  border-radius: 18px;
 }
 
-mathdisplay textview:not(:last-child) {
-  font-feature-settings: "tnum";
+button.action-button {
+  min-height: 24px;
+  padding: 10px 20px;
+  border-radius: 12px;
 }
 
-mathdisplay button.circular {
-  margin: 6px;
-}
+/* Math preferences dialog */
 
 .currency-search-entry {
   margin: 3px 12px;

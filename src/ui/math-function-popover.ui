@@ -6,9 +6,8 @@
       <class name="math-popover"/>
     </style>
     <child>
-      <object class="GtkBox" id="vbox">
+      <object class="GtkBox" id="content">
         <property name="orientation">vertical</property>
-        <property name="spacing">6</property>
         <child>
           <object class="GtkScrolledWindow" id="function_list_scrolled">
             <property name="propagate_natural_height">True</property>
@@ -27,34 +26,40 @@
           </object>
         </child>
         <child>
-          <object class="GtkEntry" id="function_name_entry">
+          <object class="GtkEntry" id="name_entry">
             <property name="placeholder_text" translatable="yes">New function</property>
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
+            <property name="input_hints">no-emoji</property>
             <!--<signal name="focus" handler="function_name_focus_cb" swapped="no"/>-->
             <signal name="activate" handler="add_function_cb" swapped="no"/>
           </object>
         </child>
         <child>
           <object class="GtkBox" id="add_function_box">
-            <property name="margin_bottom">6</property>
-            <property name="margin_start">6</property>
-            <property name="margin_end">6</property>
-            <property name="orientation">horizontal</property>
-            <property name="spacing">6</property>
             <child>
               <object class="GtkSpinButton" id="add_arguments_button">
                 <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
+                <property name="numeric">True</property>
                 <property name="tooltip_text" translatable="yes">Select no. of arguments</property>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="add_function_button">
+              <object class="GtkButton" id="add_button">
                 <property name="sensitive">False</property>
                 <property name="tooltip_text" translatable="yes">Add function</property>
                 <property name="icon_name">list-add-symbolic</property>
                 <signal name="clicked" handler="add_function_cb" swapped="no"/>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkRevealer">
+            <child>
+              <object class="GtkLabel" id="error_label">
+                <property name="xalign">0</property>
+                <property name="wrap">True</property>
+                <property name="wrap_mode">word-char</property>
+                <property name="max_width_chars">0</property>
               </object>
             </child>
           </object>

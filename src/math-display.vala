@@ -102,6 +102,7 @@ public class MathDisplay : Gtk.Box
             Signal.stop_emission_by_name (source_view, "paste-clipboard");
         });
 
+        source_view.set_extra_menu (null);
         if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
             source_view.justification = Gtk.Justification.RIGHT;
     }

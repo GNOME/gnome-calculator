@@ -40,15 +40,21 @@ public class MathVariablePopover : MathPopover<MathVariable>
     [GtkChild]
     private unowned Gtk.ListBox constant_list;
     [GtkChild]
-    private unowned Gtk.Entry variable_name_entry;
+    private override unowned Gtk.Entry name_entry { get; }
     [GtkChild]
-    private unowned Gtk.Button store_variable_button;
+    private override unowned Gtk.Button add_button { get; }
+    [GtkChild]
+    private override unowned Gtk.Label error_label { get; }
 
     public MathVariablePopover (MathEquation equation)
     {
         base (equation, new ListStore (typeof (MathVariable)), MathVariable.name_compare_func);
 
         variable_list.bind_model (model, (variable) => make_item_row (variable as MathVariable));
+        closed.connect (() => {
+            name_entry.text = "";
+            stack.pages.select_item (0, true);
+        });
         equation.history_signal.connect (history_cb);
         item_deleted.connect (delete_variable_cb);
         load_variables ();
@@ -111,27 +117,6 @@ public class MathVariablePopover : MathPopover<MathVariable>
                 submenu.append (constant_row);
             }
         }
-
-        closed.connect (() => { stack.pages.select_item (0, true); });
-    }
-
-    protected override Gtk.Entry name_entry ()
-    {
-        return variable_name_entry;
-    }
-    
-    protected override Gtk.Button add_button ()
-    {
-    	return store_variable_button;
-    }
-
-    protected override int get_item_index (MathVariable item)
-    {
-        uint position;
-        if (model.find_with_equal_func (item as Object, (a, b) => (MathVariable.name_equal_func(a as MathVariable, b as MathVariable)), out position))
-            return (int)position;
-        else
-            return -1;
     }
 
     private void history_cb (string answer, Number number, int number_base, uint representation_base)
@@ -151,6 +136,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
     [GtkCallback]
     private void open_submenu_cb (Gtk.ListBoxRow row)
     {
+        name_entry.text = "";
         stack.pages.select_item (row.get_index () + 1, true);
     }
 
@@ -169,23 +155,10 @@ public class MathVariablePopover : MathPopover<MathVariable>
     [GtkCallback]
     private void store_variable_cb (Gtk.Widget widget)
     {
-        var name = variable_name_entry.get_text ();
-        if (name == "" || name.down () in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS) {
-            equation.status = _("%s: Invalid variable name, can not use built-in variable or constant names").printf (name);
+        if (!add_button.sensitive)
             return;
-        }
-        if (FunctionManager.get_default_function_manager ().is_function_defined (name) || name.down () in OPERATORS) {
-            equation.status = _("%s: Invalid variable name, can not use defined function or operator names").printf (name);
-            return;
-        }
-        if (!Regex.match_simple("^\\D", name)) {
-            equation.status = _("%s: Invalid variable name, can not start with a digit").printf (name);
-            return;
-        }
-        if (!Regex.match_simple("^\\w*$", name)) {
-            equation.status = _("%s: Invalid variable name, can only contain digits, letters and underscores").printf (name);
-            return;
-        }
+
+        var name = name_entry.text;
         var z = equation.number;
         if (z != null)
             equation.variables[name] = z;
@@ -209,7 +182,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
             equation.solve ();
         }
 
-        variable_name_entry.set_text ("");
+        name_entry.text = "";
     }
 
     private void delete_variable_cb (MathVariable variable)
@@ -238,5 +211,31 @@ public class MathVariablePopover : MathPopover<MathVariable>
         else
             text = "<b>%s</b>".printf (variable.name);
         return text;
+    }
+
+    protected override int get_item_index (MathVariable item)
+    {
+        uint position;
+        if (model.find_with_equal_func (item as Object, (a, b) => (MathVariable.name_equal_func(a as MathVariable, b as MathVariable)), out position))
+            return (int)position;
+        else
+            return -1;
+    }
+
+    protected override string? validate_name (string name)
+    {
+        if (FunctionManager.get_default_function_manager ().is_function_defined (name) || name.down () in OPERATORS)
+            return _("Can not use defined function or operator names");
+
+        if (name.down () in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS)
+            return _("Can not use built-in variable or constant names");
+
+        if (!Regex.match_simple("^\\D", name))
+            return _("Variable name can not start with a digit");
+
+        if (!Regex.match_simple("^\\w*$", name))
+            return _("Variable name can only contain digits, letters and underscores");
+
+        return null;
     }
 }

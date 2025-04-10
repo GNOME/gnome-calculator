@@ -16,23 +16,26 @@ public class MathFunctionPopover : MathPopover<MathFunction>
 
     [GtkChild]
     private unowned Gtk.ListBox function_list;
-
-    [GtkChild]
-    private unowned Gtk.Entry function_name_entry;
-
-    [GtkChild]
-    private unowned Gtk.Button add_function_button;
     [GtkChild]
     private unowned Gtk.SpinButton add_arguments_button;
+    [GtkChild]
+    private override unowned Gtk.Entry name_entry { get; }
+    [GtkChild]
+    private override unowned Gtk.Button add_button { get; }
+    [GtkChild]
+    private override unowned Gtk.Label error_label { get; }
 
     public MathFunctionPopover (MathEquation equation)
     {
         base (equation, new ListStore (typeof (MathFunction)), MathFunction.name_compare_func);
 
         function_list.bind_model (model, (item) => make_item_row (item as MathFunction));
-
         add_arguments_button.set_range (1, 10);
         add_arguments_button.set_increments (1, 1);
+        closed.connect (() => {
+            name_entry.text = "";
+            add_arguments_button.value = 1;
+        });
         item_edited.connect (function_edited_cb);
         item_deleted.connect (function_deleted_cb);
         load_functions ();
@@ -52,16 +55,6 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         function_manager.function_added.connect (f => item_added_cb (f as MathFunction));
         function_manager.function_edited.connect (f => item_edited_cb (f as MathFunction));
         function_manager.function_deleted.connect (f => item_deleted_cb (f as MathFunction));
-    }
-
-    protected override Gtk.Entry name_entry ()
-    {
-        return function_name_entry;
-    }
-
-    protected override Gtk.Button add_button ()
-    {
-    	return add_function_button;
     }
 
     private void function_edited_cb (MathFunction function)
@@ -92,27 +85,10 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     [GtkCallback]
     private void add_function_cb (Gtk.Widget widget)
     {
-        var name = function_name_entry.text;
-        if (name == "")
+        if (!add_button.sensitive)
             return;
-        var function = FunctionManager.get_default_function_manager ().get (name);
-        if (function != null && !function.is_custom_function () || name.down () in OPERATORS) {
-            equation.status = _("%s: Invalid function name, can not use built-in function or operator names").printf (name);
-            return;
-        }
-        if (name.down () in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS || equation.variables.get (name) != null) {
-            equation.status = _("%s: Invalid function name, can not use defined variable or constant names").printf (name);
-            return;
-        }
-        if (!Regex.match_simple("^\\D", name)) {
-            equation.status = _("%s: Invalid function name, can not start with a digit").printf (name);
-            return;
-        }
-        if (!Regex.match_simple("^\\w*$", name)) {
-            equation.status = _("%s: Invalid function name, can only contain digits, letters and underscores").printf (name);
-            return;
-        }
 
+        var name = name_entry.text;
         var arguments = add_arguments_button.get_value_as_int ();
         string formatted_args = "";
         if (arguments > 0)
@@ -121,9 +97,6 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         name += "(%s)=".printf(formatted_args);
         equation.clear ();
         equation.insert (name);
-
-        function_name_entry.text = "";
-        add_arguments_button.value = 1;
         close_popover ();
     }
 
@@ -164,5 +137,23 @@ public class MathFunctionPopover : MathPopover<MathFunction>
             return (int)position;
         else
             return -1;
+    }
+
+    protected override string? validate_name (string name)
+    {
+        if (name.down () in RESERVED_VARIABLE_NAMES || name in Parser.CONSTANTS || equation.variables.get (name) != null)
+            return _("Can not use defined variable or constant names");
+
+        var function = FunctionManager.get_default_function_manager ().get (name);
+        if (function != null && !function.is_custom_function () || name.down () in OPERATORS)
+            return _("Can not use built-in function or operator names");
+
+        if (!Regex.match_simple("^\\D", name))
+            return _("Function name can not start with a digit");
+
+        if (!Regex.match_simple("^\\w*$", name))
+            return _("Function name can only contain digits, letters and underscores");
+
+        return null;
     }
 }
