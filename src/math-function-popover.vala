@@ -125,6 +125,10 @@ public class MathFunctionPopover : MathPopover<MathFunction>
             expression = "(n;r)";
         else if (function.name == "gcd" || function.name == "lcm")
             expression = "(x;y;…)";
+        else if (function.name == "modulus" || function.name == "cmp")
+            expression = "(x;y)";
+        else if (function.name == "modexp")
+            expression = "(x;y;p)";
 
         string text = "<b>%s</b>%s".printf (function.name, expression);
         return text;

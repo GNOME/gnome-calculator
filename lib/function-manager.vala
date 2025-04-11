@@ -123,7 +123,7 @@ public class FunctionManager : Object
 
         add (new BuiltInMathFunction ("modulus", _("Modulus Divide")));
 
-        add (new BuiltInMathFunction ("modexp", _("Modular Expomentiation")));
+        add (new BuiltInMathFunction ("modexp", _("Modular Exponentiation")));
 
         add (new BuiltInMathFunction ("cmp", _("Comparison")));
     }
