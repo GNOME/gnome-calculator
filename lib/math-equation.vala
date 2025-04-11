@@ -814,11 +814,6 @@ public class MathEquation : GtkSource.Buffer
             variables.set (name, t);
     }
 
-    public void recall (string name)
-    {
-        insert (name);
-    }
-
     public new void set (string text)
     {
         set_text (text, -1);
