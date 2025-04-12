@@ -48,7 +48,6 @@ public class MathDisplay : Gtk.Box
         }
     }
     public bool completion_visible { get; set; }
-    public bool completion_selected { get; set; }
 
     public signal void arr_key_pressed (uint keyval);
 
@@ -143,9 +142,8 @@ public class MathDisplay : Gtk.Box
     {
         GtkSource.Completion completion = source_view.get_completion ();
         completion.select_on_show = true;
-        completion.show.connect ((completion) => { this.completion_visible = true; this.completion_selected = false;} );
-        completion.hide.connect ((completion) => { this.completion_visible = false; this.completion_selected = false; } );
-        // completion.move_cursor.connect ((completion) => {this.completion_selected = true;});
+        completion.show.connect ((completion) => { this.completion_visible = true; });
+        completion.hide.connect ((completion) => { this.completion_visible = false; });
         providers = new HashTable<string, GtkSource.CompletionProvider> (str_hash, str_equal);
         providers.insert ("builtin", new BuiltinCompletionProvider ());
         providers.insert ("function", new FunctionCompletionProvider ());
@@ -252,8 +250,6 @@ public class MathDisplay : Gtk.Box
         /* Solve on enter */
         if (keyval == Gdk.Key.Return || keyval == Gdk.Key.KP_Enter)
         {
-            if (completion_visible && completion_selected)
-                return false;
             equation.solve ();
             return true;
         }
@@ -737,7 +733,7 @@ public class BuiltinCompletionProvider : CompletionProvider, GtkSource.Completio
         context.get_bounds (out start_iter, out end_iter);
         string search_pattern = start_iter.get_slice (end_iter);
 
-        string[] keywords = {"in", "to"};
+        string[] keywords = {_("in"), _("to")};
         string[] result = {};
         foreach (var keyword in keywords)
         {
@@ -752,6 +748,7 @@ public class BuiltinCompletionProvider : CompletionProvider, GtkSource.Completio
     {
         ListStore proposals = new ListStore (typeof (CompletionProposal));
         string[] keywords = get_matches_for_completion_at_cursor (context);
+        string word = context.get_word ();
 
         if (keywords.length > 0)
         {
@@ -761,7 +758,7 @@ public class BuiltinCompletionProvider : CompletionProvider, GtkSource.Completio
             }
         }
 
-        return proposals;
+        return new Gtk.FilterListModel (proposals, create_filter (word));
     }
 }
 
