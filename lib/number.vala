@@ -202,7 +202,7 @@ public class Number : GLib.Object
             check = divide (new Number.integer (200));
             break;
         default:
-            error = _("Unknown angle unit");
+            assert_not_reached ();
             return true;
         }
 
@@ -227,7 +227,7 @@ public class Number : GLib.Object
         case AngleUnit.GRADIANS:
             return subtract (new Number.integer (100)).is_180n_degrees (unit);
         default:
-            error = _("Unknown angle unit");
+            assert_not_reached ();
             return true;
         }
     }
@@ -263,30 +263,20 @@ public class Number : GLib.Object
         return num.get_real ().val.cmp (y.num.get_real ().val);
     }
 
-     /* Kronecker Delta function
-       
-       1 if x ==y
-       0 if x!=y
-     
-    */
-    
+    /* Kronecker Delta function
+     * 1 if x == y
+     * 0 if x != y
+     */
     public Number kronecker_delta (Number y)
     {
-        var val = compare(y);
-        
-        switch (val){
-            case  0:
-              return new Number.integer(1);
-            default:
-              return new Number.integer(0);
-              
-        }
+        return new Number.integer (equals (y) ? 1 : 0);
     }
-
 
     /* Sets z = sgn (x) */
     public Number sgn ()
     {
+        if (is_complex ())
+            return divide (abs ());
         var z = new Number.integer (num.get_real ().val.sgn ());
         return z;
     }
@@ -302,10 +292,10 @@ public class Number : GLib.Object
     /* Sets z = |x| */
     public Number abs ()
     {
-      var z = new Number ();
-      z.num.get_imag ().val.set_zero ();
-      MPC.abs (z.num.get_real ().val, num);
-      return z;
+        var z = new Number ();
+        z.num.get_imag ().val.set_zero ();
+        MPC.abs (z.num.get_real ().val, num);
+        return z;
     }
 
     /* Sets z = Arg (x) */
@@ -382,6 +372,12 @@ public class Number : GLib.Object
     /* Sets z = ⌊x⌋ */
     public Number floor ()
     {
+        if (is_complex ())
+        {
+            error = _("Floor is only defined for real numbers");
+            return new Number.integer (0);
+        }
+
         var z = new Number ();
         z.num.get_imag ().val.set_zero ();
         z.num.get_real ().val.floor (num.get_real ().val);
@@ -391,6 +387,12 @@ public class Number : GLib.Object
     /* Sets z = ⌈x⌉ */
     public Number ceiling ()
     {
+        if (is_complex ())
+        {
+            error = _("Ceiling is only defined for real numbers");
+            return new Number.integer (0);
+        }
+
         var z = new Number ();
         z.num.get_imag ().val.set_zero ();
         z.num.get_real ().val.ceil (num.get_real ().val);
@@ -400,6 +402,12 @@ public class Number : GLib.Object
     /* Sets z = [x] */
     public Number round ()
     {
+        if (is_complex ())
+        {
+            error = _("Round is only defined for real numbers");
+            return new Number.integer (0);
+        }
+
         var z = new Number ();
         z.num.get_imag ().val.set_zero ();
         z.num.get_real ().val.round (num.get_real ().val);
@@ -571,7 +579,7 @@ public class Number : GLib.Object
         if (!is_natural ())
         {
 
-             /* Factorial Not defined for Complex or for negative numbers */
+            /* Factorial Not defined for Complex or for negative numbers */
             if (is_negative () || is_complex ())
             {
                 /* Translators: Error displayed when attempted take the factorial of a negative or complex number */
@@ -704,9 +712,9 @@ public class Number : GLib.Object
 
         var z = new Number ();
         if (is_complex ())
-          z.num.@set (num);
+            z.num.@set (num);
         else
-          mpc_to_radians (z.num, num, unit);
+            mpc_to_radians (z.num, num, unit);
         z.num.sin (z.num);
         return z;
     }
@@ -720,9 +728,9 @@ public class Number : GLib.Object
 
         var z = new Number ();
         if (is_complex ())
-          z.num.@set (num);
+            z.num.@set (num);
         else
-          mpc_to_radians (z.num, num, unit);
+            mpc_to_radians (z.num, num, unit);
         z.num.cos (z.num);
         return z;
     }
@@ -742,9 +750,9 @@ public class Number : GLib.Object
 
         var z = new Number ();
         if (is_complex ())
-          z.num.@set (num);
+            z.num.@set (num);
         else
-          mpc_to_radians (z.num, num, unit);
+            mpc_to_radians (z.num, num, unit);
         z.num.tan (z.num);
         return z;
     }
@@ -752,7 +760,7 @@ public class Number : GLib.Object
     /* Sets z = sin⁻¹ x */
     public Number asin (AngleUnit unit = AngleUnit.RADIANS)
     {
-        if (compare (new Number.integer (1)) > 0 || compare (new Number.integer (-1)) < 0)
+        if (!is_complex () && (compare (new Number.integer (1)) > 0 || compare (new Number.integer (-1)) < 0))
         {
             /* Translators: Error displayed when inverse sine value is undefined */
             error = _("Inverse sine is undefined for values outside [-1, 1]");
@@ -762,14 +770,14 @@ public class Number : GLib.Object
         var z = new Number ();
         z.num.asin (num);
         if (!z.is_complex ())
-          mpc_from_radians (z.num, z.num, unit);
+            mpc_from_radians (z.num, z.num, unit);
         return z;
     }
 
     /* Sets z = cos⁻¹ x */
     public Number acos (AngleUnit unit = AngleUnit.RADIANS)
     {
-        if (compare (new Number.integer (1)) > 0 || compare (new Number.integer (-1)) < 0)
+        if (!is_complex () && (compare (new Number.integer (1)) > 0 || compare (new Number.integer (-1)) < 0))
         {
             /* Translators: Error displayed when inverse cosine value is undefined */
             error = _("Inverse cosine is undefined for values outside [-1, 1]");
@@ -779,7 +787,7 @@ public class Number : GLib.Object
         var z = new Number ();
         z.num.acos (num);
         if (!z.is_complex ())
-          mpc_from_radians (z.num, z.num, unit);
+            mpc_from_radians (z.num, z.num, unit);
         return z;
     }
 
@@ -787,16 +795,16 @@ public class Number : GLib.Object
     public Number atan (AngleUnit unit = AngleUnit.RADIANS)
     {
         /* Check x != i and x != -i */
-        if (equals (new Number.integer (0,1)) || equals (new Number.integer(0,-1)))
+        if (equals (new Number.integer (0, 1)) || equals (new Number.integer(0, -1)))
         {
             /* Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i) */
-            error = _("Arctangent function is undefined for values i and -i");
+            error = _("Inverse tangent is undefined for values i and -i");
             return new Number.integer (0);
         }
         var z = new Number ();
         z.num.atan (num);
         if (!z.is_complex ())
-          mpc_from_radians (z.num, z.num, unit);
+            mpc_from_radians (z.num, z.num, unit);
         return z;
     }
 
@@ -837,7 +845,7 @@ public class Number : GLib.Object
     {
         /* Check x >= 1 */
         var t = new Number.integer (1);
-        if (compare (t) < 0)
+        if (!is_complex () && compare (t) < 0)
         {
             /* Translators: Error displayed when inverse hyperbolic cosine value is undefined */
             error = _("Inverse hyperbolic cosine is undefined for values less than one");
@@ -853,7 +861,7 @@ public class Number : GLib.Object
     public Number atanh ()
     {
         /* Check -1 <= x <= 1 */
-        if (compare (new Number.integer (1)) >= 0 || compare (new Number.integer (-1)) <= 0)
+        if (!is_complex () && (compare (new Number.integer (1)) >= 0 || compare (new Number.integer (-1)) <= 0))
         {
             /* Translators: Error displayed when inverse hyperbolic tangent value is undefined */
             error = _("Inverse hyperbolic tangent is undefined for values outside [-1, 1]");
@@ -990,12 +998,24 @@ public class Number : GLib.Object
     /* Sets z to be the ones complement of x for word of length 'wordlen' */
     public Number ones_complement (int wordlen)
     {
+        if (!is_natural ())
+        {
+            error = _("One’s complement is only defined for non-negative integers");
+            return new Number.integer (0);
+        }
+
         return bitwise (new Number.integer (0), (v1, v2) => { return v1 ^ v2; }, wordlen).not (wordlen);
     }
 
     /* Sets z to be the twos complement of x for word of length 'wordlen' */
     public Number twos_complement (int wordlen)
     {
+        if (!is_natural ())
+        {
+            error = _("Two’s complement is only defined for non-negative integers");
+            return new Number.integer (0);
+        }
+
         return ones_complement (wordlen).add (new Number.integer (1));
     }
 
@@ -1105,13 +1125,13 @@ public class Number : GLib.Object
       Out:  A boolean showing that p is probably prime */
     private bool is_sprp (Number p, uint64 b)
     {
-      var unit = new Number.unsigned_integer(1);
-      var pminus = p.subtract(unit);
-      var d = pminus;
-      var two = new Number.unsigned_integer(2);
+        var unit = new Number.unsigned_integer (1);
+        var pminus = p.subtract (unit);
+        var d = pminus;
+        var two = new Number.unsigned_integer (2);
 
-      uint64 twofactor = 0;
-         // Strip out factors of two
+        uint64 twofactor = 0;
+        // Strip out factors of two
         while (true)
         {
             var tmp = d.divide (two);
@@ -1124,23 +1144,24 @@ public class Number : GLib.Object
                 break;
         }
 
-       var x = new Number.unsigned_integer(b).modular_exponentiation(d,p);
+        var x = new Number.unsigned_integer (b).modular_exponentiation (d, p);
 
-       if ((x.equals(unit)) || (x.equals(pminus))){
-          return true;
-       }
-
-     for (var i = 1; i < twofactor; i++)
-     {
-        x = x.multiply (x);
-        x = x.modulus_divide(p);
-
-        if (x.equals(pminus))
+        if ((x.equals (unit)) || (x.equals (pminus)))
         {
-          return true;
+            return true;
         }
-     }
-      return false;
+
+        for (var i = 1; i < twofactor; i++)
+        {
+            x = x.multiply (x);
+            x = x.modulus_divide (p);
+
+            if (x.equals (pminus))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /* In : An x := x \in 2Z+1 and gcd(x,[2,..,2ln(2)**2])=1
@@ -1149,37 +1170,37 @@ public class Number : GLib.Object
      Even if the GRH is false, the probability of number-theoretic error is far lower than
      machine error */
 
-    private bool is_prime(Number x)
+    private bool is_prime (Number x)
     {
-      const uint64 BASES[13] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,41};
+        const uint64 BASES[13] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41};
 
-      var sup = x.ln().to_unsigned_integer() + 1;
-      /* J.Sorenson & J.Webster's  optimization */
-      if (sup <  56)
-      {
-        for (var i = 0; i < 13; i++)
+        var sup = x.ln ().to_unsigned_integer () + 1;
+        /* J.Sorenson & J.Webster's  optimization */
+        if (sup < 56)
         {
-          if (!is_sprp(x,BASES[i])){
-            return false;
-          }
+            for (var i = 0; i < 13; i++)
+            {
+                if (!is_sprp (x, BASES[i]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
-        return true;
-      }
-      else
-      {
-        sup = sup*sup*2;
+        else
+        {
+            sup = sup * sup * 2;
 
-        for (var i = 0; i < sup; i++)
-         {
-           if (!is_sprp(x,i))
-           {
-            return false;
-           }
-         }
-        return true;
-       }
+            for (var i = 0; i < sup; i++)
+            {
+                if (!is_sprp (x, i))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
-
 
     /* Returns a list of all prime factors in x as Numbers */
     public List<Number?> factorize ()
@@ -1200,13 +1221,13 @@ public class Number : GLib.Object
             return factors;
         }
 
-        if (value.compare(new Number.integer(0xFFFFFFFF)) > 0)
+        if (value.compare (new Number.integer (0xFFFFFFFF)) > 0)
         {
-        if (is_prime(value))
-        {
-          factors.append (value);
-          return factors;
-        }
+            if (is_prime (value))
+            {
+                factors.append (value);
+                return factors;
+            }
         }
         // if value < 2^64-1, call for factorize_uint64 function which deals in integers
 
@@ -1307,9 +1328,8 @@ public class Number : GLib.Object
                 break;
 
             case AngleUnit.GRADIANS:
-                i=200;
+                i = 200;
                 break;
-
         }
         var scale = MPFR.Real (precision);
         scale.const_pi ();
