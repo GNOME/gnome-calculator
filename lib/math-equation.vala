@@ -70,37 +70,37 @@ public class MathEquation : GtkSource.Buffer
         }
     }
 
-    private void apply_word_size(uint size)
+    private void apply_word_size (uint size)
     {
-      var x = number;
-      uint64 bits = 0;
-      var min = new Number.integer (int64.MIN);
-      var max = new Number.unsigned_integer (uint64.MAX);
-      if (x == null || x.compare (max) > 0 || x.compare (min) < 0)
-      {
-          /* Message displayed when cannot toggle bit in display */
-          status = _("Displayed value not an integer");
-          return;
-      }
-      else if (x.is_negative ())
-          bits = x.to_integer ();
-      else
-          bits = x.to_unsigned_integer ();
+        var x = number;
+        uint64 bits = 0;
+        var min = new Number.integer (int64.MIN);
+        var max = new Number.unsigned_integer (uint64.MAX);
+        if (x == null || x.compare (max) > 0 || x.compare (min) < 0)
+        {
+            /* Message displayed when cannot toggle bit in display */
+            status = _("Displayed value not an integer");
+            return;
+        }
+        else if (x.is_negative ())
+            bits = x.to_integer ();
+        else
+            bits = x.to_unsigned_integer ();
 
-      var signed_bit = (bits >> (word_size - 1)) & 0x1;
-      if (x.is_negative () && signed_bit == 0x1) {
-          /* When the current number is negative and the signed bit is set according to two's complement
-             representation the resulting integer shall keep the sign. */
-          bits &= uint64.MAX >> (64 - size);
-          bits |= uint64.MAX << (size);
-          x = new Number.integer ((int64)bits);
-      } else {
-          bits &= uint64.MAX >> (64 - size);
-          x = new Number.unsigned_integer (bits);
-      }
+        var signed_bit = (bits >> (word_size - 1)) & 0x1;
+        if (x.is_negative () && signed_bit == 0x1) {
+            /* When the current number is negative and the signed bit is set according to two's complement
+               representation the resulting integer shall keep the sign. */
+            bits &= uint64.MAX >> (64 - size);
+            bits |= uint64.MAX << (size);
+            x = new Number.integer ((int64)bits);
+        } else {
+            bits &= uint64.MAX >> (64 - size);
+            x = new Number.unsigned_integer (bits);
+        }
 
-      // FIXME: Only do this if in ans format, otherwise set text in same format as previous number
-      set_number (x);
+        // FIXME: Only do this if in ans format, otherwise set text in same format as previous number
+        set_number (x);
     }
 
     public string display
@@ -1262,13 +1262,13 @@ public class MathEquation : GtkSource.Buffer
                 break;
             case ErrorCode.UNKNOWN_RATE:
                 solvedata.error = /* Error displayed to user when a currency conversion with unknown exchange rate is attempted */
-                                  _("Exchange rate for '%s' is not available").printf (error_token);
+                                  _("Exchange rate for “%s” is not available").printf (error_token);
                 solvedata.error_start = error_start;
                 solvedata.error_end = error_end;
                 break;
             case ErrorCode.UNKNOWN_UNIT:
                 solvedata.error = /* Error displayed to user when an conversion with unknown units is attempted */
-                                  _("Unknown unit '%s'").printf (error_token);
+                                  _("Unknown unit “%s”").printf (error_token);
                 solvedata.error_start = error_start;
                 solvedata.error_end = error_end;
                 break;
@@ -1741,4 +1741,3 @@ private class MEquation : Equation
                                         out x_unit, out z_unit);
     }
 }
-

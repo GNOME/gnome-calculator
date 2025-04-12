@@ -153,6 +153,15 @@ public class MathDisplay : Gtk.Box
         providers.insert ("favorite", new CurrencyCompletionProvider (true));
         providers.insert ("variable", new VariableCompletionProvider (equation));
 
+        equation.history_signal.connect (() => {
+            set_enable_autocompletion (false);
+            ulong handler = 0;
+            handler = equation.apply_tag.connect (() => {
+                set_enable_autocompletion (true);
+                equation.disconnect (handler);
+            });
+        });
+
         var settings = new Settings ("org.gnome.calculator");
         settings.bind ("enabled-completions", this, "enabled_completions", SettingsBindFlags.GET);
     }
