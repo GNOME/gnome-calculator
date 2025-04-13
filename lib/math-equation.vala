@@ -1002,23 +1002,23 @@ public class MathEquation : GtkSource.Buffer
         }
     }
 
-    public void insert_function (string name)
+    public void insert_function (string name, bool force_brackets = false)
     {
         var space = "";
-        Gtk.TextIter iter;
-        get_iter_at_mark (out iter, get_insert ());
+        Gtk.TextIter start, end;
+        get_selection_bounds (out start, out end);
 
         /*if it is not the first character in the buffer*/
-        if (iter.backward_char ())
+        if (start.backward_char ())
         {
-            unichar previous_character = iter.get_char ();
+            unichar previous_character = start.get_char ();
             if (previous_character.isalpha ())
             {
                 space = " ";
             }
         }
 
-        if (has_selection)
+        if (has_selection || force_brackets)
         {
             insert_between (space + name + "(", ")");
         }
@@ -1040,21 +1040,23 @@ public class MathEquation : GtkSource.Buffer
 
     public void insert_alpha (string text)
     {
-        var space = "";
-        Gtk.TextIter iter;
-        get_iter_at_mark (out iter, get_insert ());
+        var start_space = "", end_space = "";
+        Gtk.TextIter start, end;
+        get_selection_bounds (out start, out end);
 
         /*if it is not the first character in the buffer*/
-        if (iter.backward_char ())
+        if (start.backward_char ())
         {
-            unichar previous_character = iter.get_char ();
+            unichar previous_character = start.get_char ();
             if (previous_character.isalpha ())
             {
-                space = " ";
+                start_space = " ";
             }
         }
+        if (end.get_char ().isalpha ())
+            end_space = " ";
 
-        insert (space + text + " ");
+        insert (start_space + text + end_space);
     }
 
     public void insert_selected (string answer)

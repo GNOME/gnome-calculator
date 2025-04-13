@@ -128,7 +128,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
     private void insert_variable_cb (Gtk.ListBoxRow row)
     {
         var variable = model.get_item (row.get_index ()) as MathVariable;
-        equation.insert (variable.name);
+        equation.insert_alpha (variable.name);
         popdown ();
         ((MathWindow) root).math_display.grab_focus ();
     }
@@ -146,7 +146,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
             stack.pages.select_item (0, true);
         else
         {
-            equation.insert (row.child.get_data<string> ("symbol"));
+            equation.insert_alpha (row.child.get_data<string> ("symbol"));
             popdown ();
             ((MathWindow) root).math_display.grab_focus ();
         }

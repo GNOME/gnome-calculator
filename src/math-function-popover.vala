@@ -78,7 +78,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     private void insert_function_cb (Gtk.ListBoxRow row)
     {
         var function = model.get_item (row.get_index ()) as MathFunction;
-        equation.insert_between (function.name + "(", ")");
+        equation.insert_function (function.name, true);
         close_popover ();
     }
 
