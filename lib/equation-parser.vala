@@ -752,7 +752,7 @@ public class RootNode : RNode
     {
         if (n == 0 && token_n != null)
         {
-            n = sub_atoi(token_n.text);
+            n = token_n.type == LexerTokenType.SUP_NUMBER ? super_atoi(token_n.text) : sub_atoi(token_n.text);
         }
         if (n == 0)
         {
@@ -2130,7 +2130,7 @@ public class Parser
                 return false;
             return true;
         }
-        else if (token.type == LexerTokenType.SUB_NUMBER)
+        else if (token.type == LexerTokenType.SUB_NUMBER || token.type == LexerTokenType.SUP_NUMBER)
         {
             var token_old = token;
             token = lexer.get_next_token ();
