@@ -2198,6 +2198,7 @@ public class Parser
         var token = lexer.get_next_token ();
         num_token_parsed++;
         string? power = null;
+        string? log_base = null;
         if (token.type == LexerTokenType.SUP_NUMBER || token.type == LexerTokenType.NSUP_NUMBER)
         {
             power = token.text;
@@ -2207,6 +2208,15 @@ public class Parser
 
         insert_into_tree (new FunctionNode (this, fun_token, make_precedence_t (fun_token.type), get_associativity (fun_token), power));
 
+        if (function_name == "log")
+        {
+            token = lexer.get_next_token ();
+            num_token_parsed++;
+            if (token.type == LexerTokenType.PL_DIGIT)
+            {
+                log_base = token.text;
+            }
+        }
         if (token.type == LexerTokenType.L_R_BRACKET)
         {
             token = lexer.get_next_token ();
@@ -2222,6 +2232,8 @@ public class Parser
                 else if (token.type == LexerTokenType.R_R_BRACKET)
                 {
                     m_depth--;
+                    if (log_base != null)
+                        argument_list += log_base;
                     if (m_depth == 0)
                         break;
                 }
@@ -2245,6 +2257,8 @@ public class Parser
         else
         {
             lexer.roll_back ();
+            if (function_name == "log")
+                lexer.roll_back ();
             if (!expression_1 ())
             {
                 lexer.roll_back ();
