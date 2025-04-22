@@ -844,10 +844,10 @@ private void test_custom_functions ()
     test ("6*test(3;5)+log10", "49", 0);
     test ("test(test(5;6);9)", "20", 0);
     test ("log(test(8;9))", "0.602059991", 0);
-    test ("sum(8)", "0", ErrorCode.UNKNOWN_FUNCTION);
-    test ("sum", "0", ErrorCode.UNKNOWN_VARIABLE);
-    test ("sum(x;y)=x+y", "0", 0);
-    test ("(3+2)*10 + 5^2 - sum(7;8)", "60", 0);
+    test ("add(8)", "0", ErrorCode.UNKNOWN_FUNCTION);
+    test ("add", "0", ErrorCode.UNKNOWN_VARIABLE);
+    test ("add(x;y)=x+y", "0", 0);
+    test ("(3+2)*10 + 5^2 - add(7;8)", "60", 0);
     test ("dummy(abc;xyz;pqr)=abc*xyz*pqr", "0", 0);
     test ("dummy(1;0;1)", "0", 0);
     test ("dummy(4;5;6)", "120", 0);
@@ -859,17 +859,17 @@ private void test_custom_functions ()
     test ("abcd(4;5;6)", "15", 0);
     test ("abcd(2.9;91;9.1)", "103", 0);
     test ("log(dummy(1;5;2))", "1", 0);
-    test ("sum(sum(sum(1;1);sum(1;1));sum(sum(1;1);sum(1;1)))", "8", 0);
-    function_manager.delete ("sum");
-    test ("sum(sum(sum(1;1);sum(1;1));sum(sum(1;1);sum(1;1)))", "8", ErrorCode.UNKNOWN_FUNCTION);
-    test ("sum(x;y)=x+y+1", "0", 0);
-    test ("sum(sum(sum(1;1);sum(1;1));sum(sum(1;1);sum(1;1)))", "15", 0);
+    test ("add(add(add(1;1);add(1;1));add(add(1;1);add(1;1)))", "8", 0);
+    function_manager.delete ("add");
+    test ("add(add(add(1;1);add(1;1));add(add(1;1);add(1;1)))", "8", ErrorCode.UNKNOWN_FUNCTION);
+    test ("add(x;y)=x+y+1", "0", 0);
+    test ("add(add(add(1;1);add(1;1));add(add(1;1);add(1;1)))", "15", 0);
     test ("funcWithDescription(x;y;z)=x+y+z @ Description", "0", 0);
     test ("funcWithDescription(2;3;5)", "10", 0);
 
     function_manager.delete ("func");
     function_manager.delete ("test");
-    function_manager.delete ("sum");
+    function_manager.delete ("add");
     function_manager.delete ("dummy");
     function_manager.delete ("abcd");
     function_manager.delete ("funcWithDescription");

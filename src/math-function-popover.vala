@@ -118,20 +118,8 @@ public class MathFunctionPopover : MathPopover<MathFunction>
 
     protected override string get_item_text (MathFunction function)
     {
-        var expression = "(x)";
-        if (function.is_custom_function ())
-            expression = "(%s)".printf (string.joinv (";", function.arguments));
-        else if (function.name == "ncr" || function.name == "npr")
-            expression = "(n;r)";
-        else if (function.name == "gcd" || function.name == "lcm")
-            expression = "(x;y;…)";
-        else if (function.name == "modulus" || function.name == "cmp")
-            expression = "(x;y)";
-        else if (function.name == "modexp")
-            expression = "(x;y;p)";
-
-        string text = "<b>%s</b>%s".printf (function.name, expression);
-        return text;
+        var expression = "(%s)".printf (string.joinv (";", function.arguments));
+        return "<b>%s</b>%s".printf (function.name, expression);
     }
 
     protected override int get_item_index (MathFunction item)

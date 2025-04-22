@@ -199,9 +199,8 @@ private class FunctionParser : ExpressionParser
 
 public class BuiltInMathFunction : MathFunction
 {
-    public BuiltInMathFunction (string function_name, string? description)
+    public BuiltInMathFunction (string function_name, string? description, string[] arguments = {"x"})
     {
-        string[] arguments = {};
         string expression = "";
         base (function_name, arguments, expression, description);
     }
@@ -220,6 +219,8 @@ public class BuiltInMathFunction : MathFunction
 private Number? evaluate_built_in_function (string name, Number[] args, Parser? root_parser = null)
 {
     var lower_name = name.down ();
+    if (args.length == 0)
+        return null;
     var x = args[0];
     // FIXME: Re Im ?
 
@@ -308,19 +309,39 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
         case "twos":
             return x.twos_complement (root_parser.wordlen);
         case "ncr":
-            return x.combination (args.length <= 1 ? x : args[1]);
+            return x.combination (args[1]);
         case "npr":
-            return x.permutation (args.length <= 1 ? x : args[1]);
+            return x.permutation (args[1]);
         case "gcd":
             return Number.gcd (args);
         case "lcm":
             return Number.lcm (args);
         case "modulus":
-            return x.modulus_divide (args.length <= 1 ? x : args[1]);
+            return x.modulus_divide (args[1]);
         case "modexp":
             return x.modular_exponentiation (args[1], args[2]);
         case "cmp":
-            return x.kronecker_delta (args.length <= 1 ? x : args[1]);
+            return x.kronecker_delta (args[1]);
+        case "sum":
+            return Number.sum (args);
+        case "sumsq":
+            return Number.sum_squares (args);
+        case "average":
+            return Number.sum (args).divide_integer (args.length);
+        case "median":
+            return Number.median (args);
+        case "min":
+            return Number.min (args);
+        case "max":
+            return Number.max (args);
+        case "stdev":
+            return Number.sample_standard_deviation (args);
+        case "stdevp":
+            return Number.population_variance (args).sqrt ();
+        case "var":
+            return Number.sample_variance (args);
+        case "varp":
+            return Number.population_variance (args);
     }
     return null;
 }

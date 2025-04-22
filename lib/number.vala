@@ -1121,6 +1121,114 @@ public class Number : GLib.Object
         return x.divide (gcd_x_y (x, y)).multiply (y);
     }
 
+    /* Sets z to be the sum of 'args' */
+    public static Number sum (Number[] args)
+    {
+        var z = new Number.integer (0);
+        foreach (var x in args)
+            z = z.add (x);
+        return z;
+    }
+
+    /* Sets z to be the sum of the squares of 'args' */
+    public static Number sum_squares (Number[] args)
+    {
+        var z = new Number.integer (0);
+        foreach (var x in args)
+            z = z.add (x.xpowy_integer (2));
+        return z;
+    }
+
+    /* Sets z to be the median of 'args' */
+    public static Number median (Number[] args)
+    {
+        foreach (var x in args)
+            if (x.is_complex ())
+            {
+                error = _("Median is only defined for real numbers");
+                return new Number.integer (0);
+            }
+
+        var array = new GenericArray<Number> ();
+        array.data = args;
+        array.sort ((a, b) => a.compare (b));
+        if (args.length % 2 != 0)
+            return array[args.length / 2];
+        return array[args.length / 2].add (array[args.length / 2 - 1]).divide_integer (2);
+    }
+
+    /* Sets z to be the minimum value in 'args' */
+    public static Number min (Number[] args)
+    {
+        var z = args[0];
+        foreach (var x in args)
+        {
+            if (x.is_complex ())
+            {
+                error = _("Minimum value is only defined for real numbers");
+                return new Number.integer (0);
+            }
+            if (x.compare (z) < 0)
+                z = x;
+        }
+        return z;
+    }
+
+    /* Sets z to be the maximum value in 'args' */
+    public static Number max (Number[] args)
+    {
+        var z = args[0];
+        foreach (var x in args)
+        {
+            if (x.is_complex ())
+            {
+                error = _("Maximum value is only defined for real numbers");
+                return new Number.integer (0);
+            }
+            if (x.compare (z) > 0)
+                z = x;
+        }
+        return z;
+    }
+
+    /* Sets z to be the sample standard deviation of 'args' */
+    public static Number sample_standard_deviation (Number[] args)
+    {
+        if (args.length == 1)
+        {
+            error = _("Sample standard deviation of a single number is undefined");
+            return new Number.integer (0);
+        }
+
+        return sample_variance (args).sqrt ();
+    }
+
+    /* Sets z to be the sample variance of 'args' */
+    public static Number sample_variance (Number[] args)
+    {
+        if (args.length == 1)
+        {
+            error = _("Sample variance of a single number is undefined");
+            return new Number.integer (0);
+        }
+
+        var z = new Number.integer (0);
+        var average = sum (args).divide_integer (args.length);
+        foreach (var x in args)
+            z = z.add (x.subtract (average).abs ().xpowy_integer (2));
+        return z.divide_integer (args.length - 1);
+    }
+
+    /* Sets z to be the population variance of 'args' */
+    public static Number population_variance (Number[] args)
+    {
+        var z = new Number.integer (0);
+        var average = sum (args).divide_integer (args.length);
+        foreach (var x in args)
+            z = z.add (x.subtract (average).abs ().xpowy_integer (2));
+        return z.divide_integer (args.length);
+    }
+
     /* In: An p := p \in 2Z+1; An b := gcd(b,p) = 1
       Out:  A boolean showing that p is probably prime */
     private bool is_sprp (Number p, uint64 b)
