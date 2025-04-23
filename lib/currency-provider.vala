@@ -43,7 +43,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     protected List<Currency> currencies;
     protected uint update_callback = 0;
     public CurrencyManager currency_manager { get; construct; }
-    public string user_agent { get; construct; default = "GNOME Calculator"; }
+    public string user_agent { get; default = "GNOME Calculator"; }
 
     public void clear () {
         FileUtils.remove (rate_filepath);
