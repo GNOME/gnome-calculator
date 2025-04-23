@@ -600,7 +600,7 @@ public class Lexer : Object
             return insert_token (LexerTokenType.UNKNOWN);
         }
 
-        while (type == LexerTokenType.PL_DIGIT);
+        while (type == LexerTokenType.PL_DIGIT)
             type = prelexer.get_next_token ();
 
         if (type == LexerTokenType.PL_MINUTE)
