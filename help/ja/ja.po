@@ -1,987 +1,2323 @@
+# gnome-calculator help translation
 #
 # Yasumichi Akahoshi <yasumichi@vinelinux.org>, 2012.
+# sujiniku <sujinikusityuu@gmail.com >, 2022.
+# Takayuki Kusano <https://bsky.app/profile/tkusano.jp>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gcalctool master\n"
-"POT-Creation-Date: 2012-11-14 11:13+0000\n"
-"PO-Revision-Date: 2012-11-16 00:46+0900\n"
-"Last-Translator: Yasumichi Akahoshi <yasumichi@vinelinux.org>\n"
-"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
+"Project-Id-Version: gcalctool help main\n"
+"POT-Creation-Date: 2025-04-27 08:33+0000\n"
+"PO-Revision-Date: 2025-04-29 16:59+0900\n"
+"Last-Translator: sujiniku <sujinikusityuu@gmail.com>\n"
+"Language-Team: Japanese <https://l10n.gnome.org/teams/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.5.4\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "赤星　柔充 <yasumichi@vinelinux.org>, 2012"
+msgstr ""
+"赤星 柔充 <yasumichi@vinelinux.org>, 2012\n"
+"sujiniku <sujinikusityuu@gmail.com>, 2022\n"
+"Takayuki Kusano <https://bsky.app/profile/tkusano.jp>, 2025."
 
-# 著者
-#: C/index.page:7(credit/name)
-msgid "Robert Ancell"
-msgstr "Robert Ancell"
-
-#: C/index.page:13(page/title)
-msgid "Calculator Help"
-msgstr "電卓ヘルプ"
-
-#: C/index.page:16(section/title)
-msgid "User Interface"
-msgstr "ユーザーインターフェイス"
-
-#: C/index.page:20(section/title)
-msgid "Equations"
-msgstr "式"
-
-#: C/index.page:24(section/title)
-msgid "Numbers"
-msgstr "数"
-
-#: C/index.page:28(section/title)
-msgid "Conversions"
-msgstr "変換"
-
-#: C/index.page:32(section/title)
-msgid "Financial Calculations"
-msgstr "財務計算"
-
-#: C/absolute.page:9(page/title)
+#. (itstool) path: page/title
+#: C/absolute.page:9
 msgid "Absolute Values"
 msgstr "絶対値"
 
-#: C/absolute.page:11(page/p)
-msgid "Absolute values are calculated using the | symbol or abs <link xref=\"function\">function</link>."
-msgstr "| 記号や abs <link xref=\"function\">関数</link>を使うと絶対値が計算されます。"
+#. (itstool) path: page/p
+#: C/absolute.page:11
+msgid ""
+"Absolute values are calculated using the | symbol or abs <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"| 記号や abs <link xref=\"function\">関数</link>を使うと絶対値が計算されま"
+"す。"
 
-#: C/absolute.page:15(example/p)
+#. (itstool) path: example/p
+#: C/absolute.page:15
 msgid "|−1|"
 msgstr "|−1|"
 
-#: C/absolute.page:18(example/p)
+#. (itstool) path: example/p
+#: C/absolute.page:18
 msgid "abs (−1)"
 msgstr "abs (−1)"
 
-#: C/base.page:9(page/title) C/conv-base.page:9(page/title)
+#. (itstool) path: page/title
+#: C/base.page:9 C/conv-base.page:9
 msgid "Number Bases"
 msgstr "基数"
 
-#: C/base.page:11(page/p)
-msgid "To enter numbers in a particular number base use <link xref=\"superscript\">subscript numbers</link>. The following numbers are equivalent."
-msgstr "特別に基数を指定した数字を入力するには、<link xref=\"superscript\">下付き数字</link>を使います。以下の数字は等価です。"
+#. (itstool) path: page/p
+#: C/base.page:11
+msgid ""
+"To enter numbers in a particular number base use <link "
+"xref=\"superscript\">subscript numbers</link>. The following numbers are "
+"equivalent."
+msgstr ""
+"特別に基数(底)を指定した数字を入力するには、<link xref=\"superscript\">下付き"
+"数字</link>を使います。以下の数字は等価です。"
 
-#: C/base.page:16(example/p)
+#. (itstool) path: example/p
+#: C/base.page:16
 msgid "1001011₂"
 msgstr "1001011₂"
 
-#: C/base.page:19(example/p)
+#. (itstool) path: example/p
+#: C/base.page:19
 msgid "113₈"
 msgstr "113₈"
 
-#: C/base.page:22(example/p)
+#. (itstool) path: example/p
+#: C/base.page:22
 msgid "75"
 msgstr "75"
 
-#: C/base.page:25(example/p)
+#. (itstool) path: example/p
+#: C/base.page:25
 msgid "4B₁₆"
 msgstr "4B₁₆"
 
-#: C/base.page:29(page/p)
-msgid "When in <link xref=\"mouse\">programming mode</link> there are buttons for binary (<keyseq><key>Ctrl</key><key>B</key></keyseq>), octal (<keyseq><key>Ctrl</key><key>O</key></keyseq>) and hexadecimal (<keyseq><key>Ctrl</key><key>H</key></keyseq>)."
-msgstr "<link xref=\"mouse\">プログラミングモード</link>には、2 進法 (<keyseq><key>Ctrl</key><key>B</key></keyseq>)、8 進法 (<keyseq><key>Ctrl</key><key>O</key></keyseq>) および 16 進法 (<keyseq><key>Ctrl</key><key>H</key></keyseq>) のボタンがあります。"
+#. (itstool) path: page/p
+#: C/base.page:29
+msgid ""
+"When in <link xref=\"mouse\">programming mode</link>, use the drop-down menu "
+"to change the base of the calculation."
+msgstr ""
+"<link xref=\"mouse\">プログラミングモード</link>では、ドロップダウンメニュー"
+"を使うことで、基数(底)を変更できます。"
 
-#: C/base.page:32(page/p)
-msgid "To set the base that results are shown in change the <link xref=\"number-display\">result format</link>."
-msgstr "<link xref=\"number-display\">結果の書式</link>を変更すると計算結果を表示する基数を設定できます。"
+#. (itstool) path: page/p
+#: C/base.page:32
+msgid ""
+"Keyboard shortcuts can be used to switch to <gui>Binary</gui> "
+"(<keyseq><key>Ctrl</key><key>B</key></keyseq>), <gui>Octal</gui> "
+"(<keyseq><key>Ctrl</key><key>O</key></keyseq>), <gui>Decimal</gui> "
+"(<keyseq><key>Ctrl</key><key>D</key></keyseq>) and <gui>Hexadecimal</gui> "
+"(<keyseq><key>Ctrl</key><key>H</key></keyseq>) modes."
+msgstr ""
+"キーボードショートカットを使えば、<gui>2 進数</gui> (<keyseq><key>Ctrl</"
+"key><key>B</key></keyseq>)、<gui>8 進数</gui> (<keyseq><key>Ctrl</"
+"key><key>O</key></keyseq>) 、<gui>10 進数</gui> (<keyseq><key>Ctrl</"
+"key><key>D</key></keyseq>) および  <gui>16 進数</gui> (<keyseq><key>Ctrl</"
+"key><key>H</key></keyseq>) モードに切り替えできます。"
 
-#: C/base.page:35(page/p)
-msgid "To change the base of the current result use a base button or <keyseq><key>Ctrl</key><key>D</key></keyseq> to show in decimal form."
-msgstr "現在の結果の基数を変更するには、基数ボタンを使用するか、<keyseq><key>Ctrl</key><key>D</key></keyseq> を押して 10 進法で表示します。"
+#. (itstool) path: page/p
+#: C/base.page:35
+msgid ""
+"To convert numbers to other base on the fly, <link xref=\"conv-base\">Number "
+"Base conversion</link> can be used."
+msgstr ""
+"他の基数(底)にリアルタイムに変換するには、<link xref=\"conv-base\">基数変換</"
+"link> が利用できます。"
 
-#: C/boolean.page:9(page/title)
+#. (itstool) path: page/title
+#: C/boolean.page:9
 msgid "Boolean Algebra"
 msgstr "ブール代数"
 
-#: C/boolean.page:11(page/p)
-msgid "Boolean algebra can be calculated using the AND, OR and XOR operators."
-msgstr "AND、OR および XOR という演算子を使用すれば、ブール代数を計算可能です。"
+#. (itstool) path: page/p
+#: C/boolean.page:11
+msgid ""
+"Boolean algebra can be calculated using the following operators and "
+"functions."
+msgstr "これらの演算子や関数を使用すれば、ブール代数を計算可能です。"
 
-#: C/boolean.page:15(example/p)
+#. (itstool) path: page/p
+#: C/boolean.page:14
+msgid ""
+"The result of some operations depend on the word size. To set the word size, "
+"press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>."
+msgstr ""
+"いくかの演算はワードサイズに依存した結果になります。ワードサイズを設定するに"
+"は、ウィンドウの右上のメニューボタンを押し、<gui style=\"menuitem\">設定</"
+"gui>を選んでください。"
+
+#. (itstool) path: page/p
+#: C/boolean.page:19
+msgid ""
+"Buttons for the following symbols and to set the word size are available in "
+"<link xref=\"mouse\">programming mode</link>."
+msgstr ""
+"これらの記号やワードサイズの設定用のボタンは、<link xref=\"mouse\">プログラミ"
+"ングモード</link>で使用できます。"
+
+#. (itstool) path: page/p
+#: C/boolean.page:23
+msgid "Bitwise conjunction can be calculated using the ∧ or AND operators."
+msgstr "∧ や AND といった演算子を使用すればビット単位の論理積が計算できます。"
+
+#. (itstool) path: example/p
+#: C/boolean.page:27
+msgid "010011₂ ∧ 110101₂"
+msgstr "010011₂ ∧ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:30
 msgid "010011₂ AND 110101₂"
 msgstr "010011₂ AND 110101₂"
 
-#: C/boolean.page:19(page/p)
-msgid "Buttons for these symbols are available in <link xref=\"mouse\">programming mode</link>."
-msgstr "これらの記号用のボタンは、<link xref=\"mouse\">プログラミングモード</link>で使用できます。"
+#. (itstool) path: page/p
+#: C/boolean.page:35
+msgid "Bitwise disjunction can be calculated using the ∨ or OR operators."
+msgstr "∨ や OR といった演算子を使用すればビット単位の論理和を計算できます。"
 
-#: C/boolean.page:22(page/p)
-msgid "The NOT <link xref=\"function\">function</link> inverts the bits in a number. The word size is set from the <guiseq><gui>Calculator</gui><gui>Preferences</gui></guiseq> menu."
-msgstr "NOT <link xref=\"function\">関数</link>は、数字のビットを反転します。<guiseq><gui>電卓</gui><gui>設定</gui></guiseq>というメニューから、ワードの大きさを設定します。"
+#. (itstool) path: example/p
+#: C/boolean.page:39
+msgid "010011₂ ∨ 110101₂"
+msgstr "010011₂ ∨ 110101₂"
 
-#: C/boolean.page:27(example/p)
+#. (itstool) path: example/p
+#: C/boolean.page:42
+msgid "010011₂ OR 110101₂"
+msgstr "010011₂ OR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:47
+msgid ""
+"Bitwise exclusive disjunction can be calculated using the ⊻, ⊕ or XOR "
+"operators."
+msgstr ""
+"⊻、⊕ あるいは XOR といった演算子を使用すればビット単位の排他的論理和を計算で"
+"きます。"
+
+#. (itstool) path: example/p
+#: C/boolean.page:51
+msgid "010011₂ ⊻ 110101₂"
+msgstr "010011₂ ⊻ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:54
+msgid "010011₂ XOR 110101₂"
+msgstr "010011₂ XOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:59
+msgid ""
+"Bitwise complement for the set word size can be calculated using the ¬ or ~ "
+"operators or the NOT <link xref=\"function\">function</link>."
+msgstr ""
+"設定されたワードサイズのビット補数は、¬ または ~ 演算子、あるいは NOT <link "
+"xref=\"function\">関数</link> を使用して計算できます。"
+
+#. (itstool) path: example/p
+#: C/boolean.page:63
+msgid "¬ 010011₂"
+msgstr "¬ 010011₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:66
 msgid "NOT 010011₂"
 msgstr "NOT 010011₂"
 
-#: C/complex.page:9(page/title)
+#. (itstool) path: page/p
+#: C/boolean.page:71
+msgid ""
+"Bitwise alternative denial for the set word size can be calculated using the "
+"⊼ or NAND operators."
+msgstr ""
+"設定されたワードサイズのビット単位の否定論理積は、⊼ または NAND 演算子を使用"
+"して計算できます。"
+
+#. (itstool) path: example/p
+#: C/boolean.page:75
+msgid "010011₂ ⊼ 110101₂"
+msgstr "010011₂ ⊼ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:78
+msgid "010011₂ NAND 110101₂"
+msgstr "010011₂ NAND 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:83
+msgid ""
+"Bitwise joint denial for the set word size can be calculated using the ⊽ or "
+"NOR operators."
+msgstr ""
+"設定されたワードサイズのビット単位の否定論理和は、⊽ または NOR 演算子を使用し"
+"て計算できます。"
+
+#. (itstool) path: example/p
+#: C/boolean.page:87
+msgid "010011₂ ⊽ 110101₂"
+msgstr "010011₂ ⊽ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:90
+msgid "010011₂ NOR 110101₂"
+msgstr "010011₂ NOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:95
+msgid ""
+"Bitwise biconditional for the set word size can be calculated using the ⊙, "
+"XNOR or NXOR operators."
+msgstr ""
+"設定されたワードサイズのビット単位の否定排他的論理和は ⊙、XNOR、あるいは "
+"NXOR 演算子を使用して計算できます。"
+
+#. (itstool) path: example/p
+#: C/boolean.page:99
+msgid "010011₂ ⊙ 110101₂"
+msgstr "010011₂ ⊙ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:102
+msgid "010011₂ XNOR 110101₂"
+msgstr "010011₂ XNOR 110101₂"
+
+#. (itstool) path: page/title
+#: C/complex.page:9
 msgid "Complex Numbers"
 msgstr "複素数"
 
-#: C/complex.page:11(page/p)
-msgid "Complex numbers are not supported in <app>Calculator</app>."
-msgstr "<app>電卓</app>では、複素数をサポートしていません。"
+#. (itstool) path: page/p
+#: C/complex.page:11
+msgid ""
+"<app>Calculator</app> supports complex numbers, as well as the following "
+"functions while in <link xref=\"mouse\">Advanced mode</link>."
+msgstr ""
+"<app>電卓</app> は複素数をサポートしています。<link xref=\"mouse\">拡張モード"
+"</link>でこれらの関数もサポートしています。"
 
-# 設定画面で基数を変更することはできない。原文自体が事実誤認をしている可能性あり。プログラミングモードにあるドロップダウンリストで行うというのが正しいのではないだろうか。
-#: C/conv-base.page:11(page/p)
-msgid "To convert between number bases enter a number (or solve an equation) and change the <link xref=\"number-display\">result format</link> from the <guiseq><gui>Calculator</gui><gui>Preferences</gui></guiseq> menu."
-msgstr "基数を変更するには、<link xref=\"mouse\">プログラミングモード</link>に入り、数字を入力するか式を計算してから、進法を選択します。"
+#. (itstool) path: td/p
+#: C/complex.page:18
+msgid "Re"
+msgstr "Re"
 
-#: C/conv-character.page:9(page/title)
+#. (itstool) path: td/p
+#: C/complex.page:19
+msgid "Returns the real part of a complex number. For example:"
+msgstr "複素数の実数成分を返します。例えば:"
+
+#. (itstool) path: example/p
+#: C/complex.page:21
+msgid "Re (2-5i) = 2"
+msgstr "Re (2-5i) = 2"
+
+#. (itstool) path: td/p
+#: C/complex.page:29
+msgid "Im"
+msgstr "Im"
+
+#. (itstool) path: td/p
+#: C/complex.page:30
+msgid "Returns the imaginary part of a complex number. For example:"
+msgstr "複素数の虚数成分を返す。例えば:"
+
+#. (itstool) path: example/p
+#: C/complex.page:32
+msgid "Im (2-5i) = -5"
+msgstr "Im (2-5i) = -5"
+
+#. (itstool) path: td/p
+#: C/complex.page:40
+msgid "conj"
+msgstr "conf"
+
+#. (itstool) path: td/p
+#: C/complex.page:41
+msgid "Returns the conjugate of a complex number. For example:"
+msgstr "複素数の複素共役を返す。例えば:"
+
+#. (itstool) path: example/p
+#: C/complex.page:43
+msgid "conj (2-5i) = 2+5i"
+msgstr "conj (2-5i) = 2+5i"
+
+#. (itstool) path: td/p
+#: C/complex.page:51
+msgid "Arg"
+msgstr "Arg"
+
+#. (itstool) path: td/p
+#: C/complex.page:52
+msgid "Returns the argument of a complex number. For example:"
+msgstr "複素数の偏角を返す。例えば:"
+
+#. (itstool) path: example/p
+#: C/complex.page:54
+msgid "Arg (2-5i) = -68.1986"
+msgstr "Arg (2-5i) = -68.1986"
+
+#. (itstool) path: page/p
+#: C/conv-base.page:11
+msgid ""
+"To convert the number to a different base representation use the <em>in</em> "
+"operator."
+msgstr "数を他の進法に換算するには、<em>in</em> 演算子を使います。"
+
+#. (itstool) path: example/p
+#: C/conv-base.page:15
+msgid "12 in hex"
+msgstr "12 in hex"
+
+#. (itstool) path: example/p
+#: C/conv-base.page:18
+msgid "5 in binary"
+msgstr "5 in binary"
+
+#. (itstool) path: example/p
+#: C/conv-base.page:21
+msgid "1A₁₆ in dec"
+msgstr "1A₁₆ in dec"
+
+#. (itstool) path: example/p
+#: C/conv-base.page:24
+msgid "1010₂ in octal"
+msgstr "1010₂ in octal"
+
+#. (itstool) path: note/p
+#: C/conv-base.page:29
+msgid ""
+"Number Base conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>Number Base</gui> category."
+msgstr ""
+"基数変換はキーボードを使うか、<gui>換算モード</gui> で <gui>基数</gui> カテゴ"
+"リーを選択する必要があります。"
+
+#. (itstool) path: page/title
+#: C/conv-character.page:9
 msgid "Character Codes"
 msgstr "キャラクターコード"
 
-#: C/conv-character.page:11(page/p)
-msgid "When in <link xref=\"mouse\">programming mode</link> the <gui>á</gui> button opens a dialog to convert characters to character codes."
-msgstr "<link xref=\"mouse\">プログラミングモード</link>で <gui>á</gui> ボタンを押すと文字をキャラクターコードに変換するためのダイアログが開きます。"
+#. (itstool) path: page/p
+#: C/conv-character.page:11
+msgid ""
+"When in <link xref=\"mouse\">programming mode</link> the <gui>á</gui> button "
+"opens a dialog to convert characters to character codes."
+msgstr ""
+"<link xref=\"mouse\">プログラミングモード</link>で <gui>á</gui> ボタンを押す"
+"と文字をキャラクターコードに変換するためのダイアログが開きます。"
 
-#: C/conv-character.page:15(note/p)
+#. (itstool) path: note/p
+#: C/conv-character.page:15
 msgid "Characters cannot be converted using the keyboard."
 msgstr "キーボードを使ってキャラクターコードを変換することはできません。"
 
-#: C/conv-currency.page:9(page/title)
+# 著者
+#. (itstool) path: credit/name
+#: C/conv-currency.page:10 C/index.page:11
+msgid "Robert Ancell"
+msgstr "Robert Ancell"
+
+#. (itstool) path: credit/years
+#: C/conv-currency.page:12 C/conv-currency.page:17
+msgid "2010"
+msgstr "2010"
+
+#. (itstool) path: credit/name
+#: C/conv-currency.page:15
+msgid "Robin Sonefors"
+msgstr "Robin Sonefors"
+
+#. (itstool) path: credit/name
+#: C/conv-currency.page:20 C/power.page:11
+msgid "Ekaterina Gerasimova"
+msgstr "Ekaterina Gerasimova"
+
+#. (itstool) path: credit/years
+#: C/conv-currency.page:22
+msgid "2014"
+msgstr "2014"
+
+#. (itstool) path: page/title
+#: C/conv-currency.page:27
 msgid "Currency"
 msgstr "通貨"
 
-#: C/conv-currency.page:11(page/p)
-msgid "To convert currencies, enter the <link xref=\"financial\">financial mode</link>, and use the currency controls."
-msgstr "通貨換算を行うには、<link xref=\"financial\">財務モード</link>に入って、通貨コントロールを使用します。"
+#. (itstool) path: page/p
+#: C/conv-currency.page:29
+msgid ""
+"To convert currencies, enter the <link xref=\"financial\">financial mode</"
+"link>, and use the <gui>Currency conversion</gui> button or enter the <link "
+"xref=\"index#conversion\">conversion mode</link> and select the "
+"<gui>Currency</gui> category."
+msgstr ""
+"通貨換算を行うには、<link xref=\"financial\">財務モード</link>に入って、<gui>"
+"通貨換算</gui> ボタンを使うか、<link xref=\"index#conversation\">換算モード</"
+"link> に入って <gui>通貨</gui> を選択します。"
 
-#: C/conv-currency.page:14(page/p)
-msgid "You can also convert currencies using the keyboard and the <em>in</em> operator."
-msgstr "キーボードを使用して <em>in</em> 演算子を入力することでも通貨を換算できます。(訳注: 次の式は、US ドルをイギリス・ポンドに換算します。)"
+#. (itstool) path: item/p
+#: C/conv-currency.page:36
+msgid "Enter the amount which you want to convert."
+msgstr "換算したい量を入力してください。"
 
-#: C/conv-currency.page:18(example/p)
-msgid "13.65 USD in GBP"
-msgstr "13.65 USD in GBP"
+#. (itstool) path: item/p
+#: C/conv-currency.page:39
+msgid ""
+"Select the currency that you want to convert from and the currency that you "
+"want to convert to from the drop down below."
+msgstr ""
+"このドロップダウンメニューから換算元の通貨と換算先の通貨を選択してください。"
 
-#: C/conv-currency.page:23(note/p)
-msgid "Currency information is approximate and should not be used for making financial decisions."
+#. (itstool) path: note/p
+#: C/conv-currency.page:45
+msgid ""
+"Currency information is approximate and should not be used for making "
+"financial decisions."
 msgstr "通貨情報は近似値であり、財務的な意思決定に使用するべきではありません。"
 
-#: C/conv-length.page:9(page/title)
+#. (itstool) path: page/title
+#: C/conv-length.page:9
 msgid "Length/Area/Volume"
 msgstr "長さ/面積/体積"
 
-#: C/conv-length.page:11(page/p)
-msgid "To convert between length, area and volume units use the <em>in</em> operator."
-msgstr "長さ、面積および体積の単位を変換するには、<em>in</em> 演算子を使用します。"
+#. (itstool) path: page/p
+#: C/conv-length.page:11
+msgid ""
+"To convert between length, area and volume units use the <em>in</em> "
+"operator."
+msgstr ""
+"長さ、面積および体積の単位を変換するには、<em>in</em> 演算子を使用します。"
 
-#: C/conv-length.page:15(example/p)
+#. (itstool) path: example/p
+#: C/conv-length.page:15
 msgid "6 meters in inches"
 msgstr "6 meters in inches"
 
-#: C/conv-length.page:18(example/p)
+#. (itstool) path: example/p
+#: C/conv-length.page:18
 msgid "1 acre in cm²"
 msgstr "1 acre in cm²"
 
-#: C/conv-length.page:21(example/p)
+#. (itstool) path: example/p
+#: C/conv-length.page:21
 msgid "1 pint in mL"
 msgstr "1 pint in mL"
 
-#: C/conv-length.page:26(note/p)
-msgid "Length/Area/Volume conversions must be performed using the keyboard."
-msgstr "長さ/面積/体積の換算は、キーボードで行う必要があります。"
+#. (itstool) path: note/p
+#: C/conv-length.page:26
+msgid ""
+"Length/Area/Volume conversions must be performed using the keyboard or using "
+"the <gui>conversion mode</gui> and selecting the <gui>length/area/volume</"
+"gui> category."
+msgstr ""
+"長さ/面積/体積 換算はキーボードを使うか、<gui>換算モード</gui>を使って<gui>長"
+"さ/面積/体積</gui>カテゴリーを選んでください。"
 
-#: C/conv-time.page:9(page/title)
+#. (itstool) path: page/title
+#: C/conv-time.page:9
 msgid "Time"
 msgstr "時間"
 
-#: C/conv-time.page:11(page/p)
+#. (itstool) path: page/p
+#: C/conv-time.page:11
 msgid "To convert between time use the <em>in</em> operator."
-msgstr "時間を換算するには、<em>in</em> 演算子を使います。(訳注: 次の例では、3 年を分単位に換算します。)"
+msgstr ""
+"時間を換算するには、<em>in</em> 演算子を使います。(訳注: 次の例では、3 年を分"
+"単位に換算します。)"
 
-#: C/conv-time.page:15(example/p)
+#. (itstool) path: example/p
+#: C/conv-time.page:15
 msgid "3 years in hours"
 msgstr "3 years in hours"
 
-#: C/conv-time.page:20(note/p)
-msgid "Time conversions must be performed using the keyboard."
-msgstr "時間の換算は、キーボードで行う必要があります。"
+#. (itstool) path: note/p
+#: C/conv-time.page:20
+msgid ""
+"Time conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>duration</gui> category."
+msgstr ""
+"時間換算はキーボードを使うか、<gui>換算モード</gui>を使って<gui>期間</gui>カ"
+"テゴリーを選んでください。"
 
-#: C/conv-weight.page:9(page/title)
+#. (itstool) path: page/title
+#: C/conv-weight.page:9
 msgid "Mass"
 msgstr "質量"
 
-#: C/conv-weight.page:11(page/p)
+#. (itstool) path: page/p
+#: C/conv-weight.page:11
 msgid "To convert between mass use the <em>in</em> operator."
-msgstr "質量を換算するには、<em>in</em> 演算子を使います。(訳注: 次の例では、1kg をポンドに換算します。)"
+msgstr ""
+"質量を換算するには、<em>in</em> 演算子を使います。(訳注: 次の例では、1kg をポ"
+"ンドに換算します。)"
 
-#: C/conv-weight.page:15(example/p)
+#. (itstool) path: example/p
+#: C/conv-weight.page:15
 msgid "1kg in pounds"
 msgstr "1kg in pounds"
 
-#: C/conv-weight.page:20(note/p)
-msgid "Mass conversions must be performed using the keyboard."
-msgstr "質量の換算は、キーボードで行う必要があります。"
+#. (itstool) path: note/p
+#: C/conv-weight.page:20
+msgid ""
+"Mass conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>mass</gui> category."
+msgstr ""
+"質量を換算するにはキーボードを使うか、<gui>換算モード</gui>を使って<gui>質量"
+"</gui>カテゴリーを選んでください。"
 
-#: C/equation.page:7(info/title)
+#. (itstool) path: info/title
+#: C/equation.page:7
 msgctxt "sort"
 msgid "0"
 msgstr "0"
 
-#: C/equation.page:11(page/title)
+#. (itstool) path: page/title
+#: C/equation.page:11
 msgid "Basic Equations"
 msgstr "基本的な式"
 
-#: C/equation.page:13(page/p)
-msgid "Equations are entered in standard mathematical form. For example to add 7 and 2 enter the following:"
-msgstr "式は、標準的な数学の書式で入力します。例えば、7 と 2 を足すには、次のように入力します。"
+#. (itstool) path: page/p
+#: C/equation.page:13
+msgid ""
+"Equations are entered in standard mathematical form. For example to add 7 "
+"and 2 enter the following:"
+msgstr ""
+"式は、標準的な数学の書式で入力します。例えば、7 と 2 を足すには、次のように入"
+"力します。"
 
-#: C/equation.page:18(example/p)
+#. (itstool) path: example/p
+#: C/equation.page:18
 msgid "7+2"
 msgstr "7+2"
 
-#: C/equation.page:22(page/p)
-msgid "To solve, press the <gui>=</gui> button with your mouse or the <key>Enter</key> key on your keyboard."
-msgstr "計算するには、マウスで <gui>=</gui> ボタンを押すか、キーボードで <key>Enter</key> キーを押します。"
+#. (itstool) path: page/p
+#: C/equation.page:22
+msgid ""
+"To solve, press the <gui>=</gui> button with your mouse or the <key>Enter</"
+"key> key on your keyboard."
+msgstr ""
+"計算するには、マウスで <gui>=</gui> ボタンを押すか、キーボードで <key>Enter</"
+"key> キーを押します。"
 
-#: C/equation.page:25(page/p)
-msgid "Calculations are performed in mathematical order - multiplication and division are performed before addition and subtraction. The following equation solves to 1 (3×2 = 6, 7−6 = 1)."
-msgstr "計算は、数学的な順序で行われます。すなわち、乗算と除算は、加算や減算の前に行われます。次の式は、1 と計算されます (3×2 = 6, 7−6 = 1)。"
+#. (itstool) path: page/p
+#: C/equation.page:25
+msgid ""
+"Calculations are performed in mathematical order - multiplication and "
+"division are performed before addition and subtraction. The following "
+"equation solves to 1 (3×2 = 6, 7−6 = 1)."
+msgstr ""
+"計算は、数学的な順序で行われます。すなわち、乗算と除算は、加算や減算の前に行"
+"われます。次の式は、1 と計算されます (3×2 = 6, 7−6 = 1)。"
 
-#: C/equation.page:30(example/p)
+#. (itstool) path: example/p
+#: C/equation.page:30
 msgid "7−3×2"
 msgstr "7−3×2"
 
-#: C/equation.page:34(page/p)
-msgid "To change the order of calculation use parenthesis. The following equation solves to 8 (7−3 = 4, 4×2 = 8)."
-msgstr "計算の順序を変更するには、括弧を使用します。次の式は、8 と計算されます (7−3 = 4, 4×2 = 8)。"
+#. (itstool) path: page/p
+#: C/equation.page:34
+msgid ""
+"To change the order of calculation use parenthesis. The following equation "
+"solves to 8 (7−3 = 4, 4×2 = 8)."
+msgstr ""
+"計算の順序を変更するには、括弧を使用します。次の式は、8 と計算されます (7−3 "
+"= 4, 4×2 = 8)。"
 
-#: C/equation.page:39(example/p)
+#. (itstool) path: example/p
+#: C/equation.page:39
 msgid "(7−3)×2"
 msgstr "(7−3)×2"
 
-#: C/equation.page:43(page/p)
-msgid "To clear the display press the <gui>Clr</gui> button or <key>Escape</key>."
-msgstr "計算画面をクリアするには、<gui>表示のクリア</gui>ボタンか <key>Escape</key> キーを押します。"
+#. (itstool) path: page/p
+#: C/equation.page:43
+msgid ""
+"To clear the display press the <gui>C</gui> button or <key>Escape</key>."
+msgstr ""
+"表示をクリアするには、<gui>C</gui>ボタンか <key>Escape</key> キーを押します。"
 
-#: C/factorial.page:9(page/title)
+#. (itstool) path: page/title
+#: C/factorial.page:9
 msgid "Factorials"
 msgstr "階乗"
 
-#: C/factorial.page:11(page/p)
-msgid "Factorials are entered using the ! symbol. To calculate the factorial of 6 enter the following."
-msgstr "階乗は、! 記号を使って入力します。6 の階乗を計算するには、次のように入力します。"
+#. (itstool) path: page/p
+#: C/factorial.page:11
+msgid ""
+"Factorials are entered using the ! symbol. To calculate the factorial of 6 "
+"enter the following."
+msgstr ""
+"階乗は、! 記号を使って入力します。6 の階乗を計算するには、次のように入力しま"
+"す。"
 
-#: C/factorial.page:16(example/p)
+#. (itstool) path: example/p
+#: C/factorial.page:16
 msgid "6!"
 msgstr "6!"
 
-#: C/factorize.page:9(page/title)
+#. (itstool) path: page/title
+#: C/factorize.page:9
 msgid "Factorization"
-msgstr "因数分解"
+msgstr "素因数分解"
 
-#: C/factorize.page:11(page/p)
-msgid "You can factorize the number currently displayed by pressing the <gui>fact</gui> button. This button is visible in <link xref=\"mouse\">programming mode</link>."
-msgstr "<gui>fact</gui> ボタンを押すことにより、現在表示されている数の因数分解を行えます。このボタンは、<link xref=\"mouse\">プログラミングモード</link>で表示されます。"
+#. (itstool) path: page/p
+#: C/factorize.page:11
+msgid ""
+"You can factorize the number currently displayed by pressing the <gui>fact</"
+"gui> button. This button is visible in <link xref=\"mouse\">programming "
+"mode</link>."
+msgstr ""
+"<gui>fact</gui> ボタンを押すことにより、現在表示されている数の素因数分解を行"
+"えます。このボタンは、<link xref=\"mouse\">プログラミングモード</link>で表示"
+"されます。"
 
-#: C/financial.page:9(page/title)
+#. (itstool) path: page/title
+#: C/financial.page:9
 msgid "Financial Functions"
 msgstr "財務関数"
 
-#: C/financial.page:10(page/p)
+#. (itstool) path: page/p
+#: C/financial.page:10
 msgid "When in financial mode the following buttons are available."
 msgstr "財務モードでは、以下のボタンが利用可能です。"
 
-#: C/financial.page:15(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:15
 msgid "Ctrm"
 msgstr "Ctrm"
 
-#: C/financial.page:16(td/p)
-#, fuzzy
-msgid "Calculate the number of compounding periods necessary to increase an investment of present value to a future value, at a fixed interest rate per compounding period."
-msgstr "投資した現在価値 <replaceable>pv</replaceable> を複利計算期ごとの固定利率 <replaceable>int</replaceable> で将来価値 <replaceable>fv</replaceable> に増やすために必要な複利計算期を計算します。"
+#. (itstool) path: td/p
+#: C/financial.page:16
+msgid ""
+"Calculate the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"投資した現在価値を固定利率の複利期間でで将来価値に増やすために必要な複利期間"
+"の長さを計算します。"
 
-#: C/financial.page:19(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:19
 msgid "Ddb"
 msgstr "Ddb"
 
-#: C/financial.page:20(td/p)
-#, fuzzy
-msgid "Calculate the depreciation allowance on an asset for a specified period of time, using the double-declining balance method."
-msgstr "2 倍定率法を使用した場合の指定期間内の資産の減価償却費を計算します。"
+#. (itstool) path: td/p
+#: C/financial.page:20
+msgid ""
+"Calculate the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr "二倍定率法を使用して、指定された期間の資産の減価償却額を計算します。"
 
-#: C/financial.page:23(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:23
 msgid "Fv"
 msgstr "Fv"
 
-#: C/financial.page:24(td/p)
-#, fuzzy
-msgid "Calculate the future value of an investment based on a series of equal payments at a periodic interest rate over the number of payment periods in the term."
-msgstr "<replaceable>pmt</replaceable> ずつ、定期利率 <replaceable>int</replaceable> で、契約の支払回数、元利均等支払方式で支払った投資の将来価値を計算します。"
+#. (itstool) path: td/p
+#: C/financial.page:24
+msgid ""
+"Calculate the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"定期的に定額を支払う投資において、定期利率と支払い期間の総数に基づいて、将来"
+"価値を計算する。"
 
-#: C/financial.page:27(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:27
 msgid "Gpm"
 msgstr "Gpm"
 
-#: C/financial.page:28(td/p)
-msgid "Calculate the resale price of a product, based on the product cost and the wanted gross profit margin."
-msgstr ""
+#. (itstool) path: td/p
+#: C/financial.page:28
+msgid ""
+"Calculate the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr "製品コストと希望する粗利益率に基づいて、製品の再販価格を計算します。"
 
-#: C/financial.page:31(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:31
 msgid "Pmt"
 msgstr "Pmt"
 
-#: C/financial.page:32(td/p)
-#, fuzzy
-msgid "Calculate the amount of the periodic payment of a loan, where payments are made at the end of each payment period."
+#. (itstool) path: td/p
+#: C/financial.page:32
+msgid ""
+"Calculate the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period."
 msgstr "各返済期間の末日に支払が行われるローンの定期払い込み額を計算します。"
 
-#: C/financial.page:35(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:35
 msgid "Pv"
 msgstr "Pv"
 
-#: C/financial.page:36(td/p)
-#, fuzzy
-msgid "Calculate the present value of an investment based on a series of equal payments discounted at a periodic interest rate over the number of payment periods in the term."
-msgstr "<replaceable>pmt</replaceable> ずつ、契約の支払回数、元利均等支払方式で支払われ、定期利率 <replaceable>int</replaceable> が差し引かれる投資の現在価値を計算します。"
+#. (itstool) path: td/p
+#: C/financial.page:36
+msgid ""
+"Calculate the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term."
+msgstr ""
+"期間中の支払期間数にわたって定期的な利率で割り引かれた一連の均等支払いに基づ"
+"いて、投資の現在価値を計算します。"
 
-#: C/financial.page:39(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:39
 msgid "Rate"
 msgstr "Rate"
 
-#: C/financial.page:40(td/p)
-#, fuzzy
-msgid "Calculate the periodic interest necessary to increase an investment to a future value, over the number of compounding periods."
-msgstr "現在価値 <replaceable>pv</replaceable> の投資を <replaceable>term</replaceable> 内の複利計算期で将来価値 <replaceable>fv</replaceable> に増やすために必要な定期利率を計算します。"
+#. (itstool) path: td/p
+#: C/financial.page:40
+msgid ""
+"Calculate the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods."
+msgstr ""
+"投資を複利期間数にわたって将来価値に増やすために必要な定期利率を計算します。"
 
-#: C/financial.page:43(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:43
 msgid "Sln"
 msgstr "Sln"
 
-#: C/financial.page:44(td/p)
-#, fuzzy
-msgid "Calculate the straight-line depreciation of an asset for one period. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated."
-msgstr "ある期間の資産の定額償却を計算します。定額償却費は、<replaceable>cost</replaceable> - <replaceable>salvage</replaceable> です。 定額償却方式では、減価償却資産原価を資産の耐用年数間で均等に割ります。耐用年数は、資産が減価償却が行われる期間で、年数の場合が一般的です。"
+#. (itstool) path: td/p
+#: C/financial.page:44
+msgid ""
+"Calculate the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated."
+msgstr ""
+"ある期間の資産の定額償却を計算します。定額償却費は、定額償却方式では、減価償"
+"却資産原価を資産の耐用年数間で均等に割ります。耐用年数は、資産が減価償却が行"
+"われる期間で、年数の場合が一般的です。"
 
-#: C/financial.page:47(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:47
 msgid "Syd"
 msgstr "Syd"
 
-#: C/financial.page:48(td/p)
-#, fuzzy
-msgid "Calculate the depreciation allowance on an asset for a specified period of time, using the Sum-of-the-Years'-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The useful life is the number of periods, typically years, over which an asset is depreciated."
-msgstr "算術級数法を使用した場合の指定期間内の資産の減価償却費を計算します。この減価償却法では、初期により多くの償却を行うことで、償却を速めることができます。 定額償却費は、<replaceable>cost</replaceable> - <replaceable>salvage</replaceable> です。 耐用年数は、資産が減価償却が行われる期間で、年数の場合が一般的です。"
+#. (itstool) path: td/p
+#: C/financial.page:48
+msgid ""
+"Calculate the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated."
+msgstr ""
+"級数法を使用した場合の指定期間内の資産の減価償却費を計算します。この減価償却"
+"法では、初期により多くの償却を行うことで、償却を速めることができます。耐用年"
+"数は、資産が減価償却が行われる期間で、年数の場合が一般的です。"
 
-#: C/financial.page:51(td/p)
+#. (itstool) path: td/p
+#: C/financial.page:51
 msgid "Term"
 msgstr "期間"
 
-#: C/financial.page:52(td/p)
-#, fuzzy
-msgid "Calculate the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value, at a periodic interest rate."
-msgstr "定期利率 <replaceable>int</replaceable> で、将来価値 <replaceable>fv</replaceable> を達成するために、普通年金期間内で必要な支払期間を計算します。各回の支払額は、<replaceable>pmt</replaceable> です。"
+#. (itstool) path: td/p
+#: C/financial.page:52
+msgid ""
+"Calculate the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"定期利率で将来価値を達成するために、普通年金期間内で必要な支払期間を計算しま"
+"す。"
 
-#: C/financial.page:56(note/p)
+#. (itstool) path: note/p
+#: C/financial.page:56
 msgid "Financial functions cannot be performed using the keyboard."
 msgstr "財務関数は、キーボードを使って実行することはできません。"
 
-#: C/functions.page:9(page/title)
+#. (itstool) path: page/title
+#: C/functions.page:9
 msgid "Functions"
 msgstr "関数"
 
-#: C/functions.page:11(page/p)
-msgid "Functions can be used by inserting the name of the function followed by the function argument. If the argument is not a number or <link xref=\"variable\">variable</link> then use parenthesis around the argument."
-msgstr "関数名に関数の引数を続けて挿入することで関数を使用できます。引数が数か<link xref=\"variable\">変数</link>でない場合は、引数を括弧で囲んでください。"
+#. (itstool) path: page/p
+#: C/functions.page:11
+msgid ""
+"Functions can be used by inserting the name of the function followed by "
+"function arguments. <app>Calculator</app> also support user-defined "
+"functions. If the argument is not a number or <link xref=\"variable\">a "
+"single variable</link> then write each argument separated by semicolon and "
+"use parenthesis around the argument list."
+msgstr ""
+"関数名に関数の引数を続けて挿入することで関数を使用できます。<app>電卓</app>や"
+"ユーザーが定義した関数もサポートしています。引数が数か<link "
+"xref=\"variable\">1つの変数</link>でない場合は、引数をセミコロンで区切って括"
+"弧で囲んでください。"
 
-#: C/functions.page:16(example/p)
+#. (itstool) path: example/p
+#. Translators: Do not translate the word 'sin'!
+#: C/functions.page:16
 msgid "sin 30"
 msgstr "sin 30"
 
-#: C/functions.page:19(example/p)
+#. (itstool) path: example/p
+#. Translators: Do not translate the word 'abs'!
+#: C/functions.page:19
 msgid "abs (5−9)"
 msgstr "abs (5−9)"
 
-#: C/functions.page:23(page/p)
+#. (itstool) path: example/p
+#. Translators: Do not translate the word 'fun'!
+#: C/functions.page:22
+msgid "fun (9;10)"
+msgstr "fun (9;10)"
+
+#. (itstool) path: page/p
+#: C/functions.page:26
+msgid ""
+"To add a new function type the function in the format as given below. A "
+"function name and arguments must only contain upper or lower case "
+"characters. The part after @ is the function description which is optional."
+msgstr ""
+"関数を追加するには、関数を以下の形式で入力してください。関数名と関数の引数は"
+"大文字と小文字のみを含むことができます。@ より後の部分は関数の説明で省略可能"
+"です。"
+
+#. (itstool) path: example/p
+#: C/functions.page:30
+msgid ""
+"SimpleInterest (principal; rate; time) = principal * rate * time @ Simple "
+"Interest formula"
+msgstr ""
+"SimpleInterest (principal; rate; time) = principal * rate * time @ 単利計算式"
+
+#. (itstool) path: page/p
+#: C/functions.page:34
+msgid "Functions can also be added and inserted using the f(x) button."
+msgstr "関数は f(x) ボタンで追加・挿入できます。"
+
+#. (itstool) path: example/p
+#: C/functions.page:38
+msgid ""
+"Click on f(x). Type the function name in the box, choose the number of "
+"arguments and click on the plus sign button next to it. On the calculator "
+"screen type the function expression and press <key>Enter</key>."
+msgstr ""
+"f(x) をクリック。関数名をボックスにタイプし、引数の数を選択し、その隣にあるプ"
+"ラス記号をクリックします。電卓の画面で関数式をタイプし、<key>Enter</key> をク"
+"リックします。"
+
+#. (itstool) path: example/p
+#: C/functions.page:43
+msgid "Click on f(x). Choose the function and click on it."
+msgstr "f(x) をクリック。関数を選んでクリックします。"
+
+#. (itstool) path: page/p
+#: C/functions.page:47
 msgid "The following functions are defined."
 msgstr "以下の関数が定義されています。"
 
-#: C/functions.page:28(td/p)
-msgid "abs"
-msgstr "abs"
-
-#: C/functions.page:29(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:53
 msgid "<link xref=\"absolute\">Absolute Value</link>"
 msgstr "<link xref=\"absolute\">絶対値</link>"
 
-#: C/functions.page:32(td/p)
-msgid "cos"
-msgstr "cos"
+#. (itstool) path: td/p
+#: C/functions.page:57
+msgid "<link xref=\"complex\">Complex Argument</link>"
+msgstr "<link xref=\"complex\">複素数の偏角</link>"
 
-#: C/functions.page:33(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:61
+msgid "<link xref=\"rounding\">Ceiling</link>"
+msgstr "<link xref=\"rounding\">切り上げ</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:65
+msgid "Comparison"
+msgstr "比較"
+
+#. (itstool) path: td/p
+#: C/functions.page:69
+msgid "<link xref=\"complex\">Complex Conjugate</link>"
+msgstr "<link xref=\"complex\">複素共役</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:73
 msgid "<link xref=\"trigonometry\">Cosine</link>"
 msgstr "<link xref=\"trigonometry\">余弦</link>"
 
-#: C/functions.page:36(td/p)
-msgid "cosh"
-msgstr "cosh"
+#. (itstool) path: td/p
+#: C/functions.page:77
+msgid "<link xref=\"trigonometry\">Inverse Cosine</link>"
+msgstr "<link xref=\"trigonometry\">逆余弦</link>"
 
-#: C/functions.page:37(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:81
 msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
 msgstr "<link xref=\"trigonometry\">双曲線余弦</link>"
 
-#: C/functions.page:40(td/p)
-msgid "frac"
-msgstr "frac"
+#. (itstool) path: td/p
+#: C/functions.page:85
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Cosine</link>"
+msgstr "<link xref=\"trigonometry\">双曲線逆余弦</link>"
 
-#: C/functions.page:41(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:89
+msgid "<link xref=\"rounding\">Floor</link>"
+msgstr "<link xref=\"rounding\">切り捨て</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:93
 msgid "Fractional Component"
 msgstr "小数部分"
 
-#: C/functions.page:44(td/p)
-msgid "int"
-msgstr "int"
+#. (itstool) path: td/p
+#: C/functions.page:97
+msgid "Greatest Common Divisor"
+msgstr "最大公約数"
 
-#: C/functions.page:45(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:101
+msgid "<link xref=\"complex\">Imaginary Component</link>"
+msgstr "<link xref=\"complex\">虚数成分</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:105
 msgid "Integer Component"
 msgstr "整数部分"
 
-#: C/functions.page:48(td/p)
-msgid "ln"
-msgstr "ln"
+#. (itstool) path: td/p
+#: C/functions.page:109
+msgid "Least Common Multiple"
+msgstr "最小公倍数"
 
-#: C/functions.page:49(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:113
 msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
 msgstr "<link xref=\"logarithm\">自然対数</link>"
 
-#: C/functions.page:52(td/p)
-msgid "log"
-msgstr "log"
-
-#: C/functions.page:53(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:117
 msgid "<link xref=\"logarithm\">Logarithm</link>"
 msgstr "<link xref=\"logarithm\">対数</link>"
 
-#: C/functions.page:56(td/p)
-msgid "not"
-msgstr "not"
+#. (itstool) path: td/p
+#: C/functions.page:121
+msgid "Modular Exponentiation"
+msgstr "冪剰余"
 
-#: C/functions.page:57(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:125
+msgid "Modulus Divide"
+msgstr "剰余・除算"
+
+#. (itstool) path: td/p
+#: C/functions.page:129
+msgid "Combination"
+msgstr "組み合わせ"
+
+#. (itstool) path: td/p
+#: C/functions.page:133
 msgid "<link xref=\"boolean\">Boolean NOT</link>"
 msgstr "<link xref=\"boolean\">ブール演算 NOT</link>"
 
-#: C/functions.page:60(td/p)
-msgid "ones"
-msgstr "ones"
+#. (itstool) path: td/p
+#: C/functions.page:137
+msgid "Permutation"
+msgstr "順列"
 
-#: C/functions.page:61(td/p)
-msgid "Ones complement"
+#. (itstool) path: td/p
+#: C/functions.page:141
+msgid "One’s Complement"
 msgstr "1 の補数"
 
-#: C/functions.page:64(td/p)
-msgid "sin"
-msgstr "sin"
+#. (itstool) path: td/p
+#: C/functions.page:145
+msgid "<link xref=\"complex\">Real Component</link>"
+msgstr "<link xref=\"complex\">実数部</link>"
 
-#: C/functions.page:65(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:149
+msgid "<link xref=\"rounding\">Round</link>"
+msgstr "<link xref=\"rounding\">丸め</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:153
+msgid "Signum"
+msgstr "シグナム"
+
+#. (itstool) path: td/p
+#: C/functions.page:157
 msgid "<link xref=\"trigonometry\">Sine</link>"
 msgstr "<link xref=\"trigonometry\">正弦</link>"
 
-#: C/functions.page:68(td/p)
-msgid "sinh"
-msgstr "sinh"
+#. (itstool) path: td/p
+#: C/functions.page:161
+msgid "<link xref=\"trigonometry\">Inverse Sine</link>"
+msgstr "<link xref=\"trigonometry\">逆正弦</link>"
 
-#: C/functions.page:69(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:165
 msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
 msgstr "<link xref=\"trigonometry\">双曲線正弦</link>"
 
-#: C/functions.page:72(td/p)
-msgid "sqrt"
-msgstr "sqrt"
+#. (itstool) path: td/p
+#: C/functions.page:169
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Sine</link>"
+msgstr "<link xref=\"trigonometry\">双曲線逆正弦</link>"
 
-#: C/functions.page:73(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:173
 msgid "<link xref=\"power\">Square Root</link>"
 msgstr "<link xref=\"power\">平方根</link>"
 
-#: C/functions.page:76(td/p)
-msgid "tan"
-msgstr "tan"
-
-#: C/functions.page:77(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:177
 msgid "<link xref=\"trigonometry\">Tangent</link>"
 msgstr "<link xref=\"trigonometry\">正接</link>"
 
-#: C/functions.page:80(td/p)
-msgid "tanh"
-msgstr "tanh"
+#. (itstool) path: td/p
+#: C/functions.page:181
+msgid "<link xref=\"trigonometry\">Inverse Tangent</link>"
+msgstr "<link xref=\"trigonometry\">逆正接</link>"
 
-#: C/functions.page:81(td/p)
+#. (itstool) path: td/p
+#: C/functions.page:185
 msgid "<link xref=\"trigonometry\">Hyperbolic Tangent</link>"
 msgstr "<link xref=\"trigonometry\">双曲線正接</link>"
 
-#: C/functions.page:84(td/p)
-msgid "twos"
-msgstr "twos"
+#. (itstool) path: td/p
+#: C/functions.page:189
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Tangent</link>"
+msgstr "<link xref=\"trigonometry\">双曲線逆正接</link>"
 
-#: C/functions.page:85(td/p)
-msgid "Twos complement"
+#. (itstool) path: td/p
+#: C/functions.page:193
+msgid "Two’s Complement"
 msgstr "2 の補数"
 
-#: C/functions.page:88(page/p)
-msgid "<app>Calculator</app> does not support user-defined functions."
-msgstr "<app>電卓</app> は、ユーザー定義関数をサポートしていません。"
+#. (itstool) path: credit/name
+#: C/history.page:12
+msgid "Gopal Krishnan"
+msgstr "Gopal Krishnan"
 
-#: C/keyboard.page:9(page/title)
+#. (itstool) path: credit/years
+#: C/history.page:14
+msgid "2012, 2013"
+msgstr "2012, 2013"
+
+#. (itstool) path: credit/name
+#: C/history.page:18
+msgid "Sanket Dasgupta"
+msgstr "Sanket Dasgupta"
+
+#. (itstool) path: credit/years
+#: C/history.page:20
+msgid "2016, 2017"
+msgstr "2016, 2017"
+
+#. (itstool) path: credit/name
+#: C/history.page:24 C/keyboard.page:9 C/superscript.page:9
+msgid "Pranali Deshmukh"
+msgstr "Pranali Deshmukh"
+
+#. (itstool) path: credit/years
+#: C/history.page:26 C/keyboard.page:11 C/superscript.page:11
+msgid "2020"
+msgstr "2020"
+
+#. (itstool) path: page/title
+#: C/history.page:30
+msgid "Using the History View"
+msgstr "履歴表示を使用"
+
+#. (itstool) path: page/p
+#: C/history.page:32
+msgid ""
+"The History View is located above the entry box and is designed to show your "
+"previous calculations in the form of a scrollable list that can be clicked "
+"and scrolled through using a mouse."
+msgstr ""
+"履歴表示は入力ボックスの上の現れ、以前の計算をスクロール可能な一覧として表示"
+"し、マウスを使ってクリック、スクロールできます。"
+
+#. (itstool) path: page/p
+#: C/history.page:37
+msgid ""
+"Once an entry has been selected, it will immediately show up in the entry "
+"box for you to manipulate and use."
+msgstr ""
+"エントリーが選択されるとすぐに入力ボックスに表示され、すぐに操作して使用でき"
+"ます。"
+
+#. (itstool) path: page/p
+#: C/history.page:40
+msgid ""
+"Finally, there is no upper limit on the number of calculations that can show "
+"up in the list for you to use."
+msgstr "最後に、表示され、使用できる計算の数に上限はありません。"
+
+#. (itstool) path: info/title
+#: C/index.page:7
+msgctxt "link:trail"
+msgid "Calculator Help"
+msgstr "電卓ヘルプ"
+
+#. (itstool) path: info/title
+#: C/index.page:8
+msgctxt "text"
+msgid "Calculator Help"
+msgstr "電卓ヘルプ"
+
+#. (itstool) path: info/title
+#: C/index.page:9
+msgctxt "link"
+msgid "Calculator Help"
+msgstr "電卓ヘルプ"
+
+#. (itstool) path: page/title
+#: C/index.page:17
+msgid "<_:media-1/> Calculator Help"
+msgstr "<_:media-1/> 電卓ヘルプ"
+
+#. (itstool) path: section/title
+#: C/index.page:20
+msgid "User Interface"
+msgstr "ユーザーインターフェイス"
+
+#. (itstool) path: section/title
+#: C/index.page:24
+msgid "Equations"
+msgstr "式"
+
+#. (itstool) path: section/title
+#: C/index.page:28
+msgid "Numbers"
+msgstr "数"
+
+#. (itstool) path: section/title
+#: C/index.page:32
+msgid "Conversions"
+msgstr "変換"
+
+#. (itstool) path: section/title
+#: C/index.page:36
+msgid "Financial Calculations"
+msgstr "財務計算"
+
+#. (itstool) path: page/title
+#: C/keyboard.page:15
 msgid "Using the Keyboard"
 msgstr "キーボードの使用"
 
-#: C/keyboard.page:11(page/p)
+#. (itstool) path: page/p
+#: C/keyboard.page:17
 msgid "All mathematical equations can be entered using the keyboard."
 msgstr "すべての数式をキーボードを使って入力できます。"
 
-#: C/keyboard.page:14(page/p)
-msgid "The following key combinations can be used to enter keys that may not be available on your keyboard."
-msgstr "お使いのキーボードで利用できないキーを入力するために以下のキーの組み合わせを利用できます。"
+#. (itstool) path: page/p
+#: C/keyboard.page:20
+msgid ""
+"The following key combinations can be used to enter keys that may not be "
+"available on your keyboard."
+msgstr ""
+"お使いのキーボードで利用できないキーを入力するために以下のキーの組み合わせを"
+"利用できます。"
 
-#: C/keyboard.page:19(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:25
 msgid "×"
 msgstr "×"
 
-#: C/keyboard.page:20(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:26
 msgid "<key>*</key>"
 msgstr "<key>*</key>"
 
-#: C/keyboard.page:23(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:29
 msgid "÷"
 msgstr "÷"
 
-#: C/keyboard.page:24(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:30
 msgid "<key>/</key>"
 msgstr "<key>/</key>"
 
-#: C/keyboard.page:27(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:33
 msgid "^"
 msgstr "^"
 
-#: C/keyboard.page:28(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:34
 msgid "<key>*</key> twice"
 msgstr "<key>*</key> を 2 回"
 
-#: C/keyboard.page:31(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:37
 msgid "√"
 msgstr "√"
 
-#: C/keyboard.page:32(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:38
 msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 
-#: C/keyboard.page:35(td/p) C/variables.page:48(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:41 C/variables.page:52
 msgid "π"
 msgstr "π"
 
-#: C/keyboard.page:36(td/p)
+#. (itstool) path: td/p
+#: C/keyboard.page:42
 msgid "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 
-#: C/keyboard.page:39(page/p)
-msgid "To enter <link xref=\"superscript\">superscript numbers</link> use <keyseq><key>Ctrl</key>number</keyseq>, for subscript use <keyseq><key>Alt</key>number</keyseq>."
-msgstr "<link xref=\"superscript\">上付き数字</link>を入力するには <keyseq><key>Ctrl</key>数字</keyseq>を、下付き数字は <keyseq><key>Alt</key>数字</keyseq>を使います。"
+#. (itstool) path: page/p
+#: C/keyboard.page:45
+msgid ""
+"To enter <link xref=\"superscript\">superscript numbers</link> use "
+"<keyseq><key>Ctrl</key>number</keyseq>, for <link "
+"xref=\"superscript\">subscript numbers</link> use <keyseq><key>Alt</"
+"key>number</keyseq>."
+msgstr ""
+"<link xref=\"superscript\">上付き数字</link>を入力するには "
+"<keyseq><key>Ctrl</key>数字</keyseq>を、<link xref=\"superscript\">下付き数字"
+"</link>は <keyseq><key>Alt</key>数字</keyseq>を使います。"
 
-#: C/legal.xml:4(p/link)
+#. (itstool) path: p/link
+#: C/legal.xml:4
 msgid "Creative Commons Attribution-Share Alike 3.0 Unported License"
-msgstr ""
+msgstr "Creative Commons Attribution-Share Alike 3.0 Unported License"
 
-#: C/legal.xml:3(license/p)
+#. (itstool) path: license/p
+#: C/legal.xml:3
 msgid "This work is licensed under a <_:link-1/>."
-msgstr ""
+msgstr "<_:link-1/> のライセンスで提供されています。"
 
-#: C/legal.xml:6(license/p)
-msgid "As a special exception, the copyright holders give you permission to copy, modify, and distribute the example code contained in this document under the terms of your choosing, without restriction."
+#. (itstool) path: license/p
+#: C/legal.xml:6
+msgid ""
+"As a special exception, the copyright holders give you permission to copy, "
+"modify, and distribute the example code contained in this document under the "
+"terms of your choosing, without restriction."
 msgstr ""
+"特別な例外として、著作権者はこの文書に含まれるサンプルコードを、任意の条件の"
+"下で制限なくコピー、変更、配布することを許可します。"
 
-#: C/logarithm.page:9(page/title)
+#. (itstool) path: page/title
+#: C/logarithm.page:9
 msgid "Logarithms"
 msgstr "対数"
 
-#: C/logarithm.page:11(page/p)
-msgid "Logarithms can be calculated using the log <link xref=\"function\">function</link>."
+#. (itstool) path: page/p
+#: C/logarithm.page:11
+msgid ""
+"Logarithms can be calculated using the log <link xref=\"function\">function</"
+"link>."
 msgstr "log <link xref=\"function\">関数</link>を使えば、対数計算が可能です。"
 
-#: C/logarithm.page:15(example/p)
+#. (itstool) path: example/p
+#: C/logarithm.page:15
 msgid "log 100"
 msgstr "log 100"
 
-#: C/logarithm.page:19(page/p)
-msgid "To calculate a logarithm in a different base use a <link xref=\"superscript\">subscript number</link> after the function."
-msgstr "異なる基数で対数計算を行うには、関数の後に<link xref=\"superscript\">下付き数字</link>を使います。"
+#. (itstool) path: page/p
+#: C/logarithm.page:19
+msgid ""
+"To calculate a logarithm in a different base use a <link "
+"xref=\"superscript\">subscript number</link> after the function."
+msgstr ""
+"異なる基数で対数計算を行うには、関数の後に<link xref=\"superscript\">下付き数"
+"字</link>を使います。"
 
-#: C/logarithm.page:23(example/p)
+#. (itstool) path: example/p
+#: C/logarithm.page:23
 msgid "log₂ 32"
 msgstr "log₂ 32"
 
-#: C/logarithm.page:27(page/p)
+#. (itstool) path: page/p
+#: C/logarithm.page:27
 msgid "To calculate a natural logarithm use the ln function."
 msgstr "自然対数を計算するには、ln 関数を使用します。"
 
-#: C/logarithm.page:31(example/p)
+#. (itstool) path: example/p
+#: C/logarithm.page:31
 msgid "ln 1.32"
 msgstr "ln 1.32"
 
-#: C/logarithm.page:35(page/p)
-msgid "Euler's number can be entered by using the <link xref=\"variable\">variable</link> e."
-msgstr "<link xref=\"variable\">変数</link> e を使えば、ネイピア数を入力できます。"
+#. (itstool) path: page/p
+#: C/logarithm.page:35
+msgid ""
+"Euler's number can be entered by using the <link xref=\"variable\">variable</"
+"link> e."
+msgstr ""
+"<link xref=\"variable\">変数</link> e を使えば、ネイピア数を入力できます。"
 
-#: C/logarithm.page:39(example/p)
+#. (itstool) path: example/p
+#: C/logarithm.page:39
 msgid "e^1.32"
 msgstr "e^1.32"
 
-#: C/modulus.page:9(page/title)
+#. (itstool) path: page/title
+#: C/modulus.page:9
 msgid "Modulus Division"
 msgstr "剰余演算"
 
-#: C/modulus.page:11(page/p)
+#. (itstool) path: page/p
+#: C/modulus.page:11
 msgid "Modulus division is performed using the mod operator."
-msgstr "mod 演算子を使って剰余演算を行います。(訳注: 次の計算は、9 を 5 で割った余り 4 を計算します。)"
+msgstr ""
+"mod 演算子を使って剰余演算を行います。(訳注: 次の計算は、9 を 5 で割った余り "
+"4 を計算します。)"
 
-#: C/modulus.page:15(example/p)
+#. (itstool) path: example/p
+#: C/modulus.page:15
 msgid "9 mod 5"
 msgstr "9 mod 5"
 
-#: C/mouse.page:9(page/title)
+#. (itstool) path: page/title
+#: C/mouse.page:9
 msgid "Using the Mouse"
 msgstr "マウスの使用"
 
-#: C/mouse.page:11(page/p)
-msgid "All equations can be entered using the mouse. To access all buttons there are a number of modes that can be selected from the <gui>Mode</gui> menu."
-msgstr "マウスを使ってすべての式を入力できます。すべてのボタンを利用するために<gui>モード</gui>メニューから選択できるいくつかのモードがあります。"
+#. (itstool) path: page/p
+#: C/mouse.page:11
+msgid ""
+"All equations can be entered using the mouse. To access all buttons there "
+"are a number of modes that can be selected from the <gui>Mode</gui> menu."
+msgstr ""
+"マウスを使ってすべての式を入力できます。すべてのボタンを利用するために<gui>"
+"モード</gui>メニューから選択できるいくつかのモードがあります。"
 
-#: C/mouse.page:17(td/p)
+#. (itstool) path: td/p
+#: C/mouse.page:17
 msgid "Basic"
 msgstr "基本"
 
-#: C/mouse.page:18(td/p)
-msgid "Provides buttons suitable for <link xref=\"equation\">basic equations</link>"
+#. (itstool) path: td/p
+#: C/mouse.page:18
+msgid ""
+"Provides buttons suitable for <link xref=\"equation\">basic equations</link>"
 msgstr "<link xref=\"equation\">基本的な式</link>に適したボタンを提供"
 
-#: C/mouse.page:21(td/p)
+#. (itstool) path: td/p
+#: C/mouse.page:21
 msgid "Advanced"
 msgstr "拡張"
 
-#: C/mouse.page:22(td/p)
-msgid "Provides buttons suitable for advanced mathematics such as <link xref=\"trigonometry\"/>"
+#. (itstool) path: td/p
+#: C/mouse.page:22
+msgid ""
+"Provides buttons suitable for advanced mathematics such as <link "
+"xref=\"trigonometry\"/>"
 msgstr "<link xref=\"trigonometry\"/>といった高等数学に適したボタンを提供"
 
-#: C/mouse.page:25(td/p)
+#. (itstool) path: td/p
+#: C/mouse.page:25
 msgid "Financial"
 msgstr "財務"
 
-#: C/mouse.page:26(td/p)
-msgid "Provides buttons suitable for <link xref=\"financial\">financial equations</link>"
+#. (itstool) path: td/p
+#: C/mouse.page:26
+msgid ""
+"Provides buttons suitable for <link xref=\"financial\">financial equations</"
+"link>"
 msgstr "<link xref=\"financial\">財務計算</link>に適したボタンを提供"
 
-#: C/mouse.page:29(td/p)
+#. (itstool) path: td/p
+#: C/mouse.page:29
 msgid "Programming"
 msgstr "プログラミング"
 
-#: C/mouse.page:30(td/p)
+#. (itstool) path: td/p
+#: C/mouse.page:30
 msgid "Provides buttons suitable for computer programmers"
 msgstr "コンピュータープログラミングに適したボタンを提供"
 
-#: C/number-display.page:9(page/title)
+#. (itstool) path: page/title
+#: C/number-display.page:9
 msgid "Result Format"
 msgstr "結果の書式"
 
-#: C/number-display.page:11(page/p)
-msgid "The format used to display results can be changed from the <guiseq><gui>Calculator</gui><gui>Preferences</gui></guiseq> menu."
-msgstr "結果を表示するのに使用する書式は、<guiseq><gui>電卓</gui><gui>設定</gui></guiseq>メニューから変更できます。"
+#. (itstool) path: page/p
+#: C/number-display.page:11
+msgid ""
+"To change the format used to display results, press the menu button in the "
+"top-right corner of the window and select the number format to use from the "
+"menu."
+msgstr ""
+"結果を表示するために使用する形式を変更するには、ウインドウの右上の隅にあるメ"
+"ニューボタンを押し、メニューから使用したい形式を選んでください。"
 
-#: C/number-display.page:16(td/p)
-msgid "Decimal"
-msgstr "10 進法"
+#. (itstool) path: td/p
+#: C/number-display.page:18
+msgid "<gui>Automatic</gui>"
+msgstr "<gui>自動</gui>"
 
-#: C/number-display.page:17(td/p)
-msgid "Results are displayed as decimal numbers"
-msgstr "結果を 10 進数として表示します。"
+#. (itstool) path: td/p
+#: C/number-display.page:19
+msgid ""
+"Small results are displayed as <gui>Fixed</gui> notation while long results "
+"are displayed as <gui>Scientific</gui> notation"
+msgstr ""
+"答えが小さければ<gui>固定小数点</gui>で表示して、答えが大きければ<gui>科学</"
+"gui>的記数法で表示します。"
 
-#: C/number-display.page:20(td/p)
-msgid "Scientific"
-msgstr "科学"
+#. (itstool) path: td/p
+#: C/number-display.page:22
+msgid "<gui>Fixed</gui>"
+msgstr "<gui>固定小数点</gui>"
 
-#: C/number-display.page:21(td/p)
-msgid "Results are displayed in <link xref=\"scientific\">scientific notation</link>"
+#. (itstool) path: td/p
+#: C/number-display.page:23
+msgid "Results are always displayed as decimal numbers"
+msgstr "常に結果を 10 進数として表示します。"
+
+#. (itstool) path: td/p
+#: C/number-display.page:26
+msgid "<gui>Scientific</gui>"
+msgstr "<gui>科学</gui>"
+
+#. (itstool) path: td/p
+#: C/number-display.page:27
+msgid ""
+"Results are displayed in <link xref=\"scientific\">scientific notation</link>"
 msgstr "結果を<link xref=\"scientific\">科学的記数法</link>で表示します。"
 
-#: C/number-display.page:24(td/p)
-msgid "Engineering"
-msgstr "工学"
+#. (itstool) path: td/p
+#: C/number-display.page:30
+msgid "<gui>Engineering</gui>"
+msgstr "<gui>工学</gui>"
 
-#: C/number-display.page:25(td/p)
-msgid "Results are displayed in scientific notation except the exponent is always a multiple of three"
+#. (itstool) path: td/p
+#: C/number-display.page:31
+msgid ""
+"Results are displayed in scientific notation except the exponent is always a "
+"multiple of three"
 msgstr "指数が常に 3 の倍数であることを除いて結果を科学的記数法で表示します。"
 
-#: C/number-display.page:28(td/p)
-msgid "Binary"
-msgstr "2 進法"
+#. (itstool) path: page/p
+#: C/number-display.page:34
+msgid ""
+"The number of decimal places, if trailing zeroes and if thousands separators "
+"are shown can also be configured in <gui style=\"menuitem\">Preferences</"
+"gui>."
+msgstr ""
+"小数点以下の桁数、末尾のゼロを表示するかどうか、千単位の区切りの表示するかど"
+"うかも <gui style=\"menuitem\">設定</gui> で設定できます。"
 
-#: C/number-display.page:29(td/p)
-msgid "Results are displayed as <link xref=\"base\">binary numbers</link>"
-msgstr "結果を <link xref=\"base\">2 進数</link> として表示します。"
-
-#: C/number-display.page:32(td/p)
-msgid "Octal"
-msgstr "8 進法"
-
-#: C/number-display.page:33(td/p)
-msgid "Results are displayed as <link xref=\"base\">octal numbers</link>"
-msgstr "結果を <link xref=\"base\">8 進数</link>として表示します。"
-
-#: C/number-display.page:36(td/p)
-msgid "Hexadecimal"
-msgstr "16 進法"
-
-#: C/number-display.page:37(td/p)
-msgid "Results are displayed as <link xref=\"base\">hexadecimal numbers</link>"
-msgstr "結果を <link xref=\"base\">16 進数</link>として表示します。"
-
-#: C/number-display.page:40(page/p)
-msgid "The number of decimal places, if trailing zeroes and if thousands separators are shown can also be configured."
-msgstr "小数部の末尾の 0 や 整数部の 3 桁ごとの区切りを表示するかどうかも設定できます。"
-
-#: C/percentage.page:9(page/title)
+#. (itstool) path: page/title
+#: C/percentage.page:9
 msgid "Percentages"
 msgstr "百分率"
 
-#: C/percentage.page:11(page/p)
+#. (itstool) path: page/p
+#: C/percentage.page:11
 msgid "Percentages are calculated using the % symbol."
 msgstr "% 記号を使用して百分率を計算できます。"
 
 # ここでは、金額の単位は重要ではないので $ を JPY (円) に置き換えている。
-#: C/percentage.page:14(page/p)
-msgid "When added or subtracted the percentage symbol resolves to one percent of the value being added or subtracted from. The following equation calculates the price of a $140 item with 15% tax (140 + (15÷100)×140)."
-msgstr "百分率記号で加算または減算する際に被加(減)数の 100 分の 1 として計算されます。次の式は、140 円の品物に 15% 課税した価格を計算しています (140 + (15÷100)×140)。"
+#. (itstool) path: page/p
+#: C/percentage.page:14
+msgid ""
+"When added or subtracted the percentage symbol resolves to one percent of "
+"the value being added or subtracted from. The following equation calculates "
+"the price of a $140 item with 15% tax (140 + (15÷100)×140)."
+msgstr ""
+"百分率記号で加算または減算する際に被加(減)数の 100 分の 1 として計算されま"
+"す。次の式は、140 円の品物に 15% 課税した価格を計算しています (140 + "
+"(15÷100)×140)。"
 
-#: C/percentage.page:19(example/p)
+#. (itstool) path: example/p
+#: C/percentage.page:19
 msgid "140+15%"
 msgstr "140+15%"
 
-#: C/percentage.page:23(page/p)
-msgid "In all other cases the percentage symbol resolves to a fraction out of 100. The following equation calculates one quarter of 80 apples ((25÷100)×80)."
-msgstr "その他の場合は、% 記号をすべて 100 分の 1 として計算します。次の式では、80 個のりんごの 4 分の 1 の数を計算しています ((25÷100)×80)。"
+#. (itstool) path: page/p
+#: C/percentage.page:23
+msgid ""
+"In all other cases the percentage symbol resolves to a fraction out of 100. "
+"The following equation calculates one quarter of 80 apples ((25÷100)×80)."
+msgstr ""
+"その他の場合は、% 記号をすべて 100 分の 1 として計算します。次の式では、80 個"
+"のりんごの 4 分の 1 の数を計算しています ((25÷100)×80)。"
 
-#: C/percentage.page:28(example/p)
+#. (itstool) path: example/p
+#: C/percentage.page:28
 msgid "25%×80"
 msgstr "25%×80"
 
-#: C/power.page:9(page/title)
+#. (itstool) path: credit/years
+#: C/power.page:13 C/power.page:18
+msgid "2015"
+msgstr "2015"
+
+#. (itstool) path: credit/name
+#: C/power.page:16
+msgid "Sebastian Rasmussen"
+msgstr "Sebastian Rasmussen"
+
+#. (itstool) path: page/title
+#: C/power.page:22
 msgid "Powers and Roots"
 msgstr "累乗と根"
 
-#: C/power.page:11(page/p)
-msgid "Powers are entered by putting a <link xref=\"superscript\">superscript number</link> after the value."
-msgstr "値の後に<link xref=\"superscript\">上付き数字</link>を置くことで累乗を入力できます。"
+#. (itstool) path: page/p
+#: C/power.page:24
+msgid ""
+"Powers are entered by putting a <link xref=\"superscript\">superscript "
+"number</link> after the value."
+msgstr ""
+"値の後に<link xref=\"superscript\">上付き数字</link>を置くことで累乗を入力で"
+"きます。"
 
-#: C/power.page:15(example/p)
+#. (itstool) path: example/p
+#: C/power.page:28
 msgid "5²"
 msgstr "5²"
 
-#: C/power.page:19(page/p)
-msgid "The inverse of a number can be entered using the inverse symbol ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></keyseq>)."
-msgstr "逆数記号 ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></keyseq>) を使えば、逆数を入力できます。"
+#. (itstool) path: page/p
+#: C/power.page:31
+msgid ""
+"The inverse of a number can be entered using the inverse symbol ⁻¹ "
+"(<keyseq><key>Ctrl</key><key>I</key></keyseq>)."
+msgstr ""
+"逆数記号 ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></keyseq>) を使えば、逆数を入"
+"力できます。"
 
-#: C/power.page:23(example/p)
+#. (itstool) path: example/p
+#: C/power.page:35
 msgid "3⁻¹"
 msgstr "3⁻¹"
 
-#: C/power.page:27(page/p)
-msgid "Powers can also be calculated using the ^ symbol. This allows the power to be an equation."
-msgstr "^ 記号を使って累乗を計算することもできます。これは、指数を式とすることを可能にします。"
+#. (itstool) path: page/p
+#: C/power.page:38
+msgid ""
+"Powers can also be calculated using the ^ symbol. This allows the power to "
+"be an equation."
+msgstr ""
+"^ 記号を使って累乗を計算することもできます。これは、指数を式とすることを可能"
+"にします。"
 
-#: C/power.page:32(example/p)
+#. (itstool) path: example/p
+#: C/power.page:42
 msgid "5^(6−2)"
 msgstr "5^(6−2)"
 
-#: C/power.page:36(page/p)
-msgid "If your keyboard does not have a <key>^</key> key you can use <key>*</key> twice."
-msgstr "キーボードに <key>^</key> キーがない場合は、<key>*</key> キー 2 回を使用できます。"
+#. (itstool) path: page/p
+#: C/power.page:45
+msgid ""
+"If your keyboard does not have a <key>^</key> key you can use <key>*</key> "
+"twice."
+msgstr ""
+"キーボードに <key>^</key> キーがない場合は、<key>*</key> キー 2 回を使用でき"
+"ます。"
 
 # the symbol = the root sign と解釈
-#: C/power.page:39(page/p)
-msgid "Square roots can be calculated using the symbol (<keyseq><key>Ctrl</key><key>R</key></keyseq>)."
-msgstr "ルート記号 (<keyseq><key>Ctrl</key><key>R</key></keyseq>) を使えば、平方根を計算できます。"
+#. (itstool) path: page/p
+#: C/power.page:48
+msgid ""
+"Square roots can be calculated using the √ symbol (<keyseq><key>Ctrl</"
+"key><key>R</key></keyseq>)."
+msgstr ""
+"ルート記号 (<keyseq><key>Ctrl</key><key>R</key></keyseq>) を使えば、平方根を"
+"計算できます。"
 
-#: C/power.page:43(example/p)
+#. (itstool) path: example/p
+#: C/power.page:52
 msgid "√2"
 msgstr "√2"
 
-#: C/power.page:47(page/p)
-msgid "n-th roots can be calculated by putting a <link xref=\"superscript\">subscript number</link> before the root sign."
-msgstr "ルート記号の前に<link xref=\"superscript\">下付き数字</link>を置くことで n 乗根を計算できます。"
+#. (itstool) path: page/p
+#: C/power.page:55
+msgid ""
+"n-th roots can be calculated by putting a <link "
+"xref=\"superscript\">subscript number</link> before the root sign."
+msgstr ""
+"ルート記号の前に<link xref=\"superscript\">下付き数字</link>を置くことで n 乗"
+"根を計算できます。"
 
-#: C/power.page:51(example/p)
+#. (itstool) path: example/p
+#: C/power.page:59
 msgid "₃√2"
 msgstr "₃√2"
 
+#. (itstool) path: page/title
+#: C/rounding.page:9
+msgid "Rounding"
+msgstr "丸め"
+
+#. (itstool) path: page/p
+#: C/rounding.page:11
+msgid ""
+"Nearest integer values tying away from zero are calculated using round <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"ゼロから離れた最も近い整数値は、round<link xref=\"function\">関数</link> を使"
+"用して計算されます。"
+
+#. (itstool) path: example/p
+#: C/rounding.page:15
+msgid "round (0.5)"
+msgstr "round (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:20
+msgid ""
+"Nearest interger values toward -∞ also known as floor values are calculated "
+"using the ⌊ and ⌋ symbols or floor <link xref=\"function\">function</link>."
+msgstr ""
+"-∞ 方向に最も近い整数値、いわゆるfloor値は ⌊ と ⌋ の記号を使うか、floor<link "
+"xref=\"function\">関数</link>を使って計算できます。"
+
+#. (itstool) path: example/p
+#: C/rounding.page:24
+msgid "⌊0.5⌋"
+msgstr "⌊0.5⌋"
+
+#. (itstool) path: example/p
+#: C/rounding.page:27
+msgid "floor (0.5)"
+msgstr "floor (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:32
+msgid ""
+"Nearest interger values toward +∞ also known as ceiling values are "
+"calculated using the ⌈ and ⌉ symbols or ceil <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"-∞ 方向に最も近い整数値、いわゆるceil値は ⌈ と ⌉ の記号を使うか、ceil<link "
+"xref=\"function\">関数</link>を使って計算できます。"
+
+#. (itstool) path: example/p
+#: C/rounding.page:36
+msgid "⌈0.5⌉"
+msgstr "⌈0.5⌉"
+
+#. (itstool) path: example/p
+#: C/rounding.page:39
+msgid "ceil (0.5)"
+msgstr "ceil (0.5)"
+
 # 科学的記数法とは、数を有効数字と 10 のべき乗との積で表す記数法である。
-#: C/scientific.page:9(page/title)
+#. (itstool) path: page/title
+#: C/scientific.page:9
 msgid "Scientific Notation"
 msgstr "科学的記数法"
 
 # <gui>×10x</gui> が原文の誤記と思われる
-#: C/scientific.page:11(page/p)
-msgid "To enter numbers in scientific format use the <gui>×10x</gui> button (<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link xref=\"superscript\">number mode</link> automatically changes to superscript. To enter 2×10¹⁰⁰, start by entering the mantissa (2):"
-msgstr "科学的記数法で数を入力するには、<gui>×10y</gui> ボタン (<keyseq><key>Ctrl</key><key>E</key></keyseq>) を使います。<link xref=\"superscript\">数値モード</link>が自動的に上付き数字モードに変更されます。2×10¹⁰⁰ を入力するには、仮数 (2) の入力から始めます。"
+#. (itstool) path: page/p
+#: C/scientific.page:11
+msgid ""
+"To enter numbers in scientific format use the <gui>×10y</gui> button "
+"(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link "
+"xref=\"superscript\">number mode</link> automatically changes to "
+"superscript. To enter 2×10¹⁰⁰, start by entering the mantissa (2):"
+msgstr ""
+"科学的記数法で数を入力するには、<gui>×10y</gui> ボタン (<keyseq><key>Ctrl</"
+"key><key>E</key></keyseq>) を使います。<link xref=\"superscript\">数値モード"
+"</link>が自動的に上付き数字モードに変更されます。2×10¹⁰⁰ を入力するには、仮"
+"数 (2) の入力から始めます。"
 
-#: C/scientific.page:17(example/p)
+#. (itstool) path: example/p
+#: C/scientific.page:17
 msgid "2"
 msgstr "2"
 
 # the scientific notation button をより明確にするために <gui>×10y</gui> に変更
-#: C/scientific.page:21(page/p)
-msgid "Then press the scientific notation button (or press <keyseq><key>Ctrl</key><key>E</key></keyseq>):"
-msgstr "それから、 <gui>×10y</gui> ボタンを押します (あるいは <keyseq><key>Ctrl</key><key>E</key></keyseq> を押します)。"
+#. (itstool) path: page/p
+#: C/scientific.page:21
+msgid ""
+"Then press the scientific notation button (or press <keyseq><key>Ctrl</"
+"key><key>E</key></keyseq>):"
+msgstr ""
+"それから、 <gui>×10y</gui> ボタンを押します (あるいは <keyseq><key>Ctrl</"
+"key><key>E</key></keyseq> を押します)。"
 
-#: C/scientific.page:25(example/p)
+#. (itstool) path: example/p
+#: C/scientific.page:25
 msgid "2×10"
 msgstr "2×10"
 
-#: C/scientific.page:29(page/p)
+#. (itstool) path: page/p
+#: C/scientific.page:29
 msgid "Then enter the exponent (100):"
 msgstr "最後に指数 (100) を入力します。"
 
-#: C/scientific.page:33(example/p)
+#. (itstool) path: example/p
+#: C/scientific.page:33
 msgid "2×10¹⁰⁰"
 msgstr "2×10¹⁰⁰"
 
-#: C/scientific.page:37(page/p)
-msgid "To show results in scientific form change the <link xref=\"number-display\">result format</link>."
-msgstr "結果を科学的記数法で表示するには、<link xref=\"number-display\">結果の書式</link>を変更します。"
+#. (itstool) path: page/p
+#: C/scientific.page:37
+msgid ""
+"To show results in scientific form change the <link xref=\"number-"
+"display\">result format</link>."
+msgstr ""
+"結果を科学的記数法で表示するには、<link xref=\"number-display\">結果の書式</"
+"link>を変更します。"
 
-#: C/superscript.page:7(info/title)
+#. (itstool) path: info/title
+#: C/superscript.page:15
 msgctxt "sort"
 msgid "_"
 msgstr "_"
 
-#: C/superscript.page:11(page/title)
+#. (itstool) path: page/title
+#: C/superscript.page:19
 msgid "Superscript and Subscript"
 msgstr "上付き数字と下付き数字"
 
-#: C/superscript.page:13(page/p)
-msgid "Some equations may require numbers to be entered in superscript or subscript form. e.g."
-msgstr "式によっては、上付きや下付きの形式で数字を入力する必要があるでしょう。例えば、次のような式です。"
+#. (itstool) path: page/p
+#: C/superscript.page:21
+msgid ""
+"Some equations may require numbers to be entered in superscript or subscript "
+"form, such as:"
+msgstr ""
+"式によっては、上付きや下付きの形式で数字を入力する必要があるでしょう。例えば:"
 
-#: C/superscript.page:17(example/p)
+#. (itstool) path: example/p
+#: C/superscript.page:25
 msgid "x³+2x²−5"
 msgstr "x³+2x²−5"
 
-#: C/superscript.page:21(page/p)
-msgid "To enter superscript numbers with the mouse select the number mode using the the <gui>↑n</gui> and <gui>↓n</gui> buttons. When one of these modes is active clicking the number buttons will enter numbers in superscript or subscript. To return to normal number mode click the active button."
-msgstr "マウスで上付き数字などを入力するには、<gui>↑n</gui> および <gui>↓n</gui> というボタンを使って数字モードを選択します。いずれかのモードが有効な時に数字ボタンをクリックすると上付きや下付きで数字が入力されます。通常モードに戻るには、有効なモードのボタンをクリックします。"
+#. (itstool) path: page/p
+#: C/superscript.page:29
+msgid ""
+"To enter superscript numbers with the mouse select the number mode using the "
+"<gui>↑n</gui> and <gui>↓n</gui> buttons (available in the <gui>Advanced "
+"Mode</gui> and the <gui>Programming Mode</gui>). When one of these modes is "
+"active clicking the number buttons will enter numbers in superscript or "
+"subscript. To return to normal number mode click the active number button."
+msgstr ""
+"マウスで上付き数字などを入力するには、<gui>↑n</gui> および <gui>↓n</gui> とい"
+"うボタンを使って数字モードを選択します (<gui>拡張モード</gui> や <gui>プログ"
+"ラミングモード</gui> で利用可能)。いずれかのモードが有効な時に数字ボタンをク"
+"リックすると上付きや下付きで数字が入力されます。通常モードに戻るには、有効な"
+"モードのボタンをクリックします。"
 
-#: C/superscript.page:26(page/p)
-msgid "To enter superscript numbers with the keyboard hold down <key>Ctrl</key> while entering the number. Hold <key>Alt</key> for subscript."
-msgstr "キーボードで上付き数字を入力するには、数字を入力する間、<key>Ctrl</key> を押したままにします。下付き数字の場合は、<key>Alt</key> を押したままにします。"
+#. (itstool) path: page/p
+#: C/superscript.page:34
+msgid ""
+"To enter superscript numbers use <keyseq><key>Ctrl</key>number</keyseq>, for "
+"subscript numbers use <keyseq><key>Alt</key>number</keyseq>."
+msgstr ""
+"上付き数字を入力するには <keyseq><key>Ctrl</key>数字</keyseq>を、下付き数字"
+"は <keyseq><key>Alt</key>数字</keyseq>を使います。"
 
-#: C/superscript.page:30(page/p)
-msgid "The number mode returns to normal when entering the next non-number character (e.g. +)."
-msgstr "次に数字でない文字 (+ など) を入力した時は、通常の数字モードに戻ります。"
+#. (itstool) path: page/p
+#: C/superscript.page:37
+msgid ""
+"The number mode returns to normal when entering the next non-number "
+"character, such as \"+\" or \"-\"."
+msgstr ""
+"次に数字でない文字 (\"+\" や \"-\" など) を入力した時は、通常の数字モードに戻"
+"ります。"
 
-#: C/trigonometry.page:9(page/title)
+#. (itstool) path: page/title
+#: C/trigonometry.page:9
 msgid "Trigonometry"
 msgstr "三角法"
 
-#: C/trigonometry.page:11(page/p)
-msgid "Trigonometry can be performed using the sin, cos, and tan <link xref=\"function\">function</link>."
-msgstr "sin、cos および tan といった<link xref=\"function\">関数</link>を使用することで三角法を実行できます。"
+#. (itstool) path: page/p
+#: C/trigonometry.page:11
+msgid ""
+"Trigonometry can be performed using the sin, cos, and tan <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"sin、cos および tan といった<link xref=\"function\">関数</link>を使用すること"
+"で三角法を実行できます。"
 
-#: C/trigonometry.page:15(example/p)
+#. (itstool) path: example/p
+#: C/trigonometry.page:15
 msgid "sin 45"
 msgstr "sin 45"
 
-#: C/trigonometry.page:19(page/p)
-msgid "The angle units used can be changed from the <guiseq><gui>Calculator</gui><gui>Preferences</gui></guiseq> menu. Trigonometry buttons are visible when in <link xref=\"mouse\">Advanced mode</link>."
-msgstr "<guiseq><gui>電卓</gui><gui>設定</gui></guiseq>というメニューから、使用する角度の単位を変更できます。<link xref=\"mouse\">拡張モード</link>の時に三角法のボタンが表示されます。"
+#. (itstool) path: page/p
+#: C/trigonometry.page:19
+msgid "To change the angle units used, use one of the following methods:"
+msgstr "使用する角度の単位を変更するには、次のいずれかの方法を使用します:"
 
-#: C/trigonometry.page:23(page/p)
-msgid "Hyperbolic functions are available by adding \"h\" to the end of a function."
+#. (itstool) path: item/p
+#: C/trigonometry.page:23
+msgid ""
+"press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>"
+msgstr ""
+"ウインドウの右上のメニューボタンを押し、<gui style=\"menuitem\">設定</gui>を"
+"選んでください"
+
+#. (itstool) path: item/p
+#: C/trigonometry.page:25
+msgid ""
+"in <gui>advanced mode</gui> you can use the Rad/Grad/Deg toggle button to "
+"toggle between units"
+msgstr ""
+"<gui>拡張モード</gui>では、Rad/Grad/Deg 切り替えボタンを単位を変更するために"
+"使えます"
+
+#. (itstool) path: page/p
+#: C/trigonometry.page:28
+msgid ""
+"Trigonometry buttons are visible when in <link xref=\"mouse\">Advanced mode</"
+"link>."
+msgstr "<link xref=\"mouse\">拡張モード</link>では三角法ボタンが表示されます。"
+
+#. (itstool) path: page/p
+#: C/trigonometry.page:31
+msgid ""
+"Hyperbolic functions are available by adding \"h\" to the end of a function."
 msgstr "関数の最後に \"h\" を追加すれば、双曲線関数が使用できます。"
 
-#: C/trigonometry.page:27(example/p)
+#. (itstool) path: example/p
+#: C/trigonometry.page:35
 msgid "sinh 0.34"
 msgstr "sinh 0.34"
 
-#: C/trigonometry.page:31(page/p)
-msgid "Inverse functions are entered either using the inverse symbol ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></keyseq>) or the \"a\" form of the function. The following two equations are equivalent."
-msgstr "逆関数の記号 ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></keyseq>) や \"a\" を冠した関数のいずれかを使用することで逆関数を入力できます。次の二つの式は等価です。"
+#. (itstool) path: page/p
+#: C/trigonometry.page:39
+msgid ""
+"Inverse functions are entered either using the inverse symbol ⁻¹ "
+"(<keyseq><key>Ctrl</key><key>I</key></keyseq>) or the \"a\" form of the "
+"function. The following two equations are equivalent."
+msgstr ""
+"逆関数の記号 ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></keyseq>) や \"a\" を冠"
+"した関数のいずれかを使用することで逆関数を入力できます。次の二つの式は等価で"
+"す。"
 
-#: C/trigonometry.page:36(example/p)
+#. (itstool) path: example/p
+#: C/trigonometry.page:44
 msgid "sin⁻¹ 0.5"
 msgstr "sin⁻¹ 0.5"
 
-#: C/trigonometry.page:39(example/p)
+#. (itstool) path: example/p
+#: C/trigonometry.page:47
 msgid "asin 0.5"
 msgstr "asin 0.5"
 
-#: C/trigonometry.page:43(page/p)
-msgid "To enter <link xref=\"variable\">π</link> with the keyboard use <keyseq><key>Ctrl</key><key>P</key></keyseq>."
-msgstr "キーボードで <link xref=\"variable\">π</link> を入力するには、<keyseq><key>Ctrl</key><key>P</key></keyseq> を使います。"
+#. (itstool) path: page/p
+#: C/trigonometry.page:51
+msgid ""
+"To enter <link xref=\"variable\">π</link> with the keyboard use "
+"<keyseq><key>Ctrl</key><key>P</key></keyseq>."
+msgstr ""
+"キーボードで <link xref=\"variable\">π</link> を入力するには、"
+"<keyseq><key>Ctrl</key><key>P</key></keyseq> を使います。"
 
-#: C/variables.page:9(page/title)
-msgid "Variables"
-msgstr "変数"
+#. (itstool) path: page/title
+#: C/variables.page:9
+msgid "Variables and Constants"
+msgstr "変数と定数"
 
-#: C/variables.page:11(page/p)
-msgid "To assign a value to a variable use the = symbol or choose the variable to assign to with the <gui>x</gui> button in <link xref=\"mouse\">advanced mode</link>. A variable name must only contain upper or lower characters."
-msgstr "変数に値を割り当てるには、= 記号を使用するか、<link xref=\"mouse\">拡張モード</link>で <gui>x</gui> ボタンを使用して値を割り当てたい変数を選択します。変数名は大文字または小文字のみを含めなければなりません。"
+#. (itstool) path: page/p
+#: C/variables.page:11
+msgid ""
+"To assign a value to a variable use the = symbol or choose the variable to "
+"assign to with the <gui>x</gui> button in <link xref=\"mouse\">advanced "
+"mode</link>. A variable name must only contain upper or lower case "
+"characters."
+msgstr ""
+"変数に値を割り当てるには、= 記号を使用するか、<link xref=\"mouse\">拡張モード"
+"</link>で <gui>x</gui> ボタンを使用して値を割り当てたい変数を選択します。変数"
+"名は大文字または小文字のみを含めなければなりません。"
 
-#: C/variables.page:16(example/p)
+#. (itstool) path: example/p
+#: C/variables.page:16
 msgid "x=5"
 msgstr "x=5"
 
-#: C/variables.page:19(example/p)
-msgid "value=82"
-msgstr "value=82"
+#. (itstool) path: example/p
+#: C/variables.page:19
+msgid "example=82"
+msgstr "example=82"
 
-#: C/variables.page:23(page/p)
-msgid "Variables can be used in any equation and are substituted for their assigned value. Variables can be inserted using the <gui>x</gui> button."
-msgstr "任意の式の中で割り当てた値の代わりに変数を使用することができます。<gui>x</gui> ボタンを使えば、変数を挿入できます。"
+#. (itstool) path: page/p
+#: C/variables.page:23
+msgid ""
+"Variables and constants can be used in any equation and are substituted for "
+"their assigned value. Variables and constants can be inserted using the "
+"<gui>x</gui> button."
+msgstr ""
+"任意の式の中で変数や定数が使用でき、割り当てた値に置換されます<gui>x</gui> ボ"
+"タンを使って変数や定数を挿入できます。"
 
-#: C/variables.page:28(example/p)
+#. (itstool) path: example/p
+#: C/variables.page:28
 msgid "6x+3"
 msgstr "6x+3"
 
-#: C/variables.page:31(example/p)
+#. (itstool) path: example/p
+#: C/variables.page:31
 msgid "xy−3x+7y−21"
 msgstr "xy−3x+7y−21"
 
-#: C/variables.page:35(page/p)
-msgid "The following variables are always defined."
-msgstr "以下の変数は常に定義されています。"
+#. (itstool) path: page/p
+#: C/variables.page:35
+msgid "The following variables and constants are always defined."
+msgstr "以下の変数や定数は常に定義されています。"
 
-#: C/variables.page:40(td/p)
-msgid "ans"
-msgstr "ans"
+#. (itstool) path: td/p
+#: C/variables.page:40
+msgid "_"
+msgstr "_"
 
-#: C/variables.page:41(td/p)
+#. (itstool) path: td/p
+#: C/variables.page:41
 msgid "Result of previous calculation"
 msgstr "前の計算結果"
 
-#: C/variables.page:44(td/p)
-msgid "e"
-msgstr "e"
-
-#: C/variables.page:45(td/p)
-msgid "<link xref=\"logarithm\">Euler's Number</link>"
-msgstr "<link xref=\"logarithm\">ネイピア数</link>"
-
-#: C/variables.page:49(td/p)
-msgid "<link xref=\"trigonometry\">Pi</link>"
-msgstr "<link xref=\"trigonometry\">円周率</link>"
-
-#: C/variables.page:52(td/p)
+#. (itstool) path: td/p
+#: C/variables.page:44
 msgid "rand"
 msgstr "rand"
 
-#: C/variables.page:53(td/p)
+#. (itstool) path: td/p
+#: C/variables.page:45
 msgid "Random value in the range [0,1] (changes on each read)"
 msgstr "0 から 1 の範囲の乱数 (読み取りの度に変化)"
+
+#. (itstool) path: td/p
+#: C/variables.page:48
+msgid "e"
+msgstr "e"
+
+#. (itstool) path: td/p
+#: C/variables.page:49
+msgid "<link xref=\"logarithm\">Euler's Number</link>"
+msgstr "<link xref=\"logarithm\">ネイピア数</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:53
+msgid "<link xref=\"trigonometry\">Pi</link>"
+msgstr "<link xref=\"trigonometry\">円周率</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:56
+msgid "τ"
+msgstr "τ"
+
+#. (itstool) path: td/p
+#: C/variables.page:57
+msgid "<link xref=\"trigonometry\">Tau</link>"
+msgstr "<link xref=\"trigonometry\">タウ</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:60
+msgid "φ"
+msgstr "φ"
+
+#. (itstool) path: td/p
+#: C/variables.page:61
+msgid "Golden Ratio"
+msgstr "黄金比"
+
+#. (itstool) path: td/p
+#: C/variables.page:64
+msgid "c₀"
+msgstr "c₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:65
+msgid "Light Speed"
+msgstr "光速"
+
+#. (itstool) path: td/p
+#: C/variables.page:68
+msgid "е"
+msgstr "е"
+
+#. (itstool) path: td/p
+#: C/variables.page:69
+msgid "Elementary Charge"
+msgstr "電気素量"
+
+#. (itstool) path: td/p
+#: C/variables.page:72
+msgid "Z₀"
+msgstr "Z₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:73
+msgid "Impedance of Vacuum"
+msgstr "真空の特性インピーダンス"
+
+#. (itstool) path: td/p
+#: C/variables.page:76
+msgid "μ₀"
+msgstr "μ₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:77
+msgid "Permeability of Vacuum"
+msgstr "真空の透磁率"
+
+#. (itstool) path: td/p
+#: C/variables.page:80
+msgid "ε₀"
+msgstr "ε₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:81
+msgid "Permittivity of Vacuum"
+msgstr "真空の誘電率"
+
+#. (itstool) path: td/p
+#: C/variables.page:84
+msgid "h"
+msgstr "h"
+
+#. (itstool) path: td/p
+#: C/variables.page:85
+msgid "Plank‘s Constant"
+msgstr "プランク定数"
+
+#. (itstool) path: td/p
+#: C/variables.page:88
+msgid "α"
+msgstr "α"
+
+#. (itstool) path: td/p
+#: C/variables.page:89
+msgid "Fine-Structure Constant"
+msgstr "微細構造定数"
+
+#. (itstool) path: td/p
+#: C/variables.page:92
+msgid "mₑ"
+msgstr "mₑ"
+
+#. (itstool) path: td/p
+#: C/variables.page:93
+msgid "Electron Mass"
+msgstr "電子質量"
+
+#. (itstool) path: td/p
+#: C/variables.page:96
+msgid "mₚ"
+msgstr "mₚ"
+
+#. (itstool) path: td/p
+#: C/variables.page:97
+msgid "Proton Mass"
+msgstr "陽子質量"
+
+#. (itstool) path: td/p
+#: C/variables.page:100
+msgid "k"
+msgstr "k"
+
+#. (itstool) path: td/p
+#: C/variables.page:101
+msgid "Boltzmann Constant"
+msgstr "ボルツマン定数"
+
+#. (itstool) path: td/p
+#: C/variables.page:104
+msgid "mᵤ"
+msgstr "mᵤ"
+
+#. (itstool) path: td/p
+#: C/variables.page:105
+msgid "Atomic Mass Unit"
+msgstr "原子質量単位"
+
+#. (itstool) path: td/p
+#: C/variables.page:108
+msgid "R"
+msgstr "R"
+
+#. (itstool) path: td/p
+#: C/variables.page:109
+msgid "Molar Gas Constant"
+msgstr "モル気体定数"
+
+#. (itstool) path: td/p
+#: C/variables.page:112
+msgid "σ"
+msgstr "σ"
+
+#. (itstool) path: td/p
+#: C/variables.page:113
+msgid "Stefan-Boltzmann Constant"
+msgstr "シュテファン=ボルツマン定数"
+
+#. (itstool) path: td/p
+#: C/variables.page:116
+msgid "Nᴀ"
+msgstr "Nᴀ"
+
+#. (itstool) path: td/p
+#: C/variables.page:117
+msgid "Avogadro‘s Number"
+msgstr "アボガドロ数"
+
+#. (itstool) path: td/p
+#: C/variables.page:120
+msgid "G"
+msgstr "G"
+
+#. (itstool) path: td/p
+#: C/variables.page:121
+msgid "Gravitational Constant"
+msgstr "万有引力定数"
+
+#. (itstool) path: td/p
+#: C/variables.page:124
+msgid "g"
+msgstr "g"
+
+#. (itstool) path: td/p
+#: C/variables.page:125
+msgid "Earth Acceleration"
+msgstr "地球の重力加速度"
+
+#~ msgid ""
+#~ "The NOT <link xref=\"function\">function</link> inverts the bits in a "
+#~ "number. The word size is set from the <guiseq><gui>Calculator</"
+#~ "gui><gui>Preferences</gui></guiseq> menu."
+#~ msgstr ""
+#~ "NOT <link xref=\"function\">関数</link>は、数字のビットを反転します。"
+#~ "<guiseq><gui>電卓</gui><gui>設定</gui></guiseq>というメニューから、ワード"
+#~ "の大きさを設定します。"
+
+#~ msgid "Complex numbers are not supported in <app>Calculator</app>."
+#~ msgstr "<app>電卓</app>では、複素数をサポートしていません。"
+
+#~ msgid "Number Base conversions must be performed using the keyboard."
+#~ msgstr "進法の換算は、キーボードで行う必要があります。"
+
+#~ msgid "Length/Area/Volume conversions must be performed using the keyboard."
+#~ msgstr "長さ/面積/体積の換算は、キーボードで行う必要があります。"
+
+#~ msgid "Time conversions must be performed using the keyboard."
+#~ msgstr "時間の換算は、キーボードで行う必要があります。"
+
+#~ msgid "Mass conversions must be performed using the keyboard."
+#~ msgstr "質量の換算は、キーボードで行う必要があります。"
+
+#~ msgid "abs"
+#~ msgstr "abs"
+
+#~ msgid "cos"
+#~ msgstr "cos"
+
+#~ msgid "cosh"
+#~ msgstr "cosh"
+
+#~ msgid "frac"
+#~ msgstr "frac"
+
+#~ msgid "int"
+#~ msgstr "int"
+
+#~ msgid "ln"
+#~ msgstr "ln"
+
+#~ msgid "log"
+#~ msgstr "log"
+
+#~ msgid "not"
+#~ msgstr "not"
+
+#~ msgid "ones"
+#~ msgstr "ones"
+
+#~ msgid "sin"
+#~ msgstr "sin"
+
+#~ msgid "sinh"
+#~ msgstr "sinh"
+
+#~ msgid "sqrt"
+#~ msgstr "sqrt"
+
+#~ msgid "tan"
+#~ msgstr "tan"
+
+#~ msgid "tanh"
+#~ msgstr "tanh"
+
+#~ msgid "twos"
+#~ msgstr "twos"
+
+#~ msgid ""
+#~ "The format used to display results can be changed from the "
+#~ "<guiseq><gui>Calculator</gui><gui>Preferences</gui></guiseq> menu."
+#~ msgstr ""
+#~ "結果を表示するのに使用する書式は、<guiseq><gui>電卓</gui><gui>設定</gui></"
+#~ "guiseq>メニューから変更できます。"
+
+#~ msgid "Learn to enter roots and powers into the calculator."
+#~ msgstr "根号と乗数の電卓への入力を学ぶ。"
+
+#~ msgid ""
+#~ "To enter superscript numbers with the keyboard hold down <key>Ctrl</key> "
+#~ "while entering the number. Hold <key>Alt</key> for subscript."
+#~ msgstr ""
+#~ "キーボードで上付き数字を入力するには、数字を入力する間、<key>Ctrl</key> を"
+#~ "押したままにします。下付き数字の場合は、<key>Alt</key> を押したままにしま"
+#~ "す。"
+
+#~ msgid ""
+#~ "The angle units used can be changed from the <guiseq><gui>Calculator</"
+#~ "gui><gui>Preferences</gui></guiseq> menu. Trigonometry buttons are "
+#~ "visible when in <link xref=\"mouse\">Advanced mode</link>."
+#~ msgstr ""
+#~ "<guiseq><gui>電卓</gui><gui>設定</gui></guiseq>というメニューから、使用す"
+#~ "る角度の単位を変更できます。<link xref=\"mouse\">拡張モード</link>の時に三"
+#~ "角法のボタンが表示されます。"
+
+#~ msgid "Variables"
+#~ msgstr "変数"
+
+#~ msgid "ans"
+#~ msgstr "ans"
+
+#~ msgid ""
+#~ "To set the base that results are shown in change the <link xref=\"number-"
+#~ "display\">result format</link>."
+#~ msgstr ""
+#~ "<link xref=\"number-display\">結果の書式</link>を変更すると計算結果を表示"
+#~ "する基数を設定できます。"
+
+#~ msgid ""
+#~ "To change the base of the current result use a base button or "
+#~ "<keyseq><key>Ctrl</key><key>D</key></keyseq> to show in decimal form."
+#~ msgstr ""
+#~ "現在の結果の基数を変更するには、基数ボタンを使用するか、"
+#~ "<keyseq><key>Ctrl</key><key>D</key></keyseq> を押して 10 進法で表示しま"
+#~ "す。"
+
+# 設定画面で基数を変更することはできない。原文自体が事実誤認をしている可能性あり。プログラミングモードにあるドロップダウンリストで行うというのが正しいのではないだろうか。
+#~ msgid ""
+#~ "To convert between number bases enter a number (or solve an equation) and "
+#~ "change the <link xref=\"number-display\">result format</link> from the "
+#~ "<guiseq><gui>Calculator</gui><gui>Preferences</gui></guiseq> menu."
+#~ msgstr ""
+#~ "基数を変更するには、<link xref=\"mouse\">プログラミングモード</link>に入"
+#~ "り、数字を入力するか式を計算してから、進法を選択します。"
+
+#~ msgid ""
+#~ "You can also convert currencies using the keyboard and the <em>in</em> "
+#~ "operator."
+#~ msgstr ""
+#~ "キーボードを使用して <em>in</em> 演算子を入力することでも通貨を換算できま"
+#~ "す。(訳注: 次の式は、US ドルをイギリス・ポンドに換算します。)"
+
+#~ msgid "13.65 USD in GBP"
+#~ msgstr "13.65 USD in GBP"
+
+#~ msgid "<app>Calculator</app> does not support user-defined functions."
+#~ msgstr "<app>電卓</app> は、ユーザー定義関数をサポートしていません。"
+
+#~ msgid "Decimal"
+#~ msgstr "10 進法"
+
+#~ msgid "Binary"
+#~ msgstr "2 進法"
+
+#~ msgid "Results are displayed as <link xref=\"base\">binary numbers</link>"
+#~ msgstr "結果を <link xref=\"base\">2 進数</link> として表示します。"
+
+#~ msgid "Octal"
+#~ msgstr "8 進法"
+
+#~ msgid "Results are displayed as <link xref=\"base\">octal numbers</link>"
+#~ msgstr "結果を <link xref=\"base\">8 進数</link>として表示します。"
+
+#~ msgid "Hexadecimal"
+#~ msgstr "16 進法"
+
+#~ msgid ""
+#~ "Results are displayed as <link xref=\"base\">hexadecimal numbers</link>"
+#~ msgstr "結果を <link xref=\"base\">16 進数</link>として表示します。"
