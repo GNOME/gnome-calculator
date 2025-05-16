@@ -34,6 +34,8 @@ public class FinancialButtonPanel : Adw.BreakpointBin
     private unowned Gtk.Button calc_numeric_point_button;
     [GtkChild]
     private unowned Gtk.MenuButton calc_memory_button;
+    [GtkChild]
+    private unowned Gtk.MenuButton calc_function_button;
 
     /* The names of each field in the dialogs for the financial functions */
     private static FincDialog[] finc_dialogs = {
@@ -74,6 +76,7 @@ public class FinancialButtonPanel : Adw.BreakpointBin
         correct_text_direction ();
         calc_numeric_point_button.set_label (buttons.equation.serializer.get_radix ().to_string ());
         calc_memory_button.popover = new MathVariablePopover (buttons.equation);
+        calc_function_button.popover = new MathFunctionPopover (buttons.equation);
 
         var i = 0;
         foreach (var dialog in finc_dialogs)

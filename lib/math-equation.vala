@@ -1106,6 +1106,28 @@ public class MathEquation : GtkSource.Buffer
         number_mode = NumberMode.SUBSCRIPT;
     }
 
+    public void insert_nth_root ()
+    {
+        if (has_selection)
+        {
+            insert_between ("√(", ")", CursorGravity.BEFORE);
+        }
+        else
+        {
+            Gtk.TextIter cursor_iter;
+
+            get_iter_at_mark (out cursor_iter, get_insert ());
+            var before_mark = create_mark (null, cursor_iter, true);
+            insert ("√");
+
+            get_iter_at_mark (out cursor_iter, before_mark);
+            place_cursor (cursor_iter);
+
+            delete_mark (before_mark);
+        }
+        number_mode = NumberMode.SUBSCRIPT;
+    }
+
     public void insert_digit (uint digit)
     {
         const unichar subscript_digits[] = {'₀', '₁', '₂', '₃', '₄', '₅', '₆', '₇', '₈', '₉'};

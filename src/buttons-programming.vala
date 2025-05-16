@@ -32,6 +32,8 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
     [GtkChild]
     private unowned Gtk.MenuButton calc_memory_button;
     [GtkChild]
+    private unowned Gtk.MenuButton calc_function_button;
+    [GtkChild]
     private unowned Gtk.MenuButton calc_base_button;
     [GtkChild]
     private unowned Gtk.MenuButton calc_word_size_button;
@@ -62,10 +64,12 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         correct_text_direction ();
         calc_numeric_point_button.set_label (equation.serializer.get_radix ().to_string ());
         calc_memory_button.popover = new MathVariablePopover (equation);
+        calc_function_button.popover = new MathFunctionPopover (equation);
 
-        for (var row = 3; row >= 0; row--)
-            for (var column = 0; column <= 3; column++)
+        for (var row = 2; row >= 0; row--)
+            for (var column = 0; column <= 4; column++) {
                 hex_button_list.append (hex_buttons.get_child_at (column, row) as Gtk.Button);
+            }
         for (var row = 6; row >= 0; row -= 2)
             for(var column = 17; column >= 2; column--)
                 bit_button_list.append (bit_panel.get_child_at (column, row) as Gtk.Button);
@@ -155,7 +159,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         var i = 0;
         foreach (var button in hex_button_list)
         {
-            button.sensitive = i < buttons.programming_base;
+            button.sensitive = i + 1 < buttons.programming_base;
             i++;
         }
     }

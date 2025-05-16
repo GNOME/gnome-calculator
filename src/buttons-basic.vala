@@ -15,10 +15,16 @@ public class BasicButtonPanel : Adw.Bin
     private unowned Gtk.Widget basic;
     [GtkChild]
     private unowned Gtk.Button calc_numeric_point_button;
+    [GtkChild]
+    private unowned Gtk.MenuButton calc_memory_button;
+    [GtkChild]
+    private unowned Gtk.MenuButton calc_function_button;
 
     public BasicButtonPanel (MathButtons buttons)
     {
         basic.set_direction (Gtk.TextDirection.LTR);
         calc_numeric_point_button.set_label (buttons.equation.serializer.get_radix ().to_string ());
+        calc_memory_button.popover = new MathVariablePopover (buttons.equation);
+        calc_function_button.popover = new MathFunctionPopover (buttons.equation);
     }
 }
