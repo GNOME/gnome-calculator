@@ -910,12 +910,11 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_nth_logarithm_button">
+              <object class="GtkButton" id="calc_logarithm_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
                 <property name="focus_on_click">False</property>
                 <property name="tooltip_text" translatable="yes">Logarithm</property>
-                <property name="action_name">cal.insert-function</property>
-                <property name="action_target">&apos;log&apos;</property>
+                <property name="action_name">cal.logarithm</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="label">log&lt;sub&gt;&lt;i&gt;y&lt;/i&gt;&lt;/sub&gt;</property>
@@ -932,12 +931,12 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_inverse_exponential_button">
+              <object class="GtkButton" id="calc_y_pow_x_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Logarithm</property>
-                <property name="action_name">cal.insert-function</property>
-                <property name="action_target">&apos;log&apos;</property>
+                <property name="tooltip_text" translatable="yes">Exponent [^ or **]</property>
+                <property name="action_name">cal.insert-exponent</property>
+                <property name="action_target">&apos;&apos;</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="label">&lt;i&gt;y&lt;/i&gt;&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
@@ -998,11 +997,16 @@
             </child>
             <child>
               <object class="GtkButton" id="calc_round_button">
-                <property name="label">round</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Ceil</property>
-                <property name="action_name">cal.insert-function</property>
-                <property name="action_target">&apos;round&apos;</property>
+                <property name="tooltip_text" translatable="yes">Round [[]]</property>
+                <property name="action_name">cal.insert-brackets</property>
+                <property name="action_target">(&apos;[&apos;,&apos;]&apos;)</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label">[&lt;i&gt;x&lt;/i&gt;]</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                </child>
                 <style>
                   <class name="function-button"/>
                 </style>

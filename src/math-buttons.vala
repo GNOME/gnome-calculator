@@ -74,6 +74,7 @@ public class MathButtons : Adw.Bin
         {"subtract",             on_subtract                             },
         {"square",               on_square                               },
         {"nth-root",             on_nth_root                             },
+        {"logarithm",            on_logarithm                            },
         {"undo",                 on_undo                                 },
         {"clear",                on_clear                                },
         {"solve",                on_solve                                },
@@ -242,9 +243,14 @@ public class MathButtons : Adw.Bin
         equation.insert_square ();
     }
 
-    private void on_nth_root (SimpleAction action, Variant? param)
+    private void on_nth_root ()
     {
         equation.insert_nth_root ();
+    }
+
+    private void on_logarithm ()
+    {
+        equation.insert_logarithm ();
     }
 
     private void on_undo ()
