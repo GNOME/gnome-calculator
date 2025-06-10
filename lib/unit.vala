@@ -168,8 +168,8 @@ public class UnitManager : Object
         pressure_category.add_unit(new Unit ("bar", _("Bars"), "100000x", "x/100000", dpgettext2 (null, "unit-symbols", "Bar,bar")));
         pressure_category.add_unit(new Unit ("atm", _("Standard Atmospheres"), "101325x", "x/101325", dpgettext2 (null, "unit-symbols", "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm")));
         pressure_category.add_unit(new Unit ("mmhg", _("Millimeters of Mercury"), "133.322387415x", "x/133.322387415", dpgettext2 (null, "unit-symbols", "Millimeter of Mercury,millimeter of mercury,mmHg")));
-        pressure_category.add_unit(new Unit ("inhg", _("Inches of Mercury"), "3376.85x", "x/3376.85", dpgettext2 (null, "unit-symbols", "Inch of Mercury,inch of mercury,inHg")));
-        pressure_category.add_unit(new Unit ("psi", _("Pounds per Square Inch"), "6894.757x", "x/6894.757", dpgettext2 (null, "unit-symbols", "Pound per Square Inch,pound per square inch,psi")));
+        pressure_category.add_unit(new Unit ("inhg", _("Inches of Mercury"), "3386.38x", "x/3386.38", dpgettext2 (null, "unit-symbols", "Inch of Mercury,inch of mercury,inHg")));
+        pressure_category.add_unit(new Unit ("psi", _("Pounds per Square Inch"), "6894.759x", "x/6894.759", dpgettext2 (null, "unit-symbols", "Pound per Square Inch,pound per square inch,psi")));
 
         var currency_category = default_unit_manager.add_category ("currency", _("Currency"));
         var currencies = CurrencyManager.get_default ().get_currencies ();

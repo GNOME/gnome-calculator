@@ -192,6 +192,10 @@ private void test_conversions ()
     test ("10 zebibytes in EiB", "10240", 0);
     test ("10 yobibytes in ZiB", "10240", 0);
 
+    /* Pressure */
+    test ("1 inHg in pascal", "3386.38", 0);
+    test ("101325 Pascal in inHg", "29.921331924", 0);
+
     /* Treat unit names as variable names */
     test ("g", "9.80665", 0);
     test ("m", "", ErrorCode.UNKNOWN_VARIABLE);
