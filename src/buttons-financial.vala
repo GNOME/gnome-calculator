@@ -36,6 +36,8 @@ public class FinancialButtonPanel : Adw.BreakpointBin
     private unowned Gtk.MenuButton calc_memory_button;
     [GtkChild]
     private unowned Gtk.MenuButton calc_function_button;
+    [GtkChild]
+    private unowned Gtk.Button calc_inverse_modifier_button;
 
     /* The names of each field in the dialogs for the financial functions */
     private static FincDialog[] finc_dialogs = {
@@ -86,6 +88,7 @@ public class FinancialButtonPanel : Adw.BreakpointBin
         }
 
         buttons.notify["mode"].connect (() => carousel.scroll_to (carousel.get_nth_page (0), false));
+        buttons.bind_property ("inverse", calc_inverse_modifier_button, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
     }
 
     private void correct_text_direction ()

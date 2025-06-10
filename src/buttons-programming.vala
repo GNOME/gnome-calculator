@@ -34,6 +34,8 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
     [GtkChild]
     private unowned Gtk.MenuButton calc_function_button;
     [GtkChild]
+    private unowned Gtk.Button calc_inverse_modifier_button;
+    [GtkChild]
     private unowned Gtk.MenuButton calc_base_button;
     [GtkChild]
     private unowned Gtk.MenuButton calc_word_size_button;
@@ -89,6 +91,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
             carousel.scroll_to (carousel.get_nth_page (1), false);
             carousel.disconnect (carousel_mapped);
         });
+        buttons.bind_property ("inverse", calc_inverse_modifier_button, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         equation.notify["number-base"].connect (base_changed_cb);
         equation.notify["word-size"].connect (word_size_changed_cb);
         equation.notify["display"].connect (update_bit_panel);
