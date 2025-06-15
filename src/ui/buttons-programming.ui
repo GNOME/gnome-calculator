@@ -63,15 +63,6 @@
                     </style>
                     <child>
                       <object class="AdwLayoutSlot">
-                        <property name="id">bit_panel</property>
-                        <property name="hexpand">True</property>
-                        <style>
-                          <class name="bit-panel"/>
-                        </style>
-                      </object>
-                    </child>
-                    <child>
-                      <object class="AdwLayoutSlot">
                         <property name="id">advanced</property>
                         <property name="hexpand">True</property>
                       </object>
@@ -80,6 +71,15 @@
                       <object class="AdwLayoutSlot">
                         <property name="id">basic</property>
                         <property name="hexpand">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="AdwLayoutSlot">
+                        <property name="id">bit_panel</property>
+                        <property name="hexpand">True</property>
+                        <style>
+                          <class name="bit-panel"/>
+                        </style>
                       </object>
                     </child>
                   </object>
@@ -745,6 +745,7 @@
                      on RTL, but using these two characters give us the same
                      result for free. -->
                 <property name="label">&#x200E;&#x2007;0</property>
+                <property name="xalign">0.75</property>
                 <style>
                   <class name="dimmed"/>
                   <class name="bit-marker-label"/>
@@ -762,6 +763,7 @@
                 <property name="action_name">cal.toggle-bit</property>
                 <property name="action_target">32</property>
                 <property name="tooltip_text">31</property>
+                <property name="vexpand">True</property>
                 <style>
                   <class name="bit-toggle-button"/>
                   <class name="flat"/>
@@ -1021,6 +1023,7 @@
                 <property name="action_name">cal.toggle-bit</property>
                 <property name="action_target">48</property>
                 <property name="tooltip_text">15</property>
+                <property name="vexpand">True</property>
                 <style>
                   <class name="bit-toggle-button"/>
                   <class name="flat"/>

@@ -50,7 +50,12 @@ public class AdvancedButtonPanel : Adw.BreakpointBin
         calc_memory_button.popover = new MathVariablePopover (equation);
         calc_function_button.popover = new MathFunctionPopover (equation);
 
-        buttons.notify["mode"].connect (() => carousel.scroll_to (carousel.get_nth_page (0), false));
+        buttons.notify["mode"].connect (() => carousel.scroll_to (carousel.get_nth_page (1), false));
+        ulong carousel_mapped = 0;
+        carousel_mapped = carousel.map.connect (() => {
+            carousel.scroll_to (carousel.get_nth_page (1), false);
+            carousel.disconnect (carousel_mapped);
+        });
         buttons.bind_property ("inverse", calc_inverse_modifier_button, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
         equation.notify["angle-units"].connect (update_angle_units_button);
         update_angle_units_button ();
