@@ -613,6 +613,8 @@ public class MathConverter : Gtk.Box
     private Number? get_number_from_entry (Gtk.TextView entry)
     {
         var str = entry.buffer.text.strip ();
+        if (fixed_serializer.get_radix () != '.')
+            str = str.replace (fixed_serializer.get_radix ().to_string (), ".");
         var number_base = 10;
         if (category == "numberbase")
         {
