@@ -105,8 +105,6 @@ public class MathDisplay : Gtk.Box
 
         source_view.set_extra_menu (null);
         source_view.set_direction(Gtk.TextDirection.LTR);
-        if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
-            source_view.justification = Gtk.Justification.RIGHT;
     }
 
     public void set_enable_osk (bool enable_osk)
