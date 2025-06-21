@@ -83,7 +83,7 @@ public class Calculator : Adw.Application
 
         var buttons = current_window.buttons;
         buttons.programming_base = number_base;
-        buttons.mode = button_mode; // FIXME: We load the basic buttons even if we immediately switch to the next type
+        buttons.mode = button_mode;
 
         set_accels_for_action ("win.mode::basic", {"<control><alt>B"});
         set_accels_for_action ("win.mode::advanced", {"<control><alt>A"});

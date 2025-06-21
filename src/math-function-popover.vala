@@ -103,7 +103,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     private void close_popover ()
     {
         popdown ();
-        ((MathWindow) root).math_display.grab_focus ();
+        ((MathWindow) root).display.grab_focus ();
     }
 
     protected override bool is_deletable (MathFunction function)

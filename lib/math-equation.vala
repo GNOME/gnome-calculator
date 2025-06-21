@@ -114,6 +114,7 @@ public class MathEquation : GtkSource.Buffer
     }
 
     public signal void history_signal (string answer, Number number, int number_base, uint representation_base); /*signal to be emitted when a new calculation is tp be entered in history-view */
+    public signal void set_enable_autocompletion (bool enable);
     public signal void display_changed (Serializer serializer);
     private AngleUnit _angle_units;  /* Units for trigonometric functions */
     private NumberMode _number_mode;   /* ??? */
@@ -831,7 +832,9 @@ public class MathEquation : GtkSource.Buffer
         if (history) { /*emits signal to enter a new entry into history-view */
             this.history_signal (get_current_state ().expression.replace ("\\cdot", "×"), x, number_base, representation_base);
         }
+        set_enable_autocompletion (false);
         set_text (text, -1);
+        set_enable_autocompletion (true);
         state.ans = x;
 
         /* Mark this text as the answer variable */
@@ -1096,16 +1099,6 @@ public class MathEquation : GtkSource.Buffer
         }
     }
 
-    public void insert_logarithm ()
-    {
-        if (has_selection)
-        {
-            insert_between ("(", ")", CursorGravity.BEFORE);
-        }
-        insert ("log");
-        number_mode = NumberMode.SUBSCRIPT;
-    }
-
     public void insert_nth_root ()
     {
         if (has_selection)
@@ -1125,6 +1118,16 @@ public class MathEquation : GtkSource.Buffer
 
             delete_mark (before_mark);
         }
+        number_mode = NumberMode.SUBSCRIPT;
+    }
+
+    public void insert_logarithm ()
+    {
+        if (has_selection)
+        {
+            insert_between ("(", ")", CursorGravity.BEFORE);
+        }
+        insert ("log");
         number_mode = NumberMode.SUBSCRIPT;
     }
 

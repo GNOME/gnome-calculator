@@ -130,7 +130,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
         var variable = model.get_item (row.get_index ()) as MathVariable;
         equation.insert_alpha (variable.name);
         popdown ();
-        ((MathWindow) root).math_display.grab_focus ();
+        ((MathWindow) root).display.grab_focus ();
     }
 
     [GtkCallback]
@@ -148,7 +148,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
         {
             equation.insert_alpha (row.child.get_data<string> ("symbol"));
             popdown ();
-            ((MathWindow) root).math_display.grab_focus ();
+            ((MathWindow) root).display.grab_focus ();
         }
     }
 

@@ -150,10 +150,10 @@ public class PreLexer : Object
         if (c == '˚' || c == '°')
             return LexerTokenType.PL_DEGREE;
 
-        if (c == '\'')
+        if (c == '\'' || c == '′' || c == '’')
             return LexerTokenType.PL_MINUTE;
 
-        if (c == '"')
+        if (c == '"' || c == '″' || c == '”')
             return LexerTokenType.PL_SECOND;
 
         if (c.isalpha () || c == '_' || c == '\\')
@@ -456,7 +456,8 @@ public class Lexer : Object
             if ((type = prelexer.get_next_token ()) != LexerTokenType.PL_SUPER_DIGIT)
             {
                 /* ERROR: expected LexerTokenType.PL_SUP_DIGIT */
-                parser.set_error (ErrorCode.MP, prelexer.get_marked_substring (), prelexer.mark_index, prelexer.index);
+                prelexer.roll_back ();
+                parser.set_error (ErrorCode.MP, _("Missing digits after negative sign"), prelexer.mark_index, prelexer.index);
                 return insert_token (LexerTokenType.UNKNOWN);
             }
 
@@ -553,7 +554,8 @@ public class Lexer : Object
                         else
                         {
                             /* ERROR: expected LexerTokenType.PL_SECOND */
-                            parser.set_error (ErrorCode.MP, prelexer.get_marked_substring (), prelexer.mark_index, prelexer.index);
+                            prelexer.roll_back ();
+                            parser.set_error (ErrorCode.MP, _("Missing second symbol (″)"), prelexer.mark_index, prelexer.index);
                             return insert_token (LexerTokenType.UNKNOWN);
                         }
                     }
@@ -568,7 +570,8 @@ public class Lexer : Object
                 else
                 {
                     /* ERROR: expected LexerTokenType.PL_MINUTE | LexerTokenType.PL_DIGIT */
-                    parser.set_error (ErrorCode.MP, prelexer.get_marked_substring (), prelexer.mark_index, prelexer.index);
+                    prelexer.roll_back ();
+                    parser.set_error (ErrorCode.MP, _("Missing minute symbol (′)"), prelexer.mark_index, prelexer.index);
                     return insert_token (LexerTokenType.UNKNOWN);
                 }
             }
@@ -596,7 +599,8 @@ public class Lexer : Object
         if (type != LexerTokenType.PL_DIGIT)
         {
             /* ERROR: expected LexerTokenType.PL_DIGIT */
-            parser.set_error (ErrorCode.MP, prelexer.get_marked_substring (), prelexer.mark_index, prelexer.index);
+            prelexer.roll_back ();
+            parser.set_error (ErrorCode.MP, _("Missing digits after decimal point"), prelexer.mark_index, prelexer.index);
             return insert_token (LexerTokenType.UNKNOWN);
         }
 
@@ -608,7 +612,8 @@ public class Lexer : Object
         else
         {
             /* ERROR: expected LexerTokenType.PL_MINUTE */
-            parser.set_error (ErrorCode.MP, prelexer.get_marked_substring (), prelexer.mark_index, prelexer.index);
+            prelexer.roll_back ();
+            parser.set_error (ErrorCode.MP, _("Missing minute symbol (′)"), prelexer.mark_index, prelexer.index);
             return insert_token (LexerTokenType.UNKNOWN);
         }
     }
@@ -619,7 +624,8 @@ public class Lexer : Object
         if (type != LexerTokenType.PL_DIGIT)
         {
             /* ERROR: expected LexerTokenType.PL_DIGIT */
-            parser.set_error (ErrorCode.MP, prelexer.get_marked_substring (), prelexer.mark_index, prelexer.index);
+            prelexer.roll_back ();
+            parser.set_error (ErrorCode.MP, _("Missing digits after decimal point"), prelexer.mark_index, prelexer.index);
             return insert_token (LexerTokenType.UNKNOWN);
         }
         while ((type = prelexer.get_next_token ()) == LexerTokenType.PL_DIGIT);
@@ -628,7 +634,8 @@ public class Lexer : Object
         else
         {
             /* ERROR: expected LexerTokenType.PL_SECOND */
-            parser.set_error (ErrorCode.MP, prelexer.get_marked_substring (), prelexer.mark_index, prelexer.index);
+            prelexer.roll_back ();
+            parser.set_error (ErrorCode.MP, _("Missing second symbol (″)"), prelexer.mark_index, prelexer.index);
             return insert_token (LexerTokenType.UNKNOWN);
         }
     }
@@ -660,7 +667,8 @@ public class Lexer : Object
         else
         {
             /* ERROR: expected LexerTokenType.PL_DIGIT | LexerTokenType.PL_HEX */
-            parser.set_error (ErrorCode.MP, prelexer.get_marked_substring (), prelexer.mark_index, prelexer.index);
+            prelexer.roll_back ();
+            parser.set_error (ErrorCode.MP, _("Missing digits after decimal point"), prelexer.mark_index, prelexer.index);
             return insert_token (LexerTokenType.UNKNOWN);
         }
     }
@@ -743,6 +751,13 @@ public class Lexer : Object
     {
         /* Make up of digits and hexadecimal characters */
         var type = prelexer.get_next_token ();
+        if (type != LexerTokenType.PL_DIGIT && type != LexerTokenType.PL_HEX)
+        {
+            /* ERROR: expected LexerTokenType.PL_DIGIT | LexerTokenType.PL_HEX */
+            prelexer.roll_back ();
+            parser.set_error (ErrorCode.MP, _("Missing digits after decimal point"), prelexer.mark_index, prelexer.index);
+            return insert_token (LexerTokenType.UNKNOWN);
+        }
         while (type == LexerTokenType.PL_DIGIT || type == LexerTokenType.PL_HEX)
             type = prelexer.get_next_token ();
 

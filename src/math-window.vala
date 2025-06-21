@@ -22,7 +22,7 @@ public class MathWindow : Adw.ApplicationWindow
     private unowned HistoryView history;
     [GtkChild]
     private unowned MathDisplay _display;
-    public MathDisplay math_display { get { return _display; } }
+    public MathDisplay display { get { return _display; } }
     [GtkChild]
     private unowned MathConverter _converter;
     public MathConverter converter { get { return _converter; } }
@@ -57,10 +57,10 @@ public class MathWindow : Adw.ApplicationWindow
 
     public MathWindow (Gtk.Application app, MathEquation equation)
     {
-        typeof(HistoryView).ensure();
-        typeof(MathDisplay).ensure();
-        typeof(MathConverter).ensure();
-        typeof(MathButtons).ensure();
+        typeof (HistoryView).ensure ();
+        typeof (MathDisplay).ensure ();
+        typeof (MathConverter).ensure ();
+        typeof (MathButtons).ensure ();
         Object (application: app, equation: equation);
     }
 
@@ -111,7 +111,7 @@ public class MathWindow : Adw.ApplicationWindow
         if (DEVELOPMENT_BUILD) {
             add_css_class ("devel");
         }
-        _display.grabfocus ();
+        _display.grab_focus ();
     }
 
     private void clear_cb ()

@@ -23,7 +23,7 @@ public class MathButtons : Adw.Bin
     public MathEquation equation { get; construct set; }
     public MathConverter converter { get; construct set; }
 
-    private ButtonMode _mode;
+    private ButtonMode _mode = -1;
     public ButtonMode mode
     {
         get { return _mode; }
@@ -52,7 +52,7 @@ public class MathButtons : Adw.Bin
     }
     public bool inverse { get; set; }
 
-    private Gtk.Stack panel_stack;
+    private Gtk.Stack panel_stack = new Gtk.Stack ();
     private Gtk.Widget bas_panel;
     private Gtk.Widget adv_panel;
     private Gtk.Widget fin_panel;
@@ -101,20 +101,16 @@ public class MathButtons : Adw.Bin
             return;
 
         vexpand_set = true;
-        show.connect (update_buttons);
-
-        action_group.add_action_entries (action_entries, this);
-        insert_action_group ("cal", action_group);
-
-        panel_stack = new Gtk.Stack ();
         panel_stack.hhomogeneous = false;
         panel_stack.vhomogeneous = false;
         set_child (panel_stack);
 
+        action_group.add_action_entries (action_entries, this);
+        insert_action_group ("cal", action_group);
+
         equation.notify["number-mode"].connect (number_mode_changed_cb);
         equation.notify["display"].connect (equation_display_changed_cb);
         number_mode_changed_cb ();
-        update_buttons ();
     }
 
     private void update_buttons ()
@@ -124,7 +120,7 @@ public class MathButtons : Adw.Bin
         else
             equation.number_base = 10;
 
-        if (visible)
+        if (mode != ButtonMode.KEYBOARD)
             panel_stack.visible_child = load_mode (mode);
     }
 
@@ -179,9 +175,9 @@ public class MathButtons : Adw.Bin
     private void on_insert_digit (SimpleAction action, Variant? param)
     {
         var window = root as MathWindow;
-        window.math_display.set_enable_autocompletion (false);
+        window.display.set_enable_autocompletion (false);
         equation.insert_digit (param.get_int32 ());
-        window.math_display.set_enable_autocompletion (true);
+        window.display.set_enable_autocompletion (true);
     }
 
     private void on_insert_brackets (SimpleAction action, Variant? param)
@@ -200,9 +196,9 @@ public class MathButtons : Adw.Bin
     private void on_insert_alpha (SimpleAction action, Variant? param)
     {
         var window = root as MathWindow;
-        window.math_display.set_enable_autocompletion (false);
+        window.display.set_enable_autocompletion (false);
         equation.insert_alpha (param.get_string ());
-        window.math_display.set_enable_autocompletion (true);
+        window.display.set_enable_autocompletion (true);
     }
 
     private void on_insert_function (SimpleAction action, Variant? param)
@@ -223,9 +219,9 @@ public class MathButtons : Adw.Bin
     private void on_insert_exponent (SimpleAction action, Variant? param)
     {
         var window = root as MathWindow;
-        window.math_display.set_enable_autocompletion (false);
+        window.display.set_enable_autocompletion (false);
         equation.insert_exponent (param.get_string ());
-        window.math_display.set_enable_autocompletion (true);
+        window.display.set_enable_autocompletion (true);
     }
 
     private void on_insert_numeric_point ()

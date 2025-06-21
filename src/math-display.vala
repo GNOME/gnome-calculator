@@ -115,11 +115,6 @@ public class MathDisplay : Gtk.Box
         backspace_button.visible = !enable_osk;
     }
 
-    public void grabfocus () /* Editbar grabs focus when an instance of gnome-calculator is created */
-    {
-        source_view.grab_focus ();
-    }
-
     public void display_text (string prev_eq)
     {
         equation.display_selected (prev_eq);
@@ -151,14 +146,7 @@ public class MathDisplay : Gtk.Box
         providers.insert ("favorite", new CurrencyCompletionProvider (true));
         providers.insert ("variable", new VariableCompletionProvider (equation));
 
-        equation.history_signal.connect (() => {
-            set_enable_autocompletion (false);
-            ulong handler = 0;
-            handler = equation.apply_tag.connect (() => {
-                set_enable_autocompletion (true);
-                equation.disconnect (handler);
-            });
-        });
+        equation.set_enable_autocompletion.connect (enable => set_enable_autocompletion (enable));
 
         var settings = new Settings ("org.gnome.calculator");
         settings.bind ("enabled-completions", this, "enabled_completions", SettingsBindFlags.GET);
@@ -291,6 +279,16 @@ public class MathDisplay : Gtk.Box
             if (c == '-')
             {
                 equation.insert_subtract ();
+                return true;
+            }
+            if (c == '\'')
+            {
+                equation.insert ("′");
+                return true;
+            }
+            if (c == '"')
+            {
+                equation.insert ("″");
                 return true;
             }
         }
@@ -684,7 +682,7 @@ public class FunctionCompletionProvider : CompletionProvider, GtkSource.Completi
         string search_pattern = start_iter.get_slice (end_iter);
 
         FunctionManager function_manager = FunctionManager.get_default_function_manager ();
-        MathFunction[] functions = function_manager.functions_eligible_for_autocompletion_for_text (search_pattern);
+        MathFunction[] functions = function_manager.functions_eligible_for_autocompletion (search_pattern);
         return functions;
     }
 
@@ -786,7 +784,7 @@ public class CurrencyCompletionProvider : CompletionProvider, GtkSource.Completi
         string search_pattern = start_iter.get_slice (end_iter);
 
         CurrencyManager currency_manager = CurrencyManager.get_default ();
-        Currency[] currencies = currency_manager.currencies_eligible_for_autocompletion_for_text (search_pattern, favorite);
+        Currency[] currencies = currency_manager.currencies_eligible_for_autocompletion (search_pattern, favorite);
         return currencies;
     }
 

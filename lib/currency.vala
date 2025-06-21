@@ -223,15 +223,15 @@ public class CurrencyManager : Object
         return c;
     }
 
-    public Currency[] currencies_eligible_for_autocompletion_for_text (string display_text, bool favorite)
+    public Currency[] currencies_eligible_for_autocompletion (string text, bool favorite)
     {
         Currency[] eligible_currencies = {};
 
-        string display_text_case_insensitive = display_text.up ();
+        string text_case_insensitive = text.up ();
         foreach (Currency currency in currencies)
         {
             string currency_name_case_insensitive = currency.name.up ();
-            if (currency_name_case_insensitive.has_prefix (display_text_case_insensitive)
+            if (currency_name_case_insensitive.has_prefix (text_case_insensitive)
                 && favorite == is_favorite (currency.name))
                 eligible_currencies += currency;
         }
