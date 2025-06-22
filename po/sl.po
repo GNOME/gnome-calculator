@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-06-18 18:11+0000\n"
-"PO-Revision-Date: 2025-06-20 00:17+0200\n"
+"POT-Creation-Date: 2025-06-21 15:18+0000\n"
+"PO-Revision-Date: 2025-06-22 17:26+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -557,13 +557,30 @@ msgstr "vietnamski dong"
 msgid "South African Rand"
 msgstr "južnoafriški rand"
 
+#: lib/equation-lexer.vala:460
+msgid "Missing digits after negative sign"
+msgstr "Manjkajoče števke za negativnim znakom"
+
+#: lib/equation-lexer.vala:558 lib/equation-lexer.vala:638
+msgid "Missing second symbol (″)"
+msgstr "Manjkajoči simbol za sekunde (\")"
+
+#: lib/equation-lexer.vala:574 lib/equation-lexer.vala:616
+msgid "Missing minute symbol (′)"
+msgstr "Manjkajoči simbol za minute (′)"
+
+#: lib/equation-lexer.vala:603 lib/equation-lexer.vala:628
+#: lib/equation-lexer.vala:671 lib/equation-lexer.vala:758
+msgid "Missing digits after decimal point"
+msgstr "Manjkajoče števke za decimalno vejico"
+
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:791 src/math-display.vala:736
+#: lib/equation-lexer.vala:806 src/math-display.vala:734
 #: src/math-popover.vala:14
 msgid "in"
 msgstr "v"
 
-#: lib/equation-lexer.vala:791 src/math-display.vala:736
+#: lib/equation-lexer.vala:806 src/math-display.vala:734
 #: src/math-popover.vala:14
 msgid "to"
 msgstr "v"
@@ -872,82 +889,82 @@ msgid "Population Variance"
 msgstr "Varianca populacije"
 
 #. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:82 lib/math-equation.vala:1626
+#: lib/math-equation.vala:82 lib/math-equation.vala:1629
 msgid "Displayed value not an integer"
 msgstr "Prikazana vrednost ni celoštevilska vrednost"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:177
+#: lib/math-equation.vala:178
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:548
+#: lib/math-equation.vala:549
 msgid "No undo history"
 msgstr "Ni zgodovine razveljavitev"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:569
+#: lib/math-equation.vala:570
 msgid "No redo history"
 msgstr "Ni zgodovine razveljavitve"
 
-#: lib/math-equation.vala:812
+#: lib/math-equation.vala:813
 msgid "No sane value to store"
 msgstr "Ni razumne vrednosti za shranjevanje"
 
 #. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1278
+#: lib/math-equation.vala:1281
 msgid "Overflow. Try a bigger word size"
 msgstr "Prekoračitev. Poskusite z večjo besedo"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1283
+#: lib/math-equation.vala:1286
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Neznana spremenljivka »%s«"
 
 #. Error displayed to user when a currency conversion with unknown exchange rate is attempted
-#: lib/math-equation.vala:1289
+#: lib/math-equation.vala:1292
 #, c-format
 msgid "Exchange rate for “%s” is not available"
 msgstr "Menjalni tečaj za »%s« ni na voljo"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1295
+#: lib/math-equation.vala:1298
 #, c-format
 msgid "Unknown unit “%s”"
 msgstr "Neznana enota »%s«"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1302
+#: lib/math-equation.vala:1305
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funkcija »%s« ni določena"
 
 #. Error displayed to user when an invalid conversion (e.g. units of different categories)
-#: lib/math-equation.vala:1309
+#: lib/math-equation.vala:1312
 msgid "Unknown conversion"
 msgstr "Neznana pretvorba"
 
 #. should always be run
-#: lib/math-equation.vala:1319
+#: lib/math-equation.vala:1322
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1324 lib/math-equation.vala:1329
+#: lib/math-equation.vala:1327 lib/math-equation.vala:1332
 msgid "Malformed expression"
 msgstr "Napačen izraz"
 
 # G:1 K:0 O:0
-#: lib/math-equation.vala:1340
+#: lib/math-equation.vala:1343
 msgid "Calculating"
 msgstr "Preračunavanje"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1558
+#: lib/math-equation.vala:1561
 msgid "Need an integer to factorize"
 msgstr "Za faktorizacijo je zahtevana celoštevilčna vrednost"
 
@@ -2526,19 +2543,19 @@ msgstr "Zapri _vse"
 msgid "Error"
 msgstr "Napaka"
 
-#: src/math-display.vala:676
+#: src/math-display.vala:674
 msgid "Defined Functions"
 msgstr "Definirane funkcije"
 
-#: src/math-display.vala:724
+#: src/math-display.vala:722
 msgid "Built-in keywords"
 msgstr "Vpisane ključne besede"
 
-#: src/math-display.vala:776
+#: src/math-display.vala:774
 msgid "Defined currencies"
 msgstr "Določene denarne enote"
 
-#: src/math-display.vala:825
+#: src/math-display.vala:823
 msgid "Defined Variables"
 msgstr "Definirane spremenljivke"
 
