@@ -647,16 +647,49 @@
               <class name="buttons"/>
             </style>
             <child>
-              <object class="GtkButton" id="calc_4_button">
-                <property name="label">4</property>
+              <object class="GtkButton" id="calc_clear_button">
+                <property name="label">C</property>
                 <property name="focus_on_click">False</property>
-                <property name="action_name">cal.insert-digit</property>
-                <property name="action_target">4</property>
+                <property name="tooltip_text" translatable="yes">Clear Display [Escape]</property>
+                <property name="action_name">cal.clear</property>
                 <style>
-                  <class name="number-button"/>
+                  <class name="clear-button"/>
                 </style>
                 <layout>
-                  <property name="row">2</property>
+                  <property name="column">0</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkToggleButton" id="calc_superscript_button">
+                <property name="label">↑n</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Superscript Mode [Ctrl]</property>
+                <property name="action_name">cal.set-number-mode</property>
+                <property name="action_target">&apos;superscript&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkToggleButton" id="calc_subscript_button">
+                <property name="label">↓n</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Subscript Mode [Alt]</property>
+                <property name="action_name">cal.set-number-mode</property>
+                <property name="action_target">&apos;subscript&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="row">0</property>
                 </layout>
               </object>
             </child>
@@ -670,8 +703,8 @@
                   <class name="number-button"/>
                 </style>
                 <layout>
-                  <property name="row">1</property>
                   <property name="column">0</property>
+                  <property name="row">1</property>
                 </layout>
               </object>
             </child>
@@ -706,6 +739,21 @@
               </object>
             </child>
             <child>
+              <object class="GtkButton" id="calc_4_button">
+                <property name="label">4</property>
+                <property name="focus_on_click">False</property>
+                <property name="action_name">cal.insert-digit</property>
+                <property name="action_target">4</property>
+                <style>
+                  <class name="number-button"/>
+                </style>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
               <object class="GtkButton" id="calc_5_button">
                 <property name="label">5</property>
                 <property name="focus_on_click">False</property>
@@ -736,38 +784,6 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_modulus_divide_button">
-                <property name="label">mod</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Modulus Divide</property>
-                <property name="action_name">cal.insert-alpha</property>
-                <property name="action_target">&apos;mod&apos;</property>
-                <style>
-                  <class name="operator-button"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_divide_button">
-                <property name="label">÷</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Divide [/]</property>
-                <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;÷&apos;</property>
-                <style>
-                  <class name="operator-button"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
               <object class="GtkButton" id="calc_1_button">
                 <property name="label">1</property>
                 <property name="focus_on_click">False</property>
@@ -777,8 +793,8 @@
                   <class name="number-button"/>
                 </style>
                 <layout>
-                  <property name="row">3</property>
                   <property name="column">0</property>
+                  <property name="row">3</property>
                 </layout>
               </object>
             </child>
@@ -798,6 +814,21 @@
               </object>
             </child>
             <child>
+              <object class="GtkButton" id="calc_3_button">
+                <property name="label">3</property>
+                <property name="focus_on_click">False</property>
+                <property name="action_name">cal.insert-digit</property>
+                <property name="action_target">3</property>
+                <style>
+                  <class name="number-button"/>
+                </style>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+            <child>
               <object class="GtkButton" id="calc_0_button">
                 <property name="label">0</property>
                 <property name="focus_on_click">False</property>
@@ -807,8 +838,8 @@
                   <class name="number-button"/>
                 </style>
                 <layout>
-                  <property name="row">4</property>
                   <property name="column">0</property>
+                  <property name="row">4</property>
                 </layout>
               </object>
             </child>
@@ -827,17 +858,50 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_3_button">
-                <property name="label">3</property>
+              <object class="GtkMenuButton" id="calc_memory_button">
+                <property name="label" translatable="yes" comments="The label on the memory button">x</property>
                 <property name="focus_on_click">False</property>
-                <property name="action_name">cal.insert-digit</property>
-                <property name="action_target">3</property>
+                <property name="can_shrink">True</property>
+                <property name="tooltip_text" translatable="yes">Variables and Constants</property>
+                <property name="direction">up</property>
                 <style>
-                  <class name="number-button"/>
+                  <class name="function-button"/>
                 </style>
                 <layout>
                   <property name="column">2</property>
-                  <property name="row">3</property>
+                  <property name="row">4</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkMenuButton" id="calc_function_button">
+                <property name="label">f(x)</property>
+                <property name="focus_on_click">False</property>
+                <property name="can_shrink">True</property>
+                <property name="tooltip_text" translatable="yes">Additional Functions</property>
+                <property name="direction">up</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">3</property>
+                  <property name="row">4</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_divide_button">
+                <property name="label">÷</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Divide [/]</property>
+                <property name="action_name">cal.insert-general</property>
+                <property name="action_target">&apos;÷&apos;</property>
+                <style>
+                  <class name="operator-button"/>
+                </style>
+                <layout>
+                  <property name="column">3</property>
+                  <property name="row">0</property>
                 </layout>
               </object>
             </child>
@@ -853,7 +917,7 @@
                 </style>
                 <layout>
                   <property name="column">3</property>
-                  <property name="row">2</property>
+                  <property name="row">1</property>
                 </layout>
               </object>
             </child>
@@ -868,7 +932,7 @@
                 </style>
                 <layout>
                   <property name="column">3</property>
-                  <property name="row">3</property>
+                  <property name="row">2</property>
                 </layout>
               </object>
             </child>
@@ -884,51 +948,39 @@
                 </style>
                 <layout>
                   <property name="column">3</property>
-                  <property name="row">4</property>
+                  <property name="row">3</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_clear_button">
+              <object class="GtkButton" id="calc_modulus_divide_button">
+                <property name="label">mod</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Clear Display [Escape]</property>
-                <property name="action_name">cal.clear</property>
-                <property name="label">C</property>
+                <property name="tooltip_text" translatable="yes">Modulus Divide</property>
+                <property name="action_name">cal.insert-alpha</property>
+                <property name="action_target">&apos;mod&apos;</property>
                 <style>
-                  <class name="clear-button"/>
+                  <class name="operator-button"/>
                 </style>
                 <layout>
-                  <property name="column">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkMenuButton" id="calc_memory_button">
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Memory and Constants</property>
-                <property name="label" translatable="yes" comments="The label on the memory button">x</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">1</property>
+                  <property name="column">4</property>
                   <property name="row">0</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="GtkMenuButton" id="calc_function_button">
+              <object class="GtkButton" id="calc_percentage_button">
+                <property name="label">%</property>
                 <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Additional Functions</property>
-                <property name="label">f(x)</property>
+                <property name="tooltip_text" translatable="yes">Percentage [%]</property>
+                <property name="action_name">cal.insert-general</property>
+                <property name="action_target">&apos;%&apos;</property>
                 <style>
-                  <class name="fx-button"/>
+                  <class name="percent-button"/>
                 </style>
                 <layout>
-                  <property name="column">2</property>
-                  <property name="row">0</property>
+                  <property name="column">4</property>
+                  <property name="row">1</property>
                 </layout>
               </object>
             </child>
@@ -941,54 +993,6 @@
                 <property name="action_target">(&apos;(&apos;,&apos;)&apos;)</property>
                 <style>
                   <class name="parenthesis-button"/>
-                </style>
-                <layout>
-                  <property name="column">2</property>
-                  <property name="row">4</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_percentage_button">
-                <property name="label">%</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Percentage [%]</property>
-                <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;%&apos;</property>
-                <style>
-                  <class name="procent-button"/>
-                </style>
-                <layout>
-                  <property name="column">4</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkToggleButton" id="calc_superscript_button">
-                <property name="label">↑n</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Superscript Mode [Ctrl]</property>
-                <property name="action_name">cal.set-number-mode</property>
-                <property name="action_target">&apos;superscript&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">4</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkToggleButton" id="calc_subscript_button">
-                <property name="label">↓n</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Subscript Mode [Alt]</property>
-                <property name="action_name">cal.set-number-mode</property>
-                <property name="action_target">&apos;subscript&apos;</property>
-                <style>
-                  <class name="function-button"/>
                 </style>
                 <layout>
                   <property name="column">4</property>

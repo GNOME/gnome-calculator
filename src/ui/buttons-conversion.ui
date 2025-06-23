@@ -15,10 +15,10 @@
         </style>
         <child>
           <object class="GtkButton" id="calc_clear_button">
+            <property name="label">C</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Clear Display [Escape]</property>
             <property name="action_name">cal.clear</property>
-            <property name="label">C</property>
             <style>
               <class name="clear-button"/>
             </style>
@@ -30,10 +30,10 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_swap_button">
+            <property name="label">⇅</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Switch Conversion Units</property>
             <property name="action_name">cal.swap-units</property>
-            <property name="label">⇆</property>
             <style>
               <class name="function-button"/>
             </style>
@@ -45,10 +45,10 @@
         </child>
         <child>
           <object class="GtkButton" id="calc_backspace_button">
+            <property name="icon-name">edit-clear-symbolic</property>
             <property name="focus_on_click">False</property>
             <property name="tooltip_text" translatable="yes">Backspace</property>
             <property name="action_name">cal.backspace</property>
-            <property name="icon-name">edit-clear-symbolic</property>
             <style>
               <class name="function-button"/>
             </style>
