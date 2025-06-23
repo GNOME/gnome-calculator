@@ -149,10 +149,11 @@ public class FinancialButtonPanel : Adw.BreakpointBin
         var entries = finc_dialogs[function].entry_names;
 
         Number arg[4] = { new Number.integer (0), new Number.integer (0), new Number.integer (0), new Number.integer (0) };
+        var radix = buttons.equation.serializer.get_radix ().to_string ();
         for (var i = 0; i < entries.length; i++)
         {
             var entry = get_object<Adw.EntryRow> (entries[i]);
-            arg[i] = mp_set_from_string (entry.text);
+            arg[i] = mp_set_from_string (entry.text.replace (radix, "."));
         }
         do_finc_expression (buttons.equation, function, arg[0], arg[1], arg[2], arg[3]);
     }
