@@ -1037,6 +1037,45 @@
               </object>
             </child>
             <child>
+              <object class="GtkButton" id="calc_x_squared_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Square [Ctrl+2]</property>
+                <property name="action_name">cal.square</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label">&lt;i&gt;x&lt;/i&gt;²</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_square_root_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+                <property name="label">√</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Square Root [Ctrl+R]</property>
+                <property name="action_name">cal.insert-symbol-before</property>
+                <property name="action_target">&apos;√&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                  <class name="accent"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
               <object class="GtkButton" id="calc_x_pow_y_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
                 <property name="focus_on_click">False</property>
@@ -1083,84 +1122,24 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_inverse_button">
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Inverse [Ctrl+I]</property>
-                <property name="action_name">cal.insert-symbol-after</property>
-                <property name="action_target">&apos;⁻¹&apos;</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">&lt;i&gt;x&lt;/i&gt;⁻¹</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <!-- Should we drop the Ceil button and move this one back
-                       where it is in other modes? -->
-                  <property name="column">0</property>
-                  <property name="row">4</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_factor_button">
-                <property name="label">a×b</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Factorize [Ctrl+F]</property>
-                <property name="action_name">cal.factorize</property>
-                <style>
-                  <class name="suggested-action"/>
-                </style>
-                <layout>
-                  <property name="column">4</property>
-                  <property name="row">4</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_x_squared_button">
+              <object class="GtkButton" id="calc_common_logarithm_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                <property name="label">log</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Square [Ctrl+2]</property>
-                <property name="action_name">cal.square</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">&lt;i&gt;x&lt;/i&gt;²</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
+                <property name="tooltip_text" translatable="yes">Common Logarithm</property>
+                <property name="action_name">cal.insert-function</property>
+                <property name="action_target">&apos;log&apos;</property>
                 <style>
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">1</property>
+                  <property name="column">3</property>
                   <property name="row">0</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_square_root_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
-                <property name="label">√</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Square Root [Ctrl+R]</property>
-                <property name="action_name">cal.insert-symbol-before</property>
-                <property name="action_target">&apos;√&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                  <class name="accent"/>
-                </style>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_exponential_button">
+              <object class="GtkButton" id="calc_base_10_exponential_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
                 <property name="focus_on_click">False</property>
                 <property name="tooltip_text" translatable="yes">Base-10 Exponential</property>
@@ -1177,8 +1156,8 @@
                   <class name="accent"/>
                 </style>
                 <layout>
-                  <property name="column">2</property>
-                  <property name="row">2</property>
+                  <property name="column">3</property>
+                  <property name="row">0</property>
                 </layout>
               </object>
             </child>
@@ -1194,8 +1173,8 @@
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">2</property>
-                  <property name="row">3</property>
+                  <property name="column">4</property>
+                  <property name="row">0</property>
                 </layout>
               </object>
             </child>
@@ -1217,339 +1196,206 @@
                   <class name="accent"/>
                 </style>
                 <layout>
-                  <property name="column">2</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_common_logarithm_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
-                <property name="label">log</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Common Logarithm</property>
-                <property name="action_name">cal.insert-function</property>
-                <property name="action_target">&apos;log&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">2</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_logarithm_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Logarithm</property>
-                <property name="action_name">cal.logarithm</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">log&lt;sub&gt;&lt;i&gt;y&lt;/i&gt;&lt;/sub&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">2</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_y_pow_x_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Exponent [^ or **]</property>
-                <property name="action_name">cal.insert-exponent</property>
-                <property name="action_target">&apos;&apos;</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">&lt;i&gt;y&lt;/i&gt;&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="function-button"/>
-                  <class name="accent"/>
-                </style>
-                <layout>
-                  <property name="column">2</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_factorial_button">
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Factorial [!]</property>
-                <property name="action_name">cal.insert-symbol-after</property>
-                <property name="action_target">&apos;!&apos;</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">&lt;i&gt;x&lt;/i&gt;!</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">4</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_abs_button">
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Absolute Value [||]</property>
-                <property name="action_name">cal.insert-brackets</property>
-                <property name="action_target">(&apos;|&apos;,&apos;|&apos;)</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">|&lt;i&gt;x&lt;/i&gt;|</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">4</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_floor_button">
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Floor [Alt+[]]</property>
-                <property name="action_name">cal.insert-brackets</property>
-                <property name="action_target">(&apos;⌊&apos;,&apos;⌋&apos;)</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">⌊&lt;i&gt;x&lt;/i&gt;⌋</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">4</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_ceil_button">
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Ceiling [Ctrl+[]]</property>
-                <property name="action_name">cal.insert-brackets</property>
-                <property name="action_target">(&apos;⌈&apos;,&apos;⌉&apos;)</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">⌈&lt;i&gt;x&lt;/i&gt;⌉</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
                   <property name="column">4</property>
                   <property name="row">0</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_finc_currency_conversion_button">
-                <property name="label" translatable="yes">Currency Conversion</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="action_name">cal.currency-conversion</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">4</property>
-                  <property name="column-span">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_compounding_term_button">
-                <property name="label" translatable="yes" comments="Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest">Ctrm</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Compounding Term</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;ctrm_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
+              <object class="GtkGrid" id="finc_buttons">
+                <property name="row-homogeneous">True</property>
+                <property name="column-homogeneous">True</property>
+                <child>
+                  <object class="GtkButton" id="calc_finc_compounding_term_button">
+                    <property name="label" translatable="yes" comments="Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest">Ctrm</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Compounding Term</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;ctrm_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_double_declining_depreciation_button">
+                    <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation">Ddb</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Double Declining Depreciation</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;ddb_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_future_value_button">
+                    <property name="label" translatable="yes" comments="Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value">Fv</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Future Value</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;fv_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_gross_profit_margin_button">
+                    <property name="label" translatable="yes" comments="Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin">Gpm</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Gross Profit Margin</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;gpm_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_periodic_payment_button">
+                    <property name="label" translatable="yes" comments="Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Periodic Payment</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;pmt_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_present_value_button">
+                    <property name="label" translatable="yes" comments="Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value">Pv</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Present Value</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;pv_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_periodic_interest_rate_button">
+                    <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest">Rate</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Periodic Interest Rate</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;rate_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_straight_line_depreciation_button">
+                    <property name="label" translatable="yes" comments="Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Sln</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Straight Line Depreciation</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;sln_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_sum_of_the_years_digits_depreciation_button">
+                    <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Syd</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Sum of the Years Digits Depreciation</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;syd_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_term_button">
+                    <property name="label" translatable="yes" comments="Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="tooltip_text" translatable="yes">Financial Term</property>
+                    <property name="action_name">cal.launch-finc-dialog</property>
+                    <property name="action_target">&apos;term_dialog&apos;</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="calc_finc_currency_conversion_button">
+                    <property name="label" translatable="yes">Currency Conversion</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="can_shrink">True</property>
+                    <property name="action_name">cal.currency-conversion</property>
+                    <style>
+                      <class name="function-button"/>
+                    </style>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">3</property>
+                      <property name="column-span">2</property>
+                    </layout>
+                  </object>
+                </child>
                 <layout>
                   <property name="column">0</property>
                   <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_double_declining_depreciation_button">
-                <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation">Ddb</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Double Declining Depreciation</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;ddb_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_future_value_button">
-                <property name="label" translatable="yes" comments="Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value">Fv</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Future Value</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;fv_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_term_button">
-                <property name="label" translatable="yes" comments="Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)">Term</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Financial Term</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;term_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_sum_of_the_years_digits_depreciation_button">
-                <property name="label" translatable="yes" comments="Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Syd</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Sum of the Years Digits Depreciation</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;syd_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_straight_line_depreciation_button">
-                <property name="label" translatable="yes" comments="Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation">Sln</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Straight Line Depreciation</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;sln_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_periodic_interest_rate_button">
-                <property name="label" translatable="yes" comments="Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest">Rate</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Periodic Interest Rate</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;rate_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_present_value_button">
-                <property name="label" translatable="yes" comments="Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value">Pv</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Present Value</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;pv_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_periodic_payment_button">
-                <property name="label" translatable="yes" comments="Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule">Pmt</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Periodic Payment</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;pmt_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_finc_gross_profit_margin_button">
-                <property name="label" translatable="yes" comments="Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin">Gpm</property>
-                <property name="focus_on_click">False</property>
-                <property name="can_shrink">True</property>
-                <property name="tooltip_text" translatable="yes">Gross Profit Margin</property>
-                <property name="action_name">cal.launch-finc-dialog</property>
-                <property name="action_target">&apos;gpm_dialog&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">0</property>
-                  <property name="row">2</property>
+                  <property name="column-span">5</property>
+                  <property name="row-span">4</property>
                 </layout>
               </object>
             </child>

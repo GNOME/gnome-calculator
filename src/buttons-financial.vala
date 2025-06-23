@@ -29,6 +29,8 @@ public class FinancialButtonPanel : Adw.BreakpointBin
     private unowned Gtk.Widget basic;
     [GtkChild]
     private unowned Gtk.Widget advanced;
+    [GtkChild]
+    private unowned Gtk.Widget finc_buttons;
 
     [GtkChild]
     private unowned Gtk.Button calc_numeric_point_button;
@@ -103,6 +105,7 @@ public class FinancialButtonPanel : Adw.BreakpointBin
         math_box.set_direction (Gtk.TextDirection.LTR);
         basic.set_direction (Gtk.TextDirection.LTR);
         advanced.set_direction (Gtk.TextDirection.LTR);
+        finc_buttons.set_direction (Gtk.TextDirection.LTR);
     }
 
     private void load_finc_dialog (string name, string[] entry_names, FinancialDialog function)
