@@ -124,7 +124,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("PEN", _("Peruvian Nuevo Sol"), "S/."));
         default_currency_manager.currencies.append (new Currency ("PHP", _("Philippine Peso"), "₱"));
         default_currency_manager.currencies.append (new Currency ("PKR", _("Pakistani Rupee"), "Rs"));
-        default_currency_manager.currencies.append (new Currency ("PLN", _("Polish Zloty"), "zł"));
+        default_currency_manager.currencies.append (new Currency ("PLN", _("Polish Złoty"), "zł"));
         default_currency_manager.currencies.append (new Currency ("QAR", _("Qatari Riyal"), "ق.ر"));
         default_currency_manager.currencies.append (new Currency ("RON", _("New Romanian Leu"), "L"));
         default_currency_manager.currencies.append (new Currency ("RUB", _("Russian Ruble"), "₽"));
