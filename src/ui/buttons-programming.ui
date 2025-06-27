@@ -1773,7 +1773,7 @@
               <object class="GtkToggleButton" id="calc_inverse_modifier_button">
                 <property name="label">&#x200E;⇧⁻¹</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Inverse Modifier</property>
+                <property name="tooltip_text" translatable="yes">Inverse Modifier [Shift]</property>
                 <style>
                   <class name="accent"/>
                 </style>
@@ -1784,88 +1784,37 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_left_shift_button">
-                <property name="label">≪</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Left Shift [&lt;&lt;]</property>
-                <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;≪&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">4</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_right_shift_button">
+              <object class="GtkButton" id="calc_and_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
-                <property name="label">≫</property>
+                <property name="label">∧</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Right Shift [&gt;&gt;]</property>
+                <property name="tooltip_text" translatable="yes">Boolean AND</property>
                 <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;≫&apos;</property>
+                <property name="action_target">&apos;∧&apos;</property>
                 <style>
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">4</property>
-                  <property name="row">4</property>
+                  <property name="column">0</property>
+                  <property name="row">1</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_unsigned_right_shift_button">
+              <object class="GtkButton" id="calc_nand_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
-                <property name="label">⋙</property>
+                <property name="label">⊼</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Unsigned Right Shift [&gt;&gt;&gt;]</property>
+                <property name="tooltip_text" translatable="yes">Boolean NAND</property>
                 <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;⋙&apos;</property>
+                <property name="action_target">&apos;⊼&apos;</property>
                 <style>
                   <class name="function-button"/>
                   <class name="accent"/>
                 </style>
                 <layout>
-                  <property name="column">4</property>
-                  <property name="row">4</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_xor_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
-                <property name="label">⊻</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Boolean Exclusive OR</property>
-                <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;⊻&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_xnor_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
-                <property name="label">⊙</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Boolean Exclusive NOR</property>
-                <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;⊙&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                  <class name="accent"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">2</property>
+                  <property name="column">0</property>
+                  <property name="row">1</property>
                 </layout>
               </object>
             </child>
@@ -1881,7 +1830,7 @@
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">3</property>
+                  <property name="column">1</property>
                   <property name="row">1</property>
                 </layout>
               </object>
@@ -1899,43 +1848,8 @@
                   <class name="accent"/>
                 </style>
                 <layout>
-                  <property name="column">3</property>
+                  <property name="column">1</property>
                   <property name="row">1</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_and_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
-                <property name="label">∧</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Boolean AND</property>
-                <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;∧&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_nand_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
-                <property name="label">⊼</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Boolean NAND</property>
-                <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;⊼&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                  <class name="accent"/>
-                </style>
-                <layout>
-                  <property name="column">3</property>
-                  <property name="row">0</property>
                 </layout>
               </object>
             </child>
@@ -1950,40 +1864,133 @@
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">3</property>
-                  <property name="row">3</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_ones_complement_button">
-                <property name="label">ones</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">One’s Complement</property>
-                <property name="action_name">cal.insert-function</property>
-                <property name="action_target">&apos;ones&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
                   <property name="column">0</property>
-                  <property name="row">1</property>
+                  <property name="row">2</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_twos_complement_button">
-                <property name="label">twos</property>
+              <object class="GtkButton" id="calc_xor_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                <property name="label">⊻</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Two’s Complement</property>
-                <property name="action_name">cal.insert-function</property>
-                <property name="action_target">&apos;twos&apos;</property>
+                <property name="tooltip_text" translatable="yes">Boolean Exclusive OR</property>
+                <property name="action_name">cal.insert-general</property>
+                <property name="action_target">&apos;⊻&apos;</property>
                 <style>
                   <class name="function-button"/>
                 </style>
                 <layout>
                   <property name="column">1</property>
-                  <property name="row">1</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_xnor_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+                <property name="label">⊙</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Boolean Exclusive NOR</property>
+                <property name="action_name">cal.insert-general</property>
+                <property name="action_target">&apos;⊙&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                  <class name="accent"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_left_shift_button">
+                <property name="label">≪</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Left Shift [&lt;&lt;]</property>
+                <property name="action_name">cal.insert-general</property>
+                <property name="action_target">&apos;≪&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_right_shift_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                <property name="label">≫</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Right Shift [&gt;&gt;]</property>
+                <property name="action_name">cal.insert-general</property>
+                <property name="action_target">&apos;≫&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_unsigned_right_shift_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+                <property name="label">⋙</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Unsigned Right Shift [&gt;&gt;&gt;]</property>
+                <property name="action_name">cal.insert-general</property>
+                <property name="action_target">&apos;⋙&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                  <class name="accent"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_x_squared_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Square [Ctrl+2]</property>
+                <property name="action_name">cal.square</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label">&lt;i&gt;x&lt;/i&gt;²</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_square_root_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+                <property name="label">√</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Square Root [Ctrl+R]</property>
+                <property name="action_name">cal.insert-symbol-before</property>
+                <property name="action_target">&apos;√&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                  <class name="accent"/>
+                </style>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">0</property>
                 </layout>
               </object>
             </child>
@@ -2034,23 +2041,6 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_common_logarithm_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
-                <property name="label">log</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Common Logarithm</property>
-                <property name="action_name">cal.insert-function</property>
-                <property name="action_target">&apos;log&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">2</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
               <object class="GtkButton" id="calc_logarithm_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
                 <property name="focus_on_click">False</property>
@@ -2072,7 +2062,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_y_pow_x_button">
+              <object class="GtkButton" id="calc_exponential_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
                 <property name="focus_on_click">False</property>
                 <property name="tooltip_text" translatable="yes">Exponent [^ or **]</property>
@@ -2095,6 +2085,46 @@
               </object>
             </child>
             <child>
+              <object class="GtkButton" id="calc_common_logarithm_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                <property name="label">log</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Common Logarithm</property>
+                <property name="action_name">cal.insert-function</property>
+                <property name="action_target">&apos;log&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_base_10_exponential_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Base-10 Exponential</property>
+                <property name="action_name">cal.insert-exponent</property>
+                <property name="action_target">&apos;10&apos;</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label">10&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
+                    <property name="use_markup">True</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="function-button"/>
+                  <class name="accent"/>
+                </style>
+                <layout>
+                  <property name="column">2</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
               <object class="GtkButton" id="calc_binary_logarithm_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
                 <property name="label">log₂</property>
@@ -2112,7 +2142,7 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_binary_exponential_button">
+              <object class="GtkButton" id="calc_base_2_exponential_button">
                 <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
                 <property name="focus_on_click">False</property>
                 <property name="tooltip_text" translatable="yes">Base-2 Exponential</property>
@@ -2135,35 +2165,78 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_factorial_button">
+              <object class="GtkButton" id="calc_ones_complement_button">
+                <property name="label">ones</property>
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Factorial [!]</property>
-                <property name="action_name">cal.insert-symbol-after</property>
-                <property name="action_target">&apos;!&apos;</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">&lt;i&gt;x&lt;/i&gt;!</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
+                <property name="tooltip_text" translatable="yes">Ones’ Complement</property>
+                <property name="action_name">cal.insert-function</property>
+                <property name="action_target">&apos;ones&apos;</property>
                 <style>
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">4</property>
+                  <property name="column">3</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_twos_complement_button">
+                <property name="label">twos</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Two’s Complement</property>
+                <property name="action_name">cal.insert-function</property>
+                <property name="action_target">&apos;twos&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">3</property>
+                  <property name="row">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_integer_portion_button">
+                <property name="label">int</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Integer Component</property>
+                <property name="action_name">cal.insert-function</property>
+                <property name="action_target">&apos;int&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">3</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_fractional_portion_button">
+                <property name="label">frac</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Fractional Component</property>
+                <property name="action_name">cal.insert-function</property>
+                <property name="action_target">&apos;frac&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">3</property>
                   <property name="row">3</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_abs_button">
+              <object class="GtkButton" id="calc_ceiling_button">
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Absolute Value [||]</property>
+                <property name="tooltip_text" translatable="yes">Ceiling [Ctrl+[]]</property>
                 <property name="action_name">cal.insert-brackets</property>
-                <property name="action_target">(&apos;|&apos;,&apos;|&apos;)</property>
+                <property name="action_target">(&apos;⌈&apos;,&apos;⌉&apos;)</property>
                 <child>
                   <object class="GtkLabel">
-                    <property name="label">|&lt;i&gt;x&lt;/i&gt;|</property>
+                    <property name="label">⌈&lt;i&gt;x&lt;/i&gt;⌉</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -2172,7 +2245,7 @@
                 </style>
                 <layout>
                   <property name="column">4</property>
-                  <property name="row">2</property>
+                  <property name="row">0</property>
                 </layout>
               </object>
             </child>
@@ -2198,14 +2271,14 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_ceil_button">
+              <object class="GtkButton" id="calc_abs_button">
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Ceiling [Ctrl+[]]</property>
+                <property name="tooltip_text" translatable="yes">Absolute Value [||]</property>
                 <property name="action_name">cal.insert-brackets</property>
-                <property name="action_target">(&apos;⌈&apos;,&apos;⌉&apos;)</property>
+                <property name="action_target">(&apos;|&apos;,&apos;|&apos;)</property>
                 <child>
                   <object class="GtkLabel">
-                    <property name="label">⌈&lt;i&gt;x&lt;/i&gt;⌉</property>
+                    <property name="label">|&lt;i&gt;x&lt;/i&gt;|</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -2214,51 +2287,19 @@
                 </style>
                 <layout>
                   <property name="column">4</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_integer_portion_button">
-                <property name="label">int</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Integer Component</property>
-                <property name="action_name">cal.insert-function</property>
-                <property name="action_target">&apos;int&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">0</property>
                   <property name="row">2</property>
                 </layout>
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_fractional_portion_button">
-                <property name="label">frac</property>
+              <object class="GtkButton" id="calc_factorial_button">
                 <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Fractional Component</property>
-                <property name="action_name">cal.insert-function</property>
-                <property name="action_target">&apos;frac&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                </style>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_x_squared_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Square [Ctrl+2]</property>
-                <property name="action_name">cal.square</property>
+                <property name="tooltip_text" translatable="yes">Factorial [!]</property>
+                <property name="action_name">cal.insert-symbol-after</property>
+                <property name="action_target">&apos;!&apos;</property>
                 <child>
                   <object class="GtkLabel">
-                    <property name="label">&lt;i&gt;x&lt;/i&gt;²</property>
+                    <property name="label">&lt;i&gt;x&lt;/i&gt;!</property>
                     <property name="use_markup">True</property>
                   </object>
                 </child>
@@ -2266,64 +2307,8 @@
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">1</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_square_root_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
-                <property name="label">√</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Square Root [Ctrl+R]</property>
-                <property name="action_name">cal.insert-symbol-before</property>
-                <property name="action_target">&apos;√&apos;</property>
-                <style>
-                  <class name="function-button"/>
-                  <class name="accent"/>
-                </style>
-                <layout>
-                  <property name="column">1</property>
-                  <property name="row">0</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_exponential_button">
-                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Base-10 Exponential</property>
-                <property name="action_name">cal.insert-exponent</property>
-                <property name="action_target">&apos;10&apos;</property>
-                <child>
-                  <object class="GtkLabel">
-                    <property name="label">10&lt;sup&gt;&lt;i&gt;x&lt;/i&gt;&lt;/sup&gt;</property>
-                    <property name="use_markup">True</property>
-                  </object>
-                </child>
-                <style>
-                  <class name="function-button"/>
-                  <class name="accent"/>
-                </style>
-                <layout>
-                  <property name="column">2</property>
-                  <property name="row">2</property>
-                </layout>
-              </object>
-            </child>
-            <child>
-              <object class="GtkButton" id="calc_character_button">
-                <property name="label">á</property>
-                <property name="focus_on_click">False</property>
-                <property name="tooltip_text" translatable="yes">Insert Character Code</property>
-                <property name="action_name">cal.insert-character</property>
-                <style>
-                  <class name="number-button"/>
-                </style>
-                <layout>
-                  <property name="column">2</property>
-                  <property name="row">4</property>
+                  <property name="column">4</property>
+                  <property name="row">3</property>
                 </layout>
               </object>
             </child>
@@ -2339,7 +2324,7 @@
                 </style>
                 <layout>
                   <property name="column">0</property>
-                  <property name="row">3</property>
+                  <property name="row">4</property>
                   <property name="column-span">2</property>
                 </layout>
               </object>
@@ -2356,9 +2341,24 @@
                   <class name="function-button"/>
                 </style>
                 <layout>
-                  <property name="column">0</property>
+                  <property name="column">2</property>
                   <property name="row">4</property>
                   <property name="column-span">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_character_button">
+                <property name="label">á</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Insert Character Code</property>
+                <property name="action_name">cal.insert-character</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">4</property>
+                  <property name="row">4</property>
                 </layout>
               </object>
             </child>
@@ -2469,14 +2469,9 @@
   <menu id="word_size_menu">
     <section>
       <item>
-        <attribute name="label" translatable="yes">64-bit</attribute>
+        <attribute name="label" translatable="yes">8-bit</attribute>
         <attribute name="action">cal.set-word-size</attribute>
-        <attribute name="target" type="i">64</attribute>
-      </item>
-      <item>
-        <attribute name="label" translatable="yes">32-bit</attribute>
-        <attribute name="action">cal.set-word-size</attribute>
-        <attribute name="target" type="i">32</attribute>
+        <attribute name="target" type="i">8</attribute>
       </item>
       <item>
         <attribute name="label" translatable="yes">16-bit</attribute>
@@ -2484,9 +2479,14 @@
         <attribute name="target" type="i">16</attribute>
       </item>
       <item>
-        <attribute name="label" translatable="yes">8-bit</attribute>
+        <attribute name="label" translatable="yes">32-bit</attribute>
         <attribute name="action">cal.set-word-size</attribute>
-        <attribute name="target" type="i">8</attribute>
+        <attribute name="target" type="i">32</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">64-bit</attribute>
+        <attribute name="action">cal.set-word-size</attribute>
+        <attribute name="target" type="i">64</attribute>
       </item>
     </section>
   </menu>
