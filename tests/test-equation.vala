@@ -730,6 +730,7 @@ private void test_equations ()
 private void test_bit_shift ()
 {
     number_base = 10;
+    wordlen = 64;
     test ("1«2", "4", 0);
     test ("1«2»1«2", "8", 0);
     test ("1«35", "34359738368", 0);
