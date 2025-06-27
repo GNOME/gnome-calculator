@@ -979,17 +979,31 @@ private void test_not ()
 
 private void test_shift ()
 {
-    for (var a = 0; a < 10; a++)
+    for (var a = -10; a < 10; a++)
     {
-        for (var b = -10; b < 10; b++)
+        for (var b = 0; b < 10; b++)
         {
-            var z = (new Number.integer (a)).shift (b);
+            var z = (new Number.integer (a)).left_shift (new Number.integer (b), 32);
             var expected = a << b;
-            if (b < 0)
-                expected = a >> -b;
             if (z.to_integer () != expected)
             {
-                fail ("(%d).shift (%d) -> %lli, expected %d".printf (a, b, z.to_integer (), expected));
+                fail ("(%d).left_shift (%d) -> %lli, expected %d".printf (a, b, z.to_integer (), expected));
+                return;
+            }
+
+            z = (new Number.integer (a)).right_shift (new Number.integer (b), 32);
+            expected = a >> b;
+            if (z.to_integer () != expected)
+            {
+                fail ("(%d).right_shift (%d) -> %lli, expected %d".printf (a, b, z.to_integer (), expected));
+                return;
+            }
+
+            z = (new Number.integer (a)).unsigned_right_shift (new Number.integer (b), 32);
+            var expected_u = ((uint) a) >> b;
+            if (z.to_integer () != expected_u)
+            {
+                fail ("(%d).unsigned_right_shift (%d) -> %lli, expected %u".printf (a, b, z.to_integer (), expected_u));
                 return;
             }
         }
@@ -1131,7 +1145,6 @@ static int main (string[] args)
     test_or ();
     test_xor ();
     test_not ();
-    //test_mask ();
     test_shift ();
     //test_ones_complement ();
     //test_twos_complement ();

@@ -137,11 +137,6 @@ public class Number : GLib.Object
         return num.get_real ().val.get_unsigned_integer ();
     }
 
-    public float to_float ()
-    {
-        return num.get_real ().val.get_float (MPFR.Round.NEAREST);
-    }
-
     public double to_double ()
     {
         return num.get_real ().val.get_double (MPFR.Round.NEAREST);
@@ -873,7 +868,7 @@ public class Number : GLib.Object
         return z;
     }
 
-    /* Sets z = boolean AND for each bit in x and z */
+    /* Sets z = boolean AND for each bit in x and y */
     public Number and (Number y)
     {
         if (!is_natural () || !y.is_natural ())
@@ -885,7 +880,7 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 & v2; }, 0);
     }
 
-    /* Sets z = boolean NAND for each bit in x and z */
+    /* Sets z = boolean NAND for each bit in x and y */
     public Number nand (Number y, int wordlen)
     {
         if (!is_natural () || !y.is_natural ())
@@ -897,7 +892,7 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 & v2; }, wordlen).not (wordlen);
     }
 
-    /* Sets z = boolean OR for each bit in x and z */
+    /* Sets z = boolean OR for each bit in x and y */
     public Number or (Number y)
     {
         if (!is_natural () || !y.is_natural ())
@@ -909,7 +904,7 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 | v2; }, 0);
     }
 
-    /* Sets z = boolean NOR for each bit in x and z */
+    /* Sets z = boolean NOR for each bit in x and y */
     public Number nor (Number y, int wordlen)
     {
         if (!is_natural () || !y.is_natural ())
@@ -921,7 +916,7 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 | v2; }, wordlen).not (wordlen);
     }
 
-    /* Sets z = boolean XOR for each bit in x and z */
+    /* Sets z = boolean XOR for each bit in x and y */
     public Number xor (Number y)
     {
         if (!is_natural () || !y.is_natural ())
@@ -933,7 +928,7 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, 0);
     }
 
-    /* Sets z = boolean XNOR for each bit in x and z */
+    /* Sets z = boolean XNOR for each bit in x and y */
     public Number xnor (Number y, int wordlen)
     {
         if (!is_natural () || !y.is_natural ())
@@ -945,7 +940,7 @@ public class Number : GLib.Object
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, wordlen).not (wordlen);
     }
 
-    /* Sets z = boolean NOT for each bit in x and z for word of length 'wordlen' */
+    /* Sets z = boolean NOT for each bit in x for word of length 'wordlen' */
     public Number not (int wordlen)
     {
         if (!is_natural ())
@@ -957,42 +952,90 @@ public class Number : GLib.Object
         return bitwise (new Number.integer (0), (v1, v2) => { return v1 ^ 0xF; }, wordlen);
     }
 
-    /* Sets z = x masked to 'wordlen' bits */
-    public Number mask (Number x, int wordlen)
+    /* Sets z = x left shifted by 'count' bits for word of length 'wordlen' */
+    public Number left_shift (Number count, int wordlen)
     {
-        /* Convert to a hexadecimal string and use last characters */
-        var text = x.to_hex_string ();
-        var len = text.length;
-        var offset = wordlen / 4;
-        offset = len > offset ? (int) len - offset: 0;
-        return mp_set_from_string (text.substring (offset), 16, false);
+        uint64 mask = check_shift (count, wordlen);
+        if (mask == 0)
+            return new Number.integer (0);
+
+        uint64 bits = is_negative () ? to_integer () : to_unsigned_integer ();
+        bits <<= count.modulus_divide (new Number.integer (wordlen)).to_integer ();
+        if (wordlen != 64)
+        {
+            if (is_negative () && (bits & (1ULL << (wordlen - 1))) != 0)
+                bits |= ~mask;
+            else
+                bits &= mask;
+        }
+        if (is_negative ())
+            return new Number.integer ((int64) bits);
+        return new Number.unsigned_integer (bits);
     }
 
-    /* Sets z = x shifted by 'count' bits.  Positive shift increases the value, negative decreases */
-    public Number shift (int64 count)
+    /* Sets z = x right shifted by 'count' bits for word of length 'wordlen' */
+    public Number right_shift (Number count, int wordlen)
     {
-        if (!is_integer ())
+        if (check_shift (count, wordlen) == 0)
+            return new Number.integer (0);
+
+        if (is_negative ())
+        {
+            int64 bits = to_integer ();
+            bits >>= count.modulus_divide (new Number.integer (wordlen)).to_integer ();
+            return new Number.integer (bits);
+        }
+        uint64 bits = to_unsigned_integer ();
+        bits >>= count.modulus_divide (new Number.integer (wordlen)).to_integer ();
+        return new Number.unsigned_integer (bits);
+    }
+
+    /* Sets z = x unsigned right shifted by 'count' bits for word of length 'wordlen' */
+    public Number unsigned_right_shift (Number count, int wordlen)
+    {
+        uint64 mask = check_shift (count, wordlen);
+        if (mask == 0)
+            return new Number.integer (0);
+
+        uint64 bits = is_negative () ? to_integer () : to_unsigned_integer ();
+        if (wordlen != 64 && is_negative ())
+            bits &= mask;
+        bits >>= count.modulus_divide (new Number.integer (wordlen)).to_integer ();
+        return new Number.unsigned_integer (bits);
+    }
+
+    private uint64 check_shift (Number count, int wordlen)
+    {
+        if (!is_integer () || !count.is_integer ())
         {
             /* Translators: Error displayed when bit shift attempted on non-integer values */
             error = _("Shift is only possible on integer values");
-            return new Number.integer (0);
+            return 0;
         }
-            
-          /* Initialize an integer 2^count */
-        var operand = new Number.unsigned_integer(2).xpowy_integer(count.abs());
-        /* If positive shift return x*operand */
-        if (count >= 0)
+
+        int64 min = int64.MIN;
+        uint64 max = uint64.MAX;
+        switch (wordlen)
         {
-            return multiply(operand);
+        case 8:
+            min = int8.MIN;
+            max = uint8.MAX;
+            break;
+        case 16:
+            min = int16.MIN;
+            max = uint16.MAX;
+            break;
+        case 32:
+            min = int32.MIN;
+            max = uint32.MAX;
+            break;
         }
-        /* If negative return floor ( x/operand ) */
-        else
+        if (compare (new Number.unsigned_integer (max)) > 0 || compare (new Number.integer (min)) < 0)
         {
-            if (compare(operand) < 0){
-               return new Number.integer(0);
-            }
-            return divide(operand).floor ();
+            error = ("Overflow. Try a bigger word size");
+            return 0;
         }
+        return max;
     }
 
     /* Sets z to be the ones complement of x for word of length 'wordlen' */

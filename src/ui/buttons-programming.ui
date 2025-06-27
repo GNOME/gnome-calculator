@@ -1784,12 +1784,12 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_shift_left_button">
+              <object class="GtkButton" id="calc_left_shift_button">
+                <property name="label">≪</property>
                 <property name="focus_on_click">False</property>
-                <property name="label">«</property>
-                <property name="tooltip_text" translatable="yes">Shift Left</property>
+                <property name="tooltip_text" translatable="yes">Left Shift [&lt;&lt;]</property>
                 <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;«&apos;</property>
+                <property name="action_target">&apos;≪&apos;</property>
                 <style>
                   <class name="function-button"/>
                 </style>
@@ -1800,14 +1800,33 @@
               </object>
             </child>
             <child>
-              <object class="GtkButton" id="calc_shift_right_button">
+              <object class="GtkButton" id="calc_right_shift_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create|invert-boolean"/>
+                <property name="label">≫</property>
                 <property name="focus_on_click">False</property>
-                <property name="label">»</property>
-                <property name="tooltip_text" translatable="yes">Shift Right</property>
+                <property name="tooltip_text" translatable="yes">Right Shift [&gt;&gt;]</property>
                 <property name="action_name">cal.insert-general</property>
-                <property name="action_target">&apos;»&apos;</property>
+                <property name="action_target">&apos;≫&apos;</property>
                 <style>
                   <class name="function-button"/>
+                </style>
+                <layout>
+                  <property name="column">4</property>
+                  <property name="row">4</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="calc_unsigned_right_shift_button">
+                <property name="visible" bind-source="calc_inverse_modifier_button" bind-property="active" bind-flags="sync-create"/>
+                <property name="label">⋙</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Unsigned Right Shift [&gt;&gt;&gt;]</property>
+                <property name="action_name">cal.insert-general</property>
+                <property name="action_target">&apos;⋙&apos;</property>
+                <style>
+                  <class name="function-button"/>
+                  <class name="accent"/>
                 </style>
                 <layout>
                   <property name="column">4</property>

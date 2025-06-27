@@ -49,7 +49,7 @@ public enum LexerTokenType
     NOR,                /* Bitwise NOR */
     XOR,                /* Bitwise XOR */
     XNOR,               /* Bitwise XNOR */
-    IN,                 /* IN ( for converter e.g. 1 EUR in USD / 1 EUR to USD) */
+    IN,                 /* IN (for converter e.g. 1 EUR in USD / 1 EUR to USD) */
     NUMBER,             /* Number */
     SUP_NUMBER,         /* Super Number */
     NSUP_NUMBER,        /* Negative Super Number */
@@ -58,8 +58,9 @@ public enum LexerTokenType
     UNIT,               /* Unit of conversion */
     CURRENCY,           /* Currency */
     VARIABLE,           /* Variable name */
-    SHIFT_LEFT,         /* Shift left */
-    SHIFT_RIGHT,        /* Shift right */
+    SHIFT_LEFT,         /* Left shift */
+    SHIFT_RIGHT,        /* Right shift */
+    SHIFT_URIGHT,       /* Unsigned right shift */
     ASSIGN,             /* = */
     L_R_BRACKET,        /* ( */
     R_R_BRACKET,        /* ) */
@@ -249,10 +250,13 @@ public class PreLexer : Object
         if (c == ';')
             return LexerTokenType.ARGUMENT_SEPARATOR;
 
-        if (c == '»')
+        if (c == '⋙')
+            return LexerTokenType.SHIFT_URIGHT;
+
+        if (c == '»' || c == '≫')
             return LexerTokenType.SHIFT_RIGHT;
 
-        if (c == '«')
+        if (c == '«' || c == '≪')
             return LexerTokenType.SHIFT_LEFT;
 
         if (c == ' ' || c == '\r' || c == '\t' || c == '\n')
@@ -447,7 +451,7 @@ public class Lexer : Object
             || type == LexerTokenType.R_S_BRACKET || type == LexerTokenType.L_C_BRACKET || type == LexerTokenType.R_C_BRACKET
             || type == LexerTokenType.ABS || type == LexerTokenType.POWER || type == LexerTokenType.FACTORIAL || type == LexerTokenType.PERCENTAGE
             || type == LexerTokenType.ARGUMENT_SEPARATOR || type == LexerTokenType.SHIFT_LEFT || type == LexerTokenType.SHIFT_RIGHT
-            || type == LexerTokenType.FUNC_DESC_SEPARATOR)
+            || type == LexerTokenType.SHIFT_URIGHT || type == LexerTokenType.FUNC_DESC_SEPARATOR)
             return insert_token (type);
 
         /* [LexerTokenType.PL_SUPER_MINUS][LexerTokenType.PL_SUPER_DIGIT]+ */

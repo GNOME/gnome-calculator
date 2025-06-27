@@ -633,9 +633,11 @@ public class ShiftNode : LRNode
     public override Number solve_lr (Number l, Number r)
     {
         if (first_token().type == LexerTokenType.SHIFT_LEFT)
-            return l.shift (r.to_integer ());
+            return l.left_shift (r, parser.wordlen);
+        else if (first_token().type == LexerTokenType.SHIFT_RIGHT)
+            return l.right_shift (r, parser.wordlen);
         else
-            return l.shift (r.multiply_integer (-1).to_integer ());
+            return l.unsigned_right_shift (r, parser.wordlen);
     }
 }
 
@@ -1300,7 +1302,7 @@ public class Parser
             return Precedence.UNIT;
         if (type == LexerTokenType.IN)
             return Precedence.CONVERT;
-        if (type == LexerTokenType.SHIFT_LEFT || type == LexerTokenType.SHIFT_RIGHT)
+        if (type == LexerTokenType.SHIFT_LEFT || type == LexerTokenType.SHIFT_RIGHT || type == LexerTokenType.SHIFT_URIGHT)
             return Precedence.SHIFT;
         if (type == LexerTokenType.L_R_BRACKET || type == LexerTokenType.R_R_BRACKET)
             return Precedence.DEPTH;
@@ -2004,7 +2006,7 @@ public class Parser
 
             return true;
         }
-        else if (token.type == LexerTokenType.SHIFT_LEFT || token.type == LexerTokenType.SHIFT_RIGHT)
+        else if (token.type == LexerTokenType.SHIFT_LEFT || token.type == LexerTokenType.SHIFT_RIGHT || token.type == LexerTokenType.SHIFT_URIGHT)
         {
             insert_into_tree (new ShiftNode (this, token, make_precedence_t (token.type), get_associativity (token)));
 

@@ -651,7 +651,7 @@ public class MathEquation : GtkSource.Buffer
             serializer.set_representation_base (value);
             reformat_display ();
 
-            if (!is_result && number != null && display != "")
+            if (!is_empty && !is_result && number != null)
             {
                 var number_format = this.number_format;
                 var show_trailing_zeroes = this.show_trailing_zeroes;
@@ -861,7 +861,7 @@ public class MathEquation : GtkSource.Buffer
             Gtk.TextIter iter, iter_prev;
             get_iter_at_mark (out iter, get_insert ());
             get_iter_at_mark (out iter_prev, get_insert ());
-            if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == "×" )
+            if (iter_prev.backward_char () && iter_prev.get_char ().to_string () == "×")
             {
 #if VALA_0_48
                 base.backspace (ref iter, true, true);
@@ -873,38 +873,39 @@ public class MathEquation : GtkSource.Buffer
             }
         }
 
-        /* Replace >> with » (not on keyboards) */
+        /* Replace >> with ≫, >>> with ⋙ (not on keyboards) */
         if (!has_selection && text == ">")
         {
             Gtk.TextIter iter, iter_prev;
             get_iter_at_mark (out iter, get_insert ());
             get_iter_at_mark (out iter_prev, get_insert ());
-            if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == ">" )
+            if (iter_prev.backward_char () && iter_prev.get_char ().to_string () in ">≫")
             {
+                text = iter_prev.get_char () == '>' ? "≫" : "⋙";
 #if VALA_0_48
                 base.backspace (ref iter, true, true);
 #else
                 base.backspace (iter, true, true);
 #endif
-                insert_at_cursor ("»", -1);
+                insert_at_cursor (text, -1);
                 return;
             }
         }
 
-        /* Replace << with « (not on keyboard) */
+        /* Replace << with ≪ (not on keyboards) */
         if (!has_selection && text == "<")
         {
             Gtk.TextIter iter, iter_prev;
             get_iter_at_mark (out iter, get_insert ());
             get_iter_at_mark (out iter_prev, get_insert ());
-            if (iter_prev.backward_char () &&  iter_prev.get_char ().to_string () == "<" )
+            if (iter_prev.backward_char () && iter_prev.get_char ().to_string () == "<")
             {
 #if VALA_0_48
                 base.backspace (ref iter, true, true);
 #else
                 base.backspace (iter, true, true);
 #endif
-                insert_at_cursor ("«", -1);
+                insert_at_cursor ("≪", -1);
                 return;
             }
         }
@@ -1552,6 +1553,9 @@ public class MathEquation : GtkSource.Buffer
     {
         // FIXME: should replace calculation or give error message
         if (in_solve)
+            return;
+
+        if (is_empty)
             return;
 
         var x = number;

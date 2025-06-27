@@ -719,7 +719,7 @@ public class BuiltinCompletionProvider : CompletionProvider, GtkSource.Completio
 {
     public override string? get_title ()
     {
-        return _("Built-in keywords");
+        return _("Built-in Keywords");
     }
 
     public new int get_priority (GtkSource.CompletionContext context) { return 4; }
@@ -771,7 +771,7 @@ public class CurrencyCompletionProvider : CompletionProvider, GtkSource.Completi
 
     public override string? get_title ()
     {
-        return _("Defined currencies");
+        return _("Defined Currencies");
     }
 
     public new int get_priority (GtkSource.CompletionContext context) { return favorite ? 2 : 1; }

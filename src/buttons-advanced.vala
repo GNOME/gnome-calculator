@@ -37,6 +37,7 @@ public class AdvancedButtonPanel : Adw.BreakpointBin
 
     private SimpleActionGroup action_group = new SimpleActionGroup ();
     private const ActionEntry[] action_entries = {
+        {"factorize",       on_factorize      },
         {"set-angle-units", on_set_angle_units},
     };
 
@@ -68,6 +69,11 @@ public class AdvancedButtonPanel : Adw.BreakpointBin
         math_box.set_direction (Gtk.TextDirection.LTR);
         basic.set_direction (Gtk.TextDirection.LTR);
         advanced.set_direction (Gtk.TextDirection.LTR);
+    }
+
+    private void on_factorize ()
+    {
+        equation.factorize ();
     }
 
     private void on_set_angle_units ()

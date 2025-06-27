@@ -69,9 +69,8 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         calc_function_button.popover = new MathFunctionPopover (equation);
 
         for (var row = 2; row >= 0; row--)
-            for (var column = 0; column <= 4; column++) {
+            for (var column = 0; column <= 4; column++)
                 hex_button_list.append (hex_buttons.get_child_at (column, row) as Gtk.Button);
-            }
         for (var row = 6; row >= 0; row -= 2)
             for(var column = 17; column >= 2; column--)
                 bit_button_list.append (bit_panel.get_child_at (column, row) as Gtk.Button);
@@ -159,10 +158,10 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
 
     private void update_hex_button_sensitivities ()
     {
-        var i = 0;
+        var i = 1;
         foreach (var button in hex_button_list)
         {
-            button.sensitive = i + 1 < buttons.programming_base;
+            button.sensitive = i < buttons.programming_base;
             i++;
         }
     }
@@ -273,7 +272,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         {
             x = x.add (new Number.integer (decoded[i]));
             if (i != (len - 1))
-                x = x.shift (8);
+                x = x.left_shift (new Number.integer (8), 64);
         }
         equation.insert_number (x);
         character_code_dialog.close ();
