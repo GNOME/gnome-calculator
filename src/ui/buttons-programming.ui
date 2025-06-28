@@ -2399,10 +2399,25 @@
             <child>
               <object class="AdwPreferencesGroup">
                 <child>
-                  <object class="AdwEntryRow" id="character_code_entry">
-                    <property name="title" translatable="yes" comments="Insert ASCII dialog: Label before character entry">Character</property>
+                  <object class="AdwEntryRow" id="character_entry">
+                    <property name="title" translatable="yes" comments="Insert character code dialog: Label before character entry">Character</property>
                     <property name="max_length">1</property>
                     <property name="activates_default">True</property>
+                    <signal name="changed" handler="character_entry_changed_cb" swapped="no"/>
+                  </object>
+                </child>
+                <child>
+                  <object class="AdwComboRow" id="convert_to_combo">
+                    <property name="title" translatable="yes">Convert to</property>
+                    <property name="model">
+                      <object class="GtkStringList">
+                        <items>
+                          <item translatable="yes">Unicode Code Point</item>
+                          <item translatable="yes">UTF-8 Encoding</item>
+                          <item translatable="yes">UTF-16 Encoding</item>
+                        </items>
+                      </object>
+                    </property>
                   </object>
                 </child>
               </object>
@@ -2428,7 +2443,7 @@
             </child>
             <child>
               <object class="GtkButton" id="insert_button">
-                <property name="label" translatable="yes" comments="Insert ASCII dialog: Button to insert selected character">_Insert</property>
+                <property name="label" translatable="yes" comments="Insert character code dialog: Button to insert selected character">_Insert</property>
                 <property name="use_underline">True</property>
                 <signal name="clicked" handler="insert_char_code" swapped="no"/>
                 <style>

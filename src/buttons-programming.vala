@@ -47,7 +47,9 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
     [GtkChild]
     private unowned Adw.Dialog character_code_dialog;
     [GtkChild]
-    private unowned Adw.EntryRow character_code_entry;
+    private unowned Adw.EntryRow character_entry;
+    [GtkChild]
+    private unowned Adw.ComboRow convert_to_combo;
 
     private SimpleActionGroup action_group = new SimpleActionGroup ();
     private const ActionEntry[] action_entries = {
@@ -136,7 +138,8 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
     private void on_insert_character ()
     {
         character_code_dialog.present (this);
-        character_code_entry.grab_focus ();
+        character_entry.grab_focus ();
+        character_entry_changed_cb ();
     }
 
     private void base_changed_cb ()
@@ -262,19 +265,42 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
     }
 
     [GtkCallback]
+    private void character_entry_changed_cb ()
+    {
+        character_code_dialog.default_widget.sensitive = character_entry.text != "";
+    }
+
+    [GtkCallback]
     private void insert_char_code ()
     {
-        string text = character_code_entry.get_text ();
-        var x = new Number.integer (0);
-        var decoded = text.data;
-        var len = decoded.length;
-        for (var i = 0; i < len; i++)
+        string text = character_entry.text;
+        if (convert_to_combo.selected == 0)
         {
-            x = x.add (new Number.integer (decoded[i]));
-            if (i != (len - 1))
-                x = x.left_shift (new Number.integer (8), 64);
+            equation.insert_number (new Number.integer (text.get_char ()));
         }
-        equation.insert_number (x);
+        else if (convert_to_combo.selected == 1)
+        {
+            var x = new Number.integer (0);
+            var decoded = text.data;
+            var len = decoded.length;
+            for (var i = 0; i < len; i++)
+            {
+                x = x.add (new Number.integer (decoded[i]));
+                if (i != (len - 1))
+                    x = x.left_shift (new Number.integer (8), 64);
+            }
+            equation.insert_number (x);
+        }
+        else
+        {
+            uint c = text.get_char ();
+            if (c >= 0x10000)
+            {
+                c -= 0x10000;
+                c = ((c >> 10) + 0xD800 << 16) + ((c & 0x03FF) + 0xDC00);
+            }
+            equation.insert_number (new Number.integer (c));
+        }
         character_code_dialog.close ();
     }
 }
