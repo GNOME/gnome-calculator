@@ -75,6 +75,8 @@ public class MathDisplay : Gtk.Box
 
         create_autocompletion ();
 
+        ((MathWindow) root).buttons.notify["mode"].connect (base_label_changed_cb);
+        equation.notify["base-label"].connect (base_label_changed_cb);
         equation.notify["status"].connect (status_changed_cb);
         status_changed_cb ();
 
@@ -487,17 +489,32 @@ public class MathDisplay : Gtk.Box
         return Gdk.EVENT_STOP;
     }
 
+    private void base_label_changed_cb ()
+    {
+        if (equation.status == "")
+        {
+            if (((MathWindow) root).buttons.mode == ButtonMode.PROGRAMMING)
+                info_view.buffer.text = equation.base_label;
+            else
+                info_view.buffer.text = "";
+        }
+    }
+
     private void status_changed_cb ()
     {
-        info_view.buffer.text = equation.status;
         if (equation.status != "")
         {
+            info_view.buffer.text = equation.status;
             announce (equation.status, Gtk.AccessibleAnnouncementPriority.MEDIUM);
             if (!equation.in_solve)
                 add_css_class ("error");
         }
         else
         {
+            if (((MathWindow) root).buttons.mode == ButtonMode.PROGRAMMING)
+                info_view.buffer.text = equation.base_label;
+            else
+                info_view.buffer.text = "";
             remove_css_class ("error");
         }
         if (equation.in_solve && !spinner.get_visible ())

@@ -447,7 +447,8 @@ public class MathEquation : GtkSource.Buffer
         if (in_undo_operation)
             return;
 
-        status = "";
+        if (!in_solve)
+            status = "";
 
         /* Can't redo anymore */
         redo_stack = new List<MathEquationState> ();
@@ -651,13 +652,15 @@ public class MathEquation : GtkSource.Buffer
             serializer.set_representation_base (value);
             reformat_display ();
 
-            if (!is_empty && !is_result && number != null)
+            if (!is_empty && !is_result && !is_sign_radix && number != null)
             {
                 var number_format = this.number_format;
                 var show_trailing_zeroes = this.show_trailing_zeroes;
                 serializer.set_number_format (DisplayFormat.FIXED);
                 serializer.set_show_trailing_zeroes (false);
+                set_enable_autocompletion (false);
                 set_text (serializer.to_string (number));
+                set_enable_autocompletion (true);
                 serializer.set_number_format (number_format);
                 serializer.set_show_trailing_zeroes (show_trailing_zeroes);
             }
@@ -675,6 +678,8 @@ public class MathEquation : GtkSource.Buffer
             _angle_units = value;
         }
     }
+
+    public string base_label { get; set; default = ""; }
 
     /* Warning: this implementation is quite the footgun. You must be sure to do
      * an explicit notify when changing state. Previously, failure to do this
@@ -732,6 +737,16 @@ public class MathEquation : GtkSource.Buffer
     public bool is_result
     {
         get { return equation == ANS_STRING; }
+    }
+
+    public bool is_sign_radix
+    {
+        get
+        {
+            var radix = serializer.get_radix ().to_string ();
+            string[] sign_radix = {"+", "-", "−", radix, "+" + radix, "-" + radix, "−" + radix};
+            return display in sign_radix;
+        }
     }
 
     public string equation
@@ -1559,7 +1574,7 @@ public class MathEquation : GtkSource.Buffer
             return;
 
         var x = number;
-        if (x == null || !x.is_integer ())
+        if (x == null || !x.is_integer () || is_sign_radix)
         {
             /* Error displayed when trying to factorize a non-integer value */
             status = _("Need an integer to factorize");

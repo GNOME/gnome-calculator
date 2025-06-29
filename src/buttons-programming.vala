@@ -227,7 +227,10 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
 
         bit_panel.set_sensitive (enabled);
         if (!enabled)
+        {
+            equation.base_label = "";
             return;
+        }
 
         var i = 0;
         foreach (var button in bit_button_list)
@@ -238,6 +241,20 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
             button.label = text;
             i++;
         }
+
+        if (equation.is_empty || equation.is_sign_radix)
+        {
+            equation.base_label = "";
+            return;
+        }
+        var base_label = "";
+        if (equation.number_base != 8)
+            base_label += "%llo₈ ".printf (bits);
+        if (equation.number_base != 10)
+            base_label += "%llu₁₀ ".printf (bits);
+        if (equation.number_base != 16)
+            base_label += "%llX₁₆".printf (bits);
+        equation.base_label = base_label.chomp ();
     }
 
     [GtkCallback]
