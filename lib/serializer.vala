@@ -497,7 +497,7 @@ public class Serializer : Object
         var mantissa_string = cast_to_string (mantissa, ref n_digits);
         if (eng_format)
         {
-            mantissa_string = mantissa_string.replace (tsep.to_string (), "", 1);
+            mantissa_string = mantissa_string.replace (tsep.to_string (), "");
             if (mantissa_string.has_prefix ("1000"))
             {
                 exponent += 3;

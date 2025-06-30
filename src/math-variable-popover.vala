@@ -48,7 +48,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
 
     public MathVariablePopover (MathEquation equation)
     {
-        base (equation, new ListStore (typeof (MathVariable)), MathVariable.name_compare_func);
+        base (equation, new ListStore (typeof (MathVariable)), (CompareDataFunc<MathVariable>) MathVariable.name_compare_func);
 
         variable_list.bind_model (model, (variable) => make_item_row (variable as MathVariable));
         closed.connect (() => {

@@ -27,7 +27,7 @@ public class MathFunctionPopover : MathPopover<MathFunction>
 
     public MathFunctionPopover (MathEquation equation)
     {
-        base (equation, new ListStore (typeof (MathFunction)), MathFunction.name_compare_func);
+        base (equation, new ListStore (typeof (MathFunction)), (CompareDataFunc<MathFunction>) MathFunction.name_compare_func);
 
         function_list.bind_model (model, (item) => make_item_row (item as MathFunction));
         add_arguments_button.set_range (1, 10);
