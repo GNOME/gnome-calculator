@@ -36,6 +36,10 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
     [GtkChild]
     private unowned Gtk.Button calc_inverse_modifier_button;
     [GtkChild]
+    private unowned Gtk.Button calc_base_10_exponential_button;
+    [GtkChild]
+    private unowned Gtk.Button calc_base_2_exponential_button;
+    [GtkChild]
     private unowned Gtk.MenuButton calc_base_button;
     [GtkChild]
     private unowned Gtk.MenuButton calc_word_size_button;
@@ -150,10 +154,26 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         buttons.programming_base = equation.number_base;
         switch (buttons.programming_base)
         {
-            case 2: calc_base_button.set_label (_("Binary")); break;
-            case 8: calc_base_button.set_label (_("Octal")); break;
-            case 10: calc_base_button.set_label (_("Decimal")); break;
-            case 16: calc_base_button.set_label (_("Hexadecimal")); break;
+        case 2:
+            calc_base_button.set_label (_("Binary"));
+            calc_base_10_exponential_button.action_target = "1010";
+            calc_base_2_exponential_button.action_target = "10";
+            break;
+        case 8:
+            calc_base_button.set_label (_("Octal"));
+            calc_base_10_exponential_button.action_target = "12";
+            calc_base_2_exponential_button.action_target = "2";
+            break;
+        case 10:
+            calc_base_button.set_label (_("Decimal"));
+            calc_base_10_exponential_button.action_target = "10";
+            calc_base_2_exponential_button.action_target = "2";
+            break;
+        case 16:
+            calc_base_button.set_label (_("Hexadecimal"));
+            calc_base_10_exponential_button.action_target = "A";
+            calc_base_2_exponential_button.action_target = "2";
+            break;
         }
         update_bit_panel ();
         update_hex_button_sensitivities ();
