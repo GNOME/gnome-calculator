@@ -247,13 +247,19 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
             equation.base_label = "";
             return;
         }
+        var sign = "";
+        if (x.is_negative ())
+        {
+            sign = "−";
+            bits = ~bits + 1;
+        }
         var base_label = "";
         if (equation.number_base != 8)
-            base_label += "%llo₈ ".printf (bits);
+            base_label += "%s%llo₈ ".printf (sign, bits);
         if (equation.number_base != 10)
-            base_label += "%llu₁₀ ".printf (bits);
+            base_label += "%s%llu₁₀ ".printf (sign, bits);
         if (equation.number_base != 16)
-            base_label += "%llX₁₆".printf (bits);
+            base_label += "%s%llX₁₆".printf (sign, bits);
         equation.base_label = base_label.chomp ();
     }
 
