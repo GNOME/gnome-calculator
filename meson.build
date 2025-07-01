@@ -103,7 +103,7 @@ gnome.post_install(
   gtk_update_icon_cache: true,
 )
 
-libadwaita = dependency('libadwaita-1', version: '>= 1.6.beta')
+libadwaita = dependency('libadwaita-1', version: '>= 1.8.alpha')
 gtksourceview = dependency('gtksourceview-5', version: '>= 5.3.0')
 subdir('data')
 subdir('lib')
