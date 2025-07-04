@@ -42,6 +42,8 @@ public class Number : GLib.Object
 {
     /* real and imaginary part of a Number */
     private Complex num = Complex (precision);
+    private bool force_float = false;
+    private bool finite = true;
 
     public static MPFR.Precision precision { get; set; default = 1000; }
 
@@ -79,9 +81,26 @@ public class Number : GLib.Object
         num.set_mpreal (real, imag);
     }
 
+    public Number.float (float real, float imag = 0)
+    {
+        if (real.is_finite ())
+            num.set_double (real, imag);
+        else
+        {
+            num.set_unsigned_integer ((ulong) *(uint32*) &real, 0);
+            finite = false;
+        }
+    }
+
     public Number.double (double real, double imag = 0)
     {
-        num.set_double (real, imag);
+        if (real.is_finite ())
+            num.set_double (real, imag);
+        else
+        {
+            num.set_unsigned_integer ((ulong) *(uint64*) &real, 0);
+            finite = false;
+        }
     }
 
     public Number.complex (Number r, Number i)
@@ -137,9 +156,33 @@ public class Number : GLib.Object
         return num.get_real ().val.get_unsigned_integer ();
     }
 
+    public float to_float ()
+    {
+        if (!finite)
+        {
+            uint64 bits = to_unsigned_integer ();
+            if (bits > uint32.MAX)
+                return (float) *(double*) &bits;
+            return *(float*) &bits;
+        }
+        return num.get_real ().val.get_float (MPFR.Round.NEAREST);
+    }
+
     public double to_double ()
     {
+        if (!finite)
+        {
+            uint64 bits = to_unsigned_integer ();
+            if (bits > uint32.MAX)
+                return *(double*) &bits;
+            return (double) *(float*) &bits;
+        }
         return num.get_real ().val.get_double (MPFR.Round.NEAREST);
+    }
+
+    public void set_force_float (bool force_float)
+    {
+        this.force_float = force_float;
     }
 
     /* Return true if the value is x == 0 */
@@ -170,6 +213,18 @@ public class Number : GLib.Object
             return false;
         else
             return num.get_real ().val.sgn () >= 0 && is_integer ();
+    }
+
+    /* Return true if x is a floating point number */
+    public bool is_float ()
+    {
+        return force_float || !fractional_part ().is_zero ();
+    }
+
+    /* Return true if x is not infinite or NaN */
+    public bool is_finite ()
+    {
+        return finite;
     }
 
     /* Return true if x has an imaginary component */
@@ -1571,28 +1626,6 @@ public class Number : GLib.Object
     }
 }
 
-private static int parse_literal_prefix (string str, ref int prefix_len)
-{
-    var new_base = 0;
-
-    if (str.length < 3 || str[0] != '0')
-        return new_base;
-
-    var prefix = str[1].tolower ();
-
-    if (prefix == 'b')
-        new_base = 2;
-    else if (prefix == 'o')
-        new_base = 8;
-    else if (prefix == 'x')
-        new_base = 16;
-
-    if (new_base != 0)
-        prefix_len = 2;
-
-    return new_base;
-}
-
 // FIXME: Should all be in the class
 
 // FIXME: Re-add overflow and underflow detection
@@ -1728,7 +1761,30 @@ public Number? mp_set_from_string (string str, int default_base = 10, bool may_h
     if (negate)
         z = z.invert_sign ();
 
+    z.set_force_float (has_fraction);
     return z;
+}
+
+private int parse_literal_prefix (string str, ref int prefix_len)
+{
+    var new_base = 0;
+
+    if (str.length < 3 || str[0] != '0')
+        return new_base;
+
+    var prefix = str[1].tolower ();
+
+    if (prefix == 'b')
+        new_base = 2;
+    else if (prefix == 'o')
+        new_base = 8;
+    else if (prefix == 'x')
+        new_base = 16;
+
+    if (new_base != 0)
+        prefix_len = 2;
+
+    return new_base;
 }
 
 private int char_val (unichar c, int number_base)

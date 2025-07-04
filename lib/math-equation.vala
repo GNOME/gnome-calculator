@@ -34,6 +34,7 @@ private class MathEquationState : Object
     public int ans_end;            /* End character for ans variable in expression */
     public int cursor;             /* ??? */
     public NumberMode number_mode; /* ??? */
+    public bool is_real_ans;       /* true if ans is generated from previous expression */
     public bool can_super_minus;   /* true if entering minus can generate a superscript minus */
     public string status;          /* Equation status */
     public uint error_token_start; /* Start offset of error token */
@@ -436,6 +437,7 @@ public class MathEquation : GtkSource.Buffer
         s.ans_end = ans_end;
         get ("cursor-position", out s.cursor, null);
         s.number_mode = number_mode;
+        s.is_real_ans = state.is_real_ans;
         s.can_super_minus = can_super_minus;
         s.status = state.status;
 
@@ -736,7 +738,7 @@ public class MathEquation : GtkSource.Buffer
 
     public bool is_result
     {
-        get { return equation == ANS_STRING; }
+        get { return equation == ANS_STRING && display != ANS_STRING; }
     }
 
     public bool is_sign_radix
@@ -851,6 +853,7 @@ public class MathEquation : GtkSource.Buffer
         set_text (text, -1);
         set_enable_autocompletion (true);
         state.ans = x;
+        state.is_real_ans = history;
 
         /* Mark this text as the answer variable */
         Gtk.TextIter start, end;
@@ -1431,7 +1434,8 @@ public class MathEquation : GtkSource.Buffer
         // FIXME: Result may not be here due to solve (i.e. the user may have entered "_")
         if (is_result)
         {
-            undo ();
+            if (state.is_real_ans)
+                undo ();
             repeat_last_operation ();
             return;
         }
@@ -1639,23 +1643,45 @@ public class MathEquation : GtkSource.Buffer
     public void toggle_bit (uint bit)
     {
         var x = number;
-        var min = new Number.integer (int64.MIN);
-        var max = new Number.unsigned_integer (uint64.MAX);
         uint64 bits = 0;
-        if (x == null || x.compare (max) > 0 || x.compare (min) < 0)
+        assert (x != null);
+        var is_float = x.is_float ();
+        if (is_float)
         {
-            /* Message displayed when cannot toggle bit in display */
-            status = _("Displayed value not an integer");
-            return;
+            assert (word_size == 64 || word_size == 32);
+            if (word_size == 64)
+            {
+                double d = x.to_double ();
+                bits = *(uint64*) &d;
+            }
+            else
+            {
+                float f = x.to_float ();
+                bits = *(uint32*) &f;
+            }
         }
-        else if (x.is_negative ())
-            bits = x.to_integer ();
         else
-            bits = x.to_unsigned_integer ();
+        {
+            var min = new Number.integer (int64.MIN);
+            var max = new Number.unsigned_integer (uint64.MAX);
+            assert (x.compare (max) <= 0 && x.compare (min) >= 0);
+            if (x.is_negative ())
+                bits = x.to_integer ();
+            else
+                bits = x.to_unsigned_integer ();
+        }
 
         bits ^= (1LL << (63 - bit));
-        if (x.is_negative ())
-            x = new Number.integer ((int64)bits);
+        if (is_float)
+        {
+            if (word_size == 64)
+                x = new Number.double (*(double*) &bits);
+            else
+                x = new Number.float (*(float*) &bits);
+            x.set_force_float (true);
+        }
+        else if (x.is_negative ())
+            x = new Number.integer ((int64) bits);
         else
             x = new Number.unsigned_integer (bits);
 

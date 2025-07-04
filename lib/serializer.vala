@@ -72,6 +72,16 @@ public class Serializer : Object
 
     public string to_string (Number x)
     {
+        if (!x.is_finite ())
+        {
+            int is_infinity = x.to_double ().is_infinity ();
+            if (is_infinity > 0)
+                return "∞";
+            if (is_infinity < 0)
+                return "−∞";
+            return "NaN";
+        }
+
         /* For base conversion equation, use FIXED format. */
         if (representation_base != number_base)
         {

@@ -194,6 +194,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         var size = equation.word_size;
         string format = ngettext ("%d-bit", "%d-bit", size);
         calc_word_size_button.set_label (format.printf (size));
+        update_bit_panel ();
         update_bit_button_sensitivities ();
     }
 
@@ -212,17 +213,35 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         var x = equation.number;
         uint64 bits = 0;
         var enabled = x != null;
+        var is_float = enabled && x.is_float ();
         if (enabled)
         {
-            var min = new Number.integer (int64.MIN);
-            var max = new Number.unsigned_integer (uint64.MAX);
-            var fraction = x.fractional_part ();
-            if (x.compare (max) > 0 || x.compare (min) < 0 || !fraction.is_zero ())
-                enabled = false;
-            else if (x.is_negative ())
-                bits = x.to_integer ();
+            if (is_float)
+            {
+                if (equation.word_size == 64)
+                {
+                    double d = x.to_double ();
+                    bits = *(uint64*) &d;
+                }
+                else if (equation.word_size == 32)
+                {
+                    float f = x.to_float ();
+                    bits = *(uint32*) &f;
+                }
+                else
+                    enabled = false;
+            }
             else
-                bits = x.to_unsigned_integer ();
+            {
+                var min = new Number.integer (int64.MIN);
+                var max = new Number.unsigned_integer (uint64.MAX);
+                if (x.compare (max) > 0 || x.compare (min) < 0)
+                    enabled = false;
+                else if (x.is_negative ())
+                    bits = x.to_integer ();
+                else
+                    bits = x.to_unsigned_integer ();
+            }
         }
 
         bit_panel.set_sensitive (enabled);
@@ -239,6 +258,20 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
             if ((bits & (1ULL << i)) != 0)
                 text = "1";
             button.label = text;
+            if (i >= 52 && i <= 62)
+            {
+                if (is_float && equation.word_size == 64)
+                    button.add_css_class ("accent");
+                else
+                    button.remove_css_class ("accent");
+            }
+            else if (i >= 23 && i <= 30)
+            {
+                if (is_float && equation.word_size == 32)
+                    button.add_css_class ("accent");
+                else
+                    button.remove_css_class ("accent");
+            }
             i++;
         }
 
