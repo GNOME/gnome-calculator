@@ -275,7 +275,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
             i++;
         }
 
-        if (equation.is_empty || equation.is_sign_radix)
+        if (is_float || equation.is_empty || equation.is_sign_radix)
         {
             equation.base_label = "";
             return;
