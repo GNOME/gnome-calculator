@@ -66,8 +66,7 @@ public class MathEquation : GtkSource.Buffer
             if (_word_size == value)
                 return;
             _word_size = value;
-            if (status != "")
-                apply_word_size(_word_size);
+            apply_word_size(_word_size);
         }
     }
 
@@ -77,31 +76,32 @@ public class MathEquation : GtkSource.Buffer
         uint64 bits = 0;
         var min = new Number.integer (int64.MIN);
         var max = new Number.unsigned_integer (uint64.MAX);
-        if (x == null || x.compare (max) > 0 || x.compare (min) < 0)
-        {
-            /* Message displayed when cannot toggle bit in display */
-            status = _("Displayed value not an integer");
+        if (size == 64 || is_empty || is_sign_radix
+            || x == null || x.is_float () || x.compare (max) > 0 || x.compare (min) < 0)
             return;
-        }
-        else if (x.is_negative ())
+        if (x.is_negative ())
             bits = x.to_integer ();
         else
             bits = x.to_unsigned_integer ();
 
-        var signed_bit = (bits >> (word_size - 1)) & 0x1;
-        if (x.is_negative () && signed_bit == 0x1) {
+        var signed_bit = (bits >> (size - 1)) & 0x1;
+        if (x.is_negative () && signed_bit == 0x1)
+        {
             /* When the current number is negative and the signed bit is set according to two's complement
                representation the resulting integer shall keep the sign. */
-            bits &= uint64.MAX >> (64 - size);
-            bits |= uint64.MAX << (size);
-            x = new Number.integer ((int64)bits);
-        } else {
+            bits |= uint64.MAX << size;
+            x = new Number.integer ((int64) bits);
+        }
+        else
+        {
             bits &= uint64.MAX >> (64 - size);
             x = new Number.unsigned_integer (bits);
         }
 
-        // FIXME: Only do this if in ans format, otherwise set text in same format as previous number
-        set_number (x);
+        if (is_result)
+            set_number (x, false);
+        else
+            set_number_as_input (x);
     }
 
     public string display
@@ -655,17 +655,7 @@ public class MathEquation : GtkSource.Buffer
             reformat_display ();
 
             if (!is_empty && !is_result && !is_sign_radix && number != null)
-            {
-                var number_format = this.number_format;
-                var show_trailing_zeroes = this.show_trailing_zeroes;
-                serializer.set_number_format (DisplayFormat.FIXED);
-                serializer.set_show_trailing_zeroes (false);
-                set_enable_autocompletion (false);
-                set_text (serializer.to_string (number));
-                set_enable_autocompletion (true);
-                serializer.set_number_format (number_format);
-                serializer.set_show_trailing_zeroes (show_trailing_zeroes);
-            }
+                set_number_as_input (number);
         }
     }
 
@@ -869,6 +859,19 @@ public class MathEquation : GtkSource.Buffer
             status = serializer.error;
             serializer.error = null;
         }
+    }
+
+    public void set_number_as_input (Number x)
+    {
+        var number_format = this.number_format;
+        var show_trailing_zeroes = this.show_trailing_zeroes;
+        serializer.set_number_format (DisplayFormat.FIXED);
+        serializer.set_show_trailing_zeroes (false);
+        set_enable_autocompletion (false);
+        set_text (serializer.to_string (x));
+        set_enable_autocompletion (true);
+        serializer.set_number_format (number_format);
+        serializer.set_show_trailing_zeroes (show_trailing_zeroes);
     }
 
     public new void insert (string text)
