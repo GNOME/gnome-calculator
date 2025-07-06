@@ -18,6 +18,7 @@ public class FinancialButtonPanel : Adw.BreakpointBin
     }
 
     private MathButtons buttons;
+    private MathEquation equation;
 
     [GtkChild]
     private unowned Adw.Carousel carousel;
@@ -75,12 +76,13 @@ public class FinancialButtonPanel : Adw.BreakpointBin
     public FinancialButtonPanel (MathButtons buttons)
     {
         this.buttons = buttons;
+        equation = buttons.equation;
         action_group.add_action_entries (action_entries, this);
         insert_action_group ("cal", action_group);
         correct_text_direction ();
-        calc_numeric_point_button.set_label (buttons.equation.serializer.get_radix ().to_string ());
-        calc_memory_button.popover = new MathVariablePopover (buttons.equation);
-        calc_function_button.popover = new MathFunctionPopover (buttons.equation);
+        calc_numeric_point_button.set_label (equation.serializer.get_radix ().to_string ());
+        calc_memory_button.popover = new MathVariablePopover (equation);
+        calc_function_button.popover = new MathFunctionPopover (equation);
 
         var i = 0;
         foreach (var dialog in finc_dialogs)
@@ -124,6 +126,9 @@ public class FinancialButtonPanel : Adw.BreakpointBin
             else
                 entry.set_data<Gtk.Button> ("calculate-button", calculate_button);
             entry.entry_activated.connect (finc_activate_cb);
+            var focus_controller = new Gtk.EventControllerFocus ();
+            focus_controller.leave.connect (finc_leave_focus_cb);
+            entry.add_controller (focus_controller);
         }
     }
 
@@ -144,33 +149,43 @@ public class FinancialButtonPanel : Adw.BreakpointBin
         buttons.currency_conversion ();
     }
 
-    private void finc_calculate_cb (Gtk.Widget widget)
+    private void finc_calculate_cb (Gtk.Button calculate_button)
     {
-        (widget.get_data<Adw.Dialog> ("dialog")).close ();
+        (calculate_button.get_data<Adw.Dialog> ("dialog")).close ();
 
-        var function = widget.get_data<FinancialDialog> ("finc-function");
+        var function = calculate_button.get_data<FinancialDialog> ("finc-function");
         var entries = finc_dialogs[function].entry_names;
 
         Number arg[4] = { new Number.integer (0), new Number.integer (0), new Number.integer (0), new Number.integer (0) };
-        var radix = buttons.equation.serializer.get_radix ().to_string ();
+        var radix = equation.serializer.get_radix ().to_string ();
         for (var i = 0; i < entries.length; i++)
         {
             var entry = get_object<Adw.EntryRow> (entries[i]);
             arg[i] = mp_set_from_string (entry.text.replace (radix, "."));
         }
-        do_finc_expression (buttons.equation, function, arg[0], arg[1], arg[2], arg[3]);
+        do_finc_expression (equation, function, arg[0], arg[1], arg[2], arg[3]);
     }
 
-    private void finc_activate_cb (Gtk.Widget widget)
+    private void finc_activate_cb (Adw.EntryRow entry)
     {
-        var next_entry = widget.get_data<Adw.EntryRow> ("next-entry");
+        var next_entry = entry.get_data<Adw.EntryRow> ("next-entry");
         if (next_entry == null)
         {
-            var calculate_button = widget.get_data<Gtk.Button> ("calculate-button");
+            var calculate_button = entry.get_data<Gtk.Button> ("calculate-button");
             finc_calculate_cb (calculate_button);
         }
         else
             next_entry.grab_focus ();
+    }
+
+    private void finc_leave_focus_cb (Gtk.EventControllerFocus controller)
+    {
+        var entry = (Adw.EntryRow) controller.widget;
+        var radix = equation.serializer.get_radix ().to_string ();
+        var text = entry.text.replace (radix, ".");
+        string[] sign_radix = {"+", "-", "−", ".", "+.", "-.", "−."};
+        if (text == "" || text in sign_radix || mp_set_from_string (text) == null)
+            entry.text = "0";
     }
 
     private T get_object<T> (string name)
