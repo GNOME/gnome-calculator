@@ -21,6 +21,7 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
         name_map.insert ("UAH", "Ukrainian Hryvnia");
         name_map.insert ("NGN", "Nigerian Naira");
         name_map.insert ("VND", "Vietnamese Dong");
+        name_map.insert ("LKR", "Sri Lanka Rupee");
         return name_map;
     }
 
