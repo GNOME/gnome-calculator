@@ -9,16 +9,19 @@
 	<title>Rounding</title>
 
     <p>
-    Nearest integer values tying away from zero are calculated using round <link xref="function">function</link>.
+    Nearest integer values tying away from zero are calculated using the [ and ] symbols or round <link xref="function">function</link>.
     </p>
     <example>
+    <p>
+    [0.5]
+    </p>
     <p>
     round (0.5)
     </p>
     </example>
 
     <p>
-    Nearest interger values toward -∞ also known as floor values are calculated using the ⌊ and ⌋ symbols or floor <link xref="function">function</link>.
+    Nearest integer values toward -∞ also known as floor values are calculated using the ⌊ and ⌋ symbols or floor <link xref="function">function</link>.
     </p>
     <example>
     <p>
@@ -30,7 +33,7 @@
     </example>
 
     <p>
-    Nearest interger values toward +∞ also known as ceiling values are calculated using the ⌈ and ⌉ symbols or ceil <link xref="function">function</link>.
+    Nearest integer values toward +∞ also known as ceiling values are calculated using the ⌈ and ⌉ symbols or ceil <link xref="function">function</link>.
     </p>
     <example>
     <p>
@@ -38,6 +41,21 @@
     </p>
     <p>
     ceil (0.5)
+    </p>
+    </example>
+
+    <p>
+    Nearest integer values toward 0 i.e. the integer components are calculated using int <link xref="function">function</link>.
+    </p>
+    <p>
+    The fractional components are calculated using frac <link xref="function">function</link>.
+    </p>
+    <example>
+    <p>
+    int (0.5)
+    </p>
+    <p>
+    frac (0.5)
     </p>
     </example>
 </page>

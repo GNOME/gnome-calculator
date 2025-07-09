@@ -19,6 +19,7 @@ gnome_calculator_help_pages = [
   'keyboard.page',
   'legal.xml',
   'logarithm.page',
+  'mode-programming.page',
   'modulus.page',
   'mouse.page',
   'number-display.page',
