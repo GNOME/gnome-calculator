@@ -1,29 +1,29 @@
-public interface CurrencyProvider : Object {
-
+public interface CurrencyProvider : Object
+{
     public signal void updated (string? currency = null);
 
-    public abstract void update_rates (bool asyncLoad = true, bool force = false);
+    public abstract void update_rates (bool async_load = true, bool force = false);
 
     public abstract int refresh_interval { get; set; }
 
     public abstract void clear ();
 
-    public abstract string attribution_link { owned get ; }
+    public abstract string attribution_link { owned get; }
 
-    public abstract string provider_name { get ; }
+    public abstract string provider_name { get; }
 
-    public abstract Date? parse_date (string? date);
+    public abstract DateTime? parse_date (string? date);
 
     public abstract bool loaded { get; protected set; }
 }
 
-public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
+public abstract class AbstractCurrencyProvider : Object, CurrencyProvider
+{
+    public abstract string attribution_link { owned get; }
 
-    public abstract string attribution_link { owned get ; }
+    public abstract string provider_name { get; }
 
-    public abstract string provider_name { get ; }
-
-    public abstract string rate_filepath { owned get ; }
+    public abstract string rate_filepath { owned get; }
 
     public abstract string rate_source_url { owned get; }
 
@@ -44,24 +44,29 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     protected uint update_callback = 0;
     public CurrencyManager currency_manager { get; construct; }
 
-    public void clear () {
+    public void clear ()
+    {
         FileUtils.remove (rate_filepath);
     }
 
-    public Currency register_currency (string symbol, string source, Number? value, string? date) {
+    public Currency register_currency (string symbol, string source, Number? value, string? date)
+    {
         Currency currency = currency_manager.add_currency (symbol, source);
         currency.set_value (value);
         currency.date = date;
+        currency.provider = this;
         currencies.append (currency);
         updated (symbol);
         return currency;
     }
 
-    public virtual Date? parse_date (string? date) {
+    public virtual DateTime? parse_date (string? date)
+    {
         return null;
     }
 
-    public void update_rates (bool asyncLoad = true, bool force = false) {
+    public void update_rates (bool async_load = true, bool force = false)
+    {
         debug ("Updating %s rates ".printf(source_name));
         loaded = false;
 
@@ -79,7 +84,7 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
         debug ("Loading %s rates ".printf(source_name));
 
-        if (asyncLoad) {
+        if (async_load) {
             debug ("Downloading %s rates async from %s".printf(source_name, rate_source_url));
             this.download_file_async.begin (rate_source_url, rate_filepath, source_name);
         } else {
@@ -88,7 +93,6 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
             loading = false;
             do_load_rates ();
         }
-
     }
 
     protected Currency? get_base_currency ()
@@ -120,7 +124,8 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
         return currency_manager.get_currency (name);
     }
 
-    protected virtual bool do_load_rates () {
+    protected virtual bool do_load_rates ()
+    {
         debug ("Loaded %s rates ".printf(source_name));
         loaded = true;
         updated ();
@@ -155,7 +160,6 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
 
     protected virtual void download_file_sync (string uri, string filename, string source)
     {
-
         var directory = Path.get_dirname (filename);
         DirUtils.create_with_parents (directory, 0755);
 
@@ -181,7 +185,6 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
     
     protected virtual async void download_file_async (string uri, string filename, string source)
     {
-
         var directory = Path.get_dirname (filename);
         DirUtils.create_with_parents (directory, 0755);
 
@@ -204,5 +207,4 @@ public abstract class AbstractCurrencyProvider : Object, CurrencyProvider {
             warning ("Couldn't download %s currency rate file: %s", source, e.message);
         }
     }
-
 }

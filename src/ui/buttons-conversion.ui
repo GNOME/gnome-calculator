@@ -509,6 +509,17 @@
               </object>
             </child>
             <child>
+              <object class="GtkButton" id="calc_rate_details_button">
+                <property name="icon_name">help-about-symbolic</property>
+                <property name="focus_on_click">False</property>
+                <property name="tooltip_text" translatable="yes">Exchange Rate Details</property>
+                <property name="action_name">cal.rate-details</property>
+                <style>
+                  <class name="function-button"/>
+                </style>
+              </object>
+            </child>
+            <child>
               <object class="GtkButton">
                 <property name="sensitive">False</property>
                 <style>
@@ -525,4 +536,77 @@
       </object>
     </child>
   </template>
+  <object class="AdwPreferencesDialog" id="rate_details_dialog">
+    <property name="title" translatable="yes">Exchange Rate Details</property>
+    <property name="content-width">462</property>
+    <child>
+      <object class="AdwPreferencesPage">
+        <child>
+          <object class="AdwPreferencesGroup" id="from_group">
+            <child>
+              <object class="AdwActionRow" id="from_date">
+                <property name="title" translatable="yes">Updated Date</property>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow" id="from_source">
+                <property name="title" translatable="yes">Source</property>
+                <property name="activatable_widget">image_from_source</property>
+                <signal name="activated" handler="launch_attribution_link" swapped="no"/>
+                <child type="suffix">
+                  <object class="GtkImage" id="image_from_source">
+                    <property name="icon_name">adw-external-link-symbolic</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup" id="to_group">
+            <child>
+              <object class="AdwActionRow" id="to_date">
+                <property name="title" translatable="yes">Updated Date</property>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="AdwActionRow" id="to_source">
+                <property name="title" translatable="yes">Source</property>
+                <property name="activatable_widget">image_to_source</property>
+                <signal name="activated" handler="launch_attribution_link" swapped="no"/>
+                <child type="suffix">
+                  <object class="GtkImage" id="image_to_source">
+                    <property name="icon_name">adw-external-link-symbolic</property>
+                  </object>
+                </child>
+                <style>
+                  <class name="property"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <child>
+              <object class="AdwButtonRow">
+                <property name="title" translatable="yes">_Refresh Rates</property>
+                <property name="use_underline">True</property>
+                <signal name="activated" handler="refresh_rates" swapped="no"/>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
 </interface>

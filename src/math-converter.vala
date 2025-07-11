@@ -64,6 +64,8 @@ public class MathConverter : Gtk.Box
     private unowned Gtk.PopoverMenu from_context_menu;
     [GtkChild]
     private unowned Gtk.PopoverMenu to_context_menu;
+    [GtkChild]
+    private unowned Gtk.Stack status_stack;
 
     private Serializer fixed_serializer;
     private Gtk.SignalListItemFactory from_currency_factory;
@@ -108,7 +110,7 @@ public class MathConverter : Gtk.Box
         if (equation == null)
             return;
 
-        CurrencyManager.get_default ().updated.connect (update_visibility);
+        CurrencyManager.get_default ().notify["loaded"].connect (update_visibility);
         CurrencyManager.get_default ().favorites_changed.connect (() => {
             if (category == "currency")
                 category_combobox_changed_cb ();
@@ -207,6 +209,12 @@ public class MathConverter : Gtk.Box
     {
         var combo = to_entry.has_focus ? to_combo : from_combo;
         return (combo.selected_item as Unit).name;
+    }
+
+    public void get_conversion (out Unit from_unit, out Unit to_unit)
+    {
+        from_unit = from_combo.selected_item as Unit;
+        to_unit = to_combo.selected_item as Unit;
     }
 
     public void insert_text (string text, bool replace_zero = true)
@@ -337,15 +345,24 @@ public class MathConverter : Gtk.Box
             insert_text (text.delimit ("\n", ' '));
     }
 
+    [GtkCallback]
+    public bool refresh_rates ()
+    {
+        CurrencyManager.get_default ().refresh_async (true);
+        status_stack.pages.select_item (1, true);
+        return true;
+    }
+
     private void update_visibility ()
     {
         if (category != "currency")
+            box_visible = true;
+        else
         {
-            this.box_visible = true;
-            return;
+            box_visible = CurrencyManager.get_default ().loaded;
+            if (box_visible)
+                status_stack.pages.select_item (0, true);
         }
-
-        this.box_visible = CurrencyManager.get_default ().loaded;
     }
 
     private void build_units_model ()

@@ -295,7 +295,7 @@ public class Calculator : Adw.Application
         };
 
         var providers = string.joinv(", ", CurrencyManager.get_default ().get_provider_links ());
-        about.add_legal_section ( _("Exchange rate data providers"), null, Gtk.License.CUSTOM, _("Exchange rates data by %s").printf(providers));
+        about.add_legal_section ( _("Exchange Rate Data Providers"), null, Gtk.License.CUSTOM, _("Exchange rates data by %s").printf(providers));
         about.present (get_active_window ());
     }
 

@@ -69,6 +69,23 @@ public class ImfCurrencyProvider : AbstractCurrencyProvider {
         return name_map;
     }
 
+    public override DateTime? parse_date (string? date)
+    {
+        if (date == null)
+            return null;
+        var array = date.split (" ");
+        var year = int.parse (array[2]);
+        var month = 0;
+        for (var i = 0; i < 12; i++)
+            if (MONTHS_FULL[i] == array[0])
+            {
+                month = i + 1;
+                break;
+            }
+        var day = int.parse (array[1][0:-1]);
+        return new DateTime (new TimeZone.local (), year, month, day, 0, 0, 0);
+    }
+
     protected override bool do_load_rates ()
     {
         var name_map = get_name_map ();

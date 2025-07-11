@@ -17,11 +17,10 @@ public class CurrencyManager : Object
     private List<CurrencyProvider> providers;
 
     private int _refresh_interval;
-    public int refresh_interval { get { return _refresh_interval; }
-        set
-        {
-            _refresh_interval = value;
-        }
+    public int refresh_interval
+    {
+        get { return _refresh_interval; }
+        set { _refresh_interval = value; }
     }
 
     private GenericSet<string> favorites = new GenericSet<string> (str_hash, str_equal);
@@ -41,7 +40,8 @@ public class CurrencyManager : Object
 
     public bool loaded { get; private set; }
 
-    public string[] get_provider_links () {
+    public string[] get_provider_links ()
+    {
         var links = new string [providers.length ()];
         var i = 0;
         foreach (var p in providers) {
@@ -50,11 +50,13 @@ public class CurrencyManager : Object
         return links;
     }
 
-    public void add_provider (CurrencyProvider provider) {
+    public void add_provider (CurrencyProvider provider)
+    {
         providers.append (provider);
     }
 
-    public void refresh_sync () {
+    public void refresh_sync ()
+    {
         loaded = false;
         foreach (var p in providers) {
             p.refresh_interval = _refresh_interval;
@@ -62,15 +64,16 @@ public class CurrencyManager : Object
         }
     }
 
-    public void refresh_async () {
+    public void refresh_async (bool force = false)
+    {
         loaded = false;
         foreach (var p in providers) {
             p.refresh_interval = _refresh_interval;
-            if (_refresh_interval > 0) p.update_rates (false);
+            if (force || _refresh_interval > 0) p.update_rates (true, force);
         }
     }
 
-    public static CurrencyManager get_default (bool asyncLoad = true, bool defaultProviders = true)
+    public static CurrencyManager get_default (bool async_load = true, bool default_providers = true)
     {
         if (default_currency_manager != null)
             return default_currency_manager;
@@ -143,12 +146,12 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("VND", _("Vietnamese Dong"), "₫"));
         default_currency_manager.currencies.append (new Currency ("ZAR", _("South African Rand"), "R"));
 
-        if (defaultProviders) {
+        if (default_providers) {
             new ImfCurrencyProvider (default_currency_manager);
             new UnCurrencyProvider  (default_currency_manager);
             new EcbCurrencyProvider (default_currency_manager);
             new BCCurrencyProvider  (default_currency_manager, "TWD", "fxtwdcad");
-            default_currency_manager.initialize_providers (asyncLoad);
+            default_currency_manager.initialize_providers (async_load);
         }
 
         return default_currency_manager;
@@ -164,12 +167,12 @@ public class CurrencyManager : Object
         updated (symbol);
     }
 
-    public void initialize_providers (bool asyncLoad = true)
+    public void initialize_providers (bool async_load = true)
     {
         /* Start downloading the rates if they are outdated. */
         foreach (var p in providers) {
-            p.updated.connect ( (symbol) => { update (symbol); });
-            p.update_rates (false);
+            p.updated.connect (update);
+            p.update_rates (async_load);
         }
     }
 
@@ -263,6 +266,8 @@ public class Currency : Object
 
     private string? _date;
     public string? date { owned get { return _date; } owned set { _date = value; }}
+
+    public CurrencyProvider provider { get; set; }
 
     public Currency (string name, string display_name, string symbol)
     {

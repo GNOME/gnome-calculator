@@ -129,15 +129,30 @@
       </object>
     </child>
     <child>
-      <object class="AdwStatusPage">
+      <object class="GtkStack" id="status_stack">
         <property name="visible" bind-source="MathConverter" bind-property="box-visible" bind-flags="sync-create|invert-boolean"/>
         <property name="vexpand">True</property>
-        <property name="icon-name">action-unavailable-symbolic</property>
-        <property name="title" translatable="yes">Currency Conversion Disabled</property>
-        <property name="description" translatable="yes">Enable in preferences to convert currencies</property>
-        <style>
-          <class name="compact"/>
-        </style>
+        <child>
+          <object class="AdwStatusPage">
+            <property name="icon-name">action-unavailable-symbolic</property>
+            <property name="title" translatable="yes">Exchange Rates Not Loaded</property>
+            <property name="child">
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">&lt;a href="r:///"&gt;Refresh rates&lt;/a&gt; or change refresh interval in preferences</property>
+                <property name="use-markup">True</property>
+                <property name="wrap">True</property>
+                <property name="justify">center</property>
+                <signal name="activate-link" handler="refresh_rates" swapped="no"/>
+              </object>
+            </property>
+            <style>
+              <class name="compact"/>
+            </style>
+          </object>
+        </child>
+        <child>
+          <object class="AdwSpinner"></object>
+        </child>
       </object>
     </child>
   </template>
