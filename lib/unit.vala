@@ -160,7 +160,7 @@ public class UnitManager : Object
         energy_category.add_unit(new Unit ("calorie", _("Calories"), "x*4.184", "x/4.184", dpgettext2 (null, "unit-symbols", "calories,calorie,cal")));
         energy_category.add_unit(new Unit ("kilocalorie", _("Kilocalories"), "x*4184", "x/4184", dpgettext2 (null, "unit-symbols", "kilocalories,kilocalorie,kcal")));
         energy_category.add_unit(new Unit ("erg", _("Ergs"), "x/10000000", "x*10000000", dpgettext2 (null, "unit-symbols", "ergs,erg")));
-        energy_category.add_unit(new Unit ("ev", _("Electron Volts"), "x*1.602176634/10000000000000000000", "x*1.602176634*10000000000000000000", dpgettext2 (null, "unit-symbols", "electronvolt,electronvolts,ev")));
+        energy_category.add_unit(new Unit ("ev", _("Electron Volts"), "x*1.602176634/10000000000000000000", "x/1.602176634*10000000000000000000", dpgettext2 (null, "unit-symbols", "electronvolt,electronvolts,ev")));
         energy_category.add_unit(new Unit ("ftlb", _("Foot-Pounds"), "x*1.3558179483314004", "x/1.3558179483314004", dpgettext2 (null, "unit-symbols", "foot-pound,foot-pounds,ft-lb,ft-lbs")));
         pressure_category.add_unit(new Unit ("pascal", _("Pascals"), "x", "x", dpgettext2 (null, "unit-symbols", "Pascal,pascal,Pa")));
         pressure_category.add_unit(new Unit ("kilopascal", _("Kilopascals"), "1000x", "x/1000", dpgettext2 (null, "unit-symbols", "Kilopascal,kilopascal,kPa")));
