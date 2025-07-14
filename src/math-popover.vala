@@ -70,6 +70,12 @@ public abstract class MathPopover<T> : Gtk.Popover
             model.remove (position);
     }
 
+    protected void close_popover ()
+    {
+        popdown ();
+        ((MathWindow) root).display.grab_focus ();
+    }
+
     protected abstract bool is_deletable (T item);
     protected abstract bool is_editable (T item);
     protected abstract string get_item_text (T item);
@@ -119,6 +125,27 @@ public abstract class MathPopover<T> : Gtk.Popover
             hbox.append (button);
         }
         return hbox;
+    }
+
+    protected Gtk.Widget make_category_row (string name, out Gtk.ListBox submenu)
+    {
+        var category_row = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+        category_row.append (new Gtk.Label (name));
+        var forward_arrow = new Gtk.Image.from_icon_name ("go-next-symbolic");
+        forward_arrow.halign = Gtk.Align.END;
+        forward_arrow.hexpand = true;
+        forward_arrow.add_css_class ("forward-arrow");
+        category_row.append (forward_arrow);
+
+        submenu = new Gtk.ListBox ();
+        submenu.selection_mode = Gtk.SelectionMode.NONE;
+        var back_button = new Gtk.CenterBox ();
+        back_button.add_css_class ("back-button");
+        back_button.center_widget = new Gtk.Label (name);
+        back_button.start_widget = new Gtk.Image.from_icon_name ("go-previous-symbolic");
+        back_button.start_widget.add_css_class ("back-arrow");
+        submenu.append (back_button);
+        return category_row;
     }
 
     private void save_function_cb (Gtk.Widget widget)

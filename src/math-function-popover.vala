@@ -15,7 +15,13 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     private static string[] FUNCTION_ARGS = {"x","y","z","u","v","w","a","b","c","d"};
 
     [GtkChild]
-    private unowned Gtk.ListBox function_list;
+    private unowned Gtk.Stack stack;
+    [GtkChild]
+    private unowned Gtk.ListBox built_in_list;
+    [GtkChild]
+    private unowned Gtk.Separator separator;
+    [GtkChild]
+    private unowned Gtk.ListBox custom_list;
     [GtkChild]
     private unowned Gtk.SpinButton add_arguments_button;
     [GtkChild]
@@ -29,19 +35,45 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     {
         base (equation, new ListStore (typeof (MathFunction)), (CompareDataFunc<MathFunction>) MathFunction.name_compare_func);
 
-        function_list.bind_model (model, (item) => make_item_row (item as MathFunction));
+        custom_list.bind_model (model, (item) => make_item_row (item as MathFunction));
         add_arguments_button.set_range (1, 10);
         add_arguments_button.set_increments (1, 1);
         closed.connect (() => {
             name_entry.text = "";
             add_arguments_button.value = 1;
+            stack.pages.select_item (0, true);
         });
         item_edited.connect (function_edited_cb);
         item_deleted.connect (function_deleted_cb);
-        load_functions ();
+        load_built_in_functions ();
+        load_custom_functions ();
     }
 
-    private void load_functions ()
+    private void load_built_in_functions ()
+    {
+        foreach (var category in FunctionManager.FUNCTION_CATEGORIES)
+        {
+            Gtk.ListBox submenu;
+            var category_row = make_category_row (category.name, out submenu);
+            built_in_list.append (category_row);
+            submenu.row_activated.connect (insert_function_cb);
+            var submenu_scrolled = new Gtk.ScrolledWindow ();
+            submenu_scrolled.propagate_natural_height = true;
+            submenu_scrolled.max_content_height = 336;
+            submenu_scrolled.hscrollbar_policy = Gtk.PolicyType.NEVER;
+            submenu_scrolled.child = submenu;
+            stack.add_child (submenu_scrolled);
+
+            foreach (var function in category.functions)
+            {
+                var function_row = make_item_row (function);
+                function_row.set_data<string> ("name", function.name);
+                submenu.append (function_row);
+            }
+        }
+    }
+
+    private void load_custom_functions ()
     {
         FunctionManager function_manager = FunctionManager.get_default_function_manager ();
         var names = function_manager.get_names ();
@@ -49,12 +81,17 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         for (var i = 0; names[i] != null; i++)
         {
             var function = function_manager[names[i]];
-            item_added_cb (function);
+            if (function.is_custom_function ())
+                item_added_cb (function);
         }
 
         function_manager.function_added.connect (f => item_added_cb (f as MathFunction));
         function_manager.function_edited.connect (f => item_edited_cb (f as MathFunction));
         function_manager.function_deleted.connect (f => item_deleted_cb (f as MathFunction));
+        model.items_changed.connect (() => {
+            separator.visible = custom_list.visible = model.get_n_items () != 0;
+        });
+        separator.visible = custom_list.visible = model.get_n_items () != 0;
     }
 
     private void function_edited_cb (MathFunction function)
@@ -75,11 +112,28 @@ public class MathFunctionPopover : MathPopover<MathFunction>
     }
 
     [GtkCallback]
+    private void open_submenu_cb (Gtk.ListBoxRow row)
+    {
+        name_entry.text = "";
+        stack.pages.select_item (row.get_index () + 1, true);
+    }
+
+    [GtkCallback]
     private void insert_function_cb (Gtk.ListBoxRow row)
     {
-        var function = model.get_item (row.get_index ()) as MathFunction;
-        equation.insert_function (function.name, true);
-        close_popover ();
+        if (stack.visible_child == stack.get_first_child ())
+        {
+            var function = model.get_item (row.get_index ()) as MathFunction;
+            equation.insert_function (function.name, true);
+            close_popover ();
+        }
+        else if (row.get_index () == 0)
+            stack.pages.select_item (0, true);
+        else
+        {
+            equation.insert_function (row.child.get_data<string> ("name"), true);
+            close_popover ();
+        }
     }
 
     [GtkCallback]
@@ -98,12 +152,6 @@ public class MathFunctionPopover : MathPopover<MathFunction>
         equation.clear ();
         equation.insert (name);
         close_popover ();
-    }
-
-    private void close_popover ()
-    {
-        popdown ();
-        ((MathWindow) root).display.grab_focus ();
     }
 
     protected override bool is_deletable (MathFunction function)

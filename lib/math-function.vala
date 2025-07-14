@@ -242,32 +242,6 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
     {
         default:
             return null;
-        case "ln":
-            return x.ln ();
-        case "sqrt":
-            return x.sqrt ();
-        case "abs":
-            return x.abs ();
-        case "sgn":
-            return x.sgn ();
-        case "arg":
-            return x.arg (root_parser.angle_units);
-        case "conj":
-            return x.conjugate ();
-        case "int":
-            return x.integer_component ();
-        case "frac":
-            return x.fractional_component ();
-        case "floor":
-            return x.floor ();
-        case "ceil":
-            return x.ceiling ();
-        case "round":
-            return x.round ();
-        case "re":
-            return x.real_component ();
-        case "im":
-            return x.imaginary_component ();
         case "sin":
             return x.sin (root_parser.angle_units);
         case "cos":
@@ -275,15 +249,12 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
         case "tan":
             return x.tan (root_parser.angle_units);
         case "sin⁻¹":
-            return x.asin (root_parser.angle_units);
         case "asin":
             return x.asin (root_parser.angle_units);
         case "cos⁻¹":
-            return x.acos (root_parser.angle_units);
         case "acos":
             return x.acos (root_parser.angle_units);
         case "tan⁻¹":
-            return x.atan (root_parser.angle_units);
         case "atan":
             return x.atan (root_parser.angle_units);
         case "sinh":
@@ -293,35 +264,40 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
         case "tanh":
             return x.tanh ();
         case "sinh⁻¹":
-            return x.asinh ();
-        case "cosh⁻¹":
-            return x.acosh ();
-        case "tanh⁻¹":
-            return x.atanh ();
         case "asinh":
             return x.asinh ();
+        case "cosh⁻¹":
         case "acosh":
             return x.acosh ();
+        case "tanh⁻¹":
         case "atanh":
             return x.atanh ();
+        case "conj":
+            return x.conjugate ();
+        case "arg":
+            return x.arg (root_parser.angle_units);
+        case "re":
+            return x.real_component ();
+        case "im":
+            return x.imaginary_component ();
         case "ones":
             return x.ones_complement (root_parser.wordlen);
         case "twos":
             return x.twos_complement (root_parser.wordlen);
-        case "ncr":
-            return x.combination (args[1]);
-        case "npr":
-            return x.permutation (args[1]);
-        case "gcd":
-            return Number.gcd (args);
-        case "lcm":
-            return Number.lcm (args);
         case "modulus":
             return x.modulus_divide (args[1]);
         case "modexp":
             return x.modular_exponentiation (args[1], args[2]);
-        case "cmp":
-            return x.kronecker_delta (args[1]);
+        case "round":
+            return x.round ();
+        case "floor":
+            return x.floor ();
+        case "ceil":
+            return x.ceiling ();
+        case "int":
+            return x.integer_component ();
+        case "frac":
+            return x.fractional_component ();
         case "sum":
             return Number.sum (args);
         case "sumsq":
@@ -342,6 +318,24 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
             return Number.sample_variance (args);
         case "varp":
             return Number.population_variance (args);
+        case "ln":
+            return x.ln ();
+        case "sqrt":
+            return x.sqrt ();
+        case "abs":
+            return x.abs ();
+        case "sgn":
+            return x.sgn ();
+        case "ncr":
+            return x.combination (args[1]);
+        case "npr":
+            return x.permutation (args[1]);
+        case "gcd":
+            return Number.gcd (args);
+        case "lcm":
+            return Number.lcm (args);
+        case "cmp":
+            return x.kronecker_delta (args[1]);
     }
     return null;
 }

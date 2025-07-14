@@ -10,11 +10,77 @@
 
 private FunctionManager? default_function_manager = null;
 
+public struct FunctionCategory
+{
+    public string name;
+    public MathFunction[] functions;
+}
+
 public class FunctionManager : Object
 {
     private string file_name;
     private HashTable<string, MathFunction> functions;
     private Serializer serializer;
+
+    public static FunctionCategory[] FUNCTION_CATEGORIES = {
+        {_("Trigonometry"), {
+            new BuiltInMathFunction ("sin", _("Sine")),
+            new BuiltInMathFunction ("cos", _("Cosine")),
+            new BuiltInMathFunction ("tan", _("Tangent")),
+            new BuiltInMathFunction ("sin⁻¹", _("Inverse Sine")),
+            new BuiltInMathFunction ("cos⁻¹", _("Inverse Cosine")),
+            new BuiltInMathFunction ("tan⁻¹", _("Inverse Tangent")),
+            new BuiltInMathFunction ("sinh", _("Hyperbolic Sine")),
+            new BuiltInMathFunction ("cosh", _("Hyperbolic Cosine")),
+            new BuiltInMathFunction ("tanh", _("Hyperbolic Tangent")),
+            new BuiltInMathFunction ("sinh⁻¹", _("Inverse Hyperbolic Sine")),
+            new BuiltInMathFunction ("cosh⁻¹", _("Inverse Hyperbolic Cosine")),
+            new BuiltInMathFunction ("tanh⁻¹", _("Inverse Hyperbolic Tangent")),
+        }},
+        {_("Complex"), {
+            new BuiltInMathFunction ("conj", _("Complex Conjugate")),
+            new BuiltInMathFunction ("arg", _("Complex Argument")),
+            new BuiltInMathFunction ("re", _("Real Component")),
+            new BuiltInMathFunction ("im", _("Imaginary Component")),
+        }},
+        {_("Programming"), {
+            new BuiltInMathFunction ("ones", _("Ones’ Complement")),
+            new BuiltInMathFunction ("twos", _("Two’s Complement")),
+            new BuiltInMathFunction ("modulus", _("Modulus Divide"), {"x", "y"}),
+            new BuiltInMathFunction ("modexp", _("Modular Exponentiation"), {"x", "y", "p"}),
+        }},
+        {_("Rounding"), {
+            new BuiltInMathFunction ("round", _("Round")),
+            new BuiltInMathFunction ("floor", _("Floor")),
+            new BuiltInMathFunction ("ceil", _("Ceiling")),
+            new BuiltInMathFunction ("int", _("Integer Component")),
+            new BuiltInMathFunction ("frac", _("Fractional Component")),
+        }},
+        {_("Statistics"), {
+            new BuiltInMathFunction ("sum", _("Sum"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("sumsq", _("Sum of Squares"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("average", _("Average"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("median", _("Median"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("min", _("Minimum Value"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("max", _("Maximum Value"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("stdev", _("Sample Standard Deviation"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("stdevp", _("Population Standard Deviation"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("var", _("Sample Variance"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("varp", _("Population Variance"), {"x₁", "x₂", "…"}),
+        }},
+        {_("Sundry"), {
+            new BuiltInMathFunction ("log", _("Logarithm"), {"x", "[y]"}),
+            new BuiltInMathFunction ("ln", _("Natural Logarithm")),
+            new BuiltInMathFunction ("sqrt", _("Square Root")),
+            new BuiltInMathFunction ("abs", _("Absolute Value")),
+            new BuiltInMathFunction ("sgn", _("Signum")),
+            new BuiltInMathFunction ("ncr", _("Combination"), {"n", "r"}),
+            new BuiltInMathFunction ("npr", _("Permutation"), {"n", "r"}),
+            new BuiltInMathFunction ("gcd", _("Greatest Common Divisor"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("lcm", _("Least Common Multiple"), {"x₁", "x₂", "…"}),
+            new BuiltInMathFunction ("cmp", _("Comparison (Kronecker Delta)"), {"x", "y"}),
+        }},
+    };
 
     public signal void function_added (MathFunction function);
     public signal void function_edited (MathFunction new_function);
@@ -45,57 +111,16 @@ public class FunctionManager : Object
 
     private void reload_builtin_functions ()
     {
-        add (new BuiltInMathFunction ("log", _("Logarithm")));
-        add (new BuiltInMathFunction ("ln", _("Natural Logarithm")));
-        add (new BuiltInMathFunction ("sqrt", _("Square Root")));
-        add (new BuiltInMathFunction ("abs", _("Absolute Value")));
-        add (new BuiltInMathFunction ("sgn", _("Signum")));
-        add (new BuiltInMathFunction ("arg", _("Complex Argument")));
-        add (new BuiltInMathFunction ("conj", _("Complex Conjugate")));
-        add (new BuiltInMathFunction ("int", _("Integer Component")));
-        add (new BuiltInMathFunction ("frac", _("Fractional Component")));
-        add (new BuiltInMathFunction ("floor", _("Floor")));
-        add (new BuiltInMathFunction ("ceil", _("Ceiling")));
-        add (new BuiltInMathFunction ("round", _("Round")));
-        add (new BuiltInMathFunction ("re", _("Real Component")));
-        add (new BuiltInMathFunction ("im", _("Imaginary Component")));
-        add (new BuiltInMathFunction ("sin", _("Sine")));
-        add (new BuiltInMathFunction ("cos", _("Cosine")));
-        add (new BuiltInMathFunction ("tan", _("Tangent")));
         add (new BuiltInMathFunction ("asin", _("Inverse Sine")));
         add (new BuiltInMathFunction ("acos", _("Inverse Cosine")));
         add (new BuiltInMathFunction ("atan", _("Inverse Tangent")));
-        add (new BuiltInMathFunction ("sin⁻¹", _("Inverse Sine")));
-        add (new BuiltInMathFunction ("cos⁻¹", _("Inverse Cosine")));
-        add (new BuiltInMathFunction ("tan⁻¹", _("Inverse Tangent")));
-        add (new BuiltInMathFunction ("sinh", _("Hyperbolic Sine")));
-        add (new BuiltInMathFunction ("cosh", _("Hyperbolic Cosine")));
-        add (new BuiltInMathFunction ("tanh", _("Hyperbolic Tangent")));
-        add (new BuiltInMathFunction ("sinh⁻¹", _("Inverse Hyperbolic Sine")));
-        add (new BuiltInMathFunction ("cosh⁻¹", _("Inverse Hyperbolic Cosine")));
-        add (new BuiltInMathFunction ("tanh⁻¹", _("Inverse Hyperbolic Tangent")));
         add (new BuiltInMathFunction ("asinh", _("Inverse Hyperbolic Sine")));
         add (new BuiltInMathFunction ("acosh", _("Inverse Hyperbolic Cosine")));
         add (new BuiltInMathFunction ("atanh", _("Inverse Hyperbolic Tangent")));
-        add (new BuiltInMathFunction ("ones", _("One’s Complement")));
-        add (new BuiltInMathFunction ("twos", _("Two’s Complement")));
-        add (new BuiltInMathFunction ("ncr", _("Combination"), {"n", "r"}));
-        add (new BuiltInMathFunction ("npr", _("Permutation"), {"n", "r"}));
-        add (new BuiltInMathFunction ("gcd", _("Greatest Common Divisor"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("lcm", _("Least Common Multiple"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("modulus", _("Modulus Divide"), {"x", "y"}));
-        add (new BuiltInMathFunction ("modexp", _("Modular Exponentiation"), {"x", "y", "p"}));
-        add (new BuiltInMathFunction ("cmp", _("Comparison"), {"x", "y"}));
-        add (new BuiltInMathFunction ("sum", _("Sum"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("sumsq", _("Sum of Squares"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("average", _("Average"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("median", _("Median"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("min", _("Minimum Value"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("max", _("Maximum Value"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("stdev", _("Sample Standard Deviation"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("stdevp", _("Population Standard Deviation"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("var", _("Sample Variance"), {"x₁", "x₂", "..."}));
-        add (new BuiltInMathFunction ("varp", _("Population Variance"), {"x₁", "x₂", "..."}));
+
+        foreach (var categoty in FUNCTION_CATEGORIES)
+            foreach (var function in categoty.functions)
+                add (function);
     }
 
     private void reload_custom_functions ()

@@ -12,15 +12,19 @@ public class MathVariable : Object
 {
     public string name;
     public Number? value;
+    public bool is_custom;
 
-    public MathVariable (string name, Number? value)
+    public MathVariable (string name, Number? value, bool is_custom = true)
     {
         this.name = name;
         this.value = value;
+        this.is_custom = is_custom;
     }
 
     public static int name_compare_func (MathVariable var1, MathVariable var2)
     {
+        if (var1.is_custom != var2.is_custom)
+            return var1.is_custom ? 1 : -1;
         return strcmp (var1.name, var2.name);
     }
 
@@ -70,8 +74,8 @@ public class MathVariablePopover : MathPopover<MathVariable>
             var value = equation.variables[names[i]];
             item_added_cb (new MathVariable(names[i], value));
         }
-        item_added_cb (new MathVariable ("rand", null));
-        item_added_cb (new MathVariable ("_", equation.answer));
+        item_added_cb (new MathVariable ("rand", null, false));
+        item_added_cb (new MathVariable ("_", equation.answer, false));
 
         // Listen for variable changes
         equation.variables.variable_added.connect ((name, value) => item_added_cb (new MathVariable (name, value)));
@@ -83,26 +87,12 @@ public class MathVariablePopover : MathPopover<MathVariable>
     {
         foreach (var category in Parser.CONSTANT_CATEGORIES)
         {
-            var category_row = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            category_row.append (new Gtk.Label (category.name));
-            var forward_arrow = new Gtk.Image.from_icon_name ("go-next-symbolic");
-            forward_arrow.halign = Gtk.Align.END;
-            forward_arrow.hexpand = true;
-            forward_arrow.add_css_class ("forward-arrow");
-            category_row.append (forward_arrow);
+            Gtk.ListBox submenu;
+            var category_row = make_category_row (category.name, out submenu);
             constant_list.append (category_row);
-
-            var submenu = new Gtk.ListBox ();
-            submenu.selection_mode = Gtk.SelectionMode.NONE;
-            submenu.add_css_class ("constant-list");
+            submenu.add_css_class ("category-list");
             submenu.row_activated.connect (insert_constant_cb);
             stack.add_child (submenu);
-
-            var back_button = new Gtk.CenterBox ();
-            back_button.center_widget = new Gtk.Label (category.name);
-            back_button.start_widget = new Gtk.Image.from_icon_name ("go-previous-symbolic");
-            back_button.start_widget.add_css_class ("back-arrow");
-            submenu.append (back_button);
 
             foreach (var constant in category.constants)
             {
@@ -129,8 +119,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
     {
         var variable = model.get_item (row.get_index ()) as MathVariable;
         equation.insert_alpha (variable.name);
-        popdown ();
-        ((MathWindow) root).display.grab_focus ();
+        close_popover ();
     }
 
     [GtkCallback]
@@ -147,8 +136,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
         else
         {
             equation.insert_alpha (row.child.get_data<string> ("symbol"));
-            popdown ();
-            ((MathWindow) root).display.grab_focus ();
+            close_popover ();
         }
     }
 
