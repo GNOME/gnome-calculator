@@ -210,6 +210,18 @@ public class CurrencyManager : Object
             return null;
     }
 
+    public bool has_known_currency (string short_name)
+    {
+        foreach (var c in currencies)
+        {
+            if (c.name == short_name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Currency add_currency (string short_name, string source)
     {
         foreach (var c in currencies)

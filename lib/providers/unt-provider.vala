@@ -13,18 +13,6 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
 
     public override string source_name { owned get { return "UNT";} }
 
-    private HashTable <string, string> get_currency_map () {
-        HashTable <string, string> name_map = new HashTable <string, string> (str_hash, str_equal);
-        name_map.insert ("JMD", "Jamaican Dollar");
-        name_map.insert ("ARS", "Argentine Peso");
-        name_map.insert ("EGP", "Egyptian Pound");
-        name_map.insert ("UAH", "Ukrainian Hryvnia");
-        name_map.insert ("NGN", "Nigerian Naira");
-        name_map.insert ("VND", "Vietnamese Dong");
-        name_map.insert ("LKR", "Sri Lanka Rupee");
-        return name_map;
-    }
-
     public override DateTime? parse_date (string? date)
     {
         if (date == null)
@@ -48,7 +36,6 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
         if (usd_currency == null)
             return false;
 
-        var currency_map = get_currency_map ();
         string data;
         try
         {
@@ -91,7 +78,7 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
             {
                 var name = tokens [symbol_index];
                 var value = tokens [value_index].chug ();
-                if (name != null && value != null && get_currency (name) == null && currency_map.lookup (name) != null) {
+                if (name != null && value != null && get_currency (name) == null && currency_manager.has_known_currency (name)) {
                     var r = mp_set_from_string (value);
                     debug ("Registering %s with value '%s'\r\n", name, value);
                     var v = usd_rate.multiply (r);
