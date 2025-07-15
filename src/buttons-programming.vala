@@ -47,6 +47,8 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
     private unowned Gtk.Grid bit_panel;
     private List<Gtk.Button> hex_button_list = new List<Gtk.Button> ();
     private List<Gtk.Button> bit_button_list = new List<Gtk.Button> ();
+    private Gtk.CssProvider css_provider = new Gtk.CssProvider ();
+    private int bit_toggle_separator_width = 9;
 
     [GtkChild]
     private unowned Adw.Dialog character_code_dialog;
@@ -83,20 +85,14 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         if (current_breakpoint == null)
             set_bit_panel_wide ();
 
-        buttons.notify["mode"].connect (() => {
-            if (buttons.mode == ButtonMode.PROGRAMMING)
-            {
-                update_hex_button_sensitivities ();
-                update_bit_button_sensitivities ();
-            }
-            carousel.scroll_to (carousel.get_nth_page (1), false);
-        });
+        buttons.notify["mode"].connect (() => carousel.scroll_to (carousel.get_nth_page (1), false));
         ulong carousel_mapped = 0;
         carousel_mapped = carousel.map.connect (() => {
             carousel.scroll_to (carousel.get_nth_page (1), false);
             carousel.disconnect (carousel_mapped);
         });
         buttons.bind_property ("inverse", calc_inverse_modifier_button, "active", BindingFlags.BIDIRECTIONAL | BindingFlags.SYNC_CREATE);
+        Gtk.StyleContext.add_provider_for_display (Gdk.Display.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_USER);
         equation.notify["number-base"].connect (base_changed_cb);
         equation.notify["word-size"].connect (word_size_changed_cb);
         equation.notify["display"].connect (update_bit_panel);
@@ -121,6 +117,20 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         {
             bit_panel.get_child_at (2, row).set_direction (Gtk.TextDirection.LTR);
             bit_panel.get_child_at (16, row).set_direction (Gtk.TextDirection.LTR);
+        }
+    }
+
+    public override void size_allocate (int width, int height, int baseline)
+    {
+        base.size_allocate (width, height, baseline);
+        if (bit_toggle_separator_width != width / 40)
+        {
+            bit_toggle_separator_width = width / 40;
+            css_provider.load_from_string ("""
+            .math-buttons .bit-toggle-separator {
+                margin-right: %dpx;
+            }
+            """.printf (bit_toggle_separator_width));
         }
     }
 
@@ -184,7 +194,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         var i = 1;
         foreach (var button in hex_button_list)
         {
-            button.sensitive = i < buttons.programming_base;
+            button.action_name = i < buttons.programming_base ? "cal.insert-digit" : null;
             i++;
         }
     }
@@ -203,7 +213,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         var i = 0;
         foreach (var button in bit_button_list)
         {
-            button.sensitive = i < equation.word_size;
+            button.action_name = i < equation.word_size ? "cal.toggle-bit" : null;
             i++;
         }
     }
@@ -258,19 +268,19 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
             if ((bits & (1ULL << i)) != 0)
                 text = "1";
             button.label = text;
-            if (i >= 52 && i <= 62)
+            if (i >= 52)
             {
                 if (is_float && equation.word_size == 64)
-                    button.add_css_class ("accent");
+                    button.add_css_class (i < 63 ? "accent" : "dimmed");
                 else
-                    button.remove_css_class ("accent");
+                    button.remove_css_class (i < 63 ? "accent" : "dimmed");
             }
-            else if (i >= 23 && i <= 30)
+            else if (i >= 23 && i <= 31)
             {
                 if (is_float && equation.word_size == 32)
-                    button.add_css_class ("accent");
+                    button.add_css_class (i < 31 ? "accent" : "dimmed");
                 else
-                    button.remove_css_class ("accent");
+                    button.remove_css_class (i < 31 ? "accent" : "dimmed");
             }
             i++;
         }
