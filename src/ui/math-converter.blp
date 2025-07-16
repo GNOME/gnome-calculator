@@ -1,0 +1,150 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MathConverter: Box {
+  orientation: vertical;
+
+  DropDown category_combo {
+    halign: start;
+    hexpand: true;
+    notify::selected => $category_combobox_changed_cb();
+  }
+
+  Box converter_box {
+    visible: bind template.box-visible;
+    orientation: vertical;
+    halign: fill;
+    valign: center;
+    hexpand: true;
+    vexpand: true;
+
+    TextView from_entry {
+      accepts-tab: false;
+      wrap-mode: char;
+      input-hints: no_emoji | no_spellcheck | inhibit_osk;
+      notify::has-focus => $from_entry_focus_cb();
+
+      GestureClick {
+        button: 0;
+        exclusive: true;
+        propagation-phase: capture;
+        pressed => $from_entry_click_cb();
+      }
+
+      ShortcutController {
+        scope: local;
+
+        Shortcut {
+          trigger: "Menu";
+          action: "action(context-menu.popup)";
+        }
+
+        Shortcut {
+          trigger: "<Shift>F10";
+          action: "action(context-menu.popup)";
+        }
+      }
+
+      PopoverMenu from_context_menu {
+        menu-model: context_menu_model;
+        halign: start;
+        has-arrow: false;
+      }
+
+      EventControllerKey from_event_controller {
+        propagation-phase: capture;
+        key-pressed => $key_press_cb();
+      }
+    }
+
+    DropDown from_combo {
+      halign: start;
+      hexpand: true;
+      search-match-mode: substring;
+    }
+
+    TextView to_entry {
+      accepts-tab: false;
+      wrap-mode: char;
+      input-hints: no_emoji | no_spellcheck | inhibit_osk;
+      notify::has-focus => $to_entry_focus_cb();
+
+      GestureClick {
+        button: 0;
+        exclusive: true;
+        propagation-phase: capture;
+        pressed => $to_entry_click_cb();
+      }
+
+      ShortcutController {
+        scope: local;
+
+        Shortcut {
+          trigger: "Menu";
+          action: "action(context-menu.popup)";
+        }
+
+        Shortcut {
+          trigger: "<Shift>F10";
+          action: "action(context-menu.popup)";
+        }
+      }
+
+      PopoverMenu to_context_menu {
+        menu-model: context_menu_model;
+        halign: start;
+        has-arrow: false;
+      }
+
+      EventControllerKey to_event_controller {
+        propagation-phase: capture;
+        key-pressed => $key_press_cb();
+      }
+    }
+
+    DropDown to_combo {
+      halign: start;
+      hexpand: true;
+      search-match-mode: substring;
+      notify::selected => $to_combobox_changed_cb();
+    }
+  }
+
+  Stack status_stack {
+    visible: bind template.box-visible inverted;
+    vexpand: true;
+
+    Adw.StatusPage {
+      icon-name: "action-unavailable-symbolic";
+      title: _("Exchange Rates Not Loaded");
+
+      child: Label {
+        label: _("<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences");
+        use-markup: true;
+        wrap: true;
+        justify: center;
+        activate-link => $refresh_rates();
+      };
+
+      styles [
+        "compact",
+      ]
+    }
+
+    Adw.Spinner {}
+  }
+}
+
+menu context_menu_model {
+  section {
+    item {
+      label: _("_Copy");
+      action: "context-menu.copy";
+    }
+
+    item {
+      label: _("_Paste");
+      action: "context-menu.paste";
+    }
+  }
+}

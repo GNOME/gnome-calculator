@@ -59,8 +59,8 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
 
     private SimpleActionGroup action_group = new SimpleActionGroup ();
     private const ActionEntry[] action_entries = {
-        {"set-base",         on_set_base,      "i"},
-        {"set-word-size",    on_set_word_size, "i"},
+        {"set-base",         on_set_base,      "s"},
+        {"set-word-size",    on_set_word_size, "s"},
         {"toggle-bit",       on_toggle_bit,    "i"},
         {"insert-character", on_insert_character  },
     };
@@ -136,12 +136,12 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
 
     private void on_set_base (SimpleAction action, Variant? param)
     {
-        buttons.programming_base = param.get_int32 ();
+        buttons.programming_base = int.parse (param.get_string ());
     }
 
     private void on_set_word_size (SimpleAction action, Variant? param)
     {
-        equation.word_size = param.get_int32 ();
+        equation.word_size = int.parse (param.get_string ());
     }
 
     private void on_toggle_bit (SimpleAction action, Variant? param)

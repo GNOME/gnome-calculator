@@ -1,0 +1,76 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $MathDisplay: Box {
+  orientation: vertical;
+
+  Box {
+    ScrolledWindow display_scrolled {
+      hexpand: true;
+      vscrollbar-policy: never;
+
+      styles [
+        "display-scrolled",
+      ]
+
+      $GtkSourceView source_view {
+        accepts-tab: "False";
+        left-margin: "14";
+        right-margin: "14";
+        pixels-above-lines: "8";
+        pixels-below-lines: "2";
+        justification: "left";
+        name: "displayitem";
+        width-request: "20";
+        height-request: "45";
+        input-hints: "no-emoji|no-spellcheck|inhibit-osk";
+        buffer: bind template.equation;
+
+        EventControllerKey event_controller {
+          propagation-phase: capture;
+          key-pressed => $key_press_cb();
+        }
+      }
+
+      EventControllerScroll {
+        flags: both_axes;
+        scroll => $scroll_cb();
+      }
+    }
+
+    Button backspace_button {
+      valign: center;
+      use-underline: true;
+      focus-on-click: false;
+      tooltip-text: _("Backspace");
+      icon-name: "edit-clear-symbolic";
+      clicked => $backspace_cb();
+
+      styles [
+        "circular",
+        "flat",
+      ]
+    }
+  }
+
+  Box info_box {
+    spacing: 6;
+
+    Adw.Spinner spinner {
+      margin-start: 12;
+    }
+
+    TextView info_view {
+      wrap-mode: word;
+      can-focus: false;
+      editable: false;
+      left-margin: 12;
+      right-margin: 12;
+      hexpand: true;
+
+      styles [
+        "info-view",
+      ]
+    }
+  }
+}

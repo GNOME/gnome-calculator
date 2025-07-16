@@ -17,8 +17,29 @@ gnome_calculator_vala_sources = [
   'math-history.vala',
 ]
 
+blueprints = custom_target('blueprints',
+  input: files(
+    'ui/buttons-advanced.blp',
+    'ui/buttons-basic.blp',
+    'ui/buttons-conversion.blp',
+    'ui/buttons-financial.blp',
+    'ui/buttons-programming.blp',
+    'ui/history-entry.blp',
+    'ui/history-view.blp',
+    'ui/math-converter.blp',
+    'ui/math-display.blp',
+    'ui/math-function-popover.blp',
+    'ui/math-preferences.blp',
+    'ui/math-shortcuts.blp',
+    'ui/math-variable-popover.blp',
+    'ui/math-window.blp',
+  ),
+  output: '.',
+  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@/ui', '@INPUT@'],
+)
+
 gnome_calculator_resource_files = files('ui/gnome-calculator.gresource.xml')
-gnome_calculator_resources = gnome.compile_resources('org.gnome.Calculator', gnome_calculator_resource_files, source_dir : ['ui'])
+gnome_calculator_resources = gnome.compile_resources('org.gnome.Calculator', gnome_calculator_resource_files, dependencies: blueprints, source_dir: ['ui'])
 
 gnome_calculator_sources = [
   gnome_calculator_vala_sources,

@@ -1,0 +1,2627 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ProgrammingButtonPanel: Adw.BreakpointBin {
+  width-request: 360;
+  height-request: 260;
+
+  Adw.Breakpoint {
+    condition ("max-width: 699sp")
+
+    setters {
+      multi_layout_view.layout-name: "carousel";
+    }
+
+    apply => $set_bit_panel_narrow();
+    unapply => $set_bit_panel_wide();
+  }
+
+  child: Adw.MultiLayoutView multi_layout_view {
+    Adw.Layout {
+      name: "box";
+
+      content: Box {
+        orientation: vertical;
+
+        Adw.LayoutSlot {
+          id: "bit_panel";
+
+          styles [
+            "bit-panel",
+            "card",
+          ]
+        }
+
+        Box math_box {
+          styles [
+            "math-buttons",
+          ]
+
+          Adw.LayoutSlot {
+            id: "advanced";
+          }
+
+          Adw.LayoutSlot {
+            id: "basic";
+          }
+        }
+      };
+    }
+
+    Adw.Layout {
+      name: "carousel";
+
+      content: Box {
+        orientation: vertical;
+
+        Adw.Carousel carousel {
+          styles [
+            "math-buttons",
+          ]
+
+          Adw.LayoutSlot {
+            id: "advanced";
+            hexpand: true;
+          }
+
+          Adw.LayoutSlot {
+            id: "basic";
+            hexpand: true;
+          }
+
+          Adw.LayoutSlot {
+            id: "bit_panel";
+            hexpand: true;
+
+            styles [
+              "bit-panel",
+            ]
+          }
+        }
+
+        Adw.CarouselIndicatorDots carousel_dots {
+          carousel: carousel;
+        }
+      };
+    }
+
+    [bit_panel]
+    Grid bit_panel {
+      Button toggle_bit_0_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "0";
+        tooltip-text: "63";
+        hexpand: true;
+        vexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "2";
+        }
+      }
+
+      Button toggle_bit_1_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "1";
+        tooltip-text: "62";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "3";
+        }
+      }
+
+      Button toggle_bit_2_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "2";
+        tooltip-text: "61";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "4";
+        }
+      }
+
+      Button toggle_bit_3_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "3";
+        tooltip-text: "60";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "5";
+        }
+      }
+
+      Button toggle_bit_4_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "4";
+        tooltip-text: "59";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "6";
+        }
+      }
+
+      Button toggle_bit_5_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "5";
+        tooltip-text: "58";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "7";
+        }
+      }
+
+      Button toggle_bit_6_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "6";
+        tooltip-text: "57";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "8";
+        }
+      }
+
+      Button toggle_bit_7_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "7";
+        tooltip-text: "56";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "9";
+        }
+      }
+
+      Button toggle_bit_8_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "8";
+        tooltip-text: "55";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "10";
+        }
+      }
+
+      Button toggle_bit_9_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "9";
+        tooltip-text: "54";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "11";
+        }
+      }
+
+      Button toggle_bit_10_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "10";
+        tooltip-text: "53";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "12";
+        }
+      }
+
+      Button toggle_bit_11_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "11";
+        tooltip-text: "52";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "13";
+        }
+      }
+
+      Button toggle_bit_12_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "12";
+        tooltip-text: "51";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "14";
+        }
+      }
+
+      Button toggle_bit_13_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "13";
+        tooltip-text: "50";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "15";
+        }
+      }
+
+      Button toggle_bit_14_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "14";
+        tooltip-text: "49";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "16";
+        }
+      }
+
+      Button toggle_bit_15_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "15";
+        tooltip-text: "48";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "17";
+        }
+      }
+
+      Button toggle_bit_16_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "16";
+        tooltip-text: "47";
+        hexpand: true;
+        vexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "2";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_17_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "17";
+        tooltip-text: "46";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "3";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_18_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "18";
+        tooltip-text: "45";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "4";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_19_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "19";
+        tooltip-text: "44";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "5";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_20_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "20";
+        tooltip-text: "43";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "6";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_21_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "21";
+        tooltip-text: "42";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "7";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_22_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "22";
+        tooltip-text: "41";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "8";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_23_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "23";
+        tooltip-text: "40";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "9";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_24_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "24";
+        tooltip-text: "39";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "10";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_25_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "25";
+        tooltip-text: "38";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "11";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_26_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "26";
+        tooltip-text: "37";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "12";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_27_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "27";
+        tooltip-text: "36";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "13";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_28_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "28";
+        tooltip-text: "35";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "14";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_29_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "29";
+        tooltip-text: "34";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "15";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_30_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "30";
+        tooltip-text: "33";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "16";
+          row: "2";
+        }
+      }
+
+      Button toggle_bit_31_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "31";
+        tooltip-text: "32";
+        hexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "17";
+          row: "2";
+        }
+      }
+
+      Label bit_marker_label_63 {
+        label: "63";
+        xalign: 0.25;
+
+        styles [
+          "dimmed",
+          "bit-marker-label",
+        ]
+
+        layout {
+          column: "2";
+          row: "1";
+          column-span: "2";
+        }
+      }
+
+      Label bit_marker_label_48 {
+        label: "48";
+        xalign: 0.75;
+
+        styles [
+          "dimmed",
+          "bit-marker-label",
+        ]
+
+        layout {
+          column: "16";
+          row: "1";
+          column-span: "2";
+        }
+      }
+
+      Label bit_marker_label_47 {
+        label: "47";
+        xalign: 0.25;
+
+        styles [
+          "dimmed",
+          "bit-marker-label",
+        ]
+
+        layout {
+          column: "2";
+          row: "3";
+          column-span: "2";
+        }
+      }
+
+      Label bit_marker_label_32 {
+        label: "32";
+        xalign: 0.75;
+
+        styles [
+          "dimmed",
+          "bit-marker-label",
+        ]
+
+        layout {
+          column: "16";
+          row: "3";
+          column-span: "2";
+        }
+      }
+
+      Label bit_marker_label_31 {
+        label: "31";
+        xalign: 0.25;
+
+        styles [
+          "dimmed",
+          "bit-marker-label",
+        ]
+
+        layout {
+          column: "2";
+          row: "5";
+          column-span: "2";
+        }
+      }
+
+      Label bit_marker_label_16 {
+        label: "16";
+        xalign: 0.75;
+
+        styles [
+          "dimmed",
+          "bit-marker-label",
+        ]
+
+        layout {
+          column: "16";
+          row: "5";
+          column-span: "2";
+        }
+      }
+
+      Label bit_marker_label_15 {
+        label: "15";
+        xalign: 0.25;
+
+        styles [
+          "dimmed",
+          "bit-marker-label",
+        ]
+
+        layout {
+          column: "2";
+          row: "7";
+          column-span: "2";
+        }
+      }
+
+      Label bit_marker_label_0 {
+        label: "‎ 0";
+        xalign: 0.75;
+
+        styles [
+          "dimmed",
+          "bit-marker-label",
+        ]
+
+        layout {
+          column: "16";
+          row: "7";
+          column-span: "2";
+        }
+      }
+
+      Button toggle_bit_32_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "32";
+        tooltip-text: "31";
+        vexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "2";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_33_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "33";
+        tooltip-text: "30";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "3";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_34_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "34";
+        tooltip-text: "29";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "4";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_35_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "35";
+        tooltip-text: "28";
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "5";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_36_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "36";
+        tooltip-text: "27";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "6";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_37_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "37";
+        tooltip-text: "26";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "7";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_38_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "38";
+        tooltip-text: "25";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "8";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_39_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "39";
+        tooltip-text: "24";
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "9";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_40_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "40";
+        tooltip-text: "23";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "10";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_41_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "41";
+        tooltip-text: "22";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "11";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_42_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "42";
+        tooltip-text: "21";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "12";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_43_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "43";
+        tooltip-text: "20";
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "13";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_44_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "44";
+        tooltip-text: "19";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "14";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_45_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "45";
+        tooltip-text: "18";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "15";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_46_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "46";
+        tooltip-text: "17";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "16";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_47_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "47";
+        tooltip-text: "16";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "17";
+          row: "4";
+        }
+      }
+
+      Button toggle_bit_48_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "48";
+        tooltip-text: "15";
+        vexpand: true;
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "2";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_49_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "49";
+        tooltip-text: "14";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "3";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_50_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "50";
+        tooltip-text: "13";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "4";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_51_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "51";
+        tooltip-text: "12";
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "5";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_52_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "52";
+        tooltip-text: "11";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "6";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_53_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "53";
+        tooltip-text: "10";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "7";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_54_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "54";
+        tooltip-text: "9";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "8";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_55_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "55";
+        tooltip-text: "8";
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "9";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_56_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "56";
+        tooltip-text: "7";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "10";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_57_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "57";
+        tooltip-text: "6";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "11";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_58_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "58";
+        tooltip-text: "5";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "12";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_59_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "59";
+        tooltip-text: "4";
+
+        styles [
+          "bit-toggle-button",
+          "bit-toggle-separator",
+          "flat",
+        ]
+
+        layout {
+          column: "13";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_60_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "60";
+        tooltip-text: "3";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "14";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_61_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "61";
+        tooltip-text: "2";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "15";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_62_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "62";
+        tooltip-text: "1";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "16";
+          row: "6";
+        }
+      }
+
+      Button toggle_bit_63_button {
+        label: "0";
+        action-name: "cal.toggle-bit";
+        action-target: "63";
+        tooltip-text: "0";
+
+        styles [
+          "bit-toggle-button",
+          "flat",
+        ]
+
+        layout {
+          column: "17";
+          row: "6";
+        }
+      }
+    }
+
+    [basic]
+    Grid basic {
+      hexpand: true;
+      row-homogeneous: true;
+      column-homogeneous: true;
+
+      styles [
+        "buttons",
+      ]
+
+      Button calc_clear_button {
+        label: "C";
+        focus-on-click: false;
+        tooltip-text: _("Clear Display [Escape]");
+        action-name: "cal.clear";
+
+        styles [
+          "clear-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "0";
+        }
+      }
+
+      ToggleButton calc_superscript_button {
+        label: "↑n";
+        focus-on-click: false;
+        tooltip-text: _("Superscript Mode [Ctrl]");
+        action-name: "cal.set-number-mode";
+        action-target: "'superscript'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      ToggleButton calc_subscript_button {
+        label: "↓n";
+        focus-on-click: false;
+        tooltip-text: _("Subscript Mode [Alt]");
+        action-name: "cal.set-number-mode";
+        action-target: "'subscript'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Grid hex_buttons {
+        row-homogeneous: true;
+        column-homogeneous: true;
+
+        Button calc_11_button {
+          label: "B";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "11";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "0";
+            row: "0";
+          }
+        }
+
+        Button calc_12_button {
+          label: "C";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "12";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "1";
+            row: "0";
+          }
+        }
+
+        Button calc_13_button {
+          label: "D";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "13";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "2";
+            row: "0";
+          }
+        }
+
+        Button calc_14_button {
+          label: "E";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "14";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "3";
+            row: "0";
+          }
+        }
+
+        Button calc_15_button {
+          label: "F";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "15";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "4";
+            row: "0";
+          }
+        }
+
+        Button calc_6_button {
+          label: "6";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "6";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "0";
+            row: "1";
+          }
+        }
+
+        Button calc_7_button {
+          label: "7";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "7";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "1";
+            row: "1";
+          }
+        }
+
+        Button calc_8_button {
+          label: "8";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "8";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "2";
+            row: "1";
+          }
+        }
+
+        Button calc_9_button {
+          label: "9";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "9";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "3";
+            row: "1";
+          }
+        }
+
+        Button calc_10_button {
+          label: "A";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "10";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "4";
+            row: "1";
+          }
+        }
+
+        Button calc_1_button {
+          label: "1";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "1";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "0";
+            row: "2";
+          }
+        }
+
+        Button calc_2_button {
+          label: "2";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "2";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "1";
+            row: "2";
+          }
+        }
+
+        Button calc_3_button {
+          label: "3";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "3";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "2";
+            row: "2";
+          }
+        }
+
+        Button calc_4_button {
+          label: "4";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "4";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "3";
+            row: "2";
+          }
+        }
+
+        Button calc_5_button {
+          label: "5";
+          focus-on-click: false;
+          action-name: "cal.insert-digit";
+          action-target: "5";
+
+          styles [
+            "number-button",
+          ]
+
+          layout {
+            column: "4";
+            row: "2";
+          }
+        }
+
+        layout {
+          column: "0";
+          row: "1";
+          column-span: "3";
+          row-span: "3";
+        }
+      }
+
+      Button calc_0_button {
+        label: "0";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "0";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "4";
+        }
+      }
+
+      Button calc_numeric_point_button {
+        label: ".";
+        focus-on-click: false;
+        action-name: "cal.insert-numeric-point";
+
+        styles [
+          "numeric-point-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "4";
+        }
+      }
+
+      MenuButton calc_memory_button {
+        /* Translators: The label on the memory button */
+        label: _("x");
+        focus-on-click: false;
+        can-shrink: true;
+        tooltip-text: _("Variables and Constants");
+        direction: up;
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "4";
+        }
+      }
+
+      MenuButton calc_function_button {
+        label: "f(x)";
+        focus-on-click: false;
+        can-shrink: true;
+        tooltip-text: _("Additional Functions");
+        direction: up;
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "4";
+        }
+      }
+
+      Button calc_divide_button {
+        label: "÷";
+        focus-on-click: false;
+        tooltip-text: _("Divide [/]");
+        action-name: "cal.insert-general";
+        action-target: "'÷'";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "0";
+        }
+      }
+
+      Button calc_multiply_button {
+        label: "×";
+        focus-on-click: false;
+        tooltip-text: _("Multiply [*]");
+        action-name: "cal.insert-general";
+        action-target: "'×'";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "1";
+        }
+      }
+
+      Button calc_subtract_button {
+        label: "−";
+        focus-on-click: false;
+        tooltip-text: _("Subtract [-]");
+        action-name: "cal.subtract";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "2";
+        }
+      }
+
+      Button calc_add_button {
+        label: "+";
+        focus-on-click: false;
+        tooltip-text: _("Add [+]");
+        action-name: "cal.insert-general";
+        action-target: "'+'";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "3";
+        }
+      }
+
+      Button calc_modulus_divide_button {
+        label: "mod";
+        focus-on-click: false;
+        tooltip-text: _("Modulus Divide");
+        action-name: "cal.insert-alpha";
+        action-target: "'mod'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "0";
+        }
+      }
+
+      Button calc_percentage_button {
+        label: "%";
+        focus-on-click: false;
+        tooltip-text: _("Percentage [%]");
+        action-name: "cal.insert-general";
+        action-target: "'%'";
+
+        styles [
+          "procent-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "1";
+        }
+      }
+
+      Button calc_group_button {
+        label: "‎( )";
+        focus-on-click: false;
+        tooltip-text: _("Group [()]");
+        action-name: "cal.insert-brackets";
+        action-target: "('(',')')";
+
+        styles [
+          "parenthesis-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "2";
+        }
+      }
+
+      Button calc_result_button {
+        /* Translators: Label on the solve button (clicking this solves the displayed calculation) */
+        label: _("=");
+        focus-on-click: false;
+        tooltip-text: _("Calculate Result");
+        action-name: "cal.solve";
+
+        styles [
+          "suggested-action",
+        ]
+
+        layout {
+          column: "4";
+          row: "3";
+          row-span: "2";
+        }
+      }
+    }
+
+    [advanced]
+    Grid advanced {
+      hexpand: true;
+      row-homogeneous: true;
+      column-homogeneous: true;
+
+      styles [
+        "buttons",
+      ]
+
+      ToggleButton calc_inverse_modifier_button {
+        label: "‎⇧⁻¹";
+        focus-on-click: false;
+        tooltip-text: _("Inverse Modifier [Shift]");
+
+        styles [
+          "accent",
+        ]
+
+        layout {
+          column: "0";
+          row: "0";
+        }
+      }
+
+      Button calc_and_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "∧";
+        focus-on-click: false;
+        tooltip-text: _("Boolean AND");
+        action-name: "cal.insert-general";
+        action-target: "'∧'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "1";
+        }
+      }
+
+      Button calc_nand_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "⊼";
+        focus-on-click: false;
+        tooltip-text: _("Boolean NAND");
+        action-name: "cal.insert-general";
+        action-target: "'⊼'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "0";
+          row: "1";
+        }
+      }
+
+      Button calc_or_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "∨";
+        focus-on-click: false;
+        tooltip-text: _("Boolean OR");
+        action-name: "cal.insert-general";
+        action-target: "'∨'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "1";
+        }
+      }
+
+      Button calc_nor_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "⊽";
+        focus-on-click: false;
+        tooltip-text: _("Boolean NOR");
+        action-name: "cal.insert-general";
+        action-target: "'⊽'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "1";
+          row: "1";
+        }
+      }
+
+      Button calc_not_button {
+        label: "¬";
+        focus-on-click: false;
+        tooltip-text: _("Boolean NOT");
+        action-name: "cal.insert-symbol-before";
+        action-target: "'¬'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "2";
+        }
+      }
+
+      Button calc_xor_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "⊻";
+        focus-on-click: false;
+        tooltip-text: _("Boolean Exclusive OR");
+        action-name: "cal.insert-general";
+        action-target: "'⊻'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "2";
+        }
+      }
+
+      Button calc_xnor_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "⊙";
+        focus-on-click: false;
+        tooltip-text: _("Boolean Exclusive NOR");
+        action-name: "cal.insert-general";
+        action-target: "'⊙'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "1";
+          row: "2";
+        }
+      }
+
+      Button calc_left_shift_button {
+        label: "≪";
+        focus-on-click: false;
+        tooltip-text: _("Left Shift [<<]");
+        action-name: "cal.insert-general";
+        action-target: "'≪'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "3";
+        }
+      }
+
+      Button calc_right_shift_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "≫";
+        focus-on-click: false;
+        tooltip-text: _("Right Shift [>>]");
+        action-name: "cal.insert-general";
+        action-target: "'≫'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "3";
+        }
+      }
+
+      Button calc_unsigned_right_shift_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "⋙";
+        focus-on-click: false;
+        tooltip-text: _("Unsigned Right Shift [>>>]");
+        action-name: "cal.insert-general";
+        action-target: "'⋙'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "1";
+          row: "3";
+        }
+      }
+
+      Button calc_x_squared_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        focus-on-click: false;
+        tooltip-text: _("Square [Ctrl+2]");
+        action-name: "cal.square";
+
+        Label {
+          label: "<i>x</i>²";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      Button calc_square_root_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "√";
+        focus-on-click: false;
+        tooltip-text: _("Square Root [Ctrl+R]");
+        action-name: "cal.insert-symbol-before";
+        action-target: "'√'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      Button calc_x_pow_y_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        focus-on-click: false;
+        tooltip-text: _("Exponent [^ or **]");
+        action-name: "cal.insert-symbol-after";
+        action-target: "'^'";
+
+        Label {
+          label: "<i>x</i><sup><i>y</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_nth_root_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Nth Root");
+        action-name: "cal.nth-root";
+
+        Label {
+          label: "​<sub><i>y</i></sub>√";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_logarithm_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        focus-on-click: false;
+        tooltip-text: _("Logarithm");
+        action-name: "cal.logarithm";
+
+        Label {
+          label: "log<sub><i>y</i></sub>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "1";
+        }
+      }
+
+      Button calc_exponential_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Exponent [^ or **]");
+        action-name: "cal.insert-exponent";
+        action-target: "''";
+
+        Label {
+          label: "<i>y</i><sup><i>x</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "2";
+          row: "1";
+        }
+      }
+
+      Button calc_common_logarithm_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "log";
+        focus-on-click: false;
+        tooltip-text: _("Common Logarithm");
+        action-name: "cal.insert-function";
+        action-target: "'log'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "2";
+        }
+      }
+
+      Button calc_base_10_exponential_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Base-10 Exponential");
+        action-name: "cal.insert-exponent";
+        action-target: "'10'";
+
+        Label {
+          label: "10<sup><i>x</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "2";
+          row: "2";
+        }
+      }
+
+      Button calc_binary_logarithm_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "log₂";
+        focus-on-click: false;
+        tooltip-text: _("Binary Logarithm");
+        action-name: "cal.insert-function";
+        action-target: "'log₂'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "3";
+        }
+      }
+
+      Button calc_base_2_exponential_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Base-2 Exponential");
+        action-name: "cal.insert-exponent";
+        action-target: "'2'";
+
+        Label {
+          label: "2<sup><i>x</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "2";
+          row: "3";
+        }
+      }
+
+      Button calc_ones_complement_button {
+        label: "ones";
+        focus-on-click: false;
+        tooltip-text: _("Ones’ Complement");
+        action-name: "cal.insert-function";
+        action-target: "'ones'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "0";
+        }
+      }
+
+      Button calc_twos_complement_button {
+        label: "twos";
+        focus-on-click: false;
+        tooltip-text: _("Two’s Complement");
+        action-name: "cal.insert-function";
+        action-target: "'twos'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "1";
+        }
+      }
+
+      Button calc_integer_portion_button {
+        label: "int";
+        focus-on-click: false;
+        tooltip-text: _("Integer Component");
+        action-name: "cal.insert-function";
+        action-target: "'int'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "2";
+        }
+      }
+
+      Button calc_fractional_portion_button {
+        label: "frac";
+        focus-on-click: false;
+        tooltip-text: _("Fractional Component");
+        action-name: "cal.insert-function";
+        action-target: "'frac'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "3";
+        }
+      }
+
+      Button calc_ceiling_button {
+        focus-on-click: false;
+        tooltip-text: _("Ceiling [Ctrl+[]]");
+        action-name: "cal.insert-brackets";
+        action-target: "('⌈','⌉')";
+
+        Label {
+          label: "⌈<i>x</i>⌉";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "0";
+        }
+      }
+
+      Button calc_floor_button {
+        focus-on-click: false;
+        tooltip-text: _("Floor [Alt+[]]");
+        action-name: "cal.insert-brackets";
+        action-target: "('⌊','⌋')";
+
+        Label {
+          label: "⌊<i>x</i>⌋";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "1";
+        }
+      }
+
+      Button calc_abs_button {
+        focus-on-click: false;
+        tooltip-text: _("Absolute Value [||]");
+        action-name: "cal.insert-brackets";
+        action-target: "('|','|')";
+
+        Label {
+          label: "|<i>x</i>|";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "2";
+        }
+      }
+
+      Button calc_factorial_button {
+        focus-on-click: false;
+        tooltip-text: _("Factorial [!]");
+        action-name: "cal.insert-symbol-after";
+        action-target: "'!'";
+
+        Label {
+          label: "<i>x</i>!";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "3";
+        }
+      }
+
+      MenuButton calc_base_button {
+        focus-on-click: false;
+        can-shrink: true;
+        tooltip-text: _("Change Base");
+        direction: up;
+        menu-model: base_menu;
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "4";
+          column-span: "2";
+        }
+      }
+
+      MenuButton calc_word_size_button {
+        focus-on-click: false;
+        label: "64-bit";
+        can-shrink: true;
+        tooltip-text: _("Change Word Size");
+        direction: up;
+        menu-model: word_size_menu;
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "4";
+          column-span: "2";
+        }
+      }
+
+      Button calc_character_button {
+        label: "á";
+        focus-on-click: false;
+        tooltip-text: _("Insert Character Code");
+        action-name: "cal.insert-character";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "4";
+        }
+      }
+    }
+  };
+}
+
+Adw.Dialog character_code_dialog {
+  /* Translators: Title of insert character code dialog */
+  title: _("Insert Character Code");
+  default-widget: insert_button;
+  content-width: 260;
+
+  styles [
+    "action-dialog",
+  ]
+
+  child: Box {
+    orientation: vertical;
+
+    Adw.PreferencesPage {
+      vexpand: true;
+      margin-start: 12;
+      margin-end: 12;
+
+      Adw.PreferencesGroup {
+        Label {
+          label: bind character_code_dialog.title;
+          margin-start: 12;
+          margin-end: 12;
+
+          styles [
+            "title-1",
+          ]
+        }
+      }
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow character_entry {
+          /* Translators: Insert character code dialog: Label before character entry */
+          title: _("Character");
+          max-length: 1;
+          activates-default: true;
+          changed => $character_entry_changed_cb();
+        }
+
+        Adw.ComboRow convert_to_combo {
+          title: _("Convert to");
+
+          model: StringList {
+            strings [
+              _("Unicode Code Point"),
+              _("UTF-8 Encoding"),
+              _("UTF-16 Encoding"),
+            ]
+          };
+        }
+      }
+    }
+
+    Box {
+      spacing: 12;
+      margin-bottom: 24;
+      margin-start: 24;
+      margin-end: 24;
+      homogeneous: true;
+
+      Button {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(character_code_dialog);
+
+        styles [
+          "action-button",
+        ]
+      }
+
+      Button insert_button {
+        /* Translators: Insert character code dialog: Button to insert selected character */
+        label: _("_Insert");
+        use-underline: true;
+        clicked => $insert_char_code();
+
+        styles [
+          "action-button",
+          "suggested-action",
+        ]
+      }
+    }
+  };
+}
+
+menu base_menu {
+  section {
+    item {
+      label: _("Binary");
+      action: "cal.set-base";
+      target: "2";
+    }
+
+    item {
+      label: _("Octal");
+      action: "cal.set-base";
+      target: "8";
+    }
+
+    item {
+      label: _("Decimal");
+      action: "cal.set-base";
+      target: "10";
+    }
+
+    item {
+      label: _("Hexadecimal");
+      action: "cal.set-base";
+      target: "16";
+    }
+  }
+}
+
+menu word_size_menu {
+  section {
+    item {
+      label: _("8-bit");
+      action: "cal.set-word-size";
+      target: "8";
+    }
+
+    item {
+      label: _("16-bit");
+      action: "cal.set-word-size";
+      target: "16";
+    }
+
+    item {
+      label: _("32-bit");
+      action: "cal.set-word-size";
+      target: "32";
+    }
+
+    item {
+      label: _("64-bit");
+      action: "cal.set-word-size";
+      target: "64";
+    }
+  }
+}
+
+SizeGroup {
+  mode: both;
+
+  widgets [
+    basic,
+    advanced,
+  ]
+}

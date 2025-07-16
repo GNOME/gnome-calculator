@@ -1,0 +1,414 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $BasicButtonPanel: Adw.Bin {
+  styles [
+    "math-buttons",
+  ]
+
+  Grid basic {
+    hexpand: true;
+    row-homogeneous: true;
+    column-homogeneous: true;
+
+    styles [
+      "buttons",
+    ]
+
+    Button calc_clear_button {
+      label: "C";
+      focus-on-click: false;
+      tooltip-text: _("Clear Display [Escape]");
+      action-name: "cal.clear";
+
+      styles [
+        "clear-button",
+      ]
+
+      layout {
+        column: "0";
+        row: "0";
+      }
+    }
+
+    ToggleButton calc_superscript_button {
+      label: "↑n";
+      focus-on-click: false;
+      tooltip-text: _("Superscript Mode [Ctrl]");
+      action-name: "cal.set-number-mode";
+      action-target: "'superscript'";
+
+      styles [
+        "function-button",
+      ]
+
+      layout {
+        column: "1";
+        row: "0";
+      }
+    }
+
+    ToggleButton calc_subscript_button {
+      label: "↓n";
+      focus-on-click: false;
+      tooltip-text: _("Subscript Mode [Alt]");
+      action-name: "cal.set-number-mode";
+      action-target: "'subscript'";
+
+      styles [
+        "function-button",
+      ]
+
+      layout {
+        column: "2";
+        row: "0";
+      }
+    }
+
+    Button calc_7_button {
+      label: "7";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "7";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "0";
+        row: "1";
+      }
+    }
+
+    Button calc_8_button {
+      label: "8";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "8";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "1";
+        row: "1";
+      }
+    }
+
+    Button calc_9_button {
+      label: "9";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "9";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "2";
+        row: "1";
+      }
+    }
+
+    Button calc_4_button {
+      label: "4";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "4";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "0";
+        row: "2";
+      }
+    }
+
+    Button calc_5_button {
+      label: "5";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "5";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "1";
+        row: "2";
+      }
+    }
+
+    Button calc_6_button {
+      label: "6";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "6";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "2";
+        row: "2";
+      }
+    }
+
+    Button calc_1_button {
+      label: "1";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "1";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "0";
+        row: "3";
+      }
+    }
+
+    Button calc_2_button {
+      label: "2";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "2";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "1";
+        row: "3";
+      }
+    }
+
+    Button calc_3_button {
+      label: "3";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "3";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "2";
+        row: "3";
+      }
+    }
+
+    Button calc_0_button {
+      label: "0";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "0";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "0";
+        row: "4";
+      }
+    }
+
+    Button calc_numeric_point_button {
+      label: ".";
+      focus-on-click: false;
+      action-name: "cal.insert-numeric-point";
+
+      styles [
+        "numeric-point-button",
+      ]
+
+      layout {
+        column: "1";
+        row: "4";
+      }
+    }
+
+    MenuButton calc_memory_button {
+      /* Translators: The label on the memory button */
+      label: _("x");
+      focus-on-click: false;
+      can-shrink: true;
+      tooltip-text: _("Variables and Constants");
+      direction: up;
+
+      styles [
+        "function-button",
+      ]
+
+      layout {
+        column: "2";
+        row: "4";
+      }
+    }
+
+    MenuButton calc_function_button {
+      label: "f(x)";
+      focus-on-click: false;
+      can-shrink: true;
+      tooltip-text: _("Additional Functions");
+      direction: up;
+
+      styles [
+        "function-button",
+      ]
+
+      layout {
+        column: "3";
+        row: "4";
+      }
+    }
+
+    Button calc_divide_button {
+      label: "÷";
+      focus-on-click: false;
+      tooltip-text: _("Divide [/]");
+      action-name: "cal.insert-general";
+      action-target: "'÷'";
+
+      styles [
+        "operator-button",
+      ]
+
+      layout {
+        column: "3";
+        row: "0";
+      }
+    }
+
+    Button calc_multiply_button {
+      label: "×";
+      focus-on-click: false;
+      tooltip-text: _("Multiply [*]");
+      action-name: "cal.insert-general";
+      action-target: "'×'";
+
+      styles [
+        "operator-button",
+      ]
+
+      layout {
+        column: "3";
+        row: "1";
+      }
+    }
+
+    Button calc_subtract_button {
+      label: "−";
+      focus-on-click: false;
+      tooltip-text: _("Subtract [-]");
+      action-name: "cal.subtract";
+
+      styles [
+        "operator-button",
+      ]
+
+      layout {
+        column: "3";
+        row: "2";
+      }
+    }
+
+    Button calc_add_button {
+      label: "+";
+      focus-on-click: false;
+      tooltip-text: _("Add [+]");
+      action-name: "cal.insert-general";
+      action-target: "'+'";
+
+      styles [
+        "operator-button",
+      ]
+
+      layout {
+        column: "3";
+        row: "3";
+      }
+    }
+
+    Button calc_modulus_divide_button {
+      label: "mod";
+      focus-on-click: false;
+      tooltip-text: _("Modulus Divide");
+      action-name: "cal.insert-alpha";
+      action-target: "'mod'";
+
+      styles [
+        "function-button",
+      ]
+
+      layout {
+        column: "4";
+        row: "0";
+      }
+    }
+
+    Button calc_percentage_button {
+      label: "%";
+      focus-on-click: false;
+      tooltip-text: _("Percentage [%]");
+      action-name: "cal.insert-general";
+      action-target: "'%'";
+
+      styles [
+        "percent-button",
+      ]
+
+      layout {
+        column: "4";
+        row: "1";
+      }
+    }
+
+    Button calc_group_button {
+      label: "‎( )";
+      focus-on-click: false;
+      tooltip-text: _("Group [()]");
+      action-name: "cal.insert-brackets";
+      action-target: "('(',')')";
+
+      styles [
+        "parenthesis-button",
+      ]
+
+      layout {
+        column: "4";
+        row: "2";
+      }
+    }
+
+    Button calc_result_button {
+      /* Translators: Label on the solve button (clicking this solves the displayed calculation) */
+      label: _("=");
+      focus-on-click: false;
+      tooltip-text: _("Calculate Result");
+      action-name: "cal.solve";
+
+      styles [
+        "suggested-action",
+      ]
+
+      layout {
+        column: "4";
+        row: "3";
+        row-span: "2";
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+using Gtk 4.0;
+
+template $MathFunctionPopover: $MathPopover {
+  styles [
+    "math-popover",
+  ]
+
+  Stack stack {
+    transition-type: slide_left_right;
+    interpolate-size: true;
+    vhomogeneous: false;
+
+    Box content {
+      orientation: vertical;
+
+      ScrolledWindow function_list_scrolled {
+        propagate-natural-height: true;
+        max-content-height: 250;
+        width-request: 250;
+        hscrollbar-policy: never;
+
+        styles [
+          "undershoot-bottom",
+        ]
+
+        Box {
+          orientation: vertical;
+
+          ListBox built_in_list {
+            selection-mode: none;
+            row-activated => $open_submenu_cb();
+
+            styles [
+              "category-list",
+            ]
+          }
+
+          Separator separator {}
+
+          ListBox custom_list {
+            selection-mode: none;
+            row-activated => $insert_function_cb();
+          }
+        }
+      }
+
+      Entry name_entry {
+        placeholder-text: _("Function name");
+        input-hints: no_emoji;
+        activate => $add_function_cb();
+      }
+
+      Box add_function_box {
+        SpinButton add_arguments_button {
+          hexpand: true;
+          numeric: true;
+          tooltip-text: _("Select no. of arguments");
+        }
+
+        Button add_button {
+          sensitive: false;
+          tooltip-text: _("Add function");
+          icon-name: "list-add-symbolic";
+          clicked => $add_function_cb();
+        }
+      }
+
+      Revealer {
+        Label error_label {
+          xalign: 0;
+          wrap: true;
+          wrap-mode: word_char;
+          max-width-chars: 0;
+        }
+      }
+    }
+  }
+}

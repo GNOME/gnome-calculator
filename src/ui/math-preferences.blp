@@ -1,0 +1,116 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adjustment adjustment_decimals {
+  upper: 100;
+  step-increment: 1;
+  page-increment: 10;
+}
+
+Adw.NavigationPage page_favorite_currencies {
+  title: _("Favorite Currencies");
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {}
+
+    [top]
+    Adw.Clamp {
+      SearchEntry search_entry {
+        placeholder-text: _("Search currencies");
+        search-changed => $search_changed_cb();
+
+        styles [
+          "currency-search-entry",
+        ]
+      }
+    }
+
+    content: Stack search_stack {
+      Adw.PreferencesPage {
+        Adw.PreferencesGroup group_favorite_currencies {}
+      }
+
+      Adw.StatusPage {
+        icon-name: "edit-find-symbolic";
+        title: _("No Results Found");
+        description: _("Try a different search");
+      }
+    };
+  };
+}
+
+template $MathPreferencesDialog: Adw.PreferencesDialog {
+  Adw.PreferencesPage {
+    Adw.PreferencesGroup {
+      title: _("General");
+
+      Adw.SpinRow row_decimals {
+        title: _("Number of _Decimals");
+        use-underline: true;
+        adjustment: adjustment_decimals;
+        numeric: true;
+        value: 9;
+      }
+
+      Adw.SwitchRow row_trailing_zeroes {
+        title: _("Trailing _Zeroes");
+        use-underline: true;
+      }
+
+      Adw.SwitchRow row_thousands_separators {
+        title: _("_Thousands Separators");
+        use-underline: true;
+      }
+
+      Adw.ComboRow row_angle_units {
+        title: _("_Angle Units");
+        use-underline: true;
+      }
+
+      Adw.ComboRow row_word_size {
+        title: _("_Word Size");
+        use-underline: true;
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Currency Conversion");
+
+      Adw.ComboRow row_refresh_interval {
+        title: _("E_xchange Rate Refresh Interval");
+        use-underline: true;
+      }
+
+      Adw.ComboRow row_currency_display {
+        title: _("_Currency Display");
+        use-underline: true;
+      }
+
+      Adw.ComboRow row_currency_completion {
+        title: _("_Show Currencies in Auto-Completion List");
+        use-underline: true;
+
+        model: StringList {
+          strings [
+            _("All"),
+            _("Favorite Only"),
+            _("None"),
+          ]
+        };
+      }
+
+      Adw.ActionRow row_favorite_currencies {
+        title: _("_Favorite Currencies");
+        use-underline: true;
+        activatable-widget: image_favorite_currencies;
+        activated => $row_favorite_currencies_activated_cb();
+
+        [suffix]
+        Image image_favorite_currencies {
+          icon-name: "go-next-symbolic";
+        }
+      }
+    }
+  }
+}

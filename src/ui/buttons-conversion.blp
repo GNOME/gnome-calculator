@@ -1,0 +1,631 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ConversionButtonPanel: Adw.Bin {
+  styles [
+    "math-buttons",
+  ]
+
+  Grid basic {
+    hexpand: true;
+    row-homogeneous: true;
+    column-homogeneous: true;
+
+    styles [
+      "buttons",
+    ]
+
+    Button calc_clear_button {
+      label: "C";
+      focus-on-click: false;
+      tooltip-text: _("Clear Display [Escape]");
+      action-name: "cal.clear";
+
+      styles [
+        "clear-button",
+      ]
+
+      layout {
+        column: "0";
+        row: "0";
+      }
+    }
+
+    Button calc_swap_button {
+      label: "⇅";
+      focus-on-click: false;
+      tooltip-text: _("Switch Conversion Units");
+      action-name: "cal.swap-units";
+
+      styles [
+        "function-button",
+      ]
+
+      layout {
+        column: "1";
+        row: "0";
+      }
+    }
+
+    Button calc_backspace_button {
+      icon-name: "edit-clear-symbolic";
+      focus-on-click: false;
+      tooltip-text: _("Backspace");
+      action-name: "cal.backspace";
+
+      styles [
+        "function-button",
+      ]
+
+      layout {
+        column: "2";
+        row: "0";
+      }
+    }
+
+    Grid dec_buttons {
+      visible: bind hex_buttons.visible inverted;
+      row-homogeneous: true;
+      column-homogeneous: true;
+
+      Button calc_7_button {
+        label: "7";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "7";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "0";
+        }
+      }
+
+      Button calc_8_button {
+        label: "8";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "8";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      Button calc_9_button {
+        label: "9";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "9";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_4_button {
+        label: "4";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "4";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "1";
+        }
+      }
+
+      Button calc_5_button {
+        label: "5";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "5";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "1";
+        }
+      }
+
+      Button calc_6_button {
+        label: "6";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "6";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "1";
+        }
+      }
+
+      Button calc_1_button {
+        label: "1";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "1";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "2";
+        }
+      }
+
+      Button calc_2_button {
+        label: "2";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "2";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "2";
+        }
+      }
+
+      Button calc_3_button {
+        label: "3";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "3";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "2";
+        }
+      }
+
+      layout {
+        column: "0";
+        row: "1";
+        column-span: "3";
+        row-span: "3";
+      }
+    }
+
+    Grid hex_buttons {
+      row-homogeneous: true;
+      column-homogeneous: true;
+
+      Button calc_hex_11_button {
+        label: "B";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "11";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "0";
+        }
+      }
+
+      Button calc_hex_12_button {
+        label: "C";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "12";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      Button calc_hex_13_button {
+        label: "D";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "13";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_hex_14_button {
+        label: "E";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "14";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "0";
+        }
+      }
+
+      Button calc_hex_15_button {
+        label: "F";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "15";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "0";
+        }
+      }
+
+      Button calc_hex_6_button {
+        label: "6";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "6";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "1";
+        }
+      }
+
+      Button calc_hex_7_button {
+        label: "7";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "7";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "1";
+        }
+      }
+
+      Button calc_hex_8_button {
+        label: "8";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "8";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "1";
+        }
+      }
+
+      Button calc_hex_9_button {
+        label: "9";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "9";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "1";
+        }
+      }
+
+      Button calc_hex_10_button {
+        label: "A";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "10";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "1";
+        }
+      }
+
+      Button calc_hex_1_button {
+        label: "1";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "1";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "2";
+        }
+      }
+
+      Button calc_hex_2_button {
+        label: "2";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "2";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "2";
+        }
+      }
+
+      Button calc_hex_3_button {
+        label: "3";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "3";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "2";
+        }
+      }
+
+      Button calc_hex_4_button {
+        label: "4";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "4";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "2";
+        }
+      }
+
+      Button calc_hex_5_button {
+        label: "5";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "5";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "2";
+        }
+      }
+
+      layout {
+        column: "0";
+        row: "1";
+        column-span: "3";
+        row-span: "3";
+      }
+    }
+
+    Button calc_0_button {
+      label: "0";
+      focus-on-click: false;
+      action-name: "cal.insert-digit";
+      action-target: "0";
+
+      styles [
+        "number-button",
+      ]
+
+      layout {
+        column: "0";
+        row: "4";
+      }
+    }
+
+    Button calc_numeric_point_button {
+      label: ".";
+      focus-on-click: false;
+      action-name: "cal.insert-numeric-point";
+
+      styles [
+        "numeric-point-button",
+      ]
+
+      layout {
+        column: "1";
+        row: "4";
+      }
+    }
+
+    Stack calc_mutable_button {
+      Button calc_dms_button {
+        label: "° ′ ″";
+        focus-on-click: false;
+        tooltip-text: _("Degrees, Minutes, Seconds");
+        action-name: "cal.insert-dms";
+
+        styles [
+          "function-button",
+        ]
+      }
+
+      Button calc_pi_button {
+        label: "π";
+        focus-on-click: false;
+        tooltip-text: _("Pi [Ctrl+P]");
+        action-name: "cal.insert-general";
+        action-target: "'π'";
+
+        styles [
+          "function-button",
+        ]
+      }
+
+      Button calc_negative_button {
+        label: "+/−";
+        focus-on-click: false;
+        tooltip-text: _("Change Sign");
+        action-name: "cal.change-sign";
+
+        styles [
+          "function-button",
+        ]
+      }
+
+      Button calc_rate_details_button {
+        icon-name: "help-about-symbolic";
+        focus-on-click: false;
+        tooltip-text: _("Exchange Rate Details");
+        action-name: "cal.rate-details";
+
+        styles [
+          "function-button",
+        ]
+      }
+
+      Button {
+        sensitive: false;
+
+        styles [
+          "function-button",
+        ]
+      }
+
+      layout {
+        column: "2";
+        row: "4";
+      }
+    }
+  }
+}
+
+Adw.PreferencesDialog rate_details_dialog {
+  title: _("Exchange Rate Details");
+  content-width: 462;
+
+  Adw.PreferencesPage {
+    Adw.PreferencesGroup from_group {
+      Adw.ActionRow from_date {
+        title: _("Updated");
+
+        styles [
+          "property",
+        ]
+      }
+
+      Adw.ActionRow from_source {
+        title: _("Source");
+        activatable-widget: image_from_source;
+        activated => $launch_attribution_link();
+
+        [suffix]
+        Image image_from_source {
+          icon-name: "adw-external-link-symbolic";
+        }
+
+        styles [
+          "property",
+        ]
+      }
+    }
+
+    Adw.PreferencesGroup to_group {
+      Adw.ActionRow to_date {
+        title: _("Updated");
+
+        styles [
+          "property",
+        ]
+      }
+
+      Adw.ActionRow to_source {
+        title: _("Source");
+        activatable-widget: image_to_source;
+        activated => $launch_attribution_link();
+
+        [suffix]
+        Image image_to_source {
+          icon-name: "adw-external-link-symbolic";
+        }
+
+        styles [
+          "property",
+        ]
+      }
+    }
+
+    Adw.PreferencesGroup {
+      Adw.ButtonRow {
+        title: _("_Refresh Rates");
+        use-underline: true;
+        activated => $refresh_rates();
+      }
+    }
+  }
+}

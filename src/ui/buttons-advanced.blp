@@ -1,0 +1,1171 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $AdvancedButtonPanel: Adw.BreakpointBin {
+  width-request: 360;
+  height-request: 260;
+
+  Adw.Breakpoint {
+    condition ("max-width: 699sp")
+
+    setters {
+      multi_layout_view.layout-name: "carousel";
+    }
+  }
+
+  child: Adw.MultiLayoutView multi_layout_view {
+    Adw.Layout {
+      name: "box";
+
+      content: Box math_box {
+        styles [
+          "math-buttons",
+        ]
+
+        Adw.LayoutSlot {
+          id: "advanced";
+        }
+
+        Adw.LayoutSlot {
+          id: "basic";
+        }
+      };
+    }
+
+    Adw.Layout {
+      name: "carousel";
+
+      content: Box {
+        orientation: vertical;
+
+        Adw.Carousel carousel {
+          styles [
+            "math-buttons",
+          ]
+
+          Adw.LayoutSlot {
+            id: "advanced";
+            hexpand: true;
+          }
+
+          Adw.LayoutSlot {
+            id: "basic";
+            hexpand: true;
+          }
+        }
+
+        Adw.CarouselIndicatorDots carousel_dots {
+          carousel: carousel;
+        }
+      };
+    }
+
+    [basic]
+    Grid basic {
+      hexpand: true;
+      row-homogeneous: true;
+      column-homogeneous: true;
+
+      styles [
+        "buttons",
+      ]
+
+      Button calc_clear_button {
+        label: "C";
+        focus-on-click: false;
+        tooltip-text: _("Clear Display [Escape]");
+        action-name: "cal.clear";
+
+        styles [
+          "clear-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "0";
+        }
+      }
+
+      ToggleButton calc_superscript_button {
+        label: "↑n";
+        focus-on-click: false;
+        tooltip-text: _("Superscript Mode [Ctrl]");
+        action-name: "cal.set-number-mode";
+        action-target: "'superscript'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      ToggleButton calc_subscript_button {
+        label: "↓n";
+        focus-on-click: false;
+        tooltip-text: _("Subscript Mode [Alt]");
+        action-name: "cal.set-number-mode";
+        action-target: "'subscript'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_7_button {
+        label: "7";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "7";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "1";
+        }
+      }
+
+      Button calc_8_button {
+        label: "8";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "8";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "1";
+        }
+      }
+
+      Button calc_9_button {
+        label: "9";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "9";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "1";
+        }
+      }
+
+      Button calc_4_button {
+        label: "4";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "4";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "2";
+        }
+      }
+
+      Button calc_5_button {
+        label: "5";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "5";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "2";
+        }
+      }
+
+      Button calc_6_button {
+        label: "6";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "6";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "2";
+        }
+      }
+
+      Button calc_1_button {
+        label: "1";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "1";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "3";
+        }
+      }
+
+      Button calc_2_button {
+        label: "2";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "2";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "3";
+        }
+      }
+
+      Button calc_3_button {
+        label: "3";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "3";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "3";
+        }
+      }
+
+      Button calc_0_button {
+        label: "0";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "0";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "4";
+        }
+      }
+
+      Button calc_numeric_point_button {
+        label: ".";
+        focus-on-click: false;
+        action-name: "cal.insert-numeric-point";
+
+        styles [
+          "numeric-point-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "4";
+        }
+      }
+
+      MenuButton calc_memory_button {
+        /* Translators: The label on the memory button */
+        label: _("x");
+        focus-on-click: false;
+        can-shrink: true;
+        tooltip-text: _("Variables and Constants");
+        direction: up;
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "4";
+        }
+      }
+
+      MenuButton calc_function_button {
+        label: "f(x)";
+        focus-on-click: false;
+        can-shrink: true;
+        tooltip-text: _("Additional Functions");
+        direction: up;
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "4";
+        }
+      }
+
+      Button calc_divide_button {
+        label: "÷";
+        focus-on-click: false;
+        tooltip-text: _("Divide [/]");
+        action-name: "cal.insert-general";
+        action-target: "'÷'";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "0";
+        }
+      }
+
+      Button calc_multiply_button {
+        label: "×";
+        focus-on-click: false;
+        tooltip-text: _("Multiply [*]");
+        action-name: "cal.insert-general";
+        action-target: "'×'";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "1";
+        }
+      }
+
+      Button calc_subtract_button {
+        label: "−";
+        focus-on-click: false;
+        tooltip-text: _("Subtract [-]");
+        action-name: "cal.subtract";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "2";
+        }
+      }
+
+      Button calc_add_button {
+        label: "+";
+        focus-on-click: false;
+        tooltip-text: _("Add [+]");
+        action-name: "cal.insert-general";
+        action-target: "'+'";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "3";
+        }
+      }
+
+      Button calc_modulus_divide_button {
+        label: "mod";
+        focus-on-click: false;
+        tooltip-text: _("Modulus Divide");
+        action-name: "cal.insert-alpha";
+        action-target: "'mod'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "0";
+        }
+      }
+
+      Button calc_percentage_button {
+        label: "%";
+        focus-on-click: false;
+        tooltip-text: _("Percentage [%]");
+        action-name: "cal.insert-general";
+        action-target: "'%'";
+
+        styles [
+          "percent-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "1";
+        }
+      }
+
+      Button calc_group_button {
+        label: "‎( )";
+        focus-on-click: false;
+        tooltip-text: _("Group [()]");
+        action-name: "cal.insert-brackets";
+        action-target: "('(',')')";
+
+        styles [
+          "parenthesis-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "2";
+        }
+      }
+
+      Button calc_result_button {
+        /* Translators: Label on the solve button (clicking this solves the displayed calculation) */
+        label: _("=");
+        focus-on-click: false;
+        tooltip-text: _("Calculate Result");
+        action-name: "cal.solve";
+
+        styles [
+          "suggested-action",
+        ]
+
+        layout {
+          column: "4";
+          row: "3";
+          row-span: "2";
+        }
+      }
+    }
+
+    [advanced]
+    Grid advanced {
+      hexpand: true;
+      row-homogeneous: true;
+      column-homogeneous: true;
+
+      styles [
+        "buttons",
+      ]
+
+      ToggleButton calc_inverse_modifier_button {
+        label: "‎⇧⁻¹";
+        focus-on-click: false;
+        tooltip-text: _("Inverse Modifier [Shift]");
+
+        styles [
+          "accent",
+        ]
+
+        layout {
+          column: "0";
+          row: "0";
+        }
+      }
+
+      Button calc_sine_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "sin";
+        focus-on-click: false;
+        tooltip-text: _("Sine");
+        action-name: "cal.insert-function";
+        action-target: "'sin'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "1";
+        }
+      }
+
+      Button calc_inverse_sine_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "sin⁻¹";
+        focus-on-click: false;
+        tooltip-text: _("Inverse Sine");
+        action-name: "cal.insert-function";
+        action-target: "'sin⁻¹'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "0";
+          row: "1";
+        }
+      }
+
+      Button calc_hyperbolic_sine_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "sinh";
+        focus-on-click: false;
+        tooltip-text: _("Hyperbolic Sine");
+        action-name: "cal.insert-function";
+        action-target: "'sinh'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "1";
+        }
+      }
+
+      Button calc_inverse_hyperbolic_sine_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "sinh⁻¹";
+        focus-on-click: false;
+        tooltip-text: _("Inverse Hyperbolic Sine");
+        action-name: "cal.insert-function";
+        action-target: "'sinh⁻¹'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "1";
+          row: "1";
+        }
+      }
+
+      Button calc_cosine_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "cos";
+        focus-on-click: false;
+        tooltip-text: _("Cosine");
+        action-name: "cal.insert-function";
+        action-target: "'cos'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "2";
+        }
+      }
+
+      Button calc_inverse_cosine_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "cos⁻¹";
+        focus-on-click: false;
+        tooltip-text: _("Inverse Cosine");
+        action-name: "cal.insert-function";
+        action-target: "'cos⁻¹'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "0";
+          row: "2";
+        }
+      }
+
+      Button calc_hyperbolic_cosine_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "cosh";
+        focus-on-click: false;
+        tooltip-text: _("Hyperbolic Cosine");
+        action-name: "cal.insert-function";
+        action-target: "'cosh'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "2";
+        }
+      }
+
+      Button calc_inverse_hyperbolic_cosine_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "cosh⁻¹";
+        focus-on-click: false;
+        tooltip-text: _("Inverse Hyperbolic Cosine");
+        action-name: "cal.insert-function";
+        action-target: "'cosh⁻¹'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "1";
+          row: "2";
+        }
+      }
+
+      Button calc_tangent_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "tan";
+        focus-on-click: false;
+        tooltip-text: _("Tangent");
+        action-name: "cal.insert-function";
+        action-target: "'tan'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "3";
+        }
+      }
+
+      Button calc_inverse_tangent_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "tan⁻¹";
+        focus-on-click: false;
+        tooltip-text: _("Inverse Tangent");
+        action-name: "cal.insert-function";
+        action-target: "'tan⁻¹'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "0";
+          row: "3";
+        }
+      }
+
+      Button calc_hyperbolic_tangent_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "tanh";
+        focus-on-click: false;
+        tooltip-text: _("Hyperbolic Tangent");
+        action-name: "cal.insert-function";
+        action-target: "'tanh'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "3";
+        }
+      }
+
+      Button calc_inverse_hyperbolic_tangent_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "tanh⁻¹";
+        focus-on-click: false;
+        tooltip-text: _("Inverse Hyperbolic Tangent");
+        action-name: "cal.insert-function";
+        action-target: "'tanh⁻¹'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "1";
+          row: "3";
+        }
+      }
+
+      Button calc_x_squared_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        focus-on-click: false;
+        tooltip-text: _("Square [Ctrl+2]");
+        action-name: "cal.square";
+
+        Label {
+          label: "<i>x</i>²";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      Button calc_square_root_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "√";
+        focus-on-click: false;
+        tooltip-text: _("Square Root [Ctrl+R]");
+        action-name: "cal.insert-symbol-before";
+        action-target: "'√'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      Button calc_x_pow_y_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        focus-on-click: false;
+        tooltip-text: _("Exponent [^ or **]");
+        action-name: "cal.insert-symbol-after";
+        action-target: "'^'";
+
+        Label {
+          label: "<i>x</i><sup><i>y</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_nth_root_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Nth Root");
+        action-name: "cal.nth-root";
+
+        Label {
+          label: "​<sub><i>y</i></sub>√";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_logarithm_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        focus-on-click: false;
+        tooltip-text: _("Logarithm");
+        action-name: "cal.logarithm";
+
+        Label {
+          label: "log<sub><i>y</i></sub>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "1";
+        }
+      }
+
+      Button calc_exponential_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Exponent [^ or **]");
+        action-name: "cal.insert-exponent";
+        action-target: "''";
+
+        Label {
+          label: "<i>y</i><sup><i>x</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "2";
+          row: "1";
+        }
+      }
+
+      Button calc_common_logarithm_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "log";
+        focus-on-click: false;
+        tooltip-text: _("Common Logarithm");
+        action-name: "cal.insert-function";
+        action-target: "'log'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "2";
+        }
+      }
+
+      Button calc_base_10_exponential_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Base-10 Exponential");
+        action-name: "cal.insert-exponent";
+        action-target: "'10'";
+
+        Label {
+          label: "10<sup><i>x</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "2";
+          row: "2";
+        }
+      }
+
+      Button calc_natural_logarithm_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "ln";
+        focus-on-click: false;
+        tooltip-text: _("Natural Logarithm");
+        action-name: "cal.insert-function";
+        action-target: "'ln'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "3";
+        }
+      }
+
+      Button calc_natural_exponential_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Natural Exponential");
+        action-name: "cal.insert-exponent";
+        action-target: "'e'";
+
+        Label {
+          label: "e<sup><i>x</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "2";
+          row: "3";
+        }
+      }
+
+      Button calc_conjugate_button {
+        label: "conj";
+        focus-on-click: false;
+        tooltip-text: _("Complex Conjugate");
+        action-name: "cal.insert-function";
+        action-target: "'conj'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "0";
+        }
+      }
+
+      Button calc_arg_button {
+        label: "Arg";
+        focus-on-click: false;
+        tooltip-text: _("Complex Argument");
+        action-name: "cal.insert-function";
+        action-target: "'Arg'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "1";
+        }
+      }
+
+      Button calc_real_portion_button {
+        label: "Re";
+        focus-on-click: false;
+        tooltip-text: _("Real Component");
+        action-name: "cal.insert-function";
+        action-target: "'Re'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "2";
+        }
+      }
+
+      Button calc_imaginary_portion_button {
+        label: "Im";
+        focus-on-click: false;
+        tooltip-text: _("Imaginary Component");
+        action-name: "cal.insert-function";
+        action-target: "'Im'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "3";
+        }
+      }
+
+      Button calc_inverse_button {
+        focus-on-click: false;
+        tooltip-text: _("Inverse [Ctrl+I]");
+        action-name: "cal.insert-symbol-after";
+        action-target: "'⁻¹'";
+
+        Label {
+          label: "<i>x</i>⁻¹";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "0";
+        }
+      }
+
+      Button calc_round_button {
+        focus-on-click: false;
+        tooltip-text: _("Round [[]]");
+        action-name: "cal.insert-brackets";
+        action-target: "('[',']')";
+
+        Label {
+          label: "[<i>x</i>]";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "1";
+        }
+      }
+
+      Button calc_abs_button {
+        focus-on-click: false;
+        tooltip-text: _("Absolute Value [||]");
+        action-name: "cal.insert-brackets";
+        action-target: "('|','|')";
+
+        Label {
+          label: "|<i>x</i>|";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "2";
+        }
+      }
+
+      Button calc_factorial_button {
+        focus-on-click: false;
+        tooltip-text: _("Factorial [!]");
+        action-name: "cal.insert-symbol-after";
+        action-target: "'!'";
+
+        Label {
+          label: "<i>x</i>!";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "3";
+        }
+      }
+
+      Button calc_angle_units_button {
+        use-underline: true;
+        focus-on-click: false;
+        action-name: "cal.set-angle-units";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "4";
+        }
+      }
+
+      Button calc_pi_button {
+        label: "π";
+        focus-on-click: false;
+        tooltip-text: _("Pi [Ctrl+P]");
+        action-name: "cal.insert-alpha";
+        action-target: "'π'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "4";
+        }
+      }
+
+      Button calc_eulers_number_button {
+        label: "e";
+        focus-on-click: false;
+        tooltip-text: _("Euler’s Number");
+        action-name: "cal.insert-alpha";
+        action-target: "'e'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "4";
+        }
+      }
+
+      Button calc_imaginary_button {
+        label: "i";
+        focus-on-click: false;
+        tooltip-text: _("Imaginary Unit");
+        action-name: "cal.insert-alpha";
+        action-target: "'i'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "4";
+        }
+      }
+
+      Button calc_factor_button {
+        label: "a×b";
+        focus-on-click: false;
+        tooltip-text: _("Factorize [Ctrl+F]");
+        action-name: "cal.factorize";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "4";
+        }
+      }
+    }
+  };
+}
+
+SizeGroup {
+  mode: both;
+
+  widgets [
+    basic,
+    advanced,
+  ]
+}

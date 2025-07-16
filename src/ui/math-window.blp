@@ -1,0 +1,202 @@
+using Gtk 4.0;
+using Adw 1;
+
+menu window_menu {
+  section {
+    item {
+      label: _("_Basic");
+      action: "win.mode";
+      target: "basic";
+    }
+
+    item {
+      label: _("_Advanced");
+      action: "win.mode";
+      target: "advanced";
+    }
+
+    item {
+      label: _("_Financial");
+      action: "win.mode";
+      target: "financial";
+    }
+
+    item {
+      label: _("_Programming");
+      action: "win.mode";
+      target: "programming";
+    }
+
+    item {
+      label: _("_Keyboard");
+      action: "win.mode";
+      target: "keyboard";
+    }
+
+    item {
+      label: _("_Conversion");
+      action: "win.mode";
+      target: "conversion";
+    }
+  }
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _("_New Window");
+      action: "app.new-window";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Clear History");
+      action: "win.clear";
+      hidden-when: "action-disabled";
+    }
+  }
+
+  section {
+    label: _("Result Format");
+
+    item {
+      label: _("_Automatic");
+      action: "win.number-format";
+      target: "automatic";
+    }
+
+    item {
+      label: _("_Fixed");
+      action: "win.number-format";
+      target: "fixed";
+    }
+
+    item {
+      label: _("_Scientific");
+      action: "win.number-format";
+      target: "scientific";
+    }
+
+    item {
+      label: _("_Engineering");
+      action: "win.number-format";
+      target: "engineering";
+    }
+  }
+
+  section {
+    id: "help-section";
+
+    item {
+      label: _("_Preferences");
+      action: "win.preferences";
+    }
+
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "app.shortcuts";
+    }
+
+    item {
+      label: _("_Help");
+      action: "app.help";
+    }
+
+    item {
+      label: _("A_bout Calculator");
+      action: "app.about";
+    }
+  }
+}
+
+template $MathWindow: Adw.ApplicationWindow {
+  title: _("Calculator");
+  height-request: 616;
+
+  Adw.ToolbarView {
+    top-bar-style: raised;
+
+    [top]
+    Adw.HeaderBar headerbar {
+      [title]
+      MenuButton menu_button {
+        menu-model: window_menu;
+        focus-on-click: false;
+        always-show-arrow: true;
+        can-shrink: true;
+        tooltip-text: _("Mode Selection");
+      }
+
+      Button undo_button {
+        valign: center;
+        focus-on-click: false;
+        action-name: "win.undo";
+
+        child: Adw.ButtonContent {
+          label: _("_Undo");
+          icon-name: "edit-undo-symbolic";
+          use-underline: true;
+          can-shrink: true;
+        };
+      }
+
+      Button back_button {
+        icon-name: "go-previous-symbolic";
+        action-name: "win.back";
+        tooltip-text: _("Financial");
+      }
+
+      [end]
+      MenuButton primary_menu_button {
+        icon-name: "open-menu-symbolic";
+        receives-default: false;
+        menu-model: primary_menu;
+        primary: true;
+        tooltip-text: _("Main Menu");
+      }
+    }
+
+    content: Adw.Clamp {
+      maximum-size: 700;
+      tightening-threshold: 700;
+
+      Box {
+        vexpand: true;
+        orientation: vertical;
+
+        Box display_box {
+          overflow: hidden;
+          orientation: vertical;
+
+          styles [
+            "card",
+            "display-container",
+          ]
+
+          $HistoryView history {
+            overflow: "hidden";
+          }
+
+          $MathDisplay _display {
+            equation: bind template.equation;
+          }
+        }
+
+        $MathConverter _converter {
+          equation: bind template.equation;
+
+          styles [
+            "card",
+            "display-container",
+          ]
+        }
+
+        $MathButtons _buttons {
+          equation: bind template.equation;
+          converter: "_converter";
+        }
+      }
+    };
+  }
+}

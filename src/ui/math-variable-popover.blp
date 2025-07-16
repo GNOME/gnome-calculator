@@ -1,0 +1,83 @@
+using Gtk 4.0;
+
+template $MathVariablePopover: $MathPopover {
+  styles [
+    "math-popover",
+  ]
+
+  Stack stack {
+    transition-type: slide_left_right;
+    interpolate-size: true;
+    vhomogeneous: false;
+
+    Box content {
+      orientation: vertical;
+
+      ScrolledWindow variable_list_scrolled {
+        propagate-natural-height: true;
+        max-content-height: 290;
+        width-request: 250;
+        hscrollbar-policy: never;
+
+        styles [
+          "undershoot-bottom",
+        ]
+
+        Box {
+          orientation: vertical;
+
+          ListBox variable_list {
+            selection-mode: none;
+            row-activated => $insert_variable_cb();
+          }
+
+          Separator {}
+
+          Label {
+            label: _("Constants");
+            xalign: 0;
+
+            styles [
+              "dimmed",
+            ]
+          }
+
+          ListBox constant_list {
+            selection-mode: none;
+            row-activated => $open_submenu_cb();
+
+            styles [
+              "category-list",
+            ]
+          }
+        }
+      }
+
+      Box add_variable_box {
+        Entry name_entry {
+          placeholder-text: _("Variable name");
+          receives-default: true;
+          hexpand: true;
+          input-hints: no_emoji;
+          activate => $store_variable_cb();
+        }
+
+        Button add_button {
+          sensitive: false;
+          tooltip-text: _("Store value into existing or new variable");
+          icon-name: "document-save-symbolic";
+          clicked => $store_variable_cb();
+        }
+      }
+
+      Revealer {
+        Label error_label {
+          xalign: 0;
+          wrap: true;
+          wrap-mode: word_char;
+          max-width-chars: 0;
+        }
+      }
+    }
+  }
+}

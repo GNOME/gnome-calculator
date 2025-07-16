@@ -1,0 +1,34 @@
+using Gtk 4.0;
+
+template $TestsWindow: ApplicationWindow {
+  can-focus: false;
+  title: _("Testing GCi.EntryController");
+
+  Box {
+    visible: true;
+    can-focus: false;
+    orientation: vertical;
+
+    Label {
+      visible: true;
+      can-focus: false;
+      label: _("GCi Test");
+    }
+
+    Entry entry {
+      visible: true;
+      can-focus: true;
+    }
+
+    Button button {
+      label: _("Close");
+      visible: true;
+      can-focus: true;
+      receives-default: true;
+
+      styles [
+        "destructive-action",
+      ]
+    }
+  }
+}

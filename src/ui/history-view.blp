@@ -1,0 +1,27 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $HistoryView: Adw.Bin {
+  row-added => $scroll_bottom();
+
+  child: ScrolledWindow scrolled_window {
+    vexpand: true;
+    hscrollbar-policy: never;
+
+    child: Viewport viewport {
+      hexpand: true;
+      scroll-to-focus: true;
+
+      ListBox listbox {
+        vexpand: true;
+        valign: end;
+        selection-mode: none;
+        tab-behavior: item;
+      }
+    };
+
+    styles [
+      "history-view",
+    ]
+  };
+}

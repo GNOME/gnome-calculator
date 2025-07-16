@@ -1,0 +1,1450 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $FinancialButtonPanel: Adw.BreakpointBin {
+  width-request: 360;
+  height-request: 260;
+
+  Adw.Breakpoint {
+    condition ("max-width: 699sp")
+
+    setters {
+      multi_layout_view.layout-name: "carousel";
+    }
+  }
+
+  child: Adw.MultiLayoutView multi_layout_view {
+    Adw.Layout {
+      name: "box";
+
+      content: Box math_box {
+        styles [
+          "math-buttons",
+        ]
+
+        Adw.LayoutSlot {
+          id: "advanced";
+        }
+
+        Adw.LayoutSlot {
+          id: "basic";
+        }
+      };
+    }
+
+    Adw.Layout {
+      name: "carousel";
+
+      content: Box {
+        orientation: vertical;
+
+        Adw.Carousel carousel {
+          styles [
+            "math-buttons",
+          ]
+
+          Adw.LayoutSlot {
+            id: "advanced";
+            hexpand: true;
+          }
+
+          Adw.LayoutSlot {
+            id: "basic";
+            hexpand: true;
+          }
+        }
+
+        Adw.CarouselIndicatorDots carousel_dots {
+          carousel: carousel;
+        }
+      };
+    }
+
+    [basic]
+    Grid basic {
+      hexpand: true;
+      row-homogeneous: true;
+      column-homogeneous: true;
+
+      styles [
+        "buttons",
+      ]
+
+      Button calc_clear_button {
+        label: "C";
+        focus-on-click: false;
+        tooltip-text: _("Clear Display [Escape]");
+        action-name: "cal.clear";
+
+        styles [
+          "clear-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "0";
+        }
+      }
+
+      ToggleButton calc_superscript_button {
+        label: "↑n";
+        focus-on-click: false;
+        tooltip-text: _("Superscript Mode [Ctrl]");
+        action-name: "cal.set-number-mode";
+        action-target: "'superscript'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      ToggleButton calc_subscript_button {
+        label: "↓n";
+        focus-on-click: false;
+        tooltip-text: _("Subscript Mode [Alt]");
+        action-name: "cal.set-number-mode";
+        action-target: "'subscript'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_7_button {
+        label: "7";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "7";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "1";
+        }
+      }
+
+      Button calc_8_button {
+        label: "8";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "8";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "1";
+        }
+      }
+
+      Button calc_9_button {
+        label: "9";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "9";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "1";
+        }
+      }
+
+      Button calc_4_button {
+        label: "4";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "4";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "2";
+        }
+      }
+
+      Button calc_5_button {
+        label: "5";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "5";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "2";
+        }
+      }
+
+      Button calc_6_button {
+        label: "6";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "6";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "2";
+        }
+      }
+
+      Button calc_1_button {
+        label: "1";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "1";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "3";
+        }
+      }
+
+      Button calc_2_button {
+        label: "2";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "2";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "3";
+        }
+      }
+
+      Button calc_3_button {
+        label: "3";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "3";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "3";
+        }
+      }
+
+      Button calc_0_button {
+        label: "0";
+        focus-on-click: false;
+        action-name: "cal.insert-digit";
+        action-target: "0";
+
+        styles [
+          "number-button",
+        ]
+
+        layout {
+          column: "0";
+          row: "4";
+        }
+      }
+
+      Button calc_numeric_point_button {
+        label: ".";
+        focus-on-click: false;
+        action-name: "cal.insert-numeric-point";
+
+        styles [
+          "numeric-point-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "4";
+        }
+      }
+
+      MenuButton calc_memory_button {
+        /* Translators: The label on the memory button */
+        label: _("x");
+        focus-on-click: false;
+        can-shrink: true;
+        tooltip-text: _("Variables and Constants");
+        direction: up;
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "4";
+        }
+      }
+
+      MenuButton calc_function_button {
+        label: "f(x)";
+        focus-on-click: false;
+        can-shrink: true;
+        tooltip-text: _("Additional Functions");
+        direction: up;
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "4";
+        }
+      }
+
+      Button calc_divide_button {
+        label: "÷";
+        focus-on-click: false;
+        tooltip-text: _("Divide [/]");
+        action-name: "cal.insert-general";
+        action-target: "'÷'";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "0";
+        }
+      }
+
+      Button calc_multiply_button {
+        label: "×";
+        focus-on-click: false;
+        tooltip-text: _("Multiply [*]");
+        action-name: "cal.insert-general";
+        action-target: "'×'";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "1";
+        }
+      }
+
+      Button calc_subtract_button {
+        label: "−";
+        focus-on-click: false;
+        tooltip-text: _("Subtract [-]");
+        action-name: "cal.subtract";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "2";
+        }
+      }
+
+      Button calc_add_button {
+        label: "+";
+        focus-on-click: false;
+        tooltip-text: _("Add [+]");
+        action-name: "cal.insert-general";
+        action-target: "'+'";
+
+        styles [
+          "operator-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "3";
+        }
+      }
+
+      Button calc_modulus_divide_button {
+        label: "mod";
+        focus-on-click: false;
+        tooltip-text: _("Modulus Divide");
+        action-name: "cal.insert-alpha";
+        action-target: "'mod'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "0";
+        }
+      }
+
+      Button calc_percentage_button {
+        label: "%";
+        focus-on-click: false;
+        tooltip-text: _("Percentage [%]");
+        action-name: "cal.insert-general";
+        action-target: "'%'";
+
+        styles [
+          "percent-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "1";
+        }
+      }
+
+      Button calc_group_button {
+        label: "‎( )";
+        focus-on-click: false;
+        tooltip-text: _("Group [()]");
+        action-name: "cal.insert-brackets";
+        action-target: "('(',')')";
+
+        styles [
+          "parenthesis-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "2";
+        }
+      }
+
+      Button calc_result_button {
+        /* Translators: Label on the solve button (clicking this solves the displayed calculation) */
+        label: _("=");
+        focus-on-click: false;
+        tooltip-text: _("Calculate Result");
+        action-name: "cal.solve";
+
+        styles [
+          "suggested-action",
+        ]
+
+        layout {
+          column: "4";
+          row: "3";
+          row-span: "2";
+        }
+      }
+    }
+
+    [advanced]
+    Grid advanced {
+      hexpand: true;
+      row-homogeneous: true;
+      column-homogeneous: true;
+
+      styles [
+        "buttons",
+      ]
+
+      ToggleButton calc_inverse_modifier_button {
+        label: "‎⇧⁻¹";
+        focus-on-click: false;
+        tooltip-text: _("Inverse Modifier [Shift]");
+
+        styles [
+          "accent",
+        ]
+
+        layout {
+          column: "0";
+          row: "0";
+        }
+      }
+
+      Button calc_x_squared_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        focus-on-click: false;
+        tooltip-text: _("Square [Ctrl+2]");
+        action-name: "cal.square";
+
+        Label {
+          label: "<i>x</i>²";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      Button calc_square_root_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "√";
+        focus-on-click: false;
+        tooltip-text: _("Square Root [Ctrl+R]");
+        action-name: "cal.insert-symbol-before";
+        action-target: "'√'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "1";
+          row: "0";
+        }
+      }
+
+      Button calc_x_pow_y_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        focus-on-click: false;
+        tooltip-text: _("Exponent [^ or **]");
+        action-name: "cal.insert-symbol-after";
+        action-target: "'^'";
+
+        Label {
+          label: "<i>x</i><sup><i>y</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_nth_root_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Nth Root");
+        action-name: "cal.nth-root";
+
+        Label {
+          label: "​<sub><i>y</i></sub>√";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "2";
+          row: "0";
+        }
+      }
+
+      Button calc_common_logarithm_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "log";
+        focus-on-click: false;
+        tooltip-text: _("Common Logarithm");
+        action-name: "cal.insert-function";
+        action-target: "'log'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "3";
+          row: "0";
+        }
+      }
+
+      Button calc_base_10_exponential_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Base-10 Exponential");
+        action-name: "cal.insert-exponent";
+        action-target: "'10'";
+
+        Label {
+          label: "10<sup><i>x</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "3";
+          row: "0";
+        }
+      }
+
+      Button calc_natural_logarithm_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "ln";
+        focus-on-click: false;
+        tooltip-text: _("Natural Logarithm");
+        action-name: "cal.insert-function";
+        action-target: "'ln'";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "0";
+        }
+      }
+
+      Button calc_natural_exponential_button {
+        visible: bind calc_inverse_modifier_button.active;
+        focus-on-click: false;
+        tooltip-text: _("Natural Exponential");
+        action-name: "cal.insert-exponent";
+        action-target: "'e'";
+
+        Label {
+          label: "e<sup><i>x</i></sup>";
+          use-markup: true;
+        }
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "4";
+          row: "0";
+        }
+      }
+
+      Grid finc_buttons {
+        row-homogeneous: true;
+        column-homogeneous: true;
+
+        Button calc_finc_compounding_term_button {
+          /* Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest */
+          label: _("Ctrm");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Compounding Term");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'ctrm_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "0";
+            row: "0";
+          }
+        }
+
+        Button calc_finc_double_declining_depreciation_button {
+          /* Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation */
+          label: _("Ddb");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Double Declining Depreciation");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'ddb_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "1";
+            row: "0";
+          }
+        }
+
+        Button calc_finc_future_value_button {
+          /* Translators: Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value */
+          label: _("Fv");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Future Value");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'fv_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "2";
+            row: "0";
+          }
+        }
+
+        Button calc_finc_gross_profit_margin_button {
+          /* Translators: Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin */
+          label: _("Gpm");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Gross Profit Margin");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'gpm_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "0";
+            row: "1";
+          }
+        }
+
+        Button calc_finc_periodic_payment_button {
+          /* Translators: Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule */
+          label: _("Pmt");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Periodic Payment");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'pmt_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "1";
+            row: "1";
+          }
+        }
+
+        Button calc_finc_present_value_button {
+          /* Translators: Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value */
+          label: _("Pv");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Present Value");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'pv_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "2";
+            row: "1";
+          }
+        }
+
+        Button calc_finc_periodic_interest_rate_button {
+          /* Translators: Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest */
+          label: _("Rate");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Periodic Interest Rate");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'rate_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "0";
+            row: "2";
+          }
+        }
+
+        Button calc_finc_straight_line_depreciation_button {
+          /* Translators: Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation */
+          label: _("Sln");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Straight Line Depreciation");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'sln_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "1";
+            row: "2";
+          }
+        }
+
+        Button calc_finc_sum_of_the_years_digits_depreciation_button {
+          /* Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation */
+          label: _("Syd");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Sum of the Years Digits Depreciation");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'syd_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "2";
+            row: "2";
+          }
+        }
+
+        Button calc_finc_term_button {
+          /* Translators: Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory) */
+          label: _("Term");
+          focus-on-click: false;
+          can-shrink: true;
+          tooltip-text: _("Financial Term");
+          action-name: "cal.launch-finc-dialog";
+          action-target: "'term_dialog'";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "0";
+            row: "3";
+          }
+        }
+
+        Button calc_finc_currency_conversion_button {
+          label: _("Currency Conversion");
+          focus-on-click: false;
+          can-shrink: true;
+          action-name: "cal.currency-conversion";
+
+          styles [
+            "function-button",
+          ]
+
+          layout {
+            column: "1";
+            row: "3";
+            column-span: "2";
+          }
+        }
+
+        layout {
+          column: "0";
+          row: "1";
+          column-span: "5";
+          row-span: "4";
+        }
+      }
+    }
+  };
+}
+
+Adw.Dialog ctrm_dialog {
+  /* Translators: Title of Compounding Term dialog */
+  title: _("Compounding Term");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_ctrm_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(ctrm_dialog);
+      }
+
+      [end]
+      Button button_ctrm_calculate {
+        /* Translators: Compounding Term Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Compounding Term Dialog: Description of calculation */
+      description: _("Calculates the number of compounding periods necessary to increase an investment of present value to a future value, at a fixed interest rate per compounding period.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow ctrm_pint {
+          /* Translators: Compounding Term Dialog: Label before periodic interest rate input */
+          title: _("Periodic Interest Rate");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow ctrm_fv {
+          /* Translators: Compounding Term Dialog: Label before future value input */
+          title: _("Future Value");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow ctrm_pv {
+          /* Translators: Compounding Term Dialog: Label before present value input */
+          title: _("Present Value");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+Adw.Dialog ddb_dialog {
+  /* Translators: Title of Double-Declining Depreciation dialog */
+  title: _("Double-Declining Depreciation");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_ddb_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(ddb_dialog);
+      }
+
+      [end]
+      Button button_ddb_calculate {
+        /* Translators: Double-Declining Depreciation Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Double-Declining Depreciation Dialog: Description of calculation */
+      description: _("Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow ddb_cost {
+          /* Translators: Double-Declining Depreciation Dialog: Label before cost input */
+          title: _("Cost");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow ddb_life {
+          /* Translators: Double-Declining Depreciation Dialog: Label before life input */
+          title: _("Life");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow ddb_period {
+          /* Translators: Double-Declining Depreciation Dialog: Label before period input */
+          title: _("Period");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+Adw.Dialog fv_dialog {
+  /* Translators: Title of Future Value dialog */
+  title: _("Future Value");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_fv_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(fv_dialog);
+      }
+
+      [end]
+      Button button_fv_calculate {
+        /* Translators: Future Value Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Future Value Dialog: Description of calculation */
+      description: _("Calculates the future value of an investment based on a series of equal payments at a periodic interest rate over the number of payment periods in the term.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow fv_pmt {
+          /* Translators: Future Value Dialog: Label before periodic payment input */
+          title: _("Periodic Payment");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow fv_pint {
+          /* Translators: Future Value Dialog: Label before periodic interest rate input */
+          title: _("Periodic Interest Rate");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow fv_n {
+          /* Translators: Future Value Dialog: Label before number of periods input */
+          title: _("Number of Periods");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+Adw.Dialog gpm_dialog {
+  /* Translators: Title of Gross Profit Margin dialog */
+  title: _("Gross Profit Margin");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_gpm_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(gpm_dialog);
+      }
+
+      [end]
+      Button button_gpm_calculate {
+        /* Translators: Gross Profit Margin Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Gross Profit Margin Dialog: Description of calculation */
+      description: _("Calculates the resale price of a product, based on the product cost and the wanted gross profit margin.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow gpm_cost {
+          /* Translators: Gross Profit Margin Dialog: Label before cost input */
+          title: _("Cost");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow gpm_margin {
+          /* Translators: Gross Profit Margin Dialog: Label before margin input */
+          title: _("Margin");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+Adw.Dialog pmt_dialog {
+  /* Translators: Title of Periodic Payment dialog */
+  title: _("Periodic Payment");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_pmt_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(pmt_dialog);
+      }
+
+      [end]
+      Button button_pmt_calculate {
+        /* Translators: Periodic Payment Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Periodic Payment Dialog: Description of calculation */
+      description: _("Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow pmt_prin {
+          /* Translators: Periodic Payment Dialog: Label before principal input */
+          title: _("Principal");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow pmt_pint {
+          /* Translators: Periodic Payment Dialog: Label before periodic interest rate input */
+          title: _("Periodic Interest Rate");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow pmt_n {
+          /* Translators: Periodic Payment Dialog: Label before term input */
+          title: _("Term");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+Adw.Dialog pv_dialog {
+  /* Translators: Title of Present Value dialog */
+  title: _("Present Value");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_pv_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(pv_dialog);
+      }
+
+      [end]
+      Button button_pv_calculate {
+        /* Translators: Present Value Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Present Value Dialog: Description of calculation */
+      description: _("Calculates the present value of an investment based on a series of equal payments discounted at a periodic interest rate over the number of payment periods in the term.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow pv_pmt {
+          /* Translators: Present Value Dialog: Label before periodic payment input */
+          title: _("Periodic Payment");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow pv_pint {
+          /* Translators: Present Value Dialog: Label before periodic interest rate input */
+          title: _("Periodic Interest Rate");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow pv_n {
+          /* Translators: Present Value Dialog: Label before number of periods input */
+          title: _("Number of Periods");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+Adw.Dialog rate_dialog {
+  /* Translators: Title of Periodic Interest Rate dialog */
+  title: _("Periodic Interest Rate");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_rate_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(rate_dialog);
+      }
+
+      [end]
+      Button button_rate_calculate {
+        /* Translators: Periodic Interest Rate Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Periodic Interest Rate Dialog: Description of calculation */
+      description: _("Calculates the periodic interest necessary to increase an investment to a future value, over the number of compounding periods.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow rate_fv {
+          /* Translators: Periodic Interest Rate Dialog: Label before future value input */
+          title: _("Future Value");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow rate_pv {
+          /* Translators: Periodic Interest Rate Dialog: Label before present value input */
+          title: _("Present Value");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow rate_n {
+          /* Translators: Periodic Interest Rate Dialog: Label before term input */
+          title: _("Term");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+Adw.Dialog sln_dialog {
+  /* Translators: Title of Straight-Line Depreciation dialog */
+  title: _("Straight-Line Depreciation");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_sln_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(sln_dialog);
+      }
+
+      [end]
+      Button button_sln_calculate {
+        /* Translators: Straight-Line Depreciation Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Straight-Line Depreciation Dialog: Description of calculation */
+      description: _("Calculates the straight-line depreciation of an asset for one period. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow sln_cost {
+          /* Translators: Straight-Line Depreciation Dialog: Label before cost input */
+          title: _("Cost");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow sln_salvage {
+          /* Translators: Straight-Line Depreciation Dialog: Label before salvage input */
+          title: _("Salvage");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow sln_life {
+          /* Translators: Straight-Line Depreciation Dialog: Label before life input */
+          title: _("Life");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+Adw.Dialog syd_dialog {
+  /* Translators: Title of Sum-of-the-Years’-Digits Depreciation dialog */
+  title: _("Sum-of-the-Years’-Digits Depreciation");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_syd_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(syd_dialog);
+      }
+
+      [end]
+      Button button_syd_calculate {
+        /* Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation */
+      description: _("Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-of-the-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The useful life is the number of periods, typically years, over which an asset is depreciated.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow syd_cost {
+          /* Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input */
+          title: _("Cost");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow syd_salvage {
+          /* Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input */
+          title: _("Salvage");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow syd_life {
+          /* Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input */
+          title: _("Life");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow syd_period {
+          /* Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input */
+          title: _("Period");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+Adw.Dialog term_dialog {
+  /* Translators: Title of Payment Period dialog */
+  title: _("Payment Period");
+  content-width: 462;
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      Button button_term_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        clicked => $adw_dialog_close(term_dialog);
+      }
+
+      [end]
+      Button button_term_calculate {
+        /* Translators: Payment Period Dialog: Calculate button */
+        label: _("C_alculate");
+        use-underline: true;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    content: Adw.PreferencesPage {
+      /* Translators: Payment Period Dialog: Description of calculation */
+      description: _("Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value, at a periodic interest rate.");
+
+      Adw.PreferencesGroup {
+        Adw.EntryRow term_pmt {
+          /* Translators: Payment Period Dialog: Label before periodic payment input */
+          title: _("Periodic Payment");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow term_fv {
+          /* Translators: Payment Period Dialog: Label before future value input */
+          title: _("Future Value");
+          input-hints: no_emoji;
+        }
+
+        Adw.EntryRow term_pint {
+          /* Translators: Payment Period Dialog: Label before periodic interest rate input */
+          title: _("Periodic Interest Rate");
+          input-hints: no_emoji;
+        }
+      }
+    };
+  };
+}
+
+SizeGroup {
+  mode: both;
+
+  widgets [
+    basic,
+    advanced,
+  ]
+}

@@ -1,0 +1,242 @@
+using Gtk 4.0;
+
+$AdwShortcutsDialog shortcuts_dialog {
+  $AdwShortcutsSection {
+    title: C_("shortcuts dialog", "General");
+
+    $AdwShortcutsItem {
+      action-name: "app.new-window";
+      title: C_("shortcuts dialog", "Open a New Window");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "win.close";
+      title: C_("shortcuts dialog", "Close Current Window");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "app.quit";
+      title: C_("shortcuts dialog", "Quit the Application");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "app.help";
+      title: C_("shortcuts dialog", "Show Help");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "F10";
+      title: C_("shortcuts dialog", "Open Menu");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "app.preferences";
+      title: C_("shortcuts dialog", "Show Preferences");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "app.shortcuts";
+      title: C_("shortcuts dialog", "Keyboard Shortcuts");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "win.clear";
+      title: C_("shortcuts dialog", "Clear History");
+    }
+  }
+
+  $AdwShortcutsSection {
+    title: C_("shortcuts dialog", "Switching Modes");
+
+    $AdwShortcutsItem {
+      action-name: "win.mode::basic";
+      title: C_("shortcuts dialog", "Switch to Basic Mode");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "win.mode::advanced";
+      title: C_("shortcuts dialog", "Switch to Advanced Mode");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "win.mode::financial";
+      title: C_("shortcuts dialog", "Switch to Financial Mode");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "win.mode::programming";
+      title: C_("shortcuts dialog", "Switch to Programming Mode");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<control><alt>k";
+      title: C_("shortcuts dialog", "Switch to Keyboard Mode");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<control><alt>t";
+      title: C_("shortcuts dialog", "Switch to Keyboard Mode (alt.)");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "win.mode::conversion";
+      title: C_("shortcuts dialog", "Switch to Conversion Mode");
+    }
+  }
+
+  $AdwShortcutsSection {
+    title: C_("shortcuts dialog", "Programming Mode");
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>B";
+      title: C_("shortcuts dialog", "Switch to Binary");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>O";
+      title: C_("shortcuts dialog", "Switch to Octal");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>D";
+      title: C_("shortcuts dialog", "Switch to Decimal");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>H";
+      title: C_("shortcuts dialog", "Switch to Hexadecimal");
+    }
+  }
+
+  $AdwShortcutsSection {
+    title: C_("shortcuts dialog", "Keyboard Entry");
+
+    $AdwShortcutsItem {
+      accelerator: "asterisk";
+      title: C_("shortcuts dialog", "Multiply (×)");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "slash";
+      title: C_("shortcuts dialog", "Divide (÷)");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>2";
+      title: C_("shortcuts dialog", "Square (²)");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>R";
+      title: C_("shortcuts dialog", "Square Root (√)");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>I";
+      title: C_("shortcuts dialog", "Inverse (⁻¹)");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>P";
+      title: C_("shortcuts dialog", "Pi (π)");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>T";
+      title: C_("shortcuts dialog", "Tau (τ)");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>apostrophe";
+      title: C_("shortcuts dialog", "Degree (°)");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<alt>bracketleft+bracketright";
+      title: C_("shortcuts dialog", "Floor (⌊⌋)");
+      direction: "ltr";
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>bracketleft+bracketright";
+      title: C_("shortcuts dialog", "Ceiling (⌈⌉)");
+      direction: "ltr";
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<alt>bracketright+bracketleft";
+      title: C_("shortcuts dialog", "Floor (⌊⌋)");
+      direction: "rtl";
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>bracketright+bracketleft";
+      title: C_("shortcuts dialog", "Ceiling (⌈⌉)");
+      direction: "rtl";
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>E";
+      title: C_("shortcuts dialog", "Enter Numbers in Scientific Format");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<alt>0...9";
+      title: C_("shortcuts dialog", "Enter Subscript Numbers");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>0...9";
+      title: C_("shortcuts dialog", "Enter Superscript Numbers");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>minus";
+      title: C_("shortcuts dialog", "Enter Superscript Minus Sign");
+    }
+  }
+
+  $AdwShortcutsSection {
+    title: C_("shortcuts dialog", "Equation");
+
+    $AdwShortcutsItem {
+      action-name: "win.copy";
+      title: C_("shortcuts dialog", "Copy");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "win.paste";
+      title: C_("shortcuts dialog", "Paste");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "win.undo";
+      title: C_("shortcuts dialog", "Undo");
+    }
+
+    $AdwShortcutsItem {
+      action-name: "win.redo";
+      title: C_("shortcuts dialog", "Redo");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<alt>Left";
+      title: C_("shortcuts dialog", "Previous Equation");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<alt>Right";
+      title: C_("shortcuts dialog", "Next Equation");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "Escape";
+      title: C_("shortcuts dialog", "Clear Display");
+    }
+
+    $AdwShortcutsItem {
+      accelerator: "<ctrl>F";
+      title: C_("shortcuts dialog", "Factorize");
+    }
+  }
+}

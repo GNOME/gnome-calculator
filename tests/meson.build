@@ -76,8 +76,16 @@ gci_test_deps = [
 	gci_inc_libh_dep
 ]
 
+blueprints = custom_target('blueprints',
+  input: files(
+    'gci-test-entry-controller.blp',
+  ),
+  output: '.',
+  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+)
+
 test_entry_controler_resource_files = files('test-entry-controller.gresource.xml')
-test_entry_controler_resources = gnome.compile_resources('test-entry-controller-resources', test_entry_controler_resource_files)
+test_entry_controler_resources = gnome.compile_resources('test-entry-controller-resources', test_entry_controler_resource_files, dependencies: blueprints)
 
 test_entry_controler_sources = [
   'test-gci-entry-controller.vala',
