@@ -61,24 +61,28 @@ menu primary_menu {
     label: _("Result Format");
 
     item {
+      /* Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering" */
       label: _("_Automatic");
       action: "win.number-format";
       target: "automatic";
     }
 
     item {
+      /* Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering" */
       label: _("_Fixed");
       action: "win.number-format";
       target: "fixed";
     }
 
     item {
+      /* Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering" */
       label: _("_Scientific");
       action: "win.number-format";
       target: "scientific";
     }
 
     item {
+      /* Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic" */
       label: _("_Engineering");
       action: "win.number-format";
       target: "engineering";
@@ -158,6 +162,8 @@ template $MathWindow: Adw.ApplicationWindow {
     }
 
     content: Adw.Clamp {
+      /* 10*64px button width + 9*4px spacing + 2*12px margin = 700 width.
+         Update the panel size in CSS accordingly. */
       maximum-size: 700;
       tightening-threshold: 700;
 

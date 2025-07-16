@@ -561,6 +561,8 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
         action-name: "cal.nth-root";
 
         Label {
+          /* Prefix with the zero-width space so y can be the subscript
+             of something. Without it, it is displayed normally. */
           label: "​<sub><i>y</i></sub>√";
           use-markup: true;
         }

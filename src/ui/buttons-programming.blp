@@ -102,6 +102,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "2";
+          row: "0";
         }
       }
 
@@ -119,6 +120,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
+          row: "0";
         }
       }
 
@@ -136,6 +138,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "4";
+          row: "0";
         }
       }
 
@@ -154,6 +157,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "5";
+          row: "0";
         }
       }
 
@@ -171,6 +175,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "6";
+          row: "0";
         }
       }
 
@@ -188,6 +193,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "7";
+          row: "0";
         }
       }
 
@@ -205,6 +211,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "8";
+          row: "0";
         }
       }
 
@@ -223,6 +230,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "9";
+          row: "0";
         }
       }
 
@@ -240,6 +248,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "10";
+          row: "0";
         }
       }
 
@@ -257,6 +266,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "11";
+          row: "0";
         }
       }
 
@@ -274,6 +284,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "12";
+          row: "0";
         }
       }
 
@@ -292,6 +303,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "13";
+          row: "0";
         }
       }
 
@@ -309,6 +321,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "14";
+          row: "0";
         }
       }
 
@@ -326,6 +339,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "15";
+          row: "0";
         }
       }
 
@@ -343,6 +357,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "16";
+          row: "0";
         }
       }
 
@@ -360,6 +375,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "17";
+          row: "0";
         }
       }
 
@@ -768,6 +784,11 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
       }
 
       Label bit_marker_label_0 {
+        /* Prefix with the left-to-right mark (U+200E), which tells that what
+           follows should always be displayed left-to-right, and the tabular
+           space (U+2007), a space with the size of a tabular number.
+           We could set width-chars to 2 and xalign to 1 on LTR and 0 on RTL,
+           but using these two characters give us the same result for free. */
         label: "‎ 0";
         xalign: 0.75;
 
@@ -2005,7 +2026,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
       }
 
       Button calc_left_shift_button {
-        label: "≪";
+        label: "‎≪";
         focus-on-click: false;
         tooltip-text: _("Left Shift [<<]");
         action-name: "cal.insert-general";
@@ -2023,7 +2044,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
       Button calc_right_shift_button {
         visible: bind calc_inverse_modifier_button.active inverted;
-        label: "≫";
+        label: "‎≫";
         focus-on-click: false;
         tooltip-text: _("Right Shift [>>]");
         action-name: "cal.insert-general";
@@ -2041,7 +2062,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
       Button calc_unsigned_right_shift_button {
         visible: bind calc_inverse_modifier_button.active;
-        label: "⋙";
+        label: "‎⋙";
         focus-on-click: false;
         tooltip-text: _("Unsigned Right Shift [>>>]");
         action-name: "cal.insert-general";
@@ -2127,6 +2148,8 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
         action-name: "cal.nth-root";
 
         Label {
+          /* Prefix with the zero-width space so y can be the subscript
+             of something. Without it, it is displayed normally. */
           label: "​<sub><i>y</i></sub>√";
           use-markup: true;
         }
