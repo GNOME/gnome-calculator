@@ -285,7 +285,7 @@ public class Calculator : Adw.Application
             website = "https://apps.gnome.org/Calculator",
             issue_url = "https://gitlab.gnome.org/GNOME/gnome-calculator/-/issues/",
             /* Application Copyrights for the calculator authors */
-            copyright = _("\xc2\xa9 1986–2023 The Calculator authors"),
+            copyright = _("\xc2\xa9 1986–%d The Calculator authors").printf (int.parse (VERSION) / 2 + 2001),
             /* We link to MPFR and MPC which are  LGPLv3+, so Calculator cannot be conveyed as GPLv2+ */
             license_type = Gtk.License.GPL_3_0,
             developers = developers,
@@ -294,8 +294,8 @@ public class Calculator : Adw.Application
             translator_credits = _("translator-credits")
         };
 
-        var providers = string.joinv(", ", CurrencyManager.get_default ().get_provider_links ());
-        about.add_legal_section ( _("Exchange Rate Data Providers"), null, Gtk.License.CUSTOM, _("Exchange rates data by %s").printf(providers));
+        var providers = string.joinv (", ", CurrencyManager.get_default ().get_provider_links ());
+        about.add_legal_section (_("Exchange Rate Data Providers"), null, Gtk.License.CUSTOM, _("Exchange rates data by %s").printf (providers));
         about.present (get_active_window ());
     }
 
