@@ -134,7 +134,11 @@ public class MathConverter : Gtk.Box
         if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.RTL)
         {
             from_entry.justification = Gtk.Justification.RIGHT;
+            from_entry.set_direction (Gtk.TextDirection.LTR);
+            from_entry.grab_focus ();
             to_entry.justification = Gtk.Justification.RIGHT;
+            to_entry.set_direction (Gtk.TextDirection.LTR);
+            to_entry.grab_focus ();
         }
 
         from_currency_factory = new Gtk.SignalListItemFactory ();
