@@ -77,7 +77,6 @@ public enum ErrorCode
 {
     NONE,
     INVALID,
-    OVERFLOW,
     UNKNOWN_VARIABLE,
     UNKNOWN_FUNCTION,
     UNKNOWN_CONVERSION,

@@ -851,6 +851,7 @@ public class Number : GLib.Object
             error = _("Inverse tangent is undefined for values i and -i");
             return new Number.integer (0);
         }
+
         var z = new Number ();
         z.num.atan (num);
         if (!z.is_complex ())
@@ -930,6 +931,7 @@ public class Number : GLib.Object
         {
             /* Translators: Error displayed when boolean AND attempted on non-integer values */
             error = _("Boolean AND is only defined for non-negative integers");
+            return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 & v2; }, 0);
@@ -942,6 +944,7 @@ public class Number : GLib.Object
         {
             /* Translators: Error displayed when boolean NAND attempted on non-integer values */
             error = _("Boolean NAND is only defined for non-negative integers");
+            return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 & v2; }, wordlen).not (wordlen);
@@ -954,6 +957,7 @@ public class Number : GLib.Object
         {
             /* Translators: Error displayed when boolean OR attempted on non-integer values */
             error = _("Boolean OR is only defined for non-negative integers");
+            return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 | v2; }, 0);
@@ -966,6 +970,7 @@ public class Number : GLib.Object
         {
             /* Translators: Error displayed when boolean NOR attempted on non-integer values */
             error = _("Boolean NOR is only defined for non-negative integers");
+            return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 | v2; }, wordlen).not (wordlen);
@@ -978,6 +983,7 @@ public class Number : GLib.Object
         {
             /* Translators: Error displayed when boolean XOR attempted on non-integer values */
             error = _("Boolean XOR is only defined for non-negative integers");
+            return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, 0);
@@ -990,6 +996,7 @@ public class Number : GLib.Object
         {
             /* Translators: Error displayed when boolean XNOR attempted on non-integer values */
             error = _("Boolean XNOR is only defined for non-negative integers");
+            return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, wordlen).not (wordlen);
@@ -1002,6 +1009,7 @@ public class Number : GLib.Object
         {
             /* Translators: Error displayed when boolean NOT attempted on non-integer values */
             error = _("Boolean NOT is only defined for non-negative integers");
+            return new Number.integer (0);
         }
 
         return bitwise (new Number.integer (0), (v1, v2) => { return v1 ^ 0xF; }, wordlen);
@@ -1098,7 +1106,7 @@ public class Number : GLib.Object
     {
         if (!is_natural ())
         {
-            error = _("One’s complement is only defined for non-negative integers");
+            error = _("Ones’ complement is only defined for non-negative integers");
             return new Number.integer (0);
         }
 
@@ -1627,7 +1635,6 @@ public class Number : GLib.Object
 }
 
 // FIXME: Should all be in the class
-
 // FIXME: Re-add overflow and underflow detection
 
 /* Sets z from a string representation in 'text'. */
@@ -1843,11 +1850,4 @@ private Number? set_from_sexagesimal (string s)
         return degrees;
     else
         return null;
-}
-
-/* Returns true if x is cannot be represented in a binary word of length 'wordlen' */
-public bool mp_is_overflow (Number x, int wordlen)
-{
-    var t2 = new Number.integer (2).xpowy_integer (wordlen);
-    return t2.compare (x) > 0;
 }

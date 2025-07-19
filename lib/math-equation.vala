@@ -1298,23 +1298,20 @@ public class MathEquation : GtkSource.Buffer
                 solvedata.number_result = z;
                 break;
 
-            case ErrorCode.OVERFLOW:
-                solvedata.error = /* Error displayed to user when they perform a bitwise operation on numbers greater than the current word */
-                                  _("Overflow. Try a bigger word size");
-                break;
-
             case ErrorCode.UNKNOWN_VARIABLE:
                 solvedata.error = /* Error displayed to user when they an unknown variable is entered */
                                   _("Unknown variable “%s”").printf (error_token);
                 solvedata.error_start = error_start;
                 solvedata.error_end = error_end;
                 break;
+
             case ErrorCode.UNKNOWN_RATE:
                 solvedata.error = /* Error displayed to user when a currency conversion with unknown exchange rate is attempted */
                                   _("Exchange rate for “%s” is not available").printf (error_token);
                 solvedata.error_start = error_start;
                 solvedata.error_end = error_end;
                 break;
+
             case ErrorCode.UNKNOWN_UNIT:
                 solvedata.error = /* Error displayed to user when an conversion with unknown units is attempted */
                                   _("Unknown unit “%s”").printf (error_token);

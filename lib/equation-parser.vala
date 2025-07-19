@@ -836,12 +836,6 @@ public class NotNode : RNode
 
     public override Number? solve_r (Number r)
     {
-        if (!mp_is_overflow (r, parser.wordlen))
-        {
-            parser.set_error (ErrorCode.OVERFLOW);
-            return new Number.integer (0);
-        }
-
         return r.not (parser.wordlen);
     }
 }
