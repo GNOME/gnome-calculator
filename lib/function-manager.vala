@@ -46,6 +46,7 @@ public class FunctionManager : Object
         {_("Programming"), {
             new BuiltInMathFunction ("ones", _("Ones’ Complement")),
             new BuiltInMathFunction ("twos", _("Two’s Complement")),
+            new BuiltInMathFunction ("bswap", _("Swap Endianness")),
             new BuiltInMathFunction ("modulus", _("Modulus Divide"), {"x", "y"}),
             new BuiltInMathFunction ("modexp", _("Modular Exponentiation"), {"x", "y", "p"}),
         }},

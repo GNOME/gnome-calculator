@@ -282,6 +282,16 @@ public class Number : GLib.Object
         }
     }
 
+    /* Returns true if x is cannot be represented in a binary word of length 'wordlen' */
+    public bool is_overflow (int wordlen, bool may_be_negative = false)
+    {
+        var max = new Number.unsigned_integer (uint64.MAX >> (64 - wordlen));
+        if (!may_be_negative)
+            return compare (max) > 0;
+        var min = new Number.integer (int64.MIN >> (64 - wordlen));
+        return compare (max) > 0 || compare (min) < 0;
+    }
+
     /* Return error if overflow or underflow */
     public static void check_flags ()
     {
@@ -1018,8 +1028,7 @@ public class Number : GLib.Object
     /* Sets z = x left shifted by 'count' bits for word of length 'wordlen' */
     public Number left_shift (Number count, int wordlen)
     {
-        uint64 mask = check_shift (count, wordlen);
-        if (mask == 0)
+        if (!can_shift (count, wordlen))
             return new Number.integer (0);
 
         uint64 bits = is_negative () ? to_integer () : to_unsigned_integer ();
@@ -1027,9 +1036,9 @@ public class Number : GLib.Object
         if (wordlen != 64)
         {
             if (is_negative () && (bits & (1ULL << (wordlen - 1))) != 0)
-                bits |= ~mask;
+                bits |= uint64.MAX << wordlen;
             else
-                bits &= mask;
+                bits &= uint64.MAX >> (64 - wordlen);
         }
         if (is_negative ())
             return new Number.integer ((int64) bits);
@@ -1039,7 +1048,7 @@ public class Number : GLib.Object
     /* Sets z = x right shifted by 'count' bits for word of length 'wordlen' */
     public Number right_shift (Number count, int wordlen)
     {
-        if (check_shift (count, wordlen) == 0)
+        if (!can_shift (count, wordlen))
             return new Number.integer (0);
 
         if (is_negative ())
@@ -1056,49 +1065,30 @@ public class Number : GLib.Object
     /* Sets z = x unsigned right shifted by 'count' bits for word of length 'wordlen' */
     public Number unsigned_right_shift (Number count, int wordlen)
     {
-        uint64 mask = check_shift (count, wordlen);
-        if (mask == 0)
+        if (!can_shift (count, wordlen))
             return new Number.integer (0);
 
         uint64 bits = is_negative () ? to_integer () : to_unsigned_integer ();
         if (wordlen != 64 && is_negative ())
-            bits &= mask;
+            bits &= uint64.MAX >> (64 - wordlen);
         bits >>= count.modulus_divide (new Number.integer (wordlen)).to_integer ();
         return new Number.unsigned_integer (bits);
     }
 
-    private uint64 check_shift (Number count, int wordlen)
+    private bool can_shift (Number count, int wordlen)
     {
         if (!is_integer () || !count.is_integer ())
         {
             /* Translators: Error displayed when bit shift attempted on non-integer values */
-            error = _("Shift is only possible on integer values");
-            return 0;
+            error = _("Shift is only possible on integers");
+            return false;
         }
-
-        int64 min = int64.MIN;
-        uint64 max = uint64.MAX;
-        switch (wordlen)
+        if (is_overflow (wordlen, true))
         {
-        case 8:
-            min = int8.MIN;
-            max = uint8.MAX;
-            break;
-        case 16:
-            min = int16.MIN;
-            max = uint16.MAX;
-            break;
-        case 32:
-            min = int32.MIN;
-            max = uint32.MAX;
-            break;
+            error = _("Overflow. Try a bigger word size");
+            return false;
         }
-        if (compare (new Number.unsigned_integer (max)) > 0 || compare (new Number.integer (min)) < 0)
-        {
-            error = ("Overflow. Try a bigger word size");
-            return 0;
-        }
-        return max;
+        return true;
     }
 
     /* Sets z to be the ones complement of x for word of length 'wordlen' */
@@ -1123,6 +1113,34 @@ public class Number : GLib.Object
         }
 
         return ones_complement (wordlen).add (new Number.integer (1));
+    }
+
+    /* Sets z = reverse the bytes in x for word of length 'wordlen' */
+    public Number swap_endianness (int wordlen)
+    {
+        if (!is_integer ())
+        {
+            error = _("Swap endianness is only possible on integers");
+            return new Number.integer (0);
+        }
+        if (is_overflow (wordlen, true))
+        {
+            error = _("Overflow. Try a bigger word size");
+            return new Number.integer (0);
+        }
+
+        uint64 bits = is_negative () ? to_integer () : to_unsigned_integer ();
+        uint64 new_bits = 0;
+        for (var i = 0; i < wordlen / 8; i++)
+        {
+            new_bits = (new_bits << 8) | (bits & 0xFF);
+            bits >>= 8;
+        }
+        if (!is_negative ())
+            return new Number.unsigned_integer (new_bits);
+        if (wordlen != 64 && (new_bits & (1ULL << (wordlen - 1))) != 0)
+            new_bits |= uint64.MAX << wordlen;
+        return new Number.integer ((int64) new_bits);
     }
 
     /* Sets z = xCr */
@@ -1579,6 +1597,12 @@ public class Number : GLib.Object
 
     private Number bitwise (Number y, BitwiseFunc bitwise_operator, int wordlen)
     {
+        if (wordlen > 0 && (is_overflow (wordlen) || y.is_overflow (wordlen)))
+        {
+            error = _("Overflow. Try a bigger word size");
+            return new Number.integer (0);
+        }
+
         var text1 = to_hex_string ();
         var text2 = y.to_hex_string ();
         var offset1 = text1.length - 1;
@@ -1586,12 +1610,6 @@ public class Number : GLib.Object
         var offset_out = wordlen / 4 - 1;
         if (offset_out <= 0)
             offset_out = offset1 > offset2 ? offset1 : offset2;
-        if (offset_out > 0 && (offset_out < offset1 || offset_out < offset2))
-        {
-            error = ("Overflow. Try a bigger word size");
-            return new Number.integer (0);
-        }
-
         var text_out = new char[offset_out + 2];
 
         /* Perform bitwise operator on each character from right to left */

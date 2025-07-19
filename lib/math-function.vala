@@ -284,6 +284,8 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
             return x.ones_complement (root_parser.wordlen);
         case "twos":
             return x.twos_complement (root_parser.wordlen);
+        case "bswap":
+            return x.swap_endianness (root_parser.wordlen);
         case "modulus":
             return x.modulus_divide (args[1]);
         case "modexp":
