@@ -628,6 +628,7 @@ public class ShiftNode : LRNode
     public ShiftNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
     {
         base (parser, token, precedence, associativity);
+        repeatable = true;
     }
 
     public override Number solve_lr (Number l, Number r)
