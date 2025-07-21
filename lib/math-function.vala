@@ -224,20 +224,6 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
     var x = args[0];
     // FIXME: Re Im ?
 
-    if (lower_name == "log")
-    {
-        if (args.length <= 1)
-            return x.logarithm (10); // FIXME: Default to ln
-        else
-        {
-            var log_base = args[1].to_integer ();
-            if (log_base < 0)
-                return null;
-            else
-                return x.logarithm (log_base);
-        }
-    }
-
     switch (lower_name)
     {
         default:
@@ -320,6 +306,8 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
             return Number.sample_variance (args);
         case "varp":
             return Number.population_variance (args);
+        case "log":
+            return x.logarithm (args.length > 1 ? args[1] : new Number.integer (10));
         case "ln":
             return x.ln ();
         case "sqrt":

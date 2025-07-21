@@ -615,7 +615,7 @@ public class Number : GLib.Object
     }
 
     /* Sets z = log_n x */
-    public Number logarithm (int64 n)
+    public Number logarithm (Number n)
     {
         /* log (0) undefined */
         if (is_zero ())
@@ -624,10 +624,14 @@ public class Number : GLib.Object
             error = _("Logarithm of zero is undefined");
             return new Number.integer (0);
         }
+        if (n.is_zero () || n.equals (new Number.integer (1)))
+        {
+            error = _("Logarithm with base 0 or 1 is undefined");
+            return new Number.integer (0);
+        }
 
         /* logn (x) = ln (x) / ln (n) */
-        var t1 = new Number.integer (n);
-        return ln ().divide (t1.ln ());
+        return ln ().divide (n.ln ());
     }
 
     /* Sets z = x! */

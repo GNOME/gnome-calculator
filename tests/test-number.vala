@@ -604,7 +604,7 @@ private void test_logarithm2 ()
 {
     for (var a = 1; a <= 10; a++)
     {
-        var z = new Number.double (a).logarithm (2);
+        var z = new Number.double (a).logarithm (new Number.integer (2));
         var expected = Math.log2 (a);
         if (!double_matches (z, expected))
         {
@@ -620,7 +620,7 @@ private void test_logarithm10 ()
 {
     for (var a = 1; a <= 10; a++)
     {
-        var z = new Number.double (a).logarithm (10);
+        var z = new Number.double (a).logarithm (new Number.integer (10));
         var expected = Math.log10 (a);
         if (!double_matches (z, expected))
         {
