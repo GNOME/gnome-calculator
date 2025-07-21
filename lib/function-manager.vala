@@ -327,17 +327,50 @@ public class FunctionManager : Object
     {
         var lower_name = name.down ();
         var args = arguments;
-        if (lower_name.has_prefix ("log") && sub_atoi (lower_name.substring (3)) > 0)
+        if (lower_name.has_prefix ("log") && lower_name.length > 3)
         {
-            Number log_base = new Number.integer (sub_atoi (lower_name.substring (3)));
-            args += log_base;
-            name = "log";
+            var log_base = sub_atoi (lower_name.substring (3));
+            if (log_base >= 0)
+            {
+                if (args.length > 1)
+                {
+                    args[0].error = _("Function “%s” takes 1 argument").printf (name);
+                    return null;
+                }
+                args += new Number.integer (log_base);
+                name = "log";
+            }
         }
 
         MathFunction? function = this.get (name);
         if (function == null)
         {
             parser.set_error (ErrorCode.UNKNOWN_FUNCTION);
+            return null;
+        }
+        if (lower_name == "log")
+        {
+            if (args.length > 2)
+            {
+                args[0].error = _("Function “%s” takes 1 or 2 arguments").printf (name);
+                return null;
+            }
+        }
+        else if (lower_name == "stdev" || lower_name == "var")
+        {
+            if (args.length == 1)
+            {
+                args[0].error = _("Function “%s” takes at least 2 arguments").printf (name);
+                return null;
+            }
+        }
+        else if (args.length != function.arguments.length && function.arguments.length != 0
+                 && function.arguments[function.arguments.length - 1] != "…")
+        {
+            var error = ngettext ("Function “%s” takes %d argument",
+                                  "Function “%s” takes %d arguments",
+                                  function.arguments.length);
+            args[0].error = error.printf (name, function.arguments.length);
             return null;
         }
 

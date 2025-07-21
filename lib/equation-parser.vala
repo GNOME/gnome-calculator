@@ -381,7 +381,8 @@ public class FunctionNode : ParseNode
         if (this.value != null)
             pow = super_atoi (this.value);
 
-        if (pow < 0)
+        var function_manager = FunctionManager.get_default_function_manager ();
+        if (pow < 0 && function_manager.is_function_defined (name + "⁻¹"))
         {
             name = name + "⁻¹";
             pow = -pow;
@@ -440,7 +441,12 @@ public class FunctionNode : ParseNode
             }
         }
 
-        FunctionManager function_manager = FunctionManager.get_default_function_manager ();
+        if (args.length == 0)
+        {
+            string error = _("Function “%s” is missing arguments").printf (name);
+            parser.set_error (ErrorCode.MP, error, left.token().start_index, left.token().end_index);
+            return null;
+        }
         var tmp = function_manager.evaluate_function (name, args, parser);
 
         if (tmp != null)
@@ -2205,7 +2211,7 @@ public class Parser
 
         insert_into_tree (new FunctionNode (this, fun_token, make_precedence_t (fun_token.type), get_associativity (fun_token), power));
 
-        if (function_name == "log" && token.type == LexerTokenType.NUMBER)
+        if (function_name.down () == "log" && token.type == LexerTokenType.NUMBER)
         {
             log_base = token.text;
             token = lexer.get_next_token ();
@@ -2226,7 +2232,7 @@ public class Parser
                 else if (token.type == LexerTokenType.R_R_BRACKET)
                 {
                     m_depth--;
-                    if (log_base != null)
+                    if (log_base != null && argument_list != "")
                         argument_list += (";" + log_base);
                     if (m_depth == 0)
                         break;
@@ -2251,7 +2257,7 @@ public class Parser
         else
         {
             lexer.roll_back ();
-            if (function_name == "log")
+            if (log_base != null)
                 lexer.roll_back ();
             if (!expression_1 ())
             {
@@ -2334,4 +2340,3 @@ public class Parser
             return true;
     }
 }
-

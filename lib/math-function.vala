@@ -299,13 +299,13 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
         case "max":
             return Number.max (args);
         case "stdev":
-            return Number.sample_standard_deviation (args);
+            return Number.variance (args, true).sqrt ();
         case "stdevp":
-            return Number.population_variance (args).sqrt ();
+            return Number.variance (args, false).sqrt ();
         case "var":
-            return Number.sample_variance (args);
+            return Number.variance (args, true);
         case "varp":
-            return Number.population_variance (args);
+            return Number.variance (args, false);
         case "log":
             return x.logarithm (args.length > 1 ? args[1] : new Number.integer (10));
         case "ln":

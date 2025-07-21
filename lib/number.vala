@@ -1319,42 +1319,14 @@ public class Number : GLib.Object
         return z;
     }
 
-    /* Sets z to be the sample standard deviation of 'args' */
-    public static Number sample_standard_deviation (Number[] args)
-    {
-        if (args.length == 1)
-        {
-            error = _("Sample standard deviation of a single number is undefined");
-            return new Number.integer (0);
-        }
-
-        return sample_variance (args).sqrt ();
-    }
-
-    /* Sets z to be the sample variance of 'args' */
-    public static Number sample_variance (Number[] args)
-    {
-        if (args.length == 1)
-        {
-            error = _("Sample variance of a single number is undefined");
-            return new Number.integer (0);
-        }
-
-        var z = new Number.integer (0);
-        var average = sum (args).divide_integer (args.length);
-        foreach (var x in args)
-            z = z.add (x.subtract (average).abs ().xpowy_integer (2));
-        return z.divide_integer (args.length - 1);
-    }
-
-    /* Sets z to be the population variance of 'args' */
-    public static Number population_variance (Number[] args)
+    /* Sets z to be the variance of 'args' */
+    public static Number variance (Number[] args, bool is_sample)
     {
         var z = new Number.integer (0);
         var average = sum (args).divide_integer (args.length);
         foreach (var x in args)
             z = z.add (x.subtract (average).abs ().xpowy_integer (2));
-        return z.divide_integer (args.length);
+        return z.divide_integer (is_sample ? args.length - 1 : args.length);
     }
 
     /* In: An p := p \in 2Z+1; An b := gcd(b,p) = 1

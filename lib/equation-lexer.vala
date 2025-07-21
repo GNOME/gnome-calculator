@@ -461,7 +461,7 @@ public class Lexer : Object
             {
                 /* ERROR: expected LexerTokenType.PL_SUP_DIGIT */
                 prelexer.roll_back ();
-                parser.set_error (ErrorCode.MP, _("Missing digits after negative sign"), prelexer.mark_index, prelexer.index);
+                parser.set_error (ErrorCode.MP, _("Missing digits after minus sign"), prelexer.mark_index, prelexer.index);
                 return insert_token (LexerTokenType.UNKNOWN);
             }
 
