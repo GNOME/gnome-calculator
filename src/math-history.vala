@@ -16,19 +16,18 @@ public class HistoryView : Adw.Bin
     [GtkChild]
     unowned Gtk.ListBox listbox;
 
-    private int _rows = 0;
     private Serializer serializer;
+    private int _rows = 0;
     private int _current = 0;
-    public int rows {get {return _rows;} }
-    public int current {get {return _current;} set {_current = value.clamp(0, _rows); } }
-    public signal void answer_clicked   (string ans);
+    public int rows { get { return _rows; } }
+    public int current { get { return _current; } set { _current = value.clamp (0, _rows); } }
+    public signal void answer_clicked (string ans);
     public signal void equation_clicked (string equation);
-    public signal void row_added	();
+    public signal void row_added ();
 
-
-    public HistoryEntry? get_entry_at(int index)
+    public HistoryEntry? get_entry_at (int index)
     {
-        if ( index >= 0 && index < rows)
+        if (index >= 0 && index < rows)
             return (HistoryEntry?) listbox.get_row_at_index (index);
         return null;
     }
@@ -46,7 +45,6 @@ public class HistoryView : Adw.Bin
 
     public void insert_entry (string equation, Number answer, int number_base, uint representation_base)
     {
-
         if (last_equation == equation)
             return;
 
@@ -102,21 +100,18 @@ public class HistoryEntry : Gtk.ListBoxRow
                          Serializer serializer)
     {
         this.number = answer;
-        grid.set_direction(Gtk.TextDirection.LTR);
-        equation_label.set_direction(Gtk.TextDirection.LTR);
-        answer_label.set_direction(Gtk.TextDirection.LTR);
+        grid.set_direction (Gtk.TextDirection.LTR);
+        equation_label.set_direction (Gtk.TextDirection.LTR);
+        answer_label.set_direction (Gtk.TextDirection.LTR);
         equation_label.set_text (equation);
-        equation_label.set_tooltip_text (equation);
+        equation_label.set_tooltip_text ("\u200E" + equation);
         redisplay (serializer);
     }
 
     public void redisplay (Serializer serializer)
     {
         var answer = serializer.to_string (number);
-        answer_label.set_tooltip_text (answer);
+        answer_label.set_tooltip_text ("\u200E" + answer);
         answer_label.set_text (answer);
     }
-
 }
-
-
