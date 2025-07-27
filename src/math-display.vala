@@ -113,6 +113,10 @@ public class MathDisplay : Gtk.Box
             source_view.input_hints &= ~Gtk.InputHints.INHIBIT_OSK;
         else
             source_view.input_hints |= Gtk.InputHints.INHIBIT_OSK;
+        if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.LTR)
+            source_view.right_margin = enable_osk ? 14 : 0;
+        else
+            source_view.left_margin = enable_osk ? 14 : 0;
         backspace_button.visible = !enable_osk;
     }
 
