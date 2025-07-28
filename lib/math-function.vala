@@ -139,7 +139,6 @@ public class ExpressionParser : Parser
     {
         if (base.variable_is_defined (name))
             return true;
-
         return _root_parser.variable_is_defined (name);
     }
 
@@ -156,6 +155,32 @@ public class ExpressionParser : Parser
         if (base.function_is_defined (name))
             return true;
         return _root_parser.function_is_defined (name);
+    }
+
+    protected override bool unit_is_defined (string name)
+    {
+        return _root_parser.unit_is_defined (name);
+    }
+
+    protected override bool currency_is_defined (string name)
+    {
+        return _root_parser.currency_is_defined (name);
+    }
+
+    protected override bool currency_has_rate (string name)
+    {
+        return _root_parser.currency_has_rate (name);
+    }
+
+    protected override Number? convert (Number x, string x_units, string z_units,
+                                        out Unit? x_unit, out Unit? z_unit)
+    {
+        return _root_parser.convert (x, x_units, z_units, out x_unit, out z_unit);
+    }
+
+    protected override bool literal_base_is_defined (string name)
+    {
+        return _root_parser.literal_base_is_defined (name);
     }
 }
 

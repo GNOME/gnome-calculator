@@ -2239,7 +2239,7 @@ public class Parser
                 }
                 else
                     token_list.append(token);
-                argument_list += token.text;
+                argument_list += (" " + token.text);
                 token = lexer.get_next_token ();
                 num_token_parsed++;
             }
