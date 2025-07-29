@@ -133,16 +133,17 @@ template $MathWindow: Adw.ApplicationWindow {
       }
 
       Button undo_button {
-        valign: center;
+        icon-name: "edit-undo-symbolic";
         focus-on-click: false;
         action-name: "win.undo";
+        tooltip-text: _("Undo");
+      }
 
-        child: Adw.ButtonContent {
-          label: _("_Undo");
-          icon-name: "edit-undo-symbolic";
-          use-underline: true;
-          can-shrink: true;
-        };
+      Button redo_button {
+        icon-name: "edit-redo-symbolic";
+        focus-on-click: false;
+        action-name: "win.redo";
+        tooltip-text: _("Redo");
       }
 
       Button back_button {

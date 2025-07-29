@@ -35,6 +35,8 @@ public class MathWindow : Adw.ApplicationWindow
     [GtkChild]
     private unowned Gtk.Button undo_button;
     [GtkChild]
+    private unowned Gtk.Button redo_button;
+    [GtkChild]
     private unowned Gtk.Button back_button;
     [GtkChild]
     private unowned Gtk.Box display_box;
@@ -78,9 +80,14 @@ public class MathWindow : Adw.ApplicationWindow
         var settings = new Settings ("org.gnome.calculator");
         add_action (settings.create_action ("number-format"));
         var undo_action = (SimpleAction) lookup_action ("undo");
+        var redo_action = (SimpleAction) lookup_action ("redo");
         undo_action.set_enabled (false);
+        redo_action.set_enabled (false);
 
-        equation.notify["display"].connect(() => { undo_action.set_enabled (equation.has_undo_action); });
+        equation.notify["display"].connect(() => {
+            undo_action.set_enabled (equation.has_undo_action);
+            redo_action.set_enabled (equation.has_redo_action);
+        });
         settings.bind ("number-format", equation, "number_format", SettingsBindFlags.DEFAULT);
         settings.bind ("accuracy", equation, "accuracy", SettingsBindFlags.DEFAULT);
         settings.bind ("show-zeroes", equation, "show_trailing_zeroes", SettingsBindFlags.DEFAULT);
@@ -174,6 +181,7 @@ public class MathWindow : Adw.ApplicationWindow
         converter.set_visible (_buttons.mode == ButtonMode.CONVERSION);
         display_box.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         undo_button.set_visible (_buttons.mode != ButtonMode.CONVERSION);
+        redo_button.set_visible (_buttons.mode != ButtonMode.CONVERSION);
         var copy_action = (SimpleAction) lookup_action ("copy");
         copy_action.set_enabled (_buttons.mode != ButtonMode.CONVERSION);
         var clear_action = (SimpleAction) lookup_action ("clear");
