@@ -2126,7 +2126,7 @@ public class Parser
     private bool variable ()
     {
         var token = lexer.get_next_token ();
-        if (token.type == LexerTokenType.FUNCTION)
+        if (token.type == LexerTokenType.FUNCTION || token.type == LexerTokenType.MOD)
         {
             lexer.roll_back ();
             if (!function_invocation ())
