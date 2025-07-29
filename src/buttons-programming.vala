@@ -296,7 +296,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
             sign = "−";
             bits = ~bits + 1;
         }
-        var base_label = "";
+        var base_label = "\u200E";
         if (equation.number_base != 8)
             base_label += "%s%llo₈ ".printf (sign, bits);
         if (equation.number_base != 10)
