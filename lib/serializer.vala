@@ -82,17 +82,14 @@ public class Serializer : Object
             return "NaN";
         }
 
+        int n_digits = 0;
         /* For base conversion equation, use FIXED format. */
         if (representation_base != number_base)
-        {
-            int n_digits = 0;
             return cast_to_string (x, ref n_digits);
-        }
         switch (format)
         {
         default:
         case DisplayFormat.AUTOMATIC:
-            int n_digits = 0;
             var s0 = cast_to_string (x, ref n_digits);
             /* Decide leading digits based on number_base. Support 64 bits in programming mode. */
             switch (get_base ())
@@ -102,19 +99,19 @@ public class Serializer : Object
                     if (n_digits <= 64 && s0 != zero_string)
                         return s0;
                     else
-                        return cast_to_exponential_string (x, false, ref n_digits);
+                        return cast_to_exponential_string (x, false);
                 /* 22 digis for octal mode. */
                 case 8:
                     if (n_digits <= 22 && s0 != zero_string)
                         return s0;
                     else
-                        return cast_to_exponential_string (x, false, ref n_digits);
+                        return cast_to_exponential_string (x, false);
                 /* 16 digits for hexadecimal mode. */
                 case 16:
                     if(n_digits <= 16 && s0 != zero_string)
                         return s0;
                     else
-                        return cast_to_exponential_string (x, false, ref n_digits);
+                        return cast_to_exponential_string (x, false);
                 /* Use default leading_digits for base 10 numbers. */
                 case 10:
                 default:
@@ -123,36 +120,27 @@ public class Serializer : Object
                     else
                     {
                         error = null;
-                        return cast_to_exponential_string (x, false, ref n_digits);
+                        return cast_to_exponential_string (x, false);
                     }
             }
         case DisplayFormat.FIXED:
-            int n_digits = 0;
             return cast_to_string (x, ref n_digits);
         case DisplayFormat.SCIENTIFIC:
             if (representation_base == 10)
             {
                 error = null;
-                int n_digits = 0;
-                return cast_to_exponential_string (x, false, ref n_digits);
+                return cast_to_exponential_string (x, false);
             }
             else
-            {
-                int n_digits = 0;
                 return cast_to_string (x, ref n_digits);
-            }
         case DisplayFormat.ENGINEERING:
             if (representation_base == 10)
             {
                 error = null;
-                int n_digits = 0;
-                return cast_to_exponential_string (x, true, ref n_digits);
+                return cast_to_exponential_string (x, true);
             }
             else
-            {
-                int n_digits = 0;
                 return cast_to_string (x, ref n_digits);
-            }
         }
     }
 
@@ -305,13 +293,14 @@ public class Serializer : Object
         var string = new StringBuilder.sized (1024);
 
         var x_real = x.real_component ();
-        cast_to_string_real (x_real, (int) representation_base, false, ref n_digits, string);
+        if (!cast_to_string_real (x_real, string, (int) representation_base, false, ref n_digits))
+            return zero_string;
         if (x.is_complex ())
         {
             var x_im = x.imaginary_component ();
 
             var force_sign = true;
-            if (string.str == "0")
+            if (string.str == zero_string)
             {
                 string.assign ("");
                 force_sign = false;
@@ -319,14 +308,15 @@ public class Serializer : Object
 
             var s = new StringBuilder.sized (1024);
             int n_complex_digits = 0;
-            cast_to_string_real (x_im, (int) representation_base, force_sign, ref n_complex_digits, s);
+            if (!cast_to_string_real (x_im, s, (int) representation_base, force_sign, ref n_complex_digits))
+                return zero_string;
             if (n_complex_digits > n_digits)
                 n_digits = n_complex_digits;
-            if (s.str == "0" || s.str == "+0" || s.str == "−0")
+            if (s.str == zero_string || s.str == "+" + zero_string || s.str == "−" + zero_string)
             {
                 if (string.str == "")
                 {
-                    string.append ("0"); // real component is empty, the imaginary very small, we shouldn't return blank
+                    string.append (zero_string); // real component is empty, the imaginary very small, we shouldn't return blank
                 }
             }
             else if (s.str == "1")
@@ -343,19 +333,14 @@ public class Serializer : Object
             }
             else
             {
-                if (s.str == "+0")
-                    string.append ("+");
-                else if (s.str != "0")
-                    string.append (s.str);
-
-                string.append ("i");
+                string.append (s.str).append ("i");
             }
         }
 
         return string.str;
     }
 
-    private void cast_to_string_real (Number x, int number_base, bool force_sign, ref int n_digits, StringBuilder string)
+    private bool cast_to_string_real (Number x, StringBuilder string, int number_base, bool force_sign, ref int n_digits)
     {
         const char digits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
@@ -396,10 +381,8 @@ public class Serializer : Object
             }
             else
             {
-                string.prepend_c ('?');
                 error = _("The result is too long to display in fixed format. Try other result formats");
-                string.assign (zero_string);
-                return;
+                return false;
             }
             n_digits++;
 
@@ -459,12 +442,15 @@ public class Serializer : Object
                 b -= d * multiplier;
             }
         }
+        return true;
     }
 
-    private int cast_to_exponential_string_real (Number x, StringBuilder string, bool eng_format, ref int n_digits)
+    private int cast_to_exponential_string_real (Number x, StringBuilder string, bool eng_format, bool force_sign)
     {
         if (x.is_negative ())
             string.append ("−");
+        else if (force_sign)
+            string.append ("+");
 
         var mantissa = x.abs ();
 
@@ -504,6 +490,7 @@ public class Serializer : Object
             }
         }
 
+        int n_digits = 0;
         var mantissa_string = cast_to_string (mantissa, ref n_digits);
         if (eng_format)
         {
@@ -512,40 +499,39 @@ public class Serializer : Object
             {
                 exponent += 3;
                 mantissa_string = mantissa_string.splice (0, 4, "1");
-                n_digits = 1;
             }
         }
         else if (mantissa_string.has_prefix ("10"))
         {
             exponent += 1;
             mantissa_string = mantissa_string.splice (0, 2, "1");
-            n_digits = 1;
         }
         string.append (mantissa_string);
 
         return exponent;
     }
 
-    private string cast_to_exponential_string (Number x, bool eng_format, ref int n_digits)
+    private string cast_to_exponential_string (Number x, bool eng_format)
     {
         var string = new StringBuilder.sized (1024);
 
         var x_real = x.real_component ();
-        var exponent = cast_to_exponential_string_real (x_real, string, eng_format, ref n_digits);
+        var exponent = cast_to_exponential_string_real (x_real, string, eng_format, false);
         append_exponent (string, exponent);
 
         if (x.is_complex ())
         {
             var x_im = x.imaginary_component ();
 
-            if (string.str == "0")
+            var force_sign = true;
+            if (string.str == zero_string)
+            {
                 string.assign ("");
+                force_sign = false;
+            }
 
             var s = new StringBuilder.sized (1024);
-            int n_complex_digits = 0;
-            exponent = cast_to_exponential_string_real (x_im, s, eng_format, ref n_complex_digits);
-            if (n_complex_digits > n_digits)
-                n_digits = n_complex_digits;
+            exponent = cast_to_exponential_string_real (x_im, s, eng_format, force_sign);
             if (s.str == "0" || s.str == "+0" || s.str == "−0")
             {
                 /* Ignore */
@@ -564,12 +550,7 @@ public class Serializer : Object
             }
             else
             {
-                if (s.str == "+0")
-                    string.append ("+");
-                else if (s.str != "0")
-                    string.append (s.str);
-
-                string.append ("i");
+                string.append (s.str).append ("i");
             }
             append_exponent (string, exponent);
         }
