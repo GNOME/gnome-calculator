@@ -42,6 +42,7 @@ public class MathVariables : Object
         registers.remove_all ();
 
         var lines = data.split ("\n");
+        var ten = new Number.integer (10);
         foreach (var line in lines)
         {
             var i = line.index_of_char ('=');
@@ -49,11 +50,15 @@ public class MathVariables : Object
                 continue;
 
             var name = line.substring (0, i).strip ();
-            var value = line.substring (i+1).strip ();
+            var value = line.substring (i + 1).strip ().split ("×10");
 
-            var t = mp_set_from_string (value);
+            var t = mp_set_from_string (value[0]);
             if (t != null)
+            {
+                if (value.length > 1)
+                    t = t.multiply (ten.xpowy_integer (super_atoi (value[1])));
                 registers.insert (name, t);
+            }
         }
     }
 
