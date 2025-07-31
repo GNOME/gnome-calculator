@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-04-10 22:45+0000\n"
+"POT-Creation-Date: 2025-07-23 06:38+0000\n"
 "PO-Revision-Date: 2025-04-25 17:09+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
@@ -24,19 +24,19 @@ msgstr ""
 "20)) ? 1 : 2);\n"
 "X-Generator: Gtranslator 48.0\n"
 
-#: data/org.gnome.Calculator.desktop.in:3
+#: data/org.gnome.Calculator.desktop.in:2
 #: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:80
 #: src/gnome-calculator.vala:282 src/ui/math-window.ui:105
 msgid "Calculator"
 msgstr "Calculator"
 
-#: data/org.gnome.Calculator.desktop.in:4
+#: data/org.gnome.Calculator.desktop.in:3
 #: data/org.gnome.Calculator.metainfo.xml.in:8
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Efectuează calcule aritmetice, științifice și financiare"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Calculator.desktop.in:6
+#: data/org.gnome.Calculator.desktop.in:5
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "calculation;arithmetic;scientific;financial;calculare;aritmetic;științific;financiar;calculator;"
 
@@ -49,8 +49,8 @@ msgid ""
 msgstr ""
 "Calculator este o aplicație care rezolvă ecuații matematice. Deși la început "
 "pare a fi un calculator simplu care deține doar operațiile aritmetice de "
-"bază, puteți comuta la modul avansat, financiar sau de programare pentru a "
-"găsi un set surprinzător de capabilități."
+"bază, se poate trece la modul Avansat, Financiar sau Programare pentru a "
+"găsi niște caracteristici surprinzătoare."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:16
 msgid ""
@@ -59,10 +59,10 @@ msgid ""
 "complex numbers, random number generation, prime factorization and unit "
 "conversions."
 msgstr ""
-"Calculatorul avansat suportă multe operații, inclusiv: logaritmi, "
-"factoriale, funcții trigonometrice și hiperbolice, împărțirea cu rest, "
-"numere complexe, generare de numere aleatorii, factorizare de numere prime "
-"și conversii de unitate."
+"Calculatorul Avansat permite multe operații, inclusiv: logaritmi, "
+"factoriale, funcții trigonometrice și hiperbolice, împărțirea care dă "
+"restul, numere complexe, generare de numere aleatorii și descompunere în "
+"factori primi."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:22
 msgid ""
@@ -70,9 +70,9 @@ msgid ""
 "rate, present and future value, double declining and straight line "
 "depreciation, and many others."
 msgstr ""
-"Modul financiar suportă calculări diverse, inclusiv rata dobânzi periodice, "
-"valoarea curentă și viitoare, amortizarea dublu-regresivă și pe linie "
-"dreaptă, și multe altele."
+"Modul Financiar permite mai multe calcule, inclusiv rata dobânzi periodice, "
+"valoarea actuală și viitoare, deprecierea accelerată și liniară, și multe "
+"altele."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
 msgid ""
@@ -80,29 +80,33 @@ msgid ""
 "decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
 "character to character code conversion, and more."
 msgstr ""
-"Modul de programare suportă conversia între bazele comune (binar, octal, "
-"zecimal, și hexazecimal), algebră logică, complement față de unu și doi, "
+"Modul Programare permite calcularea folosind bazele comune (binar, octal, "
+"zecimal și hexazecimal), operații cu biți, complement față de unu și doi, "
 "conversie de cod caracter cu caracter, și multe altele."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:39
 msgid "Basic Mode"
-msgstr "Mod de bază"
+msgstr "Modul Simplu"
 
 #: data/org.gnome.Calculator.metainfo.xml.in:43
 msgid "Advanced Mode"
-msgstr "Mod avansat"
+msgstr "Modul Avansat"
 
 #: data/org.gnome.Calculator.metainfo.xml.in:47
 msgid "Financial Mode"
-msgstr "Mod financiar"
+msgstr "Modul Financiar"
 
 #: data/org.gnome.Calculator.metainfo.xml.in:51
 msgid "Programming Mode"
-msgstr "Mod programare"
+msgstr "Modul Programare"
 
 #: data/org.gnome.Calculator.metainfo.xml.in:55
 msgid "Keyboard Mode"
-msgstr "Mod de tastatură"
+msgstr "Modul Tastatură"
+
+#: data/org.gnome.Calculator.metainfo.xml.in:63
+msgid "Conversion Mode"
+msgstr "Modul Conversie"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/org.gnome.Calculator.metainfo.xml.in:76 src/gnome-calculator.vala:284
@@ -111,7 +115,7 @@ msgstr "Proiectul GNOME"
 
 #: data/org.gnome.calculator.gschema.xml:26
 msgid "Accuracy value"
-msgstr "Valoarea preciziei"
+msgstr "Numărul de zecimale"
 
 #: data/org.gnome.calculator.gschema.xml:27
 msgid "The number of digits displayed after the numeric point"
@@ -139,7 +143,7 @@ msgstr "Afișează separatoare de mii"
 
 #: data/org.gnome.calculator.gschema.xml:44
 msgid "Indicates whether thousands separators are shown in large numbers."
-msgstr "Indică dacă se afișează separatoare de mii în numere mari."
+msgstr "Indică dacă să se afișeze separatoare de mii în numerele mari."
 
 #: data/org.gnome.calculator.gschema.xml:48
 msgid "Show Trailing Zeroes"
@@ -149,7 +153,7 @@ msgstr "Afișează zerouri după virgulă"
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
-msgstr "Indică dacă se afișează zerouri după virgulă."
+msgstr "Indică dacă să se afișeze zerouri după virgulă."
 
 #: data/org.gnome.calculator.gschema.xml:53
 msgid "Number format"
@@ -189,19 +193,19 @@ msgstr "Modul buton"
 
 #: data/org.gnome.calculator.gschema.xml:73
 msgid "Source currency"
-msgstr "Monedă sursă"
+msgstr "Valuta sursă"
 
 #: data/org.gnome.calculator.gschema.xml:74
 msgid "Currency of the current calculation"
-msgstr "Moneda calculului actual"
+msgstr "Valuta calculului actual"
 
 #: data/org.gnome.calculator.gschema.xml:78
 msgid "Target currency"
-msgstr "Monedă destinație"
+msgstr "Valuta destinație"
 
 #: data/org.gnome.calculator.gschema.xml:79
 msgid "Currency to convert the current calculation into"
-msgstr "Moneda în care să fie convertită moneda sursă"
+msgstr "Valuta în care să fie convertită valuta sursă"
 
 #: data/org.gnome.calculator.gschema.xml:83
 msgid "Source units"
@@ -441,7 +445,7 @@ msgstr "Rupie pakistaneză"
 
 #: lib/currency.vala:111
 msgid "Polish Zloty"
-msgstr "Zolt polonez"
+msgstr "Zlot polonez"
 
 #: lib/currency.vala:112
 msgid "Qatari Riyal"
@@ -627,15 +631,15 @@ msgstr "Arctangentă"
 
 #: lib/function-manager.vala:88
 msgid "Inverse sine"
-msgstr "Sinus inversat"
+msgstr "Arcsinus"
 
 #: lib/function-manager.vala:90
 msgid "Inverse cosine"
-msgstr "Cosinus inversat"
+msgstr "Arccosinus"
 
 #: lib/function-manager.vala:92
 msgid "Inverse tangent"
-msgstr "Tangentă inversă"
+msgstr "Arctangentă"
 
 #: lib/function-manager.vala:94
 msgid "Hyperbolic sine"
@@ -663,15 +667,15 @@ msgstr "Arctangentă hiperbolică"
 
 #: lib/function-manager.vala:106
 msgid "Inverse hyperbolic sine"
-msgstr "Sinus hiperbolic inversat"
+msgstr "Arcsinus hiperbolic"
 
 #: lib/function-manager.vala:108
 msgid "Inverse hyperbolic cosine"
-msgstr "Cosinus hiperbolic inversat"
+msgstr "Arccosinus hiperbolic"
 
 #: lib/function-manager.vala:110
 msgid "Inverse hyperbolic tangent"
-msgstr "Tangentă hiperbolică inversă"
+msgstr "Arctangentă hiperbolică"
 
 #: lib/function-manager.vala:112
 msgid "One's complement"
@@ -781,7 +785,7 @@ msgstr "Logaritmul lui zero nu este definit"
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
 #: lib/number.vala:517
 msgid "Factorial is only defined for non-negative real numbers"
-msgstr "Factorialul este definit doar pentru numere reale pozitive"
+msgstr "Factorialul este definit doar pentru numere reale pozitive și zero"
 
 #. Translators: Error displayed attempted to divide by zero
 #: lib/number.vala:577
@@ -791,73 +795,69 @@ msgstr "Împărțirea la zero nu este definită"
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
 #: lib/number.vala:598
 msgid "Modulus division is only defined for integers"
-msgstr "Împărțirea modulo este definită doar pentru întregi"
+msgstr "Împărțirea care dă restul este doar pentru numere întregi"
 
 #. Translators: Error displayed when tangent value is undefined
 #: lib/number.vala:671
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
-"Tangenta nu este definită pentru unghiuri care sunt cu multipli de π (180°) "
-"de la π∕2 (90°)"
+"Tangenta nu este definită pentru unghiuri care sunt multipli de π (180°) de "
+"la π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
 #: lib/number.vala:690
 msgid "Inverse sine is undefined for values outside [-1, 1]"
-msgstr ""
-"Inversa sinusului nu este definită pentru valori în afara intervalului [-1, "
-"1]"
+msgstr "Arcsinus nu este definit pentru valori din afara intervalului [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
 #: lib/number.vala:707
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr ""
-"Inversa cosinusului nu este definită pentru valori în afara intervalului "
-"[-1, 1]"
+"Arccosinus nu este definit pentru valori din afara intervalului [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
 #: lib/number.vala:725
 msgid "Arctangent function is undefined for values i and -i"
-msgstr "Funcția arctangentă nu este definită pentru valorile i și -i"
+msgstr "Arctangenta nu este definită pentru valorile i și -i"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: lib/number.vala:775
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
-"Inversa cosinusului hiperbolic nu este definită pentru valori mai mici decât "
-"unu"
+"Arccosinus hiperbolic este nu este definit pentru valori mai mici decât unu"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
 #: lib/number.vala:791
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
-"Inversa tangentei hiperbolice nu este definită pentru valori în afara "
-"intervalului [-1, 1]"
+"Arctangenta hiperbolică nu este definită pentru valori în afara intervalului "
+"[-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: lib/number.vala:807
 msgid "Boolean AND is only defined for positive integers"
-msgstr "ȘI logic este definit doar pentru numere naturale pozitive"
+msgstr "AND Boolean este definit doar pentru numere întregi pozitive și zero"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: lib/number.vala:819
 msgid "Boolean OR is only defined for positive integers"
-msgstr "SAU logic este definit doar pentru numere naturale pozitive"
+msgstr "OR Boolean este definit doar pentru numere întregi pozitive și zero"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: lib/number.vala:831
 msgid "Boolean XOR is only defined for positive integers"
-msgstr "SAU exclusiv logic este definit doar pentru numere naturale pozitive"
+msgstr "XOR Boolean este definit doar pentru numere întregi pozitive și zero"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: lib/number.vala:843
 msgid "Boolean NOT is only defined for positive integers"
-msgstr "NU logic este definit doar pentru numere naturale pozitive"
+msgstr "NOT Boolean este definit doar pentru numere întregi pozitive și zero"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: lib/number.vala:866
 msgid "Shift is only possible on integer values"
-msgstr "Deplasarea este posibilă doar pentru valori întregi"
+msgstr "Deplasarea este posibilă doar pentru numere întregi"
 
 #: lib/serializer.vala:345
 msgid "Overflow: the result couldn’t be calculated"
@@ -1094,7 +1094,7 @@ msgstr "nanometru,nanometri,nm"
 
 #: lib/unit.vala:63
 msgid "Desktop Publishing Point"
-msgstr "Punct tipografic"
+msgstr "Puncte tipografice"
 
 #: lib/unit.vala:63
 msgctxt "unit-symbols"
@@ -1103,7 +1103,7 @@ msgstr "punct,pt,puncte,pts"
 
 #: lib/unit.vala:64
 msgid "Kilometers per hour"
-msgstr "Kilometeri pe oră"
+msgstr "Kilometri pe oră"
 
 #: lib/unit.vala:64
 msgctxt "unit-symbols"
@@ -1166,7 +1166,7 @@ msgstr "acru,acri,ac"
 
 #: lib/unit.vala:71
 msgid "Square Foot"
-msgstr "Metru pătrat"
+msgstr "Picioare pătrate"
 
 #: lib/unit.vala:71
 msgctxt "unit-symbols"
@@ -1450,7 +1450,7 @@ msgstr "Celsius"
 #: lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "degC,˚C,C,c,Celsius,celsius"
-msgstr "degC,˚C,C,c,Celsius,celsius"
+msgstr "gradC,˚C,C,c,Celsius,celsius"
 
 #: lib/unit.vala:103
 msgid "Fahrenheit"
@@ -1459,7 +1459,7 @@ msgstr "Fahrenheit"
 #: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
-msgstr "degF,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "gradF,˚F,F,f,Fahrenheit,fahrenheit"
 
 #: lib/unit.vala:104
 msgid "Kelvin"
@@ -1477,7 +1477,7 @@ msgstr "Rankine"
 #: lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
-msgstr "degR,˚R,˚Ra,r,R,Rankine,rankine"
+msgstr "gradR,˚R,˚Ra,r,R,Rankine,rankine"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
 #: lib/unit.vala:107
@@ -1843,7 +1843,7 @@ msgstr "terrahertz,THz"
 
 #: lib/unit.vala:148
 msgid "Joule"
-msgstr "Joule"
+msgstr "Jouli"
 
 #: lib/unit.vala:148
 msgctxt "unit-symbols"
@@ -1870,7 +1870,7 @@ msgstr "MJ,megajouli,megajoule"
 
 #: lib/unit.vala:151
 msgid "KilowattHour"
-msgstr "KilowattOră"
+msgstr "Kilowattore"
 
 #: lib/unit.vala:151
 msgctxt "unit-symbols"
@@ -1888,7 +1888,7 @@ msgstr "btu,BTU"
 
 #: lib/unit.vala:153
 msgid "Calorie"
-msgstr "Calorie"
+msgstr "Calorii"
 
 #: lib/unit.vala:153
 msgctxt "unit-symbols"
@@ -1920,11 +1920,11 @@ msgstr "Ft-lb"
 #: lib/unit.vala:156
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
-msgstr "foot-pound,foot-pounds,ft-lb,ft-lbs;picior-liră;picior-lire"
+msgstr "picior-livră,picior-livre,ft-lb,ft-lbs"
 
 #: lib/unit.vala:157
 msgid "Pascal"
-msgstr "Pascal"
+msgstr "Pascali"
 
 #: lib/unit.vala:157
 msgctxt "unit-symbols"
@@ -1933,7 +1933,7 @@ msgstr "Pascal,pascal,Pa"
 
 #: lib/unit.vala:158
 msgid "Kilopascal"
-msgstr "Kilopascal"
+msgstr "Kilopascali"
 
 #: lib/unit.vala:158
 msgctxt "unit-symbols"
@@ -1942,7 +1942,7 @@ msgstr "Kilopascal,kilopascal,kPa"
 
 #: lib/unit.vala:159
 msgid "Hectopascal"
-msgstr "Hectopascal"
+msgstr "Hectopascali"
 
 #: lib/unit.vala:159
 msgctxt "unit-symbols"
@@ -1951,7 +1951,7 @@ msgstr "Hectopascal,hectopascal,hPa"
 
 #: lib/unit.vala:160
 msgid "Bar"
-msgstr "Bar"
+msgstr "Bari"
 
 #: lib/unit.vala:160
 msgctxt "unit-symbols"
@@ -1969,7 +1969,7 @@ msgstr "Atmosferă standard,atmosferă standard,Atm,atm"
 
 #: lib/unit.vala:162
 msgid "Millimetre of Mercury"
-msgstr "Milimetru coloană de mercur"
+msgstr "Milimetri coloană de mercur"
 
 #: lib/unit.vala:162
 msgctxt "unit-symbols"
@@ -1978,7 +1978,7 @@ msgstr "Milimetru coloană de mercur,milimetru coloană de mercur,mmHg"
 
 #: lib/unit.vala:163
 msgid "Inch of Mercury"
-msgstr "Țol coloană de mercur"
+msgstr "Țoli coloană de mercur"
 
 #: lib/unit.vala:163
 msgctxt "unit-symbols"
@@ -1987,7 +1987,7 @@ msgstr "Țol coloană de mercur,Țol coloană de mercur,inHg"
 
 #: lib/unit.vala:164
 msgid "Pound per Square Inch"
-msgstr "Livră pe țol pătrat"
+msgstr "Livră pe țol la pătrat"
 
 #: lib/unit.vala:164
 msgctxt "unit-symbols"
@@ -1996,7 +1996,7 @@ msgstr "Livră pe țol pătrat,livră pe țol pătrat,psi"
 
 #: lib/unit.vala:166
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valuta"
 
 #: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:76
 #: src/ui/buttons-programming.ui:82 src/ui/buttons-programming.ui:88
@@ -2010,7 +2010,7 @@ msgstr "Copiază rezultatul în clipboard"
 #: src/ui/buttons-advanced.ui:162 src/ui/buttons-basic.ui:109
 #: src/ui/buttons-financial.ui:722 src/ui/buttons-programming.ui:1698
 msgid "Modulus Divide"
-msgstr "Împărțire modulo"
+msgstr "Împărțire care dă restul"
 
 #: src/ui/buttons-advanced.ui:178 src/ui/buttons-basic.ui:125
 #: src/ui/buttons-financial.ui:738 src/ui/buttons-programming.ui:1343
@@ -2040,7 +2040,7 @@ msgstr "Pi [Ctrl+P]"
 #: src/ui/buttons-advanced.ui:331 src/ui/buttons-basic.ui:278
 #: src/ui/buttons-financial.ui:875 src/ui/buttons-programming.ui:1312
 msgid "Root [Ctrl+R]"
-msgstr "Rădăcină [Ctrl+R]"
+msgstr "Radical [Ctrl+R]"
 
 #: src/ui/buttons-advanced.ui:346 src/ui/buttons-basic.ui:293
 msgid "Square [Ctrl+2]"
@@ -2050,7 +2050,7 @@ msgstr "Pătrat [Ctrl+2]"
 #: src/ui/buttons-conversion.ui:194 src/ui/buttons-financial.ui:890
 #: src/ui/buttons-programming.ui:1421
 msgid "Clear Display [Escape]"
-msgstr "Șterge afișajul [Escape]"
+msgstr "Șterge [Escape]"
 
 #: src/ui/buttons-advanced.ui:381 src/ui/buttons-basic.ui:328
 #: src/ui/buttons-financial.ui:905 src/ui/buttons-programming.ui:1713
@@ -2080,11 +2080,11 @@ msgstr "Calculează rezultatul"
 
 #: src/ui/buttons-advanced.ui:455 src/ui/buttons-programming.ui:1753
 msgid "Subscript Mode [Alt]"
-msgstr "Mod indice [Alt]"
+msgstr "Modul indice [Alt]"
 
 #: src/ui/buttons-advanced.ui:471 src/ui/buttons-programming.ui:1769
 msgid "Superscript Mode [Ctrl]"
-msgstr "Mod exponent [Ctrl]"
+msgstr "Modul exponent [Ctrl]"
 
 #: src/ui/buttons-advanced.ui:487 src/ui/buttons-programming.ui:2057
 msgid "Factorize [Ctrl+F]"
@@ -2113,7 +2113,7 @@ msgstr "Exponent [^ sau **]"
 
 #: src/ui/buttons-advanced.ui:638 src/ui/buttons-programming.ui:1929
 msgid "Inverse [Ctrl+I]"
-msgstr "Inversa [Ctrl+I]"
+msgstr "Inversă [Ctrl+I]"
 
 #: src/ui/buttons-advanced.ui:660
 msgid "Euler’s Number"
@@ -2351,7 +2351,7 @@ msgstr "Principal"
 #: src/ui/buttons-financial.ui:267 src/ui/buttons-financial.ui:379
 #: src/ui/buttons-financial.ui:1096
 msgid "Term"
-msgstr "Scadențe"
+msgstr "Scadența"
 
 #. Present Value Dialog: Description of calculation
 #: src/ui/buttons-financial.ui:306
@@ -2528,19 +2528,19 @@ msgstr "Deplasează la dreapta"
 
 #: src/ui/buttons-programming.ui:1814
 msgid "Boolean Exclusive OR"
-msgstr "SAU exclusiv logic"
+msgstr "XOR Boolean"
 
 #: src/ui/buttons-programming.ui:1829
 msgid "Boolean OR"
-msgstr "SAU logic"
+msgstr "OR Boolean"
 
 #: src/ui/buttons-programming.ui:1845
 msgid "Boolean AND"
-msgstr "ȘI logic"
+msgstr "AND Boolean"
 
 #: src/ui/buttons-programming.ui:1861
 msgid "Boolean NOT"
-msgstr "NU logic"
+msgstr "NOT Boolean"
 
 #: src/ui/buttons-programming.ui:1877
 msgid "One’s Complement"
@@ -2585,7 +2585,7 @@ msgstr "_Introdu"
 #: src/gnome-calculator.vala:22
 msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgstr ""
-"Începe în modul dat (de bază, avansat, financiar, programare, tastatură)"
+"Pornește în modul ales (simplu, avansat, financiar, programare, tastatură)"
 
 #: src/gnome-calculator.vala:23
 msgid "Solve given equation"
@@ -2602,7 +2602,7 @@ msgstr "Afișează versiunea de lansare"
 #. Application Copyrights for the calculator authors
 #: src/gnome-calculator.vala:289
 msgid "© 1986–2023 The Calculator authors"
-msgstr "© 1986–2023 Autorii Calculator"
+msgstr "© 1986–2023 Autorii aplicației Calculator"
 
 #. The translator credits. Please translate this with your name (s).
 #: src/gnome-calculator.vala:295
@@ -2695,7 +2695,7 @@ msgstr "Funcție nouă"
 
 #: src/ui/math-function-popover.ui:43
 msgid "Select no. of arguments"
-msgstr "Selectați nr. de argumente"
+msgstr "Alege nr. de argumente"
 
 #: src/math-preferences.vala:116
 msgid "8-bit"
@@ -2762,12 +2762,12 @@ msgstr "Deschide o fereastră nouă"
 #: src/ui/math-shortcuts.ui:23
 msgctxt "shortcut window"
 msgid "Close current window"
-msgstr "Închide fereastra curentă"
+msgstr "Închide fereastra actuală"
 
 #: src/ui/math-shortcuts.ui:29
 msgctxt "shortcut window"
 msgid "Quit the application"
-msgstr "Ieșire din aplicație"
+msgstr "Închide aplicația"
 
 #: src/ui/math-shortcuts.ui:35
 msgctxt "shortcut window"
@@ -2787,7 +2787,7 @@ msgstr "Arată preferințele"
 #: src/ui/math-shortcuts.ui:53
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
-msgstr "Scurtături de tastatură"
+msgstr "Scurtături"
 
 #: src/ui/math-shortcuts.ui:59
 msgctxt "shortcut window"
@@ -2802,32 +2802,32 @@ msgstr "Schimbă modurile"
 #: src/ui/math-shortcuts.ui:70
 msgctxt "shortcut window"
 msgid "Switch to Basic mode"
-msgstr "Trece la modul de bază"
+msgstr "Trece la modul Simplu"
 
 #: src/ui/math-shortcuts.ui:76
 msgctxt "shortcut window"
 msgid "Switch to Advanced mode"
-msgstr "Trece la modul avansat"
+msgstr "Trece la modul Avansat"
 
 #: src/ui/math-shortcuts.ui:82
 msgctxt "shortcut window"
 msgid "Switch to Financial mode"
-msgstr "Trece la modul financiar"
+msgstr "Trece la modul Financiar"
 
 #: src/ui/math-shortcuts.ui:88
 msgctxt "shortcut window"
 msgid "Switch to Programming mode"
-msgstr "Trece la modul programare"
+msgstr "Trece la modul Programare"
 
 #: src/ui/math-shortcuts.ui:94
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode"
-msgstr "Trece la modul tastatură"
+msgstr "Trece la modul Tastatură"
 
 #: src/ui/math-shortcuts.ui:100
 msgctxt "shortcut window"
 msgid "Switch to Conversion mode"
-msgstr "Trece la modul conversie"
+msgstr "Trece la modul Conversie"
 
 #: src/ui/math-shortcuts.ui:107
 msgctxt "shortcut window"
@@ -2867,7 +2867,7 @@ msgstr "Introduce numere în format științific"
 #: src/ui/math-shortcuts.ui:148
 msgctxt "shortcut window"
 msgid "Programming mode"
-msgstr "Modul programare"
+msgstr "Modul Programare"
 
 #: src/ui/math-shortcuts.ui:152
 msgctxt "shortcut window"
@@ -2927,7 +2927,7 @@ msgstr "Ecuația următoare"
 #: src/ui/math-shortcuts.ui:217
 msgctxt "shortcut window"
 msgid "Switch to Keyboard mode (alt.)"
-msgstr "Trece la modul tastatură (alt.)"
+msgstr "Trece la modul Tastatură (alt.)"
 
 #: src/ui/math-variable-popover.ui:37
 msgid "Variable name"
@@ -2952,7 +2952,7 @@ msgstr ""
 
 #: src/ui/math-window.ui:8 src/math-window.vala:133
 msgid "Basic"
-msgstr "De bază"
+msgstr "Simplu"
 
 #: src/ui/math-window.ui:13 src/math-window.vala:139
 msgid "Advanced"
@@ -2994,7 +2994,7 @@ msgstr "_Automat"
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.ui:65
 msgid "_Fixed"
-msgstr "_Fixat"
+msgstr "_Fix"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.ui:71
