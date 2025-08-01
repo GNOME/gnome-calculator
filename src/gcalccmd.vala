@@ -18,6 +18,8 @@ static void solve (string equation)
     var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
     if (tsep_string == null || tsep_string == "")
         tsep_string = " ";
+    else if (tsep_string == ".")
+        tsep_string = "";
 
     var decimal = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
     if (decimal == null)
