@@ -21,7 +21,7 @@ public class SearchProvider : Object
     private Queue<string> queued_equations;
     private HashTable<string, string> cached_equations;
 
-    private const string COPY_TO_CLIPBOARD_ID = "copy-to-clipboard-";
+    private const string OPEN_IN_CALCULATOR_ID = "open-in-calculator-";
 
     public SearchProvider (SearchProviderApp app)
     {
@@ -45,7 +45,12 @@ public class SearchProvider : Object
 
     private static string terms_to_equation (string[] terms)
     {
-        return string.joinv (" ", terms);
+        var equation = string.joinv (" ", terms);
+        var decimal = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
+        if (decimal != null && decimal != ".")
+            equation = equation.replace (".", decimal);
+
+        return equation;
     }
 
     private async Subprocess solve_subprocess (string equation) throws Error
@@ -99,19 +104,18 @@ public class SearchProvider : Object
 
         var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
         if (tsep_string == null || tsep_string == "")
-        tsep_string = " ";
+            tsep_string = " ";
 
         var decimal = Posix.nl_langinfo (Posix.NLItem.RADIXCHAR);
         if (decimal == null)
-        decimal = "";
+            decimal = "";
 
         // "normalize" input to a format known to double.try_parse
         var normalized_equation = equation.replace (tsep_string, "").replace (decimal, ".");
 
         // if the search is a plain number, don't process it
-        if (double.try_parse (normalized_equation)) {
+        if (double.try_parse (normalized_equation))
             return false;
-        }
 
         if (cached_equations.lookup (equation) != null)
             return true;
@@ -146,7 +150,7 @@ public class SearchProvider : Object
         /* We have at most one result: the search terms as one string */
         var equation = terms_to_equation (terms);
         if (yield solve_equation (equation))
-            return { equation, COPY_TO_CLIPBOARD_ID+equation };
+            return { equation, OPEN_IN_CALCULATOR_ID + equation };
         else
             return new string[0];
     }
@@ -168,10 +172,10 @@ public class SearchProvider : Object
         string result;
         uint32 equation_index;
 
-        if (results.length == 1 && results[0].has_prefix(COPY_TO_CLIPBOARD_ID))
+        if (results.length == 1 && results[0].has_prefix (OPEN_IN_CALCULATOR_ID))
             return new HashTable<string, Variant>[0];
 
-        if (results.length == 1 || results[1].has_prefix(COPY_TO_CLIPBOARD_ID))
+        if (results.length == 1 || results[1].has_prefix (OPEN_IN_CALCULATOR_ID))
             equation_index = 0;
         else
             equation_index = 1;
@@ -188,17 +192,18 @@ public class SearchProvider : Object
 
         metadata[equation_index] = new HashTable<string, Variant> (str_hash, str_equal);
         metadata[equation_index].insert ("id", equation);
+        metadata[equation_index].insert ("icon", "edit-copy-symbolic");
         metadata[equation_index].insert ("name", equation);
         metadata[equation_index].insert ("description", @" = $result");
+        metadata[equation_index].insert ("clipboardText", @"$result");
 
         if (results.length == 2)
         {
-            uint32 copy_index = (equation_index + 1) % 2;
-            metadata[copy_index] = new HashTable<string, Variant> (str_hash, str_equal);
-            metadata[copy_index].insert ("id", COPY_TO_CLIPBOARD_ID+equation);
-            metadata[copy_index].insert ("name", _("Copy"));
-            metadata[copy_index].insert ("description", _("Copy result to clipboard"));
-            metadata[copy_index].insert ("clipboardText", @"$result");
+            uint32 open_app_index = (equation_index + 1) % 2;
+            metadata[open_app_index] = new HashTable<string, Variant> (str_hash, str_equal);
+            metadata[open_app_index].insert ("id", OPEN_IN_CALCULATOR_ID + equation);
+            metadata[open_app_index].insert ("icon", "org.gnome.Calculator");
+            metadata[open_app_index].insert ("name", _("Open in Calculator"));
         }
 
         return metadata;
@@ -220,7 +225,7 @@ public class SearchProvider : Object
 
     public async void activate_result (string result_id, string[] terms, uint32 timestamp) throws Error
     {
-        if (result_id.has_prefix(COPY_TO_CLIPBOARD_ID))
+        if (!result_id.has_prefix (OPEN_IN_CALCULATOR_ID))
         {
             string equation = terms_to_equation (terms);
 
@@ -230,6 +235,16 @@ public class SearchProvider : Object
                 Gtk.init ();
                 Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
                 clipboard.set_text (equation_result);
+
+                var notification = new Notification (_("Result copied"));
+                notification.set_body (_("Result was copied successfully"));
+                var app = new Application (APP_ID, ApplicationFlags.DEFAULT_FLAGS);
+                app.register ();
+                app.send_notification ("result-copied", notification);
+                Timeout.add_seconds (4, () => {
+                    app.withdraw_notification ("result-copied");
+                    return false;
+                });
             }
         }
         else
