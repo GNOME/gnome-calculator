@@ -111,7 +111,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
 
     private void history_cb (string answer, Number number, int number_base, uint representation_base)
     {
-        item_edited_cb (new MathVariable ("_", number));
+        item_edited_cb (new MathVariable ("_", number, false));
     }
 
     [GtkCallback]
