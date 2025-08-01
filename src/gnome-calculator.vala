@@ -91,12 +91,12 @@ public class Calculator : Adw.Application
         set_accels_for_action ("win.mode::programming", {"<control><alt>P"});
         set_accels_for_action ("win.mode::keyboard", {"<control><alt>K", "<control><alt>T"});
         set_accels_for_action ("win.mode::conversion", {"<control><alt>C"});
-        set_accels_for_action ("win.copy", {"<control>C"});
-        set_accels_for_action ("win.paste", {"<control>V"});
-        set_accels_for_action ("win.undo", {"<control>Z"});
-        set_accels_for_action ("win.close", {"<control>W"});
-        set_accels_for_action ("win.redo", {"<control><shift>Z"});
+        set_accels_for_action ("win.copy", {"<control>C", "Copy"});
+        set_accels_for_action ("win.paste", {"<control>V", "Paste"});
+        set_accels_for_action ("win.undo", {"<control>Z", "Undo"});
+        set_accels_for_action ("win.redo", {"<control><shift>Z", "Redo"});
         set_accels_for_action ("win.clear", {"<control>Escape"});
+        set_accels_for_action ("win.close", {"<control>W"});
 
         set_accels_for_action ("app.quit", {"<control>Q"});
         set_accels_for_action ("app.new-window", {"<control>N"});
