@@ -1042,7 +1042,7 @@ public class MathEquation : GtkSource.Buffer
         if (start.backward_char ())
         {
             unichar previous_character = start.get_char ();
-            if (previous_character.isalpha ())
+            if (previous_character.isalpha () || previous_character == '_')
             {
                 space = " ";
             }
@@ -1078,12 +1078,13 @@ public class MathEquation : GtkSource.Buffer
         if (start.backward_char ())
         {
             unichar previous_character = start.get_char ();
-            if (previous_character.isalpha ())
+            if (previous_character.isalpha () || previous_character == '_')
             {
                 start_space = " ";
             }
         }
-        if (end.get_char ().isalpha ())
+        unichar next_character = end.get_char ();
+        if (next_character.isalpha () || next_character == '_')
             end_space = " ";
 
         insert (start_space + text + end_space);
