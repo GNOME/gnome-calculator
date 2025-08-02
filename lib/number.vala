@@ -1666,6 +1666,10 @@ public Number? mp_set_from_string (string str, int default_base = 10, bool may_h
         base_multiplier *= 10;
     }
 
+    if (number_base != 0 && (number_base < 2 || number_base > 16)
+        || number_base == 0 && str.has_suffix ("₀"))
+        return null;
+
     if (may_have_prefix)
         literal_base = parse_literal_prefix (str, ref base_prefix);
 
