@@ -35,6 +35,9 @@ public class Serializer : Object
 
     /* is set when an error (for example precision error while converting) occurs */
     public string? error { get; set; default = null; }
+    /* the maximum value that can be displayed in FIXED format */
+    public bool check_fixed_max { get; set; default = true; }
+    public static Number? fixed_max { get; set; default = null; }
 
     public Serializer (DisplayFormat format, int number_base, int trailing_digits)
     {
@@ -90,39 +93,7 @@ public class Serializer : Object
         {
         default:
         case DisplayFormat.AUTOMATIC:
-            var s0 = cast_to_string (x, ref n_digits);
-            /* Decide leading digits based on number_base. Support 64 bits in programming mode. */
-            switch (get_base ())
-            {
-                /* 64 digits for binary mode. */
-                case 2:
-                    if (n_digits <= 64 && s0 != zero_string)
-                        return s0;
-                    else
-                        return cast_to_exponential_string (x, false);
-                /* 22 digis for octal mode. */
-                case 8:
-                    if (n_digits <= 22 && s0 != zero_string)
-                        return s0;
-                    else
-                        return cast_to_exponential_string (x, false);
-                /* 16 digits for hexadecimal mode. */
-                case 16:
-                    if(n_digits <= 16 && s0 != zero_string)
-                        return s0;
-                    else
-                        return cast_to_exponential_string (x, false);
-                /* Use default leading_digits for base 10 numbers. */
-                case 10:
-                default:
-                    if (n_digits <= leading_digits && s0 != zero_string)
-                        return s0;
-                    else
-                    {
-                        error = null;
-                        return cast_to_exponential_string (x, false);
-                    }
-            }
+            return to_automatic_string (x, false);
         case DisplayFormat.FIXED:
             return cast_to_string (x, ref n_digits);
         case DisplayFormat.SCIENTIFIC:
@@ -132,7 +103,7 @@ public class Serializer : Object
                 return cast_to_exponential_string (x, false);
             }
             else
-                return cast_to_string (x, ref n_digits);
+                return to_automatic_string (x, false);
         case DisplayFormat.ENGINEERING:
             if (representation_base == 10)
             {
@@ -140,7 +111,7 @@ public class Serializer : Object
                 return cast_to_exponential_string (x, true);
             }
             else
-                return cast_to_string (x, ref n_digits);
+                return to_automatic_string (x, true);
         }
     }
 
@@ -288,6 +259,42 @@ public class Serializer : Object
         zero_string = cast_to_string (new Number.integer (0), ref n_digits);
     }
 
+    private string to_automatic_string (Number x, bool eng_format)
+    {
+        int n_digits = 0;
+        var s0 = cast_to_string (x, ref n_digits);
+        error = null;
+        /* Decide leading digits based on number_base. Support 64 bits in programming mode. */
+        switch (representation_base)
+        {
+        /* 64 digits for binary mode. */
+        case 2:
+            if (n_digits <= 64 && s0 != zero_string)
+                return s0;
+            else
+                return cast_to_exponential_string (x, eng_format);
+        /* 22 digits for octal mode. */
+        case 8:
+            if (n_digits <= 22 && s0 != zero_string)
+                return s0;
+            else
+                return cast_to_exponential_string (x, eng_format);
+        /* 16 digits for hexadecimal mode. */
+        case 16:
+            if(n_digits <= 16 && s0 != zero_string)
+                return s0;
+            else
+                return cast_to_exponential_string (x, eng_format);
+        /* Use default leading_digits for base 10 numbers. */
+        case 10:
+        default:
+            if (n_digits <= leading_digits && s0 != zero_string)
+                return s0;
+            else
+                return cast_to_exponential_string (x, eng_format);
+        }
+    }
+
     private string cast_to_string (Number x, ref int n_digits)
     {
         var string = new StringBuilder.sized (1024);
@@ -347,6 +354,11 @@ public class Serializer : Object
         var number = x;
         if (number.is_negative ())
             number = number.abs ();
+        if (check_fixed_max && fixed_max != null && number.compare (fixed_max) > 0)
+        {
+            error = _("The result is too long to display in fixed format. Try other result formats");
+            return false;
+        }
 
         /* Add rounding factor */
         var temp = new Number.integer (number_base);
@@ -453,41 +465,14 @@ public class Serializer : Object
             string.append ("+");
 
         var mantissa = x.abs ();
-
-        var base_ = new Number.integer (number_base);
-        var base3 = base_.xpowy_integer (3);
-        var base10 = base_.xpowy_integer (10);
-        var t = new Number.integer (1);
-        var base10inv = t.divide (base10);
-
         var exponent = 0;
         if (!mantissa.is_zero ())
         {
-            while (!eng_format && mantissa.compare (base10) >= 0)
-            {
-                exponent += 10;
-                mantissa = mantissa.multiply (base10inv);
-            }
-
-            while ((!eng_format && mantissa.compare (base_) >= 0) ||
-                    (eng_format && (mantissa.compare (base3) >= 0 || exponent % 3 != 0)))
-            {
-                exponent += 1;
-                mantissa = mantissa.divide (base_);
-            }
-
-            while (!eng_format && mantissa.compare (base10inv) < 0)
-            {
-                exponent -= 10;
-                mantissa = mantissa.multiply (base10);
-            }
-
-            t = new Number.integer (1);
-            while (mantissa.compare (t) < 0 || (eng_format && exponent % 3 != 0))
-            {
-                exponent -= 1;
-                mantissa = mantissa.multiply (base_);
-            }
+            var base_ = new Number.integer (number_base);
+            exponent = (int) mantissa.logarithm (base_).floor ().to_integer ();
+            if (eng_format && exponent % 3 != 0)
+                exponent -= (exponent > 0 ? exponent % 3 : exponent % 3 + 3);
+            mantissa = mantissa.divide (base_.xpowy_integer (exponent));
         }
 
         int n_digits = 0;

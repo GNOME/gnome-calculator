@@ -68,6 +68,7 @@ public class Calculator : Adw.Application
         equation.number_format = number_format;
         equation.angle_units = angle_units;
         Number.precision = precision;
+        Serializer.fixed_max = new Number.integer (2).xpowy_integer (precision);
 
         add_action_entries (app_entries, this);
 

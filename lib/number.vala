@@ -1624,6 +1624,7 @@ public class Number : GLib.Object
     private string to_hex_string ()
     {
         var serializer = new Serializer (DisplayFormat.FIXED, 16, 0);
+        serializer.check_fixed_max = false;
         return serializer.to_string (this);
     }
 }
