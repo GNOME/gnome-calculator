@@ -1061,7 +1061,7 @@ public class Parser
     public static HashTable<string, Number> CONSTANTS;
     public static ConstantCategory[] CONSTANT_CATEGORIES = {
         {_("Mathematics"), {
-            {_("Euler‘s Number"), "e", new Number.eulers ()},
+            {_("Euler’s Number"), "e", new Number.eulers ()},
             {_("Pi"), "π", new Number.pi ()},
             {_("Tau"), "τ", new Number.tau ()},
             {_("Golden Ratio"), "φ", new Number.integer (1).add (new Number.integer (5).sqrt ()).divide_integer (2)},
@@ -1074,7 +1074,7 @@ public class Parser
             {_("Permittivity of Vacuum"), "ε₀", mp_set_from_string ("0.0000000000088541878188")},
         }},
         {_("Atomic & Nuclear"), {
-            {_("Plank‘s Constant"), "h", mp_set_from_string ("0.000000000000000000000000000000000662607015")},
+            {_("Plank’s Constant"), "h", mp_set_from_string ("0.000000000000000000000000000000000662607015")},
             {_("Fine-Structure Constant"), "α", mp_set_from_string ("0.0072973525643")},
             {_("Electron Mass"), "mₑ", mp_set_from_string ("0.00000000000000000000000000000091093837139")},
             {_("Proton Mass"), "mₚ", mp_set_from_string ("0.00000000000000000000000000167262192595")},
@@ -1084,7 +1084,7 @@ public class Parser
             {_("Atomic Mass Unit"), "mᵤ", mp_set_from_string ("0.00000000000000000000000000166053906892")},
             {_("Molar Gas Constant"), "R", mp_set_from_string ("8.31446261815324")},
             {_("Stefan-Boltzmann Constant"), "σ", mp_set_from_string ("0.00000005670374419")},
-            {_("Avogadro‘s Number"), "Nᴀ", mp_set_from_string ("602214076000000000000000")},
+            {_("Avogadro’s Number"), "Nᴀ", mp_set_from_string ("602214076000000000000000")},
         }},
         {_("Gravitation"), {
             {_("Gravitational Constant"), "G", mp_set_from_string ("0.000000000066743")},
