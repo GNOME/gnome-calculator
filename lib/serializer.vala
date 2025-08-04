@@ -75,6 +75,7 @@ public class Serializer : Object
 
     public string to_string (Number x)
     {
+        error = null;
         if (!x.is_finite ())
         {
             int is_infinity = x.to_double ().is_infinity ();
@@ -98,18 +99,12 @@ public class Serializer : Object
             return cast_to_string (x, ref n_digits);
         case DisplayFormat.SCIENTIFIC:
             if (representation_base == 10)
-            {
-                error = null;
                 return cast_to_exponential_string (x, false);
-            }
             else
                 return to_automatic_string (x, false);
         case DisplayFormat.ENGINEERING:
             if (representation_base == 10)
-            {
-                error = null;
                 return cast_to_exponential_string (x, true);
-            }
             else
                 return to_automatic_string (x, true);
         }
