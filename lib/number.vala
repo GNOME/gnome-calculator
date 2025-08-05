@@ -640,33 +640,22 @@ public class Number : GLib.Object
         /* 0! == 1 */
         if (is_zero ())
             return new Number.integer (1);
-        if (!is_natural ())
+
+        /* Factorial Not defined for Complex or for negative numbers */
+        if (is_negative () || is_complex ())
         {
-
-            /* Factorial Not defined for Complex or for negative numbers */
-            if (is_negative () || is_complex ())
-            {
-                /* Translators: Error displayed when attempted take the factorial of a negative or complex number */
-                error = _("Factorial is only defined for non-negative real numbers");
-                return new Number.integer (0);
-            }
-
-            var tmp = add (new Number.integer (1));
-            var tmp2 = MPFR.Real (precision);
-
-            /* Factorial(x) = Gamma(x+1) - This is the formula used to calculate Factorial.*/
-            tmp2.gamma (tmp.num.get_real ().val);
-
-            return new Number.mpreal (tmp2);
+            /* Translators: Error displayed when attempted take the factorial of a negative or complex number */
+            error = _("Factorial is only defined for non-negative real numbers");
+            return new Number.integer (0);
         }
 
-        /* Convert to integer - if couldn't be converted then the factorial would be too big anyway */
-        var value = to_integer ();
-        var z = this;
-        for (var i = 2; i < value; i++)
-            z = z.multiply_integer (i);
+        var tmp = add (new Number.integer (1));
+        var tmp2 = MPFR.Real (precision);
 
-        return z;
+        /* Factorial(x) = Gamma(x+1) - This is the formula used to calculate Factorial.*/
+        tmp2.gamma (tmp.num.get_real ().val);
+
+        return new Number.mpreal (tmp2);
     }
 
     /* Sets z = x + y */
