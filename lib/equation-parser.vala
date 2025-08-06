@@ -435,10 +435,7 @@ public class FunctionNode : ParseNode
             if (ans != null)
                 args += ans;
             else
-            {
-                parser.set_error (ErrorCode.UNKNOWN_FUNCTION);
                 return null;
-            }
         }
 
         if (args.length == 0)
