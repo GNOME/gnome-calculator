@@ -1071,7 +1071,7 @@ public class Parser
             {_("Permittivity of Vacuum"), "ε₀", mp_set_from_string ("0.0000000000088541878188")},
         }},
         {_("Atomic & Nuclear"), {
-            {_("Plank’s Constant"), "h", mp_set_from_string ("0.000000000000000000000000000000000662607015")},
+            {_("Planck’s Constant"), "h", mp_set_from_string ("0.000000000000000000000000000000000662607015")},
             {_("Fine-Structure Constant"), "α", mp_set_from_string ("0.0072973525643")},
             {_("Electron Mass"), "mₑ", mp_set_from_string ("0.00000000000000000000000000000091093837139")},
             {_("Proton Mass"), "mₚ", mp_set_from_string ("0.00000000000000000000000000167262192595")},
