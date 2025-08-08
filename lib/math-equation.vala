@@ -1177,31 +1177,6 @@ public class MathEquation : GtkSource.Buffer
 
     public void insert_numeric_point ()
     {
-        Gtk.TextIter iter_prev;
-        get_iter_at_mark (out iter_prev, get_insert ());
-        /** go back to the first digit of the currently entered number **/
-        while (iter_prev.backward_char () && (iter_prev.get_char () == serializer.get_thousands_separator ()
-                || iter_prev.get_char ().isdigit ()
-                || iter_prev.get_char () == serializer.get_radix ()))
-            ; // do nothing
-
-        if (!iter_prev.is_start ())
-            iter_prev.forward_char ();
-        var current_number = "";
-
-        /** find the currently entered number, ignoring thousand separators and including decimal point **/
-        while (iter_prev.get_char () == serializer.get_thousands_separator ()
-                || iter_prev.get_char ().isdigit ()
-                || iter_prev.get_char () == serializer.get_radix ()) {
-            if (iter_prev.get_char ().isdigit ()) {
-                current_number += iter_prev.get_char ().to_string ();
-            }
-            if (iter_prev.get_char () == serializer.get_radix ()) {
-                current_number += ".";
-            }
-            iter_prev.forward_char ();
-        }
-
         insert (serializer.get_radix ().to_string ());
     }
 
