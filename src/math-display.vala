@@ -673,9 +673,9 @@ public abstract class CompletionProvider : GLib.Object, GtkSource.CompletionProv
         buffer.@delete (ref start_iter, ref end_iter);
         buffer.insert (ref end_iter, proposed_string, -1);
 #endif
-        if (proposed_string.has_prefix (word))
+        if (proposed_string.down ().has_prefix (word.down ()))
         {
-            buffer.insert (ref end_iter, proposed_string.substring(word.length, -1), -1);
+            buffer.insert (ref end_iter, proposed_string.substring (word.length, -1), -1);
         }
         buffer.end_user_action ();
 
@@ -755,7 +755,7 @@ public class BuiltinCompletionProvider : CompletionProvider, GtkSource.Completio
         string[] result = {};
         foreach (var keyword in keywords)
         {
-            if (keyword.has_prefix (search_pattern))
+            if (keyword.down ().has_prefix (search_pattern.down ()))
                 result += keyword;
         }
         return result;
