@@ -725,10 +725,10 @@ public class Number : GLib.Object
     /* Sets z = x mod y */
     public Number modulus_divide (Number y)
     {
-        if (!is_integer () || !y.is_integer ())
+        if (is_complex () || y.is_complex ())
         {
-            /* Translators: Error displayed when attemping to do a modulus division on non-integer numbers */
-            error = _("Modulus division is only defined for integers");
+            /* Translators: Error displayed when attempting to do a modulus division on complex numbers */
+            error = _("Modulus division is only defined for real numbers");
             return new Number.integer (0);
         }
 
