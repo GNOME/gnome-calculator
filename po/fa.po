@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2025-03-23 17:33+0000\n"
-"PO-Revision-Date: 2025-03-24 00:33+0330\n"
+"POT-Creation-Date: 2025-08-18 06:12+0000\n"
+"PO-Revision-Date: 2025-08-19 23:23+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian\n"
 "Language: fa\n"
@@ -20,22 +20,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-DamnedLies-Scope: partial\n"
 
-#: data/org.gnome.Calculator.desktop.in:3
-#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:282 src/ui/math-window.ui:105
+#: data/org.gnome.Calculator.desktop.in:2
+#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
+#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "ماشین‌حساب"
 
-#: data/org.gnome.Calculator.desktop.in:4
+#: data/org.gnome.Calculator.desktop.in:3
 #: data/org.gnome.Calculator.metainfo.xml.in:8
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "انجام محاسبات ریاضی، علمی و مالی"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Calculator.desktop.in:6
+#: data/org.gnome.Calculator.desktop.in:5
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "محاسبه;ریاضی;علمی;مالی;"
 
@@ -55,11 +55,11 @@ msgstr ""
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, complex "
-"numbers, random number generation, prime factorization and unit conversions."
+"numbers, random number generation and prime factorization."
 msgstr ""
 "ماشین‌حساب پیش‌رفته عملگرهای زیادی را پشتیبانی می‌کند. از جمله: لگاریتم‌، فاکتوریل، "
-"مثلّثات، توابع هزلولی، تقسیم پیمانه‌ای، اعداد مختلط، تولید عدد تصادفی، تجزیه به "
-"اعداد اوّل و تبدیل یکاها."
+"مثلّثات، توابع هزلولی، تقسیم پیمانه‌ای، اعداد مختلط، تولید عدد تصادفی و تجزیه به "
+"اعداد اوّل."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:22
 msgid ""
@@ -72,76 +72,86 @@ msgstr ""
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
 msgid ""
-"Programming mode supports conversion between common bases (binary, octal, "
-"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"Programming mode supports calculations using common bases (binary, octal, "
+"decimal, and hexadecimal), bitwise operations, ones’ and two’s complement, "
 "character to character code conversion, and more."
 msgstr ""
-"حالت مهندسی از تبدیل بین مبناها (دودویی، هشت‌هشتی، ده‌دهی و شانزده‌شانزدهی)، جبر "
-"بولی، مکمّل یک و دو، تبدیل کد نویسه‌به‌نویسه و بسیاری قابلیت‌های دیگر پشتیبانی "
-"می‌کند."
+"حالت برنامه‌نویسی از محاسبات با مبناهای معمول (دودویی، هشت‌هشتی، ده‌دهی و "
+"شانزده‌شانزدهی)، عملیات بیتی، مکمّل یک و دو، تبدیل کد نویسه‌به‌نویسه و قابلیت‌های "
+"دیگر پشتیبانی می‌کند."
 
-#: data/org.gnome.Calculator.metainfo.xml.in:39
+#: data/org.gnome.Calculator.metainfo.xml.in:32
+msgid ""
+"Conversion mode supports conversions between common units, currencies and "
+"number bases."
+msgstr "حالت تبدیل از تبدیل بین پایه‌ها، ارزها و یکاهای معمول پیشتیبانی می‌کند."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:43
 msgid "Basic Mode"
 msgstr "حالت ساده"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:43
+#: data/org.gnome.Calculator.metainfo.xml.in:47
 msgid "Advanced Mode"
 msgstr "حالت پیش‌رفته"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:47
+#: data/org.gnome.Calculator.metainfo.xml.in:51
 msgid "Financial Mode"
 msgstr "حالت مالی"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:51
+#: data/org.gnome.Calculator.metainfo.xml.in:55
 msgid "Programming Mode"
 msgstr "حالت برنامه‌نویسی"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:55
+#: data/org.gnome.Calculator.metainfo.xml.in:59
 msgid "Keyboard Mode"
 msgstr "حالت صفحه‌کلید"
 
+#: data/org.gnome.Calculator.metainfo.xml.in:63
+msgid "Conversion Mode"
+msgstr "حالت تبدیل"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:76 src/gnome-calculator.vala:284
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
 msgid "The GNOME Project"
 msgstr "پروژهٔ گنوم"
 
-#: data/org.gnome.calculator.gschema.xml:26
+#: data/org.gnome.calculator.gschema.xml:31
 msgid "Accuracy value"
 msgstr "مقدار دقت"
 
-#: data/org.gnome.calculator.gschema.xml:27
+#: data/org.gnome.calculator.gschema.xml:32
 msgid "The number of digits displayed after the numeric point"
 msgstr "تعداد ارقام جهت نمایش پس از اعشار"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:37
 msgid "Word size"
 msgstr "اندازهٔ واژه"
 
-#: data/org.gnome.calculator.gschema.xml:33
+#: data/org.gnome.calculator.gschema.xml:38
 msgid "The size of the words used in bitwise operations"
 msgstr "اندازهٔ واژگان جهت استفاده در اعمال مربوط به علمگر بیتی"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:43
 msgid "Numeric Base"
 msgstr "پایهٔ عددی"
 
-#: data/org.gnome.calculator.gschema.xml:39
+#: data/org.gnome.calculator.gschema.xml:44
 msgid "The numeric base"
 msgstr "پایهٔ عددی"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "Show Thousands Separators"
 msgstr "نمایش جداساز هزارها"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:49
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "اینکه آیا جداساز هزارها باید در اعداد بزرگ نشان داده شود یا خیر."
 
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Show Trailing Zeroes"
 msgstr "نمایش صفرهای انتهایی"
 
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:54
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be shown "
 "in the display value."
@@ -149,27 +159,27 @@ msgstr ""
 "اینکه آیا صفرهای انتهایی بعد از اعشار باید در مقدار نمایش داده شده نشان داده "
 "شود یا خیر."
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Number format"
 msgstr "قالب عدد"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "The format to display numbers in"
 msgstr "قالبی که اعداد به شکل آن نمایش داده می‌شوند"
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Angle units"
 msgstr "یکاهای زاویه"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:64
 msgid "The angle units to use"
 msgstr "یکاهای زاویه جهت استفاده"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Currency update interval"
 msgstr "دورهٔ به‌روز رسانی ارز"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:69
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means the "
 "currency exchange rates won't be fetched from the network at all."
@@ -177,622 +187,871 @@ msgstr ""
 "نرخ مبادله‌های ارز باید چند وقت به چند وقت به‌روز شود. مقدار ۰ یعنی نرخ مبادله‌ها "
 "هرگز از شبکه واکشی نخواهند شد."
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:73
+msgid "Currency display"
+msgstr "نمایش ارز"
+
+#: data/org.gnome.calculator.gschema.xml:74
+msgid ""
+"Indicates whether to show currency code, currency name or both of them in the "
+"converter."
+msgstr "این که کد ارز، نام ارز یا هردویشان در تبدیلگر نشان داده شوند."
+
+#: data/org.gnome.calculator.gschema.xml:78
+msgid "Enabled completions"
+msgstr "تکمیل‌های به‌کار افتاده"
+
+#: data/org.gnome.calculator.gschema.xml:79
+msgid "The types of completion proposals to be shown in the auto-completion list."
+msgstr "گونه‌های پیشنهاد تکمیل برای نمایش در سیاههٔ تکمیل خودکار."
+
+#: data/org.gnome.calculator.gschema.xml:83
+msgid "Favorite currencies"
+msgstr "ارزهای برگزیده"
+
+#: data/org.gnome.calculator.gschema.xml:84
+msgid "The favorite currencies to be shown at the top of the currency list."
+msgstr "ارزهای محبوب برای نمایش در بالای سیاههٔ ارزها."
+
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Button mode"
 msgstr "حالت دکمه‌ای"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:89
 msgid "The button mode"
 msgstr "حالت دکمه‌ای"
 
-#: data/org.gnome.calculator.gschema.xml:73
-msgid "Source currency"
-msgstr "ارز منبع"
+#: data/org.gnome.calculator.gschema.xml:93
+msgid "Unit category"
+msgstr "دستهٔ یکا"
 
-#: data/org.gnome.calculator.gschema.xml:74
-msgid "Currency of the current calculation"
-msgstr "ارز مربوط به محاسبهٔ کنونی"
+#: data/org.gnome.calculator.gschema.xml:94
+msgid "Currently selected unit category in the converter"
+msgstr "دستهٔ یکای گزیدهٔ کنونی در تبدیلگر"
 
-#: data/org.gnome.calculator.gschema.xml:78
-msgid "Target currency"
-msgstr "ارز هدف"
-
-#: data/org.gnome.calculator.gschema.xml:79
-msgid "Currency to convert the current calculation into"
-msgstr "ارز جهت تبدیل محاسبهٔ کنونی به آن"
-
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Source units"
 msgstr "یکاهای منبع"
 
-#: data/org.gnome.calculator.gschema.xml:84
-msgid "Units of the current calculation"
-msgstr "یکاهای محاسبهٔ کنونی"
+#: data/org.gnome.calculator.gschema.xml:99
+msgid "Currently selected source units in the converter"
+msgstr "یکاهای مبدأ گزیدهٔ کنونی در تبدیلگر"
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Target units"
 msgstr "یکاهای هدف"
 
-#: data/org.gnome.calculator.gschema.xml:89
-msgid "Units to convert the current calculation into"
-msgstr "یکاها جهت تبدیل محاسبه کنونی به آن"
+#: data/org.gnome.calculator.gschema.xml:104
+msgid "Currently selected target units in the converter"
+msgstr "یکاهای هدف گزیدهٔ کنونی در تبدیلگر"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Internal precision"
 msgstr "دقت داخلی"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "The internal precision used with the MPFR library"
 msgstr "دقت ابتدایی استفاده شده در کتابخانه MPFR"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Window position"
 msgstr "مکان پنجره"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Window position (x and y) of the last closed window."
 msgstr "مکان پنجره (x و y) از پنجره بسته شده قبلی."
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Window maximized"
 msgstr "پنجره بیشینه شد"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "Whether the last closed window was maximized."
 msgstr "این که آخرین پنجرهٔ بسته شده بیشینه بود یا نه."
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window size"
 msgstr "اندازهٔ پنجره"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window size (width and height) of the last closed window."
 msgstr "اندازهٔ (پهنا و بلندا) آخرین پنجرهٔ بسته شده."
 
-#: lib/currency.vala:64
+#: lib/currency.vala:82
 msgid "UAE Dirham"
 msgstr "درهم امارات متحده عربی"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:83
 msgid "Argentine Peso"
 msgstr "پزوی آرژانتین"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:84
 msgid "Australian Dollar"
 msgstr "دلار استرالیا"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:85
 msgid "Bangladeshi Taka"
 msgstr "تاکای بنگلادش"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:86
 msgid "Bulgarian Lev"
 msgstr "لف بلغارستان"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:87
 msgid "Bahraini Dinar"
 msgstr "دینار بحرین"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "دلار برونئی"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "ریال برزیل"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "پولا بوتسوانا"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "دلار کانادا"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:92
 msgid "CFA Franc"
 msgstr "فرانک CFA"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:93
 msgid "Swiss Franc"
 msgstr "فرانک سوئیس"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:94
 msgid "Chilean Peso"
 msgstr "پزو شیلی"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:95
 msgid "Chinese Yuan"
 msgstr "یوآن چین"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:96
 msgid "Colombian Peso"
 msgstr "پزوی کلمبیا"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:97
 msgid "Czech Koruna"
 msgstr "کرون چک"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:98
 msgid "Danish Krone"
 msgstr "کرون دانمارک"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:99
 msgid "Algerian Dinar"
 msgstr "دینار الجزیره"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:100
 msgid "Estonian Kroon"
 msgstr "کرون استونی"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:101
+msgid "Egyptian Pound"
+msgstr "پوند مصری"
+
+#: lib/currency.vala:102
 msgid "Euro"
 msgstr "یورو"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:103
 msgid "British Pound Sterling"
 msgstr "پوند استرلینگ بریتانیا"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:104
 msgid "Hong Kong Dollar"
 msgstr "دلار هنگ کونگ"
 
-#: lib/currency.vala:86
+#: lib/currency.vala:105
 msgid "Croatian Kuna"
 msgstr "کونا کروواسی"
 
-#: lib/currency.vala:87
+#: lib/currency.vala:106
 msgid "Hungarian Forint"
 msgstr "فورینت مجارستان"
 
-#: lib/currency.vala:88
+#: lib/currency.vala:107
 msgid "Indonesian Rupiah"
 msgstr "روپیهٔ اندونزی"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:108
 msgid "Israeli New Shekel"
 msgstr "نیو شکل اسرائیل"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:109
 msgid "Indian Rupee"
 msgstr "روپیهٔ هند"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:110
 msgid "Iranian Rial"
 msgstr "ریال ایرانی"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:111
 msgid "Icelandic Krona"
 msgstr "کرون ایسلند"
 
-#: lib/currency.vala:93
+#: lib/currency.vala:112
 msgid "Japanese Yen"
 msgstr "ین ژاپن"
 
-#: lib/currency.vala:94
+#: lib/currency.vala:113
 msgid "Jamaican Dollar"
 msgstr "دلار جاماییکا"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:114
 msgid "South Korean Won"
 msgstr "وون کره‌جنوبی"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:115
 msgid "Kuwaiti Dinar"
 msgstr "دینار کویت"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:116
 msgid "Kazakhstani Tenge"
 msgstr "تنگهٔ قزاقستان"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:117
 msgid "Sri Lankan Rupee"
 msgstr "روپیهٔ سریلانکا"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:118
 msgid "Libyan Dinar"
 msgstr "دینار لیبی"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:119
 msgid "Mauritian Rupee"
 msgstr "روپیه موریس"
 
-#: lib/currency.vala:101
+#: lib/currency.vala:120
 msgid "Mexican Peso"
 msgstr "پزوی مکزیک"
 
-#: lib/currency.vala:102
+#: lib/currency.vala:121
 msgid "Malaysian Ringgit"
 msgstr "رینگیت مالزی"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:122
 msgid "Nigerian Naira"
 msgstr "نایرای نیجریه"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:123
 msgid "Norwegian Krone"
 msgstr "کرون نروژ"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:124
 msgid "Nepalese Rupee"
 msgstr "روپیهٔ نپال"
 
-#: lib/currency.vala:106
+#: lib/currency.vala:125
 msgid "New Zealand Dollar"
 msgstr "دلار نیوزیلند"
 
-#: lib/currency.vala:107
+#: lib/currency.vala:126
 msgid "Omani Rial"
 msgstr "ریال عمان"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:127
 msgid "Peruvian Nuevo Sol"
 msgstr "نوئو سول پرو"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:128
 msgid "Philippine Peso"
 msgstr "پزو فیلیپین"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:129
 msgid "Pakistani Rupee"
 msgstr "روپیه پاکستان"
 
-#: lib/currency.vala:111
-msgid "Polish Zloty"
-msgstr "زلاتی هلند"
+#: lib/currency.vala:130
+msgid "Polish Złoty"
+msgstr "زلوتی لهستان"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:131
 msgid "Qatari Riyal"
 msgstr "ریال قطر"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:132
 msgid "New Romanian Leu"
 msgstr "لئو رومانی جدید"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:133
 msgid "Russian Ruble"
 msgstr "روبل روسیه"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:134
 msgid "Saudi Riyal"
 msgstr "ریال صعودی"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:135
 msgid "Serbian Dinar"
 msgstr "دینار صربستان"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:136
 msgid "Swedish Krona"
 msgstr "کرون سوئد"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:137
 msgid "Singapore Dollar"
 msgstr "دلار سنگاپور"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:138
 msgid "Thai Baht"
 msgstr "بات تایلند"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:139
 msgid "Tunisian Dinar"
 msgstr "دینار ترکیه"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:140
 msgid "Turkish Lira"
 msgstr "لیر ترکیه"
 
-#: lib/currency.vala:122
-msgid "T&T Dollar (TTD)"
-msgstr "دلار T&T (TTD)"
+#: lib/currency.vala:141
+msgid "T&T Dollar"
+msgstr "دلار T&T"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:142
 msgid "New Taiwan Dollar"
 msgstr "دلار تایوان جدید"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:143
 msgid "Ukrainian Hryvnia"
 msgstr "هریونیای اوکراین"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:144
 msgid "US Dollar"
 msgstr "دلار آمریکا"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:145
 msgid "Uruguayan Peso"
 msgstr "پزوی اروگوئه"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:146
 msgid "Vietnamese Dong"
 msgstr "دونگ ویتنام"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:147
 msgid "South African Rand"
 msgstr "رند آفریقای جنوبی"
 
-#: lib/currency-provider.vala:199
-msgid "International Monetary Fund"
-msgstr "صندوق بین المللی پول"
+#: lib/equation-lexer.vala:464
+msgid "Missing digits after minus sign"
+msgstr "رقم غایب پس از علامت منفی"
 
-#: lib/currency-provider.vala:408
-msgid "European Central Bank"
-msgstr "بانک مرکزی اروپا"
+#: lib/equation-lexer.vala:562 lib/equation-lexer.vala:642
+msgid "Missing second symbol (″)"
+msgstr "علامت ثانیهٔ غایب (″)"
 
-#: lib/currency-provider.vala:522
-msgid "Bank of Canada"
-msgstr "بانک کانادا"
+#: lib/equation-lexer.vala:578 lib/equation-lexer.vala:620
+msgid "Missing minute symbol (′)"
+msgstr "علامت دقیقهٔ غایب (′)"
 
-#: lib/currency-provider.vala:593
-msgid "United Nations Treasury"
-msgstr "خزانه‌داری ملل متّحد"
+#: lib/equation-lexer.vala:607 lib/equation-lexer.vala:632
+#: lib/equation-lexer.vala:675 lib/equation-lexer.vala:762
+msgid "Missing digits after decimal point"
+msgstr "رقم غایب پس از علامت ممیّز"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754 src/math-popover.vala:14
 msgid "in"
 msgstr "به,in"
 
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754 src/math-popover.vala:14
 msgid "to"
 msgstr "به,به"
 
-#: lib/equation-parser.vala:735 lib/number.vala:434
+#: lib/equation-parser.vala:443
+#, c-format
+msgid "Function “%s” is missing arguments"
+msgstr "تابع «%s» آرگومان ندارد"
+
+#: lib/equation-parser.vala:765 lib/number.vala:563
 msgid "The zeroth root of a number is undefined"
 msgstr "ریشهٔ صفرِ یک عدد تعریف نشده است"
+
+#: lib/equation-parser.vala:1060
+msgid "Mathematics"
+msgstr "ریاضیات"
+
+#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+msgid "Euler’s Number"
+msgstr "عدد اویلر"
+
+#: lib/equation-parser.vala:1062
+msgid "Pi"
+msgstr "پی"
+
+#: lib/equation-parser.vala:1063
+msgid "Tau"
+msgstr "تائو"
+
+#: lib/equation-parser.vala:1064
+msgid "Golden Ratio"
+msgstr "نسبت طلایی"
+
+#: lib/equation-parser.vala:1066
+msgid "Electromagnetism"
+msgstr "الکترومغناطیس"
+
+#: lib/equation-parser.vala:1067
+msgid "Light Speed"
+msgstr "سرعت نور"
+
+#: lib/equation-parser.vala:1068
+msgid "Elementary Charge"
+msgstr "بار عنصر"
+
+#: lib/equation-parser.vala:1069
+msgid "Impedance of Vacuum"
+msgstr "مقاومت خلاء"
+
+#: lib/equation-parser.vala:1070
+msgid "Permeability of Vacuum"
+msgstr "نفوذپذیری خلاء"
+
+#: lib/equation-parser.vala:1071
+msgid "Permittivity of Vacuum"
+msgstr "ثابت دی‌الکتریک خلأ"
+
+#: lib/equation-parser.vala:1073
+msgid "Atomic & Nuclear"
+msgstr "اتمی و هسته‌ای"
+
+#: lib/equation-parser.vala:1074
+msgid "Planck’s Constant"
+msgstr "ثابت پلانک"
+
+#: lib/equation-parser.vala:1075
+msgid "Fine-Structure Constant"
+msgstr "ثابت ساختار ریز"
+
+#: lib/equation-parser.vala:1076
+msgid "Electron Mass"
+msgstr "جرم الکترون"
+
+#: lib/equation-parser.vala:1077
+msgid "Proton Mass"
+msgstr "جرم پروتون"
+
+#: lib/equation-parser.vala:1079
+msgid "Thermodynamics"
+msgstr "ترمودینامیک"
+
+#: lib/equation-parser.vala:1080
+msgid "Boltzmann Constant"
+msgstr "ثابت بولتزمان"
+
+#: lib/equation-parser.vala:1081
+msgid "Atomic Mass Unit"
+msgstr "یکای جرم اتمی"
+
+#: lib/equation-parser.vala:1082
+msgid "Molar Gas Constant"
+msgstr "ثابت گاز مولی"
+
+#: lib/equation-parser.vala:1083
+msgid "Stefan-Boltzmann Constant"
+msgstr "ثابت استفان-بولتزمان"
+
+#: lib/equation-parser.vala:1084
+msgid "Avogadro’s Number"
+msgstr "عدد آووگادرو"
+
+#: lib/equation-parser.vala:1086
+msgid "Gravitation"
+msgstr "گرانش"
+
+#: lib/equation-parser.vala:1087
+msgid "Gravitational Constant"
+msgstr "ثابت گرانش"
+
+#: lib/equation-parser.vala:1088
+msgid "Earth Acceleration"
+msgstr "شتاب زمین"
 
 #: lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "خطا: تعداد دوره‌ها باید مثبت باشند"
 
-#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:692
-#: src/ui/buttons-financial.ui:990 src/ui/buttons-programming.ui:1951
-msgid "Logarithm"
-msgstr "لگاریتم"
+#: lib/function-manager.vala:26
+msgid "Trigonometry"
+msgstr "مثلّثات"
 
-#: lib/function-manager.vala:50
-msgid "Natural logarithm"
-msgstr "لگاریتم طبیعی"
-
-#: lib/function-manager.vala:52
-msgid "Square root"
-msgstr "ریشهٔ مربّع"
-
-#: lib/function-manager.vala:54
-msgid "Absolute value"
-msgstr "قدر مطلق"
-
-#: lib/function-manager.vala:56
-msgid "Signum"
-msgstr "تابع علامت"
-
-#: lib/function-manager.vala:58
-msgid "Argument"
-msgstr "شناسه"
-
-#: lib/function-manager.vala:60
-msgid "Conjugate"
-msgstr "مزدوج"
-
-#: lib/function-manager.vala:62
-msgid "Integer"
-msgstr "عدد صحیح"
-
-#: lib/function-manager.vala:64
-msgid "Fraction"
-msgstr "کسر"
-
-#: lib/function-manager.vala:66
-msgid "Floor"
-msgstr "کف"
-
-#: lib/function-manager.vala:68
-msgid "Ceiling"
-msgstr "سقف"
-
-#: lib/function-manager.vala:70
-msgid "Round"
-msgstr "گرد کردن"
-
-#: lib/function-manager.vala:72
-msgid "Real"
-msgstr "عدد حقیقی"
-
-#: lib/function-manager.vala:74
-msgid "Imaginary"
-msgstr "موهومی"
-
-#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:538
+#: lib/function-manager.vala:27 src/ui/buttons-advanced.blp:499
 msgid "Sine"
 msgstr "سینوس"
 
-#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:522
+#: lib/function-manager.vala:28 src/ui/buttons-advanced.blp:573
 msgid "Cosine"
 msgstr "کسینوس"
 
-#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:554
+#: lib/function-manager.vala:29 src/ui/buttons-advanced.blp:647
 msgid "Tangent"
 msgstr "تانژانت"
 
-#: lib/function-manager.vala:82
-msgid "Arc sine"
+#: lib/function-manager.vala:30 lib/function-manager.vala:115
+#: src/ui/buttons-advanced.blp:517
+msgid "Inverse Sine"
 msgstr "وارون سینوس"
 
-#: lib/function-manager.vala:84
-msgid "Arc cosine"
+#: lib/function-manager.vala:31 lib/function-manager.vala:116
+#: src/ui/buttons-advanced.blp:591
+msgid "Inverse Cosine"
 msgstr "وارون کسینوس"
 
-#: lib/function-manager.vala:86
-msgid "Arc tangent"
+#: lib/function-manager.vala:32 lib/function-manager.vala:117
+#: src/ui/buttons-advanced.blp:665
+msgid "Inverse Tangent"
 msgstr "وارون تانژانت"
 
-#: lib/function-manager.vala:88
-msgid "Inverse sine"
-msgstr "وارون سینوس"
-
-#: lib/function-manager.vala:90
-msgid "Inverse cosine"
-msgstr "وارون کسینوس"
-
-#: lib/function-manager.vala:92
-msgid "Inverse tangent"
-msgstr "وارون تانژانت"
-
-#: lib/function-manager.vala:94
-msgid "Hyperbolic sine"
+#: lib/function-manager.vala:33 src/ui/buttons-advanced.blp:536
+msgid "Hyperbolic Sine"
 msgstr "سینوس هذلولی"
 
-#: lib/function-manager.vala:96
-msgid "Hyperbolic cosine"
+#: lib/function-manager.vala:34 src/ui/buttons-advanced.blp:610
+msgid "Hyperbolic Cosine"
 msgstr "کسینوس هذلولی"
 
-#: lib/function-manager.vala:98
-msgid "Hyperbolic tangent"
+#: lib/function-manager.vala:35 src/ui/buttons-advanced.blp:684
+msgid "Hyperbolic Tangent"
 msgstr "تانژانت هذلولی"
 
-#: lib/function-manager.vala:100
-msgid "Hyperbolic arcsine"
-msgstr "وارون کسینوس هذلولی"
-
-#: lib/function-manager.vala:102
-msgid "Hyperbolic arccosine"
-msgstr "وارون کسینوس هذلولی"
-
-#: lib/function-manager.vala:104
-msgid "Hyperbolic arctangent"
-msgstr "وارون تانژانت هذلولی"
-
-#: lib/function-manager.vala:106
-msgid "Inverse hyperbolic sine"
+#: lib/function-manager.vala:36 lib/function-manager.vala:118
+#: src/ui/buttons-advanced.blp:554
+msgid "Inverse Hyperbolic Sine"
 msgstr "وارون سینوس هذلولی"
 
-#: lib/function-manager.vala:108
-msgid "Inverse hyperbolic cosine"
+#: lib/function-manager.vala:37 lib/function-manager.vala:119
+#: src/ui/buttons-advanced.blp:628
+msgid "Inverse Hyperbolic Cosine"
 msgstr "وارون کسینوس هذلولی"
 
-#: lib/function-manager.vala:110
-msgid "Inverse hyperbolic tangent"
+#: lib/function-manager.vala:38 lib/function-manager.vala:120
+#: src/ui/buttons-advanced.blp:702
+msgid "Inverse Hyperbolic Tangent"
 msgstr "وارون تانژانت هذلولی"
 
-#: lib/function-manager.vala:112
-msgid "One's complement"
-msgstr "مکمل یک"
+#: lib/function-manager.vala:40
+msgid "Complex"
+msgstr "مختلط"
 
-#: lib/function-manager.vala:114
-msgid "Two's complement"
-msgstr "مکمل دو"
+#: lib/function-manager.vala:41 src/ui/buttons-advanced.blp:932
+msgid "Complex Conjugate"
+msgstr "مزدوج مختلط"
 
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:74 lib/math-equation.vala:1468
-msgid "Displayed value not an integer"
-msgstr "مقدار نمایش داده شده عددی نیست"
+#: lib/function-manager.vala:42 src/ui/buttons-advanced.blp:949
+msgid "Complex Argument"
+msgstr "شناسهٔ مختلط"
+
+#: lib/function-manager.vala:43 src/ui/buttons-advanced.blp:966
+msgid "Real Component"
+msgstr "جزء واقعی"
+
+#: lib/function-manager.vala:44 src/ui/buttons-advanced.blp:983
+msgid "Imaginary Component"
+msgstr "جزء موهومی"
+
+#: lib/function-manager.vala:46 src/math-window.vala:155
+msgid "Programming"
+msgstr "برنامه‌نویسی"
+
+#: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
+msgid "Ones’ Complement"
+msgstr "مکمّل یک"
+
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
+msgid "Two’s Complement"
+msgstr "مکمّل دو"
+
+#: lib/function-manager.vala:49
+msgid "Swap Endianness"
+msgstr "جابه‌جای ته‌ها"
+
+#: lib/function-manager.vala:50 src/ui/buttons-advanced.blp:403
+#: src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
+#: src/ui/buttons-programming.blp:1808
+msgid "Modulus Divide"
+msgstr "تقسیم پیمانه‌ای"
+
+#: lib/function-manager.vala:51
+msgid "Modular Exponentiation"
+msgstr "توان پیمانه‌ای"
+
+#: lib/function-manager.vala:53
+msgid "Rounding"
+msgstr "گرد کردن"
+
+#: lib/function-manager.vala:54
+msgid "Round"
+msgstr "گرد کردن"
+
+#: lib/function-manager.vala:55
+msgid "Floor"
+msgstr "کف"
+
+#: lib/function-manager.vala:56
+msgid "Ceiling"
+msgstr "سقف"
+
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
+msgid "Integer Component"
+msgstr "جزء صحیح"
+
+#: lib/function-manager.vala:58 src/ui/buttons-programming.blp:2348
+msgid "Fractional Component"
+msgstr "جزء کسری"
+
+#: lib/function-manager.vala:60
+msgid "Statistics"
+msgstr "آمار"
+
+#: lib/function-manager.vala:61
+msgid "Sum"
+msgstr "جمع"
+
+#: lib/function-manager.vala:62
+msgid "Sum of Squares"
+msgstr "جمع مربّع‌ها"
+
+#: lib/function-manager.vala:63
+msgid "Average"
+msgstr "میانگین"
+
+#: lib/function-manager.vala:64
+msgid "Median"
+msgstr "میانه"
+
+#: lib/function-manager.vala:65
+msgid "Minimum Value"
+msgstr "مقدار کمینه"
+
+#: lib/function-manager.vala:66
+msgid "Maximum Value"
+msgstr "مقدار بیشینه"
+
+#: lib/function-manager.vala:67
+msgid "Sample Standard Deviation"
+msgstr "توزیع استاندارد نمونه"
+
+#: lib/function-manager.vala:68
+msgid "Population Standard Deviation"
+msgstr "توزیع استاندارد جمعیت"
+
+#: lib/function-manager.vala:69
+msgid "Sample Variance"
+msgstr "واریانس نمونه"
+
+#: lib/function-manager.vala:70
+msgid "Population Variance"
+msgstr "واریانس جمعیت"
+
+#: lib/function-manager.vala:72
+msgid "Sundry"
+msgstr "مختلف"
+
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:806
+#: src/ui/buttons-programming.blp:2171
+msgid "Logarithm"
+msgstr "لگاریتم"
+
+#: lib/function-manager.vala:74 src/ui/buttons-advanced.blp:892
+#: src/ui/buttons-financial.blp:626
+msgid "Natural Logarithm"
+msgstr "لگاریتم طبیعی"
+
+#: lib/function-manager.vala:75
+msgid "Square Root"
+msgstr "ریشهٔ مربّع"
+
+#: lib/function-manager.vala:76
+msgid "Absolute Value"
+msgstr "قدر مطلق"
+
+#: lib/function-manager.vala:77
+msgid "Signum"
+msgstr "تابع علامت"
+
+#: lib/function-manager.vala:78
+msgid "Combination"
+msgstr "ترکیب"
+
+#: lib/function-manager.vala:79
+msgid "Permutation"
+msgstr "جایگشت"
+
+#: lib/function-manager.vala:80
+msgid "Greatest Common Divisor"
+msgstr "ب‌م‌م"
+
+#: lib/function-manager.vala:81
+msgid "Least Common Multiple"
+msgstr "ک‌م‌م"
+
+#: lib/function-manager.vala:82
+msgid "Comparison (Kronecker Delta)"
+msgstr "مقایسه (دلتای کرونکر)"
+
+#: lib/function-manager.vala:337
+#, c-format
+msgid "Function “%s” takes 1 argument"
+msgstr "تابع «%s»‬‏ ۱ آرگومان می‌گیرد"
+
+#: lib/function-manager.vala:355
+#, c-format
+msgid "Function “%s” takes 1 or 2 arguments"
+msgstr "تابع «%s»‬‏ ۱ یا ۲ آرگومان می‌گیرد"
+
+#: lib/function-manager.vala:363
+#, c-format
+msgid "Function “%s” takes at least 2 arguments"
+msgstr "تابع «%s»‬‏ کمینه ۲ آرگومان می‌گیرد"
+
+#: lib/function-manager.vala:370
+#, c-format
+msgid "Function “%s” takes %d argument"
+msgid_plural "Function “%s” takes %d arguments"
+msgstr[0] "تابع «%s»‬‏ %Id آرگومان می‌گیرد"
+msgstr[1] "تابع «%s»‬‏ %Id آرگومان می‌گیرد"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:217
+#: lib/math-equation.vala:184
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "۰,۱,۲,۳,۴,۵,۶,۷,۸,۹,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:585
+#: lib/math-equation.vala:557
 msgid "No undo history"
 msgstr "بدون تاریخچهٔ برگردان"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:606
+#: lib/math-equation.vala:578
 msgid "No redo history"
 msgstr "بدون تاریخچهٔ انجام دوباره"
 
-#: lib/math-equation.vala:837
+#: lib/math-equation.vala:825
 msgid "No sane value to store"
 msgstr "مقدار معقولی برای ذخیره کردن موجود نیست"
 
-#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1158
-msgid "Overflow. Try a bigger word size"
-msgstr "سرریز. یک کلمه با اندازهٔ بزرگ‌تر امتحان کنید"
-
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1163
+#: lib/math-equation.vala:1284
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "متغیر ناشناس «%s»"
 
+#. Error displayed to user when a currency conversion with unknown exchange rate is attempted
+#: lib/math-equation.vala:1291
+#, c-format
+msgid "Exchange rate for “%s” is not available"
+msgstr "نرخ تبادل «%s» موجود نیست"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: lib/math-equation.vala:1298
+#, c-format
+msgid "Unknown unit “%s”"
+msgstr "یکای ناشناخته «%s»"
+
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1170
+#: lib/math-equation.vala:1305
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "تابع «%s» تعریف نشد است"
 
-#. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1177
+#. Error displayed to user when an invalid conversion (e.g. units of different categories)
+#: lib/math-equation.vala:1312
 msgid "Unknown conversion"
 msgstr "تبدیل ناشناس"
 
 #. should always be run
-#: lib/math-equation.vala:1187
+#: lib/math-equation.vala:1322
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1192 lib/math-equation.vala:1197
+#: lib/math-equation.vala:1327 lib/math-equation.vala:1332
 msgid "Malformed expression"
 msgstr "عبارت معیوب"
 
-#: lib/math-equation.vala:1208
+#: lib/math-equation.vala:1343
 msgid "Calculating"
 msgstr "در حال محاسبه"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1401
+#: lib/math-equation.vala:1565
 msgid "Need an integer to factorize"
-msgstr "یک عدد صحیح جهت فاکتورگیری لازم است"
+msgstr "تجزیه نیازمند عدد صحیح"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:301
 msgid "Underflow error"
 msgstr "خطای پاریز"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:206
+#: lib/number.vala:306
 msgid "Overflow error"
 msgstr "خطای سرریز"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:256
+#: lib/number.vala:367
 msgid "Argument not defined for zero"
 msgstr "شناسه برای صفر تعریف نشده است"
 
+#: lib/number.vala:437
+msgid "Floor is only defined for real numbers"
+msgstr "کف تنها برای اعداد حقیقی تعریف شده"
+
+#: lib/number.vala:452
+msgid "Ceiling is only defined for real numbers"
+msgstr "سقف تنها برای اعداد حقیقی تعریف شده است"
+
+#: lib/number.vala:467
+msgid "Round is only defined for real numbers"
+msgstr "گرد تنها برای اعداد حقیقی تعریف شده"
+
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:372 lib/number.vala:402
+#: lib/number.vala:501 lib/number.vala:531
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "توان صفر برای توان‌های منفی تعریف نشده است"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:380 lib/number.vala:410
+#: lib/number.vala:509 lib/number.vala:539
 msgid "Zero raised to zero is undefined"
 msgstr "صفر به توان صفر تعریف نشده است"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:464 lib/number.vala:495
+#: lib/number.vala:593 lib/number.vala:624
 msgid "Logarithm of zero is undefined"
 msgstr "لگاریتم صفر تعریف نشده است"
 
+#: lib/number.vala:629
+msgid "Logarithm with base 0 or 1 is undefined"
+msgstr "لگاریتم با پایهٔ ۰ یا ۱ تعریف نشده"
+
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:517
+#: lib/number.vala:648
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "فاکتوریل تنها برای اعداد طبیعی نامنفی تعریف شده است"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:577
+#: lib/number.vala:699
 msgid "Division by zero is undefined"
 msgstr "تقسیم بر صفر تعریف نشده است"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:598
+#: lib/number.vala:720
 msgid "Modulus division is only defined for integers"
 msgstr "باقی‌مانده تقسیم تنها برای اعداد صحیح تعریف شده است"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:671
+#: lib/number.vala:800
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -800,58 +1059,143 @@ msgstr ""
 "است"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:690
+#: lib/number.vala:819
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "سینوس وارون برای مقادیر خارج از [1, 1-] تعریف نشده است"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:707
+#: lib/number.vala:836
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "کسینوس وارون برای مقادیر خارج از [1, 1-] تعریف نشده است"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:725
-msgid "Arctangent function is undefined for values i and -i"
+#: lib/number.vala:854
+msgid "Inverse tangent is undefined for values i and -i"
 msgstr "تانژانت وارون برای مقدارهای i و ‪-i‬ تعریف نشده‌است"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:775
+#: lib/number.vala:905
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "سینوس هذلولی وارون برای مقادیر کمتر از یک تعریف نشده است"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:791
+#: lib/number.vala:921
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "تانژانت هذلولی وارون برای مقادیر خارج از [1, 1-] تعریف نشده است"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:807
-msgid "Boolean AND is only defined for positive integers"
-msgstr "مقدار بولی AND تنها برای اعداد صحیح مثبت تعریف شده است"
+#: lib/number.vala:936
+msgid "Boolean AND is only defined for non-negative integers"
+msgstr "عملگر بولی AND تنها برای اعداد صحیح غیرمنفی تعریف شده"
+
+#. Translators: Error displayed when boolean NAND attempted on non-integer values
+#: lib/number.vala:949
+msgid "Boolean NAND is only defined for non-negative integers"
+msgstr "عملگر بولی NAND تنها برای اعداد صحیح غیرمنفی تعریف شده"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:819
-msgid "Boolean OR is only defined for positive integers"
-msgstr "مقدار بولی OR تنها برای اعداد صحیح مثبت تعریف شده است"
+#: lib/number.vala:962
+msgid "Boolean OR is only defined for non-negative integers"
+msgstr "عملگر بولی OR تنها برای اعداد صحیح غیرمنفی تعریف شده"
+
+#. Translators: Error displayed when boolean NOR attempted on non-integer values
+#: lib/number.vala:975
+msgid "Boolean NOR is only defined for non-negative integers"
+msgstr "عملگر بولی NOR تنها برای اعداد صحیح غیرمنفی تعریف شده"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
-msgid "Boolean XOR is only defined for positive integers"
-msgstr "مقدار بولی XOR تنها برای اعداد صحیح مثبت تعریف شده است"
+#: lib/number.vala:988
+msgid "Boolean XOR is only defined for non-negative integers"
+msgstr "عملگر بولی XOR تنها برای اعداد صحیح غیرمنفی تعریف شده"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:843
-msgid "Boolean NOT is only defined for positive integers"
-msgstr "مقدار بولی NOT تنها برای اعداد صحیح مثبت تعریف شده است"
+#. Translators: Error displayed when boolean XNOR attempted on non-integer values
+#: lib/number.vala:1001
+msgid "Boolean XNOR is only defined for non-negative integers"
+msgstr "عملگر بولی XNOR تنها برای اعداد صحیح غیرمنفی تعریف شده"
+
+#. Translators: Error displayed when boolean NOT attempted on non-integer values
+#: lib/number.vala:1014
+msgid "Boolean NOT is only defined for non-negative integers"
+msgstr "عملگر بولی NOT تنها برای اعداد صحیح غیرمنفی تعریف شده"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:866
-msgid "Shift is only possible on integer values"
-msgstr "تبدیل فقط برای مقادیر صحیح امکان‌پذیر است"
+#: lib/number.vala:1076
+msgid "Shift is only possible on integers"
+msgstr "جابه‌جایی فقط روی صحیح امکان‌پذیر است"
 
-#: lib/serializer.vala:345
-msgid "Overflow: the result couldn’t be calculated"
-msgstr "سرریز: نتیجه نمی‌تواند محاسبه شود"
+#: lib/number.vala:1081 lib/number.vala:1121 lib/number.vala:1567
+msgid "Overflow. Try a bigger word size"
+msgstr "سرریز. یک کلمه با اندازهٔ بزرگ‌تر امتحان کنید"
+
+#: lib/number.vala:1092
+msgid "Ones’ complement is only defined for non-negative integers"
+msgstr "مکمّل یک تنها برای اعداد صحیح غیرمنفی تعریف شده"
+
+#: lib/number.vala:1104
+msgid "Two’s complement is only defined for non-negative integers"
+msgstr "مکمّل دو تنها برای اعداد صحیح غیرمنفی تعریف شده"
+
+#: lib/number.vala:1116
+msgid "Swap endianness is only possible on integers"
+msgstr "جابه‌جایی ته‌ها تنها برای اعداد صحیح غیرمنفی تعریف شده"
+
+#: lib/number.vala:1144
+msgid "Combination is only defined for non-negative integers"
+msgstr "ترکیب تنها برای اعداد صحیح غیرمنفی تعریف شده"
+
+#: lib/number.vala:1149
+msgid "Combination is undefined if n is less than r"
+msgstr "اگر n کم‌تر از r باشد ترکیب تعریف نشده‌است"
+
+#: lib/number.vala:1162
+msgid "Permutation is only defined for non-negative integers"
+msgstr "جایگشت تنها برای اعداد صحیح غیرمنفی تعریف شده"
+
+#: lib/number.vala:1167
+msgid "Permutation is undefined if n is less than r"
+msgstr "جایگشت تنها برای n کم‌تر از r تعریف شده"
+
+#: lib/number.vala:1188
+msgid "Greatest common divisor is only defined for integers"
+msgstr "ب‌م‌م تنها برای اعداد صحیح تعریف شده"
+
+#: lib/number.vala:1208
+msgid "Least common multiple is only defined for integers"
+msgstr "ک‌م‌م تنها برای اعداد صحیح تعریف شده"
+
+#: lib/number.vala:1265
+msgid "Median is only defined for real numbers"
+msgstr "میانه تنها برای اعداد حقیقی تعریف شده"
+
+#: lib/number.vala:1285
+msgid "Minimum value is only defined for real numbers"
+msgstr "مقدار کمینه تنها برای اعداد حقیقی تعریف شده"
+
+#: lib/number.vala:1302
+msgid "Maximum value is only defined for real numbers"
+msgstr "مقدار بیشینه تنها برای اعداد حقیقی تعریف شده"
+
+#: lib/providers/boc-provider.vala:15
+msgid "Bank of Canada"
+msgstr "بانک کانادا"
+
+#: lib/providers/ecb-provider.vala:12
+msgid "European Central Bank"
+msgstr "بانک مرکزی اروپا"
+
+#: lib/providers/imf-provider.vala:12
+msgid "International Monetary Fund"
+msgstr "صندوق بین المللی پول"
+
+#: lib/providers/unt-provider.vala:12
+msgid "United Nations Treasury"
+msgstr "خزانه‌داری ملل متّحد"
+
+#: lib/serializer.vala:354 lib/serializer.vala:391
+msgid ""
+"The result is too long to display in fixed format. Try other result formats"
+msgstr ""
+"نتیجه برای نمایش در قالب ثابت بیش از حد بلند است. آزمودن قالب‌های نتیجهٔ دیگر"
 
 #: lib/unit.vala:29
 msgid "Angle"
@@ -902,1677 +1246,1227 @@ msgid "Digital Storage"
 msgstr "ذخیره‌سازی دیجیتال"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:43 src/math-preferences.vala:103
-msgid "Degrees"
-msgstr "درجه"
+#: lib/unit.vala:43
+msgid "Degrees (Decimal)"
+msgstr "درجه (ده‌دهی)"
 
 #: lib/unit.vala:43
 msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "درجه,degree,degrees,deg"
 
-#: lib/unit.vala:44 src/math-preferences.vala:105
+#: lib/unit.vala:44
+msgid "Degrees (D°M′S″)"
+msgstr "درجه (‪D°M′S″‬)"
+
+#: lib/unit.vala:45 src/buttons-advanced.vala:87 src/math-preferences.vala:136
 msgid "Radians"
 msgstr "رادیان"
 
-#: lib/unit.vala:44
+#: lib/unit.vala:45
 msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "رادیان,radian,radians,rad"
 
-#: lib/unit.vala:45 src/math-preferences.vala:107
+#: lib/unit.vala:46 src/buttons-advanced.vala:87 src/math-preferences.vala:138
 msgid "Gradians"
 msgstr "گرادیان"
 
-#: lib/unit.vala:45
+#: lib/unit.vala:46
 msgctxt "unit-symbols"
 msgid "gradian,gradians,grad"
 msgstr "گرادیان,gradian,gradians,grad"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgid "Parsecs"
 msgstr "پارسِک"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgctxt "unit-symbols"
 msgid "parsec,parsecs,pc"
 msgstr "پارسک,parsec,parsecs,pc"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgid "Light Years"
 msgstr "سال نوری"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgctxt "unit-symbols"
 msgid "lightyear,lightyears,ly"
 msgstr "سال نوری,lightyear,lightyears,ly"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgid "Astronomical Units"
 msgstr "واحد نجومی"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgctxt "unit-symbols"
 msgid "au"
 msgstr "au"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgid "Rack Units"
 msgstr "واحد رک"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgctxt "unit-symbols"
 msgid "U"
 msgstr "U"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgid "Nautical Miles"
 msgstr "مایل دریایی"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgctxt "unit-symbols"
 msgid "nmi"
 msgstr "nmi"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgid "Miles"
 msgstr "مایل"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgctxt "unit-symbols"
 msgid "mile,miles,mi"
 msgstr "مایل,mile,miles,mi"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgid "Kilometers"
 msgstr "کیلومتر"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgctxt "unit-symbols"
 msgid "kilometer,kilometers,km,kms"
 msgstr "کیلومتر,kilometer,kilometers,km,kms"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgid "Cables"
 msgstr "کابل"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgctxt "unit-symbols"
 msgid "cable,cables,cb"
 msgstr "کابل,cable,cables,cb"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgid "Fathoms"
 msgstr "فَتوم"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgctxt "unit-symbols"
 msgid "fathom,fathoms,ftm"
 msgstr "فتوم,fathom,fathoms,ftm"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgid "Meters"
 msgstr "متر"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgctxt "unit-symbols"
 msgid "meter,meters,m"
 msgstr "متر,meter,meters,m"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgid "Yards"
 msgstr "یارد"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgctxt "unit-symbols"
 msgid "yard,yards,yd"
 msgstr "یارد,yard,yards,yd"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgid "Feet"
 msgstr "پا"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgctxt "unit-symbols"
 msgid "foot,feet,ft"
 msgstr "فوت,پا,foot,feet,ft"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgid "Inches"
 msgstr "اینچ"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgctxt "unit-symbols"
 msgid "inch,inches,in"
 msgstr "اینچ,inch,inches,in"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgid "Centimeters"
 msgstr "سانتی‌متر"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgctxt "unit-symbols"
 msgid "centimeter,centimeters,cm,cms"
 msgstr "سانتیمتر,سانتی‌متر,centimeter,centimeters,cm,cms"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgid "Millimeters"
 msgstr "میلی‌متر"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgctxt "unit-symbols"
 msgid "millimeter,millimeters,mm"
 msgstr "میلیمتر,میلی‌متر,millimeter,millimeters,mm"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgid "Micrometers"
 msgstr "میکرومتر"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgctxt "unit-symbols"
 msgid "micrometer,micrometers,um"
 msgstr "میکرومتر,micrometer,micrometers,um"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgid "Nanometers"
 msgstr "نانومتر"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgctxt "unit-symbols"
 msgid "nanometer,nanometers,nm"
 msgstr "نانومتر,nanometer,nanometers,nm"
 
-#: lib/unit.vala:63
-msgid "Desktop Publishing Point"
-msgstr "نقطه نشر رومیزی"
+#: lib/unit.vala:64
+msgid "Desktop Publishing Points"
+msgstr "نقطهٔ نشر رومیزی"
 
-#: lib/unit.vala:63
+#: lib/unit.vala:64
 msgctxt "unit-symbols"
 msgid "point,pt,points,pts"
 msgstr "نقطه,point,pt,points,pts"
 
-#: lib/unit.vala:64
-msgid "Kilometers per hour"
+#: lib/unit.vala:65
+msgid "Kilometers per Hour"
 msgstr "کیلومتر در ساعت"
 
-#: lib/unit.vala:64
+#: lib/unit.vala:65
 msgctxt "unit-symbols"
 msgid "kilometers per hour,kmph,kmh,kph"
 msgstr "کیلومتر در ساعت,کیلومتر بر ساعت,kilometers per hour,kmph,kmh,kph"
 
-#: lib/unit.vala:65
-msgid "Miles per hour"
+#: lib/unit.vala:66
+msgid "Miles per Hour"
 msgstr "مایل در ساعت"
 
-#: lib/unit.vala:65
+#: lib/unit.vala:66
 msgctxt "unit-symbols"
 msgid "milesph,miles per hour,mi/h,miph,mph"
 msgstr "مایل در ساعت,مایل بر ساعت,milesph,miles per hour,mi/h,miph,mph"
 
-#: lib/unit.vala:66
-msgid "Meters per second"
+#: lib/unit.vala:67
+msgid "Meters per Second"
 msgstr "متر در ثانیه"
 
-#: lib/unit.vala:66
+#: lib/unit.vala:67
 msgctxt "unit-symbols"
 msgid "meters per second,mps"
 msgstr "متر در ثانیه,متر بر ثانیه,meters per second,mps"
 
-#: lib/unit.vala:67
-msgid "Feet per second"
+#: lib/unit.vala:68
+msgid "Feet per Second"
 msgstr "پا در ثانیه"
 
-#: lib/unit.vala:67
+#: lib/unit.vala:68
 msgctxt "unit-symbols"
 msgid "fps,feet per second,feetps"
 msgstr ""
 "پا در ثانیه,فوت در ثانیه,پا بر ثانیه,فوت بر ثانیه,fps,feet per second,feetps"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgid "Knots"
 msgstr "گره"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgctxt "unit-symbols"
 msgid "kt,kn,nd,knot,knots"
 msgstr "گره,kt,kn,nd,knot,knots"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgid "Hectares"
 msgstr "هکتار"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgctxt "unit-symbols"
 msgid "hectare,hectares,ha"
 msgstr "هکتار,hectare,hectares,ha"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgid "Acres"
 msgstr "جریب"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgctxt "unit-symbols"
 msgid "acre,acres"
 msgstr "جریب,acre,acres"
 
-#: lib/unit.vala:71
-msgid "Square Foot"
+#: lib/unit.vala:72
+msgid "Square Miles"
+msgstr "مایل مربّع"
+
+#: lib/unit.vala:72
+msgctxt "unit-symbols"
+msgid "mi²"
+msgstr "mi²"
+
+#: lib/unit.vala:73
+msgid "Square Feet"
 msgstr "پای مربّع"
 
-#: lib/unit.vala:71
+#: lib/unit.vala:73
 msgctxt "unit-symbols"
 msgid "ft²"
 msgstr "ft²"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:74
+msgid "Square Kilometers"
+msgstr "کیلومتر مربّع"
+
+#: lib/unit.vala:74
+msgctxt "unit-symbols"
+msgid "km²"
+msgstr "km²"
+
+#: lib/unit.vala:75
 msgid "Square Meters"
 msgstr "متر مربع"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:75
 msgctxt "unit-symbols"
 msgid "m²"
 msgstr "m²"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgid "Square Centimeters"
 msgstr "سانتی‌متر مربع"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgctxt "unit-symbols"
 msgid "cm²"
 msgstr "cm²"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgid "Square Millimeters"
 msgstr "میلی‌متر مربع"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "mm²"
 msgstr "mm²"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgid "Cubic Meters"
 msgstr "متر مکعب"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "m³"
 msgstr "m³"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:79
+msgid "British Gallons"
+msgstr "گالن بریتانیا"
+
+#: lib/unit.vala:79
+msgctxt "unit-symbols"
+msgid "imp_gallon,imp_gallons,imp_gal"
+msgstr "گالن_امپراتوری,imp_gallon,imp_gallons,imp_gal"
+
+#: lib/unit.vala:80
 msgid "US Gallons"
 msgstr "گالن آمریکا"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "gallon,gallons,gal"
 msgstr "گالن,gallon,gallons,gal"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgid "Liters"
 msgstr "لیتر"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgctxt "unit-symbols"
 msgid "litre,litres,liter,liters,L"
 msgstr "لیتر,litre,litres,liter,liters,L"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgid "US Quarts"
 msgstr "کوارت آمریکا"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgctxt "unit-symbols"
 msgid "quart,quarts,qt"
 msgstr "کوارت,quart,quarts,qt"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:83
+msgid "British Pints"
+msgstr "پاینت بریتانیا"
+
+#: lib/unit.vala:83
+msgctxt "unit-symbols"
+msgid "imp_pint,imp_pints,imp_pt"
+msgstr "پاینت_امپراتوری,imp_pint,imp_pints,imp_pt"
+
+#: lib/unit.vala:84
 msgid "US Pints"
 msgstr "پینت آمریکا"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:84
 msgctxt "unit-symbols"
 msgid "pint,pints,pt"
 msgstr "نقطه,pint,pints,pt"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgid "Metric Cups"
 msgstr "فنجان‌های متریک"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgctxt "unit-symbols"
 msgid "cup,cups,cp"
 msgstr "فنجان,cup,cups,cp"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgid "Milliliters"
 msgstr "میلی‌لیتر"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "میلیلیتر,میلی‌لیتر,millilitre,millilitres,milliliter,milliliters,mL,cm³"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgid "Microliters"
 msgstr "میکرولیتر"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
 msgstr "mm³,μL,uL"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgid "Tonnes"
 msgstr "تُن"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgctxt "unit-symbols"
 msgid "tonne,tonnes"
 msgstr "تن,tonne,tonnes"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgid "Kilograms"
 msgstr "کیلوگرم"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgctxt "unit-symbols"
 msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgstr "کیلوگرم,kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgid "Pounds"
 msgstr "پوند"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb,lbs"
 msgstr "پوند,pound,pounds,lb,lbs"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgid "Ounces"
 msgstr "اونس"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgctxt "unit-symbols"
 msgid "ounce,ounces,oz"
 msgstr "اونس,ounce,ounces,oz"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgid "Troy Ounces"
 msgstr "اونس تروی"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgctxt "unit-symbols"
 msgid "Troy ounce,Troy ounces,ozt"
 msgstr "Troy ounce,Troy ounces,ozt,اونس تروی"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgid "Grams"
 msgstr "گرم"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "gram,grams,gramme,grammes,g"
 msgstr "گرم,gram,grams,gramme,grammes,g"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:94
+msgid "Milligrams"
+msgstr "میلی‌گرم"
+
+#: lib/unit.vala:94
+msgctxt "unit-symbols"
+msgid "milligram,milligrams,milligramme,milligrammes,mg"
+msgstr "میلی‌گرم,م‌گ,milligram,milligrams,milligramme,milligrammes,mg"
+
+#: lib/unit.vala:95
+msgid "Micrograms"
+msgstr "میکروگرم"
+
+#: lib/unit.vala:95
+msgctxt "unit-symbols"
+msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
+msgstr "میکروگرم,microgram,micrograms,microgramme,microgrammes,μg,ug"
+
+#: lib/unit.vala:96
 msgid "Stone"
 msgstr "سنگ"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:96
 msgctxt "unit-symbols"
 msgid "stone,st,stones"
 msgstr "سنگ,stone,st,stones"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgid "Centuries"
 msgstr "قرن"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgctxt "unit-symbols"
 msgid "century,centuries"
 msgstr "قرن,century,centuries"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgid "Decades"
 msgstr "دهه"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "decade,decades"
 msgstr "دهه,decade,decades"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgid "Years"
 msgstr "سال"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "سال,year,years"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgid "Months"
 msgstr "ماه"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "month,months"
 msgstr "ماه,month,months"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgid "Weeks"
 msgstr "هفته"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "week,weeks"
 msgstr "هفته,week,weeks"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgid "Days"
 msgstr "روز"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "روز,day,days"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgid "Hours"
 msgstr "ساعت"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "ساعت,hour,hours"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgid "Minutes"
 msgstr "دقیقه"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "دقیقه,minute,minutes"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgid "Seconds"
 msgstr "ثانیه"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "ثانیه,second,seconds,s"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgid "Milliseconds"
 msgstr "میلی‌ثانیه"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "میلیثانیه,میلی‌ثانیه,millisecond,milliseconds,ms"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgid "Microseconds"
 msgstr "میکروثانیه"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "میکروثانیه,microsecond,microseconds,us,μs"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgid "Nanoseconds"
 msgstr "نانوثانیه"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "nanosecond,nanoseconds,ns"
 msgstr "نانوثانیه,nanosecond,nanoseconds,ns"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
 msgid "Celsius"
 msgstr "سلسیوس"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
 msgctxt "unit-symbols"
-msgid "degC,˚C,C,c,Celsius,celsius"
-msgstr "سلسیوس,سانتیگراد,سانتی‌گراد,degC,˚C,C,c,Celsius,celsius"
+msgid "degC,°C,˚C,C,c,Celsius,celsius"
+msgstr "درجه سلسیوس,سلسیوس,سانتی‌گراد,degC,°C,˚C,C,c,Celsius,celsius"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
 msgid "Fahrenheit"
 msgstr "فارنهایت"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
 msgctxt "unit-symbols"
-msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
-msgstr "فارنهایت,degF,˚F,F,f,Fahrenheit,fahrenheit"
+msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "درجه فارنهایت,فارنهایت,degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgid "Kelvin"
 msgstr "کلوین"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
 msgstr "کلوین,k,K,Kelvin,kelvin"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
 msgid "Rankine"
 msgstr "رنکین"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
 msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
-msgstr "رنکین,degR,˚R,˚Ra,r,R,Rankine,rankine"
+msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
+msgstr "درجه رانکین,رانکین,degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgid "Bits"
 msgstr "بیت"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "bit,bits,b"
 msgstr "بیت,bit,bits,b"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgid "Bytes"
 msgstr "بایت"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
 msgstr "بایت,byte,bytes,B"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgid "Nibbles"
 msgstr "نیبل"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "nibble,nibbles"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgid "Kilobits"
 msgstr "کیلوبیت"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "کیلوبیت,kilobit,kilobits,kb,Kb"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgid "Kilobytes"
 msgstr "کیلوبایت"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "کیلوبایت,kilobyte,kilobytes,kB,KB"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgid "Kibibits"
 msgstr "کیبی‌بیت"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "kibibit,kibibits,Kib"
 msgstr "کیبیبیت,کیبی‌بیت,kibibit,kibibits,Kib"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgid "Kibibytes"
 msgstr "کیبی‌بایت"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
 msgstr "کیبیبایت,کیبی‌بایت,kibibyte,kibibytes,KiB"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgid "Megabits"
 msgstr "مگابیت"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "megabit,megabits,Mb"
 msgstr "مگابیت,megabit,megabits,Mb"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgid "Megabytes"
 msgstr "مگابایت"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
 msgstr "مگابایت,megabyte,megabytes,MB"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgid "Mebibits"
 msgstr "مبی‌بیت"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgctxt "unit-symbols"
 msgid "mebibit,mebibits,Mib"
 msgstr "مبیبیت,مبی‌بیت,mebibit,mebibits,Mib"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgid "Mebibytes"
 msgstr "مبی‌بایت"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
 msgstr "مبیبایت,مبی‌بایت,mebibyte,mebibytes,MiB"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgid "Gigabits"
 msgstr "گیگابیت"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgctxt "unit-symbols"
 msgid "gigabit,gigabits,Gb"
 msgstr "گیگابیت,gigabit,gigabits,Gb"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgid "Gigabytes"
 msgstr "گیگابایت"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
 msgstr "گیگابایت,gigabyte,gigabytes,GB"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgid "Gibibits"
 msgstr "گیبی‌بیت"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgctxt "unit-symbols"
 msgid "gibibit,gibibits,Gib"
 msgstr "گیبیبیت,گیبی‌بیت,gibibit,gibibits,Gib"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgid "Gibibytes"
 msgstr "گیبی‌بایت"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
 msgstr "گیبیبایت,گیبی‌بایت,gibibyte,gibibytes,GiB"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgid "Terabits"
 msgstr "ترابیت"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgctxt "unit-symbols"
 msgid "terabit,terabits,Tb"
 msgstr "ترابیت,terabit,terabits,Tb"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgid "Terabytes"
 msgstr "ترابایت"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
 msgstr "ترابایت,terabyte,terabytes,TB"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgid "Tebibits"
 msgstr "تبی‌بیت"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgctxt "unit-symbols"
 msgid "tebibit,tebibits,Tib"
 msgstr "تبیبیت,تبی‌بیت,tebibit,tebibits,Tib"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgid "Tebibytes"
 msgstr "تبی‌بایت"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
 msgstr "تبیبایت,تبی‌بایت,tebibyte,tebibytes,TiB"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgid "Petabits"
 msgstr "پتابیت"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgctxt "unit-symbols"
 msgid "petabit,petabits,Pb"
 msgstr "پتابیت,petabit,petabits,Pb"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgid "Petabytes"
 msgstr "پتابایت"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
 msgstr "پتابایت,petabyte,petabytes,PB"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgid "Pebibits"
 msgstr "پبی‌بیت"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgctxt "unit-symbols"
 msgid "pebibit,pebibits,Pib"
 msgstr "پبیبیت,پبی‌بیت,pebibit,pebibits,Pib"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgid "Pebibytes"
 msgstr "پبی‌بایت"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
 msgstr "پبیبایت,پبی‌بایت,pebibyte,pebibytes,PiB"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgid "Exabits"
 msgstr "اگزابیت"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgctxt "unit-symbols"
 msgid "exabit,exabits,Eb"
 msgstr "اگزابیت,exabit,exabits,Eb"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgid "Exabytes"
 msgstr "اگزابایت"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
 msgstr "اگزابایت,exabyte,exabytes,EB"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgid "Exbibits"
 msgstr "اگزبی‌بیت"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgctxt "unit-symbols"
 msgid "exbibit,exbibits,Eib"
 msgstr "اگزیبیت,اگزی‌بیت,exbibit,exbibits,Eib"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgid "Exbibytes"
 msgstr "اگزبی‌بایت"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
 msgstr "اگزیبایت,اگزی‌بایت,exbibyte,exbibytes,EiB"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgid "Zettabits"
 msgstr "زتابیت"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgctxt "unit-symbols"
 msgid "zettabit,zettabits,Zb"
 msgstr "زتابیت,zettabit,zettabits,Zb"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgid "Zettabytes"
 msgstr "زتابایت"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
 msgstr "زتابایت,zettabyte,zettabytes,ZB"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgid "Zebibits"
 msgstr "زبی‌بیت"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgctxt "unit-symbols"
 msgid "zebibit,zebibits,Zib"
 msgstr "زبیبیت,زبی‌بیت,zebibit,zebibits,Zib"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgid "Zebibytes"
 msgstr "زبی‌بایت"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
 msgstr "زبیبایت,زبی‌بایت,zebibyte,zebibytes,ZiB"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgid "Yottabits"
 msgstr "یوتابیت"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgctxt "unit-symbols"
 msgid "yottabit,yottabits,Yb"
 msgstr "یوتابیت,yottabit,yottabits,Yb"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgid "Yottabytes"
 msgstr "یوتابایت"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
 msgstr "یوتابایت,yottabyte,yottabytes,YB"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgid "Yobibits"
 msgstr "یوبی‌بیت"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgctxt "unit-symbols"
 msgid "yobibit,yobibits,Yib"
 msgstr "یوبیبیت,یوبی‌بیت,yobibit,yobibits,Yib"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgid "Yobibytes"
 msgstr "یوبی‌بایت"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
 msgstr "یوبیبایت,یوبی‌بایت,yobibyte,yobibytes,YiB"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgid "Hertz"
 msgstr "هرتز"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "hertz,Hz"
 msgstr "هرتز,hertz,Hz"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgid "Kilohertz"
 msgstr "کیلوهرتز"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "kilohertz,kHz"
 msgstr "کیلوهرتز,kilohertz,kHz"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgid "Megahertz"
 msgstr "مگاهرتز"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "megahertz,MHz"
 msgstr "مگاهرتز‍,megahertz,MHz"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgid "Gigahertz"
 msgstr "گیگاهرتز"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "gigahertz,GHz"
 msgstr "گیگاهرتز,gigahertz,GHz"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgid "Terahertz"
 msgstr "تراهرتز"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "terahertz,THz"
 msgstr "تراهرتز,terahertz,THz"
 
-#: lib/unit.vala:148
-msgid "Joule"
+#: lib/unit.vala:155
+msgid "Joules"
 msgstr "ژول"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:155
 msgctxt "unit-symbols"
 msgid "Joule,J,joule,joules"
 msgstr "Joule,J,joule,joules,ژول"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgid "Kilojoules"
 msgstr "کیلوژولکیلوبایت"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgctxt "unit-symbols"
 msgid "KJ,kilojoules,kilojoule"
 msgstr "KJ,kilojoules,kilojoule,کیلوژول"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgid "Megajoules"
 msgstr "مگاژول"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgctxt "unit-symbols"
 msgid "MJ,megajoules,megajoule"
 msgstr "MJ,megajoules,megajoule,مگاژول"
 
-#: lib/unit.vala:151
-msgid "KilowattHour"
+#: lib/unit.vala:158
+msgid "Kilowatt-Hours"
 msgstr "کیلووات‌ساعت"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:158
 msgctxt "unit-symbols"
 msgid "kwh,kWh,kilowatt-hour,kilowatthour"
 msgstr "kwh,kWh,kilowatt-hour,kilowatthour,ک‌وس,کیلووات-ساعت"
 
-#: lib/unit.vala:152
-msgid "BTU"
-msgstr "واحد گرمایی بریتانیا"
+#: lib/unit.vala:159
+msgid "British Thermal Units"
+msgstr "یکاهای گرمای بریتانیایی"
 
-#: lib/unit.vala:152
+#: lib/unit.vala:159
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:153
-msgid "Calorie"
+#: lib/unit.vala:160
+msgid "Calories"
 msgstr "کالری"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:160
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "calories,calorie,cal,کالری"
 
-#: lib/unit.vala:154
-msgid "Erg"
-msgstr "اِرگ"
+#: lib/unit.vala:161
+msgid "Kilocalories"
+msgstr "کیلوکالری"
 
-#: lib/unit.vala:154
+#: lib/unit.vala:161
+msgctxt "unit-symbols"
+msgid "kilocalories,kilocalorie,kcal"
+msgstr "کیلوکالری,ک‌ک,kilocalories,kilocalorie,kcal"
+
+#: lib/unit.vala:162
+msgid "Ergs"
+msgstr "بسیار"
+
+#: lib/unit.vala:162
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "ergs,erg,ارگ"
 
-#: lib/unit.vala:155
-msgid "eV"
-msgstr "eV"
+#: lib/unit.vala:163
+msgid "Electron Volts"
+msgstr "ولت الکترون"
 
-#: lib/unit.vala:155
+#: lib/unit.vala:163
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "electronvolt,electronvolts,ev,الکترون‌ولت"
 
-#: lib/unit.vala:156
-msgid "Ft-lb"
+#: lib/unit.vala:164
+msgid "Foot-Pounds"
 msgstr "پا-پوند"
 
-#: lib/unit.vala:156
+#: lib/unit.vala:164
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "foot-pound,foot-pounds,ft-lb,ft-lbs,پا-پوند"
 
-#: lib/unit.vala:157
-msgid "Pascal"
+#: lib/unit.vala:165
+msgid "Pascals"
 msgstr "پاسکال"
 
-#: lib/unit.vala:157
+#: lib/unit.vala:165
 msgctxt "unit-symbols"
 msgid "Pascal,pascal,Pa"
 msgstr "پاسکال,Pascal,pascal,Pa"
 
-#: lib/unit.vala:158
-msgid "Kilopascal"
+#: lib/unit.vala:166
+msgid "Kilopascals"
 msgstr "کیلوپاسکال"
 
-#: lib/unit.vala:158
+#: lib/unit.vala:166
 msgctxt "unit-symbols"
 msgid "Kilopascal,kilopascal,kPa"
 msgstr "کیلوپاسکال,Kilopascal,kilopascal,kPa"
 
-#: lib/unit.vala:159
-msgid "Hectopascal"
+#: lib/unit.vala:167
+msgid "Hectopascals"
 msgstr "هکتوپاسکال"
 
-#: lib/unit.vala:159
+#: lib/unit.vala:167
 msgctxt "unit-symbols"
 msgid "Hectopascal,hectopascal,hPa"
 msgstr "هکتوپاسکال,Hectopascal,hectopascal,hPa"
 
-#: lib/unit.vala:160
-msgid "Bar"
-msgstr "بار"
+#: lib/unit.vala:168
+msgid "Bars"
+msgstr "نوشخانه‌ها"
 
-#: lib/unit.vala:160
+#: lib/unit.vala:168
 msgctxt "unit-symbols"
 msgid "Bar,bar"
 msgstr "بار,Bar,bar"
 
-#: lib/unit.vala:161
-msgid "Standard Atmosphere"
-msgstr "اتمسفر استاندارد"
+#: lib/unit.vala:169
+msgid "Standard Atmospheres"
+msgstr "جو استاندارد"
 
-#: lib/unit.vala:161
+#: lib/unit.vala:169
 msgctxt "unit-symbols"
 msgid "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm"
 msgstr ""
 "اتمسفر استاندارد,اتمسفراستاندارد,اتمسفر,Standard Atmosphere,Standard "
 "atmosphere,standard atmosphere,Atm,atm"
 
-#: lib/unit.vala:162
-msgid "Millimetre of Mercury"
+#: lib/unit.vala:170
+msgid "Millimeters of Mercury"
 msgstr "میلی‌متر جیوه"
 
-#: lib/unit.vala:162
+#: lib/unit.vala:170
 msgctxt "unit-symbols"
-msgid "Millimetre of Mercury,millimetre of mercury,mmHg"
+msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
 msgstr ""
 "میلیمتر جیوه,میلی‌متر جیوه,میلیمترجیوه, میلی‌مترجیوه,Millimetre of "
 "Mercury,millimetre of mercury,mmHg"
 
-#: lib/unit.vala:163
-msgid "Inch of Mercury"
+#: lib/unit.vala:171
+msgid "Inches of Mercury"
 msgstr "اینچ جیوه"
 
-#: lib/unit.vala:163
+#: lib/unit.vala:171
 msgctxt "unit-symbols"
 msgid "Inch of Mercury,inch of mercury,inHg"
 msgstr "اینچ جیوه,Inch of Mercury,inch of mercury,inHg"
 
-#: lib/unit.vala:164
-msgid "Pound per Square Inch"
-msgstr "پوند بر اینچ مربع"
+#: lib/unit.vala:172
+msgid "Pounds per Square Inch"
+msgstr "پوند بر اینچ مربّع"
 
-#: lib/unit.vala:164
+#: lib/unit.vala:172
 msgctxt "unit-symbols"
 msgid "Pound per Square Inch,pound per square inch,psi"
 msgstr "پوند بر اینچ مربع,Pound per Square Inch,pound per square inch,psi"
 
-#: lib/unit.vala:166
+#: lib/unit.vala:174
 msgid "Currency"
 msgstr "ارز"
 
-#: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:76
-#: src/ui/buttons-programming.ui:82 src/ui/buttons-programming.ui:88
-msgid "Copy"
-msgstr "رونوشت"
-
-#: search-provider/search-provider.vala:200
-msgid "Copy result to clipboard"
-msgstr "رونوشت نتیجه به تخته‌گیره"
-
-#: src/ui/buttons-advanced.ui:162 src/ui/buttons-basic.ui:109
-#: src/ui/buttons-financial.ui:722 src/ui/buttons-programming.ui:1698
-msgid "Modulus Divide"
-msgstr "باقی‌ماندهٔ تقسیم"
-
-#: src/ui/buttons-advanced.ui:178 src/ui/buttons-basic.ui:125
-#: src/ui/buttons-financial.ui:738 src/ui/buttons-programming.ui:1343
-msgid "Divide [/]"
-msgstr "تقسیم [/]"
-
-#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:215
-#: src/ui/buttons-financial.ui:828 src/ui/buttons-programming.ui:1359
-msgid "Multiply [*]"
-msgstr "ضرب [*]"
-
-#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:231
-#: src/ui/buttons-financial.ui:844 src/ui/buttons-programming.ui:1375
-msgid "Subtract [-]"
-msgstr "تفریق [-]"
-
-#: src/ui/buttons-advanced.ui:299 src/ui/buttons-basic.ui:246
-#: src/ui/buttons-financial.ui:859 src/ui/buttons-programming.ui:1390
-msgid "Add [+]"
-msgstr "جمع [+]"
-
-#: src/ui/buttons-advanced.ui:315 src/ui/buttons-basic.ui:262
-#: src/ui/buttons-programming.ui:1328 src/math-buttons.vala:707
-msgid "Pi [Ctrl+P]"
-msgstr "پی [Ctrl+P]"
-
-#: src/ui/buttons-advanced.ui:331 src/ui/buttons-basic.ui:278
-#: src/ui/buttons-financial.ui:875 src/ui/buttons-programming.ui:1312
-msgid "Root [Ctrl+R]"
-msgstr "ریشه [Ctrl+R]"
-
-#: src/ui/buttons-advanced.ui:346 src/ui/buttons-basic.ui:293
-msgid "Square [Ctrl+2]"
-msgstr "مربّع [Ctrl+2]"
-
-#: src/ui/buttons-advanced.ui:366 src/ui/buttons-basic.ui:313
-#: src/ui/buttons-conversion.ui:194 src/ui/buttons-financial.ui:890
-#: src/ui/buttons-programming.ui:1421
-msgid "Clear Display [Escape]"
-msgstr "پاک کردن نمایشگر [Escape]"
-
-#: src/ui/buttons-advanced.ui:381 src/ui/buttons-basic.ui:328
-#: src/ui/buttons-financial.ui:905 src/ui/buttons-programming.ui:1713
-msgid "Start Group [(]"
-msgstr "شروع گروه [(]"
-
-#: src/ui/buttons-advanced.ui:397 src/ui/buttons-basic.ui:344
-#: src/ui/buttons-financial.ui:921 src/ui/buttons-programming.ui:1728
-msgid "End Group [)]"
-msgstr "انتهای گروه [)]"
-
-#: src/ui/buttons-advanced.ui:413 src/ui/buttons-basic.ui:360
-#: src/ui/buttons-financial.ui:937
-msgid "Percentage [%]"
-msgstr "درصد [%]"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:427 src/ui/buttons-basic.ui:374
-#: src/ui/buttons-financial.ui:951 src/ui/buttons-programming.ui:1404
-msgid "="
-msgstr "="
-
-#: src/ui/buttons-advanced.ui:429 src/ui/buttons-basic.ui:376
-#: src/ui/buttons-financial.ui:953 src/ui/buttons-programming.ui:1406
-msgid "Calculate Result"
-msgstr "محاسبهٔ نتیجه"
-
-#: src/ui/buttons-advanced.ui:455 src/ui/buttons-programming.ui:1753
-msgid "Subscript Mode [Alt]"
-msgstr "حالت زیرنویس [Alt]"
-
-#: src/ui/buttons-advanced.ui:471 src/ui/buttons-programming.ui:1769
-msgid "Superscript Mode [Ctrl]"
-msgstr "حالت بالانویس [Ctrl]"
-
-#: src/ui/buttons-advanced.ui:487 src/ui/buttons-programming.ui:2057
-msgid "Factorize [Ctrl+F]"
-msgstr "فاکتور [Ctrl+F]"
-
-#: src/ui/buttons-advanced.ui:501
-msgid "Scientific Exponent [Ctrl+E]"
-msgstr "نماد علمی [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:570
-msgid "Hyperbolic Cosine"
-msgstr "کسینوس هذلولی"
-
-#: src/ui/buttons-advanced.ui:586
-msgid "Hyperbolic Sine"
-msgstr "سینوس هذلولی"
-
-#: src/ui/buttons-advanced.ui:602
-msgid "Hyperbolic Tangent"
-msgstr "تانژانت هذلولی"
-
-#: src/ui/buttons-advanced.ui:617 src/ui/buttons-financial.ui:968
-#: src/ui/buttons-programming.ui:1908
-msgid "Exponent [^ or **]"
-msgstr "توان [^ یا **]"
-
-#: src/ui/buttons-advanced.ui:638 src/ui/buttons-programming.ui:1929
-msgid "Inverse [Ctrl+I]"
-msgstr "وارون [Ctrl+I]"
-
-#: src/ui/buttons-advanced.ui:660
-msgid "Euler’s Number"
-msgstr "عدد اویلر"
-
-#: src/ui/buttons-advanced.ui:676
-msgid "Natural Logarithm"
-msgstr "لگاریتم طبیعی"
-
-#: src/ui/buttons-advanced.ui:707 src/ui/buttons-programming.ui:1982
-msgid "Factorial [!]"
-msgstr "فاکتوریل [!]"
-
-#: src/ui/buttons-advanced.ui:728 src/ui/buttons-programming.ui:2003
-msgid "Absolute Value [|]"
-msgstr "قدر مطلق [|]"
-
-#: src/ui/buttons-advanced.ui:750
-msgid "Imaginary Unit"
-msgstr "یکّهٔ موهومی"
-
-#: src/ui/buttons-advanced.ui:766
-msgid "Real Component"
-msgstr "جزء واقعی"
-
-#: src/ui/buttons-advanced.ui:782
-msgid "Imaginary Component"
-msgstr "جزء موهومی"
-
-#: src/ui/buttons-advanced.ui:798
-msgid "Complex Conjugate"
-msgstr "مزدوج مختلط"
-
-#: src/ui/buttons-advanced.ui:814
-msgid "Complex Argument"
-msgstr "شناسهٔ مختلط"
-
-#: src/ui/buttons-advanced.ui:830 src/ui/buttons-financial.ui:1030
-#: src/ui/buttons-programming.ui:2089
-msgid "Memory"
-msgstr "حافظه"
-
-#. The label on the memory button
-#: src/ui/buttons-advanced.ui:831 src/ui/buttons-financial.ui:1032
-#: src/ui/buttons-programming.ui:2087
-msgid "x"
-msgstr "x"
-
-#: src/ui/buttons-advanced.ui:846
-msgid "Additional Functions"
-msgstr "توابع اضافی"
-
-#: src/ui/buttons-conversion.ui:208
-msgid "Switch Conversion Units"
-msgstr "تعویض یکاهای تبدیل"
-
-#: src/ui/buttons-conversion.ui:222
-msgid "Backspace"
-msgstr "پس‌بر"
-
-#. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1048
-msgid "Compounding Term"
-msgstr "عبارت ترکیبی"
-
-#: src/ui/buttons-financial.ui:15 src/ui/buttons-financial.ui:71
-#: src/ui/buttons-financial.ui:127 src/ui/buttons-financial.ui:183
-#: src/ui/buttons-financial.ui:233 src/ui/buttons-financial.ui:289
-#: src/ui/buttons-financial.ui:345 src/ui/buttons-financial.ui:401
-#: src/ui/buttons-financial.ui:457 src/ui/buttons-financial.ui:519
-#: src/ui/buttons-programming.ui:2172 src/gnome-calculator.vala:308
-msgid "_Cancel"
-msgstr "_لغو"
-
-#. Compounding Term Dialog: Calculate button
-#. Double-Declining Depreciation Dialog: Calculate button
-#. Future Value Dialog: Calculate button
-#. Gross Profit Margin Dialog: Calculate button
-#. Periodic Payment Dialog: Calculate button
-#. Present Value Dialog: Calculate button
-#. Periodic Interest Rate Dialog: Calculate button
-#. Straight-Line Depreciation Dialog: Calculate button
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
-#. Payment Period Dialog: Calculate button
-#: src/ui/buttons-financial.ui:21 src/ui/buttons-financial.ui:77
-#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:189
-#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:295
-#: src/ui/buttons-financial.ui:351 src/ui/buttons-financial.ui:407
-#: src/ui/buttons-financial.ui:463 src/ui/buttons-financial.ui:525
-msgid "C_alculate"
-msgstr "_محاسبه"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:32
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"تعداد دوره‌های ترکیبی که لازم است یک سرمایه‌گذاری با ارزش کنونی را افزایش دهد، در "
-"یک نرخ بهره ثابت به ازای هر دوره ترکیبی، محاسبه می‌کند."
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Title of Periodic Interest Rate dialog
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:155
-#: src/ui/buttons-financial.ui:261 src/ui/buttons-financial.ui:317
-#: src/ui/buttons-financial.ui:335 src/ui/buttons-financial.ui:553
-#: src/ui/buttons-financial.ui:1150
-msgid "Periodic Interest Rate"
-msgstr "نرخ بهره دوره‌ای"
-
-#. Compounding Term Dialog: Label before future value input
-#. Title of Future Value dialog
-#. Periodic Interest Rate Dialog: Label before future value input
-#. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:43 src/ui/buttons-financial.ui:117
-#: src/ui/buttons-financial.ui:367 src/ui/buttons-financial.ui:547
-#: src/ui/buttons-financial.ui:1082
-msgid "Future Value"
-msgstr "مقدار آینده"
-
-#. Compounding Term Dialog: Label before present value input
-#. Title of Present Value dialog
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:49 src/ui/buttons-financial.ui:279
-#: src/ui/buttons-financial.ui:373 src/ui/buttons-financial.ui:1167
-msgid "Present Value"
-msgstr "مقدار کنونی"
-
-#. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:61
-msgid "Double-Declining Depreciation"
-msgstr "استهلاک با شیب مضاعف"
-
-#. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:88
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the double-declining balance method."
-msgstr ""
-"استهلاک مستمر یک دارایی را برای یک مدت معین، با استفاده از استهلاک با شیب مظاعف "
-"محاسبه می‌کند."
-
-#. Double-Declining Depreciation Dialog: Label before cost input
-#. Gross Profit Margin Dialog: Label before cost input
-#. Straight-Line Depreciation Dialog: Label before cost input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:93 src/ui/buttons-financial.ui:205
-#: src/ui/buttons-financial.ui:423 src/ui/buttons-financial.ui:479
-msgid "Cost"
-msgstr "هزینه"
-
-#. Double-Declining Depreciation Dialog: Label before life input
-#. Straight-Line Depreciation Dialog: Label before life input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:99 src/ui/buttons-financial.ui:435
-#: src/ui/buttons-financial.ui:491
-msgid "Life"
-msgstr "عمر"
-
-#. Double-Declining Depreciation Dialog: Label before period input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:105 src/ui/buttons-financial.ui:497
-msgid "Period"
-msgstr "دوره"
-
-#. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:144
-msgid ""
-"Calculates the future value of an investment based on a series of equal "
-"payments at a periodic interest rate over the number of payment periods in the "
-"term."
-msgstr ""
-"ارزش آتی یک سرمایه‌گذاری را بر اساس یک سری پرداخت‌های مساوی در یک نرخ بهره دوره‌ای "
-"بر روی تعداد دوره‌های پرداخت در مدت، محاسبه می‌کند."
-
-#. Future Value Dialog: Label before periodic payment input
-#. Title of Periodic Payment dialog
-#. Present Value Dialog: Label before periodic payment input
-#. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:149 src/ui/buttons-financial.ui:223
-#: src/ui/buttons-financial.ui:311 src/ui/buttons-financial.ui:541
-#: src/ui/buttons-financial.ui:1184
-msgid "Periodic Payment"
-msgstr "پرداخت دوره‌ای"
-
-#. Future Value Dialog: Label before number of periods input
-#. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:161 src/ui/buttons-financial.ui:323
-msgid "Number of Periods"
-msgstr "تعداد دوره‌ها"
-
-#. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:173 src/ui/buttons-financial.ui:1201
-msgid "Gross Profit Margin"
-msgstr "حاشیهٔ سود ناخالص"
-
-#. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:200
-msgid ""
-"Calculates the resale price of a product, based on the product cost and the "
-"wanted gross profit margin."
-msgstr ""
-"مبلغ بازفروش یک محصول را، بر اساس هزینه محصول و حاشیه سود ناخالص مورد انتظار "
-"محاسبه می‌کند."
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:211
-msgid "Margin"
-msgstr "حاشیه"
-
-#. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:250
-msgid ""
-"Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period."
-msgstr ""
-"میزان پرداخت دوره‌ای یک وام، که هر پرداخت در پایان یک دوره پرداخت، پرداخت شده "
-"است را محاسبه می‌کند."
-
-#. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:255
-msgid "Principal"
-msgstr "اصلی"
-
-#. Periodic Payment Dialog: Label before term input
-#. Periodic Interest Rate Dialog: Label before term input
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:267 src/ui/buttons-financial.ui:379
-#: src/ui/buttons-financial.ui:1096
-msgid "Term"
-msgstr "Term"
-
-#. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:306
-msgid ""
-"Calculates the present value of an investment based on a series of equal "
-"payments discounted at a periodic interest rate over the number of payment "
-"periods in the term."
-msgstr ""
-"ارزش کنونی یک سرمایه‌گذاری بر اساس یک سری پرداخت مساوی همراه با یک نرخ بهرهٔ "
-"دوره‌ای بر روی تعداد دوره‌های پرداخت در مدت، محاسبه می‌کند."
-
-#. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:362
-msgid ""
-"Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods."
-msgstr ""
-"بهره دوره‌ای مورد نیاز برای افزایش یک سرمایه‌گذاری به ارزش آتی، بر روی دوره‌های "
-"ترکیبی، محاسبه می‌کند."
-
-#. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:391
-msgid "Straight-Line Depreciation"
-msgstr "استهلاک خط مستقیم"
-
-#. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:418
-msgid ""
-"Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly over "
-"the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated."
-msgstr ""
-"استهلاک خط مستقیم یک دارایی را برای یک دوره محاسبه می‌کند. روش استهلاک خط "
-"مستقیم، هزینه استهلاک دارایی را به‌طور مساوی در عمر مفید دارایی تقسیم می‌کند. "
-"زندگی مفید تعداد دوره‌هایی، معمولا سال، است که دارایی در طول آن مدت مستهلک می‌شود."
-
-#. Straight-Line Depreciation Dialog: Label before salvage input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:429 src/ui/buttons-financial.ui:485
-msgid "Salvage"
-msgstr "نجات"
-
-#. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:447
-msgid "Sum-of-the-Years’-Digits Depreciation"
-msgstr "استهلاک مجموع سنوات"
-
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:474
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense occurs "
-"in earlier periods than in later ones. The useful life is the number of "
-"periods, typically years, over which an asset is depreciated."
-msgstr ""
-"محاسبهٔ کمک‌هزینهٔ استهلاک دارایی برای دورهٔ زمانی مشخّص با استفاده از روش رقم مجموع "
-"سال‌ها. این روش نرخ استهلاک را تسریع کرده به طوری که در نخستین دوره‌ها هزینهٔ "
-"استهلاک بیش‌تر از دوره‌های بعدی خواهد بود. عمر مفید تعداد دوره‌هایی معمولاً به سال "
-"است که دارایی طی آن مستهلک می‌شود."
-
-#. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:509
-msgid "Payment Period"
-msgstr "دورهٔ پرداخت"
-
-#. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:536
-msgid ""
-"Calculates the number of payment periods that are necessary during the term of "
-"an ordinary annuity, to accumulate a future value, at a periodic interest rate."
-msgstr ""
-"Calculates the number of payment periods that are necessary during the term of "
-"an ordinary annuity, to accumulate a future value, at a periodic interest rate."
-
-#: src/ui/buttons-financial.ui:1014
-msgid "Currency Conversion"
-msgstr "تبدیل ارز"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:1045
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1062
-msgid "Ddb"
-msgstr "Dbd"
-
-#: src/ui/buttons-financial.ui:1065
-msgid "Double Declining Depreciation"
-msgstr "استهلاک با شیب مضاعف"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:1079
-msgid "Fv"
-msgstr "Fv"
-
-#: src/ui/buttons-financial.ui:1099
-msgid "Financial Term"
-msgstr "دوره مالی"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1113
-msgid "Syd"
-msgstr "Syd"
-
-#: src/ui/buttons-financial.ui:1116
-msgid "Sum of the Years Digits Depreciation"
-msgstr "استهلاک مجموع سنوات"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1130
-msgid "Sln"
-msgstr "Sln"
-
-#: src/ui/buttons-financial.ui:1133
-msgid "Straight Line Depreciation"
-msgstr "استهلاک خط مستقیم"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:1147
-msgid "Rate"
-msgstr "Rate"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:1164
-msgid "Pv"
-msgstr "Pv"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:1181
-msgid "Pmt"
-msgstr "Pmt"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:1198
-msgid "Gpm"
-msgstr "Gpm"
-
-#: src/ui/buttons-programming.ui:17
+#: lib/unit.vala:183
+msgid "Number Base"
+msgstr "مبنای عدد"
+
+#: lib/unit.vala:184 src/buttons-programming.vala:168
+#: src/ui/buttons-programming.blp:2590
 msgid "Binary"
 msgstr "دودویی"
 
-#: src/ui/buttons-programming.ui:18
+#: lib/unit.vala:185 src/buttons-programming.vala:173
+#: src/ui/buttons-programming.blp:2596
 msgid "Octal"
 msgstr "هشت‌هشتی"
 
-#: src/ui/buttons-programming.ui:19
+#: lib/unit.vala:186 src/buttons-programming.vala:178
+#: src/ui/buttons-programming.blp:2602
 msgid "Decimal"
 msgstr "ده‌دهی"
 
-#: src/ui/buttons-programming.ui:20
+#: lib/unit.vala:187 src/buttons-programming.vala:183
+#: src/ui/buttons-programming.blp:2608
 msgid "Hexadecimal"
 msgstr "شانزده‌شانزدهی‏"
 
-#: src/ui/buttons-programming.ui:61
-msgid "Number Base Conversion"
-msgstr "تبدیل پایهٔ عددی"
+#: search-provider/search-provider.vala:206
+msgid "Open in Calculator"
+msgstr "گشودن در ماشین‌حساب"
 
-#: src/ui/buttons-programming.ui:1784
-msgid "Shift Left"
-msgstr "انتقال به چپ"
+#: search-provider/search-provider.vala:239
+msgid "Result copied"
+msgstr "نتیجه رونوشت شد"
 
-#: src/ui/buttons-programming.ui:1799
-msgid "Shift Right"
-msgstr "انتقال به راست"
+#: search-provider/search-provider.vala:240
+msgid "Result was copied successfully"
+msgstr "نتیجه با موفّقیت رونوشت شد"
 
-#: src/ui/buttons-programming.ui:1814
-msgid "Boolean Exclusive OR"
-msgstr "مقدار بولی Exclusive OR"
+#: src/buttons-advanced.vala:87 src/math-preferences.vala:134
+msgid "Degrees"
+msgstr "درجه"
 
-#: src/ui/buttons-programming.ui:1829
-msgid "Boolean OR"
-msgstr "مقدار بولی OR"
+#: src/buttons-advanced.vala:89
+#, c-format
+msgid "Angle Unit: %s"
+msgstr "یکای زاویه: %s"
 
-#: src/ui/buttons-programming.ui:1845
-msgid "Boolean AND"
-msgstr "مقدار بولی AND"
+#: src/buttons-conversion.vala:125 src/buttons-conversion.vala:130
+#: src/buttons-conversion.vala:137 src/buttons-conversion.vala:142
+msgid "Not Available"
+msgstr "ناموجود"
 
-#: src/ui/buttons-programming.ui:1861
-msgid "Boolean NOT"
-msgstr "مقدار بولی NOT"
+#: src/buttons-programming.vala:205
+#, c-format
+msgid "%d-bit"
+msgid_plural "%d-bit"
+msgstr[0] "%Idبیتی"
+msgstr[1] "%Idبیتی"
 
-#: src/ui/buttons-programming.ui:1877
-msgid "One’s Complement"
-msgstr "مکمّل یک"
-
-#: src/ui/buttons-programming.ui:1893
-msgid "Two’s Complement"
-msgstr "مکمل دو"
-
-#: src/ui/buttons-programming.ui:1967
-msgid "Binary Logarithm"
-msgstr "لگاریتم دودویی"
-
-#: src/ui/buttons-programming.ui:2025
-msgid "Integer Component"
-msgstr "جزء صحیح"
-
-#: src/ui/buttons-programming.ui:2041
-msgid "Fractional Component"
-msgstr "جزء کسری"
-
-#. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2072 src/ui/buttons-programming.ui:2122
-msgid "Insert Character Code"
-msgstr "درج کد نویسه"
-
-#: src/ui/buttons-programming.ui:2105
-msgid "Change Word Size"
-msgstr "تغییر اندازهٔ واژه"
-
-#. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2154
-msgid "Character"
-msgstr "نویسه"
-
-#. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2182
-msgid "_Insert"
-msgstr "_درج"
-
-#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming, keyboard and conversion
 #: src/gnome-calculator.vala:22
-msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
-msgstr "شروع در حالت داده شده (ساده، پیش‌رفته، مالی، برنامه‌نویسی، صفحه‌کلید)"
+msgid ""
+"Start in given mode (basic, advanced, financial, programming, keyboard, "
+"conversion)"
+msgstr "آغاز در حالت داده شده (ساده، پیش‌رفته، مالی، برنامه‌نویسی، صفحه‌کلید، تبدیل)"
 
 #: src/gnome-calculator.vala:23
 msgid "Solve given equation"
@@ -2587,12 +2481,13 @@ msgid "Show release version"
 msgstr "نمایش نگارش انتشار"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:289
-msgid "© 1986–2023 The Calculator authors"
-msgstr "© ۱۹۸۶-۲۰۲۳ نگارندگان ماشین‌حساب"
+#: src/gnome-calculator.vala:291
+#, c-format
+msgid "© 1986–%d The Calculator authors"
+msgstr "‏© ۱۹۸۶-%Id نگارندگان ماشین‌حساب"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:295
+#: src/gnome-calculator.vala:297
 msgid "translator-credits"
 msgstr ""
 "آرش موسوی <mousavi.arash@gmail.com>\n"
@@ -2600,412 +2495,1320 @@ msgstr ""
 "روزبه پورنادر <roozbeh@farsiweb.info> \n"
 "میلاد زکریا <meelad@farsiweb.info>"
 
-#: src/gnome-calculator.vala:299
-msgid "Exchange rate data providers"
+#: src/gnome-calculator.vala:301
+msgid "Exchange Rate Data Providers"
 msgstr "فراهم کنندگان داده‌های نرخ تبادل"
 
-#: src/gnome-calculator.vala:299
+#: src/gnome-calculator.vala:301
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "داده‌های نرخ تبادل از سوی %s"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Close All?"
 msgstr "بستن همه؟"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Are you sure you want to close all open windows?"
 msgstr "مطمئنید که می‌خواهید همهٔ پنجره‌های باز را ببندید؟"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
+#: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
+#: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
+#: src/ui/buttons-financial.blp:1283 src/ui/buttons-financial.blp:1339
+#: src/ui/buttons-financial.blp:1401 src/ui/buttons-programming.blp:2563
+msgid "_Cancel"
+msgstr "_لغو"
+
+#: src/gnome-calculator.vala:311
 msgid "Close _All"
 msgstr "خروج _همه"
 
-#: src/math-buttons.vala:303 src/math-buttons.vala:752 src/math-buttons.vala:768
-#, c-format
-msgid "%d-bit"
-msgid_plural "%d-bit"
-msgstr[0] "%Idبیتی"
-msgstr[1] "%Idبیتی"
+#: src/math-converter.vala:612 src/math-converter.vala:630
+msgid "Error"
+msgstr "خطا"
 
-#: src/math-buttons.vala:713
-msgid "Negative [-]"
-msgstr "منفی [-]"
-
-#: src/ui/math-converter.ui:134
-msgid "Currency Conversion Disabled"
-msgstr "تبدیل ارز از کار افتاده"
-
-#: src/ui/math-converter.ui:135
-msgid "Enable in preferences to convert currencies"
-msgstr "به کار انداختن در ترجیحات برای تبدیل ارزها"
-
-#: src/ui/math-converter.ui:145
-msgid "_Copy"
-msgstr "_رونوشت"
-
-#: src/ui/math-converter.ui:149
-msgid "_Paste"
-msgstr "_جای‌گذاری"
-
-#: src/math-display.vala:646
+#: src/math-display.vala:694
 msgid "Defined Functions"
 msgstr "توابع تعریفی"
 
-#: src/math-display.vala:691
-msgid "Built-in keywords"
+#: src/math-display.vala:742
+msgid "Built-in Keywords"
 msgstr "کلیدواژگان توکار"
 
-#: src/math-display.vala:735
-msgid "Defined currencies"
+#: src/math-display.vala:794
+msgid "Defined Currencies"
 msgstr "ارزهای تعریفی"
 
-#: src/math-display.vala:785
+#: src/math-display.vala:843
 msgid "Defined Variables"
 msgstr "متغیّرهای تعریف‌شده"
 
-#: src/ui/math-function-popover.ui:29
-msgid "New function"
-msgstr "تابع جدید"
+#: src/math-function-popover.vala:185
+msgid "Can not use defined variable or constant names"
+msgstr "نمی‌توان از نام ثابت‌ها یا متغیّرهای تعریف شده استفاده کرد"
 
-#: src/ui/math-function-popover.ui:43
-msgid "Select no. of arguments"
-msgstr "گزینش تعداد شناسه‌ها"
+#: src/math-function-popover.vala:189
+msgid "Can not use built-in function or operator names"
+msgstr "نمی‌توان از نام عملگرها یا تابع‌های توکار استفاده کرد"
 
-#: src/math-preferences.vala:116
+#: src/math-function-popover.vala:192
+msgid "Function name can not start with a digit"
+msgstr "نام تابع نمی‌تواند با رقم آغاز شود"
+
+#: src/math-function-popover.vala:195
+msgid "Function name can only contain digits, letters and underscores"
+msgstr "نام تابع تنها می‌تواند رقم، حرف و زیرخط داشته باشد"
+
+#: src/math-popover.vala:110
+msgid "Edit"
+msgstr "ویرایش"
+
+#: src/math-popover.vala:120
+msgid "Delete"
+msgstr "حذف"
+
+#: src/math-preferences.vala:147 src/ui/buttons-programming.blp:2618
 msgid "8-bit"
 msgstr "۸ بیت"
 
-#: src/math-preferences.vala:118
+#: src/math-preferences.vala:149 src/ui/buttons-programming.blp:2624
 msgid "16-bit"
 msgstr "۱۶ بیت"
 
-#: src/math-preferences.vala:120
+#: src/math-preferences.vala:151 src/ui/buttons-programming.blp:2630
 msgid "32-bit"
 msgstr "۳۲ بیت"
 
-#: src/math-preferences.vala:122
+#: src/math-preferences.vala:153 src/ui/buttons-programming.blp:2636
 msgid "64-bit"
 msgstr "۶۴ بیت"
 
-#: src/math-preferences.vala:131
+#: src/math-preferences.vala:162
 msgid "Never"
 msgstr "هرگز"
 
-#: src/math-preferences.vala:133
+#: src/math-preferences.vala:164
 msgid "Daily"
 msgstr "روزانه"
 
-#: src/math-preferences.vala:135
+#: src/math-preferences.vala:166
 msgid "Weekly"
 msgstr "هفتگی"
 
-#: src/ui/math-preferences.ui:18
-msgid "Number of _Decimals"
-msgstr "_تعداد اعشارها"
+#: src/math-preferences.vala:175
+msgid "Currency Code"
+msgstr "کد ارز"
 
-#: src/ui/math-preferences.ui:27
-msgid "Trailing _Zeroes"
-msgstr "_صفرهای انتهایی"
+#: src/math-preferences.vala:177
+msgid "Currency Name"
+msgstr "نام ارز"
 
-#: src/ui/math-preferences.ui:33
-msgid "_Thousands Separators"
-msgstr "جداساز _هزارها"
+#: src/math-preferences.vala:179
+msgid "Both"
+msgstr "هر دو"
 
-#: src/ui/math-preferences.ui:39
-msgid "_Angle Units"
-msgstr "یکاهای _زاویه"
+#: src/math-variable-popover.vala:216
+msgid "Can not use defined function or operator names"
+msgstr "نمی‌توان از نام عملگرها یا تابع‌های تعریف شده استفاده کرد"
 
-#: src/ui/math-preferences.ui:45
-msgid "Word _Size"
-msgstr "اندازهٔ _واژه"
+#: src/math-variable-popover.vala:219
+msgid "Can not use built-in variable or constant names"
+msgstr "نمی‌توان از نام ثابت‌ها یا متغیّرهای توکار استفاده کرد"
 
-#: src/ui/math-preferences.ui:51
-msgid "E_xchange Rate Refresh Interval"
-msgstr "دورهٔ نوسازی _نرخ تبادلی"
+#: src/math-variable-popover.vala:222
+msgid "Variable name can not start with a digit"
+msgstr "نام متغیّر نمی‌تواند با رقم آغاز شود"
 
-#: src/ui/math-shortcuts.ui:13
-msgctxt "shortcut window"
-msgid "General"
-msgstr "عمومی"
+#: src/math-variable-popover.vala:225
+msgid "Variable name can only contain digits, letters and underscores"
+msgstr "نام متغیّر تنها می‌تواند رقم، حرف و زیرخط داشته باشد"
 
-#: src/ui/math-shortcuts.ui:17
-msgctxt "shortcut window"
-msgid "Open a new window"
-msgstr "گشودن پنجرهٔ جدید"
-
-#: src/ui/math-shortcuts.ui:23
-msgctxt "shortcut window"
-msgid "Close current window"
-msgstr "بستن پنجرهٔ کنونی"
-
-#: src/ui/math-shortcuts.ui:29
-msgctxt "shortcut window"
-msgid "Quit the application"
-msgstr "ترک برنامه"
-
-#: src/ui/math-shortcuts.ui:35
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "نمایش راهنما"
-
-#: src/ui/math-shortcuts.ui:41
-msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "گشودن فهرست"
-
-#: src/ui/math-shortcuts.ui:47
-msgctxt "shortcut window"
-msgid "Show preferences"
-msgstr "نمایش ترجیحات"
-
-#: src/ui/math-shortcuts.ui:53
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "میان‌برهای صفحه‌کلید"
-
-#: src/ui/math-shortcuts.ui:59
-msgctxt "shortcut window"
-msgid "Clear history"
-msgstr "پاک‌سازی تاریخچه"
-
-#: src/ui/math-shortcuts.ui:66
-msgctxt "shortcut window"
-msgid "Switching modes"
-msgstr "تغییر حالت‌ها"
-
-#: src/ui/math-shortcuts.ui:70
-msgctxt "shortcut window"
-msgid "Switch to Basic mode"
-msgstr "تعویض به حالت ساده"
-
-#: src/ui/math-shortcuts.ui:76
-msgctxt "shortcut window"
-msgid "Switch to Advanced mode"
-msgstr "تعویض به حالت پیش‌رفته"
-
-#: src/ui/math-shortcuts.ui:82
-msgctxt "shortcut window"
-msgid "Switch to Financial mode"
-msgstr "تعویض به حالت مالی"
-
-#: src/ui/math-shortcuts.ui:88
-msgctxt "shortcut window"
-msgid "Switch to Programming mode"
-msgstr "تعویض به حالت برنامه‌نویسی"
-
-#: src/ui/math-shortcuts.ui:94
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode"
-msgstr "تعویض به حالت صفحه‌کلید"
-
-#: src/ui/math-shortcuts.ui:100
-msgctxt "shortcut window"
-msgid "Switch to Conversion mode"
-msgstr "تعویض به حالت تبدیل"
-
-#: src/ui/math-shortcuts.ui:107
-msgctxt "shortcut window"
-msgid "Keyboard entry"
-msgstr "ورودی صفحه‌کلید"
-
-#: src/ui/math-shortcuts.ui:111
-msgctxt "shortcut window"
-msgid "Multiply (×)"
-msgstr "ضرب (×)"
-
-#: src/ui/math-shortcuts.ui:117
-msgctxt "shortcut window"
-msgid "Divide (÷)"
-msgstr "تقسیم (÷)"
-
-#: src/ui/math-shortcuts.ui:123
-msgctxt "shortcut window"
-msgid "Square root (√)"
-msgstr "ریشهٔ مربّع (√)"
-
-#: src/ui/math-shortcuts.ui:129
-msgctxt "shortcut window"
-msgid "Inverse"
-msgstr "وارون"
-
-#: src/ui/math-shortcuts.ui:135
-msgctxt "shortcut window"
-msgid "Pi (π)"
-msgstr "پی (π)"
-
-#: src/ui/math-shortcuts.ui:141
-msgctxt "shortcut window"
-msgid "Enter numbers in scientific format"
-msgstr "ورود اعداد در قالب علمی"
-
-#: src/ui/math-shortcuts.ui:148
-msgctxt "shortcut window"
-msgid "Programming mode"
-msgstr "حالت برنامه‌نویسی"
-
-#: src/ui/math-shortcuts.ui:152
-msgctxt "shortcut window"
-msgid "Switch to binary"
-msgstr "تغییر به دودویی"
-
-#: src/ui/math-shortcuts.ui:158
-msgctxt "shortcut window"
-msgid "Switch to octal"
-msgstr "تغییر به هشت‌هشتی"
-
-#: src/ui/math-shortcuts.ui:164
-msgctxt "shortcut window"
-msgid "Switch to decimal"
-msgstr "تغییر به ده‌دهی"
-
-#: src/ui/math-shortcuts.ui:170
-msgctxt "shortcut window"
-msgid "Switch to hexadecimal"
-msgstr "تعویض به شانزده‌شانزدهی‏"
-
-#: src/ui/math-shortcuts.ui:177
-msgctxt "shortcut window"
-msgid "Others"
-msgstr "دیگر"
-
-#: src/ui/math-shortcuts.ui:181
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "رونوشت"
-
-#: src/ui/math-shortcuts.ui:187
-msgctxt "shortcut window"
-msgid "Paste"
-msgstr "جایگذاری"
-
-#: src/ui/math-shortcuts.ui:193
-msgctxt "shortcut window"
-msgid "Undo"
-msgstr "برگردان"
-
-#: src/ui/math-shortcuts.ui:199
-msgctxt "shortcut window"
-msgid "Redo"
-msgstr "انجام دوباره"
-
-#: src/ui/math-shortcuts.ui:205
-msgctxt "shortcut window"
-msgid "Previous equation"
-msgstr "معادلهٔ پیشین"
-
-#: src/ui/math-shortcuts.ui:211
-msgctxt "shortcut window"
-msgid "Next equation"
-msgstr "معادلهٔ بعدی"
-
-#: src/ui/math-shortcuts.ui:217
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode (alt.)"
-msgstr "تعویض به حالت صفحه‌کلید (‪alt.‬)"
-
-#: src/ui/math-variable-popover.ui:37
-msgid "Variable name"
-msgstr "نام متغیر"
-
-#: src/ui/math-variable-popover.ui:45
-msgid "Store value into existing or new variable"
-msgstr "ذخیره مقدار در یک متغیر جدید یا موجود"
-
-#: src/math-variable-popover.vala:94
-#, c-format
-msgid "%s: Invalid variable name, can not start with a digit"
-msgstr "%s: نام متغیّر نامعتبر. نمی‌تواند با رقم آغاز شود"
-
-#: src/math-variable-popover.vala:98
-#, c-format
-msgid ""
-"%s: Invalid variable name, can only contain digits, letters and underscores"
-msgstr "%s: نام متغیّر نامعتبر. فقط می‌تواند رقم، حرف و زیرخط داشته باشد"
-
-#: src/ui/math-window.ui:8 src/math-window.vala:133
+#: src/math-window.vala:137
 msgid "Basic"
 msgstr "ساده"
 
-#: src/ui/math-window.ui:13 src/math-window.vala:139
+#: src/math-window.vala:143
 msgid "Advanced"
 msgstr "پیش‌رفته"
 
-#: src/ui/math-window.ui:18 src/ui/math-window.ui:140 src/math-window.vala:145
+#: src/math-window.vala:149 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "مالی"
 
-#: src/ui/math-window.ui:23 src/math-window.vala:151
-msgid "Programming"
-msgstr "برنامه‌نویسی"
-
-#: src/ui/math-window.ui:28 src/math-window.vala:157
+#: src/math-window.vala:161
 msgid "Keyboard"
 msgstr "صفحه‌کلید"
 
-#: src/ui/math-window.ui:33 src/math-window.vala:163
+#: src/math-window.vala:167
 msgid "Conversion"
 msgstr "تبدیل"
 
-#: src/ui/math-window.ui:42
+#: src/ui/buttons-advanced.blp:76 src/ui/buttons-basic.blp:21
+#: src/ui/buttons-conversion.blp:21 src/ui/buttons-financial.blp:76
+#: src/ui/buttons-programming.blp:1373
+msgid "Clear Display [Escape]"
+msgstr "پاک کردن نمایشگر [Escape]"
+
+#: src/ui/buttons-advanced.blp:92 src/ui/buttons-basic.blp:37
+#: src/ui/buttons-financial.blp:92 src/ui/buttons-programming.blp:1389
+msgid "Superscript Mode [Ctrl]"
+msgstr "حالت بالانویس [Ctrl]"
+
+#: src/ui/buttons-advanced.blp:109 src/ui/buttons-basic.blp:54
+#: src/ui/buttons-financial.blp:109 src/ui/buttons-programming.blp:1406
+msgid "Subscript Mode [Alt]"
+msgstr "حالت زیرنویس [Alt]"
+
+#. Translators: The label on the memory button
+#: src/ui/buttons-advanced.blp:300 src/ui/buttons-basic.blp:245
+#: src/ui/buttons-financial.blp:300 src/ui/buttons-programming.blp:1705
+msgid "x"
+msgstr "x"
+
+#: src/ui/buttons-advanced.blp:303 src/ui/buttons-basic.blp:248
+#: src/ui/buttons-financial.blp:303 src/ui/buttons-programming.blp:1708
+msgid "Variables and Constants"
+msgstr "متغیّرها و ثابت‌ها"
+
+#: src/ui/buttons-advanced.blp:320 src/ui/buttons-basic.blp:265
+#: src/ui/buttons-financial.blp:320 src/ui/buttons-programming.blp:1725
+msgid "Additional Functions"
+msgstr "توابع اضافی"
+
+#: src/ui/buttons-advanced.blp:336 src/ui/buttons-basic.blp:281
+#: src/ui/buttons-financial.blp:336 src/ui/buttons-programming.blp:1741
+msgid "Divide [/]"
+msgstr "تقسیم [/]"
+
+#: src/ui/buttons-advanced.blp:353 src/ui/buttons-basic.blp:298
+#: src/ui/buttons-financial.blp:353 src/ui/buttons-programming.blp:1758
+msgid "Multiply [*]"
+msgstr "ضرب [*]"
+
+#: src/ui/buttons-advanced.blp:370 src/ui/buttons-basic.blp:315
+#: src/ui/buttons-financial.blp:370 src/ui/buttons-programming.blp:1775
+msgid "Subtract [-]"
+msgstr "تفریق [-]"
+
+#: src/ui/buttons-advanced.blp:386 src/ui/buttons-basic.blp:331
+#: src/ui/buttons-financial.blp:386 src/ui/buttons-programming.blp:1791
+msgid "Add [+]"
+msgstr "جمع [+]"
+
+#: src/ui/buttons-advanced.blp:420 src/ui/buttons-basic.blp:365
+#: src/ui/buttons-financial.blp:420 src/ui/buttons-programming.blp:1825
+msgid "Percentage [%]"
+msgstr "درصد [%]"
+
+#: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382
+#: src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
+msgid "Group [()]"
+msgstr "گروه [()]"
+
+#. Translators: Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.blp:453 src/ui/buttons-basic.blp:398
+#: src/ui/buttons-financial.blp:453 src/ui/buttons-programming.blp:1858
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.blp:455 src/ui/buttons-basic.blp:400
+#: src/ui/buttons-financial.blp:455 src/ui/buttons-programming.blp:1860
+msgid "Calculate Result"
+msgstr "محاسبهٔ نتیجه"
+
+#: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
+#: src/ui/buttons-programming.blp:1888
+msgid "Inverse Modifier [Shift]"
+msgstr "معکوس کننده [تبدیل]"
+
+#: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
+#: src/ui/buttons-programming.blp:2085
+msgid "Square [Ctrl+2]"
+msgstr "مربّع [مهار+2]"
+
+#: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
+#: src/ui/buttons-programming.blp:2107
+msgid "Square Root [Ctrl+R]"
+msgstr "ریشهٔ مربّع [مهار+R]"
+
+#: src/ui/buttons-advanced.blp:760 src/ui/buttons-advanced.blp:827
+#: src/ui/buttons-financial.blp:538 src/ui/buttons-programming.blp:2125
+#: src/ui/buttons-programming.blp:2192
+msgid "Exponent [^ or **]"
+msgstr "توان [^ یا **]"
+
+#: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560
+#: src/ui/buttons-programming.blp:2147
+msgid "Nth Root"
+msgstr "ریشهٔ nام"
+
+#: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585
+#: src/ui/buttons-programming.blp:2216
+msgid "Common Logarithm"
+msgstr "لگاریتم رایج"
+
+#: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602
+#: src/ui/buttons-programming.blp:2233
+msgid "Base-10 Exponential"
+msgstr "نمایی پایهٔ ۱۰"
+
+#: src/ui/buttons-advanced.blp:909 src/ui/buttons-financial.blp:643
+msgid "Natural Exponential"
+msgstr "نمایی طبیعی"
+
+#: src/ui/buttons-advanced.blp:999
+msgid "Inverse [Ctrl+I]"
+msgstr "وارون [مهار+I]"
+
+#: src/ui/buttons-advanced.blp:1020
+msgid "Round [[]]"
+msgstr "گرد [[]]"
+
+#: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
+msgid "Absolute Value [||]"
+msgstr "قدر مطلق [||]"
+
+#: src/ui/buttons-advanced.blp:1062 src/ui/buttons-programming.blp:2427
+msgid "Factorial [!]"
+msgstr "فاکتوریل [!]"
+
+#: src/ui/buttons-advanced.blp:1099 src/ui/buttons-conversion.blp:521
+msgid "Pi [Ctrl+P]"
+msgstr "پی [مهار+P]"
+
+#: src/ui/buttons-advanced.blp:1133
+msgid "Imaginary Unit"
+msgstr "یکّهٔ موهومی"
+
+#: src/ui/buttons-advanced.blp:1150
+msgid "Factorize [Ctrl+F]"
+msgstr "تجزیه [مهار+F]"
+
+#: src/ui/buttons-conversion.blp:37
+msgid "Switch Conversion Units"
+msgstr "تعویض یکاهای تبدیل"
+
+#: src/ui/buttons-conversion.blp:53 src/ui/math-display.blp:45
+msgid "Backspace"
+msgstr "پس‌بر"
+
+#: src/ui/buttons-conversion.blp:510
+msgid "Degrees, Minutes, Seconds"
+msgstr "درجه، دقیقه، ثانیه"
+
+#: src/ui/buttons-conversion.blp:533
+msgid "Change Sign"
+msgstr "تغییر علامت"
+
+#: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
+msgid "Exchange Rate Details"
+msgstr "جزییات نرخ تبادل"
+
+#: src/ui/buttons-conversion.blp:575 src/ui/buttons-conversion.blp:600
+msgid "Updated"
+msgstr "به‌روز شده"
+
+#: src/ui/buttons-conversion.blp:583 src/ui/buttons-conversion.blp:608
+msgid "Source"
+msgstr "مبدأ"
+
+#: src/ui/buttons-conversion.blp:625
+msgid "_Refresh Rates"
+msgstr "نرخ‌های تبادل"
+
+#. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.blp:669
+msgid "Ctrm"
+msgstr "Ctrm"
+
+#. Translators: Title of Compounding Term dialog
+#: src/ui/buttons-financial.blp:672 src/ui/buttons-financial.blp:887
+msgid "Compounding Term"
+msgstr "عبارت ترکیبی"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:688
+msgid "Ddb"
+msgstr "Dbd"
+
+#: src/ui/buttons-financial.blp:691
+msgid "Double Declining Depreciation"
+msgstr "استهلاک با شیب مضاعف"
+
+#. Translators: Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.blp:707
+msgid "Fv"
+msgstr "Fv"
+
+#. Translators: Compounding Term Dialog: Label before future value input
+#. Translators: Title of Future Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before future value input
+#. Translators: Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.blp:710 src/ui/buttons-financial.blp:927
+#: src/ui/buttons-financial.blp:999 src/ui/buttons-financial.blp:1251
+#: src/ui/buttons-financial.blp:1431
+msgid "Future Value"
+msgstr "مقدار آینده"
+
+#. Translators: Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.blp:726
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Translators: Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.blp:729 src/ui/buttons-financial.blp:1055
+msgid "Gross Profit Margin"
+msgstr "حاشیهٔ سود ناخالص"
+
+#. Translators: Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.blp:745
+msgid "Pmt"
+msgstr "Pmt"
+
+#. Translators: Future Value Dialog: Label before periodic payment input
+#. Translators: Title of Periodic Payment dialog
+#. Translators: Present Value Dialog: Label before periodic payment input
+#. Translators: Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.blp:748 src/ui/buttons-financial.blp:1033
+#: src/ui/buttons-financial.blp:1105 src/ui/buttons-financial.blp:1195
+#: src/ui/buttons-financial.blp:1425
+msgid "Periodic Payment"
+msgstr "پرداخت دوره‌ای"
+
+#. Translators: Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.blp:764
+msgid "Pv"
+msgstr "Pv"
+
+#. Translators: Compounding Term Dialog: Label before present value input
+#. Translators: Title of Present Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.blp:767 src/ui/buttons-financial.blp:933
+#: src/ui/buttons-financial.blp:1161 src/ui/buttons-financial.blp:1257
+msgid "Present Value"
+msgstr "مقدار کنونی"
+
+#. Translators: Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.blp:783
+msgid "Rate"
+msgstr "Rate"
+
+#. Translators: Compounding Term Dialog: Label before periodic interest rate input
+#. Translators: Future Value Dialog: Label before periodic interest rate input
+#. Translators: Periodic Payment Dialog: Label before periodic interest rate input
+#. Translators: Present Value Dialog: Label before periodic interest rate input
+#. Translators: Title of Periodic Interest Rate dialog
+#. Translators: Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.blp:786 src/ui/buttons-financial.blp:921
+#: src/ui/buttons-financial.blp:1039 src/ui/buttons-financial.blp:1145
+#: src/ui/buttons-financial.blp:1201 src/ui/buttons-financial.blp:1217
+#: src/ui/buttons-financial.blp:1437
+msgid "Periodic Interest Rate"
+msgstr "نرخ بهره دوره‌ای"
+
+#. Translators: Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:802
+msgid "Sln"
+msgstr "Sln"
+
+#: src/ui/buttons-financial.blp:805
+msgid "Straight Line Depreciation"
+msgstr "استهلاک خط مستقیم"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:821
+msgid "Syd"
+msgstr "Syd"
+
+#: src/ui/buttons-financial.blp:824
+msgid "Sum of the Years Digits Depreciation"
+msgstr "استهلاک مجموع سنوات"
+
+#. Translators: Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#. Translators: Periodic Payment Dialog: Label before term input
+#. Translators: Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.blp:840 src/ui/buttons-financial.blp:1151
+#: src/ui/buttons-financial.blp:1263
+msgid "Term"
+msgstr "Term"
+
+#: src/ui/buttons-financial.blp:843
+msgid "Financial Term"
+msgstr "دوره مالی"
+
+#: src/ui/buttons-financial.blp:858 src/ui/math-preferences.blp:78
+msgid "Currency Conversion"
+msgstr "تبدیل ارز"
+
+#. Translators: Compounding Term Dialog: Calculate button
+#. Translators: Double-Declining Depreciation Dialog: Calculate button
+#. Translators: Future Value Dialog: Calculate button
+#. Translators: Gross Profit Margin Dialog: Calculate button
+#. Translators: Periodic Payment Dialog: Calculate button
+#. Translators: Present Value Dialog: Calculate button
+#. Translators: Periodic Interest Rate Dialog: Calculate button
+#. Translators: Straight-Line Depreciation Dialog: Calculate button
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
+#. Translators: Payment Period Dialog: Calculate button
+#: src/ui/buttons-financial.blp:905 src/ui/buttons-financial.blp:961
+#: src/ui/buttons-financial.blp:1017 src/ui/buttons-financial.blp:1073
+#: src/ui/buttons-financial.blp:1123 src/ui/buttons-financial.blp:1179
+#: src/ui/buttons-financial.blp:1235 src/ui/buttons-financial.blp:1291
+#: src/ui/buttons-financial.blp:1347 src/ui/buttons-financial.blp:1409
+msgid "C_alculate"
+msgstr "_محاسبه"
+
+#. Translators: Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:916
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"تعداد دوره‌های ترکیبی که لازم است یک سرمایه‌گذاری با ارزش کنونی را افزایش دهد، در "
+"یک نرخ بهره ثابت به ازای هر دوره ترکیبی، محاسبه می‌کند."
+
+#. Translators: Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.blp:943
+msgid "Double-Declining Depreciation"
+msgstr "استهلاک با شیب مضاعف"
+
+#. Translators: Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:972
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"استهلاک مستمر یک دارایی را برای یک مدت معین، با استفاده از استهلاک با شیب مظاعف "
+"محاسبه می‌کند."
+
+#. Translators: Double-Declining Depreciation Dialog: Label before cost input
+#. Translators: Gross Profit Margin Dialog: Label before cost input
+#. Translators: Straight-Line Depreciation Dialog: Label before cost input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.blp:977 src/ui/buttons-financial.blp:1089
+#: src/ui/buttons-financial.blp:1307 src/ui/buttons-financial.blp:1363
+msgid "Cost"
+msgstr "هزینه"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before life input
+#. Translators: Straight-Line Depreciation Dialog: Label before life input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.blp:983 src/ui/buttons-financial.blp:1319
+#: src/ui/buttons-financial.blp:1375
+msgid "Life"
+msgstr "عمر"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before period input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.blp:989 src/ui/buttons-financial.blp:1381
+msgid "Period"
+msgstr "دوره"
+
+#. Translators: Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1028
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in the "
+"term."
+msgstr ""
+"ارزش آتی یک سرمایه‌گذاری را بر اساس یک سری پرداخت‌های مساوی در یک نرخ بهره دوره‌ای "
+"بر روی تعداد دوره‌های پرداخت در مدت، محاسبه می‌کند."
+
+#. Translators: Future Value Dialog: Label before number of periods input
+#. Translators: Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.blp:1045 src/ui/buttons-financial.blp:1207
+msgid "Number of Periods"
+msgstr "تعداد دوره‌ها"
+
+#. Translators: Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1084
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"مبلغ بازفروش یک محصول را، بر اساس هزینه محصول و حاشیه سود ناخالص مورد انتظار "
+"محاسبه می‌کند."
+
+#. Translators: Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.blp:1095
+msgid "Margin"
+msgstr "حاشیه"
+
+#. Translators: Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1134
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period."
+msgstr ""
+"میزان پرداخت دوره‌ای یک وام، که هر پرداخت در پایان یک دوره پرداخت، پرداخت شده "
+"است را محاسبه می‌کند."
+
+#. Translators: Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.blp:1139
+msgid "Principal"
+msgstr "اصلی"
+
+#. Translators: Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1190
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term."
+msgstr ""
+"ارزش کنونی یک سرمایه‌گذاری بر اساس یک سری پرداخت مساوی همراه با یک نرخ بهرهٔ "
+"دوره‌ای بر روی تعداد دوره‌های پرداخت در مدت، محاسبه می‌کند."
+
+#. Translators: Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1246
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods."
+msgstr ""
+"بهره دوره‌ای مورد نیاز برای افزایش یک سرمایه‌گذاری به ارزش آتی، بر روی دوره‌های "
+"ترکیبی، محاسبه می‌کند."
+
+#. Translators: Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.blp:1273
+msgid "Straight-Line Depreciation"
+msgstr "استهلاک خط مستقیم"
+
+#. Translators: Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1302
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly over "
+"the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated."
+msgstr ""
+"استهلاک خط مستقیم یک دارایی را برای یک دوره محاسبه می‌کند. روش استهلاک خط "
+"مستقیم، هزینه استهلاک دارایی را به‌طور مساوی در عمر مفید دارایی تقسیم می‌کند. "
+"زندگی مفید تعداد دوره‌هایی، معمولا سال، است که دارایی در طول آن مدت مستهلک می‌شود."
+
+#. Translators: Straight-Line Depreciation Dialog: Label before salvage input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.blp:1313 src/ui/buttons-financial.blp:1369
+msgid "Salvage"
+msgstr "نجات"
+
+#. Translators: Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.blp:1329
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "استهلاک مجموع سنوات"
+
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1358
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense occurs "
+"in earlier periods than in later ones. The useful life is the number of "
+"periods, typically years, over which an asset is depreciated."
+msgstr ""
+"محاسبهٔ کمک‌هزینهٔ استهلاک دارایی برای دورهٔ زمانی مشخّص با استفاده از روش رقم مجموع "
+"سال‌ها. این روش نرخ استهلاک را تسریع کرده به طوری که در نخستین دوره‌ها هزینهٔ "
+"استهلاک بیش‌تر از دوره‌های بعدی خواهد بود. عمر مفید تعداد دوره‌هایی معمولاً به سال "
+"است که دارایی طی آن مستهلک می‌شود."
+
+#. Translators: Title of Payment Period dialog
+#: src/ui/buttons-financial.blp:1391
+msgid "Payment Period"
+msgstr "دورهٔ پرداخت"
+
+#. Translators: Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1420
+msgid ""
+"Calculates the number of payment periods that are necessary during the term of "
+"an ordinary annuity, to accumulate a future value, at a periodic interest rate."
+msgstr ""
+"Calculates the number of payment periods that are necessary during the term of "
+"an ordinary annuity, to accumulate a future value, at a periodic interest rate."
+
+#: src/ui/buttons-programming.blp:1904
+msgid "Bitwise AND"
+msgstr "عملگر بیتی AND"
+
+#: src/ui/buttons-programming.blp:1922
+msgid "Bitwise NAND"
+msgstr "عملگر بیتی NAND"
+
+#: src/ui/buttons-programming.blp:1941
+msgid "Bitwise OR"
+msgstr "‏«یا»ی بیتی"
+
+#: src/ui/buttons-programming.blp:1959
+msgid "Bitwise NOR"
+msgstr "عملگر بیتی NOR"
+
+#: src/ui/buttons-programming.blp:1977
+msgid "Bitwise NOT"
+msgstr "عملگر بیتی NOT"
+
+#: src/ui/buttons-programming.blp:1995
+msgid "Bitwise Exclusive OR"
+msgstr "عملگر بیتی XOR"
+
+#: src/ui/buttons-programming.blp:2013
+msgid "Bitwise Exclusive NOR"
+msgstr "عملگر بیتی XNOR"
+
+#: src/ui/buttons-programming.blp:2031
+msgid "Left Shift [<<]"
+msgstr "جابه‌جایی به چپ ‪[<<]"
+
+#: src/ui/buttons-programming.blp:2049
+msgid "Right Shift [>>]"
+msgstr "جابه‌جایی به راست ‪[>>]"
+
+#: src/ui/buttons-programming.blp:2067
+msgid "Unsigned Right Shift [>>>]"
+msgstr "جابه‌جایی به راست بدون علامت ‪[>>>]"
+
+#: src/ui/buttons-programming.blp:2257
+msgid "Binary Logarithm"
+msgstr "لگاریتم دودویی"
+
+#: src/ui/buttons-programming.blp:2274
+msgid "Base-2 Exponential"
+msgstr "نمایی پایهٔ ۲"
+
+#: src/ui/buttons-programming.blp:2364
+msgid "Ceiling [Ctrl+[]]"
+msgstr "سقف [مهار+[]]"
+
+#: src/ui/buttons-programming.blp:2385
+msgid "Floor [Alt+[]]"
+msgstr "کف [دگرساز+[]]"
+
+#: src/ui/buttons-programming.blp:2449
+msgid "Change Base"
+msgstr "تغییر مبنا"
+
+#: src/ui/buttons-programming.blp:2468
+msgid "Change Word Size"
+msgstr "تغییر اندازهٔ واژه"
+
+#. Translators: Title of insert character code dialog
+#: src/ui/buttons-programming.blp:2486 src/ui/buttons-programming.blp:2504
+msgid "Insert Character Code"
+msgstr "درج کد نویسه"
+
+#. Translators: Insert character code dialog: Label before character entry
+#: src/ui/buttons-programming.blp:2535
+msgid "Character"
+msgstr "نویسه"
+
+#: src/ui/buttons-programming.blp:2542
+msgid "Convert to"
+msgstr "تبدیل به"
+
+#: src/ui/buttons-programming.blp:2546
+msgid "Unicode Code Point"
+msgstr "نقطهٔ کد یونی‌کد"
+
+#: src/ui/buttons-programming.blp:2547
+msgid "UTF-8 Encoding"
+msgstr "کدگذاری UTF-8"
+
+#: src/ui/buttons-programming.blp:2548
+msgid "UTF-16 Encoding"
+msgstr "کدگذاری UTF-16"
+
+#. Translators: Insert character code dialog: Button to insert selected character
+#: src/ui/buttons-programming.blp:2574
+msgid "_Insert"
+msgstr "_درج"
+
+#: src/ui/math-converter.blp:119
+msgid "Exchange Rates Not Loaded"
+msgstr "نرخ‌های تبادل بار نشدند"
+
+#: src/ui/math-converter.blp:122
+msgid ""
+"<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
+msgstr "<a href=\"r:///\">نرخ‌های تبادل</a> یا تغییر دورهٔ نوسازی در ترجیحات"
+
+#: src/ui/math-converter.blp:141
+msgid "_Copy"
+msgstr "_رونوشت"
+
+#: src/ui/math-converter.blp:146
+msgid "_Paste"
+msgstr "_جای‌گذاری"
+
+#: src/ui/math-function-popover.blp:48
+msgid "Function name"
+msgstr "نام تابع"
+
+#: src/ui/math-function-popover.blp:57
+msgid "Select no. of arguments"
+msgstr "گزینش تعداد شناسه‌ها"
+
+#: src/ui/math-function-popover.blp:62
+msgid "Add function"
+msgstr "افزودن تابع"
+
+#: src/ui/math-preferences.blp:11
+msgid "Favorite Currencies"
+msgstr "ارزهای برگزیده"
+
+#: src/ui/math-preferences.blp:20
+msgid "Search currencies"
+msgstr "جست‌وجوی ارزها"
+
+#: src/ui/math-preferences.blp:36
+msgid "No Results Found"
+msgstr "هیچ نتیجه‌ای پیدا نشد"
+
+#: src/ui/math-preferences.blp:37
+msgid "Try a different search"
+msgstr "جست‌وجویی دیگر را بیازمایید"
+
+#: src/ui/math-preferences.blp:46
+msgid "General"
+msgstr "عمومی"
+
+#: src/ui/math-preferences.blp:49
+msgid "Number of _Decimals"
+msgstr "_تعداد اعشارها"
+
+#: src/ui/math-preferences.blp:57
+msgid "Trailing _Zeroes"
+msgstr "_صفرهای انتهایی"
+
+#: src/ui/math-preferences.blp:62
+msgid "_Thousands Separators"
+msgstr "جداساز _هزارها"
+
+#: src/ui/math-preferences.blp:67
+msgid "_Angle Units"
+msgstr "یکاهای _زاویه"
+
+#: src/ui/math-preferences.blp:72
+msgid "_Word Size"
+msgstr "اندازهٔ _واژه"
+
+#: src/ui/math-preferences.blp:81
+msgid "E_xchange Rate Refresh Interval"
+msgstr "دورهٔ نوسازی _نرخ تبادلی"
+
+#: src/ui/math-preferences.blp:86
+msgid "_Currency Display"
+msgstr "_نمایش ارز"
+
+#: src/ui/math-preferences.blp:91
+msgid "_Show Currencies in Auto-Completion List"
+msgstr "_نمایش ارزها در سیاههٔ تکمیل خودکار"
+
+#: src/ui/math-preferences.blp:96
+msgid "All"
+msgstr "همه"
+
+#: src/ui/math-preferences.blp:97
+msgid "Favorite Only"
+msgstr "تنها برگزیده‌ها"
+
+#: src/ui/math-preferences.blp:98
+msgid "None"
+msgstr "هیچ‌کدام"
+
+#: src/ui/math-preferences.blp:104
+msgid "_Favorite Currencies"
+msgstr "ارزهای _برگزیده"
+
+#: src/ui/math-shortcuts.blp:5
+msgctxt "shortcuts dialog"
+msgid "General"
+msgstr "عمومی"
+
+#: src/ui/math-shortcuts.blp:9
+msgctxt "shortcuts dialog"
+msgid "Open a New Window"
+msgstr "گشودن پنجرهٔ جدید"
+
+#: src/ui/math-shortcuts.blp:14
+msgctxt "shortcuts dialog"
+msgid "Close Current Window"
+msgstr "بستن پنجرهٔ کنونی"
+
+#: src/ui/math-shortcuts.blp:19
+msgctxt "shortcuts dialog"
+msgid "Quit the Application"
+msgstr "ترک برنامه"
+
+#: src/ui/math-shortcuts.blp:24
+msgctxt "shortcuts dialog"
+msgid "Show Help"
+msgstr "نمایش راهنما"
+
+#: src/ui/math-shortcuts.blp:29
+msgctxt "shortcuts dialog"
+msgid "Open Menu"
+msgstr "گشودن فهرست"
+
+#: src/ui/math-shortcuts.blp:34
+msgctxt "shortcuts dialog"
+msgid "Show Preferences"
+msgstr "نمایش ترجیحات"
+
+#: src/ui/math-shortcuts.blp:39
+msgctxt "shortcuts dialog"
+msgid "Keyboard Shortcuts"
+msgstr "میان‌برهای صفحه‌کلید"
+
+#: src/ui/math-shortcuts.blp:44
+msgctxt "shortcuts dialog"
+msgid "Clear History"
+msgstr "پاک‌سازی تاریخچه"
+
+#: src/ui/math-shortcuts.blp:49
+msgctxt "shortcuts dialog"
+msgid "Switching Modes"
+msgstr "تغییر حالت‌ها"
+
+#: src/ui/math-shortcuts.blp:53
+msgctxt "shortcuts dialog"
+msgid "Switch to Basic Mode"
+msgstr "تعویض به حالت ساده"
+
+#: src/ui/math-shortcuts.blp:58
+msgctxt "shortcuts dialog"
+msgid "Switch to Advanced Mode"
+msgstr "تعویض به حالت پیش‌رفته"
+
+#: src/ui/math-shortcuts.blp:63
+msgctxt "shortcuts dialog"
+msgid "Switch to Financial Mode"
+msgstr "تعویض به حالت مالی"
+
+#: src/ui/math-shortcuts.blp:68
+msgctxt "shortcuts dialog"
+msgid "Switch to Programming Mode"
+msgstr "تعویض به حالت برنامه‌نویسی"
+
+#: src/ui/math-shortcuts.blp:73
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode"
+msgstr "تعویض به حالت صفحه‌کلید"
+
+#: src/ui/math-shortcuts.blp:78
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode (alt.)"
+msgstr "تعویض به حالت صفحه‌کلید (جایگزین)"
+
+#: src/ui/math-shortcuts.blp:83
+msgctxt "shortcuts dialog"
+msgid "Switch to Conversion Mode"
+msgstr "تعویض به حالت تبدیل"
+
+#: src/ui/math-shortcuts.blp:88
+msgctxt "shortcuts dialog"
+msgid "Programming Mode"
+msgstr "حالت برنامه‌نویسی"
+
+#: src/ui/math-shortcuts.blp:92
+msgctxt "shortcuts dialog"
+msgid "Switch to Binary"
+msgstr "تغییر به دودویی"
+
+#: src/ui/math-shortcuts.blp:97
+msgctxt "shortcuts dialog"
+msgid "Switch to Octal"
+msgstr "تغییر به هشت‌هشتی"
+
+#: src/ui/math-shortcuts.blp:102
+msgctxt "shortcuts dialog"
+msgid "Switch to Decimal"
+msgstr "تغییر به ده‌دهی"
+
+#: src/ui/math-shortcuts.blp:107
+msgctxt "shortcuts dialog"
+msgid "Switch to Hexadecimal"
+msgstr "تعویض به شانزده‌شانزدهی‏"
+
+#: src/ui/math-shortcuts.blp:112
+msgctxt "shortcuts dialog"
+msgid "Keyboard Entry"
+msgstr "ورودی صفحه‌کلید"
+
+#: src/ui/math-shortcuts.blp:116
+msgctxt "shortcuts dialog"
+msgid "Multiply (×)"
+msgstr "ضرب (×)"
+
+#: src/ui/math-shortcuts.blp:121
+msgctxt "shortcuts dialog"
+msgid "Divide (÷)"
+msgstr "تقسیم (÷)"
+
+#: src/ui/math-shortcuts.blp:126
+msgctxt "shortcuts dialog"
+msgid "Square (²)"
+msgstr "مربّع (²)"
+
+#: src/ui/math-shortcuts.blp:131
+msgctxt "shortcuts dialog"
+msgid "Square Root (√)"
+msgstr "ریشهٔ مربّع (√)"
+
+#: src/ui/math-shortcuts.blp:136
+msgctxt "shortcuts dialog"
+msgid "Inverse (⁻¹)"
+msgstr "وارون (‪⁻¹‬)"
+
+#: src/ui/math-shortcuts.blp:141
+msgctxt "shortcuts dialog"
+msgid "Pi (π)"
+msgstr "پی (π)"
+
+#: src/ui/math-shortcuts.blp:146
+msgctxt "shortcuts dialog"
+msgid "Tau (τ)"
+msgstr "تائو (τ)"
+
+#: src/ui/math-shortcuts.blp:151
+msgctxt "shortcuts dialog"
+msgid "Degree (°)"
+msgstr "درجه (°)"
+
+#: src/ui/math-shortcuts.blp:156 src/ui/math-shortcuts.blp:168
+msgctxt "shortcuts dialog"
+msgid "Floor (⌊⌋)"
+msgstr "کف (⌊⌋)"
+
+#: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
+msgctxt "shortcuts dialog"
+msgid "Ceiling (⌈⌉)"
+msgstr "سقف (⌈⌉)"
+
+#: src/ui/math-shortcuts.blp:180
+msgctxt "shortcuts dialog"
+msgid "Enter Numbers in Scientific Format"
+msgstr "ورود اعداد در قالب علمی"
+
+#: src/ui/math-shortcuts.blp:185
+msgctxt "shortcuts dialog"
+msgid "Enter Subscript Numbers"
+msgstr "ورود شماره‌های زیرنویس"
+
+#: src/ui/math-shortcuts.blp:190
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Numbers"
+msgstr "ورود اعداد بالانویس"
+
+#: src/ui/math-shortcuts.blp:195
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Minus Sign"
+msgstr "ورود علامت منفی بالانویس"
+
+#: src/ui/math-shortcuts.blp:200
+msgctxt "shortcuts dialog"
+msgid "Equation"
+msgstr "معادله"
+
+#: src/ui/math-shortcuts.blp:204
+msgctxt "shortcuts dialog"
+msgid "Copy"
+msgstr "رونوشت"
+
+#: src/ui/math-shortcuts.blp:209
+msgctxt "shortcuts dialog"
+msgid "Paste"
+msgstr "جایگذاری"
+
+#: src/ui/math-shortcuts.blp:214
+msgctxt "shortcuts dialog"
+msgid "Undo"
+msgstr "برگردان"
+
+#: src/ui/math-shortcuts.blp:219
+msgctxt "shortcuts dialog"
+msgid "Redo"
+msgstr "انجام دوباره"
+
+#: src/ui/math-shortcuts.blp:224
+msgctxt "shortcuts dialog"
+msgid "Previous Equation"
+msgstr "معادلهٔ پیشین"
+
+#: src/ui/math-shortcuts.blp:229
+msgctxt "shortcuts dialog"
+msgid "Next Equation"
+msgstr "معادلهٔ بعدی"
+
+#: src/ui/math-shortcuts.blp:234
+msgctxt "shortcuts dialog"
+msgid "Clear Display"
+msgstr "پاک‌سازی نمایشگر"
+
+#: src/ui/math-shortcuts.blp:239
+msgctxt "shortcuts dialog"
+msgid "Factorize"
+msgstr "تجزیه"
+
+#: src/ui/math-variable-popover.blp:37
+msgid "Constants"
+msgstr "ثابت‌ها"
+
+#: src/ui/math-variable-popover.blp:58
+msgid "Variable name"
+msgstr "نام متغیر"
+
+#: src/ui/math-variable-popover.blp:67
+msgid "Store value into existing or new variable"
+msgstr "ذخیره مقدار در یک متغیر جدید یا موجود"
+
+#: src/ui/math-window.blp:7
+msgid "_Basic"
+msgstr "ا_بتدایی"
+
+#: src/ui/math-window.blp:13
+msgid "_Advanced"
+msgstr "_پیش‌رفته"
+
+#: src/ui/math-window.blp:19
+msgid "_Financial"
+msgstr "_مالی"
+
+#: src/ui/math-window.blp:25
+msgid "_Programming"
+msgstr "_برنامه‌نویسی"
+
+#: src/ui/math-window.blp:31
+msgid "_Keyboard"
+msgstr "_صفحه‌کلید"
+
+#: src/ui/math-window.blp:37
+msgid "_Conversion"
+msgstr "_تبدیل"
+
+#: src/ui/math-window.blp:47
 msgid "_New Window"
 msgstr "پنجرهٔ _جدید"
 
-#: src/ui/math-window.ui:49
+#: src/ui/math-window.blp:54
 msgid "_Clear History"
 msgstr "_پاک‌سازی تاریخچه"
 
-#: src/ui/math-window.ui:56
+#: src/ui/math-window.blp:61
 msgid "Result Format"
 msgstr "قالب نتیجه"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:59
+#: src/ui/math-window.blp:65
 msgid "_Automatic"
 msgstr "_خودکار"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:65
+#: src/ui/math-window.blp:72
 msgid "_Fixed"
 msgstr "_ثابت"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
-#: src/ui/math-window.ui:71
+#: src/ui/math-window.blp:79
 msgid "_Scientific"
 msgstr "_علمی"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
-#: src/ui/math-window.ui:77
+#: src/ui/math-window.blp:86
 msgid "_Engineering"
 msgstr "_مهندسی"
 
-#: src/ui/math-window.ui:87
-msgid "Preferences"
-msgstr "ترجیحات"
+#: src/ui/math-window.blp:96
+msgid "_Preferences"
+msgstr "_ترجیحات"
 
-#: src/ui/math-window.ui:91
-msgid "Keyboard Shortcuts"
-msgstr "میان‌برهای صفحه‌کلید"
+#: src/ui/math-window.blp:101
+msgid "_Keyboard Shortcuts"
+msgstr "_میان‌برهای صفحه‌کلید"
 
-#: src/ui/math-window.ui:95
+#: src/ui/math-window.blp:106
 msgid "_Help"
 msgstr "_راهنما"
 
-#: src/ui/math-window.ui:99
-msgid "About Calculator"
-msgstr "دربارهٔ ماشین‌حساب"
+#: src/ui/math-window.blp:111
+msgid "A_bout Calculator"
+msgstr "_دربارهٔ ماشین‌حساب"
 
-#: src/ui/math-window.ui:118
+#: src/ui/math-window.blp:132
 msgid "Mode Selection"
 msgstr "گزینش حالت"
 
-#: src/ui/math-window.ui:128
-msgid "_Undo"
-msgstr "_برگردان"
+#: src/ui/math-window.blp:139
+msgid "Undo"
+msgstr "برگردان"
 
-#: src/ui/math-window.ui:149
+#: src/ui/math-window.blp:146
+msgid "Redo"
+msgstr "انجام دوباره"
+
+#: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "فهرست اصلی"
+
+#~ msgid "Currency of the current calculation"
+#~ msgstr "ارز مربوط به محاسبهٔ کنونی"
+
+#~ msgid "Target currency"
+#~ msgstr "ارز هدف"
+
+#~ msgid "Currency to convert the current calculation into"
+#~ msgstr "ارز جهت تبدیل محاسبهٔ کنونی به آن"
+
+#~ msgid "Units of the current calculation"
+#~ msgstr "یکاهای محاسبهٔ کنونی"
+
+#~ msgid "Units to convert the current calculation into"
+#~ msgstr "یکاها جهت تبدیل محاسبه کنونی به آن"
+
+#~ msgid "Natural logarithm"
+#~ msgstr "لگاریتم طبیعی"
+
+#~ msgid "Argument"
+#~ msgstr "شناسه"
+
+#~ msgid "Conjugate"
+#~ msgstr "مزدوج"
+
+#~ msgid "Integer"
+#~ msgstr "عدد صحیح"
+
+#~ msgid "Fraction"
+#~ msgstr "کسر"
+
+#~ msgid "Real"
+#~ msgstr "عدد حقیقی"
+
+#~ msgid "Imaginary"
+#~ msgstr "موهومی"
+
+#~ msgid "Arc sine"
+#~ msgstr "وارون سینوس"
+
+#~ msgid "Arc cosine"
+#~ msgstr "وارون کسینوس"
+
+#~ msgid "Arc tangent"
+#~ msgstr "وارون تانژانت"
+
+#~ msgid "Hyperbolic sine"
+#~ msgstr "سینوس هذلولی"
+
+#~ msgid "Hyperbolic cosine"
+#~ msgstr "کسینوس هذلولی"
+
+#~ msgid "Hyperbolic tangent"
+#~ msgstr "تانژانت هذلولی"
+
+#~ msgid "Hyperbolic arcsine"
+#~ msgstr "وارون کسینوس هذلولی"
+
+#~ msgid "Hyperbolic arccosine"
+#~ msgstr "وارون کسینوس هذلولی"
+
+#~ msgid "Hyperbolic arctangent"
+#~ msgstr "وارون تانژانت هذلولی"
+
+#~ msgid "One's complement"
+#~ msgstr "مکمل یک"
+
+#~ msgid "Two's complement"
+#~ msgstr "مکمل دو"
+
+#~ msgid "Displayed value not an integer"
+#~ msgstr "مقدار نمایش داده شده عددی نیست"
+
+#~ msgid "Overflow: the result couldn’t be calculated"
+#~ msgstr "سرریز: نتیجه نمی‌تواند محاسبه شود"
+
+#~ msgid "BTU"
+#~ msgstr "واحد گرمایی بریتانیا"
+
+#~ msgid "Erg"
+#~ msgstr "اِرگ"
+
+#~ msgid "eV"
+#~ msgstr "eV"
+
+#~ msgid "Ft-lb"
+#~ msgstr "پا-پوند"
+
+#~ msgid "Bar"
+#~ msgstr "بار"
+
+#~ msgid "Copy result to clipboard"
+#~ msgstr "رونوشت نتیجه به تخته‌گیره"
+
+#~ msgid "Root [Ctrl+R]"
+#~ msgstr "ریشه [Ctrl+R]"
+
+#~ msgid "Start Group [(]"
+#~ msgstr "شروع گروه [(]"
+
+#~ msgid "Scientific Exponent [Ctrl+E]"
+#~ msgstr "نماد علمی [Ctrl+E]"
+
+#~ msgid "Memory"
+#~ msgstr "حافظه"
+
+#~ msgid "Number Base Conversion"
+#~ msgstr "تبدیل پایهٔ عددی"
+
+#~ msgid "Shift Left"
+#~ msgstr "انتقال به چپ"
+
+#~ msgid "Shift Right"
+#~ msgstr "انتقال به راست"
+
+#~ msgid "Boolean OR"
+#~ msgstr "مقدار بولی OR"
+
+#~ msgid "Boolean AND"
+#~ msgstr "مقدار بولی AND"
+
+#~ msgid "Boolean NOT"
+#~ msgstr "مقدار بولی NOT"
+
+#~ msgid "Negative [-]"
+#~ msgstr "منفی [-]"
+
+#~ msgid "Currency Conversion Disabled"
+#~ msgstr "تبدیل ارز از کار افتاده"
+
+#~ msgid "Enable in preferences to convert currencies"
+#~ msgstr "به کار انداختن در ترجیحات برای تبدیل ارزها"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "میان‌برهای صفحه‌کلید"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Clear history"
+#~ msgstr "پاک‌سازی تاریخچه"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Programming mode"
+#~ msgstr "حالت برنامه‌نویسی"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Others"
+#~ msgstr "دیگر"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Copy"
+#~ msgstr "رونوشت"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Undo"
+#~ msgstr "برگردان"
+
+#~ msgid "Preferences"
+#~ msgstr "ترجیحات"
+
+#~ msgid "_Undo"
+#~ msgstr "_برگردان"
 
 #~ msgid "No sane value to bitwise shift"
 #~ msgstr "مقدار معقولی برای تبدیل عملگر بیتی نیست"
@@ -3581,9 +4384,6 @@ msgstr "فهرست اصلی"
 #~ msgid "Subscript mode [Alt]"
 #~ msgstr "حالت زیرنویس [Alt]"
 
-#~ msgid "Superscript mode [Ctrl]"
-#~ msgstr "حالت بالانویس [Ctrl]"
-
 #~ msgid " to "
 #~ msgstr " به "
 
@@ -3599,9 +4399,6 @@ msgstr "فهرست اصلی"
 #~ msgid_plural "%d places"
 #~ msgstr[0] "%Id رقم"
 #~ msgstr[1] "%Id رقم"
-
-#~ msgid "Undo"
-#~ msgstr "برگردان"
 
 #~ msgid "_Quit"
 #~ msgstr "_خروج"
@@ -3633,17 +4430,11 @@ msgstr "فهرست اصلی"
 #~ msgid "Primary menu"
 #~ msgstr "فهرست اصلی"
 
-#~ msgid "Exponent"
-#~ msgstr "توان"
-
 #~ msgid "Subscript"
 #~ msgstr "زیرنویس"
 
 #~ msgid "Superscript"
 #~ msgstr "بالانویس"
-
-#~ msgid "Factorize"
-#~ msgstr "فاکتور"
 
 #~ msgid "Scientific Exponent"
 #~ msgstr "نماد علمی"
@@ -3666,9 +4457,6 @@ msgstr "فهرست اصلی"
 #~ msgid "How often the currency exchange rates should be updated"
 #~ msgstr "نرخ تبادلی ارز باید چند وقت یه چندوقت به‌روز شود"
 
-#~ msgid "Square root [Ctrl+R]"
-#~ msgstr "ریشهٔ دوم [Ctrl+R]"
-
 #~ msgid "8 bits"
 #~ msgstr "۸ بیت"
 
@@ -3686,9 +4474,6 @@ msgstr "فهرست اصلی"
 
 #~ msgid "Scientific"
 #~ msgstr "علمی"
-
-#~ msgid "_Preferences"
-#~ msgstr "_ترجیحات"
 
 #~ msgid "_About Calculator"
 #~ msgstr "_دربارهٔ ماشین‌حساب"
@@ -3858,12 +4643,6 @@ msgstr "فهرست اصلی"
 #~ msgid "_Calculator"
 #~ msgstr "_ماشین‌حساب"
 
-#~ msgid "_Basic"
-#~ msgstr "ا_بتدایی"
-
-#~ msgid "_Financial"
-#~ msgstr "_مالی"
-
 #~ msgid "_Contents"
 #~ msgstr "_محتویات"
 
@@ -3992,9 +4771,6 @@ msgstr "فهرست اصلی"
 
 #~ msgid "±"
 #~ msgstr "±"
-
-#~ msgid "Change sign [c]"
-#~ msgstr "تغییر علامت [c]"
 
 #~ msgid "Chs"
 #~ msgstr "Chs"
@@ -4140,9 +4916,6 @@ msgstr "فهرست اصلی"
 #~ msgid "Con"
 #~ msgstr "Con"
 
-#~ msgid "Constants [#]"
-#~ msgstr "ثابت‌ها [#]"
-
 #~ msgid "Fun"
 #~ msgstr "Fun"
 
@@ -4248,17 +5021,11 @@ msgstr "فهرست اصلی"
 #~ msgid "Or"
 #~ msgstr "Or"
 
-#~ msgid "Bitwise OR"
-#~ msgstr "‏«یا»ی بیتی"
-
 #~ msgid " Or "
 #~ msgstr " Or "
 
 #~ msgid "And"
 #~ msgstr "And"
-
-#~ msgid "Bitwise AND [&]"
-#~ msgstr "‏«و» بیتی‏ [&]"
 
 #~ msgid "Not"
 #~ msgstr "Not"
@@ -4372,14 +5139,8 @@ msgstr "فهرست اصلی"
 #~ msgid "\t\t [-?] [-v] [-?]\n"
 #~ msgstr "\t\t [-?] [-v] [-?]\n"
 
-#~ msgid "_Edit"
-#~ msgstr "_ویرایش"
-
 #~ msgid "_View"
 #~ msgstr "_نما"
-
-#~ msgid "Paste selection"
-#~ msgstr "چسباندن انتخاب‌شده‌ها"
 
 #~ msgid "_Insert ASCII Value..."
 #~ msgstr "_درج مقدار‏ ASCII..."
@@ -4533,9 +5294,6 @@ msgstr "فهرست اصلی"
 
 #~ msgid "Insert ASCII Value"
 #~ msgstr "‏درج مقدار ASCII"
-
-#~ msgid "Edit Constants"
-#~ msgstr "ویرایش ثابت‌ها"
 
 #~ msgid "Note:"
 #~ msgstr "یادداشت:"
