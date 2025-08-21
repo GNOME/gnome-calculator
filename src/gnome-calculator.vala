@@ -97,12 +97,12 @@ public class Calculator : Adw.Application
         set_accels_for_action ("win.undo", {"<control>Z", "Undo"});
         set_accels_for_action ("win.redo", {"<control><shift>Z", "Redo"});
         set_accels_for_action ("win.clear", {"<control>Escape"});
+        set_accels_for_action ("win.preferences", {"<control>comma"});
         set_accels_for_action ("win.close", {"<control>W"});
 
         set_accels_for_action ("app.quit", {"<control>Q"});
         set_accels_for_action ("app.new-window", {"<control>N"});
         set_accels_for_action ("app.help", {"F1"});
-        set_accels_for_action ("app.preferences", {"<control>comma"});
         set_accels_for_action ("app.shortcuts", {"<control>question"});
         return current_window;
     }
