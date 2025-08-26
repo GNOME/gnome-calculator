@@ -222,7 +222,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
     {
         var x = equation.number;
         uint64 bits = 0;
-        var enabled = x != null;
+        var enabled = x != null && !x.is_complex ();
         var is_float = enabled && x.is_float ();
         if (enabled)
         {
@@ -241,17 +241,10 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
                 else
                     enabled = false;
             }
+            else if (x.is_negative ())
+                bits = x.to_integer ();
             else
-            {
-                var min = new Number.integer (int64.MIN);
-                var max = new Number.unsigned_integer (uint64.MAX);
-                if (x.compare (max) > 0 || x.compare (min) < 0)
-                    enabled = false;
-                else if (x.is_negative ())
-                    bits = x.to_integer ();
-                else
-                    bits = x.to_unsigned_integer ();
-            }
+                bits = x.to_unsigned_integer ();
         }
 
         bit_panel.set_sensitive (enabled);

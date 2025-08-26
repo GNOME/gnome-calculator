@@ -74,10 +74,7 @@ public class MathEquation : GtkSource.Buffer
     {
         var x = number;
         uint64 bits = 0;
-        var min = new Number.integer (int64.MIN);
-        var max = new Number.unsigned_integer (uint64.MAX);
-        if (size == 64 || is_empty || is_sign_radix
-            || x == null || x.is_float () || x.compare (max) > 0 || x.compare (min) < 0)
+        if (size == 64 || is_empty || is_sign_radix || x == null || x.is_float () || x.is_complex ())
             return;
         if (x.is_negative ())
             bits = x.to_integer ();
@@ -1641,16 +1638,14 @@ public class MathEquation : GtkSource.Buffer
                 bits = *(uint32*) &f;
             }
         }
-        else
+        else if (x.is_negative ())
         {
-            var min = new Number.integer (int64.MIN);
-            var max = new Number.unsigned_integer (uint64.MAX);
-            assert (x.compare (max) <= 0 && x.compare (min) >= 0);
-            if (x.is_negative ())
-                bits = x.to_integer ();
-            else
-                bits = x.to_unsigned_integer ();
+            bits = x.to_integer ();
+            if (bit == 64 - word_size && bits >= int64.MIN >> (64 - word_size))
+                bits &= uint64.MAX >> (64 - word_size);
         }
+        else
+            bits = x.to_unsigned_integer ();
 
         bits ^= (1LL << (63 - bit));
         if (is_float)

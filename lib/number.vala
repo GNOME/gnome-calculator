@@ -218,7 +218,12 @@ public class Number : GLib.Object
     /* Return true if x is a floating point number */
     public bool is_float ()
     {
-        return force_float || !fractional_part ().is_zero ();
+        if (force_float || !fractional_component ().is_zero ())
+            return true;
+
+        var max = new Number.unsigned_integer (uint64.MAX);
+        var min = new Number.integer (int64.MIN);
+        return compare (max) > 0 || compare (min) < 0;
     }
 
     /* Return true if x is not infinite or NaN */
