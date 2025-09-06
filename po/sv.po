@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-03-07 15:52+0000\n"
-"PO-Revision-Date: 2025-03-10 00:20+0100\n"
+"POT-Creation-Date: 2025-08-26 18:09+0000\n"
+"PO-Revision-Date: 2025-09-06 15:12+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -21,21 +21,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.7\n"
 
-#: data/org.gnome.Calculator.desktop.in:3
-#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:282 src/ui/math-window.ui:105
+#: data/org.gnome.Calculator.desktop.in:2
+#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
+#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "Kalkylator"
 
-#: data/org.gnome.Calculator.desktop.in:4
+#: data/org.gnome.Calculator.desktop.in:3
 #: data/org.gnome.Calculator.metainfo.xml.in:8
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Utför aritmetiska, vetenskapliga eller finansiella beräkningar"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Calculator.desktop.in:6
+#: data/org.gnome.Calculator.desktop.in:5
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "uträkning;aritmetik;vetenskaplig;finansiell;"
 
@@ -55,13 +55,11 @@ msgstr ""
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
-"complex numbers, random number generation, prime factorization and unit "
-"conversions."
+"complex numbers, random number generation and prime factorization."
 msgstr ""
-"Den avancerade kalkylatorn stödjer många operationer så som: logaritmer, "
+"Den avancerade kalkylatorn stöder många operationer såsom: logaritmer, "
 "fakultet, trigonometriska och hyperboliska funktioner, division med rest, "
-"komplexa tal, generering av slumptal, primtalsfaktorisering och "
-"enhetsomvandling."
+"komplexa tal, generering av slumptal och primtalsfaktorisering."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:22
 msgid ""
@@ -69,82 +67,93 @@ msgid ""
 "rate, present and future value, double declining and straight line "
 "depreciation, and many others."
 msgstr ""
-"Finansiellt läge stödjer många beräkningar som periodisk räntesats, "
-"nuvarande och framtida värde, dubbel degressiv och linjär avskrivning och "
-"många andra."
+"Finansiellt läge stöder många beräkningar som periodisk räntesats, nuvarande "
+"och framtida värde, dubbel degressiv och linjär avskrivning och många andra."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
 msgid ""
-"Programming mode supports conversion between common bases (binary, octal, "
-"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"Programming mode supports calculations using common bases (binary, octal, "
+"decimal, and hexadecimal), bitwise operations, ones’ and two’s complement, "
 "character to character code conversion, and more."
 msgstr ""
-"Programmeringsläge stödjer konvertering mellan vanliga talbaser (binärt, "
-"oktalt, decimalt och hexadecimalt), boolesk algebra, ett- och tvåkomplement, "
+"Programmeringsläge stöder beräkningar med vanliga talbaser (binärt, oktalt, "
+"decimalt och hexadecimalt), bitvisa operationer, en- och tvåkomplement, "
 "konvertering från tecken till teckenkoder och annat."
 
-#: data/org.gnome.Calculator.metainfo.xml.in:39
+#: data/org.gnome.Calculator.metainfo.xml.in:32
+msgid ""
+"Conversion mode supports conversions between common units, currencies and "
+"number bases."
+msgstr ""
+"Konverteringsläge stöder konverteringar mellan vanliga enheter, valutor och "
+"talbaser."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:43
 msgid "Basic Mode"
 msgstr "Grundläggande läge"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:43
+#: data/org.gnome.Calculator.metainfo.xml.in:47
 msgid "Advanced Mode"
 msgstr "Avancerat läge"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:47
+#: data/org.gnome.Calculator.metainfo.xml.in:51
 msgid "Financial Mode"
 msgstr "Finansiellt läge"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:51
+#: data/org.gnome.Calculator.metainfo.xml.in:55
 msgid "Programming Mode"
 msgstr "Programmeringsläge"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:55
+#: data/org.gnome.Calculator.metainfo.xml.in:59
 msgid "Keyboard Mode"
 msgstr "Tangentbordsläge"
 
+#: data/org.gnome.Calculator.metainfo.xml.in:63
+msgid "Conversion Mode"
+msgstr "Konverteringsläge"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:76 src/gnome-calculator.vala:284
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
 msgid "The GNOME Project"
 msgstr "GNOME-projektet"
 
-#: data/org.gnome.calculator.gschema.xml:26
+#: data/org.gnome.calculator.gschema.xml:31
 msgid "Accuracy value"
 msgstr "Noggrannhetsvärde"
 
-#: data/org.gnome.calculator.gschema.xml:27
+#: data/org.gnome.calculator.gschema.xml:32
 msgid "The number of digits displayed after the numeric point"
 msgstr "Antalet siffror visade efter den numeriska punkten"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:37
 msgid "Word size"
 msgstr "Ordstorlek"
 
-#: data/org.gnome.calculator.gschema.xml:33
+#: data/org.gnome.calculator.gschema.xml:38
 msgid "The size of the words used in bitwise operations"
 msgstr "Storleken för orden som används i bitvisa operationer"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:43
 msgid "Numeric Base"
 msgstr "Numerisk bas"
 
-#: data/org.gnome.calculator.gschema.xml:39
+#: data/org.gnome.calculator.gschema.xml:44
 msgid "The numeric base"
 msgstr "Numeriska basen"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "Show Thousands Separators"
 msgstr "Visa tusentalsavgränsare"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:49
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Indikerar huruvida tusentalsavgränsningar visas i större tal."
 
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Show Trailing Zeroes"
 msgstr "Visa eftersläpande nollor"
 
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:54
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
@@ -152,27 +161,27 @@ msgstr ""
 "Indikerar huruvida eventuella efterliggande nollor efter talpunkten ska "
 "visas i visningsvärdet."
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Number format"
 msgstr "Talformat"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "The format to display numbers in"
 msgstr "Formatet att visa tal i"
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Angle units"
 msgstr "Vinkelenheter"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:64
 msgid "The angle units to use"
 msgstr "Vinkelenheterna att använda"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Currency update interval"
 msgstr "Uppdateringsintervall för valuta"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:69
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
@@ -180,624 +189,880 @@ msgstr ""
 "Hur ofta valutakurserna ska uppdateras. Värdet 0 betyder att valutakurserna "
 "inte hämtas från nätverket alls."
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:73
+msgid "Currency display"
+msgstr "Valutavisning"
+
+#: data/org.gnome.calculator.gschema.xml:74
+msgid ""
+"Indicates whether to show currency code, currency name or both of them in "
+"the converter."
+msgstr ""
+"Indikerar huruvida valutakod, valutanamn eller båda ska visas i "
+"konverteraren."
+
+#: data/org.gnome.calculator.gschema.xml:78
+msgid "Enabled completions"
+msgstr "Aktiverade kompletteringar"
+
+#: data/org.gnome.calculator.gschema.xml:79
+msgid ""
+"The types of completion proposals to be shown in the auto-completion list."
+msgstr ""
+"Typen av kompletteringsförslag att visa i listan för automatisk "
+"komplettering."
+
+#: data/org.gnome.calculator.gschema.xml:83
+msgid "Favorite currencies"
+msgstr "Favoritvalutor"
+
+#: data/org.gnome.calculator.gschema.xml:84
+msgid "The favorite currencies to be shown at the top of the currency list."
+msgstr "Favoritvalutorna att visa högst upp i valutalistan."
+
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Button mode"
 msgstr "Knappläge"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:89
 msgid "The button mode"
 msgstr "Knappläget"
 
-#: data/org.gnome.calculator.gschema.xml:73
-msgid "Source currency"
-msgstr "Källvaluta"
+#: data/org.gnome.calculator.gschema.xml:93
+msgid "Unit category"
+msgstr "Enhetskategori"
 
-#: data/org.gnome.calculator.gschema.xml:74
-msgid "Currency of the current calculation"
-msgstr "Valuta för aktuell beräkning"
+#: data/org.gnome.calculator.gschema.xml:94
+msgid "Currently selected unit category in the converter"
+msgstr "Aktuellt vald enhetskategori i konverteraren"
 
-#: data/org.gnome.calculator.gschema.xml:78
-msgid "Target currency"
-msgstr "Målvaluta"
-
-#: data/org.gnome.calculator.gschema.xml:79
-msgid "Currency to convert the current calculation into"
-msgstr "Valuta att konvertera den aktuell beräkningen till"
-
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Source units"
 msgstr "Källenheter"
 
-#: data/org.gnome.calculator.gschema.xml:84
-msgid "Units of the current calculation"
-msgstr "Enheter för aktuell beräkning"
+#: data/org.gnome.calculator.gschema.xml:99
+msgid "Currently selected source units in the converter"
+msgstr "Aktuellt vald källenhet i konverteraren"
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Target units"
 msgstr "Målenheter"
 
-#: data/org.gnome.calculator.gschema.xml:89
-msgid "Units to convert the current calculation into"
-msgstr "Enheter att konvertera den aktuell beräkningen till"
+#: data/org.gnome.calculator.gschema.xml:104
+msgid "Currently selected target units in the converter"
+msgstr "Aktuellt vald målenhet i konverteraren"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Internal precision"
 msgstr "Intern precision"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "The internal precision used with the MPFR library"
 msgstr "Den interna precision som används med MPFR-biblioteket"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Window position"
 msgstr "Fönsterposition"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Window position (x and y) of the last closed window."
 msgstr "Fönsterposition (x och y) för det senast stängda fönstret."
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Window maximized"
 msgstr "Fönster maximerat"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "Whether the last closed window was maximized."
 msgstr "Huruvida det senast stängda fönstret var maximerat."
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window size"
 msgstr "Fönsterstorlek"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window size (width and height) of the last closed window."
 msgstr "Fönsterstorlek (bredd och höjd) för det senast stängda fönstret."
 
-#: lib/currency.vala:64
+#: lib/currency.vala:82
 msgid "UAE Dirham"
 msgstr "Dirham (Förenade Arabemiraten)"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:83
 msgid "Argentine Peso"
 msgstr "Argentinsk peso"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:84
 msgid "Australian Dollar"
 msgstr "Australisk dollar"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:85
 msgid "Bangladeshi Taka"
 msgstr "Bangladeshisk taka"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:86
 msgid "Bulgarian Lev"
 msgstr "Bulgarisk leva"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:87
 msgid "Bahraini Dinar"
 msgstr "Dinar (Bahrain)"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "Bruneisk dollar"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "Brasiliansk real"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "Botswansk pula"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "Kanadensisk dollar"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:92
 msgid "CFA Franc"
 msgstr "CFA-franc"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:93
 msgid "Swiss Franc"
 msgstr "Schweizisk franc"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:94
 msgid "Chilean Peso"
 msgstr "Chilensk peso"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:95
 msgid "Chinese Yuan"
 msgstr "Kinesisk yuan"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:96
 msgid "Colombian Peso"
 msgstr "Colombiansk peso"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:97
 msgid "Czech Koruna"
 msgstr "Tjeckisk koruna"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:98
 msgid "Danish Krone"
 msgstr "Dansk krone"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:99
 msgid "Algerian Dinar"
 msgstr "Dinar (Algeriet)"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:100
 msgid "Estonian Kroon"
 msgstr "Estnisk kroon"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:101
+msgid "Egyptian Pound"
+msgstr "Egyptiskt pund"
+
+#: lib/currency.vala:102
 msgid "Euro"
 msgstr "Euro"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:103
 msgid "British Pound Sterling"
 msgstr "Brittiskt pund"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:104
 msgid "Hong Kong Dollar"
 msgstr "Hong Kong-dollar"
 
-#: lib/currency.vala:86
+#: lib/currency.vala:105
 msgid "Croatian Kuna"
 msgstr "Kroatisk kuna"
 
-#: lib/currency.vala:87
+#: lib/currency.vala:106
 msgid "Hungarian Forint"
 msgstr "Ungersk forint"
 
-#: lib/currency.vala:88
+#: lib/currency.vala:107
 msgid "Indonesian Rupiah"
 msgstr "Indonesisk rupiah"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:108
 msgid "Israeli New Shekel"
 msgstr "Israelisk ny shekel"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:109
 msgid "Indian Rupee"
 msgstr "Indisk rupee"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:110
 msgid "Iranian Rial"
 msgstr "Iransk rial"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:111
 msgid "Icelandic Krona"
 msgstr "Isländsk krona"
 
-#: lib/currency.vala:93
+#: lib/currency.vala:112
 msgid "Japanese Yen"
 msgstr "Japansk yen"
 
-#: lib/currency.vala:94
+#: lib/currency.vala:113
 msgid "Jamaican Dollar"
 msgstr "Jamaicansk dollar"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:114
 msgid "South Korean Won"
 msgstr "Sydkoreansk won"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:115
 msgid "Kuwaiti Dinar"
 msgstr "Dinar (Kuwait)"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:116
 msgid "Kazakhstani Tenge"
 msgstr "Kazakstansk tenge"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:117
 msgid "Sri Lankan Rupee"
 msgstr "Sri Lankansk rupee"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:118
 msgid "Libyan Dinar"
 msgstr "Dinar (Libyen)"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:119
 msgid "Mauritian Rupee"
 msgstr "Mauritiansk rupee"
 
-#: lib/currency.vala:101
+#: lib/currency.vala:120
 msgid "Mexican Peso"
 msgstr "Mexikansk peso"
 
-#: lib/currency.vala:102
+#: lib/currency.vala:121
 msgid "Malaysian Ringgit"
 msgstr "Malaysisk ringgit"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:122
 msgid "Nigerian Naira"
 msgstr "Nigerisk naira"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:123
 msgid "Norwegian Krone"
 msgstr "Norsk krone"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:124
 msgid "Nepalese Rupee"
 msgstr "Nepalesisk rupee"
 
-#: lib/currency.vala:106
+#: lib/currency.vala:125
 msgid "New Zealand Dollar"
 msgstr "New Zealand-dollar"
 
-#: lib/currency.vala:107
+#: lib/currency.vala:126
 msgid "Omani Rial"
 msgstr "Omansk rial"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:127
 msgid "Peruvian Nuevo Sol"
 msgstr "Peruansk nuevo sol"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:128
 msgid "Philippine Peso"
 msgstr "Filippinsk peso"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:129
 msgid "Pakistani Rupee"
 msgstr "Pakistansk rupee"
 
-#: lib/currency.vala:111
-msgid "Polish Zloty"
-msgstr "Polsk zloty"
+#: lib/currency.vala:130
+msgid "Polish Złoty"
+msgstr "Polsk złoty"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:131
 msgid "Qatari Riyal"
 msgstr "Qatarisk riyal"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:132
 msgid "New Romanian Leu"
 msgstr "Ny rumänsk leu"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:133
 msgid "Russian Ruble"
 msgstr "Rysk rubel"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:134
 msgid "Saudi Riyal"
 msgstr "Saudisk riyal"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:135
 msgid "Serbian Dinar"
 msgstr "Serbisk dinar"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:136
 msgid "Swedish Krona"
 msgstr "Svensk krona"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:137
 msgid "Singapore Dollar"
 msgstr "Singapore-dollar"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:138
 msgid "Thai Baht"
 msgstr "Thailändsk baht"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:139
 msgid "Tunisian Dinar"
 msgstr "Dinar (Tunisien)"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:140
 msgid "Turkish Lira"
 msgstr "Turkisk lira"
 
-#: lib/currency.vala:122
-msgid "T&T Dollar (TTD)"
+#: lib/currency.vala:141
+msgid "T&T Dollar"
 msgstr "Trinidad & Tobago-dollar"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:142
 msgid "New Taiwan Dollar"
 msgstr "Ny taiwanesisk dollar"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:143
 msgid "Ukrainian Hryvnia"
 msgstr "Ukrainsk hryvnia"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:144
 msgid "US Dollar"
 msgstr "Amerikansk dollar"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:145
 msgid "Uruguayan Peso"
 msgstr "Uruguayansk peso"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:146
 msgid "Vietnamese Dong"
 msgstr "Vietnamesisk dong"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:147
 msgid "South African Rand"
 msgstr "Sydafrikansk rand"
 
-#: lib/currency-provider.vala:188
-msgid "International Monetary Fund"
-msgstr "Internationella valutafonden"
+#: lib/equation-lexer.vala:464
+msgid "Missing digits after minus sign"
+msgstr "Saknar siffror efter minustecken"
 
-#: lib/currency-provider.vala:397
-msgid "European Central Bank"
-msgstr "Europeiska centralbanken"
+#: lib/equation-lexer.vala:562 lib/equation-lexer.vala:642
+msgid "Missing second symbol (″)"
+msgstr "Saknar sekundsymbol (″)"
 
-#: lib/currency-provider.vala:511
-msgid "Bank of Canada"
-msgstr "Kanadas centralbank"
+#: lib/equation-lexer.vala:578 lib/equation-lexer.vala:620
+msgid "Missing minute symbol (′)"
+msgstr "Saknar minutsymbol (′)"
 
-# https://treasury.un.org/operationalrates/default.php
-# UN Treasury hanterar valutakurser för FN.
-#: lib/currency-provider.vala:582
-msgid "United Nations Treasury"
-msgstr "Förenta nationernas skattkammare"
+#: lib/equation-lexer.vala:607 lib/equation-lexer.vala:632
+#: lib/equation-lexer.vala:675 lib/equation-lexer.vala:762
+msgid "Missing digits after decimal point"
+msgstr "Saknar siffror efter decimaltecken"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
 msgid "in"
 msgstr "i"
 
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
 msgid "to"
 msgstr "till"
 
-#: lib/equation-parser.vala:735 lib/number.vala:434
+#: lib/equation-parser.vala:443
+#, c-format
+msgid "Function “%s” is missing arguments"
+msgstr "Funktionen ”%s” saknar argument"
+
+#: lib/equation-parser.vala:765 lib/number.vala:568
 msgid "The zeroth root of a number is undefined"
 msgstr "Nollte roten av tal är inte definierad"
+
+#: lib/equation-parser.vala:1060
+msgid "Mathematics"
+msgstr "Matematik"
+
+#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+msgid "Euler’s Number"
+msgstr "Eulers nummer"
+
+#: lib/equation-parser.vala:1062
+msgid "Pi"
+msgstr "Pi"
+
+#: lib/equation-parser.vala:1063
+msgid "Tau"
+msgstr "Tau"
+
+#: lib/equation-parser.vala:1064
+msgid "Golden Ratio"
+msgstr "Gyllene snittet"
+
+#: lib/equation-parser.vala:1066
+msgid "Electromagnetism"
+msgstr "Elektromagnetism"
+
+#: lib/equation-parser.vala:1067
+msgid "Light Speed"
+msgstr "Ljushastigheten"
+
+#: lib/equation-parser.vala:1068
+msgid "Elementary Charge"
+msgstr "Elementarladdningen"
+
+#: lib/equation-parser.vala:1069
+msgid "Impedance of Vacuum"
+msgstr "Vågimpedansen i vakuum"
+
+# TODO: Eller Vakuumpermeabilitet
+#: lib/equation-parser.vala:1070
+msgid "Permeability of Vacuum"
+msgstr "Magnetiska konstanten"
+
+# permittiviteten för tomrum
+#: lib/equation-parser.vala:1071
+msgid "Permittivity of Vacuum"
+msgstr "Elektriska konstanten"
+
+#: lib/equation-parser.vala:1073
+msgid "Atomic & Nuclear"
+msgstr "Atomer och kärnor"
+
+#: lib/equation-parser.vala:1074
+msgid "Planck’s Constant"
+msgstr "Plancks konstant"
+
+#: lib/equation-parser.vala:1075
+msgid "Fine-Structure Constant"
+msgstr "Finstrukturkonstanten"
+
+#: lib/equation-parser.vala:1076
+msgid "Electron Mass"
+msgstr "Elektronmassan"
+
+#: lib/equation-parser.vala:1077
+msgid "Proton Mass"
+msgstr "Protonmassan"
+
+#: lib/equation-parser.vala:1079
+msgid "Thermodynamics"
+msgstr "Termodynamik"
+
+#: lib/equation-parser.vala:1080
+msgid "Boltzmann Constant"
+msgstr "Boltzmanns konstant"
+
+#: lib/equation-parser.vala:1081
+msgid "Atomic Mass Unit"
+msgstr "Atommassenhet"
+
+#: lib/equation-parser.vala:1082
+msgid "Molar Gas Constant"
+msgstr "Allmänna gaskonstanten"
+
+#: lib/equation-parser.vala:1083
+msgid "Stefan-Boltzmann Constant"
+msgstr "Stefan-Boltzmanns konstant"
+
+#: lib/equation-parser.vala:1084
+msgid "Avogadro’s Number"
+msgstr "Avogadros tal"
+
+#: lib/equation-parser.vala:1086
+msgid "Gravitation"
+msgstr "Gravitation"
+
+#: lib/equation-parser.vala:1087
+msgid "Gravitational Constant"
+msgstr "Gravitationskonstanten"
+
+#: lib/equation-parser.vala:1088
+msgid "Earth Acceleration"
+msgstr "Jordaccelerationen"
 
 #: lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "Fel: antalet punkter måste vara positivt"
 
-#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:692
-#: src/ui/buttons-financial.ui:990 src/ui/buttons-programming.ui:1951
-msgid "Logarithm"
-msgstr "Logaritm"
+#: lib/function-manager.vala:26
+msgid "Trigonometry"
+msgstr "Trigonometri"
 
-#: lib/function-manager.vala:50
-msgid "Natural logarithm"
-msgstr "Naturlig logaritm"
-
-#: lib/function-manager.vala:52
-msgid "Square root"
-msgstr "Kvadratrot"
-
-#: lib/function-manager.vala:54
-msgid "Absolute value"
-msgstr "Absolutvärde"
-
-#: lib/function-manager.vala:56
-msgid "Signum"
-msgstr "Tecken"
-
-#: lib/function-manager.vala:58
-msgid "Argument"
-msgstr "Argument"
-
-#: lib/function-manager.vala:60
-msgid "Conjugate"
-msgstr "Konjugat"
-
-#: lib/function-manager.vala:62
-msgid "Integer"
-msgstr "Heltal"
-
-#: lib/function-manager.vala:64
-msgid "Fraction"
-msgstr "Bråkdel"
-
-#: lib/function-manager.vala:66
-msgid "Floor"
-msgstr "Golv"
-
-#: lib/function-manager.vala:68
-msgid "Ceiling"
-msgstr "Tak"
-
-#: lib/function-manager.vala:70
-msgid "Round"
-msgstr "Avrunda"
-
-#: lib/function-manager.vala:72
-msgid "Real"
-msgstr "Reell"
-
-#: lib/function-manager.vala:74
-msgid "Imaginary"
-msgstr "Imaginär"
-
-#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:538
+#: lib/function-manager.vala:27 src/ui/buttons-advanced.blp:499
 msgid "Sine"
 msgstr "Sinus"
 
-#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:522
+#: lib/function-manager.vala:28 src/ui/buttons-advanced.blp:573
 msgid "Cosine"
 msgstr "Cosinus"
 
-#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:554
+#: lib/function-manager.vala:29 src/ui/buttons-advanced.blp:647
 msgid "Tangent"
 msgstr "Tangens"
 
-#: lib/function-manager.vala:82
-msgid "Arc sine"
-msgstr "Arcus sinus"
-
-#: lib/function-manager.vala:84
-msgid "Arc cosine"
-msgstr "Arcus cosinus"
-
-#: lib/function-manager.vala:86
-msgid "Arc tangent"
-msgstr "Arcus tangens"
-
-#: lib/function-manager.vala:88
-msgid "Inverse sine"
+#: lib/function-manager.vala:30 lib/function-manager.vala:115
+#: src/ui/buttons-advanced.blp:517
+msgid "Inverse Sine"
 msgstr "Invers sinus"
 
-#: lib/function-manager.vala:90
-msgid "Inverse cosine"
+#: lib/function-manager.vala:31 lib/function-manager.vala:116
+#: src/ui/buttons-advanced.blp:591
+msgid "Inverse Cosine"
 msgstr "Invers cosinus"
 
-#: lib/function-manager.vala:92
-msgid "Inverse tangent"
+#: lib/function-manager.vala:32 lib/function-manager.vala:117
+#: src/ui/buttons-advanced.blp:665
+msgid "Inverse Tangent"
 msgstr "Invers tangens"
 
-#: lib/function-manager.vala:94
-msgid "Hyperbolic sine"
+#: lib/function-manager.vala:33 src/ui/buttons-advanced.blp:536
+msgid "Hyperbolic Sine"
 msgstr "Sinus hyperbolicus"
 
-#: lib/function-manager.vala:96
-msgid "Hyperbolic cosine"
+#: lib/function-manager.vala:34 src/ui/buttons-advanced.blp:610
+msgid "Hyperbolic Cosine"
 msgstr "Cosinus hyperbolicus"
 
-#: lib/function-manager.vala:98
-msgid "Hyperbolic tangent"
+#: lib/function-manager.vala:35 src/ui/buttons-advanced.blp:684
+msgid "Hyperbolic Tangent"
 msgstr "Tangens hyperbolicus"
 
-#: lib/function-manager.vala:100
-msgid "Hyperbolic arcsine"
-msgstr "Arcus sinus hyperbolicus"
-
-#: lib/function-manager.vala:102
-msgid "Hyperbolic arccosine"
-msgstr "Arcus cosinus hyperbolicus"
-
-#: lib/function-manager.vala:104
-msgid "Hyperbolic arctangent"
-msgstr "Arcus tangens hyperbolicus"
-
-#: lib/function-manager.vala:106
-msgid "Inverse hyperbolic sine"
+#: lib/function-manager.vala:36 lib/function-manager.vala:118
+#: src/ui/buttons-advanced.blp:554
+msgid "Inverse Hyperbolic Sine"
 msgstr "Invers sinus hyperbolicus"
 
-#: lib/function-manager.vala:108
-msgid "Inverse hyperbolic cosine"
+#: lib/function-manager.vala:37 lib/function-manager.vala:119
+#: src/ui/buttons-advanced.blp:628
+msgid "Inverse Hyperbolic Cosine"
 msgstr "Invers cosinus hyperbolicus"
 
-#: lib/function-manager.vala:110
-msgid "Inverse hyperbolic tangent"
+#: lib/function-manager.vala:38 lib/function-manager.vala:120
+#: src/ui/buttons-advanced.blp:702
+msgid "Inverse Hyperbolic Tangent"
 msgstr "Invers tangens hyperbolicus"
 
-#: lib/function-manager.vala:112
-msgid "One's complement"
+#: lib/function-manager.vala:40
+msgid "Complex"
+msgstr "Komplex"
+
+#: lib/function-manager.vala:41 src/ui/buttons-advanced.blp:932
+msgid "Complex Conjugate"
+msgstr "Komplexkonjugat"
+
+#: lib/function-manager.vala:42 src/ui/buttons-advanced.blp:949
+msgid "Complex Argument"
+msgstr "Komplexargument"
+
+#: lib/function-manager.vala:43 src/ui/buttons-advanced.blp:966
+msgid "Real Component"
+msgstr "Realdel"
+
+#: lib/function-manager.vala:44 src/ui/buttons-advanced.blp:983
+msgid "Imaginary Component"
+msgstr "Imaginärdel"
+
+#: lib/function-manager.vala:46 src/math-window.vala:155
+msgid "Programming"
+msgstr "Programmering"
+
+#: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
+msgid "Ones’ Complement"
 msgstr "Enkomplement"
 
-#: lib/function-manager.vala:114
-msgid "Two's complement"
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
+msgid "Two’s Complement"
 msgstr "Tvåkomplement"
 
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:73 lib/math-equation.vala:1423
-msgid "Displayed value not an integer"
-msgstr "Visat värde är inte ett heltal"
+#: lib/function-manager.vala:49
+msgid "Swap Endianness"
+msgstr "Växla byteordning"
+
+#: lib/function-manager.vala:50 src/ui/buttons-advanced.blp:403
+#: src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
+#: src/ui/buttons-programming.blp:1808
+msgid "Modulus Divide"
+msgstr "Modulodivision"
+
+#: lib/function-manager.vala:51
+msgid "Modular Exponentiation"
+msgstr "Moduloexponent"
+
+#: lib/function-manager.vala:53
+msgid "Rounding"
+msgstr "Avrundning"
+
+#: lib/function-manager.vala:54
+msgid "Round"
+msgstr "Avrunda"
+
+#: lib/function-manager.vala:55
+msgid "Floor"
+msgstr "Golv"
+
+#: lib/function-manager.vala:56
+msgid "Ceiling"
+msgstr "Tak"
+
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
+msgid "Integer Component"
+msgstr "Heltalsdel"
+
+#: lib/function-manager.vala:58 src/ui/buttons-programming.blp:2348
+msgid "Fractional Component"
+msgstr "Bråkdel"
+
+#: lib/function-manager.vala:60
+msgid "Statistics"
+msgstr "Statistik"
+
+#: lib/function-manager.vala:61
+msgid "Sum"
+msgstr "Summa"
+
+#: lib/function-manager.vala:62
+msgid "Sum of Squares"
+msgstr "Summan av kvadrater"
+
+#: lib/function-manager.vala:63
+msgid "Average"
+msgstr "Medelvärde"
+
+#: lib/function-manager.vala:64
+msgid "Median"
+msgstr "Median"
+
+#: lib/function-manager.vala:65
+msgid "Minimum Value"
+msgstr "Minsta värde"
+
+#: lib/function-manager.vala:66
+msgid "Maximum Value"
+msgstr "Största värde"
+
+#: lib/function-manager.vala:67
+msgid "Sample Standard Deviation"
+msgstr "Standardavvikelse för stickprov"
+
+#: lib/function-manager.vala:68
+msgid "Population Standard Deviation"
+msgstr "Standardavvikelse för population"
+
+#: lib/function-manager.vala:69
+msgid "Sample Variance"
+msgstr "Stickprovsvarians"
+
+#: lib/function-manager.vala:70
+msgid "Population Variance"
+msgstr "Populationsvarians"
+
+#: lib/function-manager.vala:72
+msgid "Sundry"
+msgstr "Diverse"
+
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:806
+#: src/ui/buttons-programming.blp:2171
+msgid "Logarithm"
+msgstr "Logaritm"
+
+#: lib/function-manager.vala:74 src/ui/buttons-advanced.blp:892
+#: src/ui/buttons-financial.blp:626
+msgid "Natural Logarithm"
+msgstr "Naturlig logaritm"
+
+#: lib/function-manager.vala:75
+msgid "Square Root"
+msgstr "Kvadratrot"
+
+#: lib/function-manager.vala:76
+msgid "Absolute Value"
+msgstr "Absolutvärde"
+
+#: lib/function-manager.vala:77
+msgid "Signum"
+msgstr "Tecken"
+
+#: lib/function-manager.vala:78
+msgid "Combination"
+msgstr "Kombination"
+
+#: lib/function-manager.vala:79
+msgid "Permutation"
+msgstr "Permutation"
+
+#: lib/function-manager.vala:80
+msgid "Greatest Common Divisor"
+msgstr "Största gemensamma delare"
+
+#: lib/function-manager.vala:81
+msgid "Least Common Multiple"
+msgstr "Minsta gemensamma multipel"
+
+#: lib/function-manager.vala:82
+msgid "Comparison (Kronecker Delta)"
+msgstr "Jämförelse (Kroneckers delta)"
+
+#: lib/function-manager.vala:337
+#, c-format
+msgid "Function “%s” takes 1 argument"
+msgstr "Funktionen ”%s” tar 1 argument"
+
+#: lib/function-manager.vala:355
+#, c-format
+msgid "Function “%s” takes 1 or 2 arguments"
+msgstr "Funktionen ”%s” tar 1 eller 2 argument"
+
+#: lib/function-manager.vala:363
+#, c-format
+msgid "Function “%s” takes at least 2 arguments"
+msgstr "Funktionen ”%s” tar minst 2 argument"
+
+#: lib/function-manager.vala:370
+#, c-format
+msgid "Function “%s” takes %d argument"
+msgid_plural "Function “%s” takes %d arguments"
+msgstr[0] "Funktionen ”%s” tar %d argument"
+msgstr[1] "Funktionen ”%s” tar %d argument"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:216
+#: lib/math-equation.vala:181
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:584
+#: lib/math-equation.vala:554
 msgid "No undo history"
 msgstr "Ingen ångringshistorik"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:605
+#: lib/math-equation.vala:575
 msgid "No redo history"
 msgstr "Ingen ångringshistorik"
 
-#: lib/math-equation.vala:836
+#: lib/math-equation.vala:822
 msgid "No sane value to store"
 msgstr "Inget vettigt värde att lagra"
 
-#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1113
-msgid "Overflow. Try a bigger word size"
-msgstr "Överflöde. Prova en större ordstorlek"
-
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1118
+#: lib/math-equation.vala:1281
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Okänd variabel ”%s”"
 
+#. Error displayed to user when a currency conversion with unknown exchange rate is attempted
+#: lib/math-equation.vala:1288
+#, c-format
+msgid "Exchange rate for “%s” is not available"
+msgstr "Växlingsvärde för ”%s” är inte tillgängligt"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: lib/math-equation.vala:1295
+#, c-format
+msgid "Unknown unit “%s”"
+msgstr "Okänd enhet ”%s”"
+
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1125
+#: lib/math-equation.vala:1302
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funktionen ”%s” är inte definierad"
 
-#. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1132
+#. Error displayed to user when an invalid conversion (e.g. units of different categories)
+#: lib/math-equation.vala:1309
 msgid "Unknown conversion"
 msgstr "Okänd konvertering"
 
 #. should always be run
-#: lib/math-equation.vala:1142
+#: lib/math-equation.vala:1319
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1147 lib/math-equation.vala:1152
+#: lib/math-equation.vala:1324 lib/math-equation.vala:1329
 msgid "Malformed expression"
 msgstr "Felaktigt utformat uttryck"
 
-#: lib/math-equation.vala:1163
+#: lib/math-equation.vala:1340
 msgid "Calculating"
 msgstr "Beräknar"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1356
+#: lib/math-equation.vala:1562
 msgid "Need an integer to factorize"
 msgstr "Behöver ett heltal att faktorisera"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:306
 msgid "Underflow error"
 msgstr "Underspillsfel"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:206
+#: lib/number.vala:311
 msgid "Overflow error"
 msgstr "Överspillsfel"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:256
+#: lib/number.vala:372
 msgid "Argument not defined for zero"
 msgstr "Argument inte definierat för noll"
 
+#: lib/number.vala:442
+msgid "Floor is only defined for real numbers"
+msgstr "Golv är endast definierat för reella tal"
+
+#: lib/number.vala:457
+msgid "Ceiling is only defined for real numbers"
+msgstr "Tak är endast definierat för reella tal"
+
+#: lib/number.vala:472
+msgid "Round is only defined for real numbers"
+msgstr "Avrundning är endast definierat för reella tal"
+
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:372 lib/number.vala:402
+#: lib/number.vala:506 lib/number.vala:536
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Potensen för noll är inte definierad för en negativ exponent"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:380 lib/number.vala:410
+#: lib/number.vala:514 lib/number.vala:544
 msgid "Zero raised to zero is undefined"
 msgstr "Noll upphöjt till noll är odefinierat"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:464 lib/number.vala:495
+#: lib/number.vala:598 lib/number.vala:629
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritm med noll är inte definierad"
 
+#: lib/number.vala:634
+msgid "Logarithm with base 0 or 1 is undefined"
+msgstr "Logaritm med basen 0 eller 1 är inte definierad"
+
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:517
+#: lib/number.vala:653
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Fakultet är endast definierad för icke-negativa heltal"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:577
+#: lib/number.vala:704
 msgid "Division by zero is undefined"
 msgstr "Division med noll är inte definierad"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:598
+#: lib/number.vala:725
 msgid "Modulus division is only defined for integers"
-msgstr "Modulus division är endast definierad för heltal"
+msgstr "Modulodivision är endast definierad för heltal"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:671
+#: lib/number.vala:805
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -805,60 +1070,148 @@ msgstr ""
 "multipel av π (180°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:690
+#: lib/number.vala:824
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Inversa sinus är inte definierad för värden utanför [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:707
+#: lib/number.vala:841
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Inversa cosinus är inte definierad för värden utanför [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:725
-msgid "Arctangent function is undefined for values i and -i"
-msgstr "Arcus tangens-funktionen är inte definierad för värdena i och -i"
+#: lib/number.vala:859
+msgid "Inverse tangent is undefined for values i and -i"
+msgstr "Invers tangens är inte definierad för värdena i och -i"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:775
+#: lib/number.vala:910
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Inversa hyperboliska cosinus är inte definierad för värden mindre än ett"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:791
+#: lib/number.vala:926
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Inversa hyperboliska tangens är inte definierad för värden utanför [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:807
-msgid "Boolean AND is only defined for positive integers"
-msgstr "Boolesk AND definieras endast för positiva heltal"
+#: lib/number.vala:941
+msgid "Boolean AND is only defined for non-negative integers"
+msgstr "Boolesk AND definieras endast för icke-negativa heltal"
+
+#. Translators: Error displayed when boolean NAND attempted on non-integer values
+#: lib/number.vala:954
+msgid "Boolean NAND is only defined for non-negative integers"
+msgstr "Boolesk NAND definieras endast för icke-negativa heltal"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:819
-msgid "Boolean OR is only defined for positive integers"
-msgstr "Boolesk OR definieras endast för positiva heltal"
+#: lib/number.vala:967
+msgid "Boolean OR is only defined for non-negative integers"
+msgstr "Boolesk OR definieras endast för icke-negativa heltal"
+
+#. Translators: Error displayed when boolean NOR attempted on non-integer values
+#: lib/number.vala:980
+msgid "Boolean NOR is only defined for non-negative integers"
+msgstr "Boolesk NOR definieras endast för icke-negativa heltal"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
-msgid "Boolean XOR is only defined for positive integers"
-msgstr "Boolesk XOR definieras endast för positiva heltal"
+#: lib/number.vala:993
+msgid "Boolean XOR is only defined for non-negative integers"
+msgstr "Boolesk XOR definieras endast för icke-negativa heltal"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:843
-msgid "Boolean NOT is only defined for positive integers"
-msgstr "Boolesk NOT definieras endast för positiva heltal"
+#. Translators: Error displayed when boolean XNOR attempted on non-integer values
+#: lib/number.vala:1006
+msgid "Boolean XNOR is only defined for non-negative integers"
+msgstr "Boolesk XNOR definieras endast för icke-negativa heltal"
+
+#. Translators: Error displayed when boolean NOT attempted on non-integer values
+#: lib/number.vala:1019
+msgid "Boolean NOT is only defined for non-negative integers"
+msgstr "Boolesk NOT definieras endast för icke-negativa heltal"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:866
-msgid "Shift is only possible on integer values"
-msgstr "Skift är endast möjlig på heltalsvärden"
+#: lib/number.vala:1081
+msgid "Shift is only possible on integers"
+msgstr "Skift är endast möjlig på heltal"
 
-#: lib/serializer.vala:345
-msgid "Overflow: the result couldn’t be calculated"
-msgstr "Överflöde: resultatet kunde inte beräknas"
+#: lib/number.vala:1086 lib/number.vala:1126 lib/number.vala:1572
+msgid "Overflow. Try a bigger word size"
+msgstr "Överflöde. Prova en större ordstorlek"
+
+#: lib/number.vala:1097
+msgid "Ones’ complement is only defined for non-negative integers"
+msgstr "Enkomplement är endast definierat för icke-negativa heltal"
+
+#: lib/number.vala:1109
+msgid "Two’s complement is only defined for non-negative integers"
+msgstr "Tvåkomplement är endast definierat för icke-negativa heltal"
+
+#: lib/number.vala:1121
+msgid "Swap endianness is only possible on integers"
+msgstr "Växling av byteordning är endast möjlig på heltalsvärden"
+
+#: lib/number.vala:1149
+msgid "Combination is only defined for non-negative integers"
+msgstr "Kombination är endast definierad för icke-negativa heltal"
+
+#: lib/number.vala:1154
+msgid "Combination is undefined if n is less than r"
+msgstr "Kombination är odefinierat om n är mindre än r"
+
+#: lib/number.vala:1167
+msgid "Permutation is only defined for non-negative integers"
+msgstr "Permutation är endast definierad för icke-negativa heltal"
+
+#: lib/number.vala:1172
+msgid "Permutation is undefined if n is less than r"
+msgstr "Permutation är inte definierad om n är mindre än r"
+
+#: lib/number.vala:1193
+msgid "Greatest common divisor is only defined for integers"
+msgstr "Största gemensamma delare är endast definierad för heltal"
+
+#: lib/number.vala:1213
+msgid "Least common multiple is only defined for integers"
+msgstr "Minsta gemensamma multipel är endast definierad för heltal"
+
+#: lib/number.vala:1270
+msgid "Median is only defined for real numbers"
+msgstr "Median är endast definierad för reella tal"
+
+#: lib/number.vala:1290
+msgid "Minimum value is only defined for real numbers"
+msgstr "Minsta värde är endast definierat för reella tal"
+
+#: lib/number.vala:1307
+msgid "Maximum value is only defined for real numbers"
+msgstr "Största värde är endast definierat för reella tal"
+
+#: lib/providers/boc-provider.vala:15
+msgid "Bank of Canada"
+msgstr "Kanadas centralbank"
+
+#: lib/providers/ecb-provider.vala:12
+msgid "European Central Bank"
+msgstr "Europeiska centralbanken"
+
+#: lib/providers/imf-provider.vala:12
+msgid "International Monetary Fund"
+msgstr "Internationella valutafonden"
+
+# https://treasury.un.org/operationalrates/default.php
+# UN Treasury hanterar valutakurser för FN.
+#: lib/providers/unt-provider.vala:12
+msgid "United Nations Treasury"
+msgstr "Förenta nationernas skattkammare"
+
+#: lib/serializer.vala:354 lib/serializer.vala:391
+msgid ""
+"The result is too long to display in fixed format. Try other result formats"
+msgstr ""
+"Resultatet är för långt för att visa i fast format. Försök med andra "
+"resultatformat"
 
 #: lib/unit.vala:29
 msgid "Angle"
@@ -909,1689 +1262,1231 @@ msgid "Digital Storage"
 msgstr "Digital lagring"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:43 src/math-preferences.vala:103
-msgid "Degrees"
-msgstr "Grader"
+#: lib/unit.vala:43
+msgid "Degrees (Decimal)"
+msgstr "Grader (Decimal)"
 
 #: lib/unit.vala:43
 msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "grad,grader,grd"
 
-#: lib/unit.vala:44 src/math-preferences.vala:105
+#: lib/unit.vala:44
+msgid "Degrees (D°M′S″)"
+msgstr "Grader (D°M′S″)"
+
+#: lib/unit.vala:45 src/buttons-advanced.vala:87 src/math-preferences.vala:136
 msgid "Radians"
 msgstr "Radianer"
 
-#: lib/unit.vala:44
+#: lib/unit.vala:45
 msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radian,radians,radianer,rad"
 
-#: lib/unit.vala:45 src/math-preferences.vala:107
+#: lib/unit.vala:46 src/buttons-advanced.vala:87 src/math-preferences.vala:138
 msgid "Gradians"
 msgstr "Nygrader"
 
-#: lib/unit.vala:45
+#: lib/unit.vala:46
 msgctxt "unit-symbols"
 msgid "gradian,gradians,grad"
 msgstr "gradian,gradians,grad,nygrad,nygrader,nygr"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgid "Parsecs"
 msgstr "Parsec"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgctxt "unit-symbols"
 msgid "parsec,parsecs,pc"
 msgstr "parsec,pc"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgid "Light Years"
 msgstr "Ljusår"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgctxt "unit-symbols"
 msgid "lightyear,lightyears,ly"
 msgstr "ljusår,lå,ly"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgid "Astronomical Units"
 msgstr "Astronomiska enheter"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgctxt "unit-symbols"
 msgid "au"
 msgstr "au"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgid "Rack Units"
 msgstr "Höjdenheter"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgctxt "unit-symbols"
 msgid "U"
 msgstr "U,HE"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgid "Nautical Miles"
 msgstr "Sjömil"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgctxt "unit-symbols"
 msgid "nmi"
 msgstr "M,nmi"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgid "Miles"
 msgstr "Engelska mil"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgctxt "unit-symbols"
 msgid "mile,miles,mi"
 msgstr "engelsk mil,engelska mil,mi,mile,miles"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgid "Kilometers"
 msgstr "Kilometer"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgctxt "unit-symbols"
 msgid "kilometer,kilometers,km,kms"
 msgstr "kilometer,kilometers,km,kms"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgid "Cables"
 msgstr "Kablar"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgctxt "unit-symbols"
 msgid "cable,cables,cb"
 msgstr "kabel,kablar,cable,cables,cb"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgid "Fathoms"
 msgstr "Famn"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgctxt "unit-symbols"
 msgid "fathom,fathoms,ftm"
 msgstr "famn,fathom,fathoms,ftm"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgid "Meters"
 msgstr "Meter"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgctxt "unit-symbols"
 msgid "meter,meters,m"
 msgstr "meter,meters,m"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgid "Yards"
 msgstr "Yard"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgctxt "unit-symbols"
 msgid "yard,yards,yd"
 msgstr "yard,yards,yd"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgid "Feet"
 msgstr "Fot"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgctxt "unit-symbols"
 msgid "foot,feet,ft"
 msgstr "foot,feet,ft"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgid "Inches"
 msgstr "Tum"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgctxt "unit-symbols"
 msgid "inch,inches,in"
 msgstr "tum,inch,inches,in"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgid "Centimeters"
 msgstr "Centimeter"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgctxt "unit-symbols"
 msgid "centimeter,centimeters,cm,cms"
 msgstr "centimeter,centimeters,cm,cms"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgid "Millimeters"
 msgstr "Millimeter"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgctxt "unit-symbols"
 msgid "millimeter,millimeters,mm"
 msgstr "millimeter,millimeters,mm"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgid "Micrometers"
 msgstr "Mikrometer"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgctxt "unit-symbols"
 msgid "micrometer,micrometers,um"
 msgstr "mikrometer,mcm,um"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgid "Nanometers"
 msgstr "Nanometer"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgctxt "unit-symbols"
 msgid "nanometer,nanometers,nm"
 msgstr "nanometer,nanometers,nm"
 
-#: lib/unit.vala:63
-msgid "Desktop Publishing Point"
-msgstr "Desktop Publishing-punkt"
+#: lib/unit.vala:64
+msgid "Desktop Publishing Points"
+msgstr "Desktop Publishing-punkter"
 
-#: lib/unit.vala:63
+#: lib/unit.vala:64
 msgctxt "unit-symbols"
 msgid "point,pt,points,pts"
 msgstr "punkt,punkter,point,pt,points,pts"
 
-#: lib/unit.vala:64
-msgid "Kilometers per hour"
+#: lib/unit.vala:65
+msgid "Kilometers per Hour"
 msgstr "Kilometer per timme"
 
-#: lib/unit.vala:64
+#: lib/unit.vala:65
 msgctxt "unit-symbols"
 msgid "kilometers per hour,kmph,kmh,kph"
 msgstr "kilometer per timme,kmph,kmh,kph"
 
-#: lib/unit.vala:65
-msgid "Miles per hour"
+#: lib/unit.vala:66
+msgid "Miles per Hour"
 msgstr "Miles per timme"
 
-#: lib/unit.vala:65
+#: lib/unit.vala:66
 msgctxt "unit-symbols"
 msgid "milesph,miles per hour,mi/h,miph,mph"
 msgstr ""
 "miles per timme,engelska mil per timme,milesph,miles per hour,mi/h,miph,mph"
 
-#: lib/unit.vala:66
-msgid "Meters per second"
+#: lib/unit.vala:67
+msgid "Meters per Second"
 msgstr "Meter per sekund"
 
-#: lib/unit.vala:66
+#: lib/unit.vala:67
 msgctxt "unit-symbols"
 msgid "meters per second,mps"
 msgstr "meter per sekund,mps"
 
-#: lib/unit.vala:67
-msgid "Feet per second"
+#: lib/unit.vala:68
+msgid "Feet per Second"
 msgstr "Fot per sekund"
 
-#: lib/unit.vala:67
+#: lib/unit.vala:68
 msgctxt "unit-symbols"
 msgid "fps,feet per second,feetps"
 msgstr "fot per sekund,feet per second,feetps"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgid "Knots"
 msgstr "Knop"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgctxt "unit-symbols"
 msgid "kt,kn,nd,knot,knots"
 msgstr "kn,knop"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgid "Hectares"
 msgstr "Hektar"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgctxt "unit-symbols"
 msgid "hectare,hectares,ha"
 msgstr "hektar,ha"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgid "Acres"
 msgstr "Tunnland"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgctxt "unit-symbols"
 msgid "acre,acres"
 msgstr "tunnland,acre,acres"
 
-#: lib/unit.vala:71
-msgid "Square Foot"
+#: lib/unit.vala:72
+msgid "Square Miles"
+msgstr "Kvadrat-mile"
+
+#: lib/unit.vala:72
+msgctxt "unit-symbols"
+msgid "mi²"
+msgstr "mi²"
+
+#: lib/unit.vala:73
+msgid "Square Feet"
 msgstr "Kvadratfot"
 
-#: lib/unit.vala:71
+#: lib/unit.vala:73
 msgctxt "unit-symbols"
 msgid "ft²"
 msgstr "fot²,ft²"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:74
+msgid "Square Kilometers"
+msgstr "Kvadratkilometer"
+
+#: lib/unit.vala:74
+msgctxt "unit-symbols"
+msgid "km²"
+msgstr "km²"
+
+#: lib/unit.vala:75
 msgid "Square Meters"
 msgstr "Kvadratmeter"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:75
 msgctxt "unit-symbols"
 msgid "m²"
 msgstr "m²"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgid "Square Centimeters"
 msgstr "Kvadratcentimeter"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgctxt "unit-symbols"
 msgid "cm²"
 msgstr "cm²"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgid "Square Millimeters"
 msgstr "Kvadratmillimeter"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "mm²"
 msgstr "mm²"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgid "Cubic Meters"
 msgstr "Kubikmeter"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "m³"
 msgstr "m³"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:79
+msgid "British Gallons"
+msgstr "Brittiska gallons"
+
+#: lib/unit.vala:79
+msgctxt "unit-symbols"
+msgid "imp_gallon,imp_gallons,imp_gal"
+msgstr "imp_gallon,imp_gallons,imp_gal"
+
+#: lib/unit.vala:80
 msgid "US Gallons"
 msgstr "Amerikanska gallons"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "gallon,gallons,gal"
 msgstr "gallon,gallons,gal"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgid "Liters"
 msgstr "Liter"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgctxt "unit-symbols"
 msgid "litre,litres,liter,liters,L"
 msgstr "litre,litres,liter,liters,L"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgid "US Quarts"
 msgstr "Amerikanska quarts"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgctxt "unit-symbols"
 msgid "quart,quarts,qt"
 msgstr "quart,quarts,qt"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:83
+msgid "British Pints"
+msgstr "Brittiska pints"
+
+#: lib/unit.vala:83
+msgctxt "unit-symbols"
+msgid "imp_pint,imp_pints,imp_pt"
+msgstr "imp_pint,imp_pints,imp_pt"
+
+#: lib/unit.vala:84
 msgid "US Pints"
 msgstr "Amerikanska pints"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:84
 msgctxt "unit-symbols"
 msgid "pint,pints,pt"
 msgstr "pint,pints,pt"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgid "Metric Cups"
 msgstr "Metriska koppar"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgctxt "unit-symbols"
 msgid "cup,cups,cp"
 msgstr "kopp,koppar,cup,cups,cp"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgid "Milliliters"
 msgstr "Milliliter"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgid "Microliters"
 msgstr "Mikroliter"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
 msgstr "mm³,μL,uL"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgid "Tonnes"
 msgstr "Ton"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgctxt "unit-symbols"
 msgid "tonne,tonnes"
 msgstr "ton,tonne,tonnes"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgid "Kilograms"
 msgstr "Kilogram"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgctxt "unit-symbols"
 msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgstr "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgid "Pounds"
 msgstr "Pund"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb,lbs"
 msgstr "pund,pound,pounds,lb,lbs"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgid "Ounces"
 msgstr "Uns"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgctxt "unit-symbols"
 msgid "ounce,ounces,oz"
 msgstr "uns,ounce,ounces,oz"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgid "Troy Ounces"
 msgstr "Troy-uns"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgctxt "unit-symbols"
 msgid "Troy ounce,Troy ounces,ozt"
 msgstr "Troy-uns,Troy ounce,Troy ounces,ozt"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgid "Grams"
 msgstr "Gram"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "gram,grams,gramme,grammes,g"
 msgstr "gram,g"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:94
+msgid "Milligrams"
+msgstr "Milligram"
+
+#: lib/unit.vala:94
+msgctxt "unit-symbols"
+msgid "milligram,milligrams,milligramme,milligrammes,mg"
+msgstr "milligram,milligrams,milligramme,milligrammes,mg"
+
+#: lib/unit.vala:95
+msgid "Micrograms"
+msgstr "Mikrogram"
+
+#: lib/unit.vala:95
+msgctxt "unit-symbols"
+msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
+msgstr "mikrogram,microgram,micrograms,microgramme,microgrammes,μg,ug"
+
+#: lib/unit.vala:96
 msgid "Stone"
 msgstr "Stone"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:96
 msgctxt "unit-symbols"
 msgid "stone,st,stones"
 msgstr "stone,st,stones"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgid "Centuries"
 msgstr "Århundraden"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgctxt "unit-symbols"
 msgid "century,centuries"
 msgstr "sekel,århundrade,århundraden"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgid "Decades"
 msgstr "Årtionden"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "decade,decades"
 msgstr "decennium,årtionde,årtionden"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgid "Years"
 msgstr "År"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "år"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgid "Months"
 msgstr "Månader"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "month,months"
 msgstr "månad,månader"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgid "Weeks"
 msgstr "Veckor"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "week,weeks"
 msgstr "vecka,veckor"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgid "Days"
 msgstr "Dagar"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "dag,dagar"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgid "Hours"
 msgstr "Timmar"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "timme,timmar"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgid "Minutes"
 msgstr "Minuter"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "minut,minuter"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgid "Seconds"
 msgstr "Sekunder"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "sekund,sekunder,s"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgid "Milliseconds"
 msgstr "Millisekunder"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "millisekund,millisekunder,ms"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgid "Microseconds"
 msgstr "Mikrosekunder"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "mikrosekund,mikrosekunder,us,μs"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgid "Nanoseconds"
 msgstr "Nanosekunder"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "nanosecond,nanoseconds,ns"
 msgstr "nanosekund,nanosekunder,ns"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
 msgid "Celsius"
 msgstr "Celsius"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
 msgctxt "unit-symbols"
-msgid "degC,˚C,C,c,Celsius,celsius"
-msgstr "degC,gradC,˚C,C,c,Celsius,celsius"
+msgid "degC,°C,˚C,C,c,Celsius,celsius"
+msgstr "degC,gradC,°C,˚C,C,c,Celsius,celsius"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
 msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
 msgctxt "unit-symbols"
-msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
-msgstr "degF,gradF,˚F,F,f,Fahrenheit,fahrenheit"
+msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "degF,gradF,°F,˚F,F,f,Fahrenheit,fahrenheit"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgid "Kelvin"
 msgstr "Kelvin"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
 msgstr "k,K,Kelvin,kelvin"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
 msgid "Rankine"
 msgstr "Rankine"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
 msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
-msgstr "degR,gradR,˚R,˚Ra,r,R,Rankine,rankine"
+msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
+msgstr "degR,gradR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgid "Bits"
 msgstr "Bit"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "bit,bits,b"
 msgstr "bit,bits,b"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgid "Bytes"
 msgstr "Byte"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
 msgstr "byte,bytes,B"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgid "Nibbles"
 msgstr "Nibble"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "nibble,nibbles"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgid "Kilobits"
 msgstr "Kilobit"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "kilobit,kilobits,kb,Kb"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgid "Kilobytes"
 msgstr "Kilobyte"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "kilobyte,kilobytes,kB,KB"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgid "Kibibits"
 msgstr "Kibibit"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "kibibit,kibibits,Kib"
 msgstr "kibibit,kibibits,Kib"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgid "Kibibytes"
 msgstr "Kibibyte"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
 msgstr "kibibyte,kibibytes,KiB"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgid "Megabits"
 msgstr "Megabit"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "megabit,megabits,Mb"
 msgstr "megabit,megabits,Mb"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgid "Megabytes"
 msgstr "Megabyte"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
 msgstr "megabyte,megabytes,MB"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgid "Mebibits"
 msgstr "Mebibit"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgctxt "unit-symbols"
 msgid "mebibit,mebibits,Mib"
 msgstr "mebibit,mebibits,Mib"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgid "Mebibytes"
 msgstr "Mebibyte"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
 msgstr "mebibyte,mebibytes,MiB"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgid "Gigabits"
 msgstr "Gigabit"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgctxt "unit-symbols"
 msgid "gigabit,gigabits,Gb"
 msgstr "gigabit,gigabits,Gb"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgid "Gigabytes"
 msgstr "Gigabyte"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
 msgstr "gigabyte,gigabytes,GB"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgid "Gibibits"
 msgstr "Gibibit"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgctxt "unit-symbols"
 msgid "gibibit,gibibits,Gib"
 msgstr "gibibit,gibibits,Gib"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgid "Gibibytes"
 msgstr "Gibibyte"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
 msgstr "gibibyte,gibibytes,GiB"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgid "Terabits"
 msgstr "Terabit"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgctxt "unit-symbols"
 msgid "terabit,terabits,Tb"
 msgstr "terabit,terabits,Tb"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgid "Terabytes"
 msgstr "Terabyte"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
 msgstr "terabyte,terabytes,TB"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgid "Tebibits"
 msgstr "Tebibit"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgctxt "unit-symbols"
 msgid "tebibit,tebibits,Tib"
 msgstr "tebibit,tebibits,Tib"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgid "Tebibytes"
 msgstr "Tebibyte"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
 msgstr "tebibyte,tebibytes,TiB"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgid "Petabits"
 msgstr "Petabit"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgctxt "unit-symbols"
 msgid "petabit,petabits,Pb"
 msgstr "petabit,petabits,Pb"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgid "Petabytes"
 msgstr "Petabyte"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
 msgstr "petabyte,petabytes,PB"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgid "Pebibits"
 msgstr "Pebibit"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgctxt "unit-symbols"
 msgid "pebibit,pebibits,Pib"
 msgstr "pebibit,pebibits,Pib"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgid "Pebibytes"
 msgstr "Pebibyte"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
 msgstr "pebibyte,pebibytes,PiB"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgid "Exabits"
 msgstr "Exabit"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgctxt "unit-symbols"
 msgid "exabit,exabits,Eb"
 msgstr "exabit,exabits,Eb"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgid "Exabytes"
 msgstr "Exabyte"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
 msgstr "exabyte,exabytes,EB"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgid "Exbibits"
 msgstr "Exbibit"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgctxt "unit-symbols"
 msgid "exbibit,exbibits,Eib"
 msgstr "exbibit,exbibits,Eib"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgid "Exbibytes"
 msgstr "Exbibyte"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
 msgstr "exbibyte,exbibytes,EiB"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgid "Zettabits"
 msgstr "Zettabit"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgctxt "unit-symbols"
 msgid "zettabit,zettabits,Zb"
 msgstr "zettabit,zettabits,Zb"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgid "Zettabytes"
 msgstr "Zettabyte"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
 msgstr "zettabyte,zettabytes,ZB"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgid "Zebibits"
 msgstr "Zebibit"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgctxt "unit-symbols"
 msgid "zebibit,zebibits,Zib"
 msgstr "zebibit,zebibits,Zib"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgid "Zebibytes"
 msgstr "Zebibyte"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
 msgstr "zebibyte,zebibytes,ZiB"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgid "Yottabits"
 msgstr "Yottabit"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgctxt "unit-symbols"
 msgid "yottabit,yottabits,Yb"
 msgstr "yottabit,yottabits,Yb"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgid "Yottabytes"
 msgstr "Yottabyte"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
 msgstr "yottabyte,yottabytes,YB"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgid "Yobibits"
 msgstr "Yobibit"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgctxt "unit-symbols"
 msgid "yobibit,yobibits,Yib"
 msgstr "yobibit,yobibits,Yib"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgid "Yobibytes"
 msgstr "Yobibyte"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
 msgstr "yobibyte,yobibytes,YiB"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgid "Hertz"
 msgstr "Hertz"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "hertz,Hz"
 msgstr "hertz,Hz"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgid "Kilohertz"
 msgstr "Kilohertz"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "kilohertz,kHz"
 msgstr "kilohertz,kHz"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgid "Megahertz"
 msgstr "Megahertz"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "megahertz,MHz"
 msgstr "megahertz,MHz"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgid "Gigahertz"
 msgstr "Gigahertz"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "gigahertz,GHz"
 msgstr "gigahertz,GHz"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgid "Terahertz"
 msgstr "Terahertz"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "terahertz,THz"
 msgstr "terahertz,THz"
 
-#: lib/unit.vala:148
-msgid "Joule"
+#: lib/unit.vala:155
+msgid "Joules"
 msgstr "Joule"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:155
 msgctxt "unit-symbols"
 msgid "Joule,J,joule,joules"
 msgstr "Joule,J,joule,joules"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgid "Kilojoules"
 msgstr "Kilojoule"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgctxt "unit-symbols"
 msgid "KJ,kilojoules,kilojoule"
 msgstr "KJ,kilojoules,kilojoule"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgid "Megajoules"
 msgstr "Megajoule"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgctxt "unit-symbols"
 msgid "MJ,megajoules,megajoule"
 msgstr "MJ,megajoules,megajoule"
 
-#: lib/unit.vala:151
-msgid "KilowattHour"
-msgstr "Kilowattimme"
+#: lib/unit.vala:158
+msgid "Kilowatt-Hours"
+msgstr "Kilowattimmar"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:158
 msgctxt "unit-symbols"
 msgid "kwh,kWh,kilowatt-hour,kilowatthour"
 msgstr "kwh,kWh,kilowatt-hour,kilowatthour,kilowattimme"
 
-#: lib/unit.vala:152
-msgid "BTU"
-msgstr "BTU"
+#: lib/unit.vala:159
+msgid "British Thermal Units"
+msgstr "Btu (Brittiska termiska enheter)"
 
-#: lib/unit.vala:152
+#: lib/unit.vala:159
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:153
-msgid "Calorie"
-msgstr "Kalori"
+#: lib/unit.vala:160
+msgid "Calories"
+msgstr "Kalorier"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:160
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "kalori,kalorier,calories,calorie,cal"
 
-#: lib/unit.vala:154
-msgid "Erg"
+#: lib/unit.vala:161
+msgid "Kilocalories"
+msgstr "Kilokalorier"
+
+#: lib/unit.vala:161
+msgctxt "unit-symbols"
+msgid "kilocalories,kilocalorie,kcal"
+msgstr "kilokalori,kilokalorier,kilocalories,kilocalorie,kcal"
+
+#: lib/unit.vala:162
+msgid "Ergs"
 msgstr "Erg"
 
-#: lib/unit.vala:154
+#: lib/unit.vala:162
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "ergs,erg"
 
-#: lib/unit.vala:155
-msgid "eV"
-msgstr "eV"
+#: lib/unit.vala:163
+msgid "Electron Volts"
+msgstr "Elektronvolt"
 
-#: lib/unit.vala:155
+#: lib/unit.vala:163
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "elektronvolt,electronvolt,electronvolts,ev"
 
-#: lib/unit.vala:156
-msgid "Ft-lb"
-msgstr "Ft-lb"
+#: lib/unit.vala:164
+msgid "Foot-Pounds"
+msgstr "Fotpund"
 
-#: lib/unit.vala:156
+#: lib/unit.vala:164
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "fotpund,foot-pound,foot-pounds,ft-lb,ft-lbs"
 
-#: lib/unit.vala:157
-msgid "Pascal"
+#: lib/unit.vala:165
+msgid "Pascals"
 msgstr "Pascal"
 
-#: lib/unit.vala:157
+#: lib/unit.vala:165
 msgctxt "unit-symbols"
 msgid "Pascal,pascal,Pa"
 msgstr "Pascal,pascal,Pa"
 
-#: lib/unit.vala:158
-msgid "Kilopascal"
+#: lib/unit.vala:166
+msgid "Kilopascals"
 msgstr "Kilopascal"
 
-#: lib/unit.vala:158
+#: lib/unit.vala:166
 msgctxt "unit-symbols"
 msgid "Kilopascal,kilopascal,kPa"
 msgstr "Kilopascal,kilopascal,kPa"
 
-#: lib/unit.vala:159
-msgid "Hectopascal"
+#: lib/unit.vala:167
+msgid "Hectopascals"
 msgstr "Hektopascal"
 
-#: lib/unit.vala:159
+#: lib/unit.vala:167
 msgctxt "unit-symbols"
 msgid "Hectopascal,hectopascal,hPa"
 msgstr "Hektopascal,hektopascal,Hectopascal,hectopascal,hPa"
 
-#: lib/unit.vala:160
-msgid "Bar"
+#: lib/unit.vala:168
+msgid "Bars"
 msgstr "Bar"
 
-#: lib/unit.vala:160
+#: lib/unit.vala:168
 msgctxt "unit-symbols"
 msgid "Bar,bar"
 msgstr "Bar,bar"
 
-#: lib/unit.vala:161
-msgid "Standard Atmosphere"
-msgstr "Standardatmosfär"
+#: lib/unit.vala:169
+msgid "Standard Atmospheres"
+msgstr "Standardatmosfärer"
 
-#: lib/unit.vala:161
+#: lib/unit.vala:169
 msgctxt "unit-symbols"
 msgid "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm"
 msgstr ""
 "Standardatmosfär,standardatmosfär,Standard Atmosphere,Standard "
 "atmosphere,standard atmosphere,Atm,atm"
 
-#: lib/unit.vala:162
-msgid "Millimetre of Mercury"
+#: lib/unit.vala:170
+msgid "Millimeters of Mercury"
 msgstr "Millimeter kvicksilver"
 
-#: lib/unit.vala:162
+#: lib/unit.vala:170
 msgctxt "unit-symbols"
-msgid "Millimetre of Mercury,millimetre of mercury,mmHg"
+msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
 msgstr ""
-"Millimeter kvicksilver,millimeter kvicksilver,Millimetre of "
-"Mercury,millimetre of mercury,mmHg"
+"Millimeter kvicksilver,millimeter kvicksilver,Millimeter of "
+"Mercury,millimeter of mercury,mmHg"
 
-#: lib/unit.vala:163
-msgid "Inch of Mercury"
+#: lib/unit.vala:171
+msgid "Inches of Mercury"
 msgstr "Tum kvicksilver"
 
-#: lib/unit.vala:163
+#: lib/unit.vala:171
 msgctxt "unit-symbols"
 msgid "Inch of Mercury,inch of mercury,inHg"
 msgstr "Tum kvicksilver,tum kvicksilver,Inch of Mercury,inch of mercury,inHg"
 
-#: lib/unit.vala:164
-msgid "Pound per Square Inch"
+#: lib/unit.vala:172
+msgid "Pounds per Square Inch"
 msgstr "Pund per kvadrattum"
 
-#: lib/unit.vala:164
+#: lib/unit.vala:172
 msgctxt "unit-symbols"
 msgid "Pound per Square Inch,pound per square inch,psi"
 msgstr ""
 "Pund per kvadrattum,pund per kvadrattum,Pound per Square Inch,pound per "
 "square inch,psi"
 
-#: lib/unit.vala:166
+#: lib/unit.vala:174
 msgid "Currency"
 msgstr "Valuta"
 
-#: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:76
-#: src/ui/buttons-programming.ui:82 src/ui/buttons-programming.ui:88
-msgid "Copy"
-msgstr "Kopiera"
-
-#: search-provider/search-provider.vala:200
-msgid "Copy result to clipboard"
-msgstr "Kopiera resultat till urklipp"
-
-#: src/ui/buttons-advanced.ui:162 src/ui/buttons-basic.ui:109
-#: src/ui/buttons-financial.ui:722 src/ui/buttons-programming.ui:1698
-msgid "Modulus Divide"
-msgstr "Modulusdivision"
-
-#: src/ui/buttons-advanced.ui:178 src/ui/buttons-basic.ui:125
-#: src/ui/buttons-financial.ui:738 src/ui/buttons-programming.ui:1343
-msgid "Divide [/]"
-msgstr "Dividera [/]"
-
-#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:215
-#: src/ui/buttons-financial.ui:828 src/ui/buttons-programming.ui:1359
-msgid "Multiply [*]"
-msgstr "Multiplicera [*]"
-
-#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:231
-#: src/ui/buttons-financial.ui:844 src/ui/buttons-programming.ui:1375
-msgid "Subtract [-]"
-msgstr "Subtrahera [-]"
-
-# Detta är räknesättet
-#: src/ui/buttons-advanced.ui:299 src/ui/buttons-basic.ui:246
-#: src/ui/buttons-financial.ui:859 src/ui/buttons-programming.ui:1390
-msgid "Add [+]"
-msgstr "Addera [+]"
-
-#: src/ui/buttons-advanced.ui:315 src/ui/buttons-basic.ui:262
-#: src/ui/buttons-programming.ui:1328 src/math-buttons.vala:698
-msgid "Pi [Ctrl+P]"
-msgstr "Pi [Ctrl+P]"
-
-#: src/ui/buttons-advanced.ui:331 src/ui/buttons-basic.ui:278
-#: src/ui/buttons-financial.ui:875 src/ui/buttons-programming.ui:1312
-msgid "Root [Ctrl+R]"
-msgstr "Rot [Ctrl+R]"
-
-#: src/ui/buttons-advanced.ui:346 src/ui/buttons-basic.ui:293
-msgid "Square [Ctrl+2]"
-msgstr "Kvadrat [Ctrl+2]"
-
-#: src/ui/buttons-advanced.ui:366 src/ui/buttons-basic.ui:313
-#: src/ui/buttons-conversion.ui:194 src/ui/buttons-financial.ui:890
-#: src/ui/buttons-programming.ui:1421
-msgid "Clear Display [Escape]"
-msgstr "Töm skärmen [Escape]"
-
-#: src/ui/buttons-advanced.ui:381 src/ui/buttons-basic.ui:328
-#: src/ui/buttons-financial.ui:905 src/ui/buttons-programming.ui:1713
-msgid "Start Group [(]"
-msgstr "Startblock [(]"
-
-#: src/ui/buttons-advanced.ui:397 src/ui/buttons-basic.ui:344
-#: src/ui/buttons-financial.ui:921 src/ui/buttons-programming.ui:1728
-msgid "End Group [)]"
-msgstr "Slutblock [)]"
-
-#: src/ui/buttons-advanced.ui:413 src/ui/buttons-basic.ui:360
-#: src/ui/buttons-financial.ui:937
-msgid "Percentage [%]"
-msgstr "Procent [%]"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:427 src/ui/buttons-basic.ui:374
-#: src/ui/buttons-financial.ui:951 src/ui/buttons-programming.ui:1404
-msgid "="
-msgstr "="
-
-#: src/ui/buttons-advanced.ui:429 src/ui/buttons-basic.ui:376
-#: src/ui/buttons-financial.ui:953 src/ui/buttons-programming.ui:1406
-msgid "Calculate Result"
-msgstr "Beräkna resultat"
-
-#: src/ui/buttons-advanced.ui:455 src/ui/buttons-programming.ui:1753
-msgid "Subscript Mode [Alt]"
-msgstr "Indexläge [Alt]"
-
-#: src/ui/buttons-advanced.ui:471 src/ui/buttons-programming.ui:1769
-msgid "Superscript Mode [Ctrl]"
-msgstr "Exponentläge [Ctrl]"
-
-#: src/ui/buttons-advanced.ui:487 src/ui/buttons-programming.ui:2057
-msgid "Factorize [Ctrl+F]"
-msgstr "Faktorisera [Ctrl+F]"
-
-#: src/ui/buttons-advanced.ui:501
-msgid "Scientific Exponent [Ctrl+E]"
-msgstr "Vetenskaplig exponent [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:570
-msgid "Hyperbolic Cosine"
-msgstr "Hyperbolisk cosinus"
-
-#: src/ui/buttons-advanced.ui:586
-msgid "Hyperbolic Sine"
-msgstr "Hyperbolisk sinus"
-
-#: src/ui/buttons-advanced.ui:602
-msgid "Hyperbolic Tangent"
-msgstr "Hyperbolisk tangens"
-
-#: src/ui/buttons-advanced.ui:617 src/ui/buttons-financial.ui:968
-#: src/ui/buttons-programming.ui:1908
-msgid "Exponent [^ or **]"
-msgstr "Exponent [^ eller **]"
-
-#: src/ui/buttons-advanced.ui:638 src/ui/buttons-programming.ui:1929
-msgid "Inverse [Ctrl+I]"
-msgstr "Invers [Ctrl+I]"
-
-#: src/ui/buttons-advanced.ui:660
-msgid "Euler’s Number"
-msgstr "Eulers nummer"
-
-#: src/ui/buttons-advanced.ui:676
-msgid "Natural Logarithm"
-msgstr "Naturlig logaritm"
-
-#: src/ui/buttons-advanced.ui:707 src/ui/buttons-programming.ui:1982
-msgid "Factorial [!]"
-msgstr "Fakultet [!]"
-
-#: src/ui/buttons-advanced.ui:728 src/ui/buttons-programming.ui:2003
-msgid "Absolute Value [|]"
-msgstr "Absolutvärde [|]"
-
-#: src/ui/buttons-advanced.ui:750
-msgid "Imaginary Unit"
-msgstr "Imaginärenhet"
-
-#: src/ui/buttons-advanced.ui:766
-msgid "Real Component"
-msgstr "Realdel"
-
-#: src/ui/buttons-advanced.ui:782
-msgid "Imaginary Component"
-msgstr "Imaginärdel"
-
-#: src/ui/buttons-advanced.ui:798
-msgid "Complex Conjugate"
-msgstr "Komplexkonjugat"
-
-#: src/ui/buttons-advanced.ui:814
-msgid "Complex Argument"
-msgstr "Komplexargument"
-
-#: src/ui/buttons-advanced.ui:830 src/ui/buttons-financial.ui:1030
-#: src/ui/buttons-programming.ui:2089
-msgid "Memory"
-msgstr "Minne"
-
-#. The label on the memory button
-#: src/ui/buttons-advanced.ui:831 src/ui/buttons-financial.ui:1032
-#: src/ui/buttons-programming.ui:2087
-msgid "x"
-msgstr "x"
-
-#: src/ui/buttons-advanced.ui:846
-msgid "Additional Functions"
-msgstr "Ytterligare funktioner"
-
-#: src/ui/buttons-conversion.ui:208
-msgid "Switch Conversion Units"
-msgstr "Byt konverteringsenheter"
-
-#: src/ui/buttons-conversion.ui:222
-msgid "Backspace"
-msgstr "Backsteg"
-
-# Compounding kan även vara ränta-på-ränta. Oklar
-#. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1048
-msgid "Compounding Term"
-msgstr "Sammansatt period"
-
-#: src/ui/buttons-financial.ui:15 src/ui/buttons-financial.ui:71
-#: src/ui/buttons-financial.ui:127 src/ui/buttons-financial.ui:183
-#: src/ui/buttons-financial.ui:233 src/ui/buttons-financial.ui:289
-#: src/ui/buttons-financial.ui:345 src/ui/buttons-financial.ui:401
-#: src/ui/buttons-financial.ui:457 src/ui/buttons-financial.ui:519
-#: src/ui/buttons-programming.ui:2172 src/gnome-calculator.vala:308
-msgid "_Cancel"
-msgstr "A_vbryt"
-
-#. Compounding Term Dialog: Calculate button
-#. Double-Declining Depreciation Dialog: Calculate button
-#. Future Value Dialog: Calculate button
-#. Gross Profit Margin Dialog: Calculate button
-#. Periodic Payment Dialog: Calculate button
-#. Present Value Dialog: Calculate button
-#. Periodic Interest Rate Dialog: Calculate button
-#. Straight-Line Depreciation Dialog: Calculate button
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
-#. Payment Period Dialog: Calculate button
-#: src/ui/buttons-financial.ui:21 src/ui/buttons-financial.ui:77
-#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:189
-#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:295
-#: src/ui/buttons-financial.ui:351 src/ui/buttons-financial.ui:407
-#: src/ui/buttons-financial.ui:463 src/ui/buttons-financial.ui:525
-msgid "C_alculate"
-msgstr "B_eräkna"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:32
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"Beräknar antalet sammansatta perioder som krävs för att öka en investering "
-"för nuvarande värdet till ett framtida värde, med en fast ränta per "
-"sammansatt period."
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Title of Periodic Interest Rate dialog
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:155
-#: src/ui/buttons-financial.ui:261 src/ui/buttons-financial.ui:317
-#: src/ui/buttons-financial.ui:335 src/ui/buttons-financial.ui:553
-#: src/ui/buttons-financial.ui:1150
-msgid "Periodic Interest Rate"
-msgstr "Periodisk räntesats"
-
-#. Compounding Term Dialog: Label before future value input
-#. Title of Future Value dialog
-#. Periodic Interest Rate Dialog: Label before future value input
-#. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:43 src/ui/buttons-financial.ui:117
-#: src/ui/buttons-financial.ui:367 src/ui/buttons-financial.ui:547
-#: src/ui/buttons-financial.ui:1082
-msgid "Future Value"
-msgstr "Framtida värde"
-
-#. Compounding Term Dialog: Label before present value input
-#. Title of Present Value dialog
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:49 src/ui/buttons-financial.ui:279
-#: src/ui/buttons-financial.ui:373 src/ui/buttons-financial.ui:1167
-msgid "Present Value"
-msgstr "Nuvarande värde"
-
-#. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:61
-msgid "Double-Declining Depreciation"
-msgstr "Dubbel degressiv avskrivning"
-
-#. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:88
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the double-declining balance method."
-msgstr ""
-"Beräknar avskrivningskostnaden för en tillgång under en angiven tidsperiod, "
-"som använder metoden dubbel degressiv avskrivning."
-
-#. Double-Declining Depreciation Dialog: Label before cost input
-#. Gross Profit Margin Dialog: Label before cost input
-#. Straight-Line Depreciation Dialog: Label before cost input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:93 src/ui/buttons-financial.ui:205
-#: src/ui/buttons-financial.ui:423 src/ui/buttons-financial.ui:479
-msgid "Cost"
-msgstr "Kostnad"
-
-#. Double-Declining Depreciation Dialog: Label before life input
-#. Straight-Line Depreciation Dialog: Label before life input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:99 src/ui/buttons-financial.ui:435
-#: src/ui/buttons-financial.ui:491
-msgid "Life"
-msgstr "Livslängd"
-
-#. Double-Declining Depreciation Dialog: Label before period input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:105 src/ui/buttons-financial.ui:497
-msgid "Period"
-msgstr "Period"
-
-#. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:144
-msgid ""
-"Calculates the future value of an investment based on a series of equal "
-"payments at a periodic interest rate over the number of payment periods in "
-"the term."
-msgstr ""
-"Beräknar det framtida värdet för en investering baserat på ett antal "
-"likvärdiga betalningar med en periodisk ränta över ett antal "
-"betalningsperioder i perioden."
-
-#. Future Value Dialog: Label before periodic payment input
-#. Title of Periodic Payment dialog
-#. Present Value Dialog: Label before periodic payment input
-#. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:149 src/ui/buttons-financial.ui:223
-#: src/ui/buttons-financial.ui:311 src/ui/buttons-financial.ui:541
-#: src/ui/buttons-financial.ui:1184
-msgid "Periodic Payment"
-msgstr "Periodisk betalning"
-
-#. Future Value Dialog: Label before number of periods input
-#. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:161 src/ui/buttons-financial.ui:323
-msgid "Number of Periods"
-msgstr "Antal perioder"
-
-#. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:173 src/ui/buttons-financial.ui:1201
-msgid "Gross Profit Margin"
-msgstr "Bruttovinstmarginal"
-
-#. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:200
-msgid ""
-"Calculates the resale price of a product, based on the product cost and the "
-"wanted gross profit margin."
-msgstr ""
-"Beräknar försäljningspriset för en produkt, baserat på produktens kostnad "
-"och den önskade bruttovinstmarginalen."
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:211
-msgid "Margin"
-msgstr "Marginal"
-
-#. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:250
-msgid ""
-"Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period."
-msgstr ""
-"Beräknar mängden för den periodiska betalningen för ett lån, där betalningar "
-"görs vid slutet av varje betalningsperiod."
-
-#. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:255
-msgid "Principal"
-msgstr "Principal"
-
-#. Periodic Payment Dialog: Label before term input
-#. Periodic Interest Rate Dialog: Label before term input
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:267 src/ui/buttons-financial.ui:379
-#: src/ui/buttons-financial.ui:1096
-msgid "Term"
-msgstr "Period"
-
-#. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:306
-msgid ""
-"Calculates the present value of an investment based on a series of equal "
-"payments discounted at a periodic interest rate over the number of payment "
-"periods in the term."
-msgstr ""
-"Beräknar det nuvarande värdet för en investering baserat på ett antal "
-"likvärdiga betalningar rabatterade med en periodisk ränta över ett antal "
-"betalningsperioder i perioden."
-
-#. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:362
-msgid ""
-"Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods."
-msgstr ""
-"Beräknar den periodiska ränta som behövs för att öka en investering till ett "
-"framtida värde, över ett antal sammansatta perioder."
-
-#. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:391
-msgid "Straight-Line Depreciation"
-msgstr "Linjär avskrivning"
-
-#. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:418
-msgid ""
-"Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly "
-"over the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated."
-msgstr ""
-"Beräknar den linjära avskrivningen för en tillgång under en period. Den "
-"linjära metoden för avskrivning delar upp den avskrivna kostnaden jämnt över "
-"den användbara livslängden för objektet. Den användbara livslängden är "
-"antalet perioder, oftast år, över vilket ett objekt skrivs av."
-
-#. Straight-Line Depreciation Dialog: Label before salvage input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:429 src/ui/buttons-financial.ui:485
-msgid "Salvage"
-msgstr "Salvage"
-
-#. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:447
-msgid "Sum-of-the-Years’-Digits Depreciation"
-msgstr "Degressiv avskrivning"
-
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:474
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
-"occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated."
-msgstr ""
-"Beräknar avskrivningskostnaden för en tillgång under en angiven tidsperiod "
-"och använder metoden degressiv avskrivning. Denna metod för avskrivning "
-"accelererar räntan för avskrivningen så att högre avskrivningskostnader "
-"inträffar i tidigare perioder än i de senare. Den användbara livslängden är "
-"antalet perioder, oftast år, över vilka ett objekt skrivs av."
-
-#. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:509
-msgid "Payment Period"
-msgstr "Betalningsperiod"
-
-#. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:536
-msgid ""
-"Calculates the number of payment periods that are necessary during the term "
-"of an ordinary annuity, to accumulate a future value, at a periodic interest "
-"rate."
-msgstr ""
-"Beräknar antalet betalningsperioder som krävs under perioden för en vanlig "
-"annuitet, för att ackumulera ett framtida värde, med en periodisk ränta."
-
-#: src/ui/buttons-financial.ui:1014
-msgid "Currency Conversion"
-msgstr "Valutakonvertering"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:1045
-msgid "Ctrm"
-msgstr "Sampr"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1062
-msgid "Ddb"
-msgstr "Ddav"
-
-#: src/ui/buttons-financial.ui:1065
-msgid "Double Declining Depreciation"
-msgstr "Dubbel degressiv avskrivning"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:1079
-msgid "Fv"
-msgstr "Fv"
-
-#: src/ui/buttons-financial.ui:1099
-msgid "Financial Term"
-msgstr "Finansiell period"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1113
-msgid "Syd"
-msgstr "Dgrav"
-
-#: src/ui/buttons-financial.ui:1116
-msgid "Sum of the Years Digits Depreciation"
-msgstr "Degressiv avskrivning"
-
-# Osäker
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1130
-msgid "Sln"
-msgstr "Rkl"
-
-#: src/ui/buttons-financial.ui:1133
-msgid "Straight Line Depreciation"
-msgstr "Linjär avskrivning"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:1147
-msgid "Rate"
-msgstr "Sats"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:1164
-msgid "Pv"
-msgstr "Nv"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:1181
-msgid "Pmt"
-msgstr "Bet"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:1198
-msgid "Gpm"
-msgstr "Bvm"
-
-#: src/ui/buttons-programming.ui:17
+#: lib/unit.vala:183
+msgid "Number Base"
+msgstr "Talbas"
+
+#: lib/unit.vala:184 src/buttons-programming.vala:168
+#: src/ui/buttons-programming.blp:2590
 msgid "Binary"
 msgstr "Binär"
 
-#: src/ui/buttons-programming.ui:18
+#: lib/unit.vala:185 src/buttons-programming.vala:173
+#: src/ui/buttons-programming.blp:2596
 msgid "Octal"
 msgstr "Oktal"
 
-#: src/ui/buttons-programming.ui:19
+#: lib/unit.vala:186 src/buttons-programming.vala:178
+#: src/ui/buttons-programming.blp:2602
 msgid "Decimal"
 msgstr "Decimal"
 
-#: src/ui/buttons-programming.ui:20
+#: lib/unit.vala:187 src/buttons-programming.vala:183
+#: src/ui/buttons-programming.blp:2608
 msgid "Hexadecimal"
 msgstr "Hexadecimal"
 
-#: src/ui/buttons-programming.ui:61
-msgid "Number Base Conversion"
-msgstr "Talbaskonvertering"
+#: search-provider/search-provider.vala:206
+msgid "Open in Calculator"
+msgstr "Öppna i Kalkylator"
 
-#: src/ui/buttons-programming.ui:1784
-msgid "Shift Left"
-msgstr "Skifta vänster"
+#: search-provider/search-provider.vala:239
+msgid "Result copied"
+msgstr "Resultat kopierat"
 
-#: src/ui/buttons-programming.ui:1799
-msgid "Shift Right"
-msgstr "Skifta höger"
+#: search-provider/search-provider.vala:240
+msgid "Result was copied successfully"
+msgstr "Lyckades kopiera resultat"
 
-#: src/ui/buttons-programming.ui:1814
-msgid "Boolean Exclusive OR"
-msgstr "Boolesk exklusiv OR"
+#: src/buttons-advanced.vala:87 src/math-preferences.vala:134
+msgid "Degrees"
+msgstr "Grader"
 
-#: src/ui/buttons-programming.ui:1829
-msgid "Boolean OR"
-msgstr "Boolesk OR"
+#: src/buttons-advanced.vala:89
+#, c-format
+msgid "Angle Unit: %s"
+msgstr "Vinkelenhet: %s"
 
-#: src/ui/buttons-programming.ui:1845
-msgid "Boolean AND"
-msgstr "Boolesk AND"
+#: src/buttons-conversion.vala:125 src/buttons-conversion.vala:130
+#: src/buttons-conversion.vala:137 src/buttons-conversion.vala:142
+msgid "Not Available"
+msgstr "Inte tillgänglig"
 
-#: src/ui/buttons-programming.ui:1861
-msgid "Boolean NOT"
-msgstr "Boolesk NOT"
+#: src/buttons-programming.vala:205
+#, c-format
+msgid "%d-bit"
+msgid_plural "%d-bit"
+msgstr[0] "%d bit"
+msgstr[1] "%d bitar"
 
-#: src/ui/buttons-programming.ui:1877
-msgid "One’s Complement"
-msgstr "Enkomplement"
-
-#: src/ui/buttons-programming.ui:1893
-msgid "Two’s Complement"
-msgstr "Tvåkomplement"
-
-#: src/ui/buttons-programming.ui:1967
-msgid "Binary Logarithm"
-msgstr "Binär logaritm"
-
-#: src/ui/buttons-programming.ui:2025
-msgid "Integer Component"
-msgstr "Heltalsdel"
-
-#: src/ui/buttons-programming.ui:2041
-msgid "Fractional Component"
-msgstr "Bråkdel"
-
-#. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2072 src/ui/buttons-programming.ui:2122
-msgid "Insert Character Code"
-msgstr "Infoga teckenkod"
-
-#: src/ui/buttons-programming.ui:2105
-msgid "Change Word Size"
-msgstr "Ändra ordstorlek"
-
-#. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2154
-msgid "Character"
-msgstr "Tecken"
-
-#. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2182
-msgid "_Insert"
-msgstr "_Infoga"
-
-#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming, keyboard and conversion
 #: src/gnome-calculator.vala:22
-msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
+msgid ""
+"Start in given mode (basic, advanced, financial, programming, keyboard, "
+"conversion)"
 msgstr ""
-"Starta i angivet läge (basic, advanced, financial, programming, keyboard)"
+"Starta i angivet läge (basic, advanced, financial, programming, keyboard, "
+"conversion)"
 
 #: src/gnome-calculator.vala:23
 msgid "Solve given equation"
@@ -2606,12 +2501,13 @@ msgid "Show release version"
 msgstr "Visa programvaruversion"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:289
-msgid "© 1986–2023 The Calculator authors"
-msgstr "© 1986–2023 Upphovsmännen till Kalkylator"
+#: src/gnome-calculator.vala:291
+#, c-format
+msgid "© 1986–%d The Calculator authors"
+msgstr "© 1986–%d Upphovsmännen till Kalkylator"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:295
+#: src/gnome-calculator.vala:297
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -2623,407 +2519,1367 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "<tp-sv@listor.tp-sv.se>."
 
-#: src/gnome-calculator.vala:299
-msgid "Exchange rate data providers"
+#: src/gnome-calculator.vala:301
+msgid "Exchange Rate Data Providers"
 msgstr "Dataleverantörer för valutakurser"
 
-#: src/gnome-calculator.vala:299
+#: src/gnome-calculator.vala:301
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Data för valutakurser från %s"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Close All?"
 msgstr "Stäng alla?"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Are you sure you want to close all open windows?"
 msgstr "Är du säker att du vill stänga alla öppna fönster?"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
+#: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
+#: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
+#: src/ui/buttons-financial.blp:1283 src/ui/buttons-financial.blp:1339
+#: src/ui/buttons-financial.blp:1401 src/ui/buttons-programming.blp:2563
+msgid "_Cancel"
+msgstr "A_vbryt"
+
+#: src/gnome-calculator.vala:311
 msgid "Close _All"
 msgstr "Stäng _alla"
 
-#: src/math-buttons.vala:294 src/math-buttons.vala:743
-#: src/math-buttons.vala:759
-#, c-format
-msgid "%d-bit"
-msgid_plural "%d-bit"
-msgstr[0] "%d bit"
-msgstr[1] "%d bitar"
+#: src/math-converter.vala:612 src/math-converter.vala:630
+msgid "Error"
+msgstr "Fel"
 
-#: src/math-buttons.vala:704
-msgid "Negative [-]"
-msgstr "Negativ [-]"
-
-#: src/ui/math-converter.ui:146
-msgid "_Copy"
-msgstr "_Kopiera"
-
-#: src/ui/math-converter.ui:150
-msgid "_Paste"
-msgstr "Klistra _in"
-
-#: src/math-display.vala:620
+#: src/math-display.vala:694
 msgid "Defined Functions"
 msgstr "Definierade funktioner"
 
-#: src/math-display.vala:665
-msgid "Built-in keywords"
+#: src/math-display.vala:742
+msgid "Built-in Keywords"
 msgstr "Inbyggda nyckelord"
 
-#: src/math-display.vala:709
-msgid "Defined currencies"
+#: src/math-display.vala:794
+msgid "Defined Currencies"
 msgstr "Definierade valutor"
 
-#: src/math-display.vala:759
+#: src/math-display.vala:843
 msgid "Defined Variables"
 msgstr "Definierade variabler"
 
-#: src/ui/math-function-popover.ui:29
-msgid "New function"
-msgstr "Ny funktion"
+#: src/math-function-popover.vala:185
+msgid "Can not use defined variable or constant names"
+msgstr "Kan inte använda definierade variabel- eller konstantnamn"
 
-#: src/ui/math-function-popover.ui:43
-msgid "Select no. of arguments"
-msgstr "Välj antal argument"
+#: src/math-function-popover.vala:189
+msgid "Can not use built-in function or operator names"
+msgstr "Kan inte använda inbyggda funktions- eller operatornamn"
 
-#: src/math-preferences.vala:116
+#: src/math-function-popover.vala:192
+msgid "Function name can not start with a digit"
+msgstr "Funktionsnamn kan inte börja med en siffra"
+
+#: src/math-function-popover.vala:195
+msgid "Function name can only contain digits, letters and underscores"
+msgstr "Funktionsnamn kan endast innehålla siffror, bokstäver och understreck"
+
+#: src/math-popover.vala:110
+msgid "Edit"
+msgstr "Redigera"
+
+#: src/math-popover.vala:120
+msgid "Delete"
+msgstr "Ta bort"
+
+#: src/math-preferences.vala:147 src/ui/buttons-programming.blp:2618
 msgid "8-bit"
 msgstr "8 bitar"
 
-#: src/math-preferences.vala:118
+#: src/math-preferences.vala:149 src/ui/buttons-programming.blp:2624
 msgid "16-bit"
 msgstr "16 bitar"
 
-#: src/math-preferences.vala:120
+#: src/math-preferences.vala:151 src/ui/buttons-programming.blp:2630
 msgid "32-bit"
 msgstr "32 bitar"
 
-#: src/math-preferences.vala:122
+#: src/math-preferences.vala:153 src/ui/buttons-programming.blp:2636
 msgid "64-bit"
 msgstr "64 bitar"
 
-#: src/math-preferences.vala:131
+#: src/math-preferences.vala:162
 msgid "Never"
 msgstr "Aldrig"
 
-#: src/math-preferences.vala:133
+#: src/math-preferences.vala:164
 msgid "Daily"
 msgstr "Dagligen"
 
-#: src/math-preferences.vala:135
+#: src/math-preferences.vala:166
 msgid "Weekly"
 msgstr "Veckovis"
 
-#: src/ui/math-preferences.ui:18
-msgid "Number of _Decimals"
-msgstr "Antal _decimaler"
+#: src/math-preferences.vala:175
+msgid "Currency Code"
+msgstr "Valutakod"
 
-#: src/ui/math-preferences.ui:27
-msgid "Trailing _Zeroes"
-msgstr "Efterliggande _nollor"
+#: src/math-preferences.vala:177
+msgid "Currency Name"
+msgstr "Valutanamn"
 
-#: src/ui/math-preferences.ui:33
-msgid "_Thousands Separators"
-msgstr "Tusentalsa_vgränsare"
+#: src/math-preferences.vala:179
+msgid "Both"
+msgstr "Båda"
 
-#: src/ui/math-preferences.ui:39
-msgid "_Angle Units"
-msgstr "V_inkelenheter"
+#: src/math-variable-popover.vala:216
+msgid "Can not use defined function or operator names"
+msgstr "Kan inte använda definierade funktions- eller operatornamn"
 
-#: src/ui/math-preferences.ui:45
-msgid "Word _Size"
-msgstr "Ord_storlek"
+#: src/math-variable-popover.vala:219
+msgid "Can not use built-in variable or constant names"
+msgstr "Kan inte använda inbyggda variabel- eller konstantnamn"
 
-#: src/ui/math-preferences.ui:51
-msgid "E_xchange Rate Refresh Interval"
-msgstr "_Uppdateringsintervall för valutakurser"
+#: src/math-variable-popover.vala:222
+msgid "Variable name can not start with a digit"
+msgstr "Variabelnamn kan inte börja med en siffra"
 
-#: src/ui/math-shortcuts.ui:13
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Allmänt"
+#: src/math-variable-popover.vala:225
+msgid "Variable name can only contain digits, letters and underscores"
+msgstr "Variabelnamn kan endast innehålla siffror, bokstäver och understreck"
 
-#: src/ui/math-shortcuts.ui:17
-msgctxt "shortcut window"
-msgid "Open a new window"
-msgstr "Öppna ett nytt fönster"
-
-#: src/ui/math-shortcuts.ui:23
-msgctxt "shortcut window"
-msgid "Close current window"
-msgstr "Stäng aktuellt fönster"
-
-#: src/ui/math-shortcuts.ui:29
-msgctxt "shortcut window"
-msgid "Quit the application"
-msgstr "Avsluta programmet"
-
-#: src/ui/math-shortcuts.ui:35
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Visa hjälp"
-
-#: src/ui/math-shortcuts.ui:41
-msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "Öppna meny"
-
-#: src/ui/math-shortcuts.ui:47
-msgctxt "shortcut window"
-msgid "Show preferences"
-msgstr "Visa inställningar"
-
-#: src/ui/math-shortcuts.ui:53
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Tangentbordsgenvägar"
-
-#: src/ui/math-shortcuts.ui:59
-msgctxt "shortcut window"
-msgid "Clear history"
-msgstr "Töm historik"
-
-#: src/ui/math-shortcuts.ui:66
-msgctxt "shortcut window"
-msgid "Switching modes"
-msgstr "Växla lägen"
-
-#: src/ui/math-shortcuts.ui:70
-msgctxt "shortcut window"
-msgid "Switch to Basic mode"
-msgstr "Växla till grundläggande läge"
-
-#: src/ui/math-shortcuts.ui:76
-msgctxt "shortcut window"
-msgid "Switch to Advanced mode"
-msgstr "Växla till avancerat läge"
-
-#: src/ui/math-shortcuts.ui:82
-msgctxt "shortcut window"
-msgid "Switch to Financial mode"
-msgstr "Växla till finansiellt läge"
-
-#: src/ui/math-shortcuts.ui:88
-msgctxt "shortcut window"
-msgid "Switch to Programming mode"
-msgstr "Växla till programmeringsläge"
-
-#: src/ui/math-shortcuts.ui:94
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode"
-msgstr "Växla till tangentbordsläge"
-
-#: src/ui/math-shortcuts.ui:100
-msgctxt "shortcut window"
-msgid "Switch to Conversion mode"
-msgstr "Växla till konverteringsläge"
-
-#: src/ui/math-shortcuts.ui:107
-msgctxt "shortcut window"
-msgid "Keyboard entry"
-msgstr "Tangentbordsinmatning"
-
-#: src/ui/math-shortcuts.ui:111
-msgctxt "shortcut window"
-msgid "Multiply (×)"
-msgstr "Multiplicera (×)"
-
-#: src/ui/math-shortcuts.ui:117
-msgctxt "shortcut window"
-msgid "Divide (÷)"
-msgstr "Dividera (÷)"
-
-#: src/ui/math-shortcuts.ui:123
-msgctxt "shortcut window"
-msgid "Square root (√)"
-msgstr "Kvadratrot (√)"
-
-#: src/ui/math-shortcuts.ui:129
-msgctxt "shortcut window"
-msgid "Inverse"
-msgstr "Invers"
-
-#: src/ui/math-shortcuts.ui:135
-msgctxt "shortcut window"
-msgid "Pi (π)"
-msgstr "Pi (π)"
-
-#: src/ui/math-shortcuts.ui:141
-msgctxt "shortcut window"
-msgid "Enter numbers in scientific format"
-msgstr "Mata in tal i vetenskaplig notation"
-
-#: src/ui/math-shortcuts.ui:148
-msgctxt "shortcut window"
-msgid "Programming mode"
-msgstr "Programmeringsläge"
-
-#: src/ui/math-shortcuts.ui:152
-msgctxt "shortcut window"
-msgid "Switch to binary"
-msgstr "Växla till binärt"
-
-#: src/ui/math-shortcuts.ui:158
-msgctxt "shortcut window"
-msgid "Switch to octal"
-msgstr "Växla till oktalt"
-
-#: src/ui/math-shortcuts.ui:164
-msgctxt "shortcut window"
-msgid "Switch to decimal"
-msgstr "Växla till decimalt"
-
-#: src/ui/math-shortcuts.ui:170
-msgctxt "shortcut window"
-msgid "Switch to hexadecimal"
-msgstr "Växla till hexadecimalt"
-
-#: src/ui/math-shortcuts.ui:177
-msgctxt "shortcut window"
-msgid "Others"
-msgstr "Andra"
-
-#: src/ui/math-shortcuts.ui:181
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "Kopiera"
-
-#: src/ui/math-shortcuts.ui:187
-msgctxt "shortcut window"
-msgid "Paste"
-msgstr "Klistra in"
-
-#: src/ui/math-shortcuts.ui:193
-msgctxt "shortcut window"
-msgid "Undo"
-msgstr "Ångra"
-
-#: src/ui/math-shortcuts.ui:199
-msgctxt "shortcut window"
-msgid "Redo"
-msgstr "Gör om"
-
-#: src/ui/math-shortcuts.ui:205
-msgctxt "shortcut window"
-msgid "Previous equation"
-msgstr "Föregående ekvation"
-
-#: src/ui/math-shortcuts.ui:211
-msgctxt "shortcut window"
-msgid "Next equation"
-msgstr "Nästa ekvation"
-
-#: src/ui/math-shortcuts.ui:217
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode (alt.)"
-msgstr "Växla till tangentbordsläge (alt.)"
-
-#: src/ui/math-variable-popover.ui:37
-msgid "Variable name"
-msgstr "Variabelnamn"
-
-#: src/ui/math-variable-popover.ui:45
-msgid "Store value into existing or new variable"
-msgstr "Lagra värde till en befintlig eller ny variabel"
-
-#: src/math-variable-popover.vala:94
-#, c-format
-msgid "%s: Invalid variable name, can not start with a digit"
-msgstr "%s: Ogiltigt variabelnamn, kan inte börja med en siffra"
-
-#: src/math-variable-popover.vala:98
-#, c-format
-msgid ""
-"%s: Invalid variable name, can only contain digits, letters and underscores"
-msgstr ""
-"%s: Ogiltigt variabelnamn, kan endast innehålla siffror, bokstäver och "
-"understreck"
-
-#: src/ui/math-window.ui:8 src/math-window.vala:133
+#: src/math-window.vala:137
 msgid "Basic"
 msgstr "Grundläggande"
 
-#: src/ui/math-window.ui:13 src/math-window.vala:139
+#: src/math-window.vala:143
 msgid "Advanced"
 msgstr "Avancerad"
 
-#: src/ui/math-window.ui:18 src/ui/math-window.ui:140 src/math-window.vala:145
+#: src/math-window.vala:149 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "Finansiell"
 
-#: src/ui/math-window.ui:23 src/math-window.vala:151
-msgid "Programming"
-msgstr "Programmering"
-
-#: src/ui/math-window.ui:28 src/math-window.vala:157
+#: src/math-window.vala:161
 msgid "Keyboard"
 msgstr "Tangentbord"
 
-#: src/ui/math-window.ui:33 src/math-window.vala:163
+#: src/math-window.vala:167
 msgid "Conversion"
 msgstr "Konvertering"
 
-#: src/ui/math-window.ui:42
+#: src/ui/buttons-advanced.blp:76 src/ui/buttons-basic.blp:21
+#: src/ui/buttons-conversion.blp:21 src/ui/buttons-financial.blp:76
+#: src/ui/buttons-programming.blp:1373
+msgid "Clear Display [Escape]"
+msgstr "Töm skärmen [Escape]"
+
+#: src/ui/buttons-advanced.blp:92 src/ui/buttons-basic.blp:37
+#: src/ui/buttons-financial.blp:92 src/ui/buttons-programming.blp:1389
+msgid "Superscript Mode [Ctrl]"
+msgstr "Exponentläge [Ctrl]"
+
+#: src/ui/buttons-advanced.blp:109 src/ui/buttons-basic.blp:54
+#: src/ui/buttons-financial.blp:109 src/ui/buttons-programming.blp:1406
+msgid "Subscript Mode [Alt]"
+msgstr "Indexläge [Alt]"
+
+#. Translators: The label on the memory button
+#: src/ui/buttons-advanced.blp:300 src/ui/buttons-basic.blp:245
+#: src/ui/buttons-financial.blp:300 src/ui/buttons-programming.blp:1705
+msgid "x"
+msgstr "x"
+
+#: src/ui/buttons-advanced.blp:303 src/ui/buttons-basic.blp:248
+#: src/ui/buttons-financial.blp:303 src/ui/buttons-programming.blp:1708
+msgid "Variables and Constants"
+msgstr "Variabler och konstanter"
+
+#: src/ui/buttons-advanced.blp:320 src/ui/buttons-basic.blp:265
+#: src/ui/buttons-financial.blp:320 src/ui/buttons-programming.blp:1725
+msgid "Additional Functions"
+msgstr "Ytterligare funktioner"
+
+#: src/ui/buttons-advanced.blp:336 src/ui/buttons-basic.blp:281
+#: src/ui/buttons-financial.blp:336 src/ui/buttons-programming.blp:1741
+msgid "Divide [/]"
+msgstr "Dividera [/]"
+
+#: src/ui/buttons-advanced.blp:353 src/ui/buttons-basic.blp:298
+#: src/ui/buttons-financial.blp:353 src/ui/buttons-programming.blp:1758
+msgid "Multiply [*]"
+msgstr "Multiplicera [*]"
+
+#: src/ui/buttons-advanced.blp:370 src/ui/buttons-basic.blp:315
+#: src/ui/buttons-financial.blp:370 src/ui/buttons-programming.blp:1775
+msgid "Subtract [-]"
+msgstr "Subtrahera [-]"
+
+# Detta är räknesättet
+#: src/ui/buttons-advanced.blp:386 src/ui/buttons-basic.blp:331
+#: src/ui/buttons-financial.blp:386 src/ui/buttons-programming.blp:1791
+msgid "Add [+]"
+msgstr "Addera [+]"
+
+#: src/ui/buttons-advanced.blp:420 src/ui/buttons-basic.blp:365
+#: src/ui/buttons-financial.blp:420 src/ui/buttons-programming.blp:1825
+msgid "Percentage [%]"
+msgstr "Procent [%]"
+
+#: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382
+#: src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
+msgid "Group [()]"
+msgstr "Grupp [()]"
+
+#. Translators: Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.blp:453 src/ui/buttons-basic.blp:398
+#: src/ui/buttons-financial.blp:453 src/ui/buttons-programming.blp:1858
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.blp:455 src/ui/buttons-basic.blp:400
+#: src/ui/buttons-financial.blp:455 src/ui/buttons-programming.blp:1860
+msgid "Calculate Result"
+msgstr "Beräkna resultat"
+
+#: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
+#: src/ui/buttons-programming.blp:1888
+msgid "Inverse Modifier [Shift]"
+msgstr "Inversmodifierare [Skift]"
+
+#: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
+#: src/ui/buttons-programming.blp:2085
+msgid "Square [Ctrl+2]"
+msgstr "Kvadrat [Ctrl+2]"
+
+#: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
+#: src/ui/buttons-programming.blp:2107
+msgid "Square Root [Ctrl+R]"
+msgstr "Kvadratrot [Ctrl+R]"
+
+#: src/ui/buttons-advanced.blp:760 src/ui/buttons-advanced.blp:827
+#: src/ui/buttons-financial.blp:538 src/ui/buttons-programming.blp:2125
+#: src/ui/buttons-programming.blp:2192
+msgid "Exponent [^ or **]"
+msgstr "Exponent [^ eller **]"
+
+#: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560
+#: src/ui/buttons-programming.blp:2147
+msgid "Nth Root"
+msgstr "N:e roten"
+
+#: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585
+#: src/ui/buttons-programming.blp:2216
+msgid "Common Logarithm"
+msgstr "10-logaritmen"
+
+#: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602
+#: src/ui/buttons-programming.blp:2233
+msgid "Base-10 Exponential"
+msgstr "Bas-10-exponent"
+
+#: src/ui/buttons-advanced.blp:909 src/ui/buttons-financial.blp:643
+msgid "Natural Exponential"
+msgstr "Naturlig exponential"
+
+#: src/ui/buttons-advanced.blp:999
+msgid "Inverse [Ctrl+I]"
+msgstr "Invers [Ctrl+I]"
+
+#: src/ui/buttons-advanced.blp:1020
+msgid "Round [[]]"
+msgstr "Avrunda [[]]"
+
+#: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
+msgid "Absolute Value [||]"
+msgstr "Absolutvärde [||]"
+
+#: src/ui/buttons-advanced.blp:1062 src/ui/buttons-programming.blp:2427
+msgid "Factorial [!]"
+msgstr "Fakultet [!]"
+
+#: src/ui/buttons-advanced.blp:1099 src/ui/buttons-conversion.blp:521
+msgid "Pi [Ctrl+P]"
+msgstr "Pi [Ctrl+P]"
+
+#: src/ui/buttons-advanced.blp:1133
+msgid "Imaginary Unit"
+msgstr "Imaginärenhet"
+
+#: src/ui/buttons-advanced.blp:1150
+msgid "Factorize [Ctrl+F]"
+msgstr "Faktorisera [Ctrl+F]"
+
+#: src/ui/buttons-conversion.blp:37
+msgid "Switch Conversion Units"
+msgstr "Byt konverteringsenheter"
+
+#: src/ui/buttons-conversion.blp:53 src/ui/math-display.blp:45
+msgid "Backspace"
+msgstr "Backsteg"
+
+#: src/ui/buttons-conversion.blp:510
+msgid "Degrees, Minutes, Seconds"
+msgstr "Grader, minuter, sekunder"
+
+#: src/ui/buttons-conversion.blp:533
+msgid "Change Sign"
+msgstr "Ändra tecken"
+
+#: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
+msgid "Exchange Rate Details"
+msgstr "Valutakursdetaljer"
+
+#: src/ui/buttons-conversion.blp:575 src/ui/buttons-conversion.blp:600
+msgid "Updated"
+msgstr "Uppdaterad"
+
+#: src/ui/buttons-conversion.blp:583 src/ui/buttons-conversion.blp:608
+msgid "Source"
+msgstr "Källa"
+
+#: src/ui/buttons-conversion.blp:625
+msgid "_Refresh Rates"
+msgstr "_Uppdatera kurser"
+
+#. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.blp:669
+msgid "Ctrm"
+msgstr "Sampr"
+
+# Compounding kan även vara ränta-på-ränta. Oklar
+#. Translators: Title of Compounding Term dialog
+#: src/ui/buttons-financial.blp:672 src/ui/buttons-financial.blp:887
+msgid "Compounding Term"
+msgstr "Sammansatt period"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:688
+msgid "Ddb"
+msgstr "Ddav"
+
+#: src/ui/buttons-financial.blp:691
+msgid "Double Declining Depreciation"
+msgstr "Dubbel degressiv avskrivning"
+
+#. Translators: Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.blp:707
+msgid "Fv"
+msgstr "Fv"
+
+#. Translators: Compounding Term Dialog: Label before future value input
+#. Translators: Title of Future Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before future value input
+#. Translators: Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.blp:710 src/ui/buttons-financial.blp:927
+#: src/ui/buttons-financial.blp:999 src/ui/buttons-financial.blp:1251
+#: src/ui/buttons-financial.blp:1431
+msgid "Future Value"
+msgstr "Framtida värde"
+
+#. Translators: Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.blp:726
+msgid "Gpm"
+msgstr "Bvm"
+
+#. Translators: Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.blp:729 src/ui/buttons-financial.blp:1055
+msgid "Gross Profit Margin"
+msgstr "Bruttovinstmarginal"
+
+#. Translators: Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.blp:745
+msgid "Pmt"
+msgstr "Bet"
+
+#. Translators: Future Value Dialog: Label before periodic payment input
+#. Translators: Title of Periodic Payment dialog
+#. Translators: Present Value Dialog: Label before periodic payment input
+#. Translators: Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.blp:748 src/ui/buttons-financial.blp:1033
+#: src/ui/buttons-financial.blp:1105 src/ui/buttons-financial.blp:1195
+#: src/ui/buttons-financial.blp:1425
+msgid "Periodic Payment"
+msgstr "Periodisk betalning"
+
+#. Translators: Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.blp:764
+msgid "Pv"
+msgstr "Nv"
+
+#. Translators: Compounding Term Dialog: Label before present value input
+#. Translators: Title of Present Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.blp:767 src/ui/buttons-financial.blp:933
+#: src/ui/buttons-financial.blp:1161 src/ui/buttons-financial.blp:1257
+msgid "Present Value"
+msgstr "Nuvarande värde"
+
+#. Translators: Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.blp:783
+msgid "Rate"
+msgstr "Sats"
+
+#. Translators: Compounding Term Dialog: Label before periodic interest rate input
+#. Translators: Future Value Dialog: Label before periodic interest rate input
+#. Translators: Periodic Payment Dialog: Label before periodic interest rate input
+#. Translators: Present Value Dialog: Label before periodic interest rate input
+#. Translators: Title of Periodic Interest Rate dialog
+#. Translators: Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.blp:786 src/ui/buttons-financial.blp:921
+#: src/ui/buttons-financial.blp:1039 src/ui/buttons-financial.blp:1145
+#: src/ui/buttons-financial.blp:1201 src/ui/buttons-financial.blp:1217
+#: src/ui/buttons-financial.blp:1437
+msgid "Periodic Interest Rate"
+msgstr "Periodisk räntesats"
+
+# Osäker
+#. Translators: Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:802
+msgid "Sln"
+msgstr "Rkl"
+
+#: src/ui/buttons-financial.blp:805
+msgid "Straight Line Depreciation"
+msgstr "Linjär avskrivning"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:821
+msgid "Syd"
+msgstr "Dgrav"
+
+#: src/ui/buttons-financial.blp:824
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Degressiv avskrivning"
+
+#. Translators: Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#. Translators: Periodic Payment Dialog: Label before term input
+#. Translators: Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.blp:840 src/ui/buttons-financial.blp:1151
+#: src/ui/buttons-financial.blp:1263
+msgid "Term"
+msgstr "Period"
+
+#: src/ui/buttons-financial.blp:843
+msgid "Financial Term"
+msgstr "Finansiell period"
+
+#: src/ui/buttons-financial.blp:858 src/ui/math-preferences.blp:78
+msgid "Currency Conversion"
+msgstr "Valutakonvertering"
+
+#. Translators: Compounding Term Dialog: Calculate button
+#. Translators: Double-Declining Depreciation Dialog: Calculate button
+#. Translators: Future Value Dialog: Calculate button
+#. Translators: Gross Profit Margin Dialog: Calculate button
+#. Translators: Periodic Payment Dialog: Calculate button
+#. Translators: Present Value Dialog: Calculate button
+#. Translators: Periodic Interest Rate Dialog: Calculate button
+#. Translators: Straight-Line Depreciation Dialog: Calculate button
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
+#. Translators: Payment Period Dialog: Calculate button
+#: src/ui/buttons-financial.blp:905 src/ui/buttons-financial.blp:961
+#: src/ui/buttons-financial.blp:1017 src/ui/buttons-financial.blp:1073
+#: src/ui/buttons-financial.blp:1123 src/ui/buttons-financial.blp:1179
+#: src/ui/buttons-financial.blp:1235 src/ui/buttons-financial.blp:1291
+#: src/ui/buttons-financial.blp:1347 src/ui/buttons-financial.blp:1409
+msgid "C_alculate"
+msgstr "B_eräkna"
+
+#. Translators: Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:916
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Beräknar antalet sammansatta perioder som krävs för att öka en investering "
+"för nuvarande värdet till ett framtida värde, med en fast ränta per "
+"sammansatt period."
+
+#. Translators: Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.blp:943
+msgid "Double-Declining Depreciation"
+msgstr "Dubbel degressiv avskrivning"
+
+#. Translators: Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:972
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"Beräknar avskrivningskostnaden för en tillgång under en angiven tidsperiod, "
+"som använder metoden dubbel degressiv avskrivning."
+
+#. Translators: Double-Declining Depreciation Dialog: Label before cost input
+#. Translators: Gross Profit Margin Dialog: Label before cost input
+#. Translators: Straight-Line Depreciation Dialog: Label before cost input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.blp:977 src/ui/buttons-financial.blp:1089
+#: src/ui/buttons-financial.blp:1307 src/ui/buttons-financial.blp:1363
+msgid "Cost"
+msgstr "Kostnad"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before life input
+#. Translators: Straight-Line Depreciation Dialog: Label before life input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.blp:983 src/ui/buttons-financial.blp:1319
+#: src/ui/buttons-financial.blp:1375
+msgid "Life"
+msgstr "Livslängd"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before period input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.blp:989 src/ui/buttons-financial.blp:1381
+msgid "Period"
+msgstr "Period"
+
+#. Translators: Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1028
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Beräknar det framtida värdet för en investering baserat på ett antal "
+"likvärdiga betalningar med en periodisk ränta över ett antal "
+"betalningsperioder i perioden."
+
+#. Translators: Future Value Dialog: Label before number of periods input
+#. Translators: Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.blp:1045 src/ui/buttons-financial.blp:1207
+msgid "Number of Periods"
+msgstr "Antal perioder"
+
+#. Translators: Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1084
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Beräknar försäljningspriset för en produkt, baserat på produktens kostnad "
+"och den önskade bruttovinstmarginalen."
+
+#. Translators: Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.blp:1095
+msgid "Margin"
+msgstr "Marginal"
+
+#. Translators: Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1134
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period."
+msgstr ""
+"Beräknar mängden för den periodiska betalningen för ett lån, där betalningar "
+"görs vid slutet av varje betalningsperiod."
+
+#. Translators: Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.blp:1139
+msgid "Principal"
+msgstr "Principal"
+
+#. Translators: Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1190
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term."
+msgstr ""
+"Beräknar det nuvarande värdet för en investering baserat på ett antal "
+"likvärdiga betalningar rabatterade med en periodisk ränta över ett antal "
+"betalningsperioder i perioden."
+
+#. Translators: Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1246
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods."
+msgstr ""
+"Beräknar den periodiska ränta som behövs för att öka en investering till ett "
+"framtida värde, över ett antal sammansatta perioder."
+
+#. Translators: Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.blp:1273
+msgid "Straight-Line Depreciation"
+msgstr "Linjär avskrivning"
+
+#. Translators: Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1302
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated."
+msgstr ""
+"Beräknar den linjära avskrivningen för en tillgång under en period. Den "
+"linjära metoden för avskrivning delar upp den avskrivna kostnaden jämnt över "
+"den användbara livslängden för objektet. Den användbara livslängden är "
+"antalet perioder, oftast år, över vilket ett objekt skrivs av."
+
+#. Translators: Straight-Line Depreciation Dialog: Label before salvage input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.blp:1313 src/ui/buttons-financial.blp:1369
+msgid "Salvage"
+msgstr "Salvage"
+
+#. Translators: Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.blp:1329
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "Degressiv avskrivning"
+
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1358
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated."
+msgstr ""
+"Beräknar avskrivningskostnaden för en tillgång under en angiven tidsperiod "
+"och använder metoden degressiv avskrivning. Denna metod för avskrivning "
+"accelererar räntan för avskrivningen så att högre avskrivningskostnader "
+"inträffar i tidigare perioder än i de senare. Den användbara livslängden är "
+"antalet perioder, oftast år, över vilka ett objekt skrivs av."
+
+#. Translators: Title of Payment Period dialog
+#: src/ui/buttons-financial.blp:1391
+msgid "Payment Period"
+msgstr "Betalningsperiod"
+
+#. Translators: Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1420
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Beräknar antalet betalningsperioder som krävs under perioden för en vanlig "
+"annuitet, för att ackumulera ett framtida värde, med en periodisk ränta."
+
+#: src/ui/buttons-programming.blp:1904
+msgid "Bitwise AND"
+msgstr "Bitvist AND"
+
+#: src/ui/buttons-programming.blp:1922
+msgid "Bitwise NAND"
+msgstr "Bitvist NAND"
+
+#: src/ui/buttons-programming.blp:1941
+msgid "Bitwise OR"
+msgstr "Bitvist OR"
+
+#: src/ui/buttons-programming.blp:1959
+msgid "Bitwise NOR"
+msgstr "Bitvist NOR"
+
+#: src/ui/buttons-programming.blp:1977
+msgid "Bitwise NOT"
+msgstr "Bitvist NOT"
+
+#: src/ui/buttons-programming.blp:1995
+msgid "Bitwise Exclusive OR"
+msgstr "Bitvist exklusiv OR"
+
+#: src/ui/buttons-programming.blp:2013
+msgid "Bitwise Exclusive NOR"
+msgstr "Bitvist exklusiv NOR"
+
+#: src/ui/buttons-programming.blp:2031
+msgid "Left Shift [<<]"
+msgstr "Vänsterskiftning [<<]"
+
+#: src/ui/buttons-programming.blp:2049
+msgid "Right Shift [>>]"
+msgstr "Högerskiftning [>>]"
+
+#: src/ui/buttons-programming.blp:2067
+msgid "Unsigned Right Shift [>>>]"
+msgstr "Teckenlös högerskiftning [>>>]"
+
+#: src/ui/buttons-programming.blp:2257
+msgid "Binary Logarithm"
+msgstr "Binär logaritm"
+
+#: src/ui/buttons-programming.blp:2274
+msgid "Base-2 Exponential"
+msgstr "Bas-2-exponent"
+
+#: src/ui/buttons-programming.blp:2364
+msgid "Ceiling [Ctrl+[]]"
+msgstr "Tak [Ctrl+[]]"
+
+#: src/ui/buttons-programming.blp:2385
+msgid "Floor [Alt+[]]"
+msgstr "Golv [Alt+[]]"
+
+#: src/ui/buttons-programming.blp:2449
+msgid "Change Base"
+msgstr "Byt bas"
+
+#: src/ui/buttons-programming.blp:2468
+msgid "Change Word Size"
+msgstr "Ändra ordstorlek"
+
+#. Translators: Title of insert character code dialog
+#: src/ui/buttons-programming.blp:2486 src/ui/buttons-programming.blp:2504
+msgid "Insert Character Code"
+msgstr "Infoga teckenkod"
+
+#. Translators: Insert character code dialog: Label before character entry
+#: src/ui/buttons-programming.blp:2535
+msgid "Character"
+msgstr "Tecken"
+
+#: src/ui/buttons-programming.blp:2542
+msgid "Convert to"
+msgstr "Konvertera till"
+
+#: src/ui/buttons-programming.blp:2546
+msgid "Unicode Code Point"
+msgstr "Unicode-kodpunkt"
+
+#: src/ui/buttons-programming.blp:2547
+msgid "UTF-8 Encoding"
+msgstr "UTF-8-kodning"
+
+#: src/ui/buttons-programming.blp:2548
+msgid "UTF-16 Encoding"
+msgstr "UTF-16-kodning"
+
+#. Translators: Insert character code dialog: Button to insert selected character
+#: src/ui/buttons-programming.blp:2574
+msgid "_Insert"
+msgstr "_Infoga"
+
+#: src/ui/math-converter.blp:119
+msgid "Exchange Rates Not Loaded"
+msgstr "Valutakurser ej inlästa"
+
+#: src/ui/math-converter.blp:122
+msgid ""
+"<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
+msgstr ""
+"<a href=\"r:///\">Uppdatera kurser</a> eller växla uppdateringsintervallet i "
+"inställningar"
+
+#: src/ui/math-converter.blp:141
+msgid "_Copy"
+msgstr "_Kopiera"
+
+#: src/ui/math-converter.blp:146
+msgid "_Paste"
+msgstr "Klistra _in"
+
+#: src/ui/math-function-popover.blp:48
+msgid "Function name"
+msgstr "Funktionsnamn"
+
+#: src/ui/math-function-popover.blp:57
+msgid "Select no. of arguments"
+msgstr "Välj antal argument"
+
+#: src/ui/math-function-popover.blp:62
+msgid "Add function"
+msgstr "Lägg till funktion"
+
+#: src/ui/math-preferences.blp:11
+msgid "Favorite Currencies"
+msgstr "Favoritvalutor"
+
+#: src/ui/math-preferences.blp:20
+msgid "Search currencies"
+msgstr "Sök valutor"
+
+#: src/ui/math-preferences.blp:36
+msgid "No Results Found"
+msgstr "Inga resultat hittades"
+
+#: src/ui/math-preferences.blp:37
+msgid "Try a different search"
+msgstr "Försök med en annan sökning"
+
+#: src/ui/math-preferences.blp:46
+msgid "General"
+msgstr "Allmänt"
+
+#: src/ui/math-preferences.blp:49
+msgid "Number of _Decimals"
+msgstr "Antal _decimaler"
+
+#: src/ui/math-preferences.blp:57
+msgid "Trailing _Zeroes"
+msgstr "Efterliggande _nollor"
+
+#: src/ui/math-preferences.blp:62
+msgid "_Thousands Separators"
+msgstr "Tusentalsa_vgränsare"
+
+#: src/ui/math-preferences.blp:67
+msgid "_Angle Units"
+msgstr "V_inkelenheter"
+
+#: src/ui/math-preferences.blp:72
+msgid "_Word Size"
+msgstr "_Ordstorlek"
+
+#: src/ui/math-preferences.blp:81
+msgid "E_xchange Rate Refresh Interval"
+msgstr "_Uppdateringsintervall för valutakurser"
+
+#: src/ui/math-preferences.blp:86
+msgid "_Currency Display"
+msgstr "_Valutavisning"
+
+#: src/ui/math-preferences.blp:91
+msgid "_Show Currencies in Auto-Completion List"
+msgstr "_Visa valutor i automatisk kompletteringslista"
+
+#: src/ui/math-preferences.blp:96
+msgid "All"
+msgstr "Alla"
+
+#: src/ui/math-preferences.blp:97
+msgid "Favorite Only"
+msgstr "Endast favoriter"
+
+#: src/ui/math-preferences.blp:98
+msgid "None"
+msgstr "Ingen"
+
+#: src/ui/math-preferences.blp:104
+msgid "_Favorite Currencies"
+msgstr "_Favoritvalutor"
+
+#: src/ui/math-shortcuts.blp:5
+msgctxt "shortcuts dialog"
+msgid "General"
+msgstr "Allmänt"
+
+#: src/ui/math-shortcuts.blp:9
+msgctxt "shortcuts dialog"
+msgid "Open a New Window"
+msgstr "Öppna ett nytt fönster"
+
+#: src/ui/math-shortcuts.blp:14
+msgctxt "shortcuts dialog"
+msgid "Close Current Window"
+msgstr "Stäng aktuellt fönster"
+
+#: src/ui/math-shortcuts.blp:19
+msgctxt "shortcuts dialog"
+msgid "Quit the Application"
+msgstr "Avsluta programmet"
+
+#: src/ui/math-shortcuts.blp:24
+msgctxt "shortcuts dialog"
+msgid "Show Help"
+msgstr "Visa hjälp"
+
+#: src/ui/math-shortcuts.blp:29
+msgctxt "shortcuts dialog"
+msgid "Open Menu"
+msgstr "Öppna meny"
+
+#: src/ui/math-shortcuts.blp:34
+msgctxt "shortcuts dialog"
+msgid "Show Preferences"
+msgstr "Visa inställningar"
+
+#: src/ui/math-shortcuts.blp:39
+msgctxt "shortcuts dialog"
+msgid "Keyboard Shortcuts"
+msgstr "Tangentbordsgenvägar"
+
+#: src/ui/math-shortcuts.blp:44
+msgctxt "shortcuts dialog"
+msgid "Clear History"
+msgstr "Töm historik"
+
+#: src/ui/math-shortcuts.blp:49
+msgctxt "shortcuts dialog"
+msgid "Switching Modes"
+msgstr "Växla lägen"
+
+#: src/ui/math-shortcuts.blp:53
+msgctxt "shortcuts dialog"
+msgid "Switch to Basic Mode"
+msgstr "Växla till grundläggande läge"
+
+#: src/ui/math-shortcuts.blp:58
+msgctxt "shortcuts dialog"
+msgid "Switch to Advanced Mode"
+msgstr "Växla till avancerat läge"
+
+#: src/ui/math-shortcuts.blp:63
+msgctxt "shortcuts dialog"
+msgid "Switch to Financial Mode"
+msgstr "Växla till finansiellt läge"
+
+#: src/ui/math-shortcuts.blp:68
+msgctxt "shortcuts dialog"
+msgid "Switch to Programming Mode"
+msgstr "Växla till programmeringsläge"
+
+#: src/ui/math-shortcuts.blp:73
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode"
+msgstr "Växla till tangentbordsläge"
+
+#: src/ui/math-shortcuts.blp:78
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode (alt.)"
+msgstr "Växla till tangentbordsläge (alt.)"
+
+#: src/ui/math-shortcuts.blp:83
+msgctxt "shortcuts dialog"
+msgid "Switch to Conversion Mode"
+msgstr "Växla till konverteringsläge"
+
+#: src/ui/math-shortcuts.blp:88
+msgctxt "shortcuts dialog"
+msgid "Programming Mode"
+msgstr "Programmeringsläge"
+
+#: src/ui/math-shortcuts.blp:92
+msgctxt "shortcuts dialog"
+msgid "Switch to Binary"
+msgstr "Växla till binärt"
+
+#: src/ui/math-shortcuts.blp:97
+msgctxt "shortcuts dialog"
+msgid "Switch to Octal"
+msgstr "Växla till oktalt"
+
+#: src/ui/math-shortcuts.blp:102
+msgctxt "shortcuts dialog"
+msgid "Switch to Decimal"
+msgstr "Växla till decimalt"
+
+#: src/ui/math-shortcuts.blp:107
+msgctxt "shortcuts dialog"
+msgid "Switch to Hexadecimal"
+msgstr "Växla till hexadecimalt"
+
+#: src/ui/math-shortcuts.blp:112
+msgctxt "shortcuts dialog"
+msgid "Keyboard Entry"
+msgstr "Tangentbordsinmatning"
+
+#: src/ui/math-shortcuts.blp:116
+msgctxt "shortcuts dialog"
+msgid "Multiply (×)"
+msgstr "Multiplicera (×)"
+
+#: src/ui/math-shortcuts.blp:121
+msgctxt "shortcuts dialog"
+msgid "Divide (÷)"
+msgstr "Dividera (÷)"
+
+#: src/ui/math-shortcuts.blp:126
+msgctxt "shortcuts dialog"
+msgid "Square (²)"
+msgstr "Kvadrat (²)"
+
+#: src/ui/math-shortcuts.blp:131
+msgctxt "shortcuts dialog"
+msgid "Square Root (√)"
+msgstr "Kvadratrot (√)"
+
+#: src/ui/math-shortcuts.blp:136
+msgctxt "shortcuts dialog"
+msgid "Inverse (⁻¹)"
+msgstr "Invers (⁻¹)"
+
+#: src/ui/math-shortcuts.blp:141
+msgctxt "shortcuts dialog"
+msgid "Pi (π)"
+msgstr "Pi (π)"
+
+#: src/ui/math-shortcuts.blp:146
+msgctxt "shortcuts dialog"
+msgid "Tau (τ)"
+msgstr "Tau (τ)"
+
+#: src/ui/math-shortcuts.blp:151
+msgctxt "shortcuts dialog"
+msgid "Degree (°)"
+msgstr "Grad (°)"
+
+#: src/ui/math-shortcuts.blp:156 src/ui/math-shortcuts.blp:168
+msgctxt "shortcuts dialog"
+msgid "Floor (⌊⌋)"
+msgstr "Golv (⌊⌋)"
+
+#: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
+msgctxt "shortcuts dialog"
+msgid "Ceiling (⌈⌉)"
+msgstr "Tak (⌈⌉)"
+
+#: src/ui/math-shortcuts.blp:180
+msgctxt "shortcuts dialog"
+msgid "Enter Numbers in Scientific Format"
+msgstr "Mata in tal i vetenskaplig notation"
+
+#: src/ui/math-shortcuts.blp:185
+msgctxt "shortcuts dialog"
+msgid "Enter Subscript Numbers"
+msgstr "Mata in indexlägestal"
+
+#: src/ui/math-shortcuts.blp:190
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Numbers"
+msgstr "Mata in exponentlägestal"
+
+#: src/ui/math-shortcuts.blp:195
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Minus Sign"
+msgstr "Mata in exponentminustecken"
+
+#: src/ui/math-shortcuts.blp:200
+msgctxt "shortcuts dialog"
+msgid "Equation"
+msgstr "Ekvation"
+
+#: src/ui/math-shortcuts.blp:204
+msgctxt "shortcuts dialog"
+msgid "Copy"
+msgstr "Kopiera"
+
+#: src/ui/math-shortcuts.blp:209
+msgctxt "shortcuts dialog"
+msgid "Paste"
+msgstr "Klistra in"
+
+#: src/ui/math-shortcuts.blp:214
+msgctxt "shortcuts dialog"
+msgid "Undo"
+msgstr "Ångra"
+
+#: src/ui/math-shortcuts.blp:219
+msgctxt "shortcuts dialog"
+msgid "Redo"
+msgstr "Gör om"
+
+#: src/ui/math-shortcuts.blp:224
+msgctxt "shortcuts dialog"
+msgid "Previous Equation"
+msgstr "Föregående ekvation"
+
+#: src/ui/math-shortcuts.blp:229
+msgctxt "shortcuts dialog"
+msgid "Next Equation"
+msgstr "Nästa ekvation"
+
+#: src/ui/math-shortcuts.blp:234
+msgctxt "shortcuts dialog"
+msgid "Clear Display"
+msgstr "Töm skärmen"
+
+#: src/ui/math-shortcuts.blp:239
+msgctxt "shortcuts dialog"
+msgid "Factorize"
+msgstr "Faktorisera"
+
+#: src/ui/math-variable-popover.blp:37
+msgid "Constants"
+msgstr "Konstanter"
+
+#: src/ui/math-variable-popover.blp:58
+msgid "Variable name"
+msgstr "Variabelnamn"
+
+#: src/ui/math-variable-popover.blp:67
+msgid "Store value into existing or new variable"
+msgstr "Lagra värde till en befintlig eller ny variabel"
+
+#: src/ui/math-window.blp:7
+msgid "_Basic"
+msgstr "_Grundläggande"
+
+#: src/ui/math-window.blp:13
+msgid "_Advanced"
+msgstr "_Avancerad"
+
+#: src/ui/math-window.blp:19
+msgid "_Financial"
+msgstr "_Finansiell"
+
+#: src/ui/math-window.blp:25
+msgid "_Programming"
+msgstr "_Programmering"
+
+#: src/ui/math-window.blp:31
+msgid "_Keyboard"
+msgstr "_Tangentbord"
+
+#: src/ui/math-window.blp:37
+msgid "_Conversion"
+msgstr "_Konvertering"
+
+#: src/ui/math-window.blp:47
 msgid "_New Window"
 msgstr "_Nytt fönster"
 
-#: src/ui/math-window.ui:49
+#: src/ui/math-window.blp:54
 msgid "_Clear History"
 msgstr "_Töm historik"
 
-#: src/ui/math-window.ui:56
+#: src/ui/math-window.blp:61
 msgid "Result Format"
 msgstr "Resultatformat"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:59
+#: src/ui/math-window.blp:65
 msgid "_Automatic"
 msgstr "_Automatiskt"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:65
+#: src/ui/math-window.blp:72
 msgid "_Fixed"
 msgstr "_Fast"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
-#: src/ui/math-window.ui:71
+#: src/ui/math-window.blp:79
 msgid "_Scientific"
 msgstr "_Vetenskapligt"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
-#: src/ui/math-window.ui:77
+#: src/ui/math-window.blp:86
 msgid "_Engineering"
 msgstr "_Ingenjör"
 
-#: src/ui/math-window.ui:87
-msgid "Preferences"
-msgstr "Inställningar"
+#: src/ui/math-window.blp:96
+msgid "_Preferences"
+msgstr "_Inställningar"
 
-#: src/ui/math-window.ui:91
-msgid "Keyboard Shortcuts"
-msgstr "Tangentbordsgenvägar"
+#: src/ui/math-window.blp:101
+msgid "_Keyboard Shortcuts"
+msgstr "_Tangentbordsgenvägar"
 
-#: src/ui/math-window.ui:95
+#: src/ui/math-window.blp:106
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: src/ui/math-window.ui:99
-msgid "About Calculator"
-msgstr "Om Kalkylator"
+#: src/ui/math-window.blp:111
+msgid "A_bout Calculator"
+msgstr "_Om Kalkylator"
 
-#: src/ui/math-window.ui:118
+#: src/ui/math-window.blp:132
 msgid "Mode Selection"
 msgstr "Lägesval"
 
-#: src/ui/math-window.ui:128
-msgid "_Undo"
-msgstr "Å_ngra"
+#: src/ui/math-window.blp:139
+msgid "Undo"
+msgstr "Ångra"
 
-#: src/ui/math-window.ui:149
+#: src/ui/math-window.blp:146
+msgid "Redo"
+msgstr "Gör om"
+
+#: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "Huvudmeny"
+
+#~ msgid "Euler‘s Number"
+#~ msgstr "Eulers tal"
+
+#~ msgid "Copy"
+#~ msgstr "Kopiera"
+
+#~ msgid "Copy result to clipboard"
+#~ msgstr "Kopiera resultat till urklipp"
+
+#~ msgid "Boolean AND"
+#~ msgstr "Boolesk AND"
+
+#~ msgid "Boolean NAND"
+#~ msgstr "Boolesk NAND"
+
+#~ msgid "Boolean OR"
+#~ msgstr "Boolesk OR"
+
+#~ msgid "Boolean NOR"
+#~ msgstr "Boolesk NOR"
+
+#~ msgid "Boolean NOT"
+#~ msgstr "Boolesk NOT"
+
+#~ msgctxt "shortcuts dialog"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "Tangentbordsgenvägar"
+
+#~ msgctxt "shortcuts dialog"
+#~ msgid "Clear history"
+#~ msgstr "Töm historik"
+
+#~ msgid "_Undo"
+#~ msgstr "Å_ngra"
+
+#~ msgid "One’s Complement"
+#~ msgstr "Enkomplement"
+
+#~ msgid "Comparison"
+#~ msgstr "Jämförelse"
+
+#~ msgid "Displayed value not an integer"
+#~ msgstr "Visat värde är inte ett heltal"
+
+#~ msgid "Sample standard deviation of a single number is undefined"
+#~ msgstr "Standardavvikelse för stickprov för ett enda tal är inte definierat"
+
+#~ msgid "Sample variance of a single number is undefined"
+#~ msgstr "Stickprovsvarians för ett enda tal är inte definierat"
+
+#~ msgid "BTU"
+#~ msgstr "BTU"
+
+#~ msgid "eV"
+#~ msgstr "eV"
+
+#~ msgid "Ft-lbs"
+#~ msgstr "Ft-lb"
+
+#~ msgid "Currency Conversion Disabled"
+#~ msgstr "Valutakonvertering inaktiverad"
+
+#~ msgid "Enable in preferences to convert currencies"
+#~ msgstr "Aktivera i inställningar för att konvertera valutor"
+
+#~ msgid "New function"
+#~ msgstr "Ny funktion"
+
+#~ msgctxt "shortcut window"
+#~ msgid "General"
+#~ msgstr "Allmänt"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Programming mode"
+#~ msgstr "Programmeringsläge"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Copy"
+#~ msgstr "Kopiera"
+
+#~ msgid "Shift Left"
+#~ msgstr "Skifta vänster"
+
+#~ msgid "Shift Right"
+#~ msgstr "Skifta höger"
+
+#~ msgid "Ceil"
+#~ msgstr "Tak"
+
+#~ msgid "Binary Exponential"
+#~ msgstr "Binär exponentiering"
+
+#~ msgid "Start Group [(]"
+#~ msgstr "Startblock [(]"
+
+#~ msgid "Source currency"
+#~ msgstr "Källvaluta"
+
+#~ msgid "Currency of the current calculation"
+#~ msgstr "Valuta för aktuell beräkning"
+
+#~ msgid "Target currency"
+#~ msgstr "Målvaluta"
+
+#~ msgid "Currency to convert the current calculation into"
+#~ msgstr "Valuta att konvertera den aktuell beräkningen till"
+
+#~ msgid "Units of the current calculation"
+#~ msgstr "Enheter för aktuell beräkning"
+
+#~ msgid "Units to convert the current calculation into"
+#~ msgstr "Enheter att konvertera den aktuell beräkningen till"
+
+#~ msgid "Unknown angle unit"
+#~ msgstr "Okänd vinkelenhet"
+
+#~ msgid "Overflow: the result couldn’t be calculated"
+#~ msgstr "Överflöde: resultatet kunde inte beräknas"
+
+#~ msgid "Scientific Exponent [Ctrl+E]"
+#~ msgstr "Vetenskaplig exponent [Ctrl+E]"
+
+#~ msgid "Number Base Conversion"
+#~ msgstr "Talbaskonvertering"
+
+#~ msgid "Negative [-]"
+#~ msgstr "Negativ [-]"
+
+#~ msgid "Natural logarithm"
+#~ msgstr "Naturlig logaritm"
+
+#~ msgid "Argument"
+#~ msgstr "Argument"
+
+#~ msgid "Conjugate"
+#~ msgstr "Konjugat"
+
+#~ msgid "Integer"
+#~ msgstr "Heltal"
+
+#~ msgid "Fraction"
+#~ msgstr "Bråkdel"
+
+#~ msgid "Real"
+#~ msgstr "Reell"
+
+#~ msgid "Imaginary"
+#~ msgstr "Imaginär"
+
+#~ msgid "Arc sine"
+#~ msgstr "Arcus sinus"
+
+#~ msgid "Arc cosine"
+#~ msgstr "Arcus cosinus"
+
+#~ msgid "Arc tangent"
+#~ msgstr "Arcus tangens"
+
+#~ msgid "Hyperbolic sine"
+#~ msgstr "Sinus hyperbolicus"
+
+#~ msgid "Hyperbolic cosine"
+#~ msgstr "Cosinus hyperbolicus"
+
+#~ msgid "Hyperbolic tangent"
+#~ msgstr "Tangens hyperbolicus"
+
+#~ msgid "Hyperbolic arcsine"
+#~ msgstr "Arcus sinus hyperbolicus"
+
+#~ msgid "Hyperbolic arccosine"
+#~ msgstr "Arcus cosinus hyperbolicus"
+
+#~ msgid "Hyperbolic arctangent"
+#~ msgstr "Arcus tangens hyperbolicus"
+
+#~ msgid "One's complement"
+#~ msgstr "Enkomplement"
+
+#~ msgid "Two's complement"
+#~ msgstr "Tvåkomplement"
+
+#~ msgid "Erg"
+#~ msgstr "Erg"
+
+#~ msgid "Bar"
+#~ msgstr "Bar"
+
+#~ msgid "Root [Ctrl+R]"
+#~ msgstr "Rot [Ctrl+R]"
+
+#~ msgid "Memory"
+#~ msgstr "Minne"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Others"
+#~ msgstr "Andra"
 
 #~ msgid "No sane value to bitwise shift"
 #~ msgstr "Inget vettigt värde att göra bitvis skifte"
@@ -3709,9 +4565,6 @@ msgstr "Huvudmeny"
 
 #~ msgid "Superscript"
 #~ msgstr "Exponentläge"
-
-#~ msgid "Factorize"
-#~ msgstr "Faktorisera"
 
 #~ msgid "Scientific Exponent"
 #~ msgstr "Vetenskaplig exponent"
