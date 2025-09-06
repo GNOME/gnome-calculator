@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-03-31 11:50+0000\n"
-"PO-Revision-Date: 2025-04-03 22:54+0300\n"
+"POT-Creation-Date: 2025-09-06 18:00+0000\n"
+"PO-Revision-Date: 2025-09-06 23:01+0300\n"
 "Last-Translator: Aurimas Černius <aurisc4@gmail.com>\n"
 "Language-Team: Lietuvių <gnome-lt@lists.akl.lt>\n"
 "Language: lt\n"
@@ -25,21 +25,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.7\n"
 
-#: data/org.gnome.Calculator.desktop.in:3
-#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:282 src/ui/math-window.ui:105
+#: data/org.gnome.Calculator.desktop.in:2
+#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
+#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "Skaičiuotuvas"
 
-#: data/org.gnome.Calculator.desktop.in:4
+#: data/org.gnome.Calculator.desktop.in:3
 #: data/org.gnome.Calculator.metainfo.xml.in:8
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Atlikti aritmetinius, mokslinius ar finansinius skaičiavimus"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Calculator.desktop.in:6
+#: data/org.gnome.Calculator.desktop.in:5
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "skaičiavimai;aritmetika;moksliniai;finansiniai;"
 
@@ -59,13 +59,12 @@ msgstr ""
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
-"complex numbers, random number generation, prime factorization and unit "
-"conversions."
+"complex numbers, random number generation and prime factorization."
 msgstr ""
 "Išplėstinis skaičiuotuvas palaiko daug veiksmų, tokių kaip logaritmai, "
 "faktorialai, trigonometrinės bei hiperbolinės funkcijos, dalyba su liekana, "
-"kompleksiniai skaičiai, atsitiktinių skaičių generavimas, skaidymas "
-"pirminiais dauginamaisiais bei matavimo vienetų keitimas."
+"kompleksiniai skaičiai, atsitiktinių skaičių generavimas bei skaidymas "
+"pirminiais dauginamaisiais."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:22
 msgid ""
@@ -79,102 +78,114 @@ msgstr ""
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
 msgid ""
-"Programming mode supports conversion between common bases (binary, octal, "
-"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"Programming mode supports calculations using common bases (binary, octal, "
+"decimal, and hexadecimal), bitwise operations, ones’ and two’s complement, "
 "character to character code conversion, and more."
 msgstr ""
 "Programavimo veiksena palaiko konvertavimą tarp pagrindinių skaičiavimo "
-"sistemų (dvejetainės, aštuonetainės, dešimtainės ir šešioliktainės), bulio "
-"algebrą, vienetų dvejetų papildinys, simbolių kodų konvertavimas ir kt."
+"sistemų (dvejetainės, aštuonetainės, dešimtainės ir šešioliktainės), vienetų "
+"dvejetų papildinys, simbolių kodų konvertavimas ir kt."
 
-#: data/org.gnome.Calculator.metainfo.xml.in:39
+#: data/org.gnome.Calculator.metainfo.xml.in:32
+msgid ""
+"Conversion mode supports conversions between common units, currencies and "
+"number bases."
+msgstr ""
+"Konvertavimo veiksena palaiko dažnai naudojamų matavimo vienetų "
+"konvertavimą, valiutas bei skaičiavimo sistemas."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:43
 msgid "Basic Mode"
 msgstr "Paprasta veiksena"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:43
+#: data/org.gnome.Calculator.metainfo.xml.in:47
 msgid "Advanced Mode"
 msgstr "Išplėstinė veiksena"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:47
+#: data/org.gnome.Calculator.metainfo.xml.in:51
 msgid "Financial Mode"
 msgstr "Finansinė veiksena"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:51
+#: data/org.gnome.Calculator.metainfo.xml.in:55
 msgid "Programming Mode"
 msgstr "Programavimo veiksena"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:55
+#: data/org.gnome.Calculator.metainfo.xml.in:59
 msgid "Keyboard Mode"
 msgstr "Klaviatūros veiksena"
 
+#: data/org.gnome.Calculator.metainfo.xml.in:63
+msgid "Conversion Mode"
+msgstr "Konvertavimo veiksena"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:76 src/gnome-calculator.vala:284
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
 msgid "The GNOME Project"
 msgstr "GNOME projektas"
 
-#: data/org.gnome.calculator.gschema.xml:26
+#: data/org.gnome.calculator.gschema.xml:31
 msgid "Accuracy value"
 msgstr "Tikslumo reikšmė"
 
-#: data/org.gnome.calculator.gschema.xml:27
+#: data/org.gnome.calculator.gschema.xml:32
 msgid "The number of digits displayed after the numeric point"
 msgstr "Skaitmenų po kablelio skaičius"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:37
 msgid "Word size"
 msgstr "Žodžio ilgis"
 
-#: data/org.gnome.calculator.gschema.xml:33
+#: data/org.gnome.calculator.gschema.xml:38
 msgid "The size of the words used in bitwise operations"
 msgstr "Žodžio ilgis naudojamas bitinėse operacijose"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:43
 msgid "Numeric Base"
 msgstr "Skaičiavimo sistema"
 
-#: data/org.gnome.calculator.gschema.xml:39
+#: data/org.gnome.calculator.gschema.xml:44
 msgid "The numeric base"
 msgstr "Skaičiavimo sistema"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "Show Thousands Separators"
 msgstr "Rodyti tūkstančių skyriklį"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:49
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "Nurodo, ar dideliems skaičiams rodomi tūkstančių skirtukai."
 
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Show Trailing Zeroes"
 msgstr "Rodyti nulius skaičiaus gale"
 
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:54
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr "Nurodo, ar turėtų būti rodomi nuliai pabaigoje po kablelio."
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Number format"
 msgstr "Skaičiaus formatas"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "The format to display numbers in"
 msgstr "Kokiu formatu rodyti skaičius"
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Angle units"
 msgstr "Kampų matavimo vienetai"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:64
 msgid "The angle units to use"
 msgstr "Naudotini kampų matavimo vienetai"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Currency update interval"
 msgstr "Valiutos atnaujinimo intervalas"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:69
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
@@ -182,683 +193,1025 @@ msgstr ""
 "Kaip dažnai atnaujinami valiutų kursai. Vertė 0 reiškia, kad valiutų kursai "
 "išvis nebus gaunami iš tinklo."
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:73
+msgid "Currency display"
+msgstr "Valiutos rodymas"
+
+#: data/org.gnome.calculator.gschema.xml:74
+msgid ""
+"Indicates whether to show currency code, currency name or both of them in "
+"the converter."
+msgstr ""
+"Nurodo, ar rodyti valiutos kodą, valiutos pavadinimą ar abu konvertavime."
+
+#: data/org.gnome.calculator.gschema.xml:78
+msgid "Enabled completions"
+msgstr "Įjungti užbaigimą"
+
+#: data/org.gnome.calculator.gschema.xml:79
+msgid ""
+"The types of completion proposals to be shown in the auto-completion list."
+msgstr "Užbaigimo siūlymų tipai, rodomi automatinio užbaigimo sąraše."
+
+#: data/org.gnome.calculator.gschema.xml:83
+msgid "Favorite currencies"
+msgstr "Mėgiamos valiutos"
+
+#: data/org.gnome.calculator.gschema.xml:84
+msgid "The favorite currencies to be shown at the top of the currency list."
+msgstr "Mėgiamos valiutos, rodomos valiutų sąrašo viršuje."
+
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Button mode"
 msgstr "Mygtuko veiksena"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:89
 msgid "The button mode"
 msgstr "Mygtuko veiksena"
 
-#: data/org.gnome.calculator.gschema.xml:73
-msgid "Source currency"
-msgstr "Iš valiutos"
+#: data/org.gnome.calculator.gschema.xml:93
+msgid "Unit category"
+msgstr "Vienetų kategorija"
 
-#: data/org.gnome.calculator.gschema.xml:74
-msgid "Currency of the current calculation"
-msgstr "Dabartinio skaičiavimo valiuta"
+#: data/org.gnome.calculator.gschema.xml:94
+msgid "Currently selected unit category in the converter"
+msgstr "Šiuo metu pasirinkta vienetų kategorija konvertavimui"
 
-#: data/org.gnome.calculator.gschema.xml:78
-msgid "Target currency"
-msgstr "Į valiutą"
-
-#: data/org.gnome.calculator.gschema.xml:79
-msgid "Currency to convert the current calculation into"
-msgstr "Valiuta, į kurią konvertuoti dabartinį skaičiavimą"
-
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Source units"
 msgstr "Iš vienetų"
 
-#: data/org.gnome.calculator.gschema.xml:84
-msgid "Units of the current calculation"
-msgstr "Dabartinio skaičiavimo vienetai"
+#: data/org.gnome.calculator.gschema.xml:99
+msgid "Currently selected source units in the converter"
+msgstr "Šiuo metu pasirinkti matavimo vienetai konversavimui"
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Target units"
 msgstr "Į vienetus"
 
-#: data/org.gnome.calculator.gschema.xml:89
-msgid "Units to convert the current calculation into"
-msgstr "Vienetai, į kuriuos konvertuoti dabartinį skaičiavimą"
+#: data/org.gnome.calculator.gschema.xml:104
+msgid "Currently selected target units in the converter"
+msgstr "Šiuo metu pasirinkti paskirties matavimo vienetai convertavimui"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Internal precision"
 msgstr "Vidinis tikslumas"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "The internal precision used with the MPFR library"
 msgstr "MPFR bibliotekos naudojamas vidinis tikslumas"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Window position"
 msgstr "Lango padėtis"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Window position (x and y) of the last closed window."
 msgstr "Lango padėtis (x ir y) paskutiniam užvertam langui."
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Window maximized"
 msgstr "Langas išdidintas"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "Whether the last closed window was maximized."
 msgstr "Ar paskutinis užvertas langas buvo išdidintas."
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window size"
 msgstr "Lango dydis"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window size (width and height) of the last closed window."
 msgstr "Lango dydis (plotis ir aukštis) paskutiniam užvertam langui."
 
-#: lib/currency.vala:64
+#: lib/currency.vala:82
 msgid "UAE Dirham"
 msgstr "JAE dirhamas"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:83
 msgid "Argentine Peso"
 msgstr "Argentinos pesas"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:84
 msgid "Australian Dollar"
 msgstr "Australijos doleris"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:85
 msgid "Bangladeshi Taka"
 msgstr "Bangladešo taka"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:86
 msgid "Bulgarian Lev"
 msgstr "Bulgarijos levas"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:87
 msgid "Bahraini Dinar"
 msgstr "Bahreino dinaras"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "Brunėjaus doleris"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "Brazilijos realas"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "Botsvanos pula"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "Kanados doleris"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:92
 msgid "CFA Franc"
 msgstr "CFA frankas"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:93
 msgid "Swiss Franc"
 msgstr "Šveicarijos frankas"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:94
 msgid "Chilean Peso"
 msgstr "Čilės pesas"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:95
 msgid "Chinese Yuan"
 msgstr "Kinijos renminbi juanis"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:96
 msgid "Colombian Peso"
 msgstr "Kolumbijos pesas"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:97
 msgid "Czech Koruna"
 msgstr "Čekijos krona"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:98
 msgid "Danish Krone"
 msgstr "Danijos krona"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:99
 msgid "Algerian Dinar"
 msgstr "Alžyro dinaras"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:100
 msgid "Estonian Kroon"
 msgstr "Estijos krona"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:101
+msgid "Egyptian Pound"
+msgstr "Egipto svaras"
+
+#: lib/currency.vala:102
 msgid "Euro"
 msgstr "Euro"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:103
 msgid "British Pound Sterling"
 msgstr "Britų svaras sterlingų"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:104
 msgid "Hong Kong Dollar"
 msgstr "Hong kongo doleris"
 
-#: lib/currency.vala:86
+#: lib/currency.vala:105
 msgid "Croatian Kuna"
 msgstr "Kroatijos kuna"
 
-#: lib/currency.vala:87
+#: lib/currency.vala:106
 msgid "Hungarian Forint"
 msgstr "Vengrijos forintas"
 
-#: lib/currency.vala:88
+#: lib/currency.vala:107
 msgid "Indonesian Rupiah"
 msgstr "Indonezijos rupija"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:108
 msgid "Israeli New Shekel"
 msgstr "Izraelio naujasis šekelis"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:109
 msgid "Indian Rupee"
 msgstr "Indijos rupija"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:110
 msgid "Iranian Rial"
 msgstr "Irano rialas"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:111
 msgid "Icelandic Krona"
 msgstr "Islandijos krona"
 
-#: lib/currency.vala:93
+#: lib/currency.vala:112
 msgid "Japanese Yen"
 msgstr "Japonijos jena"
 
-#: lib/currency.vala:94
+#: lib/currency.vala:113
 msgid "Jamaican Dollar"
 msgstr "Jamaikos doleris"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:114
 msgid "South Korean Won"
 msgstr "Pietų Korėjos vonas"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:115
 msgid "Kuwaiti Dinar"
 msgstr "Kuveito dinaras"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:116
 msgid "Kazakhstani Tenge"
 msgstr "Kazachstano tengė"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:117
 msgid "Sri Lankan Rupee"
 msgstr "Šri Lankos rupija"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:118
 msgid "Libyan Dinar"
 msgstr "Libijos dinaras"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:119
 msgid "Mauritian Rupee"
 msgstr "Mauritanijos rupija"
 
-#: lib/currency.vala:101
+#: lib/currency.vala:120
 msgid "Mexican Peso"
 msgstr "Meksikos pesas"
 
-#: lib/currency.vala:102
+#: lib/currency.vala:121
 msgid "Malaysian Ringgit"
 msgstr "Malaizijos ringitas"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:122
 msgid "Nigerian Naira"
 msgstr "Nigerijos naira"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:123
 msgid "Norwegian Krone"
 msgstr "Norvegijos krona"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:124
 msgid "Nepalese Rupee"
 msgstr "Nepalo rupija"
 
-#: lib/currency.vala:106
+#: lib/currency.vala:125
 msgid "New Zealand Dollar"
 msgstr "Naujosios Zelandijos doleris"
 
-#: lib/currency.vala:107
+#: lib/currency.vala:126
 msgid "Omani Rial"
 msgstr "Omano rialas"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:127
 msgid "Peruvian Nuevo Sol"
 msgstr "Peru naujasis solis"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:128
 msgid "Philippine Peso"
 msgstr "Filipinų pesas"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:129
 msgid "Pakistani Rupee"
 msgstr "Pakistano rupija"
 
-#: lib/currency.vala:111
-msgid "Polish Zloty"
+#: lib/currency.vala:130
+msgid "Polish Złoty"
 msgstr "Lenkijos zlotas"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:131
 msgid "Qatari Riyal"
 msgstr "Kataro rialis"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:132
 msgid "New Romanian Leu"
 msgstr "Naujoji Rumunijos lėja"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:133
 msgid "Russian Ruble"
 msgstr "Rusijos rublis"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:134
 msgid "Saudi Riyal"
 msgstr "Saudo Arabijos rialis"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:135
 msgid "Serbian Dinar"
 msgstr "Serbijos dinaras"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:136
 msgid "Swedish Krona"
 msgstr "Švedijos krona"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:137
 msgid "Singapore Dollar"
 msgstr "Singapūro doleris"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:138
 msgid "Thai Baht"
 msgstr "Tailando batas"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:139
 msgid "Tunisian Dinar"
 msgstr "Tuniso dinaras"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:140
 msgid "Turkish Lira"
 msgstr "Turkijos lira"
 
-#: lib/currency.vala:122
-msgid "T&T Dollar (TTD)"
-msgstr "T ir T doleris (TTD)"
+#: lib/currency.vala:141
+msgid "T&T Dollar"
+msgstr "Trinidado ir Tobago doleris"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:142
 msgid "New Taiwan Dollar"
 msgstr "Naujasis Taivano doleris"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:143
 msgid "Ukrainian Hryvnia"
 msgstr "Ukrainos grivina"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:144
 msgid "US Dollar"
 msgstr "JAV doleris"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:145
 msgid "Uruguayan Peso"
 msgstr "Urugvajaus pesas"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:146
 msgid "Vietnamese Dong"
 msgstr "Vietnamiečių dong"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:147
 msgid "South African Rand"
 msgstr "Pietų Afrikos Respublikos randas"
 
-#: lib/currency-provider.vala:224
-msgid "International Monetary Fund"
-msgstr "Tarptautinis valiutos fondas"
+#: lib/equation-lexer.vala:464
+msgid "Missing digits after minus sign"
+msgstr "Trūksta skaitmenų po minuso ženklo"
 
-#: lib/currency-provider.vala:433
-msgid "European Central Bank"
-msgstr "Europos centrinis bankas"
+#: lib/equation-lexer.vala:562 lib/equation-lexer.vala:642
+msgid "Missing second symbol (″)"
+msgstr "Trūksta sekundės simbolio (\")"
 
-#: lib/currency-provider.vala:544
-msgid "Bank of Canada"
-msgstr "Kanados bankas"
+#: lib/equation-lexer.vala:578 lib/equation-lexer.vala:620
+msgid "Missing minute symbol (′)"
+msgstr "Trūksta minutės simbolio (')"
 
-#: lib/currency-provider.vala:612
-msgid "United Nations Treasury"
-msgstr "Jungtinių valstijų iždas"
+#: lib/equation-lexer.vala:607 lib/equation-lexer.vala:632
+#: lib/equation-lexer.vala:675 lib/equation-lexer.vala:762
+msgid "Missing digits after decimal point"
+msgstr "Trūksta skaitmenų po kablelio"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
 msgid "in"
 msgstr "valiuta"
 
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
 msgid "to"
 msgstr "į"
 
-#: lib/equation-parser.vala:735 lib/number.vala:434
+#: lib/equation-parser.vala:443
+#, c-format
+msgid "Function “%s” is missing arguments"
+msgstr "Funkcijai „%s“ trūksta argumentų"
+
+#: lib/equation-parser.vala:765 lib/number.vala:568
 msgid "The zeroth root of a number is undefined"
 msgstr "Skaičiaus nulinio laipsnio šaknis yra neapibrėžta"
+
+#: lib/equation-parser.vala:1060
+msgid "Mathematics"
+msgstr "Matematika"
+
+#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+msgid "Euler’s Number"
+msgstr "Oilerio skaičius"
+
+#: lib/equation-parser.vala:1062
+msgid "Pi"
+msgstr "Pi"
+
+#: lib/equation-parser.vala:1063
+msgid "Tau"
+msgstr "Tau"
+
+#: lib/equation-parser.vala:1064
+msgid "Golden Ratio"
+msgstr "Auksinė proporcija"
+
+#: lib/equation-parser.vala:1066
+msgid "Electromagnetism"
+msgstr "Elektromagnetizmas"
+
+#: lib/equation-parser.vala:1067
+msgid "Light Speed"
+msgstr "Šviesos greitis"
+
+#: lib/equation-parser.vala:1068
+msgid "Elementary Charge"
+msgstr "Elementarus krūvis"
+
+#: lib/equation-parser.vala:1069
+msgid "Impedance of Vacuum"
+msgstr "Vakuumo varža"
+
+#: lib/equation-parser.vala:1070
+msgid "Permeability of Vacuum"
+msgstr "Vakuumo pralaidumas"
+
+#: lib/equation-parser.vala:1071
+msgid "Permittivity of Vacuum"
+msgstr "Vakuumo laidumas"
+
+#: lib/equation-parser.vala:1073
+msgid "Atomic & Nuclear"
+msgstr "Atominiai ir branduoliniai"
+
+#: lib/equation-parser.vala:1074
+msgid "Planck’s Constant"
+msgstr "Planko konstanta"
+
+#: lib/equation-parser.vala:1075
+msgid "Fine-Structure Constant"
+msgstr "Tikslios struktūros konstanta"
+
+#: lib/equation-parser.vala:1076
+msgid "Electron Mass"
+msgstr "Elektrono masė"
+
+#: lib/equation-parser.vala:1077
+msgid "Proton Mass"
+msgstr "Protono masė"
+
+#: lib/equation-parser.vala:1079
+msgid "Thermodynamics"
+msgstr "Termodinamika"
+
+#: lib/equation-parser.vala:1080
+msgid "Boltzmann Constant"
+msgstr "Bolcmano konstanta"
+
+#: lib/equation-parser.vala:1081
+msgid "Atomic Mass Unit"
+msgstr "Atomo masės vienetas"
+
+#: lib/equation-parser.vala:1082
+msgid "Molar Gas Constant"
+msgstr "Dujų molio konstanta"
+
+#: lib/equation-parser.vala:1083
+msgid "Stefan-Boltzmann Constant"
+msgstr "Štefano-Bolcmano konstanta"
+
+#: lib/equation-parser.vala:1084
+msgid "Avogadro’s Number"
+msgstr "Avogadro skaičius"
+
+#: lib/equation-parser.vala:1086
+msgid "Gravitation"
+msgstr "Gravitacija"
+
+#: lib/equation-parser.vala:1087
+msgid "Gravitational Constant"
+msgstr "Gravitacinė konstanta"
+
+#: lib/equation-parser.vala:1088
+msgid "Earth Acceleration"
+msgstr "Žemės pagreitis"
 
 #: lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "Klaida, pasikartojimų skaičius turi būti teigiamas"
 
-#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:692
-#: src/ui/buttons-financial.ui:990 src/ui/buttons-programming.ui:1951
-msgid "Logarithm"
-msgstr "Logaritmas"
+#: lib/function-manager.vala:26
+msgid "Trigonometry"
+msgstr "Trigonometrija"
 
-#: lib/function-manager.vala:50
-msgid "Natural logarithm"
-msgstr "Natūrinis logaritmas"
-
-#: lib/function-manager.vala:52
-msgid "Square root"
-msgstr "Kvadratinė pėda"
-
-#: lib/function-manager.vala:54
-msgid "Absolute value"
-msgstr "Modulis"
-
-#: lib/function-manager.vala:56
-msgid "Signum"
-msgstr "Ženklas"
-
-#: lib/function-manager.vala:58
-msgid "Argument"
-msgstr "Argumentas"
-
-#: lib/function-manager.vala:60
-msgid "Conjugate"
-msgstr "Konjunkcija"
-
-#: lib/function-manager.vala:62
-msgid "Integer"
-msgstr "Sveikasis skaičius"
-
-#: lib/function-manager.vala:64
-msgid "Fraction"
-msgstr "Trupmena"
-
-#: lib/function-manager.vala:66
-msgid "Floor"
-msgstr "Apačia"
-
-#: lib/function-manager.vala:68
-msgid "Ceiling"
-msgstr "Viršus"
-
-#: lib/function-manager.vala:70
-msgid "Round"
-msgstr "Apvalinti"
-
-#: lib/function-manager.vala:72
-msgid "Real"
-msgstr "Realusis"
-
-#: lib/function-manager.vala:74
-msgid "Imaginary"
-msgstr "Menamoji dalis"
-
-#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:538
+#: lib/function-manager.vala:27 src/ui/buttons-advanced.blp:499
 msgid "Sine"
 msgstr "Sinusas"
 
-#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:522
+#: lib/function-manager.vala:28 src/ui/buttons-advanced.blp:573
 msgid "Cosine"
 msgstr "Kosinusas"
 
-#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:554
+#: lib/function-manager.vala:29 src/ui/buttons-advanced.blp:647
 msgid "Tangent"
 msgstr "Tangentas"
 
-#: lib/function-manager.vala:82
-msgid "Arc sine"
+#: lib/function-manager.vala:30 lib/function-manager.vala:115
+#: src/ui/buttons-advanced.blp:517
+msgid "Inverse Sine"
 msgstr "Arksinusas"
 
-#: lib/function-manager.vala:84
-msgid "Arc cosine"
+#: lib/function-manager.vala:31 lib/function-manager.vala:116
+#: src/ui/buttons-advanced.blp:591
+msgid "Inverse Cosine"
 msgstr "Arkkosinusas"
 
-#: lib/function-manager.vala:86
-msgid "Arc tangent"
+#: lib/function-manager.vala:32 lib/function-manager.vala:117
+#: src/ui/buttons-advanced.blp:665
+msgid "Inverse Tangent"
 msgstr "Arktangentas"
 
-#: lib/function-manager.vala:88
-msgid "Inverse sine"
-msgstr "Invertuotas sinusas"
-
-#: lib/function-manager.vala:90
-msgid "Inverse cosine"
-msgstr "Invertuotas kosinusas"
-
-#: lib/function-manager.vala:92
-msgid "Inverse tangent"
-msgstr "Invertuotas tangentas"
-
-#: lib/function-manager.vala:94
-msgid "Hyperbolic sine"
+#: lib/function-manager.vala:33 src/ui/buttons-advanced.blp:536
+msgid "Hyperbolic Sine"
 msgstr "Hiperbolinis sinusas"
 
-#: lib/function-manager.vala:96
-msgid "Hyperbolic cosine"
+#: lib/function-manager.vala:34 src/ui/buttons-advanced.blp:610
+msgid "Hyperbolic Cosine"
 msgstr "Hiperbolinis kosinusas"
 
-#: lib/function-manager.vala:98
-msgid "Hyperbolic tangent"
+#: lib/function-manager.vala:35 src/ui/buttons-advanced.blp:684
+msgid "Hyperbolic Tangent"
 msgstr "Hiperbolinis tangentas"
 
-#: lib/function-manager.vala:100
-msgid "Hyperbolic arcsine"
+#: lib/function-manager.vala:36 lib/function-manager.vala:118
+#: src/ui/buttons-advanced.blp:554
+msgid "Inverse Hyperbolic Sine"
 msgstr "Hiperbolinis arksinusas"
 
-#: lib/function-manager.vala:102
-msgid "Hyperbolic arccosine"
+#: lib/function-manager.vala:37 lib/function-manager.vala:119
+#: src/ui/buttons-advanced.blp:628
+msgid "Inverse Hyperbolic Cosine"
 msgstr "Hiperbolinis arkkosinusas"
 
-#: lib/function-manager.vala:104
-msgid "Hyperbolic arctangent"
+#: lib/function-manager.vala:38 lib/function-manager.vala:120
+#: src/ui/buttons-advanced.blp:702
+msgid "Inverse Hyperbolic Tangent"
 msgstr "Hiperbolinis arktangentas"
 
-#: lib/function-manager.vala:106
-msgid "Inverse hyperbolic sine"
-msgstr "Invertuotas hiperbolinis sinusas"
+#: lib/function-manager.vala:40
+msgid "Complex"
+msgstr "Kompleksinis"
 
-#: lib/function-manager.vala:108
-msgid "Inverse hyperbolic cosine"
-msgstr "Invertuotas hiperbolinis kosinusas"
+#: lib/function-manager.vala:41 src/ui/buttons-advanced.blp:932
+msgid "Complex Conjugate"
+msgstr "Kompleksinė konjunkcija"
 
-#: lib/function-manager.vala:110
-msgid "Inverse hyperbolic tangent"
-msgstr "Invertuotas hiperbolinis tangentas"
+#: lib/function-manager.vala:42 src/ui/buttons-advanced.blp:949
+msgid "Complex Argument"
+msgstr "Kompleksinis argumentas"
 
-#: lib/function-manager.vala:112
-msgid "One's complement"
+#: lib/function-manager.vala:43 src/ui/buttons-advanced.blp:966
+msgid "Real Component"
+msgstr "Realioji dalis"
+
+#: lib/function-manager.vala:44 src/ui/buttons-advanced.blp:983
+msgid "Imaginary Component"
+msgstr "Menamoji dalis"
+
+#: lib/function-manager.vala:46 src/math-window.vala:155
+msgid "Programming"
+msgstr "Programavimo"
+
+#: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
+msgid "Ones’ Complement"
 msgstr "Vieneto papildymas"
 
-#: lib/function-manager.vala:114
-msgid "Two's complement"
-msgstr "Dvejeto papildymas"
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
+msgid "Two’s Complement"
+msgstr "Dvejetainis papildymas"
 
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:74 lib/math-equation.vala:1468
-msgid "Displayed value not an integer"
-msgstr "Rodoma reikšmė nėra sveikas skaičius"
+#: lib/function-manager.vala:49
+msgid "Swap Endianness"
+msgstr "Sukeisti endianiškumą"
+
+#: lib/function-manager.vala:50 src/ui/buttons-advanced.blp:403
+#: src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
+#: src/ui/buttons-programming.blp:1808
+msgid "Modulus Divide"
+msgstr "Dalyba su liekana"
+
+#: lib/function-manager.vala:51
+msgid "Modular Exponentiation"
+msgstr "Modulio eksponentė"
+
+#: lib/function-manager.vala:53
+msgid "Rounding"
+msgstr "Apvalinimas"
+
+#: lib/function-manager.vala:54
+msgid "Round"
+msgstr "Apvalinti"
+
+#: lib/function-manager.vala:55
+msgid "Floor"
+msgstr "Apačia"
+
+#: lib/function-manager.vala:56
+msgid "Ceiling"
+msgstr "Viršus"
+
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
+msgid "Integer Component"
+msgstr "Sveikoji dalis"
+
+#: lib/function-manager.vala:58 src/ui/buttons-programming.blp:2348
+msgid "Fractional Component"
+msgstr "Trupmeninė dalis"
+
+#: lib/function-manager.vala:60
+msgid "Statistics"
+msgstr "Statistika"
+
+#: lib/function-manager.vala:61
+msgid "Sum"
+msgstr "Suma"
+
+#: lib/function-manager.vala:62
+msgid "Sum of Squares"
+msgstr "Kvadratų suma"
+
+#: lib/function-manager.vala:63
+msgid "Average"
+msgstr "Vidurkis"
+
+#: lib/function-manager.vala:64
+msgid "Median"
+msgstr "Mediana"
+
+#: lib/function-manager.vala:65
+msgid "Minimum Value"
+msgstr "Minimali reikšmė"
+
+#: lib/function-manager.vala:66
+msgid "Maximum Value"
+msgstr "Maksimali reikšmė"
+
+#: lib/function-manager.vala:67
+msgid "Sample Standard Deviation"
+msgstr "Mėginio standartinis nuokrypis"
+
+#: lib/function-manager.vala:68
+msgid "Population Standard Deviation"
+msgstr "Populiacijos standartinis nuokrypis"
+
+#: lib/function-manager.vala:69
+msgid "Sample Variance"
+msgstr "Mėginio nuokrypis"
+
+#: lib/function-manager.vala:70
+msgid "Population Variance"
+msgstr "Populiacijos nuokrypis"
+
+#: lib/function-manager.vala:72
+msgid "Sundry"
+msgstr "Įvairūs"
+
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:806
+#: src/ui/buttons-programming.blp:2171
+msgid "Logarithm"
+msgstr "Logaritmas"
+
+#: lib/function-manager.vala:74 src/ui/buttons-advanced.blp:892
+#: src/ui/buttons-financial.blp:626
+msgid "Natural Logarithm"
+msgstr "Natūrinis logaritmas"
+
+#: lib/function-manager.vala:75
+msgid "Square Root"
+msgstr "Kvadratinė pėda"
+
+#: lib/function-manager.vala:76
+msgid "Absolute Value"
+msgstr "Modulis"
+
+#: lib/function-manager.vala:77
+msgid "Signum"
+msgstr "Ženklas"
+
+#: lib/function-manager.vala:78
+msgid "Combination"
+msgstr "Kombinacija"
+
+#: lib/function-manager.vala:79
+msgid "Permutation"
+msgstr "Permutacija"
+
+#: lib/function-manager.vala:80
+msgid "Greatest Common Divisor"
+msgstr "Didžiausias bendras vardiklis"
+
+#: lib/function-manager.vala:81
+msgid "Least Common Multiple"
+msgstr "Mažiausias kartotinis"
+
+#: lib/function-manager.vala:82
+msgid "Comparison (Kronecker Delta)"
+msgstr "Palyginimas (Kronekerio delta)"
+
+#: lib/function-manager.vala:337
+#, c-format
+msgid "Function “%s” takes 1 argument"
+msgstr "Funkcijai „%s“ reikia vieno argumento"
+
+#: lib/function-manager.vala:355
+#, c-format
+msgid "Function “%s” takes 1 or 2 arguments"
+msgstr "Funkcijai „%s“ reikia dviejų argumentų"
+
+#: lib/function-manager.vala:363
+#, c-format
+msgid "Function “%s” takes at least 2 arguments"
+msgstr "Funkcijai „%s“ reikia bent dviejų argumentų"
+
+#: lib/function-manager.vala:370
+#, c-format
+msgid "Function “%s” takes %d argument"
+msgid_plural "Function “%s” takes %d arguments"
+msgstr[0] "Funkcijai „%s“ reikia %d argumento"
+msgstr[1] "Funkcijai „%s“ reikia %d argumentų"
+msgstr[2] "Funkcijai „%s“ reikia %d argumentų"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:217
+#: lib/math-equation.vala:181
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:585
+#: lib/math-equation.vala:554
 msgid "No undo history"
 msgstr "Nėra atšaukimo istorijos"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:606
+#: lib/math-equation.vala:575
 msgid "No redo history"
 msgstr "Nėra atšaukimo istorijos"
 
-#: lib/math-equation.vala:837
+#: lib/math-equation.vala:822
 msgid "No sane value to store"
 msgstr "Nėra sveikos reikšmės saugojimui"
 
-#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1158
-msgid "Overflow. Try a bigger word size"
-msgstr "Perpildymas. Mėginkite didesnį žodžio ilgį"
-
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1163
+#: lib/math-equation.vala:1281
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Nežinomas kintamasis „%s“"
 
+#. Error displayed to user when a currency conversion with unknown exchange rate is attempted
+#: lib/math-equation.vala:1288
+#, c-format
+msgid "Exchange rate for “%s” is not available"
+msgstr "Nėra prieinamo „%s“ kurso"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: lib/math-equation.vala:1295
+#, c-format
+msgid "Unknown unit “%s”"
+msgstr "Nežinomas vienetas „%s“"
+
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1170
+#: lib/math-equation.vala:1302
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Neapibrėžta funkcija „%s“"
 
-#. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1177
+#. Error displayed to user when an invalid conversion (e.g. units of different categories)
+#: lib/math-equation.vala:1309
 msgid "Unknown conversion"
 msgstr "Nežinoma konversija"
 
 #. should always be run
-#: lib/math-equation.vala:1187
+#: lib/math-equation.vala:1319
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1192 lib/math-equation.vala:1197
+#: lib/math-equation.vala:1324 lib/math-equation.vala:1329
 msgid "Malformed expression"
 msgstr "Blogai suformuota išraiška"
 
-#: lib/math-equation.vala:1208
+#: lib/math-equation.vala:1340
 msgid "Calculating"
 msgstr "Skaičiuojama"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1401
+#: lib/math-equation.vala:1562
 msgid "Need an integer to factorize"
 msgstr "Skaidymui reikalingas sveikas skaičius"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:306
 msgid "Underflow error"
 msgstr "Atvirkštinio perpildymo klaida"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:206
+#: lib/number.vala:311
 msgid "Overflow error"
 msgstr "Perpildymo klaida"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:256
+#: lib/number.vala:372
 msgid "Argument not defined for zero"
 msgstr "Argumentas negali būti nulis"
 
+#: lib/number.vala:442
+msgid "Floor is only defined for real numbers"
+msgstr "Apatinis sveikasis apibrėžtas tik realiems skaičiams"
+
+#: lib/number.vala:457
+msgid "Ceiling is only defined for real numbers"
+msgstr "Viršutinis sveikasis apibrėžtas tik realiesiems skaičiams"
+
+#: lib/number.vala:472
+msgid "Round is only defined for real numbers"
+msgstr "Apvalinimas apibrėžtas tik realiesiems skaičiams"
+
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:372 lib/number.vala:402
+#: lib/number.vala:506 lib/number.vala:536
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nulinis laipsnis neapibrėžtas neigiamai eksponentei"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:380 lib/number.vala:410
+#: lib/number.vala:514 lib/number.vala:544
 msgid "Zero raised to zero is undefined"
 msgstr "Nulis nuliniu laipsniu neapibrėžtas"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:464 lib/number.vala:495
+#: lib/number.vala:598 lib/number.vala:629
 msgid "Logarithm of zero is undefined"
 msgstr "Nulio logaritmas neapibrėžtas"
 
+#: lib/number.vala:634
+msgid "Logarithm with base 0 or 1 is undefined"
+msgstr "Nulio ir vieneto logaritmas neapibrėžtas"
+
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:517
+#: lib/number.vala:653
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "Faktorialas apibrėžtas tik natūraliems skaičiams"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:577
+#: lib/number.vala:704
 msgid "Division by zero is undefined"
 msgstr "Dalyba iš nulio neapibrėžta"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:598
+#: lib/number.vala:725
 msgid "Modulus division is only defined for integers"
 msgstr "Dalyba su liekana apibrėžta tik sveikiems skaičiams"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:671
+#: lib/number.vala:805
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "Tangentas neapibrėžtas kampams, kurie yra π (180°) kartotiniai nuo π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:690
+#: lib/number.vala:824
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Arksinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:707
+#: lib/number.vala:841
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Arkkosinusas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:725
-msgid "Arctangent function is undefined for values i and -i"
+#: lib/number.vala:859
+msgid "Inverse tangent is undefined for values i and -i"
 msgstr "Arktangento funkcija neapibrėžta reikšmėms i ir -i"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:775
+#: lib/number.vala:910
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Hiperbolinis arkkosinusas neapibrėžtas reikšmėms, mažesnėms arba lygioms "
 "vienetui"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:791
+#: lib/number.vala:926
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "Hiperbolinis arktangentas neapibrėžtas reikšmėms už intervalo [-1, 1]"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:807
-msgid "Boolean AND is only defined for positive integers"
+#: lib/number.vala:941
+msgid "Boolean AND is only defined for non-negative integers"
 msgstr "Loginis IR apibrėžtas tik teigiamiems sveikiems skaičiams"
 
+#. Translators: Error displayed when boolean NAND attempted on non-integer values
+#: lib/number.vala:954
+msgid "Boolean NAND is only defined for non-negative integers"
+msgstr "Loginė Šeferio funkcija apibrėžtas tik teigiamiems sveikiems skaičiams"
+
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:819
-msgid "Boolean OR is only defined for positive integers"
+#: lib/number.vala:967
+msgid "Boolean OR is only defined for non-negative integers"
 msgstr "Loginis ARBA apibrėžtas tik teigiamiems sveikiems skaičiams"
 
+#. Translators: Error displayed when boolean NOR attempted on non-integer values
+#: lib/number.vala:980
+msgid "Boolean NOR is only defined for non-negative integers"
+msgstr "Loginis NE-ARBA apibrėžtas tik teigiamiems sveikiems skaičiams"
+
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
-msgid "Boolean XOR is only defined for positive integers"
+#: lib/number.vala:993
+msgid "Boolean XOR is only defined for non-negative integers"
 msgstr ""
 "Loginė griežta disjunkcija apibrėžta tik teigiamiems sveikiems skaičiams"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:843
-msgid "Boolean NOT is only defined for positive integers"
+#. Translators: Error displayed when boolean XNOR attempted on non-integer values
+#: lib/number.vala:1006
+msgid "Boolean XNOR is only defined for non-negative integers"
+msgstr ""
+"Loginė atvirkštinė griežta disjunkcija apibrėžta tik teigiamiems sveikiems "
+"skaičiams"
+
+#. Translators: Error displayed when boolean NOT attempted on non-integer values
+#: lib/number.vala:1019
+msgid "Boolean NOT is only defined for non-negative integers"
 msgstr "Loginis NE apibrėžtas tik teigiamiems sveikiems skaičiams"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:866
-msgid "Shift is only possible on integer values"
+#: lib/number.vala:1081
+msgid "Shift is only possible on integers"
 msgstr "Postūmis galimas tik sveikiems skaičiams"
 
-#: lib/serializer.vala:345
-msgid "Overflow: the result couldn’t be calculated"
-msgstr "Perpildymas: rezultato suskaičiuoti nepavyko"
+#: lib/number.vala:1086 lib/number.vala:1126 lib/number.vala:1572
+msgid "Overflow. Try a bigger word size"
+msgstr "Perpildymas. Mėginkite didesnį žodžio ilgį"
+
+#: lib/number.vala:1097
+msgid "Ones’ complement is only defined for non-negative integers"
+msgstr "Vieneto papildinys apibrėžtas tik teigiamiems sveikiems skaičiams"
+
+#: lib/number.vala:1109
+msgid "Two’s complement is only defined for non-negative integers"
+msgstr "Dviejų papildinys apibrėžtas tik teigiamiems sveikiems skaičiams"
+
+#: lib/number.vala:1121
+msgid "Swap endianness is only possible on integers"
+msgstr "Endianiškumo keitimas galimas tik sveikiems skaičiams"
+
+#: lib/number.vala:1149
+msgid "Combination is only defined for non-negative integers"
+msgstr "Kombinacija apibrėžta tik natūraliems skaičiams"
+
+#: lib/number.vala:1154
+msgid "Combination is undefined if n is less than r"
+msgstr "Kombinacija neapibrėžta jei n yra mažiau už r"
+
+#: lib/number.vala:1167
+msgid "Permutation is only defined for non-negative integers"
+msgstr "Permutacija apibrėžtas tik natūraliems skaičiams"
+
+#: lib/number.vala:1172
+msgid "Permutation is undefined if n is less than r"
+msgstr "Permutacija neapibrėžta jei n yra mažiau r"
+
+#: lib/number.vala:1193
+msgid "Greatest common divisor is only defined for integers"
+msgstr "Didžiausias bendras daliklis apibrėžtas tik sveikiems skaičiams"
+
+#: lib/number.vala:1213
+msgid "Least common multiple is only defined for integers"
+msgstr "Mažiausias kartotinis apibrėžtas tik sveikiems skaičiams"
+
+#: lib/number.vala:1270
+msgid "Median is only defined for real numbers"
+msgstr "Mediana apibrėžta tik realiesiems skaičiams"
+
+#: lib/number.vala:1290
+msgid "Minimum value is only defined for real numbers"
+msgstr "Minimali reikšmė apibrėžta tik realiesiems skaičiams"
+
+#: lib/number.vala:1307
+msgid "Maximum value is only defined for real numbers"
+msgstr "Maksimali reikšmė apibrėžta tik realiesiems skaičiams"
+
+#: lib/providers/boc-provider.vala:15
+msgid "Bank of Canada"
+msgstr "Kanados bankas"
+
+#: lib/providers/ecb-provider.vala:12
+msgid "European Central Bank"
+msgstr "Europos centrinis bankas"
+
+#: lib/providers/imf-provider.vala:12
+msgid "International Monetary Fund"
+msgstr "Tarptautinis valiutos fondas"
+
+#: lib/providers/unt-provider.vala:12
+msgid "United Nations Treasury"
+msgstr "Jungtinių valstijų iždas"
+
+#: lib/serializer.vala:354 lib/serializer.vala:391
+msgid ""
+"The result is too long to display in fixed format. Try other result formats"
+msgstr ""
+"Rezultatas yra per ilgas rodymui fiksuotu formatu. Bandykite kitus rezultato "
+"formatus"
 
 #: lib/unit.vala:29
 msgid "Angle"
@@ -909,1680 +1262,1226 @@ msgid "Digital Storage"
 msgstr "Skaitmeninė saugykla"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:43 src/math-preferences.vala:103
-msgid "Degrees"
-msgstr "Laipsniai"
+#: lib/unit.vala:43
+msgid "Degrees (Decimal)"
+msgstr "Laipsniai (dešimtainiai)"
 
 #: lib/unit.vala:43
 msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "laipsnis, laipsniai,laips"
 
-#: lib/unit.vala:44 src/math-preferences.vala:105
+#: lib/unit.vala:44
+msgid "Degrees (D°M′S″)"
+msgstr "Laipsniai (L°M′S″)"
+
+#: lib/unit.vala:45 src/buttons-advanced.vala:87 src/math-preferences.vala:136
 msgid "Radians"
 msgstr "Radianai"
 
-#: lib/unit.vala:44
+#: lib/unit.vala:45
 msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radianas,radianai,rad"
 
-#: lib/unit.vala:45 src/math-preferences.vala:107
+#: lib/unit.vala:46 src/buttons-advanced.vala:87 src/math-preferences.vala:138
 msgid "Gradians"
 msgstr "Gradientai"
 
-#: lib/unit.vala:45
+#: lib/unit.vala:46
 msgctxt "unit-symbols"
 msgid "gradian,gradians,grad"
 msgstr "gradientas,gradientai,grad"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgid "Parsecs"
 msgstr "Parsekų"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgctxt "unit-symbols"
 msgid "parsec,parsecs,pc"
 msgstr "parsekas,parsekai,pc"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgid "Light Years"
 msgstr "Šviesmečiai"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgctxt "unit-symbols"
 msgid "lightyear,lightyears,ly"
 msgstr "šviesmetis,šviesmečiai,šm"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgid "Astronomical Units"
 msgstr "Astronominiai vienetai"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgctxt "unit-symbols"
 msgid "au"
 msgstr "av"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgid "Rack Units"
 msgstr "Stelažo vienetai"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgctxt "unit-symbols"
 msgid "U"
 msgstr "U"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgid "Nautical Miles"
 msgstr "Jūrmylės"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgctxt "unit-symbols"
 msgid "nmi"
 msgstr "jm"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgid "Miles"
 msgstr "Mylios"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgctxt "unit-symbols"
 msgid "mile,miles,mi"
 msgstr "mylia,mylios,myl"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgid "Kilometers"
 msgstr "Kilometrai"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgctxt "unit-symbols"
 msgid "kilometer,kilometers,km,kms"
 msgstr "kilometras,kilometrai,km"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgid "Cables"
 msgstr "Kabeltovas"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgctxt "unit-symbols"
 msgid "cable,cables,cb"
 msgstr "sieksnis,sieksniai,siek"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgid "Fathoms"
 msgstr "Fatomas"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgctxt "unit-symbols"
 msgid "fathom,fathoms,ftm"
 msgstr "fatomas,fatomai,ftm"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgid "Meters"
 msgstr "Metrai"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgctxt "unit-symbols"
 msgid "meter,meters,m"
 msgstr "metras,metrai,m"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgid "Yards"
 msgstr "Jardas"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgctxt "unit-symbols"
 msgid "yard,yards,yd"
 msgstr "jardas,jardai,jd"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgid "Feet"
 msgstr "Pėda"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgctxt "unit-symbols"
 msgid "foot,feet,ft"
 msgstr "pėda,pėdos,pėd"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgid "Inches"
 msgstr "Colių"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgctxt "unit-symbols"
 msgid "inch,inches,in"
 msgstr "colis,coliai,col"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgid "Centimeters"
 msgstr "Centimetrų"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgctxt "unit-symbols"
 msgid "centimeter,centimeters,cm,cms"
 msgstr "centimetras,centimetrai,cm"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgid "Millimeters"
 msgstr "Milimetrai"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgctxt "unit-symbols"
 msgid "millimeter,millimeters,mm"
 msgstr "milimetras,milimetrai,mm"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgid "Micrometers"
 msgstr "Mikrometrai"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgctxt "unit-symbols"
 msgid "micrometer,micrometers,um"
 msgstr "mikrometras,mikrometrai,um"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgid "Nanometers"
 msgstr "Nanometrai"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgctxt "unit-symbols"
 msgid "nanometer,nanometers,nm"
 msgstr "nanometras,nanometrai,nm"
 
-#: lib/unit.vala:63
-msgid "Desktop Publishing Point"
-msgstr "Darbalaukio paskelbimo taškas"
+#: lib/unit.vala:64
+msgid "Desktop Publishing Points"
+msgstr "Darbalaukio paskelbimo taškai"
 
-#: lib/unit.vala:63
+#: lib/unit.vala:64
 msgctxt "unit-symbols"
 msgid "point,pt,points,pts"
 msgstr "taškas,tšk,taškai"
 
-#: lib/unit.vala:64
-msgid "Kilometers per hour"
+#: lib/unit.vala:65
+msgid "Kilometers per Hour"
 msgstr "Kilometrai per valandą"
 
-#: lib/unit.vala:64
+#: lib/unit.vala:65
 msgctxt "unit-symbols"
 msgid "kilometers per hour,kmph,kmh,kph"
 msgstr "kilometrai per valandą,kmh"
 
-#: lib/unit.vala:65
-msgid "Miles per hour"
+#: lib/unit.vala:66
+msgid "Miles per Hour"
 msgstr "Mylios per valandą"
 
-#: lib/unit.vala:65
+#: lib/unit.vala:66
 msgctxt "unit-symbols"
 msgid "milesph,miles per hour,mi/h,miph,mph"
 msgstr "mylios per valandą,myl/h"
 
-#: lib/unit.vala:66
-msgid "Meters per second"
+#: lib/unit.vala:67
+msgid "Meters per Second"
 msgstr "Metrai per sekundę"
 
-#: lib/unit.vala:66
+#: lib/unit.vala:67
 msgctxt "unit-symbols"
 msgid "meters per second,mps"
 msgstr "metrai per sekundę,mps"
 
-#: lib/unit.vala:67
-msgid "Feet per second"
+#: lib/unit.vala:68
+msgid "Feet per Second"
 msgstr "Pėdos per sekundę"
 
-#: lib/unit.vala:67
+#: lib/unit.vala:68
 msgctxt "unit-symbols"
 msgid "fps,feet per second,feetps"
 msgstr "pėds/pėdos per sekundę"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgid "Knots"
 msgstr "Mazgai"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgctxt "unit-symbols"
 msgid "kt,kn,nd,knot,knots"
 msgstr "mazgai,mzg"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgid "Hectares"
 msgstr "Hektarai"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgctxt "unit-symbols"
 msgid "hectare,hectares,ha"
 msgstr "hektaras,hektarai,ha"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgid "Acres"
 msgstr "Akrai"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgctxt "unit-symbols"
 msgid "acre,acres"
 msgstr "akras,akrai"
 
-#: lib/unit.vala:71
-msgid "Square Foot"
+#: lib/unit.vala:72
+msgid "Square Miles"
+msgstr "Kvadratinės mylios"
+
+#: lib/unit.vala:72
+msgctxt "unit-symbols"
+msgid "mi²"
+msgstr "mi²"
+
+#: lib/unit.vala:73
+msgid "Square Feet"
 msgstr "Kvadratinė pėda"
 
-#: lib/unit.vala:71
+#: lib/unit.vala:73
 msgctxt "unit-symbols"
 msgid "ft²"
 msgstr "ft²"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:74
+msgid "Square Kilometers"
+msgstr "Kvadratiniai kilometrai"
+
+#: lib/unit.vala:74
+msgctxt "unit-symbols"
+msgid "km²"
+msgstr "km²"
+
+#: lib/unit.vala:75
 msgid "Square Meters"
 msgstr "Kvadratiniai metrai"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:75
 msgctxt "unit-symbols"
 msgid "m²"
 msgstr "m²"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgid "Square Centimeters"
 msgstr "Kvadratiniai centimetrai"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgctxt "unit-symbols"
 msgid "cm²"
 msgstr "cm²"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgid "Square Millimeters"
 msgstr "Kvadratiniai milimetrai"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "mm²"
 msgstr "mm²"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgid "Cubic Meters"
 msgstr "Kubiniai metrai"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "m³"
 msgstr "m³"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:79
+msgid "British Gallons"
+msgstr "Britų galonai"
+
+#: lib/unit.vala:79
+msgctxt "unit-symbols"
+msgid "imp_gallon,imp_gallons,imp_gal"
+msgstr "imp_galonas,imp_galonai,imp_gal"
+
+#: lib/unit.vala:80
 msgid "US Gallons"
 msgstr "JAV galonai"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "gallon,gallons,gal"
 msgstr "galonas,galonai,gal"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgid "Liters"
 msgstr "Litrai"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgctxt "unit-symbols"
 msgid "litre,litres,liter,liters,L"
 msgstr "litras,litrai,l"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgid "US Quarts"
 msgstr "JAV kvortos"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgctxt "unit-symbols"
 msgid "quart,quarts,qt"
 msgstr "kvorta,kvortos,kvort"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:83
+msgid "British Pints"
+msgstr "Britų pintos"
+
+#: lib/unit.vala:83
+msgctxt "unit-symbols"
+msgid "imp_pint,imp_pints,imp_pt"
+msgstr "imp_pinta,imp_pintos,imp_pt"
+
+#: lib/unit.vala:84
 msgid "US Pints"
 msgstr "JAV pintos"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:84
 msgctxt "unit-symbols"
 msgid "pint,pints,pt"
 msgstr "pinta,pintos,pt"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgid "Metric Cups"
 msgstr "Metriniai puodeliai"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgctxt "unit-symbols"
 msgid "cup,cups,cp"
 msgstr "puod"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgid "Milliliters"
 msgstr "Mililitrai"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "mililitras,mililitrai,ml,cm³"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgid "Microliters"
 msgstr "Mikrolitrai"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
 msgstr "mm³,μl,ul"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgid "Tonnes"
 msgstr "Tonos"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgctxt "unit-symbols"
 msgid "tonne,tonnes"
 msgstr "tona,tonos"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgid "Kilograms"
 msgstr "Kilogramai"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgctxt "unit-symbols"
 msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgstr "kilogramas,kilogramai,kg"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgid "Pounds"
 msgstr "Svarai"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb,lbs"
 msgstr "svaras,svarai,lb"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgid "Ounces"
 msgstr "Uncijos"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgctxt "unit-symbols"
 msgid "ounce,ounces,oz"
 msgstr "uncija,uncijos,oz"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgid "Troy Ounces"
 msgstr "Trojos uncijos"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgctxt "unit-symbols"
 msgid "Troy ounce,Troy ounces,ozt"
 msgstr "Trojos uncija,trojos uncijos,ozt"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgid "Grams"
 msgstr "Gramai"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "gram,grams,gramme,grammes,g"
 msgstr "gramas,gramai,g"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:94
+msgid "Milligrams"
+msgstr "Miligramai"
+
+#: lib/unit.vala:94
+msgctxt "unit-symbols"
+msgid "milligram,milligrams,milligramme,milligrammes,mg"
+msgstr "miligramas,miligramai,mg"
+
+#: lib/unit.vala:95
+msgid "Micrograms"
+msgstr "Mikrogramai"
+
+#: lib/unit.vala:95
+msgctxt "unit-symbols"
+msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
+msgstr "mikrogramas,mikrogramai,μg,ug"
+
+#: lib/unit.vala:96
 msgid "Stone"
 msgstr "Akmenys"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:96
 msgctxt "unit-symbols"
 msgid "stone,st,stones"
 msgstr "akmuo,akm,akmenų"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgid "Centuries"
 msgstr "Amžiai"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgctxt "unit-symbols"
 msgid "century,centuries"
 msgstr "amžius,amžiai"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgid "Decades"
 msgstr "Dekados"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "decade,decades"
 msgstr "dekada,dekados"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgid "Years"
 msgstr "Metai"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "metai"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgid "Months"
 msgstr "Mėnesiai"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "month,months"
 msgstr "mėnuo,mėnesiai"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgid "Weeks"
 msgstr "Savaitės"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "week,weeks"
 msgstr "savaitė,savaitės"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgid "Days"
 msgstr "Dienos"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "diena,dienos"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgid "Hours"
 msgstr "Valandos"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "valanda,valandos"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgid "Minutes"
 msgstr "Minutė"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "minutė,minutės"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgid "Seconds"
 msgstr "Sekundės"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "sekundė,sekundės,s"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgid "Milliseconds"
 msgstr "Milisekundės"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "milisekundė,milisekundės,ms"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgid "Microseconds"
 msgstr "Mikrosekundės"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "mikrosekundė,mikrosekundės,us,μs"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgid "Nanoseconds"
 msgstr "Nanosekundės"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "nanosecond,nanoseconds,ns"
 msgstr "nanosekundė,nanosekundės,ns"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
 msgid "Celsius"
 msgstr "Celcijaus"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
 msgctxt "unit-symbols"
-msgid "degC,˚C,C,c,Celsius,celsius"
-msgstr "laipsC,˚C,C,c,Celsijus,celsijus"
+msgid "degC,°C,˚C,C,c,Celsius,celsius"
+msgstr "laipsC,°C,˚C,C,c,Celsijus,celsijus"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
 msgid "Fahrenheit"
 msgstr "Farenheito"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
 msgctxt "unit-symbols"
-msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
-msgstr "laipsF,F,F,f,Farenheito,farenheito"
+msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "laipsF,°F,˚F,F,f,Farenheito,farenheito"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgid "Kelvin"
 msgstr "Kelvino"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
 msgstr "k,K,Kelvino,kelvino"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
 msgid "Rankine"
 msgstr "Rankino"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
 msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
-msgstr "laipsR,˚R,˚Ra,r,R,Rankine,rankine"
+msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
+msgstr "laipsR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgid "Bits"
 msgstr "Bitai"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "bit,bits,b"
 msgstr "bitas,bitai,b"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgid "Bytes"
 msgstr "Baitai"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
 msgstr "baitas,baitai,B"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgid "Nibbles"
 msgstr "Niblai"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "niblas,niblai"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgid "Kilobits"
 msgstr "Kilobitai"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "kilobitas,kilobitai,kb,Kb"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgid "Kilobytes"
 msgstr "Kilobaitai"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "kilobaitas,kilobaitai,kB,KB"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgid "Kibibits"
 msgstr "Kibibitai"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "kibibit,kibibits,Kib"
 msgstr "kibibitas,kibibitai,Kib"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgid "Kibibytes"
 msgstr "Kibibaitai"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
 msgstr "kibibaitas,kibibaitai,KiB"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgid "Megabits"
 msgstr "Megabitai"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "megabit,megabits,Mb"
 msgstr "megabitas,megabitai,Mb"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgid "Megabytes"
 msgstr "Megabaitai"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
 msgstr "megabaitas,megabaitai,MB"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgid "Mebibits"
 msgstr "Mebibitai"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgctxt "unit-symbols"
 msgid "mebibit,mebibits,Mib"
 msgstr "mebibitas,mebibitai,Mib"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgid "Mebibytes"
 msgstr "Mebibaitai"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
 msgstr "mebibaitas,mebibaitai,MiB"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgid "Gigabits"
 msgstr "Gigabitai"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgctxt "unit-symbols"
 msgid "gigabit,gigabits,Gb"
 msgstr "gigabitas,gigabitai,Gb"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgid "Gigabytes"
 msgstr "Gigabaitai"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
 msgstr "gigabaitas,gigabaitai,GB"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgid "Gibibits"
 msgstr "Gibibitai"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgctxt "unit-symbols"
 msgid "gibibit,gibibits,Gib"
 msgstr "gibibitas,gibibitai,Gib"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgid "Gibibytes"
 msgstr "Gibibaitai"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
 msgstr "gibibaitas,gibibaitai,GiB"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgid "Terabits"
 msgstr "Terabitai"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgctxt "unit-symbols"
 msgid "terabit,terabits,Tb"
 msgstr "terabitas,terabitai,Tb"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgid "Terabytes"
 msgstr "Terabaitai"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
 msgstr "terabaitas,terabaitai,TB"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgid "Tebibits"
 msgstr "Tebibitai"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgctxt "unit-symbols"
 msgid "tebibit,tebibits,Tib"
 msgstr "tebibitas,tebibitai,Tib"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgid "Tebibytes"
 msgstr "Tebibaitai"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
 msgstr "tebibaitas,tebibaitai,TiB"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgid "Petabits"
 msgstr "Petabitai"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgctxt "unit-symbols"
 msgid "petabit,petabits,Pb"
 msgstr "petabitas,petabitai,Pb"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgid "Petabytes"
 msgstr "Petabaitai"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
 msgstr "petabaitas,petabaitai,PB"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgid "Pebibits"
 msgstr "Pebibitai"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgctxt "unit-symbols"
 msgid "pebibit,pebibits,Pib"
 msgstr "pebibitas,pebibitai,Pib"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgid "Pebibytes"
 msgstr "Pebibaitai"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
 msgstr "pebibaitas,pebibaitai,PiB"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgid "Exabits"
 msgstr "Egzabitai"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgctxt "unit-symbols"
 msgid "exabit,exabits,Eb"
 msgstr "egzabitas,egzabitai,Eb"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgid "Exabytes"
 msgstr "Egzabaitai"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
 msgstr "egzabaitas,egzabaitai,EB"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgid "Exbibits"
 msgstr "Egzbibitai"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgctxt "unit-symbols"
 msgid "exbibit,exbibits,Eib"
 msgstr "egzbibitas,egzbibitai,Eib"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgid "Exbibytes"
 msgstr "Egzbibaitai"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
 msgstr "egzbibaitas,egzbibaitai,EiB"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgid "Zettabits"
 msgstr "Zetabitai"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgctxt "unit-symbols"
 msgid "zettabit,zettabits,Zb"
 msgstr "zetabitas,zetabitai,Zb"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgid "Zettabytes"
 msgstr "Zetabaitai"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
 msgstr "zetabaitas,zetabaitai,ZB"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgid "Zebibits"
 msgstr "Zebibitai"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgctxt "unit-symbols"
 msgid "zebibit,zebibits,Zib"
 msgstr "zrbibitas,zebibitai,Zib"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgid "Zebibytes"
 msgstr "Zebibaitai"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
 msgstr "zebibaitas,zebibaitai,ZiB"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgid "Yottabits"
 msgstr "Jotabitai"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgctxt "unit-symbols"
 msgid "yottabit,yottabits,Yb"
 msgstr "jotabitas,jotabitai,Yb"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgid "Yottabytes"
 msgstr "Jotabaitai"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
 msgstr "jotabaitas,jotabaitai,YB"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgid "Yobibits"
 msgstr "Jobibitai"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgctxt "unit-symbols"
 msgid "yobibit,yobibits,Yib"
 msgstr "jobibitas,jobibitai,Yib"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgid "Yobibytes"
 msgstr "Jobibaitai"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
 msgstr "jobibaitas,jobibaitai,YiB"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgid "Hertz"
 msgstr "Hercai"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "hertz,Hz"
 msgstr "hercas,Hz"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgid "Kilohertz"
 msgstr "Kilohercai"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "kilohertz,kHz"
 msgstr "kilohercas,kHz"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgid "Megahertz"
 msgstr "Megahercai"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "megahertz,MHz"
 msgstr "megahercas,MHz"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgid "Gigahertz"
 msgstr "Gigahercas"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "gigahertz,GHz"
 msgstr "gigahercas,GHz"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgid "Terahertz"
 msgstr "Terahercas"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "terahertz,THz"
 msgstr "terhercas,THz"
 
-#: lib/unit.vala:148
-msgid "Joule"
+#: lib/unit.vala:155
+msgid "Joules"
 msgstr "Džaulis"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:155
 msgctxt "unit-symbols"
 msgid "Joule,J,joule,joules"
 msgstr "Džaulis,J,džaulis,džauliai"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgid "Kilojoules"
 msgstr "Kilodžauliai"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgctxt "unit-symbols"
 msgid "KJ,kilojoules,kilojoule"
 msgstr "KJ,kilodžaulis,kilodžauliai"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgid "Megajoules"
 msgstr "Megadžauliai"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgctxt "unit-symbols"
 msgid "MJ,megajoules,megajoule"
 msgstr "MJ,megadžaulis,megadžauliai"
 
-#: lib/unit.vala:151
-msgid "KilowattHour"
+#: lib/unit.vala:158
+msgid "Kilowatt-Hours"
 msgstr "Kilovatvalandė"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:158
 msgctxt "unit-symbols"
 msgid "kwh,kWh,kilowatt-hour,kilowatthour"
 msgstr "kwh,kWh,kilovatvalandė"
 
-#: lib/unit.vala:152
-msgid "BTU"
-msgstr "BTU"
+#: lib/unit.vala:159
+msgid "British Thermal Units"
+msgstr "Britų temperatūros vienetai"
 
-#: lib/unit.vala:152
+#: lib/unit.vala:159
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:153
-msgid "Calorie"
-msgstr "Kalorija"
+#: lib/unit.vala:160
+msgid "Calories"
+msgstr "Kalorijos"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:160
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "kalorijos,kalorija,kal"
 
-#: lib/unit.vala:154
-msgid "Erg"
-msgstr "Erg"
+#: lib/unit.vala:161
+msgid "Kilocalories"
+msgstr "Kilokalorijos"
 
-#: lib/unit.vala:154
+#: lib/unit.vala:161
+msgctxt "unit-symbols"
+msgid "kilocalories,kilocalorie,kcal"
+msgstr "kilokalorijos,kilokalorija,kkal"
+
+#: lib/unit.vala:162
+msgid "Ergs"
+msgstr "Ergs"
+
+#: lib/unit.vala:162
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "erg"
 
-#: lib/unit.vala:155
-msgid "eV"
-msgstr "eV"
+#: lib/unit.vala:163
+msgid "Electron Volts"
+msgstr "Elektronvoltai"
 
-#: lib/unit.vala:155
+#: lib/unit.vala:163
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "elektronvoltas,elektronvoltai,ev"
 
-#: lib/unit.vala:156
-msgid "Ft-lb"
-msgstr "Pėd-sv"
+#: lib/unit.vala:164
+msgid "Foot-Pounds"
+msgstr "Pėdų-svarai"
 
-#: lib/unit.vala:156
+#: lib/unit.vala:164
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "pėda-svaras,pėdos-svarai,pėd-sv"
 
-#: lib/unit.vala:157
-msgid "Pascal"
-msgstr "Paskalis"
+#: lib/unit.vala:165
+msgid "Pascals"
+msgstr "Paskaliai"
 
-#: lib/unit.vala:157
+#: lib/unit.vala:165
 msgctxt "unit-symbols"
 msgid "Pascal,pascal,Pa"
 msgstr "Paskalis,paskalis,Pa"
 
-#: lib/unit.vala:158
-msgid "Kilopascal"
-msgstr "Kilopaskalis"
+#: lib/unit.vala:166
+msgid "Kilopascals"
+msgstr "Kilopaskaliai"
 
-#: lib/unit.vala:158
+#: lib/unit.vala:166
 msgctxt "unit-symbols"
 msgid "Kilopascal,kilopascal,kPa"
 msgstr "Kilopaskalis,kilopaskalis,kPa"
 
-#: lib/unit.vala:159
-msgid "Hectopascal"
-msgstr "Hektopaskalis"
+#: lib/unit.vala:167
+msgid "Hectopascals"
+msgstr "Hektopaskaliai"
 
-#: lib/unit.vala:159
+#: lib/unit.vala:167
 msgctxt "unit-symbols"
 msgid "Hectopascal,hectopascal,hPa"
 msgstr "Hektopaskalis,hektopaskalis,hPa"
 
-#: lib/unit.vala:160
-msgid "Bar"
-msgstr "Baras"
+#: lib/unit.vala:168
+msgid "Bars"
+msgstr "Barai"
 
-#: lib/unit.vala:160
+#: lib/unit.vala:168
 msgctxt "unit-symbols"
 msgid "Bar,bar"
 msgstr "Baras,baras,bar"
 
-#: lib/unit.vala:161
-msgid "Standard Atmosphere"
-msgstr "Standartinė atmosfera"
+#: lib/unit.vala:169
+msgid "Standard Atmospheres"
+msgstr "Standartinės atmosferos"
 
-#: lib/unit.vala:161
+#: lib/unit.vala:169
 msgctxt "unit-symbols"
 msgid "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm"
 msgstr ""
 "Standartinė atmosfera,Standartinė atmosfera,standartinė atmosfera,Atm,atm"
 
-#: lib/unit.vala:162
-msgid "Millimetre of Mercury"
+#: lib/unit.vala:170
+msgid "Millimeters of Mercury"
 msgstr "Milimetrai gyvsidabrio"
 
-#: lib/unit.vala:162
+#: lib/unit.vala:170
 msgctxt "unit-symbols"
-msgid "Millimetre of Mercury,millimetre of mercury,mmHg"
+msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
 msgstr "Milimetras gyvsidabrio,milimetrai gyvsidabrio,mmHg"
 
-#: lib/unit.vala:163
-msgid "Inch of Mercury"
+#: lib/unit.vala:171
+msgid "Inches of Mercury"
 msgstr "Coliai gyvsidabrio"
 
-#: lib/unit.vala:163
+#: lib/unit.vala:171
 msgctxt "unit-symbols"
 msgid "Inch of Mercury,inch of mercury,inHg"
 msgstr "Colis gyvsidabrio,Coliai gyvsidabrio,inHg"
 
-#: lib/unit.vala:164
-msgid "Pound per Square Inch"
+#: lib/unit.vala:172
+msgid "Pounds per Square Inch"
 msgstr "Svarai kvadratiniame colyje"
 
-#: lib/unit.vala:164
+#: lib/unit.vala:172
 msgctxt "unit-symbols"
 msgid "Pound per Square Inch,pound per square inch,psi"
 msgstr "Svaras kvadratiniame colyje,svaras kvadratiniame colyje,psi"
 
-#: lib/unit.vala:166
+#: lib/unit.vala:174
 msgid "Currency"
 msgstr "Valiutų"
 
-#: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:76
-#: src/ui/buttons-programming.ui:82 src/ui/buttons-programming.ui:88
-msgid "Copy"
-msgstr "Kopijuoti"
-
-#: search-provider/search-provider.vala:200
-msgid "Copy result to clipboard"
-msgstr "Kopijuoti rezultatą į iškarpinę"
-
-#: src/ui/buttons-advanced.ui:162 src/ui/buttons-basic.ui:109
-#: src/ui/buttons-financial.ui:722 src/ui/buttons-programming.ui:1698
-msgid "Modulus Divide"
-msgstr "Dalyba su liekana"
-
-#: src/ui/buttons-advanced.ui:178 src/ui/buttons-basic.ui:125
-#: src/ui/buttons-financial.ui:738 src/ui/buttons-programming.ui:1343
-msgid "Divide [/]"
-msgstr "Dalinti [/]"
-
-#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:215
-#: src/ui/buttons-financial.ui:828 src/ui/buttons-programming.ui:1359
-msgid "Multiply [*]"
-msgstr "Dauginti [*]"
-
-#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:231
-#: src/ui/buttons-financial.ui:844 src/ui/buttons-programming.ui:1375
-msgid "Subtract [-]"
-msgstr "Atimti [-]"
-
-#: src/ui/buttons-advanced.ui:299 src/ui/buttons-basic.ui:246
-#: src/ui/buttons-financial.ui:859 src/ui/buttons-programming.ui:1390
-msgid "Add [+]"
-msgstr "Pridėti [+]"
-
-#: src/ui/buttons-advanced.ui:315 src/ui/buttons-basic.ui:262
-#: src/ui/buttons-programming.ui:1328 src/math-buttons.vala:707
-msgid "Pi [Ctrl+P]"
-msgstr "Pi [Vald+P]"
-
-#: src/ui/buttons-advanced.ui:331 src/ui/buttons-basic.ui:278
-#: src/ui/buttons-financial.ui:875 src/ui/buttons-programming.ui:1312
-msgid "Root [Ctrl+R]"
-msgstr "Šaknis [Vald+R]"
-
-#: src/ui/buttons-advanced.ui:346 src/ui/buttons-basic.ui:293
-msgid "Square [Ctrl+2]"
-msgstr "Kvadratas [Ctrl+2]"
-
-#: src/ui/buttons-advanced.ui:366 src/ui/buttons-basic.ui:313
-#: src/ui/buttons-conversion.ui:194 src/ui/buttons-financial.ui:890
-#: src/ui/buttons-programming.ui:1421
-msgid "Clear Display [Escape]"
-msgstr "Išvalyti ekraną [Escape]"
-
-#: src/ui/buttons-advanced.ui:381 src/ui/buttons-basic.ui:328
-#: src/ui/buttons-financial.ui:905 src/ui/buttons-programming.ui:1713
-msgid "Start Group [(]"
-msgstr "Pradėti grupę [(]"
-
-#: src/ui/buttons-advanced.ui:397 src/ui/buttons-basic.ui:344
-#: src/ui/buttons-financial.ui:921 src/ui/buttons-programming.ui:1728
-msgid "End Group [)]"
-msgstr "Užbaigti grupę [)]"
-
-#: src/ui/buttons-advanced.ui:413 src/ui/buttons-basic.ui:360
-#: src/ui/buttons-financial.ui:937
-msgid "Percentage [%]"
-msgstr "Procentai [%]"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:427 src/ui/buttons-basic.ui:374
-#: src/ui/buttons-financial.ui:951 src/ui/buttons-programming.ui:1404
-msgid "="
-msgstr "="
-
-#: src/ui/buttons-advanced.ui:429 src/ui/buttons-basic.ui:376
-#: src/ui/buttons-financial.ui:953 src/ui/buttons-programming.ui:1406
-msgid "Calculate Result"
-msgstr "Skaičiuoti rezultatą"
-
-#: src/ui/buttons-advanced.ui:455 src/ui/buttons-programming.ui:1753
-msgid "Subscript Mode [Alt]"
-msgstr "Apatinio indekso veiksena [Alt]"
-
-#: src/ui/buttons-advanced.ui:471 src/ui/buttons-programming.ui:1769
-msgid "Superscript Mode [Ctrl]"
-msgstr "Viršutinio indekso veiksena [Vald]"
-
-#: src/ui/buttons-advanced.ui:487 src/ui/buttons-programming.ui:2057
-msgid "Factorize [Ctrl+F]"
-msgstr "Išskaidyti [Ctrl+F]"
-
-#: src/ui/buttons-advanced.ui:501
-msgid "Scientific Exponent [Ctrl+E]"
-msgstr "Mokslinė eksponentė [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:570
-msgid "Hyperbolic Cosine"
-msgstr "Hiperbolinis kosinusas"
-
-#: src/ui/buttons-advanced.ui:586
-msgid "Hyperbolic Sine"
-msgstr "Hiperbolinis sinusas"
-
-#: src/ui/buttons-advanced.ui:602
-msgid "Hyperbolic Tangent"
-msgstr "Hiperbolinis tangentas"
-
-#: src/ui/buttons-advanced.ui:617 src/ui/buttons-financial.ui:968
-#: src/ui/buttons-programming.ui:1908
-msgid "Exponent [^ or **]"
-msgstr "Eksponentinis [^ arba **]"
-
-#: src/ui/buttons-advanced.ui:638 src/ui/buttons-programming.ui:1929
-msgid "Inverse [Ctrl+I]"
-msgstr "Apversti [Vald+I]"
-
-#: src/ui/buttons-advanced.ui:660
-msgid "Euler’s Number"
-msgstr "Oilerio skaičius"
-
-#: src/ui/buttons-advanced.ui:676
-msgid "Natural Logarithm"
-msgstr "Natūrinis logaritmas"
-
-#: src/ui/buttons-advanced.ui:707 src/ui/buttons-programming.ui:1982
-msgid "Factorial [!]"
-msgstr "Faktorialas [!]"
-
-#: src/ui/buttons-advanced.ui:728 src/ui/buttons-programming.ui:2003
-msgid "Absolute Value [|]"
-msgstr "Modulis [|]"
-
-#: src/ui/buttons-advanced.ui:750
-msgid "Imaginary Unit"
-msgstr "Menamoji dalis"
-
-#: src/ui/buttons-advanced.ui:766
-msgid "Real Component"
-msgstr "Realioji dalis"
-
-#: src/ui/buttons-advanced.ui:782
-msgid "Imaginary Component"
-msgstr "Menamoji dalis"
-
-#: src/ui/buttons-advanced.ui:798
-msgid "Complex Conjugate"
-msgstr "Kompleksinė konjunkcija"
-
-#: src/ui/buttons-advanced.ui:814
-msgid "Complex Argument"
-msgstr "Kompleksinis argumentas"
-
-#: src/ui/buttons-advanced.ui:830 src/ui/buttons-financial.ui:1030
-#: src/ui/buttons-programming.ui:2089
-msgid "Memory"
-msgstr "Atmintis"
-
-#. The label on the memory button
-#: src/ui/buttons-advanced.ui:831 src/ui/buttons-financial.ui:1032
-#: src/ui/buttons-programming.ui:2087
-msgid "x"
-msgstr "x"
-
-#: src/ui/buttons-advanced.ui:846
-msgid "Additional Functions"
-msgstr "Papildomos funkcijos"
-
-#: src/ui/buttons-conversion.ui:208
-msgid "Switch Conversion Units"
-msgstr "Keisti vertimo vienetus"
-
-#: src/ui/buttons-conversion.ui:222
-msgid "Backspace"
-msgstr "Grįžtamasis trynimas"
-
-#. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1048
-msgid "Compounding Term"
-msgstr "Sudėtinis terminas"
-
-#: src/ui/buttons-financial.ui:15 src/ui/buttons-financial.ui:71
-#: src/ui/buttons-financial.ui:127 src/ui/buttons-financial.ui:183
-#: src/ui/buttons-financial.ui:233 src/ui/buttons-financial.ui:289
-#: src/ui/buttons-financial.ui:345 src/ui/buttons-financial.ui:401
-#: src/ui/buttons-financial.ui:457 src/ui/buttons-financial.ui:519
-#: src/ui/buttons-programming.ui:2172 src/gnome-calculator.vala:308
-msgid "_Cancel"
-msgstr "_Atsisakyti"
-
-#. Compounding Term Dialog: Calculate button
-#. Double-Declining Depreciation Dialog: Calculate button
-#. Future Value Dialog: Calculate button
-#. Gross Profit Margin Dialog: Calculate button
-#. Periodic Payment Dialog: Calculate button
-#. Present Value Dialog: Calculate button
-#. Periodic Interest Rate Dialog: Calculate button
-#. Straight-Line Depreciation Dialog: Calculate button
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
-#. Payment Period Dialog: Calculate button
-#: src/ui/buttons-financial.ui:21 src/ui/buttons-financial.ui:77
-#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:189
-#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:295
-#: src/ui/buttons-financial.ui:351 src/ui/buttons-financial.ui:407
-#: src/ui/buttons-financial.ui:463 src/ui/buttons-financial.ui:525
-msgid "C_alculate"
-msgstr "Sk_aičiuoti"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:32
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"Skaičiuojamas sudėtinių periodų skaičius, reikalingas esamosios vertės "
-"padidinimui iki būsimosios vertės, esant fiksuotai palūkanų sudėtinio "
-"periodo metu."
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Title of Periodic Interest Rate dialog
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:155
-#: src/ui/buttons-financial.ui:261 src/ui/buttons-financial.ui:317
-#: src/ui/buttons-financial.ui:335 src/ui/buttons-financial.ui:553
-#: src/ui/buttons-financial.ui:1150
-msgid "Periodic Interest Rate"
-msgstr "Periodinė palūkanų norma"
-
-#. Compounding Term Dialog: Label before future value input
-#. Title of Future Value dialog
-#. Periodic Interest Rate Dialog: Label before future value input
-#. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:43 src/ui/buttons-financial.ui:117
-#: src/ui/buttons-financial.ui:367 src/ui/buttons-financial.ui:547
-#: src/ui/buttons-financial.ui:1082
-msgid "Future Value"
-msgstr "Būsimoji vertė"
-
-#. Compounding Term Dialog: Label before present value input
-#. Title of Present Value dialog
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:49 src/ui/buttons-financial.ui:279
-#: src/ui/buttons-financial.ui:373 src/ui/buttons-financial.ui:1167
-msgid "Present Value"
-msgstr "Dabartinė vertė"
-
-#. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:61
-msgid "Double-Declining Depreciation"
-msgstr "Dvigubai mažėjančios vertės nusidėvėjimas"
-
-#. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:88
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the double-declining balance method."
-msgstr ""
-"Skaičiuojamas turto nusidėvėjimas per nurodytą laiko periodą dvigubai "
-"mažėjančios vertės būdu."
-
-#. Double-Declining Depreciation Dialog: Label before cost input
-#. Gross Profit Margin Dialog: Label before cost input
-#. Straight-Line Depreciation Dialog: Label before cost input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:93 src/ui/buttons-financial.ui:205
-#: src/ui/buttons-financial.ui:423 src/ui/buttons-financial.ui:479
-msgid "Cost"
-msgstr "Kaštai"
-
-#. Double-Declining Depreciation Dialog: Label before life input
-#. Straight-Line Depreciation Dialog: Label before life input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:99 src/ui/buttons-financial.ui:435
-#: src/ui/buttons-financial.ui:491
-msgid "Life"
-msgstr "Gyvenimo trukmė"
-
-#. Double-Declining Depreciation Dialog: Label before period input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:105 src/ui/buttons-financial.ui:497
-msgid "Period"
-msgstr "Periodas"
-
-#. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:144
-msgid ""
-"Calculates the future value of an investment based on a series of equal "
-"payments at a periodic interest rate over the number of payment periods in "
-"the term."
-msgstr ""
-"Skaičiuojama investicijos būsimoji vertė vienodų mokėjimų su periodine "
-"palūkanų norma per tam tikrą mokėjimo periodų skaičių pagrindu."
-
-#. Future Value Dialog: Label before periodic payment input
-#. Title of Periodic Payment dialog
-#. Present Value Dialog: Label before periodic payment input
-#. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:149 src/ui/buttons-financial.ui:223
-#: src/ui/buttons-financial.ui:311 src/ui/buttons-financial.ui:541
-#: src/ui/buttons-financial.ui:1184
-msgid "Periodic Payment"
-msgstr "Periodinis mokėjimas"
-
-#. Future Value Dialog: Label before number of periods input
-#. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:161 src/ui/buttons-financial.ui:323
-msgid "Number of Periods"
-msgstr "Periodų kiekis"
-
-#. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:173 src/ui/buttons-financial.ui:1201
-msgid "Gross Profit Margin"
-msgstr "Bendras grynasis pelnas"
-
-#. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:200
-msgid ""
-"Calculates the resale price of a product, based on the product cost and the "
-"wanted gross profit margin."
-msgstr ""
-"Skaičiuojama produkto pardavimo kaina, remiantis produkto kaštais ir "
-"pageidaujama bendro grynojo pelno norma."
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:211
-msgid "Margin"
-msgstr "Antkainis"
-
-#. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:250
-msgid ""
-"Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period."
-msgstr ""
-"Suskaičiuoja paskolos periodinių mokėjimų skaičių, jei mokama kiekvieno "
-"mokėjimo periodo pabaigoje."
-
-#. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:255
-msgid "Principal"
-msgstr "Pagrindinis"
-
-#. Periodic Payment Dialog: Label before term input
-#. Periodic Interest Rate Dialog: Label before term input
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:267 src/ui/buttons-financial.ui:379
-#: src/ui/buttons-financial.ui:1096
-msgid "Term"
-msgstr "Peri"
-
-#. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:306
-msgid ""
-"Calculates the present value of an investment based on a series of equal "
-"payments discounted at a periodic interest rate over the number of payment "
-"periods in the term."
-msgstr ""
-"Skaičiuojama esamoji investicijos vertė, remiantis eile vienodų mokėjimų, "
-"diskontuotų periodine palūkanų norma per tam tikrą termino mokėjimo periodų "
-"skaičių."
-
-#. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:362
-msgid ""
-"Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods."
-msgstr ""
-"Skaičiuojama periodinė palūkanų norma, reikalinga padidinti investicijai iki "
-"būsimosios vertės per sudėtinių periodų skaičių."
-
-#. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:391
-msgid "Straight-Line Depreciation"
-msgstr "Tiesiogiai proporcingas nusidėvėjimas"
-
-#. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:418
-msgid ""
-"Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly "
-"over the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated."
-msgstr ""
-"Skaičiuojamas turto nusidėvėjimas per nurodytą laiko periodą tiesioginio "
-"nusidėvėjimo būdu. Naudojant šį būdą, nusidėvėjimo kaštai išdalinami "
-"lygiomis dalimis visam laikotarpiui. Dažniausiai naudojamas laikotarpis yra "
-"periodų (paprastai metų) skaičius, per kuriuos turtas nusidėvi."
-
-#. Straight-Line Depreciation Dialog: Label before salvage input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:429 src/ui/buttons-financial.ui:485
-msgid "Salvage"
-msgstr "Likvidacinė vertė"
-
-#. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:447
-msgid "Sum-of-the-Years’-Digits Depreciation"
-msgstr "Nusidėvėjimas metų skaičiaus skaitiniu metodu"
-
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:474
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
-"occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated."
-msgstr ""
-"Skaičiuojamas turto nusidėvėjimas per nurodytą laiko periodą metų skaičiaus "
-"skaitiniu metodu. Naudojant šį metodą, ankstesniesiems periodams "
-"suskaičiuojamas didesnis nusidėvėjimas negu vėlesniesiems. Dažniausiai "
-"naudojamas laikotarpis yra periodų (paprastai metų) skaičius, per kuriuos "
-"turtas nusidėvi."
-
-#. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:509
-msgid "Payment Period"
-msgstr "Mokėjimo periodas"
-
-#. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:536
-msgid ""
-"Calculates the number of payment periods that are necessary during the term "
-"of an ordinary annuity, to accumulate a future value, at a periodic interest "
-"rate."
-msgstr ""
-"Skaičiuojamas termino mokėjimo periodų skaičius, kurio reiks paprastojo "
-"anuiteto būdu sukaupti būsimąją vertę esant periodinei palūkanų normai."
-
-#: src/ui/buttons-financial.ui:1014
-msgid "Currency Conversion"
-msgstr "Valiutos keitimas"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:1045
-msgid "Ctrm"
-msgstr "Strm"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1062
-msgid "Ddb"
-msgstr "Dmn"
-
-#: src/ui/buttons-financial.ui:1065
-msgid "Double Declining Depreciation"
-msgstr "Dvigubai mažėjančios vertės nusidėvėjimas"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:1079
-msgid "Fv"
-msgstr "Bv"
-
-#: src/ui/buttons-financial.ui:1099
-msgid "Financial Term"
-msgstr "Finansinis terminas"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1113
-msgid "Syd"
-msgstr "Msn"
-
-#: src/ui/buttons-financial.ui:1116
-msgid "Sum of the Years Digits Depreciation"
-msgstr "Nusidėvėjimas metų skaičiaus metodu"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1130
-msgid "Sln"
-msgstr "Tnd"
-
-#: src/ui/buttons-financial.ui:1133
-msgid "Straight Line Depreciation"
-msgstr "Tiesiogiai proporcingas nusidėvėjimas"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:1147
-msgid "Rate"
-msgstr "Proc"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:1164
-msgid "Pv"
-msgstr "Ev"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:1181
-msgid "Pmt"
-msgstr "Pmk"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:1198
-msgid "Gpm"
-msgstr "Bgp"
-
-#: src/ui/buttons-programming.ui:17
+#: lib/unit.vala:183
+msgid "Number Base"
+msgstr "Skaičiavimo sistema"
+
+#: lib/unit.vala:184 src/buttons-programming.vala:168
+#: src/ui/buttons-programming.blp:2590
 msgid "Binary"
 msgstr "Dvejetainė"
 
-#: src/ui/buttons-programming.ui:18
+#: lib/unit.vala:185 src/buttons-programming.vala:173
+#: src/ui/buttons-programming.blp:2596
 msgid "Octal"
 msgstr "Aštuonetainis"
 
-#: src/ui/buttons-programming.ui:19
+#: lib/unit.vala:186 src/buttons-programming.vala:178
+#: src/ui/buttons-programming.blp:2602
 msgid "Decimal"
 msgstr "Dešimtainė"
 
-#: src/ui/buttons-programming.ui:20
+#: lib/unit.vala:187 src/buttons-programming.vala:183
+#: src/ui/buttons-programming.blp:2608
 msgid "Hexadecimal"
 msgstr "Šešioliktainis"
 
-#: src/ui/buttons-programming.ui:61
-msgid "Number Base Conversion"
-msgstr "Skaičiavimo sistemos keitimas"
+#: search-provider/search-provider.vala:206
+msgid "Open in Calculator"
+msgstr "Atverti skaičiuotuve"
 
-#: src/ui/buttons-programming.ui:1784
-msgid "Shift Left"
-msgstr "Postūmis kairiau"
+#: search-provider/search-provider.vala:239
+msgid "Result copied"
+msgstr "Rezultatas nukopijuotas"
 
-#: src/ui/buttons-programming.ui:1799
-msgid "Shift Right"
-msgstr "Postūmis dešiniau"
+#: search-provider/search-provider.vala:240
+msgid "Result was copied successfully"
+msgstr "Rezultatas sėkmingai nukopijuotas"
 
-#: src/ui/buttons-programming.ui:1814
-msgid "Boolean Exclusive OR"
-msgstr "Loginė griežta disjunkcija"
+#: src/buttons-advanced.vala:87 src/math-preferences.vala:134
+msgid "Degrees"
+msgstr "Laipsniai"
 
-#: src/ui/buttons-programming.ui:1829
-msgid "Boolean OR"
-msgstr "Loginis ARBA"
+#: src/buttons-advanced.vala:89
+#, c-format
+msgid "Angle Unit: %s"
+msgstr "Kampų vienetai: %s"
 
-#: src/ui/buttons-programming.ui:1845
-msgid "Boolean AND"
-msgstr "Loginis IR"
+#: src/buttons-conversion.vala:125 src/buttons-conversion.vala:130
+#: src/buttons-conversion.vala:137 src/buttons-conversion.vala:142
+msgid "Not Available"
+msgstr "Neprieinama"
 
-#: src/ui/buttons-programming.ui:1861
-msgid "Boolean NOT"
-msgstr "Loginis NE"
+#: src/buttons-programming.vala:205
+#, c-format
+msgid "%d-bit"
+msgid_plural "%d-bit"
+msgstr[0] "%d-bito"
+msgstr[1] "%d-bitų"
+msgstr[2] "%d-bitų"
 
-#: src/ui/buttons-programming.ui:1877
-msgid "One’s Complement"
-msgstr "Vieneto papildymas"
-
-#: src/ui/buttons-programming.ui:1893
-msgid "Two’s Complement"
-msgstr "Dvejetainis papildymas"
-
-#: src/ui/buttons-programming.ui:1967
-msgid "Binary Logarithm"
-msgstr "Dvejetainis logaritmas"
-
-#: src/ui/buttons-programming.ui:2025
-msgid "Integer Component"
-msgstr "Sveikoji dalis"
-
-#: src/ui/buttons-programming.ui:2041
-msgid "Fractional Component"
-msgstr "Trupmeninė dalis"
-
-#. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2072 src/ui/buttons-programming.ui:2122
-msgid "Insert Character Code"
-msgstr "Įterpti simbolio kodą"
-
-#: src/ui/buttons-programming.ui:2105
-msgid "Change Word Size"
-msgstr "Keisti žodžio dydį"
-
-#. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2154
-msgid "Character"
-msgstr "Simbolis"
-
-#. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2182
-msgid "_Insert"
-msgstr "Įterpt_i"
-
-#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming, keyboard and conversion
 #: src/gnome-calculator.vala:22
-msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
+msgid ""
+"Start in given mode (basic, advanced, financial, programming, keyboard, "
+"conversion)"
 msgstr ""
 "Paleisti pateikta veiksena (basic, advanced, financial, programming, "
-"keyboard)"
+"keyboard, conversion)"
 
 #: src/gnome-calculator.vala:23
 msgid "Solve given equation"
@@ -2597,16 +2496,17 @@ msgid "Show release version"
 msgstr "Rodyti leidimo versiją"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:289
-msgid "© 1986–2023 The Calculator authors"
-msgstr "© 1986–2023 Skaičiuotuvo autoriai"
+#: src/gnome-calculator.vala:291
+#, c-format
+msgid "© 1986–%d The Calculator authors"
+msgstr "© 1986–%d Skaičiuotuvo autoriai"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:295
+#: src/gnome-calculator.vala:297
 msgid "translator-credits"
 msgstr ""
 "Algimantas Markevičius <margevicius.algimantas@gmail.com>\n"
-"Aurimas Černius <aurisc4@gmail.com>\n"
+"Aurimas Černius <aurimas.cernius@mailo.com>\n"
 "Rimas Kudelis <rq@akl.lt>\n"
 "Žygimantas Beručka <uid0@akl.lt>\n"
 "Justina Klingaitė <justina.klingaite@gmail.com>\n"
@@ -2614,416 +2514,1325 @@ msgstr ""
 "Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Gediminas Paulauskas <menesis@chatsubo.lt>"
 
-#: src/gnome-calculator.vala:299
-msgid "Exchange rate data providers"
-msgstr "Keitimo santykių duomenų tiekėjai"
+#: src/gnome-calculator.vala:301
+msgid "Exchange Rate Data Providers"
+msgstr "Valiutų kursų duomenų tiekėjai"
 
-#: src/gnome-calculator.vala:299
+#: src/gnome-calculator.vala:301
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Keitimo santykių duomenys iš %s"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Close All?"
 msgstr "Užverti visus?"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Are you sure you want to close all open windows?"
 msgstr "Ar tikrai norite užverti visus atvertus langus?"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
+#: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
+#: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
+#: src/ui/buttons-financial.blp:1283 src/ui/buttons-financial.blp:1339
+#: src/ui/buttons-financial.blp:1401 src/ui/buttons-programming.blp:2563
+msgid "_Cancel"
+msgstr "_Atsisakyti"
+
+#: src/gnome-calculator.vala:311
 msgid "Close _All"
 msgstr "Užverti _visus"
 
-#: src/math-buttons.vala:303 src/math-buttons.vala:752
-#: src/math-buttons.vala:768
-#, c-format
-msgid "%d-bit"
-msgid_plural "%d-bit"
-msgstr[0] "%d-bito"
-msgstr[1] "%d-bitų"
-msgstr[2] "%d-bitų"
+#: src/math-converter.vala:612 src/math-converter.vala:630
+msgid "Error"
+msgstr "Klaida"
 
-#: src/math-buttons.vala:713
-msgid "Negative [-]"
-msgstr "Neigiamas [-]"
-
-#: src/ui/math-converter.ui:134
-msgid "Currency Conversion Disabled"
-msgstr "Valiutos keitimas išjungtas"
-
-#: src/ui/math-converter.ui:135
-msgid "Enable in preferences to convert currencies"
-msgstr "Įjunkite valiutos keitimą nuostatose"
-
-#: src/ui/math-converter.ui:145
-msgid "_Copy"
-msgstr "_Kopijuoti"
-
-#: src/ui/math-converter.ui:149
-msgid "_Paste"
-msgstr "Į_dėti"
-
-#: src/math-display.vala:646
+#: src/math-display.vala:694
 msgid "Defined Functions"
 msgstr "Apibrėžtos funkcijos"
 
-#: src/math-display.vala:691
-msgid "Built-in keywords"
+#: src/math-display.vala:742
+msgid "Built-in Keywords"
 msgstr "Integruoti raktažodžiai"
 
-#: src/math-display.vala:735
-msgid "Defined currencies"
+#: src/math-display.vala:794
+msgid "Defined Currencies"
 msgstr "Apibrėžtos valiutos"
 
-#: src/math-display.vala:785
+#: src/math-display.vala:843
 msgid "Defined Variables"
 msgstr "Apibrėžti kintamieji"
 
-#: src/ui/math-function-popover.ui:29
-msgid "New function"
-msgstr "Nauja funkcija"
+#: src/math-function-popover.vala:185
+msgid "Can not use defined variable or constant names"
+msgstr "Negalima naudoti apibrėžtų kintamųjų ar konstantų pavadinimų"
 
-#: src/ui/math-function-popover.ui:43
-msgid "Select no. of arguments"
-msgstr "Pasirinkite argumentų skaičių"
+#: src/math-function-popover.vala:189
+msgid "Can not use built-in function or operator names"
+msgstr "Negalima naudoti integruotų funkcijų ar operatorių pavadinimų"
 
-#: src/math-preferences.vala:116
+#: src/math-function-popover.vala:192
+msgid "Function name can not start with a digit"
+msgstr "Funkcijos pavadinimas negali prasidėti skaitmeniu"
+
+#: src/math-function-popover.vala:195
+msgid "Function name can only contain digits, letters and underscores"
+msgstr ""
+"Funkcijos pavadinimas gali susidėti tik iš skaitmenų, raidžių bei pabraukimų"
+
+#: src/math-popover.vala:110
+msgid "Edit"
+msgstr "Keisti"
+
+#: src/math-popover.vala:120
+msgid "Delete"
+msgstr "Ištrinti"
+
+#: src/math-preferences.vala:147 src/ui/buttons-programming.blp:2618
 msgid "8-bit"
 msgstr "8-bitų"
 
-#: src/math-preferences.vala:118
+#: src/math-preferences.vala:149 src/ui/buttons-programming.blp:2624
 msgid "16-bit"
 msgstr "16-bitų"
 
-#: src/math-preferences.vala:120
+#: src/math-preferences.vala:151 src/ui/buttons-programming.blp:2630
 msgid "32-bit"
 msgstr "32-bitų"
 
-#: src/math-preferences.vala:122
+#: src/math-preferences.vala:153 src/ui/buttons-programming.blp:2636
 msgid "64-bit"
 msgstr "64-bitų"
 
-#: src/math-preferences.vala:131
+#: src/math-preferences.vala:162
 msgid "Never"
 msgstr "Niekada"
 
-#: src/math-preferences.vala:133
+#: src/math-preferences.vala:164
 msgid "Daily"
 msgstr "Kasdien"
 
-#: src/math-preferences.vala:135
+#: src/math-preferences.vala:166
 msgid "Weekly"
 msgstr "Kas savaitę"
 
-#: src/ui/math-preferences.ui:18
-msgid "Number of _Decimals"
-msgstr "_Skaitmenų po kablelio"
+#: src/math-preferences.vala:175
+msgid "Currency Code"
+msgstr "Valiutos kodas"
 
-#: src/ui/math-preferences.ui:27
-msgid "Trailing _Zeroes"
-msgstr "_Nulius skaičiaus gale"
+#: src/math-preferences.vala:177
+msgid "Currency Name"
+msgstr "Valiutos pavadinimas"
 
-#: src/ui/math-preferences.ui:33
-msgid "_Thousands Separators"
-msgstr "_Tūkstančių skirtukas"
+#: src/math-preferences.vala:179
+msgid "Both"
+msgstr "Abu"
 
-#: src/ui/math-preferences.ui:39
-msgid "_Angle Units"
-msgstr "_Kampų vienetai"
+#: src/math-variable-popover.vala:216
+msgid "Can not use defined function or operator names"
+msgstr "Negalima naudoti apibrėžtų funkcijų ar operatorių pavadinimų"
 
-#: src/ui/math-preferences.ui:45
-msgid "Word _Size"
-msgstr "Žodžio _dydis"
+#: src/math-variable-popover.vala:219
+msgid "Can not use built-in variable or constant names"
+msgstr "Negalima naudoti integruotų kintamųjų ar konstantų pavadinimų"
 
-#: src/ui/math-preferences.ui:51
-msgid "E_xchange Rate Refresh Interval"
-msgstr "_Keitimo santykių atnaujinimo intervalas"
+#: src/math-variable-popover.vala:222
+msgid "Variable name can not start with a digit"
+msgstr "Kintamojo pavadinimas negali prasidėti skaitmeniu"
 
-#: src/ui/math-shortcuts.ui:13
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Bendra"
-
-#: src/ui/math-shortcuts.ui:17
-msgctxt "shortcut window"
-msgid "Open a new window"
-msgstr "Atverti naują langą"
-
-#: src/ui/math-shortcuts.ui:23
-msgctxt "shortcut window"
-msgid "Close current window"
-msgstr "Užverti dabartinį langą"
-
-#: src/ui/math-shortcuts.ui:29
-msgctxt "shortcut window"
-msgid "Quit the application"
-msgstr "Užverti programą"
-
-#: src/ui/math-shortcuts.ui:35
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Rodyti žinyną"
-
-#: src/ui/math-shortcuts.ui:41
-msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "Atverti meniu"
-
-#: src/ui/math-shortcuts.ui:47
-msgctxt "shortcut window"
-msgid "Show preferences"
-msgstr "Rodyti nuostatas"
-
-#: src/ui/math-shortcuts.ui:53
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Klaviatūros trumpiniai"
-
-#: src/ui/math-shortcuts.ui:59
-msgctxt "shortcut window"
-msgid "Clear history"
-msgstr "Išvalyti istoriją"
-
-#: src/ui/math-shortcuts.ui:66
-msgctxt "shortcut window"
-msgid "Switching modes"
-msgstr "Keisti veiksenas"
-
-#: src/ui/math-shortcuts.ui:70
-msgctxt "shortcut window"
-msgid "Switch to Basic mode"
-msgstr "Įjungti paprastą veikseną"
-
-#: src/ui/math-shortcuts.ui:76
-msgctxt "shortcut window"
-msgid "Switch to Advanced mode"
-msgstr "Įjungti išplėstinę veikseną"
-
-#: src/ui/math-shortcuts.ui:82
-msgctxt "shortcut window"
-msgid "Switch to Financial mode"
-msgstr "Įjungti finansinę veikseną"
-
-#: src/ui/math-shortcuts.ui:88
-msgctxt "shortcut window"
-msgid "Switch to Programming mode"
-msgstr "Įjungti programavimo veikseną"
-
-#: src/ui/math-shortcuts.ui:94
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode"
-msgstr "Įjungti klaviatūros veikseną"
-
-#: src/ui/math-shortcuts.ui:100
-msgctxt "shortcut window"
-msgid "Switch to Conversion mode"
-msgstr "Įjungti konvertavimo veikseną"
-
-#: src/ui/math-shortcuts.ui:107
-msgctxt "shortcut window"
-msgid "Keyboard entry"
-msgstr "Klaviatūros įvedimo laukas"
-
-#: src/ui/math-shortcuts.ui:111
-msgctxt "shortcut window"
-msgid "Multiply (×)"
-msgstr "Dauginti (*)"
-
-#: src/ui/math-shortcuts.ui:117
-msgctxt "shortcut window"
-msgid "Divide (÷)"
-msgstr "Dalinti (/)"
-
-#: src/ui/math-shortcuts.ui:123
-msgctxt "shortcut window"
-msgid "Square root (√)"
-msgstr "Kvadratinė šaknis (√)"
-
-#: src/ui/math-shortcuts.ui:129
-msgctxt "shortcut window"
-msgid "Inverse"
-msgstr "Apsukti"
-
-#: src/ui/math-shortcuts.ui:135
-msgctxt "shortcut window"
-msgid "Pi (π)"
-msgstr "Pi (π)"
-
-#: src/ui/math-shortcuts.ui:141
-msgctxt "shortcut window"
-msgid "Enter numbers in scientific format"
-msgstr "Įveskite skaičius moksline forma"
-
-#: src/ui/math-shortcuts.ui:148
-msgctxt "shortcut window"
-msgid "Programming mode"
-msgstr "Programavimo veiksena"
-
-#: src/ui/math-shortcuts.ui:152
-msgctxt "shortcut window"
-msgid "Switch to binary"
-msgstr "Įjungti dvejetainę"
-
-#: src/ui/math-shortcuts.ui:158
-msgctxt "shortcut window"
-msgid "Switch to octal"
-msgstr "Įjungti aštuonetainę"
-
-#: src/ui/math-shortcuts.ui:164
-msgctxt "shortcut window"
-msgid "Switch to decimal"
-msgstr "Įjungti dešimtainę"
-
-#: src/ui/math-shortcuts.ui:170
-msgctxt "shortcut window"
-msgid "Switch to hexadecimal"
-msgstr "Įjungti šešioliktainę"
-
-#: src/ui/math-shortcuts.ui:177
-msgctxt "shortcut window"
-msgid "Others"
-msgstr "Kita"
-
-#: src/ui/math-shortcuts.ui:181
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "Kopijuoti"
-
-#: src/ui/math-shortcuts.ui:187
-msgctxt "shortcut window"
-msgid "Paste"
-msgstr "Įdėti"
-
-#: src/ui/math-shortcuts.ui:193
-msgctxt "shortcut window"
-msgid "Undo"
-msgstr "Atšaukti"
-
-#: src/ui/math-shortcuts.ui:199
-msgctxt "shortcut window"
-msgid "Redo"
-msgstr "Pakartoti"
-
-#: src/ui/math-shortcuts.ui:205
-msgctxt "shortcut window"
-msgid "Previous equation"
-msgstr "Ankstesnis rezultatas"
-
-#: src/ui/math-shortcuts.ui:211
-msgctxt "shortcut window"
-msgid "Next equation"
-msgstr "Kitas rezultatas"
-
-#: src/ui/math-shortcuts.ui:217
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode (alt.)"
-msgstr "Pakeisti klaviatūros veikseną (alt.)"
-
-#: src/ui/math-variable-popover.ui:37
-msgid "Variable name"
-msgstr "Kintamojo vardas"
-
-#: src/ui/math-variable-popover.ui:45
-msgid "Store value into existing or new variable"
-msgstr "Įrašyti reikšmę į esamą ar naują kintamąjį"
-
-#: src/math-variable-popover.vala:94
-#, c-format
-msgid "%s: Invalid variable name, can not start with a digit"
-msgstr "%s: netinkamas kintamojo pavadinimas, negali prasidėti skaitmeniu"
-
-#: src/math-variable-popover.vala:98
-#, c-format
-msgid ""
-"%s: Invalid variable name, can only contain digits, letters and underscores"
+#: src/math-variable-popover.vala:225
+msgid "Variable name can only contain digits, letters and underscores"
 msgstr ""
-"%s: netinkamas kintamojo pavadinimas, gali susidėti tik iš skaitmenų, "
-"raidžių bei pabraukimų"
+"Kintamojo pavadinimas gali susidėti tik iš skaitmenų, raidžių bei pabraukimų"
 
-#: src/ui/math-window.ui:8 src/math-window.vala:133
+#: src/math-window.vala:137
 msgid "Basic"
 msgstr "Paprastas"
 
-#: src/ui/math-window.ui:13 src/math-window.vala:139
+#: src/math-window.vala:143
 msgid "Advanced"
 msgstr "Išplėstinis"
 
-#: src/ui/math-window.ui:18 src/ui/math-window.ui:140 src/math-window.vala:145
+#: src/math-window.vala:149 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "Finansinis"
 
-#: src/ui/math-window.ui:23 src/math-window.vala:151
-msgid "Programming"
-msgstr "Programavimo"
-
-#: src/ui/math-window.ui:28 src/math-window.vala:157
+#: src/math-window.vala:161
 msgid "Keyboard"
 msgstr "Klaviatūra"
 
-#: src/ui/math-window.ui:33 src/math-window.vala:163
+#: src/math-window.vala:167
 msgid "Conversion"
 msgstr "Konversija"
 
-#: src/ui/math-window.ui:42
+#: src/ui/buttons-advanced.blp:76 src/ui/buttons-basic.blp:21
+#: src/ui/buttons-conversion.blp:21 src/ui/buttons-financial.blp:76
+#: src/ui/buttons-programming.blp:1373
+msgid "Clear Display [Escape]"
+msgstr "Išvalyti ekraną [Escape]"
+
+#: src/ui/buttons-advanced.blp:92 src/ui/buttons-basic.blp:37
+#: src/ui/buttons-financial.blp:92 src/ui/buttons-programming.blp:1389
+msgid "Superscript Mode [Ctrl]"
+msgstr "Viršutinio indekso veiksena [Vald]"
+
+#: src/ui/buttons-advanced.blp:109 src/ui/buttons-basic.blp:54
+#: src/ui/buttons-financial.blp:109 src/ui/buttons-programming.blp:1406
+msgid "Subscript Mode [Alt]"
+msgstr "Apatinio indekso veiksena [Alt]"
+
+#. Translators: The label on the memory button
+#: src/ui/buttons-advanced.blp:300 src/ui/buttons-basic.blp:245
+#: src/ui/buttons-financial.blp:300 src/ui/buttons-programming.blp:1705
+msgid "x"
+msgstr "x"
+
+#: src/ui/buttons-advanced.blp:303 src/ui/buttons-basic.blp:248
+#: src/ui/buttons-financial.blp:303 src/ui/buttons-programming.blp:1708
+msgid "Variables and Constants"
+msgstr "Kintamieji ir konstantos"
+
+#: src/ui/buttons-advanced.blp:320 src/ui/buttons-basic.blp:265
+#: src/ui/buttons-financial.blp:320 src/ui/buttons-programming.blp:1725
+msgid "Additional Functions"
+msgstr "Papildomos funkcijos"
+
+#: src/ui/buttons-advanced.blp:336 src/ui/buttons-basic.blp:281
+#: src/ui/buttons-financial.blp:336 src/ui/buttons-programming.blp:1741
+msgid "Divide [/]"
+msgstr "Dalinti [/]"
+
+#: src/ui/buttons-advanced.blp:353 src/ui/buttons-basic.blp:298
+#: src/ui/buttons-financial.blp:353 src/ui/buttons-programming.blp:1758
+msgid "Multiply [*]"
+msgstr "Dauginti [*]"
+
+#: src/ui/buttons-advanced.blp:370 src/ui/buttons-basic.blp:315
+#: src/ui/buttons-financial.blp:370 src/ui/buttons-programming.blp:1775
+msgid "Subtract [-]"
+msgstr "Atimti [-]"
+
+#: src/ui/buttons-advanced.blp:386 src/ui/buttons-basic.blp:331
+#: src/ui/buttons-financial.blp:386 src/ui/buttons-programming.blp:1791
+msgid "Add [+]"
+msgstr "Pridėti [+]"
+
+#: src/ui/buttons-advanced.blp:420 src/ui/buttons-basic.blp:365
+#: src/ui/buttons-financial.blp:420 src/ui/buttons-programming.blp:1825
+msgid "Percentage [%]"
+msgstr "Procentai [%]"
+
+#: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382
+#: src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
+msgid "Group [()]"
+msgstr "Grupė [()]"
+
+#. Translators: Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.blp:453 src/ui/buttons-basic.blp:398
+#: src/ui/buttons-financial.blp:453 src/ui/buttons-programming.blp:1858
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.blp:455 src/ui/buttons-basic.blp:400
+#: src/ui/buttons-financial.blp:455 src/ui/buttons-programming.blp:1860
+msgid "Calculate Result"
+msgstr "Skaičiuoti rezultatą"
+
+#: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
+#: src/ui/buttons-programming.blp:1888
+msgid "Inverse Modifier [Shift]"
+msgstr "Inversijos modifikatorius [Lyg2]"
+
+#: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
+#: src/ui/buttons-programming.blp:2085
+msgid "Square [Ctrl+2]"
+msgstr "Kvadratas [Ctrl+2]"
+
+#: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
+#: src/ui/buttons-programming.blp:2107
+msgid "Square Root [Ctrl+R]"
+msgstr "Kvadratinė šaknis [Ctrl+R]"
+
+#: src/ui/buttons-advanced.blp:760 src/ui/buttons-advanced.blp:827
+#: src/ui/buttons-financial.blp:538 src/ui/buttons-programming.blp:2125
+#: src/ui/buttons-programming.blp:2192
+msgid "Exponent [^ or **]"
+msgstr "Eksponentinis [^ arba **]"
+
+#: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560
+#: src/ui/buttons-programming.blp:2147
+msgid "Nth Root"
+msgstr "N-oji šaknis"
+
+#: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585
+#: src/ui/buttons-programming.blp:2216
+msgid "Common Logarithm"
+msgstr "Logaritmas"
+
+#: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602
+#: src/ui/buttons-programming.blp:2233
+msgid "Base-10 Exponential"
+msgstr "Dešimtainė eksponentė"
+
+#: src/ui/buttons-advanced.blp:909 src/ui/buttons-financial.blp:643
+msgid "Natural Exponential"
+msgstr "Natūralioji eksponentė"
+
+#: src/ui/buttons-advanced.blp:999
+msgid "Inverse [Ctrl+I]"
+msgstr "Apversti [Vald+I]"
+
+#: src/ui/buttons-advanced.blp:1020
+msgid "Round [[]]"
+msgstr "Apvalinti [[]]"
+
+#: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
+msgid "Absolute Value [||]"
+msgstr "Modulis [||]"
+
+#: src/ui/buttons-advanced.blp:1062 src/ui/buttons-programming.blp:2427
+msgid "Factorial [!]"
+msgstr "Faktorialas [!]"
+
+#: src/ui/buttons-advanced.blp:1099 src/ui/buttons-conversion.blp:521
+msgid "Pi [Ctrl+P]"
+msgstr "Pi [Vald+P]"
+
+#: src/ui/buttons-advanced.blp:1133
+msgid "Imaginary Unit"
+msgstr "Menamoji dalis"
+
+#: src/ui/buttons-advanced.blp:1150
+msgid "Factorize [Ctrl+F]"
+msgstr "Išskaidyti [Ctrl+F]"
+
+#: src/ui/buttons-conversion.blp:37
+msgid "Switch Conversion Units"
+msgstr "Keisti vertimo vienetus"
+
+#: src/ui/buttons-conversion.blp:53 src/ui/math-display.blp:45
+msgid "Backspace"
+msgstr "Grįžtamasis trynimas"
+
+#: src/ui/buttons-conversion.blp:510
+msgid "Degrees, Minutes, Seconds"
+msgstr "Laipsniai, minutės, sekundės"
+
+#: src/ui/buttons-conversion.blp:533
+msgid "Change Sign"
+msgstr "Keisti ženklą"
+
+#: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
+msgid "Exchange Rate Details"
+msgstr "Valiutų kursų duomenys"
+
+#: src/ui/buttons-conversion.blp:575 src/ui/buttons-conversion.blp:600
+msgid "Updated"
+msgstr "Atnaujinta"
+
+#: src/ui/buttons-conversion.blp:583 src/ui/buttons-conversion.blp:608
+msgid "Source"
+msgstr "Šaltinis"
+
+#: src/ui/buttons-conversion.blp:625
+msgid "_Refresh Rates"
+msgstr "_Atnaujinti kursus"
+
+#. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.blp:669
+msgid "Ctrm"
+msgstr "Strm"
+
+#. Translators: Title of Compounding Term dialog
+#: src/ui/buttons-financial.blp:672 src/ui/buttons-financial.blp:887
+msgid "Compounding Term"
+msgstr "Sudėtinis terminas"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:688
+msgid "Ddb"
+msgstr "Dmn"
+
+#: src/ui/buttons-financial.blp:691
+msgid "Double Declining Depreciation"
+msgstr "Dvigubai mažėjančios vertės nusidėvėjimas"
+
+#. Translators: Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.blp:707
+msgid "Fv"
+msgstr "Bv"
+
+#. Translators: Compounding Term Dialog: Label before future value input
+#. Translators: Title of Future Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before future value input
+#. Translators: Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.blp:710 src/ui/buttons-financial.blp:927
+#: src/ui/buttons-financial.blp:999 src/ui/buttons-financial.blp:1251
+#: src/ui/buttons-financial.blp:1431
+msgid "Future Value"
+msgstr "Būsimoji vertė"
+
+#. Translators: Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.blp:726
+msgid "Gpm"
+msgstr "Bgp"
+
+#. Translators: Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.blp:729 src/ui/buttons-financial.blp:1055
+msgid "Gross Profit Margin"
+msgstr "Bendras grynasis pelnas"
+
+#. Translators: Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.blp:745
+msgid "Pmt"
+msgstr "Pmk"
+
+#. Translators: Future Value Dialog: Label before periodic payment input
+#. Translators: Title of Periodic Payment dialog
+#. Translators: Present Value Dialog: Label before periodic payment input
+#. Translators: Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.blp:748 src/ui/buttons-financial.blp:1033
+#: src/ui/buttons-financial.blp:1105 src/ui/buttons-financial.blp:1195
+#: src/ui/buttons-financial.blp:1425
+msgid "Periodic Payment"
+msgstr "Periodinis mokėjimas"
+
+#. Translators: Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.blp:764
+msgid "Pv"
+msgstr "Ev"
+
+#. Translators: Compounding Term Dialog: Label before present value input
+#. Translators: Title of Present Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.blp:767 src/ui/buttons-financial.blp:933
+#: src/ui/buttons-financial.blp:1161 src/ui/buttons-financial.blp:1257
+msgid "Present Value"
+msgstr "Dabartinė vertė"
+
+#. Translators: Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.blp:783
+msgid "Rate"
+msgstr "Proc"
+
+#. Translators: Compounding Term Dialog: Label before periodic interest rate input
+#. Translators: Future Value Dialog: Label before periodic interest rate input
+#. Translators: Periodic Payment Dialog: Label before periodic interest rate input
+#. Translators: Present Value Dialog: Label before periodic interest rate input
+#. Translators: Title of Periodic Interest Rate dialog
+#. Translators: Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.blp:786 src/ui/buttons-financial.blp:921
+#: src/ui/buttons-financial.blp:1039 src/ui/buttons-financial.blp:1145
+#: src/ui/buttons-financial.blp:1201 src/ui/buttons-financial.blp:1217
+#: src/ui/buttons-financial.blp:1437
+msgid "Periodic Interest Rate"
+msgstr "Periodinė palūkanų norma"
+
+#. Translators: Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:802
+msgid "Sln"
+msgstr "Tnd"
+
+#: src/ui/buttons-financial.blp:805
+msgid "Straight Line Depreciation"
+msgstr "Tiesiogiai proporcingas nusidėvėjimas"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:821
+msgid "Syd"
+msgstr "Msn"
+
+#: src/ui/buttons-financial.blp:824
+msgid "Sum of the Years Digits Depreciation"
+msgstr "Nusidėvėjimas metų skaičiaus metodu"
+
+#. Translators: Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#. Translators: Periodic Payment Dialog: Label before term input
+#. Translators: Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.blp:840 src/ui/buttons-financial.blp:1151
+#: src/ui/buttons-financial.blp:1263
+msgid "Term"
+msgstr "Peri"
+
+#: src/ui/buttons-financial.blp:843
+msgid "Financial Term"
+msgstr "Finansinis terminas"
+
+#: src/ui/buttons-financial.blp:858 src/ui/math-preferences.blp:78
+msgid "Currency Conversion"
+msgstr "Valiutos keitimas"
+
+#. Translators: Compounding Term Dialog: Calculate button
+#. Translators: Double-Declining Depreciation Dialog: Calculate button
+#. Translators: Future Value Dialog: Calculate button
+#. Translators: Gross Profit Margin Dialog: Calculate button
+#. Translators: Periodic Payment Dialog: Calculate button
+#. Translators: Present Value Dialog: Calculate button
+#. Translators: Periodic Interest Rate Dialog: Calculate button
+#. Translators: Straight-Line Depreciation Dialog: Calculate button
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
+#. Translators: Payment Period Dialog: Calculate button
+#: src/ui/buttons-financial.blp:905 src/ui/buttons-financial.blp:961
+#: src/ui/buttons-financial.blp:1017 src/ui/buttons-financial.blp:1073
+#: src/ui/buttons-financial.blp:1123 src/ui/buttons-financial.blp:1179
+#: src/ui/buttons-financial.blp:1235 src/ui/buttons-financial.blp:1291
+#: src/ui/buttons-financial.blp:1347 src/ui/buttons-financial.blp:1409
+msgid "C_alculate"
+msgstr "Sk_aičiuoti"
+
+#. Translators: Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:916
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"Skaičiuojamas sudėtinių periodų skaičius, reikalingas esamosios vertės "
+"padidinimui iki būsimosios vertės, esant fiksuotai palūkanų sudėtinio "
+"periodo metu."
+
+#. Translators: Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.blp:943
+msgid "Double-Declining Depreciation"
+msgstr "Dvigubai mažėjančios vertės nusidėvėjimas"
+
+#. Translators: Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:972
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"Skaičiuojamas turto nusidėvėjimas per nurodytą laiko periodą dvigubai "
+"mažėjančios vertės būdu."
+
+#. Translators: Double-Declining Depreciation Dialog: Label before cost input
+#. Translators: Gross Profit Margin Dialog: Label before cost input
+#. Translators: Straight-Line Depreciation Dialog: Label before cost input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.blp:977 src/ui/buttons-financial.blp:1089
+#: src/ui/buttons-financial.blp:1307 src/ui/buttons-financial.blp:1363
+msgid "Cost"
+msgstr "Kaštai"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before life input
+#. Translators: Straight-Line Depreciation Dialog: Label before life input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.blp:983 src/ui/buttons-financial.blp:1319
+#: src/ui/buttons-financial.blp:1375
+msgid "Life"
+msgstr "Gyvenimo trukmė"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before period input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.blp:989 src/ui/buttons-financial.blp:1381
+msgid "Period"
+msgstr "Periodas"
+
+#. Translators: Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1028
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"Skaičiuojama investicijos būsimoji vertė vienodų mokėjimų su periodine "
+"palūkanų norma per tam tikrą mokėjimo periodų skaičių pagrindu."
+
+#. Translators: Future Value Dialog: Label before number of periods input
+#. Translators: Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.blp:1045 src/ui/buttons-financial.blp:1207
+msgid "Number of Periods"
+msgstr "Periodų kiekis"
+
+#. Translators: Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1084
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"Skaičiuojama produkto pardavimo kaina, remiantis produkto kaštais ir "
+"pageidaujama bendro grynojo pelno norma."
+
+#. Translators: Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.blp:1095
+msgid "Margin"
+msgstr "Antkainis"
+
+#. Translators: Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1134
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period."
+msgstr ""
+"Suskaičiuoja paskolos periodinių mokėjimų skaičių, jei mokama kiekvieno "
+"mokėjimo periodo pabaigoje."
+
+#. Translators: Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.blp:1139
+msgid "Principal"
+msgstr "Pagrindinis"
+
+#. Translators: Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1190
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term."
+msgstr ""
+"Skaičiuojama esamoji investicijos vertė, remiantis eile vienodų mokėjimų, "
+"diskontuotų periodine palūkanų norma per tam tikrą termino mokėjimo periodų "
+"skaičių."
+
+#. Translators: Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1246
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods."
+msgstr ""
+"Skaičiuojama periodinė palūkanų norma, reikalinga padidinti investicijai iki "
+"būsimosios vertės per sudėtinių periodų skaičių."
+
+#. Translators: Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.blp:1273
+msgid "Straight-Line Depreciation"
+msgstr "Tiesiogiai proporcingas nusidėvėjimas"
+
+#. Translators: Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1302
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated."
+msgstr ""
+"Skaičiuojamas turto nusidėvėjimas per nurodytą laiko periodą tiesioginio "
+"nusidėvėjimo būdu. Naudojant šį būdą, nusidėvėjimo kaštai išdalinami "
+"lygiomis dalimis visam laikotarpiui. Dažniausiai naudojamas laikotarpis yra "
+"periodų (paprastai metų) skaičius, per kuriuos turtas nusidėvi."
+
+#. Translators: Straight-Line Depreciation Dialog: Label before salvage input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.blp:1313 src/ui/buttons-financial.blp:1369
+msgid "Salvage"
+msgstr "Likvidacinė vertė"
+
+#. Translators: Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.blp:1329
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "Nusidėvėjimas metų skaičiaus skaitiniu metodu"
+
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1358
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated."
+msgstr ""
+"Skaičiuojamas turto nusidėvėjimas per nurodytą laiko periodą metų skaičiaus "
+"skaitiniu metodu. Naudojant šį metodą, ankstesniesiems periodams "
+"suskaičiuojamas didesnis nusidėvėjimas negu vėlesniesiems. Dažniausiai "
+"naudojamas laikotarpis yra periodų (paprastai metų) skaičius, per kuriuos "
+"turtas nusidėvi."
+
+#. Translators: Title of Payment Period dialog
+#: src/ui/buttons-financial.blp:1391
+msgid "Payment Period"
+msgstr "Mokėjimo periodas"
+
+#. Translators: Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1420
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"Skaičiuojamas termino mokėjimo periodų skaičius, kurio reiks paprastojo "
+"anuiteto būdu sukaupti būsimąją vertę esant periodinei palūkanų normai."
+
+#: src/ui/buttons-programming.blp:1904
+msgid "Bitwise AND"
+msgstr "Bitų IR"
+
+#: src/ui/buttons-programming.blp:1922
+msgid "Bitwise NAND"
+msgstr "Bitų NEIR"
+
+#: src/ui/buttons-programming.blp:1941
+msgid "Bitwise OR"
+msgstr "Bitų ARBA"
+
+#: src/ui/buttons-programming.blp:1959
+msgid "Bitwise NOR"
+msgstr "BITŲ NEARBA"
+
+#: src/ui/buttons-programming.blp:1977
+msgid "Bitwise NOT"
+msgstr "Bitų NE"
+
+#: src/ui/buttons-programming.blp:1995
+msgid "Bitwise Exclusive OR"
+msgstr "Bitų griežta disjunkcija"
+
+#: src/ui/buttons-programming.blp:2013
+msgid "Bitwise Exclusive NOR"
+msgstr "Bitų griežta atvirkštinė disjunkcija"
+
+#: src/ui/buttons-programming.blp:2031
+msgid "Left Shift [<<]"
+msgstr "Poslinkis į kairę [<<]"
+
+#: src/ui/buttons-programming.blp:2049
+msgid "Right Shift [>>]"
+msgstr "Poslinkis į dešinę [>>]"
+
+#: src/ui/buttons-programming.blp:2067
+msgid "Unsigned Right Shift [>>>]"
+msgstr "Poslinkis į dešinę be ženklo [>>>]"
+
+#: src/ui/buttons-programming.blp:2257
+msgid "Binary Logarithm"
+msgstr "Dvejetainis logaritmas"
+
+#: src/ui/buttons-programming.blp:2274
+msgid "Base-2 Exponential"
+msgstr "Dvejetainė eksponentė"
+
+#: src/ui/buttons-programming.blp:2364
+msgid "Ceiling [Ctrl+[]]"
+msgstr "Viršutinis sveikasis [Vald+[]]"
+
+#: src/ui/buttons-programming.blp:2385
+msgid "Floor [Alt+[]]"
+msgstr "Apatinis sveikasis [Alt+[]]"
+
+#: src/ui/buttons-programming.blp:2449
+msgid "Change Base"
+msgstr "Keisti skaičiavimo sistemą"
+
+#: src/ui/buttons-programming.blp:2468
+msgid "Change Word Size"
+msgstr "Keisti žodžio dydį"
+
+#. Translators: Title of insert character code dialog
+#: src/ui/buttons-programming.blp:2486 src/ui/buttons-programming.blp:2504
+msgid "Insert Character Code"
+msgstr "Įterpti simbolio kodą"
+
+#. Translators: Insert character code dialog: Label before character entry
+#: src/ui/buttons-programming.blp:2535
+msgid "Character"
+msgstr "Simbolis"
+
+#: src/ui/buttons-programming.blp:2542
+msgid "Convert to"
+msgstr "Konvertuoti į"
+
+#: src/ui/buttons-programming.blp:2546
+msgid "Unicode Code Point"
+msgstr "Unikodo kodo taškas"
+
+#: src/ui/buttons-programming.blp:2547
+msgid "UTF-8 Encoding"
+msgstr "UTF-8 koduotė"
+
+#: src/ui/buttons-programming.blp:2548
+msgid "UTF-16 Encoding"
+msgstr "UTF-16 koduotė"
+
+#. Translators: Insert character code dialog: Button to insert selected character
+#: src/ui/buttons-programming.blp:2574
+msgid "_Insert"
+msgstr "Įterpt_i"
+
+#: src/ui/math-converter.blp:119
+msgid "Exchange Rates Not Loaded"
+msgstr "Valiutų kursai neįkelti"
+
+#: src/ui/math-converter.blp:122
+msgid ""
+"<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
+msgstr ""
+"<a href=\"r:///\">Atnaujinkite kursus</a> arba pakeiskite atnaujinimo "
+"intervalą nuostatose"
+
+#: src/ui/math-converter.blp:141
+msgid "_Copy"
+msgstr "_Kopijuoti"
+
+#: src/ui/math-converter.blp:146
+msgid "_Paste"
+msgstr "Į_dėti"
+
+#: src/ui/math-function-popover.blp:48
+msgid "Function name"
+msgstr "Funkcijos pavadinimas"
+
+#: src/ui/math-function-popover.blp:57
+msgid "Select no. of arguments"
+msgstr "Pasirinkite argumentų skaičių"
+
+#: src/ui/math-function-popover.blp:62
+msgid "Add function"
+msgstr "Nauja funkcija"
+
+#: src/ui/math-preferences.blp:11
+msgid "Favorite Currencies"
+msgstr "Mėgiamos valiutos"
+
+#: src/ui/math-preferences.blp:20
+msgid "Search currencies"
+msgstr "Ieškoti valiutų"
+
+#: src/ui/math-preferences.blp:36
+msgid "No Results Found"
+msgstr "Nerasta rezultatų"
+
+#: src/ui/math-preferences.blp:37
+msgid "Try a different search"
+msgstr "Bandykite kitą paiešką"
+
+#: src/ui/math-preferences.blp:46
+msgid "General"
+msgstr "Esmė"
+
+#: src/ui/math-preferences.blp:49
+msgid "Number of _Decimals"
+msgstr "_Skaitmenų po kablelio"
+
+#: src/ui/math-preferences.blp:57
+msgid "Trailing _Zeroes"
+msgstr "_Nulius skaičiaus gale"
+
+#: src/ui/math-preferences.blp:62
+msgid "_Thousands Separators"
+msgstr "_Tūkstančių skirtukas"
+
+#: src/ui/math-preferences.blp:67
+msgid "_Angle Units"
+msgstr "_Kampų vienetai"
+
+#: src/ui/math-preferences.blp:72
+msgid "_Word Size"
+msgstr "Žodžio _dydis"
+
+#: src/ui/math-preferences.blp:81
+msgid "E_xchange Rate Refresh Interval"
+msgstr "_Keitimo santykių atnaujinimo intervalas"
+
+#: src/ui/math-preferences.blp:86
+msgid "_Currency Display"
+msgstr "_Valiutos rodymas"
+
+#: src/ui/math-preferences.blp:91
+msgid "_Show Currencies in Auto-Completion List"
+msgstr "_Rodyti valiutas automatinio užbaigimo sąraše"
+
+#: src/ui/math-preferences.blp:96
+msgid "All"
+msgstr "Visas"
+
+#: src/ui/math-preferences.blp:97
+msgid "Favorite Only"
+msgstr "Tik mėgiamas"
+
+#: src/ui/math-preferences.blp:98
+msgid "None"
+msgstr "Jokių"
+
+#: src/ui/math-preferences.blp:104
+msgid "_Favorite Currencies"
+msgstr "_Mėgiamos valiutos"
+
+#: src/ui/math-shortcuts.blp:5
+msgctxt "shortcuts dialog"
+msgid "General"
+msgstr "Esmė"
+
+#: src/ui/math-shortcuts.blp:9
+msgctxt "shortcuts dialog"
+msgid "Open a New Window"
+msgstr "Atverti naują langą"
+
+#: src/ui/math-shortcuts.blp:14
+msgctxt "shortcuts dialog"
+msgid "Close Current Window"
+msgstr "Užverti dabartinį langą"
+
+#: src/ui/math-shortcuts.blp:19
+msgctxt "shortcuts dialog"
+msgid "Quit the Application"
+msgstr "Užverti programą"
+
+#: src/ui/math-shortcuts.blp:24
+msgctxt "shortcuts dialog"
+msgid "Show Help"
+msgstr "Rodyti žinyną"
+
+#: src/ui/math-shortcuts.blp:29
+msgctxt "shortcuts dialog"
+msgid "Open Menu"
+msgstr "Atverti meniu"
+
+#: src/ui/math-shortcuts.blp:34
+msgctxt "shortcuts dialog"
+msgid "Show Preferences"
+msgstr "Rodyti nuostatas"
+
+#: src/ui/math-shortcuts.blp:39
+msgctxt "shortcuts dialog"
+msgid "Keyboard Shortcuts"
+msgstr "Klaviatūros trumpiniai"
+
+#: src/ui/math-shortcuts.blp:44
+msgctxt "shortcuts dialog"
+msgid "Clear History"
+msgstr "Išvalyti istoriją"
+
+#: src/ui/math-shortcuts.blp:49
+msgctxt "shortcuts dialog"
+msgid "Switching Modes"
+msgstr "Keisti veiksenas"
+
+#: src/ui/math-shortcuts.blp:53
+msgctxt "shortcuts dialog"
+msgid "Switch to Basic Mode"
+msgstr "Įjungti paprastą veikseną"
+
+#: src/ui/math-shortcuts.blp:58
+msgctxt "shortcuts dialog"
+msgid "Switch to Advanced Mode"
+msgstr "Įjungti išplėstinę veikseną"
+
+#: src/ui/math-shortcuts.blp:63
+msgctxt "shortcuts dialog"
+msgid "Switch to Financial Mode"
+msgstr "Įjungti finansinę veikseną"
+
+#: src/ui/math-shortcuts.blp:68
+msgctxt "shortcuts dialog"
+msgid "Switch to Programming Mode"
+msgstr "Įjungti programavimo veikseną"
+
+#: src/ui/math-shortcuts.blp:73
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode"
+msgstr "Įjungti klaviatūros veikseną"
+
+#: src/ui/math-shortcuts.blp:78
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode (alt.)"
+msgstr "Pakeisti klaviatūros veikseną (alt.)"
+
+#: src/ui/math-shortcuts.blp:83
+msgctxt "shortcuts dialog"
+msgid "Switch to Conversion Mode"
+msgstr "Įjungti konvertavimo veikseną"
+
+#: src/ui/math-shortcuts.blp:88
+msgctxt "shortcuts dialog"
+msgid "Programming Mode"
+msgstr "Programavimo veiksena"
+
+#: src/ui/math-shortcuts.blp:92
+msgctxt "shortcuts dialog"
+msgid "Switch to Binary"
+msgstr "Įjungti dvejetainę"
+
+#: src/ui/math-shortcuts.blp:97
+msgctxt "shortcuts dialog"
+msgid "Switch to Octal"
+msgstr "Įjungti aštuonetainę"
+
+#: src/ui/math-shortcuts.blp:102
+msgctxt "shortcuts dialog"
+msgid "Switch to Decimal"
+msgstr "Įjungti dešimtainę"
+
+#: src/ui/math-shortcuts.blp:107
+msgctxt "shortcuts dialog"
+msgid "Switch to Hexadecimal"
+msgstr "Įjungti šešioliktainę"
+
+#: src/ui/math-shortcuts.blp:112
+msgctxt "shortcuts dialog"
+msgid "Keyboard Entry"
+msgstr "Klaviatūros įvedimo laukas"
+
+#: src/ui/math-shortcuts.blp:116
+msgctxt "shortcuts dialog"
+msgid "Multiply (×)"
+msgstr "Dauginti (*)"
+
+#: src/ui/math-shortcuts.blp:121
+msgctxt "shortcuts dialog"
+msgid "Divide (÷)"
+msgstr "Dalinti (/)"
+
+#: src/ui/math-shortcuts.blp:126
+msgctxt "shortcuts dialog"
+msgid "Square (²)"
+msgstr "Kvadratinė šaknis (√)"
+
+#: src/ui/math-shortcuts.blp:131
+msgctxt "shortcuts dialog"
+msgid "Square Root (√)"
+msgstr "Kvadratinė šaknis (√)"
+
+#: src/ui/math-shortcuts.blp:136
+msgctxt "shortcuts dialog"
+msgid "Inverse (⁻¹)"
+msgstr "Invertuoti (⁻¹)"
+
+#: src/ui/math-shortcuts.blp:141
+msgctxt "shortcuts dialog"
+msgid "Pi (π)"
+msgstr "Pi (π)"
+
+#: src/ui/math-shortcuts.blp:146
+msgctxt "shortcuts dialog"
+msgid "Tau (τ)"
+msgstr "Tau (τ)"
+
+#: src/ui/math-shortcuts.blp:151
+msgctxt "shortcuts dialog"
+msgid "Degree (°)"
+msgstr "Laipsniai (°)"
+
+#: src/ui/math-shortcuts.blp:156 src/ui/math-shortcuts.blp:168
+msgctxt "shortcuts dialog"
+msgid "Floor (⌊⌋)"
+msgstr "Apatinis sveikasis (⌊⌋)"
+
+#: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
+msgctxt "shortcuts dialog"
+msgid "Ceiling (⌈⌉)"
+msgstr "Viršutinis sveikasis (⌈⌉)"
+
+#: src/ui/math-shortcuts.blp:180
+msgctxt "shortcuts dialog"
+msgid "Enter Numbers in Scientific Format"
+msgstr "Įveskite skaičius moksline forma"
+
+#: src/ui/math-shortcuts.blp:185
+msgctxt "shortcuts dialog"
+msgid "Enter Subscript Numbers"
+msgstr "Įvesti vardiklio skaičius"
+
+#: src/ui/math-shortcuts.blp:190
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Numbers"
+msgstr "Įvesti viršutinio indekso skaičius"
+
+#: src/ui/math-shortcuts.blp:195
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Minus Sign"
+msgstr "Įvesti viršutinio indekso minuso ženklą"
+
+#: src/ui/math-shortcuts.blp:200
+msgctxt "shortcuts dialog"
+msgid "Equation"
+msgstr "Rezultatas"
+
+#: src/ui/math-shortcuts.blp:204
+msgctxt "shortcuts dialog"
+msgid "Copy"
+msgstr "Kopijuoti"
+
+#: src/ui/math-shortcuts.blp:209
+msgctxt "shortcuts dialog"
+msgid "Paste"
+msgstr "Įdėti"
+
+#: src/ui/math-shortcuts.blp:214
+msgctxt "shortcuts dialog"
+msgid "Undo"
+msgstr "Atšaukti"
+
+#: src/ui/math-shortcuts.blp:219
+msgctxt "shortcuts dialog"
+msgid "Redo"
+msgstr "Pakartoti"
+
+#: src/ui/math-shortcuts.blp:224
+msgctxt "shortcuts dialog"
+msgid "Previous Equation"
+msgstr "Ankstesnis rezultatas"
+
+#: src/ui/math-shortcuts.blp:229
+msgctxt "shortcuts dialog"
+msgid "Next Equation"
+msgstr "Kitas rezultatas"
+
+#: src/ui/math-shortcuts.blp:234
+msgctxt "shortcuts dialog"
+msgid "Clear Display"
+msgstr "Išvalyti ekraną"
+
+#: src/ui/math-shortcuts.blp:239
+msgctxt "shortcuts dialog"
+msgid "Factorize"
+msgstr "Išskaidyti dauginamaisiais"
+
+#: src/ui/math-variable-popover.blp:37
+msgid "Constants"
+msgstr "Konstantos"
+
+#: src/ui/math-variable-popover.blp:58
+msgid "Variable name"
+msgstr "Kintamojo vardas"
+
+#: src/ui/math-variable-popover.blp:67
+msgid "Store value into existing or new variable"
+msgstr "Įrašyti reikšmę į esamą ar naują kintamąjį"
+
+#: src/ui/math-window.blp:7
+msgid "_Basic"
+msgstr "P_aprastas"
+
+#: src/ui/math-window.blp:13
+msgid "_Advanced"
+msgstr "_Išplėstinis"
+
+#: src/ui/math-window.blp:19
+msgid "_Financial"
+msgstr "_Finansinis"
+
+#: src/ui/math-window.blp:25
+msgid "_Programming"
+msgstr "_Programavimo"
+
+#: src/ui/math-window.blp:31
+msgid "_Keyboard"
+msgstr "_Klaviatūra"
+
+#: src/ui/math-window.blp:37
+msgid "_Conversion"
+msgstr "K_onversija"
+
+#: src/ui/math-window.blp:47
 msgid "_New Window"
 msgstr "Naujas _langas"
 
-#: src/ui/math-window.ui:49
+#: src/ui/math-window.blp:54
 msgid "_Clear History"
 msgstr "Iš_valyti istoriją"
 
-#: src/ui/math-window.ui:56
+#: src/ui/math-window.blp:61
 msgid "Result Format"
 msgstr "Rezultato formatas"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:59
+#: src/ui/math-window.blp:65
 msgid "_Automatic"
 msgstr "_Automatinis"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:65
+#: src/ui/math-window.blp:72
 msgid "_Fixed"
 msgstr "_Fiksuotas"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
-#: src/ui/math-window.ui:71
+#: src/ui/math-window.blp:79
 msgid "_Scientific"
 msgstr "_Mokslinis"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
-#: src/ui/math-window.ui:77
+#: src/ui/math-window.blp:86
 msgid "_Engineering"
 msgstr "_Inžinerinis"
 
-#: src/ui/math-window.ui:87
-msgid "Preferences"
-msgstr "Nuostatos"
+#: src/ui/math-window.blp:96
+msgid "_Preferences"
+msgstr "_Nuostatos"
 
-#: src/ui/math-window.ui:91
-msgid "Keyboard Shortcuts"
-msgstr "Klaviatūros trumpiniai"
+#: src/ui/math-window.blp:101
+msgid "_Keyboard Shortcuts"
+msgstr "_Klaviatūros trumpiniai"
 
-#: src/ui/math-window.ui:95
+#: src/ui/math-window.blp:106
 msgid "_Help"
 msgstr "_Žinynas"
 
-#: src/ui/math-window.ui:99
-msgid "About Calculator"
-msgstr "Apie skaičiuotuvą"
+#: src/ui/math-window.blp:111
+msgid "A_bout Calculator"
+msgstr "_Apie skaičiuotuvą"
 
-#: src/ui/math-window.ui:118
+#: src/ui/math-window.blp:132
 msgid "Mode Selection"
 msgstr "Veiksenos pasirinkimas"
 
-#: src/ui/math-window.ui:128
-msgid "_Undo"
-msgstr "_Atšaukti"
+#: src/ui/math-window.blp:139
+msgid "Undo"
+msgstr "Atšaukti"
 
-#: src/ui/math-window.ui:149
+#: src/ui/math-window.blp:146
+msgid "Redo"
+msgstr "Pakartoti"
+
+#: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "Pagrindinis meniu"
+
+#~ msgid "Currency of the current calculation"
+#~ msgstr "Dabartinio skaičiavimo valiuta"
+
+#~ msgid "Target currency"
+#~ msgstr "Į valiutą"
+
+#~ msgid "Currency to convert the current calculation into"
+#~ msgstr "Valiuta, į kurią konvertuoti dabartinį skaičiavimą"
+
+#~ msgid "Units of the current calculation"
+#~ msgstr "Dabartinio skaičiavimo vienetai"
+
+#~ msgid "Units to convert the current calculation into"
+#~ msgstr "Vienetai, į kuriuos konvertuoti dabartinį skaičiavimą"
+
+#~ msgid "Natural logarithm"
+#~ msgstr "Natūrinis logaritmas"
+
+#~ msgid "Argument"
+#~ msgstr "Argumentas"
+
+#~ msgid "Conjugate"
+#~ msgstr "Konjunkcija"
+
+#~ msgid "Integer"
+#~ msgstr "Sveikasis skaičius"
+
+#~ msgid "Fraction"
+#~ msgstr "Trupmena"
+
+#~ msgid "Real"
+#~ msgstr "Realusis"
+
+#~ msgid "Imaginary"
+#~ msgstr "Menamoji dalis"
+
+#~ msgid "Arc sine"
+#~ msgstr "Arksinusas"
+
+#~ msgid "Arc cosine"
+#~ msgstr "Arkkosinusas"
+
+#~ msgid "Arc tangent"
+#~ msgstr "Arktangentas"
+
+#~ msgid "Hyperbolic sine"
+#~ msgstr "Hiperbolinis sinusas"
+
+#~ msgid "Hyperbolic cosine"
+#~ msgstr "Hiperbolinis kosinusas"
+
+#~ msgid "Hyperbolic tangent"
+#~ msgstr "Hiperbolinis tangentas"
+
+#~ msgid "Hyperbolic arcsine"
+#~ msgstr "Hiperbolinis arksinusas"
+
+#~ msgid "Hyperbolic arccosine"
+#~ msgstr "Hiperbolinis arkkosinusas"
+
+#~ msgid "Hyperbolic arctangent"
+#~ msgstr "Hiperbolinis arktangentas"
+
+#~ msgid "One's complement"
+#~ msgstr "Vieneto papildymas"
+
+#~ msgid "Two's complement"
+#~ msgstr "Dvejeto papildymas"
+
+#~ msgid "Displayed value not an integer"
+#~ msgstr "Rodoma reikšmė nėra sveikas skaičius"
+
+#~ msgid "Overflow: the result couldn’t be calculated"
+#~ msgstr "Perpildymas: rezultato suskaičiuoti nepavyko"
+
+#~ msgid "BTU"
+#~ msgstr "BTU"
+
+#~ msgid "Erg"
+#~ msgstr "Erg"
+
+#~ msgid "eV"
+#~ msgstr "eV"
+
+#~ msgid "Ft-lb"
+#~ msgstr "Pėd-sv"
+
+#~ msgid "Bar"
+#~ msgstr "Baras"
+
+#~ msgid "Copy result to clipboard"
+#~ msgstr "Kopijuoti rezultatą į iškarpinę"
+
+#~ msgid "Root [Ctrl+R]"
+#~ msgstr "Šaknis [Vald+R]"
+
+#~ msgid "Start Group [(]"
+#~ msgstr "Pradėti grupę [(]"
+
+#~ msgid "Scientific Exponent [Ctrl+E]"
+#~ msgstr "Mokslinė eksponentė [Ctrl+E]"
+
+#~ msgid "Memory"
+#~ msgstr "Atmintis"
+
+#~ msgid "Number Base Conversion"
+#~ msgstr "Skaičiavimo sistemos keitimas"
+
+#~ msgid "Shift Left"
+#~ msgstr "Postūmis kairiau"
+
+#~ msgid "Shift Right"
+#~ msgstr "Postūmis dešiniau"
+
+#~ msgid "Boolean OR"
+#~ msgstr "Loginis ARBA"
+
+#~ msgid "Boolean AND"
+#~ msgstr "Loginis IR"
+
+#~ msgid "Boolean NOT"
+#~ msgstr "Loginis NE"
+
+#~ msgid "Negative [-]"
+#~ msgstr "Neigiamas [-]"
+
+#~ msgid "Currency Conversion Disabled"
+#~ msgstr "Valiutos keitimas išjungtas"
+
+#~ msgid "Enable in preferences to convert currencies"
+#~ msgstr "Įjunkite valiutos keitimą nuostatose"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "Klaviatūros trumpiniai"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Clear history"
+#~ msgstr "Išvalyti istoriją"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Programming mode"
+#~ msgstr "Programavimo veiksena"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Others"
+#~ msgstr "Kita"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Copy"
+#~ msgstr "Kopijuoti"
+
+#~ msgid "Preferences"
+#~ msgstr "Nuostatos"
+
+#~ msgid "_Undo"
+#~ msgstr "_Atšaukti"
 
 #~ msgid "No sane value to bitwise shift"
 #~ msgstr "Nėra tinkamos reikšmės bitų pastūmimui"
@@ -3599,9 +4408,6 @@ msgstr "Pagrindinis meniu"
 #~ msgid "Subscript mode [Alt]"
 #~ msgstr "Skaičiaus apatinio indekso veiksena [Alt]"
 
-#~ msgid "Superscript mode [Ctrl]"
-#~ msgstr "Skaičiaus viršutinio indekso veiksena [Vald]"
-
 #~ msgid " to "
 #~ msgstr " į "
 
@@ -3649,17 +4455,11 @@ msgstr "Pagrindinis meniu"
 #~ msgid "GNOME Calculator"
 #~ msgstr "GNOME skaičiuotuvas"
 
-#~ msgid "Exponent"
-#~ msgstr "Eksponentinis"
-
 #~ msgid "Subscript"
 #~ msgstr "Apatinis indeksas"
 
 #~ msgid "Superscript"
 #~ msgstr "Viršutinis indeksas"
-
-#~ msgid "Factorize"
-#~ msgstr "Išskaidyti"
 
 #~ msgid "Scientific Exponent"
 #~ msgstr "Mokslinis"
@@ -3678,9 +4478,6 @@ msgstr "Pagrindinis meniu"
 
 #~ msgid "How often the currency exchange rates should be updated"
 #~ msgstr "Kaip dažnai atnaujinti valiutų keitimo santykius"
-
-#~ msgid "Square root [Ctrl+R]"
-#~ msgstr "Kvadratinė šaknis [Ctrl+R]"
 
 #~ msgid "8 bits"
 #~ msgstr "8 bitai"
@@ -3704,10 +4501,6 @@ msgstr "Pagrindinis meniu"
 
 #~ msgid "Start in given mode"
 #~ msgstr "Pradėti pateikta veiksena"
-
-#~| msgid "Preferences"
-#~ msgid "_Preferences"
-#~ msgstr "_Nuostatos"
 
 #~| msgid "About Calculator"
 #~ msgid "_About Calculator"
