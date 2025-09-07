@@ -24,8 +24,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-09-07 00:09+0000\n"
-"PO-Revision-Date: 2025-09-07 10:28+0800\n"
+"POT-Creation-Date: 2025-09-07 04:48+0000\n"
+"PO-Revision-Date: 2025-09-07 16:58+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -890,50 +890,44 @@ msgstr "符号数"
 
 #: lib/function-manager.vala:78
 msgid "Combination"
-msgstr ""
+msgstr "组合"
 
 #: lib/function-manager.vala:79
-#, fuzzy
-#| msgid "Duration"
 msgid "Permutation"
-msgstr "时长"
+msgstr "排列"
 
 #: lib/function-manager.vala:80
 msgid "Greatest Common Divisor"
-msgstr ""
+msgstr "最大公约数"
 
 #: lib/function-manager.vala:81
 msgid "Least Common Multiple"
-msgstr ""
+msgstr "最小公倍数"
 
 #: lib/function-manager.vala:82
 msgid "Comparison (Kronecker Delta)"
-msgstr ""
+msgstr "比较（克罗内克函数）"
 
 #: lib/function-manager.vala:337
-#, fuzzy, c-format
-#| msgid "Function “%s” is not defined"
+#, c-format
 msgid "Function “%s” takes 1 argument"
-msgstr "函数“%s”未定义"
+msgstr "函数“%s”携带 1 个参数"
 
 #: lib/function-manager.vala:355
-#, fuzzy, c-format
-#| msgid "Function “%s” is not defined"
+#, c-format
 msgid "Function “%s” takes 1 or 2 arguments"
-msgstr "函数“%s”未定义"
+msgstr "函数“%s”携带 1 或 2 个参数"
 
 #: lib/function-manager.vala:363
-#, fuzzy, c-format
-#| msgid "Function “%s” is not defined"
+#, c-format
 msgid "Function “%s” takes at least 2 arguments"
-msgstr "函数“%s”未定义"
+msgstr "函数“%s”至少携带 2 个参数"
 
 #: lib/function-manager.vala:370
-#, fuzzy, c-format
-#| msgid "Function “%s” is not defined"
+#, c-format
 msgid "Function “%s” takes %d argument"
 msgid_plural "Function “%s” takes %d arguments"
-msgstr[0] "函数“%s”未定义"
+msgstr[0] "函数“%s”携带 %d 个参数"
 
 #. Digits localized for the given language
 #: lib/math-equation.vala:181
@@ -964,14 +958,13 @@ msgstr "未知变量“%s”"
 #: lib/math-equation.vala:1288
 #, c-format
 msgid "Exchange rate for “%s” is not available"
-msgstr ""
+msgstr "“%s”的汇率不可用"
 
 #. Error displayed to user when an conversion with unknown units is attempted
 #: lib/math-equation.vala:1295
-#, fuzzy, c-format
-#| msgid "Unknown variable “%s”"
+#, c-format
 msgid "Unknown unit “%s”"
-msgstr "未知变量“%s”"
+msgstr "未知单位“%s”"
 
 #. Error displayed to user when an unknown function is entered
 #: lib/math-equation.vala:1302
@@ -1021,22 +1014,16 @@ msgid "Argument not defined for zero"
 msgstr "参数值不能为零"
 
 #: lib/number.vala:442
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Floor is only defined for real numbers"
-msgstr "阶乘运算仅对非负实数有定义"
+msgstr "向下取整仅对实数有定义"
 
 #: lib/number.vala:457
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Ceiling is only defined for real numbers"
-msgstr "阶乘运算仅对非负实数有定义"
+msgstr "向上取整仅对实数有定义"
 
 #: lib/number.vala:472
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Round is only defined for real numbers"
-msgstr "阶乘运算仅对非负实数有定义"
+msgstr "四舍五入仅对实数有定义"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
 #: lib/number.vala:506 lib/number.vala:536
@@ -1054,10 +1041,8 @@ msgid "Logarithm of zero is undefined"
 msgstr "零的对数未定义"
 
 #: lib/number.vala:634
-#, fuzzy
-#| msgid "Logarithm of zero is undefined"
 msgid "Logarithm with base 0 or 1 is undefined"
-msgstr "零的对数未定义"
+msgstr "以 0 或 1 为底的对数未定义"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
 #: lib/number.vala:653
@@ -1092,8 +1077,6 @@ msgstr "反余弦函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
 #: lib/number.vala:859
-#, fuzzy
-#| msgid "Arctangent function is undefined for values i and -i"
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "反正切函数在 i 和 -i 上未定义"
 
@@ -1109,133 +1092,95 @@ msgstr "反双曲正切函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: lib/number.vala:941
-#, fuzzy
-#| msgid "Boolean AND is only defined for positive integers"
 msgid "Boolean AND is only defined for non-negative integers"
-msgstr "逻辑与运算只对正整数有定义"
+msgstr "逻辑与运算只对非负整数有定义"
 
 #. Translators: Error displayed when boolean NAND attempted on non-integer values
 #: lib/number.vala:954
-#, fuzzy
-#| msgid "Boolean AND is only defined for positive integers"
 msgid "Boolean NAND is only defined for non-negative integers"
-msgstr "逻辑与运算只对正整数有定义"
+msgstr "逻辑与非运算只对非负整数有定义"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: lib/number.vala:967
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Boolean OR is only defined for non-negative integers"
-msgstr "逻辑或运算只对正整数定义"
+msgstr "逻辑或运算只对非负整数有定义"
 
 #. Translators: Error displayed when boolean NOR attempted on non-integer values
 #: lib/number.vala:980
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Boolean NOR is only defined for non-negative integers"
-msgstr "逻辑或运算只对正整数定义"
+msgstr "逻辑或非运算只对非负整数有定义"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: lib/number.vala:993
-#, fuzzy
-#| msgid "Boolean XOR is only defined for positive integers"
 msgid "Boolean XOR is only defined for non-negative integers"
-msgstr "逻辑异或运算只对正整数定义"
+msgstr "逻辑异或运算只对非负整数有定义"
 
 #. Translators: Error displayed when boolean XNOR attempted on non-integer values
 #: lib/number.vala:1006
-#, fuzzy
-#| msgid "Boolean XOR is only defined for positive integers"
 msgid "Boolean XNOR is only defined for non-negative integers"
-msgstr "逻辑异或运算只对正整数定义"
+msgstr "逻辑同或运算只对非负整数有定义"
 
 #. Translators: Error displayed when boolean NOT attempted on non-integer values
 #: lib/number.vala:1019
-#, fuzzy
-#| msgid "Boolean NOT is only defined for positive integers"
 msgid "Boolean NOT is only defined for non-negative integers"
-msgstr "逻辑非运算只对正整数定义"
+msgstr "逻辑非运算只对非负整数有定义"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: lib/number.vala:1081
-#, fuzzy
-#| msgid "Shift is only possible on integer values"
 msgid "Shift is only possible on integers"
-msgstr "只能对整数值进行移位运算"
+msgstr "只能对整数进行移位运算"
 
 #: lib/number.vala:1086 lib/number.vala:1126 lib/number.vala:1572
 msgid "Overflow. Try a bigger word size"
 msgstr "溢出。请尝试一个更大的字长"
 
 #: lib/number.vala:1097
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Ones’ complement is only defined for non-negative integers"
-msgstr "逻辑或运算只对正整数定义"
+msgstr "反码只对非负整数有定义"
 
 #: lib/number.vala:1109
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Two’s complement is only defined for non-negative integers"
-msgstr "逻辑或运算只对正整数定义"
+msgstr "补码只对非负整数有定义"
 
 #: lib/number.vala:1121
-#, fuzzy
-#| msgid "Shift is only possible on integer values"
 msgid "Swap endianness is only possible on integers"
-msgstr "只能对整数值进行移位运算"
+msgstr "只能对整数进行交换字节序"
 
 #: lib/number.vala:1149
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Combination is only defined for non-negative integers"
-msgstr "阶乘运算仅对非负实数有定义"
+msgstr "组合仅对非负整数有定义"
 
 #: lib/number.vala:1154
 msgid "Combination is undefined if n is less than r"
-msgstr ""
+msgstr "如果 n 小于 r 则组合未定义"
 
 #: lib/number.vala:1167
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Permutation is only defined for non-negative integers"
-msgstr "阶乘运算仅对非负实数有定义"
+msgstr "排列仅对非负整数有定义"
 
 #: lib/number.vala:1172
-#, fuzzy
-#| msgid "Arctangent function is undefined for values i and -i"
 msgid "Permutation is undefined if n is less than r"
-msgstr "反正切函数在 i 和 -i 上未定义"
+msgstr "如果 n 小于 r 则排列未定义"
 
 #: lib/number.vala:1193
-#, fuzzy
-#| msgid "Modulus division is only defined for integers"
 msgid "Greatest common divisor is only defined for integers"
-msgstr "取模运算仅对整数有意义"
+msgstr "最大公约数仅对整数有定义"
 
 #: lib/number.vala:1213
-#, fuzzy
-#| msgid "Modulus division is only defined for integers"
 msgid "Least common multiple is only defined for integers"
-msgstr "取模运算仅对整数有意义"
+msgstr "最小公倍数仅对整数有定义"
 
 #: lib/number.vala:1270
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Median is only defined for real numbers"
-msgstr "阶乘运算仅对非负实数有定义"
+msgstr "中值运算仅对实数有定义"
 
 #: lib/number.vala:1290
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Minimum value is only defined for real numbers"
-msgstr "阶乘运算仅对非负实数有定义"
+msgstr "最小值仅对实数有定义"
 
 #: lib/number.vala:1307
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Maximum value is only defined for real numbers"
-msgstr "阶乘运算仅对非负实数有定义"
+msgstr "最大值仅对实数有定义"
 
 #: lib/providers/boc-provider.vala:15
 msgid "Bank of Canada"
@@ -1256,7 +1201,7 @@ msgstr "联合国账务厅"
 #: lib/serializer.vala:354 lib/serializer.vala:391
 msgid ""
 "The result is too long to display in fixed format. Try other result formats"
-msgstr ""
+msgstr "结果太长无法以固定格式显示。请尝试其它结果格式"
 
 #: lib/unit.vala:29
 msgid "Angle"
@@ -1309,7 +1254,7 @@ msgstr "数据存储"
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
 #: lib/unit.vala:43
 msgid "Degrees (Decimal)"
-msgstr ""
+msgstr "度数（十进制）"
 
 #: lib/unit.vala:43
 msgctxt "unit-symbols"
@@ -1318,7 +1263,7 @@ msgstr "角度,角度,deg"
 
 #: lib/unit.vala:44
 msgid "Degrees (D°M′S″)"
-msgstr ""
+msgstr "度数（度分秒）"
 
 #: lib/unit.vala:45 src/buttons-advanced.vala:87 src/math-preferences.vala:136
 msgid "Radians"
@@ -1492,10 +1437,8 @@ msgid "nanometer,nanometers,nm"
 msgstr "纳米,纳米,nm"
 
 #: lib/unit.vala:64
-#, fuzzy
-#| msgid "Desktop Publishing Point"
 msgid "Desktop Publishing Points"
-msgstr "桌面出版点数"
+msgstr "桌面出版点"
 
 #: lib/unit.vala:64
 msgctxt "unit-symbols"
@@ -1503,8 +1446,6 @@ msgid "point,pt,points,pts"
 msgstr "点数,pt,点数,pts"
 
 #: lib/unit.vala:65
-#, fuzzy
-#| msgid "Kilometers per hour"
 msgid "Kilometers per Hour"
 msgstr "千米每小时"
 
@@ -1514,8 +1455,6 @@ msgid "kilometers per hour,kmph,kmh,kph"
 msgstr "千米每小时,km/h,km/h,kph"
 
 #: lib/unit.vala:66
-#, fuzzy
-#| msgid "Miles per hour"
 msgid "Miles per Hour"
 msgstr "英里每小时"
 
@@ -1525,8 +1464,6 @@ msgid "milesph,miles per hour,mi/h,miph,mph"
 msgstr "英里每小时,mi/h,mi/h,mph"
 
 #: lib/unit.vala:67
-#, fuzzy
-#| msgid "Meters per second"
 msgid "Meters per Second"
 msgstr "米每秒"
 
@@ -1536,8 +1473,6 @@ msgid "meters per second,mps"
 msgstr "米每秒,m/s"
 
 #: lib/unit.vala:68
-#, fuzzy
-#| msgid "Feet per second"
 msgid "Feet per Second"
 msgstr "英尺每秒"
 
@@ -1574,22 +1509,15 @@ msgid "acre,acres"
 msgstr "英亩,英亩"
 
 #: lib/unit.vala:72
-#, fuzzy
-#| msgid "Square Millimeters"
 msgid "Square Miles"
-msgstr "平方毫米"
+msgstr "平方英里"
 
 #: lib/unit.vala:72
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "m²"
 msgctxt "unit-symbols"
 msgid "mi²"
-msgstr "m²"
+msgstr "mi²"
 
 #: lib/unit.vala:73
-#, fuzzy
-#| msgid "Square Foot"
 msgid "Square Feet"
 msgstr "平方英尺"
 
@@ -1599,18 +1527,13 @@ msgid "ft²"
 msgstr "ft²"
 
 #: lib/unit.vala:74
-#, fuzzy
-#| msgid "Square Millimeters"
 msgid "Square Kilometers"
-msgstr "平方毫米"
+msgstr "平方千米"
 
 #: lib/unit.vala:74
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "m²"
 msgctxt "unit-symbols"
 msgid "km²"
-msgstr "m²"
+msgstr "km²"
 
 #: lib/unit.vala:75
 msgid "Square Meters"
@@ -1649,18 +1572,13 @@ msgid "m³"
 msgstr "m³"
 
 #: lib/unit.vala:79
-#, fuzzy
-#| msgid "US Gallons"
 msgid "British Gallons"
-msgstr "美制加仑"
+msgstr "英制加仑"
 
 #: lib/unit.vala:79
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "gallon,gallons,gal"
 msgctxt "unit-symbols"
 msgid "imp_gallon,imp_gallons,imp_gal"
-msgstr "加仑,加仑,gal"
+msgstr "英加仑,英加仑,imp_gal"
 
 #: lib/unit.vala:80
 msgid "US Gallons"
@@ -1690,18 +1608,13 @@ msgid "quart,quarts,qt"
 msgstr "夸脱,夸脱,qt"
 
 #: lib/unit.vala:83
-#, fuzzy
-#| msgid "British Pound Sterling"
 msgid "British Pints"
-msgstr "英镑"
+msgstr "英制品脱"
 
 #: lib/unit.vala:83
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "pint,pints,pt"
 msgctxt "unit-symbols"
 msgid "imp_pint,imp_pints,imp_pt"
-msgstr "品脱,品脱,pt"
+msgstr "英品脱,英品脱,imp_pt"
 
 #: lib/unit.vala:84
 msgid "US Pints"
@@ -1794,32 +1707,22 @@ msgid "gram,grams,gramme,grammes,g"
 msgstr "克,克,克,克,g"
 
 #: lib/unit.vala:94
-#, fuzzy
-#| msgid "Kilograms"
 msgid "Milligrams"
-msgstr "千克"
+msgstr "毫克"
 
 #: lib/unit.vala:94
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgctxt "unit-symbols"
 msgid "milligram,milligrams,milligramme,milligrammes,mg"
-msgstr "千克,千克,千克,千克,kg,kgs"
+msgstr "毫克,毫克,毫克,毫克,mg"
 
 #: lib/unit.vala:95
-#, fuzzy
-#| msgid "Kilograms"
 msgid "Micrograms"
-msgstr "千克"
+msgstr "微克"
 
 #: lib/unit.vala:95
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgctxt "unit-symbols"
 msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
-msgstr "千克,千克,千克,千克,kg,kgs"
+msgstr "微克,微克,微克,微克,μg,ug"
 
 #: lib/unit.vala:96
 msgid "Stone"
@@ -1943,12 +1846,9 @@ msgid "Celsius"
 msgstr "摄氏度"
 
 #: lib/unit.vala:109
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "degC,˚C,C,c,Celsius,celsius"
 msgctxt "unit-symbols"
 msgid "degC,°C,˚C,C,c,Celsius,celsius"
-msgstr "degC,˚C,C,c,摄氏度,摄氏度"
+msgstr "degC,°C,˚C,C,c,摄氏度,摄氏度"
 
 # should be Fahrenheit?
 #: lib/unit.vala:110
@@ -1956,12 +1856,9 @@ msgid "Fahrenheit"
 msgstr "华氏度"
 
 #: lib/unit.vala:110
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
 msgctxt "unit-symbols"
 msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
-msgstr "degF,˚F,F,f,华氏度,华氏度"
+msgstr "degF,°F,˚F,F,f,华氏度,华氏度"
 
 #: lib/unit.vala:111
 msgid "Kelvin"
@@ -1977,12 +1874,9 @@ msgid "Rankine"
 msgstr "兰氏度"
 
 #: lib/unit.vala:112
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
 msgctxt "unit-symbols"
 msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
-msgstr "degR,˚R,˚Ra,r,R,兰氏度,兰氏度"
+msgstr "degR,°R,˚R,°Ra,˚Ra,r,R,兰氏度,兰氏度"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
 #: lib/unit.vala:114
@@ -2347,8 +2241,6 @@ msgid "terahertz,THz"
 msgstr "THz,THz"
 
 #: lib/unit.vala:155
-#, fuzzy
-#| msgid "Joule"
 msgid "Joules"
 msgstr "焦耳"
 
@@ -2376,8 +2268,6 @@ msgid "MJ,megajoules,megajoule"
 msgstr "MJ,兆焦耳,兆焦耳"
 
 #: lib/unit.vala:158
-#, fuzzy
-#| msgid "KilowattHour"
 msgid "Kilowatt-Hours"
 msgstr "千瓦时"
 
@@ -2388,7 +2278,7 @@ msgstr "kwh,kWh,千瓦时,千瓦时"
 
 #: lib/unit.vala:159
 msgid "British Thermal Units"
-msgstr ""
+msgstr "英热单位"
 
 #: lib/unit.vala:159
 msgctxt "unit-symbols"
@@ -2396,8 +2286,6 @@ msgid "btu,BTU"
 msgstr "英热,BTU"
 
 #: lib/unit.vala:160
-#, fuzzy
-#| msgid "Calorie"
 msgid "Calories"
 msgstr "卡路里"
 
@@ -2407,22 +2295,17 @@ msgid "calories,calorie,cal"
 msgstr "卡路里,卡路里,cal"
 
 #: lib/unit.vala:161
-#, fuzzy
-#| msgid "Kilojoules"
 msgid "Kilocalories"
-msgstr "千焦耳"
+msgstr "千卡路里"
 
 #: lib/unit.vala:161
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "calories,calorie,cal"
 msgctxt "unit-symbols"
 msgid "kilocalories,kilocalorie,kcal"
-msgstr "卡路里,卡路里,cal"
+msgstr "千卡路里,千卡路里,kcal"
 
 #: lib/unit.vala:162
 msgid "Ergs"
-msgstr ""
+msgstr "尔格"
 
 #: lib/unit.vala:162
 msgctxt "unit-symbols"
@@ -2431,7 +2314,7 @@ msgstr "尔格,erg"
 
 #: lib/unit.vala:163
 msgid "Electron Volts"
-msgstr ""
+msgstr "电子伏"
 
 #: lib/unit.vala:163
 msgctxt "unit-symbols"
@@ -2439,10 +2322,8 @@ msgid "electronvolt,electronvolts,ev"
 msgstr "电子伏,电子伏,ev"
 
 #: lib/unit.vala:164
-#, fuzzy
-#| msgid "Pounds"
 msgid "Foot-Pounds"
-msgstr "磅"
+msgstr "英尺磅"
 
 #: lib/unit.vala:164
 msgctxt "unit-symbols"
@@ -2450,8 +2331,6 @@ msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "英尺磅,英尺磅,ft-lb,ft-lb"
 
 #: lib/unit.vala:165
-#, fuzzy
-#| msgid "Pascal"
 msgid "Pascals"
 msgstr "帕斯卡"
 
@@ -2461,8 +2340,6 @@ msgid "Pascal,pascal,Pa"
 msgstr "帕斯卡,帕斯卡,Pa"
 
 #: lib/unit.vala:166
-#, fuzzy
-#| msgid "Kilopascal"
 msgid "Kilopascals"
 msgstr "千帕"
 
@@ -2472,8 +2349,6 @@ msgid "Kilopascal,kilopascal,kPa"
 msgstr "千帕,千帕,kPa"
 
 #: lib/unit.vala:167
-#, fuzzy
-#| msgid "Hectopascal"
 msgid "Hectopascals"
 msgstr "百帕"
 
@@ -2484,7 +2359,7 @@ msgstr "百帕,百帕,hPa"
 
 #: lib/unit.vala:168
 msgid "Bars"
-msgstr ""
+msgstr "巴"
 
 #: lib/unit.vala:168
 msgctxt "unit-symbols"
@@ -2492,8 +2367,6 @@ msgid "Bar,bar"
 msgstr "巴,巴"
 
 #: lib/unit.vala:169
-#, fuzzy
-#| msgid "Standard Atmosphere"
 msgid "Standard Atmospheres"
 msgstr "标准大气压"
 
@@ -2503,22 +2376,15 @@ msgid "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm"
 msgstr "标准大气压,标准大气压,标准大气压,Atm,atm"
 
 #: lib/unit.vala:170
-#, fuzzy
-#| msgid "Millimetre of Mercury"
 msgid "Millimeters of Mercury"
 msgstr "毫米汞柱"
 
 #: lib/unit.vala:170
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "Millimetre of Mercury,millimetre of mercury,mmHg"
 msgctxt "unit-symbols"
 msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
 msgstr "毫米汞柱,毫米汞柱,mmHg"
 
 #: lib/unit.vala:171
-#, fuzzy
-#| msgid "Inch of Mercury"
 msgid "Inches of Mercury"
 msgstr "英寸汞柱"
 
@@ -2528,8 +2394,6 @@ msgid "Inch of Mercury,inch of mercury,inHg"
 msgstr "英寸汞柱,英寸汞柱,inHg"
 
 #: lib/unit.vala:172
-#, fuzzy
-#| msgid "Pound per Square Inch"
 msgid "Pounds per Square Inch"
 msgstr "磅每平方英寸"
 
@@ -2543,8 +2407,6 @@ msgid "Currency"
 msgstr "货币"
 
 #: lib/unit.vala:183
-#, fuzzy
-#| msgid "Numeric Base"
 msgid "Number Base"
 msgstr "进位制"
 
@@ -2569,35 +2431,30 @@ msgid "Hexadecimal"
 msgstr "十六进制"
 
 #: search-provider/search-provider.vala:206
-#, fuzzy
-#| msgid "Calculator"
 msgid "Open in Calculator"
-msgstr "计算器"
+msgstr "在计算器中打开"
 
 #: search-provider/search-provider.vala:239
-#, fuzzy
-#| msgid "Result Format"
 msgid "Result copied"
-msgstr "结果格式"
+msgstr "结果已复制"
 
 #: search-provider/search-provider.vala:240
 msgid "Result was copied successfully"
-msgstr ""
+msgstr "结果已成功复制"
 
 #: src/buttons-advanced.vala:87 src/math-preferences.vala:134
 msgid "Degrees"
 msgstr "角度"
 
 #: src/buttons-advanced.vala:89
-#, fuzzy, c-format
-#| msgid "_Angle Units"
+#, c-format
 msgid "Angle Unit: %s"
-msgstr "角度单位(_A)"
+msgstr "角度单位：%s"
 
 #: src/buttons-conversion.vala:125 src/buttons-conversion.vala:130
 #: src/buttons-conversion.vala:137 src/buttons-conversion.vala:142
 msgid "Not Available"
-msgstr ""
+msgstr "不可用"
 
 #: src/buttons-programming.vala:205
 #, c-format
@@ -2607,13 +2464,12 @@ msgstr[0] "%d 位"
 
 #. Translators: Do not translate possible mode names basic, advanced, financial, programming, keyboard and conversion
 #: src/gnome-calculator.vala:22
-#, fuzzy
-#| msgid ""
-#| "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgid ""
 "Start in given mode (basic, advanced, financial, programming, keyboard, "
 "conversion)"
-msgstr "以指定模式（基本，高级，财务，编程，键盘）启动"
+msgstr ""
+"以指定模式（basic, advanced, financial, programming, keyboard, conversion）启"
+"动"
 
 #: src/gnome-calculator.vala:23
 msgid "Solve given equation"
@@ -2629,10 +2485,9 @@ msgstr "显示版本信息"
 
 #. Application Copyrights for the calculator authors
 #: src/gnome-calculator.vala:291
-#, fuzzy, c-format
-#| msgid "© 1986–2023 The Calculator authors"
+#, c-format
 msgid "© 1986–%d The Calculator authors"
-msgstr "© 1986-2023 计算器作者"
+msgstr "© 1986-%d 计算器作者"
 
 #. The translator credits. Please translate this with your name (s).
 #: src/gnome-calculator.vala:297
@@ -2657,8 +2512,6 @@ msgstr ""
 "lumingzh <lumingzh@qq.com>, 2023-2025"
 
 #: src/gnome-calculator.vala:301
-#, fuzzy
-#| msgid "Exchange rate data providers"
 msgid "Exchange Rate Data Providers"
 msgstr "汇率数据提供者"
 
@@ -2690,21 +2543,17 @@ msgstr "全部关闭(_A)"
 
 #: src/math-converter.vala:612 src/math-converter.vala:630
 msgid "Error"
-msgstr ""
+msgstr "错误"
 
 #: src/math-display.vala:694
 msgid "Defined Functions"
 msgstr "已定义函数"
 
 #: src/math-display.vala:742
-#, fuzzy
-#| msgid "Built-in keywords"
 msgid "Built-in Keywords"
 msgstr "内置关键词"
 
 #: src/math-display.vala:794
-#, fuzzy
-#| msgid "Defined currencies"
 msgid "Defined Currencies"
 msgstr "已定义货币"
 
@@ -2714,33 +2563,27 @@ msgstr "已定义变量"
 
 #: src/math-function-popover.vala:185
 msgid "Can not use defined variable or constant names"
-msgstr ""
+msgstr "无法使用已定义的变量或常量名称"
 
 #: src/math-function-popover.vala:189
 msgid "Can not use built-in function or operator names"
-msgstr ""
+msgstr "无法使用内置的函数或运算符名称"
 
 #: src/math-function-popover.vala:192
-#, fuzzy
-#| msgid "%s: Invalid variable name, can not start with a digit"
 msgid "Function name can not start with a digit"
-msgstr "%s：无效的变量名称，不能以数字开头"
+msgstr "函数名称不能以数字开头"
 
 #: src/math-function-popover.vala:195
-#, fuzzy
-#| msgid ""
-#| "%s: Invalid variable name, can only contain digits, letters and "
-#| "underscores"
 msgid "Function name can only contain digits, letters and underscores"
-msgstr "%s：无效的变量名称，只能包含数字、字母和下划线"
+msgstr "函数名称只能包含数字、字母和下划线"
 
 #: src/math-popover.vala:110
 msgid "Edit"
-msgstr ""
+msgstr "编辑"
 
 #: src/math-popover.vala:120
 msgid "Delete"
-msgstr ""
+msgstr "删除"
 
 #: src/math-preferences.vala:147 src/ui/buttons-programming.blp:2618
 msgid "8-bit"
@@ -2771,42 +2614,32 @@ msgid "Weekly"
 msgstr "每周"
 
 #: src/math-preferences.vala:175
-#, fuzzy
-#| msgid "Currency"
 msgid "Currency Code"
-msgstr "货币"
+msgstr "货币代码"
 
 #: src/math-preferences.vala:177
-#, fuzzy
-#| msgid "Currency"
 msgid "Currency Name"
-msgstr "货币"
+msgstr "货币名称"
 
 #: src/math-preferences.vala:179
 msgid "Both"
-msgstr ""
+msgstr "全部"
 
 #: src/math-variable-popover.vala:216
 msgid "Can not use defined function or operator names"
-msgstr ""
+msgstr "无法使用已定义的函数或运算符名称"
 
 #: src/math-variable-popover.vala:219
 msgid "Can not use built-in variable or constant names"
-msgstr ""
+msgstr "无法使用内置的变量或常量名称"
 
 #: src/math-variable-popover.vala:222
-#, fuzzy
-#| msgid "%s: Invalid variable name, can not start with a digit"
 msgid "Variable name can not start with a digit"
-msgstr "%s：无效的变量名称，不能以数字开头"
+msgstr "变量名称不能以数字开头"
 
 #: src/math-variable-popover.vala:225
-#, fuzzy
-#| msgid ""
-#| "%s: Invalid variable name, can only contain digits, letters and "
-#| "underscores"
 msgid "Variable name can only contain digits, letters and underscores"
-msgstr "%s：无效的变量名称，只能包含数字、字母和下划线"
+msgstr "变量名称只能包含数字、字母和下划线"
 
 #: src/math-window.vala:137
 msgid "Basic"
@@ -2852,10 +2685,8 @@ msgstr "x"
 
 #: src/ui/buttons-advanced.blp:303 src/ui/buttons-basic.blp:248
 #: src/ui/buttons-financial.blp:303 src/ui/buttons-programming.blp:1708
-#, fuzzy
-#| msgid "Variable name"
 msgid "Variables and Constants"
-msgstr "变量名称"
+msgstr "变量和常量"
 
 #: src/ui/buttons-advanced.blp:320 src/ui/buttons-basic.blp:265
 #: src/ui/buttons-financial.blp:320 src/ui/buttons-programming.blp:1725
@@ -2889,10 +2720,8 @@ msgstr "百分数 [%]"
 
 #: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382
 #: src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
-#, fuzzy
-#| msgid "End Group [)]"
 msgid "Group [()]"
-msgstr "结束组 [)]"
+msgstr "组 [()]"
 
 #. Translators: Label on the solve button (clicking this solves the displayed calculation)
 #: src/ui/buttons-advanced.blp:453 src/ui/buttons-basic.blp:398
@@ -2908,7 +2737,7 @@ msgstr "计算结果"
 #: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
 #: src/ui/buttons-programming.blp:1888
 msgid "Inverse Modifier [Shift]"
-msgstr ""
+msgstr "逆功能键 [Shift]"
 
 #: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
 #: src/ui/buttons-programming.blp:2085
@@ -2917,8 +2746,6 @@ msgstr "平方 [Ctrl+2]"
 
 #: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
 #: src/ui/buttons-programming.blp:2107
-#, fuzzy
-#| msgid "Square root [Ctrl+R]"
 msgid "Square Root [Ctrl+R]"
 msgstr "平方根 [Ctrl+R]"
 
@@ -2926,44 +2753,38 @@ msgstr "平方根 [Ctrl+R]"
 #: src/ui/buttons-financial.blp:538 src/ui/buttons-programming.blp:2125
 #: src/ui/buttons-programming.blp:2192
 msgid "Exponent [^ or **]"
-msgstr "乘方 [^ 或 **]"
+msgstr "指数 [^ 或 **]"
 
 #: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560
 #: src/ui/buttons-programming.blp:2147
 msgid "Nth Root"
-msgstr ""
+msgstr "次方根"
 
 #: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585
 #: src/ui/buttons-programming.blp:2216
-#, fuzzy
-#| msgid "Logarithm"
 msgid "Common Logarithm"
-msgstr "常用对数（以 10 为底）"
+msgstr "常用对数"
 
 #: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602
 #: src/ui/buttons-programming.blp:2233
 msgid "Base-10 Exponential"
-msgstr ""
+msgstr "指数（底数 10）"
 
 #: src/ui/buttons-advanced.blp:909 src/ui/buttons-financial.blp:643
 msgid "Natural Exponential"
-msgstr ""
+msgstr "自然指数"
 
 #: src/ui/buttons-advanced.blp:999
 msgid "Inverse [Ctrl+I]"
 msgstr "反函数或倒数 [Ctrl+I]"
 
 #: src/ui/buttons-advanced.blp:1020
-#, fuzzy
-#| msgid "Round"
 msgid "Round [[]]"
-msgstr "舍入"
+msgstr "舍入 [[]]"
 
 #: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
-#, fuzzy
-#| msgid "Absolute Value [|]"
 msgid "Absolute Value [||]"
-msgstr "绝对值 [|]"
+msgstr "绝对值 [||]"
 
 #: src/ui/buttons-advanced.blp:1062 src/ui/buttons-programming.blp:2427
 msgid "Factorial [!]"
@@ -2991,33 +2812,27 @@ msgstr "退格键"
 
 #: src/ui/buttons-conversion.blp:510
 msgid "Degrees, Minutes, Seconds"
-msgstr ""
+msgstr "度，分，秒"
 
 #: src/ui/buttons-conversion.blp:533
-#, fuzzy
-#| msgid "Change Word Size"
 msgid "Change Sign"
-msgstr "修改字长"
+msgstr "更改符号"
 
 #: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
-#, fuzzy
-#| msgid "Exchange rates data by %s"
 msgid "Exchange Rate Details"
-msgstr "汇率数据来自 %s"
+msgstr "汇率详情"
 
 #: src/ui/buttons-conversion.blp:575 src/ui/buttons-conversion.blp:600
 msgid "Updated"
-msgstr ""
+msgstr "已更新"
 
 #: src/ui/buttons-conversion.blp:583 src/ui/buttons-conversion.blp:608
-#, fuzzy
-#| msgid "Source units"
 msgid "Source"
-msgstr "起始单位"
+msgstr "来源"
 
 #: src/ui/buttons-conversion.blp:625
 msgid "_Refresh Rates"
-msgstr ""
+msgstr "刷新率(_R)"
 
 #. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
 #: src/ui/buttons-financial.blp:669
