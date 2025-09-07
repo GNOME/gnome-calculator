@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-03-01 20:54+0000\n"
-"PO-Revision-Date: 2025-03-03 00:33+0900\n"
+"POT-Creation-Date: 2025-08-30 21:34+0000\n"
+"PO-Revision-Date: 2025-09-06 19:41+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -30,19 +30,19 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: data/org.gnome.Calculator.desktop.in:3
-#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:282 src/ui/math-window.ui:105
+#: data/org.gnome.Calculator.desktop.in:2
+#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
+#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "계산기"
 
-#: data/org.gnome.Calculator.desktop.in:4
+#: data/org.gnome.Calculator.desktop.in:3
 #: data/org.gnome.Calculator.metainfo.xml.in:8
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "일반 연산, 과학, 재무용 계산을 합니다"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Calculator.desktop.in:6
+#: data/org.gnome.Calculator.desktop.in:5
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr ""
 "calculation;계산;계산기;arithmetic;연산;scientific;과학;공학;financial;재무;"
@@ -62,11 +62,10 @@ msgstr ""
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
-"complex numbers, random number generation, prime factorization and unit "
-"conversions."
+"complex numbers, random number generation and prime factorization."
 msgstr ""
 "고급 계산기에서는 다음과 같은 여러가지 기능을 지원합니다: 로그, 팩토리얼, 삼"
-"각함수, 쌍곡선 함수, 나머지 계산, 복소수, 난수 생성, 소인수 분해, 단위 환산."
+"각함수, 쌍곡선 함수, 나머지 계산, 복소수, 난수 생성, 소인수 분해."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:22
 msgid ""
@@ -79,102 +78,113 @@ msgstr ""
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
 msgid ""
-"Programming mode supports conversion between common bases (binary, octal, "
-"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"Programming mode supports calculations using common bases (binary, octal, "
+"decimal, and hexadecimal), bitwise operations, ones’ and two’s complement, "
 "character to character code conversion, and more."
 msgstr ""
-"프로그래밍 모드에서는 많이 사용하는 진법(2진수, 8진수, 10진수, 16진수)에 따"
-"라 변환하는 기능, 불리언 대수, 1의 보수와 2의 보수 계산, 문자 코드 변환 등의 "
-"기능이 있습니다."
+"프로그래밍 모드에서는 다음과 같은 기능을 지원합니다: 많이 사용하는 진법(2진"
+"수, 8진수, 10진수, 16진수)에 따라 변환하는 기능, 비트단위 연산, 1의 보수와 2"
+"의 보수 계산, 문자 코드 변환 등"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:39
+#: data/org.gnome.Calculator.metainfo.xml.in:32
+msgid ""
+"Conversion mode supports conversions between common units, currencies and "
+"number bases."
+msgstr ""
+"변환 모드에서는 일반적인 단위, 통화, 진법을 변환하는 기능을 지원합니다."
+
+#: data/org.gnome.Calculator.metainfo.xml.in:43
 msgid "Basic Mode"
 msgstr "기본 모드"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:43
+#: data/org.gnome.Calculator.metainfo.xml.in:47
 msgid "Advanced Mode"
 msgstr "고급 모드"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:47
+#: data/org.gnome.Calculator.metainfo.xml.in:51
 msgid "Financial Mode"
 msgstr "재무 모드"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:51
+#: data/org.gnome.Calculator.metainfo.xml.in:55
 msgid "Programming Mode"
 msgstr "프로그래밍 모드"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:55
+#: data/org.gnome.Calculator.metainfo.xml.in:59
 msgid "Keyboard Mode"
 msgstr "키보드 모드"
 
+#: data/org.gnome.Calculator.metainfo.xml.in:63
+msgid "Conversion Mode"
+msgstr "변환 모드"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:76 src/gnome-calculator.vala:284
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
 msgid "The GNOME Project"
 msgstr "그놈 프로젝트"
 
-#: data/org.gnome.calculator.gschema.xml:26
+#: data/org.gnome.calculator.gschema.xml:31
 msgid "Accuracy value"
 msgstr "유효 숫자"
 
-#: data/org.gnome.calculator.gschema.xml:27
+#: data/org.gnome.calculator.gschema.xml:32
 msgid "The number of digits displayed after the numeric point"
 msgstr "소수점 뒤에 표시할 숫자 개수"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:37
 msgid "Word size"
 msgstr "워드 크기"
 
-#: data/org.gnome.calculator.gschema.xml:33
+#: data/org.gnome.calculator.gschema.xml:38
 msgid "The size of the words used in bitwise operations"
 msgstr "비트 처리 기능에서 사용할 워드 크기"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:43
 msgid "Numeric Base"
 msgstr "진법"
 
-#: data/org.gnome.calculator.gschema.xml:39
+#: data/org.gnome.calculator.gschema.xml:44
 msgid "The numeric base"
 msgstr "진법"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "Show Thousands Separators"
 msgstr "천단위 자리수 구분 표시"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:49
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "큰 수에서 천단위 자리수 표시를 사용할지 여부."
 
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Show Trailing Zeroes"
 msgstr "마지막 0 표시"
 
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:54
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr "표시하는 값에서 소수점 뒤에 0을 표시할지 여부."
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Number format"
 msgstr "숫자 형식"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "The format to display numbers in"
 msgstr "숫자를 표시할 형식"
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Angle units"
 msgstr "각도 단위"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:64
 msgid "The angle units to use"
 msgstr "사용할 각도 단위"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Currency update interval"
 msgstr "환율 업데이트 주기"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:69
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
@@ -182,689 +192,1024 @@ msgstr ""
 "얼마나 자주 환율을 업데이트할지 정합니다. 값이 0이면 환율을 네트워크에서 가져"
 "오지 않겠다는 의미입니다."
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:73
+msgid "Currency display"
+msgstr "통화 표시"
+
+#: data/org.gnome.calculator.gschema.xml:74
+msgid ""
+"Indicates whether to show currency code, currency name or both of them in "
+"the converter."
+msgstr ""
+"변환기에서 통화 코드를 표시할지, 이름을 표시할지, 둘 다 표시할지 지정합니다."
+
+#: data/org.gnome.calculator.gschema.xml:78
+msgid "Enabled completions"
+msgstr "자동 완성 사용"
+
+#: data/org.gnome.calculator.gschema.xml:79
+msgid ""
+"The types of completion proposals to be shown in the auto-completion list."
+msgstr "자동 완성 목록에 표시할 완성 제안의 종류"
+
+#: data/org.gnome.calculator.gschema.xml:83
+msgid "Favorite currencies"
+msgstr "자주 사용하는 통화"
+
+#: data/org.gnome.calculator.gschema.xml:84
+msgid "The favorite currencies to be shown at the top of the currency list."
+msgstr "통화 목록 맨 위에 표시할 자주 사용하는 통화 목록."
+
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Button mode"
 msgstr "단추 모드"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:89
 msgid "The button mode"
 msgstr "단추 모드"
 
-#: data/org.gnome.calculator.gschema.xml:73
-msgid "Source currency"
-msgstr "원본 통화"
+#: data/org.gnome.calculator.gschema.xml:93
+msgid "Unit category"
+msgstr "단위 분류"
 
-#: data/org.gnome.calculator.gschema.xml:74
-msgid "Currency of the current calculation"
-msgstr "현재 계산값의 통화 단위"
+#: data/org.gnome.calculator.gschema.xml:94
+msgid "Currently selected unit category in the converter"
+msgstr "변환기에서 현재 선택한 단위 분류"
 
-#: data/org.gnome.calculator.gschema.xml:78
-msgid "Target currency"
-msgstr "대상 통화"
-
-#: data/org.gnome.calculator.gschema.xml:79
-msgid "Currency to convert the current calculation into"
-msgstr "현재 계산값을 변환할 통화 단위"
-
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Source units"
 msgstr "원본 단위"
 
-#: data/org.gnome.calculator.gschema.xml:84
-msgid "Units of the current calculation"
-msgstr "현재 계산값의 단위"
+#: data/org.gnome.calculator.gschema.xml:99
+msgid "Currently selected source units in the converter"
+msgstr "변환기에서 현재 선택한 원본 단위"
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Target units"
 msgstr "대상 단위"
 
-#: data/org.gnome.calculator.gschema.xml:89
-msgid "Units to convert the current calculation into"
-msgstr "현재 계산값을 변환할 대상 단위"
+#: data/org.gnome.calculator.gschema.xml:104
+msgid "Currently selected target units in the converter"
+msgstr "변환기에서 현재 선택한 대상 단위"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Internal precision"
 msgstr "내부 정밀도"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "The internal precision used with the MPFR library"
 msgstr "MPFR 라이브러리에 사용하는 내부 정밀도"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Window position"
 msgstr "창 위치"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Window position (x and y) of the last closed window."
 msgstr "최근 닫은 창의 창 위치 (가로 및 세로)."
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Window maximized"
 msgstr "창 최대화"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "Whether the last closed window was maximized."
 msgstr "최근 닫은 창이 최대화되었는지 여부."
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window size"
 msgstr "창 크기"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window size (width and height) of the last closed window."
 msgstr "최근 닫은 창의 창 크기 (너비 및 높이)."
 
-#: lib/currency.vala:64
+#: lib/currency.vala:82
 msgid "UAE Dirham"
 msgstr "아랍에미리트연합 디르함"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:83
 msgid "Argentine Peso"
 msgstr "아르헨티나 페소"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:84
 msgid "Australian Dollar"
 msgstr "호주 달러"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:85
 msgid "Bangladeshi Taka"
 msgstr "방글라데시 타카"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:86
 msgid "Bulgarian Lev"
 msgstr "불가리아 레프"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:87
 msgid "Bahraini Dinar"
 msgstr "바레인 디나르"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "브루나이 달러"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "브라질 레알"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "보츠와나 풀라"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "캐나다 달러"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:92
 msgid "CFA Franc"
 msgstr "CFA 프랑"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:93
 msgid "Swiss Franc"
 msgstr "스위스 프랑"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:94
 msgid "Chilean Peso"
 msgstr "칠레 페소"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:95
 msgid "Chinese Yuan"
 msgstr "중국 위안"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:96
 msgid "Colombian Peso"
 msgstr "콜롬비아 페소"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:97
 msgid "Czech Koruna"
 msgstr "체코 코루나"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:98
 msgid "Danish Krone"
 msgstr "덴마크 크로네"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:99
 msgid "Algerian Dinar"
 msgstr "알제리 디나르"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:100
 msgid "Estonian Kroon"
 msgstr "에스토니아 크룬"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:101
+msgid "Egyptian Pound"
+msgstr "이집트 파운드"
+
+#: lib/currency.vala:102
 msgid "Euro"
 msgstr "유로"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:103
 msgid "British Pound Sterling"
 msgstr "영국 파운드 스털링"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:104
 msgid "Hong Kong Dollar"
 msgstr "홍콩 달러"
 
-#: lib/currency.vala:86
+#: lib/currency.vala:105
 msgid "Croatian Kuna"
 msgstr "크로아티아 쿠나"
 
-#: lib/currency.vala:87
+#: lib/currency.vala:106
 msgid "Hungarian Forint"
 msgstr "헝가리 포린트"
 
-#: lib/currency.vala:88
+#: lib/currency.vala:107
 msgid "Indonesian Rupiah"
 msgstr "인도네시아 루피아"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:108
 msgid "Israeli New Shekel"
 msgstr "이스라엘 셰켈 신화폐"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:109
 msgid "Indian Rupee"
 msgstr "인도 루피"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:110
 msgid "Iranian Rial"
 msgstr "이란 리알"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:111
 msgid "Icelandic Krona"
 msgstr "아이슬랜드 크로나"
 
-#: lib/currency.vala:93
+#: lib/currency.vala:112
 msgid "Japanese Yen"
 msgstr "일본 엔"
 
-#: lib/currency.vala:94
+#: lib/currency.vala:113
 msgid "Jamaican Dollar"
 msgstr "자메이카 달러"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:114
 msgid "South Korean Won"
 msgstr "대한민국 원"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:115
 msgid "Kuwaiti Dinar"
 msgstr "쿠웨이트 디나르"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:116
 msgid "Kazakhstani Tenge"
 msgstr "카자흐스탄 텡게"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:117
 msgid "Sri Lankan Rupee"
 msgstr "스리랑카 루피"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:118
 msgid "Libyan Dinar"
 msgstr "리비아 디나르"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:119
 msgid "Mauritian Rupee"
 msgstr "모리셔스 루피"
 
-#: lib/currency.vala:101
+#: lib/currency.vala:120
 msgid "Mexican Peso"
 msgstr "멕시코 페소"
 
-#: lib/currency.vala:102
+#: lib/currency.vala:121
 msgid "Malaysian Ringgit"
 msgstr "말레이시아 링깃"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:122
 msgid "Nigerian Naira"
 msgstr "나이지리아 나이라"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:123
 msgid "Norwegian Krone"
 msgstr "노르웨이 크로네"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:124
 msgid "Nepalese Rupee"
 msgstr "네팔 루피"
 
-#: lib/currency.vala:106
+#: lib/currency.vala:125
 msgid "New Zealand Dollar"
 msgstr "뉴질랜드 달러"
 
-#: lib/currency.vala:107
+#: lib/currency.vala:126
 msgid "Omani Rial"
 msgstr "오만 리알"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:127
 msgid "Peruvian Nuevo Sol"
 msgstr "페루 누에보솔"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:128
 msgid "Philippine Peso"
 msgstr "필리핀 페소"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:129
 msgid "Pakistani Rupee"
 msgstr "파키스탄 루피"
 
-#: lib/currency.vala:111
-msgid "Polish Zloty"
+#: lib/currency.vala:130
+msgid "Polish Złoty"
 msgstr "폴란드 즈워티"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:131
 msgid "Qatari Riyal"
 msgstr "카타르 리얄"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:132
 msgid "New Romanian Leu"
 msgstr "루마니아 레우 신화폐"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:133
 msgid "Russian Ruble"
 msgstr "러시아 루블"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:134
 msgid "Saudi Riyal"
 msgstr "사우디 리얄"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:135
 msgid "Serbian Dinar"
 msgstr "세르비아 디나르"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:136
 msgid "Swedish Krona"
 msgstr "스웨덴 크로나"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:137
 msgid "Singapore Dollar"
 msgstr "싱가포르 달러"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:138
 msgid "Thai Baht"
 msgstr "태국 바트"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:139
 msgid "Tunisian Dinar"
 msgstr "튀니지 디나르"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:140
 msgid "Turkish Lira"
 msgstr "터키 리라"
 
 # 주의: 접근 키 아님
-#: lib/currency.vala:122
-msgid "T&T Dollar (TTD)"
+#: lib/currency.vala:141
+msgid "T&T Dollar"
 msgstr "트리니다드토바고 달러(TTD)"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:142
 msgid "New Taiwan Dollar"
 msgstr "신권 대만 달러"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:143
 msgid "Ukrainian Hryvnia"
 msgstr "우크라이나 흐리우냐"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:144
 msgid "US Dollar"
 msgstr "미국 달러"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:145
 msgid "Uruguayan Peso"
 msgstr "우루과이 페소"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:146
 msgid "Vietnamese Dong"
 msgstr "베트남 동"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:147
 msgid "South African Rand"
 msgstr "남아프리카공화국 랜드"
 
-#: lib/currency-provider.vala:188
-msgid "International Monetary Fund"
-msgstr "국제통화기금"
+#: lib/equation-lexer.vala:464
+msgid "Missing digits after minus sign"
+msgstr "음의 부호 뒤에 숫자 없음"
 
-#: lib/currency-provider.vala:397
-msgid "European Central Bank"
-msgstr "유럽중앙은행"
+#: lib/equation-lexer.vala:562 lib/equation-lexer.vala:642
+msgid "Missing second symbol (″)"
+msgstr "초 기호 없음 (″)"
 
-#: lib/currency-provider.vala:511
-msgid "Bank of Canada"
-msgstr "캐나다은행"
+#: lib/equation-lexer.vala:578 lib/equation-lexer.vala:620
+msgid "Missing minute symbol (′)"
+msgstr "분 기호 없음 (′)"
 
-#: lib/currency-provider.vala:582
-msgid "United Nations Treasury"
-msgstr "국제연합 재무부"
+#: lib/equation-lexer.vala:607 lib/equation-lexer.vala:632
+#: lib/equation-lexer.vala:675 lib/equation-lexer.vala:762
+msgid "Missing digits after decimal point"
+msgstr "소숫점 뒤에 숫자 없음"
 
 # 번역할 수 없음: 이런 식으로 번역하게 만든 업스트림 잘못.
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
 msgid "in"
 msgstr "in"
 
 # 번역할 수 없음: 이런 식으로 번역하게 만든 업스트림 잘못.
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
 msgid "to"
 msgstr "to"
 
-#: lib/equation-parser.vala:735 lib/number.vala:434
+#: lib/equation-parser.vala:443
+#, c-format
+msgid "Function “%s” is missing arguments"
+msgstr "“%s” 함수 인자가 빠졌습니다"
+
+#: lib/equation-parser.vala:765 lib/number.vala:568
 msgid "The zeroth root of a number is undefined"
 msgstr "어떤 수의 0 제곱근은 정의되지 않습니다"
+
+#: lib/equation-parser.vala:1060
+msgid "Mathematics"
+msgstr "수학"
+
+#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+msgid "Euler’s Number"
+msgstr "오일러 수"
+
+#: lib/equation-parser.vala:1062
+msgid "Pi"
+msgstr "Pi"
+
+#: lib/equation-parser.vala:1063
+msgid "Tau"
+msgstr "Tau"
+
+#: lib/equation-parser.vala:1064
+msgid "Golden Ratio"
+msgstr "황금율"
+
+#: lib/equation-parser.vala:1066
+msgid "Electromagnetism"
+msgstr "전자기학"
+
+#: lib/equation-parser.vala:1067
+msgid "Light Speed"
+msgstr "광속"
+
+#: lib/equation-parser.vala:1068
+msgid "Elementary Charge"
+msgstr "기본 전하"
+
+#: lib/equation-parser.vala:1069
+msgid "Impedance of Vacuum"
+msgstr "자유 공간 임피던스"
+
+#: lib/equation-parser.vala:1070
+msgid "Permeability of Vacuum"
+msgstr "자유 공간 투자율"
+
+#: lib/equation-parser.vala:1071
+msgid "Permittivity of Vacuum"
+msgstr "자유 공간 유전율"
+
+#: lib/equation-parser.vala:1073
+msgid "Atomic & Nuclear"
+msgstr "원자 및 핵"
+
+#: lib/equation-parser.vala:1074
+msgid "Planck’s Constant"
+msgstr "플랑크 상수"
+
+#: lib/equation-parser.vala:1075
+msgid "Fine-Structure Constant"
+msgstr "미세 구조 상수"
+
+#: lib/equation-parser.vala:1076
+msgid "Electron Mass"
+msgstr "전자 질량"
+
+#: lib/equation-parser.vala:1077
+msgid "Proton Mass"
+msgstr "양성자 질량"
+
+#: lib/equation-parser.vala:1079
+msgid "Thermodynamics"
+msgstr "열역학"
+
+#: lib/equation-parser.vala:1080
+msgid "Boltzmann Constant"
+msgstr "볼츠만 상수"
+
+#: lib/equation-parser.vala:1081
+msgid "Atomic Mass Unit"
+msgstr "원자량 단위"
+
+#: lib/equation-parser.vala:1082
+msgid "Molar Gas Constant"
+msgstr "몰 기체 상수"
+
+#: lib/equation-parser.vala:1083
+msgid "Stefan-Boltzmann Constant"
+msgstr "슈테판-볼츠만 상수"
+
+#: lib/equation-parser.vala:1084
+msgid "Avogadro’s Number"
+msgstr "아보가르도 수"
+
+#: lib/equation-parser.vala:1086
+msgid "Gravitation"
+msgstr "중력"
+
+#: lib/equation-parser.vala:1087
+msgid "Gravitational Constant"
+msgstr "중력 상수"
+
+#: lib/equation-parser.vala:1088
+msgid "Earth Acceleration"
+msgstr "지구 가속도"
 
 #: lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "오류: 기간은 0보다 커야 합니다"
 
-#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:720
-#: src/ui/buttons-financial.ui:1012 src/ui/buttons-programming.ui:1986
-msgid "Logarithm"
-msgstr "로그"
+#: lib/function-manager.vala:26
+msgid "Trigonometry"
+msgstr "삼각함수"
 
-#: lib/function-manager.vala:50
-msgid "Natural logarithm"
-msgstr "자연로그"
-
-#: lib/function-manager.vala:52
-msgid "Square root"
-msgstr "제곱피트"
-
-#: lib/function-manager.vala:54
-msgid "Absolute value"
-msgstr "절대값"
-
-#: lib/function-manager.vala:56
-msgid "Signum"
-msgstr "부호"
-
-#: lib/function-manager.vala:58
-msgid "Argument"
-msgstr "인수"
-
-#: lib/function-manager.vala:60
-msgid "Conjugate"
-msgstr "켤레수"
-
-#: lib/function-manager.vala:62
-msgid "Integer"
-msgstr "정수"
-
-#: lib/function-manager.vala:64
-msgid "Fraction"
-msgstr "분수"
-
-#: lib/function-manager.vala:66
-msgid "Floor"
-msgstr "내림"
-
-#: lib/function-manager.vala:68
-msgid "Ceiling"
-msgstr "올림"
-
-#: lib/function-manager.vala:70
-msgid "Round"
-msgstr "반올림"
-
-#: lib/function-manager.vala:72
-msgid "Real"
-msgstr "실수"
-
-#: lib/function-manager.vala:74
-msgid "Imaginary"
-msgstr "허수"
-
-#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:563
+#: lib/function-manager.vala:27 src/ui/buttons-advanced.blp:499
 msgid "Sine"
 msgstr "사인"
 
-#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:547
+#: lib/function-manager.vala:28 src/ui/buttons-advanced.blp:573
 msgid "Cosine"
 msgstr "코사인"
 
-#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:579
+#: lib/function-manager.vala:29 src/ui/buttons-advanced.blp:647
 msgid "Tangent"
 msgstr "탄젠트"
 
-#: lib/function-manager.vala:82
-msgid "Arc sine"
-msgstr "아크사인"
-
-#: lib/function-manager.vala:84
-msgid "Arc cosine"
-msgstr "아크코사인"
-
-#: lib/function-manager.vala:86
-msgid "Arc tangent"
-msgstr "아크탄젠트"
-
-#: lib/function-manager.vala:88
-msgid "Inverse sine"
+#: lib/function-manager.vala:30 lib/function-manager.vala:115
+#: src/ui/buttons-advanced.blp:517
+msgid "Inverse Sine"
 msgstr "역사인"
 
-#: lib/function-manager.vala:90
-msgid "Inverse cosine"
+#: lib/function-manager.vala:31 lib/function-manager.vala:116
+#: src/ui/buttons-advanced.blp:591
+msgid "Inverse Cosine"
 msgstr "역코사인"
 
-#: lib/function-manager.vala:92
-msgid "Inverse tangent"
+#: lib/function-manager.vala:32 lib/function-manager.vala:117
+#: src/ui/buttons-advanced.blp:665
+msgid "Inverse Tangent"
 msgstr "역탄젠트"
 
-#: lib/function-manager.vala:94
-msgid "Hyperbolic sine"
+#: lib/function-manager.vala:33 src/ui/buttons-advanced.blp:536
+msgid "Hyperbolic Sine"
 msgstr "하이퍼볼릭 사인"
 
-#: lib/function-manager.vala:96
-msgid "Hyperbolic cosine"
+#: lib/function-manager.vala:34 src/ui/buttons-advanced.blp:610
+msgid "Hyperbolic Cosine"
 msgstr "하이퍼볼릭 코사인"
 
-#: lib/function-manager.vala:98
-msgid "Hyperbolic tangent"
+#: lib/function-manager.vala:35 src/ui/buttons-advanced.blp:684
+msgid "Hyperbolic Tangent"
 msgstr "하이퍼볼릭 탄젠트"
 
-#: lib/function-manager.vala:100
-msgid "Hyperbolic arcsine"
-msgstr "하이퍼볼릭 아크사인"
-
-#: lib/function-manager.vala:102
-msgid "Hyperbolic arccosine"
-msgstr "하이퍼볼릭 아크코사인"
-
-#: lib/function-manager.vala:104
-msgid "Hyperbolic arctangent"
-msgstr "하이퍼볼릭 아크탄젠트"
-
-#: lib/function-manager.vala:106
-msgid "Inverse hyperbolic sine"
+#: lib/function-manager.vala:36 lib/function-manager.vala:118
+#: src/ui/buttons-advanced.blp:554
+msgid "Inverse Hyperbolic Sine"
 msgstr "역 하이퍼볼릭 사인"
 
-#: lib/function-manager.vala:108
-msgid "Inverse hyperbolic cosine"
+#: lib/function-manager.vala:37 lib/function-manager.vala:119
+#: src/ui/buttons-advanced.blp:628
+msgid "Inverse Hyperbolic Cosine"
 msgstr "역 하이퍼볼릭 코사인"
 
-#: lib/function-manager.vala:110
-msgid "Inverse hyperbolic tangent"
+#: lib/function-manager.vala:38 lib/function-manager.vala:120
+#: src/ui/buttons-advanced.blp:702
+msgid "Inverse Hyperbolic Tangent"
 msgstr "역 하이퍼볼릭 탄젠트"
 
-#: lib/function-manager.vala:112
-msgid "One's complement"
+#: lib/function-manager.vala:40
+msgid "Complex"
+msgstr "복소수"
+
+#: lib/function-manager.vala:41 src/ui/buttons-advanced.blp:932
+msgid "Complex Conjugate"
+msgstr "복소켤레"
+
+#: lib/function-manager.vala:42 src/ui/buttons-advanced.blp:949
+msgid "Complex Argument"
+msgstr "복소수 편각"
+
+#: lib/function-manager.vala:43 src/ui/buttons-advanced.blp:966
+msgid "Real Component"
+msgstr "실수 부분"
+
+#: lib/function-manager.vala:44 src/ui/buttons-advanced.blp:983
+msgid "Imaginary Component"
+msgstr "허수 부분"
+
+#: lib/function-manager.vala:46 src/math-window.vala:155
+msgid "Programming"
+msgstr "프로그래밍"
+
+#: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
+msgid "Ones’ Complement"
 msgstr "1의 보수"
 
-#: lib/function-manager.vala:114
-msgid "Two's complement"
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
+msgid "Two’s Complement"
 msgstr "2의 보수"
 
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:73 lib/math-equation.vala:1416
-msgid "Displayed value not an integer"
-msgstr "표시 중인 값이 정수가 아닙니다"
+#: lib/function-manager.vala:49
+msgid "Swap Endianness"
+msgstr "엔디안 뒤바꾸기"
+
+#: lib/function-manager.vala:50 src/ui/buttons-advanced.blp:403
+#: src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
+#: src/ui/buttons-programming.blp:1808
+msgid "Modulus Divide"
+msgstr "나머지 나누기"
+
+#: lib/function-manager.vala:51
+msgid "Modular Exponentiation"
+msgstr "모듈러 지수 계산"
+
+# 분류
+#: lib/function-manager.vala:53
+msgid "Rounding"
+msgstr "반올림"
+
+#: lib/function-manager.vala:54
+msgid "Round"
+msgstr "반올림"
+
+#: lib/function-manager.vala:55
+msgid "Floor"
+msgstr "내림"
+
+#: lib/function-manager.vala:56
+msgid "Ceiling"
+msgstr "올림"
+
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
+msgid "Integer Component"
+msgstr "정수 부분"
+
+#: lib/function-manager.vala:58 src/ui/buttons-programming.blp:2348
+msgid "Fractional Component"
+msgstr "분수 부분"
+
+#: lib/function-manager.vala:60
+msgid "Statistics"
+msgstr "통계"
+
+#: lib/function-manager.vala:61
+msgid "Sum"
+msgstr "총합"
+
+#: lib/function-manager.vala:62
+msgid "Sum of Squares"
+msgstr "제곱합"
+
+#: lib/function-manager.vala:63
+msgid "Average"
+msgstr "평균"
+
+#: lib/function-manager.vala:64
+msgid "Median"
+msgstr "중간값"
+
+#: lib/function-manager.vala:65
+msgid "Minimum Value"
+msgstr "최소값"
+
+#: lib/function-manager.vala:66
+msgid "Maximum Value"
+msgstr "최대값"
+
+#: lib/function-manager.vala:67
+msgid "Sample Standard Deviation"
+msgstr "표본 표준 편차"
+
+#: lib/function-manager.vala:68
+msgid "Population Standard Deviation"
+msgstr "모집단 표준 편차"
+
+#: lib/function-manager.vala:69
+msgid "Sample Variance"
+msgstr "표본 분산"
+
+#: lib/function-manager.vala:70
+msgid "Population Variance"
+msgstr "모집단 분산"
+
+# 잡다
+#: lib/function-manager.vala:72
+msgid "Sundry"
+msgstr "여러가지"
+
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:806
+#: src/ui/buttons-programming.blp:2171
+msgid "Logarithm"
+msgstr "로그"
+
+#: lib/function-manager.vala:74 src/ui/buttons-advanced.blp:892
+#: src/ui/buttons-financial.blp:626
+msgid "Natural Logarithm"
+msgstr "자연로그"
+
+#: lib/function-manager.vala:75
+msgid "Square Root"
+msgstr "제곱근"
+
+#: lib/function-manager.vala:76
+msgid "Absolute Value"
+msgstr "절대값"
+
+#: lib/function-manager.vala:77
+msgid "Signum"
+msgstr "부호"
+
+#: lib/function-manager.vala:78
+msgid "Combination"
+msgstr "조합"
+
+#: lib/function-manager.vala:79
+msgid "Permutation"
+msgstr "순열"
+
+#: lib/function-manager.vala:80
+msgid "Greatest Common Divisor"
+msgstr "최대공약수"
+
+#: lib/function-manager.vala:81
+msgid "Least Common Multiple"
+msgstr "최소공배수"
+
+#: lib/function-manager.vala:82
+msgid "Comparison (Kronecker Delta)"
+msgstr "비교 (크로네커 델타)"
+
+#: lib/function-manager.vala:337
+#, c-format
+msgid "Function “%s” takes 1 argument"
+msgstr "“%s” 함수는 하나의 인자가 필요합니다"
+
+#: lib/function-manager.vala:355
+#, c-format
+msgid "Function “%s” takes 1 or 2 arguments"
+msgstr "“%s” 함수는 하나 또는 둘의 인자가 필요합니다"
+
+#: lib/function-manager.vala:363
+#, c-format
+msgid "Function “%s” takes at least 2 arguments"
+msgstr "“%s” 함수는 최소 두개 인자가 필요합니다"
+
+#: lib/function-manager.vala:370
+#, c-format
+msgid "Function “%s” takes %d argument"
+msgid_plural "Function “%s” takes %d arguments"
+msgstr[0] "“%s” 함수는 %d개 인자가 필요합니다"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:216
+#: lib/math-equation.vala:181
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:584
+#: lib/math-equation.vala:554
 msgid "No undo history"
 msgstr "실행 취소 기록 없음"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:605
+#: lib/math-equation.vala:575
 msgid "No redo history"
 msgstr "다시 실행 기록 없음"
 
-#: lib/math-equation.vala:836
+#: lib/math-equation.vala:822
 msgid "No sane value to store"
 msgstr "제대로 된 값을 저장할 수 없습니다"
 
-#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1085
-msgid "Overflow. Try a bigger word size"
-msgstr "오버플로우. 워드 크기를 늘려 보십시오"
-
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1090
+#: lib/math-equation.vala:1281
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "알 수 없는 변수 “%s”"
 
+#. Error displayed to user when a currency conversion with unknown exchange rate is attempted
+#: lib/math-equation.vala:1288
+#, c-format
+msgid "Exchange rate for “%s” is not available"
+msgstr "“%s”에 대한 환율을 사용할 수 없습니다"
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: lib/math-equation.vala:1295
+#, c-format
+msgid "Unknown unit “%s”"
+msgstr "알 수 없는 단위 “%s”"
+
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1097
+#: lib/math-equation.vala:1302
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "“%s” 함수가 정의되지 않았습니다"
 
-#. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1104
+#. Error displayed to user when an invalid conversion (e.g. units of different categories)
+#: lib/math-equation.vala:1309
 msgid "Unknown conversion"
 msgstr "변환 불가"
 
 #. should always be run
-#: lib/math-equation.vala:1114
+#: lib/math-equation.vala:1319
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1119 lib/math-equation.vala:1124
+#: lib/math-equation.vala:1324 lib/math-equation.vala:1329
 msgid "Malformed expression"
 msgstr "수식 형식이 틀렸습니다"
 
 # status
-#: lib/math-equation.vala:1135
+#: lib/math-equation.vala:1340
 msgid "Calculating"
 msgstr "계산 중"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1328
+#: lib/math-equation.vala:1562
 msgid "Need an integer to factorize"
 msgstr "소인수 분해에는 정수 값이 필요합니다"
 
-#. This message is displayed in the status bar when a bit shift operation is performed and the display does not contain a number
-#: lib/math-equation.vala:1392
-msgid "No sane value to bitwise shift"
-msgstr "비트 쉬프트의 값이 올바르지 않습니다"
-
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:306
 msgid "Underflow error"
 msgstr "언더플로우 오류"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:206
+#: lib/number.vala:311
 msgid "Overflow error"
 msgstr "오버플로우 오류"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:256
+#: lib/number.vala:372
 msgid "Argument not defined for zero"
 msgstr "편각은 0에 대해서 정의되지 않습니다"
 
+#: lib/number.vala:442
+msgid "Floor is only defined for real numbers"
+msgstr "올림은 실수에 대해서만 정의됩니다"
+
+#: lib/number.vala:457
+msgid "Ceiling is only defined for real numbers"
+msgstr "내림은 실수에 대해서만 정의됩니다"
+
+#: lib/number.vala:472
+msgid "Round is only defined for real numbers"
+msgstr "반올림은 실수에 대해서만 정의됩니다"
+
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:372 lib/number.vala:402
+#: lib/number.vala:506 lib/number.vala:536
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "0의 제곱은 음수 지수에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:380 lib/number.vala:410
+#: lib/number.vala:514 lib/number.vala:544
 msgid "Zero raised to zero is undefined"
 msgstr "0의 0승은 정의되지 않습니다"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:464 lib/number.vala:495
+#: lib/number.vala:598 lib/number.vala:629
 msgid "Logarithm of zero is undefined"
 msgstr "0의 로그는 정의되지 않습니다"
 
+#: lib/number.vala:634
+msgid "Logarithm with base 0 or 1 is undefined"
+msgstr "0 또는 1이 밑인 로그는 정의되지 않습니다"
+
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:517
+#: lib/number.vala:653
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "팩토리얼은 음수가 아닌 실수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:577
+#: lib/number.vala:704
 msgid "Division by zero is undefined"
 msgstr "0으로 나누기는 정의되지 않습니다"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:598
+#: lib/number.vala:725
 msgid "Modulus division is only defined for integers"
 msgstr "나머지 나누기는 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:671
+#: lib/number.vala:805
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "탄젠트는 π∕2(90°)에 π(180°) 배수를 더한 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:690
+#: lib/number.vala:824
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "역 사인은 [-1, 1] 밖의 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:707
+#: lib/number.vala:841
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "역 코사인은 [-1, 1] 밖의 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:725
-msgid "Arctangent function is undefined for values i and -i"
-msgstr "아크탄젠트 함수는 i 및 -i 값에 대해 정의되지 않습니다"
+#: lib/number.vala:859
+msgid "Inverse tangent is undefined for values i and -i"
+msgstr "역 탄젠트 함수는 i 및 -i 값에 대해 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:775
+#: lib/number.vala:910
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "역 하이퍼 코사인은 1보다 작은 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:791
+#: lib/number.vala:926
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "역 하이퍼 탄젠트는 [-1, 1] 밖의 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:807
-msgid "Boolean AND is only defined for positive integers"
-msgstr "불리언 AND는 양의 정수에 대해서만 정의됩니다"
+#: lib/number.vala:941
+msgid "Boolean AND is only defined for non-negative integers"
+msgstr "불리언 AND는 음이 아닌 정수에 대해서만 정의됩니다"
+
+#. Translators: Error displayed when boolean NAND attempted on non-integer values
+#: lib/number.vala:954
+msgid "Boolean NAND is only defined for non-negative integers"
+msgstr "불리언 NAND는 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:819
-msgid "Boolean OR is only defined for positive integers"
-msgstr "불리언 OR는 양의 정수에 대해서만 정의됩니다"
+#: lib/number.vala:967
+msgid "Boolean OR is only defined for non-negative integers"
+msgstr "불리언 OR는 음이 아닌 정수에 대해서만 정의됩니다"
+
+#. Translators: Error displayed when boolean NOR attempted on non-integer values
+#: lib/number.vala:980
+msgid "Boolean NOR is only defined for non-negative integers"
+msgstr "불리언 NOR는 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
-msgid "Boolean XOR is only defined for positive integers"
-msgstr "불리언 XOR는 양의 정수에 대해서만 정의됩니다"
+#: lib/number.vala:993
+msgid "Boolean XOR is only defined for non-negative integers"
+msgstr "불리언 XOR는 음이 아닌 정수에 대해서만 정의됩니다"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:843
-msgid "Boolean NOT is only defined for positive integers"
-msgstr "불리언 NOT은 양의 정수에 대해서만 정의됩니다"
+#. Translators: Error displayed when boolean XNOR attempted on non-integer values
+#: lib/number.vala:1006
+msgid "Boolean XNOR is only defined for non-negative integers"
+msgstr "불리언 XNOR는 음이 아닌 정수에 대해서만 정의됩니다"
+
+#. Translators: Error displayed when boolean NOT attempted on non-integer values
+#: lib/number.vala:1019
+msgid "Boolean NOT is only defined for non-negative integers"
+msgstr "불리언 NOT은 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:866
-msgid "Shift is only possible on integer values"
-msgstr "쉬프트는 정수 값에 대해서만 가능합니다"
+#: lib/number.vala:1081
+msgid "Shift is only possible on integers"
+msgstr "쉬프트는 정수에 대해서만 가능합니다"
 
-#: lib/serializer.vala:345
-msgid "Overflow: the result couldn’t be calculated"
-msgstr "오버플로 : 결과를 계산할 수 없습니다"
+#: lib/number.vala:1086 lib/number.vala:1126 lib/number.vala:1572
+msgid "Overflow. Try a bigger word size"
+msgstr "오버플로우. 워드 크기를 늘려 보십시오"
+
+#: lib/number.vala:1097
+msgid "Ones’ complement is only defined for non-negative integers"
+msgstr "1의 보수는 음이 아닌 정수에 대해서만 정의됩니다"
+
+#: lib/number.vala:1109
+msgid "Two’s complement is only defined for non-negative integers"
+msgstr "2의 보수는 음이 아닌 정수에 대해서만 정의됩니다"
+
+#: lib/number.vala:1121
+msgid "Swap endianness is only possible on integers"
+msgstr "엔디안 뒤바꾸기는 정수에 대해서만 가능합니다"
+
+#: lib/number.vala:1149
+msgid "Combination is only defined for non-negative integers"
+msgstr "조합은 음이 아닌 정수에 대해서만 정의됩니다"
+
+#: lib/number.vala:1154
+msgid "Combination is undefined if n is less than r"
+msgstr "조합은 n이 r보다 작으면 정의되지 않습니다"
+
+#: lib/number.vala:1167
+msgid "Permutation is only defined for non-negative integers"
+msgstr "순열은 음이 아닌 정수에 대해서만 정의됩니다"
+
+#: lib/number.vala:1172
+msgid "Permutation is undefined if n is less than r"
+msgstr "순열은 n이 r보다 작으면 정의되지 않습니다"
+
+#: lib/number.vala:1193
+msgid "Greatest common divisor is only defined for integers"
+msgstr "최대공약수는 정수에 대해서만 정의됩니다"
+
+#: lib/number.vala:1213
+msgid "Least common multiple is only defined for integers"
+msgstr "최소공배수는 정수에 대해서만 정의됩니다"
+
+#: lib/number.vala:1270
+msgid "Median is only defined for real numbers"
+msgstr "중간값은 실수에 대해서만 정의됩니다"
+
+#: lib/number.vala:1290
+msgid "Minimum value is only defined for real numbers"
+msgstr "최소값은 실수에 대해서만 정의됩니다"
+
+#: lib/number.vala:1307
+msgid "Maximum value is only defined for real numbers"
+msgstr "최대값은 실수에 대해서만 정의됩니다"
+
+#: lib/providers/boc-provider.vala:15
+msgid "Bank of Canada"
+msgstr "캐나다은행"
+
+#: lib/providers/ecb-provider.vala:12
+msgid "European Central Bank"
+msgstr "유럽중앙은행"
+
+#: lib/providers/imf-provider.vala:12
+msgid "International Monetary Fund"
+msgstr "국제통화기금"
+
+#: lib/providers/unt-provider.vala:12
+msgid "United Nations Treasury"
+msgstr "국제연합 재무부"
+
+#: lib/serializer.vala:354 lib/serializer.vala:391
+msgid ""
+"The result is too long to display in fixed format. Try other result formats"
+msgstr ""
+"결과가 너무 길어 고정된 형식으로 표시할 수 없습니다. 다른 결과 형식을 사용해 "
+"보십시오"
 
 #: lib/unit.vala:29
 msgid "Angle"
@@ -915,1678 +1260,1228 @@ msgid "Digital Storage"
 msgstr "디지털 저장소"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:43 src/math-preferences.vala:103
-msgid "Degrees"
-msgstr "육십분"
+#: lib/unit.vala:43
+msgid "Degrees (Decimal)"
+msgstr "각도 (60분)"
 
 #: lib/unit.vala:43
 msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "degree,degrees,deg,도"
 
-#: lib/unit.vala:44 src/math-preferences.vala:105
+#: lib/unit.vala:44
+msgid "Degrees (D°M′S″)"
+msgstr "각도 (도°분′초″)"
+
+#: lib/unit.vala:45 src/buttons-advanced.vala:87 src/math-preferences.vala:136
 msgid "Radians"
 msgstr "라디안"
 
-#: lib/unit.vala:44
+#: lib/unit.vala:45
 msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radian,radians,rad,라디안"
 
-#: lib/unit.vala:45 src/math-preferences.vala:107
+#: lib/unit.vala:46 src/buttons-advanced.vala:87 src/math-preferences.vala:138
 msgid "Gradians"
 msgstr "그라디안"
 
-#: lib/unit.vala:45
+#: lib/unit.vala:46
 msgctxt "unit-symbols"
 msgid "gradian,gradians,grad"
 msgstr "gradian,gradians,grad,그라디안"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgid "Parsecs"
 msgstr "파섹"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgctxt "unit-symbols"
 msgid "parsec,parsecs,pc"
 msgstr "parsec,parsecs,pc,파섹"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgid "Light Years"
 msgstr "광년"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgctxt "unit-symbols"
 msgid "lightyear,lightyears,ly"
 msgstr "lightyear,lightyears,ly,광년"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgid "Astronomical Units"
 msgstr "천문학 단위"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgctxt "unit-symbols"
 msgid "au"
 msgstr "au,천문단위"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgid "Rack Units"
 msgstr "랙 단위"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgctxt "unit-symbols"
 msgid "U"
 msgstr "U"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgid "Nautical Miles"
 msgstr "해리"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgctxt "unit-symbols"
 msgid "nmi"
 msgstr "nmi,해리"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgid "Miles"
 msgstr "마일"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgctxt "unit-symbols"
 msgid "mile,miles,mi"
 msgstr "mile,miles,mi,마일"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgid "Kilometers"
 msgstr "킬로미터"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgctxt "unit-symbols"
 msgid "kilometer,kilometers,km,kms"
 msgstr "kilometer,kilometers,km,kms,킬로미터"
 
 # 1/10 해리
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgid "Cables"
 msgstr "케이블"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgctxt "unit-symbols"
 msgid "cable,cables,cb"
 msgstr "cable,cables,cb,케이블"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgid "Fathoms"
 msgstr "패덤"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgctxt "unit-symbols"
 msgid "fathom,fathoms,ftm"
 msgstr "fathom,fathoms,ftm,패덤"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgid "Meters"
 msgstr "미터"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgctxt "unit-symbols"
 msgid "meter,meters,m"
 msgstr "meter,meters,m,미터"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgid "Yards"
 msgstr "야드"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgctxt "unit-symbols"
 msgid "yard,yards,yd"
 msgstr "yard,yards,yd,야드"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgid "Feet"
 msgstr "피트"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgctxt "unit-symbols"
 msgid "foot,feet,ft"
 msgstr "foot,feet,ft,피트"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgid "Inches"
 msgstr "인치"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgctxt "unit-symbols"
 msgid "inch,inches,in"
 msgstr "inch,inches,in,인치"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgid "Centimeters"
 msgstr "센티미터"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgctxt "unit-symbols"
 msgid "centimeter,centimeters,cm,cms"
 msgstr "centimeter,centimeters,cm,cms,센티미터"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgid "Millimeters"
 msgstr "밀리미터"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgctxt "unit-symbols"
 msgid "millimeter,millimeters,mm"
 msgstr "millimeter,millimeters,mm,밀리미터"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgid "Micrometers"
 msgstr "마이크로미터"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgctxt "unit-symbols"
 msgid "micrometer,micrometers,um"
 msgstr "micrometer,micrometers,um,마이크로미터"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgid "Nanometers"
 msgstr "나노미터"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgctxt "unit-symbols"
 msgid "nanometer,nanometers,nm"
 msgstr "nanometer,nanometers,nm,나노미터"
 
-#: lib/unit.vala:63
-msgid "Desktop Publishing Point"
+#: lib/unit.vala:64
+msgid "Desktop Publishing Points"
 msgstr "데스크톱 출판용 포인트"
 
-#: lib/unit.vala:63
+#: lib/unit.vala:64
 msgctxt "unit-symbols"
 msgid "point,pt,points,pts"
 msgstr "point,pt,points,pts,포인트"
 
-#: lib/unit.vala:64
-msgid "Kilometers per hour"
+#: lib/unit.vala:65
+msgid "Kilometers per Hour"
 msgstr "킬로미터/시간"
 
-#: lib/unit.vala:64
+#: lib/unit.vala:65
 msgctxt "unit-symbols"
 msgid "kilometers per hour,kmph,kmh,kph"
 msgstr "kilometers per hour,kmph,kmh,kph,킬로미터/시간"
 
-#: lib/unit.vala:65
-msgid "Miles per hour"
+#: lib/unit.vala:66
+msgid "Miles per Hour"
 msgstr "마일/시간"
 
-#: lib/unit.vala:65
+#: lib/unit.vala:66
 msgctxt "unit-symbols"
 msgid "milesph,miles per hour,mi/h,miph,mph"
 msgstr "milesph,miles per hour,mi/h,miph,mph,마일/시간"
 
-#: lib/unit.vala:66
-msgid "Meters per second"
+#: lib/unit.vala:67
+msgid "Meters per Second"
 msgstr "미터/초"
 
-#: lib/unit.vala:66
+#: lib/unit.vala:67
 msgctxt "unit-symbols"
 msgid "meters per second,mps"
 msgstr "meters per second,mps,미터/초"
 
-#: lib/unit.vala:67
-msgid "Feet per second"
+#: lib/unit.vala:68
+msgid "Feet per Second"
 msgstr "피트/초"
 
-#: lib/unit.vala:67
+#: lib/unit.vala:68
 msgctxt "unit-symbols"
 msgid "fps,feet per second,feetps"
 msgstr "fps,feets per second,feetps,피트/초"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgid "Knots"
 msgstr "노트"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgctxt "unit-symbols"
 msgid "kt,kn,nd,knot,knots"
 msgstr "kt,kn,nd,knot,knots,노트"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgid "Hectares"
 msgstr "헥타아르"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgctxt "unit-symbols"
 msgid "hectare,hectares,ha"
 msgstr "hectare,hectares,ha,헥타아르"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgid "Acres"
 msgstr "에이커"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgctxt "unit-symbols"
 msgid "acre,acres"
 msgstr "acre,acres,에이커"
 
-#: lib/unit.vala:71
-msgid "Square Foot"
+#: lib/unit.vala:72
+msgid "Square Miles"
+msgstr "제곱마일"
+
+#: lib/unit.vala:72
+msgctxt "unit-symbols"
+msgid "mi²"
+msgstr "mi²"
+
+#: lib/unit.vala:73
+msgid "Square Feet"
 msgstr "제곱피트"
 
-#: lib/unit.vala:71
+#: lib/unit.vala:73
 msgctxt "unit-symbols"
 msgid "ft²"
 msgstr "ft²"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:74
+msgid "Square Kilometers"
+msgstr "제곱킬로미터"
+
+#: lib/unit.vala:74
+msgctxt "unit-symbols"
+msgid "km²"
+msgstr "km²"
+
+#: lib/unit.vala:75
 msgid "Square Meters"
 msgstr "제곱미터"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:75
 msgctxt "unit-symbols"
 msgid "m²"
 msgstr "m²"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgid "Square Centimeters"
 msgstr "제곱센티미터"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgctxt "unit-symbols"
 msgid "cm²"
 msgstr "cm²"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgid "Square Millimeters"
 msgstr "제곱밀리미터"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "mm²"
 msgstr "mm²"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgid "Cubic Meters"
 msgstr "입방미터"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "m³"
 msgstr "m³"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:79
+msgid "British Gallons"
+msgstr "영국식 갤런"
+
+#: lib/unit.vala:79
+msgctxt "unit-symbols"
+msgid "imp_gallon,imp_gallons,imp_gal"
+msgstr "imp_gallon,imp_gallons,imp_gal,임페리얼갤런"
+
+#: lib/unit.vala:80
 msgid "US Gallons"
 msgstr "미국식 갤런"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "gallon,gallons,gal"
 msgstr "gallon,gallons,gal,갤런"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgid "Liters"
 msgstr "리터"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgctxt "unit-symbols"
 msgid "litre,litres,liter,liters,L"
 msgstr "litre,litres,liter,liters,L,리터"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgid "US Quarts"
 msgstr "미국식 쿼트"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgctxt "unit-symbols"
 msgid "quart,quarts,qt"
 msgstr "quart,quarts,qt,쿼트"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:83
+msgid "British Pints"
+msgstr "영국식 파인트"
+
+#: lib/unit.vala:83
+msgctxt "unit-symbols"
+msgid "imp_pint,imp_pints,imp_pt"
+msgstr "imp_pint,imp_pints,imp_pt,임페리얼파인트"
+
+#: lib/unit.vala:84
 msgid "US Pints"
 msgstr "미국식 파인트"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:84
 msgctxt "unit-symbols"
 msgid "pint,pints,pt"
 msgstr "pint,pints,pt,파인트"
 
 # "metric cup"이지만 야드파운드법 아닌 미터법 방식으로 250 mL로 쓰는 컵 단위이지 표준이 아니라 미터법이라고 번역할 수 없음
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgid "Metric Cups"
 msgstr "컵 (250 mL)"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgctxt "unit-symbols"
 msgid "cup,cups,cp"
 msgstr "cup,cups,cp,컵"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgid "Milliliters"
 msgstr "밀리리터"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "millilitre,millilitres,milliliter,milliliters,mL,cm³,밀리리터"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgid "Microliters"
 msgstr "마이크로리터"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
 msgstr "mm³,μL,uL,마이크로리터"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgid "Tonnes"
 msgstr "톤"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgctxt "unit-symbols"
 msgid "tonne,tonnes"
 msgstr "tonne,tonnes,톤"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgid "Kilograms"
 msgstr "킬로그램"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgctxt "unit-symbols"
 msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgstr "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs,킬로그램"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgid "Pounds"
 msgstr "파운드"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb,lbs"
 msgstr "pound,pounds,lb,lbs,파운드"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgid "Ounces"
 msgstr "온스"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgctxt "unit-symbols"
 msgid "ounce,ounces,oz"
 msgstr "ounce,ounces,oz,온스"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgid "Troy Ounces"
 msgstr "트로이 온스"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgctxt "unit-symbols"
 msgid "Troy ounce,Troy ounces,ozt"
 msgstr "Troy ounce,Troy ounces,ozt"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgid "Grams"
 msgstr "그램"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "gram,grams,gramme,grammes,g"
 msgstr "gram,grams,gramme,grammes,g,그램"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:94
+msgid "Milligrams"
+msgstr "밀리그램"
+
+#: lib/unit.vala:94
+msgctxt "unit-symbols"
+msgid "milligram,milligrams,milligramme,milligrammes,mg"
+msgstr "milligram,milligrams,milligramme,milligrammes,mg,밀리그램"
+
+#: lib/unit.vala:95
+msgid "Micrograms"
+msgstr "마이크로그램"
+
+#: lib/unit.vala:95
+msgctxt "unit-symbols"
+msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
+msgstr "microgram,micrograms,microgramme,microgrammes,μg,ug,마이크로그램"
+
+#: lib/unit.vala:96
 msgid "Stone"
 msgstr "스톤"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:96
 msgctxt "unit-symbols"
 msgid "stone,st,stones"
 msgstr "stone,st,stones,스톤"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgid "Centuries"
 msgstr "세기"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgctxt "unit-symbols"
 msgid "century,centuries"
 msgstr "century,centuries,세기"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgid "Decades"
 msgstr "10년"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "decade,decades"
 msgstr "decade,decades,10년"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgid "Years"
 msgstr "년"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "year,years,년"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgid "Months"
 msgstr "달"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "month,months"
 msgstr "month,months,개월,달"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgid "Weeks"
 msgstr "주"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "week,weeks"
 msgstr "week,weeks,주,주일"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgid "Days"
 msgstr "일"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "day,days,일"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgid "Hours"
 msgstr "시간"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "hour,hours,시간"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgid "Minutes"
 msgstr "분"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "minute,minutes,분"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgid "Seconds"
 msgstr "초"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "second,seconds,s,초"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgid "Milliseconds"
 msgstr "밀리초"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "millisecond,milliseconds,ms,밀리초"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgid "Microseconds"
 msgstr "마이크로초"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "microsecond,microseconds,us,μs,마이크로초"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgid "Nanoseconds"
 msgstr "나노초"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "nanosecond,nanoseconds,ns"
 msgstr "nanosecond,nanoseconds,ns,나노초"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
 msgid "Celsius"
 msgstr "섭씨"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
 msgctxt "unit-symbols"
-msgid "degC,˚C,C,c,Celsius,celsius"
-msgstr "degC,˚C,C,c,Celsius,celsius,섭씨"
+msgid "degC,°C,˚C,C,c,Celsius,celsius"
+msgstr "degC,°C,˚C,C,c,Celsius,celsius,섭씨"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
 msgid "Fahrenheit"
 msgstr "화씨"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
 msgctxt "unit-symbols"
-msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
-msgstr "degF,˚F,F,f,Fahrenheit,fahrenheit,화씨"
+msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
+msgstr "degF,°F,˚F,F,f,Fahrenheit,fahrenheit,화씨"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgid "Kelvin"
 msgstr "켈빈"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
 msgstr "k,K,Kelvin,kelvin,켈빈"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
 msgid "Rankine"
 msgstr "란씨"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
 msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
-msgstr "degR,˚R,˚Ra,r,R,Rankine,rankine,란씨"
+msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
+msgstr "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine,란씨"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgid "Bits"
 msgstr "비트"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "bit,bits,b"
 msgstr "bit,bits,b,비트"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgid "Bytes"
 msgstr "바이트"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
 msgstr "byte,bytes,B,바이트"
 
 # 1/10 해리
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgid "Nibbles"
 msgstr "니블"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "nibble,nibbles,니블"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgid "Kilobits"
 msgstr "킬로비트"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "kilobit,kilobits,kb,Kb,킬로비트"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgid "Kilobytes"
 msgstr "킬로바이트"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "kilobyte,kilobytes,kB,KB,킬로바이트"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgid "Kibibits"
 msgstr "키비비트"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "kibibit,kibibits,Kib"
 msgstr "kibibit,kibibits,Kib,키비비트"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgid "Kibibytes"
 msgstr "키비바이트"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
 msgstr "kibibyte,kibibytes,KiB,키비바이트"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgid "Megabits"
 msgstr "메가비트"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "megabit,megabits,Mb"
 msgstr "megabit,megabits,Mb,메가비트"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgid "Megabytes"
 msgstr "메가바이트"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
 msgstr "megabyte,megabytes,MB,메가바이트"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgid "Mebibits"
 msgstr "메비비트"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgctxt "unit-symbols"
 msgid "mebibit,mebibits,Mib"
 msgstr "mebibit,mebibits,Mib,메비비트"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgid "Mebibytes"
 msgstr "메비바이트"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
 msgstr "mebibyte,mebibytes,MiB,메비바이트"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgid "Gigabits"
 msgstr "기가비트"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgctxt "unit-symbols"
 msgid "gigabit,gigabits,Gb"
 msgstr "gigabit,gigabits,Gb,기가비트"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgid "Gigabytes"
 msgstr "기가바이트"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
 msgstr "gigabyte,gigabytes,GB,기가바이트"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgid "Gibibits"
 msgstr "기비비트"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgctxt "unit-symbols"
 msgid "gibibit,gibibits,Gib"
 msgstr "gibibit,gibibits,Gib,기비비트"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgid "Gibibytes"
 msgstr "기비바이트"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
 msgstr "gibibyte,gibibytes,GiB,기비바이트"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgid "Terabits"
 msgstr "테라비트"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgctxt "unit-symbols"
 msgid "terabit,terabits,Tb"
 msgstr "terabit,terabits,Tb,테라비트"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgid "Terabytes"
 msgstr "테라바이트"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
 msgstr "terabyte,terabytes,TB,테라바이트"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgid "Tebibits"
 msgstr "테비비트"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgctxt "unit-symbols"
 msgid "tebibit,tebibits,Tib"
 msgstr "tebibit,tebibits,Tib,테비비트"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgid "Tebibytes"
 msgstr "테비바이트"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
 msgstr "tebibyte,tebibytes,TiB,테비바이트"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgid "Petabits"
 msgstr "페타비트"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgctxt "unit-symbols"
 msgid "petabit,petabits,Pb"
 msgstr "petabit,petabits,Pb,페타비트"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgid "Petabytes"
 msgstr "페타바이트"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
 msgstr "petabyte,petabytes,PB,페타바이트"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgid "Pebibits"
 msgstr "페비비트"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgctxt "unit-symbols"
 msgid "pebibit,pebibits,Pib"
 msgstr "pebibit,pebibits,Pib,페비비트"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgid "Pebibytes"
 msgstr "페비바이트"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
 msgstr "pebibyte,pebibytes,PiB,페비바이트"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgid "Exabits"
 msgstr "엑사비트"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgctxt "unit-symbols"
 msgid "exabit,exabits,Eb"
 msgstr "exabit,exabits,Eb,엑사비트"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgid "Exabytes"
 msgstr "엑사바이트"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
 msgstr "exabyte,exabytes,EB,엑사바이트"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgid "Exbibits"
 msgstr "엑스비비트"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgctxt "unit-symbols"
 msgid "exbibit,exbibits,Eib"
 msgstr "exbibit,exbibits,Eib,엑스비비트"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgid "Exbibytes"
 msgstr "엑스비바이트"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
 msgstr "exbibyte,exbibytes,EiB,엑스비바이트"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgid "Zettabits"
 msgstr "제타비트"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgctxt "unit-symbols"
 msgid "zettabit,zettabits,Zb"
 msgstr "zettabit,zettabits,Zb,제타비트"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgid "Zettabytes"
 msgstr "제타바이트"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
 msgstr "zettabyte,zettabytes,ZB,제타바이트"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgid "Zebibits"
 msgstr "제비비트"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgctxt "unit-symbols"
 msgid "zebibit,zebibits,Zib"
 msgstr "zebibit,zebibits,Zib,제비비트"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgid "Zebibytes"
 msgstr "제비바이트"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
 msgstr "zebibyte,zebibytes,ZiB,제비바이트"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgid "Yottabits"
 msgstr "요타비트"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgctxt "unit-symbols"
 msgid "yottabit,yottabits,Yb"
 msgstr "yottabit,yottabits,Yb,요타비트"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgid "Yottabytes"
 msgstr "요타바이트"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
 msgstr "yottabyte,yottabytes,YB,요타바이트"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgid "Yobibits"
 msgstr "요비비트"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgctxt "unit-symbols"
 msgid "yobibit,yobibits,Yib"
 msgstr "yobibit,yobibits,Yib,요비비트"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgid "Yobibytes"
 msgstr "요비바이트"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
 msgstr "yobibyte,yobibytes,YiB,요비바이트"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgid "Hertz"
 msgstr "헤르츠"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "hertz,Hz"
 msgstr "hertz,Hz,헤르츠"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgid "Kilohertz"
 msgstr "킬로헤르츠"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "kilohertz,kHz"
 msgstr "kilohertz,kHZ,킬로헤르츠"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgid "Megahertz"
 msgstr "메가헤르츠"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "megahertz,MHz"
 msgstr "megahertz,MHz,메가헤르츠"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgid "Gigahertz"
 msgstr "기가헤르츠"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "gigahertz,GHz"
 msgstr "gigahertz,GHz,기가헤르츠"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgid "Terahertz"
 msgstr "테라헤르츠"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "terahertz,THz"
 msgstr "terahertz,THz,테라헤르츠"
 
-#: lib/unit.vala:148
-msgid "Joule"
-msgstr "Joule"
+#: lib/unit.vala:155
+msgid "Joules"
+msgstr "줄"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:155
 msgctxt "unit-symbols"
 msgid "Joule,J,joule,joules"
 msgstr "Joule,J,joule,joules,줄"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgid "Kilojoules"
 msgstr "킬로줄"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgctxt "unit-symbols"
 msgid "KJ,kilojoules,kilojoule"
 msgstr "KJ,kilojoules,kilojoule,킬로줄"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgid "Megajoules"
 msgstr "메가줄"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgctxt "unit-symbols"
 msgid "MJ,megajoules,megajoule"
 msgstr "MJ,megajoules,megajoule,메가줄"
 
-#: lib/unit.vala:151
-msgid "KilowattHour"
+#: lib/unit.vala:158
+msgid "Kilowatt-Hours"
 msgstr "킬로와트시"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:158
 msgctxt "unit-symbols"
 msgid "kwh,kWh,kilowatt-hour,kilowatthour"
 msgstr "kwh,kWh,kilowatt-hour,kilowatthour,킬로와트시"
 
-#: lib/unit.vala:152
-msgid "BTU"
-msgstr "BTU"
+#: lib/unit.vala:159
+msgid "British Thermal Units"
+msgstr "영국 열량 단위"
 
-#: lib/unit.vala:152
+#: lib/unit.vala:159
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:153
-msgid "Calorie"
+#: lib/unit.vala:160
+msgid "Calories"
 msgstr "칼로리"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:160
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "calories,calorie,cal,칼로리"
 
-#: lib/unit.vala:154
-msgid "Erg"
-msgstr "Erg"
+#: lib/unit.vala:161
+msgid "Kilocalories"
+msgstr "킬로칼로리"
 
-#: lib/unit.vala:154
+#: lib/unit.vala:161
+msgctxt "unit-symbols"
+msgid "kilocalories,kilocalorie,kcal"
+msgstr "kilocalories,kilocalorie,kcal,킬로칼로리"
+
+#: lib/unit.vala:162
+msgid "Ergs"
+msgstr "에르그"
+
+#: lib/unit.vala:162
 msgctxt "unit-symbols"
 msgid "ergs,erg"
-msgstr "ergs,erg"
+msgstr "ergs,erg,에르그"
 
-#: lib/unit.vala:155
-msgid "eV"
-msgstr "eV"
+#: lib/unit.vala:163
+msgid "Electron Volts"
+msgstr "전자볼트"
 
-#: lib/unit.vala:155
+#: lib/unit.vala:163
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
-msgstr "electronvolt,electronvolts,ev"
+msgstr "electronvolt,electronvolts,ev,전자볼트"
 
-#: lib/unit.vala:156
-msgid "Ft-lb"
-msgstr "Ft-lb"
+#: lib/unit.vala:164
+msgid "Foot-Pounds"
+msgstr "피트-파운드"
 
-#: lib/unit.vala:156
+#: lib/unit.vala:164
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
-msgstr "foot-pound,foot-pounds,ft-lb,ft-lbs"
+msgstr "foot-pound,foot-pounds,ft-lb,ft-lbs,피트-파운드"
 
-#: lib/unit.vala:157
-msgid "Pascal"
+#: lib/unit.vala:165
+msgid "Pascals"
 msgstr "파스칼"
 
-#: lib/unit.vala:157
+#: lib/unit.vala:165
 msgctxt "unit-symbols"
 msgid "Pascal,pascal,Pa"
 msgstr "Pascal,pascal,Pa,파스칼"
 
-#: lib/unit.vala:158
-msgid "Kilopascal"
+#: lib/unit.vala:166
+msgid "Kilopascals"
 msgstr "킬로파스칼"
 
-#: lib/unit.vala:158
+#: lib/unit.vala:166
 msgctxt "unit-symbols"
 msgid "Kilopascal,kilopascal,kPa"
 msgstr "Kilopascal,kilopascal,kPa,킬로파스칼"
 
-#: lib/unit.vala:159
-msgid "Hectopascal"
+#: lib/unit.vala:167
+msgid "Hectopascals"
 msgstr "헥토파스칼"
 
-#: lib/unit.vala:159
+#: lib/unit.vala:167
 msgctxt "unit-symbols"
 msgid "Hectopascal,hectopascal,hPa"
 msgstr "Hectopascal,hectopascal,hPa,헥토파스칼"
 
-#: lib/unit.vala:160
-msgid "Bar"
+#: lib/unit.vala:168
+msgid "Bars"
 msgstr "바"
 
-#: lib/unit.vala:160
+#: lib/unit.vala:168
 msgctxt "unit-symbols"
 msgid "Bar,bar"
 msgstr "Bar,bar,바"
 
-#: lib/unit.vala:161
-msgid "Standard Atmosphere"
+#: lib/unit.vala:169
+msgid "Standard Atmospheres"
 msgstr "표준 기압"
 
-#: lib/unit.vala:161
+#: lib/unit.vala:169
 msgctxt "unit-symbols"
 msgid "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm"
-msgstr "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm,기압"
+msgstr ""
+"Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm,기압"
 
-#: lib/unit.vala:162
-msgid "Millimetre of Mercury"
+#: lib/unit.vala:170
+msgid "Millimeters of Mercury"
 msgstr "수은주 밀리미터"
 
-#: lib/unit.vala:162
+#: lib/unit.vala:170
 msgctxt "unit-symbols"
-msgid "Millimetre of Mercury,millimetre of mercury,mmHg"
-msgstr "Millimetre of Mercury,millimetre of mercury,mmHg,수은주 밀리미터"
+msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
+msgstr "Millimeter of Mercury,millimeter of mercury,mmHg,수은주 밀리미터"
 
-#: lib/unit.vala:163
-msgid "Inch of Mercury"
+#: lib/unit.vala:171
+msgid "Inches of Mercury"
 msgstr "수은주 인치"
 
-#: lib/unit.vala:163
+#: lib/unit.vala:171
 msgctxt "unit-symbols"
 msgid "Inch of Mercury,inch of mercury,inHg"
 msgstr "Inch of Mercury,inch of mercury,inHg,수은주 인치"
 
 # NOTE: PSI
-#: lib/unit.vala:164
-msgid "Pound per Square Inch"
+#: lib/unit.vala:172
+msgid "Pounds per Square Inch"
 msgstr "평방 인치당 파운드"
 
-#: lib/unit.vala:164
+#: lib/unit.vala:172
 msgctxt "unit-symbols"
 msgid "Pound per Square Inch,pound per square inch,psi"
 msgstr "Pound per Square Inch,pound per square inch,psi,평방 인치당 파운드"
 
-#: lib/unit.vala:166
+#: lib/unit.vala:174
 msgid "Currency"
 msgstr "통화"
 
-#: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:76
-#: src/ui/buttons-programming.ui:82 src/ui/buttons-programming.ui:88
-msgid "Copy"
-msgstr "복사"
-
-#: search-provider/search-provider.vala:200
-msgid "Copy result to clipboard"
-msgstr "결과를 클립보드에 복사합니다"
-
-#: src/ui/buttons-advanced.ui:169 src/ui/buttons-basic.ui:116
-#: src/ui/buttons-financial.ui:729 src/ui/buttons-programming.ui:1724
-msgid "Modulus Divide"
-msgstr "나머지 나누기"
-
-#: src/ui/buttons-advanced.ui:186 src/ui/buttons-basic.ui:133
-#: src/ui/buttons-financial.ui:746 src/ui/buttons-programming.ui:1346
-msgid "Divide [/]"
-msgstr "나누기 [/]"
-
-#: src/ui/buttons-advanced.ui:282 src/ui/buttons-basic.ui:229
-#: src/ui/buttons-financial.ui:842 src/ui/buttons-programming.ui:1363
-msgid "Multiply [*]"
-msgstr "곱하기 [*]"
-
-#: src/ui/buttons-advanced.ui:299 src/ui/buttons-basic.ui:246
-#: src/ui/buttons-financial.ui:859 src/ui/buttons-programming.ui:1380
-msgid "Subtract [-]"
-msgstr "빼기 [-]"
-
-# 주의: 계산기 단추이므로 "더하기"라고 번역
-#: src/ui/buttons-advanced.ui:315 src/ui/buttons-basic.ui:262
-#: src/ui/buttons-financial.ui:875 src/ui/buttons-programming.ui:1396
-msgid "Add [+]"
-msgstr "더하기 [+]"
-
-#: src/ui/buttons-advanced.ui:332 src/ui/buttons-basic.ui:279
-#: src/ui/buttons-programming.ui:1330 src/math-buttons.vala:690
-msgid "Pi [Ctrl+P]"
-msgstr "Pi [Ctrl+P]"
-
-#: src/ui/buttons-advanced.ui:349 src/ui/buttons-basic.ui:296
-#: src/ui/buttons-financial.ui:892 src/ui/buttons-programming.ui:1313
-msgid "Root [Ctrl+R]"
-msgstr "루트 [Ctrl+R]"
-
-#: src/ui/buttons-advanced.ui:364 src/ui/buttons-basic.ui:311
-msgid "Square [Ctrl+2]"
-msgstr "제곱 [Ctrl+2]"
-
-#: src/ui/buttons-advanced.ui:385 src/ui/buttons-basic.ui:332
-#: src/ui/buttons-conversion.ui:207 src/ui/buttons-financial.ui:908
-#: src/ui/buttons-programming.ui:1429
-msgid "Clear Display [Escape]"
-msgstr "표시 값 지우기 [Escape]"
-
-#: src/ui/buttons-advanced.ui:401 src/ui/buttons-basic.ui:348
-#: src/ui/buttons-financial.ui:924 src/ui/buttons-programming.ui:1740
-msgid "Start Group [(]"
-msgstr "그룹 시작 [(]"
-
-#: src/ui/buttons-advanced.ui:418 src/ui/buttons-basic.ui:365
-#: src/ui/buttons-financial.ui:941 src/ui/buttons-programming.ui:1756
-msgid "End Group [)]"
-msgstr "그룹 끝 [)]"
-
-#: src/ui/buttons-advanced.ui:435 src/ui/buttons-basic.ui:382
-#: src/ui/buttons-financial.ui:958
-msgid "Percentage [%]"
-msgstr "퍼센트 [%]"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:449 src/ui/buttons-basic.ui:396
-#: src/ui/buttons-financial.ui:972 src/ui/buttons-programming.ui:1410
-msgid "="
-msgstr "="
-
-#: src/ui/buttons-advanced.ui:452 src/ui/buttons-basic.ui:399
-#: src/ui/buttons-financial.ui:975 src/ui/buttons-programming.ui:1413
-msgid "Calculate Result"
-msgstr "결과 계산"
-
-#: src/ui/buttons-advanced.ui:478 src/ui/buttons-programming.ui:1781
-msgid "Subscript Mode [Alt]"
-msgstr "아래 첨자 모드 [Alt]"
-
-#: src/ui/buttons-advanced.ui:494 src/ui/buttons-programming.ui:1797
-msgid "Superscript Mode [Ctrl]"
-msgstr "위 첨자 모드 [Ctrl]"
-
-#: src/ui/buttons-advanced.ui:511 src/ui/buttons-programming.ui:2097
-msgid "Factorize [Ctrl+F]"
-msgstr "소인수 분해 [Ctrl+F]"
-
-#: src/ui/buttons-advanced.ui:526
-msgid "Scientific Exponent [Ctrl+E]"
-msgstr "과학 지수 [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:595
-msgid "Hyperbolic Cosine"
-msgstr "하이퍼볼릭 코사인"
-
-#: src/ui/buttons-advanced.ui:611
-msgid "Hyperbolic Sine"
-msgstr "하이퍼볼릭 사인"
-
-#: src/ui/buttons-advanced.ui:627
-msgid "Hyperbolic Tangent"
-msgstr "하이퍼볼릭 탄젠트"
-
-#: src/ui/buttons-advanced.ui:642 src/ui/buttons-financial.ui:990
-#: src/ui/buttons-programming.ui:1942
-msgid "Exponent [^ or **]"
-msgstr "지수 [^ 또는 **]"
-
-#: src/ui/buttons-advanced.ui:663 src/ui/buttons-programming.ui:1963
-msgid "Inverse [Ctrl+I]"
-msgstr "역 삼각함수 [Ctrl+I]"
-
-#: src/ui/buttons-advanced.ui:687
-msgid "Euler’s Number"
-msgstr "오일러 수"
-
-#: src/ui/buttons-advanced.ui:704
-msgid "Natural Logarithm"
-msgstr "자연로그"
-
-#: src/ui/buttons-advanced.ui:735 src/ui/buttons-programming.ui:2018
-msgid "Factorial [!]"
-msgstr "팩토리얼 [!]"
-
-#: src/ui/buttons-advanced.ui:757 src/ui/buttons-programming.ui:2040
-msgid "Absolute Value [|]"
-msgstr "절대값 [|]"
-
-# "i"
-#: src/ui/buttons-advanced.ui:780
-msgid "Imaginary Unit"
-msgstr "허수 단위"
-
-#: src/ui/buttons-advanced.ui:797
-msgid "Real Component"
-msgstr "실수 부분"
-
-#: src/ui/buttons-advanced.ui:814
-msgid "Imaginary Component"
-msgstr "허수 부분"
-
-#: src/ui/buttons-advanced.ui:831
-msgid "Complex Conjugate"
-msgstr "복소켤레"
-
-#: src/ui/buttons-advanced.ui:848
-msgid "Complex Argument"
-msgstr "복소수 편각"
-
-#: src/ui/buttons-advanced.ui:863 src/ui/buttons-financial.ui:1053
-#: src/ui/buttons-programming.ui:2128
-msgid "Memory"
-msgstr "기억"
-
-#. The label on the memory button
-#: src/ui/buttons-advanced.ui:864 src/ui/buttons-financial.ui:1054
-#: src/ui/buttons-programming.ui:2127
-msgid "x"
-msgstr "x"
-
-#: src/ui/buttons-advanced.ui:878
-msgid "Additional Functions"
-msgstr "추가 기능"
-
-#: src/ui/buttons-conversion.ui:222
-msgid "Switch Conversion Units"
-msgstr "변환 단위 바꾸기"
-
-# 키 이름
-#: src/ui/buttons-conversion.ui:237
-msgid "Backspace"
-msgstr "Backspace"
-
-#. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1071
-msgid "Compounding Term"
-msgstr "복리 기간"
-
-#: src/ui/buttons-financial.ui:15 src/ui/buttons-financial.ui:71
-#: src/ui/buttons-financial.ui:127 src/ui/buttons-financial.ui:183
-#: src/ui/buttons-financial.ui:233 src/ui/buttons-financial.ui:289
-#: src/ui/buttons-financial.ui:345 src/ui/buttons-financial.ui:401
-#: src/ui/buttons-financial.ui:457 src/ui/buttons-financial.ui:519
-#: src/ui/buttons-programming.ui:2210 src/gnome-calculator.vala:308
-msgid "_Cancel"
-msgstr "취소(_C)"
-
-#. Compounding Term Dialog: Calculate button
-#. Double-Declining Depreciation Dialog: Calculate button
-#. Future Value Dialog: Calculate button
-#. Gross Profit Margin Dialog: Calculate button
-#. Periodic Payment Dialog: Calculate button
-#. Present Value Dialog: Calculate button
-#. Periodic Interest Rate Dialog: Calculate button
-#. Straight-Line Depreciation Dialog: Calculate button
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
-#. Payment Period Dialog: Calculate button
-#: src/ui/buttons-financial.ui:21 src/ui/buttons-financial.ui:77
-#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:189
-#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:295
-#: src/ui/buttons-financial.ui:351 src/ui/buttons-financial.ui:407
-#: src/ui/buttons-financial.ui:463 src/ui/buttons-financial.ui:525
-msgid "C_alculate"
-msgstr "계산(_A)"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:32
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"각 복리 기간마다 이자율이 고정되어 있을 때, 투자금을 미래 가치로 올리는 데 필"
-"요한 복리 기간을 계산합니다."
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Title of Periodic Interest Rate dialog
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:155
-#: src/ui/buttons-financial.ui:261 src/ui/buttons-financial.ui:317
-#: src/ui/buttons-financial.ui:335 src/ui/buttons-financial.ui:553
-#: src/ui/buttons-financial.ui:1179
-msgid "Periodic Interest Rate"
-msgstr "정기 이율"
-
-#. Compounding Term Dialog: Label before future value input
-#. Title of Future Value dialog
-#. Periodic Interest Rate Dialog: Label before future value input
-#. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:43 src/ui/buttons-financial.ui:117
-#: src/ui/buttons-financial.ui:367 src/ui/buttons-financial.ui:547
-#: src/ui/buttons-financial.ui:1107
-msgid "Future Value"
-msgstr "미래 가치"
-
-#. Compounding Term Dialog: Label before present value input
-#. Title of Present Value dialog
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:49 src/ui/buttons-financial.ui:279
-#: src/ui/buttons-financial.ui:373 src/ui/buttons-financial.ui:1197
-msgid "Present Value"
-msgstr "현재 가치"
-
-#. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:61
-msgid "Double-Declining Depreciation"
-msgstr "이중 감가상각"
-
-#. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:88
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the double-declining balance method."
-msgstr ""
-"이중 감가상각 방법을 이용해 지정한 기간 동안 자산의 감가상각을 계산합니다."
-
-#. Double-Declining Depreciation Dialog: Label before cost input
-#. Gross Profit Margin Dialog: Label before cost input
-#. Straight-Line Depreciation Dialog: Label before cost input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:93 src/ui/buttons-financial.ui:205
-#: src/ui/buttons-financial.ui:423 src/ui/buttons-financial.ui:479
-msgid "Cost"
-msgstr "비용"
-
-#. Double-Declining Depreciation Dialog: Label before life input
-#. Straight-Line Depreciation Dialog: Label before life input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:99 src/ui/buttons-financial.ui:435
-#: src/ui/buttons-financial.ui:491
-msgid "Life"
-msgstr "내용 연수"
-
-#. Double-Declining Depreciation Dialog: Label before period input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:105 src/ui/buttons-financial.ui:497
-msgid "Period"
-msgstr "기간"
-
-#. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:144
-msgid ""
-"Calculates the future value of an investment based on a series of equal "
-"payments at a periodic interest rate over the number of payment periods in "
-"the term."
-msgstr ""
-"동일한 이율의 이자가 일정 기간 동안 있을 때 투자금의 미래 가치를 계산합니다."
-
-#. Future Value Dialog: Label before periodic payment input
-#. Title of Periodic Payment dialog
-#. Present Value Dialog: Label before periodic payment input
-#. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:149 src/ui/buttons-financial.ui:223
-#: src/ui/buttons-financial.ui:311 src/ui/buttons-financial.ui:541
-#: src/ui/buttons-financial.ui:1215
-msgid "Periodic Payment"
-msgstr "정기 상환"
-
-#. Future Value Dialog: Label before number of periods input
-#. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:161 src/ui/buttons-financial.ui:323
-msgid "Number of Periods"
-msgstr "기간 수"
-
-#. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:173 src/ui/buttons-financial.ui:1233
-msgid "Gross Profit Margin"
-msgstr "총 이익률"
-
-#. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:200
-msgid ""
-"Calculates the resale price of a product, based on the product cost and the "
-"wanted gross profit margin."
-msgstr ""
-"제품의 취득 원가와 희망하는 총 이익률에 따라 제품의 판매 가격을 계산합니다."
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:211
-msgid "Margin"
-msgstr "이익"
-
-#. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:250
-msgid ""
-"Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period."
-msgstr ""
-"대출의 정기 이자를 계산합니다. 이자는 각 이자 기간의 마지막에 지불합니다."
-
-#. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:255
-msgid "Principal"
-msgstr "원금"
-
-#. Periodic Payment Dialog: Label before term input
-#. Periodic Interest Rate Dialog: Label before term input
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:267 src/ui/buttons-financial.ui:379
-#: src/ui/buttons-financial.ui:1121
-msgid "Term"
-msgstr "Term"
-
-#. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:306
-msgid ""
-"Calculates the present value of an investment based on a series of equal "
-"payments discounted at a periodic interest rate over the number of payment "
-"periods in the term."
-msgstr ""
-"일정 기간의 이자 지급 기간만큼 할인한 지급액을 기준으로 투자금의 현재 가치를 "
-"계산합니다."
-
-#. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:362
-msgid ""
-"Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods."
-msgstr ""
-"정해진 복리 기간 동안 투자금을 미래 가치로 올리는 데 필요한 정기 이자율을 계"
-"산합니다."
-
-#. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:391
-msgid "Straight-Line Depreciation"
-msgstr "정액 감가상각"
-
-#. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:418
-msgid ""
-"Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly "
-"over the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated."
-msgstr ""
-"정액 감가상각 방법을 이용해 지정한 기간 동안 자산의 감가상각을 계산합니다. 정"
-"액 감가상각 방법에서는 자산의 취득 원가를 내용 연수로 균등하게 나눕니다. 내"
-"용 연수는 자산의 감가상각을 계산하는 기간이 몇 회 되었느냐를 뜻하고, 보통 연 "
-"단위입니다."
-
-# 주의: 연수합계법에서 사용하는 용어로 사용한다
-#. Straight-Line Depreciation Dialog: Label before salvage input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:429 src/ui/buttons-financial.ui:485
-msgid "Salvage"
-msgstr "잔존 가치"
-
-#. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:447
-msgid "Sum-of-the-Years’-Digits Depreciation"
-msgstr "연수합계 감가상각"
-
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:474
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
-"occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated."
-msgstr ""
-"연수합계 방법을 이용해 지정한 기간 동안 자산의 감가 상각을 계산합니다. 이 감"
-"가상각 방법에서는 감가 상각 속도가 점차 변하는데, 초기의 감가상각 비용이 나중"
-"의 감가상각보다 더 많습니다. 내용 연수는 자산의 감가상각을 계산하는 기간이 "
-"몇 회 되었느냐를 뜻하고, 보통 연 단위입니다."
-
-#. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:509
-msgid "Payment Period"
-msgstr "상환 주기"
-
-#. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:536
-msgid ""
-"Calculates the number of payment periods that are necessary during the term "
-"of an ordinary annuity, to accumulate a future value, at a periodic interest "
-"rate."
-msgstr ""
-"대출 기간 동안 정해진 이자로 정해진 미래 가치를 달성하는데 필요한 이자 지급 "
-"기간을 계산합니다."
-
-#: src/ui/buttons-financial.ui:1036
-msgid "Currency Conversion"
-msgstr "통화 변환"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:1067
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1085
-msgid "Ddb"
-msgstr "Ddb"
-
-#: src/ui/buttons-financial.ui:1089
-msgid "Double Declining Depreciation"
-msgstr "이중 감가상각"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:1103
-msgid "Fv"
-msgstr "Fv"
-
-#: src/ui/buttons-financial.ui:1125
-msgid "Financial Term"
-msgstr "회계 기간"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1139
-msgid "Syd"
-msgstr "Syd"
-
-#: src/ui/buttons-financial.ui:1143
-msgid "Sum of the Years Digits Depreciation"
-msgstr "연수합계 감가상각"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1157
-msgid "Sln"
-msgstr "Sln"
-
-#: src/ui/buttons-financial.ui:1161
-msgid "Straight Line Depreciation"
-msgstr "정액 감가상각"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:1175
-msgid "Rate"
-msgstr "Rate"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:1193
-msgid "Pv"
-msgstr "Pv"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:1211
-msgid "Pmt"
-msgstr "Pmt"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:1229
-msgid "Gpm"
-msgstr "Gpm"
-
-#: src/ui/buttons-programming.ui:18
+#: lib/unit.vala:183
+msgid "Number Base"
+msgstr "진법"
+
+#: lib/unit.vala:184 src/buttons-programming.vala:168
+#: src/ui/buttons-programming.blp:2590
 msgid "Binary"
 msgstr "2진수"
 
-#: src/ui/buttons-programming.ui:19
+#: lib/unit.vala:185 src/buttons-programming.vala:173
+#: src/ui/buttons-programming.blp:2596
 msgid "Octal"
 msgstr "8진수"
 
-#: src/ui/buttons-programming.ui:20
+#: lib/unit.vala:186 src/buttons-programming.vala:178
+#: src/ui/buttons-programming.blp:2602
 msgid "Decimal"
 msgstr "십진수"
 
-#: src/ui/buttons-programming.ui:21
+#: lib/unit.vala:187 src/buttons-programming.vala:183
+#: src/ui/buttons-programming.blp:2608
 msgid "Hexadecimal"
 msgstr "16진수"
 
-#: src/ui/buttons-programming.ui:61
-msgid "Number Base Conversion"
-msgstr "진법 변환"
+#: search-provider/search-provider.vala:206
+msgid "Open in Calculator"
+msgstr "계산기에서 열기"
 
-#: src/ui/buttons-programming.ui:1812
-msgid "Shift Left"
-msgstr "왼쪽으로 쉬프트"
+#: search-provider/search-provider.vala:239
+msgid "Result copied"
+msgstr "결과 복사됨"
 
-#: src/ui/buttons-programming.ui:1827
-msgid "Shift Right"
-msgstr "오른쪽으로 쉬프트"
+#: search-provider/search-provider.vala:240
+msgid "Result was copied successfully"
+msgstr "결과를 성공적으로 복사했습니다"
 
-#: src/ui/buttons-programming.ui:1843
-msgid "Boolean Exclusive OR"
-msgstr "불리언 XOR"
+#: src/buttons-advanced.vala:87 src/math-preferences.vala:134
+msgid "Degrees"
+msgstr "육십분"
 
-#: src/ui/buttons-programming.ui:1859
-msgid "Boolean OR"
-msgstr "불리언 OR"
+#: src/buttons-advanced.vala:89
+#, c-format
+msgid "Angle Unit: %s"
+msgstr "각도 단위: %s"
 
-#: src/ui/buttons-programming.ui:1876
-msgid "Boolean AND"
-msgstr "불리언 AND"
+#: src/buttons-conversion.vala:125 src/buttons-conversion.vala:130
+#: src/buttons-conversion.vala:137 src/buttons-conversion.vala:142
+msgid "Not Available"
+msgstr "사용할 수 없음"
 
-#: src/ui/buttons-programming.ui:1893
-msgid "Boolean NOT"
-msgstr "불리언 NOT"
+#: src/buttons-programming.vala:205
+#, c-format
+msgid "%d-bit"
+msgid_plural "%d-bit"
+msgstr[0] "%d-비트"
 
-#: src/ui/buttons-programming.ui:1910
-msgid "One’s Complement"
-msgstr "1의 보수"
-
-#: src/ui/buttons-programming.ui:1927
-msgid "Two’s Complement"
-msgstr "2의 보수"
-
-#: src/ui/buttons-programming.ui:2003
-msgid "Binary Logarithm"
-msgstr "이진로그"
-
-#: src/ui/buttons-programming.ui:2063
-msgid "Integer Component"
-msgstr "정수 부분"
-
-#: src/ui/buttons-programming.ui:2080
-msgid "Fractional Component"
-msgstr "분수 부분"
-
-#. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2112 src/ui/buttons-programming.ui:2160
-msgid "Insert Character Code"
-msgstr "문자 코드 입력"
-
-#: src/ui/buttons-programming.ui:2143
-msgid "Change Word Size"
-msgstr "워드 크기 바꾸기"
-
-#. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2192
-msgid "Character"
-msgstr "문자"
-
-#. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2220
-msgid "_Insert"
-msgstr "넣기(_I)"
-
-#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming, keyboard and conversion
 #: src/gnome-calculator.vala:22
-msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
-msgstr "지정한 모드에서 시작 (기본, 고급, 재무, 프로그래밍, 키보드)"
+msgid ""
+"Start in given mode (basic, advanced, financial, programming, keyboard, "
+"conversion)"
+msgstr ""
+"지정한 모드에서 시작 (basic, advanced, financial, programming, keyboard, "
+"conversion)"
 
 #: src/gnome-calculator.vala:23
 msgid "Solve given equation"
@@ -2601,1005 +2496,1171 @@ msgid "Show release version"
 msgstr "릴리스 버전을 표시합니다"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:289
-msgid "© 1986–2023 The Calculator authors"
-msgstr "© 1986–2023 The Calculator authors"
+#: src/gnome-calculator.vala:291
+#, c-format
+msgid "© 1986–%d The Calculator authors"
+msgstr "© 1986–%d The Calculator authors"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:295
+#: src/gnome-calculator.vala:297
 msgid "translator-credits"
 msgstr ""
 "차영호 <ganadist at gmail dot com>\n"
 "류창우 <cwryu@debian.org>\n"
 "박열 <peary2@gmail.com>"
 
-#: src/gnome-calculator.vala:299
-msgid "Exchange rate data providers"
+#: src/gnome-calculator.vala:301
+msgid "Exchange Rate Data Providers"
 msgstr "환율 데이터 제공자"
 
-#: src/gnome-calculator.vala:299
+#: src/gnome-calculator.vala:301
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "환율 데이터 제공: %s"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Close All?"
 msgstr "모두 닫습니까?"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Are you sure you want to close all open windows?"
 msgstr "정말로 열려 있는 모든 창을 닫으시겠습니까?"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
+#: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
+#: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
+#: src/ui/buttons-financial.blp:1283 src/ui/buttons-financial.blp:1339
+#: src/ui/buttons-financial.blp:1401 src/ui/buttons-programming.blp:2563
+msgid "_Cancel"
+msgstr "취소(_C)"
+
+#: src/gnome-calculator.vala:311
 msgid "Close _All"
 msgstr "모두 닫기(_A)"
 
-#: src/math-buttons.vala:286 src/math-buttons.vala:735
-#: src/math-buttons.vala:751
-#, c-format
-msgid "%d-bit"
-msgid_plural "%d-bit"
-msgstr[0] "%d-비트"
+#: src/math-converter.vala:612 src/math-converter.vala:630
+msgid "Error"
+msgstr "오류"
 
-#: src/math-buttons.vala:696
-msgid "Negative [-]"
-msgstr "음수 [-]"
-
-#: src/ui/math-converter.ui:150
-msgid "_Copy"
-msgstr "복사(_C)"
-
-#: src/ui/math-converter.ui:154
-msgid "_Paste"
-msgstr "붙여넣기(_P)"
-
-#: src/math-display.vala:604
+#: src/math-display.vala:694
 msgid "Defined Functions"
 msgstr "정의된 기능"
 
-#: src/math-display.vala:649
-msgid "Built-in keywords"
+#: src/math-display.vala:742
+msgid "Built-in Keywords"
 msgstr "내장 키워드"
 
-#: src/math-display.vala:693
-msgid "Defined currencies"
+#: src/math-display.vala:794
+msgid "Defined Currencies"
 msgstr "정의된 통화"
 
-#: src/math-display.vala:743
+#: src/math-display.vala:843
 msgid "Defined Variables"
 msgstr "정의된 변수"
 
-#: src/ui/math-function-popover.ui:29
-msgid "New function"
-msgstr "새 함수"
+#: src/math-function-popover.vala:185
+msgid "Can not use defined variable or constant names"
+msgstr "정의된 변수나 상수 이름을 사용할 수 없습니다"
 
-#: src/ui/math-function-popover.ui:43
-msgid "Select no. of arguments"
-msgstr "함수의 인자 개수 선택"
+#: src/math-function-popover.vala:189
+msgid "Can not use built-in function or operator names"
+msgstr "내장 함수 또는 연산자 이름을 사용할 수 없습니다"
 
-#: src/math-preferences.vala:116
+#: src/math-function-popover.vala:192
+msgid "Function name can not start with a digit"
+msgstr "함수 이름은 숫자로 시작할 수 없습니다"
+
+#: src/math-function-popover.vala:195
+msgid "Function name can only contain digits, letters and underscores"
+msgstr "함수 이름은 숫자, 문자, 밑줄만 사용할 수 있습니다."
+
+#: src/math-popover.vala:110
+msgid "Edit"
+msgstr "편집"
+
+#: src/math-popover.vala:120
+msgid "Delete"
+msgstr "삭제"
+
+#: src/math-preferences.vala:147 src/ui/buttons-programming.blp:2618
 msgid "8-bit"
 msgstr "8-비트"
 
-#: src/math-preferences.vala:118
+#: src/math-preferences.vala:149 src/ui/buttons-programming.blp:2624
 msgid "16-bit"
 msgstr "16-비트"
 
-#: src/math-preferences.vala:120
+#: src/math-preferences.vala:151 src/ui/buttons-programming.blp:2630
 msgid "32-bit"
 msgstr "32-비트"
 
-#: src/math-preferences.vala:122
+#: src/math-preferences.vala:153 src/ui/buttons-programming.blp:2636
 msgid "64-bit"
 msgstr "64-비트"
 
-#: src/math-preferences.vala:131
+#: src/math-preferences.vala:162
 msgid "Never"
 msgstr "하지 않음"
 
-#: src/math-preferences.vala:133
+#: src/math-preferences.vala:164
 msgid "Daily"
 msgstr "매일"
 
-#: src/math-preferences.vala:135
+#: src/math-preferences.vala:166
 msgid "Weekly"
 msgstr "매주"
 
-#: src/ui/math-preferences.ui:18
-msgid "Number of _Decimals"
-msgstr "소수점 개수(_D)"
+#: src/math-preferences.vala:175
+msgid "Currency Code"
+msgstr "통화 코드"
 
-#: src/ui/math-preferences.ui:27
-msgid "Trailing _Zeroes"
-msgstr "마지막 0 개수(_Z)"
+#: src/math-preferences.vala:177
+msgid "Currency Name"
+msgstr "통화 이름"
 
-#: src/ui/math-preferences.ui:33
-msgid "_Thousands Separators"
-msgstr "천단위 자리수 구분(_T)"
+#: src/math-preferences.vala:179
+msgid "Both"
+msgstr "둘 다"
 
-#: src/ui/math-preferences.ui:39
-msgid "_Angle Units"
-msgstr "각도 단위(_A)"
+#: src/math-variable-popover.vala:216
+msgid "Can not use defined function or operator names"
+msgstr "정의된 함수나 연산자 이름을 쓸 수 없습니다"
 
-#: src/ui/math-preferences.ui:45
-msgid "Word _Size"
-msgstr "워드 크기(_S)"
+#: src/math-variable-popover.vala:219
+msgid "Can not use built-in variable or constant names"
+msgstr "내장 변수나 상수 이름을 쓸 수 없습니다"
 
-#: src/ui/math-preferences.ui:51
-msgid "E_xchange Rate Refresh Interval"
-msgstr "환율 새로고침 주기(_X)"
+#: src/math-variable-popover.vala:222
+msgid "Variable name can not start with a digit"
+msgstr "변수 이름은 숫자로 시작할 수 없습니다"
 
-#: src/ui/math-shortcuts.ui:13
-msgctxt "shortcut window"
-msgid "General"
-msgstr "일반"
+#: src/math-variable-popover.vala:225
+msgid "Variable name can only contain digits, letters and underscores"
+msgstr "변수 이름은 숫자, 문자, 밑줄만 사용할 수 있습니다."
 
-#: src/ui/math-shortcuts.ui:17
-msgctxt "shortcut window"
-msgid "Open a new window"
-msgstr "새 창 열기"
-
-#: src/ui/math-shortcuts.ui:23
-msgctxt "shortcut window"
-msgid "Close current window"
-msgstr "현재 창 닫기"
-
-#: src/ui/math-shortcuts.ui:29
-msgctxt "shortcut window"
-msgid "Quit the application"
-msgstr "프로그램 끝내기"
-
-#: src/ui/math-shortcuts.ui:35
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "도움말 표시"
-
-#: src/ui/math-shortcuts.ui:41
-msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "메뉴 열기"
-
-#: src/ui/math-shortcuts.ui:47
-msgctxt "shortcut window"
-msgid "Show preferences"
-msgstr "기본 설정 표시"
-
-#: src/ui/math-shortcuts.ui:53
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "키보드 바로 가기"
-
-#: src/ui/math-shortcuts.ui:59
-msgctxt "shortcut window"
-msgid "Clear history"
-msgstr "실행 기록 지우기"
-
-#: src/ui/math-shortcuts.ui:66
-msgctxt "shortcut window"
-msgid "Switching modes"
-msgstr "모드 전환"
-
-#: src/ui/math-shortcuts.ui:70
-msgctxt "shortcut window"
-msgid "Switch to Basic mode"
-msgstr "기본 모드로 전환"
-
-#: src/ui/math-shortcuts.ui:76
-msgctxt "shortcut window"
-msgid "Switch to Advanced mode"
-msgstr "고급 모드로 전환"
-
-#: src/ui/math-shortcuts.ui:82
-msgctxt "shortcut window"
-msgid "Switch to Financial mode"
-msgstr "재무 모드로 전환"
-
-#: src/ui/math-shortcuts.ui:88
-msgctxt "shortcut window"
-msgid "Switch to Programming mode"
-msgstr "프로그래밍 모드로 전환"
-
-#: src/ui/math-shortcuts.ui:94
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode"
-msgstr "키보드 모드로 전환"
-
-#: src/ui/math-shortcuts.ui:100
-msgctxt "shortcut window"
-msgid "Switch to Conversion mode"
-msgstr "변환 모드로 전환"
-
-#: src/ui/math-shortcuts.ui:107
-msgctxt "shortcut window"
-msgid "Keyboard entry"
-msgstr "키보드 항목"
-
-#: src/ui/math-shortcuts.ui:111
-msgctxt "shortcut window"
-msgid "Multiply (×)"
-msgstr "곱하기 (×)"
-
-#: src/ui/math-shortcuts.ui:117
-msgctxt "shortcut window"
-msgid "Divide (÷)"
-msgstr "나누기 (÷)"
-
-#: src/ui/math-shortcuts.ui:123
-msgctxt "shortcut window"
-msgid "Square root (√)"
-msgstr "제곱근 (√)"
-
-#: src/ui/math-shortcuts.ui:129
-msgctxt "shortcut window"
-msgid "Inverse"
-msgstr "역 삼각함수"
-
-#: src/ui/math-shortcuts.ui:135
-msgctxt "shortcut window"
-msgid "Pi (π)"
-msgstr "파이 (π)"
-
-#: src/ui/math-shortcuts.ui:141
-msgctxt "shortcut window"
-msgid "Enter numbers in scientific format"
-msgstr "과학 형식으로 수 입력"
-
-#: src/ui/math-shortcuts.ui:148
-msgctxt "shortcut window"
-msgid "Programming mode"
-msgstr "프로그래밍 모드"
-
-#: src/ui/math-shortcuts.ui:152
-msgctxt "shortcut window"
-msgid "Switch to binary"
-msgstr "2진수로 전환"
-
-#: src/ui/math-shortcuts.ui:158
-msgctxt "shortcut window"
-msgid "Switch to octal"
-msgstr "8진수로 전환"
-
-#: src/ui/math-shortcuts.ui:164
-msgctxt "shortcut window"
-msgid "Switch to decimal"
-msgstr "10진수로 전환"
-
-#: src/ui/math-shortcuts.ui:170
-msgctxt "shortcut window"
-msgid "Switch to hexadecimal"
-msgstr "16진수로 전환"
-
-#: src/ui/math-shortcuts.ui:177
-msgctxt "shortcut window"
-msgid "Others"
-msgstr "기타"
-
-#: src/ui/math-shortcuts.ui:181
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "복사"
-
-#: src/ui/math-shortcuts.ui:187
-msgctxt "shortcut window"
-msgid "Paste"
-msgstr "붙여넣기"
-
-#: src/ui/math-shortcuts.ui:193
-msgctxt "shortcut window"
-msgid "Undo"
-msgstr "실행 취소"
-
-#: src/ui/math-shortcuts.ui:199
-msgctxt "shortcut window"
-msgid "Redo"
-msgstr "다시 실행"
-
-#: src/ui/math-shortcuts.ui:205
-msgctxt "shortcut window"
-msgid "Previous equation"
-msgstr "이전 수식"
-
-#: src/ui/math-shortcuts.ui:211
-msgctxt "shortcut window"
-msgid "Next equation"
-msgstr "다음 수식"
-
-#: src/ui/math-shortcuts.ui:217
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode (alt.)"
-msgstr "키보드 모드로 전환 (추가)"
-
-#: src/ui/math-variable-popover.ui:37
-msgid "Variable name"
-msgstr "변수 이름"
-
-#: src/ui/math-variable-popover.ui:45
-msgid "Store value into existing or new variable"
-msgstr "값을 기존 값 또는 새 값에 저장"
-
-#: src/math-variable-popover.vala:94
-#, c-format
-msgid "%s: Invalid variable name, can not start with a digit"
-msgstr "%s: 잘못된 변수 이름, 숫자로 시작할 수 없습니다"
-
-#: src/math-variable-popover.vala:98
-#, c-format
-msgid ""
-"%s: Invalid variable name, can only contain digits, letters and underscores"
-msgstr "%s: 잘못된 변수 이름, 이름에는 숫자, 문자, 밑줄만 사용할 수 있습니다."
-
-#: src/ui/math-window.ui:8 src/math-window.vala:133
+#: src/math-window.vala:137
 msgid "Basic"
 msgstr "기본"
 
-#: src/ui/math-window.ui:13 src/math-window.vala:139
+#: src/math-window.vala:143
 msgid "Advanced"
 msgstr "고급"
 
-#: src/ui/math-window.ui:18 src/ui/math-window.ui:140 src/math-window.vala:145
+#: src/math-window.vala:149 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "재무"
 
-#: src/ui/math-window.ui:23 src/math-window.vala:151
-msgid "Programming"
-msgstr "프로그래밍"
-
-#: src/ui/math-window.ui:28 src/math-window.vala:157
+#: src/math-window.vala:161
 msgid "Keyboard"
 msgstr "키보드"
 
-#: src/ui/math-window.ui:33 src/math-window.vala:163
+#: src/math-window.vala:167
 msgid "Conversion"
 msgstr "변환"
 
-#: src/ui/math-window.ui:42
+#: src/ui/buttons-advanced.blp:76 src/ui/buttons-basic.blp:21
+#: src/ui/buttons-conversion.blp:21 src/ui/buttons-financial.blp:76
+#: src/ui/buttons-programming.blp:1373
+msgid "Clear Display [Escape]"
+msgstr "표시 값 지우기 [Escape]"
+
+#: src/ui/buttons-advanced.blp:92 src/ui/buttons-basic.blp:37
+#: src/ui/buttons-financial.blp:92 src/ui/buttons-programming.blp:1389
+msgid "Superscript Mode [Ctrl]"
+msgstr "위 첨자 모드 [Ctrl]"
+
+#: src/ui/buttons-advanced.blp:109 src/ui/buttons-basic.blp:54
+#: src/ui/buttons-financial.blp:109 src/ui/buttons-programming.blp:1406
+msgid "Subscript Mode [Alt]"
+msgstr "아래 첨자 모드 [Alt]"
+
+#. Translators: The label on the memory button
+#: src/ui/buttons-advanced.blp:300 src/ui/buttons-basic.blp:245
+#: src/ui/buttons-financial.blp:300 src/ui/buttons-programming.blp:1705
+msgid "x"
+msgstr "x"
+
+#: src/ui/buttons-advanced.blp:303 src/ui/buttons-basic.blp:248
+#: src/ui/buttons-financial.blp:303 src/ui/buttons-programming.blp:1708
+msgid "Variables and Constants"
+msgstr "변수 및 상수"
+
+#: src/ui/buttons-advanced.blp:320 src/ui/buttons-basic.blp:265
+#: src/ui/buttons-financial.blp:320 src/ui/buttons-programming.blp:1725
+msgid "Additional Functions"
+msgstr "추가 기능"
+
+#: src/ui/buttons-advanced.blp:336 src/ui/buttons-basic.blp:281
+#: src/ui/buttons-financial.blp:336 src/ui/buttons-programming.blp:1741
+msgid "Divide [/]"
+msgstr "나누기 [/]"
+
+#: src/ui/buttons-advanced.blp:353 src/ui/buttons-basic.blp:298
+#: src/ui/buttons-financial.blp:353 src/ui/buttons-programming.blp:1758
+msgid "Multiply [*]"
+msgstr "곱하기 [*]"
+
+#: src/ui/buttons-advanced.blp:370 src/ui/buttons-basic.blp:315
+#: src/ui/buttons-financial.blp:370 src/ui/buttons-programming.blp:1775
+msgid "Subtract [-]"
+msgstr "빼기 [-]"
+
+# 주의: 계산기 단추이므로 "더하기"라고 번역
+#: src/ui/buttons-advanced.blp:386 src/ui/buttons-basic.blp:331
+#: src/ui/buttons-financial.blp:386 src/ui/buttons-programming.blp:1791
+msgid "Add [+]"
+msgstr "더하기 [+]"
+
+#: src/ui/buttons-advanced.blp:420 src/ui/buttons-basic.blp:365
+#: src/ui/buttons-financial.blp:420 src/ui/buttons-programming.blp:1825
+msgid "Percentage [%]"
+msgstr "퍼센트 [%]"
+
+#: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382
+#: src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
+msgid "Group [()]"
+msgstr "그룹 [()]"
+
+#. Translators: Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.blp:453 src/ui/buttons-basic.blp:398
+#: src/ui/buttons-financial.blp:453 src/ui/buttons-programming.blp:1858
+msgid "="
+msgstr "="
+
+#: src/ui/buttons-advanced.blp:455 src/ui/buttons-basic.blp:400
+#: src/ui/buttons-financial.blp:455 src/ui/buttons-programming.blp:1860
+msgid "Calculate Result"
+msgstr "결과 계산"
+
+#: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
+#: src/ui/buttons-programming.blp:1888
+msgid "Inverse Modifier [Shift]"
+msgstr "역함수 변환 키 [Shift]"
+
+#: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
+#: src/ui/buttons-programming.blp:2085
+msgid "Square [Ctrl+2]"
+msgstr "제곱 [Ctrl+2]"
+
+#: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
+#: src/ui/buttons-programming.blp:2107
+msgid "Square Root [Ctrl+R]"
+msgstr "제곱근 [Ctrl+R]"
+
+#: src/ui/buttons-advanced.blp:760 src/ui/buttons-advanced.blp:827
+#: src/ui/buttons-financial.blp:538 src/ui/buttons-programming.blp:2125
+#: src/ui/buttons-programming.blp:2192
+msgid "Exponent [^ or **]"
+msgstr "지수 [^ 또는 **]"
+
+#: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560
+#: src/ui/buttons-programming.blp:2147
+msgid "Nth Root"
+msgstr "N번째 제곱근"
+
+#: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585
+#: src/ui/buttons-programming.blp:2216
+msgid "Common Logarithm"
+msgstr "상용 로그"
+
+#: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602
+#: src/ui/buttons-programming.blp:2233
+msgid "Base-10 Exponential"
+msgstr "십진 지수"
+
+#: src/ui/buttons-advanced.blp:909 src/ui/buttons-financial.blp:643
+msgid "Natural Exponential"
+msgstr "자연 지수"
+
+#: src/ui/buttons-advanced.blp:999
+msgid "Inverse [Ctrl+I]"
+msgstr "역 삼각함수 [Ctrl+I]"
+
+#: src/ui/buttons-advanced.blp:1020
+msgid "Round [[]]"
+msgstr "반올림 [[]]"
+
+#: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
+msgid "Absolute Value [||]"
+msgstr "절대값 [||]"
+
+#: src/ui/buttons-advanced.blp:1062 src/ui/buttons-programming.blp:2427
+msgid "Factorial [!]"
+msgstr "팩토리얼 [!]"
+
+#: src/ui/buttons-advanced.blp:1099 src/ui/buttons-conversion.blp:521
+msgid "Pi [Ctrl+P]"
+msgstr "Pi [Ctrl+P]"
+
+# "i"
+#: src/ui/buttons-advanced.blp:1133
+msgid "Imaginary Unit"
+msgstr "허수 단위"
+
+#: src/ui/buttons-advanced.blp:1150
+msgid "Factorize [Ctrl+F]"
+msgstr "소인수 분해 [Ctrl+F]"
+
+#: src/ui/buttons-conversion.blp:37
+msgid "Switch Conversion Units"
+msgstr "변환 단위 바꾸기"
+
+# 키 이름
+#: src/ui/buttons-conversion.blp:53 src/ui/math-display.blp:45
+msgid "Backspace"
+msgstr "Backspace"
+
+#: src/ui/buttons-conversion.blp:510
+msgid "Degrees, Minutes, Seconds"
+msgstr "도, 분, 초"
+
+#: src/ui/buttons-conversion.blp:533
+msgid "Change Sign"
+msgstr "부호 바꾸기"
+
+#: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
+msgid "Exchange Rate Details"
+msgstr "환율 자세히"
+
+#: src/ui/buttons-conversion.blp:575 src/ui/buttons-conversion.blp:600
+msgid "Updated"
+msgstr "업데이트됨"
+
+#: src/ui/buttons-conversion.blp:583 src/ui/buttons-conversion.blp:608
+msgid "Source"
+msgstr "원본"
+
+#: src/ui/buttons-conversion.blp:625
+msgid "_Refresh Rates"
+msgstr "새로 고침 주기(_R)"
+
+#. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.blp:669
+msgid "Ctrm"
+msgstr "Ctrm"
+
+#. Translators: Title of Compounding Term dialog
+#: src/ui/buttons-financial.blp:672 src/ui/buttons-financial.blp:887
+msgid "Compounding Term"
+msgstr "복리 기간"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:688
+msgid "Ddb"
+msgstr "Ddb"
+
+#: src/ui/buttons-financial.blp:691
+msgid "Double Declining Depreciation"
+msgstr "이중 감가상각"
+
+#. Translators: Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.blp:707
+msgid "Fv"
+msgstr "Fv"
+
+#. Translators: Compounding Term Dialog: Label before future value input
+#. Translators: Title of Future Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before future value input
+#. Translators: Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.blp:710 src/ui/buttons-financial.blp:927
+#: src/ui/buttons-financial.blp:999 src/ui/buttons-financial.blp:1251
+#: src/ui/buttons-financial.blp:1431
+msgid "Future Value"
+msgstr "미래 가치"
+
+#. Translators: Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.blp:726
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Translators: Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.blp:729 src/ui/buttons-financial.blp:1055
+msgid "Gross Profit Margin"
+msgstr "총 이익률"
+
+#. Translators: Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.blp:745
+msgid "Pmt"
+msgstr "Pmt"
+
+#. Translators: Future Value Dialog: Label before periodic payment input
+#. Translators: Title of Periodic Payment dialog
+#. Translators: Present Value Dialog: Label before periodic payment input
+#. Translators: Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.blp:748 src/ui/buttons-financial.blp:1033
+#: src/ui/buttons-financial.blp:1105 src/ui/buttons-financial.blp:1195
+#: src/ui/buttons-financial.blp:1425
+msgid "Periodic Payment"
+msgstr "정기 상환"
+
+#. Translators: Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.blp:764
+msgid "Pv"
+msgstr "Pv"
+
+#. Translators: Compounding Term Dialog: Label before present value input
+#. Translators: Title of Present Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.blp:767 src/ui/buttons-financial.blp:933
+#: src/ui/buttons-financial.blp:1161 src/ui/buttons-financial.blp:1257
+msgid "Present Value"
+msgstr "현재 가치"
+
+#. Translators: Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.blp:783
+msgid "Rate"
+msgstr "Rate"
+
+#. Translators: Compounding Term Dialog: Label before periodic interest rate input
+#. Translators: Future Value Dialog: Label before periodic interest rate input
+#. Translators: Periodic Payment Dialog: Label before periodic interest rate input
+#. Translators: Present Value Dialog: Label before periodic interest rate input
+#. Translators: Title of Periodic Interest Rate dialog
+#. Translators: Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.blp:786 src/ui/buttons-financial.blp:921
+#: src/ui/buttons-financial.blp:1039 src/ui/buttons-financial.blp:1145
+#: src/ui/buttons-financial.blp:1201 src/ui/buttons-financial.blp:1217
+#: src/ui/buttons-financial.blp:1437
+msgid "Periodic Interest Rate"
+msgstr "정기 이율"
+
+#. Translators: Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:802
+msgid "Sln"
+msgstr "Sln"
+
+#: src/ui/buttons-financial.blp:805
+msgid "Straight Line Depreciation"
+msgstr "정액 감가상각"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:821
+msgid "Syd"
+msgstr "Syd"
+
+#: src/ui/buttons-financial.blp:824
+msgid "Sum of the Years Digits Depreciation"
+msgstr "연수합계 감가상각"
+
+#. Translators: Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#. Translators: Periodic Payment Dialog: Label before term input
+#. Translators: Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.blp:840 src/ui/buttons-financial.blp:1151
+#: src/ui/buttons-financial.blp:1263
+msgid "Term"
+msgstr "Term"
+
+#: src/ui/buttons-financial.blp:843
+msgid "Financial Term"
+msgstr "회계 기간"
+
+#: src/ui/buttons-financial.blp:858 src/ui/math-preferences.blp:78
+msgid "Currency Conversion"
+msgstr "통화 변환"
+
+#. Translators: Compounding Term Dialog: Calculate button
+#. Translators: Double-Declining Depreciation Dialog: Calculate button
+#. Translators: Future Value Dialog: Calculate button
+#. Translators: Gross Profit Margin Dialog: Calculate button
+#. Translators: Periodic Payment Dialog: Calculate button
+#. Translators: Present Value Dialog: Calculate button
+#. Translators: Periodic Interest Rate Dialog: Calculate button
+#. Translators: Straight-Line Depreciation Dialog: Calculate button
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
+#. Translators: Payment Period Dialog: Calculate button
+#: src/ui/buttons-financial.blp:905 src/ui/buttons-financial.blp:961
+#: src/ui/buttons-financial.blp:1017 src/ui/buttons-financial.blp:1073
+#: src/ui/buttons-financial.blp:1123 src/ui/buttons-financial.blp:1179
+#: src/ui/buttons-financial.blp:1235 src/ui/buttons-financial.blp:1291
+#: src/ui/buttons-financial.blp:1347 src/ui/buttons-financial.blp:1409
+msgid "C_alculate"
+msgstr "계산(_A)"
+
+#. Translators: Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:916
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"각 복리 기간마다 이자율이 고정되어 있을 때, 투자금을 미래 가치로 올리는 데 필"
+"요한 복리 기간을 계산합니다."
+
+#. Translators: Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.blp:943
+msgid "Double-Declining Depreciation"
+msgstr "이중 감가상각"
+
+#. Translators: Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:972
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr ""
+"이중 감가상각 방법을 이용해 지정한 기간 동안 자산의 감가상각을 계산합니다."
+
+#. Translators: Double-Declining Depreciation Dialog: Label before cost input
+#. Translators: Gross Profit Margin Dialog: Label before cost input
+#. Translators: Straight-Line Depreciation Dialog: Label before cost input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.blp:977 src/ui/buttons-financial.blp:1089
+#: src/ui/buttons-financial.blp:1307 src/ui/buttons-financial.blp:1363
+msgid "Cost"
+msgstr "비용"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before life input
+#. Translators: Straight-Line Depreciation Dialog: Label before life input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.blp:983 src/ui/buttons-financial.blp:1319
+#: src/ui/buttons-financial.blp:1375
+msgid "Life"
+msgstr "내용 연수"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before period input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.blp:989 src/ui/buttons-financial.blp:1381
+msgid "Period"
+msgstr "기간"
+
+#. Translators: Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1028
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr ""
+"동일한 이율의 이자가 일정 기간 동안 있을 때 투자금의 미래 가치를 계산합니다."
+
+#. Translators: Future Value Dialog: Label before number of periods input
+#. Translators: Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.blp:1045 src/ui/buttons-financial.blp:1207
+msgid "Number of Periods"
+msgstr "기간 수"
+
+#. Translators: Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1084
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr ""
+"제품의 취득 원가와 희망하는 총 이익률에 따라 제품의 판매 가격을 계산합니다."
+
+#. Translators: Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.blp:1095
+msgid "Margin"
+msgstr "이익"
+
+#. Translators: Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1134
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period."
+msgstr ""
+"대출의 정기 이자를 계산합니다. 이자는 각 이자 기간의 마지막에 지불합니다."
+
+#. Translators: Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.blp:1139
+msgid "Principal"
+msgstr "원금"
+
+#. Translators: Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1190
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term."
+msgstr ""
+"일정 기간의 이자 지급 기간만큼 할인한 지급액을 기준으로 투자금의 현재 가치를 "
+"계산합니다."
+
+#. Translators: Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1246
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods."
+msgstr ""
+"정해진 복리 기간 동안 투자금을 미래 가치로 올리는 데 필요한 정기 이자율을 계"
+"산합니다."
+
+#. Translators: Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.blp:1273
+msgid "Straight-Line Depreciation"
+msgstr "정액 감가상각"
+
+#. Translators: Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1302
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated."
+msgstr ""
+"정액 감가상각 방법을 이용해 지정한 기간 동안 자산의 감가상각을 계산합니다. 정"
+"액 감가상각 방법에서는 자산의 취득 원가를 내용 연수로 균등하게 나눕니다. 내"
+"용 연수는 자산의 감가상각을 계산하는 기간이 몇 회 되었느냐를 뜻하고, 보통 연 "
+"단위입니다."
+
+# 주의: 연수합계법에서 사용하는 용어로 사용한다
+#. Translators: Straight-Line Depreciation Dialog: Label before salvage input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.blp:1313 src/ui/buttons-financial.blp:1369
+msgid "Salvage"
+msgstr "잔존 가치"
+
+#. Translators: Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.blp:1329
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "연수합계 감가상각"
+
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1358
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated."
+msgstr ""
+"연수합계 방법을 이용해 지정한 기간 동안 자산의 감가 상각을 계산합니다. 이 감"
+"가상각 방법에서는 감가 상각 속도가 점차 변하는데, 초기의 감가상각 비용이 나중"
+"의 감가상각보다 더 많습니다. 내용 연수는 자산의 감가상각을 계산하는 기간이 "
+"몇 회 되었느냐를 뜻하고, 보통 연 단위입니다."
+
+#. Translators: Title of Payment Period dialog
+#: src/ui/buttons-financial.blp:1391
+msgid "Payment Period"
+msgstr "상환 주기"
+
+#. Translators: Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1420
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr ""
+"대출 기간 동안 정해진 이자로 정해진 미래 가치를 달성하는데 필요한 이자 지급 "
+"기간을 계산합니다."
+
+#: src/ui/buttons-programming.blp:1904
+msgid "Bitwise AND"
+msgstr "비트단위 AND"
+
+#: src/ui/buttons-programming.blp:1922
+msgid "Bitwise NAND"
+msgstr "비트단위 NAND"
+
+#: src/ui/buttons-programming.blp:1941
+msgid "Bitwise OR"
+msgstr "비트단위 OR"
+
+#: src/ui/buttons-programming.blp:1959
+msgid "Bitwise NOR"
+msgstr "비트단위 NOR"
+
+#: src/ui/buttons-programming.blp:1977
+msgid "Bitwise NOT"
+msgstr "비트단위 NOT"
+
+#: src/ui/buttons-programming.blp:1995
+msgid "Bitwise Exclusive OR"
+msgstr "비트단위 배타적 OR"
+
+#: src/ui/buttons-programming.blp:2013
+msgid "Bitwise Exclusive NOR"
+msgstr "비트단위 배타적 NOR"
+
+#: src/ui/buttons-programming.blp:2031
+msgid "Left Shift [<<]"
+msgstr "왼쪽 시프트 [<<]"
+
+#: src/ui/buttons-programming.blp:2049
+msgid "Right Shift [>>]"
+msgstr "오른쪽 시프트 [>>]"
+
+#: src/ui/buttons-programming.blp:2067
+msgid "Unsigned Right Shift [>>>]"
+msgstr "부호없는 오른쪽 시프트 [>>>]"
+
+#: src/ui/buttons-programming.blp:2257
+msgid "Binary Logarithm"
+msgstr "이진로그"
+
+#: src/ui/buttons-programming.blp:2274
+msgid "Base-2 Exponential"
+msgstr "2진법 지수"
+
+#: src/ui/buttons-programming.blp:2364
+msgid "Ceiling [Ctrl+[]]"
+msgstr "올림 [Ctrl+[]]"
+
+#: src/ui/buttons-programming.blp:2385
+msgid "Floor [Alt+[]]"
+msgstr "내림 [Alt+[]]"
+
+#: src/ui/buttons-programming.blp:2449
+msgid "Change Base"
+msgstr "진법 바꾸기"
+
+#: src/ui/buttons-programming.blp:2468
+msgid "Change Word Size"
+msgstr "워드 크기 바꾸기"
+
+#. Translators: Title of insert character code dialog
+#: src/ui/buttons-programming.blp:2486 src/ui/buttons-programming.blp:2504
+msgid "Insert Character Code"
+msgstr "문자 코드 입력"
+
+#. Translators: Insert character code dialog: Label before character entry
+#: src/ui/buttons-programming.blp:2535
+msgid "Character"
+msgstr "문자"
+
+#: src/ui/buttons-programming.blp:2542
+msgid "Convert to"
+msgstr "변환 대상"
+
+#: src/ui/buttons-programming.blp:2546
+msgid "Unicode Code Point"
+msgstr "유니코드 포인트"
+
+#: src/ui/buttons-programming.blp:2547
+msgid "UTF-8 Encoding"
+msgstr "UTF-8 인코딩"
+
+#: src/ui/buttons-programming.blp:2548
+msgid "UTF-16 Encoding"
+msgstr "UTF-16 인코딩"
+
+#. Translators: Insert character code dialog: Button to insert selected character
+#: src/ui/buttons-programming.blp:2574
+msgid "_Insert"
+msgstr "넣기(_I)"
+
+#: src/ui/math-converter.blp:119
+msgid "Exchange Rates Not Loaded"
+msgstr "환율 읽어들이지 않음"
+
+#: src/ui/math-converter.blp:122
+msgid ""
+"<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
+msgstr ""
+"<a href=\"r:///\">새로 고침 주기</a> 또는 기본 설정에서 새로고침 주기 바꾸기"
+
+#: src/ui/math-converter.blp:141
+msgid "_Copy"
+msgstr "복사(_C)"
+
+#: src/ui/math-converter.blp:146
+msgid "_Paste"
+msgstr "붙여넣기(_P)"
+
+#: src/ui/math-function-popover.blp:48
+msgid "Function name"
+msgstr "함수 이름"
+
+#: src/ui/math-function-popover.blp:57
+msgid "Select no. of arguments"
+msgstr "함수의 인자 개수 선택"
+
+#: src/ui/math-function-popover.blp:62
+msgid "Add function"
+msgstr "함수 추가"
+
+#: src/ui/math-preferences.blp:11
+msgid "Favorite Currencies"
+msgstr "자주 사용하는 통화"
+
+#: src/ui/math-preferences.blp:20
+msgid "Search currencies"
+msgstr "통화 검색"
+
+#: src/ui/math-preferences.blp:36
+msgid "No Results Found"
+msgstr "결과 없음"
+
+#: src/ui/math-preferences.blp:37
+msgid "Try a different search"
+msgstr "다른 검색어를 입력해 보십시오"
+
+#: src/ui/math-preferences.blp:46
+msgid "General"
+msgstr "일반"
+
+#: src/ui/math-preferences.blp:49
+msgid "Number of _Decimals"
+msgstr "소수점 개수(_D)"
+
+#: src/ui/math-preferences.blp:57
+msgid "Trailing _Zeroes"
+msgstr "마지막 0 개수(_Z)"
+
+#: src/ui/math-preferences.blp:62
+msgid "_Thousands Separators"
+msgstr "천단위 자리수 구분(_T)"
+
+#: src/ui/math-preferences.blp:67
+msgid "_Angle Units"
+msgstr "각도 단위(_A)"
+
+#: src/ui/math-preferences.blp:72
+msgid "_Word Size"
+msgstr "워드 크기(_W)"
+
+#: src/ui/math-preferences.blp:81
+msgid "E_xchange Rate Refresh Interval"
+msgstr "환율 새로고침 주기(_X)"
+
+#: src/ui/math-preferences.blp:86
+msgid "_Currency Display"
+msgstr "통화 표시(_C)"
+
+#: src/ui/math-preferences.blp:91
+msgid "_Show Currencies in Auto-Completion List"
+msgstr "자동 완성 목록에 통화 표시(_S)"
+
+#: src/ui/math-preferences.blp:96
+msgid "All"
+msgstr "모두"
+
+#: src/ui/math-preferences.blp:97
+msgid "Favorite Only"
+msgstr "자주 사용하는 통화만"
+
+#: src/ui/math-preferences.blp:98
+msgid "None"
+msgstr "없음"
+
+#: src/ui/math-preferences.blp:104
+msgid "_Favorite Currencies"
+msgstr "자주 사용하는 통화(_F)"
+
+#: src/ui/math-shortcuts.blp:5
+msgctxt "shortcuts dialog"
+msgid "General"
+msgstr "일반"
+
+#: src/ui/math-shortcuts.blp:9
+msgctxt "shortcuts dialog"
+msgid "Open a New Window"
+msgstr "새 창 열기"
+
+#: src/ui/math-shortcuts.blp:14
+msgctxt "shortcuts dialog"
+msgid "Close Current Window"
+msgstr "현재 창 닫기"
+
+#: src/ui/math-shortcuts.blp:19
+msgctxt "shortcuts dialog"
+msgid "Quit the Application"
+msgstr "프로그램 끝내기"
+
+#: src/ui/math-shortcuts.blp:24
+msgctxt "shortcuts dialog"
+msgid "Show Help"
+msgstr "도움말 표시"
+
+#: src/ui/math-shortcuts.blp:29
+msgctxt "shortcuts dialog"
+msgid "Open Menu"
+msgstr "메뉴 열기"
+
+#: src/ui/math-shortcuts.blp:34
+msgctxt "shortcuts dialog"
+msgid "Show Preferences"
+msgstr "기본 설정 표시"
+
+#: src/ui/math-shortcuts.blp:39
+msgctxt "shortcuts dialog"
+msgid "Keyboard Shortcuts"
+msgstr "키보드 바로 가기"
+
+#: src/ui/math-shortcuts.blp:44
+msgctxt "shortcuts dialog"
+msgid "Clear History"
+msgstr "실행 기록 지우기"
+
+#: src/ui/math-shortcuts.blp:49
+msgctxt "shortcuts dialog"
+msgid "Switching Modes"
+msgstr "모드 전환"
+
+#: src/ui/math-shortcuts.blp:53
+msgctxt "shortcuts dialog"
+msgid "Switch to Basic Mode"
+msgstr "기본 모드로 전환"
+
+#: src/ui/math-shortcuts.blp:58
+msgctxt "shortcuts dialog"
+msgid "Switch to Advanced Mode"
+msgstr "고급 모드로 전환"
+
+#: src/ui/math-shortcuts.blp:63
+msgctxt "shortcuts dialog"
+msgid "Switch to Financial Mode"
+msgstr "재무 모드로 전환"
+
+#: src/ui/math-shortcuts.blp:68
+msgctxt "shortcuts dialog"
+msgid "Switch to Programming Mode"
+msgstr "프로그래밍 모드로 전환"
+
+#: src/ui/math-shortcuts.blp:73
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode"
+msgstr "키보드 모드로 전환"
+
+#: src/ui/math-shortcuts.blp:78
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode (alt.)"
+msgstr "키보드 모드로 전환 (추가)"
+
+#: src/ui/math-shortcuts.blp:83
+msgctxt "shortcuts dialog"
+msgid "Switch to Conversion Mode"
+msgstr "변환 모드로 전환"
+
+#: src/ui/math-shortcuts.blp:88
+msgctxt "shortcuts dialog"
+msgid "Programming Mode"
+msgstr "프로그래밍 모드"
+
+#: src/ui/math-shortcuts.blp:92
+msgctxt "shortcuts dialog"
+msgid "Switch to Binary"
+msgstr "2진수로 전환"
+
+#: src/ui/math-shortcuts.blp:97
+msgctxt "shortcuts dialog"
+msgid "Switch to Octal"
+msgstr "8진수로 전환"
+
+#: src/ui/math-shortcuts.blp:102
+msgctxt "shortcuts dialog"
+msgid "Switch to Decimal"
+msgstr "10진수로 전환"
+
+#: src/ui/math-shortcuts.blp:107
+msgctxt "shortcuts dialog"
+msgid "Switch to Hexadecimal"
+msgstr "16진수로 전환"
+
+#: src/ui/math-shortcuts.blp:112
+msgctxt "shortcuts dialog"
+msgid "Keyboard Entry"
+msgstr "키보드 항목"
+
+#: src/ui/math-shortcuts.blp:116
+msgctxt "shortcuts dialog"
+msgid "Multiply (×)"
+msgstr "곱하기 (×)"
+
+#: src/ui/math-shortcuts.blp:121
+msgctxt "shortcuts dialog"
+msgid "Divide (÷)"
+msgstr "나누기 (÷)"
+
+#: src/ui/math-shortcuts.blp:126
+msgctxt "shortcuts dialog"
+msgid "Square (²)"
+msgstr "제곱 (²)"
+
+#: src/ui/math-shortcuts.blp:131
+msgctxt "shortcuts dialog"
+msgid "Square Root (√)"
+msgstr "제곱근 (√)"
+
+#: src/ui/math-shortcuts.blp:136
+msgctxt "shortcuts dialog"
+msgid "Inverse (⁻¹)"
+msgstr "역수 (⁻¹)"
+
+#: src/ui/math-shortcuts.blp:141
+msgctxt "shortcuts dialog"
+msgid "Pi (π)"
+msgstr "파이 (π)"
+
+#: src/ui/math-shortcuts.blp:146
+msgctxt "shortcuts dialog"
+msgid "Tau (τ)"
+msgstr "타우 (τ)"
+
+#: src/ui/math-shortcuts.blp:151
+msgctxt "shortcuts dialog"
+msgid "Degree (°)"
+msgstr "육십분도 (°)"
+
+#: src/ui/math-shortcuts.blp:156 src/ui/math-shortcuts.blp:168
+msgctxt "shortcuts dialog"
+msgid "Floor (⌊⌋)"
+msgstr "내림 (⌊⌋)"
+
+#: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
+msgctxt "shortcuts dialog"
+msgid "Ceiling (⌈⌉)"
+msgstr "올림 (⌈⌉)"
+
+#: src/ui/math-shortcuts.blp:180
+msgctxt "shortcuts dialog"
+msgid "Enter Numbers in Scientific Format"
+msgstr "과학 형식으로 수 입력"
+
+#: src/ui/math-shortcuts.blp:185
+msgctxt "shortcuts dialog"
+msgid "Enter Subscript Numbers"
+msgstr "아래 첨자 수 입력"
+
+#: src/ui/math-shortcuts.blp:190
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Numbers"
+msgstr "위 첨자 수 입력"
+
+#: src/ui/math-shortcuts.blp:195
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Minus Sign"
+msgstr "위 첨자 마이너스 입력"
+
+#: src/ui/math-shortcuts.blp:200
+msgctxt "shortcuts dialog"
+msgid "Equation"
+msgstr "수식"
+
+#: src/ui/math-shortcuts.blp:204
+msgctxt "shortcuts dialog"
+msgid "Copy"
+msgstr "복사"
+
+#: src/ui/math-shortcuts.blp:209
+msgctxt "shortcuts dialog"
+msgid "Paste"
+msgstr "붙여넣기"
+
+#: src/ui/math-shortcuts.blp:214
+msgctxt "shortcuts dialog"
+msgid "Undo"
+msgstr "실행 취소"
+
+#: src/ui/math-shortcuts.blp:219
+msgctxt "shortcuts dialog"
+msgid "Redo"
+msgstr "다시 실행"
+
+#: src/ui/math-shortcuts.blp:224
+msgctxt "shortcuts dialog"
+msgid "Previous Equation"
+msgstr "이전 수식"
+
+#: src/ui/math-shortcuts.blp:229
+msgctxt "shortcuts dialog"
+msgid "Next Equation"
+msgstr "다음 수식"
+
+#: src/ui/math-shortcuts.blp:234
+msgctxt "shortcuts dialog"
+msgid "Clear Display"
+msgstr "표시 값 지우기"
+
+#: src/ui/math-shortcuts.blp:239
+msgctxt "shortcuts dialog"
+msgid "Factorize"
+msgstr "소인수 분해"
+
+#: src/ui/math-variable-popover.blp:37
+msgid "Constants"
+msgstr "상수"
+
+#: src/ui/math-variable-popover.blp:58
+msgid "Variable name"
+msgstr "변수 이름"
+
+#: src/ui/math-variable-popover.blp:67
+msgid "Store value into existing or new variable"
+msgstr "값을 기존 값 또는 새 값에 저장"
+
+#: src/ui/math-window.blp:7
+msgid "_Basic"
+msgstr "기본(_B)"
+
+#: src/ui/math-window.blp:13
+msgid "_Advanced"
+msgstr "고급(_A)"
+
+#: src/ui/math-window.blp:19
+msgid "_Financial"
+msgstr "재무(_F)"
+
+#: src/ui/math-window.blp:25
+msgid "_Programming"
+msgstr "프로그래밍(_P)"
+
+#: src/ui/math-window.blp:31
+msgid "_Keyboard"
+msgstr "키보드(_K)"
+
+#: src/ui/math-window.blp:37
+msgid "_Conversion"
+msgstr "변환(_C)"
+
+#: src/ui/math-window.blp:47
 msgid "_New Window"
 msgstr "새 창(_N)"
 
-#: src/ui/math-window.ui:49
+#: src/ui/math-window.blp:54
 msgid "_Clear History"
 msgstr "실행 기록 지우기(_C)"
 
-#: src/ui/math-window.ui:56
+#: src/ui/math-window.blp:61
 msgid "Result Format"
 msgstr "결과 형식"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:59
+#: src/ui/math-window.blp:65
 msgid "_Automatic"
 msgstr "자동(_A)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:65
+#: src/ui/math-window.blp:72
 msgid "_Fixed"
 msgstr "고정(_F)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
-#: src/ui/math-window.ui:71
+#: src/ui/math-window.blp:79
 msgid "_Scientific"
 msgstr "과학(_S)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
-#: src/ui/math-window.ui:77
+#: src/ui/math-window.blp:86
 msgid "_Engineering"
 msgstr "공학(_E)"
 
-#: src/ui/math-window.ui:87
-msgid "Preferences"
-msgstr "기본 설정"
+#: src/ui/math-window.blp:96
+msgid "_Preferences"
+msgstr "기본 설정(_P)"
 
-#: src/ui/math-window.ui:91
-msgid "Keyboard Shortcuts"
-msgstr "키보드 바로 가기"
+#: src/ui/math-window.blp:101
+msgid "_Keyboard Shortcuts"
+msgstr "키보드 바로 가기(_K)"
 
-#: src/ui/math-window.ui:95
+#: src/ui/math-window.blp:106
 msgid "_Help"
 msgstr "도움말(_H)"
 
-#: src/ui/math-window.ui:99
-msgid "About Calculator"
-msgstr "계산기 정보"
+#: src/ui/math-window.blp:111
+msgid "A_bout Calculator"
+msgstr "계산기 정보(_B)"
 
-#: src/ui/math-window.ui:118
+#: src/ui/math-window.blp:132
 msgid "Mode Selection"
 msgstr "모드 선택"
 
-#: src/ui/math-window.ui:128
-msgid "_Undo"
-msgstr "실행 취소(_U)"
+#: src/ui/math-window.blp:139
+msgid "Undo"
+msgstr "실행 취소"
 
-#: src/ui/math-window.ui:149
+#: src/ui/math-window.blp:146
+msgid "Redo"
+msgstr "다시 실행"
+
+#: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "주 메뉴"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s degrees"
-#~ msgstr "%s도"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s radians"
-#~ msgstr "%s radians"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s gradians"
-#~ msgstr "%s gradians"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s pc"
-#~ msgstr "%s pc"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ly"
-#~ msgstr "%s ly"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s au"
-#~ msgstr "%s au"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%sU"
-#~ msgstr "%sU"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s nmi"
-#~ msgstr "%s해리"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s mi"
-#~ msgstr "%s mi"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s km"
-#~ msgstr "%s km"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s cb"
-#~ msgstr "%s cb"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ftm"
-#~ msgstr "%s ftm"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s m"
-#~ msgstr "%s m"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s yd"
-#~ msgstr "%s yd"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ft"
-#~ msgstr "%s ft"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s in"
-#~ msgstr "%s in"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s cm"
-#~ msgstr "%s cm"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s mm"
-#~ msgstr "%s mm"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s μm"
-#~ msgstr "%s μm"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s nm"
-#~ msgstr "%s nm"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s pt"
-#~ msgstr "%s pt"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s km/h"
-#~ msgstr "%s km/h"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s miles/h"
-#~ msgstr "%s miles/h"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s m/s"
-#~ msgstr "%s m/s"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s feet/s"
-#~ msgstr "%s 피트/초"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s kt"
-#~ msgstr "%s kt"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ha"
-#~ msgstr "%s ha"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s acres"
-#~ msgstr "%s에이커"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ft²"
-#~ msgstr "%s ft²"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s m²"
-#~ msgstr "%s m²"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s cm²"
-#~ msgstr "%s cm²"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s mm²"
-#~ msgstr "%s mm²"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s m³"
-#~ msgstr "%s m³"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s gal"
-#~ msgstr "%s gal"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s L"
-#~ msgstr "%s L"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s qt"
-#~ msgstr "%s qt"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s cup"
-#~ msgstr "%s컵"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s mL"
-#~ msgstr "%s mL"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s μL"
-#~ msgstr "%s μL"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s T"
-#~ msgstr "%s T"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s kg"
-#~ msgstr "%s kg"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s lb"
-#~ msgstr "%s lb"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s oz"
-#~ msgstr "%s oz"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ozt"
-#~ msgstr "%s ozt"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s g"
-#~ msgstr "%s g"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s st"
-#~ msgstr "%s st"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s centuries"
-#~ msgstr "%s세기"
-
-# 번역할 수 없으니 그냥 일대일 표시. 만약 "0년"이라고 붙여 쓰면 그냥 "년"이 붙은 것과 구별 불가능
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s decades"
-#~ msgstr "%s 10년"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s years"
-#~ msgstr "%s년"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s months"
-#~ msgstr "%s달"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s weeks"
-#~ msgstr "%s주"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s days"
-#~ msgstr "%s일"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s hours"
-#~ msgstr "%s시간"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s minutes"
-#~ msgstr "%s분"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s s"
-#~ msgstr "%s s"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ms"
-#~ msgstr "%s ms"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s μs"
-#~ msgstr "%s μs"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚C"
-#~ msgstr "%s ˚C"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚F"
-#~ msgstr "%s ˚F"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s K"
-#~ msgstr "%s K"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ˚R"
-#~ msgstr "%s ˚R"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s b"
-#~ msgstr "%s b"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s B"
-#~ msgstr "%s B"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s nibble"
-#~ msgstr "%s니블"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s kb"
-#~ msgstr "%s kb"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s kB"
-#~ msgstr "%s kB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Kib"
-#~ msgstr "%s Kib"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s KiB"
-#~ msgstr "%s KiB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Mb"
-#~ msgstr "%s Mb"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s MB"
-#~ msgstr "%s MB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Mib"
-#~ msgstr "%s Mib"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s MiB"
-#~ msgstr "%s MiB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Gb"
-#~ msgstr "%s Gb"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s GB"
-#~ msgstr "%s GB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Gib"
-#~ msgstr "%s Gib"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s GiB"
-#~ msgstr "%s GiB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Tb"
-#~ msgstr "%s Tb"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s TB"
-#~ msgstr "%s TB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Tib"
-#~ msgstr "%s Tib"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s TiB"
-#~ msgstr "%s TiB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Pb"
-#~ msgstr "%s Pb"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s PB"
-#~ msgstr "%s PB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Pib"
-#~ msgstr "%s Pib"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s PiB"
-#~ msgstr "%s PiB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Eb"
-#~ msgstr "%s Eb"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s EB"
-#~ msgstr "%s EB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Eib"
-#~ msgstr "%s Eib"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s EiB"
-#~ msgstr "%s EiB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Zib"
-#~ msgstr "%s Zib"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ZiB"
-#~ msgstr "%s ZiB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Yb"
-#~ msgstr "%s Yb"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s YB"
-#~ msgstr "%s YB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Yib"
-#~ msgstr "%s Yib"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s YiB"
-#~ msgstr "%s YiB"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s Hz"
-#~ msgstr "%s Hz"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s kHz"
-#~ msgstr "%s kHz"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s MHz"
-#~ msgstr "%s MHz"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s GHz"
-#~ msgstr "%s GHz"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s THz"
-#~ msgstr "%s THz"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s J"
-#~ msgstr "%s J"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s KJ"
-#~ msgstr "%s KJ"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s MJ"
-#~ msgstr "%s MJ"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s kWh"
-#~ msgstr "%s kWh"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s BTU"
-#~ msgstr "%s BTU"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s cal"
-#~ msgstr "%s cal"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s erg"
-#~ msgstr "%s erg"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ev"
-#~ msgstr "%s ev"
-
-#, c-format
-#~ msgctxt "unit-format"
-#~ msgid "%s ft-lb"
-#~ msgstr "%s ft-lb"
-
-#, c-format
-#~ msgid "%s%%s"
-#~ msgstr "%s%%s"
-
-#~ msgid "Modulus divide"
-#~ msgstr "나머지 나누기"
-
-#~ msgid "Present _Value:"
-#~ msgstr "현재 가치(_V):"
-
-#~ msgid "Periodic Interest _Rate:"
-#~ msgstr "정기 이율(_R):"
-
-#~ msgid "_Future Value:"
-#~ msgstr "미래 가치(_F):"
-
-# 주의: 연수합계법에서 사용하는 용어로 사용한다
-#~ msgid "C_ost:"
-#~ msgstr "취득 원가(_O):"
-
-#~ msgid "_Periodic Payment:"
-#~ msgstr "정기 상환(_P):"
-
-#~ msgid "_Term:"
-#~ msgstr "대출 기간(_T):"
-
-#~ msgid "Future _Value:"
-#~ msgstr "미래 가치(_V):"
-
-#~ msgid "Subscript mode [Alt]"
-#~ msgstr "아래 첨자 모드 [Alt]"
-
-#~ msgid "Superscript mode [Ctrl]"
-#~ msgstr "위 첨자 모드 [Ctrl]"
-
-# 번역할 수 없음: 이런 식으로 번역하게 만든 업스트림 잘못.
-#~ msgid " to "
-#~ msgstr " to "
-
-#~ msgctxt "convertion equals label"
-#~ msgid "="
-#~ msgstr "="
-
-#, c-format
-#~ msgid "%d place"
-#~ msgid_plural "%d places"
-#~ msgstr[0] "%d번"
-
-#~ msgid "_Quit"
-#~ msgstr "끝내기(_Q)"
