@@ -24,8 +24,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-09-07 04:48+0000\n"
-"PO-Revision-Date: 2025-09-07 16:58+0800\n"
+"POT-Creation-Date: 2025-09-07 19:19+0000\n"
+"PO-Revision-Date: 2025-09-08 09:39+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -684,7 +684,7 @@ msgstr "重力常数"
 
 #: lib/equation-parser.vala:1088
 msgid "Earth Acceleration"
-msgstr ""
+msgstr "重力加速度"
 
 #: lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
@@ -804,11 +804,11 @@ msgstr "舍入"
 
 #: lib/function-manager.vala:55
 msgid "Floor"
-msgstr "下限"
+msgstr "向下取整"
 
 #: lib/function-manager.vala:56
 msgid "Ceiling"
-msgstr "上限"
+msgstr "向上取整"
 
 #: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
 msgid "Integer Component"
@@ -2832,7 +2832,7 @@ msgstr "来源"
 
 #: src/ui/buttons-conversion.blp:625
 msgid "_Refresh Rates"
-msgstr "刷新率(_R)"
+msgstr "刷新汇率(_R)"
 
 #. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
 #: src/ui/buttons-financial.blp:669
@@ -3126,71 +3126,63 @@ msgstr "计算期限内普通年金积累到某一未来值需要的付款期数
 
 #: src/ui/buttons-programming.blp:1904
 msgid "Bitwise AND"
-msgstr ""
+msgstr "按位与"
 
 #: src/ui/buttons-programming.blp:1922
 msgid "Bitwise NAND"
-msgstr ""
+msgstr "按位与非"
 
 #: src/ui/buttons-programming.blp:1941
 msgid "Bitwise OR"
-msgstr ""
+msgstr "按位或"
 
 #: src/ui/buttons-programming.blp:1959
 msgid "Bitwise NOR"
-msgstr ""
+msgstr "按位或非"
 
 #: src/ui/buttons-programming.blp:1977
 msgid "Bitwise NOT"
-msgstr ""
+msgstr "按位取反"
 
 #: src/ui/buttons-programming.blp:1995
-#, fuzzy
-#| msgid "Boolean Exclusive OR"
 msgid "Bitwise Exclusive OR"
-msgstr "逻辑异或"
+msgstr "按位异或"
 
 #: src/ui/buttons-programming.blp:2013
-#, fuzzy
-#| msgid "Boolean Exclusive OR"
 msgid "Bitwise Exclusive NOR"
-msgstr "逻辑异或"
+msgstr "按位异或非"
 
 #: src/ui/buttons-programming.blp:2031
 msgid "Left Shift [<<]"
-msgstr ""
+msgstr "左移 [<<]"
 
 #: src/ui/buttons-programming.blp:2049
 msgid "Right Shift [>>]"
-msgstr ""
+msgstr "右移 [>>]"
 
 #: src/ui/buttons-programming.blp:2067
 msgid "Unsigned Right Shift [>>>]"
-msgstr ""
+msgstr "无符号右移 [>>>]"
 
 #: src/ui/buttons-programming.blp:2257
 msgid "Binary Logarithm"
 msgstr "二进制对数"
 
 #: src/ui/buttons-programming.blp:2274
-#, fuzzy
-#| msgid "Exponent"
 msgid "Base-2 Exponential"
-msgstr "X^Y"
+msgstr "指数（底数 2）"
 
 #: src/ui/buttons-programming.blp:2364
-#, fuzzy
-#| msgid "Pi [Ctrl+P]"
 msgid "Ceiling [Ctrl+[]]"
-msgstr "圆周率 [Ctrl+P]"
+msgstr "向上取整 [Ctrl+[]]"
 
 #: src/ui/buttons-programming.blp:2385
 msgid "Floor [Alt+[]]"
-msgstr ""
+msgstr "向下取整 [Alt+[]]"
 
 #: src/ui/buttons-programming.blp:2449
 msgid "Change Base"
-msgstr ""
+msgstr "更改底数"
 
 #: src/ui/buttons-programming.blp:2468
 msgid "Change Word Size"
@@ -3207,22 +3199,20 @@ msgid "Character"
 msgstr "字符"
 
 #: src/ui/buttons-programming.blp:2542
-#, fuzzy
-#| msgid "Conversion"
 msgid "Convert to"
-msgstr "转换"
+msgstr "转换为"
 
 #: src/ui/buttons-programming.blp:2546
 msgid "Unicode Code Point"
-msgstr ""
+msgstr "万国码码位"
 
 #: src/ui/buttons-programming.blp:2547
 msgid "UTF-8 Encoding"
-msgstr ""
+msgstr "UTF-8 编码"
 
 #: src/ui/buttons-programming.blp:2548
 msgid "UTF-16 Encoding"
-msgstr ""
+msgstr "UTF-16 编码"
 
 #. Translators: Insert character code dialog: Button to insert selected character
 #: src/ui/buttons-programming.blp:2574
@@ -3230,15 +3220,13 @@ msgid "_Insert"
 msgstr "插入(_I)"
 
 #: src/ui/math-converter.blp:119
-#, fuzzy
-#| msgid "Exchange rate data providers"
 msgid "Exchange Rates Not Loaded"
-msgstr "汇率数据提供者"
+msgstr "未加载汇率"
 
 #: src/ui/math-converter.blp:122
 msgid ""
 "<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
-msgstr ""
+msgstr "<a href=\"r:///\">刷新汇率</a>或在首选项中更改刷新间隔"
 
 #: src/ui/math-converter.blp:141
 msgid "_Copy"
@@ -3250,44 +3238,33 @@ msgstr "粘贴(_P)"
 
 #: src/ui/math-function-popover.blp:48
 msgid "Function name"
-msgstr ""
+msgstr "函数名称"
 
 #: src/ui/math-function-popover.blp:57
 msgid "Select no. of arguments"
 msgstr "选择参数的数量"
 
 #: src/ui/math-function-popover.blp:62
-#, fuzzy
-#| msgid "New function"
 msgid "Add function"
-msgstr "新函数"
+msgstr "添加函数"
 
 #: src/ui/math-preferences.blp:11
-#, fuzzy
-#| msgid "Defined currencies"
 msgid "Favorite Currencies"
-msgstr "已定义货币"
+msgstr "常用货币"
 
 #: src/ui/math-preferences.blp:20
-#, fuzzy
-#| msgid "Source currency"
 msgid "Search currencies"
-msgstr "起始货币"
+msgstr "搜索货币"
 
 #: src/ui/math-preferences.blp:36
-#, fuzzy
-#| msgid "Result Format"
 msgid "No Results Found"
-msgstr "结果格式"
+msgstr "未找到结果"
 
 #: src/ui/math-preferences.blp:37
 msgid "Try a different search"
-msgstr ""
+msgstr "尝试不同的搜索"
 
 #: src/ui/math-preferences.blp:46
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "General"
 msgid "General"
 msgstr "常规"
 
@@ -3308,300 +3285,203 @@ msgid "_Angle Units"
 msgstr "角度单位(_A)"
 
 #: src/ui/math-preferences.blp:72
-#, fuzzy
-#| msgid "Word _Size"
 msgid "_Word Size"
-msgstr "字长(_S)"
+msgstr "字长(_W)"
 
 #: src/ui/math-preferences.blp:81
 msgid "E_xchange Rate Refresh Interval"
 msgstr "汇率刷新间隔(_X)"
 
 #: src/ui/math-preferences.blp:86
-#, fuzzy
-#| msgid "Currency"
 msgid "_Currency Display"
-msgstr "货币"
+msgstr "货币显示(_C)"
 
 #: src/ui/math-preferences.blp:91
 msgid "_Show Currencies in Auto-Completion List"
-msgstr ""
+msgstr "在自动补全列表中显示货币(_S)"
 
 #: src/ui/math-preferences.blp:96
 msgid "All"
-msgstr ""
+msgstr "全部"
 
 #: src/ui/math-preferences.blp:97
 msgid "Favorite Only"
-msgstr ""
+msgstr "仅常用"
 
 #: src/ui/math-preferences.blp:98
 msgid "None"
-msgstr ""
+msgstr "无"
 
 #: src/ui/math-preferences.blp:104
-#, fuzzy
-#| msgid "Defined currencies"
 msgid "_Favorite Currencies"
-msgstr "已定义货币"
+msgstr "常用货币(_F)"
 
 #: src/ui/math-shortcuts.blp:5
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "General"
 msgctxt "shortcuts dialog"
 msgid "General"
 msgstr "常规"
 
 #: src/ui/math-shortcuts.blp:9
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Open a new window"
 msgctxt "shortcuts dialog"
 msgid "Open a New Window"
 msgstr "打开新窗口"
 
 #: src/ui/math-shortcuts.blp:14
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Close current window"
 msgctxt "shortcuts dialog"
 msgid "Close Current Window"
 msgstr "关闭当前窗口"
 
 #: src/ui/math-shortcuts.blp:19
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Quit the application"
 msgctxt "shortcuts dialog"
 msgid "Quit the Application"
-msgstr "退出程序"
+msgstr "退出应用程序"
 
 #: src/ui/math-shortcuts.blp:24
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Show help"
 msgctxt "shortcuts dialog"
 msgid "Show Help"
 msgstr "显示帮助"
 
 #: src/ui/math-shortcuts.blp:29
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Open menu"
 msgctxt "shortcuts dialog"
 msgid "Open Menu"
 msgstr "打开菜单"
 
 #: src/ui/math-shortcuts.blp:34
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Show preferences"
 msgctxt "shortcuts dialog"
 msgid "Show Preferences"
 msgstr "显示首选项"
 
 #: src/ui/math-shortcuts.blp:39
-#, fuzzy
-#| msgid "Keyboard Shortcuts"
 msgctxt "shortcuts dialog"
 msgid "Keyboard Shortcuts"
 msgstr "键盘快捷键"
 
 #: src/ui/math-shortcuts.blp:44
-#, fuzzy
-#| msgid "_Clear History"
 msgctxt "shortcuts dialog"
 msgid "Clear History"
-msgstr "清除历史(_C)"
+msgstr "清除历史"
 
 #: src/ui/math-shortcuts.blp:49
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switching modes"
 msgctxt "shortcuts dialog"
 msgid "Switching Modes"
 msgstr "切换模式"
 
 #: src/ui/math-shortcuts.blp:53
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to Basic mode"
 msgctxt "shortcuts dialog"
 msgid "Switch to Basic Mode"
 msgstr "切换到基本模式"
 
 #: src/ui/math-shortcuts.blp:58
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to Advanced mode"
 msgctxt "shortcuts dialog"
 msgid "Switch to Advanced Mode"
-msgstr "高级模式"
+msgstr "切换到高级模式"
 
 #: src/ui/math-shortcuts.blp:63
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to Financial mode"
 msgctxt "shortcuts dialog"
 msgid "Switch to Financial Mode"
 msgstr "切换到财务模式"
 
 #: src/ui/math-shortcuts.blp:68
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to Programming mode"
 msgctxt "shortcuts dialog"
 msgid "Switch to Programming Mode"
 msgstr "切换到编程模式"
 
 #: src/ui/math-shortcuts.blp:73
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to Keyboard mode"
 msgctxt "shortcuts dialog"
 msgid "Switch to Keyboard Mode"
 msgstr "切换到键盘模式"
 
 #: src/ui/math-shortcuts.blp:78
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to Keyboard mode (alt.)"
 msgctxt "shortcuts dialog"
 msgid "Switch to Keyboard Mode (alt.)"
-msgstr "切换到键盘模式 (alt.)"
+msgstr "切换到键盘模式（alt.）"
 
 #: src/ui/math-shortcuts.blp:83
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to Conversion mode"
 msgctxt "shortcuts dialog"
 msgid "Switch to Conversion Mode"
 msgstr "切换到转换模式"
 
 #: src/ui/math-shortcuts.blp:88
-#, fuzzy
-#| msgid "Programming Mode"
 msgctxt "shortcuts dialog"
 msgid "Programming Mode"
 msgstr "编程模式"
 
 #: src/ui/math-shortcuts.blp:92
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to binary"
 msgctxt "shortcuts dialog"
 msgid "Switch to Binary"
 msgstr "切换至二进制"
 
 #: src/ui/math-shortcuts.blp:97
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to octal"
 msgctxt "shortcuts dialog"
 msgid "Switch to Octal"
 msgstr "切换至八进制"
 
 #: src/ui/math-shortcuts.blp:102
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to decimal"
 msgctxt "shortcuts dialog"
 msgid "Switch to Decimal"
 msgstr "切换至十进制"
 
 #: src/ui/math-shortcuts.blp:107
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to hexadecimal"
 msgctxt "shortcuts dialog"
 msgid "Switch to Hexadecimal"
-msgstr "切换到十六进制"
+msgstr "切换至十六进制"
 
 #: src/ui/math-shortcuts.blp:112
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Keyboard entry"
 msgctxt "shortcuts dialog"
 msgid "Keyboard Entry"
 msgstr "键盘输入"
 
 #: src/ui/math-shortcuts.blp:116
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Multiply (×)"
 msgctxt "shortcuts dialog"
 msgid "Multiply (×)"
 msgstr "相乘 (×)"
 
 #: src/ui/math-shortcuts.blp:121
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Divide (÷)"
 msgctxt "shortcuts dialog"
 msgid "Divide (÷)"
 msgstr "除以 (÷)"
 
 #: src/ui/math-shortcuts.blp:126
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Square root (√)"
 msgctxt "shortcuts dialog"
 msgid "Square (²)"
-msgstr "平方根 (√)"
+msgstr "平方 (²)"
 
 #: src/ui/math-shortcuts.blp:131
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Square root (√)"
 msgctxt "shortcuts dialog"
 msgid "Square Root (√)"
 msgstr "平方根 (√)"
 
 #: src/ui/math-shortcuts.blp:136
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Inverse"
 msgctxt "shortcuts dialog"
 msgid "Inverse (⁻¹)"
-msgstr "转换为反角"
+msgstr "逆运算 (⁻¹)"
 
 #: src/ui/math-shortcuts.blp:141
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Pi (π)"
 msgctxt "shortcuts dialog"
 msgid "Pi (π)"
-msgstr "圆周率 (π)"
+msgstr "派 (π)"
 
 #: src/ui/math-shortcuts.blp:146
 msgctxt "shortcuts dialog"
 msgid "Tau (τ)"
-msgstr ""
+msgstr "陶 (τ)"
 
 #: src/ui/math-shortcuts.blp:151
-#, fuzzy
-#| msgid "Degrees"
 msgctxt "shortcuts dialog"
 msgid "Degree (°)"
-msgstr "角度"
+msgstr "度 (°)"
 
 #: src/ui/math-shortcuts.blp:156 src/ui/math-shortcuts.blp:168
 msgctxt "shortcuts dialog"
 msgid "Floor (⌊⌋)"
-msgstr ""
+msgstr "向下取整 (⌊⌋)"
 
 #: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
-#, fuzzy
-#| msgid "Ceiling"
 msgctxt "shortcuts dialog"
 msgid "Ceiling (⌈⌉)"
-msgstr "上限"
+msgstr "向上取整 (⌈⌉)"
 
 #: src/ui/math-shortcuts.blp:180
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Enter numbers in scientific format"
 msgctxt "shortcuts dialog"
 msgid "Enter Numbers in Scientific Format"
 msgstr "以科学计数法输入数字"
@@ -3609,91 +3489,66 @@ msgstr "以科学计数法输入数字"
 #: src/ui/math-shortcuts.blp:185
 msgctxt "shortcuts dialog"
 msgid "Enter Subscript Numbers"
-msgstr ""
+msgstr "输入下标数字"
 
 #: src/ui/math-shortcuts.blp:190
-#, fuzzy
-#| msgid "Superscript mode [Ctrl]"
 msgctxt "shortcuts dialog"
 msgid "Enter Superscript Numbers"
-msgstr "上标模式 [Ctrl]"
+msgstr "输入上标数字"
 
 #: src/ui/math-shortcuts.blp:195
 msgctxt "shortcuts dialog"
 msgid "Enter Superscript Minus Sign"
-msgstr ""
+msgstr "输入上标负号"
 
 #: src/ui/math-shortcuts.blp:200
-#, fuzzy
-#| msgid "Duration"
 msgctxt "shortcuts dialog"
 msgid "Equation"
-msgstr "时长"
+msgstr "方程式"
 
 #: src/ui/math-shortcuts.blp:204
-#, fuzzy
-#| msgid "Copy"
 msgctxt "shortcuts dialog"
 msgid "Copy"
 msgstr "复制"
 
 #: src/ui/math-shortcuts.blp:209
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Paste"
 msgctxt "shortcuts dialog"
 msgid "Paste"
 msgstr "粘贴"
 
 #: src/ui/math-shortcuts.blp:214
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Undo"
 msgctxt "shortcuts dialog"
 msgid "Undo"
 msgstr "撤消"
 
 #: src/ui/math-shortcuts.blp:219
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Redo"
 msgctxt "shortcuts dialog"
 msgid "Redo"
 msgstr "重做"
 
 #: src/ui/math-shortcuts.blp:224
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Previous equation"
 msgctxt "shortcuts dialog"
 msgid "Previous Equation"
 msgstr "上个等式"
 
 #: src/ui/math-shortcuts.blp:229
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Next equation"
 msgctxt "shortcuts dialog"
 msgid "Next Equation"
 msgstr "下个等式"
 
 #: src/ui/math-shortcuts.blp:234
-#, fuzzy
-#| msgid "Clear Display [Escape]"
 msgctxt "shortcuts dialog"
 msgid "Clear Display"
-msgstr "清除显示 [Escape]"
+msgstr "清除显示"
 
 #: src/ui/math-shortcuts.blp:239
-#, fuzzy
-#| msgid "Factorize"
 msgctxt "shortcuts dialog"
 msgid "Factorize"
-msgstr "质因数分解"
+msgstr "因式分解"
 
 #: src/ui/math-variable-popover.blp:37
 msgid "Constants"
-msgstr ""
+msgstr "常量"
 
 #: src/ui/math-variable-popover.blp:58
 msgid "Variable name"
@@ -3704,40 +3559,28 @@ msgid "Store value into existing or new variable"
 msgstr "将数值存入现有或新的变量"
 
 #: src/ui/math-window.blp:7
-#, fuzzy
-#| msgid "Basic"
 msgid "_Basic"
-msgstr "基本"
+msgstr "基本(_B)"
 
 #: src/ui/math-window.blp:13
-#, fuzzy
-#| msgid "Advanced"
 msgid "_Advanced"
-msgstr "高级"
+msgstr "高级(_A)"
 
 #: src/ui/math-window.blp:19
-#, fuzzy
-#| msgid "Financial"
 msgid "_Financial"
-msgstr "财务"
+msgstr "财务(_F)"
 
 #: src/ui/math-window.blp:25
-#, fuzzy
-#| msgid "Programming"
 msgid "_Programming"
-msgstr "编程"
+msgstr "编程(_P)"
 
 #: src/ui/math-window.blp:31
-#, fuzzy
-#| msgid "Keyboard"
 msgid "_Keyboard"
-msgstr "键盘"
+msgstr "键盘(_K)"
 
 #: src/ui/math-window.blp:37
-#, fuzzy
-#| msgid "Conversion"
 msgid "_Conversion"
-msgstr "转换"
+msgstr "转换(_C)"
 
 #: src/ui/math-window.blp:47
 msgid "_New Window"
@@ -3772,42 +3615,30 @@ msgid "_Engineering"
 msgstr "工程(_E)"
 
 #: src/ui/math-window.blp:96
-#, fuzzy
-#| msgid "Preferences"
 msgid "_Preferences"
-msgstr "首选项"
+msgstr "首选项(_P)"
 
 #: src/ui/math-window.blp:101
-#, fuzzy
-#| msgid "Keyboard Shortcuts"
 msgid "_Keyboard Shortcuts"
-msgstr "键盘快捷键"
+msgstr "键盘快捷键(_K)"
 
 #: src/ui/math-window.blp:106
 msgid "_Help"
 msgstr "帮助(_H)"
 
 #: src/ui/math-window.blp:111
-#, fuzzy
-#| msgid "About Calculator"
 msgid "A_bout Calculator"
-msgstr "关于计算器"
+msgstr "关于计算器(_B)"
 
 #: src/ui/math-window.blp:132
 msgid "Mode Selection"
 msgstr "模式选择"
 
 #: src/ui/math-window.blp:139
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Undo"
 msgid "Undo"
 msgstr "撤消"
 
 #: src/ui/math-window.blp:146
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Redo"
 msgid "Redo"
 msgstr "重做"
 
