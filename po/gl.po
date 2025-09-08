@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: gcalctool-master-po-gl-72274_.merged\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-08-30 16:48+0000\n"
-"PO-Revision-Date: 2025-08-30 21:15+0200\n"
+"POT-Creation-Date: 2025-09-08 06:34+0000\n"
+"PO-Revision-Date: 2025-09-08 16:40+0200\n"
 "Last-Translator: Fran Dieguez <fran.dieguez@gnome.org>\n"
 "Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
@@ -948,12 +948,11 @@ msgid "Function “%s” takes at least 2 arguments"
 msgstr "A función «%s» recolle cando menos 2 argumentos"
 
 #: lib/function-manager.vala:370
-#, fuzzy, c-format
-#| msgid "Function “%s” is not defined"
+#, c-format
 msgid "Function “%s” takes %d argument"
 msgid_plural "Function “%s” takes %d arguments"
-msgstr[0] "A función «%s» non está definida"
-msgstr[1] "A función «%s» non está definida"
+msgstr[0] "A función «%s» toma %d argumento"
+msgstr[1] "A función «%s» toma %d argumentos"
 
 #. Digits localized for the given language
 #: lib/math-equation.vala:181
@@ -1040,22 +1039,16 @@ msgid "Argument not defined for zero"
 msgstr "Argumento non definido a cero"
 
 #: lib/number.vala:442
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Floor is only defined for real numbers"
-msgstr "O factorial só está definido para os número reais non negativos"
+msgstr "O chan só está definido para os número reais"
 
 #: lib/number.vala:457
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Ceiling is only defined for real numbers"
-msgstr "O factorial só está definido para os número reais non negativos"
+msgstr "O teito só está definido para os número reais non negativos"
 
 #: lib/number.vala:472
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Round is only defined for real numbers"
-msgstr "O factorial só está definido para os número reais non negativos"
+msgstr "O arredondamento só está definido para os número reais non negativos"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
 #: lib/number.vala:506 lib/number.vala:536
@@ -1111,10 +1104,8 @@ msgstr "O coseno inverso non está definido para os valores externos a [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
 #: lib/number.vala:859
-#, fuzzy
-#| msgid "Arctangent function is undefined for values i and -i"
 msgid "Inverse tangent is undefined for values i and -i"
-msgstr "A función de arcotanxente non está definida para os valores i e -i"
+msgstr "A tanxente inversa non está definida para os valores i e -i"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: lib/number.vala:910
@@ -1131,57 +1122,41 @@ msgstr ""
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: lib/number.vala:941
-#, fuzzy
-#| msgid "Boolean AND is only defined for positive integers"
 msgid "Boolean AND is only defined for non-negative integers"
-msgstr "O booleano AND só está definido para os enteiros positivos"
+msgstr "O booleano AND só está definido para os enteiros non negativo"
 
 #. Translators: Error displayed when boolean NAND attempted on non-integer values
 #: lib/number.vala:954
-#, fuzzy
-#| msgid "Boolean AND is only defined for positive integers"
 msgid "Boolean NAND is only defined for non-negative integers"
-msgstr "O booleano AND só está definido para os enteiros positivos"
+msgstr "O booleano AND só está definido para os enteiros non negativo"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: lib/number.vala:967
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Boolean OR is only defined for non-negative integers"
-msgstr "O booleano OR so está definido para os enteiros positivos"
+msgstr "O booleano OR so está definido para os enteiros non negativo"
 
 #. Translators: Error displayed when boolean NOR attempted on non-integer values
 #: lib/number.vala:980
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Boolean NOR is only defined for non-negative integers"
-msgstr "O booleano OR so está definido para os enteiros positivos"
+msgstr "O booleano OR so está definido para os enteiros non negativo"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: lib/number.vala:993
-#, fuzzy
-#| msgid "Boolean XOR is only defined for positive integers"
 msgid "Boolean XOR is only defined for non-negative integers"
-msgstr "O booleano XOR só está definido para os enteiros positivos"
+msgstr "O booleano XOR só está definido para os enteiros non negativo"
 
 #. Translators: Error displayed when boolean XNOR attempted on non-integer values
 #: lib/number.vala:1006
-#, fuzzy
-#| msgid "Boolean XOR is only defined for positive integers"
 msgid "Boolean XNOR is only defined for non-negative integers"
-msgstr "O booleano XOR só está definido para os enteiros positivos"
+msgstr "O booleano XOR só está definido para os enteiros non negativo"
 
 #. Translators: Error displayed when boolean NOT attempted on non-integer values
 #: lib/number.vala:1019
-#, fuzzy
-#| msgid "Boolean NOT is only defined for positive integers"
 msgid "Boolean NOT is only defined for non-negative integers"
-msgstr "O booleano NOT só está definido para os enteiros positivos"
+msgstr "O booleano NOT só está definido para os enteiros non negativo"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: lib/number.vala:1081
-#, fuzzy
-#| msgid "Shift is only possible on integer values"
 msgid "Shift is only possible on integers"
 msgstr "O desprazamento só está dispoñíbel para os valores enteiros"
 
@@ -1190,28 +1165,20 @@ msgid "Overflow. Try a bigger word size"
 msgstr "Desbordamento de búfer. Probe cun tamaño maior da palabra"
 
 #: lib/number.vala:1097
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Ones’ complement is only defined for non-negative integers"
-msgstr "O booleano OR so está definido para os enteiros positivos"
+msgstr "O complemento a 1 so está definido para os enteiros non negativos"
 
 #: lib/number.vala:1109
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Two’s complement is only defined for non-negative integers"
-msgstr "O booleano OR so está definido para os enteiros positivos"
+msgstr "O complemento a 2 so está definido para os enteiros non negativo"
 
 #: lib/number.vala:1121
-#, fuzzy
-#| msgid "Shift is only possible on integer values"
 msgid "Swap endianness is only possible on integers"
-msgstr "O desprazamento só está dispoñíbel para os valores enteiros"
+msgstr "Trocar o endianness só está dispoñíbel para os valores enteiros"
 
 #: lib/number.vala:1149
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Combination is only defined for non-negative integers"
-msgstr "O factorial só está definido para os número reais non negativos"
+msgstr "A combinación só está definida para os número enteiros non negativos"
 
 #: lib/number.vala:1154
 #, fuzzy
@@ -1237,22 +1204,16 @@ msgid "Greatest common divisor is only defined for integers"
 msgstr "A división de módulo só está definida para enteiros"
 
 #: lib/number.vala:1213
-#, fuzzy
-#| msgid "Modulus division is only defined for integers"
 msgid "Least common multiple is only defined for integers"
-msgstr "A división de módulo só está definida para enteiros"
+msgstr "O mínimo común múltiplo só está definido para enteiros"
 
 #: lib/number.vala:1270
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Median is only defined for real numbers"
-msgstr "O factorial só está definido para os número reais non negativos"
+msgstr "A mediana só está definido para os número reais"
 
 #: lib/number.vala:1290
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Minimum value is only defined for real numbers"
-msgstr "O factorial só está definido para os número reais non negativos"
+msgstr "O valor mínimo só está definido para os número reais"
 
 #: lib/number.vala:1307
 #, fuzzy
@@ -1529,8 +1490,6 @@ msgid "point,pt,points,pts"
 msgstr "punto,pt,puntos,pts"
 
 #: lib/unit.vala:65
-#, fuzzy
-#| msgid "Kilometers per hour"
 msgid "Kilometers per Hour"
 msgstr "Quilómetros por hora"
 
@@ -1540,8 +1499,6 @@ msgid "kilometers per hour,kmph,kmh,kph"
 msgstr "quilómetros por hora,qmph,qmh,kph"
 
 #: lib/unit.vala:66
-#, fuzzy
-#| msgid "Miles per hour"
 msgid "Miles per Hour"
 msgstr "Millas por hora"
 
@@ -1551,8 +1508,6 @@ msgid "milesph,miles per hour,mi/h,miph,mph"
 msgstr "millasph,millas por hora,mi/h,miph,mph"
 
 #: lib/unit.vala:67
-#, fuzzy
-#| msgid "Meters per second"
 msgid "Meters per Second"
 msgstr "Metros por segundo"
 
@@ -2481,8 +2436,6 @@ msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
 msgstr "Milímetro de mercurio,milímetros de mercurio,mmHg"
 
 #: lib/unit.vala:171
-#, fuzzy
-#| msgid "Inch of Mercury"
 msgid "Inches of Mercury"
 msgstr "Polgadas de mercurio"
 
@@ -2492,8 +2445,6 @@ msgid "Inch of Mercury,inch of mercury,inHg"
 msgstr "Polgada de mercurio,polgada de mercurio, inHg"
 
 #: lib/unit.vala:172
-#, fuzzy
-#| msgid "Pound per Square Inch"
 msgid "Pounds per Square Inch"
 msgstr "Libras por polgada cadrada"
 
@@ -2796,10 +2747,8 @@ msgstr "x"
 
 #: src/ui/buttons-advanced.blp:303 src/ui/buttons-basic.blp:248
 #: src/ui/buttons-financial.blp:303 src/ui/buttons-programming.blp:1708
-#, fuzzy
-#| msgid "Variable name"
 msgid "Variables and Constants"
-msgstr "Nome da variábel"
+msgstr "Variábeis e constantes"
 
 #: src/ui/buttons-advanced.blp:320 src/ui/buttons-basic.blp:265
 #: src/ui/buttons-financial.blp:320 src/ui/buttons-programming.blp:1725
@@ -2859,8 +2808,6 @@ msgstr "Cadrado [Ctrl+2]"
 
 #: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
 #: src/ui/buttons-programming.blp:2107
-#, fuzzy
-#| msgid "Square root [Ctrl+R]"
 msgid "Square Root [Ctrl+R]"
 msgstr "Raíz cadrada [Ctrl+R]"
 
@@ -2931,16 +2878,12 @@ msgid "Degrees, Minutes, Seconds"
 msgstr "Graos, minutos, segundos"
 
 #: src/ui/buttons-conversion.blp:533
-#, fuzzy
-#| msgid "Change Word Size"
 msgid "Change Sign"
-msgstr "Cambiar o tamaño de palabra"
+msgstr "Cambiar o signo"
 
 #: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
-#, fuzzy
-#| msgid "Exchange rates data by %s"
 msgid "Exchange Rate Details"
-msgstr "Datos de taxa de intercambio fornecidos por %s"
+msgstr "Detalles de taxa de intercambio"
 
 #: src/ui/buttons-conversion.blp:575 src/ui/buttons-conversion.blp:600
 msgid "Updated"
@@ -3292,26 +3235,20 @@ msgid "Bitwise NOT"
 msgstr "NOT de bit"
 
 #: src/ui/buttons-programming.blp:1995
-#, fuzzy
-#| msgid "Boolean Exclusive OR"
 msgid "Bitwise Exclusive OR"
-msgstr "Booleano OR exclusivo"
+msgstr "OR exclusivo a nivel de bit"
 
 #: src/ui/buttons-programming.blp:2013
-#, fuzzy
-#| msgid "Boolean Exclusive OR"
 msgid "Bitwise Exclusive NOR"
-msgstr "Booleano OR exclusivo"
+msgstr "OR exclusivo a nivel de bit"
 
 #: src/ui/buttons-programming.blp:2031
-#, fuzzy
 msgid "Left Shift [<<]"
-msgstr "Cambio esquerdo [<<]"
+msgstr "Desprazamento á esquerda [<<]"
 
 #: src/ui/buttons-programming.blp:2049
-#, fuzzy
 msgid "Right Shift [>>]"
-msgstr "Cambio dereito [>>]"
+msgstr "Desprazamento á dereita [>>]"
 
 #: src/ui/buttons-programming.blp:2067
 #, fuzzy
@@ -3323,19 +3260,14 @@ msgid "Binary Logarithm"
 msgstr "Logaritmo binario"
 
 #: src/ui/buttons-programming.blp:2274
-#, fuzzy
-#| msgid "Exponent"
 msgid "Base-2 Exponential"
-msgstr "Expoñente"
+msgstr "Exponencial en base 2"
 
 #: src/ui/buttons-programming.blp:2364
-#, fuzzy
-#| msgid "Pi [Ctrl+P]"
 msgid "Ceiling [Ctrl+[]]"
-msgstr "Pi [Ctrl+P]"
+msgstr "Teito [Ctrl+P]"
 
 #: src/ui/buttons-programming.blp:2385
-#, fuzzy
 msgid "Floor [Alt+[]]"
 msgstr "Chan [alt+[]]"
 
@@ -3385,12 +3317,11 @@ msgid "Exchange Rates Not Loaded"
 msgstr "Fornecedores de datos de taxa de intercambio"
 
 #: src/ui/math-converter.blp:122
-#, fuzzy
 msgid ""
 "<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
 msgstr ""
-"<a href = \"r: //\"> refrescar as tarifas </a> ou cambiar o intervalo de "
-"refresco nas preferencias"
+"<a href=\"r://\">Refrescar as taxas</a> ou cambiar o intervalo de refresco "
+"nas preferencias"
 
 #: src/ui/math-converter.blp:141
 msgid "_Copy"
@@ -3461,9 +3392,8 @@ msgid "_Currency Display"
 msgstr "Mostrar _divisa"
 
 #: src/ui/math-preferences.blp:91
-#, fuzzy
 msgid "_Show Currencies in Auto-Completion List"
-msgstr "_Show moedas na lista de completacións automáticas"
+msgstr "_Mostrar as moedas na lista de completado automática"
 
 #: src/ui/math-preferences.blp:96
 msgid "All"
