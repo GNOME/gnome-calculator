@@ -1,12 +1,12 @@
 # translation of gcalctool_help.HEAD.po to Basque
 # Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2008.
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2021, 2023.
+# Asier Sarattsua Garmendia <asiersarasua@ni.eus>, 2021, 2023, 2025.
 #
 msgid ""
 msgstr "Project-Id-Version: gcalctool_help.HEAD\n"
-"POT-Creation-Date: 2023-04-09 00:51+0000\n"
-"PO-Revision-Date: 2023-11-24 10:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
+"POT-Creation-Date: 2025-09-07 04:49+0000\n"
+"PO-Revision-Date: 2025-09-07 10:00+0100\n"
+"Last-Translator: Asier Saratsua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -40,6 +40,17 @@ msgstr "|−1|"
 #: C/absolute.page:18
 msgid "abs (−1)"
 msgstr "abs (−1)"
+
+#. (itstool) path: page/p
+#: C/absolute.page:22
+msgid ""
+"Signum x÷|x| is calculated using sgn <link xref=\"function\">function</link>."
+msgstr "Ikurra x÷|x| kalkulatzeko, erabili sgn <link xref=\"function\">funtzioa</link>."
+
+#. (itstool) path: example/p
+#: C/absolute.page:26
+msgid "sgn (−1)"
+msgstr "sgn (−1)"
 
 #. (itstool) path: page/title
 #: C/base.page:9 C/conv-base.page:9
@@ -100,38 +111,143 @@ msgstr "Zenbakiak beste oinarri batera bihurtzeko modu dinamikoan, erabili <link
 
 #. (itstool) path: page/title
 #: C/boolean.page:9
-msgid "Boolean Algebra"
-msgstr "Aljebra boolearra"
+msgid "Bitwise Operations"
+msgstr "Bit mailako eragiketak"
 
 #. (itstool) path: page/p
 #: C/boolean.page:11
-msgid "Boolean algebra can be calculated using the AND, OR and XOR operators."
-msgstr "Aljebra boolearra kalkulatzeko, erabili AND, OR eta XOR eragileak."
+msgid "Bitwise operations can be calculated using the following operators."
+msgstr "Bit mailako eragiketak kalkulatzeko, erabili honako eragileak."
 
-#. (itstool) path: example/p
-#: C/boolean.page:15
-msgid "010011₂ AND 110101₂"
-msgstr "010011₂ AND 110101₂"
+#. (itstool) path: page/p
+#: C/boolean.page:14
+msgid ""
+"The result of some operations depend on the word size. To set the word size, "
+"press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>."
+msgstr "Eragiketa batzuen emaitza hitz-tamainaren araberakoak izango dira. Hitz-tamaina ezartzeko, sakatu leihoaren goiko eskuineko menu-botoia eta hautatu <gui style=\"menuitem\">Hobespenak</gui>."
 
 #. (itstool) path: page/p
 #: C/boolean.page:19
 msgid ""
-"Buttons for these symbols are available in <link xref=\"mouse\">programming "
-"mode</link>."
-msgstr "Ikur horietarako botoiak <link xref=\"mouse\">programazio-moduan</link> daude."
+"Buttons for the following symbols and to set the word size are available in "
+"<link xref=\"mode-programming\">programming mode</link>."
+msgstr ""
 
 #. (itstool) path: page/p
-#: C/boolean.page:22
-msgid ""
-"The NOT <link xref=\"function\">function</link> inverts the bits in a "
-"number. To set the word size, press the menu button in the top-right corner "
-"of the window and select <gui style=\"menuitem\">Preferences</gui>."
-msgstr "NOT <link xref=\"function\">funtzioak</link> bit-ak zenbaki baten alderantzikatzen ditu. Hitz-tamaina ezartzeko, sakatu leihoaren goiko eskuineko menu-botoia eta hautatu <gui style=\"menuitem\">Hobespenak</gui>."
+#: C/boolean.page:23
+msgid "Bitwise conjunction can be calculated using the ∧ or AND operators."
+msgstr ""
 
 #. (itstool) path: example/p
-#: C/boolean.page:28
+#: C/boolean.page:27
+msgid "010011₂ ∧ 110101₂"
+msgstr "010011₂ ∧ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:30
+msgid "010011₂ AND 110101₂"
+msgstr "010011₂ AND 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:35
+msgid "Bitwise disjunction can be calculated using the ∨ or OR operators."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/boolean.page:39
+msgid "010011₂ ∨ 110101₂"
+msgstr "010011₂ ∨ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:42
+msgid "010011₂ OR 110101₂"
+msgstr "010011₂ OR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:47
+msgid ""
+"Bitwise exclusive disjunction can be calculated using the ⊻, ⊕ or XOR "
+"operators."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/boolean.page:51
+msgid "010011₂ ⊻ 110101₂"
+msgstr "010011₂ ⊻ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:54
+msgid "010011₂ XOR 110101₂"
+msgstr "010011₂ XOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:59
+msgid ""
+"Bitwise complement for the set word size can be calculated using the ¬, ~ or "
+"NOT operators."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/boolean.page:63
+msgid "¬ 010011₂"
+msgstr "¬ 010011₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:66
 msgid "NOT 010011₂"
 msgstr "NOT 010011₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:71
+msgid ""
+"Bitwise alternative denial for the set word size can be calculated using the "
+"⊼ or NAND operators."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/boolean.page:75
+msgid "010011₂ ⊼ 110101₂"
+msgstr "010011₂ ⊼ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:78
+msgid "010011₂ NAND 110101₂"
+msgstr "010011₂ NAND 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:83
+msgid ""
+"Bitwise joint denial for the set word size can be calculated using the ⊽ or "
+"NOR operators."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/boolean.page:87
+msgid "010011₂ ⊽ 110101₂"
+msgstr "010011₂ ⊽ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:90
+msgid "010011₂ NOR 110101₂"
+msgstr "010011₂ NOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:95
+msgid ""
+"Bitwise biconditional for the set word size can be calculated using the ⊙, "
+"XNOR or NXOR operators."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/boolean.page:99
+msgid "010011₂ ⊙ 110101₂"
+msgstr "010011₂ ⊙ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:102
+msgid "010011₂ XNOR 110101₂"
+msgstr "010011₂ XNOR 110101₂"
 
 #. (itstool) path: page/title
 #: C/complex.page:9
@@ -234,8 +350,10 @@ msgstr "1010₂ in octal"
 
 #. (itstool) path: note/p
 #: C/conv-base.page:29
-msgid "Number Base conversions must be performed using the keyboard."
-msgstr "Zenbaki-oinarriaren bihurketak teklatuaren bidez gauzatu behar dira."
+msgid ""
+"Number Base conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>Number Base</gui> category."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/conv-character.page:9
@@ -288,23 +406,25 @@ msgstr "Moneta"
 #: C/conv-currency.page:29
 msgid ""
 "To convert currencies, enter the <link xref=\"financial\">financial mode</"
-"link>, and use the currency controls."
-msgstr "Monetak bihurtzeko, sartu <link xref=\"financial\">modu finantzarioan</link> eta erabili moneta-kontrolak."
+"link>, and use the <gui>Currency conversion</gui> button or enter the <link "
+"xref=\"index#conversion\">conversion mode</link> and select the "
+"<gui>Currency</gui> category."
+msgstr ""
 
 #. (itstool) path: item/p
-#: C/conv-currency.page:34
+#: C/conv-currency.page:36
 msgid "Enter the amount which you want to convert."
 msgstr "Sartu bihurtu nahi duzun kopurua."
 
 #. (itstool) path: item/p
-#: C/conv-currency.page:37
+#: C/conv-currency.page:39
 msgid ""
 "Select the currency that you want to convert from and the currency that you "
 "want to convert to from the drop down below."
 msgstr "Hautatu, beheko goitibeherakoan, zein monetatik eta zein monetara egin nahi duzun bihurketa."
 
 #. (itstool) path: note/p
-#: C/conv-currency.page:43
+#: C/conv-currency.page:45
 msgid ""
 "Currency information is approximate and should not be used for making "
 "financial decisions."
@@ -339,8 +459,11 @@ msgstr "1 pint in mL"
 
 #. (itstool) path: note/p
 #: C/conv-length.page:26
-msgid "Length/Area/Volume conversions must be performed using the keyboard."
-msgstr "Luzeraren/arearen/bolumenaren bihurketak teklatuaren bidez gauzatu behar dira."
+msgid ""
+"Length/Area/Volume conversions must be performed using the keyboard or using "
+"the <gui>conversion mode</gui> and selecting the <gui>length/area/volume</"
+"gui> category."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/conv-time.page:9
@@ -359,8 +482,10 @@ msgstr "3 years in hours"
 
 #. (itstool) path: note/p
 #: C/conv-time.page:20
-msgid "Time conversions must be performed using the keyboard."
-msgstr "Denboraren bihurketak teklatuaren bidez gauzatu behar dira."
+msgid ""
+"Time conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>duration</gui> category."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/conv-weight.page:9
@@ -379,8 +504,10 @@ msgstr "1kg in pounds"
 
 #. (itstool) path: note/p
 #: C/conv-weight.page:20
-msgid "Mass conversions must be performed using the keyboard."
-msgstr "Masaren bihurketak teklatuaren bidez gauzatu behar dira."
+msgid ""
+"Mass conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>mass</gui> category."
+msgstr ""
 
 #. (itstool) path: info/title
 #: C/equation.page:7
@@ -468,10 +595,10 @@ msgstr "Faktorizazioa"
 #. (itstool) path: page/p
 #: C/factorize.page:11
 msgid ""
-"You can factorize the number currently displayed by pressing the <gui>fact</"
-"gui> button. This button is visible in <link xref=\"mouse\">programming "
-"mode</link>."
-msgstr "Unean bistan dagoen zenbakia faktorizatzeko, sakatu <gui>fact</gui> botoia. Botoi hori <link xref=\"mouse\">programazio-moduan</link> dago ikusgai."
+"You can factorize the number currently displayed by pressing the <gui>a×b</"
+"gui> button, or pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This "
+"button is visible in <link xref=\"mouse\">advanced mode</link>."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/financial.page:9
@@ -655,8 +782,9 @@ msgstr "fun (9;10)"
 msgid ""
 "To add a new function type the function in the format as given below. A "
 "function name and arguments must only contain upper or lower case "
-"characters. The part after @ is the function description which is optional."
-msgstr "Funtzio berri bat gehitzeko, idatzi funtzioa behean ematen den formatuan. Funtzio baten izenak eta argumentuek maiuskulak edo minuskulak soilik eduki ditzake. @ ikurraren ondoko zatia funtzioaren deskribapena da, aukerakoa da."
+"characters, or underscores. The part after @ is the function description "
+"which is optional."
+msgstr ""
 
 #. (itstool) path: example/p
 #: C/functions.page:30
@@ -689,99 +817,266 @@ msgid "The following functions are defined."
 msgstr "Hurrengo funtzioak definitu dira."
 
 #. (itstool) path: td/p
-#: C/functions.page:53
-msgid "<link xref=\"absolute\">Absolute Value</link>"
-msgstr "<link xref=\"absolute\">Balio absolutua</link>"
+#. (itstool) path: page/title
+#: C/functions.page:52 C/trigonometry.page:9
+msgid "Trigonometry"
+msgstr "Trigonometria"
 
 #. (itstool) path: td/p
-#: C/functions.page:57
-msgid "Ceiling"
-msgstr "Sabaia"
-
-#. (itstool) path: td/p
-#: C/functions.page:61
-msgid "<link xref=\"trigonometry\">Cosine</link>"
-msgstr "<link xref=\"trigonometry\">Kosinua</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:65
-msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
-msgstr "<link xref=\"trigonometry\">Kosinu hiperbolikoa</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:69
-msgid "Floor"
-msgstr "Zorua"
-
-#. (itstool) path: td/p
-#: C/functions.page:73
-msgid "Fractional Component"
-msgstr "Zati frakzionala"
-
-#. (itstool) path: td/p
-#: C/functions.page:77
-msgid "Integer Component"
-msgstr "Osoko zatia"
-
-#. (itstool) path: td/p
-#: C/functions.page:81
-msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
-msgstr "<link xref=\"logarithm\">Logaritmo naturala</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:85
-msgid "<link xref=\"logarithm\">Logarithm</link>"
-msgstr "<link xref=\"logarithm\">Logaritmoa</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:89
-msgid "<link xref=\"boolean\">Boolean NOT</link>"
-msgstr "<link xref=\"boolean\">NOT boolearra</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:93
-msgid "Ones complement"
-msgstr "Baten osagarria"
-
-#. (itstool) path: td/p
-#: C/functions.page:97
-msgid "Round"
-msgstr "Biribila"
-
-#. (itstool) path: td/p
-#: C/functions.page:101
-msgid "Signum"
-msgstr "Ikurra"
-
-#. (itstool) path: td/p
-#: C/functions.page:105
+#: C/functions.page:56
 msgid "<link xref=\"trigonometry\">Sine</link>"
 msgstr "<link xref=\"trigonometry\">Sinua</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:109
-msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
-msgstr "<link xref=\"trigonometry\">Sinu hiperbolikoa</link>"
+#: C/functions.page:60
+msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Kosinua</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:113
-msgid "<link xref=\"power\">Square Root</link>"
-msgstr "<link xref=\"power\">Erro karratua</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:117
+#: C/functions.page:64
 msgid "<link xref=\"trigonometry\">Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Tangentea</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:121
+#: C/functions.page:68
+msgid "<link xref=\"trigonometry\">Inverse Sine</link>"
+msgstr "<link xref=\"trigonometry\">Alderantzizko sinua</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:72
+msgid "<link xref=\"trigonometry\">Inverse Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Alderantzizko kosinua</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:76
+msgid "<link xref=\"trigonometry\">Inverse Tangent</link>"
+msgstr "<link xref=\"trigonometry\">Alderantzizko tangentea</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:80
+msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
+msgstr "<link xref=\"trigonometry\">Sinu hiperbolikoa</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:84
+msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Kosinu hiperbolikoa</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:88
 msgid "<link xref=\"trigonometry\">Hyperbolic Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Tangente hiperbolikoa</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:125
-msgid "Twos complement"
-msgstr "Biren osagarria"
+#: C/functions.page:92
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Sine</link>"
+msgstr "<link xref=\"trigonometry\">Alderantzizko sinu hiperbolikoa</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:96
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Alderantzizko kosinu hiperbolikoa</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:100
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Tangent</link>"
+msgstr "<link xref=\"trigonometry\">Alderantzizko tangente hiperbolikoa</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:103
+msgid "Complex"
+msgstr "Konplexua"
+
+#. (itstool) path: td/p
+#: C/functions.page:107
+msgid "<link xref=\"complex\">Complex Conjugate</link>"
+msgstr "<link xref=\"complex\">Konjugatu konplexua</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:111
+msgid "<link xref=\"complex\">Complex Argument</link>"
+msgstr "<link xref=\"complex\">Argumentu konplexua</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:115
+msgid "<link xref=\"complex\">Real Component</link>"
+msgstr "<link xref=\"complex\">Zati erreala</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:119
+msgid "<link xref=\"complex\">Imaginary Component</link>"
+msgstr "<link xref=\"complex\">Zati irudikaria</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:122 C/mouse.page:29
+msgid "Programming"
+msgstr "Programazioa"
+
+#. (itstool) path: td/p
+#: C/functions.page:126
+msgid "<link xref=\"mode-programming\">Ones’ Complement</link>"
+msgstr "<link xref=\"mode-programming\">Baten osagarria</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:130
+msgid "<link xref=\"mode-programming\">Two’s Complement</link>"
+msgstr "<link xref=\"mode-programming\">Biren osagarria</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:134
+msgid "<link xref=\"mode-programming\">Swap Endianness</link>"
+msgstr "<link xref=\"mode-programming\">Trukatu endian balioa</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:138
+msgid "<link xref=\"modulus\">Modulus Divide</link>"
+msgstr "<link xref=\"modulus\">Moduluaren zatiketa</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:142
+msgid "<link xref=\"modulus\">Modular Exponentiation</link>"
+msgstr "<link xref=\"modulus\">Berreketa modularra</link>"
+
+#. (itstool) path: td/p
+#. (itstool) path: page/title
+#: C/functions.page:145 C/rounding.page:9
+msgid "Rounding"
+msgstr "Biribiltzea"
+
+#. (itstool) path: td/p
+#: C/functions.page:149
+msgid "<link xref=\"rounding\">Round</link>"
+msgstr "<link xref=\"rounding\">Biribiltzea</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:153
+msgid "<link xref=\"rounding\">Floor</link>"
+msgstr "<link xref=\"rounding\">Zorua</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:157
+msgid "<link xref=\"rounding\">Ceiling</link>"
+msgstr "<link xref=\"rounding\">Sabaia</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:161
+msgid "<link xref=\"rounding\">Integer Component</link>"
+msgstr "<link xref=\"rounding\">Osoko zatia</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:165
+msgid "<link xref=\"rounding\">Fractional Component</link>"
+msgstr "<link xref=\"rounding\">Zati frakzionala</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:168
+msgid "Statistics"
+msgstr "Estatistikak"
+
+#. (itstool) path: td/p
+#: C/functions.page:172
+msgid "Sum"
+msgstr "Batuketa"
+
+#. (itstool) path: td/p
+#: C/functions.page:176
+msgid "Sum of Squares"
+msgstr "Erro karratuen batuketa"
+
+#. (itstool) path: td/p
+#: C/functions.page:180
+msgid "Average"
+msgstr "Batez bestekoa"
+
+#. (itstool) path: td/p
+#: C/functions.page:184
+msgid "Median"
+msgstr "Mediana"
+
+#. (itstool) path: td/p
+#: C/functions.page:188
+msgid "Minimum Value"
+msgstr "Balio minimoa"
+
+#. (itstool) path: td/p
+#: C/functions.page:192
+msgid "Maximum Value"
+msgstr "Balio maximoa"
+
+#. (itstool) path: td/p
+#: C/functions.page:196
+msgid "Sample Standard Deviation"
+msgstr "Laginaren desbideratze estandarra"
+
+#. (itstool) path: td/p
+#: C/functions.page:200
+msgid "Population Standard Deviation"
+msgstr "Populazioaren desbideratze estandarra"
+
+#. (itstool) path: td/p
+#: C/functions.page:204
+msgid "Sample Variance"
+msgstr "Laginaren bariantza"
+
+#. (itstool) path: td/p
+#: C/functions.page:208
+msgid "Population Variance"
+msgstr "Populazioaren bariantza"
+
+#. (itstool) path: td/p
+#: C/functions.page:211
+msgid "Sundry"
+msgstr "Bestelakoak"
+
+#. (itstool) path: td/p
+#: C/functions.page:215
+msgid "<link xref=\"logarithm\">Logarithm</link>"
+msgstr "<link xref=\"logarithm\">Logaritmoa</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:219
+msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
+msgstr "<link xref=\"logarithm\">Logaritmo naturala</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:223
+msgid "<link xref=\"power\">Square Root</link>"
+msgstr "<link xref=\"power\">Erro karratua</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:227
+msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgstr "<link xref=\"absolute\">Balio absolutua</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:231
+msgid "<link xref=\"absolute\">Signum</link>"
+msgstr "<link xref=\"absolute\">Ikurra</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:235
+msgid "Combination"
+msgstr "Konbinazioa"
+
+#. (itstool) path: td/p
+#: C/functions.page:239
+msgid "Permutation"
+msgstr "Permutazioa"
+
+#. (itstool) path: td/p
+#: C/functions.page:243
+msgid "Greatest Common Divisor"
+msgstr "Zatitzaile komun handiena"
+
+#. (itstool) path: td/p
+#: C/functions.page:247
+msgid "Least Common Multiple"
+msgstr "Multiplo komun txikiena"
+
+#. (itstool) path: td/p
+#: C/functions.page:251
+msgid "Comparison (Kronecker Delta)"
+msgstr "Konparazioa (Kronecker Delta)"
 
 #. (itstool) path: credit/name
 #: C/history.page:12
@@ -824,7 +1119,7 @@ msgid ""
 "The History View is located above the entry box and is designed to show your "
 "previous calculations in the form of a scrollable list that can be clicked "
 "and scrolled through using a mouse."
-msgstr ""
+msgstr "Historiaren ikuspegia sarrera-koadroaren gainean dago kokatuta eta aurreko kalkuluak erakusteko dago diseinatuta. Aurreko kalkulu horiek goitik behera mugitu daitekeen zerrenda gisa ageri dira, eta sagu batekin haietako bakoitzean klik egin daiteke."
 
 #. (itstool) path: page/p
 #: C/history.page:37
@@ -946,7 +1241,7 @@ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:41 C/variables.page:48
+#: C/keyboard.page:41 C/variables.page:60
 msgid "π"
 msgstr "π"
 
@@ -955,8 +1250,48 @@ msgstr "π"
 msgid "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/keyboard.page:45 C/variables.page:64
+msgid "τ"
+msgstr "τ"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:46
+msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:49
+msgid "°"
+msgstr "°"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:50
+msgid "<keyseq><key>Ctrl</key><key>'</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>'</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:53
+msgid "⌈⌉"
+msgstr "⌈⌉"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:54
+msgid "<keyseq><key>Ctrl</key><key>[</key></keyseq><key>]</key>"
+msgstr "<keyseq><key>Ctrl</key><key>[</key></keyseq><key>]</key>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:57
+msgid "⌊⌋"
+msgstr "⌊⌋"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:58
+msgid "<keyseq><key>Alt</key><key>[</key></keyseq><key>]</key>"
+msgstr "<keyseq><key>Alt</key><key>[</key></keyseq><key>]</key>"
+
 #. (itstool) path: page/p
-#: C/keyboard.page:45
+#: C/keyboard.page:61
 msgid ""
 "To enter <link xref=\"superscript\">superscript numbers</link> use "
 "<keyseq><key>Ctrl</key>number</keyseq>, for <link "
@@ -1003,7 +1338,8 @@ msgstr "log 100"
 #: C/logarithm.page:19
 msgid ""
 "To calculate a logarithm in a different base use a <link "
-"xref=\"superscript\">subscript number</link> after the function."
+"xref=\"superscript\">subscript number</link> or normal number after the "
+"function."
 msgstr ""
 
 #. (itstool) path: example/p
@@ -1011,27 +1347,105 @@ msgstr ""
 msgid "log₂ 32"
 msgstr "log₂ 32"
 
+#. (itstool) path: example/p
+#: C/logarithm.page:26
+msgid "log2 (32)"
+msgstr "log2 (32)"
+
+#. (itstool) path: example/p
+#: C/logarithm.page:29
+msgid "log (32;2)"
+msgstr "log (32;2)"
+
 #. (itstool) path: page/p
-#: C/logarithm.page:27
+#: C/logarithm.page:33
 msgid "To calculate a natural logarithm use the ln function."
 msgstr "Logaritmo naturalak kalkulatzeko, erabili ln funtzioa."
 
 #. (itstool) path: example/p
-#: C/logarithm.page:31
+#: C/logarithm.page:37
 msgid "ln 1.32"
 msgstr "ln 1.32"
 
 #. (itstool) path: page/p
-#: C/logarithm.page:35
+#: C/logarithm.page:41
 msgid ""
-"Euler's number can be entered by using the <link xref=\"variable\">variable</"
+"Euler's number can be entered by using the <link xref=\"variable\">constant</"
 "link> e."
-msgstr "Euler-en zenbakia sartzeko, erabili e <link xref=\"variable\">aldagaia</link>."
+msgstr ""
 
 #. (itstool) path: example/p
-#: C/logarithm.page:39
+#: C/logarithm.page:45
 msgid "e^1.32"
 msgstr "e^1.32"
+
+#. (itstool) path: page/title
+#: C/mode-programming.page:9
+msgid "Programming Mode"
+msgstr "Programazio-modua"
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:11
+msgid ""
+"<gui style=\"menuitem\">Programming mode</gui> provides the tools required "
+"for common mathematical operations in software development. For example, "
+"programming mode makes math on hexadecimal numbers very easy. It also "
+"supports common <link xref=\"boolean\">bitwise operators</link> like "
+"<gui>NOT</gui>, <gui>AND</gui>, <gui>OR</gui>, etc. A binary view for "
+"numbers up to 64 bits long is displayed, where the user can manually toggle "
+"each bit using the mouse cursor."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:14
+msgid ""
+"Additionally, bit-shifting operations are possible by using the <gui>≪</"
+"gui>, <gui>≫</gui> and <gui>⋙</gui> buttons. <link xref=\"modulus\">Modulo "
+"arithmetic</link> can be accomplished using the <gui>mod</gui> button."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:17
+msgid ""
+"The default word size for bitwise, ones’ complement, two’s complement, and "
+"swap endianness functions can be changed both in the <gui "
+"style=\"menuitem\">Preferences</gui> menu, or by using the word size button "
+"in the bottom of the keypad while in programming mode. This will affect how "
+"results from these functions are shown. For example, here we show the two’s "
+"complement of the number 6B in 64 bit and 16 bit word sizes:"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:21
+msgid "64 bit:"
+msgstr "64 bit:"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:24 C/mode-programming.page:33
+msgid "twos 6B"
+msgstr "twos 6B"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:27
+msgid "FFFFFFFFFFFFFF95"
+msgstr "FFFFFFFFFFFFFF95"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:30
+msgid "16 bit:"
+msgstr "16 bit:"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:36
+msgid "FF95"
+msgstr "FF95"
+
+#. (itstool) path: note/p
+#: C/mode-programming.page:41
+msgid ""
+"Attempting to enter a larger number than will fit in the selected word size "
+"will result in an Overflow error."
+msgstr "Hautatutako hitz-tamaina baino handiagoa den zenbaki bat sartzen saiatzean, gainezkatze-errore bat gertatuko da."
 
 #. (itstool) path: page/title
 #: C/modulus.page:9
@@ -1040,13 +1454,32 @@ msgstr "Zatiketa modularra"
 
 #. (itstool) path: page/p
 #: C/modulus.page:11
-msgid "Modulus division is performed using the mod operator."
-msgstr "Modulu-zatiketa mod eragilearen bidez gauzatzen da."
+msgid ""
+"Modulus division is performed using the mod operator or the mod <link "
+"xref=\"function\">function</link>."
+msgstr "Moduluaren zatiketa gauzatzeko, erabili mod eragilea edo mod <link xref=\"function\">funtzioa</link>."
 
 #. (itstool) path: example/p
 #: C/modulus.page:15
 msgid "9 mod 5"
 msgstr "9 mod 5"
+
+#. (itstool) path: example/p
+#: C/modulus.page:18
+msgid "mod (9;5)"
+msgstr "mod (9;5)"
+
+#. (itstool) path: page/p
+#: C/modulus.page:22
+msgid ""
+"Modular exponentiation x^y mod p is performed using the modexp <link "
+"xref=\"function\">function</link>."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/modulus.page:26
+msgid "modexp (9;3;5)"
+msgstr "modexp (9;3;5)"
 
 #. (itstool) path: page/title
 #: C/mouse.page:9
@@ -1096,14 +1529,19 @@ msgid ""
 msgstr "<link xref=\"financial\">Ekuazio finantzarioak</link> kalkulatzeko botoiak eskaintzen ditu"
 
 #. (itstool) path: td/p
-#: C/mouse.page:29
-msgid "Programming"
-msgstr "Programazioa"
-
-#. (itstool) path: td/p
 #: C/mouse.page:30
 msgid "Provides buttons suitable for computer programmers"
 msgstr "Programatzaileentzako egokiak diren botoiak eskaintzen ditu"
+
+#. (itstool) path: td/p
+#: C/mouse.page:33
+msgid "Conversion"
+msgstr "Bihurketa"
+
+#. (itstool) path: td/p
+#: C/mouse.page:34
+msgid "Provides buttons suitable for unit conversions"
+msgstr "Unitate-bihurketak gauzatzeko botoiak eskaintzen ditu"
 
 #. (itstool) path: page/title
 #: C/number-display.page:9
@@ -1128,7 +1566,7 @@ msgstr "<gui>Automatikoa</gui>"
 msgid ""
 "Small results are displayed as <gui>Fixed</gui> notation while long results "
 "are displayed as <gui>Scientific</gui> notation"
-msgstr ""
+msgstr "Emaitza txikiak notazio <gui>finko</gui> gisa bistaratuko dira eta emaitza handiak notazio <gui>zientifiko</gui> gisa"
 
 #. (itstool) path: td/p
 #: C/number-display.page:22
@@ -1169,7 +1607,7 @@ msgid ""
 "The number of decimal places, if trailing zeroes and if thousands separators "
 "are shown can also be configured in <gui style=\"menuitem\">Preferences</"
 "gui>."
-msgstr ""
+msgstr "Dezimalen kopurua, aurreko zeroak eta milakoen bereizleak ere erakutsiko diren ere konfiguratu daiteke <gui style=\"menuitem\">Hobespenak</gui> atalean."
 
 #. (itstool) path: page/title
 #: C/percentage.page:9
@@ -1199,7 +1637,7 @@ msgstr "140+15%"
 msgid ""
 "In all other cases the percentage symbol resolves to a fraction out of 100. "
 "The following equation calculates one quarter of 80 apples ((25÷100)×80)."
-msgstr ""
+msgstr "Aurreko kasu guztietan, ehunekoen ikurrak 100 balioaren zatiki bat dena ematen du. Hurrengo ekuazioak 80 sagarren laurdena kalkulatzen du  ((25÷100)×80)."
 
 #. (itstool) path: example/p
 #: C/percentage.page:28
@@ -1216,82 +1654,163 @@ msgstr "2015"
 msgid "Sebastian Rasmussen"
 msgstr "Sebastian Rasmussen"
 
-#. (itstool) path: info/desc
-#: C/power.page:21
-msgid "Learn to enter roots and powers into the calculator."
-msgstr "Ikasi kalkulagailuan erroak eta berreturak sartzen."
-
 #. (itstool) path: page/title
-#: C/power.page:24
+#: C/power.page:22
 msgid "Powers and Roots"
 msgstr "Berreturak eta erroak"
 
 #. (itstool) path: page/p
-#: C/power.page:26
+#: C/power.page:24
 msgid ""
 "Powers are entered by putting a <link xref=\"superscript\">superscript "
 "number</link> after the value."
-msgstr ""
+msgstr "Berreturak idazteko, jarri <link xref=\"superscript\">goi-indize gisako zenbaki bat</link> balioaren ondoren."
 
 #. (itstool) path: example/p
-#: C/power.page:30
+#: C/power.page:28
 msgid "5²"
 msgstr "5²"
 
 #. (itstool) path: page/p
-#: C/power.page:33
+#: C/power.page:31
 msgid ""
 "The inverse of a number can be entered using the inverse symbol ⁻¹ "
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>)."
 msgstr "Zenbaki baten alderantzizkoa sartzeko, erabili alderantzizkoaren ikurra: ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></keyseq>)."
 
 #. (itstool) path: example/p
-#: C/power.page:37
+#: C/power.page:35
 msgid "3⁻¹"
 msgstr "3⁻¹"
 
 #. (itstool) path: page/p
-#: C/power.page:40
+#: C/power.page:38
 msgid ""
 "Powers can also be calculated using the ^ symbol. This allows the power to "
 "be an equation."
-msgstr ""
+msgstr "Berreturak kalkulatzeko beste modu bat ^ ikurra erabiltzea da. Horrela, berretura ekuazio bat izan daiteke."
 
 #. (itstool) path: example/p
-#: C/power.page:44
+#: C/power.page:42
 msgid "5^(6−2)"
 msgstr "5^(6−2)"
 
 #. (itstool) path: page/p
-#: C/power.page:47
+#: C/power.page:45
 msgid ""
 "If your keyboard does not have a <key>^</key> key you can use <key>*</key> "
 "twice."
 msgstr "Zure teklatuak ez badu <key>^</key> tekla, erabili <key>*</key> bi aldiz."
 
 #. (itstool) path: page/p
-#: C/power.page:50
+#: C/power.page:48
 msgid ""
 "Square roots can be calculated using the √ symbol (<keyseq><key>Ctrl</"
-"key><key>R</key></keyseq>)."
-msgstr "Erro karratuak kalkulatzeko, erabili √ ikurra (<keyseq><key>Ctrl</key><key>R</key></keyseq>)."
+"key><key>R</key></keyseq>) or sqrt <link xref=\"function\">function</link>."
+msgstr "Erro karratuak kalkulatzeko, erabili √ ikurra (<keyseq><key>Ctrl</key><key>R</key></keyseq>) edo sqrt <link xref=\"function\">funtzioa</link>.."
 
 #. (itstool) path: example/p
-#: C/power.page:54
+#: C/power.page:52
 msgid "√2"
 msgstr "√2"
 
+#. (itstool) path: example/p
+#: C/power.page:53
+msgid "sqrt (2)"
+msgstr "sqrt (2)"
+
 #. (itstool) path: page/p
-#: C/power.page:57
+#: C/power.page:56
 msgid ""
 "n-th roots can be calculated by putting a <link "
-"xref=\"superscript\">subscript number</link> before the root sign."
+"xref=\"superscript\">subscript number</link> or <link "
+"xref=\"superscript\">superscript number</link> before the root sign."
 msgstr ""
 
 #. (itstool) path: example/p
-#: C/power.page:61
+#: C/power.page:60
 msgid "₃√2"
 msgstr "₃√2"
+
+#. (itstool) path: example/p
+#: C/power.page:61
+msgid "³√2"
+msgstr "³√2"
+
+#. (itstool) path: page/p
+#: C/rounding.page:11
+msgid ""
+"Nearest integer values tying away from zero are calculated using the [ and ] "
+"symbols or round <link xref=\"function\">function</link>."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/rounding.page:15
+msgid "[0.5]"
+msgstr "[0.5]"
+
+#. (itstool) path: example/p
+#: C/rounding.page:18
+msgid "round (0.5)"
+msgstr "round (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:23
+msgid ""
+"Nearest integer values toward -∞ also known as floor values are calculated "
+"using the ⌊ and ⌋ symbols or floor <link xref=\"function\">function</link>."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/rounding.page:27
+msgid "⌊0.5⌋"
+msgstr "⌊0.5⌋"
+
+#. (itstool) path: example/p
+#: C/rounding.page:30
+msgid "floor (0.5)"
+msgstr "floor (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:35
+msgid ""
+"Nearest integer values toward +∞ also known as ceiling values are calculated "
+"using the ⌈ and ⌉ symbols or ceil <link xref=\"function\">function</link>."
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/rounding.page:39
+msgid "⌈0.5⌉"
+msgstr "⌈0.5⌉"
+
+#. (itstool) path: example/p
+#: C/rounding.page:42
+msgid "ceil (0.5)"
+msgstr "ceil (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:47
+msgid ""
+"Nearest integer values toward 0 i.e. the integer components are calculated "
+"using int <link xref=\"function\">function</link>."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/rounding.page:50
+msgid ""
+"The fractional components are calculated using frac <link "
+"xref=\"function\">function</link>."
+msgstr "Zati frakzionalak kalkulatzeko, erabili frac <link xref=\"function\">funtzioa</link>."
+
+#. (itstool) path: example/p
+#: C/rounding.page:54
+msgid "int (0.5)"
+msgstr "int (0.5)"
+
+#. (itstool) path: example/p
+#: C/rounding.page:57
+msgid "frac (0.5)"
+msgstr "frac (0.5)"
 
 #. (itstool) path: page/title
 #: C/scientific.page:9
@@ -1301,10 +1820,10 @@ msgstr "Notazio zientifikoa"
 #. (itstool) path: page/p
 #: C/scientific.page:11
 msgid ""
-"To enter numbers in scientific format use the <gui>×10y</gui> button "
-"(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link "
-"xref=\"superscript\">number mode</link> automatically changes to "
-"superscript. To enter 2×10¹⁰⁰, start by entering the mantissa (2):"
+"To enter numbers in scientific format use the <keyseq><key>Ctrl</key><key>E</"
+"key></keyseq> shortcut. The <link xref=\"superscript\">number mode</link> "
+"automatically changes to superscript. To enter 2×10¹⁰⁰, start by entering "
+"the mantissa (2):"
 msgstr ""
 
 #. (itstool) path: example/p
@@ -1314,10 +1833,8 @@ msgstr "22"
 
 #. (itstool) path: page/p
 #: C/scientific.page:21
-msgid ""
-"Then press the scientific notation button (or press <keyseq><key>Ctrl</"
-"key><key>E</key></keyseq>):"
-msgstr "Ondoren, sakatu notazio zientifikoaren botoia (edo sakatu <keyseq><key>Ctrl</key><key>E</key></keyseq>):"
+msgid "Then press <keyseq><key>Ctrl</key><key>E</key></keyseq>:"
+msgstr "Ondoren, sakatu <keyseq><key>Ctrl</key><key>E</key></keyseq>:"
 
 #. (itstool) path: example/p
 #: C/scientific.page:25
@@ -1367,11 +1884,12 @@ msgstr "x³+2x²−5"
 #. (itstool) path: page/p
 #: C/superscript.page:29
 msgid ""
-"To enter superscript numbers with the mouse select the number mode using the "
-"<gui>↑n</gui> and <gui>↓n</gui> buttons (available in the <gui>Advanced "
-"Mode</gui> and the <gui>Programming Mode</gui>). When one of these modes is "
-"active clicking the number buttons will enter numbers in superscript or "
-"subscript. To return to normal number mode click the active number button."
+"To enter superscript or subscript numbers with the mouse, select the number "
+"mode using the <gui>↑n</gui> and <gui>↓n</gui> buttons (available in all the "
+"modes except the <gui>keyboard mode</gui> and the <gui>conversion mode</"
+"gui>). When one of these modes is active clicking the number buttons will "
+"enter numbers in superscript or subscript. To return to normal number mode "
+"click the active number button."
 msgstr ""
 
 #. (itstool) path: page/p
@@ -1388,11 +1906,6 @@ msgid ""
 "character, such as \"+\" or \"-\"."
 msgstr ""
 
-#. (itstool) path: page/title
-#: C/trigonometry.page:9
-msgid "Trigonometry"
-msgstr "Trigonometria"
-
 #. (itstool) path: page/p
 #: C/trigonometry.page:11
 msgid ""
@@ -1407,26 +1920,43 @@ msgstr "sin 45"
 
 #. (itstool) path: page/p
 #: C/trigonometry.page:19
+msgid "To change the angle units used, use one of the following methods:"
+msgstr "Erabilitako angelu-unitateak aldatzeko, jarraitu honako metodoetako bat:"
+
+#. (itstool) path: item/p
+#: C/trigonometry.page:23
 msgid ""
-"To change the angle units used, press the menu button in the top-right "
-"corner of the window and select <gui style=\"menuitem\">Preferences</gui>. "
-"Trigonometry buttons are visible when in <link xref=\"mouse\">Advanced mode</"
-"link>."
+"Press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>"
+msgstr "Sakatu goiko eskuineko izkinan dagoen menu-botoia eta hautatu <gui style=\"menuitem\">Hobespenak</gui>"
+
+#. (itstool) path: item/p
+#: C/trigonometry.page:25
+msgid ""
+"In <gui>advanced mode</gui> you can use the Rad/Grad/Deg toggle button to "
+"toggle between units"
 msgstr ""
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:24
+#: C/trigonometry.page:28
+msgid ""
+"Trigonometry buttons are visible when in <link xref=\"mouse\">Advanced mode</"
+"link>."
+msgstr "Trigonometria-botoiak agerian gera daitezen, erabili <link xref=\"mouse\">modu aurreratua</link>."
+
+#. (itstool) path: page/p
+#: C/trigonometry.page:31
 msgid ""
 "Hyperbolic functions are available by adding \"h\" to the end of a function."
 msgstr "Funtzio hiperbolikoak erabiltzeko, gehitu \"h\" funtzioaren amaieran."
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:28
+#: C/trigonometry.page:35
 msgid "sinh 0.34"
 msgstr "sinh 0.34"
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:32
+#: C/trigonometry.page:39
 msgid ""
 "Inverse functions are entered either using the inverse symbol ⁻¹ "
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>) or the \"a\" form of the "
@@ -1434,17 +1964,17 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:37
+#: C/trigonometry.page:44
 msgid "sin⁻¹ 0.5"
 msgstr "sin⁻¹ 0.5"
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:40
+#: C/trigonometry.page:47
 msgid "asin 0.5"
 msgstr "asin 0.5"
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:44
+#: C/trigonometry.page:51
 msgid ""
 "To enter <link xref=\"variable\">π</link> with the keyboard use "
 "<keyseq><key>Ctrl</key><key>P</key></keyseq>."
@@ -1452,8 +1982,8 @@ msgstr "Teklatuaren bidez <link xref=\"variable\">π</link> sartzeko, erabili <k
 
 #. (itstool) path: page/title
 #: C/variables.page:9
-msgid "Variables"
-msgstr "Aldagaiak"
+msgid "Variables and Constants"
+msgstr "Aldagaiak eta konstanteak"
 
 #. (itstool) path: page/p
 #: C/variables.page:11
@@ -1461,7 +1991,7 @@ msgid ""
 "To assign a value to a variable use the = symbol or choose the variable to "
 "assign to with the <gui>x</gui> button in <link xref=\"mouse\">advanced "
 "mode</link>. A variable name must only contain upper or lower case "
-"characters."
+"characters, or underscores."
 msgstr ""
 
 #. (itstool) path: example/p
@@ -1477,9 +2007,10 @@ msgstr "adibidea=82"
 #. (itstool) path: page/p
 #: C/variables.page:23
 msgid ""
-"Variables can be used in any equation and are substituted for their assigned "
-"value. Variables can be inserted using the <gui>x</gui> button."
-msgstr "Aldagaiak edozein ekuaziotan erabili daitezke eta haiei esleitutako balioekin ordeztuko dira. Aldagaiak txertatzeko, erabili <gui>x</gui> botoia."
+"Variables and constants can be used in any equation and are substituted for "
+"their assigned value. Variables and constants can be inserted using the "
+"<gui>x</gui> button."
+msgstr "Aldagaiak eta konstanteak edozein ekuaziotan erabili daitezke eta haiei esleitutako balioekin ordeztuko dira. Aldagaiak eta konstanteak txertatzeko, erabili <gui>x</gui> botoia."
 
 #. (itstool) path: example/p
 #: C/variables.page:28
@@ -1508,38 +2039,282 @@ msgstr "Aurreko kalkuluaren emaitza."
 
 #. (itstool) path: td/p
 #: C/variables.page:44
-msgid "e"
-msgstr "e"
-
-#. (itstool) path: td/p
-#: C/variables.page:45
-msgid "<link xref=\"logarithm\">Euler's Number</link>"
-msgstr "<link xref=\"logarithm\">Eulerren zenbakia</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:49
-msgid "<link xref=\"trigonometry\">Pi</link>"
-msgstr "<link xref=\"trigonometry\">Pi</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:52
-msgid "τ"
-msgstr "τ"
-
-#. (itstool) path: td/p
-#: C/variables.page:53
-msgid "<link xref=\"trigonometry\">Tau</link>"
-msgstr "<link xref=\"trigonometry\">Tau</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:56
 msgid "rand"
 msgstr "rand"
 
 #. (itstool) path: td/p
-#: C/variables.page:57
+#: C/variables.page:45
 msgid "Random value in the range [0,1] (changes on each read)"
 msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
+
+#. (itstool) path: page/p
+#: C/variables.page:48
+msgid "The following constants are always defined."
+msgstr "Hurrengo konstanteak beti daude definituta."
+
+#. (itstool) path: td/p
+#: C/variables.page:53
+msgid "Mathematics"
+msgstr "Matematika"
+
+#. (itstool) path: td/p
+#: C/variables.page:56
+msgid "e"
+msgstr "e"
+
+#. (itstool) path: td/p
+#: C/variables.page:57
+msgid "<link xref=\"logarithm\">Euler's Number</link>"
+msgstr "<link xref=\"logarithm\">Eulerren zenbakia</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:61
+msgid "<link xref=\"trigonometry\">Pi</link>"
+msgstr "<link xref=\"trigonometry\">Pi</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:65
+msgid "<link xref=\"trigonometry\">Tau</link>"
+msgstr "<link xref=\"trigonometry\">Tau</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:68
+msgid "φ"
+msgstr "φ"
+
+#. (itstool) path: td/p
+#: C/variables.page:69
+msgid "Golden Ratio"
+msgstr "Urrezko zenbakia"
+
+#. (itstool) path: td/p
+#: C/variables.page:72
+msgid "Electromagnetism"
+msgstr "Elektromagnetismoa"
+
+#. (itstool) path: td/p
+#: C/variables.page:75
+msgid "c₀"
+msgstr "c₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:76
+msgid "Light Speed"
+msgstr "Argi-abiadura"
+
+#. (itstool) path: td/p
+#: C/variables.page:79
+msgid "е"
+msgstr "е"
+
+#. (itstool) path: td/p
+#: C/variables.page:80
+msgid "Elementary Charge"
+msgstr "Karga elementala"
+
+#. (itstool) path: td/p
+#: C/variables.page:83
+msgid "Z₀"
+msgstr "Z₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:84
+msgid "Impedance of Vacuum"
+msgstr "Hutsaren inpedantzia"
+
+#. (itstool) path: td/p
+#: C/variables.page:87
+msgid "μ₀"
+msgstr "μ₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:88
+msgid "Permeability of Vacuum"
+msgstr "Hutsaren iragazkortasuna"
+
+#. (itstool) path: td/p
+#: C/variables.page:91
+msgid "ε₀"
+msgstr "ε₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:92
+msgid "Permittivity of Vacuum"
+msgstr "Hutsaren permitibitatea"
+
+#. (itstool) path: td/p
+#: C/variables.page:95
+msgid "Atomic &amp; Nuclear"
+msgstr "Atomikoa eta nuklearra"
+
+#. (itstool) path: td/p
+#: C/variables.page:98
+msgid "h"
+msgstr "h"
+
+#. (itstool) path: td/p
+#: C/variables.page:99
+msgid "Planck‘s Constant"
+msgstr "Plancken konstantea"
+
+#. (itstool) path: td/p
+#: C/variables.page:102
+msgid "α"
+msgstr "α"
+
+#. (itstool) path: td/p
+#: C/variables.page:103
+msgid "Fine-Structure Constant"
+msgstr "Egitura meheko konstantea"
+
+#. (itstool) path: td/p
+#: C/variables.page:106
+msgid "mₑ"
+msgstr "mₑ"
+
+#. (itstool) path: td/p
+#: C/variables.page:107
+msgid "Electron Mass"
+msgstr "Elektroi-masa"
+
+#. (itstool) path: td/p
+#: C/variables.page:110
+msgid "mₚ"
+msgstr "mₚ"
+
+#. (itstool) path: td/p
+#: C/variables.page:111
+msgid "Proton Mass"
+msgstr "Protoi-masa"
+
+#. (itstool) path: td/p
+#: C/variables.page:114
+msgid "Thermodynamics"
+msgstr "Termodinamika"
+
+#. (itstool) path: td/p
+#: C/variables.page:117
+msgid "k"
+msgstr "k"
+
+#. (itstool) path: td/p
+#: C/variables.page:118
+msgid "Boltzmann Constant"
+msgstr "Boltzmannen konstantea"
+
+#. (itstool) path: td/p
+#: C/variables.page:121
+msgid "mᵤ"
+msgstr "mᵤ"
+
+#. (itstool) path: td/p
+#: C/variables.page:122
+msgid "Atomic Mass Unit"
+msgstr "Masa atomikoaren unitatea"
+
+#. (itstool) path: td/p
+#: C/variables.page:125
+msgid "R"
+msgstr "R"
+
+#. (itstool) path: td/p
+#: C/variables.page:126
+msgid "Molar Gas Constant"
+msgstr "Gas molarraren konstantea"
+
+#. (itstool) path: td/p
+#: C/variables.page:129
+msgid "σ"
+msgstr "σ"
+
+#. (itstool) path: td/p
+#: C/variables.page:130
+msgid "Stefan-Boltzmann Constant"
+msgstr "Stefan-Boltzmannen konstantea"
+
+#. (itstool) path: td/p
+#: C/variables.page:133
+msgid "Nᴀ"
+msgstr "Nᴀ"
+
+#. (itstool) path: td/p
+#: C/variables.page:134
+msgid "Avogadro‘s Number"
+msgstr "Avogadroren zenbakia"
+
+#. (itstool) path: td/p
+#: C/variables.page:137
+msgid "Gravitation"
+msgstr "Grabitazioa"
+
+#. (itstool) path: td/p
+#: C/variables.page:140
+msgid "G"
+msgstr "G"
+
+#. (itstool) path: td/p
+#: C/variables.page:141
+msgid "Gravitational Constant"
+msgstr "Grabitazio-konstantea"
+
+#. (itstool) path: td/p
+#: C/variables.page:144
+msgid "g"
+msgstr "g"
+
+#. (itstool) path: td/p
+#: C/variables.page:145
+msgid "Earth Acceleration"
+msgstr "Lurraren azelerazioa"
+
+#~ msgid "Boolean Algebra"
+#~ msgstr "Aljebra boolearra"
+
+#~ msgid "Number Base conversions must be performed using the keyboard."
+#~ msgstr ""
+#~ "Zenbaki-oinarriaren bihurketak teklatuaren bidez gauzatu behar dira."
+
+#~ msgid "Length/Area/Volume conversions must be performed using the keyboard."
+#~ msgstr ""
+#~ "Luzeraren/arearen/bolumenaren bihurketak teklatuaren bidez gauzatu behar "
+#~ "dira."
+
+#~ msgid "Time conversions must be performed using the keyboard."
+#~ msgstr "Denboraren bihurketak teklatuaren bidez gauzatu behar dira."
+
+#~ msgid "Mass conversions must be performed using the keyboard."
+#~ msgstr "Masaren bihurketak teklatuaren bidez gauzatu behar dira."
+
+#~ msgid "Ceiling"
+#~ msgstr "Sabaia"
+
+#~ msgid "Floor"
+#~ msgstr "Zorua"
+
+#~ msgid "Integer Component"
+#~ msgstr "Osoko zatia"
+
+#~ msgid "Ones complement"
+#~ msgstr "Baten osagarria"
+
+#~ msgid "Twos complement"
+#~ msgstr "Biren osagarria"
+
+#~ msgid "Modulus division is performed using the mod operator."
+#~ msgstr "Modulu-zatiketa mod eragilearen bidez gauzatzen da."
+
+#~ msgid "Learn to enter roots and powers into the calculator."
+#~ msgstr "Ikasi kalkulagailuan erroak eta berreturak sartzen."
+
+#~ msgid ""
+#~ "Then press the scientific notation button (or press <keyseq><key>Ctrl</"
+#~ "key><key>E</key></keyseq>):"
+#~ msgstr ""
+#~ "Ondoren, sakatu notazio zientifikoaren botoia (edo sakatu "
+#~ "<keyseq><key>Ctrl</key><key>E</key></keyseq>):"
+
+#~ msgid "Variables"
+#~ msgstr "Aldagaiak"
 
 #~ msgid ""
 #~ "@@image: 'figures/gcalctool_basic_window.png'; "
@@ -1604,9 +2379,9 @@ msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
 #~ "under the terms of the GNU Free Documentation License (GFDL), Version 1.1 "
 #~ "or any later version published by the Free Software Foundation with no "
 #~ "Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. You "
-#~ "can find a copy of the GFDL at this <ulink type=\"help\" url=\"ghelp:"
-#~ "fdl\">link</ulink> or in the file COPYING-DOCS distributed with this "
-#~ "manual."
+#~ "can find a copy of the GFDL at this <ulink type=\"help\" "
+#~ "url=\"ghelp:fdl\">link</ulink> or in the file COPYING-DOCS distributed "
+#~ "with this manual."
 #~ msgstr ""
 #~ "Baimena ematen da dokumentu hau kopiatu, banatu eta/edo aldatzeko Free "
 #~ "Software Foundation-ek argitaratutako GNU Dokumentazio Librearen "
@@ -1974,9 +2749,6 @@ msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
 
 #~ msgid "To Use Calculator Functions"
 #~ msgstr "Kalkulagailuaren funtzioak erabiltzea"
-
-#~ msgid "To perform a calculation, use one of the following methods:"
-#~ msgstr "Kalkulu bat egiteko, aukera hauek daude:"
 
 #~ msgid ""
 #~ "Click on the <application>Calculator</application> buttons to enter "
@@ -2426,9 +3198,6 @@ msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
 
 #~ msgid "9 <guibutton>Sqrt</guibutton>"
 #~ msgstr "9 <guibutton>Sqrt</guibutton>"
-
-#~ msgid "Square"
-#~ msgstr "Karratua"
 
 #~ msgid "Calculates the square of the current value in the display area."
 #~ msgstr "Bistaratze-areako uneko balioaren karratua kalkulatzen du."
@@ -3285,9 +4054,6 @@ msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
 #~ msgid "Sets the trigonometric type to gradians."
 #~ msgstr "Gradu ehundarretan ezartzen du trigonometria mota."
 
-#~ msgid "Radians"
-#~ msgstr "Radianak"
-
 #~ msgid "Sets the trigonometric type to radians."
 #~ msgstr "Radianetan ezartzen du trigonometria mota."
 
@@ -3925,9 +4691,6 @@ msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
 #~ "<keycap>#</keycap> laster-tekla erabiltzen baduzu, teklatua erabil "
 #~ "dezakezu konstantea zehazteko; ikus adibide hau:"
 
-#~ msgid "Constant"
-#~ msgstr "Konstantea"
-
 #~ msgid "#"
 #~ msgstr "#"
 
@@ -4332,9 +5095,6 @@ msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
 #~ msgid "FFFFFFFFFF <guibutton>&amp;32</guibutton>"
 #~ msgstr "FFFFFFFFFF <guibutton>&amp;32</guibutton>"
 
-#~ msgid "FFFFFFFF"
-#~ msgstr "FFFFFFFF"
-
 #~ msgid ""
 #~ "If you use keyboard shortcuts, you can use the keyboard to specify the "
 #~ "number of places to shift, as shown in the following examples:"
@@ -4543,9 +5303,6 @@ msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
 #~ msgid "Technical Information"
 #~ msgstr "Informazio teknikoa"
 
-#~ msgid "Order of Operations"
-#~ msgstr "Eragiketen ordena"
-
 #~ msgid ""
 #~ "By default, calculations are performed using arithmetic precedence. That "
 #~ "is, the precedence of the arithmetic operators is taken into "
@@ -4707,9 +5464,6 @@ msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
 
 #~ msgid "Fun"
 #~ msgstr "Fun"
-
-#~ msgid "G"
-#~ msgstr "G"
 
 #~ msgid "Common logarithm"
 #~ msgstr "Logaritmo hamartarra"
@@ -4925,9 +5679,6 @@ msgstr "[0,1] barrutiko ausazko balioa (irakurketa bakoitzean aldatzen da)"
 
 #~ msgid "Set the display type to fixed-point format."
 #~ msgstr "Ezarri koma finkoko formatuaren bistaratze modua."
-
-#~ msgid "g"
-#~ msgstr "g"
 
 #~ msgid "Set the trigonometric type to degrees."
 #~ msgstr "Ezarri trigonometria mota gradutan."
