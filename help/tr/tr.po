@@ -1,30 +1,30 @@
 # Turkish translation for gnome-calculator.
-# Copyright (C) 2023 gnome-calculator's COPYRIGHT HOLDER
+# Copyright (C) 2023-2025 gnome-calculator's COPYRIGHT HOLDER
 # This file is distributed under the same license as the gnome-calculator package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2023.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2023.
+# Sabri Ünal <yakushabb@gmail.com>, 2023, 2025.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2023, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
-"POT-Creation-Date: 2023-03-29 22:39+0000\n"
-"PO-Revision-Date: 2023-05-30 00:27+0300\n"
-"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
-"Language-Team: Turkish <gnome-turk@gnome.org>\n"
+"POT-Creation-Date: 2025-08-30 21:34+0000\n"
+"PO-Revision-Date: 2025-09-10 08:00+0300\n"
+"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"Language-Team: Turkish <takim@gnome.org.tr>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.7\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
-"Sabri Ünal <libreajans@gmail.com>, 2023.\n"
-"Emin Tufan Çetin <etcetin@gmail.com>, 2023."
+"Sabri Ünal <yakushabb@gmail.com>, 2023-2025.\n"
+"Emin Tufan Çetin <etcetin@gmail.com>, 2023-2025."
 
 #. (itstool) path: page/title
 #: C/absolute.page:9
@@ -37,8 +37,8 @@ msgid ""
 "Absolute values are calculated using the | symbol or abs <link "
 "xref=\"function\">function</link>."
 msgstr ""
-"Mutlak değerler | simgesi ya da abs <link xref=\"function\">fonksiyonuyla</link> "
-"hesaplanır."
+"Mutlak değerler | simgesi ya da abs <link xref=\"function\">fonksiyonuyla</"
+"link> hesaplanır."
 
 #. (itstool) path: example/p
 #: C/absolute.page:15
@@ -49,6 +49,19 @@ msgstr "|−1|"
 #: C/absolute.page:18
 msgid "abs (−1)"
 msgstr "abs (−1)"
+
+#. (itstool) path: page/p
+#: C/absolute.page:22
+msgid ""
+"Signum x÷|x| is calculated using sgn <link xref=\"function\">function</link>."
+msgstr ""
+"Signum x÷|x| sgn <link xref=\"function\">fonksiyonu</link> kullanılarak "
+"hesaplanabilir."
+
+#. (itstool) path: example/p
+#: C/absolute.page:26
+msgid "sgn (−1)"
+msgstr "sgn (−1)"
 
 #. (itstool) path: page/title
 #: C/base.page:9 C/conv-base.page:9
@@ -62,8 +75,9 @@ msgid ""
 "xref=\"superscript\">subscript numbers</link>. The following numbers are "
 "equivalent."
 msgstr ""
-"Sayıları belirli bir sayı tabanında girmek için <link xref=\"superscript\">alt "
-"simge sayıları</link>ʼnı kullanın. Aşağıdaki sayılar eşdeğerdir."
+"Sayıları belirli bir sayı tabanında girmek için <link "
+"xref=\"superscript\">alt simge sayıları</link>ʼnı kullanın. Aşağıdaki "
+"sayılar eşdeğerdir."
 
 #. (itstool) path: example/p
 #: C/base.page:16
@@ -88,8 +102,8 @@ msgstr "4B₁₆"
 #. (itstool) path: page/p
 #: C/base.page:29
 msgid ""
-"When in <link xref=\"mouse\">programming mode</link>, use the drop-down menu to "
-"change the base of the calculation."
+"When in <link xref=\"mouse\">programming mode</link>, use the drop-down menu "
+"to change the base of the calculation."
 msgstr ""
 "<link xref=\"mouse\">Programlama kipinde</link>, hesaplamanın tabanını "
 "değiştirmek için açılır menüyü kullanın."
@@ -120,46 +134,163 @@ msgstr ""
 
 #. (itstool) path: page/title
 #: C/boolean.page:9
-msgid "Boolean Algebra"
-msgstr "Boole Cebiri"
+msgid "Bitwise Operations"
+msgstr "Bitsel İşlemler"
 
 # Parantez içi cümleler açıklama olarak arayüzden bakılarak eklendi.
 #. (itstool) path: page/p
 #: C/boolean.page:11
-msgid "Boolean algebra can be calculated using the AND, OR and XOR operators."
-msgstr ""
-"Boole cebiri AND (Mantıksal VE), OR (Mantıksal VEYA) ve XOR (Mantıksal Özel "
-"VEYA) operatörleri kullanılarak hesaplanabilir."
+msgid "Bitwise operations can be calculated using the following operators."
+msgstr "Bitsel işlemler aşağıdaki operatörler kullanılarak hesaplanabilir."
 
-#. (itstool) path: example/p
-#: C/boolean.page:15
-msgid "010011₂ AND 110101₂"
-msgstr "010011₂ AND 110101₂"
+#. (itstool) path: page/p
+#: C/boolean.page:14
+msgid ""
+"The result of some operations depend on the word size. To set the word size, "
+"press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>."
+msgstr ""
+"Bazı işlemlerin sonucu sözcük boyutuna bağlıdır. Sözcük boyutunu ayarlamak "
+"için pencerenin sağ üst köşesindeki menü düğmesine basın ve <gui "
+"style=\"menuitem\">Tercihler</gui>ʼi seçin."
 
 #. (itstool) path: page/p
 #: C/boolean.page:19
 msgid ""
-"Buttons for these symbols are available in <link xref=\"mouse\">programming "
-"mode</link>."
+"Buttons for the following symbols and to set the word size are available in "
+"<link xref=\"mode-programming\">programming mode</link>."
 msgstr ""
-"Bu simgeler için düğmeler <link xref=\"mouse\">programlama kipinde</link> "
-"bulunur."
+"Aşağıdaki semboller için ve sözcük boyutunu ayarlamak için düğmeler <link "
+"xref=\"mode-programming\">programlama kipinde</link> vardır."
 
 #. (itstool) path: page/p
-#: C/boolean.page:22
-msgid ""
-"The NOT <link xref=\"function\">function</link> inverts the bits in a number. To "
-"set the word size, press the menu button in the top-right corner of the window "
-"and select <gui style=\"menuitem\">Preferences</gui>."
+#: C/boolean.page:23
+msgid "Bitwise conjunction can be calculated using the ∧ or AND operators."
 msgstr ""
-"NOT (Mantıksal DEĞİL) <link xref=\"function\">fonksiyonu</link>, sayıdaki "
-"bitleri ters çevirir. Sözcük boyutunu ayarlamak için pencerenin sağ üst "
-"köşesindeki menü düğmesine basıp <gui style=\"menuitem\">Tercihler</gui>ʼi seçin."
+"Bitsel eşlenik ∧ ya da AND (Bitsel VE) operatörleri kullanılarak "
+"hesaplanabilir."
 
 #. (itstool) path: example/p
-#: C/boolean.page:28
+#: C/boolean.page:27
+msgid "010011₂ ∧ 110101₂"
+msgstr "010011₂ ∧ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:30
+msgid "010011₂ AND 110101₂"
+msgstr "010011₂ AND 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:35
+msgid "Bitwise disjunction can be calculated using the ∨ or OR operators."
+msgstr ""
+"Bitsel ayrıklık ∨ ya da OR (Bitsel VEYA) operatörleri kullanılarak "
+"hesaplanabilir."
+
+#. (itstool) path: example/p
+#: C/boolean.page:39
+msgid "010011₂ ∨ 110101₂"
+msgstr "010011₂ ∨ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:42
+msgid "010011₂ OR 110101₂"
+msgstr "010011₂ OR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:47
+msgid ""
+"Bitwise exclusive disjunction can be calculated using the ⊻, ⊕ or XOR "
+"operators."
+msgstr ""
+"Bitsel özel ayrıklık ⊻, ⊕ ya da XOR (Bitsel Özel VEYA) operatörleri "
+"kullanılarak hesaplanabilir."
+
+#. (itstool) path: example/p
+#: C/boolean.page:51
+msgid "010011₂ ⊻ 110101₂"
+msgstr "010011₂ ⊻ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:54
+msgid "010011₂ XOR 110101₂"
+msgstr "010011₂ XOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:59
+msgid ""
+"Bitwise complement for the set word size can be calculated using the ¬, ~ or "
+"NOT operators."
+msgstr ""
+"Ayarlanan sözcük boyutu için bitsel tümleyen ¬, ~ ya da NOT (Bitsel DEĞİL) "
+"operatörleri kullanılarak hesaplanabilir."
+
+#. (itstool) path: example/p
+#: C/boolean.page:63
+msgid "¬ 010011₂"
+msgstr "¬ 010011₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:66
 msgid "NOT 010011₂"
 msgstr "NOT 010011₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:71
+msgid ""
+"Bitwise alternative denial for the set word size can be calculated using the "
+"⊼ or NAND operators."
+msgstr ""
+"Ayarlanan sözcük boyutu için bitsel alternatif reddetme ⊼ ya da NAND (Bitsel "
+"VE DEĞİL) operatörleri kullanılarak hesaplanabilir."
+
+#. (itstool) path: example/p
+#: C/boolean.page:75
+msgid "010011₂ ⊼ 110101₂"
+msgstr "010011₂ ⊼ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:78
+msgid "010011₂ NAND 110101₂"
+msgstr "010011₂ NAND 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:83
+msgid ""
+"Bitwise joint denial for the set word size can be calculated using the ⊽ or "
+"NOR operators."
+msgstr ""
+"Ayarlanan sözcük boyutu için bitsel ortak reddetme ⊽ ya da NOR (Bitsel VEYA "
+"DEĞİL) operatörleri kullanılarak hesaplanabilir."
+
+#. (itstool) path: example/p
+#: C/boolean.page:87
+msgid "010011₂ ⊽ 110101₂"
+msgstr "010011₂ ⊽ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:90
+msgid "010011₂ NOR 110101₂"
+msgstr "010011₂ NOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:95
+msgid ""
+"Bitwise biconditional for the set word size can be calculated using the ⊙, "
+"XNOR or NXOR operators."
+msgstr ""
+"Küme sözcük boyutu için bitsel iki koşullu ⊙, XNOR (Bitsel ÖZEL VEYA DEĞİL) "
+"ya da NXOR (Bitsel DEĞİL ÖZEL VEYA) operatörleri kullanılarak hesaplanabilir."
+
+#. (itstool) path: example/p
+#: C/boolean.page:99
+msgid "010011₂ ⊙ 110101₂"
+msgstr "010011₂ ⊙ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:102
+msgid "010011₂ XNOR 110101₂"
+msgstr "010011₂ XNOR 110101₂"
 
 #. (itstool) path: page/title
 #: C/complex.page:9
@@ -245,7 +376,8 @@ msgid ""
 "To convert the number to a different base representation use the <em>in</em> "
 "operator."
 msgstr ""
-"Sayıyı başka taban gösterimine dönüştürmek için <em>in</em> operatörünü kullanın."
+"Sayıyı başka taban gösterimine dönüştürmek için <em>in</em> operatörünü "
+"kullanın."
 
 #. (itstool) path: example/p
 #: C/conv-base.page:15
@@ -269,8 +401,12 @@ msgstr "1010₂ kaç octal"
 
 #. (itstool) path: note/p
 #: C/conv-base.page:29
-msgid "Number Base conversions must be performed using the keyboard."
-msgstr "Sayı Tabanı dönüştürmeleri klavye kipi kullanılarak yapılmalıdır."
+msgid ""
+"Number Base conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>Number Base</gui> category."
+msgstr ""
+"Sayı Tabanı dönüşümleri klavye ya da <gui>dönüşüm kipi</gui> kullanılarak ve "
+"<gui>Sayı Tabanı</gui> kategorisi seçilerek gerçekleştirilmelidir."
 
 #. (itstool) path: page/title
 #: C/conv-character.page:9
@@ -324,33 +460,38 @@ msgstr "Para Birimi"
 #. (itstool) path: page/p
 #: C/conv-currency.page:29
 msgid ""
-"To convert currencies, enter the <link xref=\"financial\">financial mode</link>, "
-"and use the currency controls."
+"To convert currencies, enter the <link xref=\"financial\">financial mode</"
+"link>, and use the <gui>Currency conversion</gui> button or enter the <link "
+"xref=\"index#conversion\">conversion mode</link> and select the "
+"<gui>Currency</gui> category."
 msgstr ""
-"Para birimlerini dönüştürmek için <link xref=\"financial\">finansal kipe</link> "
-"girip para birimi denetimlerini kullanın."
+"Para birimlerini dönüştürmek için <link xref=\"financial\">finansal kipe</"
+"link> girin ve Para birimi dönüştürme düğmesini kullanın ya da dönüşüm <link "
+"xref=\"index#conversion\">kipine</link> girin ve <gui>Para birimi</gui> "
+"kategorisini seçin."
 
 #. (itstool) path: item/p
-#: C/conv-currency.page:34
+#: C/conv-currency.page:36
 msgid "Enter the amount which you want to convert."
 msgstr "Dönüştürmek istediğiniz miktarı girin."
 
 #. (itstool) path: item/p
-#: C/conv-currency.page:37
+#: C/conv-currency.page:39
 msgid ""
-"Select the currency that you want to convert from and the currency that you want "
-"to convert to from the drop down below."
+"Select the currency that you want to convert from and the currency that you "
+"want to convert to from the drop down below."
 msgstr ""
 "Aşağıda açılan menüden kaynak para birimini ve dönüştürmek istediğiniz hedef "
 "para birimini seçin."
 
 #. (itstool) path: note/p
-#: C/conv-currency.page:43
+#: C/conv-currency.page:45
 msgid ""
-"Currency information is approximate and should not be used for making financial "
-"decisions."
+"Currency information is approximate and should not be used for making "
+"financial decisions."
 msgstr ""
-"Para birimi bilgileri yaklaşıktır ve finansal kararlar için kullanılmamalıdır."
+"Para birimi bilgileri yaklaşıktır ve finansal kararlar için "
+"kullanılmamalıdır."
 
 #. (itstool) path: page/title
 #: C/conv-length.page:9
@@ -362,7 +503,8 @@ msgstr "Uzunluk/Alan/Hacim"
 #. (itstool) path: page/p
 #: C/conv-length.page:11
 msgid ""
-"To convert between length, area and volume units use the <em>in</em> operator."
+"To convert between length, area and volume units use the <em>in</em> "
+"operator."
 msgstr ""
 "Uzunluk, alan ve hacim birimleri arasında dönüştürmek için <em>in</em> "
 "operatörünü kullanın."
@@ -384,8 +526,14 @@ msgstr "1 pint kaç ml"
 
 #. (itstool) path: note/p
 #: C/conv-length.page:26
-msgid "Length/Area/Volume conversions must be performed using the keyboard."
-msgstr "Uzunluk/Alan/Hacim dönüşümleri klavye kipi kullanılarak yapılmalıdır."
+msgid ""
+"Length/Area/Volume conversions must be performed using the keyboard or using "
+"the <gui>conversion mode</gui> and selecting the <gui>length/area/volume</"
+"gui> category."
+msgstr ""
+"Uzunluk/Alan/Hacim dönüşümleri klavye ya da <gui>dönüşüm kipi</gui> "
+"kullanılarak ve <gui>uzunluk/alan/hacim</gui> kategorileri seçilerek "
+"gerçekleştirilmelidir."
 
 #. (itstool) path: page/title
 #: C/conv-time.page:9
@@ -404,8 +552,12 @@ msgstr "3 yıl kaç saat"
 
 #. (itstool) path: note/p
 #: C/conv-time.page:20
-msgid "Time conversions must be performed using the keyboard."
-msgstr "Süre dönüştürmeleri klavye kipi kullanılarak yapılmalıdır."
+msgid ""
+"Time conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>duration</gui> category."
+msgstr ""
+"Zaman dönüşümleri klavye ya da <gui>dönüşüm kipi</gui> kullanılarak ve "
+"<gui>süre</gui> kategorisi seçilerek gerçekleştirilmelidir."
 
 #. (itstool) path: page/title
 #: C/conv-weight.page:9
@@ -424,8 +576,12 @@ msgstr "1kg kaç pound"
 
 #. (itstool) path: note/p
 #: C/conv-weight.page:20
-msgid "Mass conversions must be performed using the keyboard."
-msgstr "Kütle dönüştürmeleri klavye kipi kullanılarak yapılmalıdır."
+msgid ""
+"Mass conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>mass</gui> category."
+msgstr ""
+"Kütle dönüşümleri klavye ya da <gui>dönüşüm kipi</gui> kullanılarak ve "
+"<gui>kütle</gui> kategorisi seçilerek gerçekleştirilmelidir."
 
 #. (itstool) path: info/title
 #: C/equation.page:7
@@ -441,8 +597,8 @@ msgstr "Temel Denklemler"
 #. (itstool) path: page/p
 #: C/equation.page:13
 msgid ""
-"Equations are entered in standard mathematical form. For example to add 7 and 2 "
-"enter the following:"
+"Equations are entered in standard mathematical form. For example to add 7 "
+"and 2 enter the following:"
 msgstr ""
 "Denklemler standart matematiksel biçimde girilir. Örneğin 7 ve 2ʼyi toplamak "
 "için aşağıdakileri girin:"
@@ -455,8 +611,8 @@ msgstr "7+2"
 #. (itstool) path: page/p
 #: C/equation.page:22
 msgid ""
-"To solve, press the <gui>=</gui> button with your mouse or the <key>Enter</key> "
-"key on your keyboard."
+"To solve, press the <gui>=</gui> button with your mouse or the <key>Enter</"
+"key> key on your keyboard."
 msgstr ""
 "Çözüm için farenizle <gui>=</gui> düğmesine tıklayın ya da klavyenizdeki "
 "<key>Enter</key> tuşuna basın."
@@ -464,12 +620,13 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/equation.page:25
 msgid ""
-"Calculations are performed in mathematical order - multiplication and division "
-"are performed before addition and subtraction. The following equation solves to "
-"1 (3×2 = 6, 7−6 = 1)."
+"Calculations are performed in mathematical order - multiplication and "
+"division are performed before addition and subtraction. The following "
+"equation solves to 1 (3×2 = 6, 7−6 = 1)."
 msgstr ""
 "Hesaplamalar matematiksel sırayla yapılır: çarpma ve bölme, toplama ve "
-"çıkarmadan önce yapılır. Aşağıdaki denklem 1 olarak çözülür (3×2 = 6, 7−6 = 1)."
+"çıkarmadan önce yapılır. Aşağıdaki denklem 1 olarak çözülür (3×2 = 6, 7−6 = "
+"1)."
 
 #. (itstool) path: example/p
 #: C/equation.page:30
@@ -492,10 +649,11 @@ msgstr "(7−3)×2"
 
 #. (itstool) path: page/p
 #: C/equation.page:43
-msgid "To clear the display press the <gui>C</gui> button or <key>Escape</key>."
+msgid ""
+"To clear the display press the <gui>C</gui> button or <key>Escape</key>."
 msgstr ""
-"Ekranı temizlemek için <gui>Temizle</gui> düğmesine ya da <key>Escape</key>ʼe "
-"basın."
+"Ekranı temizlemek için <gui>Temizle</gui> düğmesine ya da <key>Escape</"
+"key>ʼe basın."
 
 #. (itstool) path: page/title
 #: C/factorial.page:9
@@ -505,8 +663,8 @@ msgstr "Faktöriyeller"
 #. (itstool) path: page/p
 #: C/factorial.page:11
 msgid ""
-"Factorials are entered using the ! symbol. To calculate the factorial of 6 enter "
-"the following."
+"Factorials are entered using the ! symbol. To calculate the factorial of 6 "
+"enter the following."
 msgstr ""
 "Faktöriyeller ! simgesi ile girilir. 6ʼnın faktöriyelini hesaplamak için "
 "aşağıdakini girin:"
@@ -519,17 +677,18 @@ msgstr "6!"
 #. (itstool) path: page/title
 #: C/factorize.page:9
 msgid "Factorization"
-msgstr "Çarpanlara ayırma"
+msgstr "Çarpanlara Ayırma"
 
 #. (itstool) path: page/p
 #: C/factorize.page:11
 msgid ""
-"You can factorize the number currently displayed by pressing the <gui>fact</gui> "
-"button. This button is visible in <link xref=\"mouse\">programming mode</link>."
+"You can factorize the number currently displayed by pressing the <gui>a×b</"
+"gui> button, or pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This "
+"button is visible in <link xref=\"mouse\">advanced mode</link>."
 msgstr ""
-"Görüntülenen sayıyı <gui>fact</gui> düğmesine basarak çarpanlarına "
-"ayırabilirsiniz. Bu düğme <link xref=\"mouse\">programlama kipinde</link> "
-"görünür."
+"Görüntülenmekte olan sayıyı <gui>a×b</gui> düğmesine ya da "
+"<keyseq><key>Ctrl</key><key>F</key></keyseq> tuşlarına basarak çarpanlarına "
+"ayırabilirsiniz. Bu düğme <link xref=\"mouse\">gelişmiş kipte</link> görünür."
 
 #. (itstool) path: page/title
 #: C/financial.page:9
@@ -550,12 +709,13 @@ msgstr "Ctrm"
 #. (itstool) path: td/p
 #: C/financial.page:16
 msgid ""
-"Calculate the number of compounding periods necessary to increase an investment "
-"of present value to a future value, at a fixed interest rate per compounding "
-"period."
+"Calculate the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
 msgstr ""
-"Bir yatırımın bugünkü değerini bir gelecek değere, bileşik dönem başına sabit "
-"bir faiz oranı ile artırmak için gerekli bileşik dönem sayısını hesaplar."
+"Bir yatırımın bugünkü değerini bir gelecek değere, bileşik dönem başına "
+"sabit bir faiz oranı ile artırmak için gerekli bileşik dönem sayısını "
+"hesaplar."
 
 #. (itstool) path: td/p
 #: C/financial.page:19
@@ -566,11 +726,11 @@ msgstr "Ddb"
 #. (itstool) path: td/p
 #: C/financial.page:20
 msgid ""
-"Calculate the depreciation allowance on an asset for a specified period of time, "
-"using the double-declining balance method."
+"Calculate the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
 msgstr ""
-"Belli bir süre için bir varlık üzerinde, çift azalan bakiye yöntemini kullanarak "
-"amortisman parası hesaplar."
+"Belli bir süre için bir varlık üzerinde, çift azalan bakiye yöntemini "
+"kullanarak amortisman parası hesaplar."
 
 #. (itstool) path: td/p
 #: C/financial.page:23
@@ -581,8 +741,9 @@ msgstr "Fv"
 #. (itstool) path: td/p
 #: C/financial.page:24
 msgid ""
-"Calculate the future value of an investment based on a series of equal payments "
-"at a periodic interest rate over the number of payment periods in the term."
+"Calculate the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
 msgstr ""
 "Bir yatırımın gelecekteki değerini bir dizi eşit ödeme vadesinde ödeme "
 "dönemlerinin sayısı üzerinden dönemsel faiz oranı tabanında hesaplar."
@@ -611,8 +772,8 @@ msgstr "Pmt"
 #. (itstool) path: td/p
 #: C/financial.page:32
 msgid ""
-"Calculate the amount of the periodic payment of a loan, where payments are made "
-"at the end of each payment period."
+"Calculate the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period."
 msgstr ""
 "Burada ödemeler her ödeme dönemi sonunda yapılan kredinin dönemsel ödeme "
 "miktarını hesaplar. "
@@ -626,9 +787,9 @@ msgstr "Pv"
 #. (itstool) path: td/p
 #: C/financial.page:36
 msgid ""
-"Calculate the present value of an investment based on a series of equal payments "
-"discounted at a periodic interest rate over the number of payment periods in the "
-"term."
+"Calculate the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term."
 msgstr ""
 "Bir yatırımın şimdiki değerini vadesi içerisinde ödeme dönemleri üzerinden "
 "dönemsel faiz oranı düşürülerek eşit ödemelere göre hesaplar."
@@ -642,8 +803,8 @@ msgstr "Rate"
 #. (itstool) path: td/p
 #: C/financial.page:40
 msgid ""
-"Calculate the periodic interest necessary to increase an investment to a future "
-"value, over the number of compounding periods."
+"Calculate the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods."
 msgstr ""
 "Bileşik yıllar boyunca bir yatırımı gelecekteki bir değere yükseltmek için "
 "gereken dönemsel faizi hesaplar. "
@@ -658,14 +819,14 @@ msgstr "Sln"
 #: C/financial.page:44
 msgid ""
 "Calculate the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly over "
-"the useful life of an asset. The useful life is the number of periods, typically "
-"years, over which an asset is depreciated."
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated."
 msgstr ""
-"Bir dönem için bir varlığın doğrusal amortismanını hesaplar. Doğrusal yöntemli "
-"amortisman bir varlığın yararlı ömrü üzerinden amortisman maliyetini eşit olarak "
-"böler. Yararlı yaşam süresi genellikle yıl olarak bir varlığın amortisman "
-"uygulanacağı süreyi belirtir. "
+"Bir dönem için bir varlığın doğrusal amortismanını hesaplar. Doğrusal "
+"yöntemli amortisman bir varlığın yararlı ömrü üzerinden amortisman "
+"maliyetini eşit olarak böler. Yararlı yaşam süresi genellikle yıl olarak bir "
+"varlığın amortisman uygulanacağı süreyi belirtir. "
 
 #. (itstool) path: td/p
 #: C/financial.page:47
@@ -676,17 +837,17 @@ msgstr "Syd"
 #. (itstool) path: td/p
 #: C/financial.page:48
 msgid ""
-"Calculate the depreciation allowance on an asset for a specified period of time, "
-"using the Sum-of-the-Years'-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense occurs "
-"in earlier periods than in later ones. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated."
+"Calculate the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years'-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated."
 msgstr ""
 "Belli bir süre için bir varlık üzerinde, Yılların-Toplamı yöntemi kullanarak "
 "amortisman miktarını hesaplar. Bu yöntemli amortismanda, amortisman oranı "
-"hızlandırılır, böylece sonra olanlardan daha çok amortisman gideri daha önceki "
-"dönemlerde oluşur. Yararlı yaşam süresi genellikle yıl üzerinden varlığın "
-"amortisman edileceği süreyi belirtir. "
+"hızlandırılır, böylece sonra olanlardan daha çok amortisman gideri daha "
+"önceki dönemlerde oluşur. Yararlı yaşam süresi genellikle yıl üzerinden "
+"varlığın amortisman edileceği süreyi belirtir. "
 
 #. (itstool) path: td/p
 #: C/financial.page:51
@@ -697,8 +858,9 @@ msgstr "Term"
 #. (itstool) path: td/p
 #: C/financial.page:52
 msgid ""
-"Calculate the number of payment periods that are necessary during the term of an "
-"ordinary annuity, to accumulate a future value, at a periodic interest rate."
+"Calculate the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
 msgstr ""
 "Dönemsel bir faiz oranıyla, gelecekteki bir değere ulaşması için sıradan bir "
 "rant dönemi süresince gereken ödeme dönemlerinin sayısını hesaplar."
@@ -716,17 +878,17 @@ msgstr "Fonksiyonlar"
 #. (itstool) path: page/p
 #: C/functions.page:11
 msgid ""
-"Functions can be used by inserting the name of the function followed by function "
-"arguments. <app>Calculator</app> also support user-defined functions. If the "
-"argument is not a number or <link xref=\"variable\">a single variable</link> "
-"then write each argument separated by semicolon and use parenthesis around the "
-"argument list."
+"Functions can be used by inserting the name of the function followed by "
+"function arguments. <app>Calculator</app> also support user-defined "
+"functions. If the argument is not a number or <link xref=\"variable\">a "
+"single variable</link> then write each argument separated by semicolon and "
+"use parenthesis around the argument list."
 msgstr ""
 "Fonksiyonlar, fonksiyon adı ve ardından fonksiyon argümanları eklenerek "
-"kullanılabilir. <app>Hesap Makinesi</app>, kullanıcı tanımlı fonksiyonları da "
-"destekler. Argüman, sayı ya da <link xref=\"variable\">tek bir değişken</link> "
-"değilse, her argümanı noktalı virgülle ayırarak ve argüman listesini parantez "
-"içine alarak alın."
+"kullanılabilir. <app>Hesap Makinesi</app>, kullanıcı tanımlı fonksiyonları "
+"da destekler. Argüman, sayı ya da <link xref=\"variable\">tek bir değişken</"
+"link> değilse, her argümanı noktalı virgülle ayırarak ve argüman listesini "
+"parantez içine alarak alın."
 
 #. (itstool) path: example/p
 #. Translators: Do not translate the word 'sin'!
@@ -749,13 +911,15 @@ msgstr "fun (9;10)"
 #. (itstool) path: page/p
 #: C/functions.page:26
 msgid ""
-"To add a new function type the function in the format as given below. A function "
-"name and arguments must only contain upper or lower case characters. The part "
-"after @ is the function description which is optional."
+"To add a new function type the function in the format as given below. A "
+"function name and arguments must only contain upper or lower case "
+"characters, or underscores. The part after @ is the function description "
+"which is optional."
 msgstr ""
-"Yeni fonksiyon eklemek için, fonksiyonu aşağıda verilen biçimde yazın. Fonksiyon "
-"adı ve argümanlar yalnızca büyük ya da küçük harf karakterler içermelidir. @ "
-"işaretinden sonraki kısım, isteğe bağlı fonksiyon açıklamasıdır."
+"Yeni fonksiyon eklemek için, fonksiyonu aşağıda verilen biçimde yazın. "
+"Fonksiyon adı ve argümanları yalnızca büyük veya küçük harf karakterleri ya "
+"da alt çizgi içermelidir. @ işaretinden sonraki kısım, isteğe bağlı "
+"fonksiyon açıklamasıdır."
 
 #. (itstool) path: example/p
 #: C/functions.page:30
@@ -763,7 +927,8 @@ msgid ""
 "SimpleInterest (principal; rate; time) = principal * rate * time @ Simple "
 "Interest formula"
 msgstr ""
-"BasitFaiz (anapara; oran; zaman) = anapara * oran * zaman @ Basit Faiz formülü"
+"BasitFaiz (anapara; oran; zaman) = anapara * oran * zaman @ Basit Faiz "
+"formülü"
 
 #. (itstool) path: page/p
 #: C/functions.page:34
@@ -773,13 +938,13 @@ msgstr "Fonksiyonlar f(x) düğmesi kullanılarak da eklenebilir."
 #. (itstool) path: example/p
 #: C/functions.page:38
 msgid ""
-"Click on f(x). Type the function name in the box, choose the number of arguments "
-"and click on the plus sign button next to it. On the calculator screen type the "
-"function expression and press <key>Enter</key>."
+"Click on f(x). Type the function name in the box, choose the number of "
+"arguments and click on the plus sign button next to it. On the calculator "
+"screen type the function expression and press <key>Enter</key>."
 msgstr ""
-"f(x)ʼe tıklayın. Kutuya fonksiyon adını yazın, argüman sayısını seçip yanındaki "
-"artı işaretine tıklayın. Hesap makinesi ekranında fonksiyon ifadesini yazıp "
-"<key>Enter</key>ʼe basın."
+"f(x)ʼe tıklayın. Kutuya fonksiyon adını yazın, argüman sayısını seçip "
+"yanındaki artı işaretine tıklayın. Hesap makinesi ekranında fonksiyon "
+"ifadesini yazıp <key>Enter</key>ʼe basın."
 
 #. (itstool) path: example/p
 #: C/functions.page:43
@@ -792,101 +957,266 @@ msgid "The following functions are defined."
 msgstr "Aşağıdaki fonksiyonlar tanımlıdır."
 
 #. (itstool) path: td/p
-#: C/functions.page:53
-msgid "<link xref=\"absolute\">Absolute Value</link>"
-msgstr "<link xref=\"absolute\">Mutlak Değer</link>"
-
-# Tavan değil!
-#. (itstool) path: td/p
-#: C/functions.page:57
-msgid "Ceiling"
-msgstr "Yukarı Yuvarla"
+#. (itstool) path: page/title
+#: C/functions.page:52 C/trigonometry.page:9
+msgid "Trigonometry"
+msgstr "Trigonometri"
 
 #. (itstool) path: td/p
-#: C/functions.page:61
-msgid "<link xref=\"trigonometry\">Cosine</link>"
-msgstr "<link xref=\"trigonometry\">Kosinüs</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:65
-msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
-msgstr "<link xref=\"trigonometry\">Hiperbolik Kosinüs</link>"
-
-# Zemin değil!
-#. (itstool) path: td/p
-#: C/functions.page:69
-msgid "Floor"
-msgstr "Aşağı Yuvarla"
-
-#. (itstool) path: td/p
-#: C/functions.page:73
-msgid "Fractional Component"
-msgstr "Kesirli Bileşen"
-
-#. (itstool) path: td/p
-#: C/functions.page:77
-msgid "Integer Component"
-msgstr "Tamsayı Bileşeni"
-
-#. (itstool) path: td/p
-#: C/functions.page:81
-msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
-msgstr "<link xref=\"logarithm\">Doğal Logaritma</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:85
-msgid "<link xref=\"logarithm\">Logarithm</link>"
-msgstr "<link xref=\"logarithm\">Logaritma</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:89
-msgid "<link xref=\"boolean\">Boolean NOT</link>"
-msgstr "<link xref=\"boolean\">Mantıksal DEĞİL</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:93
-msgid "Ones complement"
-msgstr "Birʼin tümleyeni"
-
-#. (itstool) path: td/p
-#: C/functions.page:97
-msgid "Round"
-msgstr "Yuvarla"
-
-#. (itstool) path: td/p
-#: C/functions.page:101
-msgid "Signum"
-msgstr "İşaret fonksiyonu"
-
-#. (itstool) path: td/p
-#: C/functions.page:105
+#: C/functions.page:56
 msgid "<link xref=\"trigonometry\">Sine</link>"
 msgstr "<link xref=\"trigonometry\">Sinüs</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:109
-msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
-msgstr "<link xref=\"trigonometry\">Hiperbolik Sinüs</link>"
+#: C/functions.page:60
+msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Kosinüs</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:113
-msgid "<link xref=\"power\">Square Root</link>"
-msgstr "<link xref=\"power\">Karekök</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:117
+#: C/functions.page:64
 msgid "<link xref=\"trigonometry\">Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Tanjant</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:121
+#: C/functions.page:68
+msgid "<link xref=\"trigonometry\">Inverse Sine</link>"
+msgstr "<link xref=\"trigonometry\">Ters Sinüs</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:72
+msgid "<link xref=\"trigonometry\">Inverse Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Ters Kosinüs</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:76
+msgid "<link xref=\"trigonometry\">Inverse Tangent</link>"
+msgstr "<link xref=\"trigonometry\">Ters Tanjant</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:80
+msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
+msgstr "<link xref=\"trigonometry\">Hiperbolik Sinüs</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:84
+msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Hiperbolik Kosinüs</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:88
 msgid "<link xref=\"trigonometry\">Hyperbolic Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Hiperbolik Tanjant</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:125
-msgid "Twos complement"
-msgstr "İkiʼnin tümleyeni"
+#: C/functions.page:92
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Sine</link>"
+msgstr "<link xref=\"trigonometry\">Ters Hiperbolik Sinüs</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:96
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Ters Hiperbolik Kosinüs</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:100
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Tangent</link>"
+msgstr "<link xref=\"trigonometry\">Ters Hiperbolik Tanjant</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:103
+msgid "Complex"
+msgstr "Karmaşık"
+
+#. (itstool) path: td/p
+#: C/functions.page:107
+msgid "<link xref=\"complex\">Complex Conjugate</link>"
+msgstr "<link xref=\"complex\">Karmaşık Eşlenik</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:111
+msgid "<link xref=\"complex\">Complex Argument</link>"
+msgstr "<link xref=\"complex\">Karmaşık Argüman</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:115
+msgid "<link xref=\"complex\">Real Component</link>"
+msgstr "<link xref=\"complex\">Gerçek Bileşen</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:119
+msgid "<link xref=\"complex\">Imaginary Component</link>"
+msgstr "<link xref=\"complex\">Sanal Bileşen</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:122 C/mouse.page:29
+msgid "Programming"
+msgstr "Programlama"
+
+#. (itstool) path: td/p
+#: C/functions.page:126
+msgid "<link xref=\"mode-programming\">Ones’ Complement</link>"
+msgstr "<link xref=\"mode-programming\">Birʼin Tümleyeni</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:130
+msgid "<link xref=\"mode-programming\">Two’s Complement</link>"
+msgstr "<link xref=\"mode-programming\">İkiʼnin Tümleyeni</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:134
+msgid "<link xref=\"mode-programming\">Swap Endianness</link>"
+msgstr "<link xref=\"mode-programming\">Takas Endianlığı</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:138
+msgid "<link xref=\"modulus\">Modulus Divide</link>"
+msgstr "<link xref=\"modulus\">Modüler Bölme</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:142
+msgid "<link xref=\"modulus\">Modular Exponentiation</link>"
+msgstr "<link xref=\"modulus\">Modüler Üs Alma</link>"
+
+#. (itstool) path: td/p
+#. (itstool) path: page/title
+#: C/functions.page:145 C/rounding.page:9
+msgid "Rounding"
+msgstr "Yuvarlama"
+
+#. (itstool) path: td/p
+#: C/functions.page:149
+msgid "<link xref=\"rounding\">Round</link>"
+msgstr "<link xref=\"rounding\">Yuvarla</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:153
+msgid "<link xref=\"rounding\">Floor</link>"
+msgstr "<link xref=\"rounding\">Aşağı Yuvarla</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:157
+msgid "<link xref=\"rounding\">Ceiling</link>"
+msgstr "<link xref=\"rounding\">Yukarı Yuvarla</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:161
+msgid "<link xref=\"rounding\">Integer Component</link>"
+msgstr "<link xref=\"rounding\">Tamsayı Bileşeni</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:165
+msgid "<link xref=\"rounding\">Fractional Component</link>"
+msgstr "<link xref=\"rounding\">Kesirli Bileşen</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:168
+msgid "Statistics"
+msgstr "İstatistik"
+
+#. (itstool) path: td/p
+#: C/functions.page:172
+msgid "Sum"
+msgstr "Toplam"
+
+#. (itstool) path: td/p
+#: C/functions.page:176
+msgid "Sum of Squares"
+msgstr "Kareler Toplamı"
+
+#. (itstool) path: td/p
+#: C/functions.page:180
+msgid "Average"
+msgstr "Ortalama"
+
+#. (itstool) path: td/p
+#: C/functions.page:184
+msgid "Median"
+msgstr "Medyan"
+
+#. (itstool) path: td/p
+#: C/functions.page:188
+msgid "Minimum Value"
+msgstr "En Küçük Değer"
+
+#. (itstool) path: td/p
+#: C/functions.page:192
+msgid "Maximum Value"
+msgstr "En Büyük Değer"
+
+#. (itstool) path: td/p
+#: C/functions.page:196
+msgid "Sample Standard Deviation"
+msgstr "Örneklem Standart Sapması"
+
+#. (itstool) path: td/p
+#: C/functions.page:200
+msgid "Population Standard Deviation"
+msgstr "Ana Kütle Standart Sapması"
+
+#. (itstool) path: td/p
+#: C/functions.page:204
+msgid "Sample Variance"
+msgstr "Örneklem Varyansı"
+
+#. (itstool) path: td/p
+#: C/functions.page:208
+msgid "Population Variance"
+msgstr "Ana Kütle Varyansı"
+
+#. (itstool) path: td/p
+#: C/functions.page:211
+msgid "Sundry"
+msgstr "Çeşitli"
+
+#. (itstool) path: td/p
+#: C/functions.page:215
+msgid "<link xref=\"logarithm\">Logarithm</link>"
+msgstr "<link xref=\"logarithm\">Logaritma</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:219
+msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
+msgstr "<link xref=\"logarithm\">Doğal Logaritma</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:223
+msgid "<link xref=\"power\">Square Root</link>"
+msgstr "<link xref=\"power\">Karekök</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:227
+msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgstr "<link xref=\"absolute\">Mutlak Değer</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:231
+msgid "<link xref=\"absolute\">Signum</link>"
+msgstr "<link xref=\"absolute\">Signum</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:235
+msgid "Combination"
+msgstr "Kombinasyon"
+
+#. (itstool) path: td/p
+#: C/functions.page:239
+msgid "Permutation"
+msgstr "Permütasyon"
+
+#. (itstool) path: td/p
+#: C/functions.page:243
+msgid "Greatest Common Divisor"
+msgstr "En Büyük Ortak Bölen"
+
+#. (itstool) path: td/p
+#: C/functions.page:247
+msgid "Least Common Multiple"
+msgstr "En Küçük Ortak Kat"
+
+#. (itstool) path: td/p
+#: C/functions.page:251
+msgid "Comparison (Kronecker Delta)"
+msgstr "Karşılaştırma (Kronecker Deltası)"
 
 #. (itstool) path: credit/name
 #: C/history.page:12
@@ -927,18 +1257,18 @@ msgstr "Geçmiş Görünümünü Kullanmak"
 #: C/history.page:32
 msgid ""
 "The History View is located above the entry box and is designed to show your "
-"previous calculations in the form of a scrollable list that can be clicked and "
-"scrolled through using a mouse."
+"previous calculations in the form of a scrollable list that can be clicked "
+"and scrolled through using a mouse."
 msgstr ""
-"Geçmiş Görünümü, girdi kutusunun üzerinde bulunur ve önceki hesaplamalarınızı "
-"fare ile tıklanıp kaydırılabilen bir liste biçiminde göstermek için "
-"tasarlanmıştır."
+"Geçmiş Görünümü, girdi kutusunun üzerinde bulunur ve önceki "
+"hesaplamalarınızı fare ile tıklanıp kaydırılabilen bir liste biçiminde "
+"göstermek için tasarlanmıştır."
 
 #. (itstool) path: page/p
 #: C/history.page:37
 msgid ""
-"Once an entry has been selected, it will immediately show up in the entry box "
-"for you to manipulate and use."
+"Once an entry has been selected, it will immediately show up in the entry "
+"box for you to manipulate and use."
 msgstr ""
 "Girdi seçildikten sonra, işlemeniz ve kullanmanız için hemen girdi kutusunda "
 "görünecektir."
@@ -946,11 +1276,11 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/history.page:40
 msgid ""
-"Finally, there is no upper limit on the number of calculations that can show up "
-"in the list for you to use."
+"Finally, there is no upper limit on the number of calculations that can show "
+"up in the list for you to use."
 msgstr ""
-"Son olarak, kullanmanız için listede gösterilecek hesaplama sayısında üst sınır "
-"yoktur."
+"Son olarak, kullanmanız için listede gösterilecek hesaplama sayısında üst "
+"sınır yoktur."
 
 #. (itstool) path: info/title
 #: C/index.page:7
@@ -1060,7 +1390,7 @@ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:41 C/variables.page:48
+#: C/keyboard.page:41 C/variables.page:60
 msgid "π"
 msgstr "π"
 
@@ -1069,12 +1399,53 @@ msgstr "π"
 msgid "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/keyboard.page:45 C/variables.page:64
+msgid "τ"
+msgstr "τ"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:46
+msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:49
+msgid "°"
+msgstr "°"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:50
+msgid "<keyseq><key>Ctrl</key><key>'</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>'</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:53
+msgid "⌈⌉"
+msgstr "⌈⌉"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:54
+msgid "<keyseq><key>Ctrl</key><key>[</key></keyseq><key>]</key>"
+msgstr "<keyseq><key>Ctrl</key><key>[</key></keyseq><key>]</key>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:57
+msgid "⌊⌋"
+msgstr "⌊⌋"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:58
+msgid "<keyseq><key>Alt</key><key>[</key></keyseq><key>]</key>"
+msgstr "<keyseq><key>Alt</key><key>[</key></keyseq><key>]</key>"
+
 #. (itstool) path: page/p
-#: C/keyboard.page:45
+#: C/keyboard.page:61
 msgid ""
 "To enter <link xref=\"superscript\">superscript numbers</link> use "
-"<keyseq><key>Ctrl</key>number</keyseq>, for <link xref=\"superscript\">subscript "
-"numbers</link> use <keyseq><key>Alt</key>number</keyseq>."
+"<keyseq><key>Ctrl</key>number</keyseq>, for <link "
+"xref=\"superscript\">subscript numbers</link> use <keyseq><key>Alt</"
+"key>number</keyseq>."
 msgstr ""
 "<link xref=\"superscript\">Üst simge sayılarını</link> girmek için "
 "<keyseq><key>Ctrl</key>sayı</keyseq>, <link xref=\"superscript\">Alt simge "
@@ -1098,9 +1469,9 @@ msgid ""
 "modify, and distribute the example code contained in this document under the "
 "terms of your choosing, without restriction."
 msgstr ""
-"Özel bir istisna olarak, telif hakkı sahipleri, bu belgede yer alan örnek kodu, "
-"seçtiğiniz koşullar altında, kısıtlama olmaksızın kopyalamanıza, değiştirmenize "
-"ve dağıtmanıza izin verir."
+"Özel bir istisna olarak, telif hakkı sahipleri, bu belgede yer alan örnek "
+"kodu, seçtiğiniz koşullar altında, kısıtlama olmaksızın kopyalamanıza, "
+"değiştirmenize ve dağıtmanıza izin verir."
 
 #. (itstool) path: page/title
 #: C/logarithm.page:9
@@ -1125,38 +1496,137 @@ msgstr "log 100"
 #: C/logarithm.page:19
 msgid ""
 "To calculate a logarithm in a different base use a <link "
-"xref=\"superscript\">subscript number</link> after the function."
+"xref=\"superscript\">subscript number</link> or normal number after the "
+"function."
 msgstr ""
-"Logaritmayı başka bir tabanda hesaplamak için, fonksiyondan sonra <link "
-"xref=\"superscript\">alt simge sayısı</link> kullanın."
+"Farklı bir tabanda logaritma hesaplamak için fonksiyondan sonra <link "
+"xref=\"superscript\">alt simge sayısı</link> ya da normal sayı kullanın."
 
 #. (itstool) path: example/p
 #: C/logarithm.page:23
 msgid "log₂ 32"
 msgstr "log₂ 32"
 
+#. (itstool) path: example/p
+#: C/logarithm.page:26
+msgid "log2 (32)"
+msgstr "log2 (32)"
+
+#. (itstool) path: example/p
+#: C/logarithm.page:29
+msgid "log (32;2)"
+msgstr "log (32;2)"
+
 #. (itstool) path: page/p
-#: C/logarithm.page:27
+#: C/logarithm.page:33
 msgid "To calculate a natural logarithm use the ln function."
 msgstr "Doğal logaritmayı hesaplamak için ln fonksiyonunu kullanın."
 
 #. (itstool) path: example/p
-#: C/logarithm.page:31
+#: C/logarithm.page:37
 msgid "ln 1.32"
 msgstr "ln 1.32"
 
 #. (itstool) path: page/p
-#: C/logarithm.page:35
+#: C/logarithm.page:41
 msgid ""
-"Euler's number can be entered by using the <link xref=\"variable\">variable</"
+"Euler's number can be entered by using the <link xref=\"variable\">constant</"
 "link> e."
 msgstr ""
-"Euler sayısı <link xref=\"variable\">değişken</link> e kullanılarak girilebilir."
+"Euler sayısı <link xref=\"variable\">sabit</link> e kullanılarak girilebilir."
 
 #. (itstool) path: example/p
-#: C/logarithm.page:39
+#: C/logarithm.page:45
 msgid "e^1.32"
 msgstr "e^1.32"
+
+#. (itstool) path: page/title
+#: C/mode-programming.page:9
+msgid "Programming Mode"
+msgstr "Programlama Kipi"
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:11
+msgid ""
+"<gui style=\"menuitem\">Programming mode</gui> provides the tools required "
+"for common mathematical operations in software development. For example, "
+"programming mode makes math on hexadecimal numbers very easy. It also "
+"supports common <link xref=\"boolean\">bitwise operators</link> like "
+"<gui>NOT</gui>, <gui>AND</gui>, <gui>OR</gui>, etc. A binary view for "
+"numbers up to 64 bits long is displayed, where the user can manually toggle "
+"each bit using the mouse cursor."
+msgstr ""
+"<gui style=\"menuitem\">Programlama kipi</gui>, yazılım geliştirmede yaygın "
+"matematiksel işlemler için gerekli araçları sağlar. Örneğin, programlama "
+"kipi onaltılık sayılar üzerinde matematik yapmayı çok kolaylaştırır. Ayrıca "
+"<gui>NOT</gui> (Mantıksal DEĞİL), <gui>AND</gui> (Mantıksal VE), <gui>OR</"
+"gui> (Mantıksal VEYA), vb. gibi yaygın <link xref=\"boolean\">bitsel/"
+"mantıksal operatörleri</link> de destekler. Kullanıcının fare imlecini "
+"kullanarak her bir biti elle değiştirebildiği 64 bit uzunluğa kadar sayılar "
+"için ikili görünüm sağlar."
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:14
+msgid ""
+"Additionally, bit-shifting operations are possible by using the <gui>≪</"
+"gui>, <gui>≫</gui> and <gui>⋙</gui> buttons. <link xref=\"modulus\">Modulo "
+"arithmetic</link> can be accomplished using the <gui>mod</gui> button."
+msgstr ""
+"Ayrıca, <gui>≪,</gui><gui>≫</gui> ve <gui>⋙</gui> düğmeleri kullanılarak bit "
+"kaydırma işlemleri yapılabilir. <link xref=\"modulus\">Modüler aritmatik "
+"işlemleri</link> <gui>mod</gui> düğmesi kullanılarak gerçekleştirilebilir."
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:17
+msgid ""
+"The default word size for bitwise, ones’ complement, two’s complement, and "
+"swap endianness functions can be changed both in the <gui "
+"style=\"menuitem\">Preferences</gui> menu, or by using the word size button "
+"in the bottom of the keypad while in programming mode. This will affect how "
+"results from these functions are shown. For example, here we show the two’s "
+"complement of the number 6B in 64 bit and 16 bit word sizes:"
+msgstr ""
+"Bitsel, Birʼin Tümleyeni, İkiʼnin Tümleyeni ve Endian Sırasını Değiştir "
+"fonksiyonları için öntanımlı sözcük boyutu hem <gui "
+"style=\"menuitem\">Tercihler</gui> menüsünden hem de programlama kipindeyken "
+"tuş takımının altındaki sözcük boyutu düğmesi kullanılarak değiştirilebilir. "
+"Bu, bu işlevlerden elde edilen sonuçların nasıl gösterileceğini "
+"etkileyecektir. Örneğin, aşağıda 64 bit ve 16 bit sözcük boyutlarında 6B "
+"sayısının iki’nin tümleyenini gösterilmiştir:"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:21
+msgid "64 bit:"
+msgstr "64 bit:"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:24 C/mode-programming.page:33
+msgid "twos 6B"
+msgstr "twos 6B"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:27
+msgid "FFFFFFFFFFFFFF95"
+msgstr "FFFFFFFFFFFFFF95"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:30
+msgid "16 bit:"
+msgstr "16 bit:"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:36
+msgid "FF95"
+msgstr "FF95"
+
+#. (itstool) path: note/p
+#: C/mode-programming.page:41
+msgid ""
+"Attempting to enter a larger number than will fit in the selected word size "
+"will result in an Overflow error."
+msgstr ""
+"Seçilen sözcük boyutuna sığandan daha büyük bir sayı girmeye çalışmak Taşma "
+"hatasıyla sonuçlanır."
 
 #. (itstool) path: page/title
 #: C/modulus.page:9
@@ -1165,13 +1635,36 @@ msgstr "Modüler Bölme"
 
 #. (itstool) path: page/p
 #: C/modulus.page:11
-msgid "Modulus division is performed using the mod operator."
-msgstr "Modüler bölme mod operatörü kullanılarak gerçekleştirilir."
+msgid ""
+"Modulus division is performed using the mod operator or the mod <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"Modüler bölme işlemi mod operatörü ya da mod <link "
+"xref=\"function\">fonksiyonu</link> kullanılarak gerçekleştirilir."
 
 #. (itstool) path: example/p
 #: C/modulus.page:15
 msgid "9 mod 5"
 msgstr "9 mod 5"
+
+#. (itstool) path: example/p
+#: C/modulus.page:18
+msgid "mod (9;5)"
+msgstr "mod (9;5)"
+
+#. (itstool) path: page/p
+#: C/modulus.page:22
+msgid ""
+"Modular exponentiation x^y mod p is performed using the modexp <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"Modüler üs alma x^y mod p, modexp <link xref=\"function\">fonksiyonu</link> "
+"kullanılarak gerçekleştirilir."
+
+#. (itstool) path: example/p
+#: C/modulus.page:26
+msgid "modexp (9;3;5)"
+msgstr "modexp (9;3;5)"
 
 #. (itstool) path: page/title
 #: C/mouse.page:9
@@ -1181,11 +1674,11 @@ msgstr "Fare Kullanmak"
 #. (itstool) path: page/p
 #: C/mouse.page:11
 msgid ""
-"All equations can be entered using the mouse. To access all buttons there are a "
-"number of modes that can be selected from the <gui>Mode</gui> menu."
+"All equations can be entered using the mouse. To access all buttons there "
+"are a number of modes that can be selected from the <gui>Mode</gui> menu."
 msgstr ""
-"Tüm denklemler fare ile girilebilir. Tüm düğmelere erişmek için <gui>Kip</gui> "
-"menüsünden seçilebilen çeşitli kipler vardır."
+"Tüm denklemler fare ile girilebilir. Tüm düğmelere erişmek için <gui>Kip</"
+"gui> menüsünden seçilebilen çeşitli kipler vardır."
 
 #. (itstool) path: td/p
 #: C/mouse.page:17
@@ -1210,8 +1703,8 @@ msgid ""
 "Provides buttons suitable for advanced mathematics such as <link "
 "xref=\"trigonometry\"/>"
 msgstr ""
-"<link xref=\"trigonometry\"/> gibi gelişmiş hesaplamalar için uygun düğmeleri "
-"sağlar"
+"<link xref=\"trigonometry\"/> gibi gelişmiş hesaplamalar için uygun "
+"düğmeleri sağlar"
 
 #. (itstool) path: td/p
 #: C/mouse.page:25
@@ -1221,19 +1714,26 @@ msgstr "Finansal"
 #. (itstool) path: td/p
 #: C/mouse.page:26
 msgid ""
-"Provides buttons suitable for <link xref=\"financial\">financial equations</link>"
+"Provides buttons suitable for <link xref=\"financial\">financial equations</"
+"link>"
 msgstr ""
-"<link xref=\"financial\">Finansal denklemler</link> için uygun düğmeleri sağlar"
-
-#. (itstool) path: td/p
-#: C/mouse.page:29
-msgid "Programming"
-msgstr "Programlama"
+"<link xref=\"financial\">Finansal denklemler</link> için uygun düğmeleri "
+"sağlar"
 
 #. (itstool) path: td/p
 #: C/mouse.page:30
 msgid "Provides buttons suitable for computer programmers"
 msgstr "Bilgisayar programcıları için uygun düğmeleri sağlar"
+
+#. (itstool) path: td/p
+#: C/mouse.page:33
+msgid "Conversion"
+msgstr "Dönüşüm"
+
+#. (itstool) path: td/p
+#: C/mouse.page:34
+msgid "Provides buttons suitable for unit conversions"
+msgstr "Birim dönüşümleri için uygun düğmeler sağlar"
 
 #. (itstool) path: page/title
 #: C/number-display.page:9
@@ -1243,11 +1743,12 @@ msgstr "Sonuç Biçimi"
 #. (itstool) path: page/p
 #: C/number-display.page:11
 msgid ""
-"To change the format used to display results, press the menu button in the top-"
-"right corner of the window and select the number format to use from the menu."
+"To change the format used to display results, press the menu button in the "
+"top-right corner of the window and select the number format to use from the "
+"menu."
 msgstr ""
-"Sonuçların gösterim biçimini değiştirmek için, pencerenin sağ üst köşesindeki "
-"menü düğmesine basın ve menüden kullanılacak sayı biçimini seçin."
+"Sonuçların gösterim biçimini değiştirmek için, pencerenin sağ üst "
+"köşesindeki menü düğmesine basın ve menüden kullanılacak sayı biçimini seçin."
 
 #. (itstool) path: td/p
 #: C/number-display.page:18
@@ -1257,8 +1758,8 @@ msgstr "<gui>Kendiliğinden</gui>"
 #. (itstool) path: td/p
 #: C/number-display.page:19
 msgid ""
-"Small results are displayed as <gui>Fixed</gui> notation while long results are "
-"displayed as <gui>Scientific</gui> notation"
+"Small results are displayed as <gui>Fixed</gui> notation while long results "
+"are displayed as <gui>Scientific</gui> notation"
 msgstr ""
 "Küçük sonuçlar <gui>Sabit</gui> notasyon olarak, uzun sonuçlar ise "
 "<gui>Bilimsel</gui> notasyon olarak gösterilir."
@@ -1282,7 +1783,8 @@ msgstr "<gui>Bilimsel</gui>"
 #: C/number-display.page:27
 msgid ""
 "Results are displayed in <link xref=\"scientific\">scientific notation</link>"
-msgstr "Sonuçlar <link xref=\"scientific\">bilimsel gösterimle</link> gösterilir"
+msgstr ""
+"Sonuçlar <link xref=\"scientific\">bilimsel gösterimle</link> gösterilir"
 
 #. (itstool) path: td/p
 #: C/number-display.page:30
@@ -1295,16 +1797,19 @@ msgid ""
 "Results are displayed in scientific notation except the exponent is always a "
 "multiple of three"
 msgstr ""
-"Sonuçlar, üs her zaman üçün katı olması dışında bilimsel gösterimle gösterilir"
+"Sonuçlar, üs her zaman üçün katı olması dışında bilimsel gösterimle "
+"gösterilir"
 
 #. (itstool) path: page/p
 #: C/number-display.page:34
 msgid ""
-"The number of decimal places, if trailing zeroes and if thousands separators are "
-"shown can also be configured in <gui style=\"menuitem\">Preferences</gui>."
+"The number of decimal places, if trailing zeroes and if thousands separators "
+"are shown can also be configured in <gui style=\"menuitem\">Preferences</"
+"gui>."
 msgstr ""
-"Ondalık basamak sayısı da, sondaki sıfırlar ve binlik ayraçlar gösteriliyorsa "
-"<gui style=\"menuitem\">Tercihler</gui>ʼden yapılandırılabilir."
+"Ondalık basamak sayısı da, sondaki sıfırlar ve binlik ayraçlar "
+"gösteriliyorsa <gui style=\"menuitem\">Tercihler</gui>ʼden "
+"yapılandırılabilir."
 
 #. (itstool) path: page/title
 #: C/percentage.page:9
@@ -1319,13 +1824,13 @@ msgstr "Yüzdeler, % simgesi kullanılarak hesaplanır."
 #. (itstool) path: page/p
 #: C/percentage.page:14
 msgid ""
-"When added or subtracted the percentage symbol resolves to one percent of the "
-"value being added or subtracted from. The following equation calculates the "
-"price of a $140 item with 15% tax (140 + (15÷100)×140)."
+"When added or subtracted the percentage symbol resolves to one percent of "
+"the value being added or subtracted from. The following equation calculates "
+"the price of a $140 item with 15% tax (140 + (15÷100)×140)."
 msgstr ""
-"Yüzde simgesi eklendiğinde ya da çıkarıldığında, eklenen ya da çıkarılan değerin "
-"yüzde birine çözümlenir. Aşağıdaki denklem, 140₺ bir ögenin fiyatını %15 vergi "
-"ile (140 + (15÷100)×140) hesaplar."
+"Yüzde simgesi eklendiğinde ya da çıkarıldığında, eklenen ya da çıkarılan "
+"değerin yüzde birine çözümlenir. Aşağıdaki denklem, 140₺ bir ögenin fiyatını "
+"%15 vergi ile (140 + (15÷100)×140) hesaplar."
 
 #. (itstool) path: example/p
 #: C/percentage.page:19
@@ -1335,8 +1840,8 @@ msgstr "140+15%"
 #. (itstool) path: page/p
 #: C/percentage.page:23
 msgid ""
-"In all other cases the percentage symbol resolves to a fraction out of 100. The "
-"following equation calculates one quarter of 80 apples ((25÷100)×80)."
+"In all other cases the percentage symbol resolves to a fraction out of 100. "
+"The following equation calculates one quarter of 80 apples ((25÷100)×80)."
 msgstr ""
 "Diğer tüm durumlarda, yüzde simgesi 100 üzerinden kesre dönüşür. Aşağıdaki "
 "denklem 80 elmanın çeyreğini ((25÷100)×80) hesaplar."
@@ -1356,93 +1861,188 @@ msgstr "2015"
 msgid "Sebastian Rasmussen"
 msgstr "Sebastian Rasmussen"
 
-#. (itstool) path: info/desc
-#: C/power.page:21
-msgid "Learn to enter roots and powers into the calculator."
-msgstr "Hesap makinesine kökleri ve güçleri girmeyi öğrenin."
-
 #. (itstool) path: page/title
-#: C/power.page:24
+#: C/power.page:22
 msgid "Powers and Roots"
 msgstr "Köklerin Gücü"
 
 #. (itstool) path: page/p
-#: C/power.page:26
+#: C/power.page:24
 msgid ""
-"Powers are entered by putting a <link xref=\"superscript\">superscript number</"
-"link> after the value."
+"Powers are entered by putting a <link xref=\"superscript\">superscript "
+"number</link> after the value."
 msgstr ""
 "Güçler, değerden sonra <link xref=\"superscript\">üst simge sayısı</link> "
 "konularak girilir."
 
 #. (itstool) path: example/p
-#: C/power.page:30
+#: C/power.page:28
 msgid "5²"
 msgstr "5²"
 
 #. (itstool) path: page/p
-#: C/power.page:33
+#: C/power.page:31
 msgid ""
 "The inverse of a number can be entered using the inverse symbol ⁻¹ "
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>)."
 msgstr ""
-"Sayının tersi, ters simgesi ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></keyseq>) "
-"kullanılarak girilebilir."
+"Sayının tersi, ters simgesi ⁻¹ (<keyseq><key>Ctrl</key><key>I</key></"
+"keyseq>) kullanılarak girilebilir."
 
 #. (itstool) path: example/p
-#: C/power.page:37
+#: C/power.page:35
 msgid "3⁻¹"
 msgstr "3⁻¹"
 
 #. (itstool) path: page/p
-#: C/power.page:40
+#: C/power.page:38
 msgid ""
-"Powers can also be calculated using the ^ symbol. This allows the power to be an "
-"equation."
+"Powers can also be calculated using the ^ symbol. This allows the power to "
+"be an equation."
 msgstr ""
 "Güçler ^ simgesi kullanılarak da hesaplanabilir. Bu, gücün denklem olmasını "
 "sağlar."
 
 #. (itstool) path: example/p
-#: C/power.page:44
+#: C/power.page:42
 msgid "5^(6−2)"
 msgstr "5^(6−2)"
 
 #. (itstool) path: page/p
-#: C/power.page:47
+#: C/power.page:45
 msgid ""
-"If your keyboard does not have a <key>^</key> key you can use <key>*</key> twice."
+"If your keyboard does not have a <key>^</key> key you can use <key>*</key> "
+"twice."
 msgstr ""
 "Klavyenizde <key>^</key> tuşu yoksa <key>*</key> tuşunu iki kez "
 "kullanabilirsiniz."
 
 #. (itstool) path: page/p
-#: C/power.page:50
+#: C/power.page:48
 msgid ""
 "Square roots can be calculated using the √ symbol (<keyseq><key>Ctrl</"
-"key><key>R</key></keyseq>)."
+"key><key>R</key></keyseq>) or sqrt <link xref=\"function\">function</link>."
 msgstr ""
-"Karekökler, √ simgesi (<keyseq><key>Ctrl</key><key>R</key></keyseq>) "
-"kullanılarak hesaplanabilir."
+"Karekökler √ sembolü (<keyseq><key>Ctrl</key><key>R</key></keyseq>) ya da "
+"sqrt <link xref=\"function\">fonksiyonu</link> kullanılarak hesaplanabilir."
 
 #. (itstool) path: example/p
-#: C/power.page:54
+#: C/power.page:52
 msgid "√2"
 msgstr "√2"
 
+#. (itstool) path: example/p
+#: C/power.page:53
+msgid "sqrt (2)"
+msgstr "sqrt (2)"
+
 #. (itstool) path: page/p
-#: C/power.page:57
+#: C/power.page:56
 msgid ""
-"n-th roots can be calculated by putting a <link xref=\"superscript\">subscript "
-"number</link> before the root sign."
+"n-th roots can be calculated by putting a <link "
+"xref=\"superscript\">subscript number</link> or <link "
+"xref=\"superscript\">superscript number</link> before the root sign."
 msgstr ""
-"nʼinci kökler, kök işaretinden önce <link xref=\"superscript\">alt simge sayısı</"
-"link> konularak hesaplanabilir."
+"nʼinci kökler, kök işaretinden önce <link xref=\"superscript\">alt simge "
+"sayısı</link> ya da <link xref=\"superscript\">üst simge sayısı</link> "
+"konularak hesaplanabilir."
+
+#. (itstool) path: example/p
+#: C/power.page:60
+msgid "₃√2"
+msgstr "₃√2"
 
 #. (itstool) path: example/p
 #: C/power.page:61
-msgid "₃√2"
-msgstr "₃√2"
+msgid "³√2"
+msgstr "³√2"
+
+#. (itstool) path: page/p
+#: C/rounding.page:11
+msgid ""
+"Nearest integer values tying away from zero are calculated using the [ and ] "
+"symbols or round <link xref=\"function\">function</link>."
+msgstr ""
+"Sıfırdan uzaklaşan en yakın tamsayı değerleri [ ve ] sembolleri ya da "
+"yuvarla <link xref=\"function\">fonksiyonu</link> kullanılarak hesaplanır."
+
+#. (itstool) path: example/p
+#: C/rounding.page:15
+msgid "[0.5]"
+msgstr "[0.5]"
+
+#. (itstool) path: example/p
+#: C/rounding.page:18
+msgid "round (0.5)"
+msgstr "round (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:23
+msgid ""
+"Nearest integer values toward -∞ also known as floor values are calculated "
+"using the ⌊ and ⌋ symbols or floor <link xref=\"function\">function</link>."
+msgstr ""
+"Aşağı yuvarla değerleri olarak da bilinen -∞ʼa doğru en yakın tamsayı "
+"değerleri ⌊ ve ⌋ sembolleri ya da aşağı yuvarla <link "
+"xref=\"function\">fonksiyonu</link> kullanılarak hesaplanır."
+
+#. (itstool) path: example/p
+#: C/rounding.page:27
+msgid "⌊0.5⌋"
+msgstr "⌊0.5⌋"
+
+#. (itstool) path: example/p
+#: C/rounding.page:30
+msgid "floor (0.5)"
+msgstr "floor (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:35
+msgid ""
+"Nearest integer values toward +∞ also known as ceiling values are calculated "
+"using the ⌈ and ⌉ symbols or ceil <link xref=\"function\">function</link>."
+msgstr ""
+"Yukarı yuvarla değerleri olarak da bilinen +∞ʼa doğru en yakın tamsayı "
+"değerleri ⌈ ve ⌉ sembolleri ya da yukarı yuvarla <link "
+"xref=\"function\">fonksiyonu</link> kullanılarak hesaplanır."
+
+#. (itstool) path: example/p
+#: C/rounding.page:39
+msgid "⌈0.5⌉"
+msgstr "⌈0.5⌉"
+
+#. (itstool) path: example/p
+#: C/rounding.page:42
+msgid "ceil (0.5)"
+msgstr "ceil (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:47
+msgid ""
+"Nearest integer values toward 0 i.e. the integer components are calculated "
+"using int <link xref=\"function\">function</link>."
+msgstr ""
+"0ʼa en yakın tamsayı değerleri, yani tamsayı bileşenleri int <link "
+"xref=\"function\">fonksiyonu</link> kullanılarak hesaplanır."
+
+#. (itstool) path: page/p
+#: C/rounding.page:50
+msgid ""
+"The fractional components are calculated using frac <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"Kesirli bileşenler frac <link xref=\"function\">fonksiyonu</link> "
+"kullanılarak hesaplanır."
+
+#. (itstool) path: example/p
+#: C/rounding.page:54
+msgid "int (0.5)"
+msgstr "int (0.5)"
+
+#. (itstool) path: example/p
+#: C/rounding.page:57
+msgid "frac (0.5)"
+msgstr "frac (0.5)"
 
 #. (itstool) path: page/title
 #: C/scientific.page:9
@@ -1452,15 +2052,15 @@ msgstr "Bilimsel Gösterim"
 #. (itstool) path: page/p
 #: C/scientific.page:11
 msgid ""
-"To enter numbers in scientific format use the <gui>×10y</gui> button "
-"(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link "
-"xref=\"superscript\">number mode</link> automatically changes to superscript. To "
-"enter 2×10¹⁰⁰, start by entering the mantissa (2):"
+"To enter numbers in scientific format use the <keyseq><key>Ctrl</key><key>E</"
+"key></keyseq> shortcut. The <link xref=\"superscript\">number mode</link> "
+"automatically changes to superscript. To enter 2×10¹⁰⁰, start by entering "
+"the mantissa (2):"
 msgstr ""
-"Sayıları bilimsel biçimde girmek için <gui>×10y</gui> düğmesini "
-"(<keyseq><key>Ctrl</key><key>E</key></keyseq>) kullanın. Sayı kendiliğinden "
-"<link xref=\"superscript\">üst simgeye</link> dönüşür. 2×10¹⁰⁰ girmek için "
-"mantis (2) girerek başlayın:"
+"Sayıları bilimsel biçimde girmek için (<keyseq><key>Ctrl</key><key>E</key></"
+"keyseq>) kısayolunu kullanın. <link xref=\"superscript\">Sayı kipi</link> "
+"kendiliğinden üst simgeye dönüşür. 2×10¹⁰⁰ girmek için mantis (2) girerek "
+"başlayın:"
 
 #. (itstool) path: example/p
 #: C/scientific.page:17
@@ -1469,12 +2069,9 @@ msgstr "2"
 
 #. (itstool) path: page/p
 #: C/scientific.page:21
-msgid ""
-"Then press the scientific notation button (or press <keyseq><key>Ctrl</"
-"key><key>E</key></keyseq>):"
+msgid "Then press <keyseq><key>Ctrl</key><key>E</key></keyseq>:"
 msgstr ""
-"Ardından bilimsel gösterim düğmesine basın (ya da <keyseq><key>Ctrl</key><key>E</"
-"key></keyseq>ʼye basın):"
+"Ardından <keyseq><key>Ctrl</key><key>E</key></keyseq> tuşlarına basınız:"
 
 #. (itstool) path: example/p
 #: C/scientific.page:25
@@ -1497,8 +2094,8 @@ msgid ""
 "To show results in scientific form change the <link xref=\"number-"
 "display\">result format</link>."
 msgstr ""
-"Sonuçları bilimsel biçimde göstermek için <link xref=\"number-display\">sonuç "
-"biçimini</link> değiştirin."
+"Sonuçları bilimsel biçimde göstermek için <link xref=\"number-"
+"display\">sonuç biçimini</link> değiştirin."
 
 #. (itstool) path: info/title
 #: C/superscript.page:15
@@ -1528,17 +2125,19 @@ msgstr "x³+2x²−5"
 #. (itstool) path: page/p
 #: C/superscript.page:29
 msgid ""
-"To enter superscript numbers with the mouse select the number mode using the "
-"<gui>↑n</gui> and <gui>↓n</gui> buttons (available in the <gui>Advanced Mode</"
-"gui> and the <gui>Programming Mode</gui>). When one of these modes is active "
-"clicking the number buttons will enter numbers in superscript or subscript. To "
-"return to normal number mode click the active number button."
+"To enter superscript or subscript numbers with the mouse, select the number "
+"mode using the <gui>↑n</gui> and <gui>↓n</gui> buttons (available in all the "
+"modes except the <gui>keyboard mode</gui> and the <gui>conversion mode</"
+"gui>). When one of these modes is active clicking the number buttons will "
+"enter numbers in superscript or subscript. To return to normal number mode "
+"click the active number button."
 msgstr ""
-"Üst simge sayılarını fareyle girmek için <gui>↑n</gui> ve <gui>↓n</gui> "
-"düğmelerini kullanarak sayı kipini seçin (<gui>Gelişmiş Kip</gui> ve <gui "
-">Programlama Kipi</gui>nde bulunur). Bu kiplerden biri aktifse, sayı düğmelerine "
-"tıklamak sayıları üst simge veya alt simge olarak girecektir. Normal sayı kipine "
-"dönmek için aktif sayı düğmesine tıklayın."
+"Fare ile üst simge ya da alt simge sayıları girmek için <gui>↑n</gui> ve "
+"<gui>↓n</gui> düğmelerini kullanarak sayı kipini seçin (<gui>klavye kipi</"
+"gui> ve <gui>dönüşüm kipi</gui> hariç tüm kiplerde vardır). Bu kiplerden "
+"biri etkinken sayı düğmelerine tıklandığında sayılar üst simge ya da alt "
+"simge olarak girilir. Normal sayı kipine dönmek için etkin sayı düğmesine "
+"tıklayın."
 
 #. (itstool) path: page/p
 #: C/superscript.page:34
@@ -1546,22 +2145,17 @@ msgid ""
 "To enter superscript numbers use <keyseq><key>Ctrl</key>number</keyseq>, for "
 "subscript numbers use <keyseq><key>Alt</key>number</keyseq>."
 msgstr ""
-"Üst simge sayıları girmek için <keyseq><key>Ctrl</key>sayı</keyseq>, Alt simge "
-"sayıları için <keyseq><key>Alt</key>sayı</keyseq> kullanabilirsiniz."
+"Üst simge sayıları girmek için <keyseq><key>Ctrl</key>sayı</keyseq>, Alt "
+"simge sayıları için <keyseq><key>Alt</key>sayı</keyseq> kullanabilirsiniz."
 
 #. (itstool) path: page/p
 #: C/superscript.page:37
 msgid ""
-"The number mode returns to normal when entering the next non-number character, "
-"such as \"+\" or \"-\"."
+"The number mode returns to normal when entering the next non-number "
+"character, such as \"+\" or \"-\"."
 msgstr ""
-"\"+\" veya \"-\" gibi bir sonraki sayı olmayan karakter girildiğinde sayı kipi "
-"normale döner."
-
-#. (itstool) path: page/title
-#: C/trigonometry.page:9
-msgid "Trigonometry"
-msgstr "Trigonometri"
+"\"+\" veya \"-\" gibi bir sonraki sayı olmayan karakter girildiğinde sayı "
+"kipi normale döner."
 
 #. (itstool) path: page/p
 #: C/trigonometry.page:11
@@ -1579,29 +2173,51 @@ msgstr "sin 45"
 
 #. (itstool) path: page/p
 #: C/trigonometry.page:19
-msgid ""
-"To change the angle units used, press the menu button in the top-right corner of "
-"the window and select <gui style=\"menuitem\">Preferences</gui>. Trigonometry "
-"buttons are visible when in <link xref=\"mouse\">Advanced mode</link>."
+msgid "To change the angle units used, use one of the following methods:"
 msgstr ""
-"Kullanılan açı birimlerini değiştirmek için, pencerenin sağ üst köşesindeki menü "
-"düğmesine basıp <gui style=\"menuitem\">Tercihler</gui>ʼi seçin. Trigonometri "
-"düğmeleri <link xref=\"mouse\">Gelişmiş kipte</link> görünür."
+"Kullanılan açı birimlerini değiştirmek için aşağıdaki yöntemlerden birini "
+"kullanın:"
+
+#. (itstool) path: item/p
+#: C/trigonometry.page:23
+msgid ""
+"Press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>"
+msgstr ""
+"Pencerenin sağ üst köşesindeki menü düğmesine basıp <gui "
+"style=\"menuitem\">Tercihler</gui>ʼi seçin."
+
+#. (itstool) path: item/p
+#: C/trigonometry.page:25
+msgid ""
+"In <gui>advanced mode</gui> you can use the Rad/Grad/Deg toggle button to "
+"toggle between units"
+msgstr ""
+"<gui>Gelişmiş kipde</gui> birimler arasında geçiş yapmak için Rad/Grad/Deg "
+"geçiş düğmesini kullanabilirsiniz"
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:24
+#: C/trigonometry.page:28
+msgid ""
+"Trigonometry buttons are visible when in <link xref=\"mouse\">Advanced mode</"
+"link>."
+msgstr ""
+"Trigonometri düğmeleri <link xref=\"mouse\">Gelişmiş kipte</link> görünür."
+
+#. (itstool) path: page/p
+#: C/trigonometry.page:31
 msgid ""
 "Hyperbolic functions are available by adding \"h\" to the end of a function."
 msgstr ""
 "Hiperbolik fonksiyonlar, fonksiyonun sonuna \"h\" eklenerek kullanılabilir."
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:28
+#: C/trigonometry.page:35
 msgid "sinh 0.34"
 msgstr "sinh 0.34"
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:32
+#: C/trigonometry.page:39
 msgid ""
 "Inverse functions are entered either using the inverse symbol ⁻¹ "
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>) or the \"a\" form of the "
@@ -1612,41 +2228,43 @@ msgstr ""
 "denklem eşdeğerdir."
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:37
+#: C/trigonometry.page:44
 msgid "sin⁻¹ 0.5"
 msgstr "sin⁻¹ 0.5"
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:40
+#: C/trigonometry.page:47
 msgid "asin 0.5"
 msgstr "asin 0.5"
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:44
+#: C/trigonometry.page:51
 msgid ""
 "To enter <link xref=\"variable\">π</link> with the keyboard use "
 "<keyseq><key>Ctrl</key><key>P</key></keyseq>."
 msgstr ""
 "Klavye ile <link xref=\"variable\">π</link> girmek için <keyseq><key>Ctrl</"
-"key><key>P</key></keyseq> tuşlarını kullanın."
+"key><key>P</key></keyseq> kısayolunu kullanın."
 
 #. (itstool) path: page/title
 #: C/variables.page:9
-msgid "Variables"
-msgstr "Değişkenler"
+msgid "Variables and Constants"
+msgstr "Değişkenler ve Sabitler"
 
 # Parantez içi bilgi eklendi.
 #. (itstool) path: page/p
 #: C/variables.page:11
 msgid ""
 "To assign a value to a variable use the = symbol or choose the variable to "
-"assign to with the <gui>x</gui> button in <link xref=\"mouse\">advanced mode</"
-"link>. A variable name must only contain upper or lower case characters."
+"assign to with the <gui>x</gui> button in <link xref=\"mouse\">advanced "
+"mode</link>. A variable name must only contain upper or lower case "
+"characters, or underscores."
 msgstr ""
 "Değişkene değer atamak için = simgesini kullanın, ya da <link "
-"xref=\"mouse\">gelişmiş kipte</link>, <gui>x</gui> düğmesiyle atanacak değişkeni "
-"seçin. Değişken adı yalnızca büyük ya da küçük harf karakter içermelidir. "
-"(Türkçe karakterler de kullanılabilir, ancak sayı içeremez.)"
+"xref=\"mouse\">gelişmiş kipte</link>, <gui>x</gui> düğmesiyle atanacak "
+"değişkeni seçin. Değişken adı yalnızca büyük veya küçük harf karakterleri ya "
+"da alt çizgi içermelidir. (Türkçe karakterler de kullanılabilir, ancak sayı "
+"içeremez.)"
 
 #. (itstool) path: example/p
 #: C/variables.page:16
@@ -1661,11 +2279,13 @@ msgstr "örnek=82"
 #. (itstool) path: page/p
 #: C/variables.page:23
 msgid ""
-"Variables can be used in any equation and are substituted for their assigned "
-"value. Variables can be inserted using the <gui>x</gui> button."
+"Variables and constants can be used in any equation and are substituted for "
+"their assigned value. Variables and constants can be inserted using the "
+"<gui>x</gui> button."
 msgstr ""
-"Değişkenler herhangi bir denklemde kullanılabilir ve atanan değerlerinin yerine "
-"konur. <gui>x</gui> düğmesi kullanılarak değişkenler eklenebilir."
+"Değişkenler ve sabitler herhangi bir denklemde kullanılabilir ve atanan "
+"değerleriyle değiştirilir. Değişkenler ve sabitler <gui>x</gui> düğmesi "
+"kullanılarak eklenebilir."
 
 #. (itstool) path: example/p
 #: C/variables.page:28
@@ -1694,35 +2314,230 @@ msgstr "Önceki hesaplamanın sonucu"
 
 #. (itstool) path: td/p
 #: C/variables.page:44
-msgid "e"
-msgstr "e"
-
-#. (itstool) path: td/p
-#: C/variables.page:45
-msgid "<link xref=\"logarithm\">Euler's Number</link>"
-msgstr "<link xref=\"logarithm\">Euler Sayısı</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:49
-msgid "<link xref=\"trigonometry\">Pi</link>"
-msgstr "<link xref=\"trigonometry\">Pi</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:52
-msgid "τ"
-msgstr "τ"
-
-#. (itstool) path: td/p
-#: C/variables.page:53
-msgid "<link xref=\"trigonometry\">Tau</link>"
-msgstr "<link xref=\"trigonometry\">Tau</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:56
 msgid "rand"
 msgstr "rand"
 
 #. (itstool) path: td/p
-#: C/variables.page:57
+#: C/variables.page:45
 msgid "Random value in the range [0,1] (changes on each read)"
 msgstr "[0,1] aralığında rastgele değer (her okumada değişir)"
+
+#. (itstool) path: page/p
+#: C/variables.page:48
+msgid "The following constants are always defined."
+msgstr "Aşağıdaki sabitler her zaman tanımlıdır."
+
+#. (itstool) path: td/p
+#: C/variables.page:53
+msgid "Mathematics"
+msgstr "Matematik"
+
+#. (itstool) path: td/p
+#: C/variables.page:56
+msgid "e"
+msgstr "e"
+
+#. (itstool) path: td/p
+#: C/variables.page:57
+msgid "<link xref=\"logarithm\">Euler's Number</link>"
+msgstr "<link xref=\"logarithm\">Euler Sayısı</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:61
+msgid "<link xref=\"trigonometry\">Pi</link>"
+msgstr "<link xref=\"trigonometry\">Pi</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:65
+msgid "<link xref=\"trigonometry\">Tau</link>"
+msgstr "<link xref=\"trigonometry\">Tau</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:68
+msgid "φ"
+msgstr "φ"
+
+#. (itstool) path: td/p
+#: C/variables.page:69
+msgid "Golden Ratio"
+msgstr "Altın Oran"
+
+#. (itstool) path: td/p
+#: C/variables.page:72
+msgid "Electromagnetism"
+msgstr "Elektromanyetizma"
+
+#. (itstool) path: td/p
+#: C/variables.page:75
+msgid "c₀"
+msgstr "c₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:76
+msgid "Light Speed"
+msgstr "Işık Hızı"
+
+#. (itstool) path: td/p
+#: C/variables.page:79
+msgid "е"
+msgstr "е"
+
+#. (itstool) path: td/p
+#: C/variables.page:80
+msgid "Elementary Charge"
+msgstr "Temel Yük"
+
+#. (itstool) path: td/p
+#: C/variables.page:83
+msgid "Z₀"
+msgstr "Z₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:84
+msgid "Impedance of Vacuum"
+msgstr "Vakum Empedansı"
+
+#. (itstool) path: td/p
+#: C/variables.page:87
+msgid "μ₀"
+msgstr "μ₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:88
+msgid "Permeability of Vacuum"
+msgstr "Vakumun Manyetik Geçirgenliği"
+
+#. (itstool) path: td/p
+#: C/variables.page:91
+msgid "ε₀"
+msgstr "ε₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:92
+msgid "Permittivity of Vacuum"
+msgstr "Vakumum Elektriksel Geçirgenliği"
+
+#. (itstool) path: td/p
+#: C/variables.page:95
+msgid "Atomic &amp; Nuclear"
+msgstr "Atomik ve Nükleer"
+
+#. (itstool) path: td/p
+#: C/variables.page:98
+msgid "h"
+msgstr "h"
+
+#. (itstool) path: td/p
+#: C/variables.page:99
+msgid "Planck‘s Constant"
+msgstr "Planck Sabiti"
+
+#. (itstool) path: td/p
+#: C/variables.page:102
+msgid "α"
+msgstr "α"
+
+#. (itstool) path: td/p
+#: C/variables.page:103
+msgid "Fine-Structure Constant"
+msgstr "İnce Yapı Sabiti"
+
+#. (itstool) path: td/p
+#: C/variables.page:106
+msgid "mₑ"
+msgstr "mₑ"
+
+#. (itstool) path: td/p
+#: C/variables.page:107
+msgid "Electron Mass"
+msgstr "Elektron Kütlesi"
+
+#. (itstool) path: td/p
+#: C/variables.page:110
+msgid "mₚ"
+msgstr "mₚ"
+
+#. (itstool) path: td/p
+#: C/variables.page:111
+msgid "Proton Mass"
+msgstr "Proton Kütlesi"
+
+#. (itstool) path: td/p
+#: C/variables.page:114
+msgid "Thermodynamics"
+msgstr "Termodinamik"
+
+#. (itstool) path: td/p
+#: C/variables.page:117
+msgid "k"
+msgstr "k"
+
+#. (itstool) path: td/p
+#: C/variables.page:118
+msgid "Boltzmann Constant"
+msgstr "Boltzmann Sabiti"
+
+#. (itstool) path: td/p
+#: C/variables.page:121
+msgid "mᵤ"
+msgstr "mᵤ"
+
+#. (itstool) path: td/p
+#: C/variables.page:122
+msgid "Atomic Mass Unit"
+msgstr "Atomik Kütle Birimi"
+
+#. (itstool) path: td/p
+#: C/variables.page:125
+msgid "R"
+msgstr "R"
+
+#. (itstool) path: td/p
+#: C/variables.page:126
+msgid "Molar Gas Constant"
+msgstr "Molar Gaz Sabiti"
+
+#. (itstool) path: td/p
+#: C/variables.page:129
+msgid "σ"
+msgstr "σ"
+
+#. (itstool) path: td/p
+#: C/variables.page:130
+msgid "Stefan-Boltzmann Constant"
+msgstr "Stefan-Boltzmann Sabiti"
+
+#. (itstool) path: td/p
+#: C/variables.page:133
+msgid "Nᴀ"
+msgstr "Nᴀ"
+
+#. (itstool) path: td/p
+#: C/variables.page:134
+msgid "Avogadro‘s Number"
+msgstr "Avogadro Sayısı"
+
+#. (itstool) path: td/p
+#: C/variables.page:137
+msgid "Gravitation"
+msgstr "Kütleçekim"
+
+#. (itstool) path: td/p
+#: C/variables.page:140
+msgid "G"
+msgstr "G"
+
+#. (itstool) path: td/p
+#: C/variables.page:141
+msgid "Gravitational Constant"
+msgstr "Kütleçekim Sabiti"
+
+#. (itstool) path: td/p
+#: C/variables.page:144
+msgid "g"
+msgstr "g"
+
+#. (itstool) path: td/p
+#: C/variables.page:145
+msgid "Earth Acceleration"
+msgstr "Kütleçekim İvmesi"
