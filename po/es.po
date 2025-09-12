@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-09-09 17:08+0000\n"
-"PO-Revision-Date: 2025-09-11 16:58+0200\n"
+"POT-Creation-Date: 2025-09-11 14:58+0000\n"
+"PO-Revision-Date: 2025-09-12 09:15+0200\n"
 "Last-Translator: Daniel Mustieles García <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -37,8 +37,7 @@ msgstr "Calculadora"
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "Realice cálculos aritméticos, científicos o financieros"
 
-#. Translators: Search terms to find this application. Do NOT translate or
-#. localize the semicolons! The list MUST also end with a semicolon!
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/org.gnome.Calculator.desktop.in:5
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr "cálculo;aritmética;científica;financiera;"
@@ -197,8 +196,6 @@ msgstr ""
 "de la red."
 
 #: data/org.gnome.calculator.gschema.xml:73
-#, fuzzy
-#| msgid "Currency"
 msgid "Currency display"
 msgstr "Visualización de divisas"
 
@@ -211,9 +208,8 @@ msgstr ""
 "convertidor."
 
 #: data/org.gnome.calculator.gschema.xml:78
-#, fuzzy
 msgid "Enabled completions"
-msgstr "Finalizaciones habilitadas"
+msgstr "Activar completado"
 
 #: data/org.gnome.calculator.gschema.xml:79
 msgid ""
@@ -223,10 +219,8 @@ msgstr ""
 "combustión automática."
 
 #: data/org.gnome.calculator.gschema.xml:83
-#, fuzzy
-#| msgid "Defined currencies"
 msgid "Favorite currencies"
-msgstr "Monedas favoritas"
+msgstr "Divisas favoritas"
 
 #: data/org.gnome.calculator.gschema.xml:84
 msgid "The favorite currencies to be shown at the top of the currency list."
@@ -243,32 +237,28 @@ msgid "The button mode"
 msgstr "El modo botón"
 
 #: data/org.gnome.calculator.gschema.xml:93
-#, fuzzy
 msgid "Unit category"
 msgstr "Categoría de unidad"
 
 #: data/org.gnome.calculator.gschema.xml:94
-#, fuzzy
 msgid "Currently selected unit category in the converter"
-msgstr "Categoría de unidad seleccionada actualmente en el convertidor"
+msgstr "Categoría de unidad seleccionada actualmente en el conversor"
 
 #: data/org.gnome.calculator.gschema.xml:98
 msgid "Source units"
 msgstr "Unidades de origen"
 
 #: data/org.gnome.calculator.gschema.xml:99
-#, fuzzy
 msgid "Currently selected source units in the converter"
-msgstr "Unidades fuente seleccionadas actualmente en el convertidor"
+msgstr "Unidades fuente seleccionadas actualmente en el conversor"
 
 #: data/org.gnome.calculator.gschema.xml:103
 msgid "Target units"
 msgstr "Unidades de destino"
 
 #: data/org.gnome.calculator.gschema.xml:104
-#, fuzzy
 msgid "Currently selected target units in the converter"
-msgstr "Unidades objetivo seleccionadas actualmente en el convertidor"
+msgstr "Unidades objetivo seleccionadas actualmente en el conversor"
 
 #: data/org.gnome.calculator.gschema.xml:108
 msgid "Internal precision"
@@ -567,19 +557,16 @@ msgid "South African Rand"
 msgstr "Rand sudafricano"
 
 #: lib/equation-lexer.vala:464
-#, fuzzy
 msgid "Missing digits after minus sign"
-msgstr "Falta dígitos después de menos signo"
+msgstr "Falta dígitos después del signo menos"
 
 #: lib/equation-lexer.vala:562 lib/equation-lexer.vala:642
-#, fuzzy
 msgid "Missing second symbol (″)"
-msgstr "Falta el segundo símbolo (″)"
+msgstr "Falta el símbolo del segundo (″)"
 
 #: lib/equation-lexer.vala:578 lib/equation-lexer.vala:620
-#, fuzzy
 msgid "Missing minute symbol (′)"
-msgstr "Símbolo de minuto faltante (′)"
+msgstr "Falta el símbolo del minuto (′)"
 
 #: lib/equation-lexer.vala:607 lib/equation-lexer.vala:632
 #: lib/equation-lexer.vala:675 lib/equation-lexer.vala:762
@@ -623,9 +610,8 @@ msgid "Tau"
 msgstr "Tau"
 
 #: lib/equation-parser.vala:1064
-#, fuzzy
 msgid "Golden Ratio"
-msgstr "Proporción dorada"
+msgstr "Proporción áurea"
 
 #: lib/equation-parser.vala:1066
 msgid "Electromagnetism"
@@ -660,7 +646,6 @@ msgid "Planck’s Constant"
 msgstr "Constante de Planck"
 
 #: lib/equation-parser.vala:1075
-#, fuzzy
 msgid "Fine-Structure Constant"
 msgstr "Constante de estructura fina"
 
@@ -977,12 +962,11 @@ msgstr "No hay un valor bueno para almacenar"
 msgid "Unknown variable “%s”"
 msgstr "Variable «%s» desconocida"
 
-#. Error displayed to user when a currency conversion with unknown exchange
-#. rate is attempted
+#. Error displayed to user when a currency conversion with unknown exchange rate is attempted
 #: lib/math-equation.vala:1288
-#, fuzzy, c-format
+#, c-format
 msgid "Exchange rate for “%s” is not available"
-msgstr "El tipo de cambio para \"%s\" no está disponible"
+msgstr "La tasa de cambio para «%s» no está disponible"
 
 #. Error displayed to user when an conversion with unknown units is attempted
 #: lib/math-equation.vala:1295
@@ -996,8 +980,7 @@ msgstr "Unidad «%s» desconocida"
 msgid "Function “%s” is not defined"
 msgstr "La función «%s» no está definida"
 
-#. Error displayed to user when an invalid conversion (e.g. units of different
-#. categories)
+#. Error displayed to user when an invalid conversion (e.g. units of different categories)
 #: lib/math-equation.vala:1309
 msgid "Unknown conversion"
 msgstr "Conversión desconocida"
@@ -1050,8 +1033,7 @@ msgstr "El techo solo se define para números reales"
 msgid "Round is only defined for real numbers"
 msgstr "El redondeo solo se define para números reales"
 
-#. Translators: Error displayed when attempted to raise 0 to a negative
-#. re_exponent
+#. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
 #: lib/number.vala:506 lib/number.vala:536
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "La potencia de cero no está definida para un exponente negativo"
@@ -1070,8 +1052,7 @@ msgstr "El logaritmo de cero no está definido"
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "Logaritmo con base 0 o 1 no está definido"
 
-#. Translators: Error displayed when attempted take the factorial of a
-#. negative or complex number
+#. Translators: Error displayed when attempted take the factorial of a negative or complex number
 #: lib/number.vala:653
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "El factorial sólo está definido para números reales no negativos"
@@ -1081,8 +1062,7 @@ msgstr "El factorial sólo está definido para números reales no negativos"
 msgid "Division by zero is undefined"
 msgstr "La división por cero no está definida"
 
-#. Translators: Error displayed when attemping to do a modulus division on
-#. non-integer numbers
+#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
 #: lib/number.vala:725
 msgid "Modulus division is only defined for integers"
 msgstr "La división modular sólo está definida para enteros"
@@ -1105,66 +1085,56 @@ msgstr "La inversa del seno no está definida para valores fuera de [-1, 1]"
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "La inversa del coseno no está definida para valores fuera de [-1, 1]"
 
-#. Translators: Error displayed when trying to calculate undefined atan(i) or
-#. atan (-i)
+#. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
 #: lib/number.vala:859
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "La tangente inversa no está definida para los valores I y -i"
 
-#. Translators: Error displayed when inverse hyperbolic cosine value is
-#. undefined
+#. Translators: Error displayed when inverse hyperbolic cosine value is undefined
 #: lib/number.vala:910
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "La inversa del coseno hiperbólico no está definida para valores menores que "
 "uno"
 
-#. Translators: Error displayed when inverse hyperbolic tangent value is
-#. undefined
+#. Translators: Error displayed when inverse hyperbolic tangent value is undefined
 #: lib/number.vala:926
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "La inversa de la tangente hiperbólica no está definida para valores fuera de "
 "[-1, 1]"
 
-#. Translators: Error displayed when boolean AND attempted on non-integer
-#. values
+#. Translators: Error displayed when boolean AND attempted on non-integer values
 #: lib/number.vala:941
 msgid "Boolean AND is only defined for non-negative integers"
 msgstr "El AND booleano sólo está definido para números enteros positivos"
 
-#. Translators: Error displayed when boolean NAND attempted on non-integer
-#. values
+#. Translators: Error displayed when boolean NAND attempted on non-integer values
 #: lib/number.vala:954
 msgid "Boolean NAND is only defined for non-negative integers"
 msgstr "El NAND booleano sólo está definido para números enteros positivos"
 
-#. Translators: Error displayed when boolean OR attempted on non-integer
-#. values
+#. Translators: Error displayed when boolean OR attempted on non-integer values
 #: lib/number.vala:967
 msgid "Boolean OR is only defined for non-negative integers"
 msgstr "El OR booleano sólo está definido para números enteros positivos"
 
-#. Translators: Error displayed when boolean NOR attempted on non-integer
-#. values
+#. Translators: Error displayed when boolean NOR attempted on non-integer values
 #: lib/number.vala:980
 msgid "Boolean NOR is only defined for non-negative integers"
 msgstr "El NOR booleano sólo está definido para números enteros positivos"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer
-#. values
+#. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: lib/number.vala:993
 msgid "Boolean XOR is only defined for non-negative integers"
 msgstr "El XOR booleano sólo está definido para números enteros positivos"
 
-#. Translators: Error displayed when boolean XNOR attempted on non-integer
-#. values
+#. Translators: Error displayed when boolean XNOR attempted on non-integer values
 #: lib/number.vala:1006
 msgid "Boolean XNOR is only defined for non-negative integers"
 msgstr "El XOR booleano sólo está definido para números enteros positivos"
 
-#. Translators: Error displayed when boolean NOT attempted on non-integer
-#. values
+#. Translators: Error displayed when boolean NOT attempted on non-integer values
 #: lib/number.vala:1019
 msgid "Boolean NOT is only defined for non-negative integers"
 msgstr "El NOT booleano sólo está definido para números enteros positivos"
@@ -1211,10 +1181,8 @@ msgid "Greatest common divisor is only defined for integers"
 msgstr "El mayor divisor común solo se define para enteros"
 
 #: lib/number.vala:1213
-#, fuzzy
-#| msgid "Modulus division is only defined for integers"
 msgid "Least common multiple is only defined for integers"
-msgstr "El múltiplo menos común solo se define para enteros"
+msgstr "El mínimo común múltiplo solo se define para enteros"
 
 #: lib/number.vala:1270
 msgid "Median is only defined for real numbers"
@@ -1299,8 +1267,7 @@ msgstr "Presión"
 msgid "Digital Storage"
 msgstr "Almacenamiento digital"
 
-#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400
-#. grads
+#. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
 #: lib/unit.vala:43
 msgid "Degrees (Decimal)"
 msgstr "Grados (decimal)"
@@ -1625,10 +1592,9 @@ msgid "British Gallons"
 msgstr "Galones ingleses"
 
 #: lib/unit.vala:79
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "imp_gallon,imp_gallons,imp_gal"
-msgstr "imp_gallon, imp_gallons, imp_gal"
+msgstr "imp_gallon,imp_gallons,imp_gal"
 
 #: lib/unit.vala:80
 msgid "US Gallons"
@@ -1662,10 +1628,9 @@ msgid "British Pints"
 msgstr "Pintas inglesas"
 
 #: lib/unit.vala:83
-#, fuzzy
 msgctxt "unit-symbols"
 msgid "imp_pint,imp_pints,imp_pt"
-msgstr "imp_pint, imp_pints, imp_pt"
+msgstr "imp_pint,imp_pints,imp_pt"
 
 #: lib/unit.vala:84
 msgid "US Pints"
@@ -1928,8 +1893,7 @@ msgctxt "unit-symbols"
 msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
 msgstr "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
 
-#. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000
-#. bytes, and 1 KiB = 1 kibiByte = 1024 bytes
+#. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
 #: lib/unit.vala:114
 msgid "Bits"
 msgstr "Bits"
@@ -1957,8 +1921,7 @@ msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "nibble,nibbles"
 
-#. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they
-#. are widely used and accepted.
+#. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
 #: lib/unit.vala:118
 msgid "Kilobits"
 msgstr "Kilobits"
@@ -2374,10 +2337,8 @@ msgid "electronvolt,electronvolts,ev"
 msgstr "electronvoltio,electronvoltios,ev"
 
 #: lib/unit.vala:164
-#, fuzzy
-#| msgid "Pounds"
 msgid "Foot-Pounds"
-msgstr "Libras de los pies"
+msgstr "Pies-libras"
 
 #: lib/unit.vala:164
 msgctxt "unit-symbols"
@@ -2517,18 +2478,14 @@ msgid_plural "%d-bit"
 msgstr[0] "%d-bit"
 msgstr[1] "%d-bit"
 
-#. Translators: Do not translate possible mode names basic, advanced,
-#. financial, programming, keyboard and conversion
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming, keyboard and conversion
 #: src/gnome-calculator.vala:22
-#, fuzzy
-#| msgid ""
-#| "Start in given mode (basic, advanced, financial, programming, keyboard)"
 msgid ""
 "Start in given mode (basic, advanced, financial, programming, keyboard, "
 "conversion)"
 msgstr ""
-"Comience en modo dado (básico, avanzado, financiero, programación, teclado, "
-"conversión)"
+"Iniciar en el modo dado (básico, avanzado, financiero, programación, "
+"teclado, conversión)"
 
 #: src/gnome-calculator.vala:23
 msgid "Solve given equation"
@@ -2558,8 +2515,6 @@ msgstr ""
 "Germán Poo-Caamaño <gpoo@ubiobio.cl>, 2003"
 
 #: src/gnome-calculator.vala:301
-#, fuzzy
-#| msgid "Exchange rate data providers"
 msgid "Exchange Rate Data Providers"
 msgstr "Proveedores de datos de tipo de cambio"
 
@@ -2610,28 +2565,21 @@ msgid "Defined Variables"
 msgstr "Variables definidas"
 
 #: src/math-function-popover.vala:185
-#, fuzzy
 msgid "Can not use defined variable or constant names"
-msgstr "No puede usar nombres de variables o constantes definidos"
+msgstr "No pueden usar nombres de variables o constantes definidos"
 
 #: src/math-function-popover.vala:189
-#, fuzzy
 msgid "Can not use built-in function or operator names"
-msgstr "No puede usar la función incorporada u nombres de operadores"
+msgstr "No puede usar la función incorporada ni nombres de operadores"
 
 #: src/math-function-popover.vala:192
-#, fuzzy
-#| msgid "%s: Invalid variable name, can not start with a digit"
 msgid "Function name can not start with a digit"
 msgstr "El nombre de la función no puede comenzar con un dígito"
 
 #: src/math-function-popover.vala:195
-#, fuzzy
-#| msgid ""
-#| "%s: Invalid variable name, can only contain digits, letters and "
-#| "underscores"
 msgid "Function name can only contain digits, letters and underscores"
-msgstr "El nombre de la función solo puede contener dígitos, letras y subrayos"
+msgstr ""
+"El nombre de la función solo puede contener dígitos, letras y guiones bajos"
 
 #: src/math-popover.vala:110
 msgid "Edit"
@@ -2682,29 +2630,21 @@ msgid "Both"
 msgstr "Ambas"
 
 #: src/math-variable-popover.vala:216
-#, fuzzy
 msgid "Can not use defined function or operator names"
-msgstr "No puede usar la función definida u nombres de operadores"
+msgstr "No puede usar la función definida ni nombres de operadores"
 
 #: src/math-variable-popover.vala:219
-#, fuzzy
 msgid "Can not use built-in variable or constant names"
-msgstr "No puede usar nombres variables o constantes incorporados"
+msgstr "No pueden usar nombres variables o constantes incorporados"
 
 #: src/math-variable-popover.vala:222
-#, fuzzy
-#| msgid "%s: Invalid variable name, can not start with a digit"
 msgid "Variable name can not start with a digit"
 msgstr "El nombre de la variable no puede comenzar con un dígito"
 
 #: src/math-variable-popover.vala:225
-#, fuzzy
-#| msgid ""
-#| "%s: Invalid variable name, can only contain digits, letters and "
-#| "underscores"
 msgid "Variable name can only contain digits, letters and underscores"
 msgstr ""
-"El nombre de la variable solo puede contener dígitos, letras y subrayos"
+"El nombre de la variable solo puede contener dígitos, letras y guiones bajos"
 
 #: src/math-window.vala:137
 msgid "Basic"
@@ -2788,8 +2728,7 @@ msgstr "Porcentaje [%]"
 msgid "Group [()]"
 msgstr "Agrupar [()]"
 
-#. Translators: Label on the solve button (clicking this solves the displayed
-#. calculation)
+#. Translators: Label on the solve button (clicking this solves the displayed calculation)
 #: src/ui/buttons-advanced.blp:453 src/ui/buttons-basic.blp:398
 #: src/ui/buttons-financial.blp:453 src/ui/buttons-programming.blp:1858
 msgid "="
@@ -2885,8 +2824,6 @@ msgid "Change Sign"
 msgstr "Cambio de signo"
 
 #: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
-#, fuzzy
-#| msgid "Exchange rates data by %s"
 msgid "Exchange Rate Details"
 msgstr "Detalles del tipo de cambio"
 
@@ -2902,10 +2839,7 @@ msgstr "Origen"
 msgid "_Refresh Rates"
 msgstr "Tasas de _refresco"
 
-#. Translators: Calculates the number of compounding periods necessary to
-#. increase an investment of present value pv to a future value of fv, at a
-#. fixed interest rate of int per compounding period. See also:
-#. http://en.wikipedia.org/wiki/Compound_interest
+#. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
 #: src/ui/buttons-financial.blp:669
 msgid "Ctrm"
 msgstr "Trmc"
@@ -2915,9 +2849,7 @@ msgstr "Trmc"
 msgid "Compounding Term"
 msgstr "Periodo de interés compuesto"
 
-#. Translators: Calculates the depreciation allowance on an asset for a
-#. specified period of time, using the double-declining balance method. See
-#. also: http://en.wikipedia.org/wiki/Depreciation
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.blp:688
 msgid "Ddb"
 msgstr "Ddd"
@@ -2926,10 +2858,7 @@ msgstr "Ddd"
 msgid "Double Declining Depreciation"
 msgstr "Depreciación doble declinación"
 
-#. Translators: Calculates the future value of an investment based on a series
-#. of equal payments, each of amount pmt, at a periodic interest rate of int,
-#. over the number of payment periods in the term. See also:
-#. http://en.wikipedia.org/wiki/Future_value
+#. Translators: Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
 #: src/ui/buttons-financial.blp:707
 msgid "Fv"
 msgstr "VF"
@@ -2944,9 +2873,7 @@ msgstr "VF"
 msgid "Future Value"
 msgstr "Valor futuro"
 
-#. Translators: Calculates the resale price of a product, based on the product
-#. cost and the wanted gross profit margin. See also:
-#. http://en.wikipedia.org/wiki/Gross_profit_margin
+#. Translators: Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
 #: src/ui/buttons-financial.blp:726
 msgid "Gpm"
 msgstr "MIB"
@@ -2956,9 +2883,7 @@ msgstr "MIB"
 msgid "Gross Profit Margin"
 msgstr "Margen de ingresos brutos"
 
-#. Translators: Calculates the amount of the periodic payment of a loan, where
-#. payments are made at the end of each payment period. See also:
-#. http://en.wikipedia.org/wiki/Amortization_schedule
+#. Translators: Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
 #: src/ui/buttons-financial.blp:745
 msgid "Pmt"
 msgstr "Ppc"
@@ -2973,41 +2898,30 @@ msgstr "Ppc"
 msgid "Periodic Payment"
 msgstr "Pago periódico"
 
-#. Translators: Calculates the present value of an investment based on a
-#. series of equal payments, each of amount pmt, discounted at a periodic
-#. interest rate of int, over the number of payment periods in the term. See
-#. also: http://en.wikipedia.org/wiki/Present_value
+#. Translators: Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
 #: src/ui/buttons-financial.blp:764
 msgid "Pv"
 msgstr "Vp"
 
 #. Translators: Compounding Term Dialog: Label before present value input
 #. Translators: Title of Present Value dialog
-#. Translators: Periodic Interest Rate Dialog: Label before present value
-#. input
+#. Translators: Periodic Interest Rate Dialog: Label before present value input
 #: src/ui/buttons-financial.blp:767 src/ui/buttons-financial.blp:933
 #: src/ui/buttons-financial.blp:1161 src/ui/buttons-financial.blp:1257
 msgid "Present Value"
 msgstr "Valor presente"
 
-#. Translators: Calculates the periodic interest necessary to increase an
-#. investment of present value pv to a future value of fv, over the number of
-#. compounding periods in term. See also:
-#. http://en.wikipedia.org/wiki/Interest
+#. Translators: Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
 #: src/ui/buttons-financial.blp:783
 msgid "Rate"
 msgstr "Tasa"
 
-#. Translators: Compounding Term Dialog: Label before periodic interest rate
-#. input
+#. Translators: Compounding Term Dialog: Label before periodic interest rate input
 #. Translators: Future Value Dialog: Label before periodic interest rate input
-#. Translators: Periodic Payment Dialog: Label before periodic interest rate
-#. input
-#. Translators: Present Value Dialog: Label before periodic interest rate
-#. input
+#. Translators: Periodic Payment Dialog: Label before periodic interest rate input
+#. Translators: Present Value Dialog: Label before periodic interest rate input
 #. Translators: Title of Periodic Interest Rate dialog
-#. Translators: Payment Period Dialog: Label before periodic interest rate
-#. input
+#. Translators: Payment Period Dialog: Label before periodic interest rate input
 #: src/ui/buttons-financial.blp:786 src/ui/buttons-financial.blp:921
 #: src/ui/buttons-financial.blp:1039 src/ui/buttons-financial.blp:1145
 #: src/ui/buttons-financial.blp:1201 src/ui/buttons-financial.blp:1217
@@ -3015,12 +2929,7 @@ msgstr "Tasa"
 msgid "Periodic Interest Rate"
 msgstr "Tasa periódica de interés"
 
-#. Translators: Calculates the straight-line depreciation of an asset for one
-#. period. The depreciable cost is cost - salvage. The straight-line method of
-#. depreciation divides the depreciable cost evenly over the useful life of an
-#. asset. The useful life is the number of periods, typically years, over
-#. which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
+#. Translators: Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.blp:802
 msgid "Sln"
 msgstr "Dpl"
@@ -3029,13 +2938,7 @@ msgstr "Dpl"
 msgid "Straight Line Depreciation"
 msgstr "Deprecación lineal"
 
-#. Translators: Calculates the depreciation allowance on an asset for a
-#. specified period of time, using the Sum-Of-The-Years’-Digits method. This
-#. method of depreciation accelerates the rate of depreciation, so that more
-#. depreciation expense occurs in earlier periods than in later ones. The
-#. depreciable cost is cost - salvage. The useful life is the number of
-#. periods, typically years, over which an asset is depreciated. See also:
-#. http://en.wikipedia.org/wiki/Depreciation
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
 #: src/ui/buttons-financial.blp:821
 msgid "Syd"
 msgstr "Sad"
@@ -3044,10 +2947,7 @@ msgstr "Sad"
 msgid "Sum of the Years Digits Depreciation"
 msgstr "Sumatorio de los años-dígitos de deprecación"
 
-#. Translators: Calculates the number of payment periods that are necessary
-#. during the term of an ordinary annuity, to accumulate a future value of fv,
-#. at a periodic interest rate of int. Each payment is equal to amount pmt.
-#. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#. Translators: Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
 #. Translators: Periodic Payment Dialog: Label before term input
 #. Translators: Periodic Interest Rate Dialog: Label before term input
 #: src/ui/buttons-financial.blp:840 src/ui/buttons-financial.blp:1151
@@ -3097,8 +2997,7 @@ msgstr ""
 msgid "Double-Declining Depreciation"
 msgstr "Depreciación doble declinación"
 
-#. Translators: Double-Declining Depreciation Dialog: Description of
-#. calculation
+#. Translators: Double-Declining Depreciation Dialog: Description of calculation
 #: src/ui/buttons-financial.blp:972
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
@@ -3110,8 +3009,7 @@ msgstr ""
 #. Translators: Double-Declining Depreciation Dialog: Label before cost input
 #. Translators: Gross Profit Margin Dialog: Label before cost input
 #. Translators: Straight-Line Depreciation Dialog: Label before cost input
-#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before
-#. cost input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
 #: src/ui/buttons-financial.blp:977 src/ui/buttons-financial.blp:1089
 #: src/ui/buttons-financial.blp:1307 src/ui/buttons-financial.blp:1363
 msgid "Cost"
@@ -3119,17 +3017,14 @@ msgstr "Coste"
 
 #. Translators: Double-Declining Depreciation Dialog: Label before life input
 #. Translators: Straight-Line Depreciation Dialog: Label before life input
-#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before
-#. life input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
 #: src/ui/buttons-financial.blp:983 src/ui/buttons-financial.blp:1319
 #: src/ui/buttons-financial.blp:1375
 msgid "Life"
 msgstr "Vida"
 
-#. Translators: Double-Declining Depreciation Dialog: Label before period
-#. input
-#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before
-#. period input
+#. Translators: Double-Declining Depreciation Dialog: Label before period input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
 #: src/ui/buttons-financial.blp:989 src/ui/buttons-financial.blp:1381
 msgid "Period"
 msgstr "Periodo"
@@ -3218,8 +3113,7 @@ msgstr ""
 "generalmente años, en los cuales el activo se deprecia."
 
 #. Translators: Straight-Line Depreciation Dialog: Label before salvage input
-#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before
-#. salvage input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
 #: src/ui/buttons-financial.blp:1313 src/ui/buttons-financial.blp:1369
 msgid "Salvage"
 msgstr "Salvar"
@@ -3229,8 +3123,7 @@ msgstr "Salvar"
 msgid "Sum-of-the-Years’-Digits Depreciation"
 msgstr "Sumatorio de los años-dígitos de depreciación"
 
-#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of
-#. calculation
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
 #: src/ui/buttons-financial.blp:1358
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
@@ -3352,25 +3245,21 @@ msgstr "Codificación UTF-8"
 msgid "UTF-16 Encoding"
 msgstr "Codificación UTF-16"
 
-#. Translators: Insert character code dialog: Button to insert selected
-#. character
+#. Translators: Insert character code dialog: Button to insert selected character
 #: src/ui/buttons-programming.blp:2574
 msgid "_Insert"
 msgstr "_Introducir"
 
 #: src/ui/math-converter.blp:119
-#, fuzzy
-#| msgid "Exchange rate data providers"
 msgid "Exchange Rates Not Loaded"
 msgstr "Tasas de cambio no cargadas"
 
 #: src/ui/math-converter.blp:122
-#, fuzzy
 msgid ""
 "<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
 msgstr ""
-"<a href = \"r: ///\"> réplica tasas </a> o cambiar el intervalo de "
-"actualización en preferencias"
+"<a href=\"r:///\"></a> o cambie el intervalo de actualización en las "
+"preferencias"
 
 #: src/ui/math-converter.blp:141
 msgid "_Copy"
@@ -3397,10 +3286,8 @@ msgid "Favorite Currencies"
 msgstr "Divisas favoritas"
 
 #: src/ui/math-preferences.blp:20
-#, fuzzy
-#| msgid "Source currency"
 msgid "Search currencies"
-msgstr "Búsqueda de monedas"
+msgstr "Búscar divisas"
 
 #: src/ui/math-preferences.blp:36
 msgid "No Results Found"
@@ -3439,15 +3326,12 @@ msgid "E_xchange Rate Refresh Interval"
 msgstr "Intervalo de actualización del tipo de cambio"
 
 #: src/ui/math-preferences.blp:86
-#, fuzzy
-#| msgid "Currency"
 msgid "_Currency Display"
-msgstr "_Lantera"
+msgstr "_Visualización de divisas"
 
 #: src/ui/math-preferences.blp:91
-#, fuzzy
 msgid "_Show Currencies in Auto-Completion List"
-msgstr "_Cloving monedas en la lista de autocompletación"
+msgstr "_Mostrar divisas en la lista de autocompletado"
 
 #: src/ui/math-preferences.blp:96
 msgid "All"
@@ -3743,32 +3627,22 @@ msgstr "_Limpiar histórico"
 msgid "Result Format"
 msgstr "Formato del resultado"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a
-#. mnemonic that appears when pressing Alt); set result format to "automatic";
-#. other possible options are "_Fixed", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
 #: src/ui/math-window.blp:65
 msgid "_Automatic"
 msgstr "_Automático"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a
-#. mnemonic that appears when pressing Alt); set result format to "fixed";
-#. other possible options are "_Automatic", "_Scientific" and "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
 #: src/ui/math-window.blp:72
 msgid "_Fixed"
 msgstr "_Fijo"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a
-#. mnemonic that appears when pressing Alt); set result format to
-#. "scientific"; other possible options are "_Fixed", "_Automatic" and
-#. "_Engineering"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
 #: src/ui/math-window.blp:79
 msgid "_Scientific"
 msgstr "_Científico"
 
-#. Translators: entry of the Setup submenu of the hamburger menu (with a
-#. mnemonic that appears when pressing Alt); set result format to
-#. "engineering"; other possible options are "_Fixed", "_Scientific" and
-#. "_Automatic"
+#. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.blp:86
 msgid "_Engineering"
 msgstr "_Ingeniería"
