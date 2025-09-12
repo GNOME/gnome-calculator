@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2025-09-09 17:08+0000\n"
-"PO-Revision-Date: 2025-09-10 22:47+0300\n"
+"POT-Creation-Date: 2025-09-12 18:23+0000\n"
+"PO-Revision-Date: 2025-09-12 23:51+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
 "Language: fi\n"
@@ -552,7 +552,6 @@ msgstr "yksikköön"
 
 #: lib/equation-parser.vala:443
 #, c-format
-#| msgid "Function “%s” is not defined"
 msgid "Function “%s” is missing arguments"
 msgstr "Funktiolta “%s” puuttuu argumentteja"
 
@@ -573,8 +572,6 @@ msgid "Pi"
 msgstr "Pii"
 
 #: lib/equation-parser.vala:1063
-#| msgctxt "unit-symbols"
-#| msgid "au"
 msgid "Tau"
 msgstr "Tau"
 
@@ -877,25 +874,21 @@ msgstr "Vertailu (Kroneckerin delta)"
 
 #: lib/function-manager.vala:337
 #, c-format
-#| msgid "Function “%s” is not defined"
 msgid "Function “%s” takes 1 argument"
 msgstr "Funktio “%s” ottaa 1 argumentin"
 
 #: lib/function-manager.vala:355
 #, c-format
-#| msgid "Function “%s” is not defined"
 msgid "Function “%s” takes 1 or 2 arguments"
 msgstr "Funktio “%s” ottaa 1 tai 2 argumenttia"
 
 #: lib/function-manager.vala:363
 #, c-format
-#| msgid "Function “%s” is not defined"
 msgid "Function “%s” takes at least 2 arguments"
 msgstr "Funktio “%s” ottaa vähintään 2 argumenttia"
 
 #: lib/function-manager.vala:370
 #, c-format
-#| msgid "Function “%s” is not defined"
 msgid "Function “%s” takes %d argument"
 msgid_plural "Function “%s” takes %d arguments"
 msgstr[0] "Funktio “%s” ottaa %d argumentin"
@@ -1013,10 +1006,8 @@ msgid "Logarithm of zero is undefined"
 msgstr "Nollan logaritmia ei ole määritelty"
 
 #: lib/number.vala:634
-#, fuzzy
-#| msgid "Logarithm of zero is undefined"
 msgid "Logarithm with base 0 or 1 is undefined"
-msgstr "Nollan logaritmia ei ole määritelty"
+msgstr "Logaritmi, jonka kantaluku on 0 tai 1, ei ole määritelty"
 
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
 #: lib/number.vala:653
@@ -1065,52 +1056,38 @@ msgstr "Hyperbolisen tangentin käänteisarvoa ei ole määritelty muualla kuin 
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
 #: lib/number.vala:941
-#, fuzzy
-#| msgid "Boolean AND is only defined for positive integers"
 msgid "Boolean AND is only defined for non-negative integers"
-msgstr "Totuusarvo JA on määritelty vain positiivisille kokonaisluvuille"
+msgstr "Totuusarvo AND on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean NAND attempted on non-integer values
 #: lib/number.vala:954
-#, fuzzy
-#| msgid "Boolean AND is only defined for positive integers"
 msgid "Boolean NAND is only defined for non-negative integers"
-msgstr "Totuusarvo JA on määritelty vain positiivisille kokonaisluvuille"
+msgstr "Totuusarvo NAND on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
 #: lib/number.vala:967
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Boolean OR is only defined for non-negative integers"
-msgstr "Totuusarvo TAI on määritelty vain positiivisille kokonaisluvuille"
+msgstr "Totuusarvo OR on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean NOR attempted on non-integer values
 #: lib/number.vala:980
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Boolean NOR is only defined for non-negative integers"
-msgstr "Totuusarvo TAI on määritelty vain positiivisille kokonaisluvuille"
+msgstr "Totuusarvo NOR on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
 #: lib/number.vala:993
-#, fuzzy
-#| msgid "Boolean XOR is only defined for positive integers"
 msgid "Boolean XOR is only defined for non-negative integers"
 msgstr "Totuusarvo XOR on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean XNOR attempted on non-integer values
 #: lib/number.vala:1006
-#, fuzzy
-#| msgid "Boolean XOR is only defined for positive integers"
 msgid "Boolean XNOR is only defined for non-negative integers"
-msgstr "Totuusarvo XOR on määritelty vain positiivisille kokonaisluvuille"
+msgstr "Totuusarvo XNOR on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when boolean NOT attempted on non-integer values
 #: lib/number.vala:1019
-#, fuzzy
-#| msgid "Boolean NOT is only defined for positive integers"
 msgid "Boolean NOT is only defined for non-negative integers"
-msgstr "Totuusarvo EI on määritelty vain positiivisille kokonaisluvuille"
+msgstr "Totuusarvo NOT on määritelty vain positiivisille kokonaisluvuille"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
 #: lib/number.vala:1081
@@ -1122,16 +1099,12 @@ msgid "Overflow. Try a bigger word size"
 msgstr "Ylivuoto. Kokeile suurempaa sanakokoa"
 
 #: lib/number.vala:1097
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Ones’ complement is only defined for non-negative integers"
-msgstr "Totuusarvo TAI on määritelty vain positiivisille kokonaisluvuille"
+msgstr "Ykkösten komplementti on määritelty vain positiivisille kokonaisluvuille"
 
 #: lib/number.vala:1109
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
 msgid "Two’s complement is only defined for non-negative integers"
-msgstr "Totuusarvo TAI on määritelty vain positiivisille kokonaisluvuille"
+msgstr "Kahden komplementti on määritelty vain positiivisille kokonaisluvuille"
 
 #: lib/number.vala:1121
 msgid "Swap endianness is only possible on integers"
@@ -1427,10 +1400,8 @@ msgid "nanometer,nanometers,nm"
 msgstr "nanometri,nanometriä,nm"
 
 #: lib/unit.vala:64
-#, fuzzy
-#| msgid "Desktop Publishing Point"
 msgid "Desktop Publishing Points"
-msgstr "PostScript-piste"
+msgstr "Julkaisupisteet (DPP)"
 
 #: lib/unit.vala:64
 msgctxt "unit-symbols"
@@ -1505,8 +1476,6 @@ msgid "Square Miles"
 msgstr "Neliömaili"
 
 #: lib/unit.vala:72
-#| msgctxt "unit-symbols"
-#| msgid "m²"
 msgctxt "unit-symbols"
 msgid "mi²"
 msgstr "mi²"
@@ -1525,8 +1494,6 @@ msgid "Square Kilometers"
 msgstr "Neliökilometri"
 
 #: lib/unit.vala:74
-#| msgctxt "unit-symbols"
-#| msgid "m²"
 msgctxt "unit-symbols"
 msgid "km²"
 msgstr "km²"
@@ -1572,12 +1539,11 @@ msgid "British Gallons"
 msgstr "Brittiläinen gallona"
 
 #: lib/unit.vala:79
-#, fuzzy
 #| msgctxt "unit-symbols"
 #| msgid "gallon,gallons,gal"
 msgctxt "unit-symbols"
 msgid "imp_gallon,imp_gallons,imp_gal"
-msgstr "gallona,gallonaa"
+msgstr "imp_gallona,imp_gallonaa,imp_gal"
 
 #: lib/unit.vala:80
 msgid "US Gallons"
@@ -1611,12 +1577,11 @@ msgid "British Pints"
 msgstr "Brittiläinen pintti"
 
 #: lib/unit.vala:83
-#, fuzzy
 #| msgctxt "unit-symbols"
 #| msgid "pint,pints,pt"
 msgctxt "unit-symbols"
 msgid "imp_pint,imp_pints,imp_pt"
-msgstr "pint,pintiä,pt"
+msgstr "imp_pint,imp_pintiä,imp_pt"
 
 #: lib/unit.vala:84
 msgid "US Pints"
@@ -1713,24 +1678,18 @@ msgid "Milligrams"
 msgstr "Milligrammat"
 
 #: lib/unit.vala:94
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgctxt "unit-symbols"
 msgid "milligram,milligrams,milligramme,milligrammes,mg"
-msgstr "kilogramma,kilogrammaa,kilogramma,kilogrammaa,kg"
+msgstr "milligramma,milligrammaa,milligramma,milligrammaa,mg"
 
 #: lib/unit.vala:95
 msgid "Micrograms"
 msgstr "Mikrogrammat"
 
 #: lib/unit.vala:95
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgctxt "unit-symbols"
 msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
-msgstr "kilogramma,kilogrammaa,kilogramma,kilogrammaa,kg"
+msgstr "mikrogramma,mikrogrammaa,mikrogramma,mikrogrammaa,,μg,ug"
 
 #: lib/unit.vala:96
 msgid "Stone"
@@ -1854,8 +1813,6 @@ msgid "Celsius"
 msgstr "Celsius"
 
 #: lib/unit.vala:109
-#| msgctxt "unit-symbols"
-#| msgid "degC,˚C,C,c,Celsius,celsius"
 msgctxt "unit-symbols"
 msgid "degC,°C,˚C,C,c,Celsius,celsius"
 msgstr "degC,°C,˚C,C,c,Celsius,celsius"
@@ -1865,8 +1822,6 @@ msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #: lib/unit.vala:110
-#| msgctxt "unit-symbols"
-#| msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
 msgctxt "unit-symbols"
 msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
 msgstr "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
@@ -1885,8 +1840,6 @@ msgid "Rankine"
 msgstr "Rankine"
 
 #: lib/unit.vala:112
-#| msgctxt "unit-symbols"
-#| msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
 msgctxt "unit-symbols"
 msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
 msgstr "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
@@ -2312,16 +2265,13 @@ msgid "Kilocalories"
 msgstr "Kilokalorit"
 
 #: lib/unit.vala:161
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "calories,calorie,cal"
 msgctxt "unit-symbols"
 msgid "kilocalories,kilocalorie,kcal"
-msgstr "kaloria,kalori,cal"
+msgstr "kilokaloria,kalori,kcal"
 
 #: lib/unit.vala:162
 msgid "Ergs"
-msgstr ""
+msgstr "Ergit"
 
 #: lib/unit.vala:162
 msgctxt "unit-symbols"
@@ -2338,10 +2288,8 @@ msgid "electronvolt,electronvolts,ev"
 msgstr "elektronivoltti,elektronivolttia,ev"
 
 #: lib/unit.vala:164
-#, fuzzy
-#| msgid "Pounds"
 msgid "Foot-Pounds"
-msgstr "Pauna"
+msgstr "Jalkapaunat"
 
 #: lib/unit.vala:164
 msgctxt "unit-symbols"
@@ -2377,7 +2325,7 @@ msgstr "Hehtopascal,hehtopascal,hPa"
 
 #: lib/unit.vala:168
 msgid "Bars"
-msgstr ""
+msgstr "Baarit"
 
 #: lib/unit.vala:168
 msgctxt "unit-symbols"
@@ -2398,12 +2346,9 @@ msgid "Millimeters of Mercury"
 msgstr "Elohopeamillimetrit"
 
 #: lib/unit.vala:170
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "Millimetre of Mercury,millimetre of mercury,mmHg"
 msgctxt "unit-symbols"
 msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
-msgstr "Elohopeamillimetri,elohopeamillimetri,mmHg"
+msgstr "Elohopeamillimetri,elohopeamillimetri,mmmHg"
 
 #: lib/unit.vala:171
 msgid "Inches of Mercury"
@@ -2719,7 +2664,6 @@ msgid "Percentage [%]"
 msgstr "Prosentti [%]"
 
 #: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382 src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
-#| msgid "End Group [)]"
 msgid "Group [()]"
 msgstr "Ryhmä [()]"
 
@@ -2751,13 +2695,11 @@ msgstr "Eksponentti [^ tai **]"
 
 #: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560 src/ui/buttons-programming.blp:2147
 msgid "Nth Root"
-msgstr ""
+msgstr "Juuri"
 
 #: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585 src/ui/buttons-programming.blp:2216
-#, fuzzy
-#| msgid "Logarithm"
 msgid "Common Logarithm"
-msgstr "Logaritmi"
+msgstr "Kymmenkantainen logaritmi"
 
 #: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602 src/ui/buttons-programming.blp:2233
 msgid "Base-10 Exponential"
@@ -3098,35 +3040,33 @@ msgstr "Laskee maksujaksojen määrän, joka tarvitaan annuiteetin ajan kasvamaa
 
 #: src/ui/buttons-programming.blp:1904
 msgid "Bitwise AND"
-msgstr ""
+msgstr "Bittioperaatio AND"
 
 #: src/ui/buttons-programming.blp:1922
 msgid "Bitwise NAND"
-msgstr ""
+msgstr "Bittioperaatio NAND"
 
 #: src/ui/buttons-programming.blp:1941
 msgid "Bitwise OR"
-msgstr ""
+msgstr "Bittioperaatio OR"
 
 #: src/ui/buttons-programming.blp:1959
 msgid "Bitwise NOR"
-msgstr ""
+msgstr "Bittioperaatio NOR"
 
 #: src/ui/buttons-programming.blp:1977
 msgid "Bitwise NOT"
-msgstr ""
+msgstr "Bittioperaatio NOT"
 
 #: src/ui/buttons-programming.blp:1995
-#, fuzzy
 #| msgid "Boolean Exclusive OR"
 msgid "Bitwise Exclusive OR"
-msgstr "Totuusarvo Ehdoton TAI"
+msgstr "Bittioperaatio poissulkeva OR"
 
 #: src/ui/buttons-programming.blp:2013
-#, fuzzy
 #| msgid "Boolean Exclusive OR"
 msgid "Bitwise Exclusive NOR"
-msgstr "Totuusarvo Ehdoton TAI"
+msgstr "Bittioperaatio poissulkeva NOR"
 
 #: src/ui/buttons-programming.blp:2031
 msgid "Left Shift [<<]"
@@ -3149,7 +3089,6 @@ msgid "Base-2 Exponential"
 msgstr "Kaksikantainen eksponentti"
 
 #: src/ui/buttons-programming.blp:2364
-#| msgid "Pi [Ctrl+P]"
 msgid "Ceiling [Ctrl+[]]"
 msgstr "Katto [Ctrl+[]]"
 
@@ -3423,8 +3362,6 @@ msgid "Square (²)"
 msgstr "Neliöjuuri (√)"
 
 #: src/ui/math-shortcuts.blp:131
-#| msgctxt "shortcut window"
-#| msgid "Square root (√)"
 msgctxt "shortcuts dialog"
 msgid "Square Root (√)"
 msgstr "Neliöjuuri (√)"
@@ -3445,7 +3382,6 @@ msgid "Tau (τ)"
 msgstr "Tau (τ)"
 
 #: src/ui/math-shortcuts.blp:151
-#| msgid "Degrees"
 msgctxt "shortcuts dialog"
 msgid "Degree (°)"
 msgstr "Aste (°)"
@@ -3456,7 +3392,6 @@ msgid "Floor (⌊⌋)"
 msgstr "Lattia (⌊⌋)"
 
 #: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
-#| msgid "Ceiling"
 msgctxt "shortcuts dialog"
 msgid "Ceiling (⌈⌉)"
 msgstr "Katto (⌈⌉)"
