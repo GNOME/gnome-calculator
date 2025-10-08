@@ -69,7 +69,6 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
                 node = null;
         }
         /* Set some fixed rates */
-        set_ecb_fixed_rate ("BDT", "0.0099", eur_rate.get_value (), date);
         set_ecb_fixed_rate ("RSD", "0.0085", eur_rate.get_value (), date);
         set_ecb_fixed_rate ("EEK", "0.06391", eur_rate.get_value (), date);
         set_ecb_fixed_rate ("CFA", "0.00152449", eur_rate.get_value (), date);
