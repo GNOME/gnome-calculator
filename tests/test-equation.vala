@@ -727,16 +727,25 @@ private void test_equations ()
     //test ("¬¬10₂", "10₂", 0);
 }
 
-private void test_bit_shift ()
+private void test_bit_shift (int wordlength)
 {
     number_base = 10;
-    wordlen = 64;
+    wordlen = wordlength;
     test ("1«2", "4", 0);
     test ("1«2»1«2", "8", 0);
+    test ("0x1 « 0x10", "65536", 0);
+
+}
+private void test_bit_shift_64bit ()
+{
+    test_bit_shift (64);
     test ("1«35", "34359738368", 0);
     test ("1«63", "9223372036854775808", 0);
-    test ("32»3", "4", 0);
-    test ("0x1 « 0x10", "65536", 0);
+}
+
+private void test_bit_shift_32bit()
+{
+    test_bit_shift (32);
 }
 
 private void test_base_conversion ()
@@ -889,7 +898,9 @@ public int main (string[] args)
     test_base_conversion ();
     test_precedence ();
     test_custom_functions ();
-    test_bit_shift ();
+    test_bit_shift_32bit ();
+    if (sizeof(void*) == 8)
+        test_bit_shift_64bit ();
 
     if (fail_count == 0)
         stdout.printf ("Passed all %i tests\n", pass_count);
