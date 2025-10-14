@@ -6,21 +6,27 @@ include:
       dist-job-name: "flatpak"
       tarball-artifact-path: "${TARBALL_ARTIFACT_PATH}"
 
-variables:
-  FLATPAK_MODULE: 'gnome-calculator'
-  TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
-
-
-flatpak:
+.vars-devel:
   variables:
-    MANIFEST_PATH: "org.gnome.Calculator.Devel.json"
-    FLATPAK_MODULE: "gnome-calculator"
-    APP_ID: "org.gnome.Calculator.Devel"
+    FLATPAK_MODULE: 'gnome-calculator'
+    TARBALL_ARTIFACT_PATH: ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-dist/${CI_PROJECT_NAME}-${CI_COMMIT_TAG}.tar.xz"
     RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
+    APP_ID: "org.gnome.Calculator.Devel"
+    MANIFEST_PATH: "org.gnome.Calculator.Devel.json"
     BUNDLE: "gnome-calculator-dev.flatpak"
-  extends: '.flatpak'
+
+flatpak@x86_64:
+    extends: ['.flatpak@x86_64', '.vars-devel']
+
+flatpak@aarch64:
+    when: manual
+    rules:
+        - if: $CI_PROJECT_NAMESPACE == "GNOME" && $CI_COMMIT_BRANCH == "wip/aarch64-build"
+          when: always
+        - allow_failure: true
+    extends: ['.flatpak@aarch64', '.vars-devel']
+
 
 nightly:
   extends: '.publish_nightly'
-  dependencies: ['flatpak']
-  needs: ['flatpak']
+  needs: ['flatpak@x86_64']
