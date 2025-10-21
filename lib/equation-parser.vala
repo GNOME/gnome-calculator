@@ -1547,7 +1547,7 @@ public class Parser
         token = lexer.get_next_token ();
         while (token.type != LexerTokenType.PL_EOS)
         {
-            expression += token.text;
+            expression += token.type == LexerTokenType.VARIABLE ? ("(" + token.text + ")") : token.text;
             token = lexer.get_next_token ();
         }
 

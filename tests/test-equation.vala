@@ -877,6 +877,11 @@ private void test_custom_functions ()
     function_manager.delete ("add");
     test ("add(add(add(1;1);add(1;1));add(add(1;1);add(1;1)))", "8", ErrorCode.UNKNOWN_FUNCTION);
     test ("add(x;y)=x+y+1", "0", 0);
+    test ("testmod(x) = 2 mod 3", "0", 0);
+    test ("testmod(x) = x mod 3", "0", 0);
+    test ("testmod(x) = 2 mod x", "0", 0);
+    test ("testmod(x) = (x) mod 3", "0", 0);
+    test ("testmod(x) = 2 mod (x)", "0", 0);
     test ("add(add(add(1;1);add(1;1));add(add(1;1);add(1;1)))", "15", 0);
     test ("funcWithDescription(x;y;z)=x+y+z @ Description", "0", 0);
     test ("funcWithDescription(2;3;5)", "10", 0);
