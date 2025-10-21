@@ -81,6 +81,7 @@ public class CurrencyManager : Object
         default_currency_manager = new CurrencyManager ();
         default_currency_manager.currencies.append (new Currency ("AED", _("UAE Dirham"), "إ.د"));
         default_currency_manager.currencies.append (new Currency ("ARS", _("Argentine Peso"), "$"));
+        default_currency_manager.currencies.append (new Currency ("AMD", _("Armenian Dram"), "֏"));
         default_currency_manager.currencies.append (new Currency ("AUD", _("Australian Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("BDT", _("Bangladeshi Taka"), "৳"));
         default_currency_manager.currencies.append (new Currency ("BGN", _("Bulgarian Lev"), "лв"));
