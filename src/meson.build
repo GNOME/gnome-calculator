@@ -58,7 +58,6 @@ gnome_calculator_deps = [
 ]
 
 gnome_calculator_vala_flags = [
-  '--target-glib', glib_min_version,
   '--vapidir=' + meson.current_source_dir(),
   '--pkg', 'config',
   '--gresources', gnome_calculator_resource_files,

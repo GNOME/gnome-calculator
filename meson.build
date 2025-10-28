@@ -32,7 +32,7 @@ glib_min_version = '2.40.0'
 libsoup_min_version = '3.4.0'
 
 gio = dependency('gio-2.0', version: '>= ' + glib_min_version)
-glib = dependency('glib-2.0', version: '>= ' + glib_min_version)
+glib = dependency('glib-2.0', version: '>=' + glib_min_version)
 gmodule_export = dependency('gmodule-export-2.0')
 gobject = dependency('gobject-2.0', version: '>= ' + glib_min_version)
 libxml = dependency('libxml-2.0')
