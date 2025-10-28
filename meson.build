@@ -28,7 +28,7 @@ po_dir = join_paths(meson.project_source_root(), 'po')
 gcalc_vapi_dir = join_paths(meson.current_source_dir(), 'vapi')
 
 # Dependencies
-glib_min_version = '2.40.0'
+glib_min_version = '2.72.0'
 libsoup_min_version = '3.4.0'
 
 gio = dependency('gio-2.0', version: '>= ' + glib_min_version)
