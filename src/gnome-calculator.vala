@@ -260,7 +260,7 @@ public class Calculator : Adw.Application
 
     private void help_cb ()
     {
-        Gtk.show_uri (get_active_window (), "help:gnome-calculator", Gdk.CURRENT_TIME);
+        new Gtk.UriLauncher ("help:gnome-calculator").launch (get_active_window (), null);
     }
 
     private void about_cb ()
