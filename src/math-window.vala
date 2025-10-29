@@ -135,37 +135,37 @@ public class MathWindow : Adw.ApplicationWindow
         default:
         case ButtonMode.BASIC:
             menu_button.label = _("Basic");
-            this.default_width = (int) Adw.length_unit_to_px (Adw.LengthUnit.SP, 360, null);
+            this.default_width = (int) Adw.LengthUnit.SP.to_px (360, null);
             action.set_state (new Variant.string ("basic"));
             break;
 
         case ButtonMode.ADVANCED:
             menu_button.label = _("Advanced");
-            this.default_width = (int) Adw.length_unit_to_px (Adw.LengthUnit.SP, 700, null);
+            this.default_width = (int) Adw.LengthUnit.SP.to_px (700, null);
             action.set_state (new Variant.string ("advanced"));
             break;
 
         case ButtonMode.FINANCIAL:
             menu_button.label = _("Financial");
-            this.default_width = (int) Adw.length_unit_to_px (Adw.LengthUnit.SP, 700, null);
+            this.default_width = (int) Adw.LengthUnit.SP.to_px (700, null);
             action.set_state (new Variant.string ("financial"));
             break;
 
         case ButtonMode.PROGRAMMING:
             menu_button.label = _("Programming");
-            this.default_width = (int) Adw.length_unit_to_px (Adw.LengthUnit.SP, 700, null);
+            this.default_width = (int) Adw.LengthUnit.SP.to_px (700, null);
             action.set_state (new Variant.string ("programming"));
             break;
 
         case ButtonMode.KEYBOARD:
             menu_button.label = _("Keyboard");
-            this.default_width = (int) Adw.length_unit_to_px (Adw.LengthUnit.SP, 700, null);
+            this.default_width = (int) Adw.LengthUnit.SP.to_px (700, null);
             action.set_state (new Variant.string ("keyboard"));
             break;
 
         case ButtonMode.CONVERSION:
             menu_button.label = _("Conversion");
-            this.default_width = (int) Adw.length_unit_to_px (Adw.LengthUnit.SP, 360, null);
+            this.default_width = (int) Adw.LengthUnit.SP.to_px (360, null);
             action.set_state (new Variant.string ("conversion"));
             break;
         }
