@@ -938,91 +938,91 @@ public class Number : GLib.Object
         return z;
     }
 
-    /* Sets z = boolean AND for each bit in x and y */
+    /* Sets z = bitwise AND for each bit in x and y */
     public Number and (Number y)
     {
         if (!is_natural () || !y.is_natural ())
         {
-            /* Translators: Error displayed when boolean AND attempted on non-integer values */
-            error = _("Boolean AND is only defined for non-negative integers");
+            /* Translators: Error displayed when bitwise AND attempted on non-integer values */
+            error = _("Bitwise AND is only defined for non-negative integers");
             return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 & v2; }, 0);
     }
 
-    /* Sets z = boolean NAND for each bit in x and y */
+    /* Sets z = bitwise NAND for each bit in x and y */
     public Number nand (Number y, int wordlen)
     {
         if (!is_natural () || !y.is_natural ())
         {
-            /* Translators: Error displayed when boolean NAND attempted on non-integer values */
-            error = _("Boolean NAND is only defined for non-negative integers");
+            /* Translators: Error displayed when bitwise NAND attempted on non-integer values */
+            error = _("Bitwise NAND is only defined for non-negative integers");
             return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 & v2; }, wordlen).not (wordlen);
     }
 
-    /* Sets z = boolean OR for each bit in x and y */
+    /* Sets z = bitwise OR for each bit in x and y */
     public Number or (Number y)
     {
         if (!is_natural () || !y.is_natural ())
         {
-            /* Translators: Error displayed when boolean OR attempted on non-integer values */
-            error = _("Boolean OR is only defined for non-negative integers");
+            /* Translators: Error displayed when bitwise OR attempted on non-integer values */
+            error = _("Bitwise OR is only defined for non-negative integers");
             return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 | v2; }, 0);
     }
 
-    /* Sets z = boolean NOR for each bit in x and y */
+    /* Sets z = bitwise NOR for each bit in x and y */
     public Number nor (Number y, int wordlen)
     {
         if (!is_natural () || !y.is_natural ())
         {
-            /* Translators: Error displayed when boolean NOR attempted on non-integer values */
-            error = _("Boolean NOR is only defined for non-negative integers");
+            /* Translators: Error displayed when bitwise NOR attempted on non-integer values */
+            error = _("Bitwise NOR is only defined for non-negative integers");
             return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 | v2; }, wordlen).not (wordlen);
     }
 
-    /* Sets z = boolean XOR for each bit in x and y */
+    /* Sets z = bitwise XOR for each bit in x and y */
     public Number xor (Number y)
     {
         if (!is_natural () || !y.is_natural ())
         {
-            /* Translators: Error displayed when boolean XOR attempted on non-integer values */
-            error = _("Boolean XOR is only defined for non-negative integers");
+            /* Translators: Error displayed when bitwise XOR attempted on non-integer values */
+            error = _("Bitwise XOR is only defined for non-negative integers");
             return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, 0);
     }
 
-    /* Sets z = boolean XNOR for each bit in x and y */
+    /* Sets z = bitwise XNOR for each bit in x and y */
     public Number xnor (Number y, int wordlen)
     {
         if (!is_natural () || !y.is_natural ())
         {
-            /* Translators: Error displayed when boolean XNOR attempted on non-integer values */
-            error = _("Boolean XNOR is only defined for non-negative integers");
+            /* Translators: Error displayed when bitwise XNOR attempted on non-integer values */
+            error = _("Bitwise XNOR is only defined for non-negative integers");
             return new Number.integer (0);
         }
 
         return bitwise (y, (v1, v2) => { return v1 ^ v2; }, wordlen).not (wordlen);
     }
 
-    /* Sets z = boolean NOT for each bit in x for word of length 'wordlen' */
+    /* Sets z = bitwise NOT for each bit in x for word of length 'wordlen' */
     public Number not (int wordlen)
     {
         if (!is_natural ())
         {
-            /* Translators: Error displayed when boolean NOT attempted on non-integer values */
-            error = _("Boolean NOT is only defined for non-negative integers");
+            /* Translators: Error displayed when bitwise NOT attempted on non-integer values */
+            error = _("Bitwise NOT is only defined for non-negative integers");
             return new Number.integer (0);
         }
 
