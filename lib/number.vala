@@ -646,11 +646,17 @@ public class Number : GLib.Object
         if (is_zero ())
             return new Number.integer (1);
 
-        /* Factorial Not defined for Complex or for negative numbers */
-        if (is_negative () || is_complex ())
+        if (is_complex ())
         {
-            /* Translators: Error displayed when attempted take the factorial of a negative or complex number */
-            error = _("Factorial is only defined for non-negative real numbers");
+            // TODO: Support factorial of complex numbers
+            error = _("Factorial of complex numbers is not supported");
+            return new Number.integer (0);
+        }
+        /* Factorial not defined for negative integers */
+        if (is_negative () && is_integer ())
+        {
+            /* Translators: Error displayed when attempted take the factorial of a negative integer */
+            error = _("Factorial is undefined for negative integers");
             return new Number.integer (0);
         }
 
