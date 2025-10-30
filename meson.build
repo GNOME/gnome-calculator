@@ -49,6 +49,19 @@ endif
 cc = meson.get_compiler('c')
 valac = meson.get_compiler('vala')
 
+if cc.get_id() == 'gcc'
+  # Silence the most common warnings caused by the Vala generated code.
+  # VALA_STRICT_C was added in Vala 0.56.15 because GCC 14 made
+  # incompatible-pointer-types an error. We need to define it to
+  # enable -Wno-incompatible-pointer-types.
+  add_project_arguments(
+    '-Wno-discarded-qualifiers',
+    '-DVALA_STRICT_C', '-Wno-incompatible-pointer-types',
+    '-Wno-unused-variable', '-Wno-unused-but-set-variable',
+    language : 'c'
+  )
+endif
+
 libmath = cc.find_library('m')
 searchpath = []
 if get_option('libpath') != ''
