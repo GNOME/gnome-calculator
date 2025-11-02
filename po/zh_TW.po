@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: gcaltool 6.1.5\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-03-31 11:50+0000\n"
-"PO-Revision-Date: 2025-05-13 14:35+0800\n"
+"POT-Creation-Date: 2025-10-24 15:19+0000\n"
+"PO-Revision-Date: 2025-11-03 01:51+0800\n"
 "Last-Translator: Cheng-Chia Tseng <zerngjia@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <http://darkbear.mercusysddns.com/"
 "projects/gnome-45/gnome-calculator-po-ui-gnome-46/zh_Hant/>\n"
@@ -23,25 +23,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 
-#: data/org.gnome.Calculator.desktop.in:3
-#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:80
-#: src/gnome-calculator.vala:282 src/ui/math-window.ui:105
+#: data/org.gnome.Calculator.desktop.in:2
+#: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
+#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "計算機"
 
-#: data/org.gnome.Calculator.desktop.in:4
+#: data/org.gnome.Calculator.desktop.in:3
 #: data/org.gnome.Calculator.metainfo.xml.in:8
 msgid "Perform arithmetic, scientific or financial calculations"
 msgstr "進行數字、科學或財務計算"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/org.gnome.Calculator.desktop.in:6
+#: data/org.gnome.Calculator.desktop.in:5
 msgid "calculation;arithmetic;scientific;financial;"
 msgstr ""
 "calculation;arithmetic;scientific;financial;科學;金融;財務;計算;計算機;數字;"
-"數學;算數;算術;程式設計;單位轉換;轉換;單位換算;換算"
+"數學;算數;算術;程式設計;單位轉換;轉換;單位換算;換算;"
 
 #: data/org.gnome.Calculator.metainfo.xml.in:10
 msgid ""
@@ -54,11 +54,16 @@ msgstr ""
 "式、財務模式或程式設計模式，就會被它強大的功能所震撼。"
 
 #: data/org.gnome.Calculator.metainfo.xml.in:16
+#, fuzzy
+#| msgid ""
+#| "The Advanced calculator supports many operations, including: logarithms, "
+#| "factorials, trigonometric and hyperbolic functions, modulus division, "
+#| "complex numbers, random number generation, prime factorization and unit "
+#| "conversions."
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
-"complex numbers, random number generation, prime factorization and unit "
-"conversions."
+"complex numbers, random number generation and prime factorization."
 msgstr ""
 "進階模式支援許多運算方式，包含：對數、階乘、三角函數和雙曲函數、模數除法、複"
 "數、隨機數生成、質因數分解和單位換算。"
@@ -73,780 +78,1237 @@ msgstr ""
 "運算方式。"
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
+#, fuzzy
+#| msgid ""
+#| "Programming mode supports conversion between common bases (binary, octal, "
+#| "decimal, and hexadecimal), boolean algebra, one’s and two’s "
+#| "complementation, character to character code conversion, and more."
 msgid ""
-"Programming mode supports conversion between common bases (binary, octal, "
-"decimal, and hexadecimal), boolean algebra, one’s and two’s complementation, "
+"Programming mode supports calculations using common bases (binary, octal, "
+"decimal, and hexadecimal), bitwise operations, ones’ and two’s complement, "
 "character to character code conversion, and more."
 msgstr ""
 "程式設計模式支援許多常用的基礎換算（二進位、八進位、十進位和十六進位）、布林"
 "代數、一補數與二補數、字元碼換算等等。"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:39
+#: data/org.gnome.Calculator.metainfo.xml.in:32
+msgid ""
+"Conversion mode supports conversions between common units, currencies and "
+"number bases."
+msgstr ""
+
+#: data/org.gnome.Calculator.metainfo.xml.in:43
 msgid "Basic Mode"
 msgstr "基礎模式"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:43
+#: data/org.gnome.Calculator.metainfo.xml.in:47
 msgid "Advanced Mode"
 msgstr "進階模式"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:47
+#: data/org.gnome.Calculator.metainfo.xml.in:51
 msgid "Financial Mode"
 msgstr "金融模式"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:51
+#: data/org.gnome.Calculator.metainfo.xml.in:55
 msgid "Programming Mode"
 msgstr "程式設計模式"
 
-#: data/org.gnome.Calculator.metainfo.xml.in:55
+#: data/org.gnome.Calculator.metainfo.xml.in:59
 msgid "Keyboard Mode"
 msgstr "鍵盤模式"
 
+#: data/org.gnome.Calculator.metainfo.xml.in:63
+#, fuzzy
+#| msgid "Conversion"
+msgid "Conversion Mode"
+msgstr "換算"
+
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:76 src/gnome-calculator.vala:284
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
 msgid "The GNOME Project"
 msgstr "GNOME 專案"
 
-#: data/org.gnome.calculator.gschema.xml:26
+#: data/org.gnome.calculator.gschema.xml:31
 msgid "Accuracy value"
 msgstr "精確度數值"
 
-#: data/org.gnome.calculator.gschema.xml:27
+#: data/org.gnome.calculator.gschema.xml:32
 msgid "The number of digits displayed after the numeric point"
 msgstr "小數點後要顯示的位數"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:37
 msgid "Word size"
 msgstr "字組長度"
 
-#: data/org.gnome.calculator.gschema.xml:33
+#: data/org.gnome.calculator.gschema.xml:38
 msgid "The size of the words used in bitwise operations"
 msgstr "在位元運算使用的字組大小"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:43
 msgid "Numeric Base"
 msgstr "數基"
 
-#: data/org.gnome.calculator.gschema.xml:39
+#: data/org.gnome.calculator.gschema.xml:44
 msgid "The numeric base"
 msgstr "數字基底"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "Show Thousands Separators"
 msgstr "顯示千分位符號"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:49
 msgid "Indicates whether thousands separators are shown in large numbers."
 msgstr "表示在大數字上是否顯示千分位符號。"
 
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Show Trailing Zeroes"
 msgstr "顯示末端的 0"
 
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:54
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr "表示在顯示的數值中是否要顯示小數點後的 0。"
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Number format"
 msgstr "數字格式"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "The format to display numbers in"
 msgstr "顯示數字所用的格式"
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Angle units"
 msgstr "角度單位"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:64
 msgid "The angle units to use"
 msgstr "要使用的角度單位"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Currency update interval"
 msgstr "匯率更新週期"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:69
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
 msgstr "匯率更新的頻率。數值為 0 表示永不從網路更新匯率。"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:73
+#, fuzzy
+#| msgid "Currency"
+msgid "Currency display"
+msgstr "貨幣"
+
+#: data/org.gnome.calculator.gschema.xml:74
+msgid ""
+"Indicates whether to show currency code, currency name or both of them in "
+"the converter."
+msgstr ""
+
+#: data/org.gnome.calculator.gschema.xml:78
+msgid "Enabled completions"
+msgstr ""
+
+#: data/org.gnome.calculator.gschema.xml:79
+msgid ""
+"The types of completion proposals to be shown in the auto-completion list."
+msgstr ""
+
+#: data/org.gnome.calculator.gschema.xml:83
+#, fuzzy
+#| msgid "Defined currencies"
+msgid "Favorite currencies"
+msgstr "定義貨幣"
+
+#: data/org.gnome.calculator.gschema.xml:84
+msgid "The favorite currencies to be shown at the top of the currency list."
+msgstr ""
+
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Button mode"
 msgstr "模式按鈕"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:89
 msgid "The button mode"
 msgstr "模式的按鈕"
 
-#: data/org.gnome.calculator.gschema.xml:73
-msgid "Source currency"
-msgstr "來源貨幣"
+#: data/org.gnome.calculator.gschema.xml:93
+msgid "Unit category"
+msgstr ""
 
-#: data/org.gnome.calculator.gschema.xml:74
-msgid "Currency of the current calculation"
-msgstr "目前的貨幣"
+#: data/org.gnome.calculator.gschema.xml:94
+msgid "Currently selected unit category in the converter"
+msgstr ""
 
-#: data/org.gnome.calculator.gschema.xml:78
-msgid "Target currency"
-msgstr "目標貨幣"
-
-#: data/org.gnome.calculator.gschema.xml:79
-msgid "Currency to convert the current calculation into"
-msgstr "要換算的貨幣"
-
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Source units"
 msgstr "來源單位"
 
-#: data/org.gnome.calculator.gschema.xml:84
-msgid "Units of the current calculation"
-msgstr "目前的單位"
+#: data/org.gnome.calculator.gschema.xml:99
+msgid "Currently selected source units in the converter"
+msgstr ""
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Target units"
 msgstr "目標單位"
 
-#: data/org.gnome.calculator.gschema.xml:89
-msgid "Units to convert the current calculation into"
-msgstr "要換算的單位"
+#: data/org.gnome.calculator.gschema.xml:104
+msgid "Currently selected target units in the converter"
+msgstr ""
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Internal precision"
 msgstr "內部精度"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "The internal precision used with the MPFR library"
 msgstr "MPFR 函式庫使用的內部精度"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Window position"
 msgstr "視窗位置"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Window position (x and y) of the last closed window."
 msgstr "最後開關視窗的視窗位置（x 與 y）。"
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Window maximized"
 msgstr "視窗最大化"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "Whether the last closed window was maximized."
 msgstr "最後關閉的視窗是否最大化。"
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window size"
 msgstr "視窗大小"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window size (width and height) of the last closed window."
 msgstr "最後開關視窗的視窗位置（寬度與高度）。"
 
-#: lib/currency.vala:64
+#: lib/currency.vala:82
 msgid "UAE Dirham"
 msgstr "阿聯迪拉姆"
 
-#: lib/currency.vala:65
+#: lib/currency.vala:83
 msgid "Argentine Peso"
 msgstr "阿根廷披索"
 
-#: lib/currency.vala:66
+#: lib/currency.vala:84
 msgid "Australian Dollar"
 msgstr "澳洲元"
 
-#: lib/currency.vala:67
+#: lib/currency.vala:85
 msgid "Bangladeshi Taka"
 msgstr "孟加拉塔卡"
 
-#: lib/currency.vala:68
+#: lib/currency.vala:86
 msgid "Bulgarian Lev"
 msgstr "保加利亞列弗"
 
-#: lib/currency.vala:69
+#: lib/currency.vala:87
 msgid "Bahraini Dinar"
 msgstr "巴林第納爾"
 
-#: lib/currency.vala:70
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "汶萊元"
 
-#: lib/currency.vala:71
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "巴西雷亞爾"
 
-#: lib/currency.vala:72
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "波札那普拉"
 
-#: lib/currency.vala:73
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "加拿大元"
 
-#: lib/currency.vala:74
+#: lib/currency.vala:92
 msgid "CFA Franc"
 msgstr "非洲法郎"
 
-#: lib/currency.vala:75
+#: lib/currency.vala:93
 msgid "Swiss Franc"
 msgstr "瑞士法郎"
 
-#: lib/currency.vala:76
+#: lib/currency.vala:94
 msgid "Chilean Peso"
 msgstr "智利披索"
 
-#: lib/currency.vala:77
+#: lib/currency.vala:95
 msgid "Chinese Yuan"
 msgstr "人民幣"
 
-#: lib/currency.vala:78
+#: lib/currency.vala:96
 msgid "Colombian Peso"
 msgstr "哥倫比亞披索"
 
-#: lib/currency.vala:79
+#: lib/currency.vala:97
 msgid "Czech Koruna"
 msgstr "捷克克朗"
 
-#: lib/currency.vala:80
+#: lib/currency.vala:98
 msgid "Danish Krone"
 msgstr "丹麥克朗"
 
-#: lib/currency.vala:81
+#: lib/currency.vala:99
 msgid "Algerian Dinar"
 msgstr "阿爾及利亞第納爾"
 
-#: lib/currency.vala:82
+#: lib/currency.vala:100
 msgid "Estonian Kroon"
 msgstr "愛沙尼亞克朗"
 
-#: lib/currency.vala:83
+#: lib/currency.vala:101
+msgid "Egyptian Pound"
+msgstr ""
+
+#: lib/currency.vala:102
 msgid "Euro"
 msgstr "歐元"
 
-#: lib/currency.vala:84
+#: lib/currency.vala:103
 msgid "British Pound Sterling"
 msgstr "英鎊"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:104
 msgid "Hong Kong Dollar"
 msgstr "港幣"
 
-#: lib/currency.vala:86
+#: lib/currency.vala:105
 msgid "Croatian Kuna"
 msgstr "克羅埃西亞庫納"
 
-#: lib/currency.vala:87
+#: lib/currency.vala:106
 msgid "Hungarian Forint"
 msgstr "匈牙利福林"
 
-#: lib/currency.vala:88
+#: lib/currency.vala:107
 msgid "Indonesian Rupiah"
 msgstr "印度尼西亞盧比"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:108
 msgid "Israeli New Shekel"
 msgstr "以色列新謝克爾"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:109
 msgid "Indian Rupee"
 msgstr "印度盧比"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:110
 msgid "Iranian Rial"
 msgstr "伊朗里亞爾"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:111
 msgid "Icelandic Krona"
 msgstr "冰島克朗"
 
-#: lib/currency.vala:93
+#: lib/currency.vala:112
 msgid "Japanese Yen"
 msgstr "日圓"
 
-#: lib/currency.vala:94
+#: lib/currency.vala:113
 msgid "Jamaican Dollar"
 msgstr "牙買加元"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:114
 msgid "South Korean Won"
 msgstr "韓圓"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:115
 msgid "Kuwaiti Dinar"
 msgstr "科威特第納爾"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:116
 msgid "Kazakhstani Tenge"
 msgstr "哈薩克堅戈"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:117
 msgid "Sri Lankan Rupee"
 msgstr "斯里蘭卡盧比"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:118
 msgid "Libyan Dinar"
 msgstr "利比亞第納爾"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:119
 msgid "Mauritian Rupee"
 msgstr "模里西斯盧比"
 
-#: lib/currency.vala:101
+#: lib/currency.vala:120
 msgid "Mexican Peso"
 msgstr "墨西哥披索"
 
-#: lib/currency.vala:102
+#: lib/currency.vala:121
 msgid "Malaysian Ringgit"
 msgstr "馬來西亞令吉"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:122
 msgid "Nigerian Naira"
 msgstr "奈及利亞奈拉"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:123
 msgid "Norwegian Krone"
 msgstr "挪威克朗"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:124
 msgid "Nepalese Rupee"
 msgstr "尼泊爾盧比"
 
-#: lib/currency.vala:106
+#: lib/currency.vala:125
 msgid "New Zealand Dollar"
 msgstr "紐西蘭元"
 
-#: lib/currency.vala:107
+#: lib/currency.vala:126
 msgid "Omani Rial"
 msgstr "阿曼里亞爾"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:127
 msgid "Peruvian Nuevo Sol"
 msgstr "秘魯新索爾"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:128
 msgid "Philippine Peso"
 msgstr "菲律賓披索"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:129
 msgid "Pakistani Rupee"
 msgstr "巴基斯坦盧比"
 
-#: lib/currency.vala:111
-msgid "Polish Zloty"
+#: lib/currency.vala:130
+#, fuzzy
+#| msgid "Polish Zloty"
+msgid "Polish Złoty"
 msgstr "波蘭茲羅提"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:131
 msgid "Qatari Riyal"
 msgstr "卡達里亞爾"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:132
 msgid "New Romanian Leu"
 msgstr "羅馬尼亞列伊"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:133
 msgid "Russian Ruble"
 msgstr "俄羅斯盧布"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:134
 msgid "Saudi Riyal"
 msgstr "沙烏地里亞爾"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:135
 msgid "Serbian Dinar"
 msgstr "阿爾及利亞第納爾"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:136
 msgid "Swedish Krona"
 msgstr "瑞典克朗"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:137
 msgid "Singapore Dollar"
 msgstr "新加坡元"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:138
 msgid "Thai Baht"
 msgstr "泰銖"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:139
 msgid "Tunisian Dinar"
 msgstr "突尼西亞第納爾"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:140
 msgid "Turkish Lira"
 msgstr "土耳其里拉"
 
-#: lib/currency.vala:122
-msgid "T&T Dollar (TTD)"
+#: lib/currency.vala:141
+#, fuzzy
+#| msgid "T&T Dollar (TTD)"
+msgid "T&T Dollar"
 msgstr "千里達及托巴哥元 (TTD)"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:142
 msgid "New Taiwan Dollar"
 msgstr "新臺幣"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:143
 msgid "Ukrainian Hryvnia"
 msgstr "烏克蘭格里夫納"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:144
 msgid "US Dollar"
 msgstr "美元"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:145
 msgid "Uruguayan Peso"
 msgstr "烏拉圭披索"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:146
 msgid "Vietnamese Dong"
 msgstr "越南盾"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:147
 msgid "South African Rand"
 msgstr "南非鍰"
 
-#: lib/currency-provider.vala:224
-msgid "International Monetary Fund"
-msgstr "國際貨幣基金組織"
+#: lib/equation-lexer.vala:464
+msgid "Missing digits after minus sign"
+msgstr ""
 
-#: lib/currency-provider.vala:433
-msgid "European Central Bank"
-msgstr "歐洲央行"
+#: lib/equation-lexer.vala:562 lib/equation-lexer.vala:642
+msgid "Missing second symbol (″)"
+msgstr ""
 
-#: lib/currency-provider.vala:544
-msgid "Bank of Canada"
-msgstr "加拿大銀行"
+#: lib/equation-lexer.vala:578 lib/equation-lexer.vala:620
+msgid "Missing minute symbol (′)"
+msgstr ""
 
-#: lib/currency-provider.vala:612
-msgid "United Nations Treasury"
-msgstr "聯合國財政部"
+#: lib/equation-lexer.vala:607 lib/equation-lexer.vala:632
+#: lib/equation-lexer.vala:675 lib/equation-lexer.vala:762
+msgid "Missing digits after decimal point"
+msgstr ""
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
 msgid "in"
 msgstr "換算為"
 
-#: lib/equation-lexer.vala:734
+#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: src/math-popover.vala:14
 msgid "to"
 msgstr "換算為"
 
-#: lib/equation-parser.vala:735 lib/number.vala:434
+#: lib/equation-parser.vala:443
+#, fuzzy, c-format
+#| msgid "Function “%s” is not defined"
+msgid "Function “%s” is missing arguments"
+msgstr "尚未定義函數「%s」"
+
+#: lib/equation-parser.vala:765 lib/number.vala:568
 msgid "The zeroth root of a number is undefined"
 msgstr "數字的零次方根沒有定義"
+
+#: lib/equation-parser.vala:1060
+msgid "Mathematics"
+msgstr ""
+
+#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+msgid "Euler’s Number"
+msgstr "歐拉數"
+
+#: lib/equation-parser.vala:1062
+msgid "Pi"
+msgstr ""
+
+#: lib/equation-parser.vala:1063
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "au"
+msgid "Tau"
+msgstr "au,天文單位"
+
+#: lib/equation-parser.vala:1064
+msgid "Golden Ratio"
+msgstr ""
+
+#: lib/equation-parser.vala:1066
+msgid "Electromagnetism"
+msgstr ""
+
+#: lib/equation-parser.vala:1067
+#, fuzzy
+#| msgid "Light Years"
+msgid "Light Speed"
+msgstr "光年"
+
+#: lib/equation-parser.vala:1068
+msgid "Elementary Charge"
+msgstr ""
+
+#: lib/equation-parser.vala:1069
+msgid "Impedance of Vacuum"
+msgstr ""
+
+#: lib/equation-parser.vala:1070
+msgid "Permeability of Vacuum"
+msgstr ""
+
+#: lib/equation-parser.vala:1071
+msgid "Permittivity of Vacuum"
+msgstr ""
+
+#: lib/equation-parser.vala:1073
+msgid "Atomic & Nuclear"
+msgstr ""
+
+#: lib/equation-parser.vala:1074
+msgid "Planck’s Constant"
+msgstr ""
+
+#: lib/equation-parser.vala:1075
+msgid "Fine-Structure Constant"
+msgstr ""
+
+#: lib/equation-parser.vala:1076
+msgid "Electron Mass"
+msgstr ""
+
+#: lib/equation-parser.vala:1077
+msgid "Proton Mass"
+msgstr ""
+
+#: lib/equation-parser.vala:1079
+msgid "Thermodynamics"
+msgstr ""
+
+#: lib/equation-parser.vala:1080
+msgid "Boltzmann Constant"
+msgstr ""
+
+#: lib/equation-parser.vala:1081
+#, fuzzy
+#| msgid "Astronomical Units"
+msgid "Atomic Mass Unit"
+msgstr "天文單位"
+
+#: lib/equation-parser.vala:1082
+msgid "Molar Gas Constant"
+msgstr ""
+
+#: lib/equation-parser.vala:1083
+msgid "Stefan-Boltzmann Constant"
+msgstr ""
+
+#: lib/equation-parser.vala:1084
+#, fuzzy
+#| msgid "Euler’s Number"
+msgid "Avogadro’s Number"
+msgstr "歐拉數"
+
+#: lib/equation-parser.vala:1086
+#, fuzzy
+#| msgid "Duration"
+msgid "Gravitation"
+msgstr "時間"
+
+#: lib/equation-parser.vala:1087
+#, fuzzy
+#| msgid "Fractional Component"
+msgid "Gravitational Constant"
+msgstr "小數部分"
+
+#: lib/equation-parser.vala:1088
+msgid "Earth Acceleration"
+msgstr ""
 
 #: lib/financial.vala:114
 msgid "Error: the number of periods must be positive"
 msgstr "錯誤：週期數必須為正"
 
-#: lib/function-manager.vala:48 src/ui/buttons-advanced.ui:692
-#: src/ui/buttons-financial.ui:990 src/ui/buttons-programming.ui:1951
-msgid "Logarithm"
-msgstr "對數"
+#: lib/function-manager.vala:26
+#, fuzzy
+#| msgid "Trigonometric type"
+msgid "Trigonometry"
+msgstr "三角函數類型"
 
-#: lib/function-manager.vala:50
-msgid "Natural logarithm"
-msgstr "自然對數"
-
-#: lib/function-manager.vala:52
-msgid "Square root"
-msgstr "平方根"
-
-#: lib/function-manager.vala:54
-msgid "Absolute value"
-msgstr "絕對值"
-
-#: lib/function-manager.vala:56
-msgid "Signum"
-msgstr "符號"
-
-#: lib/function-manager.vala:58
-msgid "Argument"
-msgstr "引數"
-
-#: lib/function-manager.vala:60
-msgid "Conjugate"
-msgstr "共軛"
-
-#: lib/function-manager.vala:62
-msgid "Integer"
-msgstr "整數"
-
-#: lib/function-manager.vala:64
-msgid "Fraction"
-msgstr "分數"
-
-#: lib/function-manager.vala:66
-msgid "Floor"
-msgstr "下限"
-
-#: lib/function-manager.vala:68
-msgid "Ceiling"
-msgstr "上限"
-
-#: lib/function-manager.vala:70
-msgid "Round"
-msgstr "四捨五入"
-
-#: lib/function-manager.vala:72
-msgid "Real"
-msgstr "真"
-
-#: lib/function-manager.vala:74
-msgid "Imaginary"
-msgstr "假想"
-
-#: lib/function-manager.vala:76 src/ui/buttons-advanced.ui:538
+#: lib/function-manager.vala:27 src/ui/buttons-advanced.blp:499
 msgid "Sine"
 msgstr "正弦"
 
-#: lib/function-manager.vala:78 src/ui/buttons-advanced.ui:522
+#: lib/function-manager.vala:28 src/ui/buttons-advanced.blp:573
 msgid "Cosine"
 msgstr "餘弦"
 
-#: lib/function-manager.vala:80 src/ui/buttons-advanced.ui:554
+#: lib/function-manager.vala:29 src/ui/buttons-advanced.blp:647
 msgid "Tangent"
 msgstr "正切"
 
-#: lib/function-manager.vala:82
-msgid "Arc sine"
-msgstr "反正弦"
-
-#: lib/function-manager.vala:84
-msgid "Arc cosine"
-msgstr "反餘弦"
-
-#: lib/function-manager.vala:86
-msgid "Arc tangent"
-msgstr "反正切"
-
-#: lib/function-manager.vala:88
-msgid "Inverse sine"
+#: lib/function-manager.vala:30 lib/function-manager.vala:115
+#: src/ui/buttons-advanced.blp:517
+#, fuzzy
+#| msgid "Inverse sine"
+msgid "Inverse Sine"
 msgstr "反轉正弦"
 
-#: lib/function-manager.vala:90
-msgid "Inverse cosine"
+#: lib/function-manager.vala:31 lib/function-manager.vala:116
+#: src/ui/buttons-advanced.blp:591
+#, fuzzy
+#| msgid "Inverse cosine"
+msgid "Inverse Cosine"
 msgstr "反轉餘弦"
 
-#: lib/function-manager.vala:92
-msgid "Inverse tangent"
+#: lib/function-manager.vala:32 lib/function-manager.vala:117
+#: src/ui/buttons-advanced.blp:665
+#, fuzzy
+#| msgid "Inverse tangent"
+msgid "Inverse Tangent"
 msgstr "反轉正切"
 
-#: lib/function-manager.vala:94
-msgid "Hyperbolic sine"
+#: lib/function-manager.vala:33 src/ui/buttons-advanced.blp:536
+msgid "Hyperbolic Sine"
 msgstr "雙曲正弦"
 
-#: lib/function-manager.vala:96
-msgid "Hyperbolic cosine"
+#: lib/function-manager.vala:34 src/ui/buttons-advanced.blp:610
+msgid "Hyperbolic Cosine"
 msgstr "雙曲餘弦"
 
-#: lib/function-manager.vala:98
-msgid "Hyperbolic tangent"
+#: lib/function-manager.vala:35 src/ui/buttons-advanced.blp:684
+msgid "Hyperbolic Tangent"
 msgstr "雙曲正切"
 
-#: lib/function-manager.vala:100
-msgid "Hyperbolic arcsine"
-msgstr "雙曲反正弦"
-
-#: lib/function-manager.vala:102
-msgid "Hyperbolic arccosine"
-msgstr "雙曲反餘弦"
-
-#: lib/function-manager.vala:104
-msgid "Hyperbolic arctangent"
-msgstr "雙曲反正切"
-
-#: lib/function-manager.vala:106
-msgid "Inverse hyperbolic sine"
+#: lib/function-manager.vala:36 lib/function-manager.vala:118
+#: src/ui/buttons-advanced.blp:554
+#, fuzzy
+#| msgid "Inverse hyperbolic sine"
+msgid "Inverse Hyperbolic Sine"
 msgstr "反雙曲正弦"
 
-#: lib/function-manager.vala:108
-msgid "Inverse hyperbolic cosine"
+#: lib/function-manager.vala:37 lib/function-manager.vala:119
+#: src/ui/buttons-advanced.blp:628
+#, fuzzy
+#| msgid "Inverse hyperbolic cosine"
+msgid "Inverse Hyperbolic Cosine"
 msgstr "反雙曲餘弦"
 
-#: lib/function-manager.vala:110
-msgid "Inverse hyperbolic tangent"
+#: lib/function-manager.vala:38 lib/function-manager.vala:120
+#: src/ui/buttons-advanced.blp:702
+#, fuzzy
+#| msgid "Inverse hyperbolic tangent"
+msgid "Inverse Hyperbolic Tangent"
 msgstr "反雙曲正切"
 
-#: lib/function-manager.vala:112
-msgid "One's complement"
+#: lib/function-manager.vala:40
+#, fuzzy
+#| msgid "Complex Argument"
+msgid "Complex"
+msgstr "複數輻角"
+
+#: lib/function-manager.vala:41 src/ui/buttons-advanced.blp:932
+msgid "Complex Conjugate"
+msgstr "共軛複數"
+
+#: lib/function-manager.vala:42 src/ui/buttons-advanced.blp:949
+msgid "Complex Argument"
+msgstr "複數輻角"
+
+#: lib/function-manager.vala:43 src/ui/buttons-advanced.blp:966
+msgid "Real Component"
+msgstr "實數部分"
+
+#: lib/function-manager.vala:44 src/ui/buttons-advanced.blp:983
+msgid "Imaginary Component"
+msgstr "虛數部分"
+
+#: lib/function-manager.vala:46 src/math-window.vala:155
+msgid "Programming"
+msgstr "程式設計模式"
+
+#: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
+#, fuzzy
+#| msgid "One’s Complement"
+msgid "Ones’ Complement"
 msgstr "1 的補數"
 
-#: lib/function-manager.vala:114
-msgid "Two's complement"
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
+msgid "Two’s Complement"
 msgstr "2 的補數"
 
-#. Message displayed when cannot toggle bit in display
-#: lib/math-equation.vala:74 lib/math-equation.vala:1468
-msgid "Displayed value not an integer"
-msgstr "顯示的數值不是整數值"
+#: lib/function-manager.vala:49
+msgid "Swap Endianness"
+msgstr ""
+
+#: lib/function-manager.vala:50 src/ui/buttons-advanced.blp:403
+#: src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
+#: src/ui/buttons-programming.blp:1808
+msgid "Modulus Divide"
+msgstr "餘數除法"
+
+#: lib/function-manager.vala:51
+msgid "Modular Exponentiation"
+msgstr ""
+
+#: lib/function-manager.vala:53
+#, fuzzy
+#| msgid "Round"
+msgid "Rounding"
+msgstr "四捨五入"
+
+#: lib/function-manager.vala:54
+msgid "Round"
+msgstr "四捨五入"
+
+#: lib/function-manager.vala:55
+msgid "Floor"
+msgstr "下限"
+
+#: lib/function-manager.vala:56
+msgid "Ceiling"
+msgstr "上限"
+
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
+msgid "Integer Component"
+msgstr "整數部分"
+
+#: lib/function-manager.vala:58 src/ui/buttons-programming.blp:2348
+msgid "Fractional Component"
+msgstr "小數部分"
+
+#: lib/function-manager.vala:60
+msgid "Statistics"
+msgstr ""
+
+#: lib/function-manager.vala:61
+#, fuzzy
+#| msgid "Signum"
+msgid "Sum"
+msgstr "符號"
+
+#: lib/function-manager.vala:62
+msgid "Sum of Squares"
+msgstr ""
+
+#: lib/function-manager.vala:63
+msgid "Average"
+msgstr ""
+
+#: lib/function-manager.vala:64
+#, fuzzy
+#| msgid "Radians"
+msgid "Median"
+msgstr "弧度"
+
+#: lib/function-manager.vala:65
+msgid "Minimum Value"
+msgstr ""
+
+#: lib/function-manager.vala:66
+msgid "Maximum Value"
+msgstr ""
+
+#: lib/function-manager.vala:67
+msgid "Sample Standard Deviation"
+msgstr ""
+
+#: lib/function-manager.vala:68
+msgid "Population Standard Deviation"
+msgstr ""
+
+#: lib/function-manager.vala:69
+msgid "Sample Variance"
+msgstr ""
+
+#: lib/function-manager.vala:70
+msgid "Population Variance"
+msgstr ""
+
+#: lib/function-manager.vala:72
+msgid "Sundry"
+msgstr ""
+
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:806
+#: src/ui/buttons-programming.blp:2171
+msgid "Logarithm"
+msgstr "對數"
+
+#: lib/function-manager.vala:74 src/ui/buttons-advanced.blp:892
+#: src/ui/buttons-financial.blp:626
+msgid "Natural Logarithm"
+msgstr "自然對數"
+
+#: lib/function-manager.vala:75
+#, fuzzy
+#| msgid "Square root"
+msgid "Square Root"
+msgstr "平方根"
+
+#: lib/function-manager.vala:76
+#, fuzzy
+#| msgid "Absolute value"
+msgid "Absolute Value"
+msgstr "絕對值"
+
+#: lib/function-manager.vala:77
+msgid "Signum"
+msgstr "符號"
+
+#: lib/function-manager.vala:78
+msgid "Combination"
+msgstr ""
+
+#: lib/function-manager.vala:79
+#, fuzzy
+#| msgid "Duration"
+msgid "Permutation"
+msgstr "時間"
+
+#: lib/function-manager.vala:80
+msgid "Greatest Common Divisor"
+msgstr ""
+
+#: lib/function-manager.vala:81
+msgid "Least Common Multiple"
+msgstr ""
+
+#: lib/function-manager.vala:82
+msgid "Comparison (Kronecker Delta)"
+msgstr ""
+
+#: lib/function-manager.vala:337
+#, fuzzy, c-format
+#| msgid "Function “%s” is not defined"
+msgid "Function “%s” takes 1 argument"
+msgstr "尚未定義函數「%s」"
+
+#: lib/function-manager.vala:355
+#, fuzzy, c-format
+#| msgid "Function “%s” is not defined"
+msgid "Function “%s” takes 1 or 2 arguments"
+msgstr "尚未定義函數「%s」"
+
+#: lib/function-manager.vala:363
+#, fuzzy, c-format
+#| msgid "Function “%s” is not defined"
+msgid "Function “%s” takes at least 2 arguments"
+msgstr "尚未定義函數「%s」"
+
+#: lib/function-manager.vala:370
+#, fuzzy, c-format
+#| msgid "Function “%s” is not defined"
+msgid "Function “%s” takes %d argument"
+msgid_plural "Function “%s” takes %d arguments"
+msgstr[0] "尚未定義函數「%s」"
 
 #. Digits localized for the given language
-#: lib/math-equation.vala:217
+#: lib/math-equation.vala:181
 msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:585
+#: lib/math-equation.vala:554
 msgid "No undo history"
 msgstr "沒有還原紀錄"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:606
+#: lib/math-equation.vala:575
 msgid "No redo history"
 msgstr "沒有重做紀錄"
 
-#: lib/math-equation.vala:837
+#: lib/math-equation.vala:822
 msgid "No sane value to store"
 msgstr "沒有正常數值可以儲存"
 
-#. Error displayed to user when they perform a bitwise operation on numbers greater than the current word
-#: lib/math-equation.vala:1158
-msgid "Overflow. Try a bigger word size"
-msgstr "溢位；請嘗試更大的字組大小"
-
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1163
+#: lib/math-equation.vala:1281
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "不明的變數「%s」"
 
+#. Error displayed to user when a currency conversion with unknown exchange rate is attempted
+#: lib/math-equation.vala:1288
+#, c-format
+msgid "Exchange rate for “%s” is not available"
+msgstr ""
+
+#. Error displayed to user when an conversion with unknown units is attempted
+#: lib/math-equation.vala:1295
+#, fuzzy, c-format
+#| msgid "Unknown variable “%s”"
+msgid "Unknown unit “%s”"
+msgstr "不明的變數「%s」"
+
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1170
+#: lib/math-equation.vala:1302
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "尚未定義函數「%s」"
 
-#. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1177
+#. Error displayed to user when an invalid conversion (e.g. units of different categories)
+#: lib/math-equation.vala:1309
 msgid "Unknown conversion"
 msgstr "不明的換算"
 
 #. should always be run
-#: lib/math-equation.vala:1187
+#: lib/math-equation.vala:1319
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1192 lib/math-equation.vala:1197
+#: lib/math-equation.vala:1324 lib/math-equation.vala:1329
 msgid "Malformed expression"
 msgstr "算式錯誤"
 
-#: lib/math-equation.vala:1208
+#: lib/math-equation.vala:1340
 msgid "Calculating"
 msgstr "正在計算"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1401
+#: lib/math-equation.vala:1562
 msgid "Need an integer to factorize"
 msgstr "需要整數才能因數分解"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:201
+#: lib/number.vala:306
 msgid "Underflow error"
 msgstr "不足位錯誤"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:206
+#: lib/number.vala:311
 msgid "Overflow error"
 msgstr "溢位錯誤"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:256
+#: lib/number.vala:372
 msgid "Argument not defined for zero"
 msgstr "引數不能用於 0"
 
+#: lib/number.vala:442
+#, fuzzy
+#| msgid "Factorial is only defined for non-negative real numbers"
+msgid "Floor is only defined for real numbers"
+msgstr "階乘只能用於自然數"
+
+#: lib/number.vala:457
+#, fuzzy
+#| msgid "Factorial is only defined for non-negative real numbers"
+msgid "Ceiling is only defined for real numbers"
+msgstr "階乘只能用於自然數"
+
+#: lib/number.vala:472
+#, fuzzy
+#| msgid "Factorial is only defined for non-negative real numbers"
+msgid "Round is only defined for real numbers"
+msgstr "階乘只能用於自然數"
+
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:372 lib/number.vala:402
+#: lib/number.vala:506 lib/number.vala:536
 msgid "The power of zero is undefined for a negative exponent"
-msgstr "負數的 0 次方並無意義"
+msgstr "0 的負數次方並無意義"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:380 lib/number.vala:410
+#: lib/number.vala:514 lib/number.vala:544
 msgid "Zero raised to zero is undefined"
 msgstr "對 0 求冪並無意義"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:464 lib/number.vala:495
+#: lib/number.vala:598 lib/number.vala:629
 msgid "Logarithm of zero is undefined"
 msgstr "0 的對數並無意義"
 
+#: lib/number.vala:634
+#, fuzzy
+#| msgid "Logarithm of zero is undefined"
+msgid "Logarithm with base 0 or 1 is undefined"
+msgstr "0 的對數並無意義"
+
 #. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:517
+#: lib/number.vala:653
 msgid "Factorial is only defined for non-negative real numbers"
 msgstr "階乘只能用於自然數"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:577
+#: lib/number.vala:704
 msgid "Division by zero is undefined"
 msgstr "除以 0 並無意義"
 
 #. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:598
+#: lib/number.vala:725
 msgid "Modulus division is only defined for integers"
 msgstr "餘數除法只能用於整數值"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:671
+#: lib/number.vala:805
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "正切對於角度 (n+1/2)*π (90°、270°…) 並無意義"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:690
+#: lib/number.vala:824
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "反正弦不能用於超過 [-1, 1] 的數值"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:707
+#: lib/number.vala:841
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "反餘弦不能用於超過 [-1, 1] 的數值"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:725
-msgid "Arctangent function is undefined for values i and -i"
+#: lib/number.vala:859
+#, fuzzy
+#| msgid "Arctangent function is undefined for values i and -i"
+msgid "Inverse tangent is undefined for values i and -i"
 msgstr "反正切不能用於超過 i 與 -i 的數值"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:775
+#: lib/number.vala:910
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "反雙曲餘弦不能用於小於 1 的數值"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:791
+#: lib/number.vala:926
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "反雙曲正切不能用於超過 [-1, 1] 的數值"
 
 #. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:807
-msgid "Boolean AND is only defined for positive integers"
+#: lib/number.vala:941
+#, fuzzy
+#| msgid "Boolean AND is only defined for positive integers"
+msgid "Boolean AND is only defined for non-negative integers"
+msgstr "布林 AND 只能用於正整數"
+
+#. Translators: Error displayed when boolean NAND attempted on non-integer values
+#: lib/number.vala:954
+#, fuzzy
+#| msgid "Boolean AND is only defined for positive integers"
+msgid "Boolean NAND is only defined for non-negative integers"
 msgstr "布林 AND 只能用於正整數"
 
 #. Translators: Error displayed when boolean OR attempted on non-integer values
-#: lib/number.vala:819
-msgid "Boolean OR is only defined for positive integers"
+#: lib/number.vala:967
+#, fuzzy
+#| msgid "Boolean OR is only defined for positive integers"
+msgid "Boolean OR is only defined for non-negative integers"
+msgstr "布林 OR 只能用於正整數"
+
+#. Translators: Error displayed when boolean NOR attempted on non-integer values
+#: lib/number.vala:980
+#, fuzzy
+#| msgid "Boolean OR is only defined for positive integers"
+msgid "Boolean NOR is only defined for non-negative integers"
 msgstr "布林 OR 只能用於正整數"
 
 #. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:831
-msgid "Boolean XOR is only defined for positive integers"
+#: lib/number.vala:993
+#, fuzzy
+#| msgid "Boolean XOR is only defined for positive integers"
+msgid "Boolean XOR is only defined for non-negative integers"
 msgstr "布林 XOR 只能用於正整數"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
-#: lib/number.vala:843
-msgid "Boolean NOT is only defined for positive integers"
+#. Translators: Error displayed when boolean XNOR attempted on non-integer values
+#: lib/number.vala:1006
+#, fuzzy
+#| msgid "Boolean XOR is only defined for positive integers"
+msgid "Boolean XNOR is only defined for non-negative integers"
+msgstr "布林 XOR 只能用於正整數"
+
+#. Translators: Error displayed when boolean NOT attempted on non-integer values
+#: lib/number.vala:1019
+#, fuzzy
+#| msgid "Boolean NOT is only defined for positive integers"
+msgid "Boolean NOT is only defined for non-negative integers"
 msgstr "布林 NOT 只能用於正整數"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:866
-msgid "Shift is only possible on integer values"
+#: lib/number.vala:1081
+#, fuzzy
+#| msgid "Shift is only possible on integer values"
+msgid "Shift is only possible on integers"
 msgstr "位移只能用在整數值"
 
-#: lib/serializer.vala:345
-msgid "Overflow: the result couldn’t be calculated"
-msgstr "溢位：結果無法計算"
+#: lib/number.vala:1086 lib/number.vala:1126 lib/number.vala:1572
+msgid "Overflow. Try a bigger word size"
+msgstr "溢位；請嘗試更大的字組大小"
+
+#: lib/number.vala:1097
+#, fuzzy
+#| msgid "Boolean OR is only defined for positive integers"
+msgid "Ones’ complement is only defined for non-negative integers"
+msgstr "布林 OR 只能用於正整數"
+
+#: lib/number.vala:1109
+#, fuzzy
+#| msgid "Boolean OR is only defined for positive integers"
+msgid "Two’s complement is only defined for non-negative integers"
+msgstr "布林 OR 只能用於正整數"
+
+#: lib/number.vala:1121
+#, fuzzy
+#| msgid "Shift is only possible on integer values"
+msgid "Swap endianness is only possible on integers"
+msgstr "位移只能用在整數值"
+
+#: lib/number.vala:1149
+#, fuzzy
+#| msgid "Factorial is only defined for non-negative real numbers"
+msgid "Combination is only defined for non-negative integers"
+msgstr "階乘只能用於自然數"
+
+#: lib/number.vala:1154
+msgid "Combination is undefined if n is less than r"
+msgstr ""
+
+#: lib/number.vala:1167
+#, fuzzy
+#| msgid "Factorial is only defined for non-negative real numbers"
+msgid "Permutation is only defined for non-negative integers"
+msgstr "階乘只能用於自然數"
+
+#: lib/number.vala:1172
+#, fuzzy
+#| msgid "Arctangent function is undefined for values i and -i"
+msgid "Permutation is undefined if n is less than r"
+msgstr "反正切不能用於超過 i 與 -i 的數值"
+
+#: lib/number.vala:1193
+#, fuzzy
+#| msgid "Modulus division is only defined for integers"
+msgid "Greatest common divisor is only defined for integers"
+msgstr "餘數除法只能用於整數值"
+
+#: lib/number.vala:1213
+#, fuzzy
+#| msgid "Modulus division is only defined for integers"
+msgid "Least common multiple is only defined for integers"
+msgstr "餘數除法只能用於整數值"
+
+#: lib/number.vala:1270
+#, fuzzy
+#| msgid "Factorial is only defined for non-negative real numbers"
+msgid "Median is only defined for real numbers"
+msgstr "階乘只能用於自然數"
+
+#: lib/number.vala:1290
+#, fuzzy
+#| msgid "Factorial is only defined for non-negative real numbers"
+msgid "Minimum value is only defined for real numbers"
+msgstr "階乘只能用於自然數"
+
+#: lib/number.vala:1307
+#, fuzzy
+#| msgid "Factorial is only defined for non-negative real numbers"
+msgid "Maximum value is only defined for real numbers"
+msgstr "階乘只能用於自然數"
+
+#: lib/providers/boc-provider.vala:15
+msgid "Bank of Canada"
+msgstr "加拿大銀行"
+
+#: lib/providers/ecb-provider.vala:12
+msgid "European Central Bank"
+msgstr "歐洲央行"
+
+#: lib/providers/imf-provider.vala:12
+msgid "International Monetary Fund"
+msgstr "國際貨幣基金組織"
+
+#: lib/providers/unt-provider.vala:12
+msgid "United Nations Treasury"
+msgstr "聯合國財政部"
+
+#: lib/serializer.vala:354 lib/serializer.vala:391
+msgid ""
+"The result is too long to display in fixed format. Try other result formats"
+msgstr ""
 
 #: lib/unit.vala:29
 msgid "Angle"
@@ -897,1656 +1359,1313 @@ msgid "Digital Storage"
 msgstr "資訊量"
 
 #. FIXME: Approximations of 1/(units in a circle), therefore, 360 deg != 400 grads
-#: lib/unit.vala:43 src/math-preferences.vala:103
-msgid "Degrees"
-msgstr "度"
+#: lib/unit.vala:43
+msgid "Degrees (Decimal)"
+msgstr ""
 
 #: lib/unit.vala:43
 msgctxt "unit-symbols"
 msgid "degree,degrees,deg"
 msgstr "degree,degrees,deg,度"
 
-#: lib/unit.vala:44 src/math-preferences.vala:105
+#: lib/unit.vala:44
+msgid "Degrees (D°M′S″)"
+msgstr ""
+
+#: lib/unit.vala:45 src/buttons-advanced.vala:87 src/math-preferences.vala:136
 msgid "Radians"
 msgstr "弧度"
 
-#: lib/unit.vala:44
+#: lib/unit.vala:45
 msgctxt "unit-symbols"
 msgid "radian,radians,rad"
 msgstr "radian,radians,rad,弧度"
 
-#: lib/unit.vala:45 src/math-preferences.vala:107
+#: lib/unit.vala:46 src/buttons-advanced.vala:87 src/math-preferences.vala:138
 msgid "Gradians"
 msgstr "梯度"
 
-#: lib/unit.vala:45
+#: lib/unit.vala:46
 msgctxt "unit-symbols"
 msgid "gradian,gradians,grad"
 msgstr "gradian,gradians,grad,梯度"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgid "Parsecs"
 msgstr "秒差距"
 
-#: lib/unit.vala:46
+#: lib/unit.vala:47
 msgctxt "unit-symbols"
 msgid "parsec,parsecs,pc"
 msgstr "parsec,parsecs,pc,秒差距"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgid "Light Years"
 msgstr "光年"
 
-#: lib/unit.vala:47
+#: lib/unit.vala:48
 msgctxt "unit-symbols"
 msgid "lightyear,lightyears,ly"
 msgstr "lightyear,lightyears,ly,光年"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgid "Astronomical Units"
 msgstr "天文單位"
 
-#: lib/unit.vala:48
+#: lib/unit.vala:49
 msgctxt "unit-symbols"
 msgid "au"
 msgstr "au,天文單位"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgid "Rack Units"
 msgstr "機架單位"
 
-#: lib/unit.vala:49
+#: lib/unit.vala:50
 msgctxt "unit-symbols"
 msgid "U"
 msgstr "U,機架單位"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgid "Nautical Miles"
 msgstr "海里"
 
-#: lib/unit.vala:50
+#: lib/unit.vala:51
 msgctxt "unit-symbols"
 msgid "nmi"
 msgstr "nmi,海里"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgid "Miles"
 msgstr "英里"
 
-#: lib/unit.vala:51
+#: lib/unit.vala:52
 msgctxt "unit-symbols"
 msgid "mile,miles,mi"
 msgstr "mile,miles,mi,英里"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgid "Kilometers"
 msgstr "公里"
 
-#: lib/unit.vala:52
+#: lib/unit.vala:53
 msgctxt "unit-symbols"
 msgid "kilometer,kilometers,km,kms"
 msgstr "kilometer,kilometers,km,kms,公里"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgid "Cables"
 msgstr "鏈"
 
-#: lib/unit.vala:53
+#: lib/unit.vala:54
 msgctxt "unit-symbols"
 msgid "cable,cables,cb"
 msgstr "cable,cables,cb,鏈"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgid "Fathoms"
 msgstr "英尋"
 
-#: lib/unit.vala:54
+#: lib/unit.vala:55
 msgctxt "unit-symbols"
 msgid "fathom,fathoms,ftm"
 msgstr "fathom,fathoms,ftm,英尋"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgid "Meters"
 msgstr "公尺"
 
-#: lib/unit.vala:55
+#: lib/unit.vala:56
 msgctxt "unit-symbols"
 msgid "meter,meters,m"
 msgstr "meter,meters,m,米,公尺"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgid "Yards"
 msgstr "碼"
 
-#: lib/unit.vala:56
+#: lib/unit.vala:57
 msgctxt "unit-symbols"
 msgid "yard,yards,yd"
 msgstr "yard,yards,yd,碼"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgid "Feet"
 msgstr "英尺"
 
-#: lib/unit.vala:57
+#: lib/unit.vala:58
 msgctxt "unit-symbols"
 msgid "foot,feet,ft"
 msgstr "foot,feet,ft,英尺"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgid "Inches"
 msgstr "英寸"
 
-#: lib/unit.vala:58
+#: lib/unit.vala:59
 msgctxt "unit-symbols"
 msgid "inch,inches,in"
 msgstr "inch,inches,in,英寸"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgid "Centimeters"
 msgstr "公分"
 
-#: lib/unit.vala:59
+#: lib/unit.vala:60
 msgctxt "unit-symbols"
 msgid "centimeter,centimeters,cm,cms"
 msgstr "centimeter,centimeters,cm,cms,公分"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgid "Millimeters"
 msgstr "公釐"
 
-#: lib/unit.vala:60
+#: lib/unit.vala:61
 msgctxt "unit-symbols"
 msgid "millimeter,millimeters,mm"
 msgstr "millimeter,millimeters,mm,毫米,公釐"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgid "Micrometers"
 msgstr "微米"
 
-#: lib/unit.vala:61
+#: lib/unit.vala:62
 msgctxt "unit-symbols"
 msgid "micrometer,micrometers,um"
 msgstr "micrometer,micrometers,um,微米"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgid "Nanometers"
 msgstr "奈米"
 
-#: lib/unit.vala:62
+#: lib/unit.vala:63
 msgctxt "unit-symbols"
 msgid "nanometer,nanometers,nm"
 msgstr "nanometer,nanometers,nm,奈米"
 
-#: lib/unit.vala:63
-msgid "Desktop Publishing Point"
+#: lib/unit.vala:64
+#, fuzzy
+#| msgid "Desktop Publishing Point"
+msgid "Desktop Publishing Points"
 msgstr "點（印刷）"
 
-#: lib/unit.vala:63
+#: lib/unit.vala:64
 msgctxt "unit-symbols"
 msgid "point,pt,points,pts"
 msgstr "point,pt,points,pts,點"
 
-#: lib/unit.vala:64
-msgid "Kilometers per hour"
+#: lib/unit.vala:65
+#, fuzzy
+#| msgid "Kilometers per hour"
+msgid "Kilometers per Hour"
 msgstr "公里每小時"
 
-#: lib/unit.vala:64
+#: lib/unit.vala:65
 msgctxt "unit-symbols"
 msgid "kilometers per hour,kmph,kmh,kph"
 msgstr "kilometers per hour,kmph,kmh,kph,公里每小時"
 
-#: lib/unit.vala:65
-msgid "Miles per hour"
+#: lib/unit.vala:66
+#, fuzzy
+#| msgid "Miles per hour"
+msgid "Miles per Hour"
 msgstr "英里每小時"
 
-#: lib/unit.vala:65
+#: lib/unit.vala:66
 msgctxt "unit-symbols"
 msgid "milesph,miles per hour,mi/h,miph,mph"
 msgstr "milesph,miles per hour,mi/h,miph,mph,英里每小時"
 
-#: lib/unit.vala:66
-msgid "Meters per second"
+#: lib/unit.vala:67
+#, fuzzy
+#| msgid "Meters per second"
+msgid "Meters per Second"
 msgstr "公尺每秒"
 
-#: lib/unit.vala:66
+#: lib/unit.vala:67
 msgctxt "unit-symbols"
 msgid "meters per second,mps"
 msgstr "meters per second,mps,公尺每秒"
 
-#: lib/unit.vala:67
-msgid "Feet per second"
+#: lib/unit.vala:68
+#, fuzzy
+#| msgid "Feet per second"
+msgid "Feet per Second"
 msgstr "英尺每秒"
 
-#: lib/unit.vala:67
+#: lib/unit.vala:68
 msgctxt "unit-symbols"
 msgid "fps,feet per second,feetps"
 msgstr "fps,feet per second,feetps,英尺每秒"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgid "Knots"
 msgstr "節"
 
-#: lib/unit.vala:68
+#: lib/unit.vala:69
 msgctxt "unit-symbols"
 msgid "kt,kn,nd,knot,knots"
 msgstr "kt,kn,nd,knot,knots,節"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgid "Hectares"
 msgstr "公頃"
 
-#: lib/unit.vala:69
+#: lib/unit.vala:70
 msgctxt "unit-symbols"
 msgid "hectare,hectares,ha"
 msgstr "hectare,hectares,ha,公頃"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgid "Acres"
 msgstr "英畝"
 
-#: lib/unit.vala:70
+#: lib/unit.vala:71
 msgctxt "unit-symbols"
 msgid "acre,acres"
 msgstr "acre,acres,英畝"
 
-#: lib/unit.vala:71
-msgid "Square Foot"
+#: lib/unit.vala:72
+#, fuzzy
+#| msgid "Square Millimeters"
+msgid "Square Miles"
+msgstr "平方公釐"
+
+#: lib/unit.vala:72
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "m²"
+msgctxt "unit-symbols"
+msgid "mi²"
+msgstr "m²,平方公尺"
+
+#: lib/unit.vala:73
+#, fuzzy
+#| msgid "Square Foot"
+msgid "Square Feet"
 msgstr "平方英尺"
 
-#: lib/unit.vala:71
+#: lib/unit.vala:73
 msgctxt "unit-symbols"
 msgid "ft²"
 msgstr "ft²,平方英尺"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:74
+#, fuzzy
+#| msgid "Square Millimeters"
+msgid "Square Kilometers"
+msgstr "平方公釐"
+
+#: lib/unit.vala:74
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "m²"
+msgctxt "unit-symbols"
+msgid "km²"
+msgstr "m²,平方公尺"
+
+#: lib/unit.vala:75
 msgid "Square Meters"
 msgstr "平方公尺"
 
-#: lib/unit.vala:72
+#: lib/unit.vala:75
 msgctxt "unit-symbols"
 msgid "m²"
 msgstr "m²,平方公尺"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgid "Square Centimeters"
 msgstr "平方公分"
 
-#: lib/unit.vala:73
+#: lib/unit.vala:76
 msgctxt "unit-symbols"
 msgid "cm²"
 msgstr "cm²,平方公分"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgid "Square Millimeters"
 msgstr "平方公釐"
 
-#: lib/unit.vala:74
+#: lib/unit.vala:77
 msgctxt "unit-symbols"
 msgid "mm²"
 msgstr "mm²,平方公釐"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgid "Cubic Meters"
 msgstr "立方公尺"
 
-#: lib/unit.vala:75
+#: lib/unit.vala:78
 msgctxt "unit-symbols"
 msgid "m³"
 msgstr "m³,立方公尺"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:79
+#, fuzzy
+#| msgid "US Gallons"
+msgid "British Gallons"
+msgstr "加侖（美制）"
+
+#: lib/unit.vala:79
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "gallon,gallons,gal"
+msgctxt "unit-symbols"
+msgid "imp_gallon,imp_gallons,imp_gal"
+msgstr "gallon,gallons,gal,加侖"
+
+#: lib/unit.vala:80
 msgid "US Gallons"
 msgstr "加侖（美制）"
 
-#: lib/unit.vala:76
+#: lib/unit.vala:80
 msgctxt "unit-symbols"
 msgid "gallon,gallons,gal"
 msgstr "gallon,gallons,gal,加侖"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgid "Liters"
 msgstr "公升"
 
-#: lib/unit.vala:77
+#: lib/unit.vala:81
 msgctxt "unit-symbols"
 msgid "litre,litres,liter,liters,L"
 msgstr "litre,litres,liter,liters,L,公升"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgid "US Quarts"
 msgstr "夸脫（美制）"
 
-#: lib/unit.vala:78
+#: lib/unit.vala:82
 msgctxt "unit-symbols"
 msgid "quart,quarts,qt"
 msgstr "quart,quarts,qt,夸脫"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:83
+#, fuzzy
+#| msgid "British Pound Sterling"
+msgid "British Pints"
+msgstr "英鎊"
+
+#: lib/unit.vala:83
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "pint,pints,pt"
+msgctxt "unit-symbols"
+msgid "imp_pint,imp_pints,imp_pt"
+msgstr "pint,pints,pt,品脫"
+
+#: lib/unit.vala:84
 msgid "US Pints"
 msgstr "品脫（美制）"
 
-#: lib/unit.vala:79
+#: lib/unit.vala:84
 msgctxt "unit-symbols"
 msgid "pint,pints,pt"
 msgstr "pint,pints,pt,品脫"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgid "Metric Cups"
 msgstr "量杯"
 
-#: lib/unit.vala:80
+#: lib/unit.vala:85
 msgctxt "unit-symbols"
 msgid "cup,cups,cp"
 msgstr "cup,cups,cp,量杯"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgid "Milliliters"
 msgstr "毫升"
 
-#: lib/unit.vala:81
+#: lib/unit.vala:86
 msgctxt "unit-symbols"
 msgid "millilitre,millilitres,milliliter,milliliters,mL,cm³"
 msgstr "millilitre,millilitres,milliliter,milliliters,mL,cm³,毫升"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgid "Microliters"
 msgstr "微升"
 
-#: lib/unit.vala:82
+#: lib/unit.vala:87
 msgctxt "unit-symbols"
 msgid "mm³,μL,uL"
 msgstr "mm³,μL,uL,微升"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgid "Tonnes"
 msgstr "公噸"
 
-#: lib/unit.vala:83
+#: lib/unit.vala:88
 msgctxt "unit-symbols"
 msgid "tonne,tonnes"
 msgstr "tonne,tonnes,公噸"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgid "Kilograms"
 msgstr "公斤"
 
-#: lib/unit.vala:84
+#: lib/unit.vala:89
 msgctxt "unit-symbols"
 msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgstr "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs,公斤"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgid "Pounds"
 msgstr "磅"
 
-#: lib/unit.vala:85
+#: lib/unit.vala:90
 msgctxt "unit-symbols"
 msgid "pound,pounds,lb,lbs"
 msgstr "pound,pounds,lb,lbs,磅"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgid "Ounces"
 msgstr "盎司"
 
-#: lib/unit.vala:86
+#: lib/unit.vala:91
 msgctxt "unit-symbols"
 msgid "ounce,ounces,oz"
 msgstr "ounce,ounces,oz,盎司"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgid "Troy Ounces"
 msgstr "金衡盎司"
 
-#: lib/unit.vala:87
+#: lib/unit.vala:92
 msgctxt "unit-symbols"
 msgid "Troy ounce,Troy ounces,ozt"
 msgstr "Troy ounce,Troy ounces,ozt,金衡盎司"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgid "Grams"
 msgstr "公克"
 
-#: lib/unit.vala:88
+#: lib/unit.vala:93
 msgctxt "unit-symbols"
 msgid "gram,grams,gramme,grammes,g"
 msgstr "gram,grams,gramme,grammes,g,公克"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:94
+#, fuzzy
+#| msgid "Kilograms"
+msgid "Milligrams"
+msgstr "公斤"
+
+#: lib/unit.vala:94
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgctxt "unit-symbols"
+msgid "milligram,milligrams,milligramme,milligrammes,mg"
+msgstr "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs,公斤"
+
+#: lib/unit.vala:95
+#, fuzzy
+#| msgid "Kilograms"
+msgid "Micrograms"
+msgstr "公斤"
+
+#: lib/unit.vala:95
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
+msgctxt "unit-symbols"
+msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
+msgstr "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs,公斤"
+
+#: lib/unit.vala:96
 msgid "Stone"
 msgstr "英石"
 
-#: lib/unit.vala:89
+#: lib/unit.vala:96
 msgctxt "unit-symbols"
 msgid "stone,st,stones"
 msgstr "stone,st,stones,英石"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgid "Centuries"
 msgstr "世紀"
 
-#: lib/unit.vala:90
+#: lib/unit.vala:97
 msgctxt "unit-symbols"
 msgid "century,centuries"
 msgstr "century,centuries,世紀"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgid "Decades"
 msgstr "年代"
 
-#: lib/unit.vala:91
+#: lib/unit.vala:98
 msgctxt "unit-symbols"
 msgid "decade,decades"
 msgstr "decade,decades,年代"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgid "Years"
 msgstr "年"
 
-#: lib/unit.vala:92
+#: lib/unit.vala:99
 msgctxt "unit-symbols"
 msgid "year,years"
 msgstr "year,years,年"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgid "Months"
 msgstr "月"
 
-#: lib/unit.vala:93
+#: lib/unit.vala:100
 msgctxt "unit-symbols"
 msgid "month,months"
 msgstr "month,months,月"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgid "Weeks"
 msgstr "星期"
 
-#: lib/unit.vala:94
+#: lib/unit.vala:101
 msgctxt "unit-symbols"
 msgid "week,weeks"
 msgstr "week,weeks,星期"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgid "Days"
 msgstr "日"
 
-#: lib/unit.vala:95
+#: lib/unit.vala:102
 msgctxt "unit-symbols"
 msgid "day,days"
 msgstr "day,days,天,日"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgid "Hours"
 msgstr "小時"
 
-#: lib/unit.vala:96
+#: lib/unit.vala:103
 msgctxt "unit-symbols"
 msgid "hour,hours"
 msgstr "hour,hours,小時"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgid "Minutes"
 msgstr "分鐘"
 
-#: lib/unit.vala:97
+#: lib/unit.vala:104
 msgctxt "unit-symbols"
 msgid "minute,minutes"
 msgstr "minute,minutes,分鐘"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgid "Seconds"
 msgstr "秒"
 
-#: lib/unit.vala:98
+#: lib/unit.vala:105
 msgctxt "unit-symbols"
 msgid "second,seconds,s"
 msgstr "second,seconds,s,秒鐘,秒"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgid "Milliseconds"
 msgstr "亳秒"
 
-#: lib/unit.vala:99
+#: lib/unit.vala:106
 msgctxt "unit-symbols"
 msgid "millisecond,milliseconds,ms"
 msgstr "millisecond,milliseconds,ms,毫秒"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgid "Microseconds"
 msgstr "微秒"
 
-#: lib/unit.vala:100
+#: lib/unit.vala:107
 msgctxt "unit-symbols"
 msgid "microsecond,microseconds,us,μs"
 msgstr "microsecond,microseconds,us,μs,微秒"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgid "Nanoseconds"
 msgstr "奈秒"
 
-#: lib/unit.vala:101
+#: lib/unit.vala:108
 msgctxt "unit-symbols"
 msgid "nanosecond,nanoseconds,ns"
 msgstr "nanosecond,nanoseconds,ns,奈秒"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
 msgid "Celsius"
 msgstr "攝氏溫標"
 
-#: lib/unit.vala:102
+#: lib/unit.vala:109
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "degC,˚C,C,c,Celsius,celsius"
 msgctxt "unit-symbols"
-msgid "degC,˚C,C,c,Celsius,celsius"
+msgid "degC,°C,˚C,C,c,Celsius,celsius"
 msgstr "degC,˚C,C,c,Celsius,celsius,攝氏,攝氏溫標"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
 msgid "Fahrenheit"
 msgstr "華氏溫標"
 
-#: lib/unit.vala:103
+#: lib/unit.vala:110
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
 msgctxt "unit-symbols"
-msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
+msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
 msgstr "degF,˚F,F,f,Fahrenheit,fahrenheit,華氏,華氏溫標"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgid "Kelvin"
 msgstr "克耳文溫標"
 
-#: lib/unit.vala:104
+#: lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
 msgstr "k,K,Kelvin,kelvin,克耳文,克耳文溫標"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
 msgid "Rankine"
 msgstr "蘭金溫標"
 
-#: lib/unit.vala:105
+#: lib/unit.vala:112
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
 msgctxt "unit-symbols"
-msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
+msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
 msgstr "degR,˚R,˚Ra,r,R,Rankine,rankine,蘭氏度,蘭金溫標"
 
 #. We use IEC prefix for digital storage units. i.e. 1 kB = 1 KiloByte = 1000 bytes, and 1 KiB = 1 kibiByte = 1024 bytes
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgid "Bits"
 msgstr "位元"
 
-#: lib/unit.vala:107
+#: lib/unit.vala:114
 msgctxt "unit-symbols"
 msgid "bit,bits,b"
 msgstr "bit,bits,b,位元"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgid "Bytes"
 msgstr "位元組"
 
-#: lib/unit.vala:108
+#: lib/unit.vala:115
 msgctxt "unit-symbols"
 msgid "byte,bytes,B"
 msgstr "byte,bytes,B,位元組"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgid "Nibbles"
 msgstr "半位元組"
 
-#: lib/unit.vala:109
+#: lib/unit.vala:116
 msgctxt "unit-symbols"
 msgid "nibble,nibbles"
 msgstr "nibble,nibbles,半位元組"
 
 #. The SI symbol for kilo is k, however we also allow "KB" and "Kb", as they are widely used and accepted.
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgid "Kilobits"
 msgstr "千位元"
 
-#: lib/unit.vala:111
+#: lib/unit.vala:118
 msgctxt "unit-symbols"
 msgid "kilobit,kilobits,kb,Kb"
 msgstr "kilobit,kilobits,kb,Kb,千位元"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgid "Kilobytes"
 msgstr "千位元組"
 
-#: lib/unit.vala:112
+#: lib/unit.vala:119
 msgctxt "unit-symbols"
 msgid "kilobyte,kilobytes,kB,KB"
 msgstr "kilobyte,kilobytes,kB,KB,千位元組"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgid "Kibibits"
 msgstr "Kibibits"
 
-#: lib/unit.vala:113
+#: lib/unit.vala:120
 msgctxt "unit-symbols"
 msgid "kibibit,kibibits,Kib"
 msgstr "kibibit,kibibits,Kib"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgid "Kibibytes"
 msgstr "Kibibytes"
 
-#: lib/unit.vala:114
+#: lib/unit.vala:121
 msgctxt "unit-symbols"
 msgid "kibibyte,kibibytes,KiB"
 msgstr "kibibyte,kibibytes,KiB"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgid "Megabits"
 msgstr "百萬位元"
 
-#: lib/unit.vala:115
+#: lib/unit.vala:122
 msgctxt "unit-symbols"
 msgid "megabit,megabits,Mb"
 msgstr "megabit,megabits,Mb,百萬位元"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgid "Megabytes"
 msgstr "百萬位元組"
 
-#: lib/unit.vala:116
+#: lib/unit.vala:123
 msgctxt "unit-symbols"
 msgid "megabyte,megabytes,MB"
 msgstr "megabyte,megabytes,MB,百萬位元組"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgid "Mebibits"
 msgstr "Mebibits"
 
-#: lib/unit.vala:117
+#: lib/unit.vala:124
 msgctxt "unit-symbols"
 msgid "mebibit,mebibits,Mib"
 msgstr "mebibit,mebibits,Mib"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgid "Mebibytes"
 msgstr "Mebibytes"
 
-#: lib/unit.vala:118
+#: lib/unit.vala:125
 msgctxt "unit-symbols"
 msgid "mebibyte,mebibytes,MiB"
 msgstr "mebibyte,mebibytes,MiB"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgid "Gigabits"
 msgstr "吉位元"
 
-#: lib/unit.vala:119
+#: lib/unit.vala:126
 msgctxt "unit-symbols"
 msgid "gigabit,gigabits,Gb"
 msgstr "gigabit,gigabits,Gb,吉位元"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgid "Gigabytes"
 msgstr "吉位元組"
 
-#: lib/unit.vala:120
+#: lib/unit.vala:127
 msgctxt "unit-symbols"
 msgid "gigabyte,gigabytes,GB"
 msgstr "gigabyte,gigabytes,GB,吉位元組"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgid "Gibibits"
 msgstr "Gibibits"
 
-#: lib/unit.vala:121
+#: lib/unit.vala:128
 msgctxt "unit-symbols"
 msgid "gibibit,gibibits,Gib"
 msgstr "gibibit,gibibits,Gib"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgid "Gibibytes"
 msgstr "Gibibytes"
 
-#: lib/unit.vala:122
+#: lib/unit.vala:129
 msgctxt "unit-symbols"
 msgid "gibibyte,gibibytes,GiB"
 msgstr "gibibyte,gibibytes,GiB"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgid "Terabits"
 msgstr "兆位元"
 
-#: lib/unit.vala:123
+#: lib/unit.vala:130
 msgctxt "unit-symbols"
 msgid "terabit,terabits,Tb"
 msgstr "terabit,terabits,Tb,兆位元"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgid "Terabytes"
 msgstr "兆位元組"
 
-#: lib/unit.vala:124
+#: lib/unit.vala:131
 msgctxt "unit-symbols"
 msgid "terabyte,terabytes,TB"
 msgstr "terabyte,terabytes,TB,兆位元組"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgid "Tebibits"
 msgstr "Tebibits"
 
-#: lib/unit.vala:125
+#: lib/unit.vala:132
 msgctxt "unit-symbols"
 msgid "tebibit,tebibits,Tib"
 msgstr "tebibit,tebibits,Tib"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgid "Tebibytes"
 msgstr "Tebibytes"
 
-#: lib/unit.vala:126
+#: lib/unit.vala:133
 msgctxt "unit-symbols"
 msgid "tebibyte,tebibytes,TiB"
 msgstr "tebibyte,tebibytes,TiB"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgid "Petabits"
 msgstr "拍位元"
 
-#: lib/unit.vala:127
+#: lib/unit.vala:134
 msgctxt "unit-symbols"
 msgid "petabit,petabits,Pb"
 msgstr "petabit,petabits,Pb,拍位元"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgid "Petabytes"
 msgstr "拍位元組"
 
-#: lib/unit.vala:128
+#: lib/unit.vala:135
 msgctxt "unit-symbols"
 msgid "petabyte,petabytes,PB"
 msgstr "petabyte,petabytes,PB,拍位元組"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgid "Pebibits"
 msgstr "Pebibits"
 
-#: lib/unit.vala:129
+#: lib/unit.vala:136
 msgctxt "unit-symbols"
 msgid "pebibit,pebibits,Pib"
 msgstr "pebibit,pebibits,Pib"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgid "Pebibytes"
 msgstr "Pebibytes"
 
-#: lib/unit.vala:130
+#: lib/unit.vala:137
 msgctxt "unit-symbols"
 msgid "pebibyte,pebibytes,PiB"
 msgstr "pebibyte,pebibytes,PiB"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgid "Exabits"
 msgstr "艾位元"
 
-#: lib/unit.vala:131
+#: lib/unit.vala:138
 msgctxt "unit-symbols"
 msgid "exabit,exabits,Eb"
 msgstr "exabit,exabits,Eb,艾位元"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgid "Exabytes"
 msgstr "艾位元組"
 
-#: lib/unit.vala:132
+#: lib/unit.vala:139
 msgctxt "unit-symbols"
 msgid "exabyte,exabytes,EB"
 msgstr "exabyte,exabytes,EB,艾位元組"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgid "Exbibits"
 msgstr "Exbibits"
 
-#: lib/unit.vala:133
+#: lib/unit.vala:140
 msgctxt "unit-symbols"
 msgid "exbibit,exbibits,Eib"
 msgstr "exbibit,exbibits,Eib"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgid "Exbibytes"
 msgstr "Exbibytes"
 
-#: lib/unit.vala:134
+#: lib/unit.vala:141
 msgctxt "unit-symbols"
 msgid "exbibyte,exbibytes,EiB"
 msgstr "exbibyte,exbibytes,EiB"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgid "Zettabits"
 msgstr "皆位元"
 
-#: lib/unit.vala:135
+#: lib/unit.vala:142
 msgctxt "unit-symbols"
 msgid "zettabit,zettabits,Zb"
 msgstr "zettabit,zettabits,Zb,皆位元"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgid "Zettabytes"
 msgstr "皆位元組"
 
-#: lib/unit.vala:136
+#: lib/unit.vala:143
 msgctxt "unit-symbols"
 msgid "zettabyte,zettabytes,ZB"
 msgstr "zettabyte,zettabytes,ZB,皆位元組"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgid "Zebibits"
 msgstr "Zebibits"
 
-#: lib/unit.vala:137
+#: lib/unit.vala:144
 msgctxt "unit-symbols"
 msgid "zebibit,zebibits,Zib"
 msgstr "zebibit,zebibits,Zib"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgid "Zebibytes"
 msgstr "Zebibytes"
 
-#: lib/unit.vala:138
+#: lib/unit.vala:145
 msgctxt "unit-symbols"
 msgid "zebibyte,zebibytes,ZiB"
 msgstr "zebibyte,zebibytes,ZiB"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgid "Yottabits"
 msgstr "佑位元"
 
-#: lib/unit.vala:139
+#: lib/unit.vala:146
 msgctxt "unit-symbols"
 msgid "yottabit,yottabits,Yb"
 msgstr "yottabit,yottabits,Yb,佑位元"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgid "Yottabytes"
 msgstr "佑位元組"
 
-#: lib/unit.vala:140
+#: lib/unit.vala:147
 msgctxt "unit-symbols"
 msgid "yottabyte,yottabytes,YB"
 msgstr "yottabyte,yottabytes,YB,佑位元組"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgid "Yobibits"
 msgstr "Yobibits"
 
-#: lib/unit.vala:141
+#: lib/unit.vala:148
 msgctxt "unit-symbols"
 msgid "yobibit,yobibits,Yib"
 msgstr "yobibit,yobibits,Yib"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgid "Yobibytes"
 msgstr "Yobibytes"
 
-#: lib/unit.vala:142
+#: lib/unit.vala:149
 msgctxt "unit-symbols"
 msgid "yobibyte,yobibytes,YiB"
 msgstr "yobibyte,yobibytes,YiB"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgid "Hertz"
 msgstr "赫茲"
 
-#: lib/unit.vala:143
+#: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "hertz,Hz"
 msgstr "hertz,Hz,赫茲"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgid "Kilohertz"
 msgstr "千赫"
 
-#: lib/unit.vala:144
+#: lib/unit.vala:151
 msgctxt "unit-symbols"
 msgid "kilohertz,kHz"
 msgstr "kilohertz,kHz,千赫"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgid "Megahertz"
 msgstr "百萬赫"
 
-#: lib/unit.vala:145
+#: lib/unit.vala:152
 msgctxt "unit-symbols"
 msgid "megahertz,MHz"
 msgstr "megahertz,MHz,百萬赫"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgid "Gigahertz"
 msgstr "吉赫"
 
-#: lib/unit.vala:146
+#: lib/unit.vala:153
 msgctxt "unit-symbols"
 msgid "gigahertz,GHz"
 msgstr "gigahertz,GHz,吉赫"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgid "Terahertz"
 msgstr "兆赫"
 
-#: lib/unit.vala:147
+#: lib/unit.vala:154
 msgctxt "unit-symbols"
 msgid "terahertz,THz"
 msgstr "terahertz,THz,兆赫"
 
-#: lib/unit.vala:148
-msgid "Joule"
+#: lib/unit.vala:155
+#, fuzzy
+#| msgid "Joule"
+msgid "Joules"
 msgstr "焦耳"
 
-#: lib/unit.vala:148
+#: lib/unit.vala:155
 msgctxt "unit-symbols"
 msgid "Joule,J,joule,joules"
 msgstr "Joule,J,joule,joules,焦耳"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgid "Kilojoules"
 msgstr "千焦耳"
 
-#: lib/unit.vala:149
+#: lib/unit.vala:156
 msgctxt "unit-symbols"
 msgid "KJ,kilojoules,kilojoule"
 msgstr "KJ,kilojoules,kilojoule,千焦耳"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgid "Megajoules"
 msgstr "百萬焦耳"
 
-#: lib/unit.vala:150
+#: lib/unit.vala:157
 msgctxt "unit-symbols"
 msgid "MJ,megajoules,megajoule"
 msgstr "MJ,megajoules,megajoule,百萬焦耳"
 
-#: lib/unit.vala:151
-msgid "KilowattHour"
+#: lib/unit.vala:158
+#, fuzzy
+#| msgid "KilowattHour"
+msgid "Kilowatt-Hours"
 msgstr "千瓦時"
 
-#: lib/unit.vala:151
+#: lib/unit.vala:158
 msgctxt "unit-symbols"
 msgid "kwh,kWh,kilowatt-hour,kilowatthour"
 msgstr "kwh,kWh,kilowatt-hour,kilowatthour,千瓦時"
 
-#: lib/unit.vala:152
-msgid "BTU"
-msgstr "BTU"
+#: lib/unit.vala:159
+msgid "British Thermal Units"
+msgstr ""
 
-#: lib/unit.vala:152
+#: lib/unit.vala:159
 msgctxt "unit-symbols"
 msgid "btu,BTU"
 msgstr "btu,BTU"
 
-#: lib/unit.vala:153
-msgid "Calorie"
+#: lib/unit.vala:160
+#, fuzzy
+#| msgid "Calorie"
+msgid "Calories"
 msgstr "卡路里"
 
-#: lib/unit.vala:153
+#: lib/unit.vala:160
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
 msgstr "calories,calorie,cal,卡路里"
 
-#: lib/unit.vala:154
-msgid "Erg"
-msgstr "Erg"
+#: lib/unit.vala:161
+#, fuzzy
+#| msgid "Kilojoules"
+msgid "Kilocalories"
+msgstr "千焦耳"
 
-#: lib/unit.vala:154
+#: lib/unit.vala:161
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "calories,calorie,cal"
+msgctxt "unit-symbols"
+msgid "kilocalories,kilocalorie,kcal"
+msgstr "calories,calorie,cal,卡路里"
+
+#: lib/unit.vala:162
+msgid "Ergs"
+msgstr ""
+
+#: lib/unit.vala:162
 msgctxt "unit-symbols"
 msgid "ergs,erg"
 msgstr "ergs,erg"
 
-#: lib/unit.vala:155
-msgid "eV"
-msgstr "eV"
+#: lib/unit.vala:163
+msgid "Electron Volts"
+msgstr ""
 
-#: lib/unit.vala:155
+#: lib/unit.vala:163
 msgctxt "unit-symbols"
 msgid "electronvolt,electronvolts,ev"
 msgstr "electronvolt,electronvolts,ev"
 
-#: lib/unit.vala:156
-msgid "Ft-lb"
-msgstr "Ft-lb"
+#: lib/unit.vala:164
+#, fuzzy
+#| msgid "Pounds"
+msgid "Foot-Pounds"
+msgstr "磅"
 
-#: lib/unit.vala:156
+#: lib/unit.vala:164
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
 msgstr "foot-pound,foot-pounds,ft-lb,ft-lbs,英尺-磅"
 
-#: lib/unit.vala:157
-msgid "Pascal"
+#: lib/unit.vala:165
+#, fuzzy
+#| msgid "Pascal"
+msgid "Pascals"
 msgstr "帕斯卡"
 
-#: lib/unit.vala:157
+#: lib/unit.vala:165
 msgctxt "unit-symbols"
 msgid "Pascal,pascal,Pa"
 msgstr "Pascal,pascal,Pa,帕斯卡,帕"
 
-#: lib/unit.vala:158
-msgid "Kilopascal"
+#: lib/unit.vala:166
+#, fuzzy
+#| msgid "Kilopascal"
+msgid "Kilopascals"
 msgstr "千帕"
 
-#: lib/unit.vala:158
+#: lib/unit.vala:166
 msgctxt "unit-symbols"
 msgid "Kilopascal,kilopascal,kPa"
 msgstr "Kilopascal,kilopascal,kPa,千帕"
 
-#: lib/unit.vala:159
-msgid "Hectopascal"
+#: lib/unit.vala:167
+#, fuzzy
+#| msgid "Hectopascal"
+msgid "Hectopascals"
 msgstr "百帕"
 
-#: lib/unit.vala:159
+#: lib/unit.vala:167
 msgctxt "unit-symbols"
 msgid "Hectopascal,hectopascal,hPa"
 msgstr "Hectopascal,hectopascal,hPa,百帕"
 
-#: lib/unit.vala:160
-msgid "Bar"
-msgstr "巴"
+#: lib/unit.vala:168
+msgid "Bars"
+msgstr ""
 
-#: lib/unit.vala:160
+#: lib/unit.vala:168
 msgctxt "unit-symbols"
 msgid "Bar,bar"
 msgstr "Bar,bar,巴"
 
-#: lib/unit.vala:161
-msgid "Standard Atmosphere"
+#: lib/unit.vala:169
+#, fuzzy
+#| msgid "Standard Atmosphere"
+msgid "Standard Atmospheres"
 msgstr "標準大氣壓"
 
-#: lib/unit.vala:161
+#: lib/unit.vala:169
 msgctxt "unit-symbols"
 msgid "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm"
 msgstr ""
 "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm,標準大氣"
 "壓"
 
-#: lib/unit.vala:162
-msgid "Millimetre of Mercury"
+#: lib/unit.vala:170
+#, fuzzy
+#| msgid "Millimetre of Mercury"
+msgid "Millimeters of Mercury"
 msgstr "毫米汞柱高"
 
-#: lib/unit.vala:162
+#: lib/unit.vala:170
+#, fuzzy
+#| msgctxt "unit-symbols"
+#| msgid "Millimetre of Mercury,millimetre of mercury,mmHg"
 msgctxt "unit-symbols"
-msgid "Millimetre of Mercury,millimetre of mercury,mmHg"
+msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
 msgstr "Millimetre of Mercury,millimetre of mercury,mmHg,毫米汞柱高"
 
-#: lib/unit.vala:163
-msgid "Inch of Mercury"
+#: lib/unit.vala:171
+#, fuzzy
+#| msgid "Inch of Mercury"
+msgid "Inches of Mercury"
 msgstr "英吋汞柱高"
 
-#: lib/unit.vala:163
+#: lib/unit.vala:171
 msgctxt "unit-symbols"
 msgid "Inch of Mercury,inch of mercury,inHg"
 msgstr "Inch of Mercury,inch of mercury,inHg,英吋汞柱高"
 
-#: lib/unit.vala:164
-msgid "Pound per Square Inch"
+#: lib/unit.vala:172
+#, fuzzy
+#| msgid "Pound per Square Inch"
+msgid "Pounds per Square Inch"
 msgstr "磅/平方英吋"
 
-#: lib/unit.vala:164
+#: lib/unit.vala:172
 msgctxt "unit-symbols"
 msgid "Pound per Square Inch,pound per square inch,psi"
 msgstr "Pound per Square Inch,pound per square inch,psi,磅/平方英吋"
 
-#: lib/unit.vala:166
+#: lib/unit.vala:174
 msgid "Currency"
 msgstr "貨幣"
 
-#: search-provider/search-provider.vala:199 src/ui/buttons-programming.ui:76
-#: src/ui/buttons-programming.ui:82 src/ui/buttons-programming.ui:88
-msgid "Copy"
-msgstr "複製"
-
-#: search-provider/search-provider.vala:200
-msgid "Copy result to clipboard"
-msgstr "將結果複製至剪貼簿"
-
-#: src/ui/buttons-advanced.ui:162 src/ui/buttons-basic.ui:109
-#: src/ui/buttons-financial.ui:722 src/ui/buttons-programming.ui:1698
-msgid "Modulus Divide"
-msgstr "餘數除法"
-
-#: src/ui/buttons-advanced.ui:178 src/ui/buttons-basic.ui:125
-#: src/ui/buttons-financial.ui:738 src/ui/buttons-programming.ui:1343
-msgid "Divide [/]"
-msgstr "除號 [/]"
-
-#: src/ui/buttons-advanced.ui:268 src/ui/buttons-basic.ui:215
-#: src/ui/buttons-financial.ui:828 src/ui/buttons-programming.ui:1359
-msgid "Multiply [*]"
-msgstr "乘號 [*]"
-
-#: src/ui/buttons-advanced.ui:284 src/ui/buttons-basic.ui:231
-#: src/ui/buttons-financial.ui:844 src/ui/buttons-programming.ui:1375
-msgid "Subtract [-]"
-msgstr "減號 [-]"
-
-#: src/ui/buttons-advanced.ui:299 src/ui/buttons-basic.ui:246
-#: src/ui/buttons-financial.ui:859 src/ui/buttons-programming.ui:1390
-msgid "Add [+]"
-msgstr "加號 [+]"
-
-#: src/ui/buttons-advanced.ui:315 src/ui/buttons-basic.ui:262
-#: src/ui/buttons-programming.ui:1328 src/math-buttons.vala:707
-msgid "Pi [Ctrl+P]"
-msgstr "圓周率 [Ctrl+P]"
-
-#: src/ui/buttons-advanced.ui:331 src/ui/buttons-basic.ui:278
-#: src/ui/buttons-financial.ui:875 src/ui/buttons-programming.ui:1312
-msgid "Root [Ctrl+R]"
-msgstr "開根號 [Ctrl+R]"
-
-#: src/ui/buttons-advanced.ui:346 src/ui/buttons-basic.ui:293
-msgid "Square [Ctrl+2]"
-msgstr "平方 [Ctrl+2]"
-
-#: src/ui/buttons-advanced.ui:366 src/ui/buttons-basic.ui:313
-#: src/ui/buttons-conversion.ui:194 src/ui/buttons-financial.ui:890
-#: src/ui/buttons-programming.ui:1421
-msgid "Clear Display [Escape]"
-msgstr "清除顯示 [Escape]"
-
-#: src/ui/buttons-advanced.ui:381 src/ui/buttons-basic.ui:328
-#: src/ui/buttons-financial.ui:905 src/ui/buttons-programming.ui:1713
-msgid "Start Group [(]"
-msgstr "括號開頭 [(]"
-
-#: src/ui/buttons-advanced.ui:397 src/ui/buttons-basic.ui:344
-#: src/ui/buttons-financial.ui:921 src/ui/buttons-programming.ui:1728
-msgid "End Group [)]"
-msgstr "括號結尾 [)]"
-
-#: src/ui/buttons-advanced.ui:413 src/ui/buttons-basic.ui:360
-#: src/ui/buttons-financial.ui:937
-msgid "Percentage [%]"
-msgstr "百分比 [%]"
-
-#. Label on the solve button (clicking this solves the displayed calculation)
-#: src/ui/buttons-advanced.ui:427 src/ui/buttons-basic.ui:374
-#: src/ui/buttons-financial.ui:951 src/ui/buttons-programming.ui:1404
-msgid "="
-msgstr "＝"
-
-#: src/ui/buttons-advanced.ui:429 src/ui/buttons-basic.ui:376
-#: src/ui/buttons-financial.ui:953 src/ui/buttons-programming.ui:1406
-msgid "Calculate Result"
-msgstr "計算結果"
-
-#: src/ui/buttons-advanced.ui:455 src/ui/buttons-programming.ui:1753
-msgid "Subscript Mode [Alt]"
-msgstr "下標數字模式 [Alt]"
-
-#: src/ui/buttons-advanced.ui:471 src/ui/buttons-programming.ui:1769
-msgid "Superscript Mode [Ctrl]"
-msgstr "上標數字模式 [Ctrl]"
-
-#: src/ui/buttons-advanced.ui:487 src/ui/buttons-programming.ui:2057
-msgid "Factorize [Ctrl+F]"
-msgstr "因數分解 [Ctrl+F]"
-
-#: src/ui/buttons-advanced.ui:501
-msgid "Scientific Exponent [Ctrl+E]"
-msgstr "科學記號 [Ctrl+E]"
-
-#: src/ui/buttons-advanced.ui:570
-msgid "Hyperbolic Cosine"
-msgstr "雙曲餘弦"
-
-#: src/ui/buttons-advanced.ui:586
-msgid "Hyperbolic Sine"
-msgstr "雙曲正弦"
-
-#: src/ui/buttons-advanced.ui:602
-msgid "Hyperbolic Tangent"
-msgstr "雙曲正切"
-
-#: src/ui/buttons-advanced.ui:617 src/ui/buttons-financial.ui:968
-#: src/ui/buttons-programming.ui:1908
-msgid "Exponent [^ or **]"
-msgstr "指數 [^ 或 **]"
-
-#: src/ui/buttons-advanced.ui:638 src/ui/buttons-programming.ui:1929
-msgid "Inverse [Ctrl+I]"
-msgstr "反轉 [Ctrl+I]"
-
-#: src/ui/buttons-advanced.ui:660
-msgid "Euler’s Number"
-msgstr "歐拉數"
-
-#: src/ui/buttons-advanced.ui:676
-msgid "Natural Logarithm"
-msgstr "自然對數"
-
-#: src/ui/buttons-advanced.ui:707 src/ui/buttons-programming.ui:1982
-msgid "Factorial [!]"
-msgstr "階乘 [!]"
-
-#: src/ui/buttons-advanced.ui:728 src/ui/buttons-programming.ui:2003
-msgid "Absolute Value [|]"
-msgstr "絕對值 [|]"
-
-#: src/ui/buttons-advanced.ui:750
-msgid "Imaginary Unit"
-msgstr "虛數單位"
-
-#: src/ui/buttons-advanced.ui:766
-msgid "Real Component"
-msgstr "實數部分"
-
-#: src/ui/buttons-advanced.ui:782
-msgid "Imaginary Component"
-msgstr "虛數部分"
-
-#: src/ui/buttons-advanced.ui:798
-msgid "Complex Conjugate"
-msgstr "共軛複數"
-
-#: src/ui/buttons-advanced.ui:814
-msgid "Complex Argument"
-msgstr "複數輻角"
-
-#: src/ui/buttons-advanced.ui:830 src/ui/buttons-financial.ui:1030
-#: src/ui/buttons-programming.ui:2089
-msgid "Memory"
-msgstr "記憶"
-
-#. The label on the memory button
-#: src/ui/buttons-advanced.ui:831 src/ui/buttons-financial.ui:1032
-#: src/ui/buttons-programming.ui:2087
-msgid "x"
-msgstr "x"
-
-#: src/ui/buttons-advanced.ui:846
-msgid "Additional Functions"
-msgstr "額外的函數"
-
-#: src/ui/buttons-conversion.ui:208
-msgid "Switch Conversion Units"
-msgstr "切換換算單位"
-
-#: src/ui/buttons-conversion.ui:222
-msgid "Backspace"
-msgstr "倒退鍵"
-
-#. Title of Compounding Term dialog
-#: src/ui/buttons-financial.ui:5 src/ui/buttons-financial.ui:1048
-msgid "Compounding Term"
-msgstr "複利期間"
-
-#: src/ui/buttons-financial.ui:15 src/ui/buttons-financial.ui:71
-#: src/ui/buttons-financial.ui:127 src/ui/buttons-financial.ui:183
-#: src/ui/buttons-financial.ui:233 src/ui/buttons-financial.ui:289
-#: src/ui/buttons-financial.ui:345 src/ui/buttons-financial.ui:401
-#: src/ui/buttons-financial.ui:457 src/ui/buttons-financial.ui:519
-#: src/ui/buttons-programming.ui:2172 src/gnome-calculator.vala:308
-msgid "_Cancel"
-msgstr "取消(_C)"
-
-#. Compounding Term Dialog: Calculate button
-#. Double-Declining Depreciation Dialog: Calculate button
-#. Future Value Dialog: Calculate button
-#. Gross Profit Margin Dialog: Calculate button
-#. Periodic Payment Dialog: Calculate button
-#. Present Value Dialog: Calculate button
-#. Periodic Interest Rate Dialog: Calculate button
-#. Straight-Line Depreciation Dialog: Calculate button
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
-#. Payment Period Dialog: Calculate button
-#: src/ui/buttons-financial.ui:21 src/ui/buttons-financial.ui:77
-#: src/ui/buttons-financial.ui:133 src/ui/buttons-financial.ui:189
-#: src/ui/buttons-financial.ui:239 src/ui/buttons-financial.ui:295
-#: src/ui/buttons-financial.ui:351 src/ui/buttons-financial.ui:407
-#: src/ui/buttons-financial.ui:463 src/ui/buttons-financial.ui:525
-msgid "C_alculate"
-msgstr "計算(_A)"
-
-#. Compounding Term Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:32
-msgid ""
-"Calculates the number of compounding periods necessary to increase an "
-"investment of present value to a future value, at a fixed interest rate per "
-"compounding period."
-msgstr ""
-"計算一項投資的現值要至達某未來值所需的複利期數，每個複利期間的利率為固定的。"
-
-#. Compounding Term Dialog: Label before periodic interest rate input
-#. Future Value Dialog: Label before periodic interest rate input
-#. Periodic Payment Dialog: Label before periodic interest rate input
-#. Present Value Dialog: Label before periodic interest rate input
-#. Title of Periodic Interest Rate dialog
-#. Payment Period Dialog: Label before periodic interest rate input
-#: src/ui/buttons-financial.ui:37 src/ui/buttons-financial.ui:155
-#: src/ui/buttons-financial.ui:261 src/ui/buttons-financial.ui:317
-#: src/ui/buttons-financial.ui:335 src/ui/buttons-financial.ui:553
-#: src/ui/buttons-financial.ui:1150
-msgid "Periodic Interest Rate"
-msgstr "定期利率"
-
-#. Compounding Term Dialog: Label before future value input
-#. Title of Future Value dialog
-#. Periodic Interest Rate Dialog: Label before future value input
-#. Payment Period Dialog: Label before future value input
-#: src/ui/buttons-financial.ui:43 src/ui/buttons-financial.ui:117
-#: src/ui/buttons-financial.ui:367 src/ui/buttons-financial.ui:547
-#: src/ui/buttons-financial.ui:1082
-msgid "Future Value"
-msgstr "終值"
-
-#. Compounding Term Dialog: Label before present value input
-#. Title of Present Value dialog
-#. Periodic Interest Rate Dialog: Label before present value input
-#: src/ui/buttons-financial.ui:49 src/ui/buttons-financial.ui:279
-#: src/ui/buttons-financial.ui:373 src/ui/buttons-financial.ui:1167
-msgid "Present Value"
-msgstr "現值"
-
-#. Title of Double-Declining Depreciation dialog
-#: src/ui/buttons-financial.ui:61
-msgid "Double-Declining Depreciation"
-msgstr "雙倍餘額遞減法"
-
-#. Double-Declining Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:88
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the double-declining balance method."
-msgstr "計算在指定的期間中某資產的折舊免稅額，使用雙倍餘額遞減法。"
-
-#. Double-Declining Depreciation Dialog: Label before cost input
-#. Gross Profit Margin Dialog: Label before cost input
-#. Straight-Line Depreciation Dialog: Label before cost input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
-#: src/ui/buttons-financial.ui:93 src/ui/buttons-financial.ui:205
-#: src/ui/buttons-financial.ui:423 src/ui/buttons-financial.ui:479
-msgid "Cost"
-msgstr "花費"
-
-#. Double-Declining Depreciation Dialog: Label before life input
-#. Straight-Line Depreciation Dialog: Label before life input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
-#: src/ui/buttons-financial.ui:99 src/ui/buttons-financial.ui:435
-#: src/ui/buttons-financial.ui:491
-msgid "Life"
-msgstr "年限"
-
-#. Double-Declining Depreciation Dialog: Label before period input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
-#: src/ui/buttons-financial.ui:105 src/ui/buttons-financial.ui:497
-msgid "Period"
-msgstr "週期"
-
-#. Future Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:144
-msgid ""
-"Calculates the future value of an investment based on a series of equal "
-"payments at a periodic interest rate over the number of payment periods in "
-"the term."
-msgstr "計算投資的未來值，根據一系列等額付款，按照約定付款期數的定期利率。"
-
-#. Future Value Dialog: Label before periodic payment input
-#. Title of Periodic Payment dialog
-#. Present Value Dialog: Label before periodic payment input
-#. Payment Period Dialog: Label before periodic payment input
-#: src/ui/buttons-financial.ui:149 src/ui/buttons-financial.ui:223
-#: src/ui/buttons-financial.ui:311 src/ui/buttons-financial.ui:541
-#: src/ui/buttons-financial.ui:1184
-msgid "Periodic Payment"
-msgstr "定期付款"
-
-#. Future Value Dialog: Label before number of periods input
-#. Present Value Dialog: Label before number of periods input
-#: src/ui/buttons-financial.ui:161 src/ui/buttons-financial.ui:323
-msgid "Number of Periods"
-msgstr "週期數"
-
-#. Title of Gross Profit Margin dialog
-#: src/ui/buttons-financial.ui:173 src/ui/buttons-financial.ui:1201
-msgid "Gross Profit Margin"
-msgstr "毛利率"
-
-#. Gross Profit Margin Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:200
-msgid ""
-"Calculates the resale price of a product, based on the product cost and the "
-"wanted gross profit margin."
-msgstr "根據產品成本和希望的毛利，率計算轉售價格的產品。"
-
-#. Gross Profit Margin Dialog: Label before margin input
-#: src/ui/buttons-financial.ui:211
-msgid "Margin"
-msgstr "盈餘"
-
-#. Periodic Payment Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:250
-msgid ""
-"Calculates the amount of the periodic payment of a loan, where payments are "
-"made at the end of each payment period."
-msgstr "計算貸款的每期應付款金額，此還款方式是在每個還款期末支付。"
-
-#. Periodic Payment Dialog: Label before principal input
-#: src/ui/buttons-financial.ui:255
-msgid "Principal"
-msgstr "本金"
-
-#. Periodic Payment Dialog: Label before term input
-#. Periodic Interest Rate Dialog: Label before term input
-#. Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
-#: src/ui/buttons-financial.ui:267 src/ui/buttons-financial.ui:379
-#: src/ui/buttons-financial.ui:1096
-msgid "Term"
-msgstr "Term"
-
-#. Present Value Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:306
-msgid ""
-"Calculates the present value of an investment based on a series of equal "
-"payments discounted at a periodic interest rate over the number of payment "
-"periods in the term."
-msgstr "依固定利率將一系列等額付款按期數折現，計算其現值。"
-
-#. Periodic Interest Rate Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:362
-msgid ""
-"Calculates the periodic interest necessary to increase an investment to a "
-"future value, over the number of compounding periods."
-msgstr "計算投資要達到未來特定價值，在指定複利期數下所需的每期利率。"
-
-#. Title of Straight-Line Depreciation dialog
-#: src/ui/buttons-financial.ui:391
-msgid "Straight-Line Depreciation"
-msgstr "直線法折舊"
-
-#. Straight-Line Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:418
-msgid ""
-"Calculates the straight-line depreciation of an asset for one period. The "
-"straight-line method of depreciation divides the depreciable cost evenly "
-"over the useful life of an asset. The useful life is the number of periods, "
-"typically years, over which an asset is depreciated."
-msgstr ""
-"計算資產單一期間的直線折舊額。直線折舊法是將資產的可折舊成本在其耐用年限內平"
-"均分攤。耐用年限是指資產進行折舊的期間數，通常以年為單位。"
-
-#. Straight-Line Depreciation Dialog: Label before salvage input
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
-#: src/ui/buttons-financial.ui:429 src/ui/buttons-financial.ui:485
-msgid "Salvage"
-msgstr "剩餘價值"
-
-#. Title of Sum-of-the-Years’-Digits Depreciation dialog
-#: src/ui/buttons-financial.ui:447
-msgid "Sum-of-the-Years’-Digits Depreciation"
-msgstr "年數總和法折舊"
-
-#. Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:474
-msgid ""
-"Calculates the depreciation allowance on an asset for a specified period of "
-"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
-"accelerates the rate of depreciation, so that more depreciation expense "
-"occurs in earlier periods than in later ones. The useful life is the number "
-"of periods, typically years, over which an asset is depreciated."
-msgstr ""
-"使用年數合計法計算資產在特定期間的折舊額。這種折舊方法採用加速折舊的概念，使"
-"前期的折舊費用高於後期。耐用年限是指資產進行折舊的期間數，通常以年為單位。"
-
-#. Title of Payment Period dialog
-#: src/ui/buttons-financial.ui:509
-msgid "Payment Period"
-msgstr "付款期間"
-
-#. Payment Period Dialog: Description of calculation
-#: src/ui/buttons-financial.ui:536
-msgid ""
-"Calculates the number of payment periods that are necessary during the term "
-"of an ordinary annuity, to accumulate a future value, at a periodic interest "
-"rate."
-msgstr "計算普通年金累積至未來值所需的付款期數，按照某一定期利率。"
-
-#: src/ui/buttons-financial.ui:1014
-msgid "Currency Conversion"
-msgstr "貨幣換算"
-
-#. Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
-#: src/ui/buttons-financial.ui:1045
-msgid "Ctrm"
-msgstr "Ctrm"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1062
-msgid "Ddb"
-msgstr "Ddb"
-
-#: src/ui/buttons-financial.ui:1065
-msgid "Double Declining Depreciation"
-msgstr "雙倍餘額遞減法折舊"
-
-#. Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
-#: src/ui/buttons-financial.ui:1079
-msgid "Fv"
-msgstr "Fv"
-
-#: src/ui/buttons-financial.ui:1099
-msgid "Financial Term"
-msgstr "理財期數"
-
-#. Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1113
-msgid "Syd"
-msgstr "Syd"
-
-#: src/ui/buttons-financial.ui:1116
-msgid "Sum of the Years Digits Depreciation"
-msgstr "年數總和法折舊"
-
-#. Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
-#: src/ui/buttons-financial.ui:1130
-msgid "Sln"
-msgstr "Sln"
-
-#: src/ui/buttons-financial.ui:1133
-msgid "Straight Line Depreciation"
-msgstr "直線法折舊"
-
-#. Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
-#: src/ui/buttons-financial.ui:1147
-msgid "Rate"
-msgstr "Rate"
-
-#. Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
-#: src/ui/buttons-financial.ui:1164
-msgid "Pv"
-msgstr "Pv"
-
-#. Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
-#: src/ui/buttons-financial.ui:1181
-msgid "Pmt"
-msgstr "Pmt"
-
-#. Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
-#: src/ui/buttons-financial.ui:1198
-msgid "Gpm"
-msgstr "Gpm"
-
-#: src/ui/buttons-programming.ui:17
+#: lib/unit.vala:183
+#, fuzzy
+#| msgid "Numeric Base"
+msgid "Number Base"
+msgstr "數基"
+
+#: lib/unit.vala:184 src/buttons-programming.vala:168
+#: src/ui/buttons-programming.blp:2590
 msgid "Binary"
 msgstr "二進位"
 
-#: src/ui/buttons-programming.ui:18
+#: lib/unit.vala:185 src/buttons-programming.vala:173
+#: src/ui/buttons-programming.blp:2596
 msgid "Octal"
 msgstr "八進位"
 
-#: src/ui/buttons-programming.ui:19
+#: lib/unit.vala:186 src/buttons-programming.vala:178
+#: src/ui/buttons-programming.blp:2602
 msgid "Decimal"
 msgstr "十進位"
 
-#: src/ui/buttons-programming.ui:20
+#: lib/unit.vala:187 src/buttons-programming.vala:183
+#: src/ui/buttons-programming.blp:2608
 msgid "Hexadecimal"
 msgstr "十六進位"
 
-#: src/ui/buttons-programming.ui:61
-msgid "Number Base Conversion"
-msgstr "進位制換算"
+#: search-provider/search-provider.vala:206
+#, fuzzy
+#| msgid "Calculator"
+msgid "Open in Calculator"
+msgstr "計算機"
 
-#: src/ui/buttons-programming.ui:1784
-msgid "Shift Left"
-msgstr "左移"
+#: search-provider/search-provider.vala:239
+#, fuzzy
+#| msgid "Result Format"
+msgid "Result copied"
+msgstr "結果格式"
 
-#: src/ui/buttons-programming.ui:1799
-msgid "Shift Right"
-msgstr "右移"
+#: search-provider/search-provider.vala:240
+msgid "Result was copied successfully"
+msgstr ""
 
-#: src/ui/buttons-programming.ui:1814
-msgid "Boolean Exclusive OR"
-msgstr "布林排除 OR"
+#: src/buttons-advanced.vala:87 src/math-preferences.vala:134
+msgid "Degrees"
+msgstr "度"
 
-#: src/ui/buttons-programming.ui:1829
-msgid "Boolean OR"
-msgstr "布林 OR"
+#: src/buttons-advanced.vala:89
+#, fuzzy, c-format
+#| msgid "_Angle Units"
+msgid "Angle Unit: %s"
+msgstr "角度單位(_A)"
 
-#: src/ui/buttons-programming.ui:1845
-msgid "Boolean AND"
-msgstr "布林 AND"
+#: src/buttons-conversion.vala:125 src/buttons-conversion.vala:130
+#: src/buttons-conversion.vala:137 src/buttons-conversion.vala:142
+msgid "Not Available"
+msgstr ""
 
-#: src/ui/buttons-programming.ui:1861
-msgid "Boolean NOT"
-msgstr "布林 NOT"
+#: src/buttons-programming.vala:205
+#, c-format
+msgid "%d-bit"
+msgid_plural "%d-bit"
+msgstr[0] "%d 位元"
 
-#: src/ui/buttons-programming.ui:1877
-msgid "One’s Complement"
-msgstr "1 的補數"
-
-#: src/ui/buttons-programming.ui:1893
-msgid "Two’s Complement"
-msgstr "2 的補數"
-
-#: src/ui/buttons-programming.ui:1967
-msgid "Binary Logarithm"
-msgstr "位元組對數"
-
-#: src/ui/buttons-programming.ui:2025
-msgid "Integer Component"
-msgstr "整數部分"
-
-#: src/ui/buttons-programming.ui:2041
-msgid "Fractional Component"
-msgstr "小數部分"
-
-#. Title of insert character code dialog
-#: src/ui/buttons-programming.ui:2072 src/ui/buttons-programming.ui:2122
-msgid "Insert Character Code"
-msgstr "插入字元代碼"
-
-#: src/ui/buttons-programming.ui:2105
-msgid "Change Word Size"
-msgstr "更改字組長度"
-
-#. Insert ASCII dialog: Label before character entry
-#: src/ui/buttons-programming.ui:2154
-msgid "Character"
-msgstr "字元"
-
-#. Insert ASCII dialog: Button to insert selected character
-#: src/ui/buttons-programming.ui:2182
-msgid "_Insert"
-msgstr "插入(_I)"
-
-#. Translators: Do not translate possible mode names basic, advanced, financial, programming and keyboard
+#. Translators: Do not translate possible mode names basic, advanced, financial, programming, keyboard and conversion
 #: src/gnome-calculator.vala:22
-msgid "Start in given mode (basic, advanced, financial, programming, keyboard)"
+#, fuzzy
+#| msgid ""
+#| "Start in given mode (basic, advanced, financial, programming, keyboard)"
+msgid ""
+"Start in given mode (basic, advanced, financial, programming, keyboard, "
+"conversion)"
 msgstr ""
 "以指定模式啟動：\n"
 "\t\t\t      basic\t\t基本模式\n"
@@ -2568,12 +2687,14 @@ msgid "Show release version"
 msgstr "輸出版本資訊"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:289
-msgid "© 1986–2023 The Calculator authors"
+#: src/gnome-calculator.vala:291
+#, fuzzy, c-format
+#| msgid "© 1986–2023 The Calculator authors"
+msgid "© 1986–%d The Calculator authors"
 msgstr "© 1986-2010 《計算機》作者群"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:295
+#: src/gnome-calculator.vala:297
 msgid "translator-credits"
 msgstr ""
 "如對翻譯有任何意見，請送一封電子郵件給\n"
@@ -2584,412 +2705,1382 @@ msgstr ""
 "Freddy Cheng <freddy4212@gmail.com>, 2022.\n"
 "Yi-Jyun Pan <me@pan93.com>, 2025."
 
-#: src/gnome-calculator.vala:299
-msgid "Exchange rate data providers"
+#: src/gnome-calculator.vala:301
+#, fuzzy
+#| msgid "Exchange rate data providers"
+msgid "Exchange Rate Data Providers"
 msgstr "匯率資料提供者"
 
-#: src/gnome-calculator.vala:299
+#: src/gnome-calculator.vala:301
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "匯率資料由 %s 提供"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Close All?"
 msgstr "確定全部關閉？"
 
-#: src/gnome-calculator.vala:307
+#: src/gnome-calculator.vala:309
 msgid "Are you sure you want to close all open windows?"
 msgstr "確定關閉所有視窗？"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
+#: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
+#: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
+#: src/ui/buttons-financial.blp:1283 src/ui/buttons-financial.blp:1339
+#: src/ui/buttons-financial.blp:1401 src/ui/buttons-programming.blp:2563
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: src/gnome-calculator.vala:311
 msgid "Close _All"
 msgstr "全部關閉(_A)"
 
-#: src/math-buttons.vala:303 src/math-buttons.vala:752
-#: src/math-buttons.vala:768
-#, c-format
-msgid "%d-bit"
-msgid_plural "%d-bit"
-msgstr[0] "%d 位元"
+#: src/math-converter.vala:612 src/math-converter.vala:630
+msgid "Error"
+msgstr ""
 
-#: src/math-buttons.vala:713
-msgid "Negative [-]"
-msgstr "負號 [-]"
-
-#: src/ui/math-converter.ui:134
-msgid "Currency Conversion Disabled"
-msgstr "已停用貨幣換算"
-
-#: src/ui/math-converter.ui:135
-msgid "Enable in preferences to convert currencies"
-msgstr "若要換算貨幣，請在偏好設定中啟用"
-
-#: src/ui/math-converter.ui:145
-msgid "_Copy"
-msgstr "複製(_C)"
-
-#: src/ui/math-converter.ui:149
-msgid "_Paste"
-msgstr "貼上(_P)"
-
-#: src/math-display.vala:646
+#: src/math-display.vala:694
 msgid "Defined Functions"
 msgstr "定義的函數"
 
-#: src/math-display.vala:691
-msgid "Built-in keywords"
+#: src/math-display.vala:742
+#, fuzzy
+#| msgid "Built-in keywords"
+msgid "Built-in Keywords"
 msgstr "內建關鍵字"
 
-#: src/math-display.vala:735
-msgid "Defined currencies"
+#: src/math-display.vala:794
+#, fuzzy
+#| msgid "Defined currencies"
+msgid "Defined Currencies"
 msgstr "定義貨幣"
 
-#: src/math-display.vala:785
+#: src/math-display.vala:843
 msgid "Defined Variables"
 msgstr "定義的變數"
 
-#: src/ui/math-function-popover.ui:29
-msgid "New function"
-msgstr "新增函式"
+#: src/math-function-popover.vala:185
+msgid "Can not use defined variable or constant names"
+msgstr ""
 
-#: src/ui/math-function-popover.ui:43
-msgid "Select no. of arguments"
-msgstr "選取參數編號"
+#: src/math-function-popover.vala:189
+msgid "Can not use built-in function or operator names"
+msgstr ""
 
-#: src/math-preferences.vala:116
+#: src/math-function-popover.vala:192
+#, fuzzy
+#| msgid "%s: Invalid variable name, can not start with a digit"
+msgid "Function name can not start with a digit"
+msgstr "%s：變數名稱無效，不能以數字開頭"
+
+#: src/math-function-popover.vala:195
+#, fuzzy
+#| msgid ""
+#| "%s: Invalid variable name, can only contain digits, letters and "
+#| "underscores"
+msgid "Function name can only contain digits, letters and underscores"
+msgstr "%s：變數名稱無效，只能有數字、字母和底線"
+
+#: src/math-popover.vala:110
+msgid "Edit"
+msgstr ""
+
+#: src/math-popover.vala:120
+msgid "Delete"
+msgstr ""
+
+#: src/math-preferences.vala:147 src/ui/buttons-programming.blp:2618
 msgid "8-bit"
 msgstr "8 位元"
 
-#: src/math-preferences.vala:118
+#: src/math-preferences.vala:149 src/ui/buttons-programming.blp:2624
 msgid "16-bit"
 msgstr "16 位元"
 
-#: src/math-preferences.vala:120
+#: src/math-preferences.vala:151 src/ui/buttons-programming.blp:2630
 msgid "32-bit"
 msgstr "32 位元"
 
-#: src/math-preferences.vala:122
+#: src/math-preferences.vala:153 src/ui/buttons-programming.blp:2636
 msgid "64-bit"
 msgstr "64 位元"
 
-#: src/math-preferences.vala:131
+#: src/math-preferences.vala:162
 msgid "Never"
 msgstr "永不"
 
-#: src/math-preferences.vala:133
+#: src/math-preferences.vala:164
 msgid "Daily"
 msgstr "每天"
 
-#: src/math-preferences.vala:135
+#: src/math-preferences.vala:166
 msgid "Weekly"
 msgstr "每週"
 
-#: src/ui/math-preferences.ui:18
-msgid "Number of _Decimals"
-msgstr "小數位數(_D)"
+#: src/math-preferences.vala:175
+#, fuzzy
+#| msgid "Currency"
+msgid "Currency Code"
+msgstr "貨幣"
 
-#: src/ui/math-preferences.ui:27
-msgid "Trailing _Zeroes"
-msgstr "顯示末端的 0 (_Z)"
+#: src/math-preferences.vala:177
+#, fuzzy
+#| msgid "Currency"
+msgid "Currency Name"
+msgstr "貨幣"
 
-#: src/ui/math-preferences.ui:33
-msgid "_Thousands Separators"
-msgstr "顯示千分位符號(_T)"
+#: src/math-preferences.vala:179
+msgid "Both"
+msgstr ""
 
-#: src/ui/math-preferences.ui:39
-msgid "_Angle Units"
-msgstr "角度單位(_A)"
+#: src/math-variable-popover.vala:216
+msgid "Can not use defined function or operator names"
+msgstr ""
 
-#: src/ui/math-preferences.ui:45
-msgid "Word _Size"
-msgstr "字組長度(_S)"
+#: src/math-variable-popover.vala:219
+msgid "Can not use built-in variable or constant names"
+msgstr ""
 
-#: src/ui/math-preferences.ui:51
-msgid "E_xchange Rate Refresh Interval"
-msgstr "匯率更新週期(_X)"
-
-#: src/ui/math-shortcuts.ui:13
-msgctxt "shortcut window"
-msgid "General"
-msgstr "一般"
-
-#: src/ui/math-shortcuts.ui:17
-msgctxt "shortcut window"
-msgid "Open a new window"
-msgstr "開啟新視窗"
-
-#: src/ui/math-shortcuts.ui:23
-msgctxt "shortcut window"
-msgid "Close current window"
-msgstr "關閉目前視窗"
-
-#: src/ui/math-shortcuts.ui:29
-msgctxt "shortcut window"
-msgid "Quit the application"
-msgstr "退出應用程式"
-
-#: src/ui/math-shortcuts.ui:35
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "顯示求助"
-
-#: src/ui/math-shortcuts.ui:41
-msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "開啟選單"
-
-#: src/ui/math-shortcuts.ui:47
-msgctxt "shortcut window"
-msgid "Show preferences"
-msgstr "顯示偏好設定"
-
-#: src/ui/math-shortcuts.ui:53
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "鍵盤捷徑鍵"
-
-#: src/ui/math-shortcuts.ui:59
-msgctxt "shortcut window"
-msgid "Clear history"
-msgstr "清除紀錄"
-
-#: src/ui/math-shortcuts.ui:66
-msgctxt "shortcut window"
-msgid "Switching modes"
-msgstr "切換模式"
-
-#: src/ui/math-shortcuts.ui:70
-msgctxt "shortcut window"
-msgid "Switch to Basic mode"
-msgstr "切換至基本模式"
-
-#: src/ui/math-shortcuts.ui:76
-msgctxt "shortcut window"
-msgid "Switch to Advanced mode"
-msgstr "切換至進階模式"
-
-#: src/ui/math-shortcuts.ui:82
-msgctxt "shortcut window"
-msgid "Switch to Financial mode"
-msgstr "切換至財務模式"
-
-#: src/ui/math-shortcuts.ui:88
-msgctxt "shortcut window"
-msgid "Switch to Programming mode"
-msgstr "切換至程式設計模式"
-
-#: src/ui/math-shortcuts.ui:94
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode"
-msgstr "切換至鍵盤模式"
-
-#: src/ui/math-shortcuts.ui:100
-msgctxt "shortcut window"
-msgid "Switch to Conversion mode"
-msgstr "切換至換算模式"
-
-#: src/ui/math-shortcuts.ui:107
-msgctxt "shortcut window"
-msgid "Keyboard entry"
-msgstr "鍵盤項目"
-
-#: src/ui/math-shortcuts.ui:111
-msgctxt "shortcut window"
-msgid "Multiply (×)"
-msgstr "乘號 (×)"
-
-#: src/ui/math-shortcuts.ui:117
-msgctxt "shortcut window"
-msgid "Divide (÷)"
-msgstr "除號 (÷)"
-
-#: src/ui/math-shortcuts.ui:123
-msgctxt "shortcut window"
-msgid "Square root (√)"
-msgstr "平方根 (√)"
-
-#: src/ui/math-shortcuts.ui:129
-msgctxt "shortcut window"
-msgid "Inverse"
-msgstr "反轉"
-
-#: src/ui/math-shortcuts.ui:135
-msgctxt "shortcut window"
-msgid "Pi (π)"
-msgstr "圓周率(π)"
-
-#: src/ui/math-shortcuts.ui:141
-msgctxt "shortcut window"
-msgid "Enter numbers in scientific format"
-msgstr "以科學記號格式輸入數字"
-
-#: src/ui/math-shortcuts.ui:148
-msgctxt "shortcut window"
-msgid "Programming mode"
-msgstr "程式設計模式"
-
-#: src/ui/math-shortcuts.ui:152
-msgctxt "shortcut window"
-msgid "Switch to binary"
-msgstr "切換至二進位"
-
-#: src/ui/math-shortcuts.ui:158
-msgctxt "shortcut window"
-msgid "Switch to octal"
-msgstr "切換至八進位"
-
-#: src/ui/math-shortcuts.ui:164
-msgctxt "shortcut window"
-msgid "Switch to decimal"
-msgstr "切換至十進位"
-
-#: src/ui/math-shortcuts.ui:170
-msgctxt "shortcut window"
-msgid "Switch to hexadecimal"
-msgstr "切換至十六進位"
-
-#: src/ui/math-shortcuts.ui:177
-msgctxt "shortcut window"
-msgid "Others"
-msgstr "其他"
-
-#: src/ui/math-shortcuts.ui:181
-msgctxt "shortcut window"
-msgid "Copy"
-msgstr "複製"
-
-#: src/ui/math-shortcuts.ui:187
-msgctxt "shortcut window"
-msgid "Paste"
-msgstr "貼上"
-
-#: src/ui/math-shortcuts.ui:193
-msgctxt "shortcut window"
-msgid "Undo"
-msgstr "還原"
-
-#: src/ui/math-shortcuts.ui:199
-msgctxt "shortcut window"
-msgid "Redo"
-msgstr "重做"
-
-#: src/ui/math-shortcuts.ui:205
-msgctxt "shortcut window"
-msgid "Previous equation"
-msgstr "上一條算式"
-
-#: src/ui/math-shortcuts.ui:211
-msgctxt "shortcut window"
-msgid "Next equation"
-msgstr "下一條算式"
-
-#: src/ui/math-shortcuts.ui:217
-msgctxt "shortcut window"
-msgid "Switch to Keyboard mode (alt.)"
-msgstr "切換至鍵盤模式（替代）"
-
-#: src/ui/math-variable-popover.ui:37
-msgid "Variable name"
-msgstr "變數名稱"
-
-#: src/ui/math-variable-popover.ui:45
-msgid "Store value into existing or new variable"
-msgstr "將數值儲存至現有或新的變數"
-
-#: src/math-variable-popover.vala:94
-#, c-format
-msgid "%s: Invalid variable name, can not start with a digit"
+#: src/math-variable-popover.vala:222
+#, fuzzy
+#| msgid "%s: Invalid variable name, can not start with a digit"
+msgid "Variable name can not start with a digit"
 msgstr "%s：變數名稱無效，不能以數字開頭"
 
-#: src/math-variable-popover.vala:98
-#, c-format
-msgid ""
-"%s: Invalid variable name, can only contain digits, letters and underscores"
+#: src/math-variable-popover.vala:225
+#, fuzzy
+#| msgid ""
+#| "%s: Invalid variable name, can only contain digits, letters and "
+#| "underscores"
+msgid "Variable name can only contain digits, letters and underscores"
 msgstr "%s：變數名稱無效，只能有數字、字母和底線"
 
-#: src/ui/math-window.ui:8 src/math-window.vala:133
+#: src/math-window.vala:137
 msgid "Basic"
 msgstr "基本模式"
 
-#: src/ui/math-window.ui:13 src/math-window.vala:139
+#: src/math-window.vala:143
 msgid "Advanced"
 msgstr "進階模式"
 
-#: src/ui/math-window.ui:18 src/ui/math-window.ui:140 src/math-window.vala:145
+#: src/math-window.vala:149 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "財務模式"
 
-#: src/ui/math-window.ui:23 src/math-window.vala:151
-msgid "Programming"
-msgstr "程式設計模式"
-
-#: src/ui/math-window.ui:28 src/math-window.vala:157
+#: src/math-window.vala:161
 msgid "Keyboard"
 msgstr "鍵盤模式"
 
-#: src/ui/math-window.ui:33 src/math-window.vala:163
+#: src/math-window.vala:167
 msgid "Conversion"
 msgstr "換算"
 
-#: src/ui/math-window.ui:42
+#: src/ui/buttons-advanced.blp:76 src/ui/buttons-basic.blp:21
+#: src/ui/buttons-conversion.blp:21 src/ui/buttons-financial.blp:76
+#: src/ui/buttons-programming.blp:1373
+msgid "Clear Display [Escape]"
+msgstr "清除顯示 [Escape]"
+
+#: src/ui/buttons-advanced.blp:92 src/ui/buttons-basic.blp:37
+#: src/ui/buttons-financial.blp:92 src/ui/buttons-programming.blp:1389
+msgid "Superscript Mode [Ctrl]"
+msgstr "上標數字模式 [Ctrl]"
+
+#: src/ui/buttons-advanced.blp:109 src/ui/buttons-basic.blp:54
+#: src/ui/buttons-financial.blp:109 src/ui/buttons-programming.blp:1406
+msgid "Subscript Mode [Alt]"
+msgstr "下標數字模式 [Alt]"
+
+#. Translators: The label on the memory button
+#: src/ui/buttons-advanced.blp:300 src/ui/buttons-basic.blp:245
+#: src/ui/buttons-financial.blp:300 src/ui/buttons-programming.blp:1705
+msgid "x"
+msgstr "x"
+
+#: src/ui/buttons-advanced.blp:303 src/ui/buttons-basic.blp:248
+#: src/ui/buttons-financial.blp:303 src/ui/buttons-programming.blp:1708
+#, fuzzy
+#| msgid "Variable name"
+msgid "Variables and Constants"
+msgstr "變數名稱"
+
+#: src/ui/buttons-advanced.blp:320 src/ui/buttons-basic.blp:265
+#: src/ui/buttons-financial.blp:320 src/ui/buttons-programming.blp:1725
+msgid "Additional Functions"
+msgstr "額外的函數"
+
+#: src/ui/buttons-advanced.blp:336 src/ui/buttons-basic.blp:281
+#: src/ui/buttons-financial.blp:336 src/ui/buttons-programming.blp:1741
+msgid "Divide [/]"
+msgstr "除號 [/]"
+
+#: src/ui/buttons-advanced.blp:353 src/ui/buttons-basic.blp:298
+#: src/ui/buttons-financial.blp:353 src/ui/buttons-programming.blp:1758
+msgid "Multiply [*]"
+msgstr "乘號 [*]"
+
+#: src/ui/buttons-advanced.blp:370 src/ui/buttons-basic.blp:315
+#: src/ui/buttons-financial.blp:370 src/ui/buttons-programming.blp:1775
+msgid "Subtract [-]"
+msgstr "減號 [-]"
+
+#: src/ui/buttons-advanced.blp:386 src/ui/buttons-basic.blp:331
+#: src/ui/buttons-financial.blp:386 src/ui/buttons-programming.blp:1791
+msgid "Add [+]"
+msgstr "加號 [+]"
+
+#: src/ui/buttons-advanced.blp:420 src/ui/buttons-basic.blp:365
+#: src/ui/buttons-financial.blp:420 src/ui/buttons-programming.blp:1825
+msgid "Percentage [%]"
+msgstr "百分比 [%]"
+
+#: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382
+#: src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
+#, fuzzy
+#| msgid "End Group [)]"
+msgid "Group [()]"
+msgstr "括號結尾 [)]"
+
+#. Translators: Label on the solve button (clicking this solves the displayed calculation)
+#: src/ui/buttons-advanced.blp:453 src/ui/buttons-basic.blp:398
+#: src/ui/buttons-financial.blp:453 src/ui/buttons-programming.blp:1858
+msgid "="
+msgstr "＝"
+
+#: src/ui/buttons-advanced.blp:455 src/ui/buttons-basic.blp:400
+#: src/ui/buttons-financial.blp:455 src/ui/buttons-programming.blp:1860
+msgid "Calculate Result"
+msgstr "計算結果"
+
+#: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
+#: src/ui/buttons-programming.blp:1888
+msgid "Inverse Modifier [Shift]"
+msgstr ""
+
+#: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
+#: src/ui/buttons-programming.blp:2085
+msgid "Square [Ctrl+2]"
+msgstr "平方 [Ctrl+2]"
+
+#: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
+#: src/ui/buttons-programming.blp:2107
+#, fuzzy
+#| msgid "Square root [Ctrl+R]"
+msgid "Square Root [Ctrl+R]"
+msgstr "平方根 [Ctrl+R]"
+
+#: src/ui/buttons-advanced.blp:760 src/ui/buttons-advanced.blp:827
+#: src/ui/buttons-financial.blp:538 src/ui/buttons-programming.blp:2125
+#: src/ui/buttons-programming.blp:2192
+msgid "Exponent [^ or **]"
+msgstr "指數 [^ 或 **]"
+
+#: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560
+#: src/ui/buttons-programming.blp:2147
+msgid "Nth Root"
+msgstr ""
+
+#: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585
+#: src/ui/buttons-programming.blp:2216
+#, fuzzy
+#| msgid "Logarithm"
+msgid "Common Logarithm"
+msgstr "對數"
+
+#: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602
+#: src/ui/buttons-programming.blp:2233
+msgid "Base-10 Exponential"
+msgstr ""
+
+#: src/ui/buttons-advanced.blp:909 src/ui/buttons-financial.blp:643
+msgid "Natural Exponential"
+msgstr ""
+
+#: src/ui/buttons-advanced.blp:999
+msgid "Inverse [Ctrl+I]"
+msgstr "反轉 [Ctrl+I]"
+
+#: src/ui/buttons-advanced.blp:1020
+#, fuzzy
+#| msgid "Round"
+msgid "Round [[]]"
+msgstr "四捨五入"
+
+#: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
+#, fuzzy
+#| msgid "Absolute Value [|]"
+msgid "Absolute Value [||]"
+msgstr "絕對值 [|]"
+
+#: src/ui/buttons-advanced.blp:1062 src/ui/buttons-programming.blp:2427
+msgid "Factorial [!]"
+msgstr "階乘 [!]"
+
+#: src/ui/buttons-advanced.blp:1099 src/ui/buttons-conversion.blp:521
+msgid "Pi [Ctrl+P]"
+msgstr "圓周率 [Ctrl+P]"
+
+#: src/ui/buttons-advanced.blp:1133
+msgid "Imaginary Unit"
+msgstr "虛數單位"
+
+#: src/ui/buttons-advanced.blp:1150
+msgid "Factorize [Ctrl+F]"
+msgstr "因數分解 [Ctrl+F]"
+
+#: src/ui/buttons-conversion.blp:37
+msgid "Switch Conversion Units"
+msgstr "切換換算單位"
+
+#: src/ui/buttons-conversion.blp:53 src/ui/math-display.blp:45
+msgid "Backspace"
+msgstr "倒退鍵"
+
+#: src/ui/buttons-conversion.blp:510
+msgid "Degrees, Minutes, Seconds"
+msgstr ""
+
+#: src/ui/buttons-conversion.blp:533
+#, fuzzy
+#| msgid "Change Word Size"
+msgid "Change Sign"
+msgstr "更改字組長度"
+
+#: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
+#, fuzzy
+#| msgid "Exchange rates data by %s"
+msgid "Exchange Rate Details"
+msgstr "匯率資料由 %s 提供"
+
+#: src/ui/buttons-conversion.blp:575 src/ui/buttons-conversion.blp:600
+msgid "Updated"
+msgstr ""
+
+#: src/ui/buttons-conversion.blp:583 src/ui/buttons-conversion.blp:608
+#, fuzzy
+#| msgid "Source units"
+msgid "Source"
+msgstr "來源單位"
+
+#: src/ui/buttons-conversion.blp:625
+msgid "_Refresh Rates"
+msgstr ""
+
+#. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
+#: src/ui/buttons-financial.blp:669
+msgid "Ctrm"
+msgstr "Ctrm"
+
+#. Translators: Title of Compounding Term dialog
+#: src/ui/buttons-financial.blp:672 src/ui/buttons-financial.blp:887
+msgid "Compounding Term"
+msgstr "複利期間"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the double-declining balance method. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:688
+msgid "Ddb"
+msgstr "Ddb"
+
+#: src/ui/buttons-financial.blp:691
+msgid "Double Declining Depreciation"
+msgstr "雙倍餘額遞減法折舊"
+
+#. Translators: Calculates the future value of an investment based on a series of equal payments, each of amount pmt, at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Future_value
+#: src/ui/buttons-financial.blp:707
+msgid "Fv"
+msgstr "Fv"
+
+#. Translators: Compounding Term Dialog: Label before future value input
+#. Translators: Title of Future Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before future value input
+#. Translators: Payment Period Dialog: Label before future value input
+#: src/ui/buttons-financial.blp:710 src/ui/buttons-financial.blp:927
+#: src/ui/buttons-financial.blp:999 src/ui/buttons-financial.blp:1251
+#: src/ui/buttons-financial.blp:1431
+msgid "Future Value"
+msgstr "終值"
+
+#. Translators: Calculates the resale price of a product, based on the product cost and the wanted gross profit margin. See also: http://en.wikipedia.org/wiki/Gross_profit_margin
+#: src/ui/buttons-financial.blp:726
+msgid "Gpm"
+msgstr "Gpm"
+
+#. Translators: Title of Gross Profit Margin dialog
+#: src/ui/buttons-financial.blp:729 src/ui/buttons-financial.blp:1055
+msgid "Gross Profit Margin"
+msgstr "毛利率"
+
+#. Translators: Calculates the amount of the periodic payment of a loan, where payments are made at the end of each payment period. See also: http://en.wikipedia.org/wiki/Amortization_schedule
+#: src/ui/buttons-financial.blp:745
+msgid "Pmt"
+msgstr "Pmt"
+
+#. Translators: Future Value Dialog: Label before periodic payment input
+#. Translators: Title of Periodic Payment dialog
+#. Translators: Present Value Dialog: Label before periodic payment input
+#. Translators: Payment Period Dialog: Label before periodic payment input
+#: src/ui/buttons-financial.blp:748 src/ui/buttons-financial.blp:1033
+#: src/ui/buttons-financial.blp:1105 src/ui/buttons-financial.blp:1195
+#: src/ui/buttons-financial.blp:1425
+msgid "Periodic Payment"
+msgstr "定期付款"
+
+#. Translators: Calculates the present value of an investment based on a series of equal payments, each of amount pmt, discounted at a periodic interest rate of int, over the number of payment periods in the term. See also: http://en.wikipedia.org/wiki/Present_value
+#: src/ui/buttons-financial.blp:764
+msgid "Pv"
+msgstr "Pv"
+
+#. Translators: Compounding Term Dialog: Label before present value input
+#. Translators: Title of Present Value dialog
+#. Translators: Periodic Interest Rate Dialog: Label before present value input
+#: src/ui/buttons-financial.blp:767 src/ui/buttons-financial.blp:933
+#: src/ui/buttons-financial.blp:1161 src/ui/buttons-financial.blp:1257
+msgid "Present Value"
+msgstr "現值"
+
+#. Translators: Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
+#: src/ui/buttons-financial.blp:783
+msgid "Rate"
+msgstr "Rate"
+
+#. Translators: Compounding Term Dialog: Label before periodic interest rate input
+#. Translators: Future Value Dialog: Label before periodic interest rate input
+#. Translators: Periodic Payment Dialog: Label before periodic interest rate input
+#. Translators: Present Value Dialog: Label before periodic interest rate input
+#. Translators: Title of Periodic Interest Rate dialog
+#. Translators: Payment Period Dialog: Label before periodic interest rate input
+#: src/ui/buttons-financial.blp:786 src/ui/buttons-financial.blp:921
+#: src/ui/buttons-financial.blp:1039 src/ui/buttons-financial.blp:1145
+#: src/ui/buttons-financial.blp:1201 src/ui/buttons-financial.blp:1217
+#: src/ui/buttons-financial.blp:1437
+msgid "Periodic Interest Rate"
+msgstr "定期利率"
+
+#. Translators: Calculates the straight-line depreciation of an asset for one period. The depreciable cost is cost - salvage. The straight-line method of depreciation divides the depreciable cost evenly over the useful life of an asset. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:802
+msgid "Sln"
+msgstr "Sln"
+
+#: src/ui/buttons-financial.blp:805
+msgid "Straight Line Depreciation"
+msgstr "直線法折舊"
+
+#. Translators: Calculates the depreciation allowance on an asset for a specified period of time, using the Sum-Of-The-Years’-Digits method. This method of depreciation accelerates the rate of depreciation, so that more depreciation expense occurs in earlier periods than in later ones. The depreciable cost is cost - salvage. The useful life is the number of periods, typically years, over which an asset is depreciated. See also: http://en.wikipedia.org/wiki/Depreciation
+#: src/ui/buttons-financial.blp:821
+msgid "Syd"
+msgstr "Syd"
+
+#: src/ui/buttons-financial.blp:824
+msgid "Sum of the Years Digits Depreciation"
+msgstr "年數總和法折舊"
+
+#. Translators: Calculates the number of payment periods that are necessary during the term of an ordinary annuity, to accumulate a future value of fv, at a periodic interest rate of int. Each payment is equal to amount pmt. See also: http://en.wikipedia.org/wiki/Annuity_(finance_theory)
+#. Translators: Periodic Payment Dialog: Label before term input
+#. Translators: Periodic Interest Rate Dialog: Label before term input
+#: src/ui/buttons-financial.blp:840 src/ui/buttons-financial.blp:1151
+#: src/ui/buttons-financial.blp:1263
+msgid "Term"
+msgstr "Term"
+
+#: src/ui/buttons-financial.blp:843
+msgid "Financial Term"
+msgstr "理財期數"
+
+#: src/ui/buttons-financial.blp:858 src/ui/math-preferences.blp:78
+msgid "Currency Conversion"
+msgstr "貨幣換算"
+
+#. Translators: Compounding Term Dialog: Calculate button
+#. Translators: Double-Declining Depreciation Dialog: Calculate button
+#. Translators: Future Value Dialog: Calculate button
+#. Translators: Gross Profit Margin Dialog: Calculate button
+#. Translators: Periodic Payment Dialog: Calculate button
+#. Translators: Present Value Dialog: Calculate button
+#. Translators: Periodic Interest Rate Dialog: Calculate button
+#. Translators: Straight-Line Depreciation Dialog: Calculate button
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Calculate button
+#. Translators: Payment Period Dialog: Calculate button
+#: src/ui/buttons-financial.blp:905 src/ui/buttons-financial.blp:961
+#: src/ui/buttons-financial.blp:1017 src/ui/buttons-financial.blp:1073
+#: src/ui/buttons-financial.blp:1123 src/ui/buttons-financial.blp:1179
+#: src/ui/buttons-financial.blp:1235 src/ui/buttons-financial.blp:1291
+#: src/ui/buttons-financial.blp:1347 src/ui/buttons-financial.blp:1409
+msgid "C_alculate"
+msgstr "計算(_A)"
+
+#. Translators: Compounding Term Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:916
+msgid ""
+"Calculates the number of compounding periods necessary to increase an "
+"investment of present value to a future value, at a fixed interest rate per "
+"compounding period."
+msgstr ""
+"計算一項投資的現值要至達某未來值所需的複利期數，每個複利期間的利率為固定的。"
+
+#. Translators: Title of Double-Declining Depreciation dialog
+#: src/ui/buttons-financial.blp:943
+msgid "Double-Declining Depreciation"
+msgstr "雙倍餘額遞減法"
+
+#. Translators: Double-Declining Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:972
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the double-declining balance method."
+msgstr "計算在指定的期間中某資產的折舊免稅額，使用雙倍餘額遞減法。"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before cost input
+#. Translators: Gross Profit Margin Dialog: Label before cost input
+#. Translators: Straight-Line Depreciation Dialog: Label before cost input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
+#: src/ui/buttons-financial.blp:977 src/ui/buttons-financial.blp:1089
+#: src/ui/buttons-financial.blp:1307 src/ui/buttons-financial.blp:1363
+msgid "Cost"
+msgstr "花費"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before life input
+#. Translators: Straight-Line Depreciation Dialog: Label before life input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before life input
+#: src/ui/buttons-financial.blp:983 src/ui/buttons-financial.blp:1319
+#: src/ui/buttons-financial.blp:1375
+msgid "Life"
+msgstr "年限"
+
+#. Translators: Double-Declining Depreciation Dialog: Label before period input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
+#: src/ui/buttons-financial.blp:989 src/ui/buttons-financial.blp:1381
+msgid "Period"
+msgstr "週期"
+
+#. Translators: Future Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1028
+msgid ""
+"Calculates the future value of an investment based on a series of equal "
+"payments at a periodic interest rate over the number of payment periods in "
+"the term."
+msgstr "計算投資的未來值，根據一系列等額付款，按照約定付款期數的定期利率。"
+
+#. Translators: Future Value Dialog: Label before number of periods input
+#. Translators: Present Value Dialog: Label before number of periods input
+#: src/ui/buttons-financial.blp:1045 src/ui/buttons-financial.blp:1207
+msgid "Number of Periods"
+msgstr "週期數"
+
+#. Translators: Gross Profit Margin Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1084
+msgid ""
+"Calculates the resale price of a product, based on the product cost and the "
+"wanted gross profit margin."
+msgstr "根據產品成本和希望的毛利，率計算轉售價格的產品。"
+
+#. Translators: Gross Profit Margin Dialog: Label before margin input
+#: src/ui/buttons-financial.blp:1095
+msgid "Margin"
+msgstr "盈餘"
+
+#. Translators: Periodic Payment Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1134
+msgid ""
+"Calculates the amount of the periodic payment of a loan, where payments are "
+"made at the end of each payment period."
+msgstr "計算貸款的每期應付款金額，此還款方式是在每個還款期末支付。"
+
+#. Translators: Periodic Payment Dialog: Label before principal input
+#: src/ui/buttons-financial.blp:1139
+msgid "Principal"
+msgstr "本金"
+
+#. Translators: Present Value Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1190
+msgid ""
+"Calculates the present value of an investment based on a series of equal "
+"payments discounted at a periodic interest rate over the number of payment "
+"periods in the term."
+msgstr "依固定利率將一系列等額付款按期數折現，計算其現值。"
+
+#. Translators: Periodic Interest Rate Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1246
+msgid ""
+"Calculates the periodic interest necessary to increase an investment to a "
+"future value, over the number of compounding periods."
+msgstr "計算投資要達到未來特定價值，在指定複利期數下所需的每期利率。"
+
+#. Translators: Title of Straight-Line Depreciation dialog
+#: src/ui/buttons-financial.blp:1273
+msgid "Straight-Line Depreciation"
+msgstr "直線法折舊"
+
+#. Translators: Straight-Line Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1302
+msgid ""
+"Calculates the straight-line depreciation of an asset for one period. The "
+"straight-line method of depreciation divides the depreciable cost evenly "
+"over the useful life of an asset. The useful life is the number of periods, "
+"typically years, over which an asset is depreciated."
+msgstr ""
+"計算資產單一期間的直線折舊額。直線折舊法是將資產的可折舊成本在其耐用年限內平"
+"均分攤。耐用年限是指資產進行折舊的期間數，通常以年為單位。"
+
+#. Translators: Straight-Line Depreciation Dialog: Label before salvage input
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
+#: src/ui/buttons-financial.blp:1313 src/ui/buttons-financial.blp:1369
+msgid "Salvage"
+msgstr "剩餘價值"
+
+#. Translators: Title of Sum-of-the-Years’-Digits Depreciation dialog
+#: src/ui/buttons-financial.blp:1329
+msgid "Sum-of-the-Years’-Digits Depreciation"
+msgstr "年數總和法折舊"
+
+#. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1358
+msgid ""
+"Calculates the depreciation allowance on an asset for a specified period of "
+"time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
+"accelerates the rate of depreciation, so that more depreciation expense "
+"occurs in earlier periods than in later ones. The useful life is the number "
+"of periods, typically years, over which an asset is depreciated."
+msgstr ""
+"使用年數合計法計算資產在特定期間的折舊額。這種折舊方法採用加速折舊的概念，使"
+"前期的折舊費用高於後期。耐用年限是指資產進行折舊的期間數，通常以年為單位。"
+
+#. Translators: Title of Payment Period dialog
+#: src/ui/buttons-financial.blp:1391
+msgid "Payment Period"
+msgstr "付款期間"
+
+#. Translators: Payment Period Dialog: Description of calculation
+#: src/ui/buttons-financial.blp:1420
+msgid ""
+"Calculates the number of payment periods that are necessary during the term "
+"of an ordinary annuity, to accumulate a future value, at a periodic interest "
+"rate."
+msgstr "計算普通年金累積至未來值所需的付款期數，按照某一定期利率。"
+
+#: src/ui/buttons-programming.blp:1904
+msgid "Bitwise AND"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:1922
+msgid "Bitwise NAND"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:1941
+msgid "Bitwise OR"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:1959
+msgid "Bitwise NOR"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:1977
+msgid "Bitwise NOT"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:1995
+#, fuzzy
+#| msgid "Boolean Exclusive OR"
+msgid "Bitwise Exclusive OR"
+msgstr "布林排除 OR"
+
+#: src/ui/buttons-programming.blp:2013
+#, fuzzy
+#| msgid "Boolean Exclusive OR"
+msgid "Bitwise Exclusive NOR"
+msgstr "布林排除 OR"
+
+#: src/ui/buttons-programming.blp:2031
+#, fuzzy
+#| msgid "Shift left [<]"
+msgid "Left Shift [<<]"
+msgstr "向左移 [<]"
+
+#: src/ui/buttons-programming.blp:2049
+msgid "Right Shift [>>]"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:2067
+msgid "Unsigned Right Shift [>>>]"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:2257
+msgid "Binary Logarithm"
+msgstr "位元組對數"
+
+#: src/ui/buttons-programming.blp:2274
+#, fuzzy
+#| msgid "Exponent"
+msgid "Base-2 Exponential"
+msgstr "指數"
+
+#: src/ui/buttons-programming.blp:2364
+#, fuzzy
+#| msgid "Pi [Ctrl+P]"
+msgid "Ceiling [Ctrl+[]]"
+msgstr "圓周率 [Ctrl+P]"
+
+#: src/ui/buttons-programming.blp:2385
+msgid "Floor [Alt+[]]"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:2449
+msgid "Change Base"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:2468
+msgid "Change Word Size"
+msgstr "更改字組長度"
+
+#. Translators: Title of insert character code dialog
+#: src/ui/buttons-programming.blp:2486 src/ui/buttons-programming.blp:2504
+msgid "Insert Character Code"
+msgstr "插入字元代碼"
+
+#. Translators: Insert character code dialog: Label before character entry
+#: src/ui/buttons-programming.blp:2535
+msgid "Character"
+msgstr "字元"
+
+#: src/ui/buttons-programming.blp:2542
+#, fuzzy
+#| msgid "Conversion"
+msgid "Convert to"
+msgstr "換算"
+
+#: src/ui/buttons-programming.blp:2546
+msgid "Unicode Code Point"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:2547
+msgid "UTF-8 Encoding"
+msgstr ""
+
+#: src/ui/buttons-programming.blp:2548
+msgid "UTF-16 Encoding"
+msgstr ""
+
+#. Translators: Insert character code dialog: Button to insert selected character
+#: src/ui/buttons-programming.blp:2574
+msgid "_Insert"
+msgstr "插入(_I)"
+
+#: src/ui/math-converter.blp:119
+#, fuzzy
+#| msgid "Exchange rate data providers"
+msgid "Exchange Rates Not Loaded"
+msgstr "匯率資料提供者"
+
+#: src/ui/math-converter.blp:122
+msgid ""
+"<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
+msgstr ""
+
+#: src/ui/math-converter.blp:141
+msgid "_Copy"
+msgstr "複製(_C)"
+
+#: src/ui/math-converter.blp:146
+msgid "_Paste"
+msgstr "貼上(_P)"
+
+#: src/ui/math-function-popover.blp:48
+msgid "Function name"
+msgstr ""
+
+#: src/ui/math-function-popover.blp:57
+msgid "Select no. of arguments"
+msgstr "選取參數編號"
+
+#: src/ui/math-function-popover.blp:62
+#, fuzzy
+#| msgid "New function"
+msgid "Add function"
+msgstr "新增函式"
+
+#: src/ui/math-preferences.blp:11
+#, fuzzy
+#| msgid "Defined currencies"
+msgid "Favorite Currencies"
+msgstr "定義貨幣"
+
+#: src/ui/math-preferences.blp:20
+#, fuzzy
+#| msgid "Source currency"
+msgid "Search currencies"
+msgstr "來源貨幣"
+
+#: src/ui/math-preferences.blp:36
+#, fuzzy
+#| msgid "Result Format"
+msgid "No Results Found"
+msgstr "結果格式"
+
+#: src/ui/math-preferences.blp:37
+msgid "Try a different search"
+msgstr ""
+
+#: src/ui/math-preferences.blp:46
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "General"
+msgid "General"
+msgstr "一般"
+
+#: src/ui/math-preferences.blp:49
+msgid "Number of _Decimals"
+msgstr "小數位數(_D)"
+
+#: src/ui/math-preferences.blp:57
+msgid "Trailing _Zeroes"
+msgstr "顯示末端的 0 (_Z)"
+
+#: src/ui/math-preferences.blp:62
+msgid "_Thousands Separators"
+msgstr "顯示千分位符號(_T)"
+
+#: src/ui/math-preferences.blp:67
+msgid "_Angle Units"
+msgstr "角度單位(_A)"
+
+#: src/ui/math-preferences.blp:72
+#, fuzzy
+#| msgid "Word _Size"
+msgid "_Word Size"
+msgstr "字組長度(_S)"
+
+#: src/ui/math-preferences.blp:81
+msgid "E_xchange Rate Refresh Interval"
+msgstr "匯率更新週期(_X)"
+
+#: src/ui/math-preferences.blp:86
+#, fuzzy
+#| msgid "Currency"
+msgid "_Currency Display"
+msgstr "貨幣"
+
+#: src/ui/math-preferences.blp:91
+msgid "_Show Currencies in Auto-Completion List"
+msgstr ""
+
+#: src/ui/math-preferences.blp:96
+msgid "All"
+msgstr ""
+
+#: src/ui/math-preferences.blp:97
+msgid "Favorite Only"
+msgstr ""
+
+#: src/ui/math-preferences.blp:98
+msgid "None"
+msgstr ""
+
+#: src/ui/math-preferences.blp:104
+#, fuzzy
+#| msgid "Defined currencies"
+msgid "_Favorite Currencies"
+msgstr "定義貨幣"
+
+#: src/ui/math-shortcuts.blp:5
+msgctxt "shortcuts dialog"
+msgid "General"
+msgstr "一般"
+
+#: src/ui/math-shortcuts.blp:9
+msgctxt "shortcuts dialog"
+msgid "Open a New Window"
+msgstr "開啟新視窗"
+
+#: src/ui/math-shortcuts.blp:14
+msgctxt "shortcuts dialog"
+msgid "Close Current Window"
+msgstr "關閉目前視窗"
+
+#: src/ui/math-shortcuts.blp:19
+msgctxt "shortcuts dialog"
+msgid "Quit the Application"
+msgstr "退出應用程式"
+
+#: src/ui/math-shortcuts.blp:24
+msgctxt "shortcuts dialog"
+msgid "Show Help"
+msgstr "顯示求助說明"
+
+#: src/ui/math-shortcuts.blp:29
+msgctxt "shortcuts dialog"
+msgid "Open Menu"
+msgstr "開啟選單"
+
+#: src/ui/math-shortcuts.blp:34
+msgctxt "shortcuts dialog"
+msgid "Show Preferences"
+msgstr "顯示偏好設定"
+
+#: src/ui/math-shortcuts.blp:39
+msgctxt "shortcuts dialog"
+msgid "Keyboard Shortcuts"
+msgstr "鍵盤快捷鍵"
+
+#: src/ui/math-shortcuts.blp:44
+msgctxt "shortcuts dialog"
+msgid "Clear History"
+msgstr "清除紀錄"
+
+#: src/ui/math-shortcuts.blp:49
+msgctxt "shortcuts dialog"
+msgid "Switching Modes"
+msgstr "切換模式"
+
+#: src/ui/math-shortcuts.blp:53
+msgctxt "shortcuts dialog"
+msgid "Switch to Basic Mode"
+msgstr "切換至基本模式"
+
+#: src/ui/math-shortcuts.blp:58
+msgctxt "shortcuts dialog"
+msgid "Switch to Advanced Mode"
+msgstr "切換至進階模式"
+
+#: src/ui/math-shortcuts.blp:63
+msgctxt "shortcuts dialog"
+msgid "Switch to Financial Mode"
+msgstr "切換至財務模式"
+
+#: src/ui/math-shortcuts.blp:68
+msgctxt "shortcuts dialog"
+msgid "Switch to Programming Mode"
+msgstr "切換至程式設計模式"
+
+#: src/ui/math-shortcuts.blp:73
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode"
+msgstr "切換至鍵盤模式"
+
+#: src/ui/math-shortcuts.blp:78
+msgctxt "shortcuts dialog"
+msgid "Switch to Keyboard Mode (alt.)"
+msgstr "切換至鍵盤模式（替代）"
+
+#: src/ui/math-shortcuts.blp:83
+msgctxt "shortcuts dialog"
+msgid "Switch to Conversion Mode"
+msgstr "切換至換算模式"
+
+#: src/ui/math-shortcuts.blp:88
+msgctxt "shortcuts dialog"
+msgid "Programming Mode"
+msgstr "程式設計模式"
+
+#: src/ui/math-shortcuts.blp:92
+msgctxt "shortcuts dialog"
+msgid "Switch to Binary"
+msgstr "切換至二進位"
+
+#: src/ui/math-shortcuts.blp:97
+msgctxt "shortcuts dialog"
+msgid "Switch to Octal"
+msgstr "切換至八進位"
+
+#: src/ui/math-shortcuts.blp:102
+msgctxt "shortcuts dialog"
+msgid "Switch to Decimal"
+msgstr "切換至十進位"
+
+#: src/ui/math-shortcuts.blp:107
+msgctxt "shortcuts dialog"
+msgid "Switch to Hexadecimal"
+msgstr "切換至十六進位"
+
+#: src/ui/math-shortcuts.blp:112
+msgctxt "shortcuts dialog"
+msgid "Keyboard Entry"
+msgstr "鍵盤項目"
+
+#: src/ui/math-shortcuts.blp:116
+msgctxt "shortcuts dialog"
+msgid "Multiply (×)"
+msgstr "乘號 (×)"
+
+#: src/ui/math-shortcuts.blp:121
+msgctxt "shortcuts dialog"
+msgid "Divide (÷)"
+msgstr "除號 (÷)"
+
+#: src/ui/math-shortcuts.blp:126
+msgctxt "shortcuts dialog"
+msgid "Square (²)"
+msgstr "平方 (²)"
+
+#: src/ui/math-shortcuts.blp:131
+msgctxt "shortcuts dialog"
+msgid "Square Root (√)"
+msgstr "平方根 (√)"
+
+#: src/ui/math-shortcuts.blp:136
+#| msgctxt "shortcut window"
+#| msgid "Inverse"
+msgctxt "shortcuts dialog"
+msgid "Inverse (⁻¹)"
+msgstr "倒數 (⁻¹)"
+
+#: src/ui/math-shortcuts.blp:141
+msgctxt "shortcuts dialog"
+msgid "Pi (π)"
+msgstr "圓周率(π)"
+
+#: src/ui/math-shortcuts.blp:146
+msgctxt "shortcuts dialog"
+msgid "Tau (τ)"
+msgstr ""
+
+#: src/ui/math-shortcuts.blp:151
+#| msgid "Degrees"
+msgctxt "shortcuts dialog"
+msgid "Degree (°)"
+msgstr "度 (°)"
+
+#: src/ui/math-shortcuts.blp:156 src/ui/math-shortcuts.blp:168
+msgctxt "shortcuts dialog"
+msgid "Floor (⌊⌋)"
+msgstr ""
+
+#: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
+#, fuzzy
+#| msgid "Ceiling"
+msgctxt "shortcuts dialog"
+msgid "Ceiling (⌈⌉)"
+msgstr "上限"
+
+#: src/ui/math-shortcuts.blp:180
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "Enter numbers in scientific format"
+msgctxt "shortcuts dialog"
+msgid "Enter Numbers in Scientific Format"
+msgstr "以科學記號格式輸入數字"
+
+#: src/ui/math-shortcuts.blp:185
+msgctxt "shortcuts dialog"
+msgid "Enter Subscript Numbers"
+msgstr ""
+
+#: src/ui/math-shortcuts.blp:190
+#, fuzzy
+#| msgid "Superscript mode [Ctrl]"
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Numbers"
+msgstr "上標數字模式 [Ctrl]"
+
+#: src/ui/math-shortcuts.blp:195
+msgctxt "shortcuts dialog"
+msgid "Enter Superscript Minus Sign"
+msgstr ""
+
+#: src/ui/math-shortcuts.blp:200
+msgctxt "shortcuts dialog"
+msgid "Equation"
+msgstr "算式"
+
+#: src/ui/math-shortcuts.blp:204
+msgctxt "shortcuts dialog"
+msgid "Copy"
+msgstr "複製"
+
+#: src/ui/math-shortcuts.blp:209
+msgctxt "shortcuts dialog"
+msgid "Paste"
+msgstr "貼上"
+
+#: src/ui/math-shortcuts.blp:214
+msgctxt "shortcuts dialog"
+msgid "Undo"
+msgstr "還原"
+
+#: src/ui/math-shortcuts.blp:219
+msgctxt "shortcuts dialog"
+msgid "Redo"
+msgstr "重做"
+
+#: src/ui/math-shortcuts.blp:224
+msgctxt "shortcuts dialog"
+msgid "Previous Equation"
+msgstr "上一條算式"
+
+#: src/ui/math-shortcuts.blp:229
+msgctxt "shortcuts dialog"
+msgid "Next Equation"
+msgstr "下一條算式"
+
+#: src/ui/math-shortcuts.blp:234
+msgctxt "shortcuts dialog"
+msgid "Clear Display"
+msgstr "清除顯示"
+
+#: src/ui/math-shortcuts.blp:239
+#, fuzzy
+#| msgid "Factorize"
+msgctxt "shortcuts dialog"
+msgid "Factorize"
+msgstr "因數分解"
+
+#: src/ui/math-variable-popover.blp:37
+msgid "Constants"
+msgstr "常數"
+
+#: src/ui/math-variable-popover.blp:58
+msgid "Variable name"
+msgstr "變數名稱"
+
+#: src/ui/math-variable-popover.blp:67
+msgid "Store value into existing or new variable"
+msgstr "將數值儲存至現有或新的變數"
+
+#: src/ui/math-window.blp:7
+msgid "_Basic"
+msgstr "基本模式(_B)"
+
+#: src/ui/math-window.blp:13
+msgid "_Advanced"
+msgstr "進階模式(_A)"
+
+#: src/ui/math-window.blp:19
+msgid "_Financial"
+msgstr "財務模式(_F)"
+
+#: src/ui/math-window.blp:25
+msgid "_Programming"
+msgstr "程式設計模式(_P)"
+
+#: src/ui/math-window.blp:31
+msgid "_Keyboard"
+msgstr "鍵盤模式(_K)"
+
+#: src/ui/math-window.blp:37
+msgid "_Conversion"
+msgstr "換算(_C)"
+
+#: src/ui/math-window.blp:47
 msgid "_New Window"
 msgstr "新視窗(_N)"
 
-#: src/ui/math-window.ui:49
+#: src/ui/math-window.blp:54
 msgid "_Clear History"
 msgstr "清除紀錄(_C)"
 
-#: src/ui/math-window.ui:56
+#: src/ui/math-window.blp:61
 msgid "Result Format"
 msgstr "結果格式"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "automatic"; other possible options are "_Fixed", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:59
+#: src/ui/math-window.blp:65
 msgid "_Automatic"
 msgstr "自動(_A)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "fixed"; other possible options are "_Automatic", "_Scientific" and "_Engineering"
-#: src/ui/math-window.ui:65
+#: src/ui/math-window.blp:72
 msgid "_Fixed"
 msgstr "固定數字(_F)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "scientific"; other possible options are "_Fixed", "_Automatic" and "_Engineering"
-#: src/ui/math-window.ui:71
+#: src/ui/math-window.blp:79
 msgid "_Scientific"
 msgstr "科學記號(_S)"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
-#: src/ui/math-window.ui:77
+#: src/ui/math-window.blp:86
 msgid "_Engineering"
 msgstr "工程記號(_N)"
 
-#: src/ui/math-window.ui:87
-msgid "Preferences"
-msgstr "偏好設定"
+#: src/ui/math-window.blp:96
+msgid "_Preferences"
+msgstr "偏好設定(_P)"
 
-#: src/ui/math-window.ui:91
-msgid "Keyboard Shortcuts"
-msgstr "鍵盤捷徑鍵"
+#: src/ui/math-window.blp:101
+msgid "_Keyboard Shortcuts"
+msgstr "鍵盤快捷鍵(_K)"
 
-#: src/ui/math-window.ui:95
+#: src/ui/math-window.blp:106
 msgid "_Help"
 msgstr "求助(_H)"
 
-#: src/ui/math-window.ui:99
-msgid "About Calculator"
-msgstr "關於計算機"
+#: src/ui/math-window.blp:111
+msgid "A_bout Calculator"
+msgstr "關於計算機(_B)"
 
-#: src/ui/math-window.ui:118
+#: src/ui/math-window.blp:132
 msgid "Mode Selection"
 msgstr "模式選擇"
 
-#: src/ui/math-window.ui:128
-msgid "_Undo"
-msgstr "還原(_U)"
+#: src/ui/math-window.blp:139
+msgid "Undo"
+msgstr "還原"
 
-#: src/ui/math-window.ui:149
+#: src/ui/math-window.blp:146
+msgid "Redo"
+msgstr "重做"
+
+#: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "主選單"
+
+#~ msgid "Currency of the current calculation"
+#~ msgstr "目前的貨幣"
+
+#~ msgid "Target currency"
+#~ msgstr "目標貨幣"
+
+#~ msgid "Currency to convert the current calculation into"
+#~ msgstr "要換算的貨幣"
+
+#~ msgid "Units of the current calculation"
+#~ msgstr "目前的單位"
+
+#~ msgid "Units to convert the current calculation into"
+#~ msgstr "要換算的單位"
+
+#~ msgid "Natural logarithm"
+#~ msgstr "自然對數"
+
+#~ msgid "Argument"
+#~ msgstr "引數"
+
+#~ msgid "Conjugate"
+#~ msgstr "共軛"
+
+#~ msgid "Integer"
+#~ msgstr "整數"
+
+#~ msgid "Fraction"
+#~ msgstr "分數"
+
+#~ msgid "Real"
+#~ msgstr "真"
+
+#~ msgid "Imaginary"
+#~ msgstr "假想"
+
+#~ msgid "Arc sine"
+#~ msgstr "反正弦"
+
+#~ msgid "Arc cosine"
+#~ msgstr "反餘弦"
+
+#~ msgid "Arc tangent"
+#~ msgstr "反正切"
+
+#~ msgid "Hyperbolic sine"
+#~ msgstr "雙曲正弦"
+
+#~ msgid "Hyperbolic cosine"
+#~ msgstr "雙曲餘弦"
+
+#~ msgid "Hyperbolic tangent"
+#~ msgstr "雙曲正切"
+
+#~ msgid "Hyperbolic arcsine"
+#~ msgstr "雙曲反正弦"
+
+#~ msgid "Hyperbolic arccosine"
+#~ msgstr "雙曲反餘弦"
+
+#~ msgid "Hyperbolic arctangent"
+#~ msgstr "雙曲反正切"
+
+#~ msgid "One's complement"
+#~ msgstr "1 的補數"
+
+#~ msgid "Two's complement"
+#~ msgstr "2 的補數"
+
+#~ msgid "Displayed value not an integer"
+#~ msgstr "顯示的數值不是整數值"
+
+#~ msgid "Overflow: the result couldn’t be calculated"
+#~ msgstr "溢位：結果無法計算"
+
+#~ msgid "BTU"
+#~ msgstr "BTU"
+
+#~ msgid "Erg"
+#~ msgstr "Erg"
+
+#~ msgid "eV"
+#~ msgstr "eV"
+
+#~ msgid "Ft-lb"
+#~ msgstr "Ft-lb"
+
+#~ msgid "Bar"
+#~ msgstr "巴"
+
+#~ msgid "Copy result to clipboard"
+#~ msgstr "將結果複製至剪貼簿"
+
+#~ msgid "Root [Ctrl+R]"
+#~ msgstr "開根號 [Ctrl+R]"
+
+#~ msgid "Start Group [(]"
+#~ msgstr "括號開頭 [(]"
+
+#~ msgid "Scientific Exponent [Ctrl+E]"
+#~ msgstr "科學記號 [Ctrl+E]"
+
+#~ msgid "Memory"
+#~ msgstr "記憶"
+
+#~ msgid "Number Base Conversion"
+#~ msgstr "進位制換算"
+
+#~ msgid "Shift Left"
+#~ msgstr "左移"
+
+#~ msgid "Shift Right"
+#~ msgstr "右移"
+
+#~ msgid "Boolean OR"
+#~ msgstr "布林 OR"
+
+#~ msgid "Boolean AND"
+#~ msgstr "布林 AND"
+
+#~ msgid "Boolean NOT"
+#~ msgstr "布林 NOT"
+
+#~ msgid "Negative [-]"
+#~ msgstr "負號 [-]"
+
+#~ msgid "Currency Conversion Disabled"
+#~ msgstr "已停用貨幣換算"
+
+#~ msgid "Enable in preferences to convert currencies"
+#~ msgstr "若要換算貨幣，請在偏好設定中啟用"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Keyboard shortcuts"
+#~ msgstr "鍵盤捷徑鍵"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Clear history"
+#~ msgstr "清除紀錄"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Programming mode"
+#~ msgstr "程式設計模式"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Others"
+#~ msgstr "其他"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Copy"
+#~ msgstr "複製"
+
+#~ msgid "Preferences"
+#~ msgstr "偏好設定"
+
+#~ msgid "_Undo"
+#~ msgstr "還原(_U)"
 
 #~ msgid "No sane value to bitwise shift"
 #~ msgstr "沒有正常數值可以進行移位"
@@ -3550,9 +4641,6 @@ msgstr "主選單"
 #~ msgid "Subscript mode [Alt]"
 #~ msgstr "下標數字模式 [Alt]"
 
-#~ msgid "Superscript mode [Ctrl]"
-#~ msgstr "上標數字模式 [Ctrl]"
-
 #, c-format
 #~ msgid "%d place"
 #~ msgid_plural "%d places"
@@ -3601,9 +4689,6 @@ msgstr "主選單"
 #~ msgid "How often the currency exchange rates should be updated"
 #~ msgstr "多久更新幣值匯率一次"
 
-#~ msgid "Factorize"
-#~ msgstr "因數分解"
-
 #~ msgid "Factorial"
 #~ msgstr "階乘"
 
@@ -3616,14 +4701,8 @@ msgstr "主選單"
 #~ msgid "Scientific Exponent"
 #~ msgstr "科學記號"
 
-#~ msgid "Exponent"
-#~ msgstr "指數"
-
 #~ msgid "Store"
 #~ msgstr "儲存"
-
-#~ msgid "Square root [Ctrl+R]"
-#~ msgstr "平方根 [Ctrl+R]"
 
 #~ msgid "Insert Character"
 #~ msgstr "插入字元"
@@ -3651,10 +4730,6 @@ msgstr "主選單"
 
 #~ msgid "Start in given mode"
 #~ msgstr "以指定模式開始"
-
-#~| msgid "Preferences"
-#~ msgid "_Preferences"
-#~ msgstr "偏好設定(_P)"
 
 #~| msgid "About Calculator"
 #~ msgid "_About Calculator"
@@ -3923,9 +4998,6 @@ msgstr "主選單"
 #~ msgid "Result Region"
 #~ msgstr "結果區"
 
-#~ msgid "Shift left [<]"
-#~ msgstr "向左移 [<]"
-
 #~ msgid "Shift right [>]"
 #~ msgstr "向右移 [>]"
 
@@ -4005,9 +5077,6 @@ msgstr "主選單"
 
 #~ msgid "The numeric base for input and display."
 #~ msgstr "輸入和顯示的數值基底。"
-
-#~ msgid "Trigonometric type"
-#~ msgstr "三角函數類型"
 
 #~ msgid "No redo steps"
 #~ msgstr "沒有重做步驟"
