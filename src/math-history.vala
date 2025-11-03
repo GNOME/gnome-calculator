@@ -114,4 +114,20 @@ public class HistoryEntry : Gtk.ListBoxRow
         answer_label.set_tooltip_text ("\u200E" + answer);
         answer_label.set_text (answer);
     }
+
+    [GtkCallback]
+    public void answer_clicked_cb (Gtk.GestureClick gesture, int n_press, double x, double y)
+    {
+        var answer = answer_label.get_text ();
+        if (answer != null)
+            answer_clicked (answer);
+    }
+
+    [GtkCallback]
+    private void equation_clicked_cb (Gtk.GestureClick gesture, int n_press, double x, double y)
+    {
+        var equation = equation_label.get_text ();
+        if (equation != null)
+            equation_clicked (equation);
+    }
 }

@@ -12,10 +12,12 @@ template $HistoryEntry: ListBoxRow {
       ellipsize: none;
       xalign: 0.0;
       yalign: 0.5;
-      selectable: true;
-      focusable: false;
       wrap: true;
       wrap-mode: word_char;
+
+      GestureClick {
+        pressed => $equation_clicked_cb();
+      }
 
       layout {
         column: "0";
@@ -49,9 +51,11 @@ template $HistoryEntry: ListBoxRow {
       ellipsize: end;
       xalign: 1.0;
       yalign: 0.5;
-      selectable: true;
-      focusable: false;
       max-width-chars: 12;
+
+      GestureClick {
+        pressed => $answer_clicked_cb();
+      }
 
       layout {
         column: "5";
