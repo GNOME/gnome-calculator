@@ -40,15 +40,16 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-09-04 15:55+0000\n"
-"PO-Revision-Date: 2025-09-07 13:56+0200\n"
-"Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
+"POT-Creation-Date: 2025-10-17 05:46+0000\n"
+"PO-Revision-Date: 2025-10-19 12:03+0200\n"
+"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-DamnedLies-Scope: partial\n"
 "X-Generator: Poedit 3.6\n"
 "X-Project-Style: gnome\n"
 
@@ -105,16 +106,15 @@ msgstr ""
 "Doppelratenabschreibung und lineare Abschreibung und vieles mehr."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
-#, fuzzy
 msgid ""
 "Programming mode supports calculations using common bases (binary, octal, "
 "decimal, and hexadecimal), bitwise operations, ones’ and two’s complement, "
 "character to character code conversion, and more."
 msgstr ""
-"Der Informatik-Modus unterstützt Berechnungen in weit verbreiteten "
+"Der Pgrogrammier-Modus unterstützt Berechnungen in weit verbreiteten "
 "Zahlensystemen (Binär, Oktal, Dezimal und Hexadezimal), bitweise "
 "Operationen, Einer- und Zweierkomplement, zeichenweise Code-Umwandlung und "
-"weiteres."
+"weitere."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:32
 msgid ""
@@ -227,25 +227,12 @@ msgstr ""
 "aktualisiert."
 
 #: data/org.gnome.calculator.gschema.xml:73
-#, fuzzy
-#| msgid "Currency"
 msgid "Currency display"
-msgstr "Währung"
-
-#: data/org.gnome.calculator.gschema.xml:74
-msgid ""
-"Indicates whether to show currency code, currency name or both of them in "
-"the converter."
-msgstr ""
+msgstr "Währungsdarstellung"
 
 #: data/org.gnome.calculator.gschema.xml:78
 msgid "Enabled completions"
 msgstr "Aktivierte Vervollständigungen"
-
-#: data/org.gnome.calculator.gschema.xml:79
-msgid ""
-"The types of completion proposals to be shown in the auto-completion list."
-msgstr ""
 
 #: data/org.gnome.calculator.gschema.xml:83
 msgid "Favorite currencies"
@@ -589,7 +576,7 @@ msgstr "Südafrikanische Rand"
 
 #: lib/equation-lexer.vala:464
 msgid "Missing digits after minus sign"
-msgstr "fehlende Ziffern nach dem Minus-Zeichen"
+msgstr "Fehlende Ziffern nach dem Minus-Zeichen"
 
 #: lib/equation-lexer.vala:562 lib/equation-lexer.vala:642
 msgid "Missing second symbol (″)"
@@ -709,12 +696,10 @@ msgid "Stefan-Boltzmann Constant"
 msgstr "Stefan-Boltzmann-Konstante"
 
 #: lib/equation-parser.vala:1084
-#| msgid "Euler’s Number"
 msgid "Avogadro’s Number"
 msgstr "Avogadro-Konstante"
 
 #: lib/equation-parser.vala:1086
-#| msgid "Duration"
 msgid "Gravitation"
 msgstr "Gravitation"
 
@@ -1256,6 +1241,8 @@ msgstr "Schatzamt der Vereinten Nationen"
 msgid ""
 "The result is too long to display in fixed format. Try other result formats"
 msgstr ""
+"Das Ergebnis ist zu lang um es im Festkommaformat darzustellen. Probieren "
+"Sie andere Ergebnisformate."
 
 #: lib/unit.vala:29
 msgid "Angle"
@@ -1631,8 +1618,6 @@ msgid "British Gallons"
 msgstr "Britische Gallonen"
 
 #: lib/unit.vala:79
-#| msgctxt "unit-symbols"
-#| msgid "gallon,gallons,gal"
 msgctxt "unit-symbols"
 msgid "imp_gallon,imp_gallons,imp_gal"
 msgstr "imp_gallon,imp_gallons,imp_gal"
@@ -1669,8 +1654,6 @@ msgid "British Pints"
 msgstr "Britische Pinte"
 
 #: lib/unit.vala:83
-#| msgctxt "unit-symbols"
-#| msgid "pint,pints,pt"
 msgctxt "unit-symbols"
 msgid "imp_pint,imp_pints,imp_pt"
 msgstr "imp_pint,imp_pints,imp_pt"
@@ -1770,8 +1753,6 @@ msgid "Milligrams"
 msgstr "Milligramm"
 
 #: lib/unit.vala:94
-#| msgctxt "unit-symbols"
-#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgctxt "unit-symbols"
 msgid "milligram,milligrams,milligramme,milligrammes,mg"
 msgstr "Milligramm,mg"
@@ -1781,8 +1762,6 @@ msgid "Micrograms"
 msgstr "Mikrogramm"
 
 #: lib/unit.vala:95
-#| msgctxt "unit-symbols"
-#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgctxt "unit-symbols"
 msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
 msgstr "Mikrogramm,μg,ug"
@@ -1901,8 +1880,6 @@ msgid "Nanoseconds"
 msgstr "Nanosekunden"
 
 #: lib/unit.vala:108
-#| msgctxt "unit-symbols"
-#| msgid "second,seconds,s"
 msgctxt "unit-symbols"
 msgid "nanosecond,nanoseconds,ns"
 msgstr "Nanosekunde,Nanosekunden,ns"
@@ -1912,8 +1889,6 @@ msgid "Celsius"
 msgstr "Celsius"
 
 #: lib/unit.vala:109
-#| msgctxt "unit-symbols"
-#| msgid "degC,˚C,C,c,Celsius,celsius"
 msgctxt "unit-symbols"
 msgid "degC,°C,˚C,C,c,Celsius,celsius"
 msgstr "degC,°C,˚C,C,c,Celsius,celsius"
@@ -1923,8 +1898,6 @@ msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #: lib/unit.vala:110
-#| msgctxt "unit-symbols"
-#| msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
 msgctxt "unit-symbols"
 msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
 msgstr "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
@@ -2449,8 +2422,6 @@ msgid "Hectopascals"
 msgstr "Hektopascal"
 
 #: lib/unit.vala:167
-#| msgctxt "unit-symbols"
-#| msgid "hectare,hectares,ha"
 msgctxt "unit-symbols"
 msgid "Hectopascal,hectopascal,hPa"
 msgstr "Hektopascal,hektopascal,hPa"
@@ -2479,8 +2450,6 @@ msgid "Millimeters of Mercury"
 msgstr "Millimeter Quecksilbersäule"
 
 #: lib/unit.vala:170
-#| msgctxt "unit-symbols"
-#| msgid "millimeter,millimeters,mm"
 msgctxt "unit-symbols"
 msgid "Millimeter of Mercury,millimeter of mercury,mmHg"
 msgstr "Millimeter Quecksilbersäule,Millimeter-Quecksilbersäule,mmHg"
@@ -2509,10 +2478,8 @@ msgid "Currency"
 msgstr "Währung"
 
 #: lib/unit.vala:183
-#, fuzzy
-#| msgid "Numeric Base"
 msgid "Number Base"
-msgstr "Numerische Basis"
+msgstr "Zahlenbasis"
 
 #: lib/unit.vala:184 src/buttons-programming.vala:168
 #: src/ui/buttons-programming.blp:2590
@@ -2662,10 +2629,13 @@ msgstr "Definierte Variablen"
 #: src/math-function-popover.vala:185
 msgid "Can not use defined variable or constant names"
 msgstr ""
+"Namen von definierten Variablen oder Konstanten dürfen nicht verwendet werden"
 
 #: src/math-function-popover.vala:189
 msgid "Can not use built-in function or operator names"
 msgstr ""
+"Namen von eingebauten Funktionen oder Operatoren dürfen nicht verwendet "
+"werden"
 
 #: src/math-function-popover.vala:192
 msgid "Function name can not start with a digit"
@@ -2712,10 +2682,8 @@ msgid "Weekly"
 msgstr "Wöchentlich"
 
 #: src/math-preferences.vala:175
-#, fuzzy
-#| msgid "Currency"
 msgid "Currency Code"
-msgstr "Währung"
+msgstr "Währungssymbol"
 
 #: src/math-preferences.vala:177
 msgid "Currency Name"
@@ -2728,10 +2696,14 @@ msgstr "Beide"
 #: src/math-variable-popover.vala:216
 msgid "Can not use defined function or operator names"
 msgstr ""
+"Namen von definierten Funktionen oder Operatoren dürfen nicht verwendet "
+"werden"
 
 #: src/math-variable-popover.vala:219
 msgid "Can not use built-in variable or constant names"
 msgstr ""
+"Namen von mitgelieferten Variablen oder Konstanten dürfen nicht verwendet "
+"werden"
 
 #: src/math-variable-popover.vala:222
 msgid "Variable name can not start with a digit"
@@ -2820,7 +2792,6 @@ msgstr "Prozentsatz [%]"
 
 #: src/ui/buttons-advanced.blp:437 src/ui/buttons-basic.blp:382
 #: src/ui/buttons-financial.blp:437 src/ui/buttons-programming.blp:1842
-#| msgid "End Group [)]"
 msgid "Group [()]"
 msgstr "Gruppe [()]"
 
@@ -2838,7 +2809,7 @@ msgstr "Ergebnis berechnen"
 #: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
 #: src/ui/buttons-programming.blp:1888
 msgid "Inverse Modifier [Shift]"
-msgstr ""
+msgstr "Umkehrfunktion [Umschalttaste]"
 
 #: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
 #: src/ui/buttons-programming.blp:2085
@@ -2881,10 +2852,8 @@ msgid "Inverse [Ctrl+I]"
 msgstr "Kehrwert [Strg+I]"
 
 #: src/ui/buttons-advanced.blp:1020
-#, fuzzy
-#| msgid "Round"
 msgid "Round [[]]"
-msgstr "Rundung"
+msgstr "Rundung [[]]"
 
 #: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
 msgid "Absolute Value [||]"
@@ -2920,7 +2889,7 @@ msgstr "Grad, Minuten, Sekunden"
 
 #: src/ui/buttons-conversion.blp:533
 msgid "Change Sign"
-msgstr ""
+msgstr "Vorzeichen umkehren"
 
 #: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
 msgid "Exchange Rate Details"
@@ -2936,7 +2905,7 @@ msgstr "Quelle"
 
 #: src/ui/buttons-conversion.blp:625
 msgid "_Refresh Rates"
-msgstr ""
+msgstr "Zinssätze _aktualisieren"
 
 #. Translators: Calculates the number of compounding periods necessary to increase an investment of present value pv to a future value of fv, at a fixed interest rate of int per compounding period. See also: http://en.wikipedia.org/wiki/Compound_interest
 #: src/ui/buttons-financial.blp:669
@@ -3013,7 +2982,7 @@ msgstr "Barwert"
 #. Translators: Calculates the periodic interest necessary to increase an investment of present value pv to a future value of fv, over the number of compounding periods in term. See also: http://en.wikipedia.org/wiki/Interest
 #: src/ui/buttons-financial.blp:783
 msgid "Rate"
-msgstr "Zins"
+msgstr "Zinssatz"
 
 #. Translators: Compounding Term Dialog: Label before periodic interest rate input
 #. Translators: Future Value Dialog: Label before periodic interest rate input
@@ -3338,7 +3307,7 @@ msgstr "Umwandeln nach"
 
 #: src/ui/buttons-programming.blp:2546
 msgid "Unicode Code Point"
-msgstr ""
+msgstr "Unicode-Zahlenwert"
 
 #: src/ui/buttons-programming.blp:2547
 msgid "UTF-8 Encoding"
@@ -3361,6 +3330,8 @@ msgstr "Wechselkurse nicht geladen"
 msgid ""
 "<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
 msgstr ""
+"<a href=\"r:///\">Aktualisieren Sie die Kurse</a> oder ändern Sie das "
+"Aktualisierungsinvervall in den Einstellungen"
 
 #: src/ui/math-converter.blp:141
 msgid "_Copy"
@@ -3427,10 +3398,8 @@ msgid "E_xchange Rate Refresh Interval"
 msgstr "Aktualisierungsintervall von Wechsel_kursen"
 
 #: src/ui/math-preferences.blp:86
-#, fuzzy
-#| msgid "Currency"
 msgid "_Currency Display"
-msgstr "Währung"
+msgstr "_Währungsdarstellung"
 
 #: src/ui/math-preferences.blp:91
 msgid "_Show Currencies in Auto-Completion List"
@@ -3613,7 +3582,6 @@ msgid "Floor (⌊⌋)"
 msgstr "Abrunden (⌊⌋)"
 
 #: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
-#| msgid "Ceiling"
 msgctxt "shortcuts dialog"
 msgid "Ceiling (⌈⌉)"
 msgstr "Aufrunden (⌈⌉)"
