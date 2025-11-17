@@ -8,17 +8,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
-"POT-Creation-Date: 2025-05-10 14:53+0000\n"
-"PO-Revision-Date: 2025-06-06 16:46+0200\n"
-"Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
-"com>\n"
+"POT-Creation-Date: 2025-11-09 11:39+0000\n"
+"PO-Revision-Date: 2025-11-10 17:39+0100\n"
+"Last-Translator: Miquel-Àngel Burgos i Fradeja "
+"<miquel.angel.burgos@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -53,6 +53,19 @@ msgstr "|−1|"
 #: C/absolute.page:18
 msgid "abs (−1)"
 msgstr "abs (−1)"
+
+#. (itstool) path: page/p
+#: C/absolute.page:22
+msgid ""
+"Signum x÷|x| is calculated using sgn <link xref=\"function\">function</link>."
+msgstr ""
+"Els logaritmes es calculen utilitzant la <link xref=\"function\">funció</"
+"link> log."
+
+#. (itstool) path: example/p
+#: C/absolute.page:26
+msgid "sgn (−1)"
+msgstr "sgn (−1)"
 
 #. (itstool) path: page/title
 #: C/base.page:9 C/conv-base.page:9
@@ -125,46 +138,187 @@ msgstr ""
 
 #. (itstool) path: page/title
 #: C/boolean.page:9
-msgid "Boolean Algebra"
-msgstr "Àlgebra de Boole"
+msgid "Bitwise Operations"
+msgstr "Operacions bit a bit"
 
 #. (itstool) path: page/p
 #: C/boolean.page:11
-msgid "Boolean algebra can be calculated using the AND, OR and XOR operators."
+msgid "Bitwise operations can be calculated using the following operators."
 msgstr ""
-"L'àlgebra de Boole es basa en els operadors AND (i), OR (o) i XOR (o "
-"exclusiva)."
-
-#. (itstool) path: example/p
-#: C/boolean.page:15
-msgid "010011₂ AND 110101₂"
-msgstr "010011₂ AND 110101₂"
+"Les operacions bit a bit es poden calcular usant els següents operadors."
 
 #. (itstool) path: page/p
-#: C/boolean.page:19
+#: C/boolean.page:14
+#, fuzzy
+#| msgid ""
+#| "The NOT <link xref=\"function\">function</link> inverts the bits in a "
+#| "number. To set the word size, press the menu button in the top-right "
+#| "corner of the window and select <gui style=\"menuitem\">Preferences</gui>."
 msgid ""
-"Buttons for these symbols are available in <link xref=\"mouse\">programming "
-"mode</link>."
-msgstr ""
-"Els botons per a aquests símbols estan disponibles en el <link "
-"xref=\"mouse\">mode de programació</link>."
-
-#. (itstool) path: page/p
-#: C/boolean.page:22
-msgid ""
-"The NOT <link xref=\"function\">function</link> inverts the bits in a "
-"number. To set the word size, press the menu button in the top-right corner "
-"of the window and select <gui style=\"menuitem\">Preferences</gui>."
+"The result of some operations depend on the word size. To set the word size, "
+"press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>."
 msgstr ""
 "La <link xref=\"function\">funció</link> NOT inverteix els bits en un "
 "nombre. Per a establir la mida de la paraula premeu el botó de menú a la "
 "cantonada superior dreta de la finestra i seleccioneu <gui "
 "style=\"menuitem\">Preferències</gui>."
 
+#. (itstool) path: page/p
+#: C/boolean.page:19
+#, fuzzy
+#| msgid ""
+#| "Buttons for these symbols are available in <link "
+#| "xref=\"mouse\">programming mode</link>."
+msgid ""
+"Buttons for the following symbols and to set the word size are available in "
+"<link xref=\"mode-programming\">programming mode</link>."
+msgstr ""
+"Els botons per a aquests símbols estan disponibles en el <link "
+"xref=\"mouse\">mode de programació</link>."
+
+#. (itstool) path: page/p
+#: C/boolean.page:23
+#, fuzzy
+#| msgid ""
+#| "Boolean algebra can be calculated using the AND, OR and XOR operators."
+msgid "Bitwise conjunction can be calculated using the ∧ or AND operators."
+msgstr ""
+"L'àlgebra de Boole es basa en els operadors AND (i), OR (o) i XOR (o "
+"exclusiva)."
+
 #. (itstool) path: example/p
-#: C/boolean.page:28
+#: C/boolean.page:27
+msgid "010011₂ ∧ 110101₂"
+msgstr "010011₂ ∧ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:30
+msgid "010011₂ AND 110101₂"
+msgstr "010011₂ AND 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:35
+msgid "Bitwise disjunction can be calculated using the ∨ or OR operators."
+msgstr ""
+"La disjunció bit a bit es pot calcular utilitzant els operadors ∨ o OR."
+
+#. (itstool) path: example/p
+#: C/boolean.page:39
+msgid "010011₂ ∨ 110101₂"
+msgstr "010011₂ ∨ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:42
+msgid "010011₂ OR 110101₂"
+msgstr "010011₂ OR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:47
+msgid ""
+"Bitwise exclusive disjunction can be calculated using the ⊻, ⊕ or XOR "
+"operators."
+msgstr ""
+"La disjunció exclusiva bit a bit es pot calcular utilitzant els operadors ⊻, "
+"⊕ o XOR."
+
+#. (itstool) path: example/p
+#: C/boolean.page:51
+msgid "010011₂ ⊻ 110101₂"
+msgstr "010011₂ ⊻ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:54
+msgid "010011₂ XOR 110101₂"
+msgstr "010011₂ XOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:59
+#, fuzzy
+#| msgid ""
+#| "Boolean algebra can be calculated using the AND, OR and XOR operators."
+msgid ""
+"Bitwise complement for the set word size can be calculated using the ¬, ~ or "
+"NOT operators."
+msgstr ""
+"L'àlgebra de Boole es basa en els operadors AND (i), OR (o) i XOR (o "
+"exclusiva)."
+
+#. (itstool) path: example/p
+#: C/boolean.page:63
+msgid "¬ 010011₂"
+msgstr "¬ 010011₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:66
 msgid "NOT 010011₂"
 msgstr "NOT 010011₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:71
+#, fuzzy
+#| msgid ""
+#| "Boolean algebra can be calculated using the AND, OR and XOR operators."
+msgid ""
+"Bitwise alternative denial for the set word size can be calculated using the "
+"⊼ or NAND operators."
+msgstr ""
+"L'àlgebra de Boole es basa en els operadors AND (i), OR (o) i XOR (o "
+"exclusiva)."
+
+#. (itstool) path: example/p
+#: C/boolean.page:75
+msgid "010011₂ ⊼ 110101₂"
+msgstr "010011₂ ⊼ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:78
+msgid "010011₂ NAND 110101₂"
+msgstr "010011₂ NAND 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:83
+#, fuzzy
+#| msgid ""
+#| "Boolean algebra can be calculated using the AND, OR and XOR operators."
+msgid ""
+"Bitwise joint denial for the set word size can be calculated using the ⊽ or "
+"NOR operators."
+msgstr ""
+"L'àlgebra de Boole es basa en els operadors AND (i), OR (o) i XOR (o "
+"exclusiva)."
+
+#. (itstool) path: example/p
+#: C/boolean.page:87
+msgid "010011₂ ⊽ 110101₂"
+msgstr "010011₂ ⊽ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:90
+msgid "010011₂ NOR 110101₂"
+msgstr "010011₂ NOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:95
+#, fuzzy
+#| msgid ""
+#| "Boolean algebra can be calculated using the AND, OR and XOR operators."
+msgid ""
+"Bitwise biconditional for the set word size can be calculated using the ⊙, "
+"XNOR or NXOR operators."
+msgstr ""
+"L'àlgebra de Boole es basa en els operadors AND (i), OR (o) i XOR (o "
+"exclusiva)."
+
+#. (itstool) path: example/p
+#: C/boolean.page:99
+msgid "010011₂ ⊙ 110101₂"
+msgstr "010011₂ ⊙ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:102
+msgid "010011₂ XNOR 110101₂"
+msgstr "010011₂ XNOR 110101₂"
 
 #. (itstool) path: page/title
 #: C/complex.page:9
@@ -271,8 +425,10 @@ msgstr "1010₂ en octal"
 
 #. (itstool) path: note/p
 #: C/conv-base.page:29
-msgid "Number Base conversions must be performed using the keyboard."
-msgstr "Les conversions de número de base s'han de realitzar amb el teclat."
+msgid ""
+"Number Base conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>Number Base</gui> category."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/conv-character.page:9
@@ -325,20 +481,26 @@ msgstr "Divisa"
 
 #. (itstool) path: page/p
 #: C/conv-currency.page:29
+#, fuzzy
+#| msgid ""
+#| "To convert currencies, enter the <link xref=\"financial\">financial mode</"
+#| "link>, and use the currency controls."
 msgid ""
 "To convert currencies, enter the <link xref=\"financial\">financial mode</"
-"link>, and use the currency controls."
+"link>, and use the <gui>Currency conversion</gui> button or enter the <link "
+"xref=\"index#conversion\">conversion mode</link> and select the "
+"<gui>Currency</gui> category."
 msgstr ""
 "Per a convertir entre monedes, canvieu al <link xref=\"financial\">mode "
 "financer</link> i utilitzeu els controls de divisa."
 
 #. (itstool) path: item/p
-#: C/conv-currency.page:34
+#: C/conv-currency.page:36
 msgid "Enter the amount which you want to convert."
 msgstr "Introduïu la quantitat que voleu convertir."
 
 #. (itstool) path: item/p
-#: C/conv-currency.page:37
+#: C/conv-currency.page:39
 msgid ""
 "Select the currency that you want to convert from and the currency that you "
 "want to convert to from the drop down below."
@@ -347,7 +509,7 @@ msgstr ""
 "voleu convertir des de la llista desplegable de sota."
 
 #. (itstool) path: note/p
-#: C/conv-currency.page:43
+#: C/conv-currency.page:45
 msgid ""
 "Currency information is approximate and should not be used for making "
 "financial decisions."
@@ -386,10 +548,11 @@ msgstr "1 pinta en mL"
 
 #. (itstool) path: note/p
 #: C/conv-length.page:26
-msgid "Length/Area/Volume conversions must be performed using the keyboard."
+msgid ""
+"Length/Area/Volume conversions must be performed using the keyboard or using "
+"the <gui>conversion mode</gui> and selecting the <gui>length/area/volume</"
+"gui> category."
 msgstr ""
-"La conversió d'unitats de longitud, d'àrea i de volum cal realitzar-la "
-"utilitzant el teclat."
 
 #. (itstool) path: page/title
 #: C/conv-time.page:9
@@ -409,8 +572,10 @@ msgstr "3 anys en hores"
 
 #. (itstool) path: note/p
 #: C/conv-time.page:20
-msgid "Time conversions must be performed using the keyboard."
-msgstr "La conversió d'unitats de temps cal realitzar-la utilitzant el teclat."
+msgid ""
+"Time conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>duration</gui> category."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/conv-weight.page:9
@@ -429,8 +594,10 @@ msgstr "1 kg en lliures"
 
 #. (itstool) path: note/p
 #: C/conv-weight.page:20
-msgid "Mass conversions must be performed using the keyboard."
-msgstr "La conversió de masses cal realitzar-la usant el teclat."
+msgid ""
+"Mass conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>mass</gui> category."
+msgstr ""
 
 #. (itstool) path: info/title
 #: C/equation.page:7
@@ -530,10 +697,15 @@ msgstr "Factorització"
 
 #. (itstool) path: page/p
 #: C/factorize.page:11
+#, fuzzy
+#| msgid ""
+#| "You can factorize the number currently displayed by pressing the "
+#| "<gui>fact</gui> button. This button is visible in <link "
+#| "xref=\"mouse\">programming mode</link>."
 msgid ""
-"You can factorize the number currently displayed by pressing the <gui>fact</"
-"gui> button. This button is visible in <link xref=\"mouse\">programming "
-"mode</link>."
+"You can factorize the number currently displayed by pressing the <gui>a×b</"
+"gui> button, or pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This "
+"button is visible in <link xref=\"mouse\">advanced mode</link>."
 msgstr ""
 "Podeu factoritzar el número que es mostra prement el botó <gui>fact</gui>. "
 "Aquest botó és visible en el <link xref=\"mouse\">mode de programació</link>."
@@ -752,10 +924,17 @@ msgstr "fun (9;10)"
 
 #. (itstool) path: page/p
 #: C/functions.page:26
+#, fuzzy
+#| msgid ""
+#| "To add a new function type the function in the format as given below. A "
+#| "function name and arguments must only contain upper or lower case "
+#| "characters. The part after @ is the function description which is "
+#| "optional."
 msgid ""
 "To add a new function type the function in the format as given below. A "
 "function name and arguments must only contain upper or lower case "
-"characters. The part after @ is the function description which is optional."
+"characters, or underscores. The part after @ is the function description "
+"which is optional."
 msgstr ""
 "Per a afegir un tipus nou de funció nova escriviu la funció en el format "
 "indicat a continuació. Un nom de funció i arguments només han de contenir "
@@ -798,99 +977,296 @@ msgid "The following functions are defined."
 msgstr "Les funcions següents estan definides."
 
 #. (itstool) path: td/p
-#: C/functions.page:53
-msgid "<link xref=\"absolute\">Absolute Value</link>"
-msgstr "<link xref=\"absolute\">Valor absolut</link>"
+#. (itstool) path: page/title
+#: C/functions.page:52 C/trigonometry.page:9
+msgid "Trigonometry"
+msgstr "Trigonometria"
 
 #. (itstool) path: td/p
-#: C/functions.page:57
-msgid "Ceiling"
-msgstr "Enter superior"
-
-#. (itstool) path: td/p
-#: C/functions.page:61
-msgid "<link xref=\"trigonometry\">Cosine</link>"
-msgstr "<link xref=\"trigonometry\">Cosinus</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:65
-msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
-msgstr "<link xref=\"trigonometry\">Cosinus hiperbòlic</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:69
-msgid "Floor"
-msgstr "Enter inferior"
-
-#. (itstool) path: td/p
-#: C/functions.page:73
-msgid "Fractional Component"
-msgstr "Component fraccionari"
-
-#. (itstool) path: td/p
-#: C/functions.page:77
-msgid "Integer Component"
-msgstr "Component enter"
-
-#. (itstool) path: td/p
-#: C/functions.page:81
-msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
-msgstr "<link xref=\"logarithm\">Logaritme natural</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:85
-msgid "<link xref=\"logarithm\">Logarithm</link>"
-msgstr "<link xref=\"logarithm\">Logaritme</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:89
-msgid "<link xref=\"boolean\">Boolean NOT</link>"
-msgstr "<link xref=\"boolean\">NOT Booleà</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:93
-msgid "Ones complement"
-msgstr "Complement a 1"
-
-#. (itstool) path: td/p
-#: C/functions.page:97
-msgid "Round"
-msgstr "Arrodoniment"
-
-#. (itstool) path: td/p
-#: C/functions.page:101
-msgid "Signum"
-msgstr "Signe"
-
-#. (itstool) path: td/p
-#: C/functions.page:105
+#: C/functions.page:56
 msgid "<link xref=\"trigonometry\">Sine</link>"
 msgstr "<link xref=\"trigonometry\">Sinus</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:109
-msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
-msgstr "<link xref=\"trigonometry\">Sinus hiperbòlic</link>"
+#: C/functions.page:60
+msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Cosinus</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:113
-msgid "<link xref=\"power\">Square Root</link>"
-msgstr "<link xref=\"power\">Arrel quadrada</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:117
+#: C/functions.page:64
 msgid "<link xref=\"trigonometry\">Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Tangent</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:121
+#: C/functions.page:68
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Sine</link>"
+msgid "<link xref=\"trigonometry\">Inverse Sine</link>"
+msgstr "<link xref=\"trigonometry\">Sinus</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:72
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgid "<link xref=\"trigonometry\">Inverse Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Cosinus</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:76
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Tangent</link>"
+msgid "<link xref=\"trigonometry\">Inverse Tangent</link>"
+msgstr "<link xref=\"trigonometry\">Tangent</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:80
+msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
+msgstr "<link xref=\"trigonometry\">Sinus hiperbòlic</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:84
+msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Cosinus hiperbòlic</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:88
 msgid "<link xref=\"trigonometry\">Hyperbolic Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Tangent hiperbòlica</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:125
-msgid "Twos complement"
-msgstr "Complement a 2"
+#: C/functions.page:92
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Sine</link>"
+msgstr "<link xref=\"trigonometry\">Sinus hiperbòlic</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:96
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Cosinus hiperbòlic</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:100
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Hyperbolic Tangent</link>"
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Tangent</link>"
+msgstr "<link xref=\"trigonometry\">Tangent hiperbòlica</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:103
+msgid "Complex"
+msgstr "Complexos"
+
+#. (itstool) path: td/p
+#: C/functions.page:107
+msgid "<link xref=\"complex\">Complex Conjugate</link>"
+msgstr "<link xref=\"absolute\">Conjugat complex</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:111
+msgid "<link xref=\"complex\">Complex Argument</link>"
+msgstr "<link xref=\"complex\">Argument complex</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:115
+msgid "<link xref=\"complex\">Real Component</link>"
+msgstr "<link xref=\"complex\">Component real</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:119
+msgid "<link xref=\"complex\">Imaginary Component</link>"
+msgstr "<link xref=\"complex\">Component imaginària</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:122 C/mouse.page:29
+msgid "Programming"
+msgstr "Programació"
+
+#. (itstool) path: td/p
+#: C/functions.page:126
+#, fuzzy
+#| msgid "<link xref=\"boolean\">Boolean NOT</link>"
+msgid "<link xref=\"mode-programming\">Ones’ Complement</link>"
+msgstr "<link xref=\"boolean\">NOT Booleà</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:130
+#, fuzzy
+#| msgid "<link xref=\"boolean\">Boolean NOT</link>"
+msgid "<link xref=\"mode-programming\">Two’s Complement</link>"
+msgstr "<link xref=\"boolean\">NOT Booleà</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:134
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Sine</link>"
+msgid "<link xref=\"mode-programming\">Swap Endianness</link>"
+msgstr "<link xref=\"trigonometry\">Sinus</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:138
+#, fuzzy
+#| msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgid "<link xref=\"modulus\">Modulus Divide</link>"
+msgstr "<link xref=\"absolute\">Valor absolut</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:142
+#, fuzzy
+#| msgid "<link xref=\"power\">Square Root</link>"
+msgid "<link xref=\"modulus\">Modular Exponentiation</link>"
+msgstr "<link xref=\"power\">Arrel quadrada</link>"
+
+#. (itstool) path: td/p
+#. (itstool) path: page/title
+#: C/functions.page:145 C/rounding.page:9
+msgid "Rounding"
+msgstr "Arrodoniment"
+
+#. (itstool) path: td/p
+#: C/functions.page:149
+msgid "<link xref=\"rounding\">Round</link>"
+msgstr "<link xref=\"rounding\">Arrodoniment</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:153
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Pi</link>"
+msgid "<link xref=\"rounding\">Floor</link>"
+msgstr "<link xref=\"trigonometry\">Pi</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:157
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgid "<link xref=\"rounding\">Ceiling</link>"
+msgstr "<link xref=\"trigonometry\">Cosinus</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:161
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgid "<link xref=\"rounding\">Integer Component</link>"
+msgstr "<link xref=\"trigonometry\">Cosinus</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:165
+msgid "<link xref=\"rounding\">Fractional Component</link>"
+msgstr "<link xref=\"rounding\">Component fraccional</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:168
+msgid "Statistics"
+msgstr "Estadística"
+
+#. (itstool) path: td/p
+#: C/functions.page:172
+msgid "Sum"
+msgstr "Suma"
+
+#. (itstool) path: td/p
+#: C/functions.page:176
+msgid "Sum of Squares"
+msgstr "Suma de quadrats"
+
+#. (itstool) path: td/p
+#: C/functions.page:180
+msgid "Average"
+msgstr "Mitjana"
+
+#. (itstool) path: td/p
+#: C/functions.page:184
+msgid "Median"
+msgstr "Mediana"
+
+#. (itstool) path: td/p
+#: C/functions.page:188
+msgid "Minimum Value"
+msgstr "Valor mínim"
+
+#. (itstool) path: td/p
+#: C/functions.page:192
+msgid "Maximum Value"
+msgstr "Valor màxim"
+
+#. (itstool) path: td/p
+#: C/functions.page:196
+msgid "Sample Standard Deviation"
+msgstr "Desviació estàndard de la mostra"
+
+#. (itstool) path: td/p
+#: C/functions.page:200
+msgid "Population Standard Deviation"
+msgstr "Desviació estàndard de la població"
+
+#. (itstool) path: td/p
+#: C/functions.page:204
+msgid "Sample Variance"
+msgstr "Variància mostral"
+
+#. (itstool) path: td/p
+#: C/functions.page:208
+msgid "Population Variance"
+msgstr "Variància poblacional"
+
+#. (itstool) path: td/p
+#: C/functions.page:211
+msgid "Sundry"
+msgstr "Diversos"
+
+#. (itstool) path: td/p
+#: C/functions.page:215
+msgid "<link xref=\"logarithm\">Logarithm</link>"
+msgstr "<link xref=\"logarithm\">Logaritme</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:219
+msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
+msgstr "<link xref=\"logarithm\">Logaritme natural</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:223
+msgid "<link xref=\"power\">Square Root</link>"
+msgstr "<link xref=\"power\">Arrel quadrada</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:227
+msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgstr "<link xref=\"absolute\">Valor absolut</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:231
+#, fuzzy
+#| msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgid "<link xref=\"absolute\">Signum</link>"
+msgstr "<link xref=\"absolute\">Valor absolut</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:235
+msgid "Combination"
+msgstr "Combinació"
+
+#. (itstool) path: td/p
+#: C/functions.page:239
+msgid "Permutation"
+msgstr "Permutació"
+
+#. (itstool) path: td/p
+#: C/functions.page:243
+msgid "Greatest Common Divisor"
+msgstr "Màxim comú divisor"
+
+#. (itstool) path: td/p
+#: C/functions.page:247
+msgid "Least Common Multiple"
+msgstr "Mínim comú múltiple"
+
+#. (itstool) path: td/p
+#: C/functions.page:251
+msgid "Comparison (Kronecker Delta)"
+msgstr "Comparació (delta de Kronecker)"
 
 #. (itstool) path: credit/name
 #: C/history.page:12
@@ -1065,7 +1441,7 @@ msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:41 C/variables.page:48
+#: C/keyboard.page:41 C/variables.page:60
 msgid "π"
 msgstr "π"
 
@@ -1074,8 +1450,48 @@ msgstr "π"
 msgid "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/keyboard.page:45 C/variables.page:64
+msgid "τ"
+msgstr "τ"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:46
+msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:49
+msgid "°"
+msgstr "°"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:50
+msgid "<keyseq><key>Ctrl</key><key>'</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>'</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:53
+msgid "⌈⌉"
+msgstr "⌈⌉"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:54
+msgid "<keyseq><key>Ctrl</key><key>[</key></keyseq><key>]</key>"
+msgstr "<keyseq><key>Ctrl</key><key>[</key></keyseq><key>]</key>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:57
+msgid "⌊⌋"
+msgstr "⌊⌋"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:58
+msgid "<keyseq><key>Alt</key><key>[</key></keyseq><key>]</key>"
+msgstr "<keyseq><key>Alt</key><key>[</key></keyseq><key>]</key>"
+
 #. (itstool) path: page/p
-#: C/keyboard.page:45
+#: C/keyboard.page:61
 msgid ""
 "To enter <link xref=\"superscript\">superscript numbers</link> use "
 "<keyseq><key>Ctrl</key>number</keyseq>, for <link "
@@ -1129,9 +1545,14 @@ msgstr "log 100"
 
 #. (itstool) path: page/p
 #: C/logarithm.page:19
+#, fuzzy
+#| msgid ""
+#| "To calculate a logarithm in a different base use a <link "
+#| "xref=\"superscript\">subscript number</link> after the function."
 msgid ""
 "To calculate a logarithm in a different base use a <link "
-"xref=\"superscript\">subscript number</link> after the function."
+"xref=\"superscript\">subscript number</link> or normal number after the "
+"function."
 msgstr ""
 "Per a calcular un logaritme en una base diferent utilitzeu un <link "
 "xref=\"superscript\">nombre subíndex</link> després de la funció."
@@ -1141,29 +1562,111 @@ msgstr ""
 msgid "log₂ 32"
 msgstr "log₂ 32"
 
+#. (itstool) path: example/p
+#: C/logarithm.page:26
+msgid "log2 (32)"
+msgstr "log2 (32)"
+
+#. (itstool) path: example/p
+#: C/logarithm.page:29
+msgid "log (32;2)"
+msgstr "log (32;2)"
+
 #. (itstool) path: page/p
-#: C/logarithm.page:27
+#: C/logarithm.page:33
 msgid "To calculate a natural logarithm use the ln function."
 msgstr "Per a calcular un logaritme natural utilitzeu la funció ln."
 
 #. (itstool) path: example/p
-#: C/logarithm.page:31
+#: C/logarithm.page:37
 msgid "ln 1.32"
 msgstr "ln 1.32"
 
 #. (itstool) path: page/p
-#: C/logarithm.page:35
+#: C/logarithm.page:41
+#, fuzzy
+#| msgid ""
+#| "Euler's number can be entered by using the <link "
+#| "xref=\"variable\">variable</link> e."
 msgid ""
-"Euler's number can be entered by using the <link xref=\"variable\">variable</"
+"Euler's number can be entered by using the <link xref=\"variable\">constant</"
 "link> e."
 msgstr ""
 "Es pot introduir el número d'Euler utilitzant la <link "
 "xref=\"variable\">variable</link> e."
 
 #. (itstool) path: example/p
-#: C/logarithm.page:39
+#: C/logarithm.page:45
 msgid "e^1.32"
 msgstr "e^1.32"
+
+#. (itstool) path: page/title
+#: C/mode-programming.page:9
+msgid "Programming Mode"
+msgstr "Mode de programació"
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:11
+msgid ""
+"<gui style=\"menuitem\">Programming mode</gui> provides the tools required "
+"for common mathematical operations in software development. For example, "
+"programming mode makes math on hexadecimal numbers very easy. It also "
+"supports common <link xref=\"boolean\">bitwise operators</link> like "
+"<gui>NOT</gui>, <gui>AND</gui>, <gui>OR</gui>, etc. A binary view for "
+"numbers up to 64 bits long is displayed, where the user can manually toggle "
+"each bit using the mouse cursor."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:14
+msgid ""
+"Additionally, bit-shifting operations are possible by using the <gui>≪</"
+"gui>, <gui>≫</gui> and <gui>⋙</gui> buttons. <link xref=\"modulus\">Modulo "
+"arithmetic</link> can be accomplished using the <gui>mod</gui> button."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:17
+msgid ""
+"The default word size for bitwise, ones’ complement, two’s complement, and "
+"swap endianness functions can be changed both in the <gui "
+"style=\"menuitem\">Preferences</gui> menu, or by using the word size button "
+"in the bottom of the keypad while in programming mode. This will affect how "
+"results from these functions are shown. For example, here we show the two’s "
+"complement of the number 6B in 64 bit and 16 bit word sizes:"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:21
+msgid "64 bit:"
+msgstr "64 bits:"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:24 C/mode-programming.page:33
+msgid "twos 6B"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:27
+msgid "FFFFFFFFFFFFFF95"
+msgstr "FFFFFFFFFFFFFF95"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:30
+msgid "16 bit:"
+msgstr "16 bits:"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:36
+msgid "FF95"
+msgstr "FF95"
+
+#. (itstool) path: note/p
+#: C/mode-programming.page:41
+msgid ""
+"Attempting to enter a larger number than will fit in the selected word size "
+"will result in an Overflow error."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/modulus.page:9
@@ -1172,13 +1675,44 @@ msgstr "Mòdul de la divisió"
 
 #. (itstool) path: page/p
 #: C/modulus.page:11
-msgid "Modulus division is performed using the mod operator."
-msgstr "El mòdul de la divisió es realitza utilitzant l'operador mod."
+#, fuzzy
+#| msgid ""
+#| "Trigonometry can be performed using the sin, cos, and tan <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Modulus division is performed using the mod operator or the mod <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"Es poden utilitzar les <link xref=\"function\">funcions</link> "
+"trigonomètriques del sin, el cos i la tan."
 
 #. (itstool) path: example/p
 #: C/modulus.page:15
 msgid "9 mod 5"
 msgstr "9 mod 5"
+
+#. (itstool) path: example/p
+#: C/modulus.page:18
+msgid "mod (9;5)"
+msgstr "mod (9;5)"
+
+#. (itstool) path: page/p
+#: C/modulus.page:22
+#, fuzzy
+#| msgid ""
+#| "Trigonometry can be performed using the sin, cos, and tan <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Modular exponentiation x^y mod p is performed using the modexp <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"Es poden utilitzar les <link xref=\"function\">funcions</link> "
+"trigonomètriques del sin, el cos i la tan."
+
+#. (itstool) path: example/p
+#: C/modulus.page:26
+msgid "modexp (9;3;5)"
+msgstr "modexp (9;3;5)"
 
 #. (itstool) path: page/title
 #: C/mouse.page:9
@@ -1237,14 +1771,19 @@ msgstr ""
 "financeres</link>"
 
 #. (itstool) path: td/p
-#: C/mouse.page:29
-msgid "Programming"
-msgstr "Programació"
-
-#. (itstool) path: td/p
 #: C/mouse.page:30
 msgid "Provides buttons suitable for computer programmers"
 msgstr "Proporciona els botons adequats pels programadors"
+
+#. (itstool) path: td/p
+#: C/mouse.page:33
+msgid "Conversion"
+msgstr "Conversió"
+
+#. (itstool) path: td/p
+#: C/mouse.page:34
+msgid "Provides buttons suitable for unit conversions"
+msgstr "Proporciona els botons adequats per a la conversió d'unitats"
 
 #. (itstool) path: page/title
 #: C/number-display.page:9
@@ -1374,18 +1913,13 @@ msgstr "2015"
 msgid "Sebastian Rasmussen"
 msgstr "Sebastian Rasmussen"
 
-#. (itstool) path: info/desc
-#: C/power.page:21
-msgid "Learn to enter roots and powers into the calculator."
-msgstr "Apreneu a introduir arrels i potencies a la calculadora."
-
 #. (itstool) path: page/title
-#: C/power.page:24
+#: C/power.page:22
 msgid "Powers and Roots"
 msgstr "Potències i arrels"
 
 #. (itstool) path: page/p
-#: C/power.page:26
+#: C/power.page:24
 msgid ""
 "Powers are entered by putting a <link xref=\"superscript\">superscript "
 "number</link> after the value."
@@ -1394,12 +1928,12 @@ msgstr ""
 "de superíndex</link> després del valor."
 
 #. (itstool) path: example/p
-#: C/power.page:30
+#: C/power.page:28
 msgid "5²"
 msgstr "5²"
 
 #. (itstool) path: page/p
-#: C/power.page:33
+#: C/power.page:31
 msgid ""
 "The inverse of a number can be entered using the inverse symbol ⁻¹ "
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>)."
@@ -1408,12 +1942,12 @@ msgstr ""
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>)."
 
 #. (itstool) path: example/p
-#: C/power.page:37
+#: C/power.page:35
 msgid "3⁻¹"
 msgstr "3⁻¹"
 
 #. (itstool) path: page/p
-#: C/power.page:40
+#: C/power.page:38
 msgid ""
 "Powers can also be calculated using the ^ symbol. This allows the power to "
 "be an equation."
@@ -1422,12 +1956,12 @@ msgstr ""
 "potència sigui una equació."
 
 #. (itstool) path: example/p
-#: C/power.page:44
+#: C/power.page:42
 msgid "5^(6−2)"
 msgstr "5^(6−2)"
 
 #. (itstool) path: page/p
-#: C/power.page:47
+#: C/power.page:45
 msgid ""
 "If your keyboard does not have a <key>^</key> key you can use <key>*</key> "
 "twice."
@@ -1436,32 +1970,156 @@ msgstr ""
 "key> dues vegades."
 
 #. (itstool) path: page/p
-#: C/power.page:50
+#: C/power.page:48
+#, fuzzy
+#| msgid ""
+#| "Square roots can be calculated using the √ symbol (<keyseq><key>Ctrl</"
+#| "key><key>R</key></keyseq>)."
 msgid ""
 "Square roots can be calculated using the √ symbol (<keyseq><key>Ctrl</"
-"key><key>R</key></keyseq>)."
+"key><key>R</key></keyseq>) or sqrt <link xref=\"function\">function</link>."
 msgstr ""
 "Les arrels quadrades es poden calcular utilitzant el símbol √ "
 "(<keyseq><key>Ctrl</key><key>R</key></keyseq>)."
 
 #. (itstool) path: example/p
-#: C/power.page:54
+#: C/power.page:52
 msgid "√2"
 msgstr "√2"
 
+#. (itstool) path: example/p
+#: C/power.page:53
+msgid "sqrt (2)"
+msgstr "sqrt (2)"
+
 #. (itstool) path: page/p
-#: C/power.page:57
+#: C/power.page:56
+#, fuzzy
+#| msgid ""
+#| "n-th roots can be calculated by putting a <link "
+#| "xref=\"superscript\">subscript number</link> before the root sign."
 msgid ""
 "n-th roots can be calculated by putting a <link "
-"xref=\"superscript\">subscript number</link> before the root sign."
+"xref=\"superscript\">subscript number</link> or <link "
+"xref=\"superscript\">superscript number</link> before the root sign."
 msgstr ""
 "Les arrels enèsimes es poden calcular col·locant un <link "
 "xref=\"superscript\">nombre de subíndex</link> abans del símbol de l'arrel."
 
 #. (itstool) path: example/p
-#: C/power.page:61
+#: C/power.page:60
 msgid "₃√2"
 msgstr "₃√2"
+
+#. (itstool) path: example/p
+#: C/power.page:61
+msgid "³√2"
+msgstr "³√2"
+
+#. (itstool) path: page/p
+#: C/rounding.page:11
+#, fuzzy
+#| msgid ""
+#| "Absolute values are calculated using the | symbol or abs <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Nearest integer values tying away from zero are calculated using the [ and ] "
+"symbols or round <link xref=\"function\">function</link>."
+msgstr ""
+"Els valors absoluts es calculen amb el símbol | o amb la <link "
+"xref=\"function\">funció</link> abs."
+
+#. (itstool) path: example/p
+#: C/rounding.page:15
+msgid "[0.5]"
+msgstr "[0.5]"
+
+#. (itstool) path: example/p
+#: C/rounding.page:18
+msgid "round (0.5)"
+msgstr "round (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:23
+#, fuzzy
+#| msgid ""
+#| "Absolute values are calculated using the | symbol or abs <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Nearest integer values toward -∞ also known as floor values are calculated "
+"using the ⌊ and ⌋ symbols or floor <link xref=\"function\">function</link>."
+msgstr ""
+"Els valors absoluts es calculen amb el símbol | o amb la <link "
+"xref=\"function\">funció</link> abs."
+
+#. (itstool) path: example/p
+#: C/rounding.page:27
+msgid "⌊0.5⌋"
+msgstr "⌊0.5⌋"
+
+#. (itstool) path: example/p
+#: C/rounding.page:30
+msgid "floor (0.5)"
+msgstr "floor (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:35
+#, fuzzy
+#| msgid ""
+#| "Absolute values are calculated using the | symbol or abs <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Nearest integer values toward +∞ also known as ceiling values are calculated "
+"using the ⌈ and ⌉ symbols or ceil <link xref=\"function\">function</link>."
+msgstr ""
+"Els valors absoluts es calculen amb el símbol | o amb la <link "
+"xref=\"function\">funció</link> abs."
+
+#. (itstool) path: example/p
+#: C/rounding.page:39
+msgid "⌈0.5⌉"
+msgstr "⌈0.5⌉"
+
+#. (itstool) path: example/p
+#: C/rounding.page:42
+msgid "ceil (0.5)"
+msgstr "ceil (0.5)"
+
+#. (itstool) path: page/p
+#: C/rounding.page:47
+#, fuzzy
+#| msgid ""
+#| "Logarithms can be calculated using the log <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Nearest integer values toward 0 i.e. the integer components are calculated "
+"using int <link xref=\"function\">function</link>."
+msgstr ""
+"Els logaritmes es calculen utilitzant la <link xref=\"function\">funció</"
+"link> log."
+
+#. (itstool) path: page/p
+#: C/rounding.page:50
+#, fuzzy
+#| msgid ""
+#| "Logarithms can be calculated using the log <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"The fractional components are calculated using frac <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"Els logaritmes es calculen utilitzant la <link xref=\"function\">funció</"
+"link> log."
+
+#. (itstool) path: example/p
+#: C/rounding.page:54
+msgid "int (0.5)"
+msgstr "int (0.5)"
+
+#. (itstool) path: example/p
+#: C/rounding.page:57
+msgid "frac (0.5)"
+msgstr "frac (0.5)"
 
 #. (itstool) path: page/title
 #: C/scientific.page:9
@@ -1470,11 +2128,17 @@ msgstr "Notació científica"
 
 #. (itstool) path: page/p
 #: C/scientific.page:11
+#, fuzzy
+#| msgid ""
+#| "To enter numbers in scientific format use the <gui>×10y</gui> button "
+#| "(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link "
+#| "xref=\"superscript\">number mode</link> automatically changes to "
+#| "superscript. To enter 2×10¹⁰⁰, start by entering the mantissa (2):"
 msgid ""
-"To enter numbers in scientific format use the <gui>×10y</gui> button "
-"(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link "
-"xref=\"superscript\">number mode</link> automatically changes to "
-"superscript. To enter 2×10¹⁰⁰, start by entering the mantissa (2):"
+"To enter numbers in scientific format use the <keyseq><key>Ctrl</key><key>E</"
+"key></keyseq> shortcut. The <link xref=\"superscript\">number mode</link> "
+"automatically changes to superscript. To enter 2×10¹⁰⁰, start by entering "
+"the mantissa (2):"
 msgstr ""
 "Per a introduir nombres en format científic utilitzeu el botó <gui>×10y</"
 "gui> (<keyseq><key>Ctrl</key><key>E</key></keyseq>). L'enllaç <link "
@@ -1488,12 +2152,10 @@ msgstr "2"
 
 #. (itstool) path: page/p
 #: C/scientific.page:21
-msgid ""
-"Then press the scientific notation button (or press <keyseq><key>Ctrl</"
-"key><key>E</key></keyseq>):"
-msgstr ""
-"Després premeu el botó de l'exponent científic (o premeu <keyseq><key>Ctrl</"
-"key><key>E</key></keyseq>):"
+#, fuzzy
+#| msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+msgid "Then press <keyseq><key>Ctrl</key><key>E</key></keyseq>:"
+msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 
 #. (itstool) path: example/p
 #: C/scientific.page:25
@@ -1546,12 +2208,21 @@ msgstr "x³+2x²−5"
 
 #. (itstool) path: page/p
 #: C/superscript.page:29
+#, fuzzy
+#| msgid ""
+#| "To enter superscript numbers with the mouse select the number mode using "
+#| "the <gui>↑n</gui> and <gui>↓n</gui> buttons (available in the "
+#| "<gui>Advanced Mode</gui> and the <gui>Programming Mode</gui>). When one "
+#| "of these modes is active clicking the number buttons will enter numbers "
+#| "in superscript or subscript. To return to normal number mode click the "
+#| "active number button."
 msgid ""
-"To enter superscript numbers with the mouse select the number mode using the "
-"<gui>↑n</gui> and <gui>↓n</gui> buttons (available in the <gui>Advanced "
-"Mode</gui> and the <gui>Programming Mode</gui>). When one of these modes is "
-"active clicking the number buttons will enter numbers in superscript or "
-"subscript. To return to normal number mode click the active number button."
+"To enter superscript or subscript numbers with the mouse, select the number "
+"mode using the <gui>↑n</gui> and <gui>↓n</gui> buttons (available in all the "
+"modes except the <gui>keyboard mode</gui> and the <gui>conversion mode</"
+"gui>). When one of these modes is active clicking the number buttons will "
+"enter numbers in superscript or subscript. To return to normal number mode "
+"click the active number button."
 msgstr ""
 "Per a introduir els nombres de superíndex amb el ratolí seleccioneu el mode "
 "de nombre utilitzant els botons <gui>↑n</gui> i <gui>↓n</gui> (disponible en "
@@ -1579,11 +2250,6 @@ msgstr ""
 "El mode de nombre retorna a la normalitat en introduir el següent caràcter "
 "no numèric, com ara «+» o «-»."
 
-#. (itstool) path: page/title
-#: C/trigonometry.page:9
-msgid "Trigonometry"
-msgstr "Trigonometria"
-
 #. (itstool) path: page/p
 #: C/trigonometry.page:11
 msgid ""
@@ -1600,19 +2266,47 @@ msgstr "sin 45"
 
 #. (itstool) path: page/p
 #: C/trigonometry.page:19
+msgid "To change the angle units used, use one of the following methods:"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/trigonometry.page:23
+#, fuzzy
+#| msgid ""
+#| "The NOT <link xref=\"function\">function</link> inverts the bits in a "
+#| "number. To set the word size, press the menu button in the top-right "
+#| "corner of the window and select <gui style=\"menuitem\">Preferences</gui>."
 msgid ""
-"To change the angle units used, press the menu button in the top-right "
-"corner of the window and select <gui style=\"menuitem\">Preferences</gui>. "
+"Press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>"
+msgstr ""
+"La <link xref=\"function\">funció</link> NOT inverteix els bits en un "
+"nombre. Per a establir la mida de la paraula premeu el botó de menú a la "
+"cantonada superior dreta de la finestra i seleccioneu <gui "
+"style=\"menuitem\">Preferències</gui>."
+
+#. (itstool) path: item/p
+#: C/trigonometry.page:25
+msgid ""
+"In <gui>advanced mode</gui> you can use the Rad/Grad/Deg toggle button to "
+"toggle between units"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/trigonometry.page:28
+#, fuzzy
+#| msgid ""
+#| "Buttons for these symbols are available in <link "
+#| "xref=\"mouse\">programming mode</link>."
+msgid ""
 "Trigonometry buttons are visible when in <link xref=\"mouse\">Advanced mode</"
 "link>."
 msgstr ""
-"Per a canviar les unitats d'angle utilitzades, premeu el botó de menú de la "
-"cantonada superior dreta de la finestra i seleccioneu <gui "
-"style=\"menuitem\">Preferències</gui>. Els botons de trigonometria són "
-"visibles en <link xref=\"mouse\">mode avançat</link>."
+"Els botons per a aquests símbols estan disponibles en el <link "
+"xref=\"mouse\">mode de programació</link>."
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:24
+#: C/trigonometry.page:31
 msgid ""
 "Hyperbolic functions are available by adding \"h\" to the end of a function."
 msgstr ""
@@ -1620,12 +2314,12 @@ msgstr ""
 "funció."
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:28
+#: C/trigonometry.page:35
 msgid "sinh 0.34"
 msgstr "sinh 0.34"
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:32
+#: C/trigonometry.page:39
 msgid ""
 "Inverse functions are entered either using the inverse symbol ⁻¹ "
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>) or the \"a\" form of the "
@@ -1636,17 +2330,17 @@ msgstr ""
 "la funció. Les dues funcions següents són equivalents."
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:37
+#: C/trigonometry.page:44
 msgid "sin⁻¹ 0.5"
 msgstr "sin⁻¹ 0.5"
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:40
+#: C/trigonometry.page:47
 msgid "asin 0.5"
 msgstr "asin 0.5"
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:44
+#: C/trigonometry.page:51
 msgid ""
 "To enter <link xref=\"variable\">π</link> with the keyboard use "
 "<keyseq><key>Ctrl</key><key>P</key></keyseq>."
@@ -1656,16 +2350,22 @@ msgstr ""
 
 #. (itstool) path: page/title
 #: C/variables.page:9
-msgid "Variables"
-msgstr "Variables"
+msgid "Variables and Constants"
+msgstr ""
 
 #. (itstool) path: page/p
 #: C/variables.page:11
+#, fuzzy
+#| msgid ""
+#| "To assign a value to a variable use the = symbol or choose the variable "
+#| "to assign to with the <gui>x</gui> button in <link "
+#| "xref=\"mouse\">advanced mode</link>. A variable name must only contain "
+#| "upper or lower case characters."
 msgid ""
 "To assign a value to a variable use the = symbol or choose the variable to "
 "assign to with the <gui>x</gui> button in <link xref=\"mouse\">advanced "
 "mode</link>. A variable name must only contain upper or lower case "
-"characters."
+"characters, or underscores."
 msgstr ""
 "Per a assignar un valor a una variable, utilitzeu el símbol = o escolliu la "
 "variable a assignar amb el botó <gui>x</gui> en <link xref=\"mouse\">mode "
@@ -1684,9 +2384,14 @@ msgstr "exemple=82"
 
 #. (itstool) path: page/p
 #: C/variables.page:23
+#, fuzzy
+#| msgid ""
+#| "Variables can be used in any equation and are substituted for their "
+#| "assigned value. Variables can be inserted using the <gui>x</gui> button."
 msgid ""
-"Variables can be used in any equation and are substituted for their assigned "
-"value. Variables can be inserted using the <gui>x</gui> button."
+"Variables and constants can be used in any equation and are substituted for "
+"their assigned value. Variables and constants can be inserted using the "
+"<gui>x</gui> button."
 msgstr ""
 "Les variables es poden utilitzar en qualsevol equació i són substituïdes pel "
 "valor que tenen assignat. Les variables es poden inserir utilitzant el botó "
@@ -1719,35 +2424,292 @@ msgstr "Resultat del càlcul anterior"
 
 #. (itstool) path: td/p
 #: C/variables.page:44
-msgid "e"
-msgstr "e"
-
-#. (itstool) path: td/p
-#: C/variables.page:45
-msgid "<link xref=\"logarithm\">Euler's Number</link>"
-msgstr "<link xref=\"logarithm\">Nombre d'Euler</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:49
-msgid "<link xref=\"trigonometry\">Pi</link>"
-msgstr "<link xref=\"trigonometry\">Pi</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:52
-msgid "τ"
-msgstr "τ"
-
-#. (itstool) path: td/p
-#: C/variables.page:53
-msgid "<link xref=\"trigonometry\">Tau</link>"
-msgstr "<link xref=\"trigonometry\">Tau</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:56
 msgid "rand"
 msgstr "rand"
 
 #. (itstool) path: td/p
-#: C/variables.page:57
+#: C/variables.page:45
 msgid "Random value in the range [0,1] (changes on each read)"
 msgstr "Valor aleatori en el rang [0,1] (canvia en cada lectura)"
+
+#. (itstool) path: page/p
+#: C/variables.page:48
+#, fuzzy
+#| msgid "The following variables are always defined."
+msgid "The following constants are always defined."
+msgstr "Les variables següents sempre estan definides."
+
+#. (itstool) path: td/p
+#: C/variables.page:53
+msgid "Mathematics"
+msgstr "Matemàtiques"
+
+#. (itstool) path: td/p
+#: C/variables.page:56
+msgid "e"
+msgstr "e"
+
+#. (itstool) path: td/p
+#: C/variables.page:57
+msgid "<link xref=\"logarithm\">Euler's Number</link>"
+msgstr "<link xref=\"logarithm\">Nombre d'Euler</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:61
+msgid "<link xref=\"trigonometry\">Pi</link>"
+msgstr "<link xref=\"trigonometry\">Pi</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:65
+msgid "<link xref=\"trigonometry\">Tau</link>"
+msgstr "<link xref=\"trigonometry\">Tau</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:68
+msgid "φ"
+msgstr "φ"
+
+#. (itstool) path: td/p
+#: C/variables.page:69
+msgid "Golden Ratio"
+msgstr "Raó àuria"
+
+#. (itstool) path: td/p
+#: C/variables.page:72
+msgid "Electromagnetism"
+msgstr "Electromagnetisme"
+
+#. (itstool) path: td/p
+#: C/variables.page:75
+msgid "c₀"
+msgstr "c₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:76
+msgid "Light Speed"
+msgstr "Velocitat de la llum"
+
+#. (itstool) path: td/p
+#: C/variables.page:79
+msgid "е"
+msgstr "е"
+
+#. (itstool) path: td/p
+#: C/variables.page:80
+msgid "Elementary Charge"
+msgstr "Càrrega elemental"
+
+#. (itstool) path: td/p
+#: C/variables.page:83
+msgid "Z₀"
+msgstr "Z₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:84
+msgid "Impedance of Vacuum"
+msgstr "Impedància del buit"
+
+#. (itstool) path: td/p
+#: C/variables.page:87
+msgid "μ₀"
+msgstr "μ₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:88
+msgid "Permeability of Vacuum"
+msgstr "Permeabilitat del buit"
+
+#. (itstool) path: td/p
+#: C/variables.page:91
+msgid "ε₀"
+msgstr "ε₀"
+
+#. (itstool) path: td/p
+#: C/variables.page:92
+msgid "Permittivity of Vacuum"
+msgstr "Permitivitat del buit"
+
+#. (itstool) path: td/p
+#: C/variables.page:95
+msgid "Atomic &amp; Nuclear"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:98
+msgid "h"
+msgstr "h"
+
+#. (itstool) path: td/p
+#: C/variables.page:99
+msgid "Planck‘s Constant"
+msgstr "Constant de Planck"
+
+#. (itstool) path: td/p
+#: C/variables.page:102
+msgid "α"
+msgstr "α"
+
+#. (itstool) path: td/p
+#: C/variables.page:103
+msgid "Fine-Structure Constant"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:106
+msgid "mₑ"
+msgstr "mₑ"
+
+#. (itstool) path: td/p
+#: C/variables.page:107
+msgid "Electron Mass"
+msgstr "Massa de l'electró"
+
+#. (itstool) path: td/p
+#: C/variables.page:110
+msgid "mₚ"
+msgstr "mₚ"
+
+#. (itstool) path: td/p
+#: C/variables.page:111
+msgid "Proton Mass"
+msgstr "Massa del protó"
+
+#. (itstool) path: td/p
+#: C/variables.page:114
+msgid "Thermodynamics"
+msgstr "Termodinàmica"
+
+#. (itstool) path: td/p
+#: C/variables.page:117
+msgid "k"
+msgstr "k"
+
+#. (itstool) path: td/p
+#: C/variables.page:118
+msgid "Boltzmann Constant"
+msgstr "Constant de Boltzmann"
+
+#. (itstool) path: td/p
+#: C/variables.page:121
+msgid "mᵤ"
+msgstr "mᵤ"
+
+#. (itstool) path: td/p
+#: C/variables.page:122
+msgid "Atomic Mass Unit"
+msgstr "Unitat de massa atòmica"
+
+#. (itstool) path: td/p
+#: C/variables.page:125
+msgid "R"
+msgstr "R"
+
+#. (itstool) path: td/p
+#: C/variables.page:126
+msgid "Molar Gas Constant"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:129
+msgid "σ"
+msgstr "σ"
+
+#. (itstool) path: td/p
+#: C/variables.page:130
+msgid "Stefan-Boltzmann Constant"
+msgstr "Constant de Stefan-Boltzmann"
+
+#. (itstool) path: td/p
+#: C/variables.page:133
+msgid "Nᴀ"
+msgstr "Nᴀ"
+
+#. (itstool) path: td/p
+#: C/variables.page:134
+msgid "Avogadro‘s Number"
+msgstr "Nombre d'Avogadro"
+
+#. (itstool) path: td/p
+#: C/variables.page:137
+msgid "Gravitation"
+msgstr "Gravitació"
+
+#. (itstool) path: td/p
+#: C/variables.page:140
+msgid "G"
+msgstr "G"
+
+#. (itstool) path: td/p
+#: C/variables.page:141
+msgid "Gravitational Constant"
+msgstr "Constant gravitacional"
+
+#. (itstool) path: td/p
+#: C/variables.page:144
+msgid "g"
+msgstr "g"
+
+#. (itstool) path: td/p
+#: C/variables.page:145
+msgid "Earth Acceleration"
+msgstr "Acceleració de la Terra"
+
+#~ msgid "Boolean Algebra"
+#~ msgstr "Àlgebra de Boole"
+
+#~ msgid "Number Base conversions must be performed using the keyboard."
+#~ msgstr "Les conversions de número de base s'han de realitzar amb el teclat."
+
+#~ msgid "Length/Area/Volume conversions must be performed using the keyboard."
+#~ msgstr ""
+#~ "La conversió d'unitats de longitud, d'àrea i de volum cal realitzar-la "
+#~ "utilitzant el teclat."
+
+#~ msgid "Time conversions must be performed using the keyboard."
+#~ msgstr ""
+#~ "La conversió d'unitats de temps cal realitzar-la utilitzant el teclat."
+
+#~ msgid "Mass conversions must be performed using the keyboard."
+#~ msgstr "La conversió de masses cal realitzar-la usant el teclat."
+
+#~ msgid "Ceiling"
+#~ msgstr "Enter superior"
+
+#~ msgid "Floor"
+#~ msgstr "Enter inferior"
+
+#~ msgid "Integer Component"
+#~ msgstr "Component enter"
+
+#~ msgid "Ones complement"
+#~ msgstr "Complement a 1"
+
+#~ msgid "Twos complement"
+#~ msgstr "Complement a 2"
+
+#~ msgid "Modulus division is performed using the mod operator."
+#~ msgstr "El mòdul de la divisió es realitza utilitzant l'operador mod."
+
+#~ msgid "Learn to enter roots and powers into the calculator."
+#~ msgstr "Apreneu a introduir arrels i potencies a la calculadora."
+
+#~ msgid ""
+#~ "Then press the scientific notation button (or press <keyseq><key>Ctrl</"
+#~ "key><key>E</key></keyseq>):"
+#~ msgstr ""
+#~ "Després premeu el botó de l'exponent científic (o premeu "
+#~ "<keyseq><key>Ctrl</key><key>E</key></keyseq>):"
+
+#~ msgid ""
+#~ "To change the angle units used, press the menu button in the top-right "
+#~ "corner of the window and select <gui style=\"menuitem\">Preferences</"
+#~ "gui>. Trigonometry buttons are visible when in <link "
+#~ "xref=\"mouse\">Advanced mode</link>."
+#~ msgstr ""
+#~ "Per a canviar les unitats d'angle utilitzades, premeu el botó de menú de "
+#~ "la cantonada superior dreta de la finestra i seleccioneu <gui "
+#~ "style=\"menuitem\">Preferències</gui>. Els botons de trigonometria són "
+#~ "visibles en <link xref=\"mouse\">mode avançat</link>."
+
+#~ msgid "Variables"
+#~ msgstr "Variables"
