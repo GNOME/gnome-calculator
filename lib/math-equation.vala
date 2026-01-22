@@ -321,8 +321,7 @@ public class MathEquation : GtkSource.Buffer
         {
             offset++;
 
-            var expect_tsep = number_base == 10 &&
-                              serializer.get_show_thousands_separators () &&
+            var expect_tsep = serializer.get_show_thousands_separators () &&
                               in_number && !in_radix && !last_is_tsep &&
                               digit_offset > 0 && digit_offset % serializer.get_thousands_separator_count () == 0;
             last_is_tsep = false;
@@ -333,7 +332,7 @@ public class MathEquation : GtkSource.Buffer
                 in_number = in_radix = false;
                 continue;
             }
-            if (c.isdigit ())
+            if (isdigit (c))
             {
                 if (!in_number)
                     digit_offset = count_digits (text, index) + 1;
@@ -356,19 +355,21 @@ public class MathEquation : GtkSource.Buffer
                 in_number = true;
                 in_radix = true;
             }
-            else if (c == serializer.get_thousands_separator ())
+            else if (serializer.is_thousands_separator (c))
             {
                 /* Didn't expect thousands separator - delete it */
-                if (!expect_tsep && in_number)
+                Gtk.TextIter start, end;
+                get_iter_at_offset (out start, offset);
+                get_iter_at_offset (out end, offset + 1);
+                @delete (ref start, ref end);
+                offset--;
+                if (expect_tsep || !in_number)
                 {
-                    Gtk.TextIter start, end;
-                    get_iter_at_offset (out start, offset);
-                    get_iter_at_offset (out end, offset + 1);
-                    @delete (ref start, ref end);
-                    offset--;
-                }
-                else
+                    Gtk.TextIter iter;
+                    get_iter_at_offset (out iter, ++offset);
+                    base.insert (ref iter, serializer.get_thousands_separator ().to_string (), -1);
                     last_is_tsep = true;
+                }
             }
             else
             {
@@ -389,13 +390,13 @@ public class MathEquation : GtkSource.Buffer
         while (text.get_next_char (ref index, out c))
         {
             /* Allow a thousands separator between digits follow a digit */
-            if (c == serializer.get_thousands_separator ())
+            if (serializer.is_thousands_separator (c))
             {
                 if (following_separator)
                     return count;
                 following_separator = true;
             }
-            else if (c.isdigit ())
+            else if (isdigit (c))
             {
                 following_separator = false;
                 count++;
@@ -405,6 +406,12 @@ public class MathEquation : GtkSource.Buffer
         }
 
         return count;
+    }
+
+    private bool isdigit (unichar c)
+    {
+        var representation_base = serializer.get_representation_base ();
+        return representation_base != 16 ? c.isdigit () : c.isxdigit ();
     }
 
     private void reformat_display ()
@@ -519,10 +526,7 @@ public class MathEquation : GtkSource.Buffer
             get_bounds (out start, out end);
 
         var text = get_text (start, end, false);
-        var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
-        if (tsep_string == null || tsep_string == "")
-            tsep_string = " ";
-        text = text.replace (tsep_string, "");
+        text = text.replace (serializer.get_thousands_separator ().to_string (), "");
         Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
         clipboard.set_text (text);
     }
@@ -761,12 +765,12 @@ public class MathEquation : GtkSource.Buffer
             unichar c;
             while (text.get_next_char (ref index, out c))
             {
-                var is_digit = c.isdigit ();
+                var is_digit = isdigit (c);
                 var next_is_digit = false;
                 unichar next_char;
                 var i = index;
                 if (text.get_next_char (ref i, out next_char))
-                    next_is_digit = next_char.isdigit ();
+                    next_is_digit = isdigit (next_char);
 
                 /* Ignore thousands separators */
                 if (c != serializer.get_thousands_separator () || !last_is_digit || !next_is_digit)
@@ -856,6 +860,7 @@ public class MathEquation : GtkSource.Buffer
         apply_tag (ans_tag, start, end);
         notify_property ("display"); // notify after tag was applied to update bits panel
 
+        serializer.set_representation_base (number_base);
         if (serializer.error != null)
         {
             status = serializer.error;
@@ -1681,7 +1686,7 @@ public class MathEquation : GtkSource.Buffer
         var c = text.get_char (0);
         int cursor;
         get ("cursor-position", out cursor, null);
-        if ((c.isdigit () || c == serializer.get_radix ()) && is_result && cursor >= get_char_count ())
+        if ((isdigit (c) || c == serializer.get_radix ()) && is_result && cursor >= get_char_count ())
         {
             set_text ("", -1);
             clear_ans (false);

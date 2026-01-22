@@ -145,14 +145,19 @@ public class Serializer : Object
         return mp_set_from_string (str, number_base);
     }
 
+    public int get_base ()
+    {
+        return number_base;
+    }
+
     public void set_base (int number_base)
     {
         this.number_base = number_base;
     }
 
-    public int get_base ()
+    public uint get_representation_base ()
     {
-        return number_base;
+        return representation_base;
     }
 
     public void set_representation_base (uint representation_base)
@@ -160,9 +165,9 @@ public class Serializer : Object
         this.representation_base = representation_base;
     }
 
-    public uint get_representation_base ()
+    public unichar get_radix ()
     {
-        return representation_base;
+        return radix;
     }
 
     public void set_radix (unichar radix)
@@ -171,9 +176,9 @@ public class Serializer : Object
         update_zero_string ();
     }
 
-    public unichar get_radix ()
+    public unichar get_thousands_separator ()
     {
-        return radix;
+        return representation_base == 10 ? tsep : ' ';
     }
 
     public void set_thousands_separator (unichar separator)
@@ -181,14 +186,14 @@ public class Serializer : Object
         tsep = separator;
     }
 
-    public unichar get_thousands_separator ()
+    public bool is_thousands_separator (unichar c)
     {
-        return tsep;
+        return c == tsep || c == ' ';
     }
 
     public int get_thousands_separator_count ()
     {
-        return tsep_count;
+        return representation_base == 10 ? tsep_count : 4;
     }
 
     public void set_thousands_separator_count (int count)
@@ -196,25 +201,25 @@ public class Serializer : Object
         tsep_count = count;
     }
 
+    public bool get_show_thousands_separators ()
+    {
+        return show_tsep;
+    }
+
     public void set_show_thousands_separators (bool visible)
     {
         show_tsep = visible;
     }
 
-    public bool get_show_thousands_separators ()
+    public bool get_show_trailing_zeroes ()
     {
-        return show_tsep;
+        return show_zeroes;
     }
 
     public void set_show_trailing_zeroes (bool visible)
     {
         show_zeroes = visible;
         update_zero_string ();
-    }
-
-    public bool get_show_trailing_zeroes ()
-    {
-        return show_zeroes;
     }
 
     public int get_leading_digits ()
@@ -295,7 +300,7 @@ public class Serializer : Object
         var string = new StringBuilder.sized (1024);
 
         var x_real = x.real_component ();
-        if (!cast_to_string_real (x_real, string, (int) representation_base, false, ref n_digits))
+        if (!cast_to_string_real (x_real, string, false, ref n_digits))
             return zero_string;
         if (x.is_complex ())
         {
@@ -310,7 +315,7 @@ public class Serializer : Object
 
             var s = new StringBuilder.sized (1024);
             int n_complex_digits = 0;
-            if (!cast_to_string_real (x_im, s, (int) representation_base, force_sign, ref n_complex_digits))
+            if (!cast_to_string_real (x_im, s, force_sign, ref n_complex_digits))
                 return zero_string;
             if (n_complex_digits > n_digits)
                 n_digits = n_complex_digits;
@@ -342,7 +347,7 @@ public class Serializer : Object
         return string.str;
     }
 
-    private bool cast_to_string_real (Number x, StringBuilder string, int number_base, bool force_sign, ref int n_digits)
+    private bool cast_to_string_real (Number x, StringBuilder string, bool force_sign, ref int n_digits)
     {
         const char digits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
@@ -356,6 +361,7 @@ public class Serializer : Object
         }
 
         /* Add rounding factor */
+        int number_base = (int) representation_base;
         var temp = new Number.integer (number_base);
         temp = temp.xpowy_integer (-(trailing_digits+1));
         temp = temp.multiply_integer (number_base);
@@ -367,9 +373,9 @@ public class Serializer : Object
         var i = 0;
         do
         {
-            if (number_base == 10 && show_tsep && i == tsep_count)
+            if (show_tsep && i == get_thousands_separator_count ())
             {
-                string.prepend_unichar (tsep);
+                string.prepend_unichar (get_thousands_separator ());
                 i = 0;
             }
             i++;
@@ -452,45 +458,6 @@ public class Serializer : Object
         return true;
     }
 
-    private int cast_to_exponential_string_real (Number x, StringBuilder string, bool eng_format, bool force_sign)
-    {
-        if (x.is_negative ())
-            string.append ("−");
-        else if (force_sign)
-            string.append ("+");
-
-        var mantissa = x.abs ();
-        var exponent = 0;
-        if (!mantissa.is_zero ())
-        {
-            var base_ = new Number.integer (number_base);
-            exponent = (int) mantissa.logarithm (base_).floor ().to_integer ();
-            if (eng_format && exponent % 3 != 0)
-                exponent -= (exponent > 0 ? exponent % 3 : exponent % 3 + 3);
-            mantissa = mantissa.divide (base_.xpowy_integer (exponent));
-        }
-
-        int n_digits = 0;
-        var mantissa_string = cast_to_string (mantissa, ref n_digits);
-        if (eng_format)
-        {
-            mantissa_string = mantissa_string.replace (tsep.to_string (), "");
-            if (mantissa_string.has_prefix ("1000"))
-            {
-                exponent += 3;
-                mantissa_string = mantissa_string.splice (0, 4, "1");
-            }
-        }
-        else if (mantissa_string.has_prefix ("10"))
-        {
-            exponent += 1;
-            mantissa_string = mantissa_string.splice (0, 2, "1");
-        }
-        string.append (mantissa_string);
-
-        return exponent;
-    }
-
     private string cast_to_exponential_string (Number x, bool eng_format)
     {
         var string = new StringBuilder.sized (1024);
@@ -536,6 +503,45 @@ public class Serializer : Object
         }
 
         return string.str;
+    }
+
+    private int cast_to_exponential_string_real (Number x, StringBuilder string, bool eng_format, bool force_sign)
+    {
+        if (x.is_negative ())
+            string.append ("−");
+        else if (force_sign)
+            string.append ("+");
+
+        var mantissa = x.abs ();
+        var exponent = 0;
+        if (!mantissa.is_zero ())
+        {
+            var base_ = new Number.integer (number_base);
+            exponent = (int) mantissa.logarithm (base_).floor ().to_integer ();
+            if (eng_format && exponent % 3 != 0)
+                exponent -= (exponent > 0 ? exponent % 3 : exponent % 3 + 3);
+            mantissa = mantissa.divide (base_.xpowy_integer (exponent));
+        }
+
+        int n_digits = 0;
+        var mantissa_string = cast_to_string (mantissa, ref n_digits);
+        if (eng_format)
+        {
+            mantissa_string = mantissa_string.replace (tsep.to_string (), "");
+            if (mantissa_string.has_prefix ("1000"))
+            {
+                exponent += 3;
+                mantissa_string = mantissa_string.splice (0, 4, "1");
+            }
+        }
+        else if (mantissa_string.has_prefix ("10"))
+        {
+            exponent += 1;
+            mantissa_string = mantissa_string.splice (0, 2, "1");
+        }
+        string.append (mantissa_string);
+
+        return exponent;
     }
 
     private void append_exponent (StringBuilder string, int exponent)
