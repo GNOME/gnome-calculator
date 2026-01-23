@@ -283,10 +283,12 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
         case "tanh⁻¹":
         case "atanh":
             return x.atanh ();
-        case "conj":
-            return x.conjugate ();
+        case "cis":
+            return x.cis (root_parser.angle_units);
         case "arg":
             return x.arg (root_parser.angle_units);
+        case "conj":
+            return x.conjugate ();
         case "re":
             return x.real_component ();
         case "im":

@@ -38,10 +38,11 @@ public class FunctionManager : Object
             new BuiltInMathFunction ("tanh⁻¹", _("Inverse Hyperbolic Tangent")),
         }},
         {_("Complex"), {
-            new BuiltInMathFunction ("conj", _("Complex Conjugate")),
-            new BuiltInMathFunction ("arg", _("Complex Argument")),
-            new BuiltInMathFunction ("re", _("Real Component")),
-            new BuiltInMathFunction ("im", _("Imaginary Component")),
+            new BuiltInMathFunction ("cis", _("Polar Complex")),
+            new BuiltInMathFunction ("arg", _("Complex Argument"), {"z"}),
+            new BuiltInMathFunction ("conj", _("Complex Conjugate"), {"z"}),
+            new BuiltInMathFunction ("re", _("Real Component"), {"z"}),
+            new BuiltInMathFunction ("im", _("Imaginary Component"), {"z"}),
         }},
         {_("Programming"), {
             new BuiltInMathFunction ("twos", _("Two’s Complement")),

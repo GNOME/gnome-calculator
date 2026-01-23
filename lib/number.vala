@@ -525,6 +525,12 @@ public class Number : GLib.Object
         return z;
     }
 
+    /* Sets z = cos (x) + i sin (x) */
+    public Number cis (AngleUnit unit = AngleUnit.RADIANS)
+    {
+        return cos (unit).add (new Number.i ().multiply (sin (unit)));
+    }
+
     /* Sets z = Arg (x) */
     public Number arg (AngleUnit unit = AngleUnit.RADIANS)
     {
@@ -548,7 +554,7 @@ public class Number : GLib.Object
         return z;
     }
 
-    /* Sets z = ‾̅x */
+    /* Sets z = x̅ */
     public Number conjugate ()
     {
         var z = new Number ();

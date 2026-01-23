@@ -928,12 +928,13 @@ template $AdvancedButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      Button calc_conjugate_button {
-        label: "conj";
+      Button calc_arg_button {
+        visible: bind calc_inverse_modifier_button.active inverted;
+        label: "Arg";
         focus-on-click: false;
-        tooltip-text: _("Complex Conjugate");
+        tooltip-text: _("Complex Argument");
         action-name: "cal.insert-function";
-        action-target: "'conj'";
+        action-target: "'Arg'";
 
         styles [
           "function-button",
@@ -945,12 +946,31 @@ template $AdvancedButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      Button calc_arg_button {
-        label: "Arg";
+      Button calc_cis_button {
+        visible: bind calc_inverse_modifier_button.active;
+        label: "cis";
         focus-on-click: false;
-        tooltip-text: _("Complex Argument");
+        tooltip-text: _("Polar Complex");
         action-name: "cal.insert-function";
-        action-target: "'Arg'";
+        action-target: "'cis'";
+
+        styles [
+          "function-button",
+          "accent",
+        ]
+
+        layout {
+          column: "3";
+          row: "0";
+        }
+      }
+
+      Button calc_conjugate_button {
+        label: "conj";
+        focus-on-click: false;
+        tooltip-text: _("Complex Conjugate");
+        action-name: "cal.insert-function";
+        action-target: "'conj'";
 
         styles [
           "function-button",
