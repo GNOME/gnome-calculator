@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2025-10-30 15:19+0000\n"
-"PO-Revision-Date: 2025-10-31 11:25+0100\n"
+"POT-Creation-Date: 2026-01-31 12:00+0000\n"
+"PO-Revision-Date: 2026-01-31 13:43+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -64,11 +64,11 @@ msgstr ""
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
 msgid ""
-"Programming mode supports calculations using common bases (binary, octal, decimal, and hexadecimal), bitwise operations, ones’ and two’s "
+"Programming mode supports calculations using common bases (binary, octal, decimal, and hexadecimal), bitwise operations, two’s "
 "complement, character to character code conversion, and more."
 msgstr ""
-"Programerski način podpira pretvarjanje med splošnimi številskimi osnovami (dvojiško, osmiško, desetiško, šestnajstiško), Boolovo "
-"algebro, eniškim in dvojiškim komplementom, znakovnim kodnim pretvarjanjem in še mnogo več."
+"Programerski način podpira izračune z običajnimi številskimi osnovami (dvojiško, osmiško, desetiško, šestnajstiško), Boolovo algebro, "
+"dvojiškim komplementom, znakovnim kodnim pretvarjanjem in še mnogo več."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:32
 msgid "Conversion mode supports conversions between common units, currencies and number bases."
@@ -124,7 +124,7 @@ msgid "The size of the words used in bitwise operations"
 msgstr "Velikost besed, uporabljenih pri bitnih opravilih."
 
 #: data/org.gnome.calculator.gschema.xml:43
-msgid "Numeric Base"
+msgid "Numeric base"
 msgstr "Številčna osnova"
 
 #: data/org.gnome.calculator.gschema.xml:44
@@ -132,16 +132,16 @@ msgid "The numeric base"
 msgstr "Številčna osnova"
 
 #: data/org.gnome.calculator.gschema.xml:48
-msgid "Show Thousands Separators"
-msgstr "Pokaži ločilnik tisočic"
+msgid "Group digits"
+msgstr "Združi števke"
 
 #: data/org.gnome.calculator.gschema.xml:49
-msgid "Indicates whether thousands separators are shown in large numbers."
-msgstr "Določa ali so ločilniki tisočic prikazani pri velikih številih."
+msgid "Indicates whether digits are grouped in large numbers."
+msgstr "Določa ali so števke pri velikih številih združene v skupine."
 
 # G:1 K:0 O:0
 #: data/org.gnome.calculator.gschema.xml:53
-msgid "Show Trailing Zeroes"
+msgid "Show trailing zeroes"
 msgstr "Pokaži sledeče ničle"
 
 #: data/org.gnome.calculator.gschema.xml:54
@@ -685,17 +685,17 @@ msgid "Tangent"
 msgstr "Tangens"
 
 # G:1 K:0 O:1
-#: lib/function-manager.vala:30 lib/function-manager.vala:115 src/ui/buttons-advanced.blp:517
+#: lib/function-manager.vala:30 lib/function-manager.vala:114 src/ui/buttons-advanced.blp:517
 msgid "Inverse Sine"
 msgstr "Inverzni sinus"
 
 # G:1 K:0 O:1
-#: lib/function-manager.vala:31 lib/function-manager.vala:116 src/ui/buttons-advanced.blp:591
+#: lib/function-manager.vala:31 lib/function-manager.vala:115 src/ui/buttons-advanced.blp:591
 msgid "Inverse Cosine"
 msgstr "Inverzni kosinus"
 
 # G:1 K:0 O:1
-#: lib/function-manager.vala:32 lib/function-manager.vala:117 src/ui/buttons-advanced.blp:665
+#: lib/function-manager.vala:32 lib/function-manager.vala:116 src/ui/buttons-advanced.blp:665
 msgid "Inverse Tangent"
 msgstr "Inverzni tangens"
 
@@ -711,15 +711,15 @@ msgstr "Hiperbolični kosinus"
 msgid "Hyperbolic Tangent"
 msgstr "Hiperbolični tangens"
 
-#: lib/function-manager.vala:36 lib/function-manager.vala:118 src/ui/buttons-advanced.blp:554
+#: lib/function-manager.vala:36 lib/function-manager.vala:117 src/ui/buttons-advanced.blp:554
 msgid "Inverse Hyperbolic Sine"
 msgstr "Inverzni hiperbolični sinus"
 
-#: lib/function-manager.vala:37 lib/function-manager.vala:119 src/ui/buttons-advanced.blp:628
+#: lib/function-manager.vala:37 lib/function-manager.vala:118 src/ui/buttons-advanced.blp:628
 msgid "Inverse Hyperbolic Cosine"
 msgstr "Inverzni hiperbolični kosinus"
 
-#: lib/function-manager.vala:38 lib/function-manager.vala:120 src/ui/buttons-advanced.blp:702
+#: lib/function-manager.vala:38 lib/function-manager.vala:119 src/ui/buttons-advanced.blp:702
 msgid "Inverse Hyperbolic Tangent"
 msgstr "Inverzni hiperbolični tangens"
 
@@ -748,155 +748,151 @@ msgid "Programming"
 msgstr "Programerski"
 
 #: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
-msgid "Ones’ Complement"
-msgstr "Eniški komplement"
-
-#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
 msgid "Two’s Complement"
 msgstr "Dvojiški komplement"
 
-#: lib/function-manager.vala:49
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
 msgid "Swap Endianness"
 msgstr "Zamenjaj pravilo tankega/debelega konca"
 
-#: lib/function-manager.vala:50 src/ui/buttons-advanced.blp:403 src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
+#: lib/function-manager.vala:49 src/ui/buttons-advanced.blp:403 src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
 #: src/ui/buttons-programming.blp:1808
 msgid "Modulus Divide"
 msgstr "Ostanek pri deljenju"
 
-#: lib/function-manager.vala:51
+#: lib/function-manager.vala:50
 msgid "Modular Exponentiation"
 msgstr "Modularno eksponiranje"
 
-#: lib/function-manager.vala:53
+#: lib/function-manager.vala:52
 msgid "Rounding"
 msgstr "Zaokroževanje"
 
-#: lib/function-manager.vala:54
+#: lib/function-manager.vala:53
 msgid "Round"
 msgstr "Zaokroževanje"
 
-#: lib/function-manager.vala:55
+#: lib/function-manager.vala:54
 msgid "Floor"
 msgstr "Spodnja vrednost"
 
-#: lib/function-manager.vala:56
+#: lib/function-manager.vala:55
 msgid "Ceiling"
 msgstr "Zgornja vrednost"
 
-#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
+#: lib/function-manager.vala:56 src/ui/buttons-programming.blp:2331
 msgid "Integer Component"
 msgstr "Celoštevilčna enota"
 
-#: lib/function-manager.vala:58 src/ui/buttons-programming.blp:2348
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2348
 msgid "Fractional Component"
 msgstr "Enota ulomka"
 
-#: lib/function-manager.vala:60
+#: lib/function-manager.vala:59
 msgid "Statistics"
 msgstr "Statistika"
 
-#: lib/function-manager.vala:61
+#: lib/function-manager.vala:60
 msgid "Sum"
 msgstr "Vsota"
 
-#: lib/function-manager.vala:62
+#: lib/function-manager.vala:61
 msgid "Sum of Squares"
 msgstr "Vsota kvadratov"
 
-#: lib/function-manager.vala:63
+#: lib/function-manager.vala:62
 msgid "Average"
 msgstr "Povprečje"
 
-#: lib/function-manager.vala:64
+#: lib/function-manager.vala:63
 msgid "Median"
 msgstr "Srednja vrednost"
 
-#: lib/function-manager.vala:65
+#: lib/function-manager.vala:64
 msgid "Minimum Value"
 msgstr "Najmanjša vrednost"
 
-#: lib/function-manager.vala:66
+#: lib/function-manager.vala:65
 msgid "Maximum Value"
 msgstr "Največja vrednost"
 
-#: lib/function-manager.vala:67
+#: lib/function-manager.vala:66
 msgid "Sample Standard Deviation"
 msgstr "Standardni odklon vzorca"
 
-#: lib/function-manager.vala:68
+#: lib/function-manager.vala:67
 msgid "Population Standard Deviation"
 msgstr "Populacijski standardni odklon"
 
-#: lib/function-manager.vala:69
+#: lib/function-manager.vala:68
 msgid "Sample Variance"
 msgstr "Varianca vzorca"
 
-#: lib/function-manager.vala:70
+#: lib/function-manager.vala:69
 msgid "Population Variance"
 msgstr "Varianca populacije"
 
-#: lib/function-manager.vala:72
+#: lib/function-manager.vala:71
 msgid "Sundry"
 msgstr "Razno"
 
-#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:806 src/ui/buttons-programming.blp:2171
+#: lib/function-manager.vala:72 src/ui/buttons-advanced.blp:806 src/ui/buttons-programming.blp:2171
 msgid "Logarithm"
 msgstr "Logaritem"
 
-#: lib/function-manager.vala:74 src/ui/buttons-advanced.blp:892 src/ui/buttons-financial.blp:626
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:892 src/ui/buttons-financial.blp:626
 msgid "Natural Logarithm"
 msgstr "Naravni logaritem"
 
-#: lib/function-manager.vala:75
+#: lib/function-manager.vala:74
 msgid "Square Root"
 msgstr "Kvadratni koren"
 
 # G:0 K:0 O:2
-#: lib/function-manager.vala:76
+#: lib/function-manager.vala:75
 msgid "Absolute Value"
 msgstr "Absolutna vrednost"
 
-#: lib/function-manager.vala:77
+#: lib/function-manager.vala:76
 msgid "Signum"
 msgstr "Signum"
 
-#: lib/function-manager.vala:78
+#: lib/function-manager.vala:77
 msgid "Combination"
 msgstr "Kombinacija"
 
-#: lib/function-manager.vala:79
+#: lib/function-manager.vala:78
 msgid "Permutation"
 msgstr "Permutacija"
 
-#: lib/function-manager.vala:80
+#: lib/function-manager.vala:79
 msgid "Greatest Common Divisor"
 msgstr "Največji skupni delitelj"
 
-#: lib/function-manager.vala:81
+#: lib/function-manager.vala:80
 msgid "Least Common Multiple"
 msgstr "Najmanjši skupni večkratnik"
 
-#: lib/function-manager.vala:82
+#: lib/function-manager.vala:81
 msgid "Comparison (Kronecker Delta)"
 msgstr "Primerjava (Kroneckerjeva funkcija delta)"
 
-#: lib/function-manager.vala:337
+#: lib/function-manager.vala:336
 #, c-format
 msgid "Function “%s” takes 1 argument"
 msgstr "Funkcija »%s« ima 1 argument"
 
-#: lib/function-manager.vala:355
+#: lib/function-manager.vala:354
 #, c-format
 msgid "Function “%s” takes 1 or 2 arguments"
 msgstr "Funkcija »%s« sprejme 1 ali 2 argumenta"
 
-#: lib/function-manager.vala:363
+#: lib/function-manager.vala:362
 #, c-format
 msgid "Function “%s” takes at least 2 arguments"
 msgstr "Funkcija »%s« ima vsaj 2 argumenta"
 
-#: lib/function-manager.vala:370
+#: lib/function-manager.vala:369
 #, c-format
 msgid "Function “%s” takes %d argument"
 msgid_plural "Function “%s” takes %d arguments"
@@ -911,67 +907,67 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:554
+#: lib/math-equation.vala:558
 msgid "No undo history"
 msgstr "Ni zgodovine razveljavitev"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:575
+#: lib/math-equation.vala:579
 msgid "No redo history"
 msgstr "Ni zgodovine razveljavitve"
 
-#: lib/math-equation.vala:822
+#: lib/math-equation.vala:826
 msgid "No sane value to store"
 msgstr "Ni razumne vrednosti za shranjevanje"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1281
+#: lib/math-equation.vala:1286
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Neznana spremenljivka »%s«"
 
 #. Error displayed to user when a currency conversion with unknown exchange rate is attempted
-#: lib/math-equation.vala:1288
+#: lib/math-equation.vala:1293
 #, c-format
 msgid "Exchange rate for “%s” is not available"
 msgstr "Menjalni tečaj za »%s« ni na voljo"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1295
+#: lib/math-equation.vala:1300
 #, c-format
 msgid "Unknown unit “%s”"
 msgstr "Neznana enota »%s«"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1302
+#: lib/math-equation.vala:1307
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Funkcija »%s« ni določena"
 
 #. Error displayed to user when an invalid conversion (e.g. units of different categories)
-#: lib/math-equation.vala:1309
+#: lib/math-equation.vala:1314
 msgid "Unknown conversion"
 msgstr "Neznana pretvorba"
 
 #. should always be run
-#: lib/math-equation.vala:1319
+#: lib/math-equation.vala:1324
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1324 lib/math-equation.vala:1329
+#: lib/math-equation.vala:1329 lib/math-equation.vala:1334
 msgid "Malformed expression"
 msgstr "Napačen izraz"
 
 # G:1 K:0 O:0
-#: lib/math-equation.vala:1340
+#: lib/math-equation.vala:1345
 msgid "Calculating"
 msgstr "Preračunavanje"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1562
+#: lib/math-equation.vala:1567
 msgid "Need an integer to factorize"
 msgstr "Za faktorizacijo je zahtevana celoštevilčna vrednost"
 
@@ -1111,55 +1107,51 @@ msgstr "Bitni logični NOT (NE) je določen le za ne negativna cela števila"
 msgid "Shift is only possible on integers"
 msgstr "Zamik je mogoč le pri celoštevilčnih vrednostih"
 
-#: lib/number.vala:1092 lib/number.vala:1132 lib/number.vala:1578
+#: lib/number.vala:1092 lib/number.vala:1120 lib/number.vala:1566
 msgid "Overflow. Try a bigger word size"
 msgstr "Prekoračitev. Poskusite z večjo besedo"
 
 #: lib/number.vala:1103
-msgid "Ones’ complement is only defined for non-negative integers"
-msgstr "Eniški komplement je določen le za ne negativna cela števila"
-
-#: lib/number.vala:1115
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "Dvojiški komplement je določen le za ne negativna cela števila"
 
-#: lib/number.vala:1127
+#: lib/number.vala:1115
 msgid "Swap endianness is only possible on integers"
 msgstr "Zamenjava pravila tankega/debelega konca je možna samo pri celih številih"
 
-#: lib/number.vala:1155
+#: lib/number.vala:1143
 msgid "Combination is only defined for non-negative integers"
 msgstr "Kombinacja je določena le za ne-negativna cela števila"
 
-#: lib/number.vala:1160
+#: lib/number.vala:1148
 msgid "Combination is undefined if n is less than r"
 msgstr "Kombinacija ni opredeljena, če je n manjši od r"
 
-#: lib/number.vala:1173
+#: lib/number.vala:1161
 msgid "Permutation is only defined for non-negative integers"
 msgstr "Permutacija je določena le za ne-negativna cela števila"
 
-#: lib/number.vala:1178
+#: lib/number.vala:1166
 msgid "Permutation is undefined if n is less than r"
 msgstr "Permutacija ni določena, če je n manjši od r"
 
-#: lib/number.vala:1199
+#: lib/number.vala:1187
 msgid "Greatest common divisor is only defined for integers"
 msgstr "Največji skupni delitelj je določen le za cela števila"
 
-#: lib/number.vala:1219
+#: lib/number.vala:1207
 msgid "Least common multiple is only defined for integers"
 msgstr "Najmanjši skupni večkratnik določen le za cela števila"
 
-#: lib/number.vala:1276
+#: lib/number.vala:1264
 msgid "Median is only defined for real numbers"
 msgstr "Mediana je določena le za realna števila"
 
-#: lib/number.vala:1296
+#: lib/number.vala:1284
 msgid "Minimum value is only defined for real numbers"
 msgstr "Najmanjša vrednost je določena le za realna števila"
 
-#: lib/number.vala:1313
+#: lib/number.vala:1301
 msgid "Maximum value is only defined for real numbers"
 msgstr "Največja vrednost je določena le za realna števila"
 
@@ -1179,7 +1171,7 @@ msgstr "Mednarodni denarni sklad"
 msgid "United Nations Treasury"
 msgstr "Zakladnica Združenih narodov"
 
-#: lib/serializer.vala:354 lib/serializer.vala:391
+#: lib/serializer.vala:359 lib/serializer.vala:397
 msgid "The result is too long to display in fixed format. Try other result formats"
 msgstr "Rezultat je predolg za prikaz v fiksni obliki. Preizkusite druge oblike zapisa rezultatov"
 
@@ -3231,8 +3223,8 @@ msgid "Trailing _Zeroes"
 msgstr "Sledeče _ničle"
 
 #: src/ui/math-preferences.blp:62
-msgid "_Thousands Separators"
-msgstr "Ločilnik _tisočic"
+msgid "_Group Digits"
+msgstr "_Združi števke"
 
 #: src/ui/math-preferences.blp:67
 msgid "_Angle Units"
