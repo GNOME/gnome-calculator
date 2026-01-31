@@ -2291,12 +2291,12 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      Button calc_ones_complement_button {
-        label: "ones";
+      Button calc_twos_complement_button {
+        label: "twos";
         focus-on-click: false;
-        tooltip-text: _("Ones’ Complement");
+        tooltip-text: _("Two’s Complement");
         action-name: "cal.insert-function";
-        action-target: "'ones'";
+        action-target: "'twos'";
 
         styles [
           "function-button",
@@ -2308,12 +2308,12 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      Button calc_twos_complement_button {
-        label: "twos";
+      Button calc_swap_endianness_button {
+        label: "swap";
         focus-on-click: false;
-        tooltip-text: _("Two’s Complement");
+        tooltip-text: _("Swap Endianness");
         action-name: "cal.insert-function";
-        action-target: "'twos'";
+        action-target: "'bswap'";
 
         styles [
           "function-button",

@@ -44,7 +44,6 @@ public class FunctionManager : Object
             new BuiltInMathFunction ("im", _("Imaginary Component")),
         }},
         {_("Programming"), {
-            new BuiltInMathFunction ("ones", _("Ones’ Complement")),
             new BuiltInMathFunction ("twos", _("Two’s Complement")),
             new BuiltInMathFunction ("bswap", _("Swap Endianness")),
             new BuiltInMathFunction ("mod", _("Modulus Divide"), {"x", "y"}),

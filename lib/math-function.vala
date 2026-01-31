@@ -291,8 +291,6 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
             return x.real_component ();
         case "im":
             return x.imaginary_component ();
-        case "ones":
-            return x.ones_complement (root_parser.wordlen);
         case "twos":
             return x.twos_complement (root_parser.wordlen);
         case "bswap":

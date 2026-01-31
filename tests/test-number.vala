@@ -1148,7 +1148,6 @@ static int main (string[] args)
     test_xor ();
     test_not ();
     test_shift ();
-    //test_ones_complement ();
     //test_twos_complement ();
     test_factorize ();
 

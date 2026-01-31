@@ -707,8 +707,8 @@ private void test_equations ()
     test ("3 xor 5", "6", 0);
 
     number_base = 16;
-    test ("ones 1", "FFFFFFFE", 0);
-    test ("ones 7FFFFFFF", "80000000", 0);
+    test ("not 1", "FFFFFFFE", 0);
+    test ("not 7FFFFFFF", "80000000", 0);
     test ("twos 1", "FFFFFFFF", 0);
     test ("twos 7FFFFFFF", "80000001", 0);
     test ("~7A₁₆", "FFFFFF85", 0);

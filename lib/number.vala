@@ -1095,18 +1095,6 @@ public class Number : GLib.Object
         return true;
     }
 
-    /* Sets z to be the ones complement of x for word of length 'wordlen' */
-    public Number ones_complement (int wordlen)
-    {
-        if (!is_natural ())
-        {
-            error = _("Ones’ complement is only defined for non-negative integers");
-            return new Number.integer (0);
-        }
-
-        return bitwise (new Number.integer (0), (v1, v2) => { return v1 ^ v2; }, wordlen).not (wordlen);
-    }
-
     /* Sets z to be the twos complement of x for word of length 'wordlen' */
     public Number twos_complement (int wordlen)
     {
@@ -1116,7 +1104,7 @@ public class Number : GLib.Object
             return new Number.integer (0);
         }
 
-        return ones_complement (wordlen).add (new Number.integer (1));
+        return not (wordlen).add (new Number.integer (1));
     }
 
     /* Sets z = reverse the bytes in x for word of length 'wordlen' */
