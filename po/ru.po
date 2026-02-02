@@ -27,8 +27,8 @@ msgstr ""
 "Project-Id-Version: gcalctool trunk\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2025-11-29 15:54+0000\n"
-"PO-Revision-Date: 2025-12-10 15:46+0300\n"
+"POT-Creation-Date: 2026-01-31 12:00+0000\n"
+"PO-Revision-Date: 2026-01-31 17:02+0300\n"
 "Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
 "Language: ru\n"
@@ -91,13 +91,13 @@ msgstr ""
 #: data/org.gnome.Calculator.metainfo.xml.in:27
 msgid ""
 "Programming mode supports calculations using common bases (binary, octal, "
-"decimal, and hexadecimal), bitwise operations, ones’ and two’s complement, "
-"character to character code conversion, and more."
+"decimal, and hexadecimal), bitwise operations, two’s complement, character "
+"to character code conversion, and more."
 msgstr ""
 "Режим программирования поддерживает вычисления, используя распространённые "
 "системы счисления (двоичную, восьмеричную, десятичную и шестнадцатиричную), "
-"побитовые операции, обратный и дополнительный код, преобразование кодов "
-"символов и другие возможности."
+"побитовые операции, дополнительный код, преобразование кодов символов и "
+"другие возможности."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:32
 msgid ""
@@ -153,7 +153,7 @@ msgid "The size of the words used in bitwise operations"
 msgstr "Размер слова, используемый в побитовых операциях"
 
 #: data/org.gnome.calculator.gschema.xml:43
-msgid "Numeric Base"
+msgid "Numeric base"
 msgstr "Основание системы счисления"
 
 #: data/org.gnome.calculator.gschema.xml:44
@@ -161,15 +161,15 @@ msgid "The numeric base"
 msgstr "Основание системы счисления"
 
 #: data/org.gnome.calculator.gschema.xml:48
-msgid "Show Thousands Separators"
-msgstr "Показывать разделители тысяч"
+msgid "Group digits"
+msgstr "Группировка цифр"
 
 #: data/org.gnome.calculator.gschema.xml:49
-msgid "Indicates whether thousands separators are shown in large numbers."
-msgstr "Определяет, показывать ли разделители тысяч в больших числах."
+msgid "Indicates whether digits are grouped in large numbers."
+msgstr "Определяет, группируются ли цифры в больших числах."
 
 #: data/org.gnome.calculator.gschema.xml:53
-msgid "Show Trailing Zeroes"
+msgid "Show trailing zeroes"
 msgstr "Показывать незначащие нули после запятой"
 
 #: data/org.gnome.calculator.gschema.xml:54
@@ -726,17 +726,17 @@ msgstr "Косинус"
 msgid "Tangent"
 msgstr "Тангенс"
 
-#: lib/function-manager.vala:30 lib/function-manager.vala:115
+#: lib/function-manager.vala:30 lib/function-manager.vala:114
 #: src/ui/buttons-advanced.blp:517
 msgid "Inverse Sine"
 msgstr "Обратный синус"
 
-#: lib/function-manager.vala:31 lib/function-manager.vala:116
+#: lib/function-manager.vala:31 lib/function-manager.vala:115
 #: src/ui/buttons-advanced.blp:591
 msgid "Inverse Cosine"
 msgstr "Обратный косинус"
 
-#: lib/function-manager.vala:32 lib/function-manager.vala:117
+#: lib/function-manager.vala:32 lib/function-manager.vala:116
 #: src/ui/buttons-advanced.blp:665
 msgid "Inverse Tangent"
 msgstr "Обратный тангенс"
@@ -753,17 +753,17 @@ msgstr "Гиперболический косинус"
 msgid "Hyperbolic Tangent"
 msgstr "Гиперболический тангенс"
 
-#: lib/function-manager.vala:36 lib/function-manager.vala:118
+#: lib/function-manager.vala:36 lib/function-manager.vala:117
 #: src/ui/buttons-advanced.blp:554
 msgid "Inverse Hyperbolic Sine"
 msgstr "Обратный гиперболический синус"
 
-#: lib/function-manager.vala:37 lib/function-manager.vala:119
+#: lib/function-manager.vala:37 lib/function-manager.vala:118
 #: src/ui/buttons-advanced.blp:628
 msgid "Inverse Hyperbolic Cosine"
 msgstr "Обратный гиперболический косинус"
 
-#: lib/function-manager.vala:38 lib/function-manager.vala:120
+#: lib/function-manager.vala:38 lib/function-manager.vala:119
 #: src/ui/buttons-advanced.blp:702
 msgid "Inverse Hyperbolic Tangent"
 msgstr "Обратный гиперболический тангенс"
@@ -793,157 +793,153 @@ msgid "Programming"
 msgstr "Программирование"
 
 #: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
-msgid "Ones’ Complement"
-msgstr "Обратный код"
-
-#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
 msgid "Two’s Complement"
 msgstr "Дополнительный код"
 
-#: lib/function-manager.vala:49
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
 msgid "Swap Endianness"
 msgstr "Изменение порядка байтов"
 
-#: lib/function-manager.vala:50 src/ui/buttons-advanced.blp:403
+#: lib/function-manager.vala:49 src/ui/buttons-advanced.blp:403
 #: src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
 #: src/ui/buttons-programming.blp:1808
 msgid "Modulus Divide"
 msgstr "Остаток от деления"
 
-#: lib/function-manager.vala:51
+#: lib/function-manager.vala:50
 msgid "Modular Exponentiation"
 msgstr "Модульное возведение в степень"
 
-#: lib/function-manager.vala:53
+#: lib/function-manager.vala:52
 msgid "Rounding"
 msgstr "Округление"
 
-#: lib/function-manager.vala:54
+#: lib/function-manager.vala:53
 msgid "Round"
 msgstr "Округление"
 
-#: lib/function-manager.vala:55
+#: lib/function-manager.vala:54
 msgid "Floor"
 msgstr "Нижнее округление"
 
-#: lib/function-manager.vala:56
+#: lib/function-manager.vala:55
 msgid "Ceiling"
 msgstr "Верхнее округление"
 
-#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
+#: lib/function-manager.vala:56 src/ui/buttons-programming.blp:2331
 msgid "Integer Component"
 msgstr "Целая часть"
 
-#: lib/function-manager.vala:58 src/ui/buttons-programming.blp:2348
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2348
 msgid "Fractional Component"
 msgstr "Дробная часть"
 
-#: lib/function-manager.vala:60
+#: lib/function-manager.vala:59
 msgid "Statistics"
 msgstr "Статистика"
 
-#: lib/function-manager.vala:61
+#: lib/function-manager.vala:60
 msgid "Sum"
 msgstr "Сумма"
 
-#: lib/function-manager.vala:62
+#: lib/function-manager.vala:61
 msgid "Sum of Squares"
 msgstr "Сумма квадратов"
 
-#: lib/function-manager.vala:63
+#: lib/function-manager.vala:62
 msgid "Average"
 msgstr "Среднее"
 
-#: lib/function-manager.vala:64
+#: lib/function-manager.vala:63
 msgid "Median"
 msgstr "Медиана"
 
-#: lib/function-manager.vala:65
+#: lib/function-manager.vala:64
 msgid "Minimum Value"
 msgstr "Минимальное значение"
 
-#: lib/function-manager.vala:66
+#: lib/function-manager.vala:65
 msgid "Maximum Value"
 msgstr "Максимальное значение"
 
-#: lib/function-manager.vala:67
+#: lib/function-manager.vala:66
 msgid "Sample Standard Deviation"
 msgstr "Стандартное отклонение выборки"
 
-#: lib/function-manager.vala:68
+#: lib/function-manager.vala:67
 msgid "Population Standard Deviation"
 msgstr "Стандартное отклонение популяции"
 
-#: lib/function-manager.vala:69
+#: lib/function-manager.vala:68
 msgid "Sample Variance"
 msgstr "Выборочная дисперсия"
 
-#: lib/function-manager.vala:70
+#: lib/function-manager.vala:69
 msgid "Population Variance"
 msgstr "Популяционная дисперсия"
 
-#: lib/function-manager.vala:72
+#: lib/function-manager.vala:71
 msgid "Sundry"
 msgstr "Многочисленность"
 
-#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:806
+#: lib/function-manager.vala:72 src/ui/buttons-advanced.blp:806
 #: src/ui/buttons-programming.blp:2171
 msgid "Logarithm"
 msgstr "Логарифм"
 
-#: lib/function-manager.vala:74 src/ui/buttons-advanced.blp:892
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:892
 #: src/ui/buttons-financial.blp:626
 msgid "Natural Logarithm"
 msgstr "Натуральный логарифм"
 
-#: lib/function-manager.vala:75
+#: lib/function-manager.vala:74
 msgid "Square Root"
 msgstr "Квадратный корень"
 
-#: lib/function-manager.vala:76
+#: lib/function-manager.vala:75
 msgid "Absolute Value"
 msgstr "Модуль"
 
-#: lib/function-manager.vala:77
+#: lib/function-manager.vala:76
 msgid "Signum"
 msgstr "Сигнум"
 
-#: lib/function-manager.vala:78
+#: lib/function-manager.vala:77
 msgid "Combination"
 msgstr "Сочетание"
 
-#: lib/function-manager.vala:79
+#: lib/function-manager.vala:78
 msgid "Permutation"
 msgstr "Подстановка"
 
-#: lib/function-manager.vala:80
+#: lib/function-manager.vala:79
 msgid "Greatest Common Divisor"
 msgstr "Наибольший общий делитель"
 
-#: lib/function-manager.vala:81
+#: lib/function-manager.vala:80
 msgid "Least Common Multiple"
 msgstr "Наименьшее общее кратное"
 
-#: lib/function-manager.vala:82
+#: lib/function-manager.vala:81
 msgid "Comparison (Kronecker Delta)"
 msgstr "Сравнение (дельта Кронекера)"
 
-#: lib/function-manager.vala:337
+#: lib/function-manager.vala:336
 #, c-format
 msgid "Function “%s” takes 1 argument"
 msgstr "Функция «%s» принимает 1 аргумент"
 
-#: lib/function-manager.vala:355
+#: lib/function-manager.vala:354
 #, c-format
 msgid "Function “%s” takes 1 or 2 arguments"
 msgstr "Функция «%s» принимает 1 или 2 аргумента"
 
-#: lib/function-manager.vala:363
+#: lib/function-manager.vala:362
 #, c-format
 msgid "Function “%s” takes at least 2 arguments"
 msgstr "Функция «%s» принимает как минимум 2 аргумента"
 
-#: lib/function-manager.vala:370
+#: lib/function-manager.vala:369
 #, c-format
 msgid "Function “%s” takes %d argument"
 msgid_plural "Function “%s” takes %d arguments"
@@ -957,66 +953,66 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:554
+#: lib/math-equation.vala:558
 msgid "No undo history"
 msgstr "Нет истории отмены изменений"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:575
+#: lib/math-equation.vala:579
 msgid "No redo history"
 msgstr "Нет истории отмены изменений"
 
-#: lib/math-equation.vala:822
+#: lib/math-equation.vala:826
 msgid "No sane value to store"
 msgstr "Отсутствует разумное значение для сохранения"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1281
+#: lib/math-equation.vala:1286
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Неизвестная переменная «%s»"
 
 #. Error displayed to user when a currency conversion with unknown exchange rate is attempted
-#: lib/math-equation.vala:1288
+#: lib/math-equation.vala:1293
 #, c-format
 msgid "Exchange rate for “%s” is not available"
 msgstr "Обменный курс для «%s» недоступен"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1295
+#: lib/math-equation.vala:1300
 #, c-format
 msgid "Unknown unit “%s”"
 msgstr "Неизвестная единица «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1302
+#: lib/math-equation.vala:1307
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Функция «%s» не определена"
 
 #. Error displayed to user when an invalid conversion (e.g. units of different categories)
-#: lib/math-equation.vala:1309
+#: lib/math-equation.vala:1314
 msgid "Unknown conversion"
 msgstr "Неизвестное преобразование"
 
 #. should always be run
-#: lib/math-equation.vala:1319
+#: lib/math-equation.vala:1324
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1324 lib/math-equation.vala:1329
+#: lib/math-equation.vala:1329 lib/math-equation.vala:1334
 msgid "Malformed expression"
 msgstr "Некорректное выражение"
 
-#: lib/math-equation.vala:1340
+#: lib/math-equation.vala:1345
 msgid "Calculating"
 msgstr "Вычисление"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1562
+#: lib/math-equation.vala:1567
 msgid "Need an integer to factorize"
 msgstr "Для разложения на простые множители необходимо целое число"
 
@@ -1166,55 +1162,51 @@ msgstr "Побитовое НЕ определено только для цел�
 msgid "Shift is only possible on integers"
 msgstr "Сдвиг возможен только для целых чисел"
 
-#: lib/number.vala:1092 lib/number.vala:1132 lib/number.vala:1578
+#: lib/number.vala:1092 lib/number.vala:1120 lib/number.vala:1566
 msgid "Overflow. Try a bigger word size"
 msgstr "Переполнение. Попробуйте установить большее значение размера слова"
 
 #: lib/number.vala:1103
-msgid "Ones’ complement is only defined for non-negative integers"
-msgstr "Обратный код определен только для целых неотрицательных чисел "
-
-#: lib/number.vala:1115
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "Дополнительный код определен только для целых неотрицательных чисел"
 
-#: lib/number.vala:1127
+#: lib/number.vala:1115
 msgid "Swap endianness is only possible on integers"
 msgstr "Изменение порядка байтов возможно только для целых чисел"
 
-#: lib/number.vala:1155
+#: lib/number.vala:1143
 msgid "Combination is only defined for non-negative integers"
 msgstr "Сочетание определено только для целых неотрицательных чисел"
 
-#: lib/number.vala:1160
+#: lib/number.vala:1148
 msgid "Combination is undefined if n is less than r"
 msgstr "Сочетание не определено, если n меньше r"
 
-#: lib/number.vala:1173
+#: lib/number.vala:1161
 msgid "Permutation is only defined for non-negative integers"
 msgstr "Подстановка определена только для целых неотрицательных чисел"
 
-#: lib/number.vala:1178
+#: lib/number.vala:1166
 msgid "Permutation is undefined if n is less than r"
 msgstr "Подстановка не определена, если n меньше r"
 
-#: lib/number.vala:1199
+#: lib/number.vala:1187
 msgid "Greatest common divisor is only defined for integers"
 msgstr "Наибольший общий делитель определен только для целых чисел"
 
-#: lib/number.vala:1219
+#: lib/number.vala:1207
 msgid "Least common multiple is only defined for integers"
 msgstr "Наименьшее общее кратное определено только для целых чисел"
 
-#: lib/number.vala:1276
+#: lib/number.vala:1264
 msgid "Median is only defined for real numbers"
 msgstr "Медиана определена только для действительных чисел"
 
-#: lib/number.vala:1296
+#: lib/number.vala:1284
 msgid "Minimum value is only defined for real numbers"
 msgstr "Минимальное значение определено только для действительных чисел"
 
-#: lib/number.vala:1313
+#: lib/number.vala:1301
 msgid "Maximum value is only defined for real numbers"
 msgstr "Максимальное значение определено только для действительных чисел"
 
@@ -1234,7 +1226,7 @@ msgstr "Международный валютный фонд"
 msgid "United Nations Treasury"
 msgstr "Казначейство ООН"
 
-#: lib/serializer.vala:354 lib/serializer.vala:391
+#: lib/serializer.vala:359 lib/serializer.vala:397
 msgid ""
 "The result is too long to display in fixed format. Try other result formats"
 msgstr ""
@@ -3330,8 +3322,8 @@ msgid "Trailing _Zeroes"
 msgstr "Незначащие _нули после запятой"
 
 #: src/ui/math-preferences.blp:62
-msgid "_Thousands Separators"
-msgstr "Разделители _тысяч"
+msgid "_Group Digits"
+msgstr "_Группировка цифр"
 
 #: src/ui/math-preferences.blp:67
 msgid "_Angle Units"
@@ -3698,6 +3690,18 @@ msgstr "Повторить"
 #: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "Главное меню"
+
+#~ msgid "Show Thousands Separators"
+#~ msgstr "Показывать разделители тысяч"
+
+#~ msgid "Ones’ Complement"
+#~ msgstr "Обратный код"
+
+#~ msgid "Ones’ complement is only defined for non-negative integers"
+#~ msgstr "Обратный код определен только для целых неотрицательных чисел "
+
+#~ msgid "_Thousands Separators"
+#~ msgstr "Разделители _тысяч"
 
 #~ msgid "Currency of the current calculation"
 #~ msgstr "Валюта текущего вычисления"
