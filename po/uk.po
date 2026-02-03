@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues"
 "\n"
-"POT-Creation-Date: 2026-01-03 18:33+0000\n"
-"PO-Revision-Date: 2026-01-26 03:25+0200\n"
+"POT-Creation-Date: 2026-01-31 12:00+0000\n"
+"PO-Revision-Date: 2026-02-03 05:53+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -75,14 +75,18 @@ msgstr ""
 "пропорційного списання амортизації, тощо."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
+#| msgid ""
+#| "Programming mode supports calculations using common bases (binary, octal, "
+#| "decimal, and hexadecimal), bitwise operations, ones’ and two’s "
+#| "complement, character to character code conversion, and more."
 msgid ""
 "Programming mode supports calculations using common bases (binary, octal, "
-"decimal, and hexadecimal), bitwise operations, ones’ and two’s complement, "
-"character to character code conversion, and more."
+"decimal, and hexadecimal), bitwise operations, two’s complement, character "
+"to character code conversion, and more."
 msgstr ""
 "У режимі програмування передбачено підтримку обчислень з використанням "
 "типових систем числення (двійкової, вісімкової, десяткової, "
-"шістнадцяткової), булевої алгебри, зворотного і доповнювального коду, "
+"шістнадцяткової), булевої алгебри, доповнювального коду, "
 "перетворення символів у код символу тощо."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:32
@@ -139,7 +143,8 @@ msgid "The size of the words used in bitwise operations"
 msgstr "Розмір слова, який використовується двійковими операціями"
 
 #: data/org.gnome.calculator.gschema.xml:43
-msgid "Numeric Base"
+#| msgid "Numeric Base"
+msgid "Numeric base"
 msgstr "Система числення"
 
 #: data/org.gnome.calculator.gschema.xml:44
@@ -147,15 +152,17 @@ msgid "The numeric base"
 msgstr "Система числення"
 
 #: data/org.gnome.calculator.gschema.xml:48
-msgid "Show Thousands Separators"
-msgstr "Показувати роздільник тисячних"
+msgid "Group digits"
+msgstr "Групувати цифри"
 
 #: data/org.gnome.calculator.gschema.xml:49
-msgid "Indicates whether thousands separators are shown in large numbers."
-msgstr "Показує що розділювачі тисяч показуються у великих числах"
+#| msgid "Indicates whether thousands separators are shown in large numbers."
+msgid "Indicates whether digits are grouped in large numbers."
+msgstr "Показує, чи буде згруповано цифри у великих числах."
 
 #: data/org.gnome.calculator.gschema.xml:53
-msgid "Show Trailing Zeroes"
+#| msgid "Show Trailing Zeroes"
+msgid "Show trailing zeroes"
 msgstr "Показувати завершальні нулі"
 
 #: data/org.gnome.calculator.gschema.xml:54
@@ -711,17 +718,17 @@ msgstr "Косинус"
 msgid "Tangent"
 msgstr "Тангенс"
 
-#: lib/function-manager.vala:30 lib/function-manager.vala:115
+#: lib/function-manager.vala:30 lib/function-manager.vala:114
 #: src/ui/buttons-advanced.blp:517
 msgid "Inverse Sine"
 msgstr "Арксинус"
 
-#: lib/function-manager.vala:31 lib/function-manager.vala:116
+#: lib/function-manager.vala:31 lib/function-manager.vala:115
 #: src/ui/buttons-advanced.blp:591
 msgid "Inverse Cosine"
 msgstr "Арккосинус"
 
-#: lib/function-manager.vala:32 lib/function-manager.vala:117
+#: lib/function-manager.vala:32 lib/function-manager.vala:116
 #: src/ui/buttons-advanced.blp:665
 msgid "Inverse Tangent"
 msgstr "Арктангенс"
@@ -738,17 +745,17 @@ msgstr "Гіперболічний косинус"
 msgid "Hyperbolic Tangent"
 msgstr "Гіперболічний тангенс"
 
-#: lib/function-manager.vala:36 lib/function-manager.vala:118
+#: lib/function-manager.vala:36 lib/function-manager.vala:117
 #: src/ui/buttons-advanced.blp:554
 msgid "Inverse Hyperbolic Sine"
 msgstr "Обернений гіперболічний синус"
 
-#: lib/function-manager.vala:37 lib/function-manager.vala:119
+#: lib/function-manager.vala:37 lib/function-manager.vala:118
 #: src/ui/buttons-advanced.blp:628
 msgid "Inverse Hyperbolic Cosine"
 msgstr "Обернений гіперболічний косинус"
 
-#: lib/function-manager.vala:38 lib/function-manager.vala:120
+#: lib/function-manager.vala:38 lib/function-manager.vala:119
 #: src/ui/buttons-advanced.blp:702
 msgid "Inverse Hyperbolic Tangent"
 msgstr "Гіперболічний арктангенс"
@@ -778,157 +785,153 @@ msgid "Programming"
 msgstr "Програмувальний"
 
 #: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
-msgid "Ones’ Complement"
-msgstr "Однорозрядне доповнення"
-
-#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
 msgid "Two’s Complement"
 msgstr "Дворозрядне доповнення"
 
-#: lib/function-manager.vala:49
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
 msgid "Swap Endianness"
 msgstr "Перемикання порядку байтів"
 
-#: lib/function-manager.vala:50 src/ui/buttons-advanced.blp:403
+#: lib/function-manager.vala:49 src/ui/buttons-advanced.blp:403
 #: src/ui/buttons-basic.blp:348 src/ui/buttons-financial.blp:403
 #: src/ui/buttons-programming.blp:1808
 msgid "Modulus Divide"
 msgstr "Залишок від цілочислового ділення"
 
-#: lib/function-manager.vala:51
+#: lib/function-manager.vala:50
 msgid "Modular Exponentiation"
 msgstr "Модульне піднесення до степеня"
 
-#: lib/function-manager.vala:53
+#: lib/function-manager.vala:52
 msgid "Rounding"
 msgstr "Округлення"
 
-#: lib/function-manager.vala:54
+#: lib/function-manager.vala:53
 msgid "Round"
 msgstr "Округлення"
 
-#: lib/function-manager.vala:55
+#: lib/function-manager.vala:54
 msgid "Floor"
 msgstr "Підлога"
 
-#: lib/function-manager.vala:56
+#: lib/function-manager.vala:55
 msgid "Ceiling"
 msgstr "Стеля"
 
-#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
+#: lib/function-manager.vala:56 src/ui/buttons-programming.blp:2331
 msgid "Integer Component"
 msgstr "Цілий компонент"
 
-#: lib/function-manager.vala:58 src/ui/buttons-programming.blp:2348
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2348
 msgid "Fractional Component"
 msgstr "Дробовий компонент"
 
-#: lib/function-manager.vala:60
+#: lib/function-manager.vala:59
 msgid "Statistics"
 msgstr "Статистика"
 
-#: lib/function-manager.vala:61
+#: lib/function-manager.vala:60
 msgid "Sum"
 msgstr "Сума"
 
-#: lib/function-manager.vala:62
+#: lib/function-manager.vala:61
 msgid "Sum of Squares"
 msgstr "Сума квадратів"
 
-#: lib/function-manager.vala:63
+#: lib/function-manager.vala:62
 msgid "Average"
 msgstr "Середнє"
 
-#: lib/function-manager.vala:64
+#: lib/function-manager.vala:63
 msgid "Median"
 msgstr "Медіана"
 
-#: lib/function-manager.vala:65
+#: lib/function-manager.vala:64
 msgid "Minimum Value"
 msgstr "Мінімальне значення"
 
-#: lib/function-manager.vala:66
+#: lib/function-manager.vala:65
 msgid "Maximum Value"
 msgstr "Максимальне значення"
 
-#: lib/function-manager.vala:67
+#: lib/function-manager.vala:66
 msgid "Sample Standard Deviation"
 msgstr "Стандартне вибіркове відхилення"
 
-#: lib/function-manager.vala:68
+#: lib/function-manager.vala:67
 msgid "Population Standard Deviation"
 msgstr "Стандартне відхилення популяції"
 
-#: lib/function-manager.vala:69
+#: lib/function-manager.vala:68
 msgid "Sample Variance"
 msgstr "Дисперсія вибірки"
 
-#: lib/function-manager.vala:70
+#: lib/function-manager.vala:69
 msgid "Population Variance"
 msgstr "Дисперсія популяції"
 
-#: lib/function-manager.vala:72
+#: lib/function-manager.vala:71
 msgid "Sundry"
 msgstr "Різне"
 
-#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:806
+#: lib/function-manager.vala:72 src/ui/buttons-advanced.blp:806
 #: src/ui/buttons-programming.blp:2171
 msgid "Logarithm"
 msgstr "Логарифм"
 
-#: lib/function-manager.vala:74 src/ui/buttons-advanced.blp:892
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:892
 #: src/ui/buttons-financial.blp:626
 msgid "Natural Logarithm"
 msgstr "Натуральний логарифм"
 
-#: lib/function-manager.vala:75
+#: lib/function-manager.vala:74
 msgid "Square Root"
 msgstr "Квадратний корінь"
 
-#: lib/function-manager.vala:76
+#: lib/function-manager.vala:75
 msgid "Absolute Value"
 msgstr "Модуль"
 
-#: lib/function-manager.vala:77
+#: lib/function-manager.vala:76
 msgid "Signum"
 msgstr "Знак"
 
-#: lib/function-manager.vala:78
+#: lib/function-manager.vala:77
 msgid "Combination"
 msgstr "Комбінація"
 
-#: lib/function-manager.vala:79
+#: lib/function-manager.vala:78
 msgid "Permutation"
 msgstr "Кількість перестановок (упорядкувань)"
 
-#: lib/function-manager.vala:80
+#: lib/function-manager.vala:79
 msgid "Greatest Common Divisor"
 msgstr "Найбільший спільний дільник"
 
-#: lib/function-manager.vala:81
+#: lib/function-manager.vala:80
 msgid "Least Common Multiple"
 msgstr "Найменше спільне кратне"
 
-#: lib/function-manager.vala:82
+#: lib/function-manager.vala:81
 msgid "Comparison (Kronecker Delta)"
 msgstr "Порівняння (дельта Кронекера)"
 
-#: lib/function-manager.vala:337
+#: lib/function-manager.vala:336
 #, c-format
 msgid "Function “%s” takes 1 argument"
 msgstr "Функція «%s» приймає 1 аргумент"
 
-#: lib/function-manager.vala:355
+#: lib/function-manager.vala:354
 #, c-format
 msgid "Function “%s” takes 1 or 2 arguments"
 msgstr "Функція «%s» приймає 1 або 2 аргументи"
 
-#: lib/function-manager.vala:363
+#: lib/function-manager.vala:362
 #, c-format
 msgid "Function “%s” takes at least 2 arguments"
 msgstr "Функція «%s» приймає принаймні 2 аргументи"
 
-#: lib/function-manager.vala:370
+#: lib/function-manager.vala:369
 #, c-format
 msgid "Function “%s” takes %d argument"
 msgid_plural "Function “%s” takes %d arguments"
@@ -942,66 +945,66 @@ msgid "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:554
+#: lib/math-equation.vala:558
 msgid "No undo history"
 msgstr "Немає історії повернень"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:575
+#: lib/math-equation.vala:579
 msgid "No redo history"
 msgstr "Нема історії повторень"
 
-#: lib/math-equation.vala:822
+#: lib/math-equation.vala:826
 msgid "No sane value to store"
 msgstr "Немає нормального значення для зберігання"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1281
+#: lib/math-equation.vala:1286
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Невідома змінна «%s»"
 
 #. Error displayed to user when a currency conversion with unknown exchange rate is attempted
-#: lib/math-equation.vala:1288
+#: lib/math-equation.vala:1293
 #, c-format
 msgid "Exchange rate for “%s” is not available"
 msgstr "Немає доступного курсу обміну для «%s»"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1295
+#: lib/math-equation.vala:1300
 #, c-format
 msgid "Unknown unit “%s”"
 msgstr "Невідома одиниця «%s»"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1302
+#: lib/math-equation.vala:1307
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Функцію «%s» не визначено"
 
 #. Error displayed to user when an invalid conversion (e.g. units of different categories)
-#: lib/math-equation.vala:1309
+#: lib/math-equation.vala:1314
 msgid "Unknown conversion"
 msgstr "Невідоме перетворення"
 
 #. should always be run
-#: lib/math-equation.vala:1319
+#: lib/math-equation.vala:1324
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1324 lib/math-equation.vala:1329
+#: lib/math-equation.vala:1329 lib/math-equation.vala:1334
 msgid "Malformed expression"
 msgstr "Неправильний вираз"
 
-#: lib/math-equation.vala:1340
+#: lib/math-equation.vala:1345
 msgid "Calculating"
 msgstr "Обчислення"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1562
+#: lib/math-equation.vala:1567
 msgid "Need an integer to factorize"
 msgstr "Для розкладання на множники вкажіть ціле число"
 
@@ -1058,7 +1061,6 @@ msgstr "Підтримки факторіалів комплексних чис�
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
 #: lib/number.vala:659
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Factorial is undefined for negative integers"
 msgstr "Факторіал для від'ємних цілих чисел не визначено"
 
@@ -1069,7 +1071,6 @@ msgstr "Ділення на нуль неприпустиме"
 
 #. Translators: Error displayed when attempting to do a modulus division on complex numbers
 #: lib/number.vala:731
-#| msgid "Modulus division is only defined for integers"
 msgid "Modulus division is only defined for real numbers"
 msgstr "Ділення за модулем визначено лише для дійсних чисел"
 
@@ -1109,43 +1110,36 @@ msgstr ""
 
 #. Translators: Error displayed when bitwise AND attempted on non-integer values
 #: lib/number.vala:947
-#| msgid "Boolean AND is only defined for non-negative integers"
 msgid "Bitwise AND is only defined for non-negative integers"
 msgstr "Бітове ТА визначено лише для невід'ємних чисел"
 
 #. Translators: Error displayed when bitwise NAND attempted on non-integer values
 #: lib/number.vala:960
-#| msgid "Boolean NAND is only defined for non-negative integers"
 msgid "Bitwise NAND is only defined for non-negative integers"
 msgstr "Бітове НІ-ТА визначено лише для натуральних чисел"
 
 #. Translators: Error displayed when bitwise OR attempted on non-integer values
 #: lib/number.vala:973
-#| msgid "Boolean OR is only defined for non-negative integers"
 msgid "Bitwise OR is only defined for non-negative integers"
 msgstr "Бітове АБО визначено лише для невід'ємних чисел"
 
 #. Translators: Error displayed when bitwise NOR attempted on non-integer values
 #: lib/number.vala:986
-#| msgid "Boolean NOR is only defined for non-negative integers"
 msgid "Bitwise NOR is only defined for non-negative integers"
 msgstr "Бітове НІ-АБО визначено лише для невід'ємних чисел"
 
 #. Translators: Error displayed when bitwise XOR attempted on non-integer values
 #: lib/number.vala:999
-#| msgid "Boolean XOR is only defined for non-negative integers"
 msgid "Bitwise XOR is only defined for non-negative integers"
 msgstr "Бітове ВИКЛЮЧНЕ-АБО визначено лише для невід'ємних чисел"
 
 #. Translators: Error displayed when bitwise XNOR attempted on non-integer values
 #: lib/number.vala:1012
-#| msgid "Boolean XNOR is only defined for non-negative integers"
 msgid "Bitwise XNOR is only defined for non-negative integers"
 msgstr "Бітове ВИКЛЮЧНЕ-НІ-АБО визначено лише для невід'ємних чисел"
 
 #. Translators: Error displayed when bitwise NOT attempted on non-integer values
 #: lib/number.vala:1025
-#| msgid "Boolean NOT is only defined for non-negative integers"
 msgid "Bitwise NOT is only defined for non-negative integers"
 msgstr "Бітове НІ визначено лише для невід'ємних чисел"
 
@@ -1154,55 +1148,51 @@ msgstr "Бітове НІ визначено лише для невід'ємни
 msgid "Shift is only possible on integers"
 msgstr "Зсув можливий лише для цілих чисел"
 
-#: lib/number.vala:1092 lib/number.vala:1132 lib/number.vala:1578
+#: lib/number.vala:1092 lib/number.vala:1120 lib/number.vala:1566
 msgid "Overflow. Try a bigger word size"
 msgstr "Переповнення. Спробуйте більший розмір слова"
 
 #: lib/number.vala:1103
-msgid "Ones’ complement is only defined for non-negative integers"
-msgstr "Доповнення до одиниць визначено лише для невід'ємних чисел"
-
-#: lib/number.vala:1115
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "Доповнення до двійки визначено лише для невід'ємних чисел"
 
-#: lib/number.vala:1127
+#: lib/number.vala:1115
 msgid "Swap endianness is only possible on integers"
 msgstr "Заміна порядку байтів можливий лише для цілих чисел"
 
-#: lib/number.vala:1155
+#: lib/number.vala:1143
 msgid "Combination is only defined for non-negative integers"
 msgstr "Кількість комбінацій визначено лише для невід'ємних чисел"
 
-#: lib/number.vala:1160
+#: lib/number.vala:1148
 msgid "Combination is undefined if n is less than r"
 msgstr "Кількість комбінацій є невизначеною, якщо n є меншим за r"
 
-#: lib/number.vala:1173
+#: lib/number.vala:1161
 msgid "Permutation is only defined for non-negative integers"
 msgstr "Кількість перестановок визначено лише для невід'ємних чисел"
 
-#: lib/number.vala:1178
+#: lib/number.vala:1166
 msgid "Permutation is undefined if n is less than r"
 msgstr "Кількість перестановок є невизначеною, якщо n є меншим за r"
 
-#: lib/number.vala:1199
+#: lib/number.vala:1187
 msgid "Greatest common divisor is only defined for integers"
 msgstr "Найбільший спільний дільник визначено лише для цілих чисел"
 
-#: lib/number.vala:1219
+#: lib/number.vala:1207
 msgid "Least common multiple is only defined for integers"
 msgstr "Найменше спільне кратне визначено лише для цілих чисел"
 
-#: lib/number.vala:1276
+#: lib/number.vala:1264
 msgid "Median is only defined for real numbers"
 msgstr "Медіаною можна користуватися лише для дійсних чисел"
 
-#: lib/number.vala:1296
+#: lib/number.vala:1284
 msgid "Minimum value is only defined for real numbers"
 msgstr "Мінімальним значенням можна користуватися лише для дійсних чисел"
 
-#: lib/number.vala:1313
+#: lib/number.vala:1301
 msgid "Maximum value is only defined for real numbers"
 msgstr "Максимальним значенням можна користуватися лише для дійсних чисел"
 
@@ -1222,7 +1212,7 @@ msgstr "Міжнародний валютний фонд"
 msgid "United Nations Treasury"
 msgstr "Казначейство ООН"
 
-#: lib/serializer.vala:354 lib/serializer.vala:391
+#: lib/serializer.vala:359 lib/serializer.vala:397
 msgid ""
 "The result is too long to display in fixed format. Try other result formats"
 msgstr ""
@@ -3326,8 +3316,8 @@ msgid "Trailing _Zeroes"
 msgstr "Змінні _нулі"
 
 #: src/ui/math-preferences.blp:62
-msgid "_Thousands Separators"
-msgstr "Розділення _тисячних"
+msgid "_Group Digits"
+msgstr "_Групувати цифри"
 
 #: src/ui/math-preferences.blp:67
 msgid "_Angle Units"
@@ -3694,6 +3684,18 @@ msgstr "Повторити"
 #: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "Головне меню"
+
+#~ msgid "Show Thousands Separators"
+#~ msgstr "Показувати роздільник тисячних"
+
+#~ msgid "Ones’ Complement"
+#~ msgstr "Однорозрядне доповнення"
+
+#~ msgid "Ones’ complement is only defined for non-negative integers"
+#~ msgstr "Доповнення до одиниць визначено лише для невід'ємних чисел"
+
+#~ msgid "_Thousands Separators"
+#~ msgstr "Розділення _тисячних"
 
 #~ msgid "Currency of the current calculation"
 #~ msgstr "Валюта поточних розрахунків"
