@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool-gnome-2-26-help-el-191897_.merged\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-25 07:08+0000\n"
+"POT-Creation-Date: 2026-02-16 22:07+0000\n"
 "PO-Revision-Date: 2015-02-25 14:48+0200\n"
 "Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
 "Language-Team: team@lists.gnome.gr\n"
@@ -35,11 +35,11 @@ msgstr "Απόλυτες τιμές"
 #. (itstool) path: page/p
 #: C/absolute.page:11
 msgid ""
-"Absolute values are calculated using the | symbol or abs <link xref="
-"\"function\">function</link>."
+"Absolute values are calculated using the | symbol or abs <link "
+"xref=\"function\">function</link>."
 msgstr ""
-"Οι απόλυτες τιμές υπολογίζονται χρησιμοποιώντας το σύμβολο | ή τη <link xref="
-"\"function\">συνάρτηση</link> abs."
+"Οι απόλυτες τιμές υπολογίζονται χρησιμοποιώντας το σύμβολο | ή τη <link "
+"xref=\"function\">συνάρτηση</link> abs."
 
 #. (itstool) path: example/p
 #: C/absolute.page:15
@@ -51,6 +51,19 @@ msgstr "|−1|"
 msgid "abs (−1)"
 msgstr "abs (−1)"
 
+#. (itstool) path: page/p
+#: C/absolute.page:22
+msgid ""
+"Signum x÷|x| is calculated using sgn <link xref=\"function\">function</link>."
+msgstr ""
+"Το πρόσημο x÷|x| υπολογίζεται χρησιμοποιώντας τη <link xref=\"function\">"
+"συνάρτηση</link> sgn."
+
+#. (itstool) path: example/p
+#: C/absolute.page:26
+msgid "sgn (−1)"
+msgstr "sgn (−1)"
+
 #. (itstool) path: page/title
 #: C/base.page:9 C/conv-base.page:9
 msgid "Number Bases"
@@ -59,8 +72,9 @@ msgstr "Αριθμητική βάση"
 #. (itstool) path: page/p
 #: C/base.page:11
 msgid ""
-"To enter numbers in a particular number base use <link xref=\"superscript"
-"\">subscript numbers</link>. The following numbers are equivalent."
+"To enter numbers in a particular number base use <link "
+"xref=\"superscript\">subscript numbers</link>. The following numbers are "
+"equivalent."
 msgstr ""
 "Για να εισάγετε αριθμούς σε συγκεκριμένη αριθμητική βάση χρησιμοποιήστε "
 "<link xref=\"superscript\">δείκτες</link>. Οι ακόλουθοι αριθμοί είναι "
@@ -122,45 +136,165 @@ msgstr ""
 
 #. (itstool) path: page/title
 #: C/boolean.page:9
-msgid "Boolean Algebra"
-msgstr "Άλγεβρα Μπουλ"
+msgid "Bitwise Operations"
+msgstr "Πράξεις σε επίπεδο bit"
 
 #. (itstool) path: page/p
 #: C/boolean.page:11
-msgid "Boolean algebra can be calculated using the AND, OR and XOR operators."
+msgid "Bitwise operations can be calculated using the following operators."
 msgstr ""
-"Μπορείτε να εκτελέσετε άλγεβρα Μπουλ χρησιμοποιώντας τους τελεστές AND, OR "
-"και XOR."
+"Οι πράξεις σε επίπεδο bit μπορούν να υπολογιστούν χρησιμοποιώντας τους "
+"παρακάτω τελεστές."
 
-#. (itstool) path: example/p
-#: C/boolean.page:15
-msgid "010011₂ AND 110101₂"
-msgstr "010011₂ AND 110101₂"
+#. (itstool) path: page/p
+#: C/boolean.page:14
+msgid ""
+"The result of some operations depend on the word size. To set the word size, "
+"press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>."
+msgstr ""
+"Το αποτέλεσμα ορισμένων πράξεων εξαρτάται από το μέγεθος λέξης (word size). "
+"Για να ορίσετε το μέγεθος λέξης, πατήστε το κουμπί μενού στην πάνω δεξιά "
+"γωνία του παραθύρου και επιλέξτε <gui style=\"menuitem\">Προτιμήσεις</gui>."
 
 #. (itstool) path: page/p
 #: C/boolean.page:19
 msgid ""
-"Buttons for these symbols are available in <link xref=\"mouse\">programming "
-"mode</link>."
+"Buttons for the following symbols and to set the word size are available in "
+"<link xref=\"mode-programming\">programming mode</link>."
 msgstr ""
-"Τα κουμπιά για αυτά τα σύμβολα είναι διαθέσιμα στην <link xref=\"mouse"
-"\">προγραμματιστική λειτουργία</link>."
+"Κουμπιά για τα ακόλουθα σύμβολα και για τη ρύθμιση του μεγέθους λέξης είναι "
+"διαθέσιμα στην <link xref=\"mode-programming\">προγραμματιστική λειτουργία</"
+"link>."
 
 #. (itstool) path: page/p
-#: C/boolean.page:22
-msgid ""
-"The NOT <link xref=\"function\">function</link> inverts the bits in a "
-"number. The word size is set from the <guiseq><gui>Calculator</"
-"gui><gui>Preferences</gui></guiseq> menu."
+#: C/boolean.page:23
+msgid "Bitwise conjunction can be calculated using the ∧ or AND operators."
 msgstr ""
-"Η <link xref=\"function\">συνάρτηση</link> NOT αντιστρέφει τα δυαδικά ψηφία "
-"ενός αριθμού. Το μήκος της ψηφιακής λέξης ορίζεται από το μενού "
-"<guiseq><gui>Αριθμομηχανή</gui><gui>Προτιμήσεις</gui></guiseq>."
+"Η σύζευξη bit (bitwise conjunction) μπορεί να υπολογιστεί χρησιμοποιώντας "
+"τους τελεστές ∧ ή AND."
 
 #. (itstool) path: example/p
 #: C/boolean.page:27
+msgid "010011₂ ∧ 110101₂"
+msgstr "010011₂ ∧ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:30
+msgid "010011₂ AND 110101₂"
+msgstr "010011₂ AND 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:35
+msgid "Bitwise disjunction can be calculated using the ∨ or OR operators."
+msgstr ""
+"Η διάζευξη bit (bitwise disjunction) μπορεί να υπολογιστεί χρησιμοποιώντας "
+"τους τελεστές ∨ ή OR."
+
+#. (itstool) path: example/p
+#: C/boolean.page:39
+msgid "010011₂ ∨ 110101₂"
+msgstr "010011₂ ∨ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:42
+msgid "010011₂ OR 110101₂"
+msgstr "010011₂ OR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:47
+msgid ""
+"Bitwise exclusive disjunction can be calculated using the ⊻, ⊕ or XOR "
+"operators."
+msgstr ""
+"Η αποκλειστική διάζευξη bit (bitwise exclusive disjunction) μπορεί να "
+"υπολογιστεί χρησιμοποιώντας τους τελεστές ⊻, ⊕ ή XOR."
+
+#. (itstool) path: example/p
+#: C/boolean.page:51
+msgid "010011₂ ⊻ 110101₂"
+msgstr "010011₂ ⊻ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:54
+msgid "010011₂ XOR 110101₂"
+msgstr "010011₂ XOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:59
+msgid ""
+"Bitwise complement for the set word size can be calculated using the ¬, ~ or "
+"NOT operators."
+msgstr ""
+"Το συμπλήρωμα bit (bitwise complement) για το ορισμένο μέγεθος λέξης μπορεί "
+"να υπολογιστεί χρησιμοποιώντας τους τελεστές ¬, ~ ή NOT."
+
+#. (itstool) path: example/p
+#: C/boolean.page:63
+msgid "¬ 010011₂"
+msgstr "¬ 010011₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:66
 msgid "NOT 010011₂"
 msgstr "NOT 010011₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:71
+msgid ""
+"Bitwise alternative denial for the set word size can be calculated using the "
+"⊼ or NAND operators."
+msgstr ""
+"Η εναλλακτική άρνηση bit (bitwise alternative denial) για το ορισμένο "
+"μέγεθος λέξης μπορεί να υπολογιστεί χρησιμοποιώντας τους τελεστές ⊼ ή NAND."
+
+#. (itstool) path: example/p
+#: C/boolean.page:75
+msgid "010011₂ ⊼ 110101₂"
+msgstr "010011₂ ⊼ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:78
+msgid "010011₂ NAND 110101₂"
+msgstr "010011₂ NAND 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:83
+msgid ""
+"Bitwise joint denial for the set word size can be calculated using the ⊽ or "
+"NOR operators."
+msgstr ""
+"Η από κοινού άρνηση bit (bitwise joint denial) για το ορισμένο μέγεθος λέξης "
+"μπορεί να υπολογιστεί χρησιμοποιώντας τους τελεστές ⊽ ή NOR."
+
+#. (itstool) path: example/p
+#: C/boolean.page:87
+msgid "010011₂ ⊽ 110101₂"
+msgstr "010011₂ ⊽ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:90
+msgid "010011₂ NOR 110101₂"
+msgstr "010011₂ NOR 110101₂"
+
+#. (itstool) path: page/p
+#: C/boolean.page:95
+msgid ""
+"Bitwise biconditional for the set word size can be calculated using the ⊙, "
+"XNOR or NXOR operators."
+msgstr ""
+"Η αμφίπλευρη συνεπαγωγή bit (bitwise biconditional) για το ορισμένο μέγεθος "
+"λέξης μπορεί να υπολογιστεί χρησιμοποιώντας τους τελεστές ⊙, XNOR ή NXOR."
+
+#. (itstool) path: example/p
+#: C/boolean.page:99
+msgid "010011₂ ⊙ 110101₂"
+msgstr "010011₂ ⊙ 110101₂"
+
+#. (itstool) path: example/p
+#: C/boolean.page:102
+msgid "010011₂ XNOR 110101₂"
+msgstr "010011₂ XNOR 110101₂"
 
 #. (itstool) path: page/title
 #: C/complex.page:9
@@ -169,42 +303,83 @@ msgstr "Μιγαδικοί αριθμοί"
 
 #. (itstool) path: page/p
 #: C/complex.page:11
-msgid "Complex numbers are not supported in <app>Calculator</app>."
-msgstr "Η <app>Αριθμομηχανή</app> δεν υποστηρίζει μιγαδικούς αριθμούς."
-
-#. (itstool) path: page/p
-#: C/conv-base.page:11
 msgid ""
-"To convert the number to a different base representation use the <em>in</em> "
-"operator."
+"<app>Calculator</app> supports complex numbers, as well as the following "
+"functions while in <link xref=\"mouse\">Advanced mode</link>."
 msgstr ""
-"Για να μετατρέψετε τον αριθμό σε μια διαφορετική παρουσίαση βάσης "
-"χρησιμοποιήστε τον τελεστή <em>in</em>."
+"Η <app>Αριθμομηχανή</app> υποστηρίζει μιγαδικούς αριθμούς, καθώς και τις "
+"ακόλουθες συναρτήσεις στην <link xref=\"mouse\">Προχωρημένη λειτουργία</"
+"link>."
+
+#. (itstool) path: td/p
+#: C/complex.page:18
+msgid "Re"
+msgstr "Re"
+
+#. (itstool) path: td/p
+#: C/complex.page:19
+msgid "Returns the real part of a complex number. For example:"
+msgstr "Επιστρέφει το πραγματικό μέρος ενός μιγαδικού αριθμού. Για παράδειγμα:"
 
 #. (itstool) path: example/p
-#: C/conv-base.page:15
-msgid "12 in hex"
-msgstr "12 σε δεκαεξαδικό"
+#: C/complex.page:21
+msgid "Re (2-5i) = 2"
+msgstr "Re (2-5i) = 2"
+
+#. (itstool) path: td/p
+#: C/complex.page:29
+msgid "Im"
+msgstr "Im"
+
+#. (itstool) path: td/p
+#: C/complex.page:30
+msgid "Returns the imaginary part of a complex number. For example:"
+msgstr "Επιστρέφει το φανταστικό μέρος ενός μιγαδικού αριθμού. Για παράδειγμα:"
 
 #. (itstool) path: example/p
-#: C/conv-base.page:18
-msgid "5 in binary"
-msgstr "5 σε δυαδικό"
+#: C/complex.page:32
+msgid "Im (2-5i) = -5"
+msgstr "Im (2-5i) = -5"
+
+#. (itstool) path: td/p
+#: C/complex.page:40
+msgid "conj"
+msgstr "conj"
+
+#. (itstool) path: td/p
+#: C/complex.page:41
+msgid "Returns the conjugate of a complex number. For example:"
+msgstr "Επιστρέφει τον συζυγή ενός μιγαδικού αριθμού. Για παράδειγμα:"
 
 #. (itstool) path: example/p
-#: C/conv-base.page:21
-msgid "1A₁₆ in dec"
-msgstr "1A₁₆ σε δεκαδικό"
+#: C/complex.page:43
+msgid "conj (2-5i) = 2+5i"
+msgstr "conj (2-5i) = 2+5i"
+
+#. (itstool) path: td/p
+#: C/complex.page:51
+msgid "Arg"
+msgstr "Arg"
+
+#. (itstool) path: td/p
+#: C/complex.page:52
+msgid "Returns the argument of a complex number. For example:"
+msgstr "Επιστρέφει το όρισμα ενός μιγαδικού αριθμού. Για παράδειγμα:"
 
 #. (itstool) path: example/p
-#: C/conv-base.page:24
-msgid "1010₂ in octal"
-msgstr "1010₂ σε οκταδικό"
+#: C/complex.page:54
+msgid "Arg (2-5i) = -68.1986"
+msgstr "Arg (2-5i) = -68.1986"
 
 #. (itstool) path: note/p
 #: C/conv-base.page:29
-msgid "Number Base conversions must be performed using the keyboard."
-msgstr "Οι μετατροπές βάσης αριθμού πρέπει να εκτελούνται από το πληκτρολόγιο."
+msgid ""
+"Number Base conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>Number Base</gui> category."
+msgstr ""
+"Οι μετατροπές αριθμητικής βάσης πρέπει να εκτελούνται χρησιμοποιώντας το "
+"πληκτρολόγιο ή τη <gui>λειτουργία μετατροπής</gui>, επιλέγοντας την "
+"κατηγορία <gui>Αριθμητική βάση</gui>."
 
 #. (itstool) path: page/title
 #: C/conv-character.page:9
@@ -227,7 +402,7 @@ msgid "Characters cannot be converted using the keyboard."
 msgstr "Οι χαρακτήρες δε μπορούν να μετατραπούν από το πληκτρολόγιο."
 
 #. (itstool) path: credit/name
-#: C/conv-currency.page:10 C/index.page:8
+#: C/conv-currency.page:10 C/index.page:11
 msgid "Robert Ancell"
 msgstr "Robert Ancell"
 
@@ -260,18 +435,22 @@ msgstr "Νόμισμα"
 #: C/conv-currency.page:29
 msgid ""
 "To convert currencies, enter the <link xref=\"financial\">financial mode</"
-"link>, and use the currency controls."
+"link>, and use the <gui>Currency conversion</gui> button or enter the <link "
+"xref=\"index#conversion\">conversion mode</link> and select the "
+"<gui>Currency</gui> category."
 msgstr ""
-"Για να μετατρέψετε ισοτιμίες νομισμάτων, μπείτε σε <link xref=\"financial"
-"\">εμπορική λειτουργία</link> και χρησιμοποιήστε τις ρυθμίσεις συναλλάγματος."
+"Για να μετατρέψετε νομίσματα, εισέλθετε στην <link xref=\"financial\">"
+"οικονομική λειτουργία</link> και χρησιμοποιήστε το κουμπί <gui>Μετατροπή "
+"νομίσματος</gui> ή εισέλθετε στη <link xref=\"index#conversion\">λειτουργία "
+"μετατροπής</link> και επιλέξτε την κατηγορία <gui>Νόμισμα</gui>."
 
 #. (itstool) path: item/p
-#: C/conv-currency.page:34
+#: C/conv-currency.page:36
 msgid "Enter the amount which you want to convert."
-msgstr "Προσθέστε το ποσοστό που θέλετε να μετατρέψετε."
+msgstr "Εισαγάγετε το ποσό που θέλετε να μετατρέψετε."
 
 #. (itstool) path: item/p
-#: C/conv-currency.page:37
+#: C/conv-currency.page:39
 msgid ""
 "Select the currency that you want to convert from and the currency that you "
 "want to convert to from the drop down below."
@@ -280,7 +459,7 @@ msgstr ""
 "ισοτιμία που θα μετατραπεί από το αναπτυσσόμενο πλαίσιο."
 
 #. (itstool) path: note/p
-#: C/conv-currency.page:43
+#: C/conv-currency.page:45
 msgid ""
 "Currency information is approximate and should not be used for making "
 "financial decisions."
@@ -319,9 +498,14 @@ msgstr "1 pint σε mL"
 
 #. (itstool) path: note/p
 #: C/conv-length.page:26
-msgid "Length/Area/Volume conversions must be performed using the keyboard."
+msgid ""
+"Length/Area/Volume conversions must be performed using the keyboard or using "
+"the <gui>conversion mode</gui> and selecting the <gui>length/area/volume</"
+"gui> category."
 msgstr ""
-"Οι μετατροπές μήκους/εμβαδού/όγκου πρέπει να εκτελούνται από το πληκτρολόγιο."
+"Οι μετατροπές Μήκους/Εμβαδού/Όγκου πρέπει να εκτελούνται χρησιμοποιώντας το "
+"πληκτρολόγιο ή τη <gui>λειτουργία μετατροπής</gui>, επιλέγοντας την "
+"κατηγορία <gui>μήκος/εμβαδόν/όγκος</gui>."
 
 #. (itstool) path: page/title
 #: C/conv-time.page:9
@@ -340,8 +524,10 @@ msgstr "3 χρόνια σε ώρες"
 
 #. (itstool) path: note/p
 #: C/conv-time.page:20
-msgid "Time conversions must be performed using the keyboard."
-msgstr "Οι μετατροπές χρόνου πρέπει να εκτελούνται από το πληκτρολόγιο."
+msgid ""
+"Time conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>duration</gui> category."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/conv-weight.page:9
@@ -360,8 +546,10 @@ msgstr "1kg σε pounds"
 
 #. (itstool) path: note/p
 #: C/conv-weight.page:20
-msgid "Mass conversions must be performed using the keyboard."
-msgstr "Οι μετατροπές μάζας πρέπει να εκτελούνται από το πληκτρολόγιο."
+msgid ""
+"Mass conversions must be performed using the keyboard or using the "
+"<gui>conversion mode</gui> and selecting the <gui>mass</gui> category."
+msgstr ""
 
 #. (itstool) path: info/title
 #: C/equation.page:7
@@ -429,8 +617,11 @@ msgstr "(7−3)×2"
 
 #. (itstool) path: page/p
 #: C/equation.page:43
+#, fuzzy
+#| msgid ""
+#| "To clear the display press the <gui>Clr</gui> button or <key>Escape</key>."
 msgid ""
-"To clear the display press the <gui>Clr</gui> button or <key>Escape</key>."
+"To clear the display press the <gui>C</gui> button or <key>Escape</key>."
 msgstr ""
 "Για να καθαρίσετε την προβολή πατήστε το κουμπί <gui>Clr</gui> ή πιέστε το "
 "<key>Escape</key>."
@@ -461,14 +652,19 @@ msgstr "Παραγοντοποίηση"
 
 #. (itstool) path: page/p
 #: C/factorize.page:11
+#, fuzzy
+#| msgid ""
+#| "You can factorize the number currently displayed by pressing the "
+#| "<gui>fact</gui> button. This button is visible in <link "
+#| "xref=\"mouse\">programming mode</link>."
 msgid ""
-"You can factorize the number currently displayed by pressing the <gui>fact</"
-"gui> button. This button is visible in <link xref=\"mouse\">programming "
-"mode</link>."
+"You can factorize the number currently displayed by pressing the <gui>a×b</"
+"gui> button, or pressing <keyseq><key>Ctrl</key><key>F</key></keyseq>. This "
+"button is visible in <link xref=\"mouse\">advanced mode</link>."
 msgstr ""
 "Μπορείτε να υπολογίσετε το παραγοντικό του αριθμού που εμφανίζεται πατώντας "
-"το κουμπί <gui>fact</gui>. Αυτό το κουμπί είναι ορατό στην <link xref=\"mouse"
-"\">προγραμματιστή λειτουργία</link>."
+"το κουμπί <gui>fact</gui>. Αυτό το κουμπί είναι ορατό στην <link "
+"xref=\"mouse\">προγραμματιστή λειτουργία</link>."
 
 #. (itstool) path: page/title
 #: C/financial.page:9
@@ -669,26 +865,36 @@ msgstr ""
 "λίστα ορισμάτων."
 
 #. (itstool) path: example/p
+#. Translators: Do not translate the word 'sin'!
 #: C/functions.page:16
 msgid "sin 30"
 msgstr "sin 30"
 
 #. (itstool) path: example/p
+#. Translators: Do not translate the word 'abs'!
 #: C/functions.page:19
 msgid "abs (5−9)"
 msgstr "abs (5−9)"
 
 #. (itstool) path: example/p
+#. Translators: Do not translate the word 'fun'!
 #: C/functions.page:22
 msgid "fun (9;10)"
 msgstr "fun (9;10)"
 
 #. (itstool) path: page/p
 #: C/functions.page:26
+#, fuzzy
+#| msgid ""
+#| "To add a new function type the function in the format as given below. A "
+#| "function name and arguments must only contain upper or lower case "
+#| "characters. The part after @ is the function description which is "
+#| "optional."
 msgid ""
 "To add a new function type the function in the format as given below. A "
 "function name and arguments must only contain upper or lower case "
-"characters. The part after @ is the function description which is optional."
+"characters, or underscores. The part after @ is the function description "
+"which is optional."
 msgstr ""
 "Για να προσθέσετε μια καινούρια συνάρτηση πληκτρολογήστε την συνάρτηση στη "
 "μορφή που δίνεται παρακάτω. Το όνομα και τα ορίσματα μιας συνάρτησης πρέπει "
@@ -734,199 +940,433 @@ msgid "The following functions are defined."
 msgstr "Έχουν οριστεί οι εξής συναρτήσεις."
 
 #. (itstool) path: td/p
-#: C/functions.page:52
-msgid "abs"
-msgstr "abs"
-
-#. (itstool) path: td/p
-#: C/functions.page:53
-msgid "<link xref=\"absolute\">Absolute Value</link>"
-msgstr "<link xref=\"absolute\">Απόλυτη τιμή</link>"
+#. (itstool) path: page/title
+#: C/functions.page:52 C/trigonometry.page:9
+msgid "Trigonometry"
+msgstr "Τριγωνομετρία"
 
 #. (itstool) path: td/p
 #: C/functions.page:56
-msgid "cos"
-msgstr "cos"
-
-#. (itstool) path: td/p
-#: C/functions.page:57
-msgid "<link xref=\"trigonometry\">Cosine</link>"
-msgstr "<link xref=\"trigonometry\">Συνημίτονο</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:60
-msgid "cosh"
-msgstr "cosh"
-
-#. (itstool) path: td/p
-#: C/functions.page:61
-msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
-msgstr "<link xref=\"trigonometry\">Υπερβολικό συνημίτονο</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:64
-msgid "frac"
-msgstr "frac"
-
-#. (itstool) path: td/p
-#: C/functions.page:65
-msgid "Fractional Component"
-msgstr "Κλασματικό μέρος"
-
-#. (itstool) path: td/p
-#: C/functions.page:68
-msgid "int"
-msgstr "int"
-
-#. (itstool) path: td/p
-#: C/functions.page:69
-msgid "Integer Component"
-msgstr "Ακέραιο μέρος"
-
-#. (itstool) path: td/p
-#: C/functions.page:72
-msgid "ln"
-msgstr "ln"
-
-#. (itstool) path: td/p
-#: C/functions.page:73
-msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
-msgstr "<link xref=\"logarithm\">Φυσικός λογάριθμος</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:76
-msgid "log"
-msgstr "log"
-
-#. (itstool) path: td/p
-#: C/functions.page:77
-msgid "<link xref=\"logarithm\">Logarithm</link>"
-msgstr "<link xref=\"logarithm\">Λογάριθμος</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:80
-msgid "not"
-msgstr "not"
-
-#. (itstool) path: td/p
-#: C/functions.page:81
-msgid "<link xref=\"boolean\">Boolean NOT</link>"
-msgstr "<link xref=\"boolean\">Λογικό NOT</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:84
-msgid "ones"
-msgstr "ones"
-
-#. (itstool) path: td/p
-#: C/functions.page:85
-msgid "Ones complement"
-msgstr "Συμπλήρωμα ως προς 1"
-
-#. (itstool) path: td/p
-#: C/functions.page:88
-msgid "sin"
-msgstr "sin"
-
-#. (itstool) path: td/p
-#: C/functions.page:89
 msgid "<link xref=\"trigonometry\">Sine</link>"
 msgstr "<link xref=\"trigonometry\">Ημίτονο</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:92
-msgid "sinh"
-msgstr "sinh"
+#: C/functions.page:60
+msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Συνημίτονο</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:93
-msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
-msgstr "<link xref=\"trigonometry\">Υπερβολικό ημίτονο</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:96
-msgid "sqrt"
-msgstr "sqrt"
-
-#. (itstool) path: td/p
-#: C/functions.page:97
-msgid "<link xref=\"power\">Square Root</link>"
-msgstr "<link xref=\"power\">Τετραγωνική ρίζα</link>"
-
-#. (itstool) path: td/p
-#: C/functions.page:100
-msgid "tan"
-msgstr "tan"
-
-#. (itstool) path: td/p
-#: C/functions.page:101
+#: C/functions.page:64
 msgid "<link xref=\"trigonometry\">Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Εφαπτομένη</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:104
-msgid "tanh"
-msgstr "tanh"
+#: C/functions.page:68
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Sine</link>"
+msgid "<link xref=\"trigonometry\">Inverse Sine</link>"
+msgstr "<link xref=\"trigonometry\">Ημίτονο</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:105
+#: C/functions.page:72
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgid "<link xref=\"trigonometry\">Inverse Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Συνημίτονο</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:76
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Tangent</link>"
+msgid "<link xref=\"trigonometry\">Inverse Tangent</link>"
+msgstr "<link xref=\"trigonometry\">Εφαπτομένη</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:80
+msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
+msgstr "<link xref=\"trigonometry\">Υπερβολικό ημίτονο</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:84
+msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Υπερβολικό συνημίτονο</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:88
 msgid "<link xref=\"trigonometry\">Hyperbolic Tangent</link>"
 msgstr "<link xref=\"trigonometry\">Υπερβολική εφαπτομένη</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:108
-msgid "twos"
-msgstr "twos"
+#: C/functions.page:92
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Hyperbolic Sine</link>"
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Sine</link>"
+msgstr "<link xref=\"trigonometry\">Υπερβολικό ημίτονο</link>"
 
 #. (itstool) path: td/p
-#: C/functions.page:109
-msgid "Twos complement"
-msgstr "Συμπλήρωμα ως προς 2"
+#: C/functions.page:96
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Hyperbolic Cosine</link>"
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Cosine</link>"
+msgstr "<link xref=\"trigonometry\">Υπερβολικό συνημίτονο</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:100
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Hyperbolic Tangent</link>"
+msgid "<link xref=\"trigonometry\">Inverse Hyperbolic Tangent</link>"
+msgstr "<link xref=\"trigonometry\">Υπερβολική εφαπτομένη</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:103
+#, fuzzy
+#| msgid "Complex Numbers"
+msgid "Complex"
+msgstr "Μιγαδικοί αριθμοί"
+
+#. (itstool) path: td/p
+#: C/functions.page:107
+#, fuzzy
+#| msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgid "<link xref=\"complex\">Complex Conjugate</link>"
+msgstr "<link xref=\"absolute\">Απόλυτη τιμή</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:111
+#, fuzzy
+#| msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgid "<link xref=\"complex\">Complex Argument</link>"
+msgstr "<link xref=\"absolute\">Απόλυτη τιμή</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:115
+#, fuzzy
+#| msgid "<link xref=\"power\">Square Root</link>"
+msgid "<link xref=\"complex\">Real Component</link>"
+msgstr "<link xref=\"power\">Τετραγωνική ρίζα</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:119
+#, fuzzy
+#| msgid "<link xref=\"power\">Square Root</link>"
+msgid "<link xref=\"complex\">Imaginary Component</link>"
+msgstr "<link xref=\"power\">Τετραγωνική ρίζα</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:122 C/mouse.page:29
+msgid "Programming"
+msgstr "Προγραμματιστική"
+
+#. (itstool) path: td/p
+#: C/functions.page:126
+#, fuzzy
+#| msgid "<link xref=\"boolean\">Boolean NOT</link>"
+msgid "<link xref=\"mode-programming\">Two’s Complement</link>"
+msgstr "<link xref=\"boolean\">Λογικό NOT</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:130
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Sine</link>"
+msgid "<link xref=\"mode-programming\">Swap Endianness</link>"
+msgstr "<link xref=\"trigonometry\">Ημίτονο</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:134
+#, fuzzy
+#| msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgid "<link xref=\"modulus\">Modulus Divide</link>"
+msgstr "<link xref=\"absolute\">Απόλυτη τιμή</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:138
+#, fuzzy
+#| msgid "<link xref=\"power\">Square Root</link>"
+msgid "<link xref=\"modulus\">Modular Exponentiation</link>"
+msgstr "<link xref=\"power\">Τετραγωνική ρίζα</link>"
+
+#. (itstool) path: td/p
+#. (itstool) path: page/title
+#: C/functions.page:141 C/rounding.page:9
+msgid "Rounding"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:145
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgid "<link xref=\"rounding\">Round</link>"
+msgstr "<link xref=\"trigonometry\">Συνημίτονο</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:149
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Pi</link>"
+msgid "<link xref=\"rounding\">Floor</link>"
+msgstr "<link xref=\"trigonometry\">Pi</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:153
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgid "<link xref=\"rounding\">Ceiling</link>"
+msgstr "<link xref=\"trigonometry\">Συνημίτονο</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:157
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Cosine</link>"
+msgid "<link xref=\"rounding\">Integer Component</link>"
+msgstr "<link xref=\"trigonometry\">Συνημίτονο</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:161
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Tangent</link>"
+msgid "<link xref=\"rounding\">Fractional Component</link>"
+msgstr "<link xref=\"trigonometry\">Εφαπτομένη</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:164
+msgid "Statistics"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:168
+msgid "Sum"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:172
+msgid "Sum of Squares"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:176
+msgid "Average"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:180
+msgid "Median"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:184
+msgid "Minimum Value"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:188
+msgid "Maximum Value"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:192
+msgid "Sample Standard Deviation"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:196
+msgid "Population Standard Deviation"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:200
+msgid "Sample Variance"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:204
+msgid "Population Variance"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:207
+msgid "Sundry"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:211
+msgid "<link xref=\"logarithm\">Logarithm</link>"
+msgstr "<link xref=\"logarithm\">Λογάριθμος</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:215
+msgid "<link xref=\"logarithm\">Natural Logarithm</link>"
+msgstr "<link xref=\"logarithm\">Φυσικός λογάριθμος</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:219
+msgid "<link xref=\"power\">Square Root</link>"
+msgstr "<link xref=\"power\">Τετραγωνική ρίζα</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:223
+msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgstr "<link xref=\"absolute\">Απόλυτη τιμή</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:227
+#, fuzzy
+#| msgid "<link xref=\"absolute\">Absolute Value</link>"
+msgid "<link xref=\"absolute\">Signum</link>"
+msgstr "<link xref=\"absolute\">Απόλυτη τιμή</link>"
+
+#. (itstool) path: td/p
+#: C/functions.page:231
+msgid "Combination"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:235
+#, fuzzy
+#| msgid "Equations"
+msgid "Permutation"
+msgstr "Εξισώσεις"
+
+#. (itstool) path: td/p
+#: C/functions.page:239
+msgid "Greatest Common Divisor"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:243
+msgid "Least Common Multiple"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/functions.page:247
+msgid "Comparison (Kronecker Delta)"
+msgstr ""
+
+#. (itstool) path: credit/name
+#: C/history.page:12
+msgid "Gopal Krishnan"
+msgstr ""
+
+#. (itstool) path: credit/years
+#: C/history.page:14
+msgid "2012, 2013"
+msgstr ""
+
+#. (itstool) path: credit/name
+#: C/history.page:18
+msgid "Sanket Dasgupta"
+msgstr ""
+
+#. (itstool) path: credit/years
+#: C/history.page:20
+msgid "2016, 2017"
+msgstr ""
+
+#. (itstool) path: credit/name
+#: C/history.page:24 C/keyboard.page:9 C/superscript.page:9
+msgid "Pranali Deshmukh"
+msgstr ""
+
+#. (itstool) path: credit/years
+#: C/history.page:26 C/keyboard.page:11 C/superscript.page:11
+msgid "2020"
+msgstr ""
 
 #. (itstool) path: page/title
-#: C/index.page:14
+#: C/history.page:30
+#, fuzzy
+#| msgid "Using the Mouse"
+msgid "Using the History View"
+msgstr "Χρήση του ποντικιού"
+
+#. (itstool) path: page/p
+#: C/history.page:32
+msgid ""
+"The History View is located above the entry box and is designed to show your "
+"previous calculations in the form of a scrollable list that can be clicked "
+"and scrolled through using a mouse."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/history.page:37
+msgid ""
+"Once an entry has been selected, it will immediately show up in the entry "
+"box for you to manipulate and use."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/history.page:40
+msgid ""
+"Finally, there is no upper limit on the number of calculations that can show "
+"up in the list for you to use."
+msgstr ""
+
+#. (itstool) path: info/title
+#: C/index.page:7
+#, fuzzy
+#| msgid "<_:media-1/> Calculator Help"
+msgctxt "link:trail"
+msgid "Calculator Help"
+msgstr "<_:media-1/> Βοήθεια αριθμομηχανής"
+
+#. (itstool) path: info/title
+#: C/index.page:8
+#, fuzzy
+#| msgid "<_:media-1/> Calculator Help"
+msgctxt "text"
+msgid "Calculator Help"
+msgstr "<_:media-1/> Βοήθεια αριθμομηχανής"
+
+#. (itstool) path: info/title
+#: C/index.page:9
+#, fuzzy
+#| msgid "<_:media-1/> Calculator Help"
+msgctxt "link"
+msgid "Calculator Help"
+msgstr "<_:media-1/> Βοήθεια αριθμομηχανής"
+
+#. (itstool) path: page/title
+#: C/index.page:17
 msgid "<_:media-1/> Calculator Help"
 msgstr "<_:media-1/> Βοήθεια αριθμομηχανής"
 
 #. (itstool) path: section/title
-#: C/index.page:17
+#: C/index.page:20
 msgid "User Interface"
 msgstr "Διεπαφή χρήστη"
 
 #. (itstool) path: section/title
-#: C/index.page:21
+#: C/index.page:24
 msgid "Equations"
 msgstr "Εξισώσεις"
 
 #. (itstool) path: section/title
-#: C/index.page:25
+#: C/index.page:28
 msgid "Numbers"
 msgstr "Αριθμοί"
 
 #. (itstool) path: section/title
-#: C/index.page:29
+#: C/index.page:32
 msgid "Conversions"
 msgstr "Μετατροπές"
 
 #. (itstool) path: section/title
-#: C/index.page:33
+#: C/index.page:36
 msgid "Financial Calculations"
 msgstr "Εμπορικοί υπολογισμοί"
 
 #. (itstool) path: page/title
-#: C/keyboard.page:9
+#: C/keyboard.page:15
 msgid "Using the Keyboard"
 msgstr "Χρήση του πληκτρολογίου"
 
 #. (itstool) path: page/p
-#: C/keyboard.page:11
+#: C/keyboard.page:17
 msgid "All mathematical equations can be entered using the keyboard."
 msgstr ""
 "Όλες οι μαθηματικές εξισώσεις μπορούν να εισαχθούν χρησιμοποιώντας το "
 "πληκτρολόγιο."
 
 #. (itstool) path: page/p
-#: C/keyboard.page:14
+#: C/keyboard.page:20
 msgid ""
 "The following key combinations can be used to enter keys that may not be "
 "available on your keyboard."
@@ -935,60 +1375,114 @@ msgstr ""
 "σύμβολα που μπορεί να μην είναι διαθέσιμα στο πληκτρολόγιό σας."
 
 #. (itstool) path: td/p
-#: C/keyboard.page:19
+#: C/keyboard.page:25
 msgid "×"
 msgstr "×"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:20
+#: C/keyboard.page:26
 msgid "<key>*</key>"
 msgstr "<key>*</key>"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:23
+#: C/keyboard.page:29
 msgid "÷"
 msgstr "÷"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:24
+#: C/keyboard.page:30
 msgid "<key>/</key>"
 msgstr "<key>/</key>"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:27
+#: C/keyboard.page:33
 msgid "^"
 msgstr "^"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:28
+#: C/keyboard.page:34
 msgid "<key>*</key> twice"
 msgstr "δύο φορές το <key>*</key>"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:31
+#: C/keyboard.page:37
 msgid "√"
 msgstr "√"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:32
+#: C/keyboard.page:38
 msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:35 C/variables.page:48
+#: C/keyboard.page:41 C/variables.page:60
 msgid "π"
 msgstr "π"
 
 #. (itstool) path: td/p
-#: C/keyboard.page:36
+#: C/keyboard.page:42
 msgid "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 msgstr "<keyseq><key>Ctrl</key><key>P</key></keyseq>"
 
+#. (itstool) path: td/p
+#: C/keyboard.page:45 C/variables.page:64
+msgid "τ"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/keyboard.page:46
+#, fuzzy
+#| msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>T</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:49
+msgid "°"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/keyboard.page:50
+#, fuzzy
+#| msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>'</key></keyseq>"
+msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:53
+msgid "⌈⌉"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/keyboard.page:54
+#, fuzzy
+#| msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+msgid "<keyseq><key>Ctrl</key><key>[</key></keyseq><key>]</key>"
+msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+
+#. (itstool) path: td/p
+#: C/keyboard.page:57
+msgid "⌊⌋"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/keyboard.page:58
+#, fuzzy
+#| msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+msgid "<keyseq><key>Alt</key><key>[</key></keyseq><key>]</key>"
+msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+
 #. (itstool) path: page/p
-#: C/keyboard.page:39
+#: C/keyboard.page:61
+#, fuzzy
+#| msgid ""
+#| "To enter <link xref=\"superscript\">superscript numbers</link> use "
+#| "<keyseq><key>Ctrl</key>number</keyseq>, for subscript use "
+#| "<keyseq><key>Alt</key>number</keyseq>."
 msgid ""
 "To enter <link xref=\"superscript\">superscript numbers</link> use "
-"<keyseq><key>Ctrl</key>number</keyseq>, for subscript use <keyseq><key>Alt</"
+"<keyseq><key>Ctrl</key>number</keyseq>, for <link "
+"xref=\"superscript\">subscript numbers</link> use <keyseq><key>Alt</"
 "key>number</keyseq>."
 msgstr ""
 "Για να εισάγετε <link xref=\"superscript\">εκθέτες</link> χρησιμοποήστε "
@@ -1028,8 +1522,8 @@ msgid ""
 "Logarithms can be calculated using the log <link xref=\"function\">function</"
 "link>."
 msgstr ""
-"Οι λογάριθμοι μπορούν να υπολογιστούν χρησιμοποιώντας τη <link xref="
-"\"function\">συνάρτηση</link> log."
+"Οι λογάριθμοι μπορούν να υπολογιστούν χρησιμοποιώντας τη <link "
+"xref=\"function\">συνάρτηση</link> log."
 
 #. (itstool) path: example/p
 #: C/logarithm.page:15
@@ -1038,9 +1532,14 @@ msgstr "log 100"
 
 #. (itstool) path: page/p
 #: C/logarithm.page:19
+#, fuzzy
+#| msgid ""
+#| "To calculate a logarithm in a different base use a <link "
+#| "xref=\"superscript\">subscript number</link> after the function."
 msgid ""
-"To calculate a logarithm in a different base use a <link xref=\"superscript"
-"\">subscript number</link> after the function."
+"To calculate a logarithm in a different base use a <link "
+"xref=\"superscript\">subscript number</link> or normal number after the "
+"function."
 msgstr ""
 "Για να υπολογίσετε ένα λογάριθμο σε διαφορετική βάση χρησιμοποιήστε ένα "
 "<link xref=\"superscript\">αριθμό δείκτη</link> μετά τη συνάρτηση."
@@ -1050,29 +1549,115 @@ msgstr ""
 msgid "log₂ 32"
 msgstr "log₂ 32"
 
+#. (itstool) path: example/p
+#: C/logarithm.page:26
+msgid "log2 (32)"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/logarithm.page:29
+msgid "log (32;2)"
+msgstr ""
+
 #. (itstool) path: page/p
-#: C/logarithm.page:27
+#: C/logarithm.page:33
 msgid "To calculate a natural logarithm use the ln function."
 msgstr "Για να υπολογίσετε το φυσικό λογάριθμο χρησιμοποιήστε τη συνάρτηση ln."
 
 #. (itstool) path: example/p
-#: C/logarithm.page:31
+#: C/logarithm.page:37
 msgid "ln 1.32"
 msgstr "ln 1.32"
 
 #. (itstool) path: page/p
-#: C/logarithm.page:35
+#: C/logarithm.page:41
+#, fuzzy
+#| msgid ""
+#| "Euler's number can be entered by using the <link "
+#| "xref=\"variable\">variable</link> e."
 msgid ""
-"Euler's number can be entered by using the <link xref=\"variable\">variable</"
+"Euler's number can be entered by using the <link xref=\"variable\">constant</"
 "link> e."
 msgstr ""
-"Ο αριθμός του Euler μπορεί να εισαχθεί χρησιμοποιώντας τη <link xref="
-"\"variable\">μεταβλητή</link> e."
+"Ο αριθμός του Euler μπορεί να εισαχθεί χρησιμοποιώντας τη <link "
+"xref=\"variable\">μεταβλητή</link> e."
 
 #. (itstool) path: example/p
-#: C/logarithm.page:39
+#: C/logarithm.page:45
 msgid "e^1.32"
 msgstr "e^1.32"
+
+#. (itstool) path: page/title
+#: C/mode-programming.page:9
+#, fuzzy
+#| msgid "Programming"
+msgid "Programming Mode"
+msgstr "Προγραμματιστική"
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:11
+msgid ""
+"<gui style=\"menuitem\">Programming mode</gui> provides the tools required "
+"for common mathematical operations in software development. For example, "
+"programming mode makes math on hexadecimal numbers very easy. It also "
+"supports common <link xref=\"boolean\">bitwise operators</link> like "
+"<gui>NOT</gui>, <gui>AND</gui>, <gui>OR</gui>, etc. A binary view for "
+"numbers up to 64 bits long is displayed, where the user can manually toggle "
+"each bit using the mouse cursor."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:14
+msgid ""
+"Additionally, bit-shifting operations are possible by using the <gui>≪</"
+"gui>, <gui>≫</gui> and <gui>⋙</gui> buttons. <link xref=\"modulus\">Modulo "
+"arithmetic</link> can be accomplished using the <gui>mod</gui> button."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/mode-programming.page:17
+msgid ""
+"The default word size for bitwise, two’s complement, and swap endianness "
+"functions can be changed both in the <gui style=\"menuitem\">Preferences</"
+"gui> menu, or by using the word size button in the bottom of the keypad "
+"while in programming mode. This will affect how results from these functions "
+"are shown. For example, here we show the two’s complement of the number 6B "
+"in 64 bit and 16 bit word sizes:"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:21
+msgid "64 bit:"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:24 C/mode-programming.page:33
+#, fuzzy
+#| msgid "twos"
+msgid "twos 6B"
+msgstr "twos"
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:27
+msgid "FFFFFFFFFFFFFF95"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:30
+msgid "16 bit:"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/mode-programming.page:36
+msgid "FF95"
+msgstr ""
+
+#. (itstool) path: note/p
+#: C/mode-programming.page:41
+msgid ""
+"Attempting to enter a larger number than will fit in the selected word size "
+"will result in an Overflow error."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/modulus.page:9
@@ -1081,13 +1666,46 @@ msgstr "Υπόλοιπο διαίρεσης ακεραίων"
 
 #. (itstool) path: page/p
 #: C/modulus.page:11
-msgid "Modulus division is performed using the mod operator."
-msgstr "Το υπόλοιπο διαίρεσης υπολογίζεται με χρήση του τελεστή mod."
+#, fuzzy
+#| msgid ""
+#| "Trigonometry can be performed using the sin, cos, and tan <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Modulus division is performed using the mod operator or the mod <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"Μπορείτε να εκτελέσετε τριγωνομετρία χρησιμοποιώντας τις <link "
+"xref=\"function\">συναρτήσεις</link> sin, cos και tan."
 
 #. (itstool) path: example/p
 #: C/modulus.page:15
 msgid "9 mod 5"
 msgstr "9 mod 5"
+
+#. (itstool) path: example/p
+#: C/modulus.page:18
+#, fuzzy
+#| msgid "9 mod 5"
+msgid "mod (9;5)"
+msgstr "9 mod 5"
+
+#. (itstool) path: page/p
+#: C/modulus.page:22
+#, fuzzy
+#| msgid ""
+#| "Trigonometry can be performed using the sin, cos, and tan <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Modular exponentiation x^y mod p is performed using the modexp <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"Μπορείτε να εκτελέσετε τριγωνομετρία χρησιμοποιώντας τις <link "
+"xref=\"function\">συναρτήσεις</link> sin, cos και tan."
+
+#. (itstool) path: example/p
+#: C/modulus.page:26
+msgid "modexp (9;3;5)"
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/mouse.page:9
@@ -1125,11 +1743,11 @@ msgstr "Προχωρημένη"
 #. (itstool) path: td/p
 #: C/mouse.page:22
 msgid ""
-"Provides buttons suitable for advanced mathematics such as <link xref="
-"\"trigonometry\"/>"
+"Provides buttons suitable for advanced mathematics such as <link "
+"xref=\"trigonometry\"/>"
 msgstr ""
-"Παρέχει κουμπιά κατάλληλα για προχωρημένα μαθηματικά όπως <link xref="
-"\"trigonometry\"/>"
+"Παρέχει κουμπιά κατάλληλα για προχωρημένα μαθηματικά όπως <link "
+"xref=\"trigonometry\"/>"
 
 #. (itstool) path: td/p
 #: C/mouse.page:25
@@ -1146,13 +1764,22 @@ msgstr ""
 "εξισώσεις</link>"
 
 #. (itstool) path: td/p
-#: C/mouse.page:29
-msgid "Programming"
-msgstr "Προγραμματιστική"
-
-#. (itstool) path: td/p
 #: C/mouse.page:30
 msgid "Provides buttons suitable for computer programmers"
+msgstr "Παρέχει κουμπιά κατάλληλα για προγραμματιστές υπολογιστών"
+
+#. (itstool) path: td/p
+#: C/mouse.page:33
+#, fuzzy
+#| msgid "Conversions"
+msgid "Conversion"
+msgstr "Μετατροπές"
+
+#. (itstool) path: td/p
+#: C/mouse.page:34
+#, fuzzy
+#| msgid "Provides buttons suitable for computer programmers"
+msgid "Provides buttons suitable for unit conversions"
 msgstr "Παρέχει κουμπιά κατάλληλα για προγραμματιστές υπολογιστών"
 
 #. (itstool) path: page/title
@@ -1163,20 +1790,18 @@ msgstr "Μορφή αποτελέσματος"
 #. (itstool) path: page/p
 #: C/number-display.page:11
 msgid ""
-"The format used to display results can be changed from the "
-"<guiseq><gui>Calculator</gui><gui>Preferences</gui></guiseq> menu."
+"To change the format used to display results, press the menu button in the "
+"top-right corner of the window and select the number format to use from the "
+"menu."
 msgstr ""
-"Η μορφή που χρησιμοποιείται για την εμφάνιση των αποτελεσμάτων μπορεί να "
-"αλλαχτεί από το μενού <guiseq><gui>Αριθμομηχανή</gui><gui>Προτιμήσεις</gui></"
-"guiseq>."
 
 #. (itstool) path: td/p
-#: C/number-display.page:16
+#: C/number-display.page:18
 msgid "<gui>Automatic</gui>"
 msgstr "<gui>Αυτόματα</gui>"
 
 #. (itstool) path: td/p
-#: C/number-display.page:17
+#: C/number-display.page:19
 msgid ""
 "Small results are displayed as <gui>Fixed</gui> notation while long results "
 "are displayed as <gui>Scientific</gui> notation"
@@ -1185,22 +1810,22 @@ msgstr ""
 "μεγάλα αποτελέσματα εμφανίζονται ως <gui>επιστημονική</gui> σημειογραφία"
 
 #. (itstool) path: td/p
-#: C/number-display.page:20
+#: C/number-display.page:22
 msgid "<gui>Fixed</gui>"
 msgstr "<gui>Σταθερό</gui>"
 
 #. (itstool) path: td/p
-#: C/number-display.page:21
+#: C/number-display.page:23
 msgid "Results are always displayed as decimal numbers"
 msgstr "Τα αποτελέσματα εμφανίζονται πάντα ως δεκαδικοί αριθμοί"
 
 #. (itstool) path: td/p
-#: C/number-display.page:24
+#: C/number-display.page:26
 msgid "<gui>Scientific</gui>"
 msgstr "<gui>Επιστημονική</gui>"
 
 #. (itstool) path: td/p
-#: C/number-display.page:25
+#: C/number-display.page:27
 msgid ""
 "Results are displayed in <link xref=\"scientific\">scientific notation</link>"
 msgstr ""
@@ -1208,12 +1833,12 @@ msgstr ""
 "μορφή</link>"
 
 #. (itstool) path: td/p
-#: C/number-display.page:28
+#: C/number-display.page:30
 msgid "<gui>Engineering</gui>"
 msgstr "<gui>Τεχνολογική</gui>"
 
 #. (itstool) path: td/p
-#: C/number-display.page:29
+#: C/number-display.page:31
 msgid ""
 "Results are displayed in scientific notation except the exponent is always a "
 "multiple of three"
@@ -1222,10 +1847,14 @@ msgstr ""
 "πάντα πολλαπλάσιο του τρία"
 
 #. (itstool) path: page/p
-#: C/number-display.page:32
+#: C/number-display.page:34
+#, fuzzy
+#| msgid ""
+#| "The number of decimal places, if trailing zeroes and if thousands "
+#| "separators are shown can also be configured."
 msgid ""
-"The number of decimal places, if trailing zeroes and if thousands separators "
-"are shown can also be configured."
+"The number of decimal places, if trailing zeroes are shown and if digits are "
+"grouped can also be configured in <gui style=\"menuitem\">Preferences</gui>."
 msgstr ""
 "Ο αριθμός των δεκαδικών ψηφίων, αν τελικά μηδενικά και εάν τα διαχωριστικά "
 "χιλιάδων θα εμφανίζονται μπορούν επίσης να ρυθμιστούν."
@@ -1282,18 +1911,13 @@ msgstr "2015"
 msgid "Sebastian Rasmussen"
 msgstr "Sebastian Rasmussen"
 
-#. (itstool) path: info/desc
-#: C/power.page:21
-msgid "Learn to enter roots and powers into the calculator."
-msgstr "Μάθετε να προσθέτετε ρίζες και δυνάμεις στην αριθμομηχανή."
-
 #. (itstool) path: page/title
-#: C/power.page:24
+#: C/power.page:22
 msgid "Powers and Roots"
 msgstr "Δυνάμεις και ρίζες"
 
 #. (itstool) path: page/p
-#: C/power.page:26
+#: C/power.page:24
 msgid ""
 "Powers are entered by putting a <link xref=\"superscript\">superscript "
 "number</link> after the value."
@@ -1302,12 +1926,12 @@ msgstr ""
 "αριθμό</link> μετά την τιμή."
 
 #. (itstool) path: example/p
-#: C/power.page:30
+#: C/power.page:28
 msgid "5²"
 msgstr "5²"
 
 #. (itstool) path: page/p
-#: C/power.page:33
+#: C/power.page:31
 msgid ""
 "The inverse of a number can be entered using the inverse symbol ⁻¹ "
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>)."
@@ -1316,12 +1940,12 @@ msgstr ""
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>)."
 
 #. (itstool) path: example/p
-#: C/power.page:37
+#: C/power.page:35
 msgid "3⁻¹"
 msgstr "3⁻¹"
 
 #. (itstool) path: page/p
-#: C/power.page:40
+#: C/power.page:38
 msgid ""
 "Powers can also be calculated using the ^ symbol. This allows the power to "
 "be an equation."
@@ -1330,12 +1954,12 @@ msgstr ""
 "στη δύναμη να αποτελείται από μια εξίσωση."
 
 #. (itstool) path: example/p
-#: C/power.page:44
+#: C/power.page:42
 msgid "5^(6−2)"
 msgstr "5^(6−2)"
 
 #. (itstool) path: page/p
-#: C/power.page:47
+#: C/power.page:45
 msgid ""
 "If your keyboard does not have a <key>^</key> key you can use <key>*</key> "
 "twice."
@@ -1344,32 +1968,160 @@ msgstr ""
 "χρησιμοποιήσετε δύο φορές το <key>*</key>."
 
 #. (itstool) path: page/p
-#: C/power.page:50
+#: C/power.page:48
+#, fuzzy
+#| msgid ""
+#| "Square roots can be calculated using the √ symbol (<keyseq><key>Ctrl</"
+#| "key><key>R</key></keyseq>)."
 msgid ""
 "Square roots can be calculated using the √ symbol (<keyseq><key>Ctrl</"
-"key><key>R</key></keyseq>)."
+"key><key>R</key></keyseq>) or sqrt <link xref=\"function\">function</link>."
 msgstr ""
 "Οι τετραγωνικές ρίζες μπορούν να υπολογιστούν χρησιμοποιώντας το σύμβολο √ "
 "(<keyseq><key>Ctrl</key><key>R</key></keyseq>)."
 
 #. (itstool) path: example/p
-#: C/power.page:54
+#: C/power.page:52
 msgid "√2"
 msgstr "√2"
 
+#. (itstool) path: example/p
+#: C/power.page:53
+#, fuzzy
+#| msgid "sqrt"
+msgid "sqrt (2)"
+msgstr "sqrt"
+
 #. (itstool) path: page/p
-#: C/power.page:57
+#: C/power.page:56
+#, fuzzy
+#| msgid ""
+#| "n-th roots can be calculated by putting a <link "
+#| "xref=\"superscript\">subscript number</link> before the root sign."
 msgid ""
-"n-th roots can be calculated by putting a <link xref=\"superscript"
-"\">subscript number</link> before the root sign."
+"n-th roots can be calculated by putting a <link "
+"xref=\"superscript\">subscript number</link> or <link "
+"xref=\"superscript\">superscript number</link> before the root sign."
 msgstr ""
-"Οι νιοστές ρίζες μπορούν να υπολογιστούν βάζοντας ένα <link xref="
-"\"superscript\">αριθμό δείκτη</link> πριν το σύμβολο της ρίζας."
+"Οι νιοστές ρίζες μπορούν να υπολογιστούν βάζοντας ένα <link "
+"xref=\"superscript\">αριθμό δείκτη</link> πριν το σύμβολο της ρίζας."
+
+#. (itstool) path: example/p
+#: C/power.page:60
+msgid "₃√2"
+msgstr "₃√2"
 
 #. (itstool) path: example/p
 #: C/power.page:61
-msgid "₃√2"
-msgstr "₃√2"
+#, fuzzy
+#| msgid "√2"
+msgid "³√2"
+msgstr "√2"
+
+#. (itstool) path: page/p
+#: C/rounding.page:11
+#, fuzzy
+#| msgid ""
+#| "Absolute values are calculated using the | symbol or abs <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Nearest integer values tying away from zero are calculated using the [ and ] "
+"symbols or round <link xref=\"function\">function</link>."
+msgstr ""
+"Οι απόλυτες τιμές υπολογίζονται χρησιμοποιώντας το σύμβολο | ή τη <link "
+"xref=\"function\">συνάρτηση</link> abs."
+
+#. (itstool) path: example/p
+#: C/rounding.page:15
+msgid "[0.5]"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/rounding.page:18
+msgid "round (0.5)"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/rounding.page:23
+#, fuzzy
+#| msgid ""
+#| "Absolute values are calculated using the | symbol or abs <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Nearest integer values toward -∞ also known as floor values are calculated "
+"using the ⌊ and ⌋ symbols or floor <link xref=\"function\">function</link>."
+msgstr ""
+"Οι απόλυτες τιμές υπολογίζονται χρησιμοποιώντας το σύμβολο | ή τη <link "
+"xref=\"function\">συνάρτηση</link> abs."
+
+#. (itstool) path: example/p
+#: C/rounding.page:27
+msgid "⌊0.5⌋"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/rounding.page:30
+msgid "floor (0.5)"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/rounding.page:35
+#, fuzzy
+#| msgid ""
+#| "Absolute values are calculated using the | symbol or abs <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Nearest integer values toward +∞ also known as ceiling values are calculated "
+"using the ⌈ and ⌉ symbols or ceil <link xref=\"function\">function</link>."
+msgstr ""
+"Οι απόλυτες τιμές υπολογίζονται χρησιμοποιώντας το σύμβολο | ή τη <link "
+"xref=\"function\">συνάρτηση</link> abs."
+
+#. (itstool) path: example/p
+#: C/rounding.page:39
+msgid "⌈0.5⌉"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/rounding.page:42
+msgid "ceil (0.5)"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/rounding.page:47
+#, fuzzy
+#| msgid ""
+#| "Logarithms can be calculated using the log <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"Nearest integer values toward 0 i.e. the integer components are calculated "
+"using int <link xref=\"function\">function</link>."
+msgstr ""
+"Οι λογάριθμοι μπορούν να υπολογιστούν χρησιμοποιώντας τη <link "
+"xref=\"function\">συνάρτηση</link> log."
+
+#. (itstool) path: page/p
+#: C/rounding.page:50
+#, fuzzy
+#| msgid ""
+#| "Logarithms can be calculated using the log <link "
+#| "xref=\"function\">function</link>."
+msgid ""
+"The fractional components are calculated using frac <link "
+"xref=\"function\">function</link>."
+msgstr ""
+"Οι λογάριθμοι μπορούν να υπολογιστούν χρησιμοποιώντας τη <link "
+"xref=\"function\">συνάρτηση</link> log."
+
+#. (itstool) path: example/p
+#: C/rounding.page:54
+msgid "int (0.5)"
+msgstr ""
+
+#. (itstool) path: example/p
+#: C/rounding.page:57
+msgid "frac (0.5)"
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/scientific.page:9
@@ -1378,16 +2130,23 @@ msgstr "Επιστημονική μορφή"
 
 #. (itstool) path: page/p
 #: C/scientific.page:11
+#, fuzzy
+#| msgid ""
+#| "To enter numbers in scientific format use the <gui>×10x</gui> button "
+#| "(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link "
+#| "xref=\"superscript\">number mode</link> automatically changes to "
+#| "superscript. To enter 2×10¹⁰⁰, start by entering the mantissa (2):"
 msgid ""
-"To enter numbers in scientific format use the <gui>×10x</gui> button "
-"(<keyseq><key>Ctrl</key><key>E</key></keyseq>). The <link xref=\"superscript"
-"\">number mode</link> automatically changes to superscript. To enter "
-"2×10¹⁰⁰, start by entering the mantissa (2):"
+"To enter numbers in scientific format use the <keyseq><key>Ctrl</key><key>E</"
+"key></keyseq> shortcut. The <link xref=\"superscript\">number mode</link> "
+"automatically changes to superscript. To enter 2×10¹⁰⁰, start by entering "
+"the mantissa (2):"
 msgstr ""
 "Για να εισάγετε αριθμούς σε επιστημονική μορφή, χρησιμοποιήστε το κουμπί "
-"<gui>×10y</gui> (<keyseq><key>Ctrl</key><key>E</key></keyseq>). H <link xref="
-"\"superscript\">λειτουργία αριθμού</link> γυρίζει αυτόματα σε μορφή δύναμης. "
-"Για να εισάγετε 2×10¹⁰⁰, ξεκινήστε εισάγοντας πρώτα το δεκαδικό μέρος (2):"
+"<gui>×10y</gui> (<keyseq><key>Ctrl</key><key>E</key></keyseq>). H <link "
+"xref=\"superscript\">λειτουργία αριθμού</link> γυρίζει αυτόματα σε μορφή "
+"δύναμης. Για να εισάγετε 2×10¹⁰⁰, ξεκινήστε εισάγοντας πρώτα το δεκαδικό "
+"μέρος (2):"
 
 #. (itstool) path: example/p
 #: C/scientific.page:17
@@ -1396,12 +2155,10 @@ msgstr "2"
 
 #. (itstool) path: page/p
 #: C/scientific.page:21
-msgid ""
-"Then press the scientific notation button (or press <keyseq><key>Ctrl</"
-"key><key>E</key></keyseq>):"
-msgstr ""
-"Μετά πατήστε το κουμπί επιστημονικής γραφής (ή πιέστε <keyseq><key>Ctrl</"
-"key><key>E</key></keyseq>):"
+#, fuzzy
+#| msgid "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
+msgid "Then press <keyseq><key>Ctrl</key><key>E</key></keyseq>:"
+msgstr "<keyseq><key>Ctrl</key><key>R</key></keyseq>"
 
 #. (itstool) path: example/p
 #: C/scientific.page:25
@@ -1421,44 +2178,56 @@ msgstr "2×10¹⁰⁰"
 #. (itstool) path: page/p
 #: C/scientific.page:37
 msgid ""
-"To show results in scientific form change the <link xref=\"number-display"
-"\">result format</link>."
+"To show results in scientific form change the <link xref=\"number-"
+"display\">result format</link>."
 msgstr ""
 "Για να εμφανίζονται τα αποτελέσματα σε επιστημονική μορφή αλλάξτε τη <link "
 "xref=\"number-display\">μορφή αποτελέσματος</link>."
 
 #. (itstool) path: info/title
-#: C/superscript.page:7
+#: C/superscript.page:15
 msgctxt "sort"
 msgid "_"
 msgstr "_"
 
 #. (itstool) path: page/title
-#: C/superscript.page:11
+#: C/superscript.page:19
 msgid "Superscript and Subscript"
 msgstr "Δυνάμεις και δείκτες"
 
 #. (itstool) path: page/p
-#: C/superscript.page:13
+#: C/superscript.page:21
+#, fuzzy
+#| msgid ""
+#| "Some equations may require numbers to be entered in superscript or "
+#| "subscript form. e.g."
 msgid ""
 "Some equations may require numbers to be entered in superscript or subscript "
-"form. e.g."
+"form, such as:"
 msgstr ""
 "Μερικές εξισώσεις μπορεί να απαιτούν την εισαγωγή αριθμών σε μορφή δύναμης ή "
 "δείκτη, π.χ."
 
 #. (itstool) path: example/p
-#: C/superscript.page:17
+#: C/superscript.page:25
 msgid "x³+2x²−5"
 msgstr "x³+2x²−5"
 
 #. (itstool) path: page/p
-#: C/superscript.page:21
+#: C/superscript.page:29
+#, fuzzy
+#| msgid ""
+#| "To enter superscript numbers with the mouse select the number mode using "
+#| "the the <gui>↑n</gui> and <gui>↓n</gui> buttons. When one of these modes "
+#| "is active clicking the number buttons will enter numbers in superscript "
+#| "or subscript. To return to normal number mode click the active button."
 msgid ""
-"To enter superscript numbers with the mouse select the number mode using the "
-"the <gui>↑n</gui> and <gui>↓n</gui> buttons. When one of these modes is "
-"active clicking the number buttons will enter numbers in superscript or "
-"subscript. To return to normal number mode click the active button."
+"To enter superscript or subscript numbers with the mouse, select the number "
+"mode using the <gui>↑n</gui> and <gui>↓n</gui> buttons (available in all the "
+"modes except the <gui>keyboard mode</gui> and the <gui>conversion mode</"
+"gui>). When one of these modes is active clicking the number buttons will "
+"enter numbers in superscript or subscript. To return to normal number mode "
+"click the active number button."
 msgstr ""
 "Για να εισάγετε αριθμούς υπό μορφή δύναμης ή δείκτη, επιλέξτε με το ποντίκι "
 "τη μορφή των αριθμών πατώντας τα κουμπιά <gui>↑n</gui> και <gui>↓n</gui>. "
@@ -1467,37 +2236,41 @@ msgstr ""
 "εισαγωγή αριθμών πατήστε το ενεργό από τα δύο κουμπιά."
 
 #. (itstool) path: page/p
-#: C/superscript.page:26
+#: C/superscript.page:34
+#, fuzzy
+#| msgid ""
+#| "To enter <link xref=\"superscript\">superscript numbers</link> use "
+#| "<keyseq><key>Ctrl</key>number</keyseq>, for subscript use "
+#| "<keyseq><key>Alt</key>number</keyseq>."
 msgid ""
-"To enter superscript numbers with the keyboard hold down <key>Ctrl</key> "
-"while entering the number. Hold <key>Alt</key> for subscript."
+"To enter superscript numbers use <keyseq><key>Ctrl</key>number</keyseq>, for "
+"subscript numbers use <keyseq><key>Alt</key>number</keyseq>."
 msgstr ""
-"Για να εισάγετε αριθμούς σε μορφή δύναμης από το πληκτρολόγιο, κρατήστε "
-"πατημένο το <key>Ctrl</key> ενώ εισάγετε τον αριθμό. Κρατήστε το <key>Alt</"
-"key> για εισαγωγή σε μορφή δείκτη."
+"Για να εισάγετε <link xref=\"superscript\">εκθέτες</link> χρησιμοποήστε "
+"<keyseq><key>Ctrl</key>αριθμό</keyseq>, για δείκτες χρησιμοποιήστε "
+"<keyseq><key>Alt</key>αριθμό</keyseq>."
 
 #. (itstool) path: page/p
-#: C/superscript.page:30
+#: C/superscript.page:37
+#, fuzzy
+#| msgid ""
+#| "The number mode returns to normal when entering the next non-number "
+#| "character (e.g. +)."
 msgid ""
 "The number mode returns to normal when entering the next non-number "
-"character (e.g. +)."
+"character, such as \"+\" or \"-\"."
 msgstr ""
 "Η μορφή εισαγωγής του αριθμού επιστρέφει στην κανονική της λειτουργία όταν "
 "εισάγετε οποιοδήποτε χαρακτήρα εκτός από αριθμό (π.χ. +)."
 
-#. (itstool) path: page/title
-#: C/trigonometry.page:9
-msgid "Trigonometry"
-msgstr "Τριγωνομετρία"
-
 #. (itstool) path: page/p
 #: C/trigonometry.page:11
 msgid ""
-"Trigonometry can be performed using the sin, cos, and tan <link xref="
-"\"function\">function</link>."
+"Trigonometry can be performed using the sin, cos, and tan <link "
+"xref=\"function\">function</link>."
 msgstr ""
-"Μπορείτε να εκτελέσετε τριγωνομετρία χρησιμοποιώντας τις <link xref="
-"\"function\">συναρτήσεις</link> sin, cos και tan."
+"Μπορείτε να εκτελέσετε τριγωνομετρία χρησιμοποιώντας τις <link "
+"xref=\"function\">συναρτήσεις</link> sin, cos και tan."
 
 #. (itstool) path: example/p
 #: C/trigonometry.page:15
@@ -1506,18 +2279,38 @@ msgstr "sin 45"
 
 #. (itstool) path: page/p
 #: C/trigonometry.page:19
-msgid ""
-"The angle units used can be changed from the <guiseq><gui>Calculator</"
-"gui><gui>Preferences</gui></guiseq> menu. Trigonometry buttons are visible "
-"when in <link xref=\"mouse\">Advanced mode</link>."
+msgid "To change the angle units used, use one of the following methods:"
 msgstr ""
-"Οι μονάδες γωνιών που χρησιμοποιούνται μπορούν να αλλάξουν από το μενού "
-"<guiseq><gui>Αριθμομηχανή</gui><gui>Προτιμήσεις</gui></guiseq>. Τα κουμπιά "
-"τργωνομετρίας είναι ορατά όταν βρίσκεστε σε <link xref=\"mouse"
-"\">Επιστημονική λειτουργία</link>."
+
+#. (itstool) path: item/p
+#: C/trigonometry.page:23
+msgid ""
+"Press the menu button in the top-right corner of the window and select <gui "
+"style=\"menuitem\">Preferences</gui>"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/trigonometry.page:25
+msgid ""
+"In <gui>advanced mode</gui> you can use the Rad/Grad/Deg toggle button to "
+"toggle between units"
+msgstr ""
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:23
+#: C/trigonometry.page:28
+#, fuzzy
+#| msgid ""
+#| "Buttons for these symbols are available in <link "
+#| "xref=\"mouse\">programming mode</link>."
+msgid ""
+"Trigonometry buttons are visible when in <link xref=\"mouse\">Advanced mode</"
+"link>."
+msgstr ""
+"Τα κουμπιά για αυτά τα σύμβολα είναι διαθέσιμα στην <link "
+"xref=\"mouse\">προγραμματιστική λειτουργία</link>."
+
+#. (itstool) path: page/p
+#: C/trigonometry.page:31
 msgid ""
 "Hyperbolic functions are available by adding \"h\" to the end of a function."
 msgstr ""
@@ -1525,12 +2318,12 @@ msgstr ""
 "τέλος μιας συνάρτησης."
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:27
+#: C/trigonometry.page:35
 msgid "sinh 0.34"
 msgstr "sinh 0.34"
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:31
+#: C/trigonometry.page:39
 msgid ""
 "Inverse functions are entered either using the inverse symbol ⁻¹ "
 "(<keyseq><key>Ctrl</key><key>I</key></keyseq>) or the \"a\" form of the "
@@ -1541,17 +2334,17 @@ msgstr ""
 "μορφή \"a\" της συνάρτησης. Οι δύο ακόλουθες εξισώσεις είναι ισότιμες."
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:36
+#: C/trigonometry.page:44
 msgid "sin⁻¹ 0.5"
 msgstr "sin⁻¹ 0.5"
 
 #. (itstool) path: example/p
-#: C/trigonometry.page:39
+#: C/trigonometry.page:47
 msgid "asin 0.5"
 msgstr "asin 0.5"
 
 #. (itstool) path: page/p
-#: C/trigonometry.page:43
+#: C/trigonometry.page:51
 msgid ""
 "To enter <link xref=\"variable\">π</link> with the keyboard use "
 "<keyseq><key>Ctrl</key><key>P</key></keyseq>."
@@ -1562,21 +2355,27 @@ msgstr ""
 
 #. (itstool) path: page/title
 #: C/variables.page:9
-msgid "Variables"
-msgstr "Μεταβλητές"
+msgid "Variables and Constants"
+msgstr ""
 
 #. (itstool) path: page/p
 #: C/variables.page:11
+#, fuzzy
+#| msgid ""
+#| "To assign a value to a variable use the = symbol or choose the variable "
+#| "to assign to with the <gui>x</gui> button in <link "
+#| "xref=\"mouse\">advanced mode</link>. A variable name must only contain "
+#| "upper or lower case characters."
 msgid ""
 "To assign a value to a variable use the = symbol or choose the variable to "
 "assign to with the <gui>x</gui> button in <link xref=\"mouse\">advanced "
 "mode</link>. A variable name must only contain upper or lower case "
-"characters."
+"characters, or underscores."
 msgstr ""
 "Για να εκχωρήσετε μια τιμή σε μια μεταβλητή χρησιμοποιήστε το σύμβολο = ή "
-"επιλέξτε τη μεταβλητή με το κουμπί <gui>x</gui> στην <link xref=\"mouse"
-"\">προχωρημένη λειτουργία</link>. Το όνομα μιας μεταβλητής επιτρέπεται να "
-"περιέχει μόνο πεζά ή κεφαλαία γράμματα."
+"επιλέξτε τη μεταβλητή με το κουμπί <gui>x</gui> στην <link "
+"xref=\"mouse\">προχωρημένη λειτουργία</link>. Το όνομα μιας μεταβλητής "
+"επιτρέπεται να περιέχει μόνο πεζά ή κεφαλαία γράμματα."
 
 #. (itstool) path: example/p
 #: C/variables.page:16
@@ -1585,14 +2384,21 @@ msgstr "x=5"
 
 #. (itstool) path: example/p
 #: C/variables.page:19
-msgid "value=82"
+#, fuzzy
+#| msgid "value=82"
+msgid "example=82"
 msgstr "τιμή=82"
 
 #. (itstool) path: page/p
 #: C/variables.page:23
+#, fuzzy
+#| msgid ""
+#| "Variables can be used in any equation and are substituted for their "
+#| "assigned value. Variables can be inserted using the <gui>x</gui> button."
 msgid ""
-"Variables can be used in any equation and are substituted for their assigned "
-"value. Variables can be inserted using the <gui>x</gui> button."
+"Variables and constants can be used in any equation and are substituted for "
+"their assigned value. Variables and constants can be inserted using the "
+"<gui>x</gui> button."
 msgstr ""
 "Οι μεταβλητές μπορούν να χρησιμοποιηθούν σε οποιαδήποτε εξίσωση και "
 "αντικαθιστούνται από την τιμή που τους έχει εκχωρηθεί. Οι μεταβλητές μπορούν "
@@ -1615,8 +2421,11 @@ msgstr "Οι ακόλουθες μεταβλητές είναι πάντα κα�
 
 #. (itstool) path: td/p
 #: C/variables.page:40
-msgid "ans"
-msgstr "ans"
+#, fuzzy
+#| msgctxt "sort"
+#| msgid "_"
+msgid "_"
+msgstr "_"
 
 #. (itstool) path: td/p
 #: C/variables.page:41
@@ -1625,28 +2434,364 @@ msgstr "Το αποτέλεσμα του προηγούμενου υπολογι
 
 #. (itstool) path: td/p
 #: C/variables.page:44
-msgid "e"
-msgstr "e"
-
-#. (itstool) path: td/p
-#: C/variables.page:45
-msgid "<link xref=\"logarithm\">Euler's Number</link>"
-msgstr "<link xref=\"logarithm\">Αριθμός Euler</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:49
-msgid "<link xref=\"trigonometry\">Pi</link>"
-msgstr "<link xref=\"trigonometry\">Pi</link>"
-
-#. (itstool) path: td/p
-#: C/variables.page:52
 msgid "rand"
 msgstr "rand"
 
 #. (itstool) path: td/p
-#: C/variables.page:53
+#: C/variables.page:45
 msgid "Random value in the range [0,1] (changes on each read)"
 msgstr "Τυχαία τιμή μέσα στο φάσμα τιμών [0,1] (αλλάζει σε κάθε ανάγνωση)"
+
+#. (itstool) path: page/p
+#: C/variables.page:48
+#, fuzzy
+#| msgid "The following variables are always defined."
+msgid "The following constants are always defined."
+msgstr "Οι ακόλουθες μεταβλητές είναι πάντα καθορισμένες."
+
+#. (itstool) path: td/p
+#: C/variables.page:53
+msgid "Mathematics"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:56
+msgid "e"
+msgstr "e"
+
+#. (itstool) path: td/p
+#: C/variables.page:57
+#, fuzzy
+#| msgid "<link xref=\"logarithm\">Euler's Number</link>"
+msgid "<link xref=\"logarithm\">Euler’s Number</link>"
+msgstr "<link xref=\"logarithm\">Αριθμός Euler</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:61
+msgid "<link xref=\"trigonometry\">Pi</link>"
+msgstr "<link xref=\"trigonometry\">Pi</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:65
+#, fuzzy
+#| msgid "<link xref=\"trigonometry\">Pi</link>"
+msgid "<link xref=\"trigonometry\">Tau</link>"
+msgstr "<link xref=\"trigonometry\">Pi</link>"
+
+#. (itstool) path: td/p
+#: C/variables.page:68
+msgid "φ"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:69
+msgid "Golden Ratio"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:72
+msgid "Electromagnetism"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:75
+msgid "c₀"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:76
+msgid "Light Speed"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:79
+msgid "е"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:80
+msgid "Elementary Charge"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:83
+msgid "Z₀"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:84
+msgid "Impedance of Vacuum"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:87
+msgid "μ₀"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:88
+msgid "Permeability of Vacuum"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:91
+msgid "ε₀"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:92
+msgid "Permittivity of Vacuum"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:95
+msgid "Atomic &amp; Nuclear"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:98
+msgid "h"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:99
+msgid "Planck’s Constant"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:102
+msgid "α"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:103
+msgid "Fine-Structure Constant"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:106
+msgid "mₑ"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:107
+msgid "Electron Mass"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:110
+msgid "mₚ"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:111
+msgid "Proton Mass"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:114
+msgid "Thermodynamics"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:117
+msgid "k"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:118
+msgid "Boltzmann Constant"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:121
+msgid "mᵤ"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:122
+msgid "Atomic Mass Unit"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:125
+msgid "R"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:126
+msgid "Molar Gas Constant"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:129
+msgid "σ"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:130
+msgid "Stefan-Boltzmann Constant"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:133
+msgid "Nᴀ"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:134
+msgid "Avogadro’s Number"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:137
+msgid "Gravitation"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:140
+msgid "G"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:141
+#, fuzzy
+#| msgid "Fractional Component"
+msgid "Gravitational Constant"
+msgstr "Κλασματικό μέρος"
+
+#. (itstool) path: td/p
+#: C/variables.page:144
+msgid "g"
+msgstr ""
+
+#. (itstool) path: td/p
+#: C/variables.page:145
+msgid "Earth Acceleration"
+msgstr ""
+
+#~ msgid "Boolean Algebra"
+#~ msgstr "Άλγεβρα Μπουλ"
+
+#~ msgid ""
+#~ "The NOT <link xref=\"function\">function</link> inverts the bits in a "
+#~ "number. The word size is set from the <guiseq><gui>Calculator</"
+#~ "gui><gui>Preferences</gui></guiseq> menu."
+#~ msgstr ""
+#~ "Η <link xref=\"function\">συνάρτηση</link> NOT αντιστρέφει τα δυαδικά "
+#~ "ψηφία ενός αριθμού. Το μήκος της ψηφιακής λέξης ορίζεται από το μενού "
+#~ "<guiseq><gui>Αριθμομηχανή</gui><gui>Προτιμήσεις</gui></guiseq>."
+
+#~ msgid "Complex numbers are not supported in <app>Calculator</app>."
+#~ msgstr "Η <app>Αριθμομηχανή</app> δεν υποστηρίζει μιγαδικούς αριθμούς."
+
+#~ msgid "Number Base conversions must be performed using the keyboard."
+#~ msgstr ""
+#~ "Οι μετατροπές βάσης αριθμού πρέπει να εκτελούνται από το πληκτρολόγιο."
+
+#~ msgid "Length/Area/Volume conversions must be performed using the keyboard."
+#~ msgstr ""
+#~ "Οι μετατροπές μήκους/εμβαδού/όγκου πρέπει να εκτελούνται από το "
+#~ "πληκτρολόγιο."
+
+#~ msgid "Time conversions must be performed using the keyboard."
+#~ msgstr "Οι μετατροπές χρόνου πρέπει να εκτελούνται από το πληκτρολόγιο."
+
+#~ msgid "Mass conversions must be performed using the keyboard."
+#~ msgstr "Οι μετατροπές μάζας πρέπει να εκτελούνται από το πληκτρολόγιο."
+
+#~ msgid "abs"
+#~ msgstr "abs"
+
+#~ msgid "cos"
+#~ msgstr "cos"
+
+#~ msgid "cosh"
+#~ msgstr "cosh"
+
+#~ msgid "frac"
+#~ msgstr "frac"
+
+#~ msgid "int"
+#~ msgstr "int"
+
+#~ msgid "Integer Component"
+#~ msgstr "Ακέραιο μέρος"
+
+#~ msgid "ln"
+#~ msgstr "ln"
+
+#~ msgid "log"
+#~ msgstr "log"
+
+#~ msgid "not"
+#~ msgstr "not"
+
+#~ msgid "ones"
+#~ msgstr "ones"
+
+#~ msgid "Ones complement"
+#~ msgstr "Συμπλήρωμα ως προς 1"
+
+#~ msgid "sin"
+#~ msgstr "sin"
+
+#~ msgid "sinh"
+#~ msgstr "sinh"
+
+#~ msgid "tan"
+#~ msgstr "tan"
+
+#~ msgid "tanh"
+#~ msgstr "tanh"
+
+#~ msgid "Twos complement"
+#~ msgstr "Συμπλήρωμα ως προς 2"
+
+#~ msgid "Modulus division is performed using the mod operator."
+#~ msgstr "Το υπόλοιπο διαίρεσης υπολογίζεται με χρήση του τελεστή mod."
+
+#~ msgid ""
+#~ "The format used to display results can be changed from the "
+#~ "<guiseq><gui>Calculator</gui><gui>Preferences</gui></guiseq> menu."
+#~ msgstr ""
+#~ "Η μορφή που χρησιμοποιείται για την εμφάνιση των αποτελεσμάτων μπορεί να "
+#~ "αλλαχτεί από το μενού <guiseq><gui>Αριθμομηχανή</gui><gui>Προτιμήσεις</"
+#~ "gui></guiseq>."
+
+#~ msgid "Learn to enter roots and powers into the calculator."
+#~ msgstr "Μάθετε να προσθέτετε ρίζες και δυνάμεις στην αριθμομηχανή."
+
+#~ msgid ""
+#~ "Then press the scientific notation button (or press <keyseq><key>Ctrl</"
+#~ "key><key>E</key></keyseq>):"
+#~ msgstr ""
+#~ "Μετά πατήστε το κουμπί επιστημονικής γραφής (ή πιέστε <keyseq><key>Ctrl</"
+#~ "key><key>E</key></keyseq>):"
+
+#~ msgid ""
+#~ "To enter superscript numbers with the keyboard hold down <key>Ctrl</key> "
+#~ "while entering the number. Hold <key>Alt</key> for subscript."
+#~ msgstr ""
+#~ "Για να εισάγετε αριθμούς σε μορφή δύναμης από το πληκτρολόγιο, κρατήστε "
+#~ "πατημένο το <key>Ctrl</key> ενώ εισάγετε τον αριθμό. Κρατήστε το "
+#~ "<key>Alt</key> για εισαγωγή σε μορφή δείκτη."
+
+#~ msgid ""
+#~ "The angle units used can be changed from the <guiseq><gui>Calculator</"
+#~ "gui><gui>Preferences</gui></guiseq> menu. Trigonometry buttons are "
+#~ "visible when in <link xref=\"mouse\">Advanced mode</link>."
+#~ msgstr ""
+#~ "Οι μονάδες γωνιών που χρησιμοποιούνται μπορούν να αλλάξουν από το μενού "
+#~ "<guiseq><gui>Αριθμομηχανή</gui><gui>Προτιμήσεις</gui></guiseq>. Τα "
+#~ "κουμπιά τργωνομετρίας είναι ορατά όταν βρίσκεστε σε <link "
+#~ "xref=\"mouse\">Επιστημονική λειτουργία</link>."
+
+#~ msgid "Variables"
+#~ msgstr "Μεταβλητές"
+
+#~ msgid "ans"
+#~ msgstr "ans"
 
 #~ msgid ""
 #~ "You can also convert currencies using the keyboard and the <em>in</em> "
