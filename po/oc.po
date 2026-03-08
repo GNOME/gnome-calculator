@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-01-31 12:00+0000\n"
-"PO-Revision-Date: 2026-03-05 14:23+0100\n"
+"POT-Creation-Date: 2026-03-06 05:34+0000\n"
+"PO-Revision-Date: 2026-03-08 12:22+0100\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -51,22 +51,15 @@ msgstr ""
 "foncionalitats."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:16
-#, fuzzy
-#| msgid ""
-#| "The Advanced calculator supports many operations, including: logarithms, "
-#| "factorials, trigonometric and hyperbolic functions, modulus division, "
-#| "complex numbers, random number generation, prime factorization and unit "
-#| "conversions."
 msgid ""
 "The Advanced calculator supports many operations, including: logarithms, "
 "factorials, trigonometric and hyperbolic functions, modulus division, "
 "complex numbers, random number generation and prime factorization."
 msgstr ""
-"La calculadoira avançada pren en carga fòrça operacions, incluses los "
-"logaritmes, las factorialas, las foncions trigonometricas e iperbolicas, lo "
-"modulo de division, los nombres complèxes, la generacion de nombres "
-"aleatòris, la factorizacion en nombres primièrs e la conversion entre "
-"unitats."
+"La calculadoira avançada supòrta nombrosas operacions, que comprenon: los "
+"logaritmes, las factorialas, las foncions trigonometricas e iperbolicas, la "
+"division modulara, los nombres complèxes, la generacion de nombres aleatòris "
+"e la factorizacion en nombres primièrs."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:22
 msgid ""
@@ -78,25 +71,22 @@ msgstr ""
 "valor presenta e futura, l'amortiment degressiu e linear, e d'autres."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:27
-#, fuzzy
-#| msgid ""
-#| "Programming mode supports conversion between common bases (binary, octal, "
-#| "decimal, and hexadecimal), boolean algebra, one’s and two’s "
-#| "complementation, character to character code conversion, and more."
 msgid ""
 "Programming mode supports calculations using common bases (binary, octal, "
 "decimal, and hexadecimal), bitwise operations, two’s complement, character "
 "to character code conversion, and more."
 msgstr ""
-"Lo mòde programacion permet la conversion entre de basas usualas (binari, "
-"octal, decimal e exadecimal), l'algèbra de Boole, los complements a un e a "
-"dos, la conversion de còdi de caractèr, e d'autres."
+"Lo mòde Programacion supòrta los calculs amb las basas correntas (binària, "
+"octala, decimala e exadecimala), las operacions bit a bit, lo complement a "
+"dos, la conversion de caractèr a còde de caractèr, e mai."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:32
 msgid ""
 "Conversion mode supports conversions between common units, currencies and "
 "number bases."
 msgstr ""
+"Lo mòde de conversion supòrta las conversions entre las unitats, las devisas "
+"e las basas numericas correntas."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:43
 msgid "Basic Mode"
@@ -144,14 +134,16 @@ msgid "The size of the words used in bitwise operations"
 msgstr "La talha de mot informatic utilizada per las operacions bit a bit"
 
 #: data/org.gnome.calculator.gschema.xml:43
-#, fuzzy
-#| msgid "Numeric Base"
 msgid "Numeric base"
-msgstr "Basa de numeracion"
+msgstr "Basa numerica"
 
 #: data/org.gnome.calculator.gschema.xml:44
 msgid "The numeric base"
 msgstr "La basa de numeracion"
+
+#: data/org.gnome.calculator.gschema.xml:48
+msgid "Group digits"
+msgstr "Gropar las chifras"
 
 #: data/org.gnome.calculator.gschema.xml:49
 #, fuzzy
@@ -195,13 +187,38 @@ msgstr "L'unitat d'angle d'utilizar"
 msgid "Currency update interval"
 msgstr "Interval de mesa a jorn de la devisa"
 
+#: data/org.gnome.calculator.gschema.xml:69
+msgid ""
+"How often the currency exchange rates should be updated. A value of 0 means "
+"the currency exchange rates won't be fetched from the network at all."
+msgstr ""
+
 #: data/org.gnome.calculator.gschema.xml:73
 msgid "Currency display"
 msgstr "Afichatge devisa"
 
+#: data/org.gnome.calculator.gschema.xml:74
+msgid ""
+"Indicates whether to show currency code, currency name or both of them in "
+"the converter."
+msgstr ""
+
+#: data/org.gnome.calculator.gschema.xml:78
+msgid "Enabled completions"
+msgstr ""
+
+#: data/org.gnome.calculator.gschema.xml:79
+msgid ""
+"The types of completion proposals to be shown in the auto-completion list."
+msgstr ""
+
 #: data/org.gnome.calculator.gschema.xml:83
 msgid "Favorite currencies"
 msgstr "Devisas preferidas"
+
+#: data/org.gnome.calculator.gschema.xml:84
+msgid "The favorite currencies to be shown at the top of the currency list."
+msgstr ""
 
 #: data/org.gnome.calculator.gschema.xml:88
 msgid "Button mode"
@@ -211,13 +228,29 @@ msgstr "Mòde dels botons"
 msgid "The button mode"
 msgstr "Lo mòde dels botons"
 
+#: data/org.gnome.calculator.gschema.xml:93
+msgid "Unit category"
+msgstr ""
+
+#: data/org.gnome.calculator.gschema.xml:94
+msgid "Currently selected unit category in the converter"
+msgstr ""
+
 #: data/org.gnome.calculator.gschema.xml:98
 msgid "Source units"
 msgstr "Unitats font"
 
+#: data/org.gnome.calculator.gschema.xml:99
+msgid "Currently selected source units in the converter"
+msgstr ""
+
 #: data/org.gnome.calculator.gschema.xml:103
 msgid "Target units"
 msgstr "Unitats cibla"
+
+#: data/org.gnome.calculator.gschema.xml:104
+msgid "Currently selected target units in the converter"
+msgstr ""
 
 #: data/org.gnome.calculator.gschema.xml:108
 msgid "Internal precision"
@@ -231,23 +264,33 @@ msgstr "Precision intèrna utilizada per la bibliotèca MPFR"
 msgid "Window position"
 msgstr "Posicion de la fenèstra"
 
+#: data/org.gnome.calculator.gschema.xml:114
+msgid "Window position (x and y) of the last closed window."
+msgstr ""
+
 #: data/org.gnome.calculator.gschema.xml:118
 msgid "Window maximized"
 msgstr "Fenèstra maximizada"
 
+#: data/org.gnome.calculator.gschema.xml:119
+msgid "Whether the last closed window was maximized."
+msgstr ""
+
 #: data/org.gnome.calculator.gschema.xml:123
 msgid "Window size"
 msgstr "Talha de la fenèstra"
+
+#: data/org.gnome.calculator.gschema.xml:124
+msgid "Window size (width and height) of the last closed window."
+msgstr ""
 
 #: lib/currency.vala:82
 msgid "UAE Dirham"
 msgstr "Dirham emirati"
 
 #: lib/currency.vala:83
-#, fuzzy
-#| msgid "Mexican Peso"
 msgid "Argentine Peso"
-msgstr "Peso mexican"
+msgstr "Peso argentin"
 
 #: lib/currency.vala:84
 msgid "Armenian Dram"
@@ -327,7 +370,7 @@ msgstr ""
 
 #: lib/currency.vala:103
 msgid "Euro"
-msgstr "Euro"
+msgstr "Èuro"
 
 #: lib/currency.vala:104
 msgid "British Pound Sterling"
@@ -370,10 +413,8 @@ msgid "Japanese Yen"
 msgstr "Yen japonés"
 
 #: lib/currency.vala:114
-#, fuzzy
-#| msgid "Canadian Dollar"
 msgid "Jamaican Dollar"
-msgstr "Dòlar canadian"
+msgstr "Dòlar jamaïcan"
 
 #: lib/currency.vala:115
 msgid "South Korean Won"
@@ -552,10 +593,9 @@ msgid "to"
 msgstr "a"
 
 #: lib/equation-parser.vala:443
-#, fuzzy, c-format
-#| msgid "Function “%s” is not defined"
+#, c-format
 msgid "Function “%s” is missing arguments"
-msgstr "La foncion « %s » es pas definida"
+msgstr "Mancan de paramètres per la foncion « %s »"
 
 #: lib/equation-parser.vala:765 lib/number.vala:568
 msgid "The zeroth root of a number is undefined"
@@ -574,11 +614,8 @@ msgid "Pi"
 msgstr "Pi"
 
 #: lib/equation-parser.vala:1063
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "au"
 msgid "Tau"
-msgstr "ua"
+msgstr "Tau"
 
 #: lib/equation-parser.vala:1064
 msgid "Golden Ratio"
@@ -801,8 +838,6 @@ msgid "Modular Exponentiation"
 msgstr ""
 
 #: lib/function-manager.vala:52
-#, fuzzy
-#| msgid "Round"
 msgid "Rounding"
 msgstr "Arredondir"
 
@@ -812,11 +847,11 @@ msgstr "Arredondir"
 
 #: lib/function-manager.vala:54
 msgid "Floor"
-msgstr ""
+msgstr "Partida entièra"
 
 #: lib/function-manager.vala:55
 msgid "Ceiling"
-msgstr ""
+msgstr "Partida entièra superiora"
 
 #: lib/function-manager.vala:56 src/ui/buttons-programming.blp:2331
 msgid "Integer Component"
@@ -828,25 +863,23 @@ msgstr "Partida fraccionària"
 
 #: lib/function-manager.vala:59
 msgid "Statistics"
-msgstr ""
+msgstr "Estatisticas"
 
 #: lib/function-manager.vala:60
 msgid "Sum"
-msgstr ""
+msgstr "Soma"
 
 #: lib/function-manager.vala:61
 msgid "Sum of Squares"
-msgstr ""
+msgstr "Soma dels carrats"
 
 #: lib/function-manager.vala:62
 msgid "Average"
 msgstr "Mejana"
 
 #: lib/function-manager.vala:63
-#, fuzzy
-#| msgid "Radians"
 msgid "Median"
-msgstr "Radians"
+msgstr "Mediana"
 
 #: lib/function-manager.vala:64
 msgid "Minimum Value"
@@ -984,10 +1017,9 @@ msgstr "Interval de refresquiment del taus d’e_scambi"
 
 #. Error displayed to user when an conversion with unknown units is attempted
 #: lib/math-equation.vala:1300
-#, fuzzy, c-format
-#| msgid "Unknown variable “%s”"
+#, c-format
 msgid "Unknown unit “%s”"
-msgstr "Variabla « %s » desconeguda"
+msgstr "Unitat « %s » desconeguda"
 
 #. Error displayed to user when an unknown function is entered
 #: lib/math-equation.vala:1307
@@ -1396,7 +1428,7 @@ msgstr ""
 #: lib/unit.vala:50
 msgctxt "unit-symbols"
 msgid "U"
-msgstr ""
+msgstr "U"
 
 #: lib/unit.vala:51
 msgid "Nautical Miles"
@@ -1521,12 +1553,9 @@ msgid "Desktop Publishing Points"
 msgstr ""
 
 #: lib/unit.vala:64
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "pint,pints,pt"
 msgctxt "unit-symbols"
 msgid "point,pt,points,pts"
-msgstr "pinta,pintas,pt"
+msgstr "punt,pt,punts,pts"
 
 #: lib/unit.vala:65
 #, fuzzy
@@ -1540,8 +1569,6 @@ msgid "kilometers per hour,kmph,kmh,kph"
 msgstr ""
 
 #: lib/unit.vala:66
-#, fuzzy
-#| msgid "Miles per hour"
 msgid "Miles per Hour"
 msgstr "Milas per ora"
 
@@ -1551,8 +1578,6 @@ msgid "milesph,miles per hour,mi/h,miph,mph"
 msgstr ""
 
 #: lib/unit.vala:67
-#, fuzzy
-#| msgid "Meters per second"
 msgid "Meters per Second"
 msgstr "Mètres per segonda"
 
@@ -1562,8 +1587,6 @@ msgid "meters per second,mps"
 msgstr ""
 
 #: lib/unit.vala:68
-#, fuzzy
-#| msgid "Feet per second"
 msgid "Feet per Second"
 msgstr "Pès per segonda"
 
@@ -1600,22 +1623,15 @@ msgid "acre,acres"
 msgstr "acre,acres"
 
 #: lib/unit.vala:72
-#, fuzzy
-#| msgid "Square Millimeters"
 msgid "Square Miles"
 msgstr "Millimètres carrats"
 
 #: lib/unit.vala:72
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "m²"
 msgctxt "unit-symbols"
 msgid "mi²"
-msgstr "m²"
+msgstr "mi²"
 
 #: lib/unit.vala:73
-#, fuzzy
-#| msgid "Square Meters"
 msgid "Square Feet"
 msgstr "Mètres carrats"
 
@@ -1625,18 +1641,13 @@ msgid "ft²"
 msgstr ""
 
 #: lib/unit.vala:74
-#, fuzzy
-#| msgid "Square Millimeters"
 msgid "Square Kilometers"
 msgstr "Millimètres carrats"
 
 #: lib/unit.vala:74
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "m²"
 msgctxt "unit-symbols"
 msgid "km²"
-msgstr "m²"
+msgstr "km²"
 
 #: lib/unit.vala:75
 msgid "Square Meters"
@@ -1675,10 +1686,8 @@ msgid "m³"
 msgstr "m³"
 
 #: lib/unit.vala:79
-#, fuzzy
-#| msgid "US Gallons"
 msgid "British Gallons"
-msgstr "Gallons US"
+msgstr "Gallons britanics"
 
 #: lib/unit.vala:79
 #, fuzzy
@@ -1717,10 +1726,8 @@ msgid "quart,quarts,qt"
 msgstr "quart,quarts,qt"
 
 #: lib/unit.vala:83
-#, fuzzy
-#| msgid "British Pound Sterling"
 msgid "British Pints"
-msgstr "Liura esterling britanica"
+msgstr "Pintas britanicas"
 
 #: lib/unit.vala:83
 #, fuzzy
@@ -1746,7 +1753,7 @@ msgstr ""
 #: lib/unit.vala:85
 msgctxt "unit-symbols"
 msgid "cup,cups,cp"
-msgstr ""
+msgstr "tassa,tassas"
 
 #: lib/unit.vala:86
 msgid "Milliliters"
@@ -1829,10 +1836,8 @@ msgid "gram,grams,gramme,grammes,g"
 msgstr "grama,gramas,g"
 
 #: lib/unit.vala:94
-#, fuzzy
-#| msgid "Kilograms"
 msgid "Milligrams"
-msgstr "Quilogramas"
+msgstr "Miligramas"
 
 #: lib/unit.vala:94
 #, fuzzy
@@ -1965,10 +1970,8 @@ msgid "microsecond,microseconds,us,μs"
 msgstr "microsegonda,microsegondas,us,μs"
 
 #: lib/unit.vala:108
-#, fuzzy
-#| msgid "Microseconds"
 msgid "Nanoseconds"
-msgstr "Microsegondas"
+msgstr "Nanosegondas"
 
 #: lib/unit.vala:108
 #, fuzzy
@@ -2003,7 +2006,7 @@ msgstr "Kelvin"
 #: lib/unit.vala:111
 msgctxt "unit-symbols"
 msgid "k,K,Kelvin,kelvin"
-msgstr ""
+msgstr "k,K,Kelvin,kelvin"
 
 #: lib/unit.vala:112
 msgid "Rankine"
@@ -2338,7 +2341,7 @@ msgstr ""
 #: lib/unit.vala:150
 msgctxt "unit-symbols"
 msgid "hertz,Hz"
-msgstr ""
+msgstr "hertz,Hz"
 
 #: lib/unit.vala:151
 #, fuzzy
@@ -2436,12 +2439,9 @@ msgid "Calories"
 msgstr "Caloria"
 
 #: lib/unit.vala:160
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "cable,cables,cb"
 msgctxt "unit-symbols"
 msgid "calories,calorie,cal"
-msgstr "encabladura,encabladuras"
+msgstr "caloria,calorias,cal"
 
 #: lib/unit.vala:161
 #, fuzzy
@@ -2664,7 +2664,7 @@ msgstr "Afichar las informacions de version"
 #: src/gnome-calculator.vala:291
 #, c-format
 msgid "© 1986–%d The Calculator authors"
-msgstr ""
+msgstr "© 1986–%d Los autors de la calculadoira"
 
 #. The translator credits. Please translate this with your name (s).
 #: src/gnome-calculator.vala:297
@@ -3197,10 +3197,8 @@ msgstr ""
 #. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before cost input
 #: src/ui/buttons-financial.blp:977 src/ui/buttons-financial.blp:1089
 #: src/ui/buttons-financial.blp:1307 src/ui/buttons-financial.blp:1363
-#, fuzzy
-#| msgid "_Cost:"
 msgid "Cost"
-msgstr "_Còst :"
+msgstr "Còst"
 
 #. Translators: Double-Declining Depreciation Dialog: Label before life input
 #. Translators: Straight-Line Depreciation Dialog: Label before life input
@@ -3215,10 +3213,8 @@ msgstr "_Durada de vida :"
 #. Translators: Double-Declining Depreciation Dialog: Label before period input
 #. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before period input
 #: src/ui/buttons-financial.blp:989 src/ui/buttons-financial.blp:1381
-#, fuzzy
-#| msgid "_Period:"
 msgid "Period"
-msgstr "_Periòde :"
+msgstr "Periòde"
 
 #. Translators: Future Value Dialog: Description of calculation
 #: src/ui/buttons-financial.blp:1028
@@ -3479,11 +3475,11 @@ msgstr ""
 
 #: src/ui/buttons-programming.blp:2547
 msgid "UTF-8 Encoding"
-msgstr ""
+msgstr "Encodatge UTF-8"
 
 #: src/ui/buttons-programming.blp:2548
 msgid "UTF-16 Encoding"
-msgstr ""
+msgstr "Encodatge UTF-16"
 
 #. Translators: Insert character code dialog: Button to insert selected character
 #: src/ui/buttons-programming.blp:2574
@@ -3491,10 +3487,8 @@ msgid "_Insert"
 msgstr "_Inserir"
 
 #: src/ui/math-converter.blp:119
-#, fuzzy
-#| msgid "E_xchange rate refresh interval"
 msgid "Exchange Rates Not Loaded"
-msgstr "Interval de refresquiment del taus d’e_scambi"
+msgstr "Taus d’escambi non cargats"
 
 #: src/ui/math-converter.blp:122
 msgid ""
@@ -3511,23 +3505,19 @@ msgstr "_Pegar"
 
 #: src/ui/math-function-popover.blp:48
 msgid "Function name"
-msgstr ""
+msgstr "Nom de la foncion"
 
 #: src/ui/math-function-popover.blp:57
 msgid "Select no. of arguments"
 msgstr "Causir nombre d’arguments"
 
 #: src/ui/math-function-popover.blp:62
-#, fuzzy
-#| msgid "New function"
 msgid "Add function"
-msgstr "Foncion novèla"
+msgstr "Apondre una foncion"
 
 #: src/ui/math-preferences.blp:11
-#, fuzzy
-#| msgid "Defined Functions"
 msgid "Favorite Currencies"
-msgstr "Foncions definidas"
+msgstr "Devisas preferidas"
 
 #: src/ui/math-preferences.blp:20
 #, fuzzy
@@ -3537,16 +3527,13 @@ msgstr "Devisa font"
 
 #: src/ui/math-preferences.blp:36
 msgid "No Results Found"
-msgstr ""
+msgstr "Cap de resultat pas trobat"
 
 #: src/ui/math-preferences.blp:37
 msgid "Try a different search"
-msgstr ""
+msgstr "Ensajatz una autra recèrca"
 
 #: src/ui/math-preferences.blp:46
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "General"
 msgid "General"
 msgstr "General"
 
@@ -3564,7 +3551,7 @@ msgstr "_Zèros aprèp la virgula"
 
 #: src/ui/math-preferences.blp:62
 msgid "_Group Digits"
-msgstr ""
+msgstr "_Gropar las chifras"
 
 #: src/ui/math-preferences.blp:67
 #, fuzzy
@@ -3573,10 +3560,8 @@ msgid "_Angle Units"
 msgstr "Unitats d'_angle"
 
 #: src/ui/math-preferences.blp:72
-#, fuzzy
-#| msgid "Word Size"
 msgid "_Word Size"
-msgstr "Talha de mot"
+msgstr "_Talha de mot"
 
 #: src/ui/math-preferences.blp:81
 #, fuzzy
@@ -3585,10 +3570,8 @@ msgid "E_xchange Rate Refresh Interval"
 msgstr "Interval de refresquiment del taus d’e_scambi"
 
 #: src/ui/math-preferences.blp:86
-#, fuzzy
-#| msgid "Currency"
 msgid "_Currency Display"
-msgstr "Devisa"
+msgstr "_Afichatge devisa"
 
 #: src/ui/math-preferences.blp:91
 msgid "_Show Currencies in Auto-Completion List"
@@ -3607,10 +3590,8 @@ msgid "None"
 msgstr "Pas cap"
 
 #: src/ui/math-preferences.blp:104
-#, fuzzy
-#| msgid "Defined Functions"
 msgid "_Favorite Currencies"
-msgstr "Foncions definidas"
+msgstr "_Devisas preferidas"
 
 #: src/ui/math-shortcuts.blp:5
 msgctxt "shortcuts dialog"
@@ -3708,12 +3689,9 @@ msgid "Switch to Binary"
 msgstr "Passar en binari"
 
 #: src/ui/math-shortcuts.blp:97
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Switch to decimal"
 msgctxt "shortcuts dialog"
 msgid "Switch to Octal"
-msgstr "Passar en decimal"
+msgstr "Passar en octal"
 
 #: src/ui/math-shortcuts.blp:102
 msgctxt "shortcuts dialog"
@@ -3758,12 +3736,12 @@ msgstr "Invèrse (⁻¹)"
 #: src/ui/math-shortcuts.blp:141
 msgctxt "shortcuts dialog"
 msgid "Pi (π)"
-msgstr ""
+msgstr "Pi (π)"
 
 #: src/ui/math-shortcuts.blp:146
 msgctxt "shortcuts dialog"
 msgid "Tau (τ)"
-msgstr ""
+msgstr "Tau (τ)"
 
 #: src/ui/math-shortcuts.blp:151
 msgctxt "shortcuts dialog"
@@ -3773,34 +3751,32 @@ msgstr "Grau (°)"
 #: src/ui/math-shortcuts.blp:156 src/ui/math-shortcuts.blp:168
 msgctxt "shortcuts dialog"
 msgid "Floor (⌊⌋)"
-msgstr ""
+msgstr "Partida entièra (⌊⌋)"
 
 #: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
 msgctxt "shortcuts dialog"
 msgid "Ceiling (⌈⌉)"
-msgstr ""
+msgstr "Partida entièra superiora (⌈⌉)"
 
 #: src/ui/math-shortcuts.blp:180
 msgctxt "shortcuts dialog"
 msgid "Enter Numbers in Scientific Format"
-msgstr ""
+msgstr "Escriure los nombres en notacion scientifica"
 
 #: src/ui/math-shortcuts.blp:185
 msgctxt "shortcuts dialog"
 msgid "Enter Subscript Numbers"
-msgstr ""
+msgstr "Escriure los nombres dels indicis"
 
 #: src/ui/math-shortcuts.blp:190
-#, fuzzy
-#| msgid "Superscript mode [Ctrl]"
 msgctxt "shortcuts dialog"
 msgid "Enter Superscript Numbers"
-msgstr "Mòde exponent [Ctrl]"
+msgstr "Escriure los nombres dels exponents"
 
 #: src/ui/math-shortcuts.blp:195
 msgctxt "shortcuts dialog"
 msgid "Enter Superscript Minus Sign"
-msgstr ""
+msgstr "Escriure lo signe mens en exponent"
 
 #: src/ui/math-shortcuts.blp:200
 msgctxt "shortcuts dialog"
@@ -3880,25 +3856,18 @@ msgid "_Keyboard"
 msgstr "_Clavièr"
 
 #: src/ui/math-window.blp:37
-#, fuzzy
-#| msgid "Unknown conversion"
 msgid "_Conversion"
-msgstr "Conversion desconeguda"
+msgstr "_Conversion"
 
 #: src/ui/math-window.blp:47
 msgid "_New Window"
 msgstr "Fenèstra _novèla"
 
 #: src/ui/math-window.blp:54
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Clear history"
 msgid "_Clear History"
-msgstr "Escafar l’istoric"
+msgstr "_Escafar l’istoric"
 
 #: src/ui/math-window.blp:61
-#, fuzzy
-#| msgid "Result format"
 msgid "Result Format"
 msgstr "Format de resultat"
 
@@ -3919,10 +3888,8 @@ msgstr "_Scientific"
 
 #. Translators: entry of the Setup submenu of the hamburger menu (with a mnemonic that appears when pressing Alt); set result format to "engineering"; other possible options are "_Fixed", "_Scientific" and "_Automatic"
 #: src/ui/math-window.blp:86
-#, fuzzy
-#| msgid "Engineering"
 msgid "_Engineering"
-msgstr "Ingenhariá"
+msgstr "_Ingenhariá"
 
 #: src/ui/math-window.blp:96
 msgid "_Preferences"
@@ -3941,22 +3908,14 @@ msgid "A_bout Calculator"
 msgstr "A prepaus de _Calculadoira"
 
 #: src/ui/math-window.blp:132
-#, fuzzy
-#| msgid "Mode selection"
 msgid "Mode Selection"
-msgstr "Seleccion del mòde"
+msgstr "Mòde seleccion"
 
 #: src/ui/math-window.blp:139
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Undo"
 msgid "Undo"
 msgstr "Anullar"
 
 #: src/ui/math-window.blp:146
-#, fuzzy
-#| msgctxt "shortcut window"
-#| msgid "Redo"
 msgid "Redo"
 msgstr "Refar"
 
