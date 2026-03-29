@@ -1635,12 +1635,16 @@ public class MathEquation : GtkSource.Buffer
             if (word_size == 64)
             {
                 double d = x.to_double ();
-                bits = *(uint64*) &d;
+                uint64 dbits = 0;
+                Memory.copy (&dbits, &d, sizeof (double));
+                bits = dbits;
             }
             else
             {
                 float f = x.to_float ();
-                bits = *(uint32*) &f;
+                uint32 fbits = 0;
+                Memory.copy (&fbits, &f, sizeof (float));
+                bits = fbits;
             }
         }
         else if (x.is_negative ())
@@ -1656,9 +1660,18 @@ public class MathEquation : GtkSource.Buffer
         if (is_float)
         {
             if (word_size == 64)
-                x = new Number.double (*(double*) &bits);
+            {
+                double d = 0;
+                Memory.copy (&d, &bits, sizeof (double));
+                x = new Number.double (d);
+            }
             else
-                x = new Number.float (*(float*) &bits);
+            {
+                uint32 fbits = (uint32) bits;
+                float f = 0;
+                Memory.copy (&f, &fbits, sizeof (float));
+                x = new Number.float (f);
+            }
             x.set_force_float (true);
         }
         else if (x.is_negative ())

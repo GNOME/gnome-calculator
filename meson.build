@@ -58,6 +58,7 @@ if cc.get_id() == 'gcc'
     '-Wno-discarded-qualifiers',
     '-DVALA_STRICT_C', '-Wno-incompatible-pointer-types',
     '-Wno-unused-variable', '-Wno-unused-but-set-variable',
+    '-Werror=strict-aliasing',
     language : 'c'
   )
 endif

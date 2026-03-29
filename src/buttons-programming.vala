@@ -231,12 +231,16 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
                 if (equation.word_size == 64)
                 {
                     double d = x.to_double ();
-                    bits = *(uint64*) &d;
+                    uint64 dbits = 0;
+                    Memory.copy (&dbits, &d, sizeof (double));
+                    bits = dbits;
                 }
                 else if (equation.word_size == 32)
                 {
                     float f = x.to_float ();
-                    bits = *(uint32*) &f;
+                    uint32 fbits = 0;
+                    Memory.copy (&fbits, &f, sizeof (float));
+                    bits = fbits;
                 }
                 else
                     enabled = false;

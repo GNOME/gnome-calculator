@@ -87,7 +87,9 @@ public class Number : GLib.Object
             num.set_double (real, imag);
         else
         {
-            num.set_unsigned_integer ((ulong) *(uint32*) &real, 0);
+            uint32 bits = 0;
+            Memory.copy (&bits, &real, sizeof (uint32));
+            num.set_unsigned_integer ((ulong) bits, 0);
             finite = false;
         }
     }
@@ -98,7 +100,9 @@ public class Number : GLib.Object
             num.set_double (real, imag);
         else
         {
-            num.set_unsigned_integer ((ulong) *(uint64*) &real, 0);
+            uint64 bits = 0;
+            Memory.copy (&bits, &real, sizeof (uint64));
+            num.set_unsigned_integer ((ulong) bits, 0);
             finite = false;
         }
     }
@@ -162,8 +166,15 @@ public class Number : GLib.Object
         {
             uint64 bits = to_unsigned_integer ();
             if (bits > uint32.MAX)
-                return (float) *(double*) &bits;
-            return *(float*) &bits;
+            {
+                double d = 0;
+                Memory.copy (&d, &bits, sizeof (double));
+                return (float) d;
+            }
+            uint32 bits32 = (uint32) bits;
+            float f = 0;
+            Memory.copy (&f, &bits32, sizeof (float));
+            return f;
         }
         return num.get_real ().val.get_float (MPFR.Round.NEAREST);
     }
@@ -174,8 +185,15 @@ public class Number : GLib.Object
         {
             uint64 bits = to_unsigned_integer ();
             if (bits > uint32.MAX)
-                return *(double*) &bits;
-            return (double) *(float*) &bits;
+            {
+                double d = 0;
+                Memory.copy (&d, &bits, sizeof (double));
+                return d;
+            }
+            uint32 bits32 = (uint32) bits;
+            float f = 0;
+            Memory.copy (&f, &bits32, sizeof (float));
+            return (double) f;
         }
         return num.get_real ().val.get_double (MPFR.Round.NEAREST);
     }
