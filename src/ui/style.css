@@ -30,6 +30,18 @@ clamp > .small .display-container:last-child {
   background-color: shade(@card_bg_color, .95);
   color: inherit;
 }
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .history-view {
+    background-color: alpha(white, .05);
+  }
+}
+/* High contrast */
+@media (prefers-contrast: more) {
+  .history-entry {
+    border-top-color: @borders;
+  }
+}
 
 .history-view list {
   background: none;
@@ -84,6 +96,12 @@ mathdisplay textview text {
   padding-bottom: 8px;
   font-size: 1.4em;
   font-feature-settings: "tnum";
+}
+/* High contrast */
+@media (prefers-contrast: more) {
+  .sourceview {
+    border-top-color: @borders;
+  }
 }
 
 .sourceview > .completion cell.icon {
@@ -281,6 +299,17 @@ clamp  > .small .bit-panel {
 .math-popover list > row {
   border-radius: 9px;
   min-height: 28px;
+}
+/* High contrast */
+@media (prefers-contrast: more) {
+  .math-popover list > row:hover,
+  .math-popover list > row:active {
+    box-shadow: inset 0 0 0 1px @borders;
+  }
+
+  .math-popover .constant-list image {
+    opacity: 80%;
+  }
 }
 
 .math-popover list > row button {
