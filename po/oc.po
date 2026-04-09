@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-03-14 20:47+0000\n"
-"PO-Revision-Date: 2026-03-21 20:08+0100\n"
+"POT-Creation-Date: 2026-03-29 16:41+0000\n"
+"PO-Revision-Date: 2026-04-09 11:16+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -586,7 +586,7 @@ msgstr "a"
 msgid "Function “%s” is missing arguments"
 msgstr "Mancan de paramètres per la foncion « %s »"
 
-#: lib/equation-parser.vala:765 lib/number.vala:568
+#: lib/equation-parser.vala:765 lib/number.vala:586
 msgid "The zeroth root of a number is undefined"
 msgstr "La raiç zèro d’un nombre es pas definida"
 
@@ -852,7 +852,7 @@ msgstr "Escart-tipe de l’escandalhatge"
 
 #: lib/function-manager.vala:67
 msgid "Population Standard Deviation"
-msgstr ""
+msgstr "Desviacion estandarda de la populacion"
 
 #: lib/function-manager.vala:68
 msgid "Sample Variance"
@@ -1000,85 +1000,85 @@ msgid "Need an integer to factorize"
 msgstr "Sols los nombres entièrs son factorizables"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:306
+#: lib/number.vala:324
 msgid "Underflow error"
 msgstr "Error de depassament de capacitat cap aval"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:311
+#: lib/number.vala:329
 msgid "Overflow error"
 msgstr "Error de depassament de capacitat cap amont"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:372
+#: lib/number.vala:390
 msgid "Argument not defined for zero"
 msgstr "L'argument d'un nombre complèxe nul es indefinit"
 
-#: lib/number.vala:442
+#: lib/number.vala:460
 #, fuzzy
 #| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Floor is only defined for real numbers"
 msgstr "La factoriala es pas definida que per los reals positius"
 
-#: lib/number.vala:457
+#: lib/number.vala:475
 #, fuzzy
 #| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Ceiling is only defined for real numbers"
 msgstr "La factoriala es pas definida que per los reals positius"
 
-#: lib/number.vala:472
+#: lib/number.vala:490
 #, fuzzy
 #| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Round is only defined for real numbers"
 msgstr "La factoriala es pas definida que per los reals positius"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:506 lib/number.vala:536
+#: lib/number.vala:524 lib/number.vala:554
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "La poténcia de zèro es pas definida per d'exponents negatius"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:514 lib/number.vala:544
+#: lib/number.vala:532 lib/number.vala:562
 msgid "Zero raised to zero is undefined"
 msgstr "Zèro elevat a zèro es pas definit"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:598 lib/number.vala:629
+#: lib/number.vala:616 lib/number.vala:647
 msgid "Logarithm of zero is undefined"
 msgstr "Lo logaritme de zèro es pas definit"
 
-#: lib/number.vala:634
+#: lib/number.vala:652
 #, fuzzy
 #| msgid "Logarithm of zero is undefined"
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "Lo logaritme de zèro es pas definit"
 
 #. TODO: Support factorial of complex numbers
-#: lib/number.vala:652
+#: lib/number.vala:670
 msgid "Factorial of complex numbers is not supported"
 msgstr "La factoriala de nombres complèxes es pas presa en compte"
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
-#: lib/number.vala:659
+#: lib/number.vala:677
 #, fuzzy
 #| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Factorial is undefined for negative integers"
 msgstr "La factoriala es pas definida que per los reals positius"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:710
+#: lib/number.vala:728
 msgid "Division by zero is undefined"
 msgstr "La division per zèro es pas definida"
 
 #. Translators: Error displayed when attempting to do a modulus division on complex numbers
-#: lib/number.vala:731
+#: lib/number.vala:749
 #, fuzzy
 #| msgid "Modulus division is only defined for integers"
 msgid "Modulus division is only defined for real numbers"
 msgstr "Lo modulo de la division es pas definit que sus d'entièrs"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:811
+#: lib/number.vala:829
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1086,146 +1086,146 @@ msgstr ""
 "entièr de còps π (180°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:830
+#: lib/number.vala:848
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "L'arc sinus es pas definit per las valors fòra del segment [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:847
+#: lib/number.vala:865
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "L'arc cosinus es pas definit per las valors fòra del segment [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:865
+#: lib/number.vala:883
 #, fuzzy
 #| msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "L'arc cosinus es pas definit per las valors fòra del segment [-1, 1]"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:916
+#: lib/number.vala:934
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "L'argument cosinus iperbolic es pas definit per las valors inferioras a un"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:932
+#: lib/number.vala:950
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "L'argument tangenta iperbolica es pas definit per las valors en defòra del "
 "segment [-1, 1]"
 
 #. Translators: Error displayed when bitwise AND attempted on non-integer values
-#: lib/number.vala:947
+#: lib/number.vala:965
 #, fuzzy
 #| msgid "Boolean AND is only defined for positive integers"
 msgid "Bitwise AND is only defined for non-negative integers"
 msgstr "Lo AND (E) boolean es pas definit que per d'entièrs positius"
 
 #. Translators: Error displayed when bitwise NAND attempted on non-integer values
-#: lib/number.vala:960
+#: lib/number.vala:978
 #, fuzzy
 #| msgid "Boolean AND is only defined for positive integers"
 msgid "Bitwise NAND is only defined for non-negative integers"
 msgstr "Lo AND (E) boolean es pas definit que per d'entièrs positius"
 
 #. Translators: Error displayed when bitwise OR attempted on non-integer values
-#: lib/number.vala:973
+#: lib/number.vala:991
 #, fuzzy
 #| msgid "Boolean OR is only defined for positive integers"
 msgid "Bitwise OR is only defined for non-negative integers"
 msgstr "Lo OR (O) boolean es pas definit que per d'entièrs positius"
 
 #. Translators: Error displayed when bitwise NOR attempted on non-integer values
-#: lib/number.vala:986
+#: lib/number.vala:1004
 #, fuzzy
 #| msgid "Boolean OR is only defined for positive integers"
 msgid "Bitwise NOR is only defined for non-negative integers"
 msgstr "Lo OR (O) boolean es pas definit que per d'entièrs positius"
 
 #. Translators: Error displayed when bitwise XOR attempted on non-integer values
-#: lib/number.vala:999
+#: lib/number.vala:1017
 #, fuzzy
 #| msgid "Boolean XOR is only defined for positive integers"
 msgid "Bitwise XOR is only defined for non-negative integers"
 msgstr "Lo XOR (O exclusiu) boolean es pas definit que per d'entièrs positius"
 
 #. Translators: Error displayed when bitwise XNOR attempted on non-integer values
-#: lib/number.vala:1012
+#: lib/number.vala:1030
 #, fuzzy
 #| msgid "Boolean XOR is only defined for positive integers"
 msgid "Bitwise XNOR is only defined for non-negative integers"
 msgstr "Lo XOR (O exclusiu) boolean es pas definit que per d'entièrs positius"
 
 #. Translators: Error displayed when bitwise NOT attempted on non-integer values
-#: lib/number.vala:1025
+#: lib/number.vala:1043
 #, fuzzy
 #| msgid "Boolean NOT is only defined for positive integers"
 msgid "Bitwise NOT is only defined for non-negative integers"
 msgstr "Lo NOT (NON) boolean es pas definit que per d'entièrs positius"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:1087
+#: lib/number.vala:1105
 msgid "Shift is only possible on integers"
 msgstr "Lo decalatge es sonque possible suls entièrs"
 
-#: lib/number.vala:1092 lib/number.vala:1120 lib/number.vala:1566
+#: lib/number.vala:1110 lib/number.vala:1138 lib/number.vala:1584
 msgid "Overflow. Try a bigger word size"
 msgstr "Depassament de capacitat. Ensajatz amb una talha de mot mai granda"
 
-#: lib/number.vala:1103
+#: lib/number.vala:1121
 #, fuzzy
 #| msgid "Boolean OR is only defined for positive integers"
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "Lo OR (O) boolean es pas definit que per d'entièrs positius"
 
-#: lib/number.vala:1115
+#: lib/number.vala:1133
 #, fuzzy
 #| msgid "Shift is only possible on integer values"
 msgid "Swap endianness is only possible on integers"
 msgstr "Lo decalatge es pas possible que sus de valors entièras"
 
-#: lib/number.vala:1143
+#: lib/number.vala:1161
 #, fuzzy
 #| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Combination is only defined for non-negative integers"
 msgstr "La factoriala es pas definida que per los reals positius"
 
-#: lib/number.vala:1148
+#: lib/number.vala:1166
 msgid "Combination is undefined if n is less than r"
 msgstr "La combinason es indefinida se n es inferior a r"
 
-#: lib/number.vala:1161
+#: lib/number.vala:1179
 #, fuzzy
 #| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Permutation is only defined for non-negative integers"
 msgstr "La factoriala es pas definida que per los reals positius"
 
-#: lib/number.vala:1166
+#: lib/number.vala:1184
 #, fuzzy
 #| msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgid "Permutation is undefined if n is less than r"
 msgstr "L'arc cosinus es pas definit per las valors fòra del segment [-1, 1]"
 
-#: lib/number.vala:1187
+#: lib/number.vala:1205
 msgid "Greatest common divisor is only defined for integers"
-msgstr ""
+msgstr "Lo mai grand devesidor comun es sonque definit pels entièrs"
 
-#: lib/number.vala:1207
+#: lib/number.vala:1225
 #, fuzzy
 #| msgid "Modulus division is only defined for integers"
 msgid "Least common multiple is only defined for integers"
 msgstr "Lo modulo de la division es pas definit que sus d'entièrs"
 
-#: lib/number.vala:1264
+#: lib/number.vala:1282
 msgid "Median is only defined for real numbers"
 msgstr "La mediana es sonque definida per los reals positius"
 
-#: lib/number.vala:1284
+#: lib/number.vala:1302
 msgid "Minimum value is only defined for real numbers"
 msgstr "La valor minimala es sonque definida per los reals positius"
 
-#: lib/number.vala:1301
+#: lib/number.vala:1319
 msgid "Maximum value is only defined for real numbers"
 msgstr "La valor maximala es sonque definida per los reals positius"
 
@@ -2496,7 +2496,7 @@ msgstr "Resultat copiat"
 
 #: search-provider/search-provider.vala:240
 msgid "Result was copied successfully"
-msgstr ""
+msgstr "Resultat corrèctament copiat"
 
 #: src/buttons-advanced.vala:87 src/math-preferences.vala:134
 msgid "Degrees"
@@ -2525,6 +2525,8 @@ msgid ""
 "Start in given mode (basic, advanced, financial, programming, keyboard, "
 "conversion)"
 msgstr ""
+"Aviar dins lo mòde donat (basic, avançat, financièr, programacion, clavièr, "
+"conversion)"
 
 #: src/gnome-calculator.vala:23
 msgid "Solve given equation"
@@ -2591,7 +2593,7 @@ msgstr "Foncions definidas"
 
 #: src/math-display.vala:742
 msgid "Built-in Keywords"
-msgstr ""
+msgstr "Mots clau integrats"
 
 #: src/math-display.vala:794
 msgid "Defined Currencies"
@@ -2603,19 +2605,21 @@ msgstr "Variablas definidas"
 
 #: src/math-function-popover.vala:185
 msgid "Can not use defined variable or constant names"
-msgstr ""
+msgstr "Se pòt pas utilizar de noms de variablas definidas o de constantas"
 
 #: src/math-function-popover.vala:189
 msgid "Can not use built-in function or operator names"
-msgstr ""
+msgstr "Se pòt pas utilizar de noms de foncions integradas o d’operators"
 
 #: src/math-function-popover.vala:192
 msgid "Function name can not start with a digit"
-msgstr ""
+msgstr "Lo nom de foncion pòt pas començar per una chifra"
 
 #: src/math-function-popover.vala:195
 msgid "Function name can only contain digits, letters and underscores"
 msgstr ""
+"Lo nom de la foncion pòt conténer sonque de chifras, de letras e de "
+"soslinhaments."
 
 #: src/math-popover.vala:110
 msgid "Edit"
@@ -2667,19 +2671,21 @@ msgstr "Los dos"
 
 #: src/math-variable-popover.vala:216
 msgid "Can not use defined function or operator names"
-msgstr ""
+msgstr "Se pòt pas utilizar de noms de foncions definidas o d’operators"
 
 #: src/math-variable-popover.vala:219
 msgid "Can not use built-in variable or constant names"
-msgstr ""
+msgstr "Se pòt pas utilizar de noms de variablas integradas o de constantas"
 
 #: src/math-variable-popover.vala:222
 msgid "Variable name can not start with a digit"
-msgstr ""
+msgstr "Lo nom de variabla pòt pas començar per una chifra"
 
 #: src/math-variable-popover.vala:225
 msgid "Variable name can only contain digits, letters and underscores"
 msgstr ""
+"Lo nom de la variabla pòt conténer sonque de chifras, de letras e de "
+"soslinhaments."
 
 #: src/math-window.vala:137
 msgid "Basic"
@@ -2709,15 +2715,11 @@ msgstr "Escafa l'afichatge [Escap]"
 
 #: src/ui/buttons-advanced.blp:92 src/ui/buttons-basic.blp:37
 #: src/ui/buttons-financial.blp:92 src/ui/buttons-programming.blp:1389
-#, fuzzy
-#| msgid "Superscript mode [Ctrl]"
 msgid "Superscript Mode [Ctrl]"
 msgstr "Mòde exponent [Ctrl]"
 
 #: src/ui/buttons-advanced.blp:109 src/ui/buttons-basic.blp:54
 #: src/ui/buttons-financial.blp:109 src/ui/buttons-programming.blp:1406
-#, fuzzy
-#| msgid "Subscript mode [Alt]"
 msgid "Subscript Mode [Alt]"
 msgstr "Mòde indici [Alt]"
 
@@ -2790,8 +2792,6 @@ msgstr "Carrat [Ctrl+2]"
 
 #: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
 #: src/ui/buttons-programming.blp:2107
-#, fuzzy
-#| msgid "Square root [Ctrl+R]"
 msgid "Square Root [Ctrl+R]"
 msgstr "Raiç carrada [Ctrl+R]"
 
@@ -3104,16 +3104,12 @@ msgstr "Marge"
 
 #. Translators: Periodic Payment Dialog: Description of calculation
 #: src/ui/buttons-financial.blp:1134
-#, fuzzy
-#| msgid ""
-#| "Calculates the amount of the periodic payment of a loan, where payments "
-#| "are made at the end of each payment period. "
 msgid ""
 "Calculates the amount of the periodic payment of a loan, where payments are "
 "made at the end of each payment period."
 msgstr ""
-"Calcula lo montant del versement périodique per lo remborsament d'un emprunt "
-"dins lo qual los pagaments son efectuats a tèrme échu. "
+"Calcula la soma del pagament periodic d'un prèst, ont los pagaments se fan a "
+"la fin de cada periòde de pagament."
 
 #. Translators: Periodic Payment Dialog: Label before principal input
 #: src/ui/buttons-financial.blp:1139
@@ -3122,11 +3118,6 @@ msgstr "Principal"
 
 #. Translators: Present Value Dialog: Description of calculation
 #: src/ui/buttons-financial.blp:1190
-#, fuzzy
-#| msgid ""
-#| "Calculates the present value of an investment based on a series of equal "
-#| "payments discounted at a periodic interest rate over the number of "
-#| "payment periods in the term. "
 msgid ""
 "Calculates the present value of an investment based on a series of equal "
 "payments discounted at a periodic interest rate over the number of payment "
@@ -3134,21 +3125,16 @@ msgid ""
 msgstr ""
 "Calcula la valor iniciala d'un investiment fondat sus una seria de pagaments "
 "egals escomptats amb un taus d'interès periodic donat compte tengut del "
-"nombre de periòdes de versament fins a son tèrme. "
+"nombre de periòdes de versament fins a son tèrme."
 
 #. Translators: Periodic Interest Rate Dialog: Description of calculation
 #: src/ui/buttons-financial.blp:1246
-#, fuzzy
-#| msgid ""
-#| "Calculates the periodic interest necessary to increase an investment to a "
-#| "future value, over the number of compounding periods. "
 msgid ""
 "Calculates the periodic interest necessary to increase an investment to a "
 "future value, over the number of compounding periods."
 msgstr ""
 "Calcula lo taus d'interès per periòde necessari per portar un investiment a "
-"una valor donada a tèrme compte tengut del nombre de periòdes de "
-"composicion. "
+"una valor donada a tèrme compte tengut del nombre de periòdes de composicion."
 
 #. Translators: Title of Straight-Line Depreciation dialog
 #: src/ui/buttons-financial.blp:1273
@@ -3157,22 +3143,16 @@ msgstr "Amortiment linear"
 
 #. Translators: Straight-Line Depreciation Dialog: Description of calculation
 #: src/ui/buttons-financial.blp:1302
-#, fuzzy
-#| msgid ""
-#| "Calculates the straight-line depreciation of an asset for one period. The "
-#| "straight-line method of depreciation divides the depreciable cost evenly "
-#| "over the useful life of an asset. The useful life is the number of "
-#| "periods, typically years, over which an asset is depreciated. "
 msgid ""
 "Calculates the straight-line depreciation of an asset for one period. The "
 "straight-line method of depreciation divides the depreciable cost evenly "
 "over the useful life of an asset. The useful life is the number of periods, "
 "typically years, over which an asset is depreciated."
 msgstr ""
-"Calcula l'amortiment linear d'un actiu sus un periòde donat. Aqueste metòde "
-"repartís la valor d'amortiment d'un biais unifòrme sus la durada de vida "
-"utila de l'actiu. La vida utila correspond al nombre de periòdes, "
-"generalament annadièras, suls quals l'actiu es amortit. "
+"Calcula l'amortiment lineari d'un actiu per un periòde. Lo metòde "
+"d'amortiment lineari repartís lo còst amortissable egalament sus la durada "
+"de vida utila d'un actiu. La durada de vida utila es lo nombre de periòdes, "
+"generalament d'annadas, pendent losquals un actiu es amortit."
 
 #. Translators: Straight-Line Depreciation Dialog: Label before salvage input
 #. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
@@ -3187,14 +3167,6 @@ msgstr "Amortiment Softy"
 
 #. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Description of calculation
 #: src/ui/buttons-financial.blp:1358
-#, fuzzy
-#| msgid ""
-#| "Calculates the depreciation allowance on an asset for a specified period "
-#| "of time, using the Sum-of-the-Years'-Digits method. This method of "
-#| "depreciation accelerates the rate of depreciation, so that more "
-#| "depreciation expense occurs in earlier periods than in later ones. The "
-#| "useful life is the number of periods, typically years, over which an "
-#| "asset is depreciated. "
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the Sum-of-the-Years’-Digits method. This method of depreciation "
@@ -3202,11 +3174,12 @@ msgid ""
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated."
 msgstr ""
-"Calcula la dotacion als amortiments per un actiu sus un periòde donat de "
-"temps amb lo metòde Softy. Aqueste metòde accelèra lo taus d'amortiment : "
-"las dotacions son mai elevadas en començament de periòde qu'en fin. La "
-"durada de vida representa lo nombre de periòdes, generalament annadièras, "
-"suls quals l'actiu es amortit. "
+"Calcula l'amortiment d'un actiu per un periòde de temps especificat, en "
+"utilizant lo metòde de la soma de las annadas. Aqueste metòde d'amortiment "
+"accelèra lo taus d'amortiment, de biais que i aja mai de despensas "
+"d'amortiment dins los primièrs periòdes que dins los seguents. La durada de "
+"vida utila es lo nombre de periòdes, generalament d'annadas, pendent "
+"losquals un actiu es amortit."
 
 #. Translators: Title of Payment Period dialog
 #: src/ui/buttons-financial.blp:1391
