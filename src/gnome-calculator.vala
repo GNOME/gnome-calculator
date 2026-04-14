@@ -273,7 +273,7 @@ public class Calculator : Adw.Application
 #if GTK_5_0_or_above
     async void launch_help ()
     {
-        var help = new Gtk.UriLauncher ("help:help:gnome-calculator");
+        var help = new Gtk.UriLauncher ("help:gnome-calculator");
         try
         {
             yield help.launch (get_active_window (), null);
