@@ -260,8 +260,30 @@ public class Calculator : Adw.Application
 
     private void help_cb ()
     {
-        new Gtk.UriLauncher ("help:gnome-calculator").launch (get_active_window (), null);
+#if GTK_5_0_or_above
+        launch_help.begin ((obj,res)=>
+        {
+            launch_help.end (res);
+        });
+#else
+        Gtk.show_uri (get_active_window (), "help:gnome-calculator", Gdk.CURRENT_TIME);
+#endif
     }
+
+#if GTK_5_0_or_above
+    async void launch_help ()
+    {
+        var help = new Gtk.UriLauncher ("help:help:gnome-calculator");
+        try
+        {
+            yield help.launch (get_active_window (), null);
+        }
+        catch (Error e)
+        {
+            warning ("Failed to show help: %s", e.message);
+        }
+    }
+#endif
 
     private void about_cb ()
     {
