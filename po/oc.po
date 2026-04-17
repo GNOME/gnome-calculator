@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-03-29 16:41+0000\n"
-"PO-Revision-Date: 2026-04-09 11:16+0200\n"
+"POT-Creation-Date: 2026-04-14 07:49+0000\n"
+"PO-Revision-Date: 2026-04-17 17:07+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: data/org.gnome.Calculator.desktop.in:2
 #: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
-#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
+#: src/gnome-calculator.vala:306 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "Calculadoira"
 
@@ -113,7 +113,7 @@ msgid "Conversion Mode"
 msgstr "Mòde conversion"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "Lo projècte GNOME"
 
@@ -1015,22 +1015,17 @@ msgid "Argument not defined for zero"
 msgstr "L'argument d'un nombre complèxe nul es indefinit"
 
 #: lib/number.vala:460
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Floor is only defined for real numbers"
-msgstr "La factoriala es pas definida que per los reals positius"
+msgstr "La partida entièra es pas que definida per los reals positius"
 
 #: lib/number.vala:475
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Ceiling is only defined for real numbers"
-msgstr "La factoriala es pas definida que per los reals positius"
+msgstr ""
+"La partida entièra superiora es pas que definida per los reals positius"
 
 #: lib/number.vala:490
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Round is only defined for real numbers"
-msgstr "La factoriala es pas definida que per los reals positius"
+msgstr "L’arrondit es pas definit que per los reals positius"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
 #: lib/number.vala:524 lib/number.vala:554
@@ -1048,10 +1043,8 @@ msgid "Logarithm of zero is undefined"
 msgstr "Lo logaritme de zèro es pas definit"
 
 #: lib/number.vala:652
-#, fuzzy
-#| msgid "Logarithm of zero is undefined"
 msgid "Logarithm with base 0 or 1 is undefined"
-msgstr "Lo logaritme de zèro es pas definit"
+msgstr "Lo logaritme de basa 0 o 1 es pas definit"
 
 #. TODO: Support factorial of complex numbers
 #: lib/number.vala:670
@@ -1060,10 +1053,8 @@ msgstr "La factoriala de nombres complèxes es pas presa en compte"
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
 #: lib/number.vala:677
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
 msgid "Factorial is undefined for negative integers"
-msgstr "La factoriala es pas definida que per los reals positius"
+msgstr "La factoriala es pas definida que per los entièrs negatius"
 
 #. Translators: Error displayed attempted to divide by zero
 #: lib/number.vala:728
@@ -2541,36 +2532,36 @@ msgid "Show release version"
 msgstr "Afichar las informacions de version"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:291
+#: src/gnome-calculator.vala:313
 #, c-format
 msgid "© 1986–%d The Calculator authors"
 msgstr "© 1986–%d Los autors de la calculadoira"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:297
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "Cédric Valmary <cvalmary@yahoo.fr>\n"
 "Quentin PAGÈS"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 msgid "Exchange Rate Data Providers"
 msgstr "Provesidors de taus d’escambi"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Donadas de taus d’escambi per %s"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Close All?"
 msgstr "Tot tampar ?"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Are you sure you want to close all open windows?"
 msgstr "Volètz vertadièrament tampar totas las fenèstras dubèrtas ?"
 
-#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/gnome-calculator.vala:332 src/ui/buttons-financial.blp:897
 #: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
 #: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
 #: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
@@ -2579,7 +2570,7 @@ msgstr "Volètz vertadièrament tampar totas las fenèstras dubèrtas ?"
 msgid "_Cancel"
 msgstr "A_nullar"
 
-#: src/gnome-calculator.vala:311
+#: src/gnome-calculator.vala:333
 msgid "Close _All"
 msgstr "Tot _tampar"
 
@@ -2619,7 +2610,7 @@ msgstr "Lo nom de foncion pòt pas començar per una chifra"
 msgid "Function name can only contain digits, letters and underscores"
 msgstr ""
 "Lo nom de la foncion pòt conténer sonque de chifras, de letras e de "
-"soslinhaments."
+"soslinhats"
 
 #: src/math-popover.vala:110
 msgid "Edit"
@@ -2685,7 +2676,7 @@ msgstr "Lo nom de variabla pòt pas començar per una chifra"
 msgid "Variable name can only contain digits, letters and underscores"
 msgstr ""
 "Lo nom de la variabla pòt conténer sonque de chifras, de letras e de "
-"soslinhaments."
+"soslinhats"
 
 #: src/math-window.vala:137
 msgid "Basic"
@@ -2783,7 +2774,7 @@ msgstr "Calcular lo resultat"
 #: src/ui/buttons-advanced.blp:483 src/ui/buttons-financial.blp:483
 #: src/ui/buttons-programming.blp:1888
 msgid "Inverse Modifier [Shift]"
-msgstr ""
+msgstr "Inversar lo modificador [Maj.]"
 
 #: src/ui/buttons-advanced.blp:720 src/ui/buttons-financial.blp:498
 #: src/ui/buttons-programming.blp:2085
@@ -2804,7 +2795,7 @@ msgstr "Exponent [^ o **]"
 #: src/ui/buttons-advanced.blp:782 src/ui/buttons-financial.blp:560
 #: src/ui/buttons-programming.blp:2147
 msgid "Nth Root"
-msgstr ""
+msgstr "Nen raiç"
 
 #: src/ui/buttons-advanced.blp:851 src/ui/buttons-financial.blp:585
 #: src/ui/buttons-programming.blp:2216
@@ -2814,11 +2805,11 @@ msgstr "Logaritme decimal"
 #: src/ui/buttons-advanced.blp:868 src/ui/buttons-financial.blp:602
 #: src/ui/buttons-programming.blp:2233
 msgid "Base-10 Exponential"
-msgstr ""
+msgstr "Exponencial basa 10"
 
 #: src/ui/buttons-advanced.blp:909 src/ui/buttons-financial.blp:643
 msgid "Natural Exponential"
-msgstr ""
+msgstr "Exponencial natural"
 
 #: src/ui/buttons-advanced.blp:999
 msgid "Inverse [Ctrl+I]"
@@ -2859,11 +2850,11 @@ msgstr "Retorn arrièr"
 
 #: src/ui/buttons-conversion.blp:510
 msgid "Degrees, Minutes, Seconds"
-msgstr ""
+msgstr "Graus, minutas, segondas"
 
 #: src/ui/buttons-conversion.blp:533
 msgid "Change Sign"
-msgstr ""
+msgstr "Modificar lo signe"
 
 #: src/ui/buttons-conversion.blp:544 src/ui/buttons-conversion.blp:569
 msgid "Exchange Rate Details"
