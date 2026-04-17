@@ -369,6 +369,8 @@ public class Number : GLib.Object
     {
         var z = new Number ();
         z.num.neg (num);
+        if (!is_complex ())
+            z.num.get_imag ().val.set_zero ();
         return z;
     }
 
