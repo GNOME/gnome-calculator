@@ -10,15 +10,15 @@
 # Hannie Dumoleyn <hannie@ubuntu-nl.org>, 2010–20, 2011, 2018.
 # Erwin Poeze <donnut@outlook.com>, 2013.
 # Reinout van Schouwen <reinouts@gnome.org>, 2013.
-# Nathan Follens <nfollens@gnome.org>, 2015-2025.
+# Nathan Follens <nfollens@gnome.org>, 2015-2026.
 # Justin van Steijn <jvs@fsfe.org>, 2017.
 # Philip Goto <philip.goto@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/issues\n"
-"POT-Creation-Date: 2025-09-09 17:08+0000\n"
-"PO-Revision-Date: 2025-09-13 00:39+0200\n"
+"POT-Creation-Date: 2026-04-17 15:16+0000\n"
+"PO-Revision-Date: 2026-04-19 20:01+0200\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
 "Language: nl\n"
@@ -26,10 +26,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/org.gnome.Calculator.desktop.in:2 data/org.gnome.Calculator.metainfo.xml.in:7
-#: src/gnome-calculator.vala:76 src/gnome-calculator.vala:284 src/ui/math-window.blp:118
+#: src/gnome-calculator.vala:76 src/gnome-calculator.vala:306 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "Rekenmachine"
 
@@ -74,11 +74,11 @@ msgstr ""
 #: data/org.gnome.Calculator.metainfo.xml.in:27
 msgid ""
 "Programming mode supports calculations using common bases (binary, octal, decimal, and "
-"hexadecimal), bitwise operations, ones’ and two’s complement, character to character code "
+"hexadecimal), bitwise operations, two’s complement, character to character code "
 "conversion, and more."
 msgstr ""
 "Programmeermodus ondersteunt conversie tussen algemene talstelsels (binair, octaal, "
-"decimaal en hexadecimaal), bitsgewijze bewerkingen, 1- en 2-complement, teken-naar-"
+"decimaal en hexadecimaal), bitsgewijze bewerkingen, 2-complement, teken-naar-"
 "tekencodeconversie en meer."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:32
@@ -113,7 +113,7 @@ msgid "Conversion Mode"
 msgstr "Conversiemodus"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "Het GNOME-project"
 
@@ -134,7 +134,7 @@ msgid "The size of the words used in bitwise operations"
 msgstr "De lengte van de gebruikte woorden in bitsgewijze operaties"
 
 #: data/org.gnome.calculator.gschema.xml:43
-msgid "Numeric Base"
+msgid "Numeric base"
 msgstr "Grondtal"
 
 #: data/org.gnome.calculator.gschema.xml:44
@@ -142,17 +142,15 @@ msgid "The numeric base"
 msgstr "Het grondtal"
 
 #: data/org.gnome.calculator.gschema.xml:48
-msgid "Show Thousands Separators"
-msgstr "Scheidingsteken voor duizendtallen tonen"
+msgid "Group digits"
+msgstr "Cijfers groeperen"
 
 #: data/org.gnome.calculator.gschema.xml:49
-msgid "Indicates whether thousands separators are shown in large numbers."
-msgstr ""
-"Geeft aan of in grote getallen scheidingstekens voor duizendtallen moeten worden "
-"weergegeven."
+msgid "Indicates whether digits are grouped in large numbers."
+msgstr "Geeft aan of in cijfers grote getallen gegroepeerd worden."
 
 #: data/org.gnome.calculator.gschema.xml:53
-msgid "Show Trailing Zeroes"
+msgid "Show trailing zeroes"
 msgstr "Achterliggende nullen tonen"
 
 #: data/org.gnome.calculator.gschema.xml:54
@@ -289,259 +287,262 @@ msgid "Argentine Peso"
 msgstr "Argentijnse peso"
 
 #: lib/currency.vala:84
+msgid "Armenian Dram"
+msgstr "Armeense dram"
+
+#: lib/currency.vala:85
 msgid "Australian Dollar"
 msgstr "Australische dollar"
 
-#: lib/currency.vala:85
+#: lib/currency.vala:86
 msgid "Bangladeshi Taka"
 msgstr "Bengaalse taka"
 
-#: lib/currency.vala:86
+#: lib/currency.vala:87
 msgid "Bulgarian Lev"
 msgstr "Bulgaarse lev"
 
-#: lib/currency.vala:87
+#: lib/currency.vala:88
 msgid "Bahraini Dinar"
 msgstr "Bahreinse dinar"
 
-#: lib/currency.vala:88
+#: lib/currency.vala:89
 msgid "Brunei Dollar"
 msgstr "Bruneise dollar"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:90
 msgid "Brazilian Real"
 msgstr "Braziliaanse real"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:91
 msgid "Botswana Pula"
 msgstr "Botswaanse pula"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:92
 msgid "Canadian Dollar"
 msgstr "Canadese dollar"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:93
 msgid "CFA Franc"
 msgstr "CFA-franc"
 
-#: lib/currency.vala:93
+#: lib/currency.vala:94
 msgid "Swiss Franc"
 msgstr "Zwitserse frank"
 
-#: lib/currency.vala:94
+#: lib/currency.vala:95
 msgid "Chilean Peso"
 msgstr "Chileense peso"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:96
 msgid "Chinese Yuan"
 msgstr "Chinese yuan"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:97
 msgid "Colombian Peso"
 msgstr "Colombiaanse peso"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:98
 msgid "Czech Koruna"
 msgstr "Tsjechische kroon"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:99
 msgid "Danish Krone"
 msgstr "Deense kroon"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:100
 msgid "Algerian Dinar"
 msgstr "Algerijnse dinar"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:101
 msgid "Estonian Kroon"
 msgstr "Estlandse kroon"
 
-#: lib/currency.vala:101
+#: lib/currency.vala:102
 msgid "Egyptian Pound"
 msgstr "Egyptisch pond"
 
-#: lib/currency.vala:102
+#: lib/currency.vala:103
 msgid "Euro"
 msgstr "Euro"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:104
 msgid "British Pound Sterling"
 msgstr "Britse pond sterling"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:105
 msgid "Hong Kong Dollar"
 msgstr "Hongkongse dollar"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:106
 msgid "Croatian Kuna"
 msgstr "Kroatische kuna"
 
-#: lib/currency.vala:106
+#: lib/currency.vala:107
 msgid "Hungarian Forint"
 msgstr "Hongaarse forint"
 
-#: lib/currency.vala:107
+#: lib/currency.vala:108
 msgid "Indonesian Rupiah"
 msgstr "Indonesische rupiah"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:109
 msgid "Israeli New Shekel"
 msgstr "Israëlische new shekel"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:110
 msgid "Indian Rupee"
 msgstr "Indiase roepie"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:111
 msgid "Iranian Rial"
 msgstr "Iraanse rial"
 
-#: lib/currency.vala:111
+#: lib/currency.vala:112
 msgid "Icelandic Krona"
 msgstr "IJslandse kroon"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:113
 msgid "Japanese Yen"
 msgstr "Japanse yen"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:114
 msgid "Jamaican Dollar"
 msgstr "Jamaicaanse dollar"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:115
 msgid "South Korean Won"
 msgstr "Zuid-Koreaanse won"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:116
 msgid "Kuwaiti Dinar"
 msgstr "Koeweitse dinar"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:117
 msgid "Kazakhstani Tenge"
 msgstr "Kazachstaanse tenge"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:118
 msgid "Sri Lankan Rupee"
 msgstr "Srilankaanse roepie"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:119
 msgid "Libyan Dinar"
 msgstr "Libische dinar"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:120
 msgid "Mauritian Rupee"
 msgstr "Mauritiaanse roepie"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:121
 msgid "Mexican Peso"
 msgstr "Mexicaanse peso"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:122
 msgid "Malaysian Ringgit"
 msgstr "Maleisische ringgit"
 
-#: lib/currency.vala:122
+#: lib/currency.vala:123
 msgid "Nigerian Naira"
 msgstr "Nigeriaanse naira"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:124
 msgid "Norwegian Krone"
 msgstr "Noorse kroon"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:125
 msgid "Nepalese Rupee"
 msgstr "Nepalese rupee"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:126
 msgid "New Zealand Dollar"
 msgstr "Nieuw-Zeelandse dollar"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:127
 msgid "Omani Rial"
 msgstr "Omaanse rial"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:128
 msgid "Peruvian Nuevo Sol"
 msgstr "Peruaanse nuevo sol"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:129
 msgid "Philippine Peso"
 msgstr "Filipijnse peso"
 
-#: lib/currency.vala:129
+#: lib/currency.vala:130
 msgid "Pakistani Rupee"
 msgstr "Pakistaanse roepie"
 
-#: lib/currency.vala:130
-#| msgid "Polish Zloty"
+#: lib/currency.vala:131
 msgid "Polish Złoty"
 msgstr "Poolse złoty"
 
-#: lib/currency.vala:131
+#: lib/currency.vala:132
 msgid "Qatari Riyal"
 msgstr "Qatarese rial"
 
-#: lib/currency.vala:132
+#: lib/currency.vala:133
 msgid "New Romanian Leu"
 msgstr "Nieuwe Roemeense leu"
 
-#: lib/currency.vala:133
+#: lib/currency.vala:134
 msgid "Russian Ruble"
 msgstr "Russische roebel"
 
-#: lib/currency.vala:134
+#: lib/currency.vala:135
 msgid "Saudi Riyal"
 msgstr "Saoedische riyal"
 
-#: lib/currency.vala:135
+#: lib/currency.vala:136
 msgid "Serbian Dinar"
 msgstr "Servische dinar"
 
-#: lib/currency.vala:136
+#: lib/currency.vala:137
 msgid "Swedish Krona"
 msgstr "Zweedse kroon"
 
-#: lib/currency.vala:137
+#: lib/currency.vala:138
 msgid "Singapore Dollar"
 msgstr "Singaporese dollar"
 
-#: lib/currency.vala:138
+#: lib/currency.vala:139
 msgid "Thai Baht"
 msgstr "Thaise baht"
 
-#: lib/currency.vala:139
+#: lib/currency.vala:140
 msgid "Tunisian Dinar"
 msgstr "Tunesische dinar"
 
-#: lib/currency.vala:140
+#: lib/currency.vala:141
 msgid "Turkish Lira"
 msgstr "Turkse lira"
 
-#: lib/currency.vala:141
+#: lib/currency.vala:142
 msgid "T&T Dollar"
 msgstr "Trinidad en Tobago dollar"
 
-#: lib/currency.vala:142
+#: lib/currency.vala:143
 msgid "New Taiwan Dollar"
 msgstr "Nieuwe Taiwanese dollar"
 
-#: lib/currency.vala:143
+#: lib/currency.vala:144
 msgid "Ukrainian Hryvnia"
 msgstr "Oekraïense hryvnia"
 
-#: lib/currency.vala:144
+#: lib/currency.vala:145
 msgid "US Dollar"
 msgstr "VS-dollar"
 
-#: lib/currency.vala:145
+#: lib/currency.vala:146
 msgid "Uruguayan Peso"
 msgstr "Uruguayaanse peso"
 
-#: lib/currency.vala:146
+#: lib/currency.vala:147
 msgid "Vietnamese Dong"
 msgstr "Vietnamese dong"
 
-#: lib/currency.vala:147
+#: lib/currency.vala:148
 msgid "South African Rand"
 msgstr "Zuid-Afrikaanse rand"
 
@@ -576,7 +577,7 @@ msgstr "tot"
 msgid "Function “%s” is missing arguments"
 msgstr "Parameters ontbreken bij functie ‘%s’"
 
-#: lib/equation-parser.vala:765 lib/number.vala:568
+#: lib/equation-parser.vala:765 lib/number.vala:588
 msgid "The zeroth root of a number is undefined"
 msgstr "De nulde wortel van een getal is niet gedefinieerd"
 
@@ -593,8 +594,6 @@ msgid "Pi"
 msgstr "Pi"
 
 #: lib/equation-parser.vala:1063
-#| msgctxt "unit-symbols"
-#| msgid "au"
 msgid "Tau"
 msgstr "Tau"
 
@@ -703,15 +702,15 @@ msgstr "Cosinus"
 msgid "Tangent"
 msgstr "Tangens"
 
-#: lib/function-manager.vala:30 lib/function-manager.vala:115 src/ui/buttons-advanced.blp:517
+#: lib/function-manager.vala:30 lib/function-manager.vala:114 src/ui/buttons-advanced.blp:517
 msgid "Inverse Sine"
 msgstr "Omgekeerde sinus"
 
-#: lib/function-manager.vala:31 lib/function-manager.vala:116 src/ui/buttons-advanced.blp:591
+#: lib/function-manager.vala:31 lib/function-manager.vala:115 src/ui/buttons-advanced.blp:591
 msgid "Inverse Cosine"
 msgstr "Omgekeerde cosinus"
 
-#: lib/function-manager.vala:32 lib/function-manager.vala:117 src/ui/buttons-advanced.blp:665
+#: lib/function-manager.vala:32 lib/function-manager.vala:116 src/ui/buttons-advanced.blp:665
 msgid "Inverse Tangent"
 msgstr "Omgekeerde tangens"
 
@@ -727,20 +726,19 @@ msgstr "Hyperbolische cosinus"
 msgid "Hyperbolic Tangent"
 msgstr "Hyperbolische tangens"
 
-#: lib/function-manager.vala:36 lib/function-manager.vala:118 src/ui/buttons-advanced.blp:554
+#: lib/function-manager.vala:36 lib/function-manager.vala:117 src/ui/buttons-advanced.blp:554
 msgid "Inverse Hyperbolic Sine"
 msgstr "Omgekeerde hyperbolische sinus"
 
-#: lib/function-manager.vala:37 lib/function-manager.vala:119 src/ui/buttons-advanced.blp:628
+#: lib/function-manager.vala:37 lib/function-manager.vala:118 src/ui/buttons-advanced.blp:628
 msgid "Inverse Hyperbolic Cosine"
 msgstr "Omgekeerde hyperbolische cosinus"
 
-#: lib/function-manager.vala:38 lib/function-manager.vala:120 src/ui/buttons-advanced.blp:702
+#: lib/function-manager.vala:38 lib/function-manager.vala:119 src/ui/buttons-advanced.blp:702
 msgid "Inverse Hyperbolic Tangent"
 msgstr "Omgekeerde hyperbolische tangens"
 
 #: lib/function-manager.vala:40
-#| msgid "Complex Argument"
 msgid "Complex"
 msgstr "Complex"
 
@@ -765,156 +763,152 @@ msgid "Programming"
 msgstr "Programmeren"
 
 #: lib/function-manager.vala:47 src/ui/buttons-programming.blp:2297
-msgid "Ones’ Complement"
-msgstr "1-complement"
-
-#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
 msgid "Two’s Complement"
 msgstr "2-complement"
 
-#: lib/function-manager.vala:49
+#: lib/function-manager.vala:48 src/ui/buttons-programming.blp:2314
 msgid "Swap Endianness"
 msgstr "Endianness wisselen"
 
-#: lib/function-manager.vala:50 src/ui/buttons-advanced.blp:403 src/ui/buttons-basic.blp:348
+#: lib/function-manager.vala:49 src/ui/buttons-advanced.blp:403 src/ui/buttons-basic.blp:348
 #: src/ui/buttons-financial.blp:403 src/ui/buttons-programming.blp:1808
 msgid "Modulus Divide"
 msgstr "Modulair delen"
 
-#: lib/function-manager.vala:51
+#: lib/function-manager.vala:50
 msgid "Modular Exponentiation"
 msgstr "Modulaire exponentiatie"
 
-#: lib/function-manager.vala:53
+#: lib/function-manager.vala:52
 msgid "Rounding"
 msgstr "Afronding"
 
-#: lib/function-manager.vala:54
+#: lib/function-manager.vala:53
 msgid "Round"
 msgstr "Rond"
 
-#: lib/function-manager.vala:55
+#: lib/function-manager.vala:54
 msgid "Floor"
 msgstr "Floor"
 
-#: lib/function-manager.vala:56
+#: lib/function-manager.vala:55
 msgid "Ceiling"
 msgstr "Ceiling"
 
-#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2331
+#: lib/function-manager.vala:56 src/ui/buttons-programming.blp:2331
 msgid "Integer Component"
 msgstr "Gehele deel"
 
-#: lib/function-manager.vala:58 src/ui/buttons-programming.blp:2348
+#: lib/function-manager.vala:57 src/ui/buttons-programming.blp:2348
 msgid "Fractional Component"
 msgstr "Fractie"
 
-#: lib/function-manager.vala:60
+#: lib/function-manager.vala:59
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: lib/function-manager.vala:61
+#: lib/function-manager.vala:60
 msgid "Sum"
 msgstr "Som"
 
-#: lib/function-manager.vala:62
+#: lib/function-manager.vala:61
 msgid "Sum of Squares"
 msgstr "Kwadratensom"
 
-#: lib/function-manager.vala:63
+#: lib/function-manager.vala:62
 msgid "Average"
 msgstr "Gemiddelde"
 
-#: lib/function-manager.vala:64
+#: lib/function-manager.vala:63
 msgid "Median"
 msgstr "Mediaan"
 
-#: lib/function-manager.vala:65
+#: lib/function-manager.vala:64
 msgid "Minimum Value"
 msgstr "Minimale waarde"
 
-#: lib/function-manager.vala:66
+#: lib/function-manager.vala:65
 msgid "Maximum Value"
 msgstr "Maximale waarde"
 
-#: lib/function-manager.vala:67
+#: lib/function-manager.vala:66
 msgid "Sample Standard Deviation"
 msgstr "Steekproefstandaardafwijking"
 
-#: lib/function-manager.vala:68
+#: lib/function-manager.vala:67
 msgid "Population Standard Deviation"
 msgstr "Populatiestandaardafwijking"
 
-#: lib/function-manager.vala:69
+#: lib/function-manager.vala:68
 msgid "Sample Variance"
 msgstr "Steekproefvariantie"
 
-#: lib/function-manager.vala:70
+#: lib/function-manager.vala:69
 msgid "Population Variance"
 msgstr "Populatievariantie"
 
-#: lib/function-manager.vala:72
+#: lib/function-manager.vala:71
 msgid "Sundry"
 msgstr "Allerlei"
 
-#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:806
+#: lib/function-manager.vala:72 src/ui/buttons-advanced.blp:806
 #: src/ui/buttons-programming.blp:2171
 msgid "Logarithm"
 msgstr "Logaritme"
 
-#: lib/function-manager.vala:74 src/ui/buttons-advanced.blp:892
+#: lib/function-manager.vala:73 src/ui/buttons-advanced.blp:892
 #: src/ui/buttons-financial.blp:626
 msgid "Natural Logarithm"
 msgstr "Natuurlijke logaritme"
 
-#: lib/function-manager.vala:75
+#: lib/function-manager.vala:74
 msgid "Square Root"
 msgstr "Vierkantswortel"
 
-#: lib/function-manager.vala:76
+#: lib/function-manager.vala:75
 msgid "Absolute Value"
 msgstr "Absolute waarde"
 
-#: lib/function-manager.vala:77
+#: lib/function-manager.vala:76
 msgid "Signum"
 msgstr "Signum"
 
-#: lib/function-manager.vala:78
+#: lib/function-manager.vala:77
 msgid "Combination"
 msgstr "Combinatie"
 
-#: lib/function-manager.vala:79
+#: lib/function-manager.vala:78
 msgid "Permutation"
 msgstr "Permutatie"
 
-#: lib/function-manager.vala:80
+#: lib/function-manager.vala:79
 msgid "Greatest Common Divisor"
 msgstr "Grootste gemene deler"
 
-#: lib/function-manager.vala:81
+#: lib/function-manager.vala:80
 msgid "Least Common Multiple"
 msgstr "Kleinste gemene veelvoud"
 
-#: lib/function-manager.vala:82
+#: lib/function-manager.vala:81
 msgid "Comparison (Kronecker Delta)"
 msgstr "Vergelijking (Kronecker Delta)"
 
-#: lib/function-manager.vala:337
+#: lib/function-manager.vala:336
 #, c-format
 msgid "Function “%s” takes 1 argument"
 msgstr "Functie ‘%s’ gebruikt 1 parameter"
 
-#: lib/function-manager.vala:355
+#: lib/function-manager.vala:354
 #, c-format
 msgid "Function “%s” takes 1 or 2 arguments"
 msgstr "Functie ‘%s’ gebruikt 1 of 2 parameters"
 
-#: lib/function-manager.vala:363
+#: lib/function-manager.vala:362
 #, c-format
 msgid "Function “%s” takes at least 2 arguments"
 msgstr "Functie ‘%s’ gebruikt minstens 2 parameters"
 
-#: lib/function-manager.vala:370
+#: lib/function-manager.vala:369
 #, c-format
 msgid "Function “%s” takes %d argument"
 msgid_plural "Function “%s” takes %d arguments"
@@ -928,252 +922,252 @@ msgstr "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F"
 
 # herstelhistorie
 #. Error shown when trying to undo with no undo history
-#: lib/math-equation.vala:554
+#: lib/math-equation.vala:558
 msgid "No undo history"
 msgstr "Herstelgeschiedenis leeg"
 
 #. Error shown when trying to redo with no redo history
-#: lib/math-equation.vala:575
+#: lib/math-equation.vala:579
 msgid "No redo history"
 msgstr "Geen geschiedenis om te herhalen"
 
-#: lib/math-equation.vala:822
+#: lib/math-equation.vala:826
 msgid "No sane value to store"
 msgstr "Geen geldige waarde om op te slaan"
 
 #. Error displayed to user when they an unknown variable is entered
-#: lib/math-equation.vala:1281
+#: lib/math-equation.vala:1286
 #, c-format
 msgid "Unknown variable “%s”"
 msgstr "Onbekende variable “%s”"
 
 #. Error displayed to user when a currency conversion with unknown exchange rate is attempted
-#: lib/math-equation.vala:1288
+#: lib/math-equation.vala:1293
 #, c-format
 msgid "Exchange rate for “%s” is not available"
 msgstr "Wisselkoers voor ‘%s’ is niet beschikbaar"
 
 #. Error displayed to user when an conversion with unknown units is attempted
-#: lib/math-equation.vala:1295
+#: lib/math-equation.vala:1300
 #, c-format
 msgid "Unknown unit “%s”"
 msgstr "Onbekende eenheid ‘%s’"
 
 #. Error displayed to user when an unknown function is entered
-#: lib/math-equation.vala:1302
+#: lib/math-equation.vala:1307
 #, c-format
 msgid "Function “%s” is not defined"
 msgstr "Functie “%s” is niet gedefinieerd"
 
 #. Error displayed to user when an invalid conversion (e.g. units of different categories)
-#: lib/math-equation.vala:1309
+#: lib/math-equation.vala:1314
 msgid "Unknown conversion"
 msgstr "Onbekende conversie"
 
 #. should always be run
-#: lib/math-equation.vala:1319
+#: lib/math-equation.vala:1324
 #, c-format
 msgid "%s"
 msgstr "%s"
 
 #. Unknown error.
 #. Error displayed to user when they enter an invalid calculation
-#: lib/math-equation.vala:1324 lib/math-equation.vala:1329
+#: lib/math-equation.vala:1329 lib/math-equation.vala:1334
 msgid "Malformed expression"
 msgstr "Ongeldige uitdrukking"
 
-#: lib/math-equation.vala:1340
+#: lib/math-equation.vala:1345
 msgid "Calculating"
 msgstr "Uitrekenen"
 
 #. Error displayed when trying to factorize a non-integer value
-#: lib/math-equation.vala:1562
+#: lib/math-equation.vala:1567
 msgid "Need an integer to factorize"
 msgstr "Geheel getal nodig om te kunnen ontbinden"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:306
+#: lib/number.vala:324
 msgid "Underflow error"
 msgstr "Underflow-fout"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:311
+#: lib/number.vala:329
 msgid "Overflow error"
 msgstr "Overflow-fout"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:372
+#: lib/number.vala:392
 msgid "Argument not defined for zero"
 msgstr "Argument niet gedefinieerd voor nulwaarde"
 
-#: lib/number.vala:442
+#: lib/number.vala:462
 msgid "Floor is only defined for real numbers"
 msgstr "Floor is alleen gedefinieerd voor reële getallen"
 
-#: lib/number.vala:457
+#: lib/number.vala:477
 msgid "Ceiling is only defined for real numbers"
 msgstr "Ceiling is alleen gedefinieerd voor reële getallen"
 
-#: lib/number.vala:472
+#: lib/number.vala:492
 msgid "Round is only defined for real numbers"
 msgstr "Afronden is alleen gedefinieerd voor reële getallen"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:506 lib/number.vala:536
+#: lib/number.vala:526 lib/number.vala:556
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Nul tot een negatieve macht verheffen is niet gedefinieerd"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:514 lib/number.vala:544
+#: lib/number.vala:534 lib/number.vala:564
 msgid "Zero raised to zero is undefined"
 msgstr "Nul verhoogd tot nul is niet gedefinieerd"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:598 lib/number.vala:629
+#: lib/number.vala:618 lib/number.vala:649
 msgid "Logarithm of zero is undefined"
 msgstr "Logaritme van nul is niet gedefinieerd"
 
-#: lib/number.vala:634
+#: lib/number.vala:654
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "Logaritme met grondtal 0 of 1 is niet gedefinieerd"
 
-#. Translators: Error displayed when attempted take the factorial of a negative or complex number
-#: lib/number.vala:653
-msgid "Factorial is only defined for non-negative real numbers"
-msgstr "Faculteit is alleen gedefinieerd voor niet-negatieve, reële getallen"
+#. TODO: Support factorial of complex numbers
+#: lib/number.vala:672
+msgid "Factorial of complex numbers is not supported"
+msgstr "Faculteit wordt niet ondersteund voor complexe getallen"
+
+#. Translators: Error displayed when attempted take the factorial of a negative integer
+#: lib/number.vala:679
+msgid "Factorial is undefined for negative integers"
+msgstr "Faculteit is niet gedefinieerd voor negatieve gehele getallen"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:704
+#: lib/number.vala:730
 msgid "Division by zero is undefined"
 msgstr "Deling door nul is niet gedefinieerd"
 
-#. Translators: Error displayed when attemping to do a modulus division on non-integer numbers
-#: lib/number.vala:725
-msgid "Modulus division is only defined for integers"
-msgstr "Modulair delen is alleen gedefinieerd voor gehele getallen"
+#. Translators: Error displayed when attempting to do a modulus division on complex numbers
+#: lib/number.vala:751
+msgid "Modulus division is only defined for real numbers"
+msgstr "Modulair delen is alleen gedefinieerd voor reële getallen"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:805
+#: lib/number.vala:831
 msgid "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "Tangens is niet gedefinieerd voor hoeken die een veelvoud van π (180°) verschillen met π∕2 "
 "(90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:824
+#: lib/number.vala:850
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Arcsinus is niet gedefinieerd voor waarden buiten [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:841
+#: lib/number.vala:867
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Arccosinus is niet gedefinieerd voor waarden buiten [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:859
+#: lib/number.vala:885
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "De omgekeerde tangens is niet gedefinieerd voor waarden i en -i"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:910
+#: lib/number.vala:936
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "Omgekeerde hyperbolische cosinus is niet gedefinieerd voor waarden onder de één"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:926
+#: lib/number.vala:952
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "Hyperbolische arctangens is niet gedefinieerd voor waarden buiten [-1, 1]"
 
-#. Translators: Error displayed when boolean AND attempted on non-integer values
-#: lib/number.vala:941
-msgid "Boolean AND is only defined for non-negative integers"
-msgstr "Booleaanse AND is alleen gedefinieerd voor niet-negatieve gehele getallen"
-
-#. Translators: Error displayed when boolean NAND attempted on non-integer values
-#: lib/number.vala:954
-msgid "Boolean NAND is only defined for non-negative integers"
-msgstr "Booleaanse NAND is alleen gedefinieerd voor niet-negatieve gehele getallen"
-
-#. Translators: Error displayed when boolean OR attempted on non-integer values
+#. Translators: Error displayed when bitwise AND attempted on non-integer values
 #: lib/number.vala:967
-msgid "Boolean OR is only defined for non-negative integers"
-msgstr "Booleaanse OR is alleen gedefinieerd voor niet-negatieve gehele getallen"
+msgid "Bitwise AND is only defined for non-negative integers"
+msgstr "Bitsgewijze AND is alleen gedefinieerd voor niet-negatieve gehele getallen"
 
-#. Translators: Error displayed when boolean NOR attempted on non-integer values
+#. Translators: Error displayed when bitwise NAND attempted on non-integer values
 #: lib/number.vala:980
-msgid "Boolean NOR is only defined for non-negative integers"
-msgstr "Booleaanse NOR is alleen gedefinieerd voor niet-negatieve gehele getallen"
+msgid "Bitwise NAND is only defined for non-negative integers"
+msgstr "Bitsgewijze NAND is alleen gedefinieerd voor niet-negatieve gehele getallen"
 
-#. Translators: Error displayed when boolean XOR attempted on non-integer values
+#. Translators: Error displayed when bitwise OR attempted on non-integer values
 #: lib/number.vala:993
-msgid "Boolean XOR is only defined for non-negative integers"
-msgstr "Booleaanse XOR is alleen gedefinieerd voor niet-negatieve gehele getallen"
+msgid "Bitwise OR is only defined for non-negative integers"
+msgstr "Bitsgewijze OR is alleen gedefinieerd voor niet-negatieve gehele getallen"
 
-#. Translators: Error displayed when boolean XNOR attempted on non-integer values
+#. Translators: Error displayed when bitwise NOR attempted on non-integer values
 #: lib/number.vala:1006
-msgid "Boolean XNOR is only defined for non-negative integers"
-msgstr "Booleaanse XNOR is alleen gedefinieerd voor niet-negatieve gehele getallen"
+msgid "Bitwise NOR is only defined for non-negative integers"
+msgstr "Bitsgewijze NOR is alleen gedefinieerd voor niet-negatieve gehele getallen"
 
-#. Translators: Error displayed when boolean NOT attempted on non-integer values
+#. Translators: Error displayed when bitwise XOR attempted on non-integer values
 #: lib/number.vala:1019
-msgid "Boolean NOT is only defined for non-negative integers"
-msgstr "Booleaanse NOT is alleen gedefinieerd voor niet-negatieve gehele getallen"
+msgid "Bitwise XOR is only defined for non-negative integers"
+msgstr "Bitsgewijze XOR is alleen gedefinieerd voor niet-negatieve gehele getallen"
+
+#. Translators: Error displayed when bitwise XNOR attempted on non-integer values
+#: lib/number.vala:1032
+msgid "Bitwise XNOR is only defined for non-negative integers"
+msgstr "Bitsgewijze XNOR is alleen gedefinieerd voor niet-negatieve gehele getallen"
+
+#. Translators: Error displayed when bitwise NOT attempted on non-integer values
+#: lib/number.vala:1045
+msgid "Bitwise NOT is only defined for non-negative integers"
+msgstr "Bitsgewijze NOT is alleen gedefinieerd voor niet-negatieve gehele getallen"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:1081
+#: lib/number.vala:1107
 msgid "Shift is only possible on integers"
 msgstr "Shift is alleen mogelijk op gehele getallen"
 
-#: lib/number.vala:1086 lib/number.vala:1126 lib/number.vala:1572
+#: lib/number.vala:1112 lib/number.vala:1140 lib/number.vala:1586
 msgid "Overflow. Try a bigger word size"
 msgstr "Overloop. Probeer een groter formaat woord"
 
-#: lib/number.vala:1097
-msgid "Ones’ complement is only defined for non-negative integers"
-msgstr "1-complement is alleen gedefinieerd voor niet-negatieve gehele getallen"
-
-#: lib/number.vala:1109
+#: lib/number.vala:1123
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "2-complement is alleen gedefinieerd voor niet-negatieve gehele getallen"
 
-#: lib/number.vala:1121
+#: lib/number.vala:1135
 msgid "Swap endianness is only possible on integers"
 msgstr "Endianness wisselen is alleen mogelijk op gehele getallen"
 
-#: lib/number.vala:1149
+#: lib/number.vala:1163
 msgid "Combination is only defined for non-negative integers"
 msgstr "Combinatie is alleen gedefinieerd voor niet-negatieve gehele getallen"
 
-#: lib/number.vala:1154
+#: lib/number.vala:1168
 msgid "Combination is undefined if n is less than r"
 msgstr "Combinatie is niet gedefinieerd als n kleiner is dan r"
 
-#: lib/number.vala:1167
-#| msgid "Factorial is only defined for non-negative real numbers"
+#: lib/number.vala:1181
 msgid "Permutation is only defined for non-negative integers"
 msgstr "Permutatie is alleen gedefinieerd voor niet-negatieve gehele getallen"
 
-#: lib/number.vala:1172
+#: lib/number.vala:1186
 msgid "Permutation is undefined if n is less than r"
 msgstr "Permutatie is niet gedefinieerd als n kleiner is dan r"
 
-#: lib/number.vala:1193
+#: lib/number.vala:1207
 msgid "Greatest common divisor is only defined for integers"
 msgstr "Grootste gemene deler is alleen gedefinieerd voor gehele getallen"
 
-#: lib/number.vala:1213
+#: lib/number.vala:1227
 msgid "Least common multiple is only defined for integers"
 msgstr "Kleinste gemene veelvoud is alleen gedefinieerd voor gehele getallen"
 
-#: lib/number.vala:1270
+#: lib/number.vala:1284
 msgid "Median is only defined for real numbers"
 msgstr "Mediaan is alleen gedefinieerd voor reële getallen"
 
-#: lib/number.vala:1290
+#: lib/number.vala:1304
 msgid "Minimum value is only defined for real numbers"
 msgstr "Minimale waarde is alleen gedefinieerd voor reële getallen"
 
-#: lib/number.vala:1307
+#: lib/number.vala:1321
 msgid "Maximum value is only defined for real numbers"
 msgstr "Maximale waarde is alleen gedefinieerd voor reële getallen"
 
@@ -1193,7 +1187,7 @@ msgstr "Internationaal Monetair Fonds"
 msgid "United Nations Treasury"
 msgstr "Schatkist van de Verenigde Naties"
 
-#: lib/serializer.vala:354 lib/serializer.vala:391
+#: lib/serializer.vala:359 lib/serializer.vala:397
 msgid "The result is too long to display in fixed format. Try other result formats"
 msgstr ""
 "Het resultaat is te lang om in vaste notatie weer te geven. Probeer andere "
@@ -1509,8 +1503,6 @@ msgid "Square Miles"
 msgstr "Vierkante mijl"
 
 #: lib/unit.vala:72
-#| msgctxt "unit-symbols"
-#| msgid "m²"
 msgctxt "unit-symbols"
 msgid "mi²"
 msgstr "mi²"
@@ -1529,8 +1521,6 @@ msgid "Square Kilometers"
 msgstr "Vierkante kilometer"
 
 #: lib/unit.vala:74
-#| msgctxt "unit-symbols"
-#| msgid "m²"
 msgctxt "unit-symbols"
 msgid "km²"
 msgstr "km²"
@@ -1576,8 +1566,6 @@ msgid "British Gallons"
 msgstr "Gallon (VK)"
 
 #: lib/unit.vala:79
-#| msgctxt "unit-symbols"
-#| msgid "gallon,gallons,gal"
 msgctxt "unit-symbols"
 msgid "imp_gallon,imp_gallons,imp_gal"
 msgstr "imp_gallon,imp_gallons,imp_gal"
@@ -1614,8 +1602,6 @@ msgid "British Pints"
 msgstr "Britse pint"
 
 #: lib/unit.vala:83
-#| msgctxt "unit-symbols"
-#| msgid "pint,pints,pt"
 msgctxt "unit-symbols"
 msgid "imp_pint,imp_pints,imp_pt"
 msgstr "imp_pint,imp_pints,imp_pt"
@@ -1715,8 +1701,6 @@ msgid "Milligrams"
 msgstr "Milligram"
 
 #: lib/unit.vala:94
-#| msgctxt "unit-symbols"
-#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgctxt "unit-symbols"
 msgid "milligram,milligrams,milligramme,milligrammes,mg"
 msgstr "milligram,milligrams,milligramme,milligrammes,mg"
@@ -1726,8 +1710,6 @@ msgid "Micrograms"
 msgstr "Microgram"
 
 #: lib/unit.vala:95
-#| msgctxt "unit-symbols"
-#| msgid "kilogram,kilograms,kilogramme,kilogrammes,kg,kgs"
 msgctxt "unit-symbols"
 msgid "microgram,micrograms,microgramme,microgrammes,μg,ug"
 msgstr "microgram,micrograms,microgramme,microgrammes,μg,ug"
@@ -1855,8 +1837,6 @@ msgid "Celsius"
 msgstr "Celsius"
 
 #: lib/unit.vala:109
-#| msgctxt "unit-symbols"
-#| msgid "degC,˚C,C,c,Celsius,celsius"
 msgctxt "unit-symbols"
 msgid "degC,°C,˚C,C,c,Celsius,celsius"
 msgstr "degC,°C,˚C,C,c,Celsius,celsius"
@@ -1866,8 +1846,6 @@ msgid "Fahrenheit"
 msgstr "Fahrenheit"
 
 #: lib/unit.vala:110
-#| msgctxt "unit-symbols"
-#| msgid "degF,˚F,F,f,Fahrenheit,fahrenheit"
 msgctxt "unit-symbols"
 msgid "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
 msgstr "degF,°F,˚F,F,f,Fahrenheit,fahrenheit"
@@ -1886,8 +1864,6 @@ msgid "Rankine"
 msgstr "Rankine"
 
 #: lib/unit.vala:112
-#| msgctxt "unit-symbols"
-#| msgid "degR,˚R,˚Ra,r,R,Rankine,rankine"
 msgctxt "unit-symbols"
 msgid "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
 msgstr "degR,°R,˚R,°Ra,˚Ra,r,R,Rankine,rankine"
@@ -2313,8 +2289,6 @@ msgid "Kilocalories"
 msgstr "Kilocalorieën"
 
 #: lib/unit.vala:161
-#| msgctxt "unit-symbols"
-#| msgid "calories,calorie,cal"
 msgctxt "unit-symbols"
 msgid "kilocalories,kilocalorie,kcal"
 msgstr "kilocalories,kilocalorie,kilocalorieën,kcal"
@@ -2494,14 +2468,14 @@ msgid "Show release version"
 msgstr "Uitgaveversie tonen"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:291
+#: src/gnome-calculator.vala:313
 #, c-format
 msgid "© 1986–%d The Calculator authors"
 msgstr "© 1986–%d De auteurs van Rekenmachine"
 
 # Deze indeling werkt niet zo goed met het nieuwe over-venster. Ik heb de lege regels weggehaald, maar de tussenkopjes ogen wat vreemd.
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:297
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "Wouter Bolsterlee\n"
@@ -2545,24 +2519,24 @@ msgstr ""
 "koen noens https://launchpad.net/~knpa01\n"
 "rob https://launchpad.net/~rvdb"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 msgid "Exchange Rate Data Providers"
 msgstr "Wisselkoersgegevensleveranciers"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Wisselkoersgegevens door %s"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Close All?"
 msgstr "Alles sluiten?"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Are you sure you want to close all open windows?"
 msgstr "Weet u zeker dat u alle geopende vensters wilt sluiten?"
 
-#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/gnome-calculator.vala:332 src/ui/buttons-financial.blp:897
 #: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
 #: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
 #: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
@@ -2571,7 +2545,7 @@ msgstr "Weet u zeker dat u alle geopende vensters wilt sluiten?"
 msgid "_Cancel"
 msgstr "_Annuleren"
 
-#: src/gnome-calculator.vala:311
+#: src/gnome-calculator.vala:333
 msgid "Close _All"
 msgstr "_Alles sluiten"
 
@@ -2781,7 +2755,6 @@ msgstr "Kwadrateren [Ctrl+2]"
 
 #: src/ui/buttons-advanced.blp:742 src/ui/buttons-financial.blp:520
 #: src/ui/buttons-programming.blp:2107
-#| msgid "Square root [Ctrl+R]"
 msgid "Square Root [Ctrl+R]"
 msgstr "Vierkantswortel [Ctrl+R]"
 
@@ -2815,12 +2788,10 @@ msgid "Inverse [Ctrl+I]"
 msgstr "Omgekeerde waarde [Ctrl+I]"
 
 #: src/ui/buttons-advanced.blp:1020
-#| msgid "Round"
 msgid "Round [[]]"
 msgstr "Afronden [[]]"
 
 #: src/ui/buttons-advanced.blp:1041 src/ui/buttons-programming.blp:2406
-#| msgid "Absolute Value [|]"
 msgid "Absolute Value [||]"
 msgstr "Absolute waarde [||]"
 
@@ -3237,7 +3208,6 @@ msgid "Base-2 Exponential"
 msgstr "2-de-machtsverheffing"
 
 #: src/ui/buttons-programming.blp:2364
-#| msgid "Pi [Ctrl+P]"
 msgid "Ceiling [Ctrl+[]]"
 msgstr "Ceiling [Ctrl+[]]"
 
@@ -3344,8 +3314,8 @@ msgid "Trailing _Zeroes"
 msgstr "Achterliggende _nullen"
 
 #: src/ui/math-preferences.blp:62
-msgid "_Thousands Separators"
-msgstr "Scheidings_tekens voor duizendtallen"
+msgid "_Group Digits"
+msgstr "Cijfers _groeperen"
 
 #: src/ui/math-preferences.blp:67
 msgid "_Angle Units"
@@ -3500,8 +3470,6 @@ msgid "Keyboard Entry"
 msgstr "Toetsenbordinvoer"
 
 #: src/ui/math-shortcuts.blp:116
-#| msgctxt "shortcut window"
-#| msgid "Multiply (×)"
 msgctxt "shortcuts dialog"
 msgid "Multiply (×)"
 msgstr "Vermenigvuldigen (×)"
@@ -3522,15 +3490,11 @@ msgid "Square Root (√)"
 msgstr "Vierkantswortel (√)"
 
 #: src/ui/math-shortcuts.blp:136
-#| msgctxt "shortcut window"
-#| msgid "Inverse"
 msgctxt "shortcuts dialog"
 msgid "Inverse (⁻¹)"
 msgstr "Omgekeerde waarde (⁻¹)"
 
 #: src/ui/math-shortcuts.blp:141
-#| msgctxt "shortcut window"
-#| msgid "Pi (π)"
 msgctxt "shortcuts dialog"
 msgid "Pi (π)"
 msgstr "Pi (π)"
@@ -3541,7 +3505,6 @@ msgid "Tau (τ)"
 msgstr "Tau (τ)"
 
 #: src/ui/math-shortcuts.blp:151
-#| msgid "Degrees"
 msgctxt "shortcuts dialog"
 msgid "Degree (°)"
 msgstr "Graden (°)"
@@ -3552,7 +3515,6 @@ msgid "Floor (⌊⌋)"
 msgstr "Floor (⌊⌋)"
 
 #: src/ui/math-shortcuts.blp:162 src/ui/math-shortcuts.blp:174
-#| msgid "Ceiling"
 msgctxt "shortcuts dialog"
 msgid "Ceiling (⌈⌉)"
 msgstr "Ceiling (⌈⌉)"
@@ -3722,6 +3684,18 @@ msgstr "Opnieuw uitvoeren"
 #: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "Hoofdmenu"
+
+#~ msgid "Show Thousands Separators"
+#~ msgstr "Scheidingsteken voor duizendtallen tonen"
+
+#~ msgid "Ones’ Complement"
+#~ msgstr "1-complement"
+
+#~ msgid "Ones’ complement is only defined for non-negative integers"
+#~ msgstr "1-complement is alleen gedefinieerd voor niet-negatieve gehele getallen"
+
+#~ msgid "_Thousands Separators"
+#~ msgstr "Scheidings_tekens voor duizendtallen"
 
 #~ msgid "Currency of the current calculation"
 #~ msgstr "Munteenheid van de huidige berekening"
