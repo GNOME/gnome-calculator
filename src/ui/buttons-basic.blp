@@ -31,12 +31,15 @@ template $BasicButtonPanel: Adw.Bin {
       }
     }
 
-    ToggleButton calc_superscript_button {
-      label: "↑n";
+    Button calc_x_squared_button {
       focus-on-click: false;
-      tooltip-text: _("Superscript Mode [Ctrl]");
-      action-name: "cal.set-number-mode";
-      action-target: "'superscript'";
+      tooltip-text: _("Square [Ctrl+2]");
+      action-name: "cal.square";
+
+      Label {
+        label: "<i>x</i>²";
+        use-markup: true;
+      }
 
       styles [
         "function-button",
@@ -48,12 +51,12 @@ template $BasicButtonPanel: Adw.Bin {
       }
     }
 
-    ToggleButton calc_subscript_button {
-      label: "↓n";
+    Button calc_square_root_button {
+      label: "√";
       focus-on-click: false;
-      tooltip-text: _("Subscript Mode [Alt]");
-      action-name: "cal.set-number-mode";
-      action-target: "'subscript'";
+      tooltip-text: _("Square Root [Ctrl+R]");
+      action-name: "cal.insert-symbol-before";
+      action-target: "'√'";
 
       styles [
         "function-button",
@@ -240,13 +243,12 @@ template $BasicButtonPanel: Adw.Bin {
       }
     }
 
-    MenuButton calc_memory_button {
-      /* Translators: The label on the memory button */
-      label: _("x");
+    Button calc_pi_button {
+      label: "π";
       focus-on-click: false;
-      can-shrink: true;
-      tooltip-text: _("Variables and Constants");
-      direction: up;
+      tooltip-text: _("Pi [Ctrl+P]");
+      action-name: "cal.insert-alpha";
+      action-target: "'π'";
 
       styles [
         "function-button",
@@ -254,23 +256,6 @@ template $BasicButtonPanel: Adw.Bin {
 
       layout {
         column: "2";
-        row: "4";
-      }
-    }
-
-    MenuButton calc_function_button {
-      label: "f(x)";
-      focus-on-click: false;
-      can-shrink: true;
-      tooltip-text: _("Additional Functions");
-      direction: up;
-
-      styles [
-        "function-button",
-      ]
-
-      layout {
-        column: "3";
         row: "4";
       }
     }
@@ -339,6 +324,7 @@ template $BasicButtonPanel: Adw.Bin {
       layout {
         column: "3";
         row: "3";
+        row-span: "2";
       }
     }
 
