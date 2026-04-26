@@ -29,17 +29,20 @@ clamp > .small .display-container:last-child {
 .history-view {
   background-color: shade(@card_bg_color, .95);
   color: inherit;
+  border-bottom: 1px solid @card_shade_color;
 }
+
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   .history-view {
     background-color: alpha(white, .05);
   }
 }
+
 /* High contrast */
 @media (prefers-contrast: more) {
-  .history-entry {
-    border-top-color: @borders;
+  .history-view {
+    border-bottom-color: @borders;
   }
 }
 
@@ -53,6 +56,13 @@ clamp > .small .display-container:last-child {
   padding: 6px 3px;
   font-size: 1.3em;
   font-feature-settings: "tnum";
+}
+
+/* High contrast */
+@media (prefers-contrast: more) {
+  .history-entry {
+    border-top-color: @borders;
+  }
 }
 
 .history-entry:first-child {
@@ -74,7 +84,6 @@ clamp > .small .display-container:last-child {
 /* Math display */
 
 mathdisplay {
-  border-top: 1px solid @card_shade_color;
   min-height: 52px;
 }
 
@@ -96,12 +105,6 @@ mathdisplay textview text {
   padding-bottom: 8px;
   font-size: 1.4em;
   font-feature-settings: "tnum";
-}
-/* High contrast */
-@media (prefers-contrast: more) {
-  .sourceview {
-    border-top-color: @borders;
-  }
 }
 
 .sourceview > .completion cell.icon {
@@ -237,6 +240,13 @@ carousel.math-buttons > widget > grid.buttons {
   border-top: 1px solid @card_shade_color;
 }
 
+/* High contrast */
+@media (prefers-contrast: more) {
+  .bit-panel {
+    border-top-color: @borders;
+  }
+}
+
 clamp > :not(.small) .bit-panel {
   margin: 0 12px;
   border-radius: 0 0 12px 12px;
@@ -300,15 +310,12 @@ clamp  > .small .bit-panel {
   border-radius: 9px;
   min-height: 28px;
 }
+
 /* High contrast */
 @media (prefers-contrast: more) {
   .math-popover list > row:hover,
   .math-popover list > row:active {
     box-shadow: inset 0 0 0 1px @borders;
-  }
-
-  .math-popover .constant-list image {
-    opacity: 80%;
   }
 }
 
@@ -331,15 +338,26 @@ clamp  > .small .bit-panel {
   border-spacing: 12px;
 }
 
+.math-popover .category-list .forward-arrow,
+.math-popover .back-button .back-arrow {
+  opacity: 30%;
+}
+
+/* High contrast */
+@media (prefers-contrast: more) {
+  .math-popover .category-list .forward-arrow,
+  .math-popover .back-button .back-arrow {
+    opacity: 80%;
+  }
+}
+
 .math-popover .category-list .forward-arrow:dir(ltr),
 .math-popover .back-button .back-arrow:dir(rtl) {
-  opacity: 30%;
   margin-right: -2px;
 }
 
 .math-popover .category-list .forward-arrow:dir(rtl),
 .math-popover .back-button .back-arrow:dir(ltr) {
-  opacity: 30%;
   margin-left: -2px;
 }
 
