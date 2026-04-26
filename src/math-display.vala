@@ -27,8 +27,6 @@ public class MathDisplay : Gtk.Box
     /* Spinner widget that shows if we're calculating a response */
     [GtkChild]
     unowned Adw.Spinner spinner;
-    [GtkChild]
-    unowned Gtk.Button backspace_button;
 
     private HashTable<string, GtkSource.CompletionProvider> providers;
     private string[] _enabled_completions = {};
@@ -110,11 +108,6 @@ public class MathDisplay : Gtk.Box
             source_view.input_hints &= ~Gtk.InputHints.INHIBIT_OSK;
         else
             source_view.input_hints |= Gtk.InputHints.INHIBIT_OSK;
-        if (Gtk.Widget.get_default_direction () == Gtk.TextDirection.LTR)
-            source_view.right_margin = enable_osk ? 14 : 0;
-        else
-            source_view.left_margin = enable_osk ? 14 : 0;
-        backspace_button.visible = !enable_osk;
     }
 
     public void display_text (string prev_eq)
@@ -547,12 +540,6 @@ public class MathDisplay : Gtk.Box
     public new void grab_focus ()
     {
         source_view.grab_focus ();
-    }
-
-    [GtkCallback]
-    private void backspace_cb ()
-    {
-        equation.backspace ();
     }
 }
 

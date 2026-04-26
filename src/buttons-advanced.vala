@@ -37,7 +37,6 @@ public class AdvancedButtonPanel : Adw.BreakpointBin
 
     private SimpleActionGroup action_group = new SimpleActionGroup ();
     private const ActionEntry[] action_entries = {
-        {"factorize",       on_factorize      },
         {"set-angle-units", on_set_angle_units},
     };
 
@@ -48,7 +47,7 @@ public class AdvancedButtonPanel : Adw.BreakpointBin
         insert_action_group ("cal", action_group);
         correct_text_direction ();
         calc_numeric_point_button.set_label (equation.serializer.get_radix ().to_string ());
-        calc_memory_button.popover = new MathVariablePopover (equation);
+        calc_memory_button.popover = new MathVariablePopover (equation, true);
         calc_function_button.popover = new MathFunctionPopover (equation);
 
         buttons.notify["mode"].connect (() => carousel.scroll_to (carousel.get_nth_page (1), false));
@@ -69,11 +68,6 @@ public class AdvancedButtonPanel : Adw.BreakpointBin
         math_box.set_direction (Gtk.TextDirection.LTR);
         basic.set_direction (Gtk.TextDirection.LTR);
         advanced.set_direction (Gtk.TextDirection.LTR);
-    }
-
-    private void on_factorize ()
-    {
-        equation.factorize ();
     }
 
     private void on_set_angle_units ()

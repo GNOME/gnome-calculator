@@ -50,7 +50,7 @@ public class MathVariablePopover : MathPopover<MathVariable>
     [GtkChild]
     private override unowned Gtk.Label error_label { get; }
 
-    public MathVariablePopover (MathEquation equation)
+    public MathVariablePopover (MathEquation equation, bool show_constants)
     {
         base (equation, new ListStore (typeof (MathVariable)), (CompareDataFunc<MathVariable>) MathVariable.name_compare_func);
 
@@ -62,7 +62,15 @@ public class MathVariablePopover : MathPopover<MathVariable>
         equation.history_signal.connect (history_cb);
         item_deleted.connect (delete_variable_cb);
         load_variables ();
-        load_constants ();
+
+        if (show_constants)
+            load_constants ();
+        else
+        {
+            variable_list.get_next_sibling ().visible = false;
+            constant_list.get_prev_sibling ().visible = false;
+            constant_list.visible = false;
+        }
     }
 
     private void load_variables ()

@@ -38,8 +38,6 @@ public class FinancialButtonPanel : Adw.BreakpointBin
     [GtkChild]
     private unowned Gtk.MenuButton calc_memory_button;
     [GtkChild]
-    private unowned Gtk.MenuButton calc_function_button;
-    [GtkChild]
     private unowned Gtk.Button calc_inverse_modifier_button;
 
     /* The names of each field in the dialogs for the financial functions */
@@ -81,8 +79,7 @@ public class FinancialButtonPanel : Adw.BreakpointBin
         insert_action_group ("cal", action_group);
         correct_text_direction ();
         calc_numeric_point_button.set_label (equation.serializer.get_radix ().to_string ());
-        calc_memory_button.popover = new MathVariablePopover (equation);
-        calc_function_button.popover = new MathFunctionPopover (equation);
+        calc_memory_button.popover = new MathVariablePopover (equation, false);
 
         var i = 0;
         foreach (var dialog in finc_dialogs)

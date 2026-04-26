@@ -260,6 +260,23 @@ template $BasicButtonPanel: Adw.Bin {
       }
     }
 
+    Button calc_modulus_divide_button {
+      label: "mod";
+      focus-on-click: false;
+      tooltip-text: _("Modulus Divide");
+      action-name: "cal.insert-alpha";
+      action-target: "'mod'";
+
+      styles [
+        "function-button",
+      ]
+
+      layout {
+        column: "3";
+        row: "0";
+      }
+    }
+
     Button calc_divide_button {
       label: "÷";
       focus-on-click: false;
@@ -273,7 +290,7 @@ template $BasicButtonPanel: Adw.Bin {
 
       layout {
         column: "3";
-        row: "0";
+        row: "1";
       }
     }
 
@@ -290,7 +307,7 @@ template $BasicButtonPanel: Adw.Bin {
 
       layout {
         column: "3";
-        row: "1";
+        row: "2";
       }
     }
 
@@ -306,7 +323,7 @@ template $BasicButtonPanel: Adw.Bin {
 
       layout {
         column: "3";
-        row: "2";
+        row: "3";
       }
     }
 
@@ -323,17 +340,15 @@ template $BasicButtonPanel: Adw.Bin {
 
       layout {
         column: "3";
-        row: "3";
-        row-span: "2";
+        row: "4";
       }
     }
 
-    Button calc_modulus_divide_button {
-      label: "mod";
+    Button calc_backspace_button {
+      icon-name: "edit-clear-symbolic";
       focus-on-click: false;
-      tooltip-text: _("Modulus Divide");
-      action-name: "cal.insert-alpha";
-      action-target: "'mod'";
+      tooltip-text: _("Backspace");
+      action-name: "cal.backspace";
 
       styles [
         "function-button",

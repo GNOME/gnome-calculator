@@ -37,20 +37,6 @@ template $MathDisplay: Box {
         scroll => $scroll_cb();
       }
     }
-
-    Button backspace_button {
-      valign: center;
-      use-underline: true;
-      focus-on-click: false;
-      tooltip-text: _("Backspace");
-      icon-name: "edit-clear-symbolic";
-      clicked => $backspace_cb();
-
-      styles [
-        "circular",
-        "flat",
-      ]
-    }
   }
 
   Box info_box {

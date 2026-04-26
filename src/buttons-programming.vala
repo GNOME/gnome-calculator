@@ -32,8 +32,6 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
     [GtkChild]
     private unowned Gtk.MenuButton calc_memory_button;
     [GtkChild]
-    private unowned Gtk.MenuButton calc_function_button;
-    [GtkChild]
     private unowned Gtk.Button calc_inverse_modifier_button;
     [GtkChild]
     private unowned Gtk.Button calc_base_10_exponential_button;
@@ -73,8 +71,7 @@ public class ProgrammingButtonPanel : Adw.BreakpointBin
         insert_action_group ("cal", action_group);
         correct_text_direction ();
         calc_numeric_point_button.set_label (equation.serializer.get_radix ().to_string ());
-        calc_memory_button.popover = new MathVariablePopover (equation);
-        calc_function_button.popover = new MathFunctionPopover (equation);
+        calc_memory_button.popover = new MathVariablePopover (equation, false);
 
         for (var row = 2; row >= 0; row--)
             for (var column = 0; column <= 4; column++)

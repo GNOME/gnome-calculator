@@ -1701,12 +1701,15 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
       }
 
       MenuButton calc_memory_button {
-        /* Translators: The label on the memory button */
-        label: _("x");
         focus-on-click: false;
         can-shrink: true;
-        tooltip-text: _("Variables and Constants");
+        tooltip-text: _("Memory");
         direction: up;
+
+        Label {
+          label: "<i>x</i>";
+          use-markup: true;
+        }
 
         styles [
           "function-button",
@@ -1718,12 +1721,12 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      MenuButton calc_function_button {
-        label: "f(x)";
+      Button calc_modulus_divide_button {
+        label: "mod";
         focus-on-click: false;
-        can-shrink: true;
-        tooltip-text: _("Additional Functions");
-        direction: up;
+        tooltip-text: _("Modulus Divide");
+        action-name: "cal.insert-alpha";
+        action-target: "'mod'";
 
         styles [
           "function-button",
@@ -1731,7 +1734,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "4";
+          row: "0";
         }
       }
 
@@ -1748,7 +1751,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "0";
+          row: "1";
         }
       }
 
@@ -1765,7 +1768,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "1";
+          row: "2";
         }
       }
 
@@ -1781,7 +1784,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "2";
+          row: "3";
         }
       }
 
@@ -1798,16 +1801,15 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "3";
+          row: "4";
         }
       }
 
-      Button calc_modulus_divide_button {
-        label: "mod";
+      Button calc_backspace_button {
+        icon-name: "edit-clear-symbolic";
         focus-on-click: false;
-        tooltip-text: _("Modulus Divide");
-        action-name: "cal.insert-alpha";
-        action-target: "'mod'";
+        tooltip-text: _("Backspace");
+        action-name: "cal.backspace";
 
         styles [
           "function-button",
@@ -2359,6 +2361,22 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
         }
       }
 
+      Button calc_factor_button {
+        label: "a×b";
+        focus-on-click: false;
+        tooltip-text: _("Factorize [Ctrl+F]");
+        action-name: "cal.factorize";
+
+        styles [
+          "function-button",
+        ]
+
+        layout {
+          column: "4";
+          row: "0";
+        }
+      }
+
       Button calc_ceiling_button {
         focus-on-click: false;
         tooltip-text: _("Ceiling [Ctrl+[]]");
@@ -2376,7 +2394,7 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "4";
-          row: "0";
+          row: "1";
         }
       }
 
@@ -2397,39 +2415,18 @@ template $ProgrammingButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "4";
-          row: "1";
-        }
-      }
-
-      Button calc_abs_button {
-        focus-on-click: false;
-        tooltip-text: _("Absolute Value [||]");
-        action-name: "cal.insert-brackets";
-        action-target: "('|','|')";
-
-        Label {
-          label: "|<i>x</i>|";
-          use-markup: true;
-        }
-
-        styles [
-          "function-button",
-        ]
-
-        layout {
-          column: "4";
           row: "2";
         }
       }
 
-      Button calc_factorial_button {
+      Button calc_round_button {
         focus-on-click: false;
-        tooltip-text: _("Factorial [!]");
-        action-name: "cal.insert-symbol-after";
-        action-target: "'!'";
+        tooltip-text: _("Round [[]]");
+        action-name: "cal.insert-brackets";
+        action-target: "('[',']')";
 
         Label {
-          label: "<i>x</i>!";
+          label: "[<i>x</i>]";
           use-markup: true;
         }
 

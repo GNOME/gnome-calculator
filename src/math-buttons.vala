@@ -77,7 +77,9 @@ public class MathButtons : Adw.Bin
         {"logarithm",            on_logarithm                            },
         {"undo",                 on_undo                                 },
         {"clear",                on_clear                                },
+        {"backspace",            on_backspace                            },
         {"solve",                on_solve                                },
+        {"factorize",            on_factorize                            },
         {"set-number-mode",      on_set_number_mode,      "s", "'normal'"},
     };
 
@@ -258,10 +260,20 @@ public class MathButtons : Adw.Bin
         equation.clear ();
     }
 
+    private void on_backspace ()
+    {
+        equation.backspace ();
+    }
+
     private void on_solve ()
     {
         equation.solve ();
         solved_using_button = true;
+    }
+
+    private void on_factorize ()
+    {
+        equation.factorize ();
     }
 
     private void on_set_number_mode (SimpleAction action, Variant? param)

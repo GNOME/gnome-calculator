@@ -296,12 +296,15 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
       }
 
       MenuButton calc_memory_button {
-        /* Translators: The label on the memory button */
-        label: _("x");
         focus-on-click: false;
         can-shrink: true;
-        tooltip-text: _("Variables and Constants");
+        tooltip-text: _("Memory");
         direction: up;
+
+        Label {
+          label: "<i>x</i>";
+          use-markup: true;
+        }
 
         styles [
           "function-button",
@@ -313,12 +316,12 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      MenuButton calc_function_button {
-        label: "f(x)";
+      Button calc_modulus_divide_button {
+        label: "mod";
         focus-on-click: false;
-        can-shrink: true;
-        tooltip-text: _("Additional Functions");
-        direction: up;
+        tooltip-text: _("Modulus Divide");
+        action-name: "cal.insert-alpha";
+        action-target: "'mod'";
 
         styles [
           "function-button",
@@ -326,7 +329,7 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "4";
+          row: "0";
         }
       }
 
@@ -343,7 +346,7 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "0";
+          row: "1";
         }
       }
 
@@ -360,7 +363,7 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "1";
+          row: "2";
         }
       }
 
@@ -376,7 +379,7 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "2";
+          row: "3";
         }
       }
 
@@ -393,16 +396,15 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
 
         layout {
           column: "3";
-          row: "3";
+          row: "4";
         }
       }
 
-      Button calc_modulus_divide_button {
-        label: "mod";
+      Button calc_backspace_button {
+        icon-name: "edit-clear-symbolic";
         focus-on-click: false;
-        tooltip-text: _("Modulus Divide");
-        action-name: "cal.insert-alpha";
-        action-target: "'mod'";
+        tooltip-text: _("Backspace");
+        action-name: "cal.backspace";
 
         styles [
           "function-button",
@@ -578,13 +580,16 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      Button calc_common_logarithm_button {
+      Button calc_logarithm_button {
         visible: bind calc_inverse_modifier_button.active inverted;
-        label: "log";
         focus-on-click: false;
-        tooltip-text: _("Common Logarithm");
-        action-name: "cal.insert-function";
-        action-target: "'log'";
+        tooltip-text: _("Logarithm");
+        action-name: "cal.logarithm";
+
+        Label {
+          label: "log<sub><i>y</i></sub>";
+          use-markup: true;
+        }
 
         styles [
           "function-button",
@@ -596,15 +601,15 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      Button calc_base_10_exponential_button {
+      Button calc_exponential_button {
         visible: bind calc_inverse_modifier_button.active;
         focus-on-click: false;
-        tooltip-text: _("Base-10 Exponential");
+        tooltip-text: _("Exponent [^ or **]");
         action-name: "cal.insert-exponent";
-        action-target: "'10'";
+        action-target: "''";
 
         Label {
-          label: "10<sup><i>x</i></sup>";
+          label: "<i>y</i><sup><i>x</i></sup>";
           use-markup: true;
         }
 
@@ -619,13 +624,13 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      Button calc_natural_logarithm_button {
+      Button calc_common_logarithm_button {
         visible: bind calc_inverse_modifier_button.active inverted;
-        label: "ln";
+        label: "log";
         focus-on-click: false;
-        tooltip-text: _("Natural Logarithm");
+        tooltip-text: _("Common Logarithm");
         action-name: "cal.insert-function";
-        action-target: "'ln'";
+        action-target: "'log'";
 
         styles [
           "function-button",
@@ -637,15 +642,15 @@ template $FinancialButtonPanel: Adw.BreakpointBin {
         }
       }
 
-      Button calc_natural_exponential_button {
+      Button calc_base_10_exponential_button {
         visible: bind calc_inverse_modifier_button.active;
         focus-on-click: false;
-        tooltip-text: _("Natural Exponential");
+        tooltip-text: _("Base-10 Exponential");
         action-name: "cal.insert-exponent";
-        action-target: "'e'";
+        action-target: "'10'";
 
         Label {
-          label: "e<sup><i>x</i></sup>";
+          label: "10<sup><i>x</i></sup>";
           use-markup: true;
         }
 
