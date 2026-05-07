@@ -244,12 +244,11 @@ public class MathDisplay : Gtk.Box
             return true;
         }
 
-        /* Numeric keypad will insert '.' or ',' depending on layout */
+        /* Numeric keypad decimal separator will insert '.' or ',' depending on locale */
         if ((keyval == Gdk.Key.KP_Decimal) ||
             (keyval == Gdk.Key.KP_Separator) ||
             (keyval == Gdk.Key.period) ||
-            (keyval == Gdk.Key.decimalpoint) ||
-            (keyval == Gdk.Key.comma))
+            (keyval == Gdk.Key.decimalpoint))
         {
             equation.insert_numeric_point ();
             return true;
