@@ -82,7 +82,9 @@ public enum ErrorCode
     UNKNOWN_CONVERSION,
     UNKNOWN_UNIT,
     UNKNOWN_RATE,
-    MP
+    MP,
+    TIMED_OUT,
+    RESOURCE_LIMIT
 }
 
 public class Equation : Object
@@ -101,12 +103,15 @@ public class Equation : Object
 
     public new Number? parse (out uint representation_base = null, out ErrorCode error_code = null, out string? error_token = null, out uint? error_start = null, out uint? error_end = null)
     {
-        var parser = new EquationParser (this, expression);
-        Number.error = null;
+        return parse_with_budget (null, out representation_base, out error_code, out error_token, out error_start, out error_end);
+    }
+
+    public Number? parse_with_budget (EvaluationBudget? budget, out uint representation_base = null, out ErrorCode error_code = null, out string? error_token = null, out uint? error_start = null, out uint? error_end = null)
+    {
+        var parser = new EquationParser (this, expression, budget);
+        Number.clear_error ();
 
         var z = parser.parse (out representation_base, out error_code, out error_token, out error_start, out error_end);
-
-        last_token = parser.get_last_operation (out last_operand);
 
         /* Error during parsing */
         if (error_code != ErrorCode.NONE)
@@ -116,8 +121,20 @@ public class Equation : Object
 
         if (Number.error != null)
         {
-            error_code = ErrorCode.MP;
+            error_code = Number.error_code != ErrorCode.NONE ? Number.error_code : ErrorCode.MP;
             return null;
+        }
+
+        // Saving repeat-operation state can re-solve the RHS. Budgeted callers
+        // such as search do not need it, so avoid post-processing evaluator work.
+        if (budget == null)
+        {
+            last_token = parser.get_last_operation (out last_operand);
+        }
+        else
+        {
+            last_token = "";
+            last_operand = null;
         }
 
         return z;
@@ -171,9 +188,9 @@ private class EquationParser : Parser
 {
     private Equation equation;
 
-    public EquationParser (Equation equation, string expression)
+    public EquationParser (Equation equation, string expression, EvaluationBudget? budget = null)
     {
-        base (expression, equation.base, equation.wordlen, equation.angle_units);
+        base (expression, equation.base, equation.wordlen, equation.angle_units, budget);
         this.equation = equation;
     }
 

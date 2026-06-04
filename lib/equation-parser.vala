@@ -109,6 +109,9 @@ public class ParseNode : Object
 
     public virtual Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         return null;
     }
 }
@@ -122,9 +125,16 @@ public abstract class RNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         var r = right.solve ();
         if (r == null)
             return null;
+
+        if (!parser.check_budget ())
+            return null;
+
         var z = solve_r (r);
 
         /* check for errors */
@@ -135,8 +145,7 @@ public abstract class RNode : ParseNode
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
-            Number.error = null;
+            parser.set_number_error (tmpleft.first_token().start_index, tmpright.last_token().end_index);
         }
         return z;
     }
@@ -160,10 +169,20 @@ public abstract class LRNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         var l = left.solve ();
+        if (!parser.check_budget ())
+            return null;
+
         var r = right.solve ();
         if (l == null || r == null)
             return null;
+
+        if (!parser.check_budget ())
+            return null;
+
         var z = solve_lr (l, r);
 
         /* check for errors */
@@ -174,8 +193,7 @@ public abstract class LRNode : ParseNode
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
-            Number.error = null;
+            parser.set_number_error (tmpleft.first_token().start_index, tmpright.last_token().end_index);
         }
         return z;
     }
@@ -192,6 +210,9 @@ public class ConstantNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         return mp_set_from_string (token().text, parser.number_base);
     }
 }
@@ -219,6 +240,9 @@ public class AssignFunctionNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         if (left == null || right == null || left.left == null || left.right == null)
             return null;
 
@@ -251,6 +275,9 @@ public class VariableNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         /* If defined, then get the variable */
         var ans = parser.get_variable (token().text);
         if (ans != null)
@@ -263,6 +290,9 @@ public class VariableNode : ParseNode
         unichar c;
         while (token().text.get_next_char (ref index, out c))
         {
+            if (!parser.check_budget ())
+                return null;
+
             var t = parser.get_variable (c.to_string ());
             if (t == null)
             {
@@ -284,14 +314,19 @@ public class VariableWithPowerNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         var pow = super_atoi (value);
 
         value = null;
 
         /* If defined, then get the variable */
         var ans = parser.get_variable (token().text);
+        // Superscripted variables and constants bypass XPowYIntegerNode, so
+        // pass the active budget here to enforce the same exponent limits.
         if (ans != null)
-            return ans.xpowy_integer (pow);
+            return ans.xpowy_integer (pow, parser.budget);
 
         /* If has more than one character then assume a multiplication of variables */
         // FIXME: Do in lexer
@@ -300,6 +335,9 @@ public class VariableWithPowerNode : ParseNode
         unichar c;
         while (token().text.get_next_char (ref index, out c))
         {
+            if (!parser.check_budget ())
+                return null;
+
             var t = parser.get_variable (c.to_string ());
             if (t == null)
             {
@@ -311,7 +349,7 @@ public class VariableWithPowerNode : ParseNode
             var i = index;
             unichar next;
             if (!token().text.get_next_char (ref i, out next))
-                t = t.xpowy_integer (pow);
+                t = t.xpowy_integer (pow, parser.budget);
             value = value.multiply (t);
         }
 
@@ -323,8 +361,7 @@ public class VariableWithPowerNode : ParseNode
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
-            Number.error = null;
+            parser.set_number_error (tmpleft.first_token().start_index, tmpright.last_token().end_index);
         }
 
         return value;
@@ -364,6 +401,9 @@ public class FunctionNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         if (right == null || left == null)
         {
             parser.set_error (ErrorCode.UNKNOWN_FUNCTION);
@@ -396,6 +436,9 @@ public class FunctionNode : ParseNode
             int depth = 0;
             for (int i = 0; i < argument_list.length; i++)
             {
+                if (!parser.check_budget ())
+                    return null;
+
                 string ss = argument_list.substring (i, 1);
                 if (ss == "(")
                     depth++;
@@ -447,14 +490,13 @@ public class FunctionNode : ParseNode
         var tmp = function_manager.evaluate_function (name, args, parser);
 
         if (tmp != null)
-            tmp = tmp.xpowy_integer (pow);
+            tmp = tmp.xpowy_integer (pow, parser.budget);
 
         /* check for errors */
         Number.check_flags ();
         if (Number.error != null)
         {
-            parser.set_error (ErrorCode.MP, Number.error, right.first_token().start_index, right.last_token().end_index);
-            Number.error = null;
+            parser.set_number_error (right.first_token().start_index, right.last_token().end_index);
         }
 
         return tmp;
@@ -561,7 +603,7 @@ public class FactorialNode : RNode
 
     public override Number? solve_r (Number r)
     {
-        return r.factorial ();
+        return r.factorial (parser.budget);
     }
 }
 
@@ -666,8 +708,7 @@ public class DivideNode : LRNode
             while (tmpright.right != null) tmpright = tmpright.right;
             if (tmpleft.first_token() != null) token_start = tmpleft.first_token().start_index;
             if (tmpright.last_token() != null) token_end = tmpright.last_token().end_index;
-            parser.set_error (ErrorCode.MP, Number.error, token_start, token_end);
-            Number.error = null;
+            parser.set_number_error (token_start, token_end);
         }
         return z;
     }
@@ -682,14 +723,23 @@ public class ModulusDivideNode : LRNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         if (left is XPowYNode)
         {
             var base_value = left.left.solve ();
+            if (!parser.check_budget ())
+                return null;
+
             var exponent = left.right.solve ();
+            if (!parser.check_budget ())
+                return null;
+
             var mod = right.solve ();
             if (base_value == null || exponent == null || mod == null)
                 return null;
-            var z = base_value.modular_exponentiation (exponent, mod);
+            var z = base_value.modular_exponentiation (exponent, mod, parser.budget);
 
             /* check for errors */
             Number.check_flags ();
@@ -699,8 +749,7 @@ public class ModulusDivideNode : LRNode
                 var tmpright = right;
                 while (tmpleft.left != null) tmpleft = tmpleft.left;
                 while (tmpright.right != null) tmpright = tmpright.right;
-                parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
-                Number.error = null;
+                parser.set_number_error (tmpleft.first_token().start_index, tmpright.last_token().end_index);
             }
 
             return z;
@@ -708,6 +757,9 @@ public class ModulusDivideNode : LRNode
         else
         {
             var l = left.solve ();
+            if (!parser.check_budget ())
+                return null;
+
             var r = right.solve ();
             if (l == null || r == null)
                 return null;
@@ -721,8 +773,7 @@ public class ModulusDivideNode : LRNode
                 var tmpright = right;
                 while (tmpleft.left != null) tmpleft = tmpleft.left;
                 while (tmpright.right != null) tmpright = tmpright.right;
-                parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
-                Number.error = null;
+                parser.set_number_error (tmpleft.first_token().start_index, tmpright.last_token().end_index);
             }
 
             return z;
@@ -766,7 +817,7 @@ public class RootNode : RNode
             parser.set_error (ErrorCode.MP, error, token_n.start_index, token_n.end_index);
             return null;
         }
-        return r.root (n);
+        return r.root (n, parser.budget);
     }
 }
 
@@ -779,7 +830,7 @@ public class XPowYNode : LRNode
 
     public override Number solve_lr (Number l, Number r)
     {
-        return l.xpowy (r);
+        return l.xpowy (r, parser.budget);
     }
 }
 
@@ -795,6 +846,9 @@ public class XPowYIntegerNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         var val = left.solve ();
 
         // Are we inside a nested pow?
@@ -808,12 +862,17 @@ public class XPowYIntegerNode : ParseNode
         if (right.token() != null)
             pow = super_atoi (right.token().text);
         else
-            pow = right.solve ().to_integer ();
+        {
+            var right_value = right.solve ();
+            if (right_value == null)
+                return null;
+            pow = right_value.to_integer ();
+        }
 
         if (val == null)
             return null;
 
-        var z = val.xpowy_integer (pow);
+        var z = val.xpowy_integer (pow, parser.budget);
 
         /* check for errors */
         Number.check_flags ();
@@ -823,8 +882,7 @@ public class XPowYIntegerNode : ParseNode
             var tmpright = right;
             while (tmpleft.left != null) tmpleft = tmpleft.left;
             while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_error (ErrorCode.MP, Number.error, tmpleft.first_token().start_index, tmpright.last_token().end_index);
-            Number.error = null;
+            parser.set_number_error (tmpleft.first_token().start_index, tmpright.last_token().end_index);
         }
 
         return z;
@@ -840,7 +898,7 @@ public class NotNode : RNode
 
     public override Number? solve_r (Number r)
     {
-        return r.not (parser.wordlen);
+        return r.not (parser.wordlen, parser.budget);
     }
 }
 
@@ -853,7 +911,7 @@ public class AndNode : LRNode
 
     public override Number solve_lr (Number l, Number r)
     {
-        return l.and (r);
+        return l.and (r, parser.budget);
     }
 }
 
@@ -866,7 +924,7 @@ public class NandNode : LRNode
 
     public override Number solve_lr (Number l, Number r)
     {
-        return l.nand (r, parser.wordlen);
+        return l.nand (r, parser.wordlen, parser.budget);
     }
 }
 
@@ -879,7 +937,7 @@ public class OrNode : LRNode
 
     public override Number solve_lr (Number l, Number r)
     {
-        return l.or (r);
+        return l.or (r, parser.budget);
     }
 }
 
@@ -892,7 +950,7 @@ public class NorNode : LRNode
 
     public override Number solve_lr (Number l, Number r)
     {
-        return l.nor (r, parser.wordlen);
+        return l.nor (r, parser.wordlen, parser.budget);
     }
 }
 
@@ -905,7 +963,7 @@ public class XorNode : LRNode
 
     public override Number solve_lr (Number l, Number r)
     {
-        return l.xor (r);
+        return l.xor (r, parser.budget);
     }
 }
 
@@ -918,7 +976,7 @@ public class XnorNode : LRNode
 
     public override Number solve_lr (Number l, Number r)
     {
-        return l.xnor (r, parser.wordlen);
+        return l.xnor (r, parser.wordlen, parser.budget);
     }
 }
 
@@ -968,6 +1026,9 @@ public class ConvertBaseNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         string name = value;
 
         if (name == null && right != null)
@@ -998,6 +1059,9 @@ public class ConvertNumberNode : ParseNode
 
     public override Number? solve ()
     {
+        if (!parser.check_budget ())
+            return null;
+
         string from;
         if (left.value != null)
         {
@@ -1054,6 +1118,7 @@ public class Parser
     private int error_token_start;
     private int error_token_end;
     private uint representation_base;
+    public EvaluationBudget? budget { get; private set; }
 
     public static HashTable<string, Number> CONSTANTS;
     public static ConstantCategory[] CONSTANT_CATEGORIES = {
@@ -1100,7 +1165,7 @@ public class Parser
                 CONSTANTS.insert (constant.symbol, constant.number);
     }
 
-    public Parser (string input, int number_base, int wordlen, AngleUnit angle_units)
+    public Parser (string input, int number_base, int wordlen, AngleUnit angle_units, EvaluationBudget? budget = null)
     {
         this.input = input;
         lexer = new Lexer (input, this, number_base);
@@ -1111,6 +1176,7 @@ public class Parser
         this.representation_base = number_base;
         this.wordlen = wordlen;
         this.angle_units = angle_units;
+        this.budget = budget;
         error = ErrorCode.NONE;
         error_token = null;
         error_token_start = 0;
@@ -1120,8 +1186,41 @@ public class Parser
     public bool create_parse_tree (out uint representation_base, out ErrorCode error_code, out string? error_token, out uint error_start, out uint error_end)
     {
         representation_base = number_base;
+
+        if (budget != null)
+        {
+            ErrorCode budget_error;
+            string? budget_token;
+
+            if (!budget.check_input (input, out budget_error, out budget_token))
+            {
+                set_error (budget_error, budget_token);
+                error_code = budget_error;
+                error_token = budget_token;
+                error_start = error_token_start;
+                error_end = error_token_end;
+                return false;
+            }
+        }
+
         /* Scan string and split into tokens */
         lexer.scan ();
+
+        if (budget != null)
+        {
+            ErrorCode budget_error;
+            string? budget_token;
+
+            if (!budget.check_tokens (lexer.tokens.length (), out budget_error, out budget_token))
+            {
+                set_error (budget_error, budget_token);
+                error_code = budget_error;
+                error_token = budget_token;
+                error_start = error_token_start;
+                error_end = error_token_end;
+                return false;
+            }
+        }
 
         /* Parse tokens */
         var ret = statement ();
@@ -1185,6 +1284,30 @@ public class Parser
         error_token_end = input.char_count (token_end);
     }
 
+    public void set_number_error (uint token_start = 0, uint token_end = 0)
+    {
+        var errorno = Number.error_code != ErrorCode.NONE ? Number.error_code : ErrorCode.MP;
+        set_error (errorno, Number.error, token_start, token_end);
+        Number.clear_error ();
+    }
+
+    public bool check_budget (uint64 steps = 1, uint token_start = 0, uint token_end = 0)
+    {
+        if (budget == null)
+            return true;
+
+        ErrorCode error_code;
+        string? error_message;
+
+        if (!budget.charge (steps, out error_code, out error_message))
+        {
+            set_error (error_code, error_message, token_start, token_end);
+            return false;
+        }
+
+        return true;
+    }
+
     public void set_representation_base (uint new_base)
     {
         representation_base = new_base;
@@ -1237,9 +1360,14 @@ public class Parser
 
     public string get_last_operation (out Number? operand)
     {
-        if (root == null || !(root is LRNode) || !(root as LRNode).is_repeatable ())
+        operand = null;
+
+        var node = root as LRNode;
+        if (node == null || !node.is_repeatable ())
             return "";
-        operand = (root as LRNode).right.solve ();
+        if (!check_budget ())
+            return "";
+        operand = node.right.solve ();
         return root.last_token().text;
     }
 
@@ -1250,6 +1378,15 @@ public class Parser
 
         if (!is_successfully_parsed)
             return null;
+        if (!check_budget ())
+        {
+            error_code = this.error;
+            error_token = this.error_token;
+            error_start = this.error_token_start;
+            error_end = this.error_token_end;
+            return null;
+        }
+
         var ans = root.solve ();
         if (ans == null && this.error == ErrorCode.NONE)
         {

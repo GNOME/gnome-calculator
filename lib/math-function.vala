@@ -131,7 +131,7 @@ public class ExpressionParser : Parser
 
     public ExpressionParser (string expression, Parser? root_parser = null)
     {
-        base (expression, root_parser.number_base, root_parser.wordlen, root_parser.angle_units);
+        base (expression, root_parser.number_base, root_parser.wordlen, root_parser.angle_units, root_parser.budget);
         _root_parser = root_parser;
     }
 
@@ -298,7 +298,7 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
         case "mod":
             return x.modulus_divide (args[1]);
         case "modexp":
-            return x.modular_exponentiation (args[1], args[2]);
+            return x.modular_exponentiation (args[1], args[2], root_parser.budget);
         case "round":
             return x.round ();
         case "floor":
@@ -334,19 +334,19 @@ private Number? evaluate_built_in_function (string name, Number[] args, Parser? 
         case "ln":
             return x.ln ();
         case "sqrt":
-            return x.sqrt ();
+            return x.sqrt (root_parser.budget);
         case "abs":
             return x.abs ();
         case "sgn":
             return x.sgn ();
         case "ncr":
-            return x.combination (args[1]);
+            return x.combination (args[1], root_parser.budget);
         case "npr":
-            return x.permutation (args[1]);
+            return x.permutation (args[1], root_parser.budget);
         case "gcd":
-            return Number.gcd (args);
+            return Number.gcd (args, root_parser.budget);
         case "lcm":
-            return Number.lcm (args);
+            return Number.lcm (args, root_parser.budget);
         case "cmp":
             return x.kronecker_delta (args[1]);
     }

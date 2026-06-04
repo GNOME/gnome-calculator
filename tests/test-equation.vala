@@ -894,6 +894,152 @@ private void test_custom_functions ()
     function_manager.delete ("funcWithDescription");
 }
 
+private void test_evaluation_budget ()
+{
+    number_base = 10;
+    wordlen = 32;
+    angle_units = AngleUnit.DEGREES;
+    enable_conversions = false;
+    enable_variables = true;
+
+    uint representation_base;
+    ErrorCode error;
+    string? error_token = null;
+
+    var equation = new TestEquation ("1+1", enable_variables, enable_conversions);
+    equation.base = number_base;
+    equation.wordlen = wordlen;
+    equation.angle_units = angle_units;
+
+    var budget = new EvaluationBudget.for_search (50);
+    var result = equation.parse_with_budget (budget, out representation_base, out error, out error_token);
+    if (result == null || error != ErrorCode.NONE)
+    {
+        stdout.printf ("*FAIL: budgeted '1+1' -> error %s\n", error_code_to_string (error));
+        fail_count++;
+    }
+    else
+    {
+        pass_count++;
+    }
+
+    equation = new TestEquation ("123456789!", enable_variables, enable_conversions);
+    equation.base = number_base;
+    equation.wordlen = wordlen;
+    equation.angle_units = angle_units;
+
+    budget = new EvaluationBudget.for_search (50);
+    result = equation.parse_with_budget (budget, out representation_base, out error, out error_token);
+    if (result != null || error != ErrorCode.RESOURCE_LIMIT)
+    {
+        stdout.printf ("*FAIL: budgeted huge factorial -> error %s, expected %s\n",
+                       error_code_to_string (error),
+                       error_code_to_string (ErrorCode.RESOURCE_LIMIT));
+        fail_count++;
+    }
+    else
+    {
+        pass_count++;
+    }
+
+    // Superscripted variables/constants use VariableWithPowerNode instead of
+    // XPowYIntegerNode, so this must still enforce exponent budget limits.
+    equation = new TestEquation ("pi¹⁰⁰⁰⁰¹", enable_variables, enable_conversions);
+    equation.base = number_base;
+    equation.wordlen = wordlen;
+    equation.angle_units = angle_units;
+
+    budget = new EvaluationBudget.for_search (50);
+    result = equation.parse_with_budget (budget, out representation_base, out error, out error_token);
+    if (result != null || error != ErrorCode.RESOURCE_LIMIT)
+    {
+        stdout.printf ("*FAIL: budgeted superscript constant exponent -> error %s, expected %s\n",
+                       error_code_to_string (error),
+                       error_code_to_string (ErrorCode.RESOURCE_LIMIT));
+        fail_count++;
+    }
+    else
+    {
+        pass_count++;
+    }
+
+    equation = new TestEquation ("1+1", enable_variables, enable_conversions);
+    equation.base = number_base;
+    equation.wordlen = wordlen;
+    equation.angle_units = angle_units;
+
+    budget = new EvaluationBudget ();
+    budget.deadline_usec = get_monotonic_time () - 1;
+    result = equation.parse_with_budget (budget, out representation_base, out error, out error_token);
+    if (result != null || error != ErrorCode.TIMED_OUT)
+    {
+        stdout.printf ("*FAIL: expired budget -> error %s, expected %s\n",
+                       error_code_to_string (error),
+                       error_code_to_string (ErrorCode.TIMED_OUT));
+        fail_count++;
+    }
+    else
+    {
+        pass_count++;
+    }
+
+    equation = new TestEquation ("1+1", enable_variables, enable_conversions);
+    equation.base = number_base;
+    equation.wordlen = wordlen;
+    equation.angle_units = angle_units;
+
+    budget = new EvaluationBudget ();
+    budget.max_input_chars = 2;
+    result = equation.parse_with_budget (budget, out representation_base, out error, out error_token);
+    if (result != null || error != ErrorCode.RESOURCE_LIMIT)
+    {
+        stdout.printf ("*FAIL: budgeted long input -> error %s, expected %s\n",
+                       error_code_to_string (error),
+                       error_code_to_string (ErrorCode.RESOURCE_LIMIT));
+        fail_count++;
+    }
+    else
+    {
+        pass_count++;
+    }
+
+    // Budgeted parses skip repeat-operation state capture; otherwise the RHS is
+    // re-solved after success and consumes the final available budget steps.
+    equation = new TestEquation ("1+1", enable_variables, enable_conversions);
+    equation.base = number_base;
+    equation.wordlen = wordlen;
+    equation.angle_units = angle_units;
+
+    budget = new EvaluationBudget ();
+    budget.max_steps = 7;
+    result = equation.parse_with_budget (budget, out representation_base, out error, out error_token);
+    ErrorCode budget_error;
+    string? budget_message;
+    if (result == null || error != ErrorCode.NONE || !budget.charge (1, out budget_error, out budget_message))
+    {
+        stdout.printf ("*FAIL: budgeted parse consumed steps during repeat-operation post-processing\n");
+        fail_count++;
+    }
+    else
+    {
+        pass_count++;
+    }
+
+    budget = new EvaluationBudget ();
+    budget.max_output_digits = 4;
+    var serializer = new Serializer (DisplayFormat.FIXED, 10, 0);
+    serializer.to_string (new Number.integer (100000), budget);
+    if (serializer.error == null)
+    {
+        stdout.printf ("*FAIL: budgeted fixed serializer did not report an output limit\n");
+        fail_count++;
+    }
+    else
+    {
+        pass_count++;
+    }
+}
+
 public int main (string[] args)
 {
     Intl.setlocale (LocaleCategory.ALL, "C");
@@ -906,6 +1052,7 @@ public int main (string[] args)
     test_bit_shift_32bit ();
     if (sizeof(void*) == 8)
         test_bit_shift_64bit ();
+    test_evaluation_budget ();
 
     if (fail_count == 0)
         stdout.printf ("Passed all %i tests\n", pass_count);

@@ -49,6 +49,19 @@ public class Number : GLib.Object
 
     /* Stores the error msg if an error occurs during calculation. Otherwise should be null */
     public static string? error { get; set; default = null; }
+    public static ErrorCode error_code { get; set; default = ErrorCode.NONE; }
+
+    public static void clear_error ()
+    {
+        error = null;
+        error_code = ErrorCode.NONE;
+    }
+
+    public static void set_resource_error (ErrorCode code, string message)
+    {
+        error = message;
+        error_code = code;
+    }
 
     public Number.integer (int64 real, int64 imag = 0)
     {
@@ -330,6 +343,45 @@ public class Number : GLib.Object
         }
     }
 
+    private static bool charge_budget (EvaluationBudget? budget, uint64 steps = 1)
+    {
+        if (budget == null)
+            return true;
+
+        ErrorCode error_code;
+        string? error_message;
+
+        if (!budget.charge (steps, out error_code, out error_message))
+        {
+            Number.set_resource_error (error_code, error_message);
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool check_abs_limit (EvaluationBudget? budget, uint64 limit, string message)
+    {
+        if (!charge_budget (budget))
+            return false;
+
+        if (budget != null && limit > 0 && !is_complex () && abs ().compare (new Number.unsigned_integer (limit)) > 0)
+        {
+            Number.set_resource_error (ErrorCode.RESOURCE_LIMIT, message);
+            return false;
+        }
+
+        return true;
+    }
+
+    private static uint64 abs_int64 (int64 value)
+    {
+        if (value == int64.MIN)
+            return (uint64) int64.MAX + 1;
+
+        return value < 0 ? (uint64) (-value) : (uint64) value;
+    }
+
     /* Return true if x == y */
     public bool equals (Number y)
     {
@@ -517,8 +569,18 @@ public class Number : GLib.Object
     }
 
     /* Sets z = x^y */
-    public Number xpowy (Number y)
+    public Number xpowy (Number y, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
+        if (budget != null && budget.max_power_exponent > 0 && !y.is_complex () && y.is_integer () &&
+            y.abs ().compare (new Number.unsigned_integer (budget.max_power_exponent)) > 0)
+        {
+            Number.set_resource_error (ErrorCode.RESOURCE_LIMIT, _("Exponent is too large"));
+            return new Number.integer (0);
+        }
+
         /* 0^-n invalid */
         if (is_zero () && y.is_negative ())
         {
@@ -547,8 +609,17 @@ public class Number : GLib.Object
     }
 
     /* Sets z = x^y */
-    public Number xpowy_integer (int64 n)
+    public Number xpowy_integer (int64 n, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
+        if (budget != null && budget.max_power_exponent > 0 && abs_int64 (n) > budget.max_power_exponent)
+        {
+            Number.set_resource_error (ErrorCode.RESOURCE_LIMIT, _("Exponent is too large"));
+            return new Number.integer (0);
+        }
+
         /* 0^-n invalid */
         if (is_zero () && n < 0)
         {
@@ -570,8 +641,17 @@ public class Number : GLib.Object
     }
 
     /* Sets z = n√x */
-    public Number root (int64 n)
+    public Number root (int64 n, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
+        if (budget != null && budget.max_power_exponent > 0 && abs_int64 (n) > budget.max_power_exponent)
+        {
+            Number.set_resource_error (ErrorCode.RESOURCE_LIMIT, _("Root is too large"));
+            return new Number.integer (0);
+        }
+
         uint64 p;
         var z = new Number ();
         if (n < 0)
@@ -603,9 +683,9 @@ public class Number : GLib.Object
     }
 
     /* Sets z = √x */
-    public Number sqrt ()
+    public Number sqrt (EvaluationBudget? budget = null)
     {
-        return root(2);
+        return root (2, budget);
     }
 
     /* Sets z = ln x */
@@ -660,8 +740,11 @@ public class Number : GLib.Object
     }
 
     /* Sets z = x! */
-    public Number factorial ()
+    public Number factorial (EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         /* 0! == 1 */
         if (is_zero ())
             return new Number.integer (1);
@@ -679,6 +762,9 @@ public class Number : GLib.Object
             error = _("Factorial is undefined for negative integers");
             return new Number.integer (0);
         }
+
+        if (!check_abs_limit (budget, budget != null ? budget.max_factorial : 0, _("Factorial is too large")))
+            return new Number.integer (0);
 
         var tmp = add (new Number.integer (1));
         var tmp2 = MPFR.Real (precision);
@@ -764,8 +850,18 @@ public class Number : GLib.Object
     }
 
     /* Sets z = x ^ y mod p */
-    public Number modular_exponentiation (Number exp, Number mod)
+    public Number modular_exponentiation (Number exp, Number mod, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
+        if (budget != null && budget.max_modular_exponent > 0 && !exp.is_complex () && exp.is_integer () &&
+            exp.abs ().compare (new Number.unsigned_integer (budget.max_modular_exponent)) > 0)
+        {
+            Number.set_resource_error (ErrorCode.RESOURCE_LIMIT, _("Modular exponent is too large"));
+            return new Number.integer (0);
+        }
+
         var base_value = copy ();
         if (exp.is_negative ())
             base_value = base_value.reciprocal ();
@@ -774,6 +870,9 @@ public class Number : GLib.Object
         var two = new Number.integer (2);
         while (!exp_value.is_zero ())
         {
+            if (!charge_budget (budget))
+                return new Number.integer (0);
+
             bool is_even = exp_value.modulus_divide (two).is_zero ();
             if (!is_even)
             {
@@ -959,8 +1058,11 @@ public class Number : GLib.Object
     }
 
     /* Sets z = bitwise AND for each bit in x and y */
-    public Number and (Number y)
+    public Number and (Number y, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when bitwise AND attempted on non-integer values */
@@ -968,12 +1070,15 @@ public class Number : GLib.Object
             return new Number.integer (0);
         }
 
-        return bitwise (y, (v1, v2) => { return v1 & v2; }, 0);
+        return bitwise (y, (v1, v2) => { return v1 & v2; }, 0, budget);
     }
 
     /* Sets z = bitwise NAND for each bit in x and y */
-    public Number nand (Number y, int wordlen)
+    public Number nand (Number y, int wordlen, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when bitwise NAND attempted on non-integer values */
@@ -981,12 +1086,15 @@ public class Number : GLib.Object
             return new Number.integer (0);
         }
 
-        return bitwise (y, (v1, v2) => { return v1 & v2; }, wordlen).not (wordlen);
+        return bitwise (y, (v1, v2) => { return v1 & v2; }, wordlen, budget).not (wordlen, budget);
     }
 
     /* Sets z = bitwise OR for each bit in x and y */
-    public Number or (Number y)
+    public Number or (Number y, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when bitwise OR attempted on non-integer values */
@@ -994,12 +1102,15 @@ public class Number : GLib.Object
             return new Number.integer (0);
         }
 
-        return bitwise (y, (v1, v2) => { return v1 | v2; }, 0);
+        return bitwise (y, (v1, v2) => { return v1 | v2; }, 0, budget);
     }
 
     /* Sets z = bitwise NOR for each bit in x and y */
-    public Number nor (Number y, int wordlen)
+    public Number nor (Number y, int wordlen, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when bitwise NOR attempted on non-integer values */
@@ -1007,12 +1118,15 @@ public class Number : GLib.Object
             return new Number.integer (0);
         }
 
-        return bitwise (y, (v1, v2) => { return v1 | v2; }, wordlen).not (wordlen);
+        return bitwise (y, (v1, v2) => { return v1 | v2; }, wordlen, budget).not (wordlen, budget);
     }
 
     /* Sets z = bitwise XOR for each bit in x and y */
-    public Number xor (Number y)
+    public Number xor (Number y, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when bitwise XOR attempted on non-integer values */
@@ -1020,12 +1134,15 @@ public class Number : GLib.Object
             return new Number.integer (0);
         }
 
-        return bitwise (y, (v1, v2) => { return v1 ^ v2; }, 0);
+        return bitwise (y, (v1, v2) => { return v1 ^ v2; }, 0, budget);
     }
 
     /* Sets z = bitwise XNOR for each bit in x and y */
-    public Number xnor (Number y, int wordlen)
+    public Number xnor (Number y, int wordlen, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (!is_natural () || !y.is_natural ())
         {
             /* Translators: Error displayed when bitwise XNOR attempted on non-integer values */
@@ -1033,12 +1150,15 @@ public class Number : GLib.Object
             return new Number.integer (0);
         }
 
-        return bitwise (y, (v1, v2) => { return v1 ^ v2; }, wordlen).not (wordlen);
+        return bitwise (y, (v1, v2) => { return v1 ^ v2; }, wordlen, budget).not (wordlen, budget);
     }
 
     /* Sets z = bitwise NOT for each bit in x for word of length 'wordlen' */
-    public Number not (int wordlen)
+    public Number not (int wordlen, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (!is_natural ())
         {
             /* Translators: Error displayed when bitwise NOT attempted on non-integer values */
@@ -1046,7 +1166,7 @@ public class Number : GLib.Object
             return new Number.integer (0);
         }
 
-        return bitwise (new Number.integer (0), (v1, v2) => { return v1 ^ 0xF; }, wordlen);
+        return bitwise (new Number.integer (0), (v1, v2) => { return v1 ^ 0xF; }, wordlen, budget);
     }
 
     /* Sets z = x left shifted by 'count' bits for word of length 'wordlen' */
@@ -1156,8 +1276,11 @@ public class Number : GLib.Object
     }
 
     /* Sets z = xCr */
-    public Number combination (Number r)
+    public Number combination (Number r, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (!is_natural () || !r.is_natural ())
         {
             error = _("Combination is only defined for non-negative integers");
@@ -1170,12 +1293,23 @@ public class Number : GLib.Object
         }
 
         var r1 = r.compare (divide_integer (2)) <= 0 ? r : subtract (r);
-        return permutation (r1).divide (r1.factorial ());
+        var p = permutation (r1, budget);
+        if (Number.error != null)
+            return new Number.integer (0);
+
+        var f = r1.factorial (budget);
+        if (Number.error != null)
+            return new Number.integer (0);
+
+        return p.divide (f);
     }
 
     /* Sets z = xPr */
-    public Number permutation (Number r)
+    public Number permutation (Number r, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (!is_natural () || !r.is_natural ())
         {
             error = _("Permutation is only defined for non-negative integers");
@@ -1190,17 +1324,29 @@ public class Number : GLib.Object
         if (r.is_zero ())
             return new Number.integer (1);
 
+        if (!check_abs_limit (budget, budget != null ? budget.max_permutation : 0, _("Permutation is too large")) ||
+            !r.check_abs_limit (budget, budget != null ? budget.max_permutation : 0, _("Permutation is too large")))
+            return new Number.integer (0);
+
         var value = to_integer ();
         var z = this;
         for (var i = value - r.to_integer () + 1; i < value; i++)
+        {
+            if (!charge_budget (budget))
+                return new Number.integer (0);
+
             z = z.multiply_integer (i);
+        }
 
         return z;
     }
 
     /* Sets z to be the greatest common divisor of 'args' */
-    public static Number gcd (Number[] args)
+    public static Number gcd (Number[] args, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         for (var i = 0; i < args.length; i++)
             if (!args[i].is_integer ())
             {
@@ -1211,16 +1357,19 @@ public class Number : GLib.Object
         if (args.length == 1)
             return args[0].abs ();
 
-        var z = gcd_x_y (args[0], args[1]);
+        var z = gcd_x_y (args[0], args[1], budget);
         for (var i = 2; i < args.length; i++)
-            z = gcd_x_y (z, args[i]);
+            z = gcd_x_y (z, args[i], budget);
 
         return z.abs ();
     }
 
     /* Sets z to be the least common multiple of 'args' */
-    public static Number lcm (Number[] args)
+    public static Number lcm (Number[] args, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         for (var i = 0; i < args.length; i++)
             if (!args[i].is_integer ())
             {
@@ -1231,18 +1380,21 @@ public class Number : GLib.Object
         if (args.length == 1)
             return args[0].abs ();
 
-        var z = lcm_x_y (args[0], args[1]);
+        var z = lcm_x_y (args[0], args[1], budget);
         for (var i = 2; i < args.length; i++)
-            z = lcm_x_y (z, args[i]);
+            z = lcm_x_y (z, args[i], budget);
 
         return z.abs ();
     }
 
-    private static Number gcd_x_y (Number x, Number y)
+    private static Number gcd_x_y (Number x, Number y, EvaluationBudget? budget = null)
     {
         var a = x, b = y;
         while (!b.is_zero ())
         {
+            if (!charge_budget (budget))
+                return new Number.integer (0);
+
             var remainder = a.modulus_divide (b);
             a = b;
             b = remainder;
@@ -1250,11 +1402,16 @@ public class Number : GLib.Object
         return a;
     }
 
-    private static Number lcm_x_y (Number x, Number y)
+    private static Number lcm_x_y (Number x, Number y, EvaluationBudget? budget = null)
     {
         if (x.is_zero () || y.is_zero ())
             return new Number.integer (0);
-        return x.divide (gcd_x_y (x, y)).multiply (y);
+
+        var gcd = gcd_x_y (x, y, budget);
+        if (Number.error != null)
+            return new Number.integer (0);
+
+        return x.divide (gcd).multiply (y);
     }
 
     /* Sets z to be the sum of 'args' */
@@ -1419,9 +1576,12 @@ public class Number : GLib.Object
     }
 
     /* Returns a list of all prime factors in x as Numbers */
-    public List<Number?> factorize ()
+    public List<Number?> factorize (EvaluationBudget? budget = null)
     {
         var factors = new List<Number?> ();
+
+        if (!charge_budget (budget))
+            return factors;
 
         var value = abs ();
 
@@ -1451,7 +1611,7 @@ public class Number : GLib.Object
 
         if (value.compare (int_max) <= 0)
         {
-            var factors_int64 = factorize_uint64 (value.to_unsigned_integer ());
+            var factors_int64 = factorize_uint64 (value.to_unsigned_integer (), budget);
             if (is_negative ())
                 factors_int64.data = factors_int64.data.invert_sign ();
             return factors_int64;
@@ -1460,6 +1620,9 @@ public class Number : GLib.Object
         var divisor = new Number.integer (2);
         while (true)
         {
+            if (!charge_budget (budget))
+                return factors;
+
             var tmp = value.divide (divisor);
             if (tmp.is_integer ())
             {
@@ -1471,14 +1634,17 @@ public class Number : GLib.Object
         }
 
         divisor = new Number.integer (3);
-        var root = value.sqrt ();
+        var root = value.sqrt (budget);
         while (divisor.compare (root) <= 0)
         {
+            if (!charge_budget (budget))
+                return factors;
+
             var tmp = value.divide (divisor);
             if (tmp.is_integer ())
             {
                 value = tmp;
-                root = value.sqrt ();
+                root = value.sqrt (budget);
                 factors.append (divisor);
             }
             else
@@ -1497,19 +1663,28 @@ public class Number : GLib.Object
         return factors;
     }
 
-    public List<Number?> factorize_uint64 (uint64 n)
+    public List<Number?> factorize_uint64 (uint64 n, EvaluationBudget? budget = null)
     {
         var factors = new List<Number?> ();
         while (n % 2 == 0)
         {
+            if (!charge_budget (budget))
+                return factors;
+
             n /= 2;
             factors.append (new Number.unsigned_integer (2));
         }
 
         for (uint64 divisor = 3; divisor <= n / divisor; divisor += 2)
         {
+            if (!charge_budget (budget))
+                return factors;
+
             while (n % divisor == 0)
             {
+                if (!charge_budget (budget))
+                    return factors;
+
                 n /= divisor;
                 factors.append (new Number.unsigned_integer (divisor));
             }
@@ -1579,16 +1754,25 @@ public class Number : GLib.Object
         res.multiply_mpreal (op, scale);
     }
 
-    private Number bitwise (Number y, BitwiseFunc bitwise_operator, int wordlen)
+    private Number bitwise (Number y, BitwiseFunc bitwise_operator, int wordlen, EvaluationBudget? budget = null)
     {
+        if (!charge_budget (budget))
+            return new Number.integer (0);
+
         if (wordlen > 0 && (is_overflow (wordlen) || y.is_overflow (wordlen)))
         {
             error = _("Overflow. Try a bigger word size");
             return new Number.integer (0);
         }
 
-        var text1 = to_hex_string ();
-        var text2 = y.to_hex_string ();
+        var text1 = to_hex_string (budget);
+        if (text1 == null)
+            return new Number.integer (0);
+
+        var text2 = y.to_hex_string (budget);
+        if (text2 == null)
+            return new Number.integer (0);
+
         var offset1 = text1.length - 1;
         var offset2 = text2.length - 1;
         var offset_out = wordlen / 4 - 1;
@@ -1599,6 +1783,9 @@ public class Number : GLib.Object
         /* Perform bitwise operator on each character from right to left */
         for (text_out[offset_out+1] = '\0'; offset_out >= 0; offset_out--)
         {
+            if (!charge_budget (budget))
+                return new Number.integer (0);
+
             int v1 = 0, v2 = 0;
             const char digits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
@@ -1629,11 +1816,18 @@ public class Number : GLib.Object
         return 0;
     }
 
-    private string to_hex_string ()
+    private string? to_hex_string (EvaluationBudget? budget = null)
     {
         var serializer = new Serializer (DisplayFormat.FIXED, 16, 0);
         serializer.check_fixed_max = false;
-        return serializer.to_string (this);
+        var text = serializer.to_string (this, budget);
+        if (serializer.error != null)
+        {
+            Number.set_resource_error (ErrorCode.RESOURCE_LIMIT, serializer.error);
+            return null;
+        }
+
+        return text;
     }
 }
 

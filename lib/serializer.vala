@@ -73,7 +73,7 @@ public class Serializer : Object
         update_zero_string ();
     }
 
-    public string to_string (Number x)
+    public string to_string (Number x, EvaluationBudget? budget = null)
     {
         error = null;
         if (!x.is_finite ())
@@ -89,24 +89,24 @@ public class Serializer : Object
         int n_digits = 0;
         /* For base conversion equation, use FIXED format. */
         if (representation_base != number_base)
-            return cast_to_string (x, ref n_digits);
+            return cast_to_string (x, ref n_digits, budget);
         switch (format)
         {
         default:
         case DisplayFormat.AUTOMATIC:
-            return to_automatic_string (x, false);
+            return to_automatic_string (x, false, budget);
         case DisplayFormat.FIXED:
-            return cast_to_string (x, ref n_digits);
+            return cast_to_string (x, ref n_digits, budget);
         case DisplayFormat.SCIENTIFIC:
             if (representation_base == 10)
-                return cast_to_exponential_string (x, false);
+                return cast_to_exponential_string (x, false, budget);
             else
-                return to_automatic_string (x, false);
+                return to_automatic_string (x, false, budget);
         case DisplayFormat.ENGINEERING:
             if (representation_base == 10)
-                return cast_to_exponential_string (x, true);
+                return cast_to_exponential_string (x, true, budget);
             else
-                return to_automatic_string (x, true);
+                return to_automatic_string (x, true, budget);
         }
     }
 
@@ -259,10 +259,10 @@ public class Serializer : Object
         zero_string = cast_to_string (new Number.integer (0), ref n_digits);
     }
 
-    private string to_automatic_string (Number x, bool eng_format)
+    private string to_automatic_string (Number x, bool eng_format, EvaluationBudget? budget = null)
     {
         int n_digits = 0;
-        var s0 = cast_to_string (x, ref n_digits);
+        var s0 = cast_to_string (x, ref n_digits, budget);
         error = null;
         /* Decide leading digits based on number_base. Support 64 bits in programming mode. */
         switch (representation_base)
@@ -272,35 +272,35 @@ public class Serializer : Object
             if (n_digits <= 64 && s0 != zero_string)
                 return s0;
             else
-                return cast_to_exponential_string (x, eng_format);
+                return cast_to_exponential_string (x, eng_format, budget);
         /* 22 digits for octal mode. */
         case 8:
             if (n_digits <= 22 && s0 != zero_string)
                 return s0;
             else
-                return cast_to_exponential_string (x, eng_format);
+                return cast_to_exponential_string (x, eng_format, budget);
         /* 16 digits for hexadecimal mode. */
         case 16:
             if(n_digits <= 16 && s0 != zero_string)
                 return s0;
             else
-                return cast_to_exponential_string (x, eng_format);
+                return cast_to_exponential_string (x, eng_format, budget);
         /* Use default leading_digits for base 10 numbers. */
         case 10:
         default:
             if (n_digits <= leading_digits && s0 != zero_string)
                 return s0;
             else
-                return cast_to_exponential_string (x, eng_format);
+                return cast_to_exponential_string (x, eng_format, budget);
         }
     }
 
-    private string cast_to_string (Number x, ref int n_digits)
+    private string cast_to_string (Number x, ref int n_digits, EvaluationBudget? budget = null)
     {
         var string = new StringBuilder.sized (1024);
 
         var x_real = x.real_component ();
-        if (!cast_to_string_real (x_real, string, false, ref n_digits))
+        if (!cast_to_string_real (x_real, string, false, ref n_digits, budget))
             return zero_string;
         if (x.is_complex ())
         {
@@ -315,7 +315,7 @@ public class Serializer : Object
 
             var s = new StringBuilder.sized (1024);
             int n_complex_digits = 0;
-            if (!cast_to_string_real (x_im, s, force_sign, ref n_complex_digits))
+            if (!cast_to_string_real (x_im, s, force_sign, ref n_complex_digits, budget))
                 return zero_string;
             if (n_complex_digits > n_digits)
                 n_digits = n_complex_digits;
@@ -347,7 +347,7 @@ public class Serializer : Object
         return string.str;
     }
 
-    private bool cast_to_string_real (Number x, StringBuilder string, bool force_sign, ref int n_digits)
+    private bool cast_to_string_real (Number x, StringBuilder string, bool force_sign, ref int n_digits, EvaluationBudget? budget = null)
     {
         const char digits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
@@ -373,6 +373,18 @@ public class Serializer : Object
         var i = 0;
         do
         {
+            if (budget != null)
+            {
+                ErrorCode budget_error;
+                string? budget_message;
+
+                if (!budget.check_output_digits ((uint) n_digits + 1, out budget_error, out budget_message))
+                {
+                    error = budget_message;
+                    return false;
+                }
+            }
+
             if (show_tsep && i == get_thousands_separator_count ())
             {
                 string.prepend_unichar (get_thousands_separator ());
@@ -410,6 +422,18 @@ public class Serializer : Object
         temp = rounded_number.fractional_component ();
         for (i = 0; i < trailing_digits; i++)
         {
+            if (budget != null)
+            {
+                ErrorCode budget_error;
+                string? budget_message;
+
+                if (!budget.check_output_digits ((uint) n_digits + 1, out budget_error, out budget_message))
+                {
+                    error = budget_message;
+                    return false;
+                }
+            }
+
             if (temp.is_zero ())
                 break;
 
@@ -458,12 +482,12 @@ public class Serializer : Object
         return true;
     }
 
-    private string cast_to_exponential_string (Number x, bool eng_format)
+    private string cast_to_exponential_string (Number x, bool eng_format, EvaluationBudget? budget = null)
     {
         var string = new StringBuilder.sized (1024);
 
         var x_real = x.real_component ();
-        var exponent = cast_to_exponential_string_real (x_real, string, eng_format, false);
+        var exponent = cast_to_exponential_string_real (x_real, string, eng_format, false, budget);
         append_exponent (string, exponent);
 
         if (x.is_complex ())
@@ -478,7 +502,7 @@ public class Serializer : Object
             }
 
             var s = new StringBuilder.sized (1024);
-            exponent = cast_to_exponential_string_real (x_im, s, eng_format, force_sign);
+            exponent = cast_to_exponential_string_real (x_im, s, eng_format, force_sign, budget);
             if (s.str == "0" || s.str == "+0" || s.str == "−0")
             {
                 /* Ignore */
@@ -505,7 +529,7 @@ public class Serializer : Object
         return string.str;
     }
 
-    private int cast_to_exponential_string_real (Number x, StringBuilder string, bool eng_format, bool force_sign)
+    private int cast_to_exponential_string_real (Number x, StringBuilder string, bool eng_format, bool force_sign, EvaluationBudget? budget = null)
     {
         if (x.is_negative ())
             string.append ("−");
@@ -524,7 +548,7 @@ public class Serializer : Object
         }
 
         int n_digits = 0;
-        var mantissa_string = cast_to_string (mantissa, ref n_digits);
+        var mantissa_string = cast_to_string (mantissa, ref n_digits, budget);
         if (eng_format)
         {
             mantissa_string = mantissa_string.replace (tsep.to_string (), "");

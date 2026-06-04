@@ -4,6 +4,7 @@ libcalculator_sources = [
   'equation.vala',
   'equation-lexer.vala',
   'equation-parser.vala',
+  'evaluation-budget.vala',
   'financial.vala',
   'function-manager.vala',
   'math-equation.vala',

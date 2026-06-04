@@ -14,10 +14,11 @@
 public class SearchProvider : Object
 {
     private unowned SearchProviderApp application;
-    private Cancellable cancellable;
     private Settings settings;
+    private EvaluationBudget? active_budget;
 
     private const int MAX_CACHED_EQUATIONS = 10;
+    private const uint SEARCH_TIMEOUT_MSEC = 50;
     private Queue<string> queued_equations;
     private HashTable<string, string> cached_equations;
 
@@ -39,8 +40,11 @@ public class SearchProvider : Object
     [DBus (visible = false)]
     public void cancel ()
     {
-        if (cancellable != null)
-            cancellable.cancel ();
+        if (active_budget != null)
+        {
+            active_budget.cancel ();
+            active_budget = null;
+        }
     }
 
     private static string terms_to_equation (string[] terms)
@@ -53,55 +57,51 @@ public class SearchProvider : Object
         return equation;
     }
 
-    private async Subprocess solve_subprocess (string equation) throws Error
+    private bool solve_normalized_equation (string normalized_equation, out string result)
     {
-        Subprocess subprocess;
+        result = "";
 
         if (settings == null)
             settings = new Settings ("org.gnome.calculator");
 
-        string[] argv = {
-            argv0,
-            "--solve",
-            equation,
-            "--angle-units",
-            settings.get_string ("angle-units"),
-            null
-        };
+        var budget = new EvaluationBudget.for_search (SEARCH_TIMEOUT_MSEC);
+        active_budget = budget;
 
-        debug (@"Trying to solve $(equation)");
+        var e = new Equation (normalized_equation);
+        e.base = 10;
+        e.wordlen = 32;
+        e.angle_units = (AngleUnit) settings.get_enum ("angle-units");
 
-        try
-        {
-            // Eat output so that it doesn't wind up in the journal. It's
-            // expected that most searches are not valid calculator input.
-            var flags = SubprocessFlags.STDOUT_PIPE | SubprocessFlags.STDERR_PIPE;
-            subprocess = new Subprocess.newv (argv, flags);
-        }
-        catch (Error e)
-        {
-            throw e;
-        }
+        ErrorCode error;
+        string? error_token = null;
+        uint representation_base;
+        var number = e.parse_with_budget (budget, out representation_base, out error, out error_token);
 
-        if (cancellable == null)
-            cancellable = new Cancellable ();
+        if (active_budget == budget)
+            active_budget = null;
 
-        cancellable.cancelled.connect (() => {
-            subprocess.force_exit ();
-            cancellable = null;
-        });
+        if (number == null || error != ErrorCode.NONE)
+            return false;
+
+        var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
+        serializer.set_representation_base (representation_base);
+        result = serializer.to_string (number, budget);
+
+        if (serializer.error != null)
+            return false;
+
+        ErrorCode budget_error;
+        string? budget_message;
+        if (!budget.check (out budget_error, out budget_message))
+            return false;
 
         application.renew_inactivity_timeout ();
 
-        return subprocess;
+        return true;
     }
 
     private async bool solve_equation (string equation) throws DBusError
     {
-        string? result;
-
-        cancel();
-
         var tsep_string = Posix.nl_langinfo (Posix.NLItem.THOUSEP);
         if (tsep_string == null || tsep_string == "")
             tsep_string = " ";
@@ -117,24 +117,18 @@ public class SearchProvider : Object
         if (double.try_parse (normalized_equation))
             return false;
 
+        // Do not let shell search mutate calculator variables or functions.
+        if (normalized_equation.index_of_char ('=') >= 0)
+            return false;
+
         if (cached_equations.lookup (equation) != null)
             return true;
 
-        try
-        {
-            var subprocess = yield solve_subprocess (equation);
-            yield subprocess.communicate_utf8_async (null, cancellable, out result, null);
-            subprocess.wait_check (cancellable);
-        }
-        catch (SpawnError e)
-        {
-            critical ("Failed to spawn Calculator: %s", e.message);
-            throw new DBusError.SPAWN_FAILED (e.message);
-        }
-        catch (Error e)
-        {
+        cancel ();
+
+        string result;
+        if (!solve_normalized_equation (normalized_equation, out result))
             return false;
-        }
 
         queued_equations.push_tail (equation);
         cached_equations.insert (equation, result.strip ());
@@ -380,13 +374,9 @@ public class SearchProviderApp : Application
     }
 }
 
-static string argv0;
-
 int main (string[] args)
 {
     Intl.setlocale (LocaleCategory.ALL, "");
-
-    argv0 = args[0];
 
     return new SearchProviderApp ().run (args);
 }
