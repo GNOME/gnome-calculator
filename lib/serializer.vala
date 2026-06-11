@@ -570,20 +570,27 @@ public class Serializer : Object
 
     private void append_exponent (StringBuilder string, int exponent)
     {
-        const unichar super_digits[] = {'⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'};
+        const unichar super_digits[] = {'⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹', 'ᴬ', 'ᴮ', 'ᶜ', 'ᴰ', 'ᴱ', 'ᶠ'};
 
         if (exponent == 0)
             return;
 
-        string.append ("×10"); // FIXME: Use the current base
+        string.append ("×10");
         if (exponent < 0)
         {
             exponent = -exponent;
             string.append_unichar ('⁻');
         }
 
-        var super_value = "%d".printf (exponent);
-        for (var i = 0; i < super_value.length; i++)
-            string.append_unichar (super_digits[super_value[i] - '0']);
+        unichar[] exp_buf = {};
+        var remaining = exponent;
+        do
+        {
+            exp_buf += super_digits[remaining % number_base];
+            remaining /= number_base;
+        } while (remaining > 0);
+
+        for (var i = exp_buf.length - 1; i >= 0; i--)
+            string.append_unichar (exp_buf[i]);
     }
 }
