@@ -69,6 +69,8 @@ public class MathWindow : Adw.ApplicationWindow
     construct
     {
         notify["equation"].connect (construct_finish);
+        close_request.connect (on_close_request);
+        Idle.add (() => { restore_history_tape (); return Source.REMOVE; });
     }
 
     private void construct_finish ()
@@ -124,6 +126,7 @@ public class MathWindow : Adw.ApplicationWindow
     private void clear_cb ()
     {
         history.clear ();
+        clear_history_tape ();
     }
 
     private void mode_changed_cb ()
@@ -358,5 +361,61 @@ public class MathWindow : Adw.ApplicationWindow
         preferences_dialog.pop_subpage ();
         preferences_dialog.get_visible_page ().scroll_to_top ();
         preferences_dialog.present (this);
+    }
+
+
+    private bool on_close_request ()
+    {
+        save_history_tape ();
+        return false; /* false = let the window close normally */
+    }
+
+    /* Walk HistoryView entries and serialise to GSettings a(ss). */
+    private void save_history_tape ()
+    {
+        var settings = new Settings ("org.gnome.calculator");
+        var builder = new VariantBuilder (new VariantType ("a(ss)"));
+
+        int i = 0;
+        HistoryEntry? entry;
+        while ((entry = history.get_entry_at (i)) != null)
+        {
+            builder.add ("(ss)",
+                         entry.equation_label.get_text (),
+                         entry.answer_label.get_text ());
+            i++;
+        }
+
+        settings.set_value ("history-tape", builder.end ());
+        settings.sync ();
+    }
+
+    private void clear_history_tape ()
+    {
+        var settings = new Settings ("org.gnome.calculator");
+        var builder = new VariantBuilder (new VariantType ("a(ss)"));
+
+        settings.set_value ("history-tape", builder.end ());
+        settings.sync ();
+    }
+
+    /* Read GSettings and replay each (equation, answer) pair back into
+     * the history view via HistoryEntry.from_saved_strings(). */
+    private void restore_history_tape ()
+    {
+        var settings = new Settings ("org.gnome.calculator");
+        var tape = settings.get_value ("history-tape");
+
+        if (tape.n_children () == 0)
+            return;
+
+        var iter = tape.iterator ();
+        Variant? pair;
+        while ((pair = iter.next_value ()) != null)
+        {
+            string eq, ans;
+            pair.get ("(ss)", out eq, out ans);
+            history.load_entry (eq, ans);
+        }
     }
 }

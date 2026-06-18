@@ -43,13 +43,8 @@ public class HistoryView : Adw.Bin
         adjustment.set_value (adjustment.get_upper () - adjustment.get_page_size ());
     }
 
-    public void insert_entry (string equation, Number answer, int number_base, uint representation_base)
+    private void append_entry (HistoryEntry entry, string equation)
     {
-        if (last_equation == equation)
-            return;
-
-        var entry = new HistoryEntry (equation, answer, serializer);
-
         listbox.insert (entry, -1);
 
         entry.answer_clicked.connect ((ans) => { this.answer_clicked (ans); });
@@ -61,11 +56,26 @@ public class HistoryView : Adw.Bin
         row_added ();
     }
 
+    public void insert_entry (string equation, Number answer, int number_base, uint representation_base)
+    {
+        if (last_equation == equation)
+            return;
+
+        append_entry (new HistoryEntry (equation, answer, serializer), equation);
+    }
+
+    public void load_entry (string equation, string answer)
+    {
+        append_entry (new HistoryEntry.from_saved_strings (equation, answer), equation);
+    }
+
     public void clear ()
     {
+        last_equation = null;
         _rows = 0;
         _current = 0;
-        for (Gtk.Widget? child = listbox.get_row_at_index (0); child != null; child = listbox.get_row_at_index (0)) {
+        for (Gtk.Widget? child = listbox.get_row_at_index (0); child != null; child = listbox.get_row_at_index (0))
+        {
             listbox.remove (child);
         }
     }
@@ -90,14 +100,12 @@ public class HistoryEntry : Gtk.ListBoxRow
     [GtkChild]
     public unowned Gtk.Grid grid;
 
-    private Number number;
+    private Number? number = null;
 
     public signal void answer_clicked (string ans);
     public signal void equation_clicked (string equation);
 
-    public HistoryEntry (string equation,
-                         Number answer,
-                         Serializer serializer)
+    public HistoryEntry (string equation, Number answer, Serializer serializer)
     {
         this.number = answer;
         grid.set_direction (Gtk.TextDirection.LTR);
@@ -108,8 +116,25 @@ public class HistoryEntry : Gtk.ListBoxRow
         redisplay (serializer);
     }
 
+    public HistoryEntry.from_saved_strings (string equation, string answer)
+    {
+        grid.set_direction (Gtk.TextDirection.LTR);
+        equation_label.set_direction (Gtk.TextDirection.LTR);
+        answer_label.set_direction (Gtk.TextDirection.LTR);
+
+        equation_label.set_text (equation);
+        equation_label.set_tooltip_text ("\u200E" + equation);
+        answer_label.set_text (answer);
+        answer_label.set_tooltip_text ("\u200E" + answer);
+    }
+
     public void redisplay (Serializer serializer)
     {
+        /* Restored rows are stored display strings. Do not recalculate them
+         * from a Number, because they intentionally do not have one. */
+        if (number == null)
+            return;
+
         var answer = serializer.to_string (number);
         answer_label.set_tooltip_text ("\u200E" + answer);
         answer_label.set_text (answer);
