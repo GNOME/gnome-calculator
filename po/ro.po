@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-06-04 11:03+0000\n"
-"PO-Revision-Date: 2026-06-06 17:55+0200\n"
+"POT-Creation-Date: 2026-06-19 09:00+0000\n"
+"PO-Revision-Date: 2026-06-20 10:43+0200\n"
 "Last-Translator: Antonio Marin <gnmer.6qxyg@slmail.me>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>\n"
 "Language: ro\n"
@@ -120,69 +120,82 @@ msgstr "Modul Conversie"
 msgid "The GNOME Project"
 msgstr "Proiectul GNOME"
 
-#: data/org.gnome.calculator.gschema.xml:31
+#: data/org.gnome.calculator.gschema.xml:32
+msgid "Persistent history tape"
+msgstr "Cronologie persistentă"
+
+#: data/org.gnome.calculator.gschema.xml:33
+msgid ""
+"History entries saved across sessions as (equation, answer) pairs. Written "
+"on window close. Cleared when the user clears history."
+msgstr ""
+"Calculele precedente sunt salvate la închiderea aplicației ca perechi "
+"(ecuație, rezultat). Sunt scrise la închiderea ferestrei și șterse cânt "
+"utilizatorul șterge cronologia."
+
+#: data/org.gnome.calculator.gschema.xml:41
 msgid "Accuracy value"
 msgstr "Numărul de zecimale"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:42
 msgid "The number of digits displayed after the numeric point"
 msgstr "Numărul de cifre afișate după virgulă"
 
-#: data/org.gnome.calculator.gschema.xml:37
+#: data/org.gnome.calculator.gschema.xml:47
 msgid "Word size"
 msgstr "Mărimea cuvântului"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "The size of the words used in bitwise operations"
 msgstr "Mărimea cuvintelor folosite în operațiile cu biți"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Numeric base"
 msgstr "Bază numerică"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:54
 msgid "The numeric base"
 msgstr "Baza numerică"
 
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Group digits"
 msgstr "Grupează cifrele"
 
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "Indicates whether digits are grouped in large numbers."
 msgstr "Indică dacă să se afișeze separatoare de mii în numerele mari."
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Show trailing zeroes"
 msgstr "Afișează zerouri după virgulă"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:64
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr "Indică dacă să se afișeze zerouri după virgulă."
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Number format"
 msgstr "Format număr"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:69
 msgid "The format to display numbers in"
 msgstr "Formatul în care se afișează numerele"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:73
 msgid "Angle units"
 msgstr "Unități unghi"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:74
 msgid "The angle units to use"
 msgstr "Unitățile de măsurare a unghiului de utilizat"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency update interval"
 msgstr "Intervalul de actualizare a valutei"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:79
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
@@ -190,11 +203,11 @@ msgstr ""
 "Cât de des ar trebui să fie actualizate cursurile de schimb valutar. "
 "Valoarea 0 înseamnă că nu vor fi actualizate cursurile de schimb valutar."
 
-#: data/org.gnome.calculator.gschema.xml:73
+#: data/org.gnome.calculator.gschema.xml:83
 msgid "Currency display"
 msgstr "Valuta"
 
-#: data/org.gnome.calculator.gschema.xml:74
+#: data/org.gnome.calculator.gschema.xml:84
 msgid ""
 "Indicates whether to show currency code, currency name or both of them in "
 "the converter."
@@ -202,87 +215,87 @@ msgstr ""
 "Indică dacă să se afișeze prescurtarea valutei, numele valutei sau ambele în "
 "convertor."
 
-#: data/org.gnome.calculator.gschema.xml:78
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Enabled completions"
 msgstr "Completare automată activată"
 
-#: data/org.gnome.calculator.gschema.xml:79
+#: data/org.gnome.calculator.gschema.xml:89
 msgid ""
 "The types of completion proposals to be shown in the auto-completion list."
 msgstr ""
 "Tipurile de sugestii de completare care vor apărea în lista de completare "
 "automată."
 
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:93
 msgid "Favorite currencies"
 msgstr "Valute preferate"
 
-#: data/org.gnome.calculator.gschema.xml:84
+#: data/org.gnome.calculator.gschema.xml:94
 msgid "The favorite currencies to be shown at the top of the currency list."
 msgstr ""
 "Valutele preferate care vor fi afișate în partea de sus a listei de valute."
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Button mode"
 msgstr "Modul buton"
 
-#: data/org.gnome.calculator.gschema.xml:89
+#: data/org.gnome.calculator.gschema.xml:99
 msgid "The button mode"
 msgstr "Modul buton"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Unit category"
 msgstr "Categoria de unități"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:104
 msgid "Currently selected unit category in the converter"
 msgstr "Categoria de unități aleasă în prezent în convertor"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Source units"
 msgstr "Unități sursă"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "Currently selected source units in the converter"
 msgstr "Unitățile sursă alese în prezent în convertor"
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Target units"
 msgstr "Unități de destinație"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Currently selected target units in the converter"
 msgstr "Unitățile de destinație alese în prezent în convertor"
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Internal precision"
 msgstr "Precizie internă"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "The internal precision used with the MPFR library"
 msgstr "Precizia internă utilizată cu biblioteca MPFR"
 
-#: data/org.gnome.calculator.gschema.xml:113
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window position"
 msgstr "Poziția ferestrei"
 
-#: data/org.gnome.calculator.gschema.xml:114
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window position (x and y) of the last closed window."
 msgstr "Poziția ferestrei (x și y) a ultimei ferestre închise."
 
-#: data/org.gnome.calculator.gschema.xml:118
+#: data/org.gnome.calculator.gschema.xml:128
 msgid "Window maximized"
 msgstr "Fereastră maximizată"
 
-#: data/org.gnome.calculator.gschema.xml:119
+#: data/org.gnome.calculator.gschema.xml:129
 msgid "Whether the last closed window was maximized."
 msgstr "Dacă ultima fereastră închisă a fost maximizată."
 
-#: data/org.gnome.calculator.gschema.xml:123
+#: data/org.gnome.calculator.gschema.xml:133
 msgid "Window size"
 msgstr "Mărimea ferestrei"
 
-#: data/org.gnome.calculator.gschema.xml:124
+#: data/org.gnome.calculator.gschema.xml:134
 msgid "Window size (width and height) of the last closed window."
 msgstr "Dimensiunile (lățime și înălțime) ultimei ferestre închise."
 
@@ -291,12 +304,12 @@ msgid "UAE Dirham"
 msgstr "Dirham Emiratele Arabe Unite"
 
 #: lib/currency.vala:83
-msgid "Argentine Peso"
-msgstr "Peso argentinian"
-
-#: lib/currency.vala:84
 msgid "Armenian Dram"
 msgstr "Dram armenian"
+
+#: lib/currency.vala:84
+msgid "Argentine Peso"
+msgstr "Peso argentinian"
 
 #: lib/currency.vala:85
 msgid "Australian Dollar"
@@ -307,250 +320,242 @@ msgid "Bangladeshi Taka"
 msgstr "Bangladeshi Taka"
 
 #: lib/currency.vala:87
-msgid "Bulgarian Lev"
-msgstr "Levă bulgară"
-
-#: lib/currency.vala:88
 msgid "Bahraini Dinar"
 msgstr "Dinar bahrain"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "Dolar brunei"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "Real brazilian"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "Pula botswaneză"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "Dolar canadian"
 
-#: lib/currency.vala:93
-msgid "CFA Franc"
-msgstr "Franc CFA"
-
-#: lib/currency.vala:94
+#: lib/currency.vala:92
 msgid "Swiss Franc"
 msgstr "Franc elvețian"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:93
 msgid "Chilean Peso"
 msgstr "Peso chilian"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:94
 msgid "Chinese Yuan"
 msgstr "Yuan chinezesc"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:95
 msgid "Colombian Peso"
 msgstr "Peso columbian"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:96
 msgid "Czech Koruna"
 msgstr "Coroană cehă"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:97
 msgid "Danish Krone"
 msgstr "Coroană daneză"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:98
 msgid "Algerian Dinar"
 msgstr "Dinar algerian"
 
-#: lib/currency.vala:101
-msgid "Estonian Kroon"
-msgstr "Coroană estoniană"
-
-#: lib/currency.vala:102
+#: lib/currency.vala:99
 msgid "Egyptian Pound"
 msgstr "Liră egipteană"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:100
 msgid "Euro"
 msgstr "Euro"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:101
 msgid "British Pound Sterling"
 msgstr "Liră sterlină britanică"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:102
 msgid "Hong Kong Dollar"
 msgstr "Dolar Hong Kong"
 
-#: lib/currency.vala:106
-msgid "Croatian Kuna"
-msgstr "Kună croată"
-
-#: lib/currency.vala:107
+#: lib/currency.vala:103
 msgid "Hungarian Forint"
 msgstr "Forint maghiar"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:104
 msgid "Indonesian Rupiah"
 msgstr "Rupie indoneziană"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:105
 msgid "Israeli New Shekel"
 msgstr "Shekel nou israelian"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:106
 msgid "Indian Rupee"
 msgstr "Rupie indiană"
 
-#: lib/currency.vala:111
+#: lib/currency.vala:107
 msgid "Iranian Rial"
 msgstr "Rial iranian"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:108
 msgid "Icelandic Krona"
 msgstr "Coroană islandeză"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:109
 msgid "Japanese Yen"
 msgstr "Yen japonez"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:110
 msgid "Jamaican Dollar"
 msgstr "Dolar jamaican"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:111
 msgid "South Korean Won"
 msgstr "Won sud-coreean"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:112
 msgid "Kuwaiti Dinar"
 msgstr "Dinar kuweitian"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:113
 msgid "Kazakhstani Tenge"
 msgstr "Tenge kazahă"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:114
 msgid "Sri Lankan Rupee"
 msgstr "Rupie Sri Lanka"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:115
 msgid "Libyan Dinar"
 msgstr "Dinar libian"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:116
 msgid "Mauritian Rupee"
 msgstr "Rupie mauritiană"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:117
 msgid "Mexican Peso"
 msgstr "Peso mexican"
 
-#: lib/currency.vala:122
+#: lib/currency.vala:118
 msgid "Malaysian Ringgit"
 msgstr "Ringgit malaiezian"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:119
 msgid "Nigerian Naira"
 msgstr "Naira nigeriană"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:120
 msgid "Norwegian Krone"
 msgstr "Coroană norvegiană"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:121
 msgid "Nepalese Rupee"
 msgstr "Rupie nepaleză"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:122
 msgid "New Zealand Dollar"
 msgstr "Dolar neozeelandez"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:123
 msgid "Omani Rial"
 msgstr "Rial Oman"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:124
 msgid "Peruvian Nuevo Sol"
 msgstr "Nuevo sol peruvian"
 
-#: lib/currency.vala:129
+#: lib/currency.vala:125
 msgid "Philippine Peso"
 msgstr "Peso filipinez"
 
-#: lib/currency.vala:130
+#: lib/currency.vala:126
 msgid "Pakistani Rupee"
 msgstr "Rupie pakistaneză"
 
-#: lib/currency.vala:131
+#: lib/currency.vala:127
 msgid "Polish Złoty"
 msgstr "Zlot polonez"
 
-#: lib/currency.vala:132
+#: lib/currency.vala:128
 msgid "Qatari Riyal"
 msgstr "Rial qatarez"
 
-#: lib/currency.vala:133
+#: lib/currency.vala:129
 msgid "New Romanian Leu"
 msgstr "Leu nou românesc"
 
-#: lib/currency.vala:134
+#: lib/currency.vala:130
 msgid "Russian Ruble"
 msgstr "Rublă rusească"
 
-#: lib/currency.vala:135
-msgid "Saudi Riyal"
-msgstr "Rial saudit"
-
-#: lib/currency.vala:136
+#: lib/currency.vala:131
 msgid "Serbian Dinar"
 msgstr "Dinar sârb"
 
-#: lib/currency.vala:137
+#: lib/currency.vala:132
+msgid "Saudi Riyal"
+msgstr "Rial saudit"
+
+#: lib/currency.vala:133
 msgid "Swedish Krona"
 msgstr "Coroană suedeză"
 
-#: lib/currency.vala:138
+#: lib/currency.vala:134
 msgid "Singapore Dollar"
 msgstr "Dolar singaporez"
 
-#: lib/currency.vala:139
+#: lib/currency.vala:135
 msgid "Thai Baht"
 msgstr "Baht tailandez"
 
-#: lib/currency.vala:140
+#: lib/currency.vala:136
 msgid "Tunisian Dinar"
 msgstr "Dinar tunisian"
 
-#: lib/currency.vala:141
+#: lib/currency.vala:137
 msgid "Turkish Lira"
 msgstr "Liră turcească"
 
-#: lib/currency.vala:142
+#: lib/currency.vala:138
 msgid "T&T Dollar"
 msgstr "Dolar T&T"
 
-#: lib/currency.vala:143
+#: lib/currency.vala:139
 msgid "New Taiwan Dollar"
 msgstr "Dolar taiwanez nou"
 
-#: lib/currency.vala:144
+#: lib/currency.vala:140
 msgid "Ukrainian Hryvnia"
 msgstr "Hryvnia ukrainiană"
 
-#: lib/currency.vala:145
+#: lib/currency.vala:141
 msgid "US Dollar"
 msgstr "Dolar american"
 
-#: lib/currency.vala:146
+#: lib/currency.vala:142
 msgid "Uruguayan Peso"
 msgstr "Peso uruguayan"
 
-#: lib/currency.vala:147
+#: lib/currency.vala:143
 msgid "Vietnamese Dong"
 msgstr "Dong vietnamez"
 
-#: lib/currency.vala:148
+#: lib/currency.vala:144
+msgid "Central African CFA Franc"
+msgstr "Franc CFA din Africa centrală"
+
+#: lib/currency.vala:145
+msgid "West African CFA Franc"
+msgstr "Franc CFA din Africa de vest"
+
+#: lib/currency.vala:146
 msgid "South African Rand"
 msgstr "Rand sud african"
 
@@ -773,7 +778,7 @@ msgstr "Componenta reală"
 msgid "Imaginary Component"
 msgstr "Componenta imaginară"
 
-#: lib/function-manager.vala:46 src/math-window.vala:155
+#: lib/function-manager.vala:46 src/math-window.vala:158
 msgid "Programming"
 msgstr "Programare"
 
@@ -2672,23 +2677,23 @@ msgstr "Numele variabilei nu poate începe cu o cifră"
 msgid "Variable name can only contain digits, letters and underscores"
 msgstr "Numele variabilei poate să conțină doar cifre, litere și liniuță joasă"
 
-#: src/math-window.vala:137
+#: src/math-window.vala:140
 msgid "Basic"
 msgstr "Simplu"
 
-#: src/math-window.vala:143
+#: src/math-window.vala:146
 msgid "Advanced"
 msgstr "Avansat"
 
-#: src/math-window.vala:149 src/ui/math-window.blp:152
+#: src/math-window.vala:152 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "Financiar"
 
-#: src/math-window.vala:161
+#: src/math-window.vala:164
 msgid "Keyboard"
 msgstr "Tastatură"
 
-#: src/math-window.vala:167
+#: src/math-window.vala:170
 msgid "Conversion"
 msgstr "Conversie"
 
