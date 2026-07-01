@@ -78,6 +78,39 @@ private void test (string expression, string expected, ErrorCode expected_error)
     }
 }
 
+private void test_automatic (string expression, string expected)
+{
+    var equation = new TestEquation (expression, enable_variables, enable_conversions);
+    equation.base = number_base;
+    equation.wordlen = wordlen;
+    equation.angle_units = angle_units;
+
+    ErrorCode error;
+    uint representation_base;
+    var result = equation.parse (out representation_base, out error);
+
+    if (result == null)
+    {
+        stdout.printf ("*FAIL: '%s' -> error %s, expected result %s\n", expression, error_code_to_string (error), expected);
+        fail_count++;
+        return;
+    }
+
+    var serializer = new Serializer (DisplayFormat.AUTOMATIC, number_base, 9);
+    serializer.set_representation_base (representation_base);
+    var result_str = serializer.to_string (result);
+
+    if (result_str != expected)
+    {
+        stdout.printf ("*FAIL: '%s' -> '%s', expected '%s'\n", expression, result_str, expected);
+        fail_count++;
+    }
+    else
+    {
+        pass_count++;
+    }
+}
+
 private class TestEquation : Equation
 {
     private bool enable_variables;
@@ -221,6 +254,13 @@ private void test_equations ()
     test ("18364758544493064720₁₀", "FEDCBA9876543210", 0);
 
     number_base = 10;
+    test_automatic ("44.23−8.10−11.23−6.9−18", "0");
+    test_automatic ("0.1+0.2", "0.3");
+    test_automatic ("1÷3×3", "1");
+    test_automatic ("2÷3+1÷3", "1");
+    /* 19-digit fractions: denominator 10^19 overflows int64, so this only cancels to
+     * exactly zero with arbitrary-precision rationals (MPFR alone leaves a residue) */
+    test_automatic ("0.3333333333333333333+0.3333333333333333333+0.3333333333333333334−1", "0");
     test ("0₂", "0", 0); test ("0₈", "0", 0); test ("0", "0", 0); test ("0₁₆", "0", 0);
     test ("1₂", "1", 0); test ("1₈", "1", 0); test ("1", "1", 0); test ("1₁₆", "1", 0);
     test ("2₂", "", ErrorCode.INVALID); test ("2₈", "2", 0); test ("2", "2", 0); test ("2₁₆", "2", 0);

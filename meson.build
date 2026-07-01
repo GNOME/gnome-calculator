@@ -80,6 +80,12 @@ mpfr = declare_dependency(
     valac.find_library('mpfr', dirs: gcalc_vapi_dir)
   ]
 )
+gmp = declare_dependency(
+  dependencies: [
+    cc.find_library('gmp', dirs: searchpath),
+    valac.find_library('gmp', dirs: gcalc_vapi_dir)
+  ]
+)
 posix = valac.find_library('posix')
 
 # Configuration

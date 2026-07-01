@@ -44,6 +44,12 @@ public class Number : GLib.Object
     private Complex num = Complex (precision);
     private bool force_float = false;
     private bool finite = true;
+    /* Exact rational shadow of num. When has_exact_rational is true, exact_rational
+     * holds the precise value and rational arithmetic stays exact regardless of
+     * MPFR's binary rounding. Cleared (false) as soon as an irrational or otherwise
+     * inexact operation is applied, falling back to the MPFR value. */
+    private bool has_exact_rational = false;
+    private GMP.Rational exact_rational = GMP.Rational ();
 
     public static MPFR.Precision precision { get; set; default = 1000; }
 
@@ -66,11 +72,15 @@ public class Number : GLib.Object
     public Number.integer (int64 real, int64 imag = 0)
     {
         num.set_signed_integer ((long) real, (long) imag);
+        if (imag == 0)
+            set_exact_rational (real, 1);
     }
 
     public Number.unsigned_integer (uint64 real, uint64 imag = 0)
     {
         num.set_unsigned_integer ((ulong) real, (ulong) imag);
+        if (imag == 0 && real <= int64.MAX)
+            set_exact_rational ((int64) real, 1);
     }
 
     public Number.fraction (int64 numerator, int64 denominator)
@@ -86,12 +96,23 @@ public class Number : GLib.Object
         {
             num.divide_unsigned_integer (num, (long) denominator);
         }
+        set_exact_rational (numerator, denominator);
     }
 
     /* Helper constructor. Creates new Number from already existing MPFR.Real. */
     public Number.mpreal (MPFR.Real real, MPFR.Real? imag = null)
     {
         num.set_mpreal (real, imag);
+    }
+
+    /* Helper constructor. Creates a real Number that carries an exact rational value.
+     * num is filled by rounding the exact value into MPFR. */
+    private Number.from_exact_rational (GMP.Rational value)
+    {
+        GMP.rational_to_mpfr (num.get_real ().val, value);
+        num.get_imag ().val.set_zero ();
+        exact_rational.set (value);
+        has_exact_rational = true;
     }
 
     public Number.float (float real, float imag = 0)
@@ -123,6 +144,8 @@ public class Number : GLib.Object
     public Number.complex (Number r, Number i)
     {
         num.set_mpreal (r.num.get_real ().val, i.num.get_real ().val);
+        if (i.is_zero ())
+            copy_exact_rational (r);
     }
 
     public Number.polar (Number r, Number theta, AngleUnit unit = AngleUnit.RADIANS)
@@ -382,6 +405,68 @@ public class Number : GLib.Object
         return value < 0 ? (uint64) (-value) : (uint64) value;
     }
 
+    private void set_exact_rational (int64 numerator, int64 denominator)
+    {
+        if (denominator == 0)
+        {
+            has_exact_rational = false;
+            return;
+        }
+
+        exact_rational.set_signed_integer ((long) numerator, 1);
+        if (denominator != 1)
+        {
+            var divisor = GMP.Rational ();
+            divisor.set_signed_integer ((long) denominator, 1);
+            exact_rational.divide (exact_rational, divisor);
+        }
+        exact_rational.canonicalize ();
+        has_exact_rational = true;
+    }
+
+    private void copy_exact_rational (Number other)
+    {
+        has_exact_rational = other.has_exact_rational;
+        if (has_exact_rational)
+            exact_rational.set (other.exact_rational);
+    }
+
+    private Number? add_exact_rational (Number y, bool subtract)
+    {
+        if (!has_exact_rational || !y.has_exact_rational)
+            return null;
+
+        var result = GMP.Rational ();
+        if (subtract)
+            result.subtract (exact_rational, y.exact_rational);
+        else
+            result.add (exact_rational, y.exact_rational);
+
+        return new Number.from_exact_rational (result);
+    }
+
+    private Number? multiply_exact_rational (Number y)
+    {
+        if (!has_exact_rational || !y.has_exact_rational)
+            return null;
+
+        var result = GMP.Rational ();
+        result.multiply (exact_rational, y.exact_rational);
+
+        return new Number.from_exact_rational (result);
+    }
+
+    private Number? divide_exact_rational (Number y)
+    {
+        if (!has_exact_rational || !y.has_exact_rational || y.exact_rational.sgn () == 0)
+            return null;
+
+        var result = GMP.Rational ();
+        result.divide (exact_rational, y.exact_rational);
+
+        return new Number.from_exact_rational (result);
+    }
+
     /* Return true if x == y */
     public bool equals (Number y)
     {
@@ -423,6 +508,11 @@ public class Number : GLib.Object
         z.num.neg (num);
         if (!is_complex ())
             z.num.get_imag ().val.set_zero ();
+        if (has_exact_rational)
+        {
+            z.exact_rational.neg (exact_rational);
+            z.has_exact_rational = true;
+        }
         return z;
     }
 
@@ -471,6 +561,7 @@ public class Number : GLib.Object
     {
         var z = new Number ();
         z.num.set_mpreal (num.get_real ().val);
+        z.copy_exact_rational (this);
         return z;
     }
 
@@ -778,6 +869,10 @@ public class Number : GLib.Object
     /* Sets z = x + y */
     public Number add (Number y)
     {
+        var exact = add_exact_rational (y, false);
+        if (exact != null)
+            return exact;
+
         var z = new Number ();
         z.num.add (num, y.num);
         return z;
@@ -786,6 +881,10 @@ public class Number : GLib.Object
     /* Sets z = x − y */
     public Number subtract (Number y)
     {
+        var exact = add_exact_rational (y, true);
+        if (exact != null)
+            return exact;
+
         var z = new Number ();
         z.num.subtract (num, y.num);
         return z;
@@ -794,6 +893,10 @@ public class Number : GLib.Object
     /* Sets z = x × y */
     public Number multiply (Number y)
     {
+        var exact = multiply_exact_rational (y);
+        if (exact != null)
+            return exact;
+
         var z = new Number ();
         z.num.multiply (num, y.num);
         return z;
@@ -802,6 +905,15 @@ public class Number : GLib.Object
     /* Sets z = x × y */
     public Number multiply_integer (int64 y)
     {
+        if (has_exact_rational)
+        {
+            var factor = GMP.Rational ();
+            factor.set_signed_integer ((long) y, 1);
+            var result = GMP.Rational ();
+            result.multiply (exact_rational, factor);
+            return new Number.from_exact_rational (result);
+        }
+
         var z = new Number ();
         z.num.multiply_signed_integer (num, (long) y);
         return z;
@@ -816,6 +928,10 @@ public class Number : GLib.Object
             error = _("Division by zero is undefined");
             return new Number.integer (0);
         }
+
+        var exact = divide_exact_rational (y);
+        if (exact != null)
+            return exact;
 
         var z = new Number ();
         z.num.divide (num, y.num);

@@ -34,6 +34,7 @@ libcalculator_deps = [
   libxml,
   mpc,
   mpfr,
+  gmp,
   posix,
   libmpfr_inc_libh_dep
 ]
