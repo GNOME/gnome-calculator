@@ -24,8 +24,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-01-31 12:00+0000\n"
-"PO-Revision-Date: 2026-02-18 10:17+0800\n"
+"POT-Creation-Date: 2026-06-19 09:00+0000\n"
+"PO-Revision-Date: 2026-07-08 08:20+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -33,11 +33,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
 #: data/org.gnome.Calculator.desktop.in:2
 #: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
-#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
+#: src/gnome-calculator.vala:306 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "计算器"
 
@@ -119,166 +119,178 @@ msgid "Conversion Mode"
 msgstr "转换模式"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "GNOME 项目"
 
-#: data/org.gnome.calculator.gschema.xml:31
+#: data/org.gnome.calculator.gschema.xml:32
+msgid "Persistent history tape"
+msgstr "持久历史记录"
+
+#: data/org.gnome.calculator.gschema.xml:33
+msgid ""
+"History entries saved across sessions as (equation, answer) pairs. Written "
+"on window close. Cleared when the user clears history."
+msgstr ""
+"历史条目跨会话保存为（等式、答案）配对。在窗口关闭时写入。用户清除历史时清"
+"除。"
+
+#: data/org.gnome.calculator.gschema.xml:41
 msgid "Accuracy value"
 msgstr "精确度"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:42
 msgid "The number of digits displayed after the numeric point"
 msgstr "小数点后显示的数位数"
 
-#: data/org.gnome.calculator.gschema.xml:37
+#: data/org.gnome.calculator.gschema.xml:47
 msgid "Word size"
 msgstr "字长"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "The size of the words used in bitwise operations"
 msgstr "位运算所用字长"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Numeric base"
 msgstr "进位制"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:54
 msgid "The numeric base"
 msgstr "进位制"
 
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Group digits"
 msgstr "数位分组"
 
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "Indicates whether digits are grouped in large numbers."
 msgstr "设置是否在大数中显示数位分隔符。"
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Show trailing zeroes"
 msgstr "显示末尾零"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:64
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr "设置是否在数值中小数点后显示末尾零。"
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Number format"
 msgstr "数字格式"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:69
 msgid "The format to display numbers in"
 msgstr "显示数字使用的格式"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:73
 msgid "Angle units"
 msgstr "角度单位"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:74
 msgid "The angle units to use"
 msgstr "使用角度单位"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency update interval"
 msgstr "汇率刷新间隔"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:79
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
 msgstr "货币汇率应该更新的频率。数值 0 代表货币汇率不会从网络获取。"
 
-#: data/org.gnome.calculator.gschema.xml:73
+#: data/org.gnome.calculator.gschema.xml:83
 msgid "Currency display"
 msgstr "货币显示"
 
-#: data/org.gnome.calculator.gschema.xml:74
+#: data/org.gnome.calculator.gschema.xml:84
 msgid ""
 "Indicates whether to show currency code, currency name or both of them in "
 "the converter."
 msgstr "提示是否在转换器中显示货币代码、货币名称或全都显示。"
 
-#: data/org.gnome.calculator.gschema.xml:78
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Enabled completions"
 msgstr "已启用补全"
 
-#: data/org.gnome.calculator.gschema.xml:79
+#: data/org.gnome.calculator.gschema.xml:89
 msgid ""
 "The types of completion proposals to be shown in the auto-completion list."
 msgstr "在自动补全列表中要显示的补全提示类型。"
 
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:93
 msgid "Favorite currencies"
 msgstr "常用货币"
 
-#: data/org.gnome.calculator.gschema.xml:84
+#: data/org.gnome.calculator.gschema.xml:94
 msgid "The favorite currencies to be shown at the top of the currency list."
 msgstr "在货币列表顶端显示的常用货币。"
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Button mode"
 msgstr "按钮模式"
 
-#: data/org.gnome.calculator.gschema.xml:89
+#: data/org.gnome.calculator.gschema.xml:99
 msgid "The button mode"
 msgstr "按钮模式"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Unit category"
 msgstr "单位分类"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:104
 msgid "Currently selected unit category in the converter"
 msgstr "转换器中当前选中的单位类别"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Source units"
 msgstr "源单位"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "Currently selected source units in the converter"
 msgstr "转换器中当前选中的源单位"
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Target units"
 msgstr "目标单位"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Currently selected target units in the converter"
 msgstr "转换器中当前选中的目标单位"
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Internal precision"
 msgstr "内部精度"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "The internal precision used with the MPFR library"
 msgstr "内部精度使用了 MPFR 库"
 
-#: data/org.gnome.calculator.gschema.xml:113
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window position"
 msgstr "窗口位置"
 
-#: data/org.gnome.calculator.gschema.xml:114
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window position (x and y) of the last closed window."
 msgstr "上次关闭的窗口的位置（x 和 y 坐标）"
 
-#: data/org.gnome.calculator.gschema.xml:118
+#: data/org.gnome.calculator.gschema.xml:128
 msgid "Window maximized"
 msgstr "窗口已最大化"
 
-#: data/org.gnome.calculator.gschema.xml:119
+#: data/org.gnome.calculator.gschema.xml:129
 msgid "Whether the last closed window was maximized."
 msgstr "上次关闭的窗口是否最大化。"
 
-#: data/org.gnome.calculator.gschema.xml:123
+#: data/org.gnome.calculator.gschema.xml:133
 msgid "Window size"
 msgstr "窗口大小"
 
-#: data/org.gnome.calculator.gschema.xml:124
+#: data/org.gnome.calculator.gschema.xml:134
 msgid "Window size (width and height) of the last closed window."
 msgstr "上次关闭窗口的大小（宽度和高度）。"
 
@@ -287,12 +299,12 @@ msgid "UAE Dirham"
 msgstr "阿联酋迪拉姆"
 
 #: lib/currency.vala:83
-msgid "Argentine Peso"
-msgstr "阿根廷比索"
-
-#: lib/currency.vala:84
 msgid "Armenian Dram"
 msgstr "亚美尼亚德拉姆"
+
+#: lib/currency.vala:84
+msgid "Argentine Peso"
+msgstr "阿根廷比索"
 
 #: lib/currency.vala:85
 msgid "Australian Dollar"
@@ -303,253 +315,245 @@ msgid "Bangladeshi Taka"
 msgstr "孟加拉塔卡"
 
 #: lib/currency.vala:87
-msgid "Bulgarian Lev"
-msgstr "保加利亚列弗"
-
-#: lib/currency.vala:88
 msgid "Bahraini Dinar"
 msgstr "巴林第纳尔"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "文莱元"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "巴西雷亚尔"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "博茨瓦纳普拉"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "加拿大元"
 
-#: lib/currency.vala:93
-msgid "CFA Franc"
-msgstr "中非法郎"
-
-#: lib/currency.vala:94
+#: lib/currency.vala:92
 msgid "Swiss Franc"
 msgstr "瑞士法郎"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:93
 msgid "Chilean Peso"
 msgstr "智利比索"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:94
 msgid "Chinese Yuan"
 msgstr "人民币"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:95
 msgid "Colombian Peso"
 msgstr "哥伦比亚比索"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:96
 msgid "Czech Koruna"
 msgstr "捷克克朗"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:97
 msgid "Danish Krone"
 msgstr "丹麦克朗"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:98
 msgid "Algerian Dinar"
 msgstr "阿尔及利亚第纳尔"
 
-#: lib/currency.vala:101
-msgid "Estonian Kroon"
-msgstr "爱沙尼亚克朗"
-
-#: lib/currency.vala:102
+#: lib/currency.vala:99
 msgid "Egyptian Pound"
 msgstr "埃及镑"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:100
 msgid "Euro"
 msgstr "欧元"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:101
 msgid "British Pound Sterling"
 msgstr "英镑"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:102
 msgid "Hong Kong Dollar"
 msgstr "港币"
 
-#: lib/currency.vala:106
-msgid "Croatian Kuna"
-msgstr "克罗地亚库纳"
-
-#: lib/currency.vala:107
+#: lib/currency.vala:103
 msgid "Hungarian Forint"
 msgstr "匈牙利福林"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:104
 msgid "Indonesian Rupiah"
 msgstr "印度尼西亚卢比"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:105
 msgid "Israeli New Shekel"
 msgstr "以色列新谢克尔"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:106
 msgid "Indian Rupee"
 msgstr "印度卢比"
 
-#: lib/currency.vala:111
+#: lib/currency.vala:107
 msgid "Iranian Rial"
 msgstr "伊朗里亚尔"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:108
 msgid "Icelandic Krona"
 msgstr "冰岛克朗"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:109
 msgid "Japanese Yen"
 msgstr "日元"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:110
 msgid "Jamaican Dollar"
 msgstr "牙买加元"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:111
 msgid "South Korean Won"
 msgstr "韩元"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:112
 msgid "Kuwaiti Dinar"
 msgstr "科威特第纳尔"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:113
 msgid "Kazakhstani Tenge"
 msgstr "哈萨克斯坦腾格"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:114
 msgid "Sri Lankan Rupee"
 msgstr "斯里兰卡卢比"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:115
 msgid "Libyan Dinar"
 msgstr "利比亚第纳尔"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:116
 msgid "Mauritian Rupee"
 msgstr "毛里求斯卢比"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:117
 msgid "Mexican Peso"
 msgstr "墨西哥比索"
 
-#: lib/currency.vala:122
+#: lib/currency.vala:118
 msgid "Malaysian Ringgit"
 msgstr "马来西亚林吉特"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:119
 msgid "Nigerian Naira"
 msgstr "尼日利亚奈拉"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:120
 msgid "Norwegian Krone"
 msgstr "挪威克朗"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:121
 msgid "Nepalese Rupee"
 msgstr "尼泊尔卢比"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:122
 msgid "New Zealand Dollar"
 msgstr "新西兰元"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:123
 msgid "Omani Rial"
 msgstr "阿曼里亚尔"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:124
 msgid "Peruvian Nuevo Sol"
 msgstr "秘鲁新索尔"
 
-#: lib/currency.vala:129
+#: lib/currency.vala:125
 msgid "Philippine Peso"
 msgstr "菲律宾比索"
 
-#: lib/currency.vala:130
+#: lib/currency.vala:126
 msgid "Pakistani Rupee"
 msgstr "巴基斯坦卢比"
 
-#: lib/currency.vala:131
+#: lib/currency.vala:127
 msgid "Polish Złoty"
 msgstr "波兰兹罗提"
 
-#: lib/currency.vala:132
+#: lib/currency.vala:128
 msgid "Qatari Riyal"
 msgstr "卡塔尔里亚尔"
 
-#: lib/currency.vala:133
+#: lib/currency.vala:129
 msgid "New Romanian Leu"
 msgstr "新罗马尼亚列伊"
 
-#: lib/currency.vala:134
+#: lib/currency.vala:130
 msgid "Russian Ruble"
 msgstr "俄罗斯卢布"
 
-#: lib/currency.vala:135
-msgid "Saudi Riyal"
-msgstr "沙特里亚尔"
-
-#: lib/currency.vala:136
+#: lib/currency.vala:131
 msgid "Serbian Dinar"
 msgstr "塞尔维亚第纳尔"
 
+#: lib/currency.vala:132
+msgid "Saudi Riyal"
+msgstr "沙特里亚尔"
+
 # 瑞典克郎
-#: lib/currency.vala:137
+#: lib/currency.vala:133
 msgid "Swedish Krona"
 msgstr "瑞典克朗"
 
-#: lib/currency.vala:138
+#: lib/currency.vala:134
 msgid "Singapore Dollar"
 msgstr "新加坡元"
 
-#: lib/currency.vala:139
+#: lib/currency.vala:135
 msgid "Thai Baht"
 msgstr "泰铢"
 
-#: lib/currency.vala:140
+#: lib/currency.vala:136
 msgid "Tunisian Dinar"
 msgstr "突尼斯第纳尔"
 
 # 土耳其新里拉
-#: lib/currency.vala:141
+#: lib/currency.vala:137
 msgid "Turkish Lira"
 msgstr "土尔其里拉"
 
 # Trinidad and Tobago Dollar
-#: lib/currency.vala:142
+#: lib/currency.vala:138
 msgid "T&T Dollar"
 msgstr "特立尼达多巴哥元"
 
-#: lib/currency.vala:143
+#: lib/currency.vala:139
 msgid "New Taiwan Dollar"
 msgstr "新台币"
 
-#: lib/currency.vala:144
+#: lib/currency.vala:140
 msgid "Ukrainian Hryvnia"
 msgstr "乌克兰格里夫纳"
 
-#: lib/currency.vala:145
+#: lib/currency.vala:141
 msgid "US Dollar"
 msgstr "美元"
 
-#: lib/currency.vala:146
+#: lib/currency.vala:142
 msgid "Uruguayan Peso"
 msgstr "乌拉圭比索"
 
-#: lib/currency.vala:147
+#: lib/currency.vala:143
 msgid "Vietnamese Dong"
 msgstr "越南盾"
 
-#: lib/currency.vala:148
+#: lib/currency.vala:144
+msgid "Central African CFA Franc"
+msgstr "中非法郎"
+
+#: lib/currency.vala:145
+msgid "West African CFA Franc"
+msgstr "西非法郎"
+
+#: lib/currency.vala:146
 msgid "South African Rand"
 msgstr "南非兰特"
 
@@ -581,112 +585,112 @@ msgstr "转为"
 msgid "to"
 msgstr "转作"
 
-#: lib/equation-parser.vala:443
+#: lib/equation-parser.vala:486
 #, c-format
 msgid "Function “%s” is missing arguments"
 msgstr "函数“%s”缺少参数"
 
-#: lib/equation-parser.vala:765 lib/number.vala:568
+#: lib/equation-parser.vala:816 lib/number.vala:668
 msgid "The zeroth root of a number is undefined"
 msgstr "对一个数字求零次方根无意义"
 
-#: lib/equation-parser.vala:1060
+#: lib/equation-parser.vala:1125
 msgid "Mathematics"
 msgstr "数学"
 
-#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+#: lib/equation-parser.vala:1126 src/ui/buttons-advanced.blp:1116
 msgid "Euler’s Number"
 msgstr "欧拉数"
 
-#: lib/equation-parser.vala:1062
+#: lib/equation-parser.vala:1127
 msgid "Pi"
 msgstr "派"
 
-#: lib/equation-parser.vala:1063
+#: lib/equation-parser.vala:1128
 msgid "Tau"
 msgstr "陶"
 
-#: lib/equation-parser.vala:1064
+#: lib/equation-parser.vala:1129
 msgid "Golden Ratio"
 msgstr "黄金比例"
 
-#: lib/equation-parser.vala:1066
+#: lib/equation-parser.vala:1131
 msgid "Electromagnetism"
 msgstr "电磁学"
 
-#: lib/equation-parser.vala:1067
+#: lib/equation-parser.vala:1132
 msgid "Light Speed"
 msgstr "光速"
 
-#: lib/equation-parser.vala:1068
+#: lib/equation-parser.vala:1133
 msgid "Elementary Charge"
 msgstr "元电荷"
 
-#: lib/equation-parser.vala:1069
+#: lib/equation-parser.vala:1134
 msgid "Impedance of Vacuum"
 msgstr "真空阻抗"
 
-#: lib/equation-parser.vala:1070
+#: lib/equation-parser.vala:1135
 msgid "Permeability of Vacuum"
 msgstr "真空磁导率"
 
-#: lib/equation-parser.vala:1071
+#: lib/equation-parser.vala:1136
 msgid "Permittivity of Vacuum"
 msgstr "真空介电常数"
 
-#: lib/equation-parser.vala:1073
+#: lib/equation-parser.vala:1138
 msgid "Atomic & Nuclear"
 msgstr "原子与核"
 
-#: lib/equation-parser.vala:1074
+#: lib/equation-parser.vala:1139
 msgid "Planck’s Constant"
 msgstr "普朗克常数"
 
-#: lib/equation-parser.vala:1075
+#: lib/equation-parser.vala:1140
 msgid "Fine-Structure Constant"
 msgstr "精细结构常数"
 
-#: lib/equation-parser.vala:1076
+#: lib/equation-parser.vala:1141
 msgid "Electron Mass"
 msgstr "电子质量"
 
-#: lib/equation-parser.vala:1077
+#: lib/equation-parser.vala:1142
 msgid "Proton Mass"
 msgstr "质子质量"
 
-#: lib/equation-parser.vala:1079
+#: lib/equation-parser.vala:1144
 msgid "Thermodynamics"
 msgstr "热力学"
 
-#: lib/equation-parser.vala:1080
+#: lib/equation-parser.vala:1145
 msgid "Boltzmann Constant"
 msgstr "玻尔兹曼常数"
 
-#: lib/equation-parser.vala:1081
+#: lib/equation-parser.vala:1146
 msgid "Atomic Mass Unit"
 msgstr "原子质量单位"
 
-#: lib/equation-parser.vala:1082
+#: lib/equation-parser.vala:1147
 msgid "Molar Gas Constant"
 msgstr "摩尔气体常数"
 
-#: lib/equation-parser.vala:1083
+#: lib/equation-parser.vala:1148
 msgid "Stefan-Boltzmann Constant"
 msgstr "斯特藩-玻尔兹曼常数"
 
-#: lib/equation-parser.vala:1084
+#: lib/equation-parser.vala:1149
 msgid "Avogadro’s Number"
 msgstr "阿伏伽德罗常量"
 
-#: lib/equation-parser.vala:1086
+#: lib/equation-parser.vala:1151
 msgid "Gravitation"
 msgstr "引力"
 
-#: lib/equation-parser.vala:1087
+#: lib/equation-parser.vala:1152
 msgid "Gravitational Constant"
 msgstr "重力常数"
 
-#: lib/equation-parser.vala:1088
+#: lib/equation-parser.vala:1153
 msgid "Earth Acceleration"
 msgstr "重力加速度"
 
@@ -772,7 +776,7 @@ msgstr "实数部分"
 msgid "Imaginary Component"
 msgstr "虚数部分"
 
-#: lib/function-manager.vala:46 src/math-window.vala:155
+#: lib/function-manager.vala:46 src/math-window.vala:158
 msgid "Programming"
 msgstr "编程"
 
@@ -999,187 +1003,207 @@ msgid "Need an integer to factorize"
 msgstr "分解因式运算需要一个整数"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:306
+#: lib/number.vala:337
 msgid "Underflow error"
 msgstr "下溢错误"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:311
+#: lib/number.vala:342
 msgid "Overflow error"
 msgstr "溢出错误"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:372
+#: lib/number.vala:444
 msgid "Argument not defined for zero"
 msgstr "参数值不能为零"
 
-#: lib/number.vala:442
+#: lib/number.vala:514
 msgid "Floor is only defined for real numbers"
 msgstr "向下取整仅对实数有定义"
 
-#: lib/number.vala:457
+#: lib/number.vala:529
 msgid "Ceiling is only defined for real numbers"
 msgstr "向上取整仅对实数有定义"
 
-#: lib/number.vala:472
+#: lib/number.vala:544
 msgid "Round is only defined for real numbers"
 msgstr "四舍五入仅对实数有定义"
 
+#: lib/number.vala:580 lib/number.vala:619
+msgid "Exponent is too large"
+msgstr "指数太大了"
+
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:506 lib/number.vala:536
+#: lib/number.vala:588 lib/number.vala:627
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "负数的零次幂未定义"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:514 lib/number.vala:544
+#: lib/number.vala:596 lib/number.vala:635
 msgid "Zero raised to zero is undefined"
 msgstr "对零求幂无意义"
 
+#: lib/number.vala:651
+msgid "Root is too large"
+msgstr "根太大了"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:598 lib/number.vala:629
+#: lib/number.vala:698 lib/number.vala:729
 msgid "Logarithm of zero is undefined"
 msgstr "零的对数未定义"
 
-#: lib/number.vala:634
+#: lib/number.vala:734
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "以 0 或 1 为底的对数未定义"
 
 #. TODO: Support factorial of complex numbers
-#: lib/number.vala:652
+#: lib/number.vala:755
 msgid "Factorial of complex numbers is not supported"
 msgstr "不支持复数的阶乘运算"
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
-#: lib/number.vala:659
+#: lib/number.vala:762
 msgid "Factorial is undefined for negative integers"
 msgstr "未定义对负整数的阶乘运算"
 
+#: lib/number.vala:766
+msgid "Factorial is too large"
+msgstr "阶乘太大了"
+
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:710
+#: lib/number.vala:816
 msgid "Division by zero is undefined"
 msgstr "被零除未定义"
 
 #. Translators: Error displayed when attempting to do a modulus division on complex numbers
-#: lib/number.vala:731
+#: lib/number.vala:837
 msgid "Modulus division is only defined for real numbers"
 msgstr "取模运算仅对实数有定义"
 
+#: lib/number.vala:861
+msgid "Modular exponent is too large"
+msgstr "模幂太大了"
+
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:811
+#: lib/number.vala:930
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "正切函数对 π∕2 (90°) 倍数排除 π (180°) 倍数的角度无意义"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:830
+#: lib/number.vala:949
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "反正弦函数在 [-1，1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:847
+#: lib/number.vala:966
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "反余弦函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:865
+#: lib/number.vala:984
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "反正切函数在 i 和 -i 上未定义"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:916
+#: lib/number.vala:1035
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "对小于 1 的数求反双曲余弦函数无意义"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:932
+#: lib/number.vala:1051
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "反双曲正切函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when bitwise AND attempted on non-integer values
-#: lib/number.vala:947
+#: lib/number.vala:1069
 msgid "Bitwise AND is only defined for non-negative integers"
 msgstr "按位与运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise NAND attempted on non-integer values
-#: lib/number.vala:960
+#: lib/number.vala:1085
 msgid "Bitwise NAND is only defined for non-negative integers"
 msgstr "按位与非运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise OR attempted on non-integer values
-#: lib/number.vala:973
+#: lib/number.vala:1101
 msgid "Bitwise OR is only defined for non-negative integers"
 msgstr "按位或运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise NOR attempted on non-integer values
-#: lib/number.vala:986
+#: lib/number.vala:1117
 msgid "Bitwise NOR is only defined for non-negative integers"
 msgstr "按位或非运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise XOR attempted on non-integer values
-#: lib/number.vala:999
+#: lib/number.vala:1133
 msgid "Bitwise XOR is only defined for non-negative integers"
 msgstr "按位异或运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise XNOR attempted on non-integer values
-#: lib/number.vala:1012
+#: lib/number.vala:1149
 msgid "Bitwise XNOR is only defined for non-negative integers"
 msgstr "按位同或运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise NOT attempted on non-integer values
-#: lib/number.vala:1025
+#: lib/number.vala:1165
 msgid "Bitwise NOT is only defined for non-negative integers"
 msgstr "按位非运算只对非负整数有定义"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:1087
+#: lib/number.vala:1227
 msgid "Shift is only possible on integers"
 msgstr "只能对整数进行移位运算"
 
-#: lib/number.vala:1092 lib/number.vala:1120 lib/number.vala:1566
+#: lib/number.vala:1232 lib/number.vala:1260 lib/number.vala:1764
 msgid "Overflow. Try a bigger word size"
 msgstr "溢出。请尝试一个更大的字长"
 
-#: lib/number.vala:1103
+#: lib/number.vala:1243
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "补码只对非负整数有定义"
 
-#: lib/number.vala:1115
+#: lib/number.vala:1255
 msgid "Swap endianness is only possible on integers"
 msgstr "只能对整数进行交换字节序"
 
-#: lib/number.vala:1143
+#: lib/number.vala:1286
 msgid "Combination is only defined for non-negative integers"
 msgstr "组合仅对非负整数有定义"
 
-#: lib/number.vala:1148
+#: lib/number.vala:1291
 msgid "Combination is undefined if n is less than r"
 msgstr "如果 n 小于 r 则组合未定义"
 
-#: lib/number.vala:1161
+#: lib/number.vala:1315
 msgid "Permutation is only defined for non-negative integers"
 msgstr "排列仅对非负整数有定义"
 
-#: lib/number.vala:1166
+#: lib/number.vala:1320
 msgid "Permutation is undefined if n is less than r"
 msgstr "如果 n 小于 r 则排列未定义"
 
-#: lib/number.vala:1187
+#: lib/number.vala:1327 lib/number.vala:1328
+msgid "Permutation is too large"
+msgstr "排列太大了"
+
+#: lib/number.vala:1353
 msgid "Greatest common divisor is only defined for integers"
 msgstr "最大公约数仅对整数有定义"
 
-#: lib/number.vala:1207
+#: lib/number.vala:1376
 msgid "Least common multiple is only defined for integers"
 msgstr "最小公倍数仅对整数有定义"
 
-#: lib/number.vala:1264
+#: lib/number.vala:1441
 msgid "Median is only defined for real numbers"
 msgstr "中值运算仅对实数有定义"
 
-#: lib/number.vala:1284
+#: lib/number.vala:1461
 msgid "Minimum value is only defined for real numbers"
 msgstr "最小值仅对实数有定义"
 
-#: lib/number.vala:1301
+#: lib/number.vala:1478
 msgid "Maximum value is only defined for real numbers"
 msgstr "最大值仅对实数有定义"
 
@@ -1199,7 +1223,7 @@ msgstr "国际货币基金组织"
 msgid "United Nations Treasury"
 msgstr "联合国账务厅"
 
-#: lib/serializer.vala:359 lib/serializer.vala:397
+#: lib/serializer.vala:359 lib/serializer.vala:409
 msgid ""
 "The result is too long to display in fixed format. Try other result formats"
 msgstr "结果太长无法以固定格式显示。请尝试其它结果格式"
@@ -1246,7 +1270,7 @@ msgstr "能量"
 
 #: lib/unit.vala:39
 msgid "Pressure"
-msgstr "压力"
+msgstr "压强"
 
 #: lib/unit.vala:40
 msgid "Digital Storage"
@@ -2431,15 +2455,15 @@ msgstr "十进制"
 msgid "Hexadecimal"
 msgstr "十六进制"
 
-#: search-provider/search-provider.vala:206
+#: search-provider/search-provider.vala:200
 msgid "Open in Calculator"
 msgstr "在计算器中打开"
 
-#: search-provider/search-provider.vala:239
+#: search-provider/search-provider.vala:233
 msgid "Result copied"
 msgstr "结果已复制"
 
-#: search-provider/search-provider.vala:240
+#: search-provider/search-provider.vala:234
 msgid "Result was copied successfully"
 msgstr "结果已成功复制"
 
@@ -2485,13 +2509,13 @@ msgid "Show release version"
 msgstr "显示版本信息"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:291
+#: src/gnome-calculator.vala:313
 #, c-format
 msgid "© 1986–%d The Calculator authors"
 msgstr "© 1986-%d 计算器作者"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:297
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "Funda Wang <fundawang@linux.net.cn>, 2003, 2004\n"
@@ -2512,24 +2536,24 @@ msgstr ""
 "Victor_Trista <ljlzjzm@hotmail.com>, 2023\n"
 "lumingzh <lumingzh@qq.com>, 2023-2026"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 msgid "Exchange Rate Data Providers"
 msgstr "汇率数据提供者"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "汇率数据来自 %s"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Close All?"
 msgstr "全部关闭吗？"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Are you sure you want to close all open windows?"
 msgstr "您确定要关闭所有打开的窗口吗？"
 
-#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/gnome-calculator.vala:332 src/ui/buttons-financial.blp:897
 #: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
 #: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
 #: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
@@ -2538,7 +2562,7 @@ msgstr "您确定要关闭所有打开的窗口吗？"
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: src/gnome-calculator.vala:311
+#: src/gnome-calculator.vala:333
 msgid "Close _All"
 msgstr "全部关闭(_A)"
 
@@ -2642,23 +2666,23 @@ msgstr "变量名称不能以数字开头"
 msgid "Variable name can only contain digits, letters and underscores"
 msgstr "变量名称只能包含数字、字母和下划线"
 
-#: src/math-window.vala:137
+#: src/math-window.vala:140
 msgid "Basic"
 msgstr "基本"
 
-#: src/math-window.vala:143
+#: src/math-window.vala:146
 msgid "Advanced"
 msgstr "高级"
 
-#: src/math-window.vala:149 src/ui/math-window.blp:152
+#: src/math-window.vala:152 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "财务"
 
-#: src/math-window.vala:161
+#: src/math-window.vala:164
 msgid "Keyboard"
 msgstr "键盘"
 
-#: src/math-window.vala:167
+#: src/math-window.vala:170
 msgid "Conversion"
 msgstr "转换"
 
@@ -3646,6 +3670,18 @@ msgstr "重做"
 #: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "主菜单"
+
+#~ msgid "Bulgarian Lev"
+#~ msgstr "保加利亚列弗"
+
+#~ msgid "CFA Franc"
+#~ msgstr "中非法郎"
+
+#~ msgid "Estonian Kroon"
+#~ msgstr "爱沙尼亚克朗"
+
+#~ msgid "Croatian Kuna"
+#~ msgstr "克罗地亚库纳"
 
 #~ msgid "Show Thousands Separators"
 #~ msgstr "显示千位分隔符"
