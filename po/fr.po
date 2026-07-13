@@ -25,20 +25,20 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-01-31 12:00+0000\n"
-"PO-Revision-Date: 2026-02-03 15:20+0000\n"
-"Last-Translator: Jean-Marc Tissières <jmetissieres@gmail.com>\n"
+"POT-Creation-Date: 2026-04-17 15:16+0000\n"
+"PO-Revision-Date: 2026-07-13 11:32+0200\n"
+"Last-Translator: Guillaume Bernard <associations@guillaume-bernard.fr>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #: data/org.gnome.Calculator.desktop.in:2
 #: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
-#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
+#: src/gnome-calculator.vala:306 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "Calculatrice"
 
@@ -73,8 +73,8 @@ msgid ""
 msgstr ""
 "La calculatrice avancée prend en charge beaucoup d’opérations, y compris les "
 "logarithmes, les factorielles, les fonctions trigonométriques et "
-"hyperboliques, l’opération modulo, les nombres complexes, la génération "
-"de nombres aléatoires et la factorisation en nombres premiers."
+"hyperboliques, l’opération modulo, les nombres complexes, la génération de "
+"nombres aléatoires et la factorisation en nombres premiers."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:22
 msgid ""
@@ -103,7 +103,7 @@ msgid ""
 "number bases."
 msgstr ""
 "Le mode conversion permet d’effectuer des conversions entre les unités "
-"usuelles, les monnaies et les bases de nombres."
+"usuelles, les monnaies et les bases de numération."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:43
 msgid "Basic Mode"
@@ -130,7 +130,7 @@ msgid "Conversion Mode"
 msgstr "Mode conversion"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
+#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "Le projet GNOME"
 
@@ -602,7 +602,7 @@ msgstr "vers"
 msgid "Function “%s” is missing arguments"
 msgstr "La fonction « %s » manque d’arguments"
 
-#: lib/equation-parser.vala:765 lib/number.vala:568
+#: lib/equation-parser.vala:765 lib/number.vala:588
 msgid "The zeroth root of a number is undefined"
 msgstr "La racine zéro d’un nombre n’est pas définie"
 
@@ -1016,73 +1016,73 @@ msgid "Need an integer to factorize"
 msgstr "Seuls les nombres entiers sont factorisables"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:306
+#: lib/number.vala:324
 msgid "Underflow error"
 msgstr "Erreur de dépassement de capacité vers le bas"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:311
+#: lib/number.vala:329
 msgid "Overflow error"
 msgstr "Erreur de dépassement de capacité vers le haut"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:372
+#: lib/number.vala:392
 msgid "Argument not defined for zero"
 msgstr "L’argument d’un nombre complexe nul est indéfini"
 
-#: lib/number.vala:442
+#: lib/number.vala:462
 msgid "Floor is only defined for real numbers"
 msgstr "La partie entière n’est définie que pour les réels positifs"
 
-#: lib/number.vala:457
+#: lib/number.vala:477
 msgid "Ceiling is only defined for real numbers"
 msgstr "La partie entière supérieure n’est définie que pour les réels positifs"
 
-#: lib/number.vala:472
+#: lib/number.vala:492
 msgid "Round is only defined for real numbers"
 msgstr "L’arrondi n’est défini que pour les réels positifs"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:506 lib/number.vala:536
+#: lib/number.vala:526 lib/number.vala:556
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "La puissance de zéro n’est pas définie pour des exposants négatifs"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:514 lib/number.vala:544
+#: lib/number.vala:534 lib/number.vala:564
 msgid "Zero raised to zero is undefined"
 msgstr "Zéro élevé à zéro n’est pas défini"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:598 lib/number.vala:629
+#: lib/number.vala:618 lib/number.vala:649
 msgid "Logarithm of zero is undefined"
 msgstr "Le logarithme de zéro n’est pas défini"
 
-#: lib/number.vala:634
+#: lib/number.vala:654
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "Le logarithme en base 0 ou 1 n’est pas défini"
 
 #. TODO: Support factorial of complex numbers
-#: lib/number.vala:652
+#: lib/number.vala:672
 msgid "Factorial of complex numbers is not supported"
 msgstr "La factorielle des nombres complexes n’est pas prise en charge"
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
-#: lib/number.vala:659
+#: lib/number.vala:679
 msgid "Factorial is undefined for negative integers"
 msgstr "La factorielle n’est pas définie pour les entiers négatifs"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:710
+#: lib/number.vala:730
 msgid "Division by zero is undefined"
 msgstr "La division par zéro n’est pas définie"
 
 #. Translators: Error displayed when attempting to do a modulus division on complex numbers
-#: lib/number.vala:731
+#: lib/number.vala:751
 msgid "Modulus division is only defined for real numbers"
 msgstr "L’opération modulo n’est définie que pour les nombres réels"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:811
+#: lib/number.vala:831
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1090,122 +1090,125 @@ msgstr ""
 "nombre entier de fois π (180°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:830
+#: lib/number.vala:850
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "L’arc sinus n’est pas défini pour les valeurs hors du segment [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:847
+#: lib/number.vala:867
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr ""
 "L’arc cosinus n’est pas défini pour les valeurs hors du segment [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:865
+#: lib/number.vala:885
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "L’arc tangente n’est pas défini pour les valeurs i et -i"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:916
+#: lib/number.vala:936
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "L’argument cosinus hyperbolique n’est pas défini pour les valeurs "
 "inférieures à un"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:932
+#: lib/number.vala:952
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "L’argument tangente hyperbolique n’est pas défini pour les valeurs en dehors "
 "du segment [-1, 1]"
 
 #. Translators: Error displayed when bitwise AND attempted on non-integer values
-#: lib/number.vala:947
+#: lib/number.vala:967
 msgid "Bitwise AND is only defined for non-negative integers"
 msgstr "Le AND (ET) bit à bit n’est défini que pour des entiers non-négatifs"
 
 #. Translators: Error displayed when bitwise NAND attempted on non-integer values
-#: lib/number.vala:960
+#: lib/number.vala:980
 msgid "Bitwise NAND is only defined for non-negative integers"
-msgstr "Le NAND (NON-ET) bit à bit n’est défini que pour des entiers non-négatifs"
+msgstr ""
+"Le NAND (NON-ET) bit à bit n’est défini que pour des entiers non-négatifs"
 
 #. Translators: Error displayed when bitwise OR attempted on non-integer values
-#: lib/number.vala:973
+#: lib/number.vala:993
 msgid "Bitwise OR is only defined for non-negative integers"
 msgstr "Le OR (OU) bit à bit n’est défini que pour des entiers non-négatifs"
 
 #. Translators: Error displayed when bitwise NOR attempted on non-integer values
-#: lib/number.vala:986
+#: lib/number.vala:1006
 msgid "Bitwise NOR is only defined for non-negative integers"
-msgstr "Le NOR (NON-OU) bit à bit n’est défini que pour des entiers non-négatifs"
+msgstr ""
+"Le NOR (NON-OU) bit à bit n’est défini que pour des entiers non-négatifs"
 
 #. Translators: Error displayed when bitwise XOR attempted on non-integer values
-#: lib/number.vala:999
+#: lib/number.vala:1019
 msgid "Bitwise XOR is only defined for non-negative integers"
 msgstr ""
 "Le XOR (OU exclusif) bit à bit n’est défini que pour des entiers non-négatifs"
 
 #. Translators: Error displayed when bitwise XNOR attempted on non-integer values
-#: lib/number.vala:1012
+#: lib/number.vala:1032
 msgid "Bitwise XNOR is only defined for non-negative integers"
 msgstr ""
-"Le XNOR (NON-OU) exclusif bit à bit n’est défini que pour des entiers non-négatifs"
+"Le XNOR (NON-OU) exclusif bit à bit n’est défini que pour des entiers non-"
+"négatifs"
 
 #. Translators: Error displayed when bitwise NOT attempted on non-integer values
-#: lib/number.vala:1025
+#: lib/number.vala:1045
 msgid "Bitwise NOT is only defined for non-negative integers"
 msgstr "Le NON bit à bit n’est défini que pour des entiers non-négatifs"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:1087
+#: lib/number.vala:1107
 msgid "Shift is only possible on integers"
 msgstr "Le décalage n’est possible que sur des entiers"
 
-#: lib/number.vala:1092 lib/number.vala:1120 lib/number.vala:1566
+#: lib/number.vala:1112 lib/number.vala:1140 lib/number.vala:1586
 msgid "Overflow. Try a bigger word size"
 msgstr "Dépassement de capacité. Essayez avec une taille de mot plus grande"
 
-#: lib/number.vala:1103
+#: lib/number.vala:1123
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "Le complément à deux n’est défini que pour des entiers non-négatifs"
 
-#: lib/number.vala:1115
+#: lib/number.vala:1135
 msgid "Swap endianness is only possible on integers"
 msgstr "L’inversion du boutisme n’est possible que sur des entiers"
 
-#: lib/number.vala:1143
+#: lib/number.vala:1163
 msgid "Combination is only defined for non-negative integers"
 msgstr "La combinaison n’est définie que pour les entiers non-négatifs"
 
-#: lib/number.vala:1148
+#: lib/number.vala:1168
 msgid "Combination is undefined if n is less than r"
 msgstr "La combinaison n’est pas définie si n est inférieur à r"
 
-#: lib/number.vala:1161
+#: lib/number.vala:1181
 msgid "Permutation is only defined for non-negative integers"
 msgstr "La permutation n’est définie que pour les entiers non-négatifs"
 
-#: lib/number.vala:1166
+#: lib/number.vala:1186
 msgid "Permutation is undefined if n is less than r"
 msgstr "La permutation n’est pas définie si n est inférieur à r"
 
-#: lib/number.vala:1187
+#: lib/number.vala:1207
 msgid "Greatest common divisor is only defined for integers"
 msgstr "Le plus grand commun diviseur n’est défini que sur des entiers"
 
-#: lib/number.vala:1207
+#: lib/number.vala:1227
 msgid "Least common multiple is only defined for integers"
 msgstr "Le plus petit commun multiple n’est défini que sur des entiers"
 
-#: lib/number.vala:1264
+#: lib/number.vala:1284
 msgid "Median is only defined for real numbers"
 msgstr "La médiane n’est définie que pour les nombres réels"
 
-#: lib/number.vala:1284
+#: lib/number.vala:1304
 msgid "Minimum value is only defined for real numbers"
 msgstr "La valeur minimale n’est définie que pour les nombres réels"
 
-#: lib/number.vala:1301
+#: lib/number.vala:1321
 msgid "Maximum value is only defined for real numbers"
 msgstr "La valeur maximale n’est définie que pour les nombres réels"
 
@@ -2444,7 +2447,7 @@ msgstr "Devise"
 
 #: lib/unit.vala:183
 msgid "Number Base"
-msgstr "Base de nombre"
+msgstr "Base de numération"
 
 #: lib/unit.vala:184 src/buttons-programming.vala:168
 #: src/ui/buttons-programming.blp:2590
@@ -2521,13 +2524,13 @@ msgid "Show release version"
 msgstr "Afficher les informations de version"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:291
+#: src/gnome-calculator.vala:313
 #, c-format
 msgid "© 1986–%d The Calculator authors"
 msgstr "© 1986 – %d Les auteurs de Calculatrice"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:297
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "Laurent Richard <laurent.richard@lilit.be>\n"
@@ -2548,24 +2551,24 @@ msgstr ""
 "Jean-Marc Tissières <jmetissieres@gmail.com>\n"
 "Lucien Ouoba <luiz01luciano04@gmail.com>"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 msgid "Exchange Rate Data Providers"
 msgstr "Fournisseurs de données sur les taux de change"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Données sur les taux de change fournies par %s"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Close All?"
 msgstr "Tout fermer ?"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Are you sure you want to close all open windows?"
 msgstr "Voulez-vous vraiment fermer toutes les fenêtres ouvertes ?"
 
-#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/gnome-calculator.vala:332 src/ui/buttons-financial.blp:897
 #: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
 #: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
 #: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
@@ -2574,7 +2577,7 @@ msgstr "Voulez-vous vraiment fermer toutes les fenêtres ouvertes ?"
 msgid "_Cancel"
 msgstr "A_nnuler"
 
-#: src/gnome-calculator.vala:311
+#: src/gnome-calculator.vala:333
 msgid "Close _All"
 msgstr "_Tout fermer"
 
