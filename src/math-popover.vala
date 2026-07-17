@@ -44,9 +44,15 @@ public abstract class MathPopover<T> : Gtk.Popover
         if (entry.text != "")
             error = validate_name (entry.text);
         if (error != null)
+        {
             name_entry.add_css_class ("error");
+            name_entry.update_state(Gtk.AccessibleState.INVALID, Gtk.AccessibleInvalidState.TRUE);
+        }
         else
+        {
             name_entry.remove_css_class ("error");
+            name_entry.update_state(Gtk.AccessibleState.INVALID, Gtk.AccessibleInvalidState.FALSE);
+        }
         add_button.sensitive = entry.text != "" && error == null;
         error_label.label = error;
         ((Gtk.Revealer) error_label.parent).reveal_child = error != null;

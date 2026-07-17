@@ -47,6 +47,9 @@ template $MathFunctionPopover: $MathPopover {
       Entry name_entry {
         placeholder-text: _("Function name");
         input-hints: no_emoji;
+        accessibility {
+          error-message: error_label;
+        }
         activate => $add_function_cb();
       }
 

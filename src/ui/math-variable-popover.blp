@@ -59,6 +59,9 @@ template $MathVariablePopover: $MathPopover {
           receives-default: true;
           hexpand: true;
           input-hints: no_emoji;
+          accessibility {
+            error-message: error_label;
+          }
           activate => $store_variable_cb();
         }
 
