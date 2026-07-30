@@ -19,7 +19,7 @@ public abstract class MathPopover<T> : Gtk.Popover
 
     protected MathEquation equation;
     protected ListStore model;
-    private CompareDataFunc<T> compare_func;
+    private unowned CompareDataFunc<T> compare_func;
     private ulong changed_handler;
 
     protected MathPopover (MathEquation equation, ListStore model, CompareDataFunc<T> compare_func)

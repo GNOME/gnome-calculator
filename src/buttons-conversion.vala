@@ -193,7 +193,14 @@ public class ConversionButtonPanel : Adw.Bin
     [GtkCallback]
     private void launch_attribution_link (Adw.ActionRow row)
     {
-        new Gtk.UriLauncher (row.tooltip_text).launch ((Gtk.Window) root, null);
+        var launcher = new Gtk.UriLauncher (row.tooltip_text);
+        launcher.launch.begin ((Gtk.Window) root, null, (obj, res) => {
+        try {
+            launcher.launch.end (res);
+        } catch (Error e) {
+            warning ("Failed to open URI: %s", e.message);
+        }
+        });
     }
 
     [GtkCallback]

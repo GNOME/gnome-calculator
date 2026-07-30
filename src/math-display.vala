@@ -24,9 +24,6 @@ public class MathDisplay : Gtk.Box
     [GtkChild]
     unowned Gtk.TextView info_view;
 
-    [GtkChild]
-    unowned Gtk.EventControllerKey event_controller;
-
     /* Spinner widget that shows if we're calculating a response */
     [GtkChild]
     unowned Adw.Spinner spinner;

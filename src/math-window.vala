@@ -22,7 +22,7 @@ public class MathWindow : Adw.ApplicationWindow
     private unowned HistoryView history;
     [GtkChild]
     private unowned MathDisplay _display;
-    public MathDisplay display { get { return _display; } }
+    public new MathDisplay display { get { return _display; } }
     [GtkChild]
     private unowned MathConverter _converter;
     public MathConverter converter { get { return _converter; } }
@@ -98,7 +98,7 @@ public class MathWindow : Adw.ApplicationWindow
         settings.bind ("word-size", equation, "word_size", SettingsBindFlags.DEFAULT);
 
         event_controller = new Gtk.EventControllerKey ();
-        (this as Gtk.Widget).add_controller (event_controller);
+        (this as Gtk.Widget)?.add_controller (event_controller);
         event_controller.key_pressed.connect (key_press_cb);
         event_controller.key_released.connect (key_release_cb);
 
@@ -387,7 +387,7 @@ public class MathWindow : Adw.ApplicationWindow
         }
 
         settings.set_value ("history-tape", builder.end ());
-        settings.sync ();
+        Settings.sync ();
     }
 
     private void clear_history_tape ()
@@ -396,7 +396,7 @@ public class MathWindow : Adw.ApplicationWindow
         var builder = new VariantBuilder (new VariantType ("a(ss)"));
 
         settings.set_value ("history-tape", builder.end ());
-        settings.sync ();
+        Settings.sync ();
     }
 
     /* Read GSettings and replay each (equation, answer) pair back into

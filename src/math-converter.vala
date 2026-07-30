@@ -70,10 +70,6 @@ public class MathConverter : Gtk.Box
     private Serializer fixed_serializer;
     private Gtk.SignalListItemFactory from_currency_factory;
     private Gtk.SignalListItemFactory to_currency_factory;
-    [GtkChild]
-    private unowned Gtk.EventControllerKey from_event_controller;
-    [GtkChild]
-    private unowned Gtk.EventControllerKey to_event_controller;
     private ulong from_combobox_changed = 0;
     private ulong from_entry_changed;
     private ulong to_entry_changed;
@@ -166,7 +162,7 @@ public class MathConverter : Gtk.Box
         foreach (var category in categories)
         {
             category_model.insert_sorted (category, (c1, c2) => {
-                return (c1 as UnitCategory).display_name.collate ((c2 as UnitCategory).display_name);
+                return (c1 as UnitCategory)?.display_name.collate ((c2 as UnitCategory)?.display_name);
             });
         }
         category_combo.expression = expression;
@@ -212,7 +208,7 @@ public class MathConverter : Gtk.Box
     public string get_focus_unit ()
     {
         var combo = to_entry.has_focus ? to_combo : from_combo;
-        return (combo.selected_item as Unit).name;
+        return (combo.selected_item as Unit)?.name;
     }
 
     public void get_conversion (out Unit from_unit, out Unit to_unit)
@@ -444,13 +440,13 @@ public class MathConverter : Gtk.Box
         item.set_data<Gtk.Label> ("label", label);
         box.append (label);
         box.append (new Gtk.Image.from_icon_name ("object-select-symbolic"));
-        (item as Gtk.ListItem).child = box;
+        ((Gtk.ListItem)item).child = box;
     }
 
     private void bind_currency (Object item, Gtk.DropDown combo)
     {
-        var box = (item as Gtk.ListItem).child;
-        var unit = (item as Gtk.ListItem).item as Unit;
+        var box = (item as Gtk.ListItem)?.child;
+        var unit = (item as Gtk.ListItem)?.item as Unit;
         box.get_first_child ().visible = CurrencyManager.get_default ().is_favorite (unit.name);
 
         switch (_currency_display)
@@ -640,7 +636,7 @@ public class MathConverter : Gtk.Box
         if (category == "numberbase")
         {
             var combo = entry == from_entry ? from_combo : to_combo;
-            number_base = int.parse ((combo.selected_item as Unit).name);
+            number_base = int.parse ((combo.selected_item as Unit)?.name);
         }
         if (str.has_suffix ("π"))
         {
@@ -660,7 +656,7 @@ public class MathConverter : Gtk.Box
     {
         var number = entry == from_entry ? from_number : to_number;
         var combo = entry == from_entry ? from_combo : to_combo;
-        if ((combo.selected_item as Unit).name == "dms")
+        if ((combo.selected_item as Unit)?.name == "dms")
         {
             if (serializer == fixed_serializer && number.is_zero ())
                 entry.buffer.text = serializer.to_string (number);
@@ -669,7 +665,7 @@ public class MathConverter : Gtk.Box
         }
         else if (category == "numberbase")
         {
-            var number_base = int.parse ((combo.selected_item as Unit).name);
+            var number_base = int.parse ((combo.selected_item as Unit)?.name);
             var original_base = serializer.get_base ();
             var original_representation_base = serializer.get_representation_base ();
             serializer.set_base (number_base);
@@ -907,11 +903,14 @@ public class MathConverter : Gtk.Box
                                        out Unit? source_unit,
                                        out Unit? target_unit)
     {
+        source_unit = null;
+        target_unit = null;
+
         if (category_combo == null || from_combo == null || to_combo == null)
             return null;
         UnitCategory? category = category_combo.selected_item as UnitCategory;
-        source_unit = from_combo.selected_item as Unit;
-        target_unit = to_combo.selected_item as Unit;
+            source_unit = from_combo.selected_item as Unit;
+            target_unit = to_combo.selected_item as Unit;
 
         if (category == null || source_unit == null || target_unit == null)
             return null;
