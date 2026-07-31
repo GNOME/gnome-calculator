@@ -94,7 +94,7 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
         {
             debug ("Using ECB rate of %s for %s", value, name);
             var r = mp_set_from_string (value);
-            var c = register_currency (name, source_name, eur_rate.multiply (r), date);
+            register_currency (name, source_name, eur_rate.multiply (r), date);
         }
     }
 
@@ -102,7 +102,7 @@ public class EcbCurrencyProvider : AbstractCurrencyProvider {
     {
         debug ("Using ECB fixed rate of %s for %s", value, name);
         var r = mp_set_from_string (value);
-        var c = register_currency (name, source_name + "#fixed", eur_rate.divide (r), date);
+        register_currency (name, source_name + "#fixed", eur_rate.divide (r), date);
     }
 
     public EcbCurrencyProvider (CurrencyManager _currency_manager)

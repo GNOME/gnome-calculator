@@ -82,7 +82,7 @@ public class UnCurrencyProvider : AbstractCurrencyProvider {
                     var r = mp_set_from_string (value);
                     debug ("Registering %s with value '%s'\r\n", name, value);
                     var v = usd_rate.multiply (r);
-                    var c = register_currency (name, source_name, v, tokens[date_index]);
+                    register_currency (name, source_name, v, tokens[date_index]);
                 }
             }
         }

@@ -1565,18 +1565,6 @@ public class Parser
         insert_into_tree_all (node, true);
     }
 
-    /* Recursive call to free every node of parse-tree. */
-    private void destroy_all_nodes (ParseNode node)
-    {
-        if (node == null)
-            return;
-
-        destroy_all_nodes (node.left);
-        destroy_all_nodes (node.right);
-        /* Don't call free for tokens, as they are allocated and freed in lexer. */
-        /* WARNING: If node.value is freed elsewhere, please assign it null before calling destroy_all_nodes (). */
-    }
-
     /* LL (*) parser. Lookahead count depends on tokens. Handle with care. :P */
 
     /* Check if string "name" is a valid variable for given Parser. It is the same code, used to get the value of variable in parserfunc.c. */
@@ -1732,7 +1720,6 @@ public class Parser
         }
         else if (token.type == LexerTokenType.UNIT || token.type == LexerTokenType.CURRENCY)
         {
-            var first_type = token.type;
             var token_from = token;
             token = lexer.get_next_token ();
             if (token.type == LexerTokenType.IN)

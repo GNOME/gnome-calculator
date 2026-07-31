@@ -68,7 +68,7 @@ public class BCCurrencyProvider : AbstractCurrencyProvider {
     {
         debug ("Using BC rate of %s for %s", value, name);
         var r = mp_set_from_string (value);
-        var c = register_currency (name, source_name, cad_rate.divide (r), date);
+        register_currency (name, source_name, cad_rate.divide (r), date);
     }
 
     public BCCurrencyProvider (CurrencyManager _currency_manager, string currency, string currency_filename)

@@ -317,6 +317,8 @@ public class UnitManager : Object
     public Number? convert_by_symbol (Number x, string x_symbol, string z_symbol,
                                       out Unit? x_unit, out Unit? z_unit)
     {
+        x_unit = null;
+        z_unit = null;
         foreach (var c in categories)
         {
             var x_units = c.get_unit_by_symbol (x_symbol);

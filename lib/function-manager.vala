@@ -333,7 +333,7 @@ public class FunctionManager : Object
             {
                 if (args.length > 1)
                 {
-                    args[0].error = _("Function “%s” takes 1 argument").printf (name);
+                    Number.error = _("Function “%s” takes 1 argument").printf (name);
                     return null;
                 }
                 args += new Number.integer (log_base);
@@ -351,7 +351,7 @@ public class FunctionManager : Object
         {
             if (args.length > 2)
             {
-                args[0].error = _("Function “%s” takes 1 or 2 arguments").printf (name);
+                Number.error = _("Function “%s” takes 1 or 2 arguments").printf (name);
                 return null;
             }
         }
@@ -359,7 +359,7 @@ public class FunctionManager : Object
         {
             if (args.length == 1)
             {
-                args[0].error = _("Function “%s” takes at least 2 arguments").printf (name);
+                Number.error = _("Function “%s” takes at least 2 arguments").printf (name);
                 return null;
             }
         }
@@ -369,7 +369,7 @@ public class FunctionManager : Object
             var error = ngettext ("Function “%s” takes %d argument",
                                   "Function “%s” takes %d arguments",
                                   function.arguments.length);
-            args[0].error = error.printf (name, function.arguments.length);
+            Number.error = error.printf (name, function.arguments.length);
             return null;
         }
 
