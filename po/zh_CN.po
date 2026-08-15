@@ -24,8 +24,8 @@ msgstr ""
 "Project-Id-Version: gnome-calculator master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-06-19 09:00+0000\n"
-"PO-Revision-Date: 2026-07-08 08:20+0800\n"
+"POT-Creation-Date: 2026-08-01 19:34+0000\n"
+"PO-Revision-Date: 2026-08-15 16:50+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -119,7 +119,8 @@ msgid "Conversion Mode"
 msgstr "转换模式"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:308
+#: data/org.gnome.Calculator.metainfo.xml.in:84
+#: data/org.gnome.Calculator.metainfo.xml.in:86 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "GNOME 项目"
 
@@ -575,12 +576,12 @@ msgid "Missing digits after decimal point"
 msgstr "小数点后缺少数字"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: lib/equation-lexer.vala:810 src/math-display.vala:751
 #: src/math-popover.vala:14
 msgid "in"
 msgstr "转为"
 
-#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: lib/equation-lexer.vala:810 src/math-display.vala:751
 #: src/math-popover.vala:14
 msgid "to"
 msgstr "转作"
@@ -590,7 +591,7 @@ msgstr "转作"
 msgid "Function “%s” is missing arguments"
 msgstr "函数“%s”缺少参数"
 
-#: lib/equation-parser.vala:816 lib/number.vala:668
+#: lib/equation-parser.vala:816 lib/number.vala:759
 msgid "The zeroth root of a number is undefined"
 msgstr "对一个数字求零次方根无意义"
 
@@ -1003,207 +1004,207 @@ msgid "Need an integer to factorize"
 msgstr "分解因式运算需要一个整数"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:337
+#: lib/number.vala:360
 msgid "Underflow error"
 msgstr "下溢错误"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:342
+#: lib/number.vala:365
 msgid "Overflow error"
 msgstr "溢出错误"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:444
+#: lib/number.vala:534
 msgid "Argument not defined for zero"
 msgstr "参数值不能为零"
 
-#: lib/number.vala:514
+#: lib/number.vala:605
 msgid "Floor is only defined for real numbers"
 msgstr "向下取整仅对实数有定义"
 
-#: lib/number.vala:529
+#: lib/number.vala:620
 msgid "Ceiling is only defined for real numbers"
 msgstr "向上取整仅对实数有定义"
 
-#: lib/number.vala:544
+#: lib/number.vala:635
 msgid "Round is only defined for real numbers"
 msgstr "四舍五入仅对实数有定义"
 
-#: lib/number.vala:580 lib/number.vala:619
+#: lib/number.vala:671 lib/number.vala:710
 msgid "Exponent is too large"
 msgstr "指数太大了"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:588 lib/number.vala:627
+#: lib/number.vala:679 lib/number.vala:718
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "负数的零次幂未定义"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:596 lib/number.vala:635
+#: lib/number.vala:687 lib/number.vala:726
 msgid "Zero raised to zero is undefined"
 msgstr "对零求幂无意义"
 
-#: lib/number.vala:651
+#: lib/number.vala:742
 msgid "Root is too large"
 msgstr "根太大了"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:698 lib/number.vala:729
+#: lib/number.vala:789 lib/number.vala:820
 msgid "Logarithm of zero is undefined"
 msgstr "零的对数未定义"
 
-#: lib/number.vala:734
+#: lib/number.vala:825
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "以 0 或 1 为底的对数未定义"
 
 #. TODO: Support factorial of complex numbers
-#: lib/number.vala:755
+#: lib/number.vala:846
 msgid "Factorial of complex numbers is not supported"
 msgstr "不支持复数的阶乘运算"
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
-#: lib/number.vala:762
+#: lib/number.vala:853
 msgid "Factorial is undefined for negative integers"
 msgstr "未定义对负整数的阶乘运算"
 
-#: lib/number.vala:766
+#: lib/number.vala:857
 msgid "Factorial is too large"
 msgstr "阶乘太大了"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:816
+#: lib/number.vala:928
 msgid "Division by zero is undefined"
 msgstr "被零除未定义"
 
 #. Translators: Error displayed when attempting to do a modulus division on complex numbers
-#: lib/number.vala:837
+#: lib/number.vala:953
 msgid "Modulus division is only defined for real numbers"
 msgstr "取模运算仅对实数有定义"
 
-#: lib/number.vala:861
+#: lib/number.vala:977
 msgid "Modular exponent is too large"
 msgstr "模幂太大了"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:930
+#: lib/number.vala:1046
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr "正切函数对 π∕2 (90°) 倍数排除 π (180°) 倍数的角度无意义"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:949
+#: lib/number.vala:1065
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "反正弦函数在 [-1，1] 范围之外无意义"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:966
+#: lib/number.vala:1082
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "反余弦函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:984
+#: lib/number.vala:1100
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "反正切函数在 i 和 -i 上未定义"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:1035
+#: lib/number.vala:1151
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "对小于 1 的数求反双曲余弦函数无意义"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:1051
+#: lib/number.vala:1167
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "反双曲正切函数在 [-1,1] 范围之外无意义"
 
 #. Translators: Error displayed when bitwise AND attempted on non-integer values
-#: lib/number.vala:1069
+#: lib/number.vala:1185
 msgid "Bitwise AND is only defined for non-negative integers"
 msgstr "按位与运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise NAND attempted on non-integer values
-#: lib/number.vala:1085
+#: lib/number.vala:1201
 msgid "Bitwise NAND is only defined for non-negative integers"
 msgstr "按位与非运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise OR attempted on non-integer values
-#: lib/number.vala:1101
+#: lib/number.vala:1217
 msgid "Bitwise OR is only defined for non-negative integers"
 msgstr "按位或运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise NOR attempted on non-integer values
-#: lib/number.vala:1117
+#: lib/number.vala:1233
 msgid "Bitwise NOR is only defined for non-negative integers"
 msgstr "按位或非运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise XOR attempted on non-integer values
-#: lib/number.vala:1133
+#: lib/number.vala:1249
 msgid "Bitwise XOR is only defined for non-negative integers"
 msgstr "按位异或运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise XNOR attempted on non-integer values
-#: lib/number.vala:1149
+#: lib/number.vala:1265
 msgid "Bitwise XNOR is only defined for non-negative integers"
 msgstr "按位同或运算只对非负整数有定义"
 
 #. Translators: Error displayed when bitwise NOT attempted on non-integer values
-#: lib/number.vala:1165
+#: lib/number.vala:1281
 msgid "Bitwise NOT is only defined for non-negative integers"
 msgstr "按位非运算只对非负整数有定义"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:1227
+#: lib/number.vala:1343
 msgid "Shift is only possible on integers"
 msgstr "只能对整数进行移位运算"
 
-#: lib/number.vala:1232 lib/number.vala:1260 lib/number.vala:1764
+#: lib/number.vala:1348 lib/number.vala:1376 lib/number.vala:1880
 msgid "Overflow. Try a bigger word size"
 msgstr "溢出。请尝试一个更大的字长"
 
-#: lib/number.vala:1243
+#: lib/number.vala:1359
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "补码只对非负整数有定义"
 
-#: lib/number.vala:1255
+#: lib/number.vala:1371
 msgid "Swap endianness is only possible on integers"
 msgstr "只能对整数进行交换字节序"
 
-#: lib/number.vala:1286
+#: lib/number.vala:1402
 msgid "Combination is only defined for non-negative integers"
 msgstr "组合仅对非负整数有定义"
 
-#: lib/number.vala:1291
+#: lib/number.vala:1407
 msgid "Combination is undefined if n is less than r"
 msgstr "如果 n 小于 r 则组合未定义"
 
-#: lib/number.vala:1315
+#: lib/number.vala:1431
 msgid "Permutation is only defined for non-negative integers"
 msgstr "排列仅对非负整数有定义"
 
-#: lib/number.vala:1320
+#: lib/number.vala:1436
 msgid "Permutation is undefined if n is less than r"
 msgstr "如果 n 小于 r 则排列未定义"
 
-#: lib/number.vala:1327 lib/number.vala:1328
+#: lib/number.vala:1443 lib/number.vala:1444
 msgid "Permutation is too large"
 msgstr "排列太大了"
 
-#: lib/number.vala:1353
+#: lib/number.vala:1469
 msgid "Greatest common divisor is only defined for integers"
 msgstr "最大公约数仅对整数有定义"
 
-#: lib/number.vala:1376
+#: lib/number.vala:1492
 msgid "Least common multiple is only defined for integers"
 msgstr "最小公倍数仅对整数有定义"
 
-#: lib/number.vala:1441
+#: lib/number.vala:1557
 msgid "Median is only defined for real numbers"
 msgstr "中值运算仅对实数有定义"
 
-#: lib/number.vala:1461
+#: lib/number.vala:1577
 msgid "Minimum value is only defined for real numbers"
 msgstr "最小值仅对实数有定义"
 
-#: lib/number.vala:1478
+#: lib/number.vala:1594
 msgid "Maximum value is only defined for real numbers"
 msgstr "最大值仅对实数有定义"
 
@@ -1226,7 +1227,7 @@ msgstr "联合国账务厅"
 #: lib/serializer.vala:359 lib/serializer.vala:409
 msgid ""
 "The result is too long to display in fixed format. Try other result formats"
-msgstr "结果太长无法以固定格式显示。请尝试其它结果格式"
+msgstr "结果太长无法以固定格式显示。请尝试其他结果格式"
 
 #: lib/unit.vala:29
 msgid "Angle"
@@ -2566,23 +2567,23 @@ msgstr "取消(_C)"
 msgid "Close _All"
 msgstr "全部关闭(_A)"
 
-#: src/math-converter.vala:612 src/math-converter.vala:630
+#: src/math-converter.vala:608 src/math-converter.vala:626
 msgid "Error"
 msgstr "错误"
 
-#: src/math-display.vala:694
+#: src/math-display.vala:691
 msgid "Defined Functions"
 msgstr "已定义函数"
 
-#: src/math-display.vala:742
+#: src/math-display.vala:739
 msgid "Built-in Keywords"
 msgstr "内置关键词"
 
-#: src/math-display.vala:794
+#: src/math-display.vala:791
 msgid "Defined Currencies"
 msgstr "已定义货币"
 
-#: src/math-display.vala:843
+#: src/math-display.vala:840
 msgid "Defined Variables"
 msgstr "已定义变量"
 
@@ -2602,11 +2603,11 @@ msgstr "函数名称不能以数字开头"
 msgid "Function name can only contain digits, letters and underscores"
 msgstr "函数名称只能包含数字、字母和下划线"
 
-#: src/math-popover.vala:110
+#: src/math-popover.vala:116
 msgid "Edit"
 msgstr "编辑"
 
-#: src/math-popover.vala:120
+#: src/math-popover.vala:126
 msgid "Delete"
 msgstr "删除"
 
@@ -3265,11 +3266,11 @@ msgstr "粘贴(_P)"
 msgid "Function name"
 msgstr "函数名称"
 
-#: src/ui/math-function-popover.blp:57
+#: src/ui/math-function-popover.blp:60
 msgid "Select no. of arguments"
 msgstr "选择参数的数量"
 
-#: src/ui/math-function-popover.blp:62
+#: src/ui/math-function-popover.blp:65
 msgid "Add function"
 msgstr "添加函数"
 
@@ -3579,7 +3580,7 @@ msgstr "常量"
 msgid "Variable name"
 msgstr "变量名称"
 
-#: src/ui/math-variable-popover.blp:67
+#: src/ui/math-variable-popover.blp:70
 msgid "Store value into existing or new variable"
 msgstr "将数值存入现有或新的变量"
 
