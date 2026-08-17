@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: gcalctool.HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-04-14 07:49+0000\n"
-"PO-Revision-Date: 2026-04-17 17:07+0200\n"
+"POT-Creation-Date: 2026-04-17 15:16+0000\n"
+"PO-Revision-Date: 2026-08-17 18:34+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -113,7 +113,8 @@ msgid "Conversion Mode"
 msgstr "Mòde conversion"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:308
+#: data/org.gnome.Calculator.metainfo.xml.in:84
+#: data/org.gnome.Calculator.metainfo.xml.in:86 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "Lo projècte GNOME"
 
@@ -209,6 +210,8 @@ msgstr "Complecions activadas"
 msgid ""
 "The types of completion proposals to be shown in the auto-completion list."
 msgstr ""
+"Los tipes de prepausicions de complecion d'afichar dins la lista "
+"d'autocomplecion"
 
 #: data/org.gnome.calculator.gschema.xml:83
 msgid "Favorite currencies"
@@ -448,10 +451,8 @@ msgid "Malaysian Ringgit"
 msgstr "Ringgit malaisian"
 
 #: lib/currency.vala:123
-#, fuzzy
-#| msgid "Algerian Dinar"
 msgid "Nigerian Naira"
-msgstr "Dinar argerian"
+msgstr "Naira nigerian"
 
 #: lib/currency.vala:124
 msgid "Norwegian Krone"
@@ -586,7 +587,7 @@ msgstr "a"
 msgid "Function “%s” is missing arguments"
 msgstr "Mancan de paramètres per la foncion « %s »"
 
-#: lib/equation-parser.vala:765 lib/number.vala:586
+#: lib/equation-parser.vala:765 lib/number.vala:588
 msgid "The zeroth root of a number is undefined"
 msgstr "La raiç zèro d’un nombre es pas definida"
 
@@ -1010,66 +1011,64 @@ msgid "Overflow error"
 msgstr "Error de depassament de capacitat cap amont"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:390
+#: lib/number.vala:392
 msgid "Argument not defined for zero"
 msgstr "L'argument d'un nombre complèxe nul es indefinit"
 
-#: lib/number.vala:460
+#: lib/number.vala:462
 msgid "Floor is only defined for real numbers"
 msgstr "La partida entièra es pas que definida per los reals positius"
 
-#: lib/number.vala:475
+#: lib/number.vala:477
 msgid "Ceiling is only defined for real numbers"
 msgstr ""
 "La partida entièra superiora es pas que definida per los reals positius"
 
-#: lib/number.vala:490
+#: lib/number.vala:492
 msgid "Round is only defined for real numbers"
 msgstr "L’arrondit es pas definit que per los reals positius"
 
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:524 lib/number.vala:554
+#: lib/number.vala:526 lib/number.vala:556
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "La poténcia de zèro es pas definida per d'exponents negatius"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:532 lib/number.vala:562
+#: lib/number.vala:534 lib/number.vala:564
 msgid "Zero raised to zero is undefined"
 msgstr "Zèro elevat a zèro es pas definit"
 
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:616 lib/number.vala:647
+#: lib/number.vala:618 lib/number.vala:649
 msgid "Logarithm of zero is undefined"
 msgstr "Lo logaritme de zèro es pas definit"
 
-#: lib/number.vala:652
+#: lib/number.vala:654
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "Lo logaritme de basa 0 o 1 es pas definit"
 
 #. TODO: Support factorial of complex numbers
-#: lib/number.vala:670
+#: lib/number.vala:672
 msgid "Factorial of complex numbers is not supported"
 msgstr "La factoriala de nombres complèxes es pas presa en compte"
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
-#: lib/number.vala:677
+#: lib/number.vala:679
 msgid "Factorial is undefined for negative integers"
 msgstr "La factoriala es pas definida que per los entièrs negatius"
 
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:728
+#: lib/number.vala:730
 msgid "Division by zero is undefined"
 msgstr "La division per zèro es pas definida"
 
 #. Translators: Error displayed when attempting to do a modulus division on complex numbers
-#: lib/number.vala:749
-#, fuzzy
-#| msgid "Modulus division is only defined for integers"
+#: lib/number.vala:751
 msgid "Modulus division is only defined for real numbers"
-msgstr "Lo modulo de la division es pas definit que sus d'entièrs"
+msgstr "Lo modulo de la division es pas definit que sus de nombres reals"
 
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:829
+#: lib/number.vala:831
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1077,146 +1076,121 @@ msgstr ""
 "entièr de còps π (180°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:848
+#: lib/number.vala:850
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "L'arc sinus es pas definit per las valors fòra del segment [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:865
+#: lib/number.vala:867
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "L'arc cosinus es pas definit per las valors fòra del segment [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:883
-#, fuzzy
-#| msgid "Inverse cosine is undefined for values outside [-1, 1]"
+#: lib/number.vala:885
 msgid "Inverse tangent is undefined for values i and -i"
-msgstr "L'arc cosinus es pas definit per las valors fòra del segment [-1, 1]"
+msgstr "La tangenta invèrsa es pas definida per las valors i e -i"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:934
+#: lib/number.vala:936
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "L'argument cosinus iperbolic es pas definit per las valors inferioras a un"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:950
+#: lib/number.vala:952
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "L'argument tangenta iperbolica es pas definit per las valors en defòra del "
 "segment [-1, 1]"
 
 #. Translators: Error displayed when bitwise AND attempted on non-integer values
-#: lib/number.vala:965
-#, fuzzy
-#| msgid "Boolean AND is only defined for positive integers"
+#: lib/number.vala:967
 msgid "Bitwise AND is only defined for non-negative integers"
-msgstr "Lo AND (E) boolean es pas definit que per d'entièrs positius"
+msgstr "Lo AND (E) bit a bit es pas definit que per d'entièrs non negatius"
 
 #. Translators: Error displayed when bitwise NAND attempted on non-integer values
-#: lib/number.vala:978
-#, fuzzy
-#| msgid "Boolean AND is only defined for positive integers"
+#: lib/number.vala:980
 msgid "Bitwise NAND is only defined for non-negative integers"
-msgstr "Lo AND (E) boolean es pas definit que per d'entièrs positius"
+msgstr ""
+"Lo NAND (NON E) bit a bit es pas definit que per d'entièrs non negatius"
 
 #. Translators: Error displayed when bitwise OR attempted on non-integer values
-#: lib/number.vala:991
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
+#: lib/number.vala:993
 msgid "Bitwise OR is only defined for non-negative integers"
-msgstr "Lo OR (O) boolean es pas definit que per d'entièrs positius"
+msgstr "Lo OR (O) bit a bit es pas definit que per d'entièrs non negatius"
 
 #. Translators: Error displayed when bitwise NOR attempted on non-integer values
-#: lib/number.vala:1004
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
+#: lib/number.vala:1006
 msgid "Bitwise NOR is only defined for non-negative integers"
-msgstr "Lo OR (O) boolean es pas definit que per d'entièrs positius"
+msgstr "Lo NOR (NON O) bit a bit es pas definit que per d'entièrs non negatius"
 
 #. Translators: Error displayed when bitwise XOR attempted on non-integer values
-#: lib/number.vala:1017
-#, fuzzy
-#| msgid "Boolean XOR is only defined for positive integers"
+#: lib/number.vala:1019
 msgid "Bitwise XOR is only defined for non-negative integers"
-msgstr "Lo XOR (O exclusiu) boolean es pas definit que per d'entièrs positius"
+msgstr ""
+"Lo XOR (O exclusiu) bit a bit es pas definit que per d'entièrs non negatius"
 
 #. Translators: Error displayed when bitwise XNOR attempted on non-integer values
-#: lib/number.vala:1030
-#, fuzzy
-#| msgid "Boolean XOR is only defined for positive integers"
+#: lib/number.vala:1032
 msgid "Bitwise XNOR is only defined for non-negative integers"
-msgstr "Lo XOR (O exclusiu) boolean es pas definit que per d'entièrs positius"
+msgstr ""
+"Lo XNOR (NON O) bit a bit es pas definit que per d'entièrs non negatius"
 
 #. Translators: Error displayed when bitwise NOT attempted on non-integer values
-#: lib/number.vala:1043
-#, fuzzy
-#| msgid "Boolean NOT is only defined for positive integers"
+#: lib/number.vala:1045
 msgid "Bitwise NOT is only defined for non-negative integers"
-msgstr "Lo NOT (NON) boolean es pas definit que per d'entièrs positius"
+msgstr "Lo NOT (NON) bit a bit es pas definit que per d'entièrs non negatius"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:1105
+#: lib/number.vala:1107
 msgid "Shift is only possible on integers"
 msgstr "Lo decalatge es sonque possible suls entièrs"
 
-#: lib/number.vala:1110 lib/number.vala:1138 lib/number.vala:1584
+#: lib/number.vala:1112 lib/number.vala:1140 lib/number.vala:1586
 msgid "Overflow. Try a bigger word size"
 msgstr "Depassament de capacitat. Ensajatz amb una talha de mot mai granda"
 
-#: lib/number.vala:1121
-#, fuzzy
-#| msgid "Boolean OR is only defined for positive integers"
+#: lib/number.vala:1123
 msgid "Two’s complement is only defined for non-negative integers"
-msgstr "Lo OR (O) boolean es pas definit que per d'entièrs positius"
+msgstr "Lo complement a dos es pas definit que per d'entièrs non negatius"
 
-#: lib/number.vala:1133
-#, fuzzy
-#| msgid "Shift is only possible on integer values"
+#: lib/number.vala:1135
 msgid "Swap endianness is only possible on integers"
-msgstr "Lo decalatge es pas possible que sus de valors entièras"
+msgstr "L'inversion del botisme es pas possibla que sus d'entièrs"
 
-#: lib/number.vala:1161
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
+#: lib/number.vala:1163
 msgid "Combination is only defined for non-negative integers"
-msgstr "La factoriala es pas definida que per los reals positius"
+msgstr "La combinason es pas definida que per los entièrs non negatius"
 
-#: lib/number.vala:1166
+#: lib/number.vala:1168
 msgid "Combination is undefined if n is less than r"
 msgstr "La combinason es indefinida se n es inferior a r"
 
-#: lib/number.vala:1179
-#, fuzzy
-#| msgid "Factorial is only defined for non-negative real numbers"
+#: lib/number.vala:1181
 msgid "Permutation is only defined for non-negative integers"
-msgstr "La factoriala es pas definida que per los reals positius"
+msgstr "La permutacion es pas definida que per los entièrs non negatius"
 
-#: lib/number.vala:1184
-#, fuzzy
-#| msgid "Inverse cosine is undefined for values outside [-1, 1]"
+#: lib/number.vala:1186
 msgid "Permutation is undefined if n is less than r"
-msgstr "L'arc cosinus es pas definit per las valors fòra del segment [-1, 1]"
+msgstr "La permutacion es pas definida se n es mens grand que r"
 
-#: lib/number.vala:1205
+#: lib/number.vala:1207
 msgid "Greatest common divisor is only defined for integers"
 msgstr "Lo mai grand devesidor comun es sonque definit pels entièrs"
 
-#: lib/number.vala:1225
-#, fuzzy
-#| msgid "Modulus division is only defined for integers"
+#: lib/number.vala:1227
 msgid "Least common multiple is only defined for integers"
-msgstr "Lo modulo de la division es pas definit que sus d'entièrs"
+msgstr "Lo mai grand devesidor comun es pas que definit pels entièrs"
 
-#: lib/number.vala:1282
+#: lib/number.vala:1284
 msgid "Median is only defined for real numbers"
 msgstr "La mediana es sonque definida per los reals positius"
 
-#: lib/number.vala:1302
+#: lib/number.vala:1304
 msgid "Minimum value is only defined for real numbers"
 msgstr "La valor minimala es sonque definida per los reals positius"
 
-#: lib/number.vala:1319
+#: lib/number.vala:1321
 msgid "Maximum value is only defined for real numbers"
 msgstr "La valor maximala es sonque definida per los reals positius"
 
@@ -2363,18 +2337,13 @@ msgid "electronvolt,electronvolts,ev"
 msgstr "electronvolt,electronvolts,ev"
 
 #: lib/unit.vala:164
-#, fuzzy
-#| msgid "Pounds"
 msgid "Foot-Pounds"
-msgstr "Liuras"
+msgstr "Pè-liuras"
 
 #: lib/unit.vala:164
-#, fuzzy
-#| msgctxt "unit-symbols"
-#| msgid "pound,pounds,lb"
 msgctxt "unit-symbols"
 msgid "foot-pound,foot-pounds,ft-lb,ft-lbs"
-msgstr "liura,liuras"
+msgstr "pè-liura,pè-liuras,ft-lb,ft-lbs"
 
 #: lib/unit.vala:165
 msgid "Pascals"
@@ -2420,6 +2389,7 @@ msgstr "Atmosfèra estandardas"
 msgctxt "unit-symbols"
 msgid "Standard Atmosphere,Standard atmosphere,standard atmosphere,Atm,atm"
 msgstr ""
+"Atmosfèra estandarda,Atmosfèra estandarda,atmosfèra estandarda, Atm, atm"
 
 #: lib/unit.vala:170
 msgid "Millimeters of Mercury"
@@ -2437,17 +2407,16 @@ msgstr "Poces de mercuri"
 #: lib/unit.vala:171
 msgctxt "unit-symbols"
 msgid "Inch of Mercury,inch of mercury,inHg"
-msgstr ""
+msgstr "Poce de Mercury,poce de mercury,inHg"
 
 #: lib/unit.vala:172
-#, fuzzy
 msgid "Pounds per Square Inch"
 msgstr "Poces per poce carrat"
 
 #: lib/unit.vala:172
 msgctxt "unit-symbols"
 msgid "Pound per Square Inch,pound per square inch,psi"
-msgstr ""
+msgstr "Liura per poce carrat,liura per poce carrat,psi"
 
 #: lib/unit.vala:174
 msgid "Currency"
