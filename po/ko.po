@@ -19,8 +19,8 @@ msgstr ""
 "Project-Id-Version: gcalctool\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-01-31 12:00+0000\n"
-"PO-Revision-Date: 2026-02-28 01:46+0900\n"
+"POT-Creation-Date: 2026-08-29 17:37+0000\n"
+"PO-Revision-Date: 2026-08-30 16:11+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -32,7 +32,7 @@ msgstr ""
 
 #: data/org.gnome.Calculator.desktop.in:2
 #: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
-#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
+#: src/gnome-calculator.vala:306 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "계산기"
 
@@ -118,75 +118,86 @@ msgid "Conversion Mode"
 msgstr "변환 모드"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
+#: data/org.gnome.Calculator.metainfo.xml.in:84
+#: data/org.gnome.Calculator.metainfo.xml.in:86 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "그놈 프로젝트"
 
-#: data/org.gnome.calculator.gschema.xml:31
+#: data/org.gnome.calculator.gschema.xml:32
+msgid "Persistent history tape"
+msgstr "지속적인 기록 "
+
+#: data/org.gnome.calculator.gschema.xml:33
+msgid ""
+"History entries saved across sessions as (equation, answer) pairs. Written "
+"on window close. Cleared when the user clears history."
+msgstr "여러 세션에 걸쳐서 기록된 기록 항목, (수식, 답) 쌍 형식. 창을 닫을 때 기록됩니다. 사용자가 기록을 지우면 지워집니다."
+
+#: data/org.gnome.calculator.gschema.xml:41
 msgid "Accuracy value"
 msgstr "유효 숫자"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:42
 msgid "The number of digits displayed after the numeric point"
 msgstr "소수점 뒤에 표시할 숫자 개수"
 
-#: data/org.gnome.calculator.gschema.xml:37
+#: data/org.gnome.calculator.gschema.xml:47
 msgid "Word size"
 msgstr "워드 크기"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "The size of the words used in bitwise operations"
 msgstr "비트 처리 기능에서 사용할 워드 크기"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Numeric base"
 msgstr "진법"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:54
 msgid "The numeric base"
 msgstr "진법"
 
 # 천단위 쉼표 등
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Group digits"
 msgstr "숫자 모으기"
 
 # 천단위 쉼표 등
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "Indicates whether digits are grouped in large numbers."
 msgstr "숫자를 큰 자리수로 모아서 표시할지 여부."
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Show trailing zeroes"
 msgstr "마지막 0 표시"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:64
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
 msgstr "표시하는 값에서 소수점 뒤에 0을 표시할지 여부."
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Number format"
 msgstr "숫자 형식"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:69
 msgid "The format to display numbers in"
 msgstr "숫자를 표시할 형식"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:73
 msgid "Angle units"
 msgstr "각도 단위"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:74
 msgid "The angle units to use"
 msgstr "사용할 각도 단위"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency update interval"
 msgstr "환율 업데이트 주기"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:79
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
@@ -194,95 +205,95 @@ msgstr ""
 "얼마나 자주 환율을 업데이트할지 정합니다. 값이 0이면 환율을 네트워크에서 가져"
 "오지 않겠다는 의미입니다."
 
-#: data/org.gnome.calculator.gschema.xml:73
+#: data/org.gnome.calculator.gschema.xml:83
 msgid "Currency display"
 msgstr "통화 표시"
 
-#: data/org.gnome.calculator.gschema.xml:74
+#: data/org.gnome.calculator.gschema.xml:84
 msgid ""
 "Indicates whether to show currency code, currency name or both of them in "
 "the converter."
 msgstr ""
 "변환기에서 통화 코드를 표시할지, 이름을 표시할지, 둘 다 표시할지 지정합니다."
 
-#: data/org.gnome.calculator.gschema.xml:78
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Enabled completions"
 msgstr "자동 완성 사용"
 
-#: data/org.gnome.calculator.gschema.xml:79
+#: data/org.gnome.calculator.gschema.xml:89
 msgid ""
 "The types of completion proposals to be shown in the auto-completion list."
 msgstr "자동 완성 목록에 표시할 완성 제안의 종류."
 
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:93
 msgid "Favorite currencies"
 msgstr "자주 사용하는 통화"
 
-#: data/org.gnome.calculator.gschema.xml:84
+#: data/org.gnome.calculator.gschema.xml:94
 msgid "The favorite currencies to be shown at the top of the currency list."
 msgstr "통화 목록 맨 위에 표시할 자주 사용하는 통화 목록."
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Button mode"
 msgstr "단추 모드"
 
-#: data/org.gnome.calculator.gschema.xml:89
+#: data/org.gnome.calculator.gschema.xml:99
 msgid "The button mode"
 msgstr "단추 모드"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Unit category"
 msgstr "단위 분류"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:104
 msgid "Currently selected unit category in the converter"
 msgstr "변환기에서 현재 선택한 단위 분류"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Source units"
 msgstr "원본 단위"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "Currently selected source units in the converter"
 msgstr "변환기에서 현재 선택한 원본 단위"
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Target units"
 msgstr "대상 단위"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Currently selected target units in the converter"
 msgstr "변환기에서 현재 선택한 대상 단위"
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Internal precision"
 msgstr "내부 정밀도"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "The internal precision used with the MPFR library"
 msgstr "MPFR 라이브러리에 사용하는 내부 정밀도"
 
-#: data/org.gnome.calculator.gschema.xml:113
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window position"
 msgstr "창 위치"
 
-#: data/org.gnome.calculator.gschema.xml:114
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window position (x and y) of the last closed window."
 msgstr "최근 닫은 창의 창 위치 (가로 및 세로)."
 
-#: data/org.gnome.calculator.gschema.xml:118
+#: data/org.gnome.calculator.gschema.xml:128
 msgid "Window maximized"
 msgstr "창 최대화"
 
-#: data/org.gnome.calculator.gschema.xml:119
+#: data/org.gnome.calculator.gschema.xml:129
 msgid "Whether the last closed window was maximized."
 msgstr "최근 닫은 창이 최대화되었는지 여부."
 
-#: data/org.gnome.calculator.gschema.xml:123
+#: data/org.gnome.calculator.gschema.xml:133
 msgid "Window size"
 msgstr "창 크기"
 
-#: data/org.gnome.calculator.gschema.xml:124
+#: data/org.gnome.calculator.gschema.xml:134
 msgid "Window size (width and height) of the last closed window."
 msgstr "최근 닫은 창의 창 크기 (너비 및 높이)."
 
@@ -291,12 +302,12 @@ msgid "UAE Dirham"
 msgstr "아랍에미리트연합 디르함"
 
 #: lib/currency.vala:83
-msgid "Argentine Peso"
-msgstr "아르헨티나 페소"
-
-#: lib/currency.vala:84
 msgid "Armenian Dram"
 msgstr "아르메니아 드람"
+
+#: lib/currency.vala:84
+msgid "Argentine Peso"
+msgstr "아르헨티나 페소"
 
 #: lib/currency.vala:85
 msgid "Australian Dollar"
@@ -307,251 +318,243 @@ msgid "Bangladeshi Taka"
 msgstr "방글라데시 타카"
 
 #: lib/currency.vala:87
-msgid "Bulgarian Lev"
-msgstr "불가리아 레프"
-
-#: lib/currency.vala:88
 msgid "Bahraini Dinar"
 msgstr "바레인 디나르"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "브루나이 달러"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "브라질 레알"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "보츠와나 풀라"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "캐나다 달러"
 
-#: lib/currency.vala:93
-msgid "CFA Franc"
-msgstr "CFA 프랑"
-
-#: lib/currency.vala:94
+#: lib/currency.vala:92
 msgid "Swiss Franc"
 msgstr "스위스 프랑"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:93
 msgid "Chilean Peso"
 msgstr "칠레 페소"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:94
 msgid "Chinese Yuan"
 msgstr "중국 위안"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:95
 msgid "Colombian Peso"
 msgstr "콜롬비아 페소"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:96
 msgid "Czech Koruna"
 msgstr "체코 코루나"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:97
 msgid "Danish Krone"
 msgstr "덴마크 크로네"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:98
 msgid "Algerian Dinar"
 msgstr "알제리 디나르"
 
-#: lib/currency.vala:101
-msgid "Estonian Kroon"
-msgstr "에스토니아 크룬"
-
-#: lib/currency.vala:102
+#: lib/currency.vala:99
 msgid "Egyptian Pound"
 msgstr "이집트 파운드"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:100
 msgid "Euro"
 msgstr "유로"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:101
 msgid "British Pound Sterling"
 msgstr "영국 파운드 스털링"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:102
 msgid "Hong Kong Dollar"
 msgstr "홍콩 달러"
 
-#: lib/currency.vala:106
-msgid "Croatian Kuna"
-msgstr "크로아티아 쿠나"
-
-#: lib/currency.vala:107
+#: lib/currency.vala:103
 msgid "Hungarian Forint"
 msgstr "헝가리 포린트"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:104
 msgid "Indonesian Rupiah"
 msgstr "인도네시아 루피아"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:105
 msgid "Israeli New Shekel"
 msgstr "이스라엘 셰켈 신화폐"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:106
 msgid "Indian Rupee"
 msgstr "인도 루피"
 
-#: lib/currency.vala:111
+#: lib/currency.vala:107
 msgid "Iranian Rial"
 msgstr "이란 리알"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:108
 msgid "Icelandic Krona"
 msgstr "아이슬랜드 크로나"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:109
 msgid "Japanese Yen"
 msgstr "일본 엔"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:110
 msgid "Jamaican Dollar"
 msgstr "자메이카 달러"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:111
 msgid "South Korean Won"
 msgstr "대한민국 원"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:112
 msgid "Kuwaiti Dinar"
 msgstr "쿠웨이트 디나르"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:113
 msgid "Kazakhstani Tenge"
 msgstr "카자흐스탄 텡게"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:114
 msgid "Sri Lankan Rupee"
 msgstr "스리랑카 루피"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:115
 msgid "Libyan Dinar"
 msgstr "리비아 디나르"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:116
 msgid "Mauritian Rupee"
 msgstr "모리셔스 루피"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:117
 msgid "Mexican Peso"
 msgstr "멕시코 페소"
 
-#: lib/currency.vala:122
+#: lib/currency.vala:118
 msgid "Malaysian Ringgit"
 msgstr "말레이시아 링깃"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:119
 msgid "Nigerian Naira"
 msgstr "나이지리아 나이라"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:120
 msgid "Norwegian Krone"
 msgstr "노르웨이 크로네"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:121
 msgid "Nepalese Rupee"
 msgstr "네팔 루피"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:122
 msgid "New Zealand Dollar"
 msgstr "뉴질랜드 달러"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:123
 msgid "Omani Rial"
 msgstr "오만 리알"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:124
 msgid "Peruvian Nuevo Sol"
 msgstr "페루 누에보솔"
 
-#: lib/currency.vala:129
+#: lib/currency.vala:125
 msgid "Philippine Peso"
 msgstr "필리핀 페소"
 
-#: lib/currency.vala:130
+#: lib/currency.vala:126
 msgid "Pakistani Rupee"
 msgstr "파키스탄 루피"
 
-#: lib/currency.vala:131
+#: lib/currency.vala:127
 msgid "Polish Złoty"
 msgstr "폴란드 즈워티"
 
-#: lib/currency.vala:132
+#: lib/currency.vala:128
 msgid "Qatari Riyal"
 msgstr "카타르 리얄"
 
-#: lib/currency.vala:133
+#: lib/currency.vala:129
 msgid "New Romanian Leu"
 msgstr "루마니아 레우 신화폐"
 
-#: lib/currency.vala:134
+#: lib/currency.vala:130
 msgid "Russian Ruble"
 msgstr "러시아 루블"
 
-#: lib/currency.vala:135
-msgid "Saudi Riyal"
-msgstr "사우디 리얄"
-
-#: lib/currency.vala:136
+#: lib/currency.vala:131
 msgid "Serbian Dinar"
 msgstr "세르비아 디나르"
 
-#: lib/currency.vala:137
+#: lib/currency.vala:132
+msgid "Saudi Riyal"
+msgstr "사우디 리얄"
+
+#: lib/currency.vala:133
 msgid "Swedish Krona"
 msgstr "스웨덴 크로나"
 
-#: lib/currency.vala:138
+#: lib/currency.vala:134
 msgid "Singapore Dollar"
 msgstr "싱가포르 달러"
 
-#: lib/currency.vala:139
+#: lib/currency.vala:135
 msgid "Thai Baht"
 msgstr "태국 바트"
 
-#: lib/currency.vala:140
+#: lib/currency.vala:136
 msgid "Tunisian Dinar"
 msgstr "튀니지 디나르"
 
-#: lib/currency.vala:141
+#: lib/currency.vala:137
 msgid "Turkish Lira"
 msgstr "터키 리라"
 
 # 주의: 접근 키 아님
-#: lib/currency.vala:142
+#: lib/currency.vala:138
 msgid "T&T Dollar"
 msgstr "트리니다드토바고 달러(TTD)"
 
-#: lib/currency.vala:143
+#: lib/currency.vala:139
 msgid "New Taiwan Dollar"
 msgstr "신권 대만 달러"
 
-#: lib/currency.vala:144
+#: lib/currency.vala:140
 msgid "Ukrainian Hryvnia"
 msgstr "우크라이나 흐리우냐"
 
-#: lib/currency.vala:145
+#: lib/currency.vala:141
 msgid "US Dollar"
 msgstr "미국 달러"
 
-#: lib/currency.vala:146
+#: lib/currency.vala:142
 msgid "Uruguayan Peso"
 msgstr "우루과이 페소"
 
-#: lib/currency.vala:147
+#: lib/currency.vala:143
 msgid "Vietnamese Dong"
 msgstr "베트남 동"
 
-#: lib/currency.vala:148
+#: lib/currency.vala:144
+msgid "Central African CFA Franc"
+msgstr "중앙아프리카 CFA 프랑"
+
+#: lib/currency.vala:145
+msgid "West African CFA Franc"
+msgstr "서아프리카 CFA 프랑"
+
+#: lib/currency.vala:146
 msgid "South African Rand"
 msgstr "남아프리카공화국 랜드"
 
@@ -574,123 +577,123 @@ msgstr "소숫점 뒤에 숫자 없음"
 
 # 번역할 수 없음: 이런 식으로 번역하게 만든 업스트림 잘못.
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: lib/equation-lexer.vala:810 src/math-display.vala:751
 #: src/math-popover.vala:14
 msgid "in"
 msgstr "in"
 
 # 번역할 수 없음: 이런 식으로 번역하게 만든 업스트림 잘못.
-#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: lib/equation-lexer.vala:810 src/math-display.vala:751
 #: src/math-popover.vala:14
 msgid "to"
 msgstr "to"
 
-#: lib/equation-parser.vala:443
+#: lib/equation-parser.vala:486
 #, c-format
 msgid "Function “%s” is missing arguments"
 msgstr "“%s” 함수 인자가 빠졌습니다"
 
-#: lib/equation-parser.vala:765 lib/number.vala:568
+#: lib/equation-parser.vala:816 lib/number.vala:759
 msgid "The zeroth root of a number is undefined"
 msgstr "어떤 수의 0 제곱근은 정의되지 않습니다"
 
-#: lib/equation-parser.vala:1060
+#: lib/equation-parser.vala:1125
 msgid "Mathematics"
 msgstr "수학"
 
-#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+#: lib/equation-parser.vala:1126 src/ui/buttons-advanced.blp:1116
 msgid "Euler’s Number"
 msgstr "오일러 수"
 
-#: lib/equation-parser.vala:1062
+#: lib/equation-parser.vala:1127
 msgid "Pi"
 msgstr "Pi"
 
-#: lib/equation-parser.vala:1063
+#: lib/equation-parser.vala:1128
 msgid "Tau"
 msgstr "Tau"
 
-#: lib/equation-parser.vala:1064
+#: lib/equation-parser.vala:1129
 msgid "Golden Ratio"
 msgstr "황금율"
 
-#: lib/equation-parser.vala:1066
+#: lib/equation-parser.vala:1131
 msgid "Electromagnetism"
 msgstr "전자기학"
 
-#: lib/equation-parser.vala:1067
+#: lib/equation-parser.vala:1132
 msgid "Light Speed"
 msgstr "광속"
 
-#: lib/equation-parser.vala:1068
+#: lib/equation-parser.vala:1133
 msgid "Elementary Charge"
 msgstr "기본 전하"
 
-#: lib/equation-parser.vala:1069
+#: lib/equation-parser.vala:1134
 msgid "Impedance of Vacuum"
 msgstr "자유 공간 임피던스"
 
-#: lib/equation-parser.vala:1070
+#: lib/equation-parser.vala:1135
 msgid "Permeability of Vacuum"
 msgstr "자유 공간 투자율"
 
-#: lib/equation-parser.vala:1071
+#: lib/equation-parser.vala:1136
 msgid "Permittivity of Vacuum"
 msgstr "자유 공간 유전율"
 
-#: lib/equation-parser.vala:1073
+#: lib/equation-parser.vala:1138
 msgid "Atomic & Nuclear"
 msgstr "원자 및 핵"
 
-#: lib/equation-parser.vala:1074
+#: lib/equation-parser.vala:1139
 msgid "Planck’s Constant"
 msgstr "플랑크 상수"
 
-#: lib/equation-parser.vala:1075
+#: lib/equation-parser.vala:1140
 msgid "Fine-Structure Constant"
 msgstr "미세 구조 상수"
 
-#: lib/equation-parser.vala:1076
+#: lib/equation-parser.vala:1141
 msgid "Electron Mass"
 msgstr "전자 질량"
 
-#: lib/equation-parser.vala:1077
+#: lib/equation-parser.vala:1142
 msgid "Proton Mass"
 msgstr "양성자 질량"
 
-#: lib/equation-parser.vala:1079
+#: lib/equation-parser.vala:1144
 msgid "Thermodynamics"
 msgstr "열역학"
 
-#: lib/equation-parser.vala:1080
+#: lib/equation-parser.vala:1145
 msgid "Boltzmann Constant"
 msgstr "볼츠만 상수"
 
-#: lib/equation-parser.vala:1081
+#: lib/equation-parser.vala:1146
 msgid "Atomic Mass Unit"
 msgstr "원자량 단위"
 
-#: lib/equation-parser.vala:1082
+#: lib/equation-parser.vala:1147
 msgid "Molar Gas Constant"
 msgstr "몰 기체 상수"
 
-#: lib/equation-parser.vala:1083
+#: lib/equation-parser.vala:1148
 msgid "Stefan-Boltzmann Constant"
 msgstr "슈테판-볼츠만 상수"
 
-#: lib/equation-parser.vala:1084
+#: lib/equation-parser.vala:1149
 msgid "Avogadro’s Number"
 msgstr "아보가르도 수"
 
-#: lib/equation-parser.vala:1086
+#: lib/equation-parser.vala:1151
 msgid "Gravitation"
 msgstr "중력"
 
-#: lib/equation-parser.vala:1087
+#: lib/equation-parser.vala:1152
 msgid "Gravitational Constant"
 msgstr "중력 상수"
 
-#: lib/equation-parser.vala:1088
+#: lib/equation-parser.vala:1153
 msgid "Earth Acceleration"
 msgstr "지구 가속도"
 
@@ -776,7 +779,7 @@ msgstr "실수 부분"
 msgid "Imaginary Component"
 msgstr "허수 부분"
 
-#: lib/function-manager.vala:46 src/math-window.vala:155
+#: lib/function-manager.vala:46 src/math-window.vala:158
 msgid "Programming"
 msgstr "프로그래밍"
 
@@ -1006,188 +1009,208 @@ msgid "Need an integer to factorize"
 msgstr "소인수 분해에는 정수 값이 필요합니다"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:306
+#: lib/number.vala:360
 msgid "Underflow error"
 msgstr "언더플로우 오류"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:311
+#: lib/number.vala:365
 msgid "Overflow error"
 msgstr "오버플로우 오류"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:372
+#: lib/number.vala:534
 msgid "Argument not defined for zero"
 msgstr "편각은 0에 대해서 정의되지 않습니다"
 
-#: lib/number.vala:442
+#: lib/number.vala:605
 msgid "Floor is only defined for real numbers"
 msgstr "올림은 실수에 대해서만 정의됩니다"
 
-#: lib/number.vala:457
+#: lib/number.vala:620
 msgid "Ceiling is only defined for real numbers"
 msgstr "내림은 실수에 대해서만 정의됩니다"
 
-#: lib/number.vala:472
+#: lib/number.vala:635
 msgid "Round is only defined for real numbers"
 msgstr "반올림은 실수에 대해서만 정의됩니다"
 
+#: lib/number.vala:671 lib/number.vala:710
+msgid "Exponent is too large"
+msgstr "지수가 너무 큽니다"
+
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:506 lib/number.vala:536
+#: lib/number.vala:679 lib/number.vala:718
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "0의 제곱은 음수 지수에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:514 lib/number.vala:544
+#: lib/number.vala:687 lib/number.vala:726
 msgid "Zero raised to zero is undefined"
 msgstr "0의 0승은 정의되지 않습니다"
 
+#: lib/number.vala:742
+msgid "Root is too large"
+msgstr "제곱근이 너무 큽니다"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:598 lib/number.vala:629
+#: lib/number.vala:789 lib/number.vala:820
 msgid "Logarithm of zero is undefined"
 msgstr "0의 로그는 정의되지 않습니다"
 
-#: lib/number.vala:634
+#: lib/number.vala:825
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "0 또는 1이 밑인 로그는 정의되지 않습니다"
 
 #. TODO: Support factorial of complex numbers
-#: lib/number.vala:652
+#: lib/number.vala:846
 msgid "Factorial of complex numbers is not supported"
 msgstr "복소수의 팩토리얼은 지원하지 않습니다"
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
-#: lib/number.vala:659
+#: lib/number.vala:853
 msgid "Factorial is undefined for negative integers"
 msgstr "팩토리얼은 음수에 대해서는 정의되지 않습니다"
 
+#: lib/number.vala:857
+msgid "Factorial is too large"
+msgstr "팩토리얼이 너무 큽니다"
+
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:710
+#: lib/number.vala:928
 msgid "Division by zero is undefined"
 msgstr "0으로 나누기는 정의되지 않습니다"
 
 #. Translators: Error displayed when attempting to do a modulus division on complex numbers
-#: lib/number.vala:731
+#: lib/number.vala:953
 msgid "Modulus division is only defined for real numbers"
 msgstr "나머지 나누기는 실수에 대해서만 정의됩니다"
 
+#: lib/number.vala:977
+msgid "Modular exponent is too large"
+msgstr "모듈러 지수가 너무 큽니다"
+
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:811
+#: lib/number.vala:1046
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
 "탄젠트는 π∕2(90°)에 π(180°) 배수를 더한 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:830
+#: lib/number.vala:1065
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "역 사인은 [-1, 1] 밖의 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:847
+#: lib/number.vala:1082
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "역 코사인은 [-1, 1] 밖의 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:865
+#: lib/number.vala:1100
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "역 탄젠트 함수는 i 및 -i 값에 대해 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:916
+#: lib/number.vala:1151
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr "역 하이퍼 코사인은 1보다 작은 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:932
+#: lib/number.vala:1167
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr "역 하이퍼 탄젠트는 [-1, 1] 밖의 값에 대해서는 정의되지 않습니다"
 
 #. Translators: Error displayed when bitwise AND attempted on non-integer values
-#: lib/number.vala:947
+#: lib/number.vala:1185
 msgid "Bitwise AND is only defined for non-negative integers"
 msgstr "비트단위 AND는 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when bitwise NAND attempted on non-integer values
-#: lib/number.vala:960
+#: lib/number.vala:1201
 msgid "Bitwise NAND is only defined for non-negative integers"
 msgstr "비트단위 NAND는 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when bitwise OR attempted on non-integer values
-#: lib/number.vala:973
+#: lib/number.vala:1217
 msgid "Bitwise OR is only defined for non-negative integers"
 msgstr "비트단위 OR는 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when bitwise NOR attempted on non-integer values
-#: lib/number.vala:986
+#: lib/number.vala:1233
 msgid "Bitwise NOR is only defined for non-negative integers"
 msgstr "비트단위 NOR는 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when bitwise XOR attempted on non-integer values
-#: lib/number.vala:999
+#: lib/number.vala:1249
 msgid "Bitwise XOR is only defined for non-negative integers"
 msgstr "비트단위 XOR는 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when bitwise XNOR attempted on non-integer values
-#: lib/number.vala:1012
+#: lib/number.vala:1265
 msgid "Bitwise XNOR is only defined for non-negative integers"
 msgstr "비트단위 XNOR는 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when bitwise NOT attempted on non-integer values
-#: lib/number.vala:1025
+#: lib/number.vala:1281
 msgid "Bitwise NOT is only defined for non-negative integers"
 msgstr "비트단위 NOT은 음이 아닌 정수에 대해서만 정의됩니다"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:1087
+#: lib/number.vala:1343
 msgid "Shift is only possible on integers"
 msgstr "쉬프트는 정수에 대해서만 가능합니다"
 
-#: lib/number.vala:1092 lib/number.vala:1120 lib/number.vala:1566
+#: lib/number.vala:1348 lib/number.vala:1376 lib/number.vala:1880
 msgid "Overflow. Try a bigger word size"
 msgstr "오버플로우. 워드 크기를 늘려 보십시오"
 
-#: lib/number.vala:1103
+#: lib/number.vala:1359
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "2의 보수는 음이 아닌 정수에 대해서만 정의됩니다"
 
-#: lib/number.vala:1115
+#: lib/number.vala:1371
 msgid "Swap endianness is only possible on integers"
 msgstr "엔디안 뒤바꾸기는 정수에 대해서만 가능합니다"
 
-#: lib/number.vala:1143
+#: lib/number.vala:1402
 msgid "Combination is only defined for non-negative integers"
 msgstr "조합은 음이 아닌 정수에 대해서만 정의됩니다"
 
-#: lib/number.vala:1148
+#: lib/number.vala:1407
 msgid "Combination is undefined if n is less than r"
 msgstr "조합은 n이 r보다 작으면 정의되지 않습니다"
 
-#: lib/number.vala:1161
+#: lib/number.vala:1431
 msgid "Permutation is only defined for non-negative integers"
 msgstr "순열은 음이 아닌 정수에 대해서만 정의됩니다"
 
-#: lib/number.vala:1166
+#: lib/number.vala:1436
 msgid "Permutation is undefined if n is less than r"
 msgstr "순열은 n이 r보다 작으면 정의되지 않습니다"
 
-#: lib/number.vala:1187
+#: lib/number.vala:1443 lib/number.vala:1444
+msgid "Permutation is too large"
+msgstr "순열이 너무 큽니다"
+
+#: lib/number.vala:1469
 msgid "Greatest common divisor is only defined for integers"
 msgstr "최대공약수는 정수에 대해서만 정의됩니다"
 
-#: lib/number.vala:1207
+#: lib/number.vala:1492
 msgid "Least common multiple is only defined for integers"
 msgstr "최소공배수는 정수에 대해서만 정의됩니다"
 
-#: lib/number.vala:1264
+#: lib/number.vala:1557
 msgid "Median is only defined for real numbers"
 msgstr "중간값은 실수에 대해서만 정의됩니다"
 
-#: lib/number.vala:1284
+#: lib/number.vala:1577
 msgid "Minimum value is only defined for real numbers"
 msgstr "최소값은 실수에 대해서만 정의됩니다"
 
-#: lib/number.vala:1301
+#: lib/number.vala:1594
 msgid "Maximum value is only defined for real numbers"
 msgstr "최대값은 실수에 대해서만 정의됩니다"
 
@@ -1207,7 +1230,7 @@ msgstr "국제통화기금"
 msgid "United Nations Treasury"
 msgstr "국제연합 재무부"
 
-#: lib/serializer.vala:359 lib/serializer.vala:397
+#: lib/serializer.vala:359 lib/serializer.vala:409
 msgid ""
 "The result is too long to display in fixed format. Try other result formats"
 msgstr ""
@@ -2445,15 +2468,15 @@ msgstr "십진수"
 msgid "Hexadecimal"
 msgstr "16진수"
 
-#: search-provider/search-provider.vala:206
+#: search-provider/search-provider.vala:200
 msgid "Open in Calculator"
 msgstr "계산기에서 열기"
 
-#: search-provider/search-provider.vala:239
+#: search-provider/search-provider.vala:233
 msgid "Result copied"
 msgstr "결과 복사됨"
 
-#: search-provider/search-provider.vala:240
+#: search-provider/search-provider.vala:234
 msgid "Result was copied successfully"
 msgstr "결과를 성공적으로 복사했습니다"
 
@@ -2499,37 +2522,37 @@ msgid "Show release version"
 msgstr "릴리스 버전을 표시합니다"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:291
+#: src/gnome-calculator.vala:313
 #, c-format
 msgid "© 1986–%d The Calculator authors"
 msgstr "© 1986–%d The Calculator authors"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:297
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "차영호 <ganadist at gmail dot com>\n"
 "류창우 <cwryu@debian.org>\n"
 "박열 <peary2@gmail.com>"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 msgid "Exchange Rate Data Providers"
 msgstr "환율 데이터 제공자"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "환율 데이터 제공: %s"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Close All?"
 msgstr "모두 닫습니까?"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Are you sure you want to close all open windows?"
 msgstr "정말로 열려 있는 모든 창을 닫으시겠습니까?"
 
-#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/gnome-calculator.vala:332 src/ui/buttons-financial.blp:897
 #: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
 #: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
 #: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
@@ -2538,27 +2561,27 @@ msgstr "정말로 열려 있는 모든 창을 닫으시겠습니까?"
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: src/gnome-calculator.vala:311
+#: src/gnome-calculator.vala:333
 msgid "Close _All"
 msgstr "모두 닫기(_A)"
 
-#: src/math-converter.vala:612 src/math-converter.vala:630
+#: src/math-converter.vala:608 src/math-converter.vala:626
 msgid "Error"
 msgstr "오류"
 
-#: src/math-display.vala:694
+#: src/math-display.vala:691
 msgid "Defined Functions"
 msgstr "정의된 기능"
 
-#: src/math-display.vala:742
+#: src/math-display.vala:739
 msgid "Built-in Keywords"
 msgstr "내장 키워드"
 
-#: src/math-display.vala:794
+#: src/math-display.vala:791
 msgid "Defined Currencies"
 msgstr "정의된 통화"
 
-#: src/math-display.vala:843
+#: src/math-display.vala:840
 msgid "Defined Variables"
 msgstr "정의된 변수"
 
@@ -2578,11 +2601,11 @@ msgstr "함수 이름은 숫자로 시작할 수 없습니다"
 msgid "Function name can only contain digits, letters and underscores"
 msgstr "함수 이름은 숫자, 문자, 밑줄만 사용할 수 있습니다."
 
-#: src/math-popover.vala:110
+#: src/math-popover.vala:116
 msgid "Edit"
 msgstr "편집"
 
-#: src/math-popover.vala:120
+#: src/math-popover.vala:126
 msgid "Delete"
 msgstr "삭제"
 
@@ -2642,23 +2665,23 @@ msgstr "변수 이름은 숫자로 시작할 수 없습니다"
 msgid "Variable name can only contain digits, letters and underscores"
 msgstr "변수 이름은 숫자, 문자, 밑줄만 사용할 수 있습니다."
 
-#: src/math-window.vala:137
+#: src/math-window.vala:140
 msgid "Basic"
 msgstr "기본"
 
-#: src/math-window.vala:143
+#: src/math-window.vala:146
 msgid "Advanced"
 msgstr "고급"
 
-#: src/math-window.vala:149 src/ui/math-window.blp:152
+#: src/math-window.vala:152 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "재무"
 
-#: src/math-window.vala:161
+#: src/math-window.vala:164
 msgid "Keyboard"
 msgstr "키보드"
 
-#: src/math-window.vala:167
+#: src/math-window.vala:170
 msgid "Conversion"
 msgstr "변환"
 
@@ -3262,11 +3285,11 @@ msgstr "붙여넣기(_P)"
 msgid "Function name"
 msgstr "함수 이름"
 
-#: src/ui/math-function-popover.blp:57
+#: src/ui/math-function-popover.blp:60
 msgid "Select no. of arguments"
 msgstr "함수의 인자 개수 선택"
 
-#: src/ui/math-function-popover.blp:62
+#: src/ui/math-function-popover.blp:65
 msgid "Add function"
 msgstr "함수 추가"
 
@@ -3576,7 +3599,7 @@ msgstr "상수"
 msgid "Variable name"
 msgstr "변수 이름"
 
-#: src/ui/math-variable-popover.blp:67
+#: src/ui/math-variable-popover.blp:70
 msgid "Store value into existing or new variable"
 msgstr "값을 기존 값 또는 새 값에 저장"
 
