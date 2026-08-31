@@ -9,15 +9,16 @@
 # Марко Андрејић <marko.andrejic93@gmail.com>, 2024.
 # Марко Костић <marko.m.kostic@gmail.com>, 2024.
 # Марко М. Костић <marko.m.kostic@gmail.com>, 2025.
+# aceydot <aceydot@proton.me>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-03-14 20:47+0000\n"
-"PO-Revision-Date: 2026-03-16 12:06+0100\n"
-"Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
+"POT-Creation-Date: 2026-08-29 17:37+0000\n"
+"PO-Revision-Date: 2026-08-30 21:17+0200\n"
+"Last-Translator: aceydot <aceydot@proton.me>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +31,7 @@ msgstr ""
 
 #: data/org.gnome.Calculator.desktop.in:2
 #: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
-#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
+#: src/gnome-calculator.vala:306 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "Калкулатор"
 
@@ -81,7 +82,10 @@ msgid ""
 "Programming mode supports calculations using common bases (binary, octal, "
 "decimal, and hexadecimal), bitwise operations, two’s complement, character "
 "to character code conversion, and more."
-msgstr "Програмски режим подржава израчунавања коришћењем уобичајених основа (бинарне, окталне, децималне и хексадецималне), битовне операције, двоструки комплемент, претварање знака у код знака и још много тога."
+msgstr ""
+"Програмски режим подржава израчунавања коришћењем уобичајених основа "
+"(бинарне, окталне, децималне и хексадецималне), битовне операције, двоструки "
+"комплемент, претварање знака у код знака и још много тога."
 
 #: data/org.gnome.Calculator.metainfo.xml.in:32
 msgid ""
@@ -116,47 +120,61 @@ msgid "Conversion Mode"
 msgstr "Режим конверзије"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
+#: data/org.gnome.Calculator.metainfo.xml.in:84
+#: data/org.gnome.Calculator.metainfo.xml.in:86 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "Пројекат Гном"
 
-#: data/org.gnome.calculator.gschema.xml:31
+#: data/org.gnome.calculator.gschema.xml:32
+msgid "Persistent history tape"
+msgstr "Трајна трака историјата"
+
+#: data/org.gnome.calculator.gschema.xml:33
+msgid ""
+"History entries saved across sessions as (equation, answer) pairs. Written "
+"on window close. Cleared when the user clears history."
+msgstr ""
+"Ставке историјата сачуване преко сесија као парови (једначина, одговор). "
+"Записује се приликом затварања прозора. Брише се када корисник обрише "
+"историјат."
+
+#: data/org.gnome.calculator.gschema.xml:41
 msgid "Accuracy value"
 msgstr "Вредност тачности"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:42
 msgid "The number of digits displayed after the numeric point"
 msgstr "Број цифара приказан после децималног зареза"
 
-#: data/org.gnome.calculator.gschema.xml:37
+#: data/org.gnome.calculator.gschema.xml:47
 msgid "Word size"
 msgstr "Дужина речи"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "The size of the words used in bitwise operations"
 msgstr "Дужина речи која се користи за битске операције"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Numeric base"
 msgstr "Бројевна основа"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:54
 msgid "The numeric base"
 msgstr "Бројна основа"
 
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Group digits"
 msgstr "Груписање цифара"
 
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "Indicates whether digits are grouped in large numbers."
 msgstr "Означава да ли су цифре груписане у великим бројевима."
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Show trailing zeroes"
 msgstr "Прикажи пратеће нуле"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:64
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
@@ -164,27 +182,27 @@ msgstr ""
 "Да ли да се у приказаној вредности приказују пратеће нуле после децималног "
 "зареза."
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Number format"
 msgstr "Запис броја"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:69
 msgid "The format to display numbers in"
 msgstr "Запис у коме ће се приказивати бројеви"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:73
 msgid "Angle units"
 msgstr "Јединице углова"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:74
 msgid "The angle units to use"
 msgstr "Јединице углова за коришћење"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency update interval"
 msgstr "Учесталост ажурирања валута"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:79
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
@@ -192,95 +210,96 @@ msgstr ""
 "Колико често треба ажурирати курсне листе. Вредност „0“ подешава програм "
 "тако да се курсне листе никада не преузимају са мреже."
 
-#: data/org.gnome.calculator.gschema.xml:73
+#: data/org.gnome.calculator.gschema.xml:83
 msgid "Currency display"
 msgstr "Приказ валута"
 
-#: data/org.gnome.calculator.gschema.xml:74
+#: data/org.gnome.calculator.gschema.xml:84
 msgid ""
 "Indicates whether to show currency code, currency name or both of them in "
 "the converter."
-msgstr "Означава да ли се у претварачу приказује код валуте, назив валуте или обоје."
+msgstr ""
+"Означава да ли се у претварачу приказује код валуте, назив валуте или обоје."
 
-#: data/org.gnome.calculator.gschema.xml:78
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Enabled completions"
 msgstr "Омогућена допуњавања"
 
-#: data/org.gnome.calculator.gschema.xml:79
+#: data/org.gnome.calculator.gschema.xml:89
 msgid ""
 "The types of completion proposals to be shown in the auto-completion list."
 msgstr ""
 "Врста предлога за допуњавање који се приказују у списку за самодопуњавање."
 
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:93
 msgid "Favorite currencies"
 msgstr "Омиљене валуте"
 
-#: data/org.gnome.calculator.gschema.xml:84
+#: data/org.gnome.calculator.gschema.xml:94
 msgid "The favorite currencies to be shown at the top of the currency list."
 msgstr "Омиљене валуте које се приказују на врху списка валута."
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Button mode"
 msgstr "Режим дугмади"
 
-#: data/org.gnome.calculator.gschema.xml:89
+#: data/org.gnome.calculator.gschema.xml:99
 msgid "The button mode"
 msgstr "Режим дугмади"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Unit category"
 msgstr "Категорија јединице"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:104
 msgid "Currently selected unit category in the converter"
 msgstr "Тренутно изабрана категорија јединице приликом конверзије"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Source units"
 msgstr "Изворне јединице"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "Currently selected source units in the converter"
 msgstr "Тренутно изабране изворне јединице у претварачу"
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Target units"
 msgstr "Циљне јединице"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Currently selected target units in the converter"
 msgstr "Тренутно изабране циљне јединице у претварачу"
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Internal precision"
 msgstr "Унутрашња тачност"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "The internal precision used with the MPFR library"
 msgstr "Унутрашња тачност коришћена са МПФР библиотеком"
 
-#: data/org.gnome.calculator.gschema.xml:113
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window position"
 msgstr "Положај прозора"
 
-#: data/org.gnome.calculator.gschema.xml:114
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window position (x and y) of the last closed window."
 msgstr "Положај прозора (водоравно и усправно) последње затвореног прозора."
 
-#: data/org.gnome.calculator.gschema.xml:118
+#: data/org.gnome.calculator.gschema.xml:128
 msgid "Window maximized"
 msgstr "Увећан прозор"
 
-#: data/org.gnome.calculator.gschema.xml:119
+#: data/org.gnome.calculator.gschema.xml:129
 msgid "Whether the last closed window was maximized."
 msgstr "Да ли је последњи прозор био увећан."
 
-#: data/org.gnome.calculator.gschema.xml:123
+#: data/org.gnome.calculator.gschema.xml:133
 msgid "Window size"
 msgstr "Величина прозора"
 
-#: data/org.gnome.calculator.gschema.xml:124
+#: data/org.gnome.calculator.gschema.xml:134
 msgid "Window size (width and height) of the last closed window."
 msgstr "Величина прозора (ширина и висина) последње затвореног прозора."
 
@@ -289,12 +308,12 @@ msgid "UAE Dirham"
 msgstr "Емиратски дирхам"
 
 #: lib/currency.vala:83
-msgid "Argentine Peso"
-msgstr "Аргентински пезос"
-
-#: lib/currency.vala:84
 msgid "Armenian Dram"
 msgstr "Јерменски драм"
+
+#: lib/currency.vala:84
+msgid "Argentine Peso"
+msgstr "Аргентински пезос"
 
 #: lib/currency.vala:85
 msgid "Australian Dollar"
@@ -305,250 +324,242 @@ msgid "Bangladeshi Taka"
 msgstr "Бангладешка така"
 
 #: lib/currency.vala:87
-msgid "Bulgarian Lev"
-msgstr "Бугарски лев"
-
-#: lib/currency.vala:88
 msgid "Bahraini Dinar"
 msgstr "Бахреински динар"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "Брунејски долар"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "Бразилски реал"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "Боцванска пула"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "Канадски долар"
 
-#: lib/currency.vala:93
-msgid "CFA Franc"
-msgstr "ЦФА франак"
-
-#: lib/currency.vala:94
+#: lib/currency.vala:92
 msgid "Swiss Franc"
 msgstr "Швајцарски франак"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:93
 msgid "Chilean Peso"
 msgstr "Чилеански пезос"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:94
 msgid "Chinese Yuan"
 msgstr "Кинески јуан"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:95
 msgid "Colombian Peso"
 msgstr "Колумбијски пезос"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:96
 msgid "Czech Koruna"
 msgstr "Чешка круна"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:97
 msgid "Danish Krone"
 msgstr "Данска круна"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:98
 msgid "Algerian Dinar"
 msgstr "Алжирски динар"
 
-#: lib/currency.vala:101
-msgid "Estonian Kroon"
-msgstr "Естонска круна"
-
-#: lib/currency.vala:102
+#: lib/currency.vala:99
 msgid "Egyptian Pound"
 msgstr "Египатска фунта"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:100
 msgid "Euro"
 msgstr "Евро"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:101
 msgid "British Pound Sterling"
 msgstr "Британска фунта стерлинга"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:102
 msgid "Hong Kong Dollar"
 msgstr "Хонгконшки долар"
 
-#: lib/currency.vala:106
-msgid "Croatian Kuna"
-msgstr "Хрватска куна"
-
-#: lib/currency.vala:107
+#: lib/currency.vala:103
 msgid "Hungarian Forint"
 msgstr "Мађарска форинта"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:104
 msgid "Indonesian Rupiah"
 msgstr "Индонежанска рупија"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:105
 msgid "Israeli New Shekel"
 msgstr "Израелски нови шекел"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:106
 msgid "Indian Rupee"
 msgstr "Индијска рупија"
 
-#: lib/currency.vala:111
+#: lib/currency.vala:107
 msgid "Iranian Rial"
 msgstr "Ирански ријал"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:108
 msgid "Icelandic Krona"
 msgstr "Исландска круна"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:109
 msgid "Japanese Yen"
 msgstr "Јапански јен"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:110
 msgid "Jamaican Dollar"
 msgstr "Јамајкански долар"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:111
 msgid "South Korean Won"
 msgstr "Јужнокорејски вон"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:112
 msgid "Kuwaiti Dinar"
 msgstr "Кувајтски динар"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:113
 msgid "Kazakhstani Tenge"
 msgstr "Казахстански тенге"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:114
 msgid "Sri Lankan Rupee"
 msgstr "Шриланканска рупија"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:115
 msgid "Libyan Dinar"
 msgstr "Либијски динар"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:116
 msgid "Mauritian Rupee"
 msgstr "Маурицијска рупија"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:117
 msgid "Mexican Peso"
 msgstr "Мексички пезос"
 
-#: lib/currency.vala:122
+#: lib/currency.vala:118
 msgid "Malaysian Ringgit"
 msgstr "Малезијски рингит"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:119
 msgid "Nigerian Naira"
 msgstr "Нигеријска наира"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:120
 msgid "Norwegian Krone"
 msgstr "Норвешка круна"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:121
 msgid "Nepalese Rupee"
 msgstr "Непалска рупија"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:122
 msgid "New Zealand Dollar"
 msgstr "Новозеландски долар"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:123
 msgid "Omani Rial"
 msgstr "Омански ријал"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:124
 msgid "Peruvian Nuevo Sol"
 msgstr "Перуански нови сол"
 
-#: lib/currency.vala:129
+#: lib/currency.vala:125
 msgid "Philippine Peso"
 msgstr "Филипински пезос"
 
-#: lib/currency.vala:130
+#: lib/currency.vala:126
 msgid "Pakistani Rupee"
 msgstr "Пакистанска рупија"
 
-#: lib/currency.vala:131
+#: lib/currency.vala:127
 msgid "Polish Złoty"
 msgstr "Пољски злот"
 
-#: lib/currency.vala:132
+#: lib/currency.vala:128
 msgid "Qatari Riyal"
 msgstr "Катарски ријал"
 
-#: lib/currency.vala:133
+#: lib/currency.vala:129
 msgid "New Romanian Leu"
 msgstr "Нови румунски леј"
 
-#: lib/currency.vala:134
+#: lib/currency.vala:130
 msgid "Russian Ruble"
 msgstr "Руска рубља"
 
-#: lib/currency.vala:135
-msgid "Saudi Riyal"
-msgstr "Саудијски ријал"
-
-#: lib/currency.vala:136
+#: lib/currency.vala:131
 msgid "Serbian Dinar"
 msgstr "Српски динар"
 
-#: lib/currency.vala:137
+#: lib/currency.vala:132
+msgid "Saudi Riyal"
+msgstr "Саудијски ријал"
+
+#: lib/currency.vala:133
 msgid "Swedish Krona"
 msgstr "Шведска круна"
 
-#: lib/currency.vala:138
+#: lib/currency.vala:134
 msgid "Singapore Dollar"
 msgstr "Сингапурски долар"
 
-#: lib/currency.vala:139
+#: lib/currency.vala:135
 msgid "Thai Baht"
 msgstr "Тајландски бат"
 
-#: lib/currency.vala:140
+#: lib/currency.vala:136
 msgid "Tunisian Dinar"
 msgstr "Тунижански динар"
 
-#: lib/currency.vala:141
+#: lib/currency.vala:137
 msgid "Turkish Lira"
 msgstr "Турска лира"
 
-#: lib/currency.vala:142
+#: lib/currency.vala:138
 msgid "T&T Dollar"
 msgstr "T&T долар"
 
-#: lib/currency.vala:143
+#: lib/currency.vala:139
 msgid "New Taiwan Dollar"
 msgstr "Нови тајвански долар"
 
-#: lib/currency.vala:144
+#: lib/currency.vala:140
 msgid "Ukrainian Hryvnia"
 msgstr "Украјинска хривња"
 
-#: lib/currency.vala:145
+#: lib/currency.vala:141
 msgid "US Dollar"
 msgstr "Амерички долар"
 
-#: lib/currency.vala:146
+#: lib/currency.vala:142
 msgid "Uruguayan Peso"
 msgstr "Уругвајски пезос"
 
-#: lib/currency.vala:147
+#: lib/currency.vala:143
 msgid "Vietnamese Dong"
 msgstr "Вијетнамски донг"
 
-#: lib/currency.vala:148
+#: lib/currency.vala:144
+msgid "Central African CFA Franc"
+msgstr "Централноафрички CFA франак"
+
+#: lib/currency.vala:145
+msgid "West African CFA Franc"
+msgstr "Западноафрички CFA франак"
+
+#: lib/currency.vala:146
 msgid "South African Rand"
 msgstr "Јужноафрички ранд"
 
@@ -570,122 +581,122 @@ msgid "Missing digits after decimal point"
 msgstr "Недостају цифре након децималног зареза"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: lib/equation-lexer.vala:810 src/math-display.vala:751
 #: src/math-popover.vala:14
 msgid "in"
 msgstr "у"
 
-#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: lib/equation-lexer.vala:810 src/math-display.vala:751
 #: src/math-popover.vala:14
 msgid "to"
 msgstr "у"
 
-#: lib/equation-parser.vala:443
+#: lib/equation-parser.vala:486
 #, c-format
 msgid "Function “%s” is missing arguments"
 msgstr "Недостају аргументи за функцију „%s“"
 
-#: lib/equation-parser.vala:765 lib/number.vala:568
+#: lib/equation-parser.vala:816 lib/number.vala:759
 msgid "The zeroth root of a number is undefined"
 msgstr "Нулти корен броја није дефинисан"
 
-#: lib/equation-parser.vala:1060
+#: lib/equation-parser.vala:1125
 msgid "Mathematics"
 msgstr "Математика"
 
-#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+#: lib/equation-parser.vala:1126 src/ui/buttons-advanced.blp:1116
 msgid "Euler’s Number"
 msgstr "Ојлеров број"
 
-#: lib/equation-parser.vala:1062
+#: lib/equation-parser.vala:1127
 msgid "Pi"
 msgstr "Пи"
 
-#: lib/equation-parser.vala:1063
+#: lib/equation-parser.vala:1128
 msgid "Tau"
 msgstr "Тау"
 
-#: lib/equation-parser.vala:1064
+#: lib/equation-parser.vala:1129
 msgid "Golden Ratio"
 msgstr "Златни однос"
 
-#: lib/equation-parser.vala:1066
+#: lib/equation-parser.vala:1131
 msgid "Electromagnetism"
 msgstr "Електромагнетизам"
 
-#: lib/equation-parser.vala:1067
+#: lib/equation-parser.vala:1132
 msgid "Light Speed"
 msgstr "Брзина светлости"
 
-#: lib/equation-parser.vala:1068
+#: lib/equation-parser.vala:1133
 msgid "Elementary Charge"
 msgstr "Елементарно наелектрисање"
 
-#: lib/equation-parser.vala:1069
+#: lib/equation-parser.vala:1134
 msgid "Impedance of Vacuum"
 msgstr "Импеданса вакуума"
 
-#: lib/equation-parser.vala:1070
+#: lib/equation-parser.vala:1135
 msgid "Permeability of Vacuum"
 msgstr "Магнетна пермеабилност вакуума"
 
-#: lib/equation-parser.vala:1071
+#: lib/equation-parser.vala:1136
 msgid "Permittivity of Vacuum"
 msgstr "Диелектрична константа вакуума"
 
-#: lib/equation-parser.vala:1073
+#: lib/equation-parser.vala:1138
 msgid "Atomic & Nuclear"
 msgstr "Атомска и нуклеарна"
 
-#: lib/equation-parser.vala:1074
+#: lib/equation-parser.vala:1139
 msgid "Planck’s Constant"
 msgstr "Планкова константа"
 
-#: lib/equation-parser.vala:1075
+#: lib/equation-parser.vala:1140
 msgid "Fine-Structure Constant"
 msgstr "Константа фине структуре"
 
-#: lib/equation-parser.vala:1076
+#: lib/equation-parser.vala:1141
 msgid "Electron Mass"
 msgstr "Маса електрона"
 
-#: lib/equation-parser.vala:1077
+#: lib/equation-parser.vala:1142
 msgid "Proton Mass"
 msgstr "Маса протона"
 
-#: lib/equation-parser.vala:1079
+#: lib/equation-parser.vala:1144
 msgid "Thermodynamics"
 msgstr "Термодинамика"
 
-#: lib/equation-parser.vala:1080
+#: lib/equation-parser.vala:1145
 msgid "Boltzmann Constant"
 msgstr "Болцманова константа"
 
-#: lib/equation-parser.vala:1081
+#: lib/equation-parser.vala:1146
 msgid "Atomic Mass Unit"
 msgstr "Јединица атомске масе"
 
-#: lib/equation-parser.vala:1082
+#: lib/equation-parser.vala:1147
 msgid "Molar Gas Constant"
 msgstr "Моларна гасна константа"
 
-#: lib/equation-parser.vala:1083
+#: lib/equation-parser.vala:1148
 msgid "Stefan-Boltzmann Constant"
 msgstr "Штефан–Болцманова константа"
 
-#: lib/equation-parser.vala:1084
+#: lib/equation-parser.vala:1149
 msgid "Avogadro’s Number"
 msgstr "Авогадров број"
 
-#: lib/equation-parser.vala:1086
+#: lib/equation-parser.vala:1151
 msgid "Gravitation"
 msgstr "Гравитација"
 
-#: lib/equation-parser.vala:1087
+#: lib/equation-parser.vala:1152
 msgid "Gravitational Constant"
 msgstr "Гравитациона константа"
 
-#: lib/equation-parser.vala:1088
+#: lib/equation-parser.vala:1153
 msgid "Earth Acceleration"
 msgstr "Убрзање Земље"
 
@@ -771,7 +782,7 @@ msgstr "Реална компонента"
 msgid "Imaginary Component"
 msgstr "Имагинарна компонента"
 
-#: lib/function-manager.vala:46 src/math-window.vala:155
+#: lib/function-manager.vala:46 src/math-window.vala:158
 msgid "Programming"
 msgstr "Програмерски"
 
@@ -1001,73 +1012,89 @@ msgid "Need an integer to factorize"
 msgstr "За факторисање је потребан цео број"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:306
+#: lib/number.vala:360
 msgid "Underflow error"
 msgstr "Грешка поткорачења"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:311
+#: lib/number.vala:365
 msgid "Overflow error"
 msgstr "Грешка прекорачења"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:372
+#: lib/number.vala:534
 msgid "Argument not defined for zero"
 msgstr "Аргумент није дефинисан за нулу"
 
-#: lib/number.vala:442
+#: lib/number.vala:605
 msgid "Floor is only defined for real numbers"
 msgstr "Функција заокруживања наниже је дефинисана само за реалне бројеве"
 
-#: lib/number.vala:457
+#: lib/number.vala:620
 msgid "Ceiling is only defined for real numbers"
 msgstr "Функција заокруживања навише је дефинисана само за реалне бројеве"
 
-#: lib/number.vala:472
+#: lib/number.vala:635
 msgid "Round is only defined for real numbers"
 msgstr "Функција заокруживања је дефинисана само за реалне бројеве"
 
+#: lib/number.vala:671 lib/number.vala:710
+msgid "Exponent is too large"
+msgstr "Изложилац је превелик"
+
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:506 lib/number.vala:536
+#: lib/number.vala:679 lib/number.vala:718
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Степеновање нуле није дефинисано за негативне изложиоце"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:514 lib/number.vala:544
+#: lib/number.vala:687 lib/number.vala:726
 msgid "Zero raised to zero is undefined"
 msgstr "Нула на нултом степену није дефинисана"
 
+#: lib/number.vala:742
+msgid "Root is too large"
+msgstr "Корен је превелик"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:598 lib/number.vala:629
+#: lib/number.vala:789 lib/number.vala:820
 msgid "Logarithm of zero is undefined"
 msgstr "Логаритам нуле није дефинисан"
 
-#: lib/number.vala:634
+#: lib/number.vala:825
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "Није дефинисан логаритам са основом 0 или 1"
 
 #. TODO: Support factorial of complex numbers
-#: lib/number.vala:652
+#: lib/number.vala:846
 msgid "Factorial of complex numbers is not supported"
 msgstr "Факторијел комплексних бројева није подржан"
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
-#: lib/number.vala:659
+#: lib/number.vala:853
 msgid "Factorial is undefined for negative integers"
 msgstr "Факторијел није дефинисан за негативне целе бројеве"
 
+#: lib/number.vala:857
+msgid "Factorial is too large"
+msgstr "Факторијел је превелик"
+
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:710
+#: lib/number.vala:928
 msgid "Division by zero is undefined"
 msgstr "Дељење нулом није дефинисано"
 
 #. Translators: Error displayed when attempting to do a modulus division on complex numbers
-#: lib/number.vala:731
+#: lib/number.vala:953
 msgid "Modulus division is only defined for real numbers"
 msgstr "Дељење по модулу је дефинисано само за реалне бројеве"
 
+#: lib/number.vala:977
+msgid "Modular exponent is too large"
+msgstr "Модуларни изложилац је превелик"
+
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:811
+#: lib/number.vala:1046
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1075,117 +1102,121 @@ msgstr ""
 "π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:830
+#: lib/number.vala:1065
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Инверзни синус није дефинисан за вредности изван [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:847
+#: lib/number.vala:1082
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Инверзни косинус није дефинисан за вредности изван [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:865
+#: lib/number.vala:1100
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "Инверзни тангенс није дефинисан за вредности i и -i"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:916
+#: lib/number.vala:1151
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Инверзни хиперболички косинус није дефинисан за вредности мање од један"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:932
+#: lib/number.vala:1167
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Инверзни хиперболички тангенс није дефинисан за вредности изван [-1, 1]"
 
 #. Translators: Error displayed when bitwise AND attempted on non-integer values
-#: lib/number.vala:947
+#: lib/number.vala:1185
 msgid "Bitwise AND is only defined for non-negative integers"
 msgstr "Битовно И (AND) је дефинисано само за ненегативне целе бројеве"
 
 #. Translators: Error displayed when bitwise NAND attempted on non-integer values
-#: lib/number.vala:960
+#: lib/number.vala:1201
 msgid "Bitwise NAND is only defined for non-negative integers"
 msgstr "Битовно НИ (NAND) је дефинисано само за ненегативне целе бројеве"
 
 #. Translators: Error displayed when bitwise OR attempted on non-integer values
-#: lib/number.vala:973
+#: lib/number.vala:1217
 msgid "Bitwise OR is only defined for non-negative integers"
 msgstr "Битовно ИЛИ (OR) је дефинисано само за ненегативне целе бројеве"
 
 #. Translators: Error displayed when bitwise NOR attempted on non-integer values
-#: lib/number.vala:986
+#: lib/number.vala:1233
 msgid "Bitwise NOR is only defined for non-negative integers"
 msgstr "Битовно НИЛИ (NOR) је дефинисано само за ненегативне целе бројеве"
 
 #. Translators: Error displayed when bitwise XOR attempted on non-integer values
-#: lib/number.vala:999
+#: lib/number.vala:1249
 msgid "Bitwise XOR is only defined for non-negative integers"
 msgstr "Битовно ИСИЛИ (XOR) је дефинисано само за ненегативне целе бројеве"
 
 #. Translators: Error displayed when bitwise XNOR attempted on non-integer values
-#: lib/number.vala:1012
+#: lib/number.vala:1265
 msgid "Bitwise XNOR is only defined for non-negative integers"
 msgstr "Битовно ИСНИЛИ (XNOR) је дефинисано само за ненегативне целе бројеве"
 
 #. Translators: Error displayed when bitwise NOT attempted on non-integer values
-#: lib/number.vala:1025
+#: lib/number.vala:1281
 msgid "Bitwise NOT is only defined for non-negative integers"
 msgstr "Битско НЕ је дефинисано само за ненегативне целе бројеве"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:1087
+#: lib/number.vala:1343
 msgid "Shift is only possible on integers"
 msgstr "Померање је могуће само на целим бројевима"
 
-#: lib/number.vala:1092 lib/number.vala:1120 lib/number.vala:1566
+#: lib/number.vala:1348 lib/number.vala:1376 lib/number.vala:1880
 msgid "Overflow. Try a bigger word size"
 msgstr "Прекорачење. Покушајте са већом дужином речи"
 
-#: lib/number.vala:1103
+#: lib/number.vala:1359
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr "Двојни комплемент је дефинисан само за ненегативне целе бројеве"
 
-#: lib/number.vala:1115
+#: lib/number.vala:1371
 msgid "Swap endianness is only possible on integers"
 msgstr "Замена редоследа бајтова је могућа само на целим бројевима"
 
-#: lib/number.vala:1143
+#: lib/number.vala:1402
 msgid "Combination is only defined for non-negative integers"
 msgstr "Комбинација је дефинисана само за ненегативне целе бројеве"
 
-#: lib/number.vala:1148
+#: lib/number.vala:1407
 msgid "Combination is undefined if n is less than r"
 msgstr "Комбинација није дефинисана уколико је n мање од r"
 
-#: lib/number.vala:1161
+#: lib/number.vala:1431
 msgid "Permutation is only defined for non-negative integers"
 msgstr "Пермутација је дефинисана само за ненегативне целе бројеве"
 
-#: lib/number.vala:1166
+#: lib/number.vala:1436
 msgid "Permutation is undefined if n is less than r"
 msgstr "Пермутација није дефинисана уколико је n мање од r"
 
-#: lib/number.vala:1187
+#: lib/number.vala:1443 lib/number.vala:1444
+msgid "Permutation is too large"
+msgstr "Пермутација је превелика"
+
+#: lib/number.vala:1469
 msgid "Greatest common divisor is only defined for integers"
 msgstr "Највећи заједнички делилац је дефинисан само за целе бројеве"
 
-#: lib/number.vala:1207
+#: lib/number.vala:1492
 msgid "Least common multiple is only defined for integers"
 msgstr "Најмањи заједнички садржалац је дефинисан само за целе бројеве"
 
-#: lib/number.vala:1264
+#: lib/number.vala:1557
 msgid "Median is only defined for real numbers"
 msgstr "Медијана је дефинисана само за реалне бројеве"
 
-#: lib/number.vala:1284
+#: lib/number.vala:1577
 msgid "Minimum value is only defined for real numbers"
 msgstr "Најмања вредност је дефинисана само за реалне бројеве"
 
-#: lib/number.vala:1301
+#: lib/number.vala:1594
 msgid "Maximum value is only defined for real numbers"
 msgstr "Највећа вредност је дефинисана само за реалне бројеве"
 
@@ -1205,7 +1236,7 @@ msgstr "Међународни монетарни фонд"
 msgid "United Nations Treasury"
 msgstr "Трезор Уједињених нација"
 
-#: lib/serializer.vala:359 lib/serializer.vala:397
+#: lib/serializer.vala:359 lib/serializer.vala:409
 msgid ""
 "The result is too long to display in fixed format. Try other result formats"
 msgstr ""
@@ -1488,7 +1519,9 @@ msgstr "Стопа у секунди"
 #: lib/unit.vala:68
 msgctxt "unit-symbols"
 msgid "fps,feet per second,feetps"
-msgstr "сус,стопа у секунди,стопа/с,стопа/секунди,stopa u sekundi,stopa/sek,s/sek,фт/с"
+msgstr ""
+"сус,стопа у секунди,стопа/с,стопа/секунди,stopa u sekundi,stopa/sek,s/sek,фт/"
+"с"
 
 #: lib/unit.vala:69
 msgid "Knots"
@@ -2442,15 +2475,15 @@ msgstr "Децимално"
 msgid "Hexadecimal"
 msgstr "Хексадецимално"
 
-#: search-provider/search-provider.vala:206
+#: search-provider/search-provider.vala:200
 msgid "Open in Calculator"
 msgstr "Отвори у Калкулатору"
 
-#: search-provider/search-provider.vala:239
+#: search-provider/search-provider.vala:233
 msgid "Result copied"
 msgstr "Резултат је копиран"
 
-#: search-provider/search-provider.vala:240
+#: search-provider/search-provider.vala:234
 msgid "Result was copied successfully"
 msgstr "Резултат је успешно копиран"
 
@@ -2499,13 +2532,13 @@ msgid "Show release version"
 msgstr "Прикажи издање програма"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:291
+#: src/gnome-calculator.vala:313
 #, c-format
 msgid "© 1986–%d The Calculator authors"
 msgstr "© 1986–%d Творци Калкулатора"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:297
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "Данило Шеган <danilo@prevod.org>\n"
@@ -2515,26 +2548,27 @@ msgstr ""
 "Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Борисав Живановић <borisavzivanovic@gmail.com>\n"
+"aceydot <aceydot@proton.me>\n"
 "https://гном.срб — превод Гнома на српски језик"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 msgid "Exchange Rate Data Providers"
 msgstr "Достављачи курсне листе"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Курсна листа од %s"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Close All?"
 msgstr "Затворити све?"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Are you sure you want to close all open windows?"
 msgstr "Да ли сте сигурни да желите да затворите све отворене прозоре?"
 
-#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/gnome-calculator.vala:332 src/ui/buttons-financial.blp:897
 #: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
 #: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
 #: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
@@ -2543,27 +2577,27 @@ msgstr "Да ли сте сигурни да желите да затворит�
 msgid "_Cancel"
 msgstr "_Откажи"
 
-#: src/gnome-calculator.vala:311
+#: src/gnome-calculator.vala:333
 msgid "Close _All"
 msgstr "З_атвори све"
 
-#: src/math-converter.vala:612 src/math-converter.vala:630
+#: src/math-converter.vala:608 src/math-converter.vala:626
 msgid "Error"
 msgstr "Грешка"
 
-#: src/math-display.vala:694
+#: src/math-display.vala:691
 msgid "Defined Functions"
 msgstr "Дефинисане функције"
 
-#: src/math-display.vala:742
+#: src/math-display.vala:739
 msgid "Built-in Keywords"
 msgstr "Уграђене кључне речи"
 
-#: src/math-display.vala:794
+#: src/math-display.vala:791
 msgid "Defined Currencies"
 msgstr "Дефинисане валуте"
 
-#: src/math-display.vala:843
+#: src/math-display.vala:840
 msgid "Defined Variables"
 msgstr "Дефинисане променљиве"
 
@@ -2583,11 +2617,11 @@ msgstr "Назив функције не може почињати цифром"
 msgid "Function name can only contain digits, letters and underscores"
 msgstr "Назив функције може садржати само цифре, слова и доње црте"
 
-#: src/math-popover.vala:110
+#: src/math-popover.vala:116
 msgid "Edit"
 msgstr "Уреди"
 
-#: src/math-popover.vala:120
+#: src/math-popover.vala:126
 msgid "Delete"
 msgstr "Обриши"
 
@@ -2647,23 +2681,23 @@ msgstr "Назив променљиве не може почињати цифр�
 msgid "Variable name can only contain digits, letters and underscores"
 msgstr "Назив променљиве може садржати само цифре, слова и доње црте"
 
-#: src/math-window.vala:137
+#: src/math-window.vala:140
 msgid "Basic"
 msgstr "Основно"
 
-#: src/math-window.vala:143
+#: src/math-window.vala:146
 msgid "Advanced"
 msgstr "Напредно"
 
-#: src/math-window.vala:149 src/ui/math-window.blp:152
+#: src/math-window.vala:152 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "Финансијски"
 
-#: src/math-window.vala:161
+#: src/math-window.vala:164
 msgid "Keyboard"
 msgstr "Тастатура"
 
-#: src/math-window.vala:167
+#: src/math-window.vala:170
 msgid "Conversion"
 msgstr "Конверзија"
 
@@ -2988,7 +3022,9 @@ msgid ""
 "Calculates the number of compounding periods necessary to increase an "
 "investment of present value to a future value, at a fixed interest rate per "
 "compounding period."
-msgstr "Израчунава број периода чиниоца потребних за повећање вредности инвестиције са тренутне на будућу вредност, по фиксној каматној стопи по периоду чиниоца."
+msgstr ""
+"Израчунава број периода чиниоца потребних за повећање вредности инвестиције "
+"са тренутне на будућу вредност, по фиксној каматној стопи по периоду чиниоца."
 
 #. Translators: Title of Double-Declining Depreciation dialog
 #: src/ui/buttons-financial.blp:943
@@ -3000,7 +3036,9 @@ msgstr "Амортизација двоструким опадањем"
 msgid ""
 "Calculates the depreciation allowance on an asset for a specified period of "
 "time, using the double-declining balance method."
-msgstr "Израчунава износ амортизације средства за одређени временски период, користећи метод двоструког опадања."
+msgstr ""
+"Израчунава износ амортизације средства за одређени временски период, "
+"користећи метод двоструког опадања."
 
 #. Translators: Double-Declining Depreciation Dialog: Label before cost input
 #. Translators: Gross Profit Margin Dialog: Label before cost input
@@ -3100,7 +3138,11 @@ msgid ""
 "straight-line method of depreciation divides the depreciable cost evenly "
 "over the useful life of an asset. The useful life is the number of periods, "
 "typically years, over which an asset is depreciated."
-msgstr "Израчунава праволинијско умањење средства за један период. Метод праволинијског умањења дели амортизациони трошак подједнако на цео користан век средства. Користан век је број периода, обично година, током којих се средство амортизује."
+msgstr ""
+"Израчунава праволинијско умањење средства за један период. Метод "
+"праволинијског умањења дели амортизациони трошак подједнако на цео користан "
+"век средства. Користан век је број периода, обично година, током којих се "
+"средство амортизује."
 
 #. Translators: Straight-Line Depreciation Dialog: Label before salvage input
 #. Translators: Sum-of-the-Years’-Digits Depreciation Dialog: Label before salvage input
@@ -3121,7 +3163,12 @@ msgid ""
 "accelerates the rate of depreciation, so that more depreciation expense "
 "occurs in earlier periods than in later ones. The useful life is the number "
 "of periods, typically years, over which an asset is depreciated."
-msgstr "Израчунава амортизационо умањење средства за одређени временски период, користећи метод збира цифара година. Овај метод амортизације убрзава стопу амортизације, тако да су трошкови амортизације већи у ранијим периодима него у каснијим. Користан век је број периода, обично година, током којих се средство амортизује."
+msgstr ""
+"Израчунава амортизационо умањење средства за одређени временски период, "
+"користећи метод збира цифара година. Овај метод амортизације убрзава стопу "
+"амортизације, тако да су трошкови амортизације већи у ранијим периодима него "
+"у каснијим. Користан век је број периода, обично година, током којих се "
+"средство амортизује."
 
 #. Translators: Title of Payment Period dialog
 #: src/ui/buttons-financial.blp:1391
@@ -3134,7 +3181,10 @@ msgid ""
 "Calculates the number of payment periods that are necessary during the term "
 "of an ordinary annuity, to accumulate a future value, at a periodic interest "
 "rate."
-msgstr "Израчунава број периода плаћања који су неопходни током рока обичног ануитета, да би се акумулирала будућа вредност, по периодичној каматној стопи."
+msgstr ""
+"Израчунава број периода плаћања који су неопходни током рока обичног "
+"ануитета, да би се акумулирала будућа вредност, по периодичној каматној "
+"стопи."
 
 #: src/ui/buttons-programming.blp:1904
 msgid "Bitwise AND"
@@ -3238,7 +3288,9 @@ msgstr "Нису учитане курсне листе"
 #: src/ui/math-converter.blp:122
 msgid ""
 "<a href=\"r:///\">Refresh rates</a> or change refresh interval in preferences"
-msgstr "<a href=\"r:///\">Освежи курсеве</a> или промените интервал освежавања у поставкама"
+msgstr ""
+"<a href=\"r:///\">Освежи курсеве</a> или промените интервал освежавања у "
+"поставкама"
 
 #: src/ui/math-converter.blp:141
 msgid "_Copy"
@@ -3252,11 +3304,11 @@ msgstr "_Налепи"
 msgid "Function name"
 msgstr "Назив функције"
 
-#: src/ui/math-function-popover.blp:57
+#: src/ui/math-function-popover.blp:60
 msgid "Select no. of arguments"
 msgstr "Изабери број аргумената"
 
-#: src/ui/math-function-popover.blp:62
+#: src/ui/math-function-popover.blp:65
 msgid "Add function"
 msgstr "Додај функцију"
 
@@ -3371,7 +3423,7 @@ msgstr "Пречице на тастатури"
 #: src/ui/math-shortcuts.blp:44
 msgctxt "shortcuts dialog"
 msgid "Clear History"
-msgstr "Очисти историју"
+msgstr "Очисти историјат"
 
 #: src/ui/math-shortcuts.blp:49
 msgctxt "shortcuts dialog"
@@ -3566,7 +3618,7 @@ msgstr "Константе"
 msgid "Variable name"
 msgstr "Назив променљиве"
 
-#: src/ui/math-variable-popover.blp:67
+#: src/ui/math-variable-popover.blp:70
 msgid "Store value into existing or new variable"
 msgstr "Сачувајте вредност у постојећу или у нову променљиву"
 
@@ -3657,3 +3709,15 @@ msgstr "Понови"
 #: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "Главни мени"
+
+#~ msgid "Bulgarian Lev"
+#~ msgstr "Бугарски лев"
+
+#~ msgid "CFA Franc"
+#~ msgstr "ЦФА франак"
+
+#~ msgid "Estonian Kroon"
+#~ msgstr "Естонска круна"
+
+#~ msgid "Croatian Kuna"
+#~ msgstr "Хрватска куна"
