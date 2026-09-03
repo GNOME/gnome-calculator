@@ -8,28 +8,28 @@
 # Paweł Żołnowski <pawel@zolnowski.name>, 2014-2015.
 # Aviary.pl <community-poland@mozilla.org>, 2007-2025.
 # Daniel <wbcwknvstb@proton.me>, 2026.
-# Victoria <royal.victoria@proton.me>, 2026.
+# Victoria Niedzielska <victorian@gnome.org>, 2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-calculator\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-calculator/"
 "issues\n"
-"POT-Creation-Date: 2026-03-06 05:34+0000\n"
-"PO-Revision-Date: 2026-03-13 21:38+0100\n"
-"Last-Translator: Victoria <royal.victoria@proton.me>\n"
-"Language-Team: Polish\n"
+"POT-Creation-Date: 2026-08-01 19:34+0000\n"
+"PO-Revision-Date: 2026-08-25 20:16+0200\n"
+"Last-Translator: Victoria Niedzielska <victorian@gnome.org>\n"
+"Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Gtranslator 49.0\n"
+"X-Generator: Gtranslator 50.0\n"
 
 #: data/org.gnome.Calculator.desktop.in:2
 #: data/org.gnome.Calculator.metainfo.xml.in:7 src/gnome-calculator.vala:76
-#: src/gnome-calculator.vala:284 src/ui/math-window.blp:118
+#: src/gnome-calculator.vala:306 src/ui/math-window.blp:118
 msgid "Calculator"
 msgstr "Kalkulator"
 
@@ -119,47 +119,60 @@ msgid "Conversion Mode"
 msgstr "Tryb konwersji"
 
 #. developer_name tag deprecated with Appstream 1.0
-#: data/org.gnome.Calculator.metainfo.xml.in:84 src/gnome-calculator.vala:286
+#: data/org.gnome.Calculator.metainfo.xml.in:84
+#: data/org.gnome.Calculator.metainfo.xml.in:86 src/gnome-calculator.vala:308
 msgid "The GNOME Project"
 msgstr "Projekt GNOME"
 
-#: data/org.gnome.calculator.gschema.xml:31
+#: data/org.gnome.calculator.gschema.xml:32
+msgid "Persistent history tape"
+msgstr "Trwała taśma historyczna"
+
+#: data/org.gnome.calculator.gschema.xml:33
+msgid ""
+"History entries saved across sessions as (equation, answer) pairs. Written "
+"on window close. Cleared when the user clears history."
+msgstr ""
+"Wpisy historii zapisywane między sesjami jako pary (równanie, odpowiedź). "
+"Zapisywane przy zamknięciu okna. Czyszczone, gdy użytkownik czyści historię."
+
+#: data/org.gnome.calculator.gschema.xml:41
 msgid "Accuracy value"
 msgstr "Wartość dokładności"
 
-#: data/org.gnome.calculator.gschema.xml:32
+#: data/org.gnome.calculator.gschema.xml:42
 msgid "The number of digits displayed after the numeric point"
 msgstr "Liczba cyfr wyświetlanych po separatorze dziesiętnym"
 
-#: data/org.gnome.calculator.gschema.xml:37
+#: data/org.gnome.calculator.gschema.xml:47
 msgid "Word size"
 msgstr "Rozmiar słowa"
 
-#: data/org.gnome.calculator.gschema.xml:38
+#: data/org.gnome.calculator.gschema.xml:48
 msgid "The size of the words used in bitwise operations"
 msgstr "Rozmiar słów maszynowych używanych w działaniach bitowych"
 
-#: data/org.gnome.calculator.gschema.xml:43
+#: data/org.gnome.calculator.gschema.xml:53
 msgid "Numeric base"
 msgstr "System liczbowy"
 
-#: data/org.gnome.calculator.gschema.xml:44
+#: data/org.gnome.calculator.gschema.xml:54
 msgid "The numeric base"
 msgstr "System liczbowy"
 
-#: data/org.gnome.calculator.gschema.xml:48
+#: data/org.gnome.calculator.gschema.xml:58
 msgid "Group digits"
 msgstr "Grupowanie cyfr"
 
-#: data/org.gnome.calculator.gschema.xml:49
+#: data/org.gnome.calculator.gschema.xml:59
 msgid "Indicates whether digits are grouped in large numbers."
 msgstr "Określa, czy cyfry są pogrupowane w duże liczby."
 
-#: data/org.gnome.calculator.gschema.xml:53
+#: data/org.gnome.calculator.gschema.xml:63
 msgid "Show trailing zeroes"
 msgstr "Wyświetlanie dopełniających zer"
 
-#: data/org.gnome.calculator.gschema.xml:54
+#: data/org.gnome.calculator.gschema.xml:64
 msgid ""
 "Indicates whether any trailing zeroes after the numeric point should be "
 "shown in the display value."
@@ -167,27 +180,27 @@ msgstr ""
 "Określa, czy dopełniające zera po separatorze dziesiętnym powinny być "
 "dołączane."
 
-#: data/org.gnome.calculator.gschema.xml:58
+#: data/org.gnome.calculator.gschema.xml:68
 msgid "Number format"
 msgstr "Format liczbowy"
 
-#: data/org.gnome.calculator.gschema.xml:59
+#: data/org.gnome.calculator.gschema.xml:69
 msgid "The format to display numbers in"
 msgstr "Format do wyświetlania liczb"
 
-#: data/org.gnome.calculator.gschema.xml:63
+#: data/org.gnome.calculator.gschema.xml:73
 msgid "Angle units"
 msgstr "Jednostki kątowe"
 
-#: data/org.gnome.calculator.gschema.xml:64
+#: data/org.gnome.calculator.gschema.xml:74
 msgid "The angle units to use"
 msgstr "Używane jednostki kątowe"
 
-#: data/org.gnome.calculator.gschema.xml:68
+#: data/org.gnome.calculator.gschema.xml:78
 msgid "Currency update interval"
 msgstr "Czas między aktualizacjami walut"
 
-#: data/org.gnome.calculator.gschema.xml:69
+#: data/org.gnome.calculator.gschema.xml:79
 msgid ""
 "How often the currency exchange rates should be updated. A value of 0 means "
 "the currency exchange rates won't be fetched from the network at all."
@@ -195,96 +208,96 @@ msgstr ""
 "Jak często aktualizować kursy wymiany walut. Wartość 0 oznacza, że kursy "
 "wymiany walut w ogóle nie będą pobierane z sieci."
 
-#: data/org.gnome.calculator.gschema.xml:73
+#: data/org.gnome.calculator.gschema.xml:83
 msgid "Currency display"
 msgstr "Wyświetlanie walut"
 
-#: data/org.gnome.calculator.gschema.xml:74
+#: data/org.gnome.calculator.gschema.xml:84
 msgid ""
 "Indicates whether to show currency code, currency name or both of them in "
 "the converter."
 msgstr "Czy wyświetlać kod waluty, nazwę waluty lub kod i nazwę w konwerterze."
 
-#: data/org.gnome.calculator.gschema.xml:78
+#: data/org.gnome.calculator.gschema.xml:88
 msgid "Enabled completions"
 msgstr "Włączone uzupełniania"
 
-#: data/org.gnome.calculator.gschema.xml:79
+#: data/org.gnome.calculator.gschema.xml:89
 msgid ""
 "The types of completion proposals to be shown in the auto-completion list."
 msgstr ""
 "Typy propozycji uzupełnienia wyświetlanych na liście automatycznego "
 "uzupełniania."
 
-#: data/org.gnome.calculator.gschema.xml:83
+#: data/org.gnome.calculator.gschema.xml:93
 msgid "Favorite currencies"
 msgstr "Ulubione waluty"
 
-#: data/org.gnome.calculator.gschema.xml:84
+#: data/org.gnome.calculator.gschema.xml:94
 msgid "The favorite currencies to be shown at the top of the currency list."
 msgstr "Ulubione waluty wyświetlane na górze listy walut."
 
-#: data/org.gnome.calculator.gschema.xml:88
+#: data/org.gnome.calculator.gschema.xml:98
 msgid "Button mode"
 msgstr "Tryb przycisków"
 
-#: data/org.gnome.calculator.gschema.xml:89
+#: data/org.gnome.calculator.gschema.xml:99
 msgid "The button mode"
 msgstr "Tryb przycisków"
 
-#: data/org.gnome.calculator.gschema.xml:93
+#: data/org.gnome.calculator.gschema.xml:103
 msgid "Unit category"
 msgstr "Kategoria jednostek"
 
-#: data/org.gnome.calculator.gschema.xml:94
+#: data/org.gnome.calculator.gschema.xml:104
 msgid "Currently selected unit category in the converter"
 msgstr "Obecnie wybrana kategoria jednostek w konwerterze"
 
-#: data/org.gnome.calculator.gschema.xml:98
+#: data/org.gnome.calculator.gschema.xml:108
 msgid "Source units"
 msgstr "Jednostki źródłowe"
 
-#: data/org.gnome.calculator.gschema.xml:99
+#: data/org.gnome.calculator.gschema.xml:109
 msgid "Currently selected source units in the converter"
 msgstr "Obecnie wybrane jednostki źródłowe w konwerterze"
 
-#: data/org.gnome.calculator.gschema.xml:103
+#: data/org.gnome.calculator.gschema.xml:113
 msgid "Target units"
 msgstr "Jednostki docelowe"
 
-#: data/org.gnome.calculator.gschema.xml:104
+#: data/org.gnome.calculator.gschema.xml:114
 msgid "Currently selected target units in the converter"
 msgstr "Obecnie wybrane jednostki docelowe w konwerterze"
 
-#: data/org.gnome.calculator.gschema.xml:108
+#: data/org.gnome.calculator.gschema.xml:118
 msgid "Internal precision"
 msgstr "Wewnętrzna precyzja"
 
-#: data/org.gnome.calculator.gschema.xml:109
+#: data/org.gnome.calculator.gschema.xml:119
 msgid "The internal precision used with the MPFR library"
 msgstr "Wewnętrzna precyzja używana przez bibliotekę MPFR"
 
-#: data/org.gnome.calculator.gschema.xml:113
+#: data/org.gnome.calculator.gschema.xml:123
 msgid "Window position"
 msgstr "Położenie okna"
 
-#: data/org.gnome.calculator.gschema.xml:114
+#: data/org.gnome.calculator.gschema.xml:124
 msgid "Window position (x and y) of the last closed window."
 msgstr "Położenie ostatnio zamkniętego okna (na osiach X i Y)."
 
-#: data/org.gnome.calculator.gschema.xml:118
+#: data/org.gnome.calculator.gschema.xml:128
 msgid "Window maximized"
 msgstr "Zmaksymalizowane okno"
 
-#: data/org.gnome.calculator.gschema.xml:119
+#: data/org.gnome.calculator.gschema.xml:129
 msgid "Whether the last closed window was maximized."
 msgstr "Czy ostatnio zamknięte okno było zmaksymalizowane."
 
-#: data/org.gnome.calculator.gschema.xml:123
+#: data/org.gnome.calculator.gschema.xml:133
 msgid "Window size"
 msgstr "Rozmiar okna"
 
-#: data/org.gnome.calculator.gschema.xml:124
+#: data/org.gnome.calculator.gschema.xml:134
 msgid "Window size (width and height) of the last closed window."
 msgstr "Rozmiar ostatnio zamkniętego okna (szerokość i wysokość)."
 
@@ -293,12 +306,12 @@ msgid "UAE Dirham"
 msgstr "dirham"
 
 #: lib/currency.vala:83
-msgid "Argentine Peso"
-msgstr "peso argentyńskie"
-
-#: lib/currency.vala:84
 msgid "Armenian Dram"
 msgstr "dram armeński"
+
+#: lib/currency.vala:84
+msgid "Argentine Peso"
+msgstr "peso argentyńskie"
 
 #: lib/currency.vala:85
 msgid "Australian Dollar"
@@ -309,250 +322,242 @@ msgid "Bangladeshi Taka"
 msgstr "taka bangladeska"
 
 #: lib/currency.vala:87
-msgid "Bulgarian Lev"
-msgstr "lew bułgarski"
-
-#: lib/currency.vala:88
 msgid "Bahraini Dinar"
 msgstr "dinar Bahrajnu"
 
-#: lib/currency.vala:89
+#: lib/currency.vala:88
 msgid "Brunei Dollar"
 msgstr "dolar Brunei"
 
-#: lib/currency.vala:90
+#: lib/currency.vala:89
 msgid "Brazilian Real"
 msgstr "real brazylijski"
 
-#: lib/currency.vala:91
+#: lib/currency.vala:90
 msgid "Botswana Pula"
 msgstr "pula Botswany"
 
-#: lib/currency.vala:92
+#: lib/currency.vala:91
 msgid "Canadian Dollar"
 msgstr "dolar kanadyjski"
 
-#: lib/currency.vala:93
-msgid "CFA Franc"
-msgstr "frank CFA"
-
-#: lib/currency.vala:94
+#: lib/currency.vala:92
 msgid "Swiss Franc"
 msgstr "frank szwajcarski"
 
-#: lib/currency.vala:95
+#: lib/currency.vala:93
 msgid "Chilean Peso"
 msgstr "peso chilijskie"
 
-#: lib/currency.vala:96
+#: lib/currency.vala:94
 msgid "Chinese Yuan"
 msgstr "yuan chiński"
 
-#: lib/currency.vala:97
+#: lib/currency.vala:95
 msgid "Colombian Peso"
 msgstr "peso kolumbijskie"
 
-#: lib/currency.vala:98
+#: lib/currency.vala:96
 msgid "Czech Koruna"
 msgstr "korona czeska"
 
-#: lib/currency.vala:99
+#: lib/currency.vala:97
 msgid "Danish Krone"
 msgstr "korona duńska"
 
-#: lib/currency.vala:100
+#: lib/currency.vala:98
 msgid "Algerian Dinar"
 msgstr "dinar algierski"
 
-#: lib/currency.vala:101
-msgid "Estonian Kroon"
-msgstr "korona estońska"
-
-#: lib/currency.vala:102
+#: lib/currency.vala:99
 msgid "Egyptian Pound"
 msgstr "funt egipski"
 
-#: lib/currency.vala:103
+#: lib/currency.vala:100
 msgid "Euro"
 msgstr "euro"
 
-#: lib/currency.vala:104
+#: lib/currency.vala:101
 msgid "British Pound Sterling"
 msgstr "funt szterling"
 
-#: lib/currency.vala:105
+#: lib/currency.vala:102
 msgid "Hong Kong Dollar"
 msgstr "dolar hongkoński"
 
-#: lib/currency.vala:106
-msgid "Croatian Kuna"
-msgstr "kuna chorwacka"
-
-#: lib/currency.vala:107
+#: lib/currency.vala:103
 msgid "Hungarian Forint"
 msgstr "forint węgierski"
 
-#: lib/currency.vala:108
+#: lib/currency.vala:104
 msgid "Indonesian Rupiah"
 msgstr "rupia indonezyjska"
 
-#: lib/currency.vala:109
+#: lib/currency.vala:105
 msgid "Israeli New Shekel"
 msgstr "szekel izraelski"
 
-#: lib/currency.vala:110
+#: lib/currency.vala:106
 msgid "Indian Rupee"
 msgstr "rupia indyjska"
 
-#: lib/currency.vala:111
+#: lib/currency.vala:107
 msgid "Iranian Rial"
 msgstr "rial irański"
 
-#: lib/currency.vala:112
+#: lib/currency.vala:108
 msgid "Icelandic Krona"
 msgstr "korona islandzka"
 
-#: lib/currency.vala:113
+#: lib/currency.vala:109
 msgid "Japanese Yen"
 msgstr "jen japoński"
 
-#: lib/currency.vala:114
+#: lib/currency.vala:110
 msgid "Jamaican Dollar"
 msgstr "dolar jamajski"
 
-#: lib/currency.vala:115
+#: lib/currency.vala:111
 msgid "South Korean Won"
 msgstr "won południowokoreański"
 
-#: lib/currency.vala:116
+#: lib/currency.vala:112
 msgid "Kuwaiti Dinar"
 msgstr "dinar kuwejcki"
 
-#: lib/currency.vala:117
+#: lib/currency.vala:113
 msgid "Kazakhstani Tenge"
 msgstr "tenge kazachstański"
 
-#: lib/currency.vala:118
+#: lib/currency.vala:114
 msgid "Sri Lankan Rupee"
 msgstr "rupia lankijska"
 
-#: lib/currency.vala:119
+#: lib/currency.vala:115
 msgid "Libyan Dinar"
 msgstr "dinar libijski"
 
-#: lib/currency.vala:120
+#: lib/currency.vala:116
 msgid "Mauritian Rupee"
 msgstr "rupia maurytyjska"
 
-#: lib/currency.vala:121
+#: lib/currency.vala:117
 msgid "Mexican Peso"
 msgstr "peso meksykańskie"
 
-#: lib/currency.vala:122
+#: lib/currency.vala:118
 msgid "Malaysian Ringgit"
 msgstr "ringgit malajskie"
 
-#: lib/currency.vala:123
+#: lib/currency.vala:119
 msgid "Nigerian Naira"
 msgstr "naira nigeryjska"
 
-#: lib/currency.vala:124
+#: lib/currency.vala:120
 msgid "Norwegian Krone"
 msgstr "korona norweska"
 
-#: lib/currency.vala:125
+#: lib/currency.vala:121
 msgid "Nepalese Rupee"
 msgstr "rupia nepalska"
 
-#: lib/currency.vala:126
+#: lib/currency.vala:122
 msgid "New Zealand Dollar"
 msgstr "dolar nowozelandzki"
 
-#: lib/currency.vala:127
+#: lib/currency.vala:123
 msgid "Omani Rial"
 msgstr "rial omański"
 
-#: lib/currency.vala:128
+#: lib/currency.vala:124
 msgid "Peruvian Nuevo Sol"
 msgstr "nowy sol peruwiański"
 
-#: lib/currency.vala:129
+#: lib/currency.vala:125
 msgid "Philippine Peso"
 msgstr "peso filipińskie"
 
-#: lib/currency.vala:130
+#: lib/currency.vala:126
 msgid "Pakistani Rupee"
 msgstr "rupia pakistańska"
 
-#: lib/currency.vala:131
+#: lib/currency.vala:127
 msgid "Polish Złoty"
 msgstr "złoty polski"
 
-#: lib/currency.vala:132
+#: lib/currency.vala:128
 msgid "Qatari Riyal"
 msgstr "rial Kataru"
 
-#: lib/currency.vala:133
+#: lib/currency.vala:129
 msgid "New Romanian Leu"
 msgstr "nowa leja rumuńska"
 
-#: lib/currency.vala:134
+#: lib/currency.vala:130
 msgid "Russian Ruble"
 msgstr "rubel rosyjski"
 
-#: lib/currency.vala:135
-msgid "Saudi Riyal"
-msgstr "rial saudyjski"
-
-#: lib/currency.vala:136
+#: lib/currency.vala:131
 msgid "Serbian Dinar"
 msgstr "dinar serbski"
 
-#: lib/currency.vala:137
+#: lib/currency.vala:132
+msgid "Saudi Riyal"
+msgstr "rial saudyjski"
+
+#: lib/currency.vala:133
 msgid "Swedish Krona"
 msgstr "korona szwedzka"
 
-#: lib/currency.vala:138
+#: lib/currency.vala:134
 msgid "Singapore Dollar"
 msgstr "dolar singapurski"
 
-#: lib/currency.vala:139
+#: lib/currency.vala:135
 msgid "Thai Baht"
 msgstr "bat tajlandzki"
 
-#: lib/currency.vala:140
+#: lib/currency.vala:136
 msgid "Tunisian Dinar"
 msgstr "dinar tunezyjski"
 
-#: lib/currency.vala:141
+#: lib/currency.vala:137
 msgid "Turkish Lira"
 msgstr "lira turecka"
 
-#: lib/currency.vala:142
+#: lib/currency.vala:138
 msgid "T&T Dollar"
 msgstr "dolar Trynidadu i Tobago"
 
-#: lib/currency.vala:143
+#: lib/currency.vala:139
 msgid "New Taiwan Dollar"
 msgstr "dolar tajwański"
 
-#: lib/currency.vala:144
+#: lib/currency.vala:140
 msgid "Ukrainian Hryvnia"
 msgstr "hrywna ukraińska"
 
-#: lib/currency.vala:145
+#: lib/currency.vala:141
 msgid "US Dollar"
 msgstr "dolar amerykański"
 
-#: lib/currency.vala:146
+#: lib/currency.vala:142
 msgid "Uruguayan Peso"
 msgstr "peso urugwajskie"
 
-#: lib/currency.vala:147
+#: lib/currency.vala:143
 msgid "Vietnamese Dong"
 msgstr "dong wietnamski"
 
-#: lib/currency.vala:148
+#: lib/currency.vala:144
+msgid "Central African CFA Franc"
+msgstr "frank CFA środkowoafrykański"
+
+#: lib/currency.vala:145
+msgid "West African CFA Franc"
+msgstr "frank CFA zachodnioafrykański"
+
+#: lib/currency.vala:146
 msgid "South African Rand"
 msgstr "rand południowoafrykański"
 
@@ -574,122 +579,122 @@ msgid "Missing digits after decimal point"
 msgstr "Brak cyfr po punkcie dziesiętnym"
 
 #. Translators: conversion keyword, used e.g. 1 EUR in USD, 1 EUR to USD
-#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: lib/equation-lexer.vala:810 src/math-display.vala:751
 #: src/math-popover.vala:14
 msgid "in"
 msgstr "na"
 
-#: lib/equation-lexer.vala:810 src/math-display.vala:754
+#: lib/equation-lexer.vala:810 src/math-display.vala:751
 #: src/math-popover.vala:14
 msgid "to"
 msgstr "do"
 
-#: lib/equation-parser.vala:443
+#: lib/equation-parser.vala:486
 #, c-format
 msgid "Function “%s” is missing arguments"
 msgstr "Funkcja „%s” nie ma argumentów"
 
-#: lib/equation-parser.vala:765 lib/number.vala:568
+#: lib/equation-parser.vala:816 lib/number.vala:759
 msgid "The zeroth root of a number is undefined"
 msgstr "Pierwiastek zerowy liczby jest nieokreślony"
 
-#: lib/equation-parser.vala:1060
+#: lib/equation-parser.vala:1125
 msgid "Mathematics"
 msgstr "Matematyka"
 
-#: lib/equation-parser.vala:1061 src/ui/buttons-advanced.blp:1116
+#: lib/equation-parser.vala:1126 src/ui/buttons-advanced.blp:1116
 msgid "Euler’s Number"
 msgstr "Liczba Eulera"
 
-#: lib/equation-parser.vala:1062
+#: lib/equation-parser.vala:1127
 msgid "Pi"
 msgstr "Pi"
 
-#: lib/equation-parser.vala:1063
+#: lib/equation-parser.vala:1128
 msgid "Tau"
 msgstr "Tau"
 
-#: lib/equation-parser.vala:1064
+#: lib/equation-parser.vala:1129
 msgid "Golden Ratio"
 msgstr "Złota proporcja"
 
-#: lib/equation-parser.vala:1066
+#: lib/equation-parser.vala:1131
 msgid "Electromagnetism"
 msgstr "Elektrodynamika"
 
-#: lib/equation-parser.vala:1067
+#: lib/equation-parser.vala:1132
 msgid "Light Speed"
 msgstr "Prędkość światła"
 
-#: lib/equation-parser.vala:1068
+#: lib/equation-parser.vala:1133
 msgid "Elementary Charge"
 msgstr "Ładunek elektryczny elementarny"
 
-#: lib/equation-parser.vala:1069
+#: lib/equation-parser.vala:1134
 msgid "Impedance of Vacuum"
 msgstr "Impedancja próżni"
 
-#: lib/equation-parser.vala:1070
+#: lib/equation-parser.vala:1135
 msgid "Permeability of Vacuum"
 msgstr "Przenikalność magnetyczna próżni"
 
-#: lib/equation-parser.vala:1071
+#: lib/equation-parser.vala:1136
 msgid "Permittivity of Vacuum"
 msgstr "Przenikalność elektryczna próżni"
 
-#: lib/equation-parser.vala:1073
+#: lib/equation-parser.vala:1138
 msgid "Atomic & Nuclear"
 msgstr "Atomowe i jądrowe"
 
-#: lib/equation-parser.vala:1074
+#: lib/equation-parser.vala:1139
 msgid "Planck’s Constant"
 msgstr "Stała Plancka"
 
-#: lib/equation-parser.vala:1075
+#: lib/equation-parser.vala:1140
 msgid "Fine-Structure Constant"
 msgstr "Stała struktury subtelnej"
 
-#: lib/equation-parser.vala:1076
+#: lib/equation-parser.vala:1141
 msgid "Electron Mass"
 msgstr "Masa elektronu"
 
-#: lib/equation-parser.vala:1077
+#: lib/equation-parser.vala:1142
 msgid "Proton Mass"
 msgstr "Masa protonu"
 
-#: lib/equation-parser.vala:1079
+#: lib/equation-parser.vala:1144
 msgid "Thermodynamics"
 msgstr "Termodynamika"
 
-#: lib/equation-parser.vala:1080
+#: lib/equation-parser.vala:1145
 msgid "Boltzmann Constant"
 msgstr "Stała Boltzmanna"
 
-#: lib/equation-parser.vala:1081
+#: lib/equation-parser.vala:1146
 msgid "Atomic Mass Unit"
 msgstr "Jednostka masy atomowej"
 
-#: lib/equation-parser.vala:1082
+#: lib/equation-parser.vala:1147
 msgid "Molar Gas Constant"
 msgstr "Molowa stała gazowa"
 
-#: lib/equation-parser.vala:1083
+#: lib/equation-parser.vala:1148
 msgid "Stefan-Boltzmann Constant"
 msgstr "Stała Stefana-Boltzmanna"
 
-#: lib/equation-parser.vala:1084
+#: lib/equation-parser.vala:1149
 msgid "Avogadro’s Number"
 msgstr "Liczba Avogadra"
 
-#: lib/equation-parser.vala:1086
+#: lib/equation-parser.vala:1151
 msgid "Gravitation"
 msgstr "Grawitacja"
 
-#: lib/equation-parser.vala:1087
+#: lib/equation-parser.vala:1152
 msgid "Gravitational Constant"
 msgstr "Stała grawitacyjna"
 
-#: lib/equation-parser.vala:1088
+#: lib/equation-parser.vala:1153
 msgid "Earth Acceleration"
 msgstr "Przyspieszenie ziemskie"
 
@@ -775,7 +780,7 @@ msgstr "Część rzeczywista"
 msgid "Imaginary Component"
 msgstr "Część urojona"
 
-#: lib/function-manager.vala:46 src/math-window.vala:155
+#: lib/function-manager.vala:46 src/math-window.vala:158
 msgid "Programming"
 msgstr "Programistyczny"
 
@@ -1004,73 +1009,89 @@ msgid "Need an integer to factorize"
 msgstr "Do rozłożenia na czynniki potrzebna jest liczba całkowita"
 
 #. Translators: Error displayed when underflow error occured
-#: lib/number.vala:306
+#: lib/number.vala:360
 msgid "Underflow error"
 msgstr "Błąd niedomiaru"
 
 #. Translators: Error displayed when overflow error occured
-#: lib/number.vala:311
+#: lib/number.vala:365
 msgid "Overflow error"
 msgstr "Błąd przepełnienia"
 
 #. Translators: Error display when attempting to take argument of zero
-#: lib/number.vala:372
+#: lib/number.vala:534
 msgid "Argument not defined for zero"
 msgstr "Nie określono argumentu dla zera"
 
-#: lib/number.vala:442
+#: lib/number.vala:605
 msgid "Floor is only defined for real numbers"
 msgstr "Podłoga jest określona tylko dla liczb rzeczywistych"
 
-#: lib/number.vala:457
+#: lib/number.vala:620
 msgid "Ceiling is only defined for real numbers"
 msgstr "Sufit jest określony tylko dla liczb rzeczywistych"
 
-#: lib/number.vala:472
+#: lib/number.vala:635
 msgid "Round is only defined for real numbers"
 msgstr "Zaokrąglenie jest określone tylko dla liczb rzeczywistych"
 
+#: lib/number.vala:671 lib/number.vala:710
+msgid "Exponent is too large"
+msgstr "Wykładnik jest zbyt duży"
+
 #. Translators: Error displayed when attempted to raise 0 to a negative re_exponent
-#: lib/number.vala:506 lib/number.vala:536
+#: lib/number.vala:679 lib/number.vala:718
 msgid "The power of zero is undefined for a negative exponent"
 msgstr "Potęga zera jest nieokreślona dla ujemnego wykładnika"
 
 #. Translators: Error displayed when attempted to raise 0 to power of zero
-#: lib/number.vala:514 lib/number.vala:544
+#: lib/number.vala:687 lib/number.vala:726
 msgid "Zero raised to zero is undefined"
 msgstr "Zero podniesione do potęgi zerowej jest nieokreślone"
 
+#: lib/number.vala:742
+msgid "Root is too large"
+msgstr "Pierwiastek jest za duży"
+
 #. Translators: Error displayed when attempting to take logarithm of zero
-#: lib/number.vala:598 lib/number.vala:629
+#: lib/number.vala:789 lib/number.vala:820
 msgid "Logarithm of zero is undefined"
 msgstr "Logarytm zera jest nieokreślony"
 
-#: lib/number.vala:634
+#: lib/number.vala:825
 msgid "Logarithm with base 0 or 1 is undefined"
 msgstr "Logarytm o podstawie 0 lub 1 jest nieokreślony"
 
 #. TODO: Support factorial of complex numbers
-#: lib/number.vala:652
+#: lib/number.vala:846
 msgid "Factorial of complex numbers is not supported"
 msgstr "Silnia liczb zespolonych nie jest obsługiwana"
 
 #. Translators: Error displayed when attempted take the factorial of a negative integer
-#: lib/number.vala:659
+#: lib/number.vala:853
 msgid "Factorial is undefined for negative integers"
 msgstr "Silnia jest nieokreślona dla ujemnych liczb całkowitych"
 
+#: lib/number.vala:857
+msgid "Factorial is too large"
+msgstr "Silnia jest zbyt duża"
+
 #. Translators: Error displayed attempted to divide by zero
-#: lib/number.vala:710
+#: lib/number.vala:928
 msgid "Division by zero is undefined"
 msgstr "Dzielenie przez zero jest nieokreślone"
 
 #. Translators: Error displayed when attempting to do a modulus division on complex numbers
-#: lib/number.vala:731
+#: lib/number.vala:953
 msgid "Modulus division is only defined for real numbers"
 msgstr "Dzielenie modulo jest określone tylko dla liczb rzeczywistych"
 
+#: lib/number.vala:977
+msgid "Modular exponent is too large"
+msgstr "Wykładnik modulo jest zbyt duży"
+
 #. Translators: Error displayed when tangent value is undefined
-#: lib/number.vala:811
+#: lib/number.vala:1046
 msgid ""
 "Tangent is undefined for angles that are multiples of π (180°) from π∕2 (90°)"
 msgstr ""
@@ -1078,120 +1099,124 @@ msgstr ""
 "(180°) z π∕2 (90°)"
 
 #. Translators: Error displayed when inverse sine value is undefined
-#: lib/number.vala:830
+#: lib/number.vala:1065
 msgid "Inverse sine is undefined for values outside [-1, 1]"
 msgstr "Odwrotny sinus jest nieokreślony dla wartości spoza [-1, 1]"
 
 #. Translators: Error displayed when inverse cosine value is undefined
-#: lib/number.vala:847
+#: lib/number.vala:1082
 msgid "Inverse cosine is undefined for values outside [-1, 1]"
 msgstr "Odwrotny cosinus jest nieokreślony dla wartości spoza [-1, 1]"
 
 #. Translators: Error displayed when trying to calculate undefined atan(i) or atan (-i)
-#: lib/number.vala:865
+#: lib/number.vala:1100
 msgid "Inverse tangent is undefined for values i and -i"
 msgstr "Odwrotny tangens jest nieokreślony dla wartości i oraz -i"
 
 #. Translators: Error displayed when inverse hyperbolic cosine value is undefined
-#: lib/number.vala:916
+#: lib/number.vala:1151
 msgid "Inverse hyperbolic cosine is undefined for values less than one"
 msgstr ""
 "Odwrotny cosinus hiperboliczny jest nieokreślony dla wartości mniejszych od "
 "jeden"
 
 #. Translators: Error displayed when inverse hyperbolic tangent value is undefined
-#: lib/number.vala:932
+#: lib/number.vala:1167
 msgid "Inverse hyperbolic tangent is undefined for values outside [-1, 1]"
 msgstr ""
 "Odwrotny tangens hiperboliczny jest nieokreślony dla wartości spoza [-1, 1]"
 
 #. Translators: Error displayed when bitwise AND attempted on non-integer values
-#: lib/number.vala:947
+#: lib/number.vala:1185
 msgid "Bitwise AND is only defined for non-negative integers"
 msgstr "Bitowe ORAZ jest określone tylko dla nieujemnych liczb całkowitych"
 
 #. Translators: Error displayed when bitwise NAND attempted on non-integer values
-#: lib/number.vala:960
+#: lib/number.vala:1201
 msgid "Bitwise NAND is only defined for non-negative integers"
 msgstr "Bitowe NAND jest określone tylko dla nieujemnych liczb całkowitych"
 
 #. Translators: Error displayed when bitwise OR attempted on non-integer values
-#: lib/number.vala:973
+#: lib/number.vala:1217
 msgid "Bitwise OR is only defined for non-negative integers"
 msgstr "Bitowe LUB jest określone tylko dla nieujemnych liczb całkowitych"
 
 #. Translators: Error displayed when bitwise NOR attempted on non-integer values
-#: lib/number.vala:986
+#: lib/number.vala:1233
 msgid "Bitwise NOR is only defined for non-negative integers"
 msgstr "Bitowe NOR jest określone tylko dla nieujemnych liczb całkowitych"
 
 #. Translators: Error displayed when bitwise XOR attempted on non-integer values
-#: lib/number.vala:999
+#: lib/number.vala:1249
 msgid "Bitwise XOR is only defined for non-negative integers"
 msgstr "Bitowe XOR jest określone tylko dla nieujemnych liczb całkowitych"
 
 #. Translators: Error displayed when bitwise XNOR attempted on non-integer values
-#: lib/number.vala:1012
+#: lib/number.vala:1265
 msgid "Bitwise XNOR is only defined for non-negative integers"
 msgstr "Bitowe XNOR jest określone tylko dla nieujemnych liczb całkowitych"
 
 #. Translators: Error displayed when bitwise NOT attempted on non-integer values
-#: lib/number.vala:1025
+#: lib/number.vala:1281
 msgid "Bitwise NOT is only defined for non-negative integers"
 msgstr "Bitowe NIE jest określone tylko dla nieujemnych liczb całkowitych"
 
 #. Translators: Error displayed when bit shift attempted on non-integer values
-#: lib/number.vala:1087
+#: lib/number.vala:1343
 msgid "Shift is only possible on integers"
 msgstr "Przesunięcie jest możliwe tylko na liczbach całkowitych"
 
-#: lib/number.vala:1092 lib/number.vala:1120 lib/number.vala:1566
+#: lib/number.vala:1348 lib/number.vala:1376 lib/number.vala:1880
 msgid "Overflow. Try a bigger word size"
 msgstr "Przepełnienie. Proszę spróbować większego słowa maszynowego"
 
-#: lib/number.vala:1103
+#: lib/number.vala:1359
 msgid "Two’s complement is only defined for non-negative integers"
 msgstr ""
 "Uzupełnienie do dwóch jest określone tylko dla nieujemnych liczb całkowitych"
 
-#: lib/number.vala:1115
+#: lib/number.vala:1371
 msgid "Swap endianness is only possible on integers"
 msgstr "Zamiana kolejności bajtów jest możliwa tylko na liczbach całkowitych"
 
-#: lib/number.vala:1143
+#: lib/number.vala:1402
 msgid "Combination is only defined for non-negative integers"
 msgstr "Kombinacja jest określona tylko dla nieujemnych liczb całkowitych"
 
-#: lib/number.vala:1148
+#: lib/number.vala:1407
 msgid "Combination is undefined if n is less than r"
 msgstr "Kombinacja jest nieokreślona, jeśli n wynosi mniej niż r"
 
-#: lib/number.vala:1161
+#: lib/number.vala:1431
 msgid "Permutation is only defined for non-negative integers"
 msgstr "Permutacja jest określona tylko dla nieujemnych liczb całkowitych"
 
-#: lib/number.vala:1166
+#: lib/number.vala:1436
 msgid "Permutation is undefined if n is less than r"
 msgstr "Permutacja jest nieokreślona, jeśli n wynosi mniej niż r"
 
-#: lib/number.vala:1187
+#: lib/number.vala:1443 lib/number.vala:1444
+msgid "Permutation is too large"
+msgstr "Permutacja jest zbyt duża"
+
+#: lib/number.vala:1469
 msgid "Greatest common divisor is only defined for integers"
 msgstr "Największy wspólny dzielnik jest określony tylko dla liczb całkowitych"
 
-#: lib/number.vala:1207
+#: lib/number.vala:1492
 msgid "Least common multiple is only defined for integers"
 msgstr ""
 "Najmniejsza wspólna wielokrotność jest określona tylko dla liczb całkowitych"
 
-#: lib/number.vala:1264
+#: lib/number.vala:1557
 msgid "Median is only defined for real numbers"
 msgstr "Mediana jest określona tylko dla liczb rzeczywistych"
 
-#: lib/number.vala:1284
+#: lib/number.vala:1577
 msgid "Minimum value is only defined for real numbers"
 msgstr "Wartość minimalna jest określona tylko dla liczb rzeczywistych"
 
-#: lib/number.vala:1301
+#: lib/number.vala:1594
 msgid "Maximum value is only defined for real numbers"
 msgstr "Wartość maksymalna jest określona tylko dla liczb rzeczywistych"
 
@@ -1211,7 +1236,7 @@ msgstr "Międzynarodowy Fundusz Walutowy"
 msgid "United Nations Treasury"
 msgstr "United Nations Treasury"
 
-#: lib/serializer.vala:359 lib/serializer.vala:397
+#: lib/serializer.vala:359 lib/serializer.vala:409
 msgid ""
 "The result is too long to display in fixed format. Try other result formats"
 msgstr ""
@@ -2447,15 +2472,15 @@ msgstr "Dziesiętny"
 msgid "Hexadecimal"
 msgstr "Szesnastkowy"
 
-#: search-provider/search-provider.vala:206
+#: search-provider/search-provider.vala:200
 msgid "Open in Calculator"
 msgstr "Otwórz w kalkulatorze"
 
-#: search-provider/search-provider.vala:239
+#: search-provider/search-provider.vala:233
 msgid "Result copied"
 msgstr "Skopiowano wynik"
 
-#: search-provider/search-provider.vala:240
+#: search-provider/search-provider.vala:234
 msgid "Result was copied successfully"
 msgstr "Pomyślnie skopiowano wynik"
 
@@ -2504,13 +2529,13 @@ msgid "Show release version"
 msgstr "Wyświetla wersję wydania"
 
 #. Application Copyrights for the calculator authors
-#: src/gnome-calculator.vala:291
+#: src/gnome-calculator.vala:313
 #, c-format
 msgid "© 1986–%d The Calculator authors"
 msgstr "© 1986-%d autorzy Kalkulatora"
 
 #. The translator credits. Please translate this with your name (s).
-#: src/gnome-calculator.vala:297
+#: src/gnome-calculator.vala:319
 msgid "translator-credits"
 msgstr ""
 "Artur Flinta <aflinta@at.kernel.pl>, 2003-2006\n"
@@ -2521,24 +2546,24 @@ msgstr ""
 "Aviary.pl <community-poland@mozilla.org>, 2007-2025\n"
 "Daniel <wbcwknvstb@proton.me>, 2026"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 msgid "Exchange Rate Data Providers"
 msgstr "Dostawcy kursów wymiany walut"
 
-#: src/gnome-calculator.vala:301
+#: src/gnome-calculator.vala:323
 #, c-format
 msgid "Exchange rates data by %s"
 msgstr "Dostawcy kursów wymiany walut: %s"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Close All?"
 msgstr "Zamknąć wszystkie?"
 
-#: src/gnome-calculator.vala:309
+#: src/gnome-calculator.vala:331
 msgid "Are you sure you want to close all open windows?"
 msgstr "Na pewno zamknąć wszystkie okna?"
 
-#: src/gnome-calculator.vala:310 src/ui/buttons-financial.blp:897
+#: src/gnome-calculator.vala:332 src/ui/buttons-financial.blp:897
 #: src/ui/buttons-financial.blp:953 src/ui/buttons-financial.blp:1009
 #: src/ui/buttons-financial.blp:1065 src/ui/buttons-financial.blp:1115
 #: src/ui/buttons-financial.blp:1171 src/ui/buttons-financial.blp:1227
@@ -2547,27 +2572,27 @@ msgstr "Na pewno zamknąć wszystkie okna?"
 msgid "_Cancel"
 msgstr "_Anuluj"
 
-#: src/gnome-calculator.vala:311
+#: src/gnome-calculator.vala:333
 msgid "Close _All"
 msgstr "Za_mknij wszystkie"
 
-#: src/math-converter.vala:612 src/math-converter.vala:630
+#: src/math-converter.vala:608 src/math-converter.vala:626
 msgid "Error"
 msgstr "Błąd"
 
-#: src/math-display.vala:694
+#: src/math-display.vala:691
 msgid "Defined Functions"
 msgstr "Określone funkcje"
 
-#: src/math-display.vala:742
+#: src/math-display.vala:739
 msgid "Built-in Keywords"
 msgstr "Wbudowane słowa kluczowe"
 
-#: src/math-display.vala:794
+#: src/math-display.vala:791
 msgid "Defined Currencies"
 msgstr "Określone waluty"
 
-#: src/math-display.vala:843
+#: src/math-display.vala:840
 msgid "Defined Variables"
 msgstr "Określone zmienne"
 
@@ -2587,11 +2612,11 @@ msgstr "Nazwa funkcji nie może zaczynać się od cyfry"
 msgid "Function name can only contain digits, letters and underscores"
 msgstr "Nazwa funkcji może zawierać tylko cyfry, litery i podkreślniki"
 
-#: src/math-popover.vala:110
+#: src/math-popover.vala:116
 msgid "Edit"
 msgstr "Modyfikuje"
 
-#: src/math-popover.vala:120
+#: src/math-popover.vala:126
 msgid "Delete"
 msgstr "Usuwa"
 
@@ -2651,23 +2676,23 @@ msgstr "Nazwa zmiennej nie może zaczynać się od cyfry"
 msgid "Variable name can only contain digits, letters and underscores"
 msgstr "Nazwa zmiennej może zawierać tylko cyfry, litery i podkreślniki"
 
-#: src/math-window.vala:137
+#: src/math-window.vala:140
 msgid "Basic"
 msgstr "Podstawowy"
 
-#: src/math-window.vala:143
+#: src/math-window.vala:146
 msgid "Advanced"
 msgstr "Zaawansowany"
 
-#: src/math-window.vala:149 src/ui/math-window.blp:152
+#: src/math-window.vala:152 src/ui/math-window.blp:152
 msgid "Financial"
 msgstr "Finansowy"
 
-#: src/math-window.vala:161
+#: src/math-window.vala:164
 msgid "Keyboard"
 msgstr "Klawiatura"
 
-#: src/math-window.vala:167
+#: src/math-window.vala:170
 msgid "Conversion"
 msgstr "Konwersja"
 
@@ -3275,11 +3300,11 @@ msgstr "Wk_lej"
 msgid "Function name"
 msgstr "Nazwa funkcji"
 
-#: src/ui/math-function-popover.blp:57
+#: src/ui/math-function-popover.blp:60
 msgid "Select no. of arguments"
 msgstr "Wybiera liczbę argumentów"
 
-#: src/ui/math-function-popover.blp:62
+#: src/ui/math-function-popover.blp:65
 msgid "Add function"
 msgstr "Dodaje funkcję"
 
@@ -3589,7 +3614,7 @@ msgstr "Stałe"
 msgid "Variable name"
 msgstr "Nazwa zmiennej"
 
-#: src/ui/math-variable-popover.blp:67
+#: src/ui/math-variable-popover.blp:70
 msgid "Store value into existing or new variable"
 msgstr "Przechowuje wartość w istniejącej lub nowej zmiennej"
 
@@ -3663,7 +3688,7 @@ msgstr "Pomo_c"
 
 #: src/ui/math-window.blp:111
 msgid "A_bout Calculator"
-msgstr "_O programie"
+msgstr "_O aplikacji"
 
 #: src/ui/math-window.blp:132
 msgid "Mode Selection"
@@ -3671,26 +3696,12 @@ msgstr "Wybór trybu"
 
 #: src/ui/math-window.blp:139
 msgid "Undo"
-msgstr "Cofa"
+msgstr "Cofnij"
 
 #: src/ui/math-window.blp:146
 msgid "Redo"
-msgstr "Ponawia"
+msgstr "Ponów"
 
 #: src/ui/math-window.blp:161
 msgid "Main Menu"
 msgstr "Menu główne"
-
-#~ msgid "Show Thousands Separators"
-#~ msgstr "Wyświetlanie separatorów tysięcy"
-
-#~ msgid "Ones’ Complement"
-#~ msgstr "Uzupełnia do jedności"
-
-#~ msgid "Ones’ complement is only defined for non-negative integers"
-#~ msgstr ""
-#~ "Uzupełnienie do jedności jest określone tylko dla nieujemnych liczb "
-#~ "całkowitych"
-
-#~ msgid "_Thousands Separators"
-#~ msgstr "_Separatory tysięcy"
