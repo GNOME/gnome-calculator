@@ -83,6 +83,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("AMD", _("Armenian Dram"), "֏"));
         default_currency_manager.currencies.append (new Currency ("ARS", _("Argentine Peso"), "$"));
         default_currency_manager.currencies.append (new Currency ("AUD", _("Australian Dollar"), "$"));
+        default_currency_manager.currencies.append (new Currency ("AZN", _("Azerbaijan Manat"), "₼"));
         default_currency_manager.currencies.append (new Currency ("BDT", _("Bangladeshi Taka"), "৳"));
         default_currency_manager.currencies.append (new Currency ("BHD", _("Bahraini Dinar"), ".ب.د"));
         default_currency_manager.currencies.append (new Currency ("BND", _("Brunei Dollar"), "$"));
@@ -109,6 +110,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("JPY", _("Japanese Yen"), "¥"));
         default_currency_manager.currencies.append (new Currency ("JMD", _("Jamaican Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("KRW", _("South Korean Won"), "₩"));
+        default_currency_manager.currencies.append (new Currency ("KGS", _("Kyrgyzstan Som"), "сом"));
         default_currency_manager.currencies.append (new Currency ("KWD", _("Kuwaiti Dinar"), "ك.د"));
         default_currency_manager.currencies.append (new Currency ("KZT", _("Kazakhstani Tenge"), "₸"));
         default_currency_manager.currencies.append (new Currency ("LKR", _("Sri Lankan Rupee"), "Rs"));
@@ -140,6 +142,7 @@ public class CurrencyManager : Object
         default_currency_manager.currencies.append (new Currency ("UAH", _("Ukrainian Hryvnia"), "₴"));
         default_currency_manager.currencies.append (new Currency ("USD", _("US Dollar"), "$"));
         default_currency_manager.currencies.append (new Currency ("UYU", _("Uruguayan Peso"), "$"));
+        default_currency_manager.currencies.append (new Currency ("UZS", _("Uzbekistani Sum"), "сўм"));
         default_currency_manager.currencies.append (new Currency ("VND", _("Vietnamese Dong"), "₫"));
         default_currency_manager.currencies.append (new Currency ("XAF", _("Central African CFA Franc"), "F.CFA"));
         default_currency_manager.currencies.append (new Currency ("XOF", _("West African CFA Franc"), "F.CFA"));
