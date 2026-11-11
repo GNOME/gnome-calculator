@@ -20,7 +20,7 @@ public class SearchProvider : Object
     private const int MAX_CACHED_EQUATIONS = 10;
     private const uint SEARCH_TIMEOUT_MSEC = 50;
     private Queue<string> queued_equations;
-    private HashTable<string, string> cached_equations;
+    private HashTable<string, CachedResult> cached_equations;
 
     private const string OPEN_IN_CALCULATOR_ID = "open-in-calculator-";
 
@@ -29,7 +29,33 @@ public class SearchProvider : Object
         application = app;
 
         queued_equations = new Queue<string> ();
-        cached_equations = new HashTable<string, string> (str_hash, str_equal);
+        cached_equations = new HashTable<string, CachedResult> (str_hash, str_equal);
+    }
+
+    /* The shown result follows the "show-thousands" preference; the copied
+     * result never contains separators so it can be pasted anywhere. */
+    private class CachedResult
+    {
+        public string display;
+        public string plain;
+
+        public CachedResult (string display, string plain)
+        {
+            this.display = display;
+            this.plain = plain;
+        }
+    }
+
+    private void ensure_settings ()
+    {
+        if (settings != null)
+            return;
+
+        settings = new Settings ("org.gnome.calculator");
+        settings.changed["show-thousands"].connect (() => {
+            queued_equations.clear ();
+            cached_equations.remove_all ();
+        });
     }
 
     ~SearchProvider ()
@@ -57,12 +83,11 @@ public class SearchProvider : Object
         return equation;
     }
 
-    private bool solve_normalized_equation (string normalized_equation, out string result)
+    private bool solve_normalized_equation (string normalized_equation, out CachedResult? result)
     {
-        result = "";
+        result = null;
 
-        if (settings == null)
-            settings = new Settings ("org.gnome.calculator");
+        ensure_settings ();
 
         var budget = new EvaluationBudget.for_search (SEARCH_TIMEOUT_MSEC);
         active_budget = budget;
@@ -85,10 +110,20 @@ public class SearchProvider : Object
 
         var serializer = new Serializer (DisplayFormat.AUTOMATIC, 10, 9);
         serializer.set_representation_base (representation_base);
-        result = serializer.to_string (number, budget);
+        var plain = serializer.to_string (number, budget);
 
         if (serializer.error != null)
             return false;
+
+        var display = plain;
+        if (settings.get_boolean ("show-thousands"))
+        {
+            serializer.set_show_thousands_separators (true);
+            display = serializer.to_string (number, budget);
+
+            if (serializer.error != null)
+                return false;
+        }
 
         ErrorCode budget_error;
         string? budget_message;
@@ -97,6 +132,7 @@ public class SearchProvider : Object
 
         application.renew_inactivity_timeout ();
 
+        result = new CachedResult (display.strip (), plain.strip ());
         return true;
     }
 
@@ -126,12 +162,12 @@ public class SearchProvider : Object
 
         cancel ();
 
-        string result;
+        CachedResult? result;
         if (!solve_normalized_equation (normalized_equation, out result))
             return false;
 
         queued_equations.push_tail (equation);
-        cached_equations.insert (equation, result.strip ());
+        cached_equations.insert (equation, result);
 
         if (queued_equations.length > MAX_CACHED_EQUATIONS)
             cached_equations.remove (queued_equations.pop_head ());
@@ -163,7 +199,6 @@ public class SearchProvider : Object
         requires (results.length == 1 || results.length == 2)
     {
         string equation;
-        string result;
         uint32 equation_index;
 
         if (results.length == 1 && results[0].has_prefix (OPEN_IN_CALCULATOR_ID))
@@ -179,7 +214,7 @@ public class SearchProvider : Object
         if (!yield solve_equation (equation))
             return new HashTable<string, Variant>[0];
 
-        result = cached_equations.lookup (equation);
+        var result = cached_equations.lookup (equation);
         assert (result != null);
 
         var metadata = new HashTable<string, Variant>[results.length];
@@ -188,8 +223,8 @@ public class SearchProvider : Object
         metadata[equation_index].insert ("id", equation);
         metadata[equation_index].insert ("icon", "edit-copy-symbolic");
         metadata[equation_index].insert ("name", equation);
-        metadata[equation_index].insert ("description", @" = $result");
-        metadata[equation_index].insert ("clipboardText", @"$result");
+        metadata[equation_index].insert ("description", @" = $(result.display)");
+        metadata[equation_index].insert ("clipboardText", result.plain);
 
         if (results.length == 2)
         {
@@ -228,7 +263,7 @@ public class SearchProvider : Object
                 var equation_result = cached_equations.lookup (equation);
                 Gtk.init ();
                 Gdk.Clipboard clipboard = Gdk.Display.get_default ().get_clipboard ();
-                clipboard.set_text (equation_result);
+                clipboard.set_text (equation_result.plain);
 
                 var notification = new Notification (_("Result copied"));
                 notification.set_body (_("Result was copied successfully"));
