@@ -217,6 +217,22 @@ public class ConstantNode : ParseNode
     }
 }
 
+public class SuperscriptNode : ParseNode
+{
+    public SuperscriptNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
+    {
+        base (parser, token, precedence, associativity);
+    }
+
+    public override Number? solve ()
+    {
+        if (!parser.check_budget ())
+            return null;
+
+        return new Number.integer (super_atoi (token().text));
+    }
+}
+
 public class AssignNode : RNode
 {
     public AssignNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
@@ -323,7 +339,7 @@ public class VariableWithPowerNode : ParseNode
 
         /* If defined, then get the variable */
         var ans = parser.get_variable (token().text);
-        // Superscripted variables and constants bypass XPowYIntegerNode, so
+        // Superscripted variables and constants bypass XPowYNode, so
         // pass the active budget here to enforce the same exponent limits.
         if (ans != null)
             return ans.xpowy_integer (pow, parser.budget);
@@ -831,61 +847,6 @@ public class XPowYNode : LRNode
     public override Number solve_lr (Number l, Number r)
     {
         return l.xpowy (r, parser.budget);
-    }
-}
-
-/**
- * This class is a XPowY in which the right token is an nsup number.
- */
-public class XPowYIntegerNode : ParseNode
-{
-    public XPowYIntegerNode (Parser parser, LexerToken? token, uint precedence, Associativity associativity)
-    {
-        base (parser, token, precedence, associativity);
-    }
-
-    public override Number? solve ()
-    {
-        if (!parser.check_budget ())
-            return null;
-
-        var val = left.solve ();
-
-        // Are we inside a nested pow?
-        if (val == null)
-        {
-            val = new Number.integer (super_atoi (left.token().text));
-        }
-
-        int64 pow;
-
-        if (right.token() != null)
-            pow = super_atoi (right.token().text);
-        else
-        {
-            var right_value = right.solve ();
-            if (right_value == null)
-                return null;
-            pow = right_value.to_integer ();
-        }
-
-        if (val == null)
-            return null;
-
-        var z = val.xpowy_integer (pow, parser.budget);
-
-        /* check for errors */
-        Number.check_flags ();
-        if (Number.error != null)
-        {
-            var tmpleft = left;
-            var tmpright = right;
-            while (tmpleft.left != null) tmpleft = tmpleft.left;
-            while (tmpright.right != null) tmpright = tmpright.right;
-            parser.set_number_error (tmpleft.first_token().start_index, tmpright.last_token().end_index);
-        }
-
-        return z;
     }
 }
 
@@ -2004,8 +1965,8 @@ public class Parser
         }
         else if (token.type == LexerTokenType.SUP_NUMBER)
         {
-            insert_into_tree (new XPowYIntegerNode (this, null, make_precedence_p (Precedence.POWER), get_associativity_p (Precedence.POWER)));
-            insert_into_tree (new NameNode (this, token, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE)));
+            insert_into_tree (new XPowYNode (this, null, make_precedence_p (Precedence.POWER), get_associativity_p (Precedence.POWER)));
+            insert_into_tree (new SuperscriptNode (this, token, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE)));
 
             if (!expression_2 ())
                 return false;
@@ -2014,8 +1975,8 @@ public class Parser
         }
         else if (token.type == LexerTokenType.NSUP_NUMBER)
         {
-            insert_into_tree (new XPowYIntegerNode (this, null, make_precedence_p (Precedence.POWER), get_associativity_p (Precedence.POWER)));
-            insert_into_tree (new NameNode (this, token, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE)));
+            insert_into_tree (new XPowYNode (this, null, make_precedence_p (Precedence.POWER), get_associativity_p (Precedence.POWER)));
+            insert_into_tree (new SuperscriptNode (this, token, make_precedence_p (Precedence.NUMBER_VARIABLE), get_associativity_p (Precedence.NUMBER_VARIABLE)));
 
             if (!expression_2 ())
                 return false;
