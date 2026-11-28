@@ -285,10 +285,10 @@ public class MathWindow : Adw.ApplicationWindow
     {
         switch (keyval)
         {
-        case Gdk.Key.Left:
+        case Gdk.Key.Up:
             previous_in_history ();
             break;
-        case Gdk.Key.Right:
+        case Gdk.Key.Down:
             next_in_history ();
             break;
         }

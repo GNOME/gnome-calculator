@@ -285,6 +285,11 @@ public class MathDisplay : Gtk.Box
                 equation.insert ("″");
                 return true;
             }
+            if (keyval == Gdk.Key.Up || keyval == Gdk.Key.Down)
+            {
+                arr_key_pressed (keyval);
+                return true;
+            }
         }
 
         /* Disable auto-completion when inputting hex numbers */
@@ -358,10 +363,6 @@ public class MathDisplay : Gtk.Box
                 return true;
             case Gdk.Key.bracketright:
                 equation.insert ("⌋");
-                return true;
-            case Gdk.Key.Left:
-            case Gdk.Key.Right:
-                arr_key_pressed (keyval);
                 return true;
             }
         }
